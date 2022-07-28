@@ -20,7 +20,7 @@ namespace wServer.networking.handlers
             player.AddPendingAction(t => Handle(client.Player, t, packet));
         }
 
-        private void Handle(Player player, TickData time, Move packet)
+        private void Handle(Player player, TickTime time, Move packet)
         {
             if (player?.Owner == null)
                 return;

@@ -7,14 +7,14 @@ namespace wServer.core
     public sealed class CoreServerManagerTicker
     {
         private CoreServerManager CoreServerManager;
-        private TickData UpdateTime;
+        private TickTime UpdateTime;
 
         public CoreServerManagerTicker(CoreServerManager realmManager, int tickRate)
         {
             CoreServerManager = realmManager;
 
             MsPerTick = 1000 / tickRate;
-            UpdateTime = new TickData();
+            UpdateTime = new TickTime();
         }
 
         private int MsPerTick { get; }

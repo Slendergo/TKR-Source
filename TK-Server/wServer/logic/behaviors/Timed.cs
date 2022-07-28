@@ -14,7 +14,7 @@ namespace wServer.logic.behaviors
             this.period = period;
         }
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state)
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state)
         {
             foreach (var behavior in behaviors)
                 behavior.OnStateEntry(host, time);
@@ -22,7 +22,7 @@ namespace wServer.logic.behaviors
             state = period;
         }
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             var period = (int)state;
 

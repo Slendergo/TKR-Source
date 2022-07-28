@@ -23,7 +23,7 @@ namespace wServer.logic.transitions
             _attackTarget = checkAttackTarget;
         }
 
-        protected override bool TickCore(Entity host, TickData time, ref object state)
+        protected override bool TickCore(Entity host, TickTime time, ref object state)
         {
             if (_attackTarget)
             {

@@ -21,10 +21,10 @@ namespace wServer.logic.behaviors
             this.targeted = targeted;
         }
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state) => state = new SwirlState()
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state) => state = new SwirlState()
         { Center = targeted ? Vector2.Zero : new Vector2(host.X, host.Y), Acquired = !targeted, };
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             var s = (SwirlState)state;
 

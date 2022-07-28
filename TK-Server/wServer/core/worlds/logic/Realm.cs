@@ -86,7 +86,7 @@ namespace wServer.core.worlds.logic
             return _overseer.Closing;
         }
 
-        public override bool Tick(TickData time)
+        public override bool Tick(TickTime time)
         {
             try
             {

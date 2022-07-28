@@ -9,7 +9,7 @@ namespace wServer.core.commands
             public DestroyWorld() : base("destroyWorld", permLevel: 100, alias: "dw")
             { }
 
-            protected override bool Process(Player player, TickData time, string args)
+            protected override bool Process(Player player, TickTime time, string args)
             {
                 var world = player.Owner;
 

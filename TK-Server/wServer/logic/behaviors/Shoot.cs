@@ -47,9 +47,9 @@ namespace wServer.logic.behaviors
 
         private static double GetMultiplier => _multiplier == -1 ? _multiplier = Program.CoreServerManager.GetEnemyDamageRate() : _multiplier;
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state) => state = _coolDownOffset;
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state) => state = _coolDownOffset;
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             var cool = (int?)state ?? -1; // <-- crashes server due to state being null... patched now but should be looked at.
 

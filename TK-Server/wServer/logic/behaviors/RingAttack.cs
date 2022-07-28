@@ -32,9 +32,9 @@ namespace wServer.logic.behaviors
             _useSavedAngle = useSavedAngle;
         }
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state) => state = new RingAttackState { angleToIncrement = _angleToIncrement, fixedAngle = _fixedAngle, coolDown = _coolDown };
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state) => state = new RingAttackState { angleToIncrement = _angleToIncrement, fixedAngle = _fixedAngle, coolDown = _coolDown };
 
-        protected override void TickCore(Entity Host, TickData time, ref object state)
+        protected override void TickCore(Entity Host, TickTime time, ref object state)
         {
             var rastate = (RingAttackState)state;
 

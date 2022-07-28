@@ -12,7 +12,7 @@ namespace wServer.logic.behaviors
             Acquired,
         }
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             if ((host as Pet)?.PlayerOwner == null)
                 return;

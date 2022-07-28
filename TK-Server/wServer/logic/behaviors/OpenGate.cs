@@ -29,7 +29,7 @@ namespace wServer.logic.behaviors
             usearea = true;
         }
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state)
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state)
         {
             var map = host.Owner.Map;
             var w = map.Width;
@@ -61,7 +61,7 @@ namespace wServer.logic.behaviors
                     }
         }
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         { }
     }
 }

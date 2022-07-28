@@ -15,7 +15,7 @@ namespace wServer.core.commands
             {
             }
 
-            protected override bool Process(Player player, TickData time, string worldName)
+            protected override bool Process(Player player, TickTime time, string worldName)
             {
                 var worldProtoData = player.CoreServerManager.Resources.Worlds.Data;
 

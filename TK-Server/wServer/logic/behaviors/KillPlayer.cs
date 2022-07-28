@@ -19,9 +19,9 @@ namespace wServer.logic.behaviors
             _killAll = killAll;
         }
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state) => state = _coolDown.Next(Random);
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state) => state = _coolDown.Next(Random);
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             if (host == null || host.AttackTarget == null || host.AttackTarget.Owner == null)
                 return;

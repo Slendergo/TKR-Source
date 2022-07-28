@@ -24,7 +24,7 @@ namespace wServer.core.commands
             private string _logDir => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Staff Reports");
             private string _logFile => Path.Combine(_logDir, $"{DateTime.UtcNow:yyyy-MM-dd}.json");
 
-            protected override bool Process(Player player, TickData time, string args)
+            protected override bool Process(Player player, TickTime time, string args)
             {
                 if (string.IsNullOrEmpty(args) || !args.Equals(PASSWORD))
                 {

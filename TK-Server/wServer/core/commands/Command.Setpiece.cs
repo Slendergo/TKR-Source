@@ -13,7 +13,7 @@ namespace wServer.core.commands
             public Setpiece() : base("setpiece", permLevel: 100)
             { }
 
-            protected override bool Process(Player player, TickData time, string setPiece)
+            protected override bool Process(Player player, TickTime time, string setPiece)
             {
                 if ((player.Owner is Nexus) || (player.Owner is Marketplace) || player.Owner.Id == -10 || player.Owner is GuildHall)
                 {

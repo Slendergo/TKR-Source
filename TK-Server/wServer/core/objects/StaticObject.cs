@@ -38,7 +38,7 @@ namespace wServer.core.objects
                 return null;
         }
 
-        public override bool HitByProjectile(Projectile projectile, TickData time)
+        public override bool HitByProjectile(Projectile projectile, TickTime time)
         {
             if (Vulnerable && projectile.ProjectileOwner is Player)
             {
@@ -65,7 +65,7 @@ namespace wServer.core.objects
             return true;
         }
 
-        public override void Tick(TickData time)
+        public override void Tick(TickTime time)
         {
             if (Vulnerable)
             {

@@ -10,7 +10,7 @@ namespace wServer.logic.behaviors
 
         public Transform(string target) => this.target = GetObjType(target);
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             var entity = Entity.Resolve(host.CoreServerManager, target);
 

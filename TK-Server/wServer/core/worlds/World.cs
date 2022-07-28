@@ -417,7 +417,7 @@ namespace wServer.core.worlds
             }).ToArray();
         }
 
-        public void PlayerUpdate(TickData time)
+        public void PlayerUpdate(TickTime time)
         {
             using (TimedLock.Lock(_deleteLock))
             {
@@ -436,7 +436,7 @@ namespace wServer.core.worlds
             }
         }
 
-        public void ProcessNetworking(TickData time)
+        public void ProcessNetworking(TickTime time)
         {
             using (TimedLock.Lock(_deleteLock))
             {
@@ -501,7 +501,7 @@ namespace wServer.core.worlds
                 }));
         }
 
-        public virtual bool Tick(TickData time)
+        public virtual bool Tick(TickTime time)
         {
             // if Tick is overrided and you make a call to this function
             // make sure not to do anything after the call (or at least check)
@@ -550,7 +550,7 @@ namespace wServer.core.worlds
             return false;
         }
 
-        public void TickLogic(TickData time)
+        public void TickLogic(TickTime time)
         {
             using (TimedLock.Lock(_deleteLock))
             {
@@ -584,6 +584,52 @@ namespace wServer.core.worlds
                 }
                 catch (Exception e) { Log.Error($"Unknown Error with TickLogic {e}"); }
             }
+        }
+
+        public World ParentWorld { get; private set; }
+
+        public bool Update(ref TickTime time)
+        {
+            _elapsedTime += time.ElaspedMsDelta;
+
+            HandleIO(ref time);
+            if (IsPastLifetime(ref time))
+                return true;
+            HandleLogic(ref time);
+            return false;
+        }
+
+        private void HandleIO(ref TickTime time)
+        {
+            // todo
+            foreach(var player in Players.Values)
+            {
+                player.ProcessNetworking(ref time);
+            }
+        }
+
+        private void HandleLogic(ref TickTime time)
+        {
+        }
+
+        private bool IsPastLifetime(ref TickTime time)
+        {
+            if (Players.Count > 0)
+                return false;
+
+            if (Persist)
+                return false;
+
+            if (Deleted)
+                return false;
+
+            if (IsLimbo)
+                return false;
+
+            if (_elapsedTime >= 60000)
+                return true;
+
+            return true;
         }
 
         public void WorldAnnouncement(string msg)

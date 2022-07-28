@@ -23,7 +23,7 @@ namespace wServer.logic.behaviors
             s.Host.Owner.EnterWorld(portal);
         };
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state)
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state)
         {
             if (host.GetNearestEntity(100, 0x5e4b) != null)
                 return;
@@ -34,7 +34,7 @@ namespace wServer.logic.behaviors
             opener.Move(host.X, host.Y);
         }
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         { }
     }
 }

@@ -29,42 +29,43 @@ namespace wServer.core
         {
             var watch = Stopwatch.StartNew();
 
-            var realmTime = new TickData();
+            var realmTime = new TickTime();
             var last = 0L;
+
+            var spin = new SpinWait();
 
             while (true)
             {
                 if (!CoreServerManager.Initialized)
                 {
-                    Thread.Sleep(50);
+                    Thread.Sleep(200);
                     continue;
                 }
 
                 var current = realmTime.TotalElapsedMs = watch.ElapsedMilliseconds;
                 var delta = (int)(current - last);
 
-                realmTime.TickCount++;
-                realmTime.ElaspedMsDelta = delta;
-
-                if (Stopped || World.Tick(realmTime))
+                if (delta >= 200)
                 {
-                    TickThreadSingle.WorldManager.RemoveWorld(World);
-                    break;
+                    realmTime.TickCount++;
+                    realmTime.ElaspedMsDelta = delta;
+
+                    if (Stopped || World.Tick(realmTime))
+                    {
+                        TickThreadSingle.WorldManager.RemoveWorld(World);
+                        break;
+                    }
+                    else
+                    {
+                        World.ProcessNetworking(realmTime);
+                        World.TickLogic(realmTime);
+                        World.PlayerUpdate(realmTime);
+                    }
+
+                    last = current;
                 }
-                else
-                {
-                    World.ProcessNetworking(realmTime);
-                    World.TickLogic(realmTime);
-                    World.PlayerUpdate(realmTime);
-                }
 
-                var logicTime = (int)(watch.ElapsedMilliseconds - realmTime.TotalElapsedMs);
-
-                var sleepTime = Math.Max(0, 50 - logicTime);// 50 ms -> 20 tps - time to do the update
-
-                Thread.Sleep(sleepTime);
-
-                last = current;
+                spin.SpinOnce();
             }
         }
     }

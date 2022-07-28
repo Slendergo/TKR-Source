@@ -18,10 +18,10 @@ namespace wServer.logic.behaviors
             this.flashRepeats = flashRepeats;
         }
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state) => host.Owner.BroadcastIfVisible(new ShowEffect()
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state) => host.Owner.BroadcastIfVisible(new ShowEffect()
         { EffectType = EffectType.Flashing, Pos1 = new Position() { X = flashPeriod, Y = flashRepeats }, TargetObjectId = host.Id, Color = new ARGB(color) }, host, PacketPriority.Low);
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         { }
     }
 }

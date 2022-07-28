@@ -25,7 +25,7 @@ namespace wServer.logic
             return ret;
         }
 
-        public void OnStateEntry(Entity host, TickData time)
+        public void OnStateEntry(Entity host, TickTime time)
         {
             if (host == null || host.Owner == null)
                 return;
@@ -41,7 +41,7 @@ namespace wServer.logic
                 host.StateStorage[this] = state;
         }
 
-        public void OnStateExit(Entity host, TickData time)
+        public void OnStateExit(Entity host, TickTime time)
         {
             if (host == null || host.Owner == null)
                 return;
@@ -57,7 +57,7 @@ namespace wServer.logic
                 host.StateStorage[this] = state;
         }
 
-        public void Tick(Entity host, TickData time)
+        public void Tick(Entity host, TickTime time)
         {
             if (host == null || host.Owner == null)
                 return;
@@ -76,12 +76,12 @@ namespace wServer.logic
         protected internal virtual void Resolve(State parent)
         { }
 
-        protected virtual void OnStateEntry(Entity host, TickData time, ref object state)
+        protected virtual void OnStateEntry(Entity host, TickTime time, ref object state)
         { }
 
-        protected virtual void OnStateExit(Entity host, TickData time, ref object state)
+        protected virtual void OnStateExit(Entity host, TickTime time, ref object state)
         { }
 
-        protected abstract void TickCore(Entity host, TickData time, ref object state);
+        protected abstract void TickCore(Entity host, TickTime time, ref object state);
     }
 }

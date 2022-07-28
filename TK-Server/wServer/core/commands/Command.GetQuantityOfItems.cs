@@ -11,7 +11,7 @@ namespace wServer.core.commands
             public GetQuantityOfItems() : base("getquantityofitems", permLevel: 110, alias: "gqof")
             { }
 
-            protected override bool Process(Player player, TickData time, string type)
+            protected override bool Process(Player player, TickTime time, string type)
             {
                 var slotTypes = new int[26];
                 var totalItems = 0;

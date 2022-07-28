@@ -12,7 +12,7 @@ namespace wServer.core.commands
             {
             }
 
-            protected override bool Process(Player player, TickData time, string args)
+            protected override bool Process(Player player, TickTime time, string args)
             {
                 var revenge = player.Owner.Manager.Resources.GameData.Items.Where(item => item.Value.Revenge).ToArray();
 

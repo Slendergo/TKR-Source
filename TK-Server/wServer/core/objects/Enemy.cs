@@ -104,7 +104,7 @@ namespace wServer.core.objects
             }
         }
 
-        public int Damage(Player from, TickData time, int dmg, bool noDef, bool itsPoison = false, params ConditionEffect[] effs)
+        public int Damage(Player from, TickTime time, int dmg, bool noDef, bool itsPoison = false, params ConditionEffect[] effs)
         {
             if (stat)
                 return 0;
@@ -151,7 +151,7 @@ namespace wServer.core.objects
             return 0;
         }
 
-        public void Death(TickData time)
+        public void Death(TickTime time)
         {
             if (this == null || Owner == null)
                 return;
@@ -165,7 +165,7 @@ namespace wServer.core.objects
             Owner.LeaveWorld(this);
         }
 
-        public override bool HitByProjectile(Projectile projectile, TickData time)
+        public override bool HitByProjectile(Projectile projectile, TickTime time)
         {
             if (stat)
                 return false;
@@ -249,7 +249,7 @@ namespace wServer.core.objects
             ClasifyEnemy();
         }
 
-        public override void Tick(TickData time)
+        public override void Tick(TickTime time)
         {
             if (pos == null)
                 pos = new Position() { X = X, Y = Y };
@@ -298,7 +298,7 @@ namespace wServer.core.objects
             }
         }
 
-        private void Electrify(Player player, int slot, TickData time, Entity firstHit)
+        private void Electrify(Player player, int slot, TickTime time, Entity firstHit)
         {
             if (player == null || player.Owner == null || player.Client == null)
                 return;

@@ -12,7 +12,7 @@ namespace wServer.core.commands
             public KillAll() : base("killAll", permLevel: 60, alias: "ka")
             { }
 
-            protected override bool Process(Player player, TickData time, string args)
+            protected override bool Process(Player player, TickTime time, string args)
             {
                 if (!(player.Owner is Vault) && player.Rank < 110)
                 {

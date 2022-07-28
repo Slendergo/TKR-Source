@@ -64,9 +64,9 @@ namespace wServer.logic.behaviors
             this.cooldown = cooldown;
         }
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state) => state = null;
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state) => state = null;
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             if (state != null && cooldown.CoolDown == 0)
                 return;    //cooldown = 0 -> once per state entry

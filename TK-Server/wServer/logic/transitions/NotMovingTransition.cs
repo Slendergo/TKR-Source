@@ -22,7 +22,7 @@ namespace wServer.logic.transitions
             _delay = delay;
         }
 
-        protected override bool TickCore(Entity host, TickData time, ref object state)
+        protected override bool TickCore(Entity host, TickTime time, ref object state)
         {
             if (state == null)
             {

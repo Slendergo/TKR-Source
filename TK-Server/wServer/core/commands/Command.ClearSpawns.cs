@@ -10,7 +10,7 @@ namespace wServer.core.commands
             public ClearSpawns() : base("clearspawn", permLevel: 90, alias: "cs")
             { }
 
-            protected override bool Process(Player player, TickData time, string args)
+            protected override bool Process(Player player, TickTime time, string args)
             {
                 var entities = player.Owner.Enemies
                     .ValueWhereAsParallel(_ => _.Spawned);

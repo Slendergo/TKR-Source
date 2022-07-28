@@ -18,7 +18,7 @@ namespace wServer.core.commands
         public bool ListCommand { get; private set; }
         public int PermissionLevel { get; private set; }
 
-        public bool Execute(Player player, TickData time, string args, bool bypassPermission = false)
+        public bool Execute(Player player, TickTime time, string args, bool bypassPermission = false)
         {
             if (!bypassPermission && !HasPermission(player))
             {
@@ -36,7 +36,7 @@ namespace wServer.core.commands
 
         public bool HasPermission(Player player) => GetPermissionLevel(player) >= PermissionLevel;
 
-        protected abstract bool Process(Player player, TickData time, string args);
+        protected abstract bool Process(Player player, TickTime time, string args);
 
         private static int GetPermissionLevel(Player player) => player.Client.Account.Rank;
     }

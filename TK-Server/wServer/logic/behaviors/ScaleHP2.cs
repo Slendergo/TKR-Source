@@ -17,9 +17,9 @@ namespace wServer.logic.behaviors
             _scaleAfter = scaleStart;
         }
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state) => state = new ScaleHPState { pNamesCounted = new List<string>(), initialScaleAmount = _scaleAfter, cooldown = 0 };
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state) => state = new ScaleHPState { pNamesCounted = new List<string>(), initialScaleAmount = _scaleAfter, cooldown = 0 };
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             var scstate = (ScaleHPState)state;
 

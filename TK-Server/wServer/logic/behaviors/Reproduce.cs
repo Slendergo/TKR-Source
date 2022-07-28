@@ -27,7 +27,7 @@ namespace wServer.logic.behaviors
             _regionRange = regionRange;
         }
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state)
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state)
         {
             base.OnStateEntry(host, time, ref state);
 
@@ -50,7 +50,7 @@ namespace wServer.logic.behaviors
                 }
         }
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             var cool = (state == null) ? _coolDown.Next(Random) : (int)state;
 

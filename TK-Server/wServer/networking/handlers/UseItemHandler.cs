@@ -11,7 +11,7 @@ namespace wServer.networking.handlers
 
         protected override void HandlePacket(Client client, UseItem packet) => client?.Player?.AddPendingAction(t => Handle(client.Player, t, packet));
 
-        private void Handle(Player player, TickData time, UseItem packet)
+        private void Handle(Player player, TickTime time, UseItem packet)
         {
             if (player?.Owner == null)
                 return;

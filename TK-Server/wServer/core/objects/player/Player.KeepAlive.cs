@@ -44,7 +44,7 @@ namespace wServer.core.objects
                 Client.Disconnect("One too many GotoAcks");
         }
 
-        public void MoveReceived(TickData time, Move pkt)
+        public void MoveReceived(TickTime time, Move pkt)
         {
             if (!_move.TryDequeue(out var tickId))
             {
@@ -86,7 +86,7 @@ namespace wServer.core.objects
             }
         }
 
-        public void Pong(TickData time, Pong pongPkt)
+        public void Pong(TickTime time, Pong pongPkt)
         {
             _cnt++;
 
@@ -105,7 +105,7 @@ namespace wServer.core.objects
                 Client.Disconnect("One too many UpdateAcks");
         }
 
-        private bool KeepAlive(TickData time)
+        private bool KeepAlive(TickTime time)
         {
             if (_pingTime == -1)
             {

@@ -11,7 +11,7 @@ namespace wServer.networking.handlers
         public string Message { get; private set; }
         public long Time { get; private set; }
 
-        public PlayerMessage(Player player, TickData time, string msg)
+        public PlayerMessage(Player player, TickTime time, string msg)
         {
             Player = player;
             Message = msg;
@@ -30,7 +30,7 @@ namespace wServer.networking.handlers
             client.Player.AddPendingAction(t => Handle(client.Player, t, packet.Text));
         }
 
-        private void Handle(Player player, TickData time, string text)
+        private void Handle(Player player, TickTime time, string text)
         {
             if (player?.Owner == null || text.Length > 512)
                 return;

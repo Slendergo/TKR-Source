@@ -182,7 +182,7 @@ namespace wServer.core.objects
             tradeAccepted = false;
         }
 
-        private void CheckTradeTimeout(TickData time)
+        private void CheckTradeTimeout(TickTime time)
         {
             var newState = new List<Tuple<Player, int>>();
 

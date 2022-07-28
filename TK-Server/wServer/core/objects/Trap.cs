@@ -26,7 +26,7 @@ namespace wServer.core.objects
             duration = (int)(effDuration * 1000);
         }
 
-        public override void Tick(TickData time)
+        public override void Tick(TickTime time)
         {
             if (t / 500 == p)
             {
@@ -59,7 +59,7 @@ namespace wServer.core.objects
             base.Tick(time);
         }
 
-        private void Explode(TickData time)
+        private void Explode(TickTime time)
         {
             Owner.BroadcastIfVisible(new ShowEffect()
             {

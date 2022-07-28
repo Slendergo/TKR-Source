@@ -1,5 +1,6 @@
 ﻿using common.resources;
 using wServer.networking;
+using wServer.utils;
 
 namespace wServer.core.worlds.logic
 {
@@ -15,6 +16,12 @@ namespace wServer.core.worlds.logic
             var realms = Manager.WorldManager.GetRealms();
             foreach (var realm in realms)
                 monitor.AddPortal(realm.Id);
+        }
+
+        public override bool Tick(TickTime time)
+        {
+            SLogger.Instance.Warn($"[Nexus] {time.ElaspedMsDelta}");
+            return base.Tick(time);
         }
     }
 }

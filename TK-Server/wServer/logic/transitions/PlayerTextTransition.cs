@@ -32,7 +32,7 @@ namespace wServer.logic.transitions
             _ignoreCase = ignoreCase;
         }
 
-        protected override bool TickCore(Entity host, TickData time, ref object state)
+        protected override bool TickCore(Entity host, TickTime time, ref object state)
         {
             if (host == null || host.Owner == null || _transition == false
                 || _player == null || !host.Owner.GetPlayers().Contains(_player))

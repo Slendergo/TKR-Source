@@ -296,7 +296,7 @@ namespace wServer.logic.loot
 
         public Loot(params MobDrops[] drops) => AddRange(drops);
 
-        public void Handle(Enemy enemy, TickData time)
+        public void Handle(Enemy enemy, TickTime time)
         {
             if (enemy.SpawnedByBehavior) return;
 

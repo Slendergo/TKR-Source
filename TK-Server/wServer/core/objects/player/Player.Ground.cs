@@ -35,7 +35,7 @@ namespace wServer.core.objects
             return true;
         }*/
 
-        public void ForceGroundHit(TickData time, Position pos, int timeHit)
+        public void ForceGroundHit(TickTime time, Position pos, int timeHit)
         {
             if (Owner == null || Owner.Map == null || HasConditionEffect(ConditionEffects.Paused) || HasConditionEffect(ConditionEffects.Invincible))
                 return;
@@ -66,7 +66,7 @@ namespace wServer.core.objects
             }
         }
 
-        public void GroundEffect(TickData time)
+        public void GroundEffect(TickTime time)
         {
             if (Owner == null || Owner.Map == null || HasConditionEffect(ConditionEffects.Paused) || HasConditionEffect(ConditionEffects.Invincible) || HasConditionEffect(ConditionEffects.Stasis))
                 return;

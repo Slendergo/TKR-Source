@@ -17,7 +17,7 @@ namespace wServer.logic.transitions
             this.wipeProgress = wipeProgress;
         }
 
-        protected override bool TickCore(Entity host, TickData time, ref object state)
+        protected override bool TickCore(Entity host, TickTime time, ref object state)
         {
             int damageSoFar = 0;
 

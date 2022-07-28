@@ -10,7 +10,7 @@ namespace wServer.core.commands
 			{
 			}
 
-			protected override bool Process(Player player, TickData time, string color)
+			protected override bool Process(Player player, TickTime time, string color)
 			{
 				for (int i = 0; i < 5; i++)
 				{

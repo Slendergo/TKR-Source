@@ -12,7 +12,7 @@ namespace wServer.core.commands
             }
 
             // resets leaderboards, account stars, and account fame to 0
-            protected override bool Process(Player player, TickData time, string args)
+            protected override bool Process(Player player, TickTime time, string args)
             {
                 var amount = args.ToInt32();
 

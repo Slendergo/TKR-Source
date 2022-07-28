@@ -15,7 +15,7 @@ namespace wServer.logic.transitions
             init = false;
         }
 
-        protected override bool TickCore(Entity host, TickData time, ref object state)
+        protected override bool TickCore(Entity host, TickTime time, ref object state)
         {
             if (!init && host is Enemy)
             {

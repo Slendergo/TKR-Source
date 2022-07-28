@@ -17,7 +17,7 @@ namespace wServer.logic.transitions
             _entity = entity;
         }
 
-        protected override bool TickCore(Entity host, TickData time, ref object state)
+        protected override bool TickCore(Entity host, TickTime time, ref object state)
         {
             return host.GetNearestEntityByName(_dist, _entity) != null;
         }

@@ -649,7 +649,7 @@ namespace wServer.core
             player.SendInfo("Type \"/help\" for more help");
         }
 
-        public void Tick(TickData time)
+        public void Tick(TickTime time)
         {
             if (time.TotalElapsedMs - _prevTick <= 10000)
                 return;

@@ -34,7 +34,7 @@ namespace wServer.core.objects
 
         public void AddPlayerStartTime(Player player, int serverTime, int clientTime) => _startTime.TryAdd(player, new Tuple<int, int>(serverTime, clientTime));
 
-        public void ForceHit(Entity entity, TickData time)
+        public void ForceHit(Entity entity, TickTime time)
         {
             if (!ProjDesc.MultiHit && _used && !(entity is Player))
                 return;
@@ -45,7 +45,7 @@ namespace wServer.core.objects
             _used = true;
         }
 
-        public void GetHit(float pX, float pY, TickData time)
+        public void GetHit(float pX, float pY, TickTime time)
         {
             foreach (var player in Owner.PlayersCollision.HitTest(ProjEntity.X, ProjEntity.Y, 30).Where(e => e is Player && e != ProjectileOwner.Self))
             {
@@ -139,7 +139,7 @@ namespace wServer.core.objects
 
         public void OnDestroy() => Owner?.LeaveWorld(this);
 
-        public override void Tick(TickData time)
+        public override void Tick(TickTime time)
         {
             var elapsed = time.TotalElapsedMs - CreationTime;
 

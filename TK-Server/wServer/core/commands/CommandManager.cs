@@ -39,7 +39,7 @@ namespace wServer.core.commands
 
         public IDictionary<string, Command> Commands => _cmds;
 
-        public bool Execute(Player player, TickData time, string text)
+        public bool Execute(Player player, TickTime time, string text)
         {
             var index = text.IndexOf(' ');
             var cmd = text.Substring(1, index == -1 ? text.Length - 1 : index - 1);

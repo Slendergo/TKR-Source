@@ -18,7 +18,7 @@ namespace wServer.logic.transitions
             this.randomized = randomized;
         }
 
-        protected override bool TickCore(Entity host, TickData time, ref object state)
+        protected override bool TickCore(Entity host, TickTime time, ref object state)
         {
             int cool;
             if (state == null) cool = randomized ? Random.Next(this.time) : this.time;

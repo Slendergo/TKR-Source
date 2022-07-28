@@ -16,7 +16,7 @@ namespace wServer.core.commands
             {
             }
 
-            protected override bool Process(Player player, TickData time, string name)
+            protected override bool Process(Player player, TickTime time, string name)
             {
                 if (string.IsNullOrWhiteSpace(name))
                 {

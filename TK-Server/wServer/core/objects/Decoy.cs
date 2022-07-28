@@ -44,7 +44,7 @@ namespace wServer.core.objects
 
         public bool IsVisibleToEnemy() => true;
 
-        public override void Tick(TickData time)
+        public override void Tick(TickTime time)
         {
             if (HP > duration - 2000)
                 ValidateAndMove(X + direction.X * speed * time.ElaspedMsDelta / 1000, Y + direction.Y * speed * time.ElaspedMsDelta / 1000);

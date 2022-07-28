@@ -12,7 +12,7 @@ namespace wServer.core.commands
             {
             }
 
-            protected override bool Process(Player player, TickData time, string color)
+            protected override bool Process(Player player, TickTime time, string color)
             {
                 Program.SetupRestarter(TimeSpan.FromMinutes(5.05), new KeyValuePair<TimeSpan, Action>[]
                 {

@@ -19,9 +19,9 @@ namespace wServer.logic.behaviors
             _distance = (float)distance;
         }
 
-        protected override void OnStateExit(Entity host, TickData time, ref object state) => state = null;
+        protected override void OnStateExit(Entity host, TickTime time, ref object state) => state = null;
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             var dist = state == null ? _distance : (float)state;
 

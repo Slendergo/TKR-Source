@@ -18,7 +18,7 @@ namespace wServer.logic.behaviors
             _loop = loop;
         }
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state)
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state)
         {
             state = new TextureState() { currentTexture = host.AltTextureIndex, remainingTime = _cooldown.Next(Random) };
 
@@ -29,7 +29,7 @@ namespace wServer.logic.behaviors
             }
         }
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             var textState = state as TextureState;
 

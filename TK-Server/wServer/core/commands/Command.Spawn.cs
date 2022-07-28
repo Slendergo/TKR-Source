@@ -39,7 +39,7 @@ namespace wServer.core.commands
             {
             }
 
-            protected override bool Process(Player player, TickData time, string args)
+            protected override bool Process(Player player, TickTime time, string args)
             {
                 args = args.Trim();
                 if (!(player.Owner is Vault) && player.Rank < 110)

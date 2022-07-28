@@ -15,7 +15,7 @@ namespace wServer.logic.behaviors
             this.children = children;
         }
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state)
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state)
         {
             var lastKilled = -1;
             var killed = 0;
@@ -33,7 +33,7 @@ namespace wServer.logic.behaviors
             }
         }
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         { }
     }
 }

@@ -17,7 +17,7 @@ namespace wServer.logic.behaviors
             _replacedObjName = replacedObjName;
         }
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state)
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state)
         {
             var dat = host.CoreServerManager.Resources.GameData;
             var tileId = dat.IdToTileType[_objName];
@@ -53,7 +53,7 @@ namespace wServer.logic.behaviors
                 }
         }
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         { }
     }
 }

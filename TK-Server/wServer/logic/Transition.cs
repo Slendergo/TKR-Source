@@ -25,7 +25,7 @@ namespace wServer.logic
             get { return _rand ?? (_rand = new Random()); }
         }
 
-        public bool Tick(Entity host, TickData time)
+        public bool Tick(Entity host, TickTime time)
         {
             if (host == null) return false;
 
@@ -51,6 +51,6 @@ namespace wServer.logic
                 TargetState[i] = states[TargetStates[i]];
         }
 
-        protected abstract bool TickCore(Entity host, TickData time, ref object state);
+        protected abstract bool TickCore(Entity host, TickTime time, ref object state);
     }
 }

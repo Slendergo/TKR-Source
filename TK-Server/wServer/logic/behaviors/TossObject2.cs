@@ -26,9 +26,9 @@ namespace wServer.logic.behaviors
             this.randomToss = randomToss;
         }
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state) => state = coolDownOffset;
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state) => state = coolDownOffset;
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             var cool = (int)state;
 

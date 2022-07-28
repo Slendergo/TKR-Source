@@ -9,7 +9,7 @@ namespace wServer.core.commands
             public ClearGraves() : base("cleargraves", permLevel: 90, alias: "cgraves")
             { }
 
-            protected override bool Process(Player player, TickData time, string args)
+            protected override bool Process(Player player, TickTime time, string args)
             {
                 var total = 0;
                 foreach (var entry in player.Owner.StaticObjects)

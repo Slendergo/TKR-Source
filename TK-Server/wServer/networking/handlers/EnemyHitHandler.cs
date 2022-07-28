@@ -12,7 +12,7 @@ namespace wServer.networking.handlers
 
         protected override void HandlePacket(Client client, EnemyHit packet) => client?.Player?.AddPendingAction(t => Handle(client.Player, t, packet));
 
-        private void Handle(Player player, TickData time, EnemyHit pkt)
+        private void Handle(Player player, TickTime time, EnemyHit pkt)
         {
             var entity = player?.Owner?.GetEntity(pkt.TargetId);
 

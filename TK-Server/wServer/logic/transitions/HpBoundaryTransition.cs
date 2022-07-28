@@ -29,7 +29,7 @@ namespace wServer.logic.transitions
             _thresholds = new List<double> { threshold };
         }
 
-        protected override bool TickCore(Entity host, TickData time, ref object state)
+        protected override bool TickCore(Entity host, TickTime time, ref object state)
         {
             if (state == null)
             {

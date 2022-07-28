@@ -119,7 +119,7 @@ namespace wServer.core.objects
             return ret;
         }
 
-        public void HandleQuest(TickData time, bool force = false, Position? destination = null)
+        public void HandleQuest(TickTime time, bool force = false, Position? destination = null)
         {
             if (Owner is Realm)
                 CheckForEncounter();
@@ -128,7 +128,7 @@ namespace wServer.core.objects
                 CheckForEncounter();
         }
 
-        public void HandleSpecialEnemies(TickData time, bool force = false)
+        public void HandleSpecialEnemies(TickTime time, bool force = false)
         {
             if (this == null || Owner == null || Owner.SpecialEnemies == null || time.TickCount % 500 != 0)
                 return;

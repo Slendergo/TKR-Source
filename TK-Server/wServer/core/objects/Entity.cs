@@ -287,7 +287,7 @@ namespace wServer.core.objects
 
         public bool HasConditionEffect(ConditionEffects eff) => (ConditionEffects & eff) != 0;
 
-        public virtual bool HitByProjectile(Projectile projectile, TickData time)
+        public virtual bool HitByProjectile(Projectile projectile, TickTime time)
         {
             if (ObjectDesc == null)
                 return true;
@@ -350,7 +350,7 @@ namespace wServer.core.objects
             _stateEntry = true;
         }
 
-        public virtual void Tick(TickData time)
+        public virtual void Tick(TickTime time)
         {
             if (this == null || this is Projectile || Owner == null)
                 return;
@@ -368,7 +368,7 @@ namespace wServer.core.objects
                 ProcessConditionEffects(time);
         }
 
-        public void TickState(TickData time)
+        public void TickState(TickTime time)
         {
             if (_stateEntry)
             {
@@ -674,7 +674,7 @@ namespace wServer.core.objects
                     CurrentState = CurrentState.States[0];
         }
 
-        private void ProcessConditionEffects(TickData time)
+        private void ProcessConditionEffects(TickTime time)
         {
             if (_effects == null || !_tickingEffects) return;
 

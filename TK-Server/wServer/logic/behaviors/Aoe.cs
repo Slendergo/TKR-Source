@@ -23,7 +23,7 @@ namespace wServer.logic.behaviors
             this.color = new ARGB(color);
         }
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state)
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state)
         {
             var pos = new Position { X = host.X, Y = host.Y };
             var damage = Random.Next(minDamage, maxDamage);
@@ -35,7 +35,7 @@ namespace wServer.logic.behaviors
             });
         }
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         { }
     }
 }

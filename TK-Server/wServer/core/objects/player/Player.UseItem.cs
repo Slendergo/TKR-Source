@@ -40,7 +40,7 @@ namespace wServer.core.objects
         public bool PoisonWis = false;
         private object _useLock = new object();
 
-        public void AEItemDust(TickData time, Item item, Position target, int slot, int objId, ActivateEffect eff)
+        public void AEItemDust(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
             ushort[] tierSwords = { 0x221c, 0x228e, 0x258c }; //reskins
             ushort[] tierStaff = { 0x228b, 0xf13, 0x237e, }; //reskins
@@ -175,7 +175,7 @@ namespace wServer.core.objects
             }
         }
 
-        public void AEResetSkillTree(TickData time, Item item, Position target, int slot, int objId, ActivateEffect eff)
+        public void AEResetSkillTree(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
             var gameData = CoreServerManager.Resources.GameData;
             var entity = Owner.GetEntity(objId);
@@ -265,7 +265,7 @@ namespace wServer.core.objects
             SendInfo("All your Skill Points have been reset.");
         }
 
-        public void AESpecialDust(TickData time, Item item, Position target, int slot, int objId, ActivateEffect eff)
+        public void AESpecialDust(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
             ushort[] nonspecialWeapons = { 0x709, 0xced, 0xb21, 0xcde, 0xc10, 0xcec, 0x164a, 0xc15, 0xc03, 0xc24, 0xcea, 0xc1d, 0xc33, 0x183b, 0xc04, 0xceb, 0xa03, 0xcdb, 0x2303, 0xcdf, 0x164b, 0x6a9, 0x716d, 0xb3f };
             ushort[] specialWeapons = { 0xc29, 0xc0a, 0x9d5, 0xc05, 0x915, 0xcdc };
@@ -380,7 +380,7 @@ namespace wServer.core.objects
             }
         }
 
-        public void AEUnlockChest(TickData time, Item item, Position target, int slot, int objId, ActivateEffect eff)
+        public void AEUnlockChest(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
             Player player = this;
             var db = CoreServerManager.Database;
@@ -396,7 +396,7 @@ namespace wServer.core.objects
             player.SendInfo("Your Vault has been unlocked! If u are in your Vault, go out and enter again.");
         }
 
-        public void AEUnlockSlotChar(TickData time, Item item, Position target, int slot, int objId, ActivateEffect eff)
+        public void AEUnlockSlotChar(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
             Player player1 = this;
             var account = player1.Client.Account;
@@ -408,7 +408,7 @@ namespace wServer.core.objects
             player1.SendInfo("New Character Slot Unlocked!, go to Character selector to use them!");
         }
 
-        public void UseItem(TickData time, int objId, int slot, Position pos, int sellMaxed)
+        public void UseItem(TickTime time, int objId, int slot, Position pos, int sellMaxed)
         {
             using (TimedLock.Lock(_useLock))
             {
@@ -600,7 +600,7 @@ namespace wServer.core.objects
             player.MP = newMp;
         }
 
-        private void Activate(TickData time, Item item, int slot, Position target, int objId, int sellmaxed)
+        private void Activate(TickTime time, Item item, int slot, Position target, int objId, int sellmaxed)
         {
             var playeren = this as Player;
             MP -= item.MpCost;
@@ -816,7 +816,7 @@ namespace wServer.core.objects
             }
         }
 
-        private void AEAddFame(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEAddFame(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             if (Owner is Test || Client.Account == null)
                 return;
@@ -839,7 +839,7 @@ namespace wServer.core.objects
             trans.Execute();*/
         }
 
-        private void AEBackpack(TickData time, Item item, Position target, int slot, int objId, ActivateEffect eff)
+        private void AEBackpack(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
             var entity = Owner.GetEntity(objId);
             var containerItem = entity as Container;
@@ -855,7 +855,7 @@ namespace wServer.core.objects
             HasBackpack = true;
         }
 
-        private void AEBulletNova(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEBulletNova(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             var shoots = item.SpellProjectiles == 0 ? 20 : item.SpellProjectiles;
             var prjs = new Projectile[shoots];
@@ -893,7 +893,7 @@ namespace wServer.core.objects
                 players[i].Client.SendPackets(batch, PacketPriority.Low);
         }
 
-        private void AEClearConditionEffectAura(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEClearConditionEffectAura(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             this.AOE(eff.Range, true, player =>
             {
@@ -911,7 +911,7 @@ namespace wServer.core.objects
             });
         }
 
-        private void AEClearConditionEffectSelf(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEClearConditionEffectSelf(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             var condition = eff.CheckExistingEffect;
             ConditionEffects conditions = 0;
@@ -929,7 +929,7 @@ namespace wServer.core.objects
             }
         }
 
-        private void AEConditionEffectAura(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEConditionEffectAura(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             var duration = eff.DurationMS;
             var range = eff.Range;
@@ -959,7 +959,7 @@ namespace wServer.core.objects
             }, this, PacketPriority.Low);
         }
 
-        private void AEConditionEffectSelf(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEConditionEffectSelf(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             var duration = eff.DurationMS;
             if (eff.UseWisMod)
@@ -979,7 +979,7 @@ namespace wServer.core.objects
             }, this, PacketPriority.Low);
         }
 
-        private void AECreate(TickData time, Item item, Position target, int slot, ActivateEffect eff)
+        private void AECreate(TickTime time, Item item, Position target, int slot, ActivateEffect eff)
         {
             var gameData = CoreServerManager.Resources.GameData;
 
@@ -1012,14 +1012,14 @@ namespace wServer.core.objects
             Owner.PlayersBroadcastAsParallel(_ => _.SendInfo(openedByMsg));
         }
 
-        private void AEDecoy(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEDecoy(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             var decoy = new Decoy(this, eff.DurationMS, 4);
             decoy.Move(X, Y);
             Owner.EnterWorld(decoy);
         }
 
-        private void AEDye(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEDye(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             if (item.Texture1 != 0)
                 Texture1 = item.Texture1;
@@ -1027,7 +1027,7 @@ namespace wServer.core.objects
                 Texture2 = item.Texture2;
         }
 
-        private void AEGenericActivate(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEGenericActivate(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             var targetPlayer = eff.Target.Equals("player");
             var centerPlayer = eff.Center.Equals("player");
@@ -1059,7 +1059,7 @@ namespace wServer.core.objects
             }, this, PacketPriority.Low);
         }
 
-        private void AEHeal(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEHeal(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             if (!HasConditionEffect(ConditionEffects.Sick))
             {
@@ -1068,7 +1068,7 @@ namespace wServer.core.objects
             }
         }
 
-        private void AEHealNova(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEHealNova(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             var amount = eff.Amount;
             var range = eff.Range;
@@ -1093,7 +1093,7 @@ namespace wServer.core.objects
             }, this, PacketPriority.Low);
         }
 
-        private void AEIncrementStat(TickData time, Item item, Position target, ActivateEffect eff, int objId, int slot, int sellMaxed)
+        private void AEIncrementStat(TickTime time, Item item, Position target, ActivateEffect eff, int objId, int slot, int sellMaxed)
         {
             var totalAllowed = 50 + (Client.Account.Rank * 2);
             var idx = StatsManager.GetStatIndex((StatDataType)eff.Stats);
@@ -1349,7 +1349,7 @@ namespace wServer.core.objects
             return 999;
         }
 
-        private void AELDBoost(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AELDBoost(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             //  if (LDBoostTime < 0 || (LDBoostTime > eff.DurationMS && eff.DurationMS >= 0))
             //      return;
@@ -1369,7 +1369,7 @@ namespace wServer.core.objects
             InvokeStatChange(StatDataType.LDBoostTime, LDBoostTime / 1000, true);
         }
 
-        private void AELightning(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AELightning(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             const double coneRange = Math.PI / 4;
             var mouseAngle = Math.Atan2(target.Y - Y, target.X - X);
@@ -1457,7 +1457,7 @@ namespace wServer.core.objects
             }
         }
 
-        private void AEMagic(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEMagic(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             for (var i = 0; i < 4; i++)
             {
@@ -1478,7 +1478,7 @@ namespace wServer.core.objects
             ActivateHealMp(this, healthAmount);
         }
 
-        private void AEMagicDust(TickData time, Item item, Position target, int slot, int objId, ActivateEffect eff)
+        private void AEMagicDust(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
             //Potion dust = 0x4995, ItemDust = 0x4993, Miscellaneous dust = 0x4994, Special dust = 0x4996
             var gameData = CoreServerManager.Resources.GameData;
@@ -1534,7 +1534,7 @@ namespace wServer.core.objects
             InvokeStatChange((StatDataType)((int)StatDataType.InventoryData0 + slot), Inventory.Data[slot]?.GetData() ?? "{}");
         }
 
-        private void AEMagicNova(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEMagicNova(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             this.AOE(eff.Range, true, player =>
                 ActivateHealMp(player as Player, eff.Amount));
@@ -1548,7 +1548,7 @@ namespace wServer.core.objects
             }, this, PacketPriority.Low);
         }
 
-        private void AEMiscellaneousDust(TickData time, Item item, Position target, int slot, int objId, ActivateEffect eff)
+        private void AEMiscellaneousDust(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
             var gameData = CoreServerManager.Resources.GameData;
             ushort itemValue;
@@ -1604,7 +1604,7 @@ namespace wServer.core.objects
             }
         }
 
-        private void AEPermaPet(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEPermaPet(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             var type = CoreServerManager.Resources.GameData.IdToObjectType[eff.ObjectId];
             var desc = CoreServerManager.Resources.GameData.ObjectDescs[type];
@@ -1614,7 +1614,7 @@ namespace wServer.core.objects
             //Log.Debug("hey!");
         }
 
-        private void AEPoisonGrenade(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEPoisonGrenade(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             if (MathsUtils.DistSqr(target.X, target.Y, X, Y) > MaxAbilityDist * MaxAbilityDist) return;
             var impDamage = eff.ImpactDamage;
@@ -1655,7 +1655,7 @@ namespace wServer.core.objects
             }));
         }
 
-        private void AEPotionDust(TickData time, Item item, Position target, int slot, int objId, ActivateEffect eff)
+        private void AEPotionDust(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
             ushort[] _commonPotions = { 0xa4c, 0xa1f, 0xa20, 0xa35, 0xa34, 0xa21 };
             var gameData = CoreServerManager.Resources.GameData;
@@ -1744,7 +1744,7 @@ namespace wServer.core.objects
             }
         }
 
-        private void AERemoveNegativeConditions(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AERemoveNegativeConditions(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             this.AOE(eff.Range, true, player => player.ApplyConditionEffect(NegativeEffs));
             Owner.BroadcastIfVisible(new ShowEffect()
@@ -1756,7 +1756,7 @@ namespace wServer.core.objects
             }, this, PacketPriority.Low);
         }
 
-        private void AERemoveNegativeConditionSelf(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AERemoveNegativeConditionSelf(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             ApplyConditionEffect(NegativeEffs);
             Owner.BroadcastIfVisible(new ShowEffect()
@@ -1768,7 +1768,7 @@ namespace wServer.core.objects
             }, this, PacketPriority.Low);
         }
 
-        private void AEShoot(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEShoot(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             var arcGap = item.ArcGap * Math.PI / 180;
             var startAngle = Math.Atan2(target.Y - Y, target.X - X) - (item.NumProjectiles - 1) / 2 * arcGap;
@@ -1793,7 +1793,7 @@ namespace wServer.core.objects
                 Owner.BroadcastIfVisible(sPkts[i], this, PacketPriority.Low);
         }
 
-        private void AEShurikenAbility(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEShurikenAbility(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             if (!HasConditionEffect(ConditionEffects.NinjaSpeedy))
             {
@@ -1810,7 +1810,7 @@ namespace wServer.core.objects
             ApplyConditionEffect(ConditionEffectIndex.NinjaSpeedy, 0);
         }
 
-        private void AEShurikenAbilityBerserk(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEShurikenAbilityBerserk(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             if (!HasConditionEffect(ConditionEffects.Berserk))
             {
@@ -1827,7 +1827,7 @@ namespace wServer.core.objects
             ApplyConditionEffect(ConditionEffectIndex.Berserk, 0);
         }
 
-        private void AEShurikenAbilityDamaging(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEShurikenAbilityDamaging(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             if (!HasConditionEffect(ConditionEffects.NinjaDamaging))
             {
@@ -1844,7 +1844,7 @@ namespace wServer.core.objects
             ApplyConditionEffect(ConditionEffectIndex.NinjaDamaging, 0);
         }
 
-        private void AEStatBoostAura(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEStatBoostAura(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             var idx = StatsManager.GetStatIndex((StatDataType)eff.Stats);
             var amount = eff.Amount;
@@ -1894,7 +1894,7 @@ namespace wServer.core.objects
             }, this, PacketPriority.Low);
         }
 
-        private void AEStatBoostSelf(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEStatBoostSelf(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             var idx = StatsManager.GetStatIndex((StatDataType)eff.Stats);
             var s = eff.Amount;
@@ -1914,12 +1914,12 @@ namespace wServer.core.objects
             }, this, PacketPriority.Low);
         }
 
-        private void AETeleport(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AETeleport(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             TeleportPosition(time, target, true);
         }
 
-        private void AETrap(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AETrap(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             Owner.BroadcastIfVisible(new ShowEffect()
             {
@@ -1937,7 +1937,7 @@ namespace wServer.core.objects
             }));
         }
 
-        private void AEUnlockPortal(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEUnlockPortal(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             var gameData = CoreServerManager.Resources.GameData;
 
@@ -2015,7 +2015,7 @@ namespace wServer.core.objects
             Owner.PlayersBroadcastAsParallel(_ => _.SendInfo($"{world.SBName} unlocked by {Name}!"));
         }
 
-        private void AEUpgradeActivate(TickData time, Item item, Position target, int objId, int slot, ActivateEffect eff)
+        private void AEUpgradeActivate(TickTime time, Item item, Position target, int objId, int slot, ActivateEffect eff)
         {
             var playerDesc = CoreServerManager.Resources.GameData.Classes[ObjectType];
             var maxed = playerDesc.Stats.Where((t, i) => Stats.Base[i] >= t.MaxValue).Count();
@@ -2045,7 +2045,7 @@ namespace wServer.core.objects
             chr.UpgradeEnabled = UpgradeEnabled;
         }
 
-        private void AEUpgradeStat(TickData time, Item item, Position target, int objId, int slot, ActivateEffect eff)
+        private void AEUpgradeStat(TickTime time, Item item, Position target, int objId, int slot, ActivateEffect eff)
         {
             var entity = Owner.GetEntity(objId);
             var container = entity as Container;
@@ -2089,7 +2089,7 @@ namespace wServer.core.objects
             }
         }
 
-        private void AEVampireBlast(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEVampireBlast(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             var pkts = new List<OutgoingMessage>
             {
@@ -2151,7 +2151,7 @@ namespace wServer.core.objects
             }
         }
 
-        private void AEXPBoost(TickData time, Item item, Position target, int slot, int objId, ActivateEffect eff)
+        private void AEXPBoost(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
             if (XPBoostTime < 0 || (XPBoostTime > eff.DurationMS && eff.DurationMS >= 0))
                 return;
@@ -2190,7 +2190,7 @@ namespace wServer.core.objects
             WorldTimer tmr = null;
             var x = 0;
 
-            bool healTick(World w, TickData t)
+            bool healTick(World w, TickTime t)
             {
                 if (player.Owner == null || w == null)
                     return true;
@@ -2231,7 +2231,7 @@ namespace wServer.core.objects
             WorldTimer tmr = null;
             var x = 0;
 
-            bool poisonTick(World w, TickData t)
+            bool poisonTick(World w, TickTime t)
             {
                 if (enemy.Owner == null || w == null)
                     return true;
@@ -2259,7 +2259,7 @@ namespace wServer.core.objects
             world.Timers.Add(tmr);
         }
 
-        private void StasisBlast(TickData time, Item item, Position target, ActivateEffect eff)
+        private void StasisBlast(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             Owner.BroadcastIfVisible(new ShowEffect()
             {

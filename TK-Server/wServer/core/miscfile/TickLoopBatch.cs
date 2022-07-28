@@ -23,53 +23,61 @@ namespace wServer.core
         public void Tick()
         {
             var watch = Stopwatch.StartNew();
-            var realmTime = new TickData();
+            var tickData = new TickTime();
             var last = 0L;
+
+            var spin = new SpinWait();
 
             while (true)
             {
                 if (!CoreServerManager.Initialized)
                 {
-                    Thread.Sleep(50);
+                    Thread.Sleep(200);
                     continue;
                 }
 
-                var current = realmTime.TotalElapsedMs = watch.ElapsedMilliseconds;
+                var current = tickData.TotalElapsedMs = watch.ElapsedMilliseconds;
                 var delta = (int)(current - last);
 
-                realmTime.TickCount++;
-                realmTime.ElaspedMsDelta = delta;
-
-                var worlds = TickThreadBatch.Attached.ToArray();
-
-                foreach (var world in worlds)
+                if (delta >= 200)
                 {
-                    if (world == null)
-                        continue;
+                    tickData.TickCount++;
+                    tickData.ElaspedMsDelta = delta;
 
-                    try
+                    var worlds = TickThreadBatch.Attached.ToArray();
+
+                    foreach (var world in worlds)
                     {
-                        if (Stopped || world.Tick(realmTime))
-                            TickThreadBatch.WorldManager.RemoveWorld(world);
-                        else
+                        if (world == null)
+                            continue;
+
+                        try
                         {
-                            world.ProcessNetworking(realmTime);
-                            world.TickLogic(realmTime);
-                            world.PlayerUpdate(realmTime);
+                            if(Stopped || world.Update(ref tickData))
+                            {
+                                TickThreadBatch.WorldManager.RemoveWorld(world);
+                            }
+
+                            if (Stopped || world.Tick(tickData))
+                                TickThreadBatch.WorldManager.RemoveWorld(world);
+                            else
+                            {
+                                world.ProcessNetworking(tickData);
+                                world.TickLogic(tickData);
+                                world.PlayerUpdate(tickData);
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            SLogger.Instance.Fatal(e);
+                            continue;
                         }
                     }
-                    catch (Exception e) { SLogger.Instance.Fatal(e); continue; }
+
+                    last = current;
                 }
 
-                if (Stopped)
-                    break;
-
-                var logicTime = (int)(watch.ElapsedMilliseconds - realmTime.TotalElapsedMs);
-                var sleepTime = Math.Max(0, 50 - logicTime); // 50 ms -> 20 tps - time to do the update
-
-                Thread.Sleep(sleepTime);
-
-                last = current;
+                spin.SpinOnce();
             }
         }
     }

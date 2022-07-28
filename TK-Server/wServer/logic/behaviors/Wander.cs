@@ -11,7 +11,7 @@ namespace wServer.logic.behaviors
 
         public Wander(double speed) => this.speed = (float)speed;
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             var storage = state == null ? new WanderStorage() : (WanderStorage)state;
 

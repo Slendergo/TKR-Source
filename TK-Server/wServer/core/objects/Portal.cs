@@ -49,7 +49,7 @@ namespace wServer.core.objects
             WorldInstanceSet?.Invoke(this, world);
         }
 
-        public override bool HitByProjectile(Projectile projectile, TickData time) => false;
+        public override bool HitByProjectile(Projectile projectile, TickTime time) => false;
 
         protected override void ExportStats(IDictionary<StatDataType, object> stats)
         {

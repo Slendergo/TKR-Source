@@ -30,9 +30,9 @@ namespace wServer.logic.behaviors
             _damage = damage;
 
         }
-        protected override void OnStateEntry(Entity host, TickData time, ref object state) => state = 0;
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state) => state = 0;
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             var pkts = new List<Packet>();
             var cool = (int)state;

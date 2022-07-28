@@ -17,7 +17,7 @@ namespace wServer.logic.transitions
             _randomized = randomizedTime;
         }
 
-        protected override bool TickCore(Entity host, TickData time, ref object state)
+        protected override bool TickCore(Entity host, TickTime time, ref object state)
         {
             int cool;
 

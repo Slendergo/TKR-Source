@@ -19,9 +19,9 @@ namespace wServer.logic.behaviors
             this.coolDown = coolDown.Normalize(1);
         }
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state) => state = new BuzzStorage();
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state) => state = new BuzzStorage();
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             var storage = (BuzzStorage)state;
 

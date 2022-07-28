@@ -10,7 +10,7 @@ namespace wServer.core.commands
             {
             }
 
-            protected override bool Process(Player player, TickData time, string color)
+            protected override bool Process(Player player, TickTime time, string color)
             {
                 var e = Entity.Resolve(player.CoreServerManager, "Coral Gift");
                 e.SetDefaultSize(300);

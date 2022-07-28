@@ -22,7 +22,7 @@ namespace wServer.logic
         public DamageCounter Parent { get; set; }
         public int TotalDamage { get; private set; }
 
-        public void Death(TickData time)
+        public void Death(TickTime time)
         {
             if (Corpse != null)
             {
@@ -124,7 +124,7 @@ namespace wServer.logic
             return dat.ToArray();
         }
 
-        public void HitBy(Player player, TickData time, Projectile projectile, int dmg)
+        public void HitBy(Player player, TickTime time, Projectile projectile, int dmg)
         {
             if (!hitters.TryGetValue(player, out int totalDmg))
                 totalDmg = 0;

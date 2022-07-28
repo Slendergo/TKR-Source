@@ -243,7 +243,7 @@ namespace wServer.core.objects
             _SPSWisdomCountMax = new SV<int>(this, StatDataType.SPS_WISDOM_COUNT_MAX, maxPotionAmount, true);
 
             PendingPackets = new ConcurrentQueue<Tuple<Client, int, PacketId, byte[]>>();
-            PendingActions = new ConcurrentQueue<Action<TickData>>();
+            PendingActions = new ConcurrentQueue<Action<TickTime>>();
 
             Name = client.Account.Name;
             HP = client.Character.HP;
@@ -387,9 +387,9 @@ namespace wServer.core.objects
         public bool UpgradeEnabled { get => _upgradeEnabled.GetValue(); set => _upgradeEnabled.SetValue(value); }
         public bool XPBoosted { get => _xpBoosted.GetValue(); set => _xpBoosted.SetValue(value); }
         public int XPBoostTime { get; set; }
-        private ConcurrentQueue<Action<TickData>> PendingActions { get; set; }
+        private ConcurrentQueue<Action<TickTime>> PendingActions { get; set; }
 
-        public void AddPendingAction(Action<TickData> action) => PendingActions.Enqueue(action);
+        public void AddPendingAction(Action<TickTime> action) => PendingActions.Enqueue(action);
 
         public void CleanupPlayerUpdate()
         {
@@ -728,7 +728,7 @@ namespace wServer.core.objects
             }));
         }
 
-        public void DoUpdate(TickData time)
+        public void DoUpdate(TickTime time)
         {
             IsAlive = KeepAlive(time);
             if (!IsAlive)
@@ -760,7 +760,7 @@ namespace wServer.core.objects
             return playerDesc.Stats.Where((t, i) => Stats.Base[i] >= t.MaxValue).Count() + (UpgradeEnabled ? playerDesc.Stats.Where((t, i) => i == 0 ? Stats.Base[i] >= t.MaxValue + 50 : i == 1 ? Stats.Base[i] >= t.MaxValue + 50 : Stats.Base[i] >= t.MaxValue + 10).Count() : 0);
         }
 
-        public override bool HitByProjectile(Projectile projectile, TickData time)
+        public override bool HitByProjectile(Projectile projectile, TickTime time)
         {
             if (projectile.ProjectileOwner is Player || IsInvulnerable)
                 return false;
@@ -861,7 +861,7 @@ namespace wServer.core.objects
             PlayerUpdate = new PlayerUpdate(this);
         }
 
-        public void ProcessNetworking(TickData time)
+        public void ProcessNetworking(TickTime time)
         {
             while (PendingActions.TryDequeue(out var callback))
                 try
@@ -890,7 +890,6 @@ namespace wServer.core.objects
                     {
                         packet.ReadNew(rdr);
                     }
-
 
                     pending.Item1.ProcessPacket(packet);
                 }
@@ -986,7 +985,7 @@ namespace wServer.core.objects
             Skin = skin;
         }
 
-        public void Teleport(TickData time, int objId, bool ignoreRestrictions = false)
+        public void Teleport(TickTime time, int objId, bool ignoreRestrictions = false)
         {
             var obj = Owner.GetEntity(objId);
             if (obj == null)
@@ -1051,9 +1050,9 @@ namespace wServer.core.objects
             TeleportPosition(time, obj.X, obj.Y, ignoreRestrictions);
         }
 
-        public void TeleportPosition(TickData time, float x, float y, bool ignoreRestrictions = false) => TeleportPosition(time, new Position() { X = x, Y = y }, ignoreRestrictions);
+        public void TeleportPosition(TickTime time, float x, float y, bool ignoreRestrictions = false) => TeleportPosition(time, new Position() { X = x, Y = y }, ignoreRestrictions);
 
-        public void TeleportPosition(TickData time, Position position, bool ignoreRestrictions = false)
+        public void TeleportPosition(TickTime time, Position position, bool ignoreRestrictions = false)
         {
             if (!ignoreRestrictions)
             {
@@ -1092,7 +1091,7 @@ namespace wServer.core.objects
             });
         }
 
-        public override void Tick(TickData time)
+        public override void Tick(TickTime time)
         {
             if (!IsAlive)
                 return;
@@ -1297,14 +1296,14 @@ namespace wServer.core.objects
             stats[StatDataType.SPS_VITALITY_COUNT_MAX] = SPSVitalityCountMax;
         }
 
-        private void CerberusClaws(TickData time)
+        private void CerberusClaws(TickTime time)
         {
             var elasped = time.TotalElapsedMs;
             if (elasped % 2000 == 0)
                 Stats.Boost.ReCalculateValues();
         }
 
-        private void CerberusCore(TickData time)
+        private void CerberusCore(TickTime time)
         {
             var elasped = time.TotalElapsedMs;
             if (elasped % 15000 == 0)
@@ -1494,7 +1493,7 @@ namespace wServer.core.objects
             }
         }
 
-        private void HandleRegen(TickData time)
+        private void HandleRegen(TickTime time)
         {
             // hp regen
             if (HP == Stats[0] || !CanHpRegen())
@@ -1834,7 +1833,7 @@ namespace wServer.core.objects
             return true;
         }
 
-        private void TickActivateEffects(TickData time)
+        private void TickActivateEffects(TickTime time)
         {
             var dt = time.ElaspedMsDelta;
             if (Owner == null)
@@ -1855,7 +1854,7 @@ namespace wServer.core.objects
                 LDBoostTime = Math.Max(LDBoostTime - dt, 0);
         }
 
-        private void TimeEffects(TickData time)
+        private void TimeEffects(TickTime time)
         {
             if (_canApplyEffect0 > 0)
             {

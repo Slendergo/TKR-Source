@@ -29,7 +29,7 @@ namespace wServer.logic.behaviors
             Protected,
         }
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             var s = state == null ? ProtectState.DontKnowWhere : (ProtectState)state;
 

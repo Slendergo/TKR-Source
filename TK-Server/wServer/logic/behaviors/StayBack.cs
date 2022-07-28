@@ -18,7 +18,7 @@ namespace wServer.logic.behaviors
             this.entity = entity;
         }
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             int cooldown;
             if (state == null) cooldown = 1000;

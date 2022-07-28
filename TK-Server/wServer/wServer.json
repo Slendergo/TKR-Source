@@ -25,7 +25,7 @@
     "serverKey": "1AE3517CCC0486ADEB5DE0D5B5247789",
     "clientKey": "5E44602511D8A86A416EE138DFAAE2F9",
     "maxConnections": 256,
-    "maxPlayers": 128,
+    "maxPlayers": 300,
     "donorOnly": false,
     "restartTime": 2,
     "hashes": [

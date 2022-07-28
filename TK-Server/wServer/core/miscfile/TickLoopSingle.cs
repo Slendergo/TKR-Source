@@ -29,7 +29,7 @@ namespace wServer.core
         {
             var watch = Stopwatch.StartNew();
 
-            var realmTime = new TickTime();
+            var time = new TickTime();
             var last = 0L;
 
             var spin = new SpinWait();
@@ -42,24 +42,18 @@ namespace wServer.core
                     continue;
                 }
 
-                var current = realmTime.TotalElapsedMs = watch.ElapsedMilliseconds;
+                var current = time.TotalElapsedMs = watch.ElapsedMilliseconds;
                 var delta = (int)(current - last);
 
                 if (delta >= 200)
                 {
-                    realmTime.TickCount++;
-                    realmTime.ElaspedMsDelta = delta;
+                    time.TickCount++;
+                    time.ElaspedMsDelta = delta;
 
-                    if (Stopped || World.Tick(realmTime))
+                    if(Stopped || World.Update(ref time))
                     {
-                        TickThreadSingle.WorldManager.RemoveWorld(World);
+                        _ = TickThreadSingle.WorldManager.RemoveWorld(World);
                         break;
-                    }
-                    else
-                    {
-                        World.ProcessNetworking(realmTime);
-                        World.TickLogic(realmTime);
-                        World.PlayerUpdate(realmTime);
                     }
 
                     last = current;

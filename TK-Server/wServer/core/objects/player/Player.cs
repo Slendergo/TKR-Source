@@ -242,7 +242,7 @@ namespace wServer.core.objects
             _SPSWisdomCount = new SV<int>(this, StatDataType.SPS_WISDOM_COUNT, client.Account.SPSWisdomCount, true);
             _SPSWisdomCountMax = new SV<int>(this, StatDataType.SPS_WISDOM_COUNT_MAX, maxPotionAmount, true);
 
-            PendingPackets = new ConcurrentQueue<Tuple<Client, int, PacketId, byte[]>>();
+            IncomingPackets = new ConcurrentQueue<InboundBuffer>();
             PendingActions = new ConcurrentQueue<Action<TickTime>>();
 
             Name = client.Account.Name;
@@ -350,7 +350,7 @@ namespace wServer.core.objects
         public bool Muted { get; set; }
         public bool NameChosen { get => _nameChosen.GetValue(); set => _nameChosen.SetValue(value); }
         public int OxygenBar { get => _oxygenBar.GetValue(); set => _oxygenBar.SetValue(value); }
-        public ConcurrentQueue<Tuple<Client, int, PacketId, byte[]>> PendingPackets { get; private set; }
+        public ConcurrentQueue<InboundBuffer> IncomingPackets { get; private set; }
         public Pet Pet { get; set; }
         public int PetId { get; set; }
         public PlayerUpdate PlayerUpdate { get; private set; }
@@ -861,7 +861,7 @@ namespace wServer.core.objects
             PlayerUpdate = new PlayerUpdate(this);
         }
 
-        public void ProcessNetworking(TickTime time)
+        public void HandlePendingActions(TickTime time)
         {
             while (PendingActions.TryDequeue(out var callback))
                 try
@@ -872,32 +872,35 @@ namespace wServer.core.objects
                 {
                     SLogger.Instance.Error(e);
                 }
+        }
 
-            while (PendingPackets.Count > 0)
+        public void HandleIO()
+        {
+            while (IncomingPackets.Count > 0)
             {
-                if (!PendingPackets.TryDequeue(out var pending))
+                if (!IncomingPackets.TryDequeue(out var pending))
                     continue;
 
-                if (pending.Item1.Id != pending.Item2 || pending.Item1.State == ProtocolState.Disconnected)
+                if (pending.Client.State == ProtocolState.Disconnected)
                     continue;
 
                 try
                 {
-                    var packet = Packet.Packets[pending.Item3].CreateInstance();
+                    var packet = Packet.Packets[pending.Id].CreateInstance();
                     //packet.Read(pending.Item1, pending.Item4, 0, pending.Item4.Length);
 
-                    using(var rdr = new NReader(new MemoryStream(pending.Item4)))
+                    using (var rdr = new NReader(new MemoryStream(pending.Payload)))
                     {
                         packet.ReadNew(rdr);
                     }
 
-                    pending.Item1.ProcessPacket(packet);
+                    pending.Client.ProcessPacket(packet);
                 }
                 catch (Exception e)
                 {
                     if (!(e is EndOfStreamException))
-                        SLogger.Instance.Error("Error processing packet ({0}, {1}, {2})\n{3}", (pending.Item1.Account != null) ? pending.Item1.Account.Name : "", pending.Item1.IpAddress, pending.Item2, e);
-                    pending.Item1.SendFailure("An error occurred while processing data from your client.", Failure.MessageWithDisconnect);
+                        SLogger.Instance.Error("Error processing packet ({0}, {1}, {2})\n{3}", (pending.Client.Account != null) ? pending.Client.Account.Name : "", pending.Client.IpAddress, pending.Client.Id, e);
+                    pending.Client.SendFailure("An error occurred while processing data from your client.", Failure.MessageWithDisconnect);
                 }
             }
         }

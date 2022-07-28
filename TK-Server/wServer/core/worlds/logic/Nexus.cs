@@ -18,10 +18,10 @@ namespace wServer.core.worlds.logic
                 monitor.AddPortal(realm.Id);
         }
 
-        public override bool Tick(TickTime time)
+        protected override void UpdateLogic(ref TickTime time)
         {
-            SLogger.Instance.Warn($"[Nexus] {time.ElaspedMsDelta}");
-            return base.Tick(time);
+            //SLogger.Instance.Warn($"[Nexus] {time.ElaspedMsDelta}");
+            base.UpdateLogic(ref time);
         }
     }
 }

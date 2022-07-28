@@ -86,37 +86,43 @@ namespace wServer.core.worlds.logic
             return _overseer.Closing;
         }
 
-        public override bool Tick(TickTime time)
+        protected override void UpdateLogic(ref TickTime time)
         {
             try
             {
-                base.Tick(time);
-
                 if (Closed || IsPlayersMax())
                     Manager.WorldManager.PortalMonitor.ClosePortal(Id);
                 else if (!Manager.WorldManager.PortalMonitor.PortalIsOpen(Id))
                     Manager.WorldManager.PortalMonitor.OpenPortal(Id);
 
-                if (IsLimbo || Deleted)
-                    return true;
-
-                if (_overseerTask == null || _overseerTask.IsCompleted)
+                if (Closed && Players.Count == 0 && _overseer != null)
                 {
-                    _overseerTask = Task.Factory.StartNew(() =>
-                    {
-                        if (Closed && Players.Count == 0 && _overseer != null)
-                        {
-                            Init(); // will reset everything back to the way it was when made
-                            Closed = false;
-                        }
-
-                        _overseer?.Tick(time);
-                    }).ContinueWith(e => Log.Error(e.Exception.InnerException.ToString()), TaskContinuationOptions.OnlyOnFaulted);
+                    Init(); // will reset everything back to the way it was when made
+                    Closed = false;
                 }
-            }
-            catch (Exception e) { Log.Error($"Unknown Error with Realm Tick {e}"); }
 
-            return false;
+                _overseer?.Tick(ref time);
+
+                //if (_overseerTask == null || _overseerTask.IsCompleted)
+                //{
+                //    _overseerTask = Task.Factory.StartNew(() =>
+                //    {
+                //        if (Closed && Players.Count == 0 && _overseer != null)
+                //        {
+                //            Init(); // will reset everything back to the way it was when made
+                //            Closed = false;
+                //        }
+
+                //        _overseer?.Tick(time);
+                //    }).ContinueWith(e => Log.Error(e.Exception.InnerException.ToString()), TaskContinuationOptions.OnlyOnFaulted);
+                //}
+            }
+            catch (Exception e)
+            {
+                Log.Error($"Unknown Error with Realm Tick {e}");
+            }
+
+            base.UpdateLogic(ref time);
         }
 
         protected override void Init()

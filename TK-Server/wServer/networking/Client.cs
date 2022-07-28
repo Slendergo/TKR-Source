@@ -213,7 +213,7 @@ namespace wServer.networking
                 }
                 catch (Exception e)
                 {
-                    Log.Error($"Error when handling packet '{pkt.ToString()}, {e.ToString()}'...");
+                    Log.Error($"Error when handling packet '{pkt}, {e}'...");
                     Disconnect("Packet handling error.");
                 }
             }

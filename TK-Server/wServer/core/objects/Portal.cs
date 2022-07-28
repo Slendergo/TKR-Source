@@ -38,8 +38,7 @@ namespace wServer.core.objects
                 else
                 {
                     DynamicWorld.TryGetWorld(p, player.Client, out world);
-
-                    world = player.CoreServerManager.WorldManager.AddWorld(world ?? new World(p));
+                   player.Owner.AddChild(world = player.CoreServerManager.WorldManager.AddWorld(world ?? new World(p)));
                 }
 
                 break;

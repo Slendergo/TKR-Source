@@ -49,23 +49,26 @@ namespace wServer.core
                     foreach (var world in worlds)
                     {
                         if (world == null)
+                        {
+                            SLogger.Instance.Error("[world == null] THIS SHOULD NOT HAPPEN");
                             continue;
+                        }
 
                         try
                         {
                             if(Stopped || world.Update(ref tickData))
                             {
-                                TickThreadBatch.WorldManager.RemoveWorld(world);
+                                _ = TickThreadBatch.WorldManager.RemoveWorld(world);
                             }
 
-                            if (Stopped || world.Tick(tickData))
-                                TickThreadBatch.WorldManager.RemoveWorld(world);
-                            else
-                            {
-                                world.ProcessNetworking(tickData);
-                                world.TickLogic(tickData);
-                                world.PlayerUpdate(tickData);
-                            }
+                            //if (Stopped || world.Tick(tickData))
+                            //    TickThreadBatch.WorldManager.RemoveWorld(world);
+                            //else
+                            //{
+                            //    world.ProcessNetworking(tickData);
+                            //    world.TickLogic(tickData);
+                            //    world.PlayerUpdate(tickData);
+                            //}
                         }
                         catch (Exception e)
                         {

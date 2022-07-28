@@ -213,7 +213,7 @@
     <Compile Include="core\miscfile\StatValue.cs" />
     <Compile Include="core\miscfile\SV.cs" />
     <Compile Include="core\miscfile\ThreadSingle.cs" />
-    <Compile Include="core\miscfile\TickData.cs" />
+    <Compile Include="core\miscfile\TickTime.cs" />
     <Compile Include="core\miscfile\Empty.cs" />
     <Compile Include="core\ConnectionManager.cs" />
     <Compile Include="core\miscfile\TickLoopBatch.cs" />
@@ -444,6 +444,7 @@
     <Compile Include="networking\handlers\UpgradeBaseStatHandler.cs" />
     <Compile Include="networking\handlers\UseItemHandler.cs" />
     <Compile Include="networking\handlers\UsePortalHandler.cs" />
+    <Compile Include="networking\InboundBuffer.cs" />
     <Compile Include="networking\PacketHandlerBase.cs" />
     <Compile Include="networking\PacketHandlers.cs" />
     <Compile Include="networking\PacketPriority.cs" />

@@ -27,7 +27,7 @@ namespace wServer.logic.behaviors
 
         protected override void OnStateEntry(Entity host, TickTime time, ref object state)
         {
-            var map = host.Owner.Map;
+            var map = host.World.Map;
             var hx = (int)host.X;
             var hy = (int)host.Y;
             var tileType = host.CoreServerManager.Resources.GameData.IdToTileType[_tileId];
@@ -87,7 +87,7 @@ namespace wServer.logic.behaviors
                 var y = tile.Y;
                 var tileType = tile.TileType;
                 var spawned = tile.Spawned;
-                var map = host.Owner.Map;
+                var map = host.World.Map;
                 var curTile = map[x, y];
 
                 curTile.Spawned = spawned;

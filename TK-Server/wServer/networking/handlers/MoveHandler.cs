@@ -14,7 +14,7 @@ namespace wServer.networking.handlers
         {
             var player = client.Player;
 
-            if (player == null || player.Owner == null)
+            if (player == null || player.World == null)
                 return;
 
             player.AddPendingAction(t => Handle(client.Player, t, packet));
@@ -22,7 +22,7 @@ namespace wServer.networking.handlers
 
         private void Handle(Player player, TickTime time, Move packet)
         {
-            if (player?.Owner == null)
+            if (player?.World == null)
                 return;
 
             player.MoveReceived(time, packet);
@@ -32,7 +32,7 @@ namespace wServer.networking.handlers
 
             if (newX != -1 && newX != player.X || newY != -1 && newY != player.Y)
             {
-                if (!player.Owner.Map.Contains(newX, newY))
+                if (!player.World.Map.Contains(newX, newY))
                 {
                     player.Client.Disconnect("Out of map bounds");
                     return;

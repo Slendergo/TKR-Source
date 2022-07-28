@@ -31,7 +31,7 @@ namespace wServer.logic.behaviors
             {
                 foreach (var entity in host.GetNearestEntities(_range, null, true).OfType<Player>())
                 {
-                    if (entity == null || entity.Owner == null)
+                    if (entity == null || entity.World == null)
                         continue;
 
                     if ((host.AttackTarget != null && host.AttackTarget != entity) || entity.HasConditionEffect(ConditionEffects.Sick))
@@ -45,15 +45,15 @@ namespace wServer.logic.behaviors
                         var n = newHp - entity.HP;
 
                         entity.HP = newHp;
-                        entity.Owner.BroadcastIfVisible(new ShowEffect() { EffectType = EffectType.Potion, TargetObjectId = entity.Id, Color = new ARGB(0xffffffff) }, entity, PacketPriority.Low);
-                        entity.Owner.BroadcastIfVisible(new ShowEffect()
+                        entity.World.BroadcastIfVisible(new ShowEffect() { EffectType = EffectType.Potion, TargetObjectId = entity.Id, Color = new ARGB(0xffffffff) }, entity, PacketPriority.Low);
+                        entity.World.BroadcastIfVisible(new ShowEffect()
                         {
                             EffectType = EffectType.Trail,
                             TargetObjectId = host.Id,
                             Pos1 = new Position { X = entity.X, Y = entity.Y },
                             Color = new ARGB(0xffffffff)
                         }, host, PacketPriority.Low);
-                        entity.Owner.BroadcastIfVisible(new Notification() { ObjectId = entity.Id, Message = "+" + n, Color = new ARGB(0xff00ff00) }, entity, PacketPriority.Low);
+                        entity.World.BroadcastIfVisible(new Notification() { ObjectId = entity.Id, Message = "+" + n, Color = new ARGB(0xff00ff00) }, entity, PacketPriority.Low);
                     }
                 }
 

@@ -17,10 +17,10 @@ namespace wServer.logic.behaviors
 
         protected internal override void Resolve(State parent) => parent.Death += (sender, e) =>
         {
-            if (e.Host.Spawned || e.Host.Owner is Test)
+            if (e.Host.Spawned || e.Host.World is Test)
                 return;
 
-            var owner = e.Host.Owner;
+            var owner = e.Host.World;
             var sb = new StringBuilder();
             var players = owner.Players.ValueWhereAsParallel(_ => _.Client != null);
             for (var i = 0; i < players.Length; i++)

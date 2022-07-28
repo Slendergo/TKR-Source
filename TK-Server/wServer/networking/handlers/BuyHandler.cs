@@ -17,10 +17,10 @@ namespace wServer.networking.handlers
 
         private void Handle(Player player, int objId)
         {
-            if (player?.Owner == null)
+            if (player?.World == null)
                 return;
 
-            var obj = player.Owner.GetEntity(objId) as SellableObject;
+            var obj = player.World.GetEntity(objId) as SellableObject;
             obj?.Buy(player);
         }
     }

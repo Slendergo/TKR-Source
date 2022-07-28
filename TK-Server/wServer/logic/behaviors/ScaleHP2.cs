@@ -36,7 +36,7 @@ namespace wServer.logic.behaviors
                 var enemy = host as Enemy;
                 var plrCount = 0;
 
-                foreach (var i in host.Owner.Players)
+                foreach (var i in host.World.Players)
                 {
                     if (scstate.pNamesCounted.Contains(i.Value.Name))
                         continue;

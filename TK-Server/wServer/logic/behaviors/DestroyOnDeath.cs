@@ -11,7 +11,7 @@ namespace wServer.logic.behaviors
 
         protected internal override void Resolve(State parent) => parent.Death += (sender, e) =>
         {
-            var owner = e.Host.Owner;
+            var owner = e.Host.World;
             var entities = e.Host.GetNearestEntitiesByName(250, _target);
 
             if (entities != null)

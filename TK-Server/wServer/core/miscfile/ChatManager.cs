@@ -113,10 +113,10 @@ namespace wServer.core
 
         public void Mob(Entity entity, string text)
         {
-            if (string.IsNullOrWhiteSpace(text) || entity.Owner == null)
+            if (string.IsNullOrWhiteSpace(text) || entity.World == null)
                 return;
 
-            var world = entity.Owner;
+            var world = entity.World;
             var name = entity.ObjectDesc.DisplayId;
 
             Enemy enemy = null;
@@ -415,12 +415,12 @@ namespace wServer.core
 
         private void SendTextPacket(Player src, Text tp, Predicate<Player> conditional)
         {
-            src.Owner.PlayersBroadcastAsParallel(_ =>
+            src.World.PlayersBroadcastAsParallel(_ =>
             {
                 if (conditional(_))
                     _.Client.SendPacket(tp, PacketPriority.Normal);
             });
-            SLogger.Instance.Info($"[{src.Owner.Name}({src.Owner.Id})] <{src.Name}> {tp.Txt}");
+            SLogger.Instance.Info($"[{src.World.Name}({src.World.Id})] <{src.Name}> {tp.Txt}");
         }
     }
 }

@@ -34,7 +34,7 @@ namespace wServer.logic.behaviors
             if (_region == TileRegion.None)
                 return;
 
-            var map = host.Owner.Map;
+            var map = host.World.Map;
             var w = map.Width;
             var h = map.Height;
 
@@ -73,7 +73,7 @@ namespace wServer.logic.behaviors
                         targetY = tile.Y;
                     }
 
-                    if (!host.Owner.IsPassable(targetX, targetY, true))
+                    if (!host.World.IsPassable(targetX, targetY, true))
                     {
                         state = _coolDown.Next(Random);
                         return;
@@ -96,7 +96,7 @@ namespace wServer.logic.behaviors
                         }
                     }
 
-                    host.Owner.EnterWorld(entity);
+                    host.World.EnterWorld(entity);
                 }
 
                 cool = _coolDown.Next(Random);

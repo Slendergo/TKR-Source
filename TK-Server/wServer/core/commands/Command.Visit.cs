@@ -28,19 +28,19 @@ namespace wServer.core.commands
                     .KeyWhereAsParallel(_ => _.Account != null && _.Account.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase))
                     .SingleOrDefault();
 
-                if (target?.Player?.Owner == null || !target.Player.CanBeSeenBy(player))
+                if (target?.Player?.World == null || !target.Player.CanBeSeenBy(player))
                 {
                     player.SendError("Player not found!");
                     return false;
                 }
 
-                if (target?.Player?.Owner is Vault)
+                if (target?.Player?.World is Vault)
                 {
                     player.SendError("He's in the Vault.");
                     return false;
                 }
 
-                var owner = target.Player.Owner;
+                var owner = target.Player.World;
 
                 if ((owner.Id == World.Vault || owner.Name.Contains("Vault")) && player.Rank < 110)
                 {

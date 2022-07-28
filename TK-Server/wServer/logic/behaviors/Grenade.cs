@@ -53,8 +53,8 @@ namespace wServer.logic.behaviors
                     var target = fixedAngle != null ? new Position() { X = (float)(range * Math.Cos(fixedAngle.Value)) + host.X, Y = (float)(range * Math.Sin(fixedAngle.Value)) + host.Y }
                     : new Position() { X = player.X, Y = player.Y };
 
-                    host.Owner.BroadcastIfVisible(new ShowEffect() { EffectType = EffectType.Throw, Color = new ARGB(color), TargetObjectId = host.Id, Pos1 = target, Pos2 = new Position() { X = 222 } }, host, PacketPriority.Low);
-                    host.Owner.Timers.Add(new WorldTimer(1500, (world, t) =>
+                    host.World.BroadcastIfVisible(new ShowEffect() { EffectType = EffectType.Throw, Color = new ARGB(color), TargetObjectId = host.Id, Pos1 = target, Pos2 = new Position() { X = 222 } }, host, PacketPriority.Low);
+                    host.World.Timers.Add(new WorldTimer(1500, (world, t) =>
                     {
                         world.BroadcastIfVisible(new Aoe()
                         {

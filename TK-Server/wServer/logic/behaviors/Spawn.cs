@@ -54,7 +54,7 @@ namespace wServer.logic.behaviors
                     }
                 }
 
-                host.Owner.EnterWorld(entity);
+                host.World.EnterWorld(entity);
                 (state as SpawnState).CurrentNumber++;
             }
         }
@@ -84,7 +84,7 @@ namespace wServer.logic.behaviors
                     }
                 }
 
-                host.Owner.EnterWorld(entity);
+                host.World.EnterWorld(entity);
 
                 spawn.RemainingTime = _coolDown.Next(Random);
                 spawn.CurrentNumber++;

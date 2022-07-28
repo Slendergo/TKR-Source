@@ -13,7 +13,7 @@ namespace wServer.core.commands
 
             protected override bool Process(Player player, TickTime time, string args)
             {
-                foreach (var i in player.Owner.Players)
+                foreach (var i in player.World.Players)
                 {
                     // probably someone hidden doesn't want to be summoned, so we leave it as before here
                     if (i.Value.HasConditionEffect(ConditionEffects.Hidden))

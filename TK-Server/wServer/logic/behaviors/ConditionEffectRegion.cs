@@ -22,7 +22,7 @@ namespace wServer.logic.behaviors
 
         protected override void TickCore(Entity host, TickTime time, ref object state)
         {
-            if (host == null || host.Owner == null)
+            if (host == null || host.World == null)
                 return;
 
             if (host.HasConditionEffect(ConditionEffects.Paused))
@@ -30,7 +30,7 @@ namespace wServer.logic.behaviors
 
             var hx = (int)host.X;
             var hy = (int)host.Y;
-            var players = host.Owner.Players.Values.Where(p => Math.Abs(hx - (int)p.X) < _range && Math.Abs(hy - (int)p.Y) < _range);
+            var players = host.World.Players.Values.Where(p => Math.Abs(hx - (int)p.X) < _range && Math.Abs(hy - (int)p.Y) < _range);
 
             foreach (var player in players)
                 foreach (var effect in _effects)

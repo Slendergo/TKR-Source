@@ -48,8 +48,8 @@ namespace wServer.logic.behaviors
 
                 var target = tossAngle == null ? new Position { X = en.X, Y = en.Y } : new Position { X = host.X + (float)(range * Math.Cos(tossAngle.Value)), Y = host.Y + (float)(range * Math.Sin(tossAngle.Value)) };
 
-                host.Owner.Broadcast(new ShowEffect { EffectType = EffectType.Throw, Color = new ARGB(0xffffbf00), TargetObjectId = host.Id, Pos1 = target }, PacketPriority.Low);
-                host.Owner.Timers.Add(new WorldTimer(1000, (world, t) =>
+                host.World.Broadcast(new ShowEffect { EffectType = EffectType.Throw, Color = new ARGB(0xffffbf00), TargetObjectId = host.Id, Pos1 = target }, PacketPriority.Low);
+                host.World.Timers.Add(new WorldTimer(1000, (world, t) =>
                 {
                     var entity = Entity.Resolve(world.Manager, child);
                     entity.Move(target.X, target.Y);

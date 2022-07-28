@@ -47,7 +47,7 @@ namespace wServer.core.objects
 
         public void GetHit(float pX, float pY, TickTime time)
         {
-            foreach (var player in Owner.PlayersCollision.HitTest(ProjEntity.X, ProjEntity.Y, 30).Where(e => e is Player && e != ProjectileOwner.Self))
+            foreach (var player in World.PlayersCollision.HitTest(ProjEntity.X, ProjEntity.Y, 30).Where(e => e is Player && e != ProjectileOwner.Self))
             {
                 var xDiff = player.X > pX ? player.X - pX : pX - player.X;
                 var yDiff = player.Y > pY ? player.Y - pY : pY - player.Y;
@@ -137,7 +137,7 @@ namespace wServer.core.objects
             return new Position() { X = (float)pX, Y = (float)pY };
         }
 
-        public void OnDestroy() => Owner?.LeaveWorld(this);
+        public void OnDestroy() => World?.LeaveWorld(this);
 
         public override void Tick(TickTime time)
         {

@@ -32,8 +32,8 @@ namespace wServer.logic
 
             var enemy = (Parent ?? this).Host;
 
-            if (enemy.Owner is Realm)
-                (enemy.Owner as Realm).EnemyKilled(enemy, (Parent ?? this).LastHitter);
+            if (enemy.World is Realm)
+                (enemy.World as Realm).EnemyKilled(enemy, (Parent ?? this).LastHitter);
 
             var lastHitPlayer_ = (Parent ?? this).LastHitter;
 
@@ -55,7 +55,7 @@ namespace wServer.logic
             }
 
             var lvlUps = 0;
-            var players = enemy.Owner.Players.ValueWhereAsParallel(_ => enemy.Dist(_) < 25d);
+            var players = enemy.World.Players.ValueWhereAsParallel(_ => enemy.Dist(_) < 25d);
             foreach (var player in players)
             {
                 var level = player.Level;
@@ -117,7 +117,7 @@ namespace wServer.logic
             List<Tuple<Player, int>> dat = new List<Tuple<Player, int>>();
             foreach (var i in hitters)
             {
-                if (i.Key == null || i.Key.Owner == null || i.Key.Owner.GetEntity(i.Key.Id) == null) continue;
+                if (i.Key == null || i.Key.World == null || i.Key.World.GetEntity(i.Key.Id) == null) continue;
 
                 dat.Add(new Tuple<Player, int>(i.Key, i.Value));
             }

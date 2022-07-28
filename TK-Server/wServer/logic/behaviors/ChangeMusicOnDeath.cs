@@ -18,9 +18,9 @@ namespace wServer.logic.behaviors
         {
             parent.Death += (sender, e) =>
             {
-                if (e.Host.Owner.Music != _music)
+                if (e.Host.World.Music != _music)
                 {
-                    var owner = e.Host.Owner;
+                    var owner = e.Host.World;
 
                     owner.Music = _music;
 

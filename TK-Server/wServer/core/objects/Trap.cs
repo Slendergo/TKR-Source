@@ -30,7 +30,7 @@ namespace wServer.core.objects
         {
             if (t / 500 == p)
             {
-                Owner.BroadcastIfVisible(new ShowEffect()
+                World.BroadcastIfVisible(new ShowEffect()
                 {
                     EffectType = EffectType.Trap,
                     Color = new ARGB(0xff9000ff),
@@ -61,7 +61,7 @@ namespace wServer.core.objects
 
         private void Explode(TickTime time)
         {
-            Owner.BroadcastIfVisible(new ShowEffect()
+            World.BroadcastIfVisible(new ShowEffect()
             {
                 EffectType = EffectType.AreaBlast,
                 Color = new ARGB(0xff9000ff),
@@ -78,7 +78,7 @@ namespace wServer.core.objects
                 });
             });
 
-            Owner.LeaveWorld(this);
+            World.LeaveWorld(this);
         }
     }
 }

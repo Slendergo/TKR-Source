@@ -16,7 +16,7 @@ namespace wServer.logic.behaviors
             var cool = (int)state;
 
             if (cool <= 0)
-                host.Owner.LeaveWorld(host);
+                host.World.LeaveWorld(host);
             else
                 cool -= time.ElaspedMsDelta;
 

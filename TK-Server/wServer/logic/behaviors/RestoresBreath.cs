@@ -21,7 +21,7 @@ namespace wServer.logic.behaviors
 
         protected override void TickCore(Entity host, TickTime time, ref object state)
         {
-            var players = host.Owner.PlayersCollision.HitTest(host.X, host.Y, radius);
+            var players = host.World.PlayersCollision.HitTest(host.X, host.Y, radius);
 
             foreach (var o in players)
             {

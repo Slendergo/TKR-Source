@@ -71,14 +71,14 @@ namespace wServer.core
             Connecting.TryRemove(client, out _); // _ is a discard
             // update PlayerInfo with world data
             var plrInfo = Clients[client];
-            plrInfo.WorldInstance = client.Player.Owner.Id;
-            plrInfo.WorldName = client.Player.Owner.Name;
+            plrInfo.WorldInstance = client.Player.World.Id;
+            plrInfo.WorldName = client.Player.World.Name;
         }
 
         public void Disconnect(Client client)
         {
             var player = client.Player;
-            player?.Owner?.LeaveWorld(player);
+            player?.World?.LeaveWorld(player);
 
             Clients.TryRemove(client, out var playerInfo);
 
@@ -153,7 +153,7 @@ namespace wServer.core
             if (gameId == World.Test && acc.Admin)
             {
                 world = new Test();
-                CoreServerManager.WorldManager.AddWorld(world);
+                CoreServerManager.WorldManager.CreateNewWorld(world);
             }
 
             if (world == null || world.Deleted)

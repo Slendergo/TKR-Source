@@ -669,7 +669,7 @@ namespace wServer.core.objects
             dmg = (int)Stats.GetDefenseDamage(dmg, false);
             if (!HasConditionEffect(ConditionEffects.Invulnerable))
                 HP -= dmg;
-            Owner.BroadcastIfVisibleExclude(new Damage()
+            World.BroadcastIfVisibleExclude(new Damage()
             {
                 TargetId = Id,
                 Effects = 0,
@@ -720,7 +720,7 @@ namespace wServer.core.objects
                 KilledBy = killer
             }, PacketPriority.High);
 
-            Owner.Timers.Add(new WorldTimer(200, (w, t) =>
+            World.Timers.Add(new WorldTimer(200, (w, t) =>
             {
                 if (Client.Player != this)
                     return;
@@ -802,7 +802,7 @@ namespace wServer.core.objects
             if (!HasConditionEffect(ConditionEffects.Invulnerable))
                 HP -= dmg;
             ApplyConditionEffect(projectile.ProjDesc.Effects);
-            Owner.BroadcastIfVisibleExclude(new Damage()
+            World.BroadcastIfVisibleExclude(new Damage()
             {
                 TargetId = Id,
                 Effects = HasConditionEffect(ConditionEffects.Invincible) ? 0 : projectile.ConditionEffects,
@@ -990,7 +990,7 @@ namespace wServer.core.objects
 
         public void Teleport(TickTime time, int objId, bool ignoreRestrictions = false)
         {
-            var obj = Owner.GetEntity(objId);
+            var obj = World.GetEntity(objId);
             if (obj == null)
             {
                 SendError("Target does not exist.");
@@ -1006,7 +1006,7 @@ namespace wServer.core.objects
                     return;
                 }
 
-                if (!Owner.AllowTeleport && Rank < 100)
+                if (!World.AllowTeleport && Rank < 100)
                 {
                     SendError("Cannot teleport here.");
                     RestartTPPeriod();
@@ -1086,7 +1086,7 @@ namespace wServer.core.objects
                     Color = new ARGB(0xFFFFFFFF)
                 }
             };
-            Owner.PlayersBroadcastAsParallel(_ =>
+            World.PlayersBroadcastAsParallel(_ =>
             {
                 _.AwaitGotoAck(time.TotalElapsedMs);
                 _._tps += 1;
@@ -1099,7 +1099,7 @@ namespace wServer.core.objects
             if (!IsAlive)
                 return;
 
-            if (Owner.Name.Equals("Ocean Trench"))
+            if (World.Name.Equals("Ocean Trench"))
             {
                 if (Breath > 0)
                     Breath -= 2 * time.DeltaTime * 5;
@@ -1343,7 +1343,7 @@ namespace wServer.core.objects
                         })
                     );
 
-                Owner.PlayersBroadcastAsParallel(_ =>
+                World.PlayersBroadcastAsParallel(_ =>
                 {
                     if (_.Client.Account.GuildId != pGuild)
                         _.DeathNotif(deathMessage);
@@ -1351,14 +1351,14 @@ namespace wServer.core.objects
             }
             else
                 // guild less case
-                Owner.PlayersBroadcastAsParallel(_ => _.DeathNotif(deathMessage));
+                World.PlayersBroadcastAsParallel(_ => _.DeathNotif(deathMessage));
         }
 
         private void Clarification(int slot)
         {
             if (_random.NextDouble() < 0.1 && ApplyEffectCooldown(slot))
             {
-                Owner.BroadcastIfVisible(new ShowEffect()
+                World.BroadcastIfVisible(new ShowEffect()
                 {
                     EffectType = EffectType.AreaBlast,
                     TargetObjectId = Id,
@@ -1366,7 +1366,7 @@ namespace wServer.core.objects
                     Pos1 = new Position() { X = 3 }
                 }, this, PacketPriority.Low);
 
-                Owner.BroadcastIfVisible(new Notification()
+                World.BroadcastIfVisible(new Notification()
                 {
                     Message = "Clarification!",
                     Color = new ARGB(0xFF00A6FF),
@@ -1387,7 +1387,7 @@ namespace wServer.core.objects
                 {
                     Size = 100;
                     setCooldownTime(10, slot);
-                    Owner.BroadcastIfVisible(new ShowEffect()
+                    World.BroadcastIfVisible(new ShowEffect()
                     {
                         EffectType = EffectType.AreaBlast,
                         TargetObjectId = Id,
@@ -1395,7 +1395,7 @@ namespace wServer.core.objects
                         Pos1 = new Position() { X = 3 }
                     }, this, PacketPriority.Low);
 
-                    Owner.BroadcastIfVisible(new Notification()
+                    World.BroadcastIfVisible(new Notification()
                     {
                         Message = "Monkey King's Wrath!",
                         Color = new ARGB(0xFF98ff98),
@@ -1445,21 +1445,21 @@ namespace wServer.core.objects
             var obj = new StaticObject(CoreServerManager, objType, time, true, true, false);
             obj.Move(X, Y);
             obj.Name = (!phantomDeath) ? deathMessage : $"{Name} got rekt";
-            Owner.EnterWorld(obj);
+            World.EnterWorld(obj);
         }
 
         private void GodBless(int slot)
         {
             if (_random.NextDouble() < 0.03 && ApplyEffectCooldown(slot))
             {
-                Owner.BroadcastIfVisible(new ShowEffect()
+                World.BroadcastIfVisible(new ShowEffect()
                 {
                     EffectType = EffectType.AreaBlast,
                     TargetObjectId = Id,
                     Color = new ARGB(0xffA1A1A1),
                     Pos1 = new Position() { X = 3 }
                 }, this, PacketPriority.Low);
-                Owner.BroadcastIfVisible(new Notification()
+                World.BroadcastIfVisible(new Notification()
                 {
                     Message = "God Bless!",
                     Color = new ARGB(0xFFFFFFFF),
@@ -1477,7 +1477,7 @@ namespace wServer.core.objects
             if (_random.NextDouble() < 0.02 && ApplyEffectCooldown(slot))
             {
                 ActivateHealHp(this, 25 * Stats[0] / 100);
-                Owner.BroadcastIfVisible(new ShowEffect()
+                World.BroadcastIfVisible(new ShowEffect()
                 {
                     EffectType = EffectType.AreaBlast,
                     TargetObjectId = Id,
@@ -1485,7 +1485,7 @@ namespace wServer.core.objects
                     Pos1 = new Position() { X = 3 }
                 }, this, PacketPriority.Low);
 
-                Owner.BroadcastIfVisible(new Notification()
+                World.BroadcastIfVisible(new Notification()
                 {
                     Message = "God Touch!",
                     Color = new ARGB(0xFFFFFFFF),
@@ -1535,7 +1535,7 @@ namespace wServer.core.objects
             {
                 if (_random.NextDouble() < 0.02 && ApplyEffectCooldown(Slot))
                 {
-                    Owner.BroadcastIfVisible(new Notification()
+                    World.BroadcastIfVisible(new Notification()
                     {
                         Message = "Out of One's Mind!",
                         Color = new ARGB(0xFF00D5D8),
@@ -1552,7 +1552,7 @@ namespace wServer.core.objects
             {
                 if (_random.NextDouble() < 0.05 && ApplyEffectCooldown(Slot))
                 {
-                    Owner.BroadcastIfVisible(new Notification()
+                    World.BroadcastIfVisible(new Notification()
                     {
                         Message = "Steam Roller!",
                         Color = new ARGB(0xFF717171),
@@ -1569,7 +1569,7 @@ namespace wServer.core.objects
             {
                 if (_random.NextDouble() < 0.08 && ApplyEffectCooldown(Slot))
                 {
-                    Owner.BroadcastIfVisible(new Notification()
+                    World.BroadcastIfVisible(new Notification()
                     {
                         Message = "Mutilate!",
                         Color = new ARGB(0xFFFF4600),
@@ -1587,7 +1587,7 @@ namespace wServer.core.objects
         {
             if (_random.NextDouble() < .5 && ApplyEffectCooldown(slot))// 50 % chance
             {
-                Owner.BroadcastIfVisible(new ShowEffect()
+                World.BroadcastIfVisible(new ShowEffect()
                 {
                     EffectType = EffectType.AreaBlast,
                     TargetObjectId = Id,
@@ -1595,7 +1595,7 @@ namespace wServer.core.objects
                     Pos1 = new Position() { X = 3 }
                 }, this, PacketPriority.Low);
 
-                Owner.BroadcastIfVisible(new Notification()
+                World.BroadcastIfVisible(new Notification()
                 {
                     Message = "Monkey King's Wrath!",
                     Color = new ARGB(0xFFFF0000),
@@ -1655,7 +1655,7 @@ namespace wServer.core.objects
                     continue;
 
                 Inventory[i] = null;
-                Owner.PlayersBroadcastAsParallel(_ => _.SendInfo($"{Name}'s {item.DisplayName} breaks and he disappears"));
+                World.PlayersBroadcastAsParallel(_ => _.SendInfo($"{Name}'s {item.DisplayName} breaks and he disappears"));
                 ReconnectToNexus();
                 return true;
             }
@@ -1686,7 +1686,7 @@ namespace wServer.core.objects
 
                     #endregion Boosted Eff
 
-                    Owner.BroadcastIfVisible(new Notification()
+                    World.BroadcastIfVisible(new Notification()
                     {
                         Message = "Boosted!",
                         Color = new ARGB(0xFF00FF00),
@@ -1694,7 +1694,7 @@ namespace wServer.core.objects
                         ObjectId = Id
                     }, this, PacketPriority.Low);
 
-                    Owner.Timers.Add(new WorldTimer(5000, (world, t) =>
+                    World.Timers.Add(new WorldTimer(5000, (world, t) =>
                     {
                         for (var i = 0; i < 8; i++)
                             Stats.Boost.ActivateBoost[i].Pop(i == 0 ? 100 : i == 1 ? 100 : 15, true);
@@ -1707,7 +1707,7 @@ namespace wServer.core.objects
             {
                 if (_random.NextDouble() < 0.05 && ApplyEffectCooldown(slot))
                 {
-                    Owner.BroadcastIfVisible(new Notification()
+                    World.BroadcastIfVisible(new Notification()
                     {
                         Message = "Insanity!",
                         Color = new ARGB(0xFFFF0000),
@@ -1743,7 +1743,7 @@ namespace wServer.core.objects
                         || HasConditionEffect(ConditionEffects.Petrify)
                         || HasConditionEffect(ConditionEffects.Darkness)))
                         return;
-                    Owner.BroadcastIfVisible(new Notification()
+                    World.BroadcastIfVisible(new Notification()
                     {
                         Message = "Holy Protection!",
                         Color = new ARGB(0xFFFFFFFF),
@@ -1765,7 +1765,7 @@ namespace wServer.core.objects
         {
             if (ApplyEffectCooldown(slot))
             {
-                Owner.BroadcastIfVisible(new ShowEffect()
+                World.BroadcastIfVisible(new ShowEffect()
                 {
                     EffectType = EffectType.AreaBlast,
                     TargetObjectId = Id,
@@ -1773,7 +1773,7 @@ namespace wServer.core.objects
                     Pos1 = new Position() { X = 3 }
                 }, this, PacketPriority.Low);
 
-                Owner.BroadcastIfVisible(new Notification()
+                World.BroadcastIfVisible(new Notification()
                 {
                     Message = "Sonic Blaster!",
                     Color = new ARGB(0xFF9300FF),
@@ -1790,7 +1790,7 @@ namespace wServer.core.objects
         private void SpawnPetIfAttached(World owner)
         {
             // despawn old pet if found
-            Pet?.Owner?.LeaveWorld(Pet);
+            Pet?.World?.LeaveWorld(Pet);
 
             if (Client.Account.Hidden)
                 return;
@@ -1828,7 +1828,7 @@ namespace wServer.core.objects
 
         private bool TestWorld(string killer)
         {
-            if (!(Owner is Test))
+            if (!(World is Test))
                 return false;
 
             GenerateGravestone();
@@ -1839,10 +1839,10 @@ namespace wServer.core.objects
         private void TickActivateEffects(TickTime time)
         {
             var dt = time.ElaspedMsDelta;
-            if (Owner == null)
+            if (World == null)
                 return;
 
-            if (Owner is Vault || Owner is Nexus || Owner is GuildHall || Owner.Id == 10)
+            if (World is Vault || World is Nexus || World is GuildHall || World.Id == 10)
                 return;
 
             if (XPBoostTime != 0)

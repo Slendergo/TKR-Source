@@ -22,7 +22,7 @@ namespace wServer.core.objects.vendors
 
             if (ItemList == null || (i = ItemList.IndexOf(ShopItem)) == -1)
             {
-                Owner.LeaveWorld(this);
+                World.LeaveWorld(this);
                 return;
             }
 
@@ -31,7 +31,7 @@ namespace wServer.core.objects.vendors
                 ItemList.Remove(ShopItem);
                 if (ItemList.Count <= 0)
                 {
-                    Owner.LeaveWorld(this);
+                    World.LeaveWorld(this);
                     return;
                 }
             }

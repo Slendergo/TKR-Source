@@ -17,7 +17,7 @@ namespace wServer.core.commands
                 e.Move(player.X, player.Y);
                 (e as Enemy).HP = 100000000;
                 (e as Enemy).MaximumHP = 100000000;
-                player.Owner.EnterWorld(e);
+                player.World.EnterWorld(e);
                 e.Spawned = true;
                 return true;
             }

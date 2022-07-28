@@ -27,7 +27,7 @@ namespace wServer.logic.transitions
         {
             if (_attackTarget)
             {
-                if (host.AttackTarget == null || !host.Owner.GetPlayers().Contains(host.AttackTarget))
+                if (host.AttackTarget == null || !host.World.GetPlayers().Contains(host.AttackTarget))
                 {
                     host.AttackTarget = null;
                     return true;

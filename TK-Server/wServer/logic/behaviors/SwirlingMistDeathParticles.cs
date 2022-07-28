@@ -10,8 +10,8 @@ namespace wServer.logic.behaviors
             var entity = Entity.Resolve(host.CoreServerManager, "SwirlingMist Particles");
             entity.Move(host.X, host.Y);
 
-            host.Owner.Timers.Add(new WorldTimer(1000, (w, t) => w.LeaveWorld(entity)));
-            host.Owner.EnterWorld(entity);
+            host.World.Timers.Add(new WorldTimer(1000, (w, t) => w.LeaveWorld(entity)));
+            host.World.EnterWorld(entity);
         }
 
         protected override void TickCore(Entity host, TickTime time, ref object state)

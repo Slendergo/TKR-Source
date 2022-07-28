@@ -33,7 +33,7 @@ namespace wServer.logic.behaviors
                 var x = host.X + (float)(Random.NextDouble() * radius);
                 var y = host.Y + (float)(Random.NextDouble() * radius);
 
-                if (!host.Owner.IsPassable(x, y, true))
+                if (!host.World.IsPassable(x, y, true))
                     continue;
 
                 var entity = Entity.Resolve(host.CoreServerManager, children[Random.Next(children.Length)]);
@@ -52,7 +52,7 @@ namespace wServer.logic.behaviors
                     }
                 }
 
-                host.Owner.EnterWorld(entity);
+                host.World.EnterWorld(entity);
             }
         }
 
@@ -65,7 +65,7 @@ namespace wServer.logic.behaviors
                 var x = host.X + (float)(Random.NextDouble() * radius);
                 var y = host.Y + (float)(Random.NextDouble() * radius);
 
-                if (!host.Owner.IsPassable(x, y, true))
+                if (!host.World.IsPassable(x, y, true))
                 {
                     spawn.RemainingTime = coolDown.Next(Random);
                     spawn.CurrentNumber++;
@@ -88,7 +88,7 @@ namespace wServer.logic.behaviors
                     }
                 }
 
-                host.Owner.EnterWorld(entity);
+                host.World.EnterWorld(entity);
 
                 spawn.RemainingTime = coolDown.Next(Random);
                 spawn.CurrentNumber++;

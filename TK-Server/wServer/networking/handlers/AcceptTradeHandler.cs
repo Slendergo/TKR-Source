@@ -63,7 +63,7 @@ namespace wServer.networking.handlers
             var tradeTarget = player.tradeTarget;
 
             // make sure trade targets are valid
-            if (tradeTarget == null || player.Owner == null || tradeTarget.Owner == null || player.Owner != tradeTarget.Owner)
+            if (tradeTarget == null || player.World == null || tradeTarget.World == null || player.World != tradeTarget.World)
             {
                 TradeDone(player, tradeTarget, failedMsg);
                 return;

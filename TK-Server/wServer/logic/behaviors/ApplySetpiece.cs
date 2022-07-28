@@ -14,7 +14,7 @@ namespace wServer.logic.behaviors
         protected override void OnStateEntry(Entity host, TickTime time, ref object state)
         {
             var piece = (ISetPiece)Activator.CreateInstance(Type.GetType("wServer.core.setpieces." + name, true, true));
-            piece.RenderSetPiece(host.Owner, new IntPoint((int)host.X, (int)host.Y));
+            piece.RenderSetPiece(host.World, new IntPoint((int)host.X, (int)host.Y));
         }
 
         protected override void TickCore(Entity host, TickTime time, ref object state)

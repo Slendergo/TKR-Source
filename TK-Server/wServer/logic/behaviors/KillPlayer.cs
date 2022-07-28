@@ -23,7 +23,7 @@ namespace wServer.logic.behaviors
 
         protected override void TickCore(Entity host, TickTime time, ref object state)
         {
-            if (host == null || host.AttackTarget == null || host.AttackTarget.Owner == null)
+            if (host == null || host.AttackTarget == null || host.AttackTarget.World == null)
                 return;
 
             var cool = (int)state;
@@ -32,7 +32,7 @@ namespace wServer.logic.behaviors
             {
                 // death strike
                 if (_killAll)
-                    host.Owner.PlayersBroadcastAsParallel(_ => Kill(host, _));
+                    host.World.PlayersBroadcastAsParallel(_ => Kill(host, _));
                 else
                     Kill(host, host.AttackTarget);
 
@@ -52,7 +52,7 @@ namespace wServer.logic.behaviors
                 {
                     var packet = new Text() { Name = "#" + displayenemy, ObjectId = host.Id, NumStars = -1, BubbleTime = 3, Recipient = "", Txt = _killMessage };
 
-                    foreach (var i in host.Owner.PlayersCollision.HitTest(host.X, host.Y, 15).Where(e => e is Player))
+                    foreach (var i in host.World.PlayersCollision.HitTest(host.X, host.Y, 15).Where(e => e is Player))
                         if (i is Player && host.Dist(i) < 15)
                             (i as Player).Client.SendPacket(packet, PacketPriority.Low);
                 }
@@ -67,7 +67,7 @@ namespace wServer.logic.behaviors
 
         private void Kill(Entity host, Player player)
         {
-            host.Owner.BroadcastIfVisible(new ShowEffect() { EffectType = EffectType.Trail, TargetObjectId = host.Id, Pos1 = new Position { X = player.X, Y = player.Y }, Color = new ARGB(0xffffffff) }, host, PacketPriority.Low);
+            host.World.BroadcastIfVisible(new ShowEffect() { EffectType = EffectType.Trail, TargetObjectId = host.Id, Pos1 = new Position { X = player.X, Y = player.Y }, Color = new ARGB(0xffffffff) }, host, PacketPriority.Low);
 
             Enemy enemy = null;
 

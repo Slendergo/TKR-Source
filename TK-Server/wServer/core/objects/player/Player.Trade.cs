@@ -34,8 +34,8 @@ namespace wServer.core.objects
 
         public void RequestTrade(string name)
         {
-            if (Owner is Test) return;
-            if (Owner is Marketplace)
+            if (World is Test) return;
+            if (World is Marketplace)
             {
                 SendError("<Marketplace> Trade is restricted in the Marketplace!");
                 return;
@@ -75,7 +75,7 @@ namespace wServer.core.objects
                 return;
             }
 
-            var target = Owner.GetUniqueNamedPlayer(name);
+            var target = World.GetUniqueNamedPlayer(name);
 
             if (target == null || !target.CanBeSeenBy(this))
             {

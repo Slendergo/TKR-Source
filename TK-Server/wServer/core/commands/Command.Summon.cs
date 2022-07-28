@@ -16,18 +16,18 @@ namespace wServer.core.commands
 
             protected override bool Process(Player player, TickTime time, string args)
             {
-                foreach (var i in player.Owner.Players)
+                foreach (var i in player.World.Players)
                 {
                     if (i.Value.Name.EqualsIgnoreCase(args))
                     {
-                        if ((player.Owner.Id == World.Vault || player.Owner.Name.Contains("Vault")) && player.Rank < 110)
+                        if ((player.World.Id == World.Vault || player.World.Name.Contains("Vault")) && player.Rank < 110)
                         {
                             player.SendError("Only rank 110 accounts can summon other player to vault.");
                             return false;
                         }
 
                         // probably someone hidden doesn't want to be summoned, so we leave it as before here
-                        if (i.Value.HasConditionEffect(ConditionEffects.Hidden) || i.Value.Owner is Vault)
+                        if (i.Value.HasConditionEffect(ConditionEffects.Hidden) || i.Value.World is Vault)
                             break;
 
                         i.Value.Teleport(time, player.Id, true);

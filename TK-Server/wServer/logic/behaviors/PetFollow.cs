@@ -22,7 +22,7 @@ namespace wServer.logic.behaviors
 
             Status = CycleStatus.NotStarted;
 
-            if (!(host.Owner.GetEntity(pet.PlayerOwner.Id) is Player player))
+            if (!(host.World.GetEntity(pet.PlayerOwner.Id) is Player player))
                 return;
 
             Status = CycleStatus.InProgress;

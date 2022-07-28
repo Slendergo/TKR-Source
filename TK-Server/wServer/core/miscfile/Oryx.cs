@@ -843,7 +843,7 @@ namespace wServer.core
                 _.ApplyConditionEffect(ConditionEffectIndex.Invulnerable)
             );
 
-            var castle = _world.Manager.WorldManager.AddWorld(
+            var castle = _world.Manager.WorldManager.CreateNewWorld(
                 new OryxCastle(_world.Manager.Resources.Worlds.Data["Oryx Castle"], _world.Players.Count)
             );
             _world.QuakeToWorld(castle);

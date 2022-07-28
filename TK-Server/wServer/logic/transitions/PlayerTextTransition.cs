@@ -34,8 +34,8 @@ namespace wServer.logic.transitions
 
         protected override bool TickCore(Entity host, TickTime time, ref object state)
         {
-            if (host == null || host.Owner == null || _transition == false
-                || _player == null || !host.Owner.GetPlayers().Contains(_player))
+            if (host == null || host.World == null || _transition == false
+                || _player == null || !host.World.GetPlayers().Contains(_player))
                 return false;
 
             host.AttackTarget = _setAttackTarget ? _player : null;

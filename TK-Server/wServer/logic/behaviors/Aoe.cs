@@ -28,10 +28,10 @@ namespace wServer.logic.behaviors
             var pos = new Position { X = host.X, Y = host.Y };
             var damage = Random.Next(minDamage, maxDamage);
 
-            host.Owner.AOE(pos, radius, players, enemy =>
+            host.World.AOE(pos, radius, players, enemy =>
             {
                 if (!players)
-                    host.Owner.BroadcastIfVisible(new Aoe() { Pos = pos, Radius = radius, Damage = (ushort)damage, Duration = 0, Effect = 0, OrigType = host.ObjectType }, host);
+                    host.World.BroadcastIfVisible(new Aoe() { Pos = pos, Radius = radius, Damage = (ushort)damage, Duration = 0, Effect = 0, OrigType = host.ObjectType }, host);
             });
         }
 

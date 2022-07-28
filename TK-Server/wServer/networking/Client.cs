@@ -127,7 +127,7 @@ namespace wServer.networking
             if (State == ProtocolState.Disconnected)
                 return false;
 
-            if (State == ProtocolState.Ready && Player?.Owner == null)
+            if (State == ProtocolState.Ready && Player?.World == null)
                 return false;
 
             return true;
@@ -223,7 +223,7 @@ namespace wServer.networking
         {
             var acc = Account;
 
-            if (Character == null || Player == null || Player.Owner is Test)
+            if (Character == null || Player == null || Player.World is Test)
             {
                 CoreServerManager.Database.ReleaseLock(acc);
                 return;

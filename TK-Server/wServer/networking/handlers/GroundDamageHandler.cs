@@ -13,7 +13,7 @@ namespace wServer.networking.handlers
 
         private void Handle(Player player, TickTime time, Position pos, int timeHit)
         {
-            if (player?.Owner == null)
+            if (player?.World == null)
                 return;
 
             player.ForceGroundHit(time, pos, timeHit);

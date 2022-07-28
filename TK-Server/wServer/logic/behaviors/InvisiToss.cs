@@ -35,7 +35,7 @@ namespace wServer.logic.behaviors
 
                 var target = new Position { X = host.X + (float)(range * Math.Cos(angle.Value)), Y = host.Y + (float)(range * Math.Sin(angle.Value)) };
 
-                host.Owner.Timers.Add(new WorldTimer(0, (world, t) =>
+                host.World.Timers.Add(new WorldTimer(0, (world, t) =>
                 {
                     var entity = Entity.Resolve(world.Manager, child);
 

@@ -13,7 +13,7 @@ namespace wServer.networking.handlers
         {
             var player = client.Player;
 
-            if (player == null || player.Owner == null)
+            if (player == null || player.World == null)
                 return;
 
             player.AddPendingAction(t => Handle(client.Player, t, packet.ObjectId));
@@ -21,7 +21,7 @@ namespace wServer.networking.handlers
 
         private void Handle(Player player, TickTime time, int objId)
         {
-            if (player == null || player.Owner == null)
+            if (player == null || player.World == null)
                 return;
 
             player.Teleport(time, objId);

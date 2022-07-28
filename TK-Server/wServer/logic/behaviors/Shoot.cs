@@ -107,12 +107,12 @@ namespace wServer.logic.behaviors
 
                     for (var i = 0; i < count; i++)
                     {
-                        if (host == null || host.Owner == null)
+                        if (host == null || host.World == null)
                             return;
 
                         var prj = host.CreateProjectile(desc, host.ObjectType, (int)dmg, time.TotalElapsedMs, prjPos, startAngle + _shootAngle * i);
 
-                        host.Owner.EnterWorld(prj);
+                        host.World.EnterWorld(prj);
 
                         if (i == 0)
                             prjId = prj.ProjectileId;
@@ -132,7 +132,7 @@ namespace wServer.logic.behaviors
                         NumShots = (byte)count,
                     };
 
-                    var players = host.Owner.Players
+                    var players = host.World.Players
                         .ValueWhereAsParallel(_ => _.DistSqr(host) < PlayerUpdate.VISIBILITY_RADIUS_SQR);
                     for (var i = 0; i < players.Length; i++)
                         players[i].Client.SendPacket(pkt);

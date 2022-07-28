@@ -19,7 +19,7 @@ namespace wServer.logic.behaviors
         {
             var dat = e.Host.CoreServerManager.Resources.GameData;
             var objType = dat.IdToObjectType[_objName];
-            var map = e.Host.Owner.Map;
+            var map = e.Host.World.Map;
             var w = map.Width;
             var h = map.Height;
 

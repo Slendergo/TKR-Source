@@ -13,7 +13,7 @@ namespace wServer.networking.handlers
 
         private void Handle(Player player, TickTime time, UseItem packet)
         {
-            if (player?.Owner == null)
+            if (player?.World == null)
                 return;
 
             player.UseItem(time, packet.SlotObject.ObjectId, packet.SlotObject.SlotId, packet.ItemUsePos, packet.SellMaxed);

@@ -402,7 +402,7 @@ namespace wServer.core.commands
                 return false;
             }
 
-            var world = player.CoreServerManager.WorldManager.GetWorld(leader[0].Owner.Id);
+            var world = player.CoreServerManager.WorldManager.GetWorld(leader[0].World.Id);
 
             if (world == null)
             {
@@ -461,7 +461,7 @@ namespace wServer.core.commands
                     return false;
                 }
 
-                var world = player.Owner;
+                var world = player.World;
 
                 if (world == null) return false;
 
@@ -471,13 +471,13 @@ namespace wServer.core.commands
                     return false;
                 }
 
-                if (party.WorldId == player.Owner.Id)
+                if (party.WorldId == player.World.Id)
                 {
                     player.SendError("Already invited your Party Members to this World!");
                     return false;
                 }
 
-                party.WorldId = player.Owner.Id;
+                party.WorldId = player.World.Id;
 
                 try
                 {
@@ -576,7 +576,7 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string args)
         {
-            var properName = player.Owner.Music;
+            var properName = player.World.Music;
             var file = File.Create(Environment.CurrentDirectory + $"/resources/web/music/{properName}.mp3");
             var artist = file.Tag.FirstPerformer ?? "Unknown";
             var title = file.Tag.Title ?? properName;
@@ -756,7 +756,7 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string args)
         {
-            if (!(player.Owner is Realm))
+            if (!(player.World is Realm))
             {
                 player.SendError("This command requires you to be in realm first.");
                 return false;
@@ -788,7 +788,7 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string playerName)
         {
-            if (player.Owner is Test)
+            if (player.World is Test)
                 return false;
 
             if (player.Client.Account.GuildRank < 20)
@@ -865,7 +865,7 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string name)
         {
-            if (player.Owner is Test)
+            if (player.World is Test)
                 return false;
 
             var manager = player.Client.CoreServerManager;
@@ -1025,7 +1025,7 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string playerName)
         {
-            if (player.Owner is Test)
+            if (player.World is Test)
                 return false;
 
             if (String.IsNullOrEmpty(playerName))
@@ -1109,7 +1109,7 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string playerName)
         {
-            if (player.Owner is Test)
+            if (player.World is Test)
                 return false;
 
             if (String.IsNullOrEmpty(playerName))
@@ -1214,7 +1214,7 @@ namespace wServer.core.commands
                 return true;
             }
 
-            if (!(player.Owner is Vault) || !(player.Owner is Nexus) || !(player.Owner is GuildHall) || !(player.Owner is Marketplace) || !(player.Owner.Id != World.ClothBazaar))
+            if (!(player.World is Vault) || !(player.World is Nexus) || !(player.World is GuildHall) || !(player.World is Marketplace) || !(player.World.Id != World.ClothBazaar))
             {
                 player.SendError("Not safe to pause.");
                 return false;
@@ -1314,8 +1314,8 @@ namespace wServer.core.commands
                         hidden++;
                     }
                 }
-            var currentPlayersNotIncludingHide = player.Owner.Players.Count - hidden;
-            player.SendInfo($"[{player.Owner.Id}] {player.Owner.GetDisplayName()} ({currentPlayersNotIncludingHide} players)");
+            var currentPlayersNotIncludingHide = player.World.Players.Count - hidden;
+            player.SendInfo($"[{player.World.Id}] {player.World.GetDisplayName()} ({currentPlayersNotIncludingHide} players)");
             return true;
         }
     }
@@ -1393,7 +1393,7 @@ namespace wServer.core.commands
                 }
             }
 
-            var targets = player.Owner.GetPlayers();
+            var targets = player.World.GetPlayers();
             foreach (var target in targets)
             {
                 if (!target.Name.EqualsIgnoreCase(args))
@@ -1559,7 +1559,7 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string playerName)
         {
-            if (player.Owner is Test)
+            if (player.World is Test)
                 return false;
 
             if (String.IsNullOrEmpty(playerName))
@@ -1607,7 +1607,7 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string playerName)
         {
-            if (player.Owner is Test)
+            if (player.World is Test)
                 return false;
 
             if (String.IsNullOrEmpty(playerName))
@@ -1745,14 +1745,14 @@ namespace wServer.core.commands
         protected override bool Process(Player player, TickTime time, string args)
         {
             var sb = new StringBuilder();
-            var players = player.Owner.Players
+            var players = player.World.Players
                 .ValueWhereAsParallel(_ => _.Client != null
                     && _.Rank <= Player.VIP
                     && _.CanBeSeenBy(player));
             if (players.Length != 0)
             {
                 sb.Append($"There {(players.Length > 1 ? "are" : "is")} {players.Length}");
-                sb.Append($"{(player.Owner.IsRealm || player.Owner.IsDungeon ? $"/{player.Owner.MaxPlayers} " : "")} ");
+                sb.Append($"{(player.World.IsRealm || player.World.IsDungeon ? $"/{player.World.MaxPlayers} " : "")} ");
                 sb.Append($"player{(players.Length > 1 ? "s" : "")} connected on this area:\n");
 
                 for (var i = 0; i < players.Length; i++)

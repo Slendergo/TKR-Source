@@ -34,7 +34,7 @@ namespace wServer.logic.behaviors
 
         protected internal override void Resolve(State parent) => parent.Death += (sender, e) =>
         {
-            var owner = e.Host.Owner;
+            var owner = e.Host.World;
 
             if (owner.Name.Contains("Arena") || e.Host.Spawned)
                 return;

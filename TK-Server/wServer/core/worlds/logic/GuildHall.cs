@@ -40,7 +40,7 @@ namespace wServer.core.worlds.logic
             var gHall = new GuildHall(manager.Resources.Worlds[Name], client)
             { IsLimbo = false };
 
-            return Manager.WorldManager.AddWorld(gHall);
+            return Manager.WorldManager.CreateNewWorld(gHall);
         }
 
         protected override void Init()

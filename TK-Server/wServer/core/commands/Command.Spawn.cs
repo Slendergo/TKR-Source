@@ -42,7 +42,7 @@ namespace wServer.core.commands
             protected override bool Process(Player player, TickTime time, string args)
             {
                 args = args.Trim();
-                if (!(player.Owner is Vault) && player.Rank < 110)
+                if (!(player.World is Vault) && player.Rank < 110)
                 {
                     player.SendError("Only in Vault boi.");
                     return false;
@@ -114,7 +114,7 @@ namespace wServer.core.commands
                         {
                             for (int i = 0; i < x.Length && i < count; i++)
                             {
-                                if (spawn.x[i] > 0 && spawn.x[i] <= player.Owner.Map.Width)
+                                if (spawn.x[i] > 0 && spawn.x[i] <= player.World.Map.Width)
                                 {
                                     x[i] = spawn.x[i];
                                 }
@@ -125,7 +125,7 @@ namespace wServer.core.commands
                         {
                             for (int i = 0; i < y.Length && i < count; i++)
                             {
-                                if (spawn.y[i] > 0 && spawn.y[i] <= player.Owner.Map.Height)
+                                if (spawn.y[i] > 0 && spawn.y[i] <= player.World.Map.Height)
                                 {
                                     y[i] = spawn.y[i];
                                 }
@@ -216,7 +216,7 @@ namespace wServer.core.commands
 
             private void NotifySpawn(Player player, string mob, int? num = null)
             {
-                var w = player.Owner;
+                var w = player.World;
 
                 var notif = mob;
                 if (num != null)
@@ -249,7 +249,7 @@ namespace wServer.core.commands
                 var pX = player.X;
                 var pY = player.Y;
 
-                player.Owner.Timers.Add(new WorldTimer(Delay * 1000, (world, t) => // spawn mob in delay seconds
+                player.World.Timers.Add(new WorldTimer(Delay * 1000, (world, t) => // spawn mob in delay seconds
                 {
                     for (var i = 0; i < num && i < 500; i++)
                     {

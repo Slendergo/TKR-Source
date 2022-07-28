@@ -37,10 +37,10 @@ namespace wServer.core.objects
 
         public void ForceGroundHit(TickTime time, Position pos, int timeHit)
         {
-            if (Owner == null || Owner.Map == null || HasConditionEffect(ConditionEffects.Paused) || HasConditionEffect(ConditionEffects.Invincible))
+            if (World == null || World.Map == null || HasConditionEffect(ConditionEffects.Paused) || HasConditionEffect(ConditionEffects.Invincible))
                 return;
 
-            var tile = Owner.Map[(int)pos.X, (int)pos.Y];
+            var tile = World.Map[(int)pos.X, (int)pos.Y];
             var objDesc = tile.ObjType == 0 ? null : CoreServerManager.Resources.GameData.ObjectDescs[tile.ObjType];
             var tileDesc = CoreServerManager.Resources.GameData.Tiles[tile.TileId];
 
@@ -56,7 +56,7 @@ namespace wServer.core.objects
                     return;
                 }
 
-                Owner.BroadcastIfVisibleExclude(new Damage()
+                World.BroadcastIfVisibleExclude(new Damage()
                 {
                     TargetId = Id,
                     DamageAmount = (ushort)dmg,
@@ -68,10 +68,10 @@ namespace wServer.core.objects
 
         public void GroundEffect(TickTime time)
         {
-            if (Owner == null || Owner.Map == null || HasConditionEffect(ConditionEffects.Paused) || HasConditionEffect(ConditionEffects.Invincible) || HasConditionEffect(ConditionEffects.Stasis))
+            if (World == null || World.Map == null || HasConditionEffect(ConditionEffects.Paused) || HasConditionEffect(ConditionEffects.Invincible) || HasConditionEffect(ConditionEffects.Stasis))
                 return;
 
-            var tile = Owner.Map[(int)X, (int)Y];
+            var tile = World.Map[(int)X, (int)Y];
             var objDesc = tile.ObjType == 0 ? null : CoreServerManager.Resources.GameData.ObjectDescs[tile.ObjType];
             var tileDesc = CoreServerManager.Resources.GameData.Tiles[tile.TileId];
 
@@ -96,7 +96,7 @@ namespace wServer.core.objects
                         return;
                     }
 
-                    Owner.BroadcastIfVisibleExclude(new Damage()
+                    World.BroadcastIfVisibleExclude(new Damage()
                     {
                         TargetId = Id,
                         DamageAmount = (ushort)dmg,

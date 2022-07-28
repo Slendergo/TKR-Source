@@ -21,7 +21,7 @@ namespace wServer.logic.transitions
             if (_groundType == null)
                 _groundType = host.CoreServerManager.Resources.GameData.IdToTileType[_ground];
 
-            var tile = host.Owner.Map[(int)host.X, (int)host.Y];
+            var tile = host.World.Map[(int)host.X, (int)host.Y];
 
             return tile.TileId == _groundType;
         }

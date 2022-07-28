@@ -38,7 +38,7 @@ namespace wServer.core.objects
                 }
 
             if (!hasItem)
-                Owner.LeaveWorld(this);
+                World.LeaveWorld(this);
 
             base.Tick(time);
         }

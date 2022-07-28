@@ -27,7 +27,7 @@ namespace wServer.logic
 
         public void OnStateEntry(Entity host, TickTime time)
         {
-            if (host == null || host.Owner == null)
+            if (host == null || host.World == null)
                 return;
 
             if (!host.StateStorage.TryGetValue(this, out object state))
@@ -43,7 +43,7 @@ namespace wServer.logic
 
         public void OnStateExit(Entity host, TickTime time)
         {
-            if (host == null || host.Owner == null)
+            if (host == null || host.World == null)
                 return;
 
             if (!host.StateStorage.TryGetValue(this, out object state))
@@ -59,7 +59,7 @@ namespace wServer.logic
 
         public void Tick(Entity host, TickTime time)
         {
-            if (host == null || host.Owner == null)
+            if (host == null || host.World == null)
                 return;
 
             if (!host.StateStorage.TryGetValue(this, out object state))

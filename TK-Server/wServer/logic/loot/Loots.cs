@@ -330,7 +330,7 @@ namespace wServer.logic.loot
                 var player = tupPlayer.Item1;
                 var playerDamage = tupPlayer.Item2;
 
-                if (player == null || player.Owner == null || player.Client == null)
+                if (player == null || player.World == null || player.Client == null)
                     continue;
 
                 var percentageOfDamage = (Math.Round(100.0 * (playerDamage / (double)enemy.DamageCounter.TotalDamage), 4) / 100);
@@ -396,7 +396,7 @@ namespace wServer.logic.loot
                 if (player != null && isEligible)
                 {
                     var chat = core.ChatManager;
-                    var world = player.Owner;
+                    var world = player.World;
                     var isMythical = i.Revenge || i.Mythical;
 
                     player.Client.SendPacket(new GlobalNotification() { Text = isMythical ? "revloot" : "legloot" });
@@ -409,7 +409,7 @@ namespace wServer.logic.loot
                         var players = world.Players.Count(p => p.Value.Client != null);
                         var builder = discord.MakeLootBuilder(
                             core.ServerConfig.serverInfo,
-                            player.Owner.IsRealm ? player.Owner.SBName : player.Owner.Name,
+                            player.World.IsRealm ? player.World.SBName : player.World.Name,
                             players,
                             world.MaxPlayers,
                             world.IsDungeon,
@@ -493,7 +493,7 @@ namespace wServer.logic.loot
             container.BagOwners = owners;
             container.Move(enemy.X + (float)((Rand.NextDouble() * 2 - 1) * 0.5), enemy.Y + (float)((Rand.NextDouble() * 2 - 1) * 0.5));
             container.SetDefaultSize(bagType >= 6 ? 120 : bagType >= 3 ? 90 : 70);
-            enemy.Owner.EnterWorld(container);
+            enemy.World.EnterWorld(container);
         }
 
         private static void ProcessPublicDrops(List<Item> pubDrops, Enemy enemy)

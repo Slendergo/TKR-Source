@@ -53,7 +53,7 @@ namespace wServer.core.objects
             {
                 exploded = true;
 
-                Owner.BroadcastIfVisible(new ShowEffect()
+                World.BroadcastIfVisible(new ShowEffect()
                 {
                     EffectType = EffectType.AreaBlast,
                     Color = new ARGB(0xffff0000),

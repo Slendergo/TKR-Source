@@ -25,11 +25,11 @@ namespace wServer.networking.handlers
         public override PacketId ID => PacketId.INVSWAP;
 
         protected override void HandlePacket(Client client, InvSwap packet)
-            => Handle(client.Player, client.Player.Owner.GetEntity(packet.SlotObj1.ObjectId), client.Player.Owner.GetEntity(packet.SlotObj2.ObjectId), packet.SlotObj1.SlotId, packet.SlotObj2.SlotId);
+            => Handle(client.Player, client.Player.World.GetEntity(packet.SlotObj1.ObjectId), client.Player.World.GetEntity(packet.SlotObj2.ObjectId), packet.SlotObj1.SlotId, packet.SlotObj2.SlotId);
 
         private void Handle(Player player, Entity from, Entity to, int slotFrom, int slotTo)
         {
-            if (player == null || player.Client == null || player.Owner == null)
+            if (player == null || player.Client == null || player.World == null)
                 return;
 
             if (!ValidateEntities(player, from, to) || player.tradeTarget != null)
@@ -40,7 +40,7 @@ namespace wServer.networking.handlers
                 return;
             }
 
-            if (player.Owner is Marketplace)
+            if (player.World is Marketplace)
             {
                 from.ForceUpdate(slotFrom);
                 to.ForceUpdate(slotTo);
@@ -80,7 +80,7 @@ namespace wServer.networking.handlers
             {
                 // if origin is the same player and destiny is a different path not part of
                 // current player's inventory, then validate to avoid invalid swap action
-                if (!(player.Owner is Vault) && !player.CanUseThisFeature(GenericRank.VIP))
+                if (!(player.World is Vault) && !player.CanUseThisFeature(GenericRank.VIP))
                 {
                     player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
 

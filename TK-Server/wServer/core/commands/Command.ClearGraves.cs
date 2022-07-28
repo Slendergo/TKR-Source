@@ -12,7 +12,7 @@ namespace wServer.core.commands
             protected override bool Process(Player player, TickTime time, string args)
             {
                 var total = 0;
-                foreach (var entry in player.Owner.StaticObjects)
+                foreach (var entry in player.World.StaticObjects)
                 {
                     var entity = entry.Value;
                     if (entity is Container || entity.ObjectDesc == null)
@@ -20,7 +20,7 @@ namespace wServer.core.commands
 
                     if (entity.ObjectDesc.ObjectId.StartsWith("Gravestone") && entity.Dist(player) < 15d)
                     {
-                        player.Owner.LeaveWorld(entity);
+                        player.World.LeaveWorld(entity);
                         total++;
                     }
                 }

@@ -24,7 +24,7 @@ namespace wServer.logic.behaviors
         {
             if (e.Host.CurrentState.Is(parent) && Random.NextDouble() < probability)
             {
-                if (Entity.Resolve(e.Host.CoreServerManager, target) is Portal && e.Host.Owner.Name.Contains("Arena"))
+                if (Entity.Resolve(e.Host.CoreServerManager, target) is Portal && e.Host.World.Name.Contains("Arena"))
                     return;
 
                 if (min > max)
@@ -43,7 +43,7 @@ namespace wServer.logic.behaviors
                         (entity as Enemy).ApplyConditionEffect(new ConditionEffect() { Effect = ConditionEffectIndex.Invisible, DurationMS = -1 });
                     }
 
-                    e.Host.Owner.EnterWorld(entity);
+                    e.Host.World.EnterWorld(entity);
                 }
             }
         };

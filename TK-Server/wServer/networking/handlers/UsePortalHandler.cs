@@ -18,10 +18,10 @@ namespace wServer.networking.handlers
         private void Handle(Client client, UsePortal packet)
         {
             var player = client.Player;
-            if (player?.Owner == null || IsTest(client))
+            if (player?.World == null || IsTest(client))
                 return;
 
-            var entity = player.Owner.GetEntity(packet.ObjectId);
+            var entity = player.World.GetEntity(packet.ObjectId);
             if (entity == null) return;
 
             if (entity is GuildHallPortal)
@@ -71,7 +71,7 @@ namespace wServer.networking.handlers
 
                 if (world is Realm && !player.CoreServerManager.Resources.GameData.ObjectTypeToId[portal.ObjectDesc.ObjectType].Contains("Cowardice"))
                 {
-                    player.FameCounter.CompleteDungeon(player.Owner.Name);
+                    player.FameCounter.CompleteDungeon(player.World.Name);
                 }
 
                 if (world != null)

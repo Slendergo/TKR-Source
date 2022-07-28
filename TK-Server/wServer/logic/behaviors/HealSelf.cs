@@ -55,15 +55,15 @@ namespace wServer.logic.behaviors
                     if (entity.HP > entity.MaximumHP)
                         entity.HP = entity.MaximumHP;
 
-                    entity.Owner.BroadcastIfVisible(new ShowEffect() { EffectType = EffectType.Potion, TargetObjectId = entity.Id, Color = new ARGB(0xffffffff) }, entity, PacketPriority.Low);
-                    entity.Owner.BroadcastIfVisible(new ShowEffect()
+                    entity.World.BroadcastIfVisible(new ShowEffect() { EffectType = EffectType.Potion, TargetObjectId = entity.Id, Color = new ARGB(0xffffffff) }, entity, PacketPriority.Low);
+                    entity.World.BroadcastIfVisible(new ShowEffect()
                     {
                         EffectType = EffectType.Trail,
                         TargetObjectId = host.Id,
                         Pos1 = new Position() { X = entity.X, Y = entity.Y },
                         Color = new ARGB(0xffffffff)
                     }, host, PacketPriority.Low);
-                    entity.Owner.BroadcastIfVisible(new Notification() { ObjectId = entity.Id, Message = "+" + newHp, Color = new ARGB(0xff00ff00) }, entity, PacketPriority.Low);
+                    entity.World.BroadcastIfVisible(new Notification() { ObjectId = entity.Id, Message = "+" + newHp, Color = new ARGB(0xff00ff00) }, entity, PacketPriority.Low);
                 }
 
                 cool = _coolDown.Next(Random);

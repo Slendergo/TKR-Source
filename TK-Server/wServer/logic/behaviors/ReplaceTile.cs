@@ -22,7 +22,7 @@ namespace wServer.logic.behaviors
             var dat = host.CoreServerManager.Resources.GameData;
             var tileId = dat.IdToTileType[_objName];
             var replacedTileId = dat.IdToTileType[_replacedObjName];
-            var map = host.Owner.Map;
+            var map = host.World.Map;
             var w = map.Width;
             var h = map.Height;
 
@@ -47,7 +47,7 @@ namespace wServer.logic.behaviors
                     tile.TileDesc = tileDesc;
 
                     if (tile.ObjId == 0)
-                        tile.ObjId = host.Owner.GetNextEntityId();
+                        tile.ObjId = host.World.GetNextEntityId();
 
                     map[x, y].SetTile(tile);
                 }

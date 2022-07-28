@@ -15,7 +15,7 @@ namespace wServer.core.commands
 
             protected override bool Process(Player player, TickTime time, string setPiece)
             {
-                if ((player.Owner is Nexus) || (player.Owner is Marketplace) || player.Owner.Id == -10 || player.Owner is GuildHall)
+                if ((player.World is Nexus) || (player.World is Marketplace) || player.World.Id == -10 || player.World is GuildHall)
                 {
                     player.SendError("No");
                     return false;
@@ -32,12 +32,12 @@ namespace wServer.core.commands
                     return false;
                 }
 
-                if (!player.Owner.Name.Equals("Nexus"))
+                if (!player.World.Name.Equals("Nexus"))
                 {
                     try
                     {
                         ISetPiece piece = (ISetPiece)Activator.CreateInstance(Type.GetType("wServer.core.setpieces." + setPiece, true, true));
-                        piece.RenderSetPiece(player.Owner, new IntPoint((int)player.X + 1, (int)player.Y + 1));
+                        piece.RenderSetPiece(player.World, new IntPoint((int)player.X + 1, (int)player.Y + 1));
                         return true;
                     }
                     catch (Exception)

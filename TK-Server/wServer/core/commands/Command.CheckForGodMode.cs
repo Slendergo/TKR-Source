@@ -16,7 +16,7 @@ namespace wServer.core.commands
 				{
 					var e = Entity.Resolve(player.CoreServerManager, "shtrs Ice Shield");
 					e.Move(player.X, player.Y);
-					player.Owner.EnterWorld(e);
+					player.World.EnterWorld(e);
 					e.Spawned = true;
 				}
 				return true;

@@ -181,6 +181,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="core\setpieces\StrangeMagician.cs" />
+    <Compile Include="core\worlds\impl\WorldBranch.cs" />
     <Compile Include="logic\behaviors\ChangeMusic.cs" />
     <Compile Include="logic\behaviors\ChangeMusicOnDeath.cs" />
     <Compile Include="logic\behaviors\Roar.cs" />

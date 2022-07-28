@@ -49,7 +49,7 @@ namespace wServer.core.objects
         public PlayerUpdate(Player player)
         {
             Player = player;
-            World = player.Owner;
+            World = player.World;
 
             NewObjects = new UpdatedHashSet(this);
             NewStaticObjects = new HashSet<WmapTile>();

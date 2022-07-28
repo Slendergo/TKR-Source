@@ -12,6 +12,7 @@ using System.Threading;
 using wServer.core.objects;
 using wServer.core.objects.vendors;
 using wServer.core.terrain;
+using wServer.core.worlds.impl;
 using wServer.core.worlds.logic;
 using wServer.networking;
 using wServer.networking.packets.outgoing;
@@ -44,31 +45,6 @@ namespace wServer.core.worlds
         private CoreServerManager _manager;
         private int _totalConnects;
 
-        public World(ProtoWorld proto)
-        {
-            Setup();
-            Id = proto.id;
-            Name = proto.name;
-            SBName = proto.sbName;
-            Difficulty = proto.difficulty;
-            Background = proto.background;
-            IsLimbo = proto.isLimbo;
-            Persist = proto.persist;
-            AllowTeleport = !proto.restrictTp;
-            ShowDisplays = proto.showDisplays;
-            Blocking = proto.blocking;
-
-            if (this is Nexus)
-                MaxPlayers = 300;
-
-            IsRealm = false;
-            IsDungeon = true;
-
-            var rnd = new Random();
-            Music = proto.music != null
-                ? proto.music[rnd.Next(0, proto.music.Length)]
-                : "Test";
-        }
 
         public bool AllowTeleport { get; protected set; }
         public int Background { get; protected set; }
@@ -112,6 +88,36 @@ namespace wServer.core.worlds
         public ConcurrentDictionary<int, StaticObject> StaticObjects { get; private set; }
         public List<WorldTimer> Timers { get; private set; }
         public int TotalConnects { get { return _totalConnects; } }
+
+        public readonly WorldBranch WorldBranch;
+
+        public World(ProtoWorld proto)
+        {
+            Setup();
+            Id = proto.id;
+            Name = proto.name;
+            SBName = proto.sbName;
+            Difficulty = proto.difficulty;
+            Background = proto.background;
+            IsLimbo = proto.isLimbo;
+            Persist = proto.persist;
+            AllowTeleport = !proto.restrictTp;
+            ShowDisplays = proto.showDisplays;
+            Blocking = proto.blocking;
+
+            if (this is Nexus)
+                MaxPlayers = 300;
+
+            IsRealm = false;
+            IsDungeon = true;
+
+            var rnd = new Random();
+            Music = proto.music != null
+                ? proto.music[rnd.Next(0, proto.music.Length)]
+                : "Test";
+
+            WorldBranch = new WorldBranch(this);
+        }
 
         public virtual bool AllowedAccess(Client client) => !Closed || client.Account.Admin;
 
@@ -282,7 +288,7 @@ namespace wServer.core.worlds
 
             world.IsLimbo = false;
 
-            return Manager.WorldManager.AddWorld(world);
+            return Manager.WorldManager.CreateNewWorld(world);
         }
 
         public int GetNextEntityId() => Interlocked.Increment(ref _entityInc);
@@ -463,140 +469,6 @@ namespace wServer.core.worlds
                 }));
         }
 
-        private readonly Dictionary<int, World> NodesWorlds = new Dictionary<int, World>();
-
-        public void AddChild(World world)
-        {
-            Console.WriteLine($"[{world.Name} {world.Id}] Has been added to: [{Name} {Id}]");
-            NodesWorlds.Add(world.Id, world);
-        }
-
-        public bool Update(ref TickTime time)
-        {
-            _elapsedTime += time.ElaspedMsDelta;
-
-            HandleChildren(ref time);
-            HandleIO();
-            if (IsPastLifetime(ref time))
-                return true;
-            UpdateLogic(ref time);
-            return false;
-        }
-        
-        private readonly List<World> WorldsToRemove = new List<World>();
-        private void HandleChildren(ref TickTime time)
-        {
-            foreach (var world in NodesWorlds.Values)
-            {
-                Console.WriteLine($"[{world.Name} {world.Id}]");
-                if (world.Update(ref time))
-                {
-                    WorldsToRemove.Add(world);
-                    continue;
-                }
-            }
-
-            if (WorldsToRemove.Count > 0)
-            {
-                foreach (var world in WorldsToRemove)
-                {
-                    Console.WriteLine($"[{world.Name} {world.Id}] Has been removed from: [{Name} {Id}]");
-                    _ = Manager.WorldManager.RemoveWorld(world);
-                    _ = NodesWorlds.Remove(world.Id);
-                }
-                WorldsToRemove.Clear();
-            }
-        }
-
-        private void HandleIO()
-        {
-            // todo
-            foreach(var player in Players.Values)
-                player.HandleIO();
-        }
-
-        protected virtual void UpdateLogic(ref TickTime time)
-        {
-            try
-            {
-                foreach (var player in Players.Values)
-                {
-                    player.DoUpdate(time);
-                    player.HandlePendingActions(time);
-                    player.Tick(time);
-                }
-
-                foreach (var i in Projectiles)
-                    i.Value.Tick(time);
-
-                for (var i = Timers.Count - 1; i >= 0; i--)
-                    try
-                    {
-                        if (Timers[i].Tick(this, time))
-                            Timers.RemoveAt(i);
-                    }
-                    catch (Exception e)
-                    {
-                        var msg = e.Message + "\n" + e.StackTrace;
-                        Log.Error(msg);
-                        Timers.RemoveAt(i);
-                    }
-
-                if (EnemiesCollision != null)
-                {
-                    foreach (var i in EnemiesCollision.GetActiveChunks(PlayersCollision))
-                        i.Tick(time);
-
-                    foreach (var i in StaticObjects.Where(x => x.Value != null && x.Value is Decoy))
-                        i.Value.Tick(time);
-                }
-                else
-                {
-                    foreach (var i in Enemies)
-                        i.Value.Tick(time);
-
-                    foreach (var i in StaticObjects)
-                        i.Value.Tick(time);
-                }
-
-                foreach (var i in Containers)
-                    i.Value.Tick(time);
-
-                foreach (var i in Pets)
-                    i.Value.Tick(time);
-            }
-            catch (Exception e)
-            {
-                Log.Error($"Unknown Error with TickLogic {e}");
-            }
-        }
-
-        private bool IsPastLifetime(ref TickTime time)
-        {
-            if (NodesWorlds.Count > 0)
-                return false;
-
-            if (Players.Count > 0)
-                return false;
-
-            if (Persist)
-                return false;
-
-            if (Deleted)
-                return false;
-
-            if (IsLimbo)
-                return false;
-
-            if (_elapsedTime >= 1000)
-            {
-                Console.WriteLine($"[{Name} {Id}] Has Expired");
-                return true;
-            }
-
-            return false;
-        }
-
         public void WorldAnnouncement(string msg)
         {
             var announcement = string.Concat("<ANNOUNCMENT> ", msg);
@@ -754,6 +626,111 @@ namespace wServer.core.worlds
             ShowDisplays = true;
             Persist = false; // if false, attempts to delete world with 0 players
             Blocking = 0; // toggles sight block (0 disables sight block)
+        }
+        static int depth = 0;
+
+        public World CreateNewWorld(World world) => Manager.WorldManager.CreateNewWorld(world, this);
+
+        public bool Update(ref TickTime time)
+        {
+            _elapsedTime += time.ElaspedMsDelta;
+
+            WorldBranch.Update(ref time);
+
+            HandleIO();
+            if (IsPastLifetime(ref time))
+                return true;
+            UpdateLogic(ref time);
+            return false;
+        }
+        
+        private void HandleIO()
+        {
+            // todo
+            foreach(var player in Players.Values)
+                player.HandleIO();
+        }
+
+        protected virtual void UpdateLogic(ref TickTime time)
+        {
+            try
+            {
+                foreach (var player in Players.Values)
+                {
+                    player.DoUpdate(time);
+                    player.HandlePendingActions(time);
+                    player.Tick(time);
+                }
+
+                foreach (var i in Projectiles)
+                    i.Value.Tick(time);
+
+                for (var i = Timers.Count - 1; i >= 0; i--)
+                    try
+                    {
+                        if (Timers[i].Tick(this, time))
+                            Timers.RemoveAt(i);
+                    }
+                    catch (Exception e)
+                    {
+                        var msg = e.Message + "\n" + e.StackTrace;
+                        Log.Error(msg);
+                        Timers.RemoveAt(i);
+                    }
+
+                if (EnemiesCollision != null)
+                {
+                    foreach (var i in EnemiesCollision.GetActiveChunks(PlayersCollision))
+                        i.Tick(time);
+
+                    foreach (var i in StaticObjects.Where(x => x.Value != null && x.Value is Decoy))
+                        i.Value.Tick(time);
+                }
+                else
+                {
+                    foreach (var i in Enemies)
+                        i.Value.Tick(time);
+
+                    foreach (var i in StaticObjects)
+                        i.Value.Tick(time);
+                }
+
+                foreach (var i in Containers)
+                    i.Value.Tick(time);
+
+                foreach (var i in Pets)
+                    i.Value.Tick(time);
+            }
+            catch (Exception e)
+            {
+                Log.Error($"Unknown Error with TickLogic {e}");
+            }
+        }
+
+        private bool IsPastLifetime(ref TickTime time)
+        {
+            if (WorldBranch.HasBranches())
+                return false;
+
+            if (Players.Count > 0)
+                return false;
+
+            if (Persist)
+                return false;
+
+            if (Deleted)
+                return false;
+
+            if (IsLimbo)
+                return false;
+
+            if (_elapsedTime >= 60000)
+            {
+                Console.WriteLine($"[{Name} {Id}] Has Expired");
+                return true;
+            }
+
+            return false;
         }
     }
 }

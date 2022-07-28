@@ -16,7 +16,7 @@ namespace wServer.networking.handlers
 
         protected override void HandlePacket(Client client, BountyRequest packet)
         {
-            if (client == null || IsTest(client) || client.Player == null || client.Player.Owner == null)
+            if (client == null || IsTest(client) || client.Player == null || client.Player.World == null)
                 return;
 
             Handle(client, packet);
@@ -88,12 +88,12 @@ namespace wServer.networking.handlers
                     #region Easy
 
                     case 1:
-                        var easy = originalClient.Player.Owner.Manager.Resources.Worlds[EasyWrld];
+                        var easy = originalClient.Player.World.Manager.Resources.Worlds[EasyWrld];
 
                         DynamicWorld.TryGetWorld(easy, originalClient, out var world);
 
                         var wManager = cManager.WorldManager;
-                        world = wManager.AddWorld(new World(easy));
+                        world = wManager.CreateNewWorld(new World(easy));
                         db.UpdateGuildFame(guild, -fameCost);
 
                         foreach (var player in players)
@@ -112,12 +112,12 @@ namespace wServer.networking.handlers
                     #region Hard
 
                     case 2:
-                        var hard = originalClient.Player.Owner.Manager.Resources.Worlds[HardWrld];
+                        var hard = originalClient.Player.World.Manager.Resources.Worlds[HardWrld];
 
                         DynamicWorld.TryGetWorld(hard, originalClient, out var world2);
 
                         var wManager2 = cManager.WorldManager;
-                        world2 = wManager2.AddWorld(new World(hard));
+                        world2 = wManager2.CreateNewWorld(new World(hard));
                         db.UpdateGuildFame(guild, -fameCost);
 
                         foreach (var player in players)
@@ -158,7 +158,7 @@ namespace wServer.networking.handlers
         private Player[] getPlayers(Client client, BountyRequest packet)
         {
             var playersAllowed = new ConcurrentBag<Player>();
-            var world = client.Player.Owner;
+            var world = client.Player.World;
             foreach (var allowedPlayersId in packet.PlayersAllowed) /* Get AlL ID's */
             {
                 if (allowedPlayersId == 0)

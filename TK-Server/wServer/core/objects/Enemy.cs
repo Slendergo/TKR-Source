@@ -130,7 +130,7 @@ namespace wServer.core.objects
                     HP -= effDmg;
 
                 ApplyConditionEffect(effs);
-                Owner.BroadcastIfVisible(new Damage()
+                World.BroadcastIfVisible(new Damage()
                 {
                     TargetId = Id,
                     Effects = 0,
@@ -142,7 +142,7 @@ namespace wServer.core.objects
 
                 DamageCounter?.HitBy(from, time, null, effDmg);
 
-                if (HP < 0 && Owner != null)
+                if (HP < 0 && World != null)
                     Death(time);
 
                 return effDmg;
@@ -153,7 +153,7 @@ namespace wServer.core.objects
 
         public void Death(TickTime time)
         {
-            if (this == null || Owner == null)
+            if (this == null || World == null)
                 return;
 
             DamageCounter.Death(time);
@@ -162,7 +162,7 @@ namespace wServer.core.objects
                 CurrentState.OnDeath(new BehaviorEventArgs(this, time));
 
             OnDeath?.Invoke(this, new BehaviorEventArgs(this, time));
-            Owner.LeaveWorld(this);
+            World.LeaveWorld(this);
         }
 
         public override bool HitByProjectile(Projectile projectile, TickTime time)
@@ -207,7 +207,7 @@ namespace wServer.core.objects
 
                 ApplyConditionEffect(projectile.ProjDesc.Effects);
 
-                Owner.BroadcastIfVisibleExclude(new Damage()
+                World.BroadcastIfVisibleExclude(new Damage()
                 {
                     TargetId = Id,
                     Effects = projectile.ConditionEffects,
@@ -219,7 +219,7 @@ namespace wServer.core.objects
 
                 DamageCounter.HitBy(projectile.ProjectileOwner as Player, time, projectile, dmg);
 
-                if (HP < 0 && Owner != null)
+                if (HP < 0 && World != null)
                     Death(time);
 
                 return true;
@@ -273,7 +273,7 @@ namespace wServer.core.objects
 
         private void Demonized(Player player, int slot)
         {
-            if (player == null || player.Owner == null || player.Client == null)
+            if (player == null || player.World == null || player.Client == null)
                 return;
             if (_random.NextDouble() < 0.3 && player.ApplyEffectCooldown(slot))
             {
@@ -281,14 +281,14 @@ namespace wServer.core.objects
 
                 ApplyConditionEffect(ConditionEffectIndex.Curse, 5000);
 
-                player.Owner.BroadcastIfVisible(new ShowEffect()
+                player.World.BroadcastIfVisible(new ShowEffect()
                 {
                     EffectType = EffectType.AreaBlast,
                     TargetObjectId = Id,
                     Color = new ARGB(0xFFFFFF00),
                     Pos1 = new Position() { X = 1.5f }
                 }, player, PacketPriority.Low);
-                player.Owner.BroadcastIfVisible(new Notification()
+                player.World.BroadcastIfVisible(new Notification()
                 {
                     ObjectId = Id,
                     PlayerId = player.Id,
@@ -300,7 +300,7 @@ namespace wServer.core.objects
 
         private void Electrify(Player player, int slot, TickTime time, Entity firstHit)
         {
-            if (player == null || player.Owner == null || player.Client == null)
+            if (player == null || player.World == null || player.Client == null)
                 return;
             if (_random.NextDouble() < 0.03)
             {
@@ -364,8 +364,8 @@ namespace wServer.core.objects
                         }
                     };
 
-                    Owner.BroadcastIfVisible(pkts[0], player, PacketPriority.Low);
-                    Owner.BroadcastIfVisible(pkts[1], player, PacketPriority.Low);
+                    World.BroadcastIfVisible(pkts[0], player, PacketPriority.Low);
+                    World.BroadcastIfVisible(pkts[1], player, PacketPriority.Low);
                 }
             }
         }

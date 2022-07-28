@@ -20,9 +20,9 @@ namespace wServer.logic.behaviors
 
         protected override void OnStateEntry(Entity host, TickTime time, ref object state)
         {
-            if (host.Owner.Music != _music)
+            if (host.World.Music != _music)
             {
-                var owner = host.Owner;
+                var owner = host.World;
 
                 owner.Music = _music;
 

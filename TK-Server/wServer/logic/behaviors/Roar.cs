@@ -50,7 +50,7 @@ namespace wServer.logic.behaviors
                 {
                     var target = new Position() { X = enemy.X, Y = enemy.Y };
 
-                    host.Owner.Timers.Add(new WorldTimer(1500, (world, t) =>
+                    host.World.Timers.Add(new WorldTimer(1500, (world, t) =>
                     {
                         world.BroadcastIfVisible(new Aoe()
                         {

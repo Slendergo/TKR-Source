@@ -20,13 +20,13 @@ namespace wServer.logic.behaviors
         {
             Status = CycleStatus.NotStarted;
 
-            if (host == null || host.Owner == null)
+            if (host == null || host.World == null)
                 return;
 
             if (host.HasConditionEffect(ConditionEffects.Paralyzed))
                 return;
 
-            var map = host.Owner.Map;
+            var map = host.World.Map;
             var tile = map[(int)host.X, (int)host.Y];
 
             if (tile == null)

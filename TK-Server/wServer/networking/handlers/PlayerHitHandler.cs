@@ -14,7 +14,7 @@ namespace wServer.networking.handlers
         {
             var player = client.Player;
 
-            if (player == null || player.Owner == null)
+            if (player == null || player.World == null)
                 return;
 
             player.AddPendingAction(t => Handle(client.Player, t, packet.ObjectId, packet.BulletId));
@@ -22,14 +22,14 @@ namespace wServer.networking.handlers
 
         private void Handle(Player player, TickTime time, int objectId, byte bulletId)
         {
-            if (player?.Owner == null)
+            if (player?.World == null)
                 return;
 
-            var entity = player.Owner.GetEntity(objectId);
+            var entity = player.World.GetEntity(objectId);
 
             var prj = entity != null
                 ? ((IProjectileOwner)entity).Projectiles[bulletId]
-                : player.Owner.Projectiles.Where(p => p.Value.ProjectileOwner.Self.Id == objectId).SingleOrDefault(p => p.Value.ProjectileId == bulletId).Value;
+                : player.World.Projectiles.Where(p => p.Value.ProjectileOwner.Self.Id == objectId).SingleOrDefault(p => p.Value.ProjectileId == bulletId).Value;
 
             if (prj == null)
                 return;

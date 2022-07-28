@@ -27,13 +27,15 @@ namespace wServer.core
         public PortalMonitor PortalMonitor { get; private set; }
         public Dictionary<int, World> Worlds { get; private set; }
 
-        public World AddWorld(World world)
+        public World CreateNewWorld(World world, World parent = null)
         {
             if (world.Manager != null)
                 throw new InvalidOperationException("World already added.");
 
             world.Id = Interlocked.Increment(ref NextWorldId);
             Worlds[world.Id] = world;
+
+            parent?.WorldBranch.AddBranch(world);
 
             if (CoreServerManager.Initialized)
                 OnWorldAdded(world);

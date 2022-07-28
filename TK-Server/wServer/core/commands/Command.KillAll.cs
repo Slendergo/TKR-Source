@@ -14,13 +14,13 @@ namespace wServer.core.commands
 
             protected override bool Process(Player player, TickTime time, string args)
             {
-                if (!(player.Owner is Vault) && player.Rank < 110)
+                if (!(player.World is Vault) && player.Rank < 110)
                 {
                     player.SendError("Only in your Vault.");
                     return false;
                 }
 
-                var eligibleEnemies = player.Owner.Enemies
+                var eligibleEnemies = player.World.Enemies
                     .ValueWhereAsParallel(_ => _.ObjectDesc != null
                         && _.ObjectDesc.ObjectId != null
                         && _.ObjectDesc.Enemy

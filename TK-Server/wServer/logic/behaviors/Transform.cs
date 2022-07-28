@@ -14,7 +14,7 @@ namespace wServer.logic.behaviors
         {
             var entity = Entity.Resolve(host.CoreServerManager, target);
 
-            if (entity is Portal && host.Owner.Name.Contains("Arena"))
+            if (entity is Portal && host.World.Name.Contains("Arena"))
                 return;
 
             entity.Move(host.X, host.Y);
@@ -25,8 +25,8 @@ namespace wServer.logic.behaviors
                 (entity as Enemy).ApplyConditionEffect(new ConditionEffect() { Effect = ConditionEffectIndex.Invisible, DurationMS = -1 });
             }
 
-            host.Owner.EnterWorld(entity);
-            host.Owner.LeaveWorld(host);
+            host.World.EnterWorld(entity);
+            host.World.LeaveWorld(host);
         }
     }
 }

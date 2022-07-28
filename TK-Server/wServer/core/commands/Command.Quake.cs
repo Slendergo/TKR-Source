@@ -27,7 +27,7 @@ namespace wServer.core.commands
                     return false;
                 }
 
-                if (player.Owner is Nexus)
+                if (player.World is Nexus)
                 {
                     player.SendError("Cannot use /quake in Nexus.");
                     return false;
@@ -50,10 +50,10 @@ namespace wServer.core.commands
                 else
                 {
                     DynamicWorld.TryGetWorld(proto, player.Client, out world);
-                    world = player.CoreServerManager.WorldManager.AddWorld(world ?? new World(proto));
+                    world = player.CoreServerManager.WorldManager.CreateNewWorld(world ?? new World(proto));
                 }
 
-                player.Owner.QuakeToWorld(world);
+                player.World.QuakeToWorld(world);
                 return true;
             }
         }

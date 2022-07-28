@@ -1,0 +1,90 @@
+<Objects>
+  <Object type="0x498e" id="Magic Dust">
+    <Class>Equipment</Class>
+    <Item/>
+    <SPlus/>
+    <Soulbound/>
+    <Description>A special powder that is left by the most notable or terrible enemies, put them together with other powders until you get 5 and see what reward they will give you!.</Description>
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0x3f</Index>
+    </Texture>
+    <NoTierTag/>
+    <SlotType>10</SlotType>
+    <QuantityLimit>5</QuantityLimit>
+    <Quantity>1</Quantity>
+    <Sound>use_potion</Sound>
+    <InvUse/>
+    <Activate>MagicDust</Activate>
+    <Potion/>
+    <BagType>5</BagType>
+  </Object>
+  <Object type="0x4993" id="Item Dust">
+    <Class>Equipment</Class>
+    <Item/>
+    <SNormal/>
+    <DisplayId>Item Dust</DisplayId>
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0x57</Index>
+    </Texture>
+    <NoTierTag/>
+    <SlotType>10</SlotType>
+    <Description>A Special Powder that will give you a random Tiered item!</Description>
+    <Sound>use_potion</Sound>
+    <InvUse/>
+    <Activate>ItemDust</Activate>
+    <BagType>5</BagType>
+  </Object>
+  <Object type="0x4994" id="Miscellaneous Dust">
+    <Class>Equipment</Class>
+    <Item/>
+    <NoTierTag/>
+    <SNormal/>
+    <DisplayId>Miscellaneous Dust</DisplayId>
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0x58</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>A special powder that will give you a miscellaneous item!</Description>
+    <Sound>use_potion</Sound>
+    <InvUse/>
+    <Activate>MiscellaneousDust</Activate>
+    <BagType>5</BagType>
+  </Object>
+  <Object type="0x4995" id="Potion Dust">
+    <Class>Equipment</Class>
+    <Item/>
+    <NoTierTag/>
+    <SNormal/>
+    <DisplayId>Potion Dust</DisplayId>
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0x59</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>A special powder that will give you a random potion!</Description>
+    <Sound>use_potion</Sound>
+    <InvUse/>
+    <Activate>PotionDust</Activate>
+    <BagType>5</BagType>
+  </Object>
+  <Object type="0x4996" id="Special Dust">
+    <Class>Equipment</Class>
+    <Item/>
+    <NoTierTag/>
+    <SPlus/>
+    <DisplayId>Special Dust</DisplayId>
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0x5a</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>A very rare special powder! You will get an extremely good item (somethimes)! Good luck!</Description>
+    <Sound>use_potion</Sound>
+    <InvUse/>
+    <Activate>SpecialDust</Activate>
+    <BagType>7</BagType>
+  </Object>
+</Objects>

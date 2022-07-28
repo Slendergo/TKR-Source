@@ -1,0 +1,245 @@
+<Objects>
+  <Object type="0xc05" id="Ancient Stone Sword">
+    <Class>Equipment</Class>
+    <Item />
+    <SteamRoller />
+    <Legendary />
+    <Texture>
+      <File>lofiObj2</File>
+      <Index>0x6d</Index>
+    </Texture>
+    <SlotType>1</SlotType>
+    <Description>A slow but powerful sword that is a relic of a long forgotten age.</Description>
+    <RateOfFire>0.6</RateOfFire>
+    <Sound>weapon/glass_sword</Sound>
+    <Projectile>
+      <ObjectId>Stone Slash</ObjectId>
+      <Speed>120</Speed>
+      <MinDamage>500</MinDamage>
+      <MaxDamage>600</MaxDamage>
+      <LifetimeMS>545</LifetimeMS>
+    </Projectile>
+    <BagType>7</BagType>
+    <FameBonus>4</FameBonus>
+    <OldSound>bladeSwing</OldSound>
+    <feedPower>900</feedPower>
+  </Object>
+  <!--<Object type="0x48d5" id="Slime Slayer">
+    <Class>Equipment</Class>
+    <Item />
+    <Legendary />
+    <Demonized />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0x08</Index>
+    </Texture>
+    <SlotType>1</SlotType>
+    <Description>The world will know their power...</Description>
+    <RateOfFire>1.25</RateOfFire>
+    <Sound>weapon/mithril_sword</Sound>
+    <Projectile>
+      <ObjectId>Slime Sword Shoot</ObjectId>
+      <Speed>110</Speed>
+      <MinDamage>255</MinDamage>
+      <MaxDamage>255</MaxDamage>
+      <LifetimeMS>409</LifetimeMS>
+      <Frequency>1.5</Frequency>
+      <Amplitude>0.2</Amplitude>
+      <ArmorPiercing />
+      <Size>100</Size>
+      <ConditionEffect duration="0.3">Slowed</ConditionEffect>
+    </Projectile>
+    <NumProjectiles>1</NumProjectiles>
+    <ArcGap>11</ArcGap>
+    <BagType>7</BagType>
+    <FameBonus>6</FameBonus>
+    <feedPower>650</feedPower>
+    <DisplayId>Slime Sword</DisplayId>
+  </Object>-->
+  <Object type="0x4928" id="Excalibur">
+    <Class>Equipment</Class>
+    <Item />
+    <OutOfOneMind />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0x14</Index>
+    </Texture>
+    <SlotType>1</SlotType>
+    <Description>A legendary sword that belongs to a King, this sword contains extraordinary attributes capable of killing someone in an instant.</Description>
+    <RateOfFire>0.75</RateOfFire>
+    <Sound>weapon/blunt_sword</Sound>
+    <Legendary />
+    <Projectile>
+      <ObjectId>Excalibur Shoot</ObjectId>
+      <Speed>150</Speed>
+      <MinDamage>375</MinDamage>
+      <MaxDamage>525</MaxDamage>
+      <LifetimeMS>300</LifetimeMS>
+      <Amplitude>0.3</Amplitude>
+      <Frequency>0.5</Frequency>
+      <Size>100</Size>
+      <MultiHit />
+      <Wavy />
+    </Projectile>
+    <NumProjectiles>4</NumProjectiles>
+    <ArcGap>4</ArcGap>
+    <ActivateOnEquip stat="20" amount="3">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="-3">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="-3">IncrementStat</ActivateOnEquip>
+    <BagType>7</BagType>
+    <FameBonus>7</FameBonus>
+    <DisplayId>Excalibur</DisplayId>
+  </Object>
+  <Object type="0x490d" id="Sword of the Colossus">
+    <Class>Equipment</Class>
+    <Item />
+    <OutOfOneMind />
+    <Texture>
+      <File>LostHallsObj</File>
+      <Index>0x00</Index>
+    </Texture>
+    <SlotType>1</SlotType>
+    <Description>
+			A sword with an impossibly sharp edge. It has been designed with holy magic to slash like no other blade.
+		</Description>
+    <RateOfFire>1.05</RateOfFire>
+    <Sound>weapon/golden_bow</Sound>
+    <Projectile>
+      <ObjectId>Colossus Slash</ObjectId>
+      <Speed>125</Speed>
+      <MinDamage>360</MinDamage>
+      <MaxDamage>400</MaxDamage>
+      <LifetimeMS>360</LifetimeMS>
+      <Amplitude>0.7</Amplitude>
+      <Frequency>0.5</Frequency>
+      <FaceDir />
+    </Projectile>
+    <Legendary />
+    <BagType>7</BagType>
+    <FameBonus>6</FameBonus>
+    <NumProjectiles>1</NumProjectiles>
+    <OldSound>bladeSwing</OldSound>
+    <feedPower>1200</feedPower>
+  </Object>
+  	<Object type="0xa429" id="Spear of Thiram">
+		<Class>Equipment</Class>
+		<Item />
+		<OutOfOneMind />
+		<Texture>
+			<File>CustomObj</File>
+			<Index>0xdf</Index>
+		</Texture>
+		<SlotType>1</SlotType>
+		<Legendary />
+		<Description>Used by Jupiter, Neptune, and Pluto to overthrow their Father, Saturn.</Description>
+		<RateOfFire>0.5</RateOfFire>
+		<Sound>weapon/mithril_sword</Sound>
+		<Projectile>
+			<ObjectId>Thiram Shot</ObjectId>
+			<Speed>100</Speed>
+			<MinDamage>666</MinDamage>
+			<MaxDamage>666</MaxDamage>
+			<LifetimeMS>750</LifetimeMS>
+			<Frequency>1</Frequency>
+			<Amplitude>0.2</Amplitude>
+			<Size>100</Size>
+			<MultiHit />
+			<ArmorPiercing />
+		</Projectile>
+		<NumProjectiles>1</NumProjectiles>
+		<BagType>7</BagType>
+		<FameBonus>7</FameBonus>
+		<DisplayId>Spear of Thiram</DisplayId>
+	</Object>
+  <Object type="0x5409" id="Blade of the Protector">
+    <Class>Equipment</Class>
+    <Item />
+    <Mutilate />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0xe0</Index>
+    </Texture>
+    <SlotType>1</SlotType>
+    <Legendary />
+    <Description>During the Shatter's age of ruin, the Sentinel spent weeks on end slaying the oncoming forces hoping to claim the treasures.</Description>
+    <RateOfFire>1</RateOfFire>
+    <Sound>weapon/mithril_sword</Sound>
+    <Projectile>
+      <ObjectId>Blade of the Protector Shoot</ObjectId>
+      <Speed>140</Speed>
+      <MinDamage>130</MinDamage>
+      <MaxDamage>160</MaxDamage>
+      <LifetimeMS>336</LifetimeMS>
+      <Frequency>0</Frequency>
+      <Size>95</Size>
+      <MultiHit />
+    </Projectile>
+    <NumProjectiles>3</NumProjectiles>
+    <ArcGap>14</ArcGap>
+    <ActivateOnEquip stat="21" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="6">IncrementStat</ActivateOnEquip>
+    <BagType>7</BagType>
+    <FameBonus>7</FameBonus>
+    <DisplayId>Blade of the Protector</DisplayId>
+  </Object>
+    <Object type="0x6082" id="The Horn Breaker">
+    <Class>Equipment</Class>
+    <Item />
+    <Lucky />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0x7e</Index>
+    </Texture>
+    <SlotType>1</SlotType>
+    <Legendary />
+    <Description>This broad sword is powerfully held with every might and power it draws from its pending slash. This is made by the strongly enchanted horns of Oryx. No event or mob can conquer this weapon with the divine enigma it holds.</Description>
+    <RateOfFire>1</RateOfFire>
+    <Sound>weapon/mithril_sword</Sound>
+    <Projectile>
+      <ObjectId>Horn Breaker Shot</ObjectId>
+      <Speed>125</Speed>
+      <MinDamage>355</MinDamage>
+      <MaxDamage>375</MaxDamage>
+      <LifetimeMS>340</LifetimeMS>
+      <Frequency>1</Frequency>
+      <Size>80</Size>
+      <ArmorPiercing />
+    </Projectile>
+    <NumProjectiles>1</NumProjectiles>
+    <ArcGap>11</ArcGap>
+    <ActivateOnEquip stat="20" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="2">IncrementStat</ActivateOnEquip>
+    <BagType>7</BagType>
+    <FameBonus>6</FameBonus>
+    <DisplayId>The Horn Breaker</DisplayId>
+  </Object>
+	<Object type="0x9501" id="Shattered War Axe">
+		<Class>Equipment</Class>
+		<Item />
+		<Lucky />
+		<Texture>
+			<File>lofiObj7</File>
+			<Index>0x00</Index>
+		</Texture>
+		<SlotType>1</SlotType>
+		<Legendary />
+		<Description>Tribute to RoTF</Description>
+		<RateOfFire>.6</RateOfFire>
+		<Sound>weapon/mithril_sword</Sound>
+		<Projectile>
+			<ObjectId>Shattered War Shot</ObjectId>
+			<Speed>75</Speed>
+			<MinDamage>355</MinDamage>
+			<MaxDamage>1000</MaxDamage>
+			<LifetimeMS>750</LifetimeMS>
+			<Size>100</Size>
+			<ArmorPiercing />
+			<MultiHit />
+		</Projectile>
+		<NumProjectiles>1</NumProjectiles>
+		<BagType>7</BagType>
+		<FameBonus>6</FameBonus>
+		<DisplayId>Shattered War Axe</DisplayId>
+	</Object>
+</Objects>

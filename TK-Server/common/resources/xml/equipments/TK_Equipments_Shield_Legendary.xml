@@ -1,0 +1,112 @@
+<Objects>
+	<Object type="0xa425" id="Dark Skeleton's Shield" spritePeriod="2" spriteFile="CustomObj" spriteArray="219-220">"
+	    <Class>Equipment</Class>
+		<Item />
+		<Insanity />
+		<Mythical />
+		<Texture>
+			<File>CustomObj</File>
+			<Index>0xdb</Index>
+		</Texture>
+		<SlotType>5</SlotType>
+		<Description>You can still hear the screams of the souls trapped in the shield...</Description>
+		<Sound>spell/fire_spray</Sound>
+		<Projectile>
+			<ObjectId>Dark Skeleton Shield Shot</ObjectId>
+			<Speed>160</Speed>
+			<MinDamage>800</MinDamage>
+			<MaxDamage>1000</MaxDamage>
+			<LifetimeMS>300</LifetimeMS>
+			<Size>140</Size>
+			<ConditionEffect duration="4">Stunned</ConditionEffect>
+			<ConditionEffect duration="2.5">Paralyzed</ConditionEffect>
+			<ConditionEffect duration="4">Curse</ConditionEffect>
+			<ConditionEffect duration="3">Dazed</ConditionEffect>		
+			<MultiHit />
+			<PassesCover />
+			<ParticleTrail />
+		</Projectile>
+		<ActivateOnEquip stat="21" amount="25">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="27" amount="10">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="22" amount="-5">IncrementStat</ActivateOnEquip>		
+		<Usable />
+		<BagType>7</BagType>
+		<FameBonus>6</FameBonus>
+		<MpCost>125</MpCost>
+		<Activate>Shoot</Activate>
+		<NumProjectiles>5</NumProjectiles>
+		<feedPower>1000</feedPower>
+	</Object>
+  <Object type="0xc0f" id="Shield of Ogmur">
+    <Class>Equipment</Class>
+    <Item />
+    <Mutilate />
+    <Legendary />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0xe9</Index>
+    </Texture>
+    <SlotType>5</SlotType>
+    <Description>This massive shield was created for the wealthy and powerful Ogre kings as a sign of their unrivaled strength.</Description>
+    <Sound>spell/fire_spray</Sound>
+    <Projectile>
+      <ObjectId>Silver Shield</ObjectId>
+      <Speed>160</Speed>
+      <MinDamage>450</MinDamage>
+      <MaxDamage>600</MaxDamage>
+      <LifetimeMS>200</LifetimeMS>
+      <Size>140</Size>
+      <ConditionEffect duration="4">Armor Broken</ConditionEffect>
+      <MultiHit />
+      <PassesCover />
+      <ParticleTrail />
+    </Projectile>
+    <ActivateOnEquip stat="21" amount="15">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
+    <ConditionEffect duration="4">Armor Broken</ConditionEffect>
+    <Usable />
+    <BagType>7</BagType>
+    <FameBonus>6</FameBonus>
+    <MpCost>100</MpCost>
+    <Activate>Shoot</Activate>
+    <NumProjectiles>5</NumProjectiles>
+    <feedPower>1000</feedPower>
+  </Object>
+  <Object type="0x50f2" id="Shield of The Ancient's">
+    <Class>Equipment</Class>
+    <Item />
+    <SteamRoller />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0x9c</Index>
+    </Texture>
+    <SlotType>5</SlotType>
+    <Legendary />
+    <Description>A shield made of sturdy wood.</Description>
+    <Sound>spell/fire_spray</Sound>
+    <Projectile>
+      <ObjectId>Shield of The Ancient's Shot</ObjectId>
+      <Speed>160</Speed>
+      <MinDamage>270</MinDamage>
+      <MaxDamage>330</MaxDamage>
+      <LifetimeMS>155</LifetimeMS>
+      <Size>140</Size>
+      <ConditionEffect duration="3">Stunned</ConditionEffect>
+      <ConditionEffect duration="3">Paralyzed</ConditionEffect>
+      <MultiHit />
+      <PassesCover />
+      <ParticleTrail />
+    </Projectile>
+    <ActivateOnEquip stat="21" amount="12">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="50">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="50">IncrementStat</ActivateOnEquip>
+    <ConditionEffect duration="3">Stunned</ConditionEffect>
+    <ConditionEffect duration="3">Paralyzed</ConditionEffect>
+    <Usable />
+    <BagType>7</BagType>
+    <MpCost>115</MpCost>
+    <Activate>Shoot</Activate>
+    <NumProjectiles>4</NumProjectiles>
+    <feedPower>5</feedPower>
+  </Object>
+</Objects>

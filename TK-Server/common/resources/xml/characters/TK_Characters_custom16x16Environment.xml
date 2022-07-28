@@ -1,0 +1,34 @@
+<Objects>
+  <Object type="0x5047" id="Strange Statue">
+    <DisplayId>Strange Statue</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <Texture>
+      <File>custom16x16Environment</File>
+      <Index>0x00</Index>
+    </Texture>
+    <MaxHitPoints>15000</MaxHitPoints>
+    <Defense>15</Defense>
+    <Size>160</Size>
+    <XpMult>0.0</XpMult>
+  </Object>
+  <Object type="0x5115" id="Soul of Life Mob">
+    <DisplayId>Soul of Life</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <Chest />
+    <Texture>
+      <File>custom16x16Environment</File>
+      <Index>0x04</Index>
+    </Texture>
+    <AltTexture id="1">
+      <Texture>
+        <File>custom16x16Environment</File>
+        <Index>0x05</Index>
+      </Texture>
+    </AltTexture>
+    <Size>100</Size>
+    <MaxHitPoints>30000</MaxHitPoints>
+    <Defense>20</Defense>
+  </Object>
+</Objects>

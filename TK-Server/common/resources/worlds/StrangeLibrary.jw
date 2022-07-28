@@ -1,0 +1,12 @@
+{"id":0,
+"isLimbo":false,
+"name":"Strange Library",
+"sbName":"Strange Library",
+"difficulty":5,
+"background":0,
+"blocking":1,
+"restrictTp":false,
+"showDisplays":false,
+"portals":[0x5033],
+"maps":["StrangeLibrary.jm"],
+"music":["strangelibrary"]}

@@ -1,0 +1,56 @@
+<Objects>
+  <Object type="0xa00a" id="Gravestone 12/16">
+    <Class>GameObject</Class>
+    <ShowName />
+    <Texture>
+      <File>CustomObjects32x32</File>
+      <Index>0x15</Index>
+    </Texture>
+  </Object>
+  <Object type="0xa00b" id="Gravestone 13/16">
+    <Class>GameObject</Class>
+    <ShowName />
+    <Texture>
+      <File>CustomObjects32x32</File>
+      <Index>0x16</Index>
+    </Texture>
+  </Object>
+  <Object type="0xa00c" id="Gravestone 14/16">
+    <Class>GameObject</Class>
+    <ShowName />
+    <Texture>
+      <File>CustomObjects32x32</File>
+      <Index>0x17</Index>
+    </Texture>
+  </Object>
+  <Object type="0xa00d" id="Gravestone 15/16">
+    <Class>GameObject</Class>
+    <ShowName />
+    <Texture>
+      <File>CustomObjects32x32</File>
+      <Index>0x18</Index>
+    </Texture>
+  </Object>
+  <Object type="0xa00e" id="Gravestone 16/16">
+    <Class>GameObject</Class>
+    <ShowName />
+    <Texture>
+      <File>CustomObjects32x32</File>
+      <Index>0x1a</Index>
+    </Texture>
+  </Object>
+  <Object type="0x5113" id="Throne">
+    <DisplayId>Throne</DisplayId>
+    <Class>GameObject</Class>
+    <Texture>
+      <File>CustomObjects32x32</File>
+      <Index>0x14</Index>
+    </Texture>
+    <Size>150</Size>
+    <OccupySquare />
+    <EnemyOccupySquare />
+    <ShadowSize>80</ShadowSize>
+    <SizeStep>5</SizeStep>
+    <MaxHitPoints>100000</MaxHitPoints>
+  </Object>
+</Objects>

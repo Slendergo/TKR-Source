@@ -1,0 +1,69 @@
+<Objects>
+  <Object type="0xc30" id="Scepter of Fulmination">
+    <Class>Equipment</Class>
+    <Item />
+    <Legendary />
+    <Demonized />
+    <Texture>
+      <File>lofiObj3</File>
+      <Index>0x1af</Index>
+    </Texture>
+    <SlotType>23</SlotType>
+    <Description>This scepter's blast is so powerful it will slow opponents.</Description>
+    <Sound>spell/magic_nova</Sound>
+    <ActivateOnEquip stat="20" amount="5">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="5">IncrementStat</ActivateOnEquip>
+    <Usable />
+    <BagType>7</BagType>
+    <FameBonus>4</FameBonus>
+    <MpCost>65</MpCost>
+    <Activate effect="Berserk" duration="2.5">ConditionEffectSelf</Activate>
+    <Activate totalDamage="280" maxTargets="7" condEffect="Slowed" condDuration="3" color="0xff9933" useWisMod="true">Lightning</Activate>
+    <feedPower>1100</feedPower>
+  </Object>
+  <Object type="0x50e2" id="Megamoth's Scepter">
+    <Class>Equipment</Class>
+    <Item />
+    <OutOfOneMind />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0x9a</Index>
+    </Texture>
+    <SlotType>23</SlotType>
+    <Legendary />
+    <Description></Description>
+    <Sound>spell/magic_nova</Sound>
+    <ActivateOnEquip stat="21" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="60">IncrementStat</ActivateOnEquip>
+    <Usable />
+    <BagType>7</BagType>
+    <FameBonus>6</FameBonus>
+    <MpCost>90</MpCost>
+    <Activate totalDamage="700" maxTargets="4" condEffect="Paralyzed" condDuration="3" color="0xff9933" useWisMod="true">Lightning</Activate>
+    <DisplayId>Megamoth's Scepter</DisplayId>
+  </Object>
+    <Object type="0x50f8" id="Essence Eater">
+    <Class>Equipment</Class>
+    <Item />
+    <Mutilate />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0xf1</Index>
+    </Texture>
+    <SlotType>23</SlotType>
+    <Legendary />
+    <Description>By directing some of his life force outwards into a destructive blast, Ruthven was able to use this artifact to incapacitate foes much more magically gifted than himself.</Description>
+    <Sound>spell/magic_nova</Sound>
+    <ActivateOnEquip stat="20" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="4">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="-6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="8">IncrementStat</ActivateOnEquip>
+    <Usable />
+    <BagType>7</BagType>
+    <FameBonus>7</FameBonus>
+    <MpCost>130</MpCost>
+    <Activate totalDamage="1000" maxTargets="2" condEffect="ArmorBroken" condDuration=".75" color="0xB2FAE2" useWisMod="true">Lightning</Activate>
+    <DisplayId>Essence Eater</DisplayId>
+  </Object>
+</Objects>

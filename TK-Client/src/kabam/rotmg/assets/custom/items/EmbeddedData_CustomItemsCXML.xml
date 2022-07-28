@@ -1,0 +1,509 @@
+<Objects>
+    <Object type="0x9520" id="Quest Chest">
+        <DisplayId>Quest Chest</DisplayId>
+        <Class>Character</Class>
+        <Enemy/>
+        <Texture>
+            <File>lofiObj7</File>
+            <Index>0x10</Index>
+        </Texture>
+        <MaxHitPoints>7500</MaxHitPoints>
+        <Defense>0</Defense>
+        <Size>140</Size>
+    </Object>
+
+    <Object type="0x9521" id="Quest Chest Item">
+        <DisplayId>Standard Quest Chest</DisplayId>
+        <Class>Equipment</Class>
+        <Item/>
+        <Texture>
+            <File>lofiObj7</File>
+            <Index>0x10</Index>
+        </Texture>
+        <SlotType>10</SlotType>
+        <Description>Todo</Description>
+        <Consumable/>
+        <Activate id="Standard Quest Chest">Create</Activate>
+        <ExtraTooltipData>
+            <EffectInfo name="Info" description="Only usable in the Vault."/>
+        </ExtraTooltipData>
+        <feedPower>200</feedPower>
+        <BagType>6</BagType>
+    </Object>
+    <Object type="0x9703" id="Epic Quest Chest Item">
+        <Class>Equipment</Class>
+        <Item />
+        <Texture>
+            <File>lofiObj3</File>
+            <Index>0xf4</Index>
+        </Texture>
+        <SlotType>10</SlotType>
+        <Description>Todo</Description>
+        <Sound>use_key</Sound>
+        <Consumable />
+        <Activate objectId="Epic Quest Chest">Create</Activate>
+        <feedPower>200</feedPower>
+        <BagType>5</BagType>
+        <Track />
+    </Object>
+    <Object type="0x9701" id="Epic Quest Chest">
+        <DisplayId>Quest Chest</DisplayId>
+        <Class>Character</Class>
+        <Enemy/>
+        <Texture>
+            <File>lofiObj7</File>
+            <Index>0x11</Index>
+        </Texture>
+        <MaxHitPoints>5000</MaxHitPoints>
+        <Defense>0</Defense>
+        <Size>100</Size>
+        <XpMult>5</XpMult>
+    </Object>
+
+
+    <!-- Misc/Talismans -->
+    <Object type="0xa420" id="Cerberus's Core" spritePeriod="2" spriteFile="CustomObj" spriteArray="17-18">
+        <Class>Equipment</Class>
+        <Item />
+        <HoldableItem />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x11</Index>
+        </Texture>
+        <SlotType>10</SlotType>
+        <Description> Cerberus's Core, contains the very essence of Cerberus himself.</Description>
+        <Sound>use_potion</Sound>
+        <Eternal />
+        <ExtraTooltipData>
+            <EffectInfo name="Soul of Cerberus" description="Immunity to Stun, Daze, and Slowed. Berserk for 5 seconds every 15 Seconds." />
+        </ExtraTooltipData>
+        <BagType>7</BagType>
+        <feedPower>15</feedPower>
+    </Object>
+    <Object type="0xa41f" id="Cerberus's Right Claw">
+        <Class>Equipment</Class>
+        <Item />
+        <HoldableItem />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0xcc</Index>
+        </Texture>
+        <SlotType>10</SlotType>
+        <Description>Cerberus's Right Claw, said to hold the souls of the dead.</Description>
+        <Sound>use_potion</Sound>
+        <Mythical />
+        <ExtraTooltipData>
+            <EffectInfo name="Killing Spree" description="For Every 1500 Enemies Killed, Maximum HP Increases by 50 {Caps at 500}. Immunity to Slowed" />
+        </ExtraTooltipData>
+        <BagType>7</BagType>
+        <feedPower>15</feedPower>
+    </Object>
+    <Object type="0xa41e" id="Cerberus's Left Claw">
+        <Class>Equipment</Class>
+        <Item />
+        <HoldableItem />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0xcb</Index>
+        </Texture>
+        <SlotType>10</SlotType>
+        <Description>Cereberus's Left Claw, said to hold the fury of the dead.</Description>
+        <Sound>use_potion</Sound>
+        <Mythical />
+        <ExtraTooltipData>
+            <EffectInfo name="Frenzy" description="For every mob within a 10 distance radius, Attack goes up by 1.{Caps at 20}. Immunity to Dazed" />
+        </ExtraTooltipData>
+        <BagType>7</BagType>
+        <feedPower>15</feedPower>
+    </Object>
+    <Object type="0x4927" id="Gem of Life">
+        <Class>Equipment</Class>
+        <Item />
+        <HoldableItem />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x13</Index>
+        </Texture>
+        <SlotType>10</SlotType>
+        <Description>The Gem that have the power of Life.</Description>
+        <Sound>use_potion</Sound>
+        <ExtraTooltipData>
+            <EffectInfo name="Power of Life" description="If your Life is below half, you regenerate the quintuple fast." />
+        </ExtraTooltipData>
+        <Legendary />
+        <BagType>7</BagType>
+        <feedPower>15</feedPower>
+    </Object>
+
+    <Object type="0x492c" id="Talisman of Mana">
+        <Class>Equipment</Class>
+        <Item />
+        <HoldableItem />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x17</Index>
+        </Texture>
+        <SlotType>10</SlotType>
+        <Description>This Talisman has the power of mana.</Description>
+        <Sound>use_potion</Sound>
+        <Legendary />
+        <ExtraTooltipData>
+            <EffectInfo name="Power of Mana" description="If your Mana is below the half, you regenerate the quintuple fast." />
+        </ExtraTooltipData>
+        <BagType>7</BagType>
+        <feedPower>15</feedPower>
+    </Object>
+
+    <Object type="0x4950" id="Marble's Hand">
+        <Class>Equipment</Class>
+        <DisplayId>Marble's Hand</DisplayId>
+        <Item />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x1c</Index>
+        </Texture>
+        <HoldableItem />
+        <SetStatsNoStack />
+        <StatSetNoStack>0</StatSetNoStack>
+        <AmountSetNoStack>100</AmountSetNoStack>
+        <SlotType>10</SlotType>
+        <Description>The hand of the Marble Colossus, it contains the power of the hand.</Description>
+        <ExtraTooltipData>
+            <EffectInfo name="Marble Power" description="While holding this item, you will be immune to Unstable." />
+            <EffectInfo name="Immune to Unstable." description="" />
+            <EffectInfo name="On Handling" description="While holding this, it will give you +100 HP." />
+        </ExtraTooltipData>
+        <Legendary />
+        <BagType>7</BagType>
+    </Object>
+
+    <Object type="0x50ec" id="Talisman of Luck">
+        <Class>Equipment</Class>
+        <Item />
+        <HoldableItem />
+        <ExtraTooltipData>
+            <EffectInfo name="Looting:" description="Holding this item gives you 20% of Loot! (One per Inventory)." />
+        </ExtraTooltipData>
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x94</Index>
+        </Texture>
+        <SlotType>10</SlotType>
+        <Description>This Talisman contain the Power of the Lucky, as long as you hold this, your luck will increase</Description>
+        <Legendary />
+        <BagType>7</BagType>
+    </Object>
+
+    <Object type="0x5060" id="Talisman of Looting">
+        <Class>Equipment</Class>
+        <Item />
+        <HoldableItem />
+        <ExtraTooltipData>
+            <EffectInfo name="Looting:" description="Holding this item gives you 2% of Loot!." />
+        </ExtraTooltipData>
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x7d</Index>
+        </Texture>
+        <SlotType>10</SlotType>
+        <Description>This Talisman contains a fire which give you % of Looting.</Description>
+        <Sound>use_potion</Sound>
+        <SNormal />
+        <BagType>3</BagType>
+    </Object>
+
+    <!-- Misc/Talismans -->
+
+    <!-- Fragments -->
+
+    <Object type="0x5019" id="Fire Fragment">
+        <Class>Equipment</Class>
+        <Item />
+        <SlotType>10</SlotType>
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x49</Index>
+        </Texture>
+        <Description>This fragment contains the power of the Fire Elemental, use it with conscience and you will obtain unmatched power.</Description>
+        <Sound>use_potion</Sound>
+        <Forgeable />
+        <Legendary />
+        <Soulbound />
+        <BagType>6</BagType>
+    </Object>
+    <Object type="0x501a" id="Water Fragment">
+        <Class>Equipment</Class>
+        <Item />
+        <SlotType>10</SlotType>
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x4a</Index>
+        </Texture>
+        <Description>This fragment contains the power of the Water Elemental, use it with conscience and you will obtain unmatched power.</Description>
+        <Sound>use_potion</Sound>
+        <Forgeable />
+        <Legendary />
+        <Soulbound />
+        <BagType>8</BagType>
+    </Object>
+    <Object type="0x501b" id="Wind Fragment">
+        <Class>Equipment</Class>
+        <Item />
+        <SlotType>10</SlotType>
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x4b</Index>
+        </Texture>
+        <Description>This fragment contains the power of the Wind Elemental, use it with conscience and you will obtain unmatched power.</Description>
+        <Sound>use_potion</Sound>
+        <Forgeable />
+        <Legendary />
+        <Soulbound />
+        <BagType>8</BagType>
+    </Object>
+    <Object type="0x501c" id="Earth Fragment">
+        <Class>Equipment</Class>
+        <Item />
+        <SlotType>10</SlotType>
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x4c</Index>
+        </Texture>
+        <Description>This fragment contains the power of the Earth Elemental, use it with conscience and you will obtain unmatched power.</Description>
+        <Sound>use_potion</Sound>
+        <Forgeable />
+        <Legendary />
+        <Soulbound />
+        <BagType>8</BagType>
+    </Object>
+    <Object type="0x501d" id="Earth and Wind Fragment">
+        <Class>Equipment</Class>
+        <Item />
+        <SlotType>10</SlotType>
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x4d</Index>
+        </Texture>
+        <Description>This fragment contains the power of the Earth Elemental and the Wind Elemental, use it with conscience and you will obtain unmatched power.</Description>
+        <Sound>use_potion</Sound>
+        <Forgeable />
+        <Legendary />
+        <Soulbound />
+        <BagType>7</BagType>
+    </Object>
+    <Object type="0x501e" id="Fire and Water Fragment">
+        <Class>Equipment</Class>
+        <Item />
+        <SlotType>10</SlotType>
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x4e</Index>
+        </Texture>
+        <Description>This fragment contains the power of the Fire Elemental and the Water Elemental, use it with conscience and you will obtain unmatched power.</Description>
+        <Sound>use_potion</Sound>
+        <Forgeable />
+        <Legendary />
+        <Soulbound />
+        <BagType>7</BagType>
+    </Object>
+    <Object type="0x501f" id="Omnipotence Fragment">
+        <Class>Equipment</Class>
+        <Item />
+        <SlotType>10</SlotType>
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x4f</Index>
+        </Texture>
+        <Description>This is the legendary fragment, it contains the power of all elementers together. The legend says that if you join it with another fragment, it will give you a weapon with incredible power.</Description>
+        <Sound>use_potion</Sound>
+        <Forgeable />
+        <Legendary />
+        <Soulbound />
+        <BagType>7</BagType>
+    </Object>
+
+    <!-- Fragments -->
+
+    <!-- Cocktails -->
+
+    <Object type="0x5038" id="Cocktail of Vitality">
+        <DisplayId>Cocktail of Vitality</DisplayId>
+        <Class>Equipment</Class>
+        <Item />
+        <InvUse />
+        <Maxy />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x5f</Index>
+        </Texture>
+        <SlotType>10</SlotType>
+        <Description>Drink it and see what happens!</Description>
+        <Sound>use_potion</Sound>
+        <Activate stat="26" amount="1000">IncrementStat</Activate>
+        <Consumable />
+        <Soulbound />
+        <BagType>5</BagType>
+    </Object>
+    <Object type="0x5039" id="Cocktail of Wisdom">
+        <DisplayId>Cocktail of Wisdom</DisplayId>
+        <Class>Equipment</Class>
+        <Item />
+        <InvUse />
+        <Maxy />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x5e</Index>
+        </Texture>
+        <SlotType>10</SlotType>
+        <Description>Drink it and see what happens!</Description>
+        <Sound>use_potion</Sound>
+        <Activate stat="27" amount="1000">IncrementStat</Activate>
+        <Consumable />
+        <Soulbound />
+        <BagType>5</BagType>
+    </Object>
+    <Object type="0x503a" id="Cocktail of Dexterity">
+        <DisplayId>Cocktail of Dexterity</DisplayId>
+        <Class>Equipment</Class>
+        <Item />
+        <InvUse />
+        <Maxy />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x5b</Index>
+        </Texture>
+        <SlotType>10</SlotType>
+        <Description>Drink it and see what happens!</Description>
+        <Sound>use_potion</Sound>
+        <Activate stat="28" amount="1000">IncrementStat</Activate>
+        <Consumable />
+        <Soulbound />
+        <BagType>5</BagType>
+    </Object>
+    <Object type="0x503b" id="Cocktail of Speed">
+        <DisplayId>Cocktail of Speed</DisplayId>
+        <Class>Equipment</Class>
+        <Item />
+        <InvUse />
+        <Maxy />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x60</Index>
+        </Texture>
+        <SlotType>10</SlotType>
+        <Description>Drink it and see what happens!</Description>
+        <Sound>use_potion</Sound>
+        <Activate stat="22" amount="1000">IncrementStat</Activate>
+        <Consumable />
+        <Soulbound />
+        <BagType>5</BagType>
+    </Object>
+    <Object type="0x503c" id="Cocktail of Attack">
+        <DisplayId>Cocktail of Attack</DisplayId>
+        <Class>Equipment</Class>
+        <Item />
+        <InvUse />
+        <Maxy />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x5d</Index>
+        </Texture>
+        <SlotType>10</SlotType>
+        <Description>Drink it and see what happens!</Description>
+        <Sound>use_potion</Sound>
+        <Activate stat="20" amount="1000">IncrementStat</Activate>
+        <Consumable />
+        <Soulbound />
+        <BagType>5</BagType>
+    </Object>
+    <Object type="0x503d" id="Cocktail of Defense">
+        <DisplayId>Cocktail of Defense</DisplayId>
+        <Class>Equipment</Class>
+        <Item />
+        <InvUse />
+        <Maxy />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x5c</Index>
+        </Texture>
+        <SlotType>10</SlotType>
+        <Description>Drink it and see what happens!</Description>
+        <Sound>use_potion</Sound>
+        <Activate stat="21" amount="1000">IncrementStat</Activate>
+        <Consumable />
+        <Soulbound />
+        <BagType>5</BagType>
+    </Object>
+    <Object type="0x503e" id="Cocktail of Life">
+        <DisplayId>Cocktail of Life</DisplayId>
+        <Class>Equipment</Class>
+        <Item />
+        <InvUse />
+        <Maxy />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x62</Index>
+        </Texture>
+        <SlotType>10</SlotType>
+        <Description>Drink it and see what happens!</Description>
+        <Sound>use_potion</Sound>
+        <Activate stat="0" amount="1000">IncrementStat</Activate>
+        <Consumable />
+        <Soulbound />
+        <BagType>5</BagType>
+    </Object>
+    <Object type="0x503f" id="Cocktail of Mana">
+        <DisplayId>Cocktail of Mana</DisplayId>
+        <Class>Equipment</Class>
+        <Item />
+        <InvUse />
+        <Maxy />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x61</Index>
+        </Texture>
+        <SlotType>10</SlotType>
+        <Description>Drink it and see what happens!</Description>
+        <Sound>use_potion</Sound>
+        <Activate stat="3" amount="1000">IncrementStat</Activate>
+        <Consumable />
+        <Soulbound />
+        <BagType>5</BagType>
+    </Object>
+
+    <!-- Cocktails -->
+
+    <Object type="0x5034" id="Strange Library Key">
+        <Class>Equipment</Class>
+        <Item />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x68</Index>
+        </Texture>
+        <SlotType>10</SlotType>
+        <Description>A key which opens an entrance to an Strange Library.</Description>
+        <Sound>use_key</Sound>
+        <Consumable />
+        <Activate id="Strange Door">Create</Activate>
+        <BagType>6</BagType>
+        <Track />
+    </Object>
+
+    <Object type="0x506d" id="Magic Paper">
+        <DisplayId>Magic Paper</DisplayId>
+        <Class>Equipment</Class>
+        <Item />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x82</Index>
+        </Texture>
+        <Activate>ResetSkillTree</Activate>
+        <SlotType>10</SlotType>
+        <Description>This paper contain a Magic Power that reset all your Skill Tree Points.</Description>
+        <Sound>use_potion</Sound>
+        <InvUse />
+        <NoTierTag />
+        <Soulbound />
+        <BagType>4</BagType>
+    </Object>
+</Objects>

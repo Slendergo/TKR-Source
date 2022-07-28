@@ -1,0 +1,9 @@
+@echo off
+echo Starting database process...
+start run_database_server.bat
+echo Starting server process...
+start run_server_debug.bat
+echo Starting wServer process...
+start run_wserver_debug.bat
+echo All pending processes have been executed! Initializing game server.
+exit

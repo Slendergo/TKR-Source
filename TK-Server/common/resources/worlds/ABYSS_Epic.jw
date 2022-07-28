@@ -1,0 +1,12 @@
+{"id":0,
+"isLimbo":false,
+"name":"Hideout of Malphas",
+"sbName":"Hideout of Malphas",
+"difficulty":5,
+"background":0,
+"blocking":1,
+"restrictTp":false,
+"showDisplays":false,
+"portals":[0x950b],
+"maps":["ABYSS_Epic.jm"],
+"music":["abyss"]}

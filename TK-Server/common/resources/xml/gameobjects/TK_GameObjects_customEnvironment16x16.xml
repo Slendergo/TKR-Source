@@ -1,0 +1,66 @@
+<Objects>
+  <Object type="0xa007" id="Gravestone 9/16">
+    <Class>GameObject</Class>
+    <ShowName />
+    <Texture>
+      <File>customEnvironment16x16</File>
+      <Index>0x10</Index>
+    </Texture>
+  </Object>
+  <Object type="0xa008" id="Gravestone 10/16">
+    <Class>GameObject</Class>
+    <ShowName />
+    <Texture>
+      <File>customEnvironment16x16</File>
+      <Index>0x11</Index>
+    </Texture>
+  </Object>
+  <Object type="0xa009" id="Gravestone 11/16">
+    <Class>GameObject</Class>
+    <ShowName />
+    <Texture>
+      <File>customEnvironment16x16</File>
+      <Index>0x12</Index>
+    </Texture>
+  </Object>
+  <Object type="0x9028" id="Hard Bounty Withered Tree 1">
+    <Class>GameObject</Class>
+    <Texture>
+      <File>customEnvironment16x16</File>
+      <Index>0x04</Index>
+    </Texture>
+    <ShadowSize>50</ShadowSize>
+  </Object>
+  <Object type="0x9029" id="Hard Bounty Withered Tree 2">
+    <Class>GameObject</Class>
+    <Texture>
+      <File>customEnvironment16x16</File>
+      <Index>0x05</Index>
+    </Texture>
+    <ShadowSize>50</ShadowSize>
+  </Object>
+  <Object type="0x499f" id="Earth Environment Biome">
+    <Class>GameObject</Class>
+    <ShadowSize>80</ShadowSize>
+    <MinSize>100</MinSize>
+    <MaxSize>120</MaxSize>
+    <SizeStep>5</SizeStep>
+    <OccupySquare />
+    <EnemyOccupySquare />
+    <Static />
+    <RandomTexture>
+      <Texture>
+        <File>customEnvironment16x16</File>
+        <Index>0x00</Index>
+      </Texture>
+      <Texture>
+        <File>customEnvironment16x16</File>
+        <Index>0x01</Index>
+      </Texture>
+      <Texture>
+        <File>customEnvironment16x16</File>
+        <Index>0x02</Index>
+      </Texture>
+    </RandomTexture>
+  </Object>
+</Objects>

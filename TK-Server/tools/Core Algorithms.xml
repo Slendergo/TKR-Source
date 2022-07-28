@@ -1,0 +1,492 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Core Algorithms</name>
+    </assembly>
+    <members>
+        <member name="T:CA.Networking.ConnectionCentral">
+            <summary>
+            Represents a local instance of server listener, using TCP protocol, that could be configured for any <see cref="T:CA.Networking.ConnectionType"/>.
+            </summary>
+            <exception cref="T:System.ArgumentException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="P:CA.Networking.ConnectionCentral.GetFlag">
+            <summary>
+            Get the current <see cref="T:CA.Networking.ConnectionFlag"/> flag.
+            </summary>
+        </member>
+        <member name="P:CA.Networking.ConnectionCentral.MaxInboundConnectionsByIp">
+            <summary>
+            Get the maximum number of <see cref="T:CA.Networking.InboundConnection"/> associated per <see cref="T:System.Net.IPAddress"/>.
+            </summary>
+        </member>
+        <member name="M:CA.Networking.ConnectionCentral.GetAllInboundPackets">
+            <summary>
+            Gets a matrix of all <see cref="T:CA.Networking.InboundPacket"/> from all <see cref="T:CA.Networking.InboundConnection"/>.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CA.Networking.ConnectionCentral.Start">
+            <summary>
+            Start listening for new clients.
+            </summary>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:CA.Networking.ConnectionCentral.Stop">
+            <summary>
+            Stop listening for new clients.
+            </summary>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="T:CA.Networking.ConnectionFlag">
+            <summary>
+            Represents current flag of connection routines.
+            </summary>
+        </member>
+        <member name="F:CA.Networking.ConnectionFlag.Idle">
+            <summary>
+            When not listening for inbound connections.
+            </summary>
+        </member>
+        <member name="F:CA.Networking.ConnectionFlag.Listening">
+            <summary>
+            When listening for inbound traffic.
+            </summary>
+        </member>
+        <member name="F:CA.Networking.ConnectionFlag.Aborted">
+            <summary>
+            When listener aborted and no new connection is stablished along inbound traffic.
+            </summary>
+        </member>
+        <member name="T:CA.Networking.ConnectionType">
+            <summary>
+            Represents the type of connection for <see cref="T:CA.Networking.ConnectionCentral"/> instance.
+            </summary>
+        </member>
+        <member name="F:CA.Networking.ConnectionType.Local">
+            <summary>
+            Restricted to the same host.
+            </summary>
+        </member>
+        <member name="F:CA.Networking.ConnectionType.Subnet">
+            <summary>
+            Restricted to the same subnet.
+            </summary>
+        </member>
+        <member name="F:CA.Networking.ConnectionType.Intranet">
+            <summary>
+            Restricted to the same site.
+            </summary>
+        </member>
+        <member name="F:CA.Networking.ConnectionType.Regional">
+            <summary>
+            Restricted to the same region.
+            </summary>
+        </member>
+        <member name="F:CA.Networking.ConnectionType.Continental">
+            <summary>
+            Restricted to the same continent.
+            </summary>
+        </member>
+        <member name="F:CA.Networking.ConnectionType.World">
+            <summary>
+            Unrestricted.
+            </summary>
+        </member>
+        <member name="T:CA.Networking.InboundConnection">
+            <summary>
+            Represents an inbound connection type.
+            </summary>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <exception cref="T:System.OperationCanceledException"></exception>
+            <exception cref="T:System.Net.Sockets.SocketException"></exception>
+        </member>
+        <member name="P:CA.Networking.InboundConnection.Clients">
+            <summary>
+            Get a list of all sockets associated to <see cref="T:System.Net.IPAddress"/>.
+            </summary>
+        </member>
+        <member name="P:CA.Networking.InboundConnection.GetConnections">
+            <summary>
+            Get number of connections associated to <see cref="P:CA.Networking.InboundConnection.Clients"/>.
+            </summary>
+        </member>
+        <member name="P:CA.Networking.InboundConnection.GetFlag">
+            <summary>
+            Get the current <see cref="T:CA.Networking.ConnectionFlag"/> flag.
+            </summary>
+        </member>
+        <member name="P:CA.Networking.InboundConnection.GetIPAddress">
+            <summary>
+            Returns the <see cref="T:System.Net.IPAddress"/> from remote associated <see cref="P:CA.Networking.InboundConnection.Clients"/>.
+            </summary>
+        </member>
+        <member name="P:CA.Networking.InboundConnection.GetToken">
+            <summary>
+            Get the <see cref="T:System.Threading.CancellationToken"/> of attached task.
+            </summary>
+        </member>
+        <member name="M:CA.Networking.InboundConnection.Add(System.Net.Sockets.TcpClient)">
+            <summary>
+            Add <see cref="T:System.Net.Sockets.TcpClient"/> to current inbound connection of current thread.
+            </summary>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <param name="tcpClient"></param>
+        </member>
+        <member name="M:CA.Networking.InboundConnection.AttachToParent(System.Threading.CancellationToken)">
+            <summary>
+            Attach a process to parent in case of external task cancellation request.
+            </summary>
+            <param name="token"></param>
+        </member>
+        <member name="M:CA.Networking.InboundConnection.Equals(System.Object)">
+            <summary>
+            Compare two <see cref="T:CA.Networking.InboundConnection"/> by <see cref="T:System.Net.IPAddress"/>.
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CA.Networking.InboundConnection.GetEndPointPackets">
+            <summary>
+            Get an enumerable of <see cref="T:CA.Networking.InboundPacket"/> from <see cref="T:CA.Networking.InboundTraffic"/>.
+            All pending packets are enqueued into <see cref="T:CA.Networking.InboundConnection"/> for each <see cref="T:System.Net.EndPoint"/>.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CA.Networking.InboundConnection.Remove(System.Net.Sockets.TcpClient)">
+            <summary>
+            Remove <see cref="T:System.Net.Sockets.TcpClient"/> to current inbound connection of current thread.
+            </summary>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <exception cref="T:System.Net.Sockets.SocketException"></exception>
+            <param name="tcpClient"></param>
+        </member>
+        <member name="M:CA.Networking.InboundConnection.Start">
+            <summary>
+            Start listening for inbound traffic.
+            </summary>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:CA.Networking.InboundConnection.Stop">
+            <summary>
+            Stop listening for inbound traffic.
+            </summary>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="T:CA.Networking.InboundPacket">
+            <summary>
+            Represents a structure for inbound packet from <see cref="T:CA.Networking.InboundTraffic"/>.
+            </summary>
+        </member>
+        <member name="F:CA.Networking.InboundPacket.EndPoint">
+            <summary>
+            Gets the network address of <see cref="T:CA.Networking.InboundTraffic"/>.
+            </summary>
+        </member>
+        <member name="F:CA.Networking.InboundPacket.PacketData">
+            <summary>
+            Gets the pending packet of <see cref="T:CA.Networking.InboundTraffic"/>.
+            </summary>
+        </member>
+        <member name="T:CA.Networking.InboundTraffic">
+            <summary>
+            Represents an inbound traffic from <see cref="T:CA.Networking.InboundConnection"/>.
+            </summary>
+        </member>
+        <member name="P:CA.Networking.InboundTraffic.EndPoint">
+            <summary>
+            Gets the network address of <see cref="T:CA.Networking.InboundConnection"/> traffic.
+            </summary>
+        </member>
+        <member name="P:CA.Networking.InboundTraffic.HasPackets">
+            <summary>
+            Check if contains pending packets.
+            </summary>
+        </member>
+        <member name="M:CA.Networking.InboundTraffic.Dequeue">
+            <summary>
+            Dequeue a pending packet data from <see cref="T:CA.Networking.InboundConnection"/> traffic.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CA.Networking.InboundTraffic.Enqueue(System.Int32)">
+            <summary>
+            Enqueue to pending packet datas of <see cref="T:CA.Networking.InboundConnection"/> traffic.
+            </summary>
+            <param name="packetData"></param>
+        </member>
+        <member name="T:CA.Networking.Utils.ConnectionUtils">
+            <summary>
+            A collection of connection utils for <see cref="T:CA.Networking.ConnectionCentral"/>.
+            </summary>
+        </member>
+        <member name="M:CA.Networking.Utils.ConnectionUtils.GetIpAddress(System.Net.Sockets.Socket)">
+            <summary>
+            Returns the <see cref="T:System.Net.IPAddress"/> from remote <see cref="T:System.Net.Sockets.Socket"/>.
+            </summary>
+            <param name="socket"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CA.Threading.Tasks.AutomatedRestarter">
+            <summary>
+            Creates an <see cref="T:CA.Threading.Tasks.InternalRoutine"/> adapted to handle events and execute a process when threshold is achieved.
+            </summary>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:CA.Threading.Tasks.AutomatedRestarter.#ctor(System.TimeSpan,System.Int32,System.Action{System.String})">
+            <summary>
+            Creates a new instance of <see cref="T:CA.Threading.Tasks.AutomatedRestarter"/>.
+            </summary>
+            <param name="timeout"></param>
+            <param name="routineMs"></param>
+            <param name="errorLogger"></param>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="E:CA.Threading.Tasks.AutomatedRestarter.OnFinished">
+            <summary>
+            When routine finished its task.
+            </summary>
+        </member>
+        <member name="P:CA.Threading.Tasks.AutomatedRestarter.GetFlag">
+            <summary>
+            Get the current <see cref="T:CA.Threading.Tasks.AutomatedRestarter"/> flag.
+            </summary>
+        </member>
+        <member name="M:CA.Threading.Tasks.AutomatedRestarter.AddEventListener(System.TimeSpan,System.Action)">
+            <summary>
+            Adds a new event into listeners.
+            </summary>
+            <param name="timeout"></param>
+            <param name="action"></param>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:CA.Threading.Tasks.AutomatedRestarter.AddEventListeners(System.Collections.Generic.KeyValuePair{System.TimeSpan,System.Action}[])">
+            <summary>
+            Adds a collection of events into listeners.
+            </summary>
+            <param name="listeners"></param>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:CA.Threading.Tasks.AutomatedRestarter.Start">
+            <summary>
+            Start the core routine.
+            </summary>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:CA.Threading.Tasks.AutomatedRestarter.Stop(System.Boolean)">
+            <summary>
+            Stop the core routine, make sure <paramref name="isFinished"/> is used internally to invoke event <see cref="E:CA.Threading.Tasks.AutomatedRestarter.OnFinished"/>.
+            </summary>
+            <param name="isFinished"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="T:CA.Threading.Tasks.AutomatedRestarterFlag">
+            <summary>
+            Represents current flag of <see cref="T:CA.Threading.Tasks.AutomatedRestarter"/> routine.
+            </summary>
+        </member>
+        <member name="F:CA.Threading.Tasks.AutomatedRestarterFlag.Idle">
+            <summary>
+            When routine is idle.
+            </summary>
+        </member>
+        <member name="F:CA.Threading.Tasks.AutomatedRestarterFlag.Running">
+            <summary>
+            When routine invoked <see cref="M:CA.Threading.Tasks.AutomatedRestarter.Start"/>.
+            </summary>
+        </member>
+        <member name="F:CA.Threading.Tasks.AutomatedRestarterFlag.Stopped">
+            <summary>
+            When routine invoked <see cref="M:CA.Threading.Tasks.AutomatedRestarter.Stop(System.Boolean)"/>.
+            </summary>
+        </member>
+        <member name="T:CA.Threading.Tasks.AutomatedRestarterListener">
+            <summary>
+            Represents <see cref="T:CA.Threading.Tasks.AutomatedRestarter"/> listener entry pattern.
+            </summary>
+        </member>
+        <member name="F:CA.Threading.Tasks.AutomatedRestarterListener.Handler">
+            <summary>
+            The <see cref="T:System.Action"/> when this listener gonna trigger.
+            </summary>
+        </member>
+        <member name="F:CA.Threading.Tasks.AutomatedRestarterListener.Timeout">
+            <summary>
+            The <see cref="T:System.TimeSpan"/> when this listener gonna trigger.
+            </summary>
+        </member>
+        <member name="P:CA.Threading.Tasks.AutomatedRestarterListener.IsInvalid">
+            <summary>
+            Varify is <see cref="T:CA.Threading.Tasks.AutomatedRestarterListener"/> entries are valid.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:CA.Threading.Tasks.InternalRoutine">
+            <summary>
+            Used for synchronous or asynchronous routine.
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.OperationCanceledException"></exception>
+        </member>
+        <member name="E:CA.Threading.Tasks.InternalRoutine.OnDeltaVariation">
+            <summary>
+            When routine <see cref="F:CA.Threading.Tasks.InternalRoutine.timeout"/> takes more time than usual to execute.
+            </summary>
+        </member>
+        <member name="E:CA.Threading.Tasks.InternalRoutine.OnFinished">
+            <summary>
+            When routine finished its task.
+            </summary>
+        </member>
+        <member name="E:CA.Threading.Tasks.InternalRoutine.OnInitialized">
+            <summary>
+            When routine is already initialized.
+            </summary>
+        </member>
+        <member name="E:CA.Threading.Tasks.InternalRoutine.OnInitializing">
+            <summary>
+            When routine is preparing to initialize.
+            </summary>
+        </member>
+        <member name="P:CA.Threading.Tasks.InternalRoutine.GetToken">
+            <summary>
+            Get the <see cref="T:System.Threading.CancellationToken"/> of attached task.
+            </summary>
+        </member>
+        <member name="M:CA.Threading.Tasks.InternalRoutine.AttachToParent(System.Threading.CancellationToken)">
+            <summary>
+            Attach a process to parent in case of external task cancellation request.
+            </summary>
+            <param name="token"></param>
+        </member>
+        <member name="M:CA.Threading.Tasks.InternalRoutine.Start">
+            <summary>
+            Initialize and starts the core routine, to stop it must use <see cref="M:System.Threading.CancellationTokenSource.Cancel(System.Boolean)"/>.
+            </summary>
+        </member>
+        <member name="T:CA.Threading.Tasks.InternalRoutineEventArgs">
+            <summary>
+            Contains event arguments from <see cref="E:CA.Threading.Tasks.InternalRoutine.OnDeltaVariation"/> event.
+            </summary>
+        </member>
+        <member name="P:CA.Threading.Tasks.InternalRoutineEventArgs.Delta">
+            <summary>
+            Delta variation of <see cref="F:CA.Threading.Tasks.InternalRoutine.routine"/>.
+            </summary>
+        </member>
+        <member name="P:CA.Threading.Tasks.InternalRoutineEventArgs.TicksPerSecond">
+            <summary>
+            Ticks per second for <see cref="F:CA.Threading.Tasks.InternalRoutine.routine"/> invoke on <see cref="T:System.Threading.Tasks.TaskScheduler"/>.
+            </summary>
+        </member>
+        <member name="P:CA.Threading.Tasks.InternalRoutineEventArgs.Timeout">
+            <summary>
+            Timeout in milliseconds for <see cref="F:CA.Threading.Tasks.InternalRoutine.routine"/> invoke on <see cref="T:System.Threading.Tasks.TaskScheduler"/>.
+            </summary>
+        </member>
+        <member name="T:CA.Threading.Tasks.Procedures.AsyncProcedure`1">
+            <summary>
+            Used for situations that require dependency between other procedure. Recommended to use it with <see cref="T:CA.Threading.Tasks.Procedures.AsyncProcedurePool"/>.
+            </summary>
+            <typeparam name="TInput"></typeparam>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.OperationCanceledException"></exception>
+        </member>
+        <member name="E:CA.Threading.Tasks.Procedures.AsyncProcedure`1.OnCanceled">
+            <summary>
+            When procedure is canceled by parent task via <see cref="T:System.Threading.CancellationToken"/> and forced to stop all running processes.
+            </summary>
+        </member>
+        <member name="E:CA.Threading.Tasks.Procedures.AsyncProcedure`1.OnCompleted">
+            <summary>
+            When procedure is completed with success.
+            </summary>
+        </member>
+        <member name="P:CA.Threading.Tasks.Procedures.AsyncProcedure`1.GetName">
+            <summary>
+            Get the name of procedure.
+            </summary>
+        </member>
+        <member name="P:CA.Threading.Tasks.Procedures.AsyncProcedure`1.GetToken">
+            <summary>
+            Get the <see cref="T:System.Threading.CancellationToken"/> of attached task.
+            </summary>
+        </member>
+        <member name="M:CA.Threading.Tasks.Procedures.AsyncProcedure`1.AttachToParent(System.Threading.CancellationToken)">
+            <summary>
+            Attach a process to parent in case of external task cancellation request.
+            </summary>
+            <param name="token"></param>
+        </member>
+        <member name="M:CA.Threading.Tasks.Procedures.AsyncProcedure`1.Execute">
+            <summary>
+            Execute the procedure.
+            </summary>
+            <exception cref="T:System.OperationCanceledException"></exception>
+            <returns></returns>
+        </member>
+        <member name="T:CA.Threading.Tasks.Procedures.AsyncProcedureEventArgs`1">
+            <summary>
+            Contains result of <see cref="T:CA.Threading.Tasks.Procedures.AsyncProcedure`1"/> event.
+            </summary>
+        </member>
+        <member name="P:CA.Threading.Tasks.Procedures.AsyncProcedureEventArgs`1.Input">
+            <summary>
+            The input of <see cref="T:CA.Threading.Tasks.Procedures.AsyncProcedure`1"/> event.
+            </summary>
+        </member>
+        <member name="P:CA.Threading.Tasks.Procedures.AsyncProcedureEventArgs`1.Result">
+            <summary>
+            The result of <see cref="T:CA.Threading.Tasks.Procedures.AsyncProcedure`1"/> event.
+            </summary>
+        </member>
+        <member name="T:CA.Threading.Tasks.Procedures.AsyncProcedurePool">
+            <summary>
+            Handle <see cref="T:CA.Threading.Tasks.Procedures.AsyncProcedure`1"/> instances into pool of synchronous or asynchronous routines.
+            </summary>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="P:CA.Threading.Tasks.Procedures.AsyncProcedurePool.GetToken">
+            <summary>
+            Get the <see cref="T:System.Threading.CancellationToken"/> of attached task.
+            </summary>
+        </member>
+        <member name="P:CA.Threading.Tasks.Procedures.AsyncProcedurePool.NumProcedures">
+            <summary>
+            Return number of <see cref="T:CA.Threading.Tasks.Procedures.IAsyncProcedure"/> in pool.
+            </summary>
+        </member>
+        <member name="M:CA.Threading.Tasks.Procedures.AsyncProcedurePool.AttachToParent(System.Threading.CancellationToken)">
+            <summary>
+            Attach a process to parent in case of external task cancelation request.
+            </summary>
+            <param name="token"></param>
+        </member>
+        <member name="M:CA.Threading.Tasks.Procedures.AsyncProcedurePool.CancelAll">
+            <summary>
+            Cancel all routines whose are running.
+            </summary>
+        </member>
+        <member name="M:CA.Threading.Tasks.Procedures.AsyncProcedurePool.ExecuteAll">
+            <summary>
+            Execute the pool of routines.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CA.Threading.Tasks.Procedures.AsyncProcedurePool.ExecuteAllAsParallel">
+            <summary>
+            Execute the <see cref="F:CA.Threading.Tasks.Procedures.AsyncProcedurePool.pool"/> of routines in parallel.
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

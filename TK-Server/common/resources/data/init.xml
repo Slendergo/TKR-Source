@@ -1,0 +1,20 @@
+﻿<AppSettings>
+    <MenuMusic>test</MenuMusic>
+    <DeadMusic></DeadMusic>
+  <NewAccounts>
+    <MaxCharSlot>1</MaxCharSlot>
+    <VaultCount>1</VaultCount>
+    <Fame>0</Fame>
+    <Credits>0</Credits>
+    <SlotCost>1000</SlotCost>
+    <SlotCurrency>1</SlotCurrency>
+    <ClassesUnlocked />
+    <SkinsUnlocked />
+  </NewAccounts>
+  <NewCharacters>
+    <Level>1</Level>
+    <!--<Maxed />-->
+  </NewCharacters>
+  <UseExternalPayments>0</UseExternalPayments>
+  <MaxStackablePotions>9</MaxStackablePotions>
+</AppSettings>

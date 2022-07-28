@@ -1,0 +1,155 @@
+<Objects>
+  <Object type="0x9d5" id="Thousand Shot">
+    <Class>Equipment</Class>
+    <Item />
+    <Legendary />
+    <Demonized />
+    <Texture>
+      <File>lofiObj2</File>
+      <Index>0x1a</Index>
+    </Texture>
+    <SlotType>3</SlotType>
+    <Description>A deadly repeater crossbow and a marvel of craftsmanship. This mechanical weapon is efficient, but carries additional weight.</Description>
+    <RateOfFire>1.5</RateOfFire>
+    <Sound>weapon/heavy_crossbow</Sound>
+    <Projectile>
+      <ObjectId>Thousand Shot Arrow</ObjectId>
+      <Speed>165</Speed>
+      <MinDamage>170</MinDamage>
+      <MaxDamage>180</MaxDamage>
+      <LifetimeMS>460</LifetimeMS>
+      <MultiHit />
+    </Projectile>
+    <ActivateOnEquip stat="22" amount="-5">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="30">IncrementStat</ActivateOnEquip>
+    <BagType>7</BagType>
+    <FameBonus>6</FameBonus>
+    <NumProjectiles>1</NumProjectiles>
+    <OldSound>arrowShoot</OldSound>
+    <feedPower>900</feedPower>
+  </Object>
+  <Object type="0x4913" id="Bow of the Void">
+    <Class>Equipment</Class>
+    <Item />
+    <Demonized />
+    <Texture>
+      <File>LostHallsProjs2</File>
+      <Index>0xa7</Index>
+    </Texture>
+    <SlotType>3</SlotType>
+    <Description>
+			Every shot that hits a target frees the soul of a forgotten hero. Every shot that misses is trapped for eternity.
+		</Description>
+    <RateOfFire>.95</RateOfFire>
+    <Sound>weapon/golden_bow</Sound>
+    <Projectile>
+      <ObjectId>Void Arrow</ObjectId>
+      <Speed>200</Speed>
+      <MinDamage>290</MinDamage>
+      <MaxDamage>300</MaxDamage>
+      <LifetimeMS>300</LifetimeMS>
+      <MultiHit />
+      <Amplitude>0.35</Amplitude>
+      <Frequency>0.2</Frequency>
+    </Projectile>
+    <BagType>7</BagType>
+    <FameBonus>6</FameBonus>
+    <NumProjectiles>1</NumProjectiles>
+    <OldSound>arrowShoot</OldSound>
+    <feedPower>1200</feedPower>
+    <Legendary />
+  </Object>
+  <Object type="0x50e7" id="Cannon">
+    <Class>Equipment</Class>
+    <Item />
+    <Demonized />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0x91</Index>
+    </Texture>
+    <SlotType>3</SlotType>
+    <Legendary />
+    <Description>One of the main cannons the ghost ship had to sink other ships, the ghostly aura within it has the power to shoot many cannon balls at once.</Description>
+    <RateOfFire>0.25</RateOfFire>
+    <Sound>weapon/poor_quality_bow</Sound>
+    <Projectile>
+      <ObjectId>Giant Cannonball2</ObjectId>
+      <Speed>150</Speed>
+      <MinDamage>750</MinDamage>
+      <MaxDamage>1600</MaxDamage>
+      <LifetimeMS>500</LifetimeMS>
+      <Size>150</Size>
+      <ArmorPiercing />
+    </Projectile>
+    <NumProjectiles>1</NumProjectiles>
+    <ArcGap>5</ArcGap>
+    <ActivateOnEquip stat="21" amount="5">IncrementStat</ActivateOnEquip>
+    <BagType>7</BagType>
+    <FameBonus>6</FameBonus>
+    <DisplayId>Cannon</DisplayId>
+  </Object>
+  <Object type="0x50ee" id="Bow of the Havens">
+    <Class>Equipment</Class>
+    <Item />
+    <Clarification />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0x9d</Index>
+    </Texture>
+    <SlotType>3</SlotType>
+    <Legendary />
+    <Description>As soon as Nut heard that a brave adventurer killed her ally,she became furious. She brought out her bow,and tried to shoot the adventurer from the heavens,but the adventurer dodged each attack,and kept climbing up the different arrows to reach heaven. With one slash,Nut was beaten. The bow was transferred into the adventurers hand,to help him beat geb.</Description>
+    <RateOfFire>1.1</RateOfFire>
+    <Sound>weapon/poor_quality_bow</Sound>
+    <Projectile>
+      <ObjectId>Bow of the Havens Shot</ObjectId>
+      <Speed>159.5</Speed>
+      <MinDamage>100</MinDamage>
+      <MaxDamage>115</MaxDamage>
+      <LifetimeMS>439</LifetimeMS>
+      <Frequency>1</Frequency>
+      <Size>100</Size>
+      <MultiHit />
+      <PassesCover />
+    </Projectile>
+    <NumProjectiles>2</NumProjectiles>
+    <ArcGap>9</ArcGap>
+    <ActivateOnEquip stat="20" amount="2">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="5">IncrementStat</ActivateOnEquip>
+    <BagType>7</BagType>
+    <FameBonus>6</FameBonus>
+    <DisplayId>Bow of the Havens</DisplayId>
+  </Object>
+  <Object type="0x540d" id="Fang Flinger">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0xec</Index>
+    </Texture>
+    <Legendary />
+    <SlotType>3</SlotType>
+    <Description>The drawstring of this particular bow isn't made to notch traditional arrows, rather it is designed to fling fangs at high velocity.</Description>
+    <RateOfFire>.80</RateOfFire>
+    <Sound>weapon/poor_quality_bow</Sound>
+    <Projectile>
+      <ObjectId>Fang Flinger Shoot</ObjectId>
+      <Speed>155</Speed>
+      <MinDamage>170</MinDamage>
+      <MaxDamage>290</MaxDamage>
+      <LifetimeMS>452</LifetimeMS>
+      <Amplitude>0.5</Amplitude>
+      <Frequency>2</Frequency>
+      <Size>100</Size>
+      <MultiHit />
+    </Projectile>
+    <NumProjectiles>2</NumProjectiles>
+    <ArcGap>12</ArcGap>
+    <ActivateOnEquip stat="22" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="-3">IncrementStat</ActivateOnEquip>
+    <BagType>7</BagType>
+    <FameBonus>7</FameBonus>
+    <SteamRoller />
+    <DisplayId>Fang Flinger</DisplayId>
+  </Object>
+</Objects>

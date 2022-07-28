@@ -1,0 +1,36 @@
+﻿api: "http://us.tkgames.gg:2000/app/bot"
+guild-id: "592162267664220181"
+realm-events-id: "710382086560940038"
+token: "NzA5ODU0MjIzMzY1NDM5NDg4.Xrr9Yg.bBH7tCDW-0sJvZhZXtWdRA5Iw9E"
+game: "TK Realms"
+admin-roles: [
+	"Founder",
+	"Co-Owner",
+	"Development",
+	"Game Moderator"
+]
+notification-roles: [
+	"Event: Oryx",
+	"Event: Strange Magician",
+	"Event: Fire Elemental",
+	"Event: Wind Elemental",
+	"Event: Earth Elemental",
+	"Event: Water Elemental",
+	"Event: Tiki Tiki",
+	"Event: Lucky Ent God",
+	"Event: Lucky Djinn",
+	"Event: King Slime",
+	"Event: Mushroom",
+	"Event: Skull Shrine",
+	"Event: Cube God",
+	"Event: Pentaract",
+	"Event: Grand Sphinx",
+	"Event: Lord of the Lost Lands",
+	"Event: Hermit God",
+	"Event: Ghost Ship"
+]
+domains: [
+	"https://tkgames.gg/",
+	"http://us.tkgames.gg/"
+]
+client-path: "assets/tk1/static/TK-Client.swf?build=release"

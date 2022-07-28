@@ -1,0 +1,69 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29609.76
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "common", "common\common.csproj", "{05D3CA7D-7E4E-4401-BC92-4A988A433C93}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "server", "server\server.csproj", "{B1818AC9-60C7-4E27-AEEA-029815908364}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8676B034-2A70-4675-A54D-4C07D0A29B6C}"
+	ProjectSection(SolutionItems) = preProject
+		Core Algorithms.dll = Core Algorithms.dll
+		LICENSE = LICENSE
+		README.md = README.md
+		RotMG.Common.dll = RotMG.Common.dll
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wServer", "wServer\wServer.csproj", "{13B061EF-7E9F-40A7-A4E3-DA6EEF11A568}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dungeonGen", "dungeonGen\dungeonGen.csproj", "{E3061024-61ED-46AA-8A0D-CD9747E7BFAE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{05D3CA7D-7E4E-4401-BC92-4A988A433C93}.Debug|x64.ActiveCfg = Debug|x64
+		{05D3CA7D-7E4E-4401-BC92-4A988A433C93}.Debug|x64.Build.0 = Debug|x64
+		{05D3CA7D-7E4E-4401-BC92-4A988A433C93}.Debug|x86.ActiveCfg = Debug|x86
+		{05D3CA7D-7E4E-4401-BC92-4A988A433C93}.Debug|x86.Build.0 = Debug|x86
+		{05D3CA7D-7E4E-4401-BC92-4A988A433C93}.Release|x64.ActiveCfg = Release|x64
+		{05D3CA7D-7E4E-4401-BC92-4A988A433C93}.Release|x64.Build.0 = Release|x64
+		{05D3CA7D-7E4E-4401-BC92-4A988A433C93}.Release|x86.ActiveCfg = Release|x86
+		{05D3CA7D-7E4E-4401-BC92-4A988A433C93}.Release|x86.Build.0 = Release|x86
+		{B1818AC9-60C7-4E27-AEEA-029815908364}.Debug|x64.ActiveCfg = Debug|x64
+		{B1818AC9-60C7-4E27-AEEA-029815908364}.Debug|x64.Build.0 = Debug|x64
+		{B1818AC9-60C7-4E27-AEEA-029815908364}.Debug|x86.ActiveCfg = Debug|x86
+		{B1818AC9-60C7-4E27-AEEA-029815908364}.Debug|x86.Build.0 = Debug|x86
+		{B1818AC9-60C7-4E27-AEEA-029815908364}.Release|x64.ActiveCfg = Release|x64
+		{B1818AC9-60C7-4E27-AEEA-029815908364}.Release|x64.Build.0 = Release|x64
+		{B1818AC9-60C7-4E27-AEEA-029815908364}.Release|x86.ActiveCfg = Release|x86
+		{B1818AC9-60C7-4E27-AEEA-029815908364}.Release|x86.Build.0 = Release|x86
+		{13B061EF-7E9F-40A7-A4E3-DA6EEF11A568}.Debug|x64.ActiveCfg = Debug|x64
+		{13B061EF-7E9F-40A7-A4E3-DA6EEF11A568}.Debug|x64.Build.0 = Debug|x64
+		{13B061EF-7E9F-40A7-A4E3-DA6EEF11A568}.Debug|x86.ActiveCfg = Debug|x86
+		{13B061EF-7E9F-40A7-A4E3-DA6EEF11A568}.Debug|x86.Build.0 = Debug|x86
+		{13B061EF-7E9F-40A7-A4E3-DA6EEF11A568}.Release|x64.ActiveCfg = Release|x64
+		{13B061EF-7E9F-40A7-A4E3-DA6EEF11A568}.Release|x64.Build.0 = Release|x64
+		{13B061EF-7E9F-40A7-A4E3-DA6EEF11A568}.Release|x86.ActiveCfg = Release|x86
+		{13B061EF-7E9F-40A7-A4E3-DA6EEF11A568}.Release|x86.Build.0 = Release|x86
+		{E3061024-61ED-46AA-8A0D-CD9747E7BFAE}.Debug|x64.ActiveCfg = Debug|x64
+		{E3061024-61ED-46AA-8A0D-CD9747E7BFAE}.Debug|x64.Build.0 = Debug|x64
+		{E3061024-61ED-46AA-8A0D-CD9747E7BFAE}.Debug|x86.ActiveCfg = Debug|x86
+		{E3061024-61ED-46AA-8A0D-CD9747E7BFAE}.Debug|x86.Build.0 = Debug|x86
+		{E3061024-61ED-46AA-8A0D-CD9747E7BFAE}.Release|x64.ActiveCfg = Release|x64
+		{E3061024-61ED-46AA-8A0D-CD9747E7BFAE}.Release|x64.Build.0 = Release|x64
+		{E3061024-61ED-46AA-8A0D-CD9747E7BFAE}.Release|x86.ActiveCfg = Release|x86
+		{E3061024-61ED-46AA-8A0D-CD9747E7BFAE}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E7AFEAF5-AF5C-409C-8EEA-63D690E643D7}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,65 @@
+<Objects>
+  <Object type="0x514b" id="Laughing Gas">
+    <Class>Equipment</Class>
+    <Item />
+    <Mutilate />
+    <Legendary />
+    <DisplayId>Laughing Gas</DisplayId>
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0xb0</Index>
+    </Texture>
+    <SlotType>18</SlotType>
+    <Description>A deadly gas that will cause you to laugh till death</Description>
+    <Usable />
+    <BagType>6</BagType>
+    <FameBonus>6</FameBonus>
+    <MpCost>80</MpCost>
+    <ActivateOnEquip stat="20" amount="9">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="50">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="3">IncrementStat</ActivateOnEquip>
+    <Activate radius="10" totalDamage="1100" duration="6" impactDamage="0" throwTime="1" color="0x12420F" useWisMod="true">PoisonGrenade</Activate>
+  </Object>
+  <Object type="0x4929" id="Strange Poison">
+    <Class>Equipment</Class>
+    <Item />
+    <SteamRoller />
+    <Legendary />
+    <DisplayId>Strange Poison</DisplayId>
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0x15</Index>
+    </Texture>
+    <SlotType>18</SlotType>
+    <Description>A poison that is not known where it comes from, but yes, that is strange, and powerful.</Description>
+    <Usable />
+    <BagType>7</BagType>
+    <FameBonus>7</FameBonus>
+    <MpCost>150</MpCost>
+    <ActivateOnEquip stat="20" amount="3">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
+    <Activate radius="6" totalDamage="2000" duration="3" impactDamage="600" throwTime="1" color="0x12420F" useWisMod="true">PoisonGrenade</Activate>
+    <Activate radius="4" totalDamage="1250" duration="4" impactDamage="300" throwTime="1" color="0x0A2608" useWisMod="true">PoisonGrenade</Activate>
+  </Object>
+    <Object type="0x5072" id="Colossus Essence">
+    <Class>Equipment</Class>
+    <Item />
+    <Clarification />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0x10</Index>
+    </Texture>
+    <Legendary />
+    <SlotType>18</SlotType>
+    <Description>The bitter poison of evergreen berries that has also absorbed a great deal of of energy from evil spirits.\n\nSprite Credits: Dappertron</Description>
+    <ActivateOnEquip stat="27" amount="5">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="8">IncrementStat</ActivateOnEquip>
+    <Usable />
+    <BagType>7</BagType>
+    <FameBonus>4</FameBonus>
+    <MpCost>110</MpCost>
+    <Activate radius="4" impactDamage="1200" totalDamage="3500" duration="3" throwTime="3" color="0xf5ce42" useWisMod="false">PoisonGrenade</Activate>
+    <Activate radius="6" impactDamage="800" totalDamage="2000" duration="5" throwTime="2" color="0x85837e" useWisMod="false">PoisonGrenade</Activate>
+    <Activate radius="2" impactDamage="200" totalDamage="1500" duration="2" throwTime="1" color="0xAF6D2B" useWisMod="false">PoisonGrenade</Activate>
+  </Object>
+</Objects>

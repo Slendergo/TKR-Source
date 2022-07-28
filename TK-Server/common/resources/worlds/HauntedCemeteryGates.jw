@@ -1,0 +1,12 @@
+{"id":0,
+"isLimbo":false,
+"name":"Haunted Cemetery Gates",
+"sbName":"Haunted Cemetery Gates",
+"difficulty":5,
+"background":0,
+"blocking":0,
+"restrictTp":false,
+"showDisplays":false,
+"portals":[0x5f25],
+"maps":["HauntedCemeteryGates.jm"],
+"music":[""]}

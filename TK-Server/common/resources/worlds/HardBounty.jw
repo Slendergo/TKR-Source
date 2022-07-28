@@ -1,0 +1,12 @@
+﻿{"id":0,
+"isLimbo":false,
+"name":"Gates of Hades",
+"sbName":"Gates of Hades",
+"difficulty":5,
+"background":0,
+"blocking":2,
+"restrictTp":true,
+"showDisplays":false,
+"portals":[0x9021],
+"maps":["hardbounty.jm"],
+"music":[""]}

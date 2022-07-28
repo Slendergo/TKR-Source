@@ -1,0 +1,12 @@
+{"id":0,
+"isLimbo":false,
+"name":"Toxic Sewers",
+"sbName":"Toxic Sewers",
+"difficulty":5,
+"background":0,
+"blocking":1,
+"restrictTp":false,
+"showDisplays":false,
+"portals":[0x23e],
+"maps":["ToxicSewers1.jm", "ToxicSewers2.jm"],
+"music":["sorc prod"]}

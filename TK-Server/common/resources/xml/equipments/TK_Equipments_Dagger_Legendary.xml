@@ -1,0 +1,180 @@
+<Objects>
+  <Object type="0xc0a" id="Dirk of Cronus">
+    <Class>Equipment</Class>
+    <Item />
+    <Clarification />
+    <Legendary />
+    <Texture>
+      <File>lofiObj2</File>
+      <Index>0x54</Index>
+    </Texture>
+    <SlotType>2</SlotType>
+    <Description>This legendary dagger was commissioned by a band of mad rogues to prove the worth of the Dirk.</Description>
+    <RateOfFire>.9</RateOfFire>
+    <Sound>weapon/fire_dagger</Sound>
+    <Projectile>
+      <ObjectId>Rainbow Magic</ObjectId>
+      <Speed>180</Speed>
+      <MinDamage>160</MinDamage>
+      <MaxDamage>260</MaxDamage>
+      <LifetimeMS>249</LifetimeMS>
+      <PassesCover />
+    </Projectile>
+    <ActivateOnEquip stat="3" amount="50">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="7">IncrementStat</ActivateOnEquip>
+    <BagType>7</BagType>
+    <FameBonus>6</FameBonus>
+    <OldSound>daggerSwing</OldSound>
+    <feedPower>950</feedPower>
+  </Object>
+  <Object type="0xc29" id="Spirit Dagger">
+    <Class>Equipment</Class>
+    <Item />
+    <Legendary />
+    <OutOfOneMind />
+    <Texture>
+      <File>lofiObj3</File>
+      <Index>0xc9</Index>
+    </Texture>
+    <SlotType>2</SlotType>
+    <Description>A dagger that was condemned to Davy Jones' Locker.</Description>
+    <RateOfFire>.9</RateOfFire>
+    <Sound>weapon/dirk</Sound>
+    <Projectile>
+      <ObjectId>Spirit Dagger Slash</ObjectId>
+      <Speed>130</Speed>
+      <MinDamage>10</MinDamage>
+      <MaxDamage>370</MaxDamage>
+      <LifetimeMS>423</LifetimeMS>
+      <Amplitude>0.2</Amplitude>
+      <Frequency>0.2</Frequency>
+    </Projectile>
+    <BagType>7</BagType>
+    <OldSound>daggerSwing</OldSound>
+    <FameBonus>4</FameBonus>
+    <feedPower>900</feedPower>
+  </Object>
+  <Object type="0x4932" id="Dagger of Flaming Fury">
+    <DisplayId>Dagger of Flaming Fury</DisplayId>
+    <Class>Equipment</Class>
+    <Legendary />
+    <Mutilate />
+    <Item />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0x19</Index>
+    </Texture>
+    <SlotType>2</SlotType>
+    <Description>This dagger, which comes from the depths of realm, was used to overthrow the skull shrine, with it, it was able to melt even the hottest, coldest, and hardest thing there is, for this reason, it is called "Melted Shrine".</Description>
+    <RateOfFire>1.1</RateOfFire>
+    <Sound>weapon/fire_dagger</Sound>
+    <Projectile>
+      <ObjectId>Melted Shrine Shoot</ObjectId>
+      <Speed>180</Speed>
+      <MinDamage>140</MinDamage>
+      <MaxDamage>190</MaxDamage>
+      <LifetimeMS>305</LifetimeMS>
+      <MultiHit />
+    </Projectile>
+    <ActivateOnEquip stat="26" amount="4">IncrementStat</ActivateOnEquip>
+    <BagType>7</BagType>
+    <FameBonus>7</FameBonus>
+    <OldSound>daggerSwing</OldSound>
+  </Object>
+  <Object type="0x5146" id="Malphas's Bone">
+    <Class>Equipment</Class>
+    <Item />
+    <Mutilate />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0xaf</Index>
+    </Texture>
+    <Legendary />
+    <SlotType>2</SlotType>
+    <Description>This dagger was created from Malphas' spine</Description>
+    <RateOfFire>0.8</RateOfFire>
+    <Sound>weapon/fire_dagger</Sound>
+    <Projectile>
+      <ObjectId>Malphas Bone Shot</ObjectId>
+      <Speed>180</Speed>
+      <MinDamage>210</MinDamage>
+      <MaxDamage>365</MaxDamage>
+      <LifetimeMS>295</LifetimeMS>
+      <Size>100</Size>
+      <MultiHit />
+      <ArmorPiercing />
+    </Projectile>
+    <NumProjectiles>1</NumProjectiles>
+    <ActivateOnEquip stat="26" amount="3">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="4">IncrementStat</ActivateOnEquip>
+    <BagType>7</BagType>
+    <FameBonus>6</FameBonus>
+    <DisplayId>Malphas's Bone</DisplayId>
+  </Object>
+      <Object type="0x540e" id="Titan Slayer">
+    <Class>Equipment</Class>
+    <Item />
+    <Clarification />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0x100</Index>
+    </Texture>
+    <Legendary />
+    <SlotType>2</SlotType>
+    <Description>Such a large and unwieldy blade. Who'd be foolish enough to try to branish it...?</Description>
+    <RateOfFire>0.4</RateOfFire>
+    <Sound>weapon/blunt_dagger</Sound>
+    <Projectile>
+      <ObjectId>Titan Slayer Shoot</ObjectId>
+      <Speed>120</Speed>
+      <MinDamage>500</MinDamage>
+      <MaxDamage>575</MaxDamage>
+      <LifetimeMS>650</LifetimeMS>
+      <Amplitude>0.25</Amplitude>
+      <Frequency>1</Frequency>
+      <FaceDir />
+      <PassesCover />
+      <Size>110</Size>
+    </Projectile>
+    <NumProjectiles>1</NumProjectiles>
+    <ArcGap>0</ArcGap>
+    <ActivateOnEquip stat="3" amount="20">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="-2">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="5">IncrementStat</ActivateOnEquip>
+    <BagType>7</BagType>
+    <FameBonus>7</FameBonus>
+    <DisplayId>Titan Slayer</DisplayId>
+  </Object>
+  <Object type="0x540f" id="Refraction Cutter">
+    <Class>Equipment</Class>
+    <Item />
+    <SteamRoller />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0x104</Index>
+    </Texture>
+    <Legendary />
+    <SlotType>2</SlotType>
+    <Description>A crude dagger consisting of a shard of the Realm's Crystal with a handle of cloth. Despite it's makeshift nature, it is immensely deadly.</Description>
+    <RateOfFire>.9</RateOfFire>
+    <Sound>weapon/blunt_dagger</Sound>
+    <Projectile>
+      <ObjectId>Refraction Cutter Shoot</ObjectId>
+      <Speed>206</Speed>
+      <MinDamage>220</MinDamage>
+      <MaxDamage>320</MaxDamage>
+      <LifetimeMS>495</LifetimeMS>
+      <Amplitude>0.3</Amplitude>
+      <Frequency>1</Frequency>
+      <Size>90</Size>
+      <FaceDir />
+      <Boomerang />
+    </Projectile>
+    <NumProjectiles>1</NumProjectiles>
+    <ArcGap>0</ArcGap>
+    <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
+    <BagType>7</BagType>
+    <FameBonus>7</FameBonus>
+    <DisplayId>Refraction Cutter</DisplayId>
+  </Object>
+</Objects>

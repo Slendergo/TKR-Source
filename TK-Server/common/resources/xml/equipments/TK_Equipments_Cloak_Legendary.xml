@@ -1,0 +1,79 @@
+<Objects>
+  <Object type="0xb15a" id="Spectral Cloak">
+    <Class>Equipment</Class>
+    <Item />
+    <Legendary />
+    <SteamRoller />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0xb3</Index>
+    </Texture>
+    <SlotType>13</SlotType>
+    <Description>An etheral cloak crafted by an ancient guild of satanic worshippers.</Description>
+    <Sound>spell/fire_nova</Sound>
+    <Usable />
+    <MpCost>115</MpCost>
+    <Activate effect="Invisible" duration="6">ConditionEffectSelf</Activate>
+    <Activate effect="Speedy" duration="5">ConditionEffectSelf</Activate>
+    <Activate effect="Healing" duration="4">ConditionEffectSelf</Activate>
+    <Activate stat="21" amount="10" duration="4">StatBoostSelf</Activate>
+    <Cooldown>7.5</Cooldown>
+    <ActivateOnEquip stat="0" amount="40">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="4">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="8">IncrementStat</ActivateOnEquip>
+    <BagType>7</BagType>
+    <FameBonus>6</FameBonus>
+  </Object>
+  <Object type="0x50e3" id="Cape of Septavius">
+    <Class>Equipment</Class>
+    <Item />
+    <Clarification />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0x96</Index>
+    </Texture>
+    <SlotType>13</SlotType>
+    <Description></Description>
+    <Sound>spell/fire_nova</Sound>
+    <Usable />
+    <BagType>7</BagType>
+    <Legendary />
+    <FameBonus>6</FameBonus>
+    <MpCost>95</MpCost>
+    <Activate effect="Invisible" duration="5.5">ConditionEffectSelf</Activate>
+    <Activate effect="Damaging" duration="3">ConditionEffectSelf</Activate>
+    <Activate effect="Berserk" duration="2">ConditionEffectSelf</Activate>
+    <ActivateOnEquip stat="20" amount="3">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
+    <Cooldown>6</Cooldown>
+    <DisplayId>Cape of Septavius</DisplayId>
+  </Object>
+    <Object type="0x50f4" id="Shadow Shawl">
+    <Class>Equipment</Class>
+    <Item />
+    <Demonized />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0x10a</Index>
+    </Texture>
+    <SlotType>13</SlotType>
+    <Description>Perfect stealth requires one to be perfect themselves. Every movement, every breath, heavily calculated.</Description>
+    <Sound>spell/fire_nova</Sound>
+    <Usable />
+    <BagType>7</BagType>
+    <Legendary />
+    <FameBonus>7</FameBonus>
+    <MpCost>95</MpCost>
+    <Activate effect="Invisible" duration="3.5">ConditionEffectSelf</Activate>
+    <Activate effect="Damaging" duration="3">ConditionEffectSelf</Activate>
+    <Activate effect="Slowed" duration="1.5">ConditionEffectSelf</Activate>
+    <Activate effect="Sick" duration="3.5">ConditionEffectSelf</Activate>
+    <ActivateOnEquip stat="0" amount="-30">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="9">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="8">IncrementStat</ActivateOnEquip>
+    <Cooldown>1</Cooldown>
+    <DisplayId>Shadow Shawl</DisplayId>
+  </Object>
+</Objects>

@@ -1,0 +1,115 @@
+<Objects>
+  <Object type="0x915" id="Ray Katana">
+    <Class>Equipment</Class>
+    <Item />
+    <Legendary />
+    <OutOfOneMind />
+    <Texture>
+      <File>lofiObj3</File>
+      <Index>0x22a</Index>
+    </Texture>
+    <SlotType>24</SlotType>
+    <Description>A great katana charged with the power of the sun itself.</Description>
+    <RateOfFire>1.30</RateOfFire>
+    <Sound>weapon/long_sword</Sound>
+    <Projectile>
+      <ObjectId>Beam Slash</ObjectId>
+      <Speed>180</Speed>
+      <MinDamage>210</MinDamage>
+      <MaxDamage>210</MaxDamage>
+      <LifetimeMS>361</LifetimeMS>
+      <MultiHit />
+      <ArmorPiercing />
+    </Projectile>
+    <BagType>7</BagType>
+    <FameBonus>5</FameBonus>
+    <OldSound>bladeSwing</OldSound>
+    <feedPower>500</feedPower>
+  </Object>
+  <Object type="0xcdc" id="Doku No Ken">
+    <Class>Equipment</Class>
+    <Item />
+    <Demonized />
+    <Legendary />
+    <Texture>
+      <File>lofiObj3</File>
+      <Index>0x404</Index>
+    </Texture>
+    <SlotType>24</SlotType>
+    <Description>Stuck in the maw of the Son of Arachna, this Katana is coated in the creature's poisonous venom. In the hands of the right person, this is a truly deadly weapon.</Description>
+    <RateOfFire>1.20</RateOfFire>
+    <Sound>weapon/long_sword</Sound>
+    <Projectile id="0">
+      <ObjectId>Poison Katana Slash</ObjectId>
+      <Speed>129.5</Speed>
+      <MinDamage>220</MinDamage>
+      <MaxDamage>270</MaxDamage>
+      <LifetimeMS>363</LifetimeMS>
+      <Amplitude>0.5</Amplitude>
+      <Frequency>1</Frequency>
+      <Size>90</Size>
+      <MultiHit />
+    </Projectile>
+    <BagType>7</BagType>
+    <FameBonus>4</FameBonus>
+    <OldSound>bladeSwing</OldSound>
+    <feedPower>500</feedPower>
+  </Object>
+  <Object type="0x492a" id="Bloody Katana">
+    <Class>Equipment</Class>
+    <Item />
+    <Demonized />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0x16</Index>
+    </Texture>
+    <SlotType>24</SlotType>
+    <Description>A Katana that we don't know where it comes from.</Description>
+    <RateOfFire>1.15</RateOfFire>
+    <Sound>weapon/long_sword</Sound>
+    <Legendary />
+    <Projectile>
+      <ObjectId>Katana Shoot</ObjectId>
+      <Speed>147.5</Speed>
+      <MinDamage>255</MinDamage>
+      <MaxDamage>290</MaxDamage>
+      <LifetimeMS>346</LifetimeMS>
+      <MultiHit />
+    </Projectile>
+    <NumProjectiles>1</NumProjectiles>
+    <BagType>7</BagType>
+    <FameBonus>7</FameBonus>
+    <DisplayId>Bloody Katana</DisplayId>
+  </Object>
+  <Object type="0x495b" id="Lodius">
+    <Class>Equipment</Class>
+    <Item />
+    <Legendary />
+    <Mutilate />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0x1f</Index>
+    </Texture>
+    <SlotType>24</SlotType>
+    <Description>This katana comes from the best Samurai in all of Japan. The Samurai died in a fight with a Corrupt Talisman. This katana has the power of the Samurai, when you use it, you will feel a true power throughout the body, but, having been touched by a Corrupt, it has negative effects...</Description>
+    <RateOfFire>1</RateOfFire>
+    <Sound>weapon/long_sword</Sound>
+    <Projectile>
+      <ObjectId>Lodius Shoot</ObjectId>
+      <Speed>154</Speed>
+      <MinDamage>100</MinDamage>
+      <MaxDamage>195</MaxDamage>
+      <LifetimeMS>344</LifetimeMS>
+      <Amplitude>.25</Amplitude>
+      <Frequency>1.75</Frequency>
+      <Size>100</Size>
+      <MultiHit />
+      <ArmorPiercing />
+    </Projectile>
+    <NumProjectiles>2</NumProjectiles>
+    <ArcGap>3</ArcGap>
+    <BagType>7</BagType>
+    <FameBonus>7</FameBonus>
+    <DisplayId>Lodius</DisplayId>
+  </Object>
+</Objects>

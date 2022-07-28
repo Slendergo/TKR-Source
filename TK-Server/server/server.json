@@ -1,0 +1,23 @@
+﻿{
+  "dbInfo": {
+    "host": "127.0.0.1",
+    "port": 6379,
+    "auth": "",
+    "index": 0
+  },
+  "serverInfo": {
+    "type": "Account",
+    "name": "AppEngine",
+    "bindAddress": "*",
+    "port": 2000
+  },
+  "serverSettings": {
+    "logFolder": "./logs",
+    "resourceFolder": "./resources",
+    "sendGridApiKey": ""
+  },
+  "discordIntegration": {
+    "botName": "Android",
+    "botToken": "9b2437665e14f6ec5f15c2bc4071b3118914e2d8"
+  }
+}

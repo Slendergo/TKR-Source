@@ -1,0 +1,43 @@
+<Objects>
+  <Object type="0xc1c" id="Coral Venom Trap">
+    <Class>Equipment</Class>
+    <Item />
+    <Legendary />
+    <OutOfOneMind />
+    <Texture>
+      <File>lofiObj2</File>
+      <Index>0x1b</Index>
+    </Texture>
+    <SlotType>20</SlotType>
+    <Description>A trap imbued with deadly venom from the coral of the Ocean Trench.</Description>
+    <ActivateOnEquip stat="3" amount="60">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="-3">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="8">IncrementStat</ActivateOnEquip>
+    <Usable />
+    <BagType>7</BagType>
+    <FameBonus>4</FameBonus>
+    <MpCost>110</MpCost>
+    <Activate radius="4.5" totalDamage="750" condEffect="Paralyzed" condDuration="4.5">Trap</Activate>
+    <feedPower>500</feedPower>
+  </Object>
+  <Object type="0x5152" id="Ghost Trapper">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0xae</Index>
+    </Texture>
+    <SlotType>20</SlotType>
+    <Legendary />
+    <Description>Screams fill the silence when this trap is left alone...</Description>
+    <Usable />
+    <Mutilate />
+    <BagType>7</BagType>
+    <MpCost>95</MpCost>
+    <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="5">IncrementStat</ActivateOnEquip>
+    <Activate radius="6" condEffect="Curse" totalDamage="225" condDuration="4.0">Trap</Activate>
+    <Activate radius="6" totalDamage="375" condDuration="5.0">Trap</Activate>
+    <FameBonus>5</FameBonus>
+  </Object>
+</Objects>

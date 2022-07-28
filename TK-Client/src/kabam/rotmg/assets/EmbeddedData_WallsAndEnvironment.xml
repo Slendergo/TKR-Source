@@ -1,0 +1,63 @@
+<Objects>
+    <Object type="0x499f" id="Earth Environment Biome">
+        <Class>GameObject</Class>
+        <ShadowSize>80</ShadowSize>
+        <MinSize>100</MinSize>
+        <MaxSize>120</MaxSize>
+        <SizeStep>5</SizeStep>
+        <OccupySquare/>
+        <EnemyOccupySquare/>
+        <Static/>
+        <RandomTexture>
+            <Texture>
+                <File>customEnvironment16x16</File>
+                <Index>0x00</Index>
+            </Texture>
+            <Texture>
+                <File>customEnvironment16x16</File>
+                <Index>0x01</Index>
+            </Texture>
+            <Texture>
+                <File>customEnvironment16x16</File>
+                <Index>0x02</Index>
+            </Texture>
+        </RandomTexture>
+    </Object>
+    <Object type="0x5031" id="Strange Library Wall">
+        <Class>DoubleWall</Class>
+        <RandomTexture>
+            <Texture>
+                <File>customEnvironment</File>
+                <Index>0x0a</Index>
+            </Texture>
+            <Texture>
+                <File>customEnvironment</File>
+                <Index>0x0b</Index>
+            </Texture>
+        </RandomTexture>
+        <Top>
+            <Texture>
+                <File>customEnvironment</File>
+                <Index>0x0c</Index>
+            </Texture>
+        </Top>
+        <HitSound>monster/stone_walls_hit</HitSound>
+        <DeathSound>monster/stone_walls_death</DeathSound>
+        <Static/>
+        <FullOccupy/>
+        <OccupySquare/>
+        <EnemyOccupySquare/>
+        <BlocksSight/>
+    </Object>
+    <Object type="0x5033" id="Strange Door">
+        <Class>Portal</Class>
+        <IntergamePortal/>
+        <DisplayId>Strange Library</DisplayId>
+        <DungeonName>Strange Library</DungeonName>
+        <Texture>
+            <File>customEnvironment16x16</File>
+            <Index>0x03</Index>
+        </Texture>
+        <ShadowSize>0</ShadowSize>
+    </Object>
+</Objects>

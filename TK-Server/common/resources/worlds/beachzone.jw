@@ -1,0 +1,12 @@
+{"id":0,
+"isLimbo":false,
+"name":"Beach Zone",
+"sbName":"Beach Zone",
+"difficulty":3,
+"background":0,
+"blocking":0,
+"restrictTp":true,
+"showDisplays":false,
+"portals":[0x0742],
+"maps":["beachzone.jm"],
+"music":["udl"]}

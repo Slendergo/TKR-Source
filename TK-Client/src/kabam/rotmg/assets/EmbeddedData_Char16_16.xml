@@ -1,0 +1,229 @@
+<Objects>
+    <Object type="0x4970" id="Soul of Life">
+        <Class>Equipment</Class>
+        <Item />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x22</Index>
+        </Texture>
+        <SlotType>10</SlotType>
+        <Description>A Soul that permanently Upgrade your Life stat by 5.</Description>
+        <Sound>use_potion</Sound>
+        <Activate stat="0" amount="5">UpgradeStat</Activate>
+        <Consumable />
+        <Potion />
+        <BagType>5</BagType>
+    </Object>
+    <Object type="0x4971" id="Soul of Mana">
+        <Class>Equipment</Class>
+        <Item />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x23</Index>
+        </Texture>
+        <SlotType>10</SlotType>
+        <Description>A Soul that permanently Upgrade your Mana stat by 5.</Description>
+        <Sound>use_potion</Sound>
+        <Activate stat="3" amount="5">UpgradeStat</Activate>
+        <Consumable />
+        <Potion />
+        <BagType>5</BagType>
+    </Object>
+    <Object type="0x4972" id="Soul of Attack">
+        <Class>Equipment</Class>
+        <Item />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x24</Index>
+        </Texture>
+        <SlotType>10</SlotType>
+        <Description>A Soul that permanently Upgrade your Attack stat by 1.</Description>
+        <Sound>use_potion</Sound>
+        <Activate stat="20" amount="1">UpgradeStat</Activate>
+        <Consumable />
+        <Potion />
+        <BagType>5</BagType>
+    </Object>
+    <Object type="0x4973" id="Soul of Defense">
+        <Class>Equipment</Class>
+        <Item />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x25</Index>
+        </Texture>
+        <SlotType>10</SlotType>
+        <Description>A Soul that permanently Upgrade your Defense stat by 1.</Description>
+        <Sound>use_potion</Sound>
+        <Activate stat="21" amount="1">UpgradeStat</Activate>
+        <Consumable />
+        <Potion />
+        <BagType>5</BagType>
+    </Object>
+    <Object type="0x4974" id="Soul of Speed">
+        <Class>Equipment</Class>
+        <Item />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x26</Index>
+        </Texture>
+        <SlotType>10</SlotType>
+        <Description>A Soul that permanently Upgrade your Speed stat by 1.</Description>
+        <Sound>use_potion</Sound>
+        <Activate stat="22" amount="1">UpgradeStat</Activate>
+        <Consumable />
+        <Potion />
+        <BagType>5</BagType>
+    </Object>
+    <Object type="0x4975" id="Soul of Dexterity">
+        <Class>Equipment</Class>
+        <Item />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x27</Index>
+        </Texture>
+        <SlotType>10</SlotType>
+        <Description>A Soul that permanently Upgrade your Dexterity stat by 1.</Description>
+        <Sound>use_potion</Sound>
+        <Activate stat="28" amount="1">UpgradeStat</Activate>
+        <Consumable />
+        <Potion />
+        <BagType>5</BagType>
+    </Object>
+    <Object type="0x4976" id="Soul of Vitality">
+        <Class>Equipment</Class>
+        <Item />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x28</Index>
+        </Texture>
+        <SlotType>10</SlotType>
+        <Description>A Soul that permanently Upgrade your Vitality stat by 1.</Description>
+        <Sound>use_potion</Sound>
+        <Activate stat="26" amount="1">UpgradeStat</Activate>
+        <Consumable />
+        <Potion />
+        <BagType>5</BagType>
+    </Object>
+    <Object type="0x4977" id="Soul of Wisdom">
+        <Class>Equipment</Class>
+        <Item />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x29</Index>
+        </Texture>
+        <SlotType>10</SlotType>
+        <Description>A Soul that permanently Upgrade your Wisdom stat by 1.</Description>
+        <Sound>use_potion</Sound>
+        <Activate stat="27" amount="1">UpgradeStat</Activate>
+        <Consumable />
+        <Potion />
+        <BagType>5</BagType>
+    </Object>
+    <Object type="0x4978" id="Life/Mana Potion">
+        <Class>Equipment</Class>
+        <Item />
+        <Forgeable />
+        <NoTierTag />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x2a</Index>
+        </Texture>
+        <SlotType>10</SlotType>
+        <Description>A Potion used to make a Supreme Potion.</Description>
+        <Sound>use_potion</Sound>
+        <Consumable />
+        <Potion />
+        <BagType>5</BagType>
+    </Object>
+    <Object type="0x4979" id="Attack/Defense Potion">
+        <Class>Equipment</Class>
+        <Item />
+        <Forgeable />
+        <NoTierTag />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x2b</Index>
+        </Texture>
+        <SlotType>10</SlotType>
+        <Description>A Potion used to make a Supreme Potion.</Description>
+        <Sound>use_potion</Sound>
+        <Consumable />
+        <Potion />
+        <BagType>5</BagType>
+    </Object>
+    <Object type="0x497a" id="Speed/Dexterity Potion">
+        <Class>Equipment</Class>
+        <Item />
+        <Forgeable />
+        <NoTierTag />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x2c</Index>
+        </Texture>
+        <SlotType>10</SlotType>
+        <Description>A Potion used to make a Supreme Potion.</Description>
+        <Sound>use_potion</Sound>
+        <BagType>5</BagType>
+    </Object>
+    <Object type="0x497b" id="Vitality/Wisdom Potion">
+        <Class>Equipment</Class>
+        <Item />
+        <Forgeable />
+        <NoTierTag />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x2d</Index>
+        </Texture>
+        <SlotType>10</SlotType>
+        <Description>A Potion used to make a Supreme Potion.</Description>
+        <Sound>use_potion</Sound>
+        <BagType>5</BagType>
+    </Object>
+    <Object type="0x497c" id="Life/Mana/Attack/Defense Potion">
+        <Class>Equipment</Class>
+        <Item />
+        <Forgeable />
+        <NoTierTag />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x2e</Index>
+        </Texture>
+        <SlotType>10</SlotType>
+        <Description>A Potion used to make a Supreme Potion.</Description>
+        <BagType>5</BagType>
+    </Object>
+    <Object type="0x497d" id="Speed/Dexterity/Vitality/Wisdom Potion">
+        <Class>Equipment</Class>
+        <Item />
+        <Forgeable />
+        <NoTierTag />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x2f</Index>
+        </Texture>
+        <SlotType>10</SlotType>
+        <Description>A Potion used to make a Supreme Potion.</Description>
+        <Sound>use_potion</Sound>
+        <BagType>5</BagType>
+    </Object>
+
+    <Object type="0x497e" id="Supreme Potion">
+        <Class>Equipment</Class>
+        <Item />
+        <Revenge />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x30</Index>
+        </Texture>
+        <ExtraTooltipData>
+            <EffectInfo name="" description="This can be used to unlock 16/16. When you use it, you will be able to drink Souls." />
+        </ExtraTooltipData>
+        <SlotType>10</SlotType>
+        <Description>A Potion that have the Soul of all Potions, with his power Upgrades your Character to be 16/16.</Description>
+        <Sound>use_potion</Sound>
+        <Activate>UpgradeActivate</Activate>
+        <Consumable />
+        <Potion />
+        <BagType>8</BagType>
+    </Object>
+</Objects>

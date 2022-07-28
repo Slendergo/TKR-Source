@@ -1,0 +1,10 @@
+{"id":0,
+"isLimbo":false,
+"name":"Oryx Castle",
+"sbName":"Oryx Castle",
+"difficulty":4,
+"background":0,
+"blocking":2,
+"restrictTp":true,
+"showDisplays":false,
+"music":[""]}

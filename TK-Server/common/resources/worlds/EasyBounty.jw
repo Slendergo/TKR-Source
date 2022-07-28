@@ -1,0 +1,12 @@
+﻿{"id":0,
+"isLimbo":false,
+"name":"The Sacred Chamber of Wingus",
+"sbName":"The Sacred Chamber of Wingus",
+"difficulty":5,
+"background":0,
+"blocking":2,
+"restrictTp":true,
+"showDisplays":false,
+"portals":[0x9021],
+"maps":["easybounty.jm"],
+"music":[""]}

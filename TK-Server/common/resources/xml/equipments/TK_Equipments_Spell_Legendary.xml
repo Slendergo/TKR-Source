@@ -1,0 +1,91 @@
+<Objects>
+  <Object type="0xb41" id="Tablet of the King's Avatar">
+    <Class>Equipment</Class>
+    <Item />
+    <Demonized />
+    <Legendary />
+    <Texture>
+      <File>lofiObj3</File>
+      <Index>0x490</Index>
+    </Texture>
+    <SlotType>11</SlotType>
+    <Description>Thought to have been lost to the ages, the wisdom imparted in this tablet will summon a power unrivaled by any modern spell.</Description>
+    <Sound>spell/magic_nova</Sound>
+    <Projectile>
+      <ObjectId>Fire Claw</ObjectId>
+      <Speed>160</Speed>
+      <MinDamage>270</MinDamage>
+      <MaxDamage>290</MaxDamage>
+      <LifetimeMS>250</LifetimeMS>
+      <MultiHit />
+      <Boomerang />
+    </Projectile>
+    <ActivateOnEquip stat="0" amount="50">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="5">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="4">IncrementStat</ActivateOnEquip>
+    <Usable />
+    <SpellProjectiles>15</SpellProjectiles>
+    <BagType>7</BagType>
+    <FameBonus>5</FameBonus>
+    <MpCost>160</MpCost>
+    <Activate>BulletNova</Activate>
+  </Object>
+  <Object type="0x514c" id="Chroma Spell">
+    <Class>Equipment</Class>
+    <Item />
+    <Legendary />
+    <OutOfOneMind />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0xa8</Index>
+    </Texture>
+    <SlotType>11</SlotType>
+    <FameBonus>6</FameBonus>
+    <Description>A Spell made by limon to attack microsoft for bringing viruses to his world</Description>
+    <Sound>spell/fire_nova</Sound>
+    <Projectile>
+      <ObjectId>Chroma Spell Shot</ObjectId>
+      <Speed>200</Speed>
+      <MinDamage>175</MinDamage>
+      <MaxDamage>230</MaxDamage>
+      <LifetimeMS>1000</LifetimeMS>
+      <ArmorPiercing />
+      <Boomerang />
+    </Projectile>
+    <Usable />
+    <SpellProjectiles>18</SpellProjectiles>
+    <BagType>6</BagType>
+    <MpCost>140</MpCost>
+    <ActivateOnEquip stat="3" amount="30">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="-2">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="7">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="8">IncrementStat</ActivateOnEquip>
+    <Activate>BulletNova</Activate>
+  </Object>
+    <Object type="0x50f3" id="Haunting Incantation">
+    <Class>Equipment</Class>
+    <Item />
+    <Legendary />
+    <Mutilate />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0xd1</Index>
+    </Texture>
+    <SlotType>11</SlotType>
+    <FameBonus>7</FameBonus>
+    <Description>With the weak grazed, the incantation fells those who remain.</Description>
+    <Sound>spell/fire_nova</Sound>
+    <Projectile>
+      <ObjectId>Haunting Incantation Shoot</ObjectId>
+      <Speed>0</Speed>
+      <MinDamage>4500</MinDamage>
+      <MaxDamage>5000</MaxDamage>
+      <LifetimeMS>800</LifetimeMS>
+    </Projectile>
+    <Usable />
+    <SpellProjectiles>1</SpellProjectiles>
+    <BagType>7</BagType>
+    <MpCost>200</MpCost>
+    <Activate>BulletNova</Activate>
+  </Object>
+</Objects>

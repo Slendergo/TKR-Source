@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30002.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK.Log2Markdown", "Log2Markdown\TK.Log2Markdown.csproj", "{DAC84AA4-908F-4E5E-B11D-082BA035FABA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK.EyeOfTheMetis", "EyeOfTheMetis\TK.EyeOfTheMetis.csproj", "{FDA80275-E3F0-456E-9FB2-3E326EFED899}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{39836989-A820-47F8-A671-793F3AE4059E}"
+	ProjectSection(SolutionItems) = preProject
+		Core Algorithms.dll = Core Algorithms.dll
+		Core Algorithms.xml = Core Algorithms.xml
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TK.Bot", "Bot\TK.Bot.csproj", "{E9793A4F-E7EF-4EE9-BA2E-ECDF5CAC6F47}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TK.Pipelines.Server", "TK.Pipelines.Server\TK.Pipelines.Server.csproj", "{9803FBAF-2968-40DD-B2D0-B96E8E8FF8C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK.Pipelines.Client", "TK.Pipelines.Client\TK.Pipelines.Client.csproj", "{3EA880DC-7D70-4439-BF08-3D6051531FFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TK.AssetFormatter", "TK.AssetFormatter\TK.AssetFormatter.csproj", "{F2CB19EE-5951-4D57-AA25-F8CCDB46C530}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DAC84AA4-908F-4E5E-B11D-082BA035FABA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAC84AA4-908F-4E5E-B11D-082BA035FABA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAC84AA4-908F-4E5E-B11D-082BA035FABA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAC84AA4-908F-4E5E-B11D-082BA035FABA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDA80275-E3F0-456E-9FB2-3E326EFED899}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDA80275-E3F0-456E-9FB2-3E326EFED899}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDA80275-E3F0-456E-9FB2-3E326EFED899}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDA80275-E3F0-456E-9FB2-3E326EFED899}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9793A4F-E7EF-4EE9-BA2E-ECDF5CAC6F47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9793A4F-E7EF-4EE9-BA2E-ECDF5CAC6F47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9793A4F-E7EF-4EE9-BA2E-ECDF5CAC6F47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9793A4F-E7EF-4EE9-BA2E-ECDF5CAC6F47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9803FBAF-2968-40DD-B2D0-B96E8E8FF8C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9803FBAF-2968-40DD-B2D0-B96E8E8FF8C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9803FBAF-2968-40DD-B2D0-B96E8E8FF8C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9803FBAF-2968-40DD-B2D0-B96E8E8FF8C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EA880DC-7D70-4439-BF08-3D6051531FFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EA880DC-7D70-4439-BF08-3D6051531FFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EA880DC-7D70-4439-BF08-3D6051531FFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EA880DC-7D70-4439-BF08-3D6051531FFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2CB19EE-5951-4D57-AA25-F8CCDB46C530}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2CB19EE-5951-4D57-AA25-F8CCDB46C530}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2CB19EE-5951-4D57-AA25-F8CCDB46C530}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2CB19EE-5951-4D57-AA25-F8CCDB46C530}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {77F348E6-EF2B-44D5-8637-CD17D4DD6A5E}
+	EndGlobalSection
+EndGlobal

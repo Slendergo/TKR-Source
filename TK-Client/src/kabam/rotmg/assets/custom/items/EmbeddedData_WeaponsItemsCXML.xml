@@ -1,0 +1,1647 @@
+<Objects>
+
+    <!-- Swords -->
+    <Object type="0x9501" id="Shattered War Axe">
+        <Class>Equipment</Class>
+        <Item />
+        <Lucky />
+        <Texture>
+            <File>lofiObj7</File>
+            <Index>0x00</Index>
+        </Texture>
+        <SlotType>1</SlotType>
+        <Legendary />
+        <Description>Tribute to RoTF</Description>
+        <RateOfFire>.6</RateOfFire>
+        <Sound>weapon/mithril_sword</Sound>
+        <Projectile>
+            <ObjectId>Shattered War Shot</ObjectId>
+            <Speed>75</Speed>
+            <MinDamage>355</MinDamage>
+            <MaxDamage>375</MaxDamage>
+            <LifetimeMS>750</LifetimeMS>
+            <Frequency>.6</Frequency>
+            <Size>100</Size>
+            <ArmorPiercing />
+            <MultiHit />
+        </Projectile>
+        <NumProjectiles>1</NumProjectiles>
+        <BagType>7</BagType>
+        <FameBonus>6</FameBonus>
+        <DisplayId>Shattered War Axe</DisplayId>
+    </Object>
+    <Object type="0xa429" id="Spear of Thiram">
+        <Class>Equipment</Class>
+        <Item />
+        <OutofOneMind />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0xdf</Index>
+        </Texture>
+        <SlotType>1</SlotType>
+        <Legendary />
+        <Description>Used by Jupiter, Neptune, and Pluto to overthrow their Father, Saturn.</Description>
+        <RateOfFire>0.5</RateOfFire>
+        <Sound>weapon/mithril_sword</Sound>
+        <Projectile>
+            <ObjectId>Thiram Shot</ObjectId>
+            <Speed>100</Speed>
+            <MinDamage>666</MinDamage>
+            <MaxDamage>666</MaxDamage>
+            <LifetimeMS>750</LifetimeMS>
+            <Frequency>1</Frequency>
+            <Amplitude>0.2</Amplitude>
+            <Size>100</Size>
+            <MultiHit />
+            <ArmorPiercing />
+        </Projectile>
+        <NumProjectiles>1</NumProjectiles>
+        <BagType>7</BagType>
+        <FameBonus>7</FameBonus>
+        <DisplayId>Spear of Thiram</DisplayId>
+    </Object>
+    <Object type="0xb103" id="Blade of the Brute">
+        <Class>Equipment</Class>
+        <Item />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0xe8</Index>
+        </Texture>
+        <SlotType>1</SlotType>
+        <Description>A blade of exceptional physical prowess belonging to one of the many treasures of the lost lands.</Description>
+        <RateOfFire>1.25</RateOfFire>
+        <Sound>weapon/mithril_sword</Sound>
+        <Projectile>
+            <ObjectId>Brute Shot</ObjectId>
+            <Speed>100</Speed>
+            <MinDamage>60</MinDamage>
+            <MaxDamage>80</MaxDamage>
+            <LifetimeMS>350</LifetimeMS>
+            <Amplitude>0.1</Amplitude>
+            <Frequency>2</Frequency>
+            <Size>100</Size>
+        </Projectile>
+        <NumProjectiles>4</NumProjectiles>
+        <ArcGap>5</ArcGap>
+        <BagType>7</BagType>
+        <FameBonus>5</FameBonus>
+        <DisplayId>Blade of the Brute</DisplayId>
+    </Object>
+    <Object type="0x5409" id="Blade of the Protector">
+        <Class>Equipment</Class>
+        <Item />
+        <Mutilate />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0xe0</Index>
+        </Texture>
+        <SlotType>1</SlotType>
+        <Legendary />
+        <Description>During the Shatter's age of ruin, the Sentinel spent weeks on end slaying the oncoming forces hoping to claim the treasures.</Description>
+        <RateOfFire>1</RateOfFire>
+        <Sound>weapon/mithril_sword</Sound>
+        <Projectile>
+            <ObjectId>Blade of the Protector Shoot</ObjectId>
+            <Speed>140</Speed>
+            <MinDamage>130</MinDamage>
+            <MaxDamage>160</MaxDamage>
+            <LifetimeMS>336</LifetimeMS>
+            <Frequency>0</Frequency>
+            <Size>95</Size>
+            <MultiHit />
+        </Projectile>
+        <NumProjectiles>3</NumProjectiles>
+        <ArcGap>14</ArcGap>
+        <ActivateOnEquip stat="21" amount="6">IncrementStat</ActivateOnEquip>
+        <ActivateOnEquip stat="27" amount="6">IncrementStat</ActivateOnEquip>
+        <BagType>7</BagType>
+        <FameBonus>7</FameBonus>
+        <DisplayId>Blade of the Protector</DisplayId>
+    </Object>
+
+    <Object type="0x48d5" id="Slime Slayer">
+        <Class>Equipment</Class>
+        <Item/>
+        <Splus/>
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x08</Index>
+        </Texture>
+        <SlotType>1</SlotType>
+        <Description>The world will know their power...</Description>
+        <RateOfFire>1.25</RateOfFire>
+        <Sound>weapon/mithril_sword</Sound>
+        <Projectile>
+            <ObjectId>Slime Sword Shoot</ObjectId>
+            <Speed>110</Speed>
+            <MinDamage>215</MinDamage>
+            <MaxDamage>215</MaxDamage>
+            <LifetimeMS>409</LifetimeMS>
+            <Frequency>1.5</Frequency>
+            <Amplitude>0.2</Amplitude>
+            <ArmorPiercing/>
+            <Size>100</Size>
+            <ConditionEffect duration="0.3">Slowed</ConditionEffect>
+        </Projectile>
+        <NumProjectiles>1</NumProjectiles>
+        <ArcGap>11</ArcGap>
+        <BagType>7</BagType>
+        <FameBonus>6</FameBonus>
+        <feedPower>650</feedPower>
+        <DisplayId>Slime Sword</DisplayId>
+    </Object>
+
+    <Object type="0x4928" id="Excalibur">
+        <Class>Equipment</Class>
+        <Item />
+        <OutOfOneMind />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x14</Index>
+        </Texture>
+        <SlotType>1</SlotType>
+        <Description>A legendary sword that belongs to a King, this sword contains extraordinary attributes capable of killing someone in an instant.</Description>
+        <RateOfFire>0.75</RateOfFire>
+        <Sound>weapon/blunt_sword</Sound>
+        <Legendary />
+        <Projectile>
+            <ObjectId>Excalibur Shoot</ObjectId>
+            <Speed>150</Speed>
+            <MinDamage>375</MinDamage>
+            <MaxDamage>525</MaxDamage>
+            <LifetimeMS>300</LifetimeMS>
+            <Amplitude>0.3</Amplitude>
+            <Frequency>0.5</Frequency>
+            <Size>100</Size>
+            <MultiHit />
+            <Wavy />
+        </Projectile>
+        <NumProjectiles>4</NumProjectiles>
+        <ArcGap>4</ArcGap>
+        <ActivateOnEquip stat="20" amount="3">IncrementStat</ActivateOnEquip>
+        <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
+        <ActivateOnEquip stat="27" amount="-3">IncrementStat</ActivateOnEquip>
+        <ActivateOnEquip stat="26" amount="-3">IncrementStat</ActivateOnEquip>
+        <BagType>7</BagType>
+        <FameBonus>7</FameBonus>
+        <DisplayId>Excalibur</DisplayId>
+    </Object>
+
+    <Object type="0x4989" id="Massacre">
+        <Class>Equipment</Class>
+        <Item />
+        <SPlus />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x3c</Index>
+        </Texture>
+        <SlotType>1</SlotType>
+        <Description>Legend has it that this sword created by Elemental Water has killed many people, so that why is called Massacre.</Description>
+        <RateOfFire>1.4</RateOfFire>
+        <Sound>weapon/glass_sword</Sound>
+        <Projectile>
+            <ObjectId>Massacre Shoot</ObjectId>
+            <Speed>178.5</Speed>
+            <MinDamage>190</MinDamage>
+            <MaxDamage>205</MaxDamage>
+            <LifetimeMS>280</LifetimeMS>
+            <Amplitude>0.3</Amplitude>
+            <Frequency>1.5</Frequency>
+            <Size>100</Size>
+            <FaceDir />
+            <ArmorPiercing />
+            <ParticleTrail intensity="0.1" lifetimeMS="200">0x0055E9</ParticleTrail>
+        </Projectile>
+        <NumProjectiles>1</NumProjectiles>
+        <ArcGap>0</ArcGap>
+        <ActivateOnEquip stat="28" amount="1">IncrementStat</ActivateOnEquip>
+        <BagType>7</BagType>
+        <FameBonus>6</FameBonus>
+        <DisplayId>Massacre</DisplayId>
+    </Object>
+
+        <Object type="0x500f" id="Earth's Power">
+            <Class>Equipment</Class>
+            <Item />
+            <Texture>
+                <File>CustomObj</File>
+                <Index>0x51</Index>
+            </Texture>
+            <Eternal />
+            <SlotType>1</SlotType>
+            <Description>This sword is connected to the earth, its connection gives it unmatched strength to beat any rival.</Description>
+            <RateOfFire>.70</RateOfFire>
+            <Sound>weapon/blunt_sword</Sound>
+            <Projectile>
+                <ObjectId>Earth's Power Shoot</ObjectId>
+                <Speed>150</Speed>
+                <MinDamage>360</MinDamage>
+                <MaxDamage>390</MaxDamage>
+                <LifetimeMS>300</LifetimeMS>
+                <Amplitude>0.6</Amplitude>
+                <Frequency>0.97</Frequency>
+                <Size>100</Size>
+                <MultiHit />
+                <FaceDir />
+            </Projectile>
+            <NumProjectiles>2</NumProjectiles>
+            <ArcGap>1</ArcGap>
+            <ActivateOnEquip stat="21" amount="5">IncrementStat</ActivateOnEquip>
+            <ActivateOnEquip stat="26" amount="5">IncrementStat</ActivateOnEquip>
+            <BagType>7</BagType>
+            <Lucky />
+            <FameBonus>7</FameBonus>
+            <DisplayId>Earth's Power</DisplayId>
+        </Object>
+
+    <Object type="0x5026" id="Golden Oryx Sword">
+        <Class>Equipment</Class>
+        <Item />
+        <SPlus />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x53</Index>
+        </Texture>
+        <SlotType>1</SlotType>
+        <Description>A completely golden sword from the great Golden Oryx. Its edge is so strong that it can kill anyone in an instant.</Description>
+        <RateOfFire>.95</RateOfFire>
+        <Sound>weapon/mithril_sword</Sound>
+        <Projectile>
+            <ObjectId>Golden Oryx Sword Shoot</ObjectId>
+            <Speed>100</Speed>
+            <MinDamage>275</MinDamage>
+            <MaxDamage>290</MaxDamage>
+            <LifetimeMS>450</LifetimeMS>
+            <Frequency>1</Frequency>
+            <Size>100</Size>
+        </Projectile>
+        <NumProjectiles>1</NumProjectiles>
+        <ArcGap>11</ArcGap>
+        <ActivateOnEquip stat="21" amount="3">IncrementStat</ActivateOnEquip>
+        <BagType>7</BagType>
+        <FameBonus>5</FameBonus>
+        <DisplayId>Golden Oryx Sword</DisplayId>
+    </Object>
+
+    <Object type="0x5061" id="Malphas Sword">
+        <Class>Equipment</Class>
+        <Item />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x74</Index>
+        </Texture>
+        <SlotType>1</SlotType>
+        <Description>A Sword of Archdemon Malphas, the king of Hell.</Description>
+        <RateOfFire>1.05</RateOfFire>
+        <Sound>weapon/mithril_sword</Sound>
+        <Projectile>
+            <ObjectId>Malphas Sword Shoot</ObjectId>
+            <Speed>100</Speed>
+            <MinDamage>140</MinDamage>
+            <MaxDamage>190</MaxDamage>
+            <LifetimeMS>420</LifetimeMS>
+            <Amplitude>0.5</Amplitude>
+            <Frequency>1.5</Frequency>
+            <Size>110</Size>
+        </Projectile>
+        <NumProjectiles>2</NumProjectiles>
+        <ArcGap>11</ArcGap>
+        <BagType>7</BagType>
+        <FameBonus>5</FameBonus>
+        <DisplayId>Malphas Sword</DisplayId>
+    </Object>
+
+    <Object type="0x6082" id="The Horn Breaker">
+        <Class>Equipment</Class>
+        <Item />
+        <Lucky />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x7e</Index>
+        </Texture>
+        <SlotType>1</SlotType>
+        <Legendary />
+        <Description>This broad sword is powerfully held with every might and power it draws from its pending slash. This is made by the strongly enchanted horns of Oryx. No event or mob can conquer this weapon with the divine enigma it holds.</Description>
+        <RateOfFire>1</RateOfFire>
+        <Sound>weapon/mithril_sword</Sound>
+        <Projectile>
+            <ObjectId>Horn Breaker Shot</ObjectId>
+            <Speed>125</Speed>
+            <MinDamage>355</MinDamage>
+            <MaxDamage>375</MaxDamage>
+            <LifetimeMS>340</LifetimeMS>
+            <Frequency>1</Frequency>
+            <Size>80</Size>
+            <ArmorPiercing />
+        </Projectile>
+        <NumProjectiles>1</NumProjectiles>
+        <ArcGap>11</ArcGap>
+        <ActivateOnEquip stat="20" amount="6">IncrementStat</ActivateOnEquip>
+        <ActivateOnEquip stat="28" amount="2">IncrementStat</ActivateOnEquip>
+        <BagType>7</BagType>
+        <FameBonus>6</FameBonus>
+        <DisplayId>The Horn Breaker</DisplayId>
+    </Object>
+
+    <Object type="0x490d" id="Sword of the Colossus">
+        <Class>Equipment</Class>
+        <Item />
+        <OutOfOneMind />
+        <Texture>
+            <File>LostHallsObj</File>
+            <Index>0x00</Index>
+        </Texture>
+        <SlotType>1</SlotType>
+        <Description>
+            A sword with an impossibly sharp edge. It has been designed with holy magic to slash like no other blade.
+        </Description>
+        <RateOfFire>1.05</RateOfFire>
+        <Sound>weapon/golden_bow</Sound>
+        <Projectile>
+            <ObjectId>Colossus Slash</ObjectId>
+            <Speed>125</Speed>
+            <MinDamage>360</MinDamage>
+            <MaxDamage>400</MaxDamage>
+            <LifetimeMS>360</LifetimeMS>
+            <Amplitude>0.7</Amplitude>
+            <Frequency>0.5</Frequency>
+            <FaceDir />
+        </Projectile>
+        <Legendary />
+        <BagType>7</BagType>
+        <FameBonus>6</FameBonus>
+        <NumProjectiles>1</NumProjectiles>
+        <OldSound>bladeSwing</OldSound>
+        <feedPower>1200</feedPower>
+    </Object>
+
+    <!-- Swords -->
+
+    <!-- Staffs -->
+    <Object type="0x540a" id="Ashen Spine">
+        <Class>Equipment</Class>
+        <Item />
+        <Legendary />
+        <SteamRoller />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x120</Index>
+        </Texture>
+        <SlotType>17</SlotType>
+        <Description>Ripped from the remains of the King's Avatar. It is oddly smaller than the rest of the corpse.</Description>
+        <RateOfFire>1.20</RateOfFire>
+        <Sound>weapon/fire_wand</Sound>
+        <Projectile>
+            <ObjectId>Ashen Spine Shoot</ObjectId>
+            <Speed>150</Speed>
+            <MinDamage>95</MinDamage>
+            <MaxDamage>100</MaxDamage>
+            <LifetimeMS>400</LifetimeMS>
+            <Frequency>0.95</Frequency>
+            <Amplitude>1.25</Amplitude>
+            <Size>80</Size>
+            <ActivateOnEquip stat="22" amount="-3">IncrementStat</ActivateOnEquip>
+        </Projectile>
+        <NumProjectiles>3</NumProjectiles>
+        <ArcGap>5</ArcGap>
+        <BagType>7</BagType>
+        <FameBonus>6</FameBonus>
+        <feedPower>650</feedPower>
+        <DisplayId>Ashen Spine</DisplayId>
+    </Object>
+
+    <Object type="0x540b" id="Rod of Frost Burn">
+        <Class>Equipment</Class>
+        <Item />
+        <Legendary />
+        <Steamroller />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0xc0</Index>
+        </Texture>
+        <SlotType>17</SlotType>
+        <Description>The unlikely marriage of polar opposites, such an event can only lead to disaster.</Description>
+        <RateOfFire>.95</RateOfFire>
+        <Sound>weapon/fire_wand</Sound>
+        <Projectile>
+            <ObjectId>Rod of Frost Burn Shoot</ObjectId>
+            <Speed>160</Speed>
+            <MinDamage>255</MinDamage>
+            <MaxDamage>290</MaxDamage>
+            <LifetimeMS>500</LifetimeMS>
+            <Frequency>0.55</Frequency>
+            <Amplitude>0.6</Amplitude>
+            <ArmorPiercing />
+            <Size>110</Size>
+            <ActivateOnEquip stat="26" amount="7">IncrementStat</ActivateOnEquip>
+            <ActivateOnEquip stat="27" amount="7">IncrementStat</ActivateOnEquip>
+        </Projectile>
+        <NumProjectiles>1</NumProjectiles>
+        <ArcGap>0</ArcGap>
+        <BagType>7</BagType>
+        <FameBonus>7</FameBonus>
+        <feedPower>650</feedPower>
+        <DisplayId>Rod of Frost Burn</DisplayId>
+    </Object>
+
+    <Object type="0x540c" id="Scythe of the Reaper">
+        <Class>Equipment</Class>
+        <Item />
+        <Legendary />
+        <Demonized />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0xd0</Index>
+        </Texture>
+        <SlotType>17</SlotType>
+        <Description>While not quite as powerful as the real Death's scythe, this replica certainly does not lack power.</Description>
+        <RateOfFire>.65</RateOfFire>
+        <Sound>weapon/mithril_sword</Sound>
+        <Projectile>
+            <ObjectId>Scythe of the Reaper Shoot</ObjectId>
+            <Speed>170</Speed>
+            <MinDamage>100</MinDamage>
+            <MaxDamage>205</MaxDamage>
+            <LifetimeMS>353</LifetimeMS>
+            <Frequency>0.72</Frequency>
+            <Amplitude>0.6</Amplitude>
+            <MultiHit />
+            <PassesCover />
+            <Size>85</Size>
+        </Projectile>
+        <NumProjectiles>3</NumProjectiles>
+        <ArcGap>5</ArcGap>
+        <ActivateOnEquip stat="21" amount="4">IncrementStat</ActivateOnEquip>
+        <ActivateOnEquip stat="22" amount="7">IncrementStat</ActivateOnEquip>
+        <BagType>8</BagType>
+        <FameBonus>7</FameBonus>
+        <feedPower>650</feedPower>
+        <DisplayId>Scythe of the Reaper</DisplayId>
+    </Object>
+
+    <Object type="0x48df" id="Leaf Staff">
+        <Class>Equipment</Class>
+        <Item />
+        <SPlus />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x0d</Index>
+        </Texture>
+        <SlotType>17</SlotType>
+        <Description>A branch with leaves, his creator was the king of the Tiki Tiki. It contain the power of Nature.</Description>
+        <RateOfFire>1</RateOfFire>
+        <Sound>monster/djinn_hit</Sound>
+        <Projectile>
+            <ObjectId>Leaf Shoot</ObjectId>
+            <Speed>180</Speed>
+            <MinDamage>60</MinDamage>
+            <MaxDamage>65</MaxDamage>
+            <LifetimeMS>390</LifetimeMS>
+            <Amplitude>0.5</Amplitude>
+            <Frequency>2</Frequency>
+            <Size>100</Size>
+            <Wavy />
+        </Projectile>
+        <NumProjectiles>3</NumProjectiles>
+        <ArcGap>5</ArcGap>
+        <BagType>7</BagType>
+        <FameBonus>6</FameBonus>
+        <feedPower>700</feedPower>
+        <DisplayId>Leaf Staff</DisplayId>
+    </Object>
+
+    <Object type="0x4981" id="Mushroom's Nature">
+        <Class>Equipment</Class>
+        <Item />
+        <Electrify />
+        <Rare />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x3a</Index>
+        </Texture>
+        <SlotType>17</SlotType>
+        <Description>A magical wooden staff topped A branch with a fungus on the tip, has the power of the nature of the fungus, its red and white colors gives it the touch of power.</Description>
+        <RateOfFire>0.70</RateOfFire>
+        <Sound>weapon/fire_wand</Sound>
+        <Projectile>
+            <ObjectId>Mushroom Staff Shoot</ObjectId>
+            <Speed>45</Speed>
+            <MinDamage>70</MinDamage>
+            <MaxDamage>80</MaxDamage>
+            <LifetimeMS>1500</LifetimeMS>
+            <Amplitude>0.3</Amplitude>
+            <Frequency>1.85</Frequency>
+            <Size>65</Size>
+            <ArmorPiercing />
+            <MultiHit />
+        </Projectile>
+        <NumProjectiles>4</NumProjectiles>
+        <ArcGap>7</ArcGap>
+        <ActivateOnEquip stat="20" amount="2">IncrementStat</ActivateOnEquip>
+        <ActivateOnEquip stat="28" amount="2">IncrementStat</ActivateOnEquip>
+        <BagType>7</BagType>
+        <FameBonus>6</FameBonus>
+        <DisplayId>Mushroom's Nature</DisplayId>
+    </Object>
+
+    <Object type="0x5012" id="Rod of Fire">
+        <Class>Equipment</Class>
+        <Item />
+        <GodTouch />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x45</Index>
+        </Texture>
+        <Eternal />
+        <SlotType>17</SlotType>
+        <Description>This rod, with its incredible power destroys and incinerates everything you see, only a good carrier can use this weapon..</Description>
+        <RateOfFire>.75</RateOfFire>
+        <Sound>weapon/fire_wand</Sound>
+        <Projectile>
+            <ObjectId>Fire Elemental Staff Shoot</ObjectId>
+            <Speed>180</Speed>
+            <MinDamage>210</MinDamage>
+            <MaxDamage>255</MaxDamage>
+            <LifetimeMS>475</LifetimeMS>
+            <Amplitude>0.35</Amplitude>
+            <Frequency>2.49</Frequency>
+            <Size>100</Size>
+            <FaceDir />
+        </Projectile>
+        <NumProjectiles>2</NumProjectiles>
+        <ArcGap>1</ArcGap>
+        <ActivateOnEquip stat="20" amount="3">IncrementStat</ActivateOnEquip>
+        <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
+        <BagType>7</BagType>
+        <FameBonus>7</FameBonus>
+        <DisplayId>Rod of Fire</DisplayId>
+    </Object>
+
+    <Object type="0x5055" id="Emerald Staff">
+        <Class>Equipment</Class>
+        <Item />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x69</Index>
+        </Texture>
+        <SetTier />
+        <SlotType>17</SlotType>
+        <Description>A Staff with a Emerald Gem at the tip, the Wood comes from Magic Forest that make this Staff powerful.</Description>
+        <RateOfFire>1.25</RateOfFire>
+        <Sound>weapon/wand_of_death</Sound>
+        <Projectile>
+            <ObjectId>Emerald Staff Shoot</ObjectId>
+            <Speed>165</Speed>
+            <MinDamage>115</MinDamage>
+            <MaxDamage>220</MaxDamage>
+            <LifetimeMS>512</LifetimeMS>
+            <Amplitude>0.8</Amplitude>
+            <Frequency>1.5</Frequency>
+            <Size>100</Size>
+            <FaceDir />
+        </Projectile>
+        <ActivateOnEquip stat="27" amount="5">IncrementStat</ActivateOnEquip>
+        <NumProjectiles>1</NumProjectiles>
+        <ArcGap>0</ArcGap>
+        <BagType>7</BagType>
+        <FameBonus>5</FameBonus>
+        <DisplayId>Emerald Staff</DisplayId>
+    </Object>
+
+    <Object type="0x491a" id="Staff of Unholy Sacrifice">
+        <Class>Equipment</Class>
+        <Item />
+        <Demonized />
+        <Texture>
+            <File>LostHallsObj</File>
+            <Index>0x09</Index>
+        </Texture>
+        <SlotType>17</SlotType>
+        <Description>
+            A commanding staff used by vile cult leaders. It has a strange force inside it that prevents it from facing forward of the user.
+        </Description>
+        <ExtraTooltipData>
+            <EffectInfo name="" description="Shoots backwards" />
+        </ExtraTooltipData>
+        <RateOfFire>0.35</RateOfFire>
+        <Projectile>
+            <ObjectId>Cultist Fire Shot</ObjectId>
+            <Size>70</Size>
+            <Speed>115</Speed>
+            <MinDamage>155</MinDamage>
+            <MaxDamage>200</MaxDamage>
+            <LifetimeMS>700</LifetimeMS>
+            <MultiHit />
+        </Projectile>
+        <BagType>7</BagType>
+        <FameBonus>6</FameBonus>
+        <NumProjectiles>4</NumProjectiles>
+        <ArcGap>352</ArcGap>
+        <OldSound>magicShoot</OldSound>
+        <feedPower>1200</feedPower>
+        <Legendary />
+    </Object>
+
+    <Object type="0x5074" id="The Plasma Buster">
+        <Class>Equipment</Class>
+        <Item />
+        <Demonized />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x00</Index>
+        </Texture>
+        <Legendary />
+        <SlotType>17</SlotType>
+        <Description>An ancient staff used both for sacrifice and communion with the gods.</Description>
+        <RateOfFire>0.95</RateOfFire>
+        <Sound>monster/djinn_hit</Sound>
+        <Projectile>
+            <ObjectId>Plasma Missile</ObjectId>
+            <Speed>180</Speed>
+            <MinDamage>130</MinDamage>
+            <MaxDamage>170</MaxDamage>
+            <LifetimeMS>475</LifetimeMS>
+            <Amplitude>0.5</Amplitude>
+            <Frequency>2</Frequency>
+        </Projectile>
+        <BagType>7</BagType>
+        <FameBonus>8</FameBonus>
+        <NumProjectiles>2</NumProjectiles>
+        <ArcGap>0</ArcGap>
+        <OldSound>magicShoot</OldSound>
+    </Object>
+
+    <Object type="0x507b" id="Wind Staff">
+        <Class>Equipment</Class>
+        <Item />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x04</Index>
+        </Texture>
+        <SlotType>17</SlotType>
+        <SNormal />
+        <Description> It is said that this staff has immense damage capabilities, comparable to those of the Mad God.</Description>
+        <RateOfFire>1.15</RateOfFire>
+        <Sound>weapon/fire_wand</Sound>
+        <Projectile>
+            <ObjectId>Wind Staff Shot</ObjectId>
+            <Speed>268</Speed>
+            <MinDamage>70</MinDamage>
+            <MaxDamage>95</MaxDamage>
+            <LifetimeMS>260</LifetimeMS>
+            <Amplitude>0.5</Amplitude>
+            <Frequency>0.5</Frequency>
+            <Size>100</Size>
+            <MultiHit />
+        </Projectile>
+        <NumProjectiles>2</NumProjectiles>
+        <ArcGap>0</ArcGap>
+        <BagType>7</BagType>
+        <FameBonus>4</FameBonus>
+        <feedPower>5</feedPower>
+        <DisplayId>Wind Staff</DisplayId>
+    </Object>
+
+    <Object type="0x5151" id="Thessal's Slayer">
+        <Class>Equipment</Class>
+        <Item />
+        <Mutilate />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0xaa</Index>
+        </Texture>
+        <Legendary />
+        <SlotType>17</SlotType>
+        <Description>When her trident proved ineffective, Thessal always carried around her trusty rod to kill particularly troublesome intruders.</Description>
+        <RateOfFire>1</RateOfFire>
+        <Sound>weapon/fire_wand</Sound>
+        <Projectile>
+            <ObjectId>Thessal Slayer Shot</ObjectId>
+            <Speed>150</Speed>
+            <MinDamage>90</MinDamage>
+            <MaxDamage>145</MaxDamage>
+            <LifetimeMS>500</LifetimeMS>
+            <Amplitude>0.55</Amplitude>
+            <Frequency>2</Frequency>
+            <Size>100</Size>
+            <MultiHit />
+        </Projectile>
+        <NumProjectiles>2</NumProjectiles>
+        <ArcGap>10</ArcGap>
+        <BagType>6</BagType>
+        <FameBonus>6</FameBonus>
+        <DisplayId>Thessal's Slayer</DisplayId>
+    </Object>
+
+    <!-- Bounty Items -->
+
+    <Object type="0x515c" id="Envy">
+        <Class>Equipment</Class>
+        <Item />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0xa6</Index>
+        </Texture>
+        <SPlus />
+        <SlotType>17</SlotType>
+        <Description>The manifestation of Ayrin's envy of her master's overwhelming might and allure. Even without its owner, it remains uniquely bitter.</Description>
+        <RateOfFire>1.15</RateOfFire>
+        <Sound>weapon/fire_wand</Sound>
+        <Projectile>
+            <ObjectId>Envy Shot</ObjectId>
+            <Speed>100</Speed>
+            <MinDamage>95</MinDamage>
+            <MaxDamage>110</MaxDamage>
+            <LifetimeMS>860</LifetimeMS>
+            <Amplitude>0.5</Amplitude>
+            <Frequency>2</Frequency>
+            <Size>100</Size>
+        </Projectile>
+        <NumProjectiles>2</NumProjectiles>
+        <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
+        <ActivateOnEquip stat="27" amount="-4">IncrementStat</ActivateOnEquip>
+        <BagType>6</BagType>
+        <FameBonus>6</FameBonus>
+    </Object>
+
+    <!-- Bounty Items -->
+
+    <!-- Staffs -->
+
+    <!-- Katanas -->
+
+    <Object type="0x492a" id="Bloody Katana">
+        <Class>Equipment</Class>
+        <Item />
+        <Demonized />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x16</Index>
+        </Texture>
+        <SlotType>24</SlotType>
+        <Description>A Katana that we don't know where it comes from.</Description>
+        <RateOfFire>1.15</RateOfFire>
+        <Sound>weapon/long_sword</Sound>
+        <Legendary />
+        <Projectile>
+            <ObjectId>Katana Shoot</ObjectId>
+            <Speed>147.5</Speed>
+            <MinDamage>255</MinDamage>
+            <MaxDamage>290</MaxDamage>
+            <LifetimeMS>346</LifetimeMS>
+            <MultiHit />
+        </Projectile>
+        <NumProjectiles>1</NumProjectiles>
+        <BagType>7</BagType>
+        <FameBonus>7</FameBonus>
+        <DisplayId>Bloody Katana</DisplayId>
+    </Object>
+
+    <Object type="0x495b" id="Lodius">
+        <Class>Equipment</Class>
+        <Item />
+        <Legendary />
+        <Mutilate />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x1f</Index>
+        </Texture>
+        <SlotType>24</SlotType>
+        <Description>This katana comes from the best Samurai in all of Japan. The Samurai died in a fight with a Corrupt Talisman. This katana has the power of the Samurai, when you use it, you will feel a true power throughout the body, but, having been touched by a Corrupt, it has negative effects...</Description>
+        <RateOfFire>1</RateOfFire>
+        <Sound>weapon/long_sword</Sound>
+        <Projectile>
+            <ObjectId>Lodius Shoot</ObjectId>
+            <Speed>154</Speed>
+            <MinDamage>100</MinDamage>
+            <MaxDamage>195</MaxDamage>
+            <LifetimeMS>344</LifetimeMS>
+            <Amplitude>.25</Amplitude>
+            <Frequency>1.75</Frequency>
+            <Size>100</Size>
+            <MultiHit />
+            <ArmorPiercing />
+        </Projectile>
+        <NumProjectiles>2</NumProjectiles>
+        <ArcGap>3</ArcGap>
+        <BagType>7</BagType>
+        <FameBonus>7</FameBonus>
+        <DisplayId>Lodius</DisplayId>
+    </Object>
+
+    <Object type="0x5000" id="Earth Katana">
+        <Class>Equipment</Class>
+        <Item />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x41</Index>
+        </Texture>
+        <SlotType>24</SlotType>
+        <Rare />
+        <Description>This Earth Kantana, which comes from another galaxy, is forged with Heavenly Earth. You can cut everything your way.</Description>
+        <RateOfFire>1</RateOfFire>
+        <Sound>weapon/blunt_sword</Sound>
+        <Projectile>
+            <ObjectId>Earth Elemental Katana Shoot</ObjectId>
+            <Speed>130.5</Speed>
+            <MinDamage>165</MinDamage>
+            <MaxDamage>220</MaxDamage>
+            <LifetimeMS>345</LifetimeMS>
+            <Amplitude>0.34</Amplitude>
+            <Frequency>0.59</Frequency>
+            <Size>100</Size>
+            <MultiHit />
+        </Projectile>
+        <NumProjectiles>1</NumProjectiles>
+        <ActivateOnEquip stat="21" amount="3">IncrementStat</ActivateOnEquip>
+        <ArcGap>4</ArcGap>
+        <BagType>7</BagType>
+        <feedPower>5</feedPower>
+        <DisplayId>Earth Katana</DisplayId>
+    </Object>
+
+    <Object type="0x5011" id="Wind Carrier">
+        <Class>Equipment</Class>
+        <Item />
+        <Lucky />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x47</Index>
+        </Texture>
+        <Eternal	/>
+        <SlotType>24</SlotType>
+        <Description>This katana formed by the powers of the wind has an incredible speed, cuts everything you see in its path.</Description>
+        <RateOfFire>1.1</RateOfFire>
+        <Sound>weapon/blunt_sword</Sound>
+        <Projectile>
+            <ObjectId>Wind Elemental Katana Shoot</ObjectId>
+            <Speed>300</Speed>
+            <MinDamage>140</MinDamage>
+            <MaxDamage>195</MaxDamage>
+            <LifetimeMS>190</LifetimeMS>
+            <Frequency>1</Frequency>
+            <Size>100</Size>
+            <MultiHit />
+            <ArmorPiercing />
+            <PassesCover />
+        </Projectile>
+        <NumProjectiles>2</NumProjectiles>
+        <ArcGap>3</ArcGap>
+        <ActivateOnEquip stat="20" amount="2">IncrementStat</ActivateOnEquip>
+        <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
+        <ActivateOnEquip stat="28" amount="2">IncrementStat</ActivateOnEquip>
+        <BagType>8</BagType>
+        <FameBonus>7</FameBonus>
+        <DisplayId>Wind Carrier</DisplayId>
+    </Object>
+
+    <Object type="0x5041" id="Acid Katana N-3012">
+        <Class>Equipment</Class>
+        <Item />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x64</Index>
+        </Texture>
+        <SetTier />
+        <SlotType>24</SlotType>
+        <Description>Katana imbued with acid, created by the same crazy scientist Dr. Terrible. It takes the number of times that the creation of it went wrong.</Description>
+        <RateOfFire>1</RateOfFire>
+        <Sound>weapon/blunt_sword</Sound>
+        <Projectile>
+            <ObjectId>Acid Katana N-3012 Shoot</ObjectId>
+            <Speed>130</Speed>
+            <MinDamage>155</MinDamage>
+            <MaxDamage>200</MaxDamage>
+            <LifetimeMS>365</LifetimeMS>
+            <Amplitude>0.05</Amplitude>
+            <Frequency>1</Frequency>
+            <Size>100</Size>
+            <MultiHit />
+            <FaceDir />
+        </Projectile>
+        <NumProjectiles>1</NumProjectiles>
+        <ArcGap>11</ArcGap>
+        <ActivateOnEquip stat="22" amount="2">IncrementStat</ActivateOnEquip>
+        <ActivateOnEquip stat="28" amount="2">IncrementStat</ActivateOnEquip>
+        <BagType>6</BagType>
+        <FameBonus>5</FameBonus>
+        <DisplayId>Acid Katana N-3012</DisplayId>
+    </Object>
+
+    <Object type="0x5068" id="Stheno Queen Katana">
+        <Class>Equipment</Class>
+        <Item />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x79</Index>
+        </Texture>
+        <SlotType>24</SlotType>
+        <Description>The Katana of the Snake Queen, Stheno Queen.</Description>
+        <RateOfFire>0.4</RateOfFire>
+        <Sound>weapon/long_sword</Sound>
+        <Projectile>
+            <ObjectId>Stheno Katana Shoot</ObjectId>
+            <Speed>96</Speed>
+            <MinDamage>250</MinDamage>
+            <MaxDamage>525</MaxDamage>
+            <LifetimeMS>667</LifetimeMS>
+            <Frequency>1</Frequency>
+            <Size>100</Size>
+            <MultiHit />
+        </Projectile>
+        <ActivateOnEquip stat="22" amount="10">IncrementStat</ActivateOnEquip>
+        <NumProjectiles>1</NumProjectiles>
+        <ArcGap>11</ArcGap>
+        <BagType>7</BagType>
+        <FameBonus>5</FameBonus>
+        <DisplayId>Stheno Queen Katana</DisplayId>
+    </Object>
+
+    <!-- Katanas -->
+
+    <!-- Wands -->
+
+    <Object type="0x4988" id="Thorn">
+        <Class>Equipment</Class>
+        <Item />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x3b</Index>
+        </Texture>
+        <SlotType>8</SlotType>
+        <Rare />
+        <Description>The shots of this Wand are as powerful as Elemental Water. The formation of stones and water gives it extraordinary power and grip.</Description>
+        <RateOfFire>.6</RateOfFire>
+        <Sound>weapon/fire_wand</Sound>
+        <Projectile>
+            <ObjectId>Thorn Shoot</ObjectId>
+            <Speed>180</Speed>
+            <MinDamage>90</MinDamage>
+            <MaxDamage>110</MaxDamage>
+            <LifetimeMS>500</LifetimeMS>
+            <Amplitude>0.24</Amplitude>
+            <Frequency>1.37</Frequency>
+            <Size>100</Size>
+            <MultiHit />
+            <FaceDir />
+        </Projectile>
+        <NumProjectiles>2</NumProjectiles>
+        <ArcGap>1</ArcGap>
+        <BagType>7</BagType>
+        <FameBonus>6</FameBonus>
+        <DisplayId>Thorn</DisplayId>
+    </Object>
+
+    <Object type="0x5013" id="The Ancient Wand of Fury">
+        <Class>Equipment</Class>
+        <Item />
+        <Insanity />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x46</Index>
+        </Texture>
+        <Revenge />
+        <SlotType>8</SlotType>
+        <Description>This Wand, with its magnificent powers of fire, incinerates everything that lies ahead.</Description>
+        <RateOfFire>1.05</RateOfFire>
+        <Sound>weapon/fire_wand</Sound>
+        <Projectile>
+            <ObjectId>Fire Elemental Wand Shoot</ObjectId>
+            <Speed>180</Speed>
+            <MinDamage>85</MinDamage>
+            <MaxDamage>100</MaxDamage>
+            <LifetimeMS>500</LifetimeMS>
+            <Amplitude>0.34</Amplitude>
+            <Frequency>0.98</Frequency>
+            <Size>100</Size>
+            <MultiHit />
+            <ArmorPiercing />
+            <FaceDir />
+        </Projectile>
+        <NumProjectiles>4</NumProjectiles>
+        <ArcGap>1</ArcGap>
+        <ActivateOnEquip stat="20" amount="3">IncrementStat</ActivateOnEquip>
+        <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
+        <BagType>8</BagType>
+        <FameBonus>7</FameBonus>
+        <DisplayId>The Ancient Wand of Fury</DisplayId>
+    </Object>
+
+    <Object type="0x5022" id="Deathhail Wand">
+        <Class>Equipment</Class>
+        <Item />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x50</Index>
+        </Texture>
+        <SlotType>8</SlotType>
+        <SPlus />
+        <Description>A powerful torment of a ghost keeps the power of the Wand. That power can be used for evil, or for good ...</Description>
+        <RateOfFire>1</RateOfFire>
+        <Sound>weapon/fire_wand</Sound>
+        <Projectile>
+            <ObjectId>Deathhail Wand Shoot</ObjectId>
+            <Speed>200</Speed>
+            <MinDamage>130</MinDamage>
+            <MaxDamage>150</MaxDamage>
+            <LifetimeMS>450</LifetimeMS>
+            <Frequency>1</Frequency>
+            <Size>100</Size>
+            <MultiHit />
+            <ArmorPiercing />
+        </Projectile>
+        <NumProjectiles>1</NumProjectiles>
+        <ArcGap>11</ArcGap>
+        <BagType>7</BagType>
+        <FameBonus>5</FameBonus>
+        <DisplayId>Deathhail Wand</DisplayId>
+    </Object>
+
+    <Object type="0x505b" id="Wand of Pain">
+        <Class>Equipment</Class>
+        <Item />
+        <Mutilate />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x6f</Index>
+        </Texture>
+        <SlotType>8</SlotType>
+        <Legendary />
+        <Description>This Wand is made to get the pain of others, use it with caution.</Description>
+        <RateOfFire>1.10</RateOfFire>
+        <Sound>weapon/fire_wand</Sound>
+        <Projectile>
+            <ObjectId>Wand of Pain Shoot</ObjectId>
+            <Speed>200</Speed>
+            <MinDamage>95</MinDamage>
+            <MaxDamage>110</MaxDamage>
+            <LifetimeMS>450</LifetimeMS>
+            <Amplitude>0.26</Amplitude>
+            <Frequency>2.61</Frequency>
+            <Size>100</Size>
+        </Projectile>
+        <NumProjectiles>2</NumProjectiles>
+        <ArcGap>1</ArcGap>
+        <BagType>7</BagType>
+        <FameBonus>5</FameBonus>
+        <DisplayId>Wand of Pain</DisplayId>
+    </Object>
+
+    <Object type="0x50ea" id="Ruthven's Fury">
+        <Class>Equipment</Class>
+        <Item />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x90</Index>
+        </Texture>
+        <OutOfOneMind />
+        <SlotType>8</SlotType>
+        <Legendary />
+        <Description>A wand forged by the bats.</Description>
+        <RateOfFire>.95</RateOfFire>
+        <Sound>weapon/fire_wand</Sound>
+        <Projectile>
+            <ObjectId>TH Stinger Large2</ObjectId>
+            <Speed>140</Speed>
+            <MinDamage>50</MinDamage>
+            <MaxDamage>180</MaxDamage>
+            <LifetimeMS>536</LifetimeMS>
+            <Frequency>0.9</Frequency>
+            <Amplitude>0.45</Amplitude>
+            <Size>80</Size>
+            <MultiHit />
+            <PassesCover />
+            <ArmorPiercing />
+        </Projectile>
+        <NumProjectiles>2</NumProjectiles>
+        <ArcGap>6</ArcGap>
+        <ActivateOnEquip stat="3" amount="50">IncrementStat</ActivateOnEquip>
+        <ActivateOnEquip stat="27" amount="10">IncrementStat</ActivateOnEquip>
+        <BagType>7</BagType>
+        <FameBonus>6</FameBonus>
+        <DisplayId>Ruthven's Fury</DisplayId>
+    </Object>
+
+    <Object type="0x50ed" id="Geb's Hand">
+        <Class>Equipment</Class>
+        <Item />
+        <OutOfOneMind />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x9e</Index>
+        </Texture>
+        <SlotType>8</SlotType>
+        <Legendary />
+        <Description>Long ago,geb,nut,and bes used to be cruel gods.Brave adventurers kept trying to take them down,until eventually one adventurer defeated them all.Nut and Bes were easy for the adventurer to handle,but geb was not.After long hours of battling,the adventurer cut off geb's hand and put the three gods under a curse to keep the world safe.Geb now awaits for someone to free them from the curse so he can finally get revenge.</Description>
+        <RateOfFire>0.75</RateOfFire>
+        <Sound>weapon/fire_wand</Sound>
+        <Projectile>
+            <ObjectId>Geb's Hand Shot</ObjectId>
+            <Speed>165.5</Speed>
+            <MinDamage>250</MinDamage>
+            <MaxDamage>300</MaxDamage>
+            <LifetimeMS>423</LifetimeMS>
+            <Size>100</Size>
+            <MultiHit />
+        </Projectile>
+        <NumProjectiles>1</NumProjectiles>
+        <ArcGap>11</ArcGap>
+        <ActivateOnEquip stat="27" amount="10">IncrementStat</ActivateOnEquip>
+        <BagType>7</BagType>
+        <FameBonus>6</FameBonus>
+        <DisplayId>Geb's Hand</DisplayId>
+    </Object>
+
+    <!-- Bounty Items -->
+
+    <Object type="0x5157" id="Wand of Everlasting Love">
+        <Class>Equipment</Class>
+        <Item />
+        <Insanity />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0xa5</Index>
+        </Texture>
+        <SlotType>8</SlotType>
+        <Legendary />
+        <Description>It is not often that a succubus falls for a mortal, but their love when they do is overwhelmingly powerful. If manifested, its power can rival that of gods.</Description>
+        <RateOfFire>0.9</RateOfFire>
+        <Sound>weapon/fire_wand</Sound>
+        <Projectile>
+            <ObjectId>Wand of Everlasting Love Shot</ObjectId>
+            <Speed>150</Speed>
+            <MinDamage>350</MinDamage>
+            <MaxDamage>400</MaxDamage>
+            <LifetimeMS>600</LifetimeMS>
+            <Size>100</Size>
+            <ArmorPiercing />
+            <ParticleTrail intensity="0.5" lifetimeMS="50">0xFF0000</ParticleTrail>
+        </Projectile>
+        <NumProjectiles>1</NumProjectiles>
+        <BagType>7</BagType>
+        <FameBonus>6</FameBonus>
+    </Object>
+
+    <!-- Bounty Items -->
+
+    <!-- Wands -->
+
+    <!-- Bows -->
+    <Object type="0x540d" id="Fang Flinger">
+        <Class>Equipment</Class>
+        <Item />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0xec</Index>
+        </Texture>
+        <Legendary />
+        <SlotType>3</SlotType>
+        <Description>The drawstring of this particular bow isn't made to notch traditional arrows, rather it is designed to fling fangs at high velocity.</Description>
+        <RateOfFire>.80</RateOfFire>
+        <Sound>weapon/poor_quality_bow</Sound>
+        <Projectile>
+            <ObjectId>Fang Flinger Shoot</ObjectId>
+            <Speed>155</Speed>
+            <MinDamage>170</MinDamage>
+            <MaxDamage>290</MaxDamage>
+            <LifetimeMS>452</LifetimeMS>
+            <Amplitude>0.5</Amplitude>
+            <Frequency>2</Frequency>
+            <Size>100</Size>
+            <MultiHit />
+        </Projectile>
+        <NumProjectiles>2</NumProjectiles>
+        <ArcGap>12</ArcGap>
+        <ActivateOnEquip stat="22" amount="6">IncrementStat</ActivateOnEquip>
+        <ActivateOnEquip stat="26" amount="-3">IncrementStat</ActivateOnEquip>
+        <BagType>7</BagType>
+        <FameBonus>7</FameBonus>
+        <SteamRoller />
+        <DisplayId>Fang Flinger</DisplayId>
+    </Object>
+
+    <Object type="0x5100" id="Boshy Gun">
+        <Class>Equipment</Class>
+        <Item />
+        <Soulbound />
+        <Revenge />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x02</Index>
+        </Texture>
+        <SlotType>3</SlotType>
+        <Description>Boshy Gun.</Description>
+        <RateOfFire>2</RateOfFire>
+        <Sound>weapon/double_bow</Sound>
+        <Projectile>
+            <ObjectId>Boshy Shoot</ObjectId>
+            <Speed>250</Speed>
+            <MinDamage>300</MinDamage>
+            <MaxDamage>400</MaxDamage>
+            <LifetimeMS>500</LifetimeMS>
+            <MultiHit />
+            <ArmorPiercing />
+            <Size>15</Size>
+        </Projectile>
+        <Insanity />
+        <ArcGap>7</ArcGap>
+        <BagType>8</BagType>
+        <FameBonus>6</FameBonus>
+        <NumProjectiles>8</NumProjectiles>
+        <OldSound>arrowShoot</OldSound>
+        <DisplayId>Boshy Gun</DisplayId>
+    </Object>
+
+    <Object type="0x5001" id="Earth Bow">
+        <Class>Equipment</Class>
+        <Item />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x42</Index>
+        </Texture>
+        <SlotType>3</SlotType>
+        <Rare/>
+        <Description>This Bow, forged with the heavenly lands, has a power coming from space. His speed and damage make him very strong.</Description>
+        <RateOfFire>1.25</RateOfFire>
+        <Sound>weapon/poor_quality_bow</Sound>
+        <Projectile>
+            <ObjectId>Earth Elemental Arrow</ObjectId>
+            <Speed>160</Speed>
+            <MinDamage>150</MinDamage>
+            <MaxDamage>175</MaxDamage>
+            <LifetimeMS>440</LifetimeMS>
+            <Frequency>1</Frequency>
+            <Size>100</Size>
+            <MultiHit />
+            <ArmorPiercing />
+        </Projectile>
+        <NumProjectiles>1</NumProjectiles>
+        <ActivateOnEquip stat="21" amount="-3">IncrementStat</ActivateOnEquip>
+        <ArcGap>11</ArcGap>
+        <BagType>7</BagType>
+        <FameBonus>6</FameBonus>
+        <DisplayId>Earth Bow</DisplayId>
+    </Object>
+
+    <Object type="0x500e" id="Velocity Bow">
+        <Class>Equipment</Class>
+        <Item />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x48</Index>
+        </Texture>
+        <Eternal />
+        <SlotType>3</SlotType>
+        <Description>The arrows of this Bow go at a speed very close to the light thanks to the power of the wind. Cut and go through everything that points.</Description>
+        <RateOfFire>1</RateOfFire>
+        <Sound>weapon/poor_quality_bow</Sound>
+        <Projectile>
+            <ObjectId>Wind Elemental Bow Shoot</ObjectId>
+            <Speed>200</Speed>
+            <MinDamage>85</MinDamage>
+            <MaxDamage>130</MaxDamage>
+            <LifetimeMS>350</LifetimeMS>
+            <Amplitude>0.3</Amplitude>
+            <Frequency>1.13</Frequency>
+            <Size>100</Size>
+            <MultiHit />
+            <ArmorPiercing />
+            <ParticleTrail lifetimeMS="100">0xffffff</ParticleTrail>
+        </Projectile>
+        <NumProjectiles>3</NumProjectiles>
+        <ArcGap>3</ArcGap>
+        <ActivateOnEquip stat="22" amount="3">IncrementStat</ActivateOnEquip>
+        <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
+        <BagType>8</BagType>
+        <FameBonus>7</FameBonus>
+        <Electrify />
+        <DisplayId>Velocity Bow</DisplayId>
+    </Object>
+
+    <Object type="0x4913" id="Bow of the Void">
+        <Class>Equipment</Class>
+        <Item />
+        <Demonized />
+        <Texture>
+            <File>LostHallsProjs2</File>
+            <Index>0xa7</Index>
+        </Texture>
+        <SlotType>3</SlotType>
+        <Description>
+            Every shot that hits a target frees the soul of a forgotten hero. Every shot that misses is trapped for eternity.
+        </Description>
+        <RateOfFire>.95</RateOfFire>
+        <Sound>weapon/golden_bow</Sound>
+        <Projectile>
+            <ObjectId>Void Arrow</ObjectId>
+            <Speed>200</Speed>
+            <MinDamage>290</MinDamage>
+            <MaxDamage>300</MaxDamage>
+            <LifetimeMS>300</LifetimeMS>
+            <MultiHit />
+            <Amplitude>0.35</Amplitude>
+            <Frequency>0.2</Frequency>
+        </Projectile>
+        <BagType>7</BagType>
+        <FameBonus>6</FameBonus>
+        <NumProjectiles>1</NumProjectiles>
+        <OldSound>arrowShoot</OldSound>
+        <feedPower>1200</feedPower>
+        <Legendary />
+    </Object>
+
+    <Object type="0x50e7" id="Cannon">
+        <Class>Equipment</Class>
+        <Item />
+        <Demonized />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x91</Index>
+        </Texture>
+        <SlotType>3</SlotType>
+        <Legendary />
+        <Description>One of the main cannons the ghost ship had to sink other ships, the ghostly aura within it has the power to shoot many cannon balls at once.</Description>
+        <RateOfFire>0.25</RateOfFire>
+        <Sound>weapon/poor_quality_bow</Sound>
+        <Projectile>
+            <ObjectId>Giant Cannonball2</ObjectId>
+            <Speed>150</Speed>
+            <MinDamage>750</MinDamage>
+            <MaxDamage>1600</MaxDamage>
+            <LifetimeMS>500</LifetimeMS>
+            <Size>150</Size>
+            <ArmorPiercing />
+        </Projectile>
+        <NumProjectiles>1</NumProjectiles>
+        <ArcGap>5</ArcGap>
+        <ActivateOnEquip stat="21" amount="5">IncrementStat</ActivateOnEquip>
+        <BagType>7</BagType>
+        <FameBonus>6</FameBonus>
+        <DisplayId>Cannon</DisplayId>
+    </Object>
+
+    <Object type="0x50ee" id="Bow of the Havens">
+        <Class>Equipment</Class>
+        <Item />
+        <Clarification />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x9d</Index>
+        </Texture>
+        <SlotType>3</SlotType>
+        <Legendary />
+        <Description>As soon as Nut heard that a brave adventurer killed her ally,she became furious. She brought out her bow,and tried to shoot the adventurer from the heavens,but the adventurer dodged each attack,and kept climbing up the different arrows to reach heaven. With one slash,Nut was beaten. The bow was transferred into the adventurers hand,to help him beat geb.</Description>
+        <RateOfFire>1.1</RateOfFire>
+        <Sound>weapon/poor_quality_bow</Sound>
+        <Projectile>
+            <ObjectId>Bow of the Havens Shot</ObjectId>
+            <Speed>159.5</Speed>
+            <MinDamage>100</MinDamage>
+            <MaxDamage>115</MaxDamage>
+            <LifetimeMS>439</LifetimeMS>
+            <Frequency>1</Frequency>
+            <Size>100</Size>
+            <MultiHit />
+            <PassesCover />
+        </Projectile>
+        <NumProjectiles>2</NumProjectiles>
+        <ArcGap>9</ArcGap>
+        <ActivateOnEquip stat="20" amount="2">IncrementStat</ActivateOnEquip>
+        <ActivateOnEquip stat="26" amount="5">IncrementStat</ActivateOnEquip>
+        <BagType>7</BagType>
+        <FameBonus>6</FameBonus>
+        <DisplayId>Bow of the Havens</DisplayId>
+    </Object>
+
+    <!-- Bows -->
+
+    <!-- Daggers -->
+    <Object type="0x540e" id="Titan Slayer">
+        <Class>Equipment</Class>
+        <Item />
+        <Clarification />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x100</Index>
+        </Texture>
+        <Legendary />
+        <SlotType>2</SlotType>
+        <Description>Such a large and unwieldy blade. Who'd be foolish enough to try to branish it...?</Description>
+        <RateOfFire>0.4</RateOfFire>
+        <Sound>weapon/blunt_dagger</Sound>
+        <Projectile>
+            <ObjectId>Titan Slayer Shoot</ObjectId>
+            <Speed>120</Speed>
+            <MinDamage>500</MinDamage>
+            <MaxDamage>575</MaxDamage>
+            <LifetimeMS>650</LifetimeMS>
+            <Amplitude>0.25</Amplitude>
+            <Frequency>1</Frequency>
+            <FaceDir />
+            <PassesCover />
+            <Size>110</Size>
+        </Projectile>
+        <NumProjectiles>1</NumProjectiles>
+        <ArcGap>0</ArcGap>
+        <ActivateOnEquip stat="3" amount="20">IncrementStat</ActivateOnEquip>
+        <ActivateOnEquip stat="28" amount="-2">IncrementStat</ActivateOnEquip>
+        <ActivateOnEquip stat="27" amount="5">IncrementStat</ActivateOnEquip>
+        <BagType>7</BagType>
+        <FameBonus>7</FameBonus>
+        <DisplayId>Titan Slayer</DisplayId>
+    </Object>
+
+    <Object type="0x540f" id="Refraction Cutter">
+        <Class>Equipment</Class>
+        <Item />
+        <Steamroller />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x104</Index>
+        </Texture>
+        <Legendary />
+        <SlotType>2</SlotType>
+        <Description>A crude dagger consisting of a shard of the Realm's Crystal with a handle of cloth. Despite it's makeshift nature, it is immensely deadly.</Description>
+        <RateOfFire>.9</RateOfFire>
+        <Sound>weapon/blunt_dagger</Sound>
+        <Projectile>
+            <ObjectId>Refraction Cutter Shoot</ObjectId>
+            <Speed>206</Speed>
+            <MinDamage>220</MinDamage>
+            <MaxDamage>320</MaxDamage>
+            <LifetimeMS>495</LifetimeMS>
+            <Amplitude>0.3</Amplitude>
+            <Frequency>1</Frequency>
+            <Size>90</Size>
+            <FaceDir />
+            <Boomerang />
+        </Projectile>
+        <NumProjectiles>1</NumProjectiles>
+        <ArcGap>0</ArcGap>
+        <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
+        <BagType>7</BagType>
+        <FameBonus>7</FameBonus>
+        <DisplayId>Refraction Cutter</DisplayId>
+    </Object>
+
+    <Object type="0x48e0" id="Tiki Tiki's Dagger">
+        <Class>Equipment</Class>
+        <Item />
+        <Rare />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x0e</Index>
+        </Texture>
+        <SlotType>2</SlotType>
+        <Description>This dagger was used by the Tiki Tiki's enemy.</Description>
+        <RateOfFire>1.05</RateOfFire>
+        <Sound>weapon/fire_dagger</Sound>
+        <Projectile>
+            <ObjectId>Dagger Shoot</ObjectId>
+            <Speed>180</Speed>
+            <MinDamage>120</MinDamage>
+            <MaxDamage>195</MaxDamage>
+            <LifetimeMS>275</LifetimeMS>
+            <Frequency>1</Frequency>
+            <Size>100</Size>
+        </Projectile>
+        <NumProjectiles>1</NumProjectiles>
+        <ArcGap>11</ArcGap>
+        <ActivateOnEquip stat="22" amount="3">IncrementStat</ActivateOnEquip>
+        <BagType>7</BagType>
+        <FameBonus>6</FameBonus>
+        <feedPower>800</feedPower>
+        <DisplayId>Tiki Tiki's Dagger</DisplayId>
+    </Object>
+
+    <Object type="0x4932" id="Dagger of Flaming Fury">
+        <DisplayId>Dagger of Flaming Fury</DisplayId>
+        <Class>Equipment</Class>
+        <Legendary />
+        <Mutilate />
+        <Item />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x19</Index>
+        </Texture>
+        <SlotType>2</SlotType>
+        <Description>This dagger, which comes from the depths of realm, was used to overthrow the skull shrine, with it, it was able to melt even the hottest, coldest, and hardest thing there is, for this reason, it is called "Melted Shrine".</Description>
+        <RateOfFire>1.1</RateOfFire>
+        <Sound>weapon/fire_dagger</Sound>
+        <Projectile>
+            <ObjectId>Melted Shrine Shoot</ObjectId>
+            <Speed>180</Speed>
+            <MinDamage>140</MinDamage>
+            <MaxDamage>190</MaxDamage>
+            <LifetimeMS>305</LifetimeMS>
+            <MultiHit />
+        </Projectile>
+        <ActivateOnEquip stat="26" amount="4">IncrementStat</ActivateOnEquip>
+        <BagType>7</BagType>
+        <FameBonus>7</FameBonus>
+        <OldSound>daggerSwing</OldSound>
+    </Object>
+
+    <Object type="0x5010" id="Tide">
+        <Class>Equipment</Class>
+        <Item />
+        <Insanity />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0x52</Index>
+        </Texture>
+        <Revenge />
+        <SlotType>2</SlotType>
+        <Description>Its control with water makes attacks more fluid, more unpredictable and stronger.</Description>
+        <RateOfFire>1</RateOfFire>
+        <Sound>weapon/blunt_dagger</Sound>
+        <Projectile>
+            <ObjectId>Tide Shoot</ObjectId>
+            <Speed>200</Speed>
+            <MinDamage>195</MinDamage>
+            <MaxDamage>210</MaxDamage>
+            <LifetimeMS>310</LifetimeMS>
+            <Amplitude>0.58</Amplitude>
+            <Frequency>0.52</Frequency>
+            <Size>100</Size>
+            <MultiHit />
+            <FaceDir />
+            <ArmorPiercing />
+        </Projectile>
+        <NumProjectiles>2</NumProjectiles>
+        <ArcGap>3</ArcGap>
+        <ActivateOnEquip stat="21" amount="5">IncrementStat</ActivateOnEquip>
+        <ActivateOnEquip stat="26" amount="3">IncrementStat</ActivateOnEquip>
+        <BagType>8</BagType>
+        <FameBonus>7</FameBonus>
+        <DisplayId>Tide</DisplayId>
+    </Object>
+
+    <Object type="0x5146" id="Malphas's Bone">
+        <Class>Equipment</Class>
+        <Item />
+        <Mutilate />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0xaf</Index>
+        </Texture>
+        <Legendary />
+        <SlotType>2</SlotType>
+        <Description>This dagger was created from Malphas' spine</Description>
+        <RateOfFire>0.8</RateOfFire>
+        <Sound>weapon/fire_dagger</Sound>
+        <Projectile>
+            <ObjectId>Malphas Bone Shot</ObjectId>
+            <Speed>180</Speed>
+            <MinDamage>210</MinDamage>
+            <MaxDamage>365</MaxDamage>
+            <LifetimeMS>295</LifetimeMS>
+            <Size>100</Size>
+            <MultiHit />
+            <ArmorPiercing />
+        </Projectile>
+        <NumProjectiles>1</NumProjectiles>
+        <ActivateOnEquip stat="26" amount="3">IncrementStat</ActivateOnEquip>
+        <ActivateOnEquip stat="21" amount="4">IncrementStat</ActivateOnEquip>
+        <BagType>7</BagType>
+        <FameBonus>6</FameBonus>
+        <DisplayId>Malphas's Bone</DisplayId>
+    </Object>
+
+    <!-- Bounty Items -->
+
+    <Object type="0x515b" id="Lust">
+        <Class>Equipment</Class>
+        <Item />
+        <Rare />
+        <Texture>
+            <File>CustomObj</File>
+            <Index>0xa7</Index>
+        </Texture>
+        <SlotType>2</SlotType>
+        <Description>The manifestation of Tamir's lust for mortals. Even without its owner, it remains uniquely needy.</Description>
+        <RateOfFire>1.1</RateOfFire>
+        <Projectile>
+            <ObjectId>Lust Shot</ObjectId>
+            <Speed>160</Speed>
+            <MinDamage>90</MinDamage>
+            <MaxDamage>150</MaxDamage>
+            <LifetimeMS>300</LifetimeMS>
+            <Amplitude>0.37</Amplitude>
+            <Frequency>1.3</Frequency>
+            <FaceDir />
+            <MultiHit />
+        </Projectile>
+        <ActivateOnEquip stat="21" amount="5">IncrementStat</ActivateOnEquip>
+        <ActivateOnEquip stat="26" amount="-4">IncrementStat</ActivateOnEquip>
+        <ArcGap>15</ArcGap>
+        <BagType>7</BagType>
+        <FameBonus>6</FameBonus>
+        <NumProjectiles>2</NumProjectiles>
+        <OldSound>bladeSwing</OldSound>
+    </Object>
+
+    <!-- Bounty Items -->
+
+    <!-- Daggers -->
+</Objects>

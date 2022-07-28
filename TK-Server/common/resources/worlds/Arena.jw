@@ -1,0 +1,13 @@
+{"id":-9,
+"isLimbo":true,
+"persist":false,
+"name":"Arena",
+"sbName":"Arena",
+"difficulty":5,
+"background":0,
+"blocking":0,
+"restrictTp":true,
+"showDisplays":false,
+"portals":[0x075b],
+"maps":["Arena.jm"],
+"music":[""]}

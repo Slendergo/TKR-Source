@@ -1,0 +1,12 @@
+{"id":0,
+"isLimbo":false,
+"name":"Puppet Master's Encore",
+"sbName":"Puppet Master's Encore",
+"difficulty":5,
+"background":0,
+"blocking":0,
+"restrictTp":true,
+"showDisplays":false,
+"portals":[0x7466],
+"maps":["PuppetMasterEncore.jm"],
+"music":[""]}

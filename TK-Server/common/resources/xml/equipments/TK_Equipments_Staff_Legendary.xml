@@ -1,0 +1,191 @@
+<Objects>
+  <Object type="0x540a" id="Ashen Spine">
+    <Class>Equipment</Class>
+    <Item />
+    <Legendary />
+    <SteamRoller />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0x120</Index>
+    </Texture>
+    <SlotType>17</SlotType>
+    <Description>Ripped from the remains of the King's Avatar. It is oddly smaller than the rest of the corpse.</Description>
+    <RateOfFire>1.20</RateOfFire>
+    <Sound>weapon/fire_wand</Sound>
+    <Projectile>
+      <ObjectId>Ashen Spine Shoot</ObjectId>
+      <Speed>150</Speed>
+      <MinDamage>95</MinDamage>
+      <MaxDamage>100</MaxDamage>
+      <LifetimeMS>400</LifetimeMS>
+      <Frequency>0.95</Frequency>
+      <Amplitude>1.25</Amplitude>
+      <Size>80</Size>
+      <ActivateOnEquip stat="22" amount="-3">IncrementStat</ActivateOnEquip>
+    </Projectile>
+    <NumProjectiles>3</NumProjectiles>
+    <ArcGap>5</ArcGap>
+    <BagType>7</BagType>
+    <FameBonus>6</FameBonus>
+    <feedPower>650</feedPower>
+    <DisplayId>Ashen Spine</DisplayId>
+  </Object>
+  <Object type="0x491a" id="Staff of Unholy Sacrifice">
+    <Class>Equipment</Class>
+    <Item />
+    <Demonized />
+    <Texture>
+      <File>LostHallsObj</File>
+      <Index>0x09</Index>
+    </Texture>
+    <SlotType>17</SlotType>
+    <Description>
+			A commanding staff used by vile cult leaders. It has a strange force inside it that prevents it from facing forward of the user.
+		</Description>
+    <ExtraTooltipData>
+      <EffectInfo name="" description="Shoots backwards" />
+    </ExtraTooltipData>
+    <RateOfFire>0.50</RateOfFire>
+    <Projectile>
+      <ObjectId>Cultist Fire Shot</ObjectId>
+      <Size>70</Size>
+      <Speed>115</Speed>
+      <MinDamage>155</MinDamage>
+      <MaxDamage>200</MaxDamage>
+      <LifetimeMS>700</LifetimeMS>
+      <MultiHit />
+    </Projectile>
+    <BagType>7</BagType>
+    <FameBonus>6</FameBonus>
+    <NumProjectiles>4</NumProjectiles>
+    <ArcGap>352</ArcGap>
+    <OldSound>magicShoot</OldSound>
+    <feedPower>1200</feedPower>
+    <Legendary />
+  </Object>
+  <Object type="0x5074" id="The Plasma Buster">
+    <Class>Equipment</Class>
+    <Item />
+    <Demonized />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0x00</Index>
+    </Texture>
+    <Legendary />
+    <SlotType>17</SlotType>
+    <Description>An ancient staff used both for sacrifice and communion with the gods.</Description>
+    <RateOfFire>0.95</RateOfFire>
+    <Sound>monster/djinn_hit</Sound>
+    <Projectile>
+      <ObjectId>Plasma Missile</ObjectId>
+      <Speed>180</Speed>
+      <MinDamage>130</MinDamage>
+      <MaxDamage>170</MaxDamage>
+      <LifetimeMS>475</LifetimeMS>
+      <Amplitude>0.5</Amplitude>
+      <Frequency>2</Frequency>
+    </Projectile>
+    <BagType>7</BagType>
+    <FameBonus>8</FameBonus>
+    <NumProjectiles>2</NumProjectiles>
+    <ArcGap>0</ArcGap>
+    <OldSound>magicShoot</OldSound>
+  </Object>
+  <Object type="0x5151" id="Thessal's Slayer">
+    <Class>Equipment</Class>
+    <Item />
+    <Mutilate />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0xaa</Index>
+    </Texture>
+    <Legendary />
+    <SlotType>17</SlotType>
+    <Description>When her trident proved ineffective, Thessal always carried around her trusty rod to kill particularly troublesome intruders.</Description>
+    <RateOfFire>1</RateOfFire>
+    <Sound>weapon/fire_wand</Sound>
+    <Projectile>
+      <ObjectId>Thessal Slayer Shot</ObjectId>
+      <Speed>150</Speed>
+      <MinDamage>90</MinDamage>
+      <MaxDamage>145</MaxDamage>
+      <LifetimeMS>500</LifetimeMS>
+      <Amplitude>0.55</Amplitude>
+      <Frequency>2</Frequency>
+      <Size>100</Size>
+      <MultiHit />
+    </Projectile>
+    <NumProjectiles>2</NumProjectiles>
+    <ArcGap>10</ArcGap>
+    <BagType>6</BagType>
+    <FameBonus>6</FameBonus>
+    <DisplayId>Thessal's Slayer</DisplayId>
+  </Object>
+  <Object type="0x540b" id="Rod of Frost Burn">
+    <Class>Equipment</Class>
+    <Item />
+    <Legendary />
+    <SteamRoller />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0xc0</Index>
+    </Texture>
+    <SlotType>17</SlotType>
+    <Description>The unlikely marriage of polar opposites, such an event can only lead to disaster.</Description>
+    <RateOfFire>.95</RateOfFire>
+    <Sound>weapon/fire_wand</Sound>
+    <Projectile>
+      <ObjectId>Rod of Frost Burn Shoot</ObjectId>
+      <Speed>160</Speed>
+      <MinDamage>255</MinDamage>
+      <MaxDamage>290</MaxDamage>
+      <LifetimeMS>500</LifetimeMS>
+      <Frequency>0.55</Frequency>
+      <Amplitude>0.6</Amplitude>
+      <ArmorPiercing />
+      <Size>110</Size>
+      <ActivateOnEquip stat="26" amount="7">IncrementStat</ActivateOnEquip>
+      <ActivateOnEquip stat="27" amount="7">IncrementStat</ActivateOnEquip>
+    </Projectile>
+    <NumProjectiles>1</NumProjectiles>
+    <ArcGap>0</ArcGap>
+    <BagType>7</BagType>
+    <FameBonus>7</FameBonus>
+    <feedPower>650</feedPower>
+    <DisplayId>Rod of Frost Burn</DisplayId>
+  </Object>
+  <Object type="0x540c" id="Scythe of the Reaper">
+    <Class>Equipment</Class>
+    <Item />
+    <Legendary />
+    <Demonized />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0xd0</Index>
+    </Texture>
+    <SlotType>17</SlotType>
+    <Description>While not quite as powerful as the real Death's scythe, this replica certainly does not lack power.</Description>
+    <RateOfFire>.65</RateOfFire>
+    <Sound>weapon/mithril_sword</Sound>
+    <Projectile>
+      <ObjectId>Scythe of the Reaper Shoot</ObjectId>
+      <Speed>170</Speed>
+      <MinDamage>100</MinDamage>
+      <MaxDamage>205</MaxDamage>
+      <LifetimeMS>353</LifetimeMS>
+      <Frequency>0.72</Frequency>
+      <Amplitude>0.6</Amplitude>
+      <MultiHit />
+      <PassesCover />
+      <Size>85</Size>
+    </Projectile>
+    <NumProjectiles>3</NumProjectiles>
+    <ArcGap>5</ArcGap>
+    <ActivateOnEquip stat="21" amount="4">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="7">IncrementStat</ActivateOnEquip>
+    <BagType>8</BagType>
+    <FameBonus>7</FameBonus>
+    <feedPower>650</feedPower>
+    <DisplayId>Scythe of the Reaper</DisplayId>
+  </Object>
+</Objects>

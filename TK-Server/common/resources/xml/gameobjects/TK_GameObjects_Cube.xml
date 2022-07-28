@@ -1,0 +1,6 @@
+<Objects>
+  <Object type="0x073a" id="Cube">
+    <Class>GameObject</Class>
+    <Model>Cube</Model>
+  </Object>
+</Objects>

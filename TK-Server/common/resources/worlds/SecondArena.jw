@@ -1,0 +1,13 @@
+{"id":-16,
+"isLimbo":true,
+"persist":false,
+"name":"Second Arena",
+"sbName":"Second Arena",
+"difficulty":5,
+"background":0,
+"blocking":0,
+"restrictTp":true,
+"showDisplays":false,
+"portals":[0x4934],
+"maps":["SecondArena.jm"],
+"music":[""]}

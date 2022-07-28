@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E3061024-61ED-46AA-8A0D-CD9747E7BFAE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>dungeonGen</RootNamespace>
+    <AssemblyName>dungeonGen</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\bin\x64\dungeongen\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>..\bin\x64\dungeongen\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="RotMG.Common">
+      <HintPath>..\RotMG.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="definitions\Direction.cs" />
+    <Compile Include="definitions\DungeonGraph.cs" />
+    <Compile Include="definitions\DungeonObject.cs" />
+    <Compile Include="definitions\DungeonTile.cs" />
+    <Compile Include="definitions\Edge.cs" />
+    <Compile Include="definitions\FixedRoom.cs" />
+    <Compile Include="definitions\Link.cs" />
+    <Compile Include="definitions\ObjectType.cs" />
+    <Compile Include="definitions\Room.cs" />
+    <Compile Include="definitions\RoomType.cs" />
+    <Compile Include="definitions\TileType.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="GenerationStep.cs" />
+    <Compile Include="Generator.cs" />
+    <Compile Include="JsonMap.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Range.cs" />
+    <Compile Include="RasterizationStep.cs" />
+    <Compile Include="Rasterizer.cs" />
+    <Compile Include="RoomCollision.cs" />
+    <Compile Include="SimpleJson.cs" />
+    <Compile Include="templates\abyss\AbyssTemplate.cs" />
+    <Compile Include="templates\abyss\BossRoom.cs" />
+    <Compile Include="templates\abyss\Corridor.cs" />
+    <Compile Include="templates\abyss\NormalRoom.cs" />
+    <Compile Include="templates\abyss\Overlay.cs" />
+    <Compile Include="templates\abyss\StartRoom.cs" />
+    <Compile Include="templates\abyss\TreasureRoom.cs" />
+    <Compile Include="templates\DungeonTemplate.cs" />
+    <Compile Include="templates\lab\BossRoom.cs" />
+    <Compile Include="templates\lab\Corridor.cs" />
+    <Compile Include="templates\lab\NormalRoom.cs" />
+    <Compile Include="templates\lab\Overlay.cs" />
+    <Compile Include="templates\lab\RoomFlags.cs" />
+    <Compile Include="templates\lab\StartRoom.cs" />
+    <Compile Include="templates\lab\LabTemplate.cs" />
+    <Compile Include="templates\MapCorridor.cs" />
+    <Compile Include="templates\MapRender.cs" />
+    <Compile Include="templates\pirateCave\Background.cs" />
+    <Compile Include="templates\pirateCave\BossRoom.cs" />
+    <Compile Include="templates\pirateCave\Corridor.cs" />
+    <Compile Include="templates\pirateCave\NormalRoom.cs" />
+    <Compile Include="templates\pirateCave\Overlay.cs" />
+    <Compile Include="templates\pirateCave\PirateCaveTemplate.cs" />
+    <Compile Include="templates\pirateCave\StartRoom.cs" />
+    <Compile Include="Zlib.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="templates\abyss\template.jm" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="templates\lab\template.jm" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

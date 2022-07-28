@@ -1,0 +1,699 @@
+<Objects>
+  <Object type="0x5116" id="Soul of Mana Mob">
+    <DisplayId>Soul of Mana</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <Chest />
+    <AnimatedTexture>
+      <File>Custom8x8Encounters</File>
+      <Index>14</Index>
+    </AnimatedTexture>
+    <AltTexture id="1">
+      <AnimatedTexture>
+        <File>Custom8x8Encounters</File>
+        <Index>15</Index>
+      </AnimatedTexture>
+    </AltTexture>
+    <Projectile id="0">
+      <ObjectId>Soul of Thessal First Shot</ObjectId>
+      <Damage>50</Damage>
+      <Speed>100</Speed>
+      <Size>100</Size>
+      <LifetimeMS>1500</LifetimeMS>
+    </Projectile>
+    <Projectile id="1">
+      <ObjectId>Soul of Thessal Second Shot</ObjectId>
+      <Damage>40</Damage>
+      <Speed>100</Speed>
+      <Size>100</Size>
+      <LifetimeMS>1500</LifetimeMS>
+    </Projectile>
+    <Size>100</Size>
+    <MaxHitPoints>30000</MaxHitPoints>
+    <Defense>20</Defense>
+  </Object>
+  <Object type="0x5122" id="Soul of Attack Mob">
+    <DisplayId>Soul of Attack</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <Chest />
+    <AnimatedTexture>
+      <File>Custom8x8Encounters</File>
+      <Index>18</Index>
+    </AnimatedTexture>
+    <AltTexture id="1">
+      <AnimatedTexture>
+        <File>Custom8x8Encounters</File>
+        <Index>19</Index>
+      </AnimatedTexture>
+    </AltTexture>
+    <Projectile id="0">
+      <ObjectId>Soul of Puppet Shot</ObjectId>
+      <Damage>75</Damage>
+      <Speed>100</Speed>
+      <Size>100</Size>
+      <LifetimeMS>1500</LifetimeMS>
+    </Projectile>
+    <Size>100</Size>
+    <MaxHitPoints>30000</MaxHitPoints>
+    <Defense>20</Defense>
+  </Object>
+  <Object type="0x512d" id="Soul of Defense Mob">
+    <DisplayId>Soul of Defense</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <Chest />
+    <AnimatedTexture>
+      <File>Custom8x8Encounters</File>
+      <Index>12</Index>
+    </AnimatedTexture>
+    <AltTexture id="1">
+      <AnimatedTexture>
+        <File>Custom8x8Encounters</File>
+        <Index>13</Index>
+      </AnimatedTexture>
+    </AltTexture>
+    <Projectile id="0">
+      <ObjectId>Soul of Cave Minion Shot</ObjectId>
+      <Damage>75</Damage>
+      <Speed>100</Speed>
+      <Size>100</Size>
+      <LifetimeMS>1500</LifetimeMS>
+    </Projectile>
+    <Projectile id="1">
+      <ObjectId>Soul of Cave Minion Shot 2</ObjectId>
+      <Damage>100</Damage>
+      <Speed>100</Speed>
+      <Size>100</Size>
+      <LifetimeMS>1500</LifetimeMS>
+      <ConditionEffect duration="1">Stunned</ConditionEffect>
+    </Projectile>
+    <Size>100</Size>
+    <MaxHitPoints>30000</MaxHitPoints>
+    <Defense>20</Defense>
+  </Object>
+  <Object type="0x5131" id="Soul of Speed Mob">
+    <DisplayId>Soul of Speed</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <Chest />
+    <AnimatedTexture>
+      <File>Custom8x8Encounters</File>
+      <Index>10</Index>
+    </AnimatedTexture>
+    <AltTexture id="1">
+      <AnimatedTexture>
+        <File>Custom8x8Encounters</File>
+        <Index>11</Index>
+      </AnimatedTexture>
+    </AltTexture>
+    <Projectile id="0">
+      <ObjectId>Soul of Thessal Second Shot</ObjectId>
+      <Damage>75</Damage>
+      <Speed>100</Speed>
+      <Size>100</Size>
+      <LifetimeMS>1500</LifetimeMS>
+      <Frequency>1</Frequency>
+      <Amplitude>1</Amplitude>
+      <ConditionEffect duration="2">Speedy</ConditionEffect>
+    </Projectile>
+    <Projectile id="1">
+      <ObjectId>Soul of Septavius Shot</ObjectId>
+      <Damage>100</Damage>
+      <Speed>100</Speed>
+      <Size>100</Size>
+      <LifetimeMS>1500</LifetimeMS>
+      <Frequency>1</Frequency>
+      <Amplitude>1</Amplitude>
+      <ConditionEffect duration="2.5">Speedy</ConditionEffect>
+    </Projectile>
+    <Size>100</Size>
+    <MaxHitPoints>30000</MaxHitPoints>
+    <Defense>20</Defense>
+  </Object>
+  <Object type="0x5132" id="Soul of Dexterity Mob">
+    <DisplayId>Soul of Dexterity</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <Chest />
+    <AnimatedTexture>
+      <File>Custom8x8Encounters</File>
+      <Index>9</Index>
+    </AnimatedTexture>
+    <AltTexture id="1">
+      <AnimatedTexture>
+        <File>Custom8x8Encounters</File>
+        <Index>20</Index>
+      </AnimatedTexture>
+    </AltTexture>
+    <Projectile id="0">
+      <ObjectId>Soul of Cave Minion Shot</ObjectId>
+      <Damage>85</Damage>
+      <Speed>100</Speed>
+      <Size>100</Size>
+      <LifetimeMS>1500</LifetimeMS>
+    </Projectile>
+    <Projectile id="1">
+      <ObjectId>Soul of Puppet Shot</ObjectId>
+      <Damage>100</Damage>
+      <Speed>100</Speed>
+      <Size>100</Size>
+      <LifetimeMS>250</LifetimeMS>
+    </Projectile>
+    <Size>100</Size>
+    <MaxHitPoints>30000</MaxHitPoints>
+    <Defense>20</Defense>
+  </Object>
+  <Object type="0x5130" id="Soul of Vitality Mob">
+    <DisplayId>Soul of Vitality</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <Chest />
+    <AnimatedTexture>
+      <File>Custom8x8Encounters</File>
+      <Index>16</Index>
+    </AnimatedTexture>
+    <AltTexture id="1">
+      <AnimatedTexture>
+        <File>Custom8x8Encounters</File>
+        <Index>17</Index>
+      </AnimatedTexture>
+    </AltTexture>
+    <Projectile id="0">
+      <ObjectId>Soul of Thessal Second Shot</ObjectId>
+      <Damage>0</Damage>
+      <Speed>100</Speed>
+      <Size>100</Size>
+      <LifetimeMS>1500</LifetimeMS>
+      <ConditionEffect duration="1">Weak</ConditionEffect>
+    </Projectile>
+    <Projectile id="1">
+      <ObjectId>Soul of Cave Minion Shot 2</ObjectId>
+      <Damage>100</Damage>
+      <Speed>100</Speed>
+      <Size>100</Size>
+      <LifetimeMS>1500</LifetimeMS>
+    </Projectile>
+    <Size>100</Size>
+    <MaxHitPoints>30000</MaxHitPoints>
+    <Defense>20</Defense>
+  </Object>
+  <Object type="0x5133" id="Soul of Wisdom Mob">
+    <DisplayId>Soul of Wisdom</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <Chest />
+    <AnimatedTexture>
+      <File>Custom8x8Encounters</File>
+      <Index>7</Index>
+    </AnimatedTexture>
+    <AltTexture id="1">
+      <AnimatedTexture>
+        <File>Custom8x8Encounters</File>
+        <Index>8</Index>
+      </AnimatedTexture>
+    </AltTexture>
+    <Projectile id="0">
+      <ObjectId>Soul of Cave Minion Shot</ObjectId>
+      <Damage>75</Damage>
+      <Speed>100</Speed>
+      <Size>100</Size>
+      <LifetimeMS>1500</LifetimeMS>
+      <ConditionEffect duration="1">Slowed</ConditionEffect>
+    </Projectile>
+    <Size>100</Size>
+    <MaxHitPoints>30000</MaxHitPoints>
+    <Defense>20</Defense>
+  </Object>
+  <Object type="0xa400" id="NPC Ghost 1">
+        <Class>Character</Class>
+        <MaxHitPoints>85000</MaxHitPoints>
+        <AnimatedTexture>
+            <File>Custom8x8Encounters</File>
+            <Index>21</Index>
+        </AnimatedTexture>
+        <Size>100</Size>
+        <ShadowSize>50</ShadowSize>
+    </Object>
+    <Object type="0xa401" id="NPC Ghost 2">
+        <Class>Character</Class>
+        <MaxHitPoints>85000</MaxHitPoints>
+        <AnimatedTexture>
+            <File>Custom8x8Encounters</File>
+            <Index>22</Index>
+        </AnimatedTexture>
+        <Size>100</Size>
+        <ShadowSize>50</ShadowSize>
+    </Object>
+    <Object type="0xa402" id="NPC Ghost 3">
+        <Class>Character</Class>
+        <MaxHitPoints>85000</MaxHitPoints>
+        <AnimatedTexture>
+            <File>Custom8x8Encounters</File>
+            <Index>23</Index>
+        </AnimatedTexture>
+        <Size>100</Size>
+        <ShadowSize>50</ShadowSize>
+    </Object>
+    <Object type="0xa403" id="NPC Ghost 4">
+        <Class>Character</Class>
+        <MaxHitPoints>85000</MaxHitPoints>
+        <AnimatedTexture>
+            <File>Custom8x8Encounters</File>
+            <Index>24</Index>
+        </AnimatedTexture>
+        <Size>100</Size>
+        <ShadowSize>50</ShadowSize>
+    </Object>
+    <Object type="0xa404" id="NPC Ghost 5">
+        <Class>Character</Class>
+        <MaxHitPoints>85000</MaxHitPoints>
+        <AnimatedTexture>
+            <File>Custom8x8Encounters</File>
+            <Index>25</Index>
+        </AnimatedTexture>
+        <Size>100</Size>
+        <ShadowSize>50</ShadowSize>
+    </Object>
+    <Object type="0xa405" id="NPC Ghost 6">
+        <Class>Character</Class>
+        <MaxHitPoints>85000</MaxHitPoints>
+        <AnimatedTexture>
+            <File>Custom8x8Encounters</File>
+            <Index>26</Index>
+        </AnimatedTexture>
+        <Size>100</Size>
+        <ShadowSize>50</ShadowSize>
+    </Object>
+    <Object type="0xa406" id="NPC Ghost 7">
+        <Class>Character</Class>
+        <MaxHitPoints>85000</MaxHitPoints>
+        <AnimatedTexture>
+            <File>Custom8x8Encounters</File>
+            <Index>27</Index>
+        </AnimatedTexture>
+        <Size>100</Size>
+        <ShadowSize>50</ShadowSize>
+    </Object>
+    <Object type="0xa407" id="NPC Ghost 8">
+        <Class>Character</Class>
+        <MaxHitPoints>85000</MaxHitPoints>
+        <AnimatedTexture>
+            <File>Custom8x8Encounters</File>
+            <Index>28</Index>
+        </AnimatedTexture>
+        <Size>100</Size>
+        <ShadowSize>50</ShadowSize>
+    </Object>
+    <Object type="0xa408" id="NPC Ghost 9">
+        <Class>Character</Class>
+        <MaxHitPoints>85000</MaxHitPoints>
+        <AnimatedTexture>
+            <File>Custom8x8Encounters</File>
+            <Index>29</Index>
+        </AnimatedTexture>
+        <Size>100</Size>
+        <ShadowSize>50</ShadowSize>
+    </Object>
+  <Object type="0x67c1" id="Roman Soldier">
+    <Enemy/>
+    <Group>Roman Soldier</Group>
+    <DisplayId>Roman Soldier</DisplayId>
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>Custom8x8Encounters</File>
+      <Index>29</Index>
+    </AnimatedTexture>
+    <HitSound>monster/oryx_hit</HitSound>
+    <DeathSound>monster/abyss_brutes_death</DeathSound>
+    <Size>50</Size>
+    <StasisImmune/>
+    <DazedImmune/>
+    <MaxHitPoints>20000</MaxHitPoints>
+    <Defense>45</Defense>
+    <Projectile id="0">
+      <ObjectId>Smack</ObjectId>
+      <MinDamage>65</MinDamage>
+      <MaxDamage>200</MaxDamage>
+      <Speed>100</Speed>
+      <Size>100</Size>
+      <MultiHit/>
+      <ArmorPiercing/>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+    <Projectile id="1">
+      <ObjectId>Stab</ObjectId>
+      <Damage>80</Damage>
+      <Speed>100</Speed>
+      <Size>100</Size>
+      <MultiHit/>
+      <ArmorPiercing/>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+    <Projectile id="2">
+      <ObjectId>Invisible</ObjectId>
+      <Damage>75</Damage>
+      <Speed>0</Speed>
+      <LifetimeMS>500</LifetimeMS>
+      <Size>75</Size>
+      <ConditionEffect duration="3">Bleeding</ConditionEffect>
+      <MultiHit/>
+    </Projectile>
+  </Object>
+  <Object type="0x67c2" id="Roman Gladiator">
+    <Enemy/>
+    <Group>Roman</Group>
+    <DisplayId>Roman Gladiator</DisplayId>
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>Custom8x8Encounters</File>
+      <Index>30</Index>
+    </AnimatedTexture>
+    <HitSound>monster/oryx_hit</HitSound>
+    <DeathSound>monster/abyss_brutes_death</DeathSound>
+    <Size>50</Size>
+    <StasisImmune/>
+    <DazedImmune/>
+    <MaxHitPoints>50000</MaxHitPoints>
+    <Defense>45</Defense>
+    <Projectile id="0">
+      <ObjectId>Rush</ObjectId>
+      <MinDamage>65</MinDamage>
+      <MaxDamage>200</MaxDamage>
+      <Speed>100</Speed>
+      <Size>100</Size>
+      <MultiHit/>
+      <ArmorPiercing/>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+    <Projectile id="1">
+      <ObjectId>Hit</ObjectId>
+      <Damage>80</Damage>
+      <Speed>100</Speed>
+      <Size>100</Size>
+      <MultiHit/>
+      <ArmorPiercing/>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+    <Projectile id="2">
+      <ObjectId>Granithia BombBlast</ObjectId>
+      <Speed>20</Speed>
+      <Damage>150</Damage>
+      <Size>150</Size>
+      <LifetimeMS>1500</LifetimeMS>
+      <MultiHit/>
+    </Projectile>
+    <Projectile id="3">
+      <ObjectId>Granithia BombBlast</ObjectId>
+      <Speed>20</Speed>
+      <Damage>75</Damage>
+      <Size>70</Size>
+      <LifetimeMS>3000</LifetimeMS>
+      <MultiHit/>
+    </Projectile>
+  </Object>
+  <Object type="0x67c3" id="Roman Archer 1">
+    <Enemy/>
+    <Group>Roman</Group>
+    <DisplayId>Roman Archer</DisplayId>
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>Custom8x8Encounters</File>
+      <Index>31</Index>
+    </AnimatedTexture>
+    <HitSound>monster/oryx_hit</HitSound>
+    <DeathSound>monster/abyss_brutes_death</DeathSound>
+    <Size>80</Size>
+    <StasisImmune/>
+    <DazedImmune/>
+    <MaxHitPoints>20000</MaxHitPoints>
+    <Defense>45</Defense>
+    <Projectile id="0">
+      <ObjectId>Black Roman Arrow</ObjectId>
+      <MinDamage>65</MinDamage>
+      <MaxDamage>200</MaxDamage>
+      <Speed>100</Speed>
+      <Size>100</Size>
+      <MultiHit/>
+      <ArmorPiercing/>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+  </Object>
+  <Object type="0x67c4" id="Roman Archer 2">
+    <Enemy/>
+    <Group>Roman</Group>
+    <DisplayId>Roman Archer</DisplayId>
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>Custom8x8Encounters</File>
+      <Index>31</Index>
+    </AnimatedTexture>
+    <HitSound>monster/oryx_hit</HitSound>
+    <DeathSound>monster/abyss_brutes_death</DeathSound>
+    <Size>80</Size>
+    <StasisImmune/>
+    <DazedImmune/>
+    <MaxHitPoints>25000</MaxHitPoints>
+    <Defense>45</Defense>
+    <Projectile id="0">
+      <ObjectId>Black Roman Arrow</ObjectId>
+      <MinDamage>65</MinDamage>
+      <MaxDamage>200</MaxDamage>
+      <Speed>100</Speed>
+      <Size>100</Size>
+      <MultiHit/>
+      <ArmorPiercing/>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+  </Object>
+  <Object type="0x67c5" id="Roman Archer 3">
+    <Enemy/>
+    <Group>Roman</Group>
+    <DisplayId>Roman Archer</DisplayId>
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>Custom8x8Encounters</File>
+      <Index>31</Index>
+    </AnimatedTexture>
+    <HitSound>monster/oryx_hit</HitSound>
+    <DeathSound>monster/abyss_brutes_death</DeathSound>
+    <Size>80</Size>
+    <StasisImmune/>
+    <DazedImmune/>
+    <MaxHitPoints>25000</MaxHitPoints>
+    <Defense>45</Defense>
+    <Projectile id="0">
+      <ObjectId>Black Roman Arrow</ObjectId>
+      <MinDamage>65</MinDamage>
+      <MaxDamage>200</MaxDamage>
+      <Speed>100</Speed>
+      <Size>100</Size>
+      <MultiHit/>
+      <ArmorPiercing/>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+  </Object>
+  <Object type="0x67c6" id="Roman Archer 4">
+    <Enemy/>
+    <Group>Roman</Group>
+    <DisplayId>Roman Archer</DisplayId>
+    <Class>Character</Class>
+       <AnimatedTexture>
+      <File>Custom8x8Encounters</File>
+      <Index>31</Index>
+    </AnimatedTexture>
+    <HitSound>monster/oryx_hit</HitSound>
+    <DeathSound>monster/abyss_brutes_death</DeathSound>
+    <Size>80</Size>
+    <StasisImmune/>
+    <DazedImmune/>
+    <MaxHitPoints>25000</MaxHitPoints>
+    <Defense>45</Defense>
+    <Projectile id="0">
+      <ObjectId>Black Roman Arrow</ObjectId>
+      <MinDamage>65</MinDamage>
+      <MaxDamage>200</MaxDamage>
+      <Speed>100</Speed>
+      <Size>100</Size>
+      <MultiHit/>
+      <ArmorPiercing/>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+  </Object>
+  <Object type="0xaaa6" id="Piranha Plant">
+    <DisplayId>Piranha Plant</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <AnimatedTexture>
+      <File>Custom8x8Encounters</File>
+      <Index>33</Index>
+    </AnimatedTexture>
+    <Size>100</Size>
+    <MaxHitPoints>10000</MaxHitPoints>
+    <Defense>25</Defense>
+    <StasisImmune/>
+    <Projectile id="0">
+      <ObjectId>Projectile 0 PP</ObjectId>
+      <Damage>50</Damage>
+      <Speed>110</Speed>
+      <Size>80</Size>
+      <ArmorPiercing/>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+  </Object>
+  <Object type="0xaac9" id="Raged Piranha Plant">
+    <DisplayId>Raged Piranha Plant</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <AnimatedTexture>
+      <File>Custom8x8Encounters</File>
+      <Index>34</Index>
+    </AnimatedTexture>
+    <Size>100</Size>
+    <MaxHitPoints>15000</MaxHitPoints>
+    <Defense>25</Defense>
+    <StasisImmune/>
+    <ParalyzeImmune/>
+    <Projectile id="0">
+      <ObjectId>Projectile 0 RPP</ObjectId>
+      <MinDamage>90</MinDamage>
+      <MaxDamage>110</MaxDamage>
+      <Speed>90</Speed>
+      <Size>100</Size>
+      <ArmorPiercing/>
+      <MultiHit/>
+      <ConditionEffect duration="4">Bleeding</ConditionEffect>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+  </Object>
+  <Object type="0xaae9" id="Evil Snowman">
+    <DisplayId>Evil Snowman</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <AnimatedTexture>
+      <File>Custom8x8Encounters</File>
+      <Index>30</Index>
+    </AnimatedTexture>
+    <Size>100</Size>
+    <MaxHitPoints>15000</MaxHitPoints>
+    <Defense>30</Defense>
+    <StasisImmune/>
+    <StunImmune/>
+    <ParalyzeImmune/>
+    <Projectile id="0">
+      <ObjectId>Projectile 0 ES</ObjectId>
+      <Damage>60</Damage>
+      <Speed>100</Speed>
+      <Size>80</Size>
+      <ArmorPiercing/>
+      <MiltiHit/>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+  </Object>
+  <Object type="0xa89e" id="Cursed Polar Bear">
+    <DisplayId>Cursed Polar Bear</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <AnimatedTexture>
+      <File>Custom8x8Encounters</File>
+      <Index>30</Index>
+    </AnimatedTexture>
+    <Size>130</Size>
+    <MaxHitPoints>50000</MaxHitPoints>
+    <Defense>40</Defense>
+    <StasisImmune/>
+    <Projectile id="0">
+      <ObjectId>Projectile 0 CPB</ObjectId>
+      <Damage>180</Damage>
+      <Speed>90</Speed>
+      <Size>90</Size>
+      <ArmorPiercing/>
+      <ConditionEffect duration="2.8">Bleeding</ConditionEffect>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+    <Projectile id="1">
+      <ObjectId>Projectile 1 CPB</ObjectId>
+      <Damage>420</Damage>
+      <Speed>50</Speed>
+      <Size>90</Size>
+      <ArmorPiercing/>
+      <MultiHit/>
+      <ConditionEffect duration="3">Confused</ConditionEffect>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+  </Object>
+  <Object type="0xaba9" id="Enraged Cub">
+    <DisplayId>Enraged Cub</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <AnimatedTexture>
+      <File>Custom8x8Encounters</File>
+      <Index>31</Index>
+    </AnimatedTexture>
+    <Size>70</Size>
+    <MaxHitPoints>15000</MaxHitPoints>
+    <Defense>20</Defense>
+    <StasisImmune/>
+    <StunImmune/>
+    <Projectile id="0">
+      <ObjectId>Projectile 0 EC</ObjectId>
+      <Damage>110</Damage>
+      <Speed>90</Speed>
+      <Size>90</Size>
+      <ArmorPiercing/>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+  </Object>
+  <Object type="0xfbb9" id="Frozen Elf">
+    <DisplayId>Frozen Elf</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <AnimatedTexture>
+      <File>Custom8x8Encounters</File>
+      <Index>31</Index>
+    </AnimatedTexture>
+    <Size>70</Size>
+    <MaxHitPoints>10000</MaxHitPoints>
+    <Defense>20</Defense>
+    <StasisImmune/>
+    <Projectile id="0">
+      <ObjectId>Projectile 0 FE</ObjectId>
+      <Damage>90</Damage>
+      <Speed>100</Speed>
+      <Size>90</Size>
+      <ArmorPiercing/>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+  </Object>
+<Object type="0xabac" id="Guardian's Frigid Squire">
+    <DisplayId>Guardian's Frigid Squire</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <AnimatedTexture>
+      <File>Custom8x8Encounters</File>
+      <Index>31</Index>
+    </AnimatedTexture>
+    <Size>150</Size>
+    <MaxHitPoints>50000</MaxHitPoints>
+    <Defense>50</Defense>
+    <StasisImmune/>
+    <StunImmune/>
+    <ParalyzeImmune/>
+    <Projectile id="0">
+      <ObjectId>Projectile 0 GFS</ObjectId>
+      <Damage>80</Damage>
+      <Speed>110</Speed>
+      <Size>90</Size>
+      <ArmorPiercing/>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+    <Projectile id="0">
+      <ObjectId>Projectile 1 GFS</ObjectId>
+      <Damage>185</Damage>
+      <Speed>80</Speed>
+      <Size>110</Size>
+      <ArmorPiercing/>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+  </Object>
+</Objects>

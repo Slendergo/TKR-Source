@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>tk.pipelines.server</RootNamespace>
+    <AssemblyName>TK.Pipelines.Server</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.IO.Pipelines" Version="4.7.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Core Algorithms">
+      <HintPath>..\Core Algorithms.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

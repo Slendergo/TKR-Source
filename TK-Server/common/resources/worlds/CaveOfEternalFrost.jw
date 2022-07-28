@@ -1,0 +1,12 @@
+{"id":0,
+"isLimbo":false,
+"name":"EternalCave",
+"sbName":"Cave of Eternal Frost",
+"difficulty":4,
+"background":0,
+"blocking": 1,
+"restrictTp":false,
+"showDisplays":false,
+"portals":[],
+"maps":["CaveOfEternalFrost.jm"],
+"music":["abyss"]}

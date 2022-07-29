@@ -72,7 +72,7 @@ namespace wServer.core
             // update PlayerInfo with world data
             var plrInfo = Clients[client];
             plrInfo.WorldInstance = client.Player.World.Id;
-            plrInfo.WorldName = client.Player.World.Name;
+            plrInfo.WorldName = client.Player.World.IdName;
         }
 
         public void Disconnect(Client client)
@@ -152,8 +152,8 @@ namespace wServer.core
 
             if (gameId == World.Test && acc.Admin)
             {
-                world = new Test();
-                CoreServerManager.WorldManager.CreateNewWorld(world);
+                //world = new Test();
+                //CoreServerManager.WorldManager.CreateNewWorld(world);
             }
 
             if (world == null || world.Deleted)
@@ -174,8 +174,8 @@ namespace wServer.core
                 return;
             }
 
-            if (world.IsLimbo)
-                world = world.GetInstance(client);
+            //if (world.Instance)
+            //    world = world.GetInstance(client);
 
             if (!world.AllowedAccess(client) && !(world is GuildHall))
             {
@@ -212,8 +212,8 @@ namespace wServer.core
 
                 var dreamName = client.Account.Name.ToLower().EndsWith("s") ? client.Account.Name + "' Dream World" : client.Account.Name + "'s Dream World";
 
-                world.SBName = dreamName;
-                world.Name = dreamName;
+                world.DisplayName = dreamName;
+                world.IdName = dreamName;
 
                 //client.Manager.Monitor.AddPortal(world.Id);
             }
@@ -239,8 +239,8 @@ namespace wServer.core
                     Music = world.Music,
                     Width = mapSize,
                     Height = mapSize,
-                    Name = world.Name,
-                    DisplayName = world.SBName,
+                    Name = world.IdName,
+                    DisplayName = world.DisplayName,
                     Seed = seed,
                     Background = world.Background,
                     Difficulty = world.Difficulty,

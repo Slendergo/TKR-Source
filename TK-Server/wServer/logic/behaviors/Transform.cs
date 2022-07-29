@@ -14,7 +14,7 @@ namespace wServer.logic.behaviors
         {
             var entity = Entity.Resolve(host.CoreServerManager, target);
 
-            if (entity is Portal && host.World.Name.Contains("Arena"))
+            if (entity is Portal && host.World.IdName.Contains("Arena"))
                 return;
 
             entity.Move(host.X, host.Y);

@@ -53,20 +53,13 @@ package kabam.rotmg.game.commands
       private function makeGameView() : void
       {
          var server:Server = this.data.server || this.servers.getServer();
-         var gameId:int = this.data.isNewGame ? int(this.getInitialGameId()) : int(this.data.gameId);
+         var gameId:int = this.data.isNewGame ? -2 : this.data.gameId;
          var createCharacter:Boolean = this.data.createCharacter;
          var charId:int = this.data.charId;
-         var keyTime:int = this.data.isNewGame? int(-1) : int(this.data.keyTime);
+         var keyTime:int = this.data.isNewGame? -1 : int(this.data.keyTime);
          var key:ByteArray = this.data.key;
          this.model.currentCharId = charId;
          this.setScreen.dispatch(new GameSprite(server,gameId,createCharacter,charId,keyTime,key,this.model,null));
-      }
-      
-      private function getInitialGameId() : int
-      {
-         var gameId:int = 0;
-         gameId = Parameters.NEXUS_GAMEID;
-         return gameId;
       }
    }
 }

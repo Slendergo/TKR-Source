@@ -17,7 +17,7 @@ namespace wServer.core.worlds.logic
         private Client _client;
         private LinkedList<Container> vaults;
 
-        public Vault(ProtoWorld proto, Client client = null) : base(proto)
+        public Vault(int id, WorldResource resource, Client client = null) : base(id, resource)
         {
             if (client != null)
             {
@@ -72,16 +72,7 @@ namespace wServer.core.worlds.logic
                 });
         }
 
-        protected override void Init()
-        {
-            if (IsLimbo)
-                return;
-
-            FromWorldMap(new MemoryStream(Manager.Resources.Worlds[Name].wmap[0]));
-            InitVault();
-        }
-
-        private void InitVault()
+        public override void Init()
         {
             var vaultChestPosition = new List<IntPoint>();
             var giftChestPosition = new List<IntPoint>();

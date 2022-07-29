@@ -32,21 +32,17 @@ namespace wServer.core.worlds.logic
             "Dragon", "Harpy"
         };
 
-        private readonly int _mapId;
         private readonly bool _oryxPresent;
 
         private Oryx _overseer;
         private Task _overseerTask;
 
-        public Realm(ProtoWorld proto, Client client = null) : base(proto)
+        public Realm(int id, WorldResource resource, Client client = null) : base(id, resource)
         {
             _oryxPresent = true;
-            _mapId = 1;
 
             IsRealm = true;
             IsDungeon = false;
-
-            MaxPlayers = 85;
         }
 
         // since map gets reset, admins not allowed to join when closed. Possible to crash server otherwise.
@@ -125,11 +121,11 @@ namespace wServer.core.worlds.logic
             base.UpdateLogic(ref time);
         }
 
-        protected override void Init()
+        static Random Random = new Random();
+
+        public override void Init()
         {
-            var random = new Random();
-            SBName = _realmNames[random.Next(0, _realmNames.Length)];
-            FromWorldMap(new MemoryStream(Manager.Resources.Worlds["Realm"].wmap[_mapId - 1]));
+            DisplayName = _realmNames[Random.Next(0, _realmNames.Length)];
 
             SetPieces.ApplySetPieces(this);
 
@@ -138,6 +134,7 @@ namespace wServer.core.worlds.logic
                 _overseer = new Oryx(this);
                 _overseer.Init();
             }
+            base.Init();
         }
     }
 }

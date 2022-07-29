@@ -409,7 +409,7 @@ namespace wServer.logic.loot
                         var players = world.Players.Count(p => p.Value.Client != null);
                         var builder = discord.MakeLootBuilder(
                             core.ServerConfig.serverInfo,
-                            player.World.IsRealm ? player.World.SBName : player.World.Name,
+                            player.World.IsRealm ? player.World.DisplayName : player.World.IdName,
                             players,
                             world.MaxPlayers,
                             world.IsDungeon,

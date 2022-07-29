@@ -492,7 +492,7 @@ namespace wServer.core.commands
                 foreach (var member in party.PartyMembers)
                 {
                     var clientMember = player.CoreServerManager.ConnectionManager.Clients.Keys.Where(c => c.Player != null && c.Account.Name == member.name && c.Account.AccountId == member.accid).Select(c => c.Player).ToArray();
-                    clientMember[0].SendInfo($"You have invited to a {world.Name ?? world.SBName}! use the command /pjoin to connect!");
+                    clientMember[0].SendInfo($"You have invited to a {world.IdName ?? world.DisplayName}! use the command /pjoin to connect!");
                     return true;
                 }
             }
@@ -741,9 +741,9 @@ namespace wServer.core.commands
                 return false;
             }
 
-            var proto = player.CoreServerManager.Resources.Worlds["GuildHall"];
-            var world = player.CoreServerManager.WorldManager.GetWorld(proto.id);
-            player.Reconnect(world.GetInstance(player.Client));
+            //var proto = player.CoreServerManager.Resources.Worlds["GuildHall"];
+            //var world = player.CoreServerManager.WorldManager.GetWorld(proto.id);
+            //player.Reconnect(world.GetInstance(player.Client));
             return true;
         }
     }
@@ -1251,23 +1251,23 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string args)
         {
-            var gw = player.CoreServerManager.WorldManager.Worlds[1];
+            //var gw = player.CoreServerManager.WorldManager.Worlds[1];
 
-            player.SendInfo("Connecting to first realm");
+            //player.SendInfo("Connecting to first realm");
 
-            if (gw.IsPlayersMax())
-            {
-                player.SendError("Dungeon is full");
-                return true;
-            }
+            //if (gw.IsPlayersMax())
+            //{
+            //    player.SendError("Dungeon is full");
+            //    return true;
+            //}
 
-            player.Client.Reconnect(new Reconnect()
-            {
-                Host = "",
-                Port = player.CoreServerManager.ServerConfig.serverInfo.port,
-                GameId = gw.Id,
-                Name = "Realm"
-            });
+            //player.Client.Reconnect(new Reconnect()
+            //{
+            //    Host = "",
+            //    Port = player.CoreServerManager.ServerConfig.serverInfo.port,
+            //    GameId = gw.Id,
+            //    Name = "Realm"
+            //});
             return true;
         }
     }

@@ -5,6 +5,6 @@ namespace wServer.core.worlds.logic
 {
     public class Marketplace : World
     {
-        public Marketplace(ProtoWorld proto, Client client = null) : base(proto) => IsDungeon = false;
+        public Marketplace(int id, WorldResource resource, Client client = null) : base(id, resource) => IsDungeon = false;
     }
 }

@@ -32,8 +32,6 @@ namespace wServer.core.worlds
         public const int Vault = -4;
         public const int Poseidon = -420;
 
-        public int MaxPlayers = 65;
-
         protected static readonly Random Rand = new Random((int)DateTime.Now.Ticks);
 
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
@@ -45,44 +43,37 @@ namespace wServer.core.worlds
         private CoreServerManager _manager;
         private int _totalConnects;
 
+        public int Id { get; }
+        public string IdName { get; set; }
+        public string DisplayName { get; set; }
+        public bool Instance { get; private set; }
+        public bool Persist { get; private set; }
+        public int MaxPlayers { get; private set; }
 
+        public bool IsDungeon { get; set; }
+        public bool IsNotCombatMapArea => Id == Nexus || Id == Vault || Id == GuildHall || Id == NexusExplanation;
+        public bool IsRealm { get; set; }
         public bool AllowTeleport { get; protected set; }
         public int Background { get; protected set; }
         public byte Blocking { get; protected set; }
         public string Music { get; set; }
         public bool Closed { get; set; }
-        public ConcurrentDictionary<int, Container> Containers { get; private set; }
-        public bool Deleted { get; protected set; }
         public int Difficulty { get; protected set; }
+        public bool Deleted { get; protected set; }
+        public ConcurrentDictionary<int, Container> Containers { get; private set; }
         public ConcurrentDictionary<int, Enemy> Enemies { get; private set; }
         public CollisionMap<Entity> EnemiesCollision { get; private set; }
-        public int Id { get; internal set; }
-        public bool IsDungeon { get; set; }
-        public bool IsLimbo { get; protected set; }
-        public bool IsNotCombatMapArea => Id == Nexus || Id == Vault || Id == GuildHall || Id == NexusExplanation;
-        public bool IsRealm { get; set; }
 
-        public CoreServerManager Manager
-        {
-            get => _manager;
-            internal set
-            {
-                _manager = value;
-
-                if (_manager != null)
-                    Init();
-            }
-        }
+        public CoreServerManager Manager { get; set; }
 
         public Wmap Map { get; private set; }
-        public string Name { get; set; }
-        public bool Persist { get; protected set; }
+        
+        
         public ConcurrentDictionary<int, Pet> Pets { get; private set; }
         public ConcurrentDictionary<int, Player> Players { get; private set; }
         public CollisionMap<Entity> PlayersCollision { get; private set; }
         public ConcurrentDictionary<Tuple<int, byte>, Projectile> Projectiles { get; private set; }
         public ConcurrentDictionary<int, Enemy> Quests { get; private set; }
-        public string SBName { get; set; }
         public bool ShowDisplays { get; protected set; }
         public ConcurrentDictionary<int, Enemy> SpecialEnemies { get; private set; }
         public ConcurrentDictionary<int, StaticObject> StaticObjects { get; private set; }
@@ -91,30 +82,26 @@ namespace wServer.core.worlds
 
         public readonly WorldBranch WorldBranch;
 
-        public World(ProtoWorld proto)
+        public World(int id, WorldResource resource)
         {
             Setup();
-            Id = proto.id;
-            Name = proto.name;
-            SBName = proto.sbName;
-            Difficulty = proto.difficulty;
-            Background = proto.background;
-            IsLimbo = proto.isLimbo;
-            Persist = proto.persist;
-            AllowTeleport = !proto.restrictTp;
-            ShowDisplays = proto.showDisplays;
-            Blocking = proto.blocking;
-
-            if (this is Nexus)
-                MaxPlayers = 300;
+            Id = id;
+            IdName = resource.DisplayName;
+            DisplayName = resource.DisplayName;
+            Difficulty = resource.Difficulty;
+            Background = resource.Background;
+            MaxPlayers = resource.Capacity;
+            Instance = resource.Instance;
+            Persist = resource.Persists;
+            AllowTeleport = true;// !resource.restrictTp;
+            ShowDisplays = Id == -2;// resource.showDisplays;
+            Blocking = resource.VisibilityType;
 
             IsRealm = false;
             IsDungeon = true;
 
             var rnd = new Random();
-            Music = proto.music != null
-                ? proto.music[rnd.Next(0, proto.music.Length)]
-                : "Test";
+            Music = "Test"; // resource.music != null ? resource.music[rnd.Next(0, resource.music.Length : "Test";
 
             WorldBranch = new WorldBranch(this);
         }
@@ -177,7 +164,6 @@ namespace wServer.core.worlds
 
                 Deleted = true;
                 Manager.WorldManager.RemoveWorld(this);
-                Id = 0;
 
                 Players = null;
                 Enemies = null;
@@ -260,7 +246,7 @@ namespace wServer.core.worlds
 
         public long GetAge() => _elapsedTime;
 
-        public string GetDisplayName() => SBName != null && SBName.Length > 0 ? SBName : Name;
+        public string GetDisplayName() => DisplayName != null && DisplayName.Length > 0 ? DisplayName : IdName;
 
         public Entity GetEntity(int id)
         {
@@ -281,14 +267,15 @@ namespace wServer.core.worlds
 
         public virtual World GetInstance(Client client)
         {
-            DynamicWorld.TryGetWorld(_manager.Resources.Worlds[Name], client, out World world);
+            return null;
 
-            if (world == null)
-                world = new World(_manager.Resources.Worlds[Name]);
+            //DynamicWorld.TryGetWorld(_manager.Resources.Worlds[Name], client, out World world);
 
-            world.IsLimbo = false;
+            //if (world == null)
+            //    world = new World(_manager.Resources.Worlds[Name]);
 
-            return Manager.WorldManager.CreateNewWorld(world);
+
+            //return Manager.WorldManager.CreateNewWorld(world);
         }
 
         public int GetNextEntityId() => Interlocked.Increment(ref _entityInc);
@@ -439,7 +426,7 @@ namespace wServer.core.worlds
                     Host = "",
                     Port = Manager.ServerConfig.serverInfo.port,
                     GameId = newWorld.Id,
-                    Name = newWorld.SBName
+                    Name = newWorld.DisplayName
                 };
 
                 var rcpPaused = new Reconnect()
@@ -511,33 +498,18 @@ namespace wServer.core.worlds
             InitMap();
         }
 
-        protected virtual void Init()
+        public bool LoadMapFromData(WorldResource worldResource)
         {
-            if (IsLimbo)
-                return;
-
-            var proto = Manager.Resources.Worlds[Name];
-
-            if (proto.maps != null && proto.maps.Length <= 0)
-            {
-                var template = DungeonTemplates.GetTemplate(Name);
-
-                if (template == null)
-                    throw new KeyNotFoundException($"Template for {Name} not found.");
-
-                FromDungeonGen(Rand.Next(), template);
-
-                return;
-            }
-
-            var map = Rand.Next(0, (proto.maps == null) ? 1 : proto.maps.Length);
-            FromWorldMap(new MemoryStream(proto.wmap[map]));
-
-            InitShops();
+            var data = Manager.Resources.GameData.GetWorldData(worldResource.MapJM);
+            if (data == null)
+                return false;
+            FromWorldMap(new MemoryStream(data));
+            return true;
         }
 
-        protected void InitShops()
+        public virtual void Init()
         {
+            // initialize shops
             foreach (var shop in MerchantLists.Shops)
             {
                 if (shop.Value.Item1 == null)
@@ -629,8 +601,6 @@ namespace wServer.core.worlds
         }
         static int depth = 0;
 
-        public World CreateNewWorld(World world) => Manager.WorldManager.CreateNewWorld(world, this);
-
         public bool Update(ref TickTime time)
         {
             _elapsedTime += time.ElaspedMsDelta;
@@ -721,12 +691,9 @@ namespace wServer.core.worlds
             if (Deleted)
                 return false;
 
-            if (IsLimbo)
-                return false;
-
             if (_elapsedTime >= 60000)
             {
-                Console.WriteLine($"[{Name} {Id}] Has Expired");
+                Console.WriteLine($"[{IdName} {Id}] Has Expired");
                 return true;
             }
 

@@ -36,7 +36,7 @@ namespace wServer.logic.behaviors
         {
             var owner = e.Host.World;
 
-            if (owner.Name.Contains("Arena") || e.Host.Spawned)
+            if (owner.IdName.Contains("Arena") || e.Host.Spawned)
                 return;
 
             if (e.Host.CurrentState.Is(parent) && Random.NextDouble() < _probability)

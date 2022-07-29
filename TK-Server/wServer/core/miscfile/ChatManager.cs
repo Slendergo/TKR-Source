@@ -141,7 +141,7 @@ namespace wServer.core
                 Txt = text
             }, PacketPriority.Low);
 
-            SLogger.Instance.Info($"[{world.Name}({world.Id})] <{name}> {text}");
+            SLogger.Instance.Info($"[{world.IdName}({world.Id})] <{name}> {text}");
         }
 
         public void Oryx(World world, string text)
@@ -420,7 +420,7 @@ namespace wServer.core
                 if (conditional(_))
                     _.Client.SendPacket(tp, PacketPriority.Normal);
             });
-            SLogger.Instance.Info($"[{src.World.Name}({src.World.Id})] <{src.Name}> {tp.Txt}");
+            SLogger.Instance.Info($"[{src.World.IdName}({src.World.Id})] <{src.Name}> {tp.Txt}");
         }
     }
 }

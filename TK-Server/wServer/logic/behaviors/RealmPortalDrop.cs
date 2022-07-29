@@ -9,7 +9,7 @@ namespace wServer.logic.behaviors
         {
             var owner = s.Host.World;
 
-            if (owner.Name.Contains("DeathArena") || s.Host.Spawned)
+            if (owner.IdName.Contains("DeathArena") || s.Host.Spawned)
                 return;
 
             var en = s.Host.GetNearestEntity(100, 0x0704);

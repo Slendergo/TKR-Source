@@ -45,7 +45,7 @@ namespace wServer.core
                 UpdateTime.ElaspedMsDelta = delta;
 
                 CoreServerManager.ConnectionManager.Tick(UpdateTime.TotalElapsedMs);
-                CoreServerManager.WorldManager.PortalMonitor.Tick();
+                CoreServerManager.WorldManager.PortalMonitor?.Tick();
                 CoreServerManager.InterServerManager.Tick(UpdateTime.ElaspedMsDelta);
 
                 var logicTime = (int)(watch.ElapsedMilliseconds - current);

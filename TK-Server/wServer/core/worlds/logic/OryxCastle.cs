@@ -9,10 +9,7 @@ namespace wServer.core.worlds.logic
     {
         private readonly int PlayersEntering;
 
-        public OryxCastle(ProtoWorld proto, int playersEntering) : base(proto) => PlayersEntering = playersEntering;
-
-        // this is to get everyone in one spawn when the Castle comes from quaking
-        public OryxCastle(ProtoWorld proto, Client client = null) : base(proto) => PlayersEntering = 0;
+        public OryxCastle(int id, WorldResource resource, int playersEntering) : base(id, resource) => PlayersEntering = playersEntering;
 
         public override KeyValuePair<IntPoint, TileRegion>[] GetSpawnPoints()
         {

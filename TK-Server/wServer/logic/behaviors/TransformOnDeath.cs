@@ -24,7 +24,7 @@ namespace wServer.logic.behaviors
         {
             if (e.Host.CurrentState.Is(parent) && Random.NextDouble() < probability)
             {
-                if (Entity.Resolve(e.Host.CoreServerManager, target) is Portal && e.Host.World.Name.Contains("Arena"))
+                if (Entity.Resolve(e.Host.CoreServerManager, target) is Portal && e.Host.World.IdName.Contains("Arena"))
                     return;
 
                 if (min > max)

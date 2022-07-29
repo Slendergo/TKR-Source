@@ -135,7 +135,6 @@
     <Compile Include="core\commands\Command.MaxUpgrade.cs" />
     <Compile Include="core\commands\Command.Mute.cs" />
     <Compile Include="core\commands\Command.Online.cs" />
-    <Compile Include="core\commands\Command.Quake.cs" />
     <Compile Include="core\commands\Command.Rank.cs" />
     <Compile Include="core\commands\Command.Rename.cs" />
     <Compile Include="core\commands\Command.ResetAttributes.cs" />
@@ -628,7 +627,6 @@
     <Compile Include="core\terrain\JsonMapExporter.cs" />
     <Compile Include="core\terrain\Wmap.cs" />
     <Compile Include="core\worlds\DungeonTemplates.cs" />
-    <Compile Include="core\worlds\DynamicWorld.cs" />
     <Compile Include="core\worlds\logic\OryxCastle.cs" />
     <Compile Include="core\worlds\logic\GuildHall.cs" />
     <Compile Include="core\worlds\logic\Nexus.cs" />

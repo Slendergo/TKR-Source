@@ -9,6 +9,7 @@ namespace wServer.networking.handlers
 {
     internal class UsePortalHandler : PacketHandlerBase<UsePortal>
     {
+        // todo convert from type to id
         private readonly int[] _realmPortals = new int[] { 0x0704, 0x070e, 0x071c, 0x703, 0x070d, 0x0d40 };
 
         public override PacketId ID => PacketId.USEPORTAL;
@@ -22,7 +23,8 @@ namespace wServer.networking.handlers
                 return;
 
             var entity = player.World.GetEntity(packet.ObjectId);
-            if (entity == null) return;
+            if (entity == null) 
+                return;
 
             if (entity is GuildHallPortal)
             {
@@ -41,61 +43,57 @@ namespace wServer.networking.handlers
                 return;
             }
 
-            if (portal.ObjectType == 0x072f)
-            {
-                var proto = player.CoreServerManager.Resources.Worlds["GuildHall"];
-                var world = player.CoreServerManager.WorldManager.GetWorld(proto.id);
-                player.Reconnect(world.GetInstance(player.Client));
-                return;
-            }
+            //if (portal.ObjectType == 0x072f)
+            //{
+            //    var proto = player.CoreServerManager.Resources.Worlds["GuildHall"];
+            //    var world = player.CoreServerManager.WorldManager.GetWorld(proto.id);
+            //    player.Reconnect(world.GetInstance(player.Client));
+            //    return;
+            //}
 
             player.SendInfo("Portal not implemented.");
         }
 
         private void HandlePortal(Player player, Portal portal)
         {
-            if (portal == null || !portal.Usable)
+            if (!portal.Usable)
                 return;
 
-            using (TimedLock.Lock(portal.CreateWorldLock))
+            var world = portal.WorldInstance;
+            if (world == null && _realmPortals.Contains(portal.ObjectType))
             {
-                var world = portal.WorldInstance;
+                System.Console.WriteLine("OH NO no implementation for this feature: cowardice stuff");
+                // get last world the player was a part of 
+                //world = player.CoreServerManager.WorldManager.GetRandomGameWorld();
+                //if (world == null)
+                    //return;
+            }
 
-                // special portal case lookup
-                if (world == null && _realmPortals.Contains(portal.ObjectType))
+            if (world != null)
+            {
+                if (world.IsPlayersMax())
                 {
-                    world = player.CoreServerManager.WorldManager.GetRandomGameWorld();
-                    if (world == null)
-                        return;
-                }
-
-                if (world is Realm && !player.CoreServerManager.Resources.GameData.ObjectTypeToId[portal.ObjectDesc.ObjectType].Contains("Cowardice"))
-                {
-                    player.FameCounter.CompleteDungeon(player.World.Name);
-                }
-
-                if (world != null)
-                {
-                    if (world.IsPlayersMax())
-                    {
-                        player.SendError("Dungeon is full.");
-                        return;
-                    }
-
-                    player.Reconnect(world);
+                    player.SendError("Dungeon is full.");
                     return;
                 }
 
-                // dynamic case lookup
-                if (portal.CreateWorldTask == null || portal.CreateWorldTask.IsCompleted)
-                    portal.CreateWorldTask = Task.Factory
-                        .StartNew(() => portal.CreateWorld(player))
-                        .ContinueWith(e =>
-                            Log.Error(e.Exception.InnerException.ToString()),
-                            TaskContinuationOptions.OnlyOnFaulted);
+                if (world is Realm && !player.CoreServerManager.Resources.GameData.ObjectTypeToId[portal.ObjectDesc.ObjectType].Contains("Cowardice"))
+                    player.FameCounter.CompleteDungeon(player.World.IdName);
 
-                portal.WorldInstanceSet += player.Reconnect;
+                player.Reconnect(world);
+                return;
             }
+
+            var dungeonName = portal.PortalDescr.DungeonName;
+
+            world = portal.CoreServerManager.WorldManager.CreateNewWorld(dungeonName, null, player.World);
+            if (world == null)
+            {
+                player.SendError($"[Bug] Unable to create: {dungeonName}");
+                return;
+            }
+
+            player.Reconnect(world);
         }
     }
 }

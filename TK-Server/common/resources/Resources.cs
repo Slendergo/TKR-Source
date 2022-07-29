@@ -13,7 +13,6 @@ namespace common.resources
         public string ResourcePath;
         public AppSettings Settings;
         public Dictionary<string, byte[]> WebFiles = new Dictionary<string, byte[]>();
-        public WorldData Worlds;
         public IList<string> MusicNames;
 
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
@@ -24,13 +23,15 @@ namespace common.resources
 
             ResourcePath = resourcePath;
             GameData = new XmlData(resourcePath + "/xml", !wServer.HasValue, progress);
-
+            
             if (!wServer.HasValue) return;
 
             Settings = new AppSettings(resourcePath + "/data/init.xml");
 
-            if (!wServer.Value) webFiles(resourcePath + "/web");
-            else Worlds = new WorldData(resourcePath + "/worlds", GameData);
+            if (!wServer.Value) 
+                webFiles(resourcePath + "/web");
+            else 
+                GameData.LoadMaps($"{resourcePath}/worlds");
 
             music(resourcePath);
         }
@@ -56,7 +57,6 @@ namespace common.resources
             GameData = null;
             WebFiles = null;
             Languages = null;
-            Worlds = null;
             Settings = null;
 
             GC.SuppressFinalize(this);

@@ -840,7 +840,7 @@ namespace wServer.core.objects
             ExperienceGoal = GetExpGoal(Client.Character.Level);
             Stars = GetStars();
 
-            if (owner.Name.Equals("Ocean Trench"))
+            if (owner.IdName.Equals("Ocean Trench"))
                 Breath = 100;
 
             SetNewbiePeriod();
@@ -907,22 +907,6 @@ namespace wServer.core.objects
 
         public void Reconnect(World world)
         {
-            Client.Reconnect(new Reconnect()
-            {
-                Host = "",
-                Port = CoreServerManager.ServerConfig.serverInfo.port,
-                GameId = world.Id,
-                Name = world.Name
-            });
-            var party = DbPartySystem.Get(Client.Account.Database, Client.Account.PartyId);
-            if (party != null && party.PartyLeader.Item1 == Client.Account.Name && party.PartyLeader.Item2 == Client.Account.AccountId)
-                party.WorldId = -1;
-        }
-
-        public void Reconnect(object portal, World world)
-        {
-            ((Portal)portal).WorldInstanceSet -= Reconnect;
-
             if (world == null)
                 SendError("Portal Not Implemented!");
             else
@@ -932,7 +916,7 @@ namespace wServer.core.objects
                     Host = "",
                     Port = CoreServerManager.ServerConfig.serverInfo.port,
                     GameId = world.Id,
-                    Name = world.Name
+                    Name = world.IdName
                 });
                 var party = DbPartySystem.Get(Client.Account.Database, Client.Account.PartyId);
                 if (party != null && party.PartyLeader.Item1 == Client.Account.Name && party.PartyLeader.Item2 == Client.Account.AccountId)
@@ -1099,7 +1083,7 @@ namespace wServer.core.objects
             if (!IsAlive)
                 return;
 
-            if (World.Name.Equals("Ocean Trench"))
+            if (World.IdName.Equals("Ocean Trench"))
             {
                 if (Breath > 0)
                     Breath -= 2 * time.DeltaTime * 5;

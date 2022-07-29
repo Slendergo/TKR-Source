@@ -20,7 +20,7 @@ namespace wServer.core.commands
                 {
                     if (i.Value.Name.EqualsIgnoreCase(args))
                     {
-                        if ((player.World.Id == World.Vault || player.World.Name.Contains("Vault")) && player.Rank < 110)
+                        if ((player.World.Id == World.Vault || player.World.IdName.Contains("Vault")) && player.Rank < 110)
                         {
                             player.SendError("Only rank 110 accounts can summon other player to vault.");
                             return false;

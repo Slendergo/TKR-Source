@@ -1,11 +1,14 @@
-﻿using NLog;
+﻿using Newtonsoft.Json;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using System.Xml.Linq;
+using terrain;
 
 namespace common.resources
 {
@@ -25,6 +28,8 @@ namespace common.resources
         public Dictionary<ushort, TileDesc> Tiles = new Dictionary<ushort, TileDesc>();
         public Dictionary<ushort, XElement> TileTypeToElement = new Dictionary<ushort, XElement>();
         public Dictionary<ushort, string> TileTypeToId = new Dictionary<ushort, string>();
+        private readonly Dictionary<string, WorldResource> Worlds = new Dictionary<string, WorldResource>();
+        private readonly Dictionary<string, byte[]> WorldDataCache = new Dictionary<string, byte[]>();
 
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
@@ -42,7 +47,7 @@ namespace common.resources
 
             LoadXmls(dir, "*.xml", isFromMetis, progress);
             LoadXmls(dir, "*.dat", isFromMetis, progress);
-
+            
             //zip all the xmls in binary/bytes
             ZippedXMLS = ZipGameXmls();
         }
@@ -86,6 +91,7 @@ namespace common.resources
          {
              var cls = e.GetValue<string>("Class");
 
+
              if (string.IsNullOrWhiteSpace(cls)) return e;
 
              ushort type = 0;
@@ -97,7 +103,7 @@ namespace common.resources
              {
                  Log.Error("XML Error: " + e);
              }
-             
+
 
              if (isFromMetis)
              {
@@ -162,6 +168,40 @@ namespace common.resources
              return e;
          }).ToArray();
 
+        public void LoadMaps(string basePath)
+        {
+            var directories = Directory.GetDirectories(basePath, "*", SearchOption.AllDirectories).ToList();
+            directories.Add(basePath);
+            foreach (var directory in directories)
+            {
+                var directoryName = directory.Replace($@"{basePath}", "").Replace("\\", "");
+
+                var jms = Directory.GetFiles(directory, "*.jm");
+                foreach (var jm in jms)
+                {
+                    var id = $"{(directoryName == "" ? "" : $"{directoryName}/")}{Path.GetFileName(jm)}";
+                    
+                    if(id == "realm.jm")
+                        WorldDataCache.Add(id, File.ReadAllBytes(jm));
+                    else
+                    { 
+                        var mapJson = Encoding.UTF8.GetString(File.ReadAllBytes(jm));
+
+                        try
+                        {
+                            var data = Json2Wmap.Convert(this, mapJson);
+                            WorldDataCache.Add(id, data);
+                        }
+                        catch (Exception e)
+                        {
+                            Log.Error($"Exception: {e}");
+                            Log.Error($"JM Path Error: {jm}");
+                        }
+                    }
+                }
+            }
+        }
+
         private void LoadXmls(string basePath, string ext, bool isFromMetis, Action<float, float, string, bool> progress)
         {
             var xmls = Directory.EnumerateFiles(basePath, ext, SearchOption.AllDirectories).ToArray();
@@ -172,7 +212,8 @@ namespace common.resources
             {
                 var xml = File.ReadAllText(xmls[i]);
 
-                _gameXmls.Add(xml);
+                if (!xmls[i].Contains("TK_Worlds.xml"))
+                    _gameXmls.Add(xml);
 
                 if (isFromMetis)
                 {
@@ -181,12 +222,11 @@ namespace common.resources
                     progress.Invoke(current, total, xmls[i], current == total);
                 }
 
-                
                 try
                 {
                     ProcessXml(XElement.Parse(xml), isFromMetis);
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     Log.Error("Exception: " + e);
                     Log.Error("XML Path Error: " + xmls[i]);
@@ -196,10 +236,35 @@ namespace common.resources
             }).ToArray();
         }
 
+        public WorldResource GetWorld(string dungeonName)
+        {
+            if (Worlds.TryGetValue(dungeonName, out var ret))
+                return ret;
+            return null;
+        }
+
+        public byte[] GetWorldData(string name)
+        {
+            if (WorldDataCache.TryGetValue(name, out var ret))
+                return ret;
+            return null;
+        }
+
+        public void AddWorlds(XElement root)
+        {
+            foreach (var e in root.Elements("World"))
+            {
+                var world = new WorldResource(e);
+                if (Worlds.ContainsKey(world.IdName))
+                    throw new Exception($"Error Loading: Duplicate IdName: {world.IdName}");
+                Worlds[world.IdName] = world;
+            }
+        }
+        
         private void ProcessXml(XElement root, bool isFromMetis)
         {
+            AddWorlds(root);
             AddObjects(root, isFromMetis);
-
             if (!isFromMetis) AddGrounds(root);
         }
     }

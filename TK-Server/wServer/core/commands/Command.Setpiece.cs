@@ -32,7 +32,7 @@ namespace wServer.core.commands
                     return false;
                 }
 
-                if (!player.World.Name.Equals("Nexus"))
+                if (!player.World.IdName.Equals("Nexus"))
                 {
                     try
                     {

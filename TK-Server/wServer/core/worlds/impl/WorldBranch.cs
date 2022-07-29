@@ -16,7 +16,7 @@ namespace wServer.core.worlds.impl
 
         public void AddBranch(World world)
         {
-            Console.WriteLine($"[{world.Name} {world.Id}] Has been added to: [{Branch.Name} {Branch.Id}]");
+            Console.WriteLine($"[{world.IdName} {world.Id}] Has been added to: [{Branch.IdName} {Branch.Id}]");
             Branches.Add(world.Id, world);
         }
 
@@ -35,7 +35,7 @@ namespace wServer.core.worlds.impl
             {
                 foreach (var world in ToRemove)
                 {
-                    Console.WriteLine($"[{world.Name} {world.Id}] Has been removed from: [{Branch.Name} {Branch.Id}]");
+                    Console.WriteLine($"[{world.IdName} {world.Id}] Has been removed from: [{Branch.IdName} {Branch.Id}]");
                     _ = Branch.Manager.WorldManager.RemoveWorld(world);
                     _ = Branches.Remove(world.Id);
                 }

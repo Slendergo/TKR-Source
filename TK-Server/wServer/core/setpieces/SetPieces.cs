@@ -87,22 +87,22 @@ namespace wServer.core.setpieces
             return ret;
         }
 
-        public static void RenderFromProto(World world, IntPoint pos, ProtoWorld proto)
+        public static void RenderFromProto(World world, IntPoint pos)
         {
-            var manager = world.Manager;
-            var map = 0;
+            //var manager = world.Manager;
+            //var map = 0;
 
-            if (proto.maps != null && proto.maps.Length > 1)
-            {
-                var rnd = new Random();
-                map = rnd.Next(0, proto.maps.Length);
-            }
+            //if (proto.maps != null && proto.maps.Length > 1)
+            //{
+            //    var rnd = new Random();
+            //    map = rnd.Next(0, proto.maps.Length);
+            //}
 
-            var ms = new MemoryStream(proto.wmap[map]);
-            var sp = new Wmap(manager.Resources.GameData);
+            //var ms = new MemoryStream(proto.wmap[map]);
+            //var sp = new Wmap(manager.Resources.GameData);
 
-            sp.Load(ms, 0);
-            sp.ProjectOntoWorld(world, pos);
+            //sp.Load(ms, 0);
+            //sp.ProjectOntoWorld(world, pos);
         }
 
         public static int[,] rotateCW(int[,] mat)

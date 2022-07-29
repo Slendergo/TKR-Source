@@ -18,7 +18,7 @@ namespace wServer.core.commands
             protected override bool Process(Player player, TickTime time, string args)
             {
 
-                if ((player.World.Id == World.Vault || player.World.Name.Contains("Vault")) || player.World.Id == World.Nexus || player.World.Name.Contains("Nexus"))
+                if ((player.World.Id == World.Vault || player.World.IdName.Contains("Vault")) || player.World.Id == World.Nexus || player.World.IdName.Contains("Nexus"))
                 {
                     player.Client.Character.Reload("node1TickMin");
                     player.Client.Character.Reload("node1TickMaj");

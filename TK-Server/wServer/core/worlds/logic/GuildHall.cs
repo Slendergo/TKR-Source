@@ -6,7 +6,7 @@ namespace wServer.core.worlds.logic
 {
     public class GuildHall : World
     {
-        public GuildHall(ProtoWorld proto, Client client = null) : base(proto)
+        public GuildHall(int id, WorldResource resource, Client client = null) : base(id, resource)
         {
             if (client == null)
                 return;
@@ -21,37 +21,38 @@ namespace wServer.core.worlds.logic
 
         public override World GetInstance(Client client)
         {
-            var manager = client.CoreServerManager;
-            var guildId = client.Account.GuildId;
-            var worlds = manager.WorldManager.GetWorlds(); // join existing if possible
-            foreach (var world in worlds)
-            {
-                if (!(world is GuildHall) || (world as GuildHall).GuildId != guildId)
-                    continue;
+            //var manager = client.CoreServerManager;
+            //var guildId = client.Account.GuildId;
+            //var worlds = manager.WorldManager.GetWorlds(); // join existing if possible
+            //foreach (var world in worlds)
+            //{
+            //    if (!(world is GuildHall) || (world as GuildHall).GuildId != guildId)
+            //        continue;
 
-                if (world.Players.Count > 0)
-                    return world;
+            //    if (world.Players.Count > 0)
+            //        return world;
 
-                manager.WorldManager.RemoveWorld(world);
-                break; // if empty guild hall, reset by making new one
-            }
+            //    manager.WorldManager.RemoveWorld(world);
+            //    break; // if empty guild hall, reset by making new one
+            //}
 
-            // create new instance of guild hall
-            var gHall = new GuildHall(manager.Resources.Worlds[Name], client)
-            { IsLimbo = false };
+            //// create new instance of guild hall
+            //var gHall = new GuildHall(manager.Resources.Worlds[IdName], client)
+            //{ IsLimbo = false };
 
-            return Manager.WorldManager.CreateNewWorld(gHall);
+            //return Manager.WorldManager.CreateNewWorld(gHall);
+            return null;
         }
 
-        protected override void Init()
+        public override void Init()
         {
-            switch (Level())
-            {
-                case 0: FromWorldMap(new MemoryStream(Manager.Resources.Worlds[Name].wmap[0])); break;
-                case 1: FromWorldMap(new MemoryStream(Manager.Resources.Worlds[Name].wmap[1])); break;
-                case 2: FromWorldMap(new MemoryStream(Manager.Resources.Worlds[Name].wmap[2])); break;
-                case 3: FromWorldMap(new MemoryStream(Manager.Resources.Worlds[Name].wmap[3])); break;
-            }
+            //switch (Level())
+            //{
+            //    case 0: FromWorldMap(new MemoryStream(Manager.Resources.Worlds[IdName].wmap[0])); break;
+            //    case 1: FromWorldMap(new MemoryStream(Manager.Resources.Worlds[IdName].wmap[1])); break;
+            //    case 2: FromWorldMap(new MemoryStream(Manager.Resources.Worlds[IdName].wmap[2])); break;
+            //    case 3: FromWorldMap(new MemoryStream(Manager.Resources.Worlds[IdName].wmap[3])); break;
+            //}
         }
 
         private int Level()

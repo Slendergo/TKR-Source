@@ -86,10 +86,10 @@ namespace wServer.core.worlds.logic
         {
             try
             {
-                if (Closed || IsPlayersMax())
-                    Manager.WorldManager.PortalMonitor.ClosePortal(Id);
-                else if (!Manager.WorldManager.PortalMonitor.PortalIsOpen(Id))
-                    Manager.WorldManager.PortalMonitor.OpenPortal(Id);
+                //if (Closed || IsPlayersMax())
+                //    Manager.WorldManager.PortalMonitor.ClosePortal(Id);
+                //else if (!Manager.WorldManager.PortalMonitor.PortalIsOpen(Id))
+                //    Manager.WorldManager.PortalMonitor.OpenPortal(Id);
 
                 if (Closed && Players.Count == 0 && _overseer != null)
                 {

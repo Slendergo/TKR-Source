@@ -4,7 +4,7 @@ using wServer.utils;
 
 namespace wServer.core.worlds.logic
 {
-    internal class Nexus : World
+    public sealed class Nexus : World
     {
         public PortalMonitor PortalMonitor { get; private set; }
 
@@ -12,14 +12,14 @@ namespace wServer.core.worlds.logic
 
         public override void Init()
         {
+            PortalMonitor = new PortalMonitor(Manager, this);
 
             base.Init();
         }
 
         protected override void UpdateLogic(ref TickTime time)
-        {
+        {    
             PortalMonitor.Update(ref time);
-            //SLogger.Instance.Warn($"[Nexus] {time.ElaspedMsDelta}");
             base.UpdateLogic(ref time);
         }
     }

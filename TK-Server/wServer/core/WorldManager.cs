@@ -20,7 +20,7 @@ namespace wServer.core
         public TickThreadSingle NexusThread { get; private set; }
         public List<TickThreadSingle> RealmThreads { get; private set; }
 
-        public World Nexus => Worlds[-2];
+        public Nexus Nexus => (Worlds[-2] as Nexus);
 
         private readonly Dictionary<int, World> Worlds = new Dictionary<int, World>();
 
@@ -48,12 +48,6 @@ namespace wServer.core
             var nexus = CreateNewWorld("Nexus", -2, null);
             NexusThread.Attach(nexus);
 
-            PortalMonitor = new PortalMonitor(CoreServerManager, nexus);
-            
-            _ = CreateNewRealm();
-            _ = CreateNewRealm();
-            _ = CreateNewRealm();
-            _ = CreateNewRealm();
             _ = CreateNewRealm();
 
             //(nexus as Nexus).RealmManager.CreateNewRealm();
@@ -78,7 +72,8 @@ namespace wServer.core
             world.Init();
             Worlds.Add(world.Id, world);
 
-            PortalMonitor.AddPortal(world.Id);
+            Nexus.PortalMonitor.AddPortal(world.Id);
+            
             var thread = new TickThreadSingle(this);
             thread.Attach(world);
             RealmThreads.Add(thread);
@@ -93,8 +88,8 @@ namespace wServer.core
                 return null;
             
             var nextId = id ?? Interlocked.Increment(ref NextWorldId);
-            
-            var world = new World(nextId, worldResource);
+
+            var world = id == -2 ? new Nexus(nextId, worldResource) : new World(nextId, worldResource);
             world.Manager = CoreServerManager; // todo add to ctor
             var success = world.LoadMapFromData(worldResource);
             if (!success)

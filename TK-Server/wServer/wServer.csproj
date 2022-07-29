@@ -129,7 +129,6 @@
     <Compile Include="core\commands\Command.Kick.cs" />
     <Compile Include="core\commands\Command.KillAll.cs" />
     <Compile Include="core\commands\Command.KillPlayer.cs" />
-    <Compile Include="core\commands\Command.Link.cs" />
     <Compile Include="core\commands\Command.MakeDonor.cs" />
     <Compile Include="core\commands\Command.Max.cs" />
     <Compile Include="core\commands\Command.MaxUpgrade.cs" />
@@ -158,7 +157,6 @@
     <Compile Include="core\commands\Command.TpPos.cs" />
     <Compile Include="core\commands\Command.TpQuest.cs" />
     <Compile Include="core\commands\Command.UnbanAccount.cs" />
-    <Compile Include="core\commands\Command.Unlink.cs" />
     <Compile Include="core\commands\Command.Unmute.cs" />
     <Compile Include="core\commands\Command.Unname.cs" />
     <Compile Include="core\commands\Command.UpdateGuilds.cs" />

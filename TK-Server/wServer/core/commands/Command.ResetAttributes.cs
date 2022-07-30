@@ -15,10 +15,10 @@ namespace wServer.core.commands
             {
             }
 
-            protected override bool Process(Player player, TickData time, string args)
+            protected override bool Process(Player player, TickTime time, string args)
             {
 
-                if ((player.Owner.Id == World.Vault || player.Owner.Name.Contains("Vault")) || player.Owner.Id == World.Nexus || player.Owner.Name.Contains("Nexus"))
+                if ((player.World.Id == World.Vault || player.World.IdName.Contains("Vault")) || player.World.Id == World.Nexus || player.World.IdName.Contains("Nexus"))
                 {
                     player.Client.Character.Reload("node1TickMin");
                     player.Client.Character.Reload("node1TickMaj");

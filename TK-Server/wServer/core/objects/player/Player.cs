@@ -242,8 +242,8 @@ namespace wServer.core.objects
             _SPSWisdomCount = new SV<int>(this, StatDataType.SPS_WISDOM_COUNT, client.Account.SPSWisdomCount, true);
             _SPSWisdomCountMax = new SV<int>(this, StatDataType.SPS_WISDOM_COUNT_MAX, maxPotionAmount, true);
 
-            PendingPackets = new ConcurrentQueue<Tuple<Client, int, PacketId, byte[]>>();
-            PendingActions = new ConcurrentQueue<Action<TickData>>();
+            IncomingPackets = new ConcurrentQueue<InboundBuffer>();
+            PendingActions = new ConcurrentQueue<Action<TickTime>>();
 
             Name = client.Account.Name;
             HP = client.Character.HP;
@@ -350,7 +350,7 @@ namespace wServer.core.objects
         public bool Muted { get; set; }
         public bool NameChosen { get => _nameChosen.GetValue(); set => _nameChosen.SetValue(value); }
         public int OxygenBar { get => _oxygenBar.GetValue(); set => _oxygenBar.SetValue(value); }
-        public ConcurrentQueue<Tuple<Client, int, PacketId, byte[]>> PendingPackets { get; private set; }
+        public ConcurrentQueue<InboundBuffer> IncomingPackets { get; private set; }
         public Pet Pet { get; set; }
         public int PetId { get; set; }
         public PlayerUpdate PlayerUpdate { get; private set; }
@@ -387,9 +387,9 @@ namespace wServer.core.objects
         public bool UpgradeEnabled { get => _upgradeEnabled.GetValue(); set => _upgradeEnabled.SetValue(value); }
         public bool XPBoosted { get => _xpBoosted.GetValue(); set => _xpBoosted.SetValue(value); }
         public int XPBoostTime { get; set; }
-        private ConcurrentQueue<Action<TickData>> PendingActions { get; set; }
+        private ConcurrentQueue<Action<TickTime>> PendingActions { get; set; }
 
-        public void AddPendingAction(Action<TickData> action) => PendingActions.Enqueue(action);
+        public void AddPendingAction(Action<TickTime> action) => PendingActions.Enqueue(action);
 
         public void CleanupPlayerUpdate()
         {
@@ -669,7 +669,7 @@ namespace wServer.core.objects
             dmg = (int)Stats.GetDefenseDamage(dmg, false);
             if (!HasConditionEffect(ConditionEffects.Invulnerable))
                 HP -= dmg;
-            Owner.BroadcastIfVisibleExclude(new Damage()
+            World.BroadcastIfVisibleExclude(new Damage()
             {
                 TargetId = Id,
                 Effects = 0,
@@ -720,7 +720,7 @@ namespace wServer.core.objects
                 KilledBy = killer
             }, PacketPriority.High);
 
-            Owner.Timers.Add(new WorldTimer(200, (w, t) =>
+            World.Timers.Add(new WorldTimer(200, (w, t) =>
             {
                 if (Client.Player != this)
                     return;
@@ -728,7 +728,7 @@ namespace wServer.core.objects
             }));
         }
 
-        public void DoUpdate(TickData time)
+        public void DoUpdate(TickTime time)
         {
             IsAlive = KeepAlive(time);
             if (!IsAlive)
@@ -760,7 +760,7 @@ namespace wServer.core.objects
             return playerDesc.Stats.Where((t, i) => Stats.Base[i] >= t.MaxValue).Count() + (UpgradeEnabled ? playerDesc.Stats.Where((t, i) => i == 0 ? Stats.Base[i] >= t.MaxValue + 50 : i == 1 ? Stats.Base[i] >= t.MaxValue + 50 : Stats.Base[i] >= t.MaxValue + 10).Count() : 0);
         }
 
-        public override bool HitByProjectile(Projectile projectile, TickData time)
+        public override bool HitByProjectile(Projectile projectile, TickTime time)
         {
             if (projectile.ProjectileOwner is Player || IsInvulnerable)
                 return false;
@@ -802,7 +802,7 @@ namespace wServer.core.objects
             if (!HasConditionEffect(ConditionEffects.Invulnerable))
                 HP -= dmg;
             ApplyConditionEffect(projectile.ProjDesc.Effects);
-            Owner.BroadcastIfVisibleExclude(new Damage()
+            World.BroadcastIfVisibleExclude(new Damage()
             {
                 TargetId = Id,
                 Effects = HasConditionEffect(ConditionEffects.Invincible) ? 0 : projectile.ConditionEffects,
@@ -840,7 +840,7 @@ namespace wServer.core.objects
             ExperienceGoal = GetExpGoal(Client.Character.Level);
             Stars = GetStars();
 
-            if (owner.Name.Equals("Ocean Trench"))
+            if (owner.IdName.Equals("Ocean Trench"))
                 Breath = 100;
 
             SetNewbiePeriod();
@@ -861,7 +861,7 @@ namespace wServer.core.objects
             PlayerUpdate = new PlayerUpdate(this);
         }
 
-        public void ProcessNetworking(TickData time)
+        public void HandlePendingActions(TickTime time)
         {
             while (PendingActions.TryDequeue(out var callback))
                 try
@@ -872,55 +872,41 @@ namespace wServer.core.objects
                 {
                     SLogger.Instance.Error(e);
                 }
+        }
 
-            while (PendingPackets.Count > 0)
+        public void HandleIO()
+        {
+            while (IncomingPackets.Count > 0)
             {
-                if (!PendingPackets.TryDequeue(out var pending))
+                if (!IncomingPackets.TryDequeue(out var pending))
                     continue;
 
-                if (pending.Item1.Id != pending.Item2 || pending.Item1.State == ProtocolState.Disconnected)
+                if (pending.Client.State == ProtocolState.Disconnected)
                     continue;
 
                 try
                 {
-                    var packet = Packet.Packets[pending.Item3].CreateInstance();
+                    var packet = Packet.Packets[pending.Id].CreateInstance();
                     //packet.Read(pending.Item1, pending.Item4, 0, pending.Item4.Length);
 
-                    using(var rdr = new NReader(new MemoryStream(pending.Item4)))
+                    using (var rdr = new NReader(new MemoryStream(pending.Payload)))
                     {
                         packet.ReadNew(rdr);
                     }
 
-
-                    pending.Item1.ProcessPacket(packet);
+                    pending.Client.ProcessPacket(packet);
                 }
                 catch (Exception e)
                 {
                     if (!(e is EndOfStreamException))
-                        SLogger.Instance.Error("Error processing packet ({0}, {1}, {2})\n{3}", (pending.Item1.Account != null) ? pending.Item1.Account.Name : "", pending.Item1.IpAddress, pending.Item2, e);
-                    pending.Item1.SendFailure("An error occurred while processing data from your client.", Failure.MessageWithDisconnect);
+                        SLogger.Instance.Error("Error processing packet ({0}, {1}, {2})\n{3}", (pending.Client.Account != null) ? pending.Client.Account.Name : "", pending.Client.IpAddress, pending.Client.Id, e);
+                    pending.Client.SendFailure("An error occurred while processing data from your client.", Failure.MessageWithDisconnect);
                 }
             }
         }
 
         public void Reconnect(World world)
         {
-            Client.Reconnect(new Reconnect()
-            {
-                Host = "",
-                Port = CoreServerManager.ServerConfig.serverInfo.port,
-                GameId = world.Id,
-                Name = world.Name
-            });
-            var party = DbPartySystem.Get(Client.Account.Database, Client.Account.PartyId);
-            if (party != null && party.PartyLeader.Item1 == Client.Account.Name && party.PartyLeader.Item2 == Client.Account.AccountId)
-                party.WorldId = -1;
-        }
-
-        public void Reconnect(object portal, World world)
-        {
-            ((Portal)portal).WorldInstanceSet -= Reconnect;
-
             if (world == null)
                 SendError("Portal Not Implemented!");
             else
@@ -930,7 +916,7 @@ namespace wServer.core.objects
                     Host = "",
                     Port = CoreServerManager.ServerConfig.serverInfo.port,
                     GameId = world.Id,
-                    Name = world.Name
+                    Name = world.IdName
                 });
                 var party = DbPartySystem.Get(Client.Account.Database, Client.Account.PartyId);
                 if (party != null && party.PartyLeader.Item1 == Client.Account.Name && party.PartyLeader.Item2 == Client.Account.AccountId)
@@ -986,9 +972,9 @@ namespace wServer.core.objects
             Skin = skin;
         }
 
-        public void Teleport(TickData time, int objId, bool ignoreRestrictions = false)
+        public void Teleport(TickTime time, int objId, bool ignoreRestrictions = false)
         {
-            var obj = Owner.GetEntity(objId);
+            var obj = World.GetEntity(objId);
             if (obj == null)
             {
                 SendError("Target does not exist.");
@@ -1004,7 +990,7 @@ namespace wServer.core.objects
                     return;
                 }
 
-                if (!Owner.AllowTeleport && Rank < 100)
+                if (!World.AllowTeleport && Rank < 100)
                 {
                     SendError("Cannot teleport here.");
                     RestartTPPeriod();
@@ -1051,9 +1037,9 @@ namespace wServer.core.objects
             TeleportPosition(time, obj.X, obj.Y, ignoreRestrictions);
         }
 
-        public void TeleportPosition(TickData time, float x, float y, bool ignoreRestrictions = false) => TeleportPosition(time, new Position() { X = x, Y = y }, ignoreRestrictions);
+        public void TeleportPosition(TickTime time, float x, float y, bool ignoreRestrictions = false) => TeleportPosition(time, new Position() { X = x, Y = y }, ignoreRestrictions);
 
-        public void TeleportPosition(TickData time, Position position, bool ignoreRestrictions = false)
+        public void TeleportPosition(TickTime time, Position position, bool ignoreRestrictions = false)
         {
             if (!ignoreRestrictions)
             {
@@ -1084,7 +1070,7 @@ namespace wServer.core.objects
                     Color = new ARGB(0xFFFFFFFF)
                 }
             };
-            Owner.PlayersBroadcastAsParallel(_ =>
+            World.PlayersBroadcastAsParallel(_ =>
             {
                 _.AwaitGotoAck(time.TotalElapsedMs);
                 _._tps += 1;
@@ -1092,12 +1078,12 @@ namespace wServer.core.objects
             });
         }
 
-        public override void Tick(TickData time)
+        public override void Tick(TickTime time)
         {
             if (!IsAlive)
                 return;
 
-            if (Owner.Name.Equals("Ocean Trench"))
+            if (World.IdName.Equals("Ocean Trench"))
             {
                 if (Breath > 0)
                     Breath -= 2 * time.DeltaTime * 5;
@@ -1297,14 +1283,14 @@ namespace wServer.core.objects
             stats[StatDataType.SPS_VITALITY_COUNT_MAX] = SPSVitalityCountMax;
         }
 
-        private void CerberusClaws(TickData time)
+        private void CerberusClaws(TickTime time)
         {
             var elasped = time.TotalElapsedMs;
             if (elasped % 2000 == 0)
                 Stats.Boost.ReCalculateValues();
         }
 
-        private void CerberusCore(TickData time)
+        private void CerberusCore(TickTime time)
         {
             var elasped = time.TotalElapsedMs;
             if (elasped % 15000 == 0)
@@ -1341,7 +1327,7 @@ namespace wServer.core.objects
                         })
                     );
 
-                Owner.PlayersBroadcastAsParallel(_ =>
+                World.PlayersBroadcastAsParallel(_ =>
                 {
                     if (_.Client.Account.GuildId != pGuild)
                         _.DeathNotif(deathMessage);
@@ -1349,14 +1335,14 @@ namespace wServer.core.objects
             }
             else
                 // guild less case
-                Owner.PlayersBroadcastAsParallel(_ => _.DeathNotif(deathMessage));
+                World.PlayersBroadcastAsParallel(_ => _.DeathNotif(deathMessage));
         }
 
         private void Clarification(int slot)
         {
             if (_random.NextDouble() < 0.1 && ApplyEffectCooldown(slot))
             {
-                Owner.BroadcastIfVisible(new ShowEffect()
+                World.BroadcastIfVisible(new ShowEffect()
                 {
                     EffectType = EffectType.AreaBlast,
                     TargetObjectId = Id,
@@ -1364,7 +1350,7 @@ namespace wServer.core.objects
                     Pos1 = new Position() { X = 3 }
                 }, this, PacketPriority.Low);
 
-                Owner.BroadcastIfVisible(new Notification()
+                World.BroadcastIfVisible(new Notification()
                 {
                     Message = "Clarification!",
                     Color = new ARGB(0xFF00A6FF),
@@ -1385,7 +1371,7 @@ namespace wServer.core.objects
                 {
                     Size = 100;
                     setCooldownTime(10, slot);
-                    Owner.BroadcastIfVisible(new ShowEffect()
+                    World.BroadcastIfVisible(new ShowEffect()
                     {
                         EffectType = EffectType.AreaBlast,
                         TargetObjectId = Id,
@@ -1393,7 +1379,7 @@ namespace wServer.core.objects
                         Pos1 = new Position() { X = 3 }
                     }, this, PacketPriority.Low);
 
-                    Owner.BroadcastIfVisible(new Notification()
+                    World.BroadcastIfVisible(new Notification()
                     {
                         Message = "Monkey King's Wrath!",
                         Color = new ARGB(0xFF98ff98),
@@ -1443,21 +1429,21 @@ namespace wServer.core.objects
             var obj = new StaticObject(CoreServerManager, objType, time, true, true, false);
             obj.Move(X, Y);
             obj.Name = (!phantomDeath) ? deathMessage : $"{Name} got rekt";
-            Owner.EnterWorld(obj);
+            World.EnterWorld(obj);
         }
 
         private void GodBless(int slot)
         {
             if (_random.NextDouble() < 0.03 && ApplyEffectCooldown(slot))
             {
-                Owner.BroadcastIfVisible(new ShowEffect()
+                World.BroadcastIfVisible(new ShowEffect()
                 {
                     EffectType = EffectType.AreaBlast,
                     TargetObjectId = Id,
                     Color = new ARGB(0xffA1A1A1),
                     Pos1 = new Position() { X = 3 }
                 }, this, PacketPriority.Low);
-                Owner.BroadcastIfVisible(new Notification()
+                World.BroadcastIfVisible(new Notification()
                 {
                     Message = "God Bless!",
                     Color = new ARGB(0xFFFFFFFF),
@@ -1475,7 +1461,7 @@ namespace wServer.core.objects
             if (_random.NextDouble() < 0.02 && ApplyEffectCooldown(slot))
             {
                 ActivateHealHp(this, 25 * Stats[0] / 100);
-                Owner.BroadcastIfVisible(new ShowEffect()
+                World.BroadcastIfVisible(new ShowEffect()
                 {
                     EffectType = EffectType.AreaBlast,
                     TargetObjectId = Id,
@@ -1483,7 +1469,7 @@ namespace wServer.core.objects
                     Pos1 = new Position() { X = 3 }
                 }, this, PacketPriority.Low);
 
-                Owner.BroadcastIfVisible(new Notification()
+                World.BroadcastIfVisible(new Notification()
                 {
                     Message = "God Touch!",
                     Color = new ARGB(0xFFFFFFFF),
@@ -1494,7 +1480,7 @@ namespace wServer.core.objects
             }
         }
 
-        private void HandleRegen(TickData time)
+        private void HandleRegen(TickTime time)
         {
             // hp regen
             if (HP == Stats[0] || !CanHpRegen())
@@ -1533,7 +1519,7 @@ namespace wServer.core.objects
             {
                 if (_random.NextDouble() < 0.02 && ApplyEffectCooldown(Slot))
                 {
-                    Owner.BroadcastIfVisible(new Notification()
+                    World.BroadcastIfVisible(new Notification()
                     {
                         Message = "Out of One's Mind!",
                         Color = new ARGB(0xFF00D5D8),
@@ -1550,7 +1536,7 @@ namespace wServer.core.objects
             {
                 if (_random.NextDouble() < 0.05 && ApplyEffectCooldown(Slot))
                 {
-                    Owner.BroadcastIfVisible(new Notification()
+                    World.BroadcastIfVisible(new Notification()
                     {
                         Message = "Steam Roller!",
                         Color = new ARGB(0xFF717171),
@@ -1567,7 +1553,7 @@ namespace wServer.core.objects
             {
                 if (_random.NextDouble() < 0.08 && ApplyEffectCooldown(Slot))
                 {
-                    Owner.BroadcastIfVisible(new Notification()
+                    World.BroadcastIfVisible(new Notification()
                     {
                         Message = "Mutilate!",
                         Color = new ARGB(0xFFFF4600),
@@ -1585,7 +1571,7 @@ namespace wServer.core.objects
         {
             if (_random.NextDouble() < .5 && ApplyEffectCooldown(slot))// 50 % chance
             {
-                Owner.BroadcastIfVisible(new ShowEffect()
+                World.BroadcastIfVisible(new ShowEffect()
                 {
                     EffectType = EffectType.AreaBlast,
                     TargetObjectId = Id,
@@ -1593,7 +1579,7 @@ namespace wServer.core.objects
                     Pos1 = new Position() { X = 3 }
                 }, this, PacketPriority.Low);
 
-                Owner.BroadcastIfVisible(new Notification()
+                World.BroadcastIfVisible(new Notification()
                 {
                     Message = "Monkey King's Wrath!",
                     Color = new ARGB(0xFFFF0000),
@@ -1653,7 +1639,7 @@ namespace wServer.core.objects
                     continue;
 
                 Inventory[i] = null;
-                Owner.PlayersBroadcastAsParallel(_ => _.SendInfo($"{Name}'s {item.DisplayName} breaks and he disappears"));
+                World.PlayersBroadcastAsParallel(_ => _.SendInfo($"{Name}'s {item.DisplayName} breaks and he disappears"));
                 ReconnectToNexus();
                 return true;
             }
@@ -1684,7 +1670,7 @@ namespace wServer.core.objects
 
                     #endregion Boosted Eff
 
-                    Owner.BroadcastIfVisible(new Notification()
+                    World.BroadcastIfVisible(new Notification()
                     {
                         Message = "Boosted!",
                         Color = new ARGB(0xFF00FF00),
@@ -1692,7 +1678,7 @@ namespace wServer.core.objects
                         ObjectId = Id
                     }, this, PacketPriority.Low);
 
-                    Owner.Timers.Add(new WorldTimer(5000, (world, t) =>
+                    World.Timers.Add(new WorldTimer(5000, (world, t) =>
                     {
                         for (var i = 0; i < 8; i++)
                             Stats.Boost.ActivateBoost[i].Pop(i == 0 ? 100 : i == 1 ? 100 : 15, true);
@@ -1705,7 +1691,7 @@ namespace wServer.core.objects
             {
                 if (_random.NextDouble() < 0.05 && ApplyEffectCooldown(slot))
                 {
-                    Owner.BroadcastIfVisible(new Notification()
+                    World.BroadcastIfVisible(new Notification()
                     {
                         Message = "Insanity!",
                         Color = new ARGB(0xFFFF0000),
@@ -1741,7 +1727,7 @@ namespace wServer.core.objects
                         || HasConditionEffect(ConditionEffects.Petrify)
                         || HasConditionEffect(ConditionEffects.Darkness)))
                         return;
-                    Owner.BroadcastIfVisible(new Notification()
+                    World.BroadcastIfVisible(new Notification()
                     {
                         Message = "Holy Protection!",
                         Color = new ARGB(0xFFFFFFFF),
@@ -1763,7 +1749,7 @@ namespace wServer.core.objects
         {
             if (ApplyEffectCooldown(slot))
             {
-                Owner.BroadcastIfVisible(new ShowEffect()
+                World.BroadcastIfVisible(new ShowEffect()
                 {
                     EffectType = EffectType.AreaBlast,
                     TargetObjectId = Id,
@@ -1771,7 +1757,7 @@ namespace wServer.core.objects
                     Pos1 = new Position() { X = 3 }
                 }, this, PacketPriority.Low);
 
-                Owner.BroadcastIfVisible(new Notification()
+                World.BroadcastIfVisible(new Notification()
                 {
                     Message = "Sonic Blaster!",
                     Color = new ARGB(0xFF9300FF),
@@ -1788,7 +1774,7 @@ namespace wServer.core.objects
         private void SpawnPetIfAttached(World owner)
         {
             // despawn old pet if found
-            Pet?.Owner?.LeaveWorld(Pet);
+            Pet?.World?.LeaveWorld(Pet);
 
             if (Client.Account.Hidden)
                 return;
@@ -1826,7 +1812,7 @@ namespace wServer.core.objects
 
         private bool TestWorld(string killer)
         {
-            if (!(Owner is Test))
+            if (!(World is TestWorld))
                 return false;
 
             GenerateGravestone();
@@ -1834,13 +1820,13 @@ namespace wServer.core.objects
             return true;
         }
 
-        private void TickActivateEffects(TickData time)
+        private void TickActivateEffects(TickTime time)
         {
             var dt = time.ElaspedMsDelta;
-            if (Owner == null)
+            if (World == null)
                 return;
 
-            if (Owner is Vault || Owner is Nexus || Owner is GuildHall || Owner.Id == 10)
+            if (World is VaultWorld || World is NexusWorld || World.InstanceType == WorldResourceInstanceType.Guild || World.Id == 10)
                 return;
 
             if (XPBoostTime != 0)
@@ -1855,7 +1841,7 @@ namespace wServer.core.objects
                 LDBoostTime = Math.Max(LDBoostTime - dt, 0);
         }
 
-        private void TimeEffects(TickData time)
+        private void TimeEffects(TickTime time)
         {
             if (_canApplyEffect0 > 0)
             {

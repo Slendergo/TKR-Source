@@ -38,8 +38,8 @@ namespace wServer.networking.handlers
             var prjDesc = item.Projectiles[0]; //Assume only one
             var prj = player.PlayerShootProjectile(packet.BulletId, prjDesc, item.ObjectType, packet.Time, packet.StartingPos, packet.Angle);
 
-            player.Owner.EnterWorld(prj);
-            player.Owner.BroadcastIfVisibleExclude(new AllyShoot()
+            player.World.EnterWorld(prj);
+            player.World.BroadcastIfVisibleExclude(new AllyShoot()
             {
                 OwnerId = player.Id,
                 Angle = packet.Angle,

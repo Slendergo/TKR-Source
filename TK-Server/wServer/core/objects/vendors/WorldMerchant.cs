@@ -22,7 +22,7 @@ namespace wServer.core.objects.vendors
 
             if (ItemList == null || (i = ItemList.IndexOf(ShopItem)) == -1)
             {
-                Owner.LeaveWorld(this);
+                World.LeaveWorld(this);
                 return;
             }
 
@@ -31,7 +31,7 @@ namespace wServer.core.objects.vendors
                 ItemList.Remove(ShopItem);
                 if (ItemList.Count <= 0)
                 {
-                    Owner.LeaveWorld(this);
+                    World.LeaveWorld(this);
                     return;
                 }
             }
@@ -46,7 +46,7 @@ namespace wServer.core.objects.vendors
             Reloading = false;
         }
 
-        public override void Tick(TickData time)
+        public override void Tick(TickTime time)
         {
             if (ShopItem == null && TimeLeft != 0 && Count != 0)
                 return;

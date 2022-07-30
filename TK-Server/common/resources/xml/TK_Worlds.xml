@@ -1,0 +1,65 @@
+﻿<Worlds>
+	<World id="Realm of the Mad God">
+		<Width>2048</Width>
+		<Height>2048</Height>
+		<Capacity>85</Capacity>
+		<MapJM>realm.jm</MapJM>
+		<Persists/>
+	</World>
+	<World id="Nexus">
+		<Width>256</Width>
+		<Height>256</Height>
+		<Capacity>300</Capacity>
+		<MapJM>nexus.jm</MapJM>
+		<Instance enum="nexus"/>
+		<Music>
+			<Track>wanderlust</Track>
+			<Track>sorc</Track>
+		</Music>
+		<Persists/>
+	</World>
+	<World id="Vault">
+		<Width>256</Width>
+		<Height>256</Height>
+		<Capacity>1</Capacity>
+		<MapJM>vault.jm</MapJM>
+		<Instance enum="vault"/>
+		<Persists/>
+	</World>
+	<World id="Guild Hall 1">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>guild/guild_hall1.jm</MapJM>
+		<Instance enum="guild"/>
+	</World>
+	<World id="Guild Hall 2">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>guild/guild_hall2.jm</MapJM>
+		<Instance enum="guild"/>
+	</World>
+	<World id="Guild Hall 3">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>guild/guild_hall3.jm</MapJM>
+		<Instance enum="guild"/>
+	</World>
+	<World id="Guild Hall 4">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>guild/guild_hall4.jm</MapJM>
+		<Instance enum="guild"/>
+	</World>
+	<World id="Undead Lair">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>undead_lair1.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="Snake Pit">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>snake_pit.jm</MapJM>
+		<Dungeon/>
+	</World>
+</Worlds>

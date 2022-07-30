@@ -24,7 +24,7 @@ namespace wServer.logic.behaviors
             this.radius = radius;
         }
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state)
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state)
         {
             state = new SpawnState() { CurrentNumber = initialSpawn, RemainingTime = coolDown.Next(Random) };
 
@@ -33,7 +33,7 @@ namespace wServer.logic.behaviors
                 var x = host.X + (float)(Random.NextDouble() * radius);
                 var y = host.Y + (float)(Random.NextDouble() * radius);
 
-                if (!host.Owner.IsPassable(x, y, true))
+                if (!host.World.IsPassable(x, y, true))
                     continue;
 
                 var entity = Entity.Resolve(host.CoreServerManager, children[Random.Next(children.Length)]);
@@ -52,11 +52,11 @@ namespace wServer.logic.behaviors
                     }
                 }
 
-                host.Owner.EnterWorld(entity);
+                host.World.EnterWorld(entity);
             }
         }
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             var spawn = (SpawnState)state;
 
@@ -65,7 +65,7 @@ namespace wServer.logic.behaviors
                 var x = host.X + (float)(Random.NextDouble() * radius);
                 var y = host.Y + (float)(Random.NextDouble() * radius);
 
-                if (!host.Owner.IsPassable(x, y, true))
+                if (!host.World.IsPassable(x, y, true))
                 {
                     spawn.RemainingTime = coolDown.Next(Random);
                     spawn.CurrentNumber++;
@@ -88,7 +88,7 @@ namespace wServer.logic.behaviors
                     }
                 }
 
-                host.Owner.EnterWorld(entity);
+                host.World.EnterWorld(entity);
 
                 spawn.RemainingTime = coolDown.Next(Random);
                 spawn.CurrentNumber++;

@@ -56,7 +56,7 @@ namespace wServer.core.objects.vendors
         public virtual void Reload()
         { }
 
-        public override void Tick(TickData time)
+        public override void Tick(TickTime time)
         {
             base.Tick(time);
 

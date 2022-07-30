@@ -1,4 +1,5 @@
 ﻿using common;
+using common.resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,46 +11,23 @@ namespace wServer.core.objects
 {
     public class Portal : StaticObject
     {
-        public object CreateWorldLock = new object();
+        public World WorldInstance;
 
         private SV<bool> _usable;
-
+        public readonly PortalDesc PortalDescr;
+        
         public Portal(CoreServerManager manager, ushort objType, int? life) : base(manager, ValidatePortal(manager, objType), life, false, true, false)
         {
             _usable = new SV<bool>(this, StatDataType.PortalUsable, true);
-            Locked = manager.Resources.GameData.Portals[ObjectType].Locked;
+
+            PortalDescr = manager.Resources.GameData.Portals[ObjectType];
+            Locked = PortalDescr.Locked;
         }
 
-        public event EventHandler<World> WorldInstanceSet;
-
-        public Task CreateWorldTask { get; set; }
         public bool Locked { get; private set; }
         public bool Usable { get => _usable.GetValue(); set => _usable.SetValue(value); }
-        public World WorldInstance { get; set; }
 
-        public void CreateWorld(Player player)
-        {
-            World world = null;
-
-            foreach (var p in player.CoreServerManager.Resources.Worlds.Data.Values.Where(p => p.portals != null && p.portals.Contains(ObjectType)))
-            {
-                if (p.id < 0)
-                    world = player.CoreServerManager.WorldManager.GetWorld(p.id);
-                else
-                {
-                    DynamicWorld.TryGetWorld(p, player.Client, out world);
-
-                    world = player.CoreServerManager.WorldManager.AddWorld(world ?? new World(p));
-                }
-
-                break;
-            }
-
-            WorldInstance = world;
-            WorldInstanceSet?.Invoke(this, world);
-        }
-
-        public override bool HitByProjectile(Projectile projectile, TickData time) => false;
+        public override bool HitByProjectile(Projectile projectile, TickTime time) => false;
 
         protected override void ExportStats(IDictionary<StatDataType, object> stats)
         {

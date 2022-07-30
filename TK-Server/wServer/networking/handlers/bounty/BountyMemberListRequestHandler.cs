@@ -11,7 +11,7 @@ namespace wServer.networking.handlers
 
         protected override void HandlePacket(Client client, BountyMemberListRequest packet)
         {
-            if (client == null || client.Player == null || client.Player.Owner == null)
+            if (client == null || client.Player == null || client.Player.World == null)
                 return;
 
             Handle(client, packet);
@@ -27,7 +27,7 @@ namespace wServer.networking.handlers
             }
 
             var playersIds = new ConcurrentBag<int>();
-            client.Player.Owner.PlayersBroadcastAsParallel(_ =>
+            client.Player.World.PlayersBroadcastAsParallel(_ =>
             {
                 if (_.Guild != player.Guild)
                     return;

@@ -5,18 +5,18 @@ namespace wServer.core
 {
     public class WorldTimer
     {
-        private readonly Action<World, TickData> _cb;
-        private readonly Func<World, TickData, bool> _rcb;
+        private readonly Action<World, TickTime> _cb;
+        private readonly Func<World, TickTime, bool> _rcb;
         private readonly int _total;
         private int _remain;
 
-        public WorldTimer(int tickMs, Action<World, TickData> callback)
+        public WorldTimer(int tickMs, Action<World, TickTime> callback)
         {
             _remain = _total = tickMs;
             _cb = callback;
         }
 
-        public WorldTimer(int tickMs, Func<World, TickData, bool> callback)
+        public WorldTimer(int tickMs, Func<World, TickTime, bool> callback)
         {
             _remain = _total = tickMs;
             _rcb = callback;
@@ -27,7 +27,7 @@ namespace wServer.core
             _remain = _total;
         }
 
-        public bool Tick(World world, TickData time)
+        public bool Tick(World world, TickTime time)
         {
             _remain -= time.ElaspedMsDelta;
 

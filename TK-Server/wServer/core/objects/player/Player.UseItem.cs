@@ -40,7 +40,7 @@ namespace wServer.core.objects
         public bool PoisonWis = false;
         private object _useLock = new object();
 
-        public void AEItemDust(TickData time, Item item, Position target, int slot, int objId, ActivateEffect eff)
+        public void AEItemDust(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
             ushort[] tierSwords = { 0x221c, 0x228e, 0x258c }; //reskins
             ushort[] tierStaff = { 0x228b, 0xf13, 0x237e, }; //reskins
@@ -51,7 +51,7 @@ namespace wServer.core.objects
             var gameData = CoreServerManager.Resources.GameData;
             var TieredChance = _random.NextDouble();
             ushort itemValue;
-            var entity = Owner.GetEntity(objId);
+            var entity = World.GetEntity(objId);
             var container = entity as Container;
             if (TieredChance <= 0.10)
             {
@@ -175,10 +175,10 @@ namespace wServer.core.objects
             }
         }
 
-        public void AEResetSkillTree(TickData time, Item item, Position target, int slot, int objId, ActivateEffect eff)
+        public void AEResetSkillTree(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
             var gameData = CoreServerManager.Resources.GameData;
-            var entity = Owner.GetEntity(objId);
+            var entity = World.GetEntity(objId);
             var container = entity as Container;
             if (/*!MaxedLife || !MaxedMana || !MaxedAtt || !MaxedDef || !MaxedSpd || !MaxedDex || !MaxedVit || !MaxedWis || */container is GiftChest)
             {
@@ -265,7 +265,7 @@ namespace wServer.core.objects
             SendInfo("All your Skill Points have been reset.");
         }
 
-        public void AESpecialDust(TickData time, Item item, Position target, int slot, int objId, ActivateEffect eff)
+        public void AESpecialDust(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
             ushort[] nonspecialWeapons = { 0x709, 0xced, 0xb21, 0xcde, 0xc10, 0xcec, 0x164a, 0xc15, 0xc03, 0xc24, 0xcea, 0xc1d, 0xc33, 0x183b, 0xc04, 0xceb, 0xa03, 0xcdb, 0x2303, 0xcdf, 0x164b, 0x6a9, 0x716d, 0xb3f };
             ushort[] specialWeapons = { 0xc29, 0xc0a, 0x9d5, 0xc05, 0x915, 0xcdc };
@@ -277,7 +277,7 @@ namespace wServer.core.objects
             ushort[] specialRings = { 0x7fd2, 0x7fd3, 0x7fd4, 0xbad, 0xbac, 0xbab };
             var gameData = CoreServerManager.Resources.GameData;
             ushort itemValue;
-            var entity = Owner.GetEntity(objId);
+            var entity = World.GetEntity(objId);
             var container = entity as Container;
             var typeitemChance = _random.Next(0, 3);
             switch (typeitemChance)
@@ -380,7 +380,7 @@ namespace wServer.core.objects
             }
         }
 
-        public void AEUnlockChest(TickData time, Item item, Position target, int slot, int objId, ActivateEffect eff)
+        public void AEUnlockChest(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
             Player player = this;
             var db = CoreServerManager.Database;
@@ -396,7 +396,7 @@ namespace wServer.core.objects
             player.SendInfo("Your Vault has been unlocked! If u are in your Vault, go out and enter again.");
         }
 
-        public void AEUnlockSlotChar(TickData time, Item item, Position target, int slot, int objId, ActivateEffect eff)
+        public void AEUnlockSlotChar(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
             Player player1 = this;
             var account = player1.Client.Account;
@@ -408,12 +408,12 @@ namespace wServer.core.objects
             player1.SendInfo("New Character Slot Unlocked!, go to Character selector to use them!");
         }
 
-        public void UseItem(TickData time, int objId, int slot, Position pos, int sellMaxed)
+        public void UseItem(TickTime time, int objId, int slot, Position pos, int sellMaxed)
         {
             using (TimedLock.Lock(_useLock))
             {
                 //Log.Debug(objId + ":" + slot);
-                var entity = Owner.GetEntity(objId);
+                var entity = World.GetEntity(objId);
                 if (entity == null)
                 {
                     Client.SendPacket(new InvResult() { Result = 1 });
@@ -426,7 +426,7 @@ namespace wServer.core.objects
                     return;
                 }
 
-                if (entity is Player && (entity as Player).Owner is Marketplace)
+                if (entity is Player && (entity as Player).World is MarketplaceWorld)
                 {
                     Client.SendPacket(new InvResult() { Result = 1 });
                     Client.Player.SendError("<Marketplace> Using an Item is restricted in the Marketplace!");
@@ -561,13 +561,13 @@ namespace wServer.core.objects
             if (newHp == player.HP)
                 return;
 
-            player.Owner.BroadcastIfVisible(new ShowEffect()
+            player.World.BroadcastIfVisible(new ShowEffect()
             {
                 EffectType = EffectType.Potion,
                 TargetObjectId = player.Id,
                 Color = new ARGB(0xffffffff)
             }, player, PacketPriority.Low);
-            player.Owner.BroadcastIfVisible(new Notification()
+            player.World.BroadcastIfVisible(new Notification()
             {
                 Color = new ARGB(0xff00ff00),
                 ObjectId = player.Id,
@@ -584,13 +584,13 @@ namespace wServer.core.objects
             if (newMp == player.MP)
                 return;
 
-            player.Owner.BroadcastIfVisible(new ShowEffect()
+            player.World.BroadcastIfVisible(new ShowEffect()
             {
                 EffectType = EffectType.Potion,
                 TargetObjectId = player.Id,
                 Color = new ARGB(0xffffffff)
             }, player, PacketPriority.Low);
-            player.Owner.BroadcastIfVisible(new Notification()
+            player.World.BroadcastIfVisible(new Notification()
             {
                 Color = new ARGB(0xff9000ff),
                 ObjectId = player.Id,
@@ -600,12 +600,12 @@ namespace wServer.core.objects
             player.MP = newMp;
         }
 
-        private void Activate(TickData time, Item item, int slot, Position target, int objId, int sellmaxed)
+        private void Activate(TickTime time, Item item, int slot, Position target, int objId, int sellmaxed)
         {
             var playeren = this as Player;
             MP -= item.MpCost;
 
-            var entity1 = Owner.GetEntity(objId);
+            var entity1 = World.GetEntity(objId);
 
             if (entity1 is GiftChest)
             {
@@ -748,8 +748,8 @@ namespace wServer.core.objects
                         Entity en = Resolve(CoreServerManager, eff.ObjectId);
                         en.Move(X, Y);
                         en.SetPlayerOwner(this);
-                        Owner.EnterWorld(en);
-                        Owner.Timers.Add(new WorldTimer(30 * 1000, (w, t) =>
+                        World.EnterWorld(en);
+                        World.Timers.Add(new WorldTimer(30 * 1000, (w, t) =>
                         {
                             w.LeaveWorld(en);
                         }));
@@ -816,9 +816,9 @@ namespace wServer.core.objects
             }
         }
 
-        private void AEAddFame(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEAddFame(TickTime time, Item item, Position target, ActivateEffect eff)
         {
-            if (Owner is Test || Client.Account == null)
+            if (World is TestWorld || Client.Account == null)
                 return;
 
             var acc = Client.Account;
@@ -839,9 +839,9 @@ namespace wServer.core.objects
             trans.Execute();*/
         }
 
-        private void AEBackpack(TickData time, Item item, Position target, int slot, int objId, ActivateEffect eff)
+        private void AEBackpack(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
-            var entity = Owner.GetEntity(objId);
+            var entity = World.GetEntity(objId);
             var containerItem = entity as Container;
             if (HasBackpack)
             {
@@ -855,7 +855,7 @@ namespace wServer.core.objects
             HasBackpack = true;
         }
 
-        private void AEBulletNova(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEBulletNova(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             var shoots = item.SpellProjectiles == 0 ? 20 : item.SpellProjectiles;
             var prjs = new Projectile[shoots];
@@ -866,7 +866,7 @@ namespace wServer.core.objects
                 var proj = CreateProjectile(prjDesc, item.ObjectType,
                     _random.Next(prjDesc.MinDamage, prjDesc.MaxDamage),
                     time.TotalElapsedMs, target, (float)(i * (Math.PI * 2) / shoots));
-                Owner.EnterWorld(proj);
+                World.EnterWorld(proj);
                 FameCounter.Shoot(proj);
                 batch[i] = new ServerPlayerShoot()
                 {
@@ -887,13 +887,13 @@ namespace wServer.core.objects
                 Color = new ARGB(eff.Color != 0 ? eff.Color : 0xFFFF00AA)
             };
 
-            var players = Owner.Players
+            var players = World.Players
                 .ValueWhereAsParallel(_ => _.DistSqr(this) < PlayerUpdate.VISIBILITY_RADIUS_SQR);
             for (var i = 0; i < players.Length; i++)
                 players[i].Client.SendPackets(batch, PacketPriority.Low);
         }
 
-        private void AEClearConditionEffectAura(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEClearConditionEffectAura(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             this.AOE(eff.Range, true, player =>
             {
@@ -911,7 +911,7 @@ namespace wServer.core.objects
             });
         }
 
-        private void AEClearConditionEffectSelf(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEClearConditionEffectSelf(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             var condition = eff.CheckExistingEffect;
             ConditionEffects conditions = 0;
@@ -929,7 +929,7 @@ namespace wServer.core.objects
             }
         }
 
-        private void AEConditionEffectAura(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEConditionEffectAura(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             var duration = eff.DurationMS;
             var range = eff.Range;
@@ -950,7 +950,7 @@ namespace wServer.core.objects
             var color = 0xffffffff;
             if (eff.ConditionEffect.Value == ConditionEffectIndex.Damaging)
                 color = 0xffff0000;
-            Owner.BroadcastIfVisible(new ShowEffect()
+            World.BroadcastIfVisible(new ShowEffect()
             {
                 EffectType = EffectType.AreaBlast,
                 TargetObjectId = Id,
@@ -959,7 +959,7 @@ namespace wServer.core.objects
             }, this, PacketPriority.Low);
         }
 
-        private void AEConditionEffectSelf(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEConditionEffectSelf(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             var duration = eff.DurationMS;
             if (eff.UseWisMod)
@@ -970,7 +970,7 @@ namespace wServer.core.objects
                 Effect = eff.ConditionEffect.Value,
                 DurationMS = duration
             });
-            Owner.BroadcastIfVisible(new ShowEffect()
+            World.BroadcastIfVisible(new ShowEffect()
             {
                 EffectType = EffectType.AreaBlast,
                 TargetObjectId = Id,
@@ -979,11 +979,11 @@ namespace wServer.core.objects
             }, this, PacketPriority.Low);
         }
 
-        private void AECreate(TickData time, Item item, Position target, int slot, ActivateEffect eff)
+        private void AECreate(TickTime time, Item item, Position target, int slot, ActivateEffect eff)
         {
             var gameData = CoreServerManager.Resources.GameData;
 
-            if (Rank >= 60 && !(Owner is Vault) && Rank < 110)
+            if (Rank >= 60 && !(World is VaultWorld) && Rank < 110)
             {
                 SendError("You can't use Keys out of the Vault");
                 Inventory[slot] = item;
@@ -998,28 +998,28 @@ namespace wServer.core.objects
             var timeoutTime = gameData.Portals[objType].Timeout;
 
             entity.Move(X, Y);
-            Owner.EnterWorld(entity);
+            World.EnterWorld(entity);
 
-            Owner.Timers.Add(new WorldTimer(timeoutTime * 1000, (world, t) => world.LeaveWorld(entity)));
+            World.Timers.Add(new WorldTimer(timeoutTime * 1000, (world, t) => world.LeaveWorld(entity)));
 
             var openedByMsg = gameData.Portals[objType].DungeonName + " opened by " + Name + "!";
-            Owner.Broadcast(new Notification
+            World.Broadcast(new Notification
             {
                 Color = new ARGB(0xFF00FF00),
                 ObjectId = Id,
                 Message = openedByMsg
             }, PacketPriority.Low);
-            Owner.PlayersBroadcastAsParallel(_ => _.SendInfo(openedByMsg));
+            World.PlayersBroadcastAsParallel(_ => _.SendInfo(openedByMsg));
         }
 
-        private void AEDecoy(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEDecoy(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             var decoy = new Decoy(this, eff.DurationMS, 4);
             decoy.Move(X, Y);
-            Owner.EnterWorld(decoy);
+            World.EnterWorld(decoy);
         }
 
-        private void AEDye(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEDye(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             if (item.Texture1 != 0)
                 Texture1 = item.Texture1;
@@ -1027,7 +1027,7 @@ namespace wServer.core.objects
                 Texture2 = item.Texture2;
         }
 
-        private void AEGenericActivate(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEGenericActivate(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             var targetPlayer = eff.Target.Equals("player");
             var centerPlayer = eff.Center.Equals("player");
@@ -1037,7 +1037,7 @@ namespace wServer.core.objects
                 : eff.Range;
 
             if (eff.ConditionEffect != null)
-                Owner.AOE(eff.Center.Equals("mouse") ? target : new Position { X = X, Y = Y }, range, targetPlayer, entity =>
+                World.AOE(eff.Center.Equals("mouse") ? target : new Position { X = X, Y = Y }, range, targetPlayer, entity =>
                 {
                     if (!entity.HasConditionEffect(ConditionEffects.Stasis) && !entity.HasConditionEffect(ConditionEffects.Invincible))
                     {
@@ -1049,7 +1049,7 @@ namespace wServer.core.objects
                     }
                 });
 
-            Owner.BroadcastIfVisible(new ShowEffect()
+            World.BroadcastIfVisible(new ShowEffect()
             {
                 EffectType = (EffectType)eff.VisualEffect,
                 TargetObjectId = Id,
@@ -1059,7 +1059,7 @@ namespace wServer.core.objects
             }, this, PacketPriority.Low);
         }
 
-        private void AEHeal(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEHeal(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             if (!HasConditionEffect(ConditionEffects.Sick))
             {
@@ -1068,7 +1068,7 @@ namespace wServer.core.objects
             }
         }
 
-        private void AEHealNova(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEHealNova(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             var amount = eff.Amount;
             var range = eff.Range;
@@ -1084,7 +1084,7 @@ namespace wServer.core.objects
                     ActivateHealHp(player as Player, amount);
             });
 
-            Owner.BroadcastIfVisible(new ShowEffect()
+            World.BroadcastIfVisible(new ShowEffect()
             {
                 EffectType = EffectType.AreaBlast,
                 TargetObjectId = Id,
@@ -1093,13 +1093,13 @@ namespace wServer.core.objects
             }, this, PacketPriority.Low);
         }
 
-        private void AEIncrementStat(TickData time, Item item, Position target, ActivateEffect eff, int objId, int slot, int sellMaxed)
+        private void AEIncrementStat(TickTime time, Item item, Position target, ActivateEffect eff, int objId, int slot, int sellMaxed)
         {
             var totalAllowed = 50 + (Client.Account.Rank * 2);
             var idx = StatsManager.GetStatIndex((StatDataType)eff.Stats);
             var statInfo = CoreServerManager.Resources.GameData.Classes[ObjectType].Stats;
             var statname = StatsManager.StatIndexToName(idx);
-            var ent = Owner.GetEntity(objId);
+            var ent = World.GetEntity(objId);
             var container = ent as Container;
             var storeAmount = eff.Amount == 5 ? 1 : eff.Amount == 10 ? 2 : eff.Amount == 2 ? 2 : 1;
             if (Stats.Base[idx] < statInfo[idx].MaxValue)
@@ -1349,7 +1349,7 @@ namespace wServer.core.objects
             return 999;
         }
 
-        private void AELDBoost(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AELDBoost(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             //  if (LDBoostTime < 0 || (LDBoostTime > eff.DurationMS && eff.DurationMS >= 0))
             //      return;
@@ -1369,7 +1369,7 @@ namespace wServer.core.objects
             InvokeStatChange(StatDataType.LDBoostTime, LDBoostTime / 1000, true);
         }
 
-        private void AELightning(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AELightning(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             const double coneRange = Math.PI / 4;
             var mouseAngle = Math.Atan2(target.Y - Y, target.X - X);
@@ -1386,7 +1386,7 @@ namespace wServer.core.objects
                 {
                     var x = (int)(MaxAbilityDist * Math.Cos(angles[i])) + X;
                     var y = (int)(MaxAbilityDist * Math.Sin(angles[i])) + Y;
-                    Owner.BroadcastIfVisible(new ShowEffect()
+                    World.BroadcastIfVisible(new ShowEffect()
                     {
                         EffectType = EffectType.Trail,
                         TargetObjectId = Id,
@@ -1442,7 +1442,7 @@ namespace wServer.core.objects
                         DurationMS = (int)(eff.EffectDuration * 1000)
                     });
 
-                Owner.BroadcastIfVisible(new ShowEffect()
+                World.BroadcastIfVisible(new ShowEffect()
                 {
                     EffectType = EffectType.Lightning,
                     TargetObjectId = prev.Id,
@@ -1457,7 +1457,7 @@ namespace wServer.core.objects
             }
         }
 
-        private void AEMagic(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEMagic(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             for (var i = 0; i < 4; i++)
             {
@@ -1478,11 +1478,11 @@ namespace wServer.core.objects
             ActivateHealMp(this, healthAmount);
         }
 
-        private void AEMagicDust(TickData time, Item item, Position target, int slot, int objId, ActivateEffect eff)
+        private void AEMagicDust(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
             //Potion dust = 0x4995, ItemDust = 0x4993, Miscellaneous dust = 0x4994, Special dust = 0x4996
             var gameData = CoreServerManager.Resources.GameData;
-            var entity = Owner.GetEntity(objId);
+            var entity = World.GetEntity(objId);
             var containerItem = entity as Container;
             ushort itemValue;
             var itemchance = _random.NextDouble();
@@ -1534,12 +1534,12 @@ namespace wServer.core.objects
             InvokeStatChange((StatDataType)((int)StatDataType.InventoryData0 + slot), Inventory.Data[slot]?.GetData() ?? "{}");
         }
 
-        private void AEMagicNova(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEMagicNova(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             this.AOE(eff.Range, true, player =>
                 ActivateHealMp(player as Player, eff.Amount));
 
-            Owner.BroadcastIfVisible(new ShowEffect()
+            World.BroadcastIfVisible(new ShowEffect()
             {
                 EffectType = EffectType.AreaBlast,
                 TargetObjectId = Id,
@@ -1548,11 +1548,11 @@ namespace wServer.core.objects
             }, this, PacketPriority.Low);
         }
 
-        private void AEMiscellaneousDust(TickData time, Item item, Position target, int slot, int objId, ActivateEffect eff)
+        private void AEMiscellaneousDust(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
             var gameData = CoreServerManager.Resources.GameData;
             ushort itemValue;
-            var entity = Owner.GetEntity(objId);
+            var entity = World.GetEntity(objId);
             var container = entity as Container;
             var itemchance = _random.Next(0, 4);
             switch (itemchance)
@@ -1604,17 +1604,17 @@ namespace wServer.core.objects
             }
         }
 
-        private void AEPermaPet(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEPermaPet(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             var type = CoreServerManager.Resources.GameData.IdToObjectType[eff.ObjectId];
             var desc = CoreServerManager.Resources.GameData.ObjectDescs[type];
             //Log.Debug(desc.ObjectType);
             PetId = desc.ObjectType;
-            SpawnPetIfAttached(Owner);
+            SpawnPetIfAttached(World);
             //Log.Debug("hey!");
         }
 
-        private void AEPoisonGrenade(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEPoisonGrenade(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             if (MathsUtils.DistSqr(target.X, target.Y, X, Y) > MaxAbilityDist * MaxAbilityDist) return;
             var impDamage = eff.ImpactDamage;
@@ -1624,7 +1624,7 @@ namespace wServer.core.objects
                 PoisonWis = true;
             }
 
-            Owner.BroadcastIfVisible(new ShowEffect()
+            World.BroadcastIfVisible(new ShowEffect()
             {
                 EffectType = EffectType.Throw,
                 Color = new ARGB(eff.Color != 0 ? eff.Color : 0xffffffff),
@@ -1635,8 +1635,8 @@ namespace wServer.core.objects
 
             var x = new Placeholder(CoreServerManager, eff.ThrowTime * 1000);
             x.Move(target.X, target.Y);
-            Owner.EnterWorld(x);
-            Owner.Timers.Add(new WorldTimer(eff.ThrowTime, (world, t) =>
+            World.EnterWorld(x);
+            World.Timers.Add(new WorldTimer(eff.ThrowTime, (world, t) =>
             {
                 world.BroadcastIfVisible(new ShowEffect()
                 {
@@ -1655,11 +1655,11 @@ namespace wServer.core.objects
             }));
         }
 
-        private void AEPotionDust(TickData time, Item item, Position target, int slot, int objId, ActivateEffect eff)
+        private void AEPotionDust(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
             ushort[] _commonPotions = { 0xa4c, 0xa1f, 0xa20, 0xa35, 0xa34, 0xa21 };
             var gameData = CoreServerManager.Resources.GameData;
-            var entity = Owner.GetEntity(objId);
+            var entity = World.GetEntity(objId);
             var container = entity as Container;
             ushort itemValue = 0x0;
             double potionRoll = _random.NextDouble();
@@ -1744,10 +1744,10 @@ namespace wServer.core.objects
             }
         }
 
-        private void AERemoveNegativeConditions(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AERemoveNegativeConditions(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             this.AOE(eff.Range, true, player => player.ApplyConditionEffect(NegativeEffs));
-            Owner.BroadcastIfVisible(new ShowEffect()
+            World.BroadcastIfVisible(new ShowEffect()
             {
                 EffectType = EffectType.AreaBlast,
                 TargetObjectId = Id,
@@ -1756,10 +1756,10 @@ namespace wServer.core.objects
             }, this, PacketPriority.Low);
         }
 
-        private void AERemoveNegativeConditionSelf(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AERemoveNegativeConditionSelf(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             ApplyConditionEffect(NegativeEffs);
-            Owner.BroadcastIfVisible(new ShowEffect()
+            World.BroadcastIfVisible(new ShowEffect()
             {
                 EffectType = EffectType.AreaBlast,
                 TargetObjectId = Id,
@@ -1768,7 +1768,7 @@ namespace wServer.core.objects
             }, this, PacketPriority.Low);
         }
 
-        private void AEShoot(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEShoot(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             var arcGap = item.ArcGap * Math.PI / 180;
             var startAngle = Math.Atan2(target.Y - Y, target.X - X) - (item.NumProjectiles - 1) / 2 * arcGap;
@@ -1778,7 +1778,7 @@ namespace wServer.core.objects
             for (var i = 0; i < item.NumProjectiles; i++)
             {
                 var proj = CreateProjectile(prjDesc, item.ObjectType, Stats.GetAttackDamage(prjDesc.MinDamage, prjDesc.MaxDamage, true), time.TotalElapsedMs, new Position() { X = X, Y = Y }, (float)(startAngle + arcGap * i));
-                Owner.EnterWorld(proj);
+                World.EnterWorld(proj);
                 sPkts[i] = new AllyShoot()
                 {
                     OwnerId = Id,
@@ -1790,10 +1790,10 @@ namespace wServer.core.objects
             }
 
             for (var i = 0; i < item.NumProjectiles; i++)
-                Owner.BroadcastIfVisible(sPkts[i], this, PacketPriority.Low);
+                World.BroadcastIfVisible(sPkts[i], this, PacketPriority.Low);
         }
 
-        private void AEShurikenAbility(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEShurikenAbility(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             if (!HasConditionEffect(ConditionEffects.NinjaSpeedy))
             {
@@ -1810,7 +1810,7 @@ namespace wServer.core.objects
             ApplyConditionEffect(ConditionEffectIndex.NinjaSpeedy, 0);
         }
 
-        private void AEShurikenAbilityBerserk(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEShurikenAbilityBerserk(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             if (!HasConditionEffect(ConditionEffects.Berserk))
             {
@@ -1827,7 +1827,7 @@ namespace wServer.core.objects
             ApplyConditionEffect(ConditionEffectIndex.Berserk, 0);
         }
 
-        private void AEShurikenAbilityDamaging(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEShurikenAbilityDamaging(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             if (!HasConditionEffect(ConditionEffects.NinjaDamaging))
             {
@@ -1844,7 +1844,7 @@ namespace wServer.core.objects
             ApplyConditionEffect(ConditionEffectIndex.NinjaDamaging, 0);
         }
 
-        private void AEStatBoostAura(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEStatBoostAura(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             var idx = StatsManager.GetStatIndex((StatDataType)eff.Stats);
             var amount = eff.Amount;
@@ -1866,7 +1866,7 @@ namespace wServer.core.objects
 
                 if (!player.HasConditionEffect(ConditionEffects.HPBoost))
                 {
-                    Owner.Timers.Add(new WorldTimer(0, (world, t) => player.ApplyConditionEffect(ConditionEffectIndex.HPBoost, duration)));
+                    World.Timers.Add(new WorldTimer(0, (world, t) => player.ApplyConditionEffect(ConditionEffectIndex.HPBoost, duration)));
                 }
 
                 ((Player)player).Stats.Boost.ActivateBoost[idx].Push(amount, false);
@@ -1878,14 +1878,14 @@ namespace wServer.core.objects
                 //    ((Player)player).HP = Math.Min(((Player)player).Stats[0], ((Player)player).HP + amount);
                 //}
 
-                Owner.Timers.Add(new WorldTimer(duration, (world, t) =>
+                World.Timers.Add(new WorldTimer(duration, (world, t) =>
                 {
                     ((Player)player).Stats.Boost.ActivateBoost[idx].Pop(amount, false);
                     ((Player)player).Stats.ReCalculateValues();
                 }));
             });
 
-            Owner.BroadcastIfVisible(new ShowEffect()
+            World.BroadcastIfVisible(new ShowEffect()
             {
                 EffectType = EffectType.AreaBlast,
                 TargetObjectId = Id,
@@ -1894,19 +1894,19 @@ namespace wServer.core.objects
             }, this, PacketPriority.Low);
         }
 
-        private void AEStatBoostSelf(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEStatBoostSelf(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             var idx = StatsManager.GetStatIndex((StatDataType)eff.Stats);
             var s = eff.Amount;
             Stats.Boost.ActivateBoost[idx].Push(s, false);
             Stats.ReCalculateValues();
-            Owner.Timers.Add(new WorldTimer(eff.DurationMS, (world, t) =>
+            World.Timers.Add(new WorldTimer(eff.DurationMS, (world, t) =>
             {
                 Stats.Boost.ActivateBoost[idx].Pop(s, false);
                 Stats.ReCalculateValues();
             }));
 
-            Owner.BroadcastIfVisible(new ShowEffect()
+            World.BroadcastIfVisible(new ShowEffect()
             {
                 EffectType = EffectType.Potion,
                 TargetObjectId = Id,
@@ -1914,14 +1914,14 @@ namespace wServer.core.objects
             }, this, PacketPriority.Low);
         }
 
-        private void AETeleport(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AETeleport(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             TeleportPosition(time, target, true);
         }
 
-        private void AETrap(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AETrap(TickTime time, Item item, Position target, ActivateEffect eff)
         {
-            Owner.BroadcastIfVisible(new ShowEffect()
+            World.BroadcastIfVisible(new ShowEffect()
             {
                 EffectType = EffectType.Throw,
                 Color = new ARGB(0xff9000ff),
@@ -1929,7 +1929,7 @@ namespace wServer.core.objects
                 Pos1 = target
             }, target, PacketPriority.Low);
 
-            Owner.Timers.Add(new WorldTimer(1500, (world, t) =>
+            World.Timers.Add(new WorldTimer(1500, (world, t) =>
             {
                 var trap = new Trap(this, eff.Radius, eff.TotalDamage, eff.ConditionEffect ?? ConditionEffectIndex.Slowed, eff.EffectDuration);
                 trap.Move(target.X, target.Y);
@@ -1937,89 +1937,89 @@ namespace wServer.core.objects
             }));
         }
 
-        private void AEUnlockPortal(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEUnlockPortal(TickTime time, Item item, Position target, ActivateEffect eff)
         {
-            var gameData = CoreServerManager.Resources.GameData;
+            //var gameData = CoreServerManager.Resources.GameData;
 
-            // find locked portal
-            var portals = Owner.StaticObjects
-                .ValueWhereAsParallel(_ => _ is Portal
-                && _.ObjectDesc.ObjectId.Equals(eff.LockedName)
-                && _.DistSqr(this) <= 9d)
-                .Select(_ => _ as Portal);
-            if (!portals.Any())
-                return;
-            var portal = portals.Aggregate(
-                (curmin, x) => curmin == null || x.DistSqr(this) < curmin.DistSqr(this) ? x : curmin);
-            if (portal == null)
-                return;
+            //// find locked portal
+            //var portals = World.StaticObjects
+            //    .ValueWhereAsParallel(_ => _ is Portal
+            //    && _.ObjectDesc.ObjectId.Equals(eff.LockedName)
+            //    && _.DistSqr(this) <= 9d)
+            //    .Select(_ => _ as Portal);
+            //if (!portals.Any())
+            //    return;
+            //var portal = portals.Aggregate(
+            //    (curmin, x) => curmin == null || x.DistSqr(this) < curmin.DistSqr(this) ? x : curmin);
+            //if (portal == null)
+            //    return;
 
-            // get proto of world
-            if (!CoreServerManager.Resources.Worlds.Data.TryGetValue(eff.DungeonName, out ProtoWorld proto))
-            {
-                SLogger.Instance.Error("Unable to unlock portal. \"" + eff.DungeonName + "\" does not exist.");
-                return;
-            }
+            //// get proto of world
+            //if (!CoreServerManager.Resources.Worlds.Data.TryGetValue(eff.DungeonName, out ProtoWorld proto))
+            //{
+            //    SLogger.Instance.Error("Unable to unlock portal. \"" + eff.DungeonName + "\" does not exist.");
+            //    return;
+            //}
 
-            if (proto.portals == null || proto.portals.Length < 1)
-            {
-                SLogger.Instance.Error("World is not associated with any portals.");
-                return;
-            }
+            //if (proto.portals == null || proto.portals.Length < 1)
+            //{
+            //    SLogger.Instance.Error("World is not associated with any portals.");
+            //    return;
+            //}
 
-            // create portal of unlocked world
-            var portalType = (ushort)proto.portals[0];
-            if (!(Resolve(CoreServerManager, portalType) is Portal uPortal))
-            {
-                SLogger.Instance.Error("Error creating portal: {0}", portalType);
-                return;
-            }
+            //// create portal of unlocked world
+            //var portalType = (ushort)proto.portals[0];
+            //if (!(Resolve(CoreServerManager, portalType) is Portal uPortal))
+            //{
+            //    SLogger.Instance.Error("Error creating portal: {0}", portalType);
+            //    return;
+            //}
 
-            var portalDesc = gameData.Portals[portal.ObjectType];
-            var uPortalDesc = gameData.Portals[portalType];
+            //var portalDesc = gameData.Portals[portal.ObjectType];
+            //var uPortalDesc = gameData.Portals[portalType];
 
-            // create world
-            World world;
-            if (proto.id < 0)
-                world = CoreServerManager.WorldManager.GetWorld(proto.id);
-            else
-            {
-                DynamicWorld.TryGetWorld(proto, Client, out world);
-                world = CoreServerManager.WorldManager.AddWorld(world ?? new World(proto));
-            }
-            uPortal.WorldInstance = world;
+            //// create world
+            //World world;
+            //if (proto.id < 0)
+            //    world = CoreServerManager.WorldManager.GetWorld(proto.id);
+            //else
+            //{
+            //    DynamicWorld.TryGetWorld(proto, Client, out world);
+            //    world = CoreServerManager.WorldManager.CreateNewWorld(world ?? new World(proto));
+            //}
+            //uPortal.WorldInstance = world;
 
-            // swap portals
-            if (!portalDesc.NexusPortal || !CoreServerManager.WorldManager.PortalMonitor.RemovePortal(portal))
-                Owner.LeaveWorld(portal);
-            uPortal.Move(portal.X, portal.Y);
-            uPortal.Name = uPortalDesc.DisplayId;
-            var uPortalPos = new Position() { X = portal.X - .5f, Y = portal.Y - .5f };
-            if (!uPortalDesc.NexusPortal || !CoreServerManager.WorldManager.PortalMonitor.AddPortal(world.Id, uPortal, uPortalPos))
-                Owner.EnterWorld(uPortal);
+            //// swap portals
+            //if (!portalDesc.NexusPortal || !CoreServerManager.WorldManager.PortalMonitor.RemovePortal(portal))
+            //    World.LeaveWorld(portal);
+            //uPortal.Move(portal.X, portal.Y);
+            //uPortal.Name = uPortalDesc.DisplayId;
+            //var uPortalPos = new Position() { X = portal.X - .5f, Y = portal.Y - .5f };
+            //if (!uPortalDesc.NexusPortal || !CoreServerManager.WorldManager.PortalMonitor.AddPortal(world.Id, uPortal, uPortalPos))
+            //    World.EnterWorld(uPortal);
 
-            // setup timeout
-            if (!uPortalDesc.NexusPortal)
-            {
-                var timeoutTime = gameData.Portals[portalType].Timeout;
-                Owner.Timers.Add(new WorldTimer(timeoutTime * 1000, (w, t) => w.LeaveWorld(uPortal)));
-            }
+            //// setup timeout
+            //if (!uPortalDesc.NexusPortal)
+            //{
+            //    var timeoutTime = gameData.Portals[portalType].Timeout;
+            //    World.Timers.Add(new WorldTimer(timeoutTime * 1000, (w, t) => w.LeaveWorld(uPortal)));
+            //}
 
-            // announce
-            Owner.Broadcast(new Notification
-            {
-                Color = new ARGB(0xFF00FF00),
-                ObjectId = Id,
-                Message = "Unlocked by " + Name
-            }, PacketPriority.Low);
-            Owner.PlayersBroadcastAsParallel(_ => _.SendInfo($"{world.SBName} unlocked by {Name}!"));
+            //// announce
+            //World.Broadcast(new Notification
+            //{
+            //    Color = new ARGB(0xFF00FF00),
+            //    ObjectId = Id,
+            //    Message = "Unlocked by " + Name
+            //}, PacketPriority.Low);
+            //World.PlayersBroadcastAsParallel(_ => _.SendInfo($"{world.SBName} unlocked by {Name}!"));
         }
 
-        private void AEUpgradeActivate(TickData time, Item item, Position target, int objId, int slot, ActivateEffect eff)
+        private void AEUpgradeActivate(TickTime time, Item item, Position target, int objId, int slot, ActivateEffect eff)
         {
             var playerDesc = CoreServerManager.Resources.GameData.Classes[ObjectType];
             var maxed = playerDesc.Stats.Where((t, i) => Stats.Base[i] >= t.MaxValue).Count();
-            var entity = Owner.GetEntity(objId);
+            var entity = World.GetEntity(objId);
             var container = entity as Container;
             if (maxed < 8)
             {
@@ -2045,9 +2045,9 @@ namespace wServer.core.objects
             chr.UpgradeEnabled = UpgradeEnabled;
         }
 
-        private void AEUpgradeStat(TickData time, Item item, Position target, int objId, int slot, ActivateEffect eff)
+        private void AEUpgradeStat(TickTime time, Item item, Position target, int objId, int slot, ActivateEffect eff)
         {
-            var entity = Owner.GetEntity(objId);
+            var entity = World.GetEntity(objId);
             var container = entity as Container;
             if (UpgradeEnabled)
             {
@@ -2089,7 +2089,7 @@ namespace wServer.core.objects
             }
         }
 
-        private void AEVampireBlast(TickData time, Item item, Position target, ActivateEffect eff)
+        private void AEVampireBlast(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             var pkts = new List<OutgoingMessage>
             {
@@ -2110,13 +2110,13 @@ namespace wServer.core.objects
                 }
             };
 
-            Owner.BroadcastIfVisible(pkts[0], target, PacketPriority.Low);
-            Owner.BroadcastIfVisible(pkts[1], target, PacketPriority.Low);
+            World.BroadcastIfVisible(pkts[0], target, PacketPriority.Low);
+            World.BroadcastIfVisible(pkts[1], target, PacketPriority.Low);
 
             var totalDmg = 0;
             var effDamage = eff.UseWisMod ? UseWisMod(eff.TotalDamage) : eff.TotalDamage;
             var enemies = new List<Enemy>();
-            Owner.AOE(target, eff.Radius, false, enemy =>
+            World.AOE(target, eff.Radius, false, enemy =>
             {
                 enemies.Add(enemy as Enemy);
                 totalDmg += (enemy as Enemy).Damage(this, time, (int)effDamage, false);
@@ -2140,7 +2140,7 @@ namespace wServer.core.objects
                     var a = enemies[rand.Next(0, enemies.Count)];
                     var b = players[rand.Next(0, players.Count)];
 
-                    Owner.BroadcastIfVisible(new ShowEffect()
+                    World.BroadcastIfVisible(new ShowEffect()
                     {
                         EffectType = EffectType.Flow,
                         TargetObjectId = b.Id,
@@ -2151,12 +2151,12 @@ namespace wServer.core.objects
             }
         }
 
-        private void AEXPBoost(TickData time, Item item, Position target, int slot, int objId, ActivateEffect eff)
+        private void AEXPBoost(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
             if (XPBoostTime < 0 || (XPBoostTime > eff.DurationMS && eff.DurationMS >= 0))
                 return;
 
-            var entity = Owner.GetEntity(objId);
+            var entity = World.GetEntity(objId);
             var containerItem = entity as Container;
 
             if (XPBoostTime > 0 && XPBoosted)
@@ -2190,9 +2190,9 @@ namespace wServer.core.objects
             WorldTimer tmr = null;
             var x = 0;
 
-            bool healTick(World w, TickData t)
+            bool healTick(World w, TickTime t)
             {
-                if (player.Owner == null || w == null)
+                if (player.World == null || w == null)
                     return true;
 
                 if (x % 4 == 0) // make sure to change this if timer delay is changed
@@ -2231,9 +2231,9 @@ namespace wServer.core.objects
             WorldTimer tmr = null;
             var x = 0;
 
-            bool poisonTick(World w, TickData t)
+            bool poisonTick(World w, TickTime t)
             {
-                if (enemy.Owner == null || w == null)
+                if (enemy.World == null || w == null)
                     return true;
 
                 if (x % 4 == 0)
@@ -2259,9 +2259,9 @@ namespace wServer.core.objects
             world.Timers.Add(tmr);
         }
 
-        private void StasisBlast(TickData time, Item item, Position target, ActivateEffect eff)
+        private void StasisBlast(TickTime time, Item item, Position target, ActivateEffect eff)
         {
-            Owner.BroadcastIfVisible(new ShowEffect()
+            World.BroadcastIfVisible(new ShowEffect()
             {
                 EffectType = EffectType.Concentrate,
                 TargetObjectId = Id,
@@ -2270,11 +2270,11 @@ namespace wServer.core.objects
                 Color = new ARGB(0xffffffff)
             }, target, PacketPriority.Low);
 
-            Owner.AOE(target, 3, false, enemy =>
+            World.AOE(target, 3, false, enemy =>
             {
                 if (enemy.HasConditionEffect(ConditionEffects.StasisImmune))
                 {
-                    Owner.BroadcastIfVisible(new Notification()
+                    World.BroadcastIfVisible(new Notification()
                     {
                         ObjectId = enemy.Id,
                         Color = new ARGB(0xff00ff00),
@@ -2286,9 +2286,9 @@ namespace wServer.core.objects
                 {
                     enemy.ApplyConditionEffect(ConditionEffectIndex.Stasis, eff.DurationMS);
 
-                    Owner.Timers.Add(new WorldTimer(eff.DurationMS - 200, (world, t) => enemy.ApplyConditionEffect(ConditionEffectIndex.StasisImmune, 3200)));
+                    World.Timers.Add(new WorldTimer(eff.DurationMS - 200, (world, t) => enemy.ApplyConditionEffect(ConditionEffectIndex.StasisImmune, 3200)));
 
-                    Owner.BroadcastIfVisible(new Notification()
+                    World.BroadcastIfVisible(new Notification()
                     {
                         ObjectId = enemy.Id,
                         Color = new ARGB(0xffff0000),

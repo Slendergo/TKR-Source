@@ -23,11 +23,11 @@ namespace wServer.logic.transitions
             _attackTarget = checkAttackTarget;
         }
 
-        protected override bool TickCore(Entity host, TickData time, ref object state)
+        protected override bool TickCore(Entity host, TickTime time, ref object state)
         {
             if (_attackTarget)
             {
-                if (host.AttackTarget == null || !host.Owner.GetPlayers().Contains(host.AttackTarget))
+                if (host.AttackTarget == null || !host.World.GetPlayers().Contains(host.AttackTarget))
                 {
                     host.AttackTarget = null;
                     return true;

@@ -20,7 +20,7 @@ namespace wServer.core.commands
                 _manager.DbEvents.Expired += HandleUnMute;
             }
 
-            protected override bool Process(Player player, TickData time, string args)
+            protected override bool Process(Player player, TickTime time, string args)
             {
                 var match = CmdParams.Match(args);
                 if (!match.Success)

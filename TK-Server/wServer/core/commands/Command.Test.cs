@@ -10,7 +10,7 @@ namespace wServer.core.commands
             public Test() : base("testThings", permLevel: 110)
             { }
             //Template for add your test/temporal commands
-            protected override bool Process(Player player, TickData time, string args)
+            protected override bool Process(Player player, TickTime time, string args)
             {
                 return true;
             }

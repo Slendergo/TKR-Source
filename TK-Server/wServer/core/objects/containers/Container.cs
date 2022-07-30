@@ -18,9 +18,9 @@ namespace wServer.core.objects
         public Inventory Inventory { get; private set; }
         public int[] SlotTypes { get; private set; }
 
-        public override bool HitByProjectile(Projectile projectile, TickData time) => false;
+        public override bool HitByProjectile(Projectile projectile, TickTime time) => false;
 
-        public override void Tick(TickData time)
+        public override void Tick(TickTime time)
         {
             if (Inventory == null)
                 return;
@@ -38,7 +38,7 @@ namespace wServer.core.objects
                 }
 
             if (!hasItem)
-                Owner.LeaveWorld(this);
+                World.LeaveWorld(this);
 
             base.Tick(time);
         }

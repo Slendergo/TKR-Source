@@ -9,14 +9,14 @@ namespace wServer.logic.behaviors
 
         public Decay(int time = 10000) => this.time = time;
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state) => state = this.time;
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state) => state = this.time;
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             var cool = (int)state;
 
             if (cool <= 0)
-                host.Owner.LeaveWorld(host);
+                host.World.LeaveWorld(host);
             else
                 cool -= time.ElaspedMsDelta;
 

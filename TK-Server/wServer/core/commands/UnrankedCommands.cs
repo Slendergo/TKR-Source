@@ -25,7 +25,7 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
             player.Client.Account.Reload("partyId");
 
@@ -57,7 +57,7 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
             try
             {
@@ -87,7 +87,7 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
             try
             {
@@ -149,7 +149,7 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
             var db = player.Client.Account.Database;
 
@@ -201,7 +201,7 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
             var db = player.Client.Account.Database;
 
@@ -293,7 +293,7 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
             player.Client.Account.Reload("partyId");
 
@@ -373,7 +373,7 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
             var party = DbPartySystem.Get(player.Client.Account.Database, player.Client.Account.PartyId);
 
@@ -402,7 +402,7 @@ namespace wServer.core.commands
                 return false;
             }
 
-            var world = player.CoreServerManager.WorldManager.GetWorld(leader[0].Owner.Id);
+            var world = player.CoreServerManager.WorldManager.GetWorld(leader[0].World.Id);
 
             if (world == null)
             {
@@ -416,7 +416,7 @@ namespace wServer.core.commands
                 player.SendError("You need an invitation to join to the world!");
                 return false;
             }
-            if (party.ReturnWorldId() != -1 && (world is GuildHall || world is Vault || world is Nexus))
+            if (party.ReturnWorldId() != -1 && (world.InstanceType == WorldResourceInstanceType.Guild || world is VaultWorld || world is NexusWorld))
             {
                 party.WorldId = -1;
                 player.CoreServerManager.Database.FlushParty(party.PartyId, party);
@@ -437,7 +437,7 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
             try
             {
@@ -461,23 +461,23 @@ namespace wServer.core.commands
                     return false;
                 }
 
-                var world = player.Owner;
+                var world = player.World;
 
                 if (world == null) return false;
 
-                if (world is Vault || world is Marketplace || world is GuildHall || world is Test)
+                if (world is VaultWorld || world is MarketplaceWorld || world.InstanceType == WorldResourceInstanceType.Guild  || world is Test)
                 {
                     player.SendError("You can't invite players to this World.");
                     return false;
                 }
 
-                if (party.WorldId == player.Owner.Id)
+                if (party.WorldId == player.World.Id)
                 {
                     player.SendError("Already invited your Party Members to this World!");
                     return false;
                 }
 
-                party.WorldId = player.Owner.Id;
+                party.WorldId = player.World.Id;
 
                 try
                 {
@@ -492,7 +492,7 @@ namespace wServer.core.commands
                 foreach (var member in party.PartyMembers)
                 {
                     var clientMember = player.CoreServerManager.ConnectionManager.Clients.Keys.Where(c => c.Player != null && c.Account.Name == member.name && c.Account.AccountId == member.accid).Select(c => c.Player).ToArray();
-                    clientMember[0].SendInfo($"You have invited to a {world.Name ?? world.SBName}! use the command /pjoin to connect!");
+                    clientMember[0].SendInfo($"You have invited to a {world.IdName ?? world.DisplayName}! use the command /pjoin to connect!");
                     return true;
                 }
             }
@@ -512,7 +512,7 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
             player.SendInfo("Party Commands: \n/p <text> -> Party Chat.\n/paccept <partyId> -> accept an Invitation of a Party.\n/pinvite <name> -> Invite a Player to your Party (Only Leader).\n/premove <name> -> Remove a Player from your Party (Only Leader).\n/pleave -> Leave from the Party.\n/pclose -> Close a Party (Only Leader).\n/pjoin -> Join the World you were invited.\n/pinviteworld -> Invite a Player to your World (Only Leader).\n/pinfo -> Show information about your Party.\n/pcommands -> Show all Party Commands.");
             return true;
@@ -525,7 +525,7 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
             var db = player.Client.Account.Database;
             var party = DbPartySystem.Get(db, player.Client.Account.PartyId);
@@ -556,7 +556,7 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
             if (player.Guild == null)
             {
@@ -574,9 +574,9 @@ namespace wServer.core.commands
     {
         public CurrentSongCommand() : base("currentsong", alias: "song") { }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
-            var properName = player.Owner.Music;
+            var properName = player.World.Music;
             var file = File.Create(Environment.CurrentDirectory + $"/resources/web/music/{properName}.mp3");
             var artist = file.Tag.FirstPerformer ?? "Unknown";
             var title = file.Tag.Title ?? properName;
@@ -594,7 +594,7 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
             var account = player.CoreServerManager.Database.GetAccount(player.AccountId);
             player.SendInfo("Enemies Killed: " + account.EnemiesKilled);
@@ -608,7 +608,7 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
             if (!player.NameChosen)
             {
@@ -628,7 +628,7 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
             int CheckTalismans(Player playera)
             {
@@ -678,7 +678,7 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
             player.Client.Reconnect(new Reconnect()
             {
@@ -697,7 +697,7 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
             if (!player.NameChosen)
             {
@@ -733,7 +733,7 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
             if (player.GuildRank < 0)
             {
@@ -741,9 +741,9 @@ namespace wServer.core.commands
                 return false;
             }
 
-            var proto = player.CoreServerManager.Resources.Worlds["GuildHall"];
-            var world = player.CoreServerManager.WorldManager.GetWorld(proto.id);
-            player.Reconnect(world.GetInstance(player.Client));
+            //var proto = player.CoreServerManager.Resources.Worlds["GuildHall"];
+            //var world = player.CoreServerManager.WorldManager.GetWorld(proto.id);
+            //player.Reconnect(world.GetInstance(player.Client));
             return true;
         }
     }
@@ -754,9 +754,9 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
-            if (!(player.Owner is Realm))
+            if (!(player.World is RealmWorld))
             {
                 player.SendError("This command requires you to be in realm first.");
                 return false;
@@ -786,9 +786,9 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string playerName)
+        protected override bool Process(Player player, TickTime time, string playerName)
         {
-            if (player.Owner is Test)
+            if (player.World is Test)
                 return false;
 
             if (player.Client.Account.GuildRank < 20)
@@ -863,9 +863,9 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string name)
+        protected override bool Process(Player player, TickTime time, string name)
         {
-            if (player.Owner is Test)
+            if (player.World is Test)
                 return false;
 
             var manager = player.Client.CoreServerManager;
@@ -957,7 +957,7 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
             if (player.Client.Account.GuildId == 0)
             {
@@ -999,7 +999,7 @@ namespace wServer.core.commands
         //actually the command is 'help', but /help is intercepted by client
         public HelpCommand() : base("commands") { }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
             StringBuilder sb = new StringBuilder("Available commands: ");
             var cmds = player.CoreServerManager.CommandManager.Commands.Values.Distinct()
@@ -1023,9 +1023,9 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string playerName)
+        protected override bool Process(Player player, TickTime time, string playerName)
         {
-            if (player.Owner is Test)
+            if (player.World is Test)
                 return false;
 
             if (String.IsNullOrEmpty(playerName))
@@ -1071,7 +1071,7 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
             if (!player.NameChosen)
             {
@@ -1091,7 +1091,7 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
             player.Client.ProcessPacket(new JoinGuild()
             {
@@ -1107,9 +1107,9 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string playerName)
+        protected override bool Process(Player player, TickTime time, string playerName)
         {
-            if (player.Owner is Test)
+            if (player.World is Test)
                 return false;
 
             if (String.IsNullOrEmpty(playerName))
@@ -1155,7 +1155,7 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
             var config = player.CoreServerManager.ServerConfig;
 
@@ -1182,7 +1182,7 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
             player.Client.Reconnect(new Reconnect()
             {
@@ -1201,7 +1201,7 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
             if (player.HasConditionEffect(ConditionEffects.Paused))
             {
@@ -1214,7 +1214,7 @@ namespace wServer.core.commands
                 return true;
             }
 
-            if (!(player.Owner is Vault) || !(player.Owner is Nexus) || !(player.Owner is GuildHall) || !(player.Owner is Marketplace) || !(player.Owner.Id != World.ClothBazaar))
+            if (!(player.World is VaultWorld) || !(player.World is NexusWorld) || !(player.World.InstanceType == WorldResourceInstanceType.Guild) || !(player.World is MarketplaceWorld) || !(player.World.Id != World.ClothBazaar))
             {
                 player.SendError("Not safe to pause.");
                 return false;
@@ -1236,7 +1236,7 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
             player.SendInfo("Current Position: " + (int)player.X + ", " + (int)player.Y);
             return true;
@@ -1249,25 +1249,25 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
-            var gw = player.CoreServerManager.WorldManager.Worlds[1];
+            //var gw = player.CoreServerManager.WorldManager.Worlds[1];
 
-            player.SendInfo("Connecting to first realm");
+            //player.SendInfo("Connecting to first realm");
 
-            if (gw.IsPlayersMax())
-            {
-                player.SendError("Dungeon is full");
-                return true;
-            }
+            //if (gw.IsPlayersMax())
+            //{
+            //    player.SendError("Dungeon is full");
+            //    return true;
+            //}
 
-            player.Client.Reconnect(new Reconnect()
-            {
-                Host = "",
-                Port = player.CoreServerManager.ServerConfig.serverInfo.port,
-                GameId = gw.Id,
-                Name = "Realm"
-            });
+            //player.Client.Reconnect(new Reconnect()
+            //{
+            //    Host = "",
+            //    Port = player.CoreServerManager.ServerConfig.serverInfo.port,
+            //    GameId = gw.Id,
+            //    Name = "Realm"
+            //});
             return true;
         }
     }
@@ -1278,7 +1278,7 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string color)
+        protected override bool Process(Player player, TickTime time, string color)
         {
             var end = Program.EndWhen;
             var timeLeft = end.Subtract(DateTime.UtcNow);
@@ -1302,7 +1302,7 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
             var servers = player.CoreServerManager.InterServerManager.GetServerList();
             int hidden = 0;
@@ -1314,8 +1314,8 @@ namespace wServer.core.commands
                         hidden++;
                     }
                 }
-            var currentPlayersNotIncludingHide = player.Owner.Players.Count - hidden;
-            player.SendInfo($"[{player.Owner.Id}] {player.Owner.GetDisplayName()} ({currentPlayersNotIncludingHide} players)");
+            var currentPlayersNotIncludingHide = player.World.Players.Count - hidden;
+            player.SendInfo($"[{player.World.Id}] {player.World.GetDisplayName()} ({currentPlayersNotIncludingHide} players)");
             return true;
         }
     }
@@ -1326,7 +1326,7 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
             var playerSvr = player.CoreServerManager.ServerConfig.serverInfo.name;
             var servers = player.CoreServerManager.InterServerManager.GetServerList();
@@ -1371,7 +1371,7 @@ namespace wServer.core.commands
         public TeleportCommand() : base("tp", alias: "teleport")
         { }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
             var servers = player.CoreServerManager.InterServerManager.GetServerList();
             string playerName = args.ToLower();
@@ -1393,7 +1393,7 @@ namespace wServer.core.commands
                 }
             }
 
-            var targets = player.Owner.GetPlayers();
+            var targets = player.World.GetPlayers();
             foreach (var target in targets)
             {
                 if (!target.Name.EqualsIgnoreCase(args))
@@ -1415,7 +1415,7 @@ namespace wServer.core.commands
         public TellCommand() : base("tell", alias: "t")
         { }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
             if (!player.NameChosen)
             {
@@ -1467,7 +1467,7 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
             if (String.IsNullOrWhiteSpace(args))
             {
@@ -1512,7 +1512,7 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
             if (String.IsNullOrWhiteSpace(args))
             {
@@ -1557,9 +1557,9 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string playerName)
+        protected override bool Process(Player player, TickTime time, string playerName)
         {
-            if (player.Owner is Test)
+            if (player.World is Test)
                 return false;
 
             if (String.IsNullOrEmpty(playerName))
@@ -1605,9 +1605,9 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string playerName)
+        protected override bool Process(Player player, TickTime time, string playerName)
         {
-            if (player.Owner is Test)
+            if (player.World is Test)
                 return false;
 
             if (String.IsNullOrEmpty(playerName))
@@ -1653,7 +1653,7 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
             TimeSpan t = TimeSpan.FromMilliseconds(time.TotalElapsedMs);
 
@@ -1673,7 +1673,7 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
             player.Client.Reconnect(new Reconnect()
             {
@@ -1692,7 +1692,7 @@ namespace wServer.core.commands
         {
         }
 
-        protected override bool Process(Player player, TickData time, string name)
+        protected override bool Process(Player player, TickTime time, string name)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
@@ -1742,17 +1742,17 @@ namespace wServer.core.commands
         public WhoCommand() : base("who")
         { }
 
-        protected override bool Process(Player player, TickData time, string args)
+        protected override bool Process(Player player, TickTime time, string args)
         {
             var sb = new StringBuilder();
-            var players = player.Owner.Players
+            var players = player.World.Players
                 .ValueWhereAsParallel(_ => _.Client != null
                     && _.Rank <= Player.VIP
                     && _.CanBeSeenBy(player));
             if (players.Length != 0)
             {
                 sb.Append($"There {(players.Length > 1 ? "are" : "is")} {players.Length}");
-                sb.Append($"{(player.Owner.IsRealm || player.Owner.IsDungeon ? $"/{player.Owner.MaxPlayers} " : "")} ");
+                sb.Append($"{(player.World.IsRealm || player.World.InstanceType == WorldResourceInstanceType.Dungeon ? $"/{player.World.MaxPlayers} " : "")} ");
                 sb.Append($"player{(players.Length > 1 ? "s" : "")} connected on this area:\n");
 
                 for (var i = 0; i < players.Length; i++)

@@ -19,7 +19,7 @@ namespace wServer.core.commands
             public Sell() : base("Sell", permLevel: 0)
             { }
 
-            protected override bool Process(Player player, TickData time, string args)
+            protected override bool Process(Player player, TickTime time, string args)
             {
                 var index = args.IndexOf(" "); //here we search for the space which divides the price and the inventory slot
 

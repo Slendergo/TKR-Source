@@ -123,7 +123,7 @@ namespace wServer.core.objects
 
         private bool CanMpRegen() => !(HasConditionEffect(ConditionEffects.Quiet) || HasConditionEffect(ConditionEffects.NinjaSpeedy));
 
-        private void HandleEffects(TickData time)
+        private void HandleEffects(TickTime time)
         {
             if (Client == null || Client.Account == null) return;
             if (CheckCerberusLeftClaw())

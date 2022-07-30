@@ -26,7 +26,7 @@ namespace wServer.logic.behaviors
         protected internal override void Resolve(State parent) => parent.Death += (sender, e) =>
         {
             var dat = e.Host.CoreServerManager.Resources.GameData;
-            var w = e.Host.Owner;
+            var w = e.Host.World;
             var pos = new IntPoint((int)e.Host.X - (dist / 2), (int)e.Host.Y - (dist / 2));
 
             if (w == null)
@@ -70,7 +70,7 @@ namespace wServer.logic.behaviors
                 }
         };
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         { }
     }
 }

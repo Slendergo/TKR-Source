@@ -67,6 +67,9 @@ package com.company.assembleegameclient.game
       
       public function stop() : void
       {
+         if(this.gs_ == null){
+            return;
+         }
          this.gs_.stage.removeEventListener(MouseEvent.MOUSE_MOVE,this.onMouseMove);
          this.gs_.stage.removeEventListener(KeyboardEvent.KEY_DOWN,this.onKeyDown);
          this.gs_ = null;

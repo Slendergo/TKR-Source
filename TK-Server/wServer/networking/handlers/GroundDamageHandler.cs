@@ -9,11 +9,11 @@ namespace wServer.networking.handlers
     {
         public override PacketId ID => PacketId.GROUNDDAMAGE;
 
-        protected override void HandlePacket(Client client, GroundDamage packet) => Handle(client.Player, new TickData(), packet.Position, packet.Time);
+        protected override void HandlePacket(Client client, GroundDamage packet) => Handle(client.Player, new TickTime(), packet.Position, packet.Time);
 
-        private void Handle(Player player, TickData time, Position pos, int timeHit)
+        private void Handle(Player player, TickTime time, Position pos, int timeHit)
         {
-            if (player?.Owner == null)
+            if (player?.World == null)
                 return;
 
             player.ForceGroundHit(time, pos, timeHit);

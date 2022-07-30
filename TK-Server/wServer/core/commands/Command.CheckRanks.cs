@@ -11,9 +11,9 @@ namespace wServer.core.commands
             {
             }
 
-            protected override bool Process(Player player, TickData time, string args)
+            protected override bool Process(Player player, TickTime time, string args)
             {
-                var owner = player.Owner;
+                var owner = player.World;
                 var servers = player.CoreServerManager.InterServerManager.GetServerList();
                 var sb = new StringBuilder("Accounts Over or Equal Rank 90 that are currently Online: ");
                 foreach (var server in servers)

@@ -10,6 +10,6 @@ namespace wServer.networking.handlers
 
         protected override void HandlePacket(Client client, Pong packet) => client.Player?.AddPendingAction(t => Handle(client, packet, t));
 
-        private void Handle(Client client, Pong packet, TickData t) => client.Player?.Pong(t, packet);
+        private void Handle(Client client, Pong packet, TickTime t) => client.Player?.Pong(t, packet);
     }
 }

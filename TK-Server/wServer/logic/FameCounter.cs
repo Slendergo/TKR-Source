@@ -98,7 +98,7 @@ namespace wServer.logic
 
         public void Teleport() => Stats.Teleports++;
 
-        public void Tick(TickData time)
+        public void Tick(TickTime time)
         {
             elapsed += time.ElaspedMsDelta;
 

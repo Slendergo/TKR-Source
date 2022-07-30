@@ -22,10 +22,10 @@ namespace wServer.logic.behaviors
             this.scaleAfter = scaleAfter;
         }
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state) => state = new ScaleHPState
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state) => state = new ScaleHPState
         { pNamesCounted = new List<string>(), initialScaleAmount = scaleAfter, maxHP = 0, hitMaxHP = false, cooldown = 0 };
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             var scstate = (ScaleHPState)state;
 
@@ -40,7 +40,7 @@ namespace wServer.logic.behaviors
 
                 var plrCount = 0;
 
-                foreach (var i in host.Owner.Players)
+                foreach (var i in host.World.Players)
                 {
                     if (scstate.pNamesCounted.Contains(i.Value.Name))
                         continue;

@@ -5,6 +5,6 @@
         public Sign(CoreServerManager manager, ushort objType) : base(manager, objType, null, true, false, false)
         { }
 
-        public override bool HitByProjectile(Projectile projectile, TickData time) => false;
+        public override bool HitByProjectile(Projectile projectile, TickTime time) => false;
     }
 }

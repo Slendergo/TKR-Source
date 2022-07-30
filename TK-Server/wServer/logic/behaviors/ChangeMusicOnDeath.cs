@@ -18,9 +18,9 @@ namespace wServer.logic.behaviors
         {
             parent.Death += (sender, e) =>
             {
-                if (e.Host.Owner.Music != _music)
+                if (e.Host.World.Music != _music)
                 {
-                    var owner = e.Host.Owner;
+                    var owner = e.Host.World;
 
                     owner.Music = _music;
 
@@ -42,7 +42,7 @@ namespace wServer.logic.behaviors
                 }
             };
         }
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         { }
     }
 }

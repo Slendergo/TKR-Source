@@ -1,4 +1,5 @@
-﻿using System;
+﻿using common.resources;
+using System;
 using System.Linq;
 using wServer.core.objects;
 using wServer.core.setpieces;
@@ -13,9 +14,9 @@ namespace wServer.core.commands
             public Setpiece() : base("setpiece", permLevel: 100)
             { }
 
-            protected override bool Process(Player player, TickData time, string setPiece)
+            protected override bool Process(Player player, TickTime time, string setPiece)
             {
-                if ((player.Owner is Nexus) || (player.Owner is Marketplace) || player.Owner.Id == -10 || player.Owner is GuildHall)
+                if ((player.World is NexusWorld) || (player.World is MarketplaceWorld) || player.World.Id == -10 || player.World.InstanceType == WorldResourceInstanceType.Guild)
                 {
                     player.SendError("No");
                     return false;
@@ -32,12 +33,12 @@ namespace wServer.core.commands
                     return false;
                 }
 
-                if (!player.Owner.Name.Equals("Nexus"))
+                if (!player.World.IdName.Equals("Nexus"))
                 {
                     try
                     {
                         ISetPiece piece = (ISetPiece)Activator.CreateInstance(Type.GetType("wServer.core.setpieces." + setPiece, true, true));
-                        piece.RenderSetPiece(player.Owner, new IntPoint((int)player.X + 1, (int)player.Y + 1));
+                        piece.RenderSetPiece(player.World, new IntPoint((int)player.X + 1, (int)player.Y + 1));
                         return true;
                     }
                     catch (Exception)

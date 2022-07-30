@@ -18,8 +18,8 @@ namespace wServer.core
 
         public override void Detatch(World world)
         {
-            Attached.Remove(world);
-            world.Delete();
+            if(Attached.Remove(world))
+                _ = world.Delete();
         }
 
         public override void Stop()

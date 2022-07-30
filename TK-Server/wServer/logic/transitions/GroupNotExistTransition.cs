@@ -18,7 +18,7 @@ namespace wServer.logic.transitions
             _group = group;
         }
 
-        protected override bool TickCore(Entity host, TickData time, ref object state)
+        protected override bool TickCore(Entity host, TickTime time, ref object state)
         {
             if (String.IsNullOrWhiteSpace(_group))
                 return false;

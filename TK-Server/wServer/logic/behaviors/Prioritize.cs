@@ -9,7 +9,7 @@ namespace wServer.logic.behaviors
 
         public Prioritize(params CycleBehavior[] children) => this.children = children;
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state)
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state)
         {
             state = -1;
 
@@ -17,7 +17,7 @@ namespace wServer.logic.behaviors
                 i.OnStateEntry(host, time);
         }
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             var index = state == null ? -1 : (int)state;
 

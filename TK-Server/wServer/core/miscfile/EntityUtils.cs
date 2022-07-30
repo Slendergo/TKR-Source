@@ -14,7 +14,7 @@ namespace wServer
     {
         public static bool AnyEnemyNearby(this Entity entity, int radius = PlayerUpdate.VISIBILITY_RADIUS)
         {
-            foreach (var i in entity.Owner.EnemiesCollision.HitTest(entity.X, entity.Y, radius))
+            foreach (var i in entity.World.EnemiesCollision.HitTest(entity.X, entity.Y, radius))
             {
                 if (!(i is Enemy) || entity == i)
                     continue;
@@ -46,7 +46,7 @@ namespace wServer
 
         public static bool AnyPlayerNearby(this Entity entity, int radius = PlayerUpdate.VISIBILITY_RADIUS)
         {
-            foreach (var i in entity.Owner.PlayersCollision.HitTest(entity.X, entity.Y, radius).Where(e => e is Player))
+            foreach (var i in entity.World.PlayersCollision.HitTest(entity.X, entity.Y, radius).Where(e => e is Player))
             {
                 if (i.HasConditionEffect(ConditionEffects.Hidden))
                     continue;
@@ -78,7 +78,7 @@ namespace wServer
         public static void AOE(this Entity entity, float radius, ushort? objType, Action<Entity> callback)   //Null for player
         {
             if (objType == null)
-                foreach (var i in entity.Owner.PlayersCollision.HitTest(entity.X, entity.Y, radius).Where(e => e is Player))
+                foreach (var i in entity.World.PlayersCollision.HitTest(entity.X, entity.Y, radius).Where(e => e is Player))
                 {
                     var d = i.Dist(entity);
 
@@ -86,7 +86,7 @@ namespace wServer
                         callback(i);
                 }
             else
-                foreach (var i in entity.Owner.EnemiesCollision.HitTest(entity.X, entity.Y, radius))
+                foreach (var i in entity.World.EnemiesCollision.HitTest(entity.X, entity.Y, radius))
                 {
                     if (i.ObjectType != objType.Value)
                         continue;
@@ -101,7 +101,7 @@ namespace wServer
         public static void AOE(this Entity entity, float radius, bool players, Action<Entity> callback)   //Null for player
         {
             if (players)
-                foreach (var i in entity.Owner.PlayersCollision.HitTest(entity.X, entity.Y, radius).Where(e => e is Player))
+                foreach (var i in entity.World.PlayersCollision.HitTest(entity.X, entity.Y, radius).Where(e => e is Player))
                 {
                     var d = i.Dist(entity);
 
@@ -109,7 +109,7 @@ namespace wServer
                         callback(i);
                 }
             else
-                foreach (var i in entity.Owner.EnemiesCollision.HitTest(entity.X, entity.Y, radius))
+                foreach (var i in entity.World.EnemiesCollision.HitTest(entity.X, entity.Y, radius))
                 {
                     if (!(i is Enemy))
                         continue;
@@ -158,13 +158,13 @@ namespace wServer
 
         public static int CountEntity(this Entity entity, double dist, ushort? objType)
         {
-            if (entity.Owner == null)
+            if (entity.World == null)
                 return 0;
 
             var ret = 0;
 
             if (objType == null)
-                foreach (var i in entity.Owner.PlayersCollision.HitTest(entity.X, entity.Y, dist).Where(e => e is Player))
+                foreach (var i in entity.World.PlayersCollision.HitTest(entity.X, entity.Y, dist).Where(e => e is Player))
                 {
                     if (!(i as IPlayer).IsVisibleToEnemy())
                         continue;
@@ -175,7 +175,7 @@ namespace wServer
                         ret++;
                 }
             else
-                foreach (var i in entity.Owner.EnemiesCollision.HitTest(entity.X, entity.Y, dist))
+                foreach (var i in entity.World.EnemiesCollision.HitTest(entity.X, entity.Y, dist))
                 {
                     if (i.ObjectType != objType.Value)
                         continue;
@@ -191,12 +191,12 @@ namespace wServer
 
         public static int CountEntity(this Entity entity, double dist, string group)
         {
-            if (entity.Owner == null)
+            if (entity.World == null)
                 return 0;
 
             var ret = 0;
 
-            foreach (var i in entity.Owner.EnemiesCollision.HitTest(entity.X, entity.Y, dist))
+            foreach (var i in entity.World.EnemiesCollision.HitTest(entity.X, entity.Y, dist))
             {
                 if (i.ObjectDesc == null || i.ObjectDesc.Group != group)
                     continue;
@@ -328,11 +328,11 @@ namespace wServer
 
         public static IEnumerable<Entity> GetNearestEntities(this Entity entity, double dist, ushort? objType, bool seeInvis = false)   //Null for player
         {
-            if (entity.Owner == null)
+            if (entity.World == null)
                 yield break;
 
             if (objType == null)
-                foreach (var i in entity.Owner.PlayersCollision.HitTest(entity.X, entity.Y, dist).Where(e => e is IPlayer))
+                foreach (var i in entity.World.PlayersCollision.HitTest(entity.X, entity.Y, dist).Where(e => e is IPlayer))
                 {
                     if (!seeInvis && !(i as IPlayer).IsVisibleToEnemy())
                         continue;
@@ -343,7 +343,7 @@ namespace wServer
                         yield return i;
                 }
             else
-                foreach (var i in entity.Owner.EnemiesCollision.HitTest(entity.X, entity.Y, dist))
+                foreach (var i in entity.World.EnemiesCollision.HitTest(entity.X, entity.Y, dist))
                 {
                     if (i.ObjectType != objType.Value)
                         continue;
@@ -357,10 +357,10 @@ namespace wServer
 
         public static IEnumerable<Entity> GetNearestEntitiesByGroup(this Entity entity, double dist, string group)
         {
-            if (entity.Owner == null)
+            if (entity.World == null)
                 yield break;
 
-            foreach (var i in entity.Owner.EnemiesCollision.HitTest(entity.X, entity.Y, dist))
+            foreach (var i in entity.World.EnemiesCollision.HitTest(entity.X, entity.Y, dist))
             {
                 if (i.ObjectDesc == null || i.ObjectDesc.Group == null || !i.ObjectDesc.Group.Equals(group, StringComparison.InvariantCultureIgnoreCase))
                     continue;
@@ -374,10 +374,10 @@ namespace wServer
 
         public static IEnumerable<Entity> GetNearestEntitiesByName(this Entity entity, double dist, string id)
         {
-            if (entity.Owner == null)
+            if (entity.World == null)
                 yield break;
 
-            foreach (var i in entity.Owner.EnemiesCollision.HitTest(entity.X, entity.Y, dist))
+            foreach (var i in entity.World.EnemiesCollision.HitTest(entity.X, entity.Y, dist))
             {
                 if (i.ObjectDesc == null || (id != null && !i.ObjectDesc.ObjectId.ContainsIgnoreCase(id)))
                     continue;
@@ -391,11 +391,11 @@ namespace wServer
 
         public static IEnumerable<Entity> GetNearestEntitiesBySquare(this Entity entity, double dist, ushort? objType, bool seeInvis = false)   //Null for player
         {
-            if (entity.Owner == null)
+            if (entity.World == null)
                 yield break;
 
             if (objType == null)
-                foreach (var i in entity.Owner.PlayersCollision.HitTest(entity.X, entity.Y, dist).Where(e => e is IPlayer))
+                foreach (var i in entity.World.PlayersCollision.HitTest(entity.X, entity.Y, dist).Where(e => e is IPlayer))
                 {
                     if (!seeInvis && !(i as IPlayer).IsVisibleToEnemy())
                         continue;
@@ -406,7 +406,7 @@ namespace wServer
                         yield return i;
                 }
             else
-                foreach (var i in entity.Owner.EnemiesCollision.HitTest(entity.X, entity.Y, dist))
+                foreach (var i in entity.World.EnemiesCollision.HitTest(entity.X, entity.Y, dist))
                 {
                     if (i.ObjectType != objType.Value)
                         continue;
@@ -430,13 +430,13 @@ namespace wServer
 
         public static Entity GetNearestEntity(this Entity entity, double dist, bool players, Predicate<Entity> predicate = null)
         {
-            if (entity.Owner == null)
+            if (entity.World == null)
                 return null;
 
             Entity ret = null;
 
             if (players)
-                foreach (var i in entity.Owner.PlayersCollision.HitTest(entity.X, entity.Y, dist).Where(e => e is IPlayer))
+                foreach (var i in entity.World.PlayersCollision.HitTest(entity.X, entity.Y, dist).Where(e => e is IPlayer))
                 {
                     if (!(i as IPlayer).IsVisibleToEnemy() || i == entity)
                         continue;
@@ -453,7 +453,7 @@ namespace wServer
                     }
                 }
             else
-                foreach (var i in entity.Owner.EnemiesCollision.HitTest(entity.X, entity.Y, dist))
+                foreach (var i in entity.World.EnemiesCollision.HitTest(entity.X, entity.Y, dist))
                 {
                     if (i == entity)
                         continue;
@@ -511,7 +511,7 @@ namespace wServer
             container.Inventory[slotId] = null;
             container.Inventory.Data[slotId] = null;
 
-            player.Owner.EnterWorld(bag);
+            player.World.EnterWorld(bag);
         }
     }
 }

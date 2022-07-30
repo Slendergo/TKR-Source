@@ -32,15 +32,15 @@ namespace wServer.logic.behaviors
             _useSavedAngle = useSavedAngle;
         }
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state) => state = new RingAttackState { angleToIncrement = _angleToIncrement, fixedAngle = _fixedAngle, coolDown = _coolDown };
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state) => state = new RingAttackState { angleToIncrement = _angleToIncrement, fixedAngle = _fixedAngle, coolDown = _coolDown };
 
-        protected override void TickCore(Entity Host, TickData time, ref object state)
+        protected override void TickCore(Entity Host, TickTime time, ref object state)
         {
             var rastate = (RingAttackState)state;
 
             Status = CycleStatus.NotStarted;
 
-            if (Host == null || Host.Owner == null)
+            if (Host == null || Host.World == null)
                 return;
 
             if (Host.HasConditionEffect(ConditionEffects.Stunned))
@@ -57,7 +57,7 @@ namespace wServer.logic.behaviors
 
                 if (_radius == 0)
                 {
-                    if (!(Host is Character chr) || chr.Owner == null) return;
+                    if (!(Host is Character chr) || chr.World == null) return;
 
                     var angleInc = 2 * Math.PI / _count;
                     var desc = Host.ObjectDesc.Projectiles[_projectileIndex];
@@ -95,7 +95,7 @@ namespace wServer.logic.behaviors
                     {
                         var prj = Host.CreateProjectile(desc, Host.ObjectType, dmg, time.TotalElapsedMs, prjPos, (float)(startAngle + angle * i));
 
-                        Host.Owner.EnterWorld(prj);
+                        Host.World.EnterWorld(prj);
 
                         if (i == 0)
                             prjId = prj.ProjectileId;
@@ -116,10 +116,10 @@ namespace wServer.logic.behaviors
                     };
 
                     if (isQuest)
-                        Host.Owner.PlayersBroadcastAsParallel(_ => _.Client.SendPacket(pkt));
+                        Host.World.PlayersBroadcastAsParallel(_ => _.Client.SendPacket(pkt));
                     else
                     {
-                        var players = Host.Owner.Players
+                        var players = Host.World.Players
                             .ValueWhereAsParallel(_ => _.DistSqr(Host) < PlayerUpdate.VISIBILITY_RADIUS_SQR);
                         for (var i = 0; i < players.Length; i++)
                             players[i].Client.SendPacket(pkt);

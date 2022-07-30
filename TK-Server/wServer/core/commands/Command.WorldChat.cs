@@ -10,7 +10,7 @@ namespace wServer.core.commands
             public WorldChat() : base("wc", permLevel: 30)
             { }
 
-            protected override bool Process(Player player, TickData time, string args)
+            protected override bool Process(Player player, TickTime time, string args)
             {
                 if (args.Length == 0)
                 {

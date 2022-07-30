@@ -15,7 +15,7 @@ namespace wServer.logic.transitions
             _dist = dist;
         }
 
-        protected override bool TickCore(Entity host, TickData time, ref object state)
+        protected override bool TickCore(Entity host, TickTime time, ref object state)
         {
             return host.AnyEnemyNearby(_dist) || host.AnyPlayerNearby(_dist);
         }

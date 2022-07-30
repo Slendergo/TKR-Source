@@ -11,7 +11,7 @@ namespace wServer.core.objects
         public void Damage(int dmg, Entity src)
         { }
 
-        public override bool HitByProjectile(Projectile projectile, TickData time) => false;
+        public override bool HitByProjectile(Projectile projectile, TickTime time) => false;
 
         public override void Init(World owner)
         {

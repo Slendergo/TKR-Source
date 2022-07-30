@@ -11,7 +11,7 @@ namespace wServer.core.commands
             public GarbageCollector() : base("gc", permLevel: 110)
             { }
 
-            protected override bool Process(Player player, TickData time, string args)
+            protected override bool Process(Player player, TickTime time, string args)
             {
                 player.SendInfo("GC.Collect invoked.");
 

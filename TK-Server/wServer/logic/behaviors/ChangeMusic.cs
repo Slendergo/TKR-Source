@@ -15,14 +15,14 @@ namespace wServer.logic.behaviors
             _music = file;
         }
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         { }
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state)
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state)
         {
-            if (host.Owner.Music != _music)
+            if (host.World.Music != _music)
             {
-                var owner = host.Owner;
+                var owner = host.World;
 
                 owner.Music = _music;
 

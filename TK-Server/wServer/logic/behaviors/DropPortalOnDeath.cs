@@ -34,9 +34,9 @@ namespace wServer.logic.behaviors
 
         protected internal override void Resolve(State parent) => parent.Death += (sender, e) =>
         {
-            var owner = e.Host.Owner;
+            var owner = e.Host.World;
 
-            if (owner.Name.Contains("Arena") || e.Host.Spawned)
+            if (owner.IdName.Contains("Arena") || e.Host.Spawned)
                 return;
 
             if (e.Host.CurrentState.Is(parent) && Random.NextDouble() < _probability)
@@ -59,7 +59,7 @@ namespace wServer.logic.behaviors
             }
         };
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         { }
     }
 }

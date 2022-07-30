@@ -30,7 +30,7 @@ namespace wServer.logic.behaviors
             baseY = Y;
         }
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state)
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state)
         {
             if (!isMapPosition)
             {
@@ -47,7 +47,7 @@ namespace wServer.logic.behaviors
                 host.Move(X, Y);
         }
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             if (instant)
                 return;

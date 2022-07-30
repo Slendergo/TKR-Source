@@ -1,6 +1,6 @@
 ﻿namespace wServer.core
 {
-    public struct TickData
+    public struct TickTime
     {
         public int ElaspedMsDelta;
         public long TickCount;

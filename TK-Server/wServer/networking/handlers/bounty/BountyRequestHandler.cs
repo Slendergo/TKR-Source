@@ -16,7 +16,7 @@ namespace wServer.networking.handlers
 
         protected override void HandlePacket(Client client, BountyRequest packet)
         {
-            if (client == null || IsTest(client) || client.Player == null || client.Player.Owner == null)
+            if (client == null || IsTest(client) || client.Player == null || client.Player.World == null)
                 return;
 
             Handle(client, packet);
@@ -72,83 +72,83 @@ namespace wServer.networking.handlers
 
         public void LaunchRaid(Client originalClient, Player[] players, int fameCost, int raidId)
         {
-            var cManager = originalClient.CoreServerManager;
-            var db = cManager.Database;
-            var account = db.GetAccount(originalClient.Player.AccountId);
-            var guild = db.GetGuild(account.GuildId);
+            //var cManager = originalClient.CoreServerManager;
+            //var db = cManager.Database;
+            //var account = db.GetAccount(originalClient.Player.AccountId);
+            //var guild = db.GetGuild(account.GuildId);
 
-            if (guild.Fame >= fameCost)
-            {
-                switch (raidId)
-                {
-                    default:
-                        originalClient.Player.SendError("Raid ID Unexpected.");
-                        return;
+            //if (guild.Fame >= fameCost)
+            //{
+            //    switch (raidId)
+            //    {
+            //        default:
+            //            originalClient.Player.SendError("Raid ID Unexpected.");
+            //            return;
 
-                    #region Easy
+            //        #region Easy
 
-                    case 1:
-                        var easy = originalClient.Player.Owner.Manager.Resources.Worlds[EasyWrld];
+            //        case 1:
+            //            var easy = originalClient.Player.World.Manager.Resources.Worlds[EasyWrld];
 
-                        DynamicWorld.TryGetWorld(easy, originalClient, out var world);
+            //            DynamicWorld.TryGetWorld(easy, originalClient, out var world);
 
-                        var wManager = cManager.WorldManager;
-                        world = wManager.AddWorld(new World(easy));
-                        db.UpdateGuildFame(guild, -fameCost);
+            //            var wManager = cManager.WorldManager;
+            //            world = wManager.CreateNewWorld(new World(easy));
+            //            db.UpdateGuildFame(guild, -fameCost);
 
-                        foreach (var player in players)
-                        {
-                            if (player == null) continue;
-                            if (world != null)
-                            {
-                                player.SendInfo("The bounty of The Sacred Chamber of Wingus has been started!");
-                                player.Reconnect(world);
-                            }
-                        }
-                        return;
+            //            foreach (var player in players)
+            //            {
+            //                if (player == null) continue;
+            //                if (world != null)
+            //                {
+            //                    player.SendInfo("The bounty of The Sacred Chamber of Wingus has been started!");
+            //                    player.Reconnect(world);
+            //                }
+            //            }
+            //            return;
 
-                    #endregion Easy
+            //        #endregion Easy
 
-                    #region Hard
+            //        #region Hard
 
-                    case 2:
-                        var hard = originalClient.Player.Owner.Manager.Resources.Worlds[HardWrld];
+            //        case 2:
+            //            var hard = originalClient.Player.World.Manager.Resources.Worlds[HardWrld];
 
-                        DynamicWorld.TryGetWorld(hard, originalClient, out var world2);
+            //            DynamicWorld.TryGetWorld(hard, originalClient, out var world2);
 
-                        var wManager2 = cManager.WorldManager;
-                        world2 = wManager2.AddWorld(new World(hard));
-                        db.UpdateGuildFame(guild, -fameCost);
+            //            var wManager2 = cManager.WorldManager;
+            //            world2 = wManager2.CreateNewWorld(new World(hard));
+            //            db.UpdateGuildFame(guild, -fameCost);
 
-                        foreach (var player in players)
-                        {
-                            if (player == null) continue;
-                            if (world2 != null)
-                            {
-                                player.SendInfo("The bounty to Gates of Hades has been started!");
-                                player.Reconnect(world2);
-                            }
-                        }
-                        return;
+            //            foreach (var player in players)
+            //            {
+            //                if (player == null) continue;
+            //                if (world2 != null)
+            //                {
+            //                    player.SendInfo("The bounty to Gates of Hades has been started!");
+            //                    player.Reconnect(world2);
+            //                }
+            //            }
+            //            return;
 
-                    #endregion Hard
+            //        #endregion Hard
 
-                    #region Hell
+            //        #region Hell
 
-                    case 3:
-                        return;
+            //        case 3:
+            //            return;
 
-                    #endregion Hell
+            //        #endregion Hell
 
-                    #region Godly
+            //        #region Godly
 
-                    case 4:
-                        return;
+            //        case 4:
+            //            return;
 
-                        #endregion Godly
-                }
-            }
-            else originalClient.Player.SendError("You need at least " + fameCost + " guild fame to begin this bounty.");
+            //            #endregion Godly
+            //    }
+            //}
+            //else originalClient.Player.SendError("You need at least " + fameCost + " guild fame to begin this bounty.");
         }
 
         #endregion Raids
@@ -158,7 +158,7 @@ namespace wServer.networking.handlers
         private Player[] getPlayers(Client client, BountyRequest packet)
         {
             var playersAllowed = new ConcurrentBag<Player>();
-            var world = client.Player.Owner;
+            var world = client.Player.World;
             foreach (var allowedPlayersId in packet.PlayersAllowed) /* Get AlL ID's */
             {
                 if (allowedPlayersId == 0)

@@ -12,15 +12,15 @@ namespace wServer.core.commands
             public KillAll() : base("killAll", permLevel: 60, alias: "ka")
             { }
 
-            protected override bool Process(Player player, TickData time, string args)
+            protected override bool Process(Player player, TickTime time, string args)
             {
-                if (!(player.Owner is Vault) && player.Rank < 110)
+                if (!(player.World is VaultWorld) && player.Rank < 110)
                 {
                     player.SendError("Only in your Vault.");
                     return false;
                 }
 
-                var eligibleEnemies = player.Owner.Enemies
+                var eligibleEnemies = player.World.Enemies
                     .ValueWhereAsParallel(_ => _.ObjectDesc != null
                         && _.ObjectDesc.ObjectId != null
                         && _.ObjectDesc.Enemy

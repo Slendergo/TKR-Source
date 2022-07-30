@@ -91,7 +91,7 @@ namespace wServer.core.objects.vendors
 
                 acc.Reload("vaultCount");
                 player.CurrentFame = acc.Fame;
-                (Owner as Vault)?.AddChest(this);
+                (World as VaultWorld)?.AddChest(this);
                 acc.Reload();
                 player.Client.SendPacket(new networking.packets.outgoing.BuyResult()
                 {

@@ -188,7 +188,7 @@ namespace wServer.networking.connection
                     {
                         var id = r.GetPacketId();
                         var payload = r.GetPacketBody();
-                        if (Client.Player == null) // read it instantly if there is no player otherwise we will pend it
+                        if (Client.Player == null) // read it instantly if there is no player otherwise we will append it to the world instance
                         {
                             var packet = Packet.Packets[id].CreateInstance();
                             try
@@ -207,10 +207,7 @@ namespace wServer.networking.connection
                             }
                         }
                         else
-                        {
-                            if (Client != null && Client.Player != null && Client.Player.Owner != null)
-                                Client.Player.PendingPackets.Enqueue(Tuple.Create(Client, Client.Id, id, payload));
-                        }
+                            Client.Player.IncomingPackets.Enqueue(new InboundBuffer(Client, id, payload));
                     }
                     r.Reset();
                 }

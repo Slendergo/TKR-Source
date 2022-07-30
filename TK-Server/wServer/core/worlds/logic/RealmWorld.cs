@@ -9,7 +9,7 @@ using wServer.networking;
 
 namespace wServer.core.worlds.logic
 {
-    public class Realm : World
+    public class RealmWorld : World
     {
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
@@ -32,21 +32,15 @@ namespace wServer.core.worlds.logic
             "Dragon", "Harpy"
         };
 
-        private readonly int _mapId;
         private readonly bool _oryxPresent;
 
         private Oryx _overseer;
         private Task _overseerTask;
 
-        public Realm(ProtoWorld proto, Client client = null) : base(proto)
+        public RealmWorld(int id, WorldResource resource, Client client = null) : base(id, resource)
         {
             _oryxPresent = true;
-            _mapId = 1;
-
             IsRealm = true;
-            IsDungeon = false;
-
-            MaxPlayers = 85;
         }
 
         // since map gets reset, admins not allowed to join when closed. Possible to crash server otherwise.
@@ -86,44 +80,37 @@ namespace wServer.core.worlds.logic
             return _overseer.Closing;
         }
 
-        public override bool Tick(TickData time)
+        protected override void UpdateLogic(ref TickTime time)
         {
             try
             {
-                base.Tick(time);
-
                 if (Closed || IsPlayersMax())
-                    Manager.WorldManager.PortalMonitor.ClosePortal(Id);
-                else if (!Manager.WorldManager.PortalMonitor.PortalIsOpen(Id))
-                    Manager.WorldManager.PortalMonitor.OpenPortal(Id);
+                    Manager.WorldManager.Nexus.PortalMonitor.ClosePortal(Id);
+                //else if (!Manager.WorldManager.PortalMonitor.PortalIsOpen(Id))
+                //    Manager.WorldManager.PortalMonitor.OpenPortal(Id);
 
-                if (IsLimbo || Deleted)
-                    return true;
-
+                var t = time;
                 if (_overseerTask == null || _overseerTask.IsCompleted)
                 {
                     _overseerTask = Task.Factory.StartNew(() =>
                     {
-                        if (Closed && Players.Count == 0 && _overseer != null)
-                        {
-                            Init(); // will reset everything back to the way it was when made
-                            Closed = false;
-                        }
-
-                        _overseer?.Tick(time);
+                        _overseer?.Tick(ref t);
                     }).ContinueWith(e => Log.Error(e.Exception.InnerException.ToString()), TaskContinuationOptions.OnlyOnFaulted);
                 }
             }
-            catch (Exception e) { Log.Error($"Unknown Error with Realm Tick {e}"); }
+            catch (Exception e)
+            {
+                Log.Error($"Unknown Error with Realm Tick {e}");
+            }
 
-            return false;
+            base.UpdateLogic(ref time);
         }
 
-        protected override void Init()
+        static Random Random = new Random();
+
+        public override void Init()
         {
-            var random = new Random();
-            SBName = _realmNames[random.Next(0, _realmNames.Length)];
-            FromWorldMap(new MemoryStream(Manager.Resources.Worlds["Realm"].wmap[_mapId - 1]));
+            DisplayName = _realmNames[Random.Next(0, _realmNames.Length)];
 
             SetPieces.ApplySetPieces(this);
 
@@ -132,6 +119,7 @@ namespace wServer.core.worlds.logic
                 _overseer = new Oryx(this);
                 _overseer.Init();
             }
+            base.Init();
         }
     }
 }

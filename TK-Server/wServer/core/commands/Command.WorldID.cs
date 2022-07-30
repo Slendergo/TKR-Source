@@ -10,9 +10,9 @@ namespace wServer.core.commands
             {
             }
 
-            protected override bool Process(Player player, TickData time, string color)
+            protected override bool Process(Player player, TickTime time, string color)
             {
-                player.SendInfo(player.Owner.Id.ToString());
+                player.SendInfo(player.World.Id.ToString());
                 return true;
             }
         }

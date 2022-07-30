@@ -23,19 +23,19 @@ namespace wServer.logic.behaviors
             this.color = new ARGB(color);
         }
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state)
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state)
         {
             var pos = new Position { X = host.X, Y = host.Y };
             var damage = Random.Next(minDamage, maxDamage);
 
-            host.Owner.AOE(pos, radius, players, enemy =>
+            host.World.AOE(pos, radius, players, enemy =>
             {
                 if (!players)
-                    host.Owner.BroadcastIfVisible(new Aoe() { Pos = pos, Radius = radius, Damage = (ushort)damage, Duration = 0, Effect = 0, OrigType = host.ObjectType }, host);
+                    host.World.BroadcastIfVisible(new Aoe() { Pos = pos, Radius = radius, Damage = (ushort)damage, Duration = 0, Effect = 0, OrigType = host.ObjectType }, host);
             });
         }
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         { }
     }
 }

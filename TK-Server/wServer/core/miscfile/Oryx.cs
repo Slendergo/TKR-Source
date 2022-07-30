@@ -15,7 +15,7 @@ namespace wServer.core
     internal class Oryx
     {
         public int _EventCount = 0;
-        public Realm _world;
+        public RealmWorld _world;
         public bool Closing;
 
         private static readonly Tuple<string, TauntData>[] CriticalEnemies = new Tuple<string, TauntData>[]
@@ -434,7 +434,7 @@ namespace wServer.core
         private Random _rand = new Random();
         private int _tenSecondTick;
 
-        public Oryx(Realm world)
+        public Oryx(RealmWorld world)
         {
             _world = world;
             _discord = Program.CoreServerManager.ServerConfig.discordIntegration;
@@ -528,7 +528,7 @@ namespace wServer.core
             {
                 var info = Program.CoreServerManager.ServerConfig.serverInfo;
                 var players = _world.Players.Count(p => p.Value.Client != null);
-                var builder = _discord.MakeOryxBuilder(info, _world.SBName, players, _world.MaxPlayers);
+                var builder = _discord.MakeOryxBuilder(info, _world.DisplayName, players, _world.MaxPlayers);
 
 #pragma warning disable
                 _discord.SendWebhook(_webhook, builder);
@@ -538,10 +538,10 @@ namespace wServer.core
             if (_EventCount >= 30 && !_world.Closed)
             {
                 CloseRealm();
-                _world.Manager.ChatManager.AnnounceRealm("(" + _EventCount + "/30) " + eventDead + " has been defeated!", _world.SBName);
+                _world.Manager.ChatManager.AnnounceRealm("(" + _EventCount + "/30) " + eventDead + " has been defeated!", _world.DisplayName);
             }
             else if (_EventCount <= 30 && !_world.Closed)
-                _world.Manager.ChatManager.AnnounceRealm("(" + _EventCount + "/30) " + eventDead + " has been defeated!", _world.SBName);
+                _world.Manager.ChatManager.AnnounceRealm("(" + _EventCount + "/30) " + eventDead + " has been defeated!", _world.DisplayName);
 
             return _EventCount;
         }
@@ -587,7 +587,7 @@ namespace wServer.core
         {
             Closing = true;
 
-            _world.Manager.ChatManager.Announce($"{_world.SBName} closing in 1 minute.");
+            _world.Manager.ChatManager.Announce($"{_world.DisplayName} closing in 1 minute.");
             _world.Timers.Add(new WorldTimer(60000, (w, t) => CloseRealm()));
         }
 
@@ -659,15 +659,15 @@ namespace wServer.core
             player.SendInfo("Type \"/help\" for more help");
         }
 
-        public void Tick(TickData time)
+        public void Tick(ref TickTime time)
         {
             if (time.TotalElapsedMs - _prevTick <= 10000)
                 return;
 
-            if (_tenSecondTick % 2 == 0)
+            if (_tenSecondTick % 20 == 0)
                 HandleAnnouncements();
 
-            if (_tenSecondTick % 6 == 0)
+            if (_tenSecondTick % 60 == 0)
                 EnsurePopulation();
 
             _tenSecondTick++;
@@ -693,6 +693,7 @@ namespace wServer.core
 
         private void EnsurePopulation()
         {
+            Console.WriteLine("EnsurePopulation");
             RecalculateEnemyCount();
 
             var state = new int[12];
@@ -853,10 +854,10 @@ namespace wServer.core
                 _.ApplyConditionEffect(ConditionEffectIndex.Invulnerable)
             );
 
-            var castle = _world.Manager.WorldManager.AddWorld(
-                new OryxCastle(_world.Manager.Resources.Worlds.Data["Oryx Castle"], _world.Players.Count)
-            );
-            _world.QuakeToWorld(castle);
+            //var castle = _world.Manager.WorldManager.CreateNewWorld(
+            //    new OryxCastle(_world.Manager.Resources.Worlds.Data["Oryx Castle"], _world.Players.Count)
+            //);
+            //_world.QuakeToWorld(castle);
         }
 
         private int Spawn(ObjectDesc desc, TerrainType terrain, int w, int h)
@@ -931,7 +932,7 @@ namespace wServer.core
             if (_discord.CanSendRealmEventNotification(name))
             {
                 var info = Program.CoreServerManager.ServerConfig.serverInfo;
-                var builder = _discord.MakeEventBuilder(info.name, _world.SBName, name);
+                var builder = _discord.MakeEventBuilder(info.name, _world.DisplayName, name);
 
 #pragma warning disable
                 _discord.SendWebhook(_webhook, builder);

@@ -10,7 +10,7 @@ namespace wServer.core.commands
             {
             } //Donor-1
 
-            protected override bool Process(Player player, TickData time, string color)
+            protected override bool Process(Player player, TickTime time, string color)
             {
                 if (!player.Client.Account.SetDonorLoot)
                 {

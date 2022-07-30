@@ -19,9 +19,9 @@ namespace wServer.logic.behaviors
             this.coolDown = coolDown.Normalize();
         }
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state) => state = 0;
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state) => state = 0;
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             var cool = (int)state;
             var ents = host.GetNearestEntities(range, null);
@@ -50,15 +50,15 @@ namespace wServer.logic.behaviors
                             var n = newHp - p.HP;
 
                             p.HP = newHp;
-                            p.Owner.BroadcastIfVisible(new ShowEffect() { EffectType = EffectType.Potion, TargetObjectId = p.Id, Color = new ARGB(0xffffffff) }, p);
-                            p.Owner.BroadcastIfVisible(new ShowEffect()
+                            p.World.BroadcastIfVisible(new ShowEffect() { EffectType = EffectType.Potion, TargetObjectId = p.Id, Color = new ARGB(0xffffffff) }, p);
+                            p.World.BroadcastIfVisible(new ShowEffect()
                             {
                                 EffectType = EffectType.Trail,
                                 TargetObjectId = host.Id,
                                 Pos1 = new Position { X = p.X, Y = p.Y },
                                 Color = new ARGB(0xffffffff)
                             }, host);
-                            p.Owner.BroadcastIfVisible(new Notification()
+                            p.World.BroadcastIfVisible(new Notification()
                             { ObjectId = p.Id, Message = "+" + n, Color = new ARGB(0xff00ff00) }, p);
                         }
                     }

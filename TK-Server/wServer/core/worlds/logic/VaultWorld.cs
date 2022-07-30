@@ -56,8 +56,8 @@ namespace wServer.core.worlds.logic
 
             EnterWorld(x);
 
-            if (Client .Account.Gifts.Length <= 0)
-                Client .SendPacket(new GlobalNotification
+            if (Client.Account.Gifts.Length <= 0)
+                Client.SendPacket(new GlobalNotification
                 {
                     Text = "giftChestEmpty"
                 });

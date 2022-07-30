@@ -33,7 +33,7 @@ namespace common.resources
             DisplayName = elem.GetValue("DisplayName", IdName);
             Width = elem.GetValue<int>("Width");
             Height = elem.GetValue<int>("Height");
-            Capacity = elem.GetValue<int>("Capacity");
+            Capacity = elem.GetValue<int>("Capacity", 65);
             Instance = elem.Element("Instance") == null ? WorldResourceInstanceType.Dungeon : (WorldResourceInstanceType)Enum.Parse(typeof(WorldResourceInstanceType), elem.Element("Instance").GetAttribute("enum", "dungeon"), true);
             Persists = elem.GetValue<bool>("Persists");
             Difficulty = elem.GetValue<byte>("Difficulty");

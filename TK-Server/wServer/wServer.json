@@ -21,7 +21,7 @@
   "serverSettings": {
     "logFolder": "./logs",
     "resourceFolder": "./resources",
-    "version": "7.23",
+    "version": "1.0",
     "serverKey": "1AE3517CCC0486ADEB5DE0D5B5247789",
     "clientKey": "5E44602511D8A86A416EE138DFAAE2F9",
     "maxConnections": 256,

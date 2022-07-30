@@ -62,4 +62,232 @@
 		<MapJM>snake_pit.jm</MapJM>
 		<Dungeon/>
 	</World>
+	<World id="Hideout of Septavius">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>undead_lair/undead_lair_epic.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="Wine Cellar">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>wine_cellar.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="Hideout of Malphas">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>abyss/abyss_epic.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="Abyss of Demons">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>abyss/abyss_of_demons.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="Belladonna's Garden">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>belladonna.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="Bilgewater's Grotto">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>bilge_grotto.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="Candy Land Hunting Grounds">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>candy_land_hunting_grounds.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="Cave of Eternal Frost">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>cave_of_eternal_frost.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="Candy Land Hunting Grounds">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>candy_land_hunting_grounds.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="Cave of Thousand Treasures">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>cave_of_thousand_treasures.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="Cloth Bazaar">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>cloth_bazaar.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="Ocean Trench">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>ocean_trench.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="Pirate Cave">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>pirate_cave.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="Oryx's Castle">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>oryx_castle.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="Tomb of the Ancients">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>tomb_of_the_ancients.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="The Ivory Wyvern">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>the_ivory_wyvern.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="Forbidden Jungle">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>forbidden_jungle.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="Puppet Master Encore">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>puppet_master_encore.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="Mad Lab">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>mad_lab.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="Manor of the Immortals">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>manor_of_the_immortals.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="Hideout of Stheno">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>hideout_of_stheno.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="Lost Halls">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>lost_halls.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="Marketplace">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>marketplace.jm</MapJM>
+		<Persistant/>
+	</World>
+	<World id="Pirate Cave">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>pirate_cave.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="Davy Jones' Locker">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>davy.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="Cave of Thousand Treasures">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>cave_of_thousand_treasures.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="Deadwater Docks">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>deadwater_docks.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="Forest Maze">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>forest_maze.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="Oryx's Chamber">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>chamber.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="Toxic Sewers">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>toxic_sewers.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="The Shatters">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>shatters.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="Snake Pit">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>snake_pit.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="Spider Den">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>spider_den.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="The Crawling Depth">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>the_crawling_depths.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="Stanley's Hideout">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>stanleys_hideout.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="Sprite World">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>sprite_world/sprite_world1.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="Strange Library">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>strange_library.jm</MapJM>
+		<Dungeon/>
+	</World>
+	<World id="Woodland Labyrinth">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>woodland_labyrinth.jm</MapJM>
+		<Dungeon/>
+	</World>
 </Worlds>

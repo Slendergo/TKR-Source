@@ -12,11 +12,11 @@ namespace wServer.networking.handlers
 
         protected override void HandlePacket(Client client, EnemyHit packet) => client?.Player?.AddPendingAction(t => Handle(client.Player, t, packet));
 
-        private void Handle(Player player, TickData time, EnemyHit pkt)
+        private void Handle(Player player, TickTime time, EnemyHit pkt)
         {
-            var entity = player?.Owner?.GetEntity(pkt.TargetId);
+            var entity = player?.World?.GetEntity(pkt.TargetId);
 
-            if (entity?.Owner == null || entity.HasConditionEffect(ConditionEffects.Invulnerable))
+            if (entity?.World == null || entity.HasConditionEffect(ConditionEffects.Invulnerable))
                 return;
 
             if (player.HasConditionEffect(ConditionEffects.Hidden))

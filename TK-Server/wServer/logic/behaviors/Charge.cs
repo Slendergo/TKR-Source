@@ -20,7 +20,7 @@ namespace wServer.logic.behaviors
             _coolDown = coolDown.Normalize(2000);
         }
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             var s = (state == null) ? new ChargeState() : (ChargeState)state;
 

@@ -12,7 +12,7 @@ namespace wServer.logic.behaviors
             Acquired,
         }
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             if ((host as Pet)?.PlayerOwner == null)
                 return;
@@ -22,7 +22,7 @@ namespace wServer.logic.behaviors
 
             Status = CycleStatus.NotStarted;
 
-            if (!(host.Owner.GetEntity(pet.PlayerOwner.Id) is Player player))
+            if (!(host.World.GetEntity(pet.PlayerOwner.Id) is Player player))
                 return;
 
             Status = CycleStatus.InProgress;

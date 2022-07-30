@@ -10,7 +10,7 @@ namespace wServer.core.commands
             {
             }
 
-            protected override bool Process(Player player, TickData time, string args)
+            protected override bool Process(Player player, TickTime time, string args)
             {
                 for (int i = 4; i < 12; i++)
                     player.Inventory[i] = null;

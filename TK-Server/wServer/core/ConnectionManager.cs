@@ -1,5 +1,6 @@
 ﻿using CA.Extensions.Concurrent;
 using common.isc.data;
+using common.resources;
 using System;
 using System.Collections.Concurrent;
 using System.IO;
@@ -71,14 +72,14 @@ namespace wServer.core
             Connecting.TryRemove(client, out _); // _ is a discard
             // update PlayerInfo with world data
             var plrInfo = Clients[client];
-            plrInfo.WorldInstance = client.Player.Owner.Id;
-            plrInfo.WorldName = client.Player.Owner.Name;
+            plrInfo.WorldInstance = client.Player.World.Id;
+            plrInfo.WorldName = client.Player.World.IdName;
         }
 
         public void Disconnect(Client client)
         {
             var player = client.Player;
-            player?.Owner?.LeaveWorld(player);
+            player?.World?.LeaveWorld(player);
 
             Clients.TryRemove(client, out var playerInfo);
 
@@ -152,8 +153,8 @@ namespace wServer.core
 
             if (gameId == World.Test && acc.Admin)
             {
-                world = new Test();
-                CoreServerManager.WorldManager.AddWorld(world);
+                //world = new Test();
+                //CoreServerManager.WorldManager.CreateNewWorld(world);
             }
 
             if (world == null || world.Deleted)
@@ -168,16 +169,16 @@ namespace wServer.core
                 world = client.CoreServerManager.WorldManager.GetWorld(World.Nexus);
             }
 
-            if (world is Test && !(world as Test).JsonLoaded && !acc.Admin)
+            if (world is TestWorld && !(world as TestWorld).JsonLoaded && !acc.Admin)
             {
                 client.SendFailure("Only players with admin permissions can make test maps.", Failure.MessageWithDisconnect);
                 return;
             }
 
-            if (world.IsLimbo)
-                world = world.GetInstance(client);
+            //if (world.Instance)
+            //    world = world.GetInstance(client);
 
-            if (!world.AllowedAccess(client) && !(world is GuildHall))
+            if (!world.AllowedAccess(client) && world.InstanceType != WorldResourceInstanceType.Guild)
             {
                 if (!world.Persist && world.TotalConnects <= 0)
                     client.CoreServerManager.WorldManager.RemoveWorld(world);
@@ -190,7 +191,7 @@ namespace wServer.core
                     Txt = "Access denied"
                 });
 
-                if (!(world is Nexus))
+                if (!(world is NexusWorld))
                     world = client.CoreServerManager.WorldManager.GetWorld(World.Nexus);
                 else
                 {
@@ -199,7 +200,7 @@ namespace wServer.core
                 }
             }
 
-            if (world is Test && !(world as Test).JsonLoaded)
+            if (world is TestWorld && !(world as TestWorld).JsonLoaded)
             {
                 var mapFolder = $"{CoreServerManager.ServerConfig.serverSettings.logFolder}/maps";
 
@@ -208,12 +209,12 @@ namespace wServer.core
 
                 System.IO.File.WriteAllText($"{mapFolder}/{acc.Name}_{DateTime.Now.Ticks}.jm", connectionInfo.MapInfo);
 
-                (world as Test).LoadJson(connectionInfo.MapInfo);
+                (world as TestWorld).LoadJson(connectionInfo.MapInfo);
 
                 var dreamName = client.Account.Name.ToLower().EndsWith("s") ? client.Account.Name + "' Dream World" : client.Account.Name + "'s Dream World";
 
-                world.SBName = dreamName;
-                world.Name = dreamName;
+                world.DisplayName = dreamName;
+                world.IdName = dreamName;
 
                 //client.Manager.Monitor.AddPortal(world.Id);
             }
@@ -239,8 +240,8 @@ namespace wServer.core
                     Music = world.Music,
                     Width = mapSize,
                     Height = mapSize,
-                    Name = world.Name,
-                    DisplayName = world.SBName,
+                    Name = world.IdName,
+                    DisplayName = world.DisplayName,
                     Seed = seed,
                     Background = world.Background,
                     Difficulty = world.Difficulty,

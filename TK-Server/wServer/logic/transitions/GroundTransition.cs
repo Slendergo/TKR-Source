@@ -16,12 +16,12 @@ namespace wServer.logic.transitions
             _ground = ground;
         }
 
-        protected override bool TickCore(Entity host, TickData time, ref object state)
+        protected override bool TickCore(Entity host, TickTime time, ref object state)
         {
             if (_groundType == null)
                 _groundType = host.CoreServerManager.Resources.GameData.IdToTileType[_ground];
 
-            var tile = host.Owner.Map[(int)host.X, (int)host.Y];
+            var tile = host.World.Map[(int)host.X, (int)host.Y];
 
             return tile.TileId == _groundType;
         }

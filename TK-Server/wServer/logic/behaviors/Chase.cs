@@ -28,7 +28,7 @@ namespace wServer.logic.behaviors
             Resting
         }
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             var s = state == null ? new FollowState() : (FollowState)state;
 

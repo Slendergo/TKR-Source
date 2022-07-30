@@ -13,10 +13,10 @@ namespace wServer.networking.handlers
 
         private void Handle(Client client, Escape packet)
         {
-            if (client.Player == null || client.Player.Owner == null)
+            if (client.Player == null || client.Player.World == null)
                 return;
 
-            var map = client.Player.Owner;
+            var map = client.Player.World;
 
             if (map.Id == World.Nexus)
             {

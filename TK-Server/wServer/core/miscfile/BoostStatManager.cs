@@ -46,7 +46,7 @@ namespace wServer.core
                 {
                     try
                     {
-                        var surrounding = _player.Owner.EnemiesCollision.HitTest(_player.X, _player.Y, 10).Count();
+                        var surrounding = _player.World.EnemiesCollision.HitTest(_player.X, _player.Y, 10).Count();
                         var maxBoost = 20;
                         var countBoost = 0;
                         for (int j = 0; j < surrounding; j++)

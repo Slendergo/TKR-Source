@@ -24,7 +24,7 @@ namespace wServer.networking
 
         protected bool IsAvailable(Client client)
         {
-            if (client == null || client.Account == null || client.Player == null || client.Player.Owner == null || IsTest(client))
+            if (client == null || client.Account == null || client.Player == null || client.Player.World == null || IsTest(client))
                 return false;
 
             return true;
@@ -60,6 +60,6 @@ namespace wServer.networking
             return true;
         }
 
-        protected bool IsTest(Client cli) => cli?.Player?.Owner is Test;
+        protected bool IsTest(Client cli) => cli?.Player?.World is TestWorld;
     }
 }

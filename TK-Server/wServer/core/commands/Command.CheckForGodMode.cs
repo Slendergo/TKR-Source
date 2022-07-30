@@ -10,13 +10,13 @@ namespace wServer.core.commands
 			{
 			}
 
-			protected override bool Process(Player player, TickData time, string color)
+			protected override bool Process(Player player, TickTime time, string color)
 			{
 				for (int i = 0; i < 5; i++)
 				{
 					var e = Entity.Resolve(player.CoreServerManager, "shtrs Ice Shield");
 					e.Move(player.X, player.Y);
-					player.Owner.EnterWorld(e);
+					player.World.EnterWorld(e);
 					e.Spawned = true;
 				}
 				return true;

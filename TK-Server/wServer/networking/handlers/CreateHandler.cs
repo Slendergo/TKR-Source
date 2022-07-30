@@ -17,7 +17,9 @@ namespace wServer.networking.handlers
         {
             client.Character = character;
 
-            var target = client.CoreServerManager.WorldManager.Worlds[client.TargetWorld];
+            var target = client.CoreServerManager.WorldManager.GetWorld(client.TargetWorld);
+            if (target == null)
+                target = client.CoreServerManager.WorldManager.GetWorld(-2); // return to nexus
 
             client.Player = new Player(client);
 

@@ -14,7 +14,7 @@ namespace wServer.networking.handlers.party
 
         protected override void HandlePacket(Client client, PartyInvite packet)
         {
-            if (client == null || IsTest(client) || client.Player == null || client.Player.Owner == null)
+            if (client == null || IsTest(client) || client.Player == null || client.Player.World == null)
                 return;
 
             //client.Player.SendInfo("This feature is temporarily disabled until further notice.");

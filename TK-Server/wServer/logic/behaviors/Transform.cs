@@ -10,11 +10,11 @@ namespace wServer.logic.behaviors
 
         public Transform(string target) => this.target = GetObjType(target);
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             var entity = Entity.Resolve(host.CoreServerManager, target);
 
-            if (entity is Portal && host.Owner.Name.Contains("Arena"))
+            if (entity is Portal && host.World.IdName.Contains("Arena"))
                 return;
 
             entity.Move(host.X, host.Y);
@@ -25,8 +25,8 @@ namespace wServer.logic.behaviors
                 (entity as Enemy).ApplyConditionEffect(new ConditionEffect() { Effect = ConditionEffectIndex.Invisible, DurationMS = -1 });
             }
 
-            host.Owner.EnterWorld(entity);
-            host.Owner.LeaveWorld(host);
+            host.World.EnterWorld(entity);
+            host.World.LeaveWorld(host);
         }
     }
 }

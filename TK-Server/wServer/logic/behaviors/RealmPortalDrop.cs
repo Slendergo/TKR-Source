@@ -7,9 +7,9 @@ namespace wServer.logic.behaviors
     {
         protected internal override void Resolve(State parent) => parent.Death += (e, s) =>
         {
-            var owner = s.Host.Owner;
+            var owner = s.Host.World;
 
-            if (owner.Name.Contains("DeathArena") || s.Host.Spawned)
+            if (owner.IdName.Contains("DeathArena") || s.Host.Spawned)
                 return;
 
             var en = s.Host.GetNearestEntity(100, 0x0704);
@@ -20,21 +20,21 @@ namespace wServer.logic.behaviors
             else
                 portal.Move(s.Host.X, s.Host.Y);
 
-            s.Host.Owner.EnterWorld(portal);
+            s.Host.World.EnterWorld(portal);
         };
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state)
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state)
         {
             if (host.GetNearestEntity(100, 0x5e4b) != null)
                 return;
 
             var opener = Entity.Resolve(host.CoreServerManager, "Realm Portal Opener");
 
-            host.Owner.EnterWorld(opener);
+            host.World.EnterWorld(opener);
             opener.Move(host.X, host.Y);
         }
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         { }
     }
 }

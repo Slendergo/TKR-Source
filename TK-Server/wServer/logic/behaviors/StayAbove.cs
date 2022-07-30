@@ -16,17 +16,17 @@ namespace wServer.logic.behaviors
             this.altitude = altitude;
         }
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             Status = CycleStatus.NotStarted;
 
-            if (host == null || host.Owner == null)
+            if (host == null || host.World == null)
                 return;
 
             if (host.HasConditionEffect(ConditionEffects.Paralyzed))
                 return;
 
-            var map = host.Owner.Map;
+            var map = host.World.Map;
             var tile = map[(int)host.X, (int)host.Y];
 
             if (tile == null)

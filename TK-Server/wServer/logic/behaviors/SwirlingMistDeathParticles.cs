@@ -5,16 +5,16 @@ namespace wServer.logic.behaviors
 {
     internal class SwirlingMistDeathParticles : Behavior
     {
-        protected override void OnStateEntry(Entity host, TickData time, ref object state)
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state)
         {
             var entity = Entity.Resolve(host.CoreServerManager, "SwirlingMist Particles");
             entity.Move(host.X, host.Y);
 
-            host.Owner.Timers.Add(new WorldTimer(1000, (w, t) => w.LeaveWorld(entity)));
-            host.Owner.EnterWorld(entity);
+            host.World.Timers.Add(new WorldTimer(1000, (w, t) => w.LeaveWorld(entity)));
+            host.World.EnterWorld(entity);
         }
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         { }
     }
 }

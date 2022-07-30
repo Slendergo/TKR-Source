@@ -95,7 +95,7 @@ namespace wServer.core.objects
         public string Name { get => _name.GetValue(); set => _name?.SetValue(value); }
         public ObjectDesc ObjectDesc => _desc;
         public ushort ObjectType { get; protected set; }
-        public World Owner { get; private set; }
+        public World World { get; private set; }
         public CollisionMap<Entity> Parent { get; set; }
         Projectile[] IProjectileOwner.Projectiles => _projectiles;
         public int QuestLevel { get; set; } = 1;
@@ -268,7 +268,7 @@ namespace wServer.core.objects
             IsRemovedFromWorld = true;
 
             WhenDestroying(this);
-            Owner.DisposeEntity(this);
+            World.DisposeEntity(this);
         }
 
         public ObjectStats ExportStats()
@@ -287,7 +287,7 @@ namespace wServer.core.objects
 
         public bool HasConditionEffect(ConditionEffects eff) => (ConditionEffects & eff) != 0;
 
-        public virtual bool HitByProjectile(Projectile projectile, TickData time)
+        public virtual bool HitByProjectile(Projectile projectile, TickTime time)
         {
             if (ObjectDesc == null)
                 return true;
@@ -295,7 +295,7 @@ namespace wServer.core.objects
             return ObjectDesc.Enemy || ObjectDesc.Player;
         }
 
-        public virtual void Init(World owner) => Owner = owner;
+        public virtual void Init(World owner) => World = owner;
 
         public void InvokeStatChange(StatDataType t, object val, bool updateSelfOnly = false) => StatChanged?.Invoke(this, new StatChangedEventArgs(t, val, updateSelfOnly));
 
@@ -309,8 +309,8 @@ namespace wServer.core.objects
 
         public void MoveEntity(float x, float y)
         {
-            if (Owner != null && !(this is Projectile) && !(this is Pet) && (!(this is StaticObject) || (this as StaticObject).Hittestable))
-                ((this is Enemy || this is StaticObject && !(this is Decoy)) ? Owner.EnemiesCollision : Owner.PlayersCollision).Move(this, x, y);
+            if (World != null && !(this is Projectile) && !(this is Pet) && (!(this is StaticObject) || (this as StaticObject).Hittestable))
+                ((this is Enemy || this is StaticObject && !(this is Decoy)) ? World.EnemiesCollision : World.PlayersCollision).Move(this, x, y);
 
             X = x; Y = y;
         }
@@ -350,12 +350,12 @@ namespace wServer.core.objects
             _stateEntry = true;
         }
 
-        public virtual void Tick(TickData time)
+        public virtual void Tick(TickTime time)
         {
-            if (this == null || this is Projectile || Owner == null)
+            if (this == null || this is Projectile || World == null)
                 return;
 
-            if (CurrentState != null && Owner != null)
+            if (CurrentState != null && World != null)
             {
                 if (!HasConditionEffect(ConditionEffects.Stasis) && !TickStateManually && (this.AnyPlayerNearby() || ConditionEffects != 0))
                     TickState(time);
@@ -368,7 +368,7 @@ namespace wServer.core.objects
                 ProcessConditionEffects(time);
         }
 
-        public void TickState(TickData time)
+        public void TickState(TickTime time)
         {
             if (_stateEntry)
             {
@@ -405,7 +405,7 @@ namespace wServer.core.objects
                 {
                     foreach (var i in state.Behaviors)
                     {
-                        if (this == null || Owner == null)
+                        if (this == null || World == null)
                             break;
 
                         i.Tick(this, time);
@@ -417,7 +417,7 @@ namespace wServer.core.objects
                     continue;
                 }
 
-                if (this == null || Owner == null)
+                if (this == null || World == null)
                     break;
 
                 state = state.Parent;
@@ -443,10 +443,10 @@ namespace wServer.core.objects
             var xx = (int)x;
             var yy = (int)y;
 
-            if (!Owner.Map.Contains(xx, yy))
+            if (!World.Map.Contains(xx, yy))
                 return true;
 
-            var tile = Owner.Map[xx, yy];
+            var tile = World.Map[xx, yy];
 
             if (tile.ObjType != 0)
             {
@@ -461,13 +461,13 @@ namespace wServer.core.objects
 
         public bool TileOccupied(float x, float y)
         {
-            if (this == null || Owner == null)
+            if (this == null || World == null)
                 return false;
 
             var x_ = (int)x;
             var y_ = (int)y;
 
-            var map = Owner.Map;
+            var map = World.Map;
 
             if (map == null)
                 return false;
@@ -531,7 +531,7 @@ namespace wServer.core.objects
 
         public void ValidateAndMove(float x, float y)
         {
-            if (this == null || Owner == null)
+            if (this == null || World == null)
                 return;
 
             var pos = new FPoint();
@@ -674,7 +674,7 @@ namespace wServer.core.objects
                     CurrentState = CurrentState.States[0];
         }
 
-        private void ProcessConditionEffects(TickData time)
+        private void ProcessConditionEffects(TickTime time)
         {
             if (_effects == null || !_tickingEffects) return;
 
@@ -810,7 +810,7 @@ namespace wServer.core.objects
             if (entity is Projectile)
                 return;
 
-            var players = Owner.GetPlayers().ToArray();
+            var players = World.GetPlayers().ToArray();
             if (players.Length == 0)
                 return;
 

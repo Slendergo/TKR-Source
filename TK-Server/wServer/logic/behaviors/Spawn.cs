@@ -23,7 +23,7 @@ namespace wServer.logic.behaviors
             _spawnedByBehav = spawnedByBheav;
         }
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state)
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state)
         {
             state = new SpawnState() { CurrentNumber = _initialSpawn, RemainingTime = _coolDown.Next(Random) };
 
@@ -54,12 +54,12 @@ namespace wServer.logic.behaviors
                     }
                 }
 
-                host.Owner.EnterWorld(entity);
+                host.World.EnterWorld(entity);
                 (state as SpawnState).CurrentNumber++;
             }
         }
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             if (!(state is SpawnState spawn))
                 return;
@@ -84,7 +84,7 @@ namespace wServer.logic.behaviors
                     }
                 }
 
-                host.Owner.EnterWorld(entity);
+                host.World.EnterWorld(entity);
 
                 spawn.RemainingTime = _coolDown.Next(Random);
                 spawn.CurrentNumber++;

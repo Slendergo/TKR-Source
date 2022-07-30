@@ -32,9 +32,9 @@ namespace wServer.logic.behaviors
             this.color = color;
         }
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state) => state = 0;
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state) => state = 0;
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             var pkts = new List<Packet>();
             var cool = (int)state;
@@ -53,8 +53,8 @@ namespace wServer.logic.behaviors
                     var target = fixedAngle != null ? new Position() { X = (float)(range * Math.Cos(fixedAngle.Value)) + host.X, Y = (float)(range * Math.Sin(fixedAngle.Value)) + host.Y }
                     : new Position() { X = player.X, Y = player.Y };
 
-                    host.Owner.BroadcastIfVisible(new ShowEffect() { EffectType = EffectType.Throw, Color = new ARGB(color), TargetObjectId = host.Id, Pos1 = target, Pos2 = new Position() { X = 222 } }, host, PacketPriority.Low);
-                    host.Owner.Timers.Add(new WorldTimer(1500, (world, t) =>
+                    host.World.BroadcastIfVisible(new ShowEffect() { EffectType = EffectType.Throw, Color = new ARGB(color), TargetObjectId = host.Id, Pos1 = target, Pos2 = new Position() { X = 222 } }, host, PacketPriority.Low);
+                    host.World.Timers.Add(new WorldTimer(1500, (world, t) =>
                     {
                         world.BroadcastIfVisible(new Aoe()
                         {

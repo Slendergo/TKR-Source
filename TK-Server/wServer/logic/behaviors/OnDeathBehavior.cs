@@ -11,7 +11,7 @@ namespace wServer.logic.behaviors
 
         protected internal override void Resolve(State parent) => parent.Death += (s, e) => behavior.OnStateEntry(e.Host, e.Time);
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         { }
     }
 }

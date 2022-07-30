@@ -10,18 +10,18 @@ namespace wServer.core.commands
             public ClearSpawns() : base("clearspawn", permLevel: 90, alias: "cs")
             { }
 
-            protected override bool Process(Player player, TickData time, string args)
+            protected override bool Process(Player player, TickTime time, string args)
             {
-                var entities = player.Owner.Enemies
+                var entities = player.World.Enemies
                     .ValueWhereAsParallel(_ => _.Spawned);
                 for (var i = 0; i < entities.Length; i++)
                     entities[i].Death(time);
 
                 var total = entities.Length;
-                var staticObjs = player.Owner.StaticObjects
+                var staticObjs = player.World.StaticObjects
                     .ValueWhereAsParallel(_ => _.Spawned);
                 for (var i = 0; i < staticObjs.Length; i++)
-                    player.Owner.LeaveWorld(staticObjs[i]);
+                    player.World.LeaveWorld(staticObjs[i]);
 
                 total += staticObjs.Length;
                 player.SendInfo($"{total} spawned entit{(total > 1 ? "ies" : "y")} removed!");

@@ -46,7 +46,7 @@ namespace wServer.core.objects
 
             if (newGoal > FameGoal)
             {
-                Owner.BroadcastIfVisible(new Notification()
+                World.BroadcastIfVisible(new Notification()
                 {
                     ObjectId = Id,
                     Color = new ARGB(0xFF00FF00),
@@ -56,7 +56,7 @@ namespace wServer.core.objects
             }
             else if (newFame != Fame)
             {
-                Owner.BroadcastIfVisible(new Notification()
+                World.BroadcastIfVisible(new Notification()
                 {
                     ObjectId = Id,
                     Color = new ARGB(0xFFE25F00),
@@ -87,7 +87,7 @@ namespace wServer.core.objects
         {
             if (enemy == Quest)
             {
-                Owner.BroadcastIfVisible(new Notification()
+                World.BroadcastIfVisible(new Notification()
                 {
                     ObjectId = Id,
                     Color = new ARGB(0xFF00FF00),
@@ -118,18 +118,18 @@ namespace wServer.core.objects
             return ret;
         }
 
-        public void HandleQuest(TickData time, bool force = false, Position? destination = null)
+        public void HandleQuest(TickTime time, bool force = false, Position? destination = null)
         {
-            if (Owner is Realm)
+            if (World is RealmWorld)
                 CheckForEncounter();
 
-            if (force || Quest == null || Quest.Owner == null || time.TickCount % 500 == 0)
+            if (force || Quest == null || Quest.World == null || time.TickCount % 500 == 0)
                 CheckForEncounter();
         }
 
-        public void HandleSpecialEnemies(TickData time, bool force = false)
+        public void HandleSpecialEnemies(TickTime time, bool force = false)
         {
-            if (this == null || Owner == null || Owner.SpecialEnemies == null || time.TickCount % 500 != 0)
+            if (this == null || World == null || World.SpecialEnemies == null || time.TickCount % 500 != 0)
                 return;
 
             if (force || SpookyQuest == null || AvatarQuest == null || CrystalQuest == null)
@@ -184,7 +184,7 @@ namespace wServer.core.objects
                 MP = Stats[1];
 
                 if (Level == 20)
-                    Owner.PlayersBroadcastAsParallel(_ => _.SendInfo($"{Name} achieved level 20"));
+                    World.PlayersBroadcastAsParallel(_ => _.SendInfo($"{Name} achieved level 20"));
                 else
                     // to get exp scaled to new exp goal
                     InvokeStatChange(StatDataType.Experience, Experience - GetLevelExp(Level), true);
@@ -222,11 +222,11 @@ namespace wServer.core.objects
             var pX = !destination.HasValue ? X : destination.Value.X;
             var pY = !destination.HasValue ? Y : destination.Value.Y;
 
-            if (Owner == null || Owner.Quests == null)
+            if (World == null || World.Quests == null)
                 return null;
 
             double? bestScore = null;
-            foreach (var entry in Owner.Quests)
+            foreach (var entry in World.Quests)
             {
                 var quest = entry.Value;
                 if (quest.ObjectDesc == null || !quest.ObjectDesc.Quest)
@@ -235,7 +235,7 @@ namespace wServer.core.objects
                 var maxVisibleLevel = Math.Min(quest.QuestLevel + 5, 20);
                 var minVisibleLevel = Math.Max(quest.QuestLevel - 5, 1);
                 var force = false;
-                if (!(quest.Owner is Realm) && quest.ObjectDesc.Quest && !quest.ObjectDesc.Hero)
+                if (!(quest.World is RealmWorld) && quest.ObjectDesc.Quest && !quest.ObjectDesc.Hero)
                     force = true;
 
                 if (Level >= minVisibleLevel && Level <= maxVisibleLevel || force)
@@ -258,7 +258,7 @@ namespace wServer.core.objects
         }
 
         private Enemy FindSpecialEnemy(string objectId)
-            => Owner.SpecialEnemies
+            => World.SpecialEnemies
                 .ValueWhereAsParallel(_ => _ != null
                     && _.ObjectDesc != null
                     && _.ObjectDesc.ObjectId.Equals(objectId))

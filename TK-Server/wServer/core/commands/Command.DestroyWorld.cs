@@ -1,4 +1,5 @@
-﻿using wServer.core.objects;
+﻿using common.resources;
+using wServer.core.objects;
 
 namespace wServer.core.commands
 {
@@ -9,11 +10,11 @@ namespace wServer.core.commands
             public DestroyWorld() : base("destroyWorld", permLevel: 100, alias: "dw")
             { }
 
-            protected override bool Process(Player player, TickData time, string args)
+            protected override bool Process(Player player, TickTime time, string args)
             {
-                var world = player.Owner;
+                var world = player.World;
 
-                if (!world.IsDungeon)
+                if (world.InstanceType != WorldResourceInstanceType.Dungeon)
                 {
                     player.SendError("You cannot destroy worlds that aren't dungeon types.");
                     return false;
@@ -22,7 +23,7 @@ namespace wServer.core.commands
                 if (player.CoreServerManager.WorldManager.RemoveWorld(world))
                 {
                     player.SendInfo("Successfully removed this world instance! Disconnecting all players within 3 seconds.");
-                    player.Owner.Timers.Add(new WorldTimer(3000, (w, t) => w.PlayersBroadcastAsParallel(_ => _.Client.Disconnect("World destroyed by Admin"))));
+                    player.World.Timers.Add(new WorldTimer(3000, (w, t) => w.PlayersBroadcastAsParallel(_ => _.Client.Disconnect("World destroyed by Admin"))));
                     return true;
                 }
 

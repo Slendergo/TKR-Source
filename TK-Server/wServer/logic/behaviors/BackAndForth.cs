@@ -15,7 +15,7 @@ namespace wServer.logic.behaviors
             this.distance = distance;
         }
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             var dist = state == null ? distance : (float)state;
 

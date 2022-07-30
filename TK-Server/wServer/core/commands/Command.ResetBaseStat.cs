@@ -10,7 +10,7 @@ namespace wServer.core.commands
             {
             }
 
-            protected override bool Process(Player player, TickData time, string args)
+            protected override bool Process(Player player, TickTime time, string args)
             {
                 player.Client.Account.SetBaseStat = 0;
                 player.Stats.Base.ReCalculateValues();

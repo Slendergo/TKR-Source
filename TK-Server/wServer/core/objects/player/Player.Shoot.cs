@@ -18,7 +18,7 @@ namespace wServer.core.objects
 
         public bool IsNoClipping()
         {
-            if (Owner == null || !TileOccupied(RealX, RealY) && !TileFullOccupied(RealX, RealY))
+            if (World == null || !TileOccupied(RealX, RealY) && !TileFullOccupied(RealX, RealY))
                 return false;
 
             CheatLog.Info($"{Name} is walking on an occupied tile.");

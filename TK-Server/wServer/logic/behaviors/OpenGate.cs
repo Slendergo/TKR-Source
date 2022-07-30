@@ -29,9 +29,9 @@ namespace wServer.logic.behaviors
             usearea = true;
         }
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state)
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state)
         {
-            var map = host.Owner.Map;
+            var map = host.World.Map;
             var w = map.Width;
             var h = map.Height;
 
@@ -39,29 +39,29 @@ namespace wServer.logic.behaviors
                 for (var x = (int)host.X - area; x <= (int)host.X + area; x++)
                     for (var y = (int)host.Y - area; y <= (int)host.Y + area; y++)
                     {
-                        var tile = host.Owner.Map[x, y];
+                        var tile = host.World.Map[x, y];
 
                         if (tile.ObjType == host.CoreServerManager.Resources.GameData.DisplayIdToObjectType[target])
                         {
                             tile.ObjType = 0;
                             tile.UpdateCount++;
 
-                            host.Owner.Map[x, y] = tile;
+                            host.World.Map[x, y] = tile;
                         }
                     }
             else
                 for (int x = xMax; x <= xMax; x++)
                     for (int y = yMin; y <= yMax; y++)
                     {
-                        var tile = host.Owner.Map[x, y];
+                        var tile = host.World.Map[x, y];
                         tile.ObjType = 0;
                         tile.UpdateCount++;
 
-                        host.Owner.Map[x, y] = tile;
+                        host.World.Map[x, y] = tile;
                     }
         }
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         { }
     }
 }

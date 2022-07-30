@@ -26,11 +26,11 @@ namespace wServer.core.objects
             duration = (int)(effDuration * 1000);
         }
 
-        public override void Tick(TickData time)
+        public override void Tick(TickTime time)
         {
             if (t / 500 == p)
             {
-                Owner.BroadcastIfVisible(new ShowEffect()
+                World.BroadcastIfVisible(new ShowEffect()
                 {
                     EffectType = EffectType.Trap,
                     Color = new ARGB(0xff9000ff),
@@ -59,9 +59,9 @@ namespace wServer.core.objects
             base.Tick(time);
         }
 
-        private void Explode(TickData time)
+        private void Explode(TickTime time)
         {
-            Owner.BroadcastIfVisible(new ShowEffect()
+            World.BroadcastIfVisible(new ShowEffect()
             {
                 EffectType = EffectType.AreaBlast,
                 Color = new ARGB(0xff9000ff),
@@ -78,7 +78,7 @@ namespace wServer.core.objects
                 });
             });
 
-            Owner.LeaveWorld(this);
+            World.LeaveWorld(this);
         }
     }
 }

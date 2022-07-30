@@ -13,7 +13,7 @@ namespace wServer.core.commands
             {
             }
 
-            protected override bool Process(Player player, TickData time, string args)
+            protected override bool Process(Player player, TickTime time, string args)
             {
                 var client = player.CoreServerManager.ConnectionManager.Clients
                     .KeyWhereAsParallel(_ => _.Account.Name.EqualsIgnoreCase(args))

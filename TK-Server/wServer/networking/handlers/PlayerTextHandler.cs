@@ -11,7 +11,7 @@ namespace wServer.networking.handlers
         public string Message { get; private set; }
         public long Time { get; private set; }
 
-        public PlayerMessage(Player player, TickData time, string msg)
+        public PlayerMessage(Player player, TickTime time, string msg)
         {
             Player = player;
             Message = msg;
@@ -25,14 +25,14 @@ namespace wServer.networking.handlers
 
         protected override void HandlePacket(Client client, PlayerText packet)
         {
-            if (client?.Player?.Owner == null || packet.Text.Length > 512)
+            if (client?.Player?.World == null || packet.Text.Length > 512)
                 return;
             client.Player.AddPendingAction(t => Handle(client.Player, t, packet.Text));
         }
 
-        private void Handle(Player player, TickData time, string text)
+        private void Handle(Player player, TickTime time, string text)
         {
-            if (player?.Owner == null || text.Length > 512)
+            if (player?.World == null || text.Length > 512)
                 return;
 
             var manager = player.CoreServerManager;
@@ -67,7 +67,7 @@ namespace wServer.networking.handlers
                 }
 
                 // save message for mob behaviors
-                player.Owner.ChatReceived(player, text);
+                player.World.ChatReceived(player, text);
 
                 manager.ChatManager.Say(player, text);
             }

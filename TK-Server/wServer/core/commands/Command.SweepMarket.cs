@@ -11,7 +11,7 @@ namespace wServer.core.commands
             {
             }
 
-            protected override bool Process(Player player, TickData time, string args)
+            protected override bool Process(Player player, TickTime time, string args)
             {
                 DbMarketData.CleanMarket(Program.CoreServerManager.Database);
                 player.SendInfo("Sweeped");

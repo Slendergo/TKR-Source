@@ -18,7 +18,7 @@ namespace wServer.networking.handlers
             if (client.Player == null || IsTest(client))
                 return;
 
-            if (!(client.Player.Owner.GetEntity(objId) is Player targetPlayer) || targetPlayer.Client.Account == null)
+            if (!(client.Player.World.GetEntity(objId) is Player targetPlayer) || targetPlayer.Client.Account == null)
             {
                 client.Player.SendError("Player not found.");
                 return;

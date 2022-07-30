@@ -14,7 +14,7 @@ namespace wServer.core.commands
             public BanAccount() : base("ban", permLevel: 80)
             { }
 
-            protected override bool Process(Player player, TickData time, string args)
+            protected override bool Process(Player player, TickTime time, string args)
             {
                 BanInfo bInfo;
 

@@ -16,7 +16,7 @@ namespace wServer.core.commands
             {
             }
 
-            protected override bool Process(Player player, TickData time, string name)
+            protected override bool Process(Player player, TickTime time, string name)
             {
                 if (string.IsNullOrWhiteSpace(name))
                 {
@@ -28,21 +28,21 @@ namespace wServer.core.commands
                     .KeyWhereAsParallel(_ => _.Account != null && _.Account.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase))
                     .SingleOrDefault();
 
-                if (target?.Player?.Owner == null || !target.Player.CanBeSeenBy(player))
+                if (target?.Player?.World == null || !target.Player.CanBeSeenBy(player))
                 {
                     player.SendError("Player not found!");
                     return false;
                 }
 
-                if (target?.Player?.Owner is Vault)
+                if (target?.Player?.World is VaultWorld)
                 {
                     player.SendError("He's in the Vault.");
                     return false;
                 }
 
-                var owner = target.Player.Owner;
+                var owner = target.Player.World;
 
-                if ((owner.Id == World.Vault || owner.Name.Contains("Vault")) && player.Rank < 110)
+                if ((owner.Id == World.Vault || owner.IdName.Contains("Vault")) && player.Rank < 110)
                 {
                     player.SendError("Only rank 110 accounts can visit other players' vault.");
                     return false;
@@ -52,7 +52,7 @@ namespace wServer.core.commands
                 {
                     Host = "",
                     GameId = owner.Id,
-                    Name = owner.SBName
+                    Name = owner.DisplayName
                 });
                 return true;
             }

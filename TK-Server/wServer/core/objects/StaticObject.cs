@@ -38,7 +38,7 @@ namespace wServer.core.objects
                 return null;
         }
 
-        public override bool HitByProjectile(Projectile projectile, TickData time)
+        public override bool HitByProjectile(Projectile projectile, TickTime time)
         {
             if (Vulnerable && projectile.ProjectileOwner is Player)
             {
@@ -51,7 +51,7 @@ namespace wServer.core.objects
 
                 HP -= dmg;
 
-                Owner.BroadcastIfVisibleExclude(new Damage()
+                World.BroadcastIfVisibleExclude(new Damage()
                 {
                     TargetId = Id,
                     Effects = 0,
@@ -65,7 +65,7 @@ namespace wServer.core.objects
             return true;
         }
 
-        public override void Tick(TickData time)
+        public override void Tick(TickTime time)
         {
             if (Vulnerable)
             {
@@ -85,15 +85,15 @@ namespace wServer.core.objects
                 var x = (int)(X - 0.5);
                 var y = (int)(Y - 0.5);
 
-                if (Owner?.Map?.Contains(x, y) ?? false)
-                    if (ObjectDesc != null && Owner.Map[x, y].ObjType == ObjectType)
+                if (World?.Map?.Contains(x, y) ?? false)
+                    if (ObjectDesc != null && World.Map[x, y].ObjType == ObjectType)
                     {
-                        var tile = Owner.Map[x, y];
+                        var tile = World.Map[x, y];
                         tile.ObjType = 0;
                         tile.UpdateCount++;
                     }
 
-                Owner?.LeaveWorld(this);
+                World?.LeaveWorld(this);
 
                 return false;
             }

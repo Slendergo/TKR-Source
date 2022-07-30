@@ -129,13 +129,11 @@
     <Compile Include="core\commands\Command.Kick.cs" />
     <Compile Include="core\commands\Command.KillAll.cs" />
     <Compile Include="core\commands\Command.KillPlayer.cs" />
-    <Compile Include="core\commands\Command.Link.cs" />
     <Compile Include="core\commands\Command.MakeDonor.cs" />
     <Compile Include="core\commands\Command.Max.cs" />
     <Compile Include="core\commands\Command.MaxUpgrade.cs" />
     <Compile Include="core\commands\Command.Mute.cs" />
     <Compile Include="core\commands\Command.Online.cs" />
-    <Compile Include="core\commands\Command.Quake.cs" />
     <Compile Include="core\commands\Command.Rank.cs" />
     <Compile Include="core\commands\Command.Rename.cs" />
     <Compile Include="core\commands\Command.ResetAttributes.cs" />
@@ -159,7 +157,6 @@
     <Compile Include="core\commands\Command.TpPos.cs" />
     <Compile Include="core\commands\Command.TpQuest.cs" />
     <Compile Include="core\commands\Command.UnbanAccount.cs" />
-    <Compile Include="core\commands\Command.Unlink.cs" />
     <Compile Include="core\commands\Command.Unmute.cs" />
     <Compile Include="core\commands\Command.Unname.cs" />
     <Compile Include="core\commands\Command.UpdateGuilds.cs" />
@@ -181,6 +178,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="core\setpieces\StrangeMagician.cs" />
+    <Compile Include="core\worlds\impl\WorldBranch.cs" />
     <Compile Include="logic\behaviors\ChangeMusic.cs" />
     <Compile Include="logic\behaviors\ChangeMusicOnDeath.cs" />
     <Compile Include="logic\behaviors\Roar.cs" />
@@ -213,13 +211,11 @@
     <Compile Include="core\miscfile\StatValue.cs" />
     <Compile Include="core\miscfile\SV.cs" />
     <Compile Include="core\miscfile\ThreadSingle.cs" />
-    <Compile Include="core\miscfile\TickData.cs" />
+    <Compile Include="core\miscfile\TickTime.cs" />
     <Compile Include="core\miscfile\Empty.cs" />
     <Compile Include="core\ConnectionManager.cs" />
-    <Compile Include="core\miscfile\TickLoopBatch.cs" />
     <Compile Include="core\miscfile\TickLoopSingle.cs" />
     <Compile Include="core\miscfile\TickThread.cs" />
-    <Compile Include="core\miscfile\TickThreadBatch.cs" />
     <Compile Include="core\miscfile\TickThreadSingle.cs" />
     <Compile Include="core\miscfile\TimedPosition.cs" />
     <Compile Include="core\miscfile\TradeItem.cs" />
@@ -444,6 +440,7 @@
     <Compile Include="networking\handlers\UpgradeBaseStatHandler.cs" />
     <Compile Include="networking\handlers\UseItemHandler.cs" />
     <Compile Include="networking\handlers\UsePortalHandler.cs" />
+    <Compile Include="networking\InboundBuffer.cs" />
     <Compile Include="networking\PacketHandlerBase.cs" />
     <Compile Include="networking\PacketHandlers.cs" />
     <Compile Include="networking\PacketPriority.cs" />
@@ -626,14 +623,11 @@
     <Compile Include="core\terrain\JsonMapExporter.cs" />
     <Compile Include="core\terrain\Wmap.cs" />
     <Compile Include="core\worlds\DungeonTemplates.cs" />
-    <Compile Include="core\worlds\DynamicWorld.cs" />
-    <Compile Include="core\worlds\logic\OryxCastle.cs" />
-    <Compile Include="core\worlds\logic\GuildHall.cs" />
-    <Compile Include="core\worlds\logic\Nexus.cs" />
-    <Compile Include="core\worlds\logic\Realm.cs" />
-    <Compile Include="core\worlds\logic\Test.cs" />
-    <Compile Include="core\worlds\logic\Vault.cs" />
-    <Compile Include="core\worlds\Marketplace.cs" />
+    <Compile Include="core\worlds\logic\NexusWorld.cs" />
+    <Compile Include="core\worlds\logic\RealmWorld.cs" />
+    <Compile Include="core\worlds\logic\TestWorld.cs" />
+    <Compile Include="core\worlds\logic\VaultWorld.cs" />
+    <Compile Include="core\worlds\logic\MarketplaceWorld.cs" />
     <Compile Include="core\worlds\World.cs" />
     <Compile Include="core\miscfile\WorldTimer.cs" />
     <Compile Include="core\miscfile\Vector2.cs" />

@@ -13,7 +13,7 @@ namespace wServer.core.commands
             {
             }
 
-            protected override bool Process(Player player, TickData time, string args)
+            protected override bool Process(Player player, TickTime time, string args)
             {
                 var invSlot = Convert.ToInt32(args);
                 var inventory = player.Inventory;

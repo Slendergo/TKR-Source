@@ -27,7 +27,7 @@ namespace wServer.logic.behaviors
             this.orbitClockwise = orbitClockwise;
         }
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state)
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state)
         {
             int orbitDir;
 
@@ -39,7 +39,7 @@ namespace wServer.logic.behaviors
             state = new OrbitState() { Speed = speed + speedVariance * (float)(Random.NextDouble() * 2 - 1), Radius = radius + radiusVariance * (float)(Random.NextDouble() * 2 - 1), Direction = orbitDir };
         }
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             var s = (OrbitState)state;
 

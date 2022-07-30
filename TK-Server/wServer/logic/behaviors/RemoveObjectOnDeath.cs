@@ -19,7 +19,7 @@ namespace wServer.logic.behaviors
         {
             var dat = e.Host.CoreServerManager.Resources.GameData;
             var objType = dat.IdToObjectType[_objName];
-            var map = e.Host.Owner.Map;
+            var map = e.Host.World.Map;
             var w = map.Width;
             var h = map.Height;
 
@@ -44,7 +44,7 @@ namespace wServer.logic.behaviors
                 }
         };
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         { }
     }
 }

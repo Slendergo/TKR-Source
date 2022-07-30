@@ -19,7 +19,7 @@ namespace wServer.logic.behaviors
             _targetStateName = targetState;
         }
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             if (_targetState == null)
                 _targetState = FindState(host.CoreServerManager.BehaviorDb.Definitions[_children].Item1, _targetStateName);

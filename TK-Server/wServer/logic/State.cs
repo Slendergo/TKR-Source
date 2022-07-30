@@ -9,14 +9,14 @@ namespace wServer.logic
 
     public class BehaviorEventArgs : EventArgs
     {
-        public BehaviorEventArgs(Entity host, TickData time)
+        public BehaviorEventArgs(Entity host, TickTime time)
         {
             Host = host;
             Time = time;
         }
 
         public Entity Host { get; private set; }
-        public TickData Time { get; private set; }
+        public TickTime Time { get; private set; }
     }
 
     public class State : IStateChildren

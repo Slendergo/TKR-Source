@@ -60,9 +60,11 @@ namespace wServer.core.objects.vendors
 
             player.Client.SendPacket(new networking.packets.outgoing.BuyResult
             {
-                ResultString = "Upgrade successful! Please leave the Guild Hall to have it upgraded.",
+                ResultString = "Upgrade successful! Upgrade may take a short period of time.",
                 Result = 0
             });
+
+            player.World.FlagForClose();
         }
     }
 }

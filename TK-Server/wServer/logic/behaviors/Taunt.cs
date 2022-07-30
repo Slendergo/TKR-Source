@@ -64,9 +64,9 @@ namespace wServer.logic.behaviors
             this.cooldown = cooldown;
         }
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state) => state = null;
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state) => state = null;
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             if (state != null && cooldown.CoolDown == 0)
                 return;    //cooldown = 0 -> once per state entry
@@ -122,9 +122,9 @@ namespace wServer.logic.behaviors
             var packet = new Text() { Name = "#" + displayenemy, ObjectId = host.Id, NumStars = -1, BubbleTime = 3, Recipient = "", Txt = taunt };
 
             if (broadcast)
-                host.Owner.Broadcast(packet, PacketPriority.Low);
+                host.World.Broadcast(packet, PacketPriority.Low);
             else
-                foreach (var i in host.Owner.PlayersCollision.HitTest(host.X, host.Y, 15).Where(e => e is Player))
+                foreach (var i in host.World.PlayersCollision.HitTest(host.X, host.Y, 15).Where(e => e is Player))
                     if (i is Player && host.Dist(i) < 15)
                         (i as Player).Client.SendPacket(packet, PacketPriority.Low);
         }

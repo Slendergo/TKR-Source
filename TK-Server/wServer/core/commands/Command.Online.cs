@@ -11,7 +11,7 @@ namespace wServer.core.commands
             public Online() : base("online", permLevel: 100)
             { }
 
-            protected override bool Process(Player player, TickData time, string args)
+            protected override bool Process(Player player, TickTime time, string args)
             {
                 var playerSvr = player.CoreServerManager.ServerConfig.serverInfo.name;
                 var servers = Program.CoreServerManager.InterServerManager.GetServerList();

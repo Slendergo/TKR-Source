@@ -22,7 +22,7 @@ namespace wServer.logic.transitions
             _targets = targets.Select(Behavior.GetObjType).ToArray();
         }
 
-        protected override bool TickCore(Entity host, TickData time, ref object state)
+        protected override bool TickCore(Entity host, TickTime time, ref object state)
         {
             if (_targets == null)
                 return false;

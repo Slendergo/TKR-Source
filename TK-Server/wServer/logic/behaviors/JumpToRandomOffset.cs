@@ -19,9 +19,9 @@ namespace wServer.logic.behaviors
             this.maxY = maxY;
         }
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state) => host.Move(host.X + Random.Next(minX, maxX), host.Y + Random.Next(minY, maxY));
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state) => host.Move(host.X + Random.Next(minX, maxX), host.Y + Random.Next(minY, maxY));
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         { }
     }
 }

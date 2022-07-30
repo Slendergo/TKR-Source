@@ -22,12 +22,12 @@ namespace wServer.networking.handlers
 
         private void Handle(Player player, ObjectSlot slot)
         {
-            if (player == null || player.Owner == null || player.tradeTarget != null || player.Client == null)
+            if (player == null || player.World == null || player.tradeTarget != null || player.Client == null)
                 return;
 
             if (player.Stars < 2 && player.Rank < 10)
             {
-                if (!(player.Owner is Vault))
+                if (!(player.World is VaultWorld))
                 {
                     player.SendHelp("To use this feature you need 2 stars or D-1 rank.");
                     player.Client.SendPacket(new InvResult() { Result = 1 });
@@ -35,7 +35,7 @@ namespace wServer.networking.handlers
                 }
             }
 
-            if (player.Owner is Marketplace)
+            if (player.World is MarketplaceWorld)
             {
                 player.Client.SendPacket(new InvResult() { Result = 1 });
                 player.SendError("<Marketplace> Drop an Item is restricted in the Marketplace!");
@@ -47,13 +47,13 @@ namespace wServer.networking.handlers
             // container isn't always the player's inventory, it's given by the SlotObject's ObjectId
             if (slot.ObjectId != player.Id)
             {
-                if (player.Owner.GetEntity(slot.ObjectId) is Player)
+                if (player.World.GetEntity(slot.ObjectId) is Player)
                 {
                     player.Client.SendPacket(new InvResult() { Result = 1 });
                     return;
                 }
 
-                con = player.Owner.GetEntity(slot.ObjectId) as IContainer;
+                con = player.World.GetEntity(slot.ObjectId) as IContainer;
             }
             else con = player as IContainer;
 
@@ -105,7 +105,7 @@ namespace wServer.networking.handlers
             container.Move(player.X + (float)((Rand.NextDouble() * 2 - 1) * 0.5), player.Y + (float)((Rand.NextDouble() * 2 - 1) * 0.5));
             container.SetDefaultSize(75);
 
-            player.Owner.EnterWorld(container);
+            player.World.EnterWorld(container);
 
             // send success
             con.Inventory[slot.SlotId] = null;

@@ -17,12 +17,12 @@ namespace wServer.logic.behaviors
             _replacedObjName = replacedObjName;
         }
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state)
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state)
         {
             var dat = host.CoreServerManager.Resources.GameData;
             var tileId = dat.IdToTileType[_objName];
             var replacedTileId = dat.IdToTileType[_replacedObjName];
-            var map = host.Owner.Map;
+            var map = host.World.Map;
             var w = map.Width;
             var h = map.Height;
 
@@ -47,13 +47,13 @@ namespace wServer.logic.behaviors
                     tile.TileDesc = tileDesc;
 
                     if (tile.ObjId == 0)
-                        tile.ObjId = host.Owner.GetNextEntityId();
+                        tile.ObjId = host.World.GetNextEntityId();
 
                     map[x, y].SetTile(tile);
                 }
         }
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         { }
     }
 }

@@ -25,9 +25,9 @@ namespace wServer.logic.behaviors
             _relativeY = relativeY;
         }
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state)
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state)
         {
-            var map = host.Owner.Map;
+            var map = host.World.Map;
             var hx = (int)host.X;
             var hy = (int)host.Y;
             var tileType = host.CoreServerManager.Resources.GameData.IdToTileType[_tileId];
@@ -76,7 +76,7 @@ namespace wServer.logic.behaviors
             state = tiles;
         }
 
-        protected override void OnStateExit(Entity host, TickData time, ref object state)
+        protected override void OnStateExit(Entity host, TickTime time, ref object state)
         {
             if (!(state is List<TileState> tiles) || _persist)
                 return;
@@ -87,7 +87,7 @@ namespace wServer.logic.behaviors
                 var y = tile.Y;
                 var tileType = tile.TileType;
                 var spawned = tile.Spawned;
-                var map = host.Owner.Map;
+                var map = host.World.Map;
                 var curTile = map[x, y];
 
                 curTile.Spawned = spawned;
@@ -96,7 +96,7 @@ namespace wServer.logic.behaviors
             }
         }
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         { }
 
         private class TileState

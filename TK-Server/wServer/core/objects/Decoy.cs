@@ -44,7 +44,7 @@ namespace wServer.core.objects
 
         public bool IsVisibleToEnemy() => true;
 
-        public override void Tick(TickData time)
+        public override void Tick(TickTime time)
         {
             if (HP > duration - 2000)
                 ValidateAndMove(X + direction.X * speed * time.ElaspedMsDelta / 1000, Y + direction.Y * speed * time.ElaspedMsDelta / 1000);
@@ -53,7 +53,7 @@ namespace wServer.core.objects
             {
                 exploded = true;
 
-                Owner.BroadcastIfVisible(new ShowEffect()
+                World.BroadcastIfVisible(new ShowEffect()
                 {
                     EffectType = EffectType.AreaBlast,
                     Color = new ARGB(0xffff0000),

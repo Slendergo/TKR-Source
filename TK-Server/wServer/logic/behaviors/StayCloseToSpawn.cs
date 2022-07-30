@@ -16,9 +16,9 @@ namespace wServer.logic.behaviors
             this.range = range;
         }
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state) => state = new Vector2(host.X, host.Y);
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state) => state = new Vector2(host.X, host.Y);
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             Status = CycleStatus.NotStarted;
 

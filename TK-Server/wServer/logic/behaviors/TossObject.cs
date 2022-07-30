@@ -52,14 +52,14 @@ namespace wServer.logic.behaviors
             _regionRange = regionRange;
         }
 
-        protected override void OnStateEntry(Entity host, TickData time, ref object state)
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state)
         {
             state = _coolDownOffset;
 
             if (_region == TileRegion.None)
                 return;
 
-            var map = host.Owner.Map;
+            var map = host.World.Map;
             var w = map.Width;
             var h = map.Height;
 
@@ -75,7 +75,7 @@ namespace wServer.logic.behaviors
                 }
         }
 
-        protected override void TickCore(Entity host, TickData time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             var cool = (int)state;
 
@@ -138,11 +138,11 @@ namespace wServer.logic.behaviors
                         };
                     }
 
-                    if (host == null || host.Owner == null)
+                    if (host == null || host.World == null)
                         return;
 
                     if (!_tossInvis)
-                        host.Owner.BroadcastIfVisible(new ShowEffect()
+                        host.World.BroadcastIfVisible(new ShowEffect()
                         {
                             EffectType = EffectType.Throw,
                             Color = new ARGB(0xffffbf00),
@@ -150,7 +150,7 @@ namespace wServer.logic.behaviors
                             Pos1 = target
                         }, target, PacketPriority.Low);
 
-                    host.Owner.Timers.Add(new WorldTimer(1000, (world, t) =>
+                    host.World.Timers.Add(new WorldTimer(1000, (world, t) =>
                     {
                         if (!world.IsPassable(target.X, target.Y, true))
                             return;

@@ -4,9 +4,9 @@ using terrain;
 
 namespace wServer.core.worlds.logic
 {
-    public class Test : World
+    public class TestWorld : World
     {
-        public Test(int id, WorldResource resource) : base(id, resource)
+        public TestWorld(int id, WorldResource resource) : base(id, resource)
         { }
 
         public bool JsonLoaded { get; private set; }

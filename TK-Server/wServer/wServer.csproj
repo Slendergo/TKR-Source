@@ -625,12 +625,10 @@
     <Compile Include="core\terrain\JsonMapExporter.cs" />
     <Compile Include="core\terrain\Wmap.cs" />
     <Compile Include="core\worlds\DungeonTemplates.cs" />
-    <Compile Include="core\worlds\logic\OryxCastle.cs" />
-    <Compile Include="core\worlds\logic\GuildHall.cs" />
-    <Compile Include="core\worlds\logic\Nexus.cs" />
-    <Compile Include="core\worlds\logic\Realm.cs" />
-    <Compile Include="core\worlds\logic\Test.cs" />
-    <Compile Include="core\worlds\logic\Vault.cs" />
+    <Compile Include="core\worlds\logic\NexusWorld.cs" />
+    <Compile Include="core\worlds\logic\RealmWorld.cs" />
+    <Compile Include="core\worlds\logic\TestWorld.cs" />
+    <Compile Include="core\worlds\logic\VaultWorld.cs" />
     <Compile Include="core\worlds\Marketplace.cs" />
     <Compile Include="core\worlds\World.cs" />
     <Compile Include="core\miscfile\WorldTimer.cs" />

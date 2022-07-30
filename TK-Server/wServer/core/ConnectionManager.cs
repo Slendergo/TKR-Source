@@ -1,5 +1,6 @@
 ﻿using CA.Extensions.Concurrent;
 using common.isc.data;
+using common.resources;
 using System;
 using System.Collections.Concurrent;
 using System.IO;
@@ -168,7 +169,7 @@ namespace wServer.core
                 world = client.CoreServerManager.WorldManager.GetWorld(World.Nexus);
             }
 
-            if (world is Test && !(world as Test).JsonLoaded && !acc.Admin)
+            if (world is TestWorld && !(world as TestWorld).JsonLoaded && !acc.Admin)
             {
                 client.SendFailure("Only players with admin permissions can make test maps.", Failure.MessageWithDisconnect);
                 return;
@@ -177,7 +178,7 @@ namespace wServer.core
             //if (world.Instance)
             //    world = world.GetInstance(client);
 
-            if (!world.AllowedAccess(client) && !(world is GuildHall))
+            if (!world.AllowedAccess(client) && world.InstanceType != WorldResourceInstanceType.Guild)
             {
                 if (!world.Persist && world.TotalConnects <= 0)
                     client.CoreServerManager.WorldManager.RemoveWorld(world);
@@ -190,7 +191,7 @@ namespace wServer.core
                     Txt = "Access denied"
                 });
 
-                if (!(world is Nexus))
+                if (!(world is NexusWorld))
                     world = client.CoreServerManager.WorldManager.GetWorld(World.Nexus);
                 else
                 {
@@ -199,7 +200,7 @@ namespace wServer.core
                 }
             }
 
-            if (world is Test && !(world as Test).JsonLoaded)
+            if (world is TestWorld && !(world as TestWorld).JsonLoaded)
             {
                 var mapFolder = $"{CoreServerManager.ServerConfig.serverSettings.logFolder}/maps";
 
@@ -208,7 +209,7 @@ namespace wServer.core
 
                 System.IO.File.WriteAllText($"{mapFolder}/{acc.Name}_{DateTime.Now.Ticks}.jm", connectionInfo.MapInfo);
 
-                (world as Test).LoadJson(connectionInfo.MapInfo);
+                (world as TestWorld).LoadJson(connectionInfo.MapInfo);
 
                 var dreamName = client.Account.Name.ToLower().EndsWith("s") ? client.Account.Name + "' Dream World" : client.Account.Name + "'s Dream World";
 

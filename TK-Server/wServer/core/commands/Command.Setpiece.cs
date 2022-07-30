@@ -1,4 +1,5 @@
-﻿using System;
+﻿using common.resources;
+using System;
 using System.Linq;
 using wServer.core.objects;
 using wServer.core.setpieces;
@@ -15,7 +16,7 @@ namespace wServer.core.commands
 
             protected override bool Process(Player player, TickTime time, string setPiece)
             {
-                if ((player.World is Nexus) || (player.World is Marketplace) || player.World.Id == -10 || player.World is GuildHall)
+                if ((player.World is NexusWorld) || (player.World is Marketplace) || player.World.Id == -10 || player.World.InstanceType == WorldResourceInstanceType.Guild)
                 {
                     player.SendError("No");
                     return false;

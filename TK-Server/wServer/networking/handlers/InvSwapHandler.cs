@@ -80,7 +80,7 @@ namespace wServer.networking.handlers
             {
                 // if origin is the same player and destiny is a different path not part of
                 // current player's inventory, then validate to avoid invalid swap action
-                if (!(player.World is Vault) && !player.CanUseThisFeature(GenericRank.VIP))
+                if (!(player.World is VaultWorld) && !player.CanUseThisFeature(GenericRank.VIP))
                 {
                     player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
 

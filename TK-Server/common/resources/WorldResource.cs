@@ -1,7 +1,17 @@
-﻿using System.Xml.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Xml.Linq;
 
 namespace common.resources
 {
+    public enum WorldResourceInstanceType
+    {
+        Nexus,
+        Vault,
+        Guild,
+        Dungeon
+    }
+
     public sealed class WorldResource
     {
         public readonly string IdName;
@@ -9,12 +19,13 @@ namespace common.resources
         public readonly int Width;
         public readonly int Height;
         public readonly int Capacity;
-        public readonly bool Instance;
+        public readonly WorldResourceInstanceType Instance;
         public readonly bool Persists;
         public readonly byte Difficulty;
         public readonly byte Background;
         public readonly byte VisibilityType;
         public readonly string MapJM;
+        public readonly List<string> Music;
 
         public WorldResource(XElement elem)
         {
@@ -23,12 +34,18 @@ namespace common.resources
             Width = elem.GetValue<int>("Width");
             Height = elem.GetValue<int>("Height");
             Capacity = elem.GetValue<int>("Capacity");
-            Instance = elem.GetValue<bool>("Instance");
+            Instance = elem.Element("Instance") == null ? WorldResourceInstanceType.Dungeon : (WorldResourceInstanceType)Enum.Parse(typeof(WorldResourceInstanceType), elem.Element("Instance").GetAttribute("enum", "dungeon"), true);
             Persists = elem.GetValue<bool>("Persists");
             Difficulty = elem.GetValue<byte>("Difficulty");
             Background = elem.GetValue<byte>("Background");
             VisibilityType = elem.GetValue<byte>("VisibilityType");
             MapJM = elem.GetValue<string>("MapJM");
+            Music = new List<string>();
+
+            var musicElem = elem.Element("Music");
+            if(musicElem != null)
+                foreach (var music in musicElem.Elements("Track"))
+                    Music.Add(music.Value);
         }
 
         public override string ToString()

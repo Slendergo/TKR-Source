@@ -20,11 +20,16 @@ namespace wServer.core
         public TickThreadSingle NexusThread { get; private set; }
         public List<TickThreadSingle> RealmThreads { get; private set; }
 
-        public Nexus Nexus => (Worlds[-2] as Nexus);
+        public NexusWorld Nexus => (Worlds[-2] as NexusWorld);
 
         private readonly Dictionary<int, World> Worlds = new Dictionary<int, World>();
+        private readonly Dictionary<int, VaultWorld> Vaults = new Dictionary<int, VaultWorld>();
+        private readonly Dictionary<int, World> Guilds = new Dictionary<int, World>();
+        private readonly Dictionary<int, int> WorldToGuildId = new Dictionary<int, int>();
 
         public IEnumerable<World> GetWorlds() => Worlds.Values;
+        public IEnumerable<VaultWorld> GetVaultInstances() => Vaults.Values;
+        public IEnumerable<World> GetGuildInstances() => Guilds.Values;
 
         public void WorldsBroadcastAsParallel(Action<World> action)
         {
@@ -64,7 +69,7 @@ namespace wServer.core
 
             var nextId = Interlocked.Increment(ref NextWorldId);
 
-            var world = new Realm(nextId, worldResource);
+            var world = new RealmWorld(nextId, worldResource);
             world.Manager = CoreServerManager; // todo add to ctor
             var success = world.LoadMapFromData(worldResource);
             if (!success)
@@ -89,7 +94,20 @@ namespace wServer.core
             
             var nextId = id ?? Interlocked.Increment(ref NextWorldId);
 
-            var world = id == -2 ? new Nexus(nextId, worldResource) : new World(nextId, worldResource);
+            World world;
+            switch (worldResource.Instance)
+            {
+                case WorldResourceInstanceType.Nexus:
+                    world = new NexusWorld(nextId, worldResource);
+                    break;
+                case WorldResourceInstanceType.Vault:
+                    world = new VaultWorld(nextId, worldResource);
+                    break;
+                default:
+                    world = new World(nextId, worldResource);
+                    break; 
+            }
+
             world.Manager = CoreServerManager; // todo add to ctor
             var success = world.LoadMapFromData(worldResource);
             if (!success)
@@ -100,20 +118,35 @@ namespace wServer.core
             return world;
         }
 
-        public World GetWorld(int id)
+        public void AddVaultInstance(int accountId, VaultWorld world)
         {
-            if (!Worlds.TryGetValue(id, out World ret))
-                return null;
-            return ret;
+            Vaults.Add(accountId, world);
         }
+
+        public void AddGuildInstance(int guildId, World world)
+        {
+            Guilds.Add(guildId, world);
+            WorldToGuildId.Add(world.Id, guildId);
+        }
+
+        public World GetWorld(int id) => Worlds.TryGetValue(id, out World ret) ? ret : null;
+        public VaultWorld GetVault(int accountId) => Vaults.TryGetValue(accountId, out var ret) ? ret : null;
+        public World GetGuild(int guildId) => Guilds.TryGetValue(guildId, out var ret) ? ret : null;
+        public int GetGuildId(int gameId) => WorldToGuildId.TryGetValue(gameId, out var ret) ? ret : -1;
 
         public bool RemoveWorld(World world)
         {
             if (Worlds.Remove(world.Id))
             {
-                if(world is Realm)
+                switch (world.InstanceType)
                 {
-                    // remove the thread thingy here and recycle mabye
+                    case WorldResourceInstanceType.Vault:
+                        _ = Vaults.Remove((world as VaultWorld).AccountId);
+                        break;
+                    case WorldResourceInstanceType.Guild:
+                        var guildId = GetGuildId(world.Id);
+                        _ = Guilds.Remove(guildId);
+                        break;
                 }
                 return true;
             }

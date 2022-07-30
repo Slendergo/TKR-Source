@@ -34,7 +34,7 @@ namespace wServer.core.commands
                     return false;
                 }
 
-                if (target?.Player?.World is Vault)
+                if (target?.Player?.World is VaultWorld)
                 {
                     player.SendError("He's in the Vault.");
                     return false;

@@ -60,6 +60,6 @@ namespace wServer.networking
             return true;
         }
 
-        protected bool IsTest(Client cli) => cli?.Player?.World is Test;
+        protected bool IsTest(Client cli) => cli?.Player?.World is TestWorld;
     }
 }

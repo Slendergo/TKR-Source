@@ -32,8 +32,8 @@ namespace wServer.logic
 
             var enemy = (Parent ?? this).Host;
 
-            if (enemy.World is Realm)
-                (enemy.World as Realm).EnemyKilled(enemy, (Parent ?? this).LastHitter);
+            if (enemy.World is RealmWorld)
+                (enemy.World as RealmWorld).EnemyKilled(enemy, (Parent ?? this).LastHitter);
 
             var lastHitPlayer_ = (Parent ?? this).LastHitter;
 

@@ -14,7 +14,7 @@ namespace wServer.core.commands
 
             protected override bool Process(Player player, TickTime time, string args)
             {
-                if (!(player.World is Vault) && player.Rank < 110)
+                if (!(player.World is VaultWorld) && player.Rank < 110)
                 {
                     player.SendError("Only in your Vault.");
                     return false;

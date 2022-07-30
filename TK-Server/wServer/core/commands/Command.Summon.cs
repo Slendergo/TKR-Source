@@ -27,7 +27,7 @@ namespace wServer.core.commands
                         }
 
                         // probably someone hidden doesn't want to be summoned, so we leave it as before here
-                        if (i.Value.HasConditionEffect(ConditionEffects.Hidden) || i.Value.World is Vault)
+                        if (i.Value.HasConditionEffect(ConditionEffects.Hidden) || i.Value.World is VaultWorld)
                             break;
 
                         i.Value.Teleport(time, player.Id, true);

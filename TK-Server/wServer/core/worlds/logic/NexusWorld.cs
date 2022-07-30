@@ -4,16 +4,15 @@ using wServer.utils;
 
 namespace wServer.core.worlds.logic
 {
-    public sealed class Nexus : World
+    public sealed class NexusWorld : World
     {
         public PortalMonitor PortalMonitor { get; private set; }
 
-        public Nexus(int id, WorldResource resource) : base(id, resource) => IsDungeon = false;
+        public NexusWorld(int id, WorldResource resource) : base(id, resource) => IsDungeon = false;
 
         public override void Init()
         {
             PortalMonitor = new PortalMonitor(Manager, this);
-
             base.Init();
         }
 

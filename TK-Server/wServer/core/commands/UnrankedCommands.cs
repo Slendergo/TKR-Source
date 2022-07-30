@@ -416,7 +416,7 @@ namespace wServer.core.commands
                 player.SendError("You need an invitation to join to the world!");
                 return false;
             }
-            if (party.ReturnWorldId() != -1 && (world is GuildHall || world is Vault || world is Nexus))
+            if (party.ReturnWorldId() != -1 && (world.InstanceType == WorldResourceInstanceType.Guild || world is VaultWorld || world is NexusWorld))
             {
                 party.WorldId = -1;
                 player.CoreServerManager.Database.FlushParty(party.PartyId, party);
@@ -465,7 +465,7 @@ namespace wServer.core.commands
 
                 if (world == null) return false;
 
-                if (world is Vault || world is Marketplace || world is GuildHall || world is Test)
+                if (world is VaultWorld || world is Marketplace || world.InstanceType == WorldResourceInstanceType.Guild  || world is Test)
                 {
                     player.SendError("You can't invite players to this World.");
                     return false;
@@ -756,7 +756,7 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string args)
         {
-            if (!(player.World is Realm))
+            if (!(player.World is RealmWorld))
             {
                 player.SendError("This command requires you to be in realm first.");
                 return false;
@@ -1214,7 +1214,7 @@ namespace wServer.core.commands
                 return true;
             }
 
-            if (!(player.World is Vault) || !(player.World is Nexus) || !(player.World is GuildHall) || !(player.World is Marketplace) || !(player.World.Id != World.ClothBazaar))
+            if (!(player.World is VaultWorld) || !(player.World is NexusWorld) || !(player.World.InstanceType == WorldResourceInstanceType.Guild) || !(player.World is Marketplace) || !(player.World.Id != World.ClothBazaar))
             {
                 player.SendError("Not safe to pause.");
                 return false;

@@ -45,7 +45,7 @@ namespace wServer.core.objects.vendors
 
         protected BuyResult ValidateCustomer(Player player, Item item)
         {
-            if (World is Test)
+            if (World is TestWorld)
                 return BuyResult.IsTestMap;
 
             if (player.Stars < RankReq)

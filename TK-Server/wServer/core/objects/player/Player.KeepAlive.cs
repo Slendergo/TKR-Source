@@ -178,7 +178,7 @@ namespace wServer.core.objects
             }
 
             // save character
-            if (!(World is Test))
+            if (!(World is TestWorld))
             {
                 SaveToCharacter();
                 Client.Character?.FlushAsync();

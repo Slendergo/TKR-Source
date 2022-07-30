@@ -121,7 +121,7 @@ namespace wServer.core.objects
 
         public void HandleQuest(TickTime time, bool force = false, Position? destination = null)
         {
-            if (World is Realm)
+            if (World is RealmWorld)
                 CheckForEncounter();
 
             if (force || Quest == null || Quest.World == null || time.TickCount % 500 == 0)
@@ -239,7 +239,7 @@ namespace wServer.core.objects
                 var maxVisibleLevel = Math.Min(quest.QuestLevel + 5, 20);
                 var minVisibleLevel = Math.Max(quest.QuestLevel - 5, 1);
                 var force = false;
-                if (!(quest.World is Realm) && quest.ObjectDesc.Quest && !quest.ObjectDesc.Hero)
+                if (!(quest.World is RealmWorld) && quest.ObjectDesc.Quest && !quest.ObjectDesc.Hero)
                     force = true;
 
                 if (Level >= minVisibleLevel && Level <= maxVisibleLevel || force)

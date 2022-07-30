@@ -43,15 +43,26 @@ namespace wServer.networking.handlers
                 return;
             }
 
-            //if (portal.ObjectType == 0x072f)
-            //{
-            //    var proto = player.CoreServerManager.Resources.Worlds["GuildHall"];
-            //    var world = player.CoreServerManager.WorldManager.GetWorld(proto.id);
-            //    player.Reconnect(world.GetInstance(player.Client));
-            //    return;
-            //}
+            var manager = player.Client.CoreServerManager;
+            var guildId = player.Client.Account.GuildId;
 
-            player.SendInfo("Portal not implemented.");
+            var world = manager.WorldManager.GetGuild(guildId);
+            if (world == null)
+            {
+                var guild = player.Client.CoreServerManager.Database.GetGuild(guildId);
+
+                // this is mandatory
+                var dungeonName = $"{portal.PortalDescr.DungeonName} {guild.Level + 1}";
+                
+                world = manager.WorldManager.CreateNewWorld(dungeonName, null, player.World);
+                if (world != null)
+                    manager.WorldManager.AddGuildInstance(guildId, world);
+            }
+
+            if(world != null)
+                player.Reconnect(world);
+            else
+                player.SendInfo("[Bug] Unable to Create Guild.");
         }
 
         private void HandlePortal(Player player, Portal portal)
@@ -77,7 +88,7 @@ namespace wServer.networking.handlers
                     return;
                 }
 
-                if (world is Realm && !player.CoreServerManager.Resources.GameData.ObjectTypeToId[portal.ObjectDesc.ObjectType].Contains("Cowardice"))
+                if (world is RealmWorld && !player.CoreServerManager.Resources.GameData.ObjectTypeToId[portal.ObjectDesc.ObjectType].Contains("Cowardice"))
                     player.FameCounter.CompleteDungeon(player.World.IdName);
 
                 player.Reconnect(world);

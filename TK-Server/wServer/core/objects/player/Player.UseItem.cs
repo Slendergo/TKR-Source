@@ -818,7 +818,7 @@ namespace wServer.core.objects
 
         private void AEAddFame(TickTime time, Item item, Position target, ActivateEffect eff)
         {
-            if (World is Test || Client.Account == null)
+            if (World is TestWorld || Client.Account == null)
                 return;
 
             var acc = Client.Account;
@@ -983,7 +983,7 @@ namespace wServer.core.objects
         {
             var gameData = CoreServerManager.Resources.GameData;
 
-            if (Rank >= 60 && !(World is Vault) && Rank < 110)
+            if (Rank >= 60 && !(World is VaultWorld) && Rank < 110)
             {
                 SendError("You can't use Keys out of the Vault");
                 Inventory[slot] = item;

@@ -1812,7 +1812,7 @@ namespace wServer.core.objects
 
         private bool TestWorld(string killer)
         {
-            if (!(World is Test))
+            if (!(World is TestWorld))
                 return false;
 
             GenerateGravestone();
@@ -1826,7 +1826,7 @@ namespace wServer.core.objects
             if (World == null)
                 return;
 
-            if (World is Vault || World is Nexus || World is GuildHall || World.Id == 10)
+            if (World is VaultWorld || World is NexusWorld || World.InstanceType == WorldResourceInstanceType.Guild || World.Id == 10)
                 return;
 
             if (XPBoostTime != 0)

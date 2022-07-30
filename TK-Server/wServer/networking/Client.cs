@@ -223,7 +223,7 @@ namespace wServer.networking
         {
             var acc = Account;
 
-            if (Character == null || Player == null || Player.World is Test)
+            if (Character == null || Player == null || Player.World is TestWorld)
             {
                 CoreServerManager.Database.ReleaseLock(acc);
                 return;

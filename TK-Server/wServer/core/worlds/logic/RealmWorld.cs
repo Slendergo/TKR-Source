@@ -9,7 +9,7 @@ using wServer.networking;
 
 namespace wServer.core.worlds.logic
 {
-    public class Realm : World
+    public class RealmWorld : World
     {
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
@@ -37,7 +37,7 @@ namespace wServer.core.worlds.logic
         private Oryx _overseer;
         private Task _overseerTask;
 
-        public Realm(int id, WorldResource resource, Client client = null) : base(id, resource)
+        public RealmWorld(int id, WorldResource resource, Client client = null) : base(id, resource)
         {
             _oryxPresent = true;
 

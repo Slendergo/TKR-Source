@@ -1060,10 +1060,19 @@
     <Content Include="resources\data\globalNews.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="resources\worlds\nexus.jm">
+    <None Include="resources\worlds\guild\guild_hall1.jm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="resources\worlds\guild\guild_hall.jm">
+    <None Include="resources\worlds\guild\guild_hall2.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="resources\worlds\guild\guild_hall3.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="resources\worlds\guild\guild_hall4.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="resources\worlds\nexus.jm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="resources\worlds\undead_lair.jm">

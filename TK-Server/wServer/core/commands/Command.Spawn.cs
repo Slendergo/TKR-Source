@@ -42,7 +42,7 @@ namespace wServer.core.commands
             protected override bool Process(Player player, TickTime time, string args)
             {
                 args = args.Trim();
-                if (!(player.World is Vault) && player.Rank < 110)
+                if (!(player.World is VaultWorld) && player.Rank < 110)
                 {
                     player.SendError("Only in Vault boi.");
                     return false;

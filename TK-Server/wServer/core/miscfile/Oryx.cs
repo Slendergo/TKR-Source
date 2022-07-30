@@ -15,7 +15,7 @@ namespace wServer.core
     internal class Oryx
     {
         public int _EventCount = 0;
-        public Realm _world;
+        public RealmWorld _world;
         public bool Closing;
 
         private static readonly Tuple<string, TauntData>[] CriticalEnemies = new Tuple<string, TauntData>[]
@@ -424,7 +424,7 @@ namespace wServer.core
         private Random _rand = new Random();
         private int _tenSecondTick;
 
-        public Oryx(Realm world)
+        public Oryx(RealmWorld world)
         {
             _world = world;
             _discord = Program.CoreServerManager.ServerConfig.discordIntegration;

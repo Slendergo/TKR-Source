@@ -46,7 +46,7 @@ namespace wServer.core.worlds
         public int Id { get; }
         public string IdName { get; set; }
         public string DisplayName { get; set; }
-        public bool Instance { get; private set; }
+        public WorldResourceInstanceType InstanceType { get; private set; }
         public bool Persist { get; private set; }
         public int MaxPlayers { get; private set; }
 
@@ -62,6 +62,7 @@ namespace wServer.core.worlds
         public bool Deleted { get; protected set; }
         public ConcurrentDictionary<int, Container> Containers { get; private set; }
         public ConcurrentDictionary<int, Enemy> Enemies { get; private set; }
+
         public CollisionMap<Entity> EnemiesCollision { get; private set; }
 
         public CoreServerManager Manager { get; set; }
@@ -91,7 +92,7 @@ namespace wServer.core.worlds
             Difficulty = resource.Difficulty;
             Background = resource.Background;
             MaxPlayers = resource.Capacity;
-            Instance = resource.Instance;
+            InstanceType = resource.Instance;
             Persist = resource.Persists;
             AllowTeleport = true;// !resource.restrictTp;
             ShowDisplays = Id == -2;// resource.showDisplays;
@@ -101,7 +102,10 @@ namespace wServer.core.worlds
             IsDungeon = true;
 
             var rnd = new Random();
-            Music = "Test"; // resource.music != null ? resource.music[rnd.Next(0, resource.music.Length : "Test";
+            if (resource.Music.Count > 0)
+                Music = resource.Music[rnd.Next(0, resource.Music.Count)];
+            else
+                Music = "sorc";
 
             WorldBranch = new WorldBranch(this);
         }
@@ -265,7 +269,7 @@ namespace wServer.core.worlds
             return null;
         }
 
-        public virtual World GetInstance(Client client)
+        public virtual World CreateInstance(Client client)
         {
             return null;
 
@@ -314,7 +318,7 @@ namespace wServer.core.worlds
             foreach (var i in Players)
                 if (i.Value.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase))
                 {
-                    if (!i.Value.NameChosen && !(this is Test))
+                    if (!i.Value.NameChosen && !(this is TestWorld))
                         Manager.Database.ReloadAccount(i.Value.Client.Account);
 
                     if (i.Value.Client.Account.NameChosen)
@@ -412,7 +416,7 @@ namespace wServer.core.worlds
 
         public void QuakeToWorld(World newWorld)
         {
-            if (!Persist || this is Realm)
+            if (!Persist || this is RealmWorld)
                 Closed = true;
 
             Broadcast(new ShowEffect()
@@ -679,10 +683,20 @@ namespace wServer.core.worlds
             }
         }
 
+        public void FlagForClose() 
+        {
+            ForceLifetimeExpire = true;
+        }
+
+        private bool ForceLifetimeExpire = false;
+
         private bool IsPastLifetime(ref TickTime time)
         {
             if (WorldBranch.HasBranches())
                 return false;
+
+            if (ForceLifetimeExpire)
+                return true;
 
             if (Players.Count > 0)
                 return false;

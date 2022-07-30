@@ -27,12 +27,13 @@ namespace wServer.core
 
         public void Tick()
         {
+
             var watch = Stopwatch.StartNew();
 
-            var time = new TickTime();
+            var realmTime = new TickTime();
             var last = 0L;
 
-            var spin = new SpinWait();
+            var mre = new ManualResetEvent(false);
 
             while (true)
             {
@@ -42,25 +43,59 @@ namespace wServer.core
                     continue;
                 }
 
-                var current = time.TotalElapsedMs = watch.ElapsedMilliseconds;
+                var current = realmTime.TotalElapsedMs = watch.ElapsedMilliseconds;
                 var delta = (int)(current - last);
 
-                if (delta >= 200)
+                realmTime.TickCount++;
+                realmTime.ElaspedMsDelta = delta;
+
+                if (Stopped || World.Update(ref realmTime))
                 {
-                    time.TickCount++;
-                    time.ElaspedMsDelta = delta;
-
-                    if(Stopped || World.Update(ref time))
-                    {
-                        _ = TickThreadSingle.WorldManager.RemoveWorld(World);
-                        break;
-                    }
-
-                    last = current;
+                    TickThreadSingle.WorldManager.RemoveWorld(World);
+                    break;
                 }
 
-                spin.SpinOnce();
+                var logicTime = (int)(watch.ElapsedMilliseconds - realmTime.TotalElapsedMs);
+
+                var sleepTime = Math.Max(0, 200 - logicTime);
+
+                mre.WaitOne(sleepTime);
+
+                last = current;
             }
+
+            //var watch = Stopwatch.StartNew();
+
+            //var time = new TickTime();
+            //var last = 0L;
+
+            //var spin = new SpinWait();
+
+            //while (true)
+            //{
+            //    if (!CoreServerManager.Initialized)
+            //    {
+            //        Thread.Sleep(200);
+            //        continue;
+            //    }
+
+            //    var current = time.TotalElapsedMs = watch.ElapsedMilliseconds;
+            //    var delta = (int)(current - last);
+
+            //    if (delta >= 200)
+            //    {
+            //        time.TickCount++;
+            //        time.ElaspedMsDelta = delta;
+
+            //        if (Stopped || World.Update(ref time))
+            //        {
+            //            _ = TickThreadSingle.WorldManager.RemoveWorld(World);
+            //            break;
+            //        }
+
+            //        last = current;
+            //    }
+            //}
         }
     }
 }

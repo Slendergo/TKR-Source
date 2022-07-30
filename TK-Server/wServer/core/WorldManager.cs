@@ -53,11 +53,8 @@ namespace wServer.core
             var nexus = CreateNewWorld("Nexus", -2, null);
             NexusThread.Attach(nexus);
 
+            // todo async creation system
             _ = CreateNewRealm();
-
-            //(nexus as Nexus).RealmManager.CreateNewRealm();
-
-            // add portal monitor to nexus and initialize worlds
         }
 
         public World CreateNewRealm()

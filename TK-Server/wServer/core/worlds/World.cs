@@ -313,15 +313,14 @@ namespace wServer.core.worlds
             if (Database.GuestNames.Contains(name))
                 return null;
 
-            foreach (var i in Players)
-                if (i.Value.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase))
+            foreach (var i in Players.Values)
+                if (i.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase))
                 {
-                    if (!i.Value.NameChosen && !(this is TestWorld))
-                        Manager.Database.ReloadAccount(i.Value.Client.Account);
+                    if (!i.NameChosen && !(this is TestWorld))
+                        Manager.Database.ReloadAccount(i.Client.Account);
 
-                    if (i.Value.Client.Account.NameChosen)
-                        return i.Value;
-
+                    if (i.Client.Account.NameChosen)
+                        return i;
                     break;
                 }
 
@@ -410,7 +409,6 @@ namespace wServer.core.worlds
                 return _;
             }).ToArray();
         }
-
 
         public void QuakeToWorld(World newWorld)
         {
@@ -601,7 +599,6 @@ namespace wServer.core.worlds
             Persist = false; // if false, attempts to delete world with 0 players
             Blocking = 0; // toggles sight block (0 disables sight block)
         }
-        static int depth = 0;
 
         public bool Update(ref TickTime time)
         {
@@ -609,28 +606,27 @@ namespace wServer.core.worlds
 
             WorldBranch.Update(ref time);
 
-            HandleIO();
             if (IsPastLifetime(ref time))
                 return true;
             UpdateLogic(ref time);
             return false;
         }
         
-        private void HandleIO()
-        {
-            // todo
-            foreach(var player in Players.Values)
-                player.HandleIO();
-        }
-
         protected virtual void UpdateLogic(ref TickTime time)
         {
             try
             {
+                foreach (var container in Containers.Values)
+                    container.Tick(time);
+
+                if (Players.Values.Count == 0 && !(this is NexusWorld))
+                    return;
+
                 foreach (var player in Players.Values)
                 {
                     player.SendInfo($"[{DisplayName} ({Id})] [Tick] {time.ElaspedMsDelta}");
-
+                    
+                    player.HandleIO();
                     player.DoUpdate(time);
                     player.HandlePendingActions(time);
                     player.Tick(time);
@@ -638,19 +634,6 @@ namespace wServer.core.worlds
 
                 foreach (var i in Projectiles)
                     i.Value.Tick(time);
-
-                for (var i = Timers.Count - 1; i >= 0; i--)
-                    try
-                    {
-                        if (Timers[i].Tick(this, time))
-                            Timers.RemoveAt(i);
-                    }
-                    catch (Exception e)
-                    {
-                        var msg = e.Message + "\n" + e.StackTrace;
-                        Log.Error(msg);
-                        Timers.RemoveAt(i);
-                    }
 
                 if (EnemiesCollision != null)
                 {
@@ -669,11 +652,22 @@ namespace wServer.core.worlds
                         i.Value.Tick(time);
                 }
 
-                foreach (var i in Containers)
-                    i.Value.Tick(time);
+                
+                foreach (var i in Pets.Values)
+                    i.Tick(time);
 
-                foreach (var i in Pets)
-                    i.Value.Tick(time);
+                for (var i = Timers.Count - 1; i >= 0; i--)
+                    try
+                    {
+                        if (Timers[i].Tick(this, time))
+                            Timers.RemoveAt(i);
+                    }
+                    catch (Exception e)
+                    {
+                        var msg = e.Message + "\n" + e.StackTrace;
+                        Log.Error(msg);
+                        Timers.RemoveAt(i);
+                    }
             }
             catch (Exception e)
             {

@@ -214,10 +214,8 @@
     <Compile Include="core\miscfile\TickTime.cs" />
     <Compile Include="core\miscfile\Empty.cs" />
     <Compile Include="core\ConnectionManager.cs" />
-    <Compile Include="core\miscfile\TickLoopBatch.cs" />
     <Compile Include="core\miscfile\TickLoopSingle.cs" />
     <Compile Include="core\miscfile\TickThread.cs" />
-    <Compile Include="core\miscfile\TickThreadBatch.cs" />
     <Compile Include="core\miscfile\TickThreadSingle.cs" />
     <Compile Include="core\miscfile\TimedPosition.cs" />
     <Compile Include="core\miscfile\TradeItem.cs" />

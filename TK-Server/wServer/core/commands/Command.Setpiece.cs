@@ -16,7 +16,7 @@ namespace wServer.core.commands
 
             protected override bool Process(Player player, TickTime time, string setPiece)
             {
-                if ((player.World is NexusWorld) || (player.World is Marketplace) || player.World.Id == -10 || player.World.InstanceType == WorldResourceInstanceType.Guild)
+                if ((player.World is NexusWorld) || (player.World is MarketplaceWorld) || player.World.Id == -10 || player.World.InstanceType == WorldResourceInstanceType.Guild)
                 {
                     player.SendError("No");
                     return false;

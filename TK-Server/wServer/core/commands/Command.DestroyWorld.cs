@@ -1,4 +1,5 @@
-﻿using wServer.core.objects;
+﻿using common.resources;
+using wServer.core.objects;
 
 namespace wServer.core.commands
 {
@@ -13,7 +14,7 @@ namespace wServer.core.commands
             {
                 var world = player.World;
 
-                if (!world.IsDungeon)
+                if (world.InstanceType != WorldResourceInstanceType.Dungeon)
                 {
                     player.SendError("You cannot destroy worlds that aren't dungeon types.");
                     return false;

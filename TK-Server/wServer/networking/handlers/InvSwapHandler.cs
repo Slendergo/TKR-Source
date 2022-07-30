@@ -40,7 +40,7 @@ namespace wServer.networking.handlers
                 return;
             }
 
-            if (player.World is Marketplace)
+            if (player.World is MarketplaceWorld)
             {
                 from.ForceUpdate(slotFrom);
                 to.ForceUpdate(slotTo);

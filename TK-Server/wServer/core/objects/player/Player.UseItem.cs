@@ -426,7 +426,7 @@ namespace wServer.core.objects
                     return;
                 }
 
-                if (entity is Player && (entity as Player).World is Marketplace)
+                if (entity is Player && (entity as Player).World is MarketplaceWorld)
                 {
                     Client.SendPacket(new InvResult() { Result = 1 });
                     Client.Player.SendError("<Marketplace> Using an Item is restricted in the Marketplace!");

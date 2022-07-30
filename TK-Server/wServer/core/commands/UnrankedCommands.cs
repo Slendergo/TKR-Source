@@ -465,7 +465,7 @@ namespace wServer.core.commands
 
                 if (world == null) return false;
 
-                if (world is VaultWorld || world is Marketplace || world.InstanceType == WorldResourceInstanceType.Guild  || world is Test)
+                if (world is VaultWorld || world is MarketplaceWorld || world.InstanceType == WorldResourceInstanceType.Guild  || world is Test)
                 {
                     player.SendError("You can't invite players to this World.");
                     return false;
@@ -1214,7 +1214,7 @@ namespace wServer.core.commands
                 return true;
             }
 
-            if (!(player.World is VaultWorld) || !(player.World is NexusWorld) || !(player.World.InstanceType == WorldResourceInstanceType.Guild) || !(player.World is Marketplace) || !(player.World.Id != World.ClothBazaar))
+            if (!(player.World is VaultWorld) || !(player.World is NexusWorld) || !(player.World.InstanceType == WorldResourceInstanceType.Guild) || !(player.World is MarketplaceWorld) || !(player.World.Id != World.ClothBazaar))
             {
                 player.SendError("Not safe to pause.");
                 return false;
@@ -1752,7 +1752,7 @@ namespace wServer.core.commands
             if (players.Length != 0)
             {
                 sb.Append($"There {(players.Length > 1 ? "are" : "is")} {players.Length}");
-                sb.Append($"{(player.World.IsRealm || player.World.IsDungeon ? $"/{player.World.MaxPlayers} " : "")} ");
+                sb.Append($"{(player.World.IsRealm || player.World.InstanceType == WorldResourceInstanceType.Dungeon ? $"/{player.World.MaxPlayers} " : "")} ");
                 sb.Append($"player{(players.Length > 1 ? "s" : "")} connected on this area:\n");
 
                 for (var i = 0; i < players.Length; i++)

@@ -35,7 +35,7 @@ namespace wServer.core.objects
         public void RequestTrade(string name)
         {
             if (World is TestWorld) return;
-            if (World is Marketplace)
+            if (World is MarketplaceWorld)
             {
                 SendError("<Marketplace> Trade is restricted in the Marketplace!");
                 return;

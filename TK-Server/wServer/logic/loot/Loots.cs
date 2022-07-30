@@ -412,7 +412,7 @@ namespace wServer.logic.loot
                             player.World.IsRealm ? player.World.DisplayName : player.World.IdName,
                             players,
                             world.MaxPlayers,
-                            world.IsDungeon,
+                            world.InstanceType == WorldResourceInstanceType.Dungeon,
                             isMythical ? "Mythical" : "Legendary",
                             isMythical ? discord.mtBagImage : discord.lgBagImage,
                             isMythical ? discord.mtImage : discord.lgImage,

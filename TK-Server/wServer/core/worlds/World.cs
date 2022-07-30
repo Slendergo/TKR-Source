@@ -50,7 +50,6 @@ namespace wServer.core.worlds
         public bool Persist { get; private set; }
         public int MaxPlayers { get; private set; }
 
-        public bool IsDungeon { get; set; }
         public bool IsNotCombatMapArea => Id == Nexus || Id == Vault || Id == GuildHall || Id == NexusExplanation;
         public bool IsRealm { get; set; }
         public bool AllowTeleport { get; protected set; }
@@ -99,7 +98,6 @@ namespace wServer.core.worlds
             Blocking = resource.VisibilityType;
 
             IsRealm = false;
-            IsDungeon = true;
 
             var rnd = new Random();
             if (resource.Music.Count > 0)

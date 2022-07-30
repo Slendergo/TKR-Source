@@ -35,7 +35,7 @@ namespace wServer.networking.handlers
                 }
             }
 
-            if (player.World is Marketplace)
+            if (player.World is MarketplaceWorld)
             {
                 player.Client.SendPacket(new InvResult() { Result = 1 });
                 player.SendError("<Marketplace> Drop an Item is restricted in the Marketplace!");

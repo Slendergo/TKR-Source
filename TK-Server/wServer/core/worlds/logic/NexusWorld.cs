@@ -8,7 +8,9 @@ namespace wServer.core.worlds.logic
     {
         public PortalMonitor PortalMonitor { get; private set; }
 
-        public NexusWorld(int id, WorldResource resource) : base(id, resource) => IsDungeon = false;
+        public NexusWorld(int id, WorldResource resource) : base(id, resource)
+        {
+        }
 
         public override void Init()
         {

@@ -40,9 +40,7 @@ namespace wServer.core.worlds.logic
         public RealmWorld(int id, WorldResource resource, Client client = null) : base(id, resource)
         {
             _oryxPresent = true;
-
             IsRealm = true;
-            IsDungeon = false;
         }
 
         // since map gets reset, admins not allowed to join when closed. Possible to crash server otherwise.
@@ -86,32 +84,19 @@ namespace wServer.core.worlds.logic
         {
             try
             {
-                //if (Closed || IsPlayersMax())
-                //    Manager.WorldManager.PortalMonitor.ClosePortal(Id);
+                if (Closed || IsPlayersMax())
+                    Manager.WorldManager.Nexus.PortalMonitor.ClosePortal(Id);
                 //else if (!Manager.WorldManager.PortalMonitor.PortalIsOpen(Id))
                 //    Manager.WorldManager.PortalMonitor.OpenPortal(Id);
 
-                if (Closed && Players.Count == 0 && _overseer != null)
+                var t = time;
+                if (_overseerTask == null || _overseerTask.IsCompleted)
                 {
-                    Init(); // will reset everything back to the way it was when made
-                    Closed = false;
+                    _overseerTask = Task.Factory.StartNew(() =>
+                    {
+                        _overseer?.Tick(ref t);
+                    }).ContinueWith(e => Log.Error(e.Exception.InnerException.ToString()), TaskContinuationOptions.OnlyOnFaulted);
                 }
-
-                _overseer?.Tick(ref time);
-
-                //if (_overseerTask == null || _overseerTask.IsCompleted)
-                //{
-                //    _overseerTask = Task.Factory.StartNew(() =>
-                //    {
-                //        if (Closed && Players.Count == 0 && _overseer != null)
-                //        {
-                //            Init(); // will reset everything back to the way it was when made
-                //            Closed = false;
-                //        }
-
-                //        _overseer?.Tick(time);
-                //    }).ContinueWith(e => Log.Error(e.Exception.InnerException.ToString()), TaskContinuationOptions.OnlyOnFaulted);
-                //}
             }
             catch (Exception e)
             {

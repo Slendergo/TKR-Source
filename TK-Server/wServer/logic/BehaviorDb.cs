@@ -68,25 +68,33 @@ namespace wServer.logic
         {
             public ctor Init(string id, State rootState, params MobDrops[] defs)
             {
-                var d = new Dictionary<string, State>();
-                rootState.Resolve(d);
-                rootState.ResolveChildren(d);
-                var dat = InitDb.Manager.Resources.GameData;
-
-                if (!dat.IdToObjectType.ContainsKey(id))
+                try
                 {
-                    Log.Error($"Failed to add behavior: {id}. Xml data not found.");
-                    return this;
-                }
+                    var d = new Dictionary<string, State>();
+                    rootState.Resolve(d);
+                    rootState.ResolveChildren(d);
+                    var dat = InitDb.Manager.Resources.GameData;
 
-                if (defs.Length > 0)
-                {
-                    var loot = new Loot(defs);
-                    rootState.Death += (sender, e) => loot.Handle((Enemy)e.Host, e.Time);
-                    InitDb.Definitions.Add(dat.IdToObjectType[id], new Tuple<State, Loot>(rootState, loot));
+                    if (!dat.IdToObjectType.ContainsKey(id))
+                    {
+                        Log.Error($"Failed to add behavior: {id}. Xml data not found.");
+                        return this;
+                    }
+
+                    if (defs.Length > 0)
+                    {
+                        var loot = new Loot(defs);
+                        rootState.Death += (sender, e) => loot.Handle((Enemy)e.Host, e.Time);
+                        InitDb.Definitions.Add(dat.IdToObjectType[id], new Tuple<State, Loot>(rootState, loot));
+                    }
+                    else
+                        InitDb.Definitions.Add(dat.IdToObjectType[id], new Tuple<State, Loot>(rootState, null));
+
                 }
-                else
-                    InitDb.Definitions.Add(dat.IdToObjectType[id], new Tuple<State, Loot>(rootState, null));
+                catch (Exception e)
+                {
+                    Console.WriteLine($"[Behavior] {id} Error -> {e}");
+                }
                 return this;
             }
 

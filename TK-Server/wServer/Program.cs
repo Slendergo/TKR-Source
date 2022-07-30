@@ -117,7 +117,7 @@ namespace wServer
         private static void LogUnhandledException(object sender, UnhandledExceptionEventArgs args)
         {
             SLogger.Instance.Fatal(((Exception)args.ExceptionObject).StackTrace.ToString());
-            Restarter.Stop(true);
+            Restarter?.Stop(true);
         }
 
         private static void Main(string[] args)

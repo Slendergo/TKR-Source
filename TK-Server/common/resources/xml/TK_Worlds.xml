@@ -98,12 +98,6 @@
 		<MapJM>bilge_grotto.jm</MapJM>
 		<Dungeon/>
 	</World>
-	<World id="Candy Land Hunting Grounds">
-		<Width>256</Width>
-		<Height>256</Height>
-		<MapJM>candy_land_hunting_grounds.jm</MapJM>
-		<Dungeon/>
-	</World>
 	<World id="Cave of Eternal Frost">
 		<Width>256</Width>
 		<Height>256</Height>
@@ -116,12 +110,6 @@
 		<MapJM>candy_land_hunting_grounds.jm</MapJM>
 		<Dungeon/>
 	</World>
-	<World id="Cave of Thousand Treasures">
-		<Width>256</Width>
-		<Height>256</Height>
-		<MapJM>cave_of_thousand_treasures.jm</MapJM>
-		<Dungeon/>
-	</World>
 	<World id="Cloth Bazaar">
 		<Width>256</Width>
 		<Height>256</Height>
@@ -132,12 +120,6 @@
 		<Width>256</Width>
 		<Height>256</Height>
 		<MapJM>ocean_trench.jm</MapJM>
-		<Dungeon/>
-	</World>
-	<World id="Pirate Cave">
-		<Width>256</Width>
-		<Height>256</Height>
-		<MapJM>pirate_cave.jm</MapJM>
 		<Dungeon/>
 	</World>
 	<World id="Oryx's Castle">
@@ -246,12 +228,6 @@
 		<Width>256</Width>
 		<Height>256</Height>
 		<MapJM>shatters.jm</MapJM>
-		<Dungeon/>
-	</World>
-	<World id="Snake Pit">
-		<Width>256</Width>
-		<Height>256</Height>
-		<MapJM>snake_pit.jm</MapJM>
 		<Dungeon/>
 	</World>
 	<World id="Spider Den">

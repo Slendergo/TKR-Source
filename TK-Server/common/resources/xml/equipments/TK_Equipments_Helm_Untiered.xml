@@ -48,7 +48,7 @@
     <Cooldown>10</Cooldown>
     <feedPower>800</feedPower>
   </Object>
-  <Object type="0x5027" id="Golden Oryx Helm">
+  <Object type="0x5027" id="Jewel-Encrusted Helmet">
     <Class>Equipment</Class>
     <Item />
     <SPlus />
@@ -57,7 +57,7 @@
       <Index>0x54</Index>
     </Texture>
     <SlotType>16</SlotType>
-    <Description>Helm completely covered in gold, its resistance is incredible thanks to the material with which it is made.</Description>
+    <Description>Assembled by melding various gems and jewels from treasure pots with a golden helmet.</Description>
     <ActivateOnEquip stat="21" amount="7">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="3">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="3">IncrementStat</ActivateOnEquip>

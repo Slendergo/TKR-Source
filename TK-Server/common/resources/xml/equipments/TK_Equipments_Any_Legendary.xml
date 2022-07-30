@@ -62,7 +62,7 @@
       <Index>0x13</Index>
     </Texture>
     <SlotType>10</SlotType>
-    <Description>The Gem that have the power of Life.</Description>
+    <Description>A gem brimming with vitality. So long as it’s held, properties of health regeneration will increase. </Description>
     <Sound>use_potion</Sound>
     <ExtraTooltipData>
       <EffectInfo name="Power of Life" description="If your Life is below half, you regenerate the quintuple fast." />
@@ -80,7 +80,7 @@
       <Index>0x17</Index>
     </Texture>
     <SlotType>10</SlotType>
-    <Description>This Talisman has the power of mana.</Description>
+    <Description>This talisman contains the Power of Luck. So long as it’s held, luck will increase.</Description>
     <Sound>use_potion</Sound>
     <Legendary />
     <ExtraTooltipData>
@@ -89,9 +89,9 @@
     <BagType>7</BagType>
     <feedPower>15</feedPower>
   </Object>
-  <Object type="0x4950" id="Marble's Hand">
+  <Object type="0x4950" id="Severed Marble Hand">
     <Class>Equipment</Class>
-    <DisplayId>Marble's Hand</DisplayId>
+    <DisplayId>Severed Marble Hand</DisplayId>
     <Item />
     <Texture>
       <File>CustomObj</File>
@@ -102,7 +102,7 @@
     <StatSetNoStack>0</StatSetNoStack>
     <AmountSetNoStack>100</AmountSetNoStack>
     <SlotType>10</SlotType>
-    <Description>The hand of the Marble Colossus, it contains the power of the hand.</Description>
+    <Description>A sundered chunk from the Marble Colossus. So long as it’s held, the power of the Colossus will flow through you.</Description>
     <ExtraTooltipData>
       <EffectInfo name="Marble Power" description="While holding this item, you will be immune to Unstable." />
       <EffectInfo name="Immune to Unstable." description="" />
@@ -116,7 +116,7 @@
     <Item />
     <HoldableItem />
     <ExtraTooltipData>
-      <EffectInfo name="Looting:" description="Holding this item gives you 20% of Loot! (One per Inventory)." />
+      <EffectInfo name="Looting:" description="Holding this item gives you 20% of Loot! (One per Inventory). This talisman contains the Power of Luck. So long as it’s held, luck will increase." />
     </ExtraTooltipData>
     <Texture>
       <File>CustomObj</File>
@@ -135,7 +135,7 @@
       <File>CustomObj</File>
       <Index>0x49</Index>
     </Texture>
-    <Description>This fragment contains the power of the Fire Elemental, use it with conscience and you will obtain unmatched power.</Description>
+    <Description>A fragment containing power from the Fire Elemental. Use it with care.</Description>
     <Sound>use_potion</Sound>
     <Forgeable />
     <Legendary />
@@ -150,7 +150,7 @@
       <File>CustomObj</File>
       <Index>0x4a</Index>
     </Texture>
-    <Description>This fragment contains the power of the Water Elemental, use it with conscience and you will obtain unmatched power.</Description>
+    <Description>A fragment containing power from the Water Elemental. Use it with care.</Description>
     <Sound>use_potion</Sound>
     <Forgeable />
     <Legendary />
@@ -165,7 +165,7 @@
       <File>CustomObj</File>
       <Index>0x4b</Index>
     </Texture>
-    <Description>This fragment contains the power of the Wind Elemental, use it with conscience and you will obtain unmatched power.</Description>
+    <Description>A fragment containing power from the Wind Elemental. Use it with care.</Description>
     <Sound>use_potion</Sound>
     <Forgeable />
     <Legendary />
@@ -180,7 +180,7 @@
       <File>CustomObj</File>
       <Index>0x4c</Index>
     </Texture>
-    <Description>This fragment contains the power of the Earth Elemental, use it with conscience and you will obtain unmatched power.</Description>
+    <Description>A fragment containing power from the Earth Elemental. Use it with care.</Description>
     <Sound>use_potion</Sound>
     <Forgeable />
     <Legendary />
@@ -225,7 +225,7 @@
       <File>CustomObj</File>
       <Index>0x4f</Index>
     </Texture>
-    <Description>This is the legendary fragment, it contains the power of all elementers together. The legend says that if you join it with another fragment, it will give you a weapon with incredible power.</Description>
+    <Description>Glistening, heavenly rays pour out from this fragment that contains the perfect mixture of all four elementals.</Description>
     <Sound>use_potion</Sound>
     <Forgeable />
     <Legendary />

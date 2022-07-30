@@ -41,7 +41,7 @@ namespace wServer.logic
                 new ItemLoot("Essence Eater", 0.0015)
                 ),
             new Threshold(0.03,
-                new ItemLoot("Ruthven's Fury", 0.003),
+                new ItemLoot("Wand of Vampires", 0.003),
                 new ItemLoot("Shadow's Embrace", 0.003)
                 ),
             new Threshold(0.001,
@@ -67,7 +67,7 @@ namespace wServer.logic
                 new ItemLoot("St. Abraham's Wand", 0.01),
                 new ItemLoot("Tome of Purification", 0.001),
                 new ItemLoot("Ring of Divine Faith", 0.01),
-                new ItemLoot("Unholy Necklace", 0.01),
+                new ItemLoot("Corrupted Pendant", 0.01),
                 new ItemLoot("Bone Dagger", 0.08)
                 )
             )

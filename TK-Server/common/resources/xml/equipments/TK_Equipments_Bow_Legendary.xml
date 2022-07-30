@@ -69,7 +69,7 @@
     </Texture>
     <SlotType>3</SlotType>
     <Legendary />
-    <Description>One of the main cannons the ghost ship had to sink other ships, the ghostly aura within it has the power to shoot many cannon balls at once.</Description>
+    <Description>“The legendary firearm forged from hard steel and pirate blood containing mighty power.”</Description>
     <RateOfFire>0.25</RateOfFire>
     <Sound>weapon/poor_quality_bow</Sound>
     <Projectile>
@@ -98,7 +98,7 @@
     </Texture>
     <SlotType>3</SlotType>
     <Legendary />
-    <Description>As soon as Nut heard that a brave adventurer killed her ally,she became furious. She brought out her bow,and tried to shoot the adventurer from the heavens,but the adventurer dodged each attack,and kept climbing up the different arrows to reach heaven. With one slash,Nut was beaten. The bow was transferred into the adventurers hand,to help him beat geb.</Description>
+    <Description>Once the prideful weapon of Nut. It was ultimately stored in her tomb as no other adventure could pull back the drawstring.</Description>
     <RateOfFire>1.1</RateOfFire>
     <Sound>weapon/poor_quality_bow</Sound>
     <Projectile>
@@ -120,7 +120,7 @@
     <FameBonus>6</FameBonus>
     <DisplayId>Bow of the Havens</DisplayId>
   </Object>
-  <Object type="0x540d" id="Fang Flinger">
+  <Object type="0x540d" id="Bone Flinger">
     <Class>Equipment</Class>
     <Item />
     <Texture>
@@ -129,7 +129,7 @@
     </Texture>
     <Legendary />
     <SlotType>3</SlotType>
-    <Description>The drawstring of this particular bow isn't made to notch traditional arrows, rather it is designed to fling fangs at high velocity.</Description>
+    <Description>The drawstring on this make-shift bow was not designed to notch traditional arrows. Rather, it launches high velocity bones.</Description>
     <RateOfFire>.80</RateOfFire>
     <Sound>weapon/poor_quality_bow</Sound>
     <Projectile>

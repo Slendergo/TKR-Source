@@ -16,7 +16,7 @@ namespace wServer.core.objects
             for (var i = 0; i < 20; i++)
             {
                 var inv = Inventory[i];
-                if (inv != null && inv.ObjectId == "Marble's Hand")
+                if (inv != null && inv.ObjectId == "Severed Marble Hand")
                     ok = true;
             }
 

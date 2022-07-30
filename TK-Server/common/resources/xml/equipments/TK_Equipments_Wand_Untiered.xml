@@ -378,7 +378,7 @@
     </Texture>
     <SlotType>8</SlotType>
     <Rare />
-    <Description>The shots of this Wand are as powerful as Elemental Water. The formation of stones and water gives it extraordinary power and grip.</Description>
+    <Description>Frozen water and stones give this wand exceptional grip and power.</Description>
     <RateOfFire>.6</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
@@ -399,7 +399,7 @@
     <FameBonus>6</FameBonus>
     <DisplayId>Thorn</DisplayId>
   </Object>
-  <Object type="0x5022" id="Deathhail Wand">
+  <Object type="0x5022" id="Tormentor’s Wrath">
     <Class>Equipment</Class>
     <Item />
     <Texture>
@@ -408,7 +408,7 @@
     </Texture>
     <SlotType>8</SlotType>
     <SPlus />
-    <Description>A powerful torment of a ghost keeps the power of the Wand. That power can be used for evil, or for good ...</Description>
+    <Description>Tormented souls lay dormant in this wand’s crystal, supplying it with power. Choose to use that power for good or for evil…</Description>
     <RateOfFire>1</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
@@ -426,6 +426,6 @@
     <ArcGap>11</ArcGap>
     <BagType>7</BagType>
     <FameBonus>5</FameBonus>
-    <DisplayId>Deathhail Wand</DisplayId>
+    <DisplayId>Tormentor’s Wrath</DisplayId>
   </Object>
 </Objects>

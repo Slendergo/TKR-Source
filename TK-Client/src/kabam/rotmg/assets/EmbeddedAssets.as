@@ -143,7 +143,6 @@ package kabam.rotmg.assets
       public static var CustomEnvironmentEmbed_:Class = EmbeddedAssets_customEnvironmentEmbed_;
       public static var CustomEnvironment1Embed_:Class = EmbeddedAssets_customEnvironment1Embed_;
       public static var CustomObjects32x32Embed_:Class = EmbeddedAssets_CustomObjects32x32Embed_;
-      public static var Custom32x32ObjectsEmbed_:Class = EmbeddedAssets_Custom32x32ObjectsEmbed_;
       public static var CustomObjEmbed_:Class = EmbeddedAssets_CustomObjEmbed_;
       public static var CustomProjsEmbed_:Class = EmbeddedAssets_CustomProjsEmbed_;
       public static var CustomProjsBigEmbed_:Class = EmbeddedAssets_CustomProjsBigEmbed_;

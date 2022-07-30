@@ -119,9 +119,6 @@ namespace wServer.logic
                     ),
                 new State("Explote",
                     new Shoot(30, 8, projectileIndex: 0, coolDownOffset: 0, coolDown: 103000),
-                    new TimedTransition(100, "dead")
-                    ),
-                new State("dead",
                     new Suicide()
                     )
                 )
@@ -142,9 +139,6 @@ namespace wServer.logic
                     ),
                 new State("Explote",
                     new Shoot(30, 8, projectileIndex: 0, coolDownOffset: 0, coolDown: 103000),
-                    new TimedTransition(100, "dead")
-                    ),
-                new State("dead",
                     new Suicide()
                     )
                 )
@@ -165,9 +159,6 @@ namespace wServer.logic
                     ),
                 new State("Explote",
                     new Shoot(30, 8, projectileIndex: 0, coolDownOffset: 0, coolDown: 103000),
-                    new TimedTransition(100, "dead")
-                    ),
-                new State("dead",
                     new Suicide()
                     )
                 )
@@ -354,8 +345,8 @@ namespace wServer.logic
                 new State("Phase 4",
                     new Taunt("Your fervent attacks are no match for my strength! BEGONE!"),
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, duration: 2000),
-                    new Shoot(radius: 20, count: 16, shootAngle: 22.5, projectileIndex: 4, coolDown: 2200, coolDownOffset: 200, seeInvis: true),
-                    new Shoot(20, 3, shootAngle: 15, projectileIndex: 5, coolDown: 3000, coolDownOffset: 300, seeInvis: true),
+                    new Shoot(radius: 20, count: 16, shootAngle: 22.5, projectileIndex: 4, coolDown: 3000, coolDownOffset: 200, seeInvis: true),
+                    new Shoot(20, 3, shootAngle: 15, projectileIndex: 5, coolDown: 4000, coolDownOffset: 300, seeInvis: true),
                     new RingAttack(20, 8, 0, projectileIndex: 3, 0.05, 0.05, seeInvis: true, coolDown: 200),
                     new HpLessTransition(0.7, "Phase 5")
                     ),
@@ -384,10 +375,10 @@ namespace wServer.logic
                 new State("Phase 7",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 25000),
                     new Taunt("Futility!"),
-                    new Grenade(radius: 2, damage: 0, range: 30, coolDown: 600, effect: ConditionEffectIndex.Quiet, effectDuration: 1000, color: 0xffffff),
+                    new Grenade(radius: 2, damage: 0, range: 30, coolDown: 200, effect: ConditionEffectIndex.Quiet, effectDuration: 1000, color: 0xffffff),
                     new Shoot(30, 39, shootAngle: 9.230, projectileIndex: 9, defaultAngle: 0, fixedAngle: 0, coolDown: 3000, coolDownOffset: 1000, seeInvis: true),
                     new Shoot(30, 39, shootAngle: 9.230, projectileIndex: 10, defaultAngle: 10, fixedAngle: 5, coolDown: 3000, seeInvis: true),
-                    new TimedTransition(10000, "Phase 8")
+                    new TimedTransition(25000, "Phase 8")
                     ),
                 new State("Phase 8",
                     new Taunt("Call of voice, for naught. Plea of mercy, for naught. None may enter this chamber and live!"),
@@ -418,7 +409,7 @@ namespace wServer.logic
                 new State("Phase 9",
                     new OrderOnce(30, "LH Pillar spawner", "Main"),
                     new Taunt("Enough! Pillars, serve your purpose"),
-                    new Orbit(.8, 12, 30, "Marble Colossus ORBIT", orbitClockwise: true),
+                    new Orbit(1, 6, 30, "Marble Colossus ORBIT", orbitClockwise: true),
                     new Shoot(20, 4, shootAngle: 15, projectileIndex: 13, coolDown: 1000, seeInvis: true),
                     new HpLessTransition(0.50, "Phase 10")
                     ),
@@ -434,7 +425,7 @@ namespace wServer.logic
                     new OrderOnce(1, "LH Colossus Rock 9", "Shoot And Move"),
                     new Shoot(30, 39, shootAngle: 9.230, projectileIndex: 10, defaultAngle: 10, fixedAngle: 5, coolDown: 3000, seeInvis: true),
                     new Shoot(10, 3, shootAngle: 15, projectileIndex: 12, coolDown: 2000, seeInvis: true),
-                    new TimedTransition(10000, "Phase 11")
+                    new TimedTransition(25000, "Phase 11")
                     ),
                 new State("Phase 11",
                     new OrderOnce(30, "LH Pillar spawner", "Main"),
@@ -445,30 +436,8 @@ namespace wServer.logic
                     new OrderOnce(20, "LH Colossus Rock 9", "Shoot And Move Closer"),
                     new Shoot(30, 39, shootAngle: 9.230, projectileIndex: 10, defaultAngle: 10, fixedAngle: 5, coolDown: 3000, seeInvis: true),
                     new Shoot(10, 3, shootAngle: 15, projectileIndex: 12, coolDown: 2000, seeInvis: true),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 0, coolDown: 4600, coolDownOffset: 200),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 2, coolDown: 4600, coolDownOffset: 400),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 4, coolDown: 4600, coolDownOffset: 600),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 6, coolDown: 4600, coolDownOffset: 800),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 8, coolDown: 4600, coolDownOffset: 1000),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 10, coolDown: 4600, coolDownOffset: 1200),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 12, coolDown: 4600, coolDownOffset: 1400),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 14, coolDown: 4600, coolDownOffset: 1600),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 16, coolDown: 4600, coolDownOffset: 1800),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 18, coolDown: 4600, coolDownOffset: 2000),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 20, coolDown: 4600, coolDownOffset: 2200),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 22, coolDown: 4600, coolDownOffset: 2400),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 24, coolDown: 4600, coolDownOffset: 2600),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 26, coolDown: 4600, coolDownOffset: 2800),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 28, coolDown: 4600, coolDownOffset: 3000),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 30, coolDown: 4600, coolDownOffset: 3200),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 32, coolDown: 4600, coolDownOffset: 3400),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 34, coolDown: 4600, coolDownOffset: 3600),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 36, coolDown: 4600, coolDownOffset: 3800),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 38, coolDown: 4600, coolDownOffset: 4000),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 40, coolDown: 4600, coolDownOffset: 4200),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 42, coolDown: 4600, coolDownOffset: 4400),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 44, coolDown: 4600, coolDownOffset: 4600),
-                    new TimedTransition(10000, "Phase 12")
+                    new RingAttack(20, 3, 0, projectileIndex: 3, 0.05, 0.05, seeInvis: true, coolDown: 200),
+                    new TimedTransition(25000, "Phase 12")
                     ),
                 new State("Phase 12",
                     new Taunt("PATI! The prohibited arts allow untold power!"),
@@ -488,12 +457,12 @@ namespace wServer.logic
                     new Shoot(30, 16, shootAngle: 22.5, fixedAngle: 0, angleOffset: 30, projectileIndex: 14, coolDown: 4000, coolDownOffset: 1000, seeInvis: true),
                     new Shoot(30, 16, shootAngle: 22.5, fixedAngle: 0, angleOffset: 30, projectileIndex: 14, coolDown: 4000, coolDownOffset: 1100, seeInvis: true),
                     new Shoot(30, 16, shootAngle: 22.5, fixedAngle: 0, angleOffset: 30, projectileIndex: 14, coolDown: 4000, coolDownOffset: 1200, seeInvis: true),
-                    new TimedTransition(1200, "Phase 12.2"),
+                    new TimedTransition(3000, "Phase 12.2"),
                     new HpLessTransition(0.4, "Phase 13")
                     ),
                 new State("Phase 12.2",
                     new Charge(3, 30, 3100),
-                    new TimedTransition(1000, "Phase 12.1"),
+                    new TimedTransition(3100, "Phase 12.1"),
                     new HpLessTransition(0.4, "Phase 13")
                     ),
                 new State("Phase 13",
@@ -643,64 +612,14 @@ namespace wServer.logic
                     new OrderOnce(30, "LH Pillar spawner", "Main"),
                     new Taunt("You… YOU WILL COME WITH ME!"),
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 30000),
-                    // new RingAttack(20, 8, 0, projectileIndex: 3, 0.05, 0, seeInvis: true, coolDown: 200),
-
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 0, coolDown: 4600, coolDownOffset: 200),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 2, coolDown: 4600, coolDownOffset: 400),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 4, coolDown: 4600, coolDownOffset: 600),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 6, coolDown: 4600, coolDownOffset: 800),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 8, coolDown: 4600, coolDownOffset: 1000),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 10, coolDown: 4600, coolDownOffset: 1200),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 12, coolDown: 4600, coolDownOffset: 1400),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 14, coolDown: 4600, coolDownOffset: 1600),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 16, coolDown: 4600, coolDownOffset: 1800),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 18, coolDown: 4600, coolDownOffset: 2000),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 20, coolDown: 4600, coolDownOffset: 2200),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 22, coolDown: 4600, coolDownOffset: 2400),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 24, coolDown: 4600, coolDownOffset: 2600),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 26, coolDown: 4600, coolDownOffset: 2800),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 28, coolDown: 4600, coolDownOffset: 3000),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 30, coolDown: 4600, coolDownOffset: 3200),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 32, coolDown: 4600, coolDownOffset: 3400),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 34, coolDown: 4600, coolDownOffset: 3600),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 36, coolDown: 4600, coolDownOffset: 3800),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 38, coolDown: 4600, coolDownOffset: 4000),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 40, coolDown: 4600, coolDownOffset: 4200),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 42, coolDown: 4600, coolDownOffset: 4400),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 44, coolDown: 4600, coolDownOffset: 4600),
-
-                    new TimedTransition(9200, "Phase 15.1")
+                    new RingAttack(20, 8, 0, projectileIndex: 3, 0.05, 0, seeInvis: true, coolDown: 200),
+                    new TimedTransition(30000, "Phase 15.1")
                     ),
                 new State("Phase 15.1",
                     new Taunt("I CANNOT FAIL MY PURPOSE!"),
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 30000),
-                    // new RingAttack(20, 8, 0, projectileIndex: 3, -0.05, 0, seeInvis: true, coolDown: 200, useSavedAngle: true),
-
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 0, coolDown: 4600, coolDownOffset: 200),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 2, coolDown: 4600, coolDownOffset: 400),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 4, coolDown: 4600, coolDownOffset: 600),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 6, coolDown: 4600, coolDownOffset: 800),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 8, coolDown: 4600, coolDownOffset: 1000),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 10, coolDown: 4600, coolDownOffset: 1200),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 12, coolDown: 4600, coolDownOffset: 1400),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 14, coolDown: 4600, coolDownOffset: 1600),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 16, coolDown: 4600, coolDownOffset: 1800),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 18, coolDown: 4600, coolDownOffset: 2000),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 20, coolDown: 4600, coolDownOffset: 2200),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 22, coolDown: 4600, coolDownOffset: 2400),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 24, coolDown: 4600, coolDownOffset: 2600),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 26, coolDown: 4600, coolDownOffset: 2800),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 28, coolDown: 4600, coolDownOffset: 3000),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 30, coolDown: 4600, coolDownOffset: 3200),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 32, coolDown: 4600, coolDownOffset: 3400),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 34, coolDown: 4600, coolDownOffset: 3600),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 36, coolDown: 4600, coolDownOffset: 3800),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 38, coolDown: 4600, coolDownOffset: 4000),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 40, coolDown: 4600, coolDownOffset: 4200),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 42, coolDown: 4600, coolDownOffset: 4400),
-                    new Shoot(30, 8, projectileIndex: 3, fixedAngle: 44, coolDown: 4600, coolDownOffset: 4600),
-
-                    new TimedTransition(10000, "Death")
+                    new RingAttack(20, 8, 0, projectileIndex: 3, -0.05, 0, seeInvis: true, coolDown: 200, useSavedAngle: true),
+                    new TimedTransition(30000, "Death")
                     ),
                 new State("Death",
                     new Taunt("I feel myself… Slipping… Into the void… It is so… Dark…"),
@@ -715,7 +634,7 @@ namespace wServer.logic
                     new Shoot(30, 48, projectileIndex: 17, defaultAngle: 0, shootAngle: 7.5, coolDown: 100000, seeInvis: true),
                     new Shoot(30, 24, projectileIndex: 18, defaultAngle: 0, shootAngle: 15, coolDown: 100000, coolDownOffset: 50, seeInvis: true),
                     new Shoot(30, 48, projectileIndex: 16, defaultAngle: 0, shootAngle: 7.5, coolDown: 1000000, seeInvis: true), //VOID BULLET
-                    new TimedTransition(100, "Death 3")
+                    new TimedTransition(50, "Death 3")
                     ),
                 new State("Death 3",
                     new Suicide()
@@ -747,10 +666,10 @@ namespace wServer.logic
              //  new ItemLoot("Skull of Corrupted Souls", 0.001),
              //  new ItemLoot("Ritual Robe", 0.001),
              //  new ItemLoot("Bloodshed Ring", 0.001),
-                new ItemLoot("Marble's Hand", 0.001)
+                new ItemLoot("Severed Marble Hand", 0.001)
       //     ),
       // new Threshold(0.05,
-      //     new ItemLoot("Colossus Essence", 0.0008),
+      //     new ItemLoot("Marbled Concoction", 0.0008),
       //     new ItemLoot("Titan Slayer", 0.0008),
       //     new ItemLoot("Colossal Plated Hide", 0.0008),
       //     new ItemLoot("Omnipotence Ring", 0.0008)

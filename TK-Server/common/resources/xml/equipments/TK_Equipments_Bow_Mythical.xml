@@ -31,7 +31,7 @@
     <OldSound>arrowShoot</OldSound>
     <DisplayId>Boshy Gun</DisplayId>
   </Object>
-  <Object type="0x500e" id="Velocity Bow">
+  <Object type="0x500e" id="Hurricane">
     <Class>Equipment</Class>
     <Item />
     <Texture>
@@ -40,7 +40,7 @@
     </Texture>
     <Eternal />
     <SlotType>3</SlotType>
-    <Description>The arrows of this Bow go at a speed very close to the light thanks to the power of the wind. Cut and go through everything that points.</Description>
+    <Description>Empowered with the element of wind, each shot is as light as a feather and shoots as fast as the speed of sound.</Description>
     <RateOfFire>1</RateOfFire>
     <Sound>weapon/poor_quality_bow</Sound>
     <Projectile>
@@ -63,6 +63,6 @@
     <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <Electrify />
-    <DisplayId>Velocity Bow</DisplayId>
+    <DisplayId>Hurricane</DisplayId>
   </Object>
 </Objects>

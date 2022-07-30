@@ -194,7 +194,7 @@
   <Object type="0x5059" id="Magic Robe">
     <Class>Equipment</Class>
     <Item />
-    <Description>A magic steal, its color and its fabric will protect you from all evil.</Description>
+    <Description>A classical robe used as a standard for up-and-coming wizards aiming to faces the challenges in the realm that lie ahead</Description>
     <SetTier />
     <Texture>
       <File>CustomObj</File>
@@ -208,10 +208,10 @@
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
   </Object>
-  <Object type="0x505e" id="Bloody Robe">
+  <Object type="0x505e" id="Blood-Soaked Robe">
     <Class>Equipment</Class>
     <Item />
-    <Description>A Robe made of the blood of their victims, the pain it contains carries a great responsibility</Description>
+    <Description>A charm was placed over the fabric used in the making of this robe. The more blood spilled by the victims, the healthier the wearer becomes.</Description>
     <Rare />
     <Texture>
       <File>CustomObj</File>
@@ -225,7 +225,7 @@
     <BagType>7</BagType>
     <FameBonus>5</FameBonus>
   </Object>
-  <Object type="0x5079" id="Wind Robe">
+  <Object type="0x5079" id="Gale Robe">
     <Class>Equipment</Class>
     <Item />
     <Texture>
@@ -234,7 +234,7 @@
     </Texture>
     <SNormal />
     <SlotType>14</SlotType>
-    <Description>This robe was used by Mages in order to shield themselves from the immense Realm winds, coming from.. an unkown source.</Description>
+    <Description>A wind barrier envelops this robe and protects from harmful attacks.</Description>
     <ActivateOnEquip stat="21" amount="12">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="4">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="4">IncrementStat</ActivateOnEquip>

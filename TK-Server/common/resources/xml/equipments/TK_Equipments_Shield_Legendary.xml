@@ -82,7 +82,7 @@
     </Texture>
     <SlotType>5</SlotType>
     <Legendary />
-    <Description>A shield made of sturdy wood.</Description>
+    <Description>A combination of sturdy wood and sacred sand from tombs give this shield unfathomable power.</Description>
     <Sound>spell/fire_spray</Sound>
     <Projectile>
       <ObjectId>Shield of The Ancient's Shot</ObjectId>

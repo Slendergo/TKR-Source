@@ -629,22 +629,22 @@ namespace wServer.logic
                     )
                 )
             )
-       // .Init("Dark Skeleton",
-       //     new State(
-       //         new State("Start",
-       //             new Orbit(0.4,4,10,"Wraith"),
-       //             new Taunt("Leave this place fools!"),
-       //             new Shoot(5,1,null,0,coolDown:500),
-       //             new Spawn("Hard Bounty Skeletons",5,1, coolDown:10000)                 
-       //                 )
-       //             ),
-       //      new Threshold(0.001,
-       //         LootTemplates.DustLoot()
-       //         ),
-       //         new Threshold(.05,
-       //             new ItemLoot("Dark Skeleton's Shield", 0.0015)
-       //             )
-       //     )
+        .Init("Dark Skeleton",
+            new State(
+                new State("Start",
+                    new Orbit(0.4,4,10,"Wraith"),
+                    new Taunt("Leave this place fools!"),
+                    new Shoot(5,1,null,0,coolDown:500),
+                    new Spawn("Hard Bounty Skeletons",5,1, coolDown:10000)                 
+                        )
+                    ),
+             new Threshold(0.001,
+                LootTemplates.DustLoot()
+                ),
+                new Threshold(.05,
+                    new ItemLoot("Dark Skeleton's Shield", 0.0015)
+                    )
+            )
         .Init("Hard Bounty Skeletons",
             new State(
                 new State("Summoned",

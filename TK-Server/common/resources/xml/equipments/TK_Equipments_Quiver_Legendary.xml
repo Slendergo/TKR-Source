@@ -69,7 +69,7 @@
     <feedPower>1300</feedPower>
     <Legendary />
   </Object>
-  <Object type="0x5148" id="Snake Venom Quiver">
+  <Object type="0x5148" id="Snake Bane Quiver">
     <Class>Equipment</Class>
     <Item />
     <OutOfOneMind />
@@ -78,7 +78,7 @@
       <Index>0xac</Index>
     </Texture>
     <SlotType>15</SlotType>
-    <Description> This Quiver was given to the soul of Stheno to kill everyone who tries to kill her. </Description>
+    <Description>Given to Stheno as a means to protect herself. One drop of poison from this quiver was enough to kill gods.</Description>
     <Sound>spell/fire_spray</Sound>
     <Projectile>
       <ObjectId>Snake Venom Quiver Shot</ObjectId>
@@ -103,7 +103,7 @@
     <Activate>Shoot</Activate>
     <Legendary />
     </Object>
-    <Object type="0x50f5" id="Venom Striker">
+    <Object type="0x50f5" id="Venomous Quiver">
       <Class>Equipment</Class>
       <Item />
       <SteamRoller />
@@ -112,7 +112,7 @@
         <Index>0xed</Index>
       </Texture>
       <SlotType>15</SlotType>
-      <Description>The slots in this quiver are designated for storing the large fangs of now deceased large spiders.</Description>
+      <Description>The slots in this quiver were designed to be large enough for holding whole spider fangs.</Description>
       <Sound>spell/fire_spray</Sound>
       <Projectile>
         <ObjectId>Venom Striker Shoot</ObjectId>

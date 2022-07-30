@@ -71,7 +71,7 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.03,
-                new ItemLoot("Mushroom's Cloth", 0.0014)
+                new ItemLoot("Fungal Cloth", 0.0014)
                 ),
             new Threshold(0.001,
                 new TierLoot(14, ItemType.Armor, 0.01),
@@ -82,8 +82,8 @@ namespace wServer.logic
                 new TierLoot(5, ItemType.Ability, 0.03),
                 new TierLoot(5, ItemType.Ring, 0.03),
                 new TierLoot(6, ItemType.Ring, 0.01),
-                new ItemLoot("Mushroom's Nature", 0.01),
-                new ItemLoot("Mushroom Ring", 0.01),
+                new ItemLoot("Magical Mushroom Staff", 0.01),
+                new ItemLoot("Mushroom Loop", 0.01),
 
                 new ItemLoot("Magic Dust", 0.5)
                 )

@@ -1,5 +1,5 @@
 <Objects>
-  <Object type="0x5013" id="The Ancient Wand of Fury">
+  <Object type="0x5013" id="Eldritch Fury">
     <Class>Equipment</Class>
     <Item />
     <Insanity />
@@ -9,7 +9,7 @@
     </Texture>
     <Eternal />
     <SlotType>8</SlotType>
-    <Description>This Wand, with its magnificent powers of fire, incinerates everything that lies ahead.</Description>
+    <Description>A precious artifact given new life by purified flames provided from the fire elemental.</Description>
     <RateOfFire>.85</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
@@ -31,6 +31,6 @@
     <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
     <BagType>8</BagType>
     <FameBonus>7</FameBonus>
-    <DisplayId>The Ancient Wand of Fury</DisplayId>
+    <DisplayId>Eldritch Fury</DisplayId>
   </Object>
 </Objects>

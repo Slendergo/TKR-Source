@@ -1445,28 +1445,4 @@
     </Texture>
     <AngleCorrection>1</AngleCorrection>
   </Object>
-	<Object type="0x9802" id="Fire Elemental Wave Shoot 1">
-		<Class>Projectile</Class>
-		<Texture>
-			<File>CustomProjs</File>
-			<Index>0xd0</Index>
-		</Texture>
-		<AngleCorrection>1</AngleCorrection>
-	</Object>
-	<Object type="0x9803" id="Fire Elemental Arrow">
-		<Class>Projectile</Class>
-		<Texture>
-			<File>CustomProjs</File>
-			<Index>0xd1</Index>
-		</Texture>
-		<AngleCorrection>1</AngleCorrection>
-	</Object>
-	<Object type="0x9804" id="Fire Elemental Spin">
-		<Class>Projectile</Class>
-		<Texture>
-			<File>CustomProjs</File>
-			<Index>0xd2</Index>
-		</Texture>
-		<Rotation>50</Rotation>
-	</Object>
 </Objects>

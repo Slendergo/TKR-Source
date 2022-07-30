@@ -1,5 +1,5 @@
 <Objects>
-  <Object type="0xb15a" id="Spectral Cloak">
+  <Object type="0xb15a" id="The Phantom’s Enigma">
     <Class>Equipment</Class>
     <Item />
     <Legendary />
@@ -9,7 +9,7 @@
       <Index>0xb3</Index>
     </Texture>
     <SlotType>13</SlotType>
-    <Description>An etheral cloak crafted by an ancient guild of satanic worshippers.</Description>
+    <Description>“Now you see me, now you don’t.”</Description>
     <Sound>spell/fire_nova</Sound>
     <Usable />
     <MpCost>115</MpCost>
@@ -34,7 +34,7 @@
       <Index>0x96</Index>
     </Texture>
     <SlotType>13</SlotType>
-    <Description></Description>
+    <Description>An ethereal cloak favored by a long-forgotten guild of satanic worshippers.</Description>
     <Sound>spell/fire_nova</Sound>
     <Usable />
     <BagType>7</BagType>

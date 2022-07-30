@@ -179,7 +179,7 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.03,
-                new ItemLoot("Megamoth's Scepter", 0.0014)
+                new ItemLoot("Butterfly Effect", 0.0014)
                 ),
             new Threshold(0.01,
                 new TierLoot(11, ItemType.Armor, 0.1),

@@ -37,7 +37,7 @@
     <Activate>ShurikenAbility</Activate>
     <feedPower>800</feedPower>
   </Object>
-  <Object type="0x506a" id="Stheno Queen Star">
+  <Object type="0x506a" id="Star of Stheno">
     <Class>Equipment</Class>
     <Item />
     <Texture>
@@ -45,7 +45,7 @@
       <Index>0x7b</Index>
     </Texture>
     <SlotType>25</SlotType>
-    <Description>The Star of the Snake Queen, Stheno Queen.</Description>
+    <Description>Rigid and rough, this star was assembled with Stheno’s shed skin.</Description>
     <Sound>spell/fire_spray</Sound>
     <ExtraTooltipData>
       <EffectInfo name="While Key Held" description="" />

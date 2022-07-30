@@ -54,28 +54,33 @@ namespace wServer.logic
             )
         .Init("MegaRototo",
             new State(
+                new StayCloseToSpawn(.4, 6),
                 new Reproduce(children: "Tiny Rototo", densityRadius: 12, densityMax: 7, coolDown: 7000),
                 new State("Follow",
-                    new Shoot(radius: 0, count: 4, shootAngle: 90, defaultAngle: 45, coolDown: 1400),
-                    new Shoot(radius: 0, count: 4, shootAngle: 90, projectileIndex: 1, coolDown: 1400),
+                    new Shoot(12, count: 4, shootAngle: 90, defaultAngle: 45, coolDown: 1400),
+                    new Shoot(8, count: 4, shootAngle: 90, projectileIndex: 1, coolDown: 1400),
                     new Follow(speed: 0.45, acquireRange: 11, range: 5),
                     new TimedRandomTransition(4300, false, "FlameThrower", "StayBack")
                     ),
                 new State("StayBack",
-                    new Shoot(radius: 0, count: 3, shootAngle: 16, projectileIndex: 1, predictive: 0.6, coolDown: 1200),
-                    new Shoot(radius: 0, count: 3, shootAngle: 16, projectileIndex: 0, predictive: 0.9, coolDown: 600),
+                    new StayCloseToSpawn(.4, 6),
+                    new Shoot(12, count: 3, shootAngle: 16, projectileIndex: 1, predictive: 0.6, coolDown: 1000),
+                    new Shoot(8, count: 3, shootAngle: 16, projectileIndex: 0, predictive: 0.9, coolDown: 400),
                     new StayBack(speed: 0.5, distance: 10, entity: null),
                     new TimedTransition(time: 2400, targetState: "Follow")
                     ),
                 new State("FlameThrower",
                     new State("FB1ORFB2",
+                        new StayCloseToSpawn(.4, 6),
                         new TimedRandomTransition(0, false, "FB1", "FB2")
                         ),
                     new State("FB1",
+                        new StayCloseToSpawn(.4, 6),
                         new Shoot(radius: 12, count: 2, shootAngle: 16, projectileIndex: 2, coolDown: 400),
                         new Shoot(radius: 12, count: 1, projectileIndex: 3, coolDown: 200)
                         ),
                     new State("FB2",
+                        new StayCloseToSpawn(.4, 6),
                         new Shoot(radius: 12, count: 2, shootAngle: 16, projectileIndex: 3, coolDown: 400),
                         new Shoot(radius: 12, count: 1, projectileIndex: 2, coolDown: 200)
                         ),
@@ -83,9 +88,9 @@ namespace wServer.logic
                     )
                 ),
             new Threshold(0.01,
-                new ItemLoot(item: "Candy-Coated Armor", probability: 0.01),
-                new ItemLoot(item: "Pixie-Enchanted Sword", probability: 0.01),
-                new ItemLoot(item: "Seal of the Enchanted Forest", probability: 0.01),
+                new ItemLoot(item: "Candy-Coated Armor", probability: 0.005),
+                new ItemLoot(item: "Pixie-Enchanted Sword", probability: 0.005),
+                new ItemLoot(item: "Seal of the Enchanted Forest", probability: 0.005),
                 new ItemLoot(item: "Potion of Vitality", probability: 1),
                 new ItemLoot(item: "Potion of Dexterity", probability: 1),
                 new ItemLoot(item: "Rock Candy", probability: 0.08),
@@ -107,20 +112,22 @@ namespace wServer.logic
             new State(
                 new Spawn(children: "Big Creampuff", maxChildren: 2, initialSpawn: 0, givesNoXp: false),
                 new Reproduce(children: "Big Creampuff", densityRadius: 24, densityMax: 2, coolDown: 25000),
-                new Shoot(radius: 10, count: 1, projectileIndex: 0, predictive: 1, coolDown: 1400),
-                new Shoot(radius: 4.4, count: 5, shootAngle: 12, projectileIndex: 1, predictive: 0.6, coolDown: 800),
+                new Shoot(radius: 10, count: 3, shootAngle: 10, projectileIndex: 0, predictive: 1, coolDown: 1600, coolDownOffset: 200),
+                new Shoot(radius: 10, count: 3, shootAngle: 10, projectileIndex: 0, predictive: 1, coolDown: 1600, coolDownOffset: 500),
+                new Shoot(radius: 10, count: 3, shootAngle: 10, projectileIndex: 0, predictive: 1, coolDown: 1600, coolDownOffset: 800),
+                new Shoot(radius: 4.4, count: 5, shootAngle: 12, projectileIndex: 1, predictive: 0.6, coolDown: 600),
                 new Prioritize(
-                    new Charge(speed: 1.4, range: 11, coolDown: 4200),
-                    new StayBack(speed: 1, distance: 4, entity: null),
-                    new StayBack(speed: 0.5, distance: 7, entity: null)
+                    new StayCloseToSpawn(.4, 4),
+                    new Charge(speed: 1.4, range: 11, coolDown: 800),
+                    new StayBack(speed: 1, distance: 2, entity: null),
+                    new StayBack(speed: 0.5, distance: 2, entity: null)
                     ),
-                new StayCloseToSpawn(speed: 1.35, range: 13),
                 new Wander(speed: 0.4)
                 ),
             new Threshold(0.01,
-                new ItemLoot(item: "Candy-Coated Armor", probability: 0.01),
-                new ItemLoot(item: "Pixie-Enchanted Sword", probability: 0.01),
-                new ItemLoot(item: "Seal of the Enchanted Forest", probability: 0.01),
+                new ItemLoot(item: "Candy-Coated Armor", probability: 0.005),
+                new ItemLoot(item: "Pixie-Enchanted Sword", probability: 0.005),
+                new ItemLoot(item: "Seal of the Enchanted Forest", probability: 0.005),
                 new ItemLoot(item: "Potion of Attack", probability: 1),
                 new ItemLoot(item: "Potion of Defense", probability: 1),
                 new ItemLoot(item: "Rock Candy", probability: 0.08),
@@ -141,55 +148,61 @@ namespace wServer.logic
         .Init("Desire Troll",
             new State(
                 new State("BaseAttack",
-                    new Shoot(radius: 10, count: 3, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 1400),
-                    new Grenade(radius: 5, damage: 200, range: 8, coolDown: 3000),
-                    new Shoot(radius: 10, count: 1, projectileIndex: 1, predictive: 1, coolDown: 2000),
+                    new StayCloseToSpawn(.4, 6),
+                    new Shoot(radius: 10, count: 6, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 1100),
+                    new Grenade(radius: 5, damage: 200, range: 8, coolDown: 700),
+                    new Shoot(radius: 10, count: 3, projectileIndex: 1, predictive: 1, coolDown: 1500),
                     new State("Choose",
                         new TimedRandomTransition(3800, false, "Run", "Attack")
                         ),
                     new State("Run",
-                        new StayBack(speed: 1.1, distance: 10, entity: null),
+                        new StayCloseToSpawn(.4, 4),
                         new TimedTransition(time: 1200, targetState: "Choose")
                         ),
                     new State("Attack",
+                        new StayCloseToSpawn(.4, 6),
                         new Charge(speed: 1.2, range: 11, coolDown: 1000),
-                        new TimedTransition(time: 1000, targetState: "Choose")
+                        new TimedTransition(time: 500, targetState: "Choose")
                         ),
                     new HpLessTransition(threshold: 0.6, targetState: "NextAttack")
                     ),
                 new State("NextAttack",
-                    new Shoot(radius: 10, count: 5, shootAngle: 10, projectileIndex: 2, predictive: 0.5, angleOffset: 0.4, coolDown: 2000),
-                    new Shoot(radius: 10, count: 1, projectileIndex: 1, predictive: 1, coolDown: 2000),
-                    new Shoot(radius: 10, count: 3, shootAngle: 15, projectileIndex: 0, predictive: 1, angleOffset: 1, coolDown: 4000),
+                    new StayCloseToSpawn(.4, 6),
+                    new Shoot(radius: 10, count: 7, shootAngle: 10, projectileIndex: 2, predictive: 0.5, angleOffset: 0.4, coolDown: 1000),
+                    new Shoot(radius: 10, count: 3, projectileIndex: 1, predictive: 1, coolDown: 1000),
+                    new Shoot(radius: 10, count: 5, shootAngle: 15, projectileIndex: 0, predictive: 1, angleOffset: 1, coolDown: 2000),
                     new Grenade(radius: 5, damage: 200, range: 8, coolDown: 3000),
                     new State("Choose2",
                         new TimedRandomTransition(3800, false, "Run2", "Attack2")
                         ),
                     new State("Run2",
+                        new StayCloseToSpawn(.4, 6),
                         new StayBack(speed: 1.5, distance: 10, entity: null),
                         new TimedTransition(time: 1500, targetState: "Choose2"),
                         new PlayerWithinTransition(dist: 3.5, targetState: "Boom", seeInvis: false)
                         ),
                     new State("Attack2",
+                        new StayCloseToSpawn(.4, 6),
                         new Charge(speed: 1.2, range: 11, coolDown: 1000),
                         new TimedTransition(time: 1000, targetState: "Choose2"),
                         new PlayerWithinTransition(dist: 3.5, targetState: "Boom", seeInvis: false)
                         ),
                     new State("Boom",
-                        new Shoot(radius: 0, count: 20, shootAngle: 18, projectileIndex: 3, coolDown: 2000),
+                        new StayCloseToSpawn(.4, 6),
+                        new Shoot(8, count: 20, shootAngle: 18, projectileIndex: 3, coolDown: 1000),
                         new TimedTransition(time: 200, targetState: "Choose2")
                         )
                     ),
-                new StayCloseToSpawn(speed: 1.5, range: 15),
+                new StayCloseToSpawn(.4, 6),
                 new Prioritize(
                     new Follow(speed: 1, acquireRange: 11, range: 5)
                     ),
                 new Wander(speed: 0.4)
                 ),
             new Threshold(0.01,
-                new ItemLoot(item: "Candy-Coated Armor", probability: 0.01),
-                new ItemLoot(item: "Pixie-Enchanted Sword", probability: 0.01),
-                new ItemLoot(item: "Seal of the Enchanted Forest", probability: 0.01),
+                new ItemLoot(item: "Candy-Coated Armor", probability: 0.005),
+                new ItemLoot(item: "Pixie-Enchanted Sword", probability: 0.005),
+                new ItemLoot(item: "Seal of the Enchanted Forest", probability: 0.005),
                 new ItemLoot(item: "Potion of Attack", probability: 1),
                 new ItemLoot(item: "Potion of Wisdom", probability: 1),
                 new ItemLoot(item: "Rock Candy", probability: 0.08),
@@ -210,26 +223,29 @@ namespace wServer.logic
         .Init("Swoll Fairy",
             new State(
                 new Spawn(children: "Fairy", maxChildren: 6, initialSpawn: 0, coolDown: 10000, givesNoXp: false),
-                new StayCloseToSpawn(speed: 0.6, range: 13),
+                new StayCloseToSpawn(.4, 6),
                 new Prioritize(
                     new Follow(speed: 0.3, acquireRange: 10, range: 5)
                     ),
                 new State("Shoot",
-                    new Shoot(radius: 11, count: 2, shootAngle: 30, projectileIndex: 0, predictive: 1, coolDown: 600),
-                    new TimedTransition(time: 3000, targetState: "Pause")
+                    new StayCloseToSpawn(.4, 6),
+                    new Shoot(radius: 11, count: 3, shootAngle: 30, projectileIndex: 0, predictive: 1, coolDown: 500),
+                    new TimedTransition(time: 3000, targetState: "ShootB")
                     ),
                 new State("ShootB",
-                    new Shoot(radius: 11, count: 8, shootAngle: 45, projectileIndex: 1, coolDown: 1000),
+                    new StayCloseToSpawn(.4, 6),
+                    new Shoot(radius: 11, count: 8, shootAngle: 45, projectileIndex: 1, coolDown: 600),
                     new TimedTransition(time: 3000, targetState: "Pause")
                     ),
                 new State("Pause",
-                    new TimedRandomTransition(3000, false, "Shoot", "ShootB")
+                    new StayCloseToSpawn(.4, 6),
+                    new TimedRandomTransition(3, false, "Shoot", "ShootB")
                     )
                 ),
             new Threshold(0.01,
-                new ItemLoot(item: "Candy-Coated Armor", probability: 0.01),
-                new ItemLoot(item: "Pixie-Enchanted Sword", probability: 0.01),
-                new ItemLoot(item: "Seal of the Enchanted Forest", probability: 0.01),
+                new ItemLoot(item: "Candy-Coated Armor", probability: 0.005),
+                new ItemLoot(item: "Pixie-Enchanted Sword", probability: 0.005),
+                new ItemLoot(item: "Seal of the Enchanted Forest", probability: 0.005),
                 new ItemLoot(item: "Potion of Defense", probability: 1),
                 new ItemLoot(item: "Potion of Wisdom", probability: 1),
                 new ItemLoot(item: "Rock Candy", probability: 0.08), 
@@ -238,39 +254,37 @@ namespace wServer.logic
                 new ItemLoot(item: "Blue Gumball", probability: 0.15),
                 new ItemLoot(item: "Green Gumball", probability: 0.15),
                 new ItemLoot(item: "Yellow Gumball", probability: 0.15),
-                new TierLoot(tier: 10, type: ItemType.Weapon, probability: 0.04),
-                new TierLoot(tier: 11, type: ItemType.Weapon, probability: 0.06),
-                new TierLoot(tier: 12, type: ItemType.Armor, probability: 0.06),
-                new TierLoot(tier: 4, type: ItemType.Ability, probability: 0.05),
-                new TierLoot(tier: 5, type: ItemType.Ability, probability: 0.03),
-                new TierLoot(tier: 4, type: ItemType.Ring, probability: 0.05),
-                new TierLoot(tier: 5, type: ItemType.Ability, probability: 0.03)
+                new TierLoot(tier: 11, type: ItemType.Weapon, probability: 0.01),
+                new TierLoot(tier: 5, type: ItemType.Ability, probability: 0.01),
+                new TierLoot(tier: 5, type: ItemType.Ring, probability: 0.01)
                 )
             )
         .Init("Gigacorn",
             new State(
-                new StayCloseToSpawn(speed: 1, range: 13),
+                new StayCloseToSpawn(.4, 4),
+                new TimedTransition(1000, "Start"),
                 new Prioritize(
-                    new Charge(speed: 1.4, range: 11, coolDown: 3800),
-                    new StayBack(speed: 0.8, distance: 6, entity: null)
+                    new Charge(speed: 1.4, range: 11, coolDown: 1900)
                     ),
                 new State("Start",
-                    new State("Shoot",
-                        new Shoot(radius: 10, count: 1, projectileIndex: 0, predictive: 1, coolDown: 200),
-                        new TimedTransition(time: 2850, targetState: "ShootPause")
+                        new StayCloseToSpawn(.4, 4),
+                        new Wander(1.2),
+                        new Shoot(radius: 10, count: 2, shootAngle: 10, projectileIndex: 0, predictive: 1, coolDown: 200),
+                        new Shoot(radius: 2, count: 8, projectileIndex: 0, predictive: 1, coolDown: 1500, coolDownOffset: 600),
+                        new TimedTransition(time: 1500, targetState: "ShootPause")
                         ),
                     new State("ShootPause",
-                        new Shoot(radius: 4.5, count: 3, shootAngle: 10, projectileIndex: 1, predictive: 0.4, coolDown: 3000, coolDownOffset: 500),
-                        new Shoot(radius: 4.5, count: 3, shootAngle: 10, projectileIndex: 1, predictive: 0.4, coolDown: 3000, coolDownOffset: 1000),
-                        new Shoot(radius: 4.5, count: 3, shootAngle: 10, projectileIndex: 1, predictive: 0.4, coolDown: 3000, coolDownOffset: 1500),
-                        new TimedTransition(time: 5700, targetState: "Shoot")
+                        new StayCloseToSpawn(.4, 4),
+                        new Shoot(radius: 4.5, count: 4, shootAngle: 10, projectileIndex: 1, predictive: 0.8, coolDown: 1200, coolDownOffset: 300),
+                        new Shoot(radius: 4.5, count: 4, shootAngle: 10, projectileIndex: 1, predictive: 0.8, coolDown: 1200, coolDownOffset: 600),
+                        new Shoot(radius: 4.5, count: 4, shootAngle: 10, projectileIndex: 1, predictive: 0.8, coolDown: 1200, coolDownOffset: 900),
+                        new TimedTransition(time: 1200, targetState: "Start")
                         )
-                    )
-                ),
+                    ),
             new Threshold(0.01,
-                new ItemLoot(item: "Candy-Coated Armor", probability: 0.01),
-                new ItemLoot(item: "Pixie-Enchanted Sword", probability: 0.01),
-                new ItemLoot(item: "Seal of the Enchanted Forest", probability: 0.01),
+                new ItemLoot(item: "Candy-Coated Armor", probability: 0.005),
+                new ItemLoot(item: "Pixie-Enchanted Sword", probability: 0.005),
+                new ItemLoot(item: "Seal of the Enchanted Forest", probability: 0.005),
                 new ItemLoot(item: "Potion of Attack", probability: 1),
                 new ItemLoot(item: "Potion of Wisdom", probability: 1),
                 new ItemLoot(item: "Rock Candy", probability: 0.08),
@@ -361,7 +375,7 @@ namespace wServer.logic
                     new StayBack(speed: 1, distance: 4, entity: null),
                     new StayBack(speed: 0.5, distance: 7, entity: null)
                     ),
-                new StayCloseToSpawn(speed: 1.35, range: 13),
+                new StayCloseToSpawn(.4, 6),
                 new Wander(speed: 0.4)
                 )
             )

@@ -1,5 +1,5 @@
 <Objects>
-  <Object type="0x500f" id="Earth's Power">
+  <Object type="0x500f" id="Aftershock">
     <Class>Equipment</Class>
     <Item />
     <Texture>
@@ -8,7 +8,7 @@
     </Texture>
     <Eternal />
     <SlotType>1</SlotType>
-    <Description>This sword is connected to the earth, its connection gives it unmatched strength to beat any rival.</Description>
+    <Description>A sword forged by combining various precious ores. Every swing releases enough strength to sunder solid ground.</Description>
     <RateOfFire>.70</RateOfFire>
     <Sound>weapon/blunt_sword</Sound>
     <Projectile>
@@ -30,6 +30,6 @@
     <BagType>7</BagType>
     <Lucky />
     <FameBonus>7</FameBonus>
-    <DisplayId>Earth's Power</DisplayId>
+    <DisplayId>Aftershock</DisplayId>
   </Object>
 </Objects>

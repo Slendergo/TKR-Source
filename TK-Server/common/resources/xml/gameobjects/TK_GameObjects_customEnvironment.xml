@@ -156,13 +156,4 @@
     </Texture>
     <ShadowSize>50</ShadowSize>
   </Object>
-	<Ground type="0x9800" id="Evil Water No Damage">
-		<Texture>
-			<File>lofiEnvironment2</File>
-			<Index>0x09</Index>
-		</Texture>
-		<Animate dx=".22" dy=".22">Flow</Animate>
-		<Sink />
-		<Speed>.666</Speed>
-	</Ground>
 </Objects>

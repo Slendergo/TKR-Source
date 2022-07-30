@@ -61,15 +61,15 @@ namespace wServer.logic
                     )
                 ),
             new Threshold(0.03,
-                new ItemLoot("Queen's Prism", 0.0014)
+                new ItemLoot("Queen’s Scale", 0.0014)
                 ),
             new Threshold(0.01,
                 new ItemLoot("Potion of Speed", 1),
                 new ItemLoot("Potion of Speed", 1),
-                new ItemLoot("Stheno Queen Katana", 0.01),
-                new ItemLoot("Stheno Queen Armor", 0.01),
-                new ItemLoot("Stheno Queen Star", 0.01),
-                new ItemLoot("Stheno Queen Ring", 0.01),
+                new ItemLoot("Hebikira", 0.01),
+                new ItemLoot("Snake Queen’s Hide", 0.01),
+                new ItemLoot("Star of Stheno", 0.01),
+                new ItemLoot("Spirit of Snakes", 0.01),
                 new ItemLoot("Snake Pit Key", 0.1),
                 new ItemLoot("Wand of the Bulwark", 0.01),
                 new ItemLoot("Snake Skin Armor", 0.1),

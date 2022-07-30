@@ -102,7 +102,7 @@ namespace wServer.logic
                 new ItemLoot("Thorn", 0.01),
                 new ItemLoot("Massacre", 0.01),
                 new ItemLoot("Frozen Water Armor", 0.0125),
-                new ItemLoot("Elemental Water Orb", 0.015),
+                new ItemLoot("Rising Tide Orb", 0.015),
                 new ItemLoot("Potion of Wisdom", 1),
                 new ItemLoot("Potion of Speed", 1),
                 new ItemLoot("Potion of Wisdom", 0.5),
@@ -183,10 +183,10 @@ namespace wServer.logic
                 ),
 
             new Threshold(0.001,
-                new ItemLoot("Seal of the Earth Elemental", 0.015),
-                new ItemLoot("Earth Elemental Shield", 0.01),
-                new ItemLoot("Earth Katana", 0.01),
-                new ItemLoot("Earth Bow", 0.015),
+                new ItemLoot("Forbidden Jungle’s Seal", 0.015),
+                new ItemLoot("Shield of the Forest", 0.01),
+                new ItemLoot("Cometfell Katana", 0.01),
+                new ItemLoot("Forest’s Call", 0.015),
                 new ItemLoot("Potion of Wisdom", 1),
                 new ItemLoot("Potion of Speed", 1),
                 new ItemLoot("Potion of Wisdom", 0.5),
@@ -262,10 +262,10 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.01,
-                new ItemLoot("Wind Staff", 0.009, threshold: 0.01),
-                new ItemLoot("Wind Orb", 0.009, threshold: 0.01),
-                new ItemLoot("Wind Robe", 0.009, threshold: 0.01),
-                new ItemLoot("Wind Ring", 0.009, threshold: 0.01)
+                new ItemLoot("Staff of Zephyrs", 0.009, threshold: 0.01),
+                new ItemLoot("Cyclone Orb", 0.009, threshold: 0.01),
+                new ItemLoot("Gale Robe", 0.009, threshold: 0.01),
+                new ItemLoot("Wind Charm", 0.009, threshold: 0.01)
                 ),
             new Threshold(0.03,
                 new ItemLoot("Wind Fragment", 0.0015, threshold: 0.03),
@@ -313,97 +313,58 @@ namespace wServer.logic
         #endregion Wind Elemental
 
         #region Fire Elemental
-        .Init("Fire Sword Enemy",
-            new State(
-                new State("Attack",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
-                    new Prioritize(
-                        new Orbit(speed: 1, radius: 5, acquireRange: 6, target: "Fire Elemental", speedVariance: 0, radiusVariance: 0)
-                    ),
-                    new Shoot(20, 12, projectileIndex: 0, coolDown: 200)
-                    )
-                )
-            )
+
         .Init("Fire Elemental",
             new State(
-                new StayCloseToSpawn(2, 10),
+                new StayCloseToSpawn(1, 7),
                 new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
                 new ScaleHP2(15),
                 new State("Check Player",
+                    new Spawn("Fire Elemental Rotation", 1, 1, 99999999),
                     new PlayerWithinTransition(20, "Start", false)
                     ),
                 new State("Start",
-                    new Taunt("Something fire related!"),
+                    new Taunt("You will feel the pain of burning alive!"),
                     new TimedTransition(1500, "Start Shooting")
                     ),
                 new State("Start Shooting",
-                    new RemoveConditionalEffect(ConditionEffectIndex.Invulnerable),
-                    new TossObject2("Fire Sword Enemy", 5, 0, coolDown: 100000),
-                    new TossObject2("Fire Sword Enemy", 5, 180, coolDown: 100000),
-
-                    new Shoot(12, 5, shootAngle: 10, fixedAngle: 0, projectileIndex: 3, coolDown: 2000, coolDownOffset: 100),
-                    new Shoot(12, 5, shootAngle: 10, fixedAngle: 90, projectileIndex: 3, coolDown: 2000, coolDownOffset: 100),
-                    new Shoot(12, 5, shootAngle: 10, fixedAngle: 180, projectileIndex: 3, coolDown: 2000, coolDownOffset: 100),
-                    new Shoot(12, 5, shootAngle: 10, fixedAngle: 270, projectileIndex: 3, coolDown: 2000, coolDownOffset: 100),
-
-                    new Shoot(12, 6, shootAngle: 15, fixedAngle: 45, projectileIndex: 6, coolDown: 2000, coolDownOffset: 400),
-                    new Shoot(12, 6, shootAngle: 15, fixedAngle: 165, projectileIndex: 6, coolDown: 2000, coolDownOffset: 400),
-                    new Shoot(12, 6, shootAngle: 15, fixedAngle: 285, projectileIndex: 6, coolDown: 2000, coolDownOffset: 400),
-                    new Shoot(12, 6, shootAngle: 15, fixedAngle: 285, projectileIndex: 6, coolDown: 2000, coolDownOffset: 400),
-
-                    new Shoot(12, 3, shootAngle: 15, fixedAngle: 285, projectileIndex: 4, coolDown: 500),
-
-                    //    new Shoot(12, 1, fixedAngle: 0, projectileIndex: 3, coolDown: 2000, coolDownOffset: 100),
-                    //    new Shoot(12, 1, fixedAngle: 15, projectileIndex: 3, coolDown: 2000, coolDownOffset: 200),
-                    //    new Shoot(12, 1, fixedAngle: 30, projectileIndex: 3, coolDown: 2000, coolDownOffset: 300),
-                    //    new Shoot(12, 1, fixedAngle: 45, projectileIndex: 3, coolDown: 2000, coolDownOffset: 400),
-
-                    //    new Shoot(12, 1, fixedAngle: 120, projectileIndex: 3, coolDown: 2000, coolDownOffset: 100),
-                    //    new Shoot(12, 1, fixedAngle: 135, projectileIndex: 3, coolDown: 2000, coolDownOffset: 200),
-                    //    new Shoot(12, 1, fixedAngle: 150, projectileIndex: 3, coolDown: 2000, coolDownOffset: 300),
-                    //    new Shoot(12, 1, fixedAngle: 165, projectileIndex: 3, coolDown: 2000, coolDownOffset: 400),
-                    //
-                    //    new Shoot(12, 1, fixedAngle: 240, projectileIndex: 3, coolDown: 2000, coolDownOffset: 300),
-                    //    new Shoot(12, 1, fixedAngle: 255, projectileIndex: 3, coolDown: 2000, coolDownOffset: 300),
-                    //    new Shoot(12, 1, fixedAngle: 270, projectileIndex: 3, coolDown: 2000, coolDownOffset: 300),
-                    //    new Shoot(12, 1, fixedAngle: 285, projectileIndex: 3, coolDown: 2000, coolDownOffset: 300),
-                    //
-                    //    new Shoot(12, 6, shootAngle: 10, fixedAngle: 45, projectileIndex: 6, coolDown: 2000, coolDownOffset: 400),
-                    //    new Shoot(12, 6, shootAngle: 10, fixedAngle: 165, projectileIndex: 6, coolDown: 2000, coolDownOffset: 400),
-                    //    new Shoot(12, 6, shootAngle: 10, fixedAngle: 285, projectileIndex: 6, coolDown: 2000, coolDownOffset: 400),
-
-
-                    //   new Shoot(12, 1, shootAngle: 15, fixedAngle: 67, projectileIndex: 3, coolDown: 2000, coolDownOffset: 600),
-                    //   new Shoot(12, 1, shootAngle: 15, fixedAngle: 82, projectileIndex: 3, coolDown: 2000, coolDownOffset: 700),
-                    //   new Shoot(12, 1, shootAngle: 15, fixedAngle: 97, projectileIndex: 3, coolDown: 2000, coolDownOffset: 800),
-                    //   new Shoot(12, 1, shootAngle: 15, fixedAngle: 112, projectileIndex: 3, coolDown: 2000, coolDownOffset: 900),
-                    //  
-                    //   new Shoot(12, 1, shootAngle: 15, fixedAngle: 187, projectileIndex: 3, coolDown: 2000, coolDownOffset: 600),
-                    //   new Shoot(12, 1, shootAngle: 15, fixedAngle: 202, projectileIndex: 3, coolDown: 2000, coolDownOffset: 700),
-                    //   new Shoot(12, 1, shootAngle: 15, fixedAngle: 217, projectileIndex: 3, coolDown: 2000, coolDownOffset: 800),
-                    //   new Shoot(12, 1, shootAngle: 15, fixedAngle: 232, projectileIndex: 3, coolDown: 2000, coolDownOffset: 900),
-                    //  
-                    //   new Shoot(12, 1, shootAngle: 15, fixedAngle: 307, projectileIndex: 3, coolDown: 2000, coolDownOffset: 600),
-                    //   new Shoot(12, 1, shootAngle: 15, fixedAngle: 322, projectileIndex: 3, coolDown: 2000, coolDownOffset: 700),
-                    //   new Shoot(12, 1, shootAngle: 15, fixedAngle: 337, projectileIndex: 3, coolDown: 2000, coolDownOffset: 800),
-                    //   new Shoot(12, 1, shootAngle: 15, fixedAngle: 352, projectileIndex: 3, coolDown: 2000, coolDownOffset: 900),
-                    //  
-                    //   new Shoot(12, 6, shootAngle: 10, fixedAngle: 22, projectileIndex: 6, coolDown: 2000, coolDownOffset: 1000),
-                    //   new Shoot(12, 6, shootAngle: 10, fixedAngle: 142, projectileIndex: 6, coolDown: 2000, coolDownOffset: 1000),
-                    //   new Shoot(12, 6, shootAngle: 10, fixedAngle: 262, projectileIndex: 6, coolDown: 2000, coolDownOffset: 1000),
-                    //        //opposite 
-                    //        new Shoot(12, 4, shootAngle: 15, fixedAngle: 45, projectileIndex: 3, coolDown: 2000, coolDownOffset: 1300),
-                    //        new Shoot(12, 4, shootAngle: 15, fixedAngle: 165, projectileIndex: 3, coolDown: 2000, coolDownOffset: 1400),
-                    //        new Shoot(12, 4, shootAngle: 15, fixedAngle: 285, projectileIndex: 3, coolDown: 2000, coolDownOffset: 1500),
-                    //
-                    //        new Shoot(12, 6, shootAngle: 10, fixedAngle: 0, projectileIndex: 6, coolDown: 2000, coolDownOffset: 1600),
-                    //        new Shoot(12, 6, shootAngle: 10, fixedAngle: 120, projectileIndex: 6, coolDown: 2000, coolDownOffset: 1600),
-                    //        new Shoot(12, 6, shootAngle: 10, fixedAngle: 240, projectileIndex: 6, coolDown: 2000, coolDownOffset: 1600),
-
-                    new HpLessTransition(0.6, "Prepare 1")
+                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
+                    new ChangeSize(10, 150),
+                    new Shoot(20, 8, projectileIndex: 2, coolDown: 1500),
+                    new Shoot(20, 4, projectileIndex: 2, coolDown: 1000),
+                    new HpLessTransition(0.75, "Second Phase")
                     ),
-                new State("Prepare 1",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, true)
+                new State("Second Phase",
+                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new Taunt("You will see the power of the FIRE!"),
+                    new TimedTransition(1500, "Second Phase Start")
+                    ),
+                new State("Second Phase Start",
+                    new Orbit(.6, 7, 20, "Fire Elemental Rotation"),
+                    new Shoot(20, 5, shootAngle: 15, projectileIndex: 1, coolDown: 750),
+                    new Shoot(20, 1, projectileIndex: 0, coolDown: 2500, coolDownOffset: 1250),
+                    new RingAttack(20, 3, 0, projectileIndex: 2, 0.03, 0, 1500),
+                    new Grenade(3, 15, 5, coolDown: 2500, effect: ConditionEffectIndex.Bleeding, effectDuration: 1000),
+                    new Grenade(5, 15, 10, coolDown: 3500, effect: ConditionEffectIndex.Bleeding, effectDuration: 1250),
+                    new HpLessTransition(0.33, "Third Phase Charge")
+                    ),
+                new State("Third Phase Charge",
+                    new ChangeSize(10, 200),
+                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                    new ReturnToSpawn(1.5),
+                    new Taunt("AAAAARRRRRRRRRRGH!"),
+                    new TimedTransition(1500, "Rage")
+                    ),
+                new State("Rage",
+                    new ReplaceTile("Fire Tile Semi-Lava Right", "Fire Tile Lava Left", 50),
+                    new ReplaceTile("Fire Tile Semi-Lava Left", "Fire Tile Lava Right", 50),
+                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
+                    new Wander(0.4),
+                    new Shoot(20, 4, shootAngle: 15, projectileIndex: 1, coolDown: 2000),
+                    new Shoot(20, 8, projectileIndex: 1, coolDown: 5000, coolDownOffset: 2500),
+                    new Shoot(20, 5, shootAngle: 15, projectileIndex: 2, coolDown: 2500),
+                    new Shoot(20, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 2000),
+                    new Shoot(20, 8, projectileIndex: 2, coolDown: 5000, coolDownOffset: 2500)
                     )
                 ),
             new Threshold(0.001,
@@ -411,7 +372,7 @@ namespace wServer.logic
                 ),
             new Threshold(0.03,
                 new ItemLoot("Fire Fragment", 0.0015),
-                new ItemLoot("Orb of the Fire Element Egg", 0.0033)
+                new ItemLoot("Phoenix Ashes Orb", 0.0033)
                 ),
             new Threshold(0.001,
                 new ItemLoot("Potion of Speed", 1),

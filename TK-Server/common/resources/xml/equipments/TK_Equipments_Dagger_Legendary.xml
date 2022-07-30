@@ -54,8 +54,8 @@
     <FameBonus>4</FameBonus>
     <feedPower>900</feedPower>
   </Object>
-  <Object type="0x4932" id="Dagger of Flaming Fury">
-    <DisplayId>Dagger of Flaming Fury</DisplayId>
+  <Object type="0x4932" id="Shiv of Flaming Eruption">
+    <DisplayId>Shiv of Flaming Eruption</DisplayId>
     <Class>Equipment</Class>
     <Legendary />
     <Mutilate />
@@ -65,7 +65,7 @@
       <Index>0x19</Index>
     </Texture>
     <SlotType>2</SlotType>
-    <Description>This dagger, which comes from the depths of realm, was used to overthrow the skull shrine, with it, it was able to melt even the hottest, coldest, and hardest thing there is, for this reason, it is called "Melted Shrine".</Description>
+    <Description>Forged in the depths of the realm, a dagger once used to overthrow the rule of the Skull Shrine. Competent enough to melt the hottest, coldest, and hardest materials the realm has to offer.</Description>
     <RateOfFire>1.1</RateOfFire>
     <Sound>weapon/fire_dagger</Sound>
     <Projectile>
@@ -81,7 +81,7 @@
     <FameBonus>7</FameBonus>
     <OldSound>daggerSwing</OldSound>
   </Object>
-  <Object type="0x5146" id="Malphas's Bone">
+  <Object type="0x5146" id="Cadaverous Knife">
     <Class>Equipment</Class>
     <Item />
     <Mutilate />
@@ -91,7 +91,7 @@
     </Texture>
     <Legendary />
     <SlotType>2</SlotType>
-    <Description>This dagger was created from Malphas' spine</Description>
+    <Description>Sharp bone from Malphas’ spine was refined into a dagger for the sole purpose of slaying demons.</Description>
     <RateOfFire>0.8</RateOfFire>
     <Sound>weapon/fire_dagger</Sound>
     <Projectile>
@@ -109,7 +109,7 @@
     <ActivateOnEquip stat="21" amount="4">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
-    <DisplayId>Malphas's Bone</DisplayId>
+    <DisplayId>Cadaverous Knife</DisplayId>
   </Object>
       <Object type="0x540e" id="Titan Slayer">
     <Class>Equipment</Class>
@@ -121,7 +121,7 @@
     </Texture>
     <Legendary />
     <SlotType>2</SlotType>
-    <Description>Such a large and unwieldy blade. Who'd be foolish enough to try to branish it...?</Description>
+    <Description>Such a large and cumbersome dagger could almost be confused with a great sword. Who would possibly be foolish enough to brandish it…?</Description>
     <RateOfFire>0.4</RateOfFire>
     <Sound>weapon/blunt_dagger</Sound>
     <Projectile>

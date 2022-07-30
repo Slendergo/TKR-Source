@@ -335,8 +335,6 @@
     <Sink />
     <Speed>0.75</Speed>
     <Animate dx=".4" dy=".4">Wave</Animate>
-	<MinDamage>22</MinDamage>
-	<MaxDamage>33</MaxDamage>
     <BlendPriority>-10</BlendPriority>
   </Ground>
   <Ground type="0xdc" id="Arena Dirt">

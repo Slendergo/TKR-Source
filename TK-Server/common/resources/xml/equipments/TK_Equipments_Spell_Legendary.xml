@@ -30,7 +30,7 @@
     <MpCost>160</MpCost>
     <Activate>BulletNova</Activate>
   </Object>
-  <Object type="0x514c" id="Chroma Spell">
+  <Object type="0x514c" id="Chromatic Extinction">
     <Class>Equipment</Class>
     <Item />
     <Legendary />
@@ -41,7 +41,7 @@
     </Texture>
     <SlotType>11</SlotType>
     <FameBonus>6</FameBonus>
-    <Description>A Spell made by limon to attack microsoft for bringing viruses to his world</Description>
+    <Description>It seems that it is possible for sprites in the dimensional plane to have a violent, malicious side to them.</Description>
     <Sound>spell/fire_nova</Sound>
     <Projectile>
       <ObjectId>Chroma Spell Shot</ObjectId>
@@ -73,7 +73,7 @@
     </Texture>
     <SlotType>11</SlotType>
     <FameBonus>7</FameBonus>
-    <Description>With the weak grazed, the incantation fells those who remain.</Description>
+    <Description>Recite this incantation to graze the weak that stand before you.</Description>
     <Sound>spell/fire_nova</Sound>
     <Projectile>
       <ObjectId>Haunting Incantation Shoot</ObjectId>

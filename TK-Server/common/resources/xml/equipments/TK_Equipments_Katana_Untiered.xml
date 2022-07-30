@@ -153,7 +153,7 @@
     <DisplayId>Void Blade</DisplayId>
     <feedPower>750</feedPower>
   </Object>
-  <Object type="0x5000" id="Earth Katana">
+  <Object type="0x5000" id="Cometfell Katana">
     <Class>Equipment</Class>
     <Item />
     <Texture>
@@ -162,7 +162,7 @@
     </Texture>
     <SlotType>24</SlotType>
     <Rare />
-    <Description>This Earth Kantana, which comes from another galaxy, is forged with Heavenly Earth. You can cut everything your way.</Description>
+    <Description>The durability of this katana was refined to a higher degree with the help of extraterrestrial metals.</Description>
     <RateOfFire>1</RateOfFire>
     <Sound>weapon/blunt_sword</Sound>
     <Projectile>
@@ -183,7 +183,7 @@
     <feedPower>5</feedPower>
     <DisplayId>Earth Katana</DisplayId>
   </Object>
-  <Object type="0x5041" id="Acid Katana N-3012">
+  <Object type="0x5041" id="Jikken">
     <Class>Equipment</Class>
     <Item />
     <Texture>
@@ -192,7 +192,7 @@
     </Texture>
     <SetTier />
     <SlotType>24</SlotType>
-    <Description>Katana imbued with acid, created by the same crazy scientist Dr. Terrible. It takes the number of times that the creation of it went wrong.</Description>
+    <Description>A katana that was dipped in the experimental acid used by Dr. Terrible in his crazy creations.</Description>
     <RateOfFire>1</RateOfFire>
     <Sound>weapon/blunt_sword</Sound>
     <Projectile>
@@ -213,9 +213,9 @@
     <ActivateOnEquip stat="28" amount="2">IncrementStat</ActivateOnEquip>
     <BagType>6</BagType>
     <FameBonus>5</FameBonus>
-    <DisplayId>Acid Katana N-3012</DisplayId>
+    <DisplayId>Jikken</DisplayId>
   </Object>
-  <Object type="0x5068" id="Stheno Queen Katana">
+  <Object type="0x5068" id="Hebikira">
     <Class>Equipment</Class>
     <Item />
     <Texture>
@@ -223,7 +223,7 @@
       <Index>0x79</Index>
     </Texture>
     <SlotType>24</SlotType>
-    <Description>The Katana of the Snake Queen, Stheno Queen.</Description>
+    <Description>A high-quality katana made from the flexible skin of Stheno, the Snake Queen.</Description>
     <RateOfFire>0.4</RateOfFire>
     <Sound>weapon/long_sword</Sound>
     <Projectile>
@@ -241,6 +241,6 @@
     <ArcGap>11</ArcGap>
     <BagType>7</BagType>
     <FameBonus>5</FameBonus>
-    <DisplayId>Stheno Queen Katana</DisplayId>
+    <DisplayId>Hebikira</DisplayId>
   </Object>
 </Objects>

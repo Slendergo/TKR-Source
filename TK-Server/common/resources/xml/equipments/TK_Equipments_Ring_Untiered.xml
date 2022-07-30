@@ -472,7 +472,7 @@
     <FameBonus>5</FameBonus>
     <feedPower>900</feedPower>
   </Object>
-  <Object type="0x5403" id="Spotted Venom Extract">
+  <Object type="0x5403" id="Locket of Venom Extract">
     <Class>Equipment</Class>
     <Item />
     <SPlus />
@@ -481,7 +481,7 @@
       <Index>0xef</Index>
     </Texture>
     <SlotType>9</SlotType>
-    <Description>Derived from the spotted spiders in the Crawling Depths, consuming the diluted solution results in increased performance in combat.</Description>
+    <Description>Venom siphoned from spider fangs. Consuming low quantities result in increased combat performance.</Description>
     <ActivateOnEquip stat="20" amount="7">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="8">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="6">IncrementStat</ActivateOnEquip>
@@ -489,7 +489,7 @@
     <FameBonus>6</FameBonus>
     <DisplayId>Spotted Venom Extract</DisplayId>
   </Object>
-  <Object type="0x5404" id="Unholy Necklace">
+  <Object type="0x5404" id="Corrupted Pendant">
     <Class>Equipment</Class>
     <Item />
     <SPlus />
@@ -498,7 +498,7 @@
       <Index>0xf3</Index>
     </Texture>
     <SlotType>9</SlotType>
-    <Description>This "unholy" pendant is just a generic cross necklace with the cross facing upside down. Somehow, this action alone has tainted it with dark energies.</Description>
+    <Description>Dark energy taints this pendant which features an inverted cross.</Description>
     <ActivateOnEquip stat="0" amount="40">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="3" amount="80">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
@@ -508,7 +508,7 @@
     <FameBonus>5</FameBonus>
     <DisplayId>Unholy Necklace</DisplayId>
   </Object>
-  <Object type="0x5004" id="Mushroom Ring">
+  <Object type="0x5004" id="Mushroom Loop">
     <Class>Equipment</Class>
     <Item />
     <Rare />
@@ -517,16 +517,16 @@
       <Index>0x40</Index>
     </Texture>
     <SlotType>9</SlotType>
-    <Description>A Ring of the Magic Mushroom. This, will give you a speed as well as incredible attack, but your defense may lower a bit.</Description>
+    <Description>A mystical mushroom that was forcefully shaped into a wearable ring.</Description>
     <ActivateOnEquip stat="0" amount="110">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="-5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="5">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
-    <DisplayId>Mushroom Ring</DisplayId>
+    <DisplayId>Mushroom Loop</DisplayId>
   </Object>
-  <Object type="0x5029" id="Golden Oryx Ring">
+  <Object type="0x5029" id="Ring of Golden Shine">
     <Class>Equipment</Class>
     <Item />
 	<SPlus />
@@ -535,7 +535,7 @@
       <Index>0x56</Index>
     </Texture>
     <SlotType>9</SlotType>
-    <Description>A ring of the Golden Oryx, maded with gold, like other things about him.</Description>
+    <Description>Even though the ring is rather large, the golden shine that permeates from the ring compensate for it and bolster physically capacities. </Description>
     <ActivateOnEquip stat="0" amount="70">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="3">IncrementStat</ActivateOnEquip>
@@ -543,7 +543,7 @@
     <BagType>7</BagType>
     <feedPower>200</feedPower>
   </Object>
-  <Object type="0x5046" id="Acid Ring N-3015">
+  <Object type="0x5046" id="Ring of Alteration">
     <Class>Equipment</Class>
     <Item />
     <Texture>
@@ -551,13 +551,13 @@
       <Index>0x67</Index>
     </Texture>
     <SlotType>9</SlotType>
-    <Description>A Ring imbued with acid, created by the same crazy scientist Dr. Terrible. It takes the number of times that the creation of it went wrong.</Description>
+    <Description>Used by mad scientist’s during their experimentations. The gem on top was solidified from corrupting acid. </Description>
     <ActivateOnEquip stat="0" amount="70">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="3" amount="70">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="3">IncrementStat</ActivateOnEquip>
     <BagType>6</BagType>
     <FameBonus>5</FameBonus>
-    <DisplayId>Acid Ring N-3015</DisplayId>
+    <DisplayId>Ring of Alteration</DisplayId>
   </Object>
   <Object type="0x505a" id="Sapphire Ring">
     <Class>Equipment</Class>
@@ -568,7 +568,7 @@
       <Index>0x6e</Index>
     </Texture>
     <SlotType>9</SlotType>
-    <Description>This ring contains a more precious gem, its rounded shape with metal gives it the touch.</Description>
+    <Description>A precious sapphire was slotted into a playable metal. The ring is smooth to the touch.</Description>
     <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="5">IncrementStat</ActivateOnEquip>
@@ -576,7 +576,7 @@
     <FameBonus>6</FameBonus>
     <DisplayId>Sapphire Ring</DisplayId>
   </Object>
-  <Object type="0x505f" id="Fire Ring">
+  <Object type="0x505f" id="The Dance of Fire">
     <Class>Equipment</Class>
     <Item />
     <SPlus />
@@ -585,16 +585,16 @@
       <Index>0x73</Index>
     </Texture>
     <SlotType>9</SlotType>
-    <Description>This ring made of fire makes the one who wears it invulnerable, so it doesn't hurt you.</Description>
+    <Description>A superior flame casted into a ring proves helpful when faced against other flames of weaker status or potency.</Description>
     <ActivateOnEquip stat="0" amount="120">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="3" amount="100">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="6">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>5</FameBonus>
-    <DisplayId>Fire Ring</DisplayId>
+    <DisplayId>The Dance of Fire</DisplayId>
   </Object>
-  <Object type="0x5067" id="Malphas Juice">
+  <Object type="0x5067" id="Demon’s Sigil">
     <Class>Equipment</Class>
     <Item />
     <Texture>
@@ -602,13 +602,13 @@
       <Index>0x78</Index>
     </Texture>
     <SlotType>9</SlotType>
-    <Description>A Ring of Archdemon Malphas, the king of Hell.</Description>
+    <Description>An amulet that is proof of your loyalty to the worship of demons in hell.</Description>
     <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="3">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="5">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
   </Object>
-  <Object type="0x506b" id="Stheno Queen Ring">
+  <Object type="0x506b" id="Spirit of Snakes">
     <Class>Equipment</Class>
     <Item />
     <Texture>
@@ -616,12 +616,12 @@
       <Index>0x7c</Index>
     </Texture>
     <SlotType>9</SlotType>
-    <Description>A Ring of the Snake Queen, Stheno Queen.</Description>
+    <Description>Take on the ethereal qualities of snakes when worn.</Description>
     <ActivateOnEquip stat="22" amount="15">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="-5">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
   </Object>
-  <Object type="0x5078" id="Wind Ring">
+  <Object type="0x5078" id="Wind Charm">
     <Class>Equipment</Class>
     <Item />
     <Texture>
@@ -630,7 +630,7 @@
     </Texture>
     <SNormal />
     <SlotType>9</SlotType>
-    <Description>A ring worn by the swiftest of Warriors.</Description>
+    <Description>Gusts of wind carry the bearer and boosts the swiftest of their movements.</Description>
     <ActivateOnEquip stat="22" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="8">IncrementStat</ActivateOnEquip>

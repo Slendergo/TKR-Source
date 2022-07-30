@@ -1,5 +1,5 @@
 <Objects>
-  <Object type="0x514a" id="Pharaoh's Tome">
+  <Object type="0x514a" id="Pharaoh’s Scripture">
     <Class>Equipment</Class>
     <Item />
     <Legendary />
@@ -9,7 +9,7 @@
       <Index>0xad</Index>
     </Texture>
     <SlotType>4</SlotType>
-    <Description>A Tome made for only the Egyptian Rulers, all who try to possess the power will banished from nobility</Description>
+    <Description>A tome containing the lost language of the Egyptians. Peculiar patterns of hieroglyphics bestow power to the scriptures.</Description>
     <Sound>spell/major_heal</Sound>
     <ActivateOnEquip stat="27" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="0" amount="30">IncrementStat</ActivateOnEquip>

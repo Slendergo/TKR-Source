@@ -38,7 +38,7 @@
     <Activate>ShurikenAbility</Activate>
     <feedPower>850</feedPower>
   </Object>
-  <Object type="0x5044" id="Acid Star N-3013">
+  <Object type="0x5044" id="Unstable Acid Shuriken">
     <Class>Equipment</Class>
     <Item />
     <Legendary />
@@ -48,7 +48,7 @@
       <Index>0x65</Index>
     </Texture>
     <SlotType>25</SlotType>
-    <Description>A Shuriken imbued with acid, created by the same crazy scientist Dr. Terrible. It takes the number of times that the creation of it went wrong.</Description>
+    <Description>One of Dr. Terrible’s renowned deranged experiments. Even though the procedure to create the shuriken wasn’t complete, there’s nothing a little extra acid can’t fix.</Description>
     <Sound>spell/fire_spray</Sound>
     <ExtraTooltipData>
       <EffectInfo name="While Key Held" description="" />
@@ -90,7 +90,7 @@
       <Index>0xe4</Index>
     </Texture>
     <SlotType>25</SlotType>
-    <Description>Thrown with high velocity and on a string, these immensely dangerous throwing daggers leave few alive in their wake, and those remaining are finished off accordingly.</Description>
+    <Description>Throwing knives able to pierce through air at insanely high velocities. A star infamous for successful assassination attempts.</Description>
     <Sound>spell/fire_spray</Sound>
     <ExtraTooltipData>
       <EffectInfo name="While Key Held" description="" />

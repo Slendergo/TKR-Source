@@ -23,7 +23,7 @@
     <OldSound>bladeSwing</OldSound>
     <feedPower>300</feedPower>
   </Object>
-  <Object type="0x5011" id="Wind Carrier">
+  <Object type="0x5011" id="Turbulence">
     <Class>Equipment</Class>
     <Item />
     <Lucky />
@@ -33,7 +33,7 @@
     </Texture>
     <Eternal	/>
     <SlotType>24</SlotType>
-    <Description>This katana formed by the powers of the wind has an incredible speed, cuts everything you see in its path.</Description>
+    <Description>A katana formed from the pressurized windstorms released from the element of wind.</Description>
     <RateOfFire>1.1</RateOfFire>
     <Sound>weapon/blunt_sword</Sound>
     <Projectile>
@@ -55,6 +55,6 @@
     <ActivateOnEquip stat="28" amount="2">IncrementStat</ActivateOnEquip>
     <BagType>8</BagType>
     <FameBonus>7</FameBonus>
-    <DisplayId>Wind Carrier</DisplayId>
+    <DisplayId>Turbulence</DisplayId>
   </Object>
 </Objects>

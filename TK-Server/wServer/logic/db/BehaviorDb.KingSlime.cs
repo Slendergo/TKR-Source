@@ -104,7 +104,7 @@ namespace wServer.logic
                 ),
             new Threshold(0.04,
                 new ItemLoot("Slime Slayer", 0.001),
-                new ItemLoot("Strange Poison", 0.001, threshold: 0.05)
+                new ItemLoot("Withering Poison", 0.001, threshold: 0.05)
                 )
             );
     }

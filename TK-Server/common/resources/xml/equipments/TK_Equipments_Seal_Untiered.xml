@@ -21,7 +21,7 @@
     <MpCost>100</MpCost>
     <feedPower>500</feedPower>
   </Object>
-  <Object type="0x5066" id="Malphas Seal">
+  <Object type="0x5066" id="Seal of the Underworld">
     <Class>Equipment</Class>
     <Item />
     <Texture>
@@ -29,7 +29,7 @@
       <Index>0x75</Index>
     </Texture>
     <SlotType>12</SlotType>
-    <Description>A Seal of Archdemon Malphas, the king of Hell.</Description>
+    <Description>A seal that inherited the traits of the previous owner, Archdemon Malphas. The power within grants strength equal to that of underworld demons.</Description>
     <Sound>spell/light_heal</Sound>
     <Usable />
     <BagType>7</BagType>
@@ -39,7 +39,7 @@
     <FameBonus>5</FameBonus>
     <Cooldown>6</Cooldown>
   </Object>
-  <Object type="0x507e" id="Seal of the Earth Elemental">
+  <Object type="0x507e" id="Forbidden Jungle’s Seal">
     <Class>Equipment</Class>
     <Item />
     <Texture>
@@ -48,7 +48,7 @@
     </Texture>
     <SlotType>12</SlotType>
     <SNormal />
-    <Description>A Seal that contains the power of the Earth Elemental, when activated, will feel a defense as incredible damage.</Description>
+    <Description>Once buried deep within a forgotten jungle. The dirt and moss that cover the seal make it illegible. </Description>
     <Sound>spell/light_heal</Sound>
     <Usable />
     <BagType>7</BagType>

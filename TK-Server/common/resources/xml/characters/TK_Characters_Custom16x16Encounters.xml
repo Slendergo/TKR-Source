@@ -1191,23 +1191,31 @@
             <ConditionEffect duration="0.5">Paralyzed</ConditionEffect>
         </Projectile>
     </Object>
-    <Object type="0x902b" id="Fire Sword Enemy">
+    <Object type="0x902b" id="Dark Skeleton">
+        <Group>Edition2</Group>
         <Enemy />
         <Class>Character</Class>
         <AnimatedTexture>
             <File>Custom32x32Encounters</File>
             <Index>14</Index>
         </AnimatedTexture>
+        <AltTexture id="1">
+            <AnimatedTexture>
+                <File>Custom32x32Encounters</File>
+                <Index>15</Index>
+            </AnimatedTexture>
+        </AltTexture>
         <HitSound>monster/dragons_hit</HitSound>
         <DeathSound>monster/djinn_hit</DeathSound>
         <MaxHitPoints>60000</MaxHitPoints>
         <Defense>60</Defense>
         <Experience>1000</Experience>
         <Projectile id="0">
-            <ObjectId>Fire Elemental Arrow</ObjectId>
-            <Damage>150</Damage>
-            <Speed>40</Speed>
-            <LifetimeMS>500</LifetimeMS>
+            <ObjectId>Dark Skeleton's Shot</ObjectId>
+            <Damage>50</Damage>
+            <Speed>200</Speed>
+            <LifetimeMS>2000</LifetimeMS>
+            <ConditionEffect duration="5">Blind</ConditionEffect>
         </Projectile>
         <Projectile id="1">
             <ObjectId>Dark Skeleton's Fireball</ObjectId>

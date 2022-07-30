@@ -85,7 +85,7 @@
     </AltTexture>
     <HitSound>monster/lizard_god_hit</HitSound>
     <DeathSound>monster/lizard_god_death</DeathSound>
-    <Size>130</Size>
+    <Size>175</Size>
     <MaxHitPoints>70000</MaxHitPoints>
     <Defense>18</Defense>
     <Level>20</Level>
@@ -252,7 +252,7 @@
       <MinDamage>220</MinDamage>
       <MaxDamage>250</MaxDamage>
       <Speed>140</Speed>
-      <Size>130</Size>
+      <Size>140</Size>
       <LifetimeMS>2500</LifetimeMS>
       <MultiHit />
     </Projectile>
@@ -301,7 +301,7 @@
     </AnimatedTexture>
     <HitSound>monster/lizard_god_hit</HitSound>
     <DeathSound>monster/lizard_god_death</DeathSound>
-    <Size>140</Size>
+    <Size>170</Size>
     <MaxHitPoints>58000</MaxHitPoints>
     <Defense>5</Defense>
     <Level>20</Level>
@@ -341,7 +341,7 @@
     </AnimatedTexture>
     <HitSound>monster/lizard_god_hit</HitSound>
     <DeathSound>monster/lizard_god_death</DeathSound>
-    <Size>160</Size>
+    <Size>150</Size>
     <MaxHitPoints>65000</MaxHitPoints>
     <Defense>10</Defense>
     <Level>20</Level>
@@ -366,48 +366,12 @@
     <Projectile id="2">
       <ObjectId>Fire Elemental Wave Shoot</ObjectId>
       <Damage>140</Damage>
-      <Speed>80</Speed>
+      <Speed>100</Speed>
       <Size>140</Size>
       <LifetimeMS>3000</LifetimeMS>
       <MultiHit />
       <ArmorPiercing />
     </Projectile>
-	  <Projectile id="3">
-		  <ObjectId>Giant Fire Sword</ObjectId>
-		  <Damage>140</Damage>
-		  <Speed>75</Speed>
-		  <Size>160</Size>
-		  <LifetimeMS>3000</LifetimeMS>
-		  <MultiHit />
-		  <ArmorPiercing />
-	  </Projectile>
-	  <Projectile id="4">
-		  <ObjectId>Fire Elemental Wave Shoot 1"</ObjectId>
-		  <Damage>140</Damage>
-		  <Speed>60</Speed>
-		  <Size>100</Size>
-		  <LifetimeMS>3000</LifetimeMS>
-		  <MultiHit />
-		  <ArmorPiercing />
-	  </Projectile>
-	  <Projectile id="5">
-		  <ObjectId>Fire Elemental Arrow</ObjectId>
-		  <Damage>140</Damage>
-		  <Speed>60</Speed>
-		  <Size>80</Size>
-		  <LifetimeMS>3000</LifetimeMS>
-		  <MultiHit />
-		  <ArmorPiercing />
-	  </Projectile>
-	  <Projectile id="6">
-		  <ObjectId>Fire Elemental Spin</ObjectId>
-		  <Damage>140</Damage>
-		  <Speed>60</Speed>
-		  <Size>100</Size>
-		  <LifetimeMS>3000</LifetimeMS>
-		  <MultiHit />
-		  <ArmorPiercing />
-	  </Projectile>
   </Object>
   <Object type="0x5102" id="The Bes Nuttiest Geb Sarcophagus">
     <DisplayId>The Bes Nuttiest Geb Sarcophagus</DisplayId>

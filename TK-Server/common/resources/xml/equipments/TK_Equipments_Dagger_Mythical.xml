@@ -9,7 +9,7 @@
     </Texture>
     <Eternal	/>
     <SlotType>2</SlotType>
-    <Description>Its control with water makes attacks more fluid, more unpredictable and stronger.</Description>
+    <Description>Mysterious forces grant the control over the element of water, proving effective in fluid, unpredictable attacks.</Description>
     <RateOfFire>.85</RateOfFire>
     <Sound>weapon/blunt_dagger</Sound>
     <Projectile>

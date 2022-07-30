@@ -1,5 +1,5 @@
 <Objects>
-  <Object type="0x5012" id="Rod of Fire">
+  <Object type="0x5012" id="Cinders of Ruin">
     <Class>Equipment</Class>
     <Item />
     <GodTouch />
@@ -9,7 +9,7 @@
     </Texture>
     <Eternal />
     <SlotType>17</SlotType>
-    <Description>This rod, with its incredible power destroys and incinerates everything you see, only a good carrier can use this weapon..</Description>
+    <Description>Incredible power capable of incinerating everything in sight. But, with the extreme heat that rapidly pours out, extra steps of caution must be implemented to avoid severe burns.</Description>
     <RateOfFire>.75</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
@@ -29,6 +29,6 @@
     <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>7</FameBonus>
-    <DisplayId>Rod of Fire</DisplayId>
+    <DisplayId>Cinders of Ruin</DisplayId>
   </Object>
 </Objects>

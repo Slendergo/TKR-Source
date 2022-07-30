@@ -445,7 +445,7 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.03,
-                new ItemLoot("Geb's Hand", 0.0014)
+                new ItemLoot("Mummified Rod", 0.0014)
                 ),
             new Threshold(0.01,
                 new ItemLoot("Tomb of the Ancients Key", 0.01, 0, 0.03),

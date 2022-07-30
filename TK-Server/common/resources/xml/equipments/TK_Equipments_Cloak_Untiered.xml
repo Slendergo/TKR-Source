@@ -40,7 +40,7 @@
     <Cooldown>6.5</Cooldown>
     <feedPower>500</feedPower>
   </Object>
-  <Object type="0x48e1" id="Tiki Tiki's Cloak">
+  <Object type="0x48e1" id="Hunter’s Cloak">
     <Class>Equipment</Class>
     <Item />
     <SNormal />
@@ -49,7 +49,7 @@
       <Index>0x0f</Index>
     </Texture>
     <SlotType>13</SlotType>
-    <Description>This cloak was used by the Tiki Tiki for to hunt and defend himself.</Description>
+    <Description>Used by the tribesmen that worship Tiki Tiki during their times of hunting for food.</Description>
     <Sound>spell/fire_nova</Sound>
     <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="2">IncrementStat</ActivateOnEquip>
@@ -61,7 +61,7 @@
     <Activate effect="Speedy" duration="4">ConditionEffectSelf</Activate>
     <Cooldown>5</Cooldown>
     <feedPower>750</feedPower>
-    <DisplayId>Tiki Tiki's Cloak</DisplayId>
+    <DisplayId>Hunter’s Cloak</DisplayId>
   </Object>
   <Object type="0x5057" id="Wrapping Cloak">
     <Class>Equipment</Class>

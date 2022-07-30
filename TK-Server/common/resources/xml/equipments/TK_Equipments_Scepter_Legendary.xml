@@ -21,7 +21,7 @@
     <Activate totalDamage="280" maxTargets="7" condEffect="Slowed" condDuration="3" color="0xff9933" useWisMod="true">Lightning</Activate>
     <feedPower>1100</feedPower>
   </Object>
-  <Object type="0x50e2" id="Megamoth's Scepter">
+  <Object type="0x50e2" id="Butterfly Effect">
     <Class>Equipment</Class>
     <Item />
     <OutOfOneMind />
@@ -31,7 +31,7 @@
     </Texture>
     <SlotType>23</SlotType>
     <Legendary />
-    <Description></Description>
+    <Description>A scepter made from the dormant power of the Megamoth’s cocoon after chrysalis.</Description>
     <Sound>spell/magic_nova</Sound>
     <ActivateOnEquip stat="21" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="6">IncrementStat</ActivateOnEquip>
@@ -41,7 +41,7 @@
     <FameBonus>6</FameBonus>
     <MpCost>90</MpCost>
     <Activate totalDamage="700" maxTargets="4" condEffect="Paralyzed" condDuration="3" color="0xff9933" useWisMod="true">Lightning</Activate>
-    <DisplayId>Megamoth's Scepter</DisplayId>
+    <DisplayId>Butterfly Effect</DisplayId>
   </Object>
     <Object type="0x50f8" id="Essence Eater">
     <Class>Equipment</Class>

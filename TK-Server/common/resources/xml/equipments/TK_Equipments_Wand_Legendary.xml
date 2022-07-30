@@ -38,7 +38,7 @@
     </Texture>
     <SlotType>8</SlotType>
     <Legendary />
-    <Description>This Wand is made to get the pain of others, use it with caution.</Description>
+    <Description>Capable of absorbing the pain dealt to others, then dishing it back to them at incredible rates.</Description>
     <RateOfFire>1.10</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
@@ -57,7 +57,7 @@
     <FameBonus>5</FameBonus>
     <DisplayId>Wand of Pain</DisplayId>
   </Object>
-  <Object type="0x50ea" id="Ruthven's Fury">
+  <Object type="0x50ea" id="Wand of Vampires">
     <Class>Equipment</Class>
     <Item />
     <Texture>
@@ -67,7 +67,7 @@
     <OutOfOneMind />
     <SlotType>8</SlotType>
     <Legendary />
-    <Description>A wand forged by the bats.</Description>
+    <Description>Gain the lifespan of vampires since no foe lives for long when faced with the punishment of vampiric bats.</Description>
     <RateOfFire>1.05</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
@@ -89,9 +89,9 @@
     <ActivateOnEquip stat="27" amount="10">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
-    <DisplayId>Ruthven's Fury</DisplayId>
+    <DisplayId>Wand of Vampires</DisplayId>
   </Object>
-  <Object type="0x50ed" id="Geb's Hand">
+  <Object type="0x50ed" id="Mummified Rod">
     <Class>Equipment</Class>
     <Item />
     <OutOfOneMind />
@@ -101,7 +101,7 @@
     </Texture>
     <SlotType>8</SlotType>
     <Legendary />
-    <Description>Long ago,geb,nut,and bes used to be cruel gods.Brave adventurers kept trying to take them down,until eventually one adventurer defeated them all.Nut and Bes were easy for the adventurer to handle,but geb was not.After long hours of battling,the adventurer cut off geb's hand and put the three gods under a curse to keep the world safe.Geb now awaits for someone to free them from the curse so he can finally get revenge.</Description>
+    <Description>A treasure that had to be sealed away, deep within the Tomb of the Ancients as the mystical powers it possesses were too fearful.</Description>
     <RateOfFire>0.8</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
@@ -118,7 +118,7 @@
     <ActivateOnEquip stat="27" amount="10">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
-    <DisplayId>Geb's Hand</DisplayId>
+    <DisplayId>Mummified Rod</DisplayId>
   </Object>
   <Object type="0x5157" id="Wand of Everlasting Love">
     <Class>Equipment</Class>

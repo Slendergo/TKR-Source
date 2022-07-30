@@ -179,6 +179,12 @@ namespace wServer.core.setpieces
                         container.Move(pos.X + x + 0.5f, pos.Y + y + 0.5f);
                         world.EnterWorld(container);
                     }
+                    else if (t[x, y] == 8)
+                    {
+                        var cyclops = Entity.Resolve(world.Manager, "Cyclops God");
+                        cyclops.Move(pos.X + x, pos.Y + y);
+                        world.EnterWorld(cyclops);
+                    }
         }
     }
 }

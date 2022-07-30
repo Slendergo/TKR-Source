@@ -55,7 +55,7 @@
     <OldSound>bladeSwing</OldSound>
     <feedPower>500</feedPower>
   </Object>
-  <Object type="0x492a" id="Bloody Katana">
+  <Object type="0x492a" id="Dojigiri">
     <Class>Equipment</Class>
     <Item />
     <Demonized />
@@ -64,7 +64,7 @@
       <Index>0x16</Index>
     </Texture>
     <SlotType>24</SlotType>
-    <Description>A Katana that we don't know where it comes from.</Description>
+    <Description>ABlood-drenched from endless slaughter. Any that dare to wield will surely be overcome with indefinite bloodlust.</Description>
     <RateOfFire>1.15</RateOfFire>
     <Sound>weapon/long_sword</Sound>
     <Legendary />
@@ -79,7 +79,7 @@
     <NumProjectiles>1</NumProjectiles>
     <BagType>7</BagType>
     <FameBonus>7</FameBonus>
-    <DisplayId>Bloody Katana</DisplayId>
+    <DisplayId>Dojigiri</DisplayId>
   </Object>
   <Object type="0x495b" id="Lodius">
     <Class>Equipment</Class>
@@ -91,7 +91,7 @@
       <Index>0x1f</Index>
     </Texture>
     <SlotType>24</SlotType>
-    <Description>This katana comes from the best Samurai in all of Japan. The Samurai died in a fight with a Corrupt Talisman. This katana has the power of the Samurai, when you use it, you will feel a true power throughout the body, but, having been touched by a Corrupt, it has negative effects...</Description>
+    <Description>Overpowering feelings of righteousness radiate from this katana’s shine. An embodiment of the Way of The Samurai.</Description>
     <RateOfFire>1</RateOfFire>
     <Sound>weapon/long_sword</Sound>
     <Projectile>

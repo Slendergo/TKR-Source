@@ -398,7 +398,7 @@
       <Index>0x0d</Index>
     </Texture>
     <SlotType>17</SlotType>
-    <Description>A branch with leaves, his creator was the king of the Tiki Tiki. It contain the power of Nature.</Description>
+    <Description>A branch with leaves that Tiki Tiki gave blessings to. It contains the power of nature.</Description>
     <RateOfFire>1</RateOfFire>
     <Sound>monster/djinn_hit</Sound>
     <Projectile>
@@ -419,7 +419,7 @@
     <feedPower>700</feedPower>
     <DisplayId>Leaf Staff</DisplayId>
   </Object>
-  <Object type="0x4981" id="Mushroom's Nature">
+  <Object type="0x4981" id="Magical Mushroom Staff">
     <Class>Equipment</Class>
     <Item />
     <Electrify />
@@ -429,7 +429,7 @@
       <Index>0x3a</Index>
     </Texture>
     <SlotType>17</SlotType>
-    <Description>A magical wooden staff topped A branch with a fungus on the tip, has the power of the nature of the fungus, its red and white colors gives it the touch of power.</Description>
+    <Description>A stem of an enormous mushroom cap filled with spores that was pulled from the great Mushroom.</Description>
     <RateOfFire>0.70</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
@@ -440,7 +440,7 @@
       <LifetimeMS>1500</LifetimeMS>
       <Amplitude>0.3</Amplitude>
       <Frequency>1.85</Frequency>
-      <Size>65</Size>
+      <Size>100</Size>
       <ArmorPiercing />
       <MultiHit />
     </Projectile>
@@ -450,9 +450,9 @@
     <ActivateOnEquip stat="28" amount="2">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
-    <DisplayId>Mushroom's Nature</DisplayId>
+    <DisplayId>Magical Mushroom Staff</DisplayId>
   </Object>
-  <Object type="0x5055" id="Emerald Staff">
+  <Object type="0x5055" id="Azurite Staff">
     <Class>Equipment</Class>
     <Item />
     <Texture>
@@ -461,7 +461,7 @@
     </Texture>
     <SetTier />
     <SlotType>17</SlotType>
-    <Description>A Staff with a Emerald Gem at the tip, the Wood comes from Magic Forest that make this Staff powerful.</Description>
+    <Description>This staff has an azurite gem lodged in at the top of magically enchanted wood. It was used by fairies for self-defense.</Description>
     <RateOfFire>1.25</RateOfFire>
     <Sound>weapon/wand_of_death</Sound>
     <Projectile>
@@ -480,9 +480,9 @@
     <ArcGap>0</ArcGap>
     <BagType>7</BagType>
     <FameBonus>5</FameBonus>
-    <DisplayId>Emerald Staff</DisplayId>
+    <DisplayId>Azurite Staff</DisplayId>
   </Object>
-  <Object type="0x507b" id="Wind Staff">
+  <Object type="0x507b" id="Staff of Zephyrs">
     <Class>Equipment</Class>
     <Item />
     <Texture>
@@ -491,7 +491,7 @@
     </Texture>
     <SlotType>17</SlotType>
     <SNormal />
-    <Description> It is said that this staff has immense damage capabilities, comparable to those of the Mad God.</Description>
+    <Description>So powerful that each attack creates miniature sonic booms from the edge of this staff.</Description>
     <RateOfFire>1.15</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
@@ -510,7 +510,7 @@
     <BagType>7</BagType>
     <FameBonus>4</FameBonus>
     <feedPower>5</feedPower>
-    <DisplayId>Wind Staff</DisplayId>
+    <DisplayId>Staff of Zephyrs</DisplayId>
   </Object>
   <Object type="0x515c" id="Envy">
     <Class>Equipment</Class>

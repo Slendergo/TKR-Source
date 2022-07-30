@@ -90,7 +90,7 @@ namespace wServer.logic
                 ),
             new Threshold(0.03,
                 new ItemLoot("Helm of the Juggernaut", 0.0014, threshold: 0.03),
-                new ItemLoot("Bloody Katana", 0.0014, threshold: 0.03)
+                new ItemLoot("Dojigiri", 0.0014, threshold: 0.03)
                 ),
             new Threshold(0.001,
                 new ItemLoot("Potion of Vitality", 1),

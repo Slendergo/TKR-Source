@@ -7582,7 +7582,7 @@
     <Item />
     <HoldableItem />
     <ExtraTooltipData>
-      <EffectInfo name="Looting:" description="Holding this item gives you 2% of Loot!." />
+      <EffectInfo name="Looting:" description="Holding this item gives you 2% of Loot!" />
     </ExtraTooltipData>
     <Texture>
       <File>CustomObj</File>

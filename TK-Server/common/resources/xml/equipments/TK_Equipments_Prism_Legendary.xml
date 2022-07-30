@@ -38,7 +38,7 @@
     </Texture>
     <SlotType>22</SlotType>
     <Legendary />
-    <Description>This prism is made from Thessal's Heart. When used Thessal's soul will grant you and your allies a tiny bit of health as a gift for keeping his heart safe.</Description>
+    <Description>Made from the heart of Thessal and her undying love for her king, Alexander.</Description>
     <Usable />
     <BagType>6</BagType>
     <FameBonus>5</FameBonus>
@@ -51,7 +51,7 @@
     <Activate amount="50" range="1">HealNova</Activate>
     <DisplayId>Heart of the Sea</DisplayId>
   </Object>
-  <Object type="0x50e0" id="Queen's Prism">
+  <Object type="0x50e0" id="Queen’s Scale">
     <Class>Equipment</Class>
     <Item />
     <Mutilate />
@@ -61,7 +61,7 @@
     </Texture>
     <SlotType>22</SlotType>
     <Legendary />
-    <Description>With this Prism you zoom.</Description>
+    <Description>Blessed with the gift of speed, the leftover scales of the Queen of Snakes would be wasted if not used instead.</Description>
     <Usable />
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
@@ -73,7 +73,7 @@
     <Activate effect="Speedy" duration="4">ConditionEffectSelf</Activate>
     <Activate duration="7">Decoy</Activate>
     <Activate maxDistance="25">Teleport</Activate>
-    <DisplayId>Queen's Prism</DisplayId>
+    <DisplayId>Queen’s Scale</DisplayId>
   </Object>
     <Object type="0x50f7" id="Prismatic Stone">
     <Class>Equipment</Class>

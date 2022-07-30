@@ -101,7 +101,7 @@
       <File>CustomProjsBig</File>
       <Index>0x02</Index>
     </Texture>
-    <Rotation>45</Rotation>
+    <Rotation>90</Rotation>
   </Object>
   <Object type="0x5036" id="Strange Magician Big Shoot">
     <Class>Projectile</Class>
@@ -180,13 +180,5 @@
 			<Index>0x23</Index>
 		</Texture>
 		<Rotation>90</Rotation>
-	</Object>
-	<Object type="0x9801" id="Giant Fire Sword">
-		<Class>Projectile</Class>
-		<Texture>
-			<File>CustomProjsBig</File>
-			<Index>0x05</Index>
-		</Texture>
-		<AngleCorrection>1</AngleCorrection>
 	</Object>
 </Objects>

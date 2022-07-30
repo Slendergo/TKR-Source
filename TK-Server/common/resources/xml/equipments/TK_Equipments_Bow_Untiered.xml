@@ -291,7 +291,7 @@
     <Soulbound />
     <DisplayId>Clover Bow</DisplayId>
   </Object>
-  <Object type="0x5001" id="Earth Bow">
+  <Object type="0x5001" id="Forest’s Call">
     <Class>Equipment</Class>
     <Item />
     <Texture>
@@ -300,7 +300,7 @@
     </Texture>
     <SlotType>3</SlotType>
     <Rare />
-    <Description>This Bow, forged with the heavenly lands, has a power coming from space. His speed and damage make him very strong.</Description>
+    <Description>A bow crafted from bark of sacred jungle trees, allowing it to rival that of otherworldly power.</Description>
     <RateOfFire>1.25</RateOfFire>
     <Sound>weapon/poor_quality_bow</Sound>
     <Projectile>
@@ -319,6 +319,6 @@
     <ArcGap>11</ArcGap>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
-    <DisplayId>Earth Bow</DisplayId>
+    <DisplayId>Forest’s Call</DisplayId>
   </Object>
 </Objects>

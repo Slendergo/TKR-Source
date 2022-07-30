@@ -56,7 +56,6 @@ public class WebMain extends Sprite {
         if (stage) {
             stage.addEventListener("resize", this.onStageResize, false, 0, true);
             this.setup();
-
         }
         else {
             addEventListener(Event.ADDED_TO_STAGE, this.onAddedToStage);

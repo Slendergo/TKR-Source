@@ -105,7 +105,7 @@
     <NumProjectiles>2</NumProjectiles>
     <feedPower>800</feedPower>
   </Object>
-  <Object type="0x507f" id="Earth Elemental Shield">
+  <Object type="0x507f" id="Shield of the Forest">
     <Class>Equipment</Class>
     <Item />
     <Texture>
@@ -114,7 +114,7 @@
     </Texture>
     <SlotType>5</SlotType>
     <SPlus />
-    <Description>A very strong shield made from the strongest and most desirable of all the Earth.</Description>
+    <Description>A very strong and pliable shield made from the strongest and most desirable forest.</Description>
     <Sound>spell/fire_spray</Sound>
     <Projectile>
       <ObjectId>Earth Elemental Shield Shoot</ObjectId>

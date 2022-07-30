@@ -101,16 +101,16 @@
     <FameBonus>4</FameBonus>
     <feedPower>435</feedPower>
   </Object>
-  <Object type="0x5069" id="Stheno Queen Armor">
+  <Object type="0x5069" id="Snake Queen’s Hide">
     <Class>Equipment</Class>
     <Item />
-    <DisplayId>Stheno Queen Armor</DisplayId>
+    <DisplayId>Snake Queen’s Hide</DisplayId>
     <Texture>
       <File>CustomObj</File>
       <Index>0x7a</Index>
     </Texture>
     <SlotType>6</SlotType>
-    <Description>The Light Armor of the Snake Queen, Stheno Queen.</Description>
+    <Description>A leather armor boasting all the speed that the Snake Queen once had herself.</Description>
     <ActivateOnEquip stat="22" amount="12">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="0" amount="120">IncrementStat</ActivateOnEquip>
     <FameBonus>5</FameBonus>
@@ -126,7 +126,7 @@
       <Index>0x3d</Index>
     </Texture>
     <SlotType>6</SlotType>
-    <Description>A light armor forged with frozen water and stone pieces of Elemental Water, its equipment will make you faster than ever.</Description>
+    <Description>A light armor consisting of frozen water and bits of stone.</Description>
     <ActivateOnEquip stat="21" amount="14">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="4">IncrementStat</ActivateOnEquip>
@@ -134,16 +134,16 @@
     <FameBonus>5</FameBonus>
     <BagType>7</BagType>
   </Object>
-  <Object type="0x5043" id="Acid Leather N-3014">
+  <Object type="0x5043" id="Scientific Armor">
     <Class>Equipment</Class>
     <Item />
-    <DisplayId>Acid Leather N-3014</DisplayId>
+    <DisplayId>Scientific Armor</DisplayId>
     <Texture>
       <File>CustomObj</File>
       <Index>0x66</Index>
     </Texture>
     <SlotType>6</SlotType>
-    <Description>A Light Armor imbued with acid, created by the same crazy scientist Dr. Terrible. It takes the number of times that the creation of it went wrong.</Description>
+    <Description>The harsh acid left on the leather armor bolster the strength and permanence.</Description>
     <ActivateOnEquip stat="0" amount="80">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="13">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="2">IncrementStat</ActivateOnEquip>

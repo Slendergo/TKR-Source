@@ -91,7 +91,7 @@
     <ArcGap>0</ArcGap>
     <OldSound>magicShoot</OldSound>
   </Object>
-  <Object type="0x5151" id="Thessal's Slayer">
+  <Object type="0x5151" id="Neptune’s Trident">
     <Class>Equipment</Class>
     <Item />
     <Mutilate />
@@ -101,7 +101,7 @@
     </Texture>
     <Legendary />
     <SlotType>17</SlotType>
-    <Description>When her trident proved ineffective, Thessal always carried around her trusty rod to kill particularly troublesome intruders.</Description>
+    <Description>“Just keep swimming. Just keep swimming, swimming, swimming.”</Description>
     <RateOfFire>1</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
@@ -119,7 +119,7 @@
     <ArcGap>10</ArcGap>
     <BagType>6</BagType>
     <FameBonus>6</FameBonus>
-    <DisplayId>Thessal's Slayer</DisplayId>
+    <DisplayId>Neptune’s Trident</DisplayId>
   </Object>
   <Object type="0x540b" id="Rod of Frost Burn">
     <Class>Equipment</Class>
@@ -131,7 +131,7 @@
       <Index>0xc0</Index>
     </Texture>
     <SlotType>17</SlotType>
-    <Description>The unlikely marriage of polar opposites, such an event can only lead to disaster.</Description>
+    <Description>An unstable marriage of polar opposites. Such an anomaly only leads to disaster.</Description>
     <RateOfFire>.95</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
@@ -164,7 +164,7 @@
       <Index>0xd0</Index>
     </Texture>
     <SlotType>17</SlotType>
-    <Description>While not quite as powerful as the real Death's scythe, this replica certainly does not lack power.</Description>
+    <Description>Harvest the souls of adversaries as a reincarnate of Death.</Description>
     <RateOfFire>.65</RateOfFire>
     <Sound>weapon/mithril_sword</Sound>
     <Projectile>

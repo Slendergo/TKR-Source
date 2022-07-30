@@ -193,10 +193,10 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.015,
-                new ItemLoot("Acid Katana N-3012", 0.015),
-                new ItemLoot("Acid Star N-3013", 0.015),
-                new ItemLoot("Acid Leather N-3014", 0.015),
-                new ItemLoot("Acid Ring N-3015", 0.015)
+                new ItemLoot("Jikken", 0.015),
+                new ItemLoot("Unstable Acid Shuriken", 0.015),
+                new ItemLoot("Scientific Armor", 0.015),
+                new ItemLoot("Unstable Acid Shuriken", 0.015)
                 ),
             new Threshold(0.03,
                 new ItemLoot("Scepter of Fulmination", 0.0024, threshold: 0.03),

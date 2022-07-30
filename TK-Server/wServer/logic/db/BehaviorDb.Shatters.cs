@@ -681,7 +681,7 @@ namespace wServer.logic
 
                 ),
             new Threshold(0.05,
-                new ItemLoot("Sentinel's Seal", 0.0014)
+                new ItemLoot("The Sentinel’s Insignia", 0.0014)
                 //new ItemLoot("Blade of the Protector", 0.0015),
                 //new ItemLoot("Guardian's Clad", 0.0015)
                 ),
@@ -720,7 +720,7 @@ namespace wServer.logic
                 ),
             new Threshold(0.05,
                 //new ItemLoot("Rod of Frost Burn", 0.0015),
-                new ItemLoot("Twilight Skull", 0.0015)
+                new ItemLoot("Skull of the Archmage", 0.0015)
                 //new ItemLoot("Archmage's Garments", 0.0015),
                 //new ItemLoot("Infused Souls", 0.0015)
                 ),

@@ -205,14 +205,14 @@
     <DeathSound>monster/sprites_death</DeathSound>
     <Size>140</Size>
     <ShadowSize>80</ShadowSize>
-    <MaxHitPoints>14500</MaxHitPoints>
-    <Defense>20</Defense>
+    <MaxHitPoints>30000</MaxHitPoints>
+    <Defense>35</Defense>
     <God />
     <Quest />
     <Projectile id="0">
       <ObjectId>Troll Hair Whip</ObjectId>
       <Damage>120</Damage>
-      <Speed>70</Speed>
+      <Speed>90</Speed>
       <LifetimeMS>1600</LifetimeMS>
       <Size>140</Size>
       <ConditionEffect duration="3">Hallucinating</ConditionEffect>
@@ -222,7 +222,7 @@
     <Projectile id="1">
       <ObjectId>Pink Star</ObjectId>
       <Damage>90</Damage>
-      <Speed>80</Speed>
+      <Speed>110</Speed>
       <LifetimeMS>2000</LifetimeMS>
       <Size>80</Size>
       <ConditionEffect duration="3">Hexed</ConditionEffect>
@@ -232,14 +232,14 @@
     <Projectile id="2">
       <ObjectId>Pink Slash</ObjectId>
       <Damage>110</Damage>
-      <Speed>70</Speed>
+      <Speed>90</Speed>
       <LifetimeMS>1000</LifetimeMS>
       <Size>110</Size>
     </Projectile>
     <Projectile id="3">
       <ObjectId>Pink Slash</ObjectId>
       <Damage>110</Damage>
-      <Speed>90</Speed>
+      <Speed>110</Speed>
       <LifetimeMS>600</LifetimeMS>
       <Size>110</Size>
     </Projectile>

@@ -49,28 +49,6 @@
     <OldSound>bladeSwing</OldSound>
     <feedPower>800</feedPower>
   </Object>
-  <Object type="0x9cb" id="Def Test Sword">
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>lofiObj5</File>
-      <Index>0x37</Index>
-    </Texture>
-    <SlotType>1</SlotType>
-    <Description>For Testing Monster Defense.</Description>
-    <RateOfFire>1</RateOfFire>
-    <Sound>weapon/blunt_sword</Sound>
-    <Projectile>
-      <ObjectId>Blade</ObjectId>
-      <Speed>100</Speed>
-      <MinDamage>100</MinDamage>
-      <MaxDamage>100</MaxDamage>
-      <LifetimeMS>500</LifetimeMS>
-    </Projectile>
-    <BagType>1</BagType>
-    <OldSound>bladeSwing</OldSound>
-    <feedPower>6000</feedPower>
-  </Object>
   <Object type="0xcdb" id="Pirate King's Cutlass">
     <Class>Equipment</Class>
     <SNormal />
@@ -424,7 +402,7 @@
     <ArcGap>5</ArcGap>
     <BagType>7</BagType>
     <FameBonus>5</FameBonus>
-    <DisplayId>Blade of the Brute</DisplayId>
+    <DisplayId>Brute’s Longsword</DisplayId>
   </Object>
   <Object type="0x4989" id="Massacre">
     <Class>Equipment</Class>
@@ -435,7 +413,7 @@
       <Index>0x3c</Index>
     </Texture>
     <SlotType>1</SlotType>
-    <Description>Legend has it that this sword created by Elemental Water has killed many people, so that why is called Massacre.</Description>
+    <Description>Sends foes swept away by currents with this vicious sword holding properties of flowing water.</Description>
     <RateOfFire>1.4</RateOfFire>
     <Sound>weapon/glass_sword</Sound>
     <Projectile>
@@ -458,7 +436,7 @@
     <FameBonus>6</FameBonus>
     <DisplayId>Massacre</DisplayId>
   </Object>
-  <Object type="0x5026" id="Golden Oryx Sword">
+  <Object type="0x5026" id="Sword of Golden Fragments">
     <Class>Equipment</Class>
     <Item />
     <SPlus />
@@ -467,7 +445,7 @@
       <Index>0x53</Index>
     </Texture>
     <SlotType>1</SlotType>
-    <Description>A completely golden sword from the great Golden Oryx. Its edge is so strong that it can kill anyone in an instant.</Description>
+    <Description>Shards from the body of the Golden Oryx Effigy empower this sword and give it an illustrious shine. </Description>
     <RateOfFire>.95</RateOfFire>
     <Sound>weapon/mithril_sword</Sound>
     <Projectile>
@@ -486,7 +464,7 @@
     <FameBonus>5</FameBonus>
     <DisplayId>Golden Oryx Sword</DisplayId>
   </Object>
-  <Object type="0x5061" id="Malphas Sword">
+  <Object type="0x5061" id="Abyssal Sword">
     <Class>Equipment</Class>
     <Item />
     <Texture>
@@ -494,7 +472,7 @@
       <Index>0x74</Index>
     </Texture>
     <SlotType>1</SlotType>
-    <Description>A Sword of Archdemon Malphas, the king of Hell.</Description>
+    <Description>Worthy enough to once be wielded by the Archdemon of Hell, Malphas.</Description>
     <RateOfFire>1.05</RateOfFire>
     <Sound>weapon/mithril_sword</Sound>
     <Projectile>
@@ -511,7 +489,7 @@
     <ArcGap>11</ArcGap>
     <BagType>7</BagType>
     <FameBonus>5</FameBonus>
-    <DisplayId>Malphas Sword</DisplayId>
+    <DisplayId>Abyssal Sword</DisplayId>
   </Object>
   <Object type="0x48d5" id="Slime Slayer">
     <Class>Equipment</Class>

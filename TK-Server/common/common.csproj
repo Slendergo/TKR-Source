@@ -286,8 +286,6 @@
     <Compile Include="WeakReference.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="resources\web\music\test.mp3" />
-    <Content Include="resources\web\music\wanderlust.mp3" />
     <Content Include="resources\xml\characters\TK_Characters_buffedBunnyObjects16x16.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -20,7 +20,7 @@
     <Activate radius="4.5" totalDamage="750" condEffect="Paralyzed" condDuration="4.5">Trap</Activate>
     <feedPower>500</feedPower>
   </Object>
-  <Object type="0x5152" id="Ghost Trapper">
+  <Object type="0x5152" id="Soul-Stealing Trap">
     <Class>Equipment</Class>
     <Item />
     <Texture>
@@ -29,7 +29,7 @@
     </Texture>
     <SlotType>20</SlotType>
     <Legendary />
-    <Description>Screams fill the silence when this trap is left alone...</Description>
+    <Description>Screams from the trapped souls echo through the silence when left alone.</Description>
     <Usable />
     <Mutilate />
     <BagType>7</BagType>

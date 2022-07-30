@@ -1,103 +1,25 @@
 <Objects>
-	<Object type="0x506c" id="Skill Tree">
-		<Class>SkillTree</Class>
-		<Flying />
-		<Texture>
-			<File>Custom32x32Objects</File>
-			<Index>0x00</Index>
-		</Texture>
-		<Animation prob="1.0" period="0.0">
-			<Frame time="0.2">
-				<Texture>
-					<File>Custom32x32Objects</File>
-					<Index>0x00</Index>
-				</Texture>
-			</Frame>
-			<Frame time="0.2">
-				<Texture>
-					<File>Custom32x32Objects</File>
-					<Index>0x01</Index>
-				</Texture>
-			</Frame>
-			<Frame time="0.2">
-				<Texture>
-					<File>Custom32x32Objects</File>
-					<Index>0x02</Index>
-				</Texture>
-			</Frame>
-			<Frame time="0.2">
-				<Texture>
-					<File>Custom32x32Objects</File>
-					<Index>0x03</Index>
-				</Texture>
-			</Frame>
-			<Frame time="0.2">
-				<Texture>
-					<File>Custom32x32Objects</File>
-					<Index>0x04</Index>
-				</Texture>
-			</Frame>
-			<Frame time="0.2">
-				<Texture>
-					<File>Custom32x32Objects</File>
-					<Index>0x05</Index>
-				</Texture>
-			</Frame>
-			<Frame time="0.2">
-				<Texture>
-					<File>Custom32x32Objects</File>
-					<Index>0x06</Index>
-				</Texture>
-			</Frame>
-			<Frame time="0.2">
-				<Texture>
-					<File>Custom32x32Objects</File>
-					<Index>0x07</Index>
-				</Texture>
-			</Frame>
-			<Frame time="0.2">
-				<Texture>
-					<File>Custom32x32Objects</File>
-					<Index>0x08</Index>
-				</Texture>
-			</Frame>
-			<Frame time="0.2">
-				<Texture>
-					<File>Custom32x32Objects</File>
-					<Index>0x09</Index>
-				</Texture>
-			</Frame>
-			<Frame time="0.2">
-				<Texture>
-					<File>Custom32x32Objects</File>
-					<Index>0x0a</Index>
-				</Texture>
-			</Frame>
-			<Frame time="0.2">
-				<Texture>
-					<File>Custom32x32Objects</File>
-					<Index>0x0b</Index>
-				</Texture>
-			</Frame>
-			<Frame time="0.2">
-				<Texture>
-					<File>Custom32x32Objects</File>
-					<Index>0x0c</Index>
-				</Texture>
-			</Frame>
-			<Frame time="0.2">
-				<Texture>
-					<File>Custom32x32Objects</File>
-					<Index>0x0d</Index>
-				</Texture>
-			</Frame>
-			<Frame time="0.2">
-				<Texture>
-					<File>Custom32x32Objects</File>
-					<Index>0x0e</Index>
-				</Texture>
-			</Frame>
-		</Animation>
-		<Static />
-	</Object>
+  <Object type="0x506c" id="Skill Tree">
+    <Class>SkillTree</Class>
+    <Flying />
+    <Texture>
+      <File>CustomObjects32x32</File>
+      <Index>0x12</Index>
+    </Texture>
+    <Animation prob="1.0" period="0.0">
+      <Frame time="0.5">
+        <Texture>
+          <File>CustomObjects32x32</File>
+          <Index>0x12</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.5">
+        <Texture>
+          <File>CustomObjects32x32</File>
+          <Index>0x13</Index>
+        </Texture>
+      </Frame>
+    </Animation>
+    <Static />
+  </Object>
 </Objects>

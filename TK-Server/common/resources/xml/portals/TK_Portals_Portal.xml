@@ -967,7 +967,10 @@
     <ShadowSize>0</ShadowSize>
   </Object>
 	<Object type="0x950a" id="Hideout of Septavius Portal">
-		<Class>Character</Class>
+		<Class>Portal</Class>
+		<IntergamePortal />
+		<DisplayId>Hideout of Septavius</DisplayId>
+		<DungeonName>Hideout of Septavius</DungeonName>
 		<Size>80</Size>
 		<Texture>
 			<File>custom16x16Environment</File>
@@ -1086,7 +1089,7 @@
 		<IntergamePortal />
 		<DisplayId>Stanleys Hideout</DisplayId>
 		<DungeonName>Stanleys Hideout</DungeonName>
-		<Size>60</Size>
+		<Size>80</Size>
 		<Texture>
 			<File>custom16x16Environment</File>
 			<Index>0x40</Index>
@@ -1160,28 +1163,33 @@
 		<IntergamePortal />
 		<DisplayId>Hideout of Stheno</DisplayId>
 		<DungeonName>Hideout of Stheno</DungeonName>
-		<Size>60</Size>
 		<Texture>
-			<File>custom16x16Environment</File>
-			<Index>0x37</Index>
+			<File>lofiEnvironment2</File>
+			<Index>0x8c</Index>
 		</Texture>
 		<Animation prob="0.6" period="1.6">
 			<Frame time="0.4">
 				<Texture>
-					<File>custom16x16Environment</File>
-					<Index>0x38</Index>
+					<File>lofiEnvironment2</File>
+					<Index>0x8d</Index>
 				</Texture>
 			</Frame>
 			<Frame time="0.4">
 				<Texture>
-					<File>custom16x16Environment</File>
-					<Index>0x39</Index>
+					<File>lofiEnvironment2</File>
+					<Index>0x8e</Index>
 				</Texture>
 			</Frame>
 			<Frame time="0.4">
 				<Texture>
-					<File>custom16x16Environment</File>
-					<Index>0x3a</Index>
+					<File>lofiEnvironment2</File>
+					<Index>0x8d</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.4">
+				<Texture>
+					<File>lofiEnvironment2</File>
+					<Index>0x8e</Index>
 				</Texture>
 			</Frame>
 		</Animation>

@@ -114,10 +114,10 @@ namespace wServer.logic
                 ),
             new Threshold(0.03,
                 new ItemLoot("Bow of the Havens", 0.0014),
-                new ItemLoot("Geb's Hand", 0.0014),
+                new ItemLoot("Mummified Rod", 0.0014),
                 new ItemLoot("Shield of The Ancient's", 0.0014),
                 new ItemLoot("Soul of Mana", 0.1),
-                new ItemLoot("Pharaoh's Tome", 0.0014)
+                new ItemLoot("Pharaoh’s Scripture", 0.0014)
                 ),
             new Threshold(0.01,
                 new TierLoot(10, ItemType.Weapon, 0.25),
@@ -217,7 +217,7 @@ namespace wServer.logic
                 ),
             new Threshold(0.03,
                 new ItemLoot("Soul of Mana", 0.1),
-                new ItemLoot("Thessal's Slayer", 0.0014),
+                new ItemLoot("Neptune’s Trident", 0.0014),
                 new ItemLoot("Heart of the Sea", 0.0014)
                 ),
             new Threshold(0.01,
@@ -382,10 +382,10 @@ namespace wServer.logic
                 new TierLoot(11, ItemType.Armor, 0.1),
                 new TierLoot(5, ItemType.Ring, 0.1),
                 new TierLoot(5, ItemType.Ability, 0.1),
-                new ItemLoot("Golden Oryx Sword", 0.005),
-                new ItemLoot("Golden Oryx Helm", 0.005),
-                new ItemLoot("Golden Oryx Armor", 0.005),
-                new ItemLoot("Golden Oryx Ring", 0.005)
+                new ItemLoot("Sword of Golden Fragments", 0.005),
+                new ItemLoot("Jewel-Encrusted Helmet", 0.005),
+                new ItemLoot("Luminous Body Armor", 0.005),
+                new ItemLoot("Ring of Golden Shine", 0.005)
                 )
             )
 
@@ -575,14 +575,15 @@ namespace wServer.logic
             new Threshold(0.03,
                 new ItemLoot("Golden Coat", 0.0014)
                 ),
-            new Threshold(0.01,
-                new TierLoot(13, ItemType.Armor, 0.15),
-                new TierLoot(6, ItemType.Ring, 0.1),
-                new TierLoot(6, ItemType.Ability, 0.1),
-                new ItemLoot("Golden Oryx Sword", 0.005),
-                new ItemLoot("Golden Oryx Helm", 0.005),
-                new ItemLoot("Golden Oryx Armor", 0.005),
-                new ItemLoot("Golden Oryx Ring", 0.005)
+             new Threshold(0.05,
+                new TierLoot(10, ItemType.Armor, 0.15),
+                new TierLoot(11, ItemType.Armor, 0.1),
+                new TierLoot(5, ItemType.Ring, 0.1),
+                new TierLoot(5, ItemType.Ability, 0.1),
+                new ItemLoot("Sword of Golden Fragments", 0.005),
+                new ItemLoot("Jewel-Encrusted Helmet", 0.005),
+                new ItemLoot("Luminous Body Armor", 0.005),
+                new ItemLoot("Ring of Golden Shine", 0.005)
                 )
             )
         .Init("Gallant Warrior",
@@ -791,15 +792,15 @@ namespace wServer.logic
                 new ItemLoot("Soul of Speed", 1)
                 ),
             new Threshold(0.03,
-                new ItemLoot("Queen's Prism", 0.0014),
+                new ItemLoot("Queen’s Scale", 0.0014),
                 new ItemLoot("Soul of Speed", 0.1),
-                new ItemLoot("Snake Venom Quiver", 0.0014)
+                new ItemLoot("Snake Bane Quiver", 0.0014)
                 ),
             new Threshold(0.01,
-                new ItemLoot("Stheno Queen Katana", 0.01),
-                new ItemLoot("Stheno Queen Armor", 0.01),
-                new ItemLoot("Stheno Queen Star", 0.01),
-                new ItemLoot("Stheno Queen Ring", 0.01),
+                new ItemLoot("Hebikira", 0.01),
+                new ItemLoot("Snake Queen’s Hide", 0.01),
+                new ItemLoot("Star of Stheno", 0.01),
+                new ItemLoot("Spirit of Snakes", 0.01),
                 new TierLoot(6, ItemType.Ability, 0.1),
                 new TierLoot(13, ItemType.Weapon, 0.1),
                 new TierLoot(13, ItemType.Armor, 0.1),
@@ -860,7 +861,7 @@ namespace wServer.logic
                 ),
             new Threshold(0.03,
                 new ItemLoot("Soul of Dexterity", 0.1),
-                new ItemLoot("Chroma Spell", 0.0014)
+                new ItemLoot("Chromatic Extinction", 0.0014)
                 ),
             new Threshold(0.01,
                 new TierLoot(4, ItemType.Ring, 0.15),
@@ -1055,13 +1056,13 @@ namespace wServer.logic
                 ),
             new Threshold(0.03,
                 new ItemLoot("Soul of Vitality", 0.1),
-                new ItemLoot("Malphas's Bone", 0.0014)
+                new ItemLoot("Cadaverous Knife", 0.0014)
                 ),
             new Threshold(0.01,
-                new ItemLoot("Malphas Sword", 0.02),
-                new ItemLoot("Malphas Seal", 0.02),
-                new ItemLoot("Malphas Armor", 0.02),
-                new ItemLoot("Malphas Juice", 0.02),
+                new ItemLoot("Abyssal Sword", 0.02),
+                new ItemLoot("Seal of the Underworld", 0.02),
+                new ItemLoot("Archdemon’s Remains", 0.02),
+                new ItemLoot("Demon’s Sigil", 0.02),
                 new TierLoot(10, ItemType.Armor, 0.15),
                 new TierLoot(11, ItemType.Armor, 0.1),
                 new TierLoot(4, ItemType.Ring, 0.15),
@@ -1306,13 +1307,13 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.03,
-                new ItemLoot("Malphas's Bone", 0.0014)
+                new ItemLoot("Cadaverous Knife", 0.0014)
                 ),
             new Threshold(0.01,
-                new ItemLoot("Malphas Sword", 0.002),
-                new ItemLoot("Malphas Seal", 0.002),
-                new ItemLoot("Malphas Armor", 0.002),
-                new ItemLoot("Malphas Juice", 0.002),
+                new ItemLoot("Abyssal Sword", 0.002),
+                new ItemLoot("Archdemon’s Remains", 0.002),
+                new ItemLoot("Seal of the Underworld", 0.002),
+                new ItemLoot("Demon’s Sigil", 0.002),
                 new TierLoot(13, ItemType.Armor, 0.15),
                 new TierLoot(6, ItemType.Ring, 0.15),
                 new TierLoot(6, ItemType.Ability, 0.15),
@@ -1344,7 +1345,7 @@ namespace wServer.logic
             new Threshold(0.03,
                 new ItemLoot("Cape of Septavius", 0.0014),
                 new ItemLoot("Soul of Wisdom", 0.1),
-                new ItemLoot("Ghost Trapper", 0.0014)
+                new ItemLoot("Soul-Stealing Trap", 0.0014)
                 ),
             new Threshold(0.005,
                 new ItemLoot("Soul of Wisdom", 1)
@@ -1358,7 +1359,7 @@ namespace wServer.logic
                 new ItemLoot("Memento Mori", 0.02),
                 new ItemLoot("Toga Picta", 0.02),
                 new ItemLoot("Interregnum", 0.02),
-                new ItemLoot("Deathhail Wand", 0.015),
+                new ItemLoot("Tormentor’s Wrath", 0.015),
                 new ItemLoot("Undead Lair Key", 0.015, 0, 0.03),
                 new TierLoot(4, ItemType.Ability, 0.01),
                 new TierLoot(5, ItemType.Ability, 0.005),
@@ -1440,7 +1441,7 @@ namespace wServer.logic
                 new ItemLoot("Cape of Septavius", 0.0028),
                 new ItemLoot("Potion of Wisdom", 1),
                 new ItemLoot("Potion of Wisdom", 1),
-                new ItemLoot("Ghost Trapper", 0.0028)
+                new ItemLoot("Soul-Stealing Trap", 0.0028)
                 ),
             new Threshold(0.005,
                 new ItemLoot("Soul of Wisdom", 1)
@@ -1455,7 +1456,7 @@ namespace wServer.logic
                 new ItemLoot("Memento Mori", 0.04),
                 new ItemLoot("Toga Picta", 0.04),
                 new ItemLoot("Interregnum", 0.04),
-                new ItemLoot("Deathhail Wand", 0.03),
+                new ItemLoot("Tormentor’s Wrath", 0.03),
                 new ItemLoot("Undead Lair Key", 0.5, 0, 0.03),
                 new TierLoot(6, ItemType.Ability, 0.1),
                 new TierLoot(13, ItemType.Armor, 0.1),

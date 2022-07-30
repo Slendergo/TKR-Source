@@ -20,7 +20,7 @@
     <Cooldown>5</Cooldown>
     <feedPower>750</feedPower>
   </Object>
-  <Object type="0x5073" id="Orb of the Fire Element Egg">
+  <Object type="0x5073" id="Phoenix Ashes Orb">
     <Class>Equipment</Class>
     <Item />
     <Clarification />
@@ -30,7 +30,7 @@
     </Texture>
     <Legendary />
     <SlotType>21</SlotType>
-    <Description>This orb of ancient bloodstone has a dark reputation of twisting those who wield it.</Description>
+    <Description>An orb that is supplied with power to control fire by the lifeforce of a phoenix undergoing resurrection.</Description>
     <ActivateOnEquip stat="20" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="8">IncrementStat</ActivateOnEquip>
     <Usable />
@@ -51,7 +51,7 @@
     </Texture>
     <Legendary />
     <SlotType>21</SlotType>
-    <Description>Encased in a thin glass veil lies the Shatters' ever-burning flames.</Description>
+    <Description>Miniature solar flares erupt from the thin glass encasement. You probably shouldn’t gaze into this orb for very long.</Description>
     <ActivateOnEquip stat="20" amount="3">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="-3">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>

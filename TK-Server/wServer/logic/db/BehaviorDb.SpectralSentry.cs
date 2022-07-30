@@ -64,7 +64,7 @@ namespace wServer.logic
                 new ItemLoot("Necklace of Stolen Life", 0.003, 0, 0.03)
                 ),
             new Threshold(0.05,
-                new ItemLoot("Ghost Robe", 0.0014, 0, 0.05),
+                new ItemLoot("Spectral Robe", 0.0014, 0, 0.05),
                 new ItemLoot("Scythe of the Reaper", 0.0014, 0, 0.05),
                 new ItemLoot("Haunting Incantation", 0.0014, 0, 0.05)
                 )

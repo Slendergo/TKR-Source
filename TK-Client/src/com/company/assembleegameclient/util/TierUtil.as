@@ -60,7 +60,7 @@ public class TierUtil
             }
             else if (xml.hasOwnProperty("Legendary"))
             {
-                color = 0xffdf53;
+                color = 0xFFBA03;
                 tierTag = "LG";
             }
             else if (xml.hasOwnProperty("Revenge") || xml.hasOwnProperty("Mythical"))

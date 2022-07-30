@@ -911,8 +911,6 @@
       <File>lofiEnvironment2</File>
       <Index>0x09</Index>
     </Texture>
-    <MinDamage>50</MinDamage>
-    <MaxDamage>60</MaxDamage>
     <Animate dx=".33" dy=".33">Flow</Animate>
     <Sink />
     <Speed>.666</Speed>

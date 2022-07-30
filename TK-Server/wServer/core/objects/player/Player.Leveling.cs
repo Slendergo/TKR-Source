@@ -13,7 +13,6 @@ namespace wServer.core.objects
         public Entity CrystalQuest { get; private set; }
         public Entity Quest { get; private set; }
         public Entity SpookyQuest { get; private set; }
-        public Entity JuliusQuest { get; private set; }
 
         public static int GetExpGoal(int level) => 50 + (level - 1) * 100;
 
@@ -133,7 +132,7 @@ namespace wServer.core.objects
             if (this == null || Owner == null || Owner.SpecialEnemies == null || time.TickCount % 500 != 0)
                 return;
 
-            if (force || SpookyQuest == null || AvatarQuest == null || CrystalQuest == null || JuliusQuest == null)
+            if (force || SpookyQuest == null || AvatarQuest == null || CrystalQuest == null)
             {
                 var newSpooky = FindSpecialEnemy("Spectral Sentry");
                 if (newSpooky != null && newSpooky != SpookyQuest)
@@ -147,9 +146,6 @@ namespace wServer.core.objects
                 if (newCrystal != null && newCrystal != CrystalQuest)
                     CrystalQuest = newCrystal;
 
-                var newJulius = FindSpecialEnemy("Julius Caesar");
-                if (newJulius != null && newJulius != JuliusQuest)
-                    JuliusQuest = newJulius;
             }
         }
 

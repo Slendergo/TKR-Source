@@ -51,7 +51,7 @@
     <Activate amount="50" range="1">HealNova</Activate>
     <DisplayId>Heart of the Sea</DisplayId>
   </Object>
-  <Object type="0x50e0" id="Queen’s Scale">
+  <Object type="0x50e0" id="Queen's Scale">
     <Class>Equipment</Class>
     <Item />
     <Mutilate />

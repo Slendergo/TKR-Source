@@ -175,6 +175,7 @@ namespace wServer.logic
                     ),
                 new State("Whoa_nelly",
                     new Prioritize(
+                        new HpLessTransition(0.1, "dead"),
                         new StayCloseToSpawn(0.6, range: 7),
                         new Wander(0.6)
                         ),
@@ -224,6 +225,12 @@ namespace wServer.logic
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new Flash(0xff00ff00, 0.2, 15),
                     new TimedTransition(3000, "Daisy_attack")
+                    ),
+                new State("dead",
+                    new TimedTransition(2000, "suicide")
+                    ),
+                 new State("suicide",
+                    new Suicide()
                     )
                 ),
             new Threshold(0.015,

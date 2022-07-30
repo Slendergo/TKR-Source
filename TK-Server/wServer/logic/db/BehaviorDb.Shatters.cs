@@ -100,11 +100,11 @@ namespace wServer.logic
                 new StayBack(0.5, 5),
                 new State("1st",
                     new Follow(0.8, range: 7),
-                    new Shoot(20, projectileIndex: 2, count: 1, coolDown: 350),
+                    new Shoot(12, projectileIndex: 2, count: 1, coolDown: 350),
                     new TimedTransition(5000, "next")
                     ),
                 new State("next",
-                    new Shoot(35, projectileIndex: 0, count: 25, coolDown: 5000),
+                    new Shoot(12, projectileIndex: 0, count: 25, coolDown: 5000),
                     new TimedTransition(25, "1st")
                     )
                 )
@@ -1654,6 +1654,7 @@ namespace wServer.logic
         .Init("shtrs The Forgotten King",
             new State(
                 new ScaleHP2(20),
+                new RealmPortalDrop(),
                 new HpLessTransition(0.1, "Death"),
                 new State("Idle",
                     new ConditionalEffect(ConditionEffectIndex.Invincible),
@@ -2711,11 +2712,11 @@ namespace wServer.logic
                     new ConditionalEffect(ConditionEffectIndex.Invincible)
                     ),
                 new State("Spawn",
-                    new Spawn("shtrs Lava Souls", maxChildren: 1, coolDown: 8000),
+                    new Spawn("shtrs Lava Souls", maxChildren: 1, coolDown: 1500),
                     new TimedTransition(8000, "Spawn2")
                     ),
                 new State("Spawn2",
-                    new Spawn("shtrs Lava Souls", maxChildren: 1, coolDown: 8000),
+                    new Spawn("shtrs Lava Souls", maxChildren: 1, coolDown: 1000),
                     new TimedTransition(8000, "Spawn")
                     )
                 )

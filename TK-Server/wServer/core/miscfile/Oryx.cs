@@ -40,6 +40,16 @@ namespace wServer.core
                 },
                 NameOfDeath = "Fire Elemental"
             }),
+            Tuple.Create("Julius Caesar", new TauntData()
+            {
+                Spawn = new string[] {
+                    ""
+                },
+                Killed = new string[] {
+                    ""
+                },
+                NameOfDeath = "Julius Caesar"
+            }),
             Tuple.Create("Wind Elemental", new TauntData()
             {
                 Spawn = new string[] {

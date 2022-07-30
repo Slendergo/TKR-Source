@@ -1509,7 +1509,7 @@ namespace wServer.logic
                         ),
                     new State("stars after pillarss",
                         new Taunt("BURN!!"),
-                        new HpLessTransition(.05, "Die"),
+                        new HpLessTransition(0.1, "Die"),
                         new SetAltTexture(0),
                         new Shoot(20, 3, 10, 0, 160),
                         new Shoot(20, 4, 10, 0, 180, coolDownOffset: 200),

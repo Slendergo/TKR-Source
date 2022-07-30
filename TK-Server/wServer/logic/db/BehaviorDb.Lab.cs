@@ -24,7 +24,7 @@ namespace wServer.logic
                     new Order(100, "Red Gas Spawner LR", "OFF"),
                     new Wander(0.5),
                     new SetAltTexture(0),
-                    new TossObject("Green Potion", coolDown: 1500, coolDownOffset: 0),
+                    new TossObject("Green Potion", coolDown: 2000, coolDownOffset: 0),
                     new TimedTransition(12000, "rage TA")
                     ),
                 new State("rage TA",
@@ -36,7 +36,7 @@ namespace wServer.logic
                     new Order(100, "Red Gas Spawner LR", "OFF"),
                     new Wander(0.5),
                     new SetAltTexture(0),
-                    new TossObject("Turret Attack", coolDown: 1500, coolDownOffset: 0),
+                    new TossObject("Turret Attack", coolDown: 2000, coolDownOffset: 0),
                     new TimedTransition(10000, "rage")
                     ),
                 new State("GP",
@@ -384,10 +384,10 @@ namespace wServer.logic
         .Init("Green Potion",
             new State(
                 new State("Idle",
-                    new TimedTransition(2000, "explode")
+                    new TimedTransition(1800, "explode")
                     ),
                 new State("explode",
-                    new Shoot(10, count: 6, projectileIndex: 0, fixedAngle: 22.5f),
+                    new Shoot(10, count: 12, projectileIndex: 0, fixedAngle: 22.5f),
                     new Suicide()
                     )
                 )

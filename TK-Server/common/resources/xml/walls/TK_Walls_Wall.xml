@@ -887,15 +887,38 @@
     </Top>
     <HitSound>monster/stone_walls_hit</HitSound>
     <DeathSound>monster/stone_walls_death</DeathSound>
-    <MaxHitPoints>100</MaxHitPoints>
-    <Static />
-    <FullOccupy />
-    <OccupySquare />
-    <EnemyOccupySquare />
-    <Enemy />
-    <XpMult>0.0</XpMult>
-    <BlocksSight />
+	  <MaxHitPoints>50</MaxHitPoints>
+	  <Static />
+	  <FullOccupy />
+	  <OccupySquare />
+	  <EnemyOccupySquare />
+	  <Enemy />
+	  <XpMult>0.0</XpMult>
+	  <BlocksSight />
   </Object>
+	<Object type="0x9901" id="Destructible Brown Wall 1">
+		<Class>Wall</Class>
+		<Texture>
+			<File>lofiEnvironment</File>
+			<Index>0x13</Index>
+		</Texture>
+		<Top>
+			<Texture>
+				<File>lofiEnvironment</File>
+				<Index>0x16</Index>
+			</Texture>
+		</Top>
+		<HitSound>monster/stone_walls_hit</HitSound>
+		<DeathSound>monster/stone_walls_death</DeathSound>
+		<MaxHitPoints>2500</MaxHitPoints>
+		<Static />
+		<FullOccupy />
+		<OccupySquare />
+		<EnemyOccupySquare />
+		<Enemy />
+		<XpMult>0.0</XpMult>
+		<BlocksSight />
+	</Object>
   <Object type="0x01c5" id="White Wall">
     <Class>Wall</Class>
     <Texture>

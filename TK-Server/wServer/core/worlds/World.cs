@@ -624,8 +624,6 @@ namespace wServer.core.worlds
 
                 foreach (var player in Players.Values)
                 {
-                    player.SendInfo($"[{DisplayName} ({Id})] [Tick] {time.ElaspedMsDelta}");
-                    
                     player.HandleIO();
                     player.DoUpdate(time);
                     player.HandlePendingActions(time);

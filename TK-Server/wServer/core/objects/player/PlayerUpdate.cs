@@ -264,47 +264,41 @@ namespace wServer.core.objects
 
         public void SendNewTick(int delta)
         {
-            NewTimeCooldown += delta;
-            if (NewTimeCooldown >= 200)
+            lock (StatsUpdateLock)
             {
-                lock (StatsUpdateLock)
+                TickId++;
+
+                var newTick = new NewTick()
                 {
-                    TickId++;
+                    TickId = TickId,
+                    TickTime = delta
+                };
 
-                    var newTick = new NewTick()
+                if (StatsUpdates.Count > 0)
+                {
+                    var statsUpdate = StatsUpdates.Where(ent => ent.Key != null && !ent.Key.IsRemovedFromWorld).ToArray();
+
+                    for (var i = 0; i < statsUpdate.Length; i++)
                     {
-                        TickId = TickId,
-                        TickTime = NewTimeCooldown
-                    };
-
-                    if (StatsUpdates.Count > 0)
-                    {
-                        var statsUpdate = StatsUpdates.Where(ent => ent.Key != null && !ent.Key.IsRemovedFromWorld).ToArray();
-
-                        for (var i = 0; i < statsUpdate.Length; i++)
+                        var entity = statsUpdate[i].Key;
+                        var statUpdate = statsUpdate[i].Value;
+                        var objStats = new ObjectStats()
                         {
-                            var entity = statsUpdate[i].Key;
-                            var statUpdate = statsUpdate[i].Value;
-                            var objStats = new ObjectStats()
+                            Id = entity.Id,
+                            Position = new Position()
                             {
-                                Id = entity.Id,
-                                Position = new Position()
-                                {
-                                    X = entity.RealX,
-                                    Y = entity.RealY
-                                },
-                                Stats = statUpdate.ToArray()
-                            };
+                                X = entity.RealX,
+                                Y = entity.RealY
+                            },
+                            Stats = statUpdate.ToArray()
+                        };
 
-                            newTick.Statuses.Add(objStats);
-                        }
+                        newTick.Statuses.Add(objStats);
                     }
-
-                    Player.Client.SendPacket(newTick, PacketPriority.High);
-                    Player.AwaitMove(TickId);
-
-                    NewTimeCooldown = 0;
                 }
+
+                Player.Client.SendPacket(newTick, PacketPriority.High);
+                Player.AwaitMove(TickId);
             }
         }
 

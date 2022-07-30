@@ -53,7 +53,7 @@
 	<World id="Undead Lair">
 		<Width>256</Width>
 		<Height>256</Height>
-		<MapJM>undead_lair.jm</MapJM>
+		<MapJM>undead_lair1.jm</MapJM>
 		<Dungeon/>
 	</World>
 	<World id="Snake Pit">

@@ -174,8 +174,8 @@ namespace wServer.logic
                     new TimedTransition(5000, "Whoa_nelly")
                     ),
                 new State("Whoa_nelly",
+                    new HpLessTransition(0.1, "dead"),
                     new Prioritize(
-                        new HpLessTransition(0.1, "dead"),
                         new StayCloseToSpawn(0.6, range: 7),
                         new Wander(0.6)
                         ),

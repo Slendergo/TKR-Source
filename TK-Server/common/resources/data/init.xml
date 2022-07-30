@@ -1,5 +1,5 @@
 ﻿<AppSettings>
-    <MenuMusic>test</MenuMusic>
+    <MenuMusic>menumusic</MenuMusic>
     <DeadMusic></DeadMusic>
   <NewAccounts>
     <MaxCharSlot>1</MaxCharSlot>

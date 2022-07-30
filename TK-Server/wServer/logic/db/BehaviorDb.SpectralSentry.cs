@@ -9,8 +9,7 @@ namespace wServer.logic
     {
         private _ SpectralSentry = () => Behav()
         .Init("Spectral Sentry",
-            new State(
-                new HpLessTransition(0.1, "dead"),
+            new State(             
                 new DropPortalOnDeath("Lost Halls Portal", 1, 120),
                 new ScaleHP2(20),
                 new ConditionalEffect(ConditionEffectIndex.DazedImmune),
@@ -35,8 +34,7 @@ namespace wServer.logic
                     new Shoot(radius: 20, count: 15, shootAngle: 30, projectileIndex: 1, coolDownOffset: 1000, coolDown: 1000000),
                     new TimedTransition(1100, "Attack 3")
                     ),
-                new State("Attack 3",
-                    new HpLessTransition(0.1, "dead"),
+                new State("Attack 3",                   
                     new RemoveConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new Shoot(radius: 15, count: 5, shootAngle: 35, projectileIndex: 2, predictive: 1, coolDownOffset: 300, coolDown: 500),
                     new Shoot(radius: 15, count: 5, shootAngle: 35, projectileIndex: 2, predictive: 1, coolDownOffset: 400, coolDown: 500),
@@ -47,12 +45,6 @@ namespace wServer.logic
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
                     new Flash(0xFF0000, 0.1, 5),
                     new TimedTransition(4000, "Attack")
-                    ),
-                new State("dead",
-                    new TimedTransition(2000, "suicide")
-                    ),
-                 new State("suicide",
-                    new Suicide()
                     )
                 ),
             new Threshold(0.001,

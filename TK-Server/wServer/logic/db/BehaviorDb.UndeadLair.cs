@@ -17,6 +17,7 @@ namespace wServer.logic
                     new PlayerWithinTransition(15, "Start", false)
                     ),
                 new State("Start",
+                    new InvisiToss("invisible Spawner", 8, 90, coolDown: 9999999),
                     new Taunt("Hello Warrior, What are you looking for?"),
                     new Flash(0x00FF00, 1, 3),
                     new TimedTransition(3000, "Start Shooting")
@@ -105,6 +106,16 @@ namespace wServer.logic
                 new ItemLoot("Undead Lair Key", 0.1, 0, 0.03),
 
                 new ItemLoot("Magic Dust", 0.5)
+                )
+            )
+        .Init("invisible Spawner",
+            new State(
+                new State("idle",
+                    new EntityNotExistsTransition("Septavius the Ghost God", 30, "drop portal")
+                    ),
+                new State("drop portal",
+                    new RealmPortalDrop()
+                    )
                 )
             )
         .Init("Ghost Mage of Septavius",

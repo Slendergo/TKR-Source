@@ -335,7 +335,7 @@
     <Static />
     <DrawOnGround />
   </Object>
-  <Object type="0x1945" id="Iinvisible NoWalk">
+  <Object type="0x1945" id="invisible Spawner">
     <Class>GameObject</Class>
     <Texture>
       <File>invisible</File>
@@ -343,10 +343,8 @@
     </Texture>
     <Static />
     <EnemyOccupySquare />
-    <OccupySquare />
-    <FullOccupy />
     <Size>0</Size>
-    <ShadowSize>80</ShadowSize>
+    <ShadowSize>1</ShadowSize>
     <NoMiniMap />
   </Object>
   <Object type="0xab55" id="Lantern Flicker">

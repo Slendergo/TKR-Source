@@ -792,7 +792,7 @@ namespace wServer.logic
                 new ItemLoot("Soul of Speed", 1)
                 ),
             new Threshold(0.03,
-                new ItemLoot("Queen’s Scale", 0.0014),
+                new ItemLoot("Queen's Scale", 0.0014),
                 new ItemLoot("Soul of Speed", 0.1),
                 new ItemLoot("Snake Bane Quiver", 0.0014)
                 ),

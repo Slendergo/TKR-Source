@@ -61,7 +61,7 @@ namespace wServer.logic
                     )
                 ),
             new Threshold(0.03,
-                new ItemLoot("Queen’s Scale", 0.0014)
+                new ItemLoot("Queen's Scale", 0.0014)
                 ),
             new Threshold(0.01,
                 new ItemLoot("Potion of Speed", 1),

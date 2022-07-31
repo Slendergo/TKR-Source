@@ -4,6 +4,7 @@ using common.database;
 using wServer.core.objects;
 using wServer.core.worlds;
 using wServer.networking;
+using wServer.core.worlds.logic;
 
 namespace wServer.core.commands
 {
@@ -18,7 +19,7 @@ namespace wServer.core.commands
             protected override bool Process(Player player, TickTime time, string args)
             {
 
-                if ((player.World.Id == World.Vault || player.World.IdName.Contains("Vault")) || player.World.Id == World.Nexus || player.World.IdName.Contains("Nexus"))
+                if ((player.World is VaultWorld || player.World.IdName.Contains("Vault")) || player.World.Id == World.Nexus || player.World.IdName.Contains("Nexus"))
                 {
                     player.Client.Character.Reload("node1TickMin");
                     player.Client.Character.Reload("node1TickMaj");

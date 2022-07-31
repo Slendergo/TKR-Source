@@ -25,15 +25,15 @@ namespace wServer.networking.handlers
             if (player == null || player.World == null || player.tradeTarget != null || player.Client == null)
                 return;
 
-            if (player.Stars < 2 && player.Rank < 10)
-            {
-                if (!(player.World is VaultWorld))
-                {
-                    player.SendHelp("To use this feature you need 2 stars or D-1 rank.");
-                    player.Client.SendPacket(new InvResult() { Result = 1 });
-                    return;
-                }
-            }
+            //if (player.Stars < 2 && player.Rank < 10)
+            //{
+            //    if (!(player.World is VaultWorld))
+            //    {
+            //        player.SendHelp("To use this feature you need 2 stars or D-1 rank.");
+            //        player.Client.SendPacket(new InvResult() { Result = 1 });
+            //        return;
+            //    }
+            //}
 
             if (player.World is MarketplaceWorld)
             {

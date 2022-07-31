@@ -13,12 +13,12 @@ namespace wServer.networking.handlers
         {
             if (client.Player == null || IsTest(client)) return;
 
-            if (client.Player.Stars < 2 && client.Player.Rank < 10)
-            {
-                client.Player.SendHelp("To use this feature you need 2 stars or D-1 rank.");
+            //if (client.Player.Stars < 2 && client.Player.Rank < 10)
+            //{
+            //    client.Player.SendHelp("To use this feature you need 2 stars or D-1 rank.");
 
-                return;
-            }
+            //    return;
+            //}
 
             client.Player.RequestTrade(packet.Name);
         }

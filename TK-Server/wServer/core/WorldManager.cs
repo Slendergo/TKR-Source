@@ -21,6 +21,7 @@ namespace wServer.core
         public List<TickThreadSingle> RealmThreads { get; private set; }
 
         public NexusWorld Nexus => (Worlds[-2] as NexusWorld);
+        public TestWorld Test => (Worlds[-6] as TestWorld);
 
         private readonly Dictionary<int, World> Worlds = new Dictionary<int, World>();
         private readonly Dictionary<int, VaultWorld> Vaults = new Dictionary<int, VaultWorld>();
@@ -51,6 +52,7 @@ namespace wServer.core
         public void Initialize()
         {
             var nexus = CreateNewWorld("Nexus", -2, null);
+            CreateNewTest();
             NexusThread.Attach(nexus);
 
             // todo async creation system
@@ -88,7 +90,7 @@ namespace wServer.core
             var worldResource = CoreServerManager.Resources.GameData.GetWorld(dungeonName);
             if (worldResource == null)
                 return null;
-            
+
             var nextId = id ?? Interlocked.Increment(ref NextWorldId);
 
             World world;
@@ -102,7 +104,7 @@ namespace wServer.core
                     break;
                 default:
                     world = new World(nextId, worldResource);
-                    break; 
+                    break;
             }
 
             world.Manager = CoreServerManager; // todo add to ctor
@@ -113,6 +115,25 @@ namespace wServer.core
             Worlds.Add(world.Id, world);
             parent?.WorldBranch.AddBranch(world);
             return world;
+        }
+
+        public void CreateNewTest()
+        {
+            Console.WriteLine($"CreateNewTest");
+
+            var worldResource = CoreServerManager.Resources.GameData.GetWorld("Testing");
+            if (worldResource == null)
+            {
+                Console.WriteLine("Testing couldnt be made");
+                return;
+            }
+            var world = new TestWorld(-6, worldResource);
+
+            world.Manager = CoreServerManager; // todo add to ctor
+            
+            world.Init();
+            Worlds[world.Id] = world;
+            Nexus.WorldBranch.AddBranch(world);
         }
 
         public void AddVaultInstance(int accountId, VaultWorld world)

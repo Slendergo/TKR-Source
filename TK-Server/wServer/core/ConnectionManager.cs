@@ -151,12 +151,6 @@ namespace wServer.core
 
             var world = client.CoreServerManager.WorldManager.GetWorld(gameId);
 
-            if (gameId == World.Test && acc.Admin)
-            {
-                //world = new Test();
-                //CoreServerManager.WorldManager.CreateNewWorld(world);
-            }
-
             if (world == null || world.Deleted)
             {
                 client.SendPacket(new Text()
@@ -169,14 +163,11 @@ namespace wServer.core
                 world = client.CoreServerManager.WorldManager.GetWorld(World.Nexus);
             }
 
-            if (world is TestWorld && !(world as TestWorld).JsonLoaded && !acc.Admin)
+            if (world is TestWorld && !acc.Admin)
             {
                 client.SendFailure("Only players with admin permissions can make test maps.", Failure.MessageWithDisconnect);
                 return;
             }
-
-            //if (world.Instance)
-            //    world = world.GetInstance(client);
 
             if (!world.AllowedAccess(client) && world.InstanceType != WorldResourceInstanceType.Guild)
             {
@@ -200,7 +191,7 @@ namespace wServer.core
                 }
             }
 
-            if (world is TestWorld && !(world as TestWorld).JsonLoaded)
+            if (world is TestWorld)
             {
                 var mapFolder = $"{CoreServerManager.ServerConfig.serverSettings.logFolder}/maps";
 
@@ -209,14 +200,14 @@ namespace wServer.core
 
                 System.IO.File.WriteAllText($"{mapFolder}/{acc.Name}_{DateTime.Now.Ticks}.jm", connectionInfo.MapInfo);
 
-                (world as TestWorld).LoadJson(connectionInfo.MapInfo);
-
-                var dreamName = client.Account.Name.ToLower().EndsWith("s") ? client.Account.Name + "' Dream World" : client.Account.Name + "'s Dream World";
-
-                world.DisplayName = dreamName;
-                world.IdName = dreamName;
-
-                //client.Manager.Monitor.AddPortal(world.Id);
+                try
+                {
+                    (world as TestWorld).LoadJson(connectionInfo.MapInfo);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
             }
 
             var seed = (uint)((long)Environment.TickCount * connectionInfo.GUID.GetHashCode()) % uint.MaxValue;

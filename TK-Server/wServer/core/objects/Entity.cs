@@ -268,7 +268,6 @@ namespace wServer.core.objects
             IsRemovedFromWorld = true;
 
             WhenDestroying(this);
-            World.DisposeEntity(this);
         }
 
         public ObjectStats ExportStats()

@@ -38,7 +38,6 @@ namespace wServer.core.worlds
 
         private static int _entityInc;
 
-        private object _deleteLock = new object();
         private long _elapsedTime;
         private CoreServerManager _manager;
         private int _totalConnects;
@@ -156,29 +155,6 @@ namespace wServer.core.worlds
             foreach (var en in StaticObjects)
                 en.Value.OnChatTextReceived(player, text);
         }
-
-        public bool Delete()
-        {
-            using (TimedLock.Lock(_deleteLock))
-            {
-                if (Players.Count > 0)
-                    return false;
-
-                Deleted = true;
-                Manager.WorldManager.RemoveWorld(this);
-
-                Players = null;
-                Enemies = null;
-                Projectiles = null;
-                StaticObjects = null;
-                Containers = null;
-                Pets = null;
-
-                return true;
-            }
-        }
-
-        public void DisposeEntity(Entity entity) => entity = null;
 
         public virtual int EnterWorld(Entity entity)
         {

@@ -1,4 +1,9 @@
 ﻿<Worlds>
+	<World id="Testing">
+		<Width>256</Width>
+		<Height>256</Height>
+		<Dungeon/>
+	</World>
 	<World id="Realm of the Mad God">
 		<Width>2048</Width>
 		<Height>2048</Height>
@@ -54,6 +59,10 @@
 		<Width>256</Width>
 		<Height>256</Height>
 		<MapJM>undead_lair/undead_lair1.jm</MapJM>
+		<MapJM>undead_lair/undead_lair2.jm</MapJM>
+		<MapJM>undead_lair/undead_lair3.jm</MapJM>
+		<MapJM>undead_lair/undead_lair4.jm</MapJM>
+		<MapJM>undead_lair/undead_lair5.jm</MapJM>
 		<Dungeon/>
 	</World>
 	<World id="Snake Pit">
@@ -252,6 +261,10 @@
 		<Width>256</Width>
 		<Height>256</Height>
 		<MapJM>sprite_world/sprite_world1.jm</MapJM>
+		<MapJM>sprite_world/sprite_world2.jm</MapJM>
+		<MapJM>sprite_world/sprite_world3.jm</MapJM>
+		<MapJM>sprite_world/sprite_world4.jm</MapJM>
+		<MapJM>sprite_world/sprite_world5.jm</MapJM>
 		<Dungeon/>
 	</World>
 	<World id="Strange Library">

@@ -169,26 +169,10 @@ namespace wServer.core
                 return;
             }
 
-            if (!world.AllowedAccess(client) && world.InstanceType != WorldResourceInstanceType.Guild)
+            if (!world.AllowedAccess(client))
             {
-                if (!world.Persist && world.TotalConnects <= 0)
-                    client.CoreServerManager.WorldManager.RemoveWorld(world);
-
-                client.SendPacket(new Text()
-                {
-                    BubbleTime = 0,
-                    NumStars = -1,
-                    Name = "*Error*",
-                    Txt = "Access denied"
-                });
-
-                if (!(world is NexusWorld))
-                    world = client.CoreServerManager.WorldManager.GetWorld(World.Nexus);
-                else
-                {
-                    client.Disconnect("world is Nexus");
-                    return;
-                }
+                client.SendFailure("Invalid Access Permissions [If you this this is a bug report it :)].", Failure.MessageWithDisconnect);
+                return;
             }
 
             if (world is TestWorld)

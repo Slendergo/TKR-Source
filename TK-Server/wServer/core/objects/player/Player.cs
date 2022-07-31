@@ -391,12 +391,6 @@ namespace wServer.core.objects
 
         public void AddPendingAction(Action<TickTime> action) => PendingActions.Enqueue(action);
 
-        public void CleanupPlayerUpdate()
-        {
-            PlayerUpdate.Dispose();
-            PlayerUpdate = null;
-        }
-
         public bool ApplyEffectCooldown(int slot)
         {
             if (slot == 0)

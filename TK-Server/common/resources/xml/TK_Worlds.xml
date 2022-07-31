@@ -184,7 +184,7 @@
 		<Width>256</Width>
 		<Height>256</Height>
 		<MapJM>marketplace.jm</MapJM>
-		<Persistant/>
+		<Persists/>
 	</World>
 	<World id="Pirate Cave">
 		<Width>256</Width>

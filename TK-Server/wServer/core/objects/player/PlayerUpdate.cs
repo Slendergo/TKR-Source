@@ -397,15 +397,5 @@ namespace wServer.core.objects
                 }
             }
         }
-
-        // clean up any events to prevent leak (basically doing -= for all)
-        public void Dispose()
-        {
-            SeenTiles = null;
-            ActiveTiles.Clear();
-            NewStaticObjects.Clear();
-            StatsUpdates.Clear();
-            NewObjects.Dispose();
-        }
     }
 }

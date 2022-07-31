@@ -1,4 +1,5 @@
 ﻿using common.isc.data;
+using System.Linq;
 using System.Text;
 using wServer.core.objects;
 
@@ -15,11 +16,7 @@ namespace wServer.core.commands
             {
                 var playerSvr = player.CoreServerManager.ServerConfig.serverInfo.name;
                 var servers = Program.CoreServerManager.InterServerManager.GetServerList();
-                var sb = new StringBuilder($"Players Online in {playerSvr} : ");
-                foreach (var server in servers)
-                    if (server.name == playerSvr)
-                        foreach (PlayerInfo plr in server.playerList)
-                            sb.Append($"\n {plr.Name}; World Name: {plr.WorldName}; World Instance: {plr.WorldInstance}");
+                var sb = new StringBuilder($"There are: {servers.Sum(_ => _.players)} Online Across: {string.Join(", ", servers.Select(_ => _.name))}: ");
                 player.SendInfo(sb.ToString());
                 return true;
             }

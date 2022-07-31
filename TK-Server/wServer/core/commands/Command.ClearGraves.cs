@@ -4,6 +4,19 @@ namespace wServer.core.commands
 {
     public abstract partial class Command
     {
+        internal class DeltaTimeCommand : Command
+        {
+            public DeltaTimeCommand() : base("deltatime")
+            {
+            }
+
+            protected override bool Process(Player player, TickTime time, string args)
+            {
+                player.SendInfo($"[DeltaTime]: {player.World.DisplayName} {time.ElaspedMsDelta}");
+                return true;
+            }
+        }
+
         internal class ClearGraves : Command
         {
             public ClearGraves() : base("cleargraves", permLevel: 90, alias: "cgraves")

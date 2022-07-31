@@ -474,9 +474,11 @@ namespace wServer.core.worlds
             InitMap();
         }
 
+
+        private Random Random = new Random();
         public bool LoadMapFromData(WorldResource worldResource)
         {
-            var data = Manager.Resources.GameData.GetWorldData(worldResource.MapJM);
+            var data = Manager.Resources.GameData.GetWorldData(worldResource.MapJM[Random.Next(0, worldResource.MapJM.Count)]);
             if (data == null)
                 return false;
             FromWorldMap(new MemoryStream(data));

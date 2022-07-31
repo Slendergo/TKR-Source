@@ -24,7 +24,7 @@ namespace common.resources
         public readonly byte Difficulty;
         public readonly byte Background;
         public readonly byte VisibilityType;
-        public readonly string MapJM;
+        public readonly List<string> MapJM;
         public readonly List<string> Music;
 
         public WorldResource(XElement elem)
@@ -39,9 +39,12 @@ namespace common.resources
             Difficulty = elem.GetValue<byte>("Difficulty");
             Background = elem.GetValue<byte>("Background");
             VisibilityType = elem.GetValue<byte>("VisibilityType");
-            MapJM = elem.GetValue<string>("MapJM");
-            Music = new List<string>();
 
+            MapJM = new List<string>();
+            foreach (var map in elem.Elements("MapJM"))
+                MapJM.Add(map.Value);
+            
+            Music = new List<string>();
             var musicElem = elem.Element("Music");
             if(musicElem != null)
                 foreach (var music in musicElem.Elements("Track"))

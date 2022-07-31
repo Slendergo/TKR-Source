@@ -73,7 +73,9 @@ namespace wServer.networking.handlers
             var world = portal.WorldInstance;
             if (world == null && _realmPortals.Contains(portal.ObjectType))
             {
-                System.Console.WriteLine("OH NO no implementation for this feature: cowardice stuff");
+                //var world = player.CoreServerManager.WorldManager.GetWorld(player.Client.TargetWorld);
+
+                //System.Console.WriteLine("OH NO no implementation for this feature: cowardice stuff");
                 // get last world the player was a part of 
                 //world = player.CoreServerManager.WorldManager.GetRandomGameWorld();
                 //if (world == null)

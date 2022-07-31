@@ -15,7 +15,7 @@ namespace wServer.core.setpieces
             SetPiece(new KageKami(), 4, 5, TerrainType.HighForest, TerrainType.HighPlains),
             SetPiece(new Building(), 80, 100, TerrainType.LowForest, TerrainType.LowPlains, TerrainType.MidForest),
             SetPiece(new Graveyard(), 5, 10, TerrainType.LowSand, TerrainType.LowPlains),
-            SetPiece(new Castle(), 4, 7, TerrainType.HighForest, TerrainType.HighPlains),
+            //SetPiece(new Castle(), 4, 7, TerrainType.HighForest, TerrainType.HighPlains),
             SetPiece(new TempleA(), 10, 20, TerrainType.MidForest, TerrainType.MidPlains),
             SetPiece(new TempleB(), 10, 20, TerrainType.MidForest, TerrainType.MidPlains),
             SetPiece(new Avatar(), 1, 1, TerrainType.Mountains),

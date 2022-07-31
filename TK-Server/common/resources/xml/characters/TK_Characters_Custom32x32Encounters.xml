@@ -718,6 +718,7 @@
 		<StunImmune/>
 		<ArmorBreakImmune/>
 		<SlowedImmune/>
+		<Level>20</Level>
 		<MaxHitPoints>50000</MaxHitPoints>
 		<Defense>300</Defense>
 		<Projectile id="0">

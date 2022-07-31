@@ -145,8 +145,8 @@
       <Index>28</Index>
     </AnimatedTexture>
     <Size>150</Size>
-    <MaxHitPoints>200000</MaxHitPoints>
-    <Defense>50</Defense>
+    <MaxHitPoints>175000</MaxHitPoints>
+    <Defense>25</Defense>
     <XpMult>2</XpMult>
     <AltTexture id="1">
       <AnimatedTexture>
@@ -178,7 +178,7 @@
     <DazedImmune />
     <Projectile id="0">
       <ObjectId>Colossal Dark Boomerang</ObjectId>
-      <Damage>200</Damage>
+      <Damage>175</Damage>
       <Speed>80</Speed>
       <LifetimeMS>3000</LifetimeMS>
       <ConditionEffect duration="2">Stunned</ConditionEffect>
@@ -186,7 +186,7 @@
     </Projectile>
     <Projectile id="1">
       <ObjectId>Colossal Slash</ObjectId>
-      <Damage>100</Damage>
+      <Damage>80</Damage>
       <Speed>90</Speed>
       <LifetimeMS>1200</LifetimeMS>
       <ArmorPiercing />
@@ -194,7 +194,7 @@
     </Projectile>
     <Projectile id="2">
       <ObjectId>Colossal Light Boomerang</ObjectId>
-      <Damage>150</Damage>
+      <Damage>125</Damage>
       <Speed>60</Speed>
       <LifetimeMS>1500</LifetimeMS>
       <ConditionEffect duration="2.5">Slowed</ConditionEffect>
@@ -202,7 +202,7 @@
     </Projectile>
     <Projectile id="3">
       <ObjectId>Colossal Bullet</ObjectId>
-      <Damage>300</Damage>
+      <Damage>200</Damage>
       <Speed>30</Speed>
       <Size>100</Size>
       <LifetimeMS>6200</LifetimeMS>
@@ -210,7 +210,7 @@
     </Projectile>
     <Projectile id="4">
       <ObjectId>Colossal Blast</ObjectId>
-      <Damage>115</Damage>
+      <Damage>90</Damage>
       <Speed>75</Speed>
       <LifetimeMS>3250</LifetimeMS>
       <MultiHit />
@@ -218,14 +218,14 @@
     </Projectile>
     <Projectile id="5">
       <ObjectId>Colossal Spear</ObjectId>
-      <Damage>250</Damage>
+      <Damage>125</Damage>
       <Speed>75</Speed>
       <LifetimeMS>2200</LifetimeMS>
       <ConditionEffect duration="3">Unstable</ConditionEffect>
     </Projectile>
     <Projectile id="6">
       <ObjectId>Colossal Star</ObjectId>
-      <Damage>100</Damage>
+      <Damage>80</Damage>
       <Speed>80</Speed>
       <LifetimeMS>8000</LifetimeMS>
       <Magnitude>6</Magnitude>
@@ -234,19 +234,19 @@
     </Projectile>
     <Projectile id="7">
       <ObjectId>Colossal Wheel</ObjectId>
-      <Damage>180</Damage>
+      <Damage>140</Damage>
       <Speed>50</Speed>
       <LifetimeMS>4000</LifetimeMS>
     </Projectile>
     <Projectile id="8">
       <ObjectId>Colossal Wheel</ObjectId>
-      <Damage>180</Damage>
+      <Damage>140</Damage>
       <Speed>80</Speed>
       <LifetimeMS>2500</LifetimeMS>
     </Projectile>
     <Projectile id="9">
       <ObjectId>Colossal Rock</ObjectId>
-      <Damage>100</Damage>
+      <Damage>80</Damage>
       <Speed>100</Speed>
       <LifetimeMS>2500</LifetimeMS>
       <MultiHit />
@@ -256,7 +256,7 @@
     </Projectile>
     <Projectile id="10">
       <ObjectId>Colossal Rock</ObjectId>
-      <Damage>100</Damage>
+      <Damage>80</Damage>
       <Speed>50</Speed>
       <LifetimeMS>5000</LifetimeMS>
       <MultiHit />
@@ -266,28 +266,28 @@
     </Projectile>
     <Projectile id="11">
       <ObjectId>Colossal Ball</ObjectId>
-      <Damage>130</Damage>
+      <Damage>100</Damage>
       <Speed>20</Speed>
       <LifetimeMS>8000</LifetimeMS>
       <ConditionEffect duration="1.2">Paralyzed</ConditionEffect>
     </Projectile>
     <Projectile id="12">
       <ObjectId>Colossal Spear</ObjectId>
-      <Damage>170</Damage>
+      <Damage>150</Damage>
       <Speed>60</Speed>
       <LifetimeMS>2300</LifetimeMS>
       <ConditionEffect duration="3">Unstable</ConditionEffect>
     </Projectile>
     <Projectile id="13">
       <ObjectId>Colossal Spear</ObjectId>
-      <Damage>170</Damage>
+      <Damage>140</Damage>
       <Speed>90</Speed>
       <LifetimeMS>2000</LifetimeMS>
       <ConditionEffect duration="3">Unstable</ConditionEffect>
     </Projectile>
     <Projectile id="14">
       <ObjectId>Colossal Spinner</ObjectId>
-      <Damage>150</Damage>
+      <Damage>120</Damage>
       <Speed>50</Speed>
       <LifetimeMS>5000</LifetimeMS>
       <Amplitude>0.25</Amplitude>
@@ -299,7 +299,7 @@
     <Projectile id="15">
       <ObjectId>Colossal Spear</ObjectId>
       <Speed>25</Speed>
-      <Damage>125</Damage>
+      <Damage>105</Damage>
       <Size>80</Size>
       <LifetimeMS>10000</LifetimeMS>
       <MultiHit />
@@ -308,7 +308,7 @@
     </Projectile>
     <Projectile id="16">
       <ObjectId>Void Bullet</ObjectId>
-      <Damage>200</Damage>
+      <Damage>160</Damage>
       <Speed>25</Speed>
       <Size>100</Size>
       <LifetimeMS>5000</LifetimeMS>
@@ -317,7 +317,7 @@
     </Projectile>
     <Projectile id="17">
       <ObjectId>Colossal Spike</ObjectId>
-      <Damage>200</Damage>
+      <Damage>150</Damage>
       <Speed>30</Speed>
       <LifetimeMS>5000</LifetimeMS>
       <Size>100</Size>
@@ -325,7 +325,7 @@
     </Projectile>
     <Projectile id="18">
       <ObjectId>Colossal Spike</ObjectId>
-      <Damage>200</Damage>
+      <Damage>150</Damage>
       <Speed>30</Speed>
       <LifetimeMS>5000</LifetimeMS>
       <Size>100</Size>

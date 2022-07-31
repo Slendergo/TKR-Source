@@ -126,6 +126,8 @@ namespace wServer.core.objects
             for (var i = 0; i < newObjs.Length; i++)
             {
                 var entity = newObjs[i];
+                if (entity == Player.Quest && !entity.IsRemovedFromWorld)
+                    continue;
 
                 if (entity.IsRemovedFromWorld)
                 {
@@ -134,8 +136,7 @@ namespace wServer.core.objects
                     continue;
                 }
 
-                if (entity is Player || entity == Player.Quest || entity == Player.SpookyQuest || entity == Player.AvatarQuest || entity == Player.CrystalQuest
-                    || ActiveTiles.Contains(new IntPoint((int)entity.X, (int)entity.Y)))
+                if (entity is Player || ActiveTiles.Contains(new IntPoint((int)entity.X, (int)entity.Y)))
                     continue;
 
                 drops.Add(entity.Id);
@@ -203,15 +204,6 @@ namespace wServer.core.objects
 
             if (Player.Quest != null && NewObjects.Add(Player.Quest))
                 update.NewObjs.Add(Player.Quest.ToDefinition());
-
-            if (Player.SpookyQuest != null && NewObjects.Add(Player.SpookyQuest))
-                update.NewObjs.Add(Player.SpookyQuest.ToDefinition());
-
-            if (Player.AvatarQuest != null && NewObjects.Add(Player.AvatarQuest))
-                update.NewObjs.Add(Player.AvatarQuest.ToDefinition());
-
-            if (Player.CrystalQuest != null && NewObjects.Add(Player.CrystalQuest))
-                update.NewObjs.Add(Player.CrystalQuest.ToDefinition());
         }
 
         public void GetNewTiles(Update update)

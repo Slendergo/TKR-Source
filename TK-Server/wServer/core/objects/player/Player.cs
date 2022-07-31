@@ -1093,8 +1093,8 @@ namespace wServer.core.objects
             }
 
             CheckTradeTimeout(time);
+            //HandleSpecialEnemies(time);
             HandleQuest(time);
-            HandleSpecialEnemies(time);
 
             if (!HasConditionEffect(ConditionEffects.Paused))
             {

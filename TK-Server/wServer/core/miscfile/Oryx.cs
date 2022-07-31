@@ -664,10 +664,10 @@ namespace wServer.core
             if (time.TotalElapsedMs - _prevTick <= 10000)
                 return;
 
-            if (_tenSecondTick % 20 == 0)
+            if (_tenSecondTick % 2 == 0)
                 HandleAnnouncements();
 
-            if (_tenSecondTick % 60 == 0)
+            if (_tenSecondTick % 6 == 0)
                 EnsurePopulation();
 
             _tenSecondTick++;

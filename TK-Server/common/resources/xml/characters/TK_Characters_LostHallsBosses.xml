@@ -7,14 +7,14 @@
     <Hero />
     <Quest />
     <God />
-    <Level>19</Level>
+    <Level>20</Level>
     <AnimatedTexture>
       <File>LostHallsBosses</File>
       <Index>1</Index>
     </AnimatedTexture>
     <DisplayId>Spectral Sentry</DisplayId>
     <Size>150</Size>
-    <MaxHitPoints>200000</MaxHitPoints>
+    <MaxHitPoints>150000</MaxHitPoints>
     <Defense>55</Defense>
     <XpMult>3</XpMult>
     <Terrain>Mountains</Terrain>

@@ -77,12 +77,12 @@ namespace wServer.core
 
             try
             {
-                    if (!_portals.ContainsKey(worldId))
-                        return;
+                if (!_portals.ContainsKey(worldId))
+                    return;
 
-                    var portal = _portals[worldId];
-                    if (!portal.Usable)
-                        _portals[worldId].Usable = true;
+                var portal = _portals[worldId];
+                if (!portal.Usable)
+                    _portals[worldId].Usable = true;
             }
             catch (Exception e)
             {

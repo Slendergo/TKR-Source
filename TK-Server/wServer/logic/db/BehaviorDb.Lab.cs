@@ -394,7 +394,7 @@ namespace wServer.logic
             )
         .Init("Red Gas Spawner UL",
             new State(
-                new EntityNotExistsTransition("Dr Terrible", 50, "OFF"),
+                new EntityNotExistsTransition("Dr Terrible", 75, "OFF"),
                 new State("OFF",
                     new ConditionalEffect(ConditionEffectIndex.Invincible)
                     ),
@@ -406,7 +406,7 @@ namespace wServer.logic
             )
         .Init("Red Gas Spawner UR",
             new State(
-                new EntityNotExistsTransition("Dr Terrible", 50, "OFF"),
+                new EntityNotExistsTransition("Dr Terrible", 75, "OFF"),
                 new State("OFF",
                     new ConditionalEffect(ConditionEffectIndex.Invincible)
                     ),
@@ -418,7 +418,7 @@ namespace wServer.logic
             )
         .Init("Red Gas Spawner LL",
             new State(
-                new EntityNotExistsTransition("Dr Terrible", 50, "OFF"),
+                new EntityNotExistsTransition("Dr Terrible", 75, "OFF"),
                 new State("OFF",
                     new ConditionalEffect(ConditionEffectIndex.Invincible)
                     ),
@@ -430,7 +430,7 @@ namespace wServer.logic
             )
         .Init("Red Gas Spawner LR",
             new State(
-                new EntityNotExistsTransition("Dr Terrible", 50, "OFF"),
+                new EntityNotExistsTransition("Dr Terrible", 75, "OFF"),
                 new State("OFF",
                     new ConditionalEffect(ConditionEffectIndex.Invincible)
                     ),
@@ -465,6 +465,7 @@ namespace wServer.logic
                     new EntitiesNotExistsTransition(300, "Death", "Dr Terrible")
                     ),
                 new State("Death",
+                    new DropPortalOnDeath("Realm Portal", probability: 1.0, timeout: null),
                     new Suicide()
                     )
                 )

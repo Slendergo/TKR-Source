@@ -9,10 +9,10 @@ namespace wServer.core.objects
 {
     public partial class Player
     {
-        public Entity AvatarQuest { get; private set; }
-        public Entity CrystalQuest { get; private set; }
+        //public Entity AvatarQuest { get; private set; }
+        //public Entity CrystalQuest { get; private set; }
         public Entity Quest { get; private set; }
-        public Entity SpookyQuest { get; private set; }
+        //public Entity SpookyQuest { get; private set; }
 
         public static int GetExpGoal(int level) => 50 + (level - 1) * 100;
 
@@ -123,31 +123,30 @@ namespace wServer.core.objects
             if (World is RealmWorld)
                 CheckForEncounter();
 
-            if (force || Quest == null || Quest.World == null || time.TickCount % 500 == 0)
+            if (force || Quest == null || Quest.World == null || time.TickCount % 50 == 0)
                 CheckForEncounter();
         }
 
-        public void HandleSpecialEnemies(TickTime time, bool force = false)
-        {
-            if (this == null || World == null || World.SpecialEnemies == null || time.TickCount % 500 != 0)
-                return;
+        //public void HandleSpecialEnemies(TickTime time, bool force = false)
+        //{
+        //    if (this == null || World == null || World.SpecialEnemies == null || time.TickCount % 500 != 0)
+        //        return;
 
-            if (force || SpookyQuest == null || AvatarQuest == null || CrystalQuest == null)
-            {
-                var newSpooky = FindSpecialEnemy("Spectral Sentry");
-                if (newSpooky != null && newSpooky != SpookyQuest)
-                    SpookyQuest = newSpooky;
+        //    if (force || SpookyQuest == null || AvatarQuest == null || CrystalQuest == null)
+        //    {
+        //        var newSpooky = FindSpecialEnemy("Spectral Sentry");
+        //        if (newSpooky != null && newSpooky != SpookyQuest)
+        //            SpookyQuest = newSpooky;
 
-                var newAvatar = FindSpecialEnemy("shtrs Defense System");
-                if (newAvatar != null && newAvatar != AvatarQuest)
-                    AvatarQuest = newAvatar;
+        //        var newAvatar = FindSpecialEnemy("shtrs Defense System");
+        //        if (newAvatar != null && newAvatar != AvatarQuest)
+        //            AvatarQuest = newAvatar;
 
-                var newCrystal = FindSpecialEnemy("Crystal Prisoner");
-                if (newCrystal != null && newCrystal != CrystalQuest)
-                    CrystalQuest = newCrystal;
-
-            }
-        }
+        //        var newCrystal = FindSpecialEnemy("Crystal Prisoner");
+        //        if (newCrystal != null && newCrystal != CrystalQuest)
+        //            CrystalQuest = newCrystal;
+        //    }
+        //}
 
         private bool CheckLevelUp()
         {

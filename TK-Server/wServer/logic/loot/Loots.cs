@@ -403,7 +403,7 @@ namespace wServer.logic.loot
 
                     #region Discord Bot Message
 
-                    if (player.Rank >= 10 && player.Rank <= 60)
+                    if (player.Rank <= 60)
                     {
                         var discord = core.ServerConfig.discordIntegration;
                         var players = world.Players.Count(p => p.Value.Client != null);

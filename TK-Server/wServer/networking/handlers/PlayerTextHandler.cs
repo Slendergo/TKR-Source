@@ -60,11 +60,11 @@ namespace wServer.networking.handlers
                 {
                     return;
                 }
-                if (player.Stars < 2 && player.Rank < 10)
-                {
-                    player.SendHelp("To use this feature you need 2 stars or D-1 rank.");
-                    return;
-                }
+                //if (player.Stars < 2 && player.Rank < 10)
+                //{
+                //    player.SendHelp("To use this feature you need 2 stars or D-1 rank.");
+                //    return;
+                //}
 
                 // save message for mob behaviors
                 player.World.ChatReceived(player, text);

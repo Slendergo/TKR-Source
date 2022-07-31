@@ -1406,11 +1406,11 @@ namespace wServer.core.commands
                 return false;
             }
 
-            if (player.Stars < 2 && player.Rank < 10)
-            {
-                player.SendHelp("To use this feature you need 2 stars or D-1 rank.");
-                return false;
-            }
+            //if (player.Stars < 2 && player.Rank < 10)
+            //{
+            //    player.SendHelp("To use this feature you need 2 stars or D-1 rank.");
+            //    return false;
+            //}
 
             int index = args.IndexOf(' ');
             if (index == -1)
@@ -1497,11 +1497,11 @@ namespace wServer.core.commands
                 return false;
             }
 
-            if (player.Stars < 2 && player.Rank < 10)
-            {
-                player.SendHelp("To use this feature you need 2 stars or D-1 rank.");
-                return false;
-            }
+            //if (player.Stars < 2 && player.Rank < 10)
+            //{
+            //    player.SendHelp("To use this feature you need 2 stars or D-1 rank.");
+            //    return false;
+            //}
 
             if (player.Rank >= 60)
             {

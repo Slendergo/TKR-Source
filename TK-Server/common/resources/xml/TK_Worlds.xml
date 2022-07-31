@@ -75,7 +75,7 @@
 	<World id="Hideout of Septavius">
 		<Width>256</Width>
 		<Height>256</Height>
-		<MapJM>undead_lair/undead_lair_epic.jm</MapJM>
+		<MapJM>undead_lair/undead_Lair_epic.jm</MapJM>
 		<Dungeon/>
 	</World>
 	<World id="Wine Cellar">
@@ -114,7 +114,7 @@
 		<MapJM>cave_of_eternal_frost.jm</MapJM>
 		<Dungeon/>
 	</World>
-	<World id="Candy Land Hunting Grounds">
+	<World id="Candyland Hunting Grounds">
 		<Width>256</Width>
 		<Height>256</Height>
 		<MapJM>candy_land_hunting_grounds.jm</MapJM>
@@ -124,12 +124,6 @@
 		<Width>256</Width>
 		<Height>256</Height>
 		<MapJM>cloth_bazaar.jm</MapJM>
-		<Dungeon/>
-	</World>
-	<World id="Ocean Trench">
-		<Width>256</Width>
-		<Height>256</Height>
-		<MapJM>ocean_trench.jm</MapJM>
 		<Dungeon/>
 	</World>
 	<World id="Oryx's Castle">
@@ -156,7 +150,7 @@
 		<MapJM>forbidden_jungle.jm</MapJM>
 		<Dungeon/>
 	</World>
-	<World id="Puppet Master Encore">
+	<World id="Puppet Master's Encore">
 		<Width>256</Width>
 		<Height>256</Height>
 		<MapJM>puppet_master_encore.jm</MapJM>
@@ -210,6 +204,12 @@
 		<MapJM>cave_of_thousand_treasures.jm</MapJM>
 		<Dungeon/>
 	</World>
+	<World id="Ocean Trench">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>ocean_trench.jm</MapJM>
+		<Dungeon/>
+	</World>
 	<World id="Deadwater Docks">
 		<Width>256</Width>
 		<Height>256</Height>
@@ -246,13 +246,13 @@
 		<MapJM>spider_den.jm</MapJM>
 		<Dungeon/>
 	</World>
-	<World id="The Crawling Depth">
+	<World id="The Crawling Depths">
 		<Width>256</Width>
 		<Height>256</Height>
 		<MapJM>the_crawling_depths.jm</MapJM>
 		<Dungeon/>
 	</World>
-	<World id="Stanley's Hideout">
+	<World id="Stanleys Hideout">
 		<Width>256</Width>
 		<Height>256</Height>
 		<MapJM>stanleys_hideout.jm</MapJM>

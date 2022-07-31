@@ -110,6 +110,7 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.007,
+                new ItemLoot("Crafting Material 2", 0.1),
                 new ItemLoot("Soul of Life", 1)
                 ),
             new Threshold(0.03,
@@ -216,6 +217,7 @@ namespace wServer.logic
                 new ItemLoot("Soul of Mana", 1)
                 ),
             new Threshold(0.03,
+                new ItemLoot("Crafting Material 2", 0.1),
                 new ItemLoot("Soul of Mana", 0.1),
                 new ItemLoot("Neptune’s Trident", 0.0014),
                 new ItemLoot("Heart of the Sea", 0.0014)
@@ -330,6 +332,7 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.005,
+                new ItemLoot("Crafting Material 2", 0.1),
                 new ItemLoot("Soul of Attack", 1)
                 ),
             new Threshold(0.03,
@@ -374,6 +377,7 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.03,
+                new ItemLoot("Crafting Material 2", 0.1),
                 new ItemLoot("Soul of Defense", 0.1),
                 new ItemLoot("Golden Coat", 0.0014)
                 ),
@@ -797,6 +801,7 @@ namespace wServer.logic
                 new ItemLoot("Snake Bane Quiver", 0.0014)
                 ),
             new Threshold(0.01,
+                new ItemLoot("Crafting Material 2", 0.1),
                 new ItemLoot("Hebikira", 0.01),
                 new ItemLoot("Snake Queen’s Hide", 0.01),
                 new ItemLoot("Star of Stheno", 0.01),
@@ -860,6 +865,7 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.03,
+                new ItemLoot("Crafting Material 2", 0.1),
                 new ItemLoot("Soul of Dexterity", 0.1),
                 new ItemLoot("Chromatic Extinction", 0.0014)
                 ),
@@ -1310,6 +1316,7 @@ namespace wServer.logic
                 new ItemLoot("Cadaverous Knife", 0.0014)
                 ),
             new Threshold(0.01,
+                new ItemLoot("Crafting Material 2", 0.1),
                 new ItemLoot("Abyssal Sword", 0.002),
                 new ItemLoot("Archdemon’s Remains", 0.002),
                 new ItemLoot("Seal of the Underworld", 0.002),
@@ -1450,6 +1457,7 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.01,
+                new ItemLoot("Crafting Material 2", 0.1),
                 new ItemLoot("Special Dust", 0.01),
                 new ItemLoot("Doom Bow", 0.026),
                 new ItemLoot("Edictum Praetoris", 0.02),

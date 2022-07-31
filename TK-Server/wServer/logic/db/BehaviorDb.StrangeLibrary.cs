@@ -320,6 +320,7 @@ namespace wServer.logic
                 //new ItemLoot("All-Knowing Bookworm", .0015, threshold: 0.05) //NO XML
                 ),
             new Threshold(0.01,
+                new ItemLoot("Crafting Material 1", 0.01),
                 new ItemLoot("Head of Calamity", 0.007),
                 new ItemLoot("Blood-Soaked Robe", 0.015),
                 new ItemLoot("The Dance of Fire", 0.01),

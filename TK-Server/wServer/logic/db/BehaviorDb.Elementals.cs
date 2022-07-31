@@ -16,7 +16,8 @@ namespace wServer.logic
                 new ScaleHP2(5),
                 new State("Start",
                     new Shoot(15, 4, projectileIndex: 0, coolDown: 1000, coolDownOffset: 1000),
-                    new Orbit(1, 6, 20, "Water Elemental", orbitClockwise: true),
+                    new Prioritize(
+                        new Orbit(1, 6, 20, "Water Elemental", orbitClockwise: true)),
                     new EntityNotExistsTransition("Water Elemental", 200, "Die")
                     ),
                 new State("Suicide",

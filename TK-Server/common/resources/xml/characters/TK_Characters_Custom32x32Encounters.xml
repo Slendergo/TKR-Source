@@ -144,7 +144,7 @@
       <ObjectId>Mushroom Shoot</ObjectId>
       <MinDamage>150</MinDamage>
       <MaxDamage>190</MaxDamage>
-      <Speed>150</Speed>
+      <Speed>110</Speed>
       <Size>145</Size>
       <LifetimeMS>2000</LifetimeMS>
       <MultiHit />
@@ -155,7 +155,7 @@
       <ObjectId>Mushroom Shoot 2</ObjectId>
       <MinDamage>140</MinDamage>
       <MaxDamage>170</MaxDamage>
-      <Speed>120</Speed>
+      <Speed>75</Speed>
       <Size>160</Size>
       <LifetimeMS>1900</LifetimeMS>
       <ConditionEffect duration="4">Sick</ConditionEffect>
@@ -163,7 +163,7 @@
     <Projectile id="2">
       <ObjectId>Mushroom Shoot Slow</ObjectId>
       <Damage>200</Damage>
-      <Speed>70</Speed>
+      <Speed>60</Speed>
       <Size>180</Size>
       <LifetimeMS>1900</LifetimeMS>
       <MultiHit/>
@@ -718,19 +718,19 @@
         <StunImmune/>
         <ArmorBreakImmune/>
         <SlowedImmune/>
-        <MaxHitPoints>1000000</MaxHitPoints>
+        <MaxHitPoints>100000</MaxHitPoints>
         <Defense>300</Defense>
         <Projectile id="0">
             <ObjectId>Rome Bomb</ObjectId>
             <MinDamage>90</MinDamage>
             <MaxDamage>130</MaxDamage>
-            <Speed>130</Speed>
+            <Speed>80</Speed>
             <Size>100</Size>
             <LifetimeMS>6000</LifetimeMS>
         </Projectile>
         <Projectile id="1">
             <ObjectId>Spear Shot</ObjectId>
-            <Speed>180</Speed>
+            <Speed>100</Speed>
             <Damage>145</Damage>
             <Size>125</Size>
             <MultiHit/>
@@ -740,7 +740,7 @@
         <Projectile id="2">
             <ObjectId>Power Shot</ObjectId>
             <Damage>115</Damage>
-            <Speed>170</Speed>
+            <Speed>105</Speed>
             <Size>120</Size>
             <LifetimeMS>4000</LifetimeMS>
             <ConditionEffect duration="4">Quiet</ConditionEffect>
@@ -750,7 +750,7 @@
             <ObjectId>Sword Shot</ObjectId>
             <MinDamage>150</MinDamage>
             <MaxDamage>175</MaxDamage>
-            <Speed>180</Speed>
+            <Speed>75</Speed>
             <LifetimeMS>3500</LifetimeMS>
             <Size>90</Size>
             <ConditionEffect duration="4">Armor Broken</ConditionEffect>
@@ -760,7 +760,7 @@
         <Projectile id="4">
             <ObjectId>Fire Shot</ObjectId>
             <Damage>300</Damage>
-            <Speed>90</Speed>
+            <Speed>45</Speed>
             <LifetimeMS>4000</LifetimeMS>
             <Size>130</Size>
             <MultiHit/>
@@ -769,7 +769,7 @@
         <Projectile id="5">
             <ObjectId>Ice Shot</ObjectId>
             <Damage>100</Damage>
-            <Speed>100</Speed>
+            <Speed>65</Speed>
             <LifetimeMS>4600</LifetimeMS>
             <Size>180</Size>
             <ConditionEffect duration="6">Slowed</ConditionEffect>
@@ -777,7 +777,7 @@
         <Projectile id="6">
             <ObjectId>Thunder Wave</ObjectId>
             <Damage>80</Damage>
-            <Speed>120</Speed>
+            <Speed>85</Speed>
             <LifetimeMS>5000</LifetimeMS>
             <Size>110</Size>
             <ArmorPiercing/>
@@ -785,7 +785,7 @@
         <Projectile id="7">
             <ObjectId>Meteor</ObjectId>
             <Damage>200</Damage>
-            <Speed>80</Speed>
+            <Speed>40</Speed>
             <LifetimeMS>8000</LifetimeMS>
             <Size>200</Size>
             <ConditionEffect duration="8" target="1">Paralyzed</ConditionEffect>
@@ -795,7 +795,7 @@
         <Projectile id="8">
             <ObjectId>Trojan Horse</ObjectId>
             <Damage>30</Damage>
-            <Speed>200</Speed>
+            <Speed>130</Speed>
             <LifetimeMS>5000</LifetimeMS>
             <Size>200</Size>
             <ConditionEffect duration="5" target="3">Confused</ConditionEffect>

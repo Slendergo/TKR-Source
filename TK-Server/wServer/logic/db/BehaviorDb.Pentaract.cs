@@ -57,6 +57,7 @@ namespace wServer.logic
                 new ItemLoot("Potion of Defense", 1)
                 ),
             new Threshold(0.2,
+                new ItemLoot("Crafting Material 1", 0.01),
                 new ItemLoot("Potion of Speed", 1),
                 new ItemLoot("Potion of Wisdom", 1)
                 ),

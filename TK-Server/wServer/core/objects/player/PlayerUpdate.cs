@@ -262,6 +262,15 @@ namespace wServer.core.objects
             }
         }
 
+        public void Dispose()
+        {
+            SeenTiles = null;
+            ActiveTiles.Clear();
+            NewStaticObjects.Clear();
+            StatsUpdates.Clear();
+            NewObjects.Dispose();
+        }
+
         public void SendNewTick(int delta)
         {
             lock (StatsUpdateLock)

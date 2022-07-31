@@ -1386,6 +1386,12 @@ namespace wServer.core.objects
             }
         }
 
+        public void CleanupPlayerUpdate()
+        {
+            PlayerUpdate?.Dispose();
+            PlayerUpdate = null;
+        }
+
         private void GenerateGravestone(bool phantomDeath = false)
         {
             var playerDesc = CoreServerManager.Resources.GameData.Classes[ObjectType];

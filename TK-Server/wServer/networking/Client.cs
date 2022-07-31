@@ -114,7 +114,7 @@ namespace wServer.networking
                         Log.Error(msg);
                     }
                 StopTask_ = true;
-
+                Player?.CleanupPlayerUpdate();
                 CoreServerManager.ConnectionManager.Disconnect(this);
 
                 _server.Disconnect(this);

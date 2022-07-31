@@ -681,7 +681,7 @@
   <Object type="0x5109" id="Undead Septavius">
     <DisplayId>Undead Septavius</DisplayId>
     <Class>Character</Class>
-    <Defense>15</Defense>
+    <Defense>30</Defense>
     <Enemy />
     <Chest />
     <StasisImmune />
@@ -691,7 +691,7 @@
       <File>Custom16x16Encounters</File>
       <Index>13</Index>
     </AnimatedTexture>
-    <MaxHitPoints>35000</MaxHitPoints>
+    <MaxHitPoints>50000</MaxHitPoints>
     <Size>80</Size>
     <Projectile id="0">
       <ObjectId>Undead Septavius First Shot</ObjectId>

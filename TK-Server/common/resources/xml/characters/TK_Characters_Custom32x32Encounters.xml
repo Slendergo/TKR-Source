@@ -69,7 +69,7 @@
     <Class>Character</Class>
     <AnimatedTexture>
       <File>Custom32x32Encounters</File>
-      <Index>1</Index>
+      <Index>3</Index>
     </AnimatedTexture>
     <AltTexture id="1">
       <AnimatedTexture>
@@ -696,111 +696,135 @@
 			<ConditionEffect duration="3">Slowed</ConditionEffect>
 		</Projectile>
 	</Object>
- <Object type="0x763a" id="Julius Caesar">
-        <Enemy/>
-        <Hero/>
-        <Event/>
-        <Quest/>
-        <God/>
-        <Encounter/>
-        <DisplayId>Julius Caesar</DisplayId>
-        <Class>Character</Class>
-        <AnimatedTexture>
-            <File>Custom32x32Encounters</File>
-            <Index>16</Index>
-        </AnimatedTexture>
-        <HitSound>monster/dragons_hit</HitSound>
-        <DeathSound>monster/golems_death</DeathSound>
-        <Size>100</Size>
-        <ParalyzeImmune/>
-        <StasisImmune/>
-        <DazedImmune/>
-        <StunImmune/>
-        <ArmorBreakImmune/>
-        <SlowedImmune/>
-        <MaxHitPoints>100000</MaxHitPoints>
-        <Defense>300</Defense>
-        <Projectile id="0">
-            <ObjectId>Rome Bomb</ObjectId>
-            <MinDamage>90</MinDamage>
-            <MaxDamage>130</MaxDamage>
-            <Speed>80</Speed>
-            <Size>100</Size>
-            <LifetimeMS>6000</LifetimeMS>
-        </Projectile>
-        <Projectile id="1">
-            <ObjectId>Spear Shot</ObjectId>
-            <Speed>100</Speed>
-            <Damage>145</Damage>
-            <Size>125</Size>
-            <MultiHit/>
-            <ArmorPiercing/>
-            <LifetimeMS>4000</LifetimeMS>
-        </Projectile>
-        <Projectile id="2">
-            <ObjectId>Power Shot</ObjectId>
-            <Damage>115</Damage>
-            <Speed>105</Speed>
-            <Size>120</Size>
-            <LifetimeMS>4000</LifetimeMS>
-            <ConditionEffect duration="4">Quiet</ConditionEffect>
-            <ConditionEffect duration="5">Blind</ConditionEffect>
-        </Projectile>
-        <Projectile id="3">
-            <ObjectId>Sword Shot</ObjectId>
-            <MinDamage>150</MinDamage>
-            <MaxDamage>175</MaxDamage>
-            <Speed>75</Speed>
-            <LifetimeMS>3500</LifetimeMS>
-            <Size>90</Size>
-            <ConditionEffect duration="4">Armor Broken</ConditionEffect>
-            <ConditionEffect duration="6">Slowed</ConditionEffect>
-            <MultiHit/>
-        </Projectile>
-        <Projectile id="4">
-            <ObjectId>Fire Shot</ObjectId>
-            <Damage>300</Damage>
-            <Speed>45</Speed>
-            <LifetimeMS>4000</LifetimeMS>
-            <Size>130</Size>
-            <MultiHit/>
-            <ArmorPiercing/>
-        </Projectile>
-        <Projectile id="5">
-            <ObjectId>Ice Shot</ObjectId>
-            <Damage>100</Damage>
-            <Speed>65</Speed>
-            <LifetimeMS>4600</LifetimeMS>
-            <Size>180</Size>
-            <ConditionEffect duration="6">Slowed</ConditionEffect>
-        </Projectile>
-        <Projectile id="6">
-            <ObjectId>Thunder Wave</ObjectId>
-            <Damage>80</Damage>
-            <Speed>85</Speed>
-            <LifetimeMS>5000</LifetimeMS>
-            <Size>110</Size>
-            <ArmorPiercing/>
-        </Projectile>
-        <Projectile id="7">
-            <ObjectId>Meteor</ObjectId>
-            <Damage>200</Damage>
-            <Speed>40</Speed>
-            <LifetimeMS>8000</LifetimeMS>
-            <Size>200</Size>
-            <ConditionEffect duration="8" target="1">Paralyzed</ConditionEffect>
-            <MultiHit/>
-            <ArmorPiercing/>
-        </Projectile>
-        <Projectile id="8">
-            <ObjectId>Trojan Horse</ObjectId>
-            <Damage>30</Damage>
-            <Speed>130</Speed>
-            <LifetimeMS>5000</LifetimeMS>
-            <Size>200</Size>
-            <ConditionEffect duration="5" target="3">Confused</ConditionEffect>
-            <MultiHit/>
-            <ArmorPiercing/>
-        </Projectile>
-    </Object>
+	<Object type="0x763a" id="Julius Caesar">
+		<Enemy/>
+		<Hero/>
+		<Event/>
+		<Quest/>
+		<God/>
+		<Encounter/>
+		<DisplayId>Julius Caesar</DisplayId>
+		<Class>Character</Class>
+		<AnimatedTexture>
+			<File>Custom32x32Encounters</File>
+			<Index>16</Index>
+		</AnimatedTexture>
+		<HitSound>monster/dragons_hit</HitSound>
+		<DeathSound>monster/golems_death</DeathSound>
+		<Size>100</Size>
+		<ParalyzeImmune/>
+		<StasisImmune/>
+		<DazedImmune/>
+		<StunImmune/>
+		<ArmorBreakImmune/>
+		<SlowedImmune/>
+		<MaxHitPoints>50000</MaxHitPoints>
+		<Defense>300</Defense>
+		<Projectile id="0">
+			<ObjectId>Rome Bomb</ObjectId>
+			<MinDamage>65</MinDamage>
+			<MaxDamage>95</MaxDamage>
+			<Speed>80</Speed>
+			<Size>120</Size>
+			<Boomerang />
+			<LifetimeMS>3000</LifetimeMS>
+		</Projectile>
+		<Projectile id="1">
+			<ObjectId>Spear Shot</ObjectId>
+			<Speed>100</Speed>
+			<Damage>100</Damage>
+			<Size>125</Size>
+			<MultiHit/>
+			<ArmorPiercing/>
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+		<Projectile id="2">
+			<ObjectId>Power Shot</ObjectId>
+			<Damage>75</Damage>
+			<Speed>100</Speed>
+			<Size>120</Size>
+			<Boomerang />
+			<MultiHit />
+			<LifetimeMS>2000</LifetimeMS>
+			<ConditionEffect duration="4">Quiet</ConditionEffect>
+			<ConditionEffect duration="5">Blind</ConditionEffect>
+		</Projectile>
+		<Projectile id="3">
+			<ObjectId>Sword Shot</ObjectId>
+			<MinDamage>105</MinDamage>
+			<MaxDamage>115</MaxDamage>
+			<Speed>75</Speed>
+			<LifetimeMS>3500</LifetimeMS>
+			<Size>120</Size>
+			<ConditionEffect duration="4">Armor Broken</ConditionEffect>
+			<ConditionEffect duration="6">Slowed</ConditionEffect>
+			<MultiHit/>
+		</Projectile>
+		<Projectile id="4">
+			<ObjectId>Fire Shot</ObjectId>
+			<Damage>150</Damage>
+			<Speed>45</Speed>
+			<LifetimeMS>4000</LifetimeMS>
+			<Size>130</Size>
+			<MultiHit/>
+			<ArmorPiercing/>
+		</Projectile>
+		<Projectile id="5">
+			<ObjectId>Ice Shot</ObjectId>
+			<Damage>50</Damage>
+			<Speed>65</Speed>
+			<LifetimeMS>4600</LifetimeMS>
+			<Size>180</Size>
+			<ConditionEffect duration="6">Slowed</ConditionEffect>
+		</Projectile>
+		<Projectile id="6">
+			<ObjectId>Thunder Wave</ObjectId>
+			<Damage>35</Damage>
+			<Speed>85</Speed>
+			<LifetimeMS>5000</LifetimeMS>
+			<Size>110</Size>
+			<ArmorPiercing/>
+		</Projectile>
+		<Projectile id="7">
+			<ObjectId>Meteor</ObjectId>
+			<Damage>75</Damage>
+			<Speed>40</Speed>
+			<LifetimeMS>3000</LifetimeMS>
+			<Size>200</Size>
+			<MultiHit/>
+			<Boomerang />
+			<ArmorPiercing/>
+		</Projectile>
+		<Projectile id="8">
+			<ObjectId>Trojan Horse</ObjectId>
+			<Damage>15</Damage>
+			<Speed>130</Speed>
+			<LifetimeMS>5000</LifetimeMS>
+			<Size>200</Size>
+			<ConditionEffect duration="5" target="3">Confused</ConditionEffect>
+			<MultiHit/>
+			<ArmorPiercing/>
+		</Projectile>
+		<Projectile id="9">
+			<ObjectId>Power Shot</ObjectId>
+			<Damage>75</Damage>
+			<Speed>80</Speed>
+			<Size>120</Size>
+			<Boomerang />
+			<MultiHit />
+			<LifetimeMS>2400</LifetimeMS>
+			<ConditionEffect duration="4">Quiet</ConditionEffect>
+			<ConditionEffect duration="5">Blind</ConditionEffect>
+		</Projectile>
+		<Projectile id="10">
+			<ObjectId>Power Shot</ObjectId>
+			<Damage>75</Damage>
+			<Speed>60</Speed>
+			<Size>120</Size>
+			<Boomerang />
+			<MultiHit />
+			<LifetimeMS>2800</LifetimeMS>
+			<ConditionEffect duration="4">Quiet</ConditionEffect>
+		</Projectile>
+	</Object>
 </Objects>

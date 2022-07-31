@@ -10,6 +10,7 @@ namespace wServer.logic
         private _ UndeadLair = () => Behav()
         .Init("Septavius the Ghost God",
             new State(
+                new StayCloseToSpawn(3, 10),
                 new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
                 new ScaleHP2(20),
                 new DropPortalOnDeath("Hideout of Septavius Portal", probability: 1, timeout: 70),
@@ -103,7 +104,7 @@ namespace wServer.logic
                 new ItemLoot("Toga Picta", 0.015),
                 new ItemLoot("Interregnum", 0.015),
                 new ItemLoot("Tormentor’s Wrath", 0.01),
-                new ItemLoot("Undead Lair Key", 0.1, 0, 0.03),
+                new ItemLoot("Undead Lair Key", 0.0001, 0, 0.03),
 
                 new ItemLoot("Magic Dust", 0.5)
                 )

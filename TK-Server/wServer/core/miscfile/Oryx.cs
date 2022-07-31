@@ -126,16 +126,16 @@ namespace wServer.core
              * The behavior of "Mushroom" is causing console spam, might be caused
              * by invalid paramenters on projectile cast on a specific phase.
              */
-            //Tuple.Create("Mushroom", new TauntData()
-            //{
-            //    Spawn = new string[] {
-            //        ""
-            //    },
-            //    Killed = new string[] {
-            //        ""
-            //    },
-            //    NameOfDeath = "Mushroom"
-            //}),
+            Tuple.Create("Mushroom", new TauntData()
+            {
+                Spawn = new string[] {
+                    ""
+                },
+                Killed = new string[] {
+                    ""
+                },
+                NameOfDeath = "Mushroom"
+            }),
 
             /*Tuple.Create("Spectral Sentry", new TauntData()
             {

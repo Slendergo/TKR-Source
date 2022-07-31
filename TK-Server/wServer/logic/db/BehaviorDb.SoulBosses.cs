@@ -1376,7 +1376,7 @@ namespace wServer.logic
             )
         .Init("Undead Septavius",
             new State(
-                new ScaleHP2(20),
+                new ScaleHP2(40),
                 new State("Waiting",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
                     new PlayerWithinTransition(10, "Taunt")

@@ -2039,20 +2039,20 @@
         <StunImmune/>
         <ArmorBreakImmune/>
         <SlowedImmune/>
-        <MaxHitPoints>1000000</MaxHitPoints>
+        <MaxHitPoints>50000</MaxHitPoints>
         <Defense>300</Defense>
         <Projectile id="0">
             <ObjectId>Rome Bomb</ObjectId>
-            <MinDamage>90</MinDamage>
-            <MaxDamage>130</MaxDamage>
-            <Speed>130</Speed>
-            <Size>100</Size>
-            <LifetimeMS>6000</LifetimeMS>
+            <MinDamage>65</MinDamage>
+            <MaxDamage>95</MaxDamage>
+            <Speed>80</Speed>
+            <Size>120</Size>
+            <LifetimeMS>2000</LifetimeMS>
         </Projectile>
         <Projectile id="1">
             <ObjectId>Spear Shot</ObjectId>
-            <Speed>180</Speed>
-            <Damage>145</Damage>
+            <Speed>100</Speed>
+            <Damage>100</Damage>
             <Size>125</Size>
             <MultiHit/>
             <ArmorPiercing/>
@@ -2060,8 +2060,8 @@
         </Projectile>
         <Projectile id="2">
             <ObjectId>Power Shot</ObjectId>
-            <Damage>115</Damage>
-            <Speed>170</Speed>
+            <Damage>75</Damage>
+            <Speed>100</Speed>
             <Size>120</Size>
             <LifetimeMS>4000</LifetimeMS>
             <ConditionEffect duration="4">Quiet</ConditionEffect>
@@ -2069,19 +2069,19 @@
         </Projectile>
         <Projectile id="3">
             <ObjectId>Sword Shot</ObjectId>
-            <MinDamage>150</MinDamage>
-            <MaxDamage>175</MaxDamage>
-            <Speed>180</Speed>
+            <MinDamage>105</MinDamage>
+            <MaxDamage>115</MaxDamage>
+            <Speed>75</Speed>
             <LifetimeMS>3500</LifetimeMS>
-            <Size>90</Size>
+            <Size>120</Size>
             <ConditionEffect duration="4">Armor Broken</ConditionEffect>
             <ConditionEffect duration="6">Slowed</ConditionEffect>
             <MultiHit/>
         </Projectile>
         <Projectile id="4">
             <ObjectId>Fire Shot</ObjectId>
-            <Damage>300</Damage>
-            <Speed>90</Speed>
+            <Damage>150</Damage>
+            <Speed>45</Speed>
             <LifetimeMS>4000</LifetimeMS>
             <Size>130</Size>
             <MultiHit/>
@@ -2089,24 +2089,24 @@
         </Projectile>
         <Projectile id="5">
             <ObjectId>Ice Shot</ObjectId>
-            <Damage>100</Damage>
-            <Speed>100</Speed>
+            <Damage>50</Damage>
+            <Speed>65</Speed>
             <LifetimeMS>4600</LifetimeMS>
             <Size>180</Size>
             <ConditionEffect duration="6">Slowed</ConditionEffect>
         </Projectile>
         <Projectile id="6">
             <ObjectId>Thunder Wave</ObjectId>
-            <Damage>80</Damage>
-            <Speed>120</Speed>
+            <Damage>35</Damage>
+            <Speed>85</Speed>
             <LifetimeMS>5000</LifetimeMS>
             <Size>110</Size>
             <ArmorPiercing/>
         </Projectile>
         <Projectile id="7">
             <ObjectId>Meteor</ObjectId>
-            <Damage>200</Damage>
-            <Speed>80</Speed>
+            <Damage>75</Damage>
+            <Speed>40</Speed>
             <LifetimeMS>8000</LifetimeMS>
             <Size>200</Size>
             <ConditionEffect duration="8" target="1">Paralyzed</ConditionEffect>
@@ -2115,15 +2115,42 @@
         </Projectile>
         <Projectile id="8">
             <ObjectId>Trojan Horse</ObjectId>
-            <Damage>30</Damage>
-            <Speed>200</Speed>
+            <Damage>15</Damage>
+            <Speed>130</Speed>
             <LifetimeMS>5000</LifetimeMS>
             <Size>200</Size>
             <ConditionEffect duration="5" target="3">Confused</ConditionEffect>
             <MultiHit/>
             <ArmorPiercing/>
         </Projectile>
+        <Projectile id="9">
+            <ObjectId>Power Shot</ObjectId>
+            <Damage>75</Damage>
+            <Speed>80</Speed>
+            <Size>120</Size>
+            <LifetimeMS>4000</LifetimeMS>
+            <ConditionEffect duration="4">Quiet</ConditionEffect>
+            <ConditionEffect duration="5">Blind</ConditionEffect>
+        </Projectile>
+        <Projectile id="10">
+            <ObjectId>Power Shot</ObjectId>
+            <Damage>75</Damage>
+            <Speed>60</Speed>
+            <Size>120</Size>
+            <LifetimeMS>4000</LifetimeMS>
+            <ConditionEffect duration="4">Quiet</ConditionEffect>
+            <ConditionEffect duration="5">Blind</ConditionEffect>
+        </Projectile>
     </Object>
+    <Projectile id="10">
+        <ObjectId>Power Shot</ObjectId>
+        <Damage>75</Damage>
+        <Speed>65</Speed>
+        <Size>120</Size>
+        <LifetimeMS>4000</LifetimeMS>
+        <ConditionEffect duration="4">Quiet</ConditionEffect>
+        <ConditionEffect duration="5">Blind</ConditionEffect>
+    </Projectile>
     <Object type="0x0d51" id="Abominable Snowman">
         <Class>Character</Class>
         <Enemy />

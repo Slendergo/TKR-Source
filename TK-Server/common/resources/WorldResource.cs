@@ -38,7 +38,7 @@ namespace common.resources
             Persists = elem.GetValue<bool>("Persists");
             Difficulty = elem.GetValue<byte>("Difficulty");
             Background = elem.GetValue<byte>("Background");
-            VisibilityType = elem.GetValue<byte>("VisibilityType");
+            VisibilityType = (byte)elem.GetValue<int>("VisibilityType");
 
             MapJM = new List<string>();
             foreach (var map in elem.Elements("MapJM"))

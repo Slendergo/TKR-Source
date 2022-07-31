@@ -27,7 +27,6 @@ namespace wServer.core
 
         public void Tick()
         {
-
             var watch = Stopwatch.StartNew();
 
             var realmTime = new TickTime();
@@ -49,10 +48,17 @@ namespace wServer.core
                 realmTime.TickCount++;
                 realmTime.ElaspedMsDelta = delta;
 
-                if (Stopped || World.Update(ref realmTime))
+                try
                 {
-                    TickThreadSingle.WorldManager.RemoveWorld(World);
-                    break;
+                    if (Stopped || World.Update(ref realmTime))
+                    {
+                        TickThreadSingle.WorldManager.RemoveWorld(World);
+                        break;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"World Tick: {e}");
                 }
 
                 var logicTime = (int)(watch.ElapsedMilliseconds - realmTime.TotalElapsedMs);

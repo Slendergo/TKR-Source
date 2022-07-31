@@ -205,6 +205,14 @@
         </Animation>
         <Static/>
     </Object>
+    <Object type="0x9905" id="Generator Pog">
+        <Class>GameObject</Class>
+        <Texture>
+            <File>CustomObjectsSkillTree</File>
+            <Index>0x0f</Index>
+        </Texture>
+        <Static />
+    </Object>
     <Object type="0x506c" id="Skill Tree">
         <Class>SkillTree</Class>
         <Texture>

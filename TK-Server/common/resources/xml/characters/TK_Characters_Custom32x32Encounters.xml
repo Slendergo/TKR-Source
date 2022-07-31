@@ -86,13 +86,13 @@
     <HitSound>monster/lizard_god_hit</HitSound>
     <DeathSound>monster/lizard_god_death</DeathSound>
     <Size>175</Size>
-    <MaxHitPoints>70000</MaxHitPoints>
+    <MaxHitPoints>35000</MaxHitPoints>
     <Defense>18</Defense>
     <Level>20</Level>
     <XpMult>1.4</XpMult>
     <Projectile id="0">
       <ObjectId>Elemental Water Shoot</ObjectId>
-      <Damage>175</Damage>
+      <Damage>90</Damage>
       <Speed>125</Speed>
       <Size>180</Size>
       <LifetimeMS>4000</LifetimeMS>
@@ -101,7 +101,7 @@
     <Projectile id="1">
       <ObjectId>Elemental Water Shoot 2</ObjectId>
       <Damage>125</Damage>
-      <Speed>125</Speed>
+      <Speed>75</Speed>
       <Size>160</Size>
       <LifetimeMS>4000</LifetimeMS>
       <MultiHit />
@@ -110,7 +110,7 @@
       <ObjectId>Elemental Water Shoot Big</ObjectId>
       <MinDamage>175</MinDamage>
       <MaxDamage>225</MaxDamage>
-      <Speed>85</Speed>
+      <Speed>45</Speed>
       <Size>200</Size>
       <LifetimeMS>3200</LifetimeMS>
     </Projectile>
@@ -269,23 +269,23 @@
     <HitSound>monster/lizard_god_hit</HitSound>
     <DeathSound>monster/lizard_god_death</DeathSound>
     <Size>180</Size>
-    <MaxHitPoints>75000</MaxHitPoints>
+    <MaxHitPoints>35000</MaxHitPoints>
     <Defense>20</Defense>
     <Level>20</Level>
     <XpMult>1.4</XpMult>
     <Projectile id="0">
       <ObjectId>Earth Elemental Shoot</ObjectId>
-      <MinDamage>220</MinDamage>
-      <MaxDamage>250</MaxDamage>
-      <Speed>140</Speed>
+      <MinDamage>135</MinDamage>
+      <MaxDamage>145</MaxDamage>
+      <Speed>90</Speed>
       <Size>140</Size>
       <LifetimeMS>2500</LifetimeMS>
       <MultiHit />
     </Projectile>
     <Projectile id="1">
       <ObjectId>Earth Elemental Wave Shoot</ObjectId>
-      <Damage>145</Damage>
-      <Speed>80</Speed>
+      <Damage>85</Damage>
+      <Speed>65</Speed>
       <Size>120</Size>
       <LifetimeMS>1300</LifetimeMS>
       <MultiHit />
@@ -302,8 +302,8 @@
     </Projectile>
     <Projectile id="3">
       <ObjectId>Earth Elemental Big Shoot</ObjectId>
-      <Damage>320</Damage>
-      <Speed>100</Speed>
+      <Damage>200</Damage>
+      <Speed>40</Speed>
       <Size>200</Size>
       <LifetimeMS>2000</LifetimeMS>
       <MultiHit />
@@ -328,14 +328,14 @@
     <HitSound>monster/lizard_god_hit</HitSound>
     <DeathSound>monster/lizard_god_death</DeathSound>
     <Size>170</Size>
-    <MaxHitPoints>58000</MaxHitPoints>
+    <MaxHitPoints>35000</MaxHitPoints>
     <Defense>5</Defense>
     <Level>20</Level>
     <XpMult>1.4</XpMult>
     <Projectile id="0">
       <ObjectId>Wind Wave</ObjectId>
       <Damage>145</Damage>
-      <Speed>160</Speed>
+      <Speed>110</Speed>
       <Size>140</Size>
       <LifetimeMS>1400</LifetimeMS>
       <MultiHit />
@@ -343,8 +343,8 @@
     </Projectile>
     <Projectile id="1">
       <ObjectId>Wind Shoot</ObjectId>
-      <Damage>200</Damage>
-      <Speed>120</Speed>
+      <Damage>70</Damage>
+      <Speed>75</Speed>
       <Size>120</Size>
       <LifetimeMS>2500</LifetimeMS>
       <MultiHit />
@@ -368,13 +368,13 @@
     <HitSound>monster/lizard_god_hit</HitSound>
     <DeathSound>monster/lizard_god_death</DeathSound>
     <Size>150</Size>
-    <MaxHitPoints>65000</MaxHitPoints>
+    <MaxHitPoints>40000</MaxHitPoints>
     <Defense>10</Defense>
     <Level>20</Level>
     <XpMult>1.4</XpMult>
     <Projectile id="0">
       <ObjectId>Fire Elemental Big Shoot</ObjectId>
-      <Damage>280</Damage>
+      <Damage>120</Damage>
       <Speed>80</Speed>
       <Size>220</Size>
       <LifetimeMS>3000</LifetimeMS>
@@ -383,16 +383,16 @@
     </Projectile>
     <Projectile id="1">
       <ObjectId>Fire Elemental Shoot</ObjectId>
-      <Damage>160</Damage>
-      <Speed>140</Speed>
+      <Damage>80</Damage>
+      <Speed>90</Speed>
       <Size>150</Size>
       <LifetimeMS>2200</LifetimeMS>
       <MultiHit />
     </Projectile>
     <Projectile id="2">
       <ObjectId>Fire Elemental Wave Shoot</ObjectId>
-      <Damage>140</Damage>
-      <Speed>100</Speed>
+      <Damage>70</Damage>
+      <Speed>65</Speed>
       <Size>140</Size>
       <LifetimeMS>3000</LifetimeMS>
       <MultiHit />

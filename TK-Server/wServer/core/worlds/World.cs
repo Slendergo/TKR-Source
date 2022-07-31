@@ -594,43 +594,45 @@ namespace wServer.core.worlds
         {
             try
             {
+                foreach (var stat in StaticObjects.Values)
+                    stat.Tick(time);
+
                 foreach (var container in Containers.Values)
                     container.Tick(time);
-
-                if (Players.Values.Count == 0 && !(this is NexusWorld))
-                    return;
-
-                foreach (var player in Players.Values)
-                {
-                    player.HandleIO();
-                    player.DoUpdate(time);
-                    player.HandlePendingActions(time);
-                    player.Tick(time);
-                }
+                
+                foreach (var pet in Pets.Values)
+                    pet.Tick(time);
 
                 foreach (var i in Projectiles)
                     i.Value.Tick(time);
 
-                if (EnemiesCollision != null)
+                if (Players.Values.Count > 0)
                 {
-                    foreach (var i in EnemiesCollision.GetActiveChunks(PlayersCollision))
-                        i.Tick(time);
+                    foreach (var player in Players.Values)
+                    {
+                        player.HandleIO();
+                        player.DoUpdate(time);
+                        player.HandlePendingActions(time);
+                        player.Tick(time);
+                    }
 
-                    foreach (var i in StaticObjects.Where(x => x.Value != null && x.Value is Decoy))
-                        i.Value.Tick(time);
+                    if (EnemiesCollision != null)
+                    {
+                        foreach (var i in EnemiesCollision.GetActiveChunks(PlayersCollision))
+                            i.Tick(time);
+
+                        //foreach (var i in StaticObjects.Where(x => x.Value != null && x.Value is Decoy))
+                        //    i.Value.Tick(time);
+                    }
+                    else
+                    {
+                        foreach (var i in Enemies)
+                            i.Value.Tick(time);
+
+                        //foreach (var i in StaticObjects)
+                        //    i.Value.Tick(time);
+                    }
                 }
-                else
-                {
-                    foreach (var i in Enemies)
-                        i.Value.Tick(time);
-
-                    foreach (var i in StaticObjects)
-                        i.Value.Tick(time);
-                }
-
-                
-                foreach (var i in Pets.Values)
-                    i.Tick(time);
 
                 for (var i = Timers.Count - 1; i >= 0; i--)
                     try

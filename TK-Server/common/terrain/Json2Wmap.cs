@@ -27,8 +27,6 @@ namespace terrain
             {
                 var o = obj.dict[i];
 
-                Console.WriteLine(o.ground);
-
                 tileDict[(short)i] = new TerrainTile()
                 {
                     TileId = o.ground == null ? (ushort)0xff : data.IdToTileType[o.ground],

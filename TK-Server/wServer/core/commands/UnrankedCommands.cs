@@ -10,6 +10,7 @@ using System.Text;
 using wServer.core.objects;
 using wServer.core.worlds;
 using wServer.core.worlds.logic;
+using wServer.logic.loot;
 using wServer.networking.packets.incoming;
 using wServer.networking.packets.outgoing;
 using File = TagLib.File;
@@ -630,44 +631,20 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string args)
         {
-            int CheckTalismans(Player playera)
-            {
-                var talismansoflooting = playera.Inventory.Where(i => i != null && i.ObjectId == "Talisman of Looting").Count();
-                return talismansoflooting * 2;
-            }
+            var lootBoost = Loot.GetPlayerLootBoost(player);
 
-            bool CheckTalismanofLuck(Player playera)
-            {
-                var tofLuck = playera.Inventory.Where(i => i != null && i.ObjectId == "Talisman of Luck").FirstOrDefault();
-                return tofLuck != default;
-            }
+            //if (talismanofluck > 0) player.SendInfo($"Your Talisman of Luck give's you {talismanofluck}% Loot Boost!");
+            //if (player.Node5TickMin > 0) player.SendInfo($"Your attributes provide you with an extra {treeNodeLoot}% Loot Boost!");
+            ////if (treeNodeLoot > 0) player.SendInfo($"Your points in the Skill Tree gives you {skillTreeLoot}% Loot Boost!");
+            ////if (donorloot > 0) player.SendInfo($"For supporting TK and donating you get an extra {donorloot}% Loot Boost!");
+            //if (player.LDBoostTime > 0) player.SendInfo($"You have activated a Loot Drop Potion! This gives you an extra {lootDropBoost}% Loot Boost");
+            //if (talismans > 0) player.SendInfo($"Your Talisman's of Looting gives you a total of {talismans}% Loot Boost!");
+            //if (guildLootBoost > 0) player.SendInfo($"Your Guild gives you a {guildLootBoost}% Loot Boost!");
 
-            //var bigSkill = player.BigSkill12 ? 20 : 0;
-            //var skillTreeLoot = player.SmallSkill12 * 2;
-            var treeNodeLoot = (player.Node5TickMaj * 2) + (player.Node5TickMin * 2) + (player.Node5Med * 5) + (player.Node5Big > 1 ? 220 : player.Node5Big > 0 ? 20 : 0);
-            var donorloot = player.Rank == 10 ? 5 : player.Rank == 20 ? 10 : player.Rank == 30 ? 15 : player.Rank == 40 ? 20 : player.Rank == 50 ? 30 : 0;
-            var talismans = CheckTalismans(player);
-            var talismanofluck = CheckTalismanofLuck(player) ? 20 : 0;
-            var lootDropBoost = player.LDBoostTime > 0 ? 40 : 0;
-            var cManager = player.Client.CoreServerManager;
-            var db = cManager.Database;
-            var account = db.GetAccount(player.Client.Player.AccountId);
-            var guild = db.GetGuild(account.GuildId);
-            var guildLootBoost = Math.Round(guild != null ? guild.GuildLootBoost : 0, 2, MidpointRounding.ToEven) * 100f;
-            var lootBoosts = lootDropBoost + talismans + donorloot + treeNodeLoot + talismanofluck + guildLootBoost;
-            var eventRate = player.CoreServerManager.GetLootRate();
+            player.SendInfo($"You have {Math.Round(lootBoost * 100.0f, 3)}% increased loot chance");
+            player.SendInfo($"This will breakdown sources in the future");
 
-            lootBoosts *= eventRate;
-
-            if (talismanofluck > 0) player.SendInfo($"Your Talisman of Luck give's you {talismanofluck}% Loot Boost!");
-            if (player.Node5TickMin > 0) player.SendInfo($"Your attributes provide you with an extra {treeNodeLoot}% Loot Boost!");
-            //if (treeNodeLoot > 0) player.SendInfo($"Your points in the Skill Tree gives you {skillTreeLoot}% Loot Boost!");
-            //if (donorloot > 0) player.SendInfo($"For supporting TK and donating you get an extra {donorloot}% Loot Boost!");
-            if (player.LDBoostTime > 0) player.SendInfo($"You have activated a Loot Drop Potion! This gives you an extra {lootDropBoost}% Loot Boost");
-            if (talismans > 0) player.SendInfo($"Your Talisman's of Looting gives you a total of {talismans}% Loot Boost!");
-            if (guildLootBoost > 0) player.SendInfo($"Your Guild gives you a {guildLootBoost}% Loot Boost!");
-
-            player.SendInfo($"You have {lootBoosts}% Loot Boost{(eventRate != 1.0 ? $" (event multiplier: {eventRate}x)" : "")}!");
+            //player.SendInfo($"You have {lootBoosts}% Loot Boost{(eventRate != 1.0 ? $" (event multiplier: {eventRate}x)" : "")}!");
             return true;
         }
     }

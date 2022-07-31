@@ -196,59 +196,26 @@ namespace wServer.logic.loot
 
         public static double CheckTalismans(Player player)
         {
-            var talismans = player.Inventory.Where(i => i != null && i.ObjectId == "Talisman of Looting").Count();
-            return talismans * 0.02f;
+            var talismans = player.Inventory.Count(i => i != null && i.ObjectId == "Talisman of Looting");
+            return talismans == 1 ? (talismans * 0.02f) : (talismans * 0.02f) - (talismans * 0.005f);
         }
 
-        public static double GetPlayerLootBoost(Player player, CoreServerManager core)
+        public static double GetPlayerLootBoost(Player player)
         {
-            if (player == null) return 0;
+            if (player == null) 
+                return 0;
+
+            var core = player.CoreServerManager;
+
             var db = core.Database;
             var account = db.GetAccount(player.AccountId);
-            var guild = db.GetGuild(account.GuildId);
+            //var guild = db.GetGuild(account.GuildId);
 
-            var allLoot = 0.0d;
+            var allLoot = 0.0;
             allLoot += core.GetLootRate();
-            //allLoot += player.BigSkill12 ? 0.2 : 0;
-            //allLoot += (double)player.SmallSkill12 * 2 / 100;
-            allLoot += ((player.Node5TickMaj * 2) + (player.Node5TickMin * 2) + (player.Node5Med * 5) + (player.Node5Big > 1 ? 220 : player.Node5Big > 0 ? 20 : 0)) / 100;
-            allLoot += player.LDBoostTime > 0 ? 0.4 : 0;
-            allLoot += Math.Round(CheckTalismans(player), 3);
-            allLoot += CheckTalismanOfLuck(player, "Talisman of Luck") ? 0.2 : 0;
-
-            //if (account.SetDonorLoot)
-            //{
-            //    switch (account.Rank)
-            //    {
-            //        case Player.DONOR_1:
-            //            allLoot += 0.05;
-            //            break;
-
-            //        case Player.DONOR_2:
-            //            allLoot += 0.1;
-            //            break;
-
-            //        case Player.DONOR_3:
-            //            allLoot += 0.15;
-            //            break;
-
-            //        case Player.DONOR_4:
-            //            allLoot += 0.2;
-            //            break;
-
-            //        case Player.DONOR_5:
-            //            allLoot += 0.3;
-            //            break;
-
-            //        case Player.VIP:
-            //            allLoot += 0.3;
-            //            break;
-            //    }
-            //}
-            //if (account.SetDonorLoot) allLoot += rank >= 10 && rank <= 50 ? rank / 10 : 0;
-
-            if (guild != null) allLoot += guild.GuildLootBoost;
-
+            allLoot += player.LDBoostTime > 0 ? 0.1 : 0;
+            allLoot += CheckTalismans(player);
+            allLoot += CheckTalismanOfLuck(player, "Talisman of Luck") ? 0.2 : 0; //20%
             return allLoot;
         }
 
@@ -335,10 +302,14 @@ namespace wServer.logic.loot
 
                 var percentageOfDamage = (Math.Round(100.0 * (playerDamage / (double)enemy.DamageCounter.TotalDamage), 4) / 100);
                 var DamageBoost = player.Node5Big > 0 ? 0 : percentageOfDamage;
-                var enemyClasified = enemy.Legendary ? 1 : enemy.Epic ? 0.5 : enemy.Rare ? 0.2 : 0;
-                var playerLootBoost = GetPlayerLootBoost(player, Program.CoreServerManager);
+                var enemyRarityPercent = 
+                    enemy.Legendary ? 0.05 : // 5%
+                    enemy.Epic ? 0.025 : // 2.5 %
+                    enemy.Rare ? 0.0125 : 0; // 1.25%
+                
+                var playerLootBoost = GetPlayerLootBoost(player) + enemyRarityPercent;
 
-                if (DamageBoost > 1.0) DamageBoost = 1.0;
+                //Console.WriteLine($"Loot Boost: {playerLootBoost}");
 
                 if (enemy.ObjectDesc.Event)
                 {
@@ -350,7 +321,10 @@ namespace wServer.logic.loot
 
                 foreach (var i in possDrops)
                 {
-                    var lootBoosts = i.Item.Potion ? i.Probabilty : i.Probabilty * (1 + playerLootBoost + DamageBoost + enemyClasified);
+                    var lootBoosts = i.Item.Potion ? i.Probabilty : 
+                        i.Probabilty + (i.Probabilty * playerLootBoost);
+
+                    //Console.WriteLine(i.Probabilty + " | " + (i.Probabilty + (i.Probabilty * playerLootBoost)));
                     var chance = Rand.NextDouble();
 
                     //if (i.Item.Tier == null)
@@ -364,7 +338,7 @@ namespace wServer.logic.loot
                     //    Console.WriteLine("\n\n");
                     //}
 
-                    if (i.Threshold >= 0 && i.Threshold < percentageOfDamage && chance < /*i.Probabilty * */lootBoosts)
+                    if (i.Threshold >= 0 && i.Threshold < percentageOfDamage && chance < lootBoosts)
                         drops.Add(i.Item);
                 }
 
@@ -384,7 +358,7 @@ namespace wServer.logic.loot
             var items = new Item[8];
             var boosted = false;
 
-            if (owners.Count() == 1 && GetPlayerLootBoost(player, core) > 1.0 || core.GetLootRate() != 1.0)
+            if (owners.Count() == 1 && GetPlayerLootBoost(player) > 1.0 || core.GetLootRate() != 1.0)
                 boosted = true;
 
             foreach (var i in loots)

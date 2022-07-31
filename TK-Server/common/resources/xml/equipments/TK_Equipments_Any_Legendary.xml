@@ -116,7 +116,7 @@
     <Item />
     <HoldableItem />
     <ExtraTooltipData>
-      <EffectInfo name="Looting:" description="Holding this item gives you 20% of Loot! (One per Inventory). This talisman contains the Power of Luck. So long as it’s held, luck will increase." />
+      <EffectInfo name="Looting:" description="Holding this item gives you 20% loot chance! (One per Inventory). This talisman contains the Power of Luck. So long as it’s held, luck will increase." />
     </ExtraTooltipData>
     <Texture>
       <File>CustomObj</File>

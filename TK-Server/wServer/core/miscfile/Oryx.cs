@@ -424,7 +424,7 @@ namespace wServer.core
             Tuple.Create("Lucky Djinn", (ISetPiece) null),
         };
 
-        private const float MAX_GUILD_LOOT_BOOST = 0.75f;
+        private const float MAX_GUILD_LOOT_BOOST = 0.2f;
 
         private readonly string _webhook;
 

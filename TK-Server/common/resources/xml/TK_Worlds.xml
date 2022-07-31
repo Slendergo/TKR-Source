@@ -3,6 +3,7 @@
 		<Width>256</Width>
 		<Height>256</Height>
 		<Dungeon/>
+		<Persists/>
 	</World>
 	<World id="Realm of the Mad God">
 		<Width>2048</Width>

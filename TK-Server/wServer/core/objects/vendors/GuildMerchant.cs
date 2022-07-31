@@ -55,7 +55,7 @@ namespace wServer.core.objects.vendors
             }
 
             player.CoreServerManager.Database.UpdateGuildFame(guild, -Price);
-            guild.GuildLootBoost = guild.GuildLootBoost + .15f;
+            guild.GuildLootBoost = guild.GuildLootBoost + 0.05f;
             guild.FlushAsync();
 
             player.Client.SendPacket(new networking.packets.outgoing.BuyResult

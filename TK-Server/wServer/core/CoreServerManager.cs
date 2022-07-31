@@ -116,7 +116,7 @@ namespace wServer.core
             if (utc >= settings.GetLootEventStartAt && utc <= settings.GetLootEventEndAt)
                 return settings.lootEventRate;
 
-            return 1.0;
+            return 0.0;
         }
 
         public bool HasEvents()

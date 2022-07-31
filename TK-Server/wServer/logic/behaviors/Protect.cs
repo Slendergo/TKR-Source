@@ -67,7 +67,7 @@ namespace wServer.logic.behaviors
 
                         vect.Normalize();
 
-                        var dist = host.GetSpeed(speed) * time.DeltaTime;
+                        var dist = host.GetSpeed(speed) * time.BehaviourTickTime;
 
                         host.ValidateAndMove(host.X + vect.X * dist, host.Y + vect.Y * dist);
                     }

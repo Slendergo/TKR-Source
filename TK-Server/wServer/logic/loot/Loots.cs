@@ -214,7 +214,7 @@ namespace wServer.logic.loot
             var allLoot = 0.0;
             allLoot += core.GetLootRate();
             allLoot += player.LDBoostTime > 0 ? 0.1 : 0;
-            allLoot += ((player.Node5TickMaj * 0.05) + (player.Node5TickMin * 0.05) + (player.Node5Med * 0.075) + (player.Node5Big > 1 ? 0.25 : player.Node5Big > 0 ? 0.125 : 0));
+            allLoot += ((player.Node5TickMaj * 0.05) + (player.Node5TickMin * 0.025) + (player.Node5Med * 0.075) + (player.Node5Big > 1 ? 0.2 : player.Node5Big > 0 ? 0.1 : 0));
             allLoot += CheckTalismans(player);
             allLoot += CheckTalismanOfLuck(player, "Talisman of Luck") ? 0.2 : 0; //20%
             return allLoot;

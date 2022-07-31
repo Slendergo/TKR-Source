@@ -53,10 +53,10 @@ namespace wServer.logic.behaviors
                         host.Move(player.X, player.Y);
                     else if (vect.Length() > 1)
                     {
-                        var dist = host.GetSpeed(0.5f) * time.DeltaTime;
+                        var dist = host.GetSpeed(0.5f) * time.BehaviourTickTime;
 
                         if (vect.Length() > 2)
-                            dist = host.GetSpeed(0.7f + ((float)player.Stats[4] / 100)) * time.DeltaTime;
+                            dist = host.GetSpeed(0.7f + ((float)player.Stats[4] / 100)) * time.BehaviourTickTime;
 
                         vect.Normalize();
 

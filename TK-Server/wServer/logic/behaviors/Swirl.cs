@@ -79,13 +79,13 @@ namespace wServer.logic.behaviors
             var spd = host.GetSpeed(speed) * (s.Acquired ? 1 : 0.2);
             var angularSpd = spd / radius;
 
-            angle += angularSpd * time.DeltaTime;
+            angle += angularSpd * time.BehaviourTickTime;
 
             var x = s.Center.X + Math.Cos(angle) * radius;
             var y = s.Center.Y + Math.Sin(angle) * radius;
             var vect = new Vector2((float)x, (float)y) - new Vector2(host.X, host.Y);
             vect.Normalize();
-            vect *= (float)spd * time.DeltaTime;
+            vect *= (float)spd * time.BehaviourTickTime;
 
             host.ValidateAndMove(host.X + vect.X, host.Y + vect.Y);
 

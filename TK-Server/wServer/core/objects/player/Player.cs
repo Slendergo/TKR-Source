@@ -728,6 +728,7 @@ namespace wServer.core.objects
             if (!IsAlive)
                 return;
 
+            PlayerUpdate.SendUpdate();
             PlayerUpdate.SendNewTick(time.ElaspedMsDelta);
         }
 

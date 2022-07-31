@@ -58,7 +58,7 @@ namespace wServer.logic.behaviors
 
             if (s.Direction != Vector2.Zero)
             {
-                var dist = host.GetSpeed(_speed) * time.DeltaTime;
+                var dist = host.GetSpeed(_speed) * time.DeltaTime; // todo
 
                 host.ValidateAndMove(host.X + s.Direction.X * dist, host.Y + s.Direction.Y * dist);
 

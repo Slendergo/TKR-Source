@@ -57,7 +57,7 @@ namespace wServer.logic.behaviors
                 if (host.HasConditionEffect(ConditionEffects.Paralyzed))
                     return;
 
-                var spd = host.GetSpeed(speed) * time.DeltaTime;
+                var spd = host.GetSpeed(speed) * time.BehaviourTickTime;
 
                 if (Math.Abs(X - host.X) > 0.5 || Math.Abs(Y - host.Y) > 0.5)
                 {

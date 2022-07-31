@@ -30,7 +30,7 @@ namespace wServer.logic.behaviors
             {
                 Status = CycleStatus.InProgress;
                 vect.Normalize();
-                vect *= host.GetSpeed(_speed) * time.DeltaTime;
+                vect *= host.GetSpeed(_speed) * time.BehaviourTickTime;
                 host.ValidateAndMove(host.X + vect.X, host.Y + vect.Y);
             }
             else

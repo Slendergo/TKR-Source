@@ -495,7 +495,8 @@ namespace wServer
             return entities.Aggregate((curmin, x) => curmin == null || x.DistSqr(entity) < curmin.DistSqr(entity) ? x : curmin);
         }
 
-        public static float GetSpeed(this Entity entity, float spd) => entity.HasConditionEffect(ConditionEffects.Slowed) ? (5.55f * spd + 0.74f) / 2 : 5.55f * spd + 0.74f;
+        public static float GetSpeed(this Entity entity, float spd) => entity.HasConditionEffect(ConditionEffects.Slowed) ? spd * 0.5f : spd;
+        //public static float GetSpeed(this Entity entity, float spd) => entity.HasConditionEffect(ConditionEffects.Slowed) ? (5.55f * spd + 0.74f) / 2 : 5.55f * spd + 0.74f;
 
         public static void HandleUnavailableInventoryAction(this Player player, ushort objectId, Random random, IContainer container, int slotId)
         {

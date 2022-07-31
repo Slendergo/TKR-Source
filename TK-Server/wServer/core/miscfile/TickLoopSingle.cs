@@ -32,8 +32,6 @@ namespace wServer.core
             var realmTime = new TickTime();
             var last = 0L;
 
-            var mre = new ManualResetEvent(false);
-
             while (true)
             {
                 if (!CoreServerManager.Initialized)
@@ -43,7 +41,7 @@ namespace wServer.core
                 }
 
                 var current = realmTime.TotalElapsedMs = watch.ElapsedMilliseconds;
-                var delta = (int)(current - last);
+                var delta = Math.Max(200, (int)(current - last));
 
                 realmTime.TickCount++;
                 realmTime.ElaspedMsDelta = delta;
@@ -52,7 +50,7 @@ namespace wServer.core
                 {
                     if (Stopped || World.Update(ref realmTime))
                     {
-                        TickThreadSingle.WorldManager.RemoveWorld(World);
+                        _ = TickThreadSingle.WorldManager.RemoveWorld(World);
                         break;
                     }
                 }
@@ -65,7 +63,7 @@ namespace wServer.core
 
                 var sleepTime = Math.Max(0, 200 - logicTime);
 
-                mre.WaitOne(sleepTime);
+                Thread.Sleep(sleepTime);
 
                 last = current;
             }

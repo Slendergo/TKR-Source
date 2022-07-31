@@ -325,10 +325,8 @@ namespace wServer.core.objects
             GetDrops(update);
 
             if (update.Tiles.Count == 0 && update.NewObjs.Count == 0 && update.Drops.Count == 0)
-                return; // we dont send
-
+                return;
             Player.Client.SendPacket(update, PacketPriority.High);
-            //Player.Client.AwaitingUpdate = true;
         }
 
         // does this still error?

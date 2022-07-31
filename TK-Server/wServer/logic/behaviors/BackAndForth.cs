@@ -24,7 +24,7 @@ namespace wServer.logic.behaviors
             if (host.HasConditionEffect(ConditionEffects.Paralyzed))
                 return;
 
-            var moveDist = host.GetSpeed(speed) * time.DeltaTime;
+            var moveDist = host.GetSpeed(speed) * time.BehaviourTickTime;
 
             if (dist > 0)
             {

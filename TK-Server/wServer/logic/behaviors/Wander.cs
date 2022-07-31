@@ -30,7 +30,7 @@ namespace wServer.logic.behaviors
                 Status = CycleStatus.Completed;
             }
 
-            var dist = host.GetSpeed(speed) * time.DeltaTime;
+            var dist = host.GetSpeed(speed) * time.BehaviourTickTime;
 
             host.ValidateAndMove(host.X + storage.Direction.X * dist, host.Y + storage.Direction.Y * dist);
 

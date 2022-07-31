@@ -69,27 +69,27 @@ namespace wServer.networking
 
             _handler.BeginHandling(Socket);
 
-            StopTask_ = false;
-            Task.Factory.StartNew(() => DoTask(), TaskCreationOptions.LongRunning);
+            //StopTask_ = false;
+            //Task.Factory.StartNew(() => DoTask(), TaskCreationOptions.LongRunning);
         }
 
         //public bool AwaitingUpdate { get; set; }
 
-        public bool StopTask_;
-        public void DoTask()
-        {
-            while (!StopTask_)
-            {
-                if (Player == null) //|| AwaitingUpdate)
-                {
-                    Thread.Sleep(50);
-                    continue;
-                }
+        //public bool StopTask_;
+        //public void DoTask()
+        //{
+        //    while (!StopTask_)
+        //    {
+        //        if (Player == null) //|| AwaitingUpdate)
+        //        {
+        //            Thread.Sleep(50);
+        //            continue;
+        //        }
 
-                Player.PlayerUpdate?.SendUpdate();
-                Thread.Sleep(50);
-            }
-        }
+        //        Player.PlayerUpdate?.SendUpdate();
+        //        Thread.Sleep(50);
+        //    }
+        //}
 
         public void Disconnect(string reason = "")
         {
@@ -113,7 +113,7 @@ namespace wServer.networking
                         var msg = $"{e.Message}\n{e.StackTrace}";
                         Log.Error(msg);
                     }
-                StopTask_ = true;
+                //StopTask_ = true;
                 Player?.CleanupPlayerUpdate();
                 CoreServerManager.ConnectionManager.Disconnect(this);
 

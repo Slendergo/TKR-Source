@@ -53,7 +53,7 @@ namespace wServer.logic.behaviors
 
             if (!returned)
             {
-                var spd = host.GetSpeed(speed) * time.DeltaTime;
+                var spd = host.GetSpeed(speed) * time.BehaviourTickTime;
 
                 if (Math.Abs(X - host.X) > 0.5 || Math.Abs(Y - host.Y) > 0.5)
                 {

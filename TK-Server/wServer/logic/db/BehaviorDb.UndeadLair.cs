@@ -104,7 +104,7 @@ namespace wServer.logic
                 new ItemLoot("Toga Picta", 0.015),
                 new ItemLoot("Interregnum", 0.015),
                 new ItemLoot("Tormentor’s Wrath", 0.01),
-                new ItemLoot("Undead Lair Key", 0.0001, 0, 0.03),
+                new ItemLoot("Undead Lair Key", 0.001, 0, 0.03),
 
                 new ItemLoot("Magic Dust", 0.5)
                 )

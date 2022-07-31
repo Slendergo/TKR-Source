@@ -1367,7 +1367,7 @@ namespace wServer.logic
                 new ItemLoot("Toga Picta", 0.02),
                 new ItemLoot("Interregnum", 0.02),
                 new ItemLoot("Tormentor’s Wrath", 0.015),
-                new ItemLoot("Undead Lair Key", 0.015, 0, 0.03),
+                new ItemLoot("Undead Lair Key", 0.005, 0, 0.03),
                 new TierLoot(4, ItemType.Ability, 0.01),
                 new TierLoot(5, ItemType.Ability, 0.005),
                 new TierLoot(9, ItemType.Armor, 0.01),
@@ -1466,7 +1466,7 @@ namespace wServer.logic
                 new ItemLoot("Toga Picta", 0.04),
                 new ItemLoot("Interregnum", 0.04),
                 new ItemLoot("Tormentor’s Wrath", 0.03),
-                new ItemLoot("Undead Lair Key", 0.5, 0, 0.03),
+                new ItemLoot("Undead Lair Key", 0.02, 0, 0.03),
                 new TierLoot(6, ItemType.Ability, 0.1),
                 new TierLoot(13, ItemType.Armor, 0.1),
                 new TierLoot(13, ItemType.Weapon, 0.1)

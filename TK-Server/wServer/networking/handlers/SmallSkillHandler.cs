@@ -21,86 +21,164 @@ namespace wServer.networking.handlers
 
             #region Check of things
             if (player.Node1TickMin > 5)
-            { player.Node1TickMin = 5; }
+                player.Node1TickMin = 5;
             if (player.Node1TickMaj > 10)
-            { player.Node1TickMaj = 10; }
+            {
+                player.Node1TickMaj = 10;
+            }
             if (player.Node1Med > 3)
-            { player.Node1Med = 3; }
+            {
+                player.Node1Med = 3;
+            }
             if (player.Node1Big > 2)
-            { player.Node1Big = 2; }
+            {
+                player.Node1Big = 2;
+            }
             if (player.Node2TickMin > 5)
-            { player.Node2TickMin = 5; }
+            {
+                player.Node2TickMin = 5;
+            }
             if (player.Node2TickMaj > 10)
-            { player.Node2TickMaj = 10; }
+            {
+                player.Node2TickMaj = 10;
+            }
             if (player.Node2Med > 3)
-            { player.Node2Med = 3; }
+            {
+                player.Node2Med = 3;
+            }
             if (player.Node2Big > 2)
-            { player.Node2Big = 2; }
+            {
+                player.Node2Big = 2;
+            }
             if (player.Node3TickMin > 5)
-            { player.Node3TickMin = 5; }
+            {
+                player.Node3TickMin = 5;
+            }
             if (player.Node3TickMaj > 10)
-            { player.Node3TickMaj = 10; }
+            {
+                player.Node3TickMaj = 10;
+            }
             if (player.Node3Med > 3)
-            { player.Node3Med = 3; }
+            {
+                player.Node3Med = 3;
+            }
             if (player.Node3Big > 2)
-            { player.Node3Big = 2; }
+            {
+                player.Node3Big = 2;
+            }
             if (player.Node4TickMin > 5)
-            { player.Node4TickMin = 5; }
+            {
+                player.Node4TickMin = 5;
+            }
             if (player.Node4TickMaj > 10)
-            { player.Node4TickMaj = 10; }
+            {
+                player.Node4TickMaj = 10;
+            }
             if (player.Node4Med > 3)
-            { player.Node4Med = 3; }
+            {
+                player.Node4Med = 3;
+            }
             if (player.Node4Big > 2)
-            { player.Node4Big = 2; }
+            {
+                player.Node4Big = 2;
+            }
             if (player.Node5TickMin > 5)
-            { player.Node5TickMin = 5; }
+            {
+                player.Node5TickMin = 5;
+            }
             if (player.Node5TickMaj > 10)
-            { player.Node5TickMaj = 10; }
+            {
+                player.Node5TickMaj = 10;
+            }
             if (player.Node5Med > 3)
-            { player.Node5Med = 3; }
+            {
+                player.Node5Med = 3;
+            }
             if (player.Node5Big > 2)
-            { player.Node5Big = 2; }
+            {
+                player.Node5Big = 2;
+            }
 
             if (player.Node1TickMin < 0)
-            { player.Node1TickMin = 0; }
+            {
+                player.Node1TickMin = 0;
+            }
             if (player.Node1TickMaj < 0)
-            { player.Node1TickMaj = 0; }
+            {
+                player.Node1TickMaj = 0;
+            }
             if (player.Node1Med < 0)
-            { player.Node1Med = 0; }
+            {
+                player.Node1Med = 0;
+            }
             if (player.Node1Big < 0)
-            { player.Node1Big = 0; }
+            {
+                player.Node1Big = 0;
+            }
             if (player.Node2TickMin < 0)
-            { player.Node2TickMin = 0; }
+            {
+                player.Node2TickMin = 0;
+            }
             if (player.Node2TickMaj < 0)
-            { player.Node2TickMaj = 0; }
+            {
+                player.Node2TickMaj = 0;
+            }
             if (player.Node2Med < 0)
-            { player.Node2Med = 0; }
+            {
+                player.Node2Med = 0;
+            }
             if (player.Node2Big < 0)
-            { player.Node2Big = 0; }
+            {
+                player.Node2Big = 0;
+            }
             if (player.Node3TickMin < 0)
-            { player.Node3TickMin = 0; }
+            {
+                player.Node3TickMin = 0;
+            }
             if (player.Node3TickMaj < 0)
-            { player.Node3TickMaj = 0; }
+            {
+                player.Node3TickMaj = 0;
+            }
             if (player.Node3Med < 0)
-            { player.Node3Med = 0; }
+            {
+                player.Node3Med = 0;
+            }
             if (player.Node3Big < 0)
-            { player.Node3Big = 0; }
+            {
+                player.Node3Big = 0;
+            }
             if (player.Node4TickMin < 0)
-            { player.Node4TickMin = 0; }
+            {
+                player.Node4TickMin = 0;
+            }
             if (player.Node4TickMaj < 0)
-            { player.Node4TickMaj = 0; }
+            {
+                player.Node4TickMaj = 0;
+            }
             if (player.Node4Med < 0)
-            { player.Node4Med = 0; }
+            {
+                player.Node4Med = 0;
+            }
             if (player.Node4Big < 0)
-            { player.Node4Big = 0; }
+            {
+                player.Node4Big = 0;
+            }
             if (player.Node5TickMin < 0)
-            { player.Node5TickMin = 0; }
+            {
+                player.Node5TickMin = 0;
+            }
             if (player.Node5TickMaj < 0)
-            { player.Node5TickMaj = 0; }
+            {
+                player.Node5TickMaj = 0;
+            }
             if (player.Node5Med < 0)
-            { player.Node5Med = 0; }
+            {
+                player.Node5Med = 0;
+            }
             if (player.Node5Big < 0)
-            { player.Node5Big = 0; }
+            {
+                player.Node5Big = 0;
+            }
 
             var newMaxedInt = 0;
 
@@ -217,6 +295,7 @@ namespace wServer.networking.handlers
                 player.Stats.Base.ReCalculateValues();
                 player.Stats.Boost.ReCalculateValues();
             }
+
             if (packet.skillNumber == 14)
             {
                 if (player.Points <= 0)

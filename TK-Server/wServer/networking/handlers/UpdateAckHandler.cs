@@ -9,7 +9,6 @@ namespace wServer.networking.handlers
 
         protected override void HandlePacket(Client client, UpdateAck packet)
         {
-            //client.AwaitingUpdate = false;
         }
     }
 }

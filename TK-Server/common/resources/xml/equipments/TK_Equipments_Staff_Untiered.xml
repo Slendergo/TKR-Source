@@ -512,7 +512,7 @@
     <feedPower>5</feedPower>
     <DisplayId>Staff of Zephyrs</DisplayId>
   </Object>
-  <Object type="0x515c" id="Envy">
+	<!-- <Object type="0x515c" id="Envy">
     <Class>Equipment</Class>
     <Item />
     <Texture>
@@ -539,5 +539,5 @@
     <ActivateOnEquip stat="27" amount="-4">IncrementStat</ActivateOnEquip>
     <BagType>6</BagType>
     <FameBonus>6</FameBonus>
-  </Object>
+  </Object> -->
 </Objects>

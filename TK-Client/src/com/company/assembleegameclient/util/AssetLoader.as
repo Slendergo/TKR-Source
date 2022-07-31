@@ -50,6 +50,7 @@ public class AssetLoader
        AssetLibrary.addImageSet("tieredItems", new EmbeddedAssets.tieredItems().bitmapData, 8, 8);
       AssetLibrary.addImageSet("custom16x16Environment", new EmbeddedAssets.Custom16x16EnvironmentEmbed_().bitmapData, 16, 16);
       AssetLibrary.addImageSet("CustomObjects32x32", new EmbeddedAssets.CustomObjects32x32Embed_().bitmapData, 32, 32);
+      AssetLibrary.addImageSet("CustomObjectsSkillTree", new EmbeddedAssets.CustomObjectsSkillTreeEmbed_().bitmapData, 32, 32);
       AssetLibrary.addImageSet("CustomProjsBig", new EmbeddedAssets.CustomProjsBigEmbed_().bitmapData, 16, 16);
       AssetLibrary.addImageSet("LostHallsChars16x16b", new EmbeddedAssets.LostHallsChars16x16bEmbed_().bitmapData, 16, 16);
       AssetLibrary.addImageSet("LostHallsProjs2", new EmbeddedAssets.LostHallsProjs2Embed_().bitmapData, 8, 8);

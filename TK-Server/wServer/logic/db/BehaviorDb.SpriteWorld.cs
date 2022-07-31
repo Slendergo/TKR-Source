@@ -167,7 +167,6 @@ namespace wServer.logic
                 new ItemLoot("Potion of Defense", 1),
                 new ItemLoot("Sprite Wand", 0.01),
                 new ItemLoot("Cloak of the Planewalker", 0.01),
-                new ItemLoot("Ray Katana", 0.01),
                 new ItemLoot("Staff of Extreme Prejudice", 0.01),
                 new TierLoot(4, ItemType.Ring, 0.12),
                 new TierLoot(10, ItemType.Armor, 0.12),

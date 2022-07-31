@@ -692,16 +692,17 @@ namespace wServer.logic
                 new ItemLoot("Bracer of the Guardian", 0.0014)
                 ),
             new Threshold(0.001,
-                new TierLoot(11, ItemType.Weapon, 0.1),
-                new TierLoot(12, ItemType.Weapon, 0.08),
-                new TierLoot(6, ItemType.Ability, 0.04),
+                new TierLoot(12, ItemType.Weapon, 0.2),
+                new TierLoot(13, ItemType.Weapon, 0.1),
+                new TierLoot(6, ItemType.Ability, 0.2),
                 new TierLoot(12, ItemType.Armor, 0.07),
                 new TierLoot(13, ItemType.Armor, 0.05),
                 new TierLoot(6, ItemType.Ring, 0.04),
-                new ItemLoot("Potion of Attack", 1),
-                new ItemLoot("Potion of Defense", 1),
-                new ItemLoot("Potion of Attack", 1),
-                new ItemLoot("Potion of Defense", 1)
+                new ItemLoot("Special Dust", 0.01),
+                new ItemLoot("Greater Potion of Attack", 1),
+                new ItemLoot("Greater Potion of Defense", 1),
+                new ItemLoot("Greater Potion of Attack", 0.5),
+                new ItemLoot("Greater Potion of Defense", 0.5)
                 )
             )
         #endregion 1stbosschest
@@ -725,14 +726,12 @@ namespace wServer.logic
                 //new ItemLoot("Infused Souls", 0.0015)
                 ),
             new Threshold(0.001,
-                new TierLoot(11, ItemType.Weapon, 0.1),
-                new TierLoot(12, ItemType.Weapon, 0.07),
-                new TierLoot(6, ItemType.Ability, 0.05),
-                new TierLoot(12, ItemType.Armor, 0.06),
-                new TierLoot(13, ItemType.Armor, 0.05),
+                new TierLoot(13, ItemType.Weapon, 0.2),
+                new TierLoot(6, ItemType.Ability, 0.2),
+                new TierLoot(13, ItemType.Armor, 0.2),
                 new TierLoot(6, ItemType.Ring, 0.04),
-                new ItemLoot("Potion of Mana", 1),
-                new ItemLoot("Potion of Mana", 1)
+                new ItemLoot("Greater Potion of Mana", 1),
+                new ItemLoot("Greater Potion of Mana", 0.5)
                 )
             )
         #endregion 2ndbosschest
@@ -1654,7 +1653,6 @@ namespace wServer.logic
         .Init("shtrs The Forgotten King",
             new State(
                 new ScaleHP2(20),
-                new RealmPortalDrop(),
                 new HpLessTransition(0.1, "Death"),
                 new State("Idle",
                     new ConditionalEffect(ConditionEffectIndex.Invincible),
@@ -2437,7 +2435,8 @@ namespace wServer.logic
                 new HealGroup(30, "Crystals", coolDown: 2000, healAmount: 1500),
                 new State("spawn",
                     new ConditionalEffect(ConditionEffectIndex.Invincible),
-                    new Orbit(0.4, 1, 5, "shtrs The Forgotten King"),
+                    new Prioritize(
+                        new Orbit(0.4, 1, 5, "shtrs The Forgotten King", speedVariance: .2, radiusVariance: .5)),
                     new TimedTransition(7000, "follow")
                     ),
                 new State("follow",
@@ -2446,7 +2445,8 @@ namespace wServer.logic
                     new TimedTransition(3000, "dafuq")
                     ),
                 new State("dafuq",
-                    new Orbit(1.0, 4, 10, "shtrs Crystal Tracker"),
+                     new Prioritize(
+                        new Orbit(1.0, 4, 30, "shtrs Crystal Tracker", speedVariance: .2, radiusVariance: .5)),
                     new Follow(0.4, range: 6),
                     new Follow(0.4, range: 2, duration: 2000, coolDown: 1500),
                     new TimedTransition(2000, "follow")
@@ -2457,7 +2457,8 @@ namespace wServer.logic
             new State(
                 new State("spawn",
                     new ConditionalEffect(ConditionEffectIndex.Invincible),
-                    new Orbit(0.4, 1, 5, "shtrs The Forgotten King"),
+                    new Prioritize(
+                        new Orbit(0.4, 1, 5, "shtrs The Forgotten King", speedVariance: .2, radiusVariance: .5)),
                     new TimedTransition(7000, "follow")
                     ),
                 new State("follow",
@@ -2466,7 +2467,8 @@ namespace wServer.logic
                     new TimedTransition(25, "dafuq")
                     ),
                 new State("dafuq",
-                    new Orbit(1.0, 4, 10, "shtrs Crystal Tracker"),
+                     new Prioritize(
+                        new Orbit(1.0, 4, 30, "shtrs Crystal Tracker", speedVariance: .2, radiusVariance: .5)),
                     new Follow(0.4, range: 6),
                     new Shoot(5, 4, 4, projectileIndex: 0, coolDown: 1000)
                     )
@@ -2476,18 +2478,21 @@ namespace wServer.logic
             new State(
                 new State("spawn",
                     new ConditionalEffect(ConditionEffectIndex.Invincible),
-                    new Orbit(0.4, 1, 5, "shtrs The Forgotten King"),
+                    new Prioritize(
+                        new Orbit(0.4, 1, 5, "shtrs The Forgotten King", speedVariance: .2, radiusVariance: .5)),
                     new TimedTransition(7000, "orbit")
                     ),
                 new State("orbit",
                     new TossObject("shtrs Fire Portal", 5, coolDown: 8000),
-                    new Orbit(1.0, 4, 10, "shtrs Crystal Tracker"),
+                     new Prioritize(
+                        new Orbit(1.0, 4, 10, "shtrs Crystal Tracker", speedVariance: .2, radiusVariance: .5)),
                     new Follow(0.4, range: 6),
                     new Follow(0.4, range: 6),
                     new TimedTransition(5000, "ThrowPortal")
                     ),
                 new State("ThrowPortal",
-                    new Orbit(1.0, 4, 10, "shtrs Crystal Tracker"),
+                     new Prioritize(
+                        new Orbit(1.0, 4, 10, "shtrs Crystal Tracker", speedVariance: .2, radiusVariance: .5)),
                     new Follow(0.4, range: 6),
                     new Follow(0.4, range: 6),
                     new TossObject("shtrs Fire Portal", 5, coolDown: 8000),
@@ -2499,17 +2504,20 @@ namespace wServer.logic
             new State(
                 new State("spawn",
                     new ConditionalEffect(ConditionEffectIndex.Invincible),
-                    new Orbit(0.4, 1, 5, "shtrs The Forgotten King"),
+                    new Prioritize(
+                        new Orbit(0.4, 1, 5, "shtrs The Forgotten King", speedVariance: .2, radiusVariance: .5)),
                     new TimedTransition(7000, "orbit")
                     ),
                 new State("orbit",
                     new TossObject("shtrs Ice Portal", 5, coolDown: 8000),
-                    new Orbit(1.0, 4, 10, "shtrs Crystal Tracker"),
+                    new Prioritize(
+                        new Orbit(1.0, 4, 10, "shtrs Crystal Tracker", speedVariance: .2, radiusVariance: .5)),
                     new Follow(0.4, range: 6),
                     new TimedTransition(5000, "ThrowPortal")
                     ),
                 new State("ThrowPortal",
-                    new Orbit(1.0, 4, 10, "shtrs Crystal Tracker"),
+                     new Prioritize(
+                        new Orbit(1.0, 4, 10, "shtrs Crystal Tracker", speedVariance: .2, radiusVariance: .5)),
                     new Follow(0.4, range: 6),
                     new Follow(0.4, range: 6),
                     new TossObject("shtrs Ice Portal", 5, coolDown: 8000),
@@ -2589,6 +2597,7 @@ namespace wServer.logic
         #region 3rdbosschest
         .Init("shtrs Loot Balloon King",
             new State(
+                new RealmPortalDrop(),
                 new ScaleHP2(20),
                 new State("Idle",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
@@ -2603,20 +2612,18 @@ namespace wServer.logic
                 ),
             new Threshold(0.03,
                 new ItemLoot("The Forgotten Crown", 0.003),
-                new ItemLoot("Shatters Key", 0.1)
+                new ItemLoot("Shatters Key", 0.01)
                 ),
             new Threshold(0.01,
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.001,
-                new TierLoot(14, ItemType.Weapon, 0.08),
-                new TierLoot(6, ItemType.Ability, 0.04),
-                new TierLoot(7, ItemType.Ability, 0.04),
-                new TierLoot(13, ItemType.Armor, 0.07),
-                new TierLoot(14, ItemType.Armor, 0.05),
-                new TierLoot(6, ItemType.Ring, 0.06),
-                new ItemLoot("Potion of Life", 1),
-                new ItemLoot("Potion of Life", 1)
+                new TierLoot(14, ItemType.Weapon, 0.2),
+                new TierLoot(7, ItemType.Ability, 0.2),
+                new TierLoot(14, ItemType.Armor, 0.2),
+                new TierLoot(6, ItemType.Ring, 0.2),
+                new ItemLoot("Greater Potion of Life", 1),
+                new ItemLoot("Greater Potion of Life", 1)
                 )
             )
         #endregion 3rdbosschest

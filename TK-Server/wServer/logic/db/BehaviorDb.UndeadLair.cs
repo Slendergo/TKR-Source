@@ -17,7 +17,7 @@ namespace wServer.logic
                     new PlayerWithinTransition(15, "Start", false)
                     ),
                 new State("Start",
-                    new InvisiToss("invisible Spawner", 8, 90, coolDown: 9999999),
+                    new InvisiToss("invisible Spawner", 4, 90, coolDown: 9999999),
                     new Taunt("Hello Warrior, What are you looking for?"),
                     new Flash(0x00FF00, 1, 3),
                     new TimedTransition(3000, "Start Shooting")

@@ -312,11 +312,11 @@ namespace wServer.logic
                 new ConditionalEffect(ConditionEffectIndex.Invincible, true),
                 new Shoot(1, 1, projectileIndex: 0, coolDown: 50),
                 new State("Start",
-                    new TimedTransition(3000, "Dissapear")
+                    new TimedTransition(500, "Dissapear")
                     ),
                 new State("Dissapear",
                     new ChangeSize(-10, 0),
-                    new TimedTransition(2000, "Suicide")
+                    new TimedTransition(500, "Suicide")
                     ),
                 new State("Suicide",
                     new Suicide()
@@ -434,13 +434,13 @@ namespace wServer.logic
                     new Follow(0.6, 5, 0),
                     new Wander(0.6),
                     new Shoot(10, 8, projectileIndex: 0, coolDown: 1500),
-                    new Reproduce("DS Brown Slime Trail", 100000, 500000, 50),
+                    new Reproduce("DS Brown Slime Trail", 100, 10, 50),
                     new PlayerWithinTransition(5, "Player")
                     ),
                 new State("Player",
                     new Follow(0.6, 5, 0),
                     new Shoot(10, 8, projectileIndex: 0, coolDown: 1500),
-                    new Reproduce("DS Brown Slime Trail", 100000, 500000, 50),
+                    new Reproduce("DS Brown Slime Trail", 100, 10, 50),
                     new NoPlayerWithinTransition(5, "No Player")
                     )
                 ),
@@ -451,11 +451,11 @@ namespace wServer.logic
                 new ConditionalEffect(ConditionEffectIndex.Invincible, true),
                 new Shoot(1, 1, projectileIndex: 0, coolDown: 50),
                 new State("Start",
-                    new TimedTransition(3000, "Dissapear")
+                    new TimedTransition(500, "Dissapear")
                     ),
                 new State("Dissapear",
                     new ChangeSize(-10, 0),
-                    new TimedTransition(2000, "Suicide")
+                    new TimedTransition(500, "Suicide")
                     ),
                 new State("Suicide",
                     new Suicide()

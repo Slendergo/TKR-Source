@@ -76,6 +76,7 @@ namespace wServer.logic
         .Init("Crystal Prisoner",
             new State(
                 new ScaleHP2(20),
+                new DropPortalOnDeath("Deadwater Docks", 1),
                 new Spawn("Crystal Prisoner Steed", maxChildren: 3, initialSpawn: 0, coolDown: 200, givesNoXp: false),
                 new State("pause",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),

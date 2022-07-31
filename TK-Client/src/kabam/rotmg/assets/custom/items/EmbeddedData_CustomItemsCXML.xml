@@ -276,7 +276,7 @@
         <Soulbound />
         <BagType>8</BagType>
     </Object>
-    <Object type="0x501d" id="Earth and Wind Fragment">
+    <Object type="0x501d" id="Bedrock Fragment">
         <Class>Equipment</Class>
         <Item />
         <SlotType>10</SlotType>
@@ -291,7 +291,7 @@
         <Soulbound />
         <BagType>7</BagType>
     </Object>
-    <Object type="0x501e" id="Fire and Water Fragment">
+    <Object type="0x501e" id="Obsidian Fragment">
         <Class>Equipment</Class>
         <Item />
         <SlotType>10</SlotType>

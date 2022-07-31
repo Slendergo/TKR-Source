@@ -506,7 +506,7 @@
     <ActivateOnEquip stat="27" amount="10">IncrementStat</ActivateOnEquip>
     <BagType>6</BagType>
     <FameBonus>5</FameBonus>
-    <DisplayId>Unholy Necklace</DisplayId>
+    <DisplayId>Corrupted Pendant</DisplayId>
   </Object>
   <Object type="0x5004" id="Mushroom Loop">
     <Class>Equipment</Class>
@@ -638,7 +638,7 @@
     <BagType>7</BagType>
     <FameBonus>5</FameBonus>
   </Object>
-  <Object type="0x5408" id="Diadem of the Monkey King">
+ <!-- <Object type="0x5408" id="Diadem of the Monkey King">
     <Class>Equipment</Class>
     <Item />
     <MonkeyKingsWrath />
@@ -655,5 +655,5 @@
     <ActivateOnEquip stat="27" amount="15">IncrementStat</ActivateOnEquip>
     <BagType>9</BagType>
     <FameBonus>7</FameBonus>
-  </Object>
+  </Object> -->
 </Objects>

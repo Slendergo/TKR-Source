@@ -402,7 +402,7 @@
     <ArcGap>5</ArcGap>
     <BagType>7</BagType>
     <FameBonus>5</FameBonus>
-    <DisplayId>Brute’s Longsword</DisplayId>
+    <DisplayId>Blade of the Brute</DisplayId>
   </Object>
   <Object type="0x4989" id="Massacre">
     <Class>Equipment</Class>

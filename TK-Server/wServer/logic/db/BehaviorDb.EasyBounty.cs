@@ -338,9 +338,6 @@ namespace wServer.logic
                     new Suicide()
                     )
                 ),
-            new Threshold(0.006,
-                new ItemLoot("Lust", 0.01)
-                ),
             new Threshold(0.01,
                 new ItemLoot("Potion of Attack", 0.8),
                 new ItemLoot("Potion of Mana", 0.5),
@@ -429,9 +426,6 @@ namespace wServer.logic
                     new Suicide()
                     )
                 ),
-            new Threshold(0.006,
-                new ItemLoot("Envy", 0.01)
-                ),
             new Threshold(0.01,
                 new ItemLoot("Potion of Dexterity", 0.8),
                 new ItemLoot("Potion of Mana", 0.5),
@@ -471,9 +465,6 @@ namespace wServer.logic
                     new Shoot(0, count: 10, projectileIndex: Fiery_Succubus.fire_enchanted_bullet, shootAngle: 36, fixedAngle: 0),
                     new Suicide()
                     )
-                ),
-                new Threshold(0.01,
-                new ItemLoot("Lust", 0.001)
                  )
             )
         .Init("Fiery Twin Succubus",
@@ -514,9 +505,6 @@ namespace wServer.logic
                     new Shoot(0, count: 10, projectileIndex: Fiery_Twin_Succubus.fire_enchanted_bullet, shootAngle: 36, fixedAngle: 0),
                     new Suicide()
                     )
-                  ),
-                new Threshold(0.01,
-                new ItemLoot("Lust", 0.001)
                  )
             )
         .Init("Icy Succubus",
@@ -544,9 +532,6 @@ namespace wServer.logic
                     new Shoot(0, count: 10, projectileIndex: Fiery_Succubus.fire_enchanted_bullet, shootAngle: 36, fixedAngle: 0),
                     new Suicide()
                     )
-                    ),
-                new Threshold(0.01,
-                new ItemLoot("Envy", 0.001)
                  )
             )
         .Init("Icy Twin Succubus",
@@ -587,9 +572,6 @@ namespace wServer.logic
                     new Shoot(0, count: 10, projectileIndex: Fiery_Twin_Succubus.fire_enchanted_bullet, shootAngle: 36, fixedAngle: 0),
                     new Suicide()
                     )
-                 ),
-                new Threshold(0.01,
-                new ItemLoot("Envy", 0.001)
                  )
             );
     }

@@ -1366,6 +1366,7 @@
     <Activate id="Undead Lair Portal">Create</Activate>
     <feedPower>200</feedPower>
     <BagType>5</BagType>
+	  <Soulbound />
     <Track />
   </Object>
   <Object type="0x705" id="Pirate Cave Key">
@@ -1383,6 +1384,7 @@
     <feedPower>200</feedPower>
     <BagType>5</BagType>
     <Track />
+	<Soulbound />
   </Object>
   <Object type="0x706" id="Spider Den Key">
     <Class>Equipment</Class>
@@ -1399,6 +1401,7 @@
     <feedPower>200</feedPower>
     <BagType>5</BagType>
     <Track />
+	<Soulbound />
   </Object>
   <Object type="0x70a" id="Abyss of Demons Key">
     <Class>Equipment</Class>
@@ -1415,6 +1418,7 @@
     <feedPower>200</feedPower>
     <BagType>5</BagType>
     <Track />
+	<Soulbound />
   </Object>
   <Object type="0x70b" id="Snake Pit Key">
     <Class>Equipment</Class>
@@ -1431,6 +1435,7 @@
     <feedPower>200</feedPower>
     <BagType>5</BagType>
     <Track />
+	<Soulbound />
   </Object>
   <Object type="0x710" id="Tomb of the Ancients Key">
     <Class>Equipment</Class>
@@ -1447,6 +1452,7 @@
     <feedPower>200</feedPower>
     <BagType>5</BagType>
     <Track />
+	<Soulbound />
   </Object>
   <Object type="0x769" id="Tomb of the Ancients (Heroic) Key">
     <Class>Equipment</Class>
@@ -1479,6 +1485,7 @@
     <feedPower>200</feedPower>
     <BagType>5</BagType>
     <Track />
+	<Soulbound />
   </Object>
   <Object type="0x722" id="Wine Cellar Incantation">
     <Class>Equipment</Class>
@@ -1511,6 +1518,7 @@
     <feedPower>200</feedPower>
     <BagType>5</BagType>
     <Track />
+	  <Soulbound />
   </Object>
   <Object type="0xcef" id="Battle Nexus Key">
     <Class>Equipment</Class>
@@ -1527,6 +1535,7 @@
     <feedPower>200</feedPower>
     <BagType>5</BagType>
     <Track />
+	  <Soulbound />
   </Object>
   <Object type="0xc12" id="Coral Juice">
     <Class>Equipment</Class>
@@ -1559,7 +1568,8 @@
     <Activate id="Forbidden Jungle Portal">Create</Activate>
     <feedPower>200</feedPower>
     <BagType>5</BagType>
-    <Track />
+	  <Track />
+	  <Soulbound />
   </Object>
   <Object type="0x748C" id="Ice Cave Key">
     <Class>Equipment</Class>
@@ -1576,6 +1586,7 @@
     <feedPower>200</feedPower>
     <BagType>5</BagType>
     <Track />
+	  <Soulbound />
   </Object>
   <Object type="0xc1a" id="Pollen Powder">
     <Class>Equipment</Class>
@@ -1625,7 +1636,8 @@
     <Activate id="Manor of the Immortals Portal">Create</Activate>
     <feedPower>200</feedPower>
     <BagType>5</BagType>
-    <Track />
+	  <Track />
+	  <Soulbound />
   </Object>
   <Object type="0xc25" id="Ghost Pirate Rum">
     <Class>Equipment</Class>
@@ -1689,7 +1701,8 @@
     <Activate id="Davy Jones' Locker Portal">Create</Activate>
     <feedPower>200</feedPower>
     <BagType>5</BagType>
-    <Track />
+	  <Track />
+	  <Soulbound />
   </Object>
   <Object type="0xc34" id="Sand Pail 5">
     <DisplayId>Sand Pail</DisplayId>
@@ -1870,7 +1883,8 @@
     <Activate id="Beachzone Portal">Create</Activate>
     <feedPower>200</feedPower>
     <BagType>5</BagType>
-    <Track />
+	  <Track />
+	  <Soulbound />
   </Object>
   <Object type="0xc2f" id="Lab Key">
     <Class>Equipment</Class>
@@ -1887,6 +1901,7 @@
     <feedPower>200</feedPower>
     <BagType>5</BagType>
     <Track />
+	  <Soulbound />
   </Object>
   <Object type="0xc41" id="Transformation Potion">
     <Class>Equipment</Class>
@@ -2022,6 +2037,7 @@
     <feedPower>200</feedPower>
     <BagType>5</BagType>
     <Track />
+	  <Soulbound />
   </Object>
   <Object type="0xc63" id="Red Gumball">
     <Class>Equipment</Class>
@@ -2214,6 +2230,7 @@
     <feedPower>200</feedPower>
     <BagType>5</BagType>
     <Track />
+	  <Soulbound />
   </Object>
   <Object type="0x134" id="Halloween Cemetery Key">
     <Class>Equipment</Class>
@@ -2230,6 +2247,7 @@
     <feedPower>200</feedPower>
     <BagType>5</BagType>
     <Track />
+	  <Soulbound />
   </Object>
   <Object type="0xc70" id="Golden Ankh">
     <Class>Equipment</Class>
@@ -2612,6 +2630,7 @@
     <feedPower>200</feedPower>
     <BagType>5</BagType>
     <Track />
+	  <Soulbound />
   </Object>
   <Object type="0xcc9" id="Soft Drink">
     <Class>Equipment</Class>
@@ -2798,6 +2817,7 @@
     <feedPower>200</feedPower>
     <BagType>5</BagType>
     <Track />
+	  <Soulbound />
   </Object>
   <Object type="0xccf" id="Woodland Labyrinth Key">
     <Class>Equipment</Class>
@@ -2814,6 +2834,7 @@
     <feedPower>200</feedPower>
     <BagType>5</BagType>
     <Track />
+	  <Soulbound />
   </Object>
   <Object type="0xcce" id="Deadwater Docks Key">
     <Class>Equipment</Class>
@@ -2830,6 +2851,7 @@
     <feedPower>200</feedPower>
     <BagType>5</BagType>
     <Track />
+	  <Soulbound />
   </Object>
   <Object type="0xcda" id="The Crawling Depths Key">
     <Class>Equipment</Class>
@@ -2846,6 +2868,7 @@
     <feedPower>200</feedPower>
     <BagType>5</BagType>
     <Track />
+	  <Soulbound />
   </Object>
   <Object type="0xcdd" id="Shatters Key">
     <Class>Equipment</Class>
@@ -2860,6 +2883,7 @@
     <Consumable />
     <Activate id="The Shatters">Create</Activate>
     <feedPower>200</feedPower>
+	  <Soulbound />
     <BagType>5</BagType>
     <Track />
   </Object>
@@ -3170,6 +3194,7 @@
     <feedPower>200</feedPower>
     <BagType>5</BagType>
     <Track />
+	  <Soulbound />
   </Object>
   <Object type="0x2292" id="Slime Wizard Skin">
     <Class>Equipment</Class>
@@ -3212,6 +3237,7 @@
     <feedPower>200</feedPower>
     <BagType>5</BagType>
     <Track />
+	  <Soulbound />
   </Object>
   <Object type="0x2298" id="Stanley the Spring Bunny Skin">
     <Class>Equipment</Class>
@@ -3607,6 +3633,7 @@
     <feedPower>200</feedPower>
     <BagType>5</BagType>
     <Track />
+	  <Soulbound />
   </Object>
   <Object type="0x234E" id="Slime Assassin Skin">
     <Class>Equipment</Class>
@@ -3976,6 +4003,7 @@
     <feedPower>200</feedPower>
     <BagType>5</BagType>
     <Track />
+	  <Soulbound />
   </Object>
   <Object type="0xcf0" id="Santa Skin">
     <Class>Equipment</Class>
@@ -4062,6 +4090,7 @@
     <feedPower>200</feedPower>
     <BagType>5</BagType>
     <Track />
+	  <Soulbound />
   </Object>
   <Object type="0x23d" id="Toxic Sewers Key">
     <Class>Equipment</Class>
@@ -4078,6 +4107,7 @@
     <Activate id="Toxic Sewers Portal">Create</Activate>
     <feedPower>260</feedPower>
     <Track />
+	  <Soulbound />
   </Object>
   <Object type="0x11b" id="The Hive Key">
     <Class>Equipment</Class>
@@ -4095,6 +4125,7 @@
     <feedPower>200</feedPower>
     <BagType>5</BagType>
     <Track />
+	  <Soulbound />
   </Object>
   <Object type="0x11c" id="TH Honey bottle">
     <DisplayId>Bottled Honey</DisplayId>
@@ -6032,6 +6063,7 @@
     <Soulbound />
     <Activate id="Daichi Portal">Create</Activate>
     <Track />
+	  <Soulbound />
   </Object>
   <Object type="0x823" id="Lost Halls Key">
     <Class>Equipment</Class>
@@ -6046,6 +6078,7 @@
     <Consumable />
     <Activate id="Lost Halls Portal">Create</Activate>
     <BagType>5</BagType>
+	  <Soulbound />
     <Track />
   </Object>
   <Object type="0xa004" id="Bdwubz Bee Generator">
@@ -7752,6 +7785,7 @@
     <Activate id="Strange Door">Create</Activate>
     <BagType>6</BagType>
     <Track />
+	  <Soulbound />
   </Object>
   <Object type="0x506d" id="Magic Paper">
     <DisplayId>Magic Paper</DisplayId>

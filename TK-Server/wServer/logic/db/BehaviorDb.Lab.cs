@@ -194,9 +194,9 @@ namespace wServer.logic
                 ),
             new Threshold(0.015,
                 new ItemLoot("Jikken", 0.015),
-                new ItemLoot("Unstable Acid Shuriken", 0.015),
+                new ItemLoot("Unstable Acid Shuriken", 0.005),
                 new ItemLoot("Scientific Armor", 0.015),
-                new ItemLoot("Unstable Acid Shuriken", 0.015)
+                new ItemLoot("Ring of Alteration", 0.015)
                 ),
             new Threshold(0.03,
                 new ItemLoot("Scepter of Fulmination", 0.0024, threshold: 0.03),
@@ -209,7 +209,7 @@ namespace wServer.logic
                 new ItemLoot("Grotesque Scepter", 0.01),
                 new ItemLoot("Garment of the Beast", 0.01),
                 new ItemLoot("Horrific Claws", 0.01),
-                new ItemLoot("Lab Key", 0.01, 0, 0.03),
+                new ItemLoot("Lab Key", 0.001, 0, 0.03),
                 new TierLoot(8, ItemType.Weapon, 0.2),
                 new TierLoot(9, ItemType.Weapon, 0.15),
                 new TierLoot(10, ItemType.Weapon, 0.1),

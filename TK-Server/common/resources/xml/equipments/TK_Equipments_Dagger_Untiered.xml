@@ -314,7 +314,7 @@
     <feedPower>800</feedPower>
     <DisplayId>Tribesmen’s Shank</DisplayId>
   </Object>
-  <Object type="0x515b" id="Lust">
+ <!-- <Object type="0x515b" id="Lust"> 
     <Class>Equipment</Class>
     <Item />
     <Rare />
@@ -343,5 +343,5 @@
     <FameBonus>6</FameBonus>
     <NumProjectiles>2</NumProjectiles>
     <OldSound>bladeSwing</OldSound>
-  </Object>
+  </Object> -->
 </Objects>

@@ -152,7 +152,7 @@
 		<FameBonus>7</FameBonus>
 		<DisplayId>Spear of Thiram</DisplayId>
 	</Object>
-  <Object type="0x5409" id="Brute’s Longsword">
+  <Object type="0x5409" id="Blade of the Protector">
     <Class>Equipment</Class>
     <Item />
     <Mutilate />

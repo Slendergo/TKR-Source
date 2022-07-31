@@ -10,6 +10,12 @@ namespace server.account
     {
         public override void HandleRequest(RequestContext context, NameValueCollection query)
         {
+            if (query["tester"] != "1")
+            {
+                Write(context, "<Error>Testers Only</Error>");
+                return;
+            }
+
             if (!Utils.IsValidEmail(query["newGUID"]))
                 Write(context, "<Error>Invalid email</Error>");
             else

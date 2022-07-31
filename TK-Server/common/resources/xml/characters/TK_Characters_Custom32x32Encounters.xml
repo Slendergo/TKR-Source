@@ -170,6 +170,32 @@
       <ConditionEffect duration="0.5">Confused</ConditionEffect>
     </Projectile>
   </Object>
+	<Object type="0x9902" id="Mushroom Bomb">
+		<Enemy />
+		<DisplayId>Mushroom Bomb</DisplayId>
+		<Quest />
+		<God />
+		<Class>Character</Class>
+		<AnimatedTexture>
+			<File>Custom8x8Encounters</File>
+			<Index>0</Index>
+		</AnimatedTexture>
+		<HitSound>monster/lizard_god_hit</HitSound>
+		<DeathSound>monster/lizard_god_death</DeathSound>
+		<Size>100</Size>
+		<MaxHitPoints>10000</MaxHitPoints>
+		<Defense>10</Defense>
+		<Level>20</Level>
+		<XpMult>1.4</XpMult>
+		<Projectile id="0">
+			<ObjectId>Mini Mushroom Shoot</ObjectId>
+			<Damage>180</Damage>
+			<Speed>170</Speed>
+			<Size>160</Size>
+			<LifetimeMS>3800</LifetimeMS>
+			<MultiHit />
+		</Projectile>
+	</Object>
   <Object type="0x4962" id="Mini Mushroom">
     <Enemy />
     <DisplayId>Mini Mushroom</DisplayId>

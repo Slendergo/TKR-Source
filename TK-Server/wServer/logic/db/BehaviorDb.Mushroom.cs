@@ -83,6 +83,20 @@ namespace wServer.logic
                 new ItemLoot("Magic Dust", 0.5)
                 )
             )
+        .Init("Mushroom Bomb",
+            new State(
+                //new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                new State("Start Follow Player",
+                    new Follow(1, 8, 0, 1100),
+                    new TimedTransition(1100, "Explotes")
+                    ),
+                new State("Explotes",
+                    new Flash(0xFF0000, 0.5, 5),
+                    new Shoot(8, count: 8, projectileIndex: 0, coolDownOffset: 0, coolDown: 800),
+                    new Decay(100)
+                    )
+                )
+            )
         .Init("Mini Mushroom",
             new State(
                 //new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),

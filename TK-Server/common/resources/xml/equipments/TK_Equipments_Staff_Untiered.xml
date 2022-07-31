@@ -430,17 +430,17 @@
     </Texture>
     <SlotType>17</SlotType>
     <Description>A stem of an enormous mushroom cap filled with spores that was pulled from the great Mushroom.</Description>
-    <RateOfFire>0.70</RateOfFire>
+    <RateOfFire>0.65</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
       <ObjectId>Mushroom Staff Shoot</ObjectId>
-      <Speed>45</Speed>
+      <Speed>75</Speed>
       <MinDamage>70</MinDamage>
       <MaxDamage>80</MaxDamage>
-      <LifetimeMS>1500</LifetimeMS>
-      <Amplitude>0.3</Amplitude>
-      <Frequency>1.85</Frequency>
-      <Size>100</Size>
+      <LifetimeMS>1000</LifetimeMS>
+      <Amplitude>0.5</Amplitude>
+      <Frequency>1.35</Frequency>
+      <Size>130</Size>
       <ArmorPiercing />
       <MultiHit />
     </Projectile>

@@ -245,11 +245,11 @@
             <ConditionEffect duration="0.5">Confused</ConditionEffect>
         </Projectile>
     </Object>
-    <Object type="0x4962" id="Mini Mushroom">
-        <Enemy/>
-        <DisplayId>Mini Mushroom</DisplayId>
-        <Quest/>
-        <God/>
+    <Object type="0x9902" id="Mushroom Bomb">
+        <Enemy />
+        <DisplayId>Mushroom Bomb</DisplayId>
+        <Quest />
+        <God />
         <Class>Character</Class>
         <AnimatedTexture>
             <File>Custom8x8Encounters</File>
@@ -268,9 +268,7 @@
             <Speed>170</Speed>
             <Size>160</Size>
             <LifetimeMS>3800</LifetimeMS>
-            <MultiHit/>
-            <ConditionEffect duration="1">Unstable</ConditionEffect>
-            <ConditionEffect duration="2">Hallucinating</ConditionEffect>
+            <MultiHit />
         </Projectile>
     </Object>
     <Object type="0x4963" id="Mini Mushroom 2">

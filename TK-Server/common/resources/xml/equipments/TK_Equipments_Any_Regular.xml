@@ -1,4 +1,26 @@
 <Objects>
+	<Object type="0x9903" id="Crafting Material 1">
+		<Class>Equipment</Class>
+		<Item />
+		<Texture>
+			<File>CustomObj</File>
+			<Index>0x1b</Index>
+		</Texture>
+		<SlotType>10</SlotType>
+		<Description></Description>
+		<BagType>5</BagType>
+	</Object>
+	<Object type="0x9904" id="Crafting Material 2">
+		<Class>Equipment</Class>
+		<Item />
+		<Texture>
+			<File>CustomObj</File>
+			<Index>0x77</Index>
+		</Texture>
+		<SlotType>10</SlotType>
+		<Description></Description>
+		<BagType>6</BagType>
+	</Object>
   <Object type="0x4970" id="Soul of Life">
     <Class>Equipment</Class>
     <Item />

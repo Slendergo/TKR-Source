@@ -79,7 +79,9 @@ namespace wServer.networking.handlers
                 // get last world the player was a part of 
                 //world = player.CoreServerManager.WorldManager.GetRandomGameWorld();
                 //if (world == null)
-                    //return;
+                //return;
+                player.SendInfo("This feature isnt implemented yet!");
+                return;
             }
 
             if (world != null)

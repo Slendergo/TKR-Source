@@ -97,13 +97,13 @@ namespace wServer.networking.handlers
                 //    for (var i = 1; i < forgeItems.Length; i++)
                 //        client.Player.Inventory[forgeItems[i].slotID] = null;
                 //    return;
-                //case "2794, 2793":
-                //    client.Player.SendInfo("Successfully forged " + client.CoreServerManager.Resources.GameData.Items[0x4978].DisplayName); //Life/Mana
-                //    list.Clear();
-                //    client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[0x4978];
-                //    for (var i = 1; i < forgeItems.Length; i++)
-                //        client.Player.Inventory[forgeItems[i].slotID] = null;
-                //    return;
+                case "2794, 2793":
+                    client.Player.SendInfo("Successfully forged " + client.CoreServerManager.Resources.GameData.Items[0x4978].DisplayName); //Life/Mana
+                    list.Clear();
+                    client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[0x4978];
+                    for (var i = 1; i < forgeItems.Length; i++)
+                        client.Player.Inventory[forgeItems[i].slotID] = null;
+                    return;
                 case "2636, 2593":
                     client.Player.SendInfo("Successfully forged " + client.CoreServerManager.Resources.GameData.Items[0x497a].DisplayName); //Speed/Dexterity
                     list.Clear();

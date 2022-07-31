@@ -204,7 +204,7 @@
 		<MapJM>davy.jm</MapJM>
 		<Dungeon/>
 	</World>
-	<World id="Cave of Thousand Treasures">
+	<World id="Cave of A Thousand Treasures">
 		<Width>256</Width>
 		<Height>256</Height>
 		<MapJM>cave_of_thousand_treasures.jm</MapJM>

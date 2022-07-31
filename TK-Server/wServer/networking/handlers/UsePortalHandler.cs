@@ -68,7 +68,10 @@ namespace wServer.networking.handlers
         private void HandlePortal(Player player, Portal portal)
         {
             if (!portal.Usable)
+            {
+                player.SendInfo("Portal is unusable!");
                 return;
+            }
 
             var world = portal.WorldInstance;
             if (world == null && _realmPortals.Contains(portal.ObjectType))

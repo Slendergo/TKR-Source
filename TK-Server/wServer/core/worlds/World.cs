@@ -29,7 +29,6 @@ namespace wServer.core.worlds
         public const int Realm = 1;
         public const int Test = -6;
         public const int Tutorial = -1;
-        public const int Vault = -4;
         public const int Poseidon = -420;
 
         protected static readonly Random Rand = new Random((int)DateTime.Now.Ticks);
@@ -49,7 +48,7 @@ namespace wServer.core.worlds
         public bool Persist { get; private set; }
         public int MaxPlayers { get; private set; }
 
-        public bool IsNotCombatMapArea => Id == Nexus || Id == Vault || Id == GuildHall || Id == NexusExplanation;
+        public bool IsNotCombatMapArea => Id == Nexus || this is VaultWorld || Id == GuildHall || Id == NexusExplanation;
         public bool IsRealm { get; set; }
         public bool AllowTeleport { get; protected set; }
         public int Background { get; protected set; }

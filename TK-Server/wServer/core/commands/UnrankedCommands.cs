@@ -1652,13 +1652,13 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string args)
         {
-            player.Client.Reconnect(new Reconnect()
+            var world = player.CoreServerManager.WorldManager.CreateNewWorld("Vault", null, player.CoreServerManager.WorldManager.Nexus);
+            if (world == null)
             {
-                Host = "",
-                Port = player.CoreServerManager.ServerConfig.serverInfo.port,
-                GameId = World.Vault,
-                Name = "Vault"
-            });
+                player.SendInfo("Unable to enter vault: BUG");
+                return true;
+            }
+            player.Reconnect(world);
             return true;
         }
     }

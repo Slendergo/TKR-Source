@@ -42,7 +42,7 @@ namespace wServer.core.commands
 
                 var owner = target.Player.World;
 
-                if ((owner.Id == World.Vault || owner.IdName.Contains("Vault")) && player.Rank < 110)
+                if ((owner is VaultWorld || owner.IdName.Contains("Vault")) && player.Rank < 110)
                 {
                     player.SendError("Only rank 110 accounts can visit other players' vault.");
                     return false;

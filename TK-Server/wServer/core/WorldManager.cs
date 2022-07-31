@@ -86,7 +86,7 @@ namespace wServer.core
 
         public World CreateNewWorld(string dungeonName, int? id = null, World parent = null)
         {
-            Console.WriteLine($"CreateNewWorld({dungeonName}, {id ?? null}, {(parent == null ? "null" : parent.IdName)}");
+            //Console.WriteLine($"CreateNewWorld({dungeonName}, {id ?? null}, {(parent == null ? "null" : parent.IdName)}");
             var worldResource = CoreServerManager.Resources.GameData.GetWorld(dungeonName);
             if (worldResource == null)
                 return null;

@@ -186,7 +186,7 @@ namespace wServer.core
             {
                 var tp = new Text()
                 {
-                    Name = (src.Client.Account.Rank == 10 ? "(D-1) " : src.Client.Account.Rank == 20 ? "(D-2) " : src.Client.Account.Rank == 30 ? "(D-3) " : src.Client.Account.Rank == 40 ? "(D-4) " : src.Client.Account.Rank == 50 ? "(D-5) " : src.Client.Account.Rank == 60 ? "(VIP) " : src.Client.Account.Rank == 80 ? "(Tester) " : src.Client.Account.Rank >= 100 ? "(Admin) " : "") + src.Name,
+                    Name = src.Client.Account.Name == "Slendergo" || src.Client.Account.Name == "ModBBQ" || src.Client.Account.Name == "Orb" ? "[Owner] " : src.Client.Account.Rank >= 100 ? "[Admin] " : "[Tester] " + src.Name,
                     ObjectId = src.Id,
                     NumStars = src.Stars,
                     BubbleTime = 5,

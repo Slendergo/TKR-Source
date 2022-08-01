@@ -13,6 +13,7 @@ namespace wServer.logic
                 new MoveTo2(0.5f, 0.5f, isMapPosition: false, instant: true),
                 new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
                 new ScaleHP2(10),
+                new StayCloseToSpawn(3, 10),
                 new DropPortalOnDeath("Hideout of Malphas Portal", 1, 0, 0, 0, 120),
                 new State("Check Player",
                     new PlayerWithinTransition(10, "Start Flashing", false)

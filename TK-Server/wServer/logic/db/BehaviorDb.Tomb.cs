@@ -19,12 +19,12 @@ namespace wServer.logic
                     new Taunt(true, "THIS WILL NOW BE YOUR TOMB!"),
                     new ConditionalEffect(ConditionEffectIndex.Armored),
                     new Prioritize(
-                        new Orbit(0.6, 5, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(3, 5, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
                     new HpLessTransition(.989, "weakning")
                     ),
                 new State("weakning",
                     new Prioritize(
-                        new Orbit(0.6, 5, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(3, 5, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
                     new ConditionalEffect(ConditionEffectIndex.Armored),
                     new Taunt(true, "Impudence! I am an Immortal, I needn't waste time on you!"),
                     new Shoot(50, 20, projectileIndex: 3, coolDown: 6000),
@@ -37,7 +37,7 @@ namespace wServer.logic
                     ),
                 new State("active",
                     new Prioritize(
-                        new Orbit(0.6, 5, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(3, 5, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
                     new ConditionalEffect(ConditionEffectIndex.Armored),
                     new Shoot(50, 8, 45, 2, 0, 0, coolDown: 1000),
                     new Shoot(50, 3, 120, 1, 0, 0, coolDown: 5000),
@@ -47,7 +47,7 @@ namespace wServer.logic
                 new State("boomerang",
                     new ConditionalEffect(ConditionEffectIndex.Armored),
                     new Prioritize(
-                        new Orbit(0.6, 5, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(3, 5, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
                     new Taunt(true, "Nut, disable our foes!"),
                     new Shoot(50, 1, projectileIndex: 0, coolDown: 3000),
                     new Shoot(50, 8, projectileIndex: 2, coolDown: 1000),
@@ -64,7 +64,7 @@ namespace wServer.logic
                 new State("double shot",
                     new Taunt(true, "Geb, eradicate these cretins from our tomb!"),
                     new Prioritize(
-                        new Orbit(0.7, 5, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(3, 5, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
                     new Shoot(50, 8, projectileIndex: 2, coolDown: 1000),
                     new Shoot(50, 2, 10, 0, coolDown: 3000),
                     new Shoot(50, 4, 15, 1, coolDown: 3000),
@@ -75,7 +75,7 @@ namespace wServer.logic
                     new ConditionalEffect(ConditionEffectIndex.Armored),
                     new Taunt(true, "Nut, let them wish they were dead!"),
                     new Prioritize(
-                        new Orbit(0.6, 7, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(3, 7, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
                     new Shoot(50, 8, projectileIndex: 2, coolDown: 1000),
                     new Shoot(50, 2, 10, 0, coolDown: 3000),
                     new Shoot(50, 4, 15, 1, coolDown: 3000),
@@ -93,7 +93,7 @@ namespace wServer.logic
                     new ConditionalEffect(ConditionEffectIndex.Armored),
                     new Taunt(true, "My artifacts shall prove my wall of defense is impenetrable!"),
                     new Prioritize(
-                        new Orbit(0.6, 7, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(3, 7, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
                     new Shoot(50, 8, projectileIndex: 2, coolDown: 1000),
                     new Shoot(50, 3, 10, 0, coolDown: 3000),
                     new Shoot(50, 5, 15, 1, coolDown: 3000),
@@ -110,7 +110,7 @@ namespace wServer.logic
                 new State("rage",
                     new ConditionalEffect(ConditionEffectIndex.Armored),
                     new Taunt(true, "The end of your path is here!"),
-                    new Follow(0.6, range: 1, duration: 5000, coolDown: 0),
+                    new Follow(3, range: 1, duration: 5000, coolDown: 0),
                     new Flash(0xfFF0000, 1, 9000001),
                     new Shoot(50, 10, 10, 4, coolDown: 750, coolDownOffset: 750),
                     new Shoot(50, 5, 10, 4, angleOffset: 180, coolDown: 500, coolDownOffset: 500),
@@ -154,7 +154,7 @@ namespace wServer.logic
                     ),
                 new State("weakning",
                     new Prioritize(
-                        new Orbit(0.6, 5, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(4, 5, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
                     new Taunt("Impudence! I am an immortal, I needn't take your seriously."),
                     new Shoot(50, 20, projectileIndex: 7, coolDown: 6000, coolDownOffset: 2000),
                     new State("blue shield 1",
@@ -166,7 +166,7 @@ namespace wServer.logic
                     ),
                 new State("active",
                     new Prioritize(
-                        new Orbit(0.7, 4, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(4, 4, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
                     new Shoot(20, 1, projectileIndex: 5, coolDown: 1000),
                     new Shoot(12, 3, 120, 1, 0, 0, coolDown: 2500, coolDownOffset: 1000),
                     new Shoot(12, 4, 90, 2, 0, 0, coolDown: 2500, coolDownOffset: 1500),
@@ -181,7 +181,7 @@ namespace wServer.logic
                     ),
                 new State("boomerang",
                     new Prioritize(
-                        new Orbit(0.6, 6, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(4, 6, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
                     new Taunt(true, "Bes, protect me at once!"),
                     new Shoot(20, 1, projectileIndex: 5, coolDown: 1000),
                     new Shoot(20, 1, projectileIndex: 6, coolDown: 3000),
@@ -193,7 +193,7 @@ namespace wServer.logic
                     ),
                 new State("paralyze",
                     new Prioritize(
-                        new Orbit(0.6, 7, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(4, 7, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
                     new Taunt(true, "Geb, eradicate these cretins from our tomb!"),
                     new Shoot(20, 1, projectileIndex: 5, coolDown: 1000),
                     new Shoot(20, 1, projectileIndex: 6, coolDown: 3000),
@@ -206,7 +206,7 @@ namespace wServer.logic
                     ),
                 new State("artifacts",
                     new Prioritize(
-                        new Orbit(0.6, 4, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(4, 4, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
                     new Taunt(true, "My artifacts shall make your lethargic lives end much more swiftly!"),
                     new Shoot(20, 1, projectileIndex: 5, coolDown: 1000),
                     new Shoot(20, 1, projectileIndex: 6, coolDown: 3000),
@@ -224,7 +224,7 @@ namespace wServer.logic
                     ),
                 new State("double shoot",
                     new Prioritize(
-                        new Orbit(0.6, 5, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(4, 5, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
                     new Shoot(20, 2, 15, 5, coolDown: 1000),
                     new Shoot(20, 2, 15, 6, coolDown: 3000),
                     new Shoot(12, 3, 120, 1, 0, 0, coolDown: 2500, coolDownOffset: 1000),
@@ -241,7 +241,7 @@ namespace wServer.logic
                     ),
                 new State("rage",
                     new Taunt(true, "This cannot be! You shall not succeed!"),
-                    new Follow(0.6, range: 1, duration: 5000, coolDown: 0),
+                    new Follow(4, range: 1, duration: 5000, coolDown: 0),
                     new Flash(0xfFF0000, 1, 9000001),
                     new Shoot(20, 1, projectileIndex: 5, coolDown: 1000),
                     new Shoot(20, 1, 15, 0, coolDown: 750),
@@ -278,12 +278,12 @@ namespace wServer.logic
                     new Taunt(true, "ENOUGH OF YOUR VANDALISM!"),
                     new ConditionalEffect(ConditionEffectIndex.Armored),
                     new Prioritize(
-                        new Orbit(0.6, 5, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(3, 5, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
                     new HpLessTransition(.988, "weakning")
                     ),
                 new State("weakning",
                     new Prioritize(
-                        new Orbit(0.6, 5, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(3, 5, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
                     new Shoot(50, 20, projectileIndex: 3, coolDown: 6000, coolDownOffset: 2000),
                     new State("blue shield 1",
                         new ConditionalEffect(ConditionEffectIndex.Invulnerable),
@@ -294,7 +294,7 @@ namespace wServer.logic
                     ),
                 new State("active",
                     new Prioritize(
-                        new Orbit(0.6, 5, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(3, 5, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
                     new Shoot(14, 2, 10, 2, coolDown: 500),
                     new Shoot(12, 1, projectileIndex: 0, coolDown: 2000),
                     new State("Grenade 1",
@@ -309,7 +309,7 @@ namespace wServer.logic
                     ),
                 new State("lets dance",
                     new Prioritize(
-                        new Orbit(0.6, 5, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(3, 5, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
                     new Taunt(true, "Bes, protect me at once!"),
                     new Shoot(14, 1, projectileIndex: 2, coolDown: 500),
                     new Shoot(14, 2, 90, 2, coolDown: 1000),
@@ -337,7 +337,7 @@ namespace wServer.logic
                     ),
                 new State("more muthafucka",
                     new Prioritize(
-                        new Orbit(0.6, 5, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(3, 5, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
                     new Taunt(true, "Nut, disable our foes!"),
                     new Spawn("Scarab", 3, 0, coolDown: 10000),
                     new Shoot(14, 2, 10, 2, coolDown: 500),
@@ -361,7 +361,7 @@ namespace wServer.logic
                     ),
                 new State("artifacts",
                     new Prioritize(
-                        new Orbit(0.6, 5, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(3, 5, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
                     new Taunt(true, "My artifacts shall destroy you from your soul your flesh!"),
                     new Spawn("Scarab", 3, 0, coolDown: 10000),
                     new Shoot(14, 2, 10, 2, coolDown: 500),
@@ -397,7 +397,7 @@ namespace wServer.logic
                     ),
                 new State("artifacts 2",
                     new Prioritize(
-                        new Orbit(0.6, 5, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(3, 5, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
                     new Taunt(true, "My artifacts shall destroy you from your soul your flesh!"),
                     new Spawn("Scarab", 3, 0, coolDown: 10000),
                     new Shoot(14, 2, 10, 2, coolDown: 500),
@@ -481,7 +481,7 @@ namespace wServer.logic
         .Init("Pyramid Artifact 1",
             new State(
                 new Prioritize(
-                    new Orbit(1, 2, target: "Tomb Defender", radiusVariance: 0.5)
+                    new Orbit(3, 2, target: "Tomb Defender", radiusVariance: 0.5)
                     ),
                 new Follow(0.85, range: 1, duration: 5000, coolDown: 0),
                 new Shoot(3, 3, 120, coolDown: 2500)
@@ -490,9 +490,9 @@ namespace wServer.logic
         .Init("Pyramid Artifact 2",
             new State(
                 new Prioritize(
-                    new Orbit(1, 2, target: "Tomb Attacker", radiusVariance: 0.5)
+                    new Orbit(3, 2, target: "Tomb Attacker", radiusVariance: 0.5)
                     ),
-                new Follow(0.85, range: 1, duration: 5000, coolDown: 0),
+                new Follow(2, range: 1, duration: 5000, coolDown: 0),
                 new Shoot(3, 3, 120, coolDown: 2500)
                 )
             )
@@ -508,54 +508,54 @@ namespace wServer.logic
         .Init("Sphinx Artifact 1",
             new State(
                 new Prioritize(
-                    new Orbit(1, 2, target: "Tomb Defender", radiusVariance: 0.5)
+                    new Orbit(3, 2, target: "Tomb Defender", radiusVariance: 0.5)
                     ),
-                new Follow(0.85, range: 1, duration: 5000, coolDown: 0),
+                new Follow(2, range: 1, duration: 5000, coolDown: 0),
                 new Shoot(12, 3, 120, coolDown: 2500)
                 )
             )
         .Init("Sphinx Artifact 2",
             new State(
                 new Prioritize(
-                    new Orbit(1, 2, target: "Tomb Attacker", radiusVariance: 0.5)
+                    new Orbit(3, 2, target: "Tomb Attacker", radiusVariance: 0.5)
                     ),
-                new Follow(0.85, range: 1, duration: 5000, coolDown: 0),
+                new Follow(2, range: 1, duration: 5000, coolDown: 0),
                 new Shoot(12, 3, 120, coolDown: 2500)
                 )
             )
         .Init("Sphinx Artifact 3",
             new State(
                 new Prioritize(
-                    new Orbit(1, 2, target: "Tomb Support", radiusVariance: 0.5)
+                    new Orbit(3, 2, target: "Tomb Support", radiusVariance: 0.5)
                     ),
-                new Follow(0.85, range: 1, duration: 5000, coolDown: 0),
+                new Follow(2, range: 1, duration: 5000, coolDown: 0),
                 new Shoot(12, 3, 120, coolDown: 2500)
                 )
             )
         .Init("Nile Artifact 1",
             new State(
                 new Prioritize(
-                    new Orbit(1, 2, target: "Tomb Defender", radiusVariance: 0.5)
+                    new Orbit(3, 2, target: "Tomb Defender", radiusVariance: 0.5)
                     ),
-                new Follow(0.85, range: 1, duration: 5000, coolDown: 0),
+                new Follow(2, range: 1, duration: 5000, coolDown: 0),
                 new Shoot(12, 3, 120, coolDown: 2500)
                 )
             )
         .Init("Nile Artifact 2",
             new State(
                 new Prioritize(
-                    new Orbit(1, 2, target: "Tomb Attacker", radiusVariance: 0.5)
+                    new Orbit(3, 2, target: "Tomb Attacker", radiusVariance: 0.5)
                     ),
-                new Follow(0.85, range: 1, duration: 5000, coolDown: 0),
+                new Follow(2, range: 1, duration: 5000, coolDown: 0),
                 new Shoot(12, 3, 120, coolDown: 2500)
                 )
             )
         .Init("Nile Artifact 3",
             new State(
                 new Prioritize(
-                    new Orbit(1, 2, target: "Tomb Support", radiusVariance: 0.5)
+                    new Orbit(3, 2, target: "Tomb Support", radiusVariance: 0.5)
                     ),
-                new Follow(0.85, range: 1, duration: 5000, coolDown: 0),
+                new Follow(2, range: 1, duration: 5000, coolDown: 0),
                 new Shoot(12, 3, 120, coolDown: 2500)
                 )
             )

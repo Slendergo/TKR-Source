@@ -1445,7 +1445,6 @@ namespace wServer.logic
                 ),
 
             new Threshold(0.03,
-                new ItemLoot("Shattered War Axe", 0.00001),
                 new ItemLoot("Cape of Septavius", 0.0028),
                 new ItemLoot("Potion of Wisdom", 1),
                 new ItemLoot("Potion of Wisdom", 1),

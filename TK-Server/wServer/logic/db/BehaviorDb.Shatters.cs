@@ -56,7 +56,7 @@ namespace wServer.logic
                         new TimedTransition(2000, "Wait")
                         ),
                     new State("Wait",
-                        new Follow(0.4, range: 2),
+                        new Follow(2, range: 2),
                         new Flash(0xff00ff00, 0.1, 20),
                         new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                         new TimedTransition(2000, "Bullet")
@@ -68,7 +68,7 @@ namespace wServer.logic
         .Init("shtrs Stone Knight",
             new State(
                 new State("Follow",
-                    new Follow(0.6, 10, 5),
+                    new Follow(2, 10, 5),
                     new PlayerWithinTransition(5, "Charge")
                     ),
                 new State("Charge",
@@ -81,7 +81,7 @@ namespace wServer.logic
         .Init("shtrs Lava Souls",
             new State(
                 new State("active",
-                    new Follow(.7, range: 0),
+                    new Follow(1.5, range: 0),
                     new PlayerWithinTransition(2, "blink")
                     ),
                 new State("blink",
@@ -99,7 +99,7 @@ namespace wServer.logic
             new State(
                 new StayBack(0.5, 5),
                 new State("1st",
-                    new Follow(0.8, range: 7),
+                    new Follow(1.8, range: 7),
                     new Shoot(12, projectileIndex: 2, count: 1, coolDown: 350),
                     new TimedTransition(5000, "next")
                     ),
@@ -113,7 +113,7 @@ namespace wServer.logic
             new State(
                 new State("Main",
                     new TimedTransition(5000, "Throw"),
-                    new Follow(0.8, range: 1),
+                    new Follow(1.8, range: 1),
                     new Shoot(10, 1, projectileIndex: 0, coolDown: 140, predictive: 1),
                     new Shoot(10, 3, projectileIndex: 1, shootAngle: 10, coolDown: 4000, predictive: 1)
                     ),
@@ -127,7 +127,7 @@ namespace wServer.logic
             new State(
                 new State("Main",
                     new TimedTransition(5000, "Throw"),
-                    new Follow(0.8, range: 1),
+                    new Follow(1.8, range: 1),
                     new Shoot(10, 1, projectileIndex: 0, coolDown: 200, predictive: 1),
                     new Shoot(10, 3, projectileIndex: 1, shootAngle: 10, coolDown: 4000, predictive: 1)
                     ),
@@ -379,7 +379,7 @@ namespace wServer.logic
         .Init("shtrs Blobomb",
             new State(
                 new State("active",
-                    new Follow(.7, acquireRange: 40, range: 0),
+                    new Follow(1.7, acquireRange: 40, range: 0),
                     new PlayerWithinTransition(2, "blink")
                     ),
                 new State("blink",
@@ -584,84 +584,84 @@ namespace wServer.logic
         #region birds
         .Init("shtrs Inferno",
             new State(
-                new Orbit(0.5, 4, 15, "shtrs Blizzard"),
-                new Shoot(0, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 15, coolDown: 4333),
-                new Shoot(0, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 30, coolDown: 3500),
-                new Shoot(0, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 60, coolDown: 7250),
-                new Shoot(0, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 90, coolDown: 10000)
+                new Orbit(1, 4, 15, "shtrs Blizzard"),
+                new Shoot(10, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 15, coolDown: 4333),
+                new Shoot(10, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 30, coolDown: 3500),
+                new Shoot(10, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 60, coolDown: 7250),
+                new Shoot(10, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 90, coolDown: 10000)
                 )
             )
 
         .Init("shtrs Blizzard",
             new State(
                 new State("Follow",
-                    new Follow(0.3, range: 1, coolDown: 1000),
-                    new Shoot(0, projectileIndex: 0, count: 4, shootAngle: 90, fixedAngle: 45, coolDown: 250),
+                    new Follow(1.3, range: 1, coolDown: 1000),
+                    new Shoot(10, projectileIndex: 0, count: 4, shootAngle: 90, fixedAngle: 45, coolDown: 250),
                     new TimedTransition(7000, "Spin")
                     ),
                 new State("Spin",
                     new State("Quadforce1",
-                        new Shoot(0, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 0, coolDown: 300),
+                        new Shoot(10, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 0, coolDown: 300),
                         new TimedTransition(10, "Quadforce2")
                         ),
                     new State("Quadforce2",
-                        new Shoot(0, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 15, coolDown: 300),
+                        new Shoot(10, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 15, coolDown: 300),
                         new TimedTransition(10, "Quadforce3")
                         ),
                     new State("Quadforce3",
-                        new Shoot(0, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 30, coolDown: 300),
+                        new Shoot(10, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 30, coolDown: 300),
                         new TimedTransition(10, "Quadforce4")
                         ),
                     new State("Quadforce4",
-                        new Shoot(0, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 45, coolDown: 300),
+                        new Shoot(10, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 45, coolDown: 300),
                         new TimedTransition(10, "Quadforce5")
                         ),
                     new State("Quadforce5",
-                        new Shoot(0, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 60, coolDown: 300),
+                        new Shoot(10, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 60, coolDown: 300),
                         new TimedTransition(10, "Quadforce6")
                         ),
                     new State("Quadforce6",
-                        new Shoot(0, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 75, coolDown: 300),
+                        new Shoot(10, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 75, coolDown: 300),
                         new TimedTransition(10, "Quadforce7")
                         ),
                     new State("Quadforce7",
-                        new Shoot(0, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 90, coolDown: 300),
+                        new Shoot(10, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 90, coolDown: 300),
                         new TimedTransition(10, "Quadforce8")
                         ),
                     new State("Quadforce8",
-                        new Shoot(0, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 105, coolDown: 300),
+                        new Shoot(10, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 105, coolDown: 300),
                         new TimedTransition(10, "Quadforce9")
                         ),
                     new State("Quadforce9",
-                        new Shoot(0, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 120, coolDown: 300),
+                        new Shoot(10, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 120, coolDown: 300),
                         new TimedTransition(10, "Quadforce10")
                         ),
                     new State("Quadforce10",
-                        new Shoot(0, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 135, coolDown: 300),
+                        new Shoot(10, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 135, coolDown: 300),
                         new TimedTransition(10, "Quadforce11")
                         ),
                     new State("Quadforce11",
-                        new Shoot(0, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 150, coolDown: 300),
+                        new Shoot(10, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 150, coolDown: 300),
                         new TimedTransition(10, "Quadforce12")
                         ),
                     new State("Quadforce12",
-                        new Shoot(0, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 165, coolDown: 300),
+                        new Shoot(10, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 165, coolDown: 300),
                         new TimedTransition(10, "Quadforce13")
                         ),
                     new State("Quadforce13",
-                        new Shoot(0, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 180, coolDown: 300),
+                        new Shoot(10, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 180, coolDown: 300),
                         new TimedTransition(10, "Quadforce14")
                         ),
                     new State("Quadforce14",
-                        new Shoot(0, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 195, coolDown: 300),
+                        new Shoot(10, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 195, coolDown: 300),
                         new TimedTransition(10, "Quadforce15")
                         ),
                     new State("Quadforce15",
-                        new Shoot(0, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 210, coolDown: 300),
+                        new Shoot(10, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 210, coolDown: 300),
                         new TimedTransition(10, "Quadforce16")
                         ),
                     new State("Quadforce16",
-                        new Shoot(0, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 225, coolDown: 300),
+                        new Shoot(10, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 225, coolDown: 300),
                         new TimedTransition(10, "Follow")
 
                         ))
@@ -2405,7 +2405,7 @@ namespace wServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("shoot",
-                    new Orbit(0.35, 2, 5, "shtrs The Forgotten King"),
+                    new Orbit(1, 2, 5, "shtrs The Forgotten King"),
                     new Shoot(15, 8, projectileIndex: 0, coolDown: new Cooldown(3600, 3600))
                     )
                 )
@@ -2436,19 +2436,19 @@ namespace wServer.logic
                 new State("spawn",
                     new ConditionalEffect(ConditionEffectIndex.Invincible),
                     new Prioritize(
-                        new Orbit(0.4, 1, 5, "shtrs The Forgotten King", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(1, 1, 5, "shtrs The Forgotten King", speedVariance: .2, radiusVariance: .5)),
                     new TimedTransition(7000, "follow")
                     ),
                 new State("follow",
-                    new Follow(0.4, range: 6),
-                    new Follow(0.6, range: 2),
+                    new Follow(1.4, range: 6),
+                    new Follow(1.6, range: 2),
                     new TimedTransition(3000, "dafuq")
                     ),
                 new State("dafuq",
                      new Prioritize(
                         new Orbit(1.0, 4, 30, "shtrs Crystal Tracker", speedVariance: .2, radiusVariance: .5)),
-                    new Follow(0.4, range: 6),
-                    new Follow(0.4, range: 2, duration: 2000, coolDown: 1500),
+                    new Follow(1.4, range: 6),
+                    new Follow(1.4, range: 2, duration: 2000, coolDown: 1500),
                     new TimedTransition(2000, "follow")
                     )
                 )
@@ -2458,18 +2458,18 @@ namespace wServer.logic
                 new State("spawn",
                     new ConditionalEffect(ConditionEffectIndex.Invincible),
                     new Prioritize(
-                        new Orbit(0.4, 1, 5, "shtrs The Forgotten King", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(1.4, 1, 5, "shtrs The Forgotten King", speedVariance: .2, radiusVariance: .5)),
                     new TimedTransition(7000, "follow")
                     ),
                 new State("follow",
-                    new Follow(0.4, range: 6),
-                    new Follow(0.4, range: 6),
+                    new Follow(1.4, range: 6),
+                    new Follow(1.4, range: 6),
                     new TimedTransition(25, "dafuq")
                     ),
                 new State("dafuq",
                      new Prioritize(
                         new Orbit(1.0, 4, 30, "shtrs Crystal Tracker", speedVariance: .2, radiusVariance: .5)),
-                    new Follow(0.4, range: 6),
+                    new Follow(1.4, range: 6),
                     new Shoot(5, 4, 4, projectileIndex: 0, coolDown: 1000)
                     )
                 )
@@ -2479,22 +2479,22 @@ namespace wServer.logic
                 new State("spawn",
                     new ConditionalEffect(ConditionEffectIndex.Invincible),
                     new Prioritize(
-                        new Orbit(0.4, 1, 5, "shtrs The Forgotten King", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(1, 1, 5, "shtrs The Forgotten King", speedVariance: .2, radiusVariance: .5)),
                     new TimedTransition(7000, "orbit")
                     ),
                 new State("orbit",
                     new TossObject("shtrs Fire Portal", 5, coolDown: 8000),
                      new Prioritize(
                         new Orbit(1.0, 4, 10, "shtrs Crystal Tracker", speedVariance: .2, radiusVariance: .5)),
-                    new Follow(0.4, range: 6),
-                    new Follow(0.4, range: 6),
+                    new Follow(1.4, range: 6),
+                    new Follow(1.4, range: 6),
                     new TimedTransition(5000, "ThrowPortal")
                     ),
                 new State("ThrowPortal",
                      new Prioritize(
                         new Orbit(1.0, 4, 10, "shtrs Crystal Tracker", speedVariance: .2, radiusVariance: .5)),
-                    new Follow(0.4, range: 6),
-                    new Follow(0.4, range: 6),
+                    new Follow(1.4, range: 6),
+                    new Follow(1.4, range: 6),
                     new TossObject("shtrs Fire Portal", 5, coolDown: 8000),
                     new TimedTransition(8000, "orbit")
                     )
@@ -2505,7 +2505,7 @@ namespace wServer.logic
                 new State("spawn",
                     new ConditionalEffect(ConditionEffectIndex.Invincible),
                     new Prioritize(
-                        new Orbit(0.4, 1, 5, "shtrs The Forgotten King", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(1, 1, 5, "shtrs The Forgotten King", speedVariance: .2, radiusVariance: .5)),
                     new TimedTransition(7000, "orbit")
                     ),
                 new State("orbit",
@@ -2518,8 +2518,8 @@ namespace wServer.logic
                 new State("ThrowPortal",
                      new Prioritize(
                         new Orbit(1.0, 4, 10, "shtrs Crystal Tracker", speedVariance: .2, radiusVariance: .5)),
-                    new Follow(0.4, range: 6),
-                    new Follow(0.4, range: 6),
+                    new Follow(1.4, range: 6),
+                    new Follow(1.4, range: 6),
                     new TossObject("shtrs Ice Portal", 5, coolDown: 8000),
                     new TimedTransition(8000, "orbit")
                     )

@@ -51,16 +51,16 @@ namespace wServer.logic
                 new State("Attack1",
                     new SetAltTexture(0),
                     new Prioritize(
-                        new Wander(0.3),
-                        new StayCloseToSpawn(0.5, 5)
+                        new Wander(1),
+                        new StayCloseToSpawn(1, 5)
                         ),
                     new Shoot(20, count: 3, shootAngle: 5, coolDown: 300),
                     new TimedTransition(6000, "Attack2")
                     ),
                 new State("Attack2",
                     new Prioritize(
-                        new Wander(0.3),
-                        new StayCloseToSpawn(0.5, 5)
+                        new Wander(1),
+                        new StayCloseToSpawn(1, 5)
                         ),
                     new Order(20, "Whirlpool", "Die"),
                     new Shoot(20, count: 1, defaultAngle: 0, fixedAngle: 0, rotateAngle: 45, projectileIndex: 1,
@@ -74,9 +74,9 @@ namespace wServer.logic
         .Init("Hermit Minion",
             new State(
                 new Prioritize(
-                    new Follow(0.6, 4, 1),
-                    new Orbit(0.6, 10, 15, "Hermit God", speedVariance: .2, radiusVariance: 1.5),
-                    new Wander(0.6)
+                    new Follow(2, 4, 1),
+                    new Orbit(2, 10, 15, "Hermit God", speedVariance: .2, radiusVariance: 1.5),
+                    new Wander(1)
                     ),
                 new Shoot(6, count: 3, shootAngle: 10, coolDown: 1000),
                 new Shoot(6, count: 2, shootAngle: 20, projectileIndex: 1, coolDown: 2600, predictive: 0.8)
@@ -89,7 +89,7 @@ namespace wServer.logic
                 new State("Attack",
                     new EntityNotExistsTransition("Hermit God", 100, "Die"),
                     new Prioritize(
-                        new Orbit(0.3, 6, 10, "Hermit God")
+                        new Orbit(1, 6, 10, "Hermit God")
                         ),
                     new Shoot(0, 1, fixedAngle: 0, rotateAngle: 30, coolDown: 400)
                     ),
@@ -102,8 +102,8 @@ namespace wServer.logic
         .Init("Hermit God Tentacle",
             new State(
                 new Prioritize(
-                    new Follow(0.6, 4, 1),
-                    new Orbit(0.6, 6, 15, "Hermit God", speedVariance: .2, radiusVariance: .5)
+                    new Follow(1, 4, 1),
+                    new Orbit(2, 6, 15, "Hermit God", speedVariance: .2, radiusVariance: .5)
                     ),
                 new Shoot(3, count: 8, shootAngle: 360 / 8, coolDown: 500)
                 )

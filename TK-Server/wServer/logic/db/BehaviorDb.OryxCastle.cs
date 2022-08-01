@@ -38,7 +38,7 @@ namespace wServer.logic
                                 new StayCloseToSpawn(0.5, 3),
                                 new Wander(0.5)
                                 ),
-                            new Shoot(0, 10, projectileIndex: 2, fixedAngle: 0, coolDown: 1000),
+                            new Shoot(10, 10, projectileIndex: 2, fixedAngle: 0, coolDown: 1000),
                             new TimedTransition(5000, "Imma Follow")
                             )
                         ),
@@ -54,43 +54,43 @@ namespace wServer.logic
                         new State("PrepareEnd",
                             new Orbit(1, 5, target: "Oryx Guardian TaskMaster"),
                             new State("cpe_1",
-                                new Shoot(0, 2, fixedAngle: 0, projectileIndex: 1),
+                                new Shoot(20, 2, fixedAngle: 0, projectileIndex: 1),
                                 new TimedTransition(200, "cpe_2")
                                 ),
                             new State("cpe_2",
-                                new Shoot(0, 2, fixedAngle: 36, projectileIndex: 1),
+                                new Shoot(20, 2, fixedAngle: 36, projectileIndex: 1),
                                 new TimedTransition(200, "cpe_3")
                                 ),
                             new State("cpe_3",
-                                new Shoot(0, 2, fixedAngle: 72, projectileIndex: 1),
+                                new Shoot(15, 2, fixedAngle: 72, projectileIndex: 1),
                                 new TimedTransition(200, "cpe_4")
                                 ),
                             new State("cpe_4",
-                                new Shoot(0, 2, fixedAngle: 108, projectileIndex: 1),
+                                new Shoot(10, 2, fixedAngle: 108, projectileIndex: 1),
                                 new TimedTransition(200, "cpe_5")
                                 ),
                             new State("cpe_5",
-                                new Shoot(0, 2, fixedAngle: 144, projectileIndex: 1),
+                                new Shoot(20, 2, fixedAngle: 144, projectileIndex: 1),
                                 new TimedTransition(200, "cpe_6")
                                 ),
                             new State("cpe_6",
-                                new Shoot(0, 2, fixedAngle: 180, projectileIndex: 1),
+                                new Shoot(20, 2, fixedAngle: 180, projectileIndex: 1),
                                 new TimedTransition(200, "cpe_7")
                                 ),
                             new State("cpe_7",
-                                new Shoot(0, 2, fixedAngle: 216, projectileIndex: 1),
+                                new Shoot(20, 2, fixedAngle: 216, projectileIndex: 1),
                                 new TimedTransition(200, "cpe_8")
                                 ),
                             new State("cpe_8",
-                                new Shoot(0, 2, fixedAngle: 252, projectileIndex: 1),
+                                new Shoot(20, 2, fixedAngle: 252, projectileIndex: 1),
                                 new TimedTransition(200, "cpe_9")
                                 ),
                             new State("cpe_9",
-                                new Shoot(0, 2, fixedAngle: 288, projectileIndex: 1),
+                                new Shoot(20, 2, fixedAngle: 288, projectileIndex: 1),
                                 new TimedTransition(200, "cpe_10")
                                 ),
                             new State("cpe_10",
-                                new Shoot(0, 2, fixedAngle: 324, projectileIndex: 1),
+                                new Shoot(20, 2, fixedAngle: 324, projectileIndex: 1),
                                 new TimedTransition(200, "checkEntities")
                                 ),
                             new State("checkEntities",
@@ -109,7 +109,7 @@ namespace wServer.logic
                                         new StayCloseToSpawn(0.5, 3),
                                         new Wander(0.5)
                                         ),
-                                    new Shoot(0, 10, projectileIndex: 2, fixedAngle: 0, coolDown: 1000),
+                                    new Shoot(10, 10, projectileIndex: 2, fixedAngle: 0, coolDown: 1000),
                                     new TimedTransition(2500, "cpe_Imma Follow")
                                     )
                                 )
@@ -121,26 +121,26 @@ namespace wServer.logic
                             new TimedTransition(1500, "msw_shoot")
                             ),
                         new State("msw_shoot",
-                            new Shoot(0, 2, fixedAngle: 90, coolDownOffset: 0),
-                            new Shoot(0, 2, fixedAngle: 85.5, coolDownOffset: 100),
-                            new Shoot(0, 2, fixedAngle: 81, coolDownOffset: 200),
-                            new Shoot(0, 2, fixedAngle: 76.5, coolDownOffset: 300),
-                            new Shoot(0, 2, fixedAngle: 72, coolDownOffset: 400),
-                            new Shoot(0, 2, fixedAngle: 67.5, coolDownOffset: 500),
-                            new Shoot(0, 2, fixedAngle: 63, coolDownOffset: 600),
-                            new Shoot(0, 2, fixedAngle: 58.5, coolDownOffset: 700),
-                            new Shoot(0, 2, fixedAngle: 54, coolDownOffset: 800),
-                            new Shoot(0, 2, fixedAngle: 49.5, coolDownOffset: 900),
-                            new Shoot(0, 2, fixedAngle: 45, coolDownOffset: 1000),
-                            new Shoot(0, 2, fixedAngle: 40.5, coolDownOffset: 1100),
-                            new Shoot(0, 2, fixedAngle: 36, coolDownOffset: 1200),
-                            new Shoot(0, 2, fixedAngle: 31.5, coolDownOffset: 1300),
-                            new Shoot(0, 2, fixedAngle: 27, coolDownOffset: 1400),
-                            new Shoot(0, 2, fixedAngle: 22.5, coolDownOffset: 1500),
-                            new Shoot(0, 2, fixedAngle: 18, coolDownOffset: 1600),
-                            new Shoot(0, 2, fixedAngle: 13.5, coolDownOffset: 1700),
-                            new Shoot(0, 2, fixedAngle: 9, coolDownOffset: 1800),
-                            new Shoot(0, 2, fixedAngle: 4.5, coolDownOffset: 1900)
+                            new Shoot(20, 2, fixedAngle: 90, coolDownOffset: 0),
+                            new Shoot(20, 2, fixedAngle: 85.5, coolDownOffset: 100),
+                            new Shoot(20, 2, fixedAngle: 81, coolDownOffset: 200),
+                            new Shoot(20, 2, fixedAngle: 76.5, coolDownOffset: 300),
+                            new Shoot(20, 2, fixedAngle: 72, coolDownOffset: 400),
+                            new Shoot(20, 2, fixedAngle: 67.5, coolDownOffset: 500),
+                            new Shoot(20, 2, fixedAngle: 63, coolDownOffset: 600),
+                            new Shoot(20, 2, fixedAngle: 58.5, coolDownOffset: 700),
+                            new Shoot(20, 2, fixedAngle: 54, coolDownOffset: 800),
+                            new Shoot(20, 2, fixedAngle: 49.5, coolDownOffset: 900),
+                            new Shoot(20, 2, fixedAngle: 45, coolDownOffset: 1000),
+                            new Shoot(20, 2, fixedAngle: 40.5, coolDownOffset: 1100),
+                            new Shoot(20, 2, fixedAngle: 36, coolDownOffset: 1200),
+                            new Shoot(20, 2, fixedAngle: 31.5, coolDownOffset: 1300),
+                            new Shoot(20, 2, fixedAngle: 27, coolDownOffset: 1400),
+                            new Shoot(20, 2, fixedAngle: 22.5, coolDownOffset: 1500),
+                            new Shoot(20, 2, fixedAngle: 18, coolDownOffset: 1600),
+                            new Shoot(20, 2, fixedAngle: 13.5, coolDownOffset: 1700),
+                            new Shoot(20, 2, fixedAngle: 9, coolDownOffset: 1800),
+                            new Shoot(20, 2, fixedAngle: 4.5, coolDownOffset: 1900)
                             )
                         )
                     )
@@ -190,7 +190,7 @@ namespace wServer.logic
                                 new StayCloseToSpawn(0.5, 3),
                                 new Wander(0.5)
                                 ),
-                            new Shoot(0, 10, projectileIndex: 2, fixedAngle: 0, coolDown: 1000),
+                            new Shoot(20, 10, projectileIndex: 2, fixedAngle: 0, coolDown: 1000),
                             new TimedTransition(5000, "Imma Follow")
                             )
                         ),
@@ -206,43 +206,43 @@ namespace wServer.logic
                         new State("PrepareEnd",
                             new Orbit(1, 5, target: "Oryx Guardian TaskMaster"),
                             new State("cpe_1",
-                                new Shoot(0, 2, fixedAngle: 0, projectileIndex: 1),
+                                new Shoot(20, 2, fixedAngle: 0, projectileIndex: 1),
                                 new TimedTransition(200, "cpe_2")
                                 ),
                             new State("cpe_2",
-                                new Shoot(0, 2, fixedAngle: 36, projectileIndex: 1),
+                                new Shoot(20, 2, fixedAngle: 36, projectileIndex: 1),
                                 new TimedTransition(200, "cpe_3")
                                 ),
                             new State("cpe_3",
-                                new Shoot(0, 2, fixedAngle: 72, projectileIndex: 1),
+                                new Shoot(20, 2, fixedAngle: 72, projectileIndex: 1),
                                 new TimedTransition(200, "cpe_4")
                                 ),
                             new State("cpe_4",
-                                new Shoot(0, 2, fixedAngle: 108, projectileIndex: 1),
+                                new Shoot(20, 2, fixedAngle: 108, projectileIndex: 1),
                                 new TimedTransition(200, "cpe_5")
                                 ),
                             new State("cpe_5",
-                                new Shoot(0, 2, fixedAngle: 144, projectileIndex: 1),
+                                new Shoot(20, 2, fixedAngle: 144, projectileIndex: 1),
                                 new TimedTransition(200, "cpe_6")
                                 ),
                             new State("cpe_6",
-                                new Shoot(0, 2, fixedAngle: 180, projectileIndex: 1),
+                                new Shoot(20, 2, fixedAngle: 180, projectileIndex: 1),
                                 new TimedTransition(200, "cpe_7")
                                 ),
                             new State("cpe_7",
-                                new Shoot(0, 2, fixedAngle: 216, projectileIndex: 1),
+                                new Shoot(20, 2, fixedAngle: 216, projectileIndex: 1),
                                 new TimedTransition(200, "cpe_8")
                                 ),
                             new State("cpe_8",
-                                new Shoot(0, 2, fixedAngle: 252, projectileIndex: 1),
+                                new Shoot(20, 2, fixedAngle: 252, projectileIndex: 1),
                                 new TimedTransition(200, "cpe_9")
                                 ),
                             new State("cpe_9",
-                                new Shoot(0, 2, fixedAngle: 288, projectileIndex: 1),
+                                new Shoot(20, 2, fixedAngle: 288, projectileIndex: 1),
                                 new TimedTransition(200, "cpe_10")
                                 ),
                             new State("cpe_10",
-                                new Shoot(0, 2, fixedAngle: 324, projectileIndex: 1),
+                                new Shoot(20, 2, fixedAngle: 324, projectileIndex: 1),
                                 new TimedTransition(200, "checkEntities")
                                 ),
                             new State("checkEntities",
@@ -273,26 +273,26 @@ namespace wServer.logic
                             new TimedTransition(1500, "msw_shoot")
                             ),
                         new State("msw_shoot",
-                            new Shoot(0, 2, fixedAngle: 90, coolDownOffset: 0),
-                            new Shoot(0, 2, fixedAngle: 85.5, coolDownOffset: 100),
-                            new Shoot(0, 2, fixedAngle: 81, coolDownOffset: 200),
-                            new Shoot(0, 2, fixedAngle: 76.5, coolDownOffset: 300),
-                            new Shoot(0, 2, fixedAngle: 72, coolDownOffset: 400),
-                            new Shoot(0, 2, fixedAngle: 67.5, coolDownOffset: 500),
-                            new Shoot(0, 2, fixedAngle: 63, coolDownOffset: 600),
-                            new Shoot(0, 2, fixedAngle: 58.5, coolDownOffset: 700),
-                            new Shoot(0, 2, fixedAngle: 54, coolDownOffset: 800),
-                            new Shoot(0, 2, fixedAngle: 49.5, coolDownOffset: 900),
-                            new Shoot(0, 2, fixedAngle: 45, coolDownOffset: 1000),
-                            new Shoot(0, 2, fixedAngle: 40.5, coolDownOffset: 1100),
-                            new Shoot(0, 2, fixedAngle: 36, coolDownOffset: 1200),
-                            new Shoot(0, 2, fixedAngle: 31.5, coolDownOffset: 1300),
-                            new Shoot(0, 2, fixedAngle: 27, coolDownOffset: 1400),
-                            new Shoot(0, 2, fixedAngle: 22.5, coolDownOffset: 1500),
-                            new Shoot(0, 2, fixedAngle: 18, coolDownOffset: 1600),
-                            new Shoot(0, 2, fixedAngle: 13.5, coolDownOffset: 1700),
-                            new Shoot(0, 2, fixedAngle: 9, coolDownOffset: 1800),
-                            new Shoot(0, 2, fixedAngle: 4.5, coolDownOffset: 1900)
+                            new Shoot(20, 2, fixedAngle: 90, coolDownOffset: 0),
+                            new Shoot(20, 2, fixedAngle: 85.5, coolDownOffset: 100),
+                            new Shoot(20, 2, fixedAngle: 81, coolDownOffset: 200),
+                            new Shoot(20, 2, fixedAngle: 76.5, coolDownOffset: 300),
+                            new Shoot(20, 2, fixedAngle: 72, coolDownOffset: 400),
+                            new Shoot(20, 2, fixedAngle: 67.5, coolDownOffset: 500),
+                            new Shoot(20, 2, fixedAngle: 63, coolDownOffset: 600),
+                            new Shoot(20, 2, fixedAngle: 58.5, coolDownOffset: 700),
+                            new Shoot(20, 2, fixedAngle: 54, coolDownOffset: 800),
+                            new Shoot(20, 2, fixedAngle: 49.5, coolDownOffset: 900),
+                            new Shoot(20, 2, fixedAngle: 45, coolDownOffset: 1000),
+                            new Shoot(20, 2, fixedAngle: 40.5, coolDownOffset: 1100),
+                            new Shoot(20, 2, fixedAngle: 36, coolDownOffset: 1200),
+                            new Shoot(20, 2, fixedAngle: 31.5, coolDownOffset: 1300),
+                            new Shoot(20, 2, fixedAngle: 27, coolDownOffset: 1400),
+                            new Shoot(20, 2, fixedAngle: 22.5, coolDownOffset: 1500),
+                            new Shoot(20, 2, fixedAngle: 18, coolDownOffset: 1600),
+                            new Shoot(20, 2, fixedAngle: 13.5, coolDownOffset: 1700),
+                            new Shoot(20, 2, fixedAngle: 9, coolDownOffset: 1800),
+                            new Shoot(20, 2, fixedAngle: 4.5, coolDownOffset: 1900)
                             )
                         )
                     )
@@ -337,7 +337,7 @@ namespace wServer.logic
                 new State("Shoot and Toss",
                     new NoPlayerWithinTransition(21, "Idle"),
                     new NoPlayerWithinTransition(6, "Toss"),
-                    new Shoot(0, 18, fixedAngle: 0, coolDown: new Cooldown(750, 250)),
+                    new Shoot(10, 18, fixedAngle: 0, coolDown: new Cooldown(750, 250)),
                     new TossObject("Quiet Bomb", 10, coolDown: 1000)
                     )
                 )

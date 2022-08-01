@@ -24,7 +24,7 @@ namespace wServer.logic
                     new ChangeSize(100, 100),
                     new SetAltTexture(1),
                     new SetAltTexture(3),
-                    new Wander(.2),
+                    new Wander(1),
                     new Shoot(10, 5, 10, 0, coolDown: 2000),
                     new Shoot(10, 1, 10, 1, coolDown: 4000),
                     new EntityNotExistsTransition("Ghost Lanturn Off", 30, "Vunerable"),
@@ -121,13 +121,13 @@ namespace wServer.logic
             new State(
                 new State("Default",
                     new Prioritize(
-                        new Orbit(0.3, 3, 20, "Ghost of Roger"),
-                        new Wander(0.1)
+                        new Orbit(2, 3, 20, "Ghost of Roger"),
+                        new Wander(1)
                         ),
                     new PlayerWithinTransition(4, "Default1")
                     ),
                 new State("Default1",
-                    new Charge(0.5, 8, coolDown: 2000),
+                    new Charge(4, 8, coolDown: 2000),
                     new TimedTransition(2200, "Blammo")
                     ),
                 new State("Blammo",
@@ -272,8 +272,8 @@ namespace wServer.logic
                 new Shoot(10, count: 1, projectileIndex: 0, coolDown: 2000),
                 new State("Default",
                     new Prioritize(
-                        new Follow(0.6, 8, 1),
-                        new Wander(0.1)
+                        new Follow(2, 8, 1),
+                        new Wander(1)
                         ),
                     new TimedTransition(2850, "Default1")
                     ),
@@ -288,16 +288,16 @@ namespace wServer.logic
                 new Shoot(10, count: 1, projectileIndex: 0, coolDown: 2000),
                 new State("Default",
                     new Prioritize(
-                        new Follow(0.3, 8, 1),
-                        new Wander(0.1)
+                        new Follow(2, 8, 1),
+                        new Wander(1)
                         ),
                     new TimedTransition(2850, "Default1")
                     ),
                 new State("Default1",
                     new ConditionalEffect(ConditionEffectIndex.Armored),
                     new Prioritize(
-                        new Follow(0.3, 8, 1),
-                        new Wander(0.1)
+                        new Follow(3, 8, 1),
+                        new Wander(1)
                         ),
                     new TimedTransition(2850, "Default")
                     )
@@ -308,8 +308,8 @@ namespace wServer.logic
                 new Shoot(10, count: 1, projectileIndex: 0, coolDown: 2500),
                 new State("Default",
                     new Prioritize(
-                        new Follow(0.4, 8, 1),
-                        new Wander(0.1)
+                        new Follow(3, 8, 1),
+                        new Wander(1)
                         ),
                     new TimedTransition(2850, "Default1")
                     ),
@@ -331,8 +331,8 @@ namespace wServer.logic
                 new State("Default",
                     new Shoot(10, count: 1, projectileIndex: 0, coolDown: 1750),
                     new Prioritize(
-                        new Follow(0.55, 8, 1),
-                        new Wander(0.1)
+                        new Follow(2, 8, 1),
+                        new Wander(1)
                         )
                     )
                 )
@@ -343,8 +343,8 @@ namespace wServer.logic
                     new ChangeSize(35, 120),
                     new Shoot(10, count: 3, projectileIndex: 0, coolDown: 1750),
                     new Prioritize(
-                        new Follow(0.25, 8, 1),
-                        new Wander(0.1)
+                        new Follow(2, 8, 1),
+                        new Wander(1)
                         )
                     )
                 )
@@ -353,7 +353,7 @@ namespace wServer.logic
             new State(
                 new State("Default",
                     new Shoot(10, count: 3, shootAngle: 18, projectileIndex: 0, coolDown: 4000),
-                    new Wander(0.35)
+                    new Wander(1)
                     )
                 )
             );

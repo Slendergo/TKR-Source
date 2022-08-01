@@ -309,7 +309,7 @@ namespace wServer.logic
                     new Prioritize(
                         new Follow(0.6, acquireRange: 9, range: 2)
                         ),
-                    new Orbit(0.6, 5, 9, target: null),
+                    new Orbit(1, 5, 9, target: null),
                     new Shoot(9, 3, projectileIndex: 0, shootAngle: 10, coolDown: 500),
                     new Shoot(9, count: 6, fixedAngle: 0, projectileIndex: 2, coolDown: 2000),
                     new NoPlayerWithinTransition(9, "Range Shoot")

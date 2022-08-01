@@ -45,7 +45,8 @@ namespace wServer.logic
             new State(
                 new State("Orbit Skull Shrine",
                     new Prioritize(
-                        new Protect(.3, "Skull Shrine", 30, 15, 15),
+                        new Orbit(1.5, 15, 40, "Skull Shrine", .6, 10, orbitClockwise: null),
+                        new Protect(1, "Skull Shrine", 30, 15, 15),
                         new Wander(.3)
                         ),
                     new EntityNotExistsTransition("Skull Shrine", 40, "Wander")

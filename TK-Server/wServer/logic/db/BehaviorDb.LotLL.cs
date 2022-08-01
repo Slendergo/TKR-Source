@@ -133,7 +133,7 @@ namespace wServer.logic
         .Init("Protection Crystal",
             new State(
                 new Prioritize(
-                    new Orbit(0.3, 4, 10, "Lord of the Lost Lands", speedVariance:0.4, radiusVariance: 0.4)
+                    new Orbit(1, 4, 10, "Lord of the Lost Lands", speedVariance:0.4, radiusVariance: 0.4)
                     ),
                 new Shoot(8, count: 4, shootAngle: 7, coolDown: 500)
                 )
@@ -143,8 +143,8 @@ namespace wServer.logic
                 new State("Full",
                     new Spawn("Knight of the Lost Lands", 2, 1, coolDown: 4000),
                     new Prioritize(
-                        new Follow(0.6, 20, 6),
-                        new Wander(0.2)
+                        new Follow(2, 20, 6),
+                        new Wander(1)
                         ),
                     new Shoot(10, count: 8, fixedAngle: 360 / 8, coolDown: 3000, projectileIndex: 1),
                     new Shoot(10, count: 5, shootAngle: 10, coolDown: 1500),
@@ -152,8 +152,8 @@ namespace wServer.logic
                     ),
                 new State("Low",
                     new Prioritize(
-                        new StayBack(0.6, 5),
-                        new Wander(0.2)
+                        new StayBack(1, 5),
+                        new Wander(1)
                         ),
                     new Shoot(10, count: 8, fixedAngle: 360 / 8, coolDown: 3000, projectileIndex: 1),
                     new Shoot(10, count: 5, shootAngle: 10, coolDown: 1500)
@@ -165,9 +165,9 @@ namespace wServer.logic
         .Init("Knight of the Lost Lands",
             new State(
                 new Prioritize(
-                    new Follow(1, 20, 4),
-                    new StayBack(0.5, 2),
-                    new Wander(0.3)
+                    new Follow(2, 20, 4),
+                    new StayBack(1, 2),
+                    new Wander(1)
                     ),
                 new Shoot(13, 1, coolDown: 700)
                 ),

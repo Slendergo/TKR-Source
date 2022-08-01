@@ -10,7 +10,7 @@ namespace wServer.logic
         private _ Abyss = () => Behav()
         .Init("Archdemon Malphas",
             new State(
-                new MoveTo2(0.5f, 0.5f, isMapPosition: false, instant: true),
+                new MoveTo2(1f, 1f, isMapPosition: false, instant: true),
                 new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
                 new ScaleHP2(10),
                 new StayCloseToSpawn(3, 10),
@@ -171,7 +171,7 @@ namespace wServer.logic
                     new TimedTransition(1500, "Four Phase Start")
                     ),
                 new State("Four Phase Start",
-                    new Follow(2.5, 12),
+                    new Follow(3, 12),
                      new Shoot(30, 4, projectileIndex: 1, fixedAngle: -0, coolDown: 7400, coolDownOffset: 200),
                     new Shoot(30, 4, projectileIndex: 1, fixedAngle: -5, coolDown: 7400, coolDownOffset: 400),
                     new Shoot(30, 4, projectileIndex: 1, fixedAngle: -10, coolDown: 7400, coolDownOffset: 600),
@@ -263,7 +263,7 @@ namespace wServer.logic
             )
         .Init("Imp of the Abyss",
             new State(
-                new Wander(0.2),
+                new Wander(1),
                 new Shoot(8, 5, 10, coolDown: 3200)
                 ),
             new ItemLoot("Magic Potion", 0.1),
@@ -279,7 +279,7 @@ namespace wServer.logic
         .Init("Demon of the Abyss",
             new State(
                 new Prioritize(
-                    new Follow(2, 8, 5),
+                    new Follow(1, 8, 5),
                     new Wander(0.25)
                     ),
                 new Shoot(8, 3, shootAngle: 10, coolDown: 5000)
@@ -295,7 +295,7 @@ namespace wServer.logic
         .Init("Demon Warrior of the Abyss",
             new State(
                 new Prioritize(
-                    new Follow(2, 8, 5),
+                    new Follow(1, 8, 5),
                     new Wander(0.25)
                     ),
                 new Shoot(8, 3, shootAngle: 10, coolDown: 3000)
@@ -309,7 +309,7 @@ namespace wServer.logic
         .Init("Demon Mage of the Abyss",
             new State(
                 new Prioritize(
-                    new Follow(2, 8, 5),
+                    new Follow(1, 8, 5),
                     new Wander(0.25)
                     ),
                 new Shoot(8, 3, shootAngle: 10, coolDown: 3400)
@@ -326,7 +326,7 @@ namespace wServer.logic
         .Init("Brute of the Abyss",
             new State(
                 new Prioritize(
-                    new Follow(2, 8, 1),
+                    new Follow(1, 8, 1),
                     new Wander(0.25)
                     ),
                 new Shoot(8, 3, shootAngle: 10, coolDown: 800)
@@ -340,8 +340,8 @@ namespace wServer.logic
         .Init("Brute Warrior of the Abyss",
             new State(
                 new Prioritize(
-                    new Follow(2, 8, 1),
-                    new Wander(0.25)
+                    new Follow(1, 8, 1),
+                    new Wander(1)
                     ),
                 new Shoot(8, 3, shootAngle: 10, coolDown: 800)
                 ),

@@ -89,8 +89,8 @@ namespace wServer.logic
                     ),
                 new State("Daisy_attack",
                     new Prioritize(
-                        new StayCloseToSpawn(0.3, range: 7),
-                        new Wander(0.3)
+                        new StayCloseToSpawn(1, range: 7),
+                        new Wander(1)
                         ),
                     new State("Quadforce1",
                         new ConditionalEffect(ConditionEffectIndex.Invulnerable),
@@ -138,17 +138,17 @@ namespace wServer.logic
                 new State("Warning",
                     new Prioritize(
                         new StayCloseToSpawn(0.5, range: 7),
-                        new Wander(0.5)
+                        new Wander(1)
                         ),
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new Flash(0xff00ff00, 0.2, 15),
-                    new Follow(0.4, acquireRange: 9, range: 2),
+                    new Follow(2, acquireRange: 9, range: 2),
                     new TimedTransition(3000, "Summon_the_clones")
                     ),
                 new State("Summon_the_clones",
                     new Prioritize(
-                        new StayCloseToSpawn(0.85, range: 7),
-                        new Wander(0.85)
+                        new StayCloseToSpawn(1, range: 7),
+                        new Wander(1)
                         ),
                     new Shoot(10, projectileIndex: 0, coolDown: 1000),
                     new Spawn("Crystal Prisoner Clone", maxChildren: 4, initialSpawn: 0, coolDown: 200),
@@ -168,7 +168,7 @@ namespace wServer.logic
                 new State("Warning2",
                     new Prioritize(
                         new StayCloseToSpawn(0.85, range: 7),
-                        new Wander(0.85)
+                        new Wander(1)
                         ),
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new Flash(0xff00ff00, 0.2, 25),
@@ -176,8 +176,8 @@ namespace wServer.logic
                     ),
                 new State("Whoa_nelly",
                     new Prioritize(
-                        new StayCloseToSpawn(0.6, range: 7),
-                        new Wander(0.6)
+                        new StayCloseToSpawn(1, range: 7),
+                        new Wander(1)
                         ),
                     new Shoot(10, projectileIndex: 3, count: 3, shootAngle: 120, coolDown: 900),
                     new Shoot(10, projectileIndex: 2, count: 3, shootAngle: 15, fixedAngle: 40, coolDown: 1600,
@@ -201,7 +201,7 @@ namespace wServer.logic
                     new ChangeSize(13, 260),
                     new Prioritize(
                         new StayCloseToSpawn(0.2, range: 7),
-                        new Wander(0.2)
+                        new Wander(1)
                         ),
                     new Shoot(10, projectileIndex: 1, count: 9, shootAngle: 40, fixedAngle: 40, coolDown: 2000,
                         coolDownOffset: 400),
@@ -250,7 +250,7 @@ namespace wServer.logic
             new State(
                 new Prioritize(
                     new StayCloseToSpawn(0.85, range: 5),
-                    new Wander(0.85)
+                    new Wander(1)
                     ),
                 new Shoot(10, coolDown: 1400),
                 new State("taunt",
@@ -269,7 +269,7 @@ namespace wServer.logic
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new Prioritize(
                         new StayCloseToSpawn(3.6, range: 12),
-                        new Wander(3.6)
+                        new Wander(1.5)
                         ),
                     new TimedTransition(800, "attack")
                     ),

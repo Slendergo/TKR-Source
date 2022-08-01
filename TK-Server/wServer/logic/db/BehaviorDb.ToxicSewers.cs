@@ -241,7 +241,7 @@ namespace wServer.logic
                 new State("Shooting",
                     new Shoot(15, 8, projectileIndex: 1, fixedAngle: 0, coolDown: 1000, coolDownOffset: 1000),
                     new Shoot(15, 5, shootAngle: 25, projectileIndex: 0, coolDown: 1000),
-                    new Orbit(0.6, 4, 20, "DS Gulpord the Slime God", orbitClockwise: true),
+                    new Orbit(1, 4, 20, "DS Gulpord the Slime God", orbitClockwise: true),
                     new TransformOnDeath("DS Gulpord the Slime God S", 2, 2, 1)
                     )
                 )
@@ -251,7 +251,7 @@ namespace wServer.logic
                 new State("Shooting",
                     new Shoot(15, 8, projectileIndex: 1, fixedAngle: 0, coolDown: 1000, coolDownOffset: 1000),
                     new Shoot(15, 5, shootAngle: 25, projectileIndex: 0, coolDown: 1000),
-                    new Orbit(0.6, 4, 20, "DS Gulpord the Slime God", orbitClockwise: true),
+                    new Orbit(1, 4, 20, "DS Gulpord the Slime God", orbitClockwise: true),
                     new HpLessTransition(.15, "Back")
                     ),
                 new State("Back",

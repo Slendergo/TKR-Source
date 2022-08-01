@@ -19,7 +19,7 @@ namespace wServer.logic
                     ),
                 new State("Attack1",
                     new Prioritize(
-                        new Wander(0.5)
+                        new Wander(1)
                         ),
                     new Shoot(12, count: 1, coolDown: 800),
                     new Shoot(12, count: 3, shootAngle: 10, coolDown: 1000),
@@ -29,30 +29,30 @@ namespace wServer.logic
                     ),
                 new State("TransAttack2",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
-                    new Wander(0.5),
+                    new Wander(1),
                     new Flash(0x00FF0C, .25, 8),
                     new Taunt(0.99, "You hide behind rocks like cowards but you cannot hide from this!"),
                     new TimedTransition(2000, "Attack2")
                     ),
                 new State("Attack2",
                     new Prioritize(
-                        new Wander(0.5)
+                        new Wander(1)
                         ),
-                    new Shoot(0, count: 8, shootAngle: 10, fixedAngle: 0, rotateAngle: 70, coolDown: 2000,
+                    new Shoot(10, count: 8, shootAngle: 10, fixedAngle: 0, rotateAngle: 70, coolDown: 2000,
                         projectileIndex: 1),
-                    new Shoot(0, count: 8, shootAngle: 10, fixedAngle: 180, rotateAngle: 70, coolDown: 2000,
+                    new Shoot(10, count: 8, shootAngle: 10, fixedAngle: 180, rotateAngle: 70, coolDown: 2000,
                         projectileIndex: 1),
                     new TimedTransition(6200, "TransAttack3")
                     ),
                 new State("TransAttack3",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
-                    new Wander(0.5),
+                    new Wander(1),
                     new Flash(0x00FF0C, .25, 8),
                     new TimedTransition(2000, "Attack3")
                     ),
                 new State("Attack3",
                     new Prioritize(
-                        new Wander(0.5)
+                        new Wander(1)
                         ),
                     new Shoot(20, count: 9, fixedAngle: 360 / 9, projectileIndex: 2, coolDown: 2300),
                     new TimedTransition(6000, "TransAttack1"),
@@ -73,7 +73,7 @@ namespace wServer.logic
                     ),
                 new State("TransAttack1",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
-                    new Wander(0.5),
+                    new Wander(1),
                     new Flash(0x00FF0C, .25, 8),
                     new TimedTransition(2000, "Attack1"),
                     new HpLessTransition(0.15, "Order")

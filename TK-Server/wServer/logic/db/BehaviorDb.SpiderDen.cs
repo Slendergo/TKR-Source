@@ -47,9 +47,9 @@ namespace wServer.logic
             new State(
                 new State(":D",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
-                    new Shoot(0, projectileIndex: 0, count: 1, shootAngle: 120, fixedAngle: 120, coolDown: 5),
-                    new Shoot(0, projectileIndex: 0, count: 1, shootAngle: 180, fixedAngle: 180, coolDown: 5),
-                    new Shoot(0, projectileIndex: 0, count: 1, shootAngle: 240, fixedAngle: 240, coolDown: 5)
+                    new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 120, fixedAngle: 120, coolDown: 5),
+                    new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 180, fixedAngle: 180, coolDown: 5),
+                    new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 240, fixedAngle: 240, coolDown: 5)
                     )
                 )
             )
@@ -57,9 +57,9 @@ namespace wServer.logic
             new State(
                 new State(":D",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
-                    new Shoot(0, projectileIndex: 0, count: 1, shootAngle: 240, fixedAngle: 240, coolDown: 5),
-                    new Shoot(0, projectileIndex: 0, count: 1, shootAngle: 180, fixedAngle: 180, coolDown: 5),
-                    new Shoot(0, projectileIndex: 0, count: 1, shootAngle: 300, fixedAngle: 300, coolDown: 5)
+                    new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 240, fixedAngle: 240, coolDown: 5),
+                    new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 180, fixedAngle: 180, coolDown: 5),
+                    new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 300, fixedAngle: 300, coolDown: 5)
                     )
                 )
             )
@@ -67,9 +67,9 @@ namespace wServer.logic
             new State(
                 new State(":D",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
-                    new Shoot(0, projectileIndex: 0, count: 1, shootAngle: 300, fixedAngle: 300, coolDown: 5),
-                    new Shoot(0, projectileIndex: 0, count: 1, shootAngle: 240, fixedAngle: 240, coolDown: 5),
-                    new Shoot(0, projectileIndex: 0, count: 1, shootAngle: 0, fixedAngle: 0, coolDown: 5)
+                    new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 300, fixedAngle: 300, coolDown: 5),
+                    new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 240, fixedAngle: 240, coolDown: 5),
+                    new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 0, fixedAngle: 0, coolDown: 5)
                     )
                 )
             )
@@ -77,9 +77,9 @@ namespace wServer.logic
             new State(
                 new State(":D",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
-                    new Shoot(0, projectileIndex: 0, count: 1, shootAngle: 0, fixedAngle: 0, coolDown: 5),
-                    new Shoot(0, projectileIndex: 0, count: 1, shootAngle: 60, fixedAngle: 60, coolDown: 5),
-                    new Shoot(0, projectileIndex: 0, count: 1, shootAngle: 300, fixedAngle: 300, coolDown: 5)
+                    new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 0, fixedAngle: 0, coolDown: 5),
+                    new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 60, fixedAngle: 60, coolDown: 5),
+                    new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 300, fixedAngle: 300, coolDown: 5)
                     )
                 )
             )
@@ -87,9 +87,9 @@ namespace wServer.logic
             new State(
                 new State(":D",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
-                    new Shoot(0, projectileIndex: 0, count: 1, shootAngle: 60, fixedAngle: 60, coolDown: 5),
-                    new Shoot(0, projectileIndex: 0, count: 1, shootAngle: 0, fixedAngle: 0, coolDown: 5),
-                    new Shoot(0, projectileIndex: 0, count: 1, shootAngle: 120, fixedAngle: 120, coolDown: 5)
+                    new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 60, fixedAngle: 60, coolDown: 5),
+                    new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 0, fixedAngle: 0, coolDown: 5),
+                    new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 120, fixedAngle: 120, coolDown: 5)
                     )
                 )
             )
@@ -97,9 +97,9 @@ namespace wServer.logic
             new State(
                 new State(":D",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
-                    new Shoot(0, projectileIndex: 0, count: 1, shootAngle: 120, fixedAngle: 120, coolDown: 5),
-                    new Shoot(0, projectileIndex: 0, count: 1, shootAngle: 60, fixedAngle: 60, coolDown: 5),
-                    new Shoot(0, projectileIndex: 0, count: 1, shootAngle: 180, fixedAngle: 180, coolDown: 5)
+                    new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 120, fixedAngle: 120, coolDown: 5),
+                    new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 60, fixedAngle: 60, coolDown: 5),
+                    new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 180, fixedAngle: 180, coolDown: 5)
                     )
                 )
             )
@@ -107,9 +107,9 @@ namespace wServer.logic
             new State(
                 new State(":D",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
-                    new Shoot(0, projectileIndex: 0, count: 1, shootAngle: 180, fixedAngle: 180, coolDown: 5),
-                    new Shoot(0, projectileIndex: 0, count: 1, shootAngle: 120, fixedAngle: 120, coolDown: 5),
-                    new Shoot(0, projectileIndex: 0, count: 1, shootAngle: 240, fixedAngle: 240, coolDown: 5)
+                    new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 180, fixedAngle: 180, coolDown: 5),
+                    new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 120, fixedAngle: 120, coolDown: 5),
+                    new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 240, fixedAngle: 240, coolDown: 5)
                     )
                 )
             )
@@ -117,9 +117,9 @@ namespace wServer.logic
             new State(
                 new State(":D",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
-                    new Shoot(0, projectileIndex: 0, count: 1, shootAngle: 360, fixedAngle: 360, coolDown: 5),
-                    new Shoot(0, projectileIndex: 0, count: 1, shootAngle: 240, fixedAngle: 240, coolDown: 5),
-                    new Shoot(0, projectileIndex: 0, count: 1, shootAngle: 300, fixedAngle: 300, coolDown: 5)
+                    new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 360, fixedAngle: 360, coolDown: 5),
+                    new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 240, fixedAngle: 240, coolDown: 5),
+                    new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 300, fixedAngle: 300, coolDown: 5)
                     )
                 )
             )
@@ -127,17 +127,17 @@ namespace wServer.logic
             new State(
                 new State(":D",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
-                    new Shoot(0, projectileIndex: 0, count: 1, shootAngle: 0, fixedAngle: 0, coolDown: 5),
-                    new Shoot(0, projectileIndex: 0, count: 1, shootAngle: 60, fixedAngle: 60, coolDown: 5),
-                    new Shoot(0, projectileIndex: 0, count: 1, shootAngle: 120, fixedAngle: 120, coolDown: 5)
+                    new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 0, fixedAngle: 0, coolDown: 5),
+                    new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 60, fixedAngle: 60, coolDown: 5),
+                    new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 120, fixedAngle: 120, coolDown: 5)
                     )
                 )
             )
         .Init("Black Den Spider",
             new State(
                 new State("idle",
-                    new Wander(0.4),
-                    new Charge(0.9, 20f, 2000),
+                    new Wander(1),
+                    new Charge(2, 20f, 2000),
                     new Shoot(10, 1, 0, defaultAngle: 0, angleOffset: 0, projectileIndex: 0, predictive: 1,
                         coolDown: 500, coolDownOffset: 0)
                     )
@@ -147,8 +147,8 @@ namespace wServer.logic
         .Init("Black Spotted Den Spider",
             new State(
                 new State("idle",
-                    new Wander(0.4),
-                    new Charge(0.9, 40f, 2000),
+                    new Wander(1),
+                    new Charge(2, 40f, 2000),
                     new Shoot(10, 1, 0, defaultAngle: 0, angleOffset: 0, projectileIndex: 0, predictive: 1,
                         coolDown: 500, coolDownOffset: 0)
                     )
@@ -158,8 +158,8 @@ namespace wServer.logic
         .Init("Brown Den Spider",
             new State(
                 new State("idle",
-                    new Wander(0.4),
-                    new Follow(0.8, 0.3, 0),
+                    new Wander(1),
+                    new Follow(1, 0.3, 0),
                     new Shoot(10, 3, 20, angleOffset: 0 / 3, projectileIndex: 0, coolDown: 500)
                     )
                 ),
@@ -168,7 +168,7 @@ namespace wServer.logic
         .Init("Green Den Spider Hatchling",
             new State(
                 new State("idle",
-                    new Wander(0),
+                    new Wander(1),
                     new Follow(0.8, 0.8, 0),
                     new Shoot(10, 1, 0, defaultAngle: 0, angleOffset: 0, projectileIndex: 0, predictive: 1,
                         coolDown: 1000, coolDownOffset: 0)
@@ -189,7 +189,7 @@ namespace wServer.logic
         .Init("Red Spotted Den Spider",
             new State(
                 new State("idle",
-                    new Wander(0),
+                    new Wander(1),
                     new Follow(1.0, 0.8, 0),
                     new Shoot(10, 1, 0, defaultAngle: 0, angleOffset: 0, projectileIndex: 0, predictive: 1,
                         coolDown: 500, coolDownOffset: 0)

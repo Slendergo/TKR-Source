@@ -14,22 +14,22 @@ namespace wServer.logic
                 new State("Start",
                     new ChangeSize(50, 120),
                     new Prioritize(
-                        new Follow(0.48, 8, 1),
-                        new Wander(0.45)
+                        new Follow(1.5, 8, 1),
+                        new Wander(1)
                         ),
                     new Shoot(8.4, count: 3, projectileIndex: 0, shootAngle: 16, coolDown: 1000),
                     new TimedTransition(1000, "Vengeful")
                     ),
                 new State("Vengeful",
                     new Prioritize(
-                        new Follow(1, 8, 1),
-                        new Wander(0.45)
+                        new Follow(1.5, 8, 1),
+                        new Wander(1)
                         ),
                     new Shoot(8.4, count: 3, projectileIndex: 0, shootAngle: 16, coolDown: 1645),
                     new TimedTransition(3000, "Vengeful2")
                     ),
                 new State("Vengeful2",
-                    new ReturnToSpawn(speed: 0.6),
+                    new ReturnToSpawn(speed: 1),
                     new Shoot(8.4, count: 3, projectileIndex: 0, shootAngle: 16, coolDown: 1500),
                     new TimedTransition(1500, "Vengeful")
                     )))
@@ -37,8 +37,8 @@ namespace wServer.logic
             new State(
                 new State("Seek",
                     new Prioritize(
-                        new Follow(0.45, 8, 1),
-                        new Wander(0.55)
+                        new Follow(1.5, 8, 1),
+                        new Wander(1)
                         ),
                     new TimedTransition(3750, "Boom")
                     ),
@@ -49,7 +49,7 @@ namespace wServer.logic
         .Init("Beach Spectre",
             new State(
                 new State("Fight",
-                    new Wander(0.03),
+                    new Wander(1),
                     new ChangeSize(10, 120),
                     new Shoot(8.4, count: 3, projectileIndex: 0, shootAngle: 14, coolDown: 1750)
                     )))
@@ -104,7 +104,7 @@ namespace wServer.logic
                     new TimedTransition(1, "CircleAndStorm")
                     ),
                 new State("CircleAndStorm",
-                    new Orbit(0.25, 9, 20, "Ghost Ship Anchor", speedVariance: 0.1),
+                    new Orbit(1, 9, 20, "Ghost Ship Anchor", speedVariance: 0.1),
                     new Shoot(8.4, count: 7, projectileIndex: 0, coolDown: 1000)
                     )))
         .Init("Ghost Ship Anchor",
@@ -150,7 +150,7 @@ namespace wServer.logic
                 new DropPortalOnDeath("Davy Jones' Locker Portal", 1, 120),
                 new State("idle",
                     new SetAltTexture(1),
-                    new Wander(0.1),
+                    new Wander(1),
                     new DamageTakenTransition(2000, "pause")
                     ),
                 new State("pause",
@@ -165,8 +165,8 @@ namespace wServer.logic
                     new State("2",
                         new SetAltTexture(0),
                         new Prioritize(
-                            new Wander(0.45),
-                            new StayBack(0.3, 5)
+                            new Wander(1),
+                            new StayBack(1, 5)
                             ),
                         new Shoot(8.4, count: 1, projectileIndex: 0, coolDown: 450),
                         new Shoot(8.4, count: 3, projectileIndex: 0, shootAngle: 20, coolDown: 1750),
@@ -189,7 +189,7 @@ namespace wServer.logic
                     new TimedTransition(10000, "countdown"),
                     new State("2",
                         new SetAltTexture(0),
-                        new ReturnToSpawn(speed: 0.4),
+                        new ReturnToSpawn(speed: 1),
                         new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                         new Shoot(10, count: 4, projectileIndex: 0, coolDownOffset: 1100, angleOffset: 270, coolDown: 1250),
                         new Shoot(10, count: 4, projectileIndex: 0, coolDownOffset: 1100, angleOffset: 90, coolDown: 1250),
@@ -198,8 +198,8 @@ namespace wServer.logic
                         ),
                     new State("1",
                         new Prioritize(
-                            new Follow(0.45, 8, 1),
-                            new Wander(0.3)
+                            new Follow(2, 8, 1),
+                            new Wander(1)
                             ),
                         new Taunt(1.00, "Fire at will!"),
                         new Shoot(8.4, count: 2, shootAngle: 25, projectileIndex: 1, coolDown: 3850),
@@ -208,7 +208,7 @@ namespace wServer.logic
                         )
                     ),
                 new State("countdown",
-                    new Wander(0.1),
+                    new Wander(1),
                     new Timed(1000,
                         new Taunt(1.00, "Ready..")
                         ),
@@ -221,8 +221,8 @@ namespace wServer.logic
                     ),
                 new State("fire",
                     new Prioritize(
-                        new Follow(0.36, 8, 1),
-                        new Wander(0.12)
+                        new Follow(2, 8, 1),
+                        new Wander(1)
                         ),
                     new Shoot(10, count: 4, projectileIndex: 1, coolDownOffset: 1100, angleOffset: 270, coolDown: 1250),
                     new Shoot(10, count: 4, projectileIndex: 1, coolDownOffset: 1100, angleOffset: 90, coolDown: 1250),

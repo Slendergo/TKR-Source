@@ -45,7 +45,7 @@ namespace wServer.logic
                             new StayCloseToSpawn(.6, 10),
                             new StayAbove(.6, 1),
                             new StayBack(.6, distance: 8),
-                            new Wander(.7)
+                            new Wander(1)
                             ),
                         new TimedTransition(1500, "Return")
                         ),
@@ -61,10 +61,10 @@ namespace wServer.logic
                     new Shoot(10, projectileIndex: 1, coolDown: 3000),
                     new State("Follow 2",
                         new Prioritize(
-                            new StayCloseToSpawn(.6, 10),
-                            new StayAbove(.6, 1),
-                            new StayBack(.6, distance: 8),
-                            new Wander(.7)
+                            new StayCloseToSpawn(1, 10),
+                            new StayAbove(1, 1),
+                            new StayBack(1, distance: 8),
+                            new Wander(1)
                             ),
                         new TimedTransition(1500, "Return 2")
                         ),
@@ -109,7 +109,7 @@ namespace wServer.logic
         .Init("Crawling Spider Hatchling",
             new State(
                 new Prioritize(
-                    new Wander(.4)
+                    new Wander(1)
                     ),
                 new Shoot(7, count: 1, shootAngle: 0, coolDown: 650),
                 new Shoot(7, count: 1, shootAngle: 0, projectileIndex: 1, predictive: 1, coolDown: 850)
@@ -118,8 +118,8 @@ namespace wServer.logic
         .Init("Crawling Grey Spotted Spider",
             new State(
                 new Prioritize(
-                    new Charge(2, 8, 1050),
-                    new Wander(.4)
+                    new Charge(3, 8, 1050),
+                    new Wander(1)
                     ),
                 new Shoot(10, count: 1, shootAngle: 0, coolDown: 500)
                 ),
@@ -129,8 +129,8 @@ namespace wServer.logic
         .Init("Crawling Grey Spider",
             new State(
                 new Prioritize(
-                    new Charge(2, 8, 1050),
-                    new Wander(.4)
+                    new Charge(3, 8, 1050),
+                    new Wander(1)
                     ),
                 new Shoot(9, count: 1, shootAngle: 0, coolDown: 850)
                 ),
@@ -140,7 +140,7 @@ namespace wServer.logic
         .Init("Crawling Red Spotted Spider",
             new State(
                 new Prioritize(
-                    new Wander(.4)
+                    new Wander(1)
                     ),
                 new Shoot(8, count: 1, shootAngle: 0, coolDown: 750)
                 ),
@@ -150,8 +150,8 @@ namespace wServer.logic
         .Init("Crawling Green Spider",
             new State(
                 new Prioritize(
-                    new Follow(.6, 11, 1),
-                    new Wander(.4)
+                    new Follow(2, 11, 1),
+                    new Wander(2)
                     ),
                 new Shoot(8, count: 3, shootAngle: 10, coolDown: 400)
                 ),

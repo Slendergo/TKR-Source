@@ -16,7 +16,7 @@ namespace wServer.logic
                 new ConditionalEffect(ConditionEffectIndex.StasisImmune),
                 new ConditionalEffect(ConditionEffectIndex.ParalyzeImmune),
                 new Prioritize(
-                    new Wander(0.4)
+                    new Wander(1)
                     ),
                 new State("Attack",
                     new RemoveConditionalEffect(ConditionEffectIndex.Invulnerable),

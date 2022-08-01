@@ -383,7 +383,7 @@ namespace wServer.logic
             new State(
                 new State("Attack",
                     new Prioritize(
-                        new Orbit(.2, 2, target: "Oryx the Mad God 2", radiusVariance: 1),
+                        new Orbit(1.2, 2, target: "Oryx the Mad God 2", radiusVariance: 1),
                         new Wander(.3)
                         ),
                     new Shoot(15, predictive: 1, coolDown: 2500),
@@ -405,7 +405,7 @@ namespace wServer.logic
                 new State("Attack",
                     new TimedTransition(10000, "Wait"),
                     new Prioritize(
-                        new Orbit(.1, 6, target: "Oryx the Mad God 2", radiusVariance: 3),
+                        new Orbit(1.1, 6, target: "Oryx the Mad God 2", radiusVariance: 3),
                         new Follow(.1, acquireRange: 15),
                         new Wander(.2)
                         ),
@@ -423,7 +423,7 @@ namespace wServer.logic
                         new PlayerWithinTransition(1, "Boom")
                         ),
                     new State("Boom",
-                        new Shoot(1, count: 16, shootAngle: 360 / 16, fixedAngle: 0),
+                        new Shoot(2, count: 16, shootAngle: 360 / 16, fixedAngle: 0),
                         new Decay(0)
                         )
                     )

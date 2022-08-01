@@ -16,6 +16,7 @@ namespace wServer.logic
             .Init("shtrs Defense System",
                 new State(
                     new DropPortalOnDeath("The Shatters", probability: 1, timeout: 70),
+                    new ScaleHP2(20),
                     new ChangeGroundOnDeath(new[] { "Pure Evil" }, new[] { "shtrs Disaster Floor", "shtrs Shattered Floor" },
                     30),
                     new State("stars",

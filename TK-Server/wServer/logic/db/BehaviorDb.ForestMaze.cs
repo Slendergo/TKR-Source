@@ -10,8 +10,8 @@ namespace wServer.logic
         .Init("Mama Megamoth",
             new State(
                 new State("swaggin around",
-                    new Charge(1, 10, 2000),
-                    new Wander(0.2),
+                    new Charge(3, 10, 2000),
+                    new Wander(1),
                     new Spawn("Mini Megamoth", coolDown: 2000, initialSpawn: 1),
                     new Reproduce("Mini Megamoth", coolDown: 4000, densityMax: 4),
                     new Shoot(radius: 10, count: 1, projectileIndex: 0, coolDown: 50)
@@ -29,7 +29,7 @@ namespace wServer.logic
                     ),
                 new State("protecto the queen",
                     new Protect(1, "Mama Megamoth", 100, 3, 1),
-                    new Wander(0.1),
+                    new Wander(1),
                     new TimedTransition(5000, "swaggin shot time 1")
                     ),
                 new State("swaggin shot time 1",
@@ -37,7 +37,7 @@ namespace wServer.logic
                     new TimedTransition(3000, "protecto the queen")
                     ),
                 new State("oh crap there is no queen",
-                    new Wander(0.5),
+                    new Wander(1),
                     new Shoot(radius: 10, count: 1, projectileIndex: 0, predictive: 1, coolDown: 1000),
                     new TimedTransition(5000, "swaggin shots tiem")
                     ),
@@ -50,8 +50,8 @@ namespace wServer.logic
         .Init("Armored Squirrel",
             new State(
                 new Prioritize(
-                    new Follow(0.6, 6, 1, -1, 0),
-                    new Wander(0.7),
+                    new Follow(2, 6, 1, -1, 0),
+                    new Wander(1),
                     new Shoot(radius: 7, count: 2, projectileIndex: 0, predictive: 1, coolDown: 1000, shootAngle: 15)
                     )
                 )
@@ -59,8 +59,8 @@ namespace wServer.logic
         .Init("Ultimate Squirrel",
             new State(
                 new Prioritize(
-                    new Follow(0.4, 6, 1, -1, 0),
-                    new Wander(0.3)
+                    new Follow(2, 6, 1, -1, 0),
+                    new Wander(1)
                     ),
                 new Shoot(radius: 7, count: 3, projectileIndex: 0, shootAngle: 20, coolDown: 2000)
                 )
@@ -68,8 +68,8 @@ namespace wServer.logic
         .Init("Forest Goblin",
             new State(
                 new Prioritize(
-                    new Wander(0.4),
-                    new Follow(0.7, 10, 3, -1, 0),
+                    new Wander(2),
+                    new Follow(1, 10, 3, -1, 0),
                     new Shoot(radius: 4, count: 1, projectileIndex: 0, coolDown: 500)
                     )
                 )
@@ -77,7 +77,7 @@ namespace wServer.logic
         .Init("Forest Goblin Mage",
             new State(
                 new Prioritize(
-                    new Wander(0.4),
+                    new Wander(1),
                     new Shoot(radius: 10, count: 2, projectileIndex: 0, predictive: 1, coolDown: 500, shootAngle: 2)
                     )
                 )

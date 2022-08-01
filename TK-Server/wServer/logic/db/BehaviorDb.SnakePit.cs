@@ -101,7 +101,7 @@ namespace wServer.logic
                     new Shoot(25, coolDown: 1000),
                     new State("Protect",
                         new EntityNotExistsTransition("Stheno the Snake Queen", 100, "Wander"),
-                        new Orbit(7.5, 10, acquireRange: 50, target: "Undead Stheno")
+                        new Orbit(2.5, 10, acquireRange: 50, target: "Undead Stheno")
                         ),
                     new State("Wander",
                         new Prioritize(

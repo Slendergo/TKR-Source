@@ -13,12 +13,12 @@ namespace wServer.logic
                 new EntityNotExistsTransition("Jon Bilgewater the Pirate King", 90000, "rip"),
                 new State("CircleOrWander",
                     new Prioritize(
-                        new Orbit(0.55, 2, 5, "Parrot Cage"),
-                        new Wander(0.12)
+                        new Orbit(1, 2, 5, "Parrot Cage"),
+                        new Wander(1)
                         )
                     ),
                 new State("Orbit&HealJon",
-                    new Orbit(0.55, 2, 20, "Jon Bilgewater the Pirate King"),
+                    new Orbit(1, 2, 20, "Jon Bilgewater the Pirate King"),
                     new HealSelf(coolDown: 2000, amount: 100)
 
                     ),
@@ -39,7 +39,7 @@ namespace wServer.logic
             )
         .Init("Deadwater Docks Lieutenant",
             new State(
-                new Follow(1, 8, 1),
+                new Follow(2, 8, 1),
                 new Shoot(8, 1, 10, coolDown: 1000),
                 new TossObject("Bottled Evil Water", angle: null, coolDown: 6750)
                 ),
@@ -48,7 +48,7 @@ namespace wServer.logic
             )
         .Init("Deadwater Docks Veteran",
             new State(
-                new Follow(0.8, 8, 1),
+                new Follow(1, 8, 1),
                 new Shoot(8, 1, 10, coolDown: 500)
                 ),
             new TierLoot(10, ItemType.Weapon, 0.05),
@@ -57,7 +57,7 @@ namespace wServer.logic
             )
         .Init("Deadwater Docks Admiral",
             new State(
-                new Follow(0.6, 8, 1),
+                new Follow(2, 8, 1),
                 new Shoot(8, 3, 10, coolDown: 1325)
                 ),
             new ItemLoot("Magic Potion", 0.1),
@@ -65,7 +65,7 @@ namespace wServer.logic
             )
         .Init("Deadwater Docks Brawler",
             new State(
-                new Follow(1.12, 8, 1),
+                new Follow(1.5, 8, 1),
                 new Shoot(8, 1, 10, coolDown: 350)
                 ),
             new ItemLoot("Magic Potion", 0.1),
@@ -73,7 +73,7 @@ namespace wServer.logic
             )
         .Init("Deadwater Docks Sailor",
             new State(
-                new Follow(0.9, 8, 1),
+                new Follow(1.3, 8, 1),
                 new Shoot(8, 1, 10, coolDown: 525)
                 ),
             new ItemLoot("Magic Potion", 0.1),
@@ -108,19 +108,19 @@ namespace wServer.logic
                     new Order(90, "Parrot Cage", "SpawnParrots"),
                     new DamageTakenTransition(32500, "gotoSpawn"),
                     new State("coinphase",
-                        new Wander(0.11),
+                        new Wander(1),
                         new Shoot(10, count: 1, projectileIndex: 0, coolDown: 2000),
                         new TimedTransition(4500, "cannonballs")
                         ),
                     new State("cannonballs",
-                        new Follow(0.32, 8, coolDown: 1000),
+                        new Follow(1.5, 8, coolDown: 1000),
                         new Shoot(10, count: 7, shootAngle: 30, projectileIndex: 1, coolDown: 2150),
                         new TimedTransition(5000, "coinphase")
                         )
                     ),
 
                 new State("gotoSpawn",
-                    new ReturnToSpawn(speed: 0.52),
+                    new ReturnToSpawn(speed: 1),
                     new ConditionalEffect(ConditionEffectIndex.Invincible),
                     new ConditionalEffect(ConditionEffectIndex.StunImmune),
                     new TimedTransition(3500, "blastcannonballs")

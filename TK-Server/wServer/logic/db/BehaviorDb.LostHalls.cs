@@ -300,7 +300,7 @@ namespace wServer.logic
                     new TimedTransition(9000, "Phase 2")
                     ),
                 new State("Phase 2",
-                    new Follow(0.6, acquireRange: 30, range: 0),
+                    new Follow(2, acquireRange: 30, range: 0),
                     new Taunt("You doubt my strength? FATUUS! I will destroy you!"),
                     new OrderOnce(30, "LH Pillar spawner", "Main"),
                     new Shoot(30, 8, projectileIndex: 2, coolDown: 4000, seeInvis: true),
@@ -395,7 +395,7 @@ namespace wServer.logic
                     ),
                 new State("Phase 8",
                     new Taunt("Call of voice, for naught. Plea of mercy, for naught. None may enter this chamber and live!"),
-                    new Follow(0.6, 30, 0),
+                    new Follow(2, 30, 0),
                     new Spawn("LH Colossus Rock 4", maxChildren: 1),
                     new Spawn("LH Colossus Rock 5", maxChildren: 1),
                     new OrderOnce(1, "LH Colossus Rock 4", "Shoot And Move 1"),
@@ -405,7 +405,7 @@ namespace wServer.logic
                     ),
                 new State("Phase 8.1",
                     new Taunt("SANGUIS! OSSE! CARO! Feel it rend from your body!"),
-                    new Follow(0.6, 30, 0),
+                    new Follow(2, 30, 0),
                     new Shoot(20, 3, shootAngle: 15, projectileIndex: 12, coolDown: 3000, seeInvis: true),
                     new Shoot(30, 18, shootAngle: 20, projectileIndex: 11, coolDown: 2000, coolDownOffset: 200, seeInvis: true),
                     new HpLessTransition(0.55, "Phase 8.2")
@@ -414,7 +414,7 @@ namespace wServer.logic
                     new Taunt("PESTIS! The darkness consumes!!"),
                     new OrderOnce(20, "LH Colossus Rock 4", "Stopped"),
                     new OrderOnce(20, "LH Colossus Rock 5", "Stopped"),
-                    new Follow(0.6, 30, 0),
+                    new Follow(2, 30, 0),
                     new Shoot(20, 3, shootAngle: 15, projectileIndex: 12, coolDown: 3000, seeInvis: true),
                     new Shoot(30, 18, shootAngle: 20, projectileIndex: 11, coolDown: 2000, coolDownOffset: 200, seeInvis: true),
                     new HpLessTransition(0.53, "Phase 9")
@@ -494,7 +494,7 @@ namespace wServer.logic
                     new HpLessTransition(0.4, "Phase 13")
                     ),
                 new State("Phase 13",
-                    new ReturnToSpawn(1.3, 0),
+                    new ReturnToSpawn(3, 0),
                     new Taunt("It is my duty to protect these catacombs! You dare threaten my purpose?"),
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 2000),
                     new TimedTransition(1000, "Phase 13.1")

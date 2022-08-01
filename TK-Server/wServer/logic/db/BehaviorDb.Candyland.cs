@@ -399,7 +399,7 @@ namespace wServer.logic
                 new State("Main",
                     new State("Unaware",
                         new Prioritize(
-                            new Orbit(speed: 0.4, radius: 2.6, acquireRange: 8, target: "Rototo", speedVariance: 0.2, radiusVariance: 0.2, orbitClockwise: true),
+                            new Orbit(speed: 1.4, radius: 2.6, acquireRange: 8, target: "Rototo", speedVariance: 0.2, radiusVariance: 0.2, orbitClockwise: true),
                             new Wander(speed: 0.35)
                             ),
                         new PlayerWithinTransition(dist: 3.4, targetState: "Attack"),
@@ -428,9 +428,9 @@ namespace wServer.logic
                 new State("Follow",
                     new Prioritize(
                         new StayBack(speed: 0.23, distance: 1.2, entity: null),
-                        new Orbit(speed: 0.2, radius: 1.6, acquireRange: 3)
+                        new Orbit(speed: 1.2, radius: 1.6, acquireRange: 3)
                         ),
-                    new Follow(speed: 0.2, acquireRange: 7, range: 3),
+                    new Follow(speed: 1.2, acquireRange: 7, range: 3),
                     new Wander(speed: 0.2),
                     new NoPlayerWithinTransition(dist: 4, targetState: "Moving")
                     )

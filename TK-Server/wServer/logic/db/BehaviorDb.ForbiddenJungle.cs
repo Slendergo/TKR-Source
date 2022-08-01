@@ -14,8 +14,8 @@ namespace wServer.logic
             new State(
                 new DropPortalOnDeath("Forbidden Jungle Portal", 65),
                 new Prioritize(
-                    new StayCloseToSpawn(0.8, 5),
-                    new Wander(0.4)
+                    new StayCloseToSpawn(1, 5),
+                    new Wander(1)
                     ),
                 new State("Waiting",
                     new PlayerWithinTransition(15, "Attacking")
@@ -46,8 +46,8 @@ namespace wServer.logic
         .Init("Great Temple Snake",
             new State(
                 new Prioritize(
-                    new Follow(0.6),
-                    new Wander(0.4)
+                    new Follow(1.5),
+                    new Wander(1)
                     ),
                 new Shoot(10, 2, 7, 0, coolDown: 1000, coolDownOffset: 0),
                 new Shoot(10, 6, 60, 1, coolDown: 2000, coolDownOffset: 600)

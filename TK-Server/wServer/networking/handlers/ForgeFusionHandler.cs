@@ -119,7 +119,7 @@ namespace wServer.networking.handlers
                 //        client.Player.Inventory[forgeItems[i].slotID] = null;
                 //    return;
 
-                case "2592, 2591":
+                case "2794, 2794":
                     client.Player.SendInfo("Successfully forged " + client.CoreServerManager.Resources.GameData.Items[0x4971].DisplayName); // mana
                     list.Clear();
                     client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[0x4971];

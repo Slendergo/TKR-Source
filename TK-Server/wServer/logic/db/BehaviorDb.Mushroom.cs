@@ -93,6 +93,9 @@ namespace wServer.logic
                 new State("Explotes",
                     new Flash(0xFF0000, 0.5, 5),
                     new Shoot(8, count: 8, projectileIndex: 0, coolDownOffset: 0, coolDown: 800),
+                    new TimedTransition(400, "Suicide")
+                    ),
+                new State("Suicide",
                     new Decay(100)
                     )
                 )
@@ -107,6 +110,9 @@ namespace wServer.logic
                 new State("Explotes",
                     new Flash(0xFF0000, 0.5, 5),
                     new Shoot(8, count: 8, projectileIndex: 0, coolDownOffset: 0, coolDown: 800),
+                    new TimedTransition(400, "Suicide")
+                    ),
+                new State("Suicide",
                     new Decay(100)
                     )
                 )
@@ -121,6 +127,9 @@ namespace wServer.logic
                 new State("Explotes",
                     new Flash(0x353535, 0.25, 5),
                     new Shoot(12, count: 8, projectileIndex: 0, coolDown: 800),
+                    new TimedTransition(400, "Suicide")
+                    ),
+                new State("Suicide",
                     new Decay(100)
                     )
                 )

@@ -162,7 +162,7 @@ namespace wServer.core
             _boost[i] += amount;
         }
 
-        private void IncrementSkillBoosts()
+        private void IncrementSkillBoosts() //Skill tree
         {
             if (_player == null || _player.Client == null || _player.Client.Account == null)
                 return;
@@ -176,14 +176,7 @@ namespace wServer.core
             var vit = 6;
             var wis = 7;
 
-            /* <StatToBoost> += <Percentage> * <StatToBoost> / 100;*/
-            //_boost[life] += IncreasePercentage(_player.Node3Med * _player.Node3Med == 2 ? 30 : 0, life);
-            //_boost[mana] += IncreasePercentage(_player.SmallSkill2 * 2, mana);
-            //_boost[def] += IncreasePercentage(_player.Node3Med * _player.Node3Med == 1 ? 5 : _player.Node3Med == 3 ? 10 : 0, def);
-            //_boost[spd] += IncreasePercentage(_player.SmallSkill5 * 2, spd);
-            //_boost[vit] += IncreasePercentage(_player.SmallSkill7 * 2, vit);
-            //_boost[wis] += IncreasePercentage(_player.Node2Med * _player.Node2Med == 1 ? 5 : _player.Node2Med == 3 ? 10 : 0, wis);
-
+            //Positive Stats %
             switch (_player.Node1Med)
             {
                 case 1: _boost[att] += IncreasePercentage(5, att); break;
@@ -210,21 +203,22 @@ namespace wServer.core
 
             switch (_player.Node4Med)
             {
-                case 1: _boost[def] += IncreasePercentage(5, def); break;
-                case 2: _boost[def] += IncreasePercentage(5, def); _boost[life] += IncreasePercentage(40, life); break;
-                case 3: _boost[def] += IncreasePercentage(10, def); _boost[life] += IncreasePercentage(40, life); break;
+                case 1: _boost[spd] += IncreasePercentage(5, spd); break;
+                case 2: _boost[spd] += IncreasePercentage(5, spd); _boost[dex] += IncreasePercentage(5, dex); break;
+                case 3: _boost[spd] += IncreasePercentage(10, spd); _boost[dex] += IncreasePercentage(5, dex); break;
                 default: break;
             }
 
-
+            //Negative Stats %
             _boost[life] -= _player.Node1Big > 0 ? IncreasePercentage(15, life) : 0;
 
             _boost[att] -= _player.Node2Big > 0 ? IncreasePercentage(15, att) : 0;
 
-            _boost[mana] -= _player.Node3Big > 0 ? IncreasePercentage(50, mana) : 0;
+            _boost[mana] -= _player.Node3Big > 0 ? IncreasePercentage(15, spd) : 0;
 
             _boost[def] -= _player.Node4Big > 0 ? IncreasePercentage(15, def) : 0;
 
+            //Flat Stats Increases
             _boost[mana] += _player.Node2TickMin * 10;
             _boost[att] += _player.Node1TickMaj;
             _boost[def] += _player.Node3TickMaj * 2;

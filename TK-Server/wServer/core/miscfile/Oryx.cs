@@ -444,7 +444,7 @@ namespace wServer.core
             Tuple.Create("Lord of the Lost Lands", (ISetPiece) null),
             Tuple.Create("Ghost Ship", (ISetPiece) null),
             Tuple.Create("Grand Sphinx", (ISetPiece) new Sphinx()),
-            Tuple.Create("Hermit God", (ISetPiece) new Hermit()),
+            //Tuple.Create("Hermit God", (ISetPiece) new Hermit()),
             Tuple.Create("Skull Shrine", (ISetPiece) new SkullShrine()),
             Tuple.Create("Lucky Ent God", (ISetPiece) null),
             Tuple.Create("Lucky Djinn", (ISetPiece) null),

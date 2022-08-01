@@ -673,7 +673,7 @@ namespace wServer.networking.handlers
 
             if (packet.skillNumber == 40)
             {
-                Console.WriteLine("Save: " + (player.Node1TickMin + player.Node1TickMaj + (player.Node1Med * 5) + (player.Node1Big * 10) + player.Node2TickMin + player.Node2TickMaj + (player.Node2Med * 5) + (player.Node2Big * 10) + player.Node3TickMin + player.Node3TickMaj + (player.Node3Med * 5) + (player.Node3Big * 10) + player.Node4TickMin + player.Node4TickMaj + (player.Node4Med * 5) + (player.Node4Big * 10) + player.Node5TickMin + player.Node5TickMaj + (player.Node5Med * 5) + (player.Node5Big * 10)) + " > " + player.Points);
+                //Console.WriteLine("Save: " + (player.Node1TickMin + player.Node1TickMaj + (player.Node1Med * 5) + (player.Node1Big * 10) + player.Node2TickMin + player.Node2TickMaj + (player.Node2Med * 5) + (player.Node2Big * 10) + player.Node3TickMin + player.Node3TickMaj + (player.Node3Med * 5) + (player.Node3Big * 10) + player.Node4TickMin + player.Node4TickMaj + (player.Node4Med * 5) + (player.Node4Big * 10) + player.Node5TickMin + player.Node5TickMaj + (player.Node5Med * 5) + (player.Node5Big * 10)) + " > " + player.Points);
                 if (player.Node1TickMin + player.Node1TickMaj + (player.Node1Med * 5) + (player.Node1Big * 10) + player.Node2TickMin + player.Node2TickMaj + (player.Node2Med * 5) + (player.Node2Big * 10) + player.Node3TickMin + player.Node3TickMaj + (player.Node3Med * 5) + (player.Node3Big * 10) + player.Node4TickMin + player.Node4TickMaj + (player.Node4Med * 5) + (player.Node4Big * 10) + player.Node5TickMin + player.Node5TickMaj + (player.Node5Med * 5) + (player.Node5Big * 10) > newMaxedInt)
                 {
                     player.Client.SendPacket(new InvResult() { Result = 1 });
@@ -685,7 +685,7 @@ namespace wServer.networking.handlers
                 for(int i = 1; i < 6; i++)
                 {
                     var local1 = CalcTreePoints(client, i);
-                    Console.WriteLine("Check Odd Number: " + local1);
+                    //Console.WriteLine("Check Odd Number: " + local1);
                     if (local1 == 99)
                     {
                         player.Client.SendPacket(new InvResult() { Result = 1 });

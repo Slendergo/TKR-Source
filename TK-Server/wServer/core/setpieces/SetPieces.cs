@@ -20,7 +20,6 @@ namespace wServer.core.setpieces
             SetPiece(new TempleB(), 10, 20, TerrainType.MidForest, TerrainType.MidPlains),
             SetPiece(new Avatar(), 1, 1, TerrainType.Mountains),
             SetPiece(new NamedEntitySetPiece("Spectral Sentry"), 1, 1, TerrainType.Mountains),
-            SetPiece(new NamedEntitySetPiece("Julius Caesar"), 1, 1, TerrainType.Mountains),
             SetPiece(new NamedEntitySetPiece("Crystal Prisoner"), 1, 1, TerrainType.Mountains)
         };
 
@@ -87,22 +86,15 @@ namespace wServer.core.setpieces
             return ret;
         }
 
-        public static void RenderFromProto(World world, IntPoint pos)
+        public static void RenderFromData(World world, IntPoint pos, byte[] data)
         {
-            //var manager = world.Manager;
-            //var map = 0;
+            var manager = world.Manager;
 
-            //if (proto.maps != null && proto.maps.Length > 1)
-            //{
-            //    var rnd = new Random();
-            //    map = rnd.Next(0, proto.maps.Length);
-            //}
+            var ms = new MemoryStream(data);
+            var sp = new Wmap(manager.Resources.GameData);
 
-            //var ms = new MemoryStream(proto.wmap[map]);
-            //var sp = new Wmap(manager.Resources.GameData);
-
-            //sp.Load(ms, 0);
-            //sp.ProjectOntoWorld(world, pos);
+            sp.Load(ms, 0);
+            sp.ProjectOntoWorld(world, pos);
         }
 
         public static int[,] rotateCW(int[,] mat)

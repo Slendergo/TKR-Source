@@ -133,6 +133,7 @@
 		<Height>256</Height>
 		<MapJM>cloth_bazaar.jm</MapJM>
 		<Dungeon/>
+		<Persists/>
 	</World>
 	<World id="Oryx's Castle">
 		<Width>256</Width>

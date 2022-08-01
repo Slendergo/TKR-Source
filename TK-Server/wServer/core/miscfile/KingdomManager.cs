@@ -8,15 +8,30 @@ using System.Text;
 using wServer.core.objects;
 using wServer.core.setpieces;
 using wServer.core.worlds.logic;
+using wServer.networking;
+using wServer.networking.packets.outgoing;
 
 namespace wServer.core
 {
     //The mad god who look after the realm
-    internal class Oryx
+
+    public enum KindgomState
+    {
+        Idle,
+        Refreshing,
+        Closing,
+        Emptying,
+        Closed,
+        TEST_WAITING,
+        SpawnOryx,
+        Expire,
+        Expired
+    }
+
+    internal class KingdomManager
     {
         public int _EventCount = 0;
-        public RealmWorld _world;
-        public bool Closing;
+        public RealmWorld World;
 
         private static readonly Tuple<string, TauntData>[] CriticalEnemies = new Tuple<string, TauntData>[]
         {
@@ -410,66 +425,150 @@ namespace wServer.core
         {
             Tuple.Create("Tiki Tiki", (ISetPiece) null), // null means use the entity name isntead of make a setpiece class
             Tuple.Create("King Slime", (ISetPiece) null),
-            /* NOTE:
-             * This encounter event is temporarily disabled until properly patch.
-             *
-             * The behavior of "Mushroom" is causing console spam, might be caused
-             * by invalid paramenters on projectile cast on a specific phase.
-             */
-            //Tuple.Create("Mushroom", (ISetPiece) null),
-            //Tuple.Create("Strange Magician", (ISetPiece) new StrangeMagician()),
-            //Tuple.Create("Water Elemental", (ISetPiece) new WaterElemental()),
-            //Tuple.Create("Earth Elemental", (ISetPiece) new EarthElemental()),
-            //Tuple.Create("Wind Elemental", (ISetPiece) null),
-            //Tuple.Create("Fire Elemental", (ISetPiece) new FireElemental()),
-            //Tuple.Create("Julius Caesar", (ISetPiece) new JuliusCaesar()),
-            //Tuple.Create("Cube God", (ISetPiece) null),
-            //Tuple.Create("Pentaract", (ISetPiece) new Pentaract()),
-            //Tuple.Create("Lord of the Lost Lands", (ISetPiece) null),
-            //Tuple.Create("Ghost Ship", (ISetPiece) new GhostShip()),
-            //Tuple.Create("Grand Sphinx", (ISetPiece) new Sphinx()),
-            //Tuple.Create("Hermit God", (ISetPiece) new Hermit()),
-            //Tuple.Create("Skull Shrine", (ISetPiece) new SkullShrine()),
-            //Tuple.Create("Lucky Ent God", (ISetPiece) null),
-            //Tuple.Create("Lucky Djinn", (ISetPiece) null),
-
-            Tuple.Create("Strange Magician", (ISetPiece) null),
-            Tuple.Create("Water Elemental", (ISetPiece) null),
-            Tuple.Create("Earth Elemental", (ISetPiece) null),
+            Tuple.Create("Mushroom", (ISetPiece) null),
+            Tuple.Create("Strange Magician", (ISetPiece) new StrangeMagician()),
+            Tuple.Create("Water Elemental", (ISetPiece) new WaterElemental()),
+            Tuple.Create("Earth Elemental", (ISetPiece) new EarthElemental()),
             Tuple.Create("Wind Elemental", (ISetPiece) null),
-            Tuple.Create("Fire Elemental", (ISetPiece) null),
-            Tuple.Create("Julius Caesar", (ISetPiece) null),
+            Tuple.Create("Fire Elemental", (ISetPiece) new FireElemental()),
+            Tuple.Create("Julius Caesar", (ISetPiece) new JuliusCaesar()),
             Tuple.Create("Cube God", (ISetPiece) null),
             Tuple.Create("Pentaract", (ISetPiece) new Pentaract()),
             Tuple.Create("Lord of the Lost Lands", (ISetPiece) null),
-            Tuple.Create("Ghost Ship", (ISetPiece) null),
+            Tuple.Create("Ghost Ship", (ISetPiece) new GhostShip()),
             Tuple.Create("Grand Sphinx", (ISetPiece) new Sphinx()),
-            //Tuple.Create("Hermit God", (ISetPiece) new Hermit()),
+            Tuple.Create("Hermit God", (ISetPiece) new Hermit()),
             Tuple.Create("Skull Shrine", (ISetPiece) new SkullShrine()),
             Tuple.Create("Lucky Ent God", (ISetPiece) null),
             Tuple.Create("Lucky Djinn", (ISetPiece) null),
-            Tuple.Create("Mushroom", (ISetPiece) null),
-            //Tuple.Create("Oryx the Mad God 2", (ISetPiece) null)
+            Tuple.Create("shtrs Defense System", (ISetPiece) new Avatar()),
+            Tuple.Create("Mushroom", (ISetPiece) null)
         };
 
         private const float MAX_GUILD_LOOT_BOOST = 0.2f;
 
         private readonly string _webhook;
 
-        private int[] _enemyCounts = new int[12];
-        private int[] _enemyMaxCounts = new int[12];
-        private long _prevTick;
-        private Random _rand = new Random();
-        private int _tenSecondTick;
+        private int[] EnemyCounts = new int[12];
+        private int[] EnemyMaxCounts = new int[12];
+        private long LastTenSecondsTime;
+        private Random Random = new Random();
 
-        public Oryx(RealmWorld world)
+        public KindgomState CurrentState;
+        public bool DisableSpawning;
+
+        public KingdomManager(RealmWorld world)
         {
-            _world = world;
+            World = world;
             _discord = Program.CoreServerManager.ServerConfig.discordIntegration;
             _webhook = _discord.webhookRealmEvent;
 
             InitEvents();
             Init();
+
+            CurrentState = KindgomState.Idle;
+        }
+
+        public void Update(ref TickTime time)
+        {
+            //Console.WriteLine(CurrentState);
+            switch (CurrentState)
+            {
+                case KindgomState.Idle:
+                    {
+                        if (time.TotalElapsedMs - LastTenSecondsTime >= 10000)
+                        {
+                            if (time.TickCount % 2 == 0)
+                                HandleAnnouncements();
+                            if (time.TickCount % 6 == 0)
+                                EnsurePopulation();
+                            LastTenSecondsTime = time.TotalElapsedMs;
+                        }
+                    }
+                    break;
+                case KindgomState.Closing:
+                    {
+                        DisableSpawning = true;
+                        World.Manager.WorldManager.Nexus.PortalMonitor.RemovePortal(World.Id);
+                        World.Manager.WorldManager.Nexus.PortalMonitor.CreateNewRealm();
+
+                        //BroadcastMsg("RAAHH MY TROOPS HAVE FAILED ME!");
+                        //BroadcastMsg("THEY SHALL TASTE MY WRATH!!!");
+                        //BroadcastMsg("THIS KINDOM SHALL NOT FALL!!");
+
+                        BroadcastMsg("I have closed this realm");
+
+                        CurrentState = KindgomState.Emptying;
+                    }
+                    break;
+                case KindgomState.Emptying:
+                    {
+                        foreach(var e in World.Enemies.Values)
+                            World.LeaveWorld(e);
+                        CurrentState = KindgomState.TEST_WAITING;
+                        World.Timers.Add(new WorldTimer(5000, (w, t) => CurrentState = KindgomState.Closed));
+                    }
+                    break;
+                case KindgomState.Closed:
+                    {
+                        //BroadcastMsg("ENOUGH WAITING!");
+                        //BroadcastMsg("YOU SHALL MEET YOUR DOOM BY MY HAND!!!");
+                        //BroadcastMsg("GUARDIANS DEAL WITH THESE FOOLS!!!");
+                        BroadcastMsg("Oryx, enjoy feasting on these beasts!");
+
+                        World.Broadcast(new ShowEffect()
+                        {
+                            EffectType = EffectType.Earthquake
+                        }, PacketPriority.Low);
+
+                        CurrentState = KindgomState.TEST_WAITING;
+                        World.Timers.Add(new WorldTimer(8000, (w, t) => CurrentState = KindgomState.SpawnOryx));
+                    }
+                    break;
+                case KindgomState.TEST_WAITING:
+                    break;
+                case KindgomState.SpawnOryx:
+                    {
+                        if (World.Players.Count >= 0)
+                        {
+                            var newWorld = World.Manager.WorldManager.CreateNewWorld("Oryx's Castle", null, World.Manager.WorldManager.Nexus); // todo mabye a 3rd thread for oryx's?
+
+                            var rcpNotPaused = new Reconnect()
+                            {
+                                Host = "",
+                                Port = World.Manager.ServerConfig.serverInfo.port,
+                                GameId = newWorld.Id,
+                                Name = newWorld.DisplayName
+                            };
+
+                            var rcpPaused = new Reconnect()
+                            {
+                                Host = "",
+                                Port = World.Manager.ServerConfig.serverInfo.port,
+                                GameId = -2,
+                                Name = "Nexus"
+                            };
+
+                            World.PlayersBroadcastAsParallel(_ =>
+                                _.Client.Reconnect(
+                                    _.HasConditionEffect(ConditionEffects.Paused)
+                                        ? rcpPaused
+                                        : rcpNotPaused
+                                )
+                            );
+                        }
+                        CurrentState = KindgomState.Expire;
+                    }
+                    break;
+                case KindgomState.Expire:
+                    {
+                        World.FlagForClose();
+                        CurrentState = KindgomState.Expired;
+                    }
+                    break;
+                case KindgomState.Expired:
+                    break;
+            }
         }
 
         public void AnnounceMVP(Enemy eventDead, string name)
@@ -500,11 +599,11 @@ namespace wServer.core
 
             sb.Append("!");
 
-            _world.Manager.ChatManager.AnnounceRealm(sb.ToString(), "Oryx the Mad God");
+            World.Manager.ChatManager.AnnounceRealm(sb.ToString(), "The Talisman King");
 
             var account = Program.CoreServerManager.Database.GetAccount(mvp.AccountId);
             var guild = Program.CoreServerManager.Database.GetGuild(account.GuildId);
-            var points = _rand.Next(1, 10);
+            var points = Random.Next(1, 10);
 
             if (guild != null)
             {
@@ -537,53 +636,42 @@ namespace wServer.core
                 mvp.SendInfo("Sorry, points cannot be rewarded. Please join a guild first.");
         }
 
-        public void CloseRealm()
-        {
-            _world.Closed = true;
-
-            BroadcastMsg("I HAVE CLOSED THIS REALM!");
-            BroadcastMsg("YOU WILL NOT LIVE TO SEE THE LIGHT OF DAY!");
-
-            _world.Timers.Add(new WorldTimer(22000, (w, t) => SendToCastle()));
-        }
-
         public int CountingEvents(string eventDead)
         {
             _EventCount++;
 
             // notify 3 events before realm close on discord (once)
-            if (_EventCount == 27 && !_world.Closed)
+            if (_EventCount == 27 && !DisableSpawning)
             {
                 var info = Program.CoreServerManager.ServerConfig.serverInfo;
-                var players = _world.Players.Count(p => p.Value.Client != null);
-                var builder = _discord.MakeOryxBuilder(info, _world.DisplayName, players, _world.MaxPlayers);
+                var players = World.Players.Count(p => p.Value.Client != null);
+                var builder = _discord.MakeOryxBuilder(info, World.DisplayName, players, World.MaxPlayers);
 
-#pragma warning disable
                 _discord.SendWebhook(_webhook, builder);
-#pragma warning restore
             }
 
-            if (_EventCount >= 30 && !_world.Closed)
+            if (_EventCount >= 30 && !DisableSpawning)
             {
-                CloseRealm();
-                _world.Manager.ChatManager.AnnounceRealm("(" + _EventCount + "/30) " + eventDead + " has been defeated!", _world.DisplayName);
+                DisableSpawning = true;
+                CurrentState = KindgomState.Closing;
+                World.Manager.ChatManager.AnnounceRealm("(" + _EventCount + "/30) " + eventDead + " has been defeated!", World.DisplayName);
             }
-            else if (_EventCount <= 30 && !_world.Closed)
-                _world.Manager.ChatManager.AnnounceRealm("(" + _EventCount + "/30) " + eventDead + " has been defeated!", _world.DisplayName);
+            else if (_EventCount <= 30 && !World.Closed)
+                World.Manager.ChatManager.AnnounceRealm("(" + _EventCount + "/30) " + eventDead + " has been defeated!", World.DisplayName);
 
             return _EventCount;
         }
 
         public void Init()
         {
-            var w = _world.Map.Width;
-            var h = _world.Map.Height;
+            var w = World.Map.Width;
+            var h = World.Map.Height;
             var stats = new int[12];
 
             for (var y = 0; y < h; y++)
                 for (var x = 0; x < w; x++)
                 {
-                    var tile = _world.Map[x, y];
+                    var tile = World.Map[x, y];
                     if (tile.Terrain != TerrainType.None)
                         stats[(int)tile.Terrain - 1]++;
                 }
@@ -593,8 +681,8 @@ namespace wServer.core
                 var terrain = i.Key;
                 var idx = (int)terrain - 1;
                 var enemyCount = stats[idx] / i.Value.Item1;
-                _enemyMaxCounts[idx] = enemyCount;
-                _enemyCounts[idx] = 0;
+                EnemyMaxCounts[idx] = enemyCount;
+                EnemyCounts[idx] = 0;
 
                 for (var j = 0; j < enemyCount; j++)
                 {
@@ -603,39 +691,31 @@ namespace wServer.core
                     if (objType == 0)
                         continue;
 
-                    _enemyCounts[idx] += Spawn(_world.Manager.Resources.GameData.ObjectDescs[objType], terrain, w, h);
+                    EnemyCounts[idx] += Spawn(World.Manager.Resources.GameData.ObjectDescs[objType], terrain, w, h);
 
-                    if (_enemyCounts[idx] >= enemyCount)
+                    if (EnemyCounts[idx] >= enemyCount)
                         break;
                 }
             }
         }
 
-        public void InitCloseRealm()
-        {
-            Closing = true;
-
-            _world.Manager.ChatManager.Announce($"{_world.DisplayName} closing in 1 minute.");
-            _world.Timers.Add(new WorldTimer(60000, (w, t) => CloseRealm()));
-        }
-
         public void InitEvents()
         {
             var events = _events;
-            var evt = events[_rand.Next(0, events.Count)];
-            var gameData = _world.Manager.Resources.GameData;
+            var evt = events[Random.Next(0, events.Count)];
+            var gameData = World.Manager.Resources.GameData;
 
             if (gameData.ObjectDescs[gameData.IdToObjectType[evt.Item1]].PerRealmMax == 1)
                 events.Remove(evt);
 
-            _world.Timers.Add(new WorldTimer(15000, (w, t) => SpawnEvent(evt.Item1, evt.Item2)));
+            World.Timers.Add(new WorldTimer(15000, (w, t) => SpawnEvent(evt.Item1, evt.Item2)));
         }
 
         public void OnEnemyKilled(Enemy enemy, Player killer)
         {
             var events = _events;
-            var evt = events[_rand.Next(0, events.Count)];
-            var gameData = _world.Manager.Resources.GameData;
+            var evt = events[Random.Next(0, events.Count)];
+            var gameData = World.Manager.Resources.GameData;
 
             // is a critical quest?
             TauntData? dat = null;
@@ -657,12 +737,12 @@ namespace wServer.core
             if (enemy.ObjectDesc == null || !enemy.ObjectDesc.Quest)
                 return;
 
-            if (!_world.Closed)
+            if (!DisableSpawning)
             {
                 if (gameData.ObjectDescs[gameData.IdToObjectType[evt.Item1]].PerRealmMax == 1)
                     events.Remove(evt);
 
-                _world.Timers.Add(new WorldTimer(15000, (w, t) => SpawnEvent(evt.Item1, evt.Item2)));
+                World.Timers.Add(new WorldTimer(15000, (w, t) => SpawnEvent(evt.Item1, evt.Item2)));
             }
 
             // new event is critical?
@@ -682,24 +762,14 @@ namespace wServer.core
         public void OnPlayerEntered(Player player)
         {
             player.SendInfo("Welcome to Talisman's Kingdom!");
-            player.SendEnemy("Oryx the Mad God", "You are food for my minions!");
+            player.SendEnemy("The Talisman King", "You are a pest to my kingdom!");
             player.SendInfo("Use [WASDQE] to move; click to shoot!");
             player.SendInfo("Type \"/help\" for more help");
         }
 
         public void Tick(ref TickTime time)
         {
-            if (time.TotalElapsedMs - _prevTick <= 10000)
-                return;
-
-            if (_tenSecondTick % 2 == 0)
-                HandleAnnouncements();
-
-            if (_tenSecondTick % 6 == 0)
-                EnsurePopulation();
-
-            _tenSecondTick++;
-            _prevTick = time.TotalElapsedMs;
+            Update(ref time);
         }
 
         private static double GetNormal(Random rand)
@@ -717,7 +787,7 @@ namespace wServer.core
 
         private static double GetUniform(Random rand) => ((uint)(rand.NextDouble() * uint.MaxValue) + 1.0) * 2.328306435454494e-10;
 
-        private void BroadcastMsg(string message) => _world.Manager.ChatManager.Oryx(_world, message);
+        private void BroadcastMsg(string message) => World.Manager.ChatManager.TalismanKing(World, message);
 
         private void EnsurePopulation()
         {
@@ -730,25 +800,25 @@ namespace wServer.core
 
             for (var i = 0; i < state.Length; i++)
             {
-                if (_enemyCounts[i] > _enemyMaxCounts[i] * 1.5) //Kill some
+                if (EnemyCounts[i] > EnemyMaxCounts[i] * 1.5) //Kill some
                 {
                     state[i] = 1;
-                    diff[i] = _enemyCounts[i] - _enemyMaxCounts[i];
+                    diff[i] = EnemyCounts[i] - EnemyMaxCounts[i];
                     c++;
                     continue;
                 }
 
-                if (_enemyCounts[i] < _enemyMaxCounts[i] * 0.75) //Add some
+                if (EnemyCounts[i] < EnemyMaxCounts[i] * 0.75) //Add some
                 {
                     state[i] = 2;
-                    diff[i] = _enemyMaxCounts[i] - _enemyCounts[i];
+                    diff[i] = EnemyMaxCounts[i] - EnemyCounts[i];
                     continue;
                 }
 
                 state[i] = 0;
             }
 
-            foreach (var i in _world.Enemies) //Kill
+            foreach (var i in World.Enemies) //Kill
             {
                 var idx = (int)i.Value.Terrain - 1;
 
@@ -757,7 +827,7 @@ namespace wServer.core
 
                 if (state[idx] == 1)
                 {
-                    _world.LeaveWorld(i.Value);
+                    World.LeaveWorld(i.Value);
                     diff[idx]--;
                     if (diff[idx] == 0)
                         c--;
@@ -767,8 +837,8 @@ namespace wServer.core
                     break;
             }
 
-            var w = _world.Map.Width;
-            var h = _world.Map.Height;
+            var w = World.Map.Width;
+            var h = World.Map.Height;
 
             for (var i = 0; i < state.Length; i++) //Add
             {
@@ -785,7 +855,7 @@ namespace wServer.core
                     if (objType == 0)
                         continue;
 
-                    j += Spawn(_world.Manager.Resources.GameData.ObjectDescs[objType], t, w, h);
+                    j += Spawn(World.Manager.Resources.GameData.ObjectDescs[objType], t, w, h);
                 }
             }
 
@@ -794,7 +864,7 @@ namespace wServer.core
 
         private ushort GetRandomObjType(IEnumerable<Tuple<string, double>> dat)
         {
-            var p = _rand.NextDouble();
+            var p = Random.NextDouble();
 
             double n = 0;
             ushort objType = 0;
@@ -805,7 +875,7 @@ namespace wServer.core
 
                 if (n > p)
                 {
-                    objType = _world.Manager.Resources.GameData.IdToObjectType[k.Item1];
+                    objType = World.Manager.Resources.GameData.IdToObjectType[k.Item1];
                     break;
                 }
             }
@@ -815,13 +885,13 @@ namespace wServer.core
 
         private void HandleAnnouncements()
         {
-            if (_world.Closed)
+            if (World.Closed)
                 return;
 
-            var taunt = CriticalEnemies[_rand.Next(0, CriticalEnemies.Length)];
+            var taunt = CriticalEnemies[Random.Next(0, CriticalEnemies.Length)];
             var count = 0;
 
-            foreach (var i in _world.Enemies)
+            foreach (var i in World.Enemies)
             {
                 var desc = i.Value.ObjectDesc;
 
@@ -837,7 +907,7 @@ namespace wServer.core
             if ((count == 1 && taunt.Item2.Final != null) || (taunt.Item2.Final != null && taunt.Item2.NumberOfEnemies == null))
             {
                 var arr = taunt.Item2.Final;
-                var msg = arr[_rand.Next(0, arr.Length)];
+                var msg = arr[Random.Next(0, arr.Length)];
 
                 BroadcastMsg(msg);
             }
@@ -848,7 +918,7 @@ namespace wServer.core
                 if (arr == null)
                     return;
 
-                var msg = arr[_rand.Next(0, arr.Length)];
+                var msg = arr[Random.Next(0, arr.Length)];
                 msg = msg.Replace("{COUNT}", count.ToString());
 
                 BroadcastMsg(msg);
@@ -857,35 +927,16 @@ namespace wServer.core
 
         private void RecalculateEnemyCount()
         {
-            for (var i = 0; i < _enemyCounts.Length; i++)
-                _enemyCounts[i] = 0;
+            for (var i = 0; i < EnemyCounts.Length; i++)
+                EnemyCounts[i] = 0;
 
-            foreach (var i in _world.Enemies)
+            foreach (var i in World.Enemies)
             {
                 if (i.Value.Terrain == TerrainType.None)
                     continue;
 
-                _enemyCounts[(int)i.Value.Terrain - 1]++;
+                EnemyCounts[(int)i.Value.Terrain - 1]++;
             }
-        }
-
-        private void SendToCastle()
-        {
-            BroadcastMsg("MY MINIONS HAVE FAILED ME!");
-            BroadcastMsg("BUT NOW YOU SHALL FEEL MY WRATH!");
-            BroadcastMsg("COME MEET YOUR DOOM AT THE WALLS OF MY CASTLE!");
-
-            if (_world.Players.Count <= 0)
-                return;
-
-            _world.PlayersBroadcastAsParallel(_ =>
-                _.ApplyConditionEffect(ConditionEffectIndex.Invulnerable)
-            );
-
-            //var castle = _world.Manager.WorldManager.CreateNewWorld(
-            //    new OryxCastle(_world.Manager.Resources.Worlds.Data["Oryx Castle"], _world.Players.Count)
-            //);
-            //_world.QuakeToWorld(castle);
         }
 
         private int Spawn(ObjectDesc desc, TerrainType terrain, int w, int h)
@@ -897,7 +948,7 @@ namespace wServer.core
 
             if (desc.Spawn != null)
             {
-                var num = (int)GetNormal(_rand, desc.Spawn.Mean, desc.Spawn.StdDev);
+                var num = (int)GetNormal(Random, desc.Spawn.Mean, desc.Spawn.StdDev);
 
                 if (num > desc.Spawn.Max)
                     num = desc.Spawn.Max;
@@ -906,16 +957,16 @@ namespace wServer.core
 
                 do
                 {
-                    pt.X = _rand.Next(0, w);
-                    pt.Y = _rand.Next(0, h);
-                } while (_world.Map[pt.X, pt.Y].Terrain != terrain || !_world.IsPassable(pt.X, pt.Y) || _world.AnyPlayerNearby(pt.X, pt.Y));
+                    pt.X = Random.Next(0, w);
+                    pt.Y = Random.Next(0, h);
+                } while (World.Map[pt.X, pt.Y].Terrain != terrain || !World.IsPassable(pt.X, pt.Y) || World.AnyPlayerNearby(pt.X, pt.Y));
 
                 for (var k = 0; k < num; k++)
                 {
-                    entity = Entity.Resolve(_world.Manager, desc.ObjectType);
-                    entity.Move(pt.X + (float)(_rand.NextDouble() * 2 - 1) * 5, pt.Y + (float)(_rand.NextDouble() * 2 - 1) * 5);
+                    entity = Entity.Resolve(World.Manager, desc.ObjectType);
+                    entity.Move(pt.X + (float)(Random.NextDouble() * 2 - 1) * 5, pt.Y + (float)(Random.NextDouble() * 2 - 1) * 5);
                     (entity as Enemy).Terrain = terrain;
-                    _world.EnterWorld(entity);
+                    World.EnterWorld(entity);
                     ret++;
                 }
 
@@ -924,34 +975,37 @@ namespace wServer.core
 
             do
             {
-                pt.X = _rand.Next(0, w);
-                pt.Y = _rand.Next(0, h);
-            } while (_world.Map[pt.X, pt.Y].Terrain != terrain || !_world.IsPassable(pt.X, pt.Y) || _world.AnyPlayerNearby(pt.X, pt.Y));
+                pt.X = Random.Next(0, w);
+                pt.Y = Random.Next(0, h);
+            } while (World.Map[pt.X, pt.Y].Terrain != terrain || !World.IsPassable(pt.X, pt.Y) || World.AnyPlayerNearby(pt.X, pt.Y));
 
-            entity = Entity.Resolve(_world.Manager, desc.ObjectType);
+            entity = Entity.Resolve(World.Manager, desc.ObjectType);
             entity.Move(pt.X, pt.Y);
             (entity as Enemy).Terrain = terrain;
-            _world.EnterWorld(entity);
+            World.EnterWorld(entity);
             ret++;
             return ret;
         }
 
         private void SpawnEvent(string name, ISetPiece setpiece)
         {
+            if (DisableSpawning)
+                return;
+
             var pt = new IntPoint();
 
             do
             {
-                pt.X = _rand.Next(0, _world.Map.Width);
-                pt.Y = _rand.Next(0, _world.Map.Height);
-            } while (_world.Map[pt.X, pt.Y].Terrain < TerrainType.Mountains || _world.Map[pt.X, pt.Y].Terrain > TerrainType.MidForest || !_world.IsPassable(pt.X, pt.Y, true) || _world.AnyPlayerNearby(pt.X, pt.Y));
+                pt.X = Random.Next(0, World.Map.Width);
+                pt.Y = Random.Next(0, World.Map.Height);
+            } while (World.Map[pt.X, pt.Y].Terrain < TerrainType.Mountains || World.Map[pt.X, pt.Y].Terrain > TerrainType.MidForest || !World.IsPassable(pt.X, pt.Y, true) || World.AnyPlayerNearby(pt.X, pt.Y));
 
             var sp = setpiece ?? new NamedEntitySetPiece(name);
 
             pt.X -= (sp.Size - 1) / 2;
             pt.Y -= (sp.Size - 1) / 2;
-            sp.RenderSetPiece(_world, pt);
-            _world.PlayersBroadcastAsParallel(_ => _.CheckForEncounter());
+            sp.RenderSetPiece(World, pt);
+            World.PlayersBroadcastAsParallel(_ => _.CheckForEncounter());
 
             var taunt = $"{name} has been spawned!";
 
@@ -960,7 +1014,7 @@ namespace wServer.core
             if (_discord.CanSendRealmEventNotification(name))
             {
                 var info = Program.CoreServerManager.ServerConfig.serverInfo;
-                var builder = _discord.MakeEventBuilder(info.name, _world.DisplayName, name);
+                var builder = _discord.MakeEventBuilder(info.name, World.DisplayName, name);
 
 #pragma warning disable
                 _discord.SendWebhook(_webhook, builder);

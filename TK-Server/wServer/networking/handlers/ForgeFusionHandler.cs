@@ -21,7 +21,7 @@ namespace wServer.networking.handlers
         {
             var miscItem = client.CoreServerManager.Resources.GameData.Items[itemValue];
 
-          //  if (client.Player.Rank >= 60)
+            //  if (client.Player.Rank >= 60)
             //    return;
 
             if (itemValue == 0x497e) //Supreme
@@ -53,13 +53,17 @@ namespace wServer.networking.handlers
             var gameData = client.CoreServerManager.Resources.GameData;
             var forgeItems = new ForgeItem[packet.myInventory.Length];
 
-            if (forgeItems.Length < 2) { client.Player.SendError("Select more than one item!"); return; }
+            if (forgeItems.Length < 2)
+            {
+                client.Player.SendError("Select more than one item!");
+                return;
+            }
+
             //if (forgeItems.Length > 2) { client.Player.SendError("For now, select only 2 items to forge."); return; }
 
             for (var i = 0; i < packet.myInventory.Length; i++)
             {
                 var slot = packet.myInventory[i].slotID;
-
                 if (client.Player.Inventory[slot] == null || packet.myInventory[i].ObjectType != client.Player.Inventory[slot].ObjectType)
                 {
                     client.Player.SendError("Something wrong happened. Try again.");
@@ -75,7 +79,7 @@ namespace wServer.networking.handlers
                 //list.Add(gameData.Items[packet.myInventory[i].ObjectType]);
                 list.Add(packet.myInventory[i].ObjectType);
             }
-            
+
             list.Sort();
             list.Reverse();
             forgeList = string.Join(", ", list);
@@ -119,13 +123,6 @@ namespace wServer.networking.handlers
                 //        client.Player.Inventory[forgeItems[i].slotID] = null;
                 //    return;
 
-                case "2794, 2794":
-                    client.Player.SendInfo("Successfully forged " + client.CoreServerManager.Resources.GameData.Items[0x4971].DisplayName); // mana
-                    list.Clear();
-                    client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[0x4971];
-                    for (var i = 1; i < forgeItems.Length; i++)
-                        client.Player.Inventory[forgeItems[i].slotID] = null;
-                    return;
                 case "2793, 2793":
                     client.Player.SendInfo("Successfully forged " + client.CoreServerManager.Resources.GameData.Items[0x4970].DisplayName); // life
                     list.Clear();
@@ -148,9 +145,9 @@ namespace wServer.networking.handlers
                         client.Player.Inventory[forgeItems[i].slotID] = null;
                     return;
                 case "2794, 2794":
-                    client.Player.SendInfo("Successfully forged " + client.CoreServerManager.Resources.GameData.Items[0x4979].DisplayName); // mana
+                    client.Player.SendInfo("Successfully forged " + client.CoreServerManager.Resources.GameData.Items[0x4971].DisplayName); // mana
                     list.Clear();
-                    client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[0x4979];
+                    client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[0x4971];
                     for (var i = 1; i < forgeItems.Length; i++)
                         client.Player.Inventory[forgeItems[i].slotID] = null;
                     return;

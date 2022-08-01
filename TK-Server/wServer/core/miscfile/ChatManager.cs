@@ -144,7 +144,7 @@ namespace wServer.core
             SLogger.Instance.Info($"[{world.IdName}({world.Id})] <{name}> {text}");
         }
 
-        public void Oryx(World world, string text)
+        public void TalismanKing(World world, string text)
         {
             if (string.IsNullOrWhiteSpace(text))
                 return;
@@ -153,7 +153,7 @@ namespace wServer.core
             {
                 BubbleTime = 0,
                 NumStars = -1,
-                Name = "#Oryx the Mad God",
+                Name = "#The Talisman King",
                 Txt = text
             }, PacketPriority.Low);
         }

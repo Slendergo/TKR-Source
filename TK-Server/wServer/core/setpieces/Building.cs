@@ -10,9 +10,9 @@ namespace wServer.core.setpieces
 
         private Random rand = new Random();
 
-        public int Size => 21;
+        public override int Size => 21;
 
-        public void RenderSetPiece(World world, IntPoint pos)
+        public override void RenderSetPiece(World world, IntPoint pos)
         {
             var w = rand.Next(19, 22);
             var h = rand.Next(19, 22);

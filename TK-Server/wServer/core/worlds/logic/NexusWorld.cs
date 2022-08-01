@@ -1,6 +1,4 @@
 ﻿using common.resources;
-using wServer.networking;
-using wServer.utils;
 
 namespace wServer.core.worlds.logic
 {
@@ -19,7 +17,7 @@ namespace wServer.core.worlds.logic
         }
 
         protected override void UpdateLogic(ref TickTime time)
-        {    
+        {
             PortalMonitor.Update(ref time);
             base.UpdateLogic(ref time);
         }

@@ -1,11 +1,25 @@
-﻿using wServer.core.worlds;
+﻿using System;
+using wServer.core.worlds;
 
 namespace wServer.core.setpieces
 {
-    internal interface ISetPiece
+    public abstract class ISetPiece
     {
-        int Size { get; }
+        public abstract int Size { get; }
+        public virtual string Map { get; }
 
-        void RenderSetPiece(World world, IntPoint pos);
+        public virtual void RenderSetPiece(World world, IntPoint pos)
+        {
+            if (string.IsNullOrEmpty(Map))
+                return;
+
+            var data = world.Manager.Resources.GameData.GetWorldData(Map);
+            if (data == null)
+            {
+                System.Console.WriteLine($"[{GetType().Name}] Invalid RenderSetPiece {Map}");
+                return;
+            }
+            SetPieces.RenderFromData(world, pos, data);
+        }
     }
 }

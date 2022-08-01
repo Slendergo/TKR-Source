@@ -12,7 +12,7 @@ namespace wServer.core.commands
 
             protected override bool Process(Player player, TickTime time, string args)
             {
-                player.SendInfo($"[DeltaTime]: {player.World.DisplayName} {time.ElaspedMsDelta}");
+                player.SendInfo($"[DeltaTime]: {player.World.DisplayName} -> {time.ElaspedMsDelta} | {time.LogicTime}");
                 return true;
             }
         }

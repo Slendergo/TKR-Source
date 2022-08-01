@@ -1,7 +1,6 @@
 ﻿using common.resources;
 using NLog;
 using System;
-using System.IO;
 using System.Threading.Tasks;
 using wServer.core.objects;
 using wServer.core.setpieces;
@@ -34,7 +33,7 @@ namespace wServer.core.worlds.logic
 
         private readonly bool _oryxPresent;
 
-        private Oryx _overseer;
+        private KingdomManager _overseer;
         private Task _overseerTask;
 
         public RealmWorld(int id, WorldResource resource, Client client = null) : base(id, resource)
@@ -44,15 +43,14 @@ namespace wServer.core.worlds.logic
         }
 
         // since map gets reset, admins not allowed to join when closed. Possible to crash server otherwise.
-        public override bool AllowedAccess(Client client) => !Closed && base.AllowedAccess(client);
+        public override bool AllowedAccess(Client client) => base.AllowedAccess(client);
 
         public bool CloseRealm()
         {
             if (_overseer == null)
                 return false;
-
-            _overseer.InitCloseRealm();
-
+            if(_overseer.CurrentState != KindgomState.Expired)
+                _overseer.CurrentState = KindgomState.Closing;
             return true;
         }
 
@@ -72,22 +70,14 @@ namespace wServer.core.worlds.logic
             return ret;
         }
 
-        public bool IsClosing()
-        {
-            if (_overseer == null)
-                return false;
-
-            return _overseer.Closing;
-        }
-
         protected override void UpdateLogic(ref TickTime time)
         {
             try
             {
                 if (Closed || IsPlayersMax())
                     Manager.WorldManager.Nexus.PortalMonitor.ClosePortal(Id);
-                //else if (!Manager.WorldManager.PortalMonitor.PortalIsOpen(Id))
-                //    Manager.WorldManager.PortalMonitor.OpenPortal(Id);
+                else if (!Manager.WorldManager.Nexus.PortalMonitor.PortalIsOpen(Id))
+                    Manager.WorldManager.Nexus.PortalMonitor.OpenPortal(Id);
 
                 var t = time;
                 if (_overseerTask == null || _overseerTask.IsCompleted)
@@ -116,7 +106,7 @@ namespace wServer.core.worlds.logic
 
             if (_oryxPresent)
             {
-                _overseer = new Oryx(this);
+                _overseer = new KingdomManager(this);
                 _overseer.Init();
             }
             base.Init();

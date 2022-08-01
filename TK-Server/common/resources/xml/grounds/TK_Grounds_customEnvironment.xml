@@ -994,6 +994,11 @@
 				<Index>0xc5</Index>
 			</Texture>
 		</Top>
+		<Static />
+		<FullOccupy />
+		<OccupySquare />
+		<EnemyOccupySquare />
+		<BlocksSight />
 	</Object>
 	<Ground type="0x9553" id="Julius Rug Top Left">
 		<Texture>

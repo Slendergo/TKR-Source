@@ -2,6 +2,7 @@
 {
     public struct TickTime
     {
+        public int LogicTime;
         public int ElaspedMsDelta;
         public long TickCount;
         public long TotalElapsedMs;

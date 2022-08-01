@@ -12,9 +12,9 @@ namespace wServer.core.setpieces
 
         private Random rand = new Random();
 
-        public int Size => 25;
+        public override int Size => 25;
 
-        public void RenderSetPiece(World world, IntPoint pos)
+        public override void RenderSetPiece(World world, IntPoint pos)
         {
             var radius = rand.Next(Size - 5, Size + 1) / 2;
             var border = new List<IntPoint>();

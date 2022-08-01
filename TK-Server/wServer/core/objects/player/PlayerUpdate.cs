@@ -126,9 +126,6 @@ namespace wServer.core.objects
             for (var i = 0; i < newObjs.Length; i++)
             {
                 var entity = newObjs[i];
-                if (entity == Player.Quest && !entity.IsRemovedFromWorld)
-                    continue;
-
                 if (entity.IsRemovedFromWorld)
                 {
                     drops.Add(entity.Id);
@@ -136,7 +133,7 @@ namespace wServer.core.objects
                     continue;
                 }
 
-                if (entity is Player || ActiveTiles.Contains(new IntPoint((int)entity.X, (int)entity.Y)))
+                if (entity == Player.Quest && !entity.IsRemovedFromWorld || entity is Player || ActiveTiles.Contains(new IntPoint((int)entity.X, (int)entity.Y)))
                     continue;
 
                 drops.Add(entity.Id);

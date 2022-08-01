@@ -588,7 +588,7 @@
     <Compile Include="core\objects\vendors\WorldMerchant.cs" />
     <Compile Include="core\objects\Wall.cs" />
     <Compile Include="core\objects\Entity.cs" />
-    <Compile Include="core\miscfile\Oryx.cs" />
+    <Compile Include="core\miscfile\KingdomManager.cs" />
     <Compile Include="core\miscfile\PortalMonitor.cs" />
     <Compile Include="core\CoreServerManagerTicker.cs" />
     <Compile Include="core\setpieces\AbyssDeath.cs" />
@@ -633,6 +633,7 @@
     <Compile Include="core\miscfile\WorldTimer.cs" />
     <Compile Include="core\miscfile\Vector2.cs" />
     <Compile Include="core\miscfile\wRandom.cs" />
+    <Compile Include="utils\TimedProfiler.cs" />
     <Compile Include="utils\SLogger.cs" />
     <Compile Include="logic\db\BehaviorDb.Colosseum.cs" />
   </ItemGroup>

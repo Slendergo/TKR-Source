@@ -38,7 +38,7 @@ namespace wServer.core.setpieces
                     quarter[x, y] = a[y][x] == 'X' ? 1 : (a[y][x] == '=' ? 2 : 0);
         }
 
-        public int Size => 27;
+        public override int Size => 27;
 
         public void RenderSetPiece(World world, IntPoint pos)
         {

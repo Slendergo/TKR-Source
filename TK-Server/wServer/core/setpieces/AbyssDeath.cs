@@ -12,9 +12,9 @@ namespace wServer.core.setpieces
             {1, 1, 1},
         };
 
-        public int Size => 3;
+        public override int Size => 3;
 
-        public void RenderSetPiece(World world, IntPoint pos)
+        public override void RenderSetPiece(World world, IntPoint pos)
         {
             var dat = world.Manager.Resources.GameData;
             var p = new IntPoint

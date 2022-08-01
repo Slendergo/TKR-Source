@@ -5,6 +5,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 using wServer.core.worlds;
 using wServer.core.worlds.logic;
@@ -18,19 +19,17 @@ namespace wServer.core
         private int NextWorldId = 0;
 
         public TickThreadSingle NexusThread { get; private set; }
-        public List<TickThreadSingle> RealmThreads { get; private set; }
+        private readonly ConcurrentDictionary<int, TickThreadSingle> RealmThreads = new ConcurrentDictionary<int, TickThreadSingle>();
 
         public NexusWorld Nexus => (Worlds[-2] as NexusWorld);
         public TestWorld Test => (Worlds[-6] as TestWorld);
 
-        private readonly Dictionary<int, World> Worlds = new Dictionary<int, World>();
-        private readonly Dictionary<int, VaultWorld> Vaults = new Dictionary<int, VaultWorld>();
-        private readonly Dictionary<int, World> Guilds = new Dictionary<int, World>();
-        private readonly Dictionary<int, int> WorldToGuildId = new Dictionary<int, int>();
+        private readonly ConcurrentDictionary<int, World> Worlds = new ConcurrentDictionary<int, World>();
+        private readonly ConcurrentDictionary<int, VaultWorld> Vaults = new ConcurrentDictionary<int, VaultWorld>();
+        private readonly ConcurrentDictionary<int, World> Guilds = new ConcurrentDictionary<int, World>();
+        private readonly ConcurrentDictionary<int, int> WorldToGuildId = new ConcurrentDictionary<int, int>();
 
         public IEnumerable<World> GetWorlds() => Worlds.Values;
-        public IEnumerable<VaultWorld> GetVaultInstances() => Vaults.Values;
-        public IEnumerable<World> GetGuildInstances() => Guilds.Values;
 
         public void WorldsBroadcastAsParallel(Action<World> action)
         {
@@ -46,7 +45,6 @@ namespace wServer.core
         {
             CoreServerManager = coreServerManager;
             NexusThread = new TickThreadSingle(this);
-            RealmThreads = new List<TickThreadSingle>();
         }
 
         public void Initialize()
@@ -56,33 +54,36 @@ namespace wServer.core
             NexusThread.Attach(nexus);
 
             // todo async creation system
-            _ = CreateNewRealm();
-            _ = CreateNewRealm();
+            Nexus.PortalMonitor.CreateNewRealm();
         }
 
-        public World CreateNewRealm()
+        public Task<RealmWorld> CreateNewRealmAsync()
         {
-            Console.WriteLine("CreateNewRealm()");
-            var worldResource = CoreServerManager.Resources.GameData.GetWorld("Realm of the Mad God");
-            if (worldResource == null)
-                return null;
+            return Task<RealmWorld>.Factory.StartNew(() =>
+            {
+                using (var t = new TimedProfiler("CreateNewRealm()"))
+                {
+                    var worldResource = CoreServerManager.Resources.GameData.GetWorld("Realm of the Mad God");
+                    if (worldResource == null)
+                        return null;
 
-            var nextId = Interlocked.Increment(ref NextWorldId);
+                    var nextId = Interlocked.Increment(ref NextWorldId);
 
-            var world = new RealmWorld(nextId, worldResource);
-            world.Manager = CoreServerManager; // todo add to ctor
-            var success = world.LoadMapFromData(worldResource);
-            if (!success)
-                return null;
-            world.Init();
-            Worlds.Add(world.Id, world);
+                    var world = new RealmWorld(nextId, worldResource);
+                    world.Manager = CoreServerManager; // todo add to ctor
+                    var success = world.LoadMapFromData(worldResource);
+                    if (!success)
+                        return null;
 
-            Nexus.PortalMonitor.AddPortal(world.Id);
-            
-            var thread = new TickThreadSingle(this);
-            thread.Attach(world);
-            RealmThreads.Add(thread);
-            return world;
+                    world.Init();
+                    _ = Worlds.TryAdd(world.Id, world);
+
+                    var thread = new TickThreadSingle(this);
+                    thread.Attach(world);
+                    RealmThreads.TryAdd(world.Id, thread);
+                    return world;
+                }
+            });
         }
 
         public World CreateNewWorld(string dungeonName, int? id = null, World parent = null)
@@ -113,7 +114,7 @@ namespace wServer.core
             if (!success)
                 return null;
             world.Init();
-            Worlds.Add(world.Id, world);
+            Worlds.TryAdd(world.Id, world);
             parent?.WorldBranch.AddBranch(world);
             return world;
         }
@@ -139,13 +140,13 @@ namespace wServer.core
 
         public void AddVaultInstance(int accountId, VaultWorld world)
         {
-            Vaults.Add(accountId, world);
+            Vaults.TryAdd(accountId, world);
         }
 
         public void AddGuildInstance(int guildId, World world)
         {
-            Guilds.Add(guildId, world);
-            WorldToGuildId.Add(world.Id, guildId);
+            Guilds.TryAdd(guildId, world);
+            WorldToGuildId.TryAdd(world.Id, guildId);
         }
 
         public World GetWorld(int id) => Worlds.TryGetValue(id, out World ret) ? ret : null;
@@ -155,16 +156,19 @@ namespace wServer.core
 
         public bool RemoveWorld(World world)
         {
-            if (Worlds.Remove(world.Id))
+            if(world is RealmWorld)
+                RealmThreads.TryRemove(world.Id, out _);
+
+            if (Worlds.TryRemove(world.Id, out _))
             {
                 switch (world.InstanceType)
                 {
                     case WorldResourceInstanceType.Vault:
-                        _ = Vaults.Remove((world as VaultWorld).AccountId);
+                        _ = Vaults.TryRemove((world as VaultWorld).AccountId, out _);
                         break;
                     case WorldResourceInstanceType.Guild:
                         var guildId = GetGuildId(world.Id);
-                        _ = Guilds.Remove(guildId);
+                        _ = Guilds.TryRemove(guildId, out _);
                         break;
                 }
                 return true;
@@ -174,7 +178,7 @@ namespace wServer.core
 
         public void Shutdown()
         {
-            foreach (var realm in RealmThreads)
+            foreach (var realm in RealmThreads.Values)
                 realm.Stop();
             NexusThread.Stop();
         }

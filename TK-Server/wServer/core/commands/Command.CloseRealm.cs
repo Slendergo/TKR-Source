@@ -13,16 +13,9 @@ namespace wServer.core.commands
 
             protected override bool Process(Player player, TickTime time, string args)
             {
-
                 if (!(player.World is RealmWorld gw))
                 {
                     player.SendError("An undefined error occurred.");
-                    return false;
-                }
-
-                if (gw.IsClosing())
-                {
-                    player.SendError("Realm already closing.");
                     return false;
                 }
 

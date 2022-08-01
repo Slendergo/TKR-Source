@@ -14,7 +14,7 @@ namespace wServer.core.setpieces
 
         private Random rand = new Random();
 
-        public int Size => 26;
+        public override int Size => 26;
 
         public void RenderSetPiece(World world, IntPoint pos)
         {

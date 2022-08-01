@@ -29,10 +29,6 @@ namespace wServer.core.setpieces
         protected static readonly string WallB = "Jungle Temple Walls";
         protected static readonly string WallC = "Jungle Temple Column";
 
-        public abstract int Size { get; }
-
-        public abstract void RenderSetPiece(World world, IntPoint pos);
-
         protected static void Render(Temple temple, World world, IntPoint pos, int[,] ground, int[,] objs)
         {
             var dat = world.Manager.Resources.GameData;

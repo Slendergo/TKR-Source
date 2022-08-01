@@ -12,16 +12,12 @@ namespace wServer.core
         public override void Attach(World world)
         {
             var threadSingle = new ThreadSingle(this, world);
-
             Attached.Add(world, threadSingle);
         }
 
         public override void Detatch(World world)
         {
-            if(Attached.Remove(world))
-            {
-                // dispose world?
-            }
+            Attached.Remove(world);
         }
 
         public override void Stop()
@@ -32,7 +28,6 @@ namespace wServer.core
             Stopped = true;
 
             var values = new List<ThreadSingle>(Attached.Values);
-
             foreach (var value in values)
                 value.Stop();
         }

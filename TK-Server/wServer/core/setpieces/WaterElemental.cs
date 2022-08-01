@@ -4,12 +4,7 @@ namespace wServer.core.setpieces
 {
     internal class WaterElemental : ISetPiece
     {
-        public int Size => 32;
-
-        public void RenderSetPiece(World world, IntPoint pos)
-        {
-            //var proto = world.Manager.Resources.Worlds["WaterElemental"];
-            //SetPieces.RenderFromProto(world, pos, proto);
-        }
+        public override int Size => 32;
+        public override string Map => "set_piece/water_elemental.jm";
     }
 }

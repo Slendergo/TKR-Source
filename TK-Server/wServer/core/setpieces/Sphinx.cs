@@ -33,9 +33,9 @@ namespace wServer.core.setpieces
 
         private Random rand = new Random();
 
-        public int Size => 81;
+        public override int Size => 81;
 
-        public void RenderSetPiece(World world, IntPoint pos)
+        public override void RenderSetPiece(World world, IntPoint pos)
         {
             var t = new int[81, 81];
 

@@ -449,7 +449,7 @@ namespace wServer.core
             Tuple.Create("Lucky Ent God", (ISetPiece) null),
             Tuple.Create("Lucky Djinn", (ISetPiece) null),
             Tuple.Create("Mushroom", (ISetPiece) null),
-            Tuple.Create("Oryx the Mad God 2", (ISetPiece) null)
+            //Tuple.Create("Oryx the Mad God 2", (ISetPiece) null)
         };
 
         private const float MAX_GUILD_LOOT_BOOST = 0.2f;

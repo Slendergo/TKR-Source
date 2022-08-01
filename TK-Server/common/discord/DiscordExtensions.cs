@@ -48,7 +48,7 @@ namespace common.discord
                             Icon = discord.webhookResourcesURL + discord.webhookOryx1Image
                         },
                         Title = "Realm event spawned!",
-                        Description = $"Oryx spawned **{eventName}** on realm __{worldName}__!",
+                        Description = $"Oryx spawned **{eventName}** in realm: __{worldName}__!",
                         Color = 0x7289DA,
                         Thumbnail = new DiscordThumbnail() { Url = discord.webhookResourcesURL + discord.webhookLogoImage },
                         Image = new DiscordImage() { Url = discord.webhookResourcesURL + realmEvent.image },

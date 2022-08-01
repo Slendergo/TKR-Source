@@ -57,6 +57,7 @@ namespace wServer.core
 
             // todo async creation system
             _ = CreateNewRealm();
+            _ = CreateNewRealm();
         }
 
         public World CreateNewRealm()

@@ -244,7 +244,7 @@ namespace wServer.logic
             )
         .Init("Malphas Missile",
             new State(
-                new Follow(1, 20, 0),
+                new Follow(1, 12, 0),
                 new PlayerWithinTransition(0, "Explode"),
                 new State("Explode",
                     new Flash(0xFFFFFF, 0.1, 5),
@@ -279,7 +279,7 @@ namespace wServer.logic
         .Init("Demon of the Abyss",
             new State(
                 new Prioritize(
-                    new Follow(3, 8, 5),
+                    new Follow(2, 8, 5),
                     new Wander(0.25)
                     ),
                 new Shoot(8, 3, shootAngle: 10, coolDown: 5000)
@@ -326,7 +326,7 @@ namespace wServer.logic
         .Init("Brute of the Abyss",
             new State(
                 new Prioritize(
-                    new Follow(3, 8, 1),
+                    new Follow(2, 8, 1),
                     new Wander(0.25)
                     ),
                 new Shoot(8, 3, shootAngle: 10, coolDown: 800)

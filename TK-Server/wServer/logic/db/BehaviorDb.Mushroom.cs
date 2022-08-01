@@ -96,7 +96,7 @@ namespace wServer.logic
                     new TimedTransition(400, "Suicide")
                     ),
                 new State("Suicide",
-                    new Decay(100)
+                    new Suicide()
                     )
                 )
             )
@@ -113,7 +113,7 @@ namespace wServer.logic
                     new TimedTransition(400, "Suicide")
                     ),
                 new State("Suicide",
-                    new Decay(100)
+                    new Suicide()
                     )
                 )
             )
@@ -130,7 +130,7 @@ namespace wServer.logic
                     new TimedTransition(400, "Suicide")
                     ),
                 new State("Suicide",
-                    new Decay(100)
+                    new Suicide()
                     )
                 )
             )

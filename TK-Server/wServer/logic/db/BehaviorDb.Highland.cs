@@ -776,7 +776,14 @@ namespace wServer.logic
                     new Follow(0.8, 20, 1),
                     new Shoot(20, count: 2, shootAngle: 50, coolDown: 400),
                     new TimedTransition(4000, "Attack")
-                    )
+                   )
+                ),
+            new Threshold(.01,
+                new ItemLoot("Essence Eater", 0.043333),
+                new ItemLoot("Potion of Vitality", 1),
+                new ItemLoot("Potion of Dexterity", 1),
+                new ItemLoot("Potion of Defense", 1),
+                new ItemLoot("Potion of Speed", 1)
                 )
             )
         .Init("Specter Mine",

@@ -199,7 +199,6 @@
   <Object type="0x4962" id="Mini Mushroom">
     <Enemy />
     <DisplayId>Mini Mushroom</DisplayId>
-    <Quest />
     <God />
     <Class>Character</Class>
     <AnimatedTexture>
@@ -227,7 +226,6 @@
   <Object type="0x4963" id="Mini Mushroom 2">
     <Enemy />
     <DisplayId>Mini Mushroom</DisplayId>
-    <Quest />
     <God />
     <Class>Character</Class>
     <AnimatedTexture>

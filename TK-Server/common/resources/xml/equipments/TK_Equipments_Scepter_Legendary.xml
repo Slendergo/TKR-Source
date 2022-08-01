@@ -53,7 +53,7 @@
     </Texture>
     <SlotType>23</SlotType>
     <Legendary />
-    <Description>By directing some of his life force outwards into a destructive blast, Ruthven was able to use this artifact to incapacitate foes much more magically gifted than himself.</Description>
+    <Description>By directing some of his life force outwards into a destructive blast, Kage Kami was able to use this artifact to incapacitate foes much more magically gifted than himself.</Description>
     <Sound>spell/magic_nova</Sound>
     <ActivateOnEquip stat="20" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="4">IncrementStat</ActivateOnEquip>

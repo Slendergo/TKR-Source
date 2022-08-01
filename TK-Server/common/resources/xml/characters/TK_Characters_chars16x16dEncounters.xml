@@ -553,7 +553,6 @@
     <Defense>15</Defense>
     <XpMult>1</XpMult>
     <God />
-    <NoArticle />
     <Projectile id="0">
       <ObjectId>Darkness Bolt</ObjectId>
       <Damage>180</Damage>
@@ -638,8 +637,10 @@
     <Enemy />
     <Class>Character</Class>
     <DisplayId>Geb</DisplayId>
+    <Flying />
     <Quest />
-    <Level>1</Level>
+    <God />
+    <StasisImmune />
     <AnimatedTexture>
       <File>chars16x16dEncounters</File>
       <Index>11</Index>
@@ -651,7 +652,6 @@
     <Defense>30</Defense>
     <XpMult>1</XpMult>
     <God />
-    <NoArticle />
     <Projectile id="0">
       <ObjectId>Darkness Bolt</ObjectId>
       <Damage>280</Damage>
@@ -721,7 +721,6 @@
     <Defense>50</Defense>
     <XpMult>1</XpMult>
     <God />
-    <NoArticle />
     <Projectile id="0">
       <ObjectId>Darkness Bolt</ObjectId>
       <Damage>240</Damage>

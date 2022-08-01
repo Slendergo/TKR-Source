@@ -241,22 +241,22 @@ namespace wServer.core
                 },
                 NameOfDeath = "Lord of the Lost Lands"
             }),
-            Tuple.Create("Hermit God", new TauntData()
-            {
-                Spawn = new string[] {
-                    ""
-                },
-                NumberOfEnemies = new string[] {
-                    ""
-                },
-                Final = new string[] {
-                    ""
-                },
-                Killed = new string[] {
-                    ""
-                },
-                NameOfDeath = "Hermit God"
-            }),
+            //Tuple.Create("Hermit God", new TauntData()
+            //{
+            //    Spawn = new string[] {
+            //        ""
+            //    },
+            //    NumberOfEnemies = new string[] {
+            //        ""
+            //    },
+            //    Final = new string[] {
+            //        ""
+            //    },
+            //    Killed = new string[] {
+            //        ""
+            //    },
+            //    NameOfDeath = "Hermit God"
+            //}),
             Tuple.Create("Ghost Ship", new TauntData()
             {
                 Spawn = new string[] {

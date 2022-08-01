@@ -9,7 +9,7 @@ namespace wServer.core.commands
     {
         internal class Online : Command
         {
-            public Online() : base("online", permLevel: 100)
+            public Online() : base("online", permLevel: 0)
             { }
 
             protected override bool Process(Player player, TickTime time, string args)

@@ -1595,7 +1595,7 @@ namespace wServer.logic
             .Init("shtrs eyeswarmer",
                 new State(
                     new State("shoot",
-                        new Orbit(1.0, 2, 5, "shtrs Defense System"),
+                        new Orbit(3, 2, 5, "shtrs Defense System"),
                         new Shoot(20, 1, projectileIndex: 0, coolDown: 5000)
                         )
                     )

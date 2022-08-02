@@ -263,7 +263,7 @@ namespace wServer.logic
             )
         .Init("Imp of the Abyss",
             new State(
-                new Wander(1),
+                new Wander(.3),
                 new Shoot(8, 5, 10, coolDown: 3200)
                 ),
             new ItemLoot("Magic Potion", 0.1),
@@ -341,7 +341,7 @@ namespace wServer.logic
             new State(
                 new Prioritize(
                     new Follow(1, 8, 1),
-                    new Wander(1)
+                    new Wander(0.4)
                     ),
                 new Shoot(8, 3, shootAngle: 10, coolDown: 800)
                 ),

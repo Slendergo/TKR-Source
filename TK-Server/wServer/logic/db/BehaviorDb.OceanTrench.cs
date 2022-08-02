@@ -73,6 +73,7 @@ namespace wServer.logic
         .Init("Thessal the Mermaid Goddess",
             new State(
                 new ScaleHP2(20),
+                new DropPortalOnDeath("Hideout of Thessal Portal", 1),
                 new TransformOnDeath("Thessal the Mermaid Goddess Wounded", probability: 0.1),
                 new TransformOnDeath("Thessal Dropper"),
                 new State("Start",

@@ -24,7 +24,7 @@ namespace wServer.logic
                     new ChangeSize(100, 100),
                     new SetAltTexture(1),
                     new SetAltTexture(3),
-                    new Wander(1),
+                    new Wander(0.3),
                     new Shoot(10, 5, 10, 0, coolDown: 2000),
                     new Shoot(10, 1, 10, 1, coolDown: 4000),
                     new EntityNotExistsTransition("Ghost Lanturn Off", 30, "Vunerable"),
@@ -122,7 +122,7 @@ namespace wServer.logic
                 new State("Default",
                     new Prioritize(
                         new Orbit(2, 3, 20, "Ghost of Roger"),
-                        new Wander(1)
+                        new Wander(0.3)
                         ),
                     new PlayerWithinTransition(4, "Default1")
                     ),
@@ -273,7 +273,7 @@ namespace wServer.logic
                 new State("Default",
                     new Prioritize(
                         new Follow(2, 8, 1),
-                        new Wander(1)
+                        new Wander(0.3)
                         ),
                     new TimedTransition(2850, "Default1")
                     ),
@@ -289,7 +289,7 @@ namespace wServer.logic
                 new State("Default",
                     new Prioritize(
                         new Follow(2, 8, 1),
-                        new Wander(1)
+                        new Wander(0.3)
                         ),
                     new TimedTransition(2850, "Default1")
                     ),
@@ -297,7 +297,7 @@ namespace wServer.logic
                     new ConditionalEffect(ConditionEffectIndex.Armored),
                     new Prioritize(
                         new Follow(3, 8, 1),
-                        new Wander(1)
+                        new Wander(0.3)
                         ),
                     new TimedTransition(2850, "Default")
                     )
@@ -309,7 +309,7 @@ namespace wServer.logic
                 new State("Default",
                     new Prioritize(
                         new Follow(3, 8, 1),
-                        new Wander(1)
+                        new Wander(0.3)
                         ),
                     new TimedTransition(2850, "Default1")
                     ),
@@ -332,7 +332,7 @@ namespace wServer.logic
                     new Shoot(10, count: 1, projectileIndex: 0, coolDown: 1750),
                     new Prioritize(
                         new Follow(2, 8, 1),
-                        new Wander(1)
+                        new Wander(0.3)
                         )
                     )
                 )
@@ -344,7 +344,7 @@ namespace wServer.logic
                     new Shoot(10, count: 3, projectileIndex: 0, coolDown: 1750),
                     new Prioritize(
                         new Follow(2, 8, 1),
-                        new Wander(1)
+                        new Wander(0.3)
                         )
                     )
                 )
@@ -353,7 +353,7 @@ namespace wServer.logic
             new State(
                 new State("Default",
                     new Shoot(10, count: 3, shootAngle: 18, projectileIndex: 0, coolDown: 4000),
-                    new Wander(1)
+                    new Wander(0.3)
                     )
                 )
             );

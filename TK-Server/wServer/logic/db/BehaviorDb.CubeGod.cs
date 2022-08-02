@@ -13,7 +13,7 @@ namespace wServer.logic
                 new ScaleHP2(20),
                 new TransformOnDeath("Medium Cubes", min: 4),
                 new State("Start",
-                    new Wander(1),
+                    new Wander(0.3),
                     new Shoot(30, 9, 10, 0, predictive: .5, coolDown: 750),
                     new Shoot(30, 4, 10, 1, predictive: .5, coolDown: 1500),
                     new HpLessTransition(0.06, "SpawnMed")
@@ -31,7 +31,7 @@ namespace wServer.logic
         .Init("Medium Cubes",
             new State(
                 new ScaleHP2(20),
-                new Wander(1),
+                new Wander(0.3),
                 new TransformOnDeath("Small Cube", min: 1),
                 new State("Start",
                     new ConditionalEffect(ConditionEffectIndex.Armored),
@@ -52,7 +52,7 @@ namespace wServer.logic
         .Init("Small Cube",
             new State(
                 new ScaleHP2(20),
-                new Wander(1),
+                new Wander(0.3),
                 new Shoot(radius: 30, count: 9, shootAngle: 10, projectileIndex: 0, predictive: .5, coolDown: 750),
                 new Shoot(radius: 20, count: 20, shootAngle: 20, projectileIndex: 0, coolDown: 2000)
                 ),

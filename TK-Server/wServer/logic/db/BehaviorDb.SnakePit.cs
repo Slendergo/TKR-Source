@@ -105,7 +105,7 @@ namespace wServer.logic
                         ),
                     new State("Wander",
                         new Prioritize(
-                            new Wander(1)
+                            new Wander(0.3)
                             )
                         )
                     )
@@ -115,7 +115,7 @@ namespace wServer.logic
             new State(
                 new Prioritize(
                     new StayCloseToSpawn(1),
-                    new Wander(1)
+                    new Wander(0.3)
                     ),
                 new Shoot(20, coolDown: 1000)
                 )
@@ -124,7 +124,7 @@ namespace wServer.logic
             new State(
                 new Prioritize(
                     new StayCloseToSpawn(1),
-                    new Wander(1)
+                    new Wander(0.3)
                     ),
                 new Shoot(20, coolDown: 1000)
                 )
@@ -134,7 +134,7 @@ namespace wServer.logic
                 new Prioritize(
                     new Follow(1, 10, 1),
                     new StayCloseToSpawn(1),
-                    new Wander(1)
+                    new Wander(0.3)
                     ),
                 new Shoot(20, coolDown: 1000)
                 ),
@@ -146,7 +146,7 @@ namespace wServer.logic
             new State(
                 new Prioritize(
                     new StayCloseToSpawn(1),
-                    new Wander(1)
+                    new Wander(0.3)
                     ),
                 new Shoot(20, coolDown: 1000)
                 ),
@@ -158,7 +158,7 @@ namespace wServer.logic
             new State(
                 new Prioritize(
                     new Follow(1, 10, 1, coolDown: 2000),
-                    new Wander(1)
+                    new Wander(0.3)
                     ),
                 new Shoot(15, count: 3, shootAngle: 5, coolDown: 1000)
                 ),
@@ -170,7 +170,7 @@ namespace wServer.logic
             new State(
                 new Prioritize(
                     new Follow(1, 10, 5),
-                    new Wander(1)
+                    new Wander(0.3)
                     ),
                 new Shoot(15, count: 3, shootAngle: 5, coolDown: 1000)
                 ),
@@ -183,7 +183,7 @@ namespace wServer.logic
             new State(
                 new Prioritize(
                     new Follow(1, 10, 5),
-                    new Wander(1)
+                    new Wander(0.3)
                     ),
                 new Shoot(15, coolDown: 300)
                 ),

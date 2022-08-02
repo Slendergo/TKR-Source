@@ -379,7 +379,7 @@ namespace wServer.logic
         .Init("shtrs Blobomb",
             new State(
                 new State("active",
-                    new Follow(1.7, acquireRange: 40, range: 0),
+                    new Follow(.7, acquireRange: 40, range: 0),
                     new PlayerWithinTransition(2, "blink")
                     ),
                 new State("blink",

@@ -710,7 +710,7 @@
     </Projectile>
     <Projectile id="2">
       <ObjectId>Yellow Star</ObjectId>
-      <Speed>100</Speed>
+      <Speed>50</Speed>
       <Damage>55</Damage>
       <LifetimeMS>4000</LifetimeMS>
       <Size>65</Size>

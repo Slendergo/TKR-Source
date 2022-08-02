@@ -94,7 +94,7 @@ namespace wServer.logic
                 new ConditionalEffect(ConditionEffectIndex.Invincible, true),
                 new Shoot(20, 1, projectileIndex: 0, coolDown: 200),
                 new State("Move",
-                    new MoveLine(0.8, 90),
+                    new MoveLine(2, 90),
                     new GroundTransition("Tunnel Ground M", "Suicide")
                     ),
                 new State("Suicide",

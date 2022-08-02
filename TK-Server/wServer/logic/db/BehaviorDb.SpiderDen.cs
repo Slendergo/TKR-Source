@@ -28,7 +28,7 @@ namespace wServer.logic
                     new TimedTransition(2000, "attack")
                     ),
                 new State("attack",
-                    new Wander(1.0),
+                    new Wander(.5),
                     new Shoot(3000, count: 12, projectileIndex: 0, fixedAngle: 22.5f),
                     new Shoot(10, 1, 0, defaultAngle: 0, angleOffset: 0, projectileIndex: 0, predictive: 1,
                         coolDown: 1000, coolDownOffset: 0),
@@ -136,7 +136,7 @@ namespace wServer.logic
         .Init("Black Den Spider",
             new State(
                 new State("idle",
-                    new Wander(1),
+                    new Wander(0.5),
                     new Charge(2, 20f, 2000),
                     new Shoot(10, 1, 0, defaultAngle: 0, angleOffset: 0, projectileIndex: 0, predictive: 1,
                         coolDown: 500, coolDownOffset: 0)
@@ -147,7 +147,7 @@ namespace wServer.logic
         .Init("Black Spotted Den Spider",
             new State(
                 new State("idle",
-                    new Wander(1),
+                    new Wander(0.5),
                     new Charge(2, 40f, 2000),
                     new Shoot(10, 1, 0, defaultAngle: 0, angleOffset: 0, projectileIndex: 0, predictive: 1,
                         coolDown: 500, coolDownOffset: 0)
@@ -158,7 +158,7 @@ namespace wServer.logic
         .Init("Brown Den Spider",
             new State(
                 new State("idle",
-                    new Wander(1),
+                    new Wander(0.5),
                     new Follow(1, 0.3, 0),
                     new Shoot(10, 3, 20, angleOffset: 0 / 3, projectileIndex: 0, coolDown: 500)
                     )
@@ -168,7 +168,7 @@ namespace wServer.logic
         .Init("Green Den Spider Hatchling",
             new State(
                 new State("idle",
-                    new Wander(1),
+                    new Wander(0.5),
                     new Follow(0.8, 0.8, 0),
                     new Shoot(10, 1, 0, defaultAngle: 0, angleOffset: 0, projectileIndex: 0, predictive: 1,
                         coolDown: 1000, coolDownOffset: 0)
@@ -189,7 +189,7 @@ namespace wServer.logic
         .Init("Red Spotted Den Spider",
             new State(
                 new State("idle",
-                    new Wander(1),
+                    new Wander(0.5),
                     new Follow(1.0, 0.8, 0),
                     new Shoot(10, 1, 0, defaultAngle: 0, angleOffset: 0, projectileIndex: 0, predictive: 1,
                         coolDown: 500, coolDownOffset: 0)

@@ -14,16 +14,16 @@ namespace wServer.logic
                 new State("Start",
                     new ChangeSize(50, 120),
                     new Prioritize(
-                        new Follow(1.5, 8, 1),
-                        new Wander(1)
+                        new Follow(0.5, 8, 1),
+                        new Wander(0.3)
                         ),
                     new Shoot(8.4, count: 3, projectileIndex: 0, shootAngle: 16, coolDown: 1000),
                     new TimedTransition(1000, "Vengeful")
                     ),
                 new State("Vengeful",
                     new Prioritize(
-                        new Follow(1.5, 8, 1),
-                        new Wander(1)
+                        new Follow(0.5, 8, 1),
+                        new Wander(0.3)
                         ),
                     new Shoot(8.4, count: 3, projectileIndex: 0, shootAngle: 16, coolDown: 1645),
                     new TimedTransition(3000, "Vengeful2")
@@ -37,8 +37,8 @@ namespace wServer.logic
             new State(
                 new State("Seek",
                     new Prioritize(
-                        new Follow(1.5, 8, 1),
-                        new Wander(1)
+                        new Follow(.5, 8, 1),
+                        new Wander(0.3)
                         ),
                     new TimedTransition(3750, "Boom")
                     ),
@@ -49,7 +49,7 @@ namespace wServer.logic
         .Init("Beach Spectre",
             new State(
                 new State("Fight",
-                    new Wander(1),
+                    new Wander(0.3),
                     new ChangeSize(10, 120),
                     new Shoot(8.4, count: 3, projectileIndex: 0, shootAngle: 14, coolDown: 1750)
                     )))
@@ -160,13 +160,13 @@ namespace wServer.logic
                     ),
                 new State("start",
                     new SetAltTexture(0),
-                    new Reproduce("Vengeful Spirit", densityMax: 2, coolDown: 1000),
+                    new Reproduce("Vengeful Spirit", densityMax: 2, coolDown: 5000),
                     new TimedTransition(15000, "midfight"),
                     new State("2",
                         new SetAltTexture(0),
                         new Prioritize(
-                            new Wander(1),
-                            new StayBack(1, 5)
+                            new Wander(0.3),
+                            new StayBack(0.3, 5)
                             ),
                         new Shoot(8.4, count: 1, projectileIndex: 0, coolDown: 450),
                         new Shoot(8.4, count: 3, projectileIndex: 0, shootAngle: 20, coolDown: 1750),
@@ -184,7 +184,7 @@ namespace wServer.logic
 
                 new State("midfight",
                     new Order(100, "Ghost Ship Anchor", "tempestcloud"),
-                    new Reproduce("Vengeful Spirit", densityMax: 1, coolDown: 1000),
+                    new Reproduce("Vengeful Spirit", densityMax: 1, coolDown: 5000),
                     new TossObject("Water Mine", 5, coolDown: 2250),
                     new TimedTransition(10000, "countdown"),
                     new State("2",
@@ -198,8 +198,8 @@ namespace wServer.logic
                         ),
                     new State("1",
                         new Prioritize(
-                            new Follow(2, 8, 1),
-                            new Wander(1)
+                            new Follow(0.3, 8, 1),
+                            new Wander(0.3)
                             ),
                         new Taunt(1.00, "Fire at will!"),
                         new Shoot(8.4, count: 2, shootAngle: 25, projectileIndex: 1, coolDown: 3850),
@@ -208,7 +208,7 @@ namespace wServer.logic
                         )
                     ),
                 new State("countdown",
-                    new Wander(1),
+                    new Wander(0.3),
                     new Timed(1000,
                         new Taunt(1.00, "Ready..")
                         ),
@@ -221,7 +221,7 @@ namespace wServer.logic
                     ),
                 new State("fire",
                     new Prioritize(
-                        new Follow(2, 8, 1),
+                        new Follow(1, 8, 1),
                         new Wander(1)
                         ),
                     new Shoot(10, count: 4, projectileIndex: 1, coolDownOffset: 1100, angleOffset: 270, coolDown: 1250),

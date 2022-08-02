@@ -149,7 +149,7 @@ namespace wServer.logic
                     ),
                 new State("Chase",
                     new Follow(1, 15, 1),
-                    new Wander(1),
+                    new Wander(0.3),
                     new Shoot(20, 8, projectileIndex: 1, coolDown: 2000),
                     new Shoot(20, 3, shootAngle: 15, projectileIndex: 0, coolDown: 500),
                     new HpLessTransition(0.6, "Back")

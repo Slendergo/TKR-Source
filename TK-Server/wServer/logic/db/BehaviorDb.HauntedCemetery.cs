@@ -735,21 +735,21 @@ namespace wServer.logic
             )
         .Init("Arena Skeleton",
             new State(
-                new Wander(1),
+                new Wander(0.3),
                 new Follow(2, 10, 3),
                 new Shoot(8, 1, projectileIndex: 0, coolDown: 500)
                 )
             )
         .Init("Troll 1",
             new State(
-                new Follow(2, 14, 2, 2000, coolDown: 2000),
+                new Follow(1, 14, 2, 2000, coolDown: 2000),
                 new Shoot(12, 1, projectileIndex: 0, coolDown: 450)
                 )
             )
         .Init("Troll 2",
             new State(
-                new Wander(1),
-                new Follow(2, 10, duration: 2000, coolDown: 3000),
+                new Wander(0.3),
+                new Follow(1, 10, duration: 2000, coolDown: 3000),
                 new Shoot(10, 1, projectileIndex: 0, coolDown: 550),
                 new Grenade(3, 85, 10, coolDown: 1000)
                 )

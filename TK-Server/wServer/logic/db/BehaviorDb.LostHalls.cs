@@ -300,7 +300,7 @@ namespace wServer.logic
                     new TimedTransition(9000, "Phase 2")
                     ),
                 new State("Phase 2",
-                    new Follow(2, acquireRange: 30, range: 0),
+                    new Follow(1, acquireRange: 30, range: 0),
                     new Taunt("You doubt my strength? FATUUS! I will destroy you!"),
                     new OrderOnce(30, "LH Pillar spawner", "Main"),
                     new Shoot(30, 8, projectileIndex: 2, coolDown: 4000, seeInvis: true),
@@ -412,7 +412,7 @@ namespace wServer.logic
                     ),
                 new State("Phase 8",
                     new Taunt("Call of voice, for naught. Plea of mercy, for naught. None may enter this chamber and live!"),
-                    new Follow(2, 30, 0),
+                    new Follow(1, 30, 0),
                     new Spawn("LH Colossus Rock 4", maxChildren: 1),
                     new Spawn("LH Colossus Rock 5", maxChildren: 1),
                     new OrderOnce(1, "LH Colossus Rock 4", "Shoot And Move 1"),
@@ -422,7 +422,7 @@ namespace wServer.logic
                     ),
                 new State("Phase 8.1",
                     new Taunt("SANGUIS! OSSE! CARO! Feel it rend from your body!"),
-                    new Follow(2, 30, 0),
+                    new Follow(1, 30, 0),
                     new Shoot(20, 3, shootAngle: 15, projectileIndex: 12, coolDown: 3000, seeInvis: true),
                     new Shoot(30, 18, shootAngle: 20, projectileIndex: 11, coolDown: 2000, coolDownOffset: 200, seeInvis: true),
                     new HpLessTransition(0.55, "Phase 8.2")
@@ -431,7 +431,7 @@ namespace wServer.logic
                     new Taunt("PESTIS! The darkness consumes!!"),
                     new OrderOnce(20, "LH Colossus Rock 4", "Stopped"),
                     new OrderOnce(20, "LH Colossus Rock 5", "Stopped"),
-                    new Follow(2, 30, 0),
+                    new Follow(1, 30, 0),
                     new Shoot(20, 3, shootAngle: 15, projectileIndex: 12, coolDown: 3000, seeInvis: true),
                     new Shoot(30, 18, shootAngle: 20, projectileIndex: 11, coolDown: 2000, coolDownOffset: 200, seeInvis: true),
                     new HpLessTransition(0.53, "Phase 9")
@@ -779,21 +779,21 @@ namespace wServer.logic
                 new ItemLoot("Breastplate of New Life", 0.001),
                 new ItemLoot("Marble Seal", 0.001),
                 new ItemLoot("Magical Lodestone", 0.001),
-             //  new ItemLoot("Bow of the Void", 0.001),
-             //  new ItemLoot("Quiver of the Shadows", 0.001),
-             //  new ItemLoot("Armor of Nil", 0.001),
-             //  new ItemLoot("Sourcestone", 0.001),
-             //  new ItemLoot("Staff of Unholy Sacrifice", 0.001),
-             //  new ItemLoot("Skull of Corrupted Souls", 0.001),
-             //  new ItemLoot("Ritual Robe", 0.001),
-             //  new ItemLoot("Bloodshed Ring", 0.001),
+                new ItemLoot("Bow of the Void", 0.001),
+                new ItemLoot("Quiver of the Shadows", 0.001),
+                new ItemLoot("Armor of Nil", 0.001),
+                new ItemLoot("Sourcestone", 0.001),
+                new ItemLoot("Staff of Unholy Sacrifice", 0.001),
+                new ItemLoot("Skull of Corrupted Souls", 0.001),
+                new ItemLoot("Ritual Robe", 0.001),
+                new ItemLoot("Bloodshed Ring", 0.001),
                 new ItemLoot("Severed Marble Hand", 0.001)
-      //     ),
-      // new Threshold(0.05,
-      //     new ItemLoot("Marbled Concoction", 0.0008),
-      //     new ItemLoot("Titan Slayer", 0.0008),
-      //     new ItemLoot("Colossal Plated Hide", 0.0008),
-      //     new ItemLoot("Omnipotence Ring", 0.0008)
+           ),
+       new Threshold(0.05,
+           new ItemLoot("Marbled Concoction", 0.0008),
+           new ItemLoot("Titan Slayer", 0.0008),
+           new ItemLoot("Colossal Plated Hide", 0.0008),
+           new ItemLoot("Omnipotence Ring", 0.0008)
                 )
             );
 

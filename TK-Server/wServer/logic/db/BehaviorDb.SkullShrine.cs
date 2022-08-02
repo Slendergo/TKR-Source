@@ -64,7 +64,7 @@ namespace wServer.logic
                     new EntityNotExistsTransition("Skull Shrine", 40, "Wander")
                     ),
                 new State("Wander",
-                    new Wander(1.5)
+                    new Wander(0.3)
                     ),
                 new Shoot(12, 2, 10, coolDown: 750)
                 )

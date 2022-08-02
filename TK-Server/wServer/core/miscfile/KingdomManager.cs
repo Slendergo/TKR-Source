@@ -731,27 +731,15 @@ namespace wServer.core
 
         public void OnEnemyKilled(Enemy enemy, Player killer)
         {
-            var events = _events;
-            var evt = events[Random.Next(0, events.Count)];
-            var gameData = World.Manager.Resources.GameData;
-
-            // is a critical quest?
-            TauntData? dat = null;
-
-            foreach (var i in CriticalEnemies)
-                if (enemy.ObjectDesc.ObjectId == i.Item1)
+            foreach (var dat in CriticalEnemies)
+                if (enemy.ObjectDesc.ObjectId == dat.Item1)
                 {
-                    dat = i.Item2;
+                    CountingEvents(dat.Item2.NameOfDeath);
+                    AnnounceMVP(enemy, dat.Item2.NameOfDeath);
+
+                    HasQuestAlready = false; 
                     break;
                 }
-
-            if (dat == null)
-                return;
-
-            CountingEvents(dat.Value.NameOfDeath);
-            AnnounceMVP(enemy, dat.Value.NameOfDeath);
-
-            HasQuestAlready = false;
         }
 
         private bool HasQuestAlready;

@@ -575,7 +575,7 @@ namespace wServer.core
 
         public void EnsureQuest()
         {
-            if (CurrentQuest != null || DisableSpawning)
+            if (HasQuestAlready = false || DisableSpawning)
                 return;
 
             var events = _events;
@@ -586,6 +586,7 @@ namespace wServer.core
                 events.Remove(evt);
 
             SpawnEvent(evt.Item1, evt.Item2);
+            HasQuestAlready = true;
         }
 
         public void AnnounceMVP(Enemy eventDead, string name)
@@ -750,11 +751,10 @@ namespace wServer.core
             CountingEvents(dat.Value.NameOfDeath);
             AnnounceMVP(enemy, dat.Value.NameOfDeath);
 
-            if(CurrentQuest != null && CurrentQuest.Id == enemy.Id)
-                CurrentQuest = null;
+            HasQuestAlready = false;
         }
 
-        private Entity CurrentQuest;
+        private bool HasQuestAlready;
 
         public void OnPlayerEntered(Player player)
         {

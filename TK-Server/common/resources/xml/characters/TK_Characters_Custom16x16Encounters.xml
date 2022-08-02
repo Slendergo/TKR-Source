@@ -713,7 +713,7 @@
       <Speed>50</Speed>
       <Damage>55</Damage>
       <LifetimeMS>4000</LifetimeMS>
-      <Size>65</Size>
+      <Size>100</Size>
       <ConditionEffect duration="0.5">Confused</ConditionEffect>
     </Projectile>
   </Object>

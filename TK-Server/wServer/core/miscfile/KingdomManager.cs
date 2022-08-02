@@ -480,6 +480,8 @@ namespace wServer.core
                         {
                             if (time.TickCount % 2 == 0)
                                 HandleAnnouncements();
+                            if(time.TickCount % 4 == 0)
+                                EnsureQuest();
                             if (time.TickCount % 6 == 0)
                                 EnsurePopulation();
                             LastTenSecondsTime = time.TotalElapsedMs;
@@ -569,6 +571,21 @@ namespace wServer.core
                 case KindgomState.Expired:
                     break;
             }
+        }
+
+        public void EnsureQuest()
+        {
+            if (CurrentQuest != null || DisableSpawning)
+                return;
+
+            var events = _events;
+            var evt = events[Random.Next(0, events.Count)];
+            var gameData = World.Manager.Resources.GameData;
+
+            if (gameData.ObjectDescs[gameData.IdToObjectType[evt.Item1]].PerRealmMax == 1)
+                events.Remove(evt);
+
+            SpawnEvent(evt.Item1, evt.Item2);
         }
 
         public void AnnounceMVP(Enemy eventDead, string name)
@@ -733,31 +750,11 @@ namespace wServer.core
             CountingEvents(dat.Value.NameOfDeath);
             AnnounceMVP(enemy, dat.Value.NameOfDeath);
 
-            // enemy is quest?
-            if (enemy.ObjectDesc == null || !enemy.ObjectDesc.Quest)
-                return;
-
-            if (!DisableSpawning)
-            {
-                if (gameData.ObjectDescs[gameData.IdToObjectType[evt.Item1]].PerRealmMax == 1)
-                    events.Remove(evt);
-
-                World.Timers.Add(new WorldTimer(15000, (w, t) => SpawnEvent(evt.Item1, evt.Item2)));
-            }
-
-            // new event is critical?
-            dat = null;
-
-            foreach (var i in CriticalEnemies)
-                if (evt.Item1 == i.Item1)
-                {
-                    dat = i.Item2;
-                    break;
-                }
-
-            if (dat == null)
-                return;
+            if(CurrentQuest != null && CurrentQuest.Id == enemy.Id)
+                CurrentQuest = null;
         }
+
+        private Entity CurrentQuest;
 
         public void OnPlayerEntered(Player player)
         {

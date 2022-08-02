@@ -38,15 +38,17 @@
                 <Image HorizontalAlignment="Left" Height="28" Margin="2,2,0,0" VerticalAlignment="Top" Width="28" OpacityMask="White" Source="/TK_Logo_Transparent.png"/>
                 <TextBlock Text="{Binding Title, RelativeSource={RelativeSource FindAncestor,AncestorType=Window},FallbackValue=Title}" Margin="38,0,652,0" VerticalAlignment="Center" Foreground="#FF9FA3E5">
                     <TextBlock.Effect>
-                        <DropShadowEffect Color="#FF4A4C6F" ShadowDepth=""/>
+                        <DropShadowEffect Color="#FF4A4C6F" ShadowDepth="3"/>
                     </TextBlock.Effect>
                 </TextBlock>
             </Grid>
         </Border>
         <Grid>
-            <Rectangle HorizontalAlignment="Center" Height="354" VerticalAlignment="Top" Width="800" Fill="#FF4A4C6F" Margin="0,64,0,0">
+            <Rectangle HorizontalAlignment="Center" Height="322" VerticalAlignment="Top" Width="800" Fill="#FF4A4C6F" Margin="0,64,0,0">
+            </Rectangle>
+            <Rectangle HorizontalAlignment="Center" Height="32" VerticalAlignment="Bottom" Width="800" Fill="#FF37384B">
                 <Rectangle.Effect>
-                    <DropShadowEffect Color="Black" ShadowDepth="5"/>
+                    <DropShadowEffect Color="#FF4A4C6F" ShadowDepth="2" BlurRadius="12" Direction="90"/>
                 </Rectangle.Effect>
             </Rectangle>
             <Rectangle x:Name="rectangle" HorizontalAlignment="Center" Height="64" VerticalAlignment="Top" Width="800" Fill="#FF3F415D">
@@ -81,7 +83,7 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <Button x:Name="Store" Margin="0, 0, 6, 0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="128" Background="#FF3F415D" BorderBrush="{x:Null}" Foreground="#FF9FA3E5" FontSize="18" FontWeight="Bold">
+                <Button x:Name="Store" Margin="0, 0, 6, 0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="128" Background="#FF3F415D" BorderBrush="{x:Null}" Foreground="#FF9FA3E5" FontSize="18" FontWeight="Bold" Click="OptionButton_Click">
                     <TextBlock Text="{Binding Name, RelativeSource={RelativeSource FindAncestor,AncestorType=Button},FallbackValue=Unknown}">
                         <TextBlock.Effect>
                             <DropShadowEffect Color="#FF4A4C6F" ShadowDepth="3"/>
@@ -107,7 +109,7 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <Button x:Name="News" Margin="0, 0, 6, 0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="128" Background="#FF3F415D" BorderBrush="{x:Null}" Foreground="#FF9FA3E5" FontSize="18" FontWeight="Bold">
+                <Button x:Name="News" Margin="0, 0, 6, 0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="128" Background="#FF3F415D" BorderBrush="{x:Null}" Foreground="#FF9FA3E5" FontSize="18" FontWeight="Bold" Click="OptionButton_Click">
                     <TextBlock Text="{Binding Name, RelativeSource={RelativeSource FindAncestor,AncestorType=Button},FallbackValue=Unknown}">
                         <TextBlock.Effect>
                             <DropShadowEffect Color="#FF4A4C6F" ShadowDepth="3"/>
@@ -133,7 +135,7 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <Button x:Name="Account" Margin="0, 0, 6, 0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="128" Background="#FF3F415D" BorderBrush="{x:Null}" Foreground="#FF9FA3E5" FontSize="18" FontWeight="Bold">
+                <Button x:Name="Account" Margin="0, 0, 6, 0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="128" Background="#FF3F415D" BorderBrush="{x:Null}" Foreground="#FF9FA3E5" FontSize="18" FontWeight="Bold" Click="OptionButton_Click">
                     <TextBlock Text="{Binding Name, RelativeSource={RelativeSource FindAncestor,AncestorType=Button},FallbackValue=Unknown}">
                         <TextBlock.Effect>
                             <DropShadowEffect Color="#FF4A4C6F" ShadowDepth="3"/>
@@ -159,7 +161,7 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <Button x:Name="About" Margin="0, 0, 6, 0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="128" Background="#FF3F415D" BorderBrush="{x:Null}" Foreground="#FF9FA3E5" FontSize="18" FontWeight="Bold">
+                <Button x:Name="About" Margin="0, 0, 6, 0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="128" Background="#FF3F415D" BorderBrush="{x:Null}" Foreground="#FF9FA3E5" FontSize="18" FontWeight="Bold" Click="OptionButton_Click">
                     <TextBlock Text="{Binding Name, RelativeSource={RelativeSource FindAncestor,AncestorType=Button},FallbackValue=Unknown}">
                         <TextBlock.Effect>
                             <DropShadowEffect Color="#FF4A4C6F" ShadowDepth="3"/>
@@ -186,6 +188,12 @@
                     </Button.Style>
                 </Button>
             </StackPanel>
+
+            <TextBlock Text="V 1.0" Foreground="#FF9FA3E5" VerticalAlignment="Top" Margin="7,391,1,0" FontSize="16">
+                <TextBlock.Effect>
+                    <DropShadowEffect Color="#FF4A4C6F" Direction="0" ShadowDepth="3"/>
+                </TextBlock.Effect>
+            </TextBlock>
         </Grid>
     </DockPanel>
 </Window>

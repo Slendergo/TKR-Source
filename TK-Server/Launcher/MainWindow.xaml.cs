@@ -25,6 +25,16 @@ namespace Launcher
             InitializeComponent();
         }
 
+        public Button ActiveButton;
+
+        public void OptionButton_Click(object sender, RoutedEventArgs e)
+        {
+            var button = (Button)sender;
+            ActiveButton = button;
+
+
+        }
+
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
             Close();

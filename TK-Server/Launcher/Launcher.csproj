@@ -8,9 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="MainWindow - Copy.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Images\TK_Icon.png" />
     <None Remove="TK_Icon.png" />
     <None Remove="TK_Logo_Transparent.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="MainWindow - Copy.xaml" />
   </ItemGroup>
 
   <ItemGroup>

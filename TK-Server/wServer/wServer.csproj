@@ -105,6 +105,7 @@
     <Compile Include="core\commands\Command.CheckRanks.cs" />
     <Compile Include="core\commands\Command.CheckRevengeItems.cs" />
     <Compile Include="core\commands\Command.ClearGraves.cs" />
+    <Compile Include="core\commands\Command.CreateRealm.cs" />
     <Compile Include="core\commands\Command.FixStacks.cs" />
     <Compile Include="core\commands\Command.ClearInv.cs" />
     <Compile Include="core\commands\Command.ClearSpawns.cs" />

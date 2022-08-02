@@ -656,6 +656,8 @@ namespace wServer.core
 
         public int CountingEvents(string eventDead)
         {
+            HasQuestAlready = false;
+
             _EventCount++;
 
             // notify 3 events before realm close on discord (once)
@@ -736,7 +738,6 @@ namespace wServer.core
                 {
                     CountingEvents(dat.Item2.NameOfDeath);
                     AnnounceMVP(enemy, dat.Item2.NameOfDeath);
-                    HasQuestAlready = false; 
                     break;
                 }
         }

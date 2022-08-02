@@ -10,11 +10,15 @@
   <ItemGroup>
     <None Remove="Images\TK_Icon.png" />
     <None Remove="TK_Icon.png" />
-    <None Remove="TK_Icon_Transparent.png" />
+    <None Remove="TK_Logo_Transparent.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="TK_Icon_Transparent.png" />
+    <Folder Include="Images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="TK_Logo_Transparent.png" />
   </ItemGroup>
 
 </Project>

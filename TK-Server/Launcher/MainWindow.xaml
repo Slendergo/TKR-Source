@@ -13,27 +13,73 @@
     <DockPanel LastChildFill="True">
         <Border Background="#FF37384B" DockPanel.Dock="Top" Height="32" x:Name="titlebar">
             <Grid>
-                <Button WindowChrome.IsHitTestVisibleInChrome="true" Content="X" HorizontalAlignment="Right" VerticalAlignment="Top" Width="32" Height="32" Background="Transparent" BorderBrush="Transparent" Foreground="Red"/>
-                <Button WindowChrome.IsHitTestVisibleInChrome="true" Content="___" HorizontalAlignment="Right" VerticalAlignment="Top" Width="32" Height="32" Background="Transparent" BorderBrush="Transparent" Foreground="White" Margin="0,0,32,0"/>
+                <Button WindowChrome.IsHitTestVisibleInChrome="true" Content="X" HorizontalAlignment="Right" VerticalAlignment="Top" Width="32" Height="32" Background="Transparent" BorderBrush="Transparent" Foreground="Red" Click="ExitButton_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="LightBlue" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border x:Name="Border" Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#FF5D5F8A" TargetName="Border" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button WindowChrome.IsHitTestVisibleInChrome="true" Content="___" HorizontalAlignment="Right" VerticalAlignment="Top" Width="32" Height="32" Background="Transparent" BorderBrush="Transparent" Foreground="White" Margin="0,0,32,0" Click="MinimizeButton_Click"/>
                 <Image HorizontalAlignment="Left" Height="28" Margin="2,2,0,0" VerticalAlignment="Top" Width="28" OpacityMask="White" Source="/TK_Logo_Transparent.png"/>
                 <TextBlock Text="{Binding Title, RelativeSource={RelativeSource FindAncestor,AncestorType=Window},FallbackValue=Title}" Margin="38,0,652,0" VerticalAlignment="Center" Foreground="#FF9FA3E5">
                     <TextBlock.Effect>
-                        <DropShadowEffect Color="#FF4A4C6F" ShadowDepth="3"/>
+                        <DropShadowEffect Color="#FF4A4C6F" ShadowDepth=""/>
                     </TextBlock.Effect>
                 </TextBlock>
             </Grid>
         </Border>
         <Grid>
-            <Rectangle x:Name="rectangle" HorizontalAlignment="Center" Height="64" VerticalAlignment="Top" Width="800" Fill="#FF3F415D"/>
-            <Rectangle HorizontalAlignment="Center" Height="354" VerticalAlignment="Top" Width="800" Fill="#FF4A4C6F" Margin="0,64,0,0"/>
-
+            <Rectangle HorizontalAlignment="Center" Height="354" VerticalAlignment="Top" Width="800" Fill="#FF4A4C6F" Margin="0,64,0,0">
+                <Rectangle.Effect>
+                    <DropShadowEffect Color="Black" ShadowDepth="5"/>
+                </Rectangle.Effect>
+            </Rectangle>
+            <Rectangle x:Name="rectangle" HorizontalAlignment="Center" Height="64" VerticalAlignment="Top" Width="800" Fill="#FF3F415D">
+                <Rectangle.Effect>
+                    <DropShadowEffect Color="#FF4A4C6F" ShadowDepth="4" BlurRadius="12" Direction="270"/>
+                </Rectangle.Effect>
+            </Rectangle>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Width="{Binding ActualWidth, ElementName=rectangle, Mode=OneWay}">
-                <Button x:Name="Play" Margin="0, 0, 6, 0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="128" Background="#FF3F415D" BorderBrush="{x:Null}" Foreground="#FF9FA3E5" FontSize="18" FontWeight="Bold">
-                    <TextBlock Text="{Binding Name, RelativeSource={RelativeSource FindAncestor,AncestorType=Button},FallbackValue=Unknown}">
+                <Button x:Name="Play" Margin="0, 0, 142, 0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="128" Background="#FFDD0F56" BorderBrush="{x:Null}" Foreground="#FF9FA3E5" FontSize="18" FontWeight="Bold">
+                    <TextBlock Text="{Binding Name, RelativeSource={RelativeSource FindAncestor,AncestorType=Button},FallbackValue=Unknown}" Foreground="#FFF46899">
                         <TextBlock.Effect>
                             <DropShadowEffect Color="#FF4A4C6F" ShadowDepth="3"/>
                         </TextBlock.Effect>
                     </TextBlock>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="LightBlue" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border x:Name="Border" Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#FF930F3D" TargetName="Border" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
                 </Button>
                 <Button x:Name="Store" Margin="0, 0, 6, 0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="128" Background="#FF3F415D" BorderBrush="{x:Null}" Foreground="#FF9FA3E5" FontSize="18" FontWeight="Bold">
                     <TextBlock Text="{Binding Name, RelativeSource={RelativeSource FindAncestor,AncestorType=Button},FallbackValue=Unknown}">
@@ -41,6 +87,25 @@
                             <DropShadowEffect Color="#FF4A4C6F" ShadowDepth="3"/>
                         </TextBlock.Effect>
                     </TextBlock>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="LightBlue" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border x:Name="Border" Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#FF5D5F8A" TargetName="Border" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
                 </Button>
                 <Button x:Name="News" Margin="0, 0, 6, 0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="128" Background="#FF3F415D" BorderBrush="{x:Null}" Foreground="#FF9FA3E5" FontSize="18" FontWeight="Bold">
                     <TextBlock Text="{Binding Name, RelativeSource={RelativeSource FindAncestor,AncestorType=Button},FallbackValue=Unknown}">
@@ -48,6 +113,25 @@
                             <DropShadowEffect Color="#FF4A4C6F" ShadowDepth="3"/>
                         </TextBlock.Effect>
                     </TextBlock>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="LightBlue" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border x:Name="Border" Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#FF5D5F8A" TargetName="Border" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
                 </Button>
                 <Button x:Name="Account" Margin="0, 0, 6, 0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="128" Background="#FF3F415D" BorderBrush="{x:Null}" Foreground="#FF9FA3E5" FontSize="18" FontWeight="Bold">
                     <TextBlock Text="{Binding Name, RelativeSource={RelativeSource FindAncestor,AncestorType=Button},FallbackValue=Unknown}">
@@ -55,13 +139,25 @@
                             <DropShadowEffect Color="#FF4A4C6F" ShadowDepth="3"/>
                         </TextBlock.Effect>
                     </TextBlock>
-                </Button>
-                <Button x:Name="Support" Margin="0, 0, 6, 0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="128" Background="#FF3F415D" BorderBrush="{x:Null}" Foreground="#FF9FA3E5" FontSize="18" FontWeight="Bold">
-                    <TextBlock Text="{Binding Name, RelativeSource={RelativeSource FindAncestor,AncestorType=Button},FallbackValue=Unknown}">
-                        <TextBlock.Effect>
-                            <DropShadowEffect Color="#FF4A4C6F" ShadowDepth="3"/>
-                        </TextBlock.Effect>
-                    </TextBlock>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="LightBlue" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border x:Name="Border" Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#FF5D5F8A" TargetName="Border" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
                 </Button>
                 <Button x:Name="About" Margin="0, 0, 6, 0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="128" Background="#FF3F415D" BorderBrush="{x:Null}" Foreground="#FF9FA3E5" FontSize="18" FontWeight="Bold">
                     <TextBlock Text="{Binding Name, RelativeSource={RelativeSource FindAncestor,AncestorType=Button},FallbackValue=Unknown}">
@@ -69,6 +165,25 @@
                             <DropShadowEffect Color="#FF4A4C6F" ShadowDepth="3"/>
                         </TextBlock.Effect>
                     </TextBlock>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="LightBlue" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border x:Name="Border" Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#FF5D5F8A" TargetName="Border" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
                 </Button>
             </StackPanel>
         </Grid>

@@ -575,7 +575,7 @@ namespace wServer.core
 
         public void EnsureQuest()
         {
-            if (HasQuestAlready = false || DisableSpawning)
+            if (HasQuestAlready || DisableSpawning)
                 return;
 
             var events = _events;
@@ -736,7 +736,6 @@ namespace wServer.core
                 {
                     CountingEvents(dat.Item2.NameOfDeath);
                     AnnounceMVP(enemy, dat.Item2.NameOfDeath);
-
                     HasQuestAlready = false; 
                     break;
                 }

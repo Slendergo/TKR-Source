@@ -15,7 +15,7 @@
             <Grid>
                 <Button WindowChrome.IsHitTestVisibleInChrome="true" Content="X" HorizontalAlignment="Right" VerticalAlignment="Top" Width="32" Height="32" Background="Transparent" BorderBrush="Transparent" Foreground="Red"/>
                 <Button WindowChrome.IsHitTestVisibleInChrome="true" Content="___" HorizontalAlignment="Right" VerticalAlignment="Top" Width="32" Height="32" Background="Transparent" BorderBrush="Transparent" Foreground="White" Margin="0,0,32,0"/>
-                <Image HorizontalAlignment="Left" Height="28" Margin="2,2,0,0" VerticalAlignment="Top" Width="28" OpacityMask="White" Source="/TK_Icon_Transparent.png"/>
+                <Image HorizontalAlignment="Left" Height="28" Margin="2,2,0,0" VerticalAlignment="Top" Width="28" OpacityMask="White" Source="/TK_Logo_Transparent.png"/>
                 <TextBlock Text="{Binding Title, RelativeSource={RelativeSource FindAncestor,AncestorType=Window},FallbackValue=Title}" Margin="38,0,652,0" VerticalAlignment="Center" Foreground="#FF9FA3E5">
                     <TextBlock.Effect>
                         <DropShadowEffect Color="#FF4A4C6F" ShadowDepth="3"/>

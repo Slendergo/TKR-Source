@@ -251,6 +251,7 @@
         <feedPower>20</feedPower>
     </Object>
 
+
     <!-- Bounty Items -->
 
     <Object type="0x5156" id="Seductive Charm">

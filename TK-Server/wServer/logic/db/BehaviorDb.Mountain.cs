@@ -46,7 +46,7 @@ namespace wServer.logic
                     new Shoot(15, 3, shootAngle: 25, projectileIndex: 0, coolDown: 1000),
                     new Shoot(15, projectileIndex: 1, coolDown: 1000)
                     ),
-                new DropPortalOnDeath("Haunted Cemetery Final Rest Portal", .4)
+                new DropPortalOnDeath("Haunted Cemetery Portal", .5)
                 )
             )
         .Init("White Demon",

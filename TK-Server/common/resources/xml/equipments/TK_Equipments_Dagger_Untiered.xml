@@ -344,4 +344,32 @@
     <NumProjectiles>2</NumProjectiles>
     <OldSound>bladeSwing</OldSound>
   </Object> -->
+	<Object type="0x9912" id="Celestial Dual Blades">
+		<Class>Equipment</Class>
+		<Item />
+		<Texture>
+			<File>CustomObj</File>
+			<Index>0xbc</Index>
+		</Texture>
+		<SlotType>2</SlotType>
+		<Description>If this item is broken, it's glass' fault</Description>
+		<RateOfFire>120</RateOfFire>
+		<Sound>weapon/fire_dagger</Sound>
+		<Projectile>
+			<ObjectId>Dual Blade Shot</ObjectId>
+			<Speed>140</Speed>
+			<MinDamage>150</MinDamage>
+			<MaxDamage>150</MaxDamage>
+			<LifetimeMS>300</LifetimeMS>
+			<Frequency>1</Frequency>
+			<Size>100</Size>
+		</Projectile>
+		<ArmorPiercing />
+		<NumProjectiles>1</NumProjectiles>
+		<BagType>7</BagType>
+		<FameBonus>3</FameBonus>
+		<OldSound>daggerSwing</OldSound>
+		<feedPower>310</feedPower>
+		<DisplayId>Celestial Dual Blades</DisplayId>
+	</Object>
 </Objects>

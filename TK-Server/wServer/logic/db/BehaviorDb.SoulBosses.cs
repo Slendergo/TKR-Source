@@ -57,54 +57,26 @@ namespace wServer.logic
                     ),
                 new State("Vulnerable",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
-                    new Shoot(7, 4, shootAngle: 15, projectileIndex: 2, coolDown: 1000),
-                    new Shoot(30, 5, shootAngle: 25, projectileIndex: 1, coolDown: 2500),
-                    new Shoot(30, 5, shootAngle: 25, projectileIndex: 1, coolDown: 2750, coolDownOffset: 2500),
-                    new Shoot(30, 5, shootAngle: 25, projectileIndex: 1, coolDown: 2900, coolDownOffset: 2750),
+                    new Shoot(7, 4, shootAngle: 15, projectileIndex: 2, coolDown: 800),
+                    new Shoot(30, 5, shootAngle: 25, projectileIndex: 1, coolDown: 1500),
+                    new Shoot(30, 5, shootAngle: 25, projectileIndex: 1, coolDown: 1900, coolDownOffset: 1800),
+                    new Shoot(30, 5, shootAngle: 25, projectileIndex: 1, coolDown: 2100, coolDownOffset: 2100),
                     new HpLessTransition(0.8, "Hard")
                     ),
                 new State("Hard",
-                    new Shoot(7, 4, shootAngle: 15, projectileIndex: 2, coolDown: 1000),
-                    new Shoot(30, 5, shootAngle: 25, projectileIndex: 1, coolDown: 2500),
-                    new Shoot(30, 5, shootAngle: 25, projectileIndex: 1, coolDown: 2750, coolDownOffset: 2500),
-                    new Shoot(30, 3, shootAngle: 15, projectileIndex: 3, coolDown: 1500),
+                    new Shoot(7, 4, shootAngle: 15, projectileIndex: 2, coolDown: 500),
+                    new Shoot(30, 5, shootAngle: 25, projectileIndex: 1, coolDown: 1250),
+                    new Shoot(30, 5, shootAngle: 25, projectileIndex: 1, coolDown: 1375, coolDownOffset: 1250),
+                    new Shoot(30, 3, shootAngle: 15, projectileIndex: 3, coolDown: 750),
                     new HpLessTransition(0.5, "Fast Shots")
                     ),
                 new State("Fast Shots",
                     new Spawn("Jackal Lord", 3, 0.5, coolDown: 1000, true),
-                    new Shoot(7, 4, shootAngle: 15, projectileIndex: 2, coolDown: 1000),
-                    new Shoot(30, 5, shootAngle: 25, projectileIndex: 1, coolDown: 2500),
-                    new Shoot(30, 5, shootAngle: 25, projectileIndex: 1, coolDown: 2750, coolDownOffset: 2500),
-                    new Shoot(30, 3, shootAngle: 35, projectileIndex: 4, coolDown: 750),
-                    new TransformOnDeath("Soul of Life Mob", 1, 1, 1)
-                    )
-                )
-            )
-
-        .Init("Soul of Life Opener",
-            new State(
-                new State("Waiting",
-                    new EntitiesNotExistsTransition(100, "OpenDoor", "Tomb Defender", "Tomb Attacker", "Tomb Support", "Tomb Defender Statue", "Tomb Attacker Statue", "Tomb Support Statue")
-                    ),
-                new State("OpenDoor",
-                    new OpenGate(145, 145, 12, 14),
-                    new Suicide()
-                    )
-                )
-            )
-
-        .Init("Soul of Life Mob",
-            new State(
-                new TransformOnDeath("Soul Death", 1, 1, 1),
-                new ScaleHP2(10),
-                new State("Poison",
-                    new Grenade(3, 25, 15, coolDown: 1500, effect: ConditionEffectIndex.ArmorBroken, effectDuration: 1000),
-                    new HpLessTransition(0.5, "Rage")
-                    ),
-                new State("Rage",
-                    new SetAltTexture(1, 1),
-                    new Grenade(3, 25, 15, coolDown: 1000, effect: ConditionEffectIndex.ArmorBroken, effectDuration: 1000)
-                    )
+                    new Shoot(7, 4, shootAngle: 15, projectileIndex: 2, coolDown: 300),
+                    new Shoot(30, 5, shootAngle: 25, projectileIndex: 1, coolDown: 1000),
+                    new Shoot(30, 5, shootAngle: 25, projectileIndex: 1, coolDown: 1200, coolDownOffset: 1200),
+                    new Shoot(30, 3, shootAngle: 35, projectileIndex: 4, coolDown: 500)
+                     )
                 ),
             new Threshold(0.01,
                 LootTemplates.DustLoot()
@@ -128,6 +100,19 @@ namespace wServer.logic
                 new TierLoot(11, ItemType.Armor, 0.2)
                 )
             )
+
+        .Init("Soul of Life Opener",
+            new State(
+                new State("Waiting",
+                    new EntitiesNotExistsTransition(100, "OpenDoor", "Tomb Defender", "Tomb Attacker", "Tomb Support", "Tomb Defender Statue", "Tomb Attacker Statue", "Tomb Support Statue")
+                    ),
+                new State("OpenDoor",
+                    new OpenGate(145, 145, 12, 14),
+                    new Suicide()
+                    )
+                )
+            )
+
 
         #endregion Soul of Life Boss (TOMB) - Done
 
@@ -187,28 +172,7 @@ namespace wServer.logic
                     new Shoot(15, 2, shootAngle: 25, projectileIndex: 3, coolDownOffset: 500, coolDown: 1250),
                     new Shoot(20, 3, shootAngle: 15, projectileIndex: 0, coolDown: 500),
                     new TransformOnDeath("Soul of Mana Mob", 1, 1, 1)
-                    )
-                )
-            )
-
-        .Init("Soul of Mana Mob",
-            new State(
-                new TransformOnDeath("Soul Death", 1, 1, 1),
-                new ScaleHP2(10),
-                new State("Moving",
-                    new Wander(1),
-                    new StayBack(1, 6),
-                    new Shoot(20, 1, projectileIndex: 0, coolDown: 1500),
-                    new Shoot(20, 2, shootAngle: 25, projectileIndex: 1, coolDown: 1500),
-                    new HpLessTransition(0.5, "Rage")
-                    ),
-                new State("Rage",
-                    new SetAltTexture(1, 1),
-                    new Wander(1.2),
-                    new StayBack(1.2, 6),
-                    new Shoot(20, 1, projectileIndex: 0, coolDown: 1000),
-                    new Shoot(20, 2, shootAngle: 25, projectileIndex: 1, coolDown: 1000)
-                    )
+                     )
                 ),
             new Threshold(0.01,
                 LootTemplates.DustLoot()
@@ -233,7 +197,7 @@ namespace wServer.logic
                 new ItemLoot("Coral Silk Armor", 0.01),
                 new ItemLoot("Coral Ring", 0.01)
                 )
-            )
+            )    
 
         #endregion Soul of Mana Boss (OT) - Done
 
@@ -584,6 +548,7 @@ namespace wServer.logic
                 new TierLoot(11, ItemType.Armor, 0.1),
                 new TierLoot(5, ItemType.Ring, 0.1),
                 new TierLoot(5, ItemType.Ability, 0.1),
+                new ItemLoot("Crafting Material 2", 0.1),
                 new ItemLoot("Sword of Golden Fragments", 0.005),
                 new ItemLoot("Jewel-Encrusted Helmet", 0.005),
                 new ItemLoot("Luminous Body Armor", 0.005),
@@ -694,99 +659,98 @@ namespace wServer.logic
                     ),
                 new State("Start 2",
                     new RemoveConditionalEffect(ConditionEffectIndex.Invulnerable),
-                    new Shoot(15, 3, shootAngle: 10, projectileIndex: 0, fixedAngle: 0, rotateAngle: 50, coolDown: 300),
-                    new Shoot(15, 3, shootAngle: 10, projectileIndex: 0, fixedAngle: 180, rotateAngle: 50, coolDown: 300),
+                    new Shoot(15, 3, shootAngle: 10, projectileIndex: 0, rotateAngle: 50, coolDown: 1000),
 
-                    new Grenade(2, 50, 3, fixedAngle: 0, coolDown: 3700, effect: ConditionEffectIndex.Paralyzed, effectDuration: 1000, color: 0xAA00FF),
-                    new Grenade(2, 50, 3, fixedAngle: 180, coolDown: 3700, effect: ConditionEffectIndex.Paralyzed, effectDuration: 1000, color: 0xAA00FF),
+                    new Grenade(1, 50, 3, fixedAngle: 0, coolDown: 3700, effect: ConditionEffectIndex.Paralyzed, effectDuration: 1000, color: 0xAA00FF),
+                    new Grenade(1, 50, 3, fixedAngle: 180, coolDown: 3700, effect: ConditionEffectIndex.Paralyzed, effectDuration: 1000, color: 0xAA00FF),
 
-                    new Grenade(3, 50, 10, fixedAngle: 0, coolDown: 1000, effect: ConditionEffectIndex.Paralyzed, effectDuration: 1000, color: 0xAA00FF),
-                    new Grenade(3, 50, 10, fixedAngle: 72, coolDown: 1000, effect: ConditionEffectIndex.Paralyzed, effectDuration: 1000, color: 0xAA00FF),
-                    new Grenade(3, 50, 10, fixedAngle: 144, coolDown: 1000, effect: ConditionEffectIndex.Paralyzed, effectDuration: 1000, color: 0xAA00FF),
-                    new Grenade(3, 50, 10, fixedAngle: 216, coolDown: 1000, effect: ConditionEffectIndex.Paralyzed, effectDuration: 1000, color: 0xAA00FF),
-                    new Grenade(3, 50, 10, fixedAngle: 288, coolDown: 1000, effect: ConditionEffectIndex.Paralyzed, effectDuration: 1000, color: 0xAA00FF),
+                    new Grenade(2, 50, 10, fixedAngle: 0, coolDown: 1000, effect: ConditionEffectIndex.Paralyzed, effectDuration: 1000, color: 0xAA00FF),
+                    new Grenade(2, 50, 10, fixedAngle: 72, coolDown: 1000, effect: ConditionEffectIndex.Paralyzed, effectDuration: 1000, color: 0xAA00FF),
+                    new Grenade(2, 50, 10, fixedAngle: 144, coolDown: 1000, effect: ConditionEffectIndex.Paralyzed, effectDuration: 1000, color: 0xAA00FF),
+                    new Grenade(2, 50, 10, fixedAngle: 216, coolDown: 1000, effect: ConditionEffectIndex.Paralyzed, effectDuration: 1000, color: 0xAA00FF),
+                    new Grenade(2, 50, 10, fixedAngle: 288, coolDown: 1000, effect: ConditionEffectIndex.Paralyzed, effectDuration: 1000, color: 0xAA00FF),
+                                
+                    new Grenade(2, 50, 10, fixedAngle: 36, coolDown: 2000, effect: ConditionEffectIndex.Paralyzed, effectDuration: 1000, color: 0xAA00FF),
+                    new Grenade(2, 50, 10, fixedAngle: 108, coolDown: 2000, effect: ConditionEffectIndex.Paralyzed, effectDuration: 1000, color: 0xAA00FF),
+                    new Grenade(2, 50, 10, fixedAngle: 180, coolDown: 2000, effect: ConditionEffectIndex.Paralyzed, effectDuration: 1000, color: 0xAA00FF),
+                    new Grenade(2, 50, 10, fixedAngle: 252, coolDown: 2000, effect: ConditionEffectIndex.Paralyzed, effectDuration: 1000, color: 0xAA00FF),
+                    new Grenade(2, 50, 10, fixedAngle: 324, coolDown: 2000, effect: ConditionEffectIndex.Paralyzed, effectDuration: 1000, color: 0xAA00FF),
 
-                    new Grenade(3, 50, 10, fixedAngle: 36, coolDown: 2000, effect: ConditionEffectIndex.Paralyzed, effectDuration: 1000, color: 0xAA00FF),
-                    new Grenade(3, 50, 10, fixedAngle: 108, coolDown: 2000, effect: ConditionEffectIndex.Paralyzed, effectDuration: 1000, color: 0xAA00FF),
-                    new Grenade(3, 50, 10, fixedAngle: 180, coolDown: 2000, effect: ConditionEffectIndex.Paralyzed, effectDuration: 1000, color: 0xAA00FF),
-                    new Grenade(3, 50, 10, fixedAngle: 252, coolDown: 2000, effect: ConditionEffectIndex.Paralyzed, effectDuration: 1000, color: 0xAA00FF),
-                    new Grenade(3, 50, 10, fixedAngle: 324, coolDown: 2000, effect: ConditionEffectIndex.Paralyzed, effectDuration: 1000, color: 0xAA00FF),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 0, coolDown: 3700, coolDownOffset: 100),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 5, coolDown: 3700, coolDownOffset: 200),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 10, coolDown: 3700, coolDownOffset: 300),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 15, coolDown: 3700, coolDownOffset: 400),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 20, coolDown: 3700, coolDownOffset: 500),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 25, coolDown: 3700, coolDownOffset: 600),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 30, coolDown: 3700, coolDownOffset: 700),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 35, coolDown: 3700, coolDownOffset: 800),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 40, coolDown: 3700, coolDownOffset: 900),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 45, coolDown: 3700, coolDownOffset: 1000),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 50, coolDown: 3700, coolDownOffset: 1100),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 55, coolDown: 3700, coolDownOffset: 1200),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 60, coolDown: 3700, coolDownOffset: 1300),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 65, coolDown: 3700, coolDownOffset: 1400),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 70, coolDown: 3700, coolDownOffset: 1500),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 75, coolDown: 3700, coolDownOffset: 1600),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 80, coolDown: 3700, coolDownOffset: 1700),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 85, coolDown: 3700, coolDownOffset: 1800),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 90, coolDown: 3700, coolDownOffset: 1900),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 95, coolDown: 3700, coolDownOffset: 2000),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 100, coolDown: 3700, coolDownOffset: 2100),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 105, coolDown: 3700, coolDownOffset: 2200),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 110, coolDown: 3700, coolDownOffset: 2300),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 115, coolDown: 3700, coolDownOffset: 2400),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 120, coolDown: 3700, coolDownOffset: 2500),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 125, coolDown: 3700, coolDownOffset: 2600),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 130, coolDown: 3700, coolDownOffset: 2700),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 135, coolDown: 3700, coolDownOffset: 2800),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 140, coolDown: 3700, coolDownOffset: 2900),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 145, coolDown: 3700, coolDownOffset: 3000),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 150, coolDown: 3700, coolDownOffset: 3100),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 155, coolDown: 3700, coolDownOffset: 3200),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 160, coolDown: 3700, coolDownOffset: 3300),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 165, coolDown: 3700, coolDownOffset: 3400),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 170, coolDown: 3700, coolDownOffset: 3500),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 175, coolDown: 3700, coolDownOffset: 3600),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 180, coolDown: 3700, coolDownOffset: 3700),
 
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 0, coolDown: 3700, coolDownOffset: 100),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 5, coolDown: 3700, coolDownOffset: 200),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 10, coolDown: 3700, coolDownOffset: 300),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 15, coolDown: 3700, coolDownOffset: 400),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 20, coolDown: 3700, coolDownOffset: 500),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 25, coolDown: 3700, coolDownOffset: 600),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 30, coolDown: 3700, coolDownOffset: 700),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 35, coolDown: 3700, coolDownOffset: 800),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 40, coolDown: 3700, coolDownOffset: 900),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 45, coolDown: 3700, coolDownOffset: 1000),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 50, coolDown: 3700, coolDownOffset: 1100),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 55, coolDown: 3700, coolDownOffset: 1200),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 60, coolDown: 3700, coolDownOffset: 1300),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 65, coolDown: 3700, coolDownOffset: 1400),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 70, coolDown: 3700, coolDownOffset: 1500),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 75, coolDown: 3700, coolDownOffset: 1600),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 80, coolDown: 3700, coolDownOffset: 1700),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 85, coolDown: 3700, coolDownOffset: 1800),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 90, coolDown: 3700, coolDownOffset: 1900),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 95, coolDown: 3700, coolDownOffset: 2000),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 100, coolDown: 3700, coolDownOffset: 2100),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 105, coolDown: 3700, coolDownOffset: 2200),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 110, coolDown: 3700, coolDownOffset: 2300),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 115, coolDown: 3700, coolDownOffset: 2400),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 120, coolDown: 3700, coolDownOffset: 2500),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 125, coolDown: 3700, coolDownOffset: 2600),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 130, coolDown: 3700, coolDownOffset: 2700),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 135, coolDown: 3700, coolDownOffset: 2800),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 140, coolDown: 3700, coolDownOffset: 2900),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 145, coolDown: 3700, coolDownOffset: 3000),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 150, coolDown: 3700, coolDownOffset: 3100),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 155, coolDown: 3700, coolDownOffset: 3200),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 160, coolDown: 3700, coolDownOffset: 3300),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 165, coolDown: 3700, coolDownOffset: 3400),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 170, coolDown: 3700, coolDownOffset: 3500),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 175, coolDown: 3700, coolDownOffset: 3600),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 180, coolDown: 3700, coolDownOffset: 3700),
-
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 180, coolDown: 3700, coolDownOffset: 100),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 185, coolDown: 3700, coolDownOffset: 200),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 190, coolDown: 3700, coolDownOffset: 300),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 195, coolDown: 3700, coolDownOffset: 400),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 200, coolDown: 3700, coolDownOffset: 500),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 205, coolDown: 3700, coolDownOffset: 600),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 210, coolDown: 3700, coolDownOffset: 700),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 215, coolDown: 3700, coolDownOffset: 800),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 220, coolDown: 3700, coolDownOffset: 900),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 225, coolDown: 3700, coolDownOffset: 1000),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 230, coolDown: 3700, coolDownOffset: 1100),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 235, coolDown: 3700, coolDownOffset: 1200),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 240, coolDown: 3700, coolDownOffset: 1300),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 245, coolDown: 3700, coolDownOffset: 1400),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 250, coolDown: 3700, coolDownOffset: 1500),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 255, coolDown: 3700, coolDownOffset: 1600),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 260, coolDown: 3700, coolDownOffset: 1700),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 265, coolDown: 3700, coolDownOffset: 1800),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 270, coolDown: 3700, coolDownOffset: 1900),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 275, coolDown: 3700, coolDownOffset: 2000),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 280, coolDown: 3700, coolDownOffset: 2100),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 285, coolDown: 3700, coolDownOffset: 2200),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 290, coolDown: 3700, coolDownOffset: 2300),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 295, coolDown: 3700, coolDownOffset: 2400),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 300, coolDown: 3700, coolDownOffset: 2500),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 305, coolDown: 3700, coolDownOffset: 2600),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 310, coolDown: 3700, coolDownOffset: 2700),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 315, coolDown: 3700, coolDownOffset: 2800),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 320, coolDown: 3700, coolDownOffset: 2900),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 325, coolDown: 3700, coolDownOffset: 3000),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 330, coolDown: 3700, coolDownOffset: 3100),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 335, coolDown: 3700, coolDownOffset: 3200),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 340, coolDown: 3700, coolDownOffset: 3300),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 345, coolDown: 3700, coolDownOffset: 3400),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 350, coolDown: 3700, coolDownOffset: 3500),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 355, coolDown: 3700, coolDownOffset: 3600),
-                    new Shoot(30, 5, projectileIndex: 1, shootAngle: 20, fixedAngle: 360, coolDown: 3700, coolDownOffset: 3700)
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 180, coolDown: 3700, coolDownOffset: 100),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 185, coolDown: 3700, coolDownOffset: 200),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 190, coolDown: 3700, coolDownOffset: 300),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 195, coolDown: 3700, coolDownOffset: 400),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 200, coolDown: 3700, coolDownOffset: 500),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 205, coolDown: 3700, coolDownOffset: 600),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 210, coolDown: 3700, coolDownOffset: 700),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 215, coolDown: 3700, coolDownOffset: 800),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 220, coolDown: 3700, coolDownOffset: 900),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 225, coolDown: 3700, coolDownOffset: 1000),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 230, coolDown: 3700, coolDownOffset: 1100),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 235, coolDown: 3700, coolDownOffset: 1200),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 240, coolDown: 3700, coolDownOffset: 1300),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 245, coolDown: 3700, coolDownOffset: 1400),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 250, coolDown: 3700, coolDownOffset: 1500),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 255, coolDown: 3700, coolDownOffset: 1600),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 260, coolDown: 3700, coolDownOffset: 1700),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 265, coolDown: 3700, coolDownOffset: 1800),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 270, coolDown: 3700, coolDownOffset: 1900),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 275, coolDown: 3700, coolDownOffset: 2000),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 280, coolDown: 3700, coolDownOffset: 2100),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 285, coolDown: 3700, coolDownOffset: 2200),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 290, coolDown: 3700, coolDownOffset: 2300),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 295, coolDown: 3700, coolDownOffset: 2400),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 300, coolDown: 3700, coolDownOffset: 2500),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 305, coolDown: 3700, coolDownOffset: 2600),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 310, coolDown: 3700, coolDownOffset: 2700),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 315, coolDown: 3700, coolDownOffset: 2800),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 320, coolDown: 3700, coolDownOffset: 2900),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 325, coolDown: 3700, coolDownOffset: 3000),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 330, coolDown: 3700, coolDownOffset: 3100),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 335, coolDown: 3700, coolDownOffset: 3200),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 340, coolDown: 3700, coolDownOffset: 3300),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 345, coolDown: 3700, coolDownOffset: 3400),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 350, coolDown: 3700, coolDownOffset: 3500),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 355, coolDown: 3700, coolDownOffset: 3600),
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 360, coolDown: 3700, coolDownOffset: 3700)
                          )
                 ),
             new Threshold(0.01,
@@ -829,59 +793,9 @@ namespace wServer.logic
                 )
             )
 
-        .Init("Soul of Dexterity Mob",
-            new State(
-                new ScaleHP2(10),
-                new TransformOnDeath("Soul Death", 1, 1, 1),
-                new Wander(0.4),
-                new Charge(4, 10, 1000),
-                new State("First",
-                    new State("Shooting 1",
-                        new Shoot(20, 3, shootAngle: 15, projectileIndex: 0, coolDown: 1000),
-                        new PlayerWithinTransition(2, "Player 1")
-                        ),
-                    new State("Player 1",
-                        new Shoot(20, 8, projectileIndex: 1, coolDown: 1000),
-                        new NoPlayerWithinTransition(2, "Shooting 1")
-                        ),
-                    new HpLessTransition(0.5, "Rage")
-                    ),
-                new State("Rage",
-                    new SetAltTexture(1, 1),
-                    new State("Shooting 2",
-                        new Shoot(20, 3, shootAngle: 15, projectileIndex: 0, coolDown: 750),
-                        new PlayerWithinTransition(2, "Player 2")
-                        ),
-                    new State("Player 2",
-                        new Shoot(20, 8, projectileIndex: 1, coolDown: 750),
-                        new NoPlayerWithinTransition(2, "Shooting 2")
-                        )
-                    )
-                ),
-            new Threshold(0.005,
-                new ItemLoot("Soul of Dexterity", 1)
-                ),
-            new Threshold(0.01,
-                LootTemplates.DustLoot()
-                ),
-            new Threshold(0.03,
-                new ItemLoot("Crafting Material 2", 0.1),
-                new ItemLoot("Soul of Dexterity", 0.1),
-                new ItemLoot("Chromatic Extinction", 0.0014)
-                ),
-            new Threshold(0.01,
-                new TierLoot(4, ItemType.Ring, 0.15),
-                new TierLoot(5, ItemType.Ring, 0.1),
-                new TierLoot(11, ItemType.Armor, 0.1),
-                new TierLoot(11, ItemType.Weapon, 0.1),
-                new TierLoot(5, ItemType.Armor, 0.1)
-                )
-            )
-
         .Init("Undead Limon",
             new State(
                 new ScaleHP2(20),
-                new TransformOnDeath("Soul of Dexterity Mob", 1, 1, 1),
                 new State("Start",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
                     new PlayerWithinTransition(10, "Taunt")
@@ -919,6 +833,25 @@ namespace wServer.logic
                         new Spawn(children: "Ice Sprite", maxChildren: 10, initialSpawn: 0, coolDown: 500)
                         )
                     )
+                ),
+            new Threshold(0.005,
+                new ItemLoot("Soul of Dexterity", 1)
+                ),
+            new Threshold(0.01,
+                LootTemplates.DustLoot()
+                ),
+            new Threshold(0.03,
+                new ItemLoot("Limon's Spell", 0.03),
+                new ItemLoot("Celestial Dual Blades", 0.03),
+                new ItemLoot("Crafting Material 2", 0.1),
+                new ItemLoot("Soul of Dexterity", 0.1),
+                new ItemLoot("Chromatic Extinction", 0.0014)
+                ),
+            new Threshold(0.01,
+                new TierLoot(4, ItemType.Ring, 0.15),
+                new TierLoot(5, ItemType.Ring, 0.1),
+                new TierLoot(12, ItemType.Armor, 0.1),
+                new TierLoot(12, ItemType.Weapon, 0.1)
                 )
             )
 
@@ -1393,22 +1326,22 @@ namespace wServer.logic
                         new TimedTransition(5000, "Start 1")
                         ),
                     new State("Start 1",
-                        new HpLessTransition(0.5, "Rage"),
+                        new HpLessTransition(0.7, "Rage"),
                         new RemoveConditionalEffect(ConditionEffectIndex.Invulnerable),
 
-                        new Shoot(12, 3, projectileIndex: 0, shootAngle: 15, coolDown: 2000, coolDownOffset: 300),
-                        new Shoot(12, 3, projectileIndex: 0, shootAngle: 15, coolDown: 2000, coolDownOffset: 600),
-                        new Shoot(12, 3, projectileIndex: 0, shootAngle: 15, coolDown: 2000, coolDownOffset: 900),
+                        new Shoot(12, 4, projectileIndex: 0, shootAngle: 15, coolDown: 2000, coolDownOffset: 300, predictive: 1.2),
+                        new Shoot(12, 4, projectileIndex: 0, shootAngle: 15, coolDown: 2000, coolDownOffset: 600, predictive: 1.2),
+                        new Shoot(12, 4, projectileIndex: 0, shootAngle: 15, coolDown: 2000, coolDownOffset: 900, predictive: 1.2),
 
                         new Shoot(12, 5, projectileIndex: 2, coolDown: 700),
 
-                        new Shoot(20, 8, projectileIndex: 1, fixedAngle: 0, shootAngle: 45, coolDown: 3000, coolDownOffset: 200),
-                        new Shoot(20, 8, projectileIndex: 1, fixedAngle: 10, shootAngle: 45, coolDown: 3000, coolDownOffset: 600),
-                        new Shoot(20, 8, projectileIndex: 1, fixedAngle: 20, shootAngle: 45, coolDown: 3000, coolDownOffset: 1000),
-                        new Shoot(20, 8, projectileIndex: 1, fixedAngle: 30, shootAngle: 45, coolDown: 3000, coolDownOffset: 1400),
-                        new Shoot(20, 8, projectileIndex: 1, fixedAngle: 40, shootAngle: 45, coolDown: 3000, coolDownOffset: 1800),
-                        new Shoot(20, 8, projectileIndex: 1, fixedAngle: 50, shootAngle: 45, coolDown: 3000, coolDownOffset: 2200),
-                        new Shoot(20, 8, projectileIndex: 1, fixedAngle: 60, shootAngle: 45, coolDown: 3000, coolDownOffset: 2600)
+                        new Shoot(20, 12, projectileIndex: 1, fixedAngle: 0, shootAngle: 45, coolDown: 3000, coolDownOffset: 200),
+                        new Shoot(20, 12, projectileIndex: 1, fixedAngle: 10, shootAngle: 45, coolDown: 3000, coolDownOffset: 600),
+                        new Shoot(20, 12, projectileIndex: 1, fixedAngle: 20, shootAngle: 45, coolDown: 3000, coolDownOffset: 1000),
+                        new Shoot(20, 12, projectileIndex: 1, fixedAngle: 30, shootAngle: 45, coolDown: 3000, coolDownOffset: 1400),
+                        new Shoot(20, 12, projectileIndex: 1, fixedAngle: 40, shootAngle: 45, coolDown: 3000, coolDownOffset: 1800),
+                        new Shoot(20, 12, projectileIndex: 1, fixedAngle: 50, shootAngle: 45, coolDown: 3000, coolDownOffset: 2200),
+                        new Shoot(20, 12, projectileIndex: 1, fixedAngle: 60, shootAngle: 45, coolDown: 3000, coolDownOffset: 2600)
                         ),
                 new State("Rage",
                         new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
@@ -1418,7 +1351,7 @@ namespace wServer.logic
                     new State("Start 2",
                         new HpLessTransition(0.25, "Rage 2"),
                         new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
-                        new Chase(9, 12),
+                        new Chase(6, 12),
 
                         new Shoot(8, 5, shootAngle: 10, projectileIndex: 1, coolDown: 500, predictive: 2),
                         new Shoot(20, 5, projectileIndex: 2, coolDown: 1000),
@@ -1436,7 +1369,7 @@ namespace wServer.logic
                         new TossObject2("Lair Skeleton Mage 1", 3, angle: 120, coolDown: 5000),
                         new TossObject2("Lair Skeleton Mage 1", 3, angle: 240, coolDown: 5000),
                         new Reproduce("Lair Skeleton King 1", 50, 3, 5000),
-                        new Chase(12, 12),
+                        new Chase(7, 12),
 
                         new Shoot(8, 7, shootAngle: 10, projectileIndex: 1, coolDown: 300, predictive: 2),
                         new Shoot(20, 5, projectileIndex: 2, coolDown: 800),

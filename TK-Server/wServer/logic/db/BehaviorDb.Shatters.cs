@@ -2405,8 +2405,8 @@ namespace wServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("shoot",
-                    new Orbit(1, 2, 5, "shtrs The Forgotten King"),
-                    new Shoot(15, 8, projectileIndex: 0, coolDown: new Cooldown(3600, 3600))
+                    new Orbit(1, 5, 5, "shtrs The Forgotten King"),
+                    new Shoot(15, 8, projectileIndex: 0, coolDown: 2000)
                     )
                 )
             )

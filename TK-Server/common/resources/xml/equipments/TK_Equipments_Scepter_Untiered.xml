@@ -31,8 +31,7 @@
     <DisplayId>Grotesque Scepter</DisplayId>
     <ActivateOnEquip stat="22" amount="4">IncrementStat</ActivateOnEquip>
     <Activate totalDamage="935" decrDamage="135" wisDamageBase="60" maxTargets="3" wisPerTarget="13" color="0xC3F740">Lightning</Activate>
-    <Activate effect="Hexed" duration="1">ConditionEffectSelf</Activate>
-    <Activate effect="Stunned" duration="1">ConditionEffectSelf</Activate>
+    <Activate effect="Dazed" duration="1">ConditionEffectSelf</Activate>
     <Cooldown>0.5</Cooldown>
     <MpCost>100</MpCost>
     <BagType>6</BagType>

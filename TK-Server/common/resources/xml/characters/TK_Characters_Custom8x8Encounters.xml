@@ -529,13 +529,13 @@
       <Index>33</Index>
     </AnimatedTexture>
     <Size>100</Size>
-    <MaxHitPoints>10000</MaxHitPoints>
-    <Defense>25</Defense>
+    <MaxHitPoints>7000</MaxHitPoints>
+    <Defense>5</Defense>
     <StasisImmune/>
     <Projectile id="0">
       <ObjectId>Projectile 0 PP</ObjectId>
-      <Damage>50</Damage>
-      <Speed>110</Speed>
+      <Damage>25</Damage>
+      <Speed>35</Speed>
       <Size>80</Size>
       <ArmorPiercing/>
       <LifetimeMS>4000</LifetimeMS>
@@ -550,19 +550,17 @@
       <Index>34</Index>
     </AnimatedTexture>
     <Size>100</Size>
-    <MaxHitPoints>15000</MaxHitPoints>
+    <MaxHitPoints>9000</MaxHitPoints>
     <Defense>25</Defense>
     <StasisImmune/>
     <ParalyzeImmune/>
     <Projectile id="0">
       <ObjectId>Projectile 0 RPP</ObjectId>
-      <MinDamage>90</MinDamage>
-      <MaxDamage>110</MaxDamage>
+      <MinDamage>45</MinDamage>
+      <MaxDamage>55</MaxDamage>
       <Speed>90</Speed>
       <Size>100</Size>
-      <ArmorPiercing/>
       <MultiHit/>
-      <ConditionEffect duration="4">Bleeding</ConditionEffect>
       <LifetimeMS>4000</LifetimeMS>
     </Projectile>
   </Object>

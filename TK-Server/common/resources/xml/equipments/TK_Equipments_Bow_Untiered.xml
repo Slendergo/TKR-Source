@@ -305,9 +305,9 @@
     <Sound>weapon/poor_quality_bow</Sound>
     <Projectile>
       <ObjectId>Earth Elemental Arrow</ObjectId>
-      <Speed>160</Speed>
-      <MinDamage>150</MinDamage>
-      <MaxDamage>175</MaxDamage>
+      <Speed>145</Speed>
+      <MinDamage>110</MinDamage>
+      <MaxDamage>125</MaxDamage>
       <LifetimeMS>440</LifetimeMS>
       <Frequency>1</Frequency>
       <Size>100</Size>
@@ -321,4 +321,32 @@
     <FameBonus>6</FameBonus>
     <DisplayId>Forest’s Call</DisplayId>
   </Object>
+	<Object type="0x9914" id="Blossom Bow">
+		<Class>Equipment</Class>
+		<Item />
+		<Rare />
+		<Texture>
+			<File>CustomObj</File>
+			<Index>0x8e</Index>
+		</Texture>
+		<SlotType>3</SlotType>
+		<Description>As the cherry blossom falls, so do it's foes.</Description>
+		<RateOfFire>1</RateOfFire>
+		<Sound>weapon/golden_bow</Sound>
+		<Projectile>
+			<ObjectId>Blossom Bow Arrow</ObjectId>
+			<Speed>70</Speed>
+			<MinDamage>110</MinDamage>
+			<MaxDamage>150</MaxDamage>
+			<LifetimeMS>800</LifetimeMS>
+			<Size>60</Size>
+			<Wavy />
+		</Projectile>
+		<ActivateOnEquip stat="22" amount="4">IncrementStat</ActivateOnEquip>
+		<BagType>7</BagType>
+		<FameBonus>6</FameBonus>
+		<NumProjectiles>2</NumProjectiles>
+		<feedPower>800</feedPower>
+		<DisplayId>Blossom Bow</DisplayId>
+	</Object>
 </Objects>

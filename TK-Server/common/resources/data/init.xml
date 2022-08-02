@@ -1,9 +1,9 @@
 ﻿<AppSettings>
     <MenuMusic>menumusic</MenuMusic>
-    <DeadMusic></DeadMusic>
+    <DeadMusic>menumusic</DeadMusic>
   <NewAccounts>
-    <MaxCharSlot>1</MaxCharSlot>
-    <VaultCount>1</VaultCount>
+    <MaxCharSlot>3</MaxCharSlot>
+    <VaultCount>3</VaultCount>
     <Fame>0</Fame>
     <Credits>0</Credits>
     <SlotCost>1000</SlotCost>

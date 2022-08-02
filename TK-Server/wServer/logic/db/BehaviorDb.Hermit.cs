@@ -146,6 +146,7 @@ namespace wServer.logic
                 new TierLoot(11, ItemType.Armor, 0.09),
                 new TierLoot(4, ItemType.Ability, 0.07),
                 new TierLoot(4, ItemType.Ring, 0.07),
+                new ItemLoot("Crafting Material 1", 0.05),
                 new ItemLoot("Potion of Dexterity", 1),
                 new ItemLoot("Potion of Vitality", 1),
                 new ItemLoot("Potion of Dexterity", 1),

@@ -231,7 +231,7 @@
 			<ObjectId>Shattered War Shot</ObjectId>
 			<Speed>75</Speed>
 			<MinDamage>355</MinDamage>
-			<MaxDamage>1000</MaxDamage>
+			<MaxDamage>360</MaxDamage>
 			<LifetimeMS>750</LifetimeMS>
 			<Size>100</Size>
 			<ArmorPiercing />

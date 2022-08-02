@@ -654,6 +654,7 @@ namespace wServer.logic
                 ),
             new Threshold(0.01,
                 new ItemLoot("Potion of Attack", 1),
+                new ItemLoot("Soul of Attack", 1),
                 new ItemLoot("Potion of Defense", 1),
                 new ItemLoot("Potion of Mana", 0.5),
                 new ItemLoot("Potion of Attack", 1),
@@ -662,7 +663,7 @@ namespace wServer.logic
                 ),
             new Threshold(0.03,
                 new ItemLoot("Thousand Shot", 0.0014, threshold: 0.03),
-                new ItemLoot("Puppet Master's Encore Key", 0.01, 0, 0.03)
+                new ItemLoot("Puppet Master's Encore Key", 0.001, 0, 0.03)
                 ),
             new Threshold(0.02,
                 new TierLoot(12, ItemType.Armor, 0.15),

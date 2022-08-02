@@ -149,6 +149,13 @@
 		<VisibilityType>1</VisibilityType>
 		<Dungeon/>
 	</World>
+	<World id="Garden of Horror">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>garden_of_horror.jm</MapJM>
+		<VisibilityType>1</VisibilityType>
+		<Dungeon/>
+	</World>
 	<World id="The Ivory Wyvern">
 		<Width>256</Width>
 		<Height>256</Height>
@@ -187,6 +194,34 @@
 		<Width>256</Width>
 		<Height>256</Height>
 		<MapJM>hideout_of_stheno.jm</MapJM>
+		<VisibilityType>2</VisibilityType>
+		<Dungeon/>
+	</World>
+	<World id="Hideout of Thessal">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>hideout_of_thessal.jm</MapJM>
+		<VisibilityType>2</VisibilityType>
+		<Dungeon/>
+	</World>
+	<World id="Hideout of Limon">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>hideout_of_limon.jm</MapJM>
+		<VisibilityType>2</VisibilityType>
+		<Dungeon/>
+	</World>
+	<World id="Puppet Master's Theatre">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>puppet.jm</MapJM>
+		<VisibilityType>2</VisibilityType>
+		<Dungeon/>
+	</World>
+	<World id="Haunted Cemetery">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>haunted_cemetery.jm</MapJM>
 		<VisibilityType>2</VisibilityType>
 		<Dungeon/>
 	</World>

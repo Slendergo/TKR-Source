@@ -71,6 +71,7 @@ namespace wServer.logic
                 new TierLoot(5, ItemType.Ring, 0.03),
                 new TierLoot(4, ItemType.Ability, 0.07),
                 new TierLoot(5, ItemType.Ability, 0.03),
+                new ItemLoot("Crafting Material 1", 0.05),
                 new ItemLoot("Potion of Speed", 1),
                 new ItemLoot("Potion of Attack", 1),
                 new ItemLoot("Potion of Defense", 1),

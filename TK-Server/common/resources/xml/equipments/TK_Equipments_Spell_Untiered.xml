@@ -137,4 +137,33 @@
     <Activate>BulletNova</Activate>
     <feedPower>20</feedPower>
   </Object>
+	<Object type="0x9909" id="Limon's Spell">
+		<Class>Equipment</Class>
+		<Item />
+		<Texture>
+			<File>CustomObj</File>
+			<Index>0x87</Index>
+		</Texture>
+		<SlotType>11</SlotType>
+		<SPlus />
+		<FameBonus>5</FameBonus>
+		<Description>Zeus is big gay</Description>
+		<Sound>spell/fire_nova</Sound>
+		<ActivateOnEquip stat="26" amount="4">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="27" amount="4">IncrementStat</ActivateOnEquip>
+		<Projectile>
+			<ObjectId>Limon's Spell Shot</ObjectId>
+			<Speed>160</Speed>
+			<MinDamage>110</MinDamage>
+			<MaxDamage>145</MaxDamage>
+			<LifetimeMS>1000</LifetimeMS>
+			<ArmorPiercing />
+			<MultiHit />
+		</Projectile>
+		<Usable />
+		<BagType>7</BagType>
+		<MpCost>90</MpCost>
+		<Activate>BulletNova</Activate>
+		<feedPower>20</feedPower>
+	</Object>
 </Objects>

@@ -231,6 +231,7 @@ namespace wServer.logic
                 new TierLoot(2, ItemType.Potion, numRequired: 3, threshold: 0.07)
                 ),
              new Threshold(0.05,
+                 new ItemLoot("Crafting Material 1", 0.05),
                 new ItemLoot("Potion of Attack", 1),
                 new ItemLoot("Potion of Speed", 1),
                 new ItemLoot("Potion of Attack", 0.5),

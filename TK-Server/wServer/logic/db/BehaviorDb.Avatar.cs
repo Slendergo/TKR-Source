@@ -1552,6 +1552,7 @@ namespace wServer.logic
                 new ItemLoot("Potion of Defense", 1),
                 new ItemLoot("Potion of Attack", 1),
                 new ItemLoot("Potion of Vitality", 1),
+                new ItemLoot("Crafting Material 1", 0.05),
                 new ItemLoot("Potion of Wisdom", 1),
                 new ItemLoot("Potion of Defense", 0.1),
                 new ItemLoot("Potion of Attack", 0.1),

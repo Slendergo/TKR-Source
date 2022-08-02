@@ -118,7 +118,7 @@ namespace wServer.logic
                 new TierLoot(5, ItemType.Ability, 0.03),
                 new TierLoot(4, ItemType.Ring, 0.06),
                 new TierLoot(5, ItemType.Ring, 0.03),
-                new ItemLoot("Crafting Material 1", 0.01),
+                new ItemLoot("Crafting Material 1", 0.05),
                 new ItemLoot("Potion of Wisdom", 1),
                 new ItemLoot("Potion of Vitality", 1),
                 new ItemLoot("Potion of Wisdom", 0.5),

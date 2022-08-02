@@ -2605,7 +2605,7 @@
       <Damage>100</Damage>
       <Size>120</Size>
       <LifetimeMS>3000</LifetimeMS>
-      <ConditionEffect duration="1.6">Paralyzed</ConditionEffect>
+      <ConditionEffect duration=".5">Paralyzed</ConditionEffect>
     </Projectile>
     <Size>100</Size>
     <Defense>60</Defense>

@@ -1585,7 +1585,7 @@ namespace wServer.core.objects
                     break;
 
                 case 3:
-                    itemValue = 0x32a; //Char Slot Unlocker
+                    itemValue = 0x32b; //Vault Chest Unlocker
                     if (container != null)
                         container.Inventory[slot] = gameData.Items[itemValue];
                     else
@@ -1594,7 +1594,7 @@ namespace wServer.core.objects
                     break;
 
                 case 4:
-                    itemValue = 0x32b; //Vault Chest Unlocker
+                    itemValue = 0x32a; //Char Slot Unlocker
                     if (container != null)
                         container.Inventory[slot] = gameData.Items[itemValue];
                     else

@@ -1194,4 +1194,34 @@
 			</Frame>
 		</Animation>
 	</Object>
+	<Object type="0x9906" id="Hideout of Thessal Portal">
+		<Class>Portal</Class>
+		<IntergamePortal />
+		<DisplayId>Hideout of Thessal</DisplayId>
+		<DungeonName>Hideout of Thessal</DungeonName>
+		<Texture>
+			<File>lofiEnvironment2</File>
+			<Index>0x9f</Index>
+		</Texture>
+	</Object>
+	<Object type="0x9907" id="Hideout of Limon Portal">
+		<Class>Portal</Class>
+		<IntergamePortal />
+		<DisplayId>Hideout of Limon</DisplayId>
+		<DungeonName>Hideout of Limon</DungeonName>
+		<Texture>
+			<File>lofiEnvironment2</File>
+			<Index>0x36</Index>
+		</Texture>
+	</Object>
+	<Object type="0x9923" id="Garden of Horror Portal">
+		<Class>Portal</Class>
+		<IntergamePortal />
+		<DisplayId>Garden of Horror</DisplayId>
+		<DungeonName>Garden of Horror</DungeonName>
+		<Texture>
+			<File>CustomEnvironment1</File>
+			<Index>0x23</Index>
+		</Texture>
+	</Object>
 </Objects>

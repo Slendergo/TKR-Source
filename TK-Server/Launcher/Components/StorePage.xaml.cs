@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Launcher.Components
 {
     /// <summary>
-    /// Interaction logic for Page1.xaml
+    /// Interaction logic for Store.xaml
     /// </summary>
-    public partial class HomePage : Page
+    public partial class StorePage : Page
     {
-        public HomePage()
+        public StorePage()
         {
             InitializeComponent();
         }

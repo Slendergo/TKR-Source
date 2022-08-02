@@ -1,26 +1,83 @@
 ﻿using Launcher.Components;
 using System;
+using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interop;
+using System.Windows.Threading;
 
 namespace Launcher
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
+        public bool[] ButtonStates { get; set; } = new bool[5] { false, true, false, false, false };
+        public Page[] Pages { get; set; } = new Page[5] { new PlayPage(), new NewsPage(), new StorePage(), new AccountPage(), new AboutPage() };
+
         public MainWindow()
         {
             InitializeComponent();
 
-            //Page.Content = new HomePage();
+            Frame.Navigate(Pages[1]);
+
             MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
 
             SourceInitialized += MainWindow_SourceInitialized;
+
+            DataContext = this;
+        }
+
+        public void PlayPagePressed_Click(object sender, RoutedEventArgs e)
+        {
+            Array.Clear(ButtonStates);
+            ButtonStates[0] = true;
+            Frame.Navigate(Pages[0]);
+            OnPropertyChanged("ButtonStates");
+        }
+
+        public void NewsPagePressed_Click(object sender, RoutedEventArgs e)
+        {
+            Array.Clear(ButtonStates);
+            ButtonStates[1] = true;
+            Frame.Navigate(Pages[1]);
+            OnPropertyChanged("ButtonStates");
+        }
+
+        public void StorePagePressed_Click(object sender, RoutedEventArgs e)
+        {
+            Array.Clear(ButtonStates);
+            ButtonStates[2] = true;
+            Frame.Navigate(Pages[2]);
+            OnPropertyChanged("ButtonStates");
+        }
+
+        public void AccountPagePressed_Click(object sender, RoutedEventArgs e)
+        {
+            Array.Clear(ButtonStates);
+            ButtonStates[3] = true;
+            Frame.Navigate(Pages[3]);
+            OnPropertyChanged("ButtonStates");
+        }
+
+        public void AboutPagePressed_Click(object sender, RoutedEventArgs e)
+        {
+            Array.Clear(ButtonStates);
+            ButtonStates[4] = true;
+            Frame.Navigate(Pages[4]);
+            OnPropertyChanged("ButtonStates");
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void OnPropertyChanged(string propName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+                handler(this, new PropertyChangedEventArgs(propName));
         }
 
         private void MainWindow_SourceInitialized(object? sender, EventArgs e)
@@ -37,6 +94,7 @@ namespace Launcher
         // todo figure out how to animate it like every other window does
         private void MinimizeButton_Click(object sender, RoutedEventArgs e)
         {
+            WindowStyle = WindowStyle.SingleBorderWindow;
             WindowState = WindowState.Minimized;
         }
 
@@ -44,6 +102,22 @@ namespace Launcher
         {
             WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
         }
+
+        protected override void OnActivated(EventArgs e)
+        {
+            base.OnActivated(e);
+            if (WindowStyle != WindowStyle.None)
+            {
+                _ = Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, (DispatcherOperationCallback)delegate (object unused)
+                {
+                    WindowStyle = WindowStyle.None;
+                    return null;
+                }
+                , null);
+            }
+        }
+
+        #region WIN_STUFF
 
         private static IntPtr WindowProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
@@ -75,6 +149,7 @@ namespace Launcher
             }
             Marshal.StructureToPtr(mmi, lParam, true);
         }
+
 
         [StructLayout(LayoutKind.Sequential)]
         public struct POINT
@@ -159,5 +234,6 @@ namespace Launcher
         [DllImport("User32")]
         internal static extern IntPtr MonitorFromWindow(IntPtr handle, int flags);
 
+#endregion
     }
 }

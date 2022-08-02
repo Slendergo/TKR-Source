@@ -12,6 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Components\AccountPage" />
+    <None Remove="Components\NewsPage" />
     <None Remove="Images\TK_Icon.png" />
     <None Remove="TK_Icon.png" />
     <None Remove="TK_Logo_Transparent.png" />
@@ -27,6 +29,12 @@
 
   <ItemGroup>
     <Resource Include="TK_Logo_Transparent.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Components\AccountPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 
 </Project>

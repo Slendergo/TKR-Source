@@ -11,7 +11,11 @@
         <Grid DockPanel.Dock="Bottom" Background="#FF4A4C6F">
             <Grid Margin="16">
                 <Grid Margin="0,0,128,0">
-                    <ProgressBar BorderThickness="2"  Height="48" HorizontalContentAlignment="Stretch" Background="#FF3F415D" BorderBrush="#FF37384B" Value="50"/>
+                    <ProgressBar BorderThickness="2"  Height="48" HorizontalContentAlignment="Stretch" Background="#FF3F415D" BorderBrush="#FF37384B" Value="50">
+                        <ProgressBar.Effect>
+                            <DropShadowEffect Color="#FF4A4C6F" ShadowDepth="5" BlurRadius="8"/>
+                        </ProgressBar.Effect>
+                    </ProgressBar>
                     <TextBlock Text="Downloading: 30.3 MB/ 1.4 GB" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="18">
                         <TextBlock.Effect>
                             <DropShadowEffect Color="#FF4A4C6F" ShadowDepth="3"/>
@@ -25,6 +29,9 @@
                             <DropShadowEffect Color="#FF4A4C6F" ShadowDepth="3"/>
                         </TextBlock.Effect>
                     </TextBlock>
+                    <Button.Effect>
+                        <DropShadowEffect Color="#FF4A4C6F" ShadowDepth="3"/>
+                    </Button.Effect>
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="16"/>
@@ -52,6 +59,10 @@
                 </Button>
             </Grid>
         </Grid>
-        <Frame x:Name="Frame" NavigationUIVisibility="Hidden" DockPanel.Dock="Top" Background="#FF4A4C6F"/>
+        <Grid x:Name="Frame" DockPanel.Dock="Top" Background="#FF4A4C6F">
+            <Border Margin="20,20,20,0" HorizontalAlignment="Center" BorderThickness="4" BorderBrush="#FF3F415D" VerticalAlignment="Top">
+                <Image Source="/Images/PlayScreen.png" HorizontalAlignment="Center"/>
+            </Border>
+        </Grid>
     </DockPanel>
 </Page>

@@ -8,33 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="MainWindow - Copy.xaml.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Pages\AccountPage" />
-    <None Remove="Pages\NewsPage" />
-    <None Remove="Images\TK_Icon.png" />
-    <None Remove="TK_Icon.png" />
-    <None Remove="TK_Logo_Transparent.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Remove="MainWindow - Copy.xaml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Images\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="TK_Logo_Transparent.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Pages\AccountPage.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Resource Include="Images\TK_Logo_Transparent.png" />
+    <Resource Include="Images\PlayScreen.png" />
   </ItemGroup>
 
 </Project>

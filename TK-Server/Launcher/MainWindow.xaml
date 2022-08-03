@@ -14,10 +14,8 @@
     <DockPanel>
         <Grid x:Name="Options" DockPanel.Dock="Left" Width="160">
             <StackPanel Background="#FF3F415D">
-                <Image Height="96" Width="96"  Source="/TK_Logo_Transparent.png"/>
-                <Rectangle Height="8">
-                </Rectangle>
-
+                <Image Height="96" Width="96"  Source="/Images/TK_Logo_Transparent.png"/>
+                <Rectangle Height="8"/>
                 <Button x:Name="Play" Height="64" Background="#FF3F415D" BorderBrush="{x:Null}" Foreground="#FF9FA3E5" FontSize="18" FontWeight="Bold" Click="PlayPagePressed_Click">
                     <TextBlock Text="{Binding Name, RelativeSource={RelativeSource FindAncestor,AncestorType=Button},FallbackValue=Unknown}" Foreground="#FF9FA3E5">
                         <TextBlock.Effect>
@@ -244,6 +242,6 @@
                 </Button>
             </StackPanel>
         </Border>
-        <Frame x:Name="Frame" NavigationUIVisibility="Hidden" DockPanel.Dock="Top" Background="#FF4A4C6F"/>
+        <Frame x:Name="Frame" NavigationUIVisibility="Hidden" DockPanel.Dock="Top" Background="#FF4A4C6F" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
     </DockPanel>
 </Window>

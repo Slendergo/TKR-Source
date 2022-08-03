@@ -1,0 +1,62 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Deployment\Client\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Deployment\Client\WebMain\Adobe AIR\Versions\1.0\Adobe AIR.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Deployment\Client\WebMain\Adobe AIR\Versions\1.0\Resources\Adobe AIR.vch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Deployment\Client\WebMain\Adobe AIR\Versions\1.0\Resources\AdobeCP.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Deployment\Client\WebMain\Adobe AIR\Versions\1.0\Resources\adobecp.vch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Deployment\Client\WebMain\Adobe AIR\Versions\1.0\Resources\AdobeCP15.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Deployment\Client\WebMain\Adobe AIR\Versions\1.0\Resources\CaptiveAppEntry.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Deployment\Client\WebMain\Adobe AIR\Versions\1.0\Resources\NPSWF32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Deployment\Client\WebMain\Adobe AIR\Versions\1.0\Resources\WebKit.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Deployment\Client\WebMain\Adobe AIR\Versions\1.0\Resources\WebKit\LGPL License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Deployment\Client\WebMain\Adobe AIR\Versions\1.0\Resources\WebKit\Notice WebKit.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Deployment\Client\WebMain\META-INF\AIR\application.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Deployment\Client\WebMain\META-INF\AIR\hash">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Deployment\Client\WebMain\META-INF\signatures.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Deployment\Client\WebMain\WebMain.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Deployment\Client\WebMain\WebMain.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

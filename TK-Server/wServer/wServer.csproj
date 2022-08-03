@@ -643,9 +643,9 @@
       <Project>{05d3ca7d-7e4e-4401-bc92-4a988a433c93}</Project>
       <Name>common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DungeonGen\DungeonGen.csproj">
+    <ProjectReference Include="..\dungeonGen\dungeonGen.csproj">
       <Project>{e3061024-61ed-46aa-8a0d-cd9747e7bfae}</Project>
-      <Name>DungeonGen</Name>
+      <Name>dungeonGen</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

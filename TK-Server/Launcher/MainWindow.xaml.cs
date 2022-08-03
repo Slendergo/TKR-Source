@@ -15,14 +15,14 @@ namespace Launcher
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        public bool[] ButtonStates { get; set; } = new bool[5] { false, true, false, false, false };
+        public bool[] ButtonStates { get; set; } = new bool[5] { true, false, false, false, false };
         public Page[] Pages { get; set; } = new Page[5] { new PlayPage(), new NewsPage(), new StorePage(), new AccountPage(), new AboutPage() };
 
         public MainWindow()
         {
             InitializeComponent();
 
-            Frame.Navigate(Pages[1]);
+            Frame.Navigate(Pages[0]);
 
             MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
 

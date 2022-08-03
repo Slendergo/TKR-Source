@@ -53,7 +53,7 @@ namespace Launcher.Components
             using (var stream = await response.Content.ReadAsStreamAsync())
             {
                 var totalRead = 0L;
-                var buffer = new byte[4096];
+                var buffer = new byte[256];
                 var isMoreToRead = true;
 
                 do
@@ -63,24 +63,19 @@ namespace Launcher.Components
                     var read = await stream.ReadAsync(buffer, 0, buffer.Length, token);
 
                     if (read == 0)
-                    {
                         isMoreToRead = false;
-                    }
                     else
                     {
                         var data = new byte[read];
                         buffer.ToList().CopyTo(0, data, 0, read);
 
-                        // TODO: put here the code to write the file to disk
-
                         totalRead += read;
 
                         if (canReportProgress)
-                        {
                             progress.Report((SizeSuffix(totalRead) + " / " + SizeSuffix(total), (totalRead * 1d) / (total * 1d) * 100));
-                        }
                     }
-                } while (isMoreToRead);
+                }
+                while (isMoreToRead);
             }
         }
 

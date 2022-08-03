@@ -12,8 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Components\AccountPage" />
-    <None Remove="Components\NewsPage" />
+    <None Remove="Pages\AccountPage" />
+    <None Remove="Pages\NewsPage" />
     <None Remove="Images\TK_Icon.png" />
     <None Remove="TK_Icon.png" />
     <None Remove="TK_Logo_Transparent.png" />
@@ -32,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Components\AccountPage.xaml.cs">
+    <Compile Update="Pages\AccountPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

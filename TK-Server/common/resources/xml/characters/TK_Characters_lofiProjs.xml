@@ -36,7 +36,7 @@
 			<File>CustomObj</File>
 			<Index>0xb9</Index>
 		</Texture>
-		<Rotation>180</Rotation>
+		<AngleCorrection>225</AngleCorrection>
 	</Object>
 	<Object type="0x9503" id="Gross Bow Shot">
 		<Class>Projectile</Class>

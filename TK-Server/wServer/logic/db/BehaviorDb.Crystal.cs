@@ -161,7 +161,7 @@ namespace wServer.logic
                         new TimedTransition(3000, "vulnerable_clone")
                         ),
                     new State("vulnerable_clone",
-                        new TimedTransition(1200, "invulnerable_clone")
+                        new TimedTransition(5000, "invulnerable_clone")
                         ),
                     new TimedTransition(16000, "Warning2")
                     ),

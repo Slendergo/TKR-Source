@@ -12,6 +12,7 @@ namespace wServer.logic
             new State(
                 new ScaleHP2(20),
                 new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                new Spawn("Mushroom Anchor", 1, 1),
                 new State("Check Player",
                     new PlayerWithinTransition(15, "Start")
                     ),
@@ -22,39 +23,65 @@ namespace wServer.logic
                 new State("Start To Shoot",
                     new Taunt("Let the bacteria CONSUME YOU!"),
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
-                    new TossObject2("Mushroom Bomb", 6, 0, coolDownOffset: 100, coolDown: 999999),
-                    new TossObject2("Mushroom Bomb", 6, 72, coolDownOffset: 100, coolDown: 999999),
-                    new TossObject2("Mushroom Bomb", 6, 144, coolDownOffset: 100, coolDown: 999999),
-                    new TossObject2("Mushroom Bomb", 6, 216, coolDownOffset: 100, coolDown: 999999),
-                    new TossObject2("Mushroom Bomb", 6, 288, coolDownOffset: 100, coolDown: 999999),
-                    new Shoot(radius: 15, count: 20, projectileIndex: 0, shootAngle: 20, coolDown: 1500, predictive: 0.1),
-                    new HpLessTransition(0.75, "Armored Shoot")
+                    new TossObject2("Mushroom Bomb", 6, 0, coolDownOffset: 0, coolDown: 5000),
+                    new TossObject2("Mushroom Bomb", 6, 72, coolDownOffset: 1000, coolDown: 5000),
+                    new TossObject2("Mushroom Bomb", 6, 144, coolDownOffset: 2000, coolDown: 5000),
+                    new TossObject2("Mushroom Bomb", 6, 216, coolDownOffset: 3000, coolDown: 5000),
+                    new TossObject2("Mushroom Bomb", 6, 288, coolDownOffset: 4000, coolDown: 5000),
+                    new Shoot(radius: 15, count: 12, projectileIndex: 0, coolDown: 1500, predictive: 1),
+
+                    new Shoot(radius: 15, count: 1, projectileIndex: 1, fixedAngle: 0, coolDownOffset: 0, coolDown: 2000, predictive: 1),
+                    new Shoot(radius: 15, count: 2, projectileIndex: 2, fixedAngle: 0, shootAngle: 10, coolDownOffset: 0, coolDown: 2000, predictive: 1),
+                    new Shoot(radius: 15, count: 2, projectileIndex: 3, fixedAngle: 0, shootAngle: 30, coolDownOffset: 0, coolDown: 2000, predictive: 1),
+                    new Shoot(radius: 15, count: 1, projectileIndex: 1, fixedAngle: 90, coolDownOffset: 0, coolDown: 2000, predictive: 1),
+                    new Shoot(radius: 15, count: 2, projectileIndex: 2, fixedAngle: 90, shootAngle: 10, coolDownOffset: 0, coolDown: 2000, predictive: 1),
+                    new Shoot(radius: 15, count: 2, projectileIndex: 3, fixedAngle: 90, shootAngle: 30, coolDownOffset: 0, coolDown: 2000, predictive: 1),
+                    new Shoot(radius: 15, count: 1, projectileIndex: 1, fixedAngle: 180, coolDownOffset: 0, coolDown: 2000, predictive: 1),
+                    new Shoot(radius: 15, count: 2, projectileIndex: 2, fixedAngle: 180, shootAngle: 10, coolDownOffset: 0, coolDown: 2000, predictive: 1),
+                    new Shoot(radius: 15, count: 2, projectileIndex: 3, fixedAngle: 180, shootAngle: 30, coolDownOffset: 0, coolDown: 2000, predictive: 1),
+                    new Shoot(radius: 15, count: 1, projectileIndex: 1, fixedAngle: 270, coolDownOffset: 0, coolDown: 2000, predictive: 1),
+                    new Shoot(radius: 15, count: 2, projectileIndex: 2, fixedAngle: 270, shootAngle: 10, coolDownOffset: 0, coolDown: 2000, predictive: 1),
+                    new Shoot(radius: 15, count: 2, projectileIndex: 3, fixedAngle: 270, shootAngle: 30, coolDownOffset: 0, coolDown: 2000, predictive: 1),
+
+                    new Shoot(radius: 15, count: 1, projectileIndex: 1, fixedAngle: 45, coolDownOffset: 1000, coolDown: 2000, predictive: 1),
+                    new Shoot(radius: 15, count: 2, projectileIndex: 2, fixedAngle: 45, shootAngle: 10, coolDownOffset: 1000, coolDown: 2000, predictive: 1),
+                    new Shoot(radius: 15, count: 2, projectileIndex: 3, fixedAngle: 45, shootAngle: 30, coolDownOffset: 1000, coolDown: 2000, predictive: 1),
+                    new Shoot(radius: 15, count: 1, projectileIndex: 1, fixedAngle: 135, coolDownOffset: 1000, coolDown: 2000, predictive: 1),
+                    new Shoot(radius: 15, count: 2, projectileIndex: 2, fixedAngle: 135, shootAngle: 10, coolDownOffset: 1000, coolDown: 2000, predictive: 1),
+                    new Shoot(radius: 15, count: 2, projectileIndex: 3, fixedAngle: 135, shootAngle: 30, coolDownOffset: 1000, coolDown: 2000, predictive: 1),
+                    new Shoot(radius: 15, count: 1, projectileIndex: 1, fixedAngle: 225, coolDownOffset: 1000, coolDown: 2000, predictive: 1),
+                    new Shoot(radius: 15, count: 2, projectileIndex: 2, fixedAngle: 225, shootAngle: 10, coolDownOffset: 1000, coolDown: 2000, predictive: 1),
+                    new Shoot(radius: 15, count: 2, projectileIndex: 3, fixedAngle: 225, shootAngle: 30, coolDownOffset: 1000, coolDown: 2000, predictive: 1),
+                    new Shoot(radius: 15, count: 1, projectileIndex: 1, fixedAngle: 315, coolDownOffset: 1000, coolDown: 2000, predictive: 1),
+                    new Shoot(radius: 15, count: 2, projectileIndex: 2, fixedAngle: 315, shootAngle: 10, coolDownOffset: 1000, coolDown: 2000, predictive: 1),
+                    new Shoot(radius: 15, count: 2, projectileIndex: 3, fixedAngle: 315, shootAngle: 30, coolDownOffset: 1000, coolDown: 2000, predictive: 1),
+                    new HpLessTransition(0.66, "Orbit")
                     ),
-                new State("Armored Shoot",
+                new State("Orbit",
                     new SetAltTexture(1, 1, 0, false),
-                    new Wander(0.1),
-                    new Shoot(radius: 15, count: 3, projectileIndex: 0, shootAngle: 10, coolDown: 1500, coolDownOffset: 100, predictive: 0.1),
-                    new Shoot(radius: 15, count: 6, projectileIndex: 0, shootAngle: 10, coolDown: 1500, coolDownOffset: 400, predictive: 0.3),
-                    new Shoot(radius: 15, count: 6, projectileIndex: 1, shootAngle: 25, coolDown: 700, predictive: 0.3),
-                    new Spawn("Mini Mushroom", 100, 0.05, 3000, true),
-                    new HpLessTransition(0.50, "Spawn Minions")
-                    ),
-                new State("Spawn Minions",
-                    new Charge(speed: 2, range: 12, coolDown: 1200),
-                    new Shoot(radius: 12, count: 12, projectileIndex: 0, shootAngle: 45, coolDownOffset: 900, coolDown: 1000),
-                    new Shoot(radius: 12, count: 2, projectileIndex: 1, shootAngle: 16, coolDownOffset: 900, coolDown: 1000, predictive: 1.5),
-                    new HpLessTransition(.25, "Rage")
-                    ),
-                new State("Rage",
-                    new Wander(0.6),
-                    new ConditionalEffect(ConditionEffectIndex.Armored),
-                    new Flash(0xFF0000, 0.10, 4),
+                    new Prioritize(
+                        new Orbit(5, 5, 10, "Mushroom Anchor", speedVariance: 0.5, radiusVariance: 0.5)),
+                    new Shoot(15, 12, projectileIndex: 4, coolDown: 500),
+                    new Shoot(12, 5, shootAngle: 20, projectileIndex: 1, coolDown: 800, predictive: 1.2),
                     new Spawn("Mini Mushroom", 5, 0.01, 4000, true),
                     new Spawn("Mini Mushroom 2", 5, 0.01, 8000, true),
-                    new Shoot(20, 5, projectileIndex: 1, shootAngle: 15, predictive: 0.9, coolDown: 800),
-                    new Shoot(20, 1, projectileIndex: 0, fixedAngle: 0, predictive: 1.1, coolDown: 1000),
-                    //new Shoot(20, 8, shootAngle: 45, projectileIndex: 2, fixedAngle: 25, coolDown: 1000, coolDownOffset: 1500),
-                    new TransformOnDeath("Mini Mushroom", min: 3, max: 5)
+                    new HpLessTransition(0.33, "Spawn Minions")
+                    ),
+                new State("Spawn Minions",
+                    new ReturnToSpawn(1, 20),                    
+                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
+                    new TimedTransition(4000, "Spawn Minions 1")
+                    ),
+                new State("Spawn Minions 1",
+                    new SetAltTexture(0, 0, 0, false),
+                    new Follow(3, 3),
+                    new Wander(0.6),
+                    new Shoot(radius: 15, count: 1, projectileIndex: 1, coolDownOffset: 0, coolDown: 2000, predictive: 1),
+                    new Shoot(radius: 15, count: 2, projectileIndex: 2, shootAngle: 10, coolDownOffset: 0, coolDown: 2000, predictive: 1),
+                    new Shoot(radius: 15, count: 2, projectileIndex: 3, shootAngle: 30, coolDownOffset: 0, coolDown: 2000, predictive: 1),
+                    new Spawn("Mini Mushroom", 5, 0.01, 4000, true),
+                    new Spawn("Mini Mushroom 2", 5, 0.01, 8000, true),
+                    new Shoot(radius: 12, count: 12, projectileIndex: 0, shootAngle: 45, coolDownOffset: 900, coolDown: 1000)
                     )
                 ),
             new Threshold(0.001,
@@ -71,33 +98,38 @@ namespace wServer.logic
                 new ItemLoot("Fungal Cloth", 0.0014)
                 ),
             new Threshold(0.001,
-                new TierLoot(14, ItemType.Armor, 0.01),
-                new TierLoot(13, ItemType.Armor, 0.03),
-                new TierLoot(14, ItemType.Weapon, 0.01),
-                new TierLoot(13, ItemType.Weapon, 0.03),
-                new TierLoot(6, ItemType.Ability, 0.01),
-                new TierLoot(5, ItemType.Ability, 0.03),
+                new TierLoot(11, ItemType.Armor, 0.01),
+                new TierLoot(12, ItemType.Armor, 0.03),
+                new TierLoot(12, ItemType.Weapon, 0.01),
+                new TierLoot(11, ItemType.Weapon, 0.03),
+                new TierLoot(5, ItemType.Ability, 0.01),
+                new TierLoot(4, ItemType.Ability, 0.03),
                 new TierLoot(5, ItemType.Ring, 0.03),
-                new TierLoot(6, ItemType.Ring, 0.01),
+                new TierLoot(4, ItemType.Ring, 0.01),
                 new ItemLoot("Magical Mushroom Staff", 0.01),
                 new ItemLoot("Mushroom Loop", 0.01),
 
                 new ItemLoot("Magic Dust", 0.5)
                 )
             )
+        .Init("Mushroom Anchor",
+            new State(
+                new ConditionalEffect(ConditionEffectIndex.Invincible)
+                )
+            )
         .Init("Mushroom Bomb",
             new State(
-                //new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
                 new State("Start Follow Player",
-                    new Follow(1, 8, 0, 1100),
-                    new TimedTransition(1100, "Explotes")
+                    new Flash(0xFF0000, 0.5, 5),
+                    new TimedTransition(1500, "Explotes")
                     ),
                 new State("Explotes",
-                    new Flash(0xFF0000, 0.5, 5),
-                    new Shoot(8, count: 8, projectileIndex: 0, coolDownOffset: 0, coolDown: 800),
-                    new TimedTransition(400, "Suicide")
+                    new Flash(0xFF0000, 0.2, 20),
+                    new TimedTransition(1000, "fire")
                     ),
-                new State("Suicide",
+                new State("fire",
+                    new Shoot(8, count: 8, projectileIndex: 0, coolDownOffset: 0, coolDown: 800),
                     new Suicide()
                     )
                 )

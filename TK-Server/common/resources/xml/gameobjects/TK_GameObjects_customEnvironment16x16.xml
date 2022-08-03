@@ -2,26 +2,26 @@
   <Object type="0xa007" id="Gravestone 9/16">
     <Class>GameObject</Class>
     <ShowName />
-    <Texture>
-      <File>customEnvironment16x16</File>
-      <Index>0x10</Index>
-    </Texture>
+	  <Texture>
+		  <File>CustomObjects32x32</File>
+		  <Index>0x16</Index>
+	  </Texture>
   </Object>
   <Object type="0xa008" id="Gravestone 10/16">
     <Class>GameObject</Class>
     <ShowName />
-    <Texture>
-      <File>customEnvironment16x16</File>
-      <Index>0x11</Index>
-    </Texture>
+	  <Texture>
+		  <File>CustomObjects32x32</File>
+		  <Index>0x16</Index>
+	  </Texture>
   </Object>
   <Object type="0xa009" id="Gravestone 11/16">
     <Class>GameObject</Class>
     <ShowName />
-    <Texture>
-      <File>customEnvironment16x16</File>
-      <Index>0x12</Index>
-    </Texture>
+	  <Texture>
+		  <File>CustomObjects32x32</File>
+		  <Index>0x16</Index>
+	  </Texture>
   </Object>
   <Object type="0x9028" id="Hard Bounty Withered Tree 1">
     <Class>GameObject</Class>

@@ -199,6 +199,7 @@ namespace wServer.logic
                 new ItemLoot("Ring of Alteration", 0.015)
                 ),
             new Threshold(0.03,
+                new ItemLoot("The Plasma Buster", .0015),
                 new ItemLoot("Scepter of Fulmination", 0.0024, threshold: 0.03),
                 new ItemLoot("Conducting Wand", 0.0024)
                 ),

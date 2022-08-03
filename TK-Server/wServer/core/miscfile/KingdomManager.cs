@@ -425,10 +425,10 @@ namespace wServer.core
         {
             Tuple.Create("Tiki Tiki", (ISetPiece) null), // null means use the entity name isntead of make a setpiece class
             Tuple.Create("King Slime", (ISetPiece) null),
-            Tuple.Create("Mushroom", (ISetPiece) null),
             Tuple.Create("Strange Magician", (ISetPiece) new StrangeMagician()),
             Tuple.Create("Water Elemental", (ISetPiece) new WaterElemental()),
             Tuple.Create("Earth Elemental", (ISetPiece) new EarthElemental()),
+            Tuple.Create("Mushroom", (ISetPiece) new Mushroom()),
             Tuple.Create("Wind Elemental", (ISetPiece) null),
             Tuple.Create("Fire Elemental", (ISetPiece) new FireElemental()),
             Tuple.Create("Julius Caesar", (ISetPiece) new JuliusCaesar()),
@@ -441,8 +441,6 @@ namespace wServer.core
             Tuple.Create("Skull Shrine", (ISetPiece) new SkullShrine()),
             Tuple.Create("Lucky Ent God", (ISetPiece) null),
             Tuple.Create("Lucky Djinn", (ISetPiece) null),
-            Tuple.Create("shtrs Defense System", (ISetPiece) new Avatar()),
-            Tuple.Create("Mushroom", (ISetPiece) null)
         };
 
         private const float MAX_GUILD_LOOT_BOOST = 0.2f;

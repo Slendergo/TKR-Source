@@ -331,7 +331,7 @@
     <HitSound>monster/ghost_god_hit</HitSound>
     <DeathSound>monster/ghost_god_death</DeathSound>
     <Size>100</Size>
-    <MaxHitPoints>250000</MaxHitPoints>
+    <MaxHitPoints>100000</MaxHitPoints>
     <Defense>90</Defense>
     <God />
     <StasisImmune />
@@ -339,7 +339,7 @@
     <Projectile id="0">
       <ObjectId>White Bullet</ObjectId>
       <Speed>80</Speed>
-      <Damage>95</Damage>
+      <Damage>110</Damage>
       <Size>65</Size>
       <LifetimeMS>1500</LifetimeMS>
       <ConditionEffect duration="6">Weak</ConditionEffect>
@@ -348,7 +348,7 @@
     <Projectile id="2">
       <ObjectId>Purple Star</ObjectId>
       <Speed>60</Speed>
-      <Damage>110</Damage>
+      <Damage>140</Damage>
       <Size>90</Size>
       <LifetimeMS>1700</LifetimeMS>
       <MultiHit />
@@ -357,7 +357,7 @@
     <Projectile id="3">
       <ObjectId>Blue Star</ObjectId>
       <Speed>60</Speed>
-      <Damage>120</Damage>
+      <Damage>150</Damage>
       <Size>100</Size>
       <LifetimeMS>1700</LifetimeMS>
       <MultiHit />
@@ -366,7 +366,7 @@
     <Projectile id="5">
       <ObjectId>Silver Shield</ObjectId>
       <Speed>47</Speed>
-      <Damage>140</Damage>
+      <Damage>180</Damage>
       <Size>130</Size>
       <LifetimeMS>2400</LifetimeMS>
       <MultiHit />

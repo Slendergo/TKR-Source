@@ -78,12 +78,12 @@
     <Sound>monster/djinn_hit</Sound>
     <Projectile>
       <ObjectId>Plasma Missile</ObjectId>
-      <Speed>180</Speed>
+      <Speed>110</Speed>
       <MinDamage>130</MinDamage>
       <MaxDamage>170</MaxDamage>
       <LifetimeMS>475</LifetimeMS>
-      <Amplitude>0.5</Amplitude>
-      <Frequency>2</Frequency>
+      <Amplitude>1.5</Amplitude>
+      <Frequency>1.5</Frequency>
     </Projectile>
     <BagType>7</BagType>
     <FameBonus>8</FameBonus>

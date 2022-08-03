@@ -176,6 +176,7 @@ namespace wServer.logic
                     ),
                 new State("Rage Start",
                     new Reproduce("Strange Magician Spell", 20, 3, 1500),
+                    new Wander(0.5),
                     new Chase(speed: 3, sightRange: 11, range: 15, duration: 5, coolDown: 3000),
                     new Shoot(20, 2, shootAngle: 20, projectileIndex: 0, predictive: 0, coolDown: 750),
                     new Shoot(20, 2, shootAngle: 20, projectileIndex: 0, predictive: 0, coolDown: 1000),

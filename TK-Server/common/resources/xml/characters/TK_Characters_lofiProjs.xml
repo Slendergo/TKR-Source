@@ -30,11 +30,11 @@
       <MultiHit />
     </Projectile>
   </Object>
-	<Object type="0x9502" id="Shattered War Shot">
+	<Object type="0x9502" id="Possessed Halberd Shot">
 		<Class>Projectile</Class>
 		<Texture>
-			<File>lofiProjs</File>
-			<Index>0x80</Index>
+			<File>CustomObj</File>
+			<Index>0xb9</Index>
 		</Texture>
 		<Rotation>180</Rotation>
 	</Object>

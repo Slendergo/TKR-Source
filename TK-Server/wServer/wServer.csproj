@@ -175,6 +175,9 @@
     <Compile Include="core\miscfile\inventory\ItemStacker.cs" />
     <Compile Include="core\miscfile\inventory\ItemUtils.cs" />
     <Compile Include="core\objects\containers\SpecialChest.cs" />
+    <Compile Include="core\setpieces\Mushroom.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="core\setpieces\JuliusCeasar.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>

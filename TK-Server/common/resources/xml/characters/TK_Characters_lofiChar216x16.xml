@@ -35,7 +35,7 @@
     <HitSound>monster/cubes_hit</HitSound>
     <DeathSound>monster/cubes_death</DeathSound>
     <Size>120</Size>
-    <MaxHitPoints>150000</MaxHitPoints>
+    <MaxHitPoints>80000</MaxHitPoints>
     <Defense>60</Defense>
     <Hero />
     <Quest />

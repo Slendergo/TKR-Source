@@ -156,8 +156,7 @@ namespace wServer.logic
                     new Spawn(children: "Ice Sprite", maxChildren: 1, initialSpawn: 0, coolDown: 500),
                     new TimedTransition(time: 11000, targetState: "begin_teleport1"),
                     new HpLessTransition(threshold: 0.2, targetState: "begin_teleport1")
-                    ),
-                new DropPortalOnDeath(target: "Glowing Realm Portal", probability: 1)
+                    )
                 ),
             new Threshold(0.01,
                 LootTemplates.DustLoot()

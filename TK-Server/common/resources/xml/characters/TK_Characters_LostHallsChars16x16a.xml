@@ -145,7 +145,7 @@
       <Index>28</Index>
     </AnimatedTexture>
     <Size>150</Size>
-    <MaxHitPoints>175000</MaxHitPoints>
+    <MaxHitPoints>300000</MaxHitPoints>
     <Defense>25</Defense>
     <XpMult>2</XpMult>
     <AltTexture id="1">

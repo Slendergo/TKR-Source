@@ -575,7 +575,7 @@
       <ObjectId>Undead Limon Second Shot</ObjectId>
       <Speed>100</Speed>
       <Size>100</Size>
-      <LifetimeMS>150</LifetimeMS>
+      <LifetimeMS>300</LifetimeMS>
       <Damage>85</Damage>
       <Boomerang />
     </Projectile>
@@ -691,19 +691,19 @@
       <File>Custom16x16Encounters</File>
       <Index>13</Index>
     </AnimatedTexture>
-    <MaxHitPoints>50000</MaxHitPoints>
+    <MaxHitPoints>70000</MaxHitPoints>
     <Size>80</Size>
     <Projectile id="0">
       <ObjectId>Undead Septavius First Shot</ObjectId>
       <Speed>100</Speed>
-      <Damage>95</Damage>
+      <Damage>135</Damage>
       <LifetimeMS>1500</LifetimeMS>
       <Size>110</Size>
     </Projectile>
     <Projectile id="1">
       <ObjectId>Undead Septavius Second Shot</ObjectId>
       <Speed>80</Speed>
-      <Damage>115</Damage>
+      <Damage>145</Damage>
       <LifetimeMS>1200</LifetimeMS>
       <Size>110</Size>
       <Wavy />
@@ -714,7 +714,7 @@
       <Damage>55</Damage>
       <LifetimeMS>4000</LifetimeMS>
       <Size>100</Size>
-      <ConditionEffect duration="0.5">Confused</ConditionEffect>
+      <ConditionEffect duration="1">Confused</ConditionEffect>
     </Projectile>
   </Object>
   <Object type="0x510a" id="Undead Septavius Fake 1">

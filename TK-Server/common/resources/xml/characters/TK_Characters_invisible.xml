@@ -2585,4 +2585,20 @@
     <ShadowSize>0</ShadowSize>
     <Size>0</Size>
   </Object>
+	<Object type="0x9925" id="Mushroom Anchor">
+		<DisplayId>Mushroom</DisplayId>
+		<Class>Character</Class>
+		<Group>Hallowrena</Group>
+		<NoMiniMap />
+		<Texture>
+			<File>invisible</File>
+			<Index>0</Index>
+		</Texture>
+		<HitSound>monster/slimes_death</HitSound>
+		<DeathSound>monster/flying_brain_death</DeathSound>
+		<Size>0</Size>
+		<ShadowSize>0</ShadowSize>
+		<MaxHitPoints>5000</MaxHitPoints>
+		<Defense>20</Defense>
+	</Object>
 </Objects>

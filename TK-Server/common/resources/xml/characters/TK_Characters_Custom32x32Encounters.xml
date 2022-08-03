@@ -144,7 +144,7 @@
       <ObjectId>Mushroom Shoot</ObjectId>
       <MinDamage>150</MinDamage>
       <MaxDamage>190</MaxDamage>
-      <Speed>110</Speed>
+      <Speed>80</Speed>
       <Size>145</Size>
       <LifetimeMS>2000</LifetimeMS>
       <MultiHit />
@@ -155,20 +155,38 @@
       <ObjectId>Mushroom Shoot 2</ObjectId>
       <MinDamage>140</MinDamage>
       <MaxDamage>170</MaxDamage>
-      <Speed>75</Speed>
+      <Speed>70</Speed>
       <Size>160</Size>
       <LifetimeMS>1900</LifetimeMS>
-      <ConditionEffect duration="4">Sick</ConditionEffect>
     </Projectile>
-    <Projectile id="2">
-      <ObjectId>Mushroom Shoot Slow</ObjectId>
-      <Damage>200</Damage>
-      <Speed>60</Speed>
-      <Size>180</Size>
-      <LifetimeMS>1900</LifetimeMS>
-      <MultiHit/>
-      <ConditionEffect duration="0.5">Confused</ConditionEffect>
-    </Projectile>
+	  <Projectile id="2">
+		  <ObjectId>Mushroom Shoot 2</ObjectId>
+		  <MinDamage>180</MinDamage>
+		  <MaxDamage>200</MaxDamage>
+		  <Speed>60</Speed>
+		  <Size>160</Size>
+		  <LifetimeMS>1900</LifetimeMS>
+	  </Projectile>
+	  <Projectile id="3">
+		  <ObjectId>Mushroom Shoot 2</ObjectId>
+		  <MinDamage>210</MinDamage>
+		  <MaxDamage>230</MaxDamage>
+		  <Speed>50</Speed>
+		  <Size>160</Size>
+		  <LifetimeMS>1900</LifetimeMS>
+	  </Projectile>
+	  <Projectile id="4">
+		  <ObjectId>Mushroom Shoot</ObjectId>
+		  <MinDamage>200</MinDamage>
+		  <MaxDamage>250</MaxDamage>
+		  <Speed>80</Speed>
+		  <Size>145</Size>
+		  <LifetimeMS>500</LifetimeMS>
+		  <MultiHit />
+		  <Boomerang />
+		  <ConditionEffect duration="0.5">Stunned</ConditionEffect>
+		  <ConditionEffect duration="2.5">Hallucinating</ConditionEffect>
+	  </Projectile>
   </Object>
 	<Object type="0x9902" id="Mushroom Bomb">
 		<Enemy />
@@ -190,9 +208,9 @@
 		<Projectile id="0">
 			<ObjectId>Mini Mushroom Shoot</ObjectId>
 			<Damage>180</Damage>
-			<Speed>170</Speed>
+			<Speed>85</Speed>
 			<Size>160</Size>
-			<LifetimeMS>3800</LifetimeMS>
+			<LifetimeMS>2000</LifetimeMS>
 			<MultiHit />
 		</Projectile>
 	</Object>

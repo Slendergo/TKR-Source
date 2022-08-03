@@ -54,9 +54,9 @@ namespace wServer.logic
                     new Shoot(30, 4, projectileIndex: 0, fixedAngle: 80, coolDown: 1600, coolDownOffset: 1400),
                     new Shoot(30, 4, projectileIndex: 0, fixedAngle: 95, coolDown: 1600, coolDownOffset: 1600),
                     new Shoot(20, 5, shootAngle: 5, projectileIndex: 4, coolDown: 1000, coolDownOffset: 500),
-                    new Reproduce("Lair Skeleton Mage 1", 50, 3, coolDown: 1500),
-                    new Reproduce("Lair Skeleton King 1", 50, 3, 1000),
-                    new ReproduceGroup("Lair Ghosts", 50, 3, coolDown: 1000),
+                    new Reproduce("Lair Skeleton Mage 1", 50, 3, coolDown: 5000),
+                    new Reproduce("Lair Skeleton King 1", 50, 3, 5000),
+                    new ReproduceGroup("Lair Ghosts", 50, 3, coolDown: 5000),
                     new HpLessTransition(0.50, "Third Phase")
                     ),
                 new State("Third Phase",

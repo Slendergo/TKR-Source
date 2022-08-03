@@ -277,7 +277,7 @@ namespace wServer.logic
             )
         .Init("Marble Colossus",
             new State(
-                new ScaleHP2(20),
+                new ScaleHP2(40),
                 new State("Waiting",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new PlayerWithinTransition(10, "Changing Skin")
@@ -308,7 +308,7 @@ namespace wServer.logic
                     new HpLessTransition(0.90, "Phase 3")
                     ),
                 new State("Phase 3",
-                    new ReturnToSpawn(1.3, 0),
+                    new ReturnToSpawn(1.3, 30),
                     new Taunt("I cast you off!"),
                     new TimedTransition(4000, "Phase 3.1")
                     ),
@@ -383,7 +383,7 @@ namespace wServer.logic
                     new Taunt("INSOLENTIA! Darkness will consume you!"),
                     new OrderOnce(30, "LH Pillar spawner", "Main"),
                     new Prioritize(
-                        new Orbit(1, 4, 25, target: "Marble Colossus ORBIT", orbitClockwise: true)),
+                        new Orbit(2, 4, 25, target: "Marble Colossus ORBIT", orbitClockwise: true)),
                     new Shoot(30, 2, shootAngle: 180, projectileIndex: 7, rotateAngle: 20, coolDown: 200, seeInvis: true),
                     new Shoot(30, 8, shootAngle: 45, projectileIndex: 6, coolDown: 2000, seeInvis: true),
                     new HpLessTransition(0.65, "Phase 6")
@@ -528,10 +528,10 @@ namespace wServer.logic
                     new HpLessTransition(0.4, "Phase 13")
                     ),
                 new State("Phase 13",
-                    new ReturnToSpawn(3, 0),
+                    new ReturnToSpawn(1, 30),
                     new Taunt("It is my duty to protect these catacombs! You dare threaten my purpose?"),
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 2000),
-                    new TimedTransition(1000, "Phase 13.1")
+                    new TimedTransition(4000, "Phase 13.1")
                     ),
                 new State("Phase 13.1",                    // 0 DERECHA
                                                            // 180 IZQUIERDA

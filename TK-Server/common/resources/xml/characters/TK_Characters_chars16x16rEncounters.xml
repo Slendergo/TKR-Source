@@ -1321,14 +1321,14 @@
     <StasisImmune />
     <Projectile id="0">
       <ObjectId>Ghost Cross</ObjectId>
-      <Damage>85</Damage>
+      <Damage>145</Damage>
       <Speed>65</Speed>
       <Size>80</Size>
       <LifetimeMS>1000</LifetimeMS>
     </Projectile>
     <Projectile id="1">
       <ObjectId>Ghost X</ObjectId>
-      <Damage>25</Damage>
+      <Damage>75</Damage>
       <Speed>85</Speed>
       <Size>100</Size>
       <LifetimeMS>2000</LifetimeMS>
@@ -1337,7 +1337,7 @@
     </Projectile>
     <Projectile id="2">
       <ObjectId>Giga Ghost X</ObjectId>
-      <Damage>250</Damage>
+      <Damage>350</Damage>
       <Speed>40</Speed>
       <Size>200</Size>
       <LifetimeMS>5000</LifetimeMS>

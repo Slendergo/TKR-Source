@@ -145,6 +145,7 @@ package kabam.rotmg.assets
       public static var CustomObjects32x32Embed_:Class = EmbeddedAssets_CustomObjects32x32Embed_;
       public static var CustomObjectsSkillTreeEmbed_:Class = EmbeddedAssets_CustomObjectsSkillTreeEmbed_;
       public static var CustomObjEmbed_:Class = EmbeddedAssets_CustomObjEmbed_;
+      public static var CustomObj1Embed_:Class = EmbeddedAssets_CustomObj1Embed_;
       public static var CustomProjsEmbed_:Class = EmbeddedAssets_CustomProjsEmbed_;
       public static var CustomProjsBigEmbed_:Class = EmbeddedAssets_CustomProjsBigEmbed_;
       public static var mageEmbed_:Class = EmbeddedAssets_mageEmbed_;

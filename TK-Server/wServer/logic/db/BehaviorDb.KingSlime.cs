@@ -24,7 +24,7 @@ namespace wServer.logic
                 new State("attack",
                     new Prioritize(
                         new Follow(1.5, 10, 1, 30, 1),
-                        new Wander(1)
+                        new Wander(0.3)
                         ),
                     new Taunt("U cant kill me, im the King."),
                     new Shoot(15, 1, shootAngle: 5, projectileIndex: 0, predictive: 0.2, coolDown: 700),
@@ -41,8 +41,8 @@ namespace wServer.logic
                     ),
                 new State("attack2",
                     new Prioritize(
-                        new Follow(2, 10, 1, 30, 1),
-                        new Wander(1)
+                        new Follow(1.5, 10, 1, 30, 1),
+                        new Wander(0.4)
                         ),
                     new Taunt("Do not make me angry."),
                     new Shoot(15, 1, shootAngle: 5, projectileIndex: 0, predictive: 0.2, coolDown: 700),
@@ -60,8 +60,8 @@ namespace wServer.logic
                     ),
                 new State("attackrage",
                     new Prioritize(
-                        new Follow(2.5, 10, 1, 30, 1),
-                        new Wander(1)
+                        new Follow(2, 10, 1, 30, 1),
+                        new Wander(0.5)
                         ),
                     new Taunt("AAAAAAAAAAAAAAAAGGGGGGGGGH!"),
                     new Flash(0xBB0000, 0.5, 10000),

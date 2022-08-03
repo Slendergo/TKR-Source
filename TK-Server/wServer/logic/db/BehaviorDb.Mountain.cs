@@ -25,7 +25,8 @@ namespace wServer.logic
                     new State("Circle",
                         new Shoot(15, 3, shootAngle: 25, projectileIndex: 0, coolDown: 1000),
                         new Shoot(15, projectileIndex: 1, coolDown: 1000),
-                        new Orbit(1, 5, 10, "Arena Horseman Anchor"),
+                        new Prioritize(
+                            new Orbit(3, 5, 10, "Arena Horseman Anchor")),
                         new TimedTransition(8000, "Shoot")
                         ),
                     new State("Shoot",
@@ -40,7 +41,7 @@ namespace wServer.logic
                 new State("End",
                     new Prioritize(
                         new Follow(1.5, 20, 1),
-                        new Wander(1.5)
+                        new Wander(0.5)
                         ),
                     new Flash(0xF0E68C, 1, 1000),
                     new Shoot(15, 3, shootAngle: 25, projectileIndex: 0, coolDown: 1000),
@@ -116,7 +117,7 @@ namespace wServer.logic
                 new Grenade(4, 150, range: 8, coolDown: 3000),
                 new Reproduce(densityMax: 3)
                 ),
-            SpeedPotion,
+            new ItemLoot("Potion of Speed", 0.3),
             new TierLoot(6, ItemType.Weapon, 0.08),
             new TierLoot(7, ItemType.Weapon, 0.04),
             new TierLoot(8, ItemType.Weapon, 0.02),

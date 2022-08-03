@@ -286,7 +286,7 @@ namespace wServer.logic
                 new ItemLoot("Prism of Dancing Swords", 0.015),
                 new ItemLoot("Large Jester Argyle Cloth", 0.1),
                 new ItemLoot("Small Jester Argyle Cloth", 0.1),
-                new ItemLoot("Theatre Key", 0.01, 0, 0.03)
+                new ItemLoot("Theatre Key", 0.001, 0, 0.03)
                 )
             )
         .Init("The Puppet Master",

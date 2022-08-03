@@ -140,7 +140,7 @@
     <Forgeable />
     <Legendary />
     <Soulbound />
-    <BagType>6</BagType>
+    <BagType>7</BagType>
   </Object>
   <Object type="0x501a" id="Water Fragment">
     <Class>Equipment</Class>
@@ -155,7 +155,7 @@
     <Forgeable />
     <Legendary />
     <Soulbound />
-    <BagType>8</BagType>
+    <BagType>7</BagType>
   </Object>
   <Object type="0x501b" id="Wind Fragment">
     <Class>Equipment</Class>
@@ -170,7 +170,7 @@
     <Forgeable />
     <Legendary />
     <Soulbound />
-    <BagType>8</BagType>
+    <BagType>7</BagType>
   </Object>
   <Object type="0x501c" id="Earth Fragment">
     <Class>Equipment</Class>
@@ -185,7 +185,7 @@
     <Forgeable />
     <Legendary />
     <Soulbound />
-    <BagType>8</BagType>
+    <BagType>7</BagType>
   </Object>
   <Object type="0x501d" id="Bedrock Fragment">
     <Class>Equipment</Class>

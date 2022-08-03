@@ -817,6 +817,8 @@ namespace wServer.logic
                     ),
                 new State("Start",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
+                    new Wander(0.3),
+                    new StayBack(1, 6), 
                     new Shoot(20, 3, shootAngle: 10, projectileIndex: 0, coolDown: 2000),
                     new Shoot(20, 16, projectileIndex: 1, coolDown: 250),
                     new HpLessTransition(0.75, "Spawn"),
@@ -1329,11 +1331,11 @@ namespace wServer.logic
                         new HpLessTransition(0.7, "Rage"),
                         new RemoveConditionalEffect(ConditionEffectIndex.Invulnerable),
 
-                        new Shoot(12, 4, projectileIndex: 0, shootAngle: 15, coolDown: 2000, coolDownOffset: 300, predictive: 1.2),
-                        new Shoot(12, 4, projectileIndex: 0, shootAngle: 15, coolDown: 2000, coolDownOffset: 600, predictive: 1.2),
-                        new Shoot(12, 4, projectileIndex: 0, shootAngle: 15, coolDown: 2000, coolDownOffset: 900, predictive: 1.2),
+                        new Shoot(12, 6, projectileIndex: 0, shootAngle: 15, coolDown: 2000, coolDownOffset: 300, predictive: 1.2),
+                        new Shoot(12, 6, projectileIndex: 0, shootAngle: 15, coolDown: 2000, coolDownOffset: 600, predictive: 1.2),
+                        new Shoot(12, 6, projectileIndex: 0, shootAngle: 15, coolDown: 2000, coolDownOffset: 900, predictive: 1.2),
 
-                        new Shoot(12, 5, projectileIndex: 2, coolDown: 700),
+                        new Shoot(12, 10, projectileIndex: 2, coolDown: 700),
 
                         new Shoot(20, 12, projectileIndex: 1, fixedAngle: 0, shootAngle: 45, coolDown: 3000, coolDownOffset: 200),
                         new Shoot(20, 12, projectileIndex: 1, fixedAngle: 10, shootAngle: 45, coolDown: 3000, coolDownOffset: 600),
@@ -1351,7 +1353,7 @@ namespace wServer.logic
                     new State("Start 2",
                         new HpLessTransition(0.25, "Rage 2"),
                         new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
-                        new Chase(6, 12),
+                        new Chase(8, 12),
 
                         new Shoot(8, 5, shootAngle: 10, projectileIndex: 1, coolDown: 500, predictive: 2),
                         new Shoot(20, 5, projectileIndex: 2, coolDown: 1000),
@@ -1369,16 +1371,16 @@ namespace wServer.logic
                         new TossObject2("Lair Skeleton Mage 1", 3, angle: 120, coolDown: 5000),
                         new TossObject2("Lair Skeleton Mage 1", 3, angle: 240, coolDown: 5000),
                         new Reproduce("Lair Skeleton King 1", 50, 3, 5000),
-                        new Chase(7, 12),
+                        new Chase(10, 12),
 
                         new Shoot(8, 7, shootAngle: 10, projectileIndex: 1, coolDown: 300, predictive: 2),
-                        new Shoot(20, 5, projectileIndex: 2, coolDown: 800),
-                        new Shoot(20, 4, shootAngle: 25, projectileIndex: 0, coolDown: 600)
+                        new Shoot(20, 8, projectileIndex: 2, coolDown: 800),
+                        new Shoot(20, 6, shootAngle: 25, projectileIndex: 0, coolDown: 600)
                         )
                 ),
 
             new Threshold(0.03,
-                new ItemLoot("Shattered War Axe", 0.00001),
+                new ItemLoot("Possessed Halberd", 0.00001),
                 new ItemLoot("Cape of Septavius", 0.0028),
                 new ItemLoot("Potion of Wisdom", 1),
                 new ItemLoot("Potion of Wisdom", 1),

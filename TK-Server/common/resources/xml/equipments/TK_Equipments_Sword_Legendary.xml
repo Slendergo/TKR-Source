@@ -214,24 +214,24 @@
     <FameBonus>6</FameBonus>
     <DisplayId>The Horn Breaker</DisplayId>
   </Object>
-	<Object type="0x9501" id="Shattered War Axe">
+	<Object type="0x9501" id="Possessed Halberd">
 		<Class>Equipment</Class>
 		<Item />
 		<Lucky />
 		<Texture>
-			<File>lofiObj7</File>
-			<Index>0x00</Index>
+			<File>CustomObj</File>
+			<Index>0xb9</Index>
 		</Texture>
 		<SlotType>1</SlotType>
 		<Legendary />
-		<Description>Tribute to RoTF</Description>
+		<Description>No longer a tribute to RotF</Description>
 		<RateOfFire>.6</RateOfFire>
 		<Sound>weapon/mithril_sword</Sound>
 		<Projectile>
-			<ObjectId>Shattered War Shot</ObjectId>
+			<ObjectId>Possessed Halberd Shot</ObjectId>
 			<Speed>75</Speed>
-			<MinDamage>355</MinDamage>
-			<MaxDamage>360</MaxDamage>
+			<MinDamage>475</MinDamage>
+			<MaxDamage>650</MaxDamage>
 			<LifetimeMS>750</LifetimeMS>
 			<Size>100</Size>
 			<ArmorPiercing />
@@ -240,6 +240,6 @@
 		<NumProjectiles>1</NumProjectiles>
 		<BagType>7</BagType>
 		<FameBonus>6</FameBonus>
-		<DisplayId>Shattered War Axe</DisplayId>
+		<DisplayId>Possessed Halberd</DisplayId>
 	</Object>
 </Objects>

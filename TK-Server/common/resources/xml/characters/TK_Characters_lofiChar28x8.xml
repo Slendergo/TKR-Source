@@ -130,18 +130,18 @@
     </Texture>
     <HitSound>monster/cubes_hit</HitSound>
     <DeathSound>monster/cubes_death</DeathSound>
-    <MaxHitPoints>75000</MaxHitPoints>
+    <MaxHitPoints>5000</MaxHitPoints>
     <Defense>30</Defense>
     <Cube />
     <Projectile id="0">
       <ObjectId>Orange Magic</ObjectId>
-      <Speed>100</Speed>
+      <Speed>60</Speed>
       <Damage>50</Damage>
       <LifetimeMS>2400</LifetimeMS>
     </Projectile>
     <Projectile id="1">
       <ObjectId>Fire Bolt</ObjectId>
-      <Speed>80</Speed>
+      <Speed>60</Speed>
       <Damage>70</Damage>
       <LifetimeMS>2500</LifetimeMS>
     </Projectile>
@@ -158,12 +158,12 @@
     </Texture>
     <HitSound>monster/cubes_hit</HitSound>
     <DeathSound>monster/cubes_death</DeathSound>
-    <MaxHitPoints>32500</MaxHitPoints>
+    <MaxHitPoints>3000</MaxHitPoints>
     <Defense>15</Defense>
     <Cube />
     <Projectile id="0">
       <ObjectId>Yellow Magic</ObjectId>
-      <Speed>140</Speed>
+      <Speed>60</Speed>
       <Damage>40</Damage>
       <LifetimeMS>2400</LifetimeMS>
       <Wavy />

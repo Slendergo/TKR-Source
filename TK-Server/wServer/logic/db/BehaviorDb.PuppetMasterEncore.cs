@@ -75,7 +75,8 @@ namespace wServer.logic
         .Init("Confuse Puppet",
             new State(
                 new State("1",
-                    new Orbit(1.5, 10, 15, "Puppet Master v2"),
+                    new Prioritize(
+                    new Orbit(3, 10, 15, "Puppet Master v2")),
                     new Shoot(15, 3, 360 / 3, 0, 45, coolDown: 1250),
                     new Shoot(15, 3, 360 / 3, 2, 100, coolDown: 1250)
                     )
@@ -83,7 +84,8 @@ namespace wServer.logic
             )
         .Init("Bleed Puppet",
             new State(
-                new Orbit(0.5, 3, 15, "Puppet Master v2"),
+                new Prioritize(
+                new Orbit(3, 3, 15, "Puppet Master v2")),
                 new State("1",
                     new Shoot(15, 4, 360 / 4, 0, 45, coolDown: 750),
                     new TimedTransition(750, "2")
@@ -663,6 +665,7 @@ namespace wServer.logic
                 ),
             new Threshold(0.03,
                 new ItemLoot("Thousand Shot", 0.0014, threshold: 0.03),
+                new ItemLoot("Laughing Gas", 0.0014),
                 new ItemLoot("Puppet Master's Encore Key", 0.001, 0, 0.03)
                 ),
             new Threshold(0.02,

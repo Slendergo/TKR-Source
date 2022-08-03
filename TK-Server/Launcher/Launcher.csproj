@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="MainWindow - Copy.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Components\AccountPage" />
+    <None Remove="Components\NewsPage" />
+    <None Remove="Images\TK_Icon.png" />
+    <None Remove="TK_Icon.png" />
+    <None Remove="TK_Logo_Transparent.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="MainWindow - Copy.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="TK_Logo_Transparent.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Components\AccountPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+</Project>

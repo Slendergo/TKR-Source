@@ -478,6 +478,8 @@ namespace wServer.core
                         {
                             if (time.TickCount % 2 == 0)
                                 HandleAnnouncements();
+                            if(time.TickCount % 4 == 0)
+                                EnsureQuest();
                             if (time.TickCount % 6 == 0)
                                 EnsurePopulation();
                             LastTenSecondsTime = time.TotalElapsedMs;
@@ -569,6 +571,22 @@ namespace wServer.core
             }
         }
 
+        public void EnsureQuest()
+        {
+            if (HasQuestAlready || DisableSpawning)
+                return;
+
+            var events = _events;
+            var evt = events[Random.Next(0, events.Count)];
+            var gameData = World.Manager.Resources.GameData;
+
+            if (gameData.ObjectDescs[gameData.IdToObjectType[evt.Item1]].PerRealmMax == 1)
+                events.Remove(evt);
+
+            SpawnEvent(evt.Item1, evt.Item2);
+            HasQuestAlready = true;
+        }
+
         public void AnnounceMVP(Enemy eventDead, string name)
         {
             var mvp = eventDead.DamageCounter.hitters.Aggregate((a, b) => a.Value > b.Value ? a : b).Key;
@@ -636,6 +654,8 @@ namespace wServer.core
 
         public int CountingEvents(string eventDead)
         {
+            HasQuestAlready = false;
+
             _EventCount++;
 
             // notify 3 events before realm close on discord (once)
@@ -711,51 +731,16 @@ namespace wServer.core
 
         public void OnEnemyKilled(Enemy enemy, Player killer)
         {
-            var events = _events;
-            var evt = events[Random.Next(0, events.Count)];
-            var gameData = World.Manager.Resources.GameData;
-
-            // is a critical quest?
-            TauntData? dat = null;
-
-            foreach (var i in CriticalEnemies)
-                if (enemy.ObjectDesc.ObjectId == i.Item1)
+            foreach (var dat in CriticalEnemies)
+                if (enemy.ObjectDesc.ObjectId == dat.Item1)
                 {
-                    dat = i.Item2;
+                    CountingEvents(dat.Item2.NameOfDeath);
+                    AnnounceMVP(enemy, dat.Item2.NameOfDeath);
                     break;
                 }
-
-            if (dat == null)
-                return;
-
-            CountingEvents(dat.Value.NameOfDeath);
-            AnnounceMVP(enemy, dat.Value.NameOfDeath);
-
-            // enemy is quest?
-            if (enemy.ObjectDesc == null || !enemy.ObjectDesc.Quest)
-                return;
-
-            if (!DisableSpawning)
-            {
-                if (gameData.ObjectDescs[gameData.IdToObjectType[evt.Item1]].PerRealmMax == 1)
-                    events.Remove(evt);
-
-                World.Timers.Add(new WorldTimer(15000, (w, t) => SpawnEvent(evt.Item1, evt.Item2)));
-            }
-
-            // new event is critical?
-            dat = null;
-
-            foreach (var i in CriticalEnemies)
-                if (evt.Item1 == i.Item1)
-                {
-                    dat = i.Item2;
-                    break;
-                }
-
-            if (dat == null)
-                return;
         }
+
+        private bool HasQuestAlready;
 
         public void OnPlayerEntered(Player player)
         {

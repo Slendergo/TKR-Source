@@ -35,29 +35,36 @@ namespace wServer.core.objects
 
         public void ClasifyEnemy()
         {
-            var Chance = _random.NextDouble();
+            var chance = _random.NextDouble();
 
-            if (Chance < 0.02)
+            if(chance < 0.2)
             {
-                Legendary = true;
-                Size += 200;
-                MaximumHP = MaximumHP * 3;
+                var type = _random.Next(0, 3);
+                switch (type)
+                {
+                    case 0:
+                        {
+                            Legendary = true;
+                            GlowEnemy = 0xFFFFFF;
+                        }
+                        break;
+                    case 1:
+                        {
+                            Epic = true;
+                            GlowEnemy = 0x4B0082;
+                        }
+                        break;
+                    case 2:
+                        {
+                            Rare = true;
+                            GlowEnemy = 0xEAC117;
+                        }
+                        break;
+                }
+
+                Size += (type + 1) * 25;
+                MaximumHP *= (type + 1);
                 HP = MaximumHP;
-                GlowEnemy = 0xEAC117;
-            }
-            else if (Chance < 0.04)
-            {
-                Epic = true;
-                Size += 125;
-                MaximumHP = MaximumHP * 2;
-                HP = MaximumHP;
-                GlowEnemy = 0x4B0082;
-            }
-            else if (Chance < 0.06)
-            {
-                Rare = true;
-                Size += 50;
-                GlowEnemy = 0xFFFFFF;
             }
         }
 

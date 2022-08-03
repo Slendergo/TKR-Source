@@ -330,21 +330,21 @@
 			<Index>0x8e</Index>
 		</Texture>
 		<SlotType>3</SlotType>
-		<Description>No mortal can fire this dreaded bow without resting in between shots. It requires tremendous skill to wield.</Description>
-		<RateOfFire>1</RateOfFire>
+		<Description>Glass' baby</Description>
+		<RateOfFire>1.2</RateOfFire>
 		<Sound>weapon/golden_bow</Sound>
 		<Projectile>
-			<ObjectId>Earth Elemental Arrow</ObjectId>
-			<Speed>140</Speed>
-			<MinDamage>400</MinDamage>
-			<MaxDamage>500</MaxDamage>
-			<LifetimeMS>503</LifetimeMS>
-			<MultiHit />
+			<ObjectId>Blossom Shot</ObjectId>
+			<Speed>70</Speed>
+			<MinDamage>95</MinDamage>
+			<MaxDamage>145</MaxDamage>
+			<LifetimeMS>1000</LifetimeMS>
+			<Size>50</Size>
 			<Wavy />
 		</Projectile>
 		<BagType>7</BagType>
 		<FameBonus>6</FameBonus>
-		<NumProjectiles>1</NumProjectiles>
+		<NumProjectiles>2</NumProjectiles>
 		<OldSound>arrowShoot</OldSound>
 		<feedPower>900</feedPower>
 	</Object>	

@@ -1800,7 +1800,7 @@ namespace wServer.core.objects
                 if (item == null || !item.Legendary && !item.Revenge && !item.Mythical)
                     continue;
 
-                if (item.Mythical || item.Revenge)
+                if (item.Mythical || item.Revenge || item.ObjectId == "Possessed Halberd")
                     RevengeEffects(item, i);
 
                 if (item.Legendary)

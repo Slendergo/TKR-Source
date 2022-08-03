@@ -11,12 +11,12 @@
         <Grid DockPanel.Dock="Bottom" Background="#FF4A4C6F">
             <Grid Margin="16">
                 <Grid Margin="0,0,128,0">
-                    <ProgressBar BorderThickness="2"  Height="48" HorizontalContentAlignment="Stretch" Background="#FF3F415D" BorderBrush="#FF37384B" Value="50">
+                    <ProgressBar x:Name="ProgressBar" BorderThickness="2"  Height="48" HorizontalContentAlignment="Stretch" Background="#FF3F415D" BorderBrush="#FF37384B" Value="50">
                         <ProgressBar.Effect>
                             <DropShadowEffect Color="#FF4A4C6F" ShadowDepth="5" BlurRadius="8"/>
                         </ProgressBar.Effect>
                     </ProgressBar>
-                    <TextBlock Text="Downloading: 30.3 MB/ 1.4 GB" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="18">
+                    <TextBlock x:Name="ProgressText" Text="" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="18">
                         <TextBlock.Effect>
                             <DropShadowEffect Color="#FF4A4C6F" ShadowDepth="3"/>
                         </TextBlock.Effect>

@@ -1,4 +1,28 @@
 <Objects>
+		<Object type="0x9911" id="Limons Spell Shot">
+			<Class>Projectile</Class>
+			<Texture>
+				<File>CustomProjs</File>
+				<Index>0x40</Index>
+			</Texture>
+			<Rotation>90</Rotation>
+		</Object>
+	<Object type="0x9921" id="Rose Buckler Shot">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomProjs</File>
+			<Index>0xc8</Index>
+		</Texture>
+		<AngleCorrection>1</AngleCorrection>
+	</Object>
+	<Object type="0x9940" id="Blossom Shot">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomProjs</File>
+			<Index>0xc7</Index>
+		</Texture>
+		<Rotation>350</Rotation>
+	</Object>
   <Object type="0xb156" id="Brute Shot">
     <Class>Projectile</Class>
     <Texture>
@@ -1450,22 +1474,6 @@
 		<Texture>
 			<File>CustomProj</File>
 			<Index>0x9b</Index>
-		</Texture>
-		<AngleCorrection>1</AngleCorrection>
-	</Object>
-	<Object type="0x9911" id="Limon's Spell Shot">
-		<Class>Projectile</Class>
-		<Texture>
-			<File>CustomObj</File>
-			<Index>0x78</Index>
-		</Texture>
-		<AngleCorrection>35</AngleCorrection>
-	</Object>
-	<Object type="0x9921" id="Rose Buckler Shot">
-		<Class>Projectile</Class>
-		<Texture>
-			<File>CustomProjs</File>
-			<Index>0xc8</Index>
 		</Texture>
 		<AngleCorrection>1</AngleCorrection>
 	</Object>

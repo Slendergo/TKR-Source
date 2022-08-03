@@ -428,7 +428,7 @@ namespace wServer.core
             Tuple.Create("Strange Magician", (ISetPiece) new StrangeMagician()),
             Tuple.Create("Water Elemental", (ISetPiece) new WaterElemental()),
             Tuple.Create("Earth Elemental", (ISetPiece) new EarthElemental()),
-            Tuple.Create("Mushroom", (ISetPiece) new Mushroom()),
+            Tuple.Create("Mushroom", (ISetPiece) null),
             Tuple.Create("Wind Elemental", (ISetPiece) null),
             Tuple.Create("Fire Elemental", (ISetPiece) new FireElemental()),
             Tuple.Create("Julius Caesar", (ISetPiece) new JuliusCaesar()),

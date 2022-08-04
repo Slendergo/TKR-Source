@@ -619,6 +619,12 @@ namespace wServer.core.objects
             if (tile != null && tile.Spawned)
                 rekt = true;
 
+            if (World is VaultWorld)
+            {
+                Rekted(true);
+                return;
+            }
+
             if (Rekted(rekt))
                 return;
 

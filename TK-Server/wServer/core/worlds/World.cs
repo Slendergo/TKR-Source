@@ -122,12 +122,12 @@ namespace wServer.core.worlds
                     player.Client.SendPacket(outgoingMessage, priority);
         }
 
-        public void BroadcastIfVisible(OutgoingMessage outgoingMessage, Entity broadcaster, PacketPriority priority = PacketPriority.Normal)
-            => ForeachPlayer(_ =>
-            {
-                if (_.Dist(broadcaster) <= 15d)
-                    _.Client.SendPacket(outgoingMessage, priority);
-            });
+        public void BroadcastIfVisible(OutgoingMessage outgoingMessage, Entity host, PacketPriority priority = PacketPriority.Normal)
+        {
+            foreach (var player in Players.Values)
+                if (player.DistSqr(host) < PlayerUpdate.VISIBILITY_RADIUS_SQR)
+                    player.Client.SendPacket(outgoingMessage, priority);
+        }
 
         public void BroadcastIfVisibleExclude(OutgoingMessage outgoingMessage, Entity broadcaster, Entity exclude, PacketPriority priority = PacketPriority.Normal)
             => ForeachPlayer(_ =>

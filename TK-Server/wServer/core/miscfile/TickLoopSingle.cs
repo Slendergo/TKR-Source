@@ -26,6 +26,8 @@ namespace wServer.core
             Stopped = true;
         }
 
+        public static bool TryNewSystem = false;
+
         public void Tick()
         {
             var watch = Stopwatch.StartNew();
@@ -39,17 +41,45 @@ namespace wServer.core
 
             while (true)
             {
-                if (sleep > 0)
-                    _ = mre.WaitOne(sleep);
-
-                var currentMS = realmTime.TotalElapsedMs = watch.ElapsedMilliseconds;
-
-                var delta = (int)Math.Max(currentMS - lastMS, 200);
-
-                if(delta >= 200)
+                if (TryNewSystem)
                 {
+                    var currentMS = realmTime.TotalElapsedMs = watch.ElapsedMilliseconds;
+
+                    var delta = (int)(currentMS - lastMS); //  (int)Math.Max(currentMS - lastMS, 200);
+                    if (delta >= 200)
+                    {
+                        realmTime.TickCount++;
+                        realmTime.ElaspedMsDelta = delta;
+
+                        try
+                        {
+                            if (Stopped || World.Update(ref realmTime))
+                            {
+                                _ = TickThreadSingle.WorldManager.RemoveWorld(World);
+                                break;
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine($"World Tick: {e}");
+                        }
+
+                        lastMS = currentMS;
+                    }
+                }
+                else
+                {
+                    if (sleep > 0)
+                        _ = mre.WaitOne(sleep);
+
+                    var currentMS = realmTime.TotalElapsedMs = watch.ElapsedMilliseconds;
+
+                    var delta = (int)Math.Max(currentMS - lastMS, 200);
+
                     realmTime.TickCount++;
                     realmTime.ElaspedMsDelta = delta;
+
+                    var logicTime = watch.ElapsedMilliseconds;
 
                     try
                     {
@@ -63,39 +93,11 @@ namespace wServer.core
                     {
                         Console.WriteLine($"World Tick: {e}");
                     }
+
+                    realmTime.LogicTime = sleep = 200 - (int)(watch.ElapsedMilliseconds - logicTime);
+
                     lastMS = currentMS;
-
-                    Thread.Yield();
                 }
-
-                //if (sleep > 0)
-                //    _ = mre.WaitOne(sleep);
-
-                //var currentMS = realmTime.TotalElapsedMs = watch.ElapsedMilliseconds;
-
-                //var delta = (int)Math.Max(currentMS - lastMS, 200);
-
-                //realmTime.TickCount++;
-                //realmTime.ElaspedMsDelta = delta;
-
-                //var logicTime = watch.ElapsedMilliseconds;
-
-                //try
-                //{
-                //    if (Stopped || World.Update(ref realmTime))
-                //    {
-                //        _ = TickThreadSingle.WorldManager.RemoveWorld(World);
-                //        break;
-                //    }
-                //}
-                //catch (Exception e)
-                //{
-                //    Console.WriteLine($"World Tick: {e}");
-                //}
-
-                //realmTime.LogicTime = sleep = 200 - (int)(watch.ElapsedMilliseconds - logicTime);
-
-                //lastMS = currentMS;
             }
 
             Stop();

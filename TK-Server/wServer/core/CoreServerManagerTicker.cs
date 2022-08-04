@@ -45,7 +45,6 @@ namespace wServer.core
                 UpdateTime.ElaspedMsDelta = delta;
 
                 CoreServerManager.ConnectionManager.Tick(UpdateTime.TotalElapsedMs);
-                CoreServerManager.InterServerManager.Tick(UpdateTime.ElaspedMsDelta);
 
                 var logicTime = (int)(watch.ElapsedMilliseconds - current);
                 var sleepTime = Math.Max(0, MsPerTick - logicTime);

@@ -79,8 +79,6 @@ namespace wServer.logic
                 if (player.Level < 20 && player.XPBoostTime != 0)
                     playerXp *= 1.5f;
 
-                playerXp *= (float)player.CoreServerManager.GetExperienceRate();
-
                 if (enemy.GivesNoXp)
                     playerXp = 0;
 

@@ -25,7 +25,7 @@ namespace wServer.core.commands
 
             protected override bool Process(Player player, TickTime time, string args)
             {
-                TickLoopSingle.TryNewSystem = !TickLoopSingle.TryNewSystem;
+                //TryNewSystem = !TryNewSystem;
                 return true;
             }
         }

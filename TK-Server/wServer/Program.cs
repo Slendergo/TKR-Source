@@ -15,7 +15,6 @@ namespace wServer
 {
     internal class Program
     {
-        public static bool EnableGuildLootBoost = false;
         private static readonly object RestartLock = new object();
         private static bool Disposed = false;
 
@@ -89,7 +88,7 @@ namespace wServer
             {
                 CoreServerManager.Shutdown();
                 Thread.Sleep(5000);
-                Process.Start(AppDomain.CurrentDomain.FriendlyName);
+                _ = Process.Start(AppDomain.CurrentDomain.FriendlyName);
                 CoreServerManager.Set();
             };
             Restarter.Start();
@@ -154,8 +153,6 @@ namespace wServer
 
         private static void SetupThreadData()
         {
-            ThreadPool.GetMinThreads(out _, out var completionPortThreads);
-            ThreadPool.SetMinThreads(250, completionPortThreads);
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
             Thread.CurrentThread.Name = "Entry";
         }

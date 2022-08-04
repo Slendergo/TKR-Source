@@ -14,233 +14,229 @@
       "latitude": 0,
       "longitude": 0
     },
-    "debug": false,
-    "adminOnly": false,
-    "baseFameRequirement": 0 // temporarily disabled
+    "adminOnly": false
   },
   "serverSettings": {
     "logFolder": "./logs",
     "resourceFolder": "./resources",
     "version": "1.0",
-    "serverKey": "1AE3517CCC0486ADEB5DE0D5B5247789",
-    "clientKey": "5E44602511D8A86A416EE138DFAAE2F9",
-    "maxConnections": 256,
-    "maxPlayers": 300,
+    "maxConnections": 90,
+    "maxPlayers": 85,
     "donorOnly": false,
     "restartTime": 2,
-    "hashes": [
-      "7E24A92179A60D560752CC9948D0604A8C3BCB32",
-      "DA39A3EE5E6B4B0D3255BFEF95601890AFD80709"
-    ],
-    "marketEnabled": true,
-    "lootEventStartAt": "31.12.1970 23:59:59",
-    "lootEventEndAt": "31.12.1970 23:59:59",
-    "lootEventRate": 1,
-    "expEventStartAt": "31.12.1970 23:59:59",
-    "expEventEndAt": "31.12.1970 23:59:59",
-    "expEventRate": 1,
-    "enemyDamageStartAt": "31.12.1970 23:59:59",
-    "enemyDamageEndAt": "31.12.1970 23:59:59",
-    "enemyDamageRate": 1,
-    "enemyHealthBoostStartAt": "31.12.1970 23:59:59",
-    "enemyHealthBoostEndAt": "31.12.1970 23:59:59",
-    "enemyHealthBoostRate": 1,
     "whitelist": []
   },
-    "discordIntegration": {
-        "botName": "Android",
-        "webhookRealmEvent": "https://discordapp.com/api/webhooks/711112241629495307/NDvFgsshUEtGs_7YWZZfp2L4QY32MnOnu-lzKF3Ys1WXVEt0VsqROhSK94pFswwp3-bU",
-        "webhookLootEvent": "https://discord.com/api/webhooks/964440353597972510/TXHhmStoykQGtH5nXkYM_9cMh7DXcwgqpm910rTPm1LvTLA_Ts91gEbnrSpcadx9eLTp",
-        "webhookResourcesURL": "https://github.com/GlassBBQ/tk-thumbnails/blob/master/",
-        "webhookBotImage": "android.png",
-        "webhookLogoImage": "tk-realms.png",
-        "webhookOryx1Image": "oryx1.png",
-        "webhookOryx2Image": "oryx2.png",
-        "realmEvents": [
-            {
-                "id": 711003564503203902,
-                "name": "Oryx",
-                "image": "oryx.png"
-            },
-            {
-                "id": 710960492490784799,
-                "name": "Strange Magician",
-                "image": "strange_magician.png"
-            },
-            {
-                "id": 710961141333098508,
-                "name": "Fire Elemental",
-                "image": "fire_elemental.png"
-            },
-            {
-                "id": 710961193547726978,
-                "name": "Wind Elemental",
-                "image": "wind_elemental.png"
-            },
-            {
-                "id": 710961236950515813,
-                "name": "Earth Elemental",
-                "image": "earth_elemental.png"
-            },
-            {
-                "id": 710961281007616092,
-                "name": "Water Elemental",
-                "image": "water_elemental.png"
-            },
-            {
-                "id": 710961313370734673,
-                "name": "Tiki Tiki",
-                "image": "tiki_tiki.png"
-            },
-            {
-                "id": 710961370618921032,
-                "name": "Lucky Ent God",
-                "image": "lucky_ent_god.png"
-            },
-            {
-                "id": 710961415476871218,
-                "name": "Lucky Djinn",
-                "image": "lucky_djinn.png"
-            },
-            {
-                "id": 710961448649621586,
-                "name": "King Slime",
-                "image": "king_slime.png"
-            },
-            {
-                "id": 710961469365420063,
-                "name": "Mushroom",
-                "image": "mushroom.png"
-            },
-            {
-                "id": 710961505440366712,
-                "name": "Skull Shrine",
-                "image": "skull_shrine.png"
-            },
-            {
-                "id": 710961536969080882,
-                "name": "Cube God",
-                "image": "cube_god.png"
-            },
-            {
-                "id": 710961583760867378,
-                "name": "Pentaract",
-                "image": "pentaract.png"
-            },
-            {
-                "id": 710961609086074921,
-                "name": "Grand Sphinx",
-                "image": "grand_sphinx.png"
-            },
-            {
-                "id": 710961641872818268,
-                "name": "Lord of the Lost Lands",
-                "image": "lord_of_the_lost_lands.png"
-            },
-            {
-                "id": 710961691181056091,
-                "name": "Hermit God",
-                "image": "hermit_god.png"
-            },
-            {
-                "id": 710961725490331650,
-                "name": "Ghost Ship",
-                "image": "ghost_ship.png"
-            }
-        ],
-        "mtBagImage": "mt_bag.png",
-        "lgBagImage": "lg_bag.png",
-        "mtImage": "mythical.png",
-        "lgImage": "legendary.png",
-        "stars": [
-            {
-                "id": 711757291887788053,
-                "name": "light_blue_star",
-                "range": [ 0, 13 ]
-            },
-            {
-                "id": 711757291820679179,
-                "name": "blue_star",
-                "range": [ 14, 27 ]
-            },
-            {
-                "id": 711757291983994901,
-                "name": "red_star",
-                "range": [ 28, 41 ]
-            },
-            {
-                "id": 711757291799707679,
-                "name": "orange_star",
-                "range": [ 42, 55 ]
-            },
-            {
-                "id": 711757291862491136,
-                "name": "yellow_star",
-                "range": [ 56, 69 ]
-            },
-            {
-                "id": 711757291908497429,
-                "name": "white_star",
-                "range": [ 70 ]
-            }
-        ],
-        "classes": [
-            {
-                "id": 711757291841519677,
-                "name": "wizard"
-            },
-            {
-                "id": 711757291682136066,
-                "name": "priest"
-            },
-            {
-                "id": 711757291644387361,
-                "name": "archer"
-            },
-            {
-                "id": 711757291866816564,
-                "name": "rogue"
-            },
-            {
-                "id": 711757291820679258,
-                "name": "warrior"
-            },
-            {
-                "id": 711757291891720334,
-                "name": "necromancer"
-            },
-            {
-                "id": 711757291397054465,
-                "name": "assassin"
-            },
-            {
-                "id": 711757291090608159,
-                "name": "huntress"
-            },
-            {
-                "id": 711757291824611328,
-                "name": "knight"
-            },
-            {
-                "id": 711757291166367764,
-                "name": "ninja"
-            },
-            {
-                "id": 711757291267031082,
-                "name": "sorcerer"
-            },
-            {
-                "id": 711757290994401352,
-                "name": "mystic"
-            },
-            {
-                "id": 711757290893606973,
-                "name": "trickster"
-            },
-            {
-                "id": 711757291975868476,
-                "name": "paladin"
-            }
+  "discordIntegration": {
+    "botName": "Android",
+    "webhookRealmEvent": "https://discordapp.com/api/webhooks/711112241629495307/NDvFgsshUEtGs_7YWZZfp2L4QY32MnOnu-lzKF3Ys1WXVEt0VsqROhSK94pFswwp3-bU",
+    "webhookLootEvent": "https://discord.com/api/webhooks/964440353597972510/TXHhmStoykQGtH5nXkYM_9cMh7DXcwgqpm910rTPm1LvTLA_Ts91gEbnrSpcadx9eLTp",
+    "webhookResourcesURL": "https://github.com/GlassBBQ/tk-thumbnails/blob/master/",
+    "webhookBotImage": "android.png",
+    "webhookLogoImage": "tk-realms.png",
+    "webhookOryx1Image": "oryx1.png",
+    "webhookOryx2Image": "oryx2.png",
+    "realmEvents": [
+      {
+        "id": 711003564503203902,
+        "name": "Oryx",
+        "image": "oryx.png"
+      },
+      {
+        "id": 710960492490784799,
+        "name": "Strange Magician",
+        "image": "strange_magician.png"
+      },
+      {
+        "id": 710961141333098508,
+        "name": "Fire Elemental",
+        "image": "fire_elemental.png"
+      },
+      {
+        "id": 710961193547726978,
+        "name": "Wind Elemental",
+        "image": "wind_elemental.png"
+      },
+      {
+        "id": 710961236950515813,
+        "name": "Earth Elemental",
+        "image": "earth_elemental.png"
+      },
+      {
+        "id": 710961281007616092,
+        "name": "Water Elemental",
+        "image": "water_elemental.png"
+      },
+      {
+        "id": 710961313370734673,
+        "name": "Tiki Tiki",
+        "image": "tiki_tiki.png"
+      },
+      {
+        "id": 710961370618921032,
+        "name": "Lucky Ent God",
+        "image": "lucky_ent_god.png"
+      },
+      {
+        "id": 710961415476871218,
+        "name": "Lucky Djinn",
+        "image": "lucky_djinn.png"
+      },
+      {
+        "id": 710961448649621586,
+        "name": "King Slime",
+        "image": "king_slime.png"
+      },
+      {
+        "id": 710961469365420063,
+        "name": "Mushroom",
+        "image": "mushroom.png"
+      },
+      {
+        "id": 710961505440366712,
+        "name": "Skull Shrine",
+        "image": "skull_shrine.png"
+      },
+      {
+        "id": 710961536969080882,
+        "name": "Cube God",
+        "image": "cube_god.png"
+      },
+      {
+        "id": 710961583760867378,
+        "name": "Pentaract",
+        "image": "pentaract.png"
+      },
+      {
+        "id": 710961609086074921,
+        "name": "Grand Sphinx",
+        "image": "grand_sphinx.png"
+      },
+      {
+        "id": 710961641872818268,
+        "name": "Lord of the Lost Lands",
+        "image": "lord_of_the_lost_lands.png"
+      },
+      {
+        "id": 710961691181056091,
+        "name": "Hermit God",
+        "image": "hermit_god.png"
+      },
+      {
+        "id": 710961725490331650,
+        "name": "Ghost Ship",
+        "image": "ghost_ship.png"
+      }
+    ],
+    "mtBagImage": "mt_bag.png",
+    "lgBagImage": "lg_bag.png",
+    "mtImage": "mythical.png",
+    "lgImage": "legendary.png",
+    "stars": [
+      {
+        "id": 711757291887788053,
+        "name": "light_blue_star",
+        "range": [
+          0,
+          13
         ]
-    }
+      },
+      {
+        "id": 711757291820679179,
+        "name": "blue_star",
+        "range": [
+          14,
+          27
+        ]
+      },
+      {
+        "id": 711757291983994901,
+        "name": "red_star",
+        "range": [
+          28,
+          41
+        ]
+      },
+      {
+        "id": 711757291799707679,
+        "name": "orange_star",
+        "range": [
+          42,
+          55
+        ]
+      },
+      {
+        "id": 711757291862491136,
+        "name": "yellow_star",
+        "range": [
+          56,
+          69
+        ]
+      },
+      {
+        "id": 711757291908497429,
+        "name": "white_star",
+        "range": [
+          70
+        ]
+      }
+    ],
+    "classes": [
+      {
+        "id": 711757291841519677,
+        "name": "wizard"
+      },
+      {
+        "id": 711757291682136066,
+        "name": "priest"
+      },
+      {
+        "id": 711757291644387361,
+        "name": "archer"
+      },
+      {
+        "id": 711757291866816564,
+        "name": "rogue"
+      },
+      {
+        "id": 711757291820679258,
+        "name": "warrior"
+      },
+      {
+        "id": 711757291891720334,
+        "name": "necromancer"
+      },
+      {
+        "id": 711757291397054465,
+        "name": "assassin"
+      },
+      {
+        "id": 711757291090608159,
+        "name": "huntress"
+      },
+      {
+        "id": 711757291824611328,
+        "name": "knight"
+      },
+      {
+        "id": 711757291166367764,
+        "name": "ninja"
+      },
+      {
+        "id": 711757291267031082,
+        "name": "sorcerer"
+      },
+      {
+        "id": 711757290994401352,
+        "name": "mystic"
+      },
+      {
+        "id": 711757290893606973,
+        "name": "trickster"
+      },
+      {
+        "id": 711757291975868476,
+        "name": "paladin"
+      }
+    ]
+  }
 }

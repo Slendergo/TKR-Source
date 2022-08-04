@@ -26,12 +26,6 @@ namespace wServer.core.net.handlers
         {
             var config = Program.CoreServerManager.ServerConfig;
 
-            if (!config.serverSettings.marketEnabled)
-            {
-                client.Player.SendError("Market not Enabled.");
-                return false;
-            }
-
             if (config.serverInfo.adminOnly)
             {
                 if (!Program.CoreServerManager.IsWhitelisted(client.Player.AccountId) || client.Player?.Rank < 110)

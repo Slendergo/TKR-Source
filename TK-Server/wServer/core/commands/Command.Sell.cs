@@ -124,12 +124,6 @@ namespace wServer.core.commands
         {
             var config = Program.CoreServerManager.ServerConfig;
 
-            if (!config.serverSettings.marketEnabled)
-            {
-                player.SendError("Market not Enabled.");
-                return false;
-            }
-
             if (config.serverInfo.adminOnly)
             {
                 if (!Program.CoreServerManager.IsWhitelisted(player.AccountId) || player?.Rank < 110)

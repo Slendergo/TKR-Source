@@ -760,16 +760,6 @@ namespace wServer.core.objects
 
             SetNewbiePeriod();
 
-            if (CoreServerManager.HasEvents() && owner.Id == World.Nexus)
-            {
-                var events = CoreServerManager.GetEventMessages();
-
-                SendHelp($"<Announcement> This server is hosting {events.Length} event{(events.Length > 1 ? "s" : "")}!");
-
-                for (var i = 0; i < events.Length; i++)
-                    SendInfo(events[i]);
-            }
-
             base.Init(owner);
 
             FameCounter = new FameCounter(this);

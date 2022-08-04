@@ -74,8 +74,10 @@ namespace wServer.networking
             {
                 State = ProtocolState.Disconnected;
 
-                if (!string.IsNullOrEmpty(reason) && CoreServerManager.ServerConfig.serverInfo.debug)
+#if DEBUG
+                if (!string.IsNullOrEmpty(reason))
                     Log.Warn("Disconnecting client ({0}) @ {1}... {2}", Account?.Name ?? " ", IpAddress, reason);
+#endif
 
                 if (Account != null)
                     try

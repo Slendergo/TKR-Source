@@ -45,8 +45,6 @@ namespace wServer.logic.behaviors
             _seeInvis = seeInvis;
         }
 
-        private static double GetMultiplier => _multiplier == -1 ? _multiplier = Program.CoreServerManager.GetEnemyDamageRate() : _multiplier;
-
         protected override void OnStateEntry(Entity host, TickTime time, ref object state) => state = _coolDownOffset;
 
         protected override void TickCore(Entity host, TickTime time, ref object state)
@@ -95,8 +93,6 @@ namespace wServer.logic.behaviors
 
                     if (host.HasConditionEffect(ConditionEffects.Weak))
                         dmg /= 2;
-
-                    dmg *= GetMultiplier;
 
                     var startAngle = a - _shootAngle * (count - 1) / 2;
 

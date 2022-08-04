@@ -33,7 +33,7 @@ namespace wServer.core.objects
 
                 SetConditions();
 
-                HP = ObjectDesc.MaxHP * (int)CoreServerManager.GetHealthBoostRate();
+                HP = ObjectDesc.MaxHP;
                 MaximumHP = HP;
             }
         }

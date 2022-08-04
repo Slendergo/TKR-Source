@@ -175,6 +175,7 @@
     <Compile Include="core\miscfile\inventory\InventoryTransaction.cs" />
     <Compile Include="core\miscfile\inventory\ItemStacker.cs" />
     <Compile Include="core\miscfile\inventory\ItemUtils.cs" />
+    <Compile Include="core\miscfile\TickLoopSingle.cs" />
     <Compile Include="core\net\handlers\ChangeGuildRankHandler.cs" />
     <Compile Include="core\net\handlers\CancelTradeHandler.cs" />
     <Compile Include="core\net\handlers\AcceptTradeMessageHandler.cs" />
@@ -218,13 +219,9 @@
     <Compile Include="core\miscfile\StatDataType.cs" />
     <Compile Include="core\miscfile\StatValue.cs" />
     <Compile Include="core\miscfile\SV.cs" />
-    <Compile Include="core\miscfile\ThreadSingle.cs" />
     <Compile Include="core\miscfile\TickTime.cs" />
     <Compile Include="core\miscfile\Empty.cs" />
     <Compile Include="core\ConnectionManager.cs" />
-    <Compile Include="core\miscfile\TickLoopSingle.cs" />
-    <Compile Include="core\miscfile\TickThread.cs" />
-    <Compile Include="core\miscfile\TickThreadSingle.cs" />
     <Compile Include="core\miscfile\TimedPosition.cs" />
     <Compile Include="core\miscfile\TradeItem.cs" />
     <Compile Include="core\objects\connection\ConnectionComputer.cs" />

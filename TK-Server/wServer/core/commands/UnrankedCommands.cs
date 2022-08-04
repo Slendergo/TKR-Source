@@ -1136,12 +1136,6 @@ namespace wServer.core.commands
         {
             var config = player.CoreServerManager.ServerConfig;
 
-            if (!config.serverInfo.adminOnly && !config.serverSettings.marketEnabled)
-            {
-                player.SendError("Market is disabled on this server.");
-                return false;
-            }
-
             player.Client.Reconnect(new Reconnect()
             {
                 Host = "",

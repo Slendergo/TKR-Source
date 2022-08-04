@@ -18,8 +18,7 @@ namespace wServer.core
 
         private int NextWorldId = 0;
 
-        public TickThreadSingle NexusThread { get; private set; }
-        private readonly ConcurrentDictionary<int, TickThreadSingle> RealmThreads = new ConcurrentDictionary<int, TickThreadSingle>();
+        private readonly ConcurrentDictionary<int, TickThreadSingle> Threads = new ConcurrentDictionary<int, TickThreadSingle>();
 
         public ConcurrentDictionary<int, int> WorldMapId { get; set; } = new ConcurrentDictionary<int, int>();
 
@@ -46,7 +45,6 @@ namespace wServer.core
         public WorldManager(CoreServerManager coreServerManager)
         {
             CoreServerManager = coreServerManager;
-            NexusThread = new TickThreadSingle(this);
         }
 
         public void SetPreviousWorld(int accountId, int worldId)
@@ -60,7 +58,6 @@ namespace wServer.core
         {
             var nexus = CreateNewWorld("Nexus", -2, null);
             CreateNewTest();
-            NexusThread.Attach(nexus);
 
             // todo async creation system
             Nexus.PortalMonitor.CreateNewRealm();
@@ -86,10 +83,7 @@ namespace wServer.core
 
                     world.Init();
                     _ = Worlds.TryAdd(world.Id, world);
-
-                    var thread = new TickThreadSingle(this);
-                    thread.Attach(world);
-                    RealmThreads.TryAdd(world.Id, thread);
+                    _ = Threads.TryAdd(world.Id, new TickThreadSingle(this, world));
                     return world;
                 }
             });
@@ -123,7 +117,10 @@ namespace wServer.core
             if (!success)
                 return null;
             world.Init();
-            Worlds.TryAdd(world.Id, world);
+            _ = Worlds.TryAdd(world.Id, world);
+            // null parents are threaded as they get treated as the root
+            if (parent == null)
+                _ = Threads.TryAdd(world.Id, new TickThreadSingle(this, world));
             parent?.WorldBranch.AddBranch(world);
             return world;
         }
@@ -149,13 +146,13 @@ namespace wServer.core
 
         public void AddVaultInstance(int accountId, VaultWorld world)
         {
-            Vaults.TryAdd(accountId, world);
+            _ = Vaults.TryAdd(accountId, world);
         }
 
         public void AddGuildInstance(int guildId, World world)
         {
-            Guilds.TryAdd(guildId, world);
-            WorldToGuildId.TryAdd(world.Id, guildId);
+            _ = Guilds.TryAdd(guildId, world);
+            _ = WorldToGuildId.TryAdd(world.Id, guildId);
         }
 
         public World GetWorld(int id) => Worlds.TryGetValue(id, out World ret) ? ret : null;
@@ -165,8 +162,7 @@ namespace wServer.core
 
         public bool RemoveWorld(World world)
         {
-            if(world is RealmWorld)
-                RealmThreads.TryRemove(world.Id, out _);
+            _ = Threads.TryRemove(world.Id, out _);
 
             if (Worlds.TryRemove(world.Id, out _))
             {
@@ -187,9 +183,8 @@ namespace wServer.core
 
         public void Shutdown()
         {
-            foreach (var realm in RealmThreads.Values)
-                realm.Stop();
-            NexusThread.Stop();
+            foreach (var thread in Threads.Values)
+                thread.Stop();
         }
     }
 }

@@ -15,11 +15,11 @@ namespace wServer.logic.behaviors
             _range = range;
         }
 
-        protected internal override void Resolve(State parent) => parent.Death += (sender, e) =>
+        public override void OnDeath(Entity host, ref TickTime time)
         {
-            var dat = e.Host.CoreServerManager.Resources.GameData;
+            var dat = host.CoreServerManager.Resources.GameData;
             var objType = dat.IdToObjectType[_objName];
-            var map = e.Host.World.Map;
+            var map = host.World.Map;
             var w = map.Width;
             var h = map.Height;
 
@@ -31,8 +31,8 @@ namespace wServer.logic.behaviors
                     if (tile.ObjType != objType)
                         continue;
 
-                    var dx = Math.Abs(x - (int)e.Host.X);
-                    var dy = Math.Abs(y - (int)e.Host.Y);
+                    var dx = Math.Abs(x - (int)host.X);
+                    var dy = Math.Abs(y - (int)host.Y);
 
                     if (dx > _range || dy > _range)
                         continue;
@@ -42,7 +42,7 @@ namespace wServer.logic.behaviors
 
                     map[x, y] = tile;
                 }
-        };
+        }
 
         protected override void TickCore(Entity host, TickTime time, ref object state)
         { }

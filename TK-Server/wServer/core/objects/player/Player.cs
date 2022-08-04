@@ -12,12 +12,17 @@ using wServer.core.worlds;
 using wServer.core.worlds.logic;
 using wServer.logic;
 using wServer.networking;
-using wServer.networking.packets;
 using wServer.networking.packets.outgoing;
 using wServer.utils;
 
 namespace wServer.core.objects
 {
+    internal interface IPlayer
+    {
+        void Damage(int dmg, Entity src);
+        bool IsVisibleToEnemy();
+    }
+
     public partial class Player : Character, IContainer, IPlayer
     {
         public const int DONOR_1 = 10;
@@ -28,8 +33,6 @@ namespace wServer.core.objects
         public const int VIP = 60;
 
         public Client Client;
-        public StatsManager Stats;
-
 
         public int AccountId { get => _accountId.GetValue(); set => _accountId.SetValue(value); }
         public int Admin { get => _admin.GetValue(); set => _admin.SetValue(value); }
@@ -66,22 +69,7 @@ namespace wServer.core.objects
         public int LDBoostTime { get; set; }
         public int Level { get => _level.GetValue(); set => _level.SetValue(value); }
         public ItemStacker MagicPots { get; private set; }
-        public bool MaxedAtt { get => _maxedAtt.GetValue(); set => _maxedAtt.SetValue(value); }
-        public bool MaxedDef { get => _maxedDef.GetValue(); set => _maxedDef.SetValue(value); }
-        public bool MaxedDex { get => _maxedDex.GetValue(); set => _maxedDex.SetValue(value); }
-        public bool MaxedLife { get => _maxedLife.GetValue(); set => _maxedLife.SetValue(value); }
-        public bool MaxedMana { get => _maxedMana.GetValue(); set => _maxedMana.SetValue(value); }
-        public bool MaxedSpd { get => _maxedSpd.GetValue(); set => _maxedSpd.SetValue(value); }
-        public bool MaxedVit { get => _maxedVit.GetValue(); set => _maxedVit.SetValue(value); }
-        public bool MaxedWis { get => _maxedWis.GetValue(); set => _maxedWis.SetValue(value); }
-        public bool SuperMaxedAtt { get => _superMaxedAtt.GetValue(); set => _superMaxedAtt.SetValue(value); }
-        public bool SuperMaxedDef { get => _superMaxedDef.GetValue(); set => _superMaxedDef.SetValue(value); }
-        public bool SuperMaxedDex { get => _superMaxedDex.GetValue(); set => _superMaxedDex.SetValue(value); }
-        public bool SuperMaxedLife { get => _superMaxedLife.GetValue(); set => _superMaxedLife.SetValue(value); }
-        public bool SuperMaxedMana { get => _superMaxedMana.GetValue(); set => _superMaxedMana.SetValue(value); }
-        public bool SuperMaxedSpd { get => _superMaxedSpd.GetValue(); set => _superMaxedSpd.SetValue(value); }
-        public bool SuperMaxedVit { get => _superMaxedVit.GetValue(); set => _superMaxedVit.SetValue(value); }
-        public bool SuperMaxedWis { get => _superMaxedWis.GetValue(); set => _superMaxedWis.SetValue(value); }
+        
         public int MP { get => _mp.GetValue(); set => _mp.SetValue(value); }
         public bool Muted { get; set; }
         public bool NameChosen { get => _nameChosen.GetValue(); set => _nameChosen.SetValue(value); }
@@ -124,23 +112,6 @@ namespace wServer.core.objects
         public bool XPBoosted { get => _xpBoosted.GetValue(); set => _xpBoosted.SetValue(value); }
         public int XPBoostTime { get; set; }
 
-        public int SPSLifeCount { get => _SPSLifeCount.GetValue(); set => _SPSLifeCount.SetValue(value); }
-        public int SPSManaCount { get => _SPSManaCount.GetValue(); set => _SPSManaCount.SetValue(value); }
-        public int SPSDefenseCount { get => _SPSDefenseCount.GetValue(); set => _SPSDefenseCount.SetValue(value); }
-        public int SPSAttackCount { get => _SPSAttackCount.GetValue(); set => _SPSAttackCount.SetValue(value); }
-        public int SPSDexterityCount { get => _SPSDexterityCount.GetValue(); set => _SPSDexterityCount.SetValue(value); }
-        public int SPSSpeedCount { get => _SPSSpeedCount.GetValue(); set => _SPSSpeedCount.SetValue(value); }
-        public int SPSVitalityCount { get => _SPSVitalityCount.GetValue(); set => _SPSVitalityCount.SetValue(value); }
-        public int SPSWisdomCount { get => _SPSWisdomCount.GetValue(); set => _SPSWisdomCount.SetValue(value); }
-        public int SPSLifeCountMax { get => _SPSLifeCountMax.GetValue(); set => _SPSLifeCountMax.SetValue(value); }
-        public int SPSManaCountMax { get => _SPSManaCountMax.GetValue(); set => _SPSManaCountMax.SetValue(value); }
-        public int SPSDefenseCountMax { get => _SPSDefenseCountMax.GetValue(); set => _SPSDefenseCountMax.SetValue(value); }
-        public int SPSAttackCountMax { get => _SPSAttackCountMax.GetValue(); set => _SPSAttackCountMax.SetValue(value); }
-        public int SPSDexterityCountMax { get => _SPSDexterityCountMax.GetValue(); set => _SPSDexterityCountMax.SetValue(value); }
-        public int SPSSpeedCountMax { get => _SPSSpeedCountMax.GetValue(); set => _SPSSpeedCountMax.SetValue(value); }
-        public int SPSVitalityCountMax { get => _SPSVitalityCountMax.GetValue(); set => _SPSVitalityCountMax.SetValue(value); }
-        public int SPSWisdomCountMax { get => _SPSWisdomCountMax.GetValue(); set => _SPSWisdomCountMax.SetValue(value); }
-
         private SV<int> _accountId;
         private SV<int> _admin;
         private SV<int> _baseStat;
@@ -164,22 +135,6 @@ namespace wServer.core.objects
         private SV<bool> _hasBackpack;
         private float _hpRegenCounter;
         private SV<int> _level;
-        private SV<bool> _maxedAtt;
-        private SV<bool> _maxedDef;
-        private SV<bool> _maxedDex;
-        private SV<bool> _maxedLife;
-        private SV<bool> _maxedMana;
-        private SV<bool> _maxedSpd;
-        private SV<bool> _maxedVit;
-        private SV<bool> _maxedWis;
-        private SV<bool> _superMaxedAtt;
-        private SV<bool> _superMaxedDef;
-        private SV<bool> _superMaxedDex;
-        private SV<bool> _superMaxedLife;
-        private SV<bool> _superMaxedMana;
-        private SV<bool> _superMaxedSpd;
-        private SV<bool> _superMaxedVit;
-        private SV<bool> _superMaxedWis;
         private SV<int> _mp;
         private float _mpRegenCounter;
         private SV<bool> _nameChosen;
@@ -216,27 +171,6 @@ namespace wServer.core.objects
         private SV<int> _texture2;
         private SV<bool> _upgradeEnabled;
         private SV<bool> _xpBoosted;
-
-        private SV<int> _SPSLifeCount;
-        private SV<int> _SPSManaCount;
-        private SV<int> _SPSDefenseCount;
-        private SV<int> _SPSAttackCount;
-        private SV<int> _SPSDexterityCount;
-        private SV<int> _SPSSpeedCount;
-        private SV<int> _SPSVitalityCount;
-        private SV<int> _SPSWisdomCount;
-
-        private SV<int> _SPSLifeCountMax;
-        private SV<int> _SPSManaCountMax;
-        private SV<int> _SPSDefenseCountMax;
-        private SV<int> _SPSAttackCountMax;
-        private SV<int> _SPSDexterityCountMax;
-        private SV<int> _SPSSpeedCountMax;
-        private SV<int> _SPSVitalityCountMax;
-        private SV<int> _SPSWisdomCountMax;
-
-        private const float MinMoveSpeed = 0.004f;
-        private const float MaxMoveSpeed = 0.0096f;
 
         public Player(Client client, bool saveInventory = true) : base(client.CoreServerManager, client.Character.ObjectType)
         {
@@ -406,7 +340,7 @@ namespace wServer.core.objects
 
         public override bool CanBeSeenBy(Player player) => Client?.Account != null && Client.Account.Hidden ? false : true;
 
-        public void checkMaxedStats()
+        public void CheckMaxedStats()
         {
             var classes = CoreServerManager?.Resources?.GameData?.Classes;
 
@@ -1084,7 +1018,7 @@ namespace wServer.core.objects
 
                     /* Skill Tree */
                     checkSkillStats();
-                    checkMaxedStats();
+                    CheckMaxedStats();
 
                     /* Item Effects */
                     TimeEffects(time);
@@ -1367,6 +1301,7 @@ namespace wServer.core.objects
 
         public void CleanupPlayerUpdate()
         {
+            //Inventory = null; todo figure out how to dispose better
             PlayerUpdate?.Dispose();
             PlayerUpdate = null;
         }

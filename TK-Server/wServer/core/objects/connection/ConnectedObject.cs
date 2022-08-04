@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 
-namespace wServer.core.objects
+namespace wServer.core.objects.connection
 {
     public class ConnectedObject : StaticObject
     {
         public ConnectedObject(CoreServerManager manager, ushort objType) : base(manager, objType, null, true, false, true)
         { }
 
-        public ConnectionInfo Connection { get; set; }
+        public ConnectedObjectInfo Connection { get; set; }
 
         public override bool HitByProjectile(Projectile projectile, TickTime time) => true;
 

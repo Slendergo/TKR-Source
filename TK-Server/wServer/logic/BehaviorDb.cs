@@ -84,7 +84,6 @@ namespace wServer.logic
                     if (defs.Length > 0)
                     {
                         var loot = new Loot(defs);
-                        rootState.Death += (sender, e) => loot.Handle((Enemy)e.Host, e.Time);
                         InitDb.Definitions.Add(dat.IdToObjectType[id], new Tuple<State, Loot>(rootState, loot));
                     }
                     else

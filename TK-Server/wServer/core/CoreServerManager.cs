@@ -146,6 +146,7 @@ namespace wServer.core
 
             BehaviorDb = new BehaviorDb(this);
             SLogger.Instance.Info("Created BehaviorDb");
+
             CommandManager = new CommandManager(this);
             SLogger.Instance.Info("Created CommandManager");
 

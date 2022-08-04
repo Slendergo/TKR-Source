@@ -9,9 +9,13 @@ namespace wServer.logic.behaviors
 
         public OnDeathBehavior(Behavior behavior) => this.behavior = behavior;
 
-        protected internal override void Resolve(State parent) => parent.Death += (s, e) => behavior.OnStateEntry(e.Host, e.Time);
+        public override void OnDeath(Entity host, ref TickTime time)
+        {
+            behavior.OnStateEntry(host, time);
+        }
 
         protected override void TickCore(Entity host, TickTime time, ref object state)
-        { }
+        {
+        }
     }
 }

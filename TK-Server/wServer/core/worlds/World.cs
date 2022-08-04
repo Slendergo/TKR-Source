@@ -69,7 +69,7 @@ namespace wServer.core.worlds
         public ConcurrentDictionary<int, StaticObject> StaticObjects { get; private set; } = new ConcurrentDictionary<int, StaticObject>();
         public ConcurrentDictionary<int, Container> Containers { get; private set; } = new ConcurrentDictionary<int, Container>();
         public ConcurrentDictionary<int, Pet> Pets { get; private set; } = new ConcurrentDictionary<int, Pet>();
-        public ConcurrentDictionary<Tuple<int, byte>, Projectile> Projectiles { get; private set; }
+        public ConcurrentDictionary<Tuple<int, byte>, Projectile> Projectiles { get; private set; } = new ConcurrentDictionary<Tuple<int, byte>, Projectile>();
         public List<WorldTimer> Timers { get; private set; } = new List<WorldTimer>();
 
         public readonly WorldBranch WorldBranch;
@@ -89,8 +89,6 @@ namespace wServer.core.worlds
             Blocking = resource.VisibilityType;
             AllowTeleport = true;
             ShowDisplays = true;
-            Persist = false; // if false, attempts to delete world with 0 players
-            Blocking = 0; // toggles sight block (0 disables sight block)
 
             IsRealm = false;
 
@@ -477,13 +475,6 @@ namespace wServer.core.worlds
 
             EnemiesCollision = new CollisionMap<Entity>(0, w, h);
             PlayersCollision = new CollisionMap<Entity>(1, w, h);
-            Projectiles.Clear();
-            StaticObjects.Clear();
-            Containers.Clear();
-            Enemies.Clear();
-            Players.Clear();
-            Quests.Clear();
-            Timers.Clear();
 
             foreach (var i in Map.InstantiateEntities(Manager))
                 _ = EnterWorld(i);

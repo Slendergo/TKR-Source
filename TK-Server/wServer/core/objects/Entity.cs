@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using wServer.core.objects.connection;
 using wServer.core.objects.vendors;
 using wServer.core.worlds;
 using wServer.logic;
@@ -263,7 +264,7 @@ namespace wServer.core.objects
             return ret;
         }
 
-        public void Destroy()
+        public virtual void Destroy()
         {
             IsRemovedFromWorld = true;
 

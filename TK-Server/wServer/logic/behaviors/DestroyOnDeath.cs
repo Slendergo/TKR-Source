@@ -9,17 +9,18 @@ namespace wServer.logic.behaviors
 
         public DestroyOnDeath(string target) => _target = target;
 
-        protected internal override void Resolve(State parent) => parent.Death += (sender, e) =>
+        public override void OnDeath(Entity host, ref TickTime time)
         {
-            var owner = e.Host.World;
-            var entities = e.Host.GetNearestEntitiesByName(250, _target);
+            var owner = host.World;
+            var entities = host.GetNearestEntitiesByName(250, _target);
 
             if (entities != null)
-                foreach (Entity ent in entities)
+                foreach (var ent in entities)
                     owner.LeaveWorld(ent);
-        };
+        }
 
         protected override void TickCore(Entity host, TickTime time, ref object state)
-        { }
+        {
+        }
     }
 }

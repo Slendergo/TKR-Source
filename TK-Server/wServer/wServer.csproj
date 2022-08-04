@@ -180,6 +180,8 @@
     <Compile Include="core\net\handlers\AcceptTradeMessageHandler.cs" />
     <Compile Include="core\net\handlers\BuyMessageHandler.cs" />
     <Compile Include="core\objects\containers\SpecialChest.cs" />
+    <Compile Include="core\objects\player\Player.PotionStorage.cs" />
+    <Compile Include="core\objects\player\Player.Stats.cs" />
     <Compile Include="core\setpieces\JuliusCeasar.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
@@ -225,10 +227,9 @@
     <Compile Include="core\miscfile\TickThreadSingle.cs" />
     <Compile Include="core\miscfile\TimedPosition.cs" />
     <Compile Include="core\miscfile\TradeItem.cs" />
-    <Compile Include="core\objects\ConnectionComputer.cs" />
-    <Compile Include="core\objects\ConnectionInfo.cs" />
-    <Compile Include="core\objects\ConnectionType.cs" />
-    <Compile Include="core\objects\player\IPlayer.cs" />
+    <Compile Include="core\objects\connection\ConnectionComputer.cs" />
+    <Compile Include="core\objects\connection\ConnectedObjectInfo.cs" />
+    <Compile Include="core\objects\connection\ConnectionType.cs" />
     <Compile Include="core\objects\player\Player.Shoot.cs" />
     <Compile Include="core\objects\player\PlayerShootStatus.cs" />
     <Compile Include="core\objects\player\PlayerUpdate.cs" />
@@ -391,7 +392,6 @@
     <Compile Include="logic\transitions\NoEntityWithinTransition.cs" />
     <Compile Include="logic\transitions\NoPlayerWithinTransition.cs" />
     <Compile Include="logic\transitions\NotMovingTransition.cs" />
-    <Compile Include="logic\transitions\OnParentDeathTransition.cs" />
     <Compile Include="logic\transitions\PlayerTextTransition.cs" />
     <Compile Include="logic\transitions\PlayerWithinTransition.cs" />
     <Compile Include="logic\transitions\TimedRandomTransition.cs" />
@@ -506,7 +506,7 @@
     <Compile Include="core\commands\UnrankedCommands.cs" />
     <Compile Include="core\miscfile\DbEvents.cs" />
     <Compile Include="core\objects\Character.cs" />
-    <Compile Include="core\objects\ConnectedObject.cs" />
+    <Compile Include="core\objects\connection\ConnectedObject.cs" />
     <Compile Include="core\objects\containers\Container.cs" />
     <Compile Include="core\objects\Decoy.cs" />
     <Compile Include="core\objects\Enemy.cs" />

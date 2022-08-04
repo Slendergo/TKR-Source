@@ -1,4 +1,4 @@
-﻿namespace wServer.core.objects
+﻿namespace wServer.core.objects.connection
 {
     public enum ConnectionType
     {

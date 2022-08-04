@@ -1,5 +1,6 @@
 ﻿using System;
 using wServer.core.objects;
+using wServer.core.objects.connection;
 using wServer.core.worlds;
 
 namespace wServer.core.setpieces

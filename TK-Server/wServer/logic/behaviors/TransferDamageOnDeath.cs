@@ -14,16 +14,16 @@ namespace wServer.logic.behaviors
             _radius = radius;
         }
 
-        protected internal override void Resolve(State parent) => parent.Death += (sender, e) =>
+        public override void OnDeath(Entity host, ref TickTime time)
         {
-            if (!(e.Host is Enemy enemy))
+            if (!(host is Enemy enemy))
                 return;
 
-            if (!(e.Host.GetNearestEntity(_radius, _target) is Enemy targetObj))
+            if (!(host.GetNearestEntity(_radius, _target) is Enemy targetObj))
                 return;
 
             enemy.DamageCounter.TransferData(targetObj.DamageCounter);
-        };
+        }
 
         protected override void TickCore(Entity host, TickTime time, ref object state)
         { }

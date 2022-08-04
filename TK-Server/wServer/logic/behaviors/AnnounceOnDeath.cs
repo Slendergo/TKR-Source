@@ -1,5 +1,4 @@
-﻿using CA.Extensions.Concurrent;
-using System.Linq;
+﻿using System.Linq;
 using System.Text;
 using wServer.core;
 using wServer.core.objects;
@@ -15,29 +14,29 @@ namespace wServer.logic.behaviors
 
         public AnnounceOnDeath(string msg) => _message = msg;
 
-        protected internal override void Resolve(State parent) => parent.Death += (sender, e) =>
+        public override void OnDeath(Entity host, ref TickTime time)
         {
-            if (e.Host.Spawned || e.Host.World is TestWorld)
+            if (host.Spawned || host.World is TestWorld)
                 return;
 
-            var owner = e.Host.World;
+            var owner = host.World;
             var sb = new StringBuilder();
             var players = owner.Players.Values.Where(_ => _.Client != null).ToArray();
             for (var i = 0; i < players.Length; i++)
             {
                 if (i != 0)
                     sb.Append(", ");
-
-                sb.Append(players[i].Name);
+                 _ = sb.Append(players[i].Name);
             }
 
             var playerList = sb.ToString();
             var playerCount = owner.Players.Count(p => p.Value.Client != null).ToString();
             var announcement = _message.Replace(PLAYER_COUNT, playerCount).Replace(PLAYER_LIST, playerList);
-            e.Host.CoreServerManager.ChatManager.Announce(announcement);
-        };
+            host.CoreServerManager.ChatManager.Announce(announcement);
+        }
 
         protected override void TickCore(Entity host, TickTime time, ref object state)
-        { }
+        {
+        }
     }
 }

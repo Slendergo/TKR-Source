@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace wServer.core.objects
+namespace wServer.core.objects.connection
 {
-    public class ConnectionInfo
+    public class ConnectedObjectInfo
     {
-        public static readonly Dictionary<uint, ConnectionInfo> Infos = new Dictionary<uint, ConnectionInfo>();
-        public static readonly Dictionary<Tuple<ConnectionType, int>, ConnectionInfo> Infos2 = new Dictionary<Tuple<ConnectionType, int>, ConnectionInfo>();
+        public static readonly Dictionary<uint, ConnectedObjectInfo> Infos = new Dictionary<uint, ConnectedObjectInfo>();
+        public static readonly Dictionary<Tuple<ConnectionType, int>, ConnectedObjectInfo> Infos2 = new Dictionary<Tuple<ConnectionType, int>, ConnectedObjectInfo>();
 
-        static ConnectionInfo()
+        static ConnectedObjectInfo()
         {
             Build(0x02020202, ConnectionType.Dot);          //1111
             Build(0x01020202, ConnectionType.ShortLine);    //0111
@@ -18,7 +18,7 @@ namespace wServer.core.objects
             Build(0x01010101, ConnectionType.Cross);        //0000
         }
 
-        private ConnectionInfo(uint bits, ConnectionType type, int rotation)
+        private ConnectedObjectInfo(uint bits, ConnectionType type, int rotation)
         {
             Bits = bits;
             Type = type;
@@ -36,7 +36,7 @@ namespace wServer.core.objects
             for (var i = 0; i < 4; i++)
                 if (!Infos.ContainsKey(bits))
                 {
-                    Infos[bits] = Infos2[Tuple.Create(type, i * 90)] = new ConnectionInfo(bits, type, i * 90);
+                    Infos[bits] = Infos2[Tuple.Create(type, i * 90)] = new ConnectedObjectInfo(bits, type, i * 90);
                     bits = (bits >> 8) | (bits << 24);
                 }
         }

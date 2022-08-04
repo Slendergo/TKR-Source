@@ -48,7 +48,7 @@
       <Index>0x65</Index>
     </Texture>
     <SlotType>25</SlotType>
-    <Description>One of Dr. Terrible’s renowned deranged experiments. Even though the procedure to create the shuriken wasn’t complete, there’s nothing a little extra acid can’t fix.</Description>
+    <Description>One of Dr. Terrible's renowned deranged experiments. Even though the procedure to create the shuriken wasn't complete, there's nothing a little extra acid can't fix.</Description>
     <Sound>spell/fire_spray</Sound>
     <ExtraTooltipData>
       <EffectInfo name="While Key Held" description="" />

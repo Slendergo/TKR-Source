@@ -31,7 +31,7 @@
     </Texture>
     <SlotType>23</SlotType>
     <Legendary />
-    <Description>A scepter made from the dormant power of the Megamoth’s cocoon after chrysalis.</Description>
+    <Description>A scepter made from the dormant power of the Megamoth's cocoon after chrysalis.</Description>
     <Sound>spell/magic_nova</Sound>
     <ActivateOnEquip stat="21" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="6">IncrementStat</ActivateOnEquip>

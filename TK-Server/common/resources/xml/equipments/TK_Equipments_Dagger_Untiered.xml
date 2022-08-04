@@ -313,7 +313,7 @@
     <BagType>4</BagType>
     <OldSound>daggerSwing</OldSound>
   </Object>
-  <Object type="0x48e0" id="Tribesmen’s Shank">
+  <Object type="0x48e0" id="Tribesmen's Shank">
     <Class>Equipment</Class>
     <Item />
     <Rare />
@@ -340,7 +340,7 @@
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
     <feedPower>800</feedPower>
-    <DisplayId>Tribesmen’s Shank</DisplayId>
+    <DisplayId>Tribesmen's Shank</DisplayId>
   </Object>
  <!-- <Object type="0x515b" id="Lust"> 
     <Class>Equipment</Class>

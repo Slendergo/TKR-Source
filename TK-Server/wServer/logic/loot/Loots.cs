@@ -95,8 +95,8 @@ namespace wServer.logic.loot
             // configure custom items
             DropRates.ORYX_ITEMS_NAMES = new[]
             {
-                "Oryx’s Armor of War",
-                "Oryx’s Broken Helm",
+                "Oryx's Armor of War",
+                "Oryx's Broken Helm",
                 "Shattered Horn of Oryx",
                 "The Horn Breaker"
             };

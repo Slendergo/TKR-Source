@@ -62,7 +62,7 @@
       <Index>0x13</Index>
     </Texture>
     <SlotType>10</SlotType>
-    <Description>A gem brimming with vitality. So long as it’s held, properties of health regeneration will increase. </Description>
+    <Description>A gem brimming with vitality. So long as it's held, properties of health regeneration will increase. </Description>
     <Sound>use_potion</Sound>
     <ExtraTooltipData>
       <EffectInfo name="Power of Life" description="If your Life is below half, you regenerate the quintuple fast." />
@@ -80,7 +80,7 @@
       <Index>0x17</Index>
     </Texture>
     <SlotType>10</SlotType>
-    <Description>This talisman contains the Power of Luck. So long as it’s held, luck will increase.</Description>
+    <Description>This talisman contains the Power of Luck. So long as it's held, luck will increase.</Description>
     <Sound>use_potion</Sound>
     <Legendary />
     <ExtraTooltipData>
@@ -102,7 +102,7 @@
     <StatSetNoStack>0</StatSetNoStack>
     <AmountSetNoStack>100</AmountSetNoStack>
     <SlotType>10</SlotType>
-    <Description>A sundered chunk from the Marble Colossus. So long as it’s held, the power of the Colossus will flow through you.</Description>
+    <Description>A sundered chunk from the Marble Colossus. So long as it's held, the power of the Colossus will flow through you.</Description>
     <ExtraTooltipData>
       <EffectInfo name="Marble Power" description="While holding this item, you will be immune to Unstable." />
       <EffectInfo name="Immune to Unstable." description="" />
@@ -116,7 +116,7 @@
     <Item />
     <HoldableItem />
     <ExtraTooltipData>
-      <EffectInfo name="Looting:" description="Holding this item gives you 20% loot chance! (One per Inventory). This talisman contains the Power of Luck. So long as it’s held, luck will increase." />
+      <EffectInfo name="Looting:" description="Holding this item gives you 20% loot chance! (One per Inventory). This talisman contains the Power of Luck. So long as it's held, luck will increase." />
     </ExtraTooltipData>
     <Texture>
       <File>CustomObj</File>

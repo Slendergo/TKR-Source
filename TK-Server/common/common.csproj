@@ -291,7 +291,9 @@
     <Content Include="resources\web\music\wanderlust.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="resources\web\sfx\weapon\spear_woosh.mp3" />
+    <Content Include="resources\web\sfx\weapon\spear_woosh.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="resources\xml\characters\TK_Characters_buffedBunnyObjects16x16.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

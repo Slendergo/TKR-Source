@@ -186,10 +186,10 @@ namespace wServer.logic
 
             new Threshold(0.001,
                 new ItemLoot("Crafting Material 1", 0.05),
-                new ItemLoot("Forbidden Jungle’s Seal", 0.015),
+                new ItemLoot("Forbidden Jungle's Seal", 0.015),
                 new ItemLoot("Shield of the Forest", 0.01),
                 new ItemLoot("Cometfell Katana", 0.01),
-                new ItemLoot("Forest’s Call", 0.015),
+                new ItemLoot("Forest's Call", 0.015),
                 new ItemLoot("Potion of Wisdom", 1),
                 new ItemLoot("Potion of Speed", 1),
                 new ItemLoot("Potion of Wisdom", 0.5),

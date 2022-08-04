@@ -89,7 +89,7 @@
     <FameBonus>7</FameBonus>
     <DisplayId>Guardian's Clad</DisplayId>
   </Object>
-  <Object type="0x5070" id="Oryx’s Armor of War">
+  <Object type="0x5070" id="Oryx's Armor of War">
     <Class>Equipment</Class>
     <Item />
     <GodBless />
@@ -99,13 +99,13 @@
       <Index>0x80</Index>
     </Texture>
     <SlotType>7</SlotType>
-    <Description>During Oryx’s conquest over the realm, this heavy armor was one of the main factors that allowed him to rule with an iron fist. Almandine plates cover gems that radiate with life force.</Description>
+    <Description>During Oryx's conquest over the realm, this heavy armor was one of the main factors that allowed him to rule with an iron fist. Almandine plates cover gems that radiate with life force.</Description>
     <ActivateOnEquip stat="20" amount="8">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="23">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="15">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
-    <DisplayId>Oryx’s Armor of War</DisplayId>
+    <DisplayId>Oryx's Armor of War</DisplayId>
   </Object>
 </Objects>

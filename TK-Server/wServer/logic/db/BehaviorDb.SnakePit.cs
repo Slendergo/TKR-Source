@@ -67,7 +67,7 @@ namespace wServer.logic
                 new ItemLoot("Potion of Speed", 1),
                 new ItemLoot("Potion of Speed", 1),
                 new ItemLoot("Hebikira", 0.01),
-                new ItemLoot("Snake Queen’s Hide", 0.01),
+                new ItemLoot("Snake Queen's Hide", 0.01),
                 new ItemLoot("Star of Stheno", 0.01),
                 new ItemLoot("Spirit of Snakes", 0.01),
                 new ItemLoot("Snake Pit Key", 0.1),

@@ -101,10 +101,10 @@
     <FameBonus>4</FameBonus>
     <feedPower>435</feedPower>
   </Object>
-  <Object type="0x5069" id="Snake Queen’s Hide">
+  <Object type="0x5069" id="Snake Queen's Hide">
     <Class>Equipment</Class>
     <Item />
-    <DisplayId>Snake Queen’s Hide</DisplayId>
+    <DisplayId>Snake Queen's Hide</DisplayId>
     <Texture>
       <File>CustomObj</File>
       <Index>0x7a</Index>

@@ -681,7 +681,7 @@ namespace wServer.logic
 
                 ),
             new Threshold(0.05,
-                new ItemLoot("The Sentinel’s Insignia", 0.0014)
+                new ItemLoot("The Sentinel's Insignia", 0.0014)
                 //new ItemLoot("Blade of the Protector", 0.0015),
                 //new ItemLoot("Guardian's Clad", 0.0015)
                 ),

@@ -399,7 +399,7 @@
     <FameBonus>6</FameBonus>
     <DisplayId>Thorn</DisplayId>
   </Object>
-  <Object type="0x5022" id="Tormentor’s Wrath">
+  <Object type="0x5022" id="Tormentor's Wrath">
     <Class>Equipment</Class>
     <Item />
     <Texture>
@@ -408,7 +408,7 @@
     </Texture>
     <SlotType>8</SlotType>
     <SPlus />
-    <Description>Tormented souls lay dormant in this wand’s crystal, supplying it with power. Choose to use that power for good or for evil…</Description>
+    <Description>Tormented souls lay dormant in this wand's crystal, supplying it with power. Choose to use that power for good or for evil…</Description>
     <RateOfFire>1</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
@@ -426,6 +426,6 @@
     <ArcGap>11</ArcGap>
     <BagType>7</BagType>
     <FameBonus>5</FameBonus>
-    <DisplayId>Tormentor’s Wrath</DisplayId>
+    <DisplayId>Tormentor's Wrath</DisplayId>
   </Object>
 </Objects>

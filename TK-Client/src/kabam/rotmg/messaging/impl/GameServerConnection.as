@@ -160,7 +160,6 @@ import kabam.rotmg.messaging.impl.outgoing.InvSwap;
 import kabam.rotmg.messaging.impl.outgoing.JoinGuild;
 import kabam.rotmg.messaging.impl.outgoing.Load;
 import kabam.rotmg.messaging.impl.outgoing.Move;
-import kabam.rotmg.messaging.impl.outgoing.Options;
 import kabam.rotmg.messaging.impl.outgoing.OtherHit;
 import kabam.rotmg.messaging.impl.outgoing.PlayerHit;
 import kabam.rotmg.messaging.impl.outgoing.PlayerShoot;

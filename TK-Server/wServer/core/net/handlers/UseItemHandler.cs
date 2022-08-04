@@ -6,21 +6,15 @@ namespace wServer.core.net.handlers
 {
     public class UseItemHandler : IMessageHandler
     {
-        public int Time { get; set; }
-        public ObjectSlot SlotObject { get; set; }
-        public Position ItemUsePos { get; set; }
-        public byte UseType { get; set; }
-        public byte SellMaxed { get; set; }
-
         public override PacketId MessageId => PacketId.USEITEM;
 
         public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
         {
-            Time = rdr.ReadInt32();
-            SlotObject = ObjectSlot.Read(rdr);
-            ItemUsePos = Position.Read(rdr);
-            UseType = rdr.ReadByte();
-            SellMaxed = rdr.ReadByte();
+            var Time = rdr.ReadInt32();
+            var SlotObject = ObjectSlot.Read(rdr);
+            var ItemUsePos = Position.Read(rdr);
+            var UseType = rdr.ReadByte();
+            var SellMaxed = rdr.ReadByte();
 
             var player = client.Player;
             if (player?.World == null)

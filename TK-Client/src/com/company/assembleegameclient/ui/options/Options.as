@@ -242,7 +242,6 @@ public class Options extends Sprite
       this.setSelected(this.tabs_[0]);
       stage.addEventListener(KeyboardEvent.KEY_DOWN,this.onKeyDown,false,1);
       stage.addEventListener(KeyboardEvent.KEY_UP,this.onKeyUp,false,1);
-      GameServerConnection.instance.options();
    }
 
    private function onRemovedFromStage(event:Event) : void

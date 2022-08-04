@@ -249,7 +249,6 @@ public class Options extends Sprite
    {
       stage.removeEventListener(KeyboardEvent.KEY_DOWN,this.onKeyDown,false);
       stage.removeEventListener(KeyboardEvent.KEY_UP,this.onKeyUp,false);
-      GameServerConnection.instance.options();
    }
 
    private function onKeyDown(event:KeyboardEvent) : void

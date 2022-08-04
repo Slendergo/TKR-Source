@@ -6,7 +6,7 @@ namespace wServer.networking.packets.outgoing.market
     {
         public override Packet CreateInstance() => new MarketAddResult();
 
-        public override PacketId ID => PacketId.MARKET_ADD_RESULT;
+        public override PacketId MessageID => PacketId.MARKET_ADD_RESULT;
 
         public const int INVALID_UPTIME = 0;
         public const int SLOT_IS_NULL = 1;

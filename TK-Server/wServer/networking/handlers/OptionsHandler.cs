@@ -7,6 +7,8 @@ namespace wServer.networking.handlers
     {
         public override PacketId ID => PacketId.OPTIONS;
 
-        protected override void HandlePacket(Client client, Options packet) => client.DisableAllyShoot = packet.AllyShots;
+        protected override void HandlePacket(Client client, Options packet) {
+        }
+
     }
 }

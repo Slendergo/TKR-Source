@@ -8,7 +8,7 @@ namespace wServer.networking.packets.incoming
         public bool Add { get; set; }
         public int ObjectId { get; set; }
 
-        public override PacketId ID => PacketId.EDITACCOUNTLIST;
+        public override PacketId MessageID => PacketId.EDITACCOUNTLIST;
 
         public override Packet CreateInstance()
         {

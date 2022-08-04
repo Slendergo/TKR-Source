@@ -27,7 +27,7 @@ namespace wServer.networking.handlers
             }
 
             var playersIds = new ConcurrentBag<int>();
-            client.Player.World.PlayersBroadcastAsParallel(_ =>
+            client.Player.World.ForeachPlayer(_ =>
             {
                 if (_.Guild != player.Guild)
                     return;

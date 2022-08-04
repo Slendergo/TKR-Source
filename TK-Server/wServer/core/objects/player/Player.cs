@@ -882,13 +882,8 @@ namespace wServer.core.objects
                 try
                 {
                     var packet = Packet.Packets[pending.Id].CreateInstance();
-                    //packet.Read(pending.Item1, pending.Item4, 0, pending.Item4.Length);
-
                     using (var rdr = new NReader(new MemoryStream(pending.Payload)))
-                    {
                         packet.ReadNew(rdr);
-                    }
-
                     pending.Client.ProcessPacket(packet);
                 }
                 catch (Exception e)
@@ -1065,7 +1060,7 @@ namespace wServer.core.objects
                     Color = new ARGB(0xFFFFFFFF)
                 }
             };
-            World.PlayersBroadcastAsParallel(_ =>
+            World.ForeachPlayer(_ =>
             {
                 _.AwaitGotoAck(time.TotalElapsedMs);
                 _._tps += 1;
@@ -1301,7 +1296,7 @@ namespace wServer.core.objects
             {
                 CoreServerManager.WorldManager
                     .WorldsBroadcastAsParallel(_ =>
-                        _.PlayersBroadcastAsParallel(__ =>
+                        _.ForeachPlayer(__ =>
                             __.DeathNotif(deathMessage)
                         )
                     );
@@ -1315,14 +1310,14 @@ namespace wServer.core.objects
             {
                 CoreServerManager.WorldManager
                     .WorldsBroadcastAsParallel(_ =>
-                        _.PlayersBroadcastAsParallel(__ =>
+                        _.ForeachPlayer(__ =>
                         {
                             if (__.Client.Account.GuildId == pGuild)
                                 __.DeathNotif(deathMessage);
                         })
                     );
 
-                World.PlayersBroadcastAsParallel(_ =>
+                World.ForeachPlayer(_ =>
                 {
                     if (_.Client.Account.GuildId != pGuild)
                         _.DeathNotif(deathMessage);
@@ -1330,7 +1325,7 @@ namespace wServer.core.objects
             }
             else
                 // guild less case
-                World.PlayersBroadcastAsParallel(_ => _.DeathNotif(deathMessage));
+                World.ForeachPlayer(_ => _.DeathNotif(deathMessage));
         }
 
         private void Clarification(int slot)
@@ -1640,7 +1635,7 @@ namespace wServer.core.objects
                     continue;
 
                 Inventory[i] = null;
-                World.PlayersBroadcastAsParallel(_ => _.SendInfo($"{Name}'s {item.DisplayName} breaks and he disappears"));
+                World.ForeachPlayer(_ => _.SendInfo($"{Name}'s {item.DisplayName} breaks and he disappears"));
                 ReconnectToNexus();
                 return true;
             }

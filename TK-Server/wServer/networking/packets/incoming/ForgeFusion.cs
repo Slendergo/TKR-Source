@@ -6,7 +6,7 @@ namespace wServer.networking.packets.incoming
     {
         public ForgeItem[] myInventory { get; set; }
 
-        public override PacketId ID => PacketId.FORGEFUSION;
+        public override PacketId MessageID => PacketId.FORGEFUSION;
 
         public override Packet CreateInstance()
         {

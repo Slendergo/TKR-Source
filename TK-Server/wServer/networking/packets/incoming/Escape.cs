@@ -4,7 +4,7 @@ namespace wServer.networking.packets.incoming
 {
     public class Escape : IncomingMessage
     {
-        public override PacketId ID => PacketId.ESCAPE;
+        public override PacketId MessageID => PacketId.ESCAPE;
 
         public override Packet CreateInstance()
         {

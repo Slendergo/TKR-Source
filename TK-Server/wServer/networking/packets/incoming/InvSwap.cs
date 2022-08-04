@@ -9,7 +9,7 @@ namespace wServer.networking.packets.incoming
         public ObjectSlot SlotObj1 { get; set; }
         public ObjectSlot SlotObj2 { get; set; }
 
-        public override PacketId ID => PacketId.INVSWAP;
+        public override PacketId MessageID => PacketId.INVSWAP;
 
         public override Packet CreateInstance()
         {

@@ -22,7 +22,7 @@ namespace wServer.logic.behaviors
 
             var owner = e.Host.World;
             var sb = new StringBuilder();
-            var players = owner.Players.ValueWhereAsParallel(_ => _.Client != null);
+            var players = owner.Players.Values.Where(_ => _.Client != null).ToArray();
             for (var i = 0; i < players.Length; i++)
             {
                 if (i != 0)

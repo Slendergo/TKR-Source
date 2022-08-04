@@ -7,7 +7,7 @@ namespace wServer.networking.packets.incoming
         public int BountyId { get; set; }
         public int[] PlayersAllowed { get; set; }
 
-        public override PacketId ID => PacketId.BOUNTYREQUEST;
+        public override PacketId MessageID => PacketId.BOUNTYREQUEST;
 
         public override Packet CreateInstance()
         {

@@ -10,7 +10,7 @@ namespace wServer.networking.packets.incoming
         public bool Killed { get; set; }
         public ushort ItemType { get; set; }
 
-        public override PacketId ID => PacketId.ENEMYHIT;
+        public override PacketId MessageID => PacketId.ENEMYHIT;
 
         public override Packet CreateInstance()
         {

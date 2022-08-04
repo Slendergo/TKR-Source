@@ -887,10 +887,9 @@ namespace wServer.core.objects
                 Color = new ARGB(eff.Color != 0 ? eff.Color : 0xFFFF00AA)
             };
 
-            var players = World.Players
-                .ValueWhereAsParallel(_ => _.DistSqr(this) < PlayerUpdate.VISIBILITY_RADIUS_SQR);
-            for (var i = 0; i < players.Length; i++)
-                players[i].Client.SendPackets(batch, PacketPriority.Low);
+            foreach (var player in World.Players.Values)
+                if(player.DistSqr(this) < PlayerUpdate.VISIBILITY_RADIUS_SQR)
+                   player.Client.SendPackets(batch, PacketPriority.Low);
         }
 
         private void AEClearConditionEffectAura(TickTime time, Item item, Position target, ActivateEffect eff)
@@ -1009,7 +1008,7 @@ namespace wServer.core.objects
                 ObjectId = Id,
                 Message = openedByMsg
             }, PacketPriority.Low);
-            World.PlayersBroadcastAsParallel(_ => _.SendInfo(openedByMsg));
+            World.ForeachPlayer(_ => _.SendInfo(openedByMsg));
         }
 
         private void AEDecoy(TickTime time, Item item, Position target, ActivateEffect eff)
@@ -1397,7 +1396,7 @@ namespace wServer.core.objects
                             Y = y
                         },
                         Pos2 = new Position() { X = 350 }
-                    }, target, PacketPriority.Low);
+                    }, ref target, PacketPriority.Low);
                 }
                 return;
             }
@@ -1927,7 +1926,7 @@ namespace wServer.core.objects
                 Color = new ARGB(0xff9000ff),
                 TargetObjectId = Id,
                 Pos1 = target
-            }, target, PacketPriority.Low);
+            }, ref target, PacketPriority.Low);
 
             World.Timers.Add(new WorldTimer(1500, (world, t) =>
             {
@@ -1943,7 +1942,7 @@ namespace wServer.core.objects
 
             //// find locked portal
             //var portals = World.StaticObjects
-            //    .ValueWhereAsParallel(_ => _ is Portal
+            //    .Values.Where(_ => _ is Portal
             //    && _.ObjectDesc.ObjectId.Equals(eff.LockedName)
             //    && _.DistSqr(this) <= 9d)
             //    .Select(_ => _ as Portal);
@@ -2110,8 +2109,8 @@ namespace wServer.core.objects
                 }
             };
 
-            World.BroadcastIfVisible(pkts[0], target, PacketPriority.Low);
-            World.BroadcastIfVisible(pkts[1], target, PacketPriority.Low);
+            World.BroadcastIfVisible(pkts[0], ref target, PacketPriority.Low);
+            World.BroadcastIfVisible(pkts[1], ref target, PacketPriority.Low);
 
             var totalDmg = 0;
             var effDamage = eff.UseWisMod ? UseWisMod(eff.TotalDamage) : eff.TotalDamage;
@@ -2146,7 +2145,7 @@ namespace wServer.core.objects
                         TargetObjectId = b.Id,
                         Pos1 = new Position() { X = a.X, Y = a.Y },
                         Color = new ARGB(0xffffffff)
-                    }, target, PacketPriority.Low);
+                    }, ref target, PacketPriority.Low);
                 }
             }
         }
@@ -2268,7 +2267,7 @@ namespace wServer.core.objects
                 Pos1 = target,
                 Pos2 = new Position() { X = target.X + 3, Y = target.Y },
                 Color = new ARGB(0xffffffff)
-            }, target, PacketPriority.Low);
+            }, ref target, PacketPriority.Low);
 
             World.AOE(target, 3, false, enemy =>
             {

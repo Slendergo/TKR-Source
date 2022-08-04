@@ -7,7 +7,7 @@ namespace wServer.networking.packets.incoming
         public byte Type { get; private set; }
         public byte Action { get; private set; }
 
-        public override PacketId ID => PacketId.POTION_STORAGE_INTERACTION;
+        public override PacketId MessageID => PacketId.POTION_STORAGE_INTERACTION;
 
         public override Packet CreateInstance() => new PotionStorageInteraction();
 

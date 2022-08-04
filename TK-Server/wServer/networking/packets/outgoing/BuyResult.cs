@@ -17,7 +17,7 @@ namespace wServer.networking.packets.outgoing
         public int Result { get; set; }
         public string ResultString { get; set; }
 
-        public override PacketId ID => PacketId.BUYRESULT;
+        public override PacketId MessageID => PacketId.BUYRESULT;
 
         public override Packet CreateInstance()
         {

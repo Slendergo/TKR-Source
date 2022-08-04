@@ -23,7 +23,7 @@ namespace wServer.networking.packets.outgoing
         public List<ObjectDef> NewObjs { get; set; }
         public List<int> Drops { get; set; }
 
-        public override PacketId ID => PacketId.UPDATE;
+        public override PacketId MessageID => PacketId.UPDATE;
 
         public override Packet CreateInstance()
         {

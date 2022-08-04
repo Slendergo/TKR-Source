@@ -6,7 +6,7 @@ namespace wServer.networking.packets.incoming
     {
         public string Name;
 
-        public override PacketId ID => PacketId.GUILDINVITE;
+        public override PacketId MessageID => PacketId.GUILDINVITE;
 
         public override Packet CreateInstance()
         {

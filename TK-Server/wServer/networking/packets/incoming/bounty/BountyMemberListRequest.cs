@@ -4,7 +4,7 @@ namespace wServer.networking.packets.incoming
 {
     public class BountyMemberListRequest : IncomingMessage
     {
-        public override PacketId ID => PacketId.BOUNTYMEMBERLISTREQUEST;
+        public override PacketId MessageID => PacketId.BOUNTYMEMBERLISTREQUEST;
 
         public override Packet CreateInstance()
         {

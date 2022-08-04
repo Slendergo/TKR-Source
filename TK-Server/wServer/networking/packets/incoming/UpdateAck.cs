@@ -4,7 +4,7 @@ namespace wServer.networking.packets.incoming
 {
     public class UpdateAck : IncomingMessage
     {
-        public override PacketId ID => PacketId.UPDATEACK;
+        public override PacketId MessageID => PacketId.UPDATEACK;
 
         public override Packet CreateInstance()
         {

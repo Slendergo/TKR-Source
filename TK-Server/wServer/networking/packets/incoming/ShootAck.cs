@@ -6,7 +6,7 @@ namespace wServer.networking.packets.incoming
     {
         public int Time { get; set; }
 
-        public override PacketId ID => PacketId.SHOOTACK;
+        public override PacketId MessageID => PacketId.SHOOTACK;
 
         public override Packet CreateInstance()
         {

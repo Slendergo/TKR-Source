@@ -6,7 +6,7 @@ namespace wServer.networking.packets.incoming
     {
         public string GuildName;
 
-        public override PacketId ID => PacketId.JOINGUILD;
+        public override PacketId MessageID => PacketId.JOINGUILD;
 
         public override Packet CreateInstance()
         {

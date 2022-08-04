@@ -13,7 +13,7 @@ namespace wServer.networking.packets.outgoing
         public byte NumShots { get; set; }
         public float AngleInc { get; set; }
 
-        public override PacketId ID => PacketId.ENEMYSHOOT;
+        public override PacketId MessageID => PacketId.ENEMYSHOOT;
 
         public override Packet CreateInstance()
         {

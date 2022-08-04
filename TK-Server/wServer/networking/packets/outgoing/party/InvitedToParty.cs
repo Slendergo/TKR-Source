@@ -8,7 +8,7 @@ namespace wServer.networking.packets.outgoing
 
         public int PartyId { get; set; }
 
-        public override PacketId ID => PacketId.INVITED_TO_PARTY;
+        public override PacketId MessageID => PacketId.INVITED_TO_PARTY;
 
         public override Packet CreateInstance()
         {

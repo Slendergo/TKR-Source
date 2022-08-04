@@ -7,7 +7,7 @@ namespace wServer.networking.packets.incoming
         public ushort ClassType { get; set; }
         public ushort SkinType { get; set; }
 
-        public override PacketId ID => PacketId.CREATE;
+        public override PacketId MessageID => PacketId.CREATE;
 
         public override Packet CreateInstance()
         {

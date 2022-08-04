@@ -1,5 +1,4 @@
-﻿using CA.Extensions.Concurrent;
-using common.database;
+﻿using common.database;
 using System;
 using System.Linq;
 using wServer.core.objects;
@@ -48,7 +47,7 @@ namespace wServer.core.commands
 
                 // kick player from server to set new gold
                 var client = player.CoreServerManager.ConnectionManager.Clients
-                    .KeyWhereAsParallel(_ => _.Account.Name.EqualsIgnoreCase(name))
+                    .Keys.Where(_ => _.Account.Name.EqualsIgnoreCase(name))
                     .SingleOrDefault();
                 client?.Disconnect("GrantGold");
 

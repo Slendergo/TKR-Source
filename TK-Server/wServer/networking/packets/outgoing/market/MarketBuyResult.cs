@@ -6,7 +6,7 @@ namespace wServer.networking.packets.outgoing.market
     {
         public override Packet CreateInstance() => new MarketBuyResult();
 
-        public override PacketId ID => PacketId.MARKET_BUY_RESULT;
+        public override PacketId MessageID => PacketId.MARKET_BUY_RESULT;
 
         public const int BOUGHT = -1;
         public const int ERROR = 1;

@@ -13,7 +13,7 @@ namespace wServer.networking.packets.outgoing
         public int ErrorId { get; set; }
         public string ErrorDescription { get; set; }
 
-        public override PacketId ID => PacketId.FAILURE;
+        public override PacketId MessageID => PacketId.FAILURE;
 
         public override Packet CreateInstance()
         {

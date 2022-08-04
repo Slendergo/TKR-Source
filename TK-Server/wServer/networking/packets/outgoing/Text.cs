@@ -15,7 +15,7 @@ namespace wServer.networking.packets.outgoing
         public int NameColor { get; set; } = 0;
         public int TextColor { get; set; } = 0;
 
-        public override PacketId ID => PacketId.TEXT;
+        public override PacketId MessageID => PacketId.TEXT;
 
         public override Packet CreateInstance()
         {

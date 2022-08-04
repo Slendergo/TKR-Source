@@ -1,7 +1,7 @@
-﻿using CA.Extensions.Concurrent;
-using common;
+﻿using common;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using wServer.core;
 using wServer.core.objects;
 using wServer.core.worlds.logic;
@@ -55,9 +55,11 @@ namespace wServer.logic
             }
 
             var lvlUps = 0;
-            var players = enemy.World.Players.ValueWhereAsParallel(_ => enemy.Dist(_) < 25d);
-            foreach (var player in players)
+            foreach (var player in enemy.World.Players.Values)
             {
+                if(enemy.Dist(player) < 25)
+                    continue;
+                
                 var level = player.Level;
                 var rank = player.Rank;
                 if (player.HasConditionEffect(common.resources.ConditionEffects.Paused))

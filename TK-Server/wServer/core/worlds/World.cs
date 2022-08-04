@@ -113,38 +113,38 @@ namespace wServer.core.worlds
         public virtual bool AllowedAccess(Client client) => !Closed || client.Account.Admin;
 
         public void Broadcast(OutgoingMessage outgoingMessage, PacketPriority priority = PacketPriority.Normal)
-            => PlayersBroadcastAsParallel(_ => _.Client.SendPacket(outgoingMessage, priority));
+            => ForeachPlayer(_ => _.Client.SendPacket(outgoingMessage, priority));
 
-        public void BroadcastIfVisible(OutgoingMessage outgoingMessage, Position worldPosData, PacketPriority priority = PacketPriority.Normal)
-            => PlayersBroadcastAsParallel(_ =>
-            {
-                if (_.Dist(worldPosData) <= 15d)
-                    _.Client.SendPacket(outgoingMessage, priority);
-            });
+        public void BroadcastIfVisible(OutgoingMessage outgoingMessage, ref Position worldPosData, PacketPriority priority = PacketPriority.Normal)
+        {
+            foreach (var player in Players.Values)
+                if (player.DistSqr(ref worldPosData) < PlayerUpdate.VISIBILITY_RADIUS_SQR)
+                    player.Client.SendPacket(outgoingMessage, priority);
+        }
 
         public void BroadcastIfVisible(OutgoingMessage outgoingMessage, Entity broadcaster, PacketPriority priority = PacketPriority.Normal)
-            => PlayersBroadcastAsParallel(_ =>
+            => ForeachPlayer(_ =>
             {
                 if (_.Dist(broadcaster) <= 15d)
                     _.Client.SendPacket(outgoingMessage, priority);
             });
 
         public void BroadcastIfVisibleExclude(OutgoingMessage outgoingMessage, Entity broadcaster, Entity exclude, PacketPriority priority = PacketPriority.Normal)
-            => PlayersBroadcastAsParallel(_ =>
+            => ForeachPlayer(_ =>
             {
                 if (_.Id != exclude.Id && _.Dist(broadcaster) <= 15d)
                     _.Client.SendPacket(outgoingMessage, priority);
             });
 
         public void BroadcastToPlayer(OutgoingMessage outgoingMessage, int playerId, PacketPriority priority = PacketPriority.Normal)
-            => PlayersBroadcastAsParallel(_ =>
+            => ForeachPlayer(_ =>
             {
                 if (_.Id == playerId)
                     _.Client.SendPacket(outgoingMessage, priority);
             });
 
         public void BroadcastToPlayers(OutgoingMessage outgoingMessage, List<int> playerIds, PacketPriority priority = PacketPriority.Normal)
-            => PlayersBroadcastAsParallel(_ =>
+            => ForeachPlayer(_ =>
             {
                 if (playerIds.Contains(_.Id))
                     _.Client.SendPacket(outgoingMessage, priority);
@@ -261,12 +261,7 @@ namespace wServer.core.worlds
 
         public int GetNextEntityId() => Interlocked.Increment(ref _entityInc);
 
-        public IEnumerable<Player> GetPlayers()
-        {
-            foreach (var player in Players)
-                if (player.Value != null)
-                    yield return player.Value;
-        }
+        public IEnumerable<Player> GetPlayers() => Players.Values;
 
         public Projectile GetProjectile(int objectId, int bulletId)
         {
@@ -379,14 +374,10 @@ namespace wServer.core.worlds
             entity.Destroy();
         }
 
-        public void PlayersBroadcastAsParallel(Action<Player> action)
+        public void ForeachPlayer(Action<Player> action)
         {
-            var players = GetPlayers();
-            players.AsParallel().Select(_ =>
-            {
-                action.Invoke(_);
-                return _;
-            }).ToArray();
+            foreach(var player in Players.Values)
+                action?.Invoke(player);
         }
 
         public void QuakeToWorld(World newWorld)
@@ -416,31 +407,22 @@ namespace wServer.core.worlds
                     Name = "Nexus"
                 };
 
-                w.PlayersBroadcastAsParallel(_ =>
-                    _.Client.Reconnect(
-                        _.HasConditionEffect(ConditionEffects.Paused)
-                            ? rcpPaused
-                            : rcpNotPaused
-                    )
-                );
+                w.ForeachPlayer(_ => _.Client.Reconnect(_.HasConditionEffect(ConditionEffects.Paused) ? rcpPaused : rcpNotPaused));
             }));
 
             if (!Persist)
                 Timers.Add(new WorldTimer(20000, (w2, t2) =>
                 {
                     // to ensure people get kicked out of world
-                    w2.PlayersBroadcastAsParallel(_ =>
-                        _.Client.Disconnect("QuakeToWorld")
-                    );
+                    w2.ForeachPlayer(_ => _.Client.Disconnect("QuakeToWorld"));
                 }));
         }
 
         public void WorldAnnouncement(string msg)
         {
             var announcement = string.Concat("<ANNOUNCMENT> ", msg);
-
-            foreach (var i in Players)
-                i.Value.SendInfo(announcement);
+            foreach (var player in Players.Values)
+                player.SendInfo(announcement);
         }
 
         protected void FromDungeonGen(int seed, DungeonTemplate template)

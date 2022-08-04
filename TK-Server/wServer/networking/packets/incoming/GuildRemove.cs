@@ -6,7 +6,7 @@ namespace wServer.networking.packets.incoming
     {
         public string Name;
 
-        public override PacketId ID => PacketId.GUILDREMOVE;
+        public override PacketId MessageID => PacketId.GUILDREMOVE;
 
         public override Packet CreateInstance()
         {

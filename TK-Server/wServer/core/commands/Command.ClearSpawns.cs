@@ -1,4 +1,5 @@
 ﻿using CA.Extensions.Concurrent;
+using System.Linq;
 using wServer.core.objects;
 
 namespace wServer.core.commands
@@ -12,18 +13,21 @@ namespace wServer.core.commands
 
             protected override bool Process(Player player, TickTime time, string args)
             {
-                var entities = player.World.Enemies
-                    .ValueWhereAsParallel(_ => _.Spawned);
-                for (var i = 0; i < entities.Length; i++)
-                    entities[i].Death(time);
+                var total = 0;
+                foreach (var entity in player.World.Enemies.Values)
+                    if (entity.Spawned)
+                    {
+                        entity.Death(time);
+                        total++;
+                    }
 
-                var total = entities.Length;
-                var staticObjs = player.World.StaticObjects
-                    .ValueWhereAsParallel(_ => _.Spawned);
-                for (var i = 0; i < staticObjs.Length; i++)
-                    player.World.LeaveWorld(staticObjs[i]);
+                foreach (var entity in player.World.StaticObjects.Values)
+                    if (entity.Spawned)
+                    {
+                        entity.World.LeaveWorld(entity);
+                        total++;
+                    }
 
-                total += staticObjs.Length;
                 player.SendInfo($"{total} spawned entit{(total > 1 ? "ies" : "y")} removed!");
                 return true;
             }

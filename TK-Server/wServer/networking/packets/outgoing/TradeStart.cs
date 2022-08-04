@@ -8,7 +8,7 @@ namespace wServer.networking.packets.outgoing
         public string YourName { get; set; }
         public TradeItem[] YourItems { get; set; }
 
-        public override PacketId ID => PacketId.TRADESTART;
+        public override PacketId MessageID => PacketId.TRADESTART;
 
         public override Packet CreateInstance()
         {

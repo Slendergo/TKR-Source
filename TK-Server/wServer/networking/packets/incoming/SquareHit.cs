@@ -8,7 +8,7 @@ namespace wServer.networking.packets.incoming
         public byte BulletId { get; set; }
         public int ObjectId { get; set; }
 
-        public override PacketId ID => PacketId.SQUAREHIT;
+        public override PacketId MessageID => PacketId.SQUAREHIT;
 
         public override Packet CreateInstance()
         {

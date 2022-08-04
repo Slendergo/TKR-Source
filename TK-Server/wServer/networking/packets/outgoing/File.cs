@@ -7,7 +7,7 @@ namespace wServer.networking.packets.outgoing
         public string Name { get; set; }
         public byte[] Bytes { get; set; }
 
-        public override PacketId ID => PacketId.FILE;
+        public override PacketId MessageID => PacketId.FILE;
 
         public override Packet CreateInstance()
         {

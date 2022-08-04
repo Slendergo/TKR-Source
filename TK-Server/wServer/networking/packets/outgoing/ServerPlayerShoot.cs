@@ -11,7 +11,7 @@ namespace wServer.networking.packets.outgoing
         public float Angle { get; set; }
         public short Damage { get; set; }
 
-        public override PacketId ID => PacketId.SERVERPLAYERSHOOT;
+        public override PacketId MessageID => PacketId.SERVERPLAYERSHOOT;
 
         public override Packet CreateInstance()
         {

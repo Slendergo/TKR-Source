@@ -6,7 +6,7 @@ namespace wServer.networking.packets.outgoing
     {
         public int ObjectId { get; set; }
 
-        public override PacketId ID => PacketId.QUESTOBJID;
+        public override PacketId MessageID => PacketId.QUESTOBJID;
 
         public override Packet CreateInstance()
         {

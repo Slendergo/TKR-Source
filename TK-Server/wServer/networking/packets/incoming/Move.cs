@@ -9,7 +9,7 @@ namespace wServer.networking.packets.incoming
         public Position NewPosition { get; set; }
         public TimedPosition[] Records { get; set; }
 
-        public override PacketId ID => PacketId.MOVE;
+        public override PacketId MessageID => PacketId.MOVE;
 
         public override Packet CreateInstance()
         {

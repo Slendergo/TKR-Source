@@ -13,7 +13,7 @@ namespace wServer.networking.packets.outgoing
         public ushort OrigType { get; set; }
         public ARGB Color { get; set; }
 
-        public override PacketId ID => PacketId.AOE;
+        public override PacketId MessageID => PacketId.AOE;
 
         public override Packet CreateInstance()
         {

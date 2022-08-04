@@ -13,7 +13,7 @@ namespace wServer.networking.packets.outgoing
         public byte BulletId { get; set; }
         public int ObjectId { get; set; }
 
-        public override PacketId ID => PacketId.DAMAGE;
+        public override PacketId MessageID => PacketId.DAMAGE;
 
         public override Packet CreateInstance()
         {

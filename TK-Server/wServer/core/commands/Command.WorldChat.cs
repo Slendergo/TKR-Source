@@ -21,7 +21,7 @@ namespace wServer.core.commands
                 var saytext = string.Join(" ", args);
                 player.CoreServerManager.WorldManager
                     .WorldsBroadcastAsParallel(_ =>
-                        _.PlayersBroadcastAsParallel(__ =>
+                        _.ForeachPlayer(__ =>
                             __.Client.SendPacket(new Text
                             {
                                 BubbleTime = 10,

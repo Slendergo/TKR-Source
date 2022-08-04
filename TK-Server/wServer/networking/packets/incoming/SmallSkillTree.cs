@@ -7,7 +7,7 @@ namespace wServer.networking.packets.incoming
         public int skillNumber { get; set; }
         public bool removePoint { get; set; }
 
-        public override PacketId ID => PacketId.SMALLSKILLTREE;
+        public override PacketId MessageID => PacketId.SMALLSKILLTREE;
 
         public override Packet CreateInstance()
         {

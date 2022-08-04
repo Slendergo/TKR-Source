@@ -132,10 +132,14 @@ namespace wServer.logic.behaviors
                         NumShots = (byte)count,
                     };
 
-                    var players = host.World.Players
-                        .ValueWhereAsParallel(_ => _.DistSqr(host) < PlayerUpdate.VISIBILITY_RADIUS_SQR);
-                    for (var i = 0; i < players.Length; i++)
-                        players[i].Client.SendPacket(pkt);
+                    // changed to this
+                    host.World.BroadcastIfVisible(pkt, host);
+                    
+                    // from this
+                    //var players = host.World.Players
+                    //    .Values.Where(_ => _.DistSqr(host) < PlayerUpdate.VISIBILITY_RADIUS_SQR);
+                    //for (var i = 0; i < players.Length; i++)
+                    //    players[i].Client.SendPacket(pkt);
                 }
 
                 cool = _coolDown.Next(Random);

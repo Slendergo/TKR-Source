@@ -7,7 +7,7 @@ namespace wServer.networking.packets.incoming
         public int Serial { get; set; }
         public int Time { get; set; }
 
-        public override PacketId ID => PacketId.PONG;
+        public override PacketId MessageID => PacketId.PONG;
 
         public override Packet CreateInstance()
         {

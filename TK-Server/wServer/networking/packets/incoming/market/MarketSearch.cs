@@ -6,7 +6,7 @@ namespace wServer.networking.packets.incoming.market
     {
         public override Packet CreateInstance() => new MarketSearch();
 
-        public override PacketId ID => PacketId.MARKET_SEARCH;
+        public override PacketId MessageID => PacketId.MARKET_SEARCH;
 
         public int ItemType;
 

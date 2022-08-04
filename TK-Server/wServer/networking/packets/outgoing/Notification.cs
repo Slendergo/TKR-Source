@@ -9,7 +9,7 @@ namespace wServer.networking.packets.outgoing
         public ARGB Color { get; set; }
         public int PlayerId { get; set; }
 
-        public override PacketId ID => PacketId.NOTIFICATION;
+        public override PacketId MessageID => PacketId.NOTIFICATION;
 
         public override Packet CreateInstance()
         {

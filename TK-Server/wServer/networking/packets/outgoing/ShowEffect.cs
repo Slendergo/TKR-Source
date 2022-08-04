@@ -12,7 +12,7 @@ namespace wServer.networking.packets.outgoing
         public int Duration { get; set; }
         public ushort ObjectType { get; set; }
 
-        public override PacketId ID => PacketId.SHOWEFFECT;
+        public override PacketId MessageID => PacketId.SHOWEFFECT;
 
         public override Packet CreateInstance()
         {

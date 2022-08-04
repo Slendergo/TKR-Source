@@ -6,7 +6,7 @@ namespace wServer.networking.packets.outgoing
     {
         public BitmapData BitmapData { get; set; }
 
-        public override PacketId ID => PacketId.PIC;
+        public override PacketId MessageID => PacketId.PIC;
 
         public override Packet CreateInstance()
         {

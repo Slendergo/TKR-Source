@@ -9,7 +9,7 @@ namespace wServer.networking.packets.incoming
         public Position ItemUsePos { get; set; }
         public byte UseType { get; set; }
         public byte SellMaxed { get; set; }
-        public override PacketId ID => PacketId.USEITEM;
+        public override PacketId MessageID => PacketId.USEITEM;
 
         public override Packet CreateInstance()
         {

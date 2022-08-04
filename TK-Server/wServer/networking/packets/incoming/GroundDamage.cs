@@ -7,7 +7,7 @@ namespace wServer.networking.packets.incoming
         public int Time { get; set; }
         public Position Position { get; set; }
 
-        public override PacketId ID => PacketId.GROUNDDAMAGE;
+        public override PacketId MessageID => PacketId.GROUNDDAMAGE;
 
         public override Packet CreateInstance()
         {

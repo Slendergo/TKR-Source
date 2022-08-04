@@ -7,7 +7,7 @@ namespace wServer.networking.packets.outgoing
         public bool Success { get; set; }
         public string ErrorText { get; set; }
 
-        public override PacketId ID => PacketId.NAMERESULT;
+        public override PacketId MessageID => PacketId.NAMERESULT;
 
         public override Packet CreateInstance()
         {

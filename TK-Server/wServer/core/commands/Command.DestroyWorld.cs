@@ -23,7 +23,7 @@ namespace wServer.core.commands
                 if (player.CoreServerManager.WorldManager.RemoveWorld(world))
                 {
                     player.SendInfo("Successfully removed this world instance! Disconnecting all players within 3 seconds.");
-                    player.World.Timers.Add(new WorldTimer(3000, (w, t) => w.PlayersBroadcastAsParallel(_ => _.Client.Disconnect("World destroyed by Admin"))));
+                    player.World.Timers.Add(new WorldTimer(3000, (w, t) => w.ForeachPlayer(_ => _.Client.Disconnect("World destroyed by Admin"))));
                     return true;
                 }
 

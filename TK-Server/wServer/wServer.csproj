@@ -443,6 +443,7 @@
     <Compile Include="networking\handlers\UseItemHandler.cs" />
     <Compile Include="networking\handlers\UsePortalHandler.cs" />
     <Compile Include="networking\InboundBuffer.cs" />
+    <Compile Include="networking\MessageFactory.cs" />
     <Compile Include="networking\PacketHandlerBase.cs" />
     <Compile Include="networking\PacketHandlers.cs" />
     <Compile Include="networking\PacketPriority.cs" />
@@ -541,7 +542,6 @@
     <Compile Include="networking\packets\Packet.cs" />
     <Compile Include="networking\packets\PacketIds.cs" />
     <Compile Include="networking\ProtocolState.cs" />
-    <Compile Include="networking\RC4.cs" />
     <Compile Include="networking\RSA.cs" />
     <Compile Include="core\connection\BufferManager.cs" />
     <Compile Include="core\connection\ClientPool.cs" />

@@ -415,7 +415,7 @@ namespace wServer.core
 
         private void SendTextPacket(Player src, Text tp, Predicate<Player> conditional)
         {
-            src.World.PlayersBroadcastAsParallel(_ =>
+            src.World.ForeachPlayer(_ =>
             {
                 if (conditional(_))
                     _.Client.SendPacket(tp, PacketPriority.Normal);

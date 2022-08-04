@@ -4,7 +4,7 @@ namespace wServer.networking.packets.incoming
 {
     public class CancelTrade : IncomingMessage
     {
-        public override PacketId ID => PacketId.CANCELTRADE;
+        public override PacketId MessageID => PacketId.CANCELTRADE;
 
         public override Packet CreateInstance()
         {

@@ -6,7 +6,7 @@ namespace wServer.networking.packets.incoming
     {
         public int SkinId { get; set; }
 
-        public override PacketId ID => PacketId.RESKIN;
+        public override PacketId MessageID => PacketId.RESKIN;
 
         public override Packet CreateInstance()
         {

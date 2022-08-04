@@ -6,7 +6,7 @@ namespace wServer.networking.packets.outgoing.market
     {
         public override Packet CreateInstance() => new MarketRemoveResult();
 
-        public override PacketId ID => PacketId.MARKET_REMOVE_RESULT;
+        public override PacketId MessageID => PacketId.MARKET_REMOVE_RESULT;
 
         public const int NOT_YOUR_ITEM = 0;
         public const int ITEM_DOESNT_EXIST = 1;

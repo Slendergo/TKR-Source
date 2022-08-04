@@ -6,7 +6,7 @@ namespace wServer.networking.packets.incoming
     {
         public ObjectSlot SlotObject { get; set; }
 
-        public override PacketId ID => PacketId.INVDROP;
+        public override PacketId MessageID => PacketId.INVDROP;
 
         public override Packet CreateInstance()
         {

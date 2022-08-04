@@ -6,7 +6,7 @@ namespace wServer.networking.packets.incoming
     {
         public bool[] Offer { get; set; }
 
-        public override PacketId ID => PacketId.CHANGETRADE;
+        public override PacketId MessageID => PacketId.CHANGETRADE;
 
         public override Packet CreateInstance()
         {

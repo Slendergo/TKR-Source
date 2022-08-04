@@ -148,7 +148,7 @@ namespace wServer.logic.behaviors
                             Color = new ARGB(0xffffbf00),
                             TargetObjectId = host.Id,
                             Pos1 = target
-                        }, target, PacketPriority.Low);
+                        }, ref target, PacketPriority.Low);
 
                     host.World.Timers.Add(new WorldTimer(1000, (world, t) =>
                     {

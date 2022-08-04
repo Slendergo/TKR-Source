@@ -7,7 +7,7 @@ namespace wServer.networking.packets.incoming
         public string PartyLeader { get; set; }
         public int PartyId { get; set; }
 
-        public override PacketId ID => PacketId.JOIN_PARTY;
+        public override PacketId MessageID => PacketId.JOIN_PARTY;
 
         public override Packet CreateInstance()
         {

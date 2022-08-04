@@ -10,7 +10,7 @@ namespace wServer.networking.packets.incoming
         public Position StartingPos { get; set; }
         public float Angle { get; set; }
 
-        public override PacketId ID => PacketId.PLAYERSHOOT;
+        public override PacketId MessageID => PacketId.PLAYERSHOOT;
 
         public override Packet CreateInstance()
         {

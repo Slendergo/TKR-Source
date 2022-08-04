@@ -7,7 +7,7 @@ namespace wServer.networking.packets.incoming
         public string Name;
         public int GuildRank;
 
-        public override PacketId ID => PacketId.CHANGEGUILDRANK;
+        public override PacketId MessageID => PacketId.CHANGEGUILDRANK;
 
         public override Packet CreateInstance()
         {

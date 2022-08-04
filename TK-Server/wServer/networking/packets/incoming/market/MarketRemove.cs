@@ -6,7 +6,7 @@ namespace wServer.networking.packets.incoming.market
     {
         public override Packet CreateInstance() => new MarketRemove();
 
-        public override PacketId ID => PacketId.MARKET_REMOVE;
+        public override PacketId MessageID => PacketId.MARKET_REMOVE;
 
         public int Id;
 

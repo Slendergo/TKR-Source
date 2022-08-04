@@ -7,7 +7,7 @@ namespace wServer.networking.packets.outgoing
         public bool[] MyOffer { get; set; }
         public bool[] YourOffer { get; set; }
 
-        public override PacketId ID => PacketId.TRADEACCEPTED;
+        public override PacketId MessageID => PacketId.TRADEACCEPTED;
 
         public override Packet CreateInstance()
         {

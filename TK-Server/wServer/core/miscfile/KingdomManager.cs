@@ -549,7 +549,7 @@ namespace wServer.core
                                 Name = "Nexus"
                             };
 
-                            World.PlayersBroadcastAsParallel(_ =>
+                            World.ForeachPlayer(_ =>
                                 _.Client.Reconnect(
                                     _.HasConditionEffect(ConditionEffects.Paused)
                                         ? rcpPaused
@@ -639,7 +639,7 @@ namespace wServer.core
 
                         mvp.CoreServerManager.WorldManager
                             .WorldsBroadcastAsParallel(_ =>
-                                _.PlayersBroadcastAsParallel(__ =>
+                                _.ForeachPlayer(__ =>
                                 {
                                     if (__.Client.Account.GuildId == pguild)
                                         __.SendInfo($"Congratulations! Your guild's loot boost increased to {guild.GuildLootBoost:P} (max: {MAX_GUILD_LOOT_BOOST:P}).");
@@ -988,7 +988,7 @@ namespace wServer.core
             pt.X -= (sp.Size - 1) / 2;
             pt.Y -= (sp.Size - 1) / 2;
             sp.RenderSetPiece(World, pt);
-            World.PlayersBroadcastAsParallel(_ => _.CheckForEncounter());
+            World.ForeachPlayer(_ => _.CheckForEncounter());
 
             var taunt = $"{name} has been spawned!";
 

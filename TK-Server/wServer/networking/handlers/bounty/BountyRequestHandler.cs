@@ -164,7 +164,7 @@ namespace wServer.networking.handlers
                 if (allowedPlayersId == 0)
                     continue; /* ID = 0 -> Disabled player */
 
-                world.PlayersBroadcastAsParallel(_ =>
+                world.ForeachPlayer(_ =>
                 {
                     if (allowedPlayersId == 0 || _.Id != allowedPlayersId)
                         return;

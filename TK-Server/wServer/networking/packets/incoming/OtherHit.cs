@@ -9,7 +9,7 @@ namespace wServer.networking.packets.incoming
         public int ObjectId { get; set; }
         public int TargetId { get; set; }
 
-        public override PacketId ID => PacketId.OTHERHIT;
+        public override PacketId MessageID => PacketId.OTHERHIT;
 
         public override Packet CreateInstance()
         {

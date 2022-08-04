@@ -6,7 +6,7 @@ namespace wServer.networking.packets.incoming
     {
         public bool AllyShots { get; set; }
 
-        public override PacketId ID => PacketId.OPTIONS;
+        public override PacketId MessageID => PacketId.OPTIONS;
 
         public override Packet CreateInstance()
         {

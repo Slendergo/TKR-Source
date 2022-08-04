@@ -6,7 +6,7 @@ namespace wServer.networking.packets.incoming
     {
         public int ObjectId { get; set; }
 
-        public override PacketId ID => PacketId.TELEPORT;
+        public override PacketId MessageID => PacketId.TELEPORT;
 
         public override Packet CreateInstance()
         {

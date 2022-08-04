@@ -6,7 +6,7 @@ namespace wServer.networking.packets.incoming
     {
         public int Num { get; set; }
 
-        public override PacketId ID => PacketId.UPGRADESTAT;
+        public override PacketId MessageID => PacketId.UPGRADESTAT;
 
         public override Packet CreateInstance()
         {

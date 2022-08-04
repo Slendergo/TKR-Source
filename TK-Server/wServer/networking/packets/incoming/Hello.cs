@@ -9,7 +9,7 @@ namespace wServer.networking.packets.incoming
         public int GameId { get; set; }
         public string GUID { get; set; }
         //public string Hash { get; set; }
-        public override PacketId ID => PacketId.HELLO;
+        public override PacketId MessageID => PacketId.HELLO;
         public byte[] Key { get; set; }
         public int KeyTime { get; set; }
         public string MapJSON { get; set; }

@@ -1,5 +1,4 @@
-﻿using CA.Extensions.Concurrent;
-using System;
+﻿using System;
 using System.Linq;
 using wServer.core.worlds.logic;
 using wServer.networking;
@@ -183,7 +182,7 @@ namespace wServer.core.objects
                 MP = Stats[1];
 
                 if (Level == 20)
-                    World.PlayersBroadcastAsParallel(_ => _.SendInfo($"{Name} achieved level 20"));
+                    World.ForeachPlayer(_ => _.SendInfo($"{Name} achieved level 20"));
                 else
                     // to get exp scaled to new exp goal
                     InvokeStatChange(StatDataType.Experience, Experience - GetLevelExp(Level), true);
@@ -255,12 +254,5 @@ namespace wServer.core.objects
             }
             return ret;
         }
-
-        private Enemy FindSpecialEnemy(string objectId)
-            => World.SpecialEnemies
-                .ValueWhereAsParallel(_ => _ != null
-                    && _.ObjectDesc != null
-                    && _.ObjectDesc.ObjectId.Equals(objectId))
-                .FirstOrDefault();
     }
 }

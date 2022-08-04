@@ -1722,18 +1722,19 @@ namespace wServer.core.commands
         protected override bool Process(Player player, TickTime time, string args)
         {
             var sb = new StringBuilder();
-            var players = player.World.Players
-                .ValueWhereAsParallel(_ => _.Client != null
-                    && _.Rank <= Player.VIP
-                    && _.CanBeSeenBy(player));
-            if (players.Length != 0)
+            var count = player.World.Players.Count;
+            if (count != 0)
             {
-                sb.Append($"There {(players.Length > 1 ? "are" : "is")} {players.Length}");
+                sb.Append($"There {(count > 1 ? "are" : "is")} {count}");
                 sb.Append($"{(player.World.IsRealm || player.World.InstanceType == WorldResourceInstanceType.Dungeon ? $"/{player.World.MaxPlayers} " : "")} ");
-                sb.Append($"player{(players.Length > 1 ? "s" : "")} connected on this area:\n");
+                sb.Append($"player{(count > 1 ? "s" : "")} connected on this area:\n");
 
-                for (var i = 0; i < players.Length; i++)
-                    sb.Append($"{players[i].Name}{(i + 1 >= players.Length ? "" : ", ")}");
+                var i = 0;
+                foreach (var plr in player.World.Players.Values)
+                {
+                    sb.Append($"{plr.Name}{(i + 1 >= count ? "" : ", ")}");
+                    i++;
+                }
             }
             else
                 sb.Append("There is no player connected on this area.");

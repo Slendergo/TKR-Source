@@ -38,6 +38,7 @@ package com.company.assembleegameclient.sound
          var sound:Sound = new Sound();
          sound.addEventListener(IOErrorEvent.IO_ERROR,onIOError);
          sound.load(makeSoundRequest(name));
+         trace(name)
          return sound;
       }
       
@@ -61,6 +62,7 @@ package com.company.assembleegameclient.sound
       {
          urlBase = urlBase || getUrlBase();
          var url:String = URL_PATTERN.replace("{URLBASE}",urlBase).replace("{NAME}",name);
+         trace(url)
          return new URLRequest(url);
       }
       

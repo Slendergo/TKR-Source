@@ -5,8 +5,8 @@ package kabam.rotmg.application.impl
 
    public class ReleaseSetup implements ApplicationSetup
    {
-      private const CDN_APPENGINE:String = "http://127.0.0.1:2000";
-      private const CDN_STATICS:String = "https://127.0.0.1/static";
+      private const CDN_APPENGINE:String = "http://147.189.169.79:2000"; //For release use "http://{ServerIP}:2000"
+      private const CDN_STATICS:String = "http://147.189.169.79:2000"; //For release use "http://{ServerIP}:2000"
       private const BUILD_LABEL:String = "TK1 - build: {VERSION}{MINOR}";
 
       public function ReleaseSetup()

@@ -11,13 +11,13 @@
 
     <!-- A universally unique application identifier. Must be unique across all AIR applications.
          Using a reverse DNS-style name as the id is recommended. (Eg. com.example.ExampleApplication.) Required. -->
-    <id>client</id>
+    <id>TK-Client</id>
 
     <!-- Used as the filename for the application. Required. -->
-    <filename>client</filename>
+    <filename>TK-Client</filename>
 
     <!-- The name that is displayed in the AIR application installer. May have multiple values for each language. See samples or xsd schema file. Optional. -->
-    <name>client</name>
+    <name>TK-Client</name>
 
     <!-- A string value of the format <0-999>.<0-999>.<0-999> that represents application version which can be used to check for application upgrade.
          Values can also be 1-part or 2-part. It is not necessary to have a 3-part value.
@@ -125,7 +125,13 @@
     <!--<programMenuFolder></programMenuFolder>-->
 
     <!-- The icon the system uses for the application. For at least one resolution, specify the path to a PNG file included in the AIR package. Optional. -->
-    <!--<icon>
+    <icon><!--
+	--><image16x16>./assets/tk-16x16.png</image16x16><!--
+	--><image29x29>./assets/tk-29x29.png</image29x29><!--
+	--><image32x32>./assets/tk-32x32.png</image32x32><!--
+	--><image40x40>./assets/tk-40x40.png</image40x40><!--
+	--><image58x58>./assets/tk-58x58.png</image58x58><!--
+	--><image76x76>./assets/tk-76x76.png</image76x76><!--
         <image16x16></image16x16>
         <image29x29></image29x29>
         <image32x32></image32x32>
@@ -147,7 +153,7 @@
         <image100x100></image100x100>
         <image114x114></image114x114>
         <image120x120></image120x120>
-        <image128x128></image128x128>
+        <image128x128>./assets/tk-128x128.png</image128x128>
         <image144x144></image144x144>
         <image152x152></image152x152>
         <image167x167></image167x167>
@@ -156,7 +162,7 @@
         <image512x512></image512x512>
         <image732x412></image732x412>
         <image1024x1024></image1024x1024>
-    </icon>-->
+    --></icon>
 
     <!-- Whether the application handles the update when a user double-clicks an update version of the AIR file (true),
          or the default AIR application installer handles the update (false). Optional. Default false. -->

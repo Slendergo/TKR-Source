@@ -164,7 +164,7 @@ namespace wServer.logic
             new Threshold(0.01,
                 new ItemLoot("Potion of Dexterity", 1, 1),
                 new ItemLoot("Celestial Dual Blades", 0.01),
-                new ItemLoot("Limon's Spell", 0.01),
+                new ItemLoot("Limons Spell", 0.01),
                 new ItemLoot("Sprite World Key", 0.1, 0, 0.03),
                 new ItemLoot("Potion of Defense", 1),
                 new ItemLoot("Sprite Wand", 0.01),

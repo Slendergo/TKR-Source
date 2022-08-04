@@ -79,16 +79,18 @@
     <Projectile>
       <ObjectId>Plasma Missile</ObjectId>
       <Speed>110</Speed>
-      <MinDamage>130</MinDamage>
-      <MaxDamage>170</MaxDamage>
-      <LifetimeMS>475</LifetimeMS>
-      <Amplitude>1.5</Amplitude>
+		<Size>120</Size>
+      <MinDamage>75</MinDamage>
+      <MaxDamage>110</MaxDamage>
+		<Wavy/>
+      <LifetimeMS>550</LifetimeMS>
+      <Amplitude>0.2</Amplitude>
       <Frequency>1.5</Frequency>
     </Projectile>
     <BagType>7</BagType>
     <FameBonus>8</FameBonus>
-    <NumProjectiles>2</NumProjectiles>
-    <ArcGap>0</ArcGap>
+    <NumProjectiles>5</NumProjectiles>
+    <ArcGap>10</ArcGap>
     <OldSound>magicShoot</OldSound>
   </Object>
   <Object type="0x5151" id="Neptune’s Trident">

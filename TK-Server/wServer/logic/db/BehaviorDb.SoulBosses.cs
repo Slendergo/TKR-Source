@@ -819,6 +819,7 @@ namespace wServer.logic
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
                     new Wander(0.3),
                     new StayBack(1, 6), 
+                    new StayCloseToSpawn(1, 10),
                     new Shoot(20, 3, shootAngle: 10, projectileIndex: 0, coolDown: 2000),
                     new Shoot(20, 16, projectileIndex: 1, coolDown: 250),
                     new HpLessTransition(0.75, "Spawn"),
@@ -843,7 +844,7 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.03,
-                new ItemLoot("Limon's Spell", 0.03),
+                new ItemLoot("Limons Spell", 0.03),
                 new ItemLoot("Celestial Dual Blades", 0.03),
                 new ItemLoot("Crafting Material 2", 0.1),
                 new ItemLoot("Soul of Dexterity", 0.1),
@@ -1151,10 +1152,6 @@ namespace wServer.logic
                     new TossObject("White Demon of the Abyss", 12, 135, coolDown: 99999, coolDownOffset: -1),
                     new TossObject("White Demon of the Abyss", 12, -135, coolDown: 99999, coolDownOffset: -1),
 
-                    new Shoot(8, 1, projectileIndex: 0, coolDown: 500, predictive: 1.5, coolDownOffset: 100),
-                    new Shoot(8, 2, shootAngle: 10, projectileIndex: 4, predictive: 1.5, coolDown: 500, coolDownOffset: 100),
-                    new Shoot(8, 2, shootAngle: 20, projectileIndex: 5, predictive: 1.5, coolDown: 500, coolDownOffset: 100),
-
                     new Shoot(30, 3, projectileIndex: 3, fixedAngle: 0, coolDown: 7200, coolDownOffset: 100),
                     new Shoot(30, 3, projectileIndex: 3, fixedAngle: 5, coolDown: 7200, coolDownOffset: 200),
                     new Shoot(30, 3, projectileIndex: 3, fixedAngle: 10, coolDown: 7200, coolDownOffset: 300),
@@ -1331,9 +1328,9 @@ namespace wServer.logic
                         new HpLessTransition(0.7, "Rage"),
                         new RemoveConditionalEffect(ConditionEffectIndex.Invulnerable),
 
-                        new Shoot(12, 6, projectileIndex: 0, shootAngle: 15, coolDown: 2000, coolDownOffset: 300, predictive: 1.2),
-                        new Shoot(12, 6, projectileIndex: 0, shootAngle: 15, coolDown: 2000, coolDownOffset: 600, predictive: 1.2),
-                        new Shoot(12, 6, projectileIndex: 0, shootAngle: 15, coolDown: 2000, coolDownOffset: 900, predictive: 1.2),
+                        new Shoot(12, 6, projectileIndex: 0, shootAngle: 7, coolDown: 2000, coolDownOffset: 300, predictive: 1.2),
+                        new Shoot(12, 6, projectileIndex: 0, shootAngle: 7, coolDown: 2000, coolDownOffset: 600, predictive: 1.2),
+                        new Shoot(12, 6, projectileIndex: 0, shootAngle: 7, coolDown: 2000, coolDownOffset: 900, predictive: 1.2),
 
                         new Shoot(12, 10, projectileIndex: 2, coolDown: 700),
 
@@ -1395,13 +1392,13 @@ namespace wServer.logic
             new Threshold(0.01,
                 new ItemLoot("Crafting Material 2", 0.1),
                 new ItemLoot("Special Dust", 0.01),
-                new ItemLoot("Doom Bow", 0.026),
+                new ItemLoot("Doom Bow", 0.0096),
                 new ItemLoot("Edictum Praetoris", 0.02),
-                new ItemLoot("Memento Mori", 0.04),
-                new ItemLoot("Toga Picta", 0.04),
-                new ItemLoot("Interregnum", 0.04),
+                new ItemLoot("Memento Mori", 0.01),
+                new ItemLoot("Toga Picta", 0.01),
+                new ItemLoot("Interregnum", 0.01),
                 new ItemLoot("Tormentor’s Wrath", 0.03),
-                new ItemLoot("Undead Lair Key", 0.02, 0, 0.03),
+                new ItemLoot("Undead Lair Key", 0.001, 0, 0.03),
                 new TierLoot(6, ItemType.Ability, 0.1),
                 new TierLoot(13, ItemType.Armor, 0.1),
                 new TierLoot(13, ItemType.Weapon, 0.1)

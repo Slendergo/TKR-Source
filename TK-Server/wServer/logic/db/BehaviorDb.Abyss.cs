@@ -123,7 +123,7 @@ namespace wServer.logic
                     new TimedTransition(1500, "Third Phase Start")
                     ),
                 new State("Third Phase Start",
-                    new Follow(2, 12),
+                    new Follow(1, 12),
                     new Shoot(30, 4, projectileIndex: 1, fixedAngle: 0, coolDown: 7400, coolDownOffset: 200),
                     new Shoot(30, 4, projectileIndex: 1, fixedAngle: 5, coolDown: 7400, coolDownOffset: 400),
                     new Shoot(30, 4, projectileIndex: 1, fixedAngle: 10, coolDown: 7400, coolDownOffset: 600),
@@ -171,7 +171,7 @@ namespace wServer.logic
                     new TimedTransition(1500, "Four Phase Start")
                     ),
                 new State("Four Phase Start",
-                    new Follow(3, 12),
+                    new Follow(1, 12),
                      new Shoot(30, 4, projectileIndex: 1, fixedAngle: -0, coolDown: 7400, coolDownOffset: 200),
                     new Shoot(30, 4, projectileIndex: 1, fixedAngle: -5, coolDown: 7400, coolDownOffset: 400),
                     new Shoot(30, 4, projectileIndex: 1, fixedAngle: -10, coolDown: 7400, coolDownOffset: 600),

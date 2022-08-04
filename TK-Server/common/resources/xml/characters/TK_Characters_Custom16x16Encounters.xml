@@ -1,4 +1,30 @@
 <Objects>
+	<Object type="0x9950" id="Fire Elemental Sword">
+		<Enemy />
+		<DisplayId>Fire Elemental Sword</DisplayId>
+		<StasisImmune />
+		<ParalyzeImmune />
+		<Class>Character</Class>
+		<AnimatedTexture>
+			<File>Custom32x32Encounters</File>
+			<Index>0</Index>
+		</AnimatedTexture>
+		<HitSound>monster/lizard_god_hit</HitSound>
+		<DeathSound>monster/lizard_god_death</DeathSound>
+		<Size>120</Size>
+		<MaxHitPoints>50000</MaxHitPoints>
+		<Defense>0</Defense>
+		<Level>20</Level>
+		<Projectile id="0">
+			<ObjectId>Fire Elemental Shoot</ObjectId>
+			<Damage>180</Damage>
+			<Speed>150</Speed>
+			<Size>150</Size>
+			<LifetimeMS>200</LifetimeMS>
+			<MultiHit />
+			<ArmorPiercing />
+		</Projectile>
+	</Object>
   <Object type="0x48d3" id="King Slime">
     <Enemy />
     <Event />
@@ -1536,7 +1562,7 @@
 	  </AltTexture>
     <DisplayedId>Plantera</DisplayedId>
     <Size>130</Size>
-    <MaxHitPoints>100000</MaxHitPoints>
+    <MaxHitPoints>80000</MaxHitPoints>
     <Defense>30</Defense>
     <StasisImmune/>
     <StunImmune/>
@@ -1544,7 +1570,7 @@
     <Projectile id="0">
       <ObjectId>Projectile 0 P</ObjectId>
       <Damage>90</Damage>
-      <Size>80</Size>
+      <Size>130</Size>
       <Speed>80</Speed>
       <LifetimeMS>2000</LifetimeMS>
       <MultiHit />
@@ -1554,14 +1580,14 @@
     <Projectile id="1">
       <ObjectId>Projectile 1 P</ObjectId>
       <Damage>60</Damage>
-      <Size>80</Size>
+      <Size>130</Size>
       <Speed>70</Speed>
       <LifetimeMS>1000</LifetimeMS>
     </Projectile>
     <Projectile id="2">
       <ObjectId>Projectile 2 P</ObjectId>
       <Damage>200</Damage>
-      <Size>100</Size>
+      <Size>130</Size>
       <Speed>100</Speed>
       <LifetimeMS>2000</LifetimeMS>
       <MultiHit />
@@ -1570,14 +1596,14 @@
     <Projectile id="3">
       <ObjectId>Projectile 3 P</ObjectId>
       <Damage>85</Damage>
-      <Size>70</Size>
+      <Size>130</Size>
       <Speed>80</Speed>
       <LifetimeMS>2000</LifetimeMS>
     </Projectile>
     <Projectile id="4">
       <ObjectId>Projectile 4 P</ObjectId>
       <Damage>50</Damage>
-      <Size>100</Size>
+      <Size>130</Size>
       <Speed>110</Speed>
       <LifetimeMS>2000</LifetimeMS>
       <MultiHit />

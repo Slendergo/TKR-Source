@@ -6,7 +6,7 @@
     <Quest />
     <God />
     <Encounter />
-    <StunImmune />
+	<StasisImmune />
     <Class>Character</Class>
     <AnimatedTexture>
       <File>Custom32x32Encounters</File>

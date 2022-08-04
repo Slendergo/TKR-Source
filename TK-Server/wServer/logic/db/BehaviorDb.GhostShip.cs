@@ -221,7 +221,7 @@ namespace wServer.logic
                     ),
                 new State("fire",
                     new Prioritize(
-                        new Follow(1, 8, 1),
+                        new Follow(0.3, 8, 1),
                         new Wander(1)
                         ),
                     new Shoot(10, count: 4, projectileIndex: 1, coolDownOffset: 1100, angleOffset: 270, coolDown: 1250),

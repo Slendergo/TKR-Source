@@ -848,6 +848,7 @@
     <Size>100</Size>
     <MaxHitPoints>125000</MaxHitPoints>
     <Defense>40</Defense>
+	  <StasisImmune />
     <Terrain>Mountains</Terrain>
     <PerRealmMax>1</PerRealmMax>
     <SpawnProb>1</SpawnProb>

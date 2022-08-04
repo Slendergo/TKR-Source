@@ -317,7 +317,49 @@ namespace wServer.logic
         #endregion Wind Elemental
 
         #region Fire Elemental
-
+        .Init("Fire Elemental Sword",
+            new State(
+                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new State("Idle",
+                    new TimedTransition(3000, "Orbit")
+                    ),
+                new State("Orbit",
+                    new Prioritize(
+                        new Orbit(3, 10, 20, "Fire Elemental", 1, 1)),
+                    new Shoot(20, 12, projectileIndex: 0, coolDown: 500),
+                    new EntityNotExistsTransition("Fire Elemental", 20, "Die")
+                    ),
+                new State("Die",
+                    new ChangeSize(10, 0),
+                    new TimedTransition(2000, "Die Two")
+                    ),
+                new State("Die Two",
+                    new Suicide()
+                    )
+                )
+            )
+        .Init("Elemental Fire Wall",
+            new State(
+                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new State("Idle",
+                    new Shoot(10, 5, coolDown: 500)
+                    )
+                )
+            )
+        .Init("Fire Wall Spawner",
+            new State(
+                new State("idle",
+                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    ),
+                new State("Fire",
+                    new Spawn("Elemental Fire Wall", 1, 1, coolDown: 999999),
+                    new EntityNotExistsTransition("Fire Elemental", 20, "dead")
+                    ),
+                new State("dead",
+                    new Suicide()
+                    )
+                )
+            )
         .Init("Fire Elemental",
             new State(
                 new StayCloseToSpawn(1, 7),
@@ -328,8 +370,10 @@ namespace wServer.logic
                     new PlayerWithinTransition(20, "Start", false)
                     ),
                 new State("Start",
-                    new Taunt("You will feel the pain of burning alive!"),
-                    new TimedTransition(1500, "Start Shooting")
+                    new TossObject2("Fire Elemental Sword", 10, 45, coolDown: 999999),
+                    new TossObject2("Fire Elemental Sword", 10, 225, coolDown: 999999),
+                    new Taunt("You will burn alive!"),
+                    new TimedTransition(3500, "Start Shooting")
                     ),
                 new State("Start Shooting",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),

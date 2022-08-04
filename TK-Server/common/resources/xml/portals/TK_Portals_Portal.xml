@@ -1,12 +1,100 @@
 <Objects>
-	<Object type="0x9923" id="Garden of Horror Portal">
+	<Object type="0x950d" id="Hideout of Stheno Portal">
+		<Class>Portal</Class>
+		<IntergamePortal />
+		<DisplayId>Hideout of Stheno</DisplayId>
+		<DungeonName>Hideout of Stheno</DungeonName>
+		<Size>80</Size>
+		<Texture>
+			<File>custom16x16Environment</File>
+			<Index>0x54</Index>
+		</Texture>
+		<Animation prob="1" period="0">
+			<Frame time="0.2">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x54</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.2">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x55</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.2">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x56</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.2">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x57</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.2">
+					<Texture>
+						<File>custom16x16Environment</File>
+						<Index>0x56</Index>
+					</Texture>
+				</Frame>
+				<Frame time="0.2">
+					<Texture>
+						<File>custom16x16Environment</File>
+						<Index>0x55</Index>
+					</Texture>
+				</Frame>
+		</Animation>
+		<ShadowSize>75</ShadowSize>
+	</Object>
+	<Object type="0x9907" id="Hideout of Limon Portal">
+		<Class>Portal</Class>
+		<IntergamePortal />
+		<DisplayId>Hideout of Limon</DisplayId>
+		<DungeonName>Hideout of Limon</DungeonName>
+		<Size>80</Size>
+		<Texture>
+			<File>custom16x16Environment</File>
+			<Index>0x68</Index>
+		</Texture>
+		<Animation prob="1" period="0">
+			<Frame time="0.2">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x69</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.2">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x6a</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.2">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x6b</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.2">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x6c</Index>
+				</Texture>
+			</Frame>
+		</Animation>
+		<ShadowSize>75</ShadowSize>
+	</Object>
+	<Object type="0x23be" id="Garden of Horror Portal">
 		<Class>Portal</Class>
 		<IntergamePortal />
 		<DisplayId>Garden of Horror</DisplayId>
 		<DungeonName>Garden of Horror</DungeonName>
 		<Texture>
-			<File>lofiEnvironment2</File>
-			<Index>0x167</Index>
+			<File>customEnvironment</File>
+			<Index>0x4d</Index>
 		</Texture>
 	</Object>
   <Object type="0x9021" id="The Sacred Chamber of Wingus">
@@ -1168,42 +1256,6 @@
 		</Animation>
 		<ShadowSize>75</ShadowSize>
 	</Object>
-	<Object type="0x950d" id="Hideout of Stheno Portal">
-		<Class>Portal</Class>
-		<IntergamePortal />
-		<DisplayId>Hideout of Stheno</DisplayId>
-		<DungeonName>Hideout of Stheno</DungeonName>
-		<Texture>
-			<File>lofiEnvironment2</File>
-			<Index>0x8c</Index>
-		</Texture>
-		<Animation prob="0.6" period="1.6">
-			<Frame time="0.4">
-				<Texture>
-					<File>lofiEnvironment2</File>
-					<Index>0x8d</Index>
-				</Texture>
-			</Frame>
-			<Frame time="0.4">
-				<Texture>
-					<File>lofiEnvironment2</File>
-					<Index>0x8e</Index>
-				</Texture>
-			</Frame>
-			<Frame time="0.4">
-				<Texture>
-					<File>lofiEnvironment2</File>
-					<Index>0x8d</Index>
-				</Texture>
-			</Frame>
-			<Frame time="0.4">
-				<Texture>
-					<File>lofiEnvironment2</File>
-					<Index>0x8e</Index>
-				</Texture>
-			</Frame>
-		</Animation>
-	</Object>
 	<Object type="0x9906" id="Hideout of Thessal Portal">
 		<Class>Portal</Class>
 		<IntergamePortal />
@@ -1212,16 +1264,6 @@
 		<Texture>
 			<File>lofiEnvironment2</File>
 			<Index>0x9f</Index>
-		</Texture>
-	</Object>
-	<Object type="0x9907" id="Hideout of Limon Portal">
-		<Class>Portal</Class>
-		<IntergamePortal />
-		<DisplayId>Hideout of Limon</DisplayId>
-		<DungeonName>Hideout of Limon</DungeonName>
-		<Texture>
-			<File>lofiEnvironment2</File>
-			<Index>0x36</Index>
 		</Texture>
 	</Object>
 </Objects>

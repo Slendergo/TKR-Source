@@ -224,6 +224,7 @@ namespace wServer.logic
                 new ConditionalEffect(ConditionEffectIndex.Invincible, true),
                 new State("Follow Player",
                     new Follow(1, 20, 1),
+                    new TimedTransition(4500, "Shoot"),
                     new PlayerWithinTransition(1, "Shoot")
                     ),
                 new State("Shoot",

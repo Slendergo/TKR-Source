@@ -1,12 +1,20 @@
 <Objects>
-		<Object type="0x9911" id="Limons Spell Shot">
-			<Class>Projectile</Class>
-			<Texture>
-				<File>CustomProjs</File>
-				<Index>0x40</Index>
-			</Texture>
-			<Rotation>90</Rotation>
-		</Object>
+	<Object type="0x9911" id="Limons Spell Shot">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomProjs</File>
+			<Index>0x40</Index>
+		</Texture>
+		<AngleCorrection>1</AngleCorrection>
+	</Object>
+	<Object type="0x9910" id="Dual Blade Shot">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomProjs</File>
+			<Index>0x9b</Index>
+		</Texture>
+		<Rotation>340</Rotation>
+	</Object>
 	<Object type="0x9921" id="Rose Buckler Shot">
 		<Class>Projectile</Class>
 		<Texture>
@@ -1469,12 +1477,4 @@
     </Texture>
     <AngleCorrection>1</AngleCorrection>
   </Object>
-	<Object type="0x9910" id="Dual Blade Shot">
-		<Class>Projectile</Class>
-		<Texture>
-			<File>CustomProj</File>
-			<Index>0x9b</Index>
-		</Texture>
-		<AngleCorrection>1</AngleCorrection>
-	</Object>
 </Objects>

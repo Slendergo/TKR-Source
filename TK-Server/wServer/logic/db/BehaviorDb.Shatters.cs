@@ -56,7 +56,7 @@ namespace wServer.logic
                         new TimedTransition(2000, "Wait")
                         ),
                     new State("Wait",
-                        new Follow(2, range: 2),
+                        new Follow(1, range: 2),
                         new Flash(0xff00ff00, 0.1, 20),
                         new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                         new TimedTransition(2000, "Bullet")
@@ -68,7 +68,7 @@ namespace wServer.logic
         .Init("shtrs Stone Knight",
             new State(
                 new State("Follow",
-                    new Follow(2, 10, 5),
+                    new Follow(1, 10, 5),
                     new PlayerWithinTransition(5, "Charge")
                     ),
                 new State("Charge",
@@ -81,7 +81,7 @@ namespace wServer.logic
         .Init("shtrs Lava Souls",
             new State(
                 new State("active",
-                    new Follow(1.5, range: 0),
+                    new Follow(1, range: 0),
                     new PlayerWithinTransition(2, "blink")
                     ),
                 new State("blink",
@@ -113,7 +113,7 @@ namespace wServer.logic
             new State(
                 new State("Main",
                     new TimedTransition(5000, "Throw"),
-                    new Follow(1.8, range: 1),
+                    new Follow(1, range: 1),
                     new Shoot(10, 1, projectileIndex: 0, coolDown: 140, predictive: 1),
                     new Shoot(10, 3, projectileIndex: 1, shootAngle: 10, coolDown: 4000, predictive: 1)
                     ),
@@ -595,7 +595,7 @@ namespace wServer.logic
         .Init("shtrs Blizzard",
             new State(
                 new State("Follow",
-                    new Follow(1.3, range: 1, coolDown: 1000),
+                    new Follow(0.6, range: 1, coolDown: 1000),
                     new Shoot(10, projectileIndex: 0, count: 4, shootAngle: 90, fixedAngle: 45, coolDown: 250),
                     new TimedTransition(7000, "Spin")
                     ),
@@ -2440,15 +2440,15 @@ namespace wServer.logic
                     new TimedTransition(7000, "follow")
                     ),
                 new State("follow",
-                    new Follow(1.4, range: 6),
-                    new Follow(1.6, range: 2),
+                    new Follow(1, range: 6),
+                    new Follow(1, range: 2),
                     new TimedTransition(3000, "dafuq")
                     ),
                 new State("dafuq",
                      new Prioritize(
                         new Orbit(1.0, 4, 30, "shtrs Crystal Tracker", speedVariance: .2, radiusVariance: .5)),
-                    new Follow(1.4, range: 6),
-                    new Follow(1.4, range: 2, duration: 2000, coolDown: 1500),
+                    new Follow(1, range: 6),
+                    new Follow(1, range: 2, duration: 2000, coolDown: 1500),
                     new TimedTransition(2000, "follow")
                     )
                 )
@@ -2458,18 +2458,18 @@ namespace wServer.logic
                 new State("spawn",
                     new ConditionalEffect(ConditionEffectIndex.Invincible),
                     new Prioritize(
-                        new Orbit(1.4, 1, 5, "shtrs The Forgotten King", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(1, 1, 5, "shtrs The Forgotten King", speedVariance: .2, radiusVariance: .5)),
                     new TimedTransition(7000, "follow")
                     ),
                 new State("follow",
-                    new Follow(1.4, range: 6),
-                    new Follow(1.4, range: 6),
+                    new Follow(1, range: 6),
+                    new Follow(1, range: 6),
                     new TimedTransition(25, "dafuq")
                     ),
                 new State("dafuq",
                      new Prioritize(
                         new Orbit(1.0, 4, 30, "shtrs Crystal Tracker", speedVariance: .2, radiusVariance: .5)),
-                    new Follow(1.4, range: 6),
+                    new Follow(1, range: 6),
                     new Shoot(5, 4, 4, projectileIndex: 0, coolDown: 1000)
                     )
                 )
@@ -2479,22 +2479,22 @@ namespace wServer.logic
                 new State("spawn",
                     new ConditionalEffect(ConditionEffectIndex.Invincible),
                     new Prioritize(
-                        new Orbit(1, 1, 5, "shtrs The Forgotten King", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(3, 1, 5, "shtrs The Forgotten King", speedVariance: .2, radiusVariance: .5)),
                     new TimedTransition(7000, "orbit")
                     ),
                 new State("orbit",
                     new TossObject("shtrs Fire Portal", 5, coolDown: 8000),
                      new Prioritize(
                         new Orbit(1.0, 4, 10, "shtrs Crystal Tracker", speedVariance: .2, radiusVariance: .5)),
-                    new Follow(1.4, range: 6),
-                    new Follow(1.4, range: 6),
+                    new Follow(1, range: 6),
+                    new Follow(1, range: 6),
                     new TimedTransition(5000, "ThrowPortal")
                     ),
                 new State("ThrowPortal",
                      new Prioritize(
                         new Orbit(1.0, 4, 10, "shtrs Crystal Tracker", speedVariance: .2, radiusVariance: .5)),
-                    new Follow(1.4, range: 6),
-                    new Follow(1.4, range: 6),
+                    new Follow(1, range: 6),
+                    new Follow(1, range: 6),
                     new TossObject("shtrs Fire Portal", 5, coolDown: 8000),
                     new TimedTransition(8000, "orbit")
                     )
@@ -2527,7 +2527,7 @@ namespace wServer.logic
             )
         .Init("shtrs Crystal Tracker",
             new State(
-                new Follow(2, 10, 1)
+                new Follow(1, 10, 1)
                 )
             )
         .Init("shtrs king timer",

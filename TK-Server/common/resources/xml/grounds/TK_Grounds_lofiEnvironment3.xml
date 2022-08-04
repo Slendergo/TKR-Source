@@ -233,6 +233,35 @@
     </RandomTexture>
     <BlendPriority>0</BlendPriority>
   </Ground>
+	<Ground type="0x5594" id="Earth Light 1">
+		<RandomTexture>
+			<Texture>
+				<File>lofiEnvironment3</File>
+				<Index>0x106</Index>
+			</Texture>
+			<Texture>
+				<File>lofiEnvironment3</File>
+				<Index>0x106</Index>
+			</Texture>
+			<Texture>
+				<File>lofiEnvironment3</File>
+				<Index>0x106</Index>
+			</Texture>
+			<Texture>
+				<File>lofiEnvironment3</File>
+				<Index>0x107</Index>
+			</Texture>
+			<Texture>
+				<File>lofiEnvironment3</File>
+				<Index>0x108</Index>
+			</Texture>
+			<Texture>
+				<File>lofiEnvironment3</File>
+				<Index>0x109</Index>
+			</Texture>
+		</RandomTexture>
+		<BlendPriority>0</BlendPriority>
+	</Ground>
   <Ground type="0xc2" id="Earthy Grass">
     <RandomTexture>
       <Texture>
@@ -332,7 +361,9 @@
       <File>lofiEnvironment3</File>
       <Index>0x140</Index>
     </Texture>
-    <Sink />
+	  <MinDamage>45</MinDamage>
+	  <MaxDamage>45</MaxDamage>
+	  <Sink />
     <Speed>0.75</Speed>
     <Animate dx=".4" dy=".4">Wave</Animate>
     <BlendPriority>-10</BlendPriority>

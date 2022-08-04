@@ -78,6 +78,12 @@ namespace wServer.logic
                     new Prioritize(
                     new Orbit(3, 10, 15, "Puppet Master v2")),
                     new Shoot(15, 3, 360 / 3, 0, 45, coolDown: 1250),
+                    new Shoot(15, 3, 360 / 3, 2, 100, coolDown: 1250),
+                    new HpLessTransition(0.3, "chase")
+                    ),
+                new State("chase",
+                    new Follow(1, 10),
+                    new Shoot(15, 3, 360 / 3, 0, 45, coolDown: 1250),
                     new Shoot(15, 3, 360 / 3, 2, 100, coolDown: 1250)
                     )
                 )
@@ -88,9 +94,10 @@ namespace wServer.logic
                 new Orbit(3, 3, 15, "Puppet Master v2")),
                 new State("1",
                     new Shoot(15, 4, 360 / 4, 0, 45, coolDown: 750),
-                    new TimedTransition(750, "2")
+                    new HpLessTransition(0.3, "chase")
                     ),
-                new State("2",
+                new State("chase",
+                    new Follow(1, 10),
                     new Shoot(15, 4, 360 / 4, 1, 90, coolDown: 750),
                     new TimedTransition(750, "1")
                     )

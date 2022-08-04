@@ -24,7 +24,7 @@ namespace wServer.logic
                     new Order(100, "Red Gas Spawner LR", "OFF"),
                     new Wander(0.5),
                     new SetAltTexture(0),
-                    new TossObject("Green Potion", coolDown: 2000, coolDownOffset: 0),
+                    new TossObject2("Green Potion", coolDown: 2000, coolDownOffset: 0),
                     new TimedTransition(12000, "rage TA")
                     ),
                 new State("rage TA",
@@ -36,7 +36,7 @@ namespace wServer.logic
                     new Order(100, "Red Gas Spawner LR", "OFF"),
                     new Wander(0.5),
                     new SetAltTexture(0),
-                    new TossObject("Turret Attack", coolDown: 2000, coolDownOffset: 0),
+                    new TossObject2("Turret Attack", coolDown: 2000, coolDownOffset: 0),
                     new TimedTransition(10000, "rage")
                     ),
                 new State("GP",
@@ -49,7 +49,7 @@ namespace wServer.logic
                     new Wander(0.5),
                     new SetAltTexture(0),
                     new Taunt(0.5, "For Science"),
-                    new TossObject("Green Potion", coolDown: 2000, coolDownOffset: 0),
+                    new TossObject2("Green Potion", coolDown: 2000, coolDownOffset: 0),
                     new TimedTransition(12000, "TA")
                     ),
                 new State("TA",
@@ -86,7 +86,7 @@ namespace wServer.logic
                     new Order(100, "Red Gas Spawner LR", "ON"),
                     new Wander(0.5),
                     new SetAltTexture(0),
-                    new TossObject("Green Potion", coolDown: 2000, coolDownOffset: 0),
+                    new TossObject2("Green Potion", coolDown: 2000, coolDownOffset: 0),
                     new TimedTransition(12000, "TA2")
                     ),
                 new State("TA2",
@@ -98,7 +98,7 @@ namespace wServer.logic
                     new Order(100, "Red Gas Spawner LR", "ON"),
                     new Wander(0.5),
                     new SetAltTexture(0),
-                    new TossObject("Green Potion", coolDown: 2000, coolDownOffset: 0),
+                    new TossObject2("Green Potion", coolDown: 2000, coolDownOffset: 0),
                     new TimedTransition(10000, "hide2")
                     ),
                 new State("hide2",
@@ -122,7 +122,7 @@ namespace wServer.logic
                     new Order(100, "Red Gas Spawner LR", "ON"),
                     new Wander(0.5),
                     new SetAltTexture(0),
-                    new TossObject("Green Potion", coolDown: 2000, coolDownOffset: 0),
+                    new TossObject2("Green Potion", coolDown: 2000, coolDownOffset: 0),
                     new TimedTransition(12000, "TA3")
                     ),
                 new State("TA3",
@@ -134,7 +134,7 @@ namespace wServer.logic
                     new Order(100, "Red Gas Spawner LR", "ON"),
                     new Wander(0.5),
                     new SetAltTexture(0),
-                    new TossObject("Green Potion", coolDown: 2000, coolDownOffset: 0),
+                    new TossObject2("Green Potion", coolDown: 2000, coolDownOffset: 0),
                     new TimedTransition(10000, "hide3")
                     ),
                 new State("hide3",
@@ -158,7 +158,7 @@ namespace wServer.logic
                     new Order(100, "Red Gas Spawner LR", "OFF"),
                     new Wander(0.5),
                     new SetAltTexture(0),
-                    new TossObject("Green Potion", coolDown: 2000, coolDownOffset: 0),
+                    new TossObject2("Green Potion", coolDown: 2000, coolDownOffset: 0),
                     new TimedTransition(12000, "TA4")
                     ),
                 new State("TA4",
@@ -170,7 +170,7 @@ namespace wServer.logic
                     new Order(100, "Red Gas Spawner LR", "OFF"),
                     new Wander(0.5),
                     new SetAltTexture(0),
-                    new TossObject("Green Potion", coolDown: 2000, coolDownOffset: 0),
+                    new TossObject2("Green Potion", coolDown: 2000, coolDownOffset: 0),
                     new TimedTransition(10000, "hide4")
                     ),
                 new State("hide4",

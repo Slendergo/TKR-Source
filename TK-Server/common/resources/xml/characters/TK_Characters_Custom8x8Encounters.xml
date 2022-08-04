@@ -1,4 +1,48 @@
 <Objects>
+	<Object type="0x9951" id="Elemental Fire Wall">
+		<Enemy />
+		<Class>Character</Class>
+		<Texture>
+			<File>customEnvironment</File>
+			<Index>0x3d</Index>
+		</Texture>
+		<Animation prob="1.0" period="0.0">
+			<Frame time="0.5">
+				<Texture>
+					<File>customEnvironment</File>
+					<Index>0x3d</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.5">
+				<Texture>
+					<File>customEnvironment</File>
+					<Index>0x3e</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.2">
+				<Texture>
+					<File>customEnvironment</File>
+					<Index>0x3f</Index>
+				</Texture>
+			</Frame>
+		</Animation>
+		<HitSound>monster/slimes_death</HitSound>
+		<DeathSound>monster/flying_brain_death</DeathSound>
+		<Size>100</Size>
+		<ShadowSize>85</ShadowSize>
+		<ShadowColor>0xFA9632</ShadowColor>
+		<MaxHitPoints>400</MaxHitPoints>
+		<Defense>80</Defense>
+		<Projectile id="0">
+			<ObjectId>Invisible</ObjectId>
+			<MinDamage>10</MinDamage>
+			<MaxDamage>20</MaxDamage>
+			<Speed>0</Speed>
+			<Size>120</Size>
+			<LifetimeMS>50</LifetimeMS>
+			<MultiHit />
+		</Projectile>
+	</Object>
   <Object type="0x5116" id="Soul of Mana Mob">
     <DisplayId>Soul of Mana</DisplayId>
     <Class>Character</Class>
@@ -529,7 +573,7 @@
       <Index>33</Index>
     </AnimatedTexture>
     <Size>100</Size>
-    <MaxHitPoints>7000</MaxHitPoints>
+    <MaxHitPoints>3500</MaxHitPoints>
     <Defense>5</Defense>
     <StasisImmune/>
     <Projectile id="0">
@@ -550,7 +594,7 @@
       <Index>34</Index>
     </AnimatedTexture>
     <Size>100</Size>
-    <MaxHitPoints>9000</MaxHitPoints>
+    <MaxHitPoints>4500</MaxHitPoints>
     <Defense>25</Defense>
     <StasisImmune/>
     <ParalyzeImmune/>

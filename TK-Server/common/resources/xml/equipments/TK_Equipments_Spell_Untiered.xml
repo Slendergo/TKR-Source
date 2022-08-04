@@ -1,5 +1,5 @@
 <Objects>
-	<Object type="0x9909" id="Limon's Spell">
+	<Object type="0x28df" id="Limons Spell">
 		<Class>Equipment</Class>
 		<Item />
 		<Texture>
@@ -7,7 +7,6 @@
 			<Index>0x87</Index>
 		</Texture>
 		<SlotType>11</SlotType>
-		<SPlus />
 		<FameBonus>5</FameBonus>
 		<Description>Zeus is big gay</Description>
 		<Sound>spell/fire_nova</Sound>
@@ -15,12 +14,10 @@
 		<ActivateOnEquip stat="27" amount="4">IncrementStat</ActivateOnEquip>
 		<Projectile>
 			<ObjectId>Limons Spell Shot</ObjectId>
-			<Speed>160</Speed>
-			<MinDamage>110</MinDamage>
-			<MaxDamage>145</MaxDamage>
-			<LifetimeMS>1000</LifetimeMS>
-			<ArmorPiercing />
-			<MultiHit />
+			<Speed>60</Speed>
+			<MinDamage>180</MinDamage>
+			<MaxDamage>210</MaxDamage>
+			<LifetimeMS>2500</LifetimeMS>
 		</Projectile>
 		<Usable />
 		<BagType>7</BagType>

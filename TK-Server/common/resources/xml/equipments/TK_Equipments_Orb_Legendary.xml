@@ -61,7 +61,7 @@
     <MpCost>150</MpCost>
     <Activate effect="Paralyzed" duration="4.25" range="4" color="0xE9A92D" target="enemy" center="mouse" visualEffect="4" useWisMod="false">GenericActivate</Activate>
     <Activate effect="Berserk" duration="4" useWisMod="true">ConditionEffectSelf</Activate>
-    <Activate effect="Invincible" duration="2" useWisMod="false">ConditionEffectSelf</Activate>
+    <Activate effect="Armored" duration="2" useWisMod="false">ConditionEffectSelf</Activate>
     <Cooldown>4</Cooldown>
   </Object>
 </Objects>

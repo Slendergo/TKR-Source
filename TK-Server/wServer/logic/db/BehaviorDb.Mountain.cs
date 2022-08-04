@@ -130,6 +130,7 @@ namespace wServer.logic
             )
         .Init("Ent God",
             new State(
+                new DropPortalOnDeath("Garden of Horror Portal", 0.3),
                 new Prioritize(
                     new StayAbove(1, 200),
                     new Follow(1, range: 7),

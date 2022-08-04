@@ -50,8 +50,6 @@ namespace wServer.logic
             }
         }
 
-        public event EventHandler<BehaviorEventArgs> Death;
-
         public IList<Behavior> Behaviors { get; private set; }
         public string Name { get; private set; }
         public State Parent { get; private set; }
@@ -78,12 +76,20 @@ namespace wServer.logic
             return Name;
         }
 
-        internal void OnDeath(BehaviorEventArgs e)
+        internal void OnDeath(Entity host, ref TickTime time)
         {
-            if (Death != null)
-                Death(this, e);
+            //if(host.CurrentState.Is(parent)) ???
+            //{
+
+            //}
+            //foreach (var i in States) stack overflow
+            //    i.OnDeath(host, ref time);
+            foreach (var j in Transitions)
+                j.OnDeath(host, ref time);
+            foreach (var j in Behaviors)
+                j.OnDeath(host, ref time);
             if (Parent != null)
-                Parent.OnDeath(e);
+                Parent.OnDeath(host, ref time);
         }
 
         internal void Resolve(Dictionary<string, State> states)

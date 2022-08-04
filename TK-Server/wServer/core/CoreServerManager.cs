@@ -45,87 +45,6 @@ namespace wServer.core
         public ManualResetEvent ShutdownManualResetEvent { get; set; }
         public WorldManager WorldManager { get; private set; }
 
-        public double GetEnemyDamageRate()
-        {
-            var settings = ServerConfig.serverSettings;
-            var utc = DateTime.UtcNow;
-
-            if (utc >= settings.GetEnemyDamageStartAt && utc <= settings.GetEnemyDamageEndAt)
-                return settings.enemyDamageRate;
-
-            return 1.0;
-        }
-
-        public string[] GetEventMessages()
-        {
-            var settings = ServerConfig.serverSettings;
-            var utc = DateTime.UtcNow;
-            var events = new List<string>();
-
-            if (utc >= settings.GetEnemyHealthBoostStartAt && utc <= settings.GetEnemyHealthBoostEndAt)
-                events.Add($"- Enemy Health Boost [rate : {settings.enemyDamageRate}x]: " +
-                    $"{GetTimeRemains(settings.GetEnemyHealthBoostEndAt)}"
-                    );
-
-            if (utc >= settings.GetEnemyDamageStartAt && utc <= settings.GetEnemyDamageEndAt)
-                events.Add($"- Enemy Damage [rate : {settings.enemyDamageRate}x]: " +
-                    $"{GetTimeRemains(settings.GetEnemyDamageEndAt)}"
-                    );
-
-            if (utc >= settings.GetExpEventStartAt && utc <= settings.GetExpEventEndAt)
-                events.Add(
-                    $"- EXP Event [rate: {settings.expEventRate}x]: " +
-                    $"{GetTimeRemains(settings.GetExpEventEndAt)}"
-                );
-            if (utc >= settings.GetLootEventStartAt && utc <= settings.GetLootEventEndAt)
-                events.Add(
-                    $"- Loot Event [rate: {settings.lootEventRate}x]: " +
-                    $"{GetTimeRemains(settings.GetLootEventEndAt)}"
-                );
-
-            return events.ToArray();
-        }
-
-        public double GetExperienceRate()
-        {
-            var settings = ServerConfig.serverSettings;
-            var utc = DateTime.UtcNow;
-
-            if (utc >= settings.GetExpEventStartAt && utc <= settings.GetExpEventEndAt)
-                return settings.expEventRate;
-
-            return 1.0;
-        }
-
-        public double GetHealthBoostRate()
-        {
-            var settings = ServerConfig.serverSettings;
-            var utc = DateTime.UtcNow;
-
-            if (utc >= settings.GetEnemyHealthBoostStartAt && utc <= settings.GetEnemyHealthBoostEndAt)
-                return settings.enemyHealthBoostRate;
-
-            return 1.0;
-        }
-
-        public double GetLootRate()
-        {
-            var settings = ServerConfig.serverSettings;
-            var utc = DateTime.UtcNow;
-
-            if (utc >= settings.GetLootEventStartAt && utc <= settings.GetLootEventEndAt)
-                return settings.lootEventRate;
-
-            return 0.0;
-        }
-
-        public bool HasEvents()
-        {
-            var settings = ServerConfig.serverSettings;
-            var utc = DateTime.UtcNow;
-            return (utc >= settings.GetLootEventStartAt && utc <= settings.GetLootEventEndAt) || (utc >= settings.GetExpEventStartAt && utc <= settings.GetExpEventEndAt);
-        }
-
         public void Initialize()
         {
             InstanceId = ServerConfig.serverInfo.instanceId = Guid.NewGuid().ToString();
@@ -146,6 +65,7 @@ namespace wServer.core
 
             BehaviorDb = new BehaviorDb(this);
             SLogger.Instance.Info("Created BehaviorDb");
+
             CommandManager = new CommandManager(this);
             SLogger.Instance.Info("Created CommandManager");
 
@@ -161,7 +81,7 @@ namespace wServer.core
             ChatManager.Initialize();
             SLogger.Instance.Info("Initialize ChatManager");
 
-            CoreServerManagerTicker = new CoreServerManagerTicker(this, 5);
+            CoreServerManagerTicker = new CoreServerManagerTicker(this, 1);
             SLogger.Instance.Info("Created CoreServerManagerTicker");
             CoreServerManagerTickerThread = new Thread(CoreServerManagerTicker.Update);
             CoreServerManagerTickerThread.Start();

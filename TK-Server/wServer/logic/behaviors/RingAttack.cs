@@ -116,13 +116,16 @@ namespace wServer.logic.behaviors
                     };
 
                     if (isQuest)
-                        Host.World.PlayersBroadcastAsParallel(_ => _.Client.SendPacket(pkt));
+                        Host.World.ForeachPlayer(_ => _.Client.SendPacket(pkt));
                     else
                     {
-                        var players = Host.World.Players
-                            .ValueWhereAsParallel(_ => _.DistSqr(Host) < PlayerUpdate.VISIBILITY_RADIUS_SQR);
-                        for (var i = 0; i < players.Length; i++)
-                            players[i].Client.SendPacket(pkt);
+                        // replaced to this
+                        Host.World.BroadcastIfVisible(pkt, Host);
+                        
+                        // from this
+                        //var players = Host.World.Players.Values.Where(_ => _.DistSqr(Host) < PlayerUpdate.VISIBILITY_RADIUS_SQR);
+                        //for (var i = 0; i < players.Length; i++)
+                        //    players[i].Client.SendPacket(pkt);
                     }
                 }
 

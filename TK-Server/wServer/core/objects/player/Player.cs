@@ -6,17 +6,23 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using wServer.core.net.handlers;
 using wServer.core.terrain;
 using wServer.core.worlds;
 using wServer.core.worlds.logic;
 using wServer.logic;
 using wServer.networking;
-using wServer.networking.packets;
 using wServer.networking.packets.outgoing;
 using wServer.utils;
 
 namespace wServer.core.objects
 {
+    internal interface IPlayer
+    {
+        void Damage(int dmg, Entity src);
+        bool IsVisibleToEnemy();
+    }
+
     public partial class Player : Character, IContainer, IPlayer
     {
         public const int DONOR_1 = 10;
@@ -27,8 +33,84 @@ namespace wServer.core.objects
         public const int VIP = 60;
 
         public Client Client;
-        public bool IsAlive = true;
-        public StatsManager Stats;
+
+        public int AccountId { get => _accountId.GetValue(); set => _accountId.SetValue(value); }
+        public int Admin { get => _admin.GetValue(); set => _admin.SetValue(value); }
+        public int BaseStat { get => _baseStat.GetValue(); set => _baseStat.SetValue(value); }
+
+        public double Breath
+        {
+            get => _breath;
+            set
+            {
+                OxygenBar = (int)value;
+                _breath = value;
+            }
+        }
+
+        public int ColorChat { get => _colorchat.GetValue(); set => _colorchat.SetValue(value); }
+        public int ColorNameChat { get => _colornamechat.GetValue(); set => _colornamechat.SetValue(value); }
+        public int Credits { get => _credits.GetValue(); set => _credits.SetValue(value); }
+        public int CurrentFame { get => _currentFame.GetValue(); set => _currentFame.SetValue(value); }
+        public RInventory DbLink { get; private set; }
+        public int Experience { get => _experience.GetValue(); set => _experience.SetValue(value); }
+        public int ExperienceGoal { get => _experienceGoal.GetValue(); set => _experienceGoal.SetValue(value); }
+        public int Fame { get => _fame.GetValue(); set => _fame.SetValue(value); }
+        public FameCounter FameCounter { get; private set; }
+        public int FameGoal { get => _fameGoal.GetValue(); set => _fameGoal.SetValue(value); }
+        public int Glow { get => _glow.GetValue(); set => _glow.SetValue(value); }
+        public string Guild { get => _guild.GetValue(); set => _guild?.SetValue(value); }
+        public int? GuildInvite { get; set; }
+        public int GuildRank { get => _guildRank.GetValue(); set => _guildRank.SetValue(value); }
+        public bool HasBackpack { get => _hasBackpack.GetValue(); set => _hasBackpack.SetValue(value); }
+        public ItemStacker HealthPots { get; private set; }
+        public Inventory Inventory { get; private set; }
+        public bool IsInvulnerable => HasConditionEffect(ConditionEffects.Paused) || HasConditionEffect(ConditionEffects.Stasis) || HasConditionEffect(ConditionEffects.Invincible) || HasConditionEffect(ConditionEffects.Invulnerable);
+        public int LDBoostTime { get; set; }
+        public int Level { get => _level.GetValue(); set => _level.SetValue(value); }
+        public ItemStacker MagicPots { get; private set; }
+        
+        public int MP { get => _mp.GetValue(); set => _mp.SetValue(value); }
+        public bool Muted { get; set; }
+        public bool NameChosen { get => _nameChosen.GetValue(); set => _nameChosen.SetValue(value); }
+        public int OxygenBar { get => _oxygenBar.GetValue(); set => _oxygenBar.SetValue(value); }
+        public ConcurrentQueue<InboundBuffer> IncomingMessages { get; private set; }
+        public Pet Pet { get; set; }
+        public int PetId { get; set; }
+        public PlayerUpdate PlayerUpdate { get; private set; }
+        public int Points { get => _points.GetValue(); set => _points.SetValue(value); }
+        public Position Pos => new Position() { X = X, Y = Y };
+        public int Rank { get => _rank.GetValue(); set => _rank.SetValue(value); }
+        public int Skin { get => _skin.GetValue(); set => _skin.SetValue(value); }
+        public int[] SlotTypes { get; private set; }
+        public int Node1TickMin { get => _node1TickMin.GetValue(); set => _node1TickMin.SetValue(value); }
+        public int Node1TickMaj { get => _node1TickMaj.GetValue(); set => _node1TickMaj.SetValue(value); }
+        public int Node1Med { get => _node1Med.GetValue(); set => _node1Med.SetValue(value); }
+        public int Node1Big { get => _node1Big.GetValue(); set => _node1Big.SetValue(value); }
+        public int Node2TickMin { get => _node2TickMin.GetValue(); set => _node2TickMin.SetValue(value); }
+        public int Node2TickMaj { get => _node2TickMaj.GetValue(); set => _node2TickMaj.SetValue(value); }
+        public int Node2Med { get => _node2Med.GetValue(); set => _node2Med.SetValue(value); }
+        public int Node2Big { get => _node2Big.GetValue(); set => _node2Big.SetValue(value); }
+        public int Node3TickMin { get => _node3TickMin.GetValue(); set => _node3TickMin.SetValue(value); }
+        public int Node3TickMaj { get => _node3TickMaj.GetValue(); set => _node3TickMaj.SetValue(value); }
+        public int Node3Med { get => _node3Med.GetValue(); set => _node3Med.SetValue(value); }
+        public int Node3Big { get => _node3Big.GetValue(); set => _node3Big.SetValue(value); }
+        public int Node4TickMin { get => _node4TickMin.GetValue(); set => _node4TickMin.SetValue(value); }
+        public int Node4TickMaj { get => _node4TickMaj.GetValue(); set => _node4TickMaj.SetValue(value); }
+        public int Node4Med { get => _node4Med.GetValue(); set => _node4Med.SetValue(value); }
+        public int Node4Big { get => _node4Big.GetValue(); set => _node4Big.SetValue(value); }
+        public int Node5TickMin { get => _node5TickMin.GetValue(); set => _node5TickMin.SetValue(value); }
+        public int Node5TickMaj { get => _node5TickMaj.GetValue(); set => _node5TickMaj.SetValue(value); }
+        public int Node5Med { get => _node5Med.GetValue(); set => _node5Med.SetValue(value); }
+        public int Node5Big { get => _node5Big.GetValue(); set => _node5Big.SetValue(value); }
+
+        public ItemStacker[] Stacks { get; private set; }
+        public int Stars { get => _stars.GetValue(); set => _stars.SetValue(value); }
+        public int Texture1 { get => _texture1.GetValue(); set => _texture1.SetValue(value); }
+        public int Texture2 { get => _texture2.GetValue(); set => _texture2.SetValue(value); }
+        public bool UpgradeEnabled { get => _upgradeEnabled.GetValue(); set => _upgradeEnabled.SetValue(value); }
+        public bool XPBoosted { get => _xpBoosted.GetValue(); set => _xpBoosted.SetValue(value); }
+        public int XPBoostTime { get; set; }
 
         private SV<int> _accountId;
         private SV<int> _admin;
@@ -53,22 +135,6 @@ namespace wServer.core.objects
         private SV<bool> _hasBackpack;
         private float _hpRegenCounter;
         private SV<int> _level;
-        private SV<bool> _maxedAtt;
-        private SV<bool> _maxedDef;
-        private SV<bool> _maxedDex;
-        private SV<bool> _maxedLife;
-        private SV<bool> _maxedMana;
-        private SV<bool> _maxedSpd;
-        private SV<bool> _maxedVit;
-        private SV<bool> _maxedWis;
-        private SV<bool> _superMaxedAtt;
-        private SV<bool> _superMaxedDef;
-        private SV<bool> _superMaxedDex;
-        private SV<bool> _superMaxedLife;
-        private SV<bool> _superMaxedMana;
-        private SV<bool> _superMaxedSpd;
-        private SV<bool> _superMaxedVit;
-        private SV<bool> _superMaxedWis;
         private SV<int> _mp;
         private float _mpRegenCounter;
         private SV<bool> _nameChosen;
@@ -105,45 +171,6 @@ namespace wServer.core.objects
         private SV<int> _texture2;
         private SV<bool> _upgradeEnabled;
         private SV<bool> _xpBoosted;
-
-        private SV<int> _SPSLifeCount;
-        private SV<int> _SPSManaCount;
-        private SV<int> _SPSDefenseCount;
-        private SV<int> _SPSAttackCount;
-        private SV<int> _SPSDexterityCount;
-        private SV<int> _SPSSpeedCount;
-        private SV<int> _SPSVitalityCount;
-        private SV<int> _SPSWisdomCount;
-
-        private SV<int> _SPSLifeCountMax;
-        private SV<int> _SPSManaCountMax;
-        private SV<int> _SPSDefenseCountMax;
-        private SV<int> _SPSAttackCountMax;
-        private SV<int> _SPSDexterityCountMax;
-        private SV<int> _SPSSpeedCountMax;
-        private SV<int> _SPSVitalityCountMax;
-        private SV<int> _SPSWisdomCountMax;
-
-        public int SPSLifeCount { get => _SPSLifeCount.GetValue(); set => _SPSLifeCount.SetValue(value); }
-        public int SPSManaCount { get => _SPSManaCount.GetValue(); set => _SPSManaCount.SetValue(value); }
-        public int SPSDefenseCount { get => _SPSDefenseCount.GetValue(); set => _SPSDefenseCount.SetValue(value); }
-        public int SPSAttackCount { get => _SPSAttackCount.GetValue(); set => _SPSAttackCount.SetValue(value); }
-        public int SPSDexterityCount { get => _SPSDexterityCount.GetValue(); set => _SPSDexterityCount.SetValue(value); }
-        public int SPSSpeedCount { get => _SPSSpeedCount.GetValue(); set => _SPSSpeedCount.SetValue(value); }
-        public int SPSVitalityCount { get => _SPSVitalityCount.GetValue(); set => _SPSVitalityCount.SetValue(value); }
-        public int SPSWisdomCount { get => _SPSWisdomCount.GetValue(); set => _SPSWisdomCount.SetValue(value); }
-        public int SPSLifeCountMax { get => _SPSLifeCountMax.GetValue(); set => _SPSLifeCountMax.SetValue(value); }
-        public int SPSManaCountMax { get => _SPSManaCountMax.GetValue(); set => _SPSManaCountMax.SetValue(value); }
-        public int SPSDefenseCountMax { get => _SPSDefenseCountMax.GetValue(); set => _SPSDefenseCountMax.SetValue(value); }
-        public int SPSAttackCountMax { get => _SPSAttackCountMax.GetValue(); set => _SPSAttackCountMax.SetValue(value); }
-        public int SPSDexterityCountMax { get => _SPSDexterityCountMax.GetValue(); set => _SPSDexterityCountMax.SetValue(value); }
-        public int SPSSpeedCountMax { get => _SPSSpeedCountMax.GetValue(); set => _SPSSpeedCountMax.SetValue(value); }
-        public int SPSVitalityCountMax { get => _SPSVitalityCountMax.GetValue(); set => _SPSVitalityCountMax.SetValue(value); }
-        public int SPSWisdomCountMax { get => _SPSWisdomCountMax.GetValue(); set => _SPSWisdomCountMax.SetValue(value); }
-
-
-        private const float MinMoveSpeed = 0.004f;
-        private const float MaxMoveSpeed = 0.0096f;
 
         public Player(Client client, bool saveInventory = true) : base(client.CoreServerManager, client.Character.ObjectType)
         {
@@ -242,8 +269,7 @@ namespace wServer.core.objects
             _SPSWisdomCount = new SV<int>(this, StatDataType.SPS_WISDOM_COUNT, client.Account.SPSWisdomCount, true);
             _SPSWisdomCountMax = new SV<int>(this, StatDataType.SPS_WISDOM_COUNT_MAX, maxPotionAmount, true);
 
-            IncomingPackets = new ConcurrentQueue<InboundBuffer>();
-            PendingActions = new ConcurrentQueue<Action<TickTime>>();
+            IncomingMessages = new ConcurrentQueue<InboundBuffer>();
 
             Name = client.Account.Name;
             HP = client.Character.HP;
@@ -295,102 +321,6 @@ namespace wServer.core.objects
             });
         }
 
-        public int AccountId { get => _accountId.GetValue(); set => _accountId.SetValue(value); }
-        public int Admin { get => _admin.GetValue(); set => _admin.SetValue(value); }
-        public int BaseStat { get => _baseStat.GetValue(); set => _baseStat.SetValue(value); }
-
-        public double Breath
-        {
-            get => _breath;
-            set
-            {
-                OxygenBar = (int)value;
-                _breath = value;
-            }
-        }
-
-        public int ColorChat { get => _colorchat.GetValue(); set => _colorchat.SetValue(value); }
-        public int ColorNameChat { get => _colornamechat.GetValue(); set => _colornamechat.SetValue(value); }
-        public int Credits { get => _credits.GetValue(); set => _credits.SetValue(value); }
-        public int CurrentFame { get => _currentFame.GetValue(); set => _currentFame.SetValue(value); }
-        public RInventory DbLink { get; private set; }
-        public int Experience { get => _experience.GetValue(); set => _experience.SetValue(value); }
-        public int ExperienceGoal { get => _experienceGoal.GetValue(); set => _experienceGoal.SetValue(value); }
-        public int Fame { get => _fame.GetValue(); set => _fame.SetValue(value); }
-        public FameCounter FameCounter { get; private set; }
-        public int FameGoal { get => _fameGoal.GetValue(); set => _fameGoal.SetValue(value); }
-        public int Glow { get => _glow.GetValue(); set => _glow.SetValue(value); }
-        public string Guild { get => _guild.GetValue(); set => _guild?.SetValue(value); }
-        public int? GuildInvite { get; set; }
-        public int GuildRank { get => _guildRank.GetValue(); set => _guildRank.SetValue(value); }
-        public bool HasBackpack { get => _hasBackpack.GetValue(); set => _hasBackpack.SetValue(value); }
-        public ItemStacker HealthPots { get; private set; }
-        public Inventory Inventory { get; private set; }
-        public bool IsInvulnerable => HasConditionEffect(ConditionEffects.Paused) || HasConditionEffect(ConditionEffects.Stasis) || HasConditionEffect(ConditionEffects.Invincible) || HasConditionEffect(ConditionEffects.Invulnerable);
-        public int LDBoostTime { get; set; }
-        public int Level { get => _level.GetValue(); set => _level.SetValue(value); }
-        public ItemStacker MagicPots { get; private set; }
-        public bool MaxedAtt { get => _maxedAtt.GetValue(); set => _maxedAtt.SetValue(value); }
-        public bool MaxedDef { get => _maxedDef.GetValue(); set => _maxedDef.SetValue(value); }
-        public bool MaxedDex { get => _maxedDex.GetValue(); set => _maxedDex.SetValue(value); }
-        public bool MaxedLife { get => _maxedLife.GetValue(); set => _maxedLife.SetValue(value); }
-        public bool MaxedMana { get => _maxedMana.GetValue(); set => _maxedMana.SetValue(value); }
-        public bool MaxedSpd { get => _maxedSpd.GetValue(); set => _maxedSpd.SetValue(value); }
-        public bool MaxedVit { get => _maxedVit.GetValue(); set => _maxedVit.SetValue(value); }
-        public bool MaxedWis { get => _maxedWis.GetValue(); set => _maxedWis.SetValue(value); }
-        public bool SuperMaxedAtt { get => _superMaxedAtt.GetValue(); set => _superMaxedAtt.SetValue(value); }
-        public bool SuperMaxedDef { get => _superMaxedDef.GetValue(); set => _superMaxedDef.SetValue(value); }
-        public bool SuperMaxedDex { get => _superMaxedDex.GetValue(); set => _superMaxedDex.SetValue(value); }
-        public bool SuperMaxedLife { get => _superMaxedLife.GetValue(); set => _superMaxedLife.SetValue(value); }
-        public bool SuperMaxedMana { get => _superMaxedMana.GetValue(); set => _superMaxedMana.SetValue(value); }
-        public bool SuperMaxedSpd { get => _superMaxedSpd.GetValue(); set => _superMaxedSpd.SetValue(value); }
-        public bool SuperMaxedVit { get => _superMaxedVit.GetValue(); set => _superMaxedVit.SetValue(value); }
-        public bool SuperMaxedWis { get => _superMaxedWis.GetValue(); set => _superMaxedWis.SetValue(value); }
-        public int MP { get => _mp.GetValue(); set => _mp.SetValue(value); }
-        public bool Muted { get; set; }
-        public bool NameChosen { get => _nameChosen.GetValue(); set => _nameChosen.SetValue(value); }
-        public int OxygenBar { get => _oxygenBar.GetValue(); set => _oxygenBar.SetValue(value); }
-        public ConcurrentQueue<InboundBuffer> IncomingPackets { get; private set; }
-        public Pet Pet { get; set; }
-        public int PetId { get; set; }
-        public PlayerUpdate PlayerUpdate { get; private set; }
-        public int Points { get => _points.GetValue(); set => _points.SetValue(value); }
-        public Position Pos => new Position() { X = X, Y = Y };
-        public int Rank { get => _rank.GetValue(); set => _rank.SetValue(value); }
-        public int Skin { get => _skin.GetValue(); set => _skin.SetValue(value); }
-        public int[] SlotTypes { get; private set; }
-        public int Node1TickMin { get => _node1TickMin.GetValue(); set => _node1TickMin.SetValue(value); }
-        public int Node1TickMaj { get => _node1TickMaj.GetValue(); set => _node1TickMaj.SetValue(value); }
-        public int Node1Med { get => _node1Med.GetValue(); set => _node1Med.SetValue(value); }
-        public int Node1Big { get => _node1Big.GetValue(); set => _node1Big.SetValue(value); }
-        public int Node2TickMin { get => _node2TickMin.GetValue(); set => _node2TickMin.SetValue(value); }
-        public int Node2TickMaj { get => _node2TickMaj.GetValue(); set => _node2TickMaj.SetValue(value); }
-        public int Node2Med { get => _node2Med.GetValue(); set => _node2Med.SetValue(value); }
-        public int Node2Big { get => _node2Big.GetValue(); set => _node2Big.SetValue(value); }
-        public int Node3TickMin { get => _node3TickMin.GetValue(); set => _node3TickMin.SetValue(value); }
-        public int Node3TickMaj { get => _node3TickMaj.GetValue(); set => _node3TickMaj.SetValue(value); }
-        public int Node3Med { get => _node3Med.GetValue(); set => _node3Med.SetValue(value); }
-        public int Node3Big { get => _node3Big.GetValue(); set => _node3Big.SetValue(value); }
-        public int Node4TickMin { get => _node4TickMin.GetValue(); set => _node4TickMin.SetValue(value); }
-        public int Node4TickMaj { get => _node4TickMaj.GetValue(); set => _node4TickMaj.SetValue(value); }
-        public int Node4Med { get => _node4Med.GetValue(); set => _node4Med.SetValue(value); }
-        public int Node4Big { get => _node4Big.GetValue(); set => _node4Big.SetValue(value); }
-        public int Node5TickMin { get => _node5TickMin.GetValue(); set => _node5TickMin.SetValue(value); }
-        public int Node5TickMaj { get => _node5TickMaj.GetValue(); set => _node5TickMaj.SetValue(value); }
-        public int Node5Med { get => _node5Med.GetValue(); set => _node5Med.SetValue(value); }
-        public int Node5Big { get => _node5Big.GetValue(); set => _node5Big.SetValue(value); }
-
-        public ItemStacker[] Stacks { get; private set; }
-        public int Stars { get => _stars.GetValue(); set => _stars.SetValue(value); }
-        public int Texture1 { get => _texture1.GetValue(); set => _texture1.SetValue(value); }
-        public int Texture2 { get => _texture2.GetValue(); set => _texture2.SetValue(value); }
-        public bool UpgradeEnabled { get => _upgradeEnabled.GetValue(); set => _upgradeEnabled.SetValue(value); }
-        public bool XPBoosted { get => _xpBoosted.GetValue(); set => _xpBoosted.SetValue(value); }
-        public int XPBoostTime { get; set; }
-        private ConcurrentQueue<Action<TickTime>> PendingActions { get; set; }
-
-        public void AddPendingAction(Action<TickTime> action) => PendingActions.Enqueue(action);
-
         public bool ApplyEffectCooldown(int slot)
         {
             if (slot == 0)
@@ -410,7 +340,7 @@ namespace wServer.core.objects
 
         public override bool CanBeSeenBy(Player player) => Client?.Account != null && Client.Account.Hidden ? false : true;
 
-        public void checkMaxedStats()
+        public void CheckMaxedStats()
         {
             var classes = CoreServerManager?.Resources?.GameData?.Classes;
 
@@ -722,16 +652,6 @@ namespace wServer.core.objects
             }));
         }
 
-        public void DoUpdate(TickTime time)
-        {
-            IsAlive = KeepAlive(time);
-            if (!IsAlive)
-                return;
-
-            PlayerUpdate.SendUpdate();
-            PlayerUpdate.SendNewTick(time.ElaspedMsDelta);
-        }
-
         public void DropNextRandom() => Client.Random.NextInt();
 
         public int GetCurrency(CurrencyType currency)
@@ -840,62 +760,42 @@ namespace wServer.core.objects
 
             SetNewbiePeriod();
 
-            if (CoreServerManager.HasEvents() && owner.Id == World.Nexus)
-            {
-                var events = CoreServerManager.GetEventMessages();
-
-                SendHelp($"<Announcement> This server is hosting {events.Length} event{(events.Length > 1 ? "s" : "")}!");
-
-                for (var i = 0; i < events.Length; i++)
-                    SendInfo(events[i]);
-            }
-
             base.Init(owner);
 
             FameCounter = new FameCounter(this);
             PlayerUpdate = new PlayerUpdate(this);
         }
 
-        public void HandlePendingActions(TickTime time)
+        public void HandleIO(ref TickTime time)
         {
-            while (PendingActions.TryDequeue(out var callback))
-                try
-                {
-                    callback?.Invoke(time);
-                }
-                catch (Exception e)
-                {
-                    SLogger.Instance.Error(e);
-                }
-        }
-
-        public void HandleIO()
-        {
-            while (IncomingPackets.Count > 0)
+            while (IncomingMessages.Count > 0)
             {
-                if (!IncomingPackets.TryDequeue(out var pending))
+                if (!IncomingMessages.TryDequeue(out var incomingMessage))
                     continue;
 
-                if (pending.Client.State == ProtocolState.Disconnected)
+                if (incomingMessage.Client.State == ProtocolState.Disconnected)
                     continue;
+
+                var handler = MessageHandlers.GetHandler(incomingMessage.MessageId);
+                if (handler == null)
+                {
+                    SLogger.Instance.Error($"Unknown MessageId: {incomingMessage.MessageId}");
+                    continue;
+                }
 
                 try
                 {
-                    var packet = Packet.Packets[pending.Id].CreateInstance();
-                    //packet.Read(pending.Item1, pending.Item4, 0, pending.Item4.Length);
-
-                    using (var rdr = new NReader(new MemoryStream(pending.Payload)))
-                    {
-                        packet.ReadNew(rdr);
-                    }
-
-                    pending.Client.ProcessPacket(packet);
+                    NReader rdr = null;
+                    if (incomingMessage.Payload.Length != 0)
+                        rdr = new NReader(new MemoryStream(incomingMessage.Payload));
+                    handler.Handle(incomingMessage.Client, rdr, ref time);
+                    rdr?.Dispose();
                 }
-                catch (Exception e)
+                catch (Exception ex)
                 {
-                    if (!(e is EndOfStreamException))
-                        SLogger.Instance.Error("Error processing packet ({0}, {1}, {2})\n{3}", (pending.Client.Account != null) ? pending.Client.Account.Name : "", pending.Client.IpAddress, pending.Client.Id, e);
-                    pending.Client.SendFailure("An error occurred while processing data from your client.", Failure.MessageWithDisconnect);
+                    if (!(ex is EndOfStreamException))
+                        SLogger.Instance.Error("Error processing packet ({0}, {1}, {2})\n{3}", (incomingMessage.Client.Account != null) ? incomingMessage.Client.Account.Name : "", incomingMessage.Client.IpAddress, incomingMessage.Client.Id, ex);
+                    incomingMessage.Client.SendFailure("An error occurred while processing data from your client.", Failure.MessageWithDisconnect);
                 }
             }
         }
@@ -1065,7 +965,7 @@ namespace wServer.core.objects
                     Color = new ARGB(0xFFFFFFFF)
                 }
             };
-            World.PlayersBroadcastAsParallel(_ =>
+            World.ForeachPlayer(_ =>
             {
                 _.AwaitGotoAck(time.TotalElapsedMs);
                 _._tps += 1;
@@ -1075,49 +975,51 @@ namespace wServer.core.objects
 
         public override void Tick(TickTime time)
         {
-            if (!IsAlive)
-                return;
-
-            if (World.IdName.Equals("Ocean Trench"))
+            if (KeepAlive(time))
             {
-                if (Breath > 0)
-                    Breath -= 2 * time.DeltaTime * 5;
-                else
-                    HP -= 5;
+                PlayerUpdate.SendUpdate();
+                PlayerUpdate.SendNewTick(time.ElaspedMsDelta);
 
-                if (HP < 0)
+                if (World.IdName.Equals("Ocean Trench"))
                 {
-                    Death("Suffocation");
-                    return;
+                    if (Breath > 0)
+                        Breath -= 2 * time.DeltaTime * 5;
+                    else
+                        HP -= 5;
+
+                    if (HP < 0)
+                    {
+                        Death("Suffocation");
+                        return;
+                    }
+                }
+
+                CheckTradeTimeout(time);
+                //HandleSpecialEnemies(time);
+                HandleQuest(time);
+
+                if (!HasConditionEffect(ConditionEffects.Paused))
+                {
+                    HandleRegen(time);
+                    HandleEffects(time);
+
+                    GroundEffect(time);
+                    TickActivateEffects(time);
+
+                    /* Skill Tree */
+                    checkSkillStats();
+                    CheckMaxedStats();
+
+                    /* Item Effects */
+                    TimeEffects(time);
+                    SpecialEffects();
+
+                    FameCounter.Tick(time);
+
+                    CerberusClaws(time);
+                    CerberusCore(time);
                 }
             }
-
-            CheckTradeTimeout(time);
-            //HandleSpecialEnemies(time);
-            HandleQuest(time);
-
-            if (!HasConditionEffect(ConditionEffects.Paused))
-            {
-                HandleRegen(time);
-                HandleEffects(time);
-
-                GroundEffect(time);
-                TickActivateEffects(time);
-
-                /* Skill Tree */
-                checkSkillStats();
-                checkMaxedStats();
-
-                /* Item Effects */
-                TimeEffects(time);
-                SpecialEffects();
-
-                FameCounter.Tick(time);
-
-                CerberusClaws(time);
-                CerberusCore(time);
-            }
-
             base.Tick(time);
         }
 
@@ -1301,7 +1203,7 @@ namespace wServer.core.objects
             {
                 CoreServerManager.WorldManager
                     .WorldsBroadcastAsParallel(_ =>
-                        _.PlayersBroadcastAsParallel(__ =>
+                        _.ForeachPlayer(__ =>
                             __.DeathNotif(deathMessage)
                         )
                     );
@@ -1315,14 +1217,14 @@ namespace wServer.core.objects
             {
                 CoreServerManager.WorldManager
                     .WorldsBroadcastAsParallel(_ =>
-                        _.PlayersBroadcastAsParallel(__ =>
+                        _.ForeachPlayer(__ =>
                         {
                             if (__.Client.Account.GuildId == pGuild)
                                 __.DeathNotif(deathMessage);
                         })
                     );
 
-                World.PlayersBroadcastAsParallel(_ =>
+                World.ForeachPlayer(_ =>
                 {
                     if (_.Client.Account.GuildId != pGuild)
                         _.DeathNotif(deathMessage);
@@ -1330,7 +1232,7 @@ namespace wServer.core.objects
             }
             else
                 // guild less case
-                World.PlayersBroadcastAsParallel(_ => _.DeathNotif(deathMessage));
+                World.ForeachPlayer(_ => _.DeathNotif(deathMessage));
         }
 
         private void Clarification(int slot)
@@ -1389,6 +1291,7 @@ namespace wServer.core.objects
 
         public void CleanupPlayerUpdate()
         {
+            //Inventory = null; todo figure out how to dispose better
             PlayerUpdate?.Dispose();
             PlayerUpdate = null;
         }
@@ -1640,7 +1543,7 @@ namespace wServer.core.objects
                     continue;
 
                 Inventory[i] = null;
-                World.PlayersBroadcastAsParallel(_ => _.SendInfo($"{Name}'s {item.DisplayName} breaks and he disappears"));
+                World.ForeachPlayer(_ => _.SendInfo($"{Name}'s {item.DisplayName} breaks and he disappears"));
                 ReconnectToNexus();
                 return true;
             }

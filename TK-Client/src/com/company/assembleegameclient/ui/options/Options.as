@@ -242,14 +242,12 @@ public class Options extends Sprite
       this.setSelected(this.tabs_[0]);
       stage.addEventListener(KeyboardEvent.KEY_DOWN,this.onKeyDown,false,1);
       stage.addEventListener(KeyboardEvent.KEY_UP,this.onKeyUp,false,1);
-      GameServerConnection.instance.options();
    }
 
    private function onRemovedFromStage(event:Event) : void
    {
       stage.removeEventListener(KeyboardEvent.KEY_DOWN,this.onKeyDown,false);
       stage.removeEventListener(KeyboardEvent.KEY_UP,this.onKeyUp,false);
-      GameServerConnection.instance.options();
    }
 
    private function onKeyDown(event:KeyboardEvent) : void
@@ -398,9 +396,11 @@ public class Options extends Sprite
    {
        if(Parameters.data_.FS){
            stage.scaleMode = StageScaleMode.NO_SCALE;
+          this.gs_.updateScaleForTextBox(0.9);
        }
        else{
            stage.scaleMode = StageScaleMode.EXACT_FIT;
+           this.gs_.updateScaleForTextBox(1.0);
        }
 
       Parameters.root.dispatchEvent(new Event(Event.RESIZE));

@@ -90,5 +90,11 @@ namespace wServer.core.objects
                 Inventory.SetItems(inv);
             }
         }
+
+        public override void Destroy()
+        {
+            Inventory = null;
+            base.Destroy();
+        }
     }
 }

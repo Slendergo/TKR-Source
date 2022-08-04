@@ -1,5 +1,5 @@
-﻿using CA.Extensions.Concurrent;
-using common.database;
+﻿using common.database;
+using System.Linq;
 using wServer.core.objects;
 using wServer.core.worlds.logic;
 
@@ -21,20 +21,19 @@ namespace wServer.core.commands
                 }
 
                 var eligibleEnemies = player.World.Enemies
-                    .ValueWhereAsParallel(_ => _.ObjectDesc != null
+                    .Values.Where(_ => _.ObjectDesc != null
                         && _.ObjectDesc.ObjectId != null
                         && _.ObjectDesc.Enemy
                         && _.ObjectDesc.ObjectId != "Tradabad Nexus Crier"
                         && _.ObjectDesc.ObjectId.ContainsIgnoreCase(args)
                     );
-                var total = eligibleEnemies.Length;
-                for (var i = 0; i < total; i++)
+                var total = 0;
+                foreach(var enemy in eligibleEnemies)
                 {
-                    var enemy = eligibleEnemies[i];
                     enemy.Spawned = true;
                     enemy.Death(time);
+                    total++;
                 }
-
                 player.SendInfo($"{total} enem{(total > 1 ? "ies" : "y")} killed!");
                 return true;
             }

@@ -1,7 +1,7 @@
-﻿using CA.Extensions.Concurrent;
-using common;
+﻿using common;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using wServer.core;
 using wServer.core.objects;
 using wServer.core.worlds.logic;
@@ -55,15 +55,17 @@ namespace wServer.logic
             }
 
             var lvlUps = 0;
-            var players = enemy.World.Players.ValueWhereAsParallel(_ => enemy.Dist(_) < 25d);
-            foreach (var player in players)
+            foreach (var player in enemy.World.Players.Values)
             {
+                if(player.Dist(enemy) > 25)
+                    continue;
+                
                 var level = player.Level;
                 var rank = player.Rank;
                 if (player.HasConditionEffect(common.resources.ConditionEffects.Paused))
                     continue;
 
-                var xp = enemy.ObjectDesc.MaxHP / 15f * enemy.ObjectDesc.ExpMultiplier;
+                var xp = (enemy.ObjectDesc.MaxHP / 10.0f) * enemy.ObjectDesc.ExpMultiplier;
                 var upperLimit = player.ExperienceGoal * 0.1f;
                 if (player.Quest == enemy)
                     upperLimit = player.ExperienceGoal * 0.5f;
@@ -74,29 +76,8 @@ namespace wServer.logic
                 else
                     playerXp = xp;
 
-                if (player.Level < 20)
-                {
-                    playerXp *= 4f;
-                    switch (player.Rank)
-                    {
-                        case Player.DONOR_1: playerXp *= 1.5f; break;
-                        case Player.DONOR_2: playerXp *= 2f; break;
-                        case Player.DONOR_3: playerXp *= 2.5f; break;
-                        case Player.DONOR_4: playerXp *= 3f; break;
-                        case Player.DONOR_5: playerXp *= 3.5f; break;
-                        case Player.VIP: playerXp *= 4f; break;
-                    }
-                }
-
                 if (player.Level < 20 && player.XPBoostTime != 0)
-                {
                     playerXp *= 1.5f;
-                }
-
-                playerXp *= (float)player.CoreServerManager.GetExperienceRate();
-
-                var enemyClasified = enemy.Legendary ? 1.75f : enemy.Epic ? 1.50f : 1.0f;
-                playerXp *= enemyClasified;
 
                 if (enemy.GivesNoXp)
                     playerXp = 0;

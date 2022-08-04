@@ -11,7 +11,7 @@ using wServer.core.objects;
 using wServer.core.worlds.logic;
 using wServer.networking.connection;
 using wServer.networking.packets;
-using wServer.networking.packets.incoming;
+using wServer.core.net.handlers;
 using wServer.networking.packets.outgoing;
 
 namespace wServer.networking
@@ -34,8 +34,6 @@ namespace wServer.networking
             _server = server;
 
             CoreServerManager = coreServerManager;
-            ReceiveKey = new RC4(server.ClientKey);
-            SendKey = new RC4(server.ServerKey);
 
             _handler = new NetworkHandler(this, send, receive);
         }
@@ -43,14 +41,11 @@ namespace wServer.networking
         public DbAccount Account { get; internal set; }
         public DbChar Character { get; internal set; }
         public CoreServerManager CoreServerManager { get; private set; }
-        public bool DisableAllyShoot { get; set; }
         public int Id { get; internal set; }
         public string IpAddress { get; private set; }
         public bool IsLagging { get; private set; }
         public Player Player { get; internal set; }
         public wRandom Random { get; internal set; }
-        public RC4 ReceiveKey { get; private set; }
-        public RC4 SendKey { get; private set; }
         public Socket Socket { get; private set; }
         public ProtocolState State { get => _state; internal set => _state = value; }
 
@@ -68,28 +63,7 @@ namespace wServer.networking
             }
 
             _handler.BeginHandling(Socket);
-
-            //StopTask_ = false;
-            //Task.Factory.StartNew(() => DoTask(), TaskCreationOptions.LongRunning);
         }
-
-        //public bool AwaitingUpdate { get; set; }
-
-        //public bool StopTask_;
-        //public void DoTask()
-        //{
-        //    while (!StopTask_)
-        //    {
-        //        if (Player == null) //|| AwaitingUpdate)
-        //        {
-        //            Thread.Sleep(50);
-        //            continue;
-        //        }
-
-        //        Player.PlayerUpdate?.SendUpdate();
-        //        Thread.Sleep(50);
-        //    }
-        //}
 
         public void Disconnect(string reason = "")
         {
@@ -100,8 +74,10 @@ namespace wServer.networking
             {
                 State = ProtocolState.Disconnected;
 
-                if (!string.IsNullOrEmpty(reason) && CoreServerManager.ServerConfig.serverInfo.debug)
+#if DEBUG
+                if (!string.IsNullOrEmpty(reason))
                     Log.Warn("Disconnecting client ({0}) @ {1}... {2}", Account?.Name ?? " ", IpAddress, reason);
+#endif
 
                 if (Account != null)
                     try
@@ -147,9 +123,6 @@ namespace wServer.networking
 
         public void Reset()
         {
-            ReceiveKey = new RC4(_server.ClientKey);
-            SendKey = new RC4(_server.ServerKey);
-
             Id = 0; // needed so that inbound packets that are currently queued are discarded.
 
             Account = null;
@@ -183,9 +156,6 @@ namespace wServer.networking
 
         public void SendPacket(OutgoingMessage pkt, PacketPriority priority = PacketPriority.Normal)
         {
-            if (DisableAllyShoot && pkt is AllyShoot)
-                return;
-
             if (State != ProtocolState.Disconnected)
                 _handler.SendPacket(pkt, priority);
         }
@@ -194,28 +164,6 @@ namespace wServer.networking
         {
             if (State != ProtocolState.Disconnected)
                 _handler.SendPackets(pkts, priority);
-        }
-
-        internal void ProcessPacket(Packet pkt)
-        {
-            using (TimedLock.Lock(DcLock))
-            {
-                if (State == ProtocolState.Disconnected)
-                    return;
-
-                try
-                {
-                    if (!PacketHandlers.Handlers.TryGetValue(pkt.ID, out var handler))
-                        return;
-
-                    handler.Handle(this, (IncomingMessage)pkt);
-                }
-                catch (Exception e)
-                {
-                    Log.Error($"Error when handling packet '{pkt}, {e}'...");
-                    Disconnect("Packet handling error.");
-                }
-            }
         }
 
         private void Save() // only when disconnect

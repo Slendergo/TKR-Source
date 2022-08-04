@@ -38,8 +38,6 @@ namespace wServer.core.worlds
         private static int _entityInc;
 
         private long _elapsedTime;
-        private CoreServerManager _manager;
-        private int _totalConnects;
 
         public int Id { get; }
         public string IdName { get; set; }
@@ -57,32 +55,27 @@ namespace wServer.core.worlds
         public bool Closed { get; set; }
         public int Difficulty { get; protected set; }
         public bool Deleted { get; protected set; }
-        public ConcurrentDictionary<int, Container> Containers { get; private set; }
-        public ConcurrentDictionary<int, Enemy> Enemies { get; private set; }
-
-        public CollisionMap<Entity> EnemiesCollision { get; private set; }
-
-        public CoreServerManager Manager { get; set; }
 
         public Wmap Map { get; private set; }
-        
-        
-        public ConcurrentDictionary<int, Pet> Pets { get; private set; }
-        public ConcurrentDictionary<int, Player> Players { get; private set; }
+        public CoreServerManager Manager { get; set; }
+        public CollisionMap<Entity> EnemiesCollision { get; private set; }
         public CollisionMap<Entity> PlayersCollision { get; private set; }
-        public ConcurrentDictionary<Tuple<int, byte>, Projectile> Projectiles { get; private set; }
-        public ConcurrentDictionary<int, Enemy> Quests { get; private set; }
+
         public bool ShowDisplays { get; protected set; }
-        public ConcurrentDictionary<int, Enemy> SpecialEnemies { get; private set; }
-        public ConcurrentDictionary<int, StaticObject> StaticObjects { get; private set; }
-        public List<WorldTimer> Timers { get; private set; }
-        public int TotalConnects { get { return _totalConnects; } }
+
+        public ConcurrentDictionary<int, Player> Players { get; private set; } = new ConcurrentDictionary<int, Player>();
+        public ConcurrentDictionary<int, Enemy> Enemies { get; private set; } = new ConcurrentDictionary<int, Enemy>();
+        public ConcurrentDictionary<int, Enemy> Quests { get; private set; } = new ConcurrentDictionary<int, Enemy>();
+        public ConcurrentDictionary<int, StaticObject> StaticObjects { get; private set; } = new ConcurrentDictionary<int, StaticObject>();
+        public ConcurrentDictionary<int, Container> Containers { get; private set; } = new ConcurrentDictionary<int, Container>();
+        public ConcurrentDictionary<int, Pet> Pets { get; private set; } = new ConcurrentDictionary<int, Pet>();
+        public ConcurrentDictionary<Tuple<int, byte>, Projectile> Projectiles { get; private set; } = new ConcurrentDictionary<Tuple<int, byte>, Projectile>();
+        public List<WorldTimer> Timers { get; private set; } = new List<WorldTimer>();
 
         public readonly WorldBranch WorldBranch;
 
-        public World(int id, WorldResource resource)
+        public World(int id, WorldResource resource, World parent = null)
         {
-            Setup();
             Id = id;
             IdName = resource.DisplayName;
             DisplayName = resource.DisplayName;
@@ -94,6 +87,8 @@ namespace wServer.core.worlds
             AllowTeleport = true;// !resource.restrictTp;
             ShowDisplays = Id == -2;// resource.showDisplays;
             Blocking = resource.VisibilityType;
+            AllowTeleport = true;
+            ShowDisplays = true;
 
             IsRealm = false;
 
@@ -104,53 +99,64 @@ namespace wServer.core.worlds
                 Music = "sorc";
 
             WorldBranch = new WorldBranch(this);
+            ParentWorld = parent;
         }
+
+        public World ParentWorld { get; set; }
 
         public virtual bool AllowedAccess(Client client) => !Closed || client.Account.Admin;
 
         public void Broadcast(OutgoingMessage outgoingMessage, PacketPriority priority = PacketPriority.Normal)
-            => PlayersBroadcastAsParallel(_ => _.Client.SendPacket(outgoingMessage, priority));
+        {
+            foreach (var player in Players.Values)
+                player.Client.SendPacket(outgoingMessage, priority);
+        }
 
-        public void BroadcastIfVisible(OutgoingMessage outgoingMessage, Position worldPosData, PacketPriority priority = PacketPriority.Normal)
-            => PlayersBroadcastAsParallel(_ =>
-            {
-                if (_.Dist(worldPosData) <= 15d)
-                    _.Client.SendPacket(outgoingMessage, priority);
-            });
+        public void BroadcastIfVisible(OutgoingMessage outgoingMessage, ref Position worldPosData, PacketPriority priority = PacketPriority.Normal)
+        {
+            foreach (var player in Players.Values)
+                if (player.DistSqr(ref worldPosData) < PlayerUpdate.VISIBILITY_RADIUS_SQR)
+                    player.Client.SendPacket(outgoingMessage, priority);
+        }
 
-        public void BroadcastIfVisible(OutgoingMessage outgoingMessage, Entity broadcaster, PacketPriority priority = PacketPriority.Normal)
-            => PlayersBroadcastAsParallel(_ =>
-            {
-                if (_.Dist(broadcaster) <= 15d)
-                    _.Client.SendPacket(outgoingMessage, priority);
-            });
+        public void BroadcastIfVisible(OutgoingMessage outgoingMessage, Entity host, PacketPriority priority = PacketPriority.Normal)
+        {
+            foreach (var player in Players.Values)
+                if (player.DistSqr(host) < PlayerUpdate.VISIBILITY_RADIUS_SQR)
+                    player.Client.SendPacket(outgoingMessage, priority);
+        }
 
         public void BroadcastIfVisibleExclude(OutgoingMessage outgoingMessage, Entity broadcaster, Entity exclude, PacketPriority priority = PacketPriority.Normal)
-            => PlayersBroadcastAsParallel(_ =>
-            {
-                if (_.Id != exclude.Id && _.Dist(broadcaster) <= 15d)
-                    _.Client.SendPacket(outgoingMessage, priority);
-            });
+        {
+            foreach (var player in Players.Values)
+                if (player.Id != exclude.Id && player.Dist(broadcaster) <= 15d)
+                {
+                    player.Client.SendPacket(outgoingMessage, priority);
+                    break;
+                }
+        }
 
         public void BroadcastToPlayer(OutgoingMessage outgoingMessage, int playerId, PacketPriority priority = PacketPriority.Normal)
-            => PlayersBroadcastAsParallel(_ =>
-            {
-                if (_.Id == playerId)
-                    _.Client.SendPacket(outgoingMessage, priority);
-            });
+        {
+            foreach (var player in Players.Values)
+                if (player.Id == playerId)
+                {
+                    player.Client.SendPacket(outgoingMessage, priority);
+                    break;
+                }
+        }
 
         public void BroadcastToPlayers(OutgoingMessage outgoingMessage, List<int> playerIds, PacketPriority priority = PacketPriority.Normal)
-            => PlayersBroadcastAsParallel(_ =>
-            {
-                if (playerIds.Contains(_.Id))
-                    _.Client.SendPacket(outgoingMessage, priority);
-            });
+        {
+            foreach (var player in Players.Values)
+                if(playerIds.Contains(player.Id))
+                    player.Client.SendPacket(outgoingMessage, priority);
+        }
 
         public void ChatReceived(Player player, string text)
         {
             foreach (var en in Enemies)
                 en.Value.OnChatTextReceived(player, text);
-
             foreach (var en in StaticObjects)
                 en.Value.OnChatTextReceived(player, text);
         }
@@ -164,8 +170,6 @@ namespace wServer.core.worlds
 
                 Players.TryAdd(entity.Id, entity as Player);
                 PlayersCollision.Insert(entity);
-
-                Interlocked.Increment(ref _totalConnects);
             }
             else if (entity is Enemy)
             {
@@ -174,9 +178,6 @@ namespace wServer.core.worlds
 
                 Enemies.TryAdd(entity.Id, entity as Enemy);
                 EnemiesCollision.Insert(entity);
-
-                if (entity.ObjectDesc.SpecialEnemy)
-                    SpecialEnemies.TryAdd(entity.Id, entity as Enemy);
 
                 if (entity.ObjectDesc.Quest)
                     Quests.TryAdd(entity.Id, entity as Enemy);
@@ -242,27 +243,9 @@ namespace wServer.core.worlds
             return null;
         }
 
-        public virtual World CreateInstance(Client client)
-        {
-            return null;
-
-            //DynamicWorld.TryGetWorld(_manager.Resources.Worlds[Name], client, out World world);
-
-            //if (world == null)
-            //    world = new World(_manager.Resources.Worlds[Name]);
-
-
-            //return Manager.WorldManager.CreateNewWorld(world);
-        }
-
         public int GetNextEntityId() => Interlocked.Increment(ref _entityInc);
 
-        public IEnumerable<Player> GetPlayers()
-        {
-            foreach (var player in Players)
-                if (player.Value != null)
-                    yield return player.Value;
-        }
+        public IEnumerable<Player> GetPlayers() => Players.Values;
 
         public Projectile GetProjectile(int objectId, int bulletId)
         {
@@ -342,9 +325,6 @@ namespace wServer.core.worlds
             {
                 Enemies.TryRemove(entity.Id, out Enemy dummy);
                 EnemiesCollision.Remove(entity);
-
-                if (entity.ObjectDesc.SpecialEnemy)
-                    SpecialEnemies.TryRemove(entity.Id, out dummy);
                 if (entity.ObjectDesc.Quest)
                     Quests.TryRemove(entity.Id, out dummy);
             }
@@ -368,75 +348,23 @@ namespace wServer.core.worlds
             else if (entity is Pet)
             {
                 Pets.TryRemove(entity.Id, out Pet dummy);
-
                 PlayersCollision.Remove(entity);
             }
 
             entity.Destroy();
         }
 
-        public void PlayersBroadcastAsParallel(Action<Player> action)
+        public void ForeachPlayer(Action<Player> action)
         {
-            var players = GetPlayers();
-            players.AsParallel().Select(_ =>
-            {
-                action.Invoke(_);
-                return _;
-            }).ToArray();
-        }
-
-        public void QuakeToWorld(World newWorld)
-        {
-            if (!Persist || this is RealmWorld)
-                Closed = true;
-
-            Broadcast(new ShowEffect()
-            {
-                EffectType = EffectType.Earthquake
-            }, PacketPriority.Low);
-            Timers.Add(new WorldTimer(8000, (w, t) =>
-            {
-                var rcpNotPaused = new Reconnect()
-                {
-                    Host = "",
-                    Port = Manager.ServerConfig.serverInfo.port,
-                    GameId = newWorld.Id,
-                    Name = newWorld.DisplayName
-                };
-
-                var rcpPaused = new Reconnect()
-                {
-                    Host = "",
-                    Port = Manager.ServerConfig.serverInfo.port,
-                    GameId = Nexus,
-                    Name = "Nexus"
-                };
-
-                w.PlayersBroadcastAsParallel(_ =>
-                    _.Client.Reconnect(
-                        _.HasConditionEffect(ConditionEffects.Paused)
-                            ? rcpPaused
-                            : rcpNotPaused
-                    )
-                );
-            }));
-
-            if (!Persist)
-                Timers.Add(new WorldTimer(20000, (w2, t2) =>
-                {
-                    // to ensure people get kicked out of world
-                    w2.PlayersBroadcastAsParallel(_ =>
-                        _.Client.Disconnect("QuakeToWorld")
-                    );
-                }));
+            foreach(var player in Players.Values)
+                action?.Invoke(player);
         }
 
         public void WorldAnnouncement(string msg)
         {
             var announcement = string.Concat("<ANNOUNCMENT> ", msg);
-
-            foreach (var i in Players)
-                i.Value.SendInfo(announcement);
+            foreach (var player in Players.Values)
+                player.SendInfo(announcement);
         }
 
         protected void FromDungeonGen(int seed, DungeonTemplate template)
@@ -547,34 +475,9 @@ namespace wServer.core.worlds
 
             EnemiesCollision = new CollisionMap<Entity>(0, w, h);
             PlayersCollision = new CollisionMap<Entity>(1, w, h);
-            Projectiles.Clear();
-            StaticObjects.Clear();
-            Containers.Clear();
-            Enemies.Clear();
-            Players.Clear();
-            Quests.Clear();
-            SpecialEnemies.Clear();
-            Timers.Clear();
 
             foreach (var i in Map.InstantiateEntities(Manager))
-                EnterWorld(i);
-        }
-
-        private void Setup()
-        {
-            Players = new ConcurrentDictionary<int, Player>();
-            Enemies = new ConcurrentDictionary<int, Enemy>();
-            Quests = new ConcurrentDictionary<int, Enemy>();
-            SpecialEnemies = new ConcurrentDictionary<int, Enemy>();
-            Pets = new ConcurrentDictionary<int, Pet>();
-            Projectiles = new ConcurrentDictionary<Tuple<int, byte>, Projectile>();
-            StaticObjects = new ConcurrentDictionary<int, StaticObject>();
-            Containers = new ConcurrentDictionary<int, Container>();
-            Timers = new List<WorldTimer>();
-            AllowTeleport = true;
-            ShowDisplays = true;
-            Persist = false; // if false, attempts to delete world with 0 players
-            Blocking = 0; // toggles sight block (0 disables sight block)
+                _ = EnterWorld(i);
         }
 
         public bool Update(ref TickTime time)
@@ -609,9 +512,7 @@ namespace wServer.core.worlds
                 {
                     foreach (var player in Players.Values)
                     {
-                        player.HandleIO();
-                        player.DoUpdate(time);
-                        player.HandlePendingActions(time);
+                        player.HandleIO(ref time);
                         player.Tick(time);
                     }
 
@@ -658,6 +559,14 @@ namespace wServer.core.worlds
         }
 
         private bool ForceLifetimeExpire = false;
+
+        public void ExtendLifetime(int amount)
+        {
+            Console.WriteLine($"Extended: {Id} {IdName} by {amount}");
+            _elapsedTime -= amount;
+            if (_elapsedTime < 0)
+                _elapsedTime = 0;
+        }
 
         private bool IsPastLifetime(ref TickTime time)
         {

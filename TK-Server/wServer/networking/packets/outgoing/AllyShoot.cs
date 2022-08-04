@@ -9,19 +9,11 @@ namespace wServer.networking.packets.outgoing
         public ushort ContainerType { get; set; }
         public float Angle { get; set; }
 
-        public override PacketId ID => PacketId.ALLYSHOOT;
+        public override PacketId MessageId => PacketId.ALLYSHOOT;
 
         public override Packet CreateInstance()
         {
             return new AllyShoot();
-        }
-
-        protected override void Read(NReader rdr)
-        {
-            BulletId = rdr.ReadByte();
-            OwnerId = rdr.ReadInt32();
-            ContainerType = (ushort)rdr.ReadInt16();
-            Angle = rdr.ReadSingle();
         }
 
         protected override void Write(NWriter wtr)

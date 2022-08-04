@@ -515,7 +515,7 @@ namespace wServer.logic
                     new Suicide()
                     ),
                 new State("Incorrect",
-                    new Taunt("It’s time you turtles learned your place!"),
+                    new Taunt("It's time you turtles learned your place!"),
                     new TimedTransition(300, "Incorrect Kill")
                     ),
                 new State("Incorrect Kill",

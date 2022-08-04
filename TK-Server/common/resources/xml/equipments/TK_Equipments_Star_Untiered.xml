@@ -45,7 +45,7 @@
       <Index>0x7b</Index>
     </Texture>
     <SlotType>25</SlotType>
-    <Description>Rigid and rough, this star was assembled with Stheno’s shed skin.</Description>
+    <Description>Rigid and rough, this star was assembled with Stheno's shed skin.</Description>
     <Sound>spell/fire_spray</Sound>
     <ExtraTooltipData>
       <EffectInfo name="While Key Held" description="" />

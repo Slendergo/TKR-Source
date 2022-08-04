@@ -21,19 +21,20 @@ namespace wServer.logic.behaviors
             _probability = (float)probability;
         }
 
-        protected internal override void Resolve(State parent) => parent.Death += (sender, e) =>
-        {
+        public override void OnDeath(Entity host, ref TickTime time)
+        { 
             if (_targetState == null)
-                _targetState = FindState(e.Host.CoreServerManager.BehaviorDb.Definitions[_target].Item1, _stateName);
+                _targetState = FindState(host.CoreServerManager.BehaviorDb.Definitions[_target].Item1, _stateName);
 
-            if (e.Host.CurrentState.Is(parent) && Random.NextDouble() < _probability)
-                foreach (var i in e.Host.GetNearestEntities(_range, _target))
+            if (Random.NextDouble() < _probability)
+                foreach (var i in host.GetNearestEntities(_range, _target))
                     if (!i.CurrentState.Is(_targetState))
                         i.SwitchTo(_targetState);
-        };
+        }
 
         protected override void TickCore(Entity host, TickTime time, ref object state)
-        { }
+        {
+        }
 
         private static State FindState(State state, string name)
         {

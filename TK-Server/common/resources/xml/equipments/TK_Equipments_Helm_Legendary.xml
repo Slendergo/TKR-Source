@@ -21,7 +21,7 @@
     <Cooldown>6</Cooldown>
     <feedPower>1250</feedPower>
   </Object>
-  <Object type="0xa42c" id="Gladiator’s Visage">
+  <Object type="0xa42c" id="Gladiator's Visage">
     <Class>Equipment</Class>
     <Item />
     <Legendary />
@@ -31,7 +31,7 @@
       <Index>0x8d</Index>
     </Texture>
     <SlotType>16</SlotType>
-	<Description>Given to gladiators that have shown their worth in the Colosseum. It’s said that whoever wore it couldn’t lose.</Description>
+	<Description>Given to gladiators that have shown their worth in the Colosseum. It's said that whoever wore it couldn't lose.</Description>
     <ActivateOnEquip stat="21" amount="15">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="15">IncrementStat</ActivateOnEquip>
     <Usable />
@@ -43,7 +43,7 @@
     <Cooldown>6</Cooldown>
     <feedPower>1250</feedPower>
   </Object>
-  <Object type="0x506f" id="Oryx’s Broken Helm">
+  <Object type="0x506f" id="Oryx's Broken Helm">
     <Class>Equipment</Class>
     <Item />
     <Demonized />

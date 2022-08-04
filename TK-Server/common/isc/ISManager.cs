@@ -121,21 +121,6 @@ namespace common.isc
             _tmr.Start();
         }
 
-        public string RestartInstance(string serverName, string user)
-        {
-            using (TimedLock.Lock(_dicLock))
-            {
-                var serverInfo = _servers.Values.SingleOrDefault(server => server.name.ToLower().Equals(serverName));
-
-                if (serverInfo != default && serverInfo.type == ServerType.World)
-                {
-                    Publish(Channel.Restart, new RestartMsg() { User = user }, serverInfo.instanceId);
-                    return "Restarting server in 1 minute.";
-                }
-                else
-                    return "Unable to contact server!";
-            }
-        }
 
         public void Shutdown()
         {

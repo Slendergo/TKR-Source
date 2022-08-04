@@ -23,7 +23,7 @@ namespace wServer.networking.packets.outgoing
         public List<ObjectDef> NewObjs { get; set; }
         public List<int> Drops { get; set; }
 
-        public override PacketId ID => PacketId.UPDATE;
+        public override PacketId MessageId => PacketId.UPDATE;
 
         public override Packet CreateInstance()
         {
@@ -35,10 +35,6 @@ namespace wServer.networking.packets.outgoing
             Tiles = new List<TileData>();
             NewObjs = new List<ObjectDef>();
             Drops = new List<int>();
-        }
-
-        protected override void Read(NReader rdr)
-        {
         }
 
         protected override void Write(NWriter wtr)

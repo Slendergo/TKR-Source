@@ -16,13 +16,11 @@ namespace server.app
 
             if (!string.IsNullOrWhiteSpace(token) && Program.Config.discordIntegration.botToken.Equals(token))
             {
-                var response = string.Empty;
-
+                string response;
                 switch (cmd)
                 {
                     default: response = "Command not added on AppEngine"; break;
                     case "list": HandleServerXmls(out response); break;
-                    case "restart": HandleRestart(query["user"], query["server"], out response); break;
                     case "announce": HandleAnnounce(query["user"], query["message"], out response); break;
                 }
 
@@ -75,23 +73,6 @@ namespace server.app
             }
 
             response = Program.ISManager.AnnounceInstance(user, message);
-        }
-
-        private void HandleRestart(string user, string server, out string response)
-        {
-            if (string.IsNullOrWhiteSpace(user))
-            {
-                response = "User is empty.";
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(server))
-            {
-                response = "Server name is empty.";
-                return;
-            }
-
-            response = Program.ISManager.RestartInstance(server, user);
         }
 
         private void HandleServerXmls(out string response) => response = new XElement("Servers", GetServersXmls()).ToString();

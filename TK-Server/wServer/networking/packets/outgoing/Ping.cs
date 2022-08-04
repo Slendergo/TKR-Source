@@ -6,16 +6,11 @@ namespace wServer.networking.packets.outgoing
     {
         public int Serial { get; set; }
 
-        public override PacketId ID => PacketId.PING;
+        public override PacketId MessageId => PacketId.PING;
 
         public override Packet CreateInstance()
         {
             return new Ping();
-        }
-
-        protected override void Read(NReader rdr)
-        {
-            Serial = rdr.ReadInt32();
         }
 
         protected override void Write(NWriter wtr)

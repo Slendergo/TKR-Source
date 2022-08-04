@@ -95,8 +95,8 @@ namespace wServer.logic.loot
             // configure custom items
             DropRates.ORYX_ITEMS_NAMES = new[]
             {
-                "Oryx’s Armor of War",
-                "Oryx’s Broken Helm",
+                "Oryx's Armor of War",
+                "Oryx's Broken Helm",
                 "Shattered Horn of Oryx",
                 "The Horn Breaker"
             };
@@ -212,7 +212,6 @@ namespace wServer.logic.loot
             //var guild = db.GetGuild(account.GuildId);
 
             var allLoot = 0.0;
-            allLoot += core.GetLootRate();
             allLoot += player.LDBoostTime > 0 ? 0.1 : 0;
             allLoot += ((player.Node5TickMaj * 0.05) + (player.Node5TickMin * 0.025) + (player.Node5Med * 0.075) + (player.Node5Big > 1 ? 0.2 : player.Node5Big > 0 ? 0.1 : 0));
             allLoot += CheckTalismans(player);
@@ -359,7 +358,7 @@ namespace wServer.logic.loot
             var items = new Item[8];
             var boosted = false;
 
-            if (owners.Count() == 1 && GetPlayerLootBoost(player) > 1.0 || core.GetLootRate() != 1.0)
+            if (owners.Count() == 1 && GetPlayerLootBoost(player) > 1.0)
                 boosted = true;
 
             foreach (var i in loots)

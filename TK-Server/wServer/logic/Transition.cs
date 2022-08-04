@@ -51,6 +51,8 @@ namespace wServer.logic
                 TargetState[i] = states[TargetStates[i]];
         }
 
+        public virtual void OnDeath(Entity host, ref TickTime time) { }
+
         protected abstract bool TickCore(Entity host, TickTime time, ref object state);
     }
 }

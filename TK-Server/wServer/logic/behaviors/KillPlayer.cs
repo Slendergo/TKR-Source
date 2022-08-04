@@ -32,7 +32,7 @@ namespace wServer.logic.behaviors
             {
                 // death strike
                 if (_killAll)
-                    host.World.PlayersBroadcastAsParallel(_ => Kill(host, _));
+                    host.World.ForeachPlayer(_ => Kill(host, _));
                 else
                     Kill(host, host.AttackTarget);
 

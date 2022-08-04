@@ -64,6 +64,7 @@ public class GameSprite extends Sprite
    public var textBox_:TextBox;
    public var tutorial_:Tutorial;
    public var isNexus_:Boolean = false;
+   public var isVault_:Boolean = false;
    public var idleWatcher_:IdleWatcher;
    public var hudView:HUDView;
    public var rankText_:RankText;
@@ -99,6 +100,19 @@ public class GameSprite extends Sprite
       this.dmgCounter.filters = [new DropShadowFilter(0,0,0)];
       this.dmgCounter.x = 0;
       this.dmgCounter.y = 400;
+
+      if(Parameters.data_.FS){
+         this.updateScaleForTextBox(0.9);
+      }
+      else{
+         this.updateScaleForTextBox(1.0);
+      }
+   }
+
+   public function updateScaleForTextBox(percentage:Number):void{
+      this.textBox_.scaleX = percentage;
+      this.textBox_.scaleY = percentage;
+      this.textBox_.y = this.textBox_.h_ - (this.textBox_.h_ * this.textBox_.scaleY);
    }
 
    public function setFocus(focus:GameObject) : void
@@ -156,6 +170,10 @@ public class GameSprite extends Sprite
          isNexus_ = true;
       }
 
+      if (this.map.name_ == "Vault")
+      {
+         isVault_ = true;
+      }
       //Parameters.save();
       this.hidePreloader();
       stage.dispatchEvent(new Event(Event.RESIZE));

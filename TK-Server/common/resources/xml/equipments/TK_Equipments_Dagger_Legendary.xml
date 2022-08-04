@@ -91,7 +91,7 @@
     </Texture>
     <Legendary />
     <SlotType>2</SlotType>
-    <Description>Sharp bone from Malphas’ spine was refined into a dagger for the sole purpose of slaying demons.</Description>
+    <Description>Sharp bone from Malphas' spine was refined into a dagger for the sole purpose of slaying demons.</Description>
     <RateOfFire>0.8</RateOfFire>
     <Sound>weapon/fire_dagger</Sound>
     <Projectile>

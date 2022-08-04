@@ -25,8 +25,6 @@ namespace wServer.core.objects
             DamageCounter = new DamageCounter(this);
         }
 
-        public event EventHandler<BehaviorEventArgs> OnDeath;
-
         public bool Epic { get; set; }
         public bool Legendary { get; set; }
         public bool Rare { get; set; }
@@ -165,10 +163,9 @@ namespace wServer.core.objects
 
             DamageCounter.Death(time);
 
-            if (CurrentState != null)
-                CurrentState.OnDeath(new BehaviorEventArgs(this, time));
-
-            OnDeath?.Invoke(this, new BehaviorEventArgs(this, time));
+            CurrentState?.OnDeath(this, ref time);
+            if (CoreServerManager.BehaviorDb.Definitions.TryGetValue(ObjectType, out var loot))
+                loot.Item2?.Handle(this, time);
             World.LeaveWorld(this);
         }
 

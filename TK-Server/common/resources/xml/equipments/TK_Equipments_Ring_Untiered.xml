@@ -551,7 +551,7 @@
       <Index>0x67</Index>
     </Texture>
     <SlotType>9</SlotType>
-    <Description>Used by mad scientist’s during their experimentations. The gem on top was solidified from corrupting acid. </Description>
+    <Description>Used by mad scientist's during their experimentations. The gem on top was solidified from corrupting acid. </Description>
     <ActivateOnEquip stat="0" amount="70">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="3" amount="70">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="3">IncrementStat</ActivateOnEquip>
@@ -594,7 +594,7 @@
     <FameBonus>5</FameBonus>
     <DisplayId>The Dance of Fire</DisplayId>
   </Object>
-  <Object type="0x5067" id="Demon’s Sigil">
+  <Object type="0x5067" id="Demon's Sigil">
     <Class>Equipment</Class>
     <Item />
     <Texture>

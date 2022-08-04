@@ -10,6 +10,9 @@
 		<Height>2048</Height>
 		<Capacity>85</Capacity>
 		<MapJM>realm.jm</MapJM>
+		<Music>
+			<Track>wanderlust</Track>
+		</Music>
 		<Persists/>
 	</World>
 	<World id="Nexus">
@@ -20,7 +23,6 @@
 		<Instance enum="nexus"/>
 		<Music>
 			<Track>wanderlust</Track>
-			<Track>sorc</Track>
 		</Music>
 		<Persists/>
 	</World>

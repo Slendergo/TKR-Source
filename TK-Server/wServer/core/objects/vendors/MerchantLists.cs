@@ -12,6 +12,7 @@ namespace wServer.core.objects.vendors
         ushort ItemId { get; }
         int Price { get; }
     }
+
     internal static class MerchantLists
     {
         private static readonly List<ISellableItem> Abilities = new List<ISellableItem>

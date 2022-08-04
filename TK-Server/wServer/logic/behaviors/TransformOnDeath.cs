@@ -20,11 +20,11 @@ namespace wServer.logic.behaviors
             this.probability = (float)probability;
         }
 
-        protected internal override void Resolve(State parent) => parent.Death += (sender, e) =>
+        public override void OnDeath(Entity host, ref TickTime time)
         {
-            if (e.Host.CurrentState.Is(parent) && Random.NextDouble() < probability)
+            if (Random.NextDouble() < probability)
             {
-                if (Entity.Resolve(e.Host.CoreServerManager, target) is Portal && e.Host.World.IdName.Contains("Arena"))
+                if (Entity.Resolve(host.CoreServerManager, target) is Portal && host.World.IdName.Contains("Arena"))
                     return;
 
                 if (min > max)
@@ -34,19 +34,19 @@ namespace wServer.logic.behaviors
 
                 for (var i = 0; i < count; i++)
                 {
-                    var entity = Entity.Resolve(e.Host.CoreServerManager, target);
-                    entity.Move(e.Host.X, e.Host.Y);
+                    var entity = Entity.Resolve(host.CoreServerManager, target);
+                    entity.Move(host.X, host.Y);
 
-                    if (e.Host is Enemy && entity is Enemy && (e.Host as Enemy).Spawned)
+                    if (host is Enemy && entity is Enemy && (host as Enemy).Spawned)
                     {
                         (entity as Enemy).Spawned = true;
                         (entity as Enemy).ApplyConditionEffect(new ConditionEffect() { Effect = ConditionEffectIndex.Invisible, DurationMS = -1 });
                     }
 
-                    e.Host.World.EnterWorld(entity);
+                    host.World.EnterWorld(entity);
                 }
             }
-        };
+        }
 
         protected override void TickCore(Entity host, TickTime time, ref object state)
         { }

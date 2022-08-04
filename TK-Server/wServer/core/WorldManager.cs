@@ -18,8 +18,9 @@ namespace wServer.core
 
         private int NextWorldId = 0;
 
-        public TickThreadSingle NexusThread { get; private set; }
-        private readonly ConcurrentDictionary<int, TickThreadSingle> RealmThreads = new ConcurrentDictionary<int, TickThreadSingle>();
+        private readonly ConcurrentDictionary<int, TickThreadSingle> Threads = new ConcurrentDictionary<int, TickThreadSingle>();
+
+        public ConcurrentDictionary<int, int> WorldMapId { get; set; } = new ConcurrentDictionary<int, int>();
 
         public NexusWorld Nexus => (Worlds[-2] as NexusWorld);
         public TestWorld Test => (Worlds[-6] as TestWorld);
@@ -44,14 +45,19 @@ namespace wServer.core
         public WorldManager(CoreServerManager coreServerManager)
         {
             CoreServerManager = coreServerManager;
-            NexusThread = new TickThreadSingle(this);
         }
+
+        public void SetPreviousWorld(int accountId, int worldId)
+        {
+            WorldMapId[accountId] = worldId;
+        }
+
+        public World GetPreviousRealmWorld(int accountId) => WorldMapId.TryGetValue(accountId, out var id) ? GetWorld(id) : null;
 
         public void Initialize()
         {
             var nexus = CreateNewWorld("Nexus", -2, null);
             CreateNewTest();
-            NexusThread.Attach(nexus);
 
             // todo async creation system
             Nexus.PortalMonitor.CreateNewRealm();
@@ -77,10 +83,7 @@ namespace wServer.core
 
                     world.Init();
                     _ = Worlds.TryAdd(world.Id, world);
-
-                    var thread = new TickThreadSingle(this);
-                    thread.Attach(world);
-                    RealmThreads.TryAdd(world.Id, thread);
+                    _ = Threads.TryAdd(world.Id, new TickThreadSingle(this, world));
                     return world;
                 }
             });
@@ -102,10 +105,10 @@ namespace wServer.core
                     world = new NexusWorld(nextId, worldResource);
                     break;
                 case WorldResourceInstanceType.Vault:
-                    world = new VaultWorld(nextId, worldResource);
+                    world = new VaultWorld(nextId, worldResource, parent);
                     break;
                 default:
-                    world = new World(nextId, worldResource);
+                    world = new World(nextId, worldResource, parent);
                     break;
             }
 
@@ -114,7 +117,10 @@ namespace wServer.core
             if (!success)
                 return null;
             world.Init();
-            Worlds.TryAdd(world.Id, world);
+            _ = Worlds.TryAdd(world.Id, world);
+            // null parents are threaded as they get treated as the root
+            if (parent == null)
+                _ = Threads.TryAdd(world.Id, new TickThreadSingle(this, world));
             parent?.WorldBranch.AddBranch(world);
             return world;
         }
@@ -140,13 +146,13 @@ namespace wServer.core
 
         public void AddVaultInstance(int accountId, VaultWorld world)
         {
-            Vaults.TryAdd(accountId, world);
+            _ = Vaults.TryAdd(accountId, world);
         }
 
         public void AddGuildInstance(int guildId, World world)
         {
-            Guilds.TryAdd(guildId, world);
-            WorldToGuildId.TryAdd(world.Id, guildId);
+            _ = Guilds.TryAdd(guildId, world);
+            _ = WorldToGuildId.TryAdd(world.Id, guildId);
         }
 
         public World GetWorld(int id) => Worlds.TryGetValue(id, out World ret) ? ret : null;
@@ -156,8 +162,7 @@ namespace wServer.core
 
         public bool RemoveWorld(World world)
         {
-            if(world is RealmWorld)
-                RealmThreads.TryRemove(world.Id, out _);
+            _ = Threads.TryRemove(world.Id, out _);
 
             if (Worlds.TryRemove(world.Id, out _))
             {
@@ -178,9 +183,8 @@ namespace wServer.core
 
         public void Shutdown()
         {
-            foreach (var realm in RealmThreads.Values)
-                realm.Stop();
-            NexusThread.Stop();
+            foreach (var thread in Threads.Values)
+                thread.Stop();
         }
     }
 }

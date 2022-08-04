@@ -252,13 +252,14 @@ public class Player extends Character {
         var moveVecAngle:Number = NaN;
         var d:int = 0;
 
-        if (this.dropBoost && !isPaused()) {
+        if (this.dropBoost && !isPaused() && !map_.gs_.isNexus_ && !map_.gs_.isVault_) {
+
             this.dropBoost = this.dropBoost - dt;
             if (this.dropBoost < 0) {
                 this.dropBoost = 0;
             }
         }
-        if (this.xpTimer && !isPaused()) {
+        if (this.xpTimer && !isPaused() && !map_.gs_.isNexus_ && !map_.gs_.isVault_) {
             this.xpTimer = this.xpTimer - dt;
             if (this.xpTimer < 0) {
                 this.xpTimer = 0;

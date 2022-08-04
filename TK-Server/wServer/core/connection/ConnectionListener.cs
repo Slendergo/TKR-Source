@@ -105,8 +105,6 @@ namespace wServer.networking.connection
 
             Port = ConnectionManager.CoreServerManager.ServerConfig.serverInfo.port;
             MaxConnections = ConnectionManager.CoreServerManager.ServerConfig.serverSettings.maxConnections;
-            ServerKey = StringUtils.StringToByteArray(ConnectionManager.CoreServerManager.ServerConfig.serverSettings.serverKey);
-            ClientKey = StringUtils.StringToByteArray(ConnectionManager.CoreServerManager.ServerConfig.serverSettings.clientKey);
 
             BuffManager = new BufferManager((MaxConnections + 1) * BufferSize * OpsToPreAllocate, BufferSize);
             EventArgsPoolAccept = new SocketAsyncEventArgsPool(MaxSimultaneousAcceptOps);
@@ -114,8 +112,6 @@ namespace wServer.networking.connection
             MaxConnectionsEnforcer = new Semaphore(MaxConnections, MaxConnections);
         }
 
-        public byte[] ClientKey { get; private set; }
-        public byte[] ServerKey { get; private set; }
         private Socket ListenSocket { get; set; }
         private int MaxConnections { get; }
         private int Port { get; }

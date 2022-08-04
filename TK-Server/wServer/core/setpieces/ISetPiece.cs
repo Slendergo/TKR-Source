@@ -16,7 +16,7 @@ namespace wServer.core.setpieces
             var data = world.Manager.Resources.GameData.GetWorldData(Map);
             if (data == null)
             {
-                System.Console.WriteLine($"[{GetType().Name}] Invalid RenderSetPiece {Map}");
+                Console.WriteLine($"[{GetType().Name}] Invalid RenderSetPiece {Map}");
                 return;
             }
             SetPieces.RenderFromData(world, pos, data);

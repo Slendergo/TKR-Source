@@ -1,6 +1,6 @@
 ﻿using System.Collections.Concurrent;
 using wServer.core.worlds.logic;
-using wServer.networking.packets.incoming;
+using wServer.core.net.handlers;
 using wServer.networking.packets.outgoing;
 
 namespace wServer.core.objects
@@ -44,7 +44,7 @@ namespace wServer.core.objects
                 Client.Disconnect("One too many GotoAcks");
         }
 
-        public void MoveReceived(TickTime time, Move pkt)
+        public void MoveReceived(TickTime ticKTime, int time, int moveTickId)
         {
             if (!_move.TryDequeue(out var tickId))
             {
@@ -52,13 +52,13 @@ namespace wServer.core.objects
                 return;
             }
 
-            if (tickId != pkt.TickId)
+            if (tickId != moveTickId)
             {
                 Client.Disconnect("[NewTick -> Move] TickIds don't match");
                 return;
             }
 
-            if (pkt.TickId > PlayerUpdate.TickId)
+            if (moveTickId > PlayerUpdate.TickId)
             {
                 Client.Disconnect("[NewTick -> Move] Invalid tickId");
                 return;
@@ -67,14 +67,14 @@ namespace wServer.core.objects
             var lastClientTime = LastClientTime;
             var lastServerTime = LastServerTime;
 
-            LastClientTime = pkt.Time;
-            LastServerTime = time.TotalElapsedMs;
+            LastClientTime = time;
+            LastServerTime = ticKTime.TotalElapsedMs;
 
             if (lastClientTime == -1)
                 return;
 
-            _clientTimeLog.Enqueue(pkt.Time - lastClientTime);
-            _serverTimeLog.Enqueue((int)(time.TotalElapsedMs - lastServerTime));
+            _clientTimeLog.Enqueue(time - lastClientTime);
+            _serverTimeLog.Enqueue((int)(ticKTime.TotalElapsedMs - lastServerTime));
 
             if (_clientTimeLog.Count < 30)
                 return;
@@ -86,17 +86,17 @@ namespace wServer.core.objects
             }
         }
 
-        public void Pong(TickTime time, Pong pongPkt)
+        public void Pong(TickTime tickTime, int time, int serial)
         {
             _cnt++;
 
-            _sum += time.TotalElapsedMs - pongPkt.Time;
+            _sum += tickTime.TotalElapsedMs - time;
             TimeMap = _sum / _cnt;
 
-            _latSum += (time.TotalElapsedMs - pongPkt.Serial) / 2;
+            _latSum += (tickTime.TotalElapsedMs - serial) / 2;
             Latency = (int)_latSum / _cnt;
 
-            _pongTime = time.TotalElapsedMs;
+            _pongTime = tickTime.TotalElapsedMs;
         }
 
         public void UpdateAckReceived()
@@ -119,7 +119,6 @@ namespace wServer.core.objects
                 Client.Disconnect("Connection timeout. (KeepAlive)");
                 return false;
             }
-
 
             // check for shootack timeout
             if (_shootAckTimeout.TryPeek(out long timeout))

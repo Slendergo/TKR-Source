@@ -51,9 +51,9 @@ public class TextBox extends Sprite
 
    private var gs_:GameSprite;
 
-   private var w_:int;
+   public var w_:int;
 
-   private var h_:int;
+   public var h_:int;
 
    public var textSprite_:Sprite;
 

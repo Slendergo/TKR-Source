@@ -4,9 +4,7 @@
     {
         public string address { get; set; } = "127.0.0.1";
         public bool adminOnly { get; set; } = false;
-        public int baseFameRequirement { get; set; } = 0;
         public string bindAddress { get; set; } = "127.0.0.1";
-        public bool debug { get; set; } = false;
         public string instanceId { get; set; } = "";
         public float latitude { get; set; } = 0;
         public float longitude { get; set; } = 0;

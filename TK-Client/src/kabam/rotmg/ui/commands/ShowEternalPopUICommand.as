@@ -22,12 +22,12 @@ public class  ShowEternalPopUICommand {
         view.x = 160;
         view.y = 200;
         this.contextView.addChild(view);
-        view.alpha = 0.8;
+        view.alpha = 0;
         new GTween(view,0.5,{"alpha":1});
         setTimeout(function():void
         {
             new GTween(view,0.5,{"alpha":0});
-        },2000);
+        },4500);
         setTimeout(this.remove,4500);
     }
 

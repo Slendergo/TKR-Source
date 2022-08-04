@@ -73,6 +73,8 @@ namespace wServer.logic
                 host.StateStorage[this] = state;
         }
 
+        public virtual void OnDeath(Entity host, ref TickTime time) { }
+
         protected internal virtual void Resolve(State parent)
         { }
 

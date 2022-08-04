@@ -11,7 +11,7 @@ using wServer.core.objects;
 using wServer.core.worlds;
 using wServer.core.worlds.logic;
 using wServer.logic.loot;
-using wServer.networking.packets.incoming;
+using wServer.core.net.handlers;
 using wServer.networking.packets.outgoing;
 using File = TagLib.File;
 
@@ -68,10 +68,10 @@ namespace wServer.core.commands
                     return false;
                 }
 
-                player.Client.ProcessPacket(new JoinParty()
-                {
-                    PartyId = args.ToInt32()
-                });
+                //player.Client.ProcessPacket(new JoinPartyHandler()
+                //{
+                //    PartyId = args.ToInt32()
+                //}, ref time);
                 return true;
             }
             catch (Exception e)
@@ -1070,10 +1070,10 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string args)
         {
-            player.Client.ProcessPacket(new JoinGuild()
-            {
-                GuildName = args
-            });
+            //player.Client.ProcessPacket(new JoinGuildHandler()
+            //{
+            //    GuildName = args
+            //}, ref time);
             return true;
         }
     }
@@ -1135,12 +1135,6 @@ namespace wServer.core.commands
         protected override bool Process(Player player, TickTime time, string args)
         {
             var config = player.CoreServerManager.ServerConfig;
-
-            if (!config.serverInfo.adminOnly && !config.serverSettings.marketEnabled)
-            {
-                player.SendError("Market is disabled on this server.");
-                return false;
-            }
 
             player.Client.Reconnect(new Reconnect()
             {
@@ -1257,7 +1251,7 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string color)
         {
-            var end = Program.EndWhen;
+            var end = Program.Restarter.GetRestartTime();
             var timeLeft = end.Subtract(DateTime.UtcNow);
 
             player.SendInfo(string.Format(
@@ -1722,18 +1716,19 @@ namespace wServer.core.commands
         protected override bool Process(Player player, TickTime time, string args)
         {
             var sb = new StringBuilder();
-            var players = player.World.Players
-                .ValueWhereAsParallel(_ => _.Client != null
-                    && _.Rank <= Player.VIP
-                    && _.CanBeSeenBy(player));
-            if (players.Length != 0)
+            var count = player.World.Players.Count;
+            if (count != 0)
             {
-                sb.Append($"There {(players.Length > 1 ? "are" : "is")} {players.Length}");
+                sb.Append($"There {(count > 1 ? "are" : "is")} {count}");
                 sb.Append($"{(player.World.IsRealm || player.World.InstanceType == WorldResourceInstanceType.Dungeon ? $"/{player.World.MaxPlayers} " : "")} ");
-                sb.Append($"player{(players.Length > 1 ? "s" : "")} connected on this area:\n");
+                sb.Append($"player{(count > 1 ? "s" : "")} connected on this area:\n");
 
-                for (var i = 0; i < players.Length; i++)
-                    sb.Append($"{players[i].Name}{(i + 1 >= players.Length ? "" : ", ")}");
+                var i = 0;
+                foreach (var plr in player.World.Players.Values)
+                {
+                    sb.Append($"{plr.Name}{(i + 1 >= count ? "" : ", ")}");
+                    i++;
+                }
             }
             else
                 sb.Append("There is no player connected on this area.");

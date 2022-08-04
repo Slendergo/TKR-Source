@@ -32,21 +32,21 @@ namespace wServer.logic.behaviors
             _timeout = timeout;
         }
 
-        protected internal override void Resolve(State parent) => parent.Death += (sender, e) =>
+        public override void OnDeath(Entity host, ref TickTime time)
         {
-            var owner = e.Host.World;
+            var owner = host.World;
 
-            if (owner.IdName.Contains("Arena") || e.Host.Spawned)
+            if (owner.IdName.Contains("Arena") || host.Spawned)
                 return;
 
-            if (e.Host.CurrentState.Is(parent) && Random.NextDouble() < _probability)
+            if (Random.NextDouble() < _probability)
             {
-                var manager = e.Host.CoreServerManager;
+                var manager = host.CoreServerManager;
                 var gameData = manager.Resources.GameData;
                 var timeoutTime = (_timeout == null) ? gameData.Portals[_target].Timeout : _timeout.Value;
                 var entity = Entity.Resolve(manager, _target);
-                entity.Move(e.Host.X, e.Host.Y);
-                entity.Move(e.Host.X + xAdjustment, e.Host.Y + yAdjustment);
+                entity.Move(host.X, host.Y);
+                entity.Move(host.X + xAdjustment, host.Y + yAdjustment);
                 owner.EnterWorld(entity);
 
                 if (timeoutTime != 0)
@@ -57,9 +57,10 @@ namespace wServer.logic.behaviors
                         catch { Console.WriteLine("Couldn't despawn portal."); }
                     }));
             }
-        };
+        }
 
         protected override void TickCore(Entity host, TickTime time, ref object state)
-        { }
+        {
+        }
     }
 }

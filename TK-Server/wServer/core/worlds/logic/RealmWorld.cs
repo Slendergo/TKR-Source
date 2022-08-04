@@ -36,7 +36,7 @@ namespace wServer.core.worlds.logic
         private KingdomManager _overseer;
         private Task _overseerTask;
 
-        public RealmWorld(int id, WorldResource resource, Client client = null) : base(id, resource)
+        public RealmWorld(int id, WorldResource resource) : base(id, resource)
         {
             _oryxPresent = true;
             IsRealm = true;

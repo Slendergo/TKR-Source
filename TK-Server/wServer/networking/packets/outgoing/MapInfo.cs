@@ -15,25 +15,11 @@ namespace wServer.networking.packets.outgoing
         public bool ShowDisplays { get; set; }
         public string Music { get; set; }
 
-        public override PacketId ID => PacketId.MAPINFO;
+        public override PacketId MessageId => PacketId.MAPINFO;
 
         public override Packet CreateInstance()
         {
             return new MapInfo();
-        }
-
-        protected override void Read(NReader rdr)
-        {
-            Width = rdr.ReadInt32();
-            Height = rdr.ReadInt32();
-            Name = rdr.ReadUTF();
-            DisplayName = rdr.ReadUTF();
-            Seed = rdr.ReadUInt32();
-            Background = rdr.ReadInt32();
-            Difficulty = rdr.ReadInt32();
-            AllowPlayerTeleport = rdr.ReadBoolean();
-            ShowDisplays = rdr.ReadBoolean();
-            Music = rdr.ReadUTF();
         }
 
         protected override void Write(NWriter wtr)

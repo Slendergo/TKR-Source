@@ -5,23 +5,23 @@ namespace wServer.logic.behaviors
 {
     public class RealmPortalDrop : Behavior
     {
-        protected internal override void Resolve(State parent) => parent.Death += (e, s) =>
+        public override void OnDeath(Entity host, ref TickTime time)
         {
-            var owner = s.Host.World;
+            var owner = host.World;
 
-            if (owner.IdName.Contains("DeathArena") || s.Host.Spawned)
+            if (owner.IdName.Contains("DeathArena") || host.Spawned)
                 return;
 
-            var en = s.Host.GetNearestEntity(100, 0x0704);
-            var portal = Entity.Resolve(s.Host.CoreServerManager, "Realm Portal");
+            var en = host.GetNearestEntity(100, 0x0704);
+            var portal = Entity.Resolve(host.CoreServerManager, "Realm Portal");
 
             if (en != null)
                 portal.Move(en.X, en.Y);
             else
-                portal.Move(s.Host.X, s.Host.Y);
+                portal.Move(host.X, host.Y);
 
-            s.Host.World.EnterWorld(portal);
-        };
+            host.World.EnterWorld(portal);
+        }
 
         protected override void OnStateEntry(Entity host, TickTime time, ref object state)
         {

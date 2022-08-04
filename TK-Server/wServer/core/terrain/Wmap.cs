@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using wServer.core.objects;
+using wServer.core.objects.connection;
 using wServer.core.objects.vendors;
 using wServer.core.worlds;
 
@@ -78,7 +79,7 @@ namespace wServer.core.terrain
                                 break;
 
                             case "conn":
-                                (entity as ConnectedObject).Connection = objects.ConnectionInfo.Infos[(uint)Utils.GetInt(kv[1])];
+                                (entity as ConnectedObject).Connection = ConnectedObjectInfo.Infos[(uint)Utils.GetInt(kv[1])];
                                 break;
 
                             case "mtype":

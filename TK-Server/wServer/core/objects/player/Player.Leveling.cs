@@ -1,5 +1,4 @@
-﻿using CA.Extensions.Concurrent;
-using System;
+﻿using System;
 using System.Linq;
 using wServer.core.worlds.logic;
 using wServer.networking;
@@ -9,10 +8,7 @@ namespace wServer.core.objects
 {
     public partial class Player
     {
-        //public Entity AvatarQuest { get; private set; }
-        //public Entity CrystalQuest { get; private set; }
         public Entity Quest { get; private set; }
-        //public Entity SpookyQuest { get; private set; }
 
         public static int GetExpGoal(int level) => 50 + (level - 1) * 100;
 
@@ -30,7 +26,6 @@ namespace wServer.core.objects
         {
             if (level == 1)
                 return 0;
-
             return 50 * (level - 1) + (level - 2) * (level - 1) * 50;
         }
 
@@ -81,8 +76,6 @@ namespace wServer.core.objects
             }
         }
 
-        public bool CheckLevel() => CheckLevelUp();
-
         public bool EnemyKilled(Enemy enemy, int exp, bool killer)
         {
             if (enemy == Quest)
@@ -127,27 +120,6 @@ namespace wServer.core.objects
                 CheckForEncounter();
         }
 
-        //public void HandleSpecialEnemies(TickTime time, bool force = false)
-        //{
-        //    if (this == null || World == null || World.SpecialEnemies == null || time.TickCount % 500 != 0)
-        //        return;
-
-        //    if (force || SpookyQuest == null || AvatarQuest == null || CrystalQuest == null)
-        //    {
-        //        var newSpooky = FindSpecialEnemy("Spectral Sentry");
-        //        if (newSpooky != null && newSpooky != SpookyQuest)
-        //            SpookyQuest = newSpooky;
-
-        //        var newAvatar = FindSpecialEnemy("shtrs Defense System");
-        //        if (newAvatar != null && newAvatar != AvatarQuest)
-        //            AvatarQuest = newAvatar;
-
-        //        var newCrystal = FindSpecialEnemy("Crystal Prisoner");
-        //        if (newCrystal != null && newCrystal != CrystalQuest)
-        //            CrystalQuest = newCrystal;
-        //    }
-        //}
-
         private bool CheckLevelUp()
         {
             var statInfo = CoreServerManager.Resources.GameData.Classes[ObjectType].Stats;
@@ -183,7 +155,7 @@ namespace wServer.core.objects
                 MP = Stats[1];
 
                 if (Level == 20)
-                    World.PlayersBroadcastAsParallel(_ => _.SendInfo($"{Name} achieved level 20"));
+                    World.ForeachPlayer(_ => _.SendInfo($"{Name} achieved level 20"));
                 else
                     // to get exp scaled to new exp goal
                     InvokeStatChange(StatDataType.Experience, Experience - GetLevelExp(Level), true);
@@ -255,12 +227,5 @@ namespace wServer.core.objects
             }
             return ret;
         }
-
-        private Enemy FindSpecialEnemy(string objectId)
-            => World.SpecialEnemies
-                .ValueWhereAsParallel(_ => _ != null
-                    && _.ObjectDesc != null
-                    && _.ObjectDesc.ObjectId.Equals(objectId))
-                .FirstOrDefault();
     }
 }

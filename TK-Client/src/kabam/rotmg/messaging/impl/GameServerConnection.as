@@ -160,7 +160,6 @@ import kabam.rotmg.messaging.impl.outgoing.InvSwap;
 import kabam.rotmg.messaging.impl.outgoing.JoinGuild;
 import kabam.rotmg.messaging.impl.outgoing.Load;
 import kabam.rotmg.messaging.impl.outgoing.Move;
-import kabam.rotmg.messaging.impl.outgoing.Options;
 import kabam.rotmg.messaging.impl.outgoing.OtherHit;
 import kabam.rotmg.messaging.impl.outgoing.PlayerHit;
 import kabam.rotmg.messaging.impl.outgoing.PlayerShoot;
@@ -310,7 +309,6 @@ public class GameServerConnection
       public static const MARKET_REMOVE_RESULT:int = 82;
       public static const MARKET_MY_OFFERS:int = 83;
       public static const MARKET_MY_OFFERS_RESULT:int = 84;
-      public static const OPTIONS:int = 85;
 
       /* Bounty */
       public static const BOUNTYREQUEST:int = 86; /* Start the Bounty */
@@ -476,7 +474,6 @@ public class GameServerConnection
          messages.map(SMALLSKILLTREE).toMessage(SmallSkillTree);
          messages.map(FORGEFUSION).toMessage(ForgeFusion);
          messages.map(ESCAPE).toMessage(Escape);
-         messages.map(OPTIONS).toMessage(Options);
 
          /* Bounty */
          messages.map(BOUNTYREQUEST).toMessage(BountyRequest);
@@ -611,7 +608,6 @@ public class GameServerConnection
          messages.unmap(SMALLSKILLTREE);
          messages.unmap(FORGEFUSION);
          messages.unmap(ESCAPE);
-         messages.unmap(OPTIONS);
 
          /* Market */
          messages.unmap(MARKET_SEARCH);
@@ -642,12 +638,6 @@ public class GameServerConnection
 
       private function onSwitchMusic(sm:SwitchMusic):void {
          Music.load(sm.music);
-      }
-
-      public function options() : void {
-         var options:Options = this.messages.require(OPTIONS) as Options;
-         options.allyShots = Parameters.data_.allyShots;
-         this.serverConnection.sendMessage(options);
       }
 
       public function potionStorage(statType:int, interactionType:int):void {
@@ -692,7 +682,6 @@ public class GameServerConnection
          var load:Load = this.messages.require(LOAD) as Load;
          load.charId_ = this.charId_;
          this.serverConnection.sendMessage(load);
-         GameServerConnection.instance.options();
       }
 
       public function playerShoot(time:int, proj:Projectile) : void

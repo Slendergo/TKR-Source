@@ -17,6 +17,19 @@ namespace wServer.core.commands
             }
         }
 
+        internal class ToggleDeltaCommand : Command
+        {
+            public ToggleDeltaCommand() : base("tdt", permLevel: 100)
+            {
+            }
+
+            protected override bool Process(Player player, TickTime time, string args)
+            {
+                //TryNewSystem = !TryNewSystem;
+                return true;
+            }
+        }
+
         internal class ClearGraves : Command
         {
             public ClearGraves() : base("cleargraves", permLevel: 90, alias: "cgraves")

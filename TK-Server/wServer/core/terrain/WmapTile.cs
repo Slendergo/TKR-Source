@@ -2,7 +2,7 @@
 using common.resources;
 using System;
 using System.Collections.Generic;
-using wServer.core.objects;
+using wServer.core.objects.connection;
 
 namespace wServer.core.terrain
 {

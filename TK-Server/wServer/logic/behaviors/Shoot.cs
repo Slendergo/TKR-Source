@@ -45,8 +45,6 @@ namespace wServer.logic.behaviors
             _seeInvis = seeInvis;
         }
 
-        private static double GetMultiplier => _multiplier == -1 ? _multiplier = Program.CoreServerManager.GetEnemyDamageRate() : _multiplier;
-
         protected override void OnStateEntry(Entity host, TickTime time, ref object state) => state = _coolDownOffset;
 
         protected override void TickCore(Entity host, TickTime time, ref object state)
@@ -96,8 +94,6 @@ namespace wServer.logic.behaviors
                     if (host.HasConditionEffect(ConditionEffects.Weak))
                         dmg /= 2;
 
-                    dmg *= GetMultiplier;
-
                     var startAngle = a - _shootAngle * (count - 1) / 2;
 
                     byte prjId = 0;
@@ -132,10 +128,14 @@ namespace wServer.logic.behaviors
                         NumShots = (byte)count,
                     };
 
-                    var players = host.World.Players
-                        .ValueWhereAsParallel(_ => _.DistSqr(host) < PlayerUpdate.VISIBILITY_RADIUS_SQR);
-                    for (var i = 0; i < players.Length; i++)
-                        players[i].Client.SendPacket(pkt);
+                    // changed to this
+                    host.World.BroadcastIfVisible(pkt, host);
+                    
+                    // from this
+                    //var players = host.World.Players
+                    //    .Values.Where(_ => _.DistSqr(host) < PlayerUpdate.VISIBILITY_RADIUS_SQR);
+                    //for (var i = 0; i < players.Length; i++)
+                    //    players[i].Client.SendPacket(pkt);
                 }
 
                 cool = _coolDown.Next(Random);

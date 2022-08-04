@@ -50,7 +50,6 @@ namespace common.resources
         public readonly bool SlowedImmune;
         public readonly bool SpawnPoint;
         public readonly float SpawnProb;
-        public readonly bool SpecialEnemy;
         public readonly bool StasisImmune;
         public readonly bool Static;
         public readonly bool StunImmune;
@@ -108,7 +107,6 @@ namespace common.resources
             SpawnPoint = e.HasElement("SpawnPoint");
             Group = e.GetValue<string>("Group");
             Quest = e.HasElement("Quest");
-            SpecialEnemy = e.HasElement("SpecialEnemy");
             Level = e.GetValue<int>("Level");
             God = e.HasElement("God");
             NoArticle = e.HasElement("NoArticle");

@@ -14,35 +14,34 @@ namespace wServer.logic.behaviors
             _music = file;
         }
 
-        protected internal override void Resolve(State parent)
+        public override void OnDeath(Entity host, ref TickTime time)
         {
-            parent.Death += (sender, e) =>
+            if (host.World.Music != _music)
             {
-                if (e.Host.World.Music != _music)
+                var owner = host.World;
+
+                owner.Music = _music;
+
+                var i = 0;
+                foreach (var plr in owner.Players.Values)
                 {
-                    var owner = e.Host.World;
-
-                    owner.Music = _music;
-
-                    var i = 0;
-                    foreach (var plr in owner.Players.Values)
+                    owner.Timers.Add(new WorldTimer(100 * i, (w, t) =>
                     {
-                        owner.Timers.Add(new WorldTimer(100 * i, (w, t) =>
-                        {
-                            if (plr == null)
-                                return;
+                        if (plr == null)
+                            return;
 
-                            plr.Client.SendPacket(new SwitchMusic()
-                            {
-                                Music = _music
-                            });
-                        }));
-                        i++;
-                    }
+                        plr.Client.SendPacket(new SwitchMusic()
+                        {
+                            Music = _music
+                        });
+                    }));
+                    i++;
                 }
-            };
+            }
         }
+
         protected override void TickCore(Entity host, TickTime time, ref object state)
-        { }
+        {
+        }
     }
 }

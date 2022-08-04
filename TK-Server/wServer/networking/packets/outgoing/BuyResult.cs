@@ -17,18 +17,13 @@ namespace wServer.networking.packets.outgoing
         public int Result { get; set; }
         public string ResultString { get; set; }
 
-        public override PacketId ID => PacketId.BUYRESULT;
+        public override PacketId MessageId => PacketId.BUYRESULT;
 
         public override Packet CreateInstance()
         {
             return new BuyResult();
         }
 
-        protected override void Read(NReader rdr)
-        {
-            Result = rdr.ReadInt32();
-            ResultString = rdr.ReadUTF();
-        }
 
         protected override void Write(NWriter wtr)
         {

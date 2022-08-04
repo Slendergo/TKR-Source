@@ -39,7 +39,7 @@
     <FameBonus>5</FameBonus>
     <Cooldown>6</Cooldown>
   </Object>
-  <Object type="0x507e" id="Forbidden Jungle’s Seal">
+  <Object type="0x507e" id="Forbidden Jungle's Seal">
     <Class>Equipment</Class>
     <Item />
     <Texture>

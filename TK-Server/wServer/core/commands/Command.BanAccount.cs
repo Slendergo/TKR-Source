@@ -1,5 +1,4 @@
-﻿using CA.Extensions.Concurrent;
-using common;
+﻿using common;
 using common.database;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -95,9 +94,7 @@ namespace wServer.core.commands
                 // ban player + disconnect if currently connected
                 player.CoreServerManager.Database.Ban(bInfo.accountId, bInfo.banReasons, bInfo.banLiftTime);
 
-                var target = player.CoreServerManager.ConnectionManager.Clients
-                    .KeyWhereAsParallel(_ => _.Account != null && _.Account.AccountId == bInfo.accountId)
-                    .FirstOrDefault();
+                var target = player.CoreServerManager.ConnectionManager.Clients.Keys.FirstOrDefault(_ => _.Account != null && _.Account.AccountId == bInfo.accountId);
                 target?.Disconnect("BanAccountCommand");
                 player.SendInfo(
                     !string.IsNullOrEmpty(bInfo.Name)

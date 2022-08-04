@@ -195,7 +195,7 @@ namespace wServer.networking.connection
                             var handler = MessageHandlers.GetHandler(id);
                             if (handler == null)
                             {
-                                SLogger.Instance.Error($"Unknown MessageId: {id}");
+                                SLogger.Instance.Error($"Unknown MessageId: {id} - {Client.IpAddress}");
                                 continue;
                             }
 

@@ -24,14 +24,14 @@ namespace wServer
 
         private static void Main(string[] args)
         {
-#if LINUX
-            // todo linux support
-            var unixExitSignal = new UnixExitSignal();
-            unixExitSignal.Exit += OnExit;
-#else
+//#if LINUX
+//            // todo linux support
+//            var unixExitSignal = new UnixExitSignal();
+//            unixExitSignal.Exit += OnExit;
+//#else
             ConsoleCtrlCheckRoutine = ConsoleCtrlCheck;
             SetConsoleCtrlHandler(ConsoleCtrlCheckRoutine, true);
-#endif
+//#endif
 
             CoreServerManager = new CoreServerManager(args.Length > 0 ? args[0] : "wServer.json");
             SetupLogData();
@@ -73,12 +73,12 @@ namespace wServer
             Thread.CurrentThread.Name = "Entry";
         }
 
-#if LINUX
-        private void OnExit()
-        {
-            OnDispose();
-        }
-#else
+//#if LINUX
+//        private void OnExit()
+//        {
+//            OnDispose();
+//        }
+//#else
         public enum CtrlTypes
         {
             CTRL_C_EVENT = 0,
@@ -108,6 +108,6 @@ namespace wServer
             }
             return true;
         }
-#endif
+//#endif
     }
 }

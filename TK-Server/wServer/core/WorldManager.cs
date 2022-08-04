@@ -21,6 +21,8 @@ namespace wServer.core
         public TickThreadSingle NexusThread { get; private set; }
         private readonly ConcurrentDictionary<int, TickThreadSingle> RealmThreads = new ConcurrentDictionary<int, TickThreadSingle>();
 
+        public ConcurrentDictionary<int, int> WorldMapId { get; set; } = new ConcurrentDictionary<int, int>();
+
         public NexusWorld Nexus => (Worlds[-2] as NexusWorld);
         public TestWorld Test => (Worlds[-6] as TestWorld);
 
@@ -46,6 +48,13 @@ namespace wServer.core
             CoreServerManager = coreServerManager;
             NexusThread = new TickThreadSingle(this);
         }
+
+        public void SetPreviousWorld(int accountId, int worldId)
+        {
+            WorldMapId[accountId] = worldId;
+        }
+
+        public World GetPreviousRealmWorld(int accountId) => WorldMapId.TryGetValue(accountId, out var id) ? GetWorld(id) : null;
 
         public void Initialize()
         {

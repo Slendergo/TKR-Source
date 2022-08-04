@@ -76,16 +76,22 @@ namespace wServer.networking.handlers
             var world = portal.WorldInstance;
             if (world == null && _realmPortals.Contains(portal.ObjectType))
             {
-                //var world = player.CoreServerManager.WorldManager.GetWorld(player.Client.TargetWorld);
+                var prevWorld = player.CoreServerManager.WorldManager.GetPreviousRealmWorld(player.AccountId);
+                if (prevWorld == null)
+                    prevWorld = player.CoreServerManager.WorldManager.Nexus;
+                player.Reconnect(prevWorld);
 
                 //System.Console.WriteLine("OH NO no implementation for this feature: cowardice stuff");
                 // get last world the player was a part of 
                 //world = player.CoreServerManager.WorldManager.GetRandomGameWorld();
                 //if (world == null)
                 //return;
-                player.SendInfo("This feature isnt implemented yet!");
+                //player.SendInfo("This feature isnt implemented yet!");
                 return;
             }
+
+            if (portal.WorldInstance != null && portal.PortalDescr.NexusPortal)
+                player.CoreServerManager.WorldManager.SetPreviousWorld(player.AccountId, portal.WorldInstance.Id);
 
             if (world != null)
             {

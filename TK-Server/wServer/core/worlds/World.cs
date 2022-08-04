@@ -130,10 +130,7 @@ namespace wServer.core.worlds
         {
             foreach (var player in Players.Values)
                 if (player.Id != exclude.Id && player.Dist(broadcaster) <= 15d)
-                {
                     player.Client.SendPacket(outgoingMessage, priority);
-                    break;
-                }
         }
 
         public void BroadcastToPlayer(OutgoingMessage outgoingMessage, int playerId, PacketPriority priority = PacketPriority.Normal)

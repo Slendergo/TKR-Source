@@ -1634,6 +1634,7 @@
   </Object>
   <Object type="0x0e78" id="Nexus Crier">
     <Class>Character</Class>
+	  <MaxHitPoints>4000</MaxHitPoints>
     <AnimatedTexture>
       <File>chars8x8rEncounters</File>
       <Index>83</Index>

@@ -61,53 +61,45 @@ namespace wServer.core.objects.vendors
         private static readonly List<ISellableItem> Consumables = new List<ISellableItem>
         {
             new ShopItem("XP Booster 20 min", 100),
-            new ShopItem("Backpack", 300),
-            new ShopItem("Loot Drop Potion", 400),
-            new ShopItem("Magic Potion", 5),
-            new ShopItem("Health Potion", 5),
+            new ShopItem("Backpack", 50),
+            new ShopItem("Loot Drop Potion", 100),
+            new ShopItem("Magic Potion", 1),
+            new ShopItem("Health Potion", 1),
             new ShopItem("Item Dust", 150),
-            new ShopItem("Potion Dust", 150),
-            new ShopItem("Miscellaneous Dust", 250),
-            new ShopItem("Special Dust", 1500),
-            new ShopItem("Char Slot Unlocker", 1000),
-            new ShopItem("Vault Chest Unlocker", 200),
-            new ShopItem("Magic Paper", 0)
+            new ShopItem("Potion Dust", 100),
+            new ShopItem("Miscellaneous Dust", 150),
+            new ShopItem("Special Dust", 1000),
+            new ShopItem("Char Slot Unlocker", 300),
+            new ShopItem("Vault Chest Unlocker", 200)
         };
 
-        private static readonly List<ISellableItem> KeysGold = new List<ISellableItem>
+        private static readonly List<ISellableItem> KeysFame = new List<ISellableItem>
         {
             new ShopItem("Strange Library Key", 200),
-			new ShopItem("Lost Halls Key", 200),
-			new ShopItem("Davy's Key", 150),
-            new ShopItem("The Crawling Depths Key", 150),
+            new ShopItem("Cemetery Key", 200),
+            new ShopItem("Lost Halls Key", 200),
+			new ShopItem("Davy's Key", 200),
+            new ShopItem("The Crawling Depths Key", 200),
             new ShopItem("Shatters Key", 200),
-            new ShopItem("Ocean Trench Key", 150),
-            new ShopItem("Tomb of the Ancients Key", 100),
-            new ShopItem("Deadwater Docks Key", 150),
-            new ShopItem("Woodland Labyrinth Key", 150),
+            new ShopItem("Ocean Trench Key", 200),
+            new ShopItem("Tomb of the Ancients Key", 200),
+            new ShopItem("Deadwater Docks Key", 200),
+            new ShopItem("Woodland Labyrinth Key", 200),
         };
 
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         private static readonly List<ISellableItem> Miscellaneous = new List<ISellableItem>
         {
-            new ShopItem("XP Booster 20 min", 10),
-            new ShopItem("Backpack", 30),
-            new ShopItem("Loot Drop Potion", 40),
-            new ShopItem("Item Dust", 15),
-            new ShopItem("Potion Dust", 15),
-            new ShopItem("Miscellaneous Dust", 25),
-            new ShopItem("Special Dust", 100),
-            new ShopItem("Char Slot Unlocker", 60),
-            new ShopItem("Vault Chest Unlocker", 60),
-            new ShopItem("Cocktail of Mana", 150),
-            new ShopItem("Cocktail of Life", 150),
-            new ShopItem("Cocktail of Attack", 120),
-            new ShopItem("Cocktail of Defense", 120),
-            new ShopItem("Cocktail of Speed", 120),
-            new ShopItem("Cocktail of Dexterity", 120),
-            new ShopItem("Cocktail of Wisdom", 120),
-            new ShopItem("Cocktail of Vitality", 120)
+            new ShopItem("XP Booster 20 min", 100),
+            new ShopItem("Backpack", 50),
+            new ShopItem("Loot Drop Potion", 100),
+            new ShopItem("Item Dust", 150),
+            new ShopItem("Potion Dust", 100),
+            new ShopItem("Miscellaneous Dust", 150),
+            new ShopItem("Special Dust", 1000),
+            new ShopItem("Char Slot Unlocker", 300),
+            new ShopItem("Vault Chest Unlocker", 200)
         };
 
         private static readonly List<ISellableItem> PurchasableFame = new List<ISellableItem>
@@ -246,8 +238,8 @@ namespace wServer.core.objects.vendors
             { TileRegion.Store_6, new Tuple<List<ISellableItem>, CurrencyType, int>(PurchasableFame, CurrencyType.Fame, 0) },
             { TileRegion.Store_7, new Tuple<List<ISellableItem>, CurrencyType, int>(Consumables, CurrencyType.Fame, 0) },
             { TileRegion.Store_8, new Tuple<List<ISellableItem>, CurrencyType, int>(Special, CurrencyType.Fame, 0) },
-            { TileRegion.Store_17, new Tuple<List<ISellableItem>, CurrencyType, int>(KeysGold, CurrencyType.Gold, 0) },
-            { TileRegion.Store_19, new Tuple<List<ISellableItem>, CurrencyType, int>(Miscellaneous, CurrencyType.Gold, 0) }
+            { TileRegion.Store_17, new Tuple<List<ISellableItem>, CurrencyType, int>(KeysFame, CurrencyType.Fame, 0) },
+            { TileRegion.Store_19, new Tuple<List<ISellableItem>, CurrencyType, int>(Miscellaneous, CurrencyType.Fame, 0) }
         };
 
         private static void InitDyes(CoreServerManager manager)
@@ -283,9 +275,9 @@ namespace wServer.core.objects.vendors
                 }
             }
 
-            Shops[TileRegion.Store_15] = new Tuple<List<ISellableItem>, CurrencyType, int>(d1, CurrencyType.Gold, 0);
-            Shops[TileRegion.Store_16] = new Tuple<List<ISellableItem>, CurrencyType, int>(d2, CurrencyType.Gold, 0);
-            Shops[TileRegion.Store_18] = new Tuple<List<ISellableItem>, CurrencyType, int>(c1, CurrencyType.Gold, 0);
+            Shops[TileRegion.Store_15] = new Tuple<List<ISellableItem>, CurrencyType, int>(d1, CurrencyType.Fame, 0);
+            Shops[TileRegion.Store_16] = new Tuple<List<ISellableItem>, CurrencyType, int>(d2, CurrencyType.Fame, 0);
+            Shops[TileRegion.Store_18] = new Tuple<List<ISellableItem>, CurrencyType, int>(c1, CurrencyType.Fame, 0);
         }
     }
 }

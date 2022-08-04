@@ -2562,7 +2562,7 @@ namespace wServer.logic
             )
         .Init("Blue Zombie",
             new State(
-                new Follow(0.03, 100, 1),
+                new Follow(0.5, 100, 1),
                 new State("1",
                     new Shoot(10, 1, projectileIndex: 0, coolDown: 500),
                     new EntityNotExistsTransition("Ghost of Skuld", 100, "2")
@@ -2575,7 +2575,7 @@ namespace wServer.logic
         .Init("Flying Flame Skull",
             new State(
                 new ConditionalEffect(ConditionEffectIndex.Invulnerable),
-                new Orbit(1, 5, 10, target: "Ghost of Skuld"),
+                new Orbit(2, 5, 10, target: "Ghost of Skuld"),
                 new State("1",
                     new Shoot(100, 10, shootAngle: 36, projectileIndex: 0, coolDown: 500),
                     new EntityNotExistsTransition("Ghost of Skuld", 100, "2")

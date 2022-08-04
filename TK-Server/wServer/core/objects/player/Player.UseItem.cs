@@ -1554,7 +1554,7 @@ namespace wServer.core.objects
             ushort itemValue;
             var entity = World.GetEntity(objId);
             var container = entity as Container;
-            var itemchance = _random.Next(0, 4);
+            var itemchance = _random.Next(0, 3);
             switch (itemchance)
             {
                 case 0:
@@ -1567,7 +1567,7 @@ namespace wServer.core.objects
                     break;
 
                 case 1:
-                    itemValue = 0xc6b; //XP Booster 20 min
+                    itemValue = 0x32a; //Char Slot Unlocker
                     if (container != null)
                         container.Inventory[slot] = gameData.Items[itemValue];
                     else
@@ -1593,14 +1593,6 @@ namespace wServer.core.objects
                     SendInfo($"Used a Miscellaneous Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
                     break;
 
-                case 4:
-                    itemValue = 0x32a; //Char Slot Unlocker
-                    if (container != null)
-                        container.Inventory[slot] = gameData.Items[itemValue];
-                    else
-                        Inventory[slot] = gameData.Items[itemValue];
-                    SendInfo($"Used a Miscellaneous Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                    break;
             }
         }
 

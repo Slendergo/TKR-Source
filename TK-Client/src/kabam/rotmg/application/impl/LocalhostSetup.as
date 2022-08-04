@@ -5,7 +5,7 @@ import kabam.rotmg.application.api.ApplicationSetup;
 
 public class LocalhostSetup implements ApplicationSetup {
 
-    private const SERVER:String = "http://147.189.169.79:2000";
+    private const SERVER:String = "http://127.0.0.1:2000";
 
 
     public function getAppEngineUrl(_arg1:Boolean = false):String {

@@ -911,10 +911,21 @@
       <File>lofiEnvironment2</File>
       <Index>0x09</Index>
     </Texture>
+	  <MinDamage>30</MinDamage>
+	  <MaxDamage>60</MaxDamage>
     <Animate dx=".33" dy=".33">Flow</Animate>
     <Sink />
     <Speed>.666</Speed>
   </Ground>
+	<Ground type="0x027e" id="Evil Water 1">
+		<Texture>
+			<File>lofiEnvironment2</File>
+			<Index>0x09</Index>
+		</Texture>
+		<Animate dx=".33" dy=".33">Flow</Animate>
+		<Sink />
+		<Speed>.666</Speed>
+	</Ground>
   <Ground type="0x751d" id="Flowing Sand1">
     <Texture>
       <File>lofiEnvironment2</File>

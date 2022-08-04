@@ -7,7 +7,7 @@ package kabam.rotmg.application.impl
    {
       private const CDN_APPENGINE:String = "http://147.189.169.79:2000"; //For release use "http://{ServerIP}:2000"
       private const CDN_STATICS:String = "http://147.189.169.79:2000"; //For release use "http://{ServerIP}:2000"
-      private const BUILD_LABEL:String = "TK1 - build: {VERSION}{MINOR}";
+      private const BUILD_LABEL:String = "TKR - build: {VERSION}{MINOR}";
 
       public function ReleaseSetup()
       {

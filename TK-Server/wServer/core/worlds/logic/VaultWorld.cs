@@ -19,7 +19,7 @@ namespace wServer.core.worlds.logic
         
         private LinkedList<Container> Vaults = new LinkedList<Container>();
 
-        public VaultWorld(int id, WorldResource resource) : base(id, resource)
+        public VaultWorld(int id, WorldResource resource, World parent) : base(id, resource, parent)
         {
         }
 

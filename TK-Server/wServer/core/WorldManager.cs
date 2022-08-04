@@ -111,10 +111,10 @@ namespace wServer.core
                     world = new NexusWorld(nextId, worldResource);
                     break;
                 case WorldResourceInstanceType.Vault:
-                    world = new VaultWorld(nextId, worldResource);
+                    world = new VaultWorld(nextId, worldResource, parent);
                     break;
                 default:
-                    world = new World(nextId, worldResource);
+                    world = new World(nextId, worldResource, parent);
                     break;
             }
 

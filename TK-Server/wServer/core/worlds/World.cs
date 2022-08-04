@@ -74,13 +74,14 @@ namespace wServer.core.worlds
         public ConcurrentDictionary<int, Enemy> Quests { get; private set; }
         public bool ShowDisplays { get; protected set; }
         public ConcurrentDictionary<int, Enemy> SpecialEnemies { get; private set; }
+
         public ConcurrentDictionary<int, StaticObject> StaticObjects { get; private set; }
         public List<WorldTimer> Timers { get; private set; }
         public int TotalConnects { get { return _totalConnects; } }
 
         public readonly WorldBranch WorldBranch;
 
-        public World(int id, WorldResource resource)
+        public World(int id, WorldResource resource, World parent = null)
         {
             Setup();
             Id = id;
@@ -104,7 +105,10 @@ namespace wServer.core.worlds
                 Music = "sorc";
 
             WorldBranch = new WorldBranch(this);
+            ParentWorld = parent;
         }
+
+        public World ParentWorld { get; set; }
 
         public virtual bool AllowedAccess(Client client) => !Closed || client.Account.Admin;
 
@@ -658,6 +662,14 @@ namespace wServer.core.worlds
         }
 
         private bool ForceLifetimeExpire = false;
+
+        public void ExtendLifetime(int amount)
+        {
+            Console.WriteLine($"Extended: {Id} {IdName} by {amount}");
+            _elapsedTime -= amount;
+            if (_elapsedTime < 0)
+                _elapsedTime = 0;
+        }
 
         private bool IsPastLifetime(ref TickTime time)
         {

@@ -396,9 +396,11 @@ public class Options extends Sprite
    {
        if(Parameters.data_.FS){
            stage.scaleMode = StageScaleMode.NO_SCALE;
+          this.gs_.updateScaleForTextBox(0.9);
        }
        else{
            stage.scaleMode = StageScaleMode.EXACT_FIT;
+           this.gs_.updateScaleForTextBox(1.0);
        }
 
       Parameters.root.dispatchEvent(new Event(Event.RESIZE));

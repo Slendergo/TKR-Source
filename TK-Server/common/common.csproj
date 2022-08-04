@@ -230,7 +230,6 @@
     <Compile Include="isc\data\ServerInfo.cs" />
     <Compile Include="isc\NetworkCode.cs" />
     <Compile Include="isc\NetworkMsg.cs" />
-    <Compile Include="isc\RestartMsg.cs" />
     <Compile Include="isc\ServerType.cs" />
     <Compile Include="LockTimeoutException.cs" />
     <Compile Include="logger\Log.cs" />

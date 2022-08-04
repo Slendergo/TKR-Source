@@ -1,6 +1,5 @@
 ﻿using CA.Extensions.Concurrent;
 using common.isc.data;
-using common.resources;
 using System;
 using System.Collections.Concurrent;
 using System.IO;
@@ -30,7 +29,7 @@ namespace wServer.core
         private ConnectionListener ConnectionListener { get; set; }
         private long LastTickTime { get; set; }
         private int MaxPlayerCount { get; set; }
-        private ConcurrentDictionary<int, ReconInfo> Reconnecting { get; set; }
+        private ConcurrentDictionary<int, ReconnectInfo> ReconnectInfo { get; set; }
 
         public void AddConnection(ConnectionInfo connectionInfo)
         {
@@ -63,8 +62,8 @@ namespace wServer.core
             if (rcp == null)
                 return;
 
-            var rInfo = new ReconInfo(rcp.GameId, rcp.Key, DateTime.Now.AddSeconds(RECON_TTL));
-            Reconnecting.TryAdd(accountId, rInfo);
+            var rInfo = new ReconnectInfo(rcp.GameId, rcp.Key, DateTime.Now.AddSeconds(RECON_TTL));
+            ReconnectInfo.TryAdd(accountId, rInfo);
         }
 
         public void ClientConnected(Client client)
@@ -100,7 +99,7 @@ namespace wServer.core
                 if (acc == null || connectionInfo == null || client == null)
                     return;
 
-                if (!Reconnecting.TryRemove(acc.AccountId, out var rInfo))
+                if (!ReconnectInfo.TryRemove(acc.AccountId, out var rInfo))
                 {
                     client.SendFailure("Invalid reconnect.", Failure.MessageWithDisconnect);
                     return;
@@ -242,14 +241,14 @@ namespace wServer.core
         public void Initialize()
         {
             MaxPlayerCount = CoreServerManager.ServerConfig.serverSettings.maxPlayers;
-            Reconnecting = new ConcurrentDictionary<int, ReconInfo>();
+            ReconnectInfo = new ConcurrentDictionary<int, ReconnectInfo>();
             Connecting = new ConcurrentDictionary<Client, DateTime>();
             Clients = new ConcurrentDictionary<Client, PlayerInfo>();
             ConnectionListener = new ConnectionListener(this);
             ConnectionListener.Initialize();
         }
 
-        public int PlayerCount() => Clients.Count + Reconnecting.Count;
+        public int PlayerCount() => Clients.Count + ReconnectInfo.Count;
 
         public void Shutdown() => ConnectionListener.Shutdown();
 
@@ -264,8 +263,8 @@ namespace wServer.core
                 var dateTime = DateTime.Now;
 
                 // process reconnect timeouts
-                foreach (var r in Reconnecting.Where(r => DateTime.Compare(r.Value.Timeout, dateTime) < 0))
-                    Reconnecting.TryRemove(r.Key, out var ignored);
+                foreach (var r in ReconnectInfo.Where(r => DateTime.Compare(r.Value.Timeout, dateTime) < 0))
+                    ReconnectInfo.TryRemove(r.Key, out var ignored);
 
                 // process connecting timeouts
                 // for those that go through the connection process but never send a Create or Load packet

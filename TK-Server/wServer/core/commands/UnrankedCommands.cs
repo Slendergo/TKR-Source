@@ -1251,7 +1251,7 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string color)
         {
-            var end = Program.EndWhen;
+            var end = Program.Restarter.GetRestartTime();
             var timeLeft = end.Subtract(DateTime.UtcNow);
 
             player.SendInfo(string.Format(

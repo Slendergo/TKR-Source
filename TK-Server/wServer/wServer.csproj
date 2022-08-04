@@ -141,7 +141,6 @@
     <Compile Include="core\commands\Command.ResetAttributes.cs" />
     <Compile Include="core\commands\Command.ResetBaseStat.cs" />
     <Compile Include="core\commands\Command.Reskin.cs" />
-    <Compile Include="core\commands\Command.Restart.cs" />
     <Compile Include="core\commands\Command.Sell.cs" />
     <Compile Include="core\commands\Command.SetDonorLoot.cs" />
     <Compile Include="core\commands\Command.SetFame.cs" />
@@ -234,7 +233,7 @@
     <Compile Include="core\objects\player\UpdatedHashSet.cs" />
     <Compile Include="core\objects\vendors\BuyResult.cs" />
     <Compile Include="core\objects\vendors\ShopItem.cs" />
-    <Compile Include="core\ReconInfo.cs" />
+    <Compile Include="core\ReconnectInfo.cs" />
     <Compile Include="core\terrain\WmapDesc.cs" />
     <Compile Include="core\terrain\WmapTile.cs" />
     <Compile Include="core\WorldManager.cs" />

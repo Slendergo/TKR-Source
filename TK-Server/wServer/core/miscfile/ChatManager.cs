@@ -105,7 +105,6 @@ namespace wServer.core
         public void Initialize()
         {
             CoreServerManager.InterServerManager.AddHandler<ChatMsg>(Channel.Chat, HandleChat);
-            CoreServerManager.InterServerManager.AddHandler<RestartMsg>(Channel.Restart, HandleRestart);
             CoreServerManager.InterServerManager.AddHandler<AnnounceMsg>(Channel.Announce, HandleAnnounce);
             CoreServerManager.InterServerManager.NewServer += AnnounceNewServer;
             CoreServerManager.InterServerManager.ServerQuit += AnnounceServerQuit;
@@ -384,33 +383,6 @@ namespace wServer.core
                     }
                     break;
             }
-        }
-
-        private void HandleRestart(object sender, InterServerEventArgs<RestartMsg> e)
-        {
-            var user = e.Content.User;
-            var listeners = new KeyValuePair<TimeSpan, Action>[]
-            {
-                new KeyValuePair<TimeSpan, Action>(TimeSpan.FromMinutes(1), () => Program.RestartAnnouncement(1)),
-                new KeyValuePair<TimeSpan, Action>(TimeSpan.FromSeconds(30), () => Program.RestartAnnouncement(-1))
-            };
-
-            Program.SetupRestarter(TimeSpan.FromMinutes(1.05), listeners);
-
-            var messageTemplate = $"({DateTime.UtcNow:hh:mm:ss}) This server is preparing to restart, requested by Staff {user} via Discord.";
-            var botName = Program.CoreServerManager.ServerConfig.discordIntegration.botName;
-            var clients = CoreServerManager.ConnectionManager.Clients
-                .KeyWhereAsParallel(_ => _.Player != null);
-            for (var i = 0; i < clients.Length; i++)
-                clients[i].SendPacket(new Text()
-                {
-                    ObjectId = -1,
-                    BubbleTime = 10,
-                    NumStars = 70,
-                    Name = botName,
-                    Recipient = clients[i].Player.Name,
-                    Txt = messageTemplate
-                });
         }
 
         private void SendTextPacket(Player src, Text tp, Predicate<Player> conditional)

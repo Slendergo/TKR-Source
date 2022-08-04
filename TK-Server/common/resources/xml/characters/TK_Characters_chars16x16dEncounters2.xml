@@ -771,7 +771,7 @@
     <ShadowSize>40</ShadowSize>
     <Z>0.2</Z>
     <Flying />
-    <MaxHitPoints>200000</MaxHitPoints>
+    <MaxHitPoints>100000</MaxHitPoints>
     <Defense>60</Defense>
     <XpMult>0.9</XpMult>
     <LeachHealth />
@@ -781,18 +781,19 @@
     <Level>1</Level>
     <Projectile id="0">
       <ObjectId>Dagger</ObjectId>
-      <Damage>100</Damage>
+      <Damage>130</Damage>
       <Speed>50</Speed>
       <Size>100</Size>
       <LifetimeMS>2400</LifetimeMS>
     </Projectile>
     <Projectile id="1">
       <ObjectId>Ruthven Shot</ObjectId>
-      <Damage>90</Damage>
+      <Damage>120</Damage>
       <Speed>65</Speed>
       <Size>100</Size>
       <LifetimeMS>3400</LifetimeMS>
       <MultiHit />
+		<ArmorPierce />
     </Projectile>
   </Object>
   <Object type="0x6e8" id="Lucky Ent God">

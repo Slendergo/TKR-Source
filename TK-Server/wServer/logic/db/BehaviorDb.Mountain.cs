@@ -61,7 +61,7 @@ namespace wServer.logic
                 new Shoot(10, count: 3, shootAngle: 20, predictive: 1, coolDown: 500),
                 new Reproduce(densityMax: 3)
                 ),
-            AttackPotion,
+            new ItemLoot("Potion of defense", 0.3),
             new TierLoot(6, ItemType.Weapon, 0.08),
             new TierLoot(7, ItemType.Weapon, 0.04),
             new TierLoot(8, ItemType.Weapon, 0.02),
@@ -84,7 +84,7 @@ namespace wServer.logic
                 new Reproduce(densityMax: 3),
                 new Spawn("Sprite Child", 5, 1)
                 ),
-            AttackPotion,
+            new ItemLoot("Potion of Attack", 0.3),
             new TierLoot(6, ItemType.Weapon, 0.08),
             new TierLoot(7, ItemType.Weapon, 0.04),
             new TierLoot(8, ItemType.Weapon, 0.02),
@@ -139,7 +139,7 @@ namespace wServer.logic
                 new Shoot(12, count: 5, shootAngle: 10, predictive: 1, coolDown: 1250),
                 new Reproduce(densityMax: 3)
                 ),
-            DefensePotion,
+            new ItemLoot("Potion of Defense", 0.3),
             new TierLoot(6, ItemType.Weapon, 0.08),
             new TierLoot(7, ItemType.Weapon, 0.04),
             new TierLoot(8, ItemType.Weapon, 0.02),
@@ -161,7 +161,7 @@ namespace wServer.logic
                 new Shoot(10, projectileIndex: 1, predictive: 1),
                 new Reproduce(densityMax: 3)
                 ),
-            DefensePotion,
+            new ItemLoot("Potion of Defense", 0.3),
             new TierLoot(6, ItemType.Weapon, 0.08),
             new TierLoot(7, ItemType.Weapon, 0.04),
             new TierLoot(8, ItemType.Weapon, 0.02),
@@ -183,7 +183,7 @@ namespace wServer.logic
                 new Reproduce(densityMax: 3),
                 new DropPortalOnDeath("Mad Lab Portal", .17)
                 ),
-            AttackPotion,
+            new ItemLoot("Potion of Attack", 0.3),
             new TierLoot(6, ItemType.Weapon, 0.08),
             new TierLoot(7, ItemType.Weapon, 0.04),
             new TierLoot(8, ItemType.Weapon, 0.02),
@@ -228,7 +228,7 @@ namespace wServer.logic
                 new Reproduce(densityMax: 3),
                 new DropPortalOnDeath("Undead Lair Portal", 0.25)
                 ),
-            SpeedPotion,
+            new ItemLoot("Potion of Speed", 0.3),
             new TierLoot(6, ItemType.Weapon, 0.08),
             new TierLoot(7, ItemType.Weapon, 0.04),
             new TierLoot(8, ItemType.Weapon, 0.02),
@@ -254,7 +254,7 @@ namespace wServer.logic
                     new TimedTransition(10000, "Waiting")
                     )
                 ),
-            AttackPotion,
+            new ItemLoot("Potion of Attack", 0.3),
             new Threshold(.01,
                 new TierLoot(5, ItemType.Weapon, 0.16),
                 new TierLoot(6, ItemType.Weapon, 0.08),
@@ -288,8 +288,8 @@ namespace wServer.logic
                     new Decay(0)
                     )
                 ),
-            AttackPotion,
             new Threshold(.01,
+                new ItemLoot("Potion of Attack", 0.3),
                 new TierLoot(6, ItemType.Weapon, 0.08),
                 new TierLoot(7, ItemType.Weapon, 0.04),
                 new TierLoot(8, ItemType.Weapon, 0.02),
@@ -327,6 +327,7 @@ namespace wServer.logic
                 ),
             AttackPotion,
             new Threshold(.01,
+                new ItemLoot("Potion of Attack", 0.3),
                 new TierLoot(6, ItemType.Weapon, 0.08),
                 new TierLoot(7, ItemType.Weapon, 0.04),
                 new TierLoot(8, ItemType.Weapon, 0.02),
@@ -410,6 +411,7 @@ namespace wServer.logic
                 ),
             SpeedPotion,
             new Threshold(0.2,
+                new ItemLoot("Potion of Speed", 0.3),
                 new TierLoot(6, ItemType.Weapon, 0.08),
                 new TierLoot(7, ItemType.Weapon, 0.04),
                 new TierLoot(8, ItemType.Weapon, 0.02),
@@ -485,6 +487,8 @@ namespace wServer.logic
                 ),
             SpeedPotion,
             new Threshold(0.01,
+                new ItemLoot("Potion of Mana", 1),
+                new ItemLoot("Potion of Defense", 1),
                 new TierLoot(6, ItemType.Weapon, 0.08),
                 new TierLoot(7, ItemType.Weapon, 0.04),
                 new TierLoot(8, ItemType.Weapon, 0.02),
@@ -515,6 +519,7 @@ namespace wServer.logic
                 ),
             DefensePotion,
             new Threshold(0.01,
+                new ItemLoot("Potion of Life", 1),
                 new TierLoot(6, ItemType.Weapon, 0.08),
                 new TierLoot(7, ItemType.Weapon, 0.04),
                 new TierLoot(8, ItemType.Weapon, 0.02),
@@ -561,7 +566,7 @@ namespace wServer.logic
                         new TimedTransition(1500, "Wander"))
                     )
                 ),
-            DefensePotion,
+            new ItemLoot("Potion of Defense", 1),
             new TierLoot(6, ItemType.Weapon, 0.08),
             new TierLoot(7, ItemType.Weapon, 0.04),
             new TierLoot(8, ItemType.Weapon, 0.02),

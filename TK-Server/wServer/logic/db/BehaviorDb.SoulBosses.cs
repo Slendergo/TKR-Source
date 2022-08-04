@@ -17,20 +17,31 @@ namespace wServer.logic
                     ),
                 new State("Start",
                     new Taunt("Welcome to Talisman's Kingdom Remastered!"),
+                    new TimedTransition(4000, "0 k")
+                    ),
+                new State("0 k",
                     new TimedRandomTransition(10000, false, "1", "2", "3", "Welcome")
                     ),
                 new State("1",
                     new Wander(0.1),
                     new Taunt("Uncover the mysteries of the Talisman's King!"),
+                    new TimedTransition(4000, "1 k")
+                    ),
+                new State("1 k",
                     new TimedRandomTransition(10000, false, "2", "3", "Welcome")
                     ),
                 new State("2",
                     new Taunt("That generator seems to be making a lot of noise!"),
+                    new TimedTransition(4000, "2 k")
+                    ),
+                new State("2 k",
                     new TimedRandomTransition(10000, false, "1", "3", "Welcome")
                     ),
                 new State("3",
-                    new Wander(0.1),
                     new Taunt("Want a new look? Check out the cloth bazaar!"),
+                    new TimedTransition(4000, "3 k")
+                    ),
+                new State("3 k",
                     new TimedRandomTransition(10000, false, "2", "3", "Welcome")
                     )
                 )
@@ -870,7 +881,7 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.03,
-                new ItemLoot("Limons Spell", 0.03),
+                new ItemLoot("Spatial Distortion", 0.03),
                 new ItemLoot("Celestial Dual Blades", 0.03),
                 new ItemLoot("Crafting Material 2", 0.1),
                 new ItemLoot("Soul of Dexterity", 0.1),

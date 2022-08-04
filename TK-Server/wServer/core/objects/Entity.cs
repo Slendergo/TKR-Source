@@ -563,6 +563,9 @@ namespace wServer.core.objects
             if (effect == ConditionEffectIndex.ArmorBroken && HasConditionEffect(ConditionEffects.ArmorBreakImmune))
                 return false;
 
+            if (effect == ConditionEffectIndex.Unstable && HasConditionEffect(ConditionEffects.UnstableImmune))
+                return false;
+
             if (effect == ConditionEffectIndex.Curse && HasConditionEffect(ConditionEffects.CurseImmune))
                 return false;
 

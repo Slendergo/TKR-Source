@@ -33,12 +33,9 @@ namespace wServer.logic
                     ),
                 new State("spooksters3",
                     new HealSelf(coolDown: 2250, 4, true),
-                    new Shoot(8.4, count: 40, projectileIndex: 1, coolDown: 2750),
+                    new Shoot(8.4, count: 40, projectileIndex: 1, coolDown: 1500),
                     new TimedTransition(4000, "spooksters")
                     )
-                ),
-            new Threshold(0.05,
-                new ItemLoot("Essence Eater", 0.0015)
                 ),
             new Threshold(0.03,
                 new ItemLoot("Wand of Vampires", 0.003),

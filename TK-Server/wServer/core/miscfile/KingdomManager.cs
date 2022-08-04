@@ -478,7 +478,7 @@ namespace wServer.core
                         {
                             if (time.TickCount % 2 == 0)
                                 HandleAnnouncements();
-                            if(time.TickCount % 4 == 0)
+                            if(time.TickCount % 2 == 0)
                                 EnsureQuest();
                             if (time.TickCount % 6 == 0)
                                 EnsurePopulation();

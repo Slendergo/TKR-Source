@@ -64,6 +64,7 @@ public class GameSprite extends Sprite
    public var textBox_:TextBox;
    public var tutorial_:Tutorial;
    public var isNexus_:Boolean = false;
+   public var isVault_:Boolean = false;
    public var idleWatcher_:IdleWatcher;
    public var hudView:HUDView;
    public var rankText_:RankText;
@@ -156,6 +157,10 @@ public class GameSprite extends Sprite
          isNexus_ = true;
       }
 
+      if (this.map.name_ == "Vault")
+      {
+         isVault_ = true;
+      }
       //Parameters.save();
       this.hidePreloader();
       stage.dispatchEvent(new Event(Event.RESIZE));

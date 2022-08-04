@@ -1222,23 +1222,23 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string args)
         {
-            //var gw = player.CoreServerManager.WorldManager.Worlds[1];
+            var worlds = player.CoreServerManager.WorldManager.GetRealms();
+            if(worlds.Count == 0)
+            {
+                player.SendInfo("Unable to find a realm.");
+                return true;
+            }
 
-            //player.SendInfo("Connecting to first realm");
+            var random = new Random();
+            var world = worlds[random.Next(worlds.Count)];
 
-            //if (gw.IsPlayersMax())
-            //{
-            //    player.SendError("Dungeon is full");
-            //    return true;
-            //}
+            if (world.IsPlayersMax())
+            {
+                player.SendError("Dungeon is full");
+                return true;
+            }
 
-            //player.Client.Reconnect(new Reconnect()
-            //{
-            //    Host = "",
-            //    Port = player.CoreServerManager.ServerConfig.serverInfo.port,
-            //    GameId = gw.Id,
-            //    Name = "Realm"
-            //});
+            player.Reconnect(world);
             return true;
         }
     }

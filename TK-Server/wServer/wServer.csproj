@@ -578,7 +578,8 @@
     <Compile Include="core\miscfile\WorldTimer.cs" />
     <Compile Include="core\miscfile\Vector2.cs" />
     <Compile Include="core\miscfile\wRandom.cs" />
-    <Compile Include="utils\TimedProfiler.cs" />
+    <Compile Include="utils\Restarter.cs" />
+    <Compile Include="utils\UnixExitSignal.cs" />
     <Compile Include="utils\SLogger.cs" />
     <Compile Include="logic\db\BehaviorDb.Colosseum.cs" />
   </ItemGroup>
@@ -608,6 +609,9 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces">
       <Version>1.1.0</Version>
+    </PackageReference>
+    <PackageReference Include="Mono.Posix-4.5">
+      <Version>4.5.0</Version>
     </PackageReference>
     <PackageReference Include="Nancy">
       <Version>2.0.0</Version>

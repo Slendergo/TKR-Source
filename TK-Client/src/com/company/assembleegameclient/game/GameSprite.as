@@ -92,7 +92,7 @@ public class GameSprite extends Sprite
       addChild(this.map);
       this.gsc_ = new GameServerConnection(this,server,gameId,createCharacter,charId,keyTime,key,mapJSON);
       this.mui_ = new MapUserInput(this);
-      this.textBox_ = new TextBox(this,300,600);
+      this.textBox_ = new TextBox(this,600,600);
       addChild(this.textBox_);
       this.idleWatcher_ = new IdleWatcher();
       this.dmgCounter = new SimpleText(14,16777215,false,0,0);

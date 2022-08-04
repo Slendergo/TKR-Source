@@ -40,7 +40,7 @@ namespace wServer.core.objects
                 var type = _random.Next(0, 3);
                 switch (type)
                 {
-                    case 0:
+                    case 2:
                         {
                             Legendary = true;
                             GlowEnemy = 0xFFFFFF;
@@ -52,7 +52,7 @@ namespace wServer.core.objects
                             GlowEnemy = 0x4B0082;
                         }
                         break;
-                    case 2:
+                    case 0:
                         {
                             Rare = true;
                             GlowEnemy = 0xEAC117;

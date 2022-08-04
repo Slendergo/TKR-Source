@@ -186,5 +186,7 @@ namespace wServer.core
             foreach (var thread in Threads.Values)
                 thread.Stop();
         }
+
+        public List<World> GetRealms() => Worlds.Values.Where(_ => _ is RealmWorld && !(_ as RealmWorld)._overseer.DisableSpawning).ToList(); // todo mabye not have a tolist
     }
 }

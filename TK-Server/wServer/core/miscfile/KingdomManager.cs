@@ -28,7 +28,7 @@ namespace wServer.core
         Expired
     }
 
-    internal class KingdomManager
+    public sealed class KingdomManager
     {
         public int _EventCount = 0;
         public RealmWorld World;

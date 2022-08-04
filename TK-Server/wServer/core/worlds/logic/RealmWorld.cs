@@ -33,7 +33,7 @@ namespace wServer.core.worlds.logic
 
         private readonly bool _oryxPresent;
 
-        private KingdomManager _overseer;
+        public KingdomManager _overseer { get; private set; }
         private Task _overseerTask;
 
         public RealmWorld(int id, WorldResource resource) : base(id, resource)

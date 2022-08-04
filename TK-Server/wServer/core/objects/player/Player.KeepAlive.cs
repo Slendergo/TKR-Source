@@ -120,7 +120,6 @@ namespace wServer.core.objects
                 return false;
             }
 
-
             // check for shootack timeout
             if (_shootAckTimeout.TryPeek(out long timeout))
             {

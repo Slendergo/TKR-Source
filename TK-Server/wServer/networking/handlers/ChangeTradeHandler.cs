@@ -1,4 +1,5 @@
 ﻿using NLog;
+using wServer.core;
 using wServer.networking.packets;
 using wServer.networking.packets.incoming;
 using wServer.networking.packets.outgoing;
@@ -11,7 +12,7 @@ namespace wServer.networking.handlers
 
         public override PacketId ID => PacketId.CHANGETRADE;
 
-        protected override void HandlePacket(Client client, ChangeTrade packet) => Handle(client, packet);
+        protected override void HandlePacket(Client client, ChangeTrade packet, ref TickTime time) => Handle(client, packet);
 
         private void Handle(Client client, ChangeTrade packet)
         {

@@ -4,6 +4,7 @@ using common.resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using wServer.core;
 using wServer.core.objects;
 using wServer.networking.packets;
 using wServer.networking.packets.incoming.market;
@@ -15,7 +16,7 @@ namespace wServer.networking.handlers.market
     {
         public override PacketId ID => PacketId.MARKET_ADD;
 
-        protected override void HandlePacket(Client client, MarketAdd packet)
+        protected override void HandlePacket(Client client, MarketAdd packet, ref TickTime time)
         {
             if (!IsAvailable(client) || !IsEnabledOrIsVipMarket(client))
                 return;

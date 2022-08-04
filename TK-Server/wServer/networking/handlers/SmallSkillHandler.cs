@@ -10,7 +10,7 @@ namespace wServer.networking.handlers
     {
         public override PacketId ID => PacketId.SMALLSKILLTREE;
 
-        protected override void HandlePacket(Client client, SmallSkillTree packet) => Handle(client, packet);
+        protected override void HandlePacket(Client client, SmallSkillTree packet, ref TickTime time) => Handle(client, packet);
 
         private void Handle(Client client, SmallSkillTree packet)
         {

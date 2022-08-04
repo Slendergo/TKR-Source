@@ -15,9 +15,8 @@ namespace wServer.networking.handlers
     {
         public override PacketId ID => PacketId.ACCEPTTRADE;
 
-        protected override void HandlePacket(Client client, AcceptTrade packet)
+        protected override void HandlePacket(Client client, AcceptTrade packet, ref TickTime time)
         {
-            //client.Manager.Logic.AddPendingAction(t => Handle(client, packet));
             Handle(client, packet);
         }
 

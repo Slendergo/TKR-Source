@@ -1,4 +1,5 @@
-﻿using wServer.networking.packets;
+﻿using wServer.core;
+using wServer.networking.packets;
 using wServer.networking.packets.incoming;
 
 namespace wServer.networking.handlers
@@ -7,7 +8,7 @@ namespace wServer.networking.handlers
     {
         public override PacketId ID => PacketId.REQUESTTRADE;
 
-        protected override void HandlePacket(Client client, RequestTrade packet) => Handle(client, packet);
+        protected override void HandlePacket(Client client, RequestTrade packet, ref TickTime time) => Handle(client, packet);
 
         private void Handle(Client client, RequestTrade packet)
         {

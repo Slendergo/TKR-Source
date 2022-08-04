@@ -9,7 +9,7 @@ namespace wServer.networking.handlers
     {
         public override PacketId ID => PacketId.USEITEM;
 
-        protected override void HandlePacket(Client client, UseItem packet) => client?.Player?.AddPendingAction(t => Handle(client.Player, t, packet));
+        protected override void HandlePacket(Client client, UseItem packet, ref TickTime time) => Handle(client.Player, time, packet);
 
         private void Handle(Player player, TickTime time, UseItem packet)
         {

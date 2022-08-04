@@ -1,5 +1,6 @@
 ﻿using CA.Extensions.Concurrent;
 using System.Linq;
+using wServer.core;
 using wServer.networking.packets;
 using wServer.networking.packets.incoming;
 
@@ -9,7 +10,7 @@ namespace wServer.networking.handlers
     {
         public override PacketId ID => PacketId.GUILDREMOVE;
 
-        protected override void HandlePacket(Client client, GuildRemove packet) => Handle(client, packet.Name);
+        protected override void HandlePacket(Client client, GuildRemove packet, ref TickTime time) => Handle(client, packet.Name);
 
         private void Handle(Client source, string name)
         {

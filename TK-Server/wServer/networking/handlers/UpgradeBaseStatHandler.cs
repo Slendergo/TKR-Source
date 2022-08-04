@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using wServer.core;
 using wServer.networking.packets;
 using wServer.networking.packets.incoming;
 
@@ -8,7 +9,7 @@ namespace wServer.networking.handlers
     {
         public override PacketId ID => PacketId.UPGRADESTAT;
 
-        protected override void HandlePacket(Client client, UpgradeBaseStat packet) => Handle(client);
+        protected override void HandlePacket(Client client, UpgradeBaseStat packet, ref TickTime time) => Handle(client);
 
         private void Handle(Client client)
         {

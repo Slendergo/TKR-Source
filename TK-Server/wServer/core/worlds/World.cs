@@ -595,9 +595,7 @@ namespace wServer.core.worlds
                 {
                     foreach (var player in Players.Values)
                     {
-                        player.HandleIO();
-                        player.DoUpdate(time);
-                        player.HandlePendingActions(time);
+                        player.HandleIO(ref time);
                         player.Tick(time);
                     }
 

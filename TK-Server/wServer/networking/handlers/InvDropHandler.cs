@@ -18,7 +18,7 @@ namespace wServer.networking.handlers
 
         public override PacketId ID => PacketId.INVDROP;
 
-        protected override void HandlePacket(Client client, InvDrop packet) => Handle(client.Player, packet.SlotObject);
+        protected override void HandlePacket(Client client, InvDrop packet, ref TickTime time) => Handle(client.Player, packet.SlotObject);
 
         private void Handle(Player player, ObjectSlot slot)
         {

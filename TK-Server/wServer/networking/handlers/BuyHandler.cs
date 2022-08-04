@@ -1,4 +1,5 @@
-﻿using wServer.core.objects;
+﻿using wServer.core;
+using wServer.core.objects;
 using wServer.core.objects.vendors;
 using wServer.networking.packets;
 using wServer.networking.packets.incoming;
@@ -9,9 +10,8 @@ namespace wServer.networking.handlers
     {
         public override PacketId ID => PacketId.BUY;
 
-        protected override void HandlePacket(Client client, Buy packet)
+        protected override void HandlePacket(Client client, Buy packet, ref TickTime time)
         {
-            //client.Manager.Logic.AddPendingAction(t => Handle(client.Player, packet.ObjectId));
             Handle(client.Player, packet.ObjectId);
         }
 

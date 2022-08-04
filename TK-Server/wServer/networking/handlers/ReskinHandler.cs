@@ -1,5 +1,6 @@
 ﻿using common.resources;
 using System.Linq;
+using wServer.core;
 using wServer.networking.packets;
 using wServer.networking.packets.incoming;
 
@@ -9,7 +10,7 @@ namespace wServer.networking.handlers
     {
         public override PacketId ID => PacketId.RESKIN;
 
-        protected override void HandlePacket(Client client, Reskin packet) => Handle(client, (ushort)packet.SkinId);
+        protected override void HandlePacket(Client client, Reskin packet, ref TickTime time) => Handle(client, (ushort)packet.SkinId);
 
         private void Handle(Client client, ushort skin)
         {

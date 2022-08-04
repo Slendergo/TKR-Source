@@ -10,14 +10,14 @@ namespace wServer.networking.handlers
     {
         public override PacketId ID => PacketId.PLAYERHIT;
 
-        protected override void HandlePacket(Client client, PlayerHit packet)
+        protected override void HandlePacket(Client client, PlayerHit packet, ref TickTime time)
         {
             var player = client.Player;
 
             if (player == null || player.World == null)
                 return;
 
-            player.AddPendingAction(t => Handle(client.Player, t, packet.ObjectId, packet.BulletId));
+            Handle(client.Player, time, packet.ObjectId, packet.BulletId);
         }
 
         private void Handle(Player player, TickTime time, int objectId, byte bulletId)

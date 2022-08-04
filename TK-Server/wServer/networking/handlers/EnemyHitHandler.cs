@@ -10,7 +10,7 @@ namespace wServer.networking.handlers
     {
         public override PacketId ID => PacketId.ENEMYHIT;
 
-        protected override void HandlePacket(Client client, EnemyHit packet) => client?.Player?.AddPendingAction(t => Handle(client.Player, t, packet));
+        protected override void HandlePacket(Client client, EnemyHit packet, ref TickTime time) => Handle(client.Player, time, packet);
 
         private void Handle(Player player, TickTime time, EnemyHit pkt)
         {

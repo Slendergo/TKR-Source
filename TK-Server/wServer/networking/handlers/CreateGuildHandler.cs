@@ -1,4 +1,5 @@
 ﻿using common.database;
+using wServer.core;
 using wServer.networking.packets;
 using wServer.networking.packets.incoming;
 using wServer.networking.packets.outgoing;
@@ -9,9 +10,8 @@ namespace wServer.networking.handlers
     {
         public override PacketId ID => PacketId.CREATEGUILD;
 
-        protected override void HandlePacket(Client client, CreateGuild packet)
+        protected override void HandlePacket(Client client, CreateGuild packet, ref TickTime time)
         {
-            //client.Manager.Logic.AddPendingAction(t => Handle(client, packet.Name));
             Handle(client, packet.Name);
         }
 

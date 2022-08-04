@@ -24,7 +24,7 @@ namespace wServer.networking.handlers
 
         public override PacketId ID => PacketId.INVSWAP;
 
-        protected override void HandlePacket(Client client, InvSwap packet)
+        protected override void HandlePacket(Client client, InvSwap packet, ref TickTime time)
             => Handle(client.Player, client.Player.World.GetEntity(packet.SlotObj1.ObjectId), client.Player.World.GetEntity(packet.SlotObj2.ObjectId), packet.SlotObj1.SlotId, packet.SlotObj2.SlotId);
 
         private void Handle(Player player, Entity from, Entity to, int slotFrom, int slotTo)

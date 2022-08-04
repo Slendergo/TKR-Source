@@ -1,4 +1,5 @@
 ﻿using common.database;
+using wServer.core;
 using wServer.core.objects;
 using wServer.core.worlds.logic;
 using wServer.networking.packets;
@@ -11,7 +12,7 @@ namespace wServer.networking.handlers
     {
         public override PacketId ID => PacketId.CREATE;
 
-        protected override void HandlePacket(Client client, Create packet) => Handle(client, packet);
+        protected override void HandlePacket(Client client, Create packet, ref TickTime time) => Handle(client, packet);
 
         private void CreatePlayer(Client client, DbChar character)
         {

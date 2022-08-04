@@ -71,7 +71,7 @@ namespace wServer.core.commands
                 player.Client.ProcessPacket(new JoinParty()
                 {
                     PartyId = args.ToInt32()
-                });
+                }, ref time);
                 return true;
             }
             catch (Exception e)
@@ -1073,7 +1073,7 @@ namespace wServer.core.commands
             player.Client.ProcessPacket(new JoinGuild()
             {
                 GuildName = args
-            });
+            }, ref time);
             return true;
         }
     }

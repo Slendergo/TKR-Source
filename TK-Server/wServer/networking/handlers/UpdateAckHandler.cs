@@ -1,4 +1,5 @@
-﻿using wServer.networking.packets;
+﻿using wServer.core;
+using wServer.networking.packets;
 using wServer.networking.packets.incoming;
 
 namespace wServer.networking.handlers
@@ -7,7 +8,7 @@ namespace wServer.networking.handlers
     {
         public override PacketId ID => PacketId.UPDATEACK;
 
-        protected override void HandlePacket(Client client, UpdateAck packet)
+        protected override void HandlePacket(Client client, UpdateAck packet, ref TickTime time)
         {
         }
     }

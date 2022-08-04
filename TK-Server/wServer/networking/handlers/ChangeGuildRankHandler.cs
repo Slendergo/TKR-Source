@@ -1,5 +1,6 @@
 ﻿using CA.Extensions.Concurrent;
 using System.Linq;
+using wServer.core;
 using wServer.networking.packets;
 using wServer.networking.packets.incoming;
 
@@ -9,9 +10,8 @@ namespace wServer.networking.handlers
     {
         public override PacketId ID => PacketId.CHANGEGUILDRANK;
 
-        protected override void HandlePacket(Client client, ChangeGuildRank packet)
+        protected override void HandlePacket(Client client, ChangeGuildRank packet, ref TickTime time)
         {
-            //client.Manager.Logic.AddPendingAction(t => Handle(client, packet.Name, packet.GuildRank));
             Handle(client, packet.Name, packet.GuildRank);
         }
 

@@ -1,4 +1,5 @@
-﻿using wServer.networking.packets;
+﻿using wServer.core;
+using wServer.networking.packets;
 using wServer.networking.packets.incoming;
 
 namespace wServer.networking.handlers
@@ -7,9 +8,8 @@ namespace wServer.networking.handlers
     {
         public override PacketId ID => PacketId.CANCELTRADE;
 
-        protected override void HandlePacket(Client client, CancelTrade packet)
+        protected override void HandlePacket(Client client, CancelTrade packet, ref TickTime time)
         {
-            //client.Manager.Logic.AddPendingAction(t => Handle(client, packet));
             Handle(client, packet);
         }
 

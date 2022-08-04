@@ -1,6 +1,7 @@
 ﻿using common.resources;
 using System;
 using System.Collections.Generic;
+using wServer.core;
 using wServer.networking.packets;
 using wServer.networking.packets.incoming;
 using wServer.networking.packets.outgoing;
@@ -15,7 +16,7 @@ namespace wServer.networking.handlers
         private readonly ushort[] _WindWeaponsList = { 0x5011, 0x500e };
         public override PacketId ID => PacketId.FORGEFUSION; //TODO : potion to great potion to souls
 
-        protected override void HandlePacket(Client client, ForgeFusion packet) => Handle(client, packet);
+        protected override void HandlePacket(Client client, ForgeFusion packet, ref TickTime time) => Handle(client, packet);
 
         private void AnnounceForger(ushort itemValue, Client client)
         {

@@ -7,6 +7,7 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
+using wServer.core;
 using wServer.core.worlds;
 using wServer.networking.packets;
 using wServer.networking.packets.outgoing;
@@ -197,7 +198,8 @@ namespace wServer.networking.connection
                                 {
                                     packet.ReadNew(rdr);
                                 }
-                                Client.ProcessPacket(packet);
+                                var time = new TickTime();
+                                Client.ProcessPacket(packet, ref time);
                             }
                             catch (Exception exx)
                             {

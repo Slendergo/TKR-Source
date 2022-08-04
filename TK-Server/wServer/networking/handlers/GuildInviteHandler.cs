@@ -1,4 +1,5 @@
-﻿using wServer.networking.packets;
+﻿using wServer.core;
+using wServer.networking.packets;
 using wServer.networking.packets.incoming;
 using wServer.networking.packets.outgoing;
 
@@ -8,7 +9,7 @@ namespace wServer.networking.handlers
     {
         public override PacketId ID => PacketId.GUILDINVITE;
 
-        protected override void HandlePacket(Client client, GuildInvite packet) => Handle(client, packet.Name);
+        protected override void HandlePacket(Client client, GuildInvite packet, ref TickTime time) => Handle(client, packet.Name);
 
         private void Handle(Client src, string playerName)
         {

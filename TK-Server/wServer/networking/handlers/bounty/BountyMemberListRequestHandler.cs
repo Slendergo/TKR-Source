@@ -1,4 +1,5 @@
 ﻿using System.Collections.Concurrent;
+using wServer.core;
 using wServer.networking.packets;
 using wServer.networking.packets.incoming;
 using wServer.networking.packets.outgoing;
@@ -9,7 +10,7 @@ namespace wServer.networking.handlers
     {
         public override PacketId ID => PacketId.BOUNTYMEMBERLISTREQUEST;
 
-        protected override void HandlePacket(Client client, BountyMemberListRequest packet)
+        protected override void HandlePacket(Client client, BountyMemberListRequest packet, ref TickTime time)
         {
             if (client == null || client.Player == null || client.Player.World == null)
                 return;

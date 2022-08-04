@@ -10,19 +10,11 @@ namespace wServer.networking.handlers
     {
         public override PacketId ID => PacketId.MOVE;
 
-        protected override void HandlePacket(Client client, Move packet)
+        protected override void HandlePacket(Client client, Move packet, ref TickTime time)
         {
             var player = client.Player;
 
             if (player == null || player.World == null)
-                return;
-
-            player.AddPendingAction(t => Handle(client.Player, t, packet));
-        }
-
-        private void Handle(Player player, TickTime time, Move packet)
-        {
-            if (player?.World == null)
                 return;
 
             player.MoveReceived(time, packet);

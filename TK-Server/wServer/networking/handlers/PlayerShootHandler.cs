@@ -1,6 +1,7 @@
 ﻿using common.resources;
 using NLog;
 using System;
+using wServer.core;
 using wServer.core.objects;
 using wServer.networking.packets;
 using wServer.networking.packets.incoming;
@@ -12,7 +13,7 @@ namespace wServer.networking.handlers
     {
         public override PacketId ID => PacketId.PLAYERSHOOT;
 
-        protected override void HandlePacket(Client client, PlayerShoot packet) 
+        protected override void HandlePacket(Client client, PlayerShoot packet, ref TickTime time) 
         {
             var player = client.Player;
 

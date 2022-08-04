@@ -164,7 +164,7 @@ namespace wServer.networking
                 _handler.SendPackets(pkts, priority);
         }
 
-        internal void ProcessPacket(Packet pkt)
+        internal void ProcessPacket(Packet pkt, ref TickTime time)
         {
             using (TimedLock.Lock(DcLock))
             {
@@ -176,7 +176,7 @@ namespace wServer.networking
                     if (!PacketHandlers.Handlers.TryGetValue(pkt.MessageID, out var handler))
                         return;
 
-                    handler.Handle(this, (IncomingMessage)pkt);
+                    handler.Handle(this, (IncomingMessage)pkt, ref time);
                 }
                 catch (Exception e)
                 {

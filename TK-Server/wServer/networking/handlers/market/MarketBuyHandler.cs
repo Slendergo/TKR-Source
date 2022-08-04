@@ -7,6 +7,7 @@ using wServer.networking.packets;
 using wServer.networking.packets.incoming.market;
 using wServer.networking.packets.outgoing.market;
 using wServer.core.objects;
+using wServer.core;
 
 namespace wServer.networking.handlers.market
 {
@@ -57,7 +58,7 @@ namespace wServer.networking.handlers.market
         
         
 
-        protected override void HandlePacket(Client client, MarketBuy packet)
+        protected override void HandlePacket(Client client, MarketBuy packet, ref TickTime time)
         {
             if (!IsAvailable(client) || !IsEnabledOrIsVipMarket(client))
                 return;

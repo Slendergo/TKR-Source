@@ -1,4 +1,5 @@
-﻿using wServer.core.objects;
+﻿using wServer.core;
+using wServer.core.objects;
 using wServer.networking.packets;
 using wServer.networking.packets.incoming;
 
@@ -11,7 +12,7 @@ namespace wServer.networking.handlers
 
         public override PacketId ID => PacketId.EDITACCOUNTLIST;
 
-        protected override void HandlePacket(Client client, EditAccountList packet) => Handle(client, packet.AccountListId, packet.ObjectId, packet.Add);
+        protected override void HandlePacket(Client client, EditAccountList packet, ref TickTime time) => Handle(client, packet.AccountListId, packet.ObjectId, packet.Add);
 
         private void Handle(Client client, int action, int objId, bool add)
         {

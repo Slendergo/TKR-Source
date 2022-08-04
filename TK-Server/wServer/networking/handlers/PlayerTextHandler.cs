@@ -23,11 +23,11 @@ namespace wServer.networking.handlers
     {
         public override PacketId ID => PacketId.PLAYERTEXT;
 
-        protected override void HandlePacket(Client client, PlayerText packet)
+        protected override void HandlePacket(Client client, PlayerText packet, ref TickTime time)
         {
             if (client?.Player?.World == null || packet.Text.Length > 512)
                 return;
-            client.Player.AddPendingAction(t => Handle(client.Player, t, packet.Text));
+            Handle(client.Player, time, packet.Text);
         }
 
         private void Handle(Player player, TickTime time, string text)

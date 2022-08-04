@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using wServer.core;
 using wServer.core.objects;
 using wServer.core.worlds.logic;
 using wServer.networking.packets;
@@ -14,7 +15,7 @@ namespace wServer.networking.handlers
 
         public override PacketId ID => PacketId.USEPORTAL;
 
-        protected override void HandlePacket(Client client, UsePortal packet) => Handle(client, packet);
+        protected override void HandlePacket(Client client, UsePortal packet, ref TickTime time) => Handle(client, packet);
 
         private void Handle(Client client, UsePortal packet)
         {

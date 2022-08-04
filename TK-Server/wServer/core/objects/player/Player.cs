@@ -27,7 +27,6 @@ namespace wServer.core.objects
         public const int VIP = 60;
 
         public Client Client;
-        public bool IsAlive = true;
         public StatsManager Stats;
 
         private SV<int> _accountId;
@@ -243,7 +242,6 @@ namespace wServer.core.objects
             _SPSWisdomCountMax = new SV<int>(this, StatDataType.SPS_WISDOM_COUNT_MAX, maxPotionAmount, true);
 
             IncomingPackets = new ConcurrentQueue<InboundBuffer>();
-            PendingActions = new ConcurrentQueue<Action<TickTime>>();
 
             Name = client.Account.Name;
             HP = client.Character.HP;
@@ -387,9 +385,6 @@ namespace wServer.core.objects
         public bool UpgradeEnabled { get => _upgradeEnabled.GetValue(); set => _upgradeEnabled.SetValue(value); }
         public bool XPBoosted { get => _xpBoosted.GetValue(); set => _xpBoosted.SetValue(value); }
         public int XPBoostTime { get; set; }
-        private ConcurrentQueue<Action<TickTime>> PendingActions { get; set; }
-
-        public void AddPendingAction(Action<TickTime> action) => PendingActions.Enqueue(action);
 
         public bool ApplyEffectCooldown(int slot)
         {
@@ -722,16 +717,6 @@ namespace wServer.core.objects
             }));
         }
 
-        public void DoUpdate(TickTime time)
-        {
-            IsAlive = KeepAlive(time);
-            if (!IsAlive)
-                return;
-
-            PlayerUpdate.SendUpdate();
-            PlayerUpdate.SendNewTick(time.ElaspedMsDelta);
-        }
-
         public void DropNextRandom() => Client.Random.NextInt();
 
         public int GetCurrency(CurrencyType currency)
@@ -856,20 +841,7 @@ namespace wServer.core.objects
             PlayerUpdate = new PlayerUpdate(this);
         }
 
-        public void HandlePendingActions(TickTime time)
-        {
-            while (PendingActions.TryDequeue(out var callback))
-                try
-                {
-                    callback?.Invoke(time);
-                }
-                catch (Exception e)
-                {
-                    SLogger.Instance.Error(e);
-                }
-        }
-
-        public void HandleIO()
+        public void HandleIO(ref TickTime time)
         {
             while (IncomingPackets.Count > 0)
             {
@@ -884,7 +856,7 @@ namespace wServer.core.objects
                     var packet = Packet.Packets[pending.Id].CreateInstance();
                     using (var rdr = new NReader(new MemoryStream(pending.Payload)))
                         packet.ReadNew(rdr);
-                    pending.Client.ProcessPacket(packet);
+                    pending.Client.ProcessPacket(packet, ref time);
                 }
                 catch (Exception e)
                 {
@@ -1070,49 +1042,51 @@ namespace wServer.core.objects
 
         public override void Tick(TickTime time)
         {
-            if (!IsAlive)
-                return;
-
-            if (World.IdName.Equals("Ocean Trench"))
+            if (KeepAlive(time))
             {
-                if (Breath > 0)
-                    Breath -= 2 * time.DeltaTime * 5;
-                else
-                    HP -= 5;
+                PlayerUpdate.SendUpdate();
+                PlayerUpdate.SendNewTick(time.ElaspedMsDelta);
 
-                if (HP < 0)
+                if (World.IdName.Equals("Ocean Trench"))
                 {
-                    Death("Suffocation");
-                    return;
+                    if (Breath > 0)
+                        Breath -= 2 * time.DeltaTime * 5;
+                    else
+                        HP -= 5;
+
+                    if (HP < 0)
+                    {
+                        Death("Suffocation");
+                        return;
+                    }
+                }
+
+                CheckTradeTimeout(time);
+                //HandleSpecialEnemies(time);
+                HandleQuest(time);
+
+                if (!HasConditionEffect(ConditionEffects.Paused))
+                {
+                    HandleRegen(time);
+                    HandleEffects(time);
+
+                    GroundEffect(time);
+                    TickActivateEffects(time);
+
+                    /* Skill Tree */
+                    checkSkillStats();
+                    checkMaxedStats();
+
+                    /* Item Effects */
+                    TimeEffects(time);
+                    SpecialEffects();
+
+                    FameCounter.Tick(time);
+
+                    CerberusClaws(time);
+                    CerberusCore(time);
                 }
             }
-
-            CheckTradeTimeout(time);
-            //HandleSpecialEnemies(time);
-            HandleQuest(time);
-
-            if (!HasConditionEffect(ConditionEffects.Paused))
-            {
-                HandleRegen(time);
-                HandleEffects(time);
-
-                GroundEffect(time);
-                TickActivateEffects(time);
-
-                /* Skill Tree */
-                checkSkillStats();
-                checkMaxedStats();
-
-                /* Item Effects */
-                TimeEffects(time);
-                SpecialEffects();
-
-                FameCounter.Tick(time);
-
-                CerberusClaws(time);
-                CerberusCore(time);
-            }
-
             base.Tick(time);
         }
 

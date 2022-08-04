@@ -8,8 +8,6 @@ namespace wServer.networking.handlers
     {
         public override PacketId ID => PacketId.PONG;
 
-        protected override void HandlePacket(Client client, Pong packet) => client.Player?.AddPendingAction(t => Handle(client, packet, t));
-
-        private void Handle(Client client, Pong packet, TickTime t) => client.Player?.Pong(t, packet);
+        protected override void HandlePacket(Client client, Pong packet, ref TickTime time) => client?.Player?.Pong(time, packet);
     }
 }

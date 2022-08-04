@@ -28,7 +28,7 @@ namespace wServer.networking.handlers
 
         private Player Player { get; set; }
 
-        protected override void HandlePacket(Client client, PotionStorageInteraction packet)
+        protected override void HandlePacket(Client client, PotionStorageInteraction packet, ref TickTime time)
         {
             Player = client.Player;
 

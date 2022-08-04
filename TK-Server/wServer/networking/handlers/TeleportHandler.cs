@@ -9,14 +9,14 @@ namespace wServer.networking.handlers
     {
         public override PacketId ID => PacketId.TELEPORT;
 
-        protected override void HandlePacket(Client client, Teleport packet)
+        protected override void HandlePacket(Client client, Teleport packet, ref TickTime time)
         {
             var player = client.Player;
 
             if (player == null || player.World == null)
                 return;
 
-            player.AddPendingAction(t => Handle(client.Player, t, packet.ObjectId));
+            Handle(client.Player, time, packet.ObjectId);
         }
 
         private void Handle(Player player, TickTime time, int objId)

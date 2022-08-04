@@ -19,7 +19,7 @@ namespace wServer.networking.handlers
 
         public override PacketId ID => PacketId.HELLO;
 
-        protected override void HandlePacket(Client client, Hello packet) => Handle(client, packet);
+        protected override void HandlePacket(Client client, Hello packet, ref TickTime time) => Handle(client, packet);
 
         private void Handle(Client client, Hello packet)
         {

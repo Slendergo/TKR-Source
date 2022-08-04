@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using wServer.core;
 using wServer.networking.packets;
 using wServer.networking.packets.incoming.market;
 using wServer.networking.packets.outgoing.market;
@@ -12,7 +13,7 @@ namespace wServer.networking.handlers.market
     {
         public override PacketId ID => PacketId.MARKET_SEARCH;
 
-        protected override void HandlePacket(Client client, MarketSearch packet)
+        protected override void HandlePacket(Client client, MarketSearch packet, ref TickTime time)
         {
             if (!IsAvailable(client) || !IsEnabledOrIsVipMarket(client))
                 return;

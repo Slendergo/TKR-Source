@@ -1,4 +1,5 @@
-﻿using wServer.core.objects;
+﻿using wServer.core;
+using wServer.core.objects;
 using wServer.core.worlds.logic;
 using wServer.networking.packets;
 using wServer.networking.packets.incoming;
@@ -10,7 +11,7 @@ namespace wServer.networking.handlers
     {
         public override PacketId ID => PacketId.LOAD;
 
-        protected override void HandlePacket(Client client, Load packet) 
+        protected override void HandlePacket(Client client, Load packet, ref TickTime time) 
         {
             if (client.State != ProtocolState.Handshaked)
                 return;

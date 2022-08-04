@@ -2,6 +2,7 @@
 using common.database;
 using System.Collections.Generic;
 using System.Linq;
+using wServer.core;
 using wServer.networking.packets;
 using wServer.networking.packets.incoming;
 using wServer.networking.packets.outgoing;
@@ -12,7 +13,7 @@ namespace wServer.networking.handlers.party
     {
         public override PacketId ID => PacketId.PARTY_INVITE;
 
-        protected override void HandlePacket(Client client, PartyInvite packet)
+        protected override void HandlePacket(Client client, PartyInvite packet, ref TickTime time)
         {
             if (client == null || IsTest(client) || client.Player == null || client.Player.World == null)
                 return;

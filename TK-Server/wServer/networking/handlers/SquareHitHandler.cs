@@ -1,4 +1,5 @@
-﻿using wServer.networking.packets;
+﻿using wServer.core;
+using wServer.networking.packets;
 using wServer.networking.packets.incoming;
 
 namespace wServer.networking.handlers
@@ -7,7 +8,7 @@ namespace wServer.networking.handlers
     {
         public override PacketId ID => PacketId.SQUAREHIT;
 
-        protected override void HandlePacket(Client client, SquareHit packet)
+        protected override void HandlePacket(Client client, SquareHit packet, ref TickTime time)
         { }
     }
 }

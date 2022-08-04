@@ -1,4 +1,5 @@
 ﻿using common.database;
+using wServer.core;
 using wServer.networking.packets;
 using wServer.networking.packets.incoming.market;
 using wServer.networking.packets.outgoing.market;
@@ -9,7 +10,7 @@ namespace wServer.networking.handlers.market
     {
         public override PacketId ID => PacketId.MARKET_MY_OFFERS;
 
-        protected override void HandlePacket(Client client, MarketMyOffers packet)
+        protected override void HandlePacket(Client client, MarketMyOffers packet, ref TickTime time)
         {
             if (!IsAvailable(client) || !IsEnabledOrIsVipMarket(client))
                 return;

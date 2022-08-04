@@ -3,6 +3,7 @@ using NLog;
 using System;
 using System.Linq;
 using System.Text.RegularExpressions;
+using wServer.core;
 using wServer.core.objects;
 using wServer.networking.packets;
 using wServer.networking.packets.incoming;
@@ -16,7 +17,7 @@ namespace wServer.networking.handlers
 
         public override PacketId ID => PacketId.CHOOSENAME;
 
-        protected override void HandlePacket(Client client, ChooseName packet) => Handle(client, packet);
+        protected override void HandlePacket(Client client, ChooseName packet, ref TickTime time) => Handle(client, packet);
 
         private bool IsValid(string text)
         {

@@ -1,5 +1,6 @@
 ﻿using common.database;
 using System;
+using wServer.core;
 using wServer.networking.packets;
 using wServer.networking.packets.incoming;
 
@@ -9,7 +10,7 @@ namespace wServer.networking.handlers
     {
         public override PacketId ID => PacketId.JOINGUILD;
 
-        protected override void HandlePacket(Client client, JoinGuild packet) => Handle(client, packet.GuildName);
+        protected override void HandlePacket(Client client, JoinGuild packet, ref TickTime time) => Handle(client, packet.GuildName);
 
         private void Handle(Client src, string guildName)
         {

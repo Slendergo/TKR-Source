@@ -1,4 +1,14 @@
 <Objects>
+	<Object type="0x9923" id="Garden of Horror Portal">
+		<Class>Portal</Class>
+		<IntergamePortal />
+		<DisplayId>Garden of Horror</DisplayId>
+		<DungeonName>Garden of Horror</DungeonName>
+		<Texture>
+			<File>lofiEnvironment2</File>
+			<Index>0x167</Index>
+		</Texture>
+	</Object>
   <Object type="0x9021" id="The Sacred Chamber of Wingus">
     <DisplayId>The Sacred Chamber of Wingus</DisplayId>
     <Class>Portal</Class>
@@ -1212,16 +1222,6 @@
 		<Texture>
 			<File>lofiEnvironment2</File>
 			<Index>0x36</Index>
-		</Texture>
-	</Object>
-	<Object type="0x9923" id="Garden of Horror Portal">
-		<Class>Portal</Class>
-		<IntergamePortal />
-		<DisplayId>Garden of Horror</DisplayId>
-		<DungeonName>Garden of Horror</DungeonName>
-		<Texture>
-			<File>CustomEnvironment1</File>
-			<Index>0x23</Index>
 		</Texture>
 	</Object>
 </Objects>

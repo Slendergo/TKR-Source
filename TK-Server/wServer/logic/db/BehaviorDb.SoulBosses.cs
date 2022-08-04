@@ -13,21 +13,22 @@ namespace wServer.logic
                 new State("Welcome",
                     new Wander(0.1),
                     new ConditionalEffect(ConditionEffectIndex.Invincible, true),
-                    new PlayerWithinTransition(3, "Start")
+                    new PlayerWithinTransition(10, "Start")
                     ),
                 new State("Start",
                     new Taunt("Welcome to Talisman's Kingdom Remastered!"),
                     new TimedTransition(4000, "0 k")
                     ),
                 new State("0 k",
+                    new Wander(0.1),
                     new TimedRandomTransition(10000, false, "1", "2", "3", "Welcome")
                     ),
-                new State("1",
-                    new Wander(0.1),
+                new State("1",                   
                     new Taunt("Uncover the mysteries of the Talisman's King!"),
                     new TimedTransition(4000, "1 k")
                     ),
                 new State("1 k",
+                    new Wander(0.1),
                     new TimedRandomTransition(10000, false, "2", "3", "Welcome")
                     ),
                 new State("2",
@@ -35,6 +36,7 @@ namespace wServer.logic
                     new TimedTransition(4000, "2 k")
                     ),
                 new State("2 k",
+                    new Wander(0.1),
                     new TimedRandomTransition(10000, false, "1", "3", "Welcome")
                     ),
                 new State("3",
@@ -42,6 +44,7 @@ namespace wServer.logic
                     new TimedTransition(4000, "3 k")
                     ),
                 new State("3 k",
+                    new Wander(0.1),
                     new TimedRandomTransition(10000, false, "2", "3", "Welcome")
                     )
                 )

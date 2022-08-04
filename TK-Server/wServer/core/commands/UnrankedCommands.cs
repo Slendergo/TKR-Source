@@ -11,7 +11,7 @@ using wServer.core.objects;
 using wServer.core.worlds;
 using wServer.core.worlds.logic;
 using wServer.logic.loot;
-using wServer.networking.packets.incoming;
+using wServer.core.net.handlers;
 using wServer.networking.packets.outgoing;
 using File = TagLib.File;
 
@@ -68,10 +68,10 @@ namespace wServer.core.commands
                     return false;
                 }
 
-                player.Client.ProcessPacket(new JoinParty()
-                {
-                    PartyId = args.ToInt32()
-                }, ref time);
+                //player.Client.ProcessPacket(new JoinPartyHandler()
+                //{
+                //    PartyId = args.ToInt32()
+                //}, ref time);
                 return true;
             }
             catch (Exception e)
@@ -1070,10 +1070,10 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string args)
         {
-            player.Client.ProcessPacket(new JoinGuild()
-            {
-                GuildName = args
-            }, ref time);
+            //player.Client.ProcessPacket(new JoinGuildHandler()
+            //{
+            //    GuildName = args
+            //}, ref time);
             return true;
         }
     }

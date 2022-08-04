@@ -6,16 +6,11 @@ namespace wServer.networking.packets.outgoing
     {
         public int ObjectId { get; set; }
 
-        public override PacketId MessageID => PacketId.QUESTOBJID;
+        public override PacketId MessageId => PacketId.QUESTOBJID;
 
         public override Packet CreateInstance()
         {
             return new QuestObjId();
-        }
-
-        protected override void Read(NReader rdr)
-        {
-            ObjectId = rdr.ReadInt32();
         }
 
         protected override void Write(NWriter wtr)

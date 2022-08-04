@@ -6,6 +6,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using wServer.core.net.handlers;
 using wServer.core.terrain;
 using wServer.core.worlds;
 using wServer.core.worlds.logic;
@@ -241,7 +242,7 @@ namespace wServer.core.objects
             _SPSWisdomCount = new SV<int>(this, StatDataType.SPS_WISDOM_COUNT, client.Account.SPSWisdomCount, true);
             _SPSWisdomCountMax = new SV<int>(this, StatDataType.SPS_WISDOM_COUNT_MAX, maxPotionAmount, true);
 
-            IncomingPackets = new ConcurrentQueue<InboundBuffer>();
+            IncomingMessages = new ConcurrentQueue<InboundBuffer>();
 
             Name = client.Account.Name;
             HP = client.Character.HP;
@@ -348,7 +349,7 @@ namespace wServer.core.objects
         public bool Muted { get; set; }
         public bool NameChosen { get => _nameChosen.GetValue(); set => _nameChosen.SetValue(value); }
         public int OxygenBar { get => _oxygenBar.GetValue(); set => _oxygenBar.SetValue(value); }
-        public ConcurrentQueue<InboundBuffer> IncomingPackets { get; private set; }
+        public ConcurrentQueue<InboundBuffer> IncomingMessages { get; private set; }
         public Pet Pet { get; set; }
         public int PetId { get; set; }
         public PlayerUpdate PlayerUpdate { get; private set; }
@@ -843,26 +844,34 @@ namespace wServer.core.objects
 
         public void HandleIO(ref TickTime time)
         {
-            while (IncomingPackets.Count > 0)
+            while (IncomingMessages.Count > 0)
             {
-                if (!IncomingPackets.TryDequeue(out var pending))
+                if (!IncomingMessages.TryDequeue(out var incomingMessage))
                     continue;
 
-                if (pending.Client.State == ProtocolState.Disconnected)
+                if (incomingMessage.Client.State == ProtocolState.Disconnected)
                     continue;
+
+                var handler = MessageHandlers.GetHandler(incomingMessage.MessageId);
+                if (handler == null)
+                {
+                    SLogger.Instance.Error($"Unknown MessageId: {incomingMessage.MessageId}");
+                    continue;
+                }
 
                 try
                 {
-                    var packet = Packet.Packets[pending.Id].CreateInstance();
-                    using (var rdr = new NReader(new MemoryStream(pending.Payload)))
-                        packet.ReadNew(rdr);
-                    pending.Client.ProcessPacket(packet, ref time);
+                    NReader rdr = null;
+                    if (incomingMessage.Payload.Length != 0)
+                        rdr = new NReader(new MemoryStream(incomingMessage.Payload));
+                    handler.Handle(incomingMessage.Client, rdr, ref time);
+                    rdr?.Dispose();
                 }
-                catch (Exception e)
+                catch(Exception ex)
                 {
-                    if (!(e is EndOfStreamException))
-                        SLogger.Instance.Error("Error processing packet ({0}, {1}, {2})\n{3}", (pending.Client.Account != null) ? pending.Client.Account.Name : "", pending.Client.IpAddress, pending.Client.Id, e);
-                    pending.Client.SendFailure("An error occurred while processing data from your client.", Failure.MessageWithDisconnect);
+                    if (!(ex is EndOfStreamException))
+                        SLogger.Instance.Error("Error processing packet ({0}, {1}, {2})\n{3}", (incomingMessage.Client.Account != null) ? incomingMessage.Client.Account.Name : "", incomingMessage.Client.IpAddress, incomingMessage.Client.Id, ex);
+                    incomingMessage.Client.SendFailure("An error occurred while processing data from your client.", Failure.MessageWithDisconnect);
                 }
             }
         }

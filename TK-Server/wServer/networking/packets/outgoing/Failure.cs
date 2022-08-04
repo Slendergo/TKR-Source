@@ -13,17 +13,11 @@ namespace wServer.networking.packets.outgoing
         public int ErrorId { get; set; }
         public string ErrorDescription { get; set; }
 
-        public override PacketId MessageID => PacketId.FAILURE;
+        public override PacketId MessageId => PacketId.FAILURE;
 
         public override Packet CreateInstance()
         {
             return new Failure();
-        }
-
-        protected override void Read(NReader rdr)
-        {
-            ErrorId = rdr.ReadInt32();
-            ErrorDescription = rdr.ReadUTF();
         }
 
         protected override void Write(NWriter wtr)

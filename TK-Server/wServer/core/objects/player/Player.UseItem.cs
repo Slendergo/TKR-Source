@@ -38,7 +38,6 @@ namespace wServer.core.objects
         };
 
         public bool PoisonWis = false;
-        private object _useLock = new object();
 
         public void AEItemDust(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
@@ -410,8 +409,6 @@ namespace wServer.core.objects
 
         public void UseItem(TickTime time, int objId, int slot, Position pos, int sellMaxed)
         {
-            using (TimedLock.Lock(_useLock))
-            {
                 //Log.Debug(objId + ":" + slot);
                 var entity = World.GetEntity(objId);
                 if (entity == null)
@@ -548,7 +545,6 @@ namespace wServer.core.objects
                     Activate(time, item, slot, pos, objId, sellMaxed);
                 else
                     Client.SendPacket(new InvResult() { Result = 1 });
-            }
         }
 
         private static void ActivateHealHp(Player player, int amount)

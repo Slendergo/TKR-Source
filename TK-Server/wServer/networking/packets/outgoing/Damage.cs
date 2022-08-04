@@ -13,24 +13,11 @@ namespace wServer.networking.packets.outgoing
         public byte BulletId { get; set; }
         public int ObjectId { get; set; }
 
-        public override PacketId MessageID => PacketId.DAMAGE;
+        public override PacketId MessageId => PacketId.DAMAGE;
 
         public override Packet CreateInstance()
         {
             return new Damage();
-        }
-
-        protected override void Read(NReader rdr)
-        {
-            TargetId = rdr.ReadInt32();
-            byte c = rdr.ReadByte();
-            Effects = 0;
-            for (int i = 0; i < c; i++)
-                Effects |= (ConditionEffects)(1 << rdr.ReadByte());
-            DamageAmount = rdr.ReadUInt16();
-            Kill = rdr.ReadBoolean();
-            BulletId = rdr.ReadByte();
-            ObjectId = rdr.ReadInt32();
         }
 
         protected override void Write(NWriter wtr)

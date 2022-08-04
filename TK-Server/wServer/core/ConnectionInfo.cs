@@ -3,7 +3,7 @@ using common.database;
 using System;
 using System.Linq;
 using wServer.networking;
-using wServer.networking.packets.incoming;
+using wServer.core.net.handlers;
 
 namespace wServer.core
 {
@@ -15,15 +15,15 @@ namespace wServer.core
         public byte[] Key;
         public string MapInfo;
 
-        public ConnectionInfo(Client client, Hello hello)
+        public ConnectionInfo(Client client, HelloData data)
         {
             Client = client;
             Account = client.Account;
-            GUID = hello.GUID;
-            GameId = hello.GameId;
-            Key = hello.Key;
+            GUID = data.GUID;
+            GameId = data.GameId;
+            Key = data.Key;
             Reconnecting = !Key.SequenceEqual(Empty<byte>.Array);
-            MapInfo = hello.MapJSON;
+            MapInfo = data.MapJSON;
             Time = DateTime.UtcNow.ToUnixTimestamp();
         }
 

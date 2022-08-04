@@ -13,22 +13,11 @@ namespace wServer.networking.packets.outgoing
         public ushort OrigType { get; set; }
         public ARGB Color { get; set; }
 
-        public override PacketId MessageID => PacketId.AOE;
+        public override PacketId MessageId => PacketId.AOE;
 
         public override Packet CreateInstance()
         {
             return new Aoe();
-        }
-
-        protected override void Read(NReader rdr)
-        {
-            Pos = Position.Read(rdr);
-            Radius = rdr.ReadSingle();
-            Damage = rdr.ReadUInt16();
-            Effect = (ConditionEffectIndex)rdr.ReadByte();
-            Duration = rdr.ReadSingle();
-            OrigType = rdr.ReadUInt16();
-            Color = ARGB.Read(rdr);
         }
 
         protected override void Write(NWriter wtr)

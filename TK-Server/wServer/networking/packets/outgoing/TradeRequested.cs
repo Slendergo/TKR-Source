@@ -6,16 +6,11 @@ namespace wServer.networking.packets.outgoing
     {
         public string Name { get; set; }
 
-        public override PacketId MessageID => PacketId.TRADEREQUESTED;
+        public override PacketId MessageId => PacketId.TRADEREQUESTED;
 
         public override Packet CreateInstance()
         {
             return new TradeRequested();
-        }
-
-        protected override void Read(NReader rdr)
-        {
-            Name = rdr.ReadUTF();
         }
 
         protected override void Write(NWriter wtr)

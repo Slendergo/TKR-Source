@@ -15,25 +15,11 @@ namespace wServer.networking.packets.outgoing
         public int NameColor { get; set; } = 0;
         public int TextColor { get; set; } = 0;
 
-        public override PacketId MessageID => PacketId.TEXT;
+        public override PacketId MessageId => PacketId.TEXT;
 
         public override Packet CreateInstance()
         {
             return new Text();
-        }
-
-        protected override void Read(NReader rdr)
-        {
-            Name = rdr.ReadUTF();
-            ObjectId = rdr.ReadInt32();
-            NumStars = rdr.ReadInt32();
-            Admin = rdr.ReadInt32();
-            BubbleTime = rdr.ReadByte();
-            Recipient = rdr.ReadUTF();
-            Txt = rdr.ReadUTF();
-            CleanText = rdr.ReadUTF();
-            NameColor = rdr.ReadInt32();
-            TextColor = rdr.ReadInt32();
         }
 
         protected override void Write(NWriter wtr)

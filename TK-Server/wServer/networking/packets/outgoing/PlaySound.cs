@@ -7,17 +7,11 @@ namespace wServer.networking.packets.outgoing
         public int OwnerId { get; set; }
         public int SoundId { get; set; }
 
-        public override PacketId MessageID => PacketId.PLAYSOUND;
+        public override PacketId MessageId => PacketId.PLAYSOUND;
 
         public override Packet CreateInstance()
         {
             return new PlaySound();
-        }
-
-        protected override void Read(NReader rdr)
-        {
-            OwnerId = rdr.ReadInt32();
-            SoundId = rdr.ReadByte();
         }
 
         protected override void Write(NWriter wtr)

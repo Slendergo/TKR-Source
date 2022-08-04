@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 using wServer.core;
+using wServer.core.net.handlers;
 using wServer.core.worlds;
 using wServer.networking.packets;
 using wServer.networking.packets.outgoing;
@@ -191,15 +192,22 @@ namespace wServer.networking.connection
                         var payload = r.GetPacketBody();
                         if (Client.Player == null) // read it instantly if there is no player otherwise we will append it to the world instance
                         {
-                            var packet = Packet.Packets[id].CreateInstance();
+                            var handler = MessageHandlers.GetHandler(id);
+                            if (handler == null)
+                            {
+                                SLogger.Instance.Error($"Unknown MessageId: {id}");
+                                continue;
+                            }
+
+                            // todoo redo
                             try
                             {
-                                using (var rdr = new NReader(new MemoryStream(payload)))
-                                {
-                                    packet.ReadNew(rdr);
-                                }
+                                NReader rdr = null;
+                                if (payload.Length != 0)
+                                    rdr = new NReader(new MemoryStream(payload));
                                 var time = new TickTime();
-                                Client.ProcessPacket(packet, ref time);
+                                handler.Handle(Client, rdr, ref time);
+                                rdr?.Dispose();
                             }
                             catch (Exception exx)
                             {
@@ -209,7 +217,7 @@ namespace wServer.networking.connection
                             }
                         }
                         else
-                            Client.Player.IncomingPackets.Enqueue(new InboundBuffer(Client, id, payload));
+                            Client.Player.IncomingMessages.Enqueue(new InboundBuffer(Client, id, payload));
                     }
                     r.Reset();
                 }

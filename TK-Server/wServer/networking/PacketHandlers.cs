@@ -14,7 +14,7 @@ namespace wServer.networking
                 if (typeof(IPacketHandler).IsAssignableFrom(i) && !i.IsAbstract && !i.IsInterface)
                 {
                     IPacketHandler pkt = (IPacketHandler)Activator.CreateInstance(i);
-                    Handlers.Add(pkt.ID, pkt);
+                    Handlers.Add(pkt.MessageId, pkt);
                 }
         }
     }

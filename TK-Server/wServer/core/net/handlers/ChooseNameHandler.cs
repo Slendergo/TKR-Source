@@ -1,0 +1,105 @@
+﻿using common;
+using common.database;
+using NLog;
+using System;
+using System.Linq;
+using System.Text.RegularExpressions;
+using wServer.core.objects;
+using wServer.core.worlds.logic;
+using wServer.networking;
+using wServer.networking.packets.outgoing;
+
+namespace wServer.core.net.handlers
+{
+    internal class ChooseNameHandler : IMessageHandler
+    {
+        private static readonly Logger NameChangeLog = LogManager.GetCurrentClassLogger();
+
+        public override PacketId MessageId => PacketId.CHOOSENAME;
+
+        public override void Handle(Client client, NReader rdr, ref TickTime time)
+        {
+            var name = rdr.ReadUTF();
+
+            if (client.Player == null || client?.Player?.World is TestWorld)
+                return;
+
+            client.CoreServerManager.Database.ReloadAccount(client.Account);
+
+            if (name.Length < 1 || name.Length > 10 || !name.All(char.IsLetter) || !IsValid(name) || Database.GuestNames.Contains(name, StringComparer.InvariantCultureIgnoreCase))
+                client.SendPacket(new NameResult()
+                {
+                    Success = false,
+                    ErrorText = "Invalid name"
+                });
+            else
+            {
+                string lockToken = null;
+
+                var key = Database.NAME_LOCK;
+
+                try
+                {
+                    while ((lockToken = client.CoreServerManager.Database.AcquireLock(key)) == null) ;
+
+                    if (client.CoreServerManager.Database.Conn.HashExists("names", name.ToUpperInvariant()))
+                    {
+                        client.SendPacket(new NameResult()
+                        {
+                            Success = false,
+                            ErrorText = "Duplicated name"
+                        });
+                        return;
+                    }
+
+                    if (client.Account.NameChosen && client.Account.Credits < 100)
+                        client.SendPacket(new NameResult()
+                        {
+                            Success = false,
+                            ErrorText = "Not enough gold"
+                        });
+                    else
+                    {
+                        // remove fame is purchasing name change
+                        if (client.Account.NameChosen)
+                            client.CoreServerManager.Database.UpdateCredit(client.Account, -100);
+
+                        // rename
+                        var oldName = client.Account.Name;
+                        while (!client.CoreServerManager.Database.RenameIGN(client.Account, name, lockToken)) ;
+                        NameChangeLog.Info($"{oldName} changed their name to {name}");
+
+                        // update player
+                        UpdatePlayer(client.Player);
+                        client.SendPacket(new NameResult()
+                        {
+                            Success = true,
+                            ErrorText = ""
+                        });
+                    }
+                }
+                finally
+                {
+                    if (lockToken != null)
+                        client.CoreServerManager.Database.ReleaseLock(key, lockToken);
+                }
+            }
+        }
+
+        private bool IsValid(string text)
+        {
+            var nonDup = new Regex(@"([a-zA-z]{2,})\1{1,}");
+            var alpha = new Regex(@"^[A-Za-z]{1,10}$");
+
+            return !(nonDup.Matches(text).Count > 0) && alpha.Matches(text).Count > 0;
+        }
+
+        private void UpdatePlayer(Player player)
+        {
+            player.Credits = player.Client.Account.Credits;
+            player.CurrentFame = player.Client.Account.Fame;
+            player.Name = player.Client.Account.Name;
+            player.NameChosen = true;
+        }
+    }
+}

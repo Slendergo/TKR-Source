@@ -11,21 +11,11 @@ namespace wServer.networking.packets.outgoing
         public float Angle { get; set; }
         public short Damage { get; set; }
 
-        public override PacketId MessageID => PacketId.SERVERPLAYERSHOOT;
+        public override PacketId MessageId => PacketId.SERVERPLAYERSHOOT;
 
         public override Packet CreateInstance()
         {
             return new ServerPlayerShoot();
-        }
-
-        protected override void Read(NReader rdr)
-        {
-            BulletId = rdr.ReadByte();
-            OwnerId = rdr.ReadInt32();
-            ContainerType = rdr.ReadInt16();
-            StartingPos = Position.Read(rdr);
-            Angle = rdr.ReadSingle();
-            Damage = rdr.ReadInt16();
         }
 
         protected override void Write(NWriter wtr)

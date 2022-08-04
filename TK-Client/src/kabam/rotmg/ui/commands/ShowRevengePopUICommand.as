@@ -20,13 +20,13 @@ public class  ShowRevengePopUICommand {
         view.x = 0;
         view.y = 0;
         this.contextView.addChild(view);
-        view.alpha = 0.8;
+        view.alpha = 0;
         new GTween(view,0.5,{"alpha":1});
         setTimeout(function():void
         {
             new GTween(view,0.5,{"alpha":0});
-        },2000);
-        setTimeout(this.remove,4000);
+        },3500);
+        setTimeout(this.remove,4500);
     }
 
     private function remove() : void

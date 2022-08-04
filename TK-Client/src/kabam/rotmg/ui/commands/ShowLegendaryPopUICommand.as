@@ -21,13 +21,13 @@ public class  ShowLegendaryPopUICommand {
         view.x = 0;
         view.y = 0;
         this.contextView.addChild(view);
-        view.alpha = 0.8;
+        view.alpha = 0;
         new GTween(view,0.5,{"alpha":1});
         setTimeout(function():void
         {
             new GTween(view,0.5,{"alpha":0});
-        },1500);
-        setTimeout(this.remove,3500);
+        },2500);
+        setTimeout(this.remove,4500);
     }
 
 

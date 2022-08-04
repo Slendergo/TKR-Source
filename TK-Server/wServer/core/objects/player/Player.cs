@@ -30,6 +30,117 @@ namespace wServer.core.objects
         public Client Client;
         public StatsManager Stats;
 
+
+        public int AccountId { get => _accountId.GetValue(); set => _accountId.SetValue(value); }
+        public int Admin { get => _admin.GetValue(); set => _admin.SetValue(value); }
+        public int BaseStat { get => _baseStat.GetValue(); set => _baseStat.SetValue(value); }
+
+        public double Breath
+        {
+            get => _breath;
+            set
+            {
+                OxygenBar = (int)value;
+                _breath = value;
+            }
+        }
+
+        public int ColorChat { get => _colorchat.GetValue(); set => _colorchat.SetValue(value); }
+        public int ColorNameChat { get => _colornamechat.GetValue(); set => _colornamechat.SetValue(value); }
+        public int Credits { get => _credits.GetValue(); set => _credits.SetValue(value); }
+        public int CurrentFame { get => _currentFame.GetValue(); set => _currentFame.SetValue(value); }
+        public RInventory DbLink { get; private set; }
+        public int Experience { get => _experience.GetValue(); set => _experience.SetValue(value); }
+        public int ExperienceGoal { get => _experienceGoal.GetValue(); set => _experienceGoal.SetValue(value); }
+        public int Fame { get => _fame.GetValue(); set => _fame.SetValue(value); }
+        public FameCounter FameCounter { get; private set; }
+        public int FameGoal { get => _fameGoal.GetValue(); set => _fameGoal.SetValue(value); }
+        public int Glow { get => _glow.GetValue(); set => _glow.SetValue(value); }
+        public string Guild { get => _guild.GetValue(); set => _guild?.SetValue(value); }
+        public int? GuildInvite { get; set; }
+        public int GuildRank { get => _guildRank.GetValue(); set => _guildRank.SetValue(value); }
+        public bool HasBackpack { get => _hasBackpack.GetValue(); set => _hasBackpack.SetValue(value); }
+        public ItemStacker HealthPots { get; private set; }
+        public Inventory Inventory { get; private set; }
+        public bool IsInvulnerable => HasConditionEffect(ConditionEffects.Paused) || HasConditionEffect(ConditionEffects.Stasis) || HasConditionEffect(ConditionEffects.Invincible) || HasConditionEffect(ConditionEffects.Invulnerable);
+        public int LDBoostTime { get; set; }
+        public int Level { get => _level.GetValue(); set => _level.SetValue(value); }
+        public ItemStacker MagicPots { get; private set; }
+        public bool MaxedAtt { get => _maxedAtt.GetValue(); set => _maxedAtt.SetValue(value); }
+        public bool MaxedDef { get => _maxedDef.GetValue(); set => _maxedDef.SetValue(value); }
+        public bool MaxedDex { get => _maxedDex.GetValue(); set => _maxedDex.SetValue(value); }
+        public bool MaxedLife { get => _maxedLife.GetValue(); set => _maxedLife.SetValue(value); }
+        public bool MaxedMana { get => _maxedMana.GetValue(); set => _maxedMana.SetValue(value); }
+        public bool MaxedSpd { get => _maxedSpd.GetValue(); set => _maxedSpd.SetValue(value); }
+        public bool MaxedVit { get => _maxedVit.GetValue(); set => _maxedVit.SetValue(value); }
+        public bool MaxedWis { get => _maxedWis.GetValue(); set => _maxedWis.SetValue(value); }
+        public bool SuperMaxedAtt { get => _superMaxedAtt.GetValue(); set => _superMaxedAtt.SetValue(value); }
+        public bool SuperMaxedDef { get => _superMaxedDef.GetValue(); set => _superMaxedDef.SetValue(value); }
+        public bool SuperMaxedDex { get => _superMaxedDex.GetValue(); set => _superMaxedDex.SetValue(value); }
+        public bool SuperMaxedLife { get => _superMaxedLife.GetValue(); set => _superMaxedLife.SetValue(value); }
+        public bool SuperMaxedMana { get => _superMaxedMana.GetValue(); set => _superMaxedMana.SetValue(value); }
+        public bool SuperMaxedSpd { get => _superMaxedSpd.GetValue(); set => _superMaxedSpd.SetValue(value); }
+        public bool SuperMaxedVit { get => _superMaxedVit.GetValue(); set => _superMaxedVit.SetValue(value); }
+        public bool SuperMaxedWis { get => _superMaxedWis.GetValue(); set => _superMaxedWis.SetValue(value); }
+        public int MP { get => _mp.GetValue(); set => _mp.SetValue(value); }
+        public bool Muted { get; set; }
+        public bool NameChosen { get => _nameChosen.GetValue(); set => _nameChosen.SetValue(value); }
+        public int OxygenBar { get => _oxygenBar.GetValue(); set => _oxygenBar.SetValue(value); }
+        public ConcurrentQueue<InboundBuffer> IncomingMessages { get; private set; }
+        public Pet Pet { get; set; }
+        public int PetId { get; set; }
+        public PlayerUpdate PlayerUpdate { get; private set; }
+        public int Points { get => _points.GetValue(); set => _points.SetValue(value); }
+        public Position Pos => new Position() { X = X, Y = Y };
+        public int Rank { get => _rank.GetValue(); set => _rank.SetValue(value); }
+        public int Skin { get => _skin.GetValue(); set => _skin.SetValue(value); }
+        public int[] SlotTypes { get; private set; }
+        public int Node1TickMin { get => _node1TickMin.GetValue(); set => _node1TickMin.SetValue(value); }
+        public int Node1TickMaj { get => _node1TickMaj.GetValue(); set => _node1TickMaj.SetValue(value); }
+        public int Node1Med { get => _node1Med.GetValue(); set => _node1Med.SetValue(value); }
+        public int Node1Big { get => _node1Big.GetValue(); set => _node1Big.SetValue(value); }
+        public int Node2TickMin { get => _node2TickMin.GetValue(); set => _node2TickMin.SetValue(value); }
+        public int Node2TickMaj { get => _node2TickMaj.GetValue(); set => _node2TickMaj.SetValue(value); }
+        public int Node2Med { get => _node2Med.GetValue(); set => _node2Med.SetValue(value); }
+        public int Node2Big { get => _node2Big.GetValue(); set => _node2Big.SetValue(value); }
+        public int Node3TickMin { get => _node3TickMin.GetValue(); set => _node3TickMin.SetValue(value); }
+        public int Node3TickMaj { get => _node3TickMaj.GetValue(); set => _node3TickMaj.SetValue(value); }
+        public int Node3Med { get => _node3Med.GetValue(); set => _node3Med.SetValue(value); }
+        public int Node3Big { get => _node3Big.GetValue(); set => _node3Big.SetValue(value); }
+        public int Node4TickMin { get => _node4TickMin.GetValue(); set => _node4TickMin.SetValue(value); }
+        public int Node4TickMaj { get => _node4TickMaj.GetValue(); set => _node4TickMaj.SetValue(value); }
+        public int Node4Med { get => _node4Med.GetValue(); set => _node4Med.SetValue(value); }
+        public int Node4Big { get => _node4Big.GetValue(); set => _node4Big.SetValue(value); }
+        public int Node5TickMin { get => _node5TickMin.GetValue(); set => _node5TickMin.SetValue(value); }
+        public int Node5TickMaj { get => _node5TickMaj.GetValue(); set => _node5TickMaj.SetValue(value); }
+        public int Node5Med { get => _node5Med.GetValue(); set => _node5Med.SetValue(value); }
+        public int Node5Big { get => _node5Big.GetValue(); set => _node5Big.SetValue(value); }
+
+        public ItemStacker[] Stacks { get; private set; }
+        public int Stars { get => _stars.GetValue(); set => _stars.SetValue(value); }
+        public int Texture1 { get => _texture1.GetValue(); set => _texture1.SetValue(value); }
+        public int Texture2 { get => _texture2.GetValue(); set => _texture2.SetValue(value); }
+        public bool UpgradeEnabled { get => _upgradeEnabled.GetValue(); set => _upgradeEnabled.SetValue(value); }
+        public bool XPBoosted { get => _xpBoosted.GetValue(); set => _xpBoosted.SetValue(value); }
+        public int XPBoostTime { get; set; }
+
+        public int SPSLifeCount { get => _SPSLifeCount.GetValue(); set => _SPSLifeCount.SetValue(value); }
+        public int SPSManaCount { get => _SPSManaCount.GetValue(); set => _SPSManaCount.SetValue(value); }
+        public int SPSDefenseCount { get => _SPSDefenseCount.GetValue(); set => _SPSDefenseCount.SetValue(value); }
+        public int SPSAttackCount { get => _SPSAttackCount.GetValue(); set => _SPSAttackCount.SetValue(value); }
+        public int SPSDexterityCount { get => _SPSDexterityCount.GetValue(); set => _SPSDexterityCount.SetValue(value); }
+        public int SPSSpeedCount { get => _SPSSpeedCount.GetValue(); set => _SPSSpeedCount.SetValue(value); }
+        public int SPSVitalityCount { get => _SPSVitalityCount.GetValue(); set => _SPSVitalityCount.SetValue(value); }
+        public int SPSWisdomCount { get => _SPSWisdomCount.GetValue(); set => _SPSWisdomCount.SetValue(value); }
+        public int SPSLifeCountMax { get => _SPSLifeCountMax.GetValue(); set => _SPSLifeCountMax.SetValue(value); }
+        public int SPSManaCountMax { get => _SPSManaCountMax.GetValue(); set => _SPSManaCountMax.SetValue(value); }
+        public int SPSDefenseCountMax { get => _SPSDefenseCountMax.GetValue(); set => _SPSDefenseCountMax.SetValue(value); }
+        public int SPSAttackCountMax { get => _SPSAttackCountMax.GetValue(); set => _SPSAttackCountMax.SetValue(value); }
+        public int SPSDexterityCountMax { get => _SPSDexterityCountMax.GetValue(); set => _SPSDexterityCountMax.SetValue(value); }
+        public int SPSSpeedCountMax { get => _SPSSpeedCountMax.GetValue(); set => _SPSSpeedCountMax.SetValue(value); }
+        public int SPSVitalityCountMax { get => _SPSVitalityCountMax.GetValue(); set => _SPSVitalityCountMax.SetValue(value); }
+        public int SPSWisdomCountMax { get => _SPSWisdomCountMax.GetValue(); set => _SPSWisdomCountMax.SetValue(value); }
+
         private SV<int> _accountId;
         private SV<int> _admin;
         private SV<int> _baseStat;
@@ -123,24 +234,6 @@ namespace wServer.core.objects
         private SV<int> _SPSSpeedCountMax;
         private SV<int> _SPSVitalityCountMax;
         private SV<int> _SPSWisdomCountMax;
-
-        public int SPSLifeCount { get => _SPSLifeCount.GetValue(); set => _SPSLifeCount.SetValue(value); }
-        public int SPSManaCount { get => _SPSManaCount.GetValue(); set => _SPSManaCount.SetValue(value); }
-        public int SPSDefenseCount { get => _SPSDefenseCount.GetValue(); set => _SPSDefenseCount.SetValue(value); }
-        public int SPSAttackCount { get => _SPSAttackCount.GetValue(); set => _SPSAttackCount.SetValue(value); }
-        public int SPSDexterityCount { get => _SPSDexterityCount.GetValue(); set => _SPSDexterityCount.SetValue(value); }
-        public int SPSSpeedCount { get => _SPSSpeedCount.GetValue(); set => _SPSSpeedCount.SetValue(value); }
-        public int SPSVitalityCount { get => _SPSVitalityCount.GetValue(); set => _SPSVitalityCount.SetValue(value); }
-        public int SPSWisdomCount { get => _SPSWisdomCount.GetValue(); set => _SPSWisdomCount.SetValue(value); }
-        public int SPSLifeCountMax { get => _SPSLifeCountMax.GetValue(); set => _SPSLifeCountMax.SetValue(value); }
-        public int SPSManaCountMax { get => _SPSManaCountMax.GetValue(); set => _SPSManaCountMax.SetValue(value); }
-        public int SPSDefenseCountMax { get => _SPSDefenseCountMax.GetValue(); set => _SPSDefenseCountMax.SetValue(value); }
-        public int SPSAttackCountMax { get => _SPSAttackCountMax.GetValue(); set => _SPSAttackCountMax.SetValue(value); }
-        public int SPSDexterityCountMax { get => _SPSDexterityCountMax.GetValue(); set => _SPSDexterityCountMax.SetValue(value); }
-        public int SPSSpeedCountMax { get => _SPSSpeedCountMax.GetValue(); set => _SPSSpeedCountMax.SetValue(value); }
-        public int SPSVitalityCountMax { get => _SPSVitalityCountMax.GetValue(); set => _SPSVitalityCountMax.SetValue(value); }
-        public int SPSWisdomCountMax { get => _SPSWisdomCountMax.GetValue(); set => _SPSWisdomCountMax.SetValue(value); }
-
 
         private const float MinMoveSpeed = 0.004f;
         private const float MaxMoveSpeed = 0.0096f;
@@ -293,99 +386,6 @@ namespace wServer.core.objects
                 Glow = t.Result && client.Account.GlowColor == 0 ? 0xFF0000 : client.Account.GlowColor;
             });
         }
-
-        public int AccountId { get => _accountId.GetValue(); set => _accountId.SetValue(value); }
-        public int Admin { get => _admin.GetValue(); set => _admin.SetValue(value); }
-        public int BaseStat { get => _baseStat.GetValue(); set => _baseStat.SetValue(value); }
-
-        public double Breath
-        {
-            get => _breath;
-            set
-            {
-                OxygenBar = (int)value;
-                _breath = value;
-            }
-        }
-
-        public int ColorChat { get => _colorchat.GetValue(); set => _colorchat.SetValue(value); }
-        public int ColorNameChat { get => _colornamechat.GetValue(); set => _colornamechat.SetValue(value); }
-        public int Credits { get => _credits.GetValue(); set => _credits.SetValue(value); }
-        public int CurrentFame { get => _currentFame.GetValue(); set => _currentFame.SetValue(value); }
-        public RInventory DbLink { get; private set; }
-        public int Experience { get => _experience.GetValue(); set => _experience.SetValue(value); }
-        public int ExperienceGoal { get => _experienceGoal.GetValue(); set => _experienceGoal.SetValue(value); }
-        public int Fame { get => _fame.GetValue(); set => _fame.SetValue(value); }
-        public FameCounter FameCounter { get; private set; }
-        public int FameGoal { get => _fameGoal.GetValue(); set => _fameGoal.SetValue(value); }
-        public int Glow { get => _glow.GetValue(); set => _glow.SetValue(value); }
-        public string Guild { get => _guild.GetValue(); set => _guild?.SetValue(value); }
-        public int? GuildInvite { get; set; }
-        public int GuildRank { get => _guildRank.GetValue(); set => _guildRank.SetValue(value); }
-        public bool HasBackpack { get => _hasBackpack.GetValue(); set => _hasBackpack.SetValue(value); }
-        public ItemStacker HealthPots { get; private set; }
-        public Inventory Inventory { get; private set; }
-        public bool IsInvulnerable => HasConditionEffect(ConditionEffects.Paused) || HasConditionEffect(ConditionEffects.Stasis) || HasConditionEffect(ConditionEffects.Invincible) || HasConditionEffect(ConditionEffects.Invulnerable);
-        public int LDBoostTime { get; set; }
-        public int Level { get => _level.GetValue(); set => _level.SetValue(value); }
-        public ItemStacker MagicPots { get; private set; }
-        public bool MaxedAtt { get => _maxedAtt.GetValue(); set => _maxedAtt.SetValue(value); }
-        public bool MaxedDef { get => _maxedDef.GetValue(); set => _maxedDef.SetValue(value); }
-        public bool MaxedDex { get => _maxedDex.GetValue(); set => _maxedDex.SetValue(value); }
-        public bool MaxedLife { get => _maxedLife.GetValue(); set => _maxedLife.SetValue(value); }
-        public bool MaxedMana { get => _maxedMana.GetValue(); set => _maxedMana.SetValue(value); }
-        public bool MaxedSpd { get => _maxedSpd.GetValue(); set => _maxedSpd.SetValue(value); }
-        public bool MaxedVit { get => _maxedVit.GetValue(); set => _maxedVit.SetValue(value); }
-        public bool MaxedWis { get => _maxedWis.GetValue(); set => _maxedWis.SetValue(value); }
-        public bool SuperMaxedAtt { get => _superMaxedAtt.GetValue(); set => _superMaxedAtt.SetValue(value); }
-        public bool SuperMaxedDef { get => _superMaxedDef.GetValue(); set => _superMaxedDef.SetValue(value); }
-        public bool SuperMaxedDex { get => _superMaxedDex.GetValue(); set => _superMaxedDex.SetValue(value); }
-        public bool SuperMaxedLife { get => _superMaxedLife.GetValue(); set => _superMaxedLife.SetValue(value); }
-        public bool SuperMaxedMana { get => _superMaxedMana.GetValue(); set => _superMaxedMana.SetValue(value); }
-        public bool SuperMaxedSpd { get => _superMaxedSpd.GetValue(); set => _superMaxedSpd.SetValue(value); }
-        public bool SuperMaxedVit { get => _superMaxedVit.GetValue(); set => _superMaxedVit.SetValue(value); }
-        public bool SuperMaxedWis { get => _superMaxedWis.GetValue(); set => _superMaxedWis.SetValue(value); }
-        public int MP { get => _mp.GetValue(); set => _mp.SetValue(value); }
-        public bool Muted { get; set; }
-        public bool NameChosen { get => _nameChosen.GetValue(); set => _nameChosen.SetValue(value); }
-        public int OxygenBar { get => _oxygenBar.GetValue(); set => _oxygenBar.SetValue(value); }
-        public ConcurrentQueue<InboundBuffer> IncomingMessages { get; private set; }
-        public Pet Pet { get; set; }
-        public int PetId { get; set; }
-        public PlayerUpdate PlayerUpdate { get; private set; }
-        public int Points { get => _points.GetValue(); set => _points.SetValue(value); }
-        public Position Pos => new Position() { X = X, Y = Y };
-        public int Rank { get => _rank.GetValue(); set => _rank.SetValue(value); }
-        public int Skin { get => _skin.GetValue(); set => _skin.SetValue(value); }
-        public int[] SlotTypes { get; private set; }
-        public int Node1TickMin { get => _node1TickMin.GetValue(); set => _node1TickMin.SetValue(value); }
-        public int Node1TickMaj { get => _node1TickMaj.GetValue(); set => _node1TickMaj.SetValue(value); }
-        public int Node1Med { get => _node1Med.GetValue(); set => _node1Med.SetValue(value); }
-        public int Node1Big { get => _node1Big.GetValue(); set => _node1Big.SetValue(value); }
-        public int Node2TickMin { get => _node2TickMin.GetValue(); set => _node2TickMin.SetValue(value); }
-        public int Node2TickMaj { get => _node2TickMaj.GetValue(); set => _node2TickMaj.SetValue(value); }
-        public int Node2Med { get => _node2Med.GetValue(); set => _node2Med.SetValue(value); }
-        public int Node2Big { get => _node2Big.GetValue(); set => _node2Big.SetValue(value); }
-        public int Node3TickMin { get => _node3TickMin.GetValue(); set => _node3TickMin.SetValue(value); }
-        public int Node3TickMaj { get => _node3TickMaj.GetValue(); set => _node3TickMaj.SetValue(value); }
-        public int Node3Med { get => _node3Med.GetValue(); set => _node3Med.SetValue(value); }
-        public int Node3Big { get => _node3Big.GetValue(); set => _node3Big.SetValue(value); }
-        public int Node4TickMin { get => _node4TickMin.GetValue(); set => _node4TickMin.SetValue(value); }
-        public int Node4TickMaj { get => _node4TickMaj.GetValue(); set => _node4TickMaj.SetValue(value); }
-        public int Node4Med { get => _node4Med.GetValue(); set => _node4Med.SetValue(value); }
-        public int Node4Big { get => _node4Big.GetValue(); set => _node4Big.SetValue(value); }
-        public int Node5TickMin { get => _node5TickMin.GetValue(); set => _node5TickMin.SetValue(value); }
-        public int Node5TickMaj { get => _node5TickMaj.GetValue(); set => _node5TickMaj.SetValue(value); }
-        public int Node5Med { get => _node5Med.GetValue(); set => _node5Med.SetValue(value); }
-        public int Node5Big { get => _node5Big.GetValue(); set => _node5Big.SetValue(value); }
-
-        public ItemStacker[] Stacks { get; private set; }
-        public int Stars { get => _stars.GetValue(); set => _stars.SetValue(value); }
-        public int Texture1 { get => _texture1.GetValue(); set => _texture1.SetValue(value); }
-        public int Texture2 { get => _texture2.GetValue(); set => _texture2.SetValue(value); }
-        public bool UpgradeEnabled { get => _upgradeEnabled.GetValue(); set => _upgradeEnabled.SetValue(value); }
-        public bool XPBoosted { get => _xpBoosted.GetValue(); set => _xpBoosted.SetValue(value); }
-        public int XPBoostTime { get; set; }
 
         public bool ApplyEffectCooldown(int slot)
         {

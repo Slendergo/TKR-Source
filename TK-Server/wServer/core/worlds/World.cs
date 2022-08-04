@@ -55,32 +55,27 @@ namespace wServer.core.worlds
         public bool Closed { get; set; }
         public int Difficulty { get; protected set; }
         public bool Deleted { get; protected set; }
-        public ConcurrentDictionary<int, Container> Containers { get; private set; }
-        public ConcurrentDictionary<int, Enemy> Enemies { get; private set; }
-
-        public CollisionMap<Entity> EnemiesCollision { get; private set; }
-
-        public CoreServerManager Manager { get; set; }
 
         public Wmap Map { get; private set; }
-        
-        
-        public ConcurrentDictionary<int, Pet> Pets { get; private set; }
-        public ConcurrentDictionary<int, Player> Players { get; private set; }
+        public CoreServerManager Manager { get; set; }
+        public CollisionMap<Entity> EnemiesCollision { get; private set; }
         public CollisionMap<Entity> PlayersCollision { get; private set; }
-        public ConcurrentDictionary<Tuple<int, byte>, Projectile> Projectiles { get; private set; }
-        public ConcurrentDictionary<int, Enemy> Quests { get; private set; }
-        public bool ShowDisplays { get; protected set; }
-        public ConcurrentDictionary<int, Enemy> SpecialEnemies { get; private set; }
 
-        public ConcurrentDictionary<int, StaticObject> StaticObjects { get; private set; }
-        public List<WorldTimer> Timers { get; private set; }
+        public bool ShowDisplays { get; protected set; }
+
+        public ConcurrentDictionary<int, Player> Players { get; private set; } = new ConcurrentDictionary<int, Player>();
+        public ConcurrentDictionary<int, Enemy> Enemies { get; private set; } = new ConcurrentDictionary<int, Enemy>();
+        public ConcurrentDictionary<int, Enemy> Quests { get; private set; } = new ConcurrentDictionary<int, Enemy>();
+        public ConcurrentDictionary<int, StaticObject> StaticObjects { get; private set; } = new ConcurrentDictionary<int, StaticObject>();
+        public ConcurrentDictionary<int, Container> Containers { get; private set; } = new ConcurrentDictionary<int, Container>();
+        public ConcurrentDictionary<int, Pet> Pets { get; private set; } = new ConcurrentDictionary<int, Pet>();
+        public ConcurrentDictionary<Tuple<int, byte>, Projectile> Projectiles { get; private set; }
+        public List<WorldTimer> Timers { get; private set; } = new List<WorldTimer>();
 
         public readonly WorldBranch WorldBranch;
 
         public World(int id, WorldResource resource, World parent = null)
         {
-            Setup();
             Id = id;
             IdName = resource.DisplayName;
             DisplayName = resource.DisplayName;
@@ -92,6 +87,10 @@ namespace wServer.core.worlds
             AllowTeleport = true;// !resource.restrictTp;
             ShowDisplays = Id == -2;// resource.showDisplays;
             Blocking = resource.VisibilityType;
+            AllowTeleport = true;
+            ShowDisplays = true;
+            Persist = false; // if false, attempts to delete world with 0 players
+            Blocking = 0; // toggles sight block (0 disables sight block)
 
             IsRealm = false;
 
@@ -181,9 +180,6 @@ namespace wServer.core.worlds
 
                 Enemies.TryAdd(entity.Id, entity as Enemy);
                 EnemiesCollision.Insert(entity);
-
-                if (entity.ObjectDesc.SpecialEnemy)
-                    SpecialEnemies.TryAdd(entity.Id, entity as Enemy);
 
                 if (entity.ObjectDesc.Quest)
                     Quests.TryAdd(entity.Id, entity as Enemy);
@@ -331,9 +327,6 @@ namespace wServer.core.worlds
             {
                 Enemies.TryRemove(entity.Id, out Enemy dummy);
                 EnemiesCollision.Remove(entity);
-
-                if (entity.ObjectDesc.SpecialEnemy)
-                    SpecialEnemies.TryRemove(entity.Id, out dummy);
                 if (entity.ObjectDesc.Quest)
                     Quests.TryRemove(entity.Id, out dummy);
             }
@@ -490,28 +483,10 @@ namespace wServer.core.worlds
             Enemies.Clear();
             Players.Clear();
             Quests.Clear();
-            SpecialEnemies.Clear();
             Timers.Clear();
 
             foreach (var i in Map.InstantiateEntities(Manager))
                 _ = EnterWorld(i);
-        }
-
-        private void Setup()
-        {
-            Players = new ConcurrentDictionary<int, Player>();
-            Enemies = new ConcurrentDictionary<int, Enemy>();
-            Quests = new ConcurrentDictionary<int, Enemy>();
-            SpecialEnemies = new ConcurrentDictionary<int, Enemy>();
-            Pets = new ConcurrentDictionary<int, Pet>();
-            Projectiles = new ConcurrentDictionary<Tuple<int, byte>, Projectile>();
-            StaticObjects = new ConcurrentDictionary<int, StaticObject>();
-            Containers = new ConcurrentDictionary<int, Container>();
-            Timers = new List<WorldTimer>();
-            AllowTeleport = true;
-            ShowDisplays = true;
-            Persist = false; // if false, attempts to delete world with 0 players
-            Blocking = 0; // toggles sight block (0 disables sight block)
         }
 
         public bool Update(ref TickTime time)

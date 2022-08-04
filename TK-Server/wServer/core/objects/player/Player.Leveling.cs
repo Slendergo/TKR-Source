@@ -8,10 +8,7 @@ namespace wServer.core.objects
 {
     public partial class Player
     {
-        //public Entity AvatarQuest { get; private set; }
-        //public Entity CrystalQuest { get; private set; }
         public Entity Quest { get; private set; }
-        //public Entity SpookyQuest { get; private set; }
 
         public static int GetExpGoal(int level) => 50 + (level - 1) * 100;
 
@@ -29,7 +26,6 @@ namespace wServer.core.objects
         {
             if (level == 1)
                 return 0;
-
             return 50 * (level - 1) + (level - 2) * (level - 1) * 50;
         }
 
@@ -80,8 +76,6 @@ namespace wServer.core.objects
             }
         }
 
-        public bool CheckLevel() => CheckLevelUp();
-
         public bool EnemyKilled(Enemy enemy, int exp, bool killer)
         {
             if (enemy == Quest)
@@ -125,27 +119,6 @@ namespace wServer.core.objects
             if (force || Quest == null || Quest.World == null || time.TickCount % 50 == 0)
                 CheckForEncounter();
         }
-
-        //public void HandleSpecialEnemies(TickTime time, bool force = false)
-        //{
-        //    if (this == null || World == null || World.SpecialEnemies == null || time.TickCount % 500 != 0)
-        //        return;
-
-        //    if (force || SpookyQuest == null || AvatarQuest == null || CrystalQuest == null)
-        //    {
-        //        var newSpooky = FindSpecialEnemy("Spectral Sentry");
-        //        if (newSpooky != null && newSpooky != SpookyQuest)
-        //            SpookyQuest = newSpooky;
-
-        //        var newAvatar = FindSpecialEnemy("shtrs Defense System");
-        //        if (newAvatar != null && newAvatar != AvatarQuest)
-        //            AvatarQuest = newAvatar;
-
-        //        var newCrystal = FindSpecialEnemy("Crystal Prisoner");
-        //        if (newCrystal != null && newCrystal != CrystalQuest)
-        //            CrystalQuest = newCrystal;
-        //    }
-        //}
 
         private bool CheckLevelUp()
         {

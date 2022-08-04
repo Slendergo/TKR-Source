@@ -9,14 +9,14 @@ namespace wServer.core.objects
         public Player PlayerOwner { get; set; }
 
         public void Damage(int dmg, Entity src)
-        { }
+        {
+        }
 
         public override bool HitByProjectile(Projectile projectile, TickTime time) => false;
 
         public override void Init(World owner)
         {
             base.Init(owner);
-
             Size = 200;
         }
 

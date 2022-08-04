@@ -1,5 +1,5 @@
 <Objects>
-  <Object type="0xb15a" id="The Phantom’s Enigma">
+  <Object type="0xb15a" id="The Phantom's Enigma">
     <Class>Equipment</Class>
     <Item />
     <Legendary />
@@ -9,7 +9,7 @@
       <Index>0xb3</Index>
     </Texture>
     <SlotType>13</SlotType>
-    <Description>“Now you see me, now you don’t.”</Description>
+    <Description>“Now you see me, now you don't.”</Description>
     <Sound>spell/fire_nova</Sound>
     <Usable />
     <MpCost>115</MpCost>

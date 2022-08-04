@@ -52,7 +52,7 @@
     <BagType>7</BagType>
     <feedPower>250</feedPower>
   </Object>
-  <Object type="0xb159" id="Quartermaster’s Vest">
+  <Object type="0xb159" id="Quartermaster's Vest">
     <Class>Equipment</Class>
     <Item />
     <OutOfOneMind />
@@ -62,7 +62,7 @@
       <Index>0xf5</Index>
     </Texture>
     <SlotType>6</SlotType>
-    <Description>The doublet of Davy Jones’ first mate before he became a spirit forced to haunt Davy Jones’ locker.</Description>
+    <Description>The doublet of Davy Jones' first mate before he became a spirit forced to haunt Davy Jones' locker.</Description>
     <ActivateOnEquip stat="0" amount="80">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="14">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="4">IncrementStat</ActivateOnEquip>
@@ -196,7 +196,7 @@
       <Index>0xe5</Index>
     </Texture>
     <SlotType>6</SlotType>
-    <Description>Expertly crafted armor distributed to the Forgotten King’s most loyal assassins. All have been killed, leaving you as the next rightful owner.</Description>
+    <Description>Expertly crafted armor distributed to the Forgotten King's most loyal assassins. All have been killed, leaving you as the next rightful owner.</Description>
     <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="13">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="15">IncrementStat</ActivateOnEquip>

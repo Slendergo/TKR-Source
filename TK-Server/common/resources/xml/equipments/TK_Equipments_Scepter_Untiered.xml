@@ -27,7 +27,7 @@
       <Index>0x36</Index>
     </Texture>
     <SlotType>23</SlotType>
-    <Description>A scepter that can be evoked to unleash overwhelmingly powerful blasts upon others. Even the most crazed scientists wouldn’t use this scepter without taking note of its side effects.</Description>
+    <Description>A scepter that can be evoked to unleash overwhelmingly powerful blasts upon others. Even the most crazed scientists wouldn't use this scepter without taking note of its side effects.</Description>
     <DisplayId>Grotesque Scepter</DisplayId>
     <ActivateOnEquip stat="22" amount="4">IncrementStat</ActivateOnEquip>
     <Activate totalDamage="935" decrDamage="135" wisDamageBase="60" maxTargets="3" wisPerTarget="13" color="0xC3F740">Lightning</Activate>

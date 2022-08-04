@@ -51,7 +51,7 @@
     </Texture>
     <Legendary />
     <SlotType>21</SlotType>
-    <Description>Miniature solar flares erupt from the thin glass encasement. You probably shouldn’t gaze into this orb for very long.</Description>
+    <Description>Miniature solar flares erupt from the thin glass encasement. You probably shouldn't gaze into this orb for very long.</Description>
     <ActivateOnEquip stat="20" amount="3">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="-3">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>

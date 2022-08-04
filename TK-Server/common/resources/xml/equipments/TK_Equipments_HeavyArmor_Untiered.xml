@@ -95,7 +95,7 @@
     <FameBonus>4</FameBonus>
     <feedPower>435</feedPower>
   </Object>
-  <Object type="0xb157" id="Victor’s Chainmail">
+  <Object type="0xb157" id="Victor's Chainmail">
     <Class>Equipment</Class>
     <Item />
     <Texture>
@@ -103,14 +103,14 @@
       <Index>0xea</Index>
     </Texture>
     <SlotType>7</SlotType>
-    <Description>An armor piece that’s gained notoriety by being worn through many fearsome battles.</Description>
+    <Description>An armor piece that's gained notoriety by being worn through many fearsome battles.</Description>
     <ActivateOnEquip stat="0" amount="80">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="3" amount="-40">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="22">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="4">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>5</FameBonus>
-    <DisplayId>Victor’s Chainmail</DisplayId>
+    <DisplayId>Victor's Chainmail</DisplayId>
   </Object>
   <Object type="0x48d8" id="Sticky Slime Armor">
     <Class>Equipment</Class>
@@ -146,7 +146,7 @@
     <BagType>7</BagType>
     <FameBonus>5</FameBonus>
   </Object>
-  <Object type="0x5064" id="Archdemon’s Remains">
+  <Object type="0x5064" id="Archdemon's Remains">
     <Class>Equipment</Class>
     <Item />
     <Texture>
@@ -154,12 +154,12 @@
       <Index>0x76</Index>
     </Texture>
     <SlotType>7</SlotType>
-    <Description>Being submerged in Hell’s lava for centuries, Malphas’ skin is sturdy enough to be made into a wearable chest piece. </Description>
+    <Description>Being submerged in Hell's lava for centuries, Malphas' skin is sturdy enough to be made into a wearable chest piece. </Description>
     <ActivateOnEquip stat="21" amount="12">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="10">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="0" amount="75">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>5</FameBonus>
-    <DisplayId>Archdemon’s Remains</DisplayId>
+    <DisplayId>Archdemon's Remains</DisplayId>
   </Object>
 </Objects>

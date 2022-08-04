@@ -73,7 +73,7 @@
     <Activate effect="Speedy" duration="4">ConditionEffectSelf</Activate>
     <Activate duration="7">Decoy</Activate>
     <Activate maxDistance="25">Teleport</Activate>
-    <DisplayId>Queen’s Scale</DisplayId>
+    <DisplayId>Queen's Scale</DisplayId>
   </Object>
     <Object type="0x50f7" id="Prismatic Stone">
     <Class>Equipment</Class>

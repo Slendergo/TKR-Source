@@ -150,7 +150,7 @@ namespace wServer.logic
                     new ItemLoot("Spear of Thiram", 0.0014)
                 ),
               new Threshold(0.03,
-                    new ItemLoot("Gladiator’s Visage", 0.0014)
+                    new ItemLoot("Gladiator's Visage", 0.0014)
                 ),
                     new Threshold(0.001,
                         new ItemLoot("Crafting Material 1", 0.05),

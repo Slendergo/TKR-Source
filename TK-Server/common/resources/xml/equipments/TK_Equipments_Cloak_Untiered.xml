@@ -40,7 +40,7 @@
     <Cooldown>6.5</Cooldown>
     <feedPower>500</feedPower>
   </Object>
-  <Object type="0x48e1" id="Hunter’s Cloak">
+  <Object type="0x48e1" id="Hunter's Cloak">
     <Class>Equipment</Class>
     <Item />
     <SNormal />
@@ -61,7 +61,7 @@
     <Activate effect="Speedy" duration="4">ConditionEffectSelf</Activate>
     <Cooldown>5</Cooldown>
     <feedPower>750</feedPower>
-    <DisplayId>Hunter’s Cloak</DisplayId>
+    <DisplayId>Hunter's Cloak</DisplayId>
   </Object>
   <Object type="0x5057" id="Wrapping Cloak">
     <Class>Equipment</Class>

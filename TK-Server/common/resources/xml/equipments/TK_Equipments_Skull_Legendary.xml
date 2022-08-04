@@ -34,7 +34,7 @@
     </Texture>
     <SlotType>19</SlotType>
     <Legendary />
-    <Description>We finally get to see the face under the robe. Or, what’s left of it at least …</Description>
+    <Description>We finally get to see the face under the robe. Or, what's left of it at least …</Description>
     <ActivateOnEquip stat="20" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="-10">IncrementStat</ActivateOnEquip>

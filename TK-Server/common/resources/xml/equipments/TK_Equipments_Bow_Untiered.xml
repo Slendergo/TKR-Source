@@ -291,7 +291,7 @@
     <Soulbound />
     <DisplayId>Clover Bow</DisplayId>
   </Object>
-  <Object type="0x5001" id="Forest’s Call">
+  <Object type="0x5001" id="Forest's Call">
     <Class>Equipment</Class>
     <Item />
     <Texture>
@@ -319,7 +319,7 @@
     <ArcGap>11</ArcGap>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
-    <DisplayId>Forest’s Call</DisplayId>
+    <DisplayId>Forest's Call</DisplayId>
   </Object>
 	<Object type="0x9914" id="Blossom Bow">
 		<Class>Equipment</Class>

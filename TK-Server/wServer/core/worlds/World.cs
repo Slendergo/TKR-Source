@@ -38,8 +38,6 @@ namespace wServer.core.worlds
         private static int _entityInc;
 
         private long _elapsedTime;
-        private CoreServerManager _manager;
-        private int _totalConnects;
 
         public int Id { get; }
         public string IdName { get; set; }
@@ -77,7 +75,6 @@ namespace wServer.core.worlds
 
         public ConcurrentDictionary<int, StaticObject> StaticObjects { get; private set; }
         public List<WorldTimer> Timers { get; private set; }
-        public int TotalConnects { get { return _totalConnects; } }
 
         public readonly WorldBranch WorldBranch;
 
@@ -113,7 +110,10 @@ namespace wServer.core.worlds
         public virtual bool AllowedAccess(Client client) => !Closed || client.Account.Admin;
 
         public void Broadcast(OutgoingMessage outgoingMessage, PacketPriority priority = PacketPriority.Normal)
-            => ForeachPlayer(_ => _.Client.SendPacket(outgoingMessage, priority));
+        {
+            foreach (var player in Players.Values)
+                player.Client.SendPacket(outgoingMessage, priority);
+        }
 
         public void BroadcastIfVisible(OutgoingMessage outgoingMessage, ref Position worldPosData, PacketPriority priority = PacketPriority.Normal)
         {
@@ -130,31 +130,36 @@ namespace wServer.core.worlds
         }
 
         public void BroadcastIfVisibleExclude(OutgoingMessage outgoingMessage, Entity broadcaster, Entity exclude, PacketPriority priority = PacketPriority.Normal)
-            => ForeachPlayer(_ =>
-            {
-                if (_.Id != exclude.Id && _.Dist(broadcaster) <= 15d)
-                    _.Client.SendPacket(outgoingMessage, priority);
-            });
+        {
+            foreach (var player in Players.Values)
+                if (player.Id != exclude.Id && player.Dist(broadcaster) <= 15d)
+                {
+                    player.Client.SendPacket(outgoingMessage, priority);
+                    break;
+                }
+        }
 
         public void BroadcastToPlayer(OutgoingMessage outgoingMessage, int playerId, PacketPriority priority = PacketPriority.Normal)
-            => ForeachPlayer(_ =>
-            {
-                if (_.Id == playerId)
-                    _.Client.SendPacket(outgoingMessage, priority);
-            });
+        {
+            foreach (var player in Players.Values)
+                if (player.Id == playerId)
+                {
+                    player.Client.SendPacket(outgoingMessage, priority);
+                    break;
+                }
+        }
 
         public void BroadcastToPlayers(OutgoingMessage outgoingMessage, List<int> playerIds, PacketPriority priority = PacketPriority.Normal)
-            => ForeachPlayer(_ =>
-            {
-                if (playerIds.Contains(_.Id))
-                    _.Client.SendPacket(outgoingMessage, priority);
-            });
+        {
+            foreach (var player in Players.Values)
+                if(playerIds.Contains(player.Id))
+                    player.Client.SendPacket(outgoingMessage, priority);
+        }
 
         public void ChatReceived(Player player, string text)
         {
             foreach (var en in Enemies)
                 en.Value.OnChatTextReceived(player, text);
-
             foreach (var en in StaticObjects)
                 en.Value.OnChatTextReceived(player, text);
         }
@@ -168,8 +173,6 @@ namespace wServer.core.worlds
 
                 Players.TryAdd(entity.Id, entity as Player);
                 PlayersCollision.Insert(entity);
-
-                Interlocked.Increment(ref _totalConnects);
             }
             else if (entity is Enemy)
             {
@@ -244,19 +247,6 @@ namespace wServer.core.worlds
                 return ret4;
 
             return null;
-        }
-
-        public virtual World CreateInstance(Client client)
-        {
-            return null;
-
-            //DynamicWorld.TryGetWorld(_manager.Resources.Worlds[Name], client, out World world);
-
-            //if (world == null)
-            //    world = new World(_manager.Resources.Worlds[Name]);
-
-
-            //return Manager.WorldManager.CreateNewWorld(world);
         }
 
         public int GetNextEntityId() => Interlocked.Increment(ref _entityInc);
@@ -367,7 +357,6 @@ namespace wServer.core.worlds
             else if (entity is Pet)
             {
                 Pets.TryRemove(entity.Id, out Pet dummy);
-
                 PlayersCollision.Remove(entity);
             }
 
@@ -378,44 +367,6 @@ namespace wServer.core.worlds
         {
             foreach(var player in Players.Values)
                 action?.Invoke(player);
-        }
-
-        public void QuakeToWorld(World newWorld)
-        {
-            if (!Persist || this is RealmWorld)
-                Closed = true;
-
-            Broadcast(new ShowEffect()
-            {
-                EffectType = EffectType.Earthquake
-            }, PacketPriority.Low);
-            Timers.Add(new WorldTimer(8000, (w, t) =>
-            {
-                var rcpNotPaused = new Reconnect()
-                {
-                    Host = "",
-                    Port = Manager.ServerConfig.serverInfo.port,
-                    GameId = newWorld.Id,
-                    Name = newWorld.DisplayName
-                };
-
-                var rcpPaused = new Reconnect()
-                {
-                    Host = "",
-                    Port = Manager.ServerConfig.serverInfo.port,
-                    GameId = Nexus,
-                    Name = "Nexus"
-                };
-
-                w.ForeachPlayer(_ => _.Client.Reconnect(_.HasConditionEffect(ConditionEffects.Paused) ? rcpPaused : rcpNotPaused));
-            }));
-
-            if (!Persist)
-                Timers.Add(new WorldTimer(20000, (w2, t2) =>
-                {
-                    // to ensure people get kicked out of world
-                    w2.ForeachPlayer(_ => _.Client.Disconnect("QuakeToWorld"));
-                }));
         }
 
         public void WorldAnnouncement(string msg)
@@ -543,7 +494,7 @@ namespace wServer.core.worlds
             Timers.Clear();
 
             foreach (var i in Map.InstantiateEntities(Manager))
-                EnterWorld(i);
+                _ = EnterWorld(i);
         }
 
         private void Setup()

@@ -5,42 +5,40 @@ namespace wServer.core
 {
     public class WorldTimer
     {
-        private readonly Action<World, TickTime> _cb;
-        private readonly Func<World, TickTime, bool> _rcb;
-        private readonly int _total;
-        private int _remain;
+        private readonly Action<World, TickTime> Callback;
+        private readonly Func<World, TickTime, bool> funcCallback;
+        private readonly int Total;
+        private int Remaining;
 
         public WorldTimer(int tickMs, Action<World, TickTime> callback)
         {
-            _remain = _total = tickMs;
-            _cb = callback;
+            Remaining = Total = tickMs;
+            Callback = callback;
         }
 
         public WorldTimer(int tickMs, Func<World, TickTime, bool> callback)
         {
-            _remain = _total = tickMs;
-            _rcb = callback;
-        }
-
-        public void Reset()
-        {
-            _remain = _total;
+            Remaining = Total = tickMs;
+            funcCallback = callback;
         }
 
         public bool Tick(World world, TickTime time)
         {
-            _remain -= time.ElaspedMsDelta;
-
-            if (_remain >= 0)
+            Remaining -= time.ElaspedMsDelta;
+            if (Remaining >= 0)
                 return false;
 
-            if (_cb != null)
+            if (Callback != null)
             {
-                _cb(world, time);
+                Callback.Invoke(world, time);
                 return true;
             }
+            return funcCallback.Invoke(world, time);
+        }
 
-            return _rcb(world, time);
+        public void Reset()
+        {
+            Remaining = Total;
         }
     }
 }

@@ -18,170 +18,168 @@ namespace wServer.core.net.handlers
 
         public override PacketId MessageId => PacketId.POTION_STORAGE_INTERACTION;
 
-        private Player Player;
-
         public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
         {
             var type = rdr.ReadByte();
             var action = rdr.ReadByte();
 
-            Player = client.Player;
+            var player = client.Player;
 
             var typeName = type == 0 ? POTION_OF_LIFE : type == 1 ? POTION_OF_MANA : type == 2 ? POTION_OF_ATTACK : type == 3 ? POTION_OF_DEFENSE : type == 4 ? POTION_OF_SPEED : type == 5 ? POTION_OF_DEXTERITY : type == 6 ? POTION_OF_VITALITY : type == 7 ? POTION_OF_WISDOM : "Unknown";
             if (typeName == "Unknown")
             {
-                Player.SendInfo("Unknown Error");
+                player.SendInfo("Unknown Error");
                 return;
             }
 
             switch (action)
             {
                 case 0:
-                    ModifyAdd(type, typeName);
+                    ModifyAdd(player, type, typeName);
                     break;
                 case 1:
-                    ModifyRemove(type, typeName);
+                    ModifyRemove(player, type, typeName);
                     break;
                 case 2:
-                    ModifyRemove(type, typeName, false, true);
+                    ModifyRemove(player, type, typeName, false, true);
                     break;
                 case 3:
-                    ModifyRemove(type, typeName, true);
+                    ModifyRemove(player, type, typeName, true);
                     break;
                 case 4:
-                    ModifyRemove(type, typeName, false, false, true);
+                    ModifyRemove(player, type, typeName, false, false, true);
                     break;
             }
         }
 
-        private void ModifyAdd(byte type, string typeName)
+        private void ModifyAdd(Player player, byte type, string typeName)
         {
-            if (!CanModifyStat(type, false))
+            if (!CanModifyStat(player, type, false))
             {
-                Player.SendInfo($"You can store no more {typeName}");
+                player.SendInfo($"You can store no more {typeName}");
                 return;
             }
 
             var isGreater = false;
-            var potIndex = ScanInventory(typeName);
+            var potIndex = ScanInventory(player, typeName);
             if (potIndex == -1)
             {
-                potIndex = ScanInventory($"Greater {typeName}");
+                potIndex = ScanInventory(player, $"Greater {typeName}");
                 isGreater = true;
             }
 
             if (potIndex == -1)
             {
-                Player.SendInfo($"You dont have any {typeName} in your inventory");
+                player.SendInfo($"You dont have any {typeName} in your inventory");
                 return;
             }
 
-            var transaction = Player.Inventory.CreateTransaction();
+            var transaction = player.Inventory.CreateTransaction();
             transaction[potIndex] = null;
             transaction.Execute(); // might not need this as a transaction
 
-            ModifyStat(type, true);
+            ModifyStat(player, type, true);
             if (isGreater)
-                ModifyStat(type, true);
+                ModifyStat(player, type, true);
 
-            Player.SendInfo($"You deposited a {(isGreater ? $"Greater {typeName}" : typeName)}!");
+            player.SendInfo($"You deposited a {(isGreater ? $"Greater {typeName}" : typeName)}!");
         }
 
-        private void ModifyRemove(byte type, string typeName, bool isSell = false, bool isConsume = false, bool isMax = false)
+        private void ModifyRemove(Player player, byte type, string typeName, bool isSell = false, bool isConsume = false, bool isMax = false)
         {
-            if (CanModifyStat(type, true))
+            if (CanModifyStat(player, type, true))
             {
-                Player.SendInfo($"You have no more {typeName}");
+                player.SendInfo($"You have no more {typeName}");
                 return;
             }
 
             if (isConsume)
             {
-                var statInfo = Player.CoreServerManager.Resources.GameData.Classes[Player.ObjectType].Stats;
-                if (Player.Stats.Base[type] >= statInfo[type].MaxValue)
+                var statInfo = player.CoreServerManager.Resources.GameData.Classes[player.ObjectType].Stats;
+                if (player.Stats.Base[type] >= statInfo[type].MaxValue)
                 {
-                    Player.SendInfo($"You are already maxed");
+                    player.SendInfo($"You are already maxed");
                     return;
                 }
 
-                Player.Stats.Base[type] += type < 2 ? 5 : 1;
-                if (Player.Stats.Base[type] >= statInfo[type].MaxValue)
-                    Player.Stats.Base[type] = statInfo[type].MaxValue;
+                player.Stats.Base[type] += type < 2 ? 5 : 1;
+                if (player.Stats.Base[type] >= statInfo[type].MaxValue)
+                    player.Stats.Base[type] = statInfo[type].MaxValue;
 
-                ModifyStat(type, false);
-                Player.SendInfo($"You consumed a {typeName}!");
+                ModifyStat(player,type, false);
+                player.SendInfo($"You consumed a {typeName}!");
                 return;
             }
             else if (isSell)
             {
                 var fameToAdd = type < 2 ? 5 : 2;
-                Player.CurrentFame = Player.Client.Account.Fame += fameToAdd;
-                Player.Client.Account.TotalFame += fameToAdd;
-                Player.CoreServerManager.Database.ReloadAccount(Player.Client.Account);
-                Player.SendInfo($"You sold a {typeName} for {fameToAdd} fame!");
+                player.CurrentFame = player.Client.Account.Fame += fameToAdd;
+                player.Client.Account.TotalFame += fameToAdd;
+                player.CoreServerManager.Database.ReloadAccount(player.Client.Account);
+                player.SendInfo($"You sold a {typeName} for {fameToAdd} fame!");
             }
             else if (isMax)
             {
-                var statInfo = Player.CoreServerManager.Resources.GameData.Classes[Player.ObjectType].Stats;
-                if (Player.Stats.Base[type] >= statInfo[type].MaxValue)
+                var statInfo = player.CoreServerManager.Resources.GameData.Classes[player.ObjectType].Stats;
+                if (player.Stats.Base[type] >= statInfo[type].MaxValue)
                 {
-                    Player.SendInfo($"You are already maxed");
+                    player.SendInfo($"You are already maxed");
                     return;
                 }
 
-                var toMax = type < 2 ? (statInfo[type].MaxValue - Player.Stats.Base[type]) / 5 : (statInfo[type].MaxValue - Player.Stats.Base[type]);
+                var toMax = type < 2 ? (statInfo[type].MaxValue - player.Stats.Base[type]) / 5 : (statInfo[type].MaxValue - player.Stats.Base[type]);
                 var newToMax = 0;
 
-                if (CheckMax(type, toMax))
+                if (CheckMax(player, type, toMax))
                 {
-                    newToMax = toMax - ToMaxCalc(type, toMax);
+                    newToMax = toMax - ToMaxCalc(player, type, toMax);
                     toMax = newToMax;
-                    Player.SendInfo($"Not enough {typeName} to max, using [{newToMax}]");
+                    player.SendInfo($"Not enough {typeName} to max, using [{newToMax}]");
                 }
 
 
-                Player.Stats.Base[type] += type < 2 ? 5 * toMax : 1 * toMax;
+                player.Stats.Base[type] += type < 2 ? 5 * toMax : 1 * toMax;
 
-                if (Player.Stats.Base[type] >= statInfo[type].MaxValue)
-                    Player.Stats.Base[type] = statInfo[type].MaxValue;
+                if (player.Stats.Base[type] >= statInfo[type].MaxValue)
+                    player.Stats.Base[type] = statInfo[type].MaxValue;
 
-                ModifyStat(type, false, toMax);
+                ModifyStat(player, type, false, toMax);
                 if (newToMax > 0)
                     return;
                 else
-                    Player.SendInfo($"You Maxed {typeName.Remove(0, 9)}!");
+                    player.SendInfo($"You Maxed {typeName.Remove(0, 9)}!");
                 return;
             }
             else
             {
-                var potion = Player.CoreServerManager.Resources.GameData.Items[Player.CoreServerManager.Resources.GameData.IdToObjectType[typeName]];
-                var index = Player.Inventory.GetAvailableInventorySlot(potion);
+                var potion = player.CoreServerManager.Resources.GameData.Items[player.CoreServerManager.Resources.GameData.IdToObjectType[typeName]];
+                var index = player.Inventory.GetAvailableInventorySlot(potion);
                 if (index == -1)
                 {
-                    Player.SendInfo("Your inventory is full!");
+                    player.SendInfo("Your inventory is full!");
                     return;
                 }
 
-                var transaction = Player.Inventory.CreateTransaction();
+                var transaction = player.Inventory.CreateTransaction();
                 transaction[index] = potion;
                 transaction.Execute(); // might not need this as a transaction
 
-                Player.SendInfo($"You withdrew a {typeName}!");
+                player.SendInfo($"You withdrew a {typeName}!");
             }
 
-            ModifyStat(type, false);
+            ModifyStat(player, type, false, 1);
         }
 
 
-        private int ScanInventory(string item)
+        private int ScanInventory(Player player, string item)
         {
-            for (var i = 0; i < Player.Inventory.Length; i++)
-                if (Player.Inventory[i]?.ObjectId == item)
+            for (var i = 0; i < player.Inventory.Length; i++)
+                if (player.Inventory[i]?.ObjectId == item)
                     return i;
             return -1;
         }
 
-        private void ModifyStat(byte type, bool isAdd, int amount = 1)
+        private void ModifyStat(Player Player, byte type, bool isAdd, int amount = 1)
         {
             var newAmount = isAdd ? amount : -amount;
 
@@ -227,23 +225,23 @@ namespace wServer.core.net.handlers
             }
         }
 
-        private int ToMaxCalc(byte type, int toMax)
+        private int ToMaxCalc(Player player, byte type, int toMax)
         {
             switch (type)
             {
-                case 0: return toMax - Player.SPSLifeCount;
-                case 1: return toMax - Player.SPSManaCount;
-                case 2: return toMax - Player.SPSAttackCount;
-                case 3: return toMax - Player.SPSDefenseCount;
-                case 4: return toMax - Player.SPSSpeedCount;
-                case 5: return toMax - Player.SPSDexterityCount;
-                case 6: return toMax - Player.SPSVitalityCount;
-                case 7: return toMax - Player.SPSWisdomCount;
+                case 0: return toMax - player.SPSLifeCount;
+                case 1: return toMax - player.SPSManaCount;
+                case 2: return toMax - player.SPSAttackCount;
+                case 3: return toMax - player.SPSDefenseCount;
+                case 4: return toMax - player.SPSSpeedCount;
+                case 5: return toMax - player.SPSDexterityCount;
+                case 6: return toMax - player.SPSVitalityCount;
+                case 7: return toMax - player.SPSWisdomCount;
                 default: return 0;
             }
         }
 
-        private bool CheckMax(byte type, int toMax)
+        private bool CheckMax(Player Player, byte type, int toMax)
         {
             switch (type)
             {
@@ -259,7 +257,7 @@ namespace wServer.core.net.handlers
             }
         }
 
-        private bool CanModifyStat(byte type, bool checkZero)
+        private bool CanModifyStat(Player Player, byte type, bool checkZero)
         {
             switch (type)
             {

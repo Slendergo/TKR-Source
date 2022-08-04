@@ -12,17 +12,12 @@ namespace wServer.core.net.handlers.market
 {
     public class MarketAddHandler : IMessageHandler
     {
-        public byte[] Slots;
-        public int Price;
-        public int Currency;
-        public int Hours;
-
         public override PacketId MessageId => PacketId.MARKET_ADD;
 
         public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
         {
             var slots = new byte[rdr.ReadByte()];
-            for (var  i = 0; i < Slots.Length; i++)
+            for (var  i = 0; i < slots.Length; i++)
                 slots[i] = rdr.ReadByte();
             var price = rdr.ReadInt32();
             var currency = rdr.ReadInt32();
@@ -33,7 +28,7 @@ namespace wServer.core.net.handlers.market
 
             var player = client.Player;
 
-            if (!HandleInvalidUptime(client, Hours) || !HandleInvalidPrice(client, Price) || !HandleInvalidCurrency(client, Currency))
+            if (!HandleInvalidUptime(client, hours) || !HandleInvalidPrice(client, price) || !HandleInvalidCurrency(client, currency))
                 return;
 
             var amountOfItems = -1;
@@ -100,9 +95,9 @@ namespace wServer.core.net.handlers.market
                 pendingItems.Select(pendingItem => (pendingItem.item.ObjectType, pendingItem.data?.GetData() ?? null)).ToList(),
                 client.Player.AccountId,
                 client.Player.Name,
-                Price,
-                DateTime.UtcNow.AddHours(Hours).ToUnixTimestamp(),
-                (CurrencyType)Currency
+                price,
+                DateTime.UtcNow.AddHours(hours).ToUnixTimestamp(),
+                (CurrencyType)currency
             );
 
             if (task.IsCanceled)

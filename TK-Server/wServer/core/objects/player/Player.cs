@@ -844,34 +844,37 @@ namespace wServer.core.objects
 
         public void HandleIO(ref TickTime time)
         {
-            while (IncomingMessages.Count > 0)
+            using (var t = new common.TimedProfiler($"[HandleIO] {time.ElaspedMsDelta}"))
             {
-                if (!IncomingMessages.TryDequeue(out var incomingMessage))
-                    continue;
-
-                if (incomingMessage.Client.State == ProtocolState.Disconnected)
-                    continue;
-
-                var handler = MessageHandlers.GetHandler(incomingMessage.MessageId);
-                if (handler == null)
+                while (IncomingMessages.Count > 0)
                 {
-                    SLogger.Instance.Error($"Unknown MessageId: {incomingMessage.MessageId}");
-                    continue;
-                }
+                    if (!IncomingMessages.TryDequeue(out var incomingMessage))
+                        continue;
 
-                try
-                {
-                    NReader rdr = null;
-                    if (incomingMessage.Payload.Length != 0)
-                        rdr = new NReader(new MemoryStream(incomingMessage.Payload));
-                    handler.Handle(incomingMessage.Client, rdr, ref time);
-                    rdr?.Dispose();
-                }
-                catch(Exception ex)
-                {
-                    if (!(ex is EndOfStreamException))
-                        SLogger.Instance.Error("Error processing packet ({0}, {1}, {2})\n{3}", (incomingMessage.Client.Account != null) ? incomingMessage.Client.Account.Name : "", incomingMessage.Client.IpAddress, incomingMessage.Client.Id, ex);
-                    incomingMessage.Client.SendFailure("An error occurred while processing data from your client.", Failure.MessageWithDisconnect);
+                    if (incomingMessage.Client.State == ProtocolState.Disconnected)
+                        continue;
+
+                    var handler = MessageHandlers.GetHandler(incomingMessage.MessageId);
+                    if (handler == null)
+                    {
+                        SLogger.Instance.Error($"Unknown MessageId: {incomingMessage.MessageId}");
+                        continue;
+                    }
+
+                    try
+                    {
+                        NReader rdr = null;
+                        if (incomingMessage.Payload.Length != 0)
+                            rdr = new NReader(new MemoryStream(incomingMessage.Payload));
+                        handler.Handle(incomingMessage.Client, rdr, ref time);
+                        rdr?.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        if (!(ex is EndOfStreamException))
+                            SLogger.Instance.Error("Error processing packet ({0}, {1}, {2})\n{3}", (incomingMessage.Client.Account != null) ? incomingMessage.Client.Account.Name : "", incomingMessage.Client.IpAddress, incomingMessage.Client.Id, ex);
+                        incomingMessage.Client.SendFailure("An error occurred while processing data from your client.", Failure.MessageWithDisconnect);
+                    }
                 }
             }
         }

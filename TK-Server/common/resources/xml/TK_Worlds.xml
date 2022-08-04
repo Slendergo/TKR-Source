@@ -315,7 +315,7 @@
 		<Height>256</Height>
 		<MapJM>the_crawling_depths.jm</MapJM>
 		<Dungeon/>
-		<VisibilityType>1</VisibilityType>
+		<VisibilityType>2</VisibilityType>
 	</World>
 	<World id="Stanleys Hideout">
 		<Width>256</Width>

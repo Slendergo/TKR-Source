@@ -910,7 +910,7 @@
 		</Top>
 		<HitSound>monster/stone_walls_hit</HitSound>
 		<DeathSound>monster/stone_walls_death</DeathSound>
-		<MaxHitPoints>10000</MaxHitPoints>
+		<MaxHitPoints>2500</MaxHitPoints>
 		<Static />
 		<FullOccupy />
 		<OccupySquare />

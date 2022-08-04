@@ -8,33 +8,7 @@ namespace wServer.logic
     partial class BehaviorDb
     {
         private _ SoulBosses = () => Behav()
-        .Init("Nexus Crier",
-            new State(
-                new State("Welcome",
-                    new Wander(0.1),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
-                    new PlayerWithinTransition(3, "Start")
-                    ),
-                new State("Start",
-                    new Taunt("Welcome to Talisman's Kingdom Remastered!"),
-                    new TimedRandomTransition(10000, false, "1", "2", "3", "Welcome")
-                    ),
-                new State("1",
-                    new Wander(0.1),
-                    new Taunt("Uncover the mysteries of the Talisman's King!"),
-                    new TimedRandomTransition(10000, false, "2", "3", "Welcome")
-                    ),
-                new State("2",
-                    new Taunt("That generator seems to be making a lot of noise!"),
-                    new TimedRandomTransition(10000, false, "1", "3", "Welcome")
-                    ),
-                new State("3",
-                    new Wander(0.1),
-                    new Taunt("Want a new look? Check out the cloth bazaar!"),
-                    new TimedRandomTransition(10000, false, "2", "3", "Welcome")
-                    )
-                )
-            )
+
         .Init("Soul Death",
             new State(
                 new SetNoXP(),

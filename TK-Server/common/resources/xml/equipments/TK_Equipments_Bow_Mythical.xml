@@ -1,7 +1,6 @@
 <Objects>
 
-	<!--
-	<Object type="0x5100" id="Boshy Gun">
+  <Object type="0x5100" id="Boshy Gun">
     <Class>Equipment</Class>
     <Item />
     <Soulbound />
@@ -31,7 +30,7 @@
     <NumProjectiles>8</NumProjectiles>
     <OldSound>arrowShoot</OldSound>
     <DisplayId>Boshy Gun</DisplayId>
-  </Object> -->
+  </Object>
   <Object type="0x500e" id="Hurricane">
     <Class>Equipment</Class>
     <Item />

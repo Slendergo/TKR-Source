@@ -13,12 +13,12 @@ namespace wServer.logic
                 new EntityNotExistsTransition("Jon Bilgewater the Pirate King", 90000, "rip"),
                 new State("CircleOrWander",
                     new Prioritize(
-                        new Orbit(3, 2, 5, "Parrot Cage"),
+                        new Orbit(1, 2, 5, "Parrot Cage"),
                         new Wander(1)
                         )
                     ),
                 new State("Orbit&HealJon",
-                    new Orbit(3, 2, 20, "Jon Bilgewater the Pirate King"),
+                    new Orbit(1, 2, 20, "Jon Bilgewater the Pirate King"),
                     new HealSelf(coolDown: 2000, amount: 100)
 
                     ),
@@ -29,7 +29,6 @@ namespace wServer.logic
             )
         .Init("Parrot Cage",
             new State(
-                new EntityNotExistsTransition("Jon Bilgewater the Pirate King", 90000, "NoSpawn"),
                 new ConditionalEffect(ConditionEffectIndex.Invincible),
                 new State("NoSpawn"
                     ),
@@ -110,12 +109,12 @@ namespace wServer.logic
                     new DamageTakenTransition(32500, "gotoSpawn"),
                     new State("coinphase",
                         new Wander(1),
-                        new Shoot(10, count: 1, projectileIndex: 0, coolDown: 1200),
+                        new Shoot(10, count: 1, projectileIndex: 0, coolDown: 2000),
                         new TimedTransition(4500, "cannonballs")
                         ),
                     new State("cannonballs",
                         new Follow(1.5, 8, coolDown: 1000),
-                        new Shoot(10, count: 7, shootAngle: 30, projectileIndex: 1, coolDown: 1000),
+                        new Shoot(10, count: 7, shootAngle: 30, projectileIndex: 1, coolDown: 2150),
                         new TimedTransition(5000, "coinphase")
                         )
                     ),

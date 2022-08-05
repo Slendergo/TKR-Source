@@ -16,7 +16,7 @@ namespace wServer.logic
                     new PlayerWithinTransition(10, "Start")
                     ),
                 new State("Start",
-                    new Taunt("Welcome to Talisman's Kingdom Remastered!"),
+                    new Taunt("Welcome to Talisman's Kingdom Reborn!"),
                     new TimedTransition(4000, "0 k")
                     ),
                 new State("0 k",

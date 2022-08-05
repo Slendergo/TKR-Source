@@ -19,15 +19,9 @@ namespace wServer.core.net.handlers
             if (player?.World == null)
                 return;
 
-            var entity = player.World.GetEntity(objectId);
-
-            var prj = entity != null
-                ? ((IProjectileOwner)entity).Projectiles[bulletId]
-                : player.World.Projectiles.Where(p => p.Value.ProjectileOwner.Self.Id == objectId).SingleOrDefault(p => p.Value.ProjectileId == bulletId).Value;
-
+            var prj = player.World.GetProjectile(objectId, bulletId);
             if (prj == null)
                 return;
-
             prj?.ForceHit(player, tickTime);
         }
     }

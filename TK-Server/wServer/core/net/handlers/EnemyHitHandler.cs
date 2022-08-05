@@ -27,11 +27,9 @@ namespace wServer.core.net.handlers
             if (player.HasConditionEffect(ConditionEffects.Hidden))
                 return;
 
-            var prj = (player as IProjectileOwner).Projectiles[bulletId];
-
+            var prj = player.TryGetProjectile(bulletId);
             if (prj == null)
                 return;
-
             prj?.ForceHit(entity, tickTime);
         }
     }

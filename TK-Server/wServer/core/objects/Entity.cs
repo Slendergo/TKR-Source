@@ -67,9 +67,12 @@ namespace wServer.core.objects
 
             QuestLevel = _desc.Level;
 
-            _posHistory = new Position[256];
-            _projectiles = new Projectile[256];
-            _effects = new int[EffectCount];
+            if (_desc.Enemy)
+            {
+                _posHistory = new Position[256];
+                _projectiles = new Projectile[256];
+                _effects = new int[EffectCount];
+            }
         }
 
         public event EventHandler<StatChangedEventArgs> StatChanged;
@@ -98,7 +101,6 @@ namespace wServer.core.objects
         public ushort ObjectType { get; protected set; }
         public World World { get; private set; }
         public CollisionMap<Entity> Parent { get; set; }
-        Projectile[] IProjectileOwner.Projectiles => _projectiles;
         public int QuestLevel { get; set; } = 1;
         public float RealX => _x.GetValue();
         public float RealY => _y.GetValue();
@@ -518,14 +520,21 @@ namespace wServer.core.objects
             Stats = ExportStats()
         };
 
+        public Projectile TryGetProjectile(byte bulletId)
+        {
+            if (_projectiles == null)
+                return null;
+            if (bulletId > 255)
+                return null;
+            return _projectiles[bulletId];
+        }
+
         public Position? TryGetHistory(long ticks)
         {
             if (_posHistory == null)
                 return null;
-
             if (ticks > 255)
                 return null;
-
             return _posHistory[(byte)(_posIdx - (byte)ticks)];
         }
 
@@ -679,7 +688,8 @@ namespace wServer.core.objects
 
         private void ProcessConditionEffects(TickTime time)
         {
-            if (_effects == null || !_tickingEffects) return;
+            if (_effects == null || !_tickingEffects) 
+                return;
 
             ConditionEffects newEffects = 0;
 

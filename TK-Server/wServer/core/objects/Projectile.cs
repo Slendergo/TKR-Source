@@ -8,7 +8,6 @@ namespace wServer.core.objects
 {
     public interface IProjectileOwner
     {
-        Projectile[] Projectiles { get; }
         Entity Self { get; }
     }
 

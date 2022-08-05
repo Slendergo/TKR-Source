@@ -83,8 +83,8 @@ namespace wServer.core.objects
             var px = (int)Player.X;
             var py = (int)Player.Y;
 
-            Span<bool> pathMap = stackalloc bool[World.Map.Width * World.Map.Height];
-            StepPath(points, ref pathMap, px, py, px, py);
+            var pathMap = new bool[World.Map.Width, World.Map.Height];
+            StepPath(points, pathMap, px, py, px, py);
         }
 
         public void DeleteEntry(Entity entity)
@@ -323,15 +323,14 @@ namespace wServer.core.objects
         }
 
         // does this still error?
-        private void StepPath(HashSet<IntPoint> points, ref Span<bool> pathMap, int x, int y, int px, int py)
+        private void StepPath(HashSet<IntPoint> points, bool[,] pathMap, int x, int y, int px, int py)
         {
             if (!World.Map.Contains(x, y))
                 return;
 
-            var index = (x * World.Map.Width) + y;
-            if (pathMap[index])
+            if (pathMap[x, y])
                 return;
-            pathMap[index] = true;
+            pathMap[x, y] = true;
 
             var point = new IntPoint(x - px, y - py);
             if (!SightPoints.Contains(point))
@@ -342,7 +341,7 @@ namespace wServer.core.objects
             if (!(t.ObjType != 0 && t.ObjDesc != null && t.ObjDesc.BlocksSight))
                 for (var dx = -1; dx <= 1; dx++)
                     for (var dy = -1; dy <= 1; dy++)
-                        StepPath(points, ref pathMap, x + dx, y + dy, px, py);
+                        StepPath(points, pathMap, x + dx, y + dy, px, py);
         }
 
         public void DrawLine(int x, int y, int x2, int y2, Func<int, int, bool> func)

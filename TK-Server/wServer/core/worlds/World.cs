@@ -244,11 +244,10 @@ namespace wServer.core.worlds
 
         public IEnumerable<Player> GetPlayers() => Players.Values;
 
-        public Projectile GetProjectile(int objectId, int bulletId)
+        public Projectile GetProjectile(int objectId, byte bulletId)
         {
             var entity = GetEntity(objectId);
-
-            return entity != null ? ((IProjectileOwner)entity).Projectiles[bulletId] : Projectiles.SingleOrDefault(p => p.Value.ProjectileOwner.Self.Id == objectId && p.Value.ProjectileId == bulletId).Value;
+            return entity != null ? entity.TryGetProjectile(bulletId) : Projectiles.SingleOrDefault(p => p.Value.ProjectileOwner.Self.Id == objectId && p.Value.ProjectileId == bulletId).Value;
         }
 
         public Position? GetRegionPosition(TileRegion region)

@@ -991,7 +991,7 @@ namespace wServer.core.objects
                     if (Breath > 0)
                         Breath -= 5 * time.DeltaTime * 5;
                     else
-                        HP -= 5 * time.DeltaTime * 5;
+                        HP -= 5;
 
                     if (HP < 0)
                     {

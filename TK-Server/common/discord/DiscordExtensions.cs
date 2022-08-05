@@ -208,6 +208,105 @@ namespace common.discord
             };
         }
 
+        public static DiscordEmbedBuilder? MakeDeathAnnounce(
+            this DiscordIntegration discord,
+            ServerInfo info,
+            string worldName,
+            int players,
+            int maxPlayers,
+            bool isDungeon,
+            string bagImage,
+            int charId,
+            string playerName,
+            int rank,
+            int stars,
+            string deathNote,
+            string className,
+            int level,
+            int fame,
+            bool upgradeEnabled,
+            int maxedStats,
+            string killer,
+            string charRank
+            )
+        {
+            var star = discord.stars.FindStar(stars);
+
+            if (!star.HasValue)
+            {
+                logger.Log.Error($"Unhandled star value: {stars}");
+                return null;
+            }
+
+            var cInfo = discord.classes.First(classInfo => classInfo.name.Equals(className.ToLower()));
+
+            return new DiscordEmbedBuilder()
+            {
+                Username = discord.botName,
+                Avatar = discord.webhookResourcesURL + discord.webhookBotImage,
+                Content = "",
+                Embeds = new[]
+                {
+                    new DiscordEmbed()
+                    {
+                        Author = new DiscordEmbedAuthor()
+                        {
+                            Name = $"RIP!",
+                            Icon = discord.webhookResourcesURL + bagImage,
+                        },
+                        Title = $"<:{star.Value.name}:{star.Value.id}> (D-{rank / 10}) {playerName}",
+                        Description = $"Has been killed by __**{killer}**__!" + "\n" + $"They were ranked **#{charRank}** on the alive character leaderboards!",
+                        Color = 0x7289DA,
+                        Fields = new[]
+                        {
+                            new  DiscordEmbedField()
+                            {
+                                Name = "In server:",
+                                Value = $"{info.players}/{info.maxPlayers}",
+                                InLine = true
+                            },
+                            new DiscordEmbedField()
+                            {
+                                Name = $"In {(isDungeon ? "dungeon" : "realm")}:",
+                                Value = $"{players}/{maxPlayers}",
+                                InLine = true
+                            },
+                            new DiscordEmbedField()
+                            {
+                                Name = "Class:",
+                                Value = $"{className} <:{cInfo.name}:{cInfo.id}>",
+                                InLine = true
+                            },
+                            new DiscordEmbedField()
+                            {
+                                Name = "Level:",
+                                Value = level.ToString(),
+                                InLine = true
+                            },
+                            new DiscordEmbedField()
+                            {
+                                Name = "Fame:",
+                                Value = fame.ToString(),
+                                InLine = true
+                            },
+                            new DiscordEmbedField()
+                            {
+                                Name = "Stats:",
+                                Value = $"{maxedStats}{(upgradeEnabled ? "/16" : "/8")}",
+                                InLine = true
+                            }
+                        },
+                        Thumbnail = new DiscordThumbnail() { Url = discord.webhookResourcesURL + discord.webhookLogoImage },
+                        Footer = new DiscordEmbedFooter()
+                        {
+                            Text = $"{discord.botName} - Game Notification!",
+                            Icon = discord.webhookResourcesURL + discord.webhookBotImage
+                        }
+                    }
+                }
+            };
+        }
+
         public static async Task SendWebhook(this DiscordIntegration discord, string webhook, DiscordEmbedBuilder builder)
         {
             using (var discordWebhook = new DiscordWebhook(webhook))

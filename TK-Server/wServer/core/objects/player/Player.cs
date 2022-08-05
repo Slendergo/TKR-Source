@@ -1,11 +1,15 @@
 ﻿using common;
 using common.database;
+using common.discord;
 using common.resources;
+using Nancy.Json;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using wServer.core.net.handlers;
 using wServer.core.terrain;
 using wServer.core.worlds;
@@ -171,6 +175,8 @@ namespace wServer.core.objects
         private SV<int> _texture2;
         private SV<bool> _upgradeEnabled;
         private SV<bool> _xpBoosted;
+        internal class APIRank{ public int accID; public int charID; }
+        internal class APIResp{ [JsonProperty("rank")] public string charRank { get; set; }}
 
         public Player(Client client, bool saveInventory = true) : base(client.GameServer, client.Character.ObjectType)
         {
@@ -991,7 +997,7 @@ namespace wServer.core.objects
                     if (Breath > 0)
                         Breath -= 5 * time.DeltaTime * 5;
                     else
-                        HP -= 5 * time.DeltaTime * 5;
+                        HP -= 5;
 
                     if (HP < 0)
                     {
@@ -1199,11 +1205,76 @@ namespace wServer.core.objects
             if (elasped % 15000 == 0)
                 ApplyConditionEffect(ConditionEffectIndex.Berserk, 5000);
         }
+        private string CheckRankAPI(int accID, int charID)
+        {
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create($"http://127.0.0.1/api/getRank");
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Method = "POST";
+
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                string json = new JavaScriptSerializer().Serialize(new APIRank()
+                {
+                    accID = accID,
+                    charID = charID
+                });
+                streamWriter.Write(json);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
+
+            try
+            {
+                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    var result = streamReader.ReadToEnd();
+                    var data = JsonConvert.DeserializeObject<APIResp>(result);
+                    if (!result.Contains("200")) //200 is normal result, if it doesn't contains it, somethingb bad happened
+                        Console.WriteLine(result);
+                    return data.charRank;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return "n/a";
+            }
+        }
 
         private void AnnounceDeath(string killer)
         {
             var maxed = GetMaxedStats();
             var deathMessage = Name + " (" + maxed + (UpgradeEnabled ? "/16, " : "/8, ") + Client.Character.Fame + ") has been killed by " + killer + "!";
+            if (maxed >= 6 && Rank <= 60)
+            {
+                var charRank = CheckRankAPI(Client.Player.AccountId, Client.Character.CharId);
+                var discord = World.GameServer.Configuration.discordIntegration;
+                var players = World.Players.Count(p => p.Value.Client != null);
+                var builder = discord.MakeDeathAnnounce(
+                    World.GameServer.Configuration.serverInfo,
+                    World.IsRealm ? World.DisplayName : World.IdName,
+                    players,
+                    World.MaxPlayers,
+                    World.InstanceType == WorldResourceInstanceType.Dungeon,
+                    discord.ripIco,
+                    Client.Character.CharId,
+                    Name,
+                    Rank,
+                    Stars,
+                    deathMessage,
+                    ObjectDesc.ObjectId,
+                    Level,
+                    Fame,
+                    UpgradeEnabled,
+                    maxed,
+                    killer,
+                    charRank
+                );
+#pragma warning disable
+                discord.SendWebhook(discord.webhookDeathEvent, builder.Value);
+#pragma warning restore
+            }
 
             if ((maxed >= 6 || Fame >= 1000) && !Client.Account.Admin)
             {

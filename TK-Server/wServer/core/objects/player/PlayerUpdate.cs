@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using wServer.core.terrain;
 using wServer.core.worlds;
 using wServer.networking;
@@ -44,7 +43,7 @@ namespace wServer.core.objects
         private UpdatedHashSet NewObjects { get; set; }
         private HashSet<WmapTile> NewStaticObjects { get; set; }
         private int NewTimeCooldown { get; set; } = 0;
-        private byte[,] SeenTiles { get; set; }
+        private Dictionary<int, byte> SeenTiles { get; set; }
 
         public PlayerUpdate(Player player)
         {
@@ -53,7 +52,7 @@ namespace wServer.core.objects
 
             NewObjects = new UpdatedHashSet(this);
             NewStaticObjects = new HashSet<WmapTile>();
-            SeenTiles = new byte[World.Map.Width, World.Map.Height];
+            SeenTiles = new Dictionary<int, byte>();
             ActiveTiles = new HashSet<IntPoint>();
 
             UpdateTiles = true;
@@ -78,13 +77,14 @@ namespace wServer.core.objects
                 });
         }
 
+        // todo mabye not use unsafe code
         public void CalculatePath(HashSet<IntPoint> points)
         {
             var px = (int)Player.X;
             var py = (int)Player.Y;
 
-            var pathMap = new bool[World.Map.Width, World.Map.Height];
-            StepPath(points, pathMap, px, py, px, py);
+            Span<bool> pathMap = stackalloc bool[World.Map.Width * World.Map.Height];
+            StepPath(points, ref pathMap, px, py, px, py);
         }
 
         public void DeleteEntry(Entity entity)
@@ -219,10 +219,14 @@ namespace wServer.core.objects
                 ActiveTiles.Add(new IntPoint(playerX, playerY));
 
                 var tile = World.Map[playerX, playerY];
-                if (tile == null || SeenTiles[playerX, playerY] >= tile.UpdateCount)
+
+                var hash = (playerX << 16) | playerY;
+                _ = SeenTiles.TryGetValue(hash, out var updateCount);
+
+                if (tile == null || updateCount >= tile.UpdateCount)
                     continue;
 
-                SeenTiles[playerX, playerY] = tile.UpdateCount;
+                SeenTiles[hash] = tile.UpdateCount;
 
                 var tileData = new Update.TileData(playerX, playerY, tile.TileId);
                 update.Tiles.Add(tileData);
@@ -319,13 +323,15 @@ namespace wServer.core.objects
         }
 
         // does this still error?
-        private void StepPath(HashSet<IntPoint> points, bool[,] pathMap, int x, int y, int px, int py)
+        private void StepPath(HashSet<IntPoint> points, ref Span<bool> pathMap, int x, int y, int px, int py)
         {
             if (!World.Map.Contains(x, y))
                 return;
-            if (pathMap[x, y])
+
+            var index = (x * World.Map.Width) + y;
+            if (pathMap[index])
                 return;
-            pathMap[x, y] = true;
+            pathMap[index] = true;
 
             var point = new IntPoint(x - px, y - py);
             if (!SightPoints.Contains(point))
@@ -336,7 +342,7 @@ namespace wServer.core.objects
             if (!(t.ObjType != 0 && t.ObjDesc != null && t.ObjDesc.BlocksSight))
                 for (var dx = -1; dx <= 1; dx++)
                     for (var dy = -1; dy <= 1; dy++)
-                        StepPath(points, pathMap, x + dx, y + dy, px, py);
+                        StepPath(points, ref pathMap, x + dx, y + dy, px, py);
         }
 
         public void DrawLine(int x, int y, int x2, int y2, Func<int, int, bool> func)

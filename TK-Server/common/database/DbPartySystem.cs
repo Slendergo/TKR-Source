@@ -110,7 +110,6 @@ namespace common.database
                 var members = new HashSet<DbAccount>();
                 foreach (var member in PartyMembers)
                     members.Add(db.GetAccount(member.accid));
-
                 db.RemoveParty(leaderAcc, members, PartyId);
                 return false;
             }

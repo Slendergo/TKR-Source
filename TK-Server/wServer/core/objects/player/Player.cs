@@ -977,11 +977,20 @@ namespace wServer.core.objects
                     Color = new ARGB(0xFFFFFFFF)
                 }
             };
+
             World.ForeachPlayer(_ =>
             {
                 _.AwaitGotoAck(time.TotalElapsedMs);
-                _._tps += 1;
-                _.Client.SendPackets(tpPkts, PacketPriority.Low);
+                if (_ == null || _.Client == null)
+                {
+                    var nullPlayer = _ == null;
+                    var nullClient = _?.Client ?? null;
+                    Console.WriteLine($"Error NULL | Player: {nullPlayer} | Client: {nullClient}");
+                }
+                else
+                {
+                    _.Client.SendPackets(tpPkts, PacketPriority.Low);
+                }
             });
         }
 

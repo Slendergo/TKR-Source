@@ -1648,8 +1648,17 @@ namespace wServer.core.objects
             var gameData = GameServer.Resources.GameData;
             var entity = World.GetEntity(objId);
             var container = entity as Container;
-            ushort itemValue = 0x0;
+
             double potionRoll = _random.NextDouble();
+
+            if (potionRoll > 0.75)
+            {
+                // nothing
+                SendInfo($"It appears this bag contains nothing but air");
+                return;
+            }
+
+            potionRoll = _random.NextDouble();
             if (potionRoll <= 0.025)
             {
                 //Potion of Life

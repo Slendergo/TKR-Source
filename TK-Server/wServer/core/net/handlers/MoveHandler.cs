@@ -35,18 +35,6 @@ namespace wServer.core.net.handlers
                     return;
                 }
 
-                //var distance = player.Dist(packet.NewPosition);
-                //if (distance > 15 && player._tps <= 0)
-                //{
-                //    //player.CoreServerManager.Database.Ban(player.AccountId, $"TQ: Distance traveled: {distance} | Last pos: {player.X}, {player.Y} | New pos: {newX}, {newY} | Speed stat: {player.Stats[4]}");
-                //    player.Client.Disconnect("TP Hack");
-                //    return;
-                //}
-                //if (player._tps > 0)
-                //    player._tps -= 1;
-                //if (player._tps < 0)
-                //    player._tps = 0;
-
                 player.Move(newX, newY);
                 player.PlayerUpdate.UpdateTiles = true;
             }

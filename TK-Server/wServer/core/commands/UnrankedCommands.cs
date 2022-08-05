@@ -376,58 +376,73 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string args)
         {
-            var party = DbPartySystem.Get(player.Client.Account.Database, player.Client.Account.PartyId);
-
-            if (party == null)
+            try
             {
-                player.SendError("You're not in a Party.");
-                return false;
-            }
+                var party = DbPartySystem.Get(player.Client.Account.Database, player.Client.Account.PartyId);
+                if (party == null)
+                {
+                    player.SendError("You're not in a Party.");
+                    return false;
+                }
 
-            if (!party.LeaderIsVip(player.GameServer.Database))
+                if (!party.LeaderIsVip(player.GameServer.Database))
+                {
+                    player.SendError("<Error> VIPs cannot be the Leader of a Party.");
+                    return false;
+                }
+
+                var leader = player.GameServer.ConnectionManager.Clients.Keys.Where(c => c.Player != null && c.Player.Name == party.PartyLeader.Item1 && c.Player.AccountId == party.PartyLeader.Item2 && c.Account.PartyId == party.PartyId).Select(c => c.Player).ToArray();
+
+                if (leader == null)
+                {
+                    player.SendError("The Leader of the Party is disconnected.");
+                    return false;
+                }
+
+                if (leader.Length == 0)
+                {
+                    player.SendError("You're the Leader...");
+                    return false;
+                }
+
+                if (leader[0].Name == player.Name)
+                {
+                    player.SendError("You're the Leader...");
+                    return false;
+                }
+
+                var world = player.GameServer.WorldManager.GetWorld(leader[0].World.Id);
+
+                if (world == null)
+                {
+                    player.GameServer.Database.FlushParty(party.PartyId, party);
+                    player.SendError("World doesn't exists.");
+                    return false;
+                }
+
+                if (world.Id != party.ReturnWorldId() || party.ReturnWorldId() == -1 && world != null)
+                {
+                    player.GameServer.Database.FlushParty(party.PartyId, party);
+                    player.SendError("You need an invitation to join to the world!");
+                    return false;
+                }
+
+                if (party.ReturnWorldId() != -1 && (world.InstanceType == WorldResourceInstanceType.Guild || world is VaultWorld || world is NexusWorld))
+                {
+                    party.WorldId = -1;
+                    player.GameServer.Database.FlushParty(party.PartyId, party);
+                    player.SendError("You can't connect to those Worlds.");
+                    return false;
+                }
+
+                player.SendInfo("Connecting!");
+                player.Reconnect(world);
+            }
+            catch (Exception ex)
             {
-                player.SendError("<Error> VIPs cannot be the Leader of a Party.");
-                return false;
+                player.SendError("Error trying to use pjoin!");
+                Console.WriteLine($"Error trying to use pjoin: {ex}");
             }
-
-            var leader = player.GameServer.ConnectionManager.Clients.Keys.Where(c => c.Player != null && c.Player.Name == party.PartyLeader.Item1 && c.Player.AccountId == party.PartyLeader.Item2 && c.Account.PartyId == party.PartyId).Select(c => c.Player).ToArray();
-
-            if (leader == null)
-            {
-                player.SendError("The Leader of the Party is disconnected.");
-                return false;
-            }
-            if (leader[0].Name == player.Name)
-            {
-                player.SendError("You're the Leader...");
-                return false;
-            }
-
-            var world = player.GameServer.WorldManager.GetWorld(leader[0].World.Id);
-
-            if (world == null)
-            {
-                player.GameServer.Database.FlushParty(party.PartyId, party);
-                player.SendError("World doesn't exists.");
-                return false;
-            }
-            if (world.Id != party.ReturnWorldId() || party.ReturnWorldId() == -1 && world != null)
-            {
-                player.GameServer.Database.FlushParty(party.PartyId, party);
-                player.SendError("You need an invitation to join to the world!");
-                return false;
-            }
-            if (party.ReturnWorldId() != -1 && (world.InstanceType == WorldResourceInstanceType.Guild || world is VaultWorld || world is NexusWorld))
-            {
-                party.WorldId = -1;
-                player.GameServer.Database.FlushParty(party.PartyId, party);
-                player.SendError("You can't connect to those Worlds.");
-                return false;
-            }
-
-            player.SendInfo("Connecting!");
-            player.Reconnect(world);
-
             return true;
         }
     }

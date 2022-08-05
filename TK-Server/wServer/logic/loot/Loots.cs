@@ -229,8 +229,6 @@ namespace wServer.logic.loot
 
             if (enemy.Legendary)
             {
-                list.Add(new LootDef(xmlitem[itemtoid["Potion Dust"]], 0.75, 0.001));
-                list.Add(new LootDef(xmlitem[itemtoid["Potion Dust"]], 0.5, 0.001));
                 list.Add(new LootDef(xmlitem[itemtoid["Potion Dust"]], 0.25, 0.001));
                 list.Add(new LootDef(xmlitem[itemtoid["Item Dust"]], 0.025, 0.001));
                 list.Add(new LootDef(xmlitem[itemtoid["Miscellaneous Dust"]], 0.02, 0.001));
@@ -238,7 +236,6 @@ namespace wServer.logic.loot
             }
             else if (enemy.Epic)
             {
-                list.Add(new LootDef(xmlitem[itemtoid["Potion Dust"]], 0.5, 0.001));
                 list.Add(new LootDef(xmlitem[itemtoid["Potion Dust"]], 0.25, 0.001));
                 list.Add(new LootDef(xmlitem[itemtoid["Item Dust"]], 0.015, 0.001));
                 list.Add(new LootDef(xmlitem[itemtoid["Miscellaneous Dust"]], 0.01, 0.001));
@@ -381,29 +378,38 @@ namespace wServer.logic.loot
                     {
                         var discord = core.Configuration.discordIntegration;
                         var players = world.Players.Count(p => p.Value.Client != null);
-                        var builder = discord.MakeLootBuilder(
-                            core.Configuration.serverInfo,
-                            player.World.IsRealm ? player.World.DisplayName : player.World.IdName,
-                            players,
-                            world.MaxPlayers,
-                            world.InstanceType == WorldResourceInstanceType.Dungeon,
-                            isMythical ? "Mythical" : "Legendary",
-                            isMythical ? discord.mtBagImage : discord.lgBagImage,
-                            isMythical ? discord.mtImage : discord.lgImage,
-                            player.Name,
-                            player.Rank,
-                            player.Stars,
-                            i.ObjectId,
-                            player.ObjectDesc.ObjectId,
-                            player.Level,
-                            player.Fame,
-                            player.GetMaxedStats()
-                        );
 
-                        if (discord.CanSendLootNotification(player.Stars, player.ObjectDesc.ObjectId.ToLower()) && builder.HasValue)
+
+                        try
+                        {
+                            var builder = discord.MakeLootBuilder(
+                                core.Configuration.serverInfo,
+                                player.World.IsRealm ? player.World.DisplayName : player.World.IdName,
+                                players,
+                                world.MaxPlayers,
+                                world.InstanceType == WorldResourceInstanceType.Dungeon,
+                                isMythical ? "Mythical" : "Legendary",
+                                isMythical ? discord.mtBagImage : discord.lgBagImage,
+                                isMythical ? discord.mtImage : discord.lgImage,
+                                player.Name,
+                                player.Rank,
+                                player.Stars,
+                                i.ObjectId,
+                                player.ObjectDesc.ObjectId,
+                                player.Level,
+                                player.Fame,
+                                player.GetMaxedStats()
+                            );
+
+                            if (discord.CanSendLootNotification(player.Stars, player.ObjectDesc.ObjectId.ToLower()) && builder.HasValue)
 #pragma warning disable
-                            discord.SendWebhook(discord.webhookLootEvent, builder.Value);
+                                discord.SendWebhook(discord.webhookLootEvent, builder.Value);
 #pragma warning restore
+                        }
+                        catch (Exception ex) 
+                        {
+                            Console.WriteLine($"Failed to call discord.MakeLootBuilder {ex}");
+                        }
                     }
 
                     #endregion Discord Bot Message

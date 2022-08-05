@@ -29,9 +29,9 @@ namespace wServer.logic
                 new State("Attack 2",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new Flash(0xFF0000, 0.5, 5),
-                    new Shoot(radius: 20, count: 15, shootAngle: 30, projectileIndex: 1, coolDownOffset: 600, coolDown: 1000000),
-                    new Shoot(radius: 20, count: 15, shootAngle: 30, projectileIndex: 1, coolDownOffset: 800, coolDown: 1000000),
-                    new Shoot(radius: 20, count: 15, shootAngle: 30, projectileIndex: 1, coolDownOffset: 1000, coolDown: 1000000),
+                    new Shoot(radius: 20, count: 15, shootAngle: 30, projectileIndex: 1, coolDownOffset: 600, coolDown: 2000),
+                    new Shoot(radius: 20, count: 15, shootAngle: 30, projectileIndex: 1, coolDownOffset: 800, coolDown: 2000),
+                    new Shoot(radius: 20, count: 15, shootAngle: 30, projectileIndex: 1, coolDownOffset: 1000, coolDown: 2000),
                     new TimedTransition(1100, "Attack 3")
                     ),
                 new State("Attack 3",                   

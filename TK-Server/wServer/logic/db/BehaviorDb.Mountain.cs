@@ -121,6 +121,7 @@ namespace wServer.logic
                 new Grenade(4, 150, range: 8, coolDown: 3000),
                 new Reproduce(densityMax: 3)
                 ),
+        new Threshold(0.001,
             new ItemLoot("Potion of Speed", 0.3),
             new TierLoot(6, ItemType.Weapon, 0.08),
             new TierLoot(7, ItemType.Weapon, 0.04),
@@ -132,6 +133,7 @@ namespace wServer.logic
             new TierLoot(4, ItemType.Ring, 0.02),
             new TierLoot(4, ItemType.Ability, 0.04)
             )
+        )
         .Init("Ent God",
             new State(
                 new DropPortalOnDeath("Garden of Horror Portal", 0.3),
@@ -165,6 +167,7 @@ namespace wServer.logic
                 new Shoot(10, projectileIndex: 1, predictive: 1),
                 new Reproduce(densityMax: 3)
                 ),
+            new Threshold(0.001,
             new ItemLoot("Potion of Defense", 0.3),
             new TierLoot(6, ItemType.Weapon, 0.08),
             new TierLoot(7, ItemType.Weapon, 0.04),
@@ -176,6 +179,7 @@ namespace wServer.logic
             new TierLoot(4, ItemType.Ring, 0.02),
             new TierLoot(4, ItemType.Ability, 0.04)
             )
+        )
         .Init("Flying Brain",
             new State(
                 new Prioritize(
@@ -187,6 +191,7 @@ namespace wServer.logic
                 new Reproduce(densityMax: 3),
                 new DropPortalOnDeath("Mad Lab Portal", .17)
                 ),
+        new Threshold(0.001,
             new ItemLoot("Potion of Attack", 0.3),
             new TierLoot(6, ItemType.Weapon, 0.08),
             new TierLoot(7, ItemType.Weapon, 0.04),
@@ -198,6 +203,7 @@ namespace wServer.logic
             new TierLoot(4, ItemType.Ring, 0.02),
             new TierLoot(4, ItemType.Ability, 0.04)
             )
+        )
         .Init("Slime God",
             new State(
                 new Prioritize(
@@ -232,6 +238,7 @@ namespace wServer.logic
                 new Reproduce(densityMax: 3),
                 new DropPortalOnDeath("Undead Lair Portal", 0.25)
                 ),
+        new Threshold(0.001,
             new ItemLoot("Potion of Speed", 0.3),
             new TierLoot(6, ItemType.Weapon, 0.08),
             new TierLoot(7, ItemType.Weapon, 0.04),
@@ -243,6 +250,7 @@ namespace wServer.logic
             new TierLoot(4, ItemType.Ring, 0.02),
             new TierLoot(4, ItemType.Ability, 0.04)
             )
+        )
         .Init("Rock Bot",
             new State(
                 new Spawn("Paper Bot", maxChildren: 1, initialSpawn: 1, coolDown: 10000, givesNoXp: false),
@@ -258,8 +266,9 @@ namespace wServer.logic
                     new TimedTransition(10000, "Waiting")
                     )
                 ),
-            new ItemLoot("Potion of Attack", 0.3),
+            
             new Threshold(.01,
+                new ItemLoot("Potion of Attack", 0.3),
                 new TierLoot(5, ItemType.Weapon, 0.16),
                 new TierLoot(6, ItemType.Weapon, 0.08),
                 new TierLoot(7, ItemType.Weapon, 0.04),
@@ -413,7 +422,6 @@ namespace wServer.logic
                     new Suicide()
                     )
                 ),
-            SpeedPotion,
             new Threshold(0.2,
                 new ItemLoot("Potion of Speed", 0.3),
                 new TierLoot(6, ItemType.Weapon, 0.08),
@@ -489,7 +497,6 @@ namespace wServer.logic
                 new ItemLoot("Talisman of Luck", 0.002),
                 new ItemLoot("Talisman of Looting", 0.25)
                 ),
-            SpeedPotion,
             new Threshold(0.01,
                 new ItemLoot("Potion of Mana", 1),
                 new ItemLoot("Potion of Defense", 1),

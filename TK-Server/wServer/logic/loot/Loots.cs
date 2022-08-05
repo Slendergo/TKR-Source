@@ -208,7 +208,7 @@ namespace wServer.logic.loot
             var core = player.GameServer;
 
             var db = core.Database;
-            var account = db.GetAccount(player.AccountId);
+            //var account = db.GetAccount(player.AccountId);
             //var guild = db.GetGuild(account.GuildId);
 
             var allLoot = 0.0;

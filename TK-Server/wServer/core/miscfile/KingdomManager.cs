@@ -469,7 +469,6 @@ namespace wServer.core
 
         public void Update(ref TickTime time)
         {
-            //Console.WriteLine(CurrentState);
             switch (CurrentState)
             {
                 case KindgomState.Idle:
@@ -491,12 +490,10 @@ namespace wServer.core
                         DisableSpawning = true;
                         World.GameServer.WorldManager.Nexus.PortalMonitor.RemovePortal(World.Id);
                         World.GameServer.WorldManager.Nexus.PortalMonitor.CreateNewRealm();
-                        
-                        //BroadcastMsg("RAAHH MY TROOPS HAVE FAILED ME!");
-                        //BroadcastMsg("THEY SHALL TASTE MY WRATH!!!");
-                        //BroadcastMsg("THIS KINDOM SHALL NOT FALL!!");
 
-                        BroadcastMsg("I have closed this realm");
+                        BroadcastMsg("RAAHH MY TROOPS HAVE FAILED ME!");
+                        BroadcastMsg("THEY SHALL TASTE MY WRATH!!!");
+                        BroadcastMsg("THIS KINDOM SHALL NOT FALL!!");
 
                         CurrentState = KindgomState.Emptying;
                     }
@@ -511,9 +508,9 @@ namespace wServer.core
                     break;
                 case KindgomState.Closed:
                     {
-                        //BroadcastMsg("ENOUGH WAITING!");
-                        //BroadcastMsg("YOU SHALL MEET YOUR DOOM BY MY HAND!!!");
-                        //BroadcastMsg("GUARDIANS DEAL WITH THESE FOOLS!!!");
+                        BroadcastMsg("ENOUGH WAITING!");
+                        BroadcastMsg("YOU SHALL MEET YOUR DOOM BY MY HAND!!!");
+                        BroadcastMsg("GUARDIANS DEAL WITH THESE FOOLS!!!");
                         BroadcastMsg("Oryx, enjoy feasting on these beasts!");
 
                         World.Broadcast(new ShowEffect()
@@ -768,7 +765,6 @@ namespace wServer.core
 
         private void EnsurePopulation()
         {
-            Console.WriteLine("EnsurePopulation");
             RecalculateEnemyCount();
 
             var state = new int[12];

@@ -554,14 +554,6 @@ namespace wServer.core.worlds
 
         private bool ForceLifetimeExpire = false;
 
-        public void ExtendLifetime(int amount)
-        {
-            Console.WriteLine($"Extended: {Id} {IdName} by {amount}");
-            _elapsedTime -= amount;
-            if (_elapsedTime < 0)
-                _elapsedTime = 0;
-        }
-
         private bool IsPastLifetime(ref TickTime time)
         {
             if (WorldBranch.HasBranches())
@@ -580,11 +572,7 @@ namespace wServer.core.worlds
                 return false;
 
             if (_elapsedTime >= 60000)
-            {
-                Console.WriteLine($"[{IdName} {Id}] Has Expired");
                 return true;
-            }
-
             return false;
         }
     }

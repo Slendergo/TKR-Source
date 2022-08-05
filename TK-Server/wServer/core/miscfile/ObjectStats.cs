@@ -51,7 +51,6 @@ namespace wServer
 
                 if (i.Value is string)
                 {
-                    //Console.WriteLine(i.Key);
                     wtr.WriteUTF(i.Value as string);
                     continue;
                 }

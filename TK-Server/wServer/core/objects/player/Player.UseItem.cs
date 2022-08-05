@@ -1679,6 +1679,8 @@ namespace wServer.core.objects
             }
             else
             {
+                ushort itemValue;
+
                 // Common potion
                 var random = _random.Next(0, _commonPotions.Length);
                 switch (random)

@@ -182,7 +182,10 @@ namespace common.isc
                     }
                 }
             }
-            catch (Exception e) { Console.WriteLine(e); }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
 
         private bool AddServer(string instanceId, ServerInfo info)

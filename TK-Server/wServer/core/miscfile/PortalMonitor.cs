@@ -19,6 +19,30 @@ namespace wServer.core
 
         private object access = new object();
 
+        private static List<string> _realmNames = new List<string>()
+        {
+            "Meanem Empire",
+            "Aidisha Empire",
+            "Chasal Empire",
+            "Upiria Kingdom",
+            "Weaston Kingdom",
+            "Shikecaea Dynasty",
+            "Kreakimore Empire",
+            "Ecechourean Empire",
+            "Vrostudel Empire",
+            "Raesrerin Kingdom",
+            "Asoborg Kingdom",
+            "Ochaitia Dynasty",
+            "Purian Kingdom",
+            "Yuiria Empire",
+            "Exunao Dynasty",
+            "Yullaicia Dynasty",
+            "Poggisha Empire",
+            "Grukhanid Empire",
+            "Gaethibet Kingdom",
+            "Daphethen Dynasty"
+        };
+
         public PortalMonitor(GameServer manager, World world)
         {
             _manager = manager;
@@ -42,10 +66,10 @@ namespace wServer.core
 
                 var currWorld = _manager.WorldManager.GetWorld(worldId);
                 if (currWorld == null)
-                {
-                    Console.WriteLine("Unable to locate world");
                     return false;
-                }
+
+                currWorld.DisplayName = _realmNames[_rand.Next(0, _realmNames.Count)];
+                _realmNames.Remove(currWorld.DisplayName);
 
                 var pos = GetRandPosition();
 
@@ -136,6 +160,10 @@ namespace wServer.core
             {
                 if (!_portals.TryGetValue(worldId, out var portal))
                     return;
+
+                var name = portal.WorldInstance.DisplayName;
+                _realmNames.Add(name);
+
                 _world.LeaveWorld(portal);
                 _portals.Remove(worldId);
             }

@@ -16,7 +16,6 @@ namespace wServer.core.worlds.impl
 
         public void AddBranch(World world)
         {
-            Console.WriteLine($"[{world.IdName} {world.Id}] Has been added to: [{Branch.IdName} {Branch.Id}]");
             Branches.Add(world.Id, world);
         }
 
@@ -25,18 +24,13 @@ namespace wServer.core.worlds.impl
         public void Update(ref TickTime time)
         {
             foreach (var world in Branches.Values)
-            {
-                //Console.WriteLine($"[{world.Name} {world.Id}] Ticked");
                 if (world.Update(ref time))
                     ToRemove.Add(world);
-            }
 
             if (ToRemove.Count > 0)
             {
                 foreach (var world in ToRemove)
                 {
-                    Console.WriteLine($"[{world.IdName} {world.Id}] Has been removed from: [{Branch.IdName} {Branch.Id}]");
-
                     world.ParentWorld = null;
                     _ = Branch.GameServer.WorldManager.RemoveWorld(world);
                     _ = Branches.Remove(world.Id);

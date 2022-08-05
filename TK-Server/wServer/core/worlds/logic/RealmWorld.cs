@@ -12,25 +12,6 @@ namespace wServer.core.worlds.logic
     {
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
-        private static string[] _realmNames =
-                {
-            "Lich", "Goblin", "Ghost",
-            "Giant", "Gorgon","Blob",
-            "Leviathan", "Unicorn", "Minotaur",
-            "Cube", "Pirate", "Spider",
-            "Snake", "Deathmage", "Gargoyle",
-            "Scorpion", "Djinn", "Phoenix",
-            "Satyr", "Drake", "Orc",
-            "Flayer", "Cyclops", "Sprite",
-            "Chimera", "Kraken", "Hydra",
-            "Slime", "Ogre", "Hobbit",
-            "Titan", "Medusa", "Golem",
-            "Demon", "Skeleton", "Mummy",
-            "Imp", "Bat", "Wyrm",
-            "Spectre", "Reaper", "Beholder",
-            "Dragon", "Harpy"
-        };
-
         private readonly bool _oryxPresent;
 
         public KingdomManager _overseer { get; private set; }
@@ -104,8 +85,6 @@ namespace wServer.core.worlds.logic
 
         public override void Init()
         {
-            DisplayName = _realmNames[Random.Next(0, _realmNames.Length)];
-
             SetPieces.ApplySetPieces(this);
 
             if (_oryxPresent)

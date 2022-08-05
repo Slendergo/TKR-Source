@@ -1659,7 +1659,7 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string args)
         {
-            var world = player.GameServer.WorldManager.CreateNewWorld("Vault", null, player.GameServer.WorldManager.Nexus);
+            var world = player.GameServer.WorldManager.CreateNewWorld("Vault", null, player.World);
             if (world == null)
             {
                 player.SendInfo("Unable to enter vault: BUG");

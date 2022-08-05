@@ -556,6 +556,22 @@
     </Texture>
     <AngleCorrection>1</AngleCorrection>
   </Object>
+	<Object type="0xac69" id="Fire Elemental Shoot 2">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomProjs</File>
+			<Index>0xc9</Index>
+		</Texture>
+		<Rotation>50</Rotation>
+	</Object>
+	<Object type="0xac70" id="Fire Elemental Shoot 3">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomProjs</File>
+			<Index>0xca</Index>
+		</Texture>
+		<AngleCorrection>1</AngleCorrection>
+	</Object>
   <Object type="0x500c" id="Fire Elemental Wave Shoot">
     <Class>Projectile</Class>
     <Texture>

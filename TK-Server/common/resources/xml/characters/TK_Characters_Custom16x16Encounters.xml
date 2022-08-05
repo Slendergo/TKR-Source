@@ -14,7 +14,35 @@
 		<Size>120</Size>
 		<MaxHitPoints>50000</MaxHitPoints>
 		<Defense>0</Defense>
+		<Speed>60</Speed>
 		<Level>20</Level>
+		<Projectile id="0">
+			<ObjectId>Fire Elemental Shoot</ObjectId>
+			<Damage>180</Damage>
+			<Speed>150</Speed>
+			<Size>150</Size>
+			<LifetimeMS>200</LifetimeMS>
+			<MultiHit />
+			<ArmorPiercing />
+		</Projectile>
+	</Object>
+	<Object type="0x2869" id="Fire Elemental Sword 1">
+		<Enemy />
+		<DisplayId>Fire Elemental Sword</DisplayId>
+		<StasisImmune />
+		<ParalyzeImmune />
+		<Class>Character</Class>
+		<AnimatedTexture>
+			<File>Custom32x32Encounters</File>
+			<Index>0</Index>
+		</AnimatedTexture>
+		<HitSound>monster/lizard_god_hit</HitSound>
+		<DeathSound>monster/lizard_god_death</DeathSound>
+		<Size>120</Size>
+		<MaxHitPoints>50000</MaxHitPoints>
+		<Defense>0</Defense>
+		<Level>20</Level>
+		<Speed>50</Speed>
 		<Projectile id="0">
 			<ObjectId>Fire Elemental Shoot</ObjectId>
 			<Damage>180</Damage>

@@ -399,21 +399,43 @@
     </Projectile>
     <Projectile id="1">
       <ObjectId>Fire Elemental Shoot</ObjectId>
-      <Damage>80</Damage>
-      <Speed>90</Speed>
+      <Damage>125</Damage>
+      <Speed>25</Speed>
       <Size>150</Size>
-      <LifetimeMS>2200</LifetimeMS>
+      <LifetimeMS>4000</LifetimeMS>
       <MultiHit />
+		<Amplitude>0.5</Amplitude>
+		<Frequency>1</Frequency>
+		<Wavy />
     </Projectile>
     <Projectile id="2">
       <ObjectId>Fire Elemental Wave Shoot</ObjectId>
       <Damage>70</Damage>
-      <Speed>65</Speed>
+      <Speed>40</Speed>
       <Size>140</Size>
       <LifetimeMS>3000</LifetimeMS>
       <MultiHit />
       <ArmorPiercing />
     </Projectile>
+	  <Projectile id="3">
+		  <ObjectId>Fire Elemental Shoot 2</ObjectId>
+		  <Damage>80</Damage>
+		  <Speed>90</Speed>
+		  <Size>150</Size>
+		  <LifetimeMS>2200</LifetimeMS>
+		  <MultiHit />
+		  <ConditionEffect duration="3">Bleeding</ConditionEffect>
+		  <ArmorPiercing />
+	  </Projectile>
+	  <Projectile id="4">
+		  <ObjectId>Fire Elemental Shoot 3</ObjectId>
+		  <Damage>70</Damage>
+		  <Speed>65</Speed>
+		  <Size>140</Size>
+		  <LifetimeMS>3000</LifetimeMS>
+		  <MultiHit />
+		  <ArmorPiercing />
+	  </Projectile>
   </Object>
   <Object type="0x5102" id="The Bes Nuttiest Geb Sarcophagus">
     <DisplayId>The Bes Nuttiest Geb Sarcophagus</DisplayId>

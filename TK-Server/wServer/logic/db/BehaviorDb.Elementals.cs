@@ -325,7 +325,40 @@ namespace wServer.logic
                     ),
                 new State("Orbit",
                     new Prioritize(
-                        new Orbit(3, 10, 20, "Fire Elemental", 1, 1)),
+                        new Orbit(5, 8, 20, "Fire Elemental", 1, 1)),
+                    new Shoot(20, 12, projectileIndex: 0, coolDown: 500),
+                    new EntityNotExistsTransition("Fire Elemental", 20, "Die")
+                    ),
+                new State("Orbit 2",
+                    new Prioritize(
+                        new Orbit(5, 5, 20, "Fire Elemental", 1, 1)),
+                    new Shoot(20, 12, projectileIndex: 0, coolDown: 500),
+                    new EntityNotExistsTransition("Fire Elemental", 20, "Die")
+                    ), 
+                new State("Die",
+                    new ChangeSize(10, 0),
+                    new TimedTransition(2000, "Die Two")
+                    ),
+                new State("Die Two",
+                    new Suicide()
+                    )
+                )
+            )
+        .Init("Fire Elemental Sword 1",
+            new State(
+                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new State("Idle",
+                    new TimedTransition(3000, "Orbit")
+                    ),
+                new State("Orbit",
+                    new Prioritize(
+                        new Orbit(5, 8, 20, "Fire Elemental", 1, 1)),
+                    new Shoot(20, 12, projectileIndex: 0, coolDown: 500),
+                    new EntityNotExistsTransition("Fire Elemental", 20, "Die")
+                    ),
+                 new State("Orbit 2",
+                    new Prioritize(
+                        new Orbit(4, 5, 20, "Fire Elemental", 1, 1)),
                     new Shoot(20, 12, projectileIndex: 0, coolDown: 500),
                     new EntityNotExistsTransition("Fire Elemental", 20, "Die")
                     ),
@@ -342,7 +375,7 @@ namespace wServer.logic
             new State(
                 new ConditionalEffect(ConditionEffectIndex.Invincible, true),
                 new State("Idle",
-                    new Shoot(10, 5, coolDown: 500)
+                    new Shoot(10, 5, coolDown: 50)
                     )
                 )
             )
@@ -353,7 +386,11 @@ namespace wServer.logic
                     ),
                 new State("Fire",
                     new Spawn("Elemental Fire Wall", 1, 1, coolDown: 999999),
-                    new EntityNotExistsTransition("Fire Elemental", 20, "dead")
+                    new EntityNotExistsTransition("Fire Elemental", 30, "Kill Wall")
+                    ),
+                new State("Kill Wall",
+                    new RemoveEntity(10, "Elemental Fire Wall"),
+                    new TimedTransition(100, "dead")
                     ),
                 new State("dead",
                     new Suicide()
@@ -362,57 +399,91 @@ namespace wServer.logic
             )
         .Init("Fire Elemental",
             new State(
-                new StayCloseToSpawn(1, 7),
                 new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
-                new ScaleHP2(15),
+                new ScaleHP2(20),
                 new State("Check Player",
-                    new Spawn("Fire Elemental Rotation", 1, 1, 99999999),
-                    new PlayerWithinTransition(20, "Start", false)
+                    new PlayerWithinTransition(20, "Prepare", false)
+                    ),
+                new State("Prepare",
+                    new Taunt("You will burn alive!"),
+                    new TimedTransition(5000, "Start")
                     ),
                 new State("Start",
                     new TossObject2("Fire Elemental Sword", 10, 45, coolDown: 999999),
-                    new TossObject2("Fire Elemental Sword", 10, 225, coolDown: 999999),
-                    new Taunt("You will burn alive!"),
+                    new TossObject2("Fire Elemental Sword 1", 10, 225, coolDown: 999999),
+                    new ReplaceTile("Earth Light 1", "Red Earth Water", 20),                   
                     new TimedTransition(3500, "Start Shooting")
                     ),
                 new State("Start Shooting",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
                     new ChangeSize(10, 150),
-                    new Shoot(20, 8, projectileIndex: 2, coolDown: 1500),
-                    new Shoot(20, 4, projectileIndex: 2, coolDown: 1000),
-                    new HpLessTransition(0.75, "Second Phase")
+                    new RemoveConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new Shoot(20, 9, projectileIndex: 3, coolDown: 1500),
+                    new Shoot(20, 5, projectileIndex: 3, shootAngle: 10, coolDown: 700, predictive: 1.2),
+                    new HpLessTransition(0.66, "Second Phase")
                     ),
                 new State("Second Phase",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
-                    new Taunt("You will see the power of the FIRE!"),
-                    new TimedTransition(1500, "Second Phase Start")
+                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                    new Taunt("You can no longer escape!"),
+                    new OrderOnce(30, "Fire Wall Spawner", "Fire"),
+                    new TimedTransition(3000, "Second Phase Start")
                     ),
                 new State("Second Phase Start",
-                    new Orbit(.6, 7, 20, "Fire Elemental Rotation"),
-                    new Shoot(20, 5, shootAngle: 15, projectileIndex: 1, coolDown: 750),
-                    new Shoot(20, 1, projectileIndex: 0, coolDown: 2500, coolDownOffset: 1250),
-                    new RingAttack(20, 3, 0, projectileIndex: 2, 0.03, 0, 1500),
-                    new Grenade(3, 15, 5, coolDown: 2500, effect: ConditionEffectIndex.Bleeding, effectDuration: 1000),
-                    new Grenade(5, 15, 10, coolDown: 3500, effect: ConditionEffectIndex.Bleeding, effectDuration: 1250),
+                    new OrderOnce(30, "Fire Elemental Sword", "Orbit 2"),
+                    new OrderOnce(30, "Fire Elemental Sword 1", "Orbit 2"),
+                    new RemoveConditionalEffect(ConditionEffectIndex.Invulnerable),
+
+                    new Shoot(20, 1, projectileIndex: 2, fixedAngle: 0, coolDown: 2000, coolDownOffset: 0),
+                    new Shoot(20, 2, shootAngle: 10, fixedAngle: 0, projectileIndex: 2, coolDown: 2000, coolDownOffset: 100),
+                    new Shoot(20, 3, shootAngle: 15, fixedAngle: 0, projectileIndex: 2, coolDown: 2000, coolDownOffset: 200),
+                    new Shoot(20, 2, shootAngle: 10, fixedAngle: 0, projectileIndex: 2, coolDown: 2000, coolDownOffset: 300),
+                    new Shoot(20, 1, projectileIndex: 2, fixedAngle: 0, coolDown: 2000, coolDownOffset: 400),
+
+                    new Shoot(20, 1, projectileIndex: 2, fixedAngle: 75, coolDown: 2000, coolDownOffset: 200),
+                    new Shoot(20, 2, shootAngle: 10, fixedAngle: 75, projectileIndex: 2, coolDown: 2000, coolDownOffset: 300),
+                    new Shoot(20, 3, shootAngle: 15, fixedAngle: 75, projectileIndex: 2, coolDown: 2000, coolDownOffset: 400),
+                    new Shoot(20, 2, shootAngle: 10, fixedAngle: 75, projectileIndex: 2, coolDown: 2000, coolDownOffset: 500),
+                    new Shoot(20, 1, projectileIndex: 2, fixedAngle: 75, coolDown: 2000, coolDownOffset: 600),
+
+                    new Shoot(20, 1, projectileIndex: 2, fixedAngle: 150, coolDown: 2000, coolDownOffset: 400),
+                    new Shoot(20, 2, shootAngle: 10, fixedAngle: 150, projectileIndex: 2, coolDown: 2000, coolDownOffset: 500),
+                    new Shoot(20, 3, shootAngle: 15, fixedAngle: 150, projectileIndex: 2, coolDown: 2000, coolDownOffset: 600),
+                    new Shoot(20, 2, shootAngle: 10, fixedAngle: 150, projectileIndex: 2, coolDown: 2000, coolDownOffset: 700),
+                    new Shoot(20, 1, projectileIndex: 2, fixedAngle: 150, coolDown: 2000, coolDownOffset: 800),
+
+                    new Shoot(20, 1, projectileIndex: 2, fixedAngle: 225, coolDown: 2000, coolDownOffset: 600),
+                    new Shoot(20, 2, shootAngle: 10, fixedAngle: 225, projectileIndex: 2, coolDown: 2000, coolDownOffset: 700),
+                    new Shoot(20, 3, shootAngle: 15, fixedAngle: 225, projectileIndex: 2, coolDown: 2000, coolDownOffset: 800),
+                    new Shoot(20, 2, shootAngle: 10, fixedAngle: 225, projectileIndex: 2, coolDown: 2000, coolDownOffset: 900),
+                    new Shoot(20, 1, projectileIndex: 2, fixedAngle: 225, coolDown: 2000, coolDownOffset: 1000),
+
+                    new Shoot(20, 1, projectileIndex: 2, fixedAngle: 300, coolDown: 2000, coolDownOffset: 1200),
+                    new Shoot(20, 2, shootAngle: 10, fixedAngle: 300, projectileIndex: 2, coolDown: 2000, coolDownOffset: 1400),
+                    new Shoot(20, 3, shootAngle: 15, fixedAngle: 300, projectileIndex: 2, coolDown: 2000, coolDownOffset: 1600),
+                    new Shoot(20, 2, shootAngle: 10, fixedAngle: 300, projectileIndex: 2, coolDown: 2000, coolDownOffset: 1800),
+                    new Shoot(20, 1, projectileIndex: 2, fixedAngle: 300, coolDown: 2000, coolDownOffset: 2000),
+
+                    new Shoot(20, 9, projectileIndex: 0, coolDown: 1200),
                     new HpLessTransition(0.33, "Third Phase Charge")
                     ),
                 new State("Third Phase Charge",
-                    new ChangeSize(10, 200),
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
-                    new ReturnToSpawn(1.5),
+                    new ChangeSize(10, 200),
                     new Taunt("AAAAARRRRRRRRRRGH!"),
-                    new TimedTransition(1500, "Rage")
+                    new TimedTransition(3000, "Rage")
                     ),
                 new State("Rage",
-                    new ReplaceTile("Fire Tile Semi-Lava Right", "Fire Tile Lava Left", 50),
-                    new ReplaceTile("Fire Tile Semi-Lava Left", "Fire Tile Lava Right", 50),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
+                    new RemoveConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new Wander(0.7),
+                    new StayCloseToSpawn(1, 10),
                     new Wander(0.3),
-                    new Shoot(20, 4, shootAngle: 15, projectileIndex: 1, coolDown: 2000),
-                    new Shoot(20, 8, projectileIndex: 1, coolDown: 5000, coolDownOffset: 2500),
-                    new Shoot(20, 5, shootAngle: 15, projectileIndex: 2, coolDown: 2500),
-                    new Shoot(20, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 2000),
-                    new Shoot(20, 8, projectileIndex: 2, coolDown: 5000, coolDownOffset: 2500)
+                    new Shoot(20, 3, shootAngle: 15, projectileIndex: 1, coolDown: 2000, coolDownOffset: 0),
+                    new Shoot(20, 3, shootAngle: 15, projectileIndex: 1, coolDown: 2000, coolDownOffset: 100),
+                    new Shoot(20, 3, shootAngle: 15, projectileIndex: 1, coolDown: 2000, coolDownOffset: 200),
+                    new Shoot(20, 3, shootAngle: 15, projectileIndex: 1, coolDown: 2000, coolDownOffset: 300),
+                    new Shoot(20, 3, shootAngle: 15, projectileIndex: 1, coolDown: 2000, coolDownOffset: 400),
+                    new Shoot(20, 3, shootAngle: 15, projectileIndex: 1, coolDown: 2000, coolDownOffset: 500),
+                    new Shoot(20, 3, shootAngle: 15, projectileIndex: 1, coolDown: 2000, coolDownOffset: 600),
+                    new Shoot(20, 3, shootAngle: 15, projectileIndex: 1, coolDown: 2000, coolDownOffset: 700)
                     )
                 ),
             new Threshold(0.001,

@@ -38,6 +38,8 @@ namespace wServer.core
         public SignalListener SignalListener { get; private set; }
         private bool Running { get; set; } = true;
 
+        private DateTime RestartCloseTime { get; set; }
+
         public GameServer(string[] args)
         {
             if (args.Length > 1)
@@ -118,7 +120,7 @@ namespace wServer.core
 
             var utcNow = DateTime.UtcNow;
             var startedAt = utcNow;
-            var closeTime = utcNow.Add(timeout);
+            RestartCloseTime = utcNow.Add(timeout);
             var restartsIn = utcNow.Add(TimeSpan.FromMinutes(5));
 
             var restart = false;
@@ -127,7 +129,7 @@ namespace wServer.core
             while (Running)
             {
                 // server close event
-                if(!restart && DateTime.UtcNow >= closeTime)
+                if(!restart && DateTime.UtcNow >= RestartCloseTime)
                 {
                     // announce to the server of the restart
 

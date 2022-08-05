@@ -1249,18 +1249,18 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string color)
         {
-            //var end = Program.Restarter.GetRestartTime();
-            //var timeLeft = end.Subtract(DateTime.UtcNow);
+            var end = player.World.GameServer.Restarter.RestartCloseTime;
+            var timeLeft = end.Subtract(DateTime.UtcNow);
 
-            //player.SendInfo(string.Format(
-            //    "The server will be restarted at {0} (on {5}) UTC (countdown: {1}d {2}h {3}m {4}s).",
-            //    end.ToString("dd MMM yyyy"),
-            //    timeLeft.Days.ToString("D2"),
-            //    timeLeft.Hours.ToString("D2"),
-            //    timeLeft.Minutes.ToString("D2"),
-            //    timeLeft.Seconds.ToString("D2"),
-            //    end.ToString("dddd")
-            //));
+            player.SendInfo(string.Format(
+                "The server will be restarted at {0} (on {5}) UTC (countdown: {1}d {2}h {3}m {4}s).",
+                end.ToString("dd MMM yyyy"),
+                timeLeft.Days.ToString("D2"),
+                timeLeft.Hours.ToString("D2"),
+                timeLeft.Minutes.ToString("D2"),
+                timeLeft.Seconds.ToString("D2"),
+                end.ToString("dddd")
+            ));
             return true;
         }
     }

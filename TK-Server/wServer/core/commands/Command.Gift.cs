@@ -34,15 +34,7 @@ namespace wServer.core.commands
                 var playerName = args.Substring(0, index);
                 var item = GetItem(player, args.Substring(index + 1));
                 if (item == null)
-                {
                     return false;
-                }
-
-                if ((item.Soulbound || item.ObjectId == "Ring of The Talisman's Kingdom" || item.ObjectId == "Excalibur") && (player.Client.Account.Name != "Filisha" || player.Client.Account.Name != "ModNidhogg"))
-                {
-                    player.SendError("What are you trying to do!?");
-                    return false;
-                }
 
                 // get player account
                 if (Database.GuestNames.Contains(playerName, StringComparer.InvariantCultureIgnoreCase))

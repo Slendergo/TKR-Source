@@ -9,7 +9,7 @@ namespace common
         public string logFolder { get; set; } = "undefined";
         public int maxConnections { get; set; } = 0;
         public int maxPlayers { get; set; } = 0;
-        public int realms { get; set; } = 3;
+        public int realms { get; set; } = 2;
         public string resourceFolder { get; set; } = "undefined";
         public int restartTime { get; set; } = 0;
         public string version { get; set; } = "undefined";

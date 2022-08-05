@@ -788,11 +788,11 @@ namespace common.database
         {
             var abi = new DbIpInfo(_db, ip);
 
-            if (!abi.IsNull)
+            if (!abi.IsNull && !abi.Accounts.Contains(accountId))
                 abi.Accounts.Add(accountId);
             else
                 abi.Accounts = new List<int>() { accountId };
-
+            abi.Accounts = abi.Accounts.Distinct().ToList();
             abi.Flush();
         }
 

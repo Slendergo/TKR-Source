@@ -1249,7 +1249,7 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string color)
         {
-            var end = player.World.GameServer.Restarter.RestartCloseTime;
+            var end = player.World.GameServer.RestartCloseTime;
             var timeLeft = end.Subtract(DateTime.UtcNow);
 
             player.SendInfo(string.Format(

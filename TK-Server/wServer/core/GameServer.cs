@@ -38,7 +38,7 @@ namespace wServer.core
         public SignalListener SignalListener { get; private set; }
         private bool Running { get; set; } = true;
 
-        private DateTime RestartCloseTime { get; set; }
+        public DateTime RestartCloseTime { get; private set; }
 
         public GameServer(string[] args)
         {

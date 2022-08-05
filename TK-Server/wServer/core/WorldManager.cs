@@ -146,15 +146,10 @@ namespace wServer.core
         public bool RemoveWorld(World world)
         {
             if (Threads.TryRemove(world.Id, out var thread))
-            {
-                Console.WriteLine($"Removed Thread: {world.Id} {world.DisplayName}");
                 thread.Stop();
-            }
 
             if (Worlds.TryRemove(world.Id, out _))
             {
-                Console.WriteLine($"Removed World: {world.Id} {world.DisplayName}");
-
                 switch (world.InstanceType)
                 {
                     case WorldResourceInstanceType.Vault:

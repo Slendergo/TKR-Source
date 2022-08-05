@@ -785,7 +785,7 @@ namespace wServer.core.objects
                 var handler = MessageHandlers.GetHandler(incomingMessage.MessageId);
                 if (handler == null)
                 {
-                    SLogger.Instance.Error($"Unknown MessageId: {incomingMessage.MessageId}");
+                    SLogger.Instance.Error($"Unknown MessageId: {incomingMessage.MessageId} - {Client.IpAddress}");
                     continue;
                 }
 

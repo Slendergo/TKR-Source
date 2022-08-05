@@ -13,7 +13,7 @@ namespace wServer.core.commands
 
             protected override bool Process(Player player, TickTime time, string args)
             {
-                var db = player.CoreServerManager.Database;
+                var db = player.GameServer.Database;
 
                 // validate command
                 var rgx = new Regex(@"^(\w+)$");

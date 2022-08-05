@@ -16,7 +16,7 @@ namespace wServer.core.setpieces
 
         public override void RenderSetPiece(World world, IntPoint pos)
         {
-            var dat = world.Manager.Resources.GameData;
+            var dat = world.GameServer.Resources.GameData;
             var p = new IntPoint
             {
                 X = pos.X - (Size / 2),
@@ -41,7 +41,7 @@ namespace wServer.core.setpieces
                         tile.ObjType = 0;
                         world.Map[x + p.X, y + p.Y] = tile;
 
-                        var en = Entity.Resolve(world.Manager, "Realm Portal");
+                        var en = Entity.Resolve(world.GameServer, "Realm Portal");
                         en.Move(x + p.X + 0.5f, y + p.Y + 0.5f);
                         world.EnterWorld(en);
                     }

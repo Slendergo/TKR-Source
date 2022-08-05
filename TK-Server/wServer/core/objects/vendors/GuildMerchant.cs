@@ -10,7 +10,7 @@ namespace wServer.core.objects.vendors
         private int[] _hallPrices = new int[] { 10000, 100000, 250000 };
         private int[] _hallTypes = new int[] { 0x0736, 0x0737, 0x0738 };
 
-        public GuildMerchant(CoreServerManager manager, ushort objType) : base(manager, objType)
+        public GuildMerchant(GameServer manager, ushort objType) : base(manager, objType)
         {
             Currency = CurrencyType.Fame;
             Price = Int32.MaxValue; // just in case for some reason _hallType isn't found
@@ -28,8 +28,8 @@ namespace wServer.core.objects.vendors
 
         public override void Buy(Player player)
         {
-            var account = player.CoreServerManager.Database.GetAccount(player.AccountId);
-            var guild = player.CoreServerManager.Database.GetGuild(account.GuildId);
+            var account = player.GameServer.Database.GetAccount(player.AccountId);
+            var guild = player.GameServer.Database.GetGuild(account.GuildId);
 
             if (guild.IsNull || account.GuildRank < 30)
             {
@@ -48,13 +48,13 @@ namespace wServer.core.objects.vendors
             }
 
             // change guild level
-            if (!player.CoreServerManager.Database.ChangeGuildLevel(guild, _upgradeLevel))
+            if (!player.GameServer.Database.ChangeGuildLevel(guild, _upgradeLevel))
             {
                 player.SendError("Internal server error.");
                 return;
             }
 
-            player.CoreServerManager.Database.UpdateGuildFame(guild, -Price);
+            player.GameServer.Database.UpdateGuildFame(guild, -Price);
             guild.GuildLootBoost = guild.GuildLootBoost + 0.05f;
             guild.FlushAsync();
 

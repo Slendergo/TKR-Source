@@ -115,7 +115,7 @@ namespace wServer.core.setpieces
 
             var w = t.GetLength(0);
             var h = t.GetLength(1);
-            var dat = world.Manager.Resources.GameData;
+            var dat = world.GameServer.Resources.GameData;
 
             for (var x = 0; x < w; x++)     //Rendering
                 for (var y = 0; y < h; y++)
@@ -158,7 +158,7 @@ namespace wServer.core.setpieces
                         tile.TileId = dat.IdToTileType[Floor];
                         tile.UpdateCount++;
 
-                        var wall = Entity.Resolve(world.Manager, dat.IdToObjectType[WallB]);
+                        var wall = Entity.Resolve(world.GameServer, dat.IdToObjectType[WallB]);
                         wall.Move(x + pos.X + 0.5f, y + pos.Y + 0.5f);
                         world.EnterWorld(wall);
                     }
@@ -170,8 +170,8 @@ namespace wServer.core.setpieces
                     }
                     else if (t[x, y] == 7)
                     {
-                        var container = new Container(world.Manager, 0x0501, null, false);
-                        var items = chest.CalculateItems(world.Manager, 5, 8).ToArray();
+                        var container = new Container(world.GameServer, 0x0501, null, false);
+                        var items = chest.CalculateItems(world.GameServer, 5, 8).ToArray();
 
                         for (var i = 0; i < items.Length; i++)
                             container.Inventory[i] = items[i];
@@ -181,7 +181,7 @@ namespace wServer.core.setpieces
                     }
                     else if (t[x, y] == 8)
                     {
-                        var cyclops = Entity.Resolve(world.Manager, "Cyclops God");
+                        var cyclops = Entity.Resolve(world.GameServer, "Cyclops God");
                         cyclops.Move(pos.X + x, pos.Y + y);
                         world.EnterWorld(cyclops);
                     }

@@ -41,7 +41,7 @@ namespace wServer.core.objects
                 return;
             }
 
-            CoreServerManager.Database.ReloadAccount(Client.Account);
+            GameServer.Database.ReloadAccount(Client.Account);
 
             var acc = Client.Account;
 

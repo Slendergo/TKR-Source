@@ -18,7 +18,7 @@ namespace wServer.core.commands
                     player.SendError("Nope.");
                     return false;
                 }
-                DbMarketData.ForceCleanMarket(Program.CoreServerManager.Database);
+                DbMarketData.ForceCleanMarket(player.GameServer.Database);
                 player.SendInfo("Done.");
                 return true;
             }

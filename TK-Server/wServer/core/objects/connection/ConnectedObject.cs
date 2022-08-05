@@ -4,7 +4,7 @@ namespace wServer.core.objects.connection
 {
     public class ConnectedObject : StaticObject
     {
-        public ConnectedObject(CoreServerManager manager, ushort objType) : base(manager, objType, null, true, false, true)
+        public ConnectedObject(GameServer manager, ushort objType) : base(manager, objType, null, true, false, true)
         { }
 
         public ConnectedObjectInfo Connection { get; set; }

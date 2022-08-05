@@ -40,7 +40,7 @@ namespace wServer.core.net.handlers
                     player.Stats.Base.ReCalculateValues();
                     player.Stats.Boost.ReCalculateValues();
                     acc.FlushAsync();
-                    dummy = player.CoreServerManager.ConnectionManager.Clients
+                    dummy = player.GameServer.ConnectionManager.Clients
                         .Keys.Where(_ => _.Account.Name.Equals(player.Name))
                         .SingleOrDefault();
                     dummy?.Disconnect("Magician Upgrade");
@@ -59,7 +59,7 @@ namespace wServer.core.net.handlers
                     player.Stats.Base.ReCalculateValues();
                     player.Stats.Boost.ReCalculateValues();
                     acc.FlushAsync();
-                    dummy = player.CoreServerManager.ConnectionManager.Clients
+                    dummy = player.GameServer.ConnectionManager.Clients
                         .Keys.Where(_ => _.Account.Name.Equals(player.Name))
                         .SingleOrDefault();
                     dummy?.Disconnect("Magician Upgrade");
@@ -78,7 +78,7 @@ namespace wServer.core.net.handlers
                     player.Stats.Base.ReCalculateValues();
                     player.Stats.Boost.ReCalculateValues();
                     acc.FlushAsync();
-                    dummy = player.CoreServerManager.ConnectionManager.Clients
+                    dummy = player.GameServer.ConnectionManager.Clients
                         .Keys.Where(_ => _.Account.Name.Equals(player.Name))
                         .SingleOrDefault();
                     dummy?.Disconnect("Magician Upgrade");
@@ -97,7 +97,7 @@ namespace wServer.core.net.handlers
                     player.Stats.Base.ReCalculateValues();
                     player.Stats.Boost.ReCalculateValues();
                     acc.FlushAsync();
-                    dummy = player.CoreServerManager.ConnectionManager.Clients
+                    dummy = player.GameServer.ConnectionManager.Clients
                         .Keys.Where(_ => _.Account.Name.Equals(player.Name))
                         .SingleOrDefault();
                     dummy?.Disconnect("Magician Upgrade");
@@ -116,7 +116,7 @@ namespace wServer.core.net.handlers
                     player.Stats.Base.ReCalculateValues();
                     player.Stats.Boost.ReCalculateValues();
                     acc.FlushAsync();
-                    dummy = player.CoreServerManager.ConnectionManager.Clients
+                    dummy = player.GameServer.ConnectionManager.Clients
                         .Keys.Where(_ => _.Account.Name.Equals(player.Name))
                         .SingleOrDefault();
                     dummy?.Disconnect("Magician Upgrade");
@@ -135,7 +135,7 @@ namespace wServer.core.net.handlers
                     player.Stats.Base.ReCalculateValues();
                     player.Stats.Boost.ReCalculateValues();
                     acc.FlushAsync();
-                    dummy = player.CoreServerManager.ConnectionManager.Clients
+                    dummy = player.GameServer.ConnectionManager.Clients
                         .Keys.Where(_ => _.Account.Name.Equals(player.Name))
                         .SingleOrDefault();
                     dummy?.Disconnect("Magician Upgrade");
@@ -154,7 +154,7 @@ namespace wServer.core.net.handlers
                     player.Stats.Base.ReCalculateValues();
                     player.Stats.Boost.ReCalculateValues();
                     acc.FlushAsync();
-                    dummy = player.CoreServerManager.ConnectionManager.Clients
+                    dummy = player.GameServer.ConnectionManager.Clients
                         .Keys.Where(_ => _.Account.Name.Equals(player.Name))
                         .SingleOrDefault();
                     dummy?.Disconnect("Magician Upgrade");
@@ -173,7 +173,7 @@ namespace wServer.core.net.handlers
                     player.Stats.Base.ReCalculateValues();
                     player.Stats.Boost.ReCalculateValues();
                     acc.FlushAsync();
-                    dummy = player.CoreServerManager.ConnectionManager.Clients
+                    dummy = player.GameServer.ConnectionManager.Clients
                         .Keys.Where(_ => _.Account.Name.Equals(player.Name))
                         .SingleOrDefault();
                     dummy?.Disconnect("Magician Upgrade");
@@ -192,7 +192,7 @@ namespace wServer.core.net.handlers
                     player.Stats.Base.ReCalculateValues();
                     player.Stats.Boost.ReCalculateValues();
                     acc.FlushAsync();
-                    dummy = player.CoreServerManager.ConnectionManager.Clients
+                    dummy = player.GameServer.ConnectionManager.Clients
                         .Keys.Where(_ => _.Account.Name.Equals(player.Name))
                         .SingleOrDefault();
                     dummy?.Disconnect("Magician Upgrade");
@@ -211,7 +211,7 @@ namespace wServer.core.net.handlers
                     player.Stats.Base.ReCalculateValues();
                     player.Stats.Boost.ReCalculateValues();
                     acc.FlushAsync();
-                    dummy = player.CoreServerManager.ConnectionManager.Clients
+                    dummy = player.GameServer.ConnectionManager.Clients
                         .Keys.Where(_ => _.Account.Name.Equals(player.Name))
                         .SingleOrDefault();
                     dummy?.Disconnect("Magician Upgrade");

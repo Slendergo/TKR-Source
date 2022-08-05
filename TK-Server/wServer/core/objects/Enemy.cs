@@ -19,7 +19,7 @@ namespace wServer.core.objects
         private float bleeding = 0;
         private Position? pos;
 
-        public Enemy(CoreServerManager manager, ushort objType) : base(manager, objType)
+        public Enemy(GameServer manager, ushort objType) : base(manager, objType)
         {
             stat = ObjectDesc.MaxHP == 0;
             DamageCounter = new DamageCounter(this);
@@ -164,7 +164,7 @@ namespace wServer.core.objects
             DamageCounter.Death(time);
 
             CurrentState?.OnDeath(this, ref time);
-            if (CoreServerManager.BehaviorDb.Definitions.TryGetValue(ObjectType, out var loot))
+            if (GameServer.BehaviorDb.Definitions.TryGetValue(ObjectType, out var loot))
                 loot.Item2?.Handle(this, time);
             World.LeaveWorld(this);
         }

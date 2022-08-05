@@ -84,9 +84,9 @@ namespace wServer.core.net.handlers
 
             if (con is GiftChest)
             {
-                var trans = player.CoreServerManager.Database.Conn.CreateTransaction();
+                var trans = player.GameServer.Database.Conn.CreateTransaction();
 
-                player.CoreServerManager.Database.RemoveGift(player.Client.Account, item.ObjectType, trans);
+                player.GameServer.Database.RemoveGift(player.Client.Account, item.ObjectType, trans);
 
                 if (!trans.Execute())
                 {
@@ -96,7 +96,7 @@ namespace wServer.core.net.handlers
             }
 
             var isSoulbound = item.Soulbound || item.Revenge || item.Legendary || item.BagType >= 3 || item.SPlus || item.SNormal || item.Tier >= 7;
-            var container = new Container(player.CoreServerManager, isSoulbound ? soulBag : normBag, 60000, true);
+            var container = new Container(player.GameServer, isSoulbound ? soulBag : normBag, 60000, true);
 
             if (isSoulbound) //TODOS LOS ITEMS SE DROPEAN EN SOULBOUND BAG
                 container.BagOwners = new int[] { player.AccountId };

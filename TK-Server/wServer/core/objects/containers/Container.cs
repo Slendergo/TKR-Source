@@ -9,9 +9,9 @@ namespace wServer.core.objects
     {
         private const int BagSize = 8;
 
-        public Container(CoreServerManager manager, ushort objType, int? life, bool dying, RInventory dbLink = null) : base(manager, objType, life, false, dying, false) => Initialize(dbLink);
+        public Container(GameServer manager, ushort objType, int? life, bool dying, RInventory dbLink = null) : base(manager, objType, life, false, dying, false) => Initialize(dbLink);
 
-        public Container(CoreServerManager manager, ushort id) : base(manager, id, null, false, false, false) => Initialize(null);
+        public Container(GameServer manager, ushort id) : base(manager, id, null, false, false, false) => Initialize(null);
 
         public int[] BagOwners { get; set; }
         public RInventory DbLink { get; private set; }
@@ -75,7 +75,7 @@ namespace wServer.core.objects
             BagOwners = new int[0];
             DbLink = dbLink;
 
-            var node = CoreServerManager.Resources.GameData.ObjectTypeToElement[ObjectType];
+            var node = GameServer.Resources.GameData.ObjectTypeToElement[ObjectType];
 
             SlotTypes = Utils.ResizeArray(node.Element("SlotTypes").Value.CommaToArray<int>(), BagSize);
 
@@ -83,7 +83,7 @@ namespace wServer.core.objects
 
             if (eq != null)
             {
-                var inv = eq.Value.CommaToArray<ushort>().Select(_ => _ == 0xffff ? null : CoreServerManager.Resources.GameData.Items[_]).ToArray();
+                var inv = eq.Value.CommaToArray<ushort>().Select(_ => _ == 0xffff ? null : GameServer.Resources.GameData.Items[_]).ToArray();
 
                 Array.Resize(ref inv, BagSize);
 

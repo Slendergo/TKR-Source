@@ -23,7 +23,7 @@ namespace wServer.core.net.handlers
                 return;
             }
 
-            foreach (var entry in client.CoreServerManager.ConnectionManager.Clients)
+            foreach (var entry in client.GameServer.ConnectionManager.Clients)
             {
                 var cli = entry.Key;
                 if (cli.Player == null || cli.Account == null || !cli.Account.Name.Equals(name))

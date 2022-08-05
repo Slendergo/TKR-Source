@@ -16,7 +16,7 @@ namespace wServer.core.commands
 
             protected override bool Process(Player player, TickTime time, string args)
             {
-                var manager = player.CoreServerManager;
+                var manager = player.GameServer;
                 var db = manager.Database;
 
                 // validate command

@@ -12,9 +12,9 @@ namespace wServer.core.commands
         {
             private static readonly Regex CmdParams = new Regex(@"^(\w+)( \d+)?$", RegexOptions.IgnoreCase);
 
-            private readonly CoreServerManager _manager;
+            private readonly GameServer _manager;
 
-            public Mute(CoreServerManager manager) : base("mute", permLevel: 80)
+            public Mute(GameServer manager) : base("mute", permLevel: 80)
             {
                 _manager = manager;
                 _manager.DbEvents.Expired += HandleUnMute;

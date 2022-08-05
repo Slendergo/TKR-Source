@@ -71,8 +71,8 @@ namespace wServer.core.net.handlers
                         {
                             if (from is GiftChest && stackTrans[slotFrom] != null)
                             {
-                                var trans = player.CoreServerManager.Database.Conn.CreateTransaction();
-                                player.CoreServerManager.Database.RemoveGift(player.Client.Account, stackTrans[slotFrom].ObjectType, trans);
+                                var trans = player.GameServer.Database.Conn.CreateTransaction();
+                                player.GameServer.Database.RemoveGift(player.Client.Account, stackTrans[slotFrom].ObjectType, trans);
                                 trans.Execute();
                             }
                             stackTrans[slotFrom] = null;
@@ -720,7 +720,7 @@ namespace wServer.core.net.handlers
             // swap items
             if (Inventory.Execute(conFromTrans, conToTrans))
             {
-                var db = player.CoreServerManager.Database;
+                var db = player.GameServer.Database;
                 var trans = db.Conn.CreateTransaction();
 
                 if (from is GiftChest && itemFrom != null) db.RemoveGift(player.Client.Account, itemFrom.ObjectType, trans);

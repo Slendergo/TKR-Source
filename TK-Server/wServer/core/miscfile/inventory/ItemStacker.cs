@@ -12,7 +12,7 @@ namespace wServer.core
         {
             Owner = owner;
             Slot = slot;
-            Item = Owner.CoreServerManager.Resources.GameData.Items[objectType];
+            Item = Owner.GameServer.Resources.GameData.Items[objectType];
             MaxCount = maxCount;
 
             _count = new SV<int>(owner, GetStatsType(slot), count);

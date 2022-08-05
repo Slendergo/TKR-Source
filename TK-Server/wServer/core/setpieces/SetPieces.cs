@@ -88,7 +88,7 @@ namespace wServer.core.setpieces
 
         public static void RenderFromData(World world, IntPoint pos, byte[] data)
         {
-            var manager = world.Manager;
+            var manager = world.GameServer;
 
             var ms = new MemoryStream(data);
             var sp = new Wmap(manager.Resources.GameData);

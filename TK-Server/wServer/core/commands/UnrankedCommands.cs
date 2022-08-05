@@ -48,7 +48,7 @@ namespace wServer.core.commands
                 return false;
             }
 
-            return player.CoreServerManager.ChatManager.Party(player, args);
+            return player.GameServer.ChatManager.Party(player, args);
         }
     }
 
@@ -110,7 +110,7 @@ namespace wServer.core.commands
                     return false;
                 }
 
-                if (!party.LeaderIsVip(Program.CoreServerManager.Database))
+                if (!party.LeaderIsVip(player.GameServer.Database))
                 {
                     player.SendError("<Error> VIPs cannot be the Leader of a Party.");
                     return false;
@@ -122,7 +122,7 @@ namespace wServer.core.commands
                     return false;
                 }
 
-                Database DB = player.CoreServerManager.Database;
+                Database DB = player.GameServer.Database;
 
                 HashSet<DbAccount> members = new HashSet<DbAccount>();
                 foreach (var member in party.PartyMembers)
@@ -162,7 +162,7 @@ namespace wServer.core.commands
 
                 if (party != null)
                 {
-                    if (!party.LeaderIsVip(Program.CoreServerManager.Database))
+                    if (!party.LeaderIsVip(player.GameServer.Database))
                     {
                         player.SendError("<Error> VIPs cannot be the Leader of a Party.");
                         return false;
@@ -174,8 +174,8 @@ namespace wServer.core.commands
                     }
                     else
                     {
-                        player.CoreServerManager.Database.LeaveFromParty(db, player.Name, player.Client.Account.PartyId, player.CoreServerManager.Database);
-                        player.CoreServerManager.ChatManager.Party(player, player.Name + " has left the Party!");
+                        player.GameServer.Database.LeaveFromParty(db, player.Name, player.Client.Account.PartyId, player.GameServer.Database);
+                        player.GameServer.ChatManager.Party(player, player.Name + " has left the Party!");
                     }
                 }
                 else
@@ -210,7 +210,7 @@ namespace wServer.core.commands
 
             var party = DbPartySystem.Get(db, player.Client.Account.PartyId);
 
-            if (party != null && !party.LeaderIsVip(Program.CoreServerManager.Database) || !player.CanUseThisFeature(Player.GenericRank.VIP))
+            if (party != null && !party.LeaderIsVip(player.GameServer.Database) || !player.CanUseThisFeature(Player.GenericRank.VIP))
             {
                 player.SendError("<Error> VIPs cannot be the Leader of a Party.");
                 return false;
@@ -254,7 +254,7 @@ namespace wServer.core.commands
                 return false;
             }
 
-            foreach (var client in player.CoreServerManager.ConnectionManager.Clients.Keys)
+            foreach (var client in player.GameServer.ConnectionManager.Clients.Keys)
             {
                 if (!client.Account.Name.EqualsIgnoreCase(args) || client.Player == null || client.Account == null)
                     continue;
@@ -306,7 +306,7 @@ namespace wServer.core.commands
                 return false;
             }
 
-            if (!party.LeaderIsVip(Program.CoreServerManager.Database))
+            if (!party.LeaderIsVip(player.GameServer.Database))
             {
                 player.SendError("<Error> VIPs cannot be the Leader of a Party.");
                 return false;
@@ -334,7 +334,7 @@ namespace wServer.core.commands
             {
                 if (member.name.EqualsIgnoreCase(args))
                 {
-                    var db = player.CoreServerManager.Database;
+                    var db = player.GameServer.Database;
                     var acc = db.GetAccount(member.accid);
 
                     acc.PartyId = 0;
@@ -344,7 +344,7 @@ namespace wServer.core.commands
                     party.PartyMembers.Remove(member);
                     db.FlushParty(party.PartyId, party);
 
-                    var playerDemoted = player.CoreServerManager.ConnectionManager.Clients.Keys.Where(c => c.Player != null && c.Player.Name == member.name && c.Player.AccountId == member.accid).Select(c => c.Player).ToArray();
+                    var playerDemoted = player.GameServer.ConnectionManager.Clients.Keys.Where(c => c.Player != null && c.Player.Name == member.name && c.Player.AccountId == member.accid).Select(c => c.Player).ToArray();
 
                     if (playerDemoted != null)
                     {
@@ -352,7 +352,7 @@ namespace wServer.core.commands
                         playerDemoted[0].InvokeStatChange(StatDataType.PartyId, playerDemoted[0].Client.Account.PartyId, true);
                     }
 
-                    player.CoreServerManager.ChatManager.Party(player, player.Name + " has been removed from the Party.");
+                    player.GameServer.ChatManager.Party(player, player.Name + " has been removed from the Party.");
                     player.SendInfo($"{acc.Name} removed from the Party.");
                     return true;
                 }
@@ -384,13 +384,13 @@ namespace wServer.core.commands
                 return false;
             }
 
-            if (!party.LeaderIsVip(Program.CoreServerManager.Database))
+            if (!party.LeaderIsVip(player.GameServer.Database))
             {
                 player.SendError("<Error> VIPs cannot be the Leader of a Party.");
                 return false;
             }
 
-            var leader = player.CoreServerManager.ConnectionManager.Clients.Keys.Where(c => c.Player != null && c.Player.Name == party.PartyLeader.Item1 && c.Player.AccountId == party.PartyLeader.Item2 && c.Account.PartyId == party.PartyId).Select(c => c.Player).ToArray();
+            var leader = player.GameServer.ConnectionManager.Clients.Keys.Where(c => c.Player != null && c.Player.Name == party.PartyLeader.Item1 && c.Player.AccountId == party.PartyLeader.Item2 && c.Account.PartyId == party.PartyId).Select(c => c.Player).ToArray();
 
             if (leader == null)
             {
@@ -403,24 +403,24 @@ namespace wServer.core.commands
                 return false;
             }
 
-            var world = player.CoreServerManager.WorldManager.GetWorld(leader[0].World.Id);
+            var world = player.GameServer.WorldManager.GetWorld(leader[0].World.Id);
 
             if (world == null)
             {
-                player.CoreServerManager.Database.FlushParty(party.PartyId, party);
+                player.GameServer.Database.FlushParty(party.PartyId, party);
                 player.SendError("World doesn't exists.");
                 return false;
             }
             if (world.Id != party.ReturnWorldId() || party.ReturnWorldId() == -1 && world != null)
             {
-                player.CoreServerManager.Database.FlushParty(party.PartyId, party);
+                player.GameServer.Database.FlushParty(party.PartyId, party);
                 player.SendError("You need an invitation to join to the world!");
                 return false;
             }
             if (party.ReturnWorldId() != -1 && (world.InstanceType == WorldResourceInstanceType.Guild || world is VaultWorld || world is NexusWorld))
             {
                 party.WorldId = -1;
-                player.CoreServerManager.Database.FlushParty(party.PartyId, party);
+                player.GameServer.Database.FlushParty(party.PartyId, party);
                 player.SendError("You can't connect to those Worlds.");
                 return false;
             }
@@ -450,7 +450,7 @@ namespace wServer.core.commands
                     return false;
                 }
 
-                if (!party.LeaderIsVip(Program.CoreServerManager.Database))
+                if (!party.LeaderIsVip(player.GameServer.Database))
                 {
                     player.SendError("<Error> VIPs cannot be the Leader of a Party.");
                     return false;
@@ -482,7 +482,7 @@ namespace wServer.core.commands
 
                 try
                 {
-                    player.CoreServerManager.Database.FlushParty(party.PartyId, party);
+                    player.GameServer.Database.FlushParty(party.PartyId, party);
                 }
                 catch (Exception e)
                 {
@@ -492,7 +492,7 @@ namespace wServer.core.commands
 
                 foreach (var member in party.PartyMembers)
                 {
-                    var clientMember = player.CoreServerManager.ConnectionManager.Clients.Keys.Where(c => c.Player != null && c.Account.Name == member.name && c.Account.AccountId == member.accid).Select(c => c.Player).ToArray();
+                    var clientMember = player.GameServer.ConnectionManager.Clients.Keys.Where(c => c.Player != null && c.Account.Name == member.name && c.Account.AccountId == member.accid).Select(c => c.Player).ToArray();
                     clientMember[0].SendInfo($"You have invited to a {world.IdName ?? world.DisplayName}! use the command /pjoin to connect!");
                     return true;
                 }
@@ -539,7 +539,7 @@ namespace wServer.core.commands
             player.SendInfo("Party Information: ");
             player.SendInfo($"Party ID: {party.PartyId}");
             player.SendInfo($"Party Leader => Name: {party.PartyLeader.Item1}");
-            player.SendInfo($"Party Max Players: {DbPartySystem.ReturnSize(player.CoreServerManager.Database.GetAccount(party.PartyLeader.Item2).Rank)}");
+            player.SendInfo($"Party Max Players: {DbPartySystem.ReturnSize(player.GameServer.Database.GetAccount(party.PartyLeader.Item2).Rank)}");
             player.SendInfo("Members: ");
             foreach (var member in party.PartyMembers)
             {
@@ -564,8 +564,8 @@ namespace wServer.core.commands
                 player.SendError("Must join a guild first!");
                 return false;
             }
-            var account = player.CoreServerManager.Database.GetAccount(player.AccountId);
-            var guild = player.CoreServerManager.Database.GetGuild(account.GuildId);
+            var account = player.GameServer.Database.GetAccount(player.AccountId);
+            var guild = player.GameServer.Database.GetGuild(account.GuildId);
             player.SendInfo("Total Guild Points: " + guild.GuildPoints);
             return true;
         }
@@ -597,7 +597,7 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string args)
         {
-            var account = player.CoreServerManager.Database.GetAccount(player.AccountId);
+            var account = player.GameServer.Database.GetAccount(player.AccountId);
             player.SendInfo("Enemies Killed: " + account.EnemiesKilled);
             return true;
         }
@@ -660,7 +660,7 @@ namespace wServer.core.commands
             player.Client.Reconnect(new Reconnect()
             {
                 Host = "",
-                Port = player.CoreServerManager.ServerConfig.serverInfo.port,
+                Port = player.GameServer.Configuration.serverInfo.port,
                 GameId = World.ClothBazaar,
                 Name = "Cloth Bazaar"
             });
@@ -700,7 +700,7 @@ namespace wServer.core.commands
                 return false;
             }
 
-            return player.CoreServerManager.ChatManager.Guild(player, args);
+            return player.GameServer.ChatManager.Guild(player, args);
         }
     }
 
@@ -774,18 +774,18 @@ namespace wServer.core.commands
                 return false;
             }
 
-            var targetAccId = player.Client.CoreServerManager.Database.ResolveId(playerName);
+            var targetAccId = player.Client.GameServer.Database.ResolveId(playerName);
             if (targetAccId == 0)
             {
                 player.SendError("Player not found");
                 return false;
             }
 
-            var targetClient = player.Client.CoreServerManager.ConnectionManager.Clients
+            var targetClient = player.Client.GameServer.ConnectionManager.Clients
                 .KeyWhereAsParallel(_ => _.Account != null && _.Account.AccountId == targetAccId)
                 .FirstOrDefault();
 
-            var servers = player.CoreServerManager.InterServerManager.GetServerList();
+            var servers = player.GameServer.InterServerManager.GetServerList();
             foreach (var server in servers)
             {
                 foreach (PlayerInfo plr in server.playerList)
@@ -845,7 +845,7 @@ namespace wServer.core.commands
             if (player.World is Test)
                 return false;
 
-            var manager = player.Client.CoreServerManager;
+            var manager = player.Client.GameServer;
 
             // if resigning
             if (player.Name.Equals(name))
@@ -875,7 +875,7 @@ namespace wServer.core.commands
             }
 
             // find target player (if connected)
-            var targetClient = player.Client.CoreServerManager.ConnectionManager.Clients
+            var targetClient = player.Client.GameServer.ConnectionManager.Clients
                 .KeyWhereAsParallel(_ => _.Account != null && _.Account.AccountId == targetAccId)
                 .FirstOrDefault();
 
@@ -942,9 +942,9 @@ namespace wServer.core.commands
                 return false;
             }
 
-            var pServer = player.CoreServerManager.ServerConfig.serverInfo.name;
+            var pServer = player.GameServer.Configuration.serverInfo.name;
             var pGuild = player.Client.Account.GuildId;
-            var servers = player.CoreServerManager.InterServerManager.GetServerList();
+            var servers = player.GameServer.InterServerManager.GetServerList();
             var result =
                 from server in servers
                 from plr in server.playerList
@@ -979,7 +979,7 @@ namespace wServer.core.commands
         protected override bool Process(Player player, TickTime time, string args)
         {
             StringBuilder sb = new StringBuilder("Available commands: ");
-            var cmds = player.CoreServerManager.CommandManager.Commands.Values.Distinct()
+            var cmds = player.GameServer.CommandManager.Commands.Values.Distinct()
                 .Where(x => x.HasPermission(player) && x.ListCommand)
                 .ToArray();
             Array.Sort(cmds, (c1, c2) => c1.CommandName.CompareTo(c2.CommandName));
@@ -1017,8 +1017,8 @@ namespace wServer.core.commands
                 return false;
             }
 
-            var target = player.CoreServerManager.Database.ResolveId(playerName);
-            var targetAccount = player.CoreServerManager.Database.GetAccount(target);
+            var target = player.GameServer.Database.ResolveId(playerName);
+            var targetAccount = player.GameServer.Database.GetAccount(target);
             var srcAccount = player.Client.Account;
 
             if (target == 0 || targetAccount == null || targetAccount.Hidden && player.Rank < 100)
@@ -1027,7 +1027,7 @@ namespace wServer.core.commands
                 return false;
             }
 
-            player.CoreServerManager.Database.IgnoreAccount(srcAccount, targetAccount, true);
+            player.GameServer.Database.IgnoreAccount(srcAccount, targetAccount, true);
 
             player.Client.SendPacket(new AccountList()
             {
@@ -1101,8 +1101,8 @@ namespace wServer.core.commands
                 return false;
             }
 
-            var target = player.CoreServerManager.Database.ResolveId(playerName);
-            var targetAccount = player.CoreServerManager.Database.GetAccount(target);
+            var target = player.GameServer.Database.ResolveId(playerName);
+            var targetAccount = player.GameServer.Database.GetAccount(target);
             var srcAccount = player.Client.Account;
 
             if (target == 0 || targetAccount == null || targetAccount.Hidden && player.Rank < 100)
@@ -1111,7 +1111,7 @@ namespace wServer.core.commands
                 return false;
             }
 
-            player.CoreServerManager.Database.LockAccount(srcAccount, targetAccount, true);
+            player.GameServer.Database.LockAccount(srcAccount, targetAccount, true);
 
             player.Client.SendPacket(new AccountList()
             {
@@ -1134,15 +1134,13 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string args)
         {
-            var config = player.CoreServerManager.ServerConfig;
-
-            player.Client.Reconnect(new Reconnect()
-            {
-                Host = "",
-                Port = config.serverInfo.port,
-                GameId = World.MarketPlace,
-                Name = "Marketplace"
-            });
+            var worlds = player.GameServer.WorldManager.GetWorlds();
+            foreach(var w in worlds)
+                if(w.IdName.Contains("Market"))
+                {
+                    player.Reconnect(w);
+                    break;
+                }
             return true;
         }
     }
@@ -1158,7 +1156,7 @@ namespace wServer.core.commands
             player.Client.Reconnect(new Reconnect()
             {
                 Host = "",
-                Port = player.CoreServerManager.ServerConfig.serverInfo.port,
+                Port = player.GameServer.Configuration.serverInfo.port,
                 GameId = World.Nexus,
                 Name = "Nexus"
             });
@@ -1222,7 +1220,7 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string args)
         {
-            var worlds = player.CoreServerManager.WorldManager.GetRealms();
+            var worlds = player.GameServer.WorldManager.GetRealms();
             if(worlds.Count == 0)
             {
                 player.SendInfo("Unable to find a realm.");
@@ -1251,18 +1249,18 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string color)
         {
-            var end = Program.Restarter.GetRestartTime();
-            var timeLeft = end.Subtract(DateTime.UtcNow);
+            //var end = Program.Restarter.GetRestartTime();
+            //var timeLeft = end.Subtract(DateTime.UtcNow);
 
-            player.SendInfo(string.Format(
-                "The server will be restarted at {0} (on {5}) UTC (countdown: {1}d {2}h {3}m {4}s).",
-                end.ToString("dd MMM yyyy"),
-                timeLeft.Days.ToString("D2"),
-                timeLeft.Hours.ToString("D2"),
-                timeLeft.Minutes.ToString("D2"),
-                timeLeft.Seconds.ToString("D2"),
-                end.ToString("dddd")
-            ));
+            //player.SendInfo(string.Format(
+            //    "The server will be restarted at {0} (on {5}) UTC (countdown: {1}d {2}h {3}m {4}s).",
+            //    end.ToString("dd MMM yyyy"),
+            //    timeLeft.Days.ToString("D2"),
+            //    timeLeft.Hours.ToString("D2"),
+            //    timeLeft.Minutes.ToString("D2"),
+            //    timeLeft.Seconds.ToString("D2"),
+            //    end.ToString("dddd")
+            //));
             return true;
         }
     }
@@ -1275,7 +1273,7 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string args)
         {
-            var servers = player.CoreServerManager.InterServerManager.GetServerList();
+            var servers = player.GameServer.InterServerManager.GetServerList();
             int hidden = 0;
             foreach (var server in servers)
                 foreach (PlayerInfo plr in server.playerList)
@@ -1299,8 +1297,8 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string args)
         {
-            var playerSvr = player.CoreServerManager.ServerConfig.serverInfo.name;
-            var servers = player.CoreServerManager.InterServerManager.GetServerList();
+            var playerSvr = player.GameServer.Configuration.serverInfo.name;
+            var servers = player.GameServer.InterServerManager.GetServerList();
             var countClients = 0;
             var maxClients = 0;
             var countClientsTxt = "{CLIENTS}";
@@ -1344,7 +1342,7 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string args)
         {
-            var servers = player.CoreServerManager.InterServerManager.GetServerList();
+            var servers = player.GameServer.InterServerManager.GetServerList();
             string playerName = args.ToLower();
             foreach (var server in servers)
             {
@@ -1422,7 +1420,7 @@ namespace wServer.core.commands
                 return false;
             }
 
-            if (!player.CoreServerManager.ChatManager.Tell(player, playername, msg))
+            if (!player.GameServer.ChatManager.Tell(player, playername, msg))
             {
                 player.SendError(string.Format("{0} not found.", playername));
                 return false;
@@ -1458,7 +1456,7 @@ namespace wServer.core.commands
                 player.SendError("Amount cannot be lower than 0");
                 return false;
             }
-            var acc = player.CoreServerManager.Database.GetAccount(player.AccountId);
+            var acc = player.GameServer.Database.GetAccount(player.AccountId);
             //  SLogger.Instance.Info(acc.Fame);
             if (acc != null)
             {
@@ -1467,7 +1465,7 @@ namespace wServer.core.commands
                 player.Experience -= amount * 1000;
                 acc.FlushAsync();
                 player.SendInfo($"Success! You have transferred {amount} into your account!");
-                var clients = player.CoreServerManager.ConnectionManager.Clients
+                var clients = player.GameServer.ConnectionManager.Clients
                     .KeyWhereAsParallel(_ => _.Account.Name.EqualsIgnoreCase(player.Name));
                 for (var i = 0; i < clients.Length; i++)
                     clients[i].Disconnect("Fame Transfer");
@@ -1503,7 +1501,7 @@ namespace wServer.core.commands
                 return false;
             }
 
-            var servers = player.CoreServerManager.InterServerManager.GetServerList();
+            var servers = player.GameServer.InterServerManager.GetServerList();
 
             foreach (var server in servers)
             {
@@ -1545,8 +1543,8 @@ namespace wServer.core.commands
                 return false;
             }
 
-            var target = player.CoreServerManager.Database.ResolveId(playerName);
-            var targetAccount = player.CoreServerManager.Database.GetAccount(target);
+            var target = player.GameServer.Database.ResolveId(playerName);
+            var targetAccount = player.GameServer.Database.GetAccount(target);
             var srcAccount = player.Client.Account;
 
             if (target == 0 || targetAccount == null || targetAccount.Hidden && player.Rank < 100)
@@ -1555,7 +1553,7 @@ namespace wServer.core.commands
                 return false;
             }
 
-            player.CoreServerManager.Database.IgnoreAccount(srcAccount, targetAccount, false);
+            player.GameServer.Database.IgnoreAccount(srcAccount, targetAccount, false);
 
             player.Client.SendPacket(new AccountList()
             {
@@ -1593,8 +1591,8 @@ namespace wServer.core.commands
                 return false;
             }
 
-            var target = player.CoreServerManager.Database.ResolveId(playerName);
-            var targetAccount = player.CoreServerManager.Database.GetAccount(target);
+            var target = player.GameServer.Database.ResolveId(playerName);
+            var targetAccount = player.GameServer.Database.GetAccount(target);
             var srcAccount = player.Client.Account;
 
             if (target == 0 || targetAccount == null || targetAccount.Hidden && player.Rank < 100)
@@ -1603,7 +1601,7 @@ namespace wServer.core.commands
                 return false;
             }
 
-            player.CoreServerManager.Database.LockAccount(srcAccount, targetAccount, false);
+            player.GameServer.Database.LockAccount(srcAccount, targetAccount, false);
 
             player.Client.SendPacket(new AccountList()
             {
@@ -1646,7 +1644,7 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string args)
         {
-            var world = player.CoreServerManager.WorldManager.CreateNewWorld("Vault", null, player.CoreServerManager.WorldManager.Nexus);
+            var world = player.GameServer.WorldManager.CreateNewWorld("Vault", null, player.GameServer.WorldManager.Nexus);
             if (world == null)
             {
                 player.SendInfo("Unable to enter vault: BUG");
@@ -1671,7 +1669,7 @@ namespace wServer.core.commands
                 return true;
             }
 
-            var servers = player.CoreServerManager.InterServerManager.GetServerList();
+            var servers = player.GameServer.InterServerManager.GetServerList();
 
             foreach (var server in servers)
                 foreach (PlayerInfo plr in server.playerList)
@@ -1686,14 +1684,14 @@ namespace wServer.core.commands
                     return true;
                 }
 
-            var pId = player.CoreServerManager.Database.ResolveId(name);
+            var pId = player.GameServer.Database.ResolveId(name);
             if (pId == 0)
             {
                 player.SendInfo($"No player with the name {name}.");
                 return true;
             }
 
-            var acc = player.CoreServerManager.Database.GetAccount(pId, "lastSeen");
+            var acc = player.GameServer.Database.GetAccount(pId, "lastSeen");
             foreach (var server in servers)
                 foreach (PlayerInfo plr in server.playerList)
                     if (acc.LastSeen == 0 || plr.Hidden)

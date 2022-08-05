@@ -64,7 +64,7 @@ namespace wServer.core
                 }
                 if (_player.Inventory[i].ObjectId == "Cerberus's Right Claw" && _player.Inventory[i] != null)
                 {
-                    var acc = _player.CoreServerManager.Database.GetAccount(_player.AccountId);
+                    var acc = _player.GameServer.Database.GetAccount(_player.AccountId);
                     var enemiesKilled = acc.EnemiesKilled;
                     var countHPBoost = 0;
                     for (int k = 0; k < enemiesKilled; k++)

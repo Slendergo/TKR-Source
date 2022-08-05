@@ -51,7 +51,7 @@ namespace wServer.logic.behaviors
                 host.World.Broadcast(new ShowEffect { EffectType = EffectType.Throw, Color = new ARGB(0xffffbf00), TargetObjectId = host.Id, Pos1 = target }, PacketPriority.Low);
                 host.World.Timers.Add(new WorldTimer(1000, (world, t) =>
                 {
-                    var entity = Entity.Resolve(world.Manager, child);
+                    var entity = Entity.Resolve(world.GameServer, child);
                     entity.Move(target.X, target.Y);
 
                     if (entity is Enemy && host is Enemy)

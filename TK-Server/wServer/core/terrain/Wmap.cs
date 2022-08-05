@@ -49,7 +49,7 @@ namespace wServer.core.terrain
 
         public bool Contains(int x, int y) => !(x < 0 || x >= Width || y < 0 || y >= Height);
 
-        public IEnumerable<Entity> InstantiateEntities(CoreServerManager manager, IntPoint offset = new IntPoint())
+        public IEnumerable<Entity> InstantiateEntities(GameServer manager, IntPoint offset = new IntPoint())
         {
             foreach (var i in _entities)
             {
@@ -319,7 +319,7 @@ namespace wServer.core.terrain
                     tile.UpdateCount++;
                 }
 
-            foreach (var e in InstantiateEntities(world.Manager, pos))
+            foreach (var e in InstantiateEntities(world.GameServer, pos))
             {
                 if (!world.Map.Contains((int)e.X, (int)e.Y))
                     continue;

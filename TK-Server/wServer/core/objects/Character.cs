@@ -14,7 +14,7 @@ namespace wServer.core.objects
         private SV<int> _hp;
         private SV<int> _maximumHP;
 
-        protected Character(CoreServerManager manager, ushort objType) : base(manager, objType)
+        protected Character(GameServer manager, ushort objType) : base(manager, objType)
         {
             _random = new Random(Random.Next(int.MinValue, int.MaxValue));
             _hp = new SV<int>(this, StatDataType.HP, 0);

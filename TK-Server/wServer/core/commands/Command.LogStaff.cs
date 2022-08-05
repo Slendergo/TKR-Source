@@ -36,7 +36,7 @@ namespace wServer.core.commands
 
                 using (var profiler = new TimedProfiler("Staff Report", (message) => player.SendHelp(message)))
                 {
-                    var db = Program.CoreServerManager.Database;
+                    var db = player.GameServer.Database;
                     var total = db.TotalAccounts;
                     var prev = 1;
                     var next = 0;

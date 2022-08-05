@@ -18,7 +18,7 @@ namespace wServer.core.commands
                     return true;
                 }*/
 
-                var gameData = player.CoreServerManager.Resources.GameData;
+                var gameData = player.GameServer.Resources.GameData;
 
                 /*if (player.Client.Account.Rank == 60)
                 {

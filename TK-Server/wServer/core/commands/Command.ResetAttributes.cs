@@ -63,7 +63,7 @@ namespace wServer.core.commands
                     player.Client.Character.Node5Med = 0;
                     player.Client.Character.Node5Big = 0;
                     player.SendInfo("All your Attribute Points have been reset.");
-                    player.CoreServerManager.Database.ReloadAccount(player.Client.Account);
+                    player.GameServer.Database.ReloadAccount(player.Client.Account);
                     player.Client.Disconnect("Reset Attributes");
                     player.SendInfo("Player disconnected!");
                     return true;

@@ -24,11 +24,11 @@ namespace wServer.core.net.handlers
 
         public static bool IsEnabledOrIsVipMarket(Client client)
         {
-            var config = Program.CoreServerManager.ServerConfig;
+            var config = client.Player.GameServer.Configuration;
 
             if (config.serverInfo.adminOnly)
             {
-                if (!Program.CoreServerManager.IsWhitelisted(client.Player.AccountId) || client.Player?.Rank < 110)
+                if (!client.Player.GameServer.IsWhitelisted(client.Player.AccountId) || client.Player?.Rank < 110)
                 {
                     client.Player.SendError("Admin Only, you need to be Whitelisted to use this.");
                     return false;

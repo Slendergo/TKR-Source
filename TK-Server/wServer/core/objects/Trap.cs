@@ -16,7 +16,7 @@ namespace wServer.core.objects
         private float radius;
         private int t = 0;
 
-        public Trap(Player player, float radius, int dmg, ConditionEffectIndex eff, float effDuration) : base(player.CoreServerManager, 0x0711, LIFETIME * 1000, true, true, false)
+        public Trap(Player player, float radius, int dmg, ConditionEffectIndex eff, float effDuration) : base(player.GameServer, 0x0711, LIFETIME * 1000, true, true, false)
         {
             this.player = player;
             this.radius = radius;

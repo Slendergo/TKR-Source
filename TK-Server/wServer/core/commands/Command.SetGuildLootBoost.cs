@@ -12,7 +12,7 @@ namespace wServer.core.commands
 
             protected override bool Process(Player player, TickTime time, string args)
             {
-                var db = Program.CoreServerManager.Database;
+                var db = player.GameServer.Database;
                 db.CreateAndSetHashToAllGuilds();
                 return true;
             }

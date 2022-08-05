@@ -47,6 +47,7 @@ namespace wServer.core.worlds.logic
 
         public bool CloseRealm()
         {
+            Closed = true;
             if (_overseer == null)
                 return false;
             if(_overseer.CurrentState != KindgomState.Expired)
@@ -75,16 +76,19 @@ namespace wServer.core.worlds.logic
             try
             {
                 if (Closed || IsPlayersMax())
-                    Manager.WorldManager.Nexus.PortalMonitor.ClosePortal(Id);
-                else if (!Manager.WorldManager.Nexus.PortalMonitor.PortalIsOpen(Id))
-                    Manager.WorldManager.Nexus.PortalMonitor.OpenPortal(Id);
+                    GameServer.WorldManager.Nexus.PortalMonitor.ClosePortal(Id);
+                else if (!GameServer.WorldManager.Nexus.PortalMonitor.PortalIsOpen(Id))
+                    GameServer.WorldManager.Nexus.PortalMonitor.OpenPortal(Id);
 
                 var t = time;
-                if (_overseerTask == null || _overseerTask.IsCompleted)
+
+                if(Closed && _overseerTask != null)
+                    _overseerTask = null;
+                else if (_overseerTask == null || _overseerTask.IsCompleted && !Closed)
                 {
                     _overseerTask = Task.Factory.StartNew(() =>
                     {
-                        _overseer?.Tick(ref t);
+                        _overseer?.Update(ref t);
                     }).ContinueWith(e => Log.Error(e.Exception.InnerException.ToString()), TaskContinuationOptions.OnlyOnFaulted);
                 }
             }

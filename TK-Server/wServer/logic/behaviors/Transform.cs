@@ -12,7 +12,7 @@ namespace wServer.logic.behaviors
 
         protected override void TickCore(Entity host, TickTime time, ref object state)
         {
-            var entity = Entity.Resolve(host.CoreServerManager, target);
+            var entity = Entity.Resolve(host.GameServer, target);
 
             if (entity is Portal && host.World.IdName.Contains("Arena"))
                 return;

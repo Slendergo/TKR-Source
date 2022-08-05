@@ -36,7 +36,7 @@ namespace wServer.core
         {
             if (_parent is Player plr)
             {
-                var playerDesc = plr.CoreServerManager.Resources.GameData
+                var playerDesc = plr.GameServer.Resources.GameData
                     .Classes[plr.ObjectDesc.ObjectType];
                 for (var i = 0; i < 4; i++)
                     if (ChangedItems[i] == null && playerDesc.SlotTypes[i] == item.SlotType)

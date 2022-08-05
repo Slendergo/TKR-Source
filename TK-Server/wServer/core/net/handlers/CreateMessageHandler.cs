@@ -22,7 +22,7 @@ namespace wServer.core.net.handlers
             if (client.State != ProtocolState.Handshaked)
                 return;
 
-            var status = client.CoreServerManager.Database.CreateCharacter(client.Account, classType, skinType, out DbChar character);
+            var status = client.GameServer.Database.CreateCharacter(client.Account, classType, skinType, out DbChar character);
 
             if (status == DbCreateStatus.ReachCharLimit)
             {
@@ -51,9 +51,9 @@ namespace wServer.core.net.handlers
         {
             client.Character = character;
 
-            var target = client.CoreServerManager.WorldManager.GetWorld(client.TargetWorld);
+            var target = client.GameServer.WorldManager.GetWorld(client.TargetWorld);
             if (target == null)
-                target = client.CoreServerManager.WorldManager.GetWorld(-2); // return to nexus
+                target = client.GameServer.WorldManager.GetWorld(-2); // return to nexus
 
             client.Player = new Player(client);
 
@@ -63,7 +63,7 @@ namespace wServer.core.net.handlers
                 ObjectId = target.EnterWorld(client.Player)
             }, PacketPriority.High);
             client.State = ProtocolState.Ready;
-            client.CoreServerManager.ConnectionManager.ClientConnected(client);
+            client.GameServer.ConnectionManager.ClientConnected(client);
             //client.Player?.PlayerUpdate.SendUpdate();
         }
     }

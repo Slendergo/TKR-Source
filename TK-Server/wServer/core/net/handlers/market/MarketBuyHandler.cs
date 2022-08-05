@@ -21,7 +21,7 @@ namespace wServer.core.net.handlers.market
             if (!IsAvailable(client) || !IsEnabledOrIsVipMarket(client))
                 return;
 
-            var db = Program.CoreServerManager.Database;
+            var db = client.Player.GameServer.Database;
             var marketData = DbMarketData.GetSpecificOffer(client?.Account?.Database, id);
 
             if (marketData == null)
@@ -40,7 +40,7 @@ namespace wServer.core.net.handlers.market
 
             CheckRank(sellerAcc);
 
-            var item = Program.CoreServerManager.Resources.GameData.Items[marketData.ItemType];
+            var item = client.Player.GameServer.Resources.GameData.Items[marketData.ItemType];
 
             var buyerId = db.ResolveId(client.Player.Name);
             var buyerAcc = db.GetAccount(client.Player.AccountId);
@@ -87,7 +87,7 @@ namespace wServer.core.net.handlers.market
             }
 
             /* Add fame to the Seller */
-            AddFameToSeller(sellerAcc, marketData.Price, item.ObjectId);
+            AddFameToSeller(client, sellerAcc, marketData.Price, item.ObjectId);
 
             /* Remove fame to Buyer */
             RemoveFameToBuyer(buyerAcc, marketData.Price, client);
@@ -145,7 +145,7 @@ namespace wServer.core.net.handlers.market
             }
         }
 
-        private void AddFameToSeller(DbAccount acc, int realPrice, string itemId)
+        private void AddFameToSeller(Client client, DbAccount acc, int realPrice, string itemId)
         {
             var tax = GetTax(realPrice);
             var resultPrice = realPrice - tax;
@@ -158,7 +158,7 @@ namespace wServer.core.net.handlers.market
             acc.Reload("fame");
             acc.Reload("totalFame");
 
-            Program.CoreServerManager.ChatManager.SendInfoMarket(acc.AccountId, itemId, realPrice, resultPrice, Tax);
+            client.Player.GameServer.ChatManager.SendInfoMarket(acc.AccountId, itemId, realPrice, resultPrice, Tax);
         }
 
         private void RemoveFameToBuyer(DbAccount acc, int realPrice, Client client = null)

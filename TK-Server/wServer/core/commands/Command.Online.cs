@@ -14,8 +14,8 @@ namespace wServer.core.commands
 
             protected override bool Process(Player player, TickTime time, string args)
             {
-                var playerSvr = player.CoreServerManager.ServerConfig.serverInfo.name;
-                var servers = Program.CoreServerManager.InterServerManager.GetServerList();
+                var playerSvr = player.GameServer.Configuration.serverInfo.name;
+                var servers = player.GameServer.InterServerManager.GetServerList();
                 var s = servers.Where(_ => _.type != common.isc.ServerType.Account);
                 var sb = new StringBuilder($"There are: {s.Sum(_ => _.players)} Online Across: {string.Join(", ", s.Select(_ => _.name))}: ");
                 player.SendInfo(sb.ToString());

@@ -12,7 +12,7 @@ namespace wServer.core.commands
 
             protected override bool Process(Player player, TickTime time, string args)
             {
-                var pd = player.CoreServerManager.Resources.GameData.Classes[player.ObjectType];
+                var pd = player.GameServer.Resources.GameData.Classes[player.ObjectType];
 
                 player.Stats.Base[0] = pd.Stats[0].MaxValue;
                 player.Stats.Base[1] = pd.Stats[1].MaxValue;

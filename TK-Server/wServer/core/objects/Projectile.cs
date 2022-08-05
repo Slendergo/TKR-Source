@@ -17,7 +17,7 @@ namespace wServer.core.objects
         private HashSet<Entity> _hit = new HashSet<Entity>();
         private ConcurrentDictionary<Player, Tuple<int, int>> _startTime = new ConcurrentDictionary<Player, Tuple<int, int>>();
 
-        public Projectile(CoreServerManager manager, ProjectileDesc desc) : base(manager, manager.Resources.GameData.IdToObjectType[desc.ObjectId]) => ProjDesc = desc;
+        public Projectile(GameServer manager, ProjectileDesc desc) : base(manager, manager.Resources.GameData.IdToObjectType[desc.ObjectId]) => ProjDesc = desc;
 
         public float Angle { get; set; }
         public ushort Container { get; set; }
@@ -141,7 +141,6 @@ namespace wServer.core.objects
         public override void Tick(TickTime time)
         {
             var elapsed = time.TotalElapsedMs - CreationTime;
-
             if (elapsed > ProjDesc.LifetimeMS)
             {
                 OnDestroy();

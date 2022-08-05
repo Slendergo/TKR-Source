@@ -19,7 +19,7 @@ namespace wServer.logic.behaviors
 
         protected override void OnStateEntry(Entity host, TickTime time, ref object state)
         {
-            var dat = host.CoreServerManager.Resources.GameData;
+            var dat = host.GameServer.Resources.GameData;
             var tileId = dat.IdToTileType[_objName];
             var replacedTileId = dat.IdToTileType[_replacedObjName];
             var map = host.World.Map;
@@ -42,7 +42,7 @@ namespace wServer.logic.behaviors
 
                     tile.TileId = replacedTileId;
 
-                    var tileDesc = Program.CoreServerManager.Resources.GameData.Tiles[tile.TileId];
+                    var tileDesc = host.GameServer.Resources.GameData.Tiles[tile.TileId];
 
                     tile.TileDesc = tileDesc;
 

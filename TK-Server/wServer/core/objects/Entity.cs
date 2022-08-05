@@ -44,9 +44,9 @@ namespace wServer.core.objects
         private SV<float> _y;
         private Player playerOwner;
 
-        protected Entity(CoreServerManager coreServerManager, ushort objType)
+        protected Entity(GameServer coreServerManager, ushort objType)
         {
-            CoreServerManager = coreServerManager;
+            GameServer = coreServerManager;
 
             _name = new SV<string>(this, StatDataType.Name, "");
             _size = new SV<int>(this, StatDataType.Size, 100);
@@ -67,12 +67,9 @@ namespace wServer.core.objects
 
             QuestLevel = _desc.Level;
 
-            if (_desc.Enemy)
-            {
-                _posHistory = new Position[256];
-                _projectiles = new Projectile[256];
-                _effects = new int[EffectCount];
-            }
+            _posHistory = new Position[256];
+            _projectiles = new Projectile[256];
+            _effects = new int[EffectCount];
         }
 
         public event EventHandler<StatChangedEventArgs> StatChanged;
@@ -92,7 +89,7 @@ namespace wServer.core.objects
             }
         }
 
-        public CoreServerManager CoreServerManager { get; private set; }
+        public GameServer GameServer { get; private set; }
         public State CurrentState { get; private set; }
         public int Id { get; internal set; }
         public bool IsRemovedFromWorld { get; private set; }
@@ -123,7 +120,7 @@ namespace wServer.core.objects
         public float X { get => _x.GetValue(); set => _x.SetValue(value); }
         public float Y { get => _y.GetValue(); set => _y.SetValue(value); }
 
-        public static Entity Resolve(CoreServerManager manager, string name)
+        public static Entity Resolve(GameServer manager, string name)
         {
             if (!manager.Resources.GameData.IdToObjectType.TryGetValue(name, out ushort id))
                 return null;
@@ -131,7 +128,7 @@ namespace wServer.core.objects
             return Resolve(manager, id);
         }
 
-        public static Entity Resolve(CoreServerManager manager, ushort id)
+        public static Entity Resolve(GameServer manager, ushort id)
         {
             var node = manager.Resources.GameData.ObjectTypeToElement[id];
             var type = node.Element("Class").Value;
@@ -243,7 +240,7 @@ namespace wServer.core.objects
 
         public Projectile CreateProjectile(ProjectileDesc desc, ushort container, int dmg, long time, Position pos, float angle)
         {
-            var ret = new Projectile(CoreServerManager, desc) //Assume only one
+            var ret = new Projectile(GameServer, desc) //Assume only one
             {
                 ProjectileOwner = this,
                 ProjectileId = projectileId++,
@@ -257,12 +254,7 @@ namespace wServer.core.objects
                 X = pos.X,
                 Y = pos.Y
             };
-
-            if (_projectiles[ret.ProjectileId] != null)
-                _projectiles[ret.ProjectileId].Destroy();
-
             _projectiles[ret.ProjectileId] = ret;
-
             return ret;
         }
 
@@ -452,7 +444,7 @@ namespace wServer.core.objects
 
             if (tile.ObjType != 0)
             {
-                var objDesc = CoreServerManager.Resources.GameData.ObjectDescs[tile.ObjType];
+                var objDesc = GameServer.Resources.GameData.ObjectDescs[tile.ObjType];
 
                 if (objDesc?.FullOccupy == true)
                     return true;
@@ -482,7 +474,7 @@ namespace wServer.core.objects
             if (tile == null)
                 return false;
 
-            var tiles = CoreServerManager.Resources.GameData.Tiles;
+            var tiles = GameServer.Resources.GameData.Tiles;
 
             if (!tiles.ContainsKey(tile.TileId))
             {
@@ -497,7 +489,7 @@ namespace wServer.core.objects
 
             if (tile.ObjType != 0)
             {
-                var objDescs = CoreServerManager.Resources.GameData.ObjectDescs;
+                var objDescs = GameServer.Resources.GameData.ObjectDescs;
 
                 if (!objDescs.ContainsKey(tile.ObjType))
                 {

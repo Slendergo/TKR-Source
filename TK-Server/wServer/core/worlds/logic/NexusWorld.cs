@@ -12,7 +12,7 @@ namespace wServer.core.worlds.logic
 
         public override void Init()
         {
-            PortalMonitor = new PortalMonitor(Manager, this);
+            PortalMonitor = new PortalMonitor(GameServer, this);
             base.Init();
         }
 

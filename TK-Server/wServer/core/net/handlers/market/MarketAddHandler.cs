@@ -89,7 +89,7 @@ namespace wServer.core.net.handlers.market
 
             client.Player = OverrideInventory(transaction.ChangedItems, dataTrans.ChangedItems, client.Player);
 
-            var db = client.CoreServerManager.Database;
+            var db = client.GameServer.Database;
             var task = db.AddMarketEntrySafety(
                 client.Account,
                 pendingItems.Select(pendingItem => (pendingItem.item.ObjectType, pendingItem.data?.GetData() ?? null)).ToList(),

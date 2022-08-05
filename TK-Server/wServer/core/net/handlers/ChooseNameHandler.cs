@@ -24,7 +24,7 @@ namespace wServer.core.net.handlers
             if (client.Player == null || client?.Player?.World is TestWorld)
                 return;
 
-            client.CoreServerManager.Database.ReloadAccount(client.Account);
+            client.GameServer.Database.ReloadAccount(client.Account);
 
             if (name.Length < 1 || name.Length > 10 || !name.All(char.IsLetter) || !IsValid(name) || Database.GuestNames.Contains(name, StringComparer.InvariantCultureIgnoreCase))
                 client.SendPacket(new NameResult()
@@ -40,9 +40,9 @@ namespace wServer.core.net.handlers
 
                 try
                 {
-                    while ((lockToken = client.CoreServerManager.Database.AcquireLock(key)) == null) ;
+                    while ((lockToken = client.GameServer.Database.AcquireLock(key)) == null) ;
 
-                    if (client.CoreServerManager.Database.Conn.HashExists("names", name.ToUpperInvariant()))
+                    if (client.GameServer.Database.Conn.HashExists("names", name.ToUpperInvariant()))
                     {
                         client.SendPacket(new NameResult()
                         {
@@ -62,11 +62,11 @@ namespace wServer.core.net.handlers
                     {
                         // remove fame is purchasing name change
                         if (client.Account.NameChosen)
-                            client.CoreServerManager.Database.UpdateCredit(client.Account, -100);
+                            client.GameServer.Database.UpdateCredit(client.Account, -100);
 
                         // rename
                         var oldName = client.Account.Name;
-                        while (!client.CoreServerManager.Database.RenameIGN(client.Account, name, lockToken)) ;
+                        while (!client.GameServer.Database.RenameIGN(client.Account, name, lockToken)) ;
                         NameChangeLog.Info($"{oldName} changed their name to {name}");
 
                         // update player
@@ -81,7 +81,7 @@ namespace wServer.core.net.handlers
                 finally
                 {
                     if (lockToken != null)
-                        client.CoreServerManager.Database.ReleaseLock(key, lockToken);
+                        client.GameServer.Database.ReleaseLock(key, lockToken);
                 }
             }
         }

@@ -31,7 +31,7 @@ namespace wServer.core.net
                 return;
             }
 
-            if (!party.LeaderIsVip(Program.CoreServerManager.Database))
+            if (!party.LeaderIsVip(client.Player.GameServer.Database))
             {
                 client.Player.SendError("<Error> VIPs cannot be the Leader of a Party.");
                 return;
@@ -51,11 +51,11 @@ namespace wServer.core.net
                     return;
                 }
 
-            client.CoreServerManager.Database.AddMemberToParty(db, client.Account.Name, client.Account.AccountId, party.PartyId);
+            client.GameServer.Database.AddMemberToParty(db, client.Account.Name, client.Account.AccountId, party.PartyId);
             client.Account.PartyId = party.PartyId;
             client.Account.FlushAsync();
             client.Account.Reload("partyId");
-            client.CoreServerManager.ChatManager.Party(client.Player, client.Player.Name + " has joined the Party!");
+            client.GameServer.ChatManager.Party(client.Player, client.Player.Name + " has joined the Party!");
             client.Player?.SendInfo("Joined Successfully!");
         }
     }

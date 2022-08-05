@@ -48,8 +48,8 @@ namespace wServer.core.commands
                     player.SendError("Cannot rank the unnamed...");
                     return false;
                 }
-                var id = player.CoreServerManager.Database.ResolveId(playerName);
-                var acc = player.CoreServerManager.Database.GetAccount(id);
+                var id = player.GameServer.Database.ResolveId(playerName);
+                var acc = player.GameServer.Database.GetAccount(id);
                 if (id == 0 || acc == null)
                 {
                     player.SendError("Account not found!");
@@ -62,7 +62,7 @@ namespace wServer.core.commands
 
                 // send out success notifications
                 player.SendInfo($"You changed the guildrank of player {acc.Name} to {rank}.");
-                var target = player.CoreServerManager.ConnectionManager.Clients.KeyWhereAsParallel(_ => _.Account.AccountId == acc.AccountId).FirstOrDefault();
+                var target = player.GameServer.ConnectionManager.Clients.KeyWhereAsParallel(_ => _.Account.AccountId == acc.AccountId).FirstOrDefault();
                 if (target?.Player == null)
                     return true;
 

@@ -91,7 +91,7 @@ namespace wServer.core.setpieces
             foreach (var i in trees)
                 t[i.X, i.Y] = 3;
 
-            var dat = world.Manager.Resources.GameData;
+            var dat = world.GameServer.Resources.GameData;
 
             for (var x = 0; x < Size; x++)
                 for (var y = 0; y < Size; y++)
@@ -123,12 +123,12 @@ namespace wServer.core.setpieces
                         tile.UpdateCount++;
                     }
 
-            var giant = Entity.Resolve(world.Manager, "Oasis Giant");
+            var giant = Entity.Resolve(world.GameServer, "Oasis Giant");
             giant.Move(pos.X + 15.5f, pos.Y + 15.5f);
             world.EnterWorld(giant);
 
-            var container = new Container(world.Manager, 0x0501, null, false);
-            var items = chest.CalculateItems(world.Manager, 5, 8).ToArray();
+            var container = new Container(world.GameServer, 0x0501, null, false);
+            var items = chest.CalculateItems(world.GameServer, 5, 8).ToArray();
 
             for (var i = 0; i < items.Length; i++)
                 container.Inventory[i] = items[i];

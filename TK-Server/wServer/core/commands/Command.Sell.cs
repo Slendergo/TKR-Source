@@ -90,7 +90,7 @@ namespace wServer.core.commands
                     (inventorySlot.ObjectType, inventoryData?.GetData() ?? null)
                 };
 
-                var db = client.CoreServerManager.Database;
+                var db = client.GameServer.Database;
 
                 //we create a Task for add it
                 var task = db.AddMarketEntrySafety(
@@ -122,11 +122,11 @@ namespace wServer.core.commands
 
         private bool CanSellItem(Player player)
         {
-            var config = Program.CoreServerManager.ServerConfig;
+            var config = player.GameServer.Configuration;
 
             if (config.serverInfo.adminOnly)
             {
-                if (!Program.CoreServerManager.IsWhitelisted(player.AccountId) || player?.Rank < 110)
+                if (!player.GameServer.IsWhitelisted(player.AccountId) || player?.Rank < 110)
                 {
                     player.SendError("Admin Only, you need to be Whitelisted to use this.");
                     return false;

@@ -5,7 +5,7 @@ namespace wServer.core
 {
     public class DbEvents
     {
-        public DbEvents(CoreServerManager manager)
+        public DbEvents(GameServer manager)
         {
             var db = manager.Database;
 

@@ -17,7 +17,7 @@ namespace wServer.core.net.handlers
             if (client.State != ProtocolState.Handshaked)
                 return;
 
-            var target = client.CoreServerManager.WorldManager.GetWorld(client.TargetWorld);
+            var target = client.GameServer.WorldManager.GetWorld(client.TargetWorld);
 
             if (target == null)
             {
@@ -25,7 +25,7 @@ namespace wServer.core.net.handlers
                 return;
             }
 
-            client.Character = client.CoreServerManager.Database.LoadCharacter(client.Account, charId);
+            client.Character = client.GameServer.Database.LoadCharacter(client.Account, charId);
 
             if (client.Character == null)
                 client.SendFailure("Failed to load character", Failure.MessageWithDisconnect);
@@ -40,7 +40,7 @@ namespace wServer.core.net.handlers
                     ObjectId = target.EnterWorld(client.Player)
                 }, PacketPriority.High);
                 client.State = ProtocolState.Ready;
-                client.CoreServerManager.ConnectionManager.ClientConnected(client);
+                client.GameServer.ConnectionManager.ClientConnected(client);
                 //client.Player?.PlayerUpdate.SendUpdate();
             }
         }

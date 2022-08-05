@@ -16,7 +16,7 @@ namespace wServer.core.worlds.logic
 
         public void LoadJson(string json)
         {
-            FromWorldMap(new MemoryStream(Json2Wmap.Convert(Manager.Resources.GameData, json)));
+            FromWorldMap(new MemoryStream(Json2Wmap.Convert(GameServer.Resources.GameData, json)));
         }
     }
 }

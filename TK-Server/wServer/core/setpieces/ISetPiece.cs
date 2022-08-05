@@ -13,7 +13,7 @@ namespace wServer.core.setpieces
             if (string.IsNullOrEmpty(Map))
                 return;
 
-            var data = world.Manager.Resources.GameData.GetWorldData(Map);
+            var data = world.GameServer.Resources.GameData.GetWorldData(Map);
             if (data == null)
             {
                 Console.WriteLine($"[{GetType().Name}] Invalid RenderSetPiece {Map}");

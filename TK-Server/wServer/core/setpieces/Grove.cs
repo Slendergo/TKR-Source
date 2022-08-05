@@ -44,7 +44,7 @@ namespace wServer.core.setpieces
             foreach (var i in trees)
                 t[i.X, i.Y] = 2;
 
-            var dat = world.Manager.Resources.GameData;
+            var dat = world.GameServer.Resources.GameData;
 
             for (var x = 0; x < Size; x++)
                 for (var y = 0; y < Size; y++)
@@ -71,7 +71,7 @@ namespace wServer.core.setpieces
                     }
                 }
 
-            var ent = Entity.Resolve(world.Manager, "Ent Ancient");
+            var ent = Entity.Resolve(world.GameServer, "Ent Ancient");
             ent.SetDefaultSize(140);
             ent.Move(pos.X + Size / 2 + 1, pos.Y + Size / 2 + 1);
             world.EnterWorld(ent);

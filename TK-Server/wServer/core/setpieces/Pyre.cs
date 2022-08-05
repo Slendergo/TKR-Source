@@ -31,7 +31,7 @@ namespace wServer.core.setpieces
 
         public override void RenderSetPiece(World world, IntPoint pos)
         {
-            var dat = world.Manager.Resources.GameData;
+            var dat = world.GameServer.Resources.GameData;
 
             for (var x = 0; x < Size; x++)
                 for (var y = 0; y < Size; y++)
@@ -49,12 +49,12 @@ namespace wServer.core.setpieces
                     }
                 }
 
-            var lord = Entity.Resolve(world.Manager, "Phoenix Lord");
+            var lord = Entity.Resolve(world.GameServer, "Phoenix Lord");
             lord.Move(pos.X + 15.5f, pos.Y + 15.5f);
             world.EnterWorld(lord);
 
-            var container = new Container(world.Manager, 0x0501, null, false);
-            var items = chest.CalculateItems(world.Manager, 5, 8).ToArray();
+            var container = new Container(world.GameServer, 0x0501, null, false);
+            var items = chest.CalculateItems(world.GameServer, 5, 8).ToArray();
 
             for (var i = 0; i < items.Length; i++)
                 container.Inventory[i] = items[i];

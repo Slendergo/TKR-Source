@@ -191,7 +191,7 @@ namespace wServer.core.objects
             {
                 ApplyConditionEffect(ConditionEffectIndex.Hidden);
                 ApplyConditionEffect(ConditionEffectIndex.Invincible);
-                CoreServerManager.ConnectionManager.Clients[Client].Hidden = true;
+                GameServer.ConnectionManager.Clients[Client].Hidden = true;
             }
 
             if (HasConditionEffect(ConditionEffects.Healing) && !HasConditionEffect(ConditionEffects.Sick))

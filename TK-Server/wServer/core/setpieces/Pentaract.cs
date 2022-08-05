@@ -44,7 +44,7 @@ namespace wServer.core.setpieces
 
             t[20, 20] = 3;
 
-            var data = world.Manager.Resources.GameData;
+            var data = world.GameServer.Resources.GameData;
 
             for (var x = 0; x < 40; x++)
                 for (var y = 0; y < 40; y++)
@@ -62,13 +62,13 @@ namespace wServer.core.setpieces
                         tile.ObjType = 0;
                         tile.UpdateCount++;
 
-                        var penta = Entity.Resolve(world.Manager, 0x0d5e);
+                        var penta = Entity.Resolve(world.GameServer, 0x0d5e);
                         penta.Move(pos.X + x + .5f, pos.Y + y + .5f);
                         world.EnterWorld(penta);
                     }
                     else if (t[x, y] == 3)
                     {
-                        var penta = Entity.Resolve(world.Manager, "Pentaract");
+                        var penta = Entity.Resolve(world.GameServer, "Pentaract");
                         penta.Move(pos.X + x + .5f, pos.Y + y + .5f);
                         world.EnterWorld(penta);
                     }

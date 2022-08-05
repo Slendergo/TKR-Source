@@ -19,19 +19,20 @@ namespace wServer.logic
         private static float _leftAngle = 180;
         private static float _upAngle = -90;
         private static float _downAngle = 90;
-        public CoreServerManager Manager { get; private set; }
+        public GameServer GameServer { get; private set; }
 
         private static int _initializing;
         internal static BehaviorDb InitDb;
-        internal static XmlData InitGameData => InitDb.Manager.Resources.GameData;
+        internal static XmlData InitGameData => InitDb.GameServer.Resources.GameData;
 
-        public BehaviorDb(CoreServerManager manager)
+        public BehaviorDb(GameServer manager)
         {
-            Manager = manager;
-            MobDrops.Init(manager);
+            GameServer = manager;
+            Log.Info("Behavior Database initialized...");
+        }
 
-            Definitions = new Dictionary<ushort, Tuple<State, Loot>>();
-
+        public void Initialize()
+        {
             if (Interlocked.Exchange(ref _initializing, 1) == 1)
             {
                 Log.Error("Attempted to initialize multiple BehaviorDb at the same time.");
@@ -39,10 +40,7 @@ namespace wServer.logic
             }
             InitDb = this;
 
-            var fields = GetType()
-                .GetFields(BindingFlags.NonPublic | BindingFlags.Instance)
-                .Where(field => field.FieldType == typeof(_))
-                .ToArray();
+            var fields = GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance).Where(field => field.FieldType == typeof(_)).ToArray();
             for (int i = 0; i < fields.Length; i++)
             {
                 var field = fields[i];
@@ -52,8 +50,6 @@ namespace wServer.logic
 
             InitDb = null;
             _initializing = 0;
-
-            Log.Info("Behavior Database initialized...");
         }
 
         public void ResolveBehavior(Entity entity)
@@ -73,7 +69,7 @@ namespace wServer.logic
                     var d = new Dictionary<string, State>();
                     rootState.Resolve(d);
                     rootState.ResolveChildren(d);
-                    var dat = InitDb.Manager.Resources.GameData;
+                    var dat = InitDb.GameServer.Resources.GameData;
 
                     if (!dat.IdToObjectType.ContainsKey(id))
                     {
@@ -99,7 +95,7 @@ namespace wServer.logic
 
             public ctor InitMany(string objTypeMin, string objTypeMax, Func<string, State> rootState, params MobDrops[] defs)
             {
-                XmlData dat = InitDb.Manager.Resources.GameData;
+                XmlData dat = InitDb.GameServer.Resources.GameData;
                 ushort idMin = dat.IdToObjectType[objTypeMin];
                 ushort idMax = dat.IdToObjectType[objTypeMax];
                 int count = idMax - idMin;
@@ -116,6 +112,6 @@ namespace wServer.logic
             return new ctor();
         }
 
-        public Dictionary<ushort, Tuple<State, Loot>> Definitions { get; private set; }
+        public Dictionary<ushort, Tuple<State, Loot>> Definitions { get; private set; } = new Dictionary<ushort, Tuple<State, Loot>>();
     }
 }

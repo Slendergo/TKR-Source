@@ -172,10 +172,10 @@ namespace wServer.core.objects
         private SV<bool> _upgradeEnabled;
         private SV<bool> _xpBoosted;
 
-        public Player(Client client, bool saveInventory = true) : base(client.CoreServerManager, client.Character.ObjectType)
+        public Player(Client client, bool saveInventory = true) : base(client.GameServer, client.Character.ObjectType)
         {
-            var settings = CoreServerManager.Resources.Settings;
-            var gameData = CoreServerManager.Resources.GameData;
+            var settings = GameServer.Resources.Settings;
+            var gameData = GameServer.Resources.GameData;
 
             Client = client;
 
@@ -285,7 +285,7 @@ namespace wServer.core.objects
                 SetDefaultSize(gameData.Skins[s].Size);
             }
 
-            var guild = CoreServerManager.Database.GetGuild(client.Account.GuildId);
+            var guild = GameServer.Database.GetGuild(client.Account.GuildId);
             if (guild?.Name != null)
             {
                 Guild = guild.Name;
@@ -310,12 +310,12 @@ namespace wServer.core.objects
             SlotTypes = Utils.ResizeArray(gameData.Classes[ObjectType].SlotTypes, 20);
             Stats = new StatsManager(this);
 
-            CoreServerManager.Database.IsMuted(client.IpAddress).ContinueWith(t =>
+            GameServer.Database.IsMuted(client.IpAddress).ContinueWith(t =>
             {
                 Muted = !Client.Account.Admin && t.IsCompleted && t.Result;
             });
 
-            CoreServerManager.Database.IsLegend(AccountId).ContinueWith(t =>
+            GameServer.Database.IsLegend(AccountId).ContinueWith(t =>
             {
                 Glow = t.Result && client.Account.GlowColor == 0 ? 0xFF0000 : client.Account.GlowColor;
             });
@@ -342,7 +342,7 @@ namespace wServer.core.objects
 
         public void CheckMaxedStats()
         {
-            var classes = CoreServerManager?.Resources?.GameData?.Classes;
+            var classes = GameServer?.Resources?.GameData?.Classes;
 
             if (classes == null)
                 return;
@@ -638,7 +638,7 @@ namespace wServer.core.objects
                 return;
 
             SaveToCharacter();
-            CoreServerManager.Database.Death(CoreServerManager.Resources.GameData, Client.Account, Client.Character, FameCounter.Stats, killer);
+            GameServer.Database.Death(GameServer.Resources.GameData, Client.Account, Client.Character, FameCounter.Stats, killer);
 
             GenerateGravestone();
             AnnounceDeath(killer);
@@ -677,7 +677,7 @@ namespace wServer.core.objects
 
         public int GetMaxedStats()
         {
-            var playerDesc = CoreServerManager.Resources.GameData.Classes[ObjectType];
+            var playerDesc = GameServer.Resources.GameData.Classes[ObjectType];
             return playerDesc.Stats.Where((t, i) => Stats.Base[i] >= t.MaxValue).Count() + (UpgradeEnabled ? playerDesc.Stats.Where((t, i) => i == 0 ? Stats.Base[i] >= t.MaxValue + 50 : i == 1 ? Stats.Base[i] >= t.MaxValue + 50 : Stats.Base[i] >= t.MaxValue + 10).Count() : 0);
         }
 
@@ -815,7 +815,7 @@ namespace wServer.core.objects
                 Client.Reconnect(new Reconnect()
                 {
                     Host = "",
-                    Port = CoreServerManager.ServerConfig.serverInfo.port,
+                    Port = GameServer.Configuration.serverInfo.port,
                     GameId = world.Id,
                     Name = world.IdName
                 });
@@ -1207,12 +1207,9 @@ namespace wServer.core.objects
 
             if ((maxed >= 6 || Fame >= 1000) && !Client.Account.Admin)
             {
-                CoreServerManager.WorldManager
-                    .WorldsBroadcastAsParallel(_ =>
-                        _.ForeachPlayer(__ =>
-                            __.DeathNotif(deathMessage)
-                        )
-                    );
+                var worlds = GameServer.WorldManager.GetWorlds();
+                foreach(var world in worlds)
+                    world.ForeachPlayer(_ => _.DeathNotif(deathMessage));
                 return;
             }
 
@@ -1221,15 +1218,13 @@ namespace wServer.core.objects
             // guild case, only for level 20
             if (pGuild > 0 && Level == 20)
             {
-                CoreServerManager.WorldManager
-                    .WorldsBroadcastAsParallel(_ =>
-                        _.ForeachPlayer(__ =>
-                        {
-                            if (__.Client.Account.GuildId == pGuild)
-                                __.DeathNotif(deathMessage);
-                        })
-                    );
-
+                var worlds = GameServer.WorldManager.GetWorlds();
+                foreach (var world in worlds)
+                    world.ForeachPlayer(_ =>
+                    {
+                        if (_.Client.Account.GuildId == pGuild)
+                            _.DeathNotif(deathMessage);
+                    });
                 World.ForeachPlayer(_ =>
                 {
                     if (_.Client.Account.GuildId != pGuild)
@@ -1304,7 +1299,7 @@ namespace wServer.core.objects
 
         private void GenerateGravestone(bool phantomDeath = false)
         {
-            var playerDesc = CoreServerManager.Resources.GameData.Classes[ObjectType];
+            var playerDesc = GameServer.Resources.GameData.Classes[ObjectType];
             //var maxed = playerDesc.Stats.Where((t, i) => Stats.Base[i] >= t.MaxValue).Count();
             var maxed = playerDesc.Stats.Where((t, i) => Stats.Base[i] >= t.MaxValue).Count() + (UpgradeEnabled ? playerDesc.Stats.Where((t, i) => i == 0 ? Stats.Base[i] >= t.MaxValue + 50 : i == 1 ? Stats.Base[i] >= t.MaxValue + 50 : Stats.Base[i] >= t.MaxValue + 10).Count() : 0);
             ushort objType;
@@ -1336,7 +1331,7 @@ namespace wServer.core.objects
 
             var deathMessage = Name + " (" + maxed + (UpgradeEnabled ? "/16, " : "/8, ") + Client.Character.Fame + ")";
             //var deathMessage = Name + " (" + maxed + ("/8, ") + _client.Character.Fame + ")";
-            var obj = new StaticObject(CoreServerManager, objType, time, true, true, false);
+            var obj = new StaticObject(GameServer, objType, time, true, true, false);
             obj.Move(X, Y);
             obj.Name = (!phantomDeath) ? deathMessage : $"{Name} got rekt";
             World.EnterWorld(obj);
@@ -1521,7 +1516,7 @@ namespace wServer.core.objects
             Client.Reconnect(new Reconnect()
             {
                 Host = "",
-                Port = CoreServerManager.ServerConfig.serverInfo.port,
+                Port = GameServer.Configuration.serverInfo.port,
                 GameId = World.Nexus,
                 Name = "Nexus"
             });
@@ -1693,7 +1688,7 @@ namespace wServer.core.objects
             var petId = PetId;
             if (petId != 0)
             {
-                var pet = new Pet(CoreServerManager, this, (ushort)petId);
+                var pet = new Pet(GameServer, this, (ushort)petId);
                 pet.Move(X, Y);
                 owner.EnterWorld(pet);
                 pet.SetDefaultSize(pet.ObjectDesc.Size);

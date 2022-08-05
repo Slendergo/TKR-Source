@@ -9,7 +9,7 @@ namespace wServer.core.objects.containers
 {
     internal class SpecialChest : Container
     {
-        public SpecialChest(CoreServerManager manager, ushort objType, int? life, bool dying, RInventory dbLink = null) : base(manager, objType, life, dying, dbLink)
+        public SpecialChest(GameServer manager, ushort objType, int? life, bool dying, RInventory dbLink = null) : base(manager, objType, life, dying, dbLink)
         {
         }
     }

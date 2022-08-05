@@ -31,13 +31,13 @@ namespace wServer.core.net.handlers
 
             if (accountListId == LockAction)
             {
-                client.CoreServerManager.Database.LockAccount(client.Account, targetPlayer.Client.Account, add);
+                client.GameServer.Database.LockAccount(client.Account, targetPlayer.Client.Account, add);
                 return;
             }
 
             if (accountListId == IgnoreAction)
             {
-                client.CoreServerManager.Database.IgnoreAccount(client.Account, targetPlayer.Client.Account, add);
+                client.GameServer.Database.IgnoreAccount(client.Account, targetPlayer.Client.Account, add);
                 return;
             }
         }

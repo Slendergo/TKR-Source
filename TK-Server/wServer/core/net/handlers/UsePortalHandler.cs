@@ -41,13 +41,13 @@ namespace wServer.core.net.handlers
                 return;
             }
 
-            var manager = player.Client.CoreServerManager;
+            var manager = player.Client.GameServer;
             var guildId = player.Client.Account.GuildId;
 
             var world = manager.WorldManager.GetGuild(guildId);
             if (world == null)
             {
-                var guild = player.Client.CoreServerManager.Database.GetGuild(guildId);
+                var guild = player.Client.GameServer.Database.GetGuild(guildId);
 
                 // this is mandatory
                 var dungeonName = $"{portal.PortalDescr.DungeonName} {guild.Level + 1}";
@@ -85,9 +85,6 @@ namespace wServer.core.net.handlers
                 return;
             }
 
-            if (portal.WorldInstance != null && portal.PortalDescr.NexusPortal)
-                player.CoreServerManager.WorldManager.SetPreviousWorld(player.AccountId, portal.WorldInstance.Id);
-
             if (world != null)
             {
                 if (world.IsPlayersMax())
@@ -96,7 +93,7 @@ namespace wServer.core.net.handlers
                     return;
                 }
 
-                if (world is RealmWorld && !player.CoreServerManager.Resources.GameData.ObjectTypeToId[portal.ObjectDesc.ObjectType].Contains("Cowardice"))
+                if (world is RealmWorld && !player.GameServer.Resources.GameData.ObjectTypeToId[portal.ObjectDesc.ObjectType].Contains("Cowardice"))
                     player.FameCounter.CompleteDungeon(player.World.IdName);
 
                 player.Reconnect(world);
@@ -105,7 +102,7 @@ namespace wServer.core.net.handlers
 
             var dungeonName = portal.PortalDescr.DungeonName;
 
-            world = portal.CoreServerManager.WorldManager.CreateNewWorld(dungeonName, null, player.World);
+            world = portal.GameServer.WorldManager.CreateNewWorld(dungeonName, null, player.World);
             if (world == null)
             {
                 player.SendError($"[Bug] Unable to create: {dungeonName}");

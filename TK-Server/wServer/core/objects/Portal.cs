@@ -16,7 +16,7 @@ namespace wServer.core.objects
         private SV<bool> _usable;
         public readonly PortalDesc PortalDescr;
         
-        public Portal(CoreServerManager manager, ushort objType, int? life) : base(manager, ValidatePortal(manager, objType), life, false, true, false)
+        public Portal(GameServer manager, ushort objType, int? life) : base(manager, ValidatePortal(manager, objType), life, false, true, false)
         {
             _usable = new SV<bool>(this, StatDataType.PortalUsable, true);
 
@@ -36,7 +36,7 @@ namespace wServer.core.objects
             base.ExportStats(stats);
         }
 
-        private static ushort ValidatePortal(CoreServerManager manager, ushort objType)
+        private static ushort ValidatePortal(GameServer manager, ushort objType)
         {
             var portals = manager.Resources.GameData.Portals;
 

@@ -22,13 +22,13 @@ namespace wServer.core.commands
                 {
                     player.ApplyConditionEffect(ConditionEffectIndex.Hidden);
                     player.ApplyConditionEffect(ConditionEffectIndex.Invincible);
-                    player.CoreServerManager.ConnectionManager.Clients[player.Client].Hidden = true;
+                    player.GameServer.ConnectionManager.Clients[player.Client].Hidden = true;
                 }
                 else
                 {
                     player.ApplyConditionEffect(ConditionEffectIndex.Hidden, 0);
                     player.ApplyConditionEffect(ConditionEffectIndex.Invincible, 0);
-                    player.CoreServerManager.ConnectionManager.Clients[player.Client].Hidden = false;
+                    player.GameServer.ConnectionManager.Clients[player.Client].Hidden = false;
                 }
 
                 return true;

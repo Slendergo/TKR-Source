@@ -42,7 +42,7 @@ namespace wServer.core.net.handlers
                 return;
             }
 
-            var guildResult = client.CoreServerManager.Database.CreateGuild(name, out DbGuild guild);
+            var guildResult = client.GameServer.Database.CreateGuild(name, out DbGuild guild);
 
             if (guildResult != DbGuildCreateStatus.OK)
             {
@@ -50,7 +50,7 @@ namespace wServer.core.net.handlers
                 return;
             }
 
-            var addResult = client.CoreServerManager.Database.AddGuildMember(guild, acc, true);
+            var addResult = client.GameServer.Database.AddGuildMember(guild, acc, true);
 
             if (addResult != DbAddGuildMemberStatus.OK)
             {
@@ -58,7 +58,7 @@ namespace wServer.core.net.handlers
                 return;
             }
 
-            client.CoreServerManager.Database.UpdateFame(acc, -1000);
+            client.GameServer.Database.UpdateFame(acc, -1000);
             client.Player.CurrentFame = acc.Fame;
             client.Player.Guild = guild.Name;
             client.Player.GuildRank = 40;

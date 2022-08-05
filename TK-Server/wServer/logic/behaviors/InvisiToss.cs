@@ -37,7 +37,7 @@ namespace wServer.logic.behaviors
 
                 host.World.Timers.Add(new WorldTimer(0, (world, t) =>
                 {
-                    var entity = Entity.Resolve(world.Manager, child);
+                    var entity = Entity.Resolve(world.GameServer, child);
 
                     if (host.Spawned)
                         entity.Spawned = true;

@@ -32,7 +32,7 @@ namespace wServer.logic.behaviors
             var playerList = sb.ToString();
             var playerCount = owner.Players.Count(p => p.Value.Client != null).ToString();
             var announcement = _message.Replace(PLAYER_COUNT, playerCount).Replace(PLAYER_LIST, playerList);
-            host.CoreServerManager.ChatManager.Announce(announcement);
+            host.GameServer.ChatManager.Announce(announcement);
         }
 
         protected override void TickCore(Entity host, TickTime time, ref object state)

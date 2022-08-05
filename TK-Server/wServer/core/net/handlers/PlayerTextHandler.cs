@@ -30,7 +30,7 @@ namespace wServer.core.net.handlers
             if (player?.World == null || text.Length > 512)
                 return;
 
-            var manager = player.CoreServerManager;
+            var manager = player.GameServer;
 
             // check for commands before other checks
             if (text[0] == '/')

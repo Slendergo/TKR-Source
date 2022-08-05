@@ -17,7 +17,7 @@ namespace wServer.core.commands
                     player.UpgradeEnabled = true;
                 }
 
-                var pd = player.CoreServerManager.Resources.GameData.Classes[player.ObjectType];
+                var pd = player.GameServer.Resources.GameData.Classes[player.ObjectType];
 
                 player.Stats.Base[0] = pd.Stats[0].MaxValue + 50;
                 player.Stats.Base[1] = pd.Stats[1].MaxValue + 50;

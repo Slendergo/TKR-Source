@@ -86,25 +86,23 @@ namespace wServer.networking.connection
     public sealed class ConnectionListener
     {
         public const int BufferSize = ushort.MaxValue * 4;
-        public const int MEMORY_USAGE_HUGE_TEST = 65535;
 
         private const int Backlog = 1024;
         private const int MaxSimultaneousAcceptOps = 20;
         private const int OpsToPreAllocate = 3;
-        // / MEMORY_USAGE_HUGE_TEST;
 
+        private GameServer GameServer;
         private BufferManager BuffManager;
         private ClientPool ClientPool;
-        private ConnectionManager ConnectionManager;
         private SocketAsyncEventArgsPool EventArgsPoolAccept;
         private Semaphore MaxConnectionsEnforcer;
 
-        public ConnectionListener(ConnectionManager connectionManager)
+        public ConnectionListener(GameServer gameServer)
         {
-            ConnectionManager = connectionManager;
+            GameServer = gameServer;
 
-            Port = ConnectionManager.CoreServerManager.ServerConfig.serverInfo.port;
-            MaxConnections = ConnectionManager.CoreServerManager.ServerConfig.serverSettings.maxConnections;
+            Port = GameServer.Configuration.serverInfo.port;
+            MaxConnections = GameServer.Configuration.serverSettings.maxConnections;
 
             BuffManager = new BufferManager((MaxConnections + 1) * BufferSize * OpsToPreAllocate, BufferSize);
             EventArgsPoolAccept = new SocketAsyncEventArgsPool(MaxSimultaneousAcceptOps);
@@ -127,7 +125,7 @@ namespace wServer.networking.connection
             {
                 var send = CreateNewSendEventArgs();
                 var receive = CreateNewReceiveEventArgs();
-                ClientPool.Push(new Client(this, ConnectionManager.CoreServerManager, send, receive));
+                ClientPool.Push(new Client(this, GameServer, send, receive));
             }
 
             var localEndPoint = new IPEndPoint(IPAddress.Any, Port);
@@ -137,7 +135,7 @@ namespace wServer.networking.connection
             ListenSocket.Listen(Backlog);
         }
 
-        public void StartListening() => StartAccept();
+        public void Start() => StartAccept();
 
         private void AcceptEventArg_Completed(object sender, SocketAsyncEventArgs e) => ProcessAccept(e);
 
@@ -168,6 +166,21 @@ namespace wServer.networking.connection
         {
             acceptEventArgs.AcceptSocket.Close();
             EventArgsPoolAccept.Push(acceptEventArgs);
+        }
+
+        public void Disable()
+        {
+            Console.WriteLine("[ConnectionListener] Disabled");
+            try
+            {
+                ListenSocket.Shutdown(SocketShutdown.Both);
+            }
+            catch (Exception e)
+            {
+                if (!(e is SocketException se) || se.SocketErrorCode != SocketError.NotConnected)
+                    SLogger.Instance.Error(e);
+            }
+            ListenSocket.Close();
         }
 
         private void ProcessAccept(SocketAsyncEventArgs acceptEventArgs)
@@ -234,16 +247,7 @@ namespace wServer.networking.connection
 
         public void Shutdown()
         {
-            try { ListenSocket.Shutdown(SocketShutdown.Both); }
-            catch (Exception e)
-            {
-                if (!(e is SocketException se) || se.SocketErrorCode != SocketError.NotConnected)
-                    SLogger.Instance.Error(e);
-            }
-
-            ListenSocket.Close();
-
-            foreach (var client in ConnectionManager.Clients)
+            foreach (var client in GameServer.ConnectionManager.Clients)
                 client.Key?.Disconnect("Shutdown Server");
 
             while (EventArgsPoolAccept.Count > 0)

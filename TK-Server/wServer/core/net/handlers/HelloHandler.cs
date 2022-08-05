@@ -49,8 +49,8 @@ namespace wServer.core.net.handlers
             if (acc == null)
                 return;
 
-            var cManager = Program.CoreServerManager;
-            var config = cManager.ServerConfig;
+            var cManager = client.GameServer;
+            var config = cManager.Configuration;
 
             // first check: admin server
             if (config.serverInfo.adminOnly && !acc.Admin && !cManager.IsWhitelisted(acc.AccountId))
@@ -78,8 +78,8 @@ namespace wServer.core.net.handlers
 
         private DbAccount VerifyConnection(Client client, HelloData helloData)
         {
-            var cManager = Program.CoreServerManager;
-            var config = cManager.ServerConfig;
+            var cManager = client.GameServer;
+            var config = cManager.Configuration;
 
 #if !DEBUG
             var version = config.serverSettings.version;

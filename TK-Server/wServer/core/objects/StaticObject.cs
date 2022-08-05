@@ -10,7 +10,7 @@ namespace wServer.core.objects
     {
         private SV<int> _hp;
 
-        public StaticObject(CoreServerManager manager, ushort objType, int? life, bool stat, bool dying, bool hittestable) : base(manager, objType)
+        public StaticObject(GameServer manager, ushort objType, int? life, bool stat, bool dying, bool hittestable) : base(manager, objType)
         {
             _hp = new SV<int>(this, StatDataType.HP, 0, dying);
 

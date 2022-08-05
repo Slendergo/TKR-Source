@@ -47,7 +47,7 @@ namespace wServer.core.objects
             ushort[] tierWands = { 0x2296, 0xf10, 0x237c, 0x228c };//reskins
             ushort[] tierBows = { 0x228f, 0x258a, 0xf12 };//reskins
             ushort[] tierKatana = { 0xcee, 0x228a, 0xf14, 0x237f };//reskins
-            var gameData = CoreServerManager.Resources.GameData;
+            var gameData = GameServer.Resources.GameData;
             var TieredChance = _random.NextDouble();
             ushort itemValue;
             var entity = World.GetEntity(objId);
@@ -176,7 +176,7 @@ namespace wServer.core.objects
 
         public void AEResetSkillTree(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
-            var gameData = CoreServerManager.Resources.GameData;
+            var gameData = GameServer.Resources.GameData;
             var entity = World.GetEntity(objId);
             var container = entity as Container;
             if (/*!MaxedLife || !MaxedMana || !MaxedAtt || !MaxedDef || !MaxedSpd || !MaxedDex || !MaxedVit || !MaxedWis || */container is GiftChest)
@@ -274,7 +274,7 @@ namespace wServer.core.objects
             ushort[] specialArmors = { 0xc82, 0xc83, 0xc84, 0x7448, 0xc6e };
             ushort[] nonspecialRings = { 0x708, 0xc17, 0xa41, 0xc5f, 0xc27, 0xc20, 0xc13, 0xc31, 0xba1, 0xba2, 0xba0 };
             ushort[] specialRings = { 0x7fd2, 0x7fd3, 0x7fd4, 0xbad, 0xbac, 0xbab };
-            var gameData = CoreServerManager.Resources.GameData;
+            var gameData = GameServer.Resources.GameData;
             ushort itemValue;
             var entity = World.GetEntity(objId);
             var container = entity as Container;
@@ -291,7 +291,7 @@ namespace wServer.core.objects
                         else
                             Inventory[slot] = gameData.Items[itemValue];
                         if (Rank < 60)
-                            CoreServerManager.ChatManager.AnnounceLoot($"[{Name}] used a Special Dust and Obtained an [{gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}]!");
+                            GameServer.ChatManager.AnnounceLoot($"[{Name}] used a Special Dust and Obtained an [{gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}]!");
                     }
                     else
                     {
@@ -301,7 +301,7 @@ namespace wServer.core.objects
                         else
                             Inventory[slot] = gameData.Items[itemValue];
                         if (Rank < 60)
-                            CoreServerManager.ChatManager.AnnounceLoot($"[{Name}] used a Special Dust and Obtained an [{gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}]!");
+                            GameServer.ChatManager.AnnounceLoot($"[{Name}] used a Special Dust and Obtained an [{gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}]!");
                     }
                     break;
 
@@ -315,7 +315,7 @@ namespace wServer.core.objects
                         else
                             Inventory[slot] = gameData.Items[itemValue];
                         if (Rank < 60)
-                            CoreServerManager.ChatManager.AnnounceLoot($"[{Name}] used a Special Dust and Obtained an [{gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}]!");
+                            GameServer.ChatManager.AnnounceLoot($"[{Name}] used a Special Dust and Obtained an [{gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}]!");
                     }
                     else
                     {
@@ -325,7 +325,7 @@ namespace wServer.core.objects
                         else
                             Inventory[slot] = gameData.Items[itemValue];
                         if (Rank < 60)
-                            CoreServerManager.ChatManager.AnnounceLoot($"[{Name}] used a Special Dust and Obtained an [{gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}]!");
+                            GameServer.ChatManager.AnnounceLoot($"[{Name}] used a Special Dust and Obtained an [{gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}]!");
                     }
                     break;
 
@@ -339,7 +339,7 @@ namespace wServer.core.objects
                         else
                             Inventory[slot] = gameData.Items[itemValue];
                         if (Rank < 60)
-                            CoreServerManager.ChatManager.AnnounceLoot($"[{Name}] used a Special Dust and Obtained an [{gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}]!");
+                            GameServer.ChatManager.AnnounceLoot($"[{Name}] used a Special Dust and Obtained an [{gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}]!");
                     }
                     else
                     {
@@ -349,7 +349,7 @@ namespace wServer.core.objects
                         else
                             Inventory[slot] = gameData.Items[itemValue];
                         if (Rank < 60)
-                            CoreServerManager.ChatManager.AnnounceLoot($"[{Name}] used a Special Dust and Obtained an [{gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}]!");
+                            GameServer.ChatManager.AnnounceLoot($"[{Name}] used a Special Dust and Obtained an [{gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}]!");
                     }
                     break;
 
@@ -363,7 +363,7 @@ namespace wServer.core.objects
                         else
                             Inventory[slot] = gameData.Items[itemValue];
                         if (Rank < 60)
-                            CoreServerManager.ChatManager.AnnounceLoot($"[{Name}] used a Special Dust and Obtained an [{gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}]!");
+                            GameServer.ChatManager.AnnounceLoot($"[{Name}] used a Special Dust and Obtained an [{gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}]!");
                     }
                     else
                     {
@@ -373,7 +373,7 @@ namespace wServer.core.objects
                         else
                             Inventory[slot] = gameData.Items[itemValue];
                         if (Rank < 60)
-                            CoreServerManager.ChatManager.AnnounceLoot($"[{Name}] used a Special Dust and Obtained an [{gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}]!");
+                            GameServer.ChatManager.AnnounceLoot($"[{Name}] used a Special Dust and Obtained an [{gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}]!");
                     }
                     break;
             }
@@ -382,10 +382,10 @@ namespace wServer.core.objects
         public void AEUnlockChest(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
             Player player = this;
-            var db = CoreServerManager.Database;
+            var db = GameServer.Database;
             var acc = player.Client.Account;
             var trans = db.Conn.CreateTransaction();
-            CoreServerManager.Database.CreateChest(acc, trans);
+            GameServer.Database.CreateChest(acc, trans);
             var t2 = trans.ExecuteAsync();
             acc.Reload("vaultCount");
             acc.Reload("fame");
@@ -399,7 +399,7 @@ namespace wServer.core.objects
         {
             Player player1 = this;
             var account = player1.Client.Account;
-            var transi = CoreServerManager.Database.Conn.CreateTransaction();
+            var transi = GameServer.Database.Conn.CreateTransaction();
             transi.AddCondition(Condition.HashEqual(account.Key, "maxCharSlot", account.MaxCharSlot));
             transi.HashIncrementAsync(account.Key, "maxCharSlot");
             var tr2 = transi.ExecuteAsync();
@@ -481,8 +481,8 @@ namespace wServer.core.objects
 
                     if (item.TypeOfConsumable)
                     {
-                        var gameData = CoreServerManager.Resources.GameData;
-                        var db = CoreServerManager.Database;
+                        var gameData = GameServer.Resources.GameData;
+                        var db = GameServer.Database;
 
                         if (item.Consumable)
                         {
@@ -741,7 +741,7 @@ namespace wServer.core.objects
 
                         #region Pet
 
-                        Entity en = Resolve(CoreServerManager, eff.ObjectId);
+                        Entity en = Resolve(GameServer, eff.ObjectId);
                         en.Move(X, Y);
                         en.SetPlayerOwner(this);
                         World.EnterWorld(en);
@@ -976,7 +976,7 @@ namespace wServer.core.objects
 
         private void AECreate(TickTime time, Item item, Position target, int slot, ActivateEffect eff)
         {
-            var gameData = CoreServerManager.Resources.GameData;
+            var gameData = GameServer.Resources.GameData;
 
             if (Rank >= 60 && !(World is VaultWorld) && Rank < 110)
             {
@@ -989,7 +989,7 @@ namespace wServer.core.objects
                 !gameData.Portals.ContainsKey(objType))
                 return; // object not found, ignore
 
-            var entity = Resolve(CoreServerManager, objType);
+            var entity = Resolve(GameServer, objType);
             var timeoutTime = gameData.Portals[objType].Timeout;
 
             entity.Move(X, Y);
@@ -1092,7 +1092,7 @@ namespace wServer.core.objects
         {
             var totalAllowed = 50 + (Client.Account.Rank * 2);
             var idx = StatsManager.GetStatIndex((StatDataType)eff.Stats);
-            var statInfo = CoreServerManager.Resources.GameData.Classes[ObjectType].Stats;
+            var statInfo = GameServer.Resources.GameData.Classes[ObjectType].Stats;
             var statname = StatsManager.StatIndexToName(idx);
             var ent = World.GetEntity(objId);
             var container = ent as Container;
@@ -1154,7 +1154,7 @@ namespace wServer.core.objects
                 else
                     Inventory[slot] = null;
                 var storedAmount = HandleTX(statname, storeAmount);
-                CoreServerManager.Database.ReloadAccount(Client.Account);
+                GameServer.Database.ReloadAccount(Client.Account);
                 if (storedAmount == 998)
                 {
                     int fameValue = idx < 2 ? 5 : 2;
@@ -1165,7 +1165,7 @@ namespace wServer.core.objects
                     Client.Account.TotalFame += fameValue;
 
                     CurrentFame = Client.Account.Fame;
-                    CoreServerManager.Database.ReloadAccount(Client.Account);
+                    GameServer.Database.ReloadAccount(Client.Account);
                     SendError($"Your {statname} is currently Full. Sold for {fameValue} fame.");
                 }
                 else if (storedAmount == 999)
@@ -1187,7 +1187,7 @@ namespace wServer.core.objects
                 else
                     Inventory[slot] = null;
                 var storedAmount = HandleTX(statname, storeAmount);
-                CoreServerManager.Database.ReloadAccount(Client.Account);
+                GameServer.Database.ReloadAccount(Client.Account);
                 if (storedAmount == 998)
                 {
                     int fameValue = idx < 2 ? 5 : 2;
@@ -1198,7 +1198,7 @@ namespace wServer.core.objects
                     Client.Account.TotalFame += fameValue;
 
                     CurrentFame = Client.Account.Fame;
-                    CoreServerManager.Database.ReloadAccount(Client.Account);
+                    GameServer.Database.ReloadAccount(Client.Account);
                     SendError($"Your {statname} is currently Full. Sold for {fameValue} fame.");
                 }
                 else if (storedAmount == 999)
@@ -1228,7 +1228,7 @@ namespace wServer.core.objects
                 Client.Account.TotalFame += fameValue;
 
                 CurrentFame = Client.Account.Fame;
-                CoreServerManager.Database.ReloadAccount(Client.Account);
+                GameServer.Database.ReloadAccount(Client.Account);
                 SendInfo($"Your {statname} got sold for {fameValue} Fame!");
                 return;
             }
@@ -1259,7 +1259,7 @@ namespace wServer.core.objects
                 Client.Account.TotalFame += fameValue;
                 CurrentFame = Client.Account.Fame;
 
-                CoreServerManager.Database.ReloadAccount(Client.Account);
+                GameServer.Database.ReloadAccount(Client.Account);
                 SendInfo($"Your {statname} got sold for {fameValue} Fame!");
                 return;
             }
@@ -1476,7 +1476,7 @@ namespace wServer.core.objects
         private void AEMagicDust(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
             //Potion dust = 0x4995, ItemDust = 0x4993, Miscellaneous dust = 0x4994, Special dust = 0x4996
-            var gameData = CoreServerManager.Resources.GameData;
+            var gameData = GameServer.Resources.GameData;
             var entity = World.GetEntity(objId);
             var containerItem = entity as Container;
             ushort itemValue;
@@ -1545,7 +1545,7 @@ namespace wServer.core.objects
 
         private void AEMiscellaneousDust(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
-            var gameData = CoreServerManager.Resources.GameData;
+            var gameData = GameServer.Resources.GameData;
             ushort itemValue;
             var entity = World.GetEntity(objId);
             var container = entity as Container;
@@ -1593,8 +1593,8 @@ namespace wServer.core.objects
 
         private void AEPermaPet(TickTime time, Item item, Position target, ActivateEffect eff)
         {
-            var type = CoreServerManager.Resources.GameData.IdToObjectType[eff.ObjectId];
-            var desc = CoreServerManager.Resources.GameData.ObjectDescs[type];
+            var type = GameServer.Resources.GameData.IdToObjectType[eff.ObjectId];
+            var desc = GameServer.Resources.GameData.ObjectDescs[type];
             //Log.Debug(desc.ObjectType);
             PetId = desc.ObjectType;
             SpawnPetIfAttached(World);
@@ -1620,7 +1620,7 @@ namespace wServer.core.objects
                 Duration = eff.ThrowTime / 1000
             }, this, PacketPriority.Low);
 
-            var x = new Placeholder(CoreServerManager, eff.ThrowTime * 1000);
+            var x = new Placeholder(GameServer, eff.ThrowTime * 1000);
             x.Move(target.X, target.Y);
             World.EnterWorld(x);
             World.Timers.Add(new WorldTimer(eff.ThrowTime, (world, t) =>
@@ -1645,7 +1645,7 @@ namespace wServer.core.objects
         private void AEPotionDust(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
             ushort[] _commonPotions = { 0xa4c, 0xa1f, 0xa20, 0xa35, 0xa34, 0xa21 };
-            var gameData = CoreServerManager.Resources.GameData;
+            var gameData = GameServer.Resources.GameData;
             var entity = World.GetEntity(objId);
             var container = entity as Container;
             ushort itemValue = 0x0;
@@ -2004,7 +2004,7 @@ namespace wServer.core.objects
 
         private void AEUpgradeActivate(TickTime time, Item item, Position target, int objId, int slot, ActivateEffect eff)
         {
-            var playerDesc = CoreServerManager.Resources.GameData.Classes[ObjectType];
+            var playerDesc = GameServer.Resources.GameData.Classes[ObjectType];
             var maxed = playerDesc.Stats.Where((t, i) => Stats.Base[i] >= t.MaxValue).Count();
             var entity = World.GetEntity(objId);
             var container = entity as Container;
@@ -2049,7 +2049,7 @@ namespace wServer.core.objects
                 else if (statname == "MaxMagicPoints")
                     statname = "Mana";
 
-                var statInfo = CoreServerManager.Resources.GameData.Classes[ObjectType].Stats;
+                var statInfo = GameServer.Resources.GameData.Classes[ObjectType].Stats;
 
                 Stats.Base[idx] += eff.Amount;
                 if (Stats.Base[idx] > statInfo[idx].MaxValue + (idx < 2 ? 50 : 10))

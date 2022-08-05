@@ -14,7 +14,7 @@ namespace wServer.core.objects.vendors
         private SV<ushort> _item;
         private SV<int> _timeLeft;
 
-        protected Merchant(CoreServerManager manager, ushort objType) : base(manager, objType)
+        protected Merchant(GameServer manager, ushort objType) : base(manager, objType)
         {
             _item = new SV<ushort>(this, StatDataType.MerchantMerchandiseType, 0xa00);
             _count = new SV<int>(this, StatDataType.MerchantRemainingCount, -1);
@@ -39,7 +39,7 @@ namespace wServer.core.objects.vendors
 
             BeingPurchased = true;
 
-            var item = CoreServerManager.Resources.GameData.Items[Item];
+            var item = GameServer.Resources.GameData.Items[Item];
             var result = ValidateCustomer(player, item);
 
             if (result != BuyResult.Ok)
@@ -145,7 +145,7 @@ namespace wServer.core.objects.vendors
 
         private async void PurchaseItem(Player player, Item item)
         {
-            var db = CoreServerManager.Database;
+            var db = GameServer.Database;
             var trans = db.Conn.CreateTransaction();
             var t1 = db.UpdateCurrency(player.Client.Account, -Price, Currency, trans);
             var invTrans = TransactionItem(player, item);

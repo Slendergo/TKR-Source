@@ -25,7 +25,7 @@ namespace wServer.core.net.handlers
             client.Reconnect(new Reconnect()
             {
                 Host = "",
-                Port = client.CoreServerManager.ServerConfig.serverInfo.port,
+                Port = client.GameServer.Configuration.serverInfo.port,
                 GameId = World.Nexus,
                 Name = "Nexus"
             });

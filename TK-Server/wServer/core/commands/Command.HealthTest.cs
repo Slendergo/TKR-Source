@@ -12,7 +12,7 @@ namespace wServer.core.commands
 
             protected override bool Process(Player player, TickTime time, string color)
             {
-                var e = Entity.Resolve(player.CoreServerManager, "Coral Gift");
+                var e = Entity.Resolve(player.GameServer, "Coral Gift");
                 e.SetDefaultSize(300);
                 e.Move(player.X, player.Y);
                 (e as Enemy).HP = 100000000;

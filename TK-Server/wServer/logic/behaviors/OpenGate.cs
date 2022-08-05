@@ -41,7 +41,7 @@ namespace wServer.logic.behaviors
                     {
                         var tile = host.World.Map[x, y];
 
-                        if (tile.ObjType == host.CoreServerManager.Resources.GameData.DisplayIdToObjectType[target])
+                        if (tile.ObjType == host.GameServer.Resources.GameData.DisplayIdToObjectType[target])
                         {
                             tile.ObjType = 0;
                             tile.UpdateCount++;

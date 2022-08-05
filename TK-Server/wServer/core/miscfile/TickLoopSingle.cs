@@ -11,7 +11,7 @@ namespace wServer.core
         public static bool TryNewSystem = false;
 
         private readonly WorldManager WorldManager;
-        private readonly World World;
+        private World World;
         private readonly Thread Thread;
         private bool Stopped;
 
@@ -95,7 +95,6 @@ namespace wServer.core
                     lastMS = currentMS;
                 }
             }
-
             Stop();
         }
 
@@ -104,7 +103,9 @@ namespace wServer.core
             if (Stopped)
                 return;
             Stopped = true;
-            Thread.Join();
+            //Console.WriteLine("Before Join");
+            //Thread.Join();
+            //Console.WriteLine("After Join");
         }
     }
 }

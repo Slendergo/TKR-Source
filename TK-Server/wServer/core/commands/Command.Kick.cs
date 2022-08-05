@@ -14,7 +14,7 @@ namespace wServer.core.commands
 
             protected override bool Process(Player player, TickTime time, string args)
             {
-                var client = player.CoreServerManager.ConnectionManager.Clients
+                var client = player.GameServer.ConnectionManager.Clients
                     .KeyWhereAsParallel(_ => _.Account.Name.EqualsIgnoreCase(args) && !_.Account.Hidden)
                     .SingleOrDefault();
                 if (client != default)

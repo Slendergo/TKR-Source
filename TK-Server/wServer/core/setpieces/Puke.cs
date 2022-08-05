@@ -10,7 +10,7 @@ namespace wServer.core.setpieces
 
         public override void RenderSetPiece(World world, IntPoint pos)
         {
-            var dat = world.Manager.Resources.GameData;
+            var dat = world.GameServer.Resources.GameData;
             var p = new IntPoint
             {
                 X = pos.X - (Size / 2),

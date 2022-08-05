@@ -52,7 +52,7 @@ namespace wServer.core.commands
 
             private bool SpawnJson(Player player, string json)
             {
-                var gameData = player.CoreServerManager.Resources.GameData;
+                var gameData = player.GameServer.Resources.GameData;
 
                 JsonSpawn props;
                 try
@@ -153,7 +153,7 @@ namespace wServer.core.commands
 
             private bool SpawnBasic(Player player, string args)
             {
-                var gameData = player.CoreServerManager.Resources.GameData;
+                var gameData = player.GameServer.Resources.GameData;
 
                 // split argument
                 var index = args.IndexOf(' ');
@@ -182,7 +182,7 @@ namespace wServer.core.commands
                 //    return false;
                 //}
 
-                var id = player.CoreServerManager.Resources.GameData.ObjectTypeToId[objType.Value];
+                var id = player.GameServer.Resources.GameData.ObjectTypeToId[objType.Value];
                 if (player.Client.Account.Rank < 100 && id.Contains("Fountain"))
                 {
                     player.SendError("Insufficient rank.");
@@ -256,7 +256,7 @@ namespace wServer.core.commands
                         Entity entity;
                         try
                         {
-                            entity = Entity.Resolve(world.Manager, mobObjectType);
+                            entity = Entity.Resolve(world.GameServer, mobObjectType);
                         }
                         catch (Exception e)
                         {

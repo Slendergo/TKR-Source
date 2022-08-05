@@ -14,13 +14,11 @@ namespace wServer.core
 {
     public sealed class WorldManager
     {
-        public CoreServerManager CoreServerManager;
+        public GameServer GameServer;
 
         private int NextWorldId = 0;
 
         private readonly ConcurrentDictionary<int, TickThreadSingle> Threads = new ConcurrentDictionary<int, TickThreadSingle>();
-
-        public ConcurrentDictionary<int, int> WorldMapId { get; set; } = new ConcurrentDictionary<int, int>();
 
         public NexusWorld Nexus => (Worlds[-2] as NexusWorld);
         public TestWorld Test => (Worlds[-6] as TestWorld);
@@ -32,27 +30,10 @@ namespace wServer.core
 
         public IEnumerable<World> GetWorlds() => Worlds.Values;
 
-        public void WorldsBroadcastAsParallel(Action<World> action)
+        public WorldManager(GameServer gameServer)
         {
-            var worlds = GetWorlds();
-            worlds.AsParallel().Select(_ =>
-            {
-                action.Invoke(_);
-                return _;
-            }).ToArray();
+            GameServer = gameServer;
         }
-
-        public WorldManager(CoreServerManager coreServerManager)
-        {
-            CoreServerManager = coreServerManager;
-        }
-
-        public void SetPreviousWorld(int accountId, int worldId)
-        {
-            WorldMapId[accountId] = worldId;
-        }
-
-        public World GetPreviousRealmWorld(int accountId) => WorldMapId.TryGetValue(accountId, out var id) ? GetWorld(id) : null;
 
         public void Initialize()
         {
@@ -60,7 +41,9 @@ namespace wServer.core
             CreateNewTest();
 
             // todo async creation system
-            Nexus.PortalMonitor.CreateNewRealm();
+
+            for(var i = 0; i < GameServer.Configuration.serverSettings.realms; i++)
+                Nexus.PortalMonitor.CreateNewRealm();
         }
 
         public Task<RealmWorld> CreateNewRealmAsync()
@@ -69,14 +52,14 @@ namespace wServer.core
             {
                 using (var t = new TimedProfiler("CreateNewRealm()"))
                 {
-                    var worldResource = CoreServerManager.Resources.GameData.GetWorld("Realm of the Mad God");
+                    var worldResource = GameServer.Resources.GameData.GetWorld("Realm of the Mad God");
                     if (worldResource == null)
                         return null;
 
                     var nextId = Interlocked.Increment(ref NextWorldId);
 
                     var world = new RealmWorld(nextId, worldResource);
-                    world.Manager = CoreServerManager; // todo add to ctor
+                    world.GameServer = GameServer; // todo add to ctor
                     var success = world.LoadMapFromData(worldResource);
                     if (!success)
                         return null;
@@ -92,7 +75,7 @@ namespace wServer.core
         public World CreateNewWorld(string dungeonName, int? id = null, World parent = null)
         {
             //Console.WriteLine($"CreateNewWorld({dungeonName}, {id ?? null}, {(parent == null ? "null" : parent.IdName)}");
-            var worldResource = CoreServerManager.Resources.GameData.GetWorld(dungeonName);
+            var worldResource = GameServer.Resources.GameData.GetWorld(dungeonName);
             if (worldResource == null)
                 return null;
 
@@ -112,7 +95,7 @@ namespace wServer.core
                     break;
             }
 
-            world.Manager = CoreServerManager; // todo add to ctor
+            world.GameServer = GameServer; // todo add to ctor
             var success = world.LoadMapFromData(worldResource);
             if (!success)
                 return null;
@@ -129,7 +112,7 @@ namespace wServer.core
         {
             Console.WriteLine($"CreateNewTest");
 
-            var worldResource = CoreServerManager.Resources.GameData.GetWorld("Testing");
+            var worldResource = GameServer.Resources.GameData.GetWorld("Testing");
             if (worldResource == null)
             {
                 Console.WriteLine("Testing couldnt be made");
@@ -137,7 +120,7 @@ namespace wServer.core
             }
             var world = new TestWorld(-6, worldResource);
 
-            world.Manager = CoreServerManager; // todo add to ctor
+            world.GameServer = GameServer; // todo add to ctor
             
             world.Init();
             Worlds[world.Id] = world;
@@ -162,10 +145,16 @@ namespace wServer.core
 
         public bool RemoveWorld(World world)
         {
-            _ = Threads.TryRemove(world.Id, out _);
+            if (Threads.TryRemove(world.Id, out var thread))
+            {
+                Console.WriteLine($"Removed Thread: {world.Id} {world.DisplayName}");
+                thread.Stop();
+            }
 
             if (Worlds.TryRemove(world.Id, out _))
             {
+                Console.WriteLine($"Removed World: {world.Id} {world.DisplayName}");
+
                 switch (world.InstanceType)
                 {
                     case WorldResourceInstanceType.Vault:
@@ -181,7 +170,7 @@ namespace wServer.core
             return false;
         }
 
-        public void Shutdown()
+        public void Dispose()
         {
             foreach (var thread in Threads.Values)
                 thread.Stop();

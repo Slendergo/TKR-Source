@@ -19,7 +19,7 @@ namespace wServer.logic.transitions
         protected override bool TickCore(Entity host, TickTime time, ref object state)
         {
             if (_groundType == null)
-                _groundType = host.CoreServerManager.Resources.GameData.IdToTileType[_ground];
+                _groundType = host.GameServer.Resources.GameData.IdToTileType[_ground];
 
             var tile = host.World.Map[(int)host.X, (int)host.Y];
 

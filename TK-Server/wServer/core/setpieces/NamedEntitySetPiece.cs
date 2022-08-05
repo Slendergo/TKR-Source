@@ -13,7 +13,7 @@ namespace wServer.core.setpieces
 
         public override void RenderSetPiece(World world, IntPoint pos)
         {
-            var entity = Entity.Resolve(world.Manager, EntityName);
+            var entity = Entity.Resolve(world.GameServer, EntityName);
 
             if (entity == null)
                 return;

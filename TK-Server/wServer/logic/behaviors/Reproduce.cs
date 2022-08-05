@@ -79,7 +79,7 @@ namespace wServer.logic.behaviors
                         return;
                     }
 
-                    var entity = Entity.Resolve(host.CoreServerManager, _children ?? host.ObjectType);
+                    var entity = Entity.Resolve(host.GameServer, _children ?? host.ObjectType);
                     entity.GivesNoXp = true;
                     entity.Move((float)targetX, (float)targetY);
 

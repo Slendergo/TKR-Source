@@ -4,7 +4,7 @@ namespace wServer.core.objects
 {
     public class Pet : Entity, IPlayer
     {
-        public Pet(CoreServerManager manager, Player player, ushort objType) : base(manager, objType) => PlayerOwner = player;
+        public Pet(GameServer manager, Player player, ushort objType) : base(manager, objType) => PlayerOwner = player;
 
         public Player PlayerOwner { get; set; }
 

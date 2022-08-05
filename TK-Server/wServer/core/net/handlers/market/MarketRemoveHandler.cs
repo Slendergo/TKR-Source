@@ -24,7 +24,7 @@ namespace wServer.core.net.handlers.market
             if (!HandleData(data, client) || !HandleInvalidPurchase(client, data.SellerId, client.Account.AccountId))
                 return;
 
-            var db = client.CoreServerManager.Database;
+            var db = client.GameServer.Database;
             var task = db.RemoveMarketEntrySafety(client.Account, data.Id);
 
             if (task.IsCanceled)

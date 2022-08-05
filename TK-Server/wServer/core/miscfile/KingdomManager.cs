@@ -458,7 +458,7 @@ namespace wServer.core
         public KingdomManager(RealmWorld world)
         {
             World = world;
-            _discord = Program.CoreServerManager.ServerConfig.discordIntegration;
+            _discord = world.GameServer.Configuration.discordIntegration;
             _webhook = _discord.webhookRealmEvent;
 
             InitEvents();
@@ -489,9 +489,9 @@ namespace wServer.core
                 case KindgomState.Closing:
                     {
                         DisableSpawning = true;
-                        World.Manager.WorldManager.Nexus.PortalMonitor.RemovePortal(World.Id);
-                        World.Manager.WorldManager.Nexus.PortalMonitor.CreateNewRealm();
-
+                        World.GameServer.WorldManager.Nexus.PortalMonitor.RemovePortal(World.Id);
+                        World.GameServer.WorldManager.Nexus.PortalMonitor.CreateNewRealm();
+                        
                         //BroadcastMsg("RAAHH MY TROOPS HAVE FAILED ME!");
                         //BroadcastMsg("THEY SHALL TASTE MY WRATH!!!");
                         //BroadcastMsg("THIS KINDOM SHALL NOT FALL!!");
@@ -531,12 +531,12 @@ namespace wServer.core
                     {
                         if (World.Players.Count >= 0)
                         {
-                            var newWorld = World.Manager.WorldManager.CreateNewWorld("Oryx's Castle", null, World.Manager.WorldManager.Nexus); // todo mabye a 3rd thread for oryx's?
+                            var newWorld = World.GameServer.WorldManager.CreateNewWorld("Oryx's Castle", null, World.GameServer.WorldManager.Nexus); // todo mabye a 3rd thread for oryx's?
 
                             var rcpNotPaused = new Reconnect()
                             {
                                 Host = "",
-                                Port = World.Manager.ServerConfig.serverInfo.port,
+                                Port = World.GameServer.Configuration.serverInfo.port,
                                 GameId = newWorld.Id,
                                 Name = newWorld.DisplayName
                             };
@@ -544,7 +544,7 @@ namespace wServer.core
                             var rcpPaused = new Reconnect()
                             {
                                 Host = "",
-                                Port = World.Manager.ServerConfig.serverInfo.port,
+                                Port = World.GameServer.Configuration.serverInfo.port,
                                 GameId = -2,
                                 Name = "Nexus"
                             };
@@ -578,7 +578,7 @@ namespace wServer.core
 
             var events = _events;
             var evt = events[Random.Next(0, events.Count)];
-            var gameData = World.Manager.Resources.GameData;
+            var gameData = World.GameServer.Resources.GameData;
 
             if (gameData.ObjectDescs[gameData.IdToObjectType[evt.Item1]].PerRealmMax == 1)
                 events.Remove(evt);
@@ -615,10 +615,10 @@ namespace wServer.core
 
             sb.Append("!");
 
-            World.Manager.ChatManager.AnnounceRealm(sb.ToString(), "The Talisman King");
+            World.GameServer.ChatManager.AnnounceRealm(sb.ToString(), "The Talisman King");
 
-            var account = Program.CoreServerManager.Database.GetAccount(mvp.AccountId);
-            var guild = Program.CoreServerManager.Database.GetGuild(account.GuildId);
+            var account = World.GameServer.Database.GetAccount(mvp.AccountId);
+            var guild = World.GameServer.Database.GetGuild(account.GuildId);
             var points = Random.Next(1, 10);
 
             if (guild != null)
@@ -637,14 +637,13 @@ namespace wServer.core
                         guild.GuildLootBoost += .01f;
                         guild.FlushAsync();
 
-                        mvp.CoreServerManager.WorldManager
-                            .WorldsBroadcastAsParallel(_ =>
-                                _.ForeachPlayer(__ =>
-                                {
-                                    if (__.Client.Account.GuildId == pguild)
-                                        __.SendInfo($"Congratulations! Your guild's loot boost increased to {guild.GuildLootBoost:P} (max: {MAX_GUILD_LOOT_BOOST:P}).");
-                                })
-                            );
+                        var worlds = mvp.GameServer.WorldManager.GetWorlds();
+                        foreach (var world in worlds)
+                            world.ForeachPlayer(_ =>
+                            {
+                                if (_.Client.Account.GuildId == pguild)
+                                    _.SendInfo($"Congratulations! Your guild's loot boost increased to {guild.GuildLootBoost:P} (max: {MAX_GUILD_LOOT_BOOST:P}).");
+                            });
                     }
                 }
             }
@@ -661,7 +660,7 @@ namespace wServer.core
             // notify 3 events before realm close on discord (once)
             if (_EventCount == 27 && !DisableSpawning)
             {
-                var info = Program.CoreServerManager.ServerConfig.serverInfo;
+                var info = World.GameServer.Configuration.serverInfo;
                 var players = World.Players.Count(p => p.Value.Client != null);
                 var builder = _discord.MakeOryxBuilder(info, World.DisplayName, players, World.MaxPlayers);
 
@@ -672,10 +671,10 @@ namespace wServer.core
             {
                 DisableSpawning = true;
                 CurrentState = KindgomState.Closing;
-                World.Manager.ChatManager.AnnounceRealm("(" + _EventCount + "/30) " + eventDead + " has been defeated!", World.DisplayName);
+                World.GameServer.ChatManager.AnnounceRealm("(" + _EventCount + "/30) " + eventDead + " has been defeated!", World.DisplayName);
             }
             else if (_EventCount <= 30 && !World.Closed)
-                World.Manager.ChatManager.AnnounceRealm("(" + _EventCount + "/30) " + eventDead + " has been defeated!", World.DisplayName);
+                World.GameServer.ChatManager.AnnounceRealm("(" + _EventCount + "/30) " + eventDead + " has been defeated!", World.DisplayName);
 
             return _EventCount;
         }
@@ -709,7 +708,7 @@ namespace wServer.core
                     if (objType == 0)
                         continue;
 
-                    EnemyCounts[idx] += Spawn(World.Manager.Resources.GameData.ObjectDescs[objType], terrain, w, h);
+                    EnemyCounts[idx] += Spawn(World.GameServer.Resources.GameData.ObjectDescs[objType], terrain, w, h);
 
                     if (EnemyCounts[idx] >= enemyCount)
                         break;
@@ -721,7 +720,7 @@ namespace wServer.core
         {
             var events = _events;
             var evt = events[Random.Next(0, events.Count)];
-            var gameData = World.Manager.Resources.GameData;
+            var gameData = World.GameServer.Resources.GameData;
 
             if (gameData.ObjectDescs[gameData.IdToObjectType[evt.Item1]].PerRealmMax == 1)
                 events.Remove(evt);
@@ -750,11 +749,6 @@ namespace wServer.core
             player.SendInfo("Type \"/help\" for more help");
         }
 
-        public void Tick(ref TickTime time)
-        {
-            Update(ref time);
-        }
-
         private static double GetNormal(Random rand)
         {
             // Use Box-Muller algorithm
@@ -770,7 +764,7 @@ namespace wServer.core
 
         private static double GetUniform(Random rand) => ((uint)(rand.NextDouble() * uint.MaxValue) + 1.0) * 2.328306435454494e-10;
 
-        private void BroadcastMsg(string message) => World.Manager.ChatManager.TalismanKing(World, message);
+        private void BroadcastMsg(string message) => World.GameServer.ChatManager.TalismanKing(World, message);
 
         private void EnsurePopulation()
         {
@@ -838,7 +832,7 @@ namespace wServer.core
                     if (objType == 0)
                         continue;
 
-                    j += Spawn(World.Manager.Resources.GameData.ObjectDescs[objType], t, w, h);
+                    j += Spawn(World.GameServer.Resources.GameData.ObjectDescs[objType], t, w, h);
                 }
             }
 
@@ -858,7 +852,7 @@ namespace wServer.core
 
                 if (n > p)
                 {
-                    objType = World.Manager.Resources.GameData.IdToObjectType[k.Item1];
+                    objType = World.GameServer.Resources.GameData.IdToObjectType[k.Item1];
                     break;
                 }
             }
@@ -946,7 +940,7 @@ namespace wServer.core
 
                 for (var k = 0; k < num; k++)
                 {
-                    entity = Entity.Resolve(World.Manager, desc.ObjectType);
+                    entity = Entity.Resolve(World.GameServer, desc.ObjectType);
                     entity.Move(pt.X + (float)(Random.NextDouble() * 2 - 1) * 5, pt.Y + (float)(Random.NextDouble() * 2 - 1) * 5);
                     (entity as Enemy).Terrain = terrain;
                     World.EnterWorld(entity);
@@ -962,7 +956,7 @@ namespace wServer.core
                 pt.Y = Random.Next(0, h);
             } while (World.Map[pt.X, pt.Y].Terrain != terrain || !World.IsPassable(pt.X, pt.Y) || World.AnyPlayerNearby(pt.X, pt.Y));
 
-            entity = Entity.Resolve(World.Manager, desc.ObjectType);
+            entity = Entity.Resolve(World.GameServer, desc.ObjectType);
             entity.Move(pt.X, pt.Y);
             (entity as Enemy).Terrain = terrain;
             World.EnterWorld(entity);
@@ -996,7 +990,7 @@ namespace wServer.core
 
             if (_discord.CanSendRealmEventNotification(name))
             {
-                var info = Program.CoreServerManager.ServerConfig.serverInfo;
+                var info = World.GameServer.Configuration.serverInfo;
                 var builder = _discord.MakeEventBuilder(info.name, World.DisplayName, name);
 
 #pragma warning disable

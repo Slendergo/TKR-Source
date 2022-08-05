@@ -16,8 +16,8 @@ namespace wServer.core.commands
 			{
 				var index = args.IndexOf(' ');
 				var name = args.Substring(0, index);
-				var id = player.CoreServerManager.Database.ResolveId(name);
-				var acc = player.CoreServerManager.Database.GetAccount(id);
+				var id = player.GameServer.Database.ResolveId(name);
+				var acc = player.GameServer.Database.GetAccount(id);
 				var dt = Utils.FromUnixTimestamp(acc.LastSeen);
 				if (player.Rank < 100)
 				{

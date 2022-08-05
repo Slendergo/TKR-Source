@@ -41,7 +41,7 @@ namespace wServer.logic.behaviors
 
             if (Random.NextDouble() < _probability)
             {
-                var manager = host.CoreServerManager;
+                var manager = host.GameServer;
                 var gameData = manager.Resources.GameData;
                 var timeoutTime = (_timeout == null) ? gameData.Portals[_target].Timeout : _timeout.Value;
                 var entity = Entity.Resolve(manager, _target);

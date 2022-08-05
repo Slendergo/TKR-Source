@@ -65,6 +65,12 @@ namespace common.isc
             // listen to "network" communications
             AddHandler<NetworkMsg>(Channel.Network, HandleNetwork);
 
+            if (isAppEngine)
+                JoinNetwork();
+        }
+
+        public void JoinNetwork()
+        {
             // tell other servers listening that we've join the network
             Publish(Channel.Network, new NetworkMsg()
             {
@@ -120,7 +126,6 @@ namespace common.isc
             _tmr.Elapsed += (sender, e) => Tick(PingPeriod);
             _tmr.Start();
         }
-
 
         public void Shutdown()
         {

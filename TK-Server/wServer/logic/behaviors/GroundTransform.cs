@@ -30,7 +30,7 @@ namespace wServer.logic.behaviors
             var map = host.World.Map;
             var hx = (int)host.X;
             var hy = (int)host.Y;
-            var tileType = host.CoreServerManager.Resources.GameData.IdToTileType[_tileId];
+            var tileType = host.GameServer.Resources.GameData.IdToTileType[_tileId];
             var tiles = new List<TileState>();
 
             if (_relativeX != null && _relativeY != null)

@@ -24,7 +24,7 @@ namespace wServer.core.commands
                     return true;
                 }
 
-                var target = player.CoreServerManager.ConnectionManager.Clients
+                var target = player.GameServer.ConnectionManager.Clients
                     .KeyWhereAsParallel(_ => _.Account != null && _.Account.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase))
                     .SingleOrDefault();
 

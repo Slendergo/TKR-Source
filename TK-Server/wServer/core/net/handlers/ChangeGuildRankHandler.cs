@@ -24,14 +24,14 @@ namespace wServer.core.net.handlers
             var name = rdr.ReadUTF();
             var rank = rdr.ReadInt32();
 
-            var manager = client.CoreServerManager;
+            var manager = client.GameServer;
             var srcAcnt = client.Account;
             var srcPlayer = client.Player;
 
             if (srcPlayer == null || client?.Player?.World is TestWorld)
                 return;
 
-            var targetId = client.CoreServerManager.Database.ResolveId(name);
+            var targetId = client.GameServer.Database.ResolveId(name);
             if (targetId == 0)
             {
                 srcPlayer.SendError("A player with that name does not exist.");
@@ -40,7 +40,7 @@ namespace wServer.core.net.handlers
 
             // get target client if available (player is currently connected to the server)
             // otherwise pull account from db
-            var target = client.CoreServerManager.ConnectionManager.Clients
+            var target = client.GameServer.ConnectionManager.Clients
                 .KeyWhereAsParallel(_ => _.Account.AccountId == targetId)
                 .FirstOrDefault();
             var targetAcnt = target != null ? target.Account : manager.Database.GetAccount(targetId);
@@ -61,7 +61,7 @@ namespace wServer.core.net.handlers
             }
 
             // change rank
-            if (!client.CoreServerManager.Database.ChangeGuildRank(targetAcnt, rank))
+            if (!client.GameServer.Database.ChangeGuildRank(targetAcnt, rank))
             {
                 srcPlayer.SendError("Failed to change rank.");
                 return;
@@ -73,9 +73,9 @@ namespace wServer.core.net.handlers
 
             // notify guild
             if (targetRank < rank)
-                client.CoreServerManager.ChatManager.Guild(srcPlayer, targetAcnt.Name + " has been promoted to " + ResolveRank(rank) + ".");
+                client.GameServer.ChatManager.Guild(srcPlayer, targetAcnt.Name + " has been promoted to " + ResolveRank(rank) + ".");
             else
-                client.CoreServerManager.ChatManager.Guild(srcPlayer, targetAcnt.Name + " has been demoted to " + ResolveRank(rank) + ".");
+                client.GameServer.ChatManager.Guild(srcPlayer, targetAcnt.Name + " has been demoted to " + ResolveRank(rank) + ".");
         }
 
         private string ResolveRank(int rank)

@@ -29,18 +29,17 @@ namespace wServer.networking
         private ConnectionListener _server;
         private volatile ProtocolState _state;
 
-        public Client(ConnectionListener server, CoreServerManager coreServerManager, SocketAsyncEventArgs send, SocketAsyncEventArgs receive)
+        public Client(ConnectionListener server, GameServer gameServer, SocketAsyncEventArgs send, SocketAsyncEventArgs receive)
         {
             _server = server;
-
-            CoreServerManager = coreServerManager;
+            GameServer = gameServer;
 
             _handler = new NetworkHandler(this, send, receive);
         }
 
         public DbAccount Account { get; internal set; }
         public DbChar Character { get; internal set; }
-        public CoreServerManager CoreServerManager { get; private set; }
+        public GameServer GameServer { get; private set; }
         public int Id { get; internal set; }
         public string IpAddress { get; private set; }
         public bool IsLagging { get; private set; }
@@ -91,7 +90,7 @@ namespace wServer.networking
                     }
                 //StopTask_ = true;
                 Player?.CleanupPlayerUpdate();
-                CoreServerManager.ConnectionManager.Disconnect(this);
+                GameServer.ConnectionManager.Disconnect(this);
 
                 _server.Disconnect(this);
             }
@@ -117,7 +116,7 @@ namespace wServer.networking
             }
 
             //Log.Trace("Reconnecting client ({0}) @ {1} to {2}...", Account.Name, IP, pkt.Name);
-            CoreServerManager.ConnectionManager.AddReconnect(Account.AccountId, pkt);
+            GameServer.ConnectionManager.AddReconnect(Account.AccountId, pkt);
             SendPacket(pkt, PacketPriority.High);
         }
 
@@ -172,7 +171,7 @@ namespace wServer.networking
 
             if (Character == null || Player == null || Player.World is TestWorld)
             {
-                CoreServerManager.Database.ReleaseLock(acc);
+                GameServer.Database.ReleaseLock(acc);
                 return;
             }
 
@@ -180,9 +179,9 @@ namespace wServer.networking
             acc?.RefreshLastSeen();
             acc?.FlushAsync();
 
-            if (CoreServerManager != null && CoreServerManager.Database != null && Player.FameCounter != null && Player.FameCounter.ClassStats != null)
-                if (CoreServerManager.Database.SaveCharacter(acc, Character, Player.FameCounter.ClassStats, true))
-                    CoreServerManager.Database.ReleaseLock(acc);
+            if (GameServer != null && GameServer.Database != null && Player.FameCounter != null && Player.FameCounter.ClassStats != null)
+                if (GameServer.Database.SaveCharacter(acc, Character, Player.FameCounter.ClassStats, true))
+                    GameServer.Database.ReleaseLock(acc);
         }
     }
 }

@@ -22,7 +22,7 @@ namespace wServer.logic.behaviors
         protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             if (_targetState == null)
-                _targetState = FindState(host.CoreServerManager.BehaviorDb.Definitions[_children].Item1, _targetStateName);
+                _targetState = FindState(host.GameServer.BehaviorDb.Definitions[_children].Item1, _targetStateName);
 
             foreach (var i in host.GetNearestEntities(_range, _children))
                 if (!i.CurrentState.Is(_targetState))

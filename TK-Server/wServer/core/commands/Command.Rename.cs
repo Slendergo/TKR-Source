@@ -25,7 +25,7 @@ namespace wServer.core.commands
                 var playerName = args.Substring(0, index);
                 var newPlayerName = args.Substring(index + 1);
 
-                var id = player.CoreServerManager.Database.ResolveId(playerName);
+                var id = player.GameServer.Database.ResolveId(playerName);
                 if (id == 0)
                 {
                     player.SendError("Player account not found!");
@@ -41,7 +41,7 @@ namespace wServer.core.commands
 
                 string lockToken = null;
                 var key = Database.NAME_LOCK;
-                var db = player.CoreServerManager.Database;
+                var db = player.GameServer.Database;
 
                 try
                 {

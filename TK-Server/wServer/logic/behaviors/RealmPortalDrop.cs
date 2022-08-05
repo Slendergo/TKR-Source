@@ -13,7 +13,7 @@ namespace wServer.logic.behaviors
                 return;
 
             var en = host.GetNearestEntity(100, 0x0704);
-            var portal = Entity.Resolve(host.CoreServerManager, "Realm Portal");
+            var portal = Entity.Resolve(host.GameServer, "Realm Portal");
 
             if (en != null)
                 portal.Move(en.X, en.Y);
@@ -28,7 +28,7 @@ namespace wServer.logic.behaviors
             if (host.GetNearestEntity(100, 0x5e4b) != null)
                 return;
 
-            var opener = Entity.Resolve(host.CoreServerManager, "Realm Portal Opener");
+            var opener = Entity.Resolve(host.GameServer, "Realm Portal Opener");
 
             host.World.EnterWorld(opener);
             opener.Move(host.X, host.Y);

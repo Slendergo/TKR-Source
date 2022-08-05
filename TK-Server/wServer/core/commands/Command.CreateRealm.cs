@@ -12,7 +12,20 @@ namespace wServer.core.commands
 
             protected override bool Process(Player player, TickTime time, string color)
             {
-                player.CoreServerManager.WorldManager.Nexus.PortalMonitor.CreateNewRealm();
+                player.GameServer.WorldManager.Nexus.PortalMonitor.CreateNewRealm();
+                return true;
+            }
+        }
+        internal class RemoveRealm : Command
+        {
+            public RemoveRealm() : base("removerealm", permLevel: 110)
+            {
+            }
+
+            protected override bool Process(Player player, TickTime time, string color)
+            {
+                player.World.GameServer.WorldManager.Nexus.PortalMonitor.RemovePortal(player.World.Id);
+                player.World.FlagForClose();
                 return true;
             }
         }

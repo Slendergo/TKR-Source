@@ -218,7 +218,7 @@ namespace wServer.core.net.handlers
             }
 
             //Give 20 points for 16/16
-            var statInfo = player.CoreServerManager.Resources.GameData.Classes[player.ObjectType];
+            var statInfo = player.GameServer.Resources.GameData.Classes[player.ObjectType];
             var upgradeCount = 0;
             if (player.Stats.Base[0] >= statInfo.Stats[0].MaxValue + 50)
             {

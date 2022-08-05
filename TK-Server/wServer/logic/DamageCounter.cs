@@ -39,12 +39,12 @@ namespace wServer.logic
 
             if (lastHitPlayer_ != null)
             {
-                var account = lastHitPlayer_.CoreServerManager.Database.GetAccount(lastHitPlayer_.AccountId);
+                var account = lastHitPlayer_.GameServer.Database.GetAccount(lastHitPlayer_.AccountId);
                 account.EnemiesKilled++;
                 account.FlushAsync();
                 if (account.EnemiesKilled % 1000 == 0)
                 {
-                    var guild = lastHitPlayer_.CoreServerManager.Database.GetGuild(account.GuildId);
+                    var guild = lastHitPlayer_.GameServer.Database.GetGuild(account.GuildId);
                     if (guild != null)
                     {
                         lastHitPlayer_.SendInfo("Congratulations! You just killed another 1000 enemies! Reward: 1 Guild point.");

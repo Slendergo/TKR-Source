@@ -16,7 +16,7 @@ namespace wServer.core.commands
             {
                 try
                 {
-                    var db = player.CoreServerManager.Database;
+                    var db = player.GameServer.Database;
                     var id = 1;
                     do
                     {

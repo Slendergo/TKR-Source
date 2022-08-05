@@ -15,21 +15,26 @@ namespace wServer.core
 {
     public sealed class ConnectionManager
     {
-        public CoreServerManager CoreServerManager;
-
         private const int CONNECTING_TTL = 15;
         private const int RECON_TTL = 15;
-
+        
+        
         private int NextClientId;
+        private readonly GameServer GameServer;
 
-        public ConnectionManager(CoreServerManager coreServerManager) => CoreServerManager = coreServerManager;
+        public ConcurrentDictionary<Client, PlayerInfo> Clients { get; } = new ConcurrentDictionary<Client, PlayerInfo>();
+        private ConcurrentDictionary<Client, DateTime> Connecting { get; } = new ConcurrentDictionary<Client, DateTime>();
+        private ConcurrentDictionary<int, ReconnectInfo> ReconnectInfo { get; } = new ConcurrentDictionary<int, ReconnectInfo>();
 
-        public ConcurrentDictionary<Client, PlayerInfo> Clients { get; set; }
-        private ConcurrentDictionary<Client, DateTime> Connecting { get; set; }
-        private ConnectionListener ConnectionListener { get; set; }
         private long LastTickTime { get; set; }
         private int MaxPlayerCount { get; set; }
-        private ConcurrentDictionary<int, ReconnectInfo> ReconnectInfo { get; set; }
+
+        public ConnectionManager(GameServer gameServer)
+        {
+            GameServer = gameServer;
+        
+            MaxPlayerCount = GameServer.Configuration.serverSettings.maxPlayers;
+        }
 
         public void AddConnection(ConnectionInfo connectionInfo)
         {
@@ -75,19 +80,6 @@ namespace wServer.core
             plrInfo.WorldName = client.Player.World.IdName;
         }
 
-        public void Disconnect(Client client)
-        {
-            var player = client.Player;
-            player?.World?.LeaveWorld(player);
-
-            Clients.TryRemove(client, out var playerInfo);
-
-            // recalculate usage statistics
-            CoreServerManager.ServerConfig.serverInfo.players = PlayerCount();
-            CoreServerManager.ServerConfig.serverInfo.maxPlayers = MaxPlayerCount;
-            CoreServerManager.ServerConfig.serverInfo.playerList.Remove(playerInfo);
-        }
-
         public void HandleConnect(ConnectionInfo connectionInfo)
         {
             var client = connectionInfo.Client;
@@ -123,7 +115,7 @@ namespace wServer.core
                     gameId = World.Nexus;
             }
 
-            if (!client.CoreServerManager.Database.AcquireLock(acc))
+            if (!client.GameServer.Database.AcquireLock(acc))
             {
                 // disconnect current connected client (if any)
                 var otherClients = Clients.KeyWhereAsParallel(_ => _ == client || _.Account != null && (_.Account.AccountId == acc.AccountId));
@@ -131,9 +123,9 @@ namespace wServer.core
                     otherClient.Disconnect("!client.Manager.Database.AcquireLock(acc)");
 
                 // try again...
-                if (!client.CoreServerManager.Database.AcquireLock(acc))
+                if (!client.GameServer.Database.AcquireLock(acc))
                 {
-                    client.SendFailure("Account in Use (" + client.CoreServerManager.Database.GetLockTime(acc)?.ToString("%s") + " seconds until timeout)");
+                    client.SendFailure("Account in Use (" + client.GameServer.Database.GetLockTime(acc)?.ToString("%s") + " seconds until timeout)");
                     return;
                 }
             }
@@ -142,13 +134,13 @@ namespace wServer.core
             client.Account = acc;
 
             // connect client to realm manager
-            if (!client.CoreServerManager.ConnectionManager.TryConnect(client))
+            if (!client.GameServer.ConnectionManager.TryConnect(client))
             {
                 client.SendFailure("Failed to connect");
                 return;
             }
 
-            var world = client.CoreServerManager.WorldManager.GetWorld(gameId);
+            var world = client.GameServer.WorldManager.GetWorld(gameId);
 
             if (world == null || world.Deleted)
             {
@@ -159,7 +151,7 @@ namespace wServer.core
                     Name = "*Error*",
                     Txt = "World does not exist."
                 });
-                world = client.CoreServerManager.WorldManager.GetWorld(World.Nexus);
+                world = client.GameServer.WorldManager.GetWorld(World.Nexus);
             }
 
             if (world is TestWorld && !acc.Admin)
@@ -176,7 +168,7 @@ namespace wServer.core
 
             if (world is TestWorld)
             {
-                var mapFolder = $"{CoreServerManager.ServerConfig.serverSettings.logFolder}/maps";
+                var mapFolder = $"{GameServer.Configuration.serverSettings.logFolder}/maps";
 
                 if (!Directory.Exists(mapFolder))
                     Directory.CreateDirectory(mapFolder);
@@ -238,21 +230,7 @@ namespace wServer.core
             Connecting.TryAdd(client, DateTime.Now.AddSeconds(CONNECTING_TTL));
         }
 
-        public void Initialize()
-        {
-            MaxPlayerCount = CoreServerManager.ServerConfig.serverSettings.maxPlayers;
-            ReconnectInfo = new ConcurrentDictionary<int, ReconnectInfo>();
-            Connecting = new ConcurrentDictionary<Client, DateTime>();
-            Clients = new ConcurrentDictionary<Client, PlayerInfo>();
-            ConnectionListener = new ConnectionListener(this);
-            ConnectionListener.Initialize();
-        }
-
         public int PlayerCount() => Clients.Count + ReconnectInfo.Count;
-
-        public void Shutdown() => ConnectionListener.Shutdown();
-
-        public void StartListening() => ConnectionListener.StartListening();
 
         public void Tick(long time)
         {
@@ -291,11 +269,29 @@ namespace wServer.core
             Clients[client] = playerInfo;
 
             // recalculate usage statistics
-            CoreServerManager.ServerConfig.serverInfo.players = PlayerCount();
-            CoreServerManager.ServerConfig.serverInfo.maxPlayers = MaxPlayerCount;
-            CoreServerManager.ServerConfig.serverInfo.playerList.Add(playerInfo);
-
+            var serverInfo = GameServer.Configuration.serverInfo;
+            serverInfo.players = PlayerCount();
+            serverInfo.maxPlayers = MaxPlayerCount;
+            serverInfo.playerList.Add(playerInfo);
             return true;
+        }
+
+        public void Disconnect(Client client)
+        {
+            var player = client.Player;
+            player?.World?.LeaveWorld(player);
+
+            Clients.TryRemove(client, out var playerInfo);
+
+            // recalculate usage statistics
+            var serverInfo = GameServer.Configuration.serverInfo;
+            serverInfo.players = PlayerCount();
+            serverInfo.maxPlayers = MaxPlayerCount;
+            serverInfo.playerList.Remove(playerInfo);
+        }
+
+        public void Dispose() 
+        {
         }
     }
 }

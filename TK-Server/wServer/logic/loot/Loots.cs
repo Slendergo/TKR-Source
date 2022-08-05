@@ -18,7 +18,7 @@ namespace wServer.logic.loot
 
         public ChestLoot(params MobDrops[] drops) => ChestItems.AddRange(ChestItems);
 
-        public IEnumerable<Item> CalculateItems(CoreServerManager core, int min, int max)
+        public IEnumerable<Item> CalculateItems(GameServer core, int min, int max)
         {
             var consideration = new List<LootDef>();
             foreach (var i in ChestItems)
@@ -205,7 +205,7 @@ namespace wServer.logic.loot
             if (player == null) 
                 return 0;
 
-            var core = player.CoreServerManager;
+            var core = player.GameServer;
 
             var db = core.Database;
             var account = db.GetAccount(player.AccountId);
@@ -223,7 +223,7 @@ namespace wServer.logic.loot
         {
             #region Rarity Enemies Loot
 
-            var gameData = enemy.CoreServerManager.Resources.GameData;
+            var gameData = enemy.GameServer.Resources.GameData;
             var xmlitem = gameData.Items;
             var itemtoid = gameData.IdToObjectType;
 
@@ -313,8 +313,8 @@ namespace wServer.logic.loot
 
                 if (enemy.ObjectDesc.Event)
                 {
-                    player.Stacks[0].Push(Program.CoreServerManager.Resources.GameData.Items[0xa22]);
-                    player.Stacks[1].Push(Program.CoreServerManager.Resources.GameData.Items[0xa23]);
+                    player.Stacks[0].Push(player.GameServer.Resources.GameData.Items[0xa22]);
+                    player.Stacks[1].Push(player.GameServer.Resources.GameData.Items[0xa23]);
                 }
 
                 var drops = new List<Item>();
@@ -347,10 +347,10 @@ namespace wServer.logic.loot
 
             foreach (var priv in privDrops)
                 if (priv.Value.Count > 0)
-                    ProcessPrivateBags(enemy, priv.Value, Program.CoreServerManager, priv.Key);
+                    ProcessPrivateBags(enemy, priv.Value, enemy.GameServer, priv.Key);
         }
 
-        private static void ProcessPrivateBags(Enemy enemy, IEnumerable<Item> loots, CoreServerManager core, params Player[] owners)
+        private static void ProcessPrivateBags(Enemy enemy, IEnumerable<Item> loots, GameServer core, params Player[] owners)
         {
             var player = owners[0] ?? null;
             var idx = 0;
@@ -379,10 +379,10 @@ namespace wServer.logic.loot
 
                     if (player.Rank <= 60)
                     {
-                        var discord = core.ServerConfig.discordIntegration;
+                        var discord = core.Configuration.discordIntegration;
                         var players = world.Players.Count(p => p.Value.Client != null);
                         var builder = discord.MakeLootBuilder(
-                            core.ServerConfig.serverInfo,
+                            core.Configuration.serverInfo,
                             player.World.IsRealm ? player.World.DisplayName : player.World.IdName,
                             players,
                             world.MaxPlayers,
@@ -451,7 +451,7 @@ namespace wServer.logic.loot
             if (boosted)
                 bag = BOOSTED_BAG_ID_TO_TYPE[bagType];
 
-            var container = new Container(enemy.CoreServerManager, bag, 1500 * 60, true);
+            var container = new Container(enemy.GameServer, bag, 1500 * 60, true);
 
             for (int j = 0; j < 8; j++)
             {

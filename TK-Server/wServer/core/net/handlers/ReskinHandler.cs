@@ -16,7 +16,7 @@ namespace wServer.core.net.handlers
             if (client.Player == null)
                 return;
 
-            var gameData = client.CoreServerManager.Resources.GameData;
+            var gameData = client.GameServer.Resources.GameData;
 
             client.Account.Reload("skins"); // get newest skin data
 

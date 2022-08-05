@@ -20,7 +20,7 @@ namespace wServer.core.commands
                 if (player == null)
                     return false;
 
-                var manager = player.CoreServerManager;
+                var manager = player.GameServer;
 
                 // verify argument
                 var index = args.IndexOf(' ');
@@ -59,7 +59,7 @@ namespace wServer.core.commands
                 }
 
                 // add gift
-                var result = player.CoreServerManager.Database.AddGift(acc, item.ObjectType);
+                var result = player.GameServer.Database.AddGift(acc, item.ObjectType);
                 if (!result)
                 {
                     player.SendError("Gift not added. Something happened with the adding process.");
@@ -68,7 +68,7 @@ namespace wServer.core.commands
 
                 // send out success notifications
                 player.SendInfoFormat("You gifted {0} one {1}.", acc.Name, item.DisplayName);
-                var gifted = player.CoreServerManager.ConnectionManager.Clients
+                var gifted = player.GameServer.ConnectionManager.Clients
                     .KeyWhereAsParallel(_ => _.Account.AccountId == acc.AccountId)
                     .SingleOrDefault();
                 gifted?.Player?.SendInfoFormat(
@@ -80,7 +80,7 @@ namespace wServer.core.commands
 
             private Item GetItem(Player player, string itemName)
             {
-                var gameData = player.CoreServerManager.Resources.GameData;
+                var gameData = player.GameServer.Resources.GameData;
 
                 // allow both DisplayId and Id for query
                 if (!gameData.DisplayIdToObjectType.TryGetValue(itemName, out ushort objType))

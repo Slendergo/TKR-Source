@@ -87,8 +87,8 @@ namespace wServer.core.setpieces
 
             //Boss & Chest
 
-            var container = new Container(world.Manager, 0x0501, null, false);
-            var items = chest.CalculateItems(world.Manager, 3, 8).ToArray();
+            var container = new Container(world.GameServer, 0x0501, null, false);
+            var items = chest.CalculateItems(world.GameServer, 3, 8).ToArray();
 
             for (var i = 0; i < items.Length; i++)
                 container.Inventory[i] = items[i];
@@ -96,7 +96,7 @@ namespace wServer.core.setpieces
             container.Move(pos.X + bas + 11.5f, pos.Y + bas + 11.5f);
             world.EnterWorld(container);
 
-            var snake = Entity.Resolve(world.Manager, 0x0dc2);
+            var snake = Entity.Resolve(world.GameServer, 0x0dc2);
             snake.Move(pos.X + bas + 11.5f, pos.Y + bas + 11.5f);
             world.EnterWorld(snake);
         }

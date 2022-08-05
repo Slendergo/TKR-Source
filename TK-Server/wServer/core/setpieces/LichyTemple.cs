@@ -67,7 +67,7 @@ namespace wServer.core.setpieces
 
             var w = t.GetLength(0);
             var h = t.GetLength(1);
-            var dat = world.Manager.Resources.GameData;
+            var dat = world.GameServer.Resources.GameData;
 
             for (var x = 0; x < w; x++)    //Rendering
                 for (var y = 0; y < h; y++)
@@ -97,7 +97,7 @@ namespace wServer.core.setpieces
                         tile.TileId = dat.IdToTileType[Floor];
                         tile.UpdateCount++;
 
-                        var wall = Entity.Resolve(world.Manager, dat.IdToObjectType[WallB]);
+                        var wall = Entity.Resolve(world.GameServer, dat.IdToObjectType[WallB]);
                         wall.Move(x + pos.X + 0.5f, y + pos.Y + 0.5f);
                         world.EnterWorld(wall);
                     }
@@ -128,7 +128,7 @@ namespace wServer.core.setpieces
                 }
 
             //Boss
-            var lich = Entity.Resolve(world.Manager, "Lich");
+            var lich = Entity.Resolve(world.GameServer, "Lich");
             lich.Move(pos.X + Size / 2, pos.Y + Size / 2);
             world.EnterWorld(lich);
         }

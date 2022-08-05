@@ -26,7 +26,7 @@ namespace wServer.core.net.handlers
 
             var player = client.Player;
 
-            if (!player.CoreServerManager.Resources.GameData.Items.TryGetValue(ContainerType, out var item))
+            if (!player.GameServer.Resources.GameData.Items.TryGetValue(ContainerType, out var item))
             {
                 player.DropNextRandom();
                 return;

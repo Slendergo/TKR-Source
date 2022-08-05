@@ -167,7 +167,7 @@ namespace wServer.core.objects
             // renew account lock
             try
             {
-                if (!CoreServerManager.Database.RenewLock(Client.Account))
+                if (!GameServer.Database.RenewLock(Client.Account))
                     Client.Disconnect("RenewLock failed. (Pong)");
             }
             catch

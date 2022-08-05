@@ -26,7 +26,7 @@ namespace wServer.core.worlds.logic
         public void AddChest(Entity original)
         {
             var vaultChest = new DbVaultSingle(Client .Account, Client .Account.VaultCount - 1);
-            var con = new Container(Client .CoreServerManager, 0x0504, null, false, vaultChest)
+            var con = new Container(Client .GameServer, 0x0504, null, false, vaultChest)
             {
                 BagOwners = new int[] { Client .Account.AccountId }
             };
@@ -51,7 +51,7 @@ namespace wServer.core.worlds.logic
                 return;
 
             var objType = entity.ObjectType == 0x0744 ? 0x0743 : 0xa012;
-            var x = new StaticObject(Client .CoreServerManager, (ushort)objType, null, true, false, false) { Size = 65 };
+            var x = new StaticObject(Client .GameServer, (ushort)objType, null, true, false, false) { Size = 65 };
             x.Move(entity.X, entity.Y);
 
             EnterWorld(x);
@@ -109,7 +109,7 @@ namespace wServer.core.worlds.logic
             for (var i = 0; i < Client .Account.VaultCount && vaultChestPosition.Count > 0; i++)
             {
                 var vaultChest = new DbVaultSingle(Client .Account, i);
-                var con = new Container(Client .CoreServerManager, 0x0504, null, false, vaultChest)
+                var con = new Container(Client .GameServer, 0x0504, null, false, vaultChest)
                 {
                     BagOwners = new int[] { Client .Account.AccountId },
                     Size = 65
@@ -126,7 +126,7 @@ namespace wServer.core.worlds.logic
             }
             foreach (var i in vaultChestPosition)
             {
-                var x = new ClosedVaultChest(Client .CoreServerManager, 0x0505) { Size = 65 };
+                var x = new ClosedVaultChest(Client .GameServer, 0x0505) { Size = 65 };
                 x.Move(i.X + 0.5f, i.Y + 0.5f);
 
                 EnterWorld(x);
@@ -143,7 +143,7 @@ namespace wServer.core.worlds.logic
                 if (c < 8)
                     items.AddRange(Enumerable.Repeat(ushort.MaxValue, 8 - c));
 
-                var con = new GiftChest(Client .CoreServerManager, 0x0744, null, false)
+                var con = new GiftChest(Client .GameServer, 0x0744, null, false)
                 {
                     BagOwners = new int[] { Client .Account.AccountId },
                     Size = 65
@@ -157,7 +157,7 @@ namespace wServer.core.worlds.logic
             }
             foreach (var i in giftChestPosition)
             {
-                var x = new StaticObject(Client .CoreServerManager, 0x0743, null, true, false, false) { Size = 65 };
+                var x = new StaticObject(Client .GameServer, 0x0743, null, true, false, false) { Size = 65 };
                 x.Move(i.X + 0.5f, i.Y + 0.5f);
 
                 EnterWorld(x);
@@ -173,7 +173,7 @@ namespace wServer.core.worlds.logic
                 var specialVault = new DbSpecialVault(Client .Account, i);
                 if (!specialVault.GetItems())
                     continue;
-                var con = new SpecialChest(Client .CoreServerManager, 0xa011, null, false, specialVault)
+                var con = new SpecialChest(Client .GameServer, 0xa011, null, false, specialVault)
                 {
                     BagOwners = new int[] { Client .Account.AccountId },
                     Size = 65
@@ -189,7 +189,7 @@ namespace wServer.core.worlds.logic
             }
             foreach (var i in specialChestPosition)
             {
-                var x = new StaticObject(Client .CoreServerManager, 0xa012, null, true, false, false) { Size = 65 };
+                var x = new StaticObject(Client .GameServer, 0xa012, null, true, false, false) { Size = 65 };
                 x.Move(i.X + 0.5f, i.Y + 0.5f);
 
                 EnterWorld(x);

@@ -120,7 +120,7 @@ namespace wServer.core
             {
                 if (Parent is Player plr)
                 {
-                    var playerDesc = plr.CoreServerManager.Resources.GameData
+                    var playerDesc = plr.GameServer.Resources.GameData
                         .Classes[plr.ObjectDesc.ObjectType];
                     for (var i = 0; i < 4; i++)
                         if (_items[i] == null && playerDesc.SlotTypes[i] == item.SlotType)
@@ -180,7 +180,7 @@ namespace wServer.core
 
         public Item[] ConvertObjectType2ItemArray(IEnumerable<ushort> a)
         {
-            var gameData = (Parent as Entity).CoreServerManager.Resources.GameData;
+            var gameData = (Parent as Entity).GameServer.Resources.GameData;
 
             return a.Select(_ => (_ == 0xffff || !gameData.Items.ContainsKey(_)) ? null : gameData.Items[_]).ToArray();
         }

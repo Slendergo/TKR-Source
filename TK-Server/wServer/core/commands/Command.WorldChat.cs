@@ -19,20 +19,19 @@ namespace wServer.core.commands
                 }
 
                 var saytext = string.Join(" ", args);
-                player.CoreServerManager.WorldManager
-                    .WorldsBroadcastAsParallel(_ =>
-                        _.ForeachPlayer(__ =>
-                            __.Client.SendPacket(new Text
-                            {
-                                BubbleTime = 10,
-                                NumStars = player.Stars,
-                                Name = player.Name,
-                                Txt = $" {saytext}",
-                                NameColor = player.ColorNameChat,
-                                TextColor = player.ColorChat
-                            })
-                        )
-                    );
+
+
+                var worlds = player.GameServer.WorldManager.GetWorlds();
+                foreach (var world in worlds)
+                    world.ForeachPlayer(_ => _.Client.SendPacket(new Text
+                    {
+                        BubbleTime = 10,
+                        NumStars = player.Stars,
+                        Name = player.Name,
+                        Txt = $" {saytext}",
+                        NameColor = player.ColorNameChat,
+                        TextColor = player.ColorChat
+                    }));
                 return true;
             }
         }

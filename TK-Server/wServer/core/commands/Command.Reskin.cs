@@ -14,7 +14,7 @@ namespace wServer.core.commands
 
             protected override bool Process(Player player, TickTime time, string args)
             {
-                var skins = player.CoreServerManager.Resources.GameData.Skins
+                var skins = player.GameServer.Resources.GameData.Skins
                     .Where(d => d.Value.PlayerClassType == player.ObjectType)
                     .Select(d => d.Key)
                     .ToArray();
@@ -35,7 +35,7 @@ namespace wServer.core.commands
                     return false;
                 }*/
 
-                var skinDesc = player.CoreServerManager.Resources.GameData.Skins[skin];
+                var skinDesc = player.GameServer.Resources.GameData.Skins[skin];
                 var size = skinDesc.Size;
                 size = 100;
 

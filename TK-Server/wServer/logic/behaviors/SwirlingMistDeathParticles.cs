@@ -7,7 +7,7 @@ namespace wServer.logic.behaviors
     {
         protected override void OnStateEntry(Entity host, TickTime time, ref object state)
         {
-            var entity = Entity.Resolve(host.CoreServerManager, "SwirlingMist Particles");
+            var entity = Entity.Resolve(host.GameServer, "SwirlingMist Particles");
             entity.Move(host.X, host.Y);
 
             host.World.Timers.Add(new WorldTimer(1000, (w, t) => w.LeaveWorld(entity)));

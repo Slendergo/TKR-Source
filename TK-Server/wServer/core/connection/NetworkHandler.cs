@@ -339,7 +339,7 @@ namespace wServer.networking.connection
                 Client.Reconnect(new Reconnect()
                 {
                     Host = "",
-                    Port = Client.CoreServerManager.ServerConfig.serverInfo.port,
+                    Port = Client.GameServer.Configuration.serverInfo.port,
                     GameId = World.Nexus,
                     Name = "Nexus"
                 });

@@ -63,7 +63,7 @@ namespace wServer.core.setpieces
             t[26, 40] = t[27, 40] = t[27, 39] = t[27, 41] = 4;
             t[54, 40] = t[53, 40] = t[53, 39] = t[53, 41] = 4;
 
-            var dat = world.Manager.Resources.GameData;
+            var dat = world.GameServer.Resources.GameData;
 
             for (var x = 0; x < Size; x++)                      //Rendering
                 for (var y = 0; y < Size; y++)
@@ -108,7 +108,7 @@ namespace wServer.core.setpieces
                         tile.UpdateCount++;
                     }
 
-            var sphinx = Entity.Resolve(world.Manager, "Grand Sphinx");
+            var sphinx = Entity.Resolve(world.GameServer, "Grand Sphinx");
             sphinx.Move(pos.X + 40.5f, pos.Y + 40.5f);
             world.EnterWorld(sphinx);
         }

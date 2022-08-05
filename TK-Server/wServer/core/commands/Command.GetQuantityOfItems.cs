@@ -16,7 +16,7 @@ namespace wServer.core.commands
                 var slotTypes = new int[26];
                 var totalItems = 0;
 
-                using (var xmlRdr = new XmlTextReader(player.CoreServerManager.Resources.ResourcePath + "/xml/CustomItems.xml"))
+                using (var xmlRdr = new XmlTextReader(player.GameServer.Resources.ResourcePath + "/xml/CustomItems.xml"))
                     while (xmlRdr.Read())
                         if (xmlRdr.Name.Equals("SlotType"))
                             for (var i = 0; i < slotTypes.Length; i++)

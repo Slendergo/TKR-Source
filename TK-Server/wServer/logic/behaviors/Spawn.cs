@@ -29,7 +29,7 @@ namespace wServer.logic.behaviors
 
             for (var i = 0; i < _initialSpawn; i++)
             {
-                var entity = Entity.Resolve(host.CoreServerManager, _children);
+                var entity = Entity.Resolve(host.GameServer, _children);
                 entity.Move(host.X, host.Y);
 
                 var enemyHost = host as Enemy;
@@ -66,7 +66,7 @@ namespace wServer.logic.behaviors
 
             if (spawn.RemainingTime <= 0 && spawn.CurrentNumber < _maxChildren)
             {
-                var entity = Entity.Resolve(host.CoreServerManager, _children);
+                var entity = Entity.Resolve(host.GameServer, _children);
                 entity.Move(host.X, host.Y);
                 entity.SpawnedByBehavior = _spawnedByBehav;
                 entity.GivesNoXp = _givesNoXp;

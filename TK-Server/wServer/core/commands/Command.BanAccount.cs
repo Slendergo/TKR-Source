@@ -41,7 +41,7 @@ namespace wServer.core.commands
                     bInfo.Name = match.Groups[1].Value;
 
                     if (!int.TryParse(bInfo.Name, out bInfo.accountId))
-                        bInfo.accountId = player.CoreServerManager.Database.ResolveId(bInfo.Name);
+                        bInfo.accountId = player.GameServer.Database.ResolveId(bInfo.Name);
 
                     bInfo.banReasons = match.Groups[2].Value;
                     bInfo.banLiftTime = -1;
@@ -79,7 +79,7 @@ namespace wServer.core.commands
                     return false;
                 }
 
-                var acc = player.CoreServerManager.Database.GetAccount(bInfo.accountId);
+                var acc = player.GameServer.Database.GetAccount(bInfo.accountId);
 
                 if (player.AccountId != acc.AccountId && player.Rank <= acc.Rank)
                 {
@@ -92,9 +92,9 @@ namespace wServer.core.commands
                 }
 
                 // ban player + disconnect if currently connected
-                player.CoreServerManager.Database.Ban(bInfo.accountId, bInfo.banReasons, bInfo.banLiftTime);
+                player.GameServer.Database.Ban(bInfo.accountId, bInfo.banReasons, bInfo.banLiftTime);
 
-                var target = player.CoreServerManager.ConnectionManager.Clients.Keys.FirstOrDefault(_ => _.Account != null && _.Account.AccountId == bInfo.accountId);
+                var target = player.GameServer.ConnectionManager.Clients.Keys.FirstOrDefault(_ => _.Account != null && _.Account.AccountId == bInfo.accountId);
                 target?.Disconnect("BanAccountCommand");
                 player.SendInfo(
                     !string.IsNullOrEmpty(bInfo.Name)

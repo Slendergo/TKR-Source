@@ -41,8 +41,8 @@ namespace wServer.core.objects
                 return;
 
             var tile = World.Map[(int)pos.X, (int)pos.Y];
-            var objDesc = tile.ObjType == 0 ? null : CoreServerManager.Resources.GameData.ObjectDescs[tile.ObjType];
-            var tileDesc = CoreServerManager.Resources.GameData.Tiles[tile.TileId];
+            var objDesc = tile.ObjType == 0 ? null : GameServer.Resources.GameData.ObjectDescs[tile.ObjType];
+            var tileDesc = GameServer.Resources.GameData.Tiles[tile.TileId];
 
             if (tileDesc.Damaging && (objDesc == null || !objDesc.ProtectFromGroundDamage))
             {
@@ -72,8 +72,8 @@ namespace wServer.core.objects
                 return;
 
             var tile = World.Map[(int)X, (int)Y];
-            var objDesc = tile.ObjType == 0 ? null : CoreServerManager.Resources.GameData.ObjectDescs[tile.ObjType];
-            var tileDesc = CoreServerManager.Resources.GameData.Tiles[tile.TileId];
+            var objDesc = tile.ObjType == 0 ? null : GameServer.Resources.GameData.ObjectDescs[tile.ObjType];
+            var tileDesc = GameServer.Resources.GameData.Tiles[tile.TileId];
 
             if (tileDesc.Effects != null)
                 ApplyConditionEffect(tileDesc.Effects);

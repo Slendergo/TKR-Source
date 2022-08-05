@@ -122,7 +122,7 @@ namespace wServer.core.objects
 
         private bool CheckLevelUp()
         {
-            var statInfo = CoreServerManager.Resources.GameData.Classes[ObjectType].Stats;
+            var statInfo = GameServer.Resources.GameData.Classes[ObjectType].Stats;
             if (Experience - GetLevelExp(Level) >= ExperienceGoal && Level < 20)
             {
                 Level++;

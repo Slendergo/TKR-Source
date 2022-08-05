@@ -5,7 +5,7 @@ namespace wServer.core.objects.vendors
 {
     internal class WorldMerchant : Merchant
     {
-        public WorldMerchant(CoreServerManager manager, ushort objType) : base(manager, objType)
+        public WorldMerchant(GameServer manager, ushort objType) : base(manager, objType)
         { }
 
         public List<ISellableItem> ItemList { get; set; }

@@ -12,12 +12,11 @@ namespace wServer.logic.loot
         protected static XmlData XmlData;
         protected readonly IList<LootDef> LootDefs = new List<LootDef>();
 
-        public static void Init(CoreServerManager manager)
+        public static void Initialize(GameServer gameServer)
         {
             if (XmlData != null)
                 throw new Exception("MobDrops already initialized");
-
-            XmlData = manager.Resources.GameData;
+            XmlData = gameServer.Resources.GameData;
         }
 
         public virtual void Populate(IList<LootDef> lootDefs, LootDef overrides = null)

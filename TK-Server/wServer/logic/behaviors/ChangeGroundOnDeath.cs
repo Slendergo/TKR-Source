@@ -25,7 +25,7 @@ namespace wServer.logic.behaviors
 
         public override void OnDeath(Entity host, ref TickTime time)
         {
-            var dat = host.CoreServerManager.Resources.GameData;
+            var dat = host.GameServer.Resources.GameData;
             var w = host.World;
             var pos = new IntPoint((int)host.X - (dist / 2), (int)host.Y - (dist / 2));
 
@@ -47,7 +47,7 @@ namespace wServer.logic.behaviors
                             {
                                 tile.TileId = dat.IdToTileType[targetType[r]];
 
-                                var tileDesc = Program.CoreServerManager.Resources.GameData.Tiles[tile.TileId];
+                                var tileDesc = host.GameServer.Resources.GameData.Tiles[tile.TileId];
 
                                 tile.TileDesc = tileDesc;
 
@@ -61,7 +61,7 @@ namespace wServer.logic.behaviors
 
                         tile.TileId = dat.IdToTileType[targetType[r]];
 
-                        var tileDesc = Program.CoreServerManager.Resources.GameData.Tiles[tile.TileId];
+                        var tileDesc = host.GameServer.Resources.GameData.Tiles[tile.TileId];
 
                         tile.TileDesc = tileDesc;
 

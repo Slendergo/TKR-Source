@@ -23,10 +23,8 @@ namespace wServer.core.worlds
     {
         public const int ClothBazaar = -10;
         public const int GuildHall = -7;
-        public const int MarketPlace = -15;
         public const int Nexus = -2;
         public const int NexusExplanation = -3;
-        public const int Realm = 1;
         public const int Test = -6;
         public const int Tutorial = -1;
         public const int Poseidon = -420;
@@ -57,7 +55,7 @@ namespace wServer.core.worlds
         public bool Deleted { get; protected set; }
 
         public Wmap Map { get; private set; }
-        public CoreServerManager Manager { get; set; }
+        public GameServer GameServer { get; set; }
         public CollisionMap<Entity> EnemiesCollision { get; private set; }
         public CollisionMap<Entity> PlayersCollision { get; private set; }
 
@@ -271,7 +269,7 @@ namespace wServer.core.worlds
                 if (i.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase))
                 {
                     if (!i.NameChosen && !(this is TestWorld))
-                        Manager.Database.ReloadAccount(i.Client.Account);
+                        GameServer.Database.ReloadAccount(i.Client.Account);
 
                     if (i.Client.Account.NameChosen)
                         return i;
@@ -375,7 +373,7 @@ namespace wServer.core.worlds
 
             if (Map == null)
             {
-                Map = new Wmap(Manager.Resources.GameData);
+                Map = new Wmap(GameServer.Resources.GameData);
                 Interlocked.Add(ref _entityInc, Map.Load(dTiles, _entityInc));
             }
             else
@@ -388,7 +386,7 @@ namespace wServer.core.worlds
         {
             if (Map == null)
             {
-                Map = new Wmap(Manager.Resources.GameData);
+                Map = new Wmap(GameServer.Resources.GameData);
                 Interlocked.Add(ref _entityInc, Map.Load(dat, _entityInc));
             }
             else
@@ -401,7 +399,7 @@ namespace wServer.core.worlds
         private Random Random = new Random();
         public bool LoadMapFromData(WorldResource worldResource)
         {
-            var data = Manager.Resources.GameData.GetWorldData(worldResource.MapJM[Random.Next(0, worldResource.MapJM.Count)]);
+            var data = GameServer.Resources.GameData.GetWorldData(worldResource.MapJM[Random.Next(0, worldResource.MapJM.Count)]);
             if (data == null)
                 return false;
             FromWorldMap(new MemoryStream(data));
@@ -441,7 +439,7 @@ namespace wServer.core.worlds
 
                     reloadOffset += 500;
 
-                    var m = new WorldMerchant(Manager, 0x01ca)
+                    var m = new WorldMerchant(GameServer, 0x01ca)
                     {
                         ShopItem = shopItem,
                         Item = shopItem.ItemId,
@@ -472,7 +470,7 @@ namespace wServer.core.worlds
             EnemiesCollision = new CollisionMap<Entity>(0, w, h);
             PlayersCollision = new CollisionMap<Entity>(1, w, h);
 
-            foreach (var i in Map.InstantiateEntities(Manager))
+            foreach (var i in Map.InstantiateEntities(GameServer))
                 _ = EnterWorld(i);
         }
 
@@ -569,11 +567,11 @@ namespace wServer.core.worlds
             if (WorldBranch.HasBranches())
                 return false;
 
-            if (ForceLifetimeExpire)
-                return true;
-
             if (Players.Count > 0)
                 return false;
+
+            if (ForceLifetimeExpire)
+                return true;
 
             if (Persist)
                 return false;

@@ -13,7 +13,7 @@ namespace wServer.core.commands
 
             protected override bool Process(Player player, TickTime time, string args)
             {
-                DbMarketData.CleanMarket(Program.CoreServerManager.Database);
+                DbMarketData.CleanMarket(player.GameServer.Database);
                 player.SendInfo("Sweeped");
                 return true;
             }

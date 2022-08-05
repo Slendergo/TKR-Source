@@ -80,7 +80,7 @@ namespace wServer.core.setpieces
 
             t[13, 13] = 3;
 
-            var dat = world.Manager.Resources.GameData;
+            var dat = world.GameServer.Resources.GameData;
 
             for (var x = 0; x < 27; x++)            //Rendering
                 for (var y = 0; y < 27; y++)
@@ -111,7 +111,7 @@ namespace wServer.core.setpieces
                         tile.ObjType = 0;
                         tile.UpdateCount++;
 
-                        var ghostKing = Entity.Resolve(world.Manager, 0x0928);
+                        var ghostKing = Entity.Resolve(world.GameServer, 0x0928);
                         ghostKing.Move(pos.X + x, pos.Y + y);
                         world.EnterWorld(ghostKing);
                     }

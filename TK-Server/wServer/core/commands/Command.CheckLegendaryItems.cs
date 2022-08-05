@@ -14,7 +14,7 @@ namespace wServer.core.commands
 
             protected override bool Process(Player player, TickTime time, string args)
             {
-                var legendary = player.World.Manager.Resources.GameData.Items.Where(item => item.Value.Legendary).ToArray();
+                var legendary = player.World.GameServer.Resources.GameData.Items.Where(item => item.Value.Legendary).ToArray();
 
                 var sb = new StringBuilder($"Legendary Items ({legendary.Length}): ");
                 for (var i = 0; i < legendary.Length; i++)

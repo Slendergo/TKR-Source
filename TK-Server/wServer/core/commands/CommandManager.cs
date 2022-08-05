@@ -1,31 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using wServer.core.objects;
 
 namespace wServer.core.commands
 {
     public class CommandManager
     {
-        private readonly Dictionary<string, Command> _cmds;
+        private readonly Dictionary<string, Command> _cmds = new Dictionary<string, Command>(StringComparer.InvariantCultureIgnoreCase);
 
-        private readonly string[] blacklistedCmds = new[] {
-            "setpiece", "quake", "summon", "closerealm", "debug", "killall"//, "tq"
-        };
-
-        public CommandManager(CoreServerManager manager)
+        public void Initialize(GameServer gameServer)
         {
-            _cmds = new Dictionary<string, Command>(StringComparer.InvariantCultureIgnoreCase);
-
             var type = typeof(Command);
             var types = type.Assembly.GetTypes();
 
             for (var i = 0; i < types.Length; i++)
                 if (type.IsAssignableFrom(types[i]) && types[i] != type)
                 {
-                    var instance = (types[i].GetConstructor(new Type[] { typeof(CoreServerManager) }) == null)
+                    var instance = (types[i].GetConstructor(new Type[] { typeof(GameServer) }) == null)
                         ? (Command)Activator.CreateInstance(types[i])
-                        : (Command)Activator.CreateInstance(types[i], manager);
+                        : (Command)Activator.CreateInstance(types[i], gameServer);
 
                     //if (blacklistedCmds.Contains(instance.CommandName.ToLower()))
                     //    continue;

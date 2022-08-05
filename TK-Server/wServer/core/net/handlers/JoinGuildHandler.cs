@@ -22,7 +22,7 @@ namespace wServer.core.net.handlers
                 return;
             }
 
-            var guild = client.CoreServerManager.Database.GetGuild((int)client.Player.GuildInvite);
+            var guild = client.GameServer.Database.GetGuild((int)client.Player.GuildInvite);
 
             if (guild == null)
             {
@@ -36,7 +36,7 @@ namespace wServer.core.net.handlers
                 return;
             }
 
-            var result = client.CoreServerManager.Database.AddGuildMember(guild, client.Account);
+            var result = client.GameServer.Database.AddGuildMember(guild, client.Account);
             if (result != DbAddGuildMemberStatus.OK)
             {
                 client.Player.SendError("Could not join guild. (" + result + ")");
@@ -45,7 +45,7 @@ namespace wServer.core.net.handlers
 
             client.Player.Guild = guild.Name;
             client.Player.GuildRank = 0;
-            client.CoreServerManager.ChatManager.Guild(client.Player, client.Player.Name + " has joined the guild!");
+            client.GameServer.ChatManager.Guild(client.Player, client.Player.Name + " has joined the guild!");
         }
     }
 }

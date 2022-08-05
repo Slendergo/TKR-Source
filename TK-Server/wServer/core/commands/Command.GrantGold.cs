@@ -31,14 +31,14 @@ namespace wServer.core.commands
                     return false;
                 }
 
-                var id = player.CoreServerManager.Database.ResolveId(name);
+                var id = player.GameServer.Database.ResolveId(name);
                 if (id == player.AccountId)
                 {
                     player.SendError("Cannot grant gold to self.");
                     return false;
                 }
 
-                var acc = player.CoreServerManager.Database.GetAccount(id);
+                var acc = player.GameServer.Database.GetAccount(id);
                 if (id == 0 || acc == null)
                 {
                     player.SendError("Account not found!");
@@ -46,7 +46,7 @@ namespace wServer.core.commands
                 }
 
                 // kick player from server to set new gold
-                var client = player.CoreServerManager.ConnectionManager.Clients
+                var client = player.GameServer.ConnectionManager.Clients
                     .Keys.Where(_ => _.Account.Name.EqualsIgnoreCase(name))
                     .SingleOrDefault();
                 client?.Disconnect("GrantGold");

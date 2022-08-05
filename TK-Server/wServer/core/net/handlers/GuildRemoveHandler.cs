@@ -18,7 +18,7 @@ namespace wServer.core.net.handlers
                 return;
 
             var srcPlayer = client.Player;
-            var manager = client.CoreServerManager;
+            var manager = client.GameServer;
 
             // if resigning
             if (client.Account.Name.Equals(name))
@@ -40,7 +40,7 @@ namespace wServer.core.net.handlers
             }
 
             // get target account id
-            var targetAccId = client.CoreServerManager.Database.ResolveId(name);
+            var targetAccId = client.GameServer.Database.ResolveId(name);
             if (targetAccId == 0)
             {
                 client.Player.SendError("Player not found");
@@ -48,7 +48,7 @@ namespace wServer.core.net.handlers
             }
 
             // find target player (if connected)
-            var targetClient = client.CoreServerManager.ConnectionManager.Clients
+            var targetClient = client.GameServer.ConnectionManager.Clients
                 .KeyWhereAsParallel(_ => _.Account != null && _.Account.AccountId == targetAccId).FirstOrDefault();
 
             // try to remove connected member

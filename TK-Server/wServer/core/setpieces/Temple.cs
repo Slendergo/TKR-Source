@@ -31,7 +31,7 @@ namespace wServer.core.setpieces
 
         protected static void Render(Temple temple, World world, IntPoint pos, int[,] ground, int[,] objs)
         {
-            var dat = world.Manager.Resources.GameData;
+            var dat = world.GameServer.Resources.GameData;
 
             for (var x = 0; x < temple.Size; x++)                  //Rendering
                 for (var y = 0; y < temple.Size; y++)

@@ -14,7 +14,7 @@ namespace wServer.core.objects.vendors
         private SV<int> _price;
         private SV<int> _rankReq;
 
-        protected SellableObject(CoreServerManager manager, ushort objType) : base(manager, objType, null, true, false, false)
+        protected SellableObject(GameServer manager, ushort objType) : base(manager, objType, null, true, false, false)
         {
             _price = new SV<int>(this, StatDataType.SellablePrice, 0);
             _currency = new SV<CurrencyType>(this, StatDataType.SellablePriceCurrency, 0);

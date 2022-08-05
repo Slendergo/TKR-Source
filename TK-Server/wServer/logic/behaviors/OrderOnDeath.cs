@@ -24,7 +24,7 @@ namespace wServer.logic.behaviors
         public override void OnDeath(Entity host, ref TickTime time)
         { 
             if (_targetState == null)
-                _targetState = FindState(host.CoreServerManager.BehaviorDb.Definitions[_target].Item1, _stateName);
+                _targetState = FindState(host.GameServer.BehaviorDb.Definitions[_target].Item1, _stateName);
 
             if (Random.NextDouble() < _probability)
                 foreach (var i in host.GetNearestEntities(_range, _target))

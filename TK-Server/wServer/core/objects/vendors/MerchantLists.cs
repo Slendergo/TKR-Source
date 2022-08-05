@@ -211,9 +211,9 @@ namespace wServer.core.objects.vendors
             new ShopItem("Jewel Eye Katana", 500)
         };
 
-        public static void Initialize(CoreServerManager manager)
+        public static void Initialize(GameServer gameServer)
         {
-            InitDyes(manager);
+            InitDyes(gameServer);
 
             foreach (var shop in Shops)
             {
@@ -223,7 +223,7 @@ namespace wServer.core.objects.vendors
                     continue;
 
                 foreach (var shopItem in shopItems.OfType<ShopItem>())
-                    if (!manager.Resources.GameData.IdToObjectType.TryGetValue(shopItem.Name, out ushort id))
+                    if (!gameServer.Resources.GameData.IdToObjectType.TryGetValue(shopItem.Name, out ushort id))
                         Log.Warn("Item name: {0}, not found.", shopItem.Name);
                     else
                         shopItem.SetItem(id);
@@ -243,13 +243,13 @@ namespace wServer.core.objects.vendors
             { TileRegion.Store_19, new Tuple<List<ISellableItem>, CurrencyType, int>(Miscellaneous, CurrencyType.Fame, 0) }
         };
 
-        private static void InitDyes(CoreServerManager manager)
+        private static void InitDyes(GameServer gameServer)
         {
             var d1 = new List<ISellableItem>();
             var d2 = new List<ISellableItem>();
             var c1 = new List<ISellableItem>();
 
-            foreach (var i in manager.Resources.GameData.Items.Values)
+            foreach (var i in gameServer.Resources.GameData.Items.Values)
             {
                 if (!i.Class.Equals("Dye"))
                     continue;

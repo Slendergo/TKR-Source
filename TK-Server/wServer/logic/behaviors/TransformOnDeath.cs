@@ -24,7 +24,7 @@ namespace wServer.logic.behaviors
         {
             if (Random.NextDouble() < probability)
             {
-                if (Entity.Resolve(host.CoreServerManager, target) is Portal && host.World.IdName.Contains("Arena"))
+                if (Entity.Resolve(host.GameServer, target) is Portal && host.World.IdName.Contains("Arena"))
                     return;
 
                 if (min > max)
@@ -34,7 +34,7 @@ namespace wServer.logic.behaviors
 
                 for (var i = 0; i < count; i++)
                 {
-                    var entity = Entity.Resolve(host.CoreServerManager, target);
+                    var entity = Entity.Resolve(host.GameServer, target);
                     entity.Move(host.X, host.Y);
 
                     if (host is Enemy && entity is Enemy && (host as Enemy).Spawned)

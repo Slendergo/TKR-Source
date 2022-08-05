@@ -38,7 +38,7 @@ namespace wServer.core.worlds.impl
                     Console.WriteLine($"[{world.IdName} {world.Id}] Has been removed from: [{Branch.IdName} {Branch.Id}]");
 
                     world.ParentWorld = null;
-                    _ = Branch.Manager.WorldManager.RemoveWorld(world);
+                    _ = Branch.GameServer.WorldManager.RemoveWorld(world);
                     _ = Branches.Remove(world.Id);
                 }
                 ToRemove.Clear();

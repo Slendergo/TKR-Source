@@ -506,7 +506,7 @@ namespace wServer
 
         public static void HandleUnavailableInventoryAction(this Player player, ushort objectId, Random random, IContainer container, int slotId)
         {
-            var bag = new Container(player.CoreServerManager, objectId, 60000, true)
+            var bag = new Container(player.GameServer, objectId, 60000, true)
             {
                 BagOwners = new[] { player.AccountId }
             };

@@ -95,7 +95,7 @@ namespace wServer.core.net.handlers
 
             if (isConsume)
             {
-                var statInfo = player.CoreServerManager.Resources.GameData.Classes[player.ObjectType].Stats;
+                var statInfo = player.GameServer.Resources.GameData.Classes[player.ObjectType].Stats;
                 if (player.Stats.Base[type] >= statInfo[type].MaxValue)
                 {
                     player.SendInfo($"You are already maxed");
@@ -115,12 +115,12 @@ namespace wServer.core.net.handlers
                 var fameToAdd = type < 2 ? 5 : 2;
                 player.CurrentFame = player.Client.Account.Fame += fameToAdd;
                 player.Client.Account.TotalFame += fameToAdd;
-                player.CoreServerManager.Database.ReloadAccount(player.Client.Account);
+                player.GameServer.Database.ReloadAccount(player.Client.Account);
                 player.SendInfo($"You sold a {typeName} for {fameToAdd} fame!");
             }
             else if (isMax)
             {
-                var statInfo = player.CoreServerManager.Resources.GameData.Classes[player.ObjectType].Stats;
+                var statInfo = player.GameServer.Resources.GameData.Classes[player.ObjectType].Stats;
                 if (player.Stats.Base[type] >= statInfo[type].MaxValue)
                 {
                     player.SendInfo($"You are already maxed");
@@ -152,7 +152,7 @@ namespace wServer.core.net.handlers
             }
             else
             {
-                var potion = player.CoreServerManager.Resources.GameData.Items[player.CoreServerManager.Resources.GameData.IdToObjectType[typeName]];
+                var potion = player.GameServer.Resources.GameData.Items[player.GameServer.Resources.GameData.IdToObjectType[typeName]];
                 var index = player.Inventory.GetAvailableInventorySlot(potion);
                 if (index == -1)
                 {

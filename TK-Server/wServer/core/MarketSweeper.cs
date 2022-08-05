@@ -5,6 +5,9 @@ namespace wServer
 {
     public sealed class MarketSweeper
     {
+        private Database Database { get; set; }
+        private Timer Timer { get; set; }
+
         public MarketSweeper(Database database)
         {
             Database = database;
@@ -12,11 +15,7 @@ namespace wServer
             Timer.Elapsed += Timer_Elapsed;
         }
 
-        private Database Database { get; set; }
-        private Timer Timer { get; set; }
-
         public void Start() => Timer.Start();
-
         public void Stop() => Timer.Stop();
 
         private void Timer_Elapsed(object sender, ElapsedEventArgs e) => DbMarketData.CleanMarket(Database);

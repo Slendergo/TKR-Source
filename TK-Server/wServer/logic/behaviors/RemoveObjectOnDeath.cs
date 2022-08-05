@@ -17,7 +17,7 @@ namespace wServer.logic.behaviors
 
         public override void OnDeath(Entity host, ref TickTime time)
         {
-            var dat = host.CoreServerManager.Resources.GameData;
+            var dat = host.GameServer.Resources.GameData;
             var objType = dat.IdToObjectType[_objName];
             var map = host.World.Map;
             var w = map.Width;

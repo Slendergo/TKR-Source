@@ -17,7 +17,7 @@ namespace wServer.core.objects
         private bool exploded = false;
         private Player player;
 
-        public Decoy(Player player, int duration, float tps) : base(player.CoreServerManager, 0x0715, duration, true, true, true)
+        public Decoy(Player player, int duration, float tps) : base(player.GameServer, 0x0715, duration, true, true, true)
         {
             this.player = player;
             this.duration = duration;

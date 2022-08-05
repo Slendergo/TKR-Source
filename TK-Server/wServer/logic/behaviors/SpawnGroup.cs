@@ -36,7 +36,7 @@ namespace wServer.logic.behaviors
                 if (!host.World.IsPassable(x, y, true))
                     continue;
 
-                var entity = Entity.Resolve(host.CoreServerManager, children[Random.Next(children.Length)]);
+                var entity = Entity.Resolve(host.GameServer, children[Random.Next(children.Length)]);
                 entity.Move(x, y);
 
                 var enemyEntity = entity as Enemy;
@@ -72,7 +72,7 @@ namespace wServer.logic.behaviors
                     return;
                 }
 
-                var entity = Entity.Resolve(host.CoreServerManager, children[Random.Next(children.Length)]);
+                var entity = Entity.Resolve(host.GameServer, children[Random.Next(children.Length)]);
                 entity.Move(x, y);
 
                 var enemyEntity = entity as Enemy;

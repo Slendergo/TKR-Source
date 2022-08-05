@@ -7,7 +7,7 @@ namespace wServer.core.objects.vendors
 {
     internal class ClosedVaultChest : SellableObject
     {
-        public ClosedVaultChest(CoreServerManager manager, ushort objType) : base(manager, objType)
+        public ClosedVaultChest(GameServer manager, ushort objType) : base(manager, objType)
         {
             Price = 200;
             Currency = CurrencyType.Fame;
@@ -24,11 +24,11 @@ namespace wServer.core.objects.vendors
                 return;
             }
 
-            var db = CoreServerManager.Database;
+            var db = GameServer.Database;
             var acc = player.Client.Account;
             var trans = db.Conn.CreateTransaction();
 
-            CoreServerManager.Database.CreateChest(acc, trans);
+            GameServer.Database.CreateChest(acc, trans);
             switch (player.Rank)
             {
                 case 10:

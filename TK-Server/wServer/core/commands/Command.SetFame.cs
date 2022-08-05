@@ -25,7 +25,7 @@ namespace wServer.core.commands
                 player.Client.Account.Reload("totalFame");
                 player.CurrentFame = player.Client.Account.Fame += amount;
                 player.Client.Account.TotalFame += amount;
-                player.CoreServerManager.Database.ReloadAccount(player.Client.Account);
+                player.GameServer.Database.ReloadAccount(player.Client.Account);
                 return true;
             }
         }

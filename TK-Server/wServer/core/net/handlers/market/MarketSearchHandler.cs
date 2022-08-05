@@ -22,7 +22,7 @@ namespace wServer.core.net.handlers.market
                 return;
 
             var accountId = client.Account.AccountId;
-            var offers = GetOffers(DbMarketData.Get(client.CoreServerManager.Database.Conn, (ushort)itemType), (sellerAccountId) => accountId == sellerAccountId).ToArray();
+            var offers = GetOffers(DbMarketData.Get(client.GameServer.Database.Conn, (ushort)itemType), (sellerAccountId) => accountId == sellerAccountId).ToArray();
 
             if (!HandleEmptyOffer(client, offers.Length)) 
                 return;

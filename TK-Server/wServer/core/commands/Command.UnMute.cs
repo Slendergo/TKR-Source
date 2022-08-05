@@ -20,8 +20,8 @@ namespace wServer.core.commands
                 }
 
                 // gather needed info
-                var id = player.CoreServerManager.Database.ResolveId(name);
-                var acc = player.CoreServerManager.Database.GetAccount(id);
+                var id = player.GameServer.Database.ResolveId(name);
+                var acc = player.GameServer.Database.GetAccount(id);
 
                 // run checks
                 if (id == 0 || acc == null)
@@ -36,7 +36,7 @@ namespace wServer.core.commands
                 }
 
                 // unmute ip address
-                player.CoreServerManager.Database.IsMuted(acc.IP).ContinueWith(t =>
+                player.GameServer.Database.IsMuted(acc.IP).ContinueWith(t =>
                 {
                     if (!t.IsCompleted)
                     {
@@ -46,7 +46,7 @@ namespace wServer.core.commands
 
                     if (t.Result)
                     {
-                        player.CoreServerManager.Database.Mute(acc.IP, TimeSpan.FromSeconds(1));
+                        player.GameServer.Database.Mute(acc.IP, TimeSpan.FromSeconds(1));
                         player.SendInfo(name + " successfully unmuted.");
                     }
                     else

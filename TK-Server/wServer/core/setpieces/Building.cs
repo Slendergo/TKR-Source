@@ -84,7 +84,7 @@ namespace wServer.core.setpieces
 
             w = t.GetLength(0); h = t.GetLength(1);
 
-            var dat = world.Manager.Resources.GameData;
+            var dat = world.GameServer.Resources.GameData;
 
             for (var x = 0; x < w; x++)                     //Rendering
                 for (var y = 0; y < h; y++)

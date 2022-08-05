@@ -66,7 +66,7 @@ namespace wServer.core.setpieces
 
             p[20, 20] = 2;
 
-            var dat = world.Manager.Resources.GameData;
+            var dat = world.GameServer.Resources.GameData;
 
             for (var x = 0; x < Size; x++)      //Rendering
                 for (var y = 0; y < Size; y++)
@@ -92,12 +92,12 @@ namespace wServer.core.setpieces
                     }
                 }
 
-            var demon = Entity.Resolve(world.Manager, "Red Demon");
+            var demon = Entity.Resolve(world.GameServer, "Red Demon");
             demon.Move(pos.X + 20.5f, pos.Y + 20.5f);
             world.EnterWorld(demon);
 
-            var container = new Container(world.Manager, 0x0501, null, false);
-            var items = chest.CalculateItems(world.Manager, 5, 8).ToArray();
+            var container = new Container(world.GameServer, 0x0501, null, false);
+            var items = chest.CalculateItems(world.GameServer, 5, 8).ToArray();
 
             for (int i = 0; i < items.Length; i++)
                 container.Inventory[i] = items[i];

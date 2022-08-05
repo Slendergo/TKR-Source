@@ -12,14 +12,14 @@ namespace wServer.core
     {
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
-        private CoreServerManager _manager;
+        private GameServer _manager;
         private Dictionary<int, Portal> _portals;
         private Random _rand;
         private World _world;
 
         private object access = new object();
 
-        public PortalMonitor(CoreServerManager manager, World world)
+        public PortalMonitor(GameServer manager, World world)
         {
             _manager = manager;
             _world = world;

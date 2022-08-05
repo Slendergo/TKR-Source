@@ -61,6 +61,7 @@ namespace wServer.logic
                 new Shoot(10, count: 3, shootAngle: 20, predictive: 1, coolDown: 500),
                 new Reproduce(densityMax: 3)
                 ),
+        new Threshold(0.001,
             new ItemLoot("Potion of defense", 0.3),
             new TierLoot(6, ItemType.Weapon, 0.08),
             new TierLoot(7, ItemType.Weapon, 0.04),
@@ -72,6 +73,7 @@ namespace wServer.logic
             new TierLoot(4, ItemType.Ring, 0.02),
             new TierLoot(4, ItemType.Ability, 0.04)
             )
+        )
         .Init("Sprite God",
             new State(
                 new DropPortalOnDeath("Glowing Portal", .25),
@@ -84,6 +86,7 @@ namespace wServer.logic
                 new Reproduce(densityMax: 3),
                 new Spawn("Sprite Child", 5, 1)
                 ),
+        new Threshold(0.001,
             new ItemLoot("Potion of Attack", 0.3),
             new TierLoot(6, ItemType.Weapon, 0.08),
             new TierLoot(7, ItemType.Weapon, 0.04),
@@ -95,6 +98,7 @@ namespace wServer.logic
             new TierLoot(4, ItemType.Ring, 0.02),
             new TierLoot(4, ItemType.Ability, 0.04)
             )
+        )
         .Init("Sprite Child",
             new State(
                 new Prioritize(

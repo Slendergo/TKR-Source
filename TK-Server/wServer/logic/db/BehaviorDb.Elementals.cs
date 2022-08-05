@@ -375,7 +375,7 @@ namespace wServer.logic
             new State(
                 new ConditionalEffect(ConditionEffectIndex.Invincible, true),
                 new State("Idle",
-                    new Shoot(10, 5, coolDown: 50)
+                    new Shoot(10, 5, coolDown: 200)
                     )
                 )
             )

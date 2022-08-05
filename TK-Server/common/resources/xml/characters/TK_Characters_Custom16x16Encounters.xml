@@ -19,9 +19,9 @@
 		<Projectile id="0">
 			<ObjectId>Fire Elemental Shoot</ObjectId>
 			<Damage>180</Damage>
-			<Speed>150</Speed>
+			<Speed>65</Speed>
 			<Size>150</Size>
-			<LifetimeMS>200</LifetimeMS>
+			<LifetimeMS>400</LifetimeMS>
 			<MultiHit />
 			<ArmorPiercing />
 		</Projectile>
@@ -46,9 +46,9 @@
 		<Projectile id="0">
 			<ObjectId>Fire Elemental Shoot</ObjectId>
 			<Damage>180</Damage>
-			<Speed>150</Speed>
+			<Speed>65</Speed>
 			<Size>150</Size>
-			<LifetimeMS>200</LifetimeMS>
+			<LifetimeMS>400</LifetimeMS>
 			<MultiHit />
 			<ArmorPiercing />
 		</Projectile>

@@ -35,8 +35,8 @@
 		<Defense>80</Defense>
 		<Projectile id="0">
 			<ObjectId>Invisible</ObjectId>
-			<MinDamage>80</MinDamage>
-			<MaxDamage>150</MaxDamage>
+			<MinDamage>20</MinDamage>
+			<MaxDamage>40</MaxDamage>
 			<Speed>0</Speed>
 			<Size>120</Size>
 			<LifetimeMS>50</LifetimeMS>

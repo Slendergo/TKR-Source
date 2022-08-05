@@ -132,6 +132,11 @@ namespace wServer.core
                 if(!restart && DateTime.UtcNow >= RestartCloseTime)
                 {
                     // announce to the server of the restart
+                    // restarting crashes for some reason :(
+                    // todo future me will fix
+
+                    foreach(var world in WorldManager.GetWorlds())
+                        ChatManager.Announce("Server **Restart** in 5 minutes, prepare to leave");
 
                     Console.WriteLine("[Restart] Procdure Commensing");
                     ConnectionListener.Disable();

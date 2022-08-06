@@ -1,4 +1,30 @@
 <Objects>
+  <Object type="0x5005" id="Talisman King's Golden Guardian Left Statue">
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars16x16dEncounters2</File>
+      <Index>3</Index>
+    </AnimatedTexture>
+    <HitSound>monster/rocks_hit</HitSound>
+    <DeathSound>monster/rocks_death</DeathSound>
+	<MaxHitPoints>100000</MaxHitPoints>
+	<Enemy/>
+    <OccupySquare />
+  </Object>
+	
+  <Object type="0x5006" id="Talisman King's Golden Guardian Right Statue">
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars16x16dEncounters</File>
+      <Index>21</Index>
+    </AnimatedTexture>
+    <HitSound>monster/rocks_hit</HitSound>
+    <DeathSound>monster/rocks_death</DeathSound>
+	<MaxHitPoints>100000</MaxHitPoints>
+    <Enemy/>
+    <OccupySquare />
+  </Object>
+	
   <Object type="0x5e2c" id="Golden Oryx Effigy">
     <Class>Character</Class>
     <Enemy />
@@ -1055,8 +1081,8 @@
     <Size>120</Size>
     <Defense>40</Defense>
   </Object>
-  <Object type="0x0d79" id="Oryx Stone Guardian Left">
-    <DisplayId>Stone Guardian</DisplayId>
+  <Object type="0x0d79" id="Talisman King's Golden Guardian Left">
+    <DisplayId>Golden Guardian</DisplayId>
     <Group>Oryx Minions</Group>
     <Enemy />
     <Class>Character</Class>

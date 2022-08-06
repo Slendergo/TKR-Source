@@ -761,11 +761,24 @@ namespace wServer.core.commands
             }
             else
             {
-                player.TeleportPosition(time, 970, 1020);
                 player.ApplyConditionEffect(ConditionEffectIndex.Invulnerable, 3000);
                 player.ApplyConditionEffect(ConditionEffectIndex.Invisible, 3000);
                 player.ApplyConditionEffect(ConditionEffectIndex.Stunned, 3000);
                 player.ApplyConditionEffect(ConditionEffectIndex.Paralyzed, 3000);
+
+                var random = new Random();
+
+                var world = player.World;
+
+                var pt = new IntPoint();
+                do
+                {
+                    pt.X = random.Next(0, world.Map.Width);
+                    pt.Y = random.Next(0, world.Map.Height);
+                }
+                while (world.Map[pt.X, pt.Y].Terrain != TerrainType.Mountains || !world.IsPassable(pt.X, pt.Y, true) || world.AnyPlayerNearby(pt.X, pt.Y, 5));
+            
+                player.TeleportPosition(time, pt.X, pt.Y);
             }
 
             return true;

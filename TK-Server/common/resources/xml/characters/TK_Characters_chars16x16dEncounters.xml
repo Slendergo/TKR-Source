@@ -394,8 +394,8 @@
       <MultiHit />
     </Projectile>
   </Object>
-  <Object type="0x0d78" id="Oryx Stone Guardian Right">
-    <DisplayId>Stone Guardian</DisplayId>
+  <Object type="0x0d78" id="Talisman King's Golden Guardian Right">
+    <DisplayId>Golden Guardian</DisplayId>
     <Group>Oryx Minions</Group>
     <Enemy />
     <Class>Character</Class>

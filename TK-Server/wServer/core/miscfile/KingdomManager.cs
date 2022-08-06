@@ -461,6 +461,7 @@ namespace wServer.core
             _discord = world.GameServer.Configuration.discordIntegration;
             _webhook = _discord.webhookRealmEvent;
 
+            SpawnEvent("Talisman King", new TalismanKing(), 1024, 1024);
             InitEvents();
             Init();
 
@@ -492,7 +493,6 @@ namespace wServer.core
                         World.GameServer.WorldManager.Nexus.PortalMonitor.CreateNewRealm();
 
                         BroadcastMsg("RAAHH MY TROOPS HAVE FAILED ME!");
-                        BroadcastMsg("THEY SHALL TASTE MY WRATH!!!");
                         BroadcastMsg("THIS KINDOM SHALL NOT FALL!!");
 
                         CurrentState = KindgomState.Emptying;
@@ -500,70 +500,37 @@ namespace wServer.core
                     break;
                 case KindgomState.Emptying:
                     {
-                        foreach(var e in World.Enemies.Values)
-                            World.LeaveWorld(e);
                         CurrentState = KindgomState.TEST_WAITING;
-                        World.Timers.Add(new WorldTimer(5000, (w, t) => CurrentState = KindgomState.Closed));
+                        foreach (var e in World.Enemies.Values)
+                        {
+                            if (e.ObjectDesc.ObjectId.Contains("Oryx Guardian TaskMaster"))
+                                continue;
+                                
+                            if (e.ObjectDesc.ObjectId.Contains("Talisman King's Golden Guardian"))
+                                e.Death(time);
+                            else
+                                World.LeaveWorld(e);
+                        }
+
+                        World.Timers.Add(new WorldTimer(30000, (w, t) => CurrentState = KindgomState.Closed));
                     }
                     break;
                 case KindgomState.Closed:
                     {
                         BroadcastMsg("ENOUGH WAITING!");
                         BroadcastMsg("YOU SHALL MEET YOUR DOOM BY MY HAND!!!");
-                        BroadcastMsg("GUARDIANS DEAL WITH THESE FOOLS!!!");
-                        BroadcastMsg("Oryx, enjoy feasting on these beasts!");
+                        BroadcastMsg("GUARDIANS AWAKEN AND KILL THESE FOOLS!!!");
 
-                        World.Broadcast(new ShowEffect()
-                        {
-                            EffectType = EffectType.Earthquake
-                        }, PacketPriority.Low);
+                        MovePeopleNaerby(time);
 
                         CurrentState = KindgomState.TEST_WAITING;
-                        World.Timers.Add(new WorldTimer(8000, (w, t) => CurrentState = KindgomState.SpawnOryx));
+                        World.FlagForClose();
                     }
                     break;
                 case KindgomState.TEST_WAITING:
                     break;
-                case KindgomState.SpawnOryx:
-                    {
-                        if (World.Players.Count >= 0)
-                        {
-                            var newWorld = World.GameServer.WorldManager.CreateNewWorld("Oryx's Castle", null, World.GameServer.WorldManager.Nexus); // todo mabye a 3rd thread for oryx's?
-
-                            var rcpNotPaused = new Reconnect()
-                            {
-                                Host = "",
-                                Port = World.GameServer.Configuration.serverInfo.port,
-                                GameId = newWorld.Id,
-                                Name = newWorld.DisplayName
-                            };
-
-                            var rcpPaused = new Reconnect()
-                            {
-                                Host = "",
-                                Port = World.GameServer.Configuration.serverInfo.port,
-                                GameId = -2,
-                                Name = "Nexus"
-                            };
-
-                            World.ForeachPlayer(_ =>
-                                _.Client.Reconnect(
-                                    _.HasConditionEffect(ConditionEffects.Paused)
-                                        ? rcpPaused
-                                        : rcpNotPaused
-                                )
-                            );
-                        }
-                        CurrentState = KindgomState.Expire;
-                    }
-                    break;
-                case KindgomState.Expire:
-                    {
-                        World.FlagForClose();
-                        CurrentState = KindgomState.Expired;
-                    }
-                    break;
                 case KindgomState.Expired:
+                    World.FlagForClose();
                     break;
             }
         }
@@ -960,18 +927,27 @@ namespace wServer.core
             return ret;
         }
 
-        private void SpawnEvent(string name, ISetPiece setpiece)
+        private void MovePeopleNaerby(TickTime time)
+        {
+            var regions = World.Map.Regions.Where(t => t.Value == TileRegion.Defender).ToArray();
+            foreach (var player in World.Players.Values)
+            {
+                var pos = regions[Random.Next(regions.Length)];
+                player.TeleportPosition(time, pos.Key.X, pos.Key.Y, true);
+            }
+        }
+
+        private void SpawnEvent(string name, ISetPiece setpiece, int x = 0, int y = 0)
         {
             if (DisableSpawning)
                 return;
 
-            var pt = new IntPoint();
-
-            do
+            var pt = new IntPoint(x, y);
+            while (World.Map[pt.X, pt.Y].Terrain < TerrainType.Mountains || World.Map[pt.X, pt.Y].Terrain > TerrainType.MidForest || !World.IsPassable(pt.X, pt.Y, true) || World.AnyPlayerNearby(pt.X, pt.Y))
             {
                 pt.X = Random.Next(0, World.Map.Width);
                 pt.Y = Random.Next(0, World.Map.Height);
-            } while (World.Map[pt.X, pt.Y].Terrain < TerrainType.Mountains || World.Map[pt.X, pt.Y].Terrain > TerrainType.MidForest || !World.IsPassable(pt.X, pt.Y, true) || World.AnyPlayerNearby(pt.X, pt.Y));
+            }
 
             var sp = setpiece ?? new NamedEntitySetPiece(name);
 

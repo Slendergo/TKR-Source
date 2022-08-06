@@ -8,16 +8,11 @@ namespace wServer.logic
     partial class BehaviorDb
     {
         private _ OryxCastle = () => Behav()
-        .Init("Oryx Stone Guardian Right",
+        .Init("Talisman King's Golden Guardian Right",
             new State(
                 new ScaleHP2(20),
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
-                    new PlayerWithinTransition(2, "Order")
-                    ),
-                new State("Order",
-                    new Order(10, "Oryx Stone Guardian Left", "Start"),
-                    new TimedTransition(0, "Start")
+                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, true)
                     ),
                 new State("Start",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
@@ -25,7 +20,7 @@ namespace wServer.logic
                     new TimedTransition(1500, "Lets go")
                     ),
                 new State("Together is better",
-                    //new EntityNotExistsTransition("Oryx Stone Guardian Left", 100, "Forever Alone"),
+                    //new EntityNotExistsTransition("Talisman King's Golden Guardian Left", 100, "Forever Alone"),
                     new State("Lets go",
                         new TimedTransition(10000, "Circle"),
                         new State("Imma Follow",
@@ -45,7 +40,7 @@ namespace wServer.logic
                     new State("Circle",
                         new State("Prepare",
                             new MoveTo(speed: 1, x: 127.5f, y: 39.5f),
-                            new EntityExistsTransition("Oryx Stone Guardian Left", 1, "Prepare2")
+                            new EntityExistsTransition("Talisman King's Golden Guardian Left", 1, "Prepare2")
                             ),
                         new State("Prepare2",
                             new MoveTo(speed: 1, x: 130.5f, y: 39.5f),
@@ -160,16 +155,23 @@ namespace wServer.logic
                 )
 
             )
-        .Init("Oryx Stone Guardian Left",
+        .Init("Talisman King's Golden Guardian Left Statue",
+            new State(
+                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new TransformOnDeath("Talisman King's Golden Guardian Left")
+                )
+            )
+        .Init("Talisman King's Golden Guardian Right Statue",
+            new State(
+                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new TransformOnDeath("Talisman King's Golden Guardian Right")
+                )
+            )
+        .Init("Talisman King's Golden Guardian Left",
             new State(
                 new ScaleHP2(20),
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
-                    new PlayerWithinTransition(2, "Order")
-                    ),
-                new State("Order",
-                    new Order(10, "Oryx Stone Guardian Right", "Start"),
-                    new TimedTransition(0, "Start")
+                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, true)
                     ),
                 new State("Start",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
@@ -177,7 +179,7 @@ namespace wServer.logic
                     new TimedTransition(1500, "Together is better")
                     ),
                 new State("Together is better",
-                    //new EntityNotExistsTransition("Oryx Stone Guardian Right", 100, "Forever Alone"),
+                    //new EntityNotExistsTransition("Talisman King's Golden Guardian Right", 100, "Forever Alone"),
                     new State("Lets go",
                         new TimedTransition(10000, "Circle"),
                         new State("Imma Follow",
@@ -197,7 +199,7 @@ namespace wServer.logic
                     new State("Circle",
                         new State("Prepare",
                             new MoveTo(speed: 1, x: 127.5f, y: 39.5f),
-                            new EntityExistsTransition("Oryx Stone Guardian Right", 1, "Prepare2")
+                            new EntityExistsTransition("Talisman King's Golden Guardian Right", 1, "Prepare2")
                             ),
                         new State("Prepare2",
                             new MoveTo(speed: 1, x: 124.5f, y: 39.5f),
@@ -314,8 +316,19 @@ namespace wServer.logic
         .Init("Oryx Guardian TaskMaster",
             new State(
                 new ConditionalEffect(ConditionEffectIndex.Invincible, true),
-                new State("Idle",
-                    new EntitiesNotExistsTransition(100, "Death", "Oryx Stone Guardian Right", "Oryx Stone Guardian Left")
+                new State("WaitingChange",
+                    new EntitiesNotExistsTransition(100, "WaitingChange", "Talisman King's Golden Guardian Right Statue", "Talisman King's Golden Guardian Left Statue")
+                    ),
+                new State("WaitingChange",
+                    new PlayerWithinTransition(15, "Activate", true)
+                    ),
+                new State("Activate",
+                    new Order(15, "Talisman King's Golden Guardian Left", "Start"),
+                    new Order(15, "Talisman King's Golden Guardian Right", "Start"),
+                    new TimedTransition(1000, "Waiting")
+                    ),
+                new State("Waiting",
+                    new EntitiesNotExistsTransition(100, "Death", "Talisman King's Golden Guardian Right", "Talisman King's Golden Guardian Left")
                     ),
                 new State("Death",
                     //new Spawn("Wine Cellar Portal", 1, 1),

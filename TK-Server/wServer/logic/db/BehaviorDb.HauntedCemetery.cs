@@ -2478,7 +2478,7 @@ namespace wServer.logic
                 new TierLoot(5, ItemType.Ring, 0.10),
                 //new ItemLoot("Amulet of Resurrection", 0.01),
                 //new ItemLoot("Tamed Werewolf Cub Egg", 0.03),
-                new ItemLoot("Excalibur", 0.000001),
+                new ItemLoot("Excalibur", 0.0001),
                 new ItemLoot("Wine Cellar Incantation", 0.01),
                 new ItemLoot("Plague Poison", 0.001),
                 new ItemLoot("Resurrected Warrior's Armor", 0.001)

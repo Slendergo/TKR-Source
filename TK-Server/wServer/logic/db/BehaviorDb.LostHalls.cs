@@ -308,7 +308,7 @@ namespace wServer.logic
                     new HpLessTransition(0.90, "Phase 3")
                     ),
                 new State("Phase 3",
-                    new ReturnToSpawn(1.3, 30),
+                    new ReturnToSpawn(3, 50),
                     new Taunt("I cast you off!"),
                     new TimedTransition(4000, "Phase 3.1")
                     ),
@@ -390,7 +390,7 @@ namespace wServer.logic
                     ),
                 new State("Phase 6",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 3000),
-                    new ReturnToSpawn(1.3, 10),
+                    new ReturnToSpawn(3, 50),
                     new Taunt("Brace for your demise!"),
                     new Spawn("LH Colossus Rock 1", 1, 1, 1000000),
                     new OrderOnce(1, "LH Colossus Rock 1", "Move"),
@@ -445,7 +445,7 @@ namespace wServer.logic
                     ),
                 new State("Phase 10",
                     new Taunt("Perish, blights upon this realm!"),
-                    new ReturnToSpawn(3, 30),
+                    new ReturnToSpawn(3, 40),
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 25000),
                     new Spawn("LH Colossus Rock 7", maxChildren: 1),
                     new OrderOnce(1, "LH Colossus Rock 7", "Shoot And Move"),
@@ -455,7 +455,7 @@ namespace wServer.logic
                     new OrderOnce(1, "LH Colossus Rock 9", "Shoot And Move"),
                     new Shoot(30, 39, shootAngle: 9.230, projectileIndex: 10, defaultAngle: 10, fixedAngle: 5, coolDown: 3000, seeInvis: true),
                     new Shoot(10, 3, shootAngle: 15, projectileIndex: 12, coolDown: 2000, seeInvis: true),
-                    new TimedTransition(25000, "Phase 11")
+                    new TimedTransition(12500, "Phase 11")
                     ),
                 new State("Phase 11",
                     new OrderOnce(30, "LH Pillar spawner", "Main"),
@@ -499,7 +499,7 @@ namespace wServer.logic
                     new Shoot(2, projectileIndex: 3, count: 8, shootAngle: 45, fixedAngle: 47, coolDown: 2900, coolDownOffset: 2900),                  
 
 
-                    new TimedTransition(25000, "Phase 12")
+                    new TimedTransition(12500, "Phase 12")
                     ),
                 new State("Phase 12",
                     new Taunt("PATI! The prohibited arts allow untold power!"),

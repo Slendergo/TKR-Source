@@ -86,7 +86,7 @@
     <HitSound>monster/lizard_god_hit</HitSound>
     <DeathSound>monster/lizard_god_death</DeathSound>
     <Size>175</Size>
-    <MaxHitPoints>35000</MaxHitPoints>
+    <MaxHitPoints>80000</MaxHitPoints>
     <Defense>18</Defense>
     <Level>20</Level>
     <XpMult>1.4</XpMult>
@@ -285,7 +285,7 @@
     <HitSound>monster/lizard_god_hit</HitSound>
     <DeathSound>monster/lizard_god_death</DeathSound>
     <Size>180</Size>
-    <MaxHitPoints>35000</MaxHitPoints>
+    <MaxHitPoints>80000</MaxHitPoints>
     <Defense>20</Defense>
     <Level>20</Level>
     <XpMult>1.4</XpMult>
@@ -344,7 +344,7 @@
     <HitSound>monster/lizard_god_hit</HitSound>
     <DeathSound>monster/lizard_god_death</DeathSound>
     <Size>170</Size>
-    <MaxHitPoints>35000</MaxHitPoints>
+    <MaxHitPoints>80000</MaxHitPoints>
     <Defense>5</Defense>
     <Level>20</Level>
     <XpMult>1.4</XpMult>
@@ -384,7 +384,7 @@
     <HitSound>monster/lizard_god_hit</HitSound>
     <DeathSound>monster/lizard_god_death</DeathSound>
     <Size>150</Size>
-    <MaxHitPoints>40000</MaxHitPoints>
+    <MaxHitPoints>80000</MaxHitPoints>
     <Defense>10</Defense>
     <Level>20</Level>
     <XpMult>1.4</XpMult>

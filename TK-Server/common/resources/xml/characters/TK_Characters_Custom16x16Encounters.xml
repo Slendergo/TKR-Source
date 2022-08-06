@@ -14,7 +14,7 @@
 		<Size>120</Size>
 		<MaxHitPoints>50000</MaxHitPoints>
 		<Defense>0</Defense>
-		<Speed>60</Speed>
+		<Speed>50</Speed>
 		<Level>20</Level>
 		<Projectile id="0">
 			<ObjectId>Fire Elemental Shoot</ObjectId>

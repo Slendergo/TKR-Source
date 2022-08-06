@@ -1216,7 +1216,7 @@ namespace wServer.core.objects
         }
         private string CheckRankAPI(int accID, int charID)
         {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create($"http://127.0.0.1/api/getRank");
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create($"https://tkr.gg/api/getRank");
             httpWebRequest.ContentType = "application/json";
             httpWebRequest.Method = "POST";
 

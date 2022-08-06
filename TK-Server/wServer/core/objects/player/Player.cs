@@ -649,6 +649,7 @@ namespace wServer.core.objects
             GenerateGravestone();
             AnnounceDeath(killer);
 
+            Console.WriteLine($"Sending death packet {AccountId} {Client.Character.CharId} {killer}");
             Client.SendPacket(new Death()
             {
                 AccountId = AccountId,
@@ -656,7 +657,7 @@ namespace wServer.core.objects
                 KilledBy = killer
             }, PacketPriority.High);
 
-            World.Timers.Add(new WorldTimer(200, (w, t) =>
+            World.Timers.Add(new WorldTimer(1000, (w, t) =>
             {
                 if (Client.Player != this)
                     return;

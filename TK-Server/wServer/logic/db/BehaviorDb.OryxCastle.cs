@@ -39,11 +39,11 @@ namespace wServer.logic
                         ),
                     new State("Circle",
                         new State("Prepare",
-                            new MoveTo(speed: 1, x: 127.5f, y: 39.5f),
+                            //new MoveTo(speed: 1, x: 127.5f, y: 39.5f),
                             new EntityExistsTransition("Talisman King's Golden Guardian Left", 1, "Prepare2")
                             ),
                         new State("Prepare2",
-                            new MoveTo(speed: 1, x: 130.5f, y: 39.5f),
+                            //new MoveTo(speed: 1, x: 130.5f, y: 39.5f),
                             new TimedTransition(1000, "PrepareEnd")
                             ),
                         new State("PrepareEnd",
@@ -179,7 +179,6 @@ namespace wServer.logic
                     new TimedTransition(1500, "Together is better")
                     ),
                 new State("Together is better",
-                    //new EntityNotExistsTransition("Talisman King's Golden Guardian Right", 100, "Forever Alone"),
                     new State("Lets go",
                         new TimedTransition(10000, "Circle"),
                         new State("Imma Follow",
@@ -198,11 +197,11 @@ namespace wServer.logic
                         ),
                     new State("Circle",
                         new State("Prepare",
-                            new MoveTo(speed: 1, x: 127.5f, y: 39.5f),
+                            //new MoveTo(speed: 1, x: 127.5f, y: 39.5f),
                             new EntityExistsTransition("Talisman King's Golden Guardian Right", 1, "Prepare2")
                             ),
                         new State("Prepare2",
-                            new MoveTo(speed: 1, x: 124.5f, y: 39.5f),
+                            //new MoveTo(speed: 1, x: 124.5f, y: 39.5f),
                             new TimedTransition(1000, "PrepareEnd")
                             ),
                         new State("PrepareEnd",

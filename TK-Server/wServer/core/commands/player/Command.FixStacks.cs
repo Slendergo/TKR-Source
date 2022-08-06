@@ -8,7 +8,7 @@ namespace wServer.core.commands
     {
         internal class FixStacks : Command
         {
-            public FixStacks() : base("fixstacks", permLevel: 0)
+            public FixStacks() : base("fixstacks")
             {
             }
 

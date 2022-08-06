@@ -136,7 +136,7 @@ namespace wServer.core
                     // todo future me will fix
 
                     foreach(var world in WorldManager.GetWorlds())
-                        ChatManager.Announce("Server **Restart** in 5 minutes, prepare to leave");
+                        ChatManager.ServerAnnounce("Server **Restart** in 5 minutes, prepare to leave");
 
                     Console.WriteLine("[Restart] Procdure Commensing");
                     ConnectionListener.Disable();

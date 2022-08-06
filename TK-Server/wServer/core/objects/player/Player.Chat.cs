@@ -194,7 +194,7 @@ namespace wServer.core.objects
             NameColor = 0xFF681F
         });
 
-        internal void AnnouncementReceived(string text) => Client.Player.SendInfo(string.Concat("<ANNOUNCEMENT> ", text));
+        internal void AnnouncementReceived(string text, string user = null) => Client.Player.SendInfo(string.Concat($"<{user ?? "ANNOUNCEMENT"}> ", text));
 
         internal void DeathNotif(string text) => Client.SendPacket(new Text()
         {

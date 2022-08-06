@@ -15,10 +15,9 @@ namespace wServer.core.commands
             {
                 if (!(player.World is RealmWorld gw))
                 {
-                    player.SendError("An undefined error occurred.");
+                    player.SendError("You must be in a realm to clsoe it.");
                     return false;
                 }
-
                 gw.CloseRealm();
                 return true;
             }

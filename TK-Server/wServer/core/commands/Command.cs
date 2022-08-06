@@ -5,6 +5,14 @@ namespace wServer.core.commands
 {
     public abstract partial class Command
     {
+        // todo
+        public enum PermissionType 
+        {
+            USER = 0,
+            SUPPORTER = 10,
+            ADMIN = 1000,
+        }
+
         protected Command(string name, int permLevel = 0, string alias = null, bool listCommand = true)
         {
             CommandName = name;

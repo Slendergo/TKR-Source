@@ -481,7 +481,7 @@ namespace wServer.core.commands
 
                 if (world == null) return false;
 
-                if (world is VaultWorld || world is MarketplaceWorld || world.InstanceType == WorldResourceInstanceType.Guild  || world is Test)
+                if (world is VaultWorld || world is MarketplaceWorld || world.InstanceType == WorldResourceInstanceType.Guild)
                 {
                     player.SendError("You can't invite players to this World.");
                     return false;
@@ -780,9 +780,6 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string playerName)
         {
-            if (player.World is Test)
-                return false;
-
             if (player.Client.Account.GuildRank < 20)
             {
                 player.SendError("Insufficient privileges.");
@@ -857,9 +854,6 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string name)
         {
-            if (player.World is Test)
-                return false;
-
             var manager = player.Client.GameServer;
 
             // if resigning
@@ -1017,9 +1011,6 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string playerName)
         {
-            if (player.World is Test)
-                return false;
-
             if (String.IsNullOrEmpty(playerName))
             {
                 player.SendError("Usage: /ignore <player name>");
@@ -1101,9 +1092,6 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string playerName)
         {
-            if (player.World is Test)
-                return false;
-
             if (String.IsNullOrEmpty(playerName))
             {
                 player.SendError("Usage: /lock <player name>");
@@ -1543,9 +1531,6 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string playerName)
         {
-            if (player.World is Test)
-                return false;
-
             if (String.IsNullOrEmpty(playerName))
             {
                 player.SendError("Usage: /unignore <player name>");
@@ -1591,10 +1576,7 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string playerName)
         {
-            if (player.World is Test)
-                return false;
-
-            if (String.IsNullOrEmpty(playerName))
+            if (string.IsNullOrEmpty(playerName))
             {
                 player.SendError("Usage: /unlock <player name>");
                 return false;

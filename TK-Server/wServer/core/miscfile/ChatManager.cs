@@ -17,7 +17,7 @@ namespace wServer.core
 
         public ChatManager(GameServer gameServer) => GameServer = gameServer;
 
-        public void Announce(string text)
+        public void ServerAnnounce(string text)
         {
             if (string.IsNullOrWhiteSpace(text))
                 return;
@@ -26,6 +26,17 @@ namespace wServer.core
                 .KeyWhereAsParallel(_ => _.Player != null);
             for (var i = 0; i < clients.Length; i++)
                 clients[i].Player.AnnouncementReceived(text);
+        }
+
+        public void Announce(Player player, string text)
+        {
+            if (string.IsNullOrWhiteSpace(text))
+                return;
+
+            var clients = GameServer.ConnectionManager.Clients
+                .KeyWhereAsParallel(_ => _.Player != null);
+            for (var i = 0; i < clients.Length; i++)
+                clients[i].Player.AnnouncementReceived(text, player.Name);
         }
 
         public void AnnounceEternalLoot(string text)
@@ -276,14 +287,14 @@ namespace wServer.core
             if (networkMsg.Content.Info.type == ServerType.Account)
                 return;
 
-            Announce($"A new server has come online: {networkMsg.Content.Info.name}");
+            ServerAnnounce($"A new server has come online: {networkMsg.Content.Info.name}");
         }
 
         private void AnnounceServerQuit(object sender, EventArgs e)
         {
             var networkMsg = (InterServerEventArgs<NetworkMsg>)e;
 
-            Announce($"Server, {networkMsg.Content.Info.name}, is no longer online.");
+            ServerAnnounce($"Server, {networkMsg.Content.Info.name}, is no longer online.");
         }
 
         private void HandleAnnounce(object sender, InterServerEventArgs<AnnounceMsg> e)

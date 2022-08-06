@@ -187,7 +187,7 @@ namespace wServer.core
 
             var seed = (uint)((long)Environment.TickCount * connectionInfo.GUID.GetHashCode()) % uint.MaxValue;
 
-            client.Random = new wRandom(seed);
+            client.Random = new ClientRandom(seed);
             client.TargetWorld = world.Id;
 
             if (!acc.Hidden)

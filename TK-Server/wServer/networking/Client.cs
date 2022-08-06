@@ -44,7 +44,7 @@ namespace wServer.networking
         public string IpAddress { get; private set; }
         public bool IsLagging { get; private set; }
         public Player Player { get; internal set; }
-        public wRandom Random { get; internal set; }
+        public ClientRandom Random { get; internal set; }
         public Socket Socket { get; private set; }
         public ProtocolState State { get => _state; internal set => _state = value; }
 

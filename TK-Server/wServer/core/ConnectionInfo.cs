@@ -22,7 +22,7 @@ namespace wServer.core
             GUID = data.GUID;
             GameId = data.GameId;
             Key = data.Key;
-            Reconnecting = !Key.SequenceEqual(Empty<byte>.Array);
+            Reconnecting = !Key.SequenceEqual(ArrayUtils<byte>.Empty);
             MapInfo = data.MapJSON;
             Time = DateTime.UtcNow.ToUnixTimestamp();
         }

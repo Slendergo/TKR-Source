@@ -2,16 +2,15 @@
 
 namespace wServer
 {
-    public class wRandom
+    public class ClientRandom
     {
-        //static readonly ILog Log = LogManager.GetLogger(typeof(wRandom));
-
         private uint _seed;
 
-        public wRandom() : this((uint)Environment.TickCount)
-        { }
+        public ClientRandom() : this((uint)Environment.TickCount)
+        {
+        }
 
-        public wRandom(uint seed) => _seed = seed;
+        public ClientRandom(uint seed) => _seed = seed;
 
         public double NextDouble() => Gen() / 2147483647.0;
 

@@ -503,13 +503,9 @@ namespace wServer.core
                         CurrentState = KindgomState.TEST_WAITING;
                         foreach (var e in World.Enemies.Values)
                         {
-                            if (e.ObjectDesc.ObjectId.Contains("Oryx Guardian TaskMaster"))
+                            if (e.ObjectDesc.ObjectId.Contains("Oryx Guardian TaskMaster") || e.ObjectDesc.ObjectId.Contains("Talisman King's Golden Guardian"))
                                 continue;
-                                
-                            if (e.ObjectDesc.ObjectId.Contains("Talisman King's Golden Guardian"))
-                                e.Death(time);
-                            else
-                                World.LeaveWorld(e);
+                            World.LeaveWorld(e);
                         }
 
                         World.Timers.Add(new WorldTimer(30000, (w, t) => CurrentState = KindgomState.Closed));
@@ -520,6 +516,15 @@ namespace wServer.core
                         BroadcastMsg("ENOUGH WAITING!");
                         BroadcastMsg("YOU SHALL MEET YOUR DOOM BY MY HAND!!!");
                         BroadcastMsg("GUARDIANS AWAKEN AND KILL THESE FOOLS!!!");
+
+                        foreach (var e in World.Enemies.Values)
+                        {
+                            if (e.ObjectDesc.ObjectId.Contains("Oryx Guardian TaskMaster"))
+                                continue;
+
+                            if (e.ObjectDesc.ObjectId.Contains("Talisman King's Golden Guardian"))
+                                e.Death(time);
+                        }
 
                         MovePeopleNaerby(time);
 

@@ -112,7 +112,7 @@ namespace wServer.logic
                         ),
                     new State("Move Sideways",
                         new State("msw_prepare",
-                            new MoveTo(speed: 1, x: 141.5f, y: 39.5f),
+                            //new MoveTo(speed: 1, x: 141.5f, y: 39.5f),
                             new TimedTransition(1500, "msw_shoot")
                             ),
                         new State("msw_shoot",
@@ -270,7 +270,7 @@ namespace wServer.logic
                         ),
                     new State("Move Sideways",
                         new State("msw_prepare",
-                            new MoveTo(speed: 1, x: 113.5f, y: 39.5f),
+                            //new MoveTo(speed: 1, x: 113.5f, y: 39.5f),
                             new TimedTransition(1500, "msw_shoot")
                             ),
                         new State("msw_shoot",

@@ -838,11 +838,7 @@ namespace wServer.logic
                 new ScaleHP2(20),
                 new State("Start",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
-                    new PlayerWithinTransition(10, "Taunt")
-                    ),
-                new State("Taunt",
-                    new Taunt("I love stars, do you want to see them?"),
-                    new TimedTransition(2000, "Prepare")
+                    new PlayerWithinTransition(10, "Prepare")
                     ),
                 new State("Prepare",
                     new TossObject(child: "Limon Element 1 v2", range: 9.5, angle: 315, coolDown: 1000000),
@@ -856,27 +852,24 @@ namespace wServer.logic
                     new TimedTransition(3000, "Start")
                     ),
                 new State("Start",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
+                    new RemoveConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new Wander(0.3),
-                    new StayBack(1, 6), 
+                    new Follow(1, 15),
                     new StayCloseToSpawn(1, 10),
-                    new Shoot(20, 3, shootAngle: 10, projectileIndex: 0, coolDown: 2000),
-                    new Shoot(20, 16, projectileIndex: 1, coolDown: 250),
-                    new HpLessTransition(0.75, "Spawn"),
-                    new HpLessTransition(0.5, "Spawn"),
-                    new State("Player",
-                        new PlayerWithinTransition(3, "Found Player")
-                        ),
-                    new State("Found Player",
-                        new Shoot(20, 12, projectileIndex: 2, coolDown: 250),
-                        new NoPlayerWithinTransition(3, "Player")
+                    new Shoot(20, 5, shootAngle: 10, projectileIndex: 0, coolDown: 500),
+                    new Shoot(20, 16, projectileIndex: 1, coolDown: 1200),
+                    new HpLessTransition(0.5, "Spawn")
                         ),
                     new State("Spawn",
+                        new Wander(0.3),
+                        new Follow(1, 15),
+                        new StayCloseToSpawn(1, 10),
+                        new Shoot(20, 5, shootAngle: 10, projectileIndex: 0, coolDown: 500),
+                        new Shoot(20, 16, projectileIndex: 1, coolDown: 1200),
                         new Spawn(children: "Magic Sprite", maxChildren: 10, initialSpawn: 0, coolDown: 500),
                         new Spawn(children: "Ice Sprite", maxChildren: 10, initialSpawn: 0, coolDown: 500)
                         )
-                    )
-                ),
+                    ),
             new Threshold(0.005,
                 new ItemLoot("Soul of Dexterity", 1)
                 ),
@@ -887,7 +880,6 @@ namespace wServer.logic
                 new ItemLoot("Spatial Distortion", 0.03),
                 new ItemLoot("Celestial Dual Blades", 0.03),
                 new ItemLoot("Crafting Material 2", 0.1),
-                new ItemLoot("Soul of Dexterity", 0.1),
                 new ItemLoot("Chromatic Extinction", 0.0014)
                 ),
             new Threshold(0.01,

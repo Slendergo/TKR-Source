@@ -140,6 +140,7 @@
     <ParalyzeImmune />
     <StunImmune />
     <DazedImmune />
+	  <SlowedImmune />
     <AnimatedTexture>
       <File>LostHallsChars16x16a</File>
       <Index>28</Index>

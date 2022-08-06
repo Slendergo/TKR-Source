@@ -17,7 +17,7 @@
       <Speed>180</Speed>
       <MinDamage>160</MinDamage>
       <MaxDamage>260</MaxDamage>
-      <LifetimeMS>249</LifetimeMS>
+      <LifetimeMS>350</LifetimeMS>
       <PassesCover />
     </Projectile>
     <ActivateOnEquip stat="3" amount="50">IncrementStat</ActivateOnEquip>

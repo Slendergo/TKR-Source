@@ -17,7 +17,7 @@
       <Speed>120</Speed>
       <MinDamage>500</MinDamage>
       <MaxDamage>600</MaxDamage>
-      <LifetimeMS>545</LifetimeMS>
+      <LifetimeMS>445</LifetimeMS>
     </Projectile>
     <BagType>7</BagType>
     <FameBonus>4</FameBonus>
@@ -225,7 +225,7 @@
 		<SlotType>1</SlotType>
 		<Legendary />
 		<Description>No longer a tribute to RotF</Description>
-		<RateOfFire>.3</RateOfFire>
+		<RateOfFire>.45</RateOfFire>
 		<Sound>weapon/mithril_sword</Sound>
 		<Projectile>
 			<ObjectId>Possessed Halberd Shot</ObjectId>

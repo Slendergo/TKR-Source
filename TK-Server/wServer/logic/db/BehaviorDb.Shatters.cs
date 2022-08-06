@@ -681,15 +681,15 @@ namespace wServer.logic
 
                 ),
             new Threshold(0.05,
-                new ItemLoot("The Sentinel's Insignia", 0.0014)
-                //new ItemLoot("Blade of the Protector", 0.0015),
+                new ItemLoot("The Sentinel's Insignia", 0.0014),
+                new ItemLoot("Blade of the Protector", 0.0015)
                 //new ItemLoot("Guardian's Clad", 0.0015)
                 ),
             new Threshold(0.01,
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.03,
-                new ItemLoot("Bracer of the Guardian", 0.0014)
+                new ItemLoot("Bracer of the Guardian", 0.009)
                 ),
             new Threshold(0.001,
                 new TierLoot(12, ItemType.Weapon, 0.2),
@@ -2611,7 +2611,7 @@ namespace wServer.logic
                 //new ItemLoot("Seruna", 0.0015, 0)
                 ),
             new Threshold(0.03,
-                new ItemLoot("The Forgotten Crown", 0.003),
+                new ItemLoot("The Forgotten Crown", 0.009),
                 new ItemLoot("Shatters Key", 0.01)
                 ),
             new Threshold(0.01,

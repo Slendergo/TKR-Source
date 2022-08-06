@@ -616,7 +616,7 @@
       <File>Custom16x16Encounters</File>
       <Index>9</Index>
     </AnimatedTexture>
-    <MaxHitPoints>20000</MaxHitPoints>
+    <MaxHitPoints>80000</MaxHitPoints>
     <Size>150</Size>
     <Projectile id="0">
       <ObjectId>Undead Limon First Shot</ObjectId>

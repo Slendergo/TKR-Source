@@ -220,7 +220,6 @@ namespace common.discord
             string playerName,
             int rank,
             int stars,
-            string deathNote,
             string className,
             int level,
             int fame,

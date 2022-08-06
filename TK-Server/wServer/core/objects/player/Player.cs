@@ -1257,13 +1257,15 @@ namespace wServer.core.objects
 
         private void AnnounceDeath(string killer)
         {
+            var charRank = CheckRankAPI(Client.Player.AccountId, Client.Character.CharId);
             var maxed = GetMaxedStats();
-            var deathMessage = Name + " (" + maxed + (UpgradeEnabled ? "/16, " : "/8, ") + Client.Character.Fame + ") has been killed by " + killer + "!";
+            var deathMessage = Name + " (" + maxed + (UpgradeEnabled ? "/16, " : "/8, ") + Client.Character.Fame + ") has been killed by " + killer + "! ";
             if (maxed >= 6 && Rank <= 60)
             {
+                var deathNote = "They were ranked #" + charRank + " on the alive character leaderboards.";
+                deathMessage += deathNote;
                 try
                 {
-                    var charRank = CheckRankAPI(Client.Player.AccountId, Client.Character.CharId);
                     var discord = World.GameServer.Configuration.discordIntegration;
                     var players = World.Players.Count(p => p.Value.Client != null);
                     var builder = discord.MakeDeathAnnounce(
@@ -1277,7 +1279,6 @@ namespace wServer.core.objects
                         Name,
                         Rank,
                         Stars,
-                        deathMessage,
                         ObjectDesc.ObjectId,
                         Level,
                         Fame,

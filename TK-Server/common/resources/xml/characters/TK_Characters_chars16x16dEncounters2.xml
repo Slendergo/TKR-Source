@@ -10,6 +10,7 @@
 	<MaxHitPoints>100000</MaxHitPoints>
 	<Enemy/>
     <OccupySquare />
+	  <Invincible />
   </Object>
 	
   <Object type="0x5006" id="Talisman King's Golden Guardian Right Statue">
@@ -23,6 +24,7 @@
 	<MaxHitPoints>100000</MaxHitPoints>
     <Enemy/>
     <OccupySquare />
+	  <Invincible />
   </Object>
 	
   <Object type="0x5e2c" id="Golden Oryx Effigy">

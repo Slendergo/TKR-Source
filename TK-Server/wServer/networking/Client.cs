@@ -37,6 +37,7 @@ namespace wServer.networking
             _handler = new NetworkHandler(this, send, receive);
         }
 
+        public int PacketSpamAmount { get; set; }
         public DbAccount Account { get; internal set; }
         public DbChar Character { get; internal set; }
         public GameServer GameServer { get; private set; }
@@ -123,6 +124,7 @@ namespace wServer.networking
         public void Reset()
         {
             Id = 0; // needed so that inbound packets that are currently queued are discarded.
+            PacketSpamAmount = 0;
 
             Account = null;
             Character = null;

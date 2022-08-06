@@ -792,6 +792,9 @@ namespace wServer.core.objects
                 var handler = MessageHandlers.GetHandler(incomingMessage.MessageId);
                 if (handler == null)
                 {
+                    incomingMessage.Client.PacketSpamAmount++;
+                    if (incomingMessage.Client.PacketSpamAmount > 32)
+                        incomingMessage.Client.Disconnect($"Packet Spam: {incomingMessage.Client.IpAddress}");
                     SLogger.Instance.Error($"Unknown MessageId: {incomingMessage.MessageId} - {Client.IpAddress}");
                     continue;
                 }

@@ -195,6 +195,9 @@ namespace wServer.networking.connection
                             var handler = MessageHandlers.GetHandler(id);
                             if (handler == null)
                             {
+                                Client.PacketSpamAmount++;
+                                if (Client.PacketSpamAmount > 32)
+                                    Client.Disconnect($"Packet Spam: {Client.IpAddress}");
                                 SLogger.Instance.Error($"Unknown MessageId: {id} - {Client.IpAddress}");
                                 continue;
                             }

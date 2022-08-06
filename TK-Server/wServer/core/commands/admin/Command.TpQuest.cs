@@ -20,7 +20,7 @@ namespace wServer.core.commands
 
                 player.SetNewbiePeriod();
                 player.TeleportPosition(time, player.Quest.RealX, player.Quest.RealY, true);
-                player.SendInfo("Teleported to Quest Location: (" + player.Quest.X + ", " + player.Quest.Y + ")");
+                player.SendInfo($"Teleported to Quest Location: ({player.Quest.X}, {player.Quest.Y}");
                 return true;
             }
         }

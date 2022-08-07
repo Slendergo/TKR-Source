@@ -36,7 +36,12 @@ namespace wServer.logic.behaviors
             else
                 orbitDir = ((bool)orbitClockwise) ? 1 : -1;
 
-            state = new OrbitState() { Speed = speed + speedVariance * (float)(Random.NextDouble() * 2 - 1), Radius = radius + radiusVariance * (float)(Random.NextDouble() * 2 - 1), Direction = orbitDir };
+            state = new OrbitState() 
+            { 
+                Speed = speed + speedVariance * (float)(Random.NextDouble() * 2 - 1),
+                Radius = radius + radiusVariance * (float)(Random.NextDouble() * 2 - 1), 
+                Direction = orbitDir
+            };
         }
 
         protected override void TickCore(Entity host, TickTime time, ref object state)

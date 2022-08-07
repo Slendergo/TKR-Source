@@ -133,7 +133,7 @@ namespace wServer.logic
         .Init("Protection Crystal",
             new State(
                 new Prioritize(
-                    new Orbit(3, 4, 10, "Lord of the Lost Lands")
+                    new Orbit(3, 4, 10, "Lord of the Lost Lands", speedVariance: 0, radiusVariance: 0)``
                     ),
                 new Shoot(8, count: 4, shootAngle: 7, coolDown: 500)
                 )

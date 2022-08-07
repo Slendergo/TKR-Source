@@ -12,7 +12,7 @@ namespace wServer.core.commands
 
             protected override bool Process(Player player, TickTime time, string args)
             {
-                player.GameServer.ChatManager.ServerAnnounce(args);
+                player.GameServer.ChatManager.Announce(player, args);
                 return true;
             }
         }
@@ -25,8 +25,8 @@ namespace wServer.core.commands
 
             protected override bool Process(Player player, TickTime time, string args)
             {
-                player.GameServer.ChatManager.Announce(player, args);
-                return true;
+                player.GameServer.ChatManager.ServerAnnounce(args);
+                return true;w
             }
         }
     }

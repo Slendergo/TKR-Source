@@ -33,6 +33,7 @@ namespace wServer.core.commands
                 player.Stats.Base[7] = pd.Stats[7].MaxValue + 10;
                 player.Level = 20;
                 player.Fame = 20;
+                player.Experience = Player.GetLevelExp(20);
 
                 player.SendInfo("You have been maxed.");
                 return true;

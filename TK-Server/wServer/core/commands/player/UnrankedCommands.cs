@@ -1242,9 +1242,13 @@ namespace wServer.core.commands
                 player.SendInfo("Unable to find a realm.");
                 return true;
             }
-
-            var random = new Random();
-            var world = worlds[random.Next(worlds.Count)];
+           
+            var world = worlds[0];
+            foreach (var i in worlds)
+            {
+                if (i.Players.Count > world.Players.Count)
+                    world = i;
+            }
 
             if (world.IsPlayersMax())
             {

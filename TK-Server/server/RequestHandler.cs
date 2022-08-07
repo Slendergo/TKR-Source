@@ -12,7 +12,10 @@ namespace server
     {
         public static readonly Dictionary<string, RequestHandler> Get = new Dictionary<string, RequestHandler>
         {
-            {"/app/bot", new app.bot()}
+            {"/app/bot", new app.bot()},
+            {"/launcher/getVersion", new launcher.getVersion()},
+            {"/launcher/checkSum", new launcher.checkSum()},
+            {"/launcher/fetchFile", new launcher.fetchFile()}
         };
 
         public static readonly Dictionary<string, RequestHandler> Post = new Dictionary<string, RequestHandler>

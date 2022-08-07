@@ -12,6 +12,10 @@ import com.company.assembleegameclient.sound.SoundEffectLibrary;
 import com.company.assembleegameclient.ui.options.Options;
 import com.company.util.AssetLibrary;
 
+import flash.filesystem.File;
+import flash.filesystem.FileMode;
+import flash.filesystem.FileStream;
+
 import flash.utils.ByteArray;
 
 import kabam.rotmg.Emojis.Emotes;

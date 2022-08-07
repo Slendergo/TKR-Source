@@ -46,7 +46,7 @@
                     </Button.Style>
                 </Button>
 
-                <Button x:Name="News" Height="64" Background="#FF3F415D" BorderBrush="{x:Null}" Foreground="#FF9FA3E5" FontSize="18" FontWeight="Bold" Click="NewsPagePressed_Click">
+                <!--<Button x:Name="News" Height="64" Background="#FF3F415D" BorderBrush="{x:Null}" Foreground="#FF9FA3E5" FontSize="18" FontWeight="Bold" Click="NewsPagePressed_Click">
                     <TextBlock Text="{Binding Name, RelativeSource={RelativeSource FindAncestor,AncestorType=Button},FallbackValue=Unknown}" Foreground="#FF9FA3E5">
                         <TextBlock.Effect>
                             <DropShadowEffect Color="#FF4A4C6F" ShadowDepth="3"/>
@@ -165,10 +165,10 @@
                             </Setter>
                         </Style>
                     </Button.Style>
-                </Button>
+                </Button>-->
             </StackPanel>
 
-            <TextBlock Text="V 1.0" Foreground="#FFECECEC" FontSize="16" VerticalAlignment="Bottom" Margin="8,8,4,4" HorizontalAlignment="Center">
+            <TextBlock x:Name="Version" Text="V 1.1.1" Foreground="#FFECECEC" FontSize="16" VerticalAlignment="Bottom" Margin="8,8,4,4" HorizontalAlignment="Center">
                 <TextBlock.Effect>
                     <DropShadowEffect Color="#FF4A4C6F" Direction="0" ShadowDepth="3"/>
                 </TextBlock.Effect>

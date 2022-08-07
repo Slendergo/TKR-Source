@@ -11,7 +11,7 @@
         <Grid DockPanel.Dock="Bottom" Background="#FF4A4C6F">
             <Grid Margin="16">
                 <Grid Margin="0,0,128,0">
-                    <ProgressBar x:Name="ProgressBar" BorderThickness="2"  Height="48" HorizontalContentAlignment="Stretch" Background="#FF3F415D" BorderBrush="#FF37384B" Value="50">
+                    <ProgressBar x:Name="ProgressBar" BorderThickness="2"  Height="48" HorizontalContentAlignment="Stretch" Background="#FF3F415D" BorderBrush="#FF37384B" Value="0">
                         <ProgressBar.Effect>
                             <DropShadowEffect Color="#FF4A4C6F" ShadowDepth="5" BlurRadius="8"/>
                         </ProgressBar.Effect>
@@ -23,7 +23,7 @@
                     </TextBlock>
                 </Grid>
 
-                <Button x:Name="Play" Background="#FFD9D9D9" Width="112" HorizontalAlignment="Right" Foreground="#FF9FA3E5" FontSize="18" FontWeight="Bold">
+                <Button x:Name="Play" IsEnabled="False" Background="#FFD9D9D9" Width="112" HorizontalAlignment="Right" Foreground="#FF9FA3E5" FontSize="18" FontWeight="Bold" Click="Play_Click">
                     <TextBlock Text="{Binding Name, RelativeSource={RelativeSource FindAncestor,AncestorType=Button},FallbackValue=Unknown}" Foreground="White">
                         <TextBlock.Effect>
                             <DropShadowEffect Color="#FF4A4C6F" ShadowDepth="3"/>

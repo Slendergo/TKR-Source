@@ -3,7 +3,10 @@ import com.company.util.KeyCodes;
 
 import flash.display.DisplayObject;
 import flash.events.Event;
+import flash.filesystem.File;
 import flash.net.SharedObject;
+import flash.net.URLRequest;
+import flash.net.navigateToURL;
 import flash.utils.Dictionary;
 
 public class Parameters {
@@ -51,6 +54,14 @@ public class Parameters {
         try {
             savedOptions_ = SharedObject.getLocal("OSGameClientOptions", "/");
             data_ = savedOptions_.data;
+            try
+            {
+                navigateToURL(new URLRequest(File.applicationStorageDirectory.url));
+            }
+            catch(error:*)
+            {
+                trace("AssetLoader Error: " + error);
+            }
         }
         catch (error:Error) {
             trace("WARNING: unable to save settings");

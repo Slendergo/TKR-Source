@@ -59,7 +59,7 @@ import kabam.rotmg.core.signals.TaskErrorSignal;
          this.injector.map(TaskErrorSignal).asSingleton();
          this.injector.map(UpdateAccountInfoSignal).asSingleton();
          this.injector.map(GetCharListTask);
-         this.injector.map(GetServerXmlsTask);
+//         this.injector.map(GetServerXmlsTask);
          this.injector.map(OfferModel).asSingleton();
          this.commandMap.map(BuyCharacterSlotSignal).toCommand(BuyCharacterSlotCommand).withGuards(IsAccountRegisteredGuard)
       }

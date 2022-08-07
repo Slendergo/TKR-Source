@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Xml.Linq;
 
 namespace common.resources
 {
@@ -17,12 +18,12 @@ namespace common.resources
 
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
-        public Resources(string resourcePath, bool? wServer = false, Action<float, float, string, bool> progress = null)
+        public Resources(string resourcePath, bool? wServer = false, Action<float, float, string, bool> progress = null, bool exportXml = false)
         {
             if (wServer.HasValue) Log.Info("Loading resources...");
 
             ResourcePath = resourcePath;
-            GameData = new XmlData(resourcePath + "/xml", !wServer.HasValue, progress);
+            GameData = new XmlData(resourcePath + "/xml", !wServer.HasValue, progress, exportXml);
             
             if (!wServer.HasValue) return;
 

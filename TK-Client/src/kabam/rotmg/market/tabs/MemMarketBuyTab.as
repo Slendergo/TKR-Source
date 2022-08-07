@@ -141,7 +141,7 @@ public class MemMarketBuyTab extends MemMarketTab
         var index:int = 0;
         if (first)
         {
-            for each (var w:String in ObjectLibrary.preloadedCustom_)
+            for each (var w:String in ObjectLibrary.xmlLibrary_)
             {
                 if (GeneralUtils.isBanned(ObjectLibrary.idToTypeItems_[w]) || ObjectLibrary.idToTypeItems_[w] == null) /* Skip on banned items */
                     continue;

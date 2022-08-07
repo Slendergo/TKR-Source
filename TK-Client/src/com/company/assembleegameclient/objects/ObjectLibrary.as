@@ -29,7 +29,6 @@ public class ObjectLibrary
       public static const typeToAnimationsData_:Dictionary = new Dictionary();
       public static const typeToIdItems_:Dictionary = new Dictionary();
       public static const idToTypeItems_:Dictionary = new Dictionary();
-      public static const preloadedCustom_:Dictionary = new Dictionary();
       public static const defaultProps_:ObjectProperties = new ObjectProperties(null);
 
       public static const TYPE_MAP:Object = {
@@ -75,7 +74,7 @@ public class ObjectLibrary
          super();
       }
 
-      public static function parseFromXML(xml:XML, preloaded:Boolean) : void
+      public static function parseFromXML(xml:XML) : void
       {
          var objectXML:XML = null;
          var id:String = null;
@@ -110,11 +109,6 @@ public class ObjectLibrary
                idToTypeItems_[id.toLowerCase()] = objectType;
             }
 
-            if (preloaded)
-            {
-               preloadedCustom_[objectType] = id.toLowerCase();
-            }
-
             if(String(objectXML.Class) == "Player")
             {
                playerClassAbbr_[objectType] = String(objectXML.@id).substr(0,2);
@@ -132,6 +126,10 @@ public class ObjectLibrary
                   playerChars_.push(objectXML);
                }
             }
+            trace(id);
+            if(id == "Abominable Snowman"){
+               trace(id);
+            }
             typeToTextureData_[objectType] = new TextureData(objectXML);
             if(objectXML.hasOwnProperty("Top"))
             {
@@ -142,6 +140,9 @@ public class ObjectLibrary
                typeToAnimationsData_[objectType] = new AnimationsData(objectXML);
             }
          }
+
+
+
       }
 
       public static function getIdFromType(type:int) : String

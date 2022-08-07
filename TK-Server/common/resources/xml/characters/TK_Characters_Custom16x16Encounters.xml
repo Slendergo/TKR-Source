@@ -1407,7 +1407,7 @@
       <LifetimeMS>4000</LifetimeMS>
     </Projectile>
   </Object>
-  <Object type="0x0d51" id="Abominable Snowman">
+  <!--<Object type="0x0d51" id="Abominable Snowman">
     <Class>Character</Class>
     <Enemy />
     <SpecialEnemy />
@@ -1463,8 +1463,8 @@
       <ConditionEffect duration="2">Paralyzed</ConditionEffect>
       <ConditionEffect duration="3">Stunned</ConditionEffect>
     </Projectile>
-  </Object>
-    <Object type="0xa6a1" id="Queen of Ice">
+  </Object>-->
+	<!--<Object type="0xa6a1" id="Queen of Ice">
       <Class>Character</Class>
       <Enemy />
       <SpecialEnemy />
@@ -1532,7 +1532,7 @@
         <MultiHit />
         <ConditionEffect duration="4">Sick</ConditionEffect>
       </Projectile>
-    </Object>
+    </Obje-->ct>
     <Object type="0xaad9" id="Guardian of the Ice Queen">
     <DisplayId>Guardian of the Ice Queen</DisplayId>
     <Class>Character</Class>
@@ -1639,7 +1639,7 @@
       <ConditionEffect duration="2">Stunned</ConditionEffect>
     </Projectile>
   </Object>
-  <Object type="0x712b" id="Corrupt Snowman Switch">
+  <!--<Object type="0x712b" id="Corrupt Snowman Switch">
     <Class>Character</Class>
     <Enemy />
     <SpecialEnemy />
@@ -1681,8 +1681,8 @@
       <LifetimeMS>5000</LifetimeMS>
       <ConditionEffect duration="1.8">Confused</ConditionEffect>
     </Projectile>
-  </Object>
-  <Object type="0x712c" id="Corrupt Snowman Switch 2">
+  </Object>-->
+  <!--<Object type="0x712c" id="Corrupt Snowman Switch 2">
     <Class>Character</Class>
     <Enemy />
     <SpecialEnemy />
@@ -1724,5 +1724,5 @@
       <LifetimeMS>5000</LifetimeMS>
       <ConditionEffect duration="1.8">Confused</ConditionEffect>
     </Projectile>
-  </Object>
+  </Object>-->
 </Objects>

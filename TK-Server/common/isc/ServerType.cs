@@ -3,6 +3,7 @@
     public enum ServerType
     {
         Account,
-        World
+        World,
+        Consumer
     }
 }

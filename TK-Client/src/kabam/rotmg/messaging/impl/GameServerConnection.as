@@ -2185,13 +2185,6 @@ public class GameServerConnection
          this.serverConnection.sendMessage(pong);
       }
 
-      private function parseXML(xmlString:String) : void
-      {
-         var extraXML:XML = XML(xmlString);
-         GroundLibrary.parseFromXML(extraXML);
-         ObjectLibrary.parseFromXML(extraXML, false);
-      }
-
       private function onMapInfo(mapInfo:MapInfo) : void
       {
          this.gs_.applyMapInfo(mapInfo);

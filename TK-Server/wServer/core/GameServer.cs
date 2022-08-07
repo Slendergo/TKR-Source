@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -46,7 +47,7 @@ namespace wServer.core
                 throw new Exception("Too many arguments expected 1.");
 
             Configuration = ServerConfig.ReadFile(args.Length == 1 ? args[0] : "wServer.json");
-            Resources = new Resources(Configuration.serverSettings.resourceFolder, true);
+            Resources = new Resources(Configuration.serverSettings.resourceFolder, true, null, ExportXMLS);
             Database = new Database(Resources, Configuration);
             MarketSweeper = new MarketSweeper(Database);
             ConnectionManager = new ConnectionManager(this);
@@ -62,8 +63,32 @@ namespace wServer.core
 
         public bool IsWhitelisted(int accountId) => Configuration.serverSettings.whitelist.Contains(accountId);
 
+        private static bool ExportXMLS = true;
+
         public void Run()
         {
+            if (ExportXMLS)
+            {
+                if (!Directory.Exists("GenerateXMLS"))
+                    _ = Directory.CreateDirectory("GenerateXMLS");
+
+                var f = File.CreateText("GenerateXMLS/EmbeddedData_ObjectsCXML.xml");
+                f.Write(Resources.GameData.ObjectCombinedXML.ToString());
+                f.Close();
+
+                var f3 = File.CreateText("GenerateXMLS/EmbeddedData_SkinsCXML.xml");
+                f3.Write(Resources.GameData.SkinsCombinedXML.ToString());
+                f3.Close();
+
+                var f4 = File.CreateText("GenerateXMLS/EmbeddedData_PlayersCXML.xml");
+                f4.Write(Resources.GameData.CombinedXMLPlayers.ToString());
+                f4.Close();
+
+                var f2 = File.CreateText("GenerateXMLS/EmbeddedData_GroundsCXML.xml");
+                f2.Write(Resources.GameData.GroundCombinedXML.ToString());
+                f2.Close();
+            }
+
             InstanceId = Configuration.serverInfo.instanceId = Guid.NewGuid().ToString();
             Console.WriteLine($"[Set] InstanceId [{InstanceId}]");
 

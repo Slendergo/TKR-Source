@@ -17,6 +17,7 @@ import flash.utils.ByteArray;
 import kabam.rotmg.Emojis.Emotes;
 import kabam.rotmg.assets.EmbeddedAssets;
 import kabam.rotmg.assets.EmbeddedData;
+import kabam.rotmg.assets.EmbeddedData_PlayersCXML;
 
 public class AssetLoader
 {
@@ -193,37 +194,28 @@ public class AssetLoader
 
    private function parseGroundFiles() : void
    {
-      var groundObj:* = undefined;
-      for each(groundObj in EmbeddedData.groundFiles)
-      {
-         GroundLibrary.parseFromXML(XML(groundObj));
-      }
+      var xml:XML = XML(new EmbeddedData.GroundCXML());
+      GroundLibrary.parseFromXML(xml);
    }
 
    private function parseObjectFiles() : void
    {
-      var objectObj:* = undefined;
       try
       {
-         for each(objectObj in EmbeddedData.objectFiles)
-         {
-            ObjectLibrary.parseFromXML(XML(objectObj), objectObj is EmbeddedData.armorItems || objectObj is EmbeddedData.weaponsItems || objectObj is EmbeddedData.abilitiesItems || objectObj is EmbeddedData.ringItems || objectObj is EmbeddedData.tieredItems || objectObj is EmbeddedData.CustomItems);
-         }
+         var xml:XML = XML(new EmbeddedData.ObjectCXML());
+         ObjectLibrary.parseFromXML(xml);
+         var xml:XML = XML(new EmbeddedData.PlayersCXML());
+         ObjectLibrary.parseFromXML(xml);
       }
       catch(error:*)
       {
-         trace(objectObj.name);
          trace("AssetLoader Error: " + error);
       }
    }
 
    private function parseRegionFiles() : void
    {
-      var regionXML:* = undefined;
-      for each(regionXML in EmbeddedData.regionFiles)
-      {
-         RegionLibrary.parseFromXML(XML(regionXML));
-      }
+      ObjectLibrary.parseFromXML(XML(new EmbeddedData.RegionsCXML()));
    }
 }
 }

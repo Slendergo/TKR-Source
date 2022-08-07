@@ -38,15 +38,20 @@ namespace common.resources
 
         public byte[] ZippedXMLS { get; private set; }
 
-        public XmlData(string dir, bool isFromMetis = false, Action<float, float, string, bool> progress = null)
+        public XElement ObjectCombinedXML = new XElement("Objects");
+        public XElement CombinedXMLPlayers = new XElement("Objects");
+        public XElement GroundCombinedXML = new XElement("Grounds");
+        public XElement SkinsCombinedXML = new XElement("Objects");
+
+        public XmlData(string dir, bool isFromMetis = false, Action<float, float, string, bool> progress = null, bool exportXmls = false)
         {
             if (!isFromMetis) Log.Info("Loading XmlData...");
 
             //Make the list to handle all the xmls
             GameXmls = new ReadOnlyCollection<string>(_gameXmls = new List<string>());
 
-            LoadXmls(dir, "*.xml", isFromMetis, progress);
-            LoadXmls(dir, "*.dat", isFromMetis, progress);
+            LoadXmls(dir, "*.xml", isFromMetis, progress, exportXmls);
+            LoadXmls(dir, "*.dat", isFromMetis, progress, exportXmls);
             
             //zip all the xmls in binary/bytes
             ZippedXMLS = ZipGameXmls();
@@ -62,13 +67,15 @@ namespace common.resources
                 wtr.Write(GameXmls.Count);
                 foreach (var xml in GameXmls)
                     wtr.Write32UTF(xml);
-
                 return ms.ToArray();//Utils.Deflate();
             }
         }
 
-        private void AddGrounds(XElement root) => root.Elements("Ground").Select(e =>
+        private void AddGrounds(XElement root, bool exportXmls = false) => root.Elements("Ground").Select(e =>
         {
+            if (exportXmls)
+                GroundCombinedXML.Add(e);
+
             var id = e.GetAttribute<string>("id");
             var type = e.GetAttribute<ushort>("type");
 
@@ -87,9 +94,19 @@ namespace common.resources
             return e;
         }).ToArray();
 
-        private void AddObjects(XElement root, bool isFromMetis) => root.Elements("Object").Select(e =>
-         {
-             var cls = e.GetValue<string>("Class");
+        private void AddObjects(XElement root, bool isFromMetis, bool exportXmls = false) => root.Elements("Object").Select(e =>
+        {
+            if (exportXmls)
+            {
+                if (e.Element("Player") != null)
+                    CombinedXMLPlayers.Add(e);
+                else if (e.Element("Skin") != null)
+                    SkinsCombinedXML.Add(e);
+                else
+                    ObjectCombinedXML.Add(e);
+            }
+
+            var cls = e.GetValue<string>("Class");
 
 
              if (string.IsNullOrWhiteSpace(cls)) return e;
@@ -202,7 +219,7 @@ namespace common.resources
             }
         }
 
-        private void LoadXmls(string basePath, string ext, bool isFromMetis, Action<float, float, string, bool> progress)
+        private void LoadXmls(string basePath, string ext, bool isFromMetis, Action<float, float, string, bool> progress, bool exportXmls = false)
         {
             var xmls = Directory.EnumerateFiles(basePath, ext, SearchOption.AllDirectories).ToArray();
             var current = 0;
@@ -224,7 +241,7 @@ namespace common.resources
 
                 try
                 {
-                    ProcessXml(XElement.Parse(xml), isFromMetis);
+                    ProcessXml(XElement.Parse(xml), isFromMetis, exportXmls);
                 }
                 catch (Exception e)
                 {
@@ -261,11 +278,11 @@ namespace common.resources
             }
         }
         
-        private void ProcessXml(XElement root, bool isFromMetis)
+        private void ProcessXml(XElement root, bool isFromMetis, bool exportXmls = false)
         {
             AddWorlds(root);
-            AddObjects(root, isFromMetis);
-            if (!isFromMetis) AddGrounds(root);
+            AddObjects(root, isFromMetis, exportXmls);
+            if (!isFromMetis) AddGrounds(root, exportXmls);
         }
     }
 }

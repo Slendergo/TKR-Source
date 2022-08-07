@@ -28,10 +28,10 @@ public class GetServerXmlsTask extends BaseTask {
 
     override protected function startTask() : void
     {
-        this.logger.info("GetServerXMLData start");
-        this.client.setDataFormat(URLLoaderDataFormat.BINARY);
-        this.client.complete.addOnce(this.onComplete);
-        this.client.sendRequest("/char/getServerXmls", null);
+//        this.logger.info("GetServerXMLData start");
+//        this.client.setDataFormat(URLLoaderDataFormat.BINARY);
+//        this.client.complete.addOnce(this.onComplete);
+//        this.client.sendRequest("/char/getServerXmls", null);
     }
 
     private function onComplete(isOK:Boolean, data:*) : void
@@ -57,15 +57,15 @@ public class GetServerXmlsTask extends BaseTask {
     }
 
     private function insertXml(rawXml:String):void {
-        var xml:XML = XML(rawXml);
-        try
-        {
-            GroundLibrary.parseFromXML(xml);
-            ObjectLibrary.parseFromXML(xml, false);
-        }
-        catch (e:*) {
-            logger.error(e);
-        }
+//        var xml:XML = XML(rawXml);
+//        try
+//        {
+//            GroundLibrary.parseFromXML(xml);
+//            ObjectLibrary.parseFromXML(xml, false);
+//        }
+//        catch (e:*) {
+//            logger.error(e);
+//        }
     }
 
     private function onTextError(data:String):void {

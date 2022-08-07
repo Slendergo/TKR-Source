@@ -26,7 +26,7 @@ namespace wServer.core.commands
             protected override bool Process(Player player, TickTime time, string args)
             {
                 player.GameServer.ChatManager.ServerAnnounce(args);
-                return true;w
+                return true;
             }
         }
     }

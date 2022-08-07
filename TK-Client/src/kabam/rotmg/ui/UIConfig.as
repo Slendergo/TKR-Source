@@ -206,7 +206,7 @@ public class UIConfig implements IConfig
       this.startup.addSignal(ShowLoadingUISignal,-1);
       this.startup.addTask(GetCharListTask); // switching those works
       this.startup.addTask(LoadAccountTask);
-      this.startup.addTask(GetServerXmlsTask);
+//      this.startup.addTask(GetServerXmlsTask);
       this.startup.addSignal(ShowTitleUISignal,StartupSequence.LAST);
    }
    private function customUIs():void{

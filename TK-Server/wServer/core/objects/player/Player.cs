@@ -1795,7 +1795,7 @@ namespace wServer.core.objects
                 if (item == null || !item.Legendary && !item.Revenge && !item.Mythical)
                     continue;
 
-                if (item.Mythical || item.Revenge || item.ObjectId == "Possessed Halberd")
+                if (item.Mythical || item.Revenge || item.ObjectId == "Possessed Halberd" || item.ObjectId == "The Horn Breaker")
                     RevengeEffects(item, i);
 
                 if (item.Legendary)

@@ -255,7 +255,11 @@ namespace wServer.networking.connection
             s.BytesSent += e.BytesTransferred;
             s.BytesAvailable -= s.BytesSent;
 
-            StartSendAsync(e);
+            var delay = 0;
+            if (s.BytesAvailable <= 0)
+                delay = 1;
+
+            StartSendAsync(e, delay);
         }
 
         private void SendPolicyFile()
@@ -302,7 +306,7 @@ namespace wServer.networking.connection
                 ProcessReceive(null, e);
         }
 
-        private  void StartSendAsync(SocketAsyncEventArgs e)
+        private async void StartSendAsync(SocketAsyncEventArgs e, int delay = 0)
         {
             if (Client?.State == ProtocolState.Disconnected)
                 return;
@@ -310,6 +314,9 @@ namespace wServer.networking.connection
             try
             {
                 var s = (SendToken)e.UserToken;
+
+                if (delay > 0)
+                    await Task.Delay(delay);
 
                 if (s.BytesAvailable <= 0)
                 {

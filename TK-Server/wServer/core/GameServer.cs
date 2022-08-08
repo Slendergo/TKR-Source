@@ -226,6 +226,49 @@ namespace wServer.core
             Console.WriteLine("[Network] Internal Joined");
             InterServerManager.JoinNetwork();
 
+            //ushort[] nonspecialWeapons = { 0x709, 0xced, 0xb21, 0xcde, 0xc10, 0xcec, 0xc15, 0xc03, 0xc24, 0xcea, 0xc1d, 0xc33, 0x183b, 0xc04, 0xceb, 0xa03, 0xcdb, 0x2303, 0xcdf, 0x6a9, 0x716d, 0xb3f };
+            //ushort[] specialWeapons = { 0xc29, 0xc0a, 0x9d5, 0xc05, 0x915, 0xcdc };
+            //ushort[] nonspecialAbilities = { 0x9ce, 0x8a9, 0xc09, 0xc1e, 0x16de, 0x8a8, 0xa40, 0x0d43, 0x7170, 0xc16, 0x767, 0x911, 0xc1c, 0x132, 0x912, 0xc2a, 0x136, 0x183d };
+            //ushort[] specialAbilities = { 0xa5a, 0xc07, 0xb41, 0xc08, 0xc0f, 0xc06, 0xc6d, 0xc0b, 0x0d42, 0xc30, 0x916 };
+            //ushort[] nonspecialArmors = { 0xa3e, 0xc18, 0xc28, 0x7562, 0xc14, 0xc1f, 0xc32, 0x7563, 0xc61, 0x7564 };
+            //ushort[] specialArmors = { 0xc82, 0xc83, 0xc84, 0x7448, 0xc6e };
+            //ushort[] nonspecialRings = { 0x708, 0xc17, 0xa41, 0xc5f, 0xc27, 0xc20, 0xc13, 0xc31, 0xba1, 0xba2, 0xba0 };
+            //ushort[] specialRings = { 0x7fd2, 0x7fd3, 0x7fd4, 0xbad, 0xbac, 0xbab };
+
+
+            //Console.WriteLine("<ItemPool>");
+            //foreach (var i in nonspecialWeapons)
+            //    Console.WriteLine($"\t<Item weight=\"1\">{Resources.GameData.Items[i].ObjectId}</Item>");
+            //Console.WriteLine("</ItemPool>");
+            //Console.WriteLine("<ItemPool>");
+            //foreach (var i in specialWeapons)
+            //    Console.WriteLine($"\t<Item weight=\"1\">{Resources.GameData.Items[i].ObjectId}</Item>");
+            //Console.WriteLine("</ItemPool>");
+            //Console.WriteLine("<ItemPool>");
+            //foreach (var i in nonspecialAbilities)
+            //    Console.WriteLine($"\t<Item weight=\"1\">{Resources.GameData.Items[i].ObjectId}</Item>");
+            //Console.WriteLine("</ItemPool>");
+            //Console.WriteLine("<ItemPool>");
+            //foreach (var i in specialAbilities)
+            //    Console.WriteLine($"\t<Item weight=\"1\">{Resources.GameData.Items[i].ObjectId}</Item>");
+            //Console.WriteLine("</ItemPool>");
+            //Console.WriteLine("<ItemPool>");
+            //foreach (var i in nonspecialArmors)
+            //    Console.WriteLine($"\t<Item weight=\"1\">{Resources.GameData.Items[i].ObjectId}</Item>");
+            //Console.WriteLine("</ItemPool>");
+            //Console.WriteLine("<ItemPool>");
+            //foreach (var i in specialArmors)
+            //    Console.WriteLine($"\t<Item weight=\"1\">{Resources.GameData.Items[i].ObjectId}</Item>");
+            //Console.WriteLine("</ItemPool>");
+            //Console.WriteLine("<ItemPool>");
+            //foreach (var i in nonspecialRings)
+            //    Console.WriteLine($"\t<Item weight=\"1\">{Resources.GameData.Items[i].ObjectId}</Item>");
+            //Console.WriteLine("</ItemPool>");
+            //Console.WriteLine("<ItemPool>");
+            //foreach (var i in specialRings)
+            //    Console.WriteLine($"\t<Item weight=\"1\">{Resources.GameData.Items[i].ObjectId}</Item>");
+            //Console.WriteLine("</ItemPool>");
+
             LogManager.Configuration.Variables["logDirectory"] = $"{Configuration.serverSettings.logFolder}/wServer";
             LogManager.Configuration.Variables["buildConfig"] = Utils.GetBuildConfiguration();
             AppDomain.CurrentDomain.UnhandledException += (sender, args) =>

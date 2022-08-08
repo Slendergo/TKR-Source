@@ -74,9 +74,9 @@ namespace wServer.logic
         .Init("Hermit Minion",
             new State(
                 new Prioritize(
-                    new Follow(2, 4, 1),
-                    new Orbit(2, 10, 15, "Hermit God", speedVariance: .2, radiusVariance: 1.5),
-                    new Wander(1)
+                    new Follow(1, 4, 1),
+                    new Orbit(3, 10, 15, "Hermit God", speedVariance: .2, radiusVariance: 1.5),
+                    new Wander(0.5)
                     ),
                 new Shoot(6, count: 3, shootAngle: 10, coolDown: 1000),
                 new Shoot(6, count: 2, shootAngle: 20, projectileIndex: 1, coolDown: 2600, predictive: 0.8)
@@ -89,12 +89,12 @@ namespace wServer.logic
                 new State("Attack",
                     new EntityNotExistsTransition("Hermit God", 100, "Die"),
                     new Prioritize(
-                        new Orbit(1, 6, 10, "Hermit God")
+                        new Orbit(3, 6, 10, "Hermit God")
                         ),
-                    new Shoot(0, 1, fixedAngle: 0, rotateAngle: 30, coolDown: 400)
+                    new Shoot(10, 1, fixedAngle: 0, rotateAngle: 30, coolDown: 400)
                     ),
                 new State("Die",
-                    new Shoot(0, 8, fixedAngle: 360 / 8),
+                    new Shoot(3, 8, fixedAngle: 360 / 8),
                     new Suicide()
                     )
                 )
@@ -103,7 +103,7 @@ namespace wServer.logic
             new State(
                 new Prioritize(
                     new Follow(1, 4, 1),
-                    new Orbit(2, 6, 15, "Hermit God", speedVariance: .2, radiusVariance: .5)
+                    new Orbit(3, 6, 15, "Hermit God", speedVariance: .2, radiusVariance: .5)
                     ),
                 new Shoot(3, count: 8, shootAngle: 360 / 8, coolDown: 500)
                 )

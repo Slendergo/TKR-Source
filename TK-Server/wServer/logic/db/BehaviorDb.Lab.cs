@@ -74,8 +74,11 @@ namespace wServer.logic
                     new ReturnToSpawn(speed: 1),
                     new ConditionalEffect(ConditionEffectIndex.Invincible),
                     new SetAltTexture(1),
-
-                    new TimedTransition(15000, "nohide")
+                    new TimedTransition(1000, "hiding")
+                    ),
+                new State("hiding",
+                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new EntitiesNotExistsTransition(30, "nohide", "Dr Terrible Rampage Cyborg", "Dr Terrible Mini Bot", "Dr Terrible Escaped Experiment")
                     ),
                 new State("nohide",
                     new Order(100, "Monster Cage", "no spawn"),
@@ -111,7 +114,11 @@ namespace wServer.logic
                     new ReturnToSpawn(speed: 1),
                     new ConditionalEffect(ConditionEffectIndex.Invincible),
                     new SetAltTexture(1),
-                    new TimedTransition(15000, "nohide2")
+                    new TimedTransition(1000, "hiding2")
+                    ),
+                new State("hiding2",
+                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new EntitiesNotExistsTransition(30, "nohide2", "Dr Terrible Rampage Cyborg", "Dr Terrible Mini Bot", "Dr Terrible Escaped Experiment")
                     ),
                 new State("nohide2",
                     new Order(100, "Monster Cage", "no spawn"),
@@ -147,7 +154,11 @@ namespace wServer.logic
                     new ReturnToSpawn(speed: 1),
                     new ConditionalEffect(ConditionEffectIndex.Invincible),
                     new SetAltTexture(1),
-                    new TimedTransition(15000, "nohide3")
+                    new TimedTransition(1000, "hiding3")
+                    ),
+                new State("hiding3",
+                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new EntitiesNotExistsTransition(30, "nohide3", "Dr Terrible Rampage Cyborg", "Dr Terrible Mini Bot", "Dr Terrible Escaped Experiment")
                     ),
                 new State("nohide3",
                     new Order(100, "Monster Cage", "no spawn"),
@@ -183,7 +194,11 @@ namespace wServer.logic
                     new ReturnToSpawn(speed: 1),
                     new ConditionalEffect(ConditionEffectIndex.Invincible),
                     new SetAltTexture(1),
-                    new TimedTransition(15000, "idle")
+                    new TimedTransition(1000, "hiding4")
+                    ),
+                new State("hiding4",
+                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new EntitiesNotExistsTransition(30, "idle", "Dr Terrible Rampage Cyborg", "Dr Terrible Mini Bot", "Dr Terrible Escaped Experiment")
                     )
                 ),
             new Threshold(0.032,
@@ -227,7 +242,7 @@ namespace wServer.logic
         .Init("Dr Terrible Mini Bot",
             new State(
                 new Wander(0.5),
-                new Shoot(10, 2, 20, angleOffset: 0 / 2, projectileIndex: 0, coolDown: 1000)
+                new Shoot(12, 3, 15, angleOffset: 0 / 2, projectileIndex: 0, coolDown: 800)
                 )
             )
         .Init("Dr Terrible Rampage Cyborg",
@@ -236,8 +251,8 @@ namespace wServer.logic
                     new PlayerWithinTransition(10, "normal"),
                     new State("normal",
                         new Wander(0.5),
-                        new Follow(0.6, range: 1, duration: 5000, coolDown: 0),
-                        new Shoot(10, 1, 0, defaultAngle: 0, angleOffset: 0, projectileIndex: 0, predictive: 1,
+                        new Follow(0.6, range: 5, duration: 5000, coolDown: 0),
+                        new Shoot(10, 2, 0, defaultAngle: 0, angleOffset: 0, projectileIndex: 0, predictive: 1,
                             coolDown: 800, coolDownOffset: 0),
                         new HpLessTransition(.2, "blink"),
                         new TimedTransition(10000, "rage blink")
@@ -245,7 +260,7 @@ namespace wServer.logic
                     new State("rage blink",
                         new Wander(0.5),
                         new Flash(0xf0e68c, flashRepeats: 5, flashPeriod: 0.1),
-                        new Follow(0.6, range: 1, duration: 5000, coolDown: 0),
+                        new Follow(0.6, range: 12, duration: 5000, coolDown: 0),
                         new Shoot(10, 1, 0, defaultAngle: 0, angleOffset: 0, projectileIndex: 1, predictive: 1,
                             coolDown: 800, coolDownOffset: 0),
                         new HpLessTransition(.2, "blink"),
@@ -254,14 +269,14 @@ namespace wServer.logic
                     new State("rage",
                         new Wander(0.5),
                         new Flash(0xf0e68c, flashRepeats: 5, flashPeriod: 0.1),
-                        new Follow(0.6, range: 1, duration: 5000, coolDown: 0),
+                        new Follow(0.6, range: 12, duration: 5000, coolDown: 0),
                         new Shoot(10, 1, 0, defaultAngle: 0, angleOffset: 0, projectileIndex: 1, predictive: 1,
                             coolDown: 800, coolDownOffset: 0),
                         new HpLessTransition(.2, "blink")
                         ),
                     new State("blink",
                         new Wander(0.5),
-                        new Follow(0.6, range: 1, duration: 5000, coolDown: 0),
+                        new Follow(0.6, range: 12, duration: 5000, coolDown: 0),
                         new Flash(0xfFF0000, flashRepeats: 10000, flashPeriod: 0.1),
                         new TimedTransition(2000, "explode")
                         ),
@@ -291,7 +306,7 @@ namespace wServer.logic
                     new PlayerWithinTransition(10, "normal"),
                     new State("normal",
                         new Wander(0.5),
-                        new Follow(0.6, range: 1, duration: 5000, coolDown: 0),
+                        new Follow(0.8, range: 8, duration: 5000, coolDown: 0),
                         new Shoot(10, 1, 0, defaultAngle: 0, angleOffset: 0, projectileIndex: 0, predictive: 1,
                             coolDown: 800, coolDownOffset: 0),
                         new HpLessTransition(.2, "blink"),
@@ -300,7 +315,7 @@ namespace wServer.logic
                     new State("rage blink",
                         new Wander(0.5),
                         new Flash(0xf0e68c, flashRepeats: 5, flashPeriod: 0.1),
-                        new Follow(0.6, range: 1, duration: 5000, coolDown: 0),
+                        new Follow(0.8, range: 8, duration: 5000, coolDown: 0),
                         new Shoot(10, 1, 0, defaultAngle: 0, angleOffset: 0, projectileIndex: 1, predictive: 1,
                             coolDown: 800, coolDownOffset: 0),
                         new HpLessTransition(.2, "blink"),
@@ -309,14 +324,14 @@ namespace wServer.logic
                     new State("rage",
                         new Wander(0.5),
                         new Flash(0xf0e68c, flashRepeats: 5, flashPeriod: 0.1),
-                        new Follow(0.6, range: 1, duration: 5000, coolDown: 0),
+                        new Follow(0.8, range: 8, duration: 5000, coolDown: 0),
                         new Shoot(10, 1, 0, defaultAngle: 0, angleOffset: 0, projectileIndex: 1, predictive: 1,
                             coolDown: 800, coolDownOffset: 0),
                         new HpLessTransition(.2, "blink")
                         ),
                     new State("blink",
                         new Wander(0.5),
-                        new Follow(0.6, range: 1, duration: 5000, coolDown: 0),
+                        new Follow(0.8, range: 8, duration: 5000, coolDown: 0),
                         new Flash(0xfFF0000, flashRepeats: 10000, flashPeriod: 0.1),
                         new TimedTransition(2000, "explode")
                         ),
@@ -332,7 +347,7 @@ namespace wServer.logic
             new State(
                 new Wander(0.5),
                 new Shoot(10, 1, 0, defaultAngle: 0, angleOffset: 0, projectileIndex: 0, predictive: 1,
-                    coolDown: 800, coolDownOffset: 0)
+                    coolDown: 400, coolDownOffset: 0)
                 )
             )
         .Init("West Automated Defense Turret",
@@ -385,7 +400,7 @@ namespace wServer.logic
         .Init("Green Potion",
             new State(
                 new State("Idle",
-                    new TimedTransition(1800, "explode")
+                    new TimedTransition(900, "explode")
                     ),
                 new State("explode",
                     new Shoot(10, count: 12, projectileIndex: 0, fixedAngle: 22.5f),
@@ -443,7 +458,7 @@ namespace wServer.logic
             )
         .Init("Turret Attack",
             new State(
-                new Shoot(10, 2, 20, angleOffset: 0 / 2, projectileIndex: 0, coolDown: 1000)
+                new Shoot(10, 3, 15, angleOffset: 0 / 2, projectileIndex: 0, coolDown: 800)
                 )
             )
         /*.Init("Mad Lab Open Wall",//need fix

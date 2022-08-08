@@ -15,9 +15,9 @@
     <Projectile>
       <ObjectId>Stone Slash</ObjectId>
       <Speed>120</Speed>
-      <MinDamage>500</MinDamage>
-      <MaxDamage>600</MaxDamage>
-      <LifetimeMS>445</LifetimeMS>
+      <MinDamage>450</MinDamage>
+      <MaxDamage>550</MaxDamage>
+      <LifetimeMS>300</LifetimeMS>
     </Projectile>
     <BagType>7</BagType>
     <FameBonus>4</FameBonus>

@@ -1687,4 +1687,22 @@
 		<Static />
 		<Size>100</Size>
 	</Object>
+	<Object type="0xaa20" id="Wind Small Rock">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>customEnvironment1</File>
+			<Index>0x40</Index>
+		</Texture>
+		<Static />
+		<Size>100</Size>
+	</Object>
+	<Object type="0xaa21" id="Wind Small Rock 1">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>customEnvironment1</File>
+			<Index>0x41</Index>
+		</Texture>
+		<Static />
+		<Size>100</Size>
+	</Object>
 </GroundTypes>

@@ -256,22 +256,22 @@ namespace wServer.core
                 },
                 NameOfDeath = "Lord of the Lost Lands"
             }),
-            //Tuple.Create("Hermit God", new TauntData()
-            //{
-            //    Spawn = new string[] {
-            //        ""
-            //    },
-            //    NumberOfEnemies = new string[] {
-            //        ""
-            //    },
-            //    Final = new string[] {
-            //        ""
-            //    },
-            //    Killed = new string[] {
-            //        ""
-            //    },
-            //    NameOfDeath = "Hermit God"
-            //}),
+            Tuple.Create("Hermit God", new TauntData()
+            {
+                Spawn = new string[] {
+                    ""
+                },
+                NumberOfEnemies = new string[] {
+                    ""
+                },
+                Final = new string[] {
+                    ""
+                },
+                Killed = new string[] {
+                    ""
+                },
+                NameOfDeath = "Hermit God"
+            }),
             Tuple.Create("Ghost Ship", new TauntData()
             {
                 Spawn = new string[] {
@@ -437,7 +437,7 @@ namespace wServer.core
             Tuple.Create("Lord of the Lost Lands", (ISetPiece) null),
             Tuple.Create("Ghost Ship", (ISetPiece) new GhostShip()),
             Tuple.Create("Grand Sphinx", (ISetPiece) new Sphinx()),
-            //Tuple.Create("Hermit God", (ISetPiece) new Hermit()),
+            Tuple.Create("Hermit God", (ISetPiece) new Hermit()),
             Tuple.Create("Skull Shrine", (ISetPiece) new SkullShrine()),
             Tuple.Create("Lucky Ent God", (ISetPiece) null),
             Tuple.Create("Lucky Djinn", (ISetPiece) null),

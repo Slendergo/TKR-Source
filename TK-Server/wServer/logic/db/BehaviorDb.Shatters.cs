@@ -2405,7 +2405,7 @@ namespace wServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("shoot",
-                    new Orbit(1, 5, 5, "shtrs The Forgotten King"),
+                    new Orbit(3, 5, 5, "shtrs The Forgotten King"),
                     new Shoot(15, 8, projectileIndex: 0, coolDown: 2000)
                     )
                 )
@@ -2436,7 +2436,7 @@ namespace wServer.logic
                 new State("spawn",
                     new ConditionalEffect(ConditionEffectIndex.Invincible),
                     new Prioritize(
-                        new Orbit(1, 1, 5, "shtrs The Forgotten King", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(3, 1, 5, "shtrs The Forgotten King", speedVariance: .2, radiusVariance: .5)),
                     new TimedTransition(7000, "follow")
                     ),
                 new State("follow",
@@ -2446,7 +2446,7 @@ namespace wServer.logic
                     ),
                 new State("dafuq",
                      new Prioritize(
-                        new Orbit(1.0, 4, 30, "shtrs Crystal Tracker", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(3, 4, 30, "shtrs Crystal Tracker", speedVariance: .2, radiusVariance: .5)),
                     new Follow(1, range: 6),
                     new Follow(1, range: 2, duration: 2000, coolDown: 1500),
                     new TimedTransition(2000, "follow")
@@ -2458,7 +2458,7 @@ namespace wServer.logic
                 new State("spawn",
                     new ConditionalEffect(ConditionEffectIndex.Invincible),
                     new Prioritize(
-                        new Orbit(1, 1, 5, "shtrs The Forgotten King", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(3, 1, 5, "shtrs The Forgotten King", speedVariance: .2, radiusVariance: .5)),
                     new TimedTransition(7000, "follow")
                     ),
                 new State("follow",
@@ -2468,7 +2468,7 @@ namespace wServer.logic
                     ),
                 new State("dafuq",
                      new Prioritize(
-                        new Orbit(1.0, 4, 30, "shtrs Crystal Tracker", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(3, 4, 30, "shtrs Crystal Tracker", speedVariance: .2, radiusVariance: .5)),
                     new Follow(1, range: 6),
                     new Shoot(5, 4, 4, projectileIndex: 0, coolDown: 1000)
                     )
@@ -2485,14 +2485,14 @@ namespace wServer.logic
                 new State("orbit",
                     new TossObject("shtrs Fire Portal", 5, coolDown: 8000),
                      new Prioritize(
-                        new Orbit(1.0, 4, 10, "shtrs Crystal Tracker", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(3, 4, 10, "shtrs Crystal Tracker", speedVariance: .2, radiusVariance: .5)),
                     new Follow(1, range: 6),
                     new Follow(1, range: 6),
                     new TimedTransition(5000, "ThrowPortal")
                     ),
                 new State("ThrowPortal",
                      new Prioritize(
-                        new Orbit(1.0, 4, 10, "shtrs Crystal Tracker", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(3, 4, 10, "shtrs Crystal Tracker", speedVariance: .2, radiusVariance: .5)),
                     new Follow(1, range: 6),
                     new Follow(1, range: 6),
                     new TossObject("shtrs Fire Portal", 5, coolDown: 8000),
@@ -2505,19 +2505,19 @@ namespace wServer.logic
                 new State("spawn",
                     new ConditionalEffect(ConditionEffectIndex.Invincible),
                     new Prioritize(
-                        new Orbit(1, 1, 5, "shtrs The Forgotten King", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(3, 1, 5, "shtrs The Forgotten King", speedVariance: .2, radiusVariance: .5)),
                     new TimedTransition(7000, "orbit")
                     ),
                 new State("orbit",
                     new TossObject("shtrs Ice Portal", 5, coolDown: 8000),
                     new Prioritize(
-                        new Orbit(1.0, 4, 10, "shtrs Crystal Tracker", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(3, 4, 10, "shtrs Crystal Tracker", speedVariance: .2, radiusVariance: .5)),
                     new Follow(0.4, range: 6),
                     new TimedTransition(5000, "ThrowPortal")
                     ),
                 new State("ThrowPortal",
                      new Prioritize(
-                        new Orbit(1.0, 4, 10, "shtrs Crystal Tracker", speedVariance: .2, radiusVariance: .5)),
+                        new Orbit(3, 4, 10, "shtrs Crystal Tracker", speedVariance: .2, radiusVariance: .5)),
                     new Follow(1.4, range: 6),
                     new Follow(1.4, range: 6),
                     new TossObject("shtrs Ice Portal", 5, coolDown: 8000),

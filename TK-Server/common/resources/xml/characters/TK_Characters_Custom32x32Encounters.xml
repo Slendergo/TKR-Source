@@ -122,6 +122,7 @@
     <DisplayId>Mushroom</DisplayId>
     <Quest />
     <God />
+	  <StasisImmune />  
     <Class>Character</Class>
     <AnimatedTexture>
       <File>Custom32x32Encounters</File>

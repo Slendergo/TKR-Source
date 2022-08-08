@@ -45,7 +45,7 @@ namespace wServer.logic
             new State(
                 new State("Orbit Skull Shrine",
                     new Prioritize(
-                        new Orbit(3, 15, 40, "Skull Shrine", .6, 10, orbitClockwise: null),
+                        new Orbit(4, 10, 40, "Skull Shrine", .6, 10, orbitClockwise: null),
                         new Protect(1, "Skull Shrine", 30, 15, 15),
                         new Wander(.4)
                         ),
@@ -60,7 +60,7 @@ namespace wServer.logic
         .Init("Blue Flaming Skull",
             new State(
                 new State("Orbit Skull Shrine",
-                    new Orbit(2, 15, 40, "Skull Shrine", .6, 10, orbitClockwise: null),
+                    new Orbit(4, 10, 40, "Skull Shrine", .6, 10, orbitClockwise: null),
                     new EntityNotExistsTransition("Skull Shrine", 40, "Wander")
                     ),
                 new State("Wander",

@@ -63,4 +63,36 @@
       </Texture>
     </RandomTexture>
   </Object>
+	<Object type="0xaa07" id="Wind Rock 1">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>customEnvironment16x16</File>
+			<Index>0x60</Index>
+		</Texture>
+		<ShadowSize>50</ShadowSize>
+	</Object>
+	<Object type="0xaa08" id="Wind Rock 2">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>customEnvironment16x16</File>
+			<Index>0x61</Index>
+		</Texture>
+		<ShadowSize>50</ShadowSize>
+	</Object>
+	<Object type="0xaa09" id="Wind Rock 3">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>customEnvironment16x16</File>
+			<Index>0x62</Index>
+		</Texture>
+		<ShadowSize>50</ShadowSize>
+	</Object>
+	<Object type="0xaa10" id="Wind Rock 4">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>customEnvironment16x16</File>
+			<Index>0x63</Index>
+		</Texture>
+		<ShadowSize>50</ShadowSize>
+	</Object>
 </Objects>

@@ -572,7 +572,7 @@
       <File>Custom16x16Encounters</File>
       <Index>14</Index>
     </AnimatedTexture>
-    <MaxHitPoints>20000</MaxHitPoints>
+    <MaxHitPoints>85000</MaxHitPoints>
     <Size>150</Size>
     <Projectile id="0">
       <ObjectId>Dark Gray Spinner</ObjectId>

@@ -160,6 +160,7 @@ namespace wServer.logic
             )
         .Init("Yellow Son of Arachna Giant Egg Sac",
             new State(
+                new ScaleHP2(20),
                 new TransformOnDeath("Yellow Egg Summoner"),
                 new State("Spawn",
                     new Spawn("Crawling Green Spider", 2),
@@ -192,6 +193,7 @@ namespace wServer.logic
             )
         .Init("Blue Son of Arachna Giant Egg Sac",
             new State(
+                new ScaleHP2(20),
                 new State("DeathSpawn",
                     new TransformOnDeath("Crawling Spider Hatchling", 5, 7)
                     )
@@ -207,6 +209,7 @@ namespace wServer.logic
             )
         .Init("Red Son of Arachna Giant Egg Sac",
             new State(
+                new ScaleHP2(20),
                 new State("DeathSpawn",
                     new TransformOnDeath("Crawling Red Spotted Spider", 3, 3)
                     )
@@ -222,6 +225,7 @@ namespace wServer.logic
             )
         .Init("Silver Son of Arachna Giant Egg Sac",
             new State(
+                new ScaleHP2(20),
                 new State("DeathSpawn",
                     new TransformOnDeath("Crawling Grey Spider", 3, 3)
                     )

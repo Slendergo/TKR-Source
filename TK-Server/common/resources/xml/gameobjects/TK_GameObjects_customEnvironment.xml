@@ -156,4 +156,58 @@
     </Texture>
     <ShadowSize>50</ShadowSize>
   </Object>
+	<Object type="0xaa01" id="Wind Tile 1">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>customEnvironment1</File>
+			<Index>0x30</Index>
+		</Texture>
+		<DrawOnGround />
+		<Static />
+	</Object>
+	<Object type="0xaa02" id="Wind Tile 2">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>customEnvironment1</File>
+			<Index>0x31</Index>
+		</Texture>
+		<DrawOnGround />
+		<Static />
+	</Object>
+	<Object type="0xaa03" id="Wind Tile 3">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>customEnvironment1</File>
+			<Index>0x32</Index>
+		</Texture>
+		<DrawOnGround />
+		<Static />
+	</Object>
+	<Object type="0xaa04" id="Wind Tile 4">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>customEnvironment1</File>
+			<Index>0x33</Index>
+		</Texture>
+		<DrawOnGround />
+		<Static />
+	</Object>
+	<Object type="0xaa05" id="Wind Tile 5">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>customEnvironment1</File>
+			<Index>0x34</Index>
+		</Texture>
+		<DrawOnGround />
+		<Static />
+	</Object>
+	<Object type="0xaa06" id="Wind Tile 6">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>customEnvironment1</File>
+			<Index>0x35</Index>
+		</Texture>
+		<DrawOnGround />
+		<Static />
+	</Object>
 </Objects>

@@ -185,7 +185,7 @@
 			<Item weight="1">Snake Eye Ring</Item>
 			<Item weight="1">Candy Ring</Item>
 			<Item weight="1">Captain's Ring</Item>
-			<Item weight="1">Ring of Divine Faith</Item>
+			<Item weight="1">Ring of Divine Faith</Item> 
 			<Item weight="1">Coral Ring</Item>
 			<Item weight="1">Experimental Ring</Item>
 			<Item weight="1">Ring of the Nile</Item>
@@ -212,22 +212,26 @@
 	</MiscDust>
 	
 	<PotionDust>
-		<ItemPool> <!-- Non Soul -->
+		<ItemPool> <!-- Non Soul -->n
 			<TieredItem weight="200" tier="1">Potion</TieredItem> <!-- HP/MP -->
 			<TieredItem weight="100" tier="2">Potion</TieredItem> <!-- Regular Stat-->
 			<TieredItem weight="50" tier="3">Potion</TieredItem> <!-- Wines -->
 			<TieredItem weight="25" tier="4">Potion</TieredItem> <!-- Greater Stat -->
 		</ItemPool>
 		<ItemPool> <!-- Soul -->
+			<TieredItem weight="200" tier="1">Potion</TieredItem> <!-- HP/MP -->
+			<TieredItem weight="100" tier="2">Potion</TieredItem> <!-- Regular Stat-->
+			<TieredItem weight="50" tier="3">Potion</TieredItem> <!-- Wines -->
+			<TieredItem weight="25" tier="4">Potion</TieredItem> <!-- Greater Stat -->
 			<Item weight="5">Supreme Potion</Item>
-			<Item weight="100">Soul of Life</Item>
-			<Item weight="100">Soul of Mana</Item>
-			<Item weight="200">Soul of Attack</Item>
-			<Item weight="200">Soul of Defense</Item>
-			<Item weight="300">Soul of Speed</Item>
-			<Item weight="300">Soul of Dexterity</Item>
-			<Item weight="400">Soul of Vitality</Item>
-			<Item weight="400">Soul of Wisdom</Item>
+			<Item weight="10">Soul of Life</Item>
+			<Item weight="10">Soul of Mana</Item>
+			<Item weight="10">Soul of Attack</Item>
+			<Item weight="10">Soul of Defense</Item>
+			<Item weight="10">Soul of Speed</Item>
+			<Item weight="10">Soul of Dexterity</Item>
+			<Item weight="10">Soul of Vitality</Item>
+			<Item weight="10">Soul of Wisdom</Item>
 		</ItemPool>
 	</PotionDust>
 </Dusts>

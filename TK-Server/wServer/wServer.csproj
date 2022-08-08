@@ -166,6 +166,7 @@
     <Compile Include="core\objects\inventory\InventoryItems.cs" />
     <Compile Include="core\objects\inventory\InventoryTransaction.cs" />
     <Compile Include="core\objects\inventory\ItemStacker.cs" />
+    <Compile Include="core\objects\player\Player.State.cs" />
     <Compile Include="core\setpieces\TalismanKing.cs" />
     <Compile Include="utils\ItemUtils.cs" />
     <Compile Include="core\miscfile\thread\TickLoopSingle.cs" />

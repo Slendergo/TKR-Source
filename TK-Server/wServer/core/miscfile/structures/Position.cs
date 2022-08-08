@@ -7,6 +7,8 @@ namespace wServer
     {
         public float X;
         public float Y;
+        public int Hash => ((int)X << 16) | (int)Y;
+        public IntPoint IntPoint => new IntPoint((int) X, (int) Y);
 
         public Position(float x, float y)
         {

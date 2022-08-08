@@ -10,22 +10,22 @@ namespace wServer.core.net.handlers
 
         public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
         {
-            var TickId = rdr.ReadInt32();
-            var Time = rdr.ReadInt32();
-            var NewPosition = Position.Read(rdr);
-            var Records = new TimedPosition[rdr.ReadInt16()];
-            for (var i = 0; i < Records.Length; i++)
-                Records[i] = TimedPosition.Read(rdr);
+            var tickId = rdr.ReadInt32();
+            var time = rdr.ReadInt32();
+            var newPosition = Position.Read(rdr);
+            var moveRecords = new TimedPosition[rdr.ReadInt16()];
+            for (var i = 0; i < moveRecords.Length; i++)
+                moveRecords[i] = TimedPosition.Read(rdr);
 
             var player = client.Player;
 
             if (player == null || player.World == null)
                 return;
 
-            player.MoveReceived(tickTime, Time, TickId);
+            player.MoveReceived(tickTime, time, tickId);
 
-            var newX = NewPosition.X;
-            var newY = NewPosition.Y;
+            var newX = newPosition.X;
+            var newY = newPosition.Y;
 
             if (newX != -1 && newX != player.X || newY != -1 && newY != player.Y)
             {
@@ -37,6 +37,8 @@ namespace wServer.core.net.handlers
 
                 player.Move(newX, newY);
                 player.PlayerUpdate.UpdateTiles = true;
+                if (player.IsNoClipping())
+                    player.Client.Disconnect("No clipping");
             }
         }
     }

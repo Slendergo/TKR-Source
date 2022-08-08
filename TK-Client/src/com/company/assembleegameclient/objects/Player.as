@@ -304,6 +304,7 @@ public class Player extends Character {
         else if (!super.update(time, dt, interpolate)) {
             return false;
         }
+
         if (map_.player_ == this && square_.props_.maxDamage_ > 0 && square_.lastDamage_ + 500 < time && !isInvincible() && (square_.obj_ == null || !square_.obj_.props_.protectFromGroundDamage_)) {
             d = map_.gs_.gsc_.getNextDamage(square_.props_.minDamage_, square_.props_.maxDamage_);
             damage(-1, d, null, hp_ <= d, null);

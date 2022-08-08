@@ -12,9 +12,9 @@ namespace wServer.core
         internal Player Owner;
 
         private const float MaxAttackFreq = 0.008f;
-        private const float MaxAttackMult = 2f;
+        private const float MAX_ATTACK_MULT = 2f;
         private const float MinAttackFreq = 0.0015f;
-        private const float MinAttackMult = 0.5f;
+        private const float MIN_ATTACK_MULT = 0.5f;
 
         private SV<int>[] _stats;
 
@@ -217,13 +217,10 @@ namespace wServer.core
                 return 1;
 
             if (Owner.HasConditionEffect(ConditionEffects.Weak))
-                return MinAttackMult;
-
-            var mult = MinAttackMult + this[2] / 75f * (MaxAttackMult - MinAttackMult);
-
+                return MIN_ATTACK_MULT;
+            var mult = MIN_ATTACK_MULT + this[2] / 75f * (MAX_ATTACK_MULT - MIN_ATTACK_MULT);
             if (Owner.HasConditionEffect(ConditionEffects.Damaging) || Owner.HasConditionEffect(ConditionEffects.NinjaDamaging))
                 mult *= 1.5f;
-
             return mult;
         }
 

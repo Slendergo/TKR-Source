@@ -30,5 +30,7 @@ namespace wServer
         }
 
         public override int GetHashCode() => 31 * X + 17 * Y;
+
+        public override string ToString() => string.Format("{{X: {0}, Y: {1}}}", X, Y);
     }
 }

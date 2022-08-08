@@ -996,6 +996,8 @@ namespace wServer.core.objects
                     _.Client.SendPackets(tpPkts, PacketPriority.Low);
                 }
             });
+
+            PlayerUpdate.UpdateTiles = true;
         }
 
         public override void Tick(TickTime time)

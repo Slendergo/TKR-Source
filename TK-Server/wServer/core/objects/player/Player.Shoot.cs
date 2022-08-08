@@ -20,7 +20,6 @@ namespace wServer.core.objects
         {
             if (World == null || !TileOccupied(RealX, RealY) && !TileFullOccupied(RealX, RealY))
                 return false;
-
             CheatLog.Info($"{Name} is walking on an occupied tile.");
             return true;
         }
@@ -47,7 +46,6 @@ namespace wServer.core.objects
             if (time != _lastShootTime)
             {
                 _lastShootTime = time;
-
                 if (_shotsLeft != 0 && _shotsLeft < item.NumProjectiles)
                 {
                     _shotsLeft = 0;
@@ -67,7 +65,6 @@ namespace wServer.core.objects
                 return PlayerShootStatus.CLIENT_TOO_SLOW;
             if (timeDiff > MaxTimeDiff)
                 return PlayerShootStatus.CLIENT_TOO_FAST;
-
             return PlayerShootStatus.OK;
         }
     }

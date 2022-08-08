@@ -52,7 +52,6 @@
         {
             if (_count < _capacity)
                 return 1;
-
             return (float)_clientElapsed / _serverElapsed;
         }
     }

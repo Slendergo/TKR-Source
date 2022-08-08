@@ -159,6 +159,8 @@
     <Compile Include="core\commands\CommandManager.cs" />
     <Compile Include="core\ConnectionInfo.cs" />
     <Compile Include="core\GameServer.cs" />
+    <Compile Include="core\objects\inventory\ItemDustPools.cs" />
+    <Compile Include="core\objects\inventory\ItemDustWeights.cs" />
     <Compile Include="core\objects\inventory\Inventory.cs" />
     <Compile Include="core\objects\inventory\InventoryChangedEventArgs.cs" />
     <Compile Include="core\objects\inventory\InventoryDatas.cs" />
@@ -568,6 +570,7 @@
     <Compile Include="utils\UnixExitSignal.cs" />
     <Compile Include="utils\SLogger.cs" />
     <Compile Include="logic\db\BehaviorDb.Colosseum.cs" />
+    <Compile Include="utils\WeightedCollection.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\common\common.csproj">

@@ -54,14 +54,6 @@ public class Parameters {
         try {
             savedOptions_ = SharedObject.getLocal("OSGameClientOptions", "/");
             data_ = savedOptions_.data;
-            try
-            {
-                navigateToURL(new URLRequest(File.applicationStorageDirectory.url));
-            }
-            catch(error:*)
-            {
-                trace("AssetLoader Error: " + error);
-            }
         }
         catch (error:Error) {
             trace("WARNING: unable to save settings");

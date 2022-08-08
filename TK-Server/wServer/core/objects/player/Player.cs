@@ -1250,44 +1250,44 @@ namespace wServer.core.objects
 
         private void AnnounceDeath(string killer)
         {
-            var charRank = CheckRankAPI(Client.Player.AccountId, Client.Character.CharId);
+            //var charRank = CheckRankAPI(Client.Player.AccountId, Client.Character.CharId);
             var maxed = GetMaxedStats();
             var deathMessage = Name + " (" + maxed + (UpgradeEnabled ? "/16, " : "/8, ") + Client.Character.Fame + ") has been killed by " + killer + "! ";
-            if (maxed >= 6 && Rank <= 60)
-            {
-                var deathNote = "They were ranked #" + charRank + " on the alive character leaderboards.";
-                deathMessage += deathNote;
-                try
-                {
-                    var discord = World.GameServer.Configuration.discordIntegration;
-                    var players = World.Players.Count(p => p.Value.Client != null);
-                    var builder = discord.MakeDeathAnnounce(
-                        World.GameServer.Configuration.serverInfo,
-                        World.IsRealm ? World.DisplayName : World.IdName,
-                        players,
-                        World.MaxPlayers,
-                        World.InstanceType == WorldResourceInstanceType.Dungeon,
-                        discord.ripIco,
-                        Client.Character.CharId,
-                        Name,
-                        Rank,
-                        Stars,
-                        ObjectDesc.ObjectId,
-                        Level,
-                        Fame,
-                        UpgradeEnabled,
-                        maxed,
-                        killer,
-                        charRank
-                    );
-#pragma warning disable
-                    discord.SendWebhook(discord.webhookDeathEvent, builder.Value);
-#pragma warning restore
-                }catch(Exception ex)
-                {
-                    Console.WriteLine($"[Death] Discord Intergration error");
-                }
-            }
+//            if (maxed >= 6 && Rank <= 60)
+//            {
+//                var deathNote = "They were ranked #" + charRank + " on the alive character leaderboards.";
+//                deathMessage += deathNote;
+//                try
+//                {
+//                    var discord = World.GameServer.Configuration.discordIntegration;
+//                    var players = World.Players.Count(p => p.Value.Client != null);
+//                    var builder = discord.MakeDeathAnnounce(
+//                        World.GameServer.Configuration.serverInfo,
+//                        World.IsRealm ? World.DisplayName : World.IdName,
+//                        players,
+//                        World.MaxPlayers,
+//                        World.InstanceType == WorldResourceInstanceType.Dungeon,
+//                        discord.ripIco,
+//                        Client.Character.CharId,
+//                        Name,
+//                        Rank,
+//                        Stars,
+//                        ObjectDesc.ObjectId,
+//                        Level,
+//                        Fame,
+//                        UpgradeEnabled,
+//                        maxed,
+//                        killer,
+//                        charRank
+//                    );
+//#pragma warning disable
+//                    discord.SendWebhook(discord.webhookDeathEvent, builder.Value);
+//#pragma warning restore
+//                }catch(Exception ex)
+//                {
+//                    Console.WriteLine($"[Death] Discord Intergration error");
+//                }
+//            }
 
             if ((maxed >= 6 || Fame >= 1000) && !Client.Account.Admin)
             {

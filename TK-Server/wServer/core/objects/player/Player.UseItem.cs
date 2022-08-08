@@ -1293,7 +1293,7 @@ namespace wServer.core.objects
         {
             var entity = World.GetEntity(objId);
 
-            var dustItem = World.GameServer.ItemDustWeights.PotionDust.GetRandom(_random);
+            var dustItem = World.GameServer.ItemDustWeights.MiscDust.GetRandom(_random);
             if (entity is Container container)
                 container.Inventory[slot] = dustItem;
             else

@@ -37,6 +37,11 @@ namespace wServer.core.net.handlers.market
 
             var sellerId = db.ResolveId(marketData.SellerName);
             var sellerAcc = db.GetAccount(sellerId);
+            if(sellerAcc == null)
+            {
+                client.Player?.SendError("Unable to find seller.");
+                return;
+            }
 
             CheckRank(sellerAcc);
 

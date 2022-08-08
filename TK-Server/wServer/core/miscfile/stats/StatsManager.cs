@@ -218,6 +218,7 @@ namespace wServer.core
 
             if (Owner.HasConditionEffect(ConditionEffects.Weak))
                 return MIN_ATTACK_MULT;
+
             var mult = MIN_ATTACK_MULT + this[2] / 75f * (MAX_ATTACK_MULT - MIN_ATTACK_MULT);
             if (Owner.HasConditionEffect(ConditionEffects.Damaging) || Owner.HasConditionEffect(ConditionEffects.NinjaDamaging))
                 mult *= 1.5f;

@@ -409,121 +409,102 @@ namespace wServer.core.objects
 
         public void UseItem(TickTime time, int objId, int slot, Position pos, int sellMaxed)
         {
-                //Log.Debug(objId + ":" + slot);
-                var entity = World.GetEntity(objId);
-                if (entity == null)
-                {
-                    Client.SendPacket(new InvResult() { Result = 1 });
-                    return;
-                }
+            //Log.Debug(objId + ":" + slot);
+            var entity = World.GetEntity(objId);
+            if (entity == null)
+            {
+                Client.SendPacket(new InvResult() { Result = 1 });
+                return;
+            }
 
-                if (entity is Player && objId != Id)
-                {
-                    Client.SendPacket(new InvResult() { Result = 1 });
-                    return;
-                }
+            if (entity is Player && objId != Id)
+            {
+                Client.SendPacket(new InvResult() { Result = 1 });
+                return;
+            }
 
-                if (entity is Player && (entity as Player).World is MarketplaceWorld)
-                {
-                    Client.SendPacket(new InvResult() { Result = 1 });
-                    Client.Player.SendError("<Marketplace> Using an Item is restricted in the Marketplace!");
-                    return;
-                }
+            if (entity is Player && (entity as Player).World is MarketplaceWorld)
+            {
+                Client.SendPacket(new InvResult() { Result = 1 });
+                Client.Player.SendError("<Marketplace> Using an Item is restricted in the Marketplace!");
+                return;
+            }
 
-                var container = entity as IContainer;
+            var container = entity as IContainer;
 
-                // eheh no more clearing BBQ loot bags
-                if (this.Dist(entity) > 3)
-                {
-                    Client.SendPacket(new InvResult() { Result = 1 });
-                    return;
-                }
+            // eheh no more clearing BBQ loot bags
+            if (this.Dist(entity) > 3)
+            {
+                Client.SendPacket(new InvResult() { Result = 1 });
+                return;
+            }
 
-                var cInv = container?.Inventory.CreateTransaction();
+            var cInv = container?.Inventory.CreateTransaction();
 
-                // get item
-                Item item = null;
-                foreach (var stack in Stacks.Where(stack => stack.Slot == slot))
-                {
-                    item = stack.Pop();
-
-                    if (item == null)
-                        return;
-
-                    break;
-                }
-                if (item == null)
-                {
-                    if (container == null)
-                        return;
-
-                    item = cInv[slot];
-                }
+            // get item
+            Item item = null;
+            foreach (var stack in Stacks.Where(stack => stack.Slot == slot))
+            {
+                item = stack.Pop();
 
                 if (item == null)
                     return;
 
-                // make sure not trading and trying to cunsume item
-                if (tradeTarget != null && item.Consumable)
+                break;
+            }
+            if (item == null)
+            {
+                if (container == null)
                     return;
-                Player player = this as Player;
-                if (MP < item.MpCost)
-                {
-                    Client.SendPacket(new InvResult() { Result = 1 });
-                    return;
-                }
 
-                // use item
-                var slotType = 10;
-                if (slot < cInv.Length)
-                {
-                    slotType = container.SlotTypes[slot];
+                item = cInv[slot];
+            }
 
-                    if (item.TypeOfConsumable)
+            if (item == null)
+                return;
+
+            // make sure not trading and trying to cunsume item
+            if (tradeTarget != null && item.Consumable)
+                return;
+            Player player = this as Player;
+            if (MP < item.MpCost)
+            {
+                Client.SendPacket(new InvResult() { Result = 1 });
+                return;
+            }
+
+            // use item
+            var slotType = 10;
+            if (slot < cInv.Length)
+            {
+                slotType = container.SlotTypes[slot];
+
+                if (item.TypeOfConsumable)
+                {
+                    var gameData = GameServer.Resources.GameData;
+                    var db = GameServer.Database;
+
+                    if (item.Consumable)
                     {
-                        var gameData = GameServer.Resources.GameData;
-                        var db = GameServer.Database;
+                        Item successor = null;
+                        if (item.SuccessorId != null)
+                            successor = gameData.Items[gameData.IdToObjectType[item.SuccessorId]];
+                        cInv[slot] = successor;
 
-                        if (item.Consumable)
-                        {
-                            Item successor = null;
-                            if (item.SuccessorId != null)
-                                successor = gameData.Items[gameData.IdToObjectType[item.SuccessorId]];
-                            cInv[slot] = successor;
-
-                            var trans = db.Conn.CreateTransaction();
-                            if (container is GiftChest)
-                                if (successor != null)
-                                    db.SwapGift(Client.Account, item.ObjectType, successor.ObjectType, trans);
-                                else
-                                {
-                                    player.SendError("Can't use items if they are in a Gift Chest.");
-                                    return;
-                                }
-                        }
-
-                        if (!Inventory.Execute(cInv)) // can result in the loss of an item if inv trans fails..
-                        {
-                            entity.ForceUpdate(slot);
-                            return;
-                        }
-
-                        if (slotType > 0)
-                        {
-                            FameCounter.UseAbility();
-                        }
-                        else
-                        {
-                            if (item.ActivateEffects.Any(eff => eff.Effect == ActivateEffects.Heal ||
-                                                                eff.Effect == ActivateEffects.HealNova ||
-                                                                eff.Effect == ActivateEffects.Magic ||
-                                                                eff.Effect == ActivateEffects.MagicNova))
+                        var trans = db.Conn.CreateTransaction();
+                        if (container is GiftChest)
+                            if (successor != null)
+                                db.SwapGift(Client.Account, item.ObjectType, successor.ObjectType, trans);
+                            else
                             {
-                                FameCounter.DrinkPot();
+                                player.SendError("Can't use items if they are in a Gift Chest.");
+                                return;
                             }
-                        }
+                    }
 
-                        Activate(time, item, slot, pos, objId, sellMaxed);
+                    if (!Inventory.Execute(cInv)) // can result in the loss of an item if inv trans fails..
+                    {
+                        entity.ForceUpdate(slot);
                         return;
                     }
 
@@ -531,20 +512,39 @@ namespace wServer.core.objects
                     {
                         FameCounter.UseAbility();
                     }
+                    else
+                    {
+                        if (item.ActivateEffects.Any(eff => eff.Effect == ActivateEffects.Heal ||
+                                                            eff.Effect == ActivateEffects.HealNova ||
+                                                            eff.Effect == ActivateEffects.Magic ||
+                                                            eff.Effect == ActivateEffects.MagicNova))
+                        {
+                            FameCounter.DrinkPot();
+                        }
+                    }
+
+                    Activate(time, item, slot, pos, objId, sellMaxed);
+                    return;
                 }
-                else
+
+                if (slotType > 0)
                 {
-                    FameCounter.DrinkPot();
+                    FameCounter.UseAbility();
                 }
+            }
+            else
+            {
+                FameCounter.DrinkPot();
+            }
 
-                //Log.Debug(item.SlotType + ":" + slotType);
-                if (item.InvUse)
-                    Activate(time, item, slot, pos, objId, sellMaxed);
+            //Log.Debug(item.SlotType + ":" + slotType);
+            if (item.InvUse)
+                Activate(time, item, slot, pos, objId, sellMaxed);
 
-                if (item.Consumable || item.SlotType == slotType)
-                    Activate(time, item, slot, pos, objId, sellMaxed);
-                else
-                    Client.SendPacket(new InvResult() { Result = 1 });
+            if (item.Consumable || item.SlotType == slotType)
+                Activate(time, item, slot, pos, objId, sellMaxed);
+            else
+                Client.SendPacket(new InvResult() { Result = 1 });
         }
 
         private static void ActivateHealHp(Player player, int amount)
@@ -2089,7 +2089,7 @@ namespace wServer.core.objects
 
         private void AEVampireBlast(TickTime time, Item item, Position target, ActivateEffect eff)
         {
-            var pkts = new List<OutgoingMessage>
+            var pkts = new List<OutgoingMessage>()
             {
                 new ShowEffect()
                 {
@@ -2114,6 +2114,7 @@ namespace wServer.core.objects
             var totalDmg = 0;
             var effDamage = eff.UseWisMod ? UseWisMod(eff.TotalDamage) : eff.TotalDamage;
             var enemies = new List<Enemy>();
+
             World.AOE(target, eff.Radius, false, enemy =>
             {
                 enemies.Add(enemy as Enemy);

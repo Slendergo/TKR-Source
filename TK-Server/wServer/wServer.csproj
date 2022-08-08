@@ -390,9 +390,6 @@
     <Compile Include="core\net\handlers\ChooseNameHandler.cs" />
     <Compile Include="networking\InboundBuffer.cs" />
     <Compile Include="core\net\handlers\MessageHandlers.cs" />
-    <Compile Include="networking\PacketHandlerBase.cs" />
-    <Compile Include="networking\PacketHandlers.cs" />
-    <Compile Include="networking\PacketPriority.cs" />
     <Compile Include="core\net\handlers\PotionStorageInteractionHandler.cs" />
     <Compile Include="core\net\handlers\CreateMessageHandler.cs" />
     <Compile Include="core\net\handlers\CreateGuildHandler.cs" />
@@ -474,7 +471,6 @@
     <Compile Include="networking\packets\outgoing\TradeRequested.cs" />
     <Compile Include="networking\packets\outgoing\TradeStart.cs" />
     <Compile Include="networking\packets\outgoing\Update.cs" />
-    <Compile Include="networking\packets\Packet.cs" />
     <Compile Include="networking\packets\PacketIds.cs" />
     <Compile Include="networking\ProtocolState.cs" />
     <Compile Include="networking\RSA.cs" />

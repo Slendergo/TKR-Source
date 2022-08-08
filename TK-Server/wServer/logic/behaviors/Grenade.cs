@@ -36,7 +36,7 @@ namespace wServer.logic.behaviors
 
         protected override void TickCore(Entity host, TickTime time, ref object state)
         {
-            var pkts = new List<Packet>();
+            var pkts = new List<OutgoingMessage>();
             var cool = (int)state;
 
             if (cool <= 0)

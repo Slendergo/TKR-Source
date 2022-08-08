@@ -1466,7 +1466,7 @@ namespace wServer.core.objects
                     SonicBlaster(i);
                 }
             }
-            var pkts = new List<Packet>();
+            var pkts = new List<OutgoingMessage>();
             var healthAmount = eff.Amount;
             //if (BigSkill10)
             //    healthAmount = 75 * healthAmount / 100;

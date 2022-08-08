@@ -89,8 +89,8 @@ namespace wServer.core.setpieces
 
             for (var i = 0; i < rotation; i++)
             {
-                t = SetPieces.rotateCW(t);
-                o = SetPieces.rotateCW(o);
+                t = SetPieces.RotateCW(t);
+                o = SetPieces.RotateCW(o);
             }
 
             Render(this, world, pos, t, o);

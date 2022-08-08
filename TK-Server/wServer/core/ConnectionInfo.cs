@@ -9,11 +9,15 @@ namespace wServer.core
 {
     public class ConnectionInfo : IEquatable<ConnectionInfo>
     {
-        public DbAccount Account;
-        public Client Client;
-        public string GUID;
-        public byte[] Key;
-        public string MapInfo;
+        public int GameId { get; }
+        public bool Reconnecting { get; }
+        public long Time { get; }
+
+        public DbAccount Account { get; }
+        public Client Client { get; }
+        public string GUID { get; }
+        public byte[] Key { get; }
+        public string MapInfo { get; }
 
         public ConnectionInfo(Client client, HelloData data)
         {
@@ -27,13 +31,9 @@ namespace wServer.core
             Time = DateTime.UtcNow.ToUnixTimestamp();
         }
 
-        public int GameId { get; }
-        public bool Reconnecting { get; }
-        public long Time { get; }
-
         public bool Equals(ConnectionInfo other) => GUID.Equals(other.GUID);
 
-        public override bool Equals(object obj) => obj == null ? false : obj is ConnectionInfo p ? Equals(p) : false;
+        public override bool Equals(object obj) => obj != null && obj is ConnectionInfo p && Equals(p);
 
         public override int GetHashCode() => GUID.GetHashCode();
     }

@@ -365,7 +365,7 @@ namespace wServer.core.worlds
             if (Map == null)
             {
                 Map = new Wmap(this);
-                Interlocked.Add(ref NextEntityId, Map.Load(dTiles, NextEntityId));
+                Interlocked.Add(ref NextEntityId, Map.Load(ref dTiles, NextEntityId));
             }
             else
                 Map.ResetTiles();

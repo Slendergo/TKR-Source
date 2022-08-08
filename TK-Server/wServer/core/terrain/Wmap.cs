@@ -203,7 +203,7 @@ namespace wServer.core.terrain
             }
         }
 
-        public int Load(DungeonTile[,] tiles, int idBase)
+        public int Load(ref DungeonTile[,] tiles, int idBase)
         {
             Width = tiles.GetLength(0);
             Height = tiles.GetLength(1);
@@ -307,7 +307,6 @@ namespace wServer.core.terrain
             {
                 if (!world.Map.Contains((int)e.X, (int)e.Y))
                     continue;
-
                 world.EnterWorld(e);
             }
         }
@@ -315,14 +314,11 @@ namespace wServer.core.terrain
         public void ResetTiles()
         {
             Regions.Clear();
-
             for (var y = 0; y < Height; y++)
                 for (var x = 0; x < Width; x++)
                 {
                     var t = Tiles[x, y];
-
                     t.Reset();
-
                     if (t.Region != 0)
                         Regions.Add(new IntPoint(x, y), t.Region);
                 }

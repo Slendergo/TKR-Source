@@ -10,13 +10,6 @@ namespace terrain
 {
     public static class Json2Wmap
     {
-        public static void Convert(XmlData data, string from, string to)
-        {
-            var x = Convert(data, File.ReadAllText(from));
-
-            File.WriteAllBytes(to, x);
-        }
-
         public static byte[] Convert(XmlData data, string json)
         {
             var obj = JsonConvert.DeserializeObject<json_dat>(json);

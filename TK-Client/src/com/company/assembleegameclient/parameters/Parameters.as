@@ -10,7 +10,7 @@ import flash.net.navigateToURL;
 import flash.utils.Dictionary;
 
 public class Parameters {
-    public static const BUILD_VERSION:String = "1.1.1";
+    public static const BUILD_VERSION:String = "1.2.0";
     public static const MINOR_VERSION:String = "";
     public static const ENABLE_ENCRYPTION:Boolean = false;
     public static const PORT:int = 2050;

@@ -21,8 +21,8 @@ public class ApplicationConfig implements IConfig {
 
     public function configure():void {
         var _local1:ApplicationSetup;
-        _local1 = new LocalhostSetup();
 
+        _local1 = new LocalhostSetup();
         if(Capabilities.playerType == "Desktop" || this.loaderInfo.parameters["build"] == "release")
             _local1 = new ReleaseSetup();
 

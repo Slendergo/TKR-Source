@@ -425,7 +425,6 @@ public class Options extends Sprite
    private function addHotKeys2Options() : void
    {
       this.addOption(new KeyMapper("reconGuildHall","Recon Guild Hall","Allows you to reconnect to the Guild Hall!"));
-      this.addOption(new KeyMapper("reconCloth","Recon Cloth Bazaar","Allows you to reconnect to the Cloth Bazaar!"));
       this.addOption(new KeyMapper("reconVault","Recon Vault","Allows you to reconnect to Vault!"));
       this.addOption(new KeyMapper("reconRealm","Recon Realm","Allows you to reconnect to Realm!"));
       this.addOption(new KeyMapper("reconMarket","Recon Market","Allows you to reconnect to the Market!"));

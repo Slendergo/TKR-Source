@@ -111,8 +111,8 @@ namespace wServer.core
             }
             else
             {
-                if (gameId != World.Test)
-                    gameId = World.Nexus;
+                if (gameId != World.TEST_ID)
+                    gameId = World.NEXUS_ID;
             }
 
             if (!client.GameServer.Database.AcquireLock(acc))
@@ -151,7 +151,7 @@ namespace wServer.core
                     Name = "*Error*",
                     Txt = "World does not exist."
                 });
-                world = client.GameServer.WorldManager.GetWorld(World.Nexus);
+                world = client.GameServer.WorldManager.GetWorld(World.NEXUS_ID);
             }
 
             if (world is TestWorld && !acc.Admin)

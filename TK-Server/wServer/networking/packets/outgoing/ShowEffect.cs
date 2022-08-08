@@ -14,11 +14,6 @@ namespace wServer.networking.packets.outgoing
 
         public override PacketId MessageId => PacketId.SHOWEFFECT;
 
-        public override Packet CreateInstance()
-        {
-            return new ShowEffect();
-        }
-
         protected override void Write(NWriter wtr)
         {
             wtr.Write((byte)EffectType);

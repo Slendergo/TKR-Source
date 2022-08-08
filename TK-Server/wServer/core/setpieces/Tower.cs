@@ -49,19 +49,19 @@ namespace wServer.core.setpieces
                 for (var x = 0; x < 14; x++)
                     t[x, y] = q[x, y];
 
-            q = SetPieces.reflectHori(q);           //Top right
+            q = SetPieces.ReflectHorizontal(q);           //Top right
 
             for (var y = 0; y < 14; y++)
                 for (var x = 0; x < 14; x++)
                     t[13 + x, y] = q[x, y];
 
-            q = SetPieces.reflectVert(q);           //Bottom right
+            q = SetPieces.ReflectVertical(q);           //Bottom right
 
             for (var y = 0; y < 14; y++)
                 for (var x = 0; x < 14; x++)
                     t[13 + x, 13 + y] = q[x, y];
 
-            q = SetPieces.reflectHori(q);           //Bottom left
+            q = SetPieces.ReflectHorizontal(q);           //Bottom left
 
             for (var y = 0; y < 14; y++)
                 for (var x = 0; x < 14; x++)
@@ -76,7 +76,7 @@ namespace wServer.core.setpieces
             var r = rand.Next(0, 4);                //Rotation
 
             for (var i = 0; i < r; i++)
-                t = SetPieces.rotateCW(t);
+                t = SetPieces.RotateCW(t);
 
             t[13, 13] = 3;
 

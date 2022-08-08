@@ -19,12 +19,6 @@ namespace wServer.networking.packets.outgoing
 
         public override PacketId MessageId => PacketId.BUYRESULT;
 
-        public override Packet CreateInstance()
-        {
-            return new BuyResult();
-        }
-
-
         protected override void Write(NWriter wtr)
         {
             wtr.Write(Result);

@@ -344,7 +344,7 @@ namespace wServer.core.objects
             _stateEntry = true;
         }
 
-        public virtual void Tick(TickTime time)
+        public virtual void Tick(ref TickTime time)
         {
             if (this == null || this is Projectile || World == null)
                 return;

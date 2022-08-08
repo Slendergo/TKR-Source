@@ -15,11 +15,6 @@ namespace wServer.networking.packets.outgoing
 
         public override PacketId MessageId => PacketId.AOE;
 
-        public override Packet CreateInstance()
-        {
-            return new Aoe();
-        }
-
         protected override void Write(NWriter wtr)
         {
             Pos.Write(wtr);

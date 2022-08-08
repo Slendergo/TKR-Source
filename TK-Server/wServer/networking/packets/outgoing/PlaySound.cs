@@ -9,11 +9,6 @@ namespace wServer.networking.packets.outgoing
 
         public override PacketId MessageId => PacketId.PLAYSOUND;
 
-        public override Packet CreateInstance()
-        {
-            return new PlaySound();
-        }
-
         protected override void Write(NWriter wtr)
         {
             wtr.Write(OwnerId);

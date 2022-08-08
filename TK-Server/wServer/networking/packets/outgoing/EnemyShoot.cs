@@ -15,11 +15,6 @@ namespace wServer.networking.packets.outgoing
 
         public override PacketId MessageId => PacketId.ENEMYSHOOT;
 
-        public override Packet CreateInstance()
-        {
-            return new EnemyShoot();
-        }
-
         protected override void Write(NWriter wtr)
         {
             wtr.Write(BulletId);

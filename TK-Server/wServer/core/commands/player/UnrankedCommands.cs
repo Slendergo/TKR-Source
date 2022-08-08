@@ -664,25 +664,6 @@ namespace wServer.core.commands
         }
     }
 
-    internal class ClothBazaarCommand : Command
-    {
-        public ClothBazaarCommand() : base("clothbazaar")
-        {
-        }
-
-        protected override bool Process(Player player, TickTime time, string args)
-        {
-            player.Client.Reconnect(new Reconnect()
-            {
-                Host = "",
-                Port = player.GameServer.Configuration.serverInfo.port,
-                GameId = World.ClothBazaar,
-                Name = "Cloth Bazaar"
-            });
-            return true;
-        }
-    }
-
     internal class GCommand : Command
     {
         public GCommand() : base("g", alias: "guild")
@@ -1173,44 +1154,9 @@ namespace wServer.core.commands
             {
                 Host = "",
                 Port = player.GameServer.Configuration.serverInfo.port,
-                GameId = World.Nexus,
+                GameId = World.NEXUS_ID,
                 Name = "Nexus"
             });
-            return true;
-        }
-    }
-
-    internal class PauseCommand : Command
-    {
-        public PauseCommand() : base("pause")
-        {
-        }
-
-        protected override bool Process(Player player, TickTime time, string args)
-        {
-            if (player.HasConditionEffect(ConditionEffects.Paused))
-            {
-                player.ApplyConditionEffect(new ConditionEffect()
-                {
-                    Effect = ConditionEffectIndex.Paused,
-                    DurationMS = 0
-                });
-                player.SendInfo("Game resumed.");
-                return true;
-            }
-
-            if (!(player.World is VaultWorld) || !(player.World is NexusWorld) || !(player.World.InstanceType == WorldResourceInstanceType.Guild) || !(player.World is MarketplaceWorld) || !(player.World.Id != World.ClothBazaar))
-            {
-                player.SendError("Not safe to pause.");
-                return false;
-            }
-
-            player.ApplyConditionEffect(new ConditionEffect()
-            {
-                Effect = ConditionEffectIndex.Paused,
-                DurationMS = -1
-            });
-            player.SendInfo("Game paused.");
             return true;
         }
     }

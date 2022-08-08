@@ -62,7 +62,7 @@ namespace wServer.core.setpieces
             var r = rand.Next(0, 4);            //Rotation
 
             for (int i = 0; i < r; i++)
-                p = SetPieces.rotateCW(p);
+                p = SetPieces.RotateCW(p);
 
             p[20, 20] = 2;
 

@@ -80,7 +80,7 @@ namespace wServer.core.setpieces
             var rotation = rand.Next(0, 4);                 //Rotation
 
             for (var i = 0; i < rotation; i++)
-                t = SetPieces.rotateCW(t);
+                t = SetPieces.RotateCW(t);
 
             w = t.GetLength(0); h = t.GetLength(1);
 

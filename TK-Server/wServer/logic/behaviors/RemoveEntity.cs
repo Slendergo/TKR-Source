@@ -27,7 +27,7 @@ namespace wServer.logic.behaviors
                 foreach (var entity in host.GetNearestEntitiesByName(dist, children).OfType<Enemy>())
                 {
                     entity.Spawned = true;
-                    entity.Death(time);
+                    entity.Death(ref time);
                     killed++;
                 }
             }

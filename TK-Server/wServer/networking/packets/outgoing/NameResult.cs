@@ -9,11 +9,6 @@ namespace wServer.networking.packets.outgoing
 
         public override PacketId MessageId => PacketId.NAMERESULT;
 
-        public override Packet CreateInstance()
-        {
-            return new NameResult();
-        }
-
         protected override void Write(NWriter wtr)
         {
             wtr.Write(Success);

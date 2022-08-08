@@ -11,11 +11,6 @@ namespace wServer.networking.packets.outgoing
 
         public override PacketId MessageId => PacketId.NOTIFICATION;
 
-        public override Packet CreateInstance()
-        {
-            return new Notification();
-        }
-
         protected override void Write(NWriter wtr)
         {
             wtr.Write(ObjectId);

@@ -28,7 +28,7 @@ namespace wServer.core.net.handlers
 
             if (!player.GameServer.Resources.GameData.Items.TryGetValue(ContainerType, out var item))
             {
-                player.DropNextRandom();
+                //player.DropNextRandom();
                 return;
             }
 
@@ -39,8 +39,8 @@ namespace wServer.core.net.handlers
             var result = player.ValidatePlayerShoot(item, Time);
             if (result != PlayerShootStatus.OK)
             {
-                //CheatLog.Info($"PlayerShoot validation failure ({player.Name}:{player.AccountId}): {result}");
-                player.DropNextRandom();
+                //System.Console.WriteLine($"PlayerShoot validation failure ({player.Name}:{player.AccountId}): {result}");
+                //player.DropNextRandom();
                 return;
             }
 

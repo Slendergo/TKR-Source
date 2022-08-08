@@ -4,15 +4,13 @@ using common.isc;
 using common.resources;
 using NLog;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using wServer.core.commands;
+using wServer.core.objects.inventory;
 using wServer.core.objects.vendors;
 using wServer.logic;
 using wServer.logic.loot;
@@ -26,6 +24,7 @@ namespace wServer.core
         public string InstanceId { get; private set; }
         public ServerConfig Configuration { get; private set; }
         public Resources Resources { get; private set; }
+        public ItemDustWeights ItemDustWeights { get; private set; }
         public Database Database { get; private set; }
         public MarketSweeper MarketSweeper { get; private set; }
         public ConnectionManager ConnectionManager { get; private set; }
@@ -37,6 +36,7 @@ namespace wServer.core
         public ISManager InterServerManager { get; private set; }
         public WorldManager WorldManager { get; private set; }
         public SignalListener SignalListener { get; private set; }
+
         private bool Running { get; set; } = true;
 
         public DateTime RestartCloseTime { get; private set; }
@@ -48,6 +48,7 @@ namespace wServer.core
 
             Configuration = ServerConfig.ReadFile(args.Length == 1 ? args[0] : "wServer.json");
             Resources = new Resources(Configuration.serverSettings.resourceFolder, true, null, ExportXMLS);
+            ItemDustWeights = new ItemDustWeights(this);
             Database = new Database(Resources, Configuration);
             MarketSweeper = new MarketSweeper(Database);
             ConnectionManager = new ConnectionManager(this);
@@ -91,6 +92,9 @@ namespace wServer.core
 
             InstanceId = Configuration.serverInfo.instanceId = Guid.NewGuid().ToString();
             Console.WriteLine($"[Set] InstanceId [{InstanceId}]");
+
+            Console.WriteLine("[Initialize] ItemDustWeights");
+            ItemDustWeights.Initialize();
 
             Console.WriteLine("[Initialize] CommandManager");
             CommandManager.Initialize(this);

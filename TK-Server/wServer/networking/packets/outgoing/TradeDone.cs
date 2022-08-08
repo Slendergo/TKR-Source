@@ -9,11 +9,6 @@ namespace wServer.networking.packets.outgoing
 
         public override PacketId MessageId => PacketId.TRADEDONE;
 
-        public override Packet CreateInstance()
-        {
-            return new TradeDone();
-        }
-
         protected override void Write(NWriter wtr)
         {
             wtr.Write(Code);

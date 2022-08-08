@@ -4,8 +4,6 @@ namespace wServer.networking.packets.outgoing.market
 {
     public class MarketAddResult : OutgoingMessage
     {
-        public override Packet CreateInstance() => new MarketAddResult();
-
         public override PacketId MessageId => PacketId.MARKET_ADD_RESULT;
 
         public const int INVALID_UPTIME = 0;

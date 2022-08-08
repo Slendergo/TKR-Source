@@ -11,7 +11,7 @@ namespace wServer.logic.behaviors
             if (!(host is Enemy))
                 throw new NotSupportedException("Use Decay instead");
 
-            (host as Enemy).Death(time);
+            (host as Enemy).Death(ref time);
         }
     }
 }

@@ -9,11 +9,6 @@ namespace wServer.networking.packets.outgoing
 
         public override PacketId MessageId => PacketId.ACCOUNTLIST;
 
-        public override Packet CreateInstance()
-        {
-            return new AccountList();
-        }
-
         protected override void Write(NWriter wtr)
         {
             wtr.Write(AccountListId);

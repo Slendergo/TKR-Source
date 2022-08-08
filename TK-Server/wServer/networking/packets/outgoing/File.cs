@@ -9,11 +9,6 @@ namespace wServer.networking.packets.outgoing
 
         public override PacketId MessageId => PacketId.FILE;
 
-        public override Packet CreateInstance()
-        {
-            return new File();
-        }
-
         protected override void Write(NWriter wtr)
         {
             wtr.WriteUTF(Name);

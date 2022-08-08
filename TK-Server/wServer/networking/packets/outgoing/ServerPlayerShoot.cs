@@ -13,11 +13,6 @@ namespace wServer.networking.packets.outgoing
 
         public override PacketId MessageId => PacketId.SERVERPLAYERSHOOT;
 
-        public override Packet CreateInstance()
-        {
-            return new ServerPlayerShoot();
-        }
-
         protected override void Write(NWriter wtr)
         {
             wtr.Write(BulletId);

@@ -30,8 +30,8 @@ namespace common.resources
         public Dictionary<ushort, string> TileTypeToId = new Dictionary<ushort, string>();
         private readonly Dictionary<string, WorldResource> Worlds = new Dictionary<string, WorldResource>();
         private readonly Dictionary<string, byte[]> WorldDataCache = new Dictionary<string, byte[]>();
-
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+        public ItemDusts ItemDusts { get; private set; }
 
         private readonly List<string> _gameXmls;
         public IList<string> GameXmls { get; }
@@ -280,6 +280,12 @@ namespace common.resources
         
         private void ProcessXml(XElement root, bool isFromMetis, bool exportXmls = false)
         {
+            if(root.Name.LocalName == "Dusts") 
+            {
+                ItemDusts = new ItemDusts(root);
+                return;
+            } 
+
             AddWorlds(root);
             AddObjects(root, isFromMetis, exportXmls);
             if (!isFromMetis) AddGrounds(root, exportXmls);

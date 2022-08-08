@@ -8,11 +8,6 @@ namespace wServer.networking.packets.outgoing
 
         public override PacketId MessageId => PacketId.INVRESULT;
 
-        public override Packet CreateInstance()
-        {
-            return new InvResult();
-        }
-
         protected override void Write(NWriter wtr)
         {
             wtr.Write(Result);

@@ -11,10 +11,10 @@ namespace wServer.core
         internal BoostStatManager Boost;
         internal Player Owner;
 
-        private const float MaxAttackFreq = 0.008f;
-        private const float MaxAttackMult = 2f;
-        private const float MinAttackFreq = 0.0015f;
-        private const float MinAttackMult = 0.5f;
+        private const float MAX_ATTACK_FREQ = 0.008f;
+        private const float MAX_ATTACK_MULT = 2f;
+        private const float MIN_ATTACK_FREQ = 0.0015f;
+        private const float MIN_ATTACK_MULT = 0.5f;
 
         private SV<int>[] _stats;
 
@@ -201,9 +201,9 @@ namespace wServer.core
         public float GetAttackFrequency()
         {
             if (Owner.HasConditionEffect(ConditionEffects.Dazed))
-                return MinAttackFreq;
+                return MIN_ATTACK_FREQ;
 
-            var rof = MinAttackFreq + this[5] / 75f * (MaxAttackFreq - MinAttackFreq);
+            var rof = MIN_ATTACK_FREQ + this[5] / 75f * (MAX_ATTACK_FREQ - MIN_ATTACK_FREQ);
 
             if (Owner.HasConditionEffect(ConditionEffects.Berserk) || Owner.HasConditionEffect(ConditionEffects.NinjaBerserk))
                 rof *= 1.5f;
@@ -217,13 +217,11 @@ namespace wServer.core
                 return 1;
 
             if (Owner.HasConditionEffect(ConditionEffects.Weak))
-                return MinAttackMult;
+                return MIN_ATTACK_MULT;
 
-            var mult = MinAttackMult + this[2] / 75f * (MaxAttackMult - MinAttackMult);
-
+            var mult = MIN_ATTACK_MULT + this[2] / 75f * (MAX_ATTACK_MULT - MIN_ATTACK_MULT);
             if (Owner.HasConditionEffect(ConditionEffects.Damaging) || Owner.HasConditionEffect(ConditionEffects.NinjaDamaging))
                 mult *= 1.5f;
-
             return mult;
         }
 

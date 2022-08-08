@@ -14,11 +14,6 @@ namespace wServer.networking.packets.outgoing
 
         public override PacketId MessageId => PacketId.RECONNECT;
 
-        public override Packet CreateInstance()
-        {
-            return new Reconnect();
-        }
-
         public Reconnect()
         {
             Key = Guid.NewGuid().ToByteArray();

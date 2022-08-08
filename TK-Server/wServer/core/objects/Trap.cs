@@ -26,7 +26,7 @@ namespace wServer.core.objects
             duration = (int)(effDuration * 1000);
         }
 
-        public override void Tick(TickTime time)
+        public override void Tick(ref TickTime time)
         {
             if (t / 500 == p)
             {
@@ -56,7 +56,7 @@ namespace wServer.core.objects
             if (monsterNearby)
                 Explode(time);
 
-            base.Tick(time);
+            base.Tick(ref time);
         }
 
         private void Explode(TickTime time)

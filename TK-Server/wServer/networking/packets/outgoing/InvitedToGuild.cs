@@ -9,11 +9,6 @@ namespace wServer.networking.packets.outgoing
 
         public override PacketId MessageId => PacketId.INVITEDTOGUILD;
 
-        public override Packet CreateInstance()
-        {
-            return new InvitedToGuild();
-        }
-
         protected override void Write(NWriter wtr)
         {
             wtr.WriteUTF(Name);

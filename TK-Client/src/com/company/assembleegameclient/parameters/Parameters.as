@@ -54,14 +54,6 @@ public class Parameters {
         try {
             savedOptions_ = SharedObject.getLocal("OSGameClientOptions", "/");
             data_ = savedOptions_.data;
-            try
-            {
-                navigateToURL(new URLRequest(File.applicationStorageDirectory.url));
-            }
-            catch(error:*)
-            {
-                trace("AssetLoader Error: " + error);
-            }
         }
         catch (error:Error) {
             trace("WARNING: unable to save settings");
@@ -110,7 +102,6 @@ public class Parameters {
         setDefaultKey("reconMarket", KeyCodes.UNSET);
         setDefaultKey("reconVault", KeyCodes.UNSET);
         setDefaultKey("reconRealm", KeyCodes.UNSET);
-        setDefaultKey("reconCloth", KeyCodes.UNSET);
         setDefaultKey("moveLeft", KeyCodes.A);
         setDefaultKey("moveRight", KeyCodes.D);
         setDefaultKey("moveUp", KeyCodes.W);

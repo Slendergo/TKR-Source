@@ -16,7 +16,7 @@ namespace wServer.core.net.handlers
 
             var map = client.Player.World;
 
-            if (map.Id == World.Nexus)
+            if (map.Id == World.NEXUS_ID)
             {
                 client.Disconnect("Already in Nexus!");
                 return;
@@ -26,7 +26,7 @@ namespace wServer.core.net.handlers
             {
                 Host = "",
                 Port = client.GameServer.Configuration.serverInfo.port,
-                GameId = World.Nexus,
+                GameId = World.NEXUS_ID,
                 Name = "Nexus"
             });
         }

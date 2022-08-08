@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Xml.Linq;
 using wServer.core.worlds;
 using wServer.core.worlds.logic;
 
@@ -14,19 +13,18 @@ namespace wServer.core
 {
     public sealed class WorldManager
     {
-        public GameServer GameServer;
+        public GameServer GameServer { get; private set; }
 
         private int NextWorldId = 0;
 
-        private readonly ConcurrentDictionary<int, TickThreadSingle> Threads = new ConcurrentDictionary<int, TickThreadSingle>();
-
-        public NexusWorld Nexus => (Worlds[-2] as NexusWorld);
-        public TestWorld Test => (Worlds[-6] as TestWorld);
+        public NexusWorld Nexus => Worlds[-2] as NexusWorld;
+        public TestWorld Test => Worlds[-6] as TestWorld;
 
         private readonly ConcurrentDictionary<int, World> Worlds = new ConcurrentDictionary<int, World>();
         private readonly ConcurrentDictionary<int, VaultWorld> Vaults = new ConcurrentDictionary<int, VaultWorld>();
         private readonly ConcurrentDictionary<int, World> Guilds = new ConcurrentDictionary<int, World>();
         private readonly ConcurrentDictionary<int, int> WorldToGuildId = new ConcurrentDictionary<int, int>();
+        private readonly ConcurrentDictionary<int, TickThreadSingle> Threads = new ConcurrentDictionary<int, TickThreadSingle>();
 
         public IEnumerable<World> GetWorlds() => Worlds.Values;
 
@@ -37,10 +35,8 @@ namespace wServer.core
 
         public void Initialize()
         {
-            var nexus = CreateNewWorld("Nexus", -2, null);
+            CreateNewWorld("Nexus", -2, null);
             CreateNewTest();
-
-            // todo async creation system
 
             for(var i = 0; i < GameServer.Configuration.serverSettings.realms; i++)
                 Nexus.PortalMonitor.CreateNewRealm();

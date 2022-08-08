@@ -1,0 +1,233 @@
+﻿<Dusts>
+	<ItemDust>
+		
+		<!-- Tiered Weapons-->
+		<ItemPool>
+			<TieredItem weight="650" tier="0">Weapon</TieredItem>
+			<TieredItem weight="600" tier="1">Weapon</TieredItem>
+			<TieredItem weight="550" tier="2">Weapon</TieredItem>
+			<TieredItem weight="500" tier="3">Weapon</TieredItem>
+			<TieredItem weight="450" tier="4">Weapon</TieredItem>
+			<TieredItem weight="400" tier="5">Weapon</TieredItem>
+			<TieredItem weight="350" tier="6">Weapon</TieredItem>
+			<TieredItem weight="300" tier="7">Weapon</TieredItem>
+			<TieredItem weight="250" tier="8">Weapon</TieredItem>
+			<TieredItem weight="200" tier="9">Weapon</TieredItem>
+			<TieredItem weight="150" tier="10">Weapon</TieredItem>
+			<TieredItem weight="100" tier="11">Weapon</TieredItem>
+			<TieredItem weight="50" tier="12">Weapon</TieredItem>
+		</ItemPool>
+		
+		<!-- Tiered Armours -->
+		<ItemPool>
+			<TieredItem weight="650" tier="0">Armor</TieredItem>
+			<TieredItem weight="600" tier="1">Armor</TieredItem>
+			<TieredItem weight="550" tier="2">Armor</TieredItem>
+			<TieredItem weight="500" tier="3">Armor</TieredItem>
+			<TieredItem weight="450" tier="4">Armor</TieredItem>
+			<TieredItem weight="400" tier="5">Armor</TieredItem>
+			<TieredItem weight="350" tier="6">Armor</TieredItem>
+			<TieredItem weight="300" tier="7">Armor</TieredItem>
+			<TieredItem weight="250" tier="8">Armor</TieredItem>
+			<TieredItem weight="200" tier="9">Armor</TieredItem>
+			<TieredItem weight="150" tier="10">Armor</TieredItem>
+			<TieredItem weight="100" tier="11">Armor</TieredItem>
+			<TieredItem weight="50" tier="12">Armor</TieredItem>
+		</ItemPool>
+		
+		<!-- Tiered Abilities -->
+		<ItemPool>
+			<TieredItem weight="350" tier="0">Ability</TieredItem>
+			<TieredItem weight="300" tier="1">Ability</TieredItem>
+			<TieredItem weight="250" tier="2">Ability</TieredItem>
+			<TieredItem weight="200" tier="3">Ability</TieredItem>
+			<TieredItem weight="150" tier="4">Ability</TieredItem>
+			<TieredItem weight="100" tier="5">Ability</TieredItem>
+			<TieredItem weight="50" tier="6">Ability</TieredItem>
+		</ItemPool>
+		
+		<!-- Tiered Rings -->
+		<ItemPool>
+			<TieredItem weight="350" tier="0" >Ring</TieredItem>
+			<TieredItem weight="300" tier="1">Ring</TieredItem>
+			<TieredItem weight="250" tier="2">Ring</TieredItem>
+			<TieredItem weight="200" tier="3">Ring</TieredItem>
+			<TieredItem weight="150" tier="4">Ring</TieredItem>
+			<TieredItem weight="100" tier="5">Ring</TieredItem>
+			<TieredItem weight="50" tier="6">Ring</TieredItem>
+		</ItemPool>
+		
+		<!-- Defined By Name -->
+		<ItemPool> <!-- all will have equal weight chance -->
+			<Item weight="1">Skull-splitter Sword</Item>
+			<Item weight="1">Vinesword</Item>
+			<Item weight="1">Frostbite</Item>
+			<Item weight="1">Staff of Adoration</Item>
+			<Item weight="1">Staff of Horrific Knowledge</Item>
+			<Item weight="1">Staff of Yuletide Carols</Item>
+			<Item weight="1">An Icicle</Item>
+			<Item weight="1">Dagger of the Hasteful Rabbit</Item>
+			<Item weight="1">Dagger of the Terrible Talon</Item>
+			<Item weight="1">Dagger of the Amethyst Prism</Item>
+			<Item weight="1">Heartfind Dagger</Item>
+			<Item weight="1">Wand of Egg-cellence</Item>
+			<Item weight="1">Wand of Ancient Terror</Item>
+			<Item weight="1">Wand of Egg-cellence</Item>
+			<Item weight="1">Present Dispensing Wand</Item>
+			<Item weight="1">Wand of Budding Romance</Item>
+			<Item weight="1">Bow of Eternal Frost</Item>
+			<Item weight="1">Bow of Nightmares</Item>
+			<Item weight="1">Arbiter's Wrath</Item>
+			<Item weight="1">Diamond Bladed Katana</Item>
+			<Item weight="1">Corrupted Cleaver</Item>
+			<Item weight="1">Salju</Item>
+		</ItemPool>
+	</ItemDust>
+
+	<MagicDust>
+		<ItemPool>
+			<Item weight="5">Special Dust</Item>
+			<Item weight="10">Miscellaneous Dust</Item>
+			<Item weight="25">Item Dust</Item>
+			<Item weight="50">Potion Dust</Item>
+		</ItemPool>
+	</MagicDust>
+
+	<SpecialDust>
+		<!-- all will have equal weight chance -->
+		<ItemPool> <!-- Non Special Weapons -->
+			<Item weight="1">Poison Fang Dagger</Item>
+			<Item weight="1">Sunshine Shiv</Item>
+			<Item weight="1">Chicken Leg of Doom</Item>
+			<Item weight="1">Leaf Bow</Item>
+			<Item weight="1">Coral Bow</Item>
+			<Item weight="1">Robobow</Item>
+			<Item weight="1">Staff of the Crystal Serpent</Item>
+			<Item weight="1">Staff of Extreme Prejudice</Item>
+			<Item weight="1">Anatis Staff</Item>
+			<Item weight="1">KoalaPOW</Item>
+			<Item weight="1">St. Abraham's Wand</Item>
+			<Item weight="1">Conducting Wand</Item>
+			<Item weight="1">Wand of the Fallen</Item>
+			<Item weight="1">Wand of the Bulwark</Item>
+			<Item weight="1">Spicy Wand of Spice</Item>
+			<Item weight="1">Crystal Sword</Item>
+			<Item weight="1">Pirate King's Cutlass</Item>
+			<Item weight="1">Sword of Illumination</Item>
+			<Item weight="1">Doctor Swordsworth</Item>
+			<Item weight="1">Apocalypse Feather</Item>
+			<Item weight="1">Void Blade</Item>
+			<Item weight="1">Crystal Wand</Item>
+		</ItemPool>
+		<ItemPool> <!-- Special Weapons -->
+			<Item weight="1">Spirit Dagger</Item>
+			<Item weight="1">Dirk of Cronus</Item>
+			<Item weight="1">Thousand Shot</Item>
+			<Item weight="1">Ancient Stone Sword</Item>
+			<Item weight="1">Ray Katana</Item>
+			<Item weight="1">Doku No Ken</Item>
+		</ItemPool>
+		<ItemPool> <!-- Non Special Abilities-->
+			<Item weight="1">Penetrating Blast Spell</Item>
+			<Item weight="1">Vitamine Buster</Item>
+			<Item weight="1">Tome of Purification</Item>
+			<Item weight="1">Tome of Holy Protection</Item>
+			<Item weight="1">Tome of Frigid Protection</Item>
+			<Item weight="1">Helm of the Swift Bunny</Item>
+			<Item weight="1">Snake Skin Shield</Item>
+			<Item weight="1">Spiteful Scutum</Item>
+			<Item weight="1">Murky Toxin</Item>
+			<Item weight="1">Cracked Crystal Skull</Item>
+			<Item weight="1">Skullish Remains of Esben</Item>
+			<Item weight="1">Skull of Endless Torment</Item>
+			<Item weight="1">Coral Venom Trap</Item>
+			<Item weight="1">Orb of Sweet Demise</Item>
+			<Item weight="1">Prism of Dancing Swords</Item>
+			<Item weight="1">Ghostly Prism</Item>
+			<Item weight="1">HoneyScepter</Item>
+			<Item weight="1">Kageboshi</Item>
+		</ItemPool>
+		<ItemPool> <!-- Special Abilities-->
+			<Item weight="1">Cloak of the Planewalker</Item>
+			<Item weight="1">Quiver of Thunder</Item>
+			<Item weight="1">Tablet of the King's Avatar</Item>
+			<Item weight="1">Helm of the Juggernaut</Item>
+			<Item weight="1">Shield of Ogmur</Item>
+			<Item weight="1">Seal of Blasphemous Prayer</Item>
+			<Item weight="1">Plague Poison</Item>
+			<Item weight="1">Orb of Conflict</Item>
+			<Item weight="1">Prism of Dire Instability</Item>
+			<Item weight="1">Scepter of Fulmination</Item>
+			<Item weight="1">Midnight Star</Item>
+		</ItemPool>
+		<ItemPool> <!-- Non Special Armours -->
+			<Item weight="1">Snake Skin Armor</Item>
+			<Item weight="1">Coral Silk Armor</Item>
+			<Item weight="1">Spectral Cloth Armor</Item>
+			<Item weight="1">Leaf Dragon Hide Armor</Item>
+			<Item weight="1">Robe of the Tlatoani</Item>
+			<Item weight="1">Chasuble of Holy Light</Item>
+			<Item weight="1">Robe of the Mad Scientist</Item>
+			<Item weight="1">Water Dragon Silk Robe</Item>
+			<Item weight="1">Candy-Coated Armor</Item>
+			<Item weight="1">Fire Dragon Battle Armor</Item>
+		</ItemPool>
+		<ItemPool> <!-- Special Armours -->
+			<Item weight="1">Cheater Light Armor</Item>
+			<Item weight="1">Cheater Robe</Item>
+			<Item weight="1">Cheater Heavy Armor</Item>
+			<Item weight="1">Harlequin Armor</Item>
+			<Item weight="1">Resurrected Warrior's Armor</Item>
+		</ItemPool>
+		<ItemPool> <!-- Non Special Rings -->
+			<Item weight="1">Spider's Eye Ring</Item>
+			<Item weight="1">Crystal Bone Ring</Item>
+			<Item weight="1">Snake Eye Ring</Item>
+			<Item weight="1">Candy Ring</Item>
+			<Item weight="1">Captain's Ring</Item>
+			<Item weight="1">Ring of Divine Faith</Item>
+			<Item weight="1">Coral Ring</Item>
+			<Item weight="1">Experimental Ring</Item>
+			<Item weight="1">Ring of the Nile</Item>
+			<Item weight="1">Ring of the Pyramid</Item>
+			<Item weight="1">Ring of the Sphinx</Item>
+		</ItemPool>
+		<ItemPool> <!-- Special Rings -->
+			<Item weight="1">Enchanted Ice Shard</Item>
+			<Item weight="1">Ring of the Northern Light</Item>
+			<Item weight="1">Frimarra</Item>
+			<Item weight="1">Bracer of the Guardian</Item>
+			<Item weight="1">Infused Souls</Item>
+			<Item weight="1">The Forgotten Crown</Item>
+		</ItemPool>
+	</SpecialDust>
+	
+	<MiscDust>
+		<ItemPool> <!-- Misc -->
+			<Item weight="100">Loot Drop Potion</Item>
+			<Item weight="50">Backpack</Item>
+			<Item weight="25">Char Slot Unlocker</Item>
+			<Item weight="25">Vault Chest Unlocker</Item>
+		</ItemPool>
+	</MiscDust>
+	
+	<PotionDust>
+		<ItemPool> <!-- Non Soul -->
+			<TieredItem weight="200" tier="1">Potion</TieredItem> <!-- HP/MP -->
+			<TieredItem weight="100" tier="2">Potion</TieredItem> <!-- Regular Stat-->
+			<TieredItem weight="50" tier="3">Potion</TieredItem> <!-- Wines -->
+			<TieredItem weight="25" tier="4">Potion</TieredItem> <!-- Greater Stat -->
+		</ItemPool>
+		<ItemPool> <!-- Soul -->
+			<Item weight="5">Supreme Potion</Item>
+			<Item weight="100">Soul of Life</Item>
+			<Item weight="100">Soul of Mana</Item>
+			<Item weight="200">Soul of Attack</Item>
+			<Item weight="200">Soul of Defense</Item>
+			<Item weight="300">Soul of Speed</Item>
+			<Item weight="300">Soul of Dexterity</Item>
+			<Item weight="400">Soul of Vitality</Item>
+			<Item weight="400">Soul of Wisdom</Item>
+		</ItemPool>
+	</PotionDust>
+</Dusts>

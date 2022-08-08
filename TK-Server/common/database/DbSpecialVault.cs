@@ -33,10 +33,8 @@ namespace common.database
         public bool GetItems()
         {
             for(var i = 0; i < Items.Length; i++)
-            {
                 if (Items[i] != ushort.MaxValue)
                     return true;
-            }
             return false;
         }
 

@@ -492,15 +492,6 @@ public class MapUserInput
                this.gs_.gsc_.playerText("/realm");
             }
             break;
-         case Parameters.data_.reconCloth:
-            if(this.gs_.map.name_ == "Cloth Bazaar"){
-               this.addTextLine.dispatch(new AddTextLineVO(Parameters.ERROR_CHAT_NAME, ("You're already are in the Cloth Bazaar...")));
-               return;
-            }
-            else{
-               this.gs_.gsc_.playerText("/clothbazaar");
-            }
-            break;
          case Parameters.data_.GPURenderToggle:
             Parameters.data_.GPURender = !Parameters.data_.GPURender;
               break;

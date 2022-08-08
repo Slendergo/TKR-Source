@@ -41,137 +41,15 @@ namespace wServer.core.objects
 
         public void AEItemDust(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
-            ushort[] tierSwords = { 0x221c, 0x228e, 0x258c }; //reskins
-            ushort[] tierStaff = { 0x228b, 0xf13, 0x237e, }; //reskins
-            ushort[] tierDagger = { 0x237d, 0x899, 0xf11, 0x232a, 0x228d };//reskins
-            ushort[] tierWands = { 0x2296, 0xf10, 0x237c, 0x228c };//reskins
-            ushort[] tierBows = { 0x228f, 0x258a, 0xf12 };//reskins
-            ushort[] tierKatana = { 0xcee, 0x228a, 0xf14, 0x237f };//reskins
-            var gameData = GameServer.Resources.GameData;
-            var TieredChance = _random.NextDouble();
-            ushort itemValue;
             var entity = World.GetEntity(objId);
-            var container = entity as Container;
-            if (TieredChance <= 0.10)
-            {
-                var itemChance = _random.Next(0, 5);
-                switch (itemChance)
-                {
-                    case 0:
-                        itemValue = 0x9c6; //Dagger T13
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        SendInfo($"Used a Item Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                        break;
 
-                    case 1:
-                        itemValue = 0x9cc; //Bow T13
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        SendInfo($"Used a Item Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                        break;
-
-                    case 2:
-                        itemValue = 0x9d1; //Staff T13
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        SendInfo($"Used a Item Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                        break;
-
-                    case 3:
-                        itemValue = 0x9ca; //Wand T13
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        SendInfo($"Used a Item Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                        break;
-
-                    case 4:
-                        itemValue = 0x9c8; //Sword T13
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        SendInfo($"Used a Item Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                        break;
-
-                    case 5:
-                        itemValue = 0x4959; //Katana T13
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        SendInfo($"Used a Item Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                        break;
-                }
-            }
+            var dustItem = World.GameServer.ItemDustWeights.ItemDusts.GetRandom(_random);
+            if (entity is Container container)
+                container.Inventory[slot] = dustItem;
             else
-            {
-                var tierChance = _random.Next(0, 5);
-                switch (tierChance)
-                {
-                    case 0:
-                        itemValue = tierSwords[_random.Next(tierSwords.Length)];
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        SendInfo($"Used a Item Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                        break;
+                Inventory[slot] = dustItem;
 
-                    case 1:
-                        itemValue = tierStaff[_random.Next(tierStaff.Length)];
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        SendInfo($"Used a Item Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                        break;
-
-                    case 2:
-                        itemValue = tierDagger[_random.Next(tierDagger.Length)];
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        SendInfo($"Used a Item Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                        break;
-
-                    case 3:
-                        itemValue = tierWands[_random.Next(tierWands.Length)];
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        SendInfo($"Used a Item Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                        break;
-
-                    case 4:
-                        itemValue = tierBows[_random.Next(tierBows.Length)];
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        SendInfo($"Used a Item Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                        break;
-
-                    case 5:
-                        itemValue = tierKatana[_random.Next(tierKatana.Length)];
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        SendInfo($"Used a Item Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                        break;
-                }
-            }
+            SendInfo($"Used a Item Dust and obtained a {item.DisplayName}");
         }
 
         public void AEResetSkillTree(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
@@ -266,117 +144,15 @@ namespace wServer.core.objects
 
         public void AESpecialDust(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
-            ushort[] nonspecialWeapons = { 0x709, 0xced, 0xb21, 0xcde, 0xc10, 0xcec, 0x164a, 0xc15, 0xc03, 0xc24, 0xcea, 0xc1d, 0xc33, 0x183b, 0xc04, 0xceb, 0xa03, 0xcdb, 0x2303, 0xcdf, 0x164b, 0x6a9, 0x716d, 0xb3f };
-            ushort[] specialWeapons = { 0xc29, 0xc0a, 0x9d5, 0xc05, 0x915, 0xcdc };
-            ushort[] nonspecialAbilities = { 0x9ce, 0x8a9, 0xc09, 0xc1e, 0x16de, 0x8a8, 0xa40, 0x0d43, 0x7170, 0xc16, 0x767, 0x911, 0xc1c, 0x132, 0x912, 0xc2a, 0x136, 0x183d };
-            ushort[] specialAbilities = { 0xa5a, 0xc07, 0xb41, 0xc08, 0xc0f, 0xc06, 0xc6d, 0xc0b, 0x0d42, 0xc30, 0x916 };
-            ushort[] nonspecialArmors = { 0xa3e, 0xc18, 0xc28, 0x7562, 0xc14, 0xc1f, 0xc32, 0x7563, 0xc61, 0x7564 };
-            ushort[] specialArmors = { 0xc82, 0xc83, 0xc84, 0x7448, 0xc6e };
-            ushort[] nonspecialRings = { 0x708, 0xc17, 0xa41, 0xc5f, 0xc27, 0xc20, 0xc13, 0xc31, 0xba1, 0xba2, 0xba0 };
-            ushort[] specialRings = { 0x7fd2, 0x7fd3, 0x7fd4, 0xbad, 0xbac, 0xbab };
-            var gameData = GameServer.Resources.GameData;
-            ushort itemValue;
             var entity = World.GetEntity(objId);
-            var container = entity as Container;
-            var typeitemChance = _random.Next(0, 3);
-            switch (typeitemChance)
-            {
-                case 0: //Weapons
-                    var legchancewea = _random.NextDouble();
-                    if (legchancewea <= 0.20)
-                    {
-                        itemValue = specialWeapons[_random.Next(specialWeapons.Length)];
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        if (Rank < 60)
-                            GameServer.ChatManager.AnnounceLoot($"[{Name}] used a Special Dust and Obtained an [{gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}]!");
-                    }
-                    else
-                    {
-                        itemValue = nonspecialWeapons[_random.Next(nonspecialWeapons.Length)];
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        if (Rank < 60)
-                            GameServer.ChatManager.AnnounceLoot($"[{Name}] used a Special Dust and Obtained an [{gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}]!");
-                    }
-                    break;
 
-                case 1://Abilities
-                    var legchanceabi = _random.NextDouble();
-                    if (legchanceabi <= 0.20)
-                    {
-                        itemValue = specialAbilities[_random.Next(specialAbilities.Length)];
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        if (Rank < 60)
-                            GameServer.ChatManager.AnnounceLoot($"[{Name}] used a Special Dust and Obtained an [{gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}]!");
-                    }
-                    else
-                    {
-                        itemValue = nonspecialAbilities[_random.Next(nonspecialAbilities.Length)];
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        if (Rank < 60)
-                            GameServer.ChatManager.AnnounceLoot($"[{Name}] used a Special Dust and Obtained an [{gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}]!");
-                    }
-                    break;
+            var dustItem = World.GameServer.ItemDustWeights.SpecialDust.GetRandom(_random);
+            if (entity is Container container)
+                container.Inventory[slot] = dustItem;
+            else
+                Inventory[slot] = dustItem;
 
-                case 2:
-                    var legchancearm = _random.NextDouble();
-                    if (legchancearm <= 0.20)
-                    {
-                        itemValue = specialArmors[_random.Next(specialArmors.Length)];
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        if (Rank < 60)
-                            GameServer.ChatManager.AnnounceLoot($"[{Name}] used a Special Dust and Obtained an [{gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}]!");
-                    }
-                    else
-                    {
-                        itemValue = nonspecialArmors[_random.Next(nonspecialArmors.Length)];
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        if (Rank < 60)
-                            GameServer.ChatManager.AnnounceLoot($"[{Name}] used a Special Dust and Obtained an [{gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}]!");
-                    }
-                    break;
-
-                case 3:
-                    var legchancering = _random.NextDouble();
-                    if (legchancering <= 0.20)
-                    {
-                        itemValue = specialRings[_random.Next(specialRings.Length)];
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        if (Rank < 60)
-                            GameServer.ChatManager.AnnounceLoot($"[{Name}] used a Special Dust and Obtained an [{gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}]!");
-                    }
-                    else
-                    {
-                        itemValue = nonspecialRings[_random.Next(nonspecialRings.Length)];
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        if (Rank < 60)
-                            GameServer.ChatManager.AnnounceLoot($"[{Name}] used a Special Dust and Obtained an [{gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}]!");
-                    }
-                    break;
-            }
+            GameServer.ChatManager.AnnounceLoot($"[{Name}] used a Special Dust and Obtained an [{dustItem.DisplayId ?? dustItem.ObjectId}]!");
         }
 
         public void AEUnlockChest(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
@@ -409,121 +185,102 @@ namespace wServer.core.objects
 
         public void UseItem(TickTime time, int objId, int slot, Position pos, int sellMaxed)
         {
-                //Log.Debug(objId + ":" + slot);
-                var entity = World.GetEntity(objId);
-                if (entity == null)
-                {
-                    Client.SendPacket(new InvResult() { Result = 1 });
-                    return;
-                }
+            //Log.Debug(objId + ":" + slot);
+            var entity = World.GetEntity(objId);
+            if (entity == null)
+            {
+                Client.SendPacket(new InvResult() { Result = 1 });
+                return;
+            }
 
-                if (entity is Player && objId != Id)
-                {
-                    Client.SendPacket(new InvResult() { Result = 1 });
-                    return;
-                }
+            if (entity is Player && objId != Id)
+            {
+                Client.SendPacket(new InvResult() { Result = 1 });
+                return;
+            }
 
-                if (entity is Player && (entity as Player).World is MarketplaceWorld)
-                {
-                    Client.SendPacket(new InvResult() { Result = 1 });
-                    Client.Player.SendError("<Marketplace> Using an Item is restricted in the Marketplace!");
-                    return;
-                }
+            if (entity is Player && (entity as Player).World is MarketplaceWorld)
+            {
+                Client.SendPacket(new InvResult() { Result = 1 });
+                Client.Player.SendError("<Marketplace> Using an Item is restricted in the Marketplace!");
+                return;
+            }
 
-                var container = entity as IContainer;
+            var container = entity as IContainer;
 
-                // eheh no more clearing BBQ loot bags
-                if (this.Dist(entity) > 3)
-                {
-                    Client.SendPacket(new InvResult() { Result = 1 });
-                    return;
-                }
+            // eheh no more clearing BBQ loot bags
+            if (this.Dist(entity) > 3)
+            {
+                Client.SendPacket(new InvResult() { Result = 1 });
+                return;
+            }
 
-                var cInv = container?.Inventory.CreateTransaction();
+            var cInv = container?.Inventory.CreateTransaction();
 
-                // get item
-                Item item = null;
-                foreach (var stack in Stacks.Where(stack => stack.Slot == slot))
-                {
-                    item = stack.Pop();
-
-                    if (item == null)
-                        return;
-
-                    break;
-                }
-                if (item == null)
-                {
-                    if (container == null)
-                        return;
-
-                    item = cInv[slot];
-                }
+            // get item
+            Item item = null;
+            foreach (var stack in Stacks.Where(stack => stack.Slot == slot))
+            {
+                item = stack.Pop();
 
                 if (item == null)
                     return;
 
-                // make sure not trading and trying to cunsume item
-                if (tradeTarget != null && item.Consumable)
+                break;
+            }
+            if (item == null)
+            {
+                if (container == null)
                     return;
-                Player player = this as Player;
-                if (MP < item.MpCost)
-                {
-                    Client.SendPacket(new InvResult() { Result = 1 });
-                    return;
-                }
 
-                // use item
-                var slotType = 10;
-                if (slot < cInv.Length)
-                {
-                    slotType = container.SlotTypes[slot];
+                item = cInv[slot];
+            }
 
-                    if (item.TypeOfConsumable)
+            if (item == null)
+                return;
+
+            // make sure not trading and trying to cunsume item
+            if (tradeTarget != null && item.Consumable)
+                return;
+            Player player = this as Player;
+            if (MP < item.MpCost)
+            {
+                Client.SendPacket(new InvResult() { Result = 1 });
+                return;
+            }
+
+            // use item
+            var slotType = 10;
+            if (slot < cInv.Length)
+            {
+                slotType = container.SlotTypes[slot];
+
+                if (item.TypeOfConsumable)
+                {
+                    var gameData = GameServer.Resources.GameData;
+                    var db = GameServer.Database;
+
+                    if (item.Consumable)
                     {
-                        var gameData = GameServer.Resources.GameData;
-                        var db = GameServer.Database;
+                        Item successor = null;
+                        if (item.SuccessorId != null)
+                            successor = gameData.Items[gameData.IdToObjectType[item.SuccessorId]];
+                        cInv[slot] = successor;
 
-                        if (item.Consumable)
-                        {
-                            Item successor = null;
-                            if (item.SuccessorId != null)
-                                successor = gameData.Items[gameData.IdToObjectType[item.SuccessorId]];
-                            cInv[slot] = successor;
-
-                            var trans = db.Conn.CreateTransaction();
-                            if (container is GiftChest)
-                                if (successor != null)
-                                    db.SwapGift(Client.Account, item.ObjectType, successor.ObjectType, trans);
-                                else
-                                {
-                                    player.SendError("Can't use items if they are in a Gift Chest.");
-                                    return;
-                                }
-                        }
-
-                        if (!Inventory.Execute(cInv)) // can result in the loss of an item if inv trans fails..
-                        {
-                            entity.ForceUpdate(slot);
-                            return;
-                        }
-
-                        if (slotType > 0)
-                        {
-                            FameCounter.UseAbility();
-                        }
-                        else
-                        {
-                            if (item.ActivateEffects.Any(eff => eff.Effect == ActivateEffects.Heal ||
-                                                                eff.Effect == ActivateEffects.HealNova ||
-                                                                eff.Effect == ActivateEffects.Magic ||
-                                                                eff.Effect == ActivateEffects.MagicNova))
+                        var trans = db.Conn.CreateTransaction();
+                        if (container is GiftChest)
+                            if (successor != null)
+                                db.SwapGift(Client.Account, item.ObjectType, successor.ObjectType, trans);
+                            else
                             {
-                                FameCounter.DrinkPot();
+                                player.SendError("Can't use items if they are in a Gift Chest.");
+                                return;
                             }
-                        }
+                    }
 
-                        Activate(time, item, slot, pos, objId, sellMaxed);
+                    if (!Inventory.Execute(cInv)) // can result in the loss of an item if inv trans fails..
+                    {
+                        entity.ForceUpdate(slot);
                         return;
                     }
 
@@ -531,20 +288,39 @@ namespace wServer.core.objects
                     {
                         FameCounter.UseAbility();
                     }
+                    else
+                    {
+                        if (item.ActivateEffects.Any(eff => eff.Effect == ActivateEffects.Heal ||
+                                                            eff.Effect == ActivateEffects.HealNova ||
+                                                            eff.Effect == ActivateEffects.Magic ||
+                                                            eff.Effect == ActivateEffects.MagicNova))
+                        {
+                            FameCounter.DrinkPot();
+                        }
+                    }
+
+                    Activate(time, item, slot, pos, objId, sellMaxed);
+                    return;
                 }
-                else
+
+                if (slotType > 0)
                 {
-                    FameCounter.DrinkPot();
+                    FameCounter.UseAbility();
                 }
+            }
+            else
+            {
+                FameCounter.DrinkPot();
+            }
 
-                //Log.Debug(item.SlotType + ":" + slotType);
-                if (item.InvUse)
-                    Activate(time, item, slot, pos, objId, sellMaxed);
+            //Log.Debug(item.SlotType + ":" + slotType);
+            if (item.InvUse)
+                Activate(time, item, slot, pos, objId, sellMaxed);
 
-                if (item.Consumable || item.SlotType == slotType)
-                    Activate(time, item, slot, pos, objId, sellMaxed);
-                else
-                    Client.SendPacket(new InvResult() { Result = 1 });
+            if (item.Consumable || item.SlotType == slotType)
+                Activate(time, item, slot, pos, objId, sellMaxed);
+            else
+                Client.SendPacket(new InvResult() { Result = 1 });
         }
 
         private static void ActivateHealHp(Player player, int amount)
@@ -1466,7 +1242,8 @@ namespace wServer.core.objects
                     SonicBlaster(i);
                 }
             }
-            var pkts = new List<Packet>();
+            
+            var pkts = new List<OutgoingMessage>();
             var healthAmount = eff.Amount;
             //if (BigSkill10)
             //    healthAmount = 75 * healthAmount / 100;
@@ -1475,56 +1252,25 @@ namespace wServer.core.objects
 
         private void AEMagicDust(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
-            //Potion dust = 0x4995, ItemDust = 0x4993, Miscellaneous dust = 0x4994, Special dust = 0x4996
-            var gameData = GameServer.Resources.GameData;
-            var entity = World.GetEntity(objId);
-            var containerItem = entity as Container;
-            ushort itemValue;
-            var itemchance = _random.NextDouble();
             if (Inventory.Data[slot] == null)
             {
                 SendError("Something wrong happens with your Magic Dust!");
                 return;
             }
+         
             if (Inventory.Data[slot].Stack < Inventory.Data[slot].MaxStack)
                 return;
 
-            if (itemchance <= 0.05) //Le sumo el porcentaje que quiero que el proximo item tenga (0.05% Special Dust, 0.20% Miscellaneous Dust (0.05 + 0.15(Chance del MDust) = 0.20)
-            {
-                itemValue = 0x4996; //Special Dust
-                if (containerItem != null)
-                    containerItem.Inventory[slot] = gameData.Items[itemValue];
-                else
-                    Inventory[slot] = gameData.Items[itemValue];
-                SendInfo($"Used a Magic Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-            }
-            else if (itemchance <= 0.20)
-            {
-                itemValue = 0x4994; //Miscellaneous Dust
-                if (containerItem != null)
-                    containerItem.Inventory[slot] = gameData.Items[itemValue];
-                else
-                    Inventory[slot] = gameData.Items[itemValue];
-                SendInfo($"Used a Magic Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-            }
-            else if (itemchance <= 0.40)
-            {
-                itemValue = 0x4993; //Item Dust
-                if (containerItem != null)
-                    containerItem.Inventory[slot] = gameData.Items[itemValue];
-                else
-                    Inventory[slot] = gameData.Items[itemValue];
-                SendInfo($"Used a Magic Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-            }
-            else if (itemchance <= 1)
-            {
-                itemValue = 0x4995; //Potion Dust
-                if (containerItem != null)
-                    containerItem.Inventory[slot] = gameData.Items[itemValue];
-                else
-                    Inventory[slot] = gameData.Items[itemValue];
-                SendInfo($"Used a Magic Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-            }
+            var entity = World.GetEntity(objId);
+
+            var dustItem = World.GameServer.ItemDustWeights.MagicDust.GetRandom(_random);
+            if (entity is Container container)
+                container.Inventory[slot] = dustItem;
+            else
+                Inventory[slot] = dustItem;
+            
+            SendInfo($"Used a Magic Dust and obtained a {dustItem.DisplayName ?? dustItem.ObjectId}");
+
             Inventory.Data[slot] = null;
             InvokeStatChange((StatDataType)((int)StatDataType.InventoryData0 + slot), Inventory.Data[slot]?.GetData() ?? "{}");
         }
@@ -1545,50 +1291,15 @@ namespace wServer.core.objects
 
         private void AEMiscellaneousDust(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
-            var gameData = GameServer.Resources.GameData;
-            ushort itemValue;
             var entity = World.GetEntity(objId);
-            var container = entity as Container;
-            var itemchance = _random.Next(0, 3);
-            switch (itemchance)
-            {
-                case 0:
-                    itemValue = 0xc6c; //Backpack
-                    if (container != null)
-                        container.Inventory[slot] = gameData.Items[itemValue];
-                    else
-                        Inventory[slot] = gameData.Items[itemValue];
-                    SendInfo($"Used a Miscellaneous Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                    break;
 
-                case 1:
-                    itemValue = 0x32a; //Char Slot Unlocker
-                    if (container != null)
-                        container.Inventory[slot] = gameData.Items[itemValue];
-                    else
-                        Inventory[slot] = gameData.Items[itemValue];
-                    SendInfo($"Used a Miscellaneous Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                    break;
+            var dustItem = World.GameServer.ItemDustWeights.PotionDust.GetRandom(_random);
+            if (entity is Container container)
+                container.Inventory[slot] = dustItem;
+            else
+                Inventory[slot] = dustItem;
 
-                case 2:
-                    itemValue = 0xc69; //Loot Drop Potion
-                    if (container != null)
-                        container.Inventory[slot] = gameData.Items[itemValue];
-                    else
-                        Inventory[slot] = gameData.Items[itemValue];
-                    SendInfo($"Used a Miscellaneous Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                    break;
-
-                case 3:
-                    itemValue = 0x32b; //Vault Chest Unlocker
-                    if (container != null)
-                        container.Inventory[slot] = gameData.Items[itemValue];
-                    else
-                        Inventory[slot] = gameData.Items[itemValue];
-                    SendInfo($"Used a Miscellaneous Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                    break;
-
-            }
+            SendInfo($"You used a Miscellaneous Dust and obtained a {dustItem.DisplayName ?? dustItem.ObjectId}");
         }
 
         private void AEPermaPet(TickTime time, Item item, Position target, ActivateEffect eff)
@@ -1644,102 +1355,15 @@ namespace wServer.core.objects
 
         private void AEPotionDust(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
-            ushort[] _commonPotions = { 0xa4c, 0xa1f, 0xa20, 0xa35, 0xa34, 0xa21 };
-            var gameData = GameServer.Resources.GameData;
             var entity = World.GetEntity(objId);
-            var container = entity as Container;
 
-            double potionRoll = _random.NextDouble();
-
-            if (potionRoll > 0.75)
-            {
-                // nothing
-                SendInfo($"It appears this bag contains nothing but air");
-                return;
-            }
-
-            potionRoll = _random.NextDouble();
-            if (potionRoll <= 0.025)
-            {
-                //Potion of Life
-                if (container != null)
-                    container.Inventory[slot] = gameData.Items[0xae9];
-                else
-                    Inventory[slot] = gameData.Items[0xae9];
-                SendInfo($"Used a Potion Dust and obtained a {gameData.Items[0xae9].DisplayName ?? gameData.Items[0xae9].ObjectId}");
-            }
-            else if (potionRoll <= 0.05)
-            {
-                //Potion of Mana
-                if (container != null)
-                    container.Inventory[slot] = gameData.Items[0xaea];
-                else
-                    Inventory[slot] = gameData.Items[0xaea];
-                SendInfo($"Used a Potion Dust and obtained a {gameData.Items[0xaea].DisplayName ?? gameData.Items[0xaea].ObjectId}");
-            }
+            var dustItem = World.GameServer.ItemDustWeights.PotionDust.GetRandom(_random);
+            if (entity is Container container)
+                container.Inventory[slot] = dustItem;
             else
-            {
-                ushort itemValue;
+                Inventory[slot] = dustItem;
 
-                // Common potion
-                var random = _random.Next(0, _commonPotions.Length);
-                switch (random)
-                {
-                    case 0:
-                        itemValue = _commonPotions[random];
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        SendInfo($"Used a Potion Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                        break;
-
-                    case 1:
-                        itemValue = _commonPotions[random];
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        SendInfo($"Used a Potion Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                        break;
-
-                    case 2:
-                        itemValue = _commonPotions[random];
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        SendInfo($"Used a Potion Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                        break;
-
-                    case 3:
-                        itemValue = _commonPotions[random];
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        SendInfo($"Used a Potion Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                        break;
-
-                    case 4:
-                        itemValue = _commonPotions[random];
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        SendInfo($"Used a Potion Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                        break;
-
-                    case 5:
-                        itemValue = _commonPotions[random];
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        SendInfo($"Used a Potion Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                        break;
-                }
-            }
+            SendInfo($"You used a Potion Dust and obtained a {dustItem.DisplayName ?? dustItem.ObjectId}");
         }
 
         private void AERemoveNegativeConditions(TickTime time, Item item, Position target, ActivateEffect eff)
@@ -2089,7 +1713,7 @@ namespace wServer.core.objects
 
         private void AEVampireBlast(TickTime time, Item item, Position target, ActivateEffect eff)
         {
-            var pkts = new List<OutgoingMessage>
+            var pkts = new List<OutgoingMessage>()
             {
                 new ShowEffect()
                 {
@@ -2114,6 +1738,7 @@ namespace wServer.core.objects
             var totalDmg = 0;
             var effDamage = eff.UseWisMod ? UseWisMod(eff.TotalDamage) : eff.TotalDamage;
             var enemies = new List<Enemy>();
+
             World.AOE(target, eff.Radius, false, enemy =>
             {
                 enemies.Add(enemy as Enemy);

@@ -107,6 +107,9 @@ namespace wServer.core.objects
 
         private bool KeepAlive(TickTime time)
         {
+            if (Client.State == networking.ProtocolState.Disconnected)
+                return false;
+
             if (_pingTime == -1)
             {
                 _pingTime = time.TotalElapsedMs - PingPeriod;

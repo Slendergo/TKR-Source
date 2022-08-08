@@ -11,11 +11,6 @@ namespace wServer.networking.packets.outgoing
 
         public override PacketId MessageId => PacketId.NEWTICK;
 
-        public override Packet CreateInstance()
-        {
-            return new NewTick();
-        }
-
         public NewTick()
         {
             Statuses = new List<ObjectStats>();

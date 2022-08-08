@@ -14,6 +14,13 @@ using wServer.networking.packets;
 using wServer.networking.packets.outgoing;
 using wServer.utils;
 
+public enum PacketPriority
+{
+    High,
+    Normal,
+    Low
+}
+
 namespace wServer.networking.connection
 {
     public sealed class NetworkHandler
@@ -23,7 +30,7 @@ namespace wServer.networking.connection
         private readonly int BufferSize;
         private readonly int PrefixLength;
         private Client Client;
-        private ConcurrentQueue<Packet>[] Pending;
+        private ConcurrentQueue<OutgoingMessage>[] Pending;
         private SocketAsyncEventArgs Receive;
         private SocketAsyncEventArgs Send;
 
@@ -39,10 +46,10 @@ namespace wServer.networking.connection
             Send = send;
             Send.Completed += ProcessSend;
 
-            Pending = new ConcurrentQueue<Packet>[3];
+            Pending = new ConcurrentQueue<OutgoingMessage>[3];
 
             for (var i = 0; i < 3; i++)
-                Pending[i] = new ConcurrentQueue<Packet>();
+                Pending[i] = new ConcurrentQueue<OutgoingMessage>();
         }
 
         public void BeginHandling(Socket socket)
@@ -61,10 +68,10 @@ namespace wServer.networking.connection
             ((SendToken)Send.UserToken).Reset();
             ((ReceiveToken)Receive.UserToken).Reset();
 
-            Pending = new ConcurrentQueue<Packet>[3];
+            Pending = new ConcurrentQueue<OutgoingMessage>[3];
 
             for (var i = 0; i < 3; i++)
-                Pending[i] = new ConcurrentQueue<Packet>();
+                Pending[i] = new ConcurrentQueue<OutgoingMessage>();
         }
 
         public void SendPacket(OutgoingMessage pkt, PacketPriority priority = PacketPriority.Normal)
@@ -248,7 +255,7 @@ namespace wServer.networking.connection
             s.BytesSent += e.BytesTransferred;
             s.BytesAvailable -= s.BytesSent;
 
-            StartSendAsync(e, 50);
+            StartSendAsync(e);
         }
 
         private void SendPolicyFile()
@@ -295,7 +302,7 @@ namespace wServer.networking.connection
                 ProcessReceive(null, e);
         }
 
-        private async void StartSendAsync(SocketAsyncEventArgs e, int delay = 0)
+        private  void StartSendAsync(SocketAsyncEventArgs e)
         {
             if (Client?.State == ProtocolState.Disconnected)
                 return;
@@ -307,15 +314,11 @@ namespace wServer.networking.connection
                 if (s.BytesAvailable <= 0)
                 {
                     s.Reset();
-
                     if (!FlushPending(s).HasValue)
                         return;
                 }
 
                 var willRaiseEvent = false;
-
-                if (delay != 0)
-                    await Task.Delay(delay);
 
                 try
                 {
@@ -327,7 +330,9 @@ namespace wServer.networking.connection
 
                     willRaiseEvent = e.AcceptSocket.SendAsync(e);
                 }
-                catch (Exception) { }
+                catch
+                {
+                }
                 finally
                 {
                     if (!willRaiseEvent)
@@ -343,7 +348,7 @@ namespace wServer.networking.connection
                 {
                     Host = "",
                     Port = Client.GameServer.Configuration.serverInfo.port,
-                    GameId = World.Nexus,
+                    GameId = World.NEXUS_ID,
                     Name = "Nexus"
                 });
             }

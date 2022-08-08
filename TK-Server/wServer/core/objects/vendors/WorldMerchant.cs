@@ -46,12 +46,12 @@ namespace wServer.core.objects.vendors
             Reloading = false;
         }
 
-        public override void Tick(TickTime time)
+        public override void Tick(ref TickTime time)
         {
             if (ShopItem == null && TimeLeft != 0 && Count != 0)
                 return;
 
-            base.Tick(time);
+            base.Tick(ref time);
         }
     }
 }

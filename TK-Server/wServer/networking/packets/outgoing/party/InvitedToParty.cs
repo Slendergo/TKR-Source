@@ -10,11 +10,6 @@ namespace wServer.networking.packets.outgoing
 
         public override PacketId MessageId => PacketId.INVITED_TO_PARTY;
 
-        public override Packet CreateInstance()
-        {
-            return new InvitedToParty();
-        }
-
         protected override void Write(NWriter wtr)
         {
             wtr.WriteUTF(Name);

@@ -159,6 +159,8 @@
     <Compile Include="core\commands\CommandManager.cs" />
     <Compile Include="core\ConnectionInfo.cs" />
     <Compile Include="core\GameServer.cs" />
+    <Compile Include="core\objects\inventory\ItemDustPools.cs" />
+    <Compile Include="core\objects\inventory\ItemDustWeights.cs" />
     <Compile Include="core\objects\inventory\Inventory.cs" />
     <Compile Include="core\objects\inventory\InventoryChangedEventArgs.cs" />
     <Compile Include="core\objects\inventory\InventoryDatas.cs" />
@@ -166,9 +168,10 @@
     <Compile Include="core\objects\inventory\InventoryItems.cs" />
     <Compile Include="core\objects\inventory\InventoryTransaction.cs" />
     <Compile Include="core\objects\inventory\ItemStacker.cs" />
+    <Compile Include="core\objects\player\Player.State.cs" />
     <Compile Include="core\setpieces\TalismanKing.cs" />
     <Compile Include="utils\ItemUtils.cs" />
-    <Compile Include="core\miscfile\thread\TickLoopSingle.cs" />
+    <Compile Include="core\miscfile\thread\TickThreadSingle.cs" />
     <Compile Include="core\net\handlers\ChangeGuildRankHandler.cs" />
     <Compile Include="core\net\handlers\CancelTradeHandler.cs" />
     <Compile Include="core\net\handlers\AcceptTradeMessageHandler.cs" />
@@ -389,9 +392,6 @@
     <Compile Include="core\net\handlers\ChooseNameHandler.cs" />
     <Compile Include="networking\InboundBuffer.cs" />
     <Compile Include="core\net\handlers\MessageHandlers.cs" />
-    <Compile Include="networking\PacketHandlerBase.cs" />
-    <Compile Include="networking\PacketHandlers.cs" />
-    <Compile Include="networking\PacketPriority.cs" />
     <Compile Include="core\net\handlers\PotionStorageInteractionHandler.cs" />
     <Compile Include="core\net\handlers\CreateMessageHandler.cs" />
     <Compile Include="core\net\handlers\CreateGuildHandler.cs" />
@@ -473,7 +473,6 @@
     <Compile Include="networking\packets\outgoing\TradeRequested.cs" />
     <Compile Include="networking\packets\outgoing\TradeStart.cs" />
     <Compile Include="networking\packets\outgoing\Update.cs" />
-    <Compile Include="networking\packets\Packet.cs" />
     <Compile Include="networking\packets\PacketIds.cs" />
     <Compile Include="networking\ProtocolState.cs" />
     <Compile Include="networking\RSA.cs" />
@@ -571,6 +570,7 @@
     <Compile Include="utils\UnixExitSignal.cs" />
     <Compile Include="utils\SLogger.cs" />
     <Compile Include="logic\db\BehaviorDb.Colosseum.cs" />
+    <Compile Include="utils\WeightedCollection.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\common\common.csproj">

@@ -44,7 +44,7 @@ namespace wServer.core.objects
 
         public bool IsVisibleToEnemy() => true;
 
-        public override void Tick(TickTime time)
+        public override void Tick(ref TickTime time)
         {
             if (HP > duration - 2000)
                 ValidateAndMove(X + direction.X * speed * time.ElaspedMsDelta / 1000, Y + direction.Y * speed * time.ElaspedMsDelta / 1000);
@@ -62,7 +62,7 @@ namespace wServer.core.objects
                 }, this, PacketPriority.Low);
             }
 
-            base.Tick(time);
+            base.Tick(ref time);
         }
 
         protected override void ExportStats(IDictionary<StatDataType, object> stats)

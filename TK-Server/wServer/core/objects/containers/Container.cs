@@ -20,7 +20,7 @@ namespace wServer.core.objects
 
         public override bool HitByProjectile(Projectile projectile, TickTime time) => false;
 
-        public override void Tick(TickTime time)
+        public override void Tick(ref TickTime time)
         {
             if (Inventory == null)
                 return;

@@ -549,7 +549,7 @@ namespace wServer.core.objects
             }
         }
 
-        public void checkSkillStats()
+        public void CheckSkillStats()
         {
             if (Node1TickMaj > 10)
                 Node1TickMaj = 10;
@@ -839,7 +839,8 @@ namespace wServer.core.objects
 
         public void SaveToCharacter()
         {
-            if (Client == null || Client.Character == null) return;
+            if (Client == null || Client.Character == null) 
+                return;
 
             var chr = Client.Character;
             chr.Level = Level;
@@ -864,17 +865,6 @@ namespace wServer.core.objects
             chr.Datas = Inventory.Data.GetDatas();
             Client.Account.TotalFame = Client.Account.Fame;
             Stats.ReCalculateValues();
-        }
-
-        public void SetCurrency(CurrencyType currency, int amount)
-        {
-            switch (currency)
-            {
-                case CurrencyType.Gold:
-                    Credits = amount; break;
-                case CurrencyType.Fame:
-                    CurrentFame = amount; break;
-            }
         }
 
         public void SetDefaultSkin(int skin)
@@ -935,6 +925,7 @@ namespace wServer.core.objects
                     RestartTPPeriod();
                     return;
                 }
+
                 if (obj.HasConditionEffect(ConditionEffects.Hidden))
                 {
                     SendError("Target does not exist.");
@@ -1000,54 +991,54 @@ namespace wServer.core.objects
             PlayerUpdate.UpdateTiles = true;
         }
 
-        public override void Tick(TickTime time)
+        public override void Tick(ref TickTime time)
         {
             if (KeepAlive(time))
             {
                 PlayerUpdate.SendUpdate();
                 PlayerUpdate.SendNewTick(time.ElaspedMsDelta);
 
-                if (World.IdName.Equals("Ocean Trench"))
-                {
-                    if (Breath > 0)
-                        Breath -= 5 * time.DeltaTime * 5;
-                    else
-                        HP -= 5;
-
-                    if (HP < 0)
-                    {
-                        Death("Suffocation");
-                        return;
-                    }
-                }
+                HandleBreath(ref time);
 
                 CheckTradeTimeout(time);
-                //HandleSpecialEnemies(time);
                 HandleQuest(time);
 
-                if (!HasConditionEffect(ConditionEffects.Paused))
-                {
-                    HandleRegen(time);
-                    HandleEffects(time);
+                HandleRegen(time);
+                HandleEffects(time);
 
-                    GroundEffect(time);
-                    TickActivateEffects(time);
+                GroundEffect(time);
+                TickActivateEffects(time);
 
-                    /* Skill Tree */
-                    checkSkillStats();
-                    CheckMaxedStats();
+                /* Skill Tree */
+                CheckSkillStats();
+                CheckMaxedStats();
 
-                    /* Item Effects */
-                    TimeEffects(time);
-                    SpecialEffects();
+                /* Item Effects */
+                TimeEffects(time);
+                SpecialEffects();
 
-                    FameCounter.Tick(time);
+                FameCounter.Tick(time);
 
-                    CerberusClaws(time);
-                    CerberusCore(time);
-                }
+                CerberusClaws(time);
+                CerberusCore(time);
             }
-            base.Tick(time);
+            base.Tick(ref time);
+        }
+
+        public void HandleBreath(ref TickTime time)
+        {
+            if (World.IdName != "Ocean Trench")
+                return;
+            if (Breath > 0)
+                Breath -= 5 * time.DeltaTime * 5;
+            else
+                HP -= 5;
+
+            if (HP < 0)
+            {
+                Death("Suffocation");
+                return;
+            }
         }
 
         internal void setCooldownTime(int time, int slot)
@@ -1821,20 +1812,19 @@ namespace wServer.core.objects
         private void TickActivateEffects(TickTime time)
         {
             var dt = time.ElaspedMsDelta;
-            if (World == null)
-                return;
-
             if (World is VaultWorld || World is NexusWorld || World.InstanceType == WorldResourceInstanceType.Guild || World.Id == 10)
                 return;
-
-            if (XPBoostTime != 0)
+            
+            if (XPBoostTime > 0)
+            {    
                 if (Level >= 20)
                     XPBoostTime = 0;
 
-            if (XPBoostTime > 0)
                 XPBoostTime = Math.Max(XPBoostTime - dt, 0);
-            if (XPBoostTime == 0)
-                XPBoosted = false;
+                if (XPBoostTime == 0)
+                    XPBoosted = false;
+            }
+
             if (LDBoostTime > 0)
                 LDBoostTime = Math.Max(LDBoostTime - dt, 0);
         }

@@ -22,7 +22,7 @@ namespace wServer.core
             funcCallback = callback;
         }
 
-        public bool Tick(World world, TickTime time)
+        public bool Tick(World world, ref TickTime time)
         {
             Remaining -= time.ElaspedMsDelta;
             if (Remaining >= 0)

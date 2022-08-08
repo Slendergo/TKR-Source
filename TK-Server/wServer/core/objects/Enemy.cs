@@ -156,7 +156,7 @@ namespace wServer.core.objects
             return 0;
         }
 
-        public void Death(TickTime time)
+        public void Death(ref TickTime time)
         {
             if (this == null || World == null)
                 return;
@@ -224,7 +224,7 @@ namespace wServer.core.objects
                 DamageCounter.HitBy(projectile.ProjectileOwner as Player, time, projectile, dmg);
 
                 if (HP < 0 && World != null)
-                    Death(time);
+                    Death(ref time);
 
                 return true;
             }
@@ -253,13 +253,13 @@ namespace wServer.core.objects
             ClasifyEnemy();
         }
 
-        public override void Tick(TickTime time)
+        public override void Tick(ref TickTime time)
         {
             if (pos == null)
                 pos = new Position() { X = X, Y = Y };
 
             if (HP == 0)
-                Death(time);
+                Death(ref time);
 
             if (!stat && HasConditionEffect(ConditionEffects.Bleeding))
             {
@@ -272,7 +272,7 @@ namespace wServer.core.objects
                 bleeding += 28 * time.DeltaTime;
             }
 
-            base.Tick(time);
+            base.Tick(ref time);
         }
 
         private void Demonized(Player player, int slot)

@@ -56,13 +56,12 @@ namespace wServer.core.objects.vendors
         public virtual void Reload()
         { }
 
-        public override void Tick(TickTime time)
+        public override void Tick(ref TickTime time)
         {
-            base.Tick(time);
+            base.Tick(ref time);
 
             var a = time.TotalElapsedMs % 20000;
-            if (AwaitingReload ||
-                a - time.ElaspedMsDelta <= ReloadOffset && a > ReloadOffset)
+            if (AwaitingReload || a - time.ElaspedMsDelta <= ReloadOffset && a > ReloadOffset)
             {
                 if (!AwaitingReload && !Rotate)
                     return;

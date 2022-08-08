@@ -1,4 +1,5 @@
-﻿using common.database;
+﻿using CA.Profiler;
+using common.database;
 using common.resources;
 using dungeonGen;
 using dungeonGen.templates;
@@ -491,29 +492,29 @@ namespace wServer.core.worlds
             try
             {
                 foreach (var stat in StaticObjects.Values)
-                    stat.Tick(time);
+                    stat.Tick(ref time);
 
                 foreach (var container in Containers.Values)
-                    container.Tick(time);
+                    container.Tick(ref time);
                 
                 foreach (var pet in Pets.Values)
-                    pet.Tick(time);
+                    pet.Tick(ref time);
 
                 foreach (var i in Projectiles)
-                    i.Value.Tick(time);
+                    i.Value.Tick(ref time);
 
                 if (Players.Values.Count > 0)
                 {
                     foreach (var player in Players.Values)
                     {
                         player.HandleIO(ref time);
-                        player.Tick(time);
+                        player.Tick(ref time);
                     }
 
                     if (EnemiesCollision != null)
                     {
                         foreach (var i in EnemiesCollision.GetActiveChunks(PlayersCollision))
-                            i.Tick(time);
+                            i.Tick(ref time);
 
                         //foreach (var i in StaticObjects.Where(x => x.Value != null && x.Value is Decoy))
                         //    i.Value.Tick(time);
@@ -521,7 +522,7 @@ namespace wServer.core.worlds
                     else
                     {
                         foreach (var i in Enemies)
-                            i.Value.Tick(time);
+                            i.Value.Tick(ref time);
 
                         //foreach (var i in StaticObjects)
                         //    i.Value.Tick(time);
@@ -531,7 +532,7 @@ namespace wServer.core.worlds
                 for (var i = Timers.Count - 1; i >= 0; i--)
                     try
                     {
-                        if (Timers[i].Tick(this, time))
+                        if (Timers[i].Tick(this, ref time))
                             Timers.RemoveAt(i);
                     }
                     catch (Exception e)

@@ -65,7 +65,7 @@ namespace wServer.core.objects
             return true;
         }
 
-        public override void Tick(TickTime time)
+        public override void Tick(ref TickTime time)
         {
             if (Vulnerable)
             {
@@ -75,7 +75,7 @@ namespace wServer.core.objects
                 CheckHP();
             }
 
-            base.Tick(time);
+            base.Tick(ref time);
         }
 
         protected bool CheckHP()

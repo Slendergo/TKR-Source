@@ -138,7 +138,7 @@ namespace wServer.core.objects
 
         public void OnDestroy() => World?.LeaveWorld(this);
 
-        public override void Tick(TickTime time)
+        public override void Tick(ref TickTime time)
         {
             var elapsed = time.TotalElapsedMs - CreationTime;
             if (elapsed > ProjDesc.LifetimeMS)
@@ -147,7 +147,7 @@ namespace wServer.core.objects
                 return;
             }
 
-            base.Tick(time);
+            base.Tick(ref time);
         }
     }
 }

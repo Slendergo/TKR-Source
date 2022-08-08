@@ -1,4 +1,5 @@
-﻿using System;
+﻿using common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using wServer.core.terrain;
@@ -122,10 +123,8 @@ namespace wServer.core.objects
                     }
             }
 
-            var newObjs = NewObjects.ToArray();
-            for (var i = 0; i < newObjs.Length; i++)
+            foreach(var entity in NewObjects)
             {
-                var entity = newObjs[i];
                 if (entity.IsRemovedFromWorld)
                 {
                     drops.Add(entity.Id);
@@ -141,9 +140,9 @@ namespace wServer.core.objects
             }
 
             if (drops.Count != 0)
-                NewObjects.RemoveWhere(_ => Array.IndexOf(drops.ToArray(), _.Id) != -1);
+                NewObjects.RemoveWhere(_ => drops.Contains(_.Id));
             if (staticDrops.Count != 0)
-                NewStaticObjects.RemoveWhere(_ => Array.IndexOf(staticDrops.ToArray(), _.ObjId) != -1);
+                NewStaticObjects.RemoveWhere(_ => staticDrops.Contains(_.ObjId));
         }
 
         public void GetNewObjects(Update update)
@@ -233,26 +232,19 @@ namespace wServer.core.objects
             }
             Player.FameCounter.TileSent(update.Tiles.Count); // adds the new amount to the tiles been sent
         }
-
-        private object StatsUpdateLock = new object();
-
         public void HandleStatChanges(object entity, StatChangedEventArgs statChange)
         {
-            lock (StatsUpdateLock)
-            {
+            if (!(entity is Entity e) || e.Id != Player.Id && statChange.UpdateSelfOnly)
+                return;
 
-                if (!(entity is Entity e) || e.Id != Player.Id && statChange.UpdateSelfOnly)
-                    return;
+            if (e.Id == Player.Id && statChange.Stat == StatDataType.None)
+                return;
 
-                if (e.Id == Player.Id && statChange.Stat == StatDataType.None)
-                    return;
+            if (!StatsUpdates.ContainsKey(e))
+                StatsUpdates[e] = new Dictionary<StatDataType, object>();
 
-                if (!StatsUpdates.ContainsKey(e))
-                    StatsUpdates[e] = new Dictionary<StatDataType, object>();
-
-                if (statChange.Stat != StatDataType.None)
+            if (statChange.Stat != StatDataType.None)
                     StatsUpdates[e][statChange.Stat] = statChange.Value;
-            }
         }
 
         public void Dispose()
@@ -266,49 +258,45 @@ namespace wServer.core.objects
 
         public void SendNewTick(int delta)
         {
-            lock (StatsUpdateLock)
+            TickId++;
+
+            var newTick = new NewTick()
             {
-                TickId++;
+                TickId = TickId,
+                TickTime = delta
+            };
 
-                var newTick = new NewTick()
+            if (StatsUpdates.Count > 0)
+            {
+                var statsUpdates = StatsUpdates.Where(ent => ent.Key != null && !ent.Key.IsRemovedFromWorld);
+                foreach(var entry in statsUpdates)
                 {
-                    TickId = TickId,
-                    TickTime = delta
-                };
-
-                if (StatsUpdates.Count > 0)
-                {
-                    var statsUpdate = StatsUpdates.Where(ent => ent.Key != null && !ent.Key.IsRemovedFromWorld).ToArray();
-
-                    for (var i = 0; i < statsUpdate.Length; i++)
+                    var entity = entry.Key;
+                    var statUpdate = entry.Value;
+                    var objStats = new ObjectStats()
                     {
-                        var entity = statsUpdate[i].Key;
-                        var statUpdate = statsUpdate[i].Value;
-                        var objStats = new ObjectStats()
+                        Id = entity.Id,
+                        Position = new Position()
                         {
-                            Id = entity.Id,
-                            Position = new Position()
-                            {
-                                X = entity.RealX,
-                                Y = entity.RealY
-                            },
-                            Stats = statUpdate.ToArray()
-                        };
+                            X = entity.RealX,
+                            Y = entity.RealY
+                        },
+                        Stats = statUpdate.ToArray()
+                    };
 
-                        newTick.Statuses.Add(objStats);
-                    }
+                    newTick.Statuses.Add(objStats);
                 }
-
-                Player.Client.SendPacket(newTick, PacketPriority.High);
-                Player.AwaitMove(TickId);
             }
+
+            Player.Client.SendPacket(newTick, PacketPriority.High);
+            Player.AwaitMove(TickId);
         }
 
         public void SendUpdate()
         {
             var update = new Update();
 
-            if (UpdateTiles) // this might help alittle with server logic exec time
+            if (UpdateTiles) 
             {
                 GetNewTiles(update);
                 UpdateTiles = false;

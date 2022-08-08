@@ -9,11 +9,6 @@ namespace wServer.networking.packets.outgoing
 
         public override PacketId MessageId => PacketId.GOTO;
 
-        public override Packet CreateInstance()
-        {
-            return new Goto();
-        }
-
         protected override void Write(NWriter wtr)
         {
             wtr.Write(ObjectId);

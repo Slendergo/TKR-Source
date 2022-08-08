@@ -17,11 +17,6 @@ namespace wServer.networking.packets.outgoing
 
         public override PacketId MessageId => PacketId.MAPINFO;
 
-        public override Packet CreateInstance()
-        {
-            return new MapInfo();
-        }
-
         protected override void Write(NWriter wtr)
         {
             wtr.Write(Width);

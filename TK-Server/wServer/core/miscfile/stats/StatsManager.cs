@@ -11,9 +11,9 @@ namespace wServer.core
         internal BoostStatManager Boost;
         internal Player Owner;
 
-        private const float MaxAttackFreq = 0.008f;
+        private const float MAX_ATTACK_FREQ = 0.008f;
         private const float MAX_ATTACK_MULT = 2f;
-        private const float MinAttackFreq = 0.0015f;
+        private const float MIN_ATTACK_FREQ = 0.0015f;
         private const float MIN_ATTACK_MULT = 0.5f;
 
         private SV<int>[] _stats;
@@ -201,9 +201,9 @@ namespace wServer.core
         public float GetAttackFrequency()
         {
             if (Owner.HasConditionEffect(ConditionEffects.Dazed))
-                return MinAttackFreq;
+                return MIN_ATTACK_FREQ;
 
-            var rof = MinAttackFreq + this[5] / 75f * (MaxAttackFreq - MinAttackFreq);
+            var rof = MIN_ATTACK_FREQ + this[5] / 75f * (MAX_ATTACK_FREQ - MIN_ATTACK_FREQ);
 
             if (Owner.HasConditionEffect(ConditionEffects.Berserk) || Owner.HasConditionEffect(ConditionEffects.NinjaBerserk))
                 rof *= 1.5f;

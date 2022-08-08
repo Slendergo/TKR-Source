@@ -9,11 +9,6 @@ namespace wServer.networking.packets.outgoing
 
         public override PacketId MessageId => PacketId.CREATE_SUCCESS;
 
-        public override Packet CreateInstance()
-        {
-            return new CreateSuccess();
-        }
-
         protected override void Write(NWriter wtr)
         {
             wtr.Write(ObjectId);

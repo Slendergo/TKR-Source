@@ -8,11 +8,6 @@ namespace wServer.networking.packets.outgoing
 
         public override PacketId MessageId => PacketId.BOUNTYMEMBERLISTSEND;
 
-        public override Packet CreateInstance()
-        {
-            return new BountyMemberListSend();
-        }
-
         protected override void Write(NWriter wtr)
         {
             wtr.Write(AccountIds.Length);

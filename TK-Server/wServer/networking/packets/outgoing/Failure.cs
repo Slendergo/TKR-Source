@@ -15,11 +15,6 @@ namespace wServer.networking.packets.outgoing
 
         public override PacketId MessageId => PacketId.FAILURE;
 
-        public override Packet CreateInstance()
-        {
-            return new Failure();
-        }
-
         protected override void Write(NWriter wtr)
         {
             wtr.Write(ErrorId);

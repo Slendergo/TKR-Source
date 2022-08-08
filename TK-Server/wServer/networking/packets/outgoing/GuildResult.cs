@@ -9,11 +9,6 @@ namespace wServer.networking.packets.outgoing
 
         public override PacketId MessageId => PacketId.GUILDRESULT;
 
-        public override Packet CreateInstance()
-        {
-            return new GuildResult();
-        }
-
         protected override void Write(NWriter wtr)
         {
             wtr.Write(Success);

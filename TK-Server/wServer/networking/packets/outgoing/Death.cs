@@ -10,11 +10,6 @@ namespace wServer.networking.packets.outgoing
 
         public override PacketId MessageId => PacketId.DEATH;
 
-        public override Packet CreateInstance()
-        {
-            return new Death();
-        }
-
         protected override void Write(NWriter wtr)
         {
             wtr.Write(AccountId);

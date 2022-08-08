@@ -10,11 +10,6 @@ namespace wServer.networking.packets.outgoing
 
         public override PacketId MessageId => PacketId.TRADESTART;
 
-        public override Packet CreateInstance()
-        {
-            return new TradeStart();
-        }
-
         protected override void Write(NWriter wtr)
         {
             wtr.Write((short)MyItems.Length);

@@ -11,26 +11,9 @@ namespace wServer.networking.packets
 {
     public abstract class Packet
     {
-        public static Dictionary<PacketId, Packet> Packets = new Dictionary<PacketId, Packet>();
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
-        static Packet()
-        {
-            foreach (var i in typeof(Packet).Assembly.GetTypes())
-                if (typeof(Packet).IsAssignableFrom(i) && !i.IsAbstract)
-                {
-                    Packet pkt = (Packet)Activator.CreateInstance(i);
-                    if (!(pkt is OutgoingMessage))
-                        Packets.Add(pkt.MessageId, pkt);
-                }
-        }
-
         public abstract PacketId MessageId { get; }
-        public Client Owner { get; private set; }
-
-        public abstract Packet CreateInstance();
-
-        public void SetOwner(Client client) => Owner = client;
 
         public void WriteNew(NWriter wtr) => Write(wtr);
 

@@ -15,11 +15,6 @@ namespace wServer.networking.packets.outgoing
 
         public override PacketId MessageId => PacketId.DAMAGE;
 
-        public override Packet CreateInstance()
-        {
-            return new Damage();
-        }
-
         protected override void Write(NWriter wtr)
         {
             wtr.Write(TargetId);

@@ -9,11 +9,6 @@ namespace wServer.networking.packets.outgoing
 
         public override PacketId MessageId => PacketId.GLOBAL_NOTIFICATION;
 
-        public override Packet CreateInstance()
-        {
-            return new GlobalNotification();
-        }
-
         protected override void Write(NWriter wtr)
         {
             wtr.Write(Type);

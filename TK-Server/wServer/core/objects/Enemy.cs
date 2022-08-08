@@ -148,7 +148,7 @@ namespace wServer.core.objects
                 DamageCounter?.HitBy(from, time, null, effDmg);
 
                 if (HP < 0 && World != null)
-                    Death(time);
+                    Death(ref time);
 
                 return effDmg;
             }

@@ -40,7 +40,7 @@ namespace wServer.core.objects
             if (!hasItem)
                 World.LeaveWorld(this);
 
-            base.Tick(time);
+            base.Tick(ref time);
         }
 
         protected override void ExportStats(IDictionary<StatDataType, object> stats)

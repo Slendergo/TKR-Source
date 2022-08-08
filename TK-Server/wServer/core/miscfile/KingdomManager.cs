@@ -523,7 +523,7 @@ namespace wServer.core
                                 continue;
 
                             if (e.ObjectDesc.ObjectId.Contains("Talisman King's Golden Guardian"))
-                                e.Death(time);
+                                e.Death(ref time);
                         }
 
                         MovePeopleNaerby(time);

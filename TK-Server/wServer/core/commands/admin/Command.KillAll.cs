@@ -31,7 +31,7 @@ namespace wServer.core.commands
                 foreach(var enemy in eligibleEnemies)
                 {
                     enemy.Spawned = true;
-                    enemy.Death(time);
+                    enemy.Death(ref time);
                     total++;
                 }
                 player.SendInfo($"{total} enem{(total > 1 ? "ies" : "y")} killed!");

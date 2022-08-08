@@ -17,7 +17,7 @@ namespace wServer.core.commands
                 foreach (var entity in player.World.Enemies.Values)
                     if (entity.Spawned)
                     {
-                        entity.Death(time);
+                        entity.Death(ref time);
                         total++;
                     }
 

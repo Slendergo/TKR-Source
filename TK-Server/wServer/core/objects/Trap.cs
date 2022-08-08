@@ -56,7 +56,7 @@ namespace wServer.core.objects
             if (monsterNearby)
                 Explode(time);
 
-            base.Tick(time);
+            base.Tick(ref time);
         }
 
         private void Explode(TickTime time)

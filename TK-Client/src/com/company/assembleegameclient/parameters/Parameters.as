@@ -102,7 +102,6 @@ public class Parameters {
         setDefaultKey("reconMarket", KeyCodes.UNSET);
         setDefaultKey("reconVault", KeyCodes.UNSET);
         setDefaultKey("reconRealm", KeyCodes.UNSET);
-        setDefaultKey("reconCloth", KeyCodes.UNSET);
         setDefaultKey("moveLeft", KeyCodes.A);
         setDefaultKey("moveRight", KeyCodes.D);
         setDefaultKey("moveUp", KeyCodes.W);

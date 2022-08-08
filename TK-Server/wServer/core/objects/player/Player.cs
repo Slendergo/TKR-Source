@@ -1601,7 +1601,7 @@ namespace wServer.core.objects
             {
                 Host = "",
                 Port = GameServer.Configuration.serverInfo.port,
-                GameId = World.Nexus,
+                GameId = World.NEXUS_ID,
                 Name = "Nexus"
             });
             var party = DbPartySystem.Get(Client.Account.Database, Client.Account.PartyId);

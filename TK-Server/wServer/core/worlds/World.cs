@@ -22,21 +22,12 @@ namespace wServer.core.worlds
 {
     public class World
     {
-        public const int ClothBazaar = -10;
-        public const int GuildHall = -7;
-        public const int Nexus = -2;
-        public const int NexusExplanation = -3;
-        public const int Test = -6;
-        public const int Tutorial = -1;
-        public const int Poseidon = -420;
-
-        protected static readonly Random Rand = new Random((int)DateTime.Now.Ticks);
-
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
-        private static int _entityInc;
+        public const int NEXUS_ID = -2;
+        public const int TEST_ID = -6;
 
-        private long _elapsedTime;
+        private static int NextEntityId;
 
         public int Id { get; }
         public string IdName { get; set; }
@@ -45,7 +36,6 @@ namespace wServer.core.worlds
         public bool Persist { get; private set; }
         public int MaxPlayers { get; private set; }
 
-        public bool IsNotCombatMapArea => Id == Nexus || this is VaultWorld || Id == GuildHall || Id == NexusExplanation;
         public bool IsRealm { get; set; }
         public bool AllowTeleport { get; protected set; }
         public int Background { get; protected set; }
@@ -54,6 +44,8 @@ namespace wServer.core.worlds
         public bool Closed { get; set; }
         public int Difficulty { get; protected set; }
         public bool Deleted { get; protected set; }
+
+        private long Lifetime { get; set; }
 
         public Wmap Map { get; private set; }
         public GameServer GameServer { get; set; }
@@ -218,8 +210,6 @@ namespace wServer.core.worlds
             return entity.Id;
         }
 
-        public long GetAge() => _elapsedTime;
-
         public string GetDisplayName() => DisplayName != null && DisplayName.Length > 0 ? DisplayName : IdName;
 
         public Entity GetEntity(int id)
@@ -239,7 +229,7 @@ namespace wServer.core.worlds
             return null;
         }
 
-        public int GetNextEntityId() => Interlocked.Increment(ref _entityInc);
+        public int GetNextEntityId() => Interlocked.Increment(ref NextEntityId);
 
         public IEnumerable<Player> GetPlayers() => Players.Values;
 
@@ -374,8 +364,8 @@ namespace wServer.core.worlds
 
             if (Map == null)
             {
-                Map = new Wmap(GameServer.Resources.GameData);
-                Interlocked.Add(ref _entityInc, Map.Load(dTiles, _entityInc));
+                Map = new Wmap(this);
+                Interlocked.Add(ref NextEntityId, Map.Load(dTiles, NextEntityId));
             }
             else
                 Map.ResetTiles();
@@ -387,8 +377,8 @@ namespace wServer.core.worlds
         {
             if (Map == null)
             {
-                Map = new Wmap(GameServer.Resources.GameData);
-                Interlocked.Add(ref _entityInc, Map.Load(dat, _entityInc));
+                Map = new Wmap(this);
+                Interlocked.Add(ref NextEntityId, Map.Load(dat, NextEntityId));
             }
             else
                 Map.ResetTiles();
@@ -477,7 +467,7 @@ namespace wServer.core.worlds
 
         public bool Update(ref TickTime time)
         {
-            _elapsedTime += time.ElaspedMsDelta;
+            Lifetime += time.ElaspedMsDelta;
 
             WorldBranch.Update(ref time);
 
@@ -572,7 +562,7 @@ namespace wServer.core.worlds
             if (Deleted)
                 return false;
 
-            if (_elapsedTime >= 60000)
+            if (Lifetime >= 60000)
                 return true;
             return false;
         }

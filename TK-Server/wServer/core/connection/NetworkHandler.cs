@@ -348,7 +348,7 @@ namespace wServer.networking.connection
                 {
                     Host = "",
                     Port = Client.GameServer.Configuration.serverInfo.port,
-                    GameId = World.Nexus,
+                    GameId = World.NEXUS_ID,
                     Name = "Nexus"
                 });
             }

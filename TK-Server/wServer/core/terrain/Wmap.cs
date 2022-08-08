@@ -15,43 +15,27 @@ namespace wServer.core.terrain
 {
     public class Wmap
     {
-        public Dictionary<IntPoint, TileRegion> Regions;
+        public Dictionary<IntPoint, TileRegion> Regions { get; } = new Dictionary<IntPoint, TileRegion>();
 
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
-        private XmlData _dat;
-        private Tuple<IntPoint, ushort, string>[] _entities;
-        private WmapTile[,] _tiles;
-
-        public Wmap(XmlData dat)
-        {
-            _dat = dat;
-
-            Regions = new Dictionary<IntPoint, TileRegion>();
-        }
-
+        private WmapTile[,] Tiles;
+        private readonly World World;
+        private XmlData XmlData => World.GameServer.Resources.GameData;
+        private Tuple<IntPoint, ushort, string>[] Entities;
+        
         public int Height { get; private set; }
         public int Width { get; private set; }
-        public WmapTile this[int x, int y] { get => !Contains(x, y) ? null : _tiles[x, y]; set => _tiles[x, y] = value; }
+        public WmapTile this[int x, int y] { get => !Contains(x, y) ? null : Tiles[x, y]; set => Tiles[x, y] = value; }
 
-        public bool Contains(IntPoint point)
-        {
-            var x = point.X;
-            var y = point.Y;
-
-            if (x < 0 || x >= Width || y < 0 || y >= Height)
-                return false;
-
-            return true;
-        }
+        public Wmap(World world) => World = world;
 
         public bool Contains(float x, float y) => !(x < 0 || x >= Width || y < 0 || y >= Height);
-
         public bool Contains(int x, int y) => !(x < 0 || x >= Width || y < 0 || y >= Height);
 
         public IEnumerable<Entity> InstantiateEntities(GameServer manager, IntPoint offset = new IntPoint())
         {
-            foreach (var i in _entities)
+            foreach (var i in Entities)
             {
                 var entity = Entity.Resolve(manager, i.Item2);
                 entity.Move(i.Item1.X + 0.5f + offset.X, i.Item1.Y + 0.5f + offset.Y);
@@ -135,7 +119,7 @@ namespace wServer.core.terrain
             var ver = stream.ReadByte();
 
             if (ver < 0 || ver > 2)
-                throw new NotSupportedException("WMap version " + ver);
+                throw new NotSupportedException($"WMap version {ver}");
 
             using (var rdr = new BinaryReader(new ZlibStream(stream, CompressionMode.Decompress)))
             {
@@ -144,19 +128,19 @@ namespace wServer.core.terrain
 
                 for (var i = 0; i < c; i++)
                 {
-                    var desc = new WmapDesc
+                    var desc = new WmapDesc()
                     {
                         TileId = rdr.ReadUInt16()
                     };
 
-                    desc.TileDesc = _dat.Tiles[desc.TileId];
+                    desc.TileDesc = XmlData.Tiles[desc.TileId];
 
                     var obj = rdr.ReadString();
 
                     desc.ObjType = 0;
 
-                    if (_dat.IdToObjectType.ContainsKey(obj))
-                        desc.ObjType = _dat.IdToObjectType[obj];
+                    if (XmlData.IdToObjectType.ContainsKey(obj))
+                        desc.ObjType = XmlData.IdToObjectType[obj];
                     else if (!string.IsNullOrEmpty(obj))
                         Log.Warn($"Object: {obj} not found.");
 
@@ -167,14 +151,14 @@ namespace wServer.core.terrain
                     if (ver == 1)
                         desc.Elevation = rdr.ReadByte();
 
-                    _dat.ObjectDescs.TryGetValue(desc.ObjType, out desc.ObjDesc);
+                    XmlData.ObjectDescs.TryGetValue(desc.ObjType, out desc.ObjDesc);
                     dict.Add(desc);
                 }
 
                 Width = rdr.ReadInt32();
                 Height = rdr.ReadInt32();
 
-                _tiles = new WmapTile[Width, Height];
+                Tiles = new WmapTile[Width, Height];
 
                 var enCount = 0;
                 var entities = new List<Tuple<IntPoint, ushort, string>>();
@@ -206,14 +190,14 @@ namespace wServer.core.terrain
                             tile.ObjId = idBase + enCount;
                         }
 
-                        _tiles[x, y] = tile;
+                        Tiles[x, y] = tile;
                     }
 
                 for (var x = 0; x < Width; x++)
                     for (var y = 0; y < Height; y++)
-                        _tiles[x, y].InitConnection(this, x, y);
+                        Tiles[x, y].InitConnection(this, x, y);
 
-                _entities = entities.ToArray();
+                Entities = entities.ToArray();
 
                 return enCount;
             }
@@ -232,23 +216,23 @@ namespace wServer.core.terrain
                     var dTile = tiles[i, j];
                     var wTile = new WmapDesc
                     {
-                        TileId = _dat.IdToTileType[dTile.TileType.Name]
+                        TileId = XmlData.IdToTileType[dTile.TileType.Name]
                     };
-                    wTile.TileDesc = _dat.Tiles[wTile.TileId];
+                    wTile.TileDesc = XmlData.Tiles[wTile.TileId];
                     wTile.Terrain = TerrainType.None;
                     wTile.Region = (dTile.Region == null) ? TileRegion.None : (TileRegion)Enum.Parse(typeof(TileRegion), dTile.Region);
 
                     if (dTile.Object != null)
                     {
-                        wTile.ObjType = _dat.IdToObjectType[dTile.Object.ObjectType.Name];
+                        wTile.ObjType = XmlData.IdToObjectType[dTile.Object.ObjectType.Name];
                         wTile.ObjCfg = dTile.Object.ToString();
-                        _dat.ObjectDescs.TryGetValue(wTile.ObjType, out wTile.ObjDesc);
+                        XmlData.ObjectDescs.TryGetValue(wTile.ObjType, out wTile.ObjDesc);
                     }
 
                     wTiles[i, j] = wTile;
                 }
 
-            _tiles = new WmapTile[Width, Height];
+            Tiles = new WmapTile[Width, Height];
 
             var enCount = 0;
             var entities = new List<Tuple<IntPoint, ushort, string>>();
@@ -277,14 +261,14 @@ namespace wServer.core.terrain
                         tile.ObjId = idBase + enCount;
                     }
 
-                    _tiles[x, y] = tile;
+                    Tiles[x, y] = tile;
                 }
 
             for (var x = 0; x < Width; x++)
                 for (var y = 0; y < Height; y++)
-                    _tiles[x, y].InitConnection(this, x, y);
+                    Tiles[x, y].InitConnection(this, x, y);
 
-            _entities = entities.ToArray();
+            Entities = entities.ToArray();
 
             return enCount;
         }
@@ -303,7 +287,7 @@ namespace wServer.core.terrain
                         continue;
 
                     var tile = world.Map[projX, projY];
-                    var spTile = _tiles[x, y];
+                    var spTile = Tiles[x, y];
 
                     if (spTile.TileId == 255)
                         continue;
@@ -335,7 +319,7 @@ namespace wServer.core.terrain
             for (var y = 0; y < Height; y++)
                 for (var x = 0; x < Width; x++)
                 {
-                    var t = _tiles[x, y];
+                    var t = Tiles[x, y];
 
                     t.Reset();
 

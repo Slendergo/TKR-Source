@@ -14,7 +14,6 @@ namespace wServer.core.terrain
         public int ObjId;
         public ushort ObjType;
         public TileRegion Region;
-        public long SightRegion = 1;
         public bool Spawned;
         public TerrainType Terrain;
         public TileDesc TileDesc;

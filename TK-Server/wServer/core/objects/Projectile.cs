@@ -45,7 +45,10 @@ namespace wServer.core.objects
         {
             var elapsed = time.TotalElapsedMs - CreationTime;
             if (elapsed > ProjDesc.LifetimeMS)
+            {
+                World.LeaveWorld(this);
                 return true;
+            }
             return false;
         }
 

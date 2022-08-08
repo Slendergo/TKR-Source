@@ -12,7 +12,6 @@ namespace wServer.logic
 
         [ThreadStatic]
         private static Random rand;
-
         protected static Random Random => rand ?? (rand = new Random());
 
         public static ushort GetObjType(string id)

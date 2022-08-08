@@ -8,18 +8,18 @@ using wServer.core.worlds;
 
 namespace wServer.core
 {
-    public class PortalMonitor
+    public class KingdomPortalMonitor
     {
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
-        private GameServer _manager;
-        private Dictionary<int, Portal> _portals;
-        private Random _rand;
-        private World _world;
+        private readonly GameServer GameServer;
+        private readonly Dictionary<int, Portal> Portals = new Dictionary<int, Portal>();
+        private readonly World World;
 
-        private object access = new object();
+        private readonly object Access = new object();
+        private Random _rand = new Random();
 
-        private static List<string> _realmNames = new List<string>()
+        private static readonly List<string> Names = new List<string>()
         {
             "Meanem Empire",
             "Aidisha Empire",
@@ -43,37 +43,35 @@ namespace wServer.core
             "Daphethen Dynasty"
         };
 
-        public PortalMonitor(GameServer manager, World world)
+        public KingdomPortalMonitor(GameServer manager, World world)
         {
-            _manager = manager;
-            _world = world;
-            _portals = new Dictionary<int, Portal>();
-            _rand = new Random();
+            GameServer = manager;
+            World = world;
         }
 
         public async void CreateNewRealm()
         {
-            var world = await _manager.WorldManager.CreateNewRealmAsync();
+            var world = await GameServer.WorldManager.CreateNewRealmAsync();
             AddPortal(world.Id);
         }
 
         public bool AddPortal(int worldId)
         {
-            lock (access)
+            lock (Access)
             {
-                if (_portals.ContainsKey(worldId))
+                if (Portals.ContainsKey(worldId))
                     return false;
 
-                var currWorld = _manager.WorldManager.GetWorld(worldId);
+                var currWorld = GameServer.WorldManager.GetWorld(worldId);
                 if (currWorld == null)
                     return false;
 
-                currWorld.DisplayName = _realmNames[_rand.Next(0, _realmNames.Count)];
-                _realmNames.Remove(currWorld.DisplayName);
+                currWorld.DisplayName = Names[_rand.Next(0, Names.Count)];
+                Names.Remove(currWorld.DisplayName);
 
                 var pos = GetRandPosition();
 
-                var portal = new Portal(_manager, 0x0712, null)
+                var portal = new Portal(GameServer, 0x0712, null)
                 {
                     WorldInstance = currWorld,
                     Name = currWorld.GetDisplayName() + " (0)"
@@ -82,33 +80,33 @@ namespace wServer.core
 
                 portal.Move(pos.X + 0.5f, pos.Y + 0.5f);
 
-                _world.EnterWorld(portal);
-                _portals.Add(worldId, portal);
+                World.EnterWorld(portal);
+                Portals.Add(worldId, portal);
             }
             return true;
         }
 
         public bool PortalIsOpen(int worldId)
         {
-            if (_world == null)
+            if (World == null)
                 return false;
 
-            lock (access)
+            lock (Access)
             {
-                if (!_portals.ContainsKey(worldId))
+                if (!Portals.ContainsKey(worldId))
                     return false;
-                return _portals[worldId].Usable && !_portals[worldId].Locked;
+                return Portals[worldId].Usable && !Portals[worldId].Locked;
             }
         }
 
         public void ClosePortal(int worldId)
         {
-            lock (access)
+            lock (Access)
             {
-                if (!_portals.ContainsKey(worldId))
+                if (!Portals.ContainsKey(worldId))
                     return;
 
-                var portal = _portals[worldId];
+                var portal = Portals[worldId];
                 if (portal.Usable)
                     portal.Usable = false;
             }
@@ -116,16 +114,16 @@ namespace wServer.core
 
         public void OpenPortal(int worldId)
         {
-            lock (access)
+            lock (Access)
             {
                 try
                 {
-                    if (!_portals.ContainsKey(worldId))
+                    if (!Portals.ContainsKey(worldId))
                         return;
 
-                    var portal = _portals[worldId];
+                    var portal = Portals[worldId];
                     if (!portal.Usable)
-                        _portals[worldId].Usable = true;
+                        Portals[worldId].Usable = true;
                 }
                 catch (Exception e)
                 {
@@ -137,9 +135,9 @@ namespace wServer.core
 
         public void Update(ref TickTime time)
         {
-            lock (access)
+            lock (Access)
             {
-                foreach (var p in _portals.Values)
+                foreach (var p in Portals.Values)
                 {
                     if (p.WorldInstance == null || p.WorldInstance.Deleted)
                         continue;
@@ -156,16 +154,16 @@ namespace wServer.core
 
         public void RemovePortal(int worldId)
         {
-            lock (access)
+            lock (Access)
             {
-                if (!_portals.TryGetValue(worldId, out var portal))
+                if (!Portals.TryGetValue(worldId, out var portal))
                     return;
 
                 var name = portal.WorldInstance.DisplayName;
-                _realmNames.Add(name);
+                Names.Add(name);
 
-                _world.LeaveWorld(portal);
-                _portals.Remove(worldId);
+                World.LeaveWorld(portal);
+                Portals.Remove(worldId);
             }
         }
 
@@ -173,9 +171,9 @@ namespace wServer.core
         {
             var x = 0;
             var y = 0;
-            var realmPortalRegions = _world.Map.Regions.Where(t => t.Value == TileRegion.Realm_Portals).ToArray();
+            var realmPortalRegions = World.Map.Regions.Where(t => t.Value == TileRegion.Realm_Portals).ToArray();
 
-            if (realmPortalRegions.Length > _portals.Count)
+            if (realmPortalRegions.Length > Portals.Count)
             {
                 KeyValuePair<IntPoint, TileRegion> sRegion;
 
@@ -183,7 +181,7 @@ namespace wServer.core
                 {
                     sRegion = realmPortalRegions.ElementAt(_rand.Next(0, realmPortalRegions.Length));
                 } 
-                while (_portals.Values.Any(p => p.X == sRegion.Key.X + 0.5f && p.Y == sRegion.Key.Y + 0.5f));
+                while (Portals.Values.Any(p => p.X == sRegion.Key.X + 0.5f && p.Y == sRegion.Key.Y + 0.5f));
 
                 x = sRegion.Key.X;
                 y = sRegion.Key.Y;

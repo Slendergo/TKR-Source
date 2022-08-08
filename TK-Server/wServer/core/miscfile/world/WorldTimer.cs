@@ -6,7 +6,7 @@ namespace wServer.core
     public class WorldTimer
     {
         private readonly Action<World, TickTime> Callback;
-        private readonly Func<World, TickTime, bool> funcCallback;
+        private readonly Func<World, TickTime, bool> FuncCallback;
         private readonly int Total;
         private int Remaining;
 
@@ -19,7 +19,7 @@ namespace wServer.core
         public WorldTimer(int tickMs, Func<World, TickTime, bool> callback)
         {
             Remaining = Total = tickMs;
-            funcCallback = callback;
+            FuncCallback = callback;
         }
 
         public bool Tick(World world, ref TickTime time)
@@ -33,7 +33,7 @@ namespace wServer.core
                 Callback.Invoke(world, time);
                 return true;
             }
-            return funcCallback.Invoke(world, time);
+            return FuncCallback.Invoke(world, time);
         }
 
         public void Reset()

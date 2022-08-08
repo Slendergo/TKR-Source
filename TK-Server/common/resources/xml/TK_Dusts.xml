@@ -1,0 +1,107 @@
+﻿<Dusts>
+	<ItemDust>
+		
+		<!-- Tiered Weapons-->
+		<ItemPool>
+			<TieredItem weight="650" tier="0">Weapon</TieredItem>
+			<TieredItem weight="600" tier="1">Weapon</TieredItem>
+			<TieredItem weight="550" tier="2">Weapon</TieredItem>
+			<TieredItem weight="500" tier="3">Weapon</TieredItem>
+			<TieredItem weight="450" tier="4">Weapon</TieredItem>
+			<TieredItem weight="400" tier="5">Weapon</TieredItem>
+			<TieredItem weight="350" tier="6">Weapon</TieredItem>
+			<TieredItem weight="300" tier="7">Weapon</TieredItem>
+			<TieredItem weight="250" tier="8">Weapon</TieredItem>
+			<TieredItem weight="200" tier="9">Weapon</TieredItem>
+			<TieredItem weight="150" tier="10">Weapon</TieredItem>
+			<TieredItem weight="100" tier="11">Weapon</TieredItem>
+			<TieredItem weight="50" tier="12">Weapon</TieredItem>
+		</ItemPool>
+		
+		<!-- Tiered Armours -->
+		<ItemPool>
+			<TieredItem weight="650" tier="0">Armor</TieredItem>
+			<TieredItem weight="600" tier="1">Armor</TieredItem>
+			<TieredItem weight="550" tier="2">Armor</TieredItem>
+			<TieredItem weight="500" tier="3">Armor</TieredItem>
+			<TieredItem weight="450" tier="4">Armor</TieredItem>
+			<TieredItem weight="400" tier="5">Armor</TieredItem>
+			<TieredItem weight="350" tier="6">Armor</TieredItem>
+			<TieredItem weight="300" tier="7">Armor</TieredItem>
+			<TieredItem weight="250" tier="8">Armor</TieredItem>
+			<TieredItem weight="200" tier="9">Armor</TieredItem>
+			<TieredItem weight="150" tier="10">Armor</TieredItem>
+			<TieredItem weight="100" tier="11">Armor</TieredItem>
+			<TieredItem weight="50" tier="12">Armor</TieredItem>
+		</ItemPool>
+		
+		<!-- Tiered Abilities -->
+		<ItemPool>
+			<TieredItem weight="350" tier="0">Ability</TieredItem>
+			<TieredItem weight="300" tier="1">Ability</TieredItem>
+			<TieredItem weight="250" tier="2">Ability</TieredItem>
+			<TieredItem weight="200" tier="3">Ability</TieredItem>
+			<TieredItem weight="150" tier="4">Ability</TieredItem>
+			<TieredItem weight="100" tier="5">Ability</TieredItem>
+			<TieredItem weight="50" tier="6">Ability</TieredItem>
+		</ItemPool>
+		
+		<!-- Tiered Rings -->
+		<ItemPool>
+			<TieredItem weight="350" tier="0" >Ring</TieredItem>
+			<TieredItem weight="300" tier="1">Ring</TieredItem>
+			<TieredItem weight="250" tier="2">Ring</TieredItem>
+			<TieredItem weight="200" tier="3">Ring</TieredItem>
+			<TieredItem weight="150" tier="4">Ring</TieredItem>
+			<TieredItem weight="100" tier="5">Ring</TieredItem>
+			<TieredItem weight="50" tier="6">Ring</TieredItem>
+		</ItemPool>
+		
+		<!-- Defined By Name -->
+		<ItemPool> <!-- all will have equal weight chance -->
+			<Item weight="1">Skull-splitter Sword</Item>
+			<Item weight="1">Vinesword</Item>
+			<Item weight="1">Frostbite</Item>
+			<Item weight="1">Staff of Adoration</Item>
+			<Item weight="1">Staff of Horrific Knowledge</Item>
+			<Item weight="1">Staff of Yuletide Carols</Item>
+			<Item weight="1">An Icicle</Item>
+			<Item weight="1">Dagger of the Hasteful Rabbit</Item>
+			<Item weight="1">Dagger of the Terrible Talon</Item>
+			<Item weight="1">Dagger of the Amethyst Prism</Item>
+			<Item weight="1">Heartfind Dagger</Item>
+			<Item weight="1">Wand of Egg-cellence</Item>
+			<Item weight="1">Wand of Ancient Terror</Item>
+			<Item weight="1">Wand of Egg-cellence</Item>
+			<Item weight="1">Present Dispensing Wand</Item>
+			<Item weight="1">Wand of Budding Romance</Item>
+			<Item weight="1">Bow of Eternal Frost</Item>
+			<Item weight="1">Bow of Nightmares</Item>
+			<Item weight="1">Arbiter's Wrath</Item>
+			<Item weight="1">Diamond Bladed Katana</Item>
+			<Item weight="1">Corrupted Cleaver</Item>
+			<Item weight="1">Salju</Item>
+		</ItemPool>
+	</ItemDust>
+
+	<MagicDust>
+		<ItemPool>
+			<Item weight="5">Special Dust</Item>
+			<Item weight="10">Miscellaneous Dust</Item>
+			<Item weight="25">Item Dust</Item>
+			<Item weight="50">Potion Dust</Item>
+		</ItemPool>
+	</MagicDust>
+
+	<SpecialDust>
+		
+	</SpecialDust>
+	
+	<MiscDust>
+	
+	</MiscDust>
+	
+	<PotionDust>
+		
+	</PotionDust>
+</Dusts>

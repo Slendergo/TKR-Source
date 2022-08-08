@@ -4,7 +4,7 @@ namespace wServer.core.worlds.logic
 {
     public sealed class NexusWorld : World
     {
-        public PortalMonitor PortalMonitor { get; private set; }
+        public KingdomPortalMonitor PortalMonitor { get; private set; }
 
         public NexusWorld(int id, WorldResource resource) : base(id, resource)
         {
@@ -12,7 +12,7 @@ namespace wServer.core.worlds.logic
 
         public override void Init()
         {
-            PortalMonitor = new PortalMonitor(GameServer, this);
+            PortalMonitor = new KingdomPortalMonitor(GameServer, this);
             base.Init();
         }
 

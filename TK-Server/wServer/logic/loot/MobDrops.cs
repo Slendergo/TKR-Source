@@ -111,10 +111,10 @@ namespace wServer.logic.loot
         private static readonly int[] RingT = new int[] { 9 };
         private static readonly int[] PotionT = new int[] { 10 };
 
-        public TierLoot(byte tier, ItemType type, double probability = 1, int numRequired = 0, double threshold = 0)
+        public static int[] GetSlotTypes(ItemType itemType)
         {
             int[] types;
-            switch (type)
+            switch (itemType)
             {
                 case ItemType.Weapon:
                     types = WeaponT; break;
@@ -129,8 +129,14 @@ namespace wServer.logic.loot
                 case ItemType.Talisman:
                     types = TalismanT; break;
                 default:
-                    throw new NotSupportedException(type.ToString());
+                    throw new NotSupportedException(itemType.ToString());
             }
+            return types;
+        }
+
+        public TierLoot(byte tier, ItemType type, double probability = 1, int numRequired = 0, double threshold = 0)
+        {
+            var types = GetSlotTypes(type);
 
             var items = XmlData.Items
                 .Where(item => Array.IndexOf(types, item.Value.SlotType) != -1)

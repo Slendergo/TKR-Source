@@ -21,11 +21,102 @@ using wServer.utils;
 
 namespace wServer.core
 {
+    public sealed class ItemDustPools
+    {
+        public List<WeightedCollection<Item>> Pools { get; private set; } = new List<WeightedCollection<Item>>();
+        
+        public void AddPool(List<KeyValuePair<Item, int>> items)
+        {
+            var weightedCollection = new WeightedCollection<Item>();
+            foreach(var item in items)
+                weightedCollection.AddItem(item.Key, item.Value);
+            Pools.Add(weightedCollection);
+        }
+
+        public Item GetRandom(Random random)
+        {
+            var pool = Pools[random.Next(Pools.Count)];
+            return pool.GetRandom(random);
+        }
+    }
+
+    public sealed class ItemDustWeights
+    {
+        public ItemDustPools ItemDusts { get; private set; } = new ItemDustPools();
+        public ItemDustPools MagicDust { get; private set; } = new ItemDustPools();
+        public ItemDustPools SpecialDust { get; private set; } = new ItemDustPools();
+        public ItemDustPools MiscDust { get; private set; } = new ItemDustPools();
+        public ItemDustPools PotionDust { get; private set; } = new ItemDustPools();
+
+        private readonly GameServer GameServer;
+
+        public ItemDustWeights(GameServer gameServer)
+        {
+            GameServer = gameServer;
+        }
+
+        public void Initialize()
+        {
+            var xmlData = GameServer.Resources.GameData;
+            foreach (var items in xmlData.ItemDusts.ItemPools)
+                ItemDusts.AddPool(GetItems(items, xmlData));
+            foreach (var items in xmlData.ItemDusts.MagicPools)
+                MagicDust.AddPool(GetItems(items, xmlData));
+            foreach (var items in xmlData.ItemDusts.SpecialPools)
+                SpecialDust.AddPool(GetItems(items, xmlData));
+            foreach (var items in xmlData.ItemDusts.MiscPools)
+                MiscDust.AddPool(GetItems(items, xmlData));
+            foreach (var items in xmlData.ItemDusts.PotionPools)
+                PotionDust.AddPool(GetItems(items, xmlData));
+
+            var random = new Random();
+            var Items = new Dictionary<string, int>();
+            for(var i = 0; i < 100000; i++)
+            {
+                var item = MagicDust.GetRandom(random);
+                if (!Items.ContainsKey(item.ObjectId))
+                    Items[item.ObjectId] = 0;
+                Items[item.ObjectId]++;
+            }
+
+            Items = Items.OrderByDescending(_ => _.Value).ToDictionary(_ => _.Key, _ => _.Value);
+            foreach (var item in Items)
+                Console.Write(item.Key + " " + item.Value + $" 1/{(100000.0f / item.Value)}" + " | ");
+        }
+
+        private List<KeyValuePair<Item, int>> GetItems(ItemPool items, XmlData xmlData)
+        {
+            var poolItems = new List<KeyValuePair<Item, int>>();
+            foreach (var tieredItem in items.TieredItems)
+            {
+                var slotTypes = TierLoot.GetSlotTypes(tieredItem.ItemType);
+
+                var tieredItems = xmlData.Items
+                    .Where(item => Array.IndexOf(slotTypes, item.Value.SlotType) != -1)
+                    .Where(item => item.Value.Tier == tieredItem.Tier)
+                    .Select(item => item.Value);
+
+                foreach (var item in tieredItems)
+                    poolItems.Add(new KeyValuePair<Item, int>(item, tieredItem.Weight));
+            }
+
+            foreach (var namedItem in items.NamedItems)
+            {
+                var foundItem = xmlData.Items.Values.FirstOrDefault(item => item.ObjectId == namedItem.ItemName);
+                if (foundItem == null)
+                    throw new Exception("Invalid Name of item");
+                poolItems.Add(new KeyValuePair<Item, int>(foundItem, namedItem.Weight));
+            }
+            return poolItems;
+        }
+    }
+
     public sealed class GameServer
     {
         public string InstanceId { get; private set; }
         public ServerConfig Configuration { get; private set; }
         public Resources Resources { get; private set; }
+        public ItemDustWeights ItemDustWeights { get; private set; }
         public Database Database { get; private set; }
         public MarketSweeper MarketSweeper { get; private set; }
         public ConnectionManager ConnectionManager { get; private set; }
@@ -37,6 +128,7 @@ namespace wServer.core
         public ISManager InterServerManager { get; private set; }
         public WorldManager WorldManager { get; private set; }
         public SignalListener SignalListener { get; private set; }
+
         private bool Running { get; set; } = true;
 
         public DateTime RestartCloseTime { get; private set; }
@@ -48,6 +140,7 @@ namespace wServer.core
 
             Configuration = ServerConfig.ReadFile(args.Length == 1 ? args[0] : "wServer.json");
             Resources = new Resources(Configuration.serverSettings.resourceFolder, true, null, ExportXMLS);
+            ItemDustWeights = new ItemDustWeights(this);
             Database = new Database(Resources, Configuration);
             MarketSweeper = new MarketSweeper(Database);
             ConnectionManager = new ConnectionManager(this);
@@ -91,6 +184,9 @@ namespace wServer.core
 
             InstanceId = Configuration.serverInfo.instanceId = Guid.NewGuid().ToString();
             Console.WriteLine($"[Set] InstanceId [{InstanceId}]");
+
+            Console.WriteLine("[Initialize] ItemDustWeights");
+            ItemDustWeights.Initialize();
 
             Console.WriteLine("[Initialize] CommandManager");
             CommandManager.Initialize(this);

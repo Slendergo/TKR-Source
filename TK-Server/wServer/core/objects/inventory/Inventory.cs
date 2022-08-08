@@ -178,10 +178,9 @@ namespace wServer.core
             }
         }
 
-        public Item[] ConvertObjectType2ItemArray(IEnumerable<ushort> a)
+        public Item[] ConvertTypeToItemArray(IEnumerable<ushort> a)
         {
             var gameData = (Parent as Entity).GameServer.Resources.GameData;
-
             return a.Select(_ => (_ == 0xffff || !gameData.Items.ContainsKey(_)) ? null : gameData.Items[_]).ToArray();
         }
     }

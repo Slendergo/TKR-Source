@@ -248,6 +248,7 @@
     <Compile Include="resources\ConditionEffectIndex.cs" />
     <Compile Include="resources\ConditionEffects.cs" />
     <Compile Include="resources\CurrencyType.cs" />
+    <Compile Include="resources\ItemPool.cs" />
     <Compile Include="resources\Item.cs" />
     <Compile Include="resources\ItemType.cs" />
     <Compile Include="resources\NewAccounts.cs" />
@@ -1038,6 +1039,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\xml\TK_Classes.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\TK_Dusts.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\xml\TK_Dyes.xml">

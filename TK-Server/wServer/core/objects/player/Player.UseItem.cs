@@ -41,137 +41,15 @@ namespace wServer.core.objects
 
         public void AEItemDust(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
-            ushort[] tierSwords = { 0x221c, 0x228e, 0x258c }; //reskins
-            ushort[] tierStaff = { 0x228b, 0xf13, 0x237e, }; //reskins
-            ushort[] tierDagger = { 0x237d, 0x899, 0xf11, 0x232a, 0x228d };//reskins
-            ushort[] tierWands = { 0x2296, 0xf10, 0x237c, 0x228c };//reskins
-            ushort[] tierBows = { 0x228f, 0x258a, 0xf12 };//reskins
-            ushort[] tierKatana = { 0xcee, 0x228a, 0xf14, 0x237f };//reskins
-            var gameData = GameServer.Resources.GameData;
-            var TieredChance = _random.NextDouble();
-            ushort itemValue;
             var entity = World.GetEntity(objId);
-            var container = entity as Container;
-            if (TieredChance <= 0.10)
-            {
-                var itemChance = _random.Next(0, 5);
-                switch (itemChance)
-                {
-                    case 0:
-                        itemValue = 0x9c6; //Dagger T13
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        SendInfo($"Used a Item Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                        break;
 
-                    case 1:
-                        itemValue = 0x9cc; //Bow T13
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        SendInfo($"Used a Item Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                        break;
-
-                    case 2:
-                        itemValue = 0x9d1; //Staff T13
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        SendInfo($"Used a Item Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                        break;
-
-                    case 3:
-                        itemValue = 0x9ca; //Wand T13
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        SendInfo($"Used a Item Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                        break;
-
-                    case 4:
-                        itemValue = 0x9c8; //Sword T13
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        SendInfo($"Used a Item Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                        break;
-
-                    case 5:
-                        itemValue = 0x4959; //Katana T13
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        SendInfo($"Used a Item Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                        break;
-                }
-            }
+            var dustItem = World.GameServer.ItemDustWeights.ItemDusts.GetRandom(_random);
+            if (entity is Container container)
+                container.Inventory[slot] = dustItem;
             else
-            {
-                var tierChance = _random.Next(0, 5);
-                switch (tierChance)
-                {
-                    case 0:
-                        itemValue = tierSwords[_random.Next(tierSwords.Length)];
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        SendInfo($"Used a Item Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                        break;
+                Inventory[slot] = dustItem;
 
-                    case 1:
-                        itemValue = tierStaff[_random.Next(tierStaff.Length)];
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        SendInfo($"Used a Item Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                        break;
-
-                    case 2:
-                        itemValue = tierDagger[_random.Next(tierDagger.Length)];
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        SendInfo($"Used a Item Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                        break;
-
-                    case 3:
-                        itemValue = tierWands[_random.Next(tierWands.Length)];
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        SendInfo($"Used a Item Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                        break;
-
-                    case 4:
-                        itemValue = tierBows[_random.Next(tierBows.Length)];
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        SendInfo($"Used a Item Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                        break;
-
-                    case 5:
-                        itemValue = tierKatana[_random.Next(tierKatana.Length)];
-                        if (container != null)
-                            container.Inventory[slot] = gameData.Items[itemValue];
-                        else
-                            Inventory[slot] = gameData.Items[itemValue];
-                        SendInfo($"Used a Item Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-                        break;
-                }
-            }
+            SendInfo($"Used a Item Dust and obtained a {item.DisplayName}");
         }
 
         public void AEResetSkillTree(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
@@ -1466,6 +1344,7 @@ namespace wServer.core.objects
                     SonicBlaster(i);
                 }
             }
+            
             var pkts = new List<OutgoingMessage>();
             var healthAmount = eff.Amount;
             //if (BigSkill10)
@@ -1475,56 +1354,25 @@ namespace wServer.core.objects
 
         private void AEMagicDust(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
-            //Potion dust = 0x4995, ItemDust = 0x4993, Miscellaneous dust = 0x4994, Special dust = 0x4996
-            var gameData = GameServer.Resources.GameData;
-            var entity = World.GetEntity(objId);
-            var containerItem = entity as Container;
-            ushort itemValue;
-            var itemchance = _random.NextDouble();
             if (Inventory.Data[slot] == null)
             {
                 SendError("Something wrong happens with your Magic Dust!");
                 return;
             }
+         
             if (Inventory.Data[slot].Stack < Inventory.Data[slot].MaxStack)
                 return;
 
-            if (itemchance <= 0.05) //Le sumo el porcentaje que quiero que el proximo item tenga (0.05% Special Dust, 0.20% Miscellaneous Dust (0.05 + 0.15(Chance del MDust) = 0.20)
-            {
-                itemValue = 0x4996; //Special Dust
-                if (containerItem != null)
-                    containerItem.Inventory[slot] = gameData.Items[itemValue];
-                else
-                    Inventory[slot] = gameData.Items[itemValue];
-                SendInfo($"Used a Magic Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-            }
-            else if (itemchance <= 0.20)
-            {
-                itemValue = 0x4994; //Miscellaneous Dust
-                if (containerItem != null)
-                    containerItem.Inventory[slot] = gameData.Items[itemValue];
-                else
-                    Inventory[slot] = gameData.Items[itemValue];
-                SendInfo($"Used a Magic Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-            }
-            else if (itemchance <= 0.40)
-            {
-                itemValue = 0x4993; //Item Dust
-                if (containerItem != null)
-                    containerItem.Inventory[slot] = gameData.Items[itemValue];
-                else
-                    Inventory[slot] = gameData.Items[itemValue];
-                SendInfo($"Used a Magic Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-            }
-            else if (itemchance <= 1)
-            {
-                itemValue = 0x4995; //Potion Dust
-                if (containerItem != null)
-                    containerItem.Inventory[slot] = gameData.Items[itemValue];
-                else
-                    Inventory[slot] = gameData.Items[itemValue];
-                SendInfo($"Used a Magic Dust and obtained a {gameData.Items[itemValue].DisplayName ?? gameData.Items[itemValue].ObjectId}");
-            }
+            var entity = World.GetEntity(objId);
+
+            var dustItem = World.GameServer.ItemDustWeights.ItemDusts.GetRandom(_random);
+            if (entity is Container container)
+                container.Inventory[slot] = dustItem;
+            else
+                Inventory[slot] = dustItem;
+            
+            SendInfo($"Used a Magic Dust and obtained a {dustItem.DisplayName ?? dustItem.ObjectId}");
+
             Inventory.Data[slot] = null;
             InvokeStatChange((StatDataType)((int)StatDataType.InventoryData0 + slot), Inventory.Data[slot]?.GetData() ?? "{}");
         }

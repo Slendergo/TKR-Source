@@ -490,8 +490,8 @@ namespace wServer.core.worlds
                 foreach (var pet in Pets.Values)
                     pet.Tick(ref time);
 
-                foreach (var i in Projectiles)
-                    i.Value.Tick(ref time);
+                foreach (var i in Projectiles.Values)
+                    i.Update(ref time);
 
                 if (Players.Values.Count > 0)
                 {

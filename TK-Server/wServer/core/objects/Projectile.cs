@@ -41,15 +41,19 @@ namespace wServer.core.objects
             _used = true;
         }
 
-        public bool Update(ref TickTime time)
+        public void OnDestroy() => World?.LeaveWorld(this);
+
+        public override void Tick(ref TickTime time)
         {
             var elapsed = time.TotalElapsedMs - CreationTime;
+
             if (elapsed > ProjDesc.LifetimeMS)
             {
-                World.LeaveWorld(this);
-                return true;
+                OnDestroy();
+                return;
             }
-            return false;
+
+            base.Tick(ref time);
         }
 
         public Position GetPosition(long elapsedTicks)

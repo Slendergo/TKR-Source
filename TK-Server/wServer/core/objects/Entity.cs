@@ -254,6 +254,9 @@ namespace wServer.core.objects
                 X = pos.X,
                 Y = pos.Y
             };
+
+            if (_projectiles[ret.ProjectileId] != null)
+                _projectiles[ret.ProjectileId].OnDestroy();
             _projectiles[ret.ProjectileId] = ret;
             return ret;
         }

@@ -223,8 +223,8 @@ public class SocketServer {
 
             try {
                 message.read(this.data);
-                if(messageId != 12)
-                    trace("Reading Message: " + message + ", ID: " + messageId);
+//                if(messageId != 12)
+//                    trace("Reading Message: " + message + ", ID: " + messageId);
             }
             catch (error:Error) {
                 logError(message, error);

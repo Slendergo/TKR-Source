@@ -491,7 +491,7 @@ namespace wServer.core.worlds
                     pet.Tick(ref time);
 
                 foreach (var i in Projectiles.Values)
-                    i.Update(ref time);
+                    i.Tick(ref time);
 
                 if (Players.Values.Count > 0)
                 {

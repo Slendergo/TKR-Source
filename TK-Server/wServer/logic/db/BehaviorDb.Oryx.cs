@@ -12,7 +12,7 @@ namespace wServer.logic
     partial class BehaviorDb
     {
         private _ Oryx = () => Behav()
-        .Init("Oryx the Mad God 2",
+        .Init("The Talisman King",
             new State(
                 new ScaleHP2(35),
                 new State("CheckPlayer",
@@ -34,16 +34,11 @@ namespace wServer.logic
                     new Wander(.05),
                     new Shoot(25, projectileIndex: 0, count: 8, shootAngle: 45, coolDown: 1500, coolDownOffset: 1500),
                     new Shoot(25, projectileIndex: 1, count: 3, shootAngle: 10, coolDown: 1000, coolDownOffset: 1000),
-                    new Shoot(25, projectileIndex: 2, count: 3, shootAngle: 10, predictive: 0.2, coolDown: 1000,
-                        coolDownOffset: 1000),
-                    new Shoot(25, projectileIndex: 3, count: 2, shootAngle: 10, predictive: 0.4, coolDown: 1000,
-                        coolDownOffset: 1000),
-                    new Shoot(25, projectileIndex: 4, count: 3, shootAngle: 10, predictive: 0.6, coolDown: 1000,
-                        coolDownOffset: 1000),
-                    new Shoot(25, projectileIndex: 5, count: 2, shootAngle: 10, predictive: 0.8, coolDown: 1000,
-                        coolDownOffset: 1000),
-                    new Shoot(25, projectileIndex: 6, count: 3, shootAngle: 10, predictive: 1, coolDown: 1000,
-                        coolDownOffset: 1000),
+                    new Shoot(25, projectileIndex: 2, count: 3, shootAngle: 10, predictive: 0.2, coolDown: 1000, coolDownOffset: 1000),
+                    new Shoot(25, projectileIndex: 3, count: 2, shootAngle: 10, predictive: 0.4, coolDown: 1000, coolDownOffset: 1000),
+                    new Shoot(25, projectileIndex: 4, count: 3, shootAngle: 10, predictive: 0.6, coolDown: 1000, coolDownOffset: 1000),
+                    new Shoot(25, projectileIndex: 5, count: 2, shootAngle: 10, predictive: 0.8, coolDown: 1000, coolDownOffset: 1000),
+                    new Shoot(25, projectileIndex: 6, count: 3, shootAngle: 10, predictive: 1, coolDown: 1000, coolDownOffset: 1000),
                     new Taunt(1, 6000, "Puny mortals! My {HP} HP will annihilate you!"),
                     new Spawn("Henchman of Oryx", 5, coolDown: 5000),
                     new HpLessTransition(.2, "prepareRage")
@@ -62,16 +57,11 @@ namespace wServer.logic
                     new Shoot(25, 30, projectileIndex: 8, coolDown: 90000001, coolDownOffset: 8500),
                     new Shoot(25, projectileIndex: 0, count: 8, shootAngle: 45, coolDown: 1500, coolDownOffset: 1500),
                     new Shoot(25, projectileIndex: 1, count: 3, shootAngle: 10, coolDown: 1000, coolDownOffset: 1000),
-                    new Shoot(25, projectileIndex: 2, count: 3, shootAngle: 10, predictive: 0.2, coolDown: 1000,
-                        coolDownOffset: 1000),
-                    new Shoot(25, projectileIndex: 3, count: 2, shootAngle: 10, predictive: 0.4, coolDown: 1000,
-                        coolDownOffset: 1000),
-                    new Shoot(25, projectileIndex: 4, count: 3, shootAngle: 10, predictive: 0.6, coolDown: 1000,
-                        coolDownOffset: 1000),
-                    new Shoot(25, projectileIndex: 5, count: 2, shootAngle: 10, predictive: 0.8, coolDown: 1000,
-                        coolDownOffset: 1000),
-                    new Shoot(25, projectileIndex: 6, count: 3, shootAngle: 10, predictive: 1, coolDown: 1000,
-                        coolDownOffset: 1000),
+                    new Shoot(25, projectileIndex: 2, count: 3, shootAngle: 10, predictive: 0.2, coolDown: 1000, coolDownOffset: 1000),
+                    new Shoot(25, projectileIndex: 3, count: 2, shootAngle: 10, predictive: 0.4, coolDown: 1000, coolDownOffset: 1000),
+                    new Shoot(25, projectileIndex: 4, count: 3, shootAngle: 10, predictive: 0.6, coolDown: 1000, coolDownOffset: 1000),
+                    new Shoot(25, projectileIndex: 5, count: 2, shootAngle: 10, predictive: 0.8, coolDown: 1000, coolDownOffset: 1000),
+                    new Shoot(25, projectileIndex: 6, count: 3, shootAngle: 10, predictive: 1, coolDown: 1000, coolDownOffset: 1000),
                     new TossObject("Monstrosity Scarab", 7, 0, coolDown: 1000),
                     new Taunt(1, 6000, "Puny mortals! My {HP} HP will annihilate you!")
                     )
@@ -105,7 +95,7 @@ namespace wServer.logic
                 )
             )
 
-        .Init("Oryx the Mad God 2OA",
+        .Init("The Talisman KingOA",
             new State(
                 //    new ScaleHP(50000),
                 new State("Attack",
@@ -383,7 +373,7 @@ namespace wServer.logic
             new State(
                 new State("Attack",
                     new Prioritize(
-                        new Orbit(1.2, 2, target: "Oryx the Mad God 2", radiusVariance: 1),
+                        new Orbit(1.2, 2, target: "The Talisman King", radiusVariance: 1),
                         new Wander(.3)
                         ),
                     new Shoot(15, predictive: 1, coolDown: 2500),
@@ -405,7 +395,7 @@ namespace wServer.logic
                 new State("Attack",
                     new TimedTransition(10000, "Wait"),
                     new Prioritize(
-                        new Orbit(1.1, 6, target: "Oryx the Mad God 2", radiusVariance: 3),
+                        new Orbit(1.1, 6, target: "The Talisman King", radiusVariance: 3),
                         new Follow(.1, acquireRange: 15),
                         new Wander(.2)
                         ),
@@ -433,7 +423,7 @@ namespace wServer.logic
             new State(
                 new State("Attack",
                     new Prioritize(
-                        new Protect(1, "Oryx the Mad God 2", protectionRange: 4, reprotectRange: 3),
+                        new Protect(1, "The Talisman King", protectionRange: 4, reprotectRange: 3),
                         new Charge(speed: 1, range: 15, coolDown: 2000),
                         new Protect(1, "Henchman of Oryx"),
                         new StayBack(1, 15),
@@ -445,7 +435,7 @@ namespace wServer.logic
         .Init("Aberrant of Oryx",
             new State(
                 new Prioritize(
-                    new Protect(.2, "Oryx the Mad God 2"),
+                    new Protect(.2, "The Talisman King"),
                     new Wander(.7)
                     ),
                 new State("Wait", new PlayerWithinTransition(15, "Attack")),
@@ -508,7 +498,7 @@ namespace wServer.logic
         .Init("Bile of Oryx",
             new State(
                 new Prioritize(
-                    new Protect(.4, "Oryx the Mad God 2", protectionRange: 5, reprotectRange: 4),
+                    new Protect(.4, "The Talisman King", protectionRange: 5, reprotectRange: 4),
                     new Wander(.5)
                     )//,
                      //new Spawn("Purple Goo", maxChildren: 20, initialSpawn: 0, coolDown: 1000)

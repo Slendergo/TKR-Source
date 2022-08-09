@@ -143,7 +143,7 @@ namespace wServer.core.objects
                     Kill = HP < 0,
                     BulletId = 0,
                     ObjectId = from.Id
-                }, this, PacketPriority.Low);
+                }, this);
 
                 DamageCounter?.HitBy(from, time, null, effDmg);
 
@@ -219,7 +219,7 @@ namespace wServer.core.objects
                     Kill = HP < 0,
                     BulletId = projectile.ProjectileId,
                     ObjectId = projectile.ProjectileOwner.Self.Id
-                }, this, projectile.ProjectileOwner as Player, PacketPriority.Low);
+                }, this, projectile.ProjectileOwner as Player);
 
                 DamageCounter.HitBy(projectile.ProjectileOwner as Player, time, projectile, dmg);
 
@@ -291,14 +291,14 @@ namespace wServer.core.objects
                     TargetObjectId = Id,
                     Color = new ARGB(0xFFFFFF00),
                     Pos1 = new Position() { X = 1.5f }
-                }, player, PacketPriority.Low);
+                }, player);
                 player.World.BroadcastIfVisible(new Notification()
                 {
                     ObjectId = Id,
                     PlayerId = player.Id,
                     Message = "Demonized!",
                     Color = new ARGB(0xFFFF0000)
-                }, player, PacketPriority.Low);
+                }, player);
             }
         }
 
@@ -368,8 +368,8 @@ namespace wServer.core.objects
                         }
                     };
 
-                    World.BroadcastIfVisible(pkts[0], player, PacketPriority.Low);
-                    World.BroadcastIfVisible(pkts[1], player, PacketPriority.Low);
+                    World.BroadcastIfVisible(pkts[0], player);
+                    World.BroadcastIfVisible(pkts[1], player);
                 }
             }
         }

@@ -61,7 +61,7 @@ namespace wServer.core.objects
                     TargetId = Id,
                     DamageAmount = (ushort)dmg,
                     Kill = HP <= 0,
-                }, this, this, PacketPriority.Low);
+                }, this, this);
                 anticheat = true;
             }
         }
@@ -101,7 +101,7 @@ namespace wServer.core.objects
                         TargetId = Id,
                         DamageAmount = (ushort)dmg,
                         Kill = HP <= 0,
-                    }, this, this, PacketPriority.Low);
+                    }, this, this);
 
                     l = time.TotalElapsedMs;
                 }

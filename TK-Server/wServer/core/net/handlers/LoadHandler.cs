@@ -21,16 +21,16 @@ namespace wServer.core.net.handlers
 
             if (target == null)
             {
-                client.SendFailure($"Unable to find world: {client.TargetWorld}", Failure.MessageWithDisconnect);
+                client.SendFailure($"Unable to find world: {client.TargetWorld}", FailureMessage.MessageWithDisconnect);
                 return;
             }
 
             client.Character = client.GameServer.Database.LoadCharacter(client.Account, charId);
 
             if (client.Character == null)
-                client.SendFailure("Failed to load character", Failure.MessageWithDisconnect);
+                client.SendFailure("Failed to load character", FailureMessage.MessageWithDisconnect);
             else if (client.Character.Dead)
-                client.SendFailure("Character is dead", Failure.MessageWithDisconnect);
+                client.SendFailure("Character is dead", FailureMessage.MessageWithDisconnect);
             else
             {
                 client.Player = new Player(client);
@@ -38,7 +38,7 @@ namespace wServer.core.net.handlers
                 {
                     CharId = client.Character.CharId,
                     ObjectId = target.EnterWorld(client.Player)
-                }, PacketPriority.High);
+                });
                 client.State = ProtocolState.Ready;
                 client.GameServer.ConnectionManager.ClientConnected(client);
                 //client.Player?.PlayerUpdate.SendUpdate();

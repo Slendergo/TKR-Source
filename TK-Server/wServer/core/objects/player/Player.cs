@@ -607,7 +607,7 @@ namespace wServer.core.objects
                 Kill = HP <= 0,
                 BulletId = 0,
                 ObjectId = src.Id
-            }, this, this, PacketPriority.Low);
+            }, this, this);
 
             if (HP <= 0)
                 Death(src.ObjectDesc.DisplayId ??
@@ -655,7 +655,7 @@ namespace wServer.core.objects
                 AccountId = AccountId,
                 CharId = Client.Character.CharId,
                 KilledBy = killer
-            }, PacketPriority.High);
+            });
 
             World.Timers.Add(new WorldTimer(1000, (w, t) =>
             {
@@ -738,7 +738,7 @@ namespace wServer.core.objects
                 Kill = HP <= 0,
                 BulletId = projectile.ProjectileId,
                 ObjectId = projectile.ProjectileOwner.Self.Id
-            }, this, this, PacketPriority.Normal);
+            }, this, this);
 
             if (HP <= 0)
                 Death(projectile.ProjectileOwner.Self.ObjectDesc.DisplayId ?? projectile.ProjectileOwner.Self.ObjectDesc.ObjectId, projectile.ProjectileOwner.Self);
@@ -811,7 +811,7 @@ namespace wServer.core.objects
                 {
                     if (!(ex is EndOfStreamException))
                         SLogger.Instance.Error("Error processing packet ({0}, {1}, {2})\n{3}", (incomingMessage.Client.Account != null) ? incomingMessage.Client.Account.Name : "", incomingMessage.Client.IpAddress, incomingMessage.Client.Id, ex);
-                    incomingMessage.Client.SendFailure("An error occurred while processing data from your client.", Failure.MessageWithDisconnect);
+                    incomingMessage.Client.SendFailure("An error occurred while processing data from your client.", FailureMessage.MessageWithDisconnect);
                 }
             }
         }
@@ -984,7 +984,7 @@ namespace wServer.core.objects
                 }
                 else
                 {
-                    _.Client.SendPackets(tpPkts, PacketPriority.Low);
+                    _.Client.SendPackets(tpPkts);
                 }
             });
 
@@ -1330,7 +1330,7 @@ namespace wServer.core.objects
                     TargetObjectId = Id,
                     Color = new ARGB(0xff00A6FF),
                     Pos1 = new Position() { X = 3 }
-                }, this, PacketPriority.Low);
+                }, this);
 
                 World.BroadcastIfVisible(new Notification()
                 {
@@ -1338,7 +1338,7 @@ namespace wServer.core.objects
                     Color = new ARGB(0xFF00A6FF),
                     PlayerId = Id,
                     ObjectId = Id
-                }, this, PacketPriority.Low);
+                }, this);
 
                 ActivateHealMp(this, 30 * Stats[1] / 100);
                 setCooldownTime(15, slot);
@@ -1359,7 +1359,7 @@ namespace wServer.core.objects
                         TargetObjectId = Id,
                         Color = new ARGB(0xFF98ff98),
                         Pos1 = new Position() { X = 3 }
-                    }, this, PacketPriority.Low);
+                    }, this);
 
                     World.BroadcastIfVisible(new Notification()
                     {
@@ -1367,7 +1367,7 @@ namespace wServer.core.objects
                         Color = new ARGB(0xFF98ff98),
                         PlayerId = Id,
                         ObjectId = Id
-                    }, this, PacketPriority.Low);
+                    }, this);
                     //TO BE DECIDED
                     Size = 300;
                 }
@@ -1431,14 +1431,14 @@ namespace wServer.core.objects
                     TargetObjectId = Id,
                     Color = new ARGB(0xffA1A1A1),
                     Pos1 = new Position() { X = 3 }
-                }, this, PacketPriority.Low);
+                }, this);
                 World.BroadcastIfVisible(new Notification()
                 {
                     Message = "God Bless!",
                     Color = new ARGB(0xFFFFFFFF),
                     PlayerId = Id,
                     ObjectId = Id
-                }, this, PacketPriority.Low);
+                }, this);
 
                 ApplyConditionEffect(ConditionEffectIndex.Invulnerable, 3000);
                 setCooldownTime(5, slot);
@@ -1456,7 +1456,7 @@ namespace wServer.core.objects
                     TargetObjectId = Id,
                     Color = new ARGB(0xffffffff),
                     Pos1 = new Position() { X = 3 }
-                }, this, PacketPriority.Low);
+                }, this);
 
                 World.BroadcastIfVisible(new Notification()
                 {
@@ -1464,7 +1464,7 @@ namespace wServer.core.objects
                     Color = new ARGB(0xFFFFFFFF),
                     PlayerId = Id,
                     ObjectId = Id
-                }, this, PacketPriority.Low);
+                }, this);
                 setCooldownTime(30, slot);
             }
         }
@@ -1514,7 +1514,7 @@ namespace wServer.core.objects
                         Color = new ARGB(0xFF00D5D8),
                         PlayerId = Id,
                         ObjectId = Id
-                    }, this, PacketPriority.Low);
+                    }, this);
 
                     ApplyConditionEffect(ConditionEffectIndex.Berserk, 3000);
                     setCooldownTime(10, Slot);
@@ -1531,7 +1531,7 @@ namespace wServer.core.objects
                         Color = new ARGB(0xFF717171),
                         PlayerId = Id,
                         ObjectId = Id
-                    }, this, PacketPriority.Low);
+                    }, this);
 
                     ApplyConditionEffect(ConditionEffectIndex.Armored, 5000);
                     setCooldownTime(10, Slot);
@@ -1548,7 +1548,7 @@ namespace wServer.core.objects
                         Color = new ARGB(0xFFFF4600),
                         PlayerId = Id,
                         ObjectId = Id
-                    }, this, PacketPriority.Low);
+                    }, this);
 
                     ApplyConditionEffect(ConditionEffectIndex.Damaging, 3000);
                     setCooldownTime(10, Slot);
@@ -1566,7 +1566,7 @@ namespace wServer.core.objects
                     TargetObjectId = Id,
                     Color = new ARGB(0xffff0000),
                     Pos1 = new Position() { X = 3 }
-                }, this, PacketPriority.Low);
+                }, this);
 
                 World.BroadcastIfVisible(new Notification()
                 {
@@ -1574,7 +1574,7 @@ namespace wServer.core.objects
                     Color = new ARGB(0xFFFF0000),
                     PlayerId = Id,
                     ObjectId = Id
-                }, this, PacketPriority.Low);
+                }, this);
                 //TO BE DECIDED
                 this.Client.SendPacket(new GlobalNotification() { Text = "monkeyKing" });
                 setCooldownTime(10, slot);
@@ -1665,7 +1665,7 @@ namespace wServer.core.objects
                         Color = new ARGB(0xFF00FF00),
                         PlayerId = Id,
                         ObjectId = Id
-                    }, this, PacketPriority.Low);
+                    }, this);
 
                     World.Timers.Add(new WorldTimer(5000, (world, t) =>
                     {
@@ -1686,7 +1686,7 @@ namespace wServer.core.objects
                         Color = new ARGB(0xFFFF0000),
                         PlayerId = Id,
                         ObjectId = Id
-                    }, this, PacketPriority.Low);
+                    }, this);
 
                     setCooldownTime(10, slot);
                     ApplyConditionEffect(ConditionEffectIndex.Berserk, 3000);
@@ -1722,7 +1722,7 @@ namespace wServer.core.objects
                         Color = new ARGB(0xFFFFFFFF),
                         PlayerId = Id,
                         ObjectId = Id
-                    }, this, PacketPriority.Low);
+                    }, this);
 
                     setCooldownTime(7, slot);
                     ApplyConditionEffect(NegativeEffs);
@@ -1744,7 +1744,7 @@ namespace wServer.core.objects
                     TargetObjectId = Id,
                     Color = new ARGB(0xff6F00C0),
                     Pos1 = new Position() { X = 3 }
-                }, this, PacketPriority.Low);
+                }, this);
 
                 World.BroadcastIfVisible(new Notification()
                 {
@@ -1752,7 +1752,7 @@ namespace wServer.core.objects
                     Color = new ARGB(0xFF9300FF),
                     PlayerId = Id,
                     ObjectId = Id
-                }, this, PacketPriority.Low);
+                }, this);
 
                 ApplyConditionEffect(ConditionEffectIndex.Invisible, 6000);
                 ApplyConditionEffect(ConditionEffectIndex.Speedy, 6000);

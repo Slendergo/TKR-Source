@@ -61,7 +61,7 @@ namespace wServer.logic.behaviors
                             Effect = _effect,
                             OrigType = host.ObjectType,
                             Color = new ARGB(_color)
-                        }, host, PacketPriority.Low);
+                        }, host);
                         world.AOE(target, _radius, true, p =>
                         {
                             (p as IPlayer).Damage(_damage + enemyClasified, host);

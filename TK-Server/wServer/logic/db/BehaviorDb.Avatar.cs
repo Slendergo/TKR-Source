@@ -1544,7 +1544,7 @@ namespace wServer.logic
                 ),
             new Threshold(0.03,
                 new ItemLoot("Tablet of the King's Avatar", 0.0014, threshold: 0.03),
-                new ItemLoot("Gem of Life", 0.0006, threshold: 0.03),
+                new ItemLoot("Talisman of Regeneration", 0.0006, threshold: 0.03),
                 new ItemLoot("Ashen Spine", 0.0014, threshold: 0.03),
                 new ItemLoot("Flaking Husk", 0.0014, threshold: 0.03)
                 ),

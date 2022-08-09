@@ -93,19 +93,19 @@ namespace wServer.core
 
                 if (!ReconnectInfo.TryRemove(acc.AccountId, out var rInfo))
                 {
-                    client.SendFailure("Invalid reconnect.", Failure.MessageWithDisconnect);
+                    client.SendFailure("Invalid reconnect.", FailureMessage.MessageWithDisconnect);
                     return;
                 }
 
                 if (!gameId.Equals(rInfo.Destination))
                 {
-                    client.SendFailure("Invalid reconnect destination.", Failure.MessageWithDisconnect);
+                    client.SendFailure("Invalid reconnect destination.", FailureMessage.MessageWithDisconnect);
                     return;
                 }
 
                 if (!connectionInfo.Key.SequenceEqual(rInfo.Key))
                 {
-                    client.SendFailure("Invalid reconnect key.", Failure.MessageWithDisconnect);
+                    client.SendFailure("Invalid reconnect key.", FailureMessage.MessageWithDisconnect);
                     return;
                 }
             }
@@ -156,13 +156,13 @@ namespace wServer.core
 
             if (world is TestWorld && !acc.Admin)
             {
-                client.SendFailure("Only players with admin permissions can make test maps.", Failure.MessageWithDisconnect);
+                client.SendFailure("Only players with admin permissions can make test maps.", FailureMessage.MessageWithDisconnect);
                 return;
             }
 
             if (!world.AllowedAccess(client))
             {
-                client.SendFailure("Invalid Access Permissions [If you this this is a bug report it :)].", Failure.MessageWithDisconnect);
+                client.SendFailure("Invalid Access Permissions [If you this this is a bug report it :)].", FailureMessage.MessageWithDisconnect);
                 return;
             }
 

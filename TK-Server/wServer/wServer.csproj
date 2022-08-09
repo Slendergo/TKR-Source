@@ -83,6 +83,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>false</Optimize>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>..\bin\x64\wServer\Release\</OutputPath>
@@ -442,7 +443,7 @@
     <Compile Include="networking\packets\outgoing\Damage.cs" />
     <Compile Include="networking\packets\outgoing\Death.cs" />
     <Compile Include="networking\packets\outgoing\EnemyShoot.cs" />
-    <Compile Include="networking\packets\outgoing\Failure.cs" />
+    <Compile Include="networking\packets\outgoing\FailureMessage.cs" />
     <Compile Include="networking\packets\outgoing\File.cs" />
     <Compile Include="networking\packets\outgoing\GlobalNotification.cs" />
     <Compile Include="networking\packets\outgoing\Goto.cs" />

@@ -46,7 +46,7 @@ namespace wServer.core.objects
                     ObjectId = Id,
                     Color = new ARGB(0xFF00FF00),
                     Message = "Quest Complete!"
-                }, this, PacketPriority.Low);
+                }, this);
                 Stars = GetStars();
             }
             else if (newFame != Fame)
@@ -56,7 +56,7 @@ namespace wServer.core.objects
                     ObjectId = Id,
                     Color = new ARGB(0xFFE25F00),
                     Message = "+" + (newFame - Fame) + "Fame"
-                }, this, PacketPriority.Low);
+                }, this);
             }
 
             Fame = newFame;
@@ -85,7 +85,7 @@ namespace wServer.core.objects
                     ObjectId = Id,
                     Color = new ARGB(0xFF00FF00),
                     Message = "Quest Complete!"
-                }, this, PacketPriority.Low);
+                }, this);
                 Quest = null;
             }
 

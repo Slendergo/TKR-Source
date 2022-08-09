@@ -36,7 +36,7 @@ namespace wServer.core.objects
                     Color = new ARGB(0xff9000ff),
                     TargetObjectId = Id,
                     Pos1 = new Position() { X = radius / 2 }
-                }, this, PacketPriority.Low);
+                }, this);
 
                 p++;
 
@@ -67,7 +67,7 @@ namespace wServer.core.objects
                 Color = new ARGB(0xff9000ff),
                 TargetObjectId = Id,
                 Pos1 = new Position() { X = radius }
-            }, this, PacketPriority.Low);
+            }, this);
 
             this.AOE(radius, false, enemy =>
             {

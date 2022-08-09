@@ -55,14 +55,14 @@ namespace wServer.core.net.handlers
             // first check: admin server
             if (config.serverInfo.adminOnly && !acc.Admin && !cManager.IsWhitelisted(acc.AccountId))
             {
-                client.SendFailure("You must be whitelisted to join this server.", Failure.MessageNoDisconnect);
+                client.SendFailure("You must be whitelisted to join this server.", FailureMessage.MessageNoDisconnect);
                 return;
             }
 
             // second check: donor server
             if (config.serverSettings.donorOnly && acc.Rank < minDonorRank)
             {
-                client.SendFailure($"You must be with rank {minDonorRank} on your account to jooin this server.", Failure.MessageNoDisconnect);
+                client.SendFailure($"You must be with rank {minDonorRank} on your account to jooin this server.", FailureMessage.MessageNoDisconnect);
                 return;
             }
 
@@ -89,7 +89,7 @@ namespace wServer.core.net.handlers
 
             if (!version.Equals(helloData.BuildVersion))
             {
-                client.SendFailure(version, Failure.ClientUpdateNeeded);
+                client.SendFailure(version, FailureMessage.ClientUpdateNeeded);
                 return null;
             }
 #endif
@@ -103,25 +103,25 @@ namespace wServer.core.net.handlers
 
                 if (s2 != RegisterStatus.OK)
                 {
-                    client.SendFailure("Bad Login", Failure.MessageWithDisconnect);
+                    client.SendFailure("Bad Login", FailureMessage.MessageWithDisconnect);
                     return null;
                 }
             }
             if (s1 == DbLoginStatus.InvalidCredentials)
             {
-                client.SendFailure("Email or Password is incorrect.", Failure.MessageWithDisconnect);
+                client.SendFailure("Email or Password is incorrect.", FailureMessage.MessageWithDisconnect);
                 return null;
             }
 
             if (acc.Banned)
             {
-                client.SendFailure("Account banned.", Failure.MessageWithDisconnect);
+                client.SendFailure("Account banned.", FailureMessage.MessageWithDisconnect);
                 return null;
             }
 
             if (db.IsIpBanned(client.IpAddress))
             {
-                client.SendFailure("IP banned.", Failure.MessageWithDisconnect);
+                client.SendFailure("IP banned.", FailureMessage.MessageWithDisconnect);
                 return null;
             }
 

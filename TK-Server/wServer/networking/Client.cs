@@ -4,14 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
-using System.Threading;
 using System.Threading.Tasks;
 using wServer.core;
 using wServer.core.objects;
 using wServer.core.worlds.logic;
 using wServer.networking.connection;
-using wServer.networking.packets;
-using wServer.core.net.handlers;
 using wServer.networking.packets.outgoing;
 
 namespace wServer.networking
@@ -43,7 +40,6 @@ namespace wServer.networking
         public GameServer GameServer { get; private set; }
         public int Id { get; internal set; }
         public string IpAddress { get; private set; }
-        public bool IsLagging { get; private set; }
         public Player Player { get; internal set; }
         public ClientRandom Random { get; internal set; }
         public Socket Socket { get; private set; }
@@ -63,6 +59,71 @@ namespace wServer.networking
             }
 
             _handler.BeginHandling(Socket);
+        }
+
+        public bool IsReady()
+        {
+            if (State == ProtocolState.Disconnected)
+                return false;
+            if (State == ProtocolState.Ready && Player?.World == null)
+                return false;
+            return true;
+        }
+
+
+        public async void SendFailure(string text, int errorId = FailureMessage.MessageWithDisconnect)
+        {
+            SendPacket(new FailureMessage(errorId, text));
+
+            if (errorId == FailureMessage.MessageWithDisconnect || errorId == FailureMessage.ForceCloseGame)
+            {
+                await Task.Delay(1000);
+                Disconnect($"SendFailure: {text}");
+            }
+        }
+
+        public void SendPacket(OutgoingMessage pkt)
+        {
+            if (State != ProtocolState.Disconnected)
+                _handler.SendPacket(pkt);
+        }
+        
+        public void SendPackets(IEnumerable<OutgoingMessage> pkts)
+        {
+            if (State != ProtocolState.Disconnected)
+                _handler.SendPackets(pkts);
+        }
+
+        private void Save() // only when disconnect
+        {
+            var acc = Account;
+
+            if (Character == null || Player == null || Player.World is TestWorld)
+            {
+                GameServer.Database.ReleaseLock(acc);
+                return;
+            }
+
+            Player.SaveToCharacter();
+            acc?.RefreshLastSeen();
+            acc?.FlushAsync();
+
+            if (GameServer != null && GameServer.Database != null && Player.FameCounter != null && Player.FameCounter.ClassStats != null)
+                if (GameServer.Database.SaveCharacter(acc, Character, Player.FameCounter.ClassStats, true))
+                    GameServer.Database.ReleaseLock(acc);
+        }
+
+        public void Reconnect(Reconnect pkt)
+        {
+            if (Account == null)
+            {
+                Disconnect("Tried to reconnect an client with a null account...");
+                return;
+            }
+
+            //Log.Trace("Reconnecting client ({0}) @ {1} to {2}...", Account.Name, IP, pkt.Name);
+            GameServer.ConnectionManager.AddReconnect(Account.AccountId, pkt);
+            SendPacket(pkt);
         }
 
         public void Disconnect(string reason = "")
@@ -97,30 +158,6 @@ namespace wServer.networking
             }
         }
 
-        public bool IsReady()
-        {
-            if (State == ProtocolState.Disconnected)
-                return false;
-
-            if (State == ProtocolState.Ready && Player?.World == null)
-                return false;
-
-            return true;
-        }
-
-        public void Reconnect(Reconnect pkt)
-        {
-            if (Account == null)
-            {
-                Disconnect("Tried to reconnect an client with a null account...");
-                return;
-            }
-
-            //Log.Trace("Reconnecting client ({0}) @ {1} to {2}...", Account.Name, IP, pkt.Name);
-            GameServer.ConnectionManager.AddReconnect(Account.AccountId, pkt);
-            SendPacket(pkt, PacketPriority.High);
-        }
-
         public void Reset()
         {
             Id = 0; // needed so that inbound packets that are currently queued are discarded.
@@ -136,54 +173,6 @@ namespace wServer.networking
             //_pongTime = -1;
 
             _handler.Reset();
-        }
-
-        public async void SendFailure(string text, int errorId = Failure.MessageWithDisconnect)
-        {
-            SendPacket(new Failure()
-            {
-                ErrorId = errorId,
-                ErrorDescription = text
-            });
-
-            if (errorId == Failure.MessageWithDisconnect || errorId == Failure.ForceCloseGame)
-            {
-                var t = Task.Delay(1000);
-                await t;
-
-                Disconnect($"SendFailure: {text}");
-            }
-        }
-
-        public void SendPacket(OutgoingMessage pkt, PacketPriority priority = PacketPriority.Normal)
-        {
-            if (State != ProtocolState.Disconnected)
-                _handler.SendPacket(pkt, priority);
-        }
-
-        public void SendPackets(IEnumerable<OutgoingMessage> pkts, PacketPriority priority = PacketPriority.Normal)
-        {
-            if (State != ProtocolState.Disconnected)
-                _handler.SendPackets(pkts, priority);
-        }
-
-        private void Save() // only when disconnect
-        {
-            var acc = Account;
-
-            if (Character == null || Player == null || Player.World is TestWorld)
-            {
-                GameServer.Database.ReleaseLock(acc);
-                return;
-            }
-
-            Player.SaveToCharacter();
-            acc?.RefreshLastSeen();
-            acc?.FlushAsync();
-
-            if (GameServer != null && GameServer.Database != null && Player.FameCounter != null && Player.FameCounter.ClassStats != null)
-                if (GameServer.Database.SaveCharacter(acc, Character, Player.FameCounter.ClassStats, true))
-                    GameServer.Database.ReleaseLock(acc);
         }
     }
 }

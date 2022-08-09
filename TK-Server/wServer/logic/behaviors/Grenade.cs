@@ -53,7 +53,7 @@ namespace wServer.logic.behaviors
                     var target = fixedAngle != null ? new Position() { X = (float)(range * Math.Cos(fixedAngle.Value)) + host.X, Y = (float)(range * Math.Sin(fixedAngle.Value)) + host.Y }
                     : new Position() { X = player.X, Y = player.Y };
 
-                    host.World.BroadcastIfVisible(new ShowEffect() { EffectType = EffectType.Throw, Color = new ARGB(color), TargetObjectId = host.Id, Pos1 = target, Pos2 = new Position() { X = 222 } }, host, PacketPriority.Low);
+                    host.World.BroadcastIfVisible(new ShowEffect() { EffectType = EffectType.Throw, Color = new ARGB(color), TargetObjectId = host.Id, Pos1 = target, Pos2 = new Position() { X = 222 } }, host);
                     host.World.Timers.Add(new WorldTimer(1500, (world, t) =>
                     {
                         world.BroadcastIfVisible(new Aoe()
@@ -65,7 +65,7 @@ namespace wServer.logic.behaviors
                             Effect = 0,
                             OrigType = host.ObjectType,
                             Color = new ARGB(color)
-                        }, host, PacketPriority.Low);
+                        }, host);
                         world.AOE(target, radius, true, p =>
                         {
                             (p as IPlayer).Damage(damage + enemyClasified, host);

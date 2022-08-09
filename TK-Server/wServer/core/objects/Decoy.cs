@@ -59,7 +59,7 @@ namespace wServer.core.objects
                     Color = new ARGB(0xffff0000),
                     TargetObjectId = Id,
                     Pos1 = new Position() { X = 1 }
-                }, this, PacketPriority.Low);
+                }, this);
             }
 
             base.Tick(ref time);

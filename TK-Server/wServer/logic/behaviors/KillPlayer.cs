@@ -54,7 +54,7 @@ namespace wServer.logic.behaviors
 
                     foreach (var i in host.World.PlayersCollision.HitTest(host.X, host.Y, 15).Where(e => e is Player))
                         if (i is Player && host.Dist(i) < 15)
-                            (i as Player).Client.SendPacket(packet, PacketPriority.Low);
+                            (i as Player).Client.SendPacket(packet);
                 }
 
                 cool = _coolDown.Next(Random);
@@ -67,7 +67,7 @@ namespace wServer.logic.behaviors
 
         private void Kill(Entity host, Player player)
         {
-            host.World.BroadcastIfVisible(new ShowEffect() { EffectType = EffectType.Trail, TargetObjectId = host.Id, Pos1 = new Position { X = player.X, Y = player.Y }, Color = new ARGB(0xffffffff) }, host, PacketPriority.Low);
+            host.World.BroadcastIfVisible(new ShowEffect() { EffectType = EffectType.Trail, TargetObjectId = host.Id, Pos1 = new Position { X = player.X, Y = player.Y }, Color = new ARGB(0xffffffff) }, host);
 
             Enemy enemy = null;
 

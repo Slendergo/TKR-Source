@@ -10,16 +10,9 @@ using System.Threading.Tasks;
 using wServer.core;
 using wServer.core.net.handlers;
 using wServer.core.worlds;
-using wServer.networking.packets;
 using wServer.networking.packets.outgoing;
 using wServer.utils;
 
-public enum PacketPriority
-{
-    High,
-    Normal,
-    Low
-}
 
 namespace wServer.networking.connection
 {
@@ -30,7 +23,7 @@ namespace wServer.networking.connection
         private readonly int BufferSize;
         private readonly int PrefixLength;
         private Client Client;
-        private ConcurrentQueue<OutgoingMessage>[] Pending;
+        private ConcurrentQueue<OutgoingMessage> Pending;
         private SocketAsyncEventArgs Receive;
         private SocketAsyncEventArgs Send;
 
@@ -46,10 +39,7 @@ namespace wServer.networking.connection
             Send = send;
             Send.Completed += ProcessSend;
 
-            Pending = new ConcurrentQueue<OutgoingMessage>[3];
-
-            for (var i = 0; i < 3; i++)
-                Pending[i] = new ConcurrentQueue<OutgoingMessage>();
+            Pending = new ConcurrentQueue<OutgoingMessage>();
         }
 
         public void BeginHandling(Socket socket)
@@ -68,27 +58,15 @@ namespace wServer.networking.connection
             ((SendToken)Send.UserToken).Reset();
             ((ReceiveToken)Receive.UserToken).Reset();
 
-            Pending = new ConcurrentQueue<OutgoingMessage>[3];
-
-            for (var i = 0; i < 3; i++)
-                Pending[i] = new ConcurrentQueue<OutgoingMessage>();
+            Pending = new ConcurrentQueue<OutgoingMessage>();
         }
 
-        public void SendPacket(OutgoingMessage pkt, PacketPriority priority = PacketPriority.Normal)
+        public void SendPacket(OutgoingMessage pkt) => Pending.Enqueue(pkt);
+
+        public void SendPackets(IEnumerable<OutgoingMessage> pkts)
         {
-            if (priority == PacketPriority.Low && Client.IsLagging)
-                return;
-
-            Pending[(int)priority].Enqueue(pkt);
-        }
-
-        public void SendPackets(IEnumerable<OutgoingMessage> pkts, PacketPriority priority = PacketPriority.Normal)
-        {
-            if (priority == PacketPriority.Low && Client.IsLagging)
-                return;
-
             foreach (var pkt in pkts)
-                Pending[(int)priority].Enqueue(pkt);
+                SendPacket(pkt);
         }
 
         private static int ReadPacketBytes(SocketAsyncEventArgs e, ReceiveToken r, int bytesNotRead)
@@ -113,22 +91,21 @@ namespace wServer.networking.connection
         {
             try
             {
-                for (var i = 0; i < 3; i++)
-                    while (Pending[i].TryDequeue(out var packet))
+                while (Pending.TryDequeue(out var packet))
+                {
+                    var bytesWritten = packet.Write(Client, s.Data, s.BytesAvailable);
+
+                    if (!bytesWritten.HasValue)
+                        continue;
+
+                    if (bytesWritten == 0)
                     {
-                        var bytesWritten = packet.Write(Client, s.Data, s.BytesAvailable);
-
-                        if (!bytesWritten.HasValue)
-                            continue;
-
-                        if (bytesWritten == 0)
-                        {
-                            Pending[i].Enqueue(packet);
-                            return true;
-                        }
-
-                        s.BytesAvailable += bytesWritten.Value;
+                        Pending.Enqueue(packet);
+                        return true;
                     }
+
+                    s.BytesAvailable += bytesWritten.Value;
+                }
 
                 if (s.BytesAvailable <= 0)
                     return false;

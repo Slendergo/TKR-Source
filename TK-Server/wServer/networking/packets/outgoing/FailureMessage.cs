@@ -2,7 +2,7 @@
 
 namespace wServer.networking.packets.outgoing
 {
-    public class Failure : OutgoingMessage
+    public class FailureMessage : OutgoingMessage
     {
         public const int MessageNoDisconnect = -1;
         public const int MessageWithDisconnect = 0;
@@ -10,10 +10,16 @@ namespace wServer.networking.packets.outgoing
         public const int ForceCloseGame = 2;
         public const int InvalidTeleportTarget = 3;
 
-        public int ErrorId { get; set; }
-        public string ErrorDescription { get; set; }
+        public int ErrorId { get; private set; }
+        public string ErrorDescription { get; private set; }
 
         public override PacketId MessageId => PacketId.FAILURE;
+
+        public FailureMessage(int errorId, string errorDescription)
+        {
+            ErrorId = errorId;
+            ErrorDescription = errorDescription;
+        }
 
         protected override void Write(NWriter wtr)
         {

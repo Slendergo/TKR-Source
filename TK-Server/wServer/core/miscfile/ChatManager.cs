@@ -149,7 +149,7 @@ namespace wServer.core
                 NumStars = -1,
                 Name = $"#{name}",
                 Txt = text
-            }, PacketPriority.Low);
+            });
 
             SLogger.Instance.Info($"[{world.IdName}({world.Id})] <{name}> {text}");
         }
@@ -165,7 +165,7 @@ namespace wServer.core
                 NumStars = -1,
                 Name = "#The Talisman King",
                 Txt = text
-            }, PacketPriority.Low);
+            });
         }
 
         public bool Party(Player src, string text)
@@ -396,12 +396,12 @@ namespace wServer.core
             }
         }
 
-        private void SendTextPacket(Player src, Text tp, Predicate<Player> conditional)
+        private void SendTextPacket(Player src, Text tp, Predicate<Player> predicate)
         {
             src.World.ForeachPlayer(_ =>
             {
-                if (conditional(_))
-                    _.Client.SendPacket(tp, PacketPriority.Normal);
+                if (predicate(_))
+                    _.Client.SendPacket(tp);
             });
             SLogger.Instance.Info($"[{src.World.IdName}({src.World.Id})] <{src.Name}> {tp.Txt}");
         }

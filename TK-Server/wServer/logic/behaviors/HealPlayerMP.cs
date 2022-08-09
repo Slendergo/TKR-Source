@@ -42,15 +42,15 @@ namespace wServer.logic.behaviors
                         var n = newMp - entity.MP;
 
                         entity.MP = newMp;
-                        entity.World.BroadcastIfVisible(new ShowEffect() { EffectType = EffectType.Potion, TargetObjectId = entity.Id, Color = new ARGB(0xffffffff) }, entity, PacketPriority.Low);
+                        entity.World.BroadcastIfVisible(new ShowEffect() { EffectType = EffectType.Potion, TargetObjectId = entity.Id, Color = new ARGB(0xffffffff) }, entity);
                         entity.World.BroadcastIfVisible(new ShowEffect()
                         {
                             EffectType = EffectType.Trail,
                             TargetObjectId = host.Id,
                             Pos1 = new Position { X = entity.X, Y = entity.Y },
                             Color = new ARGB(0xffffffff)
-                        }, host, PacketPriority.Low);
-                        entity.World.BroadcastIfVisible(new Notification() { ObjectId = entity.Id, Message = "+" + n, Color = new ARGB(0xff3366ff) }, entity, PacketPriority.Low);
+                        }, host);
+                        entity.World.BroadcastIfVisible(new Notification() { ObjectId = entity.Id, Message = "+" + n, Color = new ARGB(0xff3366ff) }, entity);
                     }
                 }
 

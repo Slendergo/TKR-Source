@@ -97,48 +97,48 @@ namespace wServer.core.worlds
 
         public virtual bool AllowedAccess(Client client) => !Closed || client.Account.Admin;
 
-        public void Broadcast(OutgoingMessage outgoingMessage, PacketPriority priority = PacketPriority.Normal)
+        public void Broadcast(OutgoingMessage outgoingMessage)
         {
             foreach (var player in Players.Values)
-                player.Client.SendPacket(outgoingMessage, priority);
+                player.Client.SendPacket(outgoingMessage);
         }
 
-        public void BroadcastIfVisible(OutgoingMessage outgoingMessage, ref Position worldPosData, PacketPriority priority = PacketPriority.Normal)
+        public void BroadcastIfVisible(OutgoingMessage outgoingMessage, ref Position worldPosData)
         {
             foreach (var player in Players.Values)
                 if (player.DistSqr(ref worldPosData) < PlayerUpdate.VISIBILITY_RADIUS_SQR)
-                    player.Client.SendPacket(outgoingMessage, priority);
+                    player.Client.SendPacket(outgoingMessage);
         }
 
-        public void BroadcastIfVisible(OutgoingMessage outgoingMessage, Entity host, PacketPriority priority = PacketPriority.Normal)
+        public void BroadcastIfVisible(OutgoingMessage outgoingMessage, Entity host)
         {
             foreach (var player in Players.Values)
                 if (player.DistSqr(host) < PlayerUpdate.VISIBILITY_RADIUS_SQR)
-                    player.Client.SendPacket(outgoingMessage, priority);
+                    player.Client.SendPacket(outgoingMessage);
         }
 
-        public void BroadcastIfVisibleExclude(OutgoingMessage outgoingMessage, Entity broadcaster, Entity exclude, PacketPriority priority = PacketPriority.Normal)
+        public void BroadcastIfVisibleExclude(OutgoingMessage outgoingMessage, Entity broadcaster, Entity exclude)
         {
             foreach (var player in Players.Values)
                 if (player.Id != exclude.Id && player.Dist(broadcaster) <= 15d)
-                    player.Client.SendPacket(outgoingMessage, priority);
+                    player.Client.SendPacket(outgoingMessage);
         }
 
-        public void BroadcastToPlayer(OutgoingMessage outgoingMessage, int playerId, PacketPriority priority = PacketPriority.Normal)
+        public void BroadcastToPlayer(OutgoingMessage outgoingMessage, int playerId)
         {
             foreach (var player in Players.Values)
                 if (player.Id == playerId)
                 {
-                    player.Client.SendPacket(outgoingMessage, priority);
+                    player.Client.SendPacket(outgoingMessage);
                     break;
                 }
         }
 
-        public void BroadcastToPlayers(OutgoingMessage outgoingMessage, List<int> playerIds, PacketPriority priority = PacketPriority.Normal)
+        public void BroadcastToPlayers(OutgoingMessage outgoingMessage, List<int> playerIds)
         {
             foreach (var player in Players.Values)
                 if(playerIds.Contains(player.Id))
-                    player.Client.SendPacket(outgoingMessage, priority);
+                    player.Client.SendPacket(outgoingMessage);
         }
 
         public void ChatReceived(Player player, string text)

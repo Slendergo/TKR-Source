@@ -122,11 +122,11 @@ namespace wServer.logic.behaviors
             var packet = new Text() { Name = "#" + displayenemy, ObjectId = host.Id, NumStars = -1, BubbleTime = 3, Recipient = "", Txt = taunt };
 
             if (broadcast)
-                host.World.Broadcast(packet, PacketPriority.Low);
+                host.World.Broadcast(packet);
             else
                 foreach (var i in host.World.PlayersCollision.HitTest(host.X, host.Y, 15).Where(e => e is Player))
                     if (i is Player && host.Dist(i) < 15)
-                        (i as Player).Client.SendPacket(packet, PacketPriority.Low);
+                        (i as Player).Client.SendPacket(packet);
         }
     }
 }

@@ -27,21 +27,21 @@ namespace wServer.core.net.handlers
             if (status == DbCreateStatus.ReachCharLimit)
             {
                 client.SendFailure("Too many characters",
-                    Failure.MessageWithDisconnect);
+                    FailureMessage.MessageWithDisconnect);
                 return;
             }
 
             if (status == DbCreateStatus.SkinUnavailable)
             {
                 client.SendFailure("Skin unavailable",
-                    Failure.MessageWithDisconnect);
+                    FailureMessage.MessageWithDisconnect);
                 return;
             }
 
             if (status == DbCreateStatus.Locked)
             {
                 client.SendFailure("Class locked",
-                    Failure.MessageWithDisconnect);
+                    FailureMessage.MessageWithDisconnect);
                 return;
             }
 
@@ -61,7 +61,7 @@ namespace wServer.core.net.handlers
             {
                 CharId = client.Character.CharId,
                 ObjectId = target.EnterWorld(client.Player)
-            }, PacketPriority.High);
+            });
             client.State = ProtocolState.Ready;
             client.GameServer.ConnectionManager.ClientConnected(client);
             //client.Player?.PlayerUpdate.SendUpdate();

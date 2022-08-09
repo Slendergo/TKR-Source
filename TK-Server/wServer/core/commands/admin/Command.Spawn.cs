@@ -227,7 +227,7 @@ namespace wServer.core.commands
                     Color = new ARGB(0xffff0000),
                     ObjectId = player.Id,
                     Message = notif
-                }, player, PacketPriority.Low);
+                }, player);
 
                 w.BroadcastIfVisible(new Text
                 {
@@ -236,7 +236,7 @@ namespace wServer.core.commands
                     Admin = player.Admin,
                     BubbleTime = 0,
                     Txt = notif
-                }, player, PacketPriority.Low);
+                }, player);
             }
 
             private void QueueSpawnEvent(

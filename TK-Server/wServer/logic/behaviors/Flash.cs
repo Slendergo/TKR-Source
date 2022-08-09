@@ -19,7 +19,7 @@ namespace wServer.logic.behaviors
         }
 
         protected override void OnStateEntry(Entity host, TickTime time, ref object state) => host.World.BroadcastIfVisible(new ShowEffect()
-        { EffectType = EffectType.Flashing, Pos1 = new Position() { X = flashPeriod, Y = flashRepeats }, TargetObjectId = host.Id, Color = new ARGB(color) }, host, PacketPriority.Low);
+        { EffectType = EffectType.Flashing, Pos1 = new Position() { X = flashPeriod, Y = flashRepeats }, TargetObjectId = host.Id, Color = new ARGB(color) }, host);
 
         protected override void TickCore(Entity host, TickTime time, ref object state)
         { }

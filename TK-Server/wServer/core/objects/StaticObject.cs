@@ -59,7 +59,7 @@ namespace wServer.core.objects
                     Kill = !CheckHP(),
                     BulletId = projectile.ProjectileId,
                     ObjectId = projectile.ProjectileOwner.Self.Id
-                }, this, projectile.ProjectileOwner as Player, PacketPriority.Low);
+                }, this, projectile.ProjectileOwner as Player);
             }
 
             return true;

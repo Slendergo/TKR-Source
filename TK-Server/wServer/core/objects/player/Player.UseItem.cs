@@ -338,13 +338,13 @@ namespace wServer.core.objects
                 EffectType = EffectType.Potion,
                 TargetObjectId = player.Id,
                 Color = new ARGB(0xffffffff)
-            }, player, PacketPriority.Low);
+            }, player);
             player.World.BroadcastIfVisible(new Notification()
             {
                 Color = new ARGB(0xff00ff00),
                 ObjectId = player.Id,
                 Message = "+" + (newHp - player.HP)
-            }, player, PacketPriority.Low);
+            }, player);
 
             player.HP = newHp;
         }
@@ -361,13 +361,13 @@ namespace wServer.core.objects
                 EffectType = EffectType.Potion,
                 TargetObjectId = player.Id,
                 Color = new ARGB(0xffffffff)
-            }, player, PacketPriority.Low);
+            }, player);
             player.World.BroadcastIfVisible(new Notification()
             {
                 Color = new ARGB(0xff9000ff),
                 ObjectId = player.Id,
                 Message = "+" + (newMp - player.MP)
-            }, player, PacketPriority.Low);
+            }, player);
 
             player.MP = newMp;
         }
@@ -661,7 +661,7 @@ namespace wServer.core.objects
 
             foreach (var player in World.Players.Values)
                 if(player.DistSqr(this) < PlayerUpdate.VISIBILITY_RADIUS_SQR)
-                   player.Client.SendPackets(batch, PacketPriority.Low);
+                   player.Client.SendPackets(batch);
         }
 
         private void AEClearConditionEffectAura(TickTime time, Item item, Position target, ActivateEffect eff)
@@ -727,7 +727,7 @@ namespace wServer.core.objects
                 TargetObjectId = Id,
                 Color = new ARGB(color),
                 Pos1 = new Position() { X = range }
-            }, this, PacketPriority.Low);
+            }, this);
         }
 
         private void AEConditionEffectSelf(TickTime time, Item item, Position target, ActivateEffect eff)
@@ -747,7 +747,7 @@ namespace wServer.core.objects
                 TargetObjectId = Id,
                 Color = new ARGB(0xffffffff),
                 Pos1 = new Position() { X = 1 }
-            }, this, PacketPriority.Low);
+            }, this);
         }
 
         private void AECreate(TickTime time, Item item, Position target, int slot, ActivateEffect eff)
@@ -779,7 +779,7 @@ namespace wServer.core.objects
                 Color = new ARGB(0xFF00FF00),
                 ObjectId = Id,
                 Message = openedByMsg
-            }, PacketPriority.Low);
+            });
             World.ForeachPlayer(_ => _.SendInfo(openedByMsg));
         }
 
@@ -827,7 +827,7 @@ namespace wServer.core.objects
                 Color = new ARGB(eff.Color),
                 Pos1 = centerPlayer ? new Position() { X = range } : target,
                 Pos2 = new Position() { X = target.X - range, Y = target.Y }
-            }, this, PacketPriority.Low);
+            }, this);
         }
 
         private void AEHeal(TickTime time, Item item, Position target, ActivateEffect eff)
@@ -861,7 +861,7 @@ namespace wServer.core.objects
                 TargetObjectId = Id,
                 Color = new ARGB(0xffffffff),
                 Pos1 = new Position() { X = range }
-            }, this, PacketPriority.Low);
+            }, this);
         }
 
         private void AEIncrementStat(TickTime time, Item item, Position target, ActivateEffect eff, int objId, int slot, int sellMaxed)
@@ -1168,7 +1168,7 @@ namespace wServer.core.objects
                             Y = y
                         },
                         Pos2 = new Position() { X = 350 }
-                    }, ref target, PacketPriority.Low);
+                    }, ref target);
                 }
                 return;
             }
@@ -1224,7 +1224,7 @@ namespace wServer.core.objects
                         Y = targets[i].Y
                     },
                     Pos2 = new Position() { X = 350 }
-                }, this, PacketPriority.Low);
+                }, this);
             }
         }
 
@@ -1286,7 +1286,7 @@ namespace wServer.core.objects
                 TargetObjectId = Id,
                 Color = new ARGB(0xffffffff),
                 Pos1 = new Position() { X = eff.Range }
-            }, this, PacketPriority.Low);
+            }, this);
         }
 
         private void AEMiscellaneousDust(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
@@ -1329,7 +1329,7 @@ namespace wServer.core.objects
                 TargetObjectId = Id,
                 Pos1 = target,
                 Duration = eff.ThrowTime / 1000
-            }, this, PacketPriority.Low);
+            }, this);
 
             var x = new Placeholder(GameServer, eff.ThrowTime * 1000);
             x.Move(target.X, target.Y);
@@ -1343,7 +1343,7 @@ namespace wServer.core.objects
                     TargetObjectId = x.Id,
                     Pos1 = new Position() { X = eff.Radius },
                     Pos2 = new Position() { X = Id, Y = 255 }
-                }, x, PacketPriority.Low);
+                }, x);
 
                 world.AOE(target, eff.Radius, false, entity =>
                 {
@@ -1375,7 +1375,7 @@ namespace wServer.core.objects
                 TargetObjectId = Id,
                 Color = new ARGB(0xffffffff),
                 Pos1 = new Position() { X = eff.Range }
-            }, this, PacketPriority.Low);
+            }, this);
         }
 
         private void AERemoveNegativeConditionSelf(TickTime time, Item item, Position target, ActivateEffect eff)
@@ -1387,7 +1387,7 @@ namespace wServer.core.objects
                 TargetObjectId = Id,
                 Color = new ARGB(0xffffffff),
                 Pos1 = new Position() { X = 1 }
-            }, this, PacketPriority.Low);
+            }, this);
         }
 
         private void AEShoot(TickTime time, Item item, Position target, ActivateEffect eff)
@@ -1412,7 +1412,7 @@ namespace wServer.core.objects
             }
 
             for (var i = 0; i < item.NumProjectiles; i++)
-                World.BroadcastIfVisible(sPkts[i], this, PacketPriority.Low);
+                World.BroadcastIfVisible(sPkts[i], this);
         }
 
         private void AEShurikenAbility(TickTime time, Item item, Position target, ActivateEffect eff)
@@ -1513,7 +1513,7 @@ namespace wServer.core.objects
                 TargetObjectId = Id,
                 Color = new ARGB(0xffffffff),
                 Pos1 = new Position() { X = range }
-            }, this, PacketPriority.Low);
+            }, this);
         }
 
         private void AEStatBoostSelf(TickTime time, Item item, Position target, ActivateEffect eff)
@@ -1533,7 +1533,7 @@ namespace wServer.core.objects
                 EffectType = EffectType.Potion,
                 TargetObjectId = Id,
                 Color = new ARGB(0xffffffff)
-            }, this, PacketPriority.Low);
+            }, this);
         }
 
         private void AETeleport(TickTime time, Item item, Position target, ActivateEffect eff)
@@ -1549,7 +1549,7 @@ namespace wServer.core.objects
                 Color = new ARGB(0xff9000ff),
                 TargetObjectId = Id,
                 Pos1 = target
-            }, ref target, PacketPriority.Low);
+            }, ref target);
 
             World.Timers.Add(new WorldTimer(1500, (world, t) =>
             {
@@ -1633,7 +1633,7 @@ namespace wServer.core.objects
             //    Color = new ARGB(0xFF00FF00),
             //    ObjectId = Id,
             //    Message = "Unlocked by " + Name
-            //}, PacketPriority.Low);
+            //});
             //World.PlayersBroadcastAsParallel(_ => _.SendInfo($"{world.SBName} unlocked by {Name}!"));
         }
 
@@ -1732,8 +1732,8 @@ namespace wServer.core.objects
                 }
             };
 
-            World.BroadcastIfVisible(pkts[0], ref target, PacketPriority.Low);
-            World.BroadcastIfVisible(pkts[1], ref target, PacketPriority.Low);
+            World.BroadcastIfVisible(pkts[0], ref target);
+            World.BroadcastIfVisible(pkts[1], ref target);
 
             var totalDmg = 0;
             var effDamage = eff.UseWisMod ? UseWisMod(eff.TotalDamage) : eff.TotalDamage;
@@ -1769,7 +1769,7 @@ namespace wServer.core.objects
                         TargetObjectId = b.Id,
                         Pos1 = new Position() { X = a.X, Y = a.Y },
                         Color = new ARGB(0xffffffff)
-                    }, ref target, PacketPriority.Low);
+                    }, ref target);
                 }
             }
         }
@@ -1891,7 +1891,7 @@ namespace wServer.core.objects
                 Pos1 = target,
                 Pos2 = new Position() { X = target.X + 3, Y = target.Y },
                 Color = new ARGB(0xffffffff)
-            }, ref target, PacketPriority.Low);
+            }, ref target);
 
             World.AOE(target, 3, false, enemy =>
             {
@@ -1903,7 +1903,7 @@ namespace wServer.core.objects
                         Color = new ARGB(0xff00ff00),
                         Message = "Immune",
                         PlayerId = Id
-                    }, enemy, PacketPriority.Low);
+                    }, enemy);
                 }
                 else if (!enemy.HasConditionEffect(ConditionEffects.Stasis) && !enemy.HasConditionEffect(ConditionEffects.StasisImmune))
                 {
@@ -1917,7 +1917,7 @@ namespace wServer.core.objects
                         Color = new ARGB(0xffff0000),
                         Message = "Stasis",
                         PlayerId = Id
-                    }, enemy, PacketPriority.Low);
+                    }, enemy);
                 }
             });
         }

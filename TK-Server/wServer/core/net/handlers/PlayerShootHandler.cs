@@ -55,7 +55,7 @@ namespace wServer.core.net.handlers
                 Angle = Angle,
                 ContainerType = ContainerType,
                 BulletId = BulletId
-            }, player, player, PacketPriority.Low);
+            }, player, player);
             player.FameCounter.Shoot(prj);
         }
     }

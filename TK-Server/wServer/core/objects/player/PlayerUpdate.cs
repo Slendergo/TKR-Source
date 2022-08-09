@@ -28,7 +28,7 @@ namespace wServer.core.objects
                     if (circumferenceCheck)
                         flag &= x * x + y * y > VISIBILITY_CIRCUMFERENCE_SQR;
                     if (flag)
-                        ret.Add(new IntPoint(x, y));
+                        _ = ret.Add(new IntPoint(x, y));
                 }
 
             return ret;
@@ -288,7 +288,7 @@ namespace wServer.core.objects
                 }
             }
 
-            Player.Client.SendPacket(newTick, PacketPriority.High);
+            Player.Client.SendPacket(newTick);
             Player.AwaitMove(TickId);
         }
 
@@ -307,7 +307,7 @@ namespace wServer.core.objects
 
             if (update.Tiles.Count == 0 && update.NewObjs.Count == 0 && update.Drops.Count == 0)
                 return;
-            Player.Client.SendPacket(update, PacketPriority.High);
+            Player.Client.SendPacket(update);
         }
 
         // does this still error?

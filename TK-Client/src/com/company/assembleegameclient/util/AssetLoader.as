@@ -219,7 +219,7 @@ public class AssetLoader
 
    private function parseRegionFiles() : void
    {
-      ObjectLibrary.parseFromXML(XML(new EmbeddedData.RegionsCXML()));
+      RegionLibrary.parseFromXML(XML(new EmbeddedData.RegionsCXML()));
    }
 }
 }

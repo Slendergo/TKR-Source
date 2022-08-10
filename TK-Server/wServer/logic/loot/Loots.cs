@@ -76,13 +76,13 @@ namespace wServer.logic.loot
         public static void ConfigureDropRates()
         {
             // configure drop rates
-            DropRates.MT = 1.0 / 800d;
-            DropRates.LG = 1.0 / 700d; // 1/700
-            DropRates.FRAGMENTS = 1.0 / 700d;
+            DropRates.MT = 1.0 / 3000d;
+            DropRates.LG = 1.0 / 2000d; 
+            DropRates.FRAGMENTS = 1.0 / 1500d;
             DropRates.ORYX_ITEMS = 1.0 / 1000d;
             DropRates.LG_TALISMAN = 1.0 / 1500d;
-            DropRates.MT_TALISMAN = 1.0 / 1300d;
-            DropRates.HARD_BOUNTY = 1.0 / 700d;
+            DropRates.MT_TALISMAN = 1.0 / 2000d;
+            DropRates.HARD_BOUNTY = 1.0 / 2000d;
             //configure threshold
             DropRates.MT_THRESHOLD = 0.05; // 5%
             DropRates.LG_THRESHOLD = 0.03; // 3%

@@ -1,4 +1,102 @@
 <Objects>
+	<Object type="0x214" id="Mortomus Check">
+		<DisplayId>Snowman Check</DisplayId>
+		<Class>Character</Class>
+		<Enemy />
+		<Invincible />
+		<Texture>
+			<File>invisible</File>
+			<Index>0x00</Index>
+		</Texture>
+		<MaxHitPoints>150000</MaxHitPoints>
+		<Defense>15</Defense>
+		<Size>160</Size>
+		<ShadowSize>0</ShadowSize>
+		<XpMult>0.0</XpMult>
+		<NoMiniMap />
+	</Object>
+	<Object type="0x167" id="HC North Spawner">
+		<Class>Character</Class>
+		<Enemy />
+		<Texture>
+			<File>invisible</File>
+			<Index>0</Index>
+		</Texture>
+		<NoMiniMap />
+		<MaxHitPoints>10</MaxHitPoints>
+		<Size>0</Size>
+	</Object>
+	<Object type="0x169" id="HC South Spawner">
+		<Class>Character</Class>
+		<Enemy />
+		<Texture>
+			<File>invisible</File>
+			<Index>0</Index>
+		</Texture>
+		<NoMiniMap />
+		<MaxHitPoints>10</MaxHitPoints>
+		<Size>0</Size>
+	</Object>
+	<Object type="0x168" id="HC East Spawner">
+		<Class>Character</Class>
+		<Enemy />
+		<Texture>
+			<File>invisible</File>
+			<Index>0</Index>
+		</Texture>
+		<NoMiniMap />
+		<MaxHitPoints>10</MaxHitPoints>
+		<Size>0</Size>
+	</Object>
+	<Object type="0x16A" id="HC West Spawner">
+		<Class>Character</Class>
+		<Enemy />
+		<Texture>
+			<File>invisible</File>
+			<Index>0</Index>
+		</Texture>
+		<NoMiniMap />
+		<MaxHitPoints>10</MaxHitPoints>
+		<Size>0</Size>
+	</Object>
+	<Object type="0x16B" id="HC Controller">
+		<DisplayId>Ghost of Skuld</DisplayId>
+		<Class>Character</Class>
+		<Enemy />
+		<Texture>
+			<File>invisible</File>
+			<Index>0</Index>
+		</Texture>
+		<AltTexture id="1">
+			<AnimatedTexture>
+				<File>chars16x16rEncounters</File>
+				<Index>66</Index>
+			</AnimatedTexture>
+		</AltTexture>
+		<AltTexture id="2">
+			<AnimatedTexture>
+				<File>chars16x16rEncounters</File>
+				<Index>66</Index>
+			</AnimatedTexture>
+			<Effect particle="SwirlingMist" cooldown="0.1">XMLEffect</Effect>
+		</AltTexture>
+		<AltTexture id="3">
+			<Texture>
+				<File>lofiCharBig</File>
+				<Index>0x0a</Index>
+			</Texture>
+		</AltTexture>
+		<AltTexture id="4">
+			<Texture>
+				<File>lofiCharBig</File>
+				<Index>0x0b</Index>
+			</Texture>
+		</AltTexture>
+		<NoMiniMap />
+		<MaxHitPoints>10</MaxHitPoints>
+		<Size>140</Size>
+		<ShadowSize>0</ShadowSize>
+	</Object>
   <Object type="0x5e1e" id="Treasure Flame Trap 1.2 Sec">
     <DisplayId>Treasure Flame Trap</DisplayId>
     <Class>GameObject</Class>

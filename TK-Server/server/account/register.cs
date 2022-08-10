@@ -10,7 +10,7 @@ namespace server.account
     {
         public override void HandleRequest(RequestContext context, NameValueCollection query)
         {
-            if (query["tester"] != "1")
+            if (Program.Resources.Settings.NewAccounts.TestingRegister)
             {
                 Write(context, "<Error>Testers Only</Error>");
                 return;

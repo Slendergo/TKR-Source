@@ -25,7 +25,7 @@ import org.osflash.signals.Signal;
    {
       private static var TitleScreenGraphic:Class = TitleView_TitleScreenGraphic;
 
-      private static const COPYRIGHT:String = "© 2010, 2011 by Wild Shadow Studios, Inc.";
+      private static const COPYRIGHT:String = "© 2022 by Slendergo, GlassBBQ, Orb";
        
       
       public var playClicked:Signal;

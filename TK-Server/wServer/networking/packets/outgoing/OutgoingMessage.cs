@@ -16,10 +16,9 @@ namespace wServer.networking.packets.outgoing
 
         public void WriteNew(NWriter wtr) => Write(wtr);
 
-        public int? Write(Client client, byte[] buff, int offset)
+        public int? Write(byte[] buff, int offset)
         {
             var s = new MemoryStream();
-
             using (var wtr = new NWriter(s))
             {
                 Write(wtr);
@@ -33,21 +32,13 @@ namespace wServer.networking.packets.outgoing
                 try
                 {
                     Buffer.BlockCopy(s.GetBuffer(), 0, buff, offset + 5, bodyLength);
-
                     Buffer.BlockCopy(BitConverter.GetBytes(IPAddress.HostToNetworkOrder(packetLength)), 0, buff, offset, 4);
-
                     buff[offset + 4] = (byte)MessageId;
                 }
-                // negative offset happens and stop whole network loop crashing the server
                 catch (ArgumentOutOfRangeException)
                 {
-                    Log.Error(
-                        $"Negative offset along buffer block copy, this pending packet (ID: {MessageId}, Buffer Offset: {offset}) " +
-                        $"write has been discarded."
-                        );
                     return 0;
                 }
-
                 return packetLength;
             }
         }

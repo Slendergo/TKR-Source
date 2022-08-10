@@ -78,7 +78,7 @@ namespace wServer.core.objects
             for (var i = 0; i < 20; i++)
             {
                 var inv = Inventory[i];
-                if (inv != null && inv.ObjectId == "Talisman of Regeneration" && HP <= Stats[0] / 2)
+                if (inv != null && inv.ObjectId == "Gem of Life" && HP <= Stats[0] / 2)
                     ok = true;
             }
 

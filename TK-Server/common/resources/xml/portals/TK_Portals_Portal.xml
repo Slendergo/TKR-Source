@@ -481,6 +481,16 @@
       <Index>0x4BA</Index>
     </Texture>
   </Object>
+	<Object type="0x22BE" id="Mortomus Hideout Portal">
+		<DisplayId>Mortomus Hideout</DisplayId>
+		<Class>Portal</Class>
+		<IntergamePortal />
+		<DungeonName>Mortomus Hideout</DungeonName>
+		<Texture>
+			<File>lofiObj3</File>
+			<Index>0x4BA</Index>
+		</Texture>
+	</Object>
   <Object type="0x2295" id="Lair of Shaitan Portal">
     <DisplayId>Shaitan's Portal</DisplayId>
     <Class>Portal</Class>

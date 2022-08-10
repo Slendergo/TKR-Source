@@ -64,7 +64,7 @@ namespace common.database
             [CurrencyType.GuildFame] = new[] { "totalFame", "fame" }
         };
 
-        public Database(Resources resources, ServerConfig config, bool isFromMetis = false, ManualResetEvent mre = null)
+        public Database(Resources resources, ServerConfig config)
         {
             _resources = resources;
             _config = config;
@@ -81,11 +81,7 @@ namespace common.database
             _db = _multiplexer.GetDatabase(DatabaseIndex);
             Sub = _multiplexer.GetSubscriber();
 
-            if (mre != null)
-                mre.Set();
-
-            if (!isFromMetis)
-                Log.Info("Database loaded");
+            Log.Info("Database loaded");
         }
 
         public IDatabase Conn => _db;

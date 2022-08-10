@@ -20,6 +20,7 @@ import flash.utils.ByteArray;
 
 import kabam.rotmg.Emojis.Emotes;
 import kabam.rotmg.assets.EmbeddedAssets;
+import kabam.rotmg.assets.EmbeddedAssets_customEnvironmentMortomusEmbed_;
 import kabam.rotmg.assets.EmbeddedData;
 import kabam.rotmg.assets.EmbeddedData_PlayersCXML;
 
@@ -73,6 +74,7 @@ public class AssetLoader
       AssetLibrary.addImageSet("lofiCharBig", new EmbeddedAssets.lofiCharBigEmbed_().bitmapData, 16, 16);
       AssetLibrary.addImageSet("customEnvironment16x16", new EmbeddedAssets.CustomEnvironment16x16Embed_().bitmapData, 16, 16);
       AssetLibrary.addImageSet("customEnvironment", new EmbeddedAssets.CustomEnvironmentEmbed_().bitmapData, 8, 8);
+      AssetLibrary.addImageSet("customEnvironmentMortomus", new EmbeddedAssets.CustomEnvironmentMortomusEmbed_().bitmapData, 8, 8);
       AssetLibrary.addImageSet("customEnvironment1", new EmbeddedAssets.CustomEnvironment1Embed_().bitmapData, 8, 8);
       AssetLibrary.addImageSet("lofiEnvironment", new EmbeddedAssets.lofiEnvironmentEmbed_().bitmapData, 8, 8);
       AssetLibrary.addImageSet("lofiEnvironment2", new EmbeddedAssets.lofiEnvironment2Embed_().bitmapData, 8, 8);
@@ -208,7 +210,7 @@ public class AssetLoader
       {
          var xml:XML = XML(new EmbeddedData.ObjectCXML());
          ObjectLibrary.parseFromXML(xml);
-         var xml:XML = XML(new EmbeddedData.PlayersCXML());
+         xml = XML(new EmbeddedData.PlayersCXML());
          ObjectLibrary.parseFromXML(xml);
       }
       catch(error:*)

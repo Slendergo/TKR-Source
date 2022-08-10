@@ -47,7 +47,7 @@ namespace wServer.core
                 throw new Exception("Too many arguments expected 1.");
 
             Configuration = ServerConfig.ReadFile(args.Length == 1 ? args[0] : "wServer.json");
-            Resources = new Resources(Configuration.serverSettings.resourceFolder, true, null, ExportXMLS);
+            Resources = new Resources(Configuration.serverSettings.resourceFolder, true, ExportXMLS);
             ItemDustWeights = new ItemDustWeights(this);
             Database = new Database(Resources, Configuration);
             MarketSweeper = new MarketSweeper(Database);
@@ -64,8 +64,11 @@ namespace wServer.core
 
         public bool IsWhitelisted(int accountId) => Configuration.serverSettings.whitelist.Contains(accountId);
 
+#if DEBUG
         private static bool ExportXMLS = true;
-
+#else
+        private static bool ExportXMLS = false;
+#endif
         public void Run()
         {
             if (ExportXMLS)

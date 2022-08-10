@@ -171,7 +171,6 @@
     <Compile Include="app\bot.cs" />
     <Compile Include="app\globalNews.cs" />
     <Compile Include="app\init.cs" />
-    <Compile Include="char\getServerXmls.cs" />
     <Compile Include="char\purchaseClassUnlock.cs" />
     <Compile Include="char\fame.cs" />
     <Compile Include="char\delete.cs" />

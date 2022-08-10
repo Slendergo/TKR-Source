@@ -49,10 +49,10 @@ public class ButtonFactory
         return _loc1_;
     }
 
-    public static function getDoneButton() : SliceScalingButton
+    public static function getBackButton() : SliceScalingButton
     {
         var _loc1_:SliceScalingButton = new SliceScalingButton(TextureParser.instance.getSliceScalingBitmap("UI","generic_green_button"));
-        setDefault(_loc1_,"done");
+        setDefault(_loc1_,"back");
         return _loc1_;
     }
 

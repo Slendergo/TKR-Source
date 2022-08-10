@@ -20,7 +20,6 @@ namespace wServer
                     continue;
 
                 var d = i.DistSqr(entity);
-
                 if (d < radius * radius)
                     return true;
             }

@@ -35,7 +35,6 @@ package com.company.assembleegameclient.screens
       private static const emptyCT:ColorTransform = new ColorTransform(0.2,0.2,0.2);
       private static const doneCT:ColorTransform = new ColorTransform(0.87,0.62,0);
 
-      private var SaleTag:Class;
       public var playerXML_:XML = null;
       public var charStats_:CharacterStats;
       public var model:PlayerModel;
@@ -45,11 +44,8 @@ package com.company.assembleegameclient.screens
       private var bitmap_:Bitmap;
       private var statusText_:SimpleText;
       private var classNameText_:SimpleText;
-      private var buyButton_:LegacyBuyButton;
-      private var cost:int = 0;
       private var lock_:Bitmap;
       private var unlockedText_:SimpleText;
-      public var buyButtonClicked_:NativeSignal;
       public var characterSelectClicked_:NativeSignal;
       public const POSE_TIME:int = 600;
       public var poseStart_:int = -2147483648;
@@ -59,7 +55,6 @@ package com.company.assembleegameclient.screens
       public function CharacterBox(playerXML:XML, charStats:CharacterStats, model:PlayerModel, overrideIsAvailable:Boolean = false)
       {
          var stars:Sprite = null;
-         this.SaleTag = CharacterBox_SaleTag;
          super();
          this.model = model;
          this.playerXML_ = playerXML;
@@ -68,7 +63,6 @@ package com.company.assembleegameclient.screens
          if(!this.available_)
          {
             this.graphic_ = new LockedCharBoxGraphic();
-            this.cost = this.playerXML_.UnlockCost;
          }
          else
          {
@@ -88,7 +82,6 @@ package com.company.assembleegameclient.screens
          this.classNameText_.updateMetrics();
          this.classNameText_.filters = [new DropShadowFilter(0,0,0,1,4,4)];
          this.graphic_.addChild(this.classNameText_);
-         this.setBuyButton();
          this.setStatusButton();
          if(this.available_)
          {
@@ -101,7 +94,6 @@ package com.company.assembleegameclient.screens
          }
          else
          {
-            addChild(this.buyButton_);
             this.lock_ = new Bitmap(AssetLibrary.getImageFromSet("lofiInterface2",5));
             this.lock_.scaleX = 2;
             this.lock_.scaleY = 2;
@@ -134,10 +126,6 @@ package com.company.assembleegameclient.screens
             if(contains(this.statusText_))
             {
                removeChild(this.statusText_);
-            }
-            if(contains(this.buyButton_))
-            {
-               removeChild(this.buyButton_);
             }
             if(this.lock_ && contains(this.lock_))
             {
@@ -255,15 +243,7 @@ package com.company.assembleegameclient.screens
          }
          return stars;
       }
-      
-      private function setBuyButton() : void
-      {
-         this.buyButton_ = new LegacyBuyButton("Buy for ",13,this.cost,Currency.GOLD);
-         this.buyButton_.y = this.buyButton_.y + this.graphic_.height;
-         this.buyButton_.setWidth(this.graphic_.width);
-         this.buyButtonClicked_ = new NativeSignal(this.buyButton_,MouseEvent.CLICK,MouseEvent);
-      }
-      
+
       private function setStatusButton() : void
       {
          this.statusText_ = new SimpleText(14,16711680,false,0,0);
@@ -284,11 +264,6 @@ package com.company.assembleegameclient.screens
          this.unlockedText_.filters = [new DropShadowFilter(0,0,0,1,4,4)];
          this.unlockedText_.text = "New class unlocked!";
          this.unlockedText_.y = -20;
-      }
-      
-      public function setIsBuyButtonEnabled(isEnabled:Boolean) : void
-      {
-         this.buyButton_.setEnabled(isEnabled);
       }
    }
 }

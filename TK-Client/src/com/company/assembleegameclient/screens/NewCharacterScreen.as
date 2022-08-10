@@ -26,8 +26,7 @@ import kabam.rotmg.core.model.PlayerModel;
       public var tooltip:Signal;
       public var close:Signal;
       public var selected:Signal;
-      public var buy:Signal;
-      
+
       private var isInitialized:Boolean = false;
       
       public function NewCharacterScreen()
@@ -37,7 +36,6 @@ import kabam.rotmg.core.model.PlayerModel;
          this.tooltip = new Signal(Sprite);
          this.selected = new Signal(int);
          this.close = new Signal();
-         this.buy = new Signal(int);
          addChild(new ScreenBase());
          addChild(new AccountScreen());
          //addChild(new ScreenGraphic());
@@ -62,7 +60,7 @@ import kabam.rotmg.core.model.PlayerModel;
          this.backButton_.x = 350;
          this.backButton_.y = 520;
          this.backButton_.width = 100;
-         this.backButton_.setLabel("done",DefaultLabelFormat.questButtonCompleteLabel);
+         this.backButton_.setLabel("back",DefaultLabelFormat.questButtonCompleteLabel);
          this.backButton_.addEventListener(MouseEvent.CLICK,this.onBackClick);
          addChild(this.backButton_);
          this.creditDisplay_ = new CreditDisplay();
@@ -77,13 +75,12 @@ import kabam.rotmg.core.model.PlayerModel;
             {
                overrideIsAvailable = model.isClassAvailability(characterType,SavedCharactersList.UNRESTRICTED);
                charBox = new CharacterBox(playerXML,model.getCharStats()[objectType],model,overrideIsAvailable);
-               charBox.x = 50 + 140 * int(i % 5) + 70 - charBox.width / 2;
-               charBox.y = 88 + 140 * int(i / 5);
+               charBox.x = 50 + 110 * int(i % 7) + 70 - charBox.width;
+               charBox.y = 60 + 110 * int(i / 7);
                this.boxes_[objectType] = charBox;
                charBox.addEventListener(MouseEvent.ROLL_OVER,this.onCharBoxOver);
                charBox.addEventListener(MouseEvent.ROLL_OUT,this.onCharBoxOut);
                charBox.characterSelectClicked_.add(this.onCharBoxClick);
-               charBox.buyButtonClicked_.add(this.onBuyClicked);
                addChild(charBox);
             }
          }
@@ -148,25 +145,12 @@ import kabam.rotmg.core.model.PlayerModel;
                charBox = this.boxes_[objectType];
                if(charBox)
                {
-                  charBox.setIsBuyButtonEnabled(true);
                   if(overrideIsAvailable || model.isLevelRequirementsMet(objectType))
                   {
                      charBox.unlock();
                   }
                }
             }
-         }
-      }
-      
-      private function onBuyClicked(e:MouseEvent) : void
-      {
-         var objectType:int = 0;
-         var charBox:CharacterBox = e.target.parent as CharacterBox;
-         if(charBox && !charBox.available_)
-         {
-            objectType = int(charBox.playerXML_.@type);
-            charBox.setIsBuyButtonEnabled(false);
-            this.buy.dispatch(objectType);
          }
       }
    }

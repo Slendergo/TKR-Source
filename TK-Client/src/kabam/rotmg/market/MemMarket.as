@@ -84,7 +84,7 @@ public class MemMarket extends Sprite
         this.header_.showFame(132).fameAmount = this.gameSprite_.map.player_.fame_;
         this.header_.addButton(this.closeButton_, PopupHeader.RIGHT_BUTTON, -15);
         this.menuOptionsBar_.addButton(this.doneButton_, MenuOptionsBar.CENTER);
-        Options.setDefault(this.doneButton_, "Done", 100, false);
+        Options.setDefault(this.doneButton_, "back", 100, false);
         this.doneButton_.y = 535;
         this.doneButton_.x = 800 / 2 - 50;
         addChild(this.menuOptionsBar_);

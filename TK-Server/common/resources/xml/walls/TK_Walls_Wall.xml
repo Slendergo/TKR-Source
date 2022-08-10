@@ -1,4 +1,48 @@
 <Objects>
+	<Object type="0xb0ee" id="HC Neon Wall">
+		<DisplayId>Neon Wall</DisplayId>
+		<Class>Wall</Class>
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x3f</Index>
+		</Texture>
+		<Top>
+			<Texture>
+				<File>customEnvironmentMortomus</File>
+				<Index>0x3e</Index>
+			</Texture>
+		</Top>
+		<HitSound>monster/stone_walls_hit</HitSound>
+		<DeathSound>monster/stone_walls_death</DeathSound>
+		<Static />
+		<FullOccupy />
+		<OccupySquare />
+		<EnemyOccupySquare />
+		<BlocksSight />
+		<Connects />
+	</Object>
+	<Object type="0x16C" id="HC Neon Wall GATE">
+		<Class>Wall</Class>
+		<Texture>
+			<File>customEnvironment</File>
+			<Index>0x3f</Index>
+		</Texture>
+		<Top>
+			<Texture>
+				<File>customEnvironmentMortomus</File>
+				<Index>0x3e</Index>
+			</Texture>
+		</Top>
+		<HitSound>monster/stone_walls_hit</HitSound>
+		<DeathSound>monster/stone_walls_death</DeathSound>
+		<ShadowSize>0</ShadowSize>
+		<Static />
+		<FullOccupy />
+		<OccupySquare />
+		<EnemyOccupySquare />
+		<BlocksSight />
+		<Connects />
+	</Object>
   <Object type="0x1994" id="Group Eye Wall Nondestruct">
     <Class>Wall</Class>
     <Texture>

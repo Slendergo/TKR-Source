@@ -141,6 +141,7 @@ package kabam.rotmg.assets
       public static var Custom32x32EncountersEmbed_:Class = EmbeddedAssets_Custom32x32EncountersEmbed_;
       public static var CustomEnvironment16x16Embed_:Class = EmbeddedAssets_customEnvironment16x16Embed_;
       public static var CustomEnvironmentEmbed_:Class = EmbeddedAssets_customEnvironmentEmbed_;
+      public static var CustomEnvironmentMortomusEmbed_:Class = EmbeddedAssets_customEnvironmentMortomusEmbed_;
       public static var CustomEnvironment1Embed_:Class = EmbeddedAssets_customEnvironment1Embed_;
       public static var CustomObjects32x32Embed_:Class = EmbeddedAssets_CustomObjects32x32Embed_;
       public static var CustomObjectsSkillTreeEmbed_:Class = EmbeddedAssets_CustomObjectsSkillTreeEmbed_;

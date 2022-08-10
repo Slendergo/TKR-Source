@@ -59,7 +59,6 @@ package kabam.rotmg.ui.view
          this.view.selected.add(this.onSelected);
          this.view.close.add(this.onClose);
          this.view.tooltip.add(this.onTooltip);
-         this.view.buy.add(this.onBuy);
          this.updateNewCharacterScreen.add(this.onUpdate);
          this.buyCharacterPending.add(this.onBuyCharacterPending);
          this.view.initialize(this.playerModel);
@@ -75,7 +74,6 @@ package kabam.rotmg.ui.view
          this.view.selected.remove(this.onSelected);
          this.view.close.remove(this.onClose);
          this.view.tooltip.remove(this.onTooltip);
-         this.view.buy.remove(this.onBuy);
          this.buyCharacterPending.remove(this.onBuyCharacterPending);
          this.updateNewCharacterScreen.remove(this.onUpdate);
       }
@@ -107,10 +105,6 @@ package kabam.rotmg.ui.view
       {
          this.view.update(this.playerModel);
       }
-      
-      private function onBuy(objectType:int) : void
-      {
-         this.purchaseCharacter.dispatch(objectType);
-      }
+
    }
 }

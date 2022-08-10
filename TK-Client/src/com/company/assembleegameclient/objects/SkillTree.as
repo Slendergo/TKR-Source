@@ -14,9 +14,5 @@ public class SkillTree extends GameObject implements IInteractiveObject {
     public function getPanel(gs:GameSprite):Panel {
         return new NewSkillTreePanel(gs);
     }
-
-
-
-
 }
 }

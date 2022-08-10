@@ -93,8 +93,7 @@ namespace wServer.networking.connection
             {
                 while (Pending.TryDequeue(out var packet))
                 {
-                    var bytesWritten = packet.Write(Client, s.Data, s.BytesAvailable);
-
+                    var bytesWritten = packet.Write(s.Data, s.BytesAvailable);
                     if (!bytesWritten.HasValue)
                         continue;
 

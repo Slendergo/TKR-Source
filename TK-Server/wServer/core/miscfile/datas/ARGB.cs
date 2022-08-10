@@ -5,11 +5,8 @@ namespace wServer
     public struct ARGB
     {
         public byte A;
-
         public byte B;
-
         public byte G;
-
         public byte R;
 
         public ARGB(uint argb)
@@ -20,7 +17,7 @@ namespace wServer
             B = (byte)((argb & 0x000000ff) >> 0);
         }
 
-        public static ARGB Read(NReader rdr) => new ARGB
+        public static ARGB Read(NReader rdr) => new ARGB()
         {
             A = rdr.ReadByte(),
             R = rdr.ReadByte(),

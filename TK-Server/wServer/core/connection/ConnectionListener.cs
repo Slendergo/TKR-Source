@@ -22,7 +22,7 @@ namespace wServer.networking.connection
         public SendToken(int offset)
         {
             BufferOffset = offset;
-            Data = new byte[0x100000];
+            Data = new byte[2048];
         }
 
         public void Reset()
@@ -85,7 +85,7 @@ namespace wServer.networking.connection
 
     public sealed class ConnectionListener
     {
-        public const int BufferSize = ushort.MaxValue * 4;
+        public const int BufferSize = 16384;
 
         private const int Backlog = 1024;
         private const int MaxSimultaneousAcceptOps = 20;

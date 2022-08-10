@@ -10,11 +10,9 @@ namespace wServer
             T current = default;
 
             var count = 0;
-
             foreach (T element in source)
             {
                 count++;
-
                 if (rng.Next(count) == 0)
                     current = element;
             }

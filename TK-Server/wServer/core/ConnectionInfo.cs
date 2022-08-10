@@ -12,7 +12,6 @@ namespace wServer.core
         public int GameId { get; }
         public bool Reconnecting { get; }
         public long Time { get; }
-
         public DbAccount Account { get; }
         public Client Client { get; }
         public string GUID { get; }

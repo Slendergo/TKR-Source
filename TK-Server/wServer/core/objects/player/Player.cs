@@ -29,13 +29,6 @@ namespace wServer.core.objects
 
     public partial class Player : Character, IContainer, IPlayer
     {
-        public const int DONOR_1 = 10;
-        public const int DONOR_2 = 20;
-        public const int DONOR_3 = 30;
-        public const int DONOR_4 = 40;
-        public const int DONOR_5 = 50;
-        public const int VIP = 60;
-
         public Client Client;
 
         public int AccountId { get => _accountId.GetValue(); set => _accountId.SetValue(value); }
@@ -256,7 +249,26 @@ namespace wServer.core.objects
             _upgradeEnabled = new SV<bool>(this, StatDataType.UpgradeEnabled, client.Character.UpgradeEnabled, true);
             _partyId = new SV<int>(this, StatDataType.PartyId, client.Account.PartyId, true);
 
-            var maxPotionAmount = 50;
+            var addition = 0;
+            switch (Rank)
+            {
+                case common.RankingType.Supporter1:
+                    addition = 10;
+                    break;
+                case common.RankingType.Supporter2:
+                    addition = 20;
+                    break;
+                case common.RankingType.Supporter3:
+                    addition = 30;
+                    break;
+                case common.RankingType.Supporter4:
+                    addition = 40;
+                    break;
+                case common.RankingType.Supporter5:
+                    addition = 50;
+                    break;
+            }
+            var maxPotionAmount = 50 + addition;
             _SPSLifeCount = new SV<int>(this, StatDataType.SPS_LIFE_COUNT, client.Account.SPSLifeCount, true);
             _SPSLifeCountMax = new SV<int>(this, StatDataType.SPS_LIFE_COUNT_MAX, maxPotionAmount, true);
             _SPSManaCount = new SV<int>(this, StatDataType.SPS_MANA_COUNT, client.Account.SPSManaCount, true);

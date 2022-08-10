@@ -22,7 +22,7 @@
         "version": "1.2.0",
         "maxConnections": 90,
         "maxPlayers": 85,
-        "donorOnly": false,
+        "supporterOnly": false,
         "restartTime": 2,
         "whitelist": []
     },

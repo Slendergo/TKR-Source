@@ -7,12 +7,9 @@ namespace common.database
     public enum PartySizes
     {
         NPlayer = 3,
-        D1 = 4,
-        D2 = 5,
-        D3 = 6,
-        D4 = 7,
-        D5 = 8,
-        D6 = 9
+        S1 = 4,
+        S3 = 5,
+        S5 = 6,
     }
 
     public class DbPartySystem
@@ -72,6 +69,15 @@ namespace common.database
             switch (rank)
             {
                 // todo
+                case RankingType.Supporter1:
+                    return (int)PartySizes.S1;
+                    break;
+                case RankingType.Supporter3:
+                    return (int)PartySizes.S3;
+                    break;
+                case RankingType.Supporter5:
+                    return (int)PartySizes.S5;
+                    break;
                 default:
                     return (int)PartySizes.NPlayer;
             }

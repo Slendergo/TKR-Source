@@ -859,7 +859,26 @@ namespace wServer.core.objects
 
         private void AEIncrementStat(TickTime time, Item item, Position target, ActivateEffect eff, int objId, int slot, int sellMaxed)
         {
-            var totalAllowed = 50;
+            var addition = 0;
+            switch (Rank)
+            {
+                case common.RankingType.Supporter1:
+                    addition = 10;
+                    break;
+                case common.RankingType.Supporter2:
+                    addition = 20;
+                    break;
+                case common.RankingType.Supporter3:
+                    addition = 30;
+                    break;
+                case common.RankingType.Supporter4:
+                    addition = 40;
+                    break;
+                case common.RankingType.Supporter5:
+                    addition = 50;
+                    break;
+            }
+            var totalAllowed = 50 + addition;
 
             var idx = StatsManager.GetStatIndex((StatDataType)eff.Stats);
             var statInfo = GameServer.Resources.GameData.Classes[ObjectType].Stats;
@@ -1051,7 +1070,27 @@ namespace wServer.core.objects
 
         private int HandleTX(string statname, int amount)
         {
-            var maxAllowed = 50;
+            var addition = 0;
+            switch (Rank)
+            {
+                case common.RankingType.Supporter1:
+                    addition = 10;
+                    break;
+                case common.RankingType.Supporter2:
+                    addition = 20;
+                    break;
+                case common.RankingType.Supporter3:
+                    addition = 30;
+                    break;
+                case common.RankingType.Supporter4:
+                    addition = 40;
+                    break;
+                case common.RankingType.Supporter5:
+                    addition = 50;
+                    break;
+            }
+            var maxAllowed = 50 + addition;
+
             switch (statname)
             {
                 case "Wisdom":

@@ -58,8 +58,8 @@ namespace wServer.core.net.handlers
                 return;
             }
 
-            // second check: donor server
-            if (config.serverSettings.supporterOnly && acc.Rank < RankingType.Regular)
+            // second check: supporter server
+            if (config.serverSettings.supporterOnly && acc.Rank < RankingType.Supporter3)
             {
                 client.SendFailure($"You must be a supporter join this server.", FailureMessage.MessageNoDisconnect);
                 return;

@@ -28,7 +28,6 @@ namespace common.database.model
         public int GuildFame { get; private set; }
         public int GuildId { get; private set; }
         public GuildRank GuildRank { get; private set; }
-        public bool HasDonorLoot { get; private set; }
         public int Id { get; private set; }
         public int[] IgnoreList { get; private set; }
         public string Ip { get; private set; }
@@ -250,7 +249,6 @@ namespace common.database.model
             Registration = await db.ReadAsync<DateTime>(_key, "regTime");
             LastRecoveryTime = await db.ReadAsync<DateTime>(_key, "lastRecoveryTime");
             SetBaseStat = await db.ReadAsync<int>(_key, "setBaseStat");
-            HasDonorLoot = await db.ReadAsync<bool>(_key, "setDonorLoot");
             Size = await db.ReadAsync<int>(_key, "size");
             Skins = await db.ReadAsync<ushort[]>(_key, "skins");
             GoldHistory = await db.ReadAsync<int>(_key, "totalCredits");
@@ -391,7 +389,6 @@ namespace common.database.model
             await _db.WriteAsync(_key, "regTime", Registration);
             await _db.WriteAsync(_key, "lastRecoveryTime", LastRecoveryTime);
             await _db.WriteAsync(_key, "setBaseStat", SetBaseStat);
-            await _db.WriteAsync(_key, "setDonorLoot", HasDonorLoot);
             await _db.WriteAsync(_key, "size", Size);
             await _db.WriteAsync(_key, "skins", Skins);
             await _db.WriteAsync(_key, "totalCredits", GoldHistory);

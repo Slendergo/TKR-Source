@@ -15,63 +15,25 @@ namespace wServer.core.objects.vendors
 
     internal static class MerchantLists
     {
-        private static readonly List<ISellableItem> Abilities = new List<ISellableItem>
-        {
-            //TIER 3
-            new ShopItem("Cloak of the Night Thief", 500),
-            new ShopItem("Elvencraft Quiver", 500),
-            new ShopItem("Scorching Blast Spell", 500),
-            new ShopItem("Tome of Rejuvenation", 500),
-            new ShopItem("Red Iron Helm", 500),
-            new ShopItem("Reinforced Shield", 500),
-            new ShopItem("Seal of the Aspirant", 500),
-            new ShopItem("Stingray Poison", 500),
-            new ShopItem("Soul Siphon Skull", 500),
-            new ShopItem("Savage Trap", 500),
-            new ShopItem("Neutralization Orb", 500),
-            new ShopItem("Hallucination Prism", 500),
-            new ShopItem("Arcblast Scepter", 500),
-            new ShopItem("Silver Star", 500),
-            //TIER 4
-            new ShopItem("Cloak of the Red Agent", 500),
-            new ShopItem("Magesteel Quiver", 500),
-            new ShopItem("Destruction Sphere Spell", 500),
-            new ShopItem("Tome of Renewing", 500),
-            new ShopItem("Steel Helm", 500),
-            new ShopItem("Golden Shield", 500),
-            new ShopItem("Seal of the Divine", 500),
-            new ShopItem("Felwasp Toxin", 500),
-            new ShopItem("Essence Tap Skull", 500),
-            new ShopItem("Demonhunter Trap", 500),
-            new ShopItem("Timelock Orb", 500),
-            new ShopItem("Prism of Figments", 500),
-            new ShopItem("Cloudflash Scepter", 500),
-            new ShopItem("Wind Circle", 500)
-        };
 
-        private static readonly List<ISellableItem> Armor = new List<ISellableItem>
-        {
-            new ShopItem("Robe of the Illusionist", 50),
-            new ShopItem("Robe of the Grand Sorcerer", 500),
-            new ShopItem("Studded Leather Armor", 50),
-            new ShopItem("Hydra Skin Armor", 500),
-            new ShopItem("Mithril Armor", 50),
-            new ShopItem("Acropolis Armor", 500)
-        };
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         private static readonly List<ISellableItem> Consumables = new List<ISellableItem>
         {
+            new ShopItem("Magic Potion", 1),
+            new ShopItem("Health Potion", 1),
             new ShopItem("XP Booster 20 min", 100),
             new ShopItem("Backpack", 50),
             new ShopItem("Loot Drop Potion", 100),
-            new ShopItem("Magic Potion", 1),
-            new ShopItem("Health Potion", 1),
             new ShopItem("Item Dust", 150),
             new ShopItem("Potion Dust", 100),
             new ShopItem("Miscellaneous Dust", 150),
             new ShopItem("Special Dust", 1000),
             new ShopItem("Char Slot Unlocker", 300),
-            new ShopItem("Vault Chest Unlocker", 200)
+            new ShopItem("Vault Chest Unlocker", 200),
+            new ShopItem("XP Booster 20 min", 100),
+            new ShopItem("Backpack", 50),
+            new ShopItem("Loot Drop Potion", 100)
         };
 
         private static readonly List<ISellableItem> KeysFame = new List<ISellableItem>
@@ -86,21 +48,21 @@ namespace wServer.core.objects.vendors
             new ShopItem("Tomb of the Ancients Key", 200),
             new ShopItem("Deadwater Docks Key", 200),
             new ShopItem("Woodland Labyrinth Key", 200),
-        };
-
-        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
-
-        private static readonly List<ISellableItem> Miscellaneous = new List<ISellableItem>
-        {
-            new ShopItem("XP Booster 20 min", 100),
-            new ShopItem("Backpack", 50),
-            new ShopItem("Loot Drop Potion", 100),
-            new ShopItem("Item Dust", 150),
-            new ShopItem("Potion Dust", 100),
-            new ShopItem("Miscellaneous Dust", 150),
-            new ShopItem("Special Dust", 1000),
-            new ShopItem("Char Slot Unlocker", 300),
-            new ShopItem("Vault Chest Unlocker", 200)
+            new ShopItem("Pirate Cave Key", 25),
+            new ShopItem("Spider Den Key", 25),
+            new ShopItem("Undead Lair Key", 50),
+            new ShopItem("Sprite World Key", 50),
+            new ShopItem("Abyss of Demons Key", 75),
+            new ShopItem("Snake Pit Key", 200),
+            new ShopItem("Beachzone Key", 200),
+            new ShopItem("Lab Key", 200),
+            new ShopItem("Totem Key", 200),
+            new ShopItem("Manor Key", 200),
+            new ShopItem("Candy Key", 200),
+            new ShopItem("Cemetery Key", 150),
+            new ShopItem("Davy's Key", 200),
+            new ShopItem("Ocean Trench Key", 200),
+            new ShopItem("Tomb of the Ancients Key", 200)
         };
 
         private static readonly List<ISellableItem> PurchasableFame = new List<ISellableItem>
@@ -112,103 +74,9 @@ namespace wServer.core.objects.vendors
             new ShopItem("5000 Fame", 5000)
         };
 
-        private static readonly List<ISellableItem> Rings = new List<ISellableItem>
-        {
-            //TIER 3
-            new ShopItem("Ring of Superior Attack", 500),
-            new ShopItem("Ring of Superior Defense", 500),
-            new ShopItem("Ring of Superior Speed", 500),
-            new ShopItem("Ring of Superior Dexterity", 500),
-            new ShopItem("Ring of Superior Vitality", 500),
-            new ShopItem("Ring of Superior Wisdom", 500),
-            new ShopItem("Ring of Superior Health", 500),
-            new ShopItem("Ring of Superior Magic", 500),
-            //TIER 4
-            new ShopItem("Ring of Paramount Attack", 500),
-            new ShopItem("Ring of Paramount Defense", 500),
-            new ShopItem("Ring of Paramount Speed", 500),
-            new ShopItem("Ring of Paramount Dexterity", 500),
-            new ShopItem("Ring of Paramount Vitality", 500),
-            new ShopItem("Ring of Paramount Wisdom", 500),
-            new ShopItem("Ring of Paramount Health", 500),
-            new ShopItem("Ring of Paramount Magic", 500)
-        };
-
-        private static readonly List<ISellableItem> Small_Cloths = new List<ISellableItem>
-        {
-            new ShopItem("Small Futuristic Cloth", 10),
-            new ShopItem("Small Red Dragon Scale Cloth", 10),
-            new ShopItem("Small Midnight Dragon Scale Cloth", 10),
-            new ShopItem("Small Ivory Dragon Scale Cloth", 10),
-            new ShopItem("Small Green Dragon Scale Cloth", 10),
-            new ShopItem("Small Blue Dragon Scale Cloth", 10),
-            new ShopItem("Small Jester Argyle Cloth", 10),
-            new ShopItem("Small Heavy Chainmail Cloth", 10),
-            new ShopItem("Small Flame Cloth", 10),
-            new ShopItem("Small Alchemist Cloth", 10),
-            new ShopItem("Small Blue Camo Cloth", 10),
-            new ShopItem("Small Clanranald Cloth", 10),
-            new ShopItem("Small Hibiscus Beach Wrap Cloth", 10),
-            new ShopItem("Small Leopard Print Cloth", 10),
-            new ShopItem("Small Relief Cloth", 10),
-            new ShopItem("Small Spring Cloth", 10),
-            new ShopItem("Small Zebra Print Cloth", 10),
-            new ShopItem("Small American Flag Cloth", 10),
-            new ShopItem("Small Celtic Knot Cloth", 10),
-            new ShopItem("Small Colored Egg Cloth", 10),
-            new ShopItem("Small Intense Clovers Cloth", 10),
-            new ShopItem("Small Mosaic Cloth", 10),
-            new ShopItem("Small Spooky Cloth", 10),
-            new ShopItem("Small Sunburst Cloth", 10),
-            new ShopItem("Small White Diamond Cloth", 10),
-            new ShopItem("Small Skull Cloth", 10),
-            new ShopItem("Small Pink Sparkly Cloth", 10),
-            new ShopItem("Small Heart Cloth", 10),
-            new ShopItem("Small Dark Blue Stripe Cloth", 10),
-            new ShopItem("Small Brown Lined Cloth", 10),
-            new ShopItem("Small Starry Cloth", 10)
-        };
-
         private static readonly List<ISellableItem> Special = new List<ISellableItem>
         {
             new ShopItem("Amulet of Resurrection", 50000)
-        };
-
-        private static readonly List<ISellableItem> Store1 = new List<ISellableItem>
-        {
-            new ShopItem("Pirate Cave Key", 25),
-            new ShopItem("Spider Den Key", 25),
-            new ShopItem("Undead Lair Key", 50),
-            new ShopItem("Sprite World Key", 50),
-            new ShopItem("Abyss of Demons Key", 50),
-            new ShopItem("Snake Pit Key", 50),
-            new ShopItem("Beachzone Key", 50),
-            new ShopItem("Lab Key", 50),
-            new ShopItem("Totem Key", 50),
-            new ShopItem("Manor Key", 80),
-            new ShopItem("Candy Key", 100),
-            new ShopItem("Cemetery Key", 150),
-            new ShopItem("Davy's Key", 200),
-            new ShopItem("Ocean Trench Key", 300),
-            new ShopItem("Tomb of the Ancients Key", 400)
-        };
-
-        private static readonly List<ISellableItem> Weapons = new List<ISellableItem>
-        {
-            //TIER 8
-            new ShopItem("Fire Dagger", 500),
-            new ShopItem("Golden Bow", 500),
-            new ShopItem("Staff of Horror", 500),
-            new ShopItem("Wand of Death", 500),
-            new ShopItem("Ravenheart Sword", 500),
-            new ShopItem("Demon Edge", 500),
-            //TIER 9
-            new ShopItem("Ragetalon Dagger", 500),
-            new ShopItem("Verdant Bow", 500),
-            new ShopItem("Staff of Necrotic Arcana", 500),
-            new ShopItem("Wand of Deep Sorcery", 500),
-            new ShopItem("Dragonsoul Sword", 500),
-            new ShopItem("Jewel Eye Katana", 500)
         };
 
         public static void Initialize(GameServer gameServer)
@@ -232,15 +100,10 @@ namespace wServer.core.objects.vendors
 
         public static readonly Dictionary<TileRegion, Tuple<List<ISellableItem>, CurrencyType, int>> Shops = new Dictionary<TileRegion, Tuple<List<ISellableItem>, CurrencyType, int>>()
         {
-            { TileRegion.Store_1, new Tuple<List<ISellableItem>, CurrencyType, int>(Weapons, CurrencyType.Fame, 0) },
-            { TileRegion.Store_2, new Tuple<List<ISellableItem>, CurrencyType, int>(Abilities, CurrencyType.Fame, 0) },
-            { TileRegion.Store_3, new Tuple<List<ISellableItem>, CurrencyType, int>(Armor, CurrencyType.Fame, 0) },
-            { TileRegion.Store_4, new Tuple<List<ISellableItem>, CurrencyType, int>(Rings, CurrencyType.Fame, 0) },
             { TileRegion.Store_6, new Tuple<List<ISellableItem>, CurrencyType, int>(PurchasableFame, CurrencyType.Fame, 0) },
             { TileRegion.Store_7, new Tuple<List<ISellableItem>, CurrencyType, int>(Consumables, CurrencyType.Fame, 0) },
-            { TileRegion.Store_8, new Tuple<List<ISellableItem>, CurrencyType, int>(Special, CurrencyType.Fame, 0) },
-            { TileRegion.Store_17, new Tuple<List<ISellableItem>, CurrencyType, int>(KeysFame, CurrencyType.Fame, 0) },
-            { TileRegion.Store_19, new Tuple<List<ISellableItem>, CurrencyType, int>(Miscellaneous, CurrencyType.Fame, 0) }
+            { TileRegion.Store_8, new Tuple<List<ISellableItem>, CurrencyType, int>(Special, CurrencyType.Gold, 0) },
+            { TileRegion.Store_15, new Tuple<List<ISellableItem>, CurrencyType, int>(KeysFame, CurrencyType.Fame, 0) }
         };
 
         private static void InitDyes(GameServer gameServer)
@@ -276,9 +139,9 @@ namespace wServer.core.objects.vendors
                 }
             }
 
-            Shops[TileRegion.Store_15] = new Tuple<List<ISellableItem>, CurrencyType, int>(d1, CurrencyType.Fame, 0);
-            Shops[TileRegion.Store_16] = new Tuple<List<ISellableItem>, CurrencyType, int>(d2, CurrencyType.Fame, 0);
-            Shops[TileRegion.Store_18] = new Tuple<List<ISellableItem>, CurrencyType, int>(c1, CurrencyType.Fame, 0);
+            Shops[TileRegion.Store_17] = new Tuple<List<ISellableItem>, CurrencyType, int>(d1, CurrencyType.Gold, 0);
+            Shops[TileRegion.Store_18] = new Tuple<List<ISellableItem>, CurrencyType, int>(d2, CurrencyType.Gold, 0);
+            Shops[TileRegion.Store_19] = new Tuple<List<ISellableItem>, CurrencyType, int>(c1, CurrencyType.Gold, 0);
         }
     }
 }

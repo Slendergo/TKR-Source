@@ -60,7 +60,6 @@ namespace common.database
 
         public DateTime RegTime { get => GetValue<DateTime>("regTime"); set => SetValue("regTime", value); }
         public int SetBaseStat { get => GetValue<int>("setBaseStat"); set => SetValue("setBaseStat", value); }
-        public bool SetDonorLoot { get => GetValue<bool>("setDonorLoot"); set => SetValue("setDonorLoot", value); }
         public int Size { get => GetValue<int>("size"); set => SetValue("size", value); }
         public ushort[] Skins { get => GetValue<ushort[]>("skins") ?? new ushort[0]; set => SetValue("skins", value); }
         public int TotalCredits { get => GetValue<int>("totalCredits"); set => SetValue("totalCredits", value); }

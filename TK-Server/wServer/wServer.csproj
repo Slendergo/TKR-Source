@@ -171,6 +171,7 @@
     <Compile Include="core\objects\inventory\ItemStacker.cs" />
     <Compile Include="core\objects\player\Player.State.cs" />
     <Compile Include="core\setpieces\TalismanKing.cs" />
+    <Compile Include="logic\db\BehaviourDb.MortomusHideout.cs" />
     <Compile Include="utils\ItemUtils.cs" />
     <Compile Include="core\miscfile\thread\TickThreadSingle.cs" />
     <Compile Include="core\net\handlers\ChangeGuildRankHandler.cs" />

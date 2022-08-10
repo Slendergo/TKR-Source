@@ -1,4 +1,164 @@
 <Objects>
+	<Object type="0x14B" id="Undead Blood Bat">
+		<DisplayId>Undead Blood Bat</DisplayId>
+		<Class>Character</Class>
+		<Enemy />
+		<AnimatedTexture>
+			<File>Custom16x16Encounters</File>
+			<Index>33</Index>
+		</AnimatedTexture>
+		<Size>100</Size>
+		<MaxHitPoints>9000</MaxHitPoints>
+		<Defense>30</Defense>
+		<StasisImmune/>
+		<Projectile id="0">
+			<ObjectId>Fire Shot</ObjectId>
+			<Damage>60</Damage>
+			<Speed>90</Speed>
+			<Size>90</Size>
+			<MultiHit/>
+			<LifetimeMS>800</LifetimeMS>
+		</Projectile>
+	</Object>
+	<Object type="0x239" id="Haunted Bat">
+		<DisplayId>Haunted Bat</DisplayId>
+		<Class>Character</Class>
+		<Enemy />
+		<AnimatedTexture>
+			<File>Custom16x16Encounters</File>
+			<Index>32</Index>
+		</AnimatedTexture>
+		<Size>100</Size>
+		<MaxHitPoints>8000</MaxHitPoints>
+		<Defense>30</Defense>
+		<StasisImmune/>
+		<Projectile id="0">
+			<ObjectId>Fire Shot</ObjectId>
+			<Damage>130</Damage>
+			<Speed>0</Speed>
+			<Size>90</Size>
+			<MultiHit/>
+			<LifetimeMS>4000</LifetimeMS>
+			<Rotation>20</Rotation>
+		</Projectile>
+	</Object>
+	<Object type="0x23B" id="Killer Bat">
+		<DisplayId>Haunted Bat</DisplayId>
+		<Class>Character</Class>
+		<Enemy />
+		<AnimatedTexture>
+			<File>Custom16x16Encounters</File>
+			<Index>35</Index>
+		</AnimatedTexture>
+		<Size>100</Size>
+		<MaxHitPoints>8000</MaxHitPoints>
+		<Defense>30</Defense>
+		<StasisImmune/>
+		<Projectile id="0">
+			<ObjectId>Fire Shot</ObjectId>
+			<Damage>130</Damage>
+			<Speed>0</Speed>
+			<Size>90</Size>
+			<MultiHit/>
+			<LifetimeMS>4000</LifetimeMS>
+			<Rotation>20</Rotation>
+		</Projectile>
+	</Object>
+	<Object type="0x23C" id="Demon Bat">
+		<DisplayId>Haunted Bat</DisplayId>
+		<Class>Character</Class>
+		<Enemy />
+		<AnimatedTexture>
+			<File>Custom16x16Encounters</File>
+			<Index>34</Index>
+		</AnimatedTexture>
+		<Size>100</Size>
+		<MaxHitPoints>8000</MaxHitPoints>
+		<Defense>30</Defense>
+		<StasisImmune/>
+		<Projectile id="0">
+			<ObjectId>Fire Shot</ObjectId>
+			<Damage>130</Damage>
+			<Speed>0</Speed>
+			<Size>90</Size>
+			<MultiHit/>
+			<LifetimeMS>4000</LifetimeMS>
+			<Rotation>20</Rotation>
+		</Projectile>
+	</Object>
+	<Object type="0x14C" id="Haunted Golem">
+		<DisplayId>Haunted Golem</DisplayId>
+		<Class>Character</Class>
+		<Enemy />
+		<AnimatedTexture>
+			<File>Custom16x16Encounters</File>
+			<Index>38</Index>
+		</AnimatedTexture>
+		<Size>120</Size>
+		<MaxHitPoints>12000</MaxHitPoints>
+		<Defense>40</Defense>
+		<StasisImmune/>
+		<StunImmune/>
+		<Projectile id="0">
+			<ObjectId>Yellow HC Shot</ObjectId>
+			<Damage>40</Damage>
+			<Speed>80</Speed>
+			<Size>90</Size>
+			<ArmorPiercing/>
+			<Amplitude>2</Amplitude>
+			<Frequency>.2</Frequency>
+			<ArcGap>10</ArcGap>
+			<LifetimeMS>555</LifetimeMS>
+		</Projectile>
+	</Object>
+	<Object type="0x14D" id="Crawling Devourer">
+		<DisplayId>Crawling Devourer</DisplayId>
+		<Class>Character</Class>
+		<Enemy />
+		<AnimatedTexture>
+			<File>Custom16x16Encounters</File>
+			<Index>36</Index>
+		</AnimatedTexture>
+		<Size>120</Size>
+		<MaxHitPoints>11000</MaxHitPoints>
+		<Defense>25</Defense>
+		<StasisImmune/>
+		<ParalyzeImmune/>
+		<Projectile id="0">
+			<ObjectId>Crawling Devourer Shoot</ObjectId>
+			<Damage>90</Damage>
+			<Speed>110</Speed>
+			<Size>90</Size>
+			<MultiHit/>
+			<ArmorPierce/>
+			<Wavy/>
+			<LifetimeMS>545</LifetimeMS>
+		</Projectile>
+	</Object>
+	<Object type="0x14E" id="Cursed Mermaid">
+		<DisplayId>Cursed Mermaid</DisplayId>
+		<Class>Character</Class>
+		<Enemy />
+		<AnimatedTexture>
+			<File>Custom16x16Encounters</File>
+			<Index>37</Index>
+		</AnimatedTexture>
+		<Size>110</Size>
+		<MaxHitPoints>8000</MaxHitPoints>
+		<Defense>30</Defense>
+		<StasisImmune/>
+		<StunImmune/>
+		<SlowImmune/>
+		<Projectile id="0">
+			<ObjectId>Orange HC Shot</ObjectId>
+			<Damage>50</Damage>
+			<Speed>110</Speed>
+			<Size>90</Size>
+			<MultiHit/>
+			<Wavy/>
+			<LifetimeMS>545</LifetimeMS>
+		</Projectile>
+	</Object>
 	<Object type="0x9950" id="Fire Elemental Sword">
 		<Enemy />
 		<DisplayId>Fire Elemental Sword</DisplayId>

@@ -75,8 +75,7 @@ import kabam.rotmg.core.model.PlayerModel;
             characterType = playerXML.@id;
             if(!model.isClassAvailability(characterType,SavedCharactersList.UNAVAILABLE))
             {
-               overrideIsAvailable = model.isClassAvailability(characterType,SavedCharactersList.UNRESTRICTED);
-               charBox = new CharacterBox(playerXML,model.getCharStats()[objectType],model,overrideIsAvailable);
+               charBox = new CharacterBox(playerXML,model.getCharStats()[objectType],model);
                charBox.x = 50 + 140 * int(i % 5) + 70 - charBox.width / 2;
                charBox.y = 88 + 140 * int(i / 5);
                this.boxes_[objectType] = charBox;

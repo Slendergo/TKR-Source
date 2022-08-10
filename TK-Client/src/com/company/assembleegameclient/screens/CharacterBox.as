@@ -56,7 +56,7 @@ package com.company.assembleegameclient.screens
       public var poseDir_:int;
       public var poseAction_:int;
       
-      public function CharacterBox(playerXML:XML, charStats:CharacterStats, model:PlayerModel, overrideIsAvailable:Boolean = false)
+      public function CharacterBox(playerXML:XML, charStats:CharacterStats, model:PlayerModel)
       {
          var stars:Sprite = null;
          this.SaleTag = CharacterBox_SaleTag;
@@ -64,7 +64,7 @@ package com.company.assembleegameclient.screens
          this.model = model;
          this.playerXML_ = playerXML;
          this.charStats_ = charStats;
-         this.available_ = overrideIsAvailable || model.isLevelRequirementsMet(this.objectType());
+         this.available_ = model.isLevelRequirementsMet(this.objectType());
          if(!this.available_)
          {
             this.graphic_ = new LockedCharBoxGraphic();
@@ -289,6 +289,7 @@ package com.company.assembleegameclient.screens
       public function setIsBuyButtonEnabled(isEnabled:Boolean) : void
       {
          this.buyButton_.setEnabled(isEnabled);
+         this.buyButton_.setEnabled(false); //hackish
       }
    }
 }

@@ -15231,7 +15231,7 @@
     <DeathSound>monster/dark_elves_death</DeathSound>
     <Size>150</Size>
     <ShadowSize>50</ShadowSize>
-    <MaxHitPoints>55000</MaxHitPoints>
+    <MaxHitPoints>65000</MaxHitPoints>
     <Defense>25</Defense>
     <XpMult>0.7</XpMult>
     <StasisImmune />
@@ -26689,7 +26689,7 @@
       <File>Custom16x16Encounters</File>
       <Index>14</Index>
     </AnimatedTexture>
-    <MaxHitPoints>20000</MaxHitPoints>
+    <MaxHitPoints>85000</MaxHitPoints>
     <Size>150</Size>
     <Projectile id="0">
       <ObjectId>Dark Gray Spinner</ObjectId>
@@ -27785,6 +27785,7 @@
     <DisplayId>Mushroom</DisplayId>
     <Quest />
     <God />
+    <StasisImmune />
     <Class>Character</Class>
     <AnimatedTexture>
       <File>Custom32x32Encounters</File>
@@ -33748,7 +33749,7 @@
     </Projectile>
     <DisplayId>{high.Lizard_God}</DisplayId>
   </Object>
-  <Object type="0x64dc" id="Oryx the Mad God 2OA">
+  <Object type="0x64dc" id="The Talisman KingOA">
     <DisplayId>Oryx the Mad God</DisplayId>
     <Enemy />
     <Class>Character</Class>
@@ -33834,7 +33835,7 @@
       <MultiHit />
     </Projectile>
   </Object>
-  <Object type="0x0932" id="Oryx the Mad God 2">
+  <Object type="0x0932" id="The Talisman King">
     <DisplayId>Oryx the Mad God</DisplayId>
     <Enemy />
     <Class>Character</Class>
@@ -63046,9 +63047,9 @@
     <Projectile>
       <ObjectId>Stone Slash</ObjectId>
       <Speed>120</Speed>
-      <MinDamage>500</MinDamage>
-      <MaxDamage>600</MaxDamage>
-      <LifetimeMS>445</LifetimeMS>
+      <MinDamage>450</MinDamage>
+      <MaxDamage>550</MaxDamage>
+      <LifetimeMS>300</LifetimeMS>
     </Projectile>
     <BagType>7</BagType>
     <FameBonus>4</FameBonus>
@@ -66040,6 +66041,60 @@
     </Texture>
     <ShadowSize>50</ShadowSize>
   </Object>
+  <Object type="0xaa01" id="Wind Tile 1">
+    <Class>GameObject</Class>
+    <Texture>
+      <File>customEnvironment1</File>
+      <Index>0x30</Index>
+    </Texture>
+    <DrawOnGround />
+    <Static />
+  </Object>
+  <Object type="0xaa02" id="Wind Tile 2">
+    <Class>GameObject</Class>
+    <Texture>
+      <File>customEnvironment1</File>
+      <Index>0x31</Index>
+    </Texture>
+    <DrawOnGround />
+    <Static />
+  </Object>
+  <Object type="0xaa03" id="Wind Tile 3">
+    <Class>GameObject</Class>
+    <Texture>
+      <File>customEnvironment1</File>
+      <Index>0x32</Index>
+    </Texture>
+    <DrawOnGround />
+    <Static />
+  </Object>
+  <Object type="0xaa04" id="Wind Tile 4">
+    <Class>GameObject</Class>
+    <Texture>
+      <File>customEnvironment1</File>
+      <Index>0x33</Index>
+    </Texture>
+    <DrawOnGround />
+    <Static />
+  </Object>
+  <Object type="0xaa05" id="Wind Tile 5">
+    <Class>GameObject</Class>
+    <Texture>
+      <File>customEnvironment1</File>
+      <Index>0x34</Index>
+    </Texture>
+    <DrawOnGround />
+    <Static />
+  </Object>
+  <Object type="0xaa06" id="Wind Tile 6">
+    <Class>GameObject</Class>
+    <Texture>
+      <File>customEnvironment1</File>
+      <Index>0x35</Index>
+    </Texture>
+    <DrawOnGround />
+    <Static />
+  </Object>
   <Object type="0xa007" id="Gravestone 9/16">
     <Class>GameObject</Class>
     <ShowName />
@@ -66103,6 +66158,38 @@
         <Index>0x02</Index>
       </Texture>
     </RandomTexture>
+  </Object>
+  <Object type="0xaa07" id="Wind Rock 1">
+    <Class>GameObject</Class>
+    <Texture>
+      <File>customEnvironment16x16</File>
+      <Index>0x60</Index>
+    </Texture>
+    <ShadowSize>50</ShadowSize>
+  </Object>
+  <Object type="0xaa08" id="Wind Rock 2">
+    <Class>GameObject</Class>
+    <Texture>
+      <File>customEnvironment16x16</File>
+      <Index>0x61</Index>
+    </Texture>
+    <ShadowSize>50</ShadowSize>
+  </Object>
+  <Object type="0xaa09" id="Wind Rock 3">
+    <Class>GameObject</Class>
+    <Texture>
+      <File>customEnvironment16x16</File>
+      <Index>0x62</Index>
+    </Texture>
+    <ShadowSize>50</ShadowSize>
+  </Object>
+  <Object type="0xaa10" id="Wind Rock 4">
+    <Class>GameObject</Class>
+    <Texture>
+      <File>customEnvironment16x16</File>
+      <Index>0x63</Index>
+    </Texture>
+    <ShadowSize>50</ShadowSize>
   </Object>
   <Object type="0xa00a" id="Gravestone 12/16">
     <Class>GameObject</Class>
@@ -75011,6 +75098,24 @@
     <Texture>
       <File>custom16x16Environment</File>
       <Index>0x76</Index>
+    </Texture>
+    <Static />
+    <Size>100</Size>
+  </Object>
+  <Object type="0xaa20" id="Wind Small Rock">
+    <Class>GameObject</Class>
+    <Texture>
+      <File>customEnvironment1</File>
+      <Index>0x40</Index>
+    </Texture>
+    <Static />
+    <Size>100</Size>
+  </Object>
+  <Object type="0xaa21" id="Wind Small Rock 1">
+    <Class>GameObject</Class>
+    <Texture>
+      <File>customEnvironment1</File>
+      <Index>0x41</Index>
     </Texture>
     <Static />
     <Size>100</Size>

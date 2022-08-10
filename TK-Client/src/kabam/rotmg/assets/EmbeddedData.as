@@ -1,15 +1,5 @@
 package kabam.rotmg.assets
 {
-import kabam.rotmg.assets.custom.EmbeddedData_CustomBossesCXML;
-import kabam.rotmg.assets.custom.items.EmbeddedData_AbilitiesItemsCXML;
-import kabam.rotmg.assets.custom.items.EmbeddedData_ArmorItemsCXML;
-import kabam.rotmg.assets.custom.items.EmbeddedData_CustomItemsCXML;
-import kabam.rotmg.assets.custom.EmbeddedData_CustomMobsCXML;
-import kabam.rotmg.assets.custom.EmbeddedData_CustomShootsCXML;
-import kabam.rotmg.assets.custom.items.EmbeddedData_RingItemsCXML;
-import kabam.rotmg.assets.custom.items.EmbeddedData_WeaponsItemsCXML;
-import kabam.rotmg.assets.custom.EmbeddedData_customGroundCXML;
-
 public class EmbeddedData
    {
       public static const skinsXML:XML = XML(new EmbeddedData_SkinsCXML());

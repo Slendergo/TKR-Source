@@ -12,6 +12,7 @@ namespace common.resources
         public readonly int SlotCost;
         public readonly CurrencyType SlotCurrency;
         public readonly int VaultCount;
+        public readonly bool TestingRegister;
 
         public NewAccounts(XElement e)
         {
@@ -21,8 +22,9 @@ namespace common.resources
             Credits = e.GetValue("Credits", 0);
             ClassesUnlocked = e.HasElement("ClassesUnlocked");
             SkinsUnlocked = e.HasElement("SkinsUnlocked");
-            SlotCost = 1000;
+            SlotCost = e.GetValue("SlotCost", 1000);
             SlotCurrency = (CurrencyType)e.GetValue("SlotCurrency", 0);
+            TestingRegister = e.HasElement("TestingRegister");
 
             if (SlotCurrency != CurrencyType.Fame && SlotCurrency != CurrencyType.Gold)
                 SlotCurrency = CurrencyType.Gold;

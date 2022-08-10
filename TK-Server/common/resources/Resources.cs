@@ -1,80 +1,63 @@
 ﻿using NLog;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
-using System.Xml.Linq;
 
 namespace common.resources
 {
     public class Resources : IDisposable
     {
-        public XmlData GameData;
-        public string ResourcePath;
-        public AppSettings Settings;
-        public Dictionary<string, byte[]> WebFiles = new Dictionary<string, byte[]>();
-        public IList<string> MusicNames;
-
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
-        public Resources(string resourcePath, bool? wServer = false, Action<float, float, string, bool> progress = null, bool exportXml = false)
+        public XmlData GameData { get; private set; } = new XmlData();
+        public string ResourcePath { get; private set; } 
+        public AppSettings Settings { get; private set; } = new AppSettings();
+        public Dictionary<string, byte[]> WebFiles { get; private set; } = new Dictionary<string, byte[]>();
+
+        public Resources(string resourcePath, bool wServer, bool exportXmls = false)
         {
-            if (wServer.HasValue) Log.Info("Loading resources...");
+            using (var t = new TimedProfiler("Resources"))
+            {
+                Log.Info("Loading resources...");
+                ResourcePath = resourcePath;
 
-            ResourcePath = resourcePath;
-            GameData = new XmlData(resourcePath + "/xml", !wServer.HasValue, progress, exportXml);
-            
-            if (!wServer.HasValue) return;
+                Log.Info("Loading XmlData...");
+                var xmlPath = $"{resourcePath}/xml";
 
-            Settings = new AppSettings(resourcePath + "/data/init.xml");
+                GameData.LoadXmls(xmlPath, "*.xml", exportXmls);
+                GameData.LoadXmls(xmlPath, "*.dat", exportXmls);
 
-            if (!wServer.Value) 
-                webFiles(resourcePath + "/web");
-            else 
-                GameData.LoadMaps($"{resourcePath}/worlds");
+                Log.Info("Loading Settings...");
+                var settingsPath = $"{resourcePath}/data/init.xml";
+                Settings.LoadSettings(settingsPath);
 
-            music(resourcePath);
+                if (!wServer)
+                    LoadWebFiles(resourcePath + "/web");
+                else
+                    GameData.LoadMaps($"{resourcePath}/worlds");
+            }
         }
 
-        private void music(string baseDir)
+        private void LoadWebFiles(string dir)
         {
-            List<string> music;
+            Log.Info("Loading web data...");
 
-            MusicNames =
-                new ReadOnlyCollection<string>(
-                    music = new List<string>());
-
-            music.AddRange(Directory
-                .EnumerateFiles(baseDir + "/web/music", "*.mp3", SearchOption.AllDirectories)
-                .Select(Path.GetFileNameWithoutExtension));
+            var files = Directory.GetFiles(dir, "*", SearchOption.AllDirectories);
+            foreach (var file in files)
+            {
+                var webPath = file.Substring(dir.Length, file.Length - dir.Length).Replace("\\", "/");
+                WebFiles[webPath] = File.ReadAllBytes(file);
+            }
         }
-
-        public IDictionary<string, byte[]> Languages { get; private set; }
 
         public void Dispose()
         {
             ResourcePath = null;
             GameData = null;
             WebFiles = null;
-            Languages = null;
             Settings = null;
 
             GC.SuppressFinalize(this);
-        }
-
-        private void webFiles(string dir)
-        {
-            Log.Info("Loading web data...");
-
-            var files = Directory.EnumerateFiles(dir, "*", SearchOption.AllDirectories);
-            foreach (var file in files)
-            {
-                var webPath = file.Substring(dir.Length, file.Length - dir.Length)
-                    .Replace("\\", "/");
-
-                WebFiles[webPath] = File.ReadAllBytes(file);
-            }
         }
     }
 }

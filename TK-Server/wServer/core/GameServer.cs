@@ -47,7 +47,7 @@ namespace wServer.core
                 throw new Exception("Too many arguments expected 1.");
 
             Configuration = ServerConfig.ReadFile(args.Length == 1 ? args[0] : "wServer.json");
-            Resources = new Resources(Configuration.serverSettings.resourceFolder, true, null, ExportXMLS);
+            Resources = new Resources(Configuration.serverSettings.resourceFolder, true, ExportXMLS);
             ItemDustWeights = new ItemDustWeights(this);
             Database = new Database(Resources, Configuration);
             MarketSweeper = new MarketSweeper(Database);

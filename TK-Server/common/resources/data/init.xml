@@ -2,19 +2,19 @@
     <MenuMusic>menumusic</MenuMusic>
     <DeadMusic>menumusic</DeadMusic>
   <NewAccounts>
-    <MaxCharSlot>3</MaxCharSlot>
-    <VaultCount>3</VaultCount>
+    <MaxCharSlot>1</MaxCharSlot>
+    <VaultCount>1</VaultCount>
     <Fame>0</Fame>
     <Credits>0</Credits>
     <SlotCost>1000</SlotCost>
     <SlotCurrency>1</SlotCurrency>
-    <ClassesUnlocked />
-    <SkinsUnlocked />
+	<TestingRegister/>
+    <!--<ClassesUnlocked />-->
+    <!--<SkinsUnlocked />-->
   </NewAccounts>
   <NewCharacters>
     <Level>1</Level>
-    <!--<Maxed />-->
   </NewCharacters>
   <UseExternalPayments>0</UseExternalPayments>
-  <MaxStackablePotions>9</MaxStackablePotions>
+  <MaxStackablePotions>6</MaxStackablePotions>
 </AppSettings>

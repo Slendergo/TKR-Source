@@ -7,7 +7,7 @@ namespace server.app
     {
         public override void HandleRequest(RequestContext context, NameValueCollection query)
         {
-            Write(context, Program.Resources.Languages[query["languageType"]]);
+            //Write(context, Program.Resources.Languages[query["languageType"]]);
         }
     }
 }

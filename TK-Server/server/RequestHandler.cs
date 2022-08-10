@@ -36,8 +36,7 @@ namespace server
             {"/app/globalNews", new app.globalNews()},
             {"/guild/listMembers", new guild.listMembers()},
             {"/guild/getBoard", new guild.getBoard()},
-            {"/guild/setBoard", new guild.setBoard()},
-            {"/char/getServerXmls", new @char.getServerXmls()}
+            {"/guild/setBoard", new guild.setBoard()}
         };
 
         public static void Initialize(Resources resources)

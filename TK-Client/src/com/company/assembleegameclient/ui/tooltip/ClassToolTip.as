@@ -38,10 +38,6 @@ package com.company.assembleegameclient.ui.tooltip
       
       private var nextClassQuest_:SimpleText;
       
-      private var costText_:SimpleText;
-      
-      private var coinBitmap_:Bitmap;
-      
       public function ClassToolTip(playerXML:XML, model:PlayerModel, charStats:CharacterStats)
       {
          var showUnlockRequirements:Boolean = false;
@@ -119,21 +115,6 @@ package com.company.assembleegameclient.ui.tooltip
             this.unlockText_.x = 12;
             this.unlockText_.y = height - 4;
             addChild(this.unlockText_);
-            this.costText_ = new SimpleText(13,65280,false,174,0);
-            this.costText_.wordWrap = true;
-            this.costText_.multiline = true;
-            this.costText_.text = "or buy now for " + playerXML.UnlockCost;
-            this.costText_.updateMetrics();
-            this.costText_.filters = [new DropShadowFilter(0,0,0)];
-            addChild(this.costText_);
-            this.costText_.x = 12;
-            this.costText_.y = height - 4;
-            coinBD = AssetLibrary.getImageFromSet("lofiObj3",225);
-            coinBD = TextureRedrawer.redraw(coinBD,30,true,0);
-            this.coinBitmap_ = new Bitmap(coinBD);
-            this.coinBitmap_.y = this.costText_.y - 8;
-            this.coinBitmap_.x = this.costText_.x + this.costText_.textWidth;
-            addChild(this.coinBitmap_);
          }
          else
          {

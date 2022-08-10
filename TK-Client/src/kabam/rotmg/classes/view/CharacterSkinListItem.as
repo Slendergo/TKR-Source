@@ -212,8 +212,8 @@ package kabam.rotmg.classes.view
       
       private function setCost() : void
       {
-         var cost:int = Boolean(this.model)?int(this.model.cost):int(0);
-         this.buyButton.setPrice(cost,Currency.GOLD);
+         var cost:int = Boolean(this.model)?int(this.model.cost):int(300);
+         this.buyButton.setPrice(cost, Currency.GOLD);
          this.buyButton.setWidth(120);
       }
       

@@ -190,7 +190,7 @@ import kabam.rotmg.legends.model.Legend;
          this.closeButton.x = 350;
          this.closeButton.y = 520;
          this.closeButton.width = 100;
-         this.closeButton.setLabel("done",DefaultLabelFormat.questButtonCompleteLabel);
+         this.closeButton.setLabel("back",DefaultLabelFormat.questButtonCompleteLabel);
          addChild(this.closeButton);
          this.closeButton.clicked2.add(this.onCloseClick);
       }

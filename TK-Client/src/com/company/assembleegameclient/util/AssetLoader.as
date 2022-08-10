@@ -210,7 +210,7 @@ public class AssetLoader
       {
          var xml:XML = XML(new EmbeddedData.ObjectCXML());
          ObjectLibrary.parseFromXML(xml);
-         var xml:XML = XML(new EmbeddedData.PlayersCXML());
+         xml = XML(new EmbeddedData.PlayersCXML());
          ObjectLibrary.parseFromXML(xml);
       }
       catch(error:*)

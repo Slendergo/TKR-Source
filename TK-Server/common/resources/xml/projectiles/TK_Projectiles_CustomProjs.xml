@@ -1,4 +1,52 @@
 <Objects>
+	<Object type="0x16F" id="Morto Green">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomProjs</File>
+			<Index>0xe0</Index>
+		</Texture>
+		<AngleCorrection>1</AngleCorrection>
+	</Object>
+	<Object type="0x192" id="Morto Light Green">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomProjs</File>
+			<Index>0xe1</Index>
+		</Texture>
+		<AngleCorrection>1</AngleCorrection>
+	</Object>
+	<Object type="0x195" id="Morto Dark Green">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomProjs</File>
+			<Index>0xe2</Index>
+		</Texture>
+		<AngleCorrection>1</AngleCorrection>
+	</Object>
+	<Object type="0x196" id="Morto Square">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomProjs</File>
+			<Index>0xe3</Index>
+		</Texture>
+		<Rotation>80</Rotation>
+	</Object>
+	<Object type="0x1FB" id="Morto Wisp">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomProjs</File>
+			<Index>0xe4</Index>
+		</Texture>
+		<Rotation>50</Rotation>
+	</Object>
+	<Object type="0x203" id="Morto Arrow">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomProjs</File>
+			<Index>0xe5</Index>
+		</Texture>
+		<AngleCorrection>1</AngleCorrection>
+	</Object>
 	<Object type="0x9911" id="Limons Spell Shot">
 		<Class>Projectile</Class>
 		<Texture>

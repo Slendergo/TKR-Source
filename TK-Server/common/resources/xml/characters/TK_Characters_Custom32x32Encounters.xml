@@ -1,4 +1,126 @@
 ﻿<Objects>
+	<Object type="0x20C" id="Mortomus, Keeper of Souls">
+		<Class>Character</Class>
+		<Enemy />
+		<SpecialEnemy />
+		<Hero />
+		<God />
+		<Quest />
+		<KeepDamageRecord />
+		<Level>1</Level>
+		<AnimatedTexture>
+			<File>Custom32x32Encounters</File>
+			<Index>18</Index>
+		</AnimatedTexture>
+		<DisplayId>Mortomus, Keeper of Souls</DisplayId>
+		<Size>170</Size>
+		<MaxHitPoints>300000</MaxHitPoints>
+		<Defense>30</Defense>
+		<StasisImmune/>
+		<StunImmune/>
+		<ParalyzeImmune/>
+		<XpMult>1.2</XpMult>
+		<Projectile id="0">
+			<ObjectId>Morto Green</ObjectId>
+			<Damage>100</Damage>
+			<Size>100</Size>
+			<Speed>80</Speed>
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+		<Projectile id="1">
+			<ObjectId>Morto Light Green</ObjectId>
+			<Damage>30</Damage>
+			<Size>100</Size>
+			<Speed>100</Speed>
+			<ConditionEffect duration="3">Speedy</ConditionEffect>
+			<LifetimeMS>1200</LifetimeMS>
+		</Projectile>
+		<Projectile id="2">
+			<ObjectId>Morto Dark Green</ObjectId>
+			<Damage>70</Damage>
+			<Size>100</Size>
+			<Speed>100</Speed>
+			<LifetimeMS>600</LifetimeMS>
+		</Projectile>
+		<Projectile id="3">
+			<ObjectId>Morto Square</ObjectId>
+			<Damage>80</Damage>
+			<Size>100</Size>
+			<Speed>120</Speed>
+			<ConditionEffect duration="3">Armor Broken</ConditionEffect>
+			<LifetimeMS>4000</LifetimeMS>
+			<ArmorPiercing />
+		</Projectile>
+		<Projectile id="4">
+			<ObjectId>Morto Wisp</ObjectId>
+			<Damage>100</Damage>
+			<Size>100</Size>
+			<Speed>90</Speed>
+			<ConditionEffect duration="5">Armor Broken</ConditionEffect>
+			<LifetimeMS>4000</LifetimeMS>
+			<MultiHit />
+			<ArmorPiercing />
+		</Projectile>
+		<Projectile id="5">
+			<ObjectId>Morto Square</ObjectId>
+			<Damage>110</Damage>
+			<Size>100</Size>
+			<Speed>120</Speed>
+			<LifetimeMS>800</LifetimeMS>
+		</Projectile>
+		<Projectile id="6">
+			<ObjectId>Morto Arrow</ObjectId>
+			<Damage>90</Damage>
+			<Size>100</Size>
+			<Speed>80</Speed>
+			<LifetimeMS>2000</LifetimeMS>
+		</Projectile>
+		<Projectile id="7">
+			<ObjectId>Morto Light Green</ObjectId>
+			<Damage>45</Damage>
+			<Size>140</Size>
+			<Speed>100</Speed>
+			<ConditionEffect duration="3">Speedy</ConditionEffect>
+			<LifetimeMS>1500</LifetimeMS>
+			<MultiHit />
+			<ArmorPiercing />
+		</Projectile>
+		<Projectile id="8">
+			<ObjectId>Morto Green</ObjectId>
+			<Damage>100</Damage>
+			<Size>100</Size>
+			<Speed>80</Speed>
+			<LifetimeMS>2000</LifetimeMS>
+			<ConditionEffect duration="5">Armor Broken</ConditionEffect>
+			<MultiHit />
+			<ArmorPiercing />
+		</Projectile>
+		<Projectile id="9">
+			<ObjectId>Morto Wisp</ObjectId>
+			<Damage>70</Damage>
+			<Size>100</Size>
+			<Speed>70</Speed>
+			<LifetimeMS>2100</LifetimeMS>
+			<MultiHit />
+			<ArmorPiercing />
+		</Projectile>
+		<Projectile id="10">
+			<ObjectId>Morto Square</ObjectId>
+			<Damage>90</Damage>
+			<Size>100</Size>
+			<Speed>120</Speed>
+			<LifetimeMS>2000</LifetimeMS>
+		</Projectile>
+		<Projectile id="11">
+			<ObjectId>Morto Dark Green</ObjectId>
+			<Damage>400</Damage>
+			<Size>100</Size>
+			<Speed>80</Speed>
+			<LifetimeMS>4000</LifetimeMS>
+			<MultiHit />
+			<ArmorPiercing />
+		</Projectile>
+	</Object>
   <Object type="0x48dc" id="Tiki Tiki">
     <Enemy />
     <Hero />

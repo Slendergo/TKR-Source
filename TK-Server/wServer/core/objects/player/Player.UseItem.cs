@@ -754,13 +754,6 @@ namespace wServer.core.objects
         {
             var gameData = GameServer.Resources.GameData;
 
-            if (Rank >= 60 && !(World is VaultWorld) && Rank < 110)
-            {
-                SendError("You can't use Keys out of the Vault");
-                Inventory[slot] = item;
-                return;
-            }
-
             if (!gameData.IdToObjectType.TryGetValue(eff.Id, out ushort objType) ||
                 !gameData.Portals.ContainsKey(objType))
                 return; // object not found, ignore
@@ -866,7 +859,8 @@ namespace wServer.core.objects
 
         private void AEIncrementStat(TickTime time, Item item, Position target, ActivateEffect eff, int objId, int slot, int sellMaxed)
         {
-            var totalAllowed = 50 + (Client.Account.Rank * 2);
+            var totalAllowed = 50;
+
             var idx = StatsManager.GetStatIndex((StatDataType)eff.Stats);
             var statInfo = GameServer.Resources.GameData.Classes[ObjectType].Stats;
             var statname = StatsManager.StatIndexToName(idx);
@@ -1057,7 +1051,7 @@ namespace wServer.core.objects
 
         private int HandleTX(string statname, int amount)
         {
-            var maxAllowed = 50 + Client.Account.Rank * 2;
+            var maxAllowed = 50;
             switch (statname)
             {
                 case "Wisdom":

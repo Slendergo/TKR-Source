@@ -1,4 +1,5 @@
-﻿using wServer.core.objects;
+﻿using common;
+using wServer.core.objects;
 
 namespace wServer.core.commands
 {
@@ -6,9 +7,8 @@ namespace wServer.core.commands
     {
         internal class Announce : Command
         {
-            public Announce() : base("announce", permLevel: 110)
-            {
-            }
+            public override RankingType RankRequirement => RankingType.Admin;
+            public override string CommandName => "announce";
 
             protected override bool Process(Player player, TickTime time, string args)
             {
@@ -19,9 +19,8 @@ namespace wServer.core.commands
 
         internal class ServerAnnounce : Command
         {
-            public ServerAnnounce() : base("sannounce", permLevel: 110)
-            {
-            }
+            public override RankingType RankRequirement => RankingType.Admin;
+            public override string CommandName => "sannounce";
 
             protected override bool Process(Player player, TickTime time, string args)
             {

@@ -147,14 +147,6 @@ namespace wServer
             }
         }
 
-        public static bool CanUseThisFeature(this Player player, GenericRank requiredRank)
-        {
-            var rank = player.GetGenericRank();
-            var result = !rank.HasValue ? true : (rank.Value >= requiredRank);
-
-            return !result;
-        }
-
         public static int CountEntity(this Entity entity, double dist, ushort? objType)
         {
             if (entity.World == null)
@@ -316,8 +308,6 @@ namespace wServer
                     break;
             }
         }
-
-        public static GenericRank? GetGenericRank(this Player player) => Enum.TryParse(player.Rank.ToString(), out GenericRank rank) ? (GenericRank?)rank : null;
 
         public static Entity GetLowestHpEntity(this Entity entity, double dist, ushort? objType, bool seeInvis = false) // objType = null for player
         {

@@ -51,19 +51,13 @@ namespace wServer.core.objects
                 return;
             }
 
-            /*if (!this.CanUseThisFeature(GenericRank.VIP))
-            {
-                SendError("You cannot peform this action due higher rank.");
-                return;
-            }*/
-
             if (tradeTarget != null)
             {
                 SendError("Already trading!");
                 return;
             }
 
-            if (acc.Rank >= 60)
+            if (acc.IsAdmin)
             {
                 SendError("You cannot trade.");
                 return;
@@ -87,12 +81,6 @@ namespace wServer.core.objects
                 SendError("You can't trade with yourself!");
                 return;
             }
-
-            /*if (!target.CanUseThisFeature(GenericRank.VIP))
-            {
-                SendError("Cannot trade with a higher rank.");
-                return;
-            }*/
 
             if (target.Client.Account.IgnoreList.Contains(AccountId))
                 return; // account is ignored

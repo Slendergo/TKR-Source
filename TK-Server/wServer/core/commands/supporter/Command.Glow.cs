@@ -8,13 +8,12 @@ namespace wServer.core.commands
     {
         internal class Glow : Command
         {
-            public Glow() : base("glow", permLevel: 40)
-            {
-            } //Donor-4
+            public override RankingType RankRequirement => RankingType.Supporter1;
+            public override string CommandName => "glow";
 
             protected override bool Process(Player player, TickTime time, string color)
             {
-                if (String.IsNullOrWhiteSpace(color))
+                if (string.IsNullOrWhiteSpace(color))
                 {
                     player.SendInfo("Usage: /glow <color> \n Number of the color needs to be a HexCode (0xFFFFFF = White, use 0x instahead #), search in google HexCode + Color.");
                     return true;

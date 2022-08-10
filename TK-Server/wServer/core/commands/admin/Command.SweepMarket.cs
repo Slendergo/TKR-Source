@@ -1,4 +1,5 @@
-﻿using common.database;
+﻿using common;
+using common.database;
 using wServer.core.objects;
 
 namespace wServer.core.commands
@@ -7,9 +8,8 @@ namespace wServer.core.commands
     {
         public class SweepMarket : Command
         {
-            public SweepMarket() : base("sweepmarket", permLevel: 100, alias: "sweep")
-            {
-            }
+            public override RankingType RankRequirement => RankingType.Admin;
+            public override string CommandName => "sweepmarket";
 
             protected override bool Process(Player player, TickTime time, string args)
             {

@@ -29,54 +29,6 @@ namespace wServer.core.objects.vendors
             var trans = db.Conn.CreateTransaction();
 
             GameServer.Database.CreateChest(acc, trans);
-            switch (player.Rank)
-            {
-                case 10:
-                    Price = 150;
-                    break;
-                case 20:
-                    Price = 125;
-                    break;
-                case 30:
-                    Price = 100;
-                    break;
-                case 40:
-                    Price = 75;
-                    break;
-                case 50:
-                    Price = 25;
-                    break;
-                case 60:
-                    Price = 0;
-                    break;
-                default:
-                    Price = 200;
-                    break;
-            }
-            /* if (player.Rank == 10)
-             {
-                 Price -= 50;
-             }
-             if (player.Rank == 20)
-             {
-                 Price -= 75;
-             }
-             if (player.Rank == 30)
-             {
-                 Price -= 100;
-             }
-             if (player.Rank == 40)
-             {
-                 Price -= 125;
-             }
-             if (player.Rank == 50)
-             {
-                 Price -= 175;
-             }
-             if (player.Rank == 60)
-             {
-                 Price -= 200;
-             }*/
 
             var t1 = db.UpdateCurrency(acc, -Price, Currency, trans);
             var t2 = trans.ExecuteAsync();

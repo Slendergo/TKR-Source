@@ -1,4 +1,5 @@
-﻿using System;
+﻿using common;
+using System;
 using wServer.core.objects;
 
 namespace wServer.core.commands
@@ -7,9 +8,8 @@ namespace wServer.core.commands
     {
         internal class Unmute : Command
         {
-            public Unmute() : base("unmute", permLevel: 80)
-            {
-            }
+            public override RankingType RankRequirement => RankingType.Admin;
+            public override string CommandName => "unmute";
 
             protected override bool Process(Player player, TickTime time, string name)
             {

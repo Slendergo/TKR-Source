@@ -16,9 +16,7 @@ namespace wServer.core.commands
             for (var i = 0; i < types.Length; i++)
                 if (type.IsAssignableFrom(types[i]) && types[i] != type)
                 {
-                    var instance = (types[i].GetConstructor(new Type[] { typeof(GameServer) }) == null)
-                        ? (Command)Activator.CreateInstance(types[i])
-                        : (Command)Activator.CreateInstance(types[i], gameServer);
+                    var instance = (types[i].GetConstructor(new Type[] { typeof(GameServer) }) == null) ? (Command)Activator.CreateInstance(types[i]) : (Command)Activator.CreateInstance(types[i], gameServer);
 
                     //if (blacklistedCmds.Contains(instance.CommandName.ToLower()))
                     //    continue;

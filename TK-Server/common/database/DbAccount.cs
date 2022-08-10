@@ -28,7 +28,6 @@ namespace common.database
         }
 
         public int AccountId { get; private set; }
-        public bool Admin { get => GetValue<bool>("admin"); set => SetValue("admin", value); }
         public int BanLiftTime { get => GetValue<int>("banLiftTime"); set => SetValue("banLiftTime", value); }
         public bool Banned { get => GetValue<bool>("banned"); set => SetValue("banned", value); }
         public int ColorChat { get => GetValue<int>("colorchat"); set => SetValue("colorchat", value); }
@@ -48,7 +47,7 @@ namespace common.database
         public string IP { get => GetValue<string>("ip"); set => SetValue("ip", value); }
         public DateTime LastRecoveryTime { get => GetValue<DateTime>("lastRecoveryTime"); set => SetValue("lastRecoveryTime", value); }
         public int LastSeen { get => GetValue<int>("lastSeen"); set => SetValue("lastSeen", value); }
-        public int LegacyRank { get => GetValue<int>("rank"); set => SetValue("rank", value); }
+        public RankingType Rank { get => (RankingType)GetValue<int>("rank"); set => SetValue("rank", (int)value); }
         public int[] LockList { get => GetValue<int[]>("lockList") ?? new int[0]; set => SetValue("lockList", value); }
         public int[] MarketOffers { get => GetValue<int[]>("marketOffers") ?? new int[0]; set => SetValue("marketOffers", value); }
         public int MaxCharSlot { get => GetValue<int>("maxCharSlot"); set => SetValue("maxCharSlot", value); }
@@ -58,8 +57,6 @@ namespace common.database
         public string Notes { get => GetValue<string>("notes"); set => SetValue("notes", value); }
         public int PartyId { get => GetValue<int>("partyId"); set => SetValue("partyId", value); }
         public string PassResetToken { get => GetValue<string>("passResetToken"); set => SetValue("passResetToken", value); }
-
-        public int Rank => LegacyRank;
 
         public DateTime RegTime { get => GetValue<DateTime>("regTime"); set => SetValue("regTime", value); }
         public int SetBaseStat { get => GetValue<int>("setBaseStat"); set => SetValue("setBaseStat", value); }
@@ -80,6 +77,13 @@ namespace common.database
         public int SPSWisdomCount { get => GetValue<int>("sps_wisdomCount"); set => SetValue("sps_wisdomCount", value); }
 
         internal string LockToken { get; set; }
+
+        public bool IsAdmin => Rank >= RankingType.Admin;
+        public bool IsSupporter1 => Rank >= RankingType.Supporter1;
+        public bool IsSupporter2 => Rank >= RankingType.Supporter2;
+        public bool IsSupporter3 => Rank >= RankingType.Supporter3;
+        public bool IsSupporter4 => Rank >= RankingType.Supporter4;
+        public bool IsSupporter5 => Rank >= RankingType.Supporter5;
 
         public void RefreshLastSeen() => LastSeen = (int)DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
     }

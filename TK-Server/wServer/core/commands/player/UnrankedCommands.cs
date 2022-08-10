@@ -11,7 +11,6 @@ using wServer.core.objects;
 using wServer.core.worlds;
 using wServer.core.worlds.logic;
 using wServer.logic.loot;
-using wServer.core.net.handlers;
 using wServer.networking.packets.outgoing;
 using File = TagLib.File;
 
@@ -22,9 +21,8 @@ namespace wServer.core.commands
 
     internal class PartyChatCommand : Command
     {
-        public PartyChatCommand() : base("p", alias: "party")
-        {
-        }
+        public override string CommandName => "party";
+        public override string Alias => "p";
 
         protected override bool Process(Player player, TickTime time, string args)
         {
@@ -54,9 +52,8 @@ namespace wServer.core.commands
 
     internal class AcceptParty : Command
     {
-        public AcceptParty() : base("paccept")
-        {
-        }
+        public override string CommandName => "partyaccept";
+        public override string Alias => "paccept";
 
         protected override bool Process(Player player, TickTime time, string args)
         {
@@ -84,9 +81,8 @@ namespace wServer.core.commands
 
     internal class CloseParty : Command
     {
-        public CloseParty() : base("pclose")
-        {
-        }
+        public override string CommandName => "partyclose";
+        public override string Alias => "pclose";
 
         protected override bool Process(Player player, TickTime time, string args)
         {
@@ -107,12 +103,6 @@ namespace wServer.core.commands
                 if (party == null)
                 {
                     player.SendError("You're not in a Party!");
-                    return false;
-                }
-
-                if (!party.LeaderIsVip(player.GameServer.Database))
-                {
-                    player.SendError("<Error> VIPs cannot be the Leader of a Party.");
                     return false;
                 }
 
@@ -146,9 +136,9 @@ namespace wServer.core.commands
 
     internal class LeaveParty : Command
     {
-        public LeaveParty() : base("pleave")
-        {
-        }
+        public override string CommandName => "partyleave";
+        public override string Alias => "pleave";
+
 
         protected override bool Process(Player player, TickTime time, string args)
         {
@@ -162,11 +152,6 @@ namespace wServer.core.commands
 
                 if (party != null)
                 {
-                    if (!party.LeaderIsVip(player.GameServer.Database))
-                    {
-                        player.SendError("<Error> VIPs cannot be the Leader of a Party.");
-                        return false;
-                    }
                     if (player.Name == party.PartyLeader.Item1)
                     {
                         player.SendError("You're the leader of this Party. Use /pclose to close this Party.");
@@ -198,9 +183,8 @@ namespace wServer.core.commands
 
     internal class InviteParty : Command
     {
-        public InviteParty() : base("pinvite")
-        {
-        }
+        public override string CommandName => "partyinvite";
+        public override string Alias => "pinvite";
 
         protected override bool Process(Player player, TickTime time, string args)
         {
@@ -209,12 +193,6 @@ namespace wServer.core.commands
             player.Client.Account.Reload("partyId");
 
             var party = DbPartySystem.Get(db, player.Client.Account.PartyId);
-
-            if (party != null && !party.LeaderIsVip(player.GameServer.Database) || !player.CanUseThisFeature(Player.GenericRank.VIP))
-            {
-                player.SendError("<Error> VIPs cannot be the Leader of a Party.");
-                return false;
-            }
 
             if (party == null)
             {
@@ -290,9 +268,8 @@ namespace wServer.core.commands
 
     internal class RemoveFromParty : Command
     {
-        public RemoveFromParty() : base("premove")
-        {
-        }
+        public override string CommandName => "partyremove";
+        public override string Alias => "premove";
 
         protected override bool Process(Player player, TickTime time, string args)
         {
@@ -303,12 +280,6 @@ namespace wServer.core.commands
             if (party == null)
             {
                 player.SendError("You're not in a Party!");
-                return false;
-            }
-
-            if (!party.LeaderIsVip(player.GameServer.Database))
-            {
-                player.SendError("<Error> VIPs cannot be the Leader of a Party.");
                 return false;
             }
 
@@ -370,9 +341,8 @@ namespace wServer.core.commands
 
     internal class JoinWorldParty : Command
     {
-        public JoinWorldParty() : base("pjoin")
-        {
-        }
+        public override string CommandName => "partyjoin";
+        public override string Alias => "pjoin";
 
         protected override bool Process(Player player, TickTime time, string args)
         {
@@ -382,12 +352,6 @@ namespace wServer.core.commands
                 if (party == null)
                 {
                     player.SendError("You're not in a Party.");
-                    return false;
-                }
-
-                if (!party.LeaderIsVip(player.GameServer.Database))
-                {
-                    player.SendError("<Error> VIPs cannot be the Leader of a Party.");
                     return false;
                 }
 
@@ -449,9 +413,8 @@ namespace wServer.core.commands
 
     internal class InviteWorldParty : Command
     {
-        public InviteWorldParty() : base("pinviteworld")
-        {
-        }
+        public override string CommandName => "partyinviteworld";
+        public override string Alias => "pinviteworld";
 
         protected override bool Process(Player player, TickTime time, string args)
         {
@@ -462,12 +425,6 @@ namespace wServer.core.commands
                 if (party == null)
                 {
                     player.SendError("You're not in a Party!");
-                    return false;
-                }
-
-                if (!party.LeaderIsVip(player.GameServer.Database))
-                {
-                    player.SendError("<Error> VIPs cannot be the Leader of a Party.");
                     return false;
                 }
 
@@ -524,9 +481,8 @@ namespace wServer.core.commands
 
     internal class PartyCommandsInfo : Command
     {
-        public PartyCommandsInfo() : base("pcommands")
-        {
-        }
+        public override string CommandName => "partycommands";
+        public override string Alias => "pcommands";
 
         protected override bool Process(Player player, TickTime time, string args)
         {
@@ -537,9 +493,8 @@ namespace wServer.core.commands
 
     internal class PartyInfo : Command
     {
-        public PartyInfo() : base("pinfo")
-        {
-        }
+        public override string CommandName => "partyinfo";
+        public override string Alias => "pinfo";
 
         protected override bool Process(Player player, TickTime time, string args)
         {
@@ -568,9 +523,8 @@ namespace wServer.core.commands
 
     internal class CheckGuildPoints : Command
     {
-        public CheckGuildPoints() : base("checkguildpoints", alias: "cgp")
-        {
-        }
+        public override string CommandName => "checkguildpoints";
+        public override string Alias => "cgp";
 
         protected override bool Process(Player player, TickTime time, string args)
         {
@@ -588,7 +542,8 @@ namespace wServer.core.commands
 
     internal class CurrentSongCommand : Command
     {
-        public CurrentSongCommand() : base("currentsong", alias: "song") { }
+        public override string CommandName => "currentsong";
+        public override string Alias => "song";
 
         protected override bool Process(Player player, TickTime time, string args)
         {
@@ -606,9 +561,8 @@ namespace wServer.core.commands
 
     internal class CheckEnemiesKilled : Command
     {
-        public CheckEnemiesKilled() : base("checkenemieskilled", alias: "cek")
-        {
-        }
+        public override string CommandName => "checkenemieskilled";
+        public override string Alias => "cek";
 
         protected override bool Process(Player player, TickTime time, string args)
         {
@@ -620,9 +574,7 @@ namespace wServer.core.commands
 
     internal class CheckAccId : Command
     {
-        public CheckAccId() : base("checkid")
-        {
-        }
+        public override string CommandName => "checkid";
 
         protected override bool Process(Player player, TickTime time, string args)
         {
@@ -640,9 +592,7 @@ namespace wServer.core.commands
 
     internal class CheckLoot : Command
     {
-        public CheckLoot() : base("checkloot")
-        {
-        }
+        public override string CommandName => "checkloot";
 
         protected override bool Process(Player player, TickTime time, string args)
         {
@@ -666,9 +616,8 @@ namespace wServer.core.commands
 
     internal class GCommand : Command
     {
-        public GCommand() : base("g", alias: "guild")
-        {
-        }
+        public override string CommandName => "guild";
+        public override string Alias => "g";
 
         protected override bool Process(Player player, TickTime time, string args)
         {
@@ -702,9 +651,8 @@ namespace wServer.core.commands
 
     internal class GhallCommand : Command
     {
-        public GhallCommand() : base("ghall")
-        {
-        }
+        public override string CommandName => "guildhall";
+        public override string Alias => "ghall";
 
         protected override bool Process(Player player, TickTime time, string args)
         {
@@ -723,9 +671,8 @@ namespace wServer.core.commands
 
     internal class GLandCommand : Command
     {
-        public GLandCommand() : base("gland", alias: "glands")
-        {
-        }
+        public override string CommandName => "glands";
+        public override string Alias => "gland";
 
         protected override bool Process(Player player, TickTime time, string args)
         {
@@ -768,9 +715,9 @@ namespace wServer.core.commands
 
     internal class GuildInviteCommand : Command
     {
-        public GuildInviteCommand() : base("invite", alias: "ginvite")
-        {
-        }
+        public override string CommandName => "invite";
+        public override string Alias => "ginvite";
+
 
         protected override bool Process(Player player, TickTime time, string playerName)
         {
@@ -842,9 +789,8 @@ namespace wServer.core.commands
 
     internal class GuildKickCommand : Command
     {
-        public GuildKickCommand() : base("gkick")
-        {
-        }
+        public override string CommandName => "guildkick";
+        public override string Alias => "gkick";
 
         protected override bool Process(Player player, TickTime time, string name)
         {
@@ -933,9 +879,8 @@ namespace wServer.core.commands
 
     internal class GuildWhoCommand : Command
     {
-        public GuildWhoCommand() : base("gwho", alias: "mates")
-        {
-        }
+        public override string CommandName => "guildwho";
+        public override string Alias => "gwho";
 
         protected override bool Process(Player player, TickTime time, string args)
         {
@@ -976,15 +921,12 @@ namespace wServer.core.commands
 
     internal class HelpCommand : Command
     {
-        //actually the command is 'help', but /help is intercepted by client
-        public HelpCommand() : base("commands") { }
+        public override string CommandName => "commands";
 
         protected override bool Process(Player player, TickTime time, string args)
         {
-            StringBuilder sb = new StringBuilder("Available commands: ");
-            var cmds = player.GameServer.CommandManager.Commands.Values.Distinct()
-                .Where(x => x.HasPermission(player) && x.ListCommand)
-                .ToArray();
+            var sb = new StringBuilder("Available commands: ");
+            var cmds = player.GameServer.CommandManager.Commands.Values.Distinct().Where(x => x.HasPermission(player) && x.ListAsCommand).ToArray();
             Array.Sort(cmds, (c1, c2) => c1.CommandName.CompareTo(c2.CommandName));
             for (int i = 0; i < cmds.Length; i++)
             {
@@ -999,9 +941,7 @@ namespace wServer.core.commands
 
     internal class IgnoreCommand : Command
     {
-        public IgnoreCommand() : base("ignore")
-        {
-        }
+        public override string CommandName => "ignore";
 
         protected override bool Process(Player player, TickTime time, string playerName)
         {
@@ -1021,7 +961,7 @@ namespace wServer.core.commands
             var targetAccount = player.GameServer.Database.GetAccount(target);
             var srcAccount = player.Client.Account;
 
-            if (target == 0 || targetAccount == null || targetAccount.Hidden && player.Rank < 100)
+            if (target == 0 || targetAccount == null || targetAccount.Hidden)
             {
                 player.SendError("Player not found.");
                 return false;
@@ -1044,9 +984,7 @@ namespace wServer.core.commands
 
     internal class imNotGuest : Command
     {
-        public imNotGuest() : base("imNotGuest")
-        {
-        }
+        public override string CommandName => "imnotguest";
 
         protected override bool Process(Player player, TickTime time, string args)
         {
@@ -1064,9 +1002,7 @@ namespace wServer.core.commands
 
     internal class JoinGuildCommand : Command
     {
-        public JoinGuildCommand() : base("join")
-        {
-        }
+        public override string CommandName => "join";
 
         protected override bool Process(Player player, TickTime time, string args)
         {
@@ -1080,9 +1016,7 @@ namespace wServer.core.commands
 
     internal class LockCommand : Command
     {
-        public LockCommand() : base("lock")
-        {
-        }
+        public override string CommandName => "lock";
 
         protected override bool Process(Player player, TickTime time, string playerName)
         {
@@ -1102,7 +1036,7 @@ namespace wServer.core.commands
             var targetAccount = player.GameServer.Database.GetAccount(target);
             var srcAccount = player.Client.Account;
 
-            if (target == 0 || targetAccount == null || targetAccount.Hidden && player.Rank < 100)
+            if (target == 0 || targetAccount == null || targetAccount.Hidden)
             {
                 player.SendError("Player not found.");
                 return false;
@@ -1125,9 +1059,8 @@ namespace wServer.core.commands
 
     internal class MarketplaceCommand : Command
     {
-        public MarketplaceCommand() : base("marketplace")
-        {
-        }
+        public override string CommandName => "marketplace";
+        public override string Alias => "market";
 
         protected override bool Process(Player player, TickTime time, string args)
         {
@@ -1144,9 +1077,7 @@ namespace wServer.core.commands
 
     internal class NexusCommand : Command
     {
-        public NexusCommand() : base("nexus")
-        {
-        }
+        public override string CommandName => "nexus";
 
         protected override bool Process(Player player, TickTime time, string args)
         {
@@ -1163,9 +1094,8 @@ namespace wServer.core.commands
 
     internal class PositionCommand : Command
     {
-        public PositionCommand() : base("pos", alias: "position")
-        {
-        }
+        public override string CommandName => "position";
+        public override string Alias => "pos";
 
         protected override bool Process(Player player, TickTime time, string args)
         {
@@ -1176,9 +1106,7 @@ namespace wServer.core.commands
 
     internal class RealmCommand : Command
     {
-        public RealmCommand() : base("realm")
-        {
-        }
+        public override string CommandName => "realm";
 
         protected override bool Process(Player player, TickTime time, string args)
         {
@@ -1209,9 +1137,8 @@ namespace wServer.core.commands
 
     internal class RestartWhen : Command
     {
-        public RestartWhen() : base("rwhen")
-        {
-        }
+        public override string CommandName => "restartwhen";
+        public override string Alias => "rwhen";
 
         protected override bool Process(Player player, TickTime time, string color)
         {
@@ -1233,9 +1160,7 @@ namespace wServer.core.commands
 
     internal class ServerCommand : Command
     {
-        public ServerCommand() : base("world")
-        {
-        }
+        public override string CommandName => "world";
 
         protected override bool Process(Player player, TickTime time, string args)
         {
@@ -1257,9 +1182,7 @@ namespace wServer.core.commands
 
     internal class ServersCommand : Command
     {
-        public ServersCommand() : base("servers", alias: "svrs")
-        {
-        }
+        public override string CommandName => "servers";
 
         protected override bool Process(Player player, TickTime time, string args)
         {
@@ -1303,8 +1226,8 @@ namespace wServer.core.commands
 
     internal class TeleportCommand : Command
     {
-        public TeleportCommand() : base("tp", alias: "teleport")
-        { }
+        public override string CommandName => "teleport";
+        public override string Alias => "tp";
 
         protected override bool Process(Player player, TickTime time, string args)
         {
@@ -1314,7 +1237,7 @@ namespace wServer.core.commands
             {
                 foreach (PlayerInfo plr in server.playerList)
                 {
-                    if (plr.Hidden && player.Rank < 100)
+                    if (plr.Hidden)
                     {
                         player.SendError($"Unable to find player: {args}");
                         return false;
@@ -1334,7 +1257,7 @@ namespace wServer.core.commands
                 if (!target.Name.EqualsIgnoreCase(args))
                     continue;
 
-                player.Teleport(time, target.Id, target.Admin > 0);
+                player.Teleport(time, target.Id, target.IsAdmin);
                 player.ApplyConditionEffect(ConditionEffectIndex.Invulnerable, 2500);
                 player.ApplyConditionEffect(ConditionEffectIndex.Stunned, 2500);
                 return true;
@@ -1347,8 +1270,8 @@ namespace wServer.core.commands
 
     internal class TellCommand : Command
     {
-        public TellCommand() : base("tell", alias: "t")
-        { }
+        public override string CommandName => "tell";
+        public override string Alias => "t";
 
         protected override bool Process(Player player, TickTime time, string args)
         {
@@ -1398,9 +1321,8 @@ namespace wServer.core.commands
 
     internal class TransferFame : Command
     {
-        public TransferFame() : base("transferfame", alias: "tf")
-        {
-        }
+        public override string CommandName => "transferfame";
+        public override string Alias => "tf";
 
         protected override bool Process(Player player, TickTime time, string args)
         {
@@ -1443,9 +1365,7 @@ namespace wServer.core.commands
 
     internal class TradeCommand : Command
     {
-        public TradeCommand() : base("trade")
-        {
-        }
+        public override string CommandName => "trade";
 
         protected override bool Process(Player player, TickTime time, string args)
         {
@@ -1461,7 +1381,7 @@ namespace wServer.core.commands
             //    return false;
             //}
 
-            if (player.Rank >= 60)
+            if (player.IsAdmin)
             {
                 player.SendError("You cannot trade.");
                 return false;
@@ -1488,9 +1408,7 @@ namespace wServer.core.commands
 
     internal class UnignoreCommand : Command
     {
-        public UnignoreCommand() : base("unignore")
-        {
-        }
+        public override string CommandName => "unignore";
 
         protected override bool Process(Player player, TickTime time, string playerName)
         {
@@ -1510,7 +1428,7 @@ namespace wServer.core.commands
             var targetAccount = player.GameServer.Database.GetAccount(target);
             var srcAccount = player.Client.Account;
 
-            if (target == 0 || targetAccount == null || targetAccount.Hidden && player.Rank < 100)
+            if (target == 0 || targetAccount == null || targetAccount.Hidden)
             {
                 player.SendError("Player not found.");
                 return false;
@@ -1533,9 +1451,7 @@ namespace wServer.core.commands
 
     internal class UnlockCommand : Command
     {
-        public UnlockCommand() : base("unlock")
-        {
-        }
+        public override string CommandName => "unlock";
 
         protected override bool Process(Player player, TickTime time, string playerName)
         {
@@ -1555,7 +1471,7 @@ namespace wServer.core.commands
             var targetAccount = player.GameServer.Database.GetAccount(target);
             var srcAccount = player.Client.Account;
 
-            if (target == 0 || targetAccount == null || targetAccount.Hidden && player.Rank < 100)
+            if (target == 0 || targetAccount == null || targetAccount.Hidden)
             {
                 player.SendError("Player not found.");
                 return false;
@@ -1578,9 +1494,7 @@ namespace wServer.core.commands
 
     internal class UptimeCommand : Command
     {
-        public UptimeCommand() : base("uptime")
-        {
-        }
+        public override string CommandName => "uptime";
 
         protected override bool Process(Player player, TickTime time, string args)
         {
@@ -1598,9 +1512,7 @@ namespace wServer.core.commands
 
     internal class VaultCommand : Command
     {
-        public VaultCommand() : base("vault")
-        {
-        }
+        public override string CommandName => "vault";
 
         protected override bool Process(Player player, TickTime time, string args)
         {
@@ -1617,9 +1529,7 @@ namespace wServer.core.commands
 
     internal class WhereCommand : Command
     {
-        public WhereCommand() : base("where")
-        {
-        }
+        public override string CommandName => "where";
 
         protected override bool Process(Player player, TickTime time, string name)
         {
@@ -1668,8 +1578,7 @@ namespace wServer.core.commands
 
     internal class WhoCommand : Command
     {
-        public WhoCommand() : base("who")
-        { }
+        public override string CommandName => "who";
 
         protected override bool Process(Player player, TickTime time, string args)
         {

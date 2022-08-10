@@ -408,7 +408,6 @@ namespace common.database
             {
                 UUID = uuid,
                 Name = GuestNames[(uint)uuid.GetHashCode() % GuestNames.Length],
-                Admin = false,
                 NameChosen = false,
                 FirstDeath = true,
                 GuildId = 0,
@@ -421,7 +420,7 @@ namespace common.database
                 TotalFame = newAccounts.Fame,
                 Credits = newAccounts.Credits,
                 TotalCredits = newAccounts.Credits,
-                LegacyRank = 0,
+                Rank = 0,
                 PassResetToken = ""
             };
 
@@ -518,15 +517,13 @@ namespace common.database
 
             var guild = new DbGuild(acc);
 
-            if (!guild.IsNull && acc.Rank < 60)
+            if (!guild.IsNull && !acc.IsAdmin)
             {
                 UpdateGuildFame(guild, finalFame);
                 UpdatePlayerGuildFame(acc, finalFame);
             }
 
-            if (acc.Rank >= 60 || acc.Admin)
-                return;
-            else
+            if (!acc.IsAdmin)
                 DbLegend.Insert(_db, acc.AccountId, character.CharId, finalFame);
         }
 
@@ -657,9 +654,8 @@ namespace common.database
             for (var i = from; i <= to; i++)
             {
                 var acc = new DbAccount(_db, i);
-
-                if (acc.Rank > 60 || acc.Admin)
-                    yield return (acc.AccountId, acc.Name, acc.Rank, acc.Admin);
+                if (acc.IsAdmin)
+                    yield return (acc.AccountId, acc.Name, (int)acc.Rank, acc.IsAdmin);
             }
         }
 
@@ -828,7 +824,6 @@ namespace common.database
             {
                 UUID = uuid,
                 Name = GuestNames[(uint)uuid.GetHashCode() % GuestNames.Length],
-                Admin = false,
                 NameChosen = false,
                 FirstDeath = true,
                 GuildId = 0,
@@ -842,7 +837,7 @@ namespace common.database
                 Credits = newAccounts.Credits,
                 TotalCredits = newAccounts.Credits,
                 PassResetToken = "",
-                LegacyRank = 0,
+                Rank = 0,
                 LastSeen = (int)DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds,
                 EnemiesKilled = 0
             };

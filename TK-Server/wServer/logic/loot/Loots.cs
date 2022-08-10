@@ -374,7 +374,7 @@ namespace wServer.logic.loot
 
                     #region Discord Bot Message
 
-                    if (player.Rank <= 60)
+                    if (!player.IsAdmin)
                     {
                         var discord = core.Configuration.discordIntegration;
                         var players = world.Players.Count(p => p.Value.Client != null);

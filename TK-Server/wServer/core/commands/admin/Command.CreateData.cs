@@ -2,6 +2,7 @@
 using wServer.core.objects;
 using System;
 using common.database;
+using common;
 
 namespace wServer.core.commands
 {
@@ -9,9 +10,9 @@ namespace wServer.core.commands
     {
         internal class CreateData : Command
         {
-            public CreateData() : base("createData", permLevel: 90, alias: "cd")
-            {
-            }
+            public override RankingType RankRequirement => RankingType.Admin;
+            public override string CommandName => "createdata";
+            public override string Alias => "cd";
 
             protected override bool Process(Player player, TickTime time, string args)
             {

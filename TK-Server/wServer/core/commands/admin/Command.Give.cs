@@ -1,4 +1,5 @@
-﻿using wServer.core.objects;
+﻿using common;
+using wServer.core.objects;
 
 namespace wServer.core.commands
 {
@@ -6,9 +7,8 @@ namespace wServer.core.commands
     {
         internal class Give : Command
         {
-            public Give() : base("give", permLevel: 60)
-            {
-            }
+            public override RankingType RankRequirement => RankingType.Admin;
+            public override string CommandName => "give";
 
             protected override bool Process(Player player, TickTime time, string args)
             {

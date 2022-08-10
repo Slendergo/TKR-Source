@@ -67,55 +67,17 @@ namespace common.database
             return id;
         }
 
-        public static int ReturnSize(int rank)
+        public static int ReturnSize(RankingType rank)
         {
             switch (rank)
             {
-                case 0:
-                    return (int)PartySizes.NPlayer;
-
-                case 10:
-                    return (int)PartySizes.D1;
-
-                case 20:
-                    return (int)PartySizes.D2;
-
-                case 30:
-                    return (int)PartySizes.D3;
-
-                case 40:
-                    return (int)PartySizes.D4;
-
-                case 50:
-                    return (int)PartySizes.D5;
-
-                case 60:
-                    return (int)PartySizes.D6;
-
+                // todo
                 default:
                     return (int)PartySizes.NPlayer;
             }
         }
 
         public void Flush() => _db.HashSet("party", PartyId, JsonConvert.SerializeObject(this));
-
-        public bool LeaderIsVip(Database db)
-        {
-            var leaderAcc = db.GetAccount(PartyLeader.Item2);
-            if (leaderAcc == null)
-                return false;
-
-            if (leaderAcc.Rank >= 60)
-            {
-                var members = new HashSet<DbAccount>();
-                foreach (var member in PartyMembers)
-                    members.Add(db.GetAccount(member.accid));
-                db.RemoveParty(leaderAcc, members, PartyId);
-                return false;
-            }
-
-            return true;
-        }
 
         public int ReturnWorldId() => WorldId;
     }

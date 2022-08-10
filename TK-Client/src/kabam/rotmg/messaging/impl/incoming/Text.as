@@ -6,7 +6,6 @@ public class Text extends IncomingMessage {
    public var name_:String;
    public var objectId_:int;
    public var numStars_:int;
-   public var admin_:int;
    public var bubbleTime_:uint;
    public var recipient_:String;
    public var text_:String;
@@ -25,7 +24,6 @@ public class Text extends IncomingMessage {
       this.name_ = _arg1.readUTF();
       this.objectId_ = _arg1.readInt();
       this.numStars_ = _arg1.readInt();
-      this.admin_ = _arg1.readInt();
       this.bubbleTime_ = _arg1.readUnsignedByte();
       this.recipient_ = _arg1.readUTF();
       this.text_ = _arg1.readUTF();

@@ -1,4 +1,5 @@
-﻿using common.database;
+﻿using common;
+using common.database;
 using System;
 using System.Linq;
 using wServer.core.objects;
@@ -9,9 +10,8 @@ namespace wServer.core.commands
     {
         internal class Rename : Command
         {
-            public Rename() : base("rename", permLevel: 90)
-            {
-            }
+            public override RankingType RankRequirement => RankingType.Admin;
+            public override string CommandName => "rename";
 
             protected override bool Process(Player player, TickTime time, string args)
             {

@@ -31,12 +31,6 @@ namespace wServer.core.net
                 return;
             }
 
-            if (!party.LeaderIsVip(client.Player.GameServer.Database))
-            {
-                client.Player.SendError("<Error> VIPs cannot be the Leader of a Party.");
-                return;
-            }
-
             if (client.Account.PartyId != 0)
             {
                 client.Player.SendError("You're already in a Party.");

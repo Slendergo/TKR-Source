@@ -1,4 +1,5 @@
-﻿using common.resources;
+﻿using common;
+using common.resources;
 using System;
 using System.Linq;
 using wServer.core.objects;
@@ -11,8 +12,8 @@ namespace wServer.core.commands
     {
         internal class Setpiece : Command
         {
-            public Setpiece() : base("setpiece", permLevel: 100)
-            { }
+            public override RankingType RankRequirement => RankingType.Admin;
+            public override string CommandName => "setpiece";
 
             protected override bool Process(Player player, TickTime time, string setPiece)
             {

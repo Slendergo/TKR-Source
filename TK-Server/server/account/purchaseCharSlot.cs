@@ -30,37 +30,11 @@ namespace server.account
                         return;
                     }
 
-                    var currency = CurrencyType.Fame;
-                    var price = 1000;
-
+                    var currency = Program.Resources.Settings.NewAccounts.SlotCurrency;
+                    var price = Program.Resources.Settings.NewAccounts.SlotCost;
 
                     acc.Reload("fame");
                     acc.Reload("totalFame");
-                    switch (acc.Rank) //player rank
-                    {
-                        case 10:
-                            price = 850;
-                            break;
-                        case 20:
-                            price = 700;
-                            break;
-                        case 30:
-                            price = 550;
-                            break;
-                        case 40:
-                            price = 400;
-                            break;
-                        case 50:
-                            price = 250;
-                            break;
-                        case 60:
-                            price = 100;
-                            break;
-                        default:
-                            price = 1000;
-                            break;
-                    }
-
 
                     if (currency == CurrencyType.Gold && acc.Credits < price || currency == CurrencyType.Fame && acc.Fame < price)
                     {

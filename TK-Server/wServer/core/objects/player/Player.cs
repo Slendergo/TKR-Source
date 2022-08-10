@@ -39,7 +39,7 @@ namespace wServer.core.objects
         public Client Client;
 
         public int AccountId { get => _accountId.GetValue(); set => _accountId.SetValue(value); }
-        public int Admin { get => _admin.GetValue(); set => _admin.SetValue(value); }
+        public bool IsAdmin { get => _admin.GetValue() == 1; set => _admin.SetValue(value ? 1 : 0); }
         public int BaseStat { get => _baseStat.GetValue(); set => _baseStat.SetValue(value); }
 
         public double Breath
@@ -84,7 +84,7 @@ namespace wServer.core.objects
         public PlayerUpdate PlayerUpdate { get; private set; }
         public int Points { get => _points.GetValue(); set => _points.SetValue(value); }
         public Position Pos => new Position() { X = X, Y = Y };
-        public int Rank { get => _rank.GetValue(); set => _rank.SetValue(value); }
+        public RankingType Rank { get => (RankingType)_rank.GetValue(); set => _rank.SetValue((int)value); }
         public int Skin { get => _skin.GetValue(); set => _skin.SetValue(value); }
         public int[] SlotTypes { get; private set; }
         public int Node1TickMin { get => _node1TickMin.GetValue(); set => _node1TickMin.SetValue(value); }
@@ -195,14 +195,14 @@ namespace wServer.core.objects
             _stars = new SV<int>(this, StatDataType.Stars, 0);
             _guild = new SV<string>(this, StatDataType.Guild, "");
             _guildRank = new SV<int>(this, StatDataType.GuildRank, -1);
-            _rank = new SV<int>(this, StatDataType.Rank, client.Account.Rank);
+            _rank = new SV<int>(this, StatDataType.Rank, (int)client.Account.Rank);
             _credits = new SV<int>(this, StatDataType.Credits, client.Account.Credits, true);
             _nameChosen = new SV<bool>(this, StatDataType.NameChosen, client.Account.NameChosen, false, v => Client.Account?.NameChosen ?? v);
             _texture1 = new SV<int>(this, StatDataType.Texture1, client.Character.Tex1);
             _texture2 = new SV<int>(this, StatDataType.Texture2, client.Character.Tex2);
             _skin = new SV<int>(this, StatDataType.Skin, 0);
             _glow = new SV<int>(this, StatDataType.Glow, 0);
-            _admin = new SV<int>(this, StatDataType.Admin, client.Account.Admin ? 1 : 0);
+            _admin = new SV<int>(this, StatDataType.Admin, client.Account.IsAdmin ? 1 : 0);
             _xpBoosted = new SV<bool>(this, StatDataType.XPBoost, client.Character.XPBoostTime != 0, true);
             _mp = new SV<int>(this, StatDataType.MP, client.Character.MP);
             _hasBackpack = new SV<bool>(this, StatDataType.HasBackpack, client.Character.HasBackpack, true);
@@ -256,8 +256,7 @@ namespace wServer.core.objects
             _upgradeEnabled = new SV<bool>(this, StatDataType.UpgradeEnabled, client.Character.UpgradeEnabled, true);
             _partyId = new SV<int>(this, StatDataType.PartyId, client.Account.PartyId, true);
 
-            var maxPotionAmount = 50 + Client.Account.Rank * 2;
-
+            var maxPotionAmount = 50;
             _SPSLifeCount = new SV<int>(this, StatDataType.SPS_LIFE_COUNT, client.Account.SPSLifeCount, true);
             _SPSLifeCountMax = new SV<int>(this, StatDataType.SPS_LIFE_COUNT_MAX, maxPotionAmount, true);
             _SPSManaCount = new SV<int>(this, StatDataType.SPS_MANA_COUNT, client.Account.SPSManaCount, true);
@@ -318,7 +317,7 @@ namespace wServer.core.objects
 
             GameServer.Database.IsMuted(client.IpAddress).ContinueWith(t =>
             {
-                Muted = !Client.Account.Admin && t.IsCompleted && t.Result;
+                Muted = !Client.Account.IsAdmin && t.IsCompleted && t.Result;
             });
 
             GameServer.Database.IsLegend(AccountId).ContinueWith(t =>
@@ -891,7 +890,7 @@ namespace wServer.core.objects
                     return;
                 }
 
-                if (!World.AllowTeleport && Rank < 100)
+                if (!World.AllowTeleport && Rank != RankingType.Admin)
                 {
                     SendError("Cannot teleport here.");
                     RestartTPPeriod();
@@ -1289,7 +1288,7 @@ namespace wServer.core.objects
 //                }
 //            }
 
-            if ((maxed >= 6 || Fame >= 1000) && !Client.Account.Admin)
+            if ((maxed >= 6 || Fame >= 1000) && !Client.Account.IsAdmin)
             {
                 var worlds = GameServer.WorldManager.GetWorlds();
                 foreach(var world in worlds)

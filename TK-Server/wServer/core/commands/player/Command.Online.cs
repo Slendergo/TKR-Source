@@ -1,4 +1,5 @@
-﻿using common.isc.data;
+﻿using common;
+using common.isc.data;
 using System.Linq;
 using System.Text;
 using wServer.core.objects;
@@ -9,8 +10,7 @@ namespace wServer.core.commands
     {
         internal class Online : Command
         {
-            public Online() : base("online", permLevel: 0)
-            { }
+            public override string CommandName => "online";
 
             protected override bool Process(Player player, TickTime time, string args)
             {

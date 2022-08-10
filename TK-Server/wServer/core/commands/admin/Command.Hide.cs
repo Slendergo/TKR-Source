@@ -1,4 +1,5 @@
-﻿using common.resources;
+﻿using common;
+using common.resources;
 using wServer.core.objects;
 
 namespace wServer.core.commands
@@ -7,9 +8,8 @@ namespace wServer.core.commands
     {
         internal class Hide : Command
         {
-            public Hide() : base("hide", permLevel: 100, alias: "h")
-            {
-            }
+            public override RankingType RankRequirement => RankingType.Admin;
+            public override string CommandName => "hide";
 
             protected override bool Process(Player player, TickTime time, string args)
             {

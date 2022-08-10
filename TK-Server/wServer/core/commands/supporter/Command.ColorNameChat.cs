@@ -8,13 +8,12 @@ namespace wServer.core.commands
     {
         internal class ColorNameChat : Command
         {
-            public ColorNameChat() : base("colornamechat", permLevel: 20, alias: "cnc")
-            {
-            } //Donor-2
+            public override RankingType RankRequirement => RankingType.Supporter1;
+            public override string CommandName => "colornamechat";
 
             protected override bool Process(Player player, TickTime time, string color)
             {
-                if (String.IsNullOrWhiteSpace(color))
+                if (string.IsNullOrWhiteSpace(color))
                 {
                     player.SendInfo("Usage: /colorchat <color> \n Number of the color needs to be a HexCode (0xFFFFFF = White, use 0x instahead #), search in google HexCode + Color. PS: /cnc its the alias of this command. \nBe careful with the color you choose, you may not be able to read!");
                     return true;

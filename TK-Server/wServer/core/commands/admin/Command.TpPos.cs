@@ -1,4 +1,5 @@
-﻿using wServer.core.objects;
+﻿using common;
+using wServer.core.objects;
 
 namespace wServer.core.commands
 {
@@ -6,9 +7,8 @@ namespace wServer.core.commands
     {
         internal class TpPos : Command
         {
-            public TpPos() : base("tpPos", permLevel: 90, alias: "goto")
-            {
-            }
+            public override RankingType RankRequirement => RankingType.Admin;
+            public override string CommandName => "tppos";
 
             protected override bool Process(Player player, TickTime time, string args)
             {

@@ -1,4 +1,5 @@
-﻿using common.resources;
+﻿using common;
+using common.resources;
 using System;
 using wServer.core.objects;
 
@@ -8,9 +9,8 @@ namespace wServer.core.commands
     {
         internal class ToggleEff : Command
         {
-            public ToggleEff() : base("eff", permLevel: 90)
-            {
-            }
+            public override RankingType RankRequirement => RankingType.Admin;
+            public override string CommandName => "eff";
 
             protected override bool Process(Player player, TickTime time, string args)
             {

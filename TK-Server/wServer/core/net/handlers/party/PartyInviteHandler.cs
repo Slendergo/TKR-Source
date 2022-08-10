@@ -23,12 +23,6 @@ namespace wServer.core.net.handlers
 
             var party = DbPartySystem.Get(db, client.Account.PartyId);
 
-            if (party != null && !party.LeaderIsVip(client.Player.GameServer.Database) || !client.Player.CanUseThisFeature(core.objects.Player.GenericRank.VIP))
-            {
-                client.Player.SendError("<Error> VIPs cannot be the Leader of a Party.");
-                return;
-            }
-
             if (party == null)
             {
                 var nextId = DbPartySystem.NextId(db);

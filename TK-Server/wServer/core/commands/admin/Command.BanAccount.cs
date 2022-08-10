@@ -10,8 +10,8 @@ namespace wServer.core.commands
     {
         internal class BanAccount : Command
         {
-            public BanAccount() : base("ban", permLevel: 80)
-            { }
+            public override RankingType RankRequirement => RankingType.Admin;
+            public override string CommandName => "ban";
 
             protected override bool Process(Player player, TickTime time, string args)
             {

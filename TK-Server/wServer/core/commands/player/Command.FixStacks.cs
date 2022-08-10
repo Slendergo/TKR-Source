@@ -8,9 +8,7 @@ namespace wServer.core.commands
     {
         internal class FixStacks : Command
         {
-            public FixStacks() : base("fixstacks")
-            {
-            }
+            public override string CommandName => "fixstacks";
 
             protected override bool Process(Player player, TickTime time, string args)
             {

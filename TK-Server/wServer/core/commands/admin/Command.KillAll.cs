@@ -1,4 +1,5 @@
-﻿using common.database;
+﻿using common;
+using common.database;
 using System.Linq;
 using wServer.core.objects;
 using wServer.core.worlds.logic;
@@ -9,12 +10,12 @@ namespace wServer.core.commands
     {
         internal class KillAll : Command
         {
-            public KillAll() : base("killAll", permLevel: 60, alias: "ka")
-            { }
+            public override RankingType RankRequirement => RankingType.Admin;
+            public override string CommandName => "killall";
 
             protected override bool Process(Player player, TickTime time, string args)
             {
-                if (!(player.World is VaultWorld) && player.Rank < 110)
+                if (!(player.World is VaultWorld) && !player.IsAdmin)
                 {
                     player.SendError("Only in your Vault.");
                     return false;

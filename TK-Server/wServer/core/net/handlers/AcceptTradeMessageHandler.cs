@@ -46,7 +46,7 @@ namespace wServer.core.net.handlers
 
                 if (player.tradeAccepted && player.tradeTarget.tradeAccepted)
                 {
-                    if (player.Client.Account.Admin != player.tradeTarget.Client.Account.Admin)
+                    if (player.IsAdmin || player.IsAdmin)
                     {
                         player.tradeTarget.CancelTrade();
                         player.CancelTrade();

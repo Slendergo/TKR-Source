@@ -295,11 +295,11 @@ namespace server
                 Name = acc.Name,
 
                 NameChosen = acc.NameChosen,
-                Admin = acc.Admin,
+                Admin = acc.IsAdmin,
                 FirstDeath = acc.FirstDeath,
 
                 Credits = acc.Credits,
-                NextCharSlotPrice = GetCharSlotPrice(acc.Rank),
+                NextCharSlotPrice = Program.Resources.Settings.NewAccounts.SlotCost,
                 NextCharSlotCurrency = (int)Program.Resources.Settings.NewAccounts.SlotCurrency,
                 MenuMusic = Program.Resources.Settings.MenuMusic,
                 DeadMusic = Program.Resources.Settings.DeadMusic,
@@ -310,27 +310,6 @@ namespace server
 
                 Skins = acc.Skins ?? new ushort[0],
             };
-        }
-
-        public static int GetCharSlotPrice(int rank)
-        {
-            switch(rank)
-            {
-                case 10:
-                    return 850;
-                case 20:
-                    return 700;
-                case 30:
-                    return 550;
-                case 40:
-                    return 400;
-                case 50:
-                    return 250;
-                case 60:
-                    return 100;
-                default:
-                    return Program.Resources.Settings.NewAccounts.SlotCost;
-            }
         }
 
         public XElement ToXml()

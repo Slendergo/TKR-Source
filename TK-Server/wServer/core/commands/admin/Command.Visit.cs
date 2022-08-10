@@ -1,4 +1,5 @@
 ﻿using CA.Extensions.Concurrent;
+using common;
 using System;
 using System.Linq;
 using wServer.core.objects;
@@ -12,9 +13,8 @@ namespace wServer.core.commands
     {
         internal class Visit : Command
         {
-            public Visit() : base("visit", permLevel: 100)
-            {
-            }
+            public override RankingType RankRequirement => RankingType.Admin;
+            public override string CommandName => "visit";
 
             protected override bool Process(Player player, TickTime time, string name)
             {
@@ -42,9 +42,9 @@ namespace wServer.core.commands
 
                 var owner = target.Player.World;
 
-                if ((owner is VaultWorld || owner.IdName.Contains("Vault")) && player.Rank < 110)
+                if ((owner is VaultWorld || owner.IdName.Contains("Vault")) && !player.IsAdmin)
                 {
-                    player.SendError("Only rank 110 accounts can visit other players' vault.");
+                    player.SendError("Only admins can visit other players' vault.");
                     return false;
                 }
 

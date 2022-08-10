@@ -75,13 +75,6 @@ namespace wServer.core.net.handlers
             var item = con.Inventory[slot.SlotId];
             var data = con.Inventory.Data[slot.SlotId];
 
-            if (!player.CanUseThisFeature(GenericRank.VIP))
-            {
-                player.HandleUnavailableInventoryAction(soulBag, Rand, con, slot.SlotId);
-                player.Client.SendPacket(new InvResult() { Result = 0 });
-                return;
-            }
-
             if (con is GiftChest)
             {
                 var trans = player.GameServer.Database.Conn.CreateTransaction();

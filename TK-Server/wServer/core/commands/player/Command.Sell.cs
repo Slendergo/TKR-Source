@@ -16,8 +16,7 @@ namespace wServer.core.commands
     {
         internal class Sell : Command
         {
-            public Sell() : base("Sell", permLevel: 0)
-            { }
+            public override string CommandName => "sell";
 
             protected override bool Process(Player player, TickTime time, string args)
             {
@@ -126,7 +125,7 @@ namespace wServer.core.commands
 
             if (config.serverInfo.adminOnly)
             {
-                if (!player.GameServer.IsWhitelisted(player.AccountId) || player?.Rank < 110)
+                if (!player.GameServer.IsWhitelisted(player.AccountId) || !player.IsAdmin)
                 {
                     player.SendError("Admin Only, you need to be Whitelisted to use this.");
                     return false;
@@ -134,13 +133,9 @@ namespace wServer.core.commands
             }
             else
             {
-                if (!player.CanUseThisFeature(core.objects.Player.GenericRank.VIP))
-                {
-                    player.SendError("You can't use this Feature.");
-                    return false;
-                }
+                player.SendError("You can't use this Feature.");
+                return false;
             }
-
             return true;
         }
 

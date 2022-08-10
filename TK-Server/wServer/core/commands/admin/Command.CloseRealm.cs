@@ -1,4 +1,5 @@
-﻿using wServer.core.objects;
+﻿using common;
+using wServer.core.objects;
 using wServer.core.worlds.logic;
 
 namespace wServer.core.commands
@@ -7,9 +8,9 @@ namespace wServer.core.commands
     {
         internal class CloseRealm : Command
         {
-            public CloseRealm() : base("closerealm", permLevel: 80)
-            {
-            }
+            public override RankingType RankRequirement => RankingType.Admin;
+            public override string CommandName => "closerealm";
+            public override string Alias => "cr";
 
             protected override bool Process(Player player, TickTime time, string args)
             {

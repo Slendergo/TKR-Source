@@ -34,7 +34,6 @@ namespace wServer.core.net.handlers
 
     public class HelloHandler : IMessageHandler
     {
-        private const int minDonorRank = 10;
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         public override PacketId MessageId => PacketId.HELLO;
@@ -53,16 +52,16 @@ namespace wServer.core.net.handlers
             var config = cManager.Configuration;
 
             // first check: admin server
-            if (config.serverInfo.adminOnly && !acc.Admin && !cManager.IsWhitelisted(acc.AccountId))
+            if (config.serverInfo.adminOnly && !acc.IsAdmin && !cManager.IsWhitelisted(acc.AccountId))
             {
                 client.SendFailure("You must be whitelisted to join this server.", FailureMessage.MessageNoDisconnect);
                 return;
             }
 
             // second check: donor server
-            if (config.serverSettings.donorOnly && acc.Rank < minDonorRank)
+            if (config.serverSettings.supporterOnly && acc.Rank < RankingType.Regular)
             {
-                client.SendFailure($"You must be with rank {minDonorRank} on your account to jooin this server.", FailureMessage.MessageNoDisconnect);
+                client.SendFailure($"You must be a supporter join this server.", FailureMessage.MessageNoDisconnect);
                 return;
             }
 

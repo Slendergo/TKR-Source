@@ -95,7 +95,7 @@ namespace wServer.core.worlds
 
         public World ParentWorld { get; set; }
 
-        public virtual bool AllowedAccess(Client client) => !Closed || client.Account.Admin;
+        public virtual bool AllowedAccess(Client client) => !Closed || client.Account.IsAdmin;
 
         public void Broadcast(OutgoingMessage outgoingMessage)
         {

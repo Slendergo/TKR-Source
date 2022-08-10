@@ -1,4 +1,5 @@
-﻿using common.database;
+﻿using common;
+using common.database;
 using common.resources;
 using Newtonsoft.Json;
 using System;
@@ -35,14 +36,13 @@ namespace wServer.core.commands
 
             private const int Delay = 0; // in seconds
 
-            public Spawn() : base("spawn", permLevel: 100)
-            {
-            }
+            public override RankingType RankRequirement => RankingType.Admin;
+            public override string CommandName => "spawn";
 
             protected override bool Process(Player player, TickTime time, string args)
             {
                 args = args.Trim();
-                if (!(player.World is VaultWorld) && player.Rank < 110)
+                if (!(player.World is VaultWorld) && !player.IsAdmin)
                 {
                     player.SendError("Only in Vault boi.");
                     return false;
@@ -82,12 +82,6 @@ namespace wServer.core.commands
                         }
 
                         var desc = gameData.ObjectDescs[objType.Value];
-
-                        if (player.Client.Account.Rank < 100 && desc.ObjectId.Contains("Fountain"))
-                        {
-                            player.SendError("Insufficient rank.");
-                            return false;
-                        }
 
                         var hp = desc.MaxHP;
                         if (spawn.hp > hp && spawn.hp < int.MaxValue)
@@ -183,12 +177,6 @@ namespace wServer.core.commands
                 //}
 
                 var id = player.GameServer.Resources.GameData.ObjectTypeToId[objType.Value];
-                if (player.Client.Account.Rank < 100 && id.Contains("Fountain"))
-                {
-                    player.SendError("Insufficient rank.");
-                    return false;
-                }
-
                 NotifySpawn(player, id, num);
                 QueueSpawnEvent(player, num, objType.Value);
                 return true;
@@ -233,7 +221,7 @@ namespace wServer.core.commands
                 {
                     Name = $"#{player.Name}",
                     NumStars = player.Stars,
-                    Admin = player.Admin,
+                    Admin = player.IsAdmin,
                     BubbleTime = 0,
                     Txt = notif
                 }, player);

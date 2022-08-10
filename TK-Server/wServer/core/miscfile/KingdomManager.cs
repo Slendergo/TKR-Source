@@ -592,7 +592,7 @@ namespace wServer.core
 
             if (guild != null)
             {
-                if (mvp.Rank < 60)
+                if (!mvp.IsAdmin)
                 {
                     mvp.SendInfo("You are awarded " + points + " guild points for doing the most damage to boss!");
 

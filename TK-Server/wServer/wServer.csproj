@@ -120,8 +120,6 @@
     <Compile Include="core\commands\admin\Command.BanAccount.cs" />
     <Compile Include="core\commands\admin\Command.Give.cs" />
     <Compile Include="core\commands\admin\Command.BanIP.cs" />
-    <Compile Include="core\commands\admin\Command.CheckLegendaryItems.cs" />
-    <Compile Include="core\commands\admin\Command.CheckRevengeItems.cs" />
     <Compile Include="core\commands\admin\Command.ClearGraves.cs" />
     <Compile Include="core\commands\player\Command.FixStacks.cs" />
     <Compile Include="core\commands\admin\Command.ClearSpawns.cs" />
@@ -129,17 +127,13 @@
     <Compile Include="core\commands\supporter\Command.ColorChat.cs" />
     <Compile Include="core\commands\supporter\Command.ColorNameChat.cs" />
     <Compile Include="core\commands\admin\Command.CreateData.cs" />
-    <Compile Include="core\commands\admin\Command.GarbageCollector.cs" />
-    <Compile Include="core\commands\admin\Command.GetPlayerInfo.cs" />
     <Compile Include="core\commands\admin\Command.LogStaff.cs" />
     <Compile Include="core\commands\admin\Command.ForceCleanMarket.cs" />
     <Compile Include="core\commands\admin\Command.GetPartyInfo.cs" />
-    <Compile Include="core\commands\admin\Command.Gift.cs" />
     <Compile Include="core\commands\supporter\Command.Glow.cs" />
     <Compile Include="core\commands\admin\Command.Hide.cs" />
     <Compile Include="core\commands\admin\Command.Kick.cs" />
     <Compile Include="core\commands\admin\Command.KillAll.cs" />
-    <Compile Include="core\commands\admin\Command.KillPlayer.cs" />
     <Compile Include="core\commands\admin\Command.Max.cs" />
     <Compile Include="core\commands\admin\Command.Mute.cs" />
     <Compile Include="core\commands\player\Command.Online.cs" />
@@ -508,7 +502,6 @@
     <Compile Include="core\objects\player\Player.KeepAlive.cs" />
     <Compile Include="core\objects\player\Player.Leveling.cs" />
     <Compile Include="core\objects\player\Player.Projectiles.cs" />
-    <Compile Include="core\objects\player\Player.GenericRank.cs" />
     <Compile Include="core\objects\player\Player.Trade.cs" />
     <Compile Include="core\objects\player\Player.UseItem.cs" />
     <Compile Include="core\objects\Portal.cs" />

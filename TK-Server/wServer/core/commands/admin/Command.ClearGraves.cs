@@ -1,4 +1,5 @@
-﻿using wServer.core.objects;
+﻿using common;
+using wServer.core.objects;
 
 namespace wServer.core.commands
 {
@@ -6,9 +7,7 @@ namespace wServer.core.commands
     {
         internal class DeltaTimeCommand : Command
         {
-            public DeltaTimeCommand() : base("deltatime")
-            {
-            }
+            public override string CommandName => "deltatime";
 
             protected override bool Process(Player player, TickTime time, string args)
             {
@@ -19,21 +18,20 @@ namespace wServer.core.commands
 
         internal class ToggleDeltaCommand : Command
         {
-            public ToggleDeltaCommand() : base("tdt", permLevel: 100)
-            {
-            }
+            public override RankingType RankRequirement => RankingType.Admin;
+            public override string CommandName => "tdt";
 
             protected override bool Process(Player player, TickTime time, string args)
             {
-                //TryNewSystem = !TryNewSystem;
+                TickThreadSingle.TryNewSystem = !TickThreadSingle.TryNewSystem;
                 return true;
             }
         }
 
         internal class ClearGraves : Command
         {
-            public ClearGraves() : base("cleargraves", permLevel: 90, alias: "cgraves")
-            { }
+            public override RankingType RankRequirement => RankingType.Admin;
+            public override string CommandName => "cleargraves";
 
             protected override bool Process(Player player, TickTime time, string args)
             {

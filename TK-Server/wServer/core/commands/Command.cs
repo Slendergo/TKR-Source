@@ -1,51 +1,37 @@
-﻿using System;
+﻿using common;
+using System;
 using wServer.core.objects;
 
 namespace wServer.core.commands
 {
     public abstract partial class Command
     {
-        // todo
-        public enum PermissionType 
-        {
-            USER = 0,
-            SUPPORTER = 10,
-            ADMIN = 1000,
-        }
+        public virtual RankingType RankRequirement => RankingType.Regular;
+        public virtual string Alias { get; }
+        public abstract string CommandName { get; }
+        public virtual bool ListAsCommand => RankRequirement != RankingType.Admin;
 
-        protected Command(string name, int permLevel = 0, string alias = null, bool listCommand = true)
+        public bool Execute(Player player, TickTime time, string args)
         {
-            CommandName = name;
-            PermissionLevel = permLevel;
-            ListCommand = listCommand;
-            Alias = alias;
-        }
-
-        public string Alias { get; private set; }
-        public string CommandName { get; private set; }
-        public bool ListCommand { get; private set; }
-        public int PermissionLevel { get; private set; }
-
-        public bool Execute(Player player, TickTime time, string args, bool bypassPermission = false)
-        {
-            if (!bypassPermission && !HasPermission(player))
+            if (!HasPermission(player))
             {
-                player.SendError("No permission!");
+                player.SendError("You dont have the required permission to use this command!");
                 return false;
             }
 
-            try { return Process(player, time, args); }
+            try
+            {
+                return Process(player, time, args);
+            }
             catch (Exception e)
             {
-                common.logger.Log.Error($"Error when executing the command: {CommandName}", e);
+                Console.WriteLine($"Error when executing the command: {CommandName}", e);
                 return false;
             }
         }
 
-        public bool HasPermission(Player player) => GetPermissionLevel(player) >= PermissionLevel;
+        public bool HasPermission(Player player) => player.Client.Account.Rank >= RankRequirement;
 
         protected abstract bool Process(Player player, TickTime time, string args);
-
-        private static int GetPermissionLevel(Player player) => player.Client.Account.Rank;
     }
 }

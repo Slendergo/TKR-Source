@@ -1,4 +1,5 @@
 ﻿using CA.Extensions.Concurrent;
+using common;
 using common.database;
 using System.Linq;
 using wServer.core.objects;
@@ -9,8 +10,8 @@ namespace wServer.core.commands
     {
         internal class Kick : Command
         {
-            public Kick() : base("kick", permLevel: 90)
-            { }
+            public override RankingType RankRequirement => RankingType.Admin;
+            public override string CommandName => "kick";
 
             protected override bool Process(Player player, TickTime time, string args)
             {

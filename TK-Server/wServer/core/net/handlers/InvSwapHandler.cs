@@ -82,22 +82,7 @@ namespace wServer.core.net.handlers
                         }
                     }
             }
-            else
-            {
-                // if origin is the same player and destiny is a different path not part of
-                // current player's inventory, then validate to avoid invalid swap action
-                if (!(player.World is VaultWorld) && !player.CanUseThisFeature(GenericRank.VIP))
-                {
-                    player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
-
-                    from.ForceUpdate(slotFrom);
-                    to.ForceUpdate(slotTo);
-
-                    player.Client.SendPacket(new InvResult() { Result = 1 });
-                    return;
-                }
-            }
-
+            
             // not stacking operation, continue on with normal swap
 
             // validate slot types

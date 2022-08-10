@@ -12,9 +12,7 @@ namespace wServer.core.commands
     {
         internal class ResetAttributes : Command
         {
-            public ResetAttributes() : base("resetattributes")
-            {
-            }
+            public override string CommandName => "resetattributes";
 
             protected override bool Process(Player player, TickTime time, string args)
             {

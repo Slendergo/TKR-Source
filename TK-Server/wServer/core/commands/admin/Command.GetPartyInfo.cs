@@ -9,9 +9,9 @@ namespace wServer.core.commands
     {
         internal class GetPartyInfo : Command
         {
-            public GetPartyInfo() : base("getPartyInfo", permLevel: 100, alias: "gpt")
-            {
-            }
+            public override RankingType RankRequirement => RankingType.Admin;
+            public override string CommandName => "getpartyinfo";
+            public override string Alias => "gpt";
 
             protected override bool Process(Player player, TickTime time, string args)
             {

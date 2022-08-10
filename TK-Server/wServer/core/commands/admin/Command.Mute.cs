@@ -1,4 +1,5 @@
 ﻿using CA.Extensions.Concurrent;
+using common;
 using System;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -14,7 +15,10 @@ namespace wServer.core.commands
 
             private readonly GameServer _manager;
 
-            public Mute(GameServer manager) : base("mute", permLevel: 80)
+            public override RankingType RankRequirement => RankingType.Admin;
+            public override string CommandName => "mute";
+
+            public Mute(GameServer manager)
             {
                 _manager = manager;
                 _manager.DbEvents.Expired += HandleUnMute;
@@ -60,7 +64,7 @@ namespace wServer.core.commands
                     player?.SendError("Mute failed. That action would cause yourself to be muted (IPs are the same).");
                     return false;
                 }
-                if (acc.Admin)
+                if (acc.IsAdmin)
                 {
                     player?.SendError("Cannot mute other admins.");
                     return false;
@@ -70,7 +74,7 @@ namespace wServer.core.commands
                 var client = _manager.ConnectionManager.Clients
                     .KeyWhereAsParallel(_ => _.Player != null
                         && _.IpAddress.Equals(acc.IP)
-                        && !_.Account.Admin)
+                        && !_.Account.IsAdmin)
                     .SingleOrDefault();
                 if (client != default)
                     client.Player.Muted = true;
@@ -108,7 +112,7 @@ namespace wServer.core.commands
                 var client = _manager.ConnectionManager.Clients
                     .KeyWhereAsParallel(_ => _.Player != null
                         && _.IpAddress.Equals(key.Substring(6))
-                        && !_.Account.Admin)
+                        && !_.Account.IsAdmin)
                     .SingleOrDefault();
                 if (client == default)
                     return;

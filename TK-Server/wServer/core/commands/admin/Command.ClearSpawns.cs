@@ -1,4 +1,5 @@
 ﻿using CA.Extensions.Concurrent;
+using common;
 using System.Linq;
 using wServer.core.objects;
 
@@ -8,8 +9,9 @@ namespace wServer.core.commands
     {
         internal class ClearSpawns : Command
         {
-            public ClearSpawns() : base("clearspawn", permLevel: 90, alias: "cs")
-            { }
+            public override RankingType RankRequirement => RankingType.Admin;
+            public override string CommandName => "clearspawn";
+            public override string Alias => "cs";
 
             protected override bool Process(Player player, TickTime time, string args)
             {

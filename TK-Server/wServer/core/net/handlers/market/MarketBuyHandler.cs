@@ -14,6 +14,8 @@ namespace wServer.core.net.handlers.market
     {
         public override PacketId MessageId => PacketId.MARKET_BUY;
 
+        private const int TAX_PERCENTAGE = 5;
+
         public override void Handle(Client client, NReader rdr, ref TickTime time)
         {
             var id = rdr.ReadInt32();
@@ -42,8 +44,6 @@ namespace wServer.core.net.handlers.market
                 client.Player?.SendError("Unable to find seller.");
                 return;
             }
-
-            CheckRank(sellerAcc);
 
             var item = client.Player.GameServer.Resources.GameData.Items[marketData.ItemType];
 
@@ -163,7 +163,7 @@ namespace wServer.core.net.handlers.market
             acc.Reload("fame");
             acc.Reload("totalFame");
 
-            client.Player.GameServer.ChatManager.SendInfoMarket(acc.AccountId, itemId, realPrice, resultPrice, Tax);
+            client.Player.GameServer.ChatManager.SendInfoMarket(acc.AccountId, itemId, realPrice, resultPrice, TAX_PERCENTAGE);
         }
 
         private void RemoveFameToBuyer(DbAccount acc, int realPrice, Client client = null)
@@ -190,37 +190,6 @@ namespace wServer.core.net.handlers.market
             public int value;
         }
 
-
-        private int Tax = 5;
-
-        public void CheckRank(DbAccount account)
-        {
-            switch (account.Rank)
-            {
-                case 10:
-                    Tax = 4;
-                    break;
-                case 20:
-                    Tax = 3;
-                    break;
-                case 30:
-                    Tax = 2;
-                    break;
-                case 40:
-                    Tax = 1;
-                    break;
-                case 50:
-                    Tax = 1 / 2;
-                    break;
-                case 60:
-                    Tax = 0;
-                    break;
-                default:
-                    Tax = 5;
-                    break;
-            }
-        }
-
-        private int GetTax(int price) => Tax * price / 100;
+        private int GetTax(int price) => TAX_PERCENTAGE * price / 100;
     }
 }

@@ -56,7 +56,7 @@ namespace common.isc
             else
             {
                 _consoleTitlePattern = GameServerTitleFormat;
-                _accessType = _settings.serverInfo.adminOnly ? "Admin" : (_settings.serverSettings.donorOnly ? "Donor" : "Public");
+                _accessType = _settings.serverInfo.adminOnly ? "Admin" : (_settings.serverSettings.supporterOnly ? "Donor" : "Public");
             }
 
             // kind of fucked up to do this, but can't really think of another way

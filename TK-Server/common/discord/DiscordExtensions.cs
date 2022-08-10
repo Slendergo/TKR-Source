@@ -73,7 +73,7 @@ namespace common.discord
             string bagImage,
             string bagBanner,
             string playerName,
-            int rank,
+            RankingType rank,
             int stars,
             string itemName,
             string className,
@@ -106,7 +106,7 @@ namespace common.discord
                             Name = $"{rarity} Loot!",
                             Icon = discord.webhookResourcesURL + bagImage,
                         },
-                        Title = $"<:{star.Value.name}:{star.Value.id}> (D-{rank / 10}) {playerName}",
+                        Title = $"<:{star.Value.name}:{star.Value.id}> {(rank >= RankingType.Supporter4 && rank != RankingType.Admin ? $"(Supporter #{rank})" : "")}) {playerName}",
                         Description = $"Player looted **{itemName}** at {worldName}, __{info.name}__!",
                         Color = 0x7289DA,
                         Fields = new[]

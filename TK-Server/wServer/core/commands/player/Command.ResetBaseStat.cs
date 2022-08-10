@@ -6,9 +6,7 @@ namespace wServer.core.commands
     {
         internal class ResetBaseStat : Command
         {
-            public ResetBaseStat() : base("resetbasestat")
-            {
-            }
+            public override string CommandName => "resetbasestat";
 
             protected override bool Process(Player player, TickTime time, string args)
             {

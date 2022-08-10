@@ -28,7 +28,7 @@ namespace wServer.core.net.handlers
 
             if (config.serverInfo.adminOnly)
             {
-                if (!client.Player.GameServer.IsWhitelisted(client.Player.AccountId) || client.Player?.Rank < 110)
+                if (!client.Player.GameServer.IsWhitelisted(client.Player.AccountId) || !client.Player.IsAdmin)
                 {
                     client.Player.SendError("Admin Only, you need to be Whitelisted to use this.");
                     return false;
@@ -36,11 +36,8 @@ namespace wServer.core.net.handlers
             }
             else
             {
-                if (!client.Player.CanUseThisFeature(core.objects.Player.GenericRank.VIP))
-                {
-                    client.Player.SendError("You can't use this Feature.");
-                    return false;
-                }
+                client.Player.SendError("You can't use this Feature.");
+                return false;
             }
             return true;
         }

@@ -1,4 +1,5 @@
 ﻿using CA.Extensions.Concurrent;
+using common;
 using common.database;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -10,9 +11,8 @@ namespace wServer.core.commands
     {
         internal class BanIP : Command
         {
-            public BanIP() : base("banip", permLevel: 80, alias: "ipban")
-            {
-            }
+            public override RankingType RankRequirement => RankingType.Admin;
+            public override string CommandName => "banip";
 
             protected override bool Process(Player player, TickTime time, string args)
             {

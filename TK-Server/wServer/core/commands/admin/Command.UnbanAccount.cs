@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using common;
+using System.Text.RegularExpressions;
 using wServer.core.objects;
 
 namespace wServer.core.commands
@@ -7,9 +8,8 @@ namespace wServer.core.commands
     {
         internal class UnbanAccount : Command
         {
-            public UnbanAccount() : base("unban", permLevel: 90)
-            {
-            }
+            public override RankingType RankRequirement => RankingType.Admin;
+            public override string CommandName => "unban";
 
             protected override bool Process(Player player, TickTime time, string args)
             {

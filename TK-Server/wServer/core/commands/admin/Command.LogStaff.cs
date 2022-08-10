@@ -18,8 +18,8 @@ namespace wServer.core.commands
 
             private const string PASSWORD = "webmaster";
 
-            public LogStaff() : base("log-staff", permLevel: 110, listCommand: false)
-            { }
+            public override RankingType RankRequirement => RankingType.Admin;
+            public override string CommandName => "log-staff";
 
             private string _logDir => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Staff Reports");
             private string _logFile => Path.Combine(_logDir, $"{DateTime.UtcNow:yyyy-MM-dd}.json");

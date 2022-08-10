@@ -53,7 +53,7 @@ namespace wServer.core
                 return;
             }
 
-            if (connectionInfo.Reconnecting || connectionInfo.Account.Admin || PlayerCount() < MaxPlayerCount)
+            if (connectionInfo.Reconnecting || connectionInfo.Account.IsAdmin || PlayerCount() < MaxPlayerCount)
             {
                 HandleConnect(connectionInfo);
                 return;
@@ -154,7 +154,7 @@ namespace wServer.core
                 world = client.GameServer.WorldManager.GetWorld(World.NEXUS_ID);
             }
 
-            if (world is TestWorld && !acc.Admin)
+            if (world is TestWorld && !acc.IsAdmin)
             {
                 client.SendFailure("Only players with admin permissions can make test maps.", FailureMessage.MessageWithDisconnect);
                 return;

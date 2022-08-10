@@ -890,7 +890,7 @@ namespace wServer.core.objects
                     return;
                 }
 
-                if (!World.AllowTeleport && Rank != RankingType.Admin)
+                if (!World.AllowTeleport && !IsAdmin)
                 {
                     SendError("Cannot teleport here.");
                     RestartTPPeriod();
@@ -1065,7 +1065,7 @@ namespace wServer.core.objects
             stats[StatDataType.Stars] = Stars;
             stats[StatDataType.Guild] = Guild;
             stats[StatDataType.GuildRank] = GuildRank;
-            stats[StatDataType.Rank] = Rank;
+            stats[StatDataType.Rank] = (int)Rank;
             stats[StatDataType.Credits] = Credits;
             stats[StatDataType.NameChosen] = (Client.Account?.NameChosen ?? NameChosen) ? 1 : 0;
             stats[StatDataType.Texture1] = Texture1;

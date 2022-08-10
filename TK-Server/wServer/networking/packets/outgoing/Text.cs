@@ -7,7 +7,6 @@ namespace wServer.networking.packets.outgoing
         public string Name { get; set; }
         public int ObjectId { get; set; }
         public int NumStars { get; set; }
-        public bool Admin { get; set; }
         public byte BubbleTime { get; set; }
         public string Recipient { get; set; }
         public string Txt { get; set; }

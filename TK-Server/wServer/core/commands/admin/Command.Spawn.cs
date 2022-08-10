@@ -221,7 +221,6 @@ namespace wServer.core.commands
                 {
                     Name = $"#{player.Name}",
                     NumStars = player.Stars,
-                    Admin = player.IsAdmin,
                     BubbleTime = 0,
                     Txt = notif
                 }, player);

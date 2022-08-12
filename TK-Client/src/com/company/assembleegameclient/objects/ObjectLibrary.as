@@ -63,9 +63,9 @@ public class ObjectLibrary
          "StatNPC":StatNPC,
          "SkillTree":SkillTree,
          "MarketNPC":MarketNPC,
-          "BountyBoard": BountyBoard,
-          "PotionStorage": PotionStorage
-
+         "BountyBoard": BountyBoard,
+         "PotionStorage": Essence,
+         "Essence": Essence
       };
 
 

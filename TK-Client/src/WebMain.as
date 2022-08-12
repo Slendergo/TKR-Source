@@ -23,6 +23,7 @@ import kabam.rotmg.core.StaticInjectorContext;
 import kabam.rotmg.death.DeathConfig;
 import kabam.rotmg.dialogs.DialogsConfig;
 import kabam.rotmg.errors.ErrorConfig;
+import kabam.rotmg.essences.EssenceConfig;
 import kabam.rotmg.fame.FameConfig;
 import kabam.rotmg.game.GameConfig;
 import kabam.rotmg.hud.HUDConfig;
@@ -114,6 +115,7 @@ public class WebMain extends Sprite {
                 .configure(ClassesConfig)
                 .configure(Stage3DConfig)
                 .configure(HUDConfig)
+                .configure(EssenceConfig)
                 .configure(this);
         this.context.logLevel = LogLevel.DEBUG;
     }

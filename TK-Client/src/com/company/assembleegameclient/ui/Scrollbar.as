@@ -46,7 +46,7 @@ package com.company.assembleegameclient.ui
          addEventListener(Event.REMOVED_FROM_STAGE, this.onRemovedFromStage);
       }
       
-      private static function drawArrow(w:int, h:int, g:Graphics) : void
+      public static function drawArrow(w:int, h:int, g:Graphics) : void
       {
          g.clear();
          g.beginFill(3487029,0.01);

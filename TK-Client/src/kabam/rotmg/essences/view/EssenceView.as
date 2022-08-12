@@ -82,7 +82,7 @@ public class EssenceView extends ModalPopup {
         for(var i = 0; i < 32; i++)
         {
             var slot:TalismanSlot = new TalismanSlot(152, 96, i);
-            slot.x = 72 + slot.w_ * int(i % 3) + 70 - slot.width;
+            slot.x = 96 + 72 + slot.w_ * int(i % 3) + 70 - slot.width;
             slot.y = 16 + slot.h_ * int(i / 3);
             this.slotsContainer_.addChild(slot);
 

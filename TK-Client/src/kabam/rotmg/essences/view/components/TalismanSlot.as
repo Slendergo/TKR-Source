@@ -8,10 +8,13 @@ import flash.display.Bitmap;
 import flash.display.BitmapData;
 import flash.display.Graphics;
 import flash.display.Sprite;
+import flash.events.MouseEvent;
+import flash.geom.ColorTransform;
 import flash.utils.Dictionary;
 
 import io.decagames.rotmg.ui.buttons.SliceScalingButton;
 import io.decagames.rotmg.ui.defaults.DefaultLabelFormat;
+import io.decagames.rotmg.ui.sliceScaling.SliceScalingBitmap;
 import io.decagames.rotmg.ui.texture.TextureParser;
 
 public class TalismanSlot extends Sprite {
@@ -54,21 +57,57 @@ public class TalismanSlot extends Sprite {
 
         var arrowHeight:int = this.expBar_.width * 0.5;
 
-        this.upArrow_ = new Sprite();
+        this.upArrow_ = getSprite(this.onUpArrow);
         Scrollbar.drawArrow(arrowHeight, this.expBar_.height, this.upArrow_.graphics);
         this.upArrow_.rotation = 0;
-        this.upArrow_.x = this.expBar_.width / 2;
-        this.upArrow_.y = arrowHeight / 2;
+        this.upArrow_.x = this.expBar_.x + this.expBar_.w_ + this.upArrow_.width;
+        this.upArrow_.y = this.expBar_.y + (this.expBar_.h_ / 2) ;//- (this.upArrow_.height / 2);
         addChild(this.upArrow_);
 
-        var downArrow:BitmapData = AssetLibrary.getImageFromSet("lofiInterface", 54);
-        var downArrowBitmap:Bitmap = new Bitmap(downArrow);
+        this.downArrow_ = getSprite(this.onUpArrow);
+        Scrollbar.drawArrow(arrowHeight, this.expBar_.height, this.downArrow_.graphics);
+        this.downArrow_.rotation = -180;
+        this.downArrow_.x = this.expBar_.x - this.downArrow_.width;
+        this.downArrow_.y = this.upArrow_.y;
+        addChild(this.downArrow_);
 
-//        this.remove_ = new Sprite();
-//        this.remove_.rotation = 270;
-//        this.remove_.addChild(downArrowBitmap);
-//        addChild(this.remove_);
+        this.sellButton = new SliceScalingButton(TextureParser.instance.getSliceScalingBitmap("UI", "generic_green_button"));
+        this.sellButton.width = 96;
+        this.sellButton.setLabel("Imbue", DefaultLabelFormat.defaultModalTitle);
+        this.sellButton.x = this.w_ - (this.sellButton.width / 2) - 16;
+        this.sellButton.y = this.h_ - (this.sellButton.height / 2) - 8;
+        this.sellButton.scaleX = 0.6;
+        this.sellButton.scaleY = 0.6;
+        addChild(this.sellButton);
     }
+    private var sellButton:SliceScalingButton;
+
+    private function getSprite(downFunction:Function):Sprite
+    {
+        var sprite:Sprite = new Sprite();
+        sprite.addEventListener(MouseEvent.MOUSE_DOWN,downFunction);
+        sprite.addEventListener(MouseEvent.ROLL_OVER,this.onRollOver);
+        sprite.addEventListener(MouseEvent.ROLL_OUT,this.onRollOut);
+        return sprite;
+    }
+
+    private function onUpArrow(event:MouseEvent) : void
+    {
+
+    }
+
+    private function onRollOver(event:MouseEvent) : void
+    {
+        var sprite:Sprite = event.target as Sprite;
+        sprite.transform.colorTransform = new ColorTransform(1,0.8627,0.5216);
+    }
+
+    private function onRollOut(event:MouseEvent) : void
+    {
+        var sprite:Sprite = event.target as Sprite;
+        sprite.transform.colorTransform = new ColorTransform(1,1,1);
+    }
+
 
     public function setExp(exp:int):void {
         this.current_ = exp;

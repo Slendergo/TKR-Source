@@ -647,6 +647,8 @@ public class GameServerConnection
       }
 
       private function onTalismanEssenceData(talismanEssenceData:TalismanEssenceData):void {
+         this.gs_.map.player_.essence_ = talismanEssenceData.essence_;
+         this.gs_.map.player_.essenceCap_ = talismanEssenceData.essenceCap_;
          for(var i:int = 0; i < talismanEssenceData.talismans_.length; i++){
             this.gs_.map.player_.addTalisman(talismanEssenceData.talismans_[i]);
          }

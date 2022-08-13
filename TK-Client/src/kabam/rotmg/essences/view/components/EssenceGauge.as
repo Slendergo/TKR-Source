@@ -1,20 +1,11 @@
 package kabam.rotmg.essences.view.components {
-import com.company.assembleegameclient.misc.DefaultLabelFormat;
+
 import com.company.assembleegameclient.ui.StatusBar;
-import com.company.ui.SimpleText;
-
 import flash.display.Sprite;
-import flash.filters.DropShadowFilter;
-
-import io.decagames.rotmg.ui.buttons.SliceScalingButton;
-import io.decagames.rotmg.ui.texture.TextureParser;
 
 public class EssenceGauge extends Sprite
 {
     public var gague_:StatusBar;
-
-    public var maxCapacity_:int;
-    public var currentCapacity_:int;
 
     public function EssenceGauge()
     {
@@ -22,19 +13,9 @@ public class EssenceGauge extends Sprite
         this.addChild(this.gague_);
     }
 
-    public function setCapacity(amount:int):void
+    public function draw(current:int, max:int):void
     {
-        this.currentCapacity_ = amount;
-    }
-
-    public function setMaxCapacity(amount:int):void
-    {
-        this.maxCapacity_ = amount;
-    }
-
-    public function draw():void
-    {
-        this.gague_.draw(this.currentCapacity_, this.maxCapacity_,0);
+        this.gague_.draw(current, max,0);
     }
 }
 }

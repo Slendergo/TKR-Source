@@ -349,7 +349,6 @@ namespace common.database
             return talisman;
         }
 
-
         public DbCreateStatus CreateCharacter(DbAccount acc, ushort type, ushort skinType, out DbChar character)
         {
             if (_db.SetLength("alive." + acc.AccountId) >= acc.MaxCharSlot)
@@ -413,6 +412,7 @@ namespace common.database
                 Tex1 = 0,
                 Tex2 = 0,
                 Skin = skinType,
+                EssenceCap = 2000,
                 PetId = 0,
                 FameStats = new byte[0],
                 CreateTime = DateTime.Now,

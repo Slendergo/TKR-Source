@@ -42,12 +42,17 @@ namespace wServer.networking.packets.outgoing.talisman
 
     public class TalismanEssenceData : OutgoingMessage
     {
+        public int Essence { get; set; }
+        public int EssenceCap { get;  set; }
+
         public List<TalismanData> Talismans { get; private set; } = new List<TalismanData>();
 
         public override MessageId MessageId => MessageId.TALISMAN_ESSENCE_DATA;
 
         protected override void Write(NWriter wtr)
         {
+            wtr.Write(Essence);
+            wtr.Write(EssenceCap);
             wtr.Write((short)Talismans.Count);
             foreach(var talisman in Talismans)
                 talisman.Write(wtr);

@@ -242,6 +242,8 @@ public class Player extends Character {
     public var node5Big:int = 0;
     public var SPS_Modal:PotionStorageModal;
     private var talismans_:Dictionary;
+    public var essence_:int = 0;
+    public var essenceCap_:int = 0;
 
     public function addTalisman(talismanData:TalismanData):void {
         this.talismans_[talismanData.type_] = new TalismanModel(talismanData);

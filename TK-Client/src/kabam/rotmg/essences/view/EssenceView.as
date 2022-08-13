@@ -64,8 +64,6 @@ public class EssenceView extends ModalPopup {
         super(600, 425, "Talisman Essence");
 
         this.essenceGague_ = new EssenceGauge();
-        this.essenceGague_.setCapacity(10000);
-        this.essenceGague_.setMaxCapacity(32000);
         this.essenceGague_.x = 16;
         this.essenceGague_.y = 16;
         addChild(this.essenceGague_);
@@ -173,7 +171,7 @@ public class EssenceView extends ModalPopup {
             this.slots_[i].draw();
             count += this.slots_[i].delta_;
         }
-        this.essenceGague_.draw();
+        this.essenceGague_.draw(this.player.essence_, this.player.essenceCap_);
     }
 }
 }

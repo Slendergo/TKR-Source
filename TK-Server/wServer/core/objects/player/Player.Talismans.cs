@@ -32,6 +32,8 @@ namespace wServer.core.objects
         private void UpdateTalismanData()
         {
             var data = new TalismanEssenceData();
+            data.Essence = Client.Character.Essence;
+            data.EssenceCap = Client.Character.EssenceCap;
             foreach (var talisman in TalismanDatas.Values)
                 data.Talismans.Add(talisman);
             Client.SendPacket(data);

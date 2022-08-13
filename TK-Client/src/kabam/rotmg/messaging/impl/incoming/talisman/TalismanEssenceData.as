@@ -8,6 +8,8 @@ import kabam.rotmg.messaging.impl.incoming.*;
    
    public class TalismanEssenceData extends IncomingMessage
    {
+      public var essence_:int;
+      public var essenceCap_:int;
       public var talismans_:Vector.<TalismanData>;
       
       public function TalismanEssenceData(id:uint, callback:Function)
@@ -18,6 +20,9 @@ import kabam.rotmg.messaging.impl.incoming.*;
       
       override public function parseFromInput(data:IDataInput) : void
       {
+         this.essence_ = data.readInt();
+         this.essenceCap_ = data.readInt();
+
          var i:int = 0;
          var len:int = data.readShort();
          for(i = len; i < this.talismans_.length; i++)

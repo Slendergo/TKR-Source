@@ -4,7 +4,7 @@ namespace wServer.networking.packets.outgoing.market
 {
     public class MarketBuyResult : OutgoingMessage
     {
-        public override PacketId MessageId => PacketId.MARKET_BUY_RESULT;
+        public override MessageId MessageId => MessageId.MARKET_BUY_RESULT;
 
         public const int BOUGHT = -1;
         public const int ERROR = 1;

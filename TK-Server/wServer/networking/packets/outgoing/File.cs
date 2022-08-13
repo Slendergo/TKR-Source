@@ -7,7 +7,7 @@ namespace wServer.networking.packets.outgoing
         public string Name { get; set; }
         public byte[] Bytes { get; set; }
 
-        public override PacketId MessageId => PacketId.FILE;
+        public override MessageId MessageId => MessageId.FILE;
 
         protected override void Write(NWriter wtr)
         {

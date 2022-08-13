@@ -27,6 +27,7 @@ import io.decagames.rotmg.ui.texture.TextureParser;
 import io.decagames.rotmg.ui.defaults.DefaultLabelFormat;
 
 import kabam.rotmg.core.StaticInjectorContext;
+import kabam.rotmg.essences.TalismanModel;
 import kabam.rotmg.essences.TalismanProperties;
 import kabam.rotmg.essences.TalismanLibrary;
 import kabam.rotmg.essences.view.components.EssenceGauge;
@@ -39,7 +40,6 @@ import org.osflash.signals.Signal;
 public class EssenceView extends ModalPopup {
 
     public var gs_:GameSprite;
-    public var gameObject:GameObject;
     public var essenceGague_:EssenceGauge;
     internal var quitButton:SliceScalingButton;
     internal var player:Player;
@@ -58,9 +58,9 @@ public class EssenceView extends ModalPopup {
 
     public var editingSlot_:TalismanSlot;
 
-    public function EssenceView(gs:GameSprite, go:GameObject) {
+    public function EssenceView(gs:GameSprite, go:Player) {
         this.gs_ = gs;
-        this.gameObject = go;
+        this.player = go;
         super(600, 425, "Talisman Essence");
 
         this.essenceGague_ = new EssenceGauge();
@@ -82,12 +82,10 @@ public class EssenceView extends ModalPopup {
         this.sprite_.addChild(this.slotsContainer_);
         addChild(this.sprite_);
 
-        // todo load from the xml
-
         var talismans:Vector.<TalismanProperties> = TalismanLibrary.getTalismans();
 
         this.slots_ = new Vector.<TalismanSlot>();
-        for(var i = 0; i < talismans.length; i++)
+        for(var i:int = 0; i < talismans.length; i++)
         {
             var slot:TalismanSlot = new TalismanSlot(talismans[i], 152, 96, this);
             slot.x = 114 + 72 + slot.w_ * int(i % 3) + 70 - slot.width;
@@ -97,6 +95,19 @@ public class EssenceView extends ModalPopup {
             slot.disable();
 
             this.slots_.push(slot);
+        }
+
+        var activeTalismans:Vector.<TalismanModel> = go.getTalismans();
+        for(var i:int = 0; i < activeTalismans.length; i++)
+        {
+            var talisman:TalismanModel = activeTalismans[i];
+
+            var slot:TalismanSlot = this.slots_[talisman.type_];
+            slot.setLevel(talisman.level_);
+            slot.setExp(talisman.xp_);
+            slot.setExpGoal(talisman.goal_);
+            slot.setTier(talisman.tier_);
+            slot.enable();
         }
 
         if (this.slotsContainer_.height > 400)
@@ -130,14 +141,6 @@ public class EssenceView extends ModalPopup {
 
     public function editSlot(slot:TalismanSlot):void
     {
-        if(this.editingSlot_ != null){
-            if(this.editingSlot_.unlocked_) {
-                this.editingSlot_.enable();
-            }
-            else{
-                this.editingSlot_.disable();
-            }
-        }
         this.editingSlot_ = slot;
         if(this.editingSlot_ != null){
             this.editingSlot_.edit();

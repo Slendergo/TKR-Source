@@ -15,7 +15,7 @@ namespace wServer.core.net.handlers
     {
         private static readonly Logger NameChangeLog = LogManager.GetCurrentClassLogger();
 
-        public override PacketId MessageId => PacketId.CHOOSENAME;
+        public override MessageId MessageId => MessageId.CHOOSENAME;
 
         public override void Handle(Client client, NReader rdr, ref TickTime time)
         {

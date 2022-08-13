@@ -6,7 +6,7 @@ namespace wServer.core.net.handlers
 {
     public class TeleportHandler : IMessageHandler
     {
-        public override PacketId MessageId => PacketId.TELEPORT;
+        public override MessageId MessageId => MessageId.TELEPORT;
 
         public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
         {

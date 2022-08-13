@@ -22,7 +22,7 @@ namespace wServer.networking.packets.outgoing
         public List<TileData> Tiles { get; set; } = new List<TileData>();
         public List<ObjectDef> NewObjs { get; set; } = new List<ObjectDef>();
         public List<int> Drops { get; set; } = new List<int>();
-        public override PacketId MessageId => PacketId.UPDATE;
+        public override MessageId MessageId => MessageId.UPDATE;
 
         protected override void Write(NWriter wtr)
         {

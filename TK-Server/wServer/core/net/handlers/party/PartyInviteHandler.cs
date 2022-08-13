@@ -10,7 +10,7 @@ namespace wServer.core.net.handlers
 {
     internal class PartyInviteHandler : IMessageHandler
     {
-        public override PacketId MessageId => PacketId.PARTY_INVITE;
+        public override MessageId MessageId => MessageId.PARTY_INVITE;
 
         public override void Handle(Client client, NReader rdr, ref TickTime time)
         {

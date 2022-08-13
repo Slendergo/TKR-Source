@@ -11,7 +11,7 @@ namespace wServer.core.net.handlers
     {
         private readonly int[] _realmPortals = new int[] { 0x0704, 0x070e, 0x071c, 0x703, 0x070d, 0x0d40 };
 
-        public override PacketId MessageId => PacketId.USEPORTAL;
+        public override MessageId MessageId => MessageId.USEPORTAL;
 
         public override void Handle(Client client, NReader rdr, ref TickTime time)
         {

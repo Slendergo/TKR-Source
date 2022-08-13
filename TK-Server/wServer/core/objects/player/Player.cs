@@ -1006,6 +1006,8 @@ namespace wServer.core.objects
         {
             if (KeepAlive(time))
             {
+                HandleTalismans(ref time);
+
                 PlayerUpdate.SendUpdate();
                 PlayerUpdate.SendNewTick(time.ElaspedMsDelta);
 

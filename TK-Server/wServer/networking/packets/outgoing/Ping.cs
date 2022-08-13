@@ -6,7 +6,7 @@ namespace wServer.networking.packets.outgoing
     {
         public int Serial { get; set; }
 
-        public override PacketId MessageId => PacketId.PING;
+        public override MessageId MessageId => MessageId.PING;
 
         protected override void Write(NWriter wtr)
         {

@@ -7,7 +7,7 @@ namespace wServer.core.net.handlers
 {
     public class EscapeHandler : IMessageHandler
     {
-        public override PacketId MessageId => PacketId.ESCAPE;
+        public override MessageId MessageId => MessageId.ESCAPE;
 
         public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
         {

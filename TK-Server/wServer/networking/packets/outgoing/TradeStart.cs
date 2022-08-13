@@ -8,7 +8,7 @@ namespace wServer.networking.packets.outgoing
         public string YourName { get; set; }
         public TradeItem[] YourItems { get; set; }
 
-        public override PacketId MessageId => PacketId.TRADESTART;
+        public override MessageId MessageId => MessageId.TRADESTART;
 
         protected override void Write(NWriter wtr)
         {

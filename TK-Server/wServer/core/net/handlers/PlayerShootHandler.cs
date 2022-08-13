@@ -14,7 +14,7 @@ namespace wServer.core.net.handlers
         public Position StartingPos { get; set; }
         public float Angle { get; set; }
 
-        public override PacketId MessageId => PacketId.PLAYERSHOOT;
+        public override MessageId MessageId => MessageId.PLAYERSHOOT;
 
         public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
         {

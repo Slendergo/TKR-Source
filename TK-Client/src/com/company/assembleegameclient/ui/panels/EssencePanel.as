@@ -25,7 +25,7 @@ public class EssencePanel extends ButtonPanel {
         }
         this.gs_.mui_.setEnablePlayerInput(false); /* Disable player movement */
         this.gs_.mui_.setEnableHotKeysInput(false); /* Disable Hotkeys */
-        this.openDialog.dispatch(new EssenceView(this.gs_, this.gameObject));
+        this.openDialog.dispatch(new EssenceView(this.gs_, this.gs_.map.player_));
     }
 
     override protected function onKeyDown(evt:KeyboardEvent):void {
@@ -35,7 +35,7 @@ public class EssencePanel extends ButtonPanel {
             }
             this.gs_.mui_.setEnablePlayerInput(false); /* Disable player movement */
             this.gs_.mui_.setEnableHotKeysInput(false); /* Disable Hotkeys */
-            this.openDialog.dispatch(new EssenceView(this.gs_, this.gameObject));
+            this.openDialog.dispatch(new EssenceView(this.gs_, this.gs_.map.player_));
         }
     }
 

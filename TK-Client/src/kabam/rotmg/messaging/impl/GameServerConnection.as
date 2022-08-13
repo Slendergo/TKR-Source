@@ -137,6 +137,7 @@ import kabam.rotmg.messaging.impl.incoming.market.MarketMyOffersResult;
 import kabam.rotmg.messaging.impl.incoming.market.MarketRemoveResult;
 import kabam.rotmg.messaging.impl.incoming.market.MarketSearchResult;
 import kabam.rotmg.messaging.impl.incoming.party.InvitedToParty;
+import kabam.rotmg.messaging.impl.incoming.talisman.TalismanEssenceData;
 import kabam.rotmg.messaging.impl.outgoing.AcceptTrade;
 import kabam.rotmg.messaging.impl.outgoing.BigSkillTree;
 import kabam.rotmg.messaging.impl.outgoing.Buy;
@@ -322,6 +323,9 @@ public class GameServerConnection
       public static const POTION_STORAGE_INTERACTION:int = 92;
       public static const POTIONSTORAGEREQUEST:int = 93;
       public static const USEPOTION:int = 94;
+
+      public static const TALISMAN_ESSENCE_DATA:int = 100;
+      public static const TALISMAN_ESSENCE_ACTION:int = 101;
 
       private static const TO_MILLISECONDS:int = 1000;
 
@@ -535,6 +539,9 @@ public class GameServerConnection
 
          messages.map(POTION_STORAGE_INTERACTION).toMessage(PotionStorageInteraction);
          messages.map(USEPOTION).toMessage(UsePotion);
+
+         messages.map(TALISMAN_ESSENCE_DATA).toMessage(TalismanEssenceData).toMethod(this.onTalismanEssenceData);
+//         messages.map(TALISMAN_ESSENCE_ACTION).toMessage(TalismanEssenceAction);
       }
 
       private function unmapMessages() : void {
@@ -634,17 +641,19 @@ public class GameServerConnection
 
          /* Music */
          messages.unmap(SWITCH_MUSIC);
+
+         messages.unmap(TALISMAN_ESSENCE_DATA);
+         messages.unmap(TALISMAN_ESSENCE_ACTION);
+      }
+
+      private function onTalismanEssenceData(talismanEssenceData:TalismanEssenceData):void {
+         for(var i:int = 0; i < talismanEssenceData.talismans_.length; i++){
+            this.gs_.map.player_.addTalisman(talismanEssenceData.talismans_[i]);
+         }
       }
 
       private function onSwitchMusic(sm:SwitchMusic):void {
          Music.load(sm.music);
-      }
-
-      public function potionStorage(statType:int, interactionType:int):void {
-         var potionStorage:PotionStorage = this.messages.require(POTION_STORAGE_INTERACTION) as PotionStorage;
-         potionStorage.statType_ = Parameters.data_.allyShots;
-         potionStorage.interactionType_ = interactionType;
-         this.serverConnection.sendMessage(potionStorage);
       }
 
       public function getNextDamage(minDamage:uint, maxDamage:uint) : uint

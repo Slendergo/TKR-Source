@@ -8,7 +8,7 @@ namespace wServer.core.net.handlers
 {
     internal class SmallSkillTreeHandler : IMessageHandler
     {
-        public override PacketId MessageId => PacketId.SMALLSKILLTREE;
+        public override MessageId MessageId => MessageId.SMALLSKILLTREE;
 
         public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
         {

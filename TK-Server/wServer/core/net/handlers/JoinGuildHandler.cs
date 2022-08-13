@@ -8,7 +8,7 @@ namespace wServer.core.net.handlers
 {
     internal class JoinGuildHandler : IMessageHandler
     {
-        public override PacketId MessageId => PacketId.JOINGUILD;
+        public override MessageId MessageId => MessageId.JOINGUILD;
 
         public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
         {

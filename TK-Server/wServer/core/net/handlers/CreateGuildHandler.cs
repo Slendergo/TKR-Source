@@ -10,7 +10,7 @@ namespace wServer.core.net.handlers
 {
     internal class CreateGuildHandler : IMessageHandler
     {
-        public override PacketId MessageId => PacketId.CREATEGUILD;
+        public override MessageId MessageId => MessageId.CREATEGUILD;
 
         public override void Handle(Client client, NReader rdr, ref TickTime time)
         {

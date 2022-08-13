@@ -8,7 +8,7 @@ namespace wServer.networking.packets.outgoing
         public int CharId { get; set; }
         public string KilledBy { get; set; }
 
-        public override PacketId MessageId => PacketId.DEATH;
+        public override MessageId MessageId => MessageId.DEATH;
 
         protected override void Write(NWriter wtr)
         {

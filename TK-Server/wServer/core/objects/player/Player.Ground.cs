@@ -19,7 +19,6 @@ namespace wServer.core.objects
         public int MoveTime;
         public int AwaitingMoves;
         public Queue<int> AwaitingGoto;
-        public int TickId;
         public float PushX;
         public float PushY;
 

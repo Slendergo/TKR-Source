@@ -36,7 +36,7 @@ namespace wServer.core.net.handlers
     {
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
-        public override PacketId MessageId => PacketId.HELLO;
+        public override MessageId MessageId => MessageId.HELLO;
 
         public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
         {

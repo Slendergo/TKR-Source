@@ -12,7 +12,7 @@ namespace wServer.networking.packets.outgoing
         public int Duration { get; set; }
         public ushort ObjectType { get; set; }
 
-        public override PacketId MessageId => PacketId.SHOWEFFECT;
+        public override MessageId MessageId => MessageId.SHOWEFFECT;
 
         protected override void Write(NWriter wtr)
         {

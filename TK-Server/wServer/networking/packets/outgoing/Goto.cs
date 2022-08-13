@@ -7,7 +7,7 @@ namespace wServer.networking.packets.outgoing
         public int ObjectId { get; set; }
         public Position Pos { get; set; }
 
-        public override PacketId MessageId => PacketId.GOTO;
+        public override MessageId MessageId => MessageId.GOTO;
 
         protected override void Write(NWriter wtr)
         {

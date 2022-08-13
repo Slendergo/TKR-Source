@@ -7,7 +7,7 @@ namespace wServer.networking.packets.outgoing
         public int ObjectId { get; set; }
         public int CharId { get; set; }
 
-        public override PacketId MessageId => PacketId.CREATE_SUCCESS;
+        public override MessageId MessageId => MessageId.CREATE_SUCCESS;
 
         protected override void Write(NWriter wtr)
         {

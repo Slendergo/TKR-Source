@@ -16,7 +16,7 @@ namespace wServer.core.net.handlers
 {
     public sealed class CancelTradeHandler : IMessageHandler
     {
-        public override PacketId MessageId => PacketId.CANCELTRADE;
+        public override MessageId MessageId => MessageId.CANCELTRADE;
 
         public override void Handle(Client client, NReader rdr, ref TickTime time)
         {

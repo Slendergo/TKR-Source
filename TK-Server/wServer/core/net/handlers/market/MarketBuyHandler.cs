@@ -12,7 +12,7 @@ namespace wServer.core.net.handlers.market
 {
     public class MarketBuyHandler : IMessageHandler
     {
-        public override PacketId MessageId => PacketId.MARKET_BUY;
+        public override MessageId MessageId => MessageId.MARKET_BUY;
 
         private const int TAX_PERCENTAGE = 5;
 

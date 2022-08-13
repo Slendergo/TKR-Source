@@ -12,7 +12,7 @@ namespace wServer.networking.packets.outgoing
         public int KeyTime { get; set; }
         public byte[] Key { get; private set; }
 
-        public override PacketId MessageId => PacketId.RECONNECT;
+        public override MessageId MessageId => MessageId.RECONNECT;
 
         public Reconnect()
         {

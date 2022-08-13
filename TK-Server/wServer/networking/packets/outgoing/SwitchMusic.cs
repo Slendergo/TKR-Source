@@ -6,7 +6,7 @@ namespace wServer.networking.packets.outgoing
     {
         public string Music { get; set; }
 
-        public override PacketId MessageId => PacketId.SWITCH_MUSIC;
+        public override MessageId MessageId => MessageId.SWITCH_MUSIC;
 
         protected override void Write(NWriter wtr)
         {

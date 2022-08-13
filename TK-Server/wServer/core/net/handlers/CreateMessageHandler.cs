@@ -12,7 +12,7 @@ namespace wServer.core.net.handlers
 {
     public sealed class CreateMessageHandler : IMessageHandler
     {
-        public override PacketId MessageId => PacketId.CREATE;
+        public override MessageId MessageId => MessageId.CREATE;
 
         public override void Handle(Client client, NReader rdr, ref TickTime time)
         {
@@ -64,6 +64,7 @@ namespace wServer.core.net.handlers
             });
             client.State = ProtocolState.Ready;
             client.GameServer.ConnectionManager.ClientConnected(client);
+
             //client.Player?.PlayerUpdate.SendUpdate();
         }
     }

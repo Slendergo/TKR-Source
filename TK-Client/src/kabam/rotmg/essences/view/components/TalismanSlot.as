@@ -204,6 +204,7 @@ public class TalismanSlot extends Sprite {
             return;
         }
         this.delta_ = 0;
+        this.enable();
         this.view_.editSlot(null);
     }
 
@@ -324,6 +325,12 @@ public class TalismanSlot extends Sprite {
 
     private function modifyVisibilities():void {
 
+        var isMaxLevel = this.current_ + this.delta_ == this.max_;
+        this.upArrow_.mouseEnabled = !isMaxLevel;
+        this.downArrow_.mouseEnabled = this.delta_ != 0;
+        this.upArrow_.transform.colorTransform = !this.upArrow_.mouseEnabled ? MoreColorUtil.darkCT : MoreColorUtil.identity;
+        this.downArrow_.transform.colorTransform = !this.downArrow_.mouseEnabled ? MoreColorUtil.darkCT : MoreColorUtil.identity;
+
         if(this.editing_) {
             var isMaxLevel = this.current_ + this.delta_ == this.max_;
             this.sellButton.visible = !isMaxLevel;
@@ -383,11 +390,14 @@ public class TalismanSlot extends Sprite {
         g.endFill();
 
 
-        if(this.editing_)
-        {
+        if(this.editing_) {
             this.expBar_.setBarColor(this.tier_ == 0 ? 0x808080 : this.tier_ == 1 ? 0xD6C416 : 0x7B091C);
             this.expBar_.draw(this.current_ + this.delta_, this.max_, 0);
-        }else {
+
+            var isMaxLevel = this.current_ + this.delta_ == this.max_;
+            this.sellButton.visible = !isMaxLevel;
+            this.sellButton2.visible = isMaxLevel;
+        } else {
             g.lineStyle(1,0);
             g.beginFill(0x454545);
             g.drawRoundRect(8, 48, 76, 42, 16, 16);

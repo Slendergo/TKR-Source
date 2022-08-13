@@ -7,7 +7,7 @@ namespace wServer.networking.packets.outgoing
         public int Type { get; set; }
         public string Text { get; set; }
 
-        public override PacketId MessageId => PacketId.GLOBAL_NOTIFICATION;
+        public override MessageId MessageId => MessageId.GLOBAL_NOTIFICATION;
 
         protected override void Write(NWriter wtr)
         {

@@ -12,7 +12,7 @@ namespace wServer.core.net.handlers
 {
     public abstract class IMessageHandler
     {
-        public abstract PacketId MessageId { get; }
+        public abstract MessageId MessageId { get; }
         public abstract void Handle(Client client, NReader rdr, ref TickTime time);
 
         public static bool IsAvailable(Client client)
@@ -45,13 +45,13 @@ namespace wServer.core.net.handlers
 
     public static class MessageHandlers
     {
-        private static Dictionary<PacketId, IMessageHandler> Handlers;
+        private static Dictionary<MessageId, IMessageHandler> Handlers;
 
-        public static IMessageHandler GetHandler(PacketId messageId)
+        public static IMessageHandler GetHandler(MessageId messageId)
         {
             if (Handlers == null)
             {
-                Handlers = new Dictionary<PacketId, IMessageHandler>();
+                Handlers = new Dictionary<MessageId, IMessageHandler>();
                 foreach (var type in Assembly.GetAssembly(typeof(IMessageHandler)).GetTypes().Where(_ => _.IsClass && !_.IsAbstract && _.IsSubclassOf(typeof(IMessageHandler))))
                 {
                     var handler = (IMessageHandler)Activator.CreateInstance(type);

@@ -59,12 +59,12 @@ namespace wServer.networking.connection
             return packetBody;
         }
 
-        public PacketId GetPacketId()
+        public MessageId GetPacketId()
         {
             if (BytesRead < PrefixLength)
                 throw new Exception("Packet id not read yet.");
 
-            return (PacketId)PacketBytes[4];
+            return (MessageId)PacketBytes[4];
         }
 
         public void Reset()

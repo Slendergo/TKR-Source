@@ -8,7 +8,7 @@ namespace wServer.core.net.handlers
 {
     internal class GuildInviteHandler : IMessageHandler
     {
-        public override PacketId MessageId => PacketId.GUILDINVITE;
+        public override MessageId MessageId => MessageId.GUILDINVITE;
 
         public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
         {

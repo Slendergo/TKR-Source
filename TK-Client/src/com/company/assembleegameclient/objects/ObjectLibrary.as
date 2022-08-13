@@ -127,9 +127,7 @@ public class ObjectLibrary
                }
             }
             trace(id);
-            if(id == "Abominable Snowman"){
-               trace(id);
-            }
+
             typeToTextureData_[objectType] = new TextureData(objectXML);
             if(objectXML.hasOwnProperty("Top"))
             {

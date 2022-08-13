@@ -73,7 +73,7 @@ public class StatusBar extends Sprite
 
       private var disableText_:Boolean = false;
 
-      public function StatusBar(w:int, h:int, color:uint, backColor:uint, label:String = null, forceNumText:Boolean = false, isProgressBar:Boolean = false, vertical:Boolean = false, size:int = 14)
+      public function StatusBar(w:int, h:int, color:uint, backColor:uint, label:String = null, forceNumText:Boolean = false, isProgressBar:Boolean = false, vertical:Boolean = false, size:int = 14, visibleLabel:Boolean = false)
       {
          this.isVert_ = vertical;
          this.colorSprite = new Sprite();
@@ -94,6 +94,7 @@ public class StatusBar extends Sprite
             this.labelText_.updateMetrics();
             this.labelText_.y = -3;
             this.labelText_.filters = [new DropShadowFilter(0,0,0)];
+            this.labelText_.visible = visibleLabel;
             addChild(this.labelText_);
          }
          this.valueText_ = new SimpleText(size,16777215,false,0,0);
@@ -134,6 +135,10 @@ public class StatusBar extends Sprite
             this.boostText_.x = -3;
             this.boostText_.rotation = 270;
          }
+      }
+
+      public function setBarColor(color:uint):void{
+         this.color_ = color;
       }
 
       public function disableText(value:Boolean):void{

@@ -13,8 +13,8 @@ public class EssenceGauge extends Sprite
 {
     public var gague_:StatusBar;
 
-    private var maxCapacity_:int;
-    private var currentCapacity_:int;
+    public var maxCapacity_:int;
+    public var currentCapacity_:int;
 
     public function EssenceGauge()
     {

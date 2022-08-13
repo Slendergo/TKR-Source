@@ -54,13 +54,15 @@ public class EssenceView extends ModalPopup {
 
     public var slots_:Vector.<TalismanSlot>;
 
+    public var editingSlot_:TalismanSlot;
+
     public function EssenceView(gs:GameSprite, go:GameObject) {
         this.gs_ = gs;
         this.gameObject = go;
         super(600, 425, "Talisman Essence");
 
         this.essenceGague_ = new EssenceGauge();
-        this.essenceGague_.setCapacity(32000);
+        this.essenceGague_.setCapacity(10000);
         this.essenceGague_.setMaxCapacity(32000);
         this.essenceGague_.x = 16;
         this.essenceGague_.y = 16;
@@ -78,11 +80,12 @@ public class EssenceView extends ModalPopup {
         this.sprite_.addChild(this.slotsContainer_);
         addChild(this.sprite_);
 
+        // todo load from the xml
         this.slots_ = new Vector.<TalismanSlot>();
-        for(var i = 0; i < 32; i++)
+        for(var i = 0; i < 13; i++)
         {
-            var slot:TalismanSlot = new TalismanSlot(152, 96, i);
-            slot.x = 96 + 72 + slot.w_ * int(i % 3) + 70 - slot.width;
+            var slot:TalismanSlot = new TalismanSlot(this,152, 96, i);
+            slot.x = 114 + 72 + slot.w_ * int(i % 3) + 70 - slot.width;
             slot.y = 16 + slot.h_ * int(i / 3);
             this.slotsContainer_.addChild(slot);
 
@@ -91,9 +94,16 @@ public class EssenceView extends ModalPopup {
             }
             slot.setLevel(i % 20);
 
-            slot.setExp(Math.random() * 512);
-            slot.setExpGoal(512);
+            slot.setExp(0);
+            slot.setExpGoal(1600);
 
+            slot.disable();
+            if(i < 3){
+                slot.enable();
+                slot.setTier(i);
+                slot.setIconType("Talisman of Looting");
+                slot.unlocked_ = true;
+            }
             this.slots_.push(slot);
         }
 
@@ -126,14 +136,31 @@ public class EssenceView extends ModalPopup {
         this.addEventListener(Event.ENTER_FRAME, this.onEnterFrame);
     }
 
+    public function editSlot(slot:TalismanSlot):void
+    {
+        if(this.editingSlot_ != null){
+            if(this.editingSlot_.unlocked_) {
+                this.editingSlot_.enable();
+            }
+            else{
+                this.editingSlot_.disable();
+            }
+        }
+        this.editingSlot_ = slot;
+        if(this.editingSlot_ != null){
+            this.editingSlot_.edit();
+        }
+    }
+
 
     private function onResultScrollChanged(event:Event) : void
     {
         this.slotsContainer_.y = -this.slotsScrollBar_.pos() * (this.slotsContainer_.height - 400);
     }
 
-    public function onEnterFrame(_arg1:Event):void{
-        this.essenceGague_.draw();
+    public function onEnterFrame(_arg1:Event):void
+    {
+        this.draw();
     }
 
     public function onClose(arg1:Event):void {
@@ -142,10 +169,13 @@ public class EssenceView extends ModalPopup {
     }
 
     public function draw():void {
-        this.essenceGague_.draw();
+
+        var count:int = 0;
         for (var i:int = 0; i < this.slots_.length; i++) {
             this.slots_[i].draw();
+            count += this.slots_[i].delta_;
         }
+        this.essenceGague_.draw();
     }
 }
 }

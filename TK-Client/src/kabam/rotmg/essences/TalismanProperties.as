@@ -29,9 +29,9 @@ public class TalismanProperties
 
 class TalismanTier
 {
-    public var type_:int = 0;
+    public var tier_:int = 0;
 
     public function TalismanTier(xml:XML) {
-
+        this.tier_ = xml.@tier;
     }
 }

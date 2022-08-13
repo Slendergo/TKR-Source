@@ -51,6 +51,7 @@
         ShurikenAbilityDamaging,
         ShurikenAbilityBerserk,
         ResetSkillTree,
-        GenericActivate
+        GenericActivate,
+        UnlockTalisman
     }
 }

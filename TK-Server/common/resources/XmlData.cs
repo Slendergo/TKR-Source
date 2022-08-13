@@ -33,7 +33,8 @@ namespace common.resources
         private readonly Dictionary<string, byte[]> WorldDataCache = new Dictionary<string, byte[]>();
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
-        public TalismanDesc TalismanDesc { get; private set; }
+        public Dictionary<int, TalismanDesc> Talismans { get; private set; } = new Dictionary<int, TalismanDesc>();
+
         public ItemDusts ItemDusts { get; private set; }
 
         public XElement ObjectCombinedXML = new XElement("Objects");
@@ -225,7 +226,11 @@ namespace common.resources
             { 
                 TalismansCombinedXML = root;
 
-                TalismanDesc = new TalismanDesc(root);
+                foreach (var e in root.Elements("Talisman"))
+                {
+                    var desc = new TalismanDesc(e);
+                    Talismans.Add(desc.Type, desc);
+                }
                 return;
             }
 

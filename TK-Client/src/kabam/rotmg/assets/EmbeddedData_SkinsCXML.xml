@@ -7,7 +7,6 @@
       <Index>0</Index>
     </AnimatedTexture>
     <PlayerClassType>0x0300</PlayerClassType>
-    <UnlockLevel>0</UnlockLevel>
   </Object>
   <Object type="0x0343" id="Robin Hood">
     <Skin />
@@ -17,7 +16,6 @@
       <Index>1</Index>
     </AnimatedTexture>
     <PlayerClassType>0x0307</PlayerClassType>
-    <UnlockLevel>0</UnlockLevel>
   </Object>
   <Object type="0x0344" id="Merlin">
     <Skin />
@@ -27,7 +25,6 @@
       <Index>2</Index>
     </AnimatedTexture>
     <PlayerClassType>0x030e</PlayerClassType>
-    <UnlockLevel>0</UnlockLevel>
   </Object>
   <Object type="0x0345" id="Traditional">
     <Skin />
@@ -37,7 +34,6 @@
       <Index>3</Index>
     </AnimatedTexture>
     <PlayerClassType>0x0310</PlayerClassType>
-    <UnlockLevel>0</UnlockLevel>
   </Object>
   <Object type="0x0346" id="Juggernaut">
     <Skin />
@@ -47,7 +43,6 @@
       <Index>4</Index>
     </AnimatedTexture>
     <PlayerClassType>0x031d</PlayerClassType>
-    <UnlockLevel>0</UnlockLevel>
   </Object>
   <Object type="0x0347" id="Knight of the Round">
     <Skin />
@@ -57,7 +52,6 @@
       <Index>5</Index>
     </AnimatedTexture>
     <PlayerClassType>0x031e</PlayerClassType>
-    <UnlockLevel>0</UnlockLevel>
   </Object>
   <Object type="0x0348" id="Decorated Paladin">
     <Skin />
@@ -67,7 +61,6 @@
       <Index>6</Index>
     </AnimatedTexture>
     <PlayerClassType>0x031f</PlayerClassType>
-    <UnlockLevel>0</UnlockLevel>
   </Object>
   <Object type="0x0349" id="Stealth">
     <Skin />
@@ -77,7 +70,6 @@
       <Index>7</Index>
     </AnimatedTexture>
     <PlayerClassType>0x0320</PlayerClassType>
-    <UnlockLevel>0</UnlockLevel>
   </Object>
   <Object type="0x034a" id="Death Mage">
     <Skin />
@@ -87,7 +79,6 @@
       <Index>8</Index>
     </AnimatedTexture>
     <PlayerClassType>0x0321</PlayerClassType>
-    <UnlockLevel>0</UnlockLevel>
   </Object>
   <Object type="0x034b" id="Amazonian">
     <Skin />
@@ -97,7 +88,6 @@
       <Index>9</Index>
     </AnimatedTexture>
     <PlayerClassType>0x0322</PlayerClassType>
-    <UnlockLevel>0</UnlockLevel>
   </Object>
   <Object type="0x034c" id="Seer">
     <Skin />
@@ -107,7 +97,6 @@
       <Index>10</Index>
     </AnimatedTexture>
     <PlayerClassType>0x0323</PlayerClassType>
-    <UnlockLevel>0</UnlockLevel>
   </Object>
   <Object type="0x034d" id="Loki">
     <Skin />
@@ -117,7 +106,6 @@
       <Index>11</Index>
     </AnimatedTexture>
     <PlayerClassType>0x0324</PlayerClassType>
-    <UnlockLevel>0</UnlockLevel>
   </Object>
   <Object type="0x034e" id="Warlock">
     <Skin />
@@ -127,7 +115,6 @@
       <Index>12</Index>
     </AnimatedTexture>
     <PlayerClassType>0x0325</PlayerClassType>
-    <UnlockLevel>0</UnlockLevel>
   </Object>
   <Object type="0x034f" id="Shadow">
     <Skin />
@@ -137,7 +124,6 @@
       <Index>13</Index>
     </AnimatedTexture>
     <PlayerClassType>0x0326</PlayerClassType>
-    <UnlockLevel>0</UnlockLevel>
   </Object>
   <Object type="0x0350" id="Elder Wizard">
     <Skin />
@@ -147,7 +133,6 @@
       <Index>14</Index>
     </AnimatedTexture>
     <PlayerClassType>0x030e</PlayerClassType>
-    <UnlockLevel>0</UnlockLevel>
   </Object>
   <Object type="0x0351" id="Robed Priest">
     <Skin />
@@ -157,7 +142,6 @@
       <Index>15</Index>
     </AnimatedTexture>
     <PlayerClassType>0x0310</PlayerClassType>
-    <UnlockLevel>0</UnlockLevel>
   </Object>
   <Object type="0x0352" id="Santa">
     <Skin />
@@ -167,7 +151,6 @@
       <Index>16</Index>
     </AnimatedTexture>
     <PlayerClassType>0x030e</PlayerClassType>
-    <UnlockLevel>0</UnlockLevel>
   </Object>
   <Object type="0x0353" id="Little Helper">
     <Skin />
@@ -177,7 +160,6 @@
       <Index>17</Index>
     </AnimatedTexture>
     <PlayerClassType>0x0307</PlayerClassType>
-    <UnlockLevel>0</UnlockLevel>
   </Object>
   <Object type="0x0354" id="Father Time">
     <Skin />
@@ -187,7 +169,6 @@
       <Index>18</Index>
     </AnimatedTexture>
     <PlayerClassType>0x0310</PlayerClassType>
-    <UnlockLevel>0</UnlockLevel>
   </Object>
   <Object type="0x0355" id="Down Under">
     <Skin />
@@ -197,7 +178,6 @@
       <Index>19</Index>
     </AnimatedTexture>
     <PlayerClassType>0x031d</PlayerClassType>
-    <UnlockLevel>0</UnlockLevel>
   </Object>
   <Object type="0x0356" id="Founding Father">
     <Skin />
@@ -207,7 +187,6 @@
       <Index>20</Index>
     </AnimatedTexture>
     <PlayerClassType>0x031f</PlayerClassType>
-    <UnlockLevel>0</UnlockLevel>
   </Object>
   <Object type="0x0357" id="Cupid">
     <Skin />
@@ -217,7 +196,6 @@
       <Index>21</Index>
     </AnimatedTexture>
     <PlayerClassType>0x0307</PlayerClassType>
-    <UnlockLevel>0</UnlockLevel>
   </Object>
   <Object type="0x0387" id="Slime Knight">
     <Skin />
@@ -1763,6 +1741,5 @@
       <Index>165</Index>
     </AnimatedTexture>
     <PlayerClassType>0x0326</PlayerClassType>
-    <UnlockLevel>0</UnlockLevel>
   </Object>
 </Objects>

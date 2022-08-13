@@ -131,8 +131,8 @@ public class EssenceView extends ModalPopup {
         this.upgrade_.y = 425 - this.upgrade_.height - 4;
         addChild(this.upgrade_);
 
-        this.x = this.width / 2 - 235;
-        this.y = this.height / 2 - 230;
+        this.x = this.width / 2 - 255;
+        this.y = this.height / 2 - 195;
 
         this.draw();
 
@@ -141,6 +141,9 @@ public class EssenceView extends ModalPopup {
 
     public function editSlot(slot:TalismanSlot):void
     {
+        if(this.editingSlot_ != null){
+            this.editingSlot_.enable();
+        }
         this.editingSlot_ = slot;
         if(this.editingSlot_ != null){
             this.editingSlot_.edit();

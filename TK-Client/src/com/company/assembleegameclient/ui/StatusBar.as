@@ -73,7 +73,7 @@ public class StatusBar extends Sprite
 
       private var disableText_:Boolean = false;
 
-      public function StatusBar(w:int, h:int, color:uint, backColor:uint, label:String = null, forceNumText:Boolean = false, isProgressBar:Boolean = false, vertical:Boolean = false, size:int = 14, visibleLabel:Boolean = false)
+      public function StatusBar(w:int, h:int, color:uint, backColor:uint, label:String = null, forceNumText:Boolean = false, isProgressBar:Boolean = false, vertical:Boolean = false, size:int = 14, visibleLabel:Boolean = true)
       {
          this.isVert_ = vertical;
          this.colorSprite = new Sprite();

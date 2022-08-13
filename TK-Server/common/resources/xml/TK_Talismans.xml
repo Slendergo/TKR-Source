@@ -6,15 +6,15 @@
 		<TierUpgradeCost>5000</TierUpgradeCost>
 		<CostMultiplier>1.5</CostMultiplier>
 		<MaxLevels>10</MaxLevels>
-		<Tier id="0">
+		<Tier tier="0">
 			<StatType type="0" scale="perLevel" amount="5"/>
 			<StatType type="3" scale="perLevel" amount="-5"/>
 		</Tier>
-		<Tier id="1">
+		<Tier tier="1">
 			<StatType type="0" scale="perLevel" amount="7"/>
 			<StatType type="3" scale="perLevel" amount="-5"/>
 		</Tier>
-		<Tier id="2">
+		<Tier tier="2">
 			<StatType type="0" scale="perLevel" amount="7"/>
 			<StatType type="3" scale="perLevel" amount="-3"/>
 		</Tier>
@@ -26,15 +26,15 @@
 		<TierUpgradeCost>5000</TierUpgradeCost>
 		<CostMultiplier>1.5</CostMultiplier>
 		<MaxLevels>10</MaxLevels>
-		<Tier id="0">
+		<Tier tier="0">
 			<StatType type="0" scale="perLevel" amount="5"/>
 			<StatType type="3" scale="perLevel" amount="-5"/>
 		</Tier>
-		<Tier id="1">
+		<Tier tier="1">
 			<StatType type="0" scale="perLevel" amount="7"/>
 			<StatType type="3" scale="perLevel" amount="-5"/>
 		</Tier>
-		<Tier id="2">
+		<Tier tier="2">
 			<StatType type="0" scale="perLevel" amount="7"/>
 			<StatType type="3" scale="perLevel" amount="-3"/>
 		</Tier>
@@ -46,15 +46,15 @@
 		<TierUpgradeCost>5000</TierUpgradeCost>
 		<CostMultiplier>1.5</CostMultiplier>
 		<MaxLevels>10</MaxLevels>
-		<Tier id="0">
+		<Tier tier="0">
 			<StatType type="0" scale="perLevel" amount="5"/>
 			<StatType type="3" scale="perLevel" amount="-5"/>
 		</Tier>
-		<Tier id="1">
+		<Tier tier="1">
 			<StatType type="0" scale="perLevel" amount="7"/>
 			<StatType type="3" scale="perLevel" amount="-5"/>
 		</Tier>
-		<Tier id="2">
+		<Tier tier="2">
 			<StatType type="0" scale="perLevel" amount="7"/>
 			<StatType type="3" scale="perLevel" amount="-3"/>
 		</Tier>

@@ -29,18 +29,18 @@ namespace common.resources
             foreach (var te in e.Elements("Tier"))
             {
                 var tierDesc = new TalismanTierDesc(te);
-                Tiers.Add(tierDesc.Type, tierDesc);
+                Tiers.Add(tierDesc.Tier, tierDesc);
             }
         }
     }
 
     public class TalismanTierDesc
     {
-        public readonly int Type;
+        public readonly int Tier;
 
         public TalismanTierDesc(XElement e)
         {
-            Type = e.GetAttribute<int>("type");
+            Tier = e.GetAttribute<int>("tier");
 
         }
     }

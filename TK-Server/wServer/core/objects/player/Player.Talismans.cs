@@ -7,27 +7,33 @@ namespace wServer.core.objects
     {
         private bool SendTalismanData = true;
 
+        private Dictionary<int, TalismanData> TalismanDatas = new Dictionary<int, TalismanData>();
+
         // todo
 
         public void HandleTalismans(ref TickTime time)
         {
             if (SendTalismanData && PlayerUpdate.TickId == 1)
             {
+                LoadTalismanData();
                 UpdateTalismanData();
                 SendTalismanData = false;
             }
         }
 
+        private void LoadTalismanData()
+        {
+            var talismans = GameServer.Database.GetTalismansFromCharacter(Client.Character.CharId);
+
+            foreach (var talisman in talismans)
+                TalismanDatas.Add(talisman.Type, new TalismanData(talisman));
+        }
+
         private void UpdateTalismanData()
         {
-            var talismanDataA = new TalismanData(0, 3, 100, 1000, 0);
-            var talismanDataB = new TalismanData(1, 5, 200, 2000, 1);
-            var talismanDataC = new TalismanData(2, 8, 300, 3000, 2);
-
             var data = new TalismanEssenceData();
-            data.Talismans.Add(talismanDataA);
-            data.Talismans.Add(talismanDataB);
-            data.Talismans.Add(talismanDataC);
+            foreach (var talisman in TalismanDatas.Values)
+                data.Talismans.Add(talisman);
             Client.SendPacket(data);
         }
     }

@@ -9,6 +9,7 @@ using wServer.core.worlds.logic;
 using wServer.networking;
 using wServer.networking.packets;
 using wServer.networking.packets.outgoing;
+using wServer.networking.packets.outgoing.talisman;
 using wServer.utils;
 
 namespace wServer.core.objects
@@ -581,11 +582,41 @@ namespace wServer.core.objects
                         AEBackpack(time, item, target, slot, objId, eff);
                         break;
 
+                    case ActivateEffects.UnlockTalisman:
+                        AEUnlockTalisman(time, item, target, slot, objId, eff);
+                        break;
+
                     default:
                         SLogger.Instance.Warn("Activate effect {0} not implemented.", eff.Effect);
                         break;
                 }
             }
+        }
+
+        private void AEUnlockTalisman(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
+        {
+            if(!GameServer.Resources.GameData.Talismans.TryGetValue(eff.Type, out var talismanDesc))
+            {
+                SendError("Error unable to consume!");
+                Inventory[slot] = item;
+                return;
+            }
+
+            var characterId = Client.Character.CharId;
+
+            if (GameServer.Database.HasTalismanOnCharacter(characterId, eff.Type)) {
+                SendInfo("You have already unlocked this talisman!");
+                Inventory[slot] = item;
+                return;
+            }
+
+            GameServer.Database.AddTalismanToCharacter(characterId, eff.Type, 0, 0, talismanDesc.BaseUpgradeCost, 0);
+
+            var newTalismanInfo = new TalismanData(eff.Type, 0, 0, talismanDesc.BaseUpgradeCost, 0);
+
+            var data = new TalismanEssenceData();
+            data.Talismans.Add(newTalismanInfo);
+            Client.SendPacket(data);
         }
 
         private void AEAddFame(TickTime time, Item item, Position target, ActivateEffect eff)

@@ -1,4 +1,5 @@
 ﻿using common;
+using common.database.info;
 using System.Collections.Generic;
 
 namespace wServer.networking.packets.outgoing.talisman
@@ -10,6 +11,15 @@ namespace wServer.networking.packets.outgoing.talisman
         public int CurrentXP { get; private set; }
         public int ExpGoal { get; private set; }
         public byte Tier { get; private set; }
+
+        public TalismanData(DbTalismanEntry entry)
+        {
+            Type = entry.Type;
+            Level = entry.Level;
+            CurrentXP = entry.Exp;
+            ExpGoal = entry.Goal;
+            Tier = entry.Tier;
+        }
 
         public TalismanData(byte type, byte level, int xp, int goal, byte tier)
         {

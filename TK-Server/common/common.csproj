@@ -141,10 +141,12 @@
   <ItemGroup>
     <Compile Include="database\DbSpecialVault.cs" />
     <Compile Include="database\GuildCreateStatus.cs" />
+    <Compile Include="database\DbTalismanEntry.cs" />
     <Compile Include="database\info\AccountInfo.cs" />
     <Compile Include="database\info\CharacterInfo.cs" />
     <Compile Include="database\info\DeathInfo.cs" />
     <Compile Include="database\ItemData.cs" />
+    <Compile Include="database\DbTalisman.cs" />
     <Compile Include="database\status\AccountRegisterStatus.cs" />
     <Compile Include="database\status\AddGuildMemberStatus.cs" />
     <Compile Include="database\status\CreateCharacterStatus.cs" />

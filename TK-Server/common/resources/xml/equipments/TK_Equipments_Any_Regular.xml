@@ -7632,24 +7632,29 @@
     <Activate>SpecialDust</Activate>
     <BagType>7</BagType>
   </Object>
+	
+	
   <Object type="0x5060" id="Talisman of Looting">
     <Class>Equipment</Class>
     <Item />
-    <HoldableItem />
+	<InvUse />
     <ExtraTooltipData>
-		<EffectInfo name="Looting:" description="Holding this item gives you a 2% increased drop chance" />
-		<EffectInfo name="Drawbacks:" description="(-0.05% less effect per extra talisman held)" />
+		<EffectInfo name="" description="Consume the talisman to unlock its potential" />
 	</ExtraTooltipData>
     <Texture>
       <File>CustomObj</File>
       <Index>0x7d</Index>
     </Texture>
     <SlotType>10</SlotType>
-    <Description>This Talisman contains a fire which give you % of Looting.</Description>
-    <Sound>use_potion</Sound>
-    <SNormal />
+    <Description>This talisman contains powers of looting.</Description>
+	<Sound>use_potion</Sound>
+	<Activate type="0x00">UnlockTalisman</Activate>
+	<Consumable />
+	<Potion />
     <BagType>3</BagType>
   </Object>
+	
+	
   <Object type="0x5038" id="Cocktail of Vitality">
     <DisplayId>Cocktail of Vitality</DisplayId>
     <Class>Equipment</Class>

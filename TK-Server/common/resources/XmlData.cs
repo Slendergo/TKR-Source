@@ -28,15 +28,19 @@ namespace common.resources
         public Dictionary<ushort, TileDesc> Tiles = new Dictionary<ushort, TileDesc>();
         public Dictionary<ushort, XElement> TileTypeToElement = new Dictionary<ushort, XElement>();
         public Dictionary<ushort, string> TileTypeToId = new Dictionary<ushort, string>();
+
         private readonly Dictionary<string, WorldResource> Worlds = new Dictionary<string, WorldResource>();
         private readonly Dictionary<string, byte[]> WorldDataCache = new Dictionary<string, byte[]>();
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+
+        public TalismanDesc TalismanDesc { get; private set; }
         public ItemDusts ItemDusts { get; private set; }
 
         public XElement ObjectCombinedXML = new XElement("Objects");
         public XElement CombinedXMLPlayers = new XElement("Objects");
         public XElement GroundCombinedXML = new XElement("Grounds");
         public XElement SkinsCombinedXML = new XElement("Objects");
+        public XElement TalismansCombinedXML = null;
 
         private void AddGrounds(XElement root, bool exportXmls = false) => root.Elements("Ground").Select(e =>
         {
@@ -65,7 +69,6 @@ namespace common.resources
         {
             foreach (var e in root.Elements("Object"))
             {
-
                 if (exportXmls)
                 {
                     if (e.Element("Player") != null)
@@ -218,7 +221,15 @@ namespace common.resources
         
         private void ProcessXml(XElement root, bool exportXmls = false)
         {
-            if(root.Name.LocalName == "Dusts") 
+            if (root.Name.LocalName == "Talismans")
+            { 
+                TalismansCombinedXML = root;
+
+                TalismanDesc = new TalismanDesc(root);
+                return;
+            }
+
+            if (root.Name.LocalName == "Dusts") 
             {
                 ItemDusts = new ItemDusts(root);
                 return;

@@ -27,6 +27,8 @@ import io.decagames.rotmg.ui.defaults.DefaultLabelFormat;
 import io.decagames.rotmg.ui.sliceScaling.SliceScalingBitmap;
 import io.decagames.rotmg.ui.texture.TextureParser;
 
+import kabam.rotmg.essences.TalismanProperties;
+
 import kabam.rotmg.essences.view.EssenceView;
 
 public class TalismanSlot extends Sprite {
@@ -34,14 +36,12 @@ public class TalismanSlot extends Sprite {
     public static const MAX_LEVEL = 10;
     public static const MAX_TIER = 3;
 
-    public var slot_:int;
     public var level_:int;
     public var tier_:int;
     public var current_:int;
-    private var iconType_:int;
     public var max_:int;
 
-    private var essenceView_:EssenceView;
+    private var view_:EssenceView;
     public var w_:int;
     public var h_:int;
     private var icon_:Bitmap;
@@ -69,26 +69,35 @@ public class TalismanSlot extends Sprite {
     private var labelText_:SimpleText;
     private var levelText_:SimpleText;
 
-    public function TalismanSlot(essenceView:EssenceView, w:int, h:int, slot:int) {
-        this.essenceView_ = essenceView;
+    private var props_:TalismanProperties;
+
+    public function TalismanSlot(props:TalismanProperties, w:int, h:int, view:EssenceView) {
+        this.props_ = props;
+        this.view_ = view;
         this.w_ = w;
         this.h_ = h;
-        this.slot_ = slot;
 
         this.icon_ = new Bitmap();
         this.icon_.x = -4;
         this.icon_.y = 0;
+        var iconType:int = ObjectLibrary.idToType_[this.props_.itemAssociatedWith_];
+        this.icon_.bitmapData = ObjectLibrary.getRedrawnTextureFromType(iconType, 70, true);
         addChild(this.icon_)
 
         this.labelText_ = new SimpleText(12, 0xFFFFFF,false,100,0);
         this.labelText_.setBold(true);
-        this.labelText_.htmlText = "<p align=\"center\">Talisman of Looting</p>";
+        this.labelText_.htmlText = "<p align=\"center\">" + this.props_.name_ + "</p>";
         this.labelText_.autoSize = TextFieldAutoSize.CENTER;
         this.labelText_.wordWrap = true;
         this.labelText_.multiline = true;
         this.labelText_.filters = [new DropShadowFilter(0,0,0)];
-        this.labelText_.x = 40;
-        this.labelText_.y = 8;
+        if(this.labelText_.height > 20){
+            this.labelText_.x = 40;
+            this.labelText_.y = 8;
+        }else{
+            this.labelText_.x = 44;
+            this.labelText_.y = 16;
+        }
         addChild(this.labelText_);
 
         this.expBar_ = new StatusBar(100, 12, 5931045,0x363636, "Lvl X", false, false, false, 10, false);
@@ -179,10 +188,10 @@ public class TalismanSlot extends Sprite {
 
         this.levelText_ = new SimpleText(10, 0xFFFFFF,false,16,0);
         this.levelText_.setBold(true);
-        this.levelText_.htmlText = "X";
+        this.levelText_.htmlText = "0";
         this.levelText_.autoSize = TextFieldAutoSize.CENTER;
         this.levelText_.filters = [new DropShadowFilter(0,0,0)];
-        this.levelText_.x = 29;
+        this.levelText_.x = 32;
         this.levelText_.y = 29;
         this.levelIcon_.addChild(this.levelText_);
 
@@ -195,7 +204,7 @@ public class TalismanSlot extends Sprite {
             return;
         }
         this.delta_ = 0;
-        this.essenceView_.editSlot(null);
+        this.view_.editSlot(null);
     }
 
     private function onModifyClick(event:MouseEvent):void
@@ -203,7 +212,7 @@ public class TalismanSlot extends Sprite {
         if(!this.enabled_ || this.editing_) {
             return;
         }
-        this.essenceView_.editSlot(this);
+        this.view_.editSlot(this);
     }
 
     private function onUpArrow(event:MouseEvent):void
@@ -265,11 +274,6 @@ public class TalismanSlot extends Sprite {
     {
         var sprite:Sprite = event.target as Sprite;
         sprite.transform.colorTransform = new ColorTransform(1,1,1);
-    }
-
-    public function setIconType(idName:String):void{
-        this.iconType_ = ObjectLibrary.idToType_[idName];
-        this.icon_.bitmapData = ObjectLibrary.getRedrawnTextureFromType(this.iconType_, 70, true);
     }
 
     public function setExp(exp:int):void {

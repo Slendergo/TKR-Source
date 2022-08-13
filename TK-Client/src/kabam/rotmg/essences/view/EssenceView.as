@@ -27,6 +27,8 @@ import io.decagames.rotmg.ui.texture.TextureParser;
 import io.decagames.rotmg.ui.defaults.DefaultLabelFormat;
 
 import kabam.rotmg.core.StaticInjectorContext;
+import kabam.rotmg.essences.TalismanProperties;
+import kabam.rotmg.essences.TalismanLibrary;
 import kabam.rotmg.essences.view.components.EssenceGauge;
 import kabam.rotmg.essences.view.components.TalismanSlot;
 import kabam.rotmg.game.model.GameModel;
@@ -81,29 +83,19 @@ public class EssenceView extends ModalPopup {
         addChild(this.sprite_);
 
         // todo load from the xml
+
+        var talismans:Vector.<TalismanProperties> = TalismanLibrary.getTalismans();
+
         this.slots_ = new Vector.<TalismanSlot>();
-        for(var i = 0; i < 13; i++)
+        for(var i = 0; i < talismans.length; i++)
         {
-            var slot:TalismanSlot = new TalismanSlot(this,152, 96, i);
+            var slot:TalismanSlot = new TalismanSlot(talismans[i], 152, 96, this);
             slot.x = 114 + 72 + slot.w_ * int(i % 3) + 70 - slot.width;
             slot.y = 16 + slot.h_ * int(i / 3);
             this.slotsContainer_.addChild(slot);
 
-            if(i % 2 == 0){
-                slot.setTier(1);
-            }
-            slot.setLevel(i % 20);
-
-            slot.setExp(0);
-            slot.setExpGoal(1600);
-
             slot.disable();
-            if(i < 3){
-                slot.enable();
-                slot.setTier(i);
-                slot.setIconType("Talisman of Looting");
-                slot.unlocked_ = true;
-            }
+
             this.slots_.push(slot);
         }
 

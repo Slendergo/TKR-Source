@@ -318,7 +318,7 @@ namespace common.database
         public void AddTalismanToCharacter(int characterId, byte type, byte level, int exp, int goal, byte tier)
         {
             var talisman = new DbTalisman(_db, characterId, type);
-            talisman.Unlock(type, level, exp, goal, tier);
+            talisman.Unlock(type, level, exp, goal, tier, false);
             talisman.FlushAsync();
         }
 
@@ -341,12 +341,19 @@ namespace common.database
             return !entry.IsNull;
         }
 
-        public DbTalisman UpdateTalismanToCharacter(int characterId, byte type, byte level, int exp, int goal, byte tier)
+        public void UpdateTalismanToCharacter(int characterId, byte type, byte level, int exp, int goal, byte tier, bool active)
         {
             var talisman = new DbTalisman(_db, characterId, type);
-            talisman.Update(type, level, exp, goal, tier);
+            talisman.Update(type, level, exp, goal, tier, active);
             talisman.FlushAsync();
-            return talisman;
+        }
+
+        public void SaveTalismansToCharacter(int characterId, List<DbTalismanEntry> talismans)
+        {
+            var talisman = new DbTalisman(_db, characterId);
+            foreach(var t in talismans)
+                talisman.Update(t);
+            talisman.FlushAsync();
         }
 
         public DbCreateStatus CreateCharacter(DbAccount acc, ushort type, ushort skinType, out DbChar character)

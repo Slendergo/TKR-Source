@@ -25,7 +25,7 @@ namespace common.database.model
             Init(database, $"talismans.{characterId}", type?.ToString(), isAsync);
         }
 
-        public void Unlock(byte type, byte level, int exp, int goal, byte tier)
+        public void Unlock(byte type, byte level, int exp, int goal, byte tier, bool active)
         {
             var field = type.ToString();
             var json = GetValue<string>(field);
@@ -37,11 +37,14 @@ namespace common.database.model
                     Level = level,
                     Exp = exp,
                     Goal = goal,
-                    Tier = tier
+                    Tier = tier,
+                    Active = active
                 }));
         }
 
-        public void Update(byte type, byte level, int exp, int goal, byte tier)
+        public void Update(DbTalismanEntry entry) => Update(entry.Type, entry.Level, entry.Exp, entry.Goal, entry.Tier, entry.Active);
+
+        public void Update(byte type, byte level, int exp, int goal, byte tier, bool active)
         {
             var field = type.ToString();
             var json = GetValue<string>(field);
@@ -53,7 +56,8 @@ namespace common.database.model
                     Level = level,
                     Exp = exp,
                     Goal = goal,
-                    Tier = tier
+                    Tier = tier,
+                    Active = active
                 }));
             else
             {
@@ -63,6 +67,7 @@ namespace common.database.model
                 entry.Exp = exp;
                 entry.Goal = goal;
                 entry.Tier = tier;
+                entry.Active = active;
                 SetValue(field, JsonConvert.SerializeObject(entry));
             }
         }

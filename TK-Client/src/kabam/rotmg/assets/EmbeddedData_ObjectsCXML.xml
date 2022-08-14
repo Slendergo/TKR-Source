@@ -43612,38 +43612,38 @@
     <Class>Equipment</Class>
     <DisplayId>Severed Marble Hand</DisplayId>
     <Item />
+    <InvUse />
     <Texture>
       <File>CustomObj</File>
       <Index>0x1c</Index>
     </Texture>
-    <HoldableItem />
-    <SetStatsNoStack />
-    <StatSetNoStack>0</StatSetNoStack>
-    <AmountSetNoStack>100</AmountSetNoStack>
     <SlotType>10</SlotType>
-    <Description>A sundered chunk from the Marble Colossus. So long as it's held, the power of the Colossus will flow through you.</Description>
-    <ExtraTooltipData>
-      <EffectInfo name="Marble Power" description="While holding this item, you will be immune to Unstable." />
-      <EffectInfo name="Immune to Unstable." description="" />
-      <EffectInfo name="On Handling" description="While holding this, it will give you +100 HP." />
-    </ExtraTooltipData>
+    <Description>A sundered chunk from the Marble Colossus this item grants power to the wielder</Description>
+    <Sound>use_potion</Sound>
+    <Activate type="0x01">UnlockTalisman</Activate>
     <Legendary />
+    <Consumable />
+    <Potion />
     <BagType>7</BagType>
   </Object>
   <Object type="0x50ec" id="Talisman of Luck">
     <Class>Equipment</Class>
     <Item />
-    <HoldableItem />
+    <InvUse />
     <ExtraTooltipData>
-      <EffectInfo name="Looting:" description="Holding this item gives you 20% loot chance! (One per Inventory). This talisman contains the Power of Luck. So long as it's held, luck will increase." />
+      <EffectInfo name="" description="Consume the talisman to unlock its potential" />
     </ExtraTooltipData>
     <Texture>
       <File>CustomObj</File>
       <Index>0x94</Index>
     </Texture>
     <SlotType>10</SlotType>
-    <Description>This Talisman contain the Power of the Lucky, as long as you hold this, your luck will increase</Description>
+    <Description>This talisman contains powers of luck.</Description>
+    <Sound>use_potion</Sound>
+    <Activate type="0x01">UnlockTalisman</Activate>
     <Legendary />
+    <Consumable />
+    <Potion />
     <BagType>7</BagType>
   </Object>
   <Object type="0x5019" id="Fire Fragment">

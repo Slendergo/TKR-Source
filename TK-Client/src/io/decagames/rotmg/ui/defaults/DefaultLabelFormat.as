@@ -95,12 +95,17 @@ package io.decagames.rotmg.ui.defaults
       {
          createLabelFormat(param1,14,15395562,TextFormatAlign.LEFT);
       }
-      
+
       public static function defaultModalTitle(param1:UILabel) : void
       {
          createLabelFormat(param1,18,16777215,TextFormatAlign.LEFT,false,FilterUtil.getUILabelDropShadowFilter01());
       }
-      
+
+      public static function defaultModalTitleSmaller(param1:UILabel) : void
+      {
+         createLabelFormat(param1,15,16777215,TextFormatAlign.LEFT,false,FilterUtil.getUILabelDropShadowFilter01());
+      }
+
       public static function defaultTextModalText(param1:UILabel) : void
       {
          createLabelFormat(param1,14,16777215,TextFormatAlign.CENTER);

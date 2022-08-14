@@ -187,6 +187,7 @@ import kabam.rotmg.messaging.impl.outgoing.party.JoinParty;
 import kabam.rotmg.messaging.impl.outgoing.party.PartyInvite;
 import kabam.rotmg.messaging.impl.outgoing.potionStorage.PotionStorage;
 import kabam.rotmg.messaging.impl.outgoing.potionStorage.PotionStorage;
+import kabam.rotmg.messaging.impl.outgoing.talisman.TalismanEssenceAction;
 import kabam.rotmg.minimap.control.UpdateGameObjectTileSignal;
 import kabam.rotmg.minimap.control.UpdateGroundTileSignal;
 import kabam.rotmg.minimap.model.UpdateGroundTileVO;
@@ -541,7 +542,7 @@ public class GameServerConnection
          messages.map(USEPOTION).toMessage(UsePotion);
 
          messages.map(TALISMAN_ESSENCE_DATA).toMessage(TalismanEssenceData).toMethod(this.onTalismanEssenceData);
-//         messages.map(TALISMAN_ESSENCE_ACTION).toMessage(TalismanEssenceAction);
+         messages.map(TALISMAN_ESSENCE_ACTION).toMessage(TalismanEssenceAction);
       }
 
       private function unmapMessages() : void {
@@ -677,6 +678,15 @@ public class GameServerConnection
          {
             this.jitterWatcher_ = null;
          }
+      }
+
+      public function talismanAction(actionType:int, type:int, amount:int):void
+      {
+         var action:TalismanEssenceAction = this.messages.require(TALISMAN_ESSENCE_ACTION) as TalismanEssenceAction;
+         action.actionType_ = actionType;
+         action.type_ = type;
+         action.amount_ = amount;
+         this.serverConnection.sendMessage(action);
       }
 
       private function create() : void
@@ -1878,7 +1888,6 @@ public class GameServerConnection
                   break;
 
                case StatData.BASESTAT:
-                  trace(player == null ? "Player Null": "Player Not Null");
                   player.baseStat = value;
                   continue;
                case StatData.POINTS:

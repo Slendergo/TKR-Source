@@ -336,6 +336,8 @@ namespace wServer.core.objects
             {
                 Glow = t.Result && client.Account.GlowColor == 0 ? 0xFF0000 : client.Account.GlowColor;
             });
+
+            LoadTalismanData();
         }
 
         public bool ApplyEffectCooldown(int slot)

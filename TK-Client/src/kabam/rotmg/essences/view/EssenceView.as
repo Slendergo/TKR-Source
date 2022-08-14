@@ -42,10 +42,14 @@ public class EssenceView extends ModalPopup {
     public var gs_:GameSprite;
     public var essenceGague_:EssenceGauge;
     internal var quitButton:SliceScalingButton;
-    internal var player:Player;
+    public var player:Player;
     internal var text_:String;
 
     internal var close:Signal = new Signal();
+    public var addEssence:Signal = new Signal(int, int);
+    public var tierUp:Signal = new Signal(int, int);
+    public var enable:Signal = new Signal(int);
+    public var disable:Signal = new Signal(int);
 
     public var sprite_:Sprite;
     public var slotsContainer_:Sprite;
@@ -95,18 +99,7 @@ public class EssenceView extends ModalPopup {
             this.slots_.push(slot);
         }
 
-        var activeTalismans:Vector.<TalismanModel> = go.getTalismans();
-        for(var i:int = 0; i < activeTalismans.length; i++)
-        {
-            var talisman:TalismanModel = activeTalismans[i];
-
-            var slot:TalismanSlot = this.slots_[talisman.type_];
-            slot.setLevel(talisman.level_);
-            slot.setExp(talisman.xp_);
-            slot.setExpGoal(talisman.goal_);
-            slot.setTier(talisman.tier_);
-            slot.enable();
-        }
+        updateSlots();
 
         if (this.slotsContainer_.height > 400)
         {
@@ -122,12 +115,12 @@ public class EssenceView extends ModalPopup {
         this.header.addButton(this.quitButton, PopupHeader.RIGHT_BUTTON);
         this.quitButton.addEventListener(MouseEvent.CLICK, this.onClose);
 
-        this.upgrade_ = new SliceScalingButton(TextureParser.instance.getSliceScalingBitmap("UI", "generic_green_button"));
-        this.upgrade_.width = 96;
-        this.upgrade_.setLabel("Upgrade", DefaultLabelFormat.defaultModalTitle);
-        this.upgrade_.x = 0;
-        this.upgrade_.y = 425 - this.upgrade_.height - 4;
-        addChild(this.upgrade_);
+//        this.upgrade_ = new SliceScalingButton(TextureParser.instance.getSliceScalingBitmap("UI", "generic_green_button"));
+//        this.upgrade_.width = 96;
+//        this.upgrade_.setLabel("Upgrade", DefaultLabelFormat.defaultModalTitle);
+//        this.upgrade_.x = 0;
+//        this.upgrade_.y = 425 - this.upgrade_.height - 4;
+//        addChild(this.upgrade_);
 
         this.x = this.width / 2 - 255;
         this.y = this.height / 2 - 195;
@@ -164,7 +157,30 @@ public class EssenceView extends ModalPopup {
         this.close.dispatch();
     }
 
+    public function updateSlots():void
+    {
+        var activeTalismans:Vector.<TalismanModel> = this.player.getTalismans();
+        for(var i:int = 0; i < activeTalismans.length; i++)
+        {
+            var talisman:TalismanModel = activeTalismans[i];
+
+            var slot:TalismanSlot = this.slots_[talisman.type_];
+            slot.setLevel(talisman.level_);
+            slot.setExp(talisman.xp_);
+            slot.setExpGoal(talisman.goal_);
+            slot.setTier(talisman.tier_);
+            slot.setActive(talisman.active_);
+            if(!slot.enabled_ && !slot.editing_){
+                slot.enable();
+            }else{
+                slot.modifyVisibilities();
+            }
+        }
+    }
+
     public function draw():void {
+
+        updateSlots();
 
         var count:int = 0;
         for (var i:int = 0; i < this.slots_.length; i++) {

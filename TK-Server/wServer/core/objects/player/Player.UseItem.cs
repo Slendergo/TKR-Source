@@ -595,7 +595,8 @@ namespace wServer.core.objects
 
         private void AEUnlockTalisman(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
-            if(!GameServer.Resources.GameData.Talismans.TryGetValue(eff.Type, out var talismanDesc))
+            var talismanDesc = GameServer.Resources.GameData.GetTalisman(eff.Type);
+            if (talismanDesc == null)
             {
                 SendError("Error unable to consume!");
                 Inventory[slot] = item;
@@ -610,13 +611,11 @@ namespace wServer.core.objects
                 return;
             }
 
-            GameServer.Database.AddTalismanToCharacter(characterId, eff.Type, 0, 0, talismanDesc.BaseUpgradeCost, 0);
+            GameServer.Database.AddTalismanToCharacter(characterId, eff.Type, 1, 0, talismanDesc.BaseUpgradeCost, 0);
 
-            var newTalismanInfo = new TalismanData(eff.Type, 0, 0, talismanDesc.BaseUpgradeCost, 0);
+            var newTalismanInfo = new TalismanData(eff.Type, 1, 0, talismanDesc.BaseUpgradeCost, 0, false);
 
-            var data = new TalismanEssenceData();
-            data.Talismans.Add(newTalismanInfo);
-            Client.SendPacket(data);
+            Client.Player.UnlockTalisman(newTalismanInfo);
         }
 
         private void AEAddFame(TickTime time, Item item, Position target, ActivateEffect eff)

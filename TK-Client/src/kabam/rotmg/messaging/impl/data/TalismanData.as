@@ -9,6 +9,7 @@ package kabam.rotmg.messaging.impl.data
       public var xp_:int;
       public var goal_:int;
       public var tier_:int;
+      public var active_:Boolean;
 
       public function TalismanData()
       {
@@ -22,6 +23,7 @@ package kabam.rotmg.messaging.impl.data
          this.xp_ = data.readInt();
          this.goal_ = data.readInt();
          this.tier_ = data.readByte();
+         this.active_ = data.readBoolean();
       }
       
       public function toString() : String

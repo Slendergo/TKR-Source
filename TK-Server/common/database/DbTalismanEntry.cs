@@ -9,6 +9,7 @@ namespace common.database.info
         public int Exp;
         public int Goal;
         public byte Tier;
+        public bool Active;
         [JsonIgnore] public bool IsNull;
     }
 }

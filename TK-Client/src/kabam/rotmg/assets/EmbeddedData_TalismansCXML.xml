@@ -5,38 +5,32 @@
     <BaseUpgradeCost>1500</BaseUpgradeCost>
     <TierUpgradeCost>5000</TierUpgradeCost>
     <CostMultiplier>1.5</CostMultiplier>
-    <MaxLevels>10</MaxLevels>
-    <Tier id="0">
-      <StatType type="0" scale="perLevel" amount="5" />
-      <StatType type="3" scale="perLevel" amount="-5" />
+    <MaxLevels>5</MaxLevels>
+    <Tier tier="0">
+      <LootBoost amount="0.5" scale="perLevel"/>
     </Tier>
-    <Tier id="1">
-      <StatType type="0" scale="perLevel" amount="7" />
-      <StatType type="3" scale="perLevel" amount="-5" />
+    <Tier tier="1">
+      <LootBoost amount="1.0" scale="perLevel"/>
     </Tier>
-    <Tier id="2">
-      <StatType type="0" scale="perLevel" amount="7" />
-      <StatType type="3" scale="perLevel" amount="-3" />
+    <Tier tier="2">
+      <LootBoost amount="1.5" scale="perLevel"/>
     </Tier>
   </Talisman>
   <Talisman type="0x01">
     <Name>Talisman of Luck</Name>
     <ItemAssociatedWith>Talisman of Luck</ItemAssociatedWith>
-    <BaseUpgradeCost>1500</BaseUpgradeCost>
-    <TierUpgradeCost>5000</TierUpgradeCost>
+    <BaseUpgradeCost>3000</BaseUpgradeCost>
+    <TierUpgradeCost>8000</TierUpgradeCost>
     <CostMultiplier>1.5</CostMultiplier>
-    <MaxLevels>10</MaxLevels>
-    <Tier id="0">
-      <StatType type="0" scale="perLevel" amount="5" />
-      <StatType type="3" scale="perLevel" amount="-5" />
+    <MaxLevels>5</MaxLevels>
+    <Tier tier="0">
+      <LootBoost amount="1.0" scale="perLevel"/>
     </Tier>
-    <Tier id="1">
-      <StatType type="0" scale="perLevel" amount="7" />
-      <StatType type="3" scale="perLevel" amount="-5" />
+    <Tier tier="1">
+      <LootBoost amount="1.5" scale="perLevel"/>
     </Tier>
-    <Tier id="2">
-      <StatType type="0" scale="perLevel" amount="7" />
-      <StatType type="3" scale="perLevel" amount="-3" />
+    <Tier tier="2">
+      <LootBoost amount="2.0" scale="perLevel"/>
     </Tier>
   </Talisman>
   <Talisman type="0x02">
@@ -46,15 +40,15 @@
     <TierUpgradeCost>5000</TierUpgradeCost>
     <CostMultiplier>1.5</CostMultiplier>
     <MaxLevels>10</MaxLevels>
-    <Tier id="0">
+    <Tier tier="0">
       <StatType type="0" scale="perLevel" amount="5" />
       <StatType type="3" scale="perLevel" amount="-5" />
     </Tier>
-    <Tier id="1">
+    <Tier tier="1">
       <StatType type="0" scale="perLevel" amount="7" />
       <StatType type="3" scale="perLevel" amount="-5" />
     </Tier>
-    <Tier id="2">
+    <Tier tier="2">
       <StatType type="0" scale="perLevel" amount="7" />
       <StatType type="3" scale="perLevel" amount="-3" />
     </Tier>

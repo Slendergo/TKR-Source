@@ -112,6 +112,7 @@ namespace wServer.core
             CheckItemsNoStack();
             IncrementStatBoost();
             IncrementSkillBoosts();
+            ApplyTalismanBonus();
 
             for (var i = 0; i < _boost.Length; i++)
                 _boostSV[i].SetValue(_boost[i]);
@@ -136,6 +137,31 @@ namespace wServer.core
 
                 foreach (var b in _player.Inventory[i].StatsBoost)
                     IncrementBoost((StatDataType)b.Key, b.Value);
+            }
+        }
+
+        private void ApplyTalismanBonus()
+        {
+            foreach(var type in _player.ActiveTalismans)
+            {
+                var talisman = _player.GetTalisman(type);
+                if (talisman == null)
+                    throw new Exception($"Unknown talisman type: {type}");
+
+                var desc = _player.GameServer.Resources.GameData.GetTalisman(type);
+                if(desc == null)
+                    throw new Exception($"Unknown talisman desc type: {type}");
+
+                var tierDesc = desc.GetTierDesc(talisman.Tier);
+                if(tierDesc == null)
+                    throw new Exception($"Unknown talisman tier: {talisman.Tier}");
+
+                foreach (var stat in tierDesc.StatTypes)
+                {
+                    // scale by level or by flat value
+                    var scale = stat.ScalesPerLevel ? stat.Amount * talisman.Level : stat.Amount;
+                    IncrementBoost((StatDataType)stat.StatType, scale);
+                }
             }
         }
 

@@ -154,6 +154,7 @@
     <Compile Include="core\commands\CommandManager.cs" />
     <Compile Include="core\ConnectionInfo.cs" />
     <Compile Include="core\GameServer.cs" />
+    <Compile Include="core\net\handlers\talisman\TalismanEssenceActionHandler.cs" />
     <Compile Include="core\objects\inventory\ItemDustPools.cs" />
     <Compile Include="core\objects\inventory\ItemDustWeights.cs" />
     <Compile Include="core\objects\inventory\Inventory.cs" />

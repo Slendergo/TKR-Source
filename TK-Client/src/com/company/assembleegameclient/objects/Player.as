@@ -249,10 +249,6 @@ public class Player extends Character {
         this.talismans_[talismanData.type_] = new TalismanModel(talismanData);
     }
 
-    public function getTalisman(type:int):TalismanModel {
-        return this.talismans_[type];
-    }
-
     public function getTalismans():Vector.<TalismanModel>{
         var talismans:Vector.<TalismanModel> = new Vector.<TalismanModel>();
         for each(var talisman:TalismanModel in this.talismans_){

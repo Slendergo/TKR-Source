@@ -33,7 +33,9 @@ namespace common.resources
         private readonly Dictionary<string, byte[]> WorldDataCache = new Dictionary<string, byte[]>();
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
-        public Dictionary<int, TalismanDesc> Talismans { get; private set; } = new Dictionary<int, TalismanDesc>();
+        private Dictionary<int, TalismanDesc> Talismans { get; set; } = new Dictionary<int, TalismanDesc>();
+
+        public TalismanDesc GetTalisman(int type) => Talismans.TryGetValue(type, out var ret) ? ret : null;
 
         public ItemDusts ItemDusts { get; private set; }
 

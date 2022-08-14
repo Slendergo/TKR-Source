@@ -4,13 +4,14 @@ using System.Collections.Generic;
 
 namespace wServer.networking.packets.outgoing.talisman
 {
-    public struct TalismanData
+    public sealed class TalismanData
     {
-        public byte Type { get; private set; }
-        public byte Level { get; private set; }
-        public int CurrentXP { get; private set; }
-        public int ExpGoal { get; private set; }
-        public byte Tier { get; private set; }
+        public byte Type { get; set; }
+        public byte Level { get; set; }
+        public int CurrentXP { get; set; }
+        public int ExpGoal { get; set; }
+        public byte Tier { get; set; }
+        public bool Active { get; set; }
 
         public TalismanData(DbTalismanEntry entry)
         {
@@ -19,15 +20,17 @@ namespace wServer.networking.packets.outgoing.talisman
             CurrentXP = entry.Exp;
             ExpGoal = entry.Goal;
             Tier = entry.Tier;
+            Active = entry.Active;
         }
 
-        public TalismanData(byte type, byte level, int xp, int goal, byte tier)
+        public TalismanData(byte type, byte level, int xp, int goal, byte tier, bool active)
         {
             Type = type;
             Level = level;
             CurrentXP = xp;
             ExpGoal = goal;
             Tier = tier;
+            Active = active;
         }
 
         public void Write(NWriter wtr)
@@ -37,6 +40,7 @@ namespace wServer.networking.packets.outgoing.talisman
             wtr.Write(CurrentXP);
             wtr.Write(ExpGoal);
             wtr.Write(Tier);
+            wtr.Write(Active);
         }
     }
 

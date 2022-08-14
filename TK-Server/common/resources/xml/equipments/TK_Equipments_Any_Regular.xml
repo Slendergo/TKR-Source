@@ -7638,8 +7638,8 @@
     <Class>Equipment</Class>
     <Item />
 	<InvUse />
-    <ExtraTooltipData>
-		<EffectInfo name="" description="Consume the talisman to unlock its potential" />
+	<ExtraTooltipData>
+		<EffectInfo name="" description="What powers does this item hold?" />
 	</ExtraTooltipData>
     <Texture>
       <File>CustomObj</File>

@@ -32,16 +32,38 @@ namespace common.resources
                 Tiers.Add(tierDesc.Tier, tierDesc);
             }
         }
+
+        public TalismanTierDesc GetTierDesc(int tier) => Tiers.TryGetValue(tier, out var ret) ? ret : null;
     }
 
     public class TalismanTierDesc
     {
         public readonly int Tier;
+        public readonly List<TalismanStatType> StatTypes;
 
         public TalismanTierDesc(XElement e)
         {
             Tier = e.GetAttribute<int>("tier");
 
+            StatTypes = new List<TalismanStatType>();
+            foreach (var te in e.Elements("StatType"))
+                StatTypes.Add(new TalismanStatType(te));
+        }
+    }
+
+    public class TalismanStatType
+    {
+        public readonly int StatType;
+        public readonly int Amount;
+        public readonly bool ScalesPerLevel;
+
+        public TalismanStatType(XElement e)
+        {
+            StatType = e.GetAttribute<int>("type");
+            Amount = e.GetAttribute<int>("amount");
+
+            var scale = e.GetAttribute<string>("scale", "flat");
+            ScalesPerLevel = scale == "perLevel";
         }
     }
 }

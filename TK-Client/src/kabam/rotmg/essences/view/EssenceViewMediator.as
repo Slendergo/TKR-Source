@@ -13,6 +13,7 @@ import kabam.rotmg.dialogs.control.CloseDialogsSignal;
 import kabam.rotmg.messaging.impl.GameServerConnection;
 import kabam.rotmg.messaging.impl.outgoing.UsePotion;
 import kabam.rotmg.messaging.impl.outgoing.potionStorage.PotionStorage;
+import kabam.rotmg.messaging.impl.outgoing.talisman.TalismanEssenceAction;
 
 import org.swiftsuspenders.Injector;
 
@@ -22,17 +23,42 @@ public class EssenceViewMediator extends Mediator {
 
     [Inject]
     public var view:EssenceView;
+
     [Inject]
     public var closeDialogs:CloseDialogsSignal;
 
     override public function initialize():void
     {
         this.view.close.add(this.onCancel);
+        this.view.addEssence.add(this.onAddEssence);
+        this.view.tierUp.add(this.onTierUp);
+        this.view.enable.add(this.onEnable);
+        this.view.disable.add(this.onDisable);
     }
 
     override public function destroy():void
     {
         this.view.close.remove(this.onCancel);
+        this.view.addEssence.remove(this.onAddEssence);
+        this.view.tierUp.remove(this.onTierUp);
+        this.view.enable.remove(this.onEnable);
+        this.view.disable.remove(this.onDisable);
+    }
+
+    public function onAddEssence(type:int, amount:int):void {
+        GameServerConnection.instance.talismanAction(TalismanEssenceAction.ADD_ESSENCE, type, amount);
+    }
+
+    public function onTierUp(type:int, cost:int):void {
+        GameServerConnection.instance.talismanAction(TalismanEssenceAction.TIER_UP, type, cost);
+    }
+
+    public function onEnable(type:int):void {
+        GameServerConnection.instance.talismanAction(TalismanEssenceAction.ENABLE, type, 0);
+    }
+
+    public function onDisable(type:int):void {
+        GameServerConnection.instance.talismanAction(TalismanEssenceAction.DISABLE, type, 0);
     }
 
     private function onCancel():void {

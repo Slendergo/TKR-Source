@@ -40,6 +40,8 @@ namespace common.resources
     {
         public readonly int Tier;
         public readonly List<TalismanStatType> StatTypes;
+        public readonly List<TalismanLootBoost> LootBoosts;
+        public readonly List<ConditionEffectIndex> ImmuneTo;
 
         public TalismanTierDesc(XElement e)
         {
@@ -48,6 +50,14 @@ namespace common.resources
             StatTypes = new List<TalismanStatType>();
             foreach (var te in e.Elements("StatType"))
                 StatTypes.Add(new TalismanStatType(te));
+
+            LootBoosts = new List<TalismanLootBoost>();
+            foreach (var te in e.Elements("LootBoost"))
+                LootBoosts.Add(new TalismanLootBoost(te));
+
+            ImmuneTo = new List<ConditionEffectIndex>();
+            foreach (var te in e.Elements("ImmuneTo"))
+                ImmuneTo.Add(Utils.GetEffect(te.GetAttribute<string>("effect")));
         }
     }
 
@@ -61,6 +71,19 @@ namespace common.resources
         {
             StatType = e.GetAttribute<int>("type");
             Amount = e.GetAttribute<int>("amount");
+
+            var scale = e.GetAttribute<string>("scale", "flat");
+            ScalesPerLevel = scale == "perLevel";
+        }
+    }
+    public class TalismanLootBoost
+    {
+        public readonly float Amount;
+        public readonly bool ScalesPerLevel;
+
+        public TalismanLootBoost(XElement e)
+        {
+            Amount = e.GetAttribute<float>("amount");
 
             var scale = e.GetAttribute<string>("scale", "flat");
             ScalesPerLevel = scale == "perLevel";

@@ -1,116 +1,71 @@
 <Objects>
-		<Object type="0xa420" id="Cerberus's Core" spritePeriod="2" spriteFile="CustomObj" spriteArray="17-18">
-		<Class>Equipment</Class>
-		<Item />
-		<HoldableItem />
-		<Texture>
-			<File>CustomObj</File>
-			<Index>0x11</Index>
-		</Texture>
-		<SlotType>10</SlotType>
-		<Description> Cerberus's Core, contains the very essence of Cerberus himself.</Description>
-		<Sound>use_potion</Sound>
-		<Eternal />
-		<ExtraTooltipData>
-			<EffectInfo name="Soul of Cerberus" description="Immunity to Stun, Daze, and Slowed. Berserk for 5 seconds every 15 Seconds." />
-		</ExtraTooltipData>
-		<BagType>7</BagType>
-		<feedPower>15</feedPower>
-	</Object>
-		<Object type="0xa41f" id="Cerberus's Right Claw">
-		<Class>Equipment</Class>
-		<Item />
-		<HoldableItem />
-		<Texture>
-			<File>CustomObj</File>
-			<Index>0xcc</Index>
-		</Texture>
-		<SlotType>10</SlotType>
-		<Description>Cerberus's Right Claw, said to hold the souls of the dead.</Description>
-		<Sound>use_potion</Sound>
-		<Mythical />
-		<ExtraTooltipData>
-			<EffectInfo name="Killing Spree" description="For Every 1500 Enemies Killed, Maximum HP Increases by 50 {Caps at 500}. Immunity to Slowed" />
-		</ExtraTooltipData>
-		<BagType>7</BagType>
-		<feedPower>15</feedPower>
-	</Object>
-	<Object type="0xa41e" id="Cerberus's Left Claw">
-		<Class>Equipment</Class>
-		<Item />
-		<HoldableItem />
-		<Texture>
-			<File>CustomObj</File>
-			<Index>0xcb</Index>
-		</Texture>
-		<SlotType>10</SlotType>
-		<Description>Cereberus's Left Claw, said to hold the fury of the dead.</Description>
-		<Sound>use_potion</Sound>
-		<Mythical />
-		<ExtraTooltipData>
-			<EffectInfo name="Frenzy" description="For every mob within a 10 distance radius, Attack goes up by 1.{Caps at 20}. Immunity to Dazed" />
-		</ExtraTooltipData>
-		<BagType>7</BagType>
-		<feedPower>15</feedPower>
-	</Object>
-  <Object type="0x4927" id="Gem of Life">
-    <Class>Equipment</Class>
-    <Item />
-    <HoldableItem />
-    <Texture>
-      <File>CustomObj</File>
-      <Index>0x13</Index>
-    </Texture>
-    <SlotType>10</SlotType>
-    <Description>A gem brimming with vitality. So long as it's held, properties of health regeneration will increase. </Description>
-    <Sound>use_potion</Sound>
-    <ExtraTooltipData>
-      <EffectInfo name="Power of Life" description="If your Life is below half, you regenerate the quintuple fast." />
-    </ExtraTooltipData>
-    <Legendary />
-    <BagType>7</BagType>
-    <feedPower>15</feedPower>
-  </Object>
-  <Object type="0x492c" id="Talisman of Mana">
-    <Class>Equipment</Class>
-    <Item />
-    <HoldableItem />
-    <Texture>
-      <File>CustomObj</File>
-      <Index>0x17</Index>
-    </Texture>
-    <SlotType>10</SlotType>
-    <Description>This talisman contains the Power of Luck. So long as it's held, luck will increase.</Description>
-    <Sound>use_potion</Sound>
-    <Legendary />
-    <ExtraTooltipData>
-      <EffectInfo name="Power of Mana" description="If your Mana is below the half, you regenerate the quintuple fast." />
-    </ExtraTooltipData>
-    <BagType>7</BagType>
-    <feedPower>15</feedPower>
-  </Object>
 
-<Object type="0x4950" id="Severed Marble Hand">
-	<Class>Equipment</Class>
-	<DisplayId>Severed Marble Hand</DisplayId>
-	<Item />
-	<InvUse />
-	<Texture>
-		<File>CustomObj</File>
-		<Index>0x1c</Index>
-	</Texture>
-	<ExtraTooltipData>
-		<EffectInfo name="" description="What powers does this item hold?" />
-	</ExtraTooltipData>
-	<SlotType>10</SlotType>
-	<Description>A sundered chunk from the Marble Colossus this item grants power to the wielder</Description>
-	<Sound>use_potion</Sound>
-	<Activate type="0x02">UnlockTalisman</Activate>
-	<Legendary />
-	<Consumable />
-	<Potion />
-	<BagType>7</BagType>
-</Object>
+	<Object type="0x4949" id="Basic Talisman">
+		<Class>Equipment</Class>
+		<DisplayId>Basic Talisman</DisplayId>
+		<Item />
+		<InvUse />
+		<Texture>
+			<File>CustomObj</File>
+			<Index>0x1c</Index>
+		</Texture>
+		<ExtraTooltipData>
+			<EffectInfo name="" description="What powers does this item hold?" />
+		</ExtraTooltipData>
+		<SlotType>10</SlotType>
+		<Description>A talisman gifted to you by the gods at birth</Description>
+		<Sound>use_potion</Sound>
+		<Activate type="0x00">UnlockTalisman</Activate>
+		<Consumable />
+		<Potion />
+		<Soulbound/>
+		<BagType>1</BagType>
+	</Object>
+
+
+	<Object type="0x4951" id="Advanced Talisman">
+		<Class>Equipment</Class>
+		<DisplayId>Advanced Talisman</DisplayId>
+		<Item />
+		<InvUse />
+		<Texture>
+			<File>CustomObj</File>
+			<Index>0x1c</Index>
+		</Texture>
+		<ExtraTooltipData>
+			<EffectInfo name="" description="What powers does this item hold?" />
+		</ExtraTooltipData>
+		<SlotType>10</SlotType>
+		<Description>A talisman gifted to you by the gods for reaching level 20</Description>
+		<Sound>use_potion</Sound>
+		<Activate type="0x01">UnlockTalisman</Activate>
+		<Consumable />
+		<Potion />
+		<Soulbound/>
+		<BagType>1</BagType>
+	</Object>
+	
+	<Object type="0x4950" id="Severed Marble Hand">
+		<Class>Equipment</Class>
+		<DisplayId>Severed Marble Hand</DisplayId>
+		<Item />
+		<InvUse />
+		<Texture>
+			<File>CustomObj</File>
+			<Index>0x1c</Index>
+		</Texture>
+		<ExtraTooltipData>
+			<EffectInfo name="" description="What powers does this item hold?" />
+		</ExtraTooltipData>
+		<SlotType>10</SlotType>
+		<Description>A sundered chunk from the Marble Colossus this item grants power to the wielder</Description>
+		<Sound>use_potion</Sound>
+		<Activate type="0x02">UnlockTalisman</Activate>
+		<Legendary />
+		<Consumable />
+		<Potion />
+		<BagType>7</BagType>
+	</Object>
 	
   <Object type="0x50ec" id="Talisman of Luck">
     <Class>Equipment</Class>
@@ -282,7 +237,7 @@
 		<Description>Todo</Description>
 		<Sound>use_key</Sound>
 		<Consumable />
-		<Activate objectId="Epic Quest Chest">Create</Activate>
+		<Activate objectId="Epic Quest Chest">Create</Activate>:
 		<feedPower>200</feedPower>
 		<BagType>5</BagType>
 		<Track />

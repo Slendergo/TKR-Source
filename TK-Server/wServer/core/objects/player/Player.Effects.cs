@@ -10,81 +10,6 @@ namespace wServer.core.objects
         private float _healing;
         private int _newbieTime;
 
-        public bool CheckMarbleHand()
-        {
-            var ok = false;
-            for (var i = 0; i < 20; i++)
-            {
-                var inv = Inventory[i];
-                if (inv != null && inv.ObjectId == "Severed Marble Hand")
-                    ok = true;
-            }
-
-            return ok == true;
-        }
-        public bool CheckCerberusCore()
-        {
-            var ok = false;
-            for (var i = 0; i < 20; i++)
-            {
-                var inv = Inventory[i];
-                if (inv != null && inv.ObjectId == "Cerberus's Left Claw")
-                    ok = true;
-            }
-
-            return ok == true;
-        }
-        public bool CheckCerberusRightClaw()
-        {
-            var ok = false;
-            for (var i = 0; i < 20; i++)
-            {
-                var inv = Inventory[i];
-                if (inv != null && inv.ObjectId == "Cerberus's Right Claw")
-                    ok = true;
-            }
-
-            return ok == true;
-        }
-        public bool CheckCerberusLeftClaw()
-        {
-            var ok = false;
-            for (var i = 0; i < 20; i++)
-            {
-                var inv = Inventory[i];
-                if (inv != null && inv.ObjectId == "Cerberus's Core")
-                    ok = true;
-            }
-
-            return ok == true;
-        }
-        public bool CheckMPRegeneration()
-        {
-
-            var ok = false;
-            for (var i = 0; i < 20; i++)
-            {
-                var inv = Inventory[i];
-                if (inv != null && inv.ObjectId == "Talisman of Mana" && MP <= Stats[1] / 2)
-                    ok = true;
-            }
-
-            return ok == true;
-        }
-
-        public bool CheckRegeneration()
-        {
-            var ok = false;
-            for (var i = 0; i < 20; i++)
-            {
-                var inv = Inventory[i];
-                if (inv != null && inv.ObjectId == "Gem of Life" && HP <= Stats[0] / 2)
-                    ok = true;
-            }
-
-            return ok == true;
-        }
-
         public bool IsVisibleToEnemy()
         {
             if (_newbieTime > 0)
@@ -126,66 +51,6 @@ namespace wServer.core.objects
         private void HandleEffects(TickTime time)
         {
             if (Client == null || Client.Account == null) return;
-            if (CheckCerberusLeftClaw())
-            {
-                ApplyConditionEffect(ConditionEffectIndex.DazedImmune);
-                ApplyConditionEffect(ConditionEffectIndex.Dazed, 0);
-            }
-            else if (!CheckCerberusLeftClaw() && HasConditionEffect(ConditionEffects.DazedImmune))
-            {
-                ApplyConditionEffect(ConditionEffectIndex.DazedImmune, 0);
-            }
-            if (CheckCerberusRightClaw())
-            {
-                ApplyConditionEffect(ConditionEffectIndex.SlowedImmune);
-                ApplyConditionEffect(ConditionEffectIndex.Slowed, 0);
-            }
-            else if (!CheckCerberusRightClaw() && HasConditionEffect(ConditionEffects.SlowedImmune))
-            {
-                ApplyConditionEffect(ConditionEffectIndex.SlowedImmune, 0);
-            }
-            if (CheckCerberusCore())
-            {
-                ApplyConditionEffect(ConditionEffectIndex.DazedImmune);
-                ApplyConditionEffect(ConditionEffectIndex.Dazed, 0);
-                ApplyConditionEffect(ConditionEffectIndex.SlowedImmune);
-                ApplyConditionEffect(ConditionEffectIndex.StunImmune);
-                ApplyConditionEffect(ConditionEffectIndex.Slowed, 0);
-                ApplyConditionEffect(ConditionEffectIndex.Stunned, 0);
-            }
-            else if (!CheckCerberusCore() && (HasConditionEffect(ConditionEffects.DazedImmune)))
-                ApplyConditionEffect(ConditionEffectIndex.DazedImmune, 0);
-            else if (!CheckCerberusCore() && (HasConditionEffect(ConditionEffects.SlowedImmune)))
-                ApplyConditionEffect(ConditionEffectIndex.SlowedImmune, 0);
-            else if (!CheckCerberusCore() && (HasConditionEffect(ConditionEffects.StunImmune)))
-                ApplyConditionEffect(ConditionEffectIndex.StunImmune, 0);
-            if (CheckMarbleHand())
-            {
-                ApplyConditionEffect(ConditionEffectIndex.UnstableImmune);
-                ApplyConditionEffect(ConditionEffectIndex.Unstable, 0);
-            }
-            else if (!CheckMarbleHand() && HasConditionEffect(ConditionEffects.UnstableImmune))
-            {
-                ApplyConditionEffect(ConditionEffectIndex.UnstableImmune, 0);
-            }
-
-            if (CheckRegeneration())
-            {
-                ApplyConditionEffect(ConditionEffectIndex.Regeneration);
-            }
-            else if (!CheckRegeneration() && HasConditionEffect(ConditionEffects.Regeneration))
-            {
-                ApplyConditionEffect(ConditionEffectIndex.Regeneration, 0);
-            }
-
-            if (CheckMPRegeneration())
-            {
-                ApplyConditionEffect(ConditionEffectIndex.MPTRegeneration);
-            }
-            else if (!CheckMPRegeneration() && HasConditionEffect(ConditionEffects.MPTRegeneration))
-            {
-                ApplyConditionEffect(ConditionEffectIndex.MPTRegeneration, 0);
-            }
 
             if (Client.Account.Hidden && !HasConditionEffect(ConditionEffects.Hidden))
             {
@@ -226,6 +91,7 @@ namespace wServer.core.objects
                 if (MP == 0)
                     ApplyConditionEffect(ConditionEffectIndex.NinjaSpeedy, 0);
             }
+
             if (HasConditionEffect(ConditionEffects.NinjaBerserk))
             {
                 MP = Math.Max(0, (int)(MP - 10 * time.ElaspedMsDelta / 1000f));

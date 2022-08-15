@@ -15,11 +15,21 @@ namespace wServer.core.objects
         public static int GetFameGoal(int fame)
         {
             if (fame >= 2000) return 0;
-            else if (fame >= 800) return 2000;
-            else if (fame >= 400) return 800;
-            else if (fame >= 150) return 400;
-            else if (fame >= 20) return 150;
-            else return 20;
+            if (fame >= 800) return 2000;
+            if (fame >= 400) return 800;
+            if (fame >= 150) return 400;
+            if (fame >= 20) return 150;
+            return 20;
+        }
+
+        public static int GetTalismanEssenceCap(int fame)
+        {
+            if (fame >= 2000) return 128000;
+            if (fame >= 800) return 64000;
+            if (fame >= 400) return 64000;
+            if (fame >= 150) return 16000;
+            if (fame >= 20) return 8000;
+            return 4000;
         }
 
         public static int GetLevelExp(int level)
@@ -48,6 +58,12 @@ namespace wServer.core.objects
                     Message = "Quest Complete!"
                 }, this);
                 Stars = GetStars();
+
+                var cap = Client.Character.EssenceCap;
+                UpdateEssenceCap();
+                var newCap = Client.Character.EssenceCap;
+
+                SendInfo($"Your 'Talisman Essence' capacity has increased by {newCap - cap}!");
             }
             else if (newFame != Fame)
             {

@@ -28,9 +28,12 @@ namespace wServer.core
 
         public IEnumerable<World> GetWorlds() => Worlds.Values;
 
+        private readonly Random Random;
+
         public WorldManager(GameServer gameServer)
         {
             GameServer = gameServer;
+            Random = new Random();
         }
 
         public void Initialize()
@@ -165,6 +168,14 @@ namespace wServer.core
         {
             foreach (var thread in Threads.Values)
                 thread.Stop();
+        }
+
+        public RealmWorld GetRandomRealm()
+        {
+            var realms = GetRealms();
+            if (realms.Count == 0)
+                return null;
+            return realms[Random.Next(realms.Count)] as RealmWorld;
         }
 
         public List<World> GetRealms() => Worlds.Values.Where(_ => _ is RealmWorld && !(_ as RealmWorld)._overseer.DisableSpawning).ToList(); // todo mabye not have a tolist

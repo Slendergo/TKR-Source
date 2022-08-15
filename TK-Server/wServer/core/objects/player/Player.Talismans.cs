@@ -1,4 +1,5 @@
 ﻿using common.database.info;
+using System;
 using System.Collections.Generic;
 using wServer.networking.packets.outgoing.talisman;
 
@@ -10,6 +11,8 @@ namespace wServer.core.objects
 
         private Dictionary<int, TalismanData> TalismanDatas = new Dictionary<int, TalismanData>();
         public List<int> ActiveTalismans = new List<int>();
+
+        public float TalismanLootBoost { get; set; }
 
         public TalismanData GetTalisman(int type) => TalismanDatas.TryGetValue(type, out var data) ? data : null;
 
@@ -33,6 +36,18 @@ namespace wServer.core.objects
                 return;
             _ = ActiveTalismans.Remove(type);
             UpdateTalsimans();
+        }
+
+        public void GiveEssence(int amount)
+        {
+            var essenceCap = Client.Character.EssenceCap;
+            var essence = Math.Min(essenceCap, essenceCap + amount);
+            Client.Character.Essence = essence;
+
+            if(essence == essenceCap)
+                SendInfo($"You have hit the limit of Talisman Essence");
+            else
+                SendInfo($"You have gained: {amount} Talisman Essence");
         }
 
         public void HandleTalismans(ref TickTime time)
@@ -62,6 +77,7 @@ namespace wServer.core.objects
 
         private void LoadTalismanData()
         {
+            UpdateEssenceCap();
             var talismans = GameServer.Database.GetTalismansFromCharacter(Client.Character.CharId);
             foreach (var talisman in talismans)
             {
@@ -70,6 +86,11 @@ namespace wServer.core.objects
                     ActiveTalismans.Add(talisman.Type);
             }
             ApplyTalismanEffects();
+        }
+
+        public void UpdateEssenceCap()
+        {
+            Client.Character.EssenceCap = GetTalismanEssenceCap(Fame);
         }
 
         private void ApplyTalismanEffects()

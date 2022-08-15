@@ -1,6 +1,5 @@
 ﻿using common;
 using common.database;
-using common.discord;
 using common.resources;
 using Nancy.Json;
 using Newtonsoft.Json;
@@ -252,19 +251,19 @@ namespace wServer.core.objects
             var addition = 0;
             switch (Rank)
             {
-                case common.RankingType.Supporter1:
+                case RankingType.Supporter1:
                     addition = 10;
                     break;
-                case common.RankingType.Supporter2:
+                case RankingType.Supporter2:
                     addition = 20;
                     break;
-                case common.RankingType.Supporter3:
+                case RankingType.Supporter3:
                     addition = 30;
                     break;
-                case common.RankingType.Supporter4:
+                case RankingType.Supporter4:
                     addition = 40;
                     break;
-                case common.RankingType.Supporter5:
+                case RankingType.Supporter5:
                     addition = 50;
                     break;
             }

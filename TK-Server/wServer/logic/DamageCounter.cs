@@ -57,9 +57,9 @@ namespace wServer.logic
             var lvlUps = 0;
             foreach (var player in enemy.World.Players.Values)
             {
-                if(player.Dist(enemy) > 25)
+                if (player.Dist(enemy) > 25)
                     continue;
-                
+
                 var level = player.Level;
                 var rank = player.Rank;
                 if (player.HasConditionEffect(common.resources.ConditionEffects.Paused))
@@ -85,6 +85,13 @@ namespace wServer.logic
                 var killer = (Parent ?? this).LastHitter == player;
                 if (player.EnemyKilled(enemy, (int)playerXp, killer) && !killer)
                     lvlUps++;
+
+                if (enemy.ObjectDesc.Quest)
+                {
+                    var essenceToGive = (int)(enemy.ObjectDesc.MaxHP / 125.0f);
+                    if(essenceToGive > 0)
+                        player.GiveEssence(essenceToGive);
+                }
             }
 
             if ((Parent ?? this).LastHitter != null)

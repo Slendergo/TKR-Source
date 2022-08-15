@@ -13,8 +13,6 @@ import com.company.util.AssetLibrary;
    import kabam.rotmg.constants.ItemConstants;
    import kabam.rotmg.messaging.impl.data.StatData;
 
-import org.hamcrest.text.containsString;
-
 public class ObjectLibrary
    {
       public static var playerChars_:Vector.<XML> = new Vector.<XML>();
@@ -64,8 +62,8 @@ public class ObjectLibrary
          "SkillTree":SkillTree,
          "MarketNPC":MarketNPC,
          "BountyBoard": BountyBoard,
-         "PotionStorage": Essence,
-         "Essence": Essence
+         "PotionStorage": PotionStorage,
+         "Essence":Essence
       };
 
 

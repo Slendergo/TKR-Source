@@ -12,7 +12,7 @@ public class Essence extends GameObject implements IInteractiveObject {
     }
 
     public function getPanel(_arg1:GameSprite):Panel {
-        return new EssencePanel(_arg1, this);
+        return new EssencePanel(_arg1);
     }
 }
 }

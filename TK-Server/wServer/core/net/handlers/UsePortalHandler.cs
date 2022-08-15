@@ -121,7 +121,9 @@ namespace wServer.core.net.handlers
                         }
                         break;
                 }
-                return;
+
+                if (world != null)
+                    return;
             }
             
             if (world != null)

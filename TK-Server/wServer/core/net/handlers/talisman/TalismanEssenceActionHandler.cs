@@ -87,15 +87,14 @@ namespace wServer.core.net.handlers
                 return;
             }
 
-
             talisman.CurrentXP += amount;
             if(talisman.CurrentXP >= talisman.ExpGoal)
             {
                 talisman.Level += 1;
                 talisman.CurrentXP = 0;
-                talisman.ExpGoal = talisman.Level * desc.BaseUpgradeCost; // + 1 due to 0 being level 1
+                talisman.ExpGoal = talisman.Level * desc.BaseUpgradeCost;
                 if(talisman.Level == desc.MaxLevels)
-                    talisman.ExpGoal = talisman.Level * desc.BaseUpgradeCost + desc.TierUpgradeCost; // level 10 base + tier upgarde ontop
+                    talisman.ExpGoal = talisman.Level * desc.BaseUpgradeCost + desc.TierUpgradeCost;
             }
 
             player.GameServer.Database.UpdateTalismanToCharacter(player.Client.Character.CharId, talisman.Type, talisman.Level, talisman.CurrentXP, talisman.ExpGoal, talisman.Tier, talisman.Active);
@@ -124,7 +123,10 @@ namespace wServer.core.net.handlers
             talisman.Tier += 1;
             talisman.CurrentXP = 0;
             talisman.Level = 1;
-            talisman.ExpGoal = talisman.Level * desc.BaseUpgradeCost; // + 1 due to 0 being level 1
+            if (talisman.Level == desc.MaxLevels)
+                talisman.ExpGoal = talisman.Level * desc.BaseUpgradeCost + desc.TierUpgradeCost;
+            else
+                talisman.ExpGoal = talisman.Level * desc.BaseUpgradeCost;
 
             player.GameServer.Database.UpdateTalismanToCharacter(player.Client.Character.CharId, talisman.Type, talisman.Level, talisman.CurrentXP, talisman.ExpGoal, talisman.Tier, talisman.Active);
 

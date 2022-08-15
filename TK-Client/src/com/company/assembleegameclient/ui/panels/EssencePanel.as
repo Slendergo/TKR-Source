@@ -12,11 +12,8 @@ import kabam.rotmg.essences.view.EssenceView;
 
 public class EssencePanel extends ButtonPanel {
 
-    private var gameObject:GameObject;
-
-    public function EssencePanel(gs:GameSprite, gm:GameObject) {
+    public function EssencePanel(gs:GameSprite) {
         super(gs, "Talisman Essence", "View");
-        this.gameObject = gm;
     }
 
     override protected function onButtonClick(evt:MouseEvent):void {

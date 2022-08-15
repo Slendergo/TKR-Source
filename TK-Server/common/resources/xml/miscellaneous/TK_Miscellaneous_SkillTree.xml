@@ -8,7 +8,7 @@
 		<Static />
 	</Object>
 	<Object type="0x506c" id="Skill Tree">
-		<Class>SkillTree</Class>
+		<Class>Essence</Class>
 		<Texture>
 			<File>CustomObjectsSkillTree</File>
 			<Index>0x00</Index>

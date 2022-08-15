@@ -611,9 +611,13 @@ namespace wServer.core.objects
                 return;
             }
 
-            GameServer.Database.AddTalismanToCharacter(characterId, eff.Type, 1, 0, talismanDesc.BaseUpgradeCost, 0);
+            var cost = talismanDesc.BaseUpgradeCost;
+            if (talismanDesc.MaxLevels == 1)
+                cost = talismanDesc.TierUpgradeCost;
 
-            var newTalismanInfo = new TalismanData(eff.Type, 1, 0, talismanDesc.BaseUpgradeCost, 0, false);
+            GameServer.Database.AddTalismanToCharacter(characterId, eff.Type, 1, 0, cost, 0);
+
+            var newTalismanInfo = new TalismanData(eff.Type, 1, 0, cost, 0, false);
 
             Client.Player.UnlockTalisman(newTalismanInfo);
         }

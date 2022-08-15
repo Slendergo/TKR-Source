@@ -9,7 +9,7 @@ public class EssenceGauge extends Sprite
 
     public function EssenceGauge()
     {
-        this.gague_ = new StatusBar(64, 352, 0x428751, 5526612,"Ess", false, false, true, 32);
+        this.gague_ = new StatusBar(64, 400, 0x428751, 5526612,"Ess", false, false, true, 32);
         this.addChild(this.gague_);
     }
 

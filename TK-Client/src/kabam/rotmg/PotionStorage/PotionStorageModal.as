@@ -45,7 +45,7 @@ public class PotionStorageModal extends ModalPopup {
         this.alpha = 0;
         new GTween(this, 0.2, {"alpha": 1});
 
-        this.player = StaticInjectorContext.getInjector().getInstance(GameModel).player;
+        this.player = gm as Player;
         this.quitButton = new SliceScalingButton(TextureParser.instance.getSliceScalingBitmap("UI", "close_button"));
         this.header.addButton(this.quitButton, PopupHeader.RIGHT_BUTTON);
         this.quitButton.addEventListener(MouseEvent.CLICK, this.onClose);

@@ -115,13 +115,6 @@ public class EssenceView extends ModalPopup {
         this.header.addButton(this.quitButton, PopupHeader.RIGHT_BUTTON);
         this.quitButton.addEventListener(MouseEvent.CLICK, this.onClose);
 
-//        this.upgrade_ = new SliceScalingButton(TextureParser.instance.getSliceScalingBitmap("UI", "generic_green_button"));
-//        this.upgrade_.width = 96;
-//        this.upgrade_.setLabel("Upgrade", DefaultLabelFormat.defaultModalTitle);
-//        this.upgrade_.x = 0;
-//        this.upgrade_.y = 425 - this.upgrade_.height - 4;
-//        addChild(this.upgrade_);
-
         this.x = this.width / 2 - 255;
         this.y = this.height / 2 - 195;
 

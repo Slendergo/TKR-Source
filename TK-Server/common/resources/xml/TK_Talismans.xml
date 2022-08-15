@@ -1,9 +1,9 @@
 ﻿<Talismans>
 	<Talisman type="0x00">
-		<Name>Basic Talisman</Name>
-		<ItemAssociatedWith>Basic Talisman</ItemAssociatedWith>
-		<BaseUpgradeCost>100</BaseUpgradeCost>
-		<TierUpgradeCost>200</TierUpgradeCost>
+		<Name>Beginner's Talisman</Name>
+		<ItemAssociatedWith>Beginner's Talisman</ItemAssociatedWith>
+		<BaseUpgradeCost>1500</BaseUpgradeCost>
+		<TierUpgradeCost>3500</TierUpgradeCost>
 		<CostMultiplier>1.1</CostMultiplier>
 		<MaxLevels>1</MaxLevels>
 		<Tier tier="0">
@@ -28,35 +28,6 @@
 		</Tier>
 	</Talisman>
 
-	<Talisman type="0x01">
-		<Name>Advanced Talisman</Name>
-		<ItemAssociatedWith>Advanced Talisman</ItemAssociatedWith>
-		<BaseUpgradeCost>100</BaseUpgradeCost>
-		<TierUpgradeCost>200</TierUpgradeCost>
-		<CostMultiplier>1.1</CostMultiplier>
-		<MaxLevels>2</MaxLevels>
-		<Tier tier="0">
-			<StatType type="0" scale="perLevel" amount="10"/>
-			<StatType type="3" scale="perLevel" amount="10"/>
-		</Tier>
-		<Tier tier="1">
-			<StatType type="0" scale="perLevel" amount="10"/>
-			<StatType type="3" scale="perLevel" amount="10"/>
-			<StatType type="20" scale="perLevel" amount="2"/>
-			<StatType type="21" scale="perLevel" amount="2"/>
-		</Tier>
-		<Tier tier="2">
-			<StatType type="0" scale="perLevel" amount="10"/>
-			<StatType type="3" scale="perLevel" amount="10"/>
-			<StatType type="20" scale="perLevel" amount="1"/>
-			<StatType type="21" scale="perLevel" amount="2"/>
-			<StatType type="28" scale="perLevel" amount="1"/>
-			<StatType type="22" scale="perLevel" amount="1"/>
-			<StatType type="26" scale="perLevel" amount="2"/>
-			<StatType type="27" scale="perLevel" amount="2"/>
-		</Tier>
-	</Talisman>
-	
 	<Talisman type="0x02">
 		<Name>Talisman of Luck</Name>
 		<ItemAssociatedWith>Talisman of Luck</ItemAssociatedWith>

@@ -43518,7 +43518,7 @@
       <Index>0x06</Index>
     </Texture>
   </Object>
-  <Object type="0x4949" id="Basic Talisman">
+  <Object type="0x4949" id="Beginner's Talisman">
     <Class>Equipment</Class>
     <DisplayId>Basic Talisman</DisplayId>
     <Item />
@@ -43531,30 +43531,9 @@
       <EffectInfo name="" description="What powers does this item hold?" />
     </ExtraTooltipData>
     <SlotType>10</SlotType>
-    <Description>A talisman gifted to you by the gods at birth</Description>
+    <Description>A talisman gifted to you at birth by the gods</Description>
     <Sound>use_potion</Sound>
     <Activate type="0x00">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <Soulbound />
-    <BagType>1</BagType>
-  </Object>
-  <Object type="0x4951" id="Advanced Talisman">
-    <Class>Equipment</Class>
-    <DisplayId>Basic Talisman</DisplayId>
-    <Item />
-    <InvUse />
-    <Texture>
-      <File>CustomObj</File>
-      <Index>0x1c</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="What powers does this item hold?" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>A talisman gifted to you by the gods for reaching level 20</Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x01">UnlockTalisman</Activate>
     <Consumable />
     <Potion />
     <Soulbound />
@@ -43748,11 +43727,8 @@
     <Description>Todo</Description>
     <Sound>use_key</Sound>
     <Consumable />
-    <Activate objectId="Epic Quest Chest">Create</Activate>
-    <feedPower>200</feedPower>
-    <BagType>5</BagType>
-    <Track />
-  </Object>
+    <Activate objectId="Epic Quest Chest">Create</Activate>:
+		<feedPower>200</feedPower><BagType>5</BagType><Track /></Object>
   <Object type="0x9701" id="Epic Quest Chest">
     <DisplayId>Quest Chest</DisplayId>
     <Class>Character</Class>
@@ -75741,7 +75717,7 @@
     <Static />
   </Object>
   <Object type="0x506c" id="Skill Tree">
-    <Class>SkillTree</Class>
+    <Class>Essence</Class>
     <Texture>
       <File>CustomObjectsSkillTree</File>
       <Index>0x00</Index>

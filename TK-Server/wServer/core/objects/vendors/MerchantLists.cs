@@ -30,7 +30,6 @@ namespace wServer.core.objects.vendors
             new ShopItem("Miscellaneous Dust", 150),
             new ShopItem("Special Dust", 1000),
             new ShopItem("Char Slot Unlocker", 300),
-            new ShopItem("Vault Chest Unlocker", 200),
             new ShopItem("XP Booster 20 min", 100),
             new ShopItem("Backpack", 50),
             new ShopItem("Loot Drop Potion", 100)

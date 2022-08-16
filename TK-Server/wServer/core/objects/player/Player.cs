@@ -1487,7 +1487,7 @@ namespace wServer.core.objects
                 _hpRegenCounter = 0;
             else
             {
-                _hpRegenCounter += Stats.GetHPRegen() * time.ElaspedMsDelta / 1000f;
+                _hpRegenCounter += Stats.GetHPRegen() * time.DeltaTime;
                 var regen = (int)_hpRegenCounter;
                 if (regen > 0)
                 {
@@ -1501,7 +1501,7 @@ namespace wServer.core.objects
                 _mpRegenCounter = 0;
             else
             {
-                _mpRegenCounter += Stats.GetMPRegen() * time.ElaspedMsDelta / 1000f;
+                _mpRegenCounter += Stats.GetMPRegen() * time.DeltaTime;
                 var regen = (int)_mpRegenCounter;
                 if (regen > 0)
                 {

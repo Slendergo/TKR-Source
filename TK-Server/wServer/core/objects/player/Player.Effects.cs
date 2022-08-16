@@ -221,14 +221,14 @@ namespace wServer.core.objects
 
             if (HasConditionEffect(ConditionEffects.NinjaSpeedy))
             {
-                MP = Math.Max(0, (int)(MP - 10 * time.ElaspedMsDelta / 1000f));
+                MP = Math.Max(0, (int)(MP - 10 * time.DeltaTime));
 
                 if (MP == 0)
                     ApplyConditionEffect(ConditionEffectIndex.NinjaSpeedy, 0);
             }
             if (HasConditionEffect(ConditionEffects.NinjaBerserk))
             {
-                MP = Math.Max(0, (int)(MP - 10 * time.ElaspedMsDelta / 1000f));
+                MP = Math.Max(0, (int)(MP - 10 * time.DeltaTime));
 
                 if (MP == 0)
                     ApplyConditionEffect(ConditionEffectIndex.NinjaBerserk, 0);

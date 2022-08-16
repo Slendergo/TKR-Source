@@ -1057,33 +1057,6 @@ namespace wServer.core.commands
         }
     }
 
-    internal class MarketplaceCommand : Command
-    {
-        public override string CommandName => "marketplace";
-        public override string Alias => "market";
-
-        protected override bool Process(Player player, TickTime time, string args)
-        {
-            bool found = false;
-            var worlds = player.GameServer.WorldManager.GetWorlds();
-            foreach (var w in worlds)
-            {
-                if (w.IdName.Contains("Market"))
-                {
-                    found = true;
-                    player.Reconnect(w);
-                    break;
-                }
-            }
-            if (!found)
-            {
-                var world = player.GameServer.WorldManager.CreateNewWorld("Marketplace", null, player.World);
-                player.Reconnect(world);
-            }
-            return true;
-        }
-    }
-
     internal class NexusCommand : Command
     {
         public override string CommandName => "nexus";

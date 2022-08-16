@@ -20,7 +20,7 @@ namespace wServer.core.objects.vendors
             _count = new SV<int>(this, StatDataType.MerchantRemainingCount, -1);
             _timeLeft = new SV<int>(this, StatDataType.MerchantRemainingMinute, -1);
 
-            Rotate = true;
+            Rotate = false;
         }
 
         public int Count { get => _count.GetValue(); set => _count.SetValue(value); }

@@ -1,4 +1,5 @@
 ﻿using common.resources;
+using wServer.core.objects;
 
 namespace wServer.core.worlds.logic
 {
@@ -14,6 +15,16 @@ namespace wServer.core.worlds.logic
         {
             PortalMonitor = new KingdomPortalMonitor(GameServer, this);
             base.Init();
+        }
+
+        //hacky ATTEMPT TO FIX THIS DAMN THING cus the damn edit xOffset:0.5;yOffset:0.5; wont work
+        //GIWEBULANWAOI[GAWJQAWP'GAW
+        public override int EnterWorld(Entity entity)
+        {
+            System.Console.WriteLine(entity.ObjectDesc.ObjectId);
+            if (entity.ObjectDesc.ObjectId == "Market NPC")
+                entity.Move(entity.X + 0.5f, entity.Y + 0.5f);
+            return base.EnterWorld(entity);
         }
 
         protected override void UpdateLogic(ref TickTime time)

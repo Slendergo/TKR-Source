@@ -111,6 +111,7 @@ namespace wServer.core.objects.vendors
             var d1 = new List<ISellableItem>();
             var d2 = new List<ISellableItem>();
             var c1 = new List<ISellableItem>();
+            var c2 = new List<ISellableItem>();
 
             foreach (var i in gameServer.Resources.GameData.Items.Values)
             {
@@ -133,7 +134,7 @@ namespace wServer.core.objects.vendors
                     if (i.ObjectId.Contains("Cloth") && i.ObjectId.Contains("Small"))
                         d2.Add(new ShopItem(i.ObjectId, 10));
                     if (i.ObjectId.Contains("Dye") && i.ObjectId.Contains("Accessory"))
-                        c1.Add(new ShopItem(i.ObjectId, 10));
+                        c2.Add(new ShopItem(i.ObjectId, 10));
 
                     continue;
                 }
@@ -142,6 +143,7 @@ namespace wServer.core.objects.vendors
             Shops[TileRegion.Store_17] = new Tuple<List<ISellableItem>, CurrencyType, int>(d1, CurrencyType.Gold, 0);
             Shops[TileRegion.Store_18] = new Tuple<List<ISellableItem>, CurrencyType, int>(d2, CurrencyType.Gold, 0);
             Shops[TileRegion.Store_19] = new Tuple<List<ISellableItem>, CurrencyType, int>(c1, CurrencyType.Gold, 0);
+            Shops[TileRegion.Store_20] = new Tuple<List<ISellableItem>, CurrencyType, int>(c2, CurrencyType.Gold, 0);
         }
     }
 }

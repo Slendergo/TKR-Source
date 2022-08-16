@@ -187,6 +187,9 @@ namespace wServer.core
                         case ConditionEffectIndex.Stunned:
                             _player.ApplyConditionEffect(ConditionEffectIndex.StunImmune);
                             break;
+                        case ConditionEffectIndex.Paralyzed:
+                            _player.ApplyConditionEffect(ConditionEffectIndex.Paralyzed);
+                            break;
                     }
                 }
             }

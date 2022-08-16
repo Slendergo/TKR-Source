@@ -1640,13 +1640,17 @@ public class GameServerConnection
                   go.setTex2(value);
                   continue;
                case StatData.MERCHANDISE_TYPE_STAT:
-                  merchant.setMerchandiseType(value);
+                  if(merchant != null) {
+                     merchant.setMerchandiseType(value);
+                  }
                   continue;
                case StatData.CREDITS_STAT:
                   player.setCredits(value);
                   continue;
                case StatData.MERCHANDISE_PRICE_STAT:
-                  (go as SellableObject).setPrice(value);
+                       if(go is SellableObject) {
+                          (go as SellableObject).setPrice(value);
+                       }
                   continue;
                case StatData.ACTIVE_STAT:
                   (go as Portal).active_ = value != 0;
@@ -1658,25 +1662,35 @@ public class GameServerConnection
                   player.fame_ = value;
                   continue;
                case StatData.MERCHANDISE_CURRENCY_STAT:
-                  (go as SellableObject).setCurrency(value);
+                  if(go is SellableObject) {
+                     (go as SellableObject).setCurrency(value);
+                  }
                   continue;
                case StatData.CONNECT_STAT:
                   go.connectType_ = value;
                   continue;
                case StatData.MERCHANDISE_COUNT_STAT:
-                  merchant.count_ = value;
-                  merchant.untilNextMessage_ = 0;
+                  if(merchant != null) {
+                     merchant.count_ = value;
+                     merchant.untilNextMessage_ = 0;
+                  }
                   continue;
                case StatData.MERCHANDISE_MINS_LEFT_STAT:
-                  merchant.minsLeft_ = value;
-                  merchant.untilNextMessage_ = 0;
+                  if(merchant != null) {
+                     merchant.minsLeft_ = value;
+                     merchant.untilNextMessage_ = 0;
+                  }
                   continue;
                case StatData.MERCHANDISE_DISCOUNT_STAT:
-                  merchant.discount_ = value;
-                  merchant.untilNextMessage_ = 0;
+                  if(merchant != null) {
+                     merchant.discount_ = value;
+                     merchant.untilNextMessage_ = 0;
+                  }
                   continue;
                case StatData.MERCHANDISE_RANK_REQ_STAT:
-                  (go as SellableObject).setRankReq(value);
+                  if(go is SellableObject) {
+                     (go as SellableObject).setRankReq(value);
+                  }
                   continue;
                case StatData.MAX_HP_BOOST_STAT:
                   player.maxHPBoost_ = value;

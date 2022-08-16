@@ -15,16 +15,14 @@ namespace wServer.core.worlds.logic
         {
             PortalMonitor = new KingdomPortalMonitor(GameServer, this);
             base.Init();
-        }
 
-        //hacky ATTEMPT TO FIX THIS DAMN THING cus the damn edit xOffset:0.5;yOffset:0.5; wont work
-        //GIWEBULANWAOI[GAWJQAWP'GAW
-        public override int EnterWorld(Entity entity)
-        {
-            System.Console.WriteLine(entity.ObjectDesc.ObjectId);
-            if (entity.ObjectDesc.ObjectId == "Market NPC")
-                entity.Move(entity.X + 0.5f, entity.Y + 0.5f);
-            return base.EnterWorld(entity);
+            var lootRegions = GetRegionPoints(TileRegion.Loot);
+            foreach (var loot in lootRegions)
+            {
+                var market = Entity.Resolve(GameServer, "Market NPC");
+                market.Move(loot.Key.X + 1.0f, loot.Key.Y + 1.0f);
+                EnterWorld(market);
+            }
         }
 
         protected override void UpdateLogic(ref TickTime time)

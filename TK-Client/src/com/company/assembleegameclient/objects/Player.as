@@ -796,7 +796,7 @@ public class Player extends Character {
         }
         var attFreq:Number = MIN_ATTACK_FREQ + this.dexterity_ / 75 * (MAX_ATTACK_FREQ - MIN_ATTACK_FREQ);
         if (isBerserk() || isNinjaBerserk()) {
-            attFreq = attFreq * 1.5;
+            attFreq = attFreq * 1.25;
         }
         /*if(this.bigSkill11){
            attFreq += 0.05;
@@ -1012,7 +1012,7 @@ public class Player extends Character {
         }
         var attMult:Number = MIN_ATTACK_MULT + this.attack_ / 75 * (MAX_ATTACK_MULT - MIN_ATTACK_MULT);
         if (isDamaging() || isNinjaDamaging()) {
-            attMult = attMult * 1.5;
+            attMult = attMult * 1.25;
         }
         return attMult;
     }

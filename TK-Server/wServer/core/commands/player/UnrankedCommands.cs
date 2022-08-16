@@ -1064,13 +1064,22 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string args)
         {
+            bool found = false;
             var worlds = player.GameServer.WorldManager.GetWorlds();
-            foreach(var w in worlds)
-                if(w.IdName.Contains("Market"))
+            foreach (var w in worlds)
+            {
+                if (w.IdName.Contains("Market"))
                 {
+                    found = true;
                     player.Reconnect(w);
                     break;
                 }
+            }
+            if (!found)
+            {
+                var world = player.GameServer.WorldManager.CreateNewWorld("Marketplace", null, player.World);
+                player.Reconnect(world);
+            }
             return true;
         }
     }
@@ -1517,6 +1526,7 @@ namespace wServer.core.commands
         protected override bool Process(Player player, TickTime time, string args)
         {
             var world = player.GameServer.WorldManager.CreateNewWorld("Vault", null, player.World);
+            (world as VaultWorld).SetClient(player.Client);
             if (world == null)
             {
                 player.SendInfo("Unable to enter vault: BUG");

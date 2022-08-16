@@ -1063,13 +1063,7 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string args)
         {
-            player.Client.Reconnect(new Reconnect()
-            {
-                Host = "",
-                Port = player.GameServer.Configuration.serverInfo.port,
-                GameId = World.NEXUS_ID,
-                Name = "Nexus"
-            });
+            player.Reconnect(player.GameServer.WorldManager.Nexus);
             return true;
         }
     }

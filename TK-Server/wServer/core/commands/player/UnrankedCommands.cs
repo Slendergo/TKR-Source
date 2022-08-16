@@ -1048,37 +1048,13 @@ namespace wServer.core.commands
         }
     }
 
-    internal class MarketplaceCommand : Command
-    {
-        public override string CommandName => "marketplace";
-        public override string Alias => "market";
-
-        protected override bool Process(Player player, TickTime time, string args)
-        {
-            var worlds = player.GameServer.WorldManager.GetWorlds();
-            foreach(var w in worlds)
-                if(w.IdName.Contains("Market"))
-                {
-                    player.Reconnect(w);
-                    break;
-                }
-            return true;
-        }
-    }
-
     internal class NexusCommand : Command
     {
         public override string CommandName => "nexus";
 
         protected override bool Process(Player player, TickTime time, string args)
         {
-            player.Client.Reconnect(new Reconnect()
-            {
-                Host = "",
-                Port = player.GameServer.Configuration.serverInfo.port,
-                GameId = World.NEXUS_ID,
-                Name = "Nexus"
-            });
+            player.Reconnect(player.GameServer.WorldManager.Nexus);
             return true;
         }
     }
@@ -1508,6 +1484,7 @@ namespace wServer.core.commands
         protected override bool Process(Player player, TickTime time, string args)
         {
             var world = player.GameServer.WorldManager.CreateNewWorld("Vault", null, player.World);
+            (world as VaultWorld).SetClient(player.Client);
             if (world == null)
             {
                 player.SendInfo("Unable to enter vault: BUG");

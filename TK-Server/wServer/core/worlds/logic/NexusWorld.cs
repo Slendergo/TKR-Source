@@ -1,4 +1,5 @@
 ﻿using common.resources;
+using wServer.core.objects;
 
 namespace wServer.core.worlds.logic
 {
@@ -14,6 +15,14 @@ namespace wServer.core.worlds.logic
         {
             PortalMonitor = new KingdomPortalMonitor(GameServer, this);
             base.Init();
+
+            var lootRegions = GetRegionPoints(TileRegion.Loot);
+            foreach (var loot in lootRegions)
+            {
+                var market = Entity.Resolve(GameServer, "Market NPC");
+                market.Move(loot.Key.X + 1.0f, loot.Key.Y + 1.0f);
+                EnterWorld(market);
+            }
         }
 
         protected override void UpdateLogic(ref TickTime time)

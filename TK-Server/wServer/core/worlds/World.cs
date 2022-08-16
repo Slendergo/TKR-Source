@@ -250,6 +250,7 @@ namespace wServer.core.worlds
         }
 
         public virtual KeyValuePair<IntPoint, TileRegion>[] GetSpawnPoints() => Map.Regions.Where(t => t.Value == TileRegion.Spawn).ToArray();
+        public virtual KeyValuePair<IntPoint, TileRegion>[] GetRegionPoints(TileRegion region) => Map.Regions.Where(t => t.Value == region).ToArray();
 
         public Player GetUniqueNamedPlayer(string name)
         {

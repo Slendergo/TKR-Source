@@ -508,15 +508,6 @@ public class MapUserInput
                this.gs_.gsc_.playerText("/ghall");
             }
             break;
-         case Parameters.data_.reconMarket:
-            if(this.gs_.map.name_ == "Marketplace"){
-               this.addTextLine.dispatch(new AddTextLineVO(Parameters.ERROR_CHAT_NAME, ("You're already are in the Marketplace...")));
-               return;
-            }
-            else{
-               this.gs_.gsc_.playerText("/marketplace");
-            }
-            break;
          case Parameters.data_.partyInviteWorld:
             this.gs_.gsc_.playerText("/pinviteworld");
               break;

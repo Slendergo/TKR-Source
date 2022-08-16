@@ -94,9 +94,7 @@ public class Parameters {
         setDefaultKey("partyChat", KeyCodes.P);
         setDefaultKey("uiQualityToggle", KeyCodes.UNSET);
         setDefaultKey("GPURenderToggle", KeyCodes.UNSET);
-        setDefaultKey("reconMarket", KeyCodes.UNSET);
         setDefaultKey("reconGuildHall", KeyCodes.UNSET);
-        setDefaultKey("reconMarket", KeyCodes.UNSET);
         setDefaultKey("reconVault", KeyCodes.UNSET);
         setDefaultKey("reconRealm", KeyCodes.UNSET);
         setDefaultKey("moveLeft", KeyCodes.A);

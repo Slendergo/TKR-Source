@@ -427,7 +427,6 @@ public class Options extends Sprite
       this.addOption(new KeyMapper("reconGuildHall","Recon Guild Hall","Allows you to reconnect to the Guild Hall!"));
       this.addOption(new KeyMapper("reconVault","Recon Vault","Allows you to reconnect to Vault!"));
       this.addOption(new KeyMapper("reconRealm","Recon Realm","Allows you to reconnect to Realm!"));
-      this.addOption(new KeyMapper("reconMarket","Recon Market","Allows you to reconnect to the Market!"));
       this.addOption(new KeyMapper("GPURenderToggle","GPU Render Toggle","Enable and Disable the Hardware Acceleration."));
       this.addOption(new KeyMapper("uiQualityToggle","UI Quality Toggle","Enable High/Low UI Quality."));
       this.addOption(new KeyMapper("partyInviteWorld","Invite World Party","Invite your members Party to your World!"));

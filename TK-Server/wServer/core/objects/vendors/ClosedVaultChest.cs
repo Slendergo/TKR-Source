@@ -9,15 +9,13 @@ namespace wServer.core.objects.vendors
     {
         public ClosedVaultChest(GameServer manager, ushort objType) : base(manager, objType)
         {
-            Price = 200;
+            Price = manager.Resources.Settings.VaultChestPrice;
             Currency = CurrencyType.Fame;
-            
         }
 
         public override void Buy(Player player)
         {
             var result = ValidateCustomer(player, null);
-
             if (result != BuyResult.Ok)
             {
                 SendFailed(player, result);
@@ -28,12 +26,12 @@ namespace wServer.core.objects.vendors
             var acc = player.Client.Account;
             var trans = db.Conn.CreateTransaction();
 
-            GameServer.Database.CreateChest(acc, trans);
+            _ = GameServer.Database.CreateChest(acc, trans);
 
             var t1 = db.UpdateCurrency(acc, -Price, Currency, trans);
             var t2 = trans.ExecuteAsync();
 
-            Task.WhenAll(t1, t2).ContinueWith(t =>
+            _ = Task.WhenAll(t1, t2).ContinueWith(t =>
             {
                 if (t.IsCanceled)
                 {

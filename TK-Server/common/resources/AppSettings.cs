@@ -6,6 +6,7 @@ namespace common.resources
     {        
         public string MenuMusic { get; set; }
         public string DeadMusic { get; set; }
+        public int VaultChestPrice { get; set; }
         public int MaxStackablePotions { get; set; }
         public int UseExternalPayments { get; set; }
 
@@ -17,6 +18,7 @@ namespace common.resources
             var e = XElement.Parse(Utils.Read(dir));
             MenuMusic = e.GetValue<string>("MenuMusic");
             DeadMusic = e.GetValue<string>("DeadMusic");
+            VaultChestPrice = e.GetValue<int>("VaultChestPrice");
             UseExternalPayments = e.GetValue<int>("UseExternalPayments");
             MaxStackablePotions = e.GetValue<int>("MaxStackablePotions");
 

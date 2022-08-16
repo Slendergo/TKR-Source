@@ -221,35 +221,34 @@ namespace wServer.logic.loot
 
         private List<LootDef> GetEnemyClasifiedLoot(List<LootDef> list, Enemy enemy)
         {
-            #region Rarity Enemies Loot
-
             var gameData = enemy.GameServer.Resources.GameData;
             var xmlitem = gameData.Items;
             var itemtoid = gameData.IdToObjectType;
 
-            if (enemy.Legendary)
+            if (enemy.ObjectDesc.Quest || enemy.ObjectDesc.Hero || enemy.ObjectDesc.Encounter)
             {
-                list.Add(new LootDef(xmlitem[itemtoid["Potion Dust"]], 0.25, 0.001));
-                list.Add(new LootDef(xmlitem[itemtoid["Item Dust"]], 0.025, 0.001));
-                list.Add(new LootDef(xmlitem[itemtoid["Miscellaneous Dust"]], 0.02, 0.001));
-                list.Add(new LootDef(xmlitem[itemtoid["Special Dust"]], 0.003, 0.001));
+                if (enemy.Legendary)
+                {
+                    list.Add(new LootDef(xmlitem[itemtoid["Potion Dust"]], 0.25, 0.001));
+                    list.Add(new LootDef(xmlitem[itemtoid["Item Dust"]], 0.025, 0.001));
+                    list.Add(new LootDef(xmlitem[itemtoid["Miscellaneous Dust"]], 0.02, 0.001));
+                    list.Add(new LootDef(xmlitem[itemtoid["Special Dust"]], 0.003, 0.001));
+                }
+                else if (enemy.Epic)
+                {
+                    list.Add(new LootDef(xmlitem[itemtoid["Potion Dust"]], 0.25, 0.001));
+                    list.Add(new LootDef(xmlitem[itemtoid["Item Dust"]], 0.015, 0.001));
+                    list.Add(new LootDef(xmlitem[itemtoid["Miscellaneous Dust"]], 0.01, 0.001));
+                    list.Add(new LootDef(xmlitem[itemtoid["Special Dust"]], 0.002, 0.001));
+                }
+                else if (enemy.Rare)
+                {
+                    list.Add(new LootDef(xmlitem[itemtoid["Potion Dust"]], 0.5, 0.001));
+                    list.Add(new LootDef(xmlitem[itemtoid["Item Dust"]], 0.01, 0.001));
+                    list.Add(new LootDef(xmlitem[itemtoid["Miscellaneous Dust"]], 0.005, 0.001));
+                    list.Add(new LootDef(xmlitem[itemtoid["Special Dust"]], 0.001, 0.001));
+                }
             }
-            else if (enemy.Epic)
-            {
-                list.Add(new LootDef(xmlitem[itemtoid["Potion Dust"]], 0.25, 0.001));
-                list.Add(new LootDef(xmlitem[itemtoid["Item Dust"]], 0.015, 0.001));
-                list.Add(new LootDef(xmlitem[itemtoid["Miscellaneous Dust"]], 0.01, 0.001));
-                list.Add(new LootDef(xmlitem[itemtoid["Special Dust"]], 0.002, 0.001));
-            }
-            else if (enemy.Rare)
-            {
-                list.Add(new LootDef(xmlitem[itemtoid["Potion Dust"]], 0.5, 0.001));
-                list.Add(new LootDef(xmlitem[itemtoid["Item Dust"]], 0.01, 0.001));
-                list.Add(new LootDef(xmlitem[itemtoid["Miscellaneous Dust"]], 0.005, 0.001));
-                list.Add(new LootDef(xmlitem[itemtoid["Special Dust"]], 0.001, 0.001));
-            }
-
-            #endregion Rarity Enemies Loot
 
             return list;
         }

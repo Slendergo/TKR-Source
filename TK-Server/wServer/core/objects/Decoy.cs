@@ -47,7 +47,7 @@ namespace wServer.core.objects
         public override void Tick(ref TickTime time)
         {
             if (HP > duration - 2000)
-                ValidateAndMove(X + direction.X * speed * time.ElaspedMsDelta / 1000, Y + direction.Y * speed * time.ElaspedMsDelta / 1000);
+                ValidateAndMove(X + direction.X * speed * time.BehaviourTickTime, Y + direction.Y * speed * time.BehaviourTickTime);
 
             if (HP < 250 && !exploded)
             {

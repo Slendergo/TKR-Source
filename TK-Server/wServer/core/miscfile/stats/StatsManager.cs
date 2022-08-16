@@ -206,7 +206,7 @@ namespace wServer.core
             var rof = MIN_ATTACK_FREQ + this[5] / 75f * (MAX_ATTACK_FREQ - MIN_ATTACK_FREQ);
 
             if (Owner.HasConditionEffect(ConditionEffects.Berserk) || Owner.HasConditionEffect(ConditionEffects.NinjaBerserk))
-                rof *= 1.25f;
+                rof *= 1.5f;
 
             return rof;
         }
@@ -221,7 +221,7 @@ namespace wServer.core
 
             var mult = MIN_ATTACK_MULT + this[2] / 75f * (MAX_ATTACK_MULT - MIN_ATTACK_MULT);
             if (Owner.HasConditionEffect(ConditionEffects.Damaging) || Owner.HasConditionEffect(ConditionEffects.NinjaDamaging))
-                mult *= 1.25f;
+                mult *= 1.5f;
             return mult;
         }
 

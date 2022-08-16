@@ -981,7 +981,7 @@ public class Player extends Character {
         }
         var moveSpeed:Number = MIN_MOVE_SPEED + this.speed_ / 75 * (MAX_MOVE_SPEED - MIN_MOVE_SPEED);
         if (isSpeedy() || isNinjaSpeedy()) {
-            moveSpeed = moveSpeed * 1.5;
+            moveSpeed = moveSpeed * 1.4;
         }
         moveSpeed = moveSpeed * this.moveMultiplier_;
         return moveSpeed;

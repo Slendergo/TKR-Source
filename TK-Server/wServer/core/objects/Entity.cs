@@ -264,8 +264,6 @@ namespace wServer.core.objects
         public virtual void Destroy()
         {
             IsRemovedFromWorld = true;
-
-            WhenDestroying(this);
         }
 
         public ObjectStats ExportStats()
@@ -811,19 +809,6 @@ namespace wServer.core.objects
                 CalcNewLocation(pos.X + dx * ds, pos.Y + dy * ds, pos);
                 tds = tds + ds;
             }
-        }
-
-        private void WhenDestroying(Entity entity)
-        {
-            if (entity is Projectile)
-                return;
-
-            var players = World.GetPlayers().ToArray();
-            if (players.Length == 0)
-                return;
-
-            for (var i = 0; i < players.Length; i++)
-                players[i].PlayerUpdate.DeleteEntry(entity);
         }
 
         private class FPoint

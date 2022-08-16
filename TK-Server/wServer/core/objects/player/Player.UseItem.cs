@@ -778,7 +778,7 @@ namespace wServer.core.objects
 
         private void AEDecoy(TickTime time, Item item, Position target, ActivateEffect eff)
         {
-            var decoy = new Decoy(this, eff.DurationMS, 4);
+            var decoy = new Decoy(this, eff.DurationMS);
             decoy.Move(X, Y);
             World.EnterWorld(decoy);
         }

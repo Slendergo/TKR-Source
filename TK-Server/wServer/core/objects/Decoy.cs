@@ -11,18 +11,15 @@ namespace wServer.core.objects
         private static Random rand = new Random();
 
         private readonly int duration;
-        private readonly float speed;
 
         private Vector2 direction;
         private bool exploded = false;
         private Player player;
 
-        public Decoy(Player player, int duration, float tps) : base(player.GameServer, 0x0715, duration, true, true, true)
+        public Decoy(Player player, int duration) : base(player.GameServer, 0x0715, duration, true, true, true)
         {
             this.player = player;
             this.duration = duration;
-
-            speed = tps;
 
             var history = player.TryGetHistory(1);
 
@@ -47,7 +44,7 @@ namespace wServer.core.objects
         public override void Tick(ref TickTime time)
         {
             if (HP > duration - 2000)
-                ValidateAndMove(X + direction.X * speed * time.BehaviourTickTime, Y + direction.Y * speed * time.BehaviourTickTime);
+                ValidateAndMove(X + direction.X * 1.0f * time.BehaviourTickTime, Y + direction.Y * 1.0f * time.BehaviourTickTime);
 
             if (HP < 250 && !exploded)
             {

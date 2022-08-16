@@ -20,7 +20,6 @@ namespace wServer.networking.packets.outgoing
         {
             wtr.Write(TickId);
             wtr.Write(TickTime);
-
             wtr.Write((short)Statuses.Count);
             foreach (var status in Statuses)
                 status.Write(wtr);

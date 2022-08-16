@@ -5,7 +5,7 @@ namespace common.resources
     public class UnlockClass
     {
         public readonly uint? Cost;
-        public readonly ushort? Level;
+        public readonly int? Level;
         public readonly ushort? Type;
 
         public UnlockClass(XElement e)
@@ -15,7 +15,7 @@ namespace common.resources
             if (n != null && n.HasAttribute("type") && n.HasAttribute("level"))
             {
                 Type = n.GetAttribute<ushort>("type");
-                Level = n.GetAttribute<ushort>("level");
+                Level = n.GetAttribute<int>("level");
             }
 
             n = e.Element("UnlockCost");

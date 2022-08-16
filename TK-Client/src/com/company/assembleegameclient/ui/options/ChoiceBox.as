@@ -75,8 +75,10 @@ package com.company.assembleegameclient.ui.options
                break;
             }
          }
-         this.setSelected(this.selectedIndex_);
-         dispatchEvent(new Event(Event.CHANGE));
+         if(this.selectedIndex_ != -1){
+            this.setSelected(this.selectedIndex_);
+            dispatchEvent(new Event(Event.CHANGE));
+         }
       }
       
       public function value() : *

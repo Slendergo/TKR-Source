@@ -90,7 +90,7 @@ namespace wServer.core
         {
             var ret = 4 + 5.6f * (stat / 75f);
             if (entity.HasConditionEffect(ConditionEffects.Speedy))
-                ret *= 1.5f;
+                ret *= 1.4f;
             if (entity.HasConditionEffect(ConditionEffects.Slowed))
                 ret = 4;
             if (entity.HasConditionEffect(ConditionEffects.Paralyzed))

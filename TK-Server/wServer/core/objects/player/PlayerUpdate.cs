@@ -43,7 +43,6 @@ namespace wServer.core.objects
         private HashSet<IntPoint> ActiveTiles { get; set; }
         private UpdatedHashSet NewObjects { get; set; }
         private HashSet<WmapTile> NewStaticObjects { get; set; }
-        private int NewTimeCooldown { get; set; } = 0;
         private Dictionary<int, byte> SeenTiles { get; set; }
 
         public PlayerUpdate(Player player)
@@ -86,12 +85,6 @@ namespace wServer.core.objects
 
             var pathMap = new bool[World.Map.Width, World.Map.Height];
             StepPath(points, pathMap, px, py, px, py);
-        }
-
-        public void DeleteEntry(Entity entity)
-        {
-            if (StatsUpdates.ContainsKey(entity))
-                StatsUpdates.Remove(entity);
         }
 
         public HashSet<IntPoint> DetermineSight()
@@ -142,7 +135,7 @@ namespace wServer.core.objects
             if (drops.Count != 0)
                 NewObjects.RemoveWhere(_ => drops.Contains(_.Id));
             if (staticDrops.Count != 0)
-                NewStaticObjects.RemoveWhere(_ => staticDrops.Contains(_.ObjId));
+                _ = NewStaticObjects.RemoveWhere(_ => staticDrops.Contains(_.ObjId));
         }
 
         public void GetNewObjects(Update update)
@@ -244,16 +237,7 @@ namespace wServer.core.objects
                 StatsUpdates[e] = new Dictionary<StatDataType, object>();
 
             if (statChange.Stat != StatDataType.None)
-                    StatsUpdates[e][statChange.Stat] = statChange.Value;
-        }
-
-        public void Dispose()
-        {
-            SeenTiles = null;
-            ActiveTiles.Clear();
-            NewStaticObjects.Clear();
-            StatsUpdates.Clear();
-            NewObjects.Dispose();
+                StatsUpdates[e][statChange.Stat] = statChange.Value;
         }
 
         public void SendNewTick(int delta)
@@ -263,30 +247,19 @@ namespace wServer.core.objects
             var newTick = new NewTick()
             {
                 TickId = TickId,
-                TickTime = delta
-            };
-
-            if (StatsUpdates.Count > 0)
-            {
-                var statsUpdates = StatsUpdates.Where(ent => ent.Key != null && !ent.Key.IsRemovedFromWorld);
-                foreach(var entry in statsUpdates)
+                TickTime = delta,
+                Statuses = StatsUpdates.Select(_ => new ObjectStats()
                 {
-                    var entity = entry.Key;
-                    var statUpdate = entry.Value;
-                    var objStats = new ObjectStats()
+                    Id = _.Key.Id,
+                    Position = new Position()
                     {
-                        Id = entity.Id,
-                        Position = new Position()
-                        {
-                            X = entity.RealX,
-                            Y = entity.RealY
-                        },
-                        Stats = statUpdate.ToArray()
-                    };
-
-                    newTick.Statuses.Add(objStats);
-                }
-            }
+                        X = _.Key.RealX,
+                        Y = _.Key.RealY
+                    },
+                    Stats = _.Value.ToArray()
+                }).ToList()
+            };
+            StatsUpdates.Clear();
 
             Player.Client.SendPacket(newTick);
             Player.AwaitMove(TickId);
@@ -323,7 +296,7 @@ namespace wServer.core.objects
             var point = new IntPoint(x - px, y - py);
             if (!SightPoints.Contains(point))
                 return;
-            points.Add(point);
+            _ = points.Add(point);
 
             var t = World.Map[x, y];
             if (!(t.ObjType != 0 && t.ObjDesc != null && t.ObjDesc.BlocksSight))
@@ -332,7 +305,16 @@ namespace wServer.core.objects
                         StepPath(points, pathMap, x + dx, y + dy, px, py);
         }
 
-        public void DrawLine(int x, int y, int x2, int y2, Func<int, int, bool> func)
+        public void Dispose()
+        {
+            SeenTiles = null;
+            ActiveTiles.Clear();
+            NewStaticObjects.Clear();
+            StatsUpdates.Clear();
+            NewObjects.Dispose();
+        }
+
+        public static void DrawLine(int x, int y, int x2, int y2, Func<int, int, bool> func)
         {
             var w = x2 - x;
             var h = y2 - y;

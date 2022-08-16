@@ -250,7 +250,8 @@ namespace wServer.core.objects
                     DurationMS = -1
                 });
 
-            ClasifyEnemy();
+            if (ObjectDesc.Quest || ObjectDesc.Hero || ObjectDesc.Encounter)
+                ClasifyEnemy();
         }
 
         public override void Tick(ref TickTime time)

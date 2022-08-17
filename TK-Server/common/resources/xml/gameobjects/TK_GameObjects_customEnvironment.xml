@@ -268,182 +268,164 @@
 			</Frame>
 		</Animation>
 	</Object>
-  <Object type="0xb0b9" id="SL Rug">
-    <Class>GameObject</Class>
-    <Texture>
-      <File>customEnvironment</File>
-      <Index>0xc4</Index>
-    </Texture>
-    <DrawOnGround />
-    <Static />
-  </Object>
-    <Object type="0xb0bf" id="SL Rug Tl">
-    <Class>GameObject</Class>
-    <Texture>
-      <File>customEnvironment</File>
-      <Index>0xb3</Index>
-    </Texture>
-    <DrawOnGround />
-    <Static />
-  </Object>
-    <Object type="0xb0c0" id="SL Rug T">
-    <Class>GameObject</Class>
-    <Texture>
-      <File>customEnvironment</File>
-      <Index>0xb4</Index>
-    </Texture>
-    <DrawOnGround />
-    <Static />
-  </Object>
-    <Object type="0xb0c1" id="SL Rug TR">
-    <Class>GameObject</Class>
-    <Texture>
-      <File>customEnvironment</File>
-      <Index>0xb5</Index>
-    </Texture>
-    <DrawOnGround />
-    <Static />
-  </Object>
-      <Object type="0xb0c2" id="SL Rug L">
-    <Class>GameObject</Class>
-    <Texture>
-      <File>customEnvironment</File>
-      <Index>0xc3</Index>
-    </Texture>
-    <DrawOnGround />
-    <Static />
-  </Object>
-      <Object type="0xb0c3" id="SL Rug R">
-    <Class>GameObject</Class>
-    <Texture>
-      <File>customEnvironment</File>
-      <Index>0xc5</Index>
-    </Texture>
-    <DrawOnGround />
-    <Static />
-  </Object>
-      <Object type="0xb0c4" id="SL Rug BL">
-    <Class>GameObject</Class>
-    <Texture>
-      <File>customEnvironment</File>
-      <Index>0xd3</Index>
-    </Texture>
-    <DrawOnGround />
-    <Static />
-  </Object>
-        <Object type="0xb0c5" id="SL Rug B">
-    <Class>GameObject</Class>
-    <Texture>
-      <File>customEnvironment</File>
-      <Index>0xd4</Index>
-    </Texture>
-    <DrawOnGround />
-    <Static />
-  </Object>
-        <Object type="0xb0c6" id="SL Rug BR">
-    <Class>GameObject</Class>
-    <Texture>
-      <File>customEnvironment</File>
-      <Index>0xd5</Index>
-    </Texture>
-    <DrawOnGround />
-    <Static />
-  </Object>
-  <Object type="0x9001" id="Easy Bounty Tree">
-    <Class>GameObject</Class>
-    <Texture>
-      <File>customEnvironment</File>
-      <Index>0x81</Index>
-    </Texture>
-    <ShadowSize>75</ShadowSize>
-    <Static />
-  </Object>
-  <Object type="0x9002" id="Easy Bounty Rose">
-    <Class>GameObject</Class>
-    <Texture>
-      <File>customEnvironment</File>
-      <Index>0x82</Index>
-    </Texture>
-    <ShadowSize>50</ShadowSize>
-    <Static />
-  </Object>
-  <Object type="0x9003" id="Easy Bounty Skull">
-    <Class>GameObject</Class>
-    <Texture>
-      <File>customEnvironment</File>
-      <Index>0x83</Index>
-    </Texture>
-    <ShadowSize>75</ShadowSize>
-    <Static />
-  </Object>
-  <Object type="0x9026" id="Hard Bounty Withered Grass 1">
-    <Class>GameObject</Class>
-    <Texture>
-      <File>customEnvironment</File>
-      <Index>0x88</Index>
-    </Texture>
-    <ShadowSize>50</ShadowSize>
-  </Object>
-  <Object type="0x9027" id="Hard Bounty Withered Grass 2">
-    <Class>GameObject</Class>
-    <Texture>
-      <File>customEnvironment</File>
-      <Index>0x89</Index>
-    </Texture>
-    <ShadowSize>50</ShadowSize>
-  </Object>
-	<Object type="0xaa01" id="Wind Tile 1">
+	<Object type="0xb0b9" id="SL Rug">
 		<Class>GameObject</Class>
+		<Texture>
+			<File>customEnvironment</File>
+			<Index>0xc4</Index>
+		</Texture>
+		<DrawOnGround />
+		<Static />
+	</Object>
+	<Object type="0xb0bf" id="SL Rug Tl">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>customEnvironment</File>
+			<Index>0xb3</Index>
+		</Texture>
+		<DrawOnGround />
+		<Static />
+	</Object>
+	<Object type="0xb0c0" id="SL Rug T">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>customEnvironment</File>
+			<Index>0xb4</Index>
+		</Texture>
+		<DrawOnGround />
+		<Static />
+	</Object>
+	<Object type="0xb0c1" id="SL Rug TR">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>customEnvironment</File>
+			<Index>0xb5</Index>
+		</Texture>
+		<DrawOnGround />
+		<Static />
+	</Object>
+	<Object type="0xb0c2" id="SL Rug L">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>customEnvironment</File>
+			<Index>0xc3</Index>
+		</Texture>
+		<DrawOnGround />
+		<Static />
+	</Object>
+	<Object type="0xb0c3" id="SL Rug R">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>customEnvironment</File>
+			<Index>0xc5</Index>
+		</Texture>
+		<DrawOnGround />
+		<Static />
+	</Object>
+	<Object type="0xb0c4" id="SL Rug BL">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>customEnvironment</File>
+			<Index>0xd3</Index>
+		</Texture>
+		<DrawOnGround />
+		<Static />
+	</Object>
+	<Object type="0xb0c5" id="SL Rug B">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>customEnvironment</File>
+			<Index>0xd4</Index>
+		</Texture>
+		<DrawOnGround />
+		<Static />
+	</Object>
+	<Object type="0xb0c6" id="SL Rug BR">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>customEnvironment</File>
+			<Index>0xd5</Index>
+		</Texture>
+		<DrawOnGround />
+		<Static />
+	</Object>
+	<Object type="0x9001" id="Easy Bounty Tree">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>customEnvironment</File>
+			<Index>0x81</Index>
+		</Texture>
+		<ShadowSize>75</ShadowSize>
+		<Static />
+	</Object>
+	<Object type="0x9002" id="Easy Bounty Rose">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>customEnvironment</File>
+			<Index>0x82</Index>
+		</Texture>
+		<ShadowSize>50</ShadowSize>
+		<Static />
+	</Object>
+	<Object type="0x9003" id="Easy Bounty Skull">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>customEnvironment</File>
+			<Index>0x83</Index>
+		</Texture>
+		<ShadowSize>75</ShadowSize>
+		<Static />
+	</Object>
+	<Object type="0x9026" id="Hard Bounty Withered Grass 1">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>customEnvironment</File>
+			<Index>0x88</Index>
+		</Texture>
+		<ShadowSize>50</ShadowSize>
+	</Object>
+	<Object type="0x9027" id="Hard Bounty Withered Grass 2">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>customEnvironment</File>
+			<Index>0x89</Index>
+		</Texture>
+		<ShadowSize>50</ShadowSize>
+	</Object>
+	<Ground type="0xaa01" id="Wind Tile 1">
 		<Texture>
 			<File>customEnvironment1</File>
 			<Index>0x30</Index>
 		</Texture>
-		<DrawOnGround />
-		<Static />
-	</Object>
-	<Object type="0xaa02" id="Wind Tile 2">
-		<Class>GameObject</Class>
+	</Ground>
+	<Ground type="0xaa02" id="Wind Tile 2">
 		<Texture>
 			<File>customEnvironment1</File>
 			<Index>0x31</Index>
 		</Texture>
-		<DrawOnGround />
-		<Static />
-	</Object>
-	<Object type="0xaa03" id="Wind Tile 3">
-		<Class>GameObject</Class>
+	</Ground>
+	<Ground type="0xaa03" id="Wind Tile 3">
 		<Texture>
 			<File>customEnvironment1</File>
 			<Index>0x32</Index>
 		</Texture>
-		<DrawOnGround />
-		<Static />
-	</Object>
-	<Object type="0xaa04" id="Wind Tile 4">
-		<Class>GameObject</Class>
+	</Ground>
+	<Ground type="0xaa04" id="Wind Tile 4">
 		<Texture>
 			<File>customEnvironment1</File>
 			<Index>0x33</Index>
 		</Texture>
-		<DrawOnGround />
-		<Static />
-	</Object>
-	<Object type="0xaa05" id="Wind Tile 5">
-		<Class>GameObject</Class>
+	</Ground>
+	<Ground type="0xaa05" id="Wind Tile 5">
 		<Texture>
 			<File>customEnvironment1</File>
 			<Index>0x34</Index>
 		</Texture>
-		<DrawOnGround />
-		<Static />
-	</Object>
-	<Object type="0xaa06" id="Wind Tile 6">
-		<Class>GameObject</Class>
+	</Ground>
+	<Ground type="0xaa06" id="Wind Tile 6">
 		<Texture>
 			<File>customEnvironment1</File>
 			<Index>0x35</Index>
 		</Texture>
-		<DrawOnGround />
-		<Static />
-	</Object>
+	</Ground>
 </Objects>

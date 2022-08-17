@@ -2527,8 +2527,8 @@
     <Level>20</Level>
     <Projectile id="0">
       <ObjectId>Red Fire</ObjectId>
-      <MinDamage>0</MinDamage>
-      <MaxDamage>0</MaxDamage>
+      <MinDamage>35</MinDamage>
+      <MaxDamage>45</MaxDamage>
       <Speed>55</Speed>
       <LifetimeMS>900</LifetimeMS>
     </Projectile>

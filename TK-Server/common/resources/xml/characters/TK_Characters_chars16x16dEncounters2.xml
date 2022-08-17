@@ -799,9 +799,10 @@
     <ShadowSize>40</ShadowSize>
     <Z>0.2</Z>
     <Flying />
-    <MaxHitPoints>100000</MaxHitPoints>
+    <MaxHitPoints>65000</MaxHitPoints>
     <Defense>60</Defense>
     <XpMult>0.9</XpMult>
+	  <ConditionalEffect duration="5" target="1">Stasis</ConditionalEffect>  
     <LeachHealth />
     <God />
     <StasisImmune />

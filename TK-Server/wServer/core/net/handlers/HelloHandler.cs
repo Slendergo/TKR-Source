@@ -98,12 +98,10 @@ namespace wServer.core.net.handlers
 
             if (s1 == DbLoginStatus.AccountNotExists)
             {
-                if (s2 != RegisterStatus.OK)
-                {
-                    client.SendFailure("Bad Login", FailureMessage.MessageWithDisconnect);
-                    return null;
-                }
+                client.SendFailure("Bad Login", FailureMessage.MessageWithDisconnect);
+                return null;
             }
+
             if (s1 == DbLoginStatus.InvalidCredentials)
             {
                 client.SendFailure("Email or Password is incorrect.", FailureMessage.MessageWithDisconnect);

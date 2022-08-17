@@ -3,6 +3,11 @@ using System;
 
 namespace common.database
 {
+    public struct DbClassStatsEntry
+    {
+        public int BestFame;
+        public int BestLevel;
+    }
     public class DbClassStats : RedisObject
     {
         public DbClassStats(DbAccount acc, ushort? type = null, bool isAsync = false)

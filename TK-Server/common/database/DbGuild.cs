@@ -2,6 +2,24 @@
 
 namespace common.database
 {
+    public enum DbAddGuildMemberStatus
+    {
+        OK,
+        NameNotChosen,
+        AlreadyInGuild,
+        InAnotherGuild,
+        IsAMember,
+        GuildFull,
+        Error
+    }
+
+    public enum DbGuildCreateStatus
+    {
+        OK,
+        InvalidName,
+        UsedName
+    }
+
     public class DbGuild : RedisObject
     {
         public readonly object MemberLock;

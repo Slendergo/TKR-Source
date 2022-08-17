@@ -8,6 +8,8 @@ using System.Linq;
 
 namespace common
 {
+    public struct CharacterModel { public int Id; public int Level; }
+
     public struct FameStatInfo
     {
         public string Description;
@@ -17,120 +19,6 @@ namespace common
 
     public class FameStats
     {
-        private static readonly Dictionary<string, FameStatInfo> _fameBonuses = new Dictionary<string, FameStatInfo>()
-        {
-            ["Ancestor"] = new FameStatInfo()
-            {
-                Description = "First death of any of your characters",
-                Condition = (f, c, b) => c.Id < 3,
-                Bonus = (f) => (int)(f * 0.1 + 20)
-            },
-            ["Pacifist"] = new FameStatInfo()
-            {
-                Description = "Never shot a bullet which hit an enemy",
-                Condition = (f, c, b) => f.ShotsThatDamage == 0,
-                Bonus = (f) => (int)(f * 0.25)
-            },
-            ["Thirsty"] = new FameStatInfo()
-            {
-                Description = "Never drank a potion from inventory",
-                Condition = (f, c, b) => f.PotionsDrunk == 0,
-                Bonus = (f) => (int)(f * 0.25)
-            },
-            ["Mundane"] = new FameStatInfo()
-            {
-                Description = "Never used special ability (requires level 20)",
-                Condition = (f, c, b) => c.Level == 20 && f.SpecialAbilityUses == 0,
-                Bonus = (f) => (int)(f * 0.25)
-            },
-            ["Boots on the Ground"] = new FameStatInfo()
-            {
-                Description = "Never teleported",
-                Condition = (f, c, b) => f.Teleports == 0,
-                Bonus = (f) => (int)(f * 0.25)
-            },
-            ["Tunnel Rat"] = new FameStatInfo()
-            {
-                Description = "Completed every dungeon type",
-                Condition = (f, c, b) => f.PirateCavesCompleted > 0 && f.UndeadLairsCompleted > 0 && f.AbyssOfDemonsCompleted > 0
-                && f.SnakePitsCompleted > 0 && f.SpiderDensCompleted > 0 && f.SpriteWorldsCompleted > 0 && f.TombsCompleted > 0
-                && f.TrenchesCompleted > 0 && f.JunglesCompleted > 0 && f.ManorsCompleted > 0,
-                Bonus = (f) => (int)(f * 0.1)
-            },
-            ["Enemy of the Gods"] = new FameStatInfo()
-            {
-                Description = "More than 10% of kills are gods (requires level 20)",
-                Condition = (f, c, b) => c.Level == 20 && (double)f.GodKills / (f.GodKills + f.MonsterKills) > 0.1,
-                Bonus = (f) => (int)(f * 0.1)
-            },
-            ["Slayer of the Gods"] = new FameStatInfo()
-            {
-                Description = "More than 50% of kills are gods (requires level 20)",
-                Condition = (f, c, b) => c.Level == 20 && (double)f.GodKills / (f.GodKills + f.MonsterKills) > 0.5,
-                Bonus = (f) => (int)(f * 0.1)
-            },
-            ["Oryx Slayer"] = new FameStatInfo()
-            {
-                Description = "Dealt Killing blow to Oryx",
-                Condition = (f, c, b) => f.OryxKills > 0,
-                Bonus = (f) => (int)(f * 0.1)
-            },
-            ["Accurate"] = new FameStatInfo()
-            {
-                Description = "Accuracy of better than 25% (requires level 20)",
-                Condition = (f, c, b) => c.Level == 20 && (double)f.ShotsThatDamage / f.Shots > 0.25,
-                Bonus = (f) => (int)(f * 0.1)
-            },
-            ["Sharpshooter"] = new FameStatInfo()
-            {
-                Description = "Accuracy of better than 50% (requires level 20)",
-                Condition = (f, c, b) => c.Level == 20 && (double)f.ShotsThatDamage / f.Shots > 0.5,
-                Bonus = (f) => (int)(f * 0.1)
-            },
-            ["Sniper"] = new FameStatInfo()
-            {
-                Description = "Accuracy of better than 75% (requires level 20)",
-                Condition = (f, c, b) => c.Level == 20 && (double)f.ShotsThatDamage / f.Shots > 0.75,
-                Bonus = (f) => (int)(f * 0.1)
-            },
-            ["Explorer"] = new FameStatInfo()
-            {
-                Description = "More than 1 million tiles uncovered",
-                Condition = (f, c, b) => f.TilesUncovered > 1000000,
-                Bonus = (f) => (int)(f * 0.05)
-            },
-            ["Cartographer"] = new FameStatInfo()
-            {
-                Description = "More than 4 million tiles uncovered",
-                Condition = (f, c, b) => f.TilesUncovered > 4000000,
-                Bonus = (f) => (int)(f * 0.05)
-            },
-            ["Team Player"] = new FameStatInfo()
-            {
-                Description = "More than 100 party member level ups",
-                Condition = (f, c, b) => f.LevelUpAssists > 100,
-                Bonus = (f) => (int)(f * 0.1)
-            },
-            ["Leader of Men"] = new FameStatInfo()
-            {
-                Description = "More than 1000 party member level ups",
-                Condition = (f, c, b) => f.LevelUpAssists > 1000,
-                Bonus = (f) => (int)(f * 0.1)
-            },
-            ["Doer of Deeds"] = new FameStatInfo()
-            {
-                Description = "More than 1000 quests completed",
-                Condition = (f, c, b) => f.QuestsCompleted > 1000,
-                Bonus = (f) => (int)(f * 0.05)
-            },
-            ["Friend of the Cubes"] = new FameStatInfo()
-            {
-                Description = "Never killed a cube (requires level 20)",
-                Condition = (f, c, b) => c.Level == 20 && f.CubeKills == 0,
-                Bonus = (f) => (int)(f * 0.05)
-            }
-        };
-
         private static readonly Tuple<string, string, Func<FameStats, DbChar, int, bool>, Func<double, int>>[] bonusDat
             = new[] {
             Tuple.Create(
@@ -321,31 +209,6 @@ namespace common
                 }
             }
             return ret;
-        }
-
-        public int CalculateBonuses(XmlData gameData, CharacterModel character, ClassStatsModel stats, out bool isFirstBorn)
-        {
-            var fame = 0;
-
-            foreach (var fameBonus in _fameBonuses.Values)
-                if (fameBonus.Condition(this, character, character.Fame))
-                    fame += fameBonus.Bonus(character.Fame + fame);
-
-            var wellEquipped = character.Items.Take(4).Where(_ => _ != 0xffff).Sum(_ => gameData.Items[_].FameBonus) / 100d;
-
-            fame += (int)((character.Fame) * wellEquipped);
-
-            var firstBorn = gameData.Classes.Select(_ => stats[_.Key].BestFame).ToArray();
-
-            if (character.Fame + fame > firstBorn.Max())
-            {
-                fame += (int)((character.Fame + fame) * 0.1);
-                isFirstBorn = true;
-            }
-            else
-                isFirstBorn = false;
-
-            return character.Fame + fame;
         }
 
         public int CalculateTotal(XmlData data, DbChar character, DbClassStats stats, out bool firstBorn)

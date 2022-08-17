@@ -30,7 +30,7 @@ namespace wServer.logic.loot
             {
                 if (Rand.NextDouble() < i.Probabilty)
                 {
-                    yield return i.Item;
+                    yield return core.Resources.GameData.Items[core.Resources.GameData.IdToObjectType[i.Item]];
                     retCount--;
                 }
 
@@ -42,94 +42,6 @@ namespace wServer.logic.loot
 
     public class Loot : List<MobDrops>
     {
-        #region Configure DropRates
-
-        public sealed class DropRates
-        {
-            public static double FRAGMENT_THRESHOLD;
-            public static double FRAGMENTS;
-            public static string[] FRAGMENTS_NAMES;
-
-            public static double LG;
-            public static double LG_THRESHOLD;
-
-            public static double MT;
-            public static double MT_THRESHOLD;
-
-            public static double ORYX_ITEMS;
-            public static string[] ORYX_ITEMS_NAMES;
-            public static double ORYX_ITEMS_THRESHOLD;
-
-            public static double LG_TALISMAN;
-            public static string[] LG_TALISMAN_NAMES;
-            public static double LG_TALISMAN_THRESHOLD;
-
-            public static double MT_TALISMAN;
-            public static string[] MT_TALISMAN_NAMES;
-            public static double MT_TALISMAN_THRESHOLD;
-
-            public static double HARD_BOUNTY;
-            public static string[] HARD_BOUNTY_NAMES;
-            public static double HARD_BOUNTY_THRESHOLD;
-        }
-
-        public static void ConfigureDropRates()
-        {
-            // configure drop rates
-            DropRates.MT = 1.0 / 3000d;
-            DropRates.LG = 1.0 / 2000d; 
-            DropRates.FRAGMENTS = 1.0 / 1500d;
-            DropRates.ORYX_ITEMS = 1.0 / 1000d;
-            DropRates.LG_TALISMAN = 1.0 / 1500d;
-            DropRates.MT_TALISMAN = 1.0 / 2000d;
-            DropRates.HARD_BOUNTY = 1.0 / 2000d;
-            //configure threshold
-            DropRates.MT_THRESHOLD = 0.05; // 5%
-            DropRates.LG_THRESHOLD = 0.03; // 3%
-            DropRates.FRAGMENT_THRESHOLD = 0.05; // 5%
-            DropRates.ORYX_ITEMS_THRESHOLD = 0.05; // 5%
-            DropRates.LG_TALISMAN_THRESHOLD = 0.06; // 6%
-            DropRates.MT_TALISMAN_THRESHOLD = 0.1; // 10%
-            DropRates.HARD_BOUNTY_THRESHOLD = 0.5; // 10%
-
-            // configure custom items
-            DropRates.ORYX_ITEMS_NAMES = new[]
-            {
-                "Oryx's Armor of War",
-                "Oryx's Broken Helm",
-                "Shattered Horn of Oryx",
-                "The Horn Breaker"
-            };
-            DropRates.FRAGMENTS_NAMES = new[]
-            {
-                "Fire Fragment",
-                "Water Fragment",
-                "Earth Fragment",
-                "Wind Fragment"
-            };
-            DropRates.LG_TALISMAN_NAMES = new[]
-            {
-                "Severed Marble Hand",
-                "Talisman of Luck"
-            };
-            DropRates.MT_TALISMAN_NAMES = new[]
-            {
-                "Cerberus's Right Claw",
-                "Cerberus's Left Claw"
-            };
-            DropRates.HARD_BOUNTY_NAMES = new[]
-            {
-                "Raven's Head",
-                "Dark Skeleton's Shield",
-                "Thanatos's Garments",
-                "Heart of the Beast",
-                "Beast Gem",
-                "Cerberus's Ribcage"
-            };
-        }
-
-        #endregion Configure DropRates
-
         #region Utils
 
         /*  Brown 0,  Pink 1,   Purple 2, Gold 3,   Cyan 4,   Blue 5,   Orange 6, White 7,  Mythical 8, Eternal 9 */
@@ -142,48 +54,48 @@ namespace wServer.logic.loot
         private static readonly int[] RingT = new int[] { 9 };
         private static readonly int[] WeaponT = new int[] { 1, 2, 3, 8, 17, 24 };
 
-        public static bool DropInSoulboundBag(Item item)
+        public static bool DropsInSoulboundBag(ItemType type, int tier)
         {
-            foreach (var weaponid in WeaponT)
-                if (item.SlotType == weaponid)
-                    if (item.Tier != null && item.Tier >= 8 && !(item.Tier <= 3))
-                        return true;
-
-            foreach (var abilityId in AbilityT)
-                if (item.SlotType == abilityId)
-                    if (item.Tier != null && item.Tier >= 3 && !(item.Tier <= 3))
-                        return true;
-
-            foreach (var armorId in ArmorT)
-                if (item.SlotType == armorId)
-                    if (item.Tier != null && item.Tier >= 8 && !(item.Tier <= 3))
-                        return true;
-
-            foreach (var ringId in RingT)
-                if (item.SlotType == ringId)
-                    if (item.Tier != null && item.Tier >= 3 && !(item.Tier <= 2))
-                        return true;
-
-            return false;
+            if (type == ItemType.Ring)
+                if (tier >= 2)
+                    return true;
+            if (type == ItemType.Ability)
+                if (tier > 2)
+                    return true;
+            return tier > 6;
         }
 
-        private static int ReturnBagType(Item i, int bType)
+        // slotType
+        // tier
+        // item
+        private static Dictionary<ItemType, Dictionary<int, List<Item>>> Items = new Dictionary<ItemType, Dictionary<int, List<Item>>>();
+
+        public List<Item> GetItems(ItemType itemType, int tier)
         {
-            var bagType = bType;
+            if (Items.TryGetValue(itemType, out var keyValuePairs))
+                if (keyValuePairs.TryGetValue(tier, out var items))
+                    return items;
+            return null;
+        }
 
-            if (i.BagType > bagType) bagType = i.BagType;
+        public static void Initialize(GameServer gameServer)
+        {
+            // get all tiers
 
-            if (DropInSoulboundBag(i) == false && bagType < 1) bagType = 1; //pink
+            var allItems = gameServer.Resources.GameData.Items;
+            foreach (var item in allItems.Values)
+            {
+                var itemType = TierLoot.SlotTypesToItemType(item.SlotType);
+                if (!Items.TryGetValue(itemType, out var dict))
+                    Items[itemType] = dict = new Dictionary<int, List<Item>>();
+                if (!dict.TryGetValue(item.Tier, out var items))
+                    Items[itemType][item.Tier] = items = new List<Item>();
+                items.Add(item);
+            }
 
-            if (DropInSoulboundBag(i) && bagType < 2) bagType = 2; //purple
+            //GetSlotTypes
 
-            if (i.ObjectType == 0x5060 && bagType < 3) bagType = 3;
-
-            if (i.Legendary && bagType < 7) bagType = 7;
-
-            if ((i.Revenge || i.Mythical || i.Eternal) && bagType < 8) bagType = 8;
-
-            return bagType;
+            Items = Items.OrderBy(_ => _.Key).ToDictionary(_ => _.Key, _ => _.Value);
         }
 
         public static double GetPlayerLootBoost(Player player)
@@ -204,24 +116,24 @@ namespace wServer.logic.loot
 
             if (enemy.Legendary)
             {
-                list.Add(new LootDef(xmlitem[itemtoid["Potion Dust"]], 0.25, 0.001));
-                list.Add(new LootDef(xmlitem[itemtoid["Item Dust"]], 0.025, 0.001));
-                list.Add(new LootDef(xmlitem[itemtoid["Miscellaneous Dust"]], 0.02, 0.001));
-                list.Add(new LootDef(xmlitem[itemtoid["Special Dust"]], 0.003, 0.001));
+                list.Add(new LootDef("Potion Dust", 0.25, 0.001));
+                list.Add(new LootDef("Item Dust", 0.025, 0.001));
+                list.Add(new LootDef("Miscellaneous Dust", 0.02, 0.001));
+                list.Add(new LootDef("Special Dust", 0.003, 0.001));
             }
             else if (enemy.Epic)
             {
-                list.Add(new LootDef(xmlitem[itemtoid["Potion Dust"]], 0.25, 0.001));
-                list.Add(new LootDef(xmlitem[itemtoid["Item Dust"]], 0.015, 0.001));
-                list.Add(new LootDef(xmlitem[itemtoid["Miscellaneous Dust"]], 0.01, 0.001));
-                list.Add(new LootDef(xmlitem[itemtoid["Special Dust"]], 0.002, 0.001));
+                list.Add(new LootDef("Potion Dust", 0.25, 0.001));
+                list.Add(new LootDef("Item Dust", 0.015, 0.001));
+                list.Add(new LootDef("Miscellaneous Dust", 0.01, 0.001));
+                list.Add(new LootDef("Special Dust", 0.002, 0.001));
             }
             else if (enemy.Rare)
             {
-                list.Add(new LootDef(xmlitem[itemtoid["Potion Dust"]], 0.5, 0.001));
-                list.Add(new LootDef(xmlitem[itemtoid["Item Dust"]], 0.01, 0.001));
-                list.Add(new LootDef(xmlitem[itemtoid["Miscellaneous Dust"]], 0.005, 0.001));
-                list.Add(new LootDef(xmlitem[itemtoid["Special Dust"]], 0.001, 0.001));
+                list.Add(new LootDef("Potion Dust", 0.5, 0.001));
+                list.Add(new LootDef("Item Dust", 0.01, 0.001));
+                list.Add(new LootDef("Miscellaneous Dust", 0.005, 0.001));
+                list.Add(new LootDef("Special Dust", 0.001, 0.001));
             }
 
             return list;
@@ -235,33 +147,45 @@ namespace wServer.logic.loot
 
         public void Handle(Enemy enemy, TickTime time)
         {
-            if (enemy.SpawnedByBehavior) return;
+            if (enemy.SpawnedByBehavior)
+                return;
 
             var possDrops = new List<LootDef>();
             GetEnemyClasifiedLoot(possDrops, enemy);
             foreach (var i in this)
                 i.Populate(possDrops);
 
-            var privDrops = new Dictionary<Player, IList<Item>>();
             var pubDrops = new List<Item>();
 
             foreach (var i in possDrops)
             {
-                if (i.Threshold <= 0 && DropInSoulboundBag(i.Item))
+                var chance = Rand.NextDouble();
+                if (i.ItemType == ItemType.None)
                 {
-                    i.Threshold = 0.01;
+                    // we treat item names as soulbound never public loot
                     continue;
                 }
 
-                if (i.Threshold <= 0 && Rand.NextDouble() < i.Probabilty)
-                    pubDrops.Add(i.Item);
+                if (DropsInSoulboundBag(i.ItemType, i.Tier))
+                {
+                    continue;
+                }
+
+                if (i.Threshold <= 0 && chance < i.Probabilty)
+                {
+                    var items = GetItems(i.ItemType, i.Tier);
+                    var chosenTieredItem = items[Rand.Next(items.Count)];
+                    pubDrops.Add(chosenTieredItem);
+                }
             }
+
             ProcessPublicDrops(pubDrops, enemy);
 
             var playersAvaliable = enemy.DamageCounter.GetPlayerData();
+            if (playersAvaliable == null)
+                return;
 
-            if (playersAvaliable == null) return;
-
+            var privDrops = new Dictionary<Player, IList<Item>>();
             foreach (var tupPlayer in playersAvaliable)
             {
                 var player = tupPlayer.Item1;
@@ -271,12 +195,8 @@ namespace wServer.logic.loot
                     continue;
 
                 var percentageOfDamage = (Math.Round(100.0 * (playerDamage / (double)enemy.DamageCounter.TotalDamage), 4) / 100);
-                var enemyRarityPercent = 
-                    enemy.Legendary ? 0.05 : // 5%
-                    enemy.Epic ? 0.025 : // 2.5 %
-                    enemy.Rare ? 0.0125 : 0; // 1.25%
                 
-                var playerLootBoost = GetPlayerLootBoost(player) + enemyRarityPercent;
+                var playerLootBoost = GetPlayerLootBoost(player);
 
                 //Console.WriteLine($"Loot Boost: {playerLootBoost}");
 
@@ -287,28 +207,28 @@ namespace wServer.logic.loot
                 }
 
                 var drops = new List<Item>();
-
                 foreach (var i in possDrops)
                 {
-                    var lootBoosts = i.Item.Potion ? i.Probabilty : 
-                        i.Probabilty + (i.Probabilty * playerLootBoost);
+                    var c = Rand.Next(0, 100);
+                    var chance = Math.Round(c / 100.0, 4);
 
-                    //Console.WriteLine(i.Probabilty + " | " + (i.Probabilty + (i.Probabilty * playerLootBoost)));
-                    var chance = Rand.NextDouble();
+                    var probability = i.Probabilty + (i.Probabilty * playerLootBoost);
 
-                    //if (i.Item.Tier == null)
-                    //{
-                    //    Console.WriteLine("Item: " + i.Item.ObjectId);
-                    //    Console.WriteLine("Drop Chance: " + chance);
-                    //    Console.WriteLine("Loot Boost: " + lootBoosts);
-                    //    Console.WriteLine("Item Probability: " + i.Probabilty);
-                    //    Console.WriteLine("Item Threshold: " + i.Threshold + "%");
-                    //    Console.WriteLine("Damage Dealt: " + percentageOfDamage + "%");
-                    //    Console.WriteLine("\n\n");
-                    //}
+                    if (i.Threshold >= 0 && i.Threshold < percentageOfDamage && chance < probability)
+                    {
+                        Console.WriteLine($"{chance} < {probability} [{c}]");
 
-                    if (i.Threshold >= 0 && i.Threshold < percentageOfDamage && chance < lootBoosts)
-                        drops.Add(i.Item);
+                        if (i.ItemType == ItemType.None)
+                        {
+                            var namedItem = enemy.GameServer.Resources.GameData.Items[enemy.GameServer.Resources.GameData.IdToObjectType[i.Item]];
+                            drops.Add(namedItem);
+                            continue;
+                        }
+
+                        var items = GetItems(i.ItemType, i.Tier);
+                        var chosenTieredItem = items[Rand.Next(items.Count)];
+                        drops.Add(chosenTieredItem);
+                    }
                 }
 
                 privDrops[player] = drops;
@@ -317,6 +237,30 @@ namespace wServer.logic.loot
             foreach (var priv in privDrops)
                 if (priv.Value.Count > 0)
                     ProcessPrivateBags(enemy, priv.Value, enemy.GameServer, priv.Key);
+        }
+
+        private static void ProcessPublicDrops(List<Item> drops, Enemy enemy)
+        {
+            var bagType = 0;
+            var idx = 0;
+            var items = new Item[8];
+            foreach (var i in drops)
+            {
+                if (i.BagType > bagType)
+                    bagType = i.BagType;
+
+                items[idx] = i;
+                idx++;
+                if (idx == 8)
+                {
+                    DropBag(enemy, new int[] { }, bagType, items, false);
+                    idx = 0;
+                    items = new Item[8];
+                    bagType = 0;
+                }
+            }
+            if (idx > 0)
+                DropBag(enemy, new int[] { }, bagType, items, false);
         }
 
         private static void ProcessPrivateBags(Enemy enemy, IEnumerable<Item> loots, GameServer core, params Player[] owners)
@@ -332,10 +276,10 @@ namespace wServer.logic.loot
 
             foreach (var i in loots)
             {
-                bagType = ReturnBagType(i, bagType);
+                if (i.BagType > bagType)
+                    bagType = i.BagType;
 
                 var isEligible = i.Revenge || i.Mythical || i.Legendary;
-
                 if (player != null && isEligible)
                 {
                     var chat = core.ChatManager;
@@ -350,7 +294,6 @@ namespace wServer.logic.loot
                     {
                         var discord = core.Configuration.discordIntegration;
                         var players = world.Players.Count(p => p.Value.Client != null);
-
 
                         try
                         {
@@ -447,41 +390,23 @@ namespace wServer.logic.loot
             container.SetDefaultSize(bagType >= 6 ? 120 : bagType >= 3 ? 90 : 70);
             enemy.World.EnterWorld(container);
         }
-
-        private static void ProcessPublicDrops(List<Item> pubDrops, Enemy enemy)
-        {
-            var bagType = 0;
-            var idx = 0;
-            var items = new Item[8];
-            foreach (var i in pubDrops)
-            {
-                bagType = ReturnBagType(i, bagType);
-                items[idx] = i;
-                idx++;
-                if (idx == 8)
-                {
-                    DropBag(enemy, new int[] { }, bagType, items, false);
-                    idx = 0;
-                    items = new Item[8];
-                    bagType = 0;
-                }
-            }
-            if (idx > 0)
-                DropBag(enemy, new int[] { }, bagType, items, false);
-        }
     }
 
     public class LootDef
     {
-        public readonly Item Item;
+        public string Item;
         public double Probabilty;
         public double Threshold;
+        public int Tier;
+        public ItemType ItemType;
 
-        public LootDef(Item item, double probabilty, double threshold)
+        public LootDef(string item, double probabilty, double threshold, int tier = -1, ItemType itemType = ItemType.None)
         {
             Item = item;
             Probabilty = probabilty;
             Threshold = threshold;
+            Tier = tier;
+            ItemType = itemType;
         }
     }
 }

@@ -1,4 +1,36 @@
 <Objects>
+	<Object type="0x141" id="Wind Rock 1">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>custom16x16Environment</File>
+			<Index>0x29</Index>
+		</Texture>
+		<ShadowSize>50</ShadowSize>
+	</Object>
+	<Object type="0x142" id="Wind Rock 2">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>custom16x16Environment</File>
+			<Index>0x2a</Index>
+		</Texture>
+		<ShadowSize>50</ShadowSize>
+	</Object>
+	<Object type="0x143" id="Wind Rock 3">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>custom16x16Environment</File>
+			<Index>0x2b</Index>
+		</Texture>
+		<ShadowSize>50</ShadowSize>
+	</Object>
+	<Object type="0x144" id="Wind Rock 4">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>custom16x16Environment</File>
+			<Index>0x2c</Index>
+		</Texture>
+		<ShadowSize>50</ShadowSize>
+	</Object>
   <Object type="0xa007" id="Gravestone 9/16">
     <Class>GameObject</Class>
     <ShowName />

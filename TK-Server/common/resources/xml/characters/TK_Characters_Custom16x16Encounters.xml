@@ -86,7 +86,7 @@
 			<Rotation>20</Rotation>
 		</Projectile>
 	</Object>
-	<Object type="0x14C" id="Haunted Golem">
+	<Object type="0x14C" id="Haunted Warrior">
 		<DisplayId>Haunted Golem</DisplayId>
 		<Class>Character</Class>
 		<Enemy />
@@ -111,6 +111,56 @@
 			<LifetimeMS>555</LifetimeMS>
 		</Projectile>
 	</Object>
+	<!--<Object type="0x280" id="Haunted Knight">
+		<DisplayId>Haunted Golem</DisplayId>
+		<Class>Character</Class>
+		<Enemy />
+		<AnimatedTexture>
+			<File>Custom16x16Encounters</File>
+			<Index>38</Index>
+		</AnimatedTexture>
+		<Size>120</Size>
+		<MaxHitPoints>12000</MaxHitPoints>
+		<Defense>40</Defense>
+		<StasisImmune/>
+		<StunImmune/>
+		<Projectile id="0">
+			<ObjectId>Yellow HC Shot</ObjectId>
+			<Damage>40</Damage>
+			<Speed>80</Speed>
+			<Size>90</Size>
+			<ArmorPiercing/>
+			<Amplitude>2</Amplitude>
+			<Frequency>.2</Frequency>
+			<ArcGap>10</ArcGap>
+			<LifetimeMS>555</LifetimeMS>
+		</Projectile>
+	</Object>-->
+	<!--<Object type="0x281" id="Haunted Guard">
+		<DisplayId>Haunted Golem</DisplayId>
+		<Class>Character</Class>
+		<Enemy />
+		<AnimatedTexture>
+			<File>Custom16x16Encounters</File>
+			<Index>38</Index>
+		</AnimatedTexture>
+		<Size>120</Size>
+		<MaxHitPoints>12000</MaxHitPoints>
+		<Defense>40</Defense>
+		<StasisImmune/>
+		<StunImmune/>
+		<Projectile id="0">
+			<ObjectId>Yellow HC Shot</ObjectId>
+			<Damage>40</Damage>
+			<Speed>80</Speed>
+			<Size>90</Size>
+			<ArmorPiercing/>
+			<Amplitude>2</Amplitude>
+			<Frequency>.2</Frequency>
+			<ArcGap>10</ArcGap>
+			<LifetimeMS>555</LifetimeMS>
+		</Projectile>
+	</Object>-->
 	<Object type="0x14D" id="Crawling Devourer">
 		<DisplayId>Crawling Devourer</DisplayId>
 		<Class>Character</Class>

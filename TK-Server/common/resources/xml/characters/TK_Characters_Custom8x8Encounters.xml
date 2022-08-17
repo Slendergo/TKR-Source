@@ -1,4 +1,12 @@
 <Objects>
+	<Object type="0x9905" id="Generator Pog">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>CustomObjectsSkillTree</File>
+			<Index>0x0f</Index>
+		</Texture>
+		<Static />
+	</Object>
 	<Object type="0x9951" id="Elemental Fire Wall">
 		<Enemy />
 		<Class>Character</Class>
@@ -712,85 +720,207 @@
       <MultiHit/>
     </Projectile>
   </Object>
-  <Object type="0x67c2" id="Roman Gladiator">
-    <Enemy/>
-    <Group>Roman</Group>
-    <DisplayId>Roman Gladiator</DisplayId>
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>Custom8x8Encounters</File>
-      <Index>30</Index>
-    </AnimatedTexture>
-    <HitSound>monster/oryx_hit</HitSound>
-    <DeathSound>monster/abyss_brutes_death</DeathSound>
-    <Size>50</Size>
-    <StasisImmune/>
-    <DazedImmune/>
-    <MaxHitPoints>50000</MaxHitPoints>
-    <Defense>45</Defense>
-    <Projectile id="0">
-      <ObjectId>Rush</ObjectId>
-      <MinDamage>65</MinDamage>
-      <MaxDamage>200</MaxDamage>
-      <Speed>100</Speed>
-      <Size>100</Size>
-      <MultiHit/>
-      <ArmorPiercing/>
-      <LifetimeMS>4000</LifetimeMS>
-    </Projectile>
-    <Projectile id="1">
-      <ObjectId>Hit</ObjectId>
-      <Damage>80</Damage>
-      <Speed>100</Speed>
-      <Size>100</Size>
-      <MultiHit/>
-      <ArmorPiercing/>
-      <LifetimeMS>4000</LifetimeMS>
-    </Projectile>
-    <Projectile id="2">
-      <ObjectId>Granithia BombBlast</ObjectId>
-      <Speed>20</Speed>
-      <Damage>150</Damage>
-      <Size>150</Size>
-      <LifetimeMS>1500</LifetimeMS>
-      <MultiHit/>
-    </Projectile>
-    <Projectile id="3">
-      <ObjectId>Granithia BombBlast</ObjectId>
-      <Speed>20</Speed>
-      <Damage>75</Damage>
-      <Size>70</Size>
-      <LifetimeMS>3000</LifetimeMS>
-      <MultiHit/>
-    </Projectile>
-  </Object>
-  <Object type="0x67c3" id="Roman Archer 1">
-    <Enemy/>
-    <Group>Roman</Group>
-    <DisplayId>Roman Archer</DisplayId>
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>Custom8x8Encounters</File>
-      <Index>31</Index>
-    </AnimatedTexture>
-    <HitSound>monster/oryx_hit</HitSound>
-    <DeathSound>monster/abyss_brutes_death</DeathSound>
-    <Size>80</Size>
-    <StasisImmune/>
-    <DazedImmune/>
-    <MaxHitPoints>20000</MaxHitPoints>
-    <Defense>45</Defense>
-    <Projectile id="0">
-      <ObjectId>Black Roman Arrow</ObjectId>
-      <MinDamage>65</MinDamage>
-      <MaxDamage>200</MaxDamage>
-      <Speed>100</Speed>
-      <Size>100</Size>
-      <MultiHit/>
-      <ArmorPiercing/>
-      <LifetimeMS>4000</LifetimeMS>
-    </Projectile>
-  </Object>
+	<Object type="0x145" id="Roman Soldier 1.1">
+		<Enemy/>
+		<Group>Roman Soldier</Group>
+		<DisplayId>Roman Soldier</DisplayId>
+		<Class>Character</Class>
+		<AnimatedTexture>
+			<File>Custom8x8Encounters</File>
+			<Index>29</Index>
+		</AnimatedTexture>
+		<HitSound>monster/oryx_hit</HitSound>
+		<DeathSound>monster/abyss_brutes_death</DeathSound>
+		<Size>130</Size>
+		<StasisImmune/>
+		<DazedImmune/>
+		<MaxHitPoints>20000</MaxHitPoints>
+		<Defense>45</Defense>
+		<Projectile id="0">
+			<ObjectId>Smack</ObjectId>
+			<MinDamage>125</MinDamage>
+			<MaxDamage>165</MaxDamage>
+			<Speed>60</Speed>
+			<Size>100</Size>
+			<MultiHit/>
+			<ArmorPiercing/>
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+		<Projectile id="1">
+			<ObjectId>Stab</ObjectId>
+			<Damage>80</Damage>
+			<Speed>100</Speed>
+			<Size>100</Size>
+			<MultiHit/>
+			<ArmorPiercing/>
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+		<Projectile id="2">
+			<ObjectId>Invisible</ObjectId>
+			<Damage>75</Damage>
+			<Speed>0</Speed>
+			<LifetimeMS>500</LifetimeMS>
+			<Size>75</Size>
+			<ConditionEffect duration="3">Bleeding</ConditionEffect>
+			<MultiHit/>
+		</Projectile>
+	</Object>
+	<Object type="0x67c2" id="Roman Gladiator 1">
+		<Enemy/>
+		<Group>Roman</Group>
+		<DisplayId>Roman Gladiator</DisplayId>
+		<Class>Character</Class>
+		<AnimatedTexture>
+			<File>Custom8x8Encounters</File>
+			<Index>30</Index>
+		</AnimatedTexture>
+		<HitSound>monster/oryx_hit</HitSound>
+		<DeathSound>monster/abyss_brutes_death</DeathSound>
+		<Size>130</Size>
+		<StasisImmune/>
+		<DazedImmune/>
+		<MaxHitPoints>50000</MaxHitPoints>
+		<Defense>45</Defense>
+		<Projectile id="0">
+			<ObjectId>Rush</ObjectId>
+			<MinDamage>225</MinDamage>
+			<MaxDamage>225</MaxDamage>
+			<Speed>0</Speed>
+			<Size>100</Size>
+			<MultiHit/>
+			<ArmorPiercing/>
+			<LifetimeMS>6000</LifetimeMS>
+		</Projectile>
+		<Projectile id="1">
+			<ObjectId>Hit</ObjectId>
+			<Damage>80</Damage>
+			<Speed>100</Speed>
+			<Size>100</Size>
+			<MultiHit/>
+			<ArmorPiercing/>
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+		<Projectile id="2">
+			<ObjectId>Granithia BombBlast</ObjectId>
+			<Speed>20</Speed>
+			<Damage>150</Damage>
+			<Size>150</Size>
+			<LifetimeMS>1500</LifetimeMS>
+			<MultiHit/>
+		</Projectile>
+		<Projectile id="3">
+			<ObjectId>Granithia BombBlast</ObjectId>
+			<Speed>20</Speed>
+			<Damage>75</Damage>
+			<Size>70</Size>
+			<LifetimeMS>3000</LifetimeMS>
+			<MultiHit/>
+		</Projectile>
+	</Object>
+	<Object type="0x146" id="Roman Gladiator 1.1">
+		<Enemy/>
+		<Group>Roman</Group>
+		<DisplayId>Roman Gladiator</DisplayId>
+		<Class>Character</Class>
+		<AnimatedTexture>
+			<File>Custom8x8Encounters</File>
+			<Index>30</Index>
+		</AnimatedTexture>
+		<HitSound>monster/oryx_hit</HitSound>
+		<DeathSound>monster/abyss_brutes_death</DeathSound>
+		<Size>130</Size>
+		<StasisImmune/>
+		<DazedImmune/>
+		<MaxHitPoints>50000</MaxHitPoints>
+		<Defense>45</Defense>
+		<Projectile id="0">
+			<ObjectId>Rush</ObjectId>
+			<MinDamage>225</MinDamage>
+			<MaxDamage>225</MaxDamage>
+			<Speed>0</Speed>
+			<Size>100</Size>
+			<MultiHit/>
+			<ArmorPiercing/>
+			<LifetimeMS>6000</LifetimeMS>
+		</Projectile>
+		<Projectile id="1">
+			<ObjectId>Hit</ObjectId>
+			<Damage>80</Damage>
+			<Speed>100</Speed>
+			<Size>100</Size>
+			<MultiHit/>
+			<ArmorPiercing/>
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+		<Projectile id="2">
+			<ObjectId>Granithia BombBlast</ObjectId>
+			<Speed>20</Speed>
+			<Damage>150</Damage>
+			<Size>150</Size>
+			<LifetimeMS>1500</LifetimeMS>
+			<MultiHit/>
+		</Projectile>
+		<Projectile id="3">
+			<ObjectId>Granithia BombBlast</ObjectId>
+			<Speed>20</Speed>
+			<Damage>75</Damage>
+			<Size>70</Size>
+			<LifetimeMS>3000</LifetimeMS>
+			<MultiHit/>
+		</Projectile>
+	</Object>
+	<Object type="0x67c3" id="Roman Archer 1">
+		<Enemy/>
+		<Group>Roman</Group>
+		<DisplayId>Roman Archer</DisplayId>
+		<Class>Character</Class>
+		<AnimatedTexture>
+			<File>Custom8x8Encounters</File>
+			<Index>31</Index>
+		</AnimatedTexture>
+		<HitSound>monster/oryx_hit</HitSound>
+		<DeathSound>monster/abyss_brutes_death</DeathSound>
+		<Size>120</Size>
+		<StasisImmune/>
+		<DazedImmune/>
+		<MaxHitPoints>20000</MaxHitPoints>
+		<Defense>45</Defense>
+		<Projectile id="0">
+			<ObjectId>Black Roman Arrow</ObjectId>
+			<MinDamage>65</MinDamage>
+			<MaxDamage>85</MaxDamage>
+			<Speed>75</Speed>
+			<Size>100</Size>
+			<MultiHit/>
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+	</Object>
+	<Object type="0x147" id="Roman Archer 1.1">
+		<Enemy/>
+		<Group>Roman</Group>
+		<DisplayId>Roman Archer</DisplayId>
+		<Class>Character</Class>
+		<AnimatedTexture>
+			<File>Custom8x8Encounters</File>
+			<Index>31</Index>
+		</AnimatedTexture>
+		<HitSound>monster/oryx_hit</HitSound>
+		<DeathSound>monster/abyss_brutes_death</DeathSound>
+		<Size>120</Size>
+		<StasisImmune/>
+		<DazedImmune/>
+		<MaxHitPoints>20000</MaxHitPoints>
+		<Defense>45</Defense>
+		<Projectile id="0">
+			<ObjectId>Black Roman Arrow</ObjectId>
+			<MinDamage>65</MinDamage>
+			<MaxDamage>95</MaxDamage>
+			<Speed>75</Speed>
+			<Size>100</Size>
+			<MultiHit/>
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+	</Object>
   <Object type="0x67c4" id="Roman Archer 2">
     <Enemy/>
     <Group>Roman</Group>

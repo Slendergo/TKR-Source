@@ -139,7 +139,6 @@ import kabam.rotmg.messaging.impl.incoming.market.MarketSearchResult;
 import kabam.rotmg.messaging.impl.incoming.party.InvitedToParty;
 import kabam.rotmg.messaging.impl.incoming.talisman.TalismanEssenceData;
 import kabam.rotmg.messaging.impl.outgoing.AcceptTrade;
-import kabam.rotmg.messaging.impl.outgoing.BigSkillTree;
 import kabam.rotmg.messaging.impl.outgoing.Buy;
 import kabam.rotmg.messaging.impl.outgoing.CancelTrade;
 import kabam.rotmg.messaging.impl.outgoing.ChangeGuildRank;
@@ -169,7 +168,6 @@ import kabam.rotmg.messaging.impl.outgoing.Pong;
 import kabam.rotmg.messaging.impl.outgoing.PotionStorageInteraction;
 import kabam.rotmg.messaging.impl.outgoing.RequestTrade;
 import kabam.rotmg.messaging.impl.outgoing.Reskin;
-import kabam.rotmg.messaging.impl.outgoing.SmallSkillTree;
 import kabam.rotmg.messaging.impl.outgoing.SquareHit;
 import kabam.rotmg.messaging.impl.outgoing.Teleport;
 import kabam.rotmg.messaging.impl.outgoing.UpgradeStat;
@@ -290,9 +288,6 @@ public class GameServerConnection
 
       /* Magician */
       public static const UPGRADESTAT:int = 71;
-
-      /* Skill Tree */
-      public static const SMALLSKILLTREE:int = 72;
 
       /* Music */
       public static const SWITCH_MUSIC:int = 73;
@@ -476,7 +471,6 @@ public class GameServerConnection
          messages.map(CHANGEGUILDRANK).toMessage(ChangeGuildRank);
          messages.map(EDITACCOUNTLIST).toMessage(EditAccountList);
          messages.map(UPGRADESTAT).toMessage(UpgradeStat);
-         messages.map(SMALLSKILLTREE).toMessage(SmallSkillTree);
          messages.map(FORGEFUSION).toMessage(ForgeFusion);
          messages.map(ESCAPE).toMessage(Escape);
 
@@ -613,7 +607,6 @@ public class GameServerConnection
          messages.unmap(INVITEDTOGUILD);
          messages.unmap(PLAYSOUND);
          messages.unmap(UPGRADESTAT);
-         messages.unmap(SMALLSKILLTREE);
          messages.unmap(FORGEFUSION);
          messages.unmap(ESCAPE);
 

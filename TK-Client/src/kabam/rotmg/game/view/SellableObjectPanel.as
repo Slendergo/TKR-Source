@@ -9,7 +9,6 @@ import com.company.assembleegameclient.ui.TextBox;
 import com.company.assembleegameclient.ui.panels.Panel;
 import com.company.assembleegameclient.ui.tooltip.EquipmentToolTip;
 import com.company.assembleegameclient.ui.tooltip.HoverTooltipDelegate;
-import com.company.assembleegameclient.ui.tooltip.SkillTreeToolTip;
 import com.company.assembleegameclient.ui.tooltip.ToolTip;
 import com.company.assembleegameclient.ui.tooltip.controller.TooltipAble;
 import com.company.assembleegameclient.util.Currency;

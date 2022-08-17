@@ -134,15 +134,6 @@ public class EquipmentToolTip extends ToolTip
 
          if(this.player_ != null)
          {
-            /*var bigSkill:Number = this.player_.bigSkill11 ? 0.30 : 0;
-            bigSkill += this.player_.smallSkill11 * 0.02;
-            if(this.player_.bigSkill1){
-               bigSkill -= 0.1;
-            }
-            if(this.player_.bigSkill4){
-               bigSkill -= 0.05;
-            } */
-            var rateSkill:Number = Number(this.objectXML_.RateOfFire);
             var rateOfFire:Number = Number(this.objectXML_.RateOfFire);
             rateOfFire *= 100;
          }
@@ -487,11 +478,6 @@ public class EquipmentToolTip extends ToolTip
 
       private function addMpCostTagToEffectsList() : void
       {
-         /*
-         if(player_ != null)
-            var local1:Boolean = this.player_.bigSkill1;
-
-          */
          if(this.objectXML_.hasOwnProperty("MpEndCost"))
          {
             if(!this.comparisonResults.processedTags[this.objectXML_.MpEndCost[0].toXMLString()])

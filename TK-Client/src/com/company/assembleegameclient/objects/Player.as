@@ -459,19 +459,6 @@ public class Player extends Character {
         if (weaponXML == null || !weaponXML.hasOwnProperty("RateOfFire")) {
             return;
         }
-        /*
-        var bigSkill:Number = this.bigSkill11 ? 0.30 : 0;
-        if (this.smallSkill11 > 0) {
-            bigSkill += this.smallSkill11 * 0.02;
-        }
-        if (this.bigSkill1) {
-            bigSkill -= 0.10;
-        }
-        if (this.bigSkill4) {
-            bigSkill -= 0.05;
-        }
-         */
-        var rateSkill:Number = Number(weaponXML.RateOfFire);
         var rateOfFire:Number = Number(weaponXML.RateOfFire);
 
         this.attackPeriod_ = 1 / this.attackFrequency() * (1 / rateOfFire);
@@ -778,12 +765,6 @@ public class Player extends Character {
         if (isBerserk() || isNinjaBerserk()) {
             attFreq = attFreq * 1.25;
         }
-        /*if(this.bigSkill11){
-           attFreq += 0.05;
-        }
-        if(this.smallSkill6 > 0){
-           attFreq += (this.smallSkill6 * 2) / 1000;
-        }*/
         return attFreq;
     }
 
@@ -1027,20 +1008,6 @@ public class Player extends Character {
         }
         var weaponXML:XML = ObjectLibrary.xmlLibrary_[weaponType];
         var time:int = getTimer();
-        /*
-        var bigSkill:Number = this.bigSkill11 ? 0.30 : 0;
-        if (this.smallSkill11 > 0) {
-            bigSkill += this.smallSkill11 * 0.02;
-        }
-        if (this.bigSkill1) {
-            bigSkill -= 0.10;
-        }
-        if (this.bigSkill4) {
-            bigSkill -= 0.05;
-        }
-
-         */
-        var rateSkill:Number = Number(weaponXML.RateOfFire);
         var rateOfFire:Number = Number(weaponXML.RateOfFire);
 
         this.attackPeriod_ = 1 / this.attackFrequency() * (1 / rateOfFire);

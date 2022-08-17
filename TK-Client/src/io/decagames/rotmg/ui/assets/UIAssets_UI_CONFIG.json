@@ -760,14 +760,6 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":21,"h":48},
 	"sourceSize": {"w":21,"h":48}
 },
-"skilltree_box.png":
-{
-	"frame": {"x":635,"y":241,"w":15,"h":104},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":15,"h":104},
-	"sourceSize": {"w":15,"h":104}
-},
 "reload_button.png":
 {
 	"frame": {"x":469,"y":410,"w":36,"h":36},

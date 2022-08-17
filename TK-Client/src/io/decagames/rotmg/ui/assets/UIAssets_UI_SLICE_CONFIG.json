@@ -429,15 +429,6 @@
         "h": 120
       }
     },
-    "skilltree_box.png": {
-      "type": "3grid",
-      "rectangle": {
-        "x": 7,
-        "y": 0,
-        "w": 1,
-        "h": 104
-      }
-    },
     "scrollbar_background.png": {
       "type": "9grid",
       "rectangle": {

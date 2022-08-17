@@ -1,4 +1,190 @@
 <Grounds>
+  <Ground type="0x250" id="Wind Light 1">
+    <Texture>
+      <File>customEnvironment1</File>
+      <Index>0x37</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x251" id="Wind Light 2">
+    <Texture>
+      <File>customEnvironment1</File>
+      <Index>0x36</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x15E" id="Dark Wood Floor">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x00</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x177" id="Dark Wood Floor 1">
+    <Texture>
+      <File>customEnvironment</File>
+      <Index>0x8b</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x15F" id="Dark Above Wood Stairs TL">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x01</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x164" id="Dark Above Wood Stairs TM">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x02</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x165" id="Dark Above Wood Stairs TR">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x10</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x166" id="Dark Above Wood Stairs ML">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x11</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x167" id="Dark Above Wood Stairs MM">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x12</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x168" id="Dark Above Wood Stairs MR">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x03</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x16E" id="Dark Below Wood Stairs TL">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x30</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x169" id="Dark Below Wood Stairs TM">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x31</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x16A" id="Dark Below Wood Stairs TR">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x32</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x16B" id="Dark Below Wood Stairs ML">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x20</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x16C" id="Dark Below Wood Stairs MM">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x21</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x16D" id="Dark Below Wood Stairs MR">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x22</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xaa01" id="Wind Tile 1">
+    <Texture>
+      <File>customEnvironment1</File>
+      <Index>0x30</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xaa02" id="Wind Tile 2">
+    <Texture>
+      <File>customEnvironment1</File>
+      <Index>0x31</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xaa03" id="Wind Tile 3">
+    <Texture>
+      <File>customEnvironment1</File>
+      <Index>0x32</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xaa04" id="Wind Tile 4">
+    <Texture>
+      <File>customEnvironment1</File>
+      <Index>0x33</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xaa05" id="Wind Tile 5">
+    <Texture>
+      <File>customEnvironment1</File>
+      <Index>0x34</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xaa06" id="Wind Tile 6">
+    <Texture>
+      <File>customEnvironment1</File>
+      <Index>0x35</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x149" id="Dark tile">
+    <Texture>
+      <File>customEnvironment</File>
+      <Index>0x6c</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x154" id="Dark Grass 1">
+    <Texture>
+      <File>customEnvironment</File>
+      <Index>0x6b</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x155" id="Lava creep 1">
+    <Texture>
+      <File>customEnvironment</File>
+      <Index>0x7b</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x156" id="Lava creep 2">
+    <Texture>
+      <File>customEnvironment</File>
+      <Index>0x7c</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x157" id="Lava creep 3">
+    <Texture>
+      <File>customEnvironment</File>
+      <Index>0x7d</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x158" id="Lava creep 4">
+    <Texture>
+      <File>customEnvironment</File>
+      <Index>0x7e</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x159" id="Dark dirt 1">
+    <Texture>
+      <File>customEnvironment</File>
+      <Index>0x6d</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x15C" id="Dark Wood 1">
+    <Texture>
+      <File>customEnvironment</File>
+      <Index>0x6e</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x15D" id="Dark Wood 2">
+    <Texture>
+      <File>customEnvironment</File>
+      <Index>0x6f</Index>
+    </Texture>
+  </Ground>
   <Ground type="0xb0cb" id="HC Grass Tile">
     <RandomTexture>
       <Texture>

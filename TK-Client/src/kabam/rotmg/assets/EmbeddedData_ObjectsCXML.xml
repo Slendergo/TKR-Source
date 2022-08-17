@@ -10808,8 +10808,13 @@
     <Enemy />
     <Class>Character</Class>
     <DisplayId>Bes</DisplayId>
+    <Flying />
     <Quest />
+    <God />
+    <StasisImmune />
     <Level>1</Level>
+    <XpMult>1</XpMult>
+    <NoArticle />
     <AnimatedTexture>
       <File>chars16x16dEncounters</File>
       <Index>12</Index>
@@ -10819,8 +10824,6 @@
     <MaxHitPoints>100000</MaxHitPoints>
     <Size>140</Size>
     <Defense>50</Defense>
-    <XpMult>1</XpMult>
-    <God />
     <Projectile id="0">
       <ObjectId>Darkness Bolt</ObjectId>
       <Damage>240</Damage>
@@ -11662,7 +11665,7 @@
     <ShadowSize>40</ShadowSize>
     <Z>0.2</Z>
     <Flying />
-    <MaxHitPoints>100000</MaxHitPoints>
+    <MaxHitPoints>65000</MaxHitPoints>
     <Defense>60</Defense>
     <XpMult>0.9</XpMult>
     <LeachHealth />
@@ -21143,7 +21146,6 @@
       <Speed>70</Speed>
       <LifetimeMS>2200</LifetimeMS>
       <Size>85</Size>
-      <ConditionEffect duration="5" target="1">Stasis</ConditionEffect>
     </Projectile>
   </Object>
   <Object type="0x7453" id="Sorcerer Puppet">
@@ -21215,8 +21217,8 @@
     <Level>20</Level>
     <Projectile id="0">
       <ObjectId>Red Fire</ObjectId>
-      <MinDamage>0</MinDamage>
-      <MaxDamage>0</MaxDamage>
+      <MinDamage>35</MinDamage>
+      <MaxDamage>45</MaxDamage>
       <Speed>55</Speed>
       <LifetimeMS>900</LifetimeMS>
     </Projectile>
@@ -26165,7 +26167,7 @@
     <Enemy />
     <AnimatedTexture>
       <File>Custom16x16Encounters</File>
-      <Index>35</Index>
+      <Index>33</Index>
     </AnimatedTexture>
     <Size>100</Size>
     <MaxHitPoints>8000</MaxHitPoints>
@@ -26203,7 +26205,7 @@
       <Rotation>20</Rotation>
     </Projectile>
   </Object>
-  <Object type="0x14C" id="Haunted Golem">
+  <Object type="0x14C" id="Haunted Warrior">
     <DisplayId>Haunted Golem</DisplayId>
     <Class>Character</Class>
     <Enemy />
@@ -26234,7 +26236,7 @@
     <Enemy />
     <AnimatedTexture>
       <File>Custom16x16Encounters</File>
-      <Index>36</Index>
+      <Index>35</Index>
     </AnimatedTexture>
     <Size>120</Size>
     <MaxHitPoints>11000</MaxHitPoints>
@@ -26258,7 +26260,7 @@
     <Enemy />
     <AnimatedTexture>
       <File>Custom16x16Encounters</File>
-      <Index>37</Index>
+      <Index>36</Index>
     </AnimatedTexture>
     <Size>110</Size>
     <MaxHitPoints>8000</MaxHitPoints>
@@ -27667,21 +27669,145 @@
     </AnimatedTexture>
     <HitSound>monster/oryx_hit</HitSound>
     <DeathSound>monster/abyss_brutes_death</DeathSound>
-    <Size>50</Size>
-    <StasisImmune />
+    <Size>140</Size>
     <DazedImmune />
     <MaxHitPoints>50000</MaxHitPoints>
     <Defense>45</Defense>
     <Projectile id="0">
-      <ObjectId>PillaroLight Shot</ObjectId>
+      <ObjectId>Fire Elemental Staff Shoot</ObjectId>
       <MinDamage>100</MinDamage>
       <MaxDamage>135</MaxDamage>
-      <Speed>100</Speed>
+      <Speed>85</Speed>
       <Size>100</Size>
       <MultiHit />
-      <ArmorPiercing />
-      <ConditionEffect duration="3.5">ArmorBroken</ConditionEffect>
+      <ConditionEffect duration="3.5">Darkness</ConditionEffect>
       <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+  </Object>
+  <Object type="0x0d51" id="Abominable Snowman">
+    <Class>Character</Class>
+    <Enemy />
+    <SpecialEnemy />
+    <Hero />
+    <God />
+    <Level>20</Level>
+    <AnimatedTexture>
+      <File>Custom16x16dEncounters</File>
+      <Index>0</Index>
+    </AnimatedTexture>
+    <DisplayedId>Abominable Snowman</DisplayedId>
+    <Size>150</Size>
+    <MaxHitPoints>500000</MaxHitPoints>
+    <Defense>60</Defense>
+    <StasisImmune />
+    <StunImmune />
+    <ParalyzeImmune />
+    <XpMult>3</XpMult>
+    <Projectile id="0">
+      <ObjectId>Projectile 0 AB</ObjectId>
+      <Damage>150</Damage>
+      <Size>100</Size>
+      <Speed>100</Speed>
+      <LifetimeMS>2000</LifetimeMS>
+      <MultiHit />
+      <ArmorPiercing />
+      <ConditionEffect duration="2.5">Slowed</ConditionEffect>
+    </Projectile>
+    <Projectile id="1">
+      <ObjectId>Projectile 1 AB</ObjectId>
+      <Damage>200</Damage>
+      <Size>100</Size>
+      <Speed>85</Speed>
+      <LifetimeMS>3000</LifetimeMS>
+      <MultiHit />
+      <ArmorPiercing />
+      <ConditionEffect duration="4">Bleeding</ConditionEffect>
+    </Projectile>
+    <Projectile id="2">
+      <ObjectId>Projectile 2 AB</ObjectId>
+      <Damage>300</Damage>
+      <Size>100</Size>
+      <Speed>80</Speed>
+      <LifetimeMS>4000</LifetimeMS>
+      <ConditionEffect duration="3">Stunned</ConditionEffect>
+    </Projectile>
+    <Projectile id="3">
+      <ObjectId>Projectile 3 AB</ObjectId>
+      <Damage>90</Damage>
+      <Size>100</Size>
+      <Speed>90</Speed>
+      <LifetimeMS>5000</LifetimeMS>
+      <ConditionEffect duration="2">Paralyzed</ConditionEffect>
+      <ConditionEffect duration="3">Stunned</ConditionEffect>
+    </Projectile>
+  </Object>
+  <Object type="0xa6a1" id="Queen of Ice">
+    <Class>Character</Class>
+    <Enemy />
+    <SpecialEnemy />
+    <Hero />
+    <God />
+    <Level>1</Level>
+    <AnimatedTexture>
+      <File>Custom16x16dEncounters</File>
+      <Index>10</Index>
+    </AnimatedTexture>
+    <DisplayedId>Queen of Ice</DisplayedId>
+    <Size>130</Size>
+    <MaxHitPoints>540000</MaxHitPoints>
+    <Defense>60</Defense>
+    <SlowImmune />
+    <StasisImmune />
+    <StunImmune />
+    <ParalyzeImmune />
+    <XpMult>3</XpMult>
+    <Projectile id="0">
+      <ObjectId>Projectile 0 QI</ObjectId>
+      <Damage>160</Damage>
+      <Size>100</Size>
+      <Speed>90</Speed>
+      <LifetimeMS>4000</LifetimeMS>
+      <ArmorPiercing />
+      <ConditionEffect duration="3">Paralyzed</ConditionEffect>
+    </Projectile>
+    <Projectile id="1">
+      <ObjectId>Projectile 1 QI</ObjectId>
+      <Damage>130</Damage>
+      <Size>100</Size>
+      <Speed>100</Speed>
+      <LifetimeMS>4000</LifetimeMS>
+      <MultiHit />
+      <ArmorPiercing />
+      <ConditionEffect duration="4">Confused</ConditionEffect>
+    </Projectile>
+    <Projectile id="2">
+      <ObjectId>Projectile 2 QI</ObjectId>
+      <Damage>150</Damage>
+      <Size>100</Size>
+      <Speed>85</Speed>
+      <LifetimeMS>4000</LifetimeMS>
+      <MultiHit />
+      <ConditionEffect duration="1">Quiet</ConditionEffect>
+      <ConditionEffect duration="2.5">Stunned</ConditionEffect>
+    </Projectile>
+    <Projectile id="3">
+      <ObjectId>Projectile 3 QI</ObjectId>
+      <Damage>180</Damage>
+      <Size>75</Size>
+      <Speed>80</Speed>
+      <LifetimeMS>4000</LifetimeMS>
+      <MultiHit />
+      <ConditionEffect duration="1">Quiet</ConditionEffect>
+      <ConditionEffect duration="2.5">Stunned</ConditionEffect>
+    </Projectile>
+    <Projectile id="4">
+      <ObjectId>Projectile 4 QI</ObjectId>
+      <Damage>270</Damage>
+      <Size>100</Size>
+      <Speed>60</Speed>
+      <LifetimeMS>4000</LifetimeMS>
+      <MultiHit />
+      <ConditionEffect duration="4">Sick</ConditionEffect>
     </Projectile>
   </Object>
   <Object type="0xaad9" id="Guardian of the Ice Queen">
@@ -27790,6 +27916,92 @@
       <ConditionEffect duration="2">Stunned</ConditionEffect>
     </Projectile>
   </Object>
+  <Object type="0x712b" id="Corrupt Snowman Switch">
+    <Class>Character</Class>
+    <Enemy />
+    <SpecialEnemy />
+    <Hero />
+    <God />
+    <Level>1</Level>
+    <AnimatedTexture>
+      <File>Custom16x16dEncounters</File>
+      <Index>11</Index>
+    </AnimatedTexture>
+    <DisplayedId>Corrupt Snowman</DisplayedId>
+    <Size>160</Size>
+    <MaxHitPoints>200000</MaxHitPoints>
+    <Defense>42</Defense>
+    <StasisImmune />
+    <StunImmune />
+    <XpMult>1</XpMult>
+    <Projectile id="0">
+      <ObjectId>Projectile 0 CSS</ObjectId>
+      <Damage>175</Damage>
+      <Size>100</Size>
+      <Speed>100</Speed>
+      <LifetimeMS>4000</LifetimeMS>
+      <MultiHit />
+      <ArmorPiercing />
+    </Projectile>
+    <Projectile id="1">
+      <ObjectId>Projectile 1 CSS</ObjectId>
+      <Damage>210</Damage>
+      <Size>90</Size>
+      <Speed>90</Speed>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+    <Projectile id="2">
+      <ObjectId>Projectile 2 CSS</ObjectId>
+      <Damage>350</Damage>
+      <Size>100</Size>
+      <Speed>100</Speed>
+      <LifetimeMS>5000</LifetimeMS>
+      <ConditionEffect duration="1.8">Confused</ConditionEffect>
+    </Projectile>
+  </Object>
+  <Object type="0x712c" id="Corrupt Snowman Switch 2">
+    <Class>Character</Class>
+    <Enemy />
+    <SpecialEnemy />
+    <Hero />
+    <God />
+    <Level>1</Level>
+    <AnimatedTexture>
+      <File>Custom16x16dEncounters</File>
+      <Index>11</Index>
+    </AnimatedTexture>
+    <DisplayedId>Torn Snowman</DisplayedId>
+    <Size>160</Size>
+    <MaxHitPoints>200000</MaxHitPoints>
+    <Defense>42</Defense>
+    <StasisImmune />
+    <StunImmune />
+    <XpMult>1</XpMult>
+    <Projectile id="0">
+      <ObjectId>Projectile 0 CSS2</ObjectId>
+      <Damage>175</Damage>
+      <Size>100</Size>
+      <Speed>100</Speed>
+      <LifetimeMS>4000</LifetimeMS>
+      <MultiHit />
+      <ArmorPiercing />
+    </Projectile>
+    <Projectile id="1">
+      <ObjectId>Projectile 1 CSS2</ObjectId>
+      <Damage>210</Damage>
+      <Size>90</Size>
+      <Speed>90</Speed>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+    <Projectile id="2">
+      <ObjectId>Projectile 2 CSS2</ObjectId>
+      <Damage>350</Damage>
+      <Size>100</Size>
+      <Speed>100</Speed>
+      <LifetimeMS>5000</LifetimeMS>
+      <ConditionEffect duration="1.8">Confused</ConditionEffect>
+    </Projectile>
+  </Object>
   <Object type="0x5047" id="Strange Statue">
     <DisplayId>Strange Statue</DisplayId>
     <Class>Character</Class>
@@ -27846,14 +28058,14 @@
     <Projectile id="0">
       <ObjectId>Morto Green</ObjectId>
       <Damage>100</Damage>
-      <Size>100</Size>
+      <Size>150</Size>
       <Speed>80</Speed>
       <LifetimeMS>4000</LifetimeMS>
     </Projectile>
     <Projectile id="1">
       <ObjectId>Morto Light Green</ObjectId>
       <Damage>30</Damage>
-      <Size>100</Size>
+      <Size>150</Size>
       <Speed>100</Speed>
       <ConditionEffect duration="3">Speedy</ConditionEffect>
       <LifetimeMS>1200</LifetimeMS>
@@ -27861,14 +28073,14 @@
     <Projectile id="2">
       <ObjectId>Morto Dark Green</ObjectId>
       <Damage>70</Damage>
-      <Size>100</Size>
+      <Size>150</Size>
       <Speed>100</Speed>
       <LifetimeMS>600</LifetimeMS>
     </Projectile>
     <Projectile id="3">
       <ObjectId>Morto Square</ObjectId>
       <Damage>80</Damage>
-      <Size>100</Size>
+      <Size>150</Size>
       <Speed>120</Speed>
       <ConditionEffect duration="3">Armor Broken</ConditionEffect>
       <LifetimeMS>4000</LifetimeMS>
@@ -27877,7 +28089,7 @@
     <Projectile id="4">
       <ObjectId>Morto Wisp</ObjectId>
       <Damage>100</Damage>
-      <Size>100</Size>
+      <Size>150</Size>
       <Speed>90</Speed>
       <ConditionEffect duration="5">Armor Broken</ConditionEffect>
       <LifetimeMS>4000</LifetimeMS>
@@ -27887,21 +28099,21 @@
     <Projectile id="5">
       <ObjectId>Morto Square</ObjectId>
       <Damage>110</Damage>
-      <Size>100</Size>
+      <Size>150</Size>
       <Speed>120</Speed>
       <LifetimeMS>800</LifetimeMS>
     </Projectile>
     <Projectile id="6">
       <ObjectId>Morto Arrow</ObjectId>
       <Damage>90</Damage>
-      <Size>100</Size>
+      <Size>150</Size>
       <Speed>80</Speed>
       <LifetimeMS>2000</LifetimeMS>
     </Projectile>
     <Projectile id="7">
       <ObjectId>Morto Light Green</ObjectId>
       <Damage>45</Damage>
-      <Size>140</Size>
+      <Size>150</Size>
       <Speed>100</Speed>
       <ConditionEffect duration="3">Speedy</ConditionEffect>
       <LifetimeMS>1500</LifetimeMS>
@@ -27911,7 +28123,7 @@
     <Projectile id="8">
       <ObjectId>Morto Green</ObjectId>
       <Damage>100</Damage>
-      <Size>100</Size>
+      <Size>150</Size>
       <Speed>80</Speed>
       <LifetimeMS>2000</LifetimeMS>
       <ConditionEffect duration="5">Armor Broken</ConditionEffect>
@@ -27921,7 +28133,7 @@
     <Projectile id="9">
       <ObjectId>Morto Wisp</ObjectId>
       <Damage>70</Damage>
-      <Size>100</Size>
+      <Size>150</Size>
       <Speed>70</Speed>
       <LifetimeMS>2100</LifetimeMS>
       <MultiHit />
@@ -27930,14 +28142,14 @@
     <Projectile id="10">
       <ObjectId>Morto Square</ObjectId>
       <Damage>90</Damage>
-      <Size>100</Size>
+      <Size>150</Size>
       <Speed>120</Speed>
       <LifetimeMS>2000</LifetimeMS>
     </Projectile>
     <Projectile id="11">
       <ObjectId>Morto Dark Green</ObjectId>
       <Damage>400</Damage>
-      <Size>100</Size>
+      <Size>150</Size>
       <Speed>80</Speed>
       <LifetimeMS>4000</LifetimeMS>
       <MultiHit />
@@ -28703,8 +28915,8 @@
     <ArmorBreakImmune />
     <SlowedImmune />
     <Level>20</Level>
-    <MaxHitPoints>50000</MaxHitPoints>
-    <Defense>300</Defense>
+    <MaxHitPoints>75000</MaxHitPoints>
+    <Defense>30</Defense>
     <Projectile id="0">
       <ObjectId>Rome Bomb</ObjectId>
       <MinDamage>65</MinDamage>
@@ -28774,7 +28986,7 @@
       <ObjectId>Meteor</ObjectId>
       <Damage>75</Damage>
       <Speed>40</Speed>
-      <LifetimeMS>3000</LifetimeMS>
+      <LifetimeMS>500</LifetimeMS>
       <Size>200</Size>
       <MultiHit />
       <Boomerang />
@@ -28783,8 +28995,8 @@
     <Projectile id="8">
       <ObjectId>Trojan Horse</ObjectId>
       <Damage>15</Damage>
-      <Speed>130</Speed>
-      <LifetimeMS>5000</LifetimeMS>
+      <Speed>65</Speed>
+      <LifetimeMS>300</LifetimeMS>
       <Size>200</Size>
       <ConditionEffect duration="5" target="3">Confused</ConditionEffect>
       <MultiHit />
@@ -29480,7 +29692,7 @@
     <Size>100</Size>
     <ShadowSize>50</ShadowSize>
   </Object>
-  <Object type="0x67c1" id="Roman Soldier">
+  <Object type="0x67c1" id="Roman Soldier 1">
     <Enemy />
     <Group>Roman Soldier</Group>
     <DisplayId>Roman Soldier</DisplayId>
@@ -29491,7 +29703,7 @@
     </AnimatedTexture>
     <HitSound>monster/oryx_hit</HitSound>
     <DeathSound>monster/abyss_brutes_death</DeathSound>
-    <Size>50</Size>
+    <Size>130</Size>
     <StasisImmune />
     <DazedImmune />
     <MaxHitPoints>20000</MaxHitPoints>
@@ -29500,7 +29712,7 @@
       <ObjectId>Smack</ObjectId>
       <MinDamage>65</MinDamage>
       <MaxDamage>200</MaxDamage>
-      <Speed>100</Speed>
+      <Speed>60</Speed>
       <Size>100</Size>
       <MultiHit />
       <ArmorPiercing />
@@ -29525,7 +29737,52 @@
       <MultiHit />
     </Projectile>
   </Object>
-  <Object type="0x67c2" id="Roman Gladiator">
+  <Object type="0x145" id="Roman Soldier 1.1">
+    <Enemy />
+    <Group>Roman Soldier</Group>
+    <DisplayId>Roman Soldier</DisplayId>
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>Custom8x8Encounters</File>
+      <Index>29</Index>
+    </AnimatedTexture>
+    <HitSound>monster/oryx_hit</HitSound>
+    <DeathSound>monster/abyss_brutes_death</DeathSound>
+    <Size>130</Size>
+    <StasisImmune />
+    <DazedImmune />
+    <MaxHitPoints>20000</MaxHitPoints>
+    <Defense>45</Defense>
+    <Projectile id="0">
+      <ObjectId>Smack</ObjectId>
+      <MinDamage>125</MinDamage>
+      <MaxDamage>165</MaxDamage>
+      <Speed>60</Speed>
+      <Size>100</Size>
+      <MultiHit />
+      <ArmorPiercing />
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+    <Projectile id="1">
+      <ObjectId>Stab</ObjectId>
+      <Damage>80</Damage>
+      <Speed>100</Speed>
+      <Size>100</Size>
+      <MultiHit />
+      <ArmorPiercing />
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+    <Projectile id="2">
+      <ObjectId>Invisible</ObjectId>
+      <Damage>75</Damage>
+      <Speed>0</Speed>
+      <LifetimeMS>500</LifetimeMS>
+      <Size>75</Size>
+      <ConditionEffect duration="3">Bleeding</ConditionEffect>
+      <MultiHit />
+    </Projectile>
+  </Object>
+  <Object type="0x67c2" id="Roman Gladiator 1">
     <Enemy />
     <Group>Roman</Group>
     <DisplayId>Roman Gladiator</DisplayId>
@@ -29536,20 +29793,72 @@
     </AnimatedTexture>
     <HitSound>monster/oryx_hit</HitSound>
     <DeathSound>monster/abyss_brutes_death</DeathSound>
-    <Size>50</Size>
+    <Size>130</Size>
     <StasisImmune />
     <DazedImmune />
     <MaxHitPoints>50000</MaxHitPoints>
     <Defense>45</Defense>
     <Projectile id="0">
       <ObjectId>Rush</ObjectId>
-      <MinDamage>65</MinDamage>
-      <MaxDamage>200</MaxDamage>
+      <MinDamage>225</MinDamage>
+      <MaxDamage>225</MaxDamage>
+      <Speed>0</Speed>
+      <Size>100</Size>
+      <MultiHit />
+      <ArmorPiercing />
+      <LifetimeMS>6000</LifetimeMS>
+    </Projectile>
+    <Projectile id="1">
+      <ObjectId>Hit</ObjectId>
+      <Damage>80</Damage>
       <Speed>100</Speed>
       <Size>100</Size>
       <MultiHit />
       <ArmorPiercing />
       <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+    <Projectile id="2">
+      <ObjectId>Granithia BombBlast</ObjectId>
+      <Speed>20</Speed>
+      <Damage>150</Damage>
+      <Size>150</Size>
+      <LifetimeMS>1500</LifetimeMS>
+      <MultiHit />
+    </Projectile>
+    <Projectile id="3">
+      <ObjectId>Granithia BombBlast</ObjectId>
+      <Speed>20</Speed>
+      <Damage>75</Damage>
+      <Size>70</Size>
+      <LifetimeMS>3000</LifetimeMS>
+      <MultiHit />
+    </Projectile>
+  </Object>
+  <Object type="0x146" id="Roman Gladiator 1.1">
+    <Enemy />
+    <Group>Roman</Group>
+    <DisplayId>Roman Gladiator</DisplayId>
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>Custom8x8Encounters</File>
+      <Index>30</Index>
+    </AnimatedTexture>
+    <HitSound>monster/oryx_hit</HitSound>
+    <DeathSound>monster/abyss_brutes_death</DeathSound>
+    <Size>130</Size>
+    <StasisImmune />
+    <DazedImmune />
+    <MaxHitPoints>50000</MaxHitPoints>
+    <Defense>45</Defense>
+    <Projectile id="0">
+      <ObjectId>Rush</ObjectId>
+      <MinDamage>225</MinDamage>
+      <MaxDamage>225</MaxDamage>
+      <Speed>0</Speed>
+      <Size>100</Size>
+      <MultiHit />
+      <ArmorPiercing />
+      <LifetimeMS>6000</LifetimeMS>
     </Projectile>
     <Projectile id="1">
       <ObjectId>Hit</ObjectId>
@@ -29588,7 +29897,7 @@
     </AnimatedTexture>
     <HitSound>monster/oryx_hit</HitSound>
     <DeathSound>monster/abyss_brutes_death</DeathSound>
-    <Size>80</Size>
+    <Size>120</Size>
     <StasisImmune />
     <DazedImmune />
     <MaxHitPoints>20000</MaxHitPoints>
@@ -29596,11 +29905,36 @@
     <Projectile id="0">
       <ObjectId>Black Roman Arrow</ObjectId>
       <MinDamage>65</MinDamage>
-      <MaxDamage>200</MaxDamage>
-      <Speed>100</Speed>
+      <MaxDamage>85</MaxDamage>
+      <Speed>75</Speed>
       <Size>100</Size>
       <MultiHit />
-      <ArmorPiercing />
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+  </Object>
+  <Object type="0x147" id="Roman Archer 1.1">
+    <Enemy />
+    <Group>Roman</Group>
+    <DisplayId>Roman Archer</DisplayId>
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>Custom8x8Encounters</File>
+      <Index>31</Index>
+    </AnimatedTexture>
+    <HitSound>monster/oryx_hit</HitSound>
+    <DeathSound>monster/abyss_brutes_death</DeathSound>
+    <Size>120</Size>
+    <StasisImmune />
+    <DazedImmune />
+    <MaxHitPoints>20000</MaxHitPoints>
+    <Defense>45</Defense>
+    <Projectile id="0">
+      <ObjectId>Black Roman Arrow</ObjectId>
+      <MinDamage>65</MinDamage>
+      <MaxDamage>95</MaxDamage>
+      <Speed>75</Speed>
+      <Size>100</Size>
+      <MultiHit />
       <LifetimeMS>4000</LifetimeMS>
     </Projectile>
   </Object>
@@ -29615,7 +29949,34 @@
     </AnimatedTexture>
     <HitSound>monster/oryx_hit</HitSound>
     <DeathSound>monster/abyss_brutes_death</DeathSound>
-    <Size>80</Size>
+    <Size>120</Size>
+    <StasisImmune />
+    <DazedImmune />
+    <MaxHitPoints>25000</MaxHitPoints>
+    <Defense>45</Defense>
+    <Projectile id="0">
+      <ObjectId>Black Roman Arrow</ObjectId>
+      <MinDamage>65</MinDamage>
+      <MaxDamage>200</MaxDamage>
+      <Speed>100</Speed>
+      <Size>100</Size>
+      <MultiHit />
+      <ArmorPiercing />
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+  </Object>
+  <Object type="0x148" id="Roman Archer 2.1">
+    <Enemy />
+    <Group>Roman</Group>
+    <DisplayId>Roman Archer</DisplayId>
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>Custom8x8Encounters</File>
+      <Index>31</Index>
+    </AnimatedTexture>
+    <HitSound>monster/oryx_hit</HitSound>
+    <DeathSound>monster/abyss_brutes_death</DeathSound>
+    <Size>120</Size>
     <StasisImmune />
     <DazedImmune />
     <MaxHitPoints>25000</MaxHitPoints>
@@ -43518,66 +43879,132 @@
       <Index>0x06</Index>
     </Texture>
   </Object>
-  <Object type="0x4949" id="Beginner's Talisman">
+  <Object type="0xa420" id="Cerberus's Core" spritePeriod="2" spriteFile="CustomObj" spriteArray="17-18">
     <Class>Equipment</Class>
-    <DisplayId>Basic Talisman</DisplayId>
     <Item />
-    <InvUse />
+    <HoldableItem />
     <Texture>
       <File>CustomObj</File>
-      <Index>0x1c</Index>
+      <Index>0x11</Index>
     </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="What powers does this item hold?" />
-    </ExtraTooltipData>
     <SlotType>10</SlotType>
-    <Description>A talisman gifted to you at birth by the gods</Description>
+    <Description> Cerberus's Core, contains the very essence of Cerberus himself.</Description>
     <Sound>use_potion</Sound>
-    <Activate type="0x00">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <Soulbound />
-    <BagType>1</BagType>
+    <Eternal />
+    <ExtraTooltipData>
+      <EffectInfo name="Soul of Cerberus" description="Immunity to Stun, Daze, and Slowed. Berserk for 5 seconds every 15 Seconds." />
+    </ExtraTooltipData>
+    <BagType>7</BagType>
+    <feedPower>15</feedPower>
+  </Object>
+  <Object type="0xa41f" id="Cerberus's Right Claw">
+    <Class>Equipment</Class>
+    <Item />
+    <HoldableItem />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0xcc</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>Cerberus's Right Claw, said to hold the souls of the dead.</Description>
+    <Sound>use_potion</Sound>
+    <Mythical />
+    <ExtraTooltipData>
+      <EffectInfo name="Killing Spree" description="For Every 1500 Enemies Killed, Maximum HP Increases by 50 {Caps at 500}. Immunity to Slowed" />
+    </ExtraTooltipData>
+    <BagType>7</BagType>
+    <feedPower>15</feedPower>
+  </Object>
+  <Object type="0xa41e" id="Cerberus's Left Claw">
+    <Class>Equipment</Class>
+    <Item />
+    <HoldableItem />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0xcb</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>Cereberus's Left Claw, said to hold the fury of the dead.</Description>
+    <Sound>use_potion</Sound>
+    <Mythical />
+    <ExtraTooltipData>
+      <EffectInfo name="Frenzy" description="For every mob within a 10 distance radius, Attack goes up by 1.{Caps at 20}. Immunity to Dazed" />
+    </ExtraTooltipData>
+    <BagType>7</BagType>
+    <feedPower>15</feedPower>
+  </Object>
+  <Object type="0x4927" id="Gem of Life">
+    <Class>Equipment</Class>
+    <Item />
+    <HoldableItem />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0x13</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>A gem brimming with vitality. So long as it's held, properties of health regeneration will increase. </Description>
+    <Sound>use_potion</Sound>
+    <ExtraTooltipData>
+      <EffectInfo name="Power of Life" description="If your Life is below half, you regenerate the quintuple fast." />
+    </ExtraTooltipData>
+    <Legendary />
+    <BagType>7</BagType>
+    <feedPower>15</feedPower>
+  </Object>
+  <Object type="0x492c" id="Talisman of Mana">
+    <Class>Equipment</Class>
+    <Item />
+    <HoldableItem />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0x17</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>This talisman contains the Power of Luck. So long as it's held, luck will increase.</Description>
+    <Sound>use_potion</Sound>
+    <Legendary />
+    <ExtraTooltipData>
+      <EffectInfo name="Power of Mana" description="If your Mana is below the half, you regenerate the quintuple fast." />
+    </ExtraTooltipData>
+    <BagType>7</BagType>
+    <feedPower>15</feedPower>
   </Object>
   <Object type="0x4950" id="Severed Marble Hand">
     <Class>Equipment</Class>
     <DisplayId>Severed Marble Hand</DisplayId>
     <Item />
-    <InvUse />
     <Texture>
       <File>CustomObj</File>
       <Index>0x1c</Index>
     </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="What powers does this item hold?" />
-    </ExtraTooltipData>
+    <HoldableItem />
+    <SetStatsNoStack />
+    <StatSetNoStack>0</StatSetNoStack>
+    <AmountSetNoStack>100</AmountSetNoStack>
     <SlotType>10</SlotType>
-    <Description>A sundered chunk from the Marble Colossus this item grants power to the wielder</Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x02">UnlockTalisman</Activate>
+    <Description>A sundered chunk from the Marble Colossus. So long as it's held, the power of the Colossus will flow through you.</Description>
+    <ExtraTooltipData>
+      <EffectInfo name="Marble Power" description="While holding this item, you will be immune to Unstable." />
+      <EffectInfo name="Immune to Unstable." description="" />
+      <EffectInfo name="On Handling" description="While holding this, it will give you +100 HP." />
+    </ExtraTooltipData>
     <Legendary />
-    <Consumable />
-    <Potion />
     <BagType>7</BagType>
   </Object>
   <Object type="0x50ec" id="Talisman of Luck">
     <Class>Equipment</Class>
     <Item />
-    <InvUse />
+    <HoldableItem />
     <ExtraTooltipData>
-      <EffectInfo name="" description="What powers does this item hold?" />
+      <EffectInfo name="Looting:" description="Holding this item gives you 20% loot chance! (One per Inventory). This talisman contains the Power of Luck. So long as it's held, luck will increase." />
     </ExtraTooltipData>
     <Texture>
       <File>CustomObj</File>
       <Index>0x94</Index>
     </Texture>
     <SlotType>10</SlotType>
-    <Description>This talisman contains powers of luck.</Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x01">UnlockTalisman</Activate>
+    <Description>This Talisman contain the Power of the Lucky, as long as you hold this, your luck will increase</Description>
     <Legendary />
-    <Consumable />
-    <Potion />
     <BagType>7</BagType>
   </Object>
   <Object type="0x5019" id="Fire Fragment">
@@ -43727,8 +44154,11 @@
     <Description>Todo</Description>
     <Sound>use_key</Sound>
     <Consumable />
-    <Activate objectId="Epic Quest Chest">Create</Activate>:
-		<feedPower>200</feedPower><BagType>5</BagType><Track /></Object>
+    <Activate objectId="Epic Quest Chest">Create</Activate>
+    <feedPower>200</feedPower>
+    <BagType>5</BagType>
+    <Track />
+  </Object>
   <Object type="0x9701" id="Epic Quest Chest">
     <DisplayId>Quest Chest</DisplayId>
     <Class>Character</Class>
@@ -51415,20 +51845,19 @@
   <Object type="0x5060" id="Talisman of Looting">
     <Class>Equipment</Class>
     <Item />
-    <InvUse />
+    <HoldableItem />
     <ExtraTooltipData>
-      <EffectInfo name="" description="What powers does this item hold?" />
+      <EffectInfo name="Looting:" description="Holding this item gives you a 2% increased drop chance" />
+      <EffectInfo name="Drawbacks:" description="(-0.05% less effect per extra talisman held)" />
     </ExtraTooltipData>
     <Texture>
       <File>CustomObj</File>
       <Index>0x7d</Index>
     </Texture>
     <SlotType>10</SlotType>
-    <Description>This talisman contains powers of looting.</Description>
+    <Description>This Talisman contains a fire which give you % of Looting.</Description>
     <Sound>use_potion</Sound>
-    <Activate type="0x00">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
+    <SNormal />
     <BagType>3</BagType>
   </Object>
   <Object type="0x5038" id="Cocktail of Vitality">
@@ -53808,7 +54237,7 @@
       <Index>0xbc</Index>
     </Texture>
     <SlotType>2</SlotType>
-    <Description>If this item is broken, it's glass' fault</Description>
+    <Description>Bits of cosmic residue dropped by sprites were collected and forged into blades under the heavy pressure of space.</Description>
     <RateOfFire>1.20</RateOfFire>
     <Sound>weapon/fire_dagger</Sound>
     <Projectile>
@@ -59861,7 +60290,7 @@
     <Class>Equipment</Class>
     <Item />
     <Description>A classical robe used as a standard for up-and-coming wizards aiming to faces the challenges in the realm that lie ahead</Description>
-    <SetTier />
+    <Rare />
     <Texture>
       <File>CustomObj</File>
       <Index>0x6d</Index>
@@ -61523,7 +61952,7 @@
     </Texture>
     <SlotType>11</SlotType>
     <FameBonus>5</FameBonus>
-    <Description>Zeus is big gay</Description>
+    <Description>A dormant spell dropped by dead adventures that was awakened by the forces of space, granting the ability to manipulate space at will.</Description>
     <Sound>spell/fire_nova</Sound>
     <ActivateOnEquip stat="26" amount="4">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="4">IncrementStat</ActivateOnEquip>
@@ -66098,36 +66527,175 @@
     <ShadowSize>80</ShadowSize>
     <SizeStep>5</SizeStep>
   </Object>
+  <Object type="0x260" id="Dark Death Tree">
+    <Class>GameObject</Class>
+    <Size>120</Size>
+    <RandomTexture>
+      <Texture>
+        <File>custom16x16Environment</File>
+        <Index>0x37</Index>
+      </Texture>
+      <Texture>
+        <File>custom16x16Environment</File>
+        <Index>0x38</Index>
+      </Texture>
+      <Texture>
+        <File>custom16x16Environment</File>
+        <Index>0x39</Index>
+      </Texture>
+      <Texture>
+        <File>custom16x16Environment</File>
+        <Index>0x3a</Index>
+      </Texture>
+      <Texture>
+        <File>custom16x16Environment</File>
+        <Index>0x3b</Index>
+      </Texture>
+      <Texture>
+        <File>custom16x16Environment</File>
+        <Index>0x3c</Index>
+      </Texture>
+      <Texture>
+        <File>custom16x16Environment</File>
+        <Index>0x3d</Index>
+      </Texture>
+    </RandomTexture>
+    <Static />
+    <OccupySquare />
+    <EnemyOccupySquare />
+    <BlockSight />
+    <HitSound>monster/trees_hit</HitSound>
+    <DeathSound>monster/tress_death</DeathSound>
+  </Object>
+  <Object type="0x279" id="Trap Door 1">
+    <Class>GameObject</Class>
+    <Texture>
+      <File>CustomObjectsSkillTree</File>
+      <Index>0x20</Index>
+    </Texture>
+    <Static />
+    <Size>100</Size>
+  </Object>
+  <Object type="0x271" id="Dark Tree 1">
+    <Class>GameObject</Class>
+    <RandomTexture>
+      <Texture>
+        <File>custom16x16Environment</File>
+        <Index>0x47</Index>
+      </Texture>
+      <Texture>
+        <File>custom16x16Environment</File>
+        <Index>0x48</Index>
+      </Texture>
+      <Texture>
+        <File>custom16x16Environment</File>
+        <Index>0x4b</Index>
+      </Texture>
+      <Texture>
+        <File>custom16x16Environment</File>
+        <Index>0x4a</Index>
+      </Texture>
+    </RandomTexture>
+    <Static />
+    <BlocksSight />
+    <OccupySquare />
+    <EnemyOccupySquare />
+    <Size>100</Size>
+  </Object>
+  <Object type="0x20A" id="Dark Tree 2">
+    <Class>GameObject</Class>
+    <Texture>
+      <File>custom16x16Environment</File>
+      <Index>0x48</Index>
+    </Texture>
+    <Static />
+    <Size>100</Size>
+  </Object>
+  <Object type="0x20B" id="Dark Tree 3">
+    <Class>GameObject</Class>
+    <Texture>
+      <File>custom16x16Environment</File>
+      <Index>0x4b</Index>
+    </Texture>
+    <Static />
+    <OccupySquare />
+    <EnemyOccupySquare />
+    <Size>100</Size>
+  </Object>
+  <Object type="0x270" id="Dark Tree 4">
+    <Class>GameObject</Class>
+    <Texture>
+      <File>custom16x16Environment</File>
+      <Index>0x4a</Index>
+    </Texture>
+    <Static />
+    <OccupySquare />
+    <EnemyOccupySquare />
+    <Size>100</Size>
+  </Object>
+  <Object type="0x272" id="Dark Bush 1">
+    <Class>GameObject</Class>
+    <Texture>
+      <File>custom16x16Environment</File>
+      <Index>0x49</Index>
+    </Texture>
+    <Static />
+    <Size>100</Size>
+  </Object>
+  <Object type="0x273" id="Dark Wood Wall">
+    <Class>Wall</Class>
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x23</Index>
+    </Texture>
+    <Top>
+      <Texture>
+        <File>customEnvironmentMortomus</File>
+        <Index>0x13</Index>
+      </Texture>
+    </Top>
+    <HitSound>monster/stone_walls_hit</HitSound>
+    <DeathSound>monster/stone_walls_death</DeathSound>
+    <Static />
+    <FullOccupy />
+    <OccupySquare />
+    <EnemyOccupySquare />
+    <BlocksSight />
+  </Object>
   <Object type="0xb0b8" id="SL Torch">
     <Class>GameObject</Class>
     <Size>100</Size>
     <ShadowSize>110</ShadowSize>
-    <ShadowColor>0x43598ca</ShadowColor>
+    <ShadowColor>0x0070FF</ShadowColor>
     <Static />
     <Texture>
-      <File>customEnvironment</File>
-      <Index>0x95</Index>
+      <File>custom16x16Environment</File>
+      <Index>0x77</Index>
     </Texture>
-    <Animation prob="1.0" period="0.0">
+    <Animation prob="1" period="0">
       <Frame time="0.2">
-        <RandomTexture>
-          <Texture>
-            <File>customEnvironment</File>
-            <Index>0x95</Index>
-          </Texture>
-          <Texture>
-            <File>customEnvironment</File>
-            <Index>0x96</Index>
-          </Texture>
-          <Texture>
-            <File>customEnvironment</File>
-            <Index>0x97</Index>
-          </Texture>
-          <Texture>
-            <File>customEnvironment</File>
-            <Index>0x98</Index>
-          </Texture>
-        </RandomTexture>
+        <Texture>
+          <File>custom16x16Environment</File>
+          <Index>0x77</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.2">
+        <Texture>
+          <File>custom16x16Environment</File>
+          <Index>0x78</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.2">
+        <Texture>
+          <File>custom16x16Environment</File>
+          <Index>0x79</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.2">
+        <Texture>
+          <File>custom16x16Environment</File>
+          <Index>0x7a</Index>
+        </Texture>
       </Frame>
     </Animation>
   </Object>
@@ -66255,59 +66823,37 @@
     </Texture>
     <ShadowSize>50</ShadowSize>
   </Object>
-  <Object type="0xaa01" id="Wind Tile 1">
+  <Object type="0x141" id="Wind Rock 1">
     <Class>GameObject</Class>
     <Texture>
-      <File>customEnvironment1</File>
-      <Index>0x30</Index>
+      <File>custom16x16Environment</File>
+      <Index>0x29</Index>
     </Texture>
-    <DrawOnGround />
-    <Static />
+    <ShadowSize>50</ShadowSize>
   </Object>
-  <Object type="0xaa02" id="Wind Tile 2">
+  <Object type="0x142" id="Wind Rock 2">
     <Class>GameObject</Class>
     <Texture>
-      <File>customEnvironment1</File>
-      <Index>0x31</Index>
+      <File>custom16x16Environment</File>
+      <Index>0x2a</Index>
     </Texture>
-    <DrawOnGround />
-    <Static />
+    <ShadowSize>50</ShadowSize>
   </Object>
-  <Object type="0xaa03" id="Wind Tile 3">
+  <Object type="0x143" id="Wind Rock 3">
     <Class>GameObject</Class>
     <Texture>
-      <File>customEnvironment1</File>
-      <Index>0x32</Index>
+      <File>custom16x16Environment</File>
+      <Index>0x2b</Index>
     </Texture>
-    <DrawOnGround />
-    <Static />
+    <ShadowSize>50</ShadowSize>
   </Object>
-  <Object type="0xaa04" id="Wind Tile 4">
+  <Object type="0x144" id="Wind Rock 4">
     <Class>GameObject</Class>
     <Texture>
-      <File>customEnvironment1</File>
-      <Index>0x33</Index>
+      <File>custom16x16Environment</File>
+      <Index>0x2c</Index>
     </Texture>
-    <DrawOnGround />
-    <Static />
-  </Object>
-  <Object type="0xaa05" id="Wind Tile 5">
-    <Class>GameObject</Class>
-    <Texture>
-      <File>customEnvironment1</File>
-      <Index>0x34</Index>
-    </Texture>
-    <DrawOnGround />
-    <Static />
-  </Object>
-  <Object type="0xaa06" id="Wind Tile 6">
-    <Class>GameObject</Class>
-    <Texture>
-      <File>customEnvironment1</File>
-      <Index>0x35</Index>
-    </Texture>
-    <DrawOnGround />
-    <Static />
+    <ShadowSize>50</ShadowSize>
   </Object>
   <Object type="0xa007" id="Gravestone 9/16">
     <Class>GameObject</Class>
@@ -66372,38 +66918,6 @@
         <Index>0x02</Index>
       </Texture>
     </RandomTexture>
-  </Object>
-  <Object type="0xaa07" id="Wind Rock 1">
-    <Class>GameObject</Class>
-    <Texture>
-      <File>customEnvironment16x16</File>
-      <Index>0x60</Index>
-    </Texture>
-    <ShadowSize>50</ShadowSize>
-  </Object>
-  <Object type="0xaa08" id="Wind Rock 2">
-    <Class>GameObject</Class>
-    <Texture>
-      <File>customEnvironment16x16</File>
-      <Index>0x61</Index>
-    </Texture>
-    <ShadowSize>50</ShadowSize>
-  </Object>
-  <Object type="0xaa09" id="Wind Rock 3">
-    <Class>GameObject</Class>
-    <Texture>
-      <File>customEnvironment16x16</File>
-      <Index>0x62</Index>
-    </Texture>
-    <ShadowSize>50</ShadowSize>
-  </Object>
-  <Object type="0xaa10" id="Wind Rock 4">
-    <Class>GameObject</Class>
-    <Texture>
-      <File>customEnvironment16x16</File>
-      <Index>0x63</Index>
-    </Texture>
-    <ShadowSize>50</ShadowSize>
   </Object>
   <Object type="0xa00a" id="Gravestone 12/16">
     <Class>GameObject</Class>
@@ -75717,7 +76231,7 @@
     <Static />
   </Object>
   <Object type="0x506c" id="Skill Tree">
-    <Class>Essence</Class>
+    <Class>SkillTree</Class>
     <Texture>
       <File>CustomObjectsSkillTree</File>
       <Index>0x00</Index>
@@ -77494,6 +78008,7 @@
       <File>CustomProjs</File>
       <Index>0x89</Index>
     </Texture>
+    <AngleCorrection>1</AngleCorrection>
   </Object>
   <Object type="0xb014" id="Fang Flinger Shoot">
     <Class>Projectile</Class>
@@ -77930,7 +78445,7 @@
     <Class>Projectile</Class>
     <Texture>
       <File>CustomProjs</File>
-      <Index>0x28</Index>
+      <Index>0x29</Index>
     </Texture>
     <AngleCorrection>1</AngleCorrection>
   </Object>
@@ -78588,7 +79103,7 @@
       <File>CustomProjs</File>
       <Index>0xa9</Index>
     </Texture>
-    <AngleCorrection>1</AngleCorrection>
+    <Rotation>340</Rotation>
   </Object>
   <Object type="0xa52f" id="Stab">
     <Class> Projectile </Class>
@@ -78612,7 +79127,7 @@
       <File>CustomProjs</File>
       <Index>0xad</Index>
     </Texture>
-    <AngleCorrection>1</AngleCorrection>
+    <Rotation>300</Rotation>
   </Object>
   <Object type="0xa53c" id="Hit">
     <Class> Projectile </Class>

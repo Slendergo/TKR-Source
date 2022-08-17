@@ -81,58 +81,51 @@ public class ObjectLibrary
          var i:int = 0;
          for each(objectXML in xml.Object)
          {
-            id = String(objectXML.@id);
-            displayId = id;
-            if(objectXML.hasOwnProperty("DisplayId"))
-            {
-               displayId = objectXML.DisplayId;
-            }
-            if(objectXML.hasOwnProperty("Group"))
-            {
-               if(objectXML.Group == "Hexable")
-               {
-                  hexTransforms_.push(objectXML);
+            try {
+               id = String(objectXML.@id);
+               displayId = id;
+               if (objectXML.hasOwnProperty("DisplayId")) {
+                  displayId = objectXML.DisplayId;
                }
-            }
-            objectType = int(objectXML.@type);
-            propsLibrary_[objectType] = new ObjectProperties(objectXML);
-            xmlLibrary_[objectType] = objectXML;
-            idToType_[id] = objectType;
-            typeToDisplayId_[objectType] = displayId;
-
-            if (String(objectXML.Class) == "Equipment")
-            {
-               typeToIdItems_[objectType] = id.toLowerCase(); /* Saves us the power to do this later */
-               idToTypeItems_[id.toLowerCase()] = objectType;
-            }
-
-            if(String(objectXML.Class) == "Player")
-            {
-               playerClassAbbr_[objectType] = String(objectXML.@id).substr(0,2);
-               found = false;
-               for(i = 0; i < playerChars_.length; i++)
-               {
-                  if(int(playerChars_[i].@type) == objectType)
-                  {
-                     playerChars_[i] = objectXML;
-                     found = true;
+               if (objectXML.hasOwnProperty("Group")) {
+                  if (objectXML.Group == "Hexable") {
+                     hexTransforms_.push(objectXML);
                   }
                }
-               if(!found)
-               {
-                  playerChars_.push(objectXML);
-               }
-            }
-            trace(id);
+               objectType = int(objectXML.@type);
+               propsLibrary_[objectType] = new ObjectProperties(objectXML);
+               xmlLibrary_[objectType] = objectXML;
+               idToType_[id] = objectType;
+               typeToDisplayId_[objectType] = displayId;
 
-            typeToTextureData_[objectType] = new TextureData(objectXML);
-            if(objectXML.hasOwnProperty("Top"))
-            {
-               typeToTopTextureData_[objectType] = new TextureData(XML(objectXML.Top));
-            }
-            if(objectXML.hasOwnProperty("Animation"))
-            {
-               typeToAnimationsData_[objectType] = new AnimationsData(objectXML);
+               if (String(objectXML.Class) == "Equipment") {
+                  typeToIdItems_[objectType] = id.toLowerCase(); /* Saves us the power to do this later */
+                  idToTypeItems_[id.toLowerCase()] = objectType;
+               }
+
+               if (String(objectXML.Class) == "Player") {
+                  playerClassAbbr_[objectType] = String(objectXML.@id).substr(0, 2);
+                  found = false;
+                  for (i = 0; i < playerChars_.length; i++) {
+                     if (int(playerChars_[i].@type) == objectType) {
+                        playerChars_[i] = objectXML;
+                        found = true;
+                     }
+                  }
+                  if (!found) {
+                     playerChars_.push(objectXML);
+                  }
+               }
+
+               typeToTextureData_[objectType] = new TextureData(objectXML);
+               if (objectXML.hasOwnProperty("Top")) {
+                  typeToTopTextureData_[objectType] = new TextureData(XML(objectXML.Top));
+               }
+               if (objectXML.hasOwnProperty("Animation")) {
+                  typeToAnimationsData_[objectType] = new AnimationsData(objectXML);
+               }
+            } catch (e:Error) {
+               trace("Failure to add XML Object: " + id)
             }
          }
 

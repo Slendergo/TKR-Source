@@ -25,9 +25,9 @@ import kabam.rotmg.PotionStorage.PotionStorageModal;
 import kabam.rotmg.PotionStorage.PotionStorageModalMediator;
 
 //import kabam.rotmg.NewSkillTree.BigSkillTreeMediator;
-import kabam.rotmg.NewSkillTree.SkillTreeModal;
-import kabam.rotmg.NewSkillTree.SkillTreeModalMediator;
-import kabam.rotmg.NewSkillTree.SmallSkillTreeMediator;
+//import kabam.rotmg.NewSkillTree.SkillTreeModal;
+//import kabam.rotmg.NewSkillTree.SkillTreeModalMediator;
+//import kabam.rotmg.NewSkillTree.SmallSkillTreeMediator;
 import kabam.rotmg.StatNPC.StatNPCInfo;
 import kabam.rotmg.StatNPC.StatNPCInfoMediator;
 import kabam.rotmg.StatNPC.StatNPCModal;
@@ -148,8 +148,8 @@ public class GameConfig implements IConfig
       private function customNPCs():void{
          this.mediatorMap.map(StatNPCModal).toMediator(StatNPCModalMediator);
          this.mediatorMap.map(StatNPCInfo).toMediator(StatNPCInfoMediator);
-         this.mediatorMap.map(SkillTreeModal).toMediator(SkillTreeModalMediator);
-         this.mediatorMap.map(SkillTreeModal).toMediator(SmallSkillTreeMediator);
+         //this.mediatorMap.map(SkillTreeModal).toMediator(SkillTreeModalMediator);
+         //this.mediatorMap.map(SkillTreeModal).toMediator(SmallSkillTreeMediator);
          //this.mediatorMap.map(SkillTreeModal).toMediator(BigSkillTreeMediator);
           this.mediatorMap.map(BountyBoardModal).toMediator(BountyBoardModalMediator);
           this.mediatorMap.map(PotionStorageModal).toMediator(PotionStorageModalMediator);

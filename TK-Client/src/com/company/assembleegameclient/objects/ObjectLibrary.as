@@ -59,7 +59,7 @@ public class ObjectLibrary
          "Wall":Wall,
          "Forge":Forge,
          "StatNPC":StatNPC,
-         "SkillTree":SkillTree,
+         //"SkillTree":SkillTree,
          "MarketNPC":MarketNPC,
          "BountyBoard": BountyBoard,
          "PotionStorage": PotionStorage,

@@ -1955,66 +1955,6 @@ public class GameServerConnection
                case StatData.SUPERMAXEDWIS:
                   player.superMaxedWis = Boolean(value);
                   continue;
-               case StatData.NODE1TICKMIN:
-                  player.node1TickMin = value;
-                  continue;
-               case StatData.NODE1TICKMAJ:
-                  player.node1TickMaj = value;
-                  continue;
-               case StatData.NODE1MED:
-                  player.node1Med = value;
-                  continue;
-               case StatData.NODE1BIG:
-                  player.node1Big = value;
-                  continue;
-               case StatData.NODE2TICKMIN:
-                  player.node2TickMin = value;
-                  continue;
-               case StatData.NODE2TICKMAJ:
-                  player.node2TickMaj = value;
-                  continue;
-               case StatData.NODE2MED:
-                  player.node2Med = value;
-                  continue;
-               case StatData.NODE2BIG:
-                  player.node2Big = value;
-                  continue;
-               case StatData.NODE3TICKMIN:
-                  player.node3TickMin = value;
-                  continue;
-               case StatData.NODE3TICKMAJ:
-                  player.node3TickMaj = value;
-                  continue;
-               case StatData.NODE3MED:
-                  player.node3Med = value;
-                  continue;
-               case StatData.NODE3BIG:
-                  player.node3Big = value;
-                  continue;
-               case StatData.NODE4TICKMIN:
-                  player.node4TickMin = value;
-                  continue;
-               case StatData.NODE4TICKMAJ:
-                  player.node4TickMaj = value;
-                  continue;
-               case StatData.NODE4MED:
-                  player.node4Med = value;
-                  continue;
-               case StatData.NODE4BIG:
-                  player.node4Big = value;
-                  continue;
-               case StatData.NODE5TICKMIN:
-                  player.node5TickMin = value;
-                  continue;
-               case StatData.NODE5TICKMAJ:
-                  player.node5TickMaj = value;
-                  continue;
-               case StatData.NODE5MED:
-                  player.node5Med = value;
-                  continue;
-               case StatData.NODE5BIG:
-                  player.node5Big = value;
-                  continue;
                case StatData.GLOW_ENEMY_COLOR:
                   go.setGlowEnemy(value);
                   continue;

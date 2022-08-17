@@ -53,9 +53,6 @@ public class EssenceView extends ModalPopup {
 
     public var sprite_:Sprite;
     public var slotsContainer_:Sprite;
-
-    public var upgrade_:SliceScalingButton;
-
     private var slotsScrollBar_:Scrollbar;
 
     public var slots_:Vector.<TalismanSlot>;
@@ -180,7 +177,7 @@ public class EssenceView extends ModalPopup {
             this.slots_[i].draw();
             count += this.slots_[i].delta_;
         }
-        this.essenceGague_.draw(this.player.essence_, this.player.essenceCap_);
+        this.essenceGague_.draw();
     }
 }
 }

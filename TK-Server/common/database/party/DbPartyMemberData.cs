@@ -1,6 +1,6 @@
 ﻿namespace common.database
 {
-    public struct DbMemberData
+    public struct DbPartyMemberData
     {
         public int accid;
         public string name;

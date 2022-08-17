@@ -33,7 +33,7 @@ namespace common.database
 
         public int PartyId { get; set; }
         public (string, int) PartyLeader { get; set; }
-        public List<DbMemberData> PartyMembers { get; set; }
+        public List<DbPartyMemberData> PartyMembers { get; set; }
         public int WorldId { get; set; }
 
         public static DbPartySystem Get(IDatabase db, int partyId)

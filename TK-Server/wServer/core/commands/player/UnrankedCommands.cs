@@ -202,7 +202,7 @@ namespace wServer.core.commands
                 {
                     PartyId = nextId,
                     PartyLeader = (player.Client.Account.Name, player.Client.Account.AccountId),
-                    PartyMembers = new List<DbMemberData>(DbPartySystem.ReturnSize(player.Client.Account.Rank))
+                    PartyMembers = new List<DbPartyMemberData>(DbPartySystem.ReturnSize(player.Client.Account.Rank))
                 };
                 party.Flush();
 
@@ -1165,7 +1165,7 @@ namespace wServer.core.commands
 
             foreach (var server in servers)
             {
-                if (server.type != common.isc.ServerType.World) continue;
+                if (server.type != ServerType.World) continue;
 
                 countClients += server.players;
                 maxClients += server.maxPlayers;

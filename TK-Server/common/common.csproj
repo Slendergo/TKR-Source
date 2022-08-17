@@ -139,12 +139,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="database\DbSpecialVault.cs" />
-    <Compile Include="database\GuildCreateStatus.cs" />
-    <Compile Include="database\DbTalismanEntry.cs" />
-    <Compile Include="database\ItemData.cs" />
-    <Compile Include="database\DbTalisman.cs" />
-    <Compile Include="database\Statuses.cs" />
+    <Compile Include="database\vault\DbSpecialVault.cs" />
+    <Compile Include="database\talisman\DbTalismanEntry.cs" />
+    <Compile Include="database\character\inventory\ItemData.cs" />
+    <Compile Include="database\talisman\DbTalisman.cs" />
+    <Compile Include="database\DbStatuses.cs" />
     <Compile Include="BaseDictionary.Collection.cs" />
     <Compile Include="BaseDictionary.cs" />
     <Compile Include="BaseDictionary.KeyCollection.cs" />
@@ -152,25 +151,18 @@
     <Compile Include="database\Database.cs" />
     <Compile Include="database\account\DbAccount.cs" />
     <Compile Include="database\character\DbChar.cs" />
-    <Compile Include="database\DbClassStats.cs" />
-    <Compile Include="database\DbDeath.cs" />
-    <Compile Include="database\DbGuild.cs" />
-    <Compile Include="database\DbInfo.cs" />
-    <Compile Include="database\DbLegend.cs" />
-    <Compile Include="database\DbLegendEntry.cs" />
-    <Compile Include="database\DbLoginInfo.cs" />
-    <Compile Include="database\DbMarketData.cs" />
-    <Compile Include="database\DbIpInfo.cs" />
-    <Compile Include="database\DbNews.cs" />
-    <Compile Include="database\DbNewsEntry.cs" />
-    <Compile Include="database\DbPartySystem.cs" />
-    <Compile Include="database\DbVault.cs" />
-    <Compile Include="database\DbVaultSingle.cs" />
-    <Compile Include="database\GuildRank.cs" />
-    <Compile Include="database\IRedisService.cs" />
-    <Compile Include="database\LegendType.cs" />
-    <Compile Include="database\IRedisModel.cs" />
-    <Compile Include="database\MaxedStat.cs" />
+    <Compile Include="database\character\DbClassStats.cs" />
+    <Compile Include="database\character\DbDeath.cs" />
+    <Compile Include="database\guild\DbGuild.cs" />
+    <Compile Include="database\leaderboard\DbLegend.cs" />
+    <Compile Include="database\account\DbLoginInfo.cs" />
+    <Compile Include="database\market\DbMarketData.cs" />
+    <Compile Include="database\account\DbIpInfo.cs" />
+    <Compile Include="database\news\DbNews.cs" />
+    <Compile Include="database\news\DbNewsEntry.cs" />
+    <Compile Include="database\party\DbPartySystem.cs" />
+    <Compile Include="database\vault\DbVault.cs" />
+    <Compile Include="database\vault\DbVaultSingle.cs" />
     <Compile Include="discord\model\ClassModel.cs" />
     <Compile Include="discord\DiscordEmbed.cs" />
     <Compile Include="discord\DiscordEmbedAuthor.cs" />
@@ -199,8 +191,7 @@
     <Compile Include="isc\ServerType.cs" />
     <Compile Include="LockTimeoutException.cs" />
     <Compile Include="logger\Log.cs" />
-    <Compile Include="database\DbLoginStatus.cs" />
-    <Compile Include="database\DbMemberData.cs" />
+    <Compile Include="database\party\DbPartyMemberData.cs" />
     <Compile Include="NReader.cs" />
     <Compile Include="NWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1800,11 +1791,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="database\guild\" />
-    <Folder Include="database\leaderboard\" />
-    <Folder Include="database\login\" />
-    <Folder Include="database\market\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

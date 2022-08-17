@@ -2,6 +2,22 @@
 
 namespace common.database
 {
+    public enum GuildCreateStatus
+    {
+        Ok,
+        InvalidName,
+        UsedName
+    }
+
+    public enum GuildRank : byte
+    {
+        Initiate = 0,
+        Member = 10,
+        Officer = 20,
+        Leader = 30,
+        Founder = 40
+    }
+
     public enum DbAddGuildMemberStatus
     {
         OK,

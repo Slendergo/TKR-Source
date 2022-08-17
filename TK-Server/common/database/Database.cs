@@ -220,7 +220,7 @@ namespace common.database
         public bool AddMemberToParty(IDatabase db, string accname, int AccId, int partyId)
         {
             var party = DbPartySystem.Get(db, partyId);
-            var data = new DbMemberData
+            var data = new DbPartyMemberData
             {
                 accid = AccId,
                 name = accname

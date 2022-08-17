@@ -72,13 +72,13 @@ namespace wServer.core.objects
                     Goal = talisman.ExpGoal,
                     Active = talisman.Active
                 });
-            GameServer.Database.SaveTalismansToCharacter(Client.Character.CharId, talismans);
+            GameServer.Database.SaveTalismansToCharacter(Client.Account.AccountId, Client.Character.CharId, talismans);
         }
 
         private void LoadTalismanData()
         {
             UpdateEssenceCap();
-            var talismans = GameServer.Database.GetTalismansFromCharacter(Client.Character.CharId);
+            var talismans = GameServer.Database.GetTalismansFromCharacter(Client.Account.AccountId, Client.Character.CharId);
             foreach (var talisman in talismans)
             {
                 TalismanDatas.Add(talisman.Type, new TalismanData(talisman));

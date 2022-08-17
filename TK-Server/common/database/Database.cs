@@ -315,16 +315,16 @@ namespace common.database
                 _db.HashSet($"guild.{i}", "guildLootBoost", 0);
         }
 
-        public void AddTalismanToCharacter(int characterId, byte type, byte level, int exp, int goal, byte tier)
+        public void AddTalismanToCharacter(int accountId, int characterId, byte type, byte level, int exp, int goal, byte tier)
         {
-            var talisman = new DbTalisman(_db, characterId, type);
+            var talisman = new DbTalisman(_db, accountId, characterId, type);
             talisman.Unlock(type, level, exp, goal, tier, false);
             talisman.FlushAsync();
         }
 
-        public List<DbTalismanEntry> GetTalismansFromCharacter(int characterId)
+        public List<DbTalismanEntry> GetTalismansFromCharacter(int accountId, int characterId)
         {
-            var talisman = new DbTalisman(_db, characterId);
+            var talisman = new DbTalisman(_db, accountId, characterId);
             var ret = new List<DbTalismanEntry>();
             foreach (var i in talisman.AllKeys)
             {
@@ -334,23 +334,23 @@ namespace common.database
             return ret;
         }
 
-        public bool HasTalismanOnCharacter(int characterId, byte type)
+        public bool HasTalismanOnCharacter(int accountId, int characterId, byte type)
         {
-            var talisman = new DbTalisman(_db, characterId, type);
+            var talisman = new DbTalisman(_db, accountId, characterId, type);
             var entry = talisman[type];
             return !entry.IsNull;
         }
 
-        public void UpdateTalismanToCharacter(int characterId, byte type, byte level, int exp, int goal, byte tier, bool active)
+        public void UpdateTalismanToCharacter(int accountId, int characterId, byte type, byte level, int exp, int goal, byte tier, bool active)
         {
-            var talisman = new DbTalisman(_db, characterId, type);
+            var talisman = new DbTalisman(_db, accountId, characterId, type);
             talisman.Update(type, level, exp, goal, tier, active);
             talisman.FlushAsync();
         }
 
-        public void SaveTalismansToCharacter(int characterId, List<DbTalismanEntry> talismans)
+        public void SaveTalismansToCharacter(int accountId, int characterId, List<DbTalismanEntry> talismans)
         {
-            var talisman = new DbTalisman(_db, characterId);
+            var talisman = new DbTalisman(_db, accountId, characterId);
             foreach(var t in talismans)
                 talisman.Update(t);
             talisman.FlushAsync();

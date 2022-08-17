@@ -20,9 +20,9 @@ namespace common.database.model
             set => SetValue(type.ToString(), JsonConvert.SerializeObject(value));
         }
 
-        public DbTalisman(IDatabase database, int characterId, int? type = null, bool isAsync = false)
+        public DbTalisman(IDatabase database, int accountId, int characterId, int? type = null, bool isAsync = false)
         {
-            Init(database, $"talismans.{characterId}", type?.ToString(), isAsync);
+            Init(database, $"talismans.{accountId}.{characterId}", type?.ToString(), isAsync);
         }
 
         public void Unlock(byte type, byte level, int exp, int goal, byte tier, bool active)

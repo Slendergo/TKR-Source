@@ -201,7 +201,6 @@ namespace wServer.core.objects
             _hasBackpack = new SV<bool>(this, StatDataType.HasBackpack, client.Character.HasBackpack, true);
             _oxygenBar = new SV<int>(this, StatDataType.OxygenBar, -1, true);
             _baseStat = new SV<int>(this, StatDataType.BaseStat, client.Account.SetBaseStat, true);
-            _points = new SV<int>(this, StatDataType.Points, client.Character.Points, true);
             _maxedLife = new SV<bool>(this, StatDataType.MaxedLife, client.Character.MaxedLife, true);
             _maxedMana = new SV<bool>(this, StatDataType.MaxedMana, client.Character.MaxedMana, true);
             _maxedAtt = new SV<bool>(this, StatDataType.MaxedAtt, client.Character.MaxedAtt, true);
@@ -209,40 +208,6 @@ namespace wServer.core.objects
             _maxedSpd = new SV<bool>(this, StatDataType.MaxedSpd, client.Character.MaxedSpd, true);
             _maxedDex = new SV<bool>(this, StatDataType.MaxedDex, client.Character.MaxedDex, true);
             _maxedVit = new SV<bool>(this, StatDataType.MaxedVit, client.Character.MaxedVit, true);
-            _maxedWis = new SV<bool>(this, StatDataType.MaxedWis, client.Character.MaxedWis, true);
-            _superMaxedLife = new SV<bool>(this, StatDataType.SuperMaxedLife, client.Character.SuperMaxedLife, true);
-            _superMaxedMana = new SV<bool>(this, StatDataType.SuperMaxedMana, client.Character.SuperMaxedMana, true);
-            _superMaxedAtt = new SV<bool>(this, StatDataType.SuperMaxedAtt, client.Character.SuperMaxedAtt, true);
-            _superMaxedDef = new SV<bool>(this, StatDataType.SuperMaxedDef, client.Character.SuperMaxedDef, true);
-            _superMaxedSpd = new SV<bool>(this, StatDataType.SuperMaxedSpd, client.Character.SuperMaxedSpd, true);
-            _superMaxedDex = new SV<bool>(this, StatDataType.SuperMaxedDex, client.Character.SuperMaxedDex, true);
-            _superMaxedVit = new SV<bool>(this, StatDataType.SuperMaxedVit, client.Character.SuperMaxedVit, true);
-            _superMaxedWis = new SV<bool>(this, StatDataType.SuperMaxedWis, client.Character.SuperMaxedWis, true);
-
-            _node1TickMin = new SV<int>(this, StatDataType.Node1TickMin, client.Character.Node1TickMin, true);
-            _node1TickMaj = new SV<int>(this, StatDataType.Node1TickMaj, client.Character.Node1TickMaj, true);
-            _node1Med = new SV<int>(this, StatDataType.Node1Med, client.Character.Node1Med, true);
-            _node1Big = new SV<int>(this, StatDataType.Node1Big, client.Character.Node1Big, true);
-
-            _node2TickMin = new SV<int>(this, StatDataType.Node2TickMin, client.Character.Node2TickMin, true);
-            _node2TickMaj = new SV<int>(this, StatDataType.Node2TickMaj, client.Character.Node2TickMaj, true);
-            _node2Med = new SV<int>(this, StatDataType.Node2Med, client.Character.Node2Med, true);
-            _node2Big = new SV<int>(this, StatDataType.Node2Big, client.Character.Node2Big, true);
-
-            _node3TickMin = new SV<int>(this, StatDataType.Node3TickMin, client.Character.Node3TickMin, true);
-            _node3TickMaj = new SV<int>(this, StatDataType.Node3TickMaj, client.Character.Node3TickMaj, true);
-            _node3Med = new SV<int>(this, StatDataType.Node3Med, client.Character.Node3Med, true);
-            _node3Big = new SV<int>(this, StatDataType.Node3Big, client.Character.Node3Big, true);
-
-            _node4TickMin = new SV<int>(this, StatDataType.Node4TickMin, client.Character.Node4TickMin, true);
-            _node4TickMaj = new SV<int>(this, StatDataType.Node4TickMaj, client.Character.Node4TickMaj, true);
-            _node4Med = new SV<int>(this, StatDataType.Node4Med, client.Character.Node4Med, true);
-            _node4Big = new SV<int>(this, StatDataType.Node4Big, client.Character.Node4Big, true);
-
-            _node5TickMin = new SV<int>(this, StatDataType.Node5TickMin, client.Character.Node5TickMin, true);
-            _node5TickMaj = new SV<int>(this, StatDataType.Node5TickMaj, client.Character.Node5TickMaj, true);
-            _node5Med = new SV<int>(this, StatDataType.Node5Med, client.Character.Node5Med, true);
-            _node5Big = new SV<int>(this, StatDataType.Node5Big, client.Character.Node5Big, true);
 
             _colornamechat = new SV<int>(this, StatDataType.ColorNameChat, 0);
             _colorchat = new SV<int>(this, StatDataType.ColorChat, 0);
@@ -385,9 +350,7 @@ namespace wServer.core.objects
             {
                 if (!MaxedLife)
                 {
-                    Points += 6;
                     MaxedLife = true;
-                    chr.Points = Points;
                     chr.MaxedLife = MaxedLife;
                 }
             }
@@ -395,9 +358,7 @@ namespace wServer.core.objects
             {
                 if (!MaxedMana)
                 {
-                    Points += 5;
                     MaxedMana = true;
-                    chr.Points = Points;
                     chr.MaxedMana = MaxedMana;
                 }
             }
@@ -405,9 +366,7 @@ namespace wServer.core.objects
             {
                 if (!MaxedAtt)
                 {
-                    Points += 3;
                     MaxedAtt = true;
-                    chr.Points = Points;
                     chr.MaxedAtt = MaxedAtt;
                 }
             }
@@ -415,9 +374,7 @@ namespace wServer.core.objects
             {
                 if (!MaxedDef)
                 {
-                    Points += 3;
                     MaxedDef = true;
-                    chr.Points = Points;
                     chr.MaxedDef = MaxedDef;
                 }
             }
@@ -425,9 +382,7 @@ namespace wServer.core.objects
             {
                 if (!MaxedSpd)
                 {
-                    Points += 3;
                     MaxedSpd = true;
-                    chr.Points = Points;
                     chr.MaxedSpd = MaxedSpd;
                 }
             }
@@ -435,9 +390,7 @@ namespace wServer.core.objects
             {
                 if (!MaxedDex)
                 {
-                    Points += 3;
                     MaxedDex = true;
-                    chr.Points = Points;
                     chr.MaxedDex = MaxedDex;
                 }
             }
@@ -445,9 +398,7 @@ namespace wServer.core.objects
             {
                 if (!MaxedVit)
                 {
-                    Points += 3;
                     MaxedVit = true;
-                    chr.Points = Points;
                     chr.MaxedVit = MaxedVit;
                 }
             }
@@ -455,108 +406,9 @@ namespace wServer.core.objects
             {
                 if (!MaxedWis)
                 {
-                    Points += 3;
                     MaxedWis = true;
-                    chr.Points = Points;
                     chr.MaxedWis = MaxedWis;
                 }
-            }
-
-            var upgradeCount = 0;
-            if (Stats.Base[0] >= statInfo[0].MaxValue + 50)
-            {
-                if (!SuperMaxedLife)
-                {
-                    Points += 5;
-                    SuperMaxedLife = true;
-                    chr.SuperMaxedLife = SuperMaxedLife;
-                    chr.Points = Points;
-                }
-                upgradeCount++;
-            }
-            if (Stats.Base[1] >= statInfo[1].MaxValue + 50)
-            {
-                if (!SuperMaxedMana)
-                {
-                    Points += 4;
-                    SuperMaxedMana = true;
-                    chr.SuperMaxedMana = SuperMaxedMana;
-                    chr.Points = Points;
-                }
-                upgradeCount++;
-            }
-            if (Stats.Base[2] >= statInfo[2].MaxValue + 10)
-            {
-                if (!SuperMaxedAtt)
-                {
-                    Points += 2;
-                    SuperMaxedAtt = true;
-                    chr.SuperMaxedAtt = SuperMaxedAtt;
-                    chr.Points = Points;
-                }
-                upgradeCount++;
-            }
-            if (Stats.Base[3] >= statInfo[3].MaxValue + 10)
-            {
-                if (!SuperMaxedDef)
-                {
-                    Points += 2;
-                    SuperMaxedDef = true;
-                    chr.SuperMaxedDef = SuperMaxedDef;
-                    chr.Points = Points;
-                }
-                upgradeCount++;
-            }
-            if (Stats.Base[4] >= statInfo[4].MaxValue + 10)
-            {
-                if (!SuperMaxedSpd)
-                {
-                    Points += 2;
-                    SuperMaxedSpd = true;
-                    chr.SuperMaxedSpd = SuperMaxedSpd;
-                    chr.Points = Points;
-                }
-                upgradeCount++;
-            }
-            if (Stats.Base[5] >= statInfo[5].MaxValue + 10)
-            {
-                if (!SuperMaxedDex)
-                {
-                    Points += 2;
-                    SuperMaxedDex = true;
-                    chr.SuperMaxedDex = SuperMaxedDex;
-                    chr.Points = Points;
-                }
-                upgradeCount++;
-            }
-            if (Stats.Base[6] >= statInfo[6].MaxValue + 10)
-            {
-                if (!SuperMaxedVit)
-                {
-                    Points += 2;
-                    SuperMaxedVit = true;
-                    chr.SuperMaxedVit = SuperMaxedVit;
-                    chr.Points = Points;
-                }
-                upgradeCount++;
-            }
-            if (Stats.Base[7] >= statInfo[7].MaxValue + 10)
-            {
-                if (!SuperMaxedWis)
-                {
-                    Points += 2;
-                    SuperMaxedWis = true;
-                    chr.SuperMaxedWis = SuperMaxedWis;
-                    chr.Points = Points;
-                }
-                upgradeCount++;
-            }
-            //we have 50 points + (1)56 Fame <<FIRST
-            //Console.WriteLine("upgradeCount: " + upgradeCount);
-            if (upgradeCount > 7)
-            {
-                Points = 50 + (Fame > 1449 ? 29 : Fame / 50);
-                chr.Points = Points;
             }
         }
 
@@ -1138,34 +990,6 @@ namespace wServer.core.objects
             stats[StatDataType.MaxedDex] = MaxedDex;
             stats[StatDataType.MaxedVit] = MaxedVit;
             stats[StatDataType.MaxedWis] = MaxedWis;
-            stats[StatDataType.SuperMaxedLife] = SuperMaxedLife;
-            stats[StatDataType.SuperMaxedMana] = SuperMaxedMana;
-            stats[StatDataType.SuperMaxedAtt] = SuperMaxedAtt;
-            stats[StatDataType.SuperMaxedDef] = SuperMaxedDef;
-            stats[StatDataType.SuperMaxedSpd] = SuperMaxedSpd;
-            stats[StatDataType.SuperMaxedDex] = SuperMaxedDex;
-            stats[StatDataType.SuperMaxedVit] = SuperMaxedVit;
-            stats[StatDataType.SuperMaxedWis] = SuperMaxedWis;
-            stats[StatDataType.Node1TickMin] = Node1TickMin;
-            stats[StatDataType.Node1TickMaj] = Node1TickMaj;
-            stats[StatDataType.Node1Med] = Node1Med;
-            stats[StatDataType.Node1Big] = Node1Big;
-            stats[StatDataType.Node2TickMin] = Node2TickMin;
-            stats[StatDataType.Node2TickMaj] = Node2TickMaj;
-            stats[StatDataType.Node2Med] = Node2Med;
-            stats[StatDataType.Node2Big] = Node2Big;
-            stats[StatDataType.Node3TickMin] = Node3TickMin;
-            stats[StatDataType.Node3TickMaj] = Node3TickMaj;
-            stats[StatDataType.Node3Med] = Node3Med;
-            stats[StatDataType.Node3Big] = Node3Big;
-            stats[StatDataType.Node4TickMin] = Node4TickMin;
-            stats[StatDataType.Node4TickMaj] = Node4TickMaj;
-            stats[StatDataType.Node4Med] = Node4Med;
-            stats[StatDataType.Node4Big] = Node4Big;
-            stats[StatDataType.Node5TickMin] = Node5TickMin;
-            stats[StatDataType.Node5TickMaj] = Node5TickMaj;
-            stats[StatDataType.Node5Med] = Node5Med;
-            stats[StatDataType.Node5Big] = Node5Big;
             stats[StatDataType.ColorNameChat] = ColorNameChat;
             stats[StatDataType.ColorChat] = ColorChat;
             stats[StatDataType.UpgradeEnabled] = UpgradeEnabled ? 1 : 0;
@@ -1814,7 +1638,6 @@ namespace wServer.core.objects
         {
             if (!(World is TestWorld))
                 return false;
-
             GenerateGravestone();
             ReconnectToNexus();
             return true;

@@ -939,9 +939,6 @@
     <Content Include="resources\xml\miscellaneous\TK_Miscellaneous_Sign.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="resources\xml\miscellaneous\TK_Miscellaneous_SkillTree.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="resources\xml\miscellaneous\TK_Miscellaneous_SpiderWeb.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -138,7 +138,6 @@
     <Compile Include="core\commands\admin\Command.Mute.cs" />
     <Compile Include="core\commands\player\Command.Online.cs" />
     <Compile Include="core\commands\admin\Command.Rename.cs" />
-    <Compile Include="core\commands\player\Command.ResetAttributes.cs" />
     <Compile Include="core\commands\player\Command.ResetBaseStat.cs" />
     <Compile Include="core\commands\player\Command.Sell.cs" />
     <Compile Include="core\commands\admin\Command.Setpiece.cs" />
@@ -420,7 +419,6 @@
     <Compile Include="core\net\handlers\PongHandler.cs" />
     <Compile Include="core\net\handlers\RequestTradeHandler.cs" />
     <Compile Include="core\net\handlers\ReskinHandler.cs" />
-    <Compile Include="core\net\handlers\SmallSkillTreeHandler.cs" />
     <Compile Include="core\net\handlers\SquareHitHandler.cs" />
     <Compile Include="core\net\handlers\TeleportHandler.cs" />
     <Compile Include="core\net\handlers\UpdateAckHandler.cs" />

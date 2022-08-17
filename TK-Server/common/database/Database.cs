@@ -1,5 +1,6 @@
 ﻿using common.database.info;
 using common.database.model;
+using common.database;
 using common.isc;
 using common.resources;
 using Newtonsoft.Json;
@@ -853,14 +854,14 @@ namespace common.database
 
         public DbVault ReadVault(DbAccount acc) => new DbVault(acc);
 
-        public RegisterStatus Register(string uuid, string password, bool isGuest, out DbAccount acc)
+        public DbRegisterStatus Register(string uuid, string password, bool isGuest, out DbAccount acc)
         {
             var newAccounts = _resources.Settings.NewAccounts;
 
             acc = null;
 
             if (!_db.HashSet("logins", uuid.ToUpperInvariant(), "{}", When.NotExists))
-                return RegisterStatus.UsedName;
+                return DbRegisterStatus.UsedName;
 
             var newAccId = (int)_db.StringIncrement("nextAccId");
 
@@ -912,7 +913,7 @@ namespace common.database
 
             stats.FlushAsync();
 
-            return RegisterStatus.OK;
+            return DbRegisterStatus.OK;
         }
 
         public void ReleaseLock(DbAccount acc) => ReleaseLock(acc.AccountId, acc.LockToken);

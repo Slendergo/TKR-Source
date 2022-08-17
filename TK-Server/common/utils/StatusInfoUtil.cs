@@ -1,4 +1,5 @@
 ﻿using common.database;
+using common.database;
 using System;
 
 namespace common.utils
@@ -21,13 +22,13 @@ namespace common.utils
             throw new ArgumentException("status");
         }
 
-        public static string GetInfo(this RegisterStatus status)
+        public static string GetInfo(this DbRegisterStatus status)
         {
             switch (status)
             {
-                case RegisterStatus.UsedName:
+                case DbRegisterStatus.UsedName:
                     return "Duplicate Email"; // maybe not wise to give this info out...
-                case RegisterStatus.OK:
+                case DbRegisterStatus.OK:
                     return "OK";
             }
             throw new ArgumentException("status");

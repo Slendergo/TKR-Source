@@ -112,7 +112,6 @@ namespace wServer.core
             //CheckItems();
             CheckItemsNoStack();
             IncrementStatBoost();
-            IncrementSkillBoosts();
             ApplyTalismanBonus();
 
             for (var i = 0; i < _boost.Length; i++)
@@ -216,72 +215,6 @@ namespace wServer.core
                 amount = (i == 0) ? -_parent.Base[i] + 1 : -_parent.Base[i];
 
             _boost[i] += amount;
-        }
-
-        private void IncrementSkillBoosts() //Skill tree
-        {
-            if (_player == null || _player.Client == null || _player.Client.Account == null)
-                return;
-
-            var life = 0;
-            var mana = 1;
-            var att = 2;
-            var def = 3;
-            var spd = 4;
-            var dex = 5;
-            var vit = 6;
-            var wis = 7;
-
-            //Positive Stats %
-            switch (_player.Node1Med)
-            {
-                case 1: _boost[att] += IncreasePercentage(5, att); break;
-                case 2: _boost[att] += IncreasePercentage(5, att); _boost[dex] += IncreasePercentage(5, dex); break;
-                case 3: _boost[att] += IncreasePercentage(10, att); _boost[dex] += IncreasePercentage(5, dex); break;
-                default: break;
-            }
-
-            switch (_player.Node2Med)
-            {
-                case 1: _boost[wis] += IncreasePercentage(5, wis); break;
-                case 2: _boost[wis] += IncreasePercentage(5, wis); _boost[mana] += IncreasePercentage(30, mana); break;
-                case 3: _boost[wis] += IncreasePercentage(10, wis); _boost[mana] += IncreasePercentage(30, mana); break;
-                default: break;
-            }
-
-            switch (_player.Node3Med)
-            {
-                case 1: _boost[def] += IncreasePercentage(5, def); break;
-                case 2: _boost[def] += IncreasePercentage(5, def); _boost[life] += IncreasePercentage(30, life); break;
-                case 3: _boost[def] += IncreasePercentage(10, def); _boost[life] += IncreasePercentage(30, life); break;
-                default: break;
-            }
-
-            switch (_player.Node4Med)
-            {
-                case 1: _boost[spd] += IncreasePercentage(5, spd); break;
-                case 2: _boost[spd] += IncreasePercentage(5, spd); _boost[dex] += IncreasePercentage(5, dex); break;
-                case 3: _boost[spd] += IncreasePercentage(10, spd); _boost[dex] += IncreasePercentage(5, dex); break;
-                default: break;
-            }
-
-            //Negative Stats %
-            _boost[life] -= _player.Node1Big > 0 ? IncreasePercentage(15, life) : 0;
-
-            _boost[att] -= _player.Node2Big > 0 ? IncreasePercentage(15, att) : 0;
-
-            _boost[mana] -= _player.Node3Big > 0 ? IncreasePercentage(15, spd) : 0;
-
-            _boost[def] -= _player.Node4Big > 0 ? IncreasePercentage(15, def) : 0;
-
-            //Flat Stats Increases
-            _boost[mana] += _player.Node2TickMin * 10;
-            _boost[att] += _player.Node1TickMaj;
-            _boost[def] += _player.Node3TickMaj * 2;
-            _boost[spd] += _player.Node4TickMaj;
-            _boost[dex] += _player.Node1TickMin + _player.Node4TickMin;
-            _boost[wis] += _player.Node2TickMaj;
-            _boost[vit] += _player.Node3TickMin * 4;
         }
 
         private void IncrementStatBoost()

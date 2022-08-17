@@ -52,97 +52,6 @@ namespace wServer.core.objects
 
             SendInfo($"Used a Item Dust and obtained a {item.DisplayName}");
         }
-
-        public void AEResetSkillTree(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
-        {
-            var gameData = GameServer.Resources.GameData;
-            var entity = World.GetEntity(objId);
-            var container = entity as Container;
-            if (/*!MaxedLife || !MaxedMana || !MaxedAtt || !MaxedDef || !MaxedSpd || !MaxedDex || !MaxedVit || !MaxedWis || */container is GiftChest)
-            {
-                //SendError("You can't use this!");
-                if (container is GiftChest)
-                {
-                    container.Inventory[slot] = item;
-                    SendError("You can't use this in a Gift Chest!");
-                }
-                else if (!(container is GiftChest) && container != null)
-                {
-                    container.Inventory[slot] = item;
-                    SendError("You can't use this, you're not maxed!");
-                }
-                else
-                {
-                    SendError("You can't use this, you're not maxed!");
-                    Inventory[slot] = item;
-                }
-                return;
-            }
-            else
-            {
-                if (container != null)
-                    container.Inventory[slot] = null;
-                else
-                    Inventory[slot] = null;
-            }
-
-            //SmallSkill1 = 0;
-            //SmallSkill2 = 0;
-            //SmallSkill3 = 0;
-            //SmallSkill4 = 0;
-            //SmallSkill5 = 0;
-            //SmallSkill6 = 0;
-            //SmallSkill7 = 0;
-            //SmallSkill8 = 0;
-            //SmallSkill9 = 0;
-            //SmallSkill10 = 0;
-            //SmallSkill11 = 0;
-            //SmallSkill12 = 0;
-            Points = 0;
-            //BigSkill1 = false;
-            //BigSkill2 = false;
-            //BigSkill3 = false;
-            //BigSkill4 = false;
-            //BigSkill5 = false;
-            //BigSkill6 = false;
-            //BigSkill7 = false;
-            //BigSkill8 = false;
-            //BigSkill9 = false;
-            //BigSkill10 = false;
-            //BigSkill11 = false;
-            //BigSkill12 = false;
-            Stats.ReCalculateValues();
-            Stats.Base.ReCalculateValues();
-            Stats.Boost.ReCalculateValues();
-            var chr = Client.Character;
-            //chr.SmallSkill1 = SmallSkill1;
-            //chr.SmallSkill2 = SmallSkill2;
-            //chr.SmallSkill3 = SmallSkill3;
-            //chr.SmallSkill4 = SmallSkill4;
-            //chr.SmallSkill5 = SmallSkill5;
-            //chr.SmallSkill6 = SmallSkill6;
-            //chr.SmallSkill7 = SmallSkill7;
-            //chr.SmallSkill8 = SmallSkill8;
-            //chr.SmallSkill9 = SmallSkill9;
-            //chr.SmallSkill10 = SmallSkill10;
-            //chr.SmallSkill11 = SmallSkill11;
-            //chr.SmallSkill12 = SmallSkill12;
-            //chr.Points = Points;
-            //chr.BigSkill1 = BigSkill1;
-            //chr.BigSkill2 = BigSkill2;
-            //chr.BigSkill3 = BigSkill3;
-            //chr.BigSkill4 = BigSkill4;
-            //chr.BigSkill5 = BigSkill5;
-            //chr.BigSkill6 = BigSkill6;
-            //chr.BigSkill7 = BigSkill7;
-            //chr.BigSkill8 = BigSkill8;
-            //chr.BigSkill9 = BigSkill9;
-            //chr.BigSkill10 = BigSkill10;
-            //chr.BigSkill11 = BigSkill11;
-            //chr.BigSkill12 = BigSkill12;
-            SendInfo("All your Skill Points have been reset.");
-        }
-
         public void AESpecialDust(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
             var entity = World.GetEntity(objId);
@@ -404,10 +313,6 @@ namespace wServer.core.objects
 
                     case ActivateEffects.XPBoost:
                         AEXPBoost(time, item, target, slot, objId, eff);
-                        break;
-
-                    case ActivateEffects.ResetSkillTree:
-                        AEResetSkillTree(time, item, target, slot, objId, eff);
                         break;
 
                     case ActivateEffects.MagicDust:

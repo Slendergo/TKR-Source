@@ -268,8 +268,6 @@ namespace wServer.core
             //    local2 += 20;
 
             var local1 = 6 + vit * .12f;
-            local1 = ((local1 * (Owner.Node4TickMin * 4)) + local2) / 100;
-
             return 6 + vit * .12f + local1;
         }
 

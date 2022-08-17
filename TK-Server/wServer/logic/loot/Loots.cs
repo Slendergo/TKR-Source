@@ -271,7 +271,6 @@ namespace wServer.logic.loot
                     continue;
 
                 var percentageOfDamage = (Math.Round(100.0 * (playerDamage / (double)enemy.DamageCounter.TotalDamage), 4) / 100);
-                var DamageBoost = player.Node5Big > 0 ? 0 : percentageOfDamage;
                 var enemyRarityPercent = 
                     enemy.Legendary ? 0.05 : // 5%
                     enemy.Epic ? 0.025 : // 2.5 %

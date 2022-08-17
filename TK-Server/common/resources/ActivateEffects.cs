@@ -50,7 +50,6 @@
         SpecialDust,
         ShurikenAbilityDamaging,
         ShurikenAbilityBerserk,
-        ResetSkillTree,
         GenericActivate,
         UnlockTalisman
     }

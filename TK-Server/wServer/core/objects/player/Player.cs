@@ -74,31 +74,10 @@ namespace wServer.core.objects
         public Pet Pet { get; set; }
         public int PetId { get; set; }
         public PlayerUpdate PlayerUpdate { get; private set; }
-        public int Points { get => _points.GetValue(); set => _points.SetValue(value); }
         public Position Pos => new Position() { X = X, Y = Y };
         public RankingType Rank { get => (RankingType)_rank.GetValue(); set => _rank.SetValue((int)value); }
         public int Skin { get => _skin.GetValue(); set => _skin.SetValue(value); }
         public int[] SlotTypes { get; private set; }
-        public int Node1TickMin { get => _node1TickMin.GetValue(); set => _node1TickMin.SetValue(value); }
-        public int Node1TickMaj { get => _node1TickMaj.GetValue(); set => _node1TickMaj.SetValue(value); }
-        public int Node1Med { get => _node1Med.GetValue(); set => _node1Med.SetValue(value); }
-        public int Node1Big { get => _node1Big.GetValue(); set => _node1Big.SetValue(value); }
-        public int Node2TickMin { get => _node2TickMin.GetValue(); set => _node2TickMin.SetValue(value); }
-        public int Node2TickMaj { get => _node2TickMaj.GetValue(); set => _node2TickMaj.SetValue(value); }
-        public int Node2Med { get => _node2Med.GetValue(); set => _node2Med.SetValue(value); }
-        public int Node2Big { get => _node2Big.GetValue(); set => _node2Big.SetValue(value); }
-        public int Node3TickMin { get => _node3TickMin.GetValue(); set => _node3TickMin.SetValue(value); }
-        public int Node3TickMaj { get => _node3TickMaj.GetValue(); set => _node3TickMaj.SetValue(value); }
-        public int Node3Med { get => _node3Med.GetValue(); set => _node3Med.SetValue(value); }
-        public int Node3Big { get => _node3Big.GetValue(); set => _node3Big.SetValue(value); }
-        public int Node4TickMin { get => _node4TickMin.GetValue(); set => _node4TickMin.SetValue(value); }
-        public int Node4TickMaj { get => _node4TickMaj.GetValue(); set => _node4TickMaj.SetValue(value); }
-        public int Node4Med { get => _node4Med.GetValue(); set => _node4Med.SetValue(value); }
-        public int Node4Big { get => _node4Big.GetValue(); set => _node4Big.SetValue(value); }
-        public int Node5TickMin { get => _node5TickMin.GetValue(); set => _node5TickMin.SetValue(value); }
-        public int Node5TickMaj { get => _node5TickMaj.GetValue(); set => _node5TickMaj.SetValue(value); }
-        public int Node5Med { get => _node5Med.GetValue(); set => _node5Med.SetValue(value); }
-        public int Node5Big { get => _node5Big.GetValue(); set => _node5Big.SetValue(value); }
 
         public ItemStacker[] Stacks { get; private set; }
         public int Stars { get => _stars.GetValue(); set => _stars.SetValue(value); }
@@ -137,30 +116,8 @@ namespace wServer.core.objects
         private int _originalSkin;
         private SV<int> _oxygenBar;
         private SV<int> _partyId;
-        private SV<int> _points;
         private SV<int> _rank;
         private SV<int> _skin;
-
-        private SV<int> _node1TickMin;
-        private SV<int> _node1TickMaj;
-        private SV<int> _node1Med;
-        private SV<int> _node1Big;
-        private SV<int> _node2TickMin;
-        private SV<int> _node2TickMaj;
-        private SV<int> _node2Med;
-        private SV<int> _node2Big;
-        private SV<int> _node3TickMin;
-        private SV<int> _node3TickMaj;
-        private SV<int> _node3Med;
-        private SV<int> _node3Big;
-        private SV<int> _node4TickMin;
-        private SV<int> _node4TickMaj;
-        private SV<int> _node4Med;
-        private SV<int> _node4Big;
-        private SV<int> _node5TickMin;
-        private SV<int> _node5TickMaj;
-        private SV<int> _node5Med;
-        private SV<int> _node5Big;
 
         private SV<int> _stars;
         private SV<int> _texture1;
@@ -411,48 +368,6 @@ namespace wServer.core.objects
                     chr.MaxedWis = MaxedWis;
                 }
             }
-        }
-
-        public void CheckSkillStats()
-        {
-            if (Node1TickMaj > 10)
-                Node1TickMaj = 10;
-            if (Node1Med > 3)
-                Node1Med = 3;
-            if (Node1Big > 2)
-                Node1Big = 2;
-            if (Node2TickMin > 5)
-                Node2TickMin = 5;
-            if (Node2TickMaj > 10)
-                Node2TickMaj = 10;
-            if (Node2Med > 3)
-                Node2Med = 3;
-            if (Node2Big > 2)
-                Node2Big = 2;
-            if (Node3TickMin > 5)
-                Node3TickMin = 5;
-            if (Node3TickMaj > 10)
-                Node3TickMaj = 10;
-            if (Node3Med > 3)
-                Node3Med = 3;
-            if (Node3Big > 2)
-                Node3Big = 2;
-            if (Node4TickMin > 5)
-                Node4TickMin = 5;
-            if (Node4TickMaj > 10)
-                Node4TickMaj = 10;
-            if (Node4Med > 3)
-                Node4Med = 3;
-            if (Node4Big > 2)
-                Node4Big = 2;
-            if (Node5TickMin > 5)
-                Node5TickMin = 5;
-            if (Node5TickMaj > 10)
-                Node5TickMaj = 10;
-            if (Node5Med > 3)
-                Node5Med = 3;
-            if (Node5Big > 2)
-                Node5Big = 2;
         }
 
         public void Damage(int dmg, Entity src)
@@ -876,7 +791,6 @@ namespace wServer.core.objects
                 TickActivateEffects(time);
 
                 /* Skill Tree */
-                CheckSkillStats();
                 CheckMaxedStats();
 
                 /* Item Effects */
@@ -984,7 +898,6 @@ namespace wServer.core.objects
             stats[StatDataType.XPBoost] = (XPBoostTime != 0) ? 1 : 0;
             stats[StatDataType.XPBoostTime] = XPBoostTime / 1000;
             stats[StatDataType.BaseStat] = Client?.Account?.SetBaseStat ?? 0;
-            stats[StatDataType.Points] = Points;
             stats[StatDataType.MaxedLife] = MaxedLife;
             stats[StatDataType.MaxedMana] = MaxedMana;
             stats[StatDataType.MaxedAtt] = MaxedAtt;

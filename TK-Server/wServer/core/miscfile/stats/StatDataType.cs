@@ -79,7 +79,6 @@
         Rank = 77,
         LDBoostTime = 78,
         BaseStat = 79,
-        Points = 80,
         MaxedLife = 81,
         MaxedMana = 82,
         MaxedAtt = 83,

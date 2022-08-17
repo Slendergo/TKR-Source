@@ -12,45 +12,25 @@ namespace wServer.core.worlds.logic
     {
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
-        private readonly bool _oryxPresent;
+        public bool Closed { get; private set; }
+        public KingdomManager KingdomManager { get; private set; }
 
-        public KingdomManager _overseer { get; private set; }
-        private Task _overseerTask;
+        private Task OverseerTask;
 
         public RealmWorld(int id, WorldResource resource) : base(id, resource)
         {
-            _oryxPresent = true;
+            KingdomManager = new KingdomManager(this);
             IsRealm = true;
         }
 
-        // since map gets reset, admins not allowed to join when closed. Possible to crash server otherwise.
-        public override bool AllowedAccess(Client client) => base.AllowedAccess(client);
-
-        public bool CloseRealm()
+        public override void Init()
         {
-            Closed = true;
-            if (_overseer == null)
-                return false;
-            if(_overseer.CurrentState != KindgomState.Expired)
-                _overseer.CurrentState = KindgomState.Closing;
-            return true;
+            SetPieces.ApplySetPieces(this);
+            KingdomManager.Init();
+            base.Init();
         }
 
-        public void EnemyKilled(Enemy enemy, Player killer)
-        {
-            if (_overseer != null && !enemy.Spawned)
-                _overseer.OnEnemyKilled(enemy, killer);
-        }
-
-        public override int EnterWorld(Entity entity)
-        {
-            var ret = base.EnterWorld(entity);
-
-            if (entity is Player player)
-                _overseer?.OnPlayerEntered(player);
-
-            return ret;
-        }
+        public override bool AllowedAccess(Client client) => !Closed || client.Account.IsAdmin;
 
         protected override void UpdateLogic(ref TickTime time)
         {
@@ -63,13 +43,13 @@ namespace wServer.core.worlds.logic
 
                 var t = time;
 
-                if(Closed && _overseerTask != null)
-                    _overseerTask = null;
-                else if (_overseerTask == null || _overseerTask.IsCompleted && !Closed)
+                if (Closed && OverseerTask != null)
+                    OverseerTask = null;
+                else if (OverseerTask == null || OverseerTask.IsCompleted && !Closed)
                 {
-                    _overseerTask = Task.Factory.StartNew(() =>
+                    OverseerTask = Task.Factory.StartNew(() =>
                     {
-                        _overseer?.Update(ref t);
+                        KingdomManager?.Update(ref t);
                     }).ContinueWith(e => Log.Error(e.Exception.InnerException.ToString()), TaskContinuationOptions.OnlyOnFaulted);
                 }
             }
@@ -77,22 +57,38 @@ namespace wServer.core.worlds.logic
             {
                 Log.Error($"Unknown Error with Realm Tick {e}");
             }
-
             base.UpdateLogic(ref time);
         }
 
-        static Random Random = new Random();
-
-        public override void Init()
+        public override int EnterWorld(Entity entity)
         {
-            SetPieces.ApplySetPieces(this);
+            var ret = base.EnterWorld(entity);
+            if (entity is Player player)
+                KingdomManager?.OnPlayerEntered(player);
+            return ret;
+        }
 
-            if (_oryxPresent)
-            {
-                _overseer = new KingdomManager(this);
-                _overseer.Init();
-            }
-            base.Init();
+        public override void LeaveWorld(Entity entity)
+        {
+            // use it if needed
+            base.LeaveWorld(entity);
+        }
+
+        public void EnemyKilled(Enemy enemy, Player killer)
+        {
+            if (KingdomManager != null && !enemy.Spawned)
+                KingdomManager.OnEnemyKilled(enemy, killer);
+        }
+
+        public bool CloseRealm()
+        {
+            if (Closed)
+                return false;
+            Closed = true;
+            if (KingdomManager == null)
+                return false;
+            KingdomManager.CurrentState = KindgomState.Closing;
+            return true;
         }
     }
 }

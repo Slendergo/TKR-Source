@@ -162,7 +162,7 @@ namespace wServer.core
 
             if (!world.AllowedAccess(client))
             {
-                client.SendFailure("Invalid Access Permissions [If you this this is a bug report it :)].", FailureMessage.MessageWithDisconnect);
+                client.SendFailure("Invalid Access Permissions [If you think this is a bug report it :)].", FailureMessage.MessageWithDisconnect);
                 return;
             }
 

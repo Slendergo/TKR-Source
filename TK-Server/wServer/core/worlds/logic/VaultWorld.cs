@@ -41,7 +41,7 @@ namespace wServer.core.worlds.logic
             Vaults.AddFirst(con);
         }
 
-        public override bool AllowedAccess(Client client) => base.AllowedAccess(client) && AccountId == client.Account.AccountId;
+        public override bool AllowedAccess(Client client) => AccountId == client.Account.AccountId || client.Account.IsAdmin;
 
         public override void LeaveWorld(Entity entity)
         {

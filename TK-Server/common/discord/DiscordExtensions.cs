@@ -9,8 +9,6 @@ namespace common.discord
     {
         public static bool CanSendLootNotification(this DiscordIntegration discord, int stars, string className) => discord.classes.Any(_ => _.name.ToLower().Equals(className)) && discord.stars.FindStar(stars).HasValue;
 
-        public static bool CanSendRealmEventNotification(this DiscordIntegration discord, string eventName) => discord.realmEvents.Any(realmEvent => realmEvent.name.Equals(eventName));
-
         public static StarModel? FindStar(this StarModel[] stars, int star)
         {
             for (var i = 0; i < stars.Length; i++)
@@ -27,39 +25,6 @@ namespace common.discord
                 }
 
             return null;
-        }
-
-        public static DiscordEmbedBuilder MakeEventBuilder(this DiscordIntegration discord, string serverName, string worldName, string eventName)
-        {
-            var realmEvent = discord.realmEvents.First(rEvent => rEvent.name.Equals(eventName));
-
-            return new DiscordEmbedBuilder
-            {
-                Username = discord.botName,
-                Avatar = discord.webhookResourcesURL + discord.webhookBotImage,
-                Content = $"<@&{realmEvent.id}>",
-                Embeds = new[]
-                {
-                    new DiscordEmbed()
-                    {
-                        Author = new DiscordEmbedAuthor()
-                        {
-                            Name = serverName,
-                            Icon = discord.webhookResourcesURL + discord.webhookOryx1Image
-                        },
-                        Title = "Realm event spawned!",
-                        Description = $"Oryx spawned **{eventName}** in realm: __{worldName}__!",
-                        Color = 0x7289DA,
-                        Thumbnail = new DiscordThumbnail() { Url = discord.webhookResourcesURL + discord.webhookLogoImage },
-                        Image = new DiscordImage() { Url = discord.webhookResourcesURL + realmEvent.image },
-                        Footer = new DiscordEmbedFooter()
-                        {
-                            Text = $"{discord.botName} - Game Notification!",
-                            Icon = discord.webhookResourcesURL + discord.webhookBotImage
-                        }
-                    }
-                }
-            };
         }
 
         public static DiscordEmbedBuilder? MakeLootBuilder(
@@ -150,54 +115,6 @@ namespace common.discord
                         },
                         Thumbnail = new DiscordThumbnail() { Url = discord.webhookResourcesURL + discord.webhookLogoImage },
                         Image = new DiscordImage() { Url = discord.webhookResourcesURL + bagBanner },
-                        Footer = new DiscordEmbedFooter()
-                        {
-                            Text = $"{discord.botName} - Game Notification!",
-                            Icon = discord.webhookResourcesURL + discord.webhookBotImage
-                        }
-                    }
-                }
-            };
-        }
-
-        public static DiscordEmbedBuilder MakeOryxBuilder(this DiscordIntegration discord, ServerInfo info, string worldName, int players, int maxPlayers)
-        {
-            var oryx = discord.realmEvents.First(realmEvent => realmEvent.name.Equals("Oryx"));
-
-            return new DiscordEmbedBuilder
-            {
-                Username = discord.botName,
-                Avatar = discord.webhookResourcesURL + discord.webhookBotImage,
-                Content = $"<@&{oryx.id}>",
-                Embeds = new[]
-                {
-                    new DiscordEmbed()
-                    {
-                        Author = new DiscordEmbedAuthor()
-                        {
-                            Name = info.name,
-                            Icon = discord.webhookResourcesURL + discord.webhookOryx2Image
-                        },
-                        Title = "Realm is closing!",
-                        Description = $"Oryx is preparing to close realm __{worldName}__ soon!",
-                        Color = 0x7289DA,
-                        Fields = new[]
-                        {
-                            new DiscordEmbedField()
-                            {
-                                Name = "In server:",
-                                Value = $"{info.players}/{info.maxPlayers}",
-                                InLine = true
-                            },
-                            new DiscordEmbedField()
-                            {
-                                Name = "In realm:",
-                                Value = $"{players}/{maxPlayers}",
-                                InLine = true
-                            }
-                        },
-                        Thumbnail = new DiscordThumbnail() { Url = discord.webhookResourcesURL + discord.webhookLogoImage },
-                        Image = new DiscordImage() { Url = discord.webhookResourcesURL + oryx.image },
                         Footer = new DiscordEmbedFooter()
                         {
                             Text = $"{discord.botName} - Game Notification!",

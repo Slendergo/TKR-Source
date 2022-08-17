@@ -238,7 +238,6 @@
     <Compile Include="NReader.cs" />
     <Compile Include="NWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="discord\model\RealmEventModel.cs" />
     <Compile Include="database\RedisObject.cs" />
     <Compile Include="RankingType.cs" />
     <Compile Include="RegisterStatus.cs" />

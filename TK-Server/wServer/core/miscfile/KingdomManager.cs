@@ -13,25 +13,22 @@ using wServer.networking.packets.outgoing;
 
 namespace wServer.core
 {
-    //The mad god who look after the realm
-
     public enum KindgomState
     {
         Idle,
-        Refreshing,
         Closing,
         Emptying,
         Closed,
-        TEST_WAITING,
-        SpawnOryx,
-        Expire,
-        Expired
+        Waiting
     }
 
     public sealed class KingdomManager
     {
         public int _EventCount = 0;
         public RealmWorld World;
+
+        private readonly DiscordIntegration _discord;
+        private string _webhook;
 
         private static readonly Tuple<string, TauntData>[] CriticalEnemies = new Tuple<string, TauntData>[]
         {
@@ -419,8 +416,6 @@ namespace wServer.core
             },
         };
 
-        private readonly DiscordIntegration _discord;
-
         private readonly List<Tuple<string, ISetPiece>> _events = new List<Tuple<string, ISetPiece>>()
         {
             Tuple.Create("Tiki Tiki", (ISetPiece) null), // null means use the entity name isntead of make a setpiece class
@@ -445,8 +440,6 @@ namespace wServer.core
 
         private const float MAX_GUILD_LOOT_BOOST = 0.2f;
 
-        private readonly string _webhook;
-
         private int[] EnemyCounts = new int[12];
         private int[] EnemyMaxCounts = new int[12];
         private long LastTenSecondsTime;
@@ -458,13 +451,6 @@ namespace wServer.core
         public KingdomManager(RealmWorld world)
         {
             World = world;
-            _discord = world.GameServer.Configuration.discordIntegration;
-            _webhook = _discord.webhookRealmEvent;
-
-            SpawnEvent("Talisman King", new TalismanKing(), 1024, 1024);
-            InitEvents();
-            Init();
-
             CurrentState = KindgomState.Idle;
         }
 
@@ -500,7 +486,7 @@ namespace wServer.core
                     break;
                 case KindgomState.Emptying:
                     {
-                        CurrentState = KindgomState.TEST_WAITING;
+                        CurrentState = KindgomState.Waiting;
                         foreach (var e in World.Enemies.Values)
                         {
                             if (e.ObjectDesc.ObjectId.Contains("Oryx Guardian TaskMaster") || e.ObjectDesc.ObjectId.Contains("Talisman King's Golden Guardian"))
@@ -528,14 +514,11 @@ namespace wServer.core
 
                         MovePeopleNaerby(time);
 
-                        CurrentState = KindgomState.TEST_WAITING;
+                        CurrentState = KindgomState.Waiting;
                         World.FlagForClose();
                     }
                     break;
-                case KindgomState.TEST_WAITING:
-                    break;
-                case KindgomState.Expired:
-                    World.FlagForClose();
+                case KindgomState.Waiting:
                     break;
             }
         }
@@ -626,16 +609,6 @@ namespace wServer.core
 
             _EventCount++;
 
-            // notify 3 events before realm close on discord (once)
-            if (_EventCount == 27 && !DisableSpawning)
-            {
-                var info = World.GameServer.Configuration.serverInfo;
-                var players = World.Players.Count(p => p.Value.Client != null);
-                var builder = _discord.MakeOryxBuilder(info, World.DisplayName, players, World.MaxPlayers);
-
-                _discord.SendWebhook(_webhook, builder);
-            }
-
             if (_EventCount >= 30 && !DisableSpawning)
             {
                 DisableSpawning = true;
@@ -650,6 +623,15 @@ namespace wServer.core
 
         public void Init()
         {
+            SpawnEvent("Talisman King", new TalismanKing(), 1024, 1024);
+
+            var events = _events;
+            var evt = events[Random.Next(0, events.Count)];
+            var gameData = World.GameServer.Resources.GameData;
+
+            if (gameData.ObjectDescs[gameData.IdToObjectType[evt.Item1]].PerRealmMax == 1)
+                events.Remove(evt);
+
             var w = World.Map.Width;
             var h = World.Map.Height;
             var stats = new int[12];
@@ -683,18 +665,8 @@ namespace wServer.core
                         break;
                 }
             }
-        }
 
-        public void InitEvents()
-        {
-            var events = _events;
-            var evt = events[Random.Next(0, events.Count)];
-            var gameData = World.GameServer.Resources.GameData;
-
-            if (gameData.ObjectDescs[gameData.IdToObjectType[evt.Item1]].PerRealmMax == 1)
-                events.Remove(evt);
-
-            World.Timers.Add(new WorldTimer(15000, (w, t) => SpawnEvent(evt.Item1, evt.Item2)));
+            World.Timers.Add(new WorldTimer(15000, (world, t) => SpawnEvent(evt.Item1, evt.Item2)));
         }
 
         public void OnEnemyKilled(Enemy enemy, Player killer)
@@ -964,16 +936,6 @@ namespace wServer.core
             var taunt = $"{name} has been spawned!";
 
             BroadcastMsg(taunt);
-
-            if (_discord.CanSendRealmEventNotification(name))
-            {
-                var info = World.GameServer.Configuration.serverInfo;
-                var builder = _discord.MakeEventBuilder(info.name, World.DisplayName, name);
-
-#pragma warning disable
-                _discord.SendWebhook(_webhook, builder);
-#pragma warning restore
-            }
         }
 
         private struct TauntData

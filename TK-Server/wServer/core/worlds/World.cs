@@ -41,7 +41,6 @@ namespace wServer.core.worlds
         public int Background { get; protected set; }
         public byte Blocking { get; protected set; }
         public string Music { get; set; }
-        public bool Closed { get; set; }
         public int Difficulty { get; protected set; }
         public bool Deleted { get; protected set; }
 
@@ -95,7 +94,7 @@ namespace wServer.core.worlds
 
         public World ParentWorld { get; set; }
 
-        public virtual bool AllowedAccess(Client client) => !Closed || client.Account.IsAdmin;
+        public virtual bool AllowedAccess(Client client) => true;
 
         public void Broadcast(OutgoingMessage outgoingMessage)
         {

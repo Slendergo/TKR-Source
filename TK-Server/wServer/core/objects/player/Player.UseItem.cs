@@ -500,8 +500,8 @@ namespace wServer.core.objects
 
         private void AEUnlockTalisman(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
-            var talismanDesc = GameServer.Resources.GameData.GetTalisman(eff.Type);
-            if (talismanDesc == null)
+            var desc = GameServer.Resources.GameData.GetTalisman(eff.Type);
+            if (desc == null)
             {
                 SendError("Error unable to consume!");
                 Inventory[slot] = item;
@@ -509,7 +509,7 @@ namespace wServer.core.objects
             }
 
             var characterId = Client.Character.CharId;
-            var accountId = this.AccountId;
+            var accountId = AccountId;
 
             if (GameServer.Database.HasTalismanOnCharacter(accountId, characterId, eff.Type)) {
                 SendInfo("You have already unlocked this talisman!");
@@ -517,10 +517,10 @@ namespace wServer.core.objects
                 return;
             }
 
-            var cost = talismanDesc.BaseUpgradeCost;
-            if (talismanDesc.MaxLevels == 1)
-                cost = talismanDesc.TierUpgradeCost;
-
+            var cost = (int)(desc.BaseUpgradeCost * desc.CostMultiplier);
+            if (desc.MaxLevels == 1)
+                cost = (int)(desc.BaseUpgradeCost + desc.TierUpgradeCost * desc.CostMultiplier);
+            
             GameServer.Database.AddTalismanToCharacter(accountId, characterId, eff.Type, 1, 0, cost, 0);
 
             var newTalismanInfo = new TalismanData(eff.Type, 1, 0, cost, 0, false);

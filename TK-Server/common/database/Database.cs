@@ -46,7 +46,7 @@ namespace common.database
         public readonly int DatabaseIndex;
         public readonly ISubscriber Sub;
 
-        protected const int _lockTTL = 60;
+        protected const int _lockTTL = 45;
 
         protected static readonly Logger Log = LogManager.GetCurrentClassLogger();
 

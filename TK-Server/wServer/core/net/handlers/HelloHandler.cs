@@ -98,8 +98,6 @@ namespace wServer.core.net.handlers
 
             if (s1 == DbLoginStatus.AccountNotExists)
             {
-                var s2 = db.Register(helloData.GUID, helloData.Password, true, out acc);
-
                 if (s2 != RegisterStatus.OK)
                 {
                     client.SendFailure("Bad Login", FailureMessage.MessageWithDisconnect);

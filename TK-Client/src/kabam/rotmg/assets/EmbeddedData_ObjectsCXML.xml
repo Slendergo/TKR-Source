@@ -10808,13 +10808,8 @@
     <Enemy />
     <Class>Character</Class>
     <DisplayId>Bes</DisplayId>
-    <Flying />
     <Quest />
-    <God />
-    <StasisImmune />
     <Level>1</Level>
-    <XpMult>1</XpMult>
-    <NoArticle />
     <AnimatedTexture>
       <File>chars16x16dEncounters</File>
       <Index>12</Index>
@@ -10824,6 +10819,8 @@
     <MaxHitPoints>100000</MaxHitPoints>
     <Size>140</Size>
     <Defense>50</Defense>
+    <XpMult>1</XpMult>
+    <God />
     <Projectile id="0">
       <ObjectId>Darkness Bolt</ObjectId>
       <Damage>240</Damage>
@@ -11665,7 +11662,7 @@
     <ShadowSize>40</ShadowSize>
     <Z>0.2</Z>
     <Flying />
-    <MaxHitPoints>65000</MaxHitPoints>
+    <MaxHitPoints>100000</MaxHitPoints>
     <Defense>60</Defense>
     <XpMult>0.9</XpMult>
     <LeachHealth />
@@ -21146,6 +21143,7 @@
       <Speed>70</Speed>
       <LifetimeMS>2200</LifetimeMS>
       <Size>85</Size>
+      <ConditionEffect duration="5" target="1">Stasis</ConditionEffect>
     </Projectile>
   </Object>
   <Object type="0x7453" id="Sorcerer Puppet">
@@ -21217,8 +21215,8 @@
     <Level>20</Level>
     <Projectile id="0">
       <ObjectId>Red Fire</ObjectId>
-      <MinDamage>35</MinDamage>
-      <MaxDamage>45</MaxDamage>
+      <MinDamage>0</MinDamage>
+      <MaxDamage>0</MaxDamage>
       <Speed>55</Speed>
       <LifetimeMS>900</LifetimeMS>
     </Projectile>
@@ -43879,132 +43877,66 @@
       <Index>0x06</Index>
     </Texture>
   </Object>
-  <Object type="0xa420" id="Cerberus's Core" spritePeriod="2" spriteFile="CustomObj" spriteArray="17-18">
+  <Object type="0x4949" id="Beginner's Talisman">
     <Class>Equipment</Class>
+    <DisplayId>Basic Talisman</DisplayId>
     <Item />
-    <HoldableItem />
+    <InvUse />
     <Texture>
       <File>CustomObj</File>
-      <Index>0x11</Index>
+      <Index>0x1c</Index>
     </Texture>
-    <SlotType>10</SlotType>
-    <Description> Cerberus's Core, contains the very essence of Cerberus himself.</Description>
-    <Sound>use_potion</Sound>
-    <Eternal />
     <ExtraTooltipData>
-      <EffectInfo name="Soul of Cerberus" description="Immunity to Stun, Daze, and Slowed. Berserk for 5 seconds every 15 Seconds." />
+      <EffectInfo name="" description="What powers does this item hold?" />
     </ExtraTooltipData>
-    <BagType>7</BagType>
-    <feedPower>15</feedPower>
-  </Object>
-  <Object type="0xa41f" id="Cerberus's Right Claw">
-    <Class>Equipment</Class>
-    <Item />
-    <HoldableItem />
-    <Texture>
-      <File>CustomObj</File>
-      <Index>0xcc</Index>
-    </Texture>
     <SlotType>10</SlotType>
-    <Description>Cerberus's Right Claw, said to hold the souls of the dead.</Description>
+    <Description>A talisman gifted to you at birth by the gods</Description>
     <Sound>use_potion</Sound>
-    <Mythical />
-    <ExtraTooltipData>
-      <EffectInfo name="Killing Spree" description="For Every 1500 Enemies Killed, Maximum HP Increases by 50 {Caps at 500}. Immunity to Slowed" />
-    </ExtraTooltipData>
-    <BagType>7</BagType>
-    <feedPower>15</feedPower>
-  </Object>
-  <Object type="0xa41e" id="Cerberus's Left Claw">
-    <Class>Equipment</Class>
-    <Item />
-    <HoldableItem />
-    <Texture>
-      <File>CustomObj</File>
-      <Index>0xcb</Index>
-    </Texture>
-    <SlotType>10</SlotType>
-    <Description>Cereberus's Left Claw, said to hold the fury of the dead.</Description>
-    <Sound>use_potion</Sound>
-    <Mythical />
-    <ExtraTooltipData>
-      <EffectInfo name="Frenzy" description="For every mob within a 10 distance radius, Attack goes up by 1.{Caps at 20}. Immunity to Dazed" />
-    </ExtraTooltipData>
-    <BagType>7</BagType>
-    <feedPower>15</feedPower>
-  </Object>
-  <Object type="0x4927" id="Gem of Life">
-    <Class>Equipment</Class>
-    <Item />
-    <HoldableItem />
-    <Texture>
-      <File>CustomObj</File>
-      <Index>0x13</Index>
-    </Texture>
-    <SlotType>10</SlotType>
-    <Description>A gem brimming with vitality. So long as it's held, properties of health regeneration will increase. </Description>
-    <Sound>use_potion</Sound>
-    <ExtraTooltipData>
-      <EffectInfo name="Power of Life" description="If your Life is below half, you regenerate the quintuple fast." />
-    </ExtraTooltipData>
-    <Legendary />
-    <BagType>7</BagType>
-    <feedPower>15</feedPower>
-  </Object>
-  <Object type="0x492c" id="Talisman of Mana">
-    <Class>Equipment</Class>
-    <Item />
-    <HoldableItem />
-    <Texture>
-      <File>CustomObj</File>
-      <Index>0x17</Index>
-    </Texture>
-    <SlotType>10</SlotType>
-    <Description>This talisman contains the Power of Luck. So long as it's held, luck will increase.</Description>
-    <Sound>use_potion</Sound>
-    <Legendary />
-    <ExtraTooltipData>
-      <EffectInfo name="Power of Mana" description="If your Mana is below the half, you regenerate the quintuple fast." />
-    </ExtraTooltipData>
-    <BagType>7</BagType>
-    <feedPower>15</feedPower>
+    <Activate type="0x00">UnlockTalisman</Activate>
+    <Consumable />
+    <Potion />
+    <Soulbound />
+    <BagType>1</BagType>
   </Object>
   <Object type="0x4950" id="Severed Marble Hand">
     <Class>Equipment</Class>
     <DisplayId>Severed Marble Hand</DisplayId>
     <Item />
+    <InvUse />
     <Texture>
       <File>CustomObj</File>
       <Index>0x1c</Index>
     </Texture>
-    <HoldableItem />
-    <SetStatsNoStack />
-    <StatSetNoStack>0</StatSetNoStack>
-    <AmountSetNoStack>100</AmountSetNoStack>
-    <SlotType>10</SlotType>
-    <Description>A sundered chunk from the Marble Colossus. So long as it's held, the power of the Colossus will flow through you.</Description>
     <ExtraTooltipData>
-      <EffectInfo name="Marble Power" description="While holding this item, you will be immune to Unstable." />
-      <EffectInfo name="Immune to Unstable." description="" />
-      <EffectInfo name="On Handling" description="While holding this, it will give you +100 HP." />
+      <EffectInfo name="" description="What powers does this item hold?" />
     </ExtraTooltipData>
+    <SlotType>10</SlotType>
+    <Description>A sundered chunk from the Marble Colossus this item grants power to the wielder</Description>
+    <Sound>use_potion</Sound>
+    <Activate type="0x02">UnlockTalisman</Activate>
     <Legendary />
+    <Consumable />
+    <Potion />
     <BagType>7</BagType>
   </Object>
   <Object type="0x50ec" id="Talisman of Luck">
     <Class>Equipment</Class>
     <Item />
-    <HoldableItem />
+    <InvUse />
     <ExtraTooltipData>
-      <EffectInfo name="Looting:" description="Holding this item gives you 20% loot chance! (One per Inventory). This talisman contains the Power of Luck. So long as it's held, luck will increase." />
+      <EffectInfo name="" description="What powers does this item hold?" />
     </ExtraTooltipData>
     <Texture>
       <File>CustomObj</File>
       <Index>0x94</Index>
     </Texture>
     <SlotType>10</SlotType>
-    <Description>This Talisman contain the Power of the Lucky, as long as you hold this, your luck will increase</Description>
+    <Description>This talisman contains powers of luck.</Description>
+    <Sound>use_potion</Sound>
+    <Activate type="0x01">UnlockTalisman</Activate>
     <Legendary />
+    <Consumable />
+    <Potion />
     <BagType>7</BagType>
   </Object>
   <Object type="0x5019" id="Fire Fragment">
@@ -44154,11 +44086,8 @@
     <Description>Todo</Description>
     <Sound>use_key</Sound>
     <Consumable />
-    <Activate objectId="Epic Quest Chest">Create</Activate>
-    <feedPower>200</feedPower>
-    <BagType>5</BagType>
-    <Track />
-  </Object>
+    <Activate objectId="Epic Quest Chest">Create</Activate>:
+		<feedPower>200</feedPower><BagType>5</BagType><Track /></Object>
   <Object type="0x9701" id="Epic Quest Chest">
     <DisplayId>Quest Chest</DisplayId>
     <Class>Character</Class>
@@ -51845,19 +51774,20 @@
   <Object type="0x5060" id="Talisman of Looting">
     <Class>Equipment</Class>
     <Item />
-    <HoldableItem />
+    <InvUse />
     <ExtraTooltipData>
-      <EffectInfo name="Looting:" description="Holding this item gives you a 2% increased drop chance" />
-      <EffectInfo name="Drawbacks:" description="(-0.05% less effect per extra talisman held)" />
+      <EffectInfo name="" description="What powers does this item hold?" />
     </ExtraTooltipData>
     <Texture>
       <File>CustomObj</File>
       <Index>0x7d</Index>
     </Texture>
     <SlotType>10</SlotType>
-    <Description>This Talisman contains a fire which give you % of Looting.</Description>
+    <Description>This talisman contains powers of looting.</Description>
     <Sound>use_potion</Sound>
-    <SNormal />
+    <Activate type="0x00">UnlockTalisman</Activate>
+    <Consumable />
+    <Potion />
     <BagType>3</BagType>
   </Object>
   <Object type="0x5038" id="Cocktail of Vitality">
@@ -52019,23 +51949,6 @@
     <BagType>6</BagType>
     <Track />
     <Soulbound />
-  </Object>
-  <Object type="0x506d" id="Magic Paper">
-    <DisplayId>Magic Paper</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>CustomObj</File>
-      <Index>0x82</Index>
-    </Texture>
-    <Activate>ResetSkillTree</Activate>
-    <SlotType>10</SlotType>
-    <Description>This paper contain a Magic Power that reset all your Skill Tree Points.</Description>
-    <Sound>use_potion</Sound>
-    <InvUse />
-    <NoTierTag />
-    <Soulbound />
-    <BagType>4</BagType>
   </Object>
   <Object type="0xa1f" id="Potion of Attack">
     <Class>Equipment</Class>
@@ -54237,7 +54150,7 @@
       <Index>0xbc</Index>
     </Texture>
     <SlotType>2</SlotType>
-    <Description>Bits of cosmic residue dropped by sprites were collected and forged into blades under the heavy pressure of space.</Description>
+    <Description>If this item is broken, it's glass' fault</Description>
     <RateOfFire>1.20</RateOfFire>
     <Sound>weapon/fire_dagger</Sound>
     <Projectile>
@@ -60290,7 +60203,7 @@
     <Class>Equipment</Class>
     <Item />
     <Description>A classical robe used as a standard for up-and-coming wizards aiming to faces the challenges in the realm that lie ahead</Description>
-    <Rare />
+    <SetTier />
     <Texture>
       <File>CustomObj</File>
       <Index>0x6d</Index>
@@ -61952,7 +61865,7 @@
     </Texture>
     <SlotType>11</SlotType>
     <FameBonus>5</FameBonus>
-    <Description>A dormant spell dropped by dead adventures that was awakened by the forces of space, granting the ability to manipulate space at will.</Description>
+    <Description>Zeus is big gay</Description>
     <Sound>spell/fire_nova</Sound>
     <ActivateOnEquip stat="26" amount="4">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="4">IncrementStat</ActivateOnEquip>

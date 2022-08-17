@@ -86,9 +86,6 @@ public enum MessageId : byte
     //Magician
     UPGRADESTAT = 71,
 
-    //Skill Tree
-    SMALLSKILLTREE = 72,
-
     //Music
     SWITCH_MUSIC = 73,
 

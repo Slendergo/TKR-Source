@@ -111,7 +111,6 @@ namespace wServer.core.objects
         private float _hpRegenCounter;
         private SV<int> _level;
         private SV<int> _mp;
-        private float _mpRegenCounter;
         private SV<bool> _nameChosen;
         private int _originalSkin;
         private SV<int> _oxygenBar;
@@ -785,8 +784,8 @@ namespace wServer.core.objects
                 CheckTradeTimeout(time);
                 HandleQuest(time);
 
-                HandleRegen(time);
-                HandleEffects(time);
+                HandleEffects(ref time);
+                HandleRegen(ref time);
 
                 GroundEffect(time);
                 TickActivateEffects(time);
@@ -1221,33 +1220,43 @@ namespace wServer.core.objects
             }
         }
 
-        private void HandleRegen(TickTime time)
+        private double HealthRegenCarry;
+        private double ManaRegenCarry;
+
+        private void HandleRegen(ref TickTime time)
         {
-            // hp regen
-            if (HP == Stats[0] || !CanHpRegen())
-                _hpRegenCounter = 0;
-            else
+            var maxHP = Stats[0];
+
+            if(CanHpRegen() && HP < maxHP)
             {
-                _hpRegenCounter += Stats.GetHPRegen() * time.DeltaTime;
-                var regen = (int)_hpRegenCounter;
+                var vitalityStat = Stats[6];
+
+                HealthRegenCarry += (1 + 0.24 * vitalityStat) * time.DeltaTime;
+                if (HasConditionEffect(ConditionEffects.Healing))
+                    HealthRegenCarry += 20.0 * time.DeltaTime;
+
+                var regen = (int)HealthRegenCarry;
                 if (regen > 0)
                 {
-                    HP = Math.Min(Stats[0], HP + regen);
-                    _hpRegenCounter -= regen;
+                    HP = Math.Min(HP + regen, maxHP);
+                    HealthRegenCarry -= regen;
                 }
             }
 
-            // mp regen
-            if (MP == Stats[1] || !CanMpRegen())
-                _mpRegenCounter = 0;
-            else
+            var maxMP = Stats[1];
+            if (CanMpRegen() && MP < maxMP)
             {
-                _mpRegenCounter += Stats.GetMPRegen() * time.DeltaTime;
-                var regen = (int)_mpRegenCounter;
+                var wisdomStat = Stats[7];
+
+                ManaRegenCarry += (0.5 + 0.12 * wisdomStat) * time.DeltaTime;
+                if (HasConditionEffect(ConditionEffects.MPTRegeneration))
+                    HealthRegenCarry += 20.0 * time.DeltaTime;
+
+                var regen = (int)ManaRegenCarry;
                 if (regen > 0)
                 {
-                    MP = Math.Min(Stats[1], MP + regen);
-                    _mpRegenCounter -= regen;
+                    MP = Math.Min(MP + regen, maxMP);
+                    ManaRegenCarry -= regen;
                 }
             }
         }

@@ -167,9 +167,7 @@ namespace wServer.logic.loot
                 }
 
                 if (DropsInSoulboundBag(i.ItemType, i.Tier))
-                {
                     continue;
-                }
 
                 if (i.Threshold <= 0 && chance < i.Probabilty)
                 {

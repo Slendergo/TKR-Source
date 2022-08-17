@@ -5,9 +5,7 @@ namespace wServer.core.objects
 {
     public partial class Player
     {
-        private float _bleeding;
         private int _canTpCooldownTime;
-        private float _healing;
         private int _newbieTime;
 
         public bool IsVisibleToEnemy()
@@ -35,20 +33,11 @@ namespace wServer.core.objects
 
         internal void SetTPDisabledPeriod() => _canTpCooldownTime = 10000;
 
-        private bool CanHpRegen()
-        {
-            if (HasConditionEffect(ConditionEffects.Sick))
-                return false;
-
-            if (HasConditionEffect(ConditionEffects.Bleeding))
-                return false;
-
-            return true;
-        }
+        private bool CanHpRegen() => !(HasConditionEffect(ConditionEffects.Bleeding) || HasConditionEffect(ConditionEffects.Sick));
 
         private bool CanMpRegen() => !(HasConditionEffect(ConditionEffects.Quiet) || HasConditionEffect(ConditionEffects.NinjaSpeedy));
 
-        private void HandleEffects(TickTime time)
+        private void HandleEffects(ref TickTime time)
         {
             if (Client == null || Client.Account == null) return;
 
@@ -59,29 +48,14 @@ namespace wServer.core.objects
                 GameServer.ConnectionManager.Clients[Client].Hidden = true;
             }
 
-            if (HasConditionEffect(ConditionEffects.Healing) && !HasConditionEffect(ConditionEffects.Sick))
-            {
-                if (_healing > 1)
-                {
-                    HP = Math.Min(Stats[0], HP + (int)_healing);
-                    _healing -= (int)_healing;
-                }
-                _healing += 28 * time.DeltaTime;
-            }
-
             if (HasConditionEffect(ConditionEffects.Quiet) && MP > 0)
                 MP = 0;
 
             if (HasConditionEffect(ConditionEffects.Bleeding) && HP > 1)
             {
-                if (_bleeding > 1)
-                {
-                    HP -= (int)_bleeding;
-                    if (HP < 1)
-                        HP = 1;
-                    _bleeding -= (int)_bleeding;
-                }
-                _bleeding += 28 * time.DeltaTime;
+                HP -= (int)(20 * time.DeltaTime); // 20 per second
+                if (HP < 1)
+                    HP = 1;
             }
 
             if (HasConditionEffect(ConditionEffects.NinjaSpeedy))

@@ -164,7 +164,7 @@ namespace wServer.core.objects
             _maxedSpd = new SV<bool>(this, StatDataType.MaxedSpd, client.Character.MaxedSpd, true);
             _maxedDex = new SV<bool>(this, StatDataType.MaxedDex, client.Character.MaxedDex, true);
             _maxedVit = new SV<bool>(this, StatDataType.MaxedVit, client.Character.MaxedVit, true);
-            _maxedVit = new SV<bool>(this, StatDataType.MaxedWis, client.Character.MaxedWis, true);
+            _maxedWis = new SV<bool>(this, StatDataType.MaxedWis, client.Character.MaxedWis, true);
             
             _colornamechat = new SV<int>(this, StatDataType.ColorNameChat, 0);
             _colorchat = new SV<int>(this, StatDataType.ColorChat, 0);

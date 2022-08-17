@@ -21,7 +21,7 @@ namespace wServer.core.net.handlers
         private const ushort soulBag = 0x0503;
         private static readonly string[] StackableItems = new string[] { "Magic Dust" }; //stackable items
 
-        public override PacketId MessageId => PacketId.INVSWAP;
+        public override MessageId MessageId => MessageId.INVSWAP;
 
         public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
         {

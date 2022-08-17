@@ -6,7 +6,7 @@ namespace wServer.core.net.handlers
 {
     public class OtherHitHandler : IMessageHandler
     {
-        public override PacketId MessageId => PacketId.OTHERHIT;
+        public override MessageId MessageId => MessageId.OTHERHIT;
 
         public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
         {

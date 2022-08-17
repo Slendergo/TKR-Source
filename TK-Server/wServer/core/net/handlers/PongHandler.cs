@@ -6,7 +6,7 @@ namespace wServer.core.net.handlers
 {
     public class PongHandler : IMessageHandler
     {
-        public override PacketId MessageId => PacketId.PONG;
+        public override MessageId MessageId => MessageId.PONG;
 
         public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
         {

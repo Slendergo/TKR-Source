@@ -13,8 +13,6 @@ import com.company.util.AssetLibrary;
    import kabam.rotmg.constants.ItemConstants;
    import kabam.rotmg.messaging.impl.data.StatData;
 
-import org.hamcrest.text.containsString;
-
 public class ObjectLibrary
    {
       public static var playerChars_:Vector.<XML> = new Vector.<XML>();
@@ -63,9 +61,9 @@ public class ObjectLibrary
          "StatNPC":StatNPC,
          "SkillTree":SkillTree,
          "MarketNPC":MarketNPC,
-          "BountyBoard": BountyBoard,
-          "PotionStorage": PotionStorage
-
+         "BountyBoard": BountyBoard,
+         "PotionStorage": PotionStorage,
+         "Essence":Essence
       };
 
 
@@ -127,9 +125,7 @@ public class ObjectLibrary
                }
             }
             trace(id);
-            if(id == "Abominable Snowman"){
-               trace(id);
-            }
+
             typeToTextureData_[objectType] = new TextureData(objectXML);
             if(objectXML.hasOwnProperty("Top"))
             {

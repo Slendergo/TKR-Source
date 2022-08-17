@@ -6,7 +6,7 @@ namespace wServer.networking.packets.outgoing
     {
         public int Result { get; set; }
 
-        public override PacketId MessageId => PacketId.INVRESULT;
+        public override MessageId MessageId => MessageId.INVRESULT;
 
         protected override void Write(NWriter wtr)
         {

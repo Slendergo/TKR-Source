@@ -7,7 +7,7 @@ namespace wServer.networking.packets.outgoing
         public int AccountListId { get; set; }
         public string[] AccountIds { get; set; }
 
-        public override PacketId MessageId => PacketId.ACCOUNTLIST;
+        public override MessageId MessageId => MessageId.ACCOUNTLIST;
 
         protected override void Write(NWriter wtr)
         {

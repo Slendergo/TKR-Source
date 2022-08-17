@@ -1,4 +1,244 @@
 <Grounds>
+  <Ground type="0xb0cb" id="HC Grass Tile">
+    <RandomTexture>
+      <Texture>
+        <File>customEnvironmentMortomus</File>
+        <Index>0x4a</Index>
+      </Texture>
+      <Texture>
+        <File>customEnvironmentMortomus</File>
+        <Index>0x4b</Index>
+      </Texture>
+      <Texture>
+        <File>customEnvironmentMortomus</File>
+        <Index>0x4c</Index>
+      </Texture>
+      <Texture>
+        <File>customEnvironmentMortomus</File>
+        <Index>0x4d</Index>
+      </Texture>
+      <Texture>
+        <File>customEnvironmentMortomus</File>
+        <Index>0x4e</Index>
+      </Texture>
+    </RandomTexture>
+  </Ground>
+  <Ground type="0xb0ca" id="HC Ground Tile">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x3d</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xb0c9" id="HC Paved Path">
+    <RandomTexture>
+      <Texture>
+        <File>customEnvironmentMortomus</File>
+        <Index>0x3b</Index>
+      </Texture>
+      <Texture>
+        <File>customEnvironmentMortomus</File>
+        <Index>0x3c</Index>
+      </Texture>
+    </RandomTexture>
+  </Ground>
+  <Ground type="0xb0cc" id="HC Rug">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x4f</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xb0cd" id="HC Rug TL">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x5a</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xb0ce" id="HC Rug TE">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x5b</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xb0cf" id="HC Rug TM1">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x5c</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xb0d0" id="HC Rug TM2">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x5d</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xb0d1" id="HC Rug TR">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x5f</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xb0d2" id="HC Rug LE">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x6a</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xb0d3" id="HC Rug LM1">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x7a</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xb0d4" id="HC Rug LM2">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x8a</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xb0d5" id="HC RUG RE">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x6f</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xb0d6" id="HC Rug RM1">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x7f</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xb0d7" id="HC Rug RM2">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x8f</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xb0d8" id="HC Rug BL">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0xaa</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xb0d9" id="HC Rug BE">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0xab</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xb0da" id="HC Rug BM1">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0xac</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xb0db" id="HC Rug BM2">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0xad</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xb0dc" id="HC Rug BR">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0xaf</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xb0de" id="HC Rug Pattern TL">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x6b</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xb0df" id="HC Rug Pattern TM1">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x6c</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xb0e0" id="HC Rug Pattern TM2">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x6d</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xb0e1" id="HC Rug Pattern TR">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x6e</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xb0e2" id="HC Rug Pattern LEM1">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x7b</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xb0e3" id="HC Rug Pattern LEM2">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x8b</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xb0e4" id="HC Rug Pattern REM1">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x7e</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xb0e5" id="HC Rug Pattern REM2">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x8e</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xb0e6" id="HC Rug Pattern BL">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x9b</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xb0e7" id="HC Rug Pattern BM1">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x9c</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xb0e8" id="HC Rug Pattern BM2">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x9d</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xb0e9" id="HC Rug Pattern BR">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x9e</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xb0ea" id="HC Rug Pattern M1">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x7c</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xb0eb" id="HC Rug Pattern M2">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x7d</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xb0ec" id="HC Rug Pattern M3">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x8c</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0xb0ed" id="HC Rug Pattern M4">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x8d</Index>
+    </Texture>
+  </Ground>
   <Ground type="0xb0b0" id="SL Wood Floor">
     <RandomTexture>
       <Texture>

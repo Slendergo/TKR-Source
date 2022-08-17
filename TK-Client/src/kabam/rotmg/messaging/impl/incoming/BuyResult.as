@@ -5,7 +5,6 @@ package kabam.rotmg.messaging.impl.incoming
    public class BuyResult extends IncomingMessage
    {
       public static const SUCCESS_BRID:int = 0;
-
       public static const DIALOG_BRID:int = 1;
        
       

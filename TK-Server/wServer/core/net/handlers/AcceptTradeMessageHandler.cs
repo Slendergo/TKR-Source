@@ -16,7 +16,7 @@ namespace wServer.core.net.handlers
 {
     public sealed class AcceptTradeMessageHandler : IMessageHandler
     {
-        public override PacketId MessageId => PacketId.ACCEPTTRADE;
+        public override MessageId MessageId => MessageId.ACCEPTTRADE;
 
         public override void Handle(Client client, NReader rdr, ref TickTime time)
         {

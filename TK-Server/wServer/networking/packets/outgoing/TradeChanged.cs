@@ -6,7 +6,7 @@ namespace wServer.networking.packets.outgoing
     {
         public bool[] Offer { get; set; }
 
-        public override PacketId MessageId => PacketId.TRADECHANGED;
+        public override MessageId MessageId => MessageId.TRADECHANGED;
 
         protected override void Write(NWriter wtr)
         {

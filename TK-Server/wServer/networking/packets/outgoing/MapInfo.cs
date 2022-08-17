@@ -15,7 +15,7 @@ namespace wServer.networking.packets.outgoing
         public bool ShowDisplays { get; set; }
         public string Music { get; set; }
 
-        public override PacketId MessageId => PacketId.MAPINFO;
+        public override MessageId MessageId => MessageId.MAPINFO;
 
         protected override void Write(NWriter wtr)
         {

@@ -7,7 +7,7 @@ namespace wServer.networking.packets.outgoing
         public int OwnerId { get; set; }
         public int SoundId { get; set; }
 
-        public override PacketId MessageId => PacketId.PLAYSOUND;
+        public override MessageId MessageId => MessageId.PLAYSOUND;
 
         protected override void Write(NWriter wtr)
         {

@@ -26116,6 +26116,166 @@
     <NoMiniMap />
     <Size>40</Size>
   </Object>
+  <Object type="0x14B" id="Undead Blood Bat">
+    <DisplayId>Undead Blood Bat</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <AnimatedTexture>
+      <File>Custom16x16Encounters</File>
+      <Index>33</Index>
+    </AnimatedTexture>
+    <Size>100</Size>
+    <MaxHitPoints>9000</MaxHitPoints>
+    <Defense>30</Defense>
+    <StasisImmune />
+    <Projectile id="0">
+      <ObjectId>Fire Shot</ObjectId>
+      <Damage>60</Damage>
+      <Speed>90</Speed>
+      <Size>90</Size>
+      <MultiHit />
+      <LifetimeMS>800</LifetimeMS>
+    </Projectile>
+  </Object>
+  <Object type="0x239" id="Haunted Bat">
+    <DisplayId>Haunted Bat</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <AnimatedTexture>
+      <File>Custom16x16Encounters</File>
+      <Index>32</Index>
+    </AnimatedTexture>
+    <Size>100</Size>
+    <MaxHitPoints>8000</MaxHitPoints>
+    <Defense>30</Defense>
+    <StasisImmune />
+    <Projectile id="0">
+      <ObjectId>Fire Shot</ObjectId>
+      <Damage>130</Damage>
+      <Speed>0</Speed>
+      <Size>90</Size>
+      <MultiHit />
+      <LifetimeMS>4000</LifetimeMS>
+      <Rotation>20</Rotation>
+    </Projectile>
+  </Object>
+  <Object type="0x23B" id="Killer Bat">
+    <DisplayId>Haunted Bat</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <AnimatedTexture>
+      <File>Custom16x16Encounters</File>
+      <Index>35</Index>
+    </AnimatedTexture>
+    <Size>100</Size>
+    <MaxHitPoints>8000</MaxHitPoints>
+    <Defense>30</Defense>
+    <StasisImmune />
+    <Projectile id="0">
+      <ObjectId>Fire Shot</ObjectId>
+      <Damage>130</Damage>
+      <Speed>0</Speed>
+      <Size>90</Size>
+      <MultiHit />
+      <LifetimeMS>4000</LifetimeMS>
+      <Rotation>20</Rotation>
+    </Projectile>
+  </Object>
+  <Object type="0x23C" id="Demon Bat">
+    <DisplayId>Haunted Bat</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <AnimatedTexture>
+      <File>Custom16x16Encounters</File>
+      <Index>34</Index>
+    </AnimatedTexture>
+    <Size>100</Size>
+    <MaxHitPoints>8000</MaxHitPoints>
+    <Defense>30</Defense>
+    <StasisImmune />
+    <Projectile id="0">
+      <ObjectId>Fire Shot</ObjectId>
+      <Damage>130</Damage>
+      <Speed>0</Speed>
+      <Size>90</Size>
+      <MultiHit />
+      <LifetimeMS>4000</LifetimeMS>
+      <Rotation>20</Rotation>
+    </Projectile>
+  </Object>
+  <Object type="0x14C" id="Haunted Golem">
+    <DisplayId>Haunted Golem</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <AnimatedTexture>
+      <File>Custom16x16Encounters</File>
+      <Index>38</Index>
+    </AnimatedTexture>
+    <Size>120</Size>
+    <MaxHitPoints>12000</MaxHitPoints>
+    <Defense>40</Defense>
+    <StasisImmune />
+    <StunImmune />
+    <Projectile id="0">
+      <ObjectId>Yellow HC Shot</ObjectId>
+      <Damage>40</Damage>
+      <Speed>80</Speed>
+      <Size>90</Size>
+      <ArmorPiercing />
+      <Amplitude>2</Amplitude>
+      <Frequency>.2</Frequency>
+      <ArcGap>10</ArcGap>
+      <LifetimeMS>555</LifetimeMS>
+    </Projectile>
+  </Object>
+  <Object type="0x14D" id="Crawling Devourer">
+    <DisplayId>Crawling Devourer</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <AnimatedTexture>
+      <File>Custom16x16Encounters</File>
+      <Index>36</Index>
+    </AnimatedTexture>
+    <Size>120</Size>
+    <MaxHitPoints>11000</MaxHitPoints>
+    <Defense>25</Defense>
+    <StasisImmune />
+    <ParalyzeImmune />
+    <Projectile id="0">
+      <ObjectId>Crawling Devourer Shoot</ObjectId>
+      <Damage>90</Damage>
+      <Speed>110</Speed>
+      <Size>90</Size>
+      <MultiHit />
+      <ArmorPierce />
+      <Wavy />
+      <LifetimeMS>545</LifetimeMS>
+    </Projectile>
+  </Object>
+  <Object type="0x14E" id="Cursed Mermaid">
+    <DisplayId>Cursed Mermaid</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <AnimatedTexture>
+      <File>Custom16x16Encounters</File>
+      <Index>37</Index>
+    </AnimatedTexture>
+    <Size>110</Size>
+    <MaxHitPoints>8000</MaxHitPoints>
+    <Defense>30</Defense>
+    <StasisImmune />
+    <StunImmune />
+    <SlowImmune />
+    <Projectile id="0">
+      <ObjectId>Orange HC Shot</ObjectId>
+      <Damage>50</Damage>
+      <Speed>110</Speed>
+      <Size>90</Size>
+      <MultiHit />
+      <Wavy />
+      <LifetimeMS>545</LifetimeMS>
+    </Projectile>
+  </Object>
   <Object type="0x9950" id="Fire Elemental Sword">
     <Enemy />
     <DisplayId>Fire Elemental Sword</DisplayId>
@@ -27661,6 +27821,128 @@
     <Size>100</Size>
     <MaxHitPoints>30000</MaxHitPoints>
     <Defense>20</Defense>
+  </Object>
+  <Object type="0x20C" id="Mortomus, Keeper of Souls">
+    <Class>Character</Class>
+    <Enemy />
+    <SpecialEnemy />
+    <Hero />
+    <God />
+    <Quest />
+    <KeepDamageRecord />
+    <Level>1</Level>
+    <AnimatedTexture>
+      <File>Custom32x32Encounters</File>
+      <Index>18</Index>
+    </AnimatedTexture>
+    <DisplayId>Mortomus, Keeper of Souls</DisplayId>
+    <Size>170</Size>
+    <MaxHitPoints>300000</MaxHitPoints>
+    <Defense>30</Defense>
+    <StasisImmune />
+    <StunImmune />
+    <ParalyzeImmune />
+    <XpMult>1.2</XpMult>
+    <Projectile id="0">
+      <ObjectId>Morto Green</ObjectId>
+      <Damage>100</Damage>
+      <Size>100</Size>
+      <Speed>80</Speed>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+    <Projectile id="1">
+      <ObjectId>Morto Light Green</ObjectId>
+      <Damage>30</Damage>
+      <Size>100</Size>
+      <Speed>100</Speed>
+      <ConditionEffect duration="3">Speedy</ConditionEffect>
+      <LifetimeMS>1200</LifetimeMS>
+    </Projectile>
+    <Projectile id="2">
+      <ObjectId>Morto Dark Green</ObjectId>
+      <Damage>70</Damage>
+      <Size>100</Size>
+      <Speed>100</Speed>
+      <LifetimeMS>600</LifetimeMS>
+    </Projectile>
+    <Projectile id="3">
+      <ObjectId>Morto Square</ObjectId>
+      <Damage>80</Damage>
+      <Size>100</Size>
+      <Speed>120</Speed>
+      <ConditionEffect duration="3">Armor Broken</ConditionEffect>
+      <LifetimeMS>4000</LifetimeMS>
+      <ArmorPiercing />
+    </Projectile>
+    <Projectile id="4">
+      <ObjectId>Morto Wisp</ObjectId>
+      <Damage>100</Damage>
+      <Size>100</Size>
+      <Speed>90</Speed>
+      <ConditionEffect duration="5">Armor Broken</ConditionEffect>
+      <LifetimeMS>4000</LifetimeMS>
+      <MultiHit />
+      <ArmorPiercing />
+    </Projectile>
+    <Projectile id="5">
+      <ObjectId>Morto Square</ObjectId>
+      <Damage>110</Damage>
+      <Size>100</Size>
+      <Speed>120</Speed>
+      <LifetimeMS>800</LifetimeMS>
+    </Projectile>
+    <Projectile id="6">
+      <ObjectId>Morto Arrow</ObjectId>
+      <Damage>90</Damage>
+      <Size>100</Size>
+      <Speed>80</Speed>
+      <LifetimeMS>2000</LifetimeMS>
+    </Projectile>
+    <Projectile id="7">
+      <ObjectId>Morto Light Green</ObjectId>
+      <Damage>45</Damage>
+      <Size>140</Size>
+      <Speed>100</Speed>
+      <ConditionEffect duration="3">Speedy</ConditionEffect>
+      <LifetimeMS>1500</LifetimeMS>
+      <MultiHit />
+      <ArmorPiercing />
+    </Projectile>
+    <Projectile id="8">
+      <ObjectId>Morto Green</ObjectId>
+      <Damage>100</Damage>
+      <Size>100</Size>
+      <Speed>80</Speed>
+      <LifetimeMS>2000</LifetimeMS>
+      <ConditionEffect duration="5">Armor Broken</ConditionEffect>
+      <MultiHit />
+      <ArmorPiercing />
+    </Projectile>
+    <Projectile id="9">
+      <ObjectId>Morto Wisp</ObjectId>
+      <Damage>70</Damage>
+      <Size>100</Size>
+      <Speed>70</Speed>
+      <LifetimeMS>2100</LifetimeMS>
+      <MultiHit />
+      <ArmorPiercing />
+    </Projectile>
+    <Projectile id="10">
+      <ObjectId>Morto Square</ObjectId>
+      <Damage>90</Damage>
+      <Size>100</Size>
+      <Speed>120</Speed>
+      <LifetimeMS>2000</LifetimeMS>
+    </Projectile>
+    <Projectile id="11">
+      <ObjectId>Morto Dark Green</ObjectId>
+      <Damage>400</Damage>
+      <Size>100</Size>
+      <Speed>80</Speed>
+      <LifetimeMS>4000</LifetimeMS>
+      <MultiHit />
+      <ArmorPiercing />
+    </Projectile>
   </Object>
   <Object type="0x48dc" id="Tiki Tiki">
     <Enemy />
@@ -43236,132 +43518,66 @@
       <Index>0x06</Index>
     </Texture>
   </Object>
-  <Object type="0xa420" id="Cerberus's Core" spritePeriod="2" spriteFile="CustomObj" spriteArray="17-18">
+  <Object type="0x4949" id="Beginner's Talisman">
     <Class>Equipment</Class>
+    <DisplayId>Basic Talisman</DisplayId>
     <Item />
-    <HoldableItem />
+    <InvUse />
     <Texture>
       <File>CustomObj</File>
-      <Index>0x11</Index>
+      <Index>0x1c</Index>
     </Texture>
-    <SlotType>10</SlotType>
-    <Description> Cerberus's Core, contains the very essence of Cerberus himself.</Description>
-    <Sound>use_potion</Sound>
-    <Eternal />
     <ExtraTooltipData>
-      <EffectInfo name="Soul of Cerberus" description="Immunity to Stun, Daze, and Slowed. Berserk for 5 seconds every 15 Seconds." />
+      <EffectInfo name="" description="What powers does this item hold?" />
     </ExtraTooltipData>
-    <BagType>7</BagType>
-    <feedPower>15</feedPower>
-  </Object>
-  <Object type="0xa41f" id="Cerberus's Right Claw">
-    <Class>Equipment</Class>
-    <Item />
-    <HoldableItem />
-    <Texture>
-      <File>CustomObj</File>
-      <Index>0xcc</Index>
-    </Texture>
     <SlotType>10</SlotType>
-    <Description>Cerberus's Right Claw, said to hold the souls of the dead.</Description>
+    <Description>A talisman gifted to you at birth by the gods</Description>
     <Sound>use_potion</Sound>
-    <Mythical />
-    <ExtraTooltipData>
-      <EffectInfo name="Killing Spree" description="For Every 1500 Enemies Killed, Maximum HP Increases by 50 {Caps at 500}. Immunity to Slowed" />
-    </ExtraTooltipData>
-    <BagType>7</BagType>
-    <feedPower>15</feedPower>
-  </Object>
-  <Object type="0xa41e" id="Cerberus's Left Claw">
-    <Class>Equipment</Class>
-    <Item />
-    <HoldableItem />
-    <Texture>
-      <File>CustomObj</File>
-      <Index>0xcb</Index>
-    </Texture>
-    <SlotType>10</SlotType>
-    <Description>Cereberus's Left Claw, said to hold the fury of the dead.</Description>
-    <Sound>use_potion</Sound>
-    <Mythical />
-    <ExtraTooltipData>
-      <EffectInfo name="Frenzy" description="For every mob within a 10 distance radius, Attack goes up by 1.{Caps at 20}. Immunity to Dazed" />
-    </ExtraTooltipData>
-    <BagType>7</BagType>
-    <feedPower>15</feedPower>
-  </Object>
-  <Object type="0x4927" id="Gem of Life">
-    <Class>Equipment</Class>
-    <Item />
-    <HoldableItem />
-    <Texture>
-      <File>CustomObj</File>
-      <Index>0x13</Index>
-    </Texture>
-    <SlotType>10</SlotType>
-    <Description>A gem brimming with vitality. So long as it's held, properties of health regeneration will increase. </Description>
-    <Sound>use_potion</Sound>
-    <ExtraTooltipData>
-      <EffectInfo name="Power of Life" description="If your Life is below half, you regenerate the quintuple fast." />
-    </ExtraTooltipData>
-    <Legendary />
-    <BagType>7</BagType>
-    <feedPower>15</feedPower>
-  </Object>
-  <Object type="0x492c" id="Talisman of Mana">
-    <Class>Equipment</Class>
-    <Item />
-    <HoldableItem />
-    <Texture>
-      <File>CustomObj</File>
-      <Index>0x17</Index>
-    </Texture>
-    <SlotType>10</SlotType>
-    <Description>This talisman contains the Power of Luck. So long as it's held, luck will increase.</Description>
-    <Sound>use_potion</Sound>
-    <Legendary />
-    <ExtraTooltipData>
-      <EffectInfo name="Power of Mana" description="If your Mana is below the half, you regenerate the quintuple fast." />
-    </ExtraTooltipData>
-    <BagType>7</BagType>
-    <feedPower>15</feedPower>
+    <Activate type="0x00">UnlockTalisman</Activate>
+    <Consumable />
+    <Potion />
+    <Soulbound />
+    <BagType>1</BagType>
   </Object>
   <Object type="0x4950" id="Severed Marble Hand">
     <Class>Equipment</Class>
     <DisplayId>Severed Marble Hand</DisplayId>
     <Item />
+    <InvUse />
     <Texture>
       <File>CustomObj</File>
       <Index>0x1c</Index>
     </Texture>
-    <HoldableItem />
-    <SetStatsNoStack />
-    <StatSetNoStack>0</StatSetNoStack>
-    <AmountSetNoStack>100</AmountSetNoStack>
-    <SlotType>10</SlotType>
-    <Description>A sundered chunk from the Marble Colossus. So long as it's held, the power of the Colossus will flow through you.</Description>
     <ExtraTooltipData>
-      <EffectInfo name="Marble Power" description="While holding this item, you will be immune to Unstable." />
-      <EffectInfo name="Immune to Unstable." description="" />
-      <EffectInfo name="On Handling" description="While holding this, it will give you +100 HP." />
+      <EffectInfo name="" description="What powers does this item hold?" />
     </ExtraTooltipData>
+    <SlotType>10</SlotType>
+    <Description>A sundered chunk from the Marble Colossus this item grants power to the wielder</Description>
+    <Sound>use_potion</Sound>
+    <Activate type="0x02">UnlockTalisman</Activate>
     <Legendary />
+    <Consumable />
+    <Potion />
     <BagType>7</BagType>
   </Object>
   <Object type="0x50ec" id="Talisman of Luck">
     <Class>Equipment</Class>
     <Item />
-    <HoldableItem />
+    <InvUse />
     <ExtraTooltipData>
-      <EffectInfo name="Looting:" description="Holding this item gives you 20% loot chance! (One per Inventory). This talisman contains the Power of Luck. So long as it's held, luck will increase." />
+      <EffectInfo name="" description="What powers does this item hold?" />
     </ExtraTooltipData>
     <Texture>
       <File>CustomObj</File>
       <Index>0x94</Index>
     </Texture>
     <SlotType>10</SlotType>
-    <Description>This Talisman contain the Power of the Lucky, as long as you hold this, your luck will increase</Description>
+    <Description>This talisman contains powers of luck.</Description>
+    <Sound>use_potion</Sound>
+    <Activate type="0x01">UnlockTalisman</Activate>
     <Legendary />
+    <Consumable />
+    <Potion />
     <BagType>7</BagType>
   </Object>
   <Object type="0x5019" id="Fire Fragment">
@@ -43511,11 +43727,8 @@
     <Description>Todo</Description>
     <Sound>use_key</Sound>
     <Consumable />
-    <Activate objectId="Epic Quest Chest">Create</Activate>
-    <feedPower>200</feedPower>
-    <BagType>5</BagType>
-    <Track />
-  </Object>
+    <Activate objectId="Epic Quest Chest">Create</Activate>:
+		<feedPower>200</feedPower><BagType>5</BagType><Track /></Object>
   <Object type="0x9701" id="Epic Quest Chest">
     <DisplayId>Quest Chest</DisplayId>
     <Class>Character</Class>
@@ -51202,19 +51415,20 @@
   <Object type="0x5060" id="Talisman of Looting">
     <Class>Equipment</Class>
     <Item />
-    <HoldableItem />
+    <InvUse />
     <ExtraTooltipData>
-      <EffectInfo name="Looting:" description="Holding this item gives you a 2% increased drop chance" />
-      <EffectInfo name="Drawbacks:" description="(-0.05% less effect per extra talisman held)" />
+      <EffectInfo name="" description="What powers does this item hold?" />
     </ExtraTooltipData>
     <Texture>
       <File>CustomObj</File>
       <Index>0x7d</Index>
     </Texture>
     <SlotType>10</SlotType>
-    <Description>This Talisman contains a fire which give you % of Looting.</Description>
+    <Description>This talisman contains powers of looting.</Description>
     <Sound>use_potion</Sound>
-    <SNormal />
+    <Activate type="0x00">UnlockTalisman</Activate>
+    <Consumable />
+    <Potion />
     <BagType>3</BagType>
   </Object>
   <Object type="0x5038" id="Cocktail of Vitality">
@@ -66338,6 +66552,104 @@
     <Class>GameObject</Class>
     <Model>Ico</Model>
   </Object>
+  <Object type="0x214" id="Mortomus Check">
+    <DisplayId>Snowman Check</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <Invincible />
+    <Texture>
+      <File>invisible</File>
+      <Index>0x00</Index>
+    </Texture>
+    <MaxHitPoints>150000</MaxHitPoints>
+    <Defense>15</Defense>
+    <Size>160</Size>
+    <ShadowSize>0</ShadowSize>
+    <XpMult>0.0</XpMult>
+    <NoMiniMap />
+  </Object>
+  <Object type="0x167" id="HC North Spawner">
+    <Class>Character</Class>
+    <Enemy />
+    <Texture>
+      <File>invisible</File>
+      <Index>0</Index>
+    </Texture>
+    <NoMiniMap />
+    <MaxHitPoints>10</MaxHitPoints>
+    <Size>0</Size>
+  </Object>
+  <Object type="0x169" id="HC South Spawner">
+    <Class>Character</Class>
+    <Enemy />
+    <Texture>
+      <File>invisible</File>
+      <Index>0</Index>
+    </Texture>
+    <NoMiniMap />
+    <MaxHitPoints>10</MaxHitPoints>
+    <Size>0</Size>
+  </Object>
+  <Object type="0x168" id="HC East Spawner">
+    <Class>Character</Class>
+    <Enemy />
+    <Texture>
+      <File>invisible</File>
+      <Index>0</Index>
+    </Texture>
+    <NoMiniMap />
+    <MaxHitPoints>10</MaxHitPoints>
+    <Size>0</Size>
+  </Object>
+  <Object type="0x16A" id="HC West Spawner">
+    <Class>Character</Class>
+    <Enemy />
+    <Texture>
+      <File>invisible</File>
+      <Index>0</Index>
+    </Texture>
+    <NoMiniMap />
+    <MaxHitPoints>10</MaxHitPoints>
+    <Size>0</Size>
+  </Object>
+  <Object type="0x16B" id="HC Controller">
+    <DisplayId>Ghost of Skuld</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <Texture>
+      <File>invisible</File>
+      <Index>0</Index>
+    </Texture>
+    <AltTexture id="1">
+      <AnimatedTexture>
+        <File>chars16x16rEncounters</File>
+        <Index>66</Index>
+      </AnimatedTexture>
+    </AltTexture>
+    <AltTexture id="2">
+      <AnimatedTexture>
+        <File>chars16x16rEncounters</File>
+        <Index>66</Index>
+      </AnimatedTexture>
+      <Effect particle="SwirlingMist" cooldown="0.1">XMLEffect</Effect>
+    </AltTexture>
+    <AltTexture id="3">
+      <Texture>
+        <File>lofiCharBig</File>
+        <Index>0x0a</Index>
+      </Texture>
+    </AltTexture>
+    <AltTexture id="4">
+      <Texture>
+        <File>lofiCharBig</File>
+        <Index>0x0b</Index>
+      </Texture>
+    </AltTexture>
+    <NoMiniMap />
+    <MaxHitPoints>10</MaxHitPoints>
+    <Size>140</Size>
+    <ShadowSize>0</ShadowSize>
+  </Object>
   <Object type="0x5e1e" id="Treasure Flame Trap 1.2 Sec">
     <DisplayId>Treasure Flame Trap</DisplayId>
     <Class>GameObject</Class>
@@ -75405,7 +75717,7 @@
     <Static />
   </Object>
   <Object type="0x506c" id="Skill Tree">
-    <Class>SkillTree</Class>
+    <Class>Essence</Class>
     <Texture>
       <File>CustomObjectsSkillTree</File>
       <Index>0x00</Index>
@@ -76141,6 +76453,16 @@
     <Class>Portal</Class>
     <IntergamePortal />
     <DungeonName>Belladonna's Garden</DungeonName>
+    <Texture>
+      <File>lofiObj3</File>
+      <Index>0x4BA</Index>
+    </Texture>
+  </Object>
+  <Object type="0x22BE" id="Mortomus Hideout Portal">
+    <DisplayId>Mortomus Hideout</DisplayId>
+    <Class>Portal</Class>
+    <IntergamePortal />
+    <DungeonName>Mortomus Hideout</DungeonName>
     <Texture>
       <File>lofiObj3</File>
       <Index>0x4BA</Index>
@@ -77038,6 +77360,54 @@
       <Index>0x7b</Index>
     </Texture>
     <Rotation>90</Rotation>
+  </Object>
+  <Object type="0x16F" id="Morto Green">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>CustomProjs</File>
+      <Index>0xe0</Index>
+    </Texture>
+    <AngleCorrection>1</AngleCorrection>
+  </Object>
+  <Object type="0x192" id="Morto Light Green">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>CustomProjs</File>
+      <Index>0xe1</Index>
+    </Texture>
+    <AngleCorrection>1</AngleCorrection>
+  </Object>
+  <Object type="0x195" id="Morto Dark Green">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>CustomProjs</File>
+      <Index>0xe2</Index>
+    </Texture>
+    <AngleCorrection>1</AngleCorrection>
+  </Object>
+  <Object type="0x196" id="Morto Square">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>CustomProjs</File>
+      <Index>0xe3</Index>
+    </Texture>
+    <Rotation>80</Rotation>
+  </Object>
+  <Object type="0x1FB" id="Morto Wisp">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>CustomProjs</File>
+      <Index>0xe4</Index>
+    </Texture>
+    <Rotation>50</Rotation>
+  </Object>
+  <Object type="0x203" id="Morto Arrow">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>CustomProjs</File>
+      <Index>0xe5</Index>
+    </Texture>
+    <AngleCorrection>1</AngleCorrection>
   </Object>
   <Object type="0x9911" id="Limons Spell Shot">
     <Class>Projectile</Class>
@@ -78529,6 +78899,22 @@
     <Texture>
       <File>CustomObj</File>
       <Index>0x8c</Index>
+    </Texture>
+    <AngleCorrection>1</AngleCorrection>
+  </Object>
+  <Object type="0x210" id="Morto Big Blue">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>CustomProjsBig</File>
+      <Index>0x50</Index>
+    </Texture>
+    <AngleCorrection>1</AngleCorrection>
+  </Object>
+  <Object type="0x211" id="Morto Big Green">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>CustomProjsBig</File>
+      <Index>0x51</Index>
     </Texture>
     <AngleCorrection>1</AngleCorrection>
   </Object>
@@ -84559,6 +84945,50 @@
     <OccupySquare />
     <EnemyOccupySquare />
     <BlocksSight />
+  </Object>
+  <Object type="0xb0ee" id="HC Neon Wall">
+    <DisplayId>Neon Wall</DisplayId>
+    <Class>Wall</Class>
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x3f</Index>
+    </Texture>
+    <Top>
+      <Texture>
+        <File>customEnvironmentMortomus</File>
+        <Index>0x3e</Index>
+      </Texture>
+    </Top>
+    <HitSound>monster/stone_walls_hit</HitSound>
+    <DeathSound>monster/stone_walls_death</DeathSound>
+    <Static />
+    <FullOccupy />
+    <OccupySquare />
+    <EnemyOccupySquare />
+    <BlocksSight />
+    <Connects />
+  </Object>
+  <Object type="0x16C" id="HC Neon Wall GATE">
+    <Class>Wall</Class>
+    <Texture>
+      <File>customEnvironment</File>
+      <Index>0x3f</Index>
+    </Texture>
+    <Top>
+      <Texture>
+        <File>customEnvironmentMortomus</File>
+        <Index>0x3e</Index>
+      </Texture>
+    </Top>
+    <HitSound>monster/stone_walls_hit</HitSound>
+    <DeathSound>monster/stone_walls_death</DeathSound>
+    <ShadowSize>0</ShadowSize>
+    <Static />
+    <FullOccupy />
+    <OccupySquare />
+    <EnemyOccupySquare />
+    <BlocksSight />
+    <Connects />
   </Object>
   <Object type="0x1994" id="Group Eye Wall Nondestruct">
     <Class>Wall</Class>

@@ -16,7 +16,7 @@ namespace wServer.core.net.handlers
         public const string POTION_OF_VITALITY = "Potion of Vitality";
         public const string POTION_OF_WISDOM = "Potion of Wisdom";
 
-        public override PacketId MessageId => PacketId.POTION_STORAGE_INTERACTION;
+        public override MessageId MessageId => MessageId.POTION_STORAGE_INTERACTION;
 
         public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
         {

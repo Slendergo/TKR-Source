@@ -153,6 +153,7 @@
     <Compile Include="core\commands\CommandManager.cs" />
     <Compile Include="core\ConnectionInfo.cs" />
     <Compile Include="core\GameServer.cs" />
+    <Compile Include="core\net\handlers\talisman\TalismanEssenceActionHandler.cs" />
     <Compile Include="core\objects\inventory\ItemDustPools.cs" />
     <Compile Include="core\objects\inventory\ItemDustWeights.cs" />
     <Compile Include="core\objects\inventory\Inventory.cs" />
@@ -165,6 +166,7 @@
     <Compile Include="core\objects\player\Player.State.cs" />
     <Compile Include="core\setpieces\TalismanKing.cs" />
     <Compile Include="logic\db\BehaviourDb.MortomusHideout.cs" />
+    <Compile Include="networking\packets\outgoing\talisman\TalismanEssenceData.cs" />
     <Compile Include="utils\ItemUtils.cs" />
     <Compile Include="core\miscfile\thread\TickThreadSingle.cs" />
     <Compile Include="core\net\handlers\ChangeGuildRankHandler.cs" />
@@ -467,7 +469,7 @@
     <Compile Include="networking\packets\outgoing\TradeRequested.cs" />
     <Compile Include="networking\packets\outgoing\TradeStart.cs" />
     <Compile Include="networking\packets\outgoing\Update.cs" />
-    <Compile Include="networking\packets\PacketIds.cs" />
+    <Compile Include="networking\packets\MessageIds.cs" />
     <Compile Include="networking\ProtocolState.cs" />
     <Compile Include="networking\RSA.cs" />
     <Compile Include="core\connection\BufferManager.cs" />
@@ -578,6 +580,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <Compile Include="logic\db\BehaviorDb.CaveTT.cs" />
+    <Compile Include="core\objects\player\Player.Talismans.cs" />
     <None Include="wServer.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

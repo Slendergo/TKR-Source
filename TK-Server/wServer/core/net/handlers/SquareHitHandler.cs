@@ -10,7 +10,7 @@ namespace wServer.core.net.handlers
         public byte BulletId { get; set; }
         public int ObjectId { get; set; }
 
-        public override PacketId MessageId => PacketId.SQUAREHIT;
+        public override MessageId MessageId => MessageId.SQUAREHIT;
 
         public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
         {

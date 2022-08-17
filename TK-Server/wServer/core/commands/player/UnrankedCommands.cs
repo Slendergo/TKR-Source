@@ -598,18 +598,9 @@ namespace wServer.core.commands
         {
             var lootBoost = Loot.GetPlayerLootBoost(player);
 
-            //if (talismanofluck > 0) player.SendInfo($"Your Talisman of Luck give's you {talismanofluck}% Loot Boost!");
-            //if (player.Node5TickMin > 0) player.SendInfo($"Your attributes provide you with an extra {treeNodeLoot}% Loot Boost!");
-            ////if (treeNodeLoot > 0) player.SendInfo($"Your points in the Skill Tree gives you {skillTreeLoot}% Loot Boost!");
-            ////if (donorloot > 0) player.SendInfo($"For supporting TK and donating you get an extra {donorloot}% Loot Boost!");
-            //if (player.LDBoostTime > 0) player.SendInfo($"You have activated a Loot Drop Potion! This gives you an extra {lootDropBoost}% Loot Boost");
-            //if (talismans > 0) player.SendInfo($"Your Talisman's of Looting gives you a total of {talismans}% Loot Boost!");
-            //if (guildLootBoost > 0) player.SendInfo($"Your Guild gives you a {guildLootBoost}% Loot Boost!");
-
+            player.SendInfo($"Talisman's provide: {(player.LDBoostTime > 0 ? 0.1 : 0)}%");
+            player.SendInfo($"Talisman's provide: {player.TalismanLootBoost}%");
             player.SendInfo($"You have {Math.Round(lootBoost * 100.0f, 3)}% increased loot chance");
-            player.SendInfo($"This will breakdown sources in the future");
-
-            //player.SendInfo($"You have {lootBoosts}% Loot Boost{(eventRate != 1.0 ? $" (event multiplier: {eventRate}x)" : "")}!");
             return true;
         }
     }

@@ -1,0 +1,72 @@
+﻿<Talismans>
+	<Talisman type="0x00">
+		<Name>Beginner's Talisman</Name>
+		<ItemAssociatedWith>Beginner's Talisman</ItemAssociatedWith>
+		<BaseUpgradeCost>1500</BaseUpgradeCost>
+		<TierUpgradeCost>3500</TierUpgradeCost>
+		<CostMultiplier>1.1</CostMultiplier>
+		<MaxLevels>1</MaxLevels>
+		<Tier tier="0">
+			<StatType type="0" scale="perLevel" amount="5" />
+			<StatType type="3" scale="perLevel" amount="5" />
+		</Tier>
+		<Tier tier="1">
+			<StatType type="0" scale="perLevel" amount="5" />
+			<StatType type="3" scale="perLevel" amount="5" />
+			<StatType type="20" scale="perLevel" amount="1" />
+			<StatType type="21" scale="perLevel" amount="1" />
+		</Tier>
+		<Tier tier="2">
+			<StatType type="0" scale="perLevel" amount="5" />
+			<StatType type="3" scale="perLevel" amount="5" />
+			<StatType type="20" scale="perLevel" amount="1" />
+			<StatType type="21" scale="perLevel" amount="1" />
+			<StatType type="28" scale="perLevel" amount="1" />
+			<StatType type="22" scale="perLevel" amount="1" />
+			<StatType type="26" scale="perLevel" amount="1" />
+			<StatType type="27" scale="perLevel" amount="1" />
+		</Tier>
+	</Talisman>
+
+	<Talisman type="0x02">
+		<Name>Talisman of Luck</Name>
+		<ItemAssociatedWith>Talisman of Luck</ItemAssociatedWith>
+		<BaseUpgradeCost>2000</BaseUpgradeCost>
+		<TierUpgradeCost>8000</TierUpgradeCost>
+		<CostMultiplier>1.15</CostMultiplier>
+		<MaxLevels>10</MaxLevels>
+		<Tier tier="0">
+			<LootBoost amount="0.5" scale="perLevel"/>
+			<LootBoost amount="5.0" scale="flat"/>
+		</Tier>
+		<Tier tier="1">
+			<LootBoost amount="1.0" scale="perLevel"/>
+			<LootBoost amount="7.5" scale="flat"/>
+		</Tier>
+		<Tier tier="2">
+			<LootBoost amount="1.5" scale="perLevel"/>
+			<LootBoost amount="10.0" scale="flat"/>
+		</Tier>
+	</Talisman>
+	<Talisman type="0x03">
+		<Name>Severed Marble Hand</Name>
+		<ItemAssociatedWith>Severed Marble Hand</ItemAssociatedWith>
+		<BaseUpgradeCost>1500</BaseUpgradeCost>
+		<TierUpgradeCost>5000</TierUpgradeCost>
+		<CostMultiplier>1.5</CostMultiplier>
+		<MaxLevels>10</MaxLevels>
+		<Tier tier="0">
+			<StatType type="0" scale="perLevel" amount="5" />
+			<StatType type="3" scale="perLevel" amount="-5" />
+			<StatType type="3" scale="perLevel" amount="-5" />
+		</Tier>
+		<Tier tier="1">
+			<StatType type="0" scale="perLevel" amount="7" />
+			<StatType type="3" scale="perLevel" amount="-5" />
+		</Tier>
+		<Tier tier="2">
+			<StatType type="0" scale="perLevel" amount="7" />
+			<StatType type="3" scale="perLevel" amount="-3" />
+		</Tier>
+	</Talisman>
+</Talismans>

@@ -16,7 +16,7 @@ namespace wServer.core.net.handlers
         private const ushort normBag = 0x0500;
         private const ushort soulBag = 0x0503;
 
-        public override PacketId MessageId => PacketId.INVDROP;
+        public override MessageId MessageId => MessageId.INVDROP;
 
         public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
         {

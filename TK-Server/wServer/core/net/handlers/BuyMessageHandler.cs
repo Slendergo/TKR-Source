@@ -13,7 +13,7 @@ namespace wServer.core.net.handlers
 {
     public sealed class BuyMessageHandler : IMessageHandler
     {
-        public override PacketId MessageId => PacketId.BUY;
+        public override MessageId MessageId => MessageId.BUY;
 
         public override void Handle(Client client, NReader rdr, ref TickTime time)
         {

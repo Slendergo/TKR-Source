@@ -6,7 +6,7 @@ namespace wServer.networking.packets.outgoing
     {
         public int[] AccountIds { get; set; }
 
-        public override PacketId MessageId => PacketId.BOUNTYMEMBERLISTSEND;
+        public override MessageId MessageId => MessageId.BOUNTYMEMBERLISTSEND;
 
         protected override void Write(NWriter wtr)
         {

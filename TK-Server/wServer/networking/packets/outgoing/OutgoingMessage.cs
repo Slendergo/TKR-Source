@@ -12,7 +12,7 @@ namespace wServer.networking.packets.outgoing
 
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
-        public abstract PacketId MessageId { get; }
+        public abstract MessageId MessageId { get; }
 
         public void WriteNew(NWriter wtr) => Write(wtr);
 

@@ -7,7 +7,7 @@ namespace wServer.core.net.handlers
 {
     public class RequestTradeHandler : IMessageHandler
     {
-        public override PacketId MessageId => PacketId.REQUESTTRADE;
+        public override MessageId MessageId => MessageId.REQUESTTRADE;
 
         public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
         {

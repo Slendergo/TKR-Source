@@ -1,7 +1,7 @@
 ﻿using System;
 
 [Flags]
-public enum PacketId : byte
+public enum MessageId : byte
 {
     FAILURE = 0,
     CREATE_SUCCESS = 1,
@@ -119,5 +119,8 @@ public enum PacketId : byte
     PARTY_INVITE = 89,
     INVITED_TO_PARTY = 90,
     JOIN_PARTY = 91,
-    POTION_STORAGE_INTERACTION = 92
+    POTION_STORAGE_INTERACTION = 92,
+
+    TALISMAN_ESSENCE_DATA = 100,
+    TALISMAN_ESSENCE_ACTION = 101
 }

@@ -7,7 +7,7 @@ namespace wServer.networking.packets.outgoing
         public int Code { get; set; }
         public string Description { get; set; }
 
-        public override PacketId MessageId => PacketId.TRADEDONE;
+        public override MessageId MessageId => MessageId.TRADEDONE;
 
         protected override void Write(NWriter wtr)
         {

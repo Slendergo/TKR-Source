@@ -27,6 +27,7 @@ namespace common.resources
         public readonly int TotalDamage;
         public readonly bool UseWisMod;
         public readonly int VisualEffect;
+        public readonly byte Type;
 
         public string Center;
         public string DungeonName;
@@ -95,6 +96,9 @@ namespace common.resources
 
             if (e.Attribute("throwTime") != null)
                 ThrowTime = (int)(float.Parse(e.Attribute("throwTime").Value) * 1000);
+
+            if (e.HasAttribute("type"))
+                Type = (byte)e.GetAttribute<int>("type");
         }
     }
 }

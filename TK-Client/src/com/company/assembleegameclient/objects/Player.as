@@ -43,9 +43,12 @@ import kabam.rotmg.constants.ActivationType;
 import kabam.rotmg.constants.GeneralConstants;
 import kabam.rotmg.constants.UseType;
 import kabam.rotmg.core.StaticInjectorContext;
+import kabam.rotmg.essences.TalismanModel;
+import kabam.rotmg.essences.TalismanProperties;
 import kabam.rotmg.game.model.AddTextLineVO;
 import kabam.rotmg.game.model.PotionInventoryModel;
 import kabam.rotmg.game.signals.AddTextLineSignal;
+import kabam.rotmg.messaging.impl.data.TalismanData;
 import kabam.rotmg.stage3D.GraphicsFillExtra;
 import kabam.rotmg.ui.model.TabStripModel;
 
@@ -110,7 +113,9 @@ public class Player extends Character {
         this.maxHPMax_ = int(objectXML.MaxHitPoints.@max);
         this.maxMPMax_ = int(objectXML.MaxMagicPoints.@max);
         texturingCache_ = new Dictionary();
+        talismans_ = new Dictionary();
     }
+
     public var skinId:int;
     public var skin:AnimatedChar;
     public var accountId_:int = -1;
@@ -236,7 +241,21 @@ public class Player extends Character {
     public var node5Med:int = 0;
     public var node5Big:int = 0;
     public var SPS_Modal:PotionStorageModal;
-    //public var SkillTree_Modal:NewSkillTreeModal;
+    private var talismans_:Dictionary;
+    public var essence_:int = 0;
+    public var essenceCap_:int = 0;
+
+    public function addTalisman(talismanData:TalismanData):void {
+        this.talismans_[talismanData.type_] = new TalismanModel(talismanData);
+    }
+
+    public function getTalismans():Vector.<TalismanModel>{
+        var talismans:Vector.<TalismanModel> = new Vector.<TalismanModel>();
+        for each(var talisman:TalismanModel in this.talismans_){
+            talismans.push(talisman);
+        }
+        return talismans;
+    }
 
     override public function moveTo(x:Number, y:Number):Boolean {
         var ret:Boolean = super.moveTo(x, y);

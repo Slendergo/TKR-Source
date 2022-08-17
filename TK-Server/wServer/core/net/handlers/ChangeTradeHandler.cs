@@ -13,7 +13,7 @@ namespace wServer.core.net.handlers
     {
         private static readonly Logger CheatLog = LogManager.GetLogger("CheatLog");
 
-        public override PacketId MessageId => PacketId.CHANGETRADE;
+        public override MessageId MessageId => MessageId.CHANGETRADE;
 
         public override void Handle(Client client, NReader rdr, ref TickTime time)
         {

@@ -4,7 +4,7 @@ namespace wServer.networking.packets.outgoing.market
 {
     public class MarketSearchResult : OutgoingMessage
     {
-        public override PacketId MessageId => PacketId.MARKET_SEARCH_RESULT;
+        public override MessageId MessageId => MessageId.MARKET_SEARCH_RESULT;
 
         public MarketData[] Results;
         public string Description;

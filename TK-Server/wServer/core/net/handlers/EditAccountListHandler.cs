@@ -12,7 +12,7 @@ namespace wServer.core.net.handlers
         private const int LockAction = 0;
         private const int IgnoreAction = 1;
 
-        public override PacketId MessageId => PacketId.EDITACCOUNTLIST;
+        public override MessageId MessageId => MessageId.EDITACCOUNTLIST;
 
         public override void Handle(Client client, NReader rdr, ref TickTime time)
         {

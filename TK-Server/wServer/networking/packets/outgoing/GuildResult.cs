@@ -7,7 +7,7 @@ namespace wServer.networking.packets.outgoing
         public bool Success { get; set; }
         public string ErrorText { get; set; }
 
-        public override PacketId MessageId => PacketId.GUILDRESULT;
+        public override MessageId MessageId => MessageId.GUILDRESULT;
 
         protected override void Write(NWriter wtr)
         {

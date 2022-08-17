@@ -7,7 +7,7 @@ namespace wServer.networking.packets.outgoing
         public string Name;
         public string GuildName;
 
-        public override PacketId MessageId => PacketId.INVITEDTOGUILD;
+        public override MessageId MessageId => MessageId.INVITEDTOGUILD;
 
         protected override void Write(NWriter wtr)
         {

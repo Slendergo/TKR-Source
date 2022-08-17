@@ -11,7 +11,7 @@ namespace wServer.networking.packets.outgoing
         public float Angle { get; set; }
         public short Damage { get; set; }
 
-        public override PacketId MessageId => PacketId.SERVERPLAYERSHOOT;
+        public override MessageId MessageId => MessageId.SERVERPLAYERSHOOT;
 
         protected override void Write(NWriter wtr)
         {

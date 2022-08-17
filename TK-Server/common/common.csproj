@@ -141,10 +141,12 @@
   <ItemGroup>
     <Compile Include="database\DbSpecialVault.cs" />
     <Compile Include="database\GuildCreateStatus.cs" />
+    <Compile Include="database\DbTalismanEntry.cs" />
     <Compile Include="database\info\AccountInfo.cs" />
     <Compile Include="database\info\CharacterInfo.cs" />
     <Compile Include="database\info\DeathInfo.cs" />
     <Compile Include="database\ItemData.cs" />
+    <Compile Include="database\DbTalisman.cs" />
     <Compile Include="database\status\AccountRegisterStatus.cs" />
     <Compile Include="database\status\AddGuildMemberStatus.cs" />
     <Compile Include="database\status\CreateCharacterStatus.cs" />
@@ -241,6 +243,7 @@
     <Compile Include="database\RedisObject.cs" />
     <Compile Include="RankingType.cs" />
     <Compile Include="RegisterStatus.cs" />
+    <Compile Include="resources\TalismanDesc.cs" />
     <Compile Include="resources\ActivateEffect.cs" />
     <Compile Include="resources\ActivateEffects.cs" />
     <Compile Include="resources\AppSettings.cs" />
@@ -1048,6 +1051,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\xml\TK_Unknown.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\TK_Talismans.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\xml\walls\TK_Walls_CaveWall.xml">

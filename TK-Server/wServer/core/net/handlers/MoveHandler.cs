@@ -6,7 +6,7 @@ namespace wServer.core.net.handlers
 {
     public class MoveHandler : IMessageHandler
     {
-        public override PacketId MessageId => PacketId.MOVE;
+        public override MessageId MessageId => MessageId.MOVE;
 
         public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
         {

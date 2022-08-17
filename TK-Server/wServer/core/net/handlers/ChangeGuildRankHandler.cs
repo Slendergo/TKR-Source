@@ -17,7 +17,7 @@ namespace wServer.core.net.handlers
 {
     public sealed class ChangeGuildRankHandler : IMessageHandler
     {
-        public override PacketId MessageId => PacketId.CHANGEGUILDRANK;
+        public override MessageId MessageId => MessageId.CHANGEGUILDRANK;
 
         public override void Handle(Client client, NReader rdr, ref TickTime time)
         {

@@ -9,7 +9,7 @@ namespace wServer.networking.packets.outgoing
         public int TickTime { get; set; }
         public List<ObjectStats> Statuses { get; set; }
 
-        public override PacketId MessageId => PacketId.NEWTICK;
+        public override MessageId MessageId => MessageId.NEWTICK;
 
         public NewTick()
         {

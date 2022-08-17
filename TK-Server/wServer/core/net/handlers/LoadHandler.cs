@@ -8,7 +8,7 @@ namespace wServer.core.net.handlers
 {
     public class LoadHandler : IMessageHandler
     {
-        public override PacketId MessageId => PacketId.LOAD;
+        public override MessageId MessageId => MessageId.LOAD;
 
         public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
         {

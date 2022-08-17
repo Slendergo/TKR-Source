@@ -9,7 +9,7 @@ namespace wServer.networking.packets.outgoing
         public ushort ContainerType { get; set; }
         public float Angle { get; set; }
 
-        public override PacketId MessageId => PacketId.ALLYSHOOT;
+        public override MessageId MessageId => MessageId.ALLYSHOOT;
 
         protected override void Write(NWriter wtr)
         {

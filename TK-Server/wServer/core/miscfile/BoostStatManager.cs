@@ -1,4 +1,5 @@
-﻿using System;
+﻿using common.resources;
+using System;
 using System.Linq;
 using wServer.core.objects;
 using wServer.utils;
@@ -112,6 +113,7 @@ namespace wServer.core
             CheckItemsNoStack();
             IncrementStatBoost();
             IncrementSkillBoosts();
+            ApplyTalismanBonus();
 
             for (var i = 0; i < _boost.Length; i++)
                 _boostSV[i].SetValue(_boost[i]);
@@ -136,6 +138,60 @@ namespace wServer.core
 
                 foreach (var b in _player.Inventory[i].StatsBoost)
                     IncrementBoost((StatDataType)b.Key, b.Value);
+            }
+        }
+
+        private void ApplyTalismanBonus()
+        {
+            foreach(var type in _player.ActiveTalismans)
+            {
+                var talisman = _player.GetTalisman(type);
+                if (talisman == null)
+                    throw new Exception($"Unknown talisman type: {type}");
+
+                var desc = _player.GameServer.Resources.GameData.GetTalisman(type);
+                if(desc == null)
+                    throw new Exception($"Unknown talisman desc type: {type}");
+
+                var tierDesc = desc.GetTierDesc(talisman.Tier);
+                if(tierDesc == null)
+                    throw new Exception($"Unknown talisman tier: {talisman.Tier}");
+
+                foreach (var stat in tierDesc.StatTypes)
+                {
+                    // scale by level or by flat value
+                    var scale = stat.ScalesPerLevel ? stat.Amount * talisman.Level : stat.Amount;
+                    IncrementBoost((StatDataType)stat.StatType, scale);
+                }
+
+                foreach (var loot in tierDesc.LootBoosts)
+                {
+                    // scale by level or by flat value
+                    var scale = loot.ScalesPerLevel ? loot.Amount * talisman.Level : loot.Amount;
+                    _player.TalismanLootBoost += scale;
+                }
+
+                foreach (var cond in tierDesc.ImmuneTo)
+                {
+                    switch (cond)
+                    {
+                        case ConditionEffectIndex.Unstable:
+                            _player.ApplyConditionEffect(ConditionEffectIndex.ArmorBreakImmune);
+                            break;
+                        case ConditionEffectIndex.Slowed:
+                            _player.ApplyConditionEffect(ConditionEffectIndex.SlowedImmune);
+                            break;
+                        case ConditionEffectIndex.Dazed:
+                            _player.ApplyConditionEffect(ConditionEffectIndex.DazedImmune);
+                            break;
+                        case ConditionEffectIndex.Stunned:
+                            _player.ApplyConditionEffect(ConditionEffectIndex.StunImmune);
+                            break;
+                        case ConditionEffectIndex.Paralyzed:
+                            _player.ApplyConditionEffect(ConditionEffectIndex.Paralyzed);
+                            break;
+                    }
+                }
             }
         }
 

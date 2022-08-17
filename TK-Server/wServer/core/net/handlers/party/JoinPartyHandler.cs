@@ -9,7 +9,7 @@ namespace wServer.core.net
 {
     internal class JoinPartyHandler : IMessageHandler
     {
-        public override PacketId MessageId => PacketId.JOIN_PARTY;
+        public override MessageId MessageId => MessageId.JOIN_PARTY;
 
         public override void Handle(Client client, NReader rdr, ref TickTime time)
         {

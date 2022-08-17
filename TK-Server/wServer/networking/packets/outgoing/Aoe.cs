@@ -13,7 +13,7 @@ namespace wServer.networking.packets.outgoing
         public ushort OrigType { get; set; }
         public ARGB Color { get; set; }
 
-        public override PacketId MessageId => PacketId.AOE;
+        public override MessageId MessageId => MessageId.AOE;
 
         protected override void Write(NWriter wtr)
         {

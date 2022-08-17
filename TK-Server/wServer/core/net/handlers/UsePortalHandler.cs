@@ -1,4 +1,5 @@
 ﻿using common;
+using System.Collections.Generic;
 using System.Linq;
 using wServer.core;
 using wServer.core.objects;
@@ -9,9 +10,14 @@ namespace wServer.core.net.handlers
 {
     public class UsePortalHandler : IMessageHandler
     {
-        private readonly int[] _realmPortals = new int[] { 0x0704, 0x070e, 0x071c, 0x703, 0x070d, 0x0d40 };
+        private const string TOMB_PORTAL_OF_COWARDICE = "Tomb Portal of Cowardice";
+        private const string PORTAL_OF_COWARDICE = "Portal of Cowardice";
+        private const string GLOWING_PORTAL_OF_COWARDICE = "Glowing Portal of Cowardice";
+        private const string RANDOM_REALM_PORTAL = "Random Realm Portal";
+        private const string REALM_PORTAL = "Realm Portal";
+        private const string GLOWING_REALM_PORTAL = "Glowing Realm Portal";
 
-        public override PacketId MessageId => PacketId.USEPORTAL;
+        public override MessageId MessageId => MessageId.USEPORTAL;
 
         public override void Handle(Client client, NReader rdr, ref TickTime time)
         {
@@ -72,19 +78,54 @@ namespace wServer.core.net.handlers
             }
 
             var world = portal.WorldInstance;
-            if (world == null && _realmPortals.Contains(portal.ObjectType))
+            if (world == null)
             {
-                var nextWorldInChain = player.World.ParentWorld;
-                if (nextWorldInChain == null)
+                switch (portal.ObjectDesc.ObjectId)
                 {
-                    System.Console.WriteLine("NULL");
-                    // random realm?
-                    return;
-                }
-                player.Reconnect(nextWorldInChain);
-                return;
-            }
+                    case TOMB_PORTAL_OF_COWARDICE:
+                    case PORTAL_OF_COWARDICE:
+                    case GLOWING_PORTAL_OF_COWARDICE:
+                        {
+                            var nextWorldInChain = player.World.ParentWorld;
+                            if (nextWorldInChain != null)
+                                player.Reconnect(nextWorldInChain);
+                        }
+                        break;
+                    case RANDOM_REALM_PORTAL:
+                        {
+                            world = player.GameServer.WorldManager.GetRandomRealm();
+                            if (world == null)
+                                world = player.GameServer.WorldManager.Nexus;
+                            player.Reconnect(world);
+                        }
+                        break;
+                    case REALM_PORTAL:
+                    case GLOWING_REALM_PORTAL:
+                        {
+                            while(world == null)
+                            {
+                                while(player.World.ParentWorld != null)
+                                {
 
+                                }
+
+                                if (player.World.ParentWorld == null)
+                                {
+                                    // tood random realm
+                                    world = player.GameServer.WorldManager.GetRandomRealm();
+                                }
+                            }
+
+                            if (world != null)
+                                player.Reconnect(world);
+                        }
+                        break;
+                }
+
+                if (world != null)
+                    return;
+            }
+            
             if (world != null)
             {
                 if (world.IsPlayersMax())

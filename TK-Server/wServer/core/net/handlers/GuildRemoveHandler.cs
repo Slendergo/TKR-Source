@@ -9,7 +9,7 @@ namespace wServer.core.net.handlers
 {
     internal class GuildRemoveHandler : IMessageHandler
     {
-        public override PacketId MessageId => PacketId.GUILDREMOVE;
+        public override MessageId MessageId => MessageId.GUILDREMOVE;
 
         public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
         {

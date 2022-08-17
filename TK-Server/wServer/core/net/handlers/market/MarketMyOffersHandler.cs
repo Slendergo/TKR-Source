@@ -7,7 +7,7 @@ namespace wServer.core.net.handlers.market
 {
     public class MarketMyOffersHandler : IMessageHandler
     {
-        public override PacketId MessageId => PacketId.MARKET_MY_OFFERS;
+        public override MessageId MessageId => MessageId.MARKET_MY_OFFERS;
 
         public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
         {

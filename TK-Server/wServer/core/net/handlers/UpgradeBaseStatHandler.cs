@@ -8,7 +8,7 @@ namespace wServer.core.net.handlers
 {
     internal class UpgradeBaseStatHandler : IMessageHandler
     {
-        public override PacketId MessageId => PacketId.UPGRADESTAT;
+        public override MessageId MessageId => MessageId.UPGRADESTAT;
 
         public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
         {

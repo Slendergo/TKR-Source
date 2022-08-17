@@ -7,7 +7,7 @@ namespace wServer.core.net.handlers
 {
     internal class ReskinHandler : IMessageHandler
     {
-        public override PacketId MessageId => PacketId.RESKIN;
+        public override MessageId MessageId => MessageId.RESKIN;
 
         public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
         {

@@ -128,7 +128,6 @@ public class PotionStorageContainer extends Sprite{
         this.sellButton.setLabel("Sell", DefaultLabelFormat.defaultModalTitle);
         this.sellButton.x = 4;
         this.sellButton.y = this.height - this.sellButton.height - 4;
-
         addChild(this.sellButton);
 
         this.maxButton = new SliceScalingButton(TextureParser.instance.getSliceScalingBitmap("UI", "generic_green_button"));

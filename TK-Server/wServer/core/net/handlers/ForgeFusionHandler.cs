@@ -14,7 +14,7 @@ namespace wServer.core.net.handlers
         private readonly ushort[] _WaterWeaponsList = { 0x5010 };
         private readonly ushort[] _WindWeaponsList = { 0x5011, 0x500e };
 
-        public override PacketId MessageId => PacketId.FORGEFUSION;
+        public override MessageId MessageId => MessageId.FORGEFUSION;
 
         public override void Handle(Client client, NReader rdr, ref TickTime time)
         {

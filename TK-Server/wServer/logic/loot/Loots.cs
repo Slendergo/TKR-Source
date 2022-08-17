@@ -109,10 +109,8 @@ namespace wServer.logic.loot
             };
             DropRates.LG_TALISMAN_NAMES = new[]
             {
-                "Gem of Life",
                 "Severed Marble Hand",
-                "Talisman of Luck",
-                "Talisman of Mana"
+                "Talisman of Luck"
             };
             DropRates.MT_TALISMAN_NAMES = new[]
             {
@@ -188,34 +186,13 @@ namespace wServer.logic.loot
             return bagType;
         }
 
-        public static bool CheckTalismanOfLuck(Player player, string item)
-        {
-            var talismanofLuck = player.Inventory.Where(i => i != null && i.ObjectId == item).FirstOrDefault();
-            return talismanofLuck != default;
-        }
-
-        public static double CheckTalismans(Player player)
-        {
-            var talismans = player.Inventory.Count(i => i != null && i.ObjectId == "Talisman of Looting");
-            return talismans == 1 ? (talismans * 0.02f) : (talismans * 0.02f) - (talismans * 0.005f);
-        }
-
         public static double GetPlayerLootBoost(Player player)
         {
             if (player == null) 
                 return 0;
-
-            var core = player.GameServer;
-
-            var db = core.Database;
-            //var account = db.GetAccount(player.AccountId);
-            //var guild = db.GetGuild(account.GuildId);
-
             var allLoot = 0.0;
             allLoot += player.LDBoostTime > 0 ? 0.1 : 0;
-            allLoot += ((player.Node5TickMaj * 0.05) + (player.Node5TickMin * 0.025) + (player.Node5Med * 0.075) + (player.Node5Big > 1 ? 0.2 : player.Node5Big > 0 ? 0.1 : 0));
-            allLoot += CheckTalismans(player);
-            allLoot += CheckTalismanOfLuck(player, "Talisman of Luck") ? 0.2 : 0; //20%
+            allLoot += player.TalismanLootBoost;
             return allLoot;
         }
 

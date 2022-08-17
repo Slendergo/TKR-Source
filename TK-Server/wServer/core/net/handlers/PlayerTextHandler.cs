@@ -20,7 +20,7 @@ namespace wServer.core.net.handlers
 
     public class PlayerTextHandler : IMessageHandler
     {
-        public override PacketId MessageId => PacketId.PLAYERTEXT;
+        public override MessageId MessageId => MessageId.PLAYERTEXT;
 
         public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
         {

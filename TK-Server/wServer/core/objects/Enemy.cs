@@ -189,15 +189,23 @@ namespace wServer.core.objects
                 if (projectile.ProjDesc.ArmorPiercing)
                     def = 0;
 
+
                 var dmg = (int)StatsManager.GetDefenseDamage(this, projectile.Damage, def);
 
                 if (!HasConditionEffect(ConditionEffects.Invulnerable))
                     HP -= dmg;
 
+                var chance = 0.03;
+                chance -= (player.Inventory[0].NumProjectiles / 2) / 100;
+                chance = projectile.ProjDesc.MultiHit ? chance / 1.5 : chance;
+                
+
+                VampireBlast(player, chance, 2, 300, 100, time, this); // (player, chance, radius, damage, heal, time, entity)
+
                 for (var i = 0; i < 4; i++)
                 {
-                    
                     var item = Inventory[i];
+
                     if (item == null || !item.Legendary && !item.Revenge && !item.Mythical && !item.Eternal)
                         continue;
 
@@ -206,7 +214,6 @@ namespace wServer.core.objects
 
                     if (item.Electrify)
                         Electrify(player, i, time, this);
-
                 }
 
                 ApplyConditionEffect(projectile.ProjDesc.Effects);
@@ -301,6 +308,92 @@ namespace wServer.core.objects
                     Color = new ARGB(0xFFFF0000)
                 }, player);
             }
+        }
+
+        private void VampireBlast(Player player, double chance, int size, int dam, int heal, TickTime time, Entity firstHit)
+        {
+            if (player == null || player.World == null || player.Client == null)
+                return;
+            if (_random.NextDouble() < chance)
+            {
+                Position procPos = new Position() { X = firstHit.X, Y = firstHit.Y };
+                Position playerPos = new Position() { X = player.X, Y = player.Y };
+                var pkts = new List<OutgoingMessage>()
+                {
+                    new ShowEffect()
+                    {
+                        EffectType = EffectType.Trail,
+                        TargetObjectId = firstHit.Id,
+                        Pos1 = playerPos,
+                        Color = new ARGB(0xFFFF0000)
+                    },
+                    new ShowEffect
+                    {
+                        EffectType = EffectType.Diffuse,
+                        Color = new ARGB(0xFFFF0000),
+                        TargetObjectId = Id,
+                        Pos1 = procPos,
+                        Pos2 = new Position { X = firstHit.X + size, Y = firstHit.Y }
+                    }
+                };
+
+                World.BroadcastIfVisible(pkts[0], ref procPos);
+                World.BroadcastIfVisible(pkts[1], ref procPos);
+
+                var totalDmg = dam;
+                var enemies = new List<Enemy>();
+
+                World.AOE(procPos, size, false, enemy =>
+                {
+                    enemies.Add(enemy as Enemy);
+                    totalDmg += (enemy as Enemy).Damage(player, time, (int)totalDmg, false);
+                });
+
+                if (!player.HasConditionEffect(ConditionEffects.Sick))
+                    ActivateHealHp(player, heal);
+
+                if (player.HP < player.MaximumHP && enemies.Count > 0)
+                {
+                    var rand = new Random();
+                    for (var i = 0; i < 5; i++)
+                    {
+                        var a = enemies[rand.Next(0, enemies.Count)];
+
+                        World.BroadcastIfVisible(new ShowEffect()
+                        {
+                            EffectType = EffectType.Flow,
+                            TargetObjectId = player.Id,
+                            Pos1 = new Position() { X = a.X, Y = a.Y },
+                            Color = new ARGB(0xffffffff)
+                        }, ref playerPos);
+                    }
+                }
+            }
+        }
+        private static void ActivateHealHp(Player player, int amount)
+        {
+            if (amount <= 0)
+                return;
+
+            var maxHp = player.Stats[0];
+            var newHp = Math.Min(maxHp, player.HP + amount);
+            if (newHp == player.HP)
+                return;
+
+            player.World.BroadcastIfVisible(new ShowEffect()
+            {
+                EffectType = EffectType.Potion,
+                TargetObjectId = player.Id,
+                Color = new ARGB(0xffffffff)
+            }, player);
+            player.World.BroadcastIfVisible(new Notification()
+            {
+                Color = new ARGB(0xff00ff00),
+                ObjectId = player.Id,
+                Message = "+" + (newHp - player.HP)
+            }, player);
+
+            player.HP = newHp;
         }
 
         private void Electrify(Player player, int slot, TickTime time, Entity firstHit)

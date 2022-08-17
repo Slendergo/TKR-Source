@@ -2002,7 +2002,7 @@ namespace wServer.logic
             new State(
                 new SetAltTexture(11),
                 new ConditionalEffect(ConditionEffectIndex.Invincible),
-                new DropPortalOnDeath("Realm Portal", 100),
+                new DropPortalOnDeath("Realm Portal", 1),
                 new State("Start",
                     new PlayerWithinTransition(4, "1")
                     ),
@@ -2492,7 +2492,7 @@ namespace wServer.logic
                 new State("1",
                     new Spawn("Zombie Rise", maxChildren: 1),
                     new Reproduce("Zombie Rise", 1, 1, coolDown: 100),
-                    new EntityNotExistsTransition("Ghost of Skuld", 100, "2")
+                    new EntityNotExistsTransition("Ghost of Skuld", 40, "2")
                     ),
                 new State("2",
                     new Suicide()
@@ -2565,7 +2565,7 @@ namespace wServer.logic
                 new Follow(0.5, 100, 1),
                 new State("1",
                     new Shoot(10, 1, projectileIndex: 0, coolDown: 500),
-                    new EntityNotExistsTransition("Ghost of Skuld", 100, "2")
+                    new EntityNotExistsTransition("Ghost of Skuld", 40, "2")
                     ),
                 new State("2",
                     new Suicide()
@@ -2578,7 +2578,7 @@ namespace wServer.logic
                 new Orbit(2, 5, 10, target: "Ghost of Skuld"),
                 new State("1",
                     new Shoot(100, 10, shootAngle: 36, projectileIndex: 0, coolDown: 500),
-                    new EntityNotExistsTransition("Ghost of Skuld", 100, "2")
+                    new EntityNotExistsTransition("Ghost of Skuld", 40, "2")
                     ),
                 new State("2",
                     new Suicide()

@@ -14,21 +14,14 @@ namespace wServer.logic
         private _ HardBounty = () => Behav()
         .Init("Cerebrus",
             new State(
+                new ScaleHP2(20),
                     new State("Pause",
                         new ConditionalEffect(ConditionEffectIndex.Invulnerable),
-                        new PlayerTextTransition("Start", "lets enter the gates to Hades' Castle", 10)
+                        new PlayerWithinTransition(10, "Start")
                         ),
                     new State("Start",
                         new ConditionalEffect(ConditionEffectIndex.Invulnerable),
-                        new Taunt("Who dares invade my master's kingdom?"),
-                        new ScaleHP2(20, range: 50),
-                        new TimedTransition(3000, "Flashing")
-                        ),
-                    new State("Flashing",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
-                     //   new ChangeSize(5, 850),
-                      //  new Flash(0xFF0000, 5.5, 2),
-                        new Taunt("Today this field will be your final resting place."),
+                        new Taunt("AROOOOOOOOOOOOO!"),
                         new TimedTransition(3000, "Fight")
                         ),
                     new State("Fight",
@@ -46,7 +39,7 @@ namespace wServer.logic
                     new State("howl",
                         new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                         new ReturnToSpawn(5),
-                        new Taunt("AROOOOOOOOOOOOO!"),
+                        
                      //   new Flash(0xffff00, 5, 1),
                        // new ChangeSize(3, 1000),
                         new TimedTransition(3000, "Swirl")

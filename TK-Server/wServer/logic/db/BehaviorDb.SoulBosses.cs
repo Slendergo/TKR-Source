@@ -210,8 +210,7 @@ namespace wServer.logic
                     new StayBack(0.7, 7),
                     new Shoot(15, 1, projectileIndex: 3, coolDown: 1250),
                     new Shoot(15, 2, shootAngle: 25, projectileIndex: 3, coolDownOffset: 500, coolDown: 1250),
-                    new Shoot(20, 3, shootAngle: 15, projectileIndex: 0, coolDown: 500),
-                    new TransformOnDeath("Soul of Mana Mob", 1, 1, 1)
+                    new Shoot(20, 3, shootAngle: 15, projectileIndex: 0, coolDown: 500)
                      )
                 ),
             new Threshold(0.01,

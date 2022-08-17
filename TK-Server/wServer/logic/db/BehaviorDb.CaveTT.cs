@@ -94,7 +94,7 @@ namespace wServer.logic
                 new ConditionalEffect(ConditionEffectIndex.Invincible, true),
                 new Shoot(20, 1, projectileIndex: 0, coolDown: 200),
                 new State("Move",
-                    new MoveLine(2, 90),
+                    new MoveLine(5, 90),
                     new GroundTransition("Tunnel Ground M", "Suicide")
                     ),
                 new State("Suicide",
@@ -430,7 +430,7 @@ namespace wServer.logic
         .Init("Treasure Oryx Defender",
             new State(
                 new Prioritize(
-                    new Orbit(speed: 0.5, radius: 3, acquireRange: 6, target: "Golden Oryx Effigy", speedVariance: 0, radiusVariance: 0)
+                    new Orbit(speed: 3, radius: 3, acquireRange: 6, target: "Golden Oryx Effigy", speedVariance: 0, radiusVariance: 0)
                     ),
                 new Shoot(radius: 0, count: 8, shootAngle: 45, defaultAngle: 0, coolDown: 3000)
                 )
@@ -440,7 +440,7 @@ namespace wServer.logic
                 new ConditionalEffect(ConditionEffectIndex.Invincible),
                 new EntityNotExistsTransition(target: "Golden Oryx Effigy", dist: 999, targetState: "Die"),
                 new Prioritize(
-                    new Orbit(speed: 0.5, radius: 7, acquireRange: 20, target: "Golden Oryx Effigy", speedVariance: 0, radiusVariance: 0)
+                    new Orbit(speed: 2.5, radius: 7, acquireRange: 20, target: "Golden Oryx Effigy", speedVariance: 0, radiusVariance: 0)
                     ),
                 new State("GreySpiral",
                     new Shoot(radius: 0, count: 2, shootAngle: 180, projectileIndex: 1, defaultAngle: 90, coolDown: 10000, coolDownOffset: 0),

@@ -36,8 +36,10 @@ namespace wServer.logic
                     //new Taunt("Check 1"),
                     new EntitiesNotExistsTransition(25, "Attack 2", "Yellow Son of Arachna Giant Egg Sac", "Blue Son of Arachna Giant Egg Sac", "Red Son of Arachna Giant Egg Sac", "Silver Son of Arachna Giant Egg Sac"),
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
-                    new Shoot(1, projectileIndex: 0, count: 8, coolDown: 2200, shootAngle: 45, fixedAngle: 0),
-                    new Shoot(10, projectileIndex: 1, coolDown: 3000),
+                    new Shoot(3, projectileIndex: 0, count: 8, shootAngle: 15, coolDown: 1200),
+                    new Shoot(16, projectileIndex: 1, coolDown: 2200),
+                    new TimedTransition(2200, "Follow")
+                    ),
                     new State("Follow",
                         //new Taunt("Check 2"),
                         new EntitiesNotExistsTransition(25, "Attack 2", "Yellow Son of Arachna Giant Egg Sac", "Blue Son of Arachna Giant Egg Sac", "Red Son of Arachna Giant Egg Sac", "Silver Son of Arachna Giant Egg Sac"),
@@ -54,11 +56,13 @@ namespace wServer.logic
                         new EntitiesNotExistsTransition(25, "Attack 2", "Yellow Son of Arachna Giant Egg Sac", "Blue Son of Arachna Giant Egg Sac", "Red Son of Arachna Giant Egg Sac", "Silver Son of Arachna Giant Egg Sac"),
                         new StayCloseToSpawn(.4, 1),
                         new TimedTransition(2500, "Follow")
-                        )),
+                        ),
                 // BUCLE VULNERABLE
                 new State("Attack 2",
                     new Shoot(1, projectileIndex: 0, count: 8, coolDown: 2200, shootAngle: 45, fixedAngle: 0),
                     new Shoot(10, projectileIndex: 1, coolDown: 3000),
+                    new TimedTransition(1500, "Follow 2")
+                    ),
                     new State("Follow 2",
                         new Prioritize(
                             new StayCloseToSpawn(1, 10),
@@ -71,8 +75,8 @@ namespace wServer.logic
                     new State("Return 2",
                         new StayCloseToSpawn(.4, 1),
                         new ReturnToSpawn(.4),
-                        new TimedTransition(2500, "Follow 2")
-                        ))
+                        new TimedTransition(2500, "Follow 2")             
+                        )
                 ),
             new Threshold(0.01,
                 LootTemplates.DustLoot()

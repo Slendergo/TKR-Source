@@ -277,6 +277,7 @@ namespace wServer.logic
             )
         .Init("Marble Colossus",
             new State(
+                new ConditionalEffect(ConditionEffectIndex.SlowedImmune, true),
                 new ScaleHP2(40),
                 new State("Waiting",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),

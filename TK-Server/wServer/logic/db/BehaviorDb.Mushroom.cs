@@ -10,6 +10,7 @@ namespace wServer.logic
         private _ Mushroom = () => Behav()
         .Init("Mushroom",
             new State(
+                new ConditionalEffect(ConditionEffectIndex.StasisImmune, true),
                 new ScaleHP2(20),
                 new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                 new Spawn("Mushroom Anchor", 1, 1),

@@ -155,7 +155,8 @@ namespace wServer.logic
                 new ItemLoot("Magic Dust", 0.5)
                 ),
             new Threshold(0.03,
-                new ItemLoot("Helm of the Juggernaut", 0.0014, threshold: 0.03)
+                new ItemLoot("Helm of the Juggernaut", 0.0014, threshold: 0.03),
+                new ItemLoot("Talisman of Mana", 0.0006, 0, threshold: 0.05)
                 )
             )
         .Init("Hermit portal maker",

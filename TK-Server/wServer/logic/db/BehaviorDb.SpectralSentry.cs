@@ -12,6 +12,7 @@ namespace wServer.logic
             new State(             
                 new DropPortalOnDeath("Lost Halls Portal", 1, 120),
                 new ScaleHP2(20),
+                new StayCloseToSpawn(1, 9),
                 new ConditionalEffect(ConditionEffectIndex.DazedImmune),
                 new ConditionalEffect(ConditionEffectIndex.StasisImmune),
                 new ConditionalEffect(ConditionEffectIndex.ParalyzeImmune),

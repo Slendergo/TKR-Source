@@ -40,9 +40,6 @@ namespace wServer.core
         {
             CreateNewWorld("Nexus", -2, null);
             CreateNewTest();
-
-            for(var i = 0; i < GameServer.Configuration.serverSettings.realms; i++)
-                Nexus.PortalMonitor.CreateNewRealm();
         }
 
         public Task<RealmWorld> CreateNewRealmAsync()

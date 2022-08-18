@@ -11,6 +11,9 @@ namespace wServer.core.worlds.logic
         {
         }
 
+        public int CurrentRealmCount = 0;
+        public int Max = 0;
+
         public override void Init()
         {
             PortalMonitor = new KingdomPortalMonitor(GameServer, this);
@@ -27,6 +30,17 @@ namespace wServer.core.worlds.logic
 
         protected override void UpdateLogic(ref TickTime time)
         {
+            var count = (GameServer.ConnectionManager.PlayerCount() + 15) / GameServer.ConnectionManager.MaxPlayerCount;
+            if (count != 0 && CurrentRealmCount != Max)
+            {
+                while (count != 0)
+                {
+                    count--;
+                    CurrentRealmCount++;
+                    PortalMonitor.CreateNewRealm();
+                }
+            }
+
             PortalMonitor.Update(ref time);
             base.UpdateLogic(ref time);
         }

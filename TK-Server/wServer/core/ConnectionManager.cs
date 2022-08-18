@@ -27,7 +27,7 @@ namespace wServer.core
         private ConcurrentDictionary<int, ReconnectInfo> ReconnectInfo { get; } = new ConcurrentDictionary<int, ReconnectInfo>();
 
         private long LastTickTime { get; set; }
-        private int MaxPlayerCount { get; set; }
+        public int MaxPlayerCount { get; set; }
 
         public ConnectionManager(GameServer gameServer)
         {
@@ -59,7 +59,7 @@ namespace wServer.core
                 return;
             }
 
-            connectionInfo.Client.SendFailure("Server at max capacity.");
+            connectionInfo.Client.SendFailure("Server is at max capacity.");
         }
 
         public void AddReconnect(int accountId, Reconnect rcp)

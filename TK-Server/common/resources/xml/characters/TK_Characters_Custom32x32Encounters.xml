@@ -24,7 +24,9 @@
 			<ObjectId>Morto Green</ObjectId>
 			<Damage>100</Damage>
 			<Size>150</Size>
-			<Speed>80</Speed>
+			<Speed>90</Speed>
+			<ArmorPierce />
+			<ConditionEffect duration="3">Bleeding</ConditionEffect>
 			<LifetimeMS>4000</LifetimeMS>
 		</Projectile>
 		<Projectile id="1">
@@ -40,7 +42,7 @@
 			<Damage>70</Damage>
 			<Size>150</Size>
 			<Speed>100</Speed>
-			<LifetimeMS>600</LifetimeMS>
+			<LifetimeMS>4000</LifetimeMS>
 		</Projectile>
 		<Projectile id="3">
 			<ObjectId>Morto Square</ObjectId>
@@ -109,13 +111,23 @@
 			<Damage>90</Damage>
 			<Size>150</Size>
 			<Speed>120</Speed>
-			<LifetimeMS>2000</LifetimeMS>
+			<Boomerrang />
+			<LifetimeMS>3000</LifetimeMS>
 		</Projectile>
 		<Projectile id="11">
 			<ObjectId>Morto Dark Green</ObjectId>
 			<Damage>400</Damage>
 			<Size>150</Size>
 			<Speed>80</Speed>
+			<LifetimeMS>4000</LifetimeMS>
+			<MultiHit />
+			<ArmorPiercing />
+		</Projectile>
+		<Projectile id="12">
+			<ObjectId>Morto Bent</ObjectId>
+			<Damage>250</Damage>
+			<Size>150</Size>
+			<Speed>65</Speed>
 			<LifetimeMS>4000</LifetimeMS>
 			<MultiHit />
 			<ArmorPiercing />

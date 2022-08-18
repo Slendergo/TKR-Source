@@ -35,12 +35,12 @@ public class TierUtil
                 tierTag = "T" + xml.Tier;
             }
             else if(xml.hasOwnProperty("Rare")){
-                color = 0xb9f4ff;
+                color = 0x7E00E8;
                 tierTag = "UT";
             }
             else if(xml.hasOwnProperty("@setType"))
             {
-                color = 0xb9f4ff;
+                color = 0x7E00E8;
                 tierTag = "UT";
             }
             else if(xml.hasOwnProperty("SetTier"))
@@ -50,17 +50,17 @@ public class TierUtil
             }
             else if (xml.hasOwnProperty("SNormal"))
             {
-                color = 0xb9f4ff;
+                color = 0x7E00E8;
                 tierTag = "UT";
             }
             else if (xml.hasOwnProperty("SPlus"))
             {
-                color = 0xb9f4ff;
+                color = 0x7E00E8;
                 tierTag = "UT";
             }
             else if (xml.hasOwnProperty("Legendary"))
             {
-                color = 0xFFBA03;
+                color = 0xFFCD00;
                 tierTag = "LG";
             }
             else if (xml.hasOwnProperty("Revenge") || xml.hasOwnProperty("Mythical"))

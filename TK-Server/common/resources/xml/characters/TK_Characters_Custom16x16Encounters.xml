@@ -1,4 +1,96 @@
 <Objects>
+	<Object type="0x27d" id="Mortomus Ball">
+		<DisplayId>Mortomus Ball</DisplayId>
+		<Class>Character</Class>
+		<Enemy />
+		<AnimatedTexture>
+			<File>Custom16x16Encounters</File>
+			<Index>3</Index>
+		</AnimatedTexture>
+		<Size>120</Size>
+		<MaxHitPoints>11000</MaxHitPoints>
+		<Defense>25</Defense>
+		<StasisImmune/>
+		<ParalyzeImmune/>
+		<Projectile id="0">
+			<ObjectId>Morto Bent</ObjectId>
+			<Damage>0</Damage>
+			<Speed>50</Speed>
+			<Size>50</Size>
+			<MultiHit/>
+			<ConditionEffect duration="3">Confused</ConditionEffect>
+			<LifetimeMS>100</LifetimeMS>
+		</Projectile>
+	</Object>
+	<Object type="0x28a" id="Mortomus Ball 1">
+		<DisplayId>Mortomus Ball</DisplayId>
+		<Class>Character</Class>
+		<Enemy />
+		<AnimatedTexture>
+			<File>Custom16x16Encounters</File>
+			<Index>3</Index>
+		</AnimatedTexture>
+		<Size>120</Size>
+		<MaxHitPoints>11000</MaxHitPoints>
+		<Defense>25</Defense>
+		<StasisImmune/>
+		<ParalyzeImmune/>
+		<Projectile id="0">
+			<ObjectId>Morto Bent</ObjectId>
+			<Damage>0</Damage>
+			<Speed>50</Speed>
+			<Size>50</Size>
+			<MultiHit/>
+			<ConditionEffect duration="3">Confused</ConditionEffect>
+			<LifetimeMS>100</LifetimeMS>
+		</Projectile>
+	</Object>
+	<Object type="0x27e" id="Mortomus Ball 2">
+		<DisplayId>Mortomus Ball</DisplayId>
+		<Class>Character</Class>
+		<Enemy />
+		<AnimatedTexture>
+			<File>Custom16x16Encounters</File>
+			<Index>3</Index>
+		</AnimatedTexture>
+		<Size>120</Size>
+		<MaxHitPoints>11000</MaxHitPoints>
+		<Defense>25</Defense>
+		<StasisImmune/>
+		<ParalyzeImmune/>
+		<Projectile id="0">
+			<ObjectId>Morto Bent</ObjectId>
+			<Damage>0</Damage>
+			<Speed>50</Speed>
+			<Size>50</Size>
+			<MultiHit/>
+			<ConditionEffect duration="3">Confused</ConditionEffect>
+			<LifetimeMS>100</LifetimeMS>
+		</Projectile>
+	</Object>
+	<Object type="0x27f" id="Mortomus Ball 3">
+		<DisplayId>Mortomus Ball</DisplayId>
+		<Class>Character</Class>
+		<Enemy />
+		<AnimatedTexture>
+			<File>Custom16x16Encounters</File>
+			<Index>3</Index>
+		</AnimatedTexture>
+		<Size>120</Size>
+		<MaxHitPoints>11000</MaxHitPoints>
+		<Defense>25</Defense>
+		<StasisImmune/>
+		<ParalyzeImmune/>
+		<Projectile id="0">
+			<ObjectId>Morto Bent</ObjectId>
+			<Damage>0</Damage>
+			<Speed>50</Speed>
+			<Size>50</Size>
+			<MultiHit/>
+			<ConditionEffect duration="3">Confused</ConditionEffect>
+			<LifetimeMS>100</LifetimeMS>
+		</Projectile>
+	</Object>
 	<Object type="0x14B" id="Undead Blood Bat">
 		<DisplayId>Undead Blood Bat</DisplayId>
 		<Class>Character</Class>
@@ -13,10 +105,29 @@
 		<StasisImmune/>
 		<Projectile id="0">
 			<ObjectId>Fire Shot</ObjectId>
-			<Damage>60</Damage>
-			<Speed>90</Speed>
+			<Damage>110</Damage>
+			<Speed>50</Speed>
 			<Size>90</Size>
 			<MultiHit/>
+			<ConditionEffect duration="2">Slowed</ConditionEffect>
+			<LifetimeMS>800</LifetimeMS>
+		</Projectile>
+		<Projectile id="1">
+			<ObjectId>Undead Bat Shot</ObjectId>
+			<Damage>130</Damage>
+			<Speed>40</Speed>
+			<Size>90</Size>
+			<MultiHit/>
+			<ConditionEffect duration="2">Slowed</ConditionEffect>
+			<LifetimeMS>800</LifetimeMS>
+		</Projectile>
+		<Projectile id="2">
+			<ObjectId>Undead Bat Shot</ObjectId>
+			<Damage>150</Damage>
+			<Speed>30</Speed>
+			<Size>90</Size>
+			<MultiHit/>
+			<ConditionEffect duration="2">Slowed</ConditionEffect>
 			<LifetimeMS>800</LifetimeMS>
 		</Projectile>
 	</Object>
@@ -92,7 +203,7 @@
 		<Enemy />
 		<AnimatedTexture>
 			<File>Custom16x16Encounters</File>
-			<Index>38</Index>
+			<Index>37</Index>
 		</AnimatedTexture>
 		<Size>120</Size>
 		<MaxHitPoints>12000</MaxHitPoints>
@@ -105,19 +216,16 @@
 			<Speed>80</Speed>
 			<Size>90</Size>
 			<ArmorPiercing/>
-			<Amplitude>2</Amplitude>
-			<Frequency>.2</Frequency>
-			<ArcGap>10</ArcGap>
-			<LifetimeMS>555</LifetimeMS>
+			<LifetimeMS>1000</LifetimeMS>
 		</Projectile>
 	</Object>
-	<!--<Object type="0x280" id="Haunted Knight">
+	<Object type="0x280" id="Haunted Knight">
 		<DisplayId>Haunted Golem</DisplayId>
 		<Class>Character</Class>
 		<Enemy />
 		<AnimatedTexture>
 			<File>Custom16x16Encounters</File>
-			<Index>38</Index>
+			<Index>37</Index>
 		</AnimatedTexture>
 		<Size>120</Size>
 		<MaxHitPoints>12000</MaxHitPoints>
@@ -129,20 +237,16 @@
 			<Damage>40</Damage>
 			<Speed>80</Speed>
 			<Size>90</Size>
-			<ArmorPiercing/>
-			<Amplitude>2</Amplitude>
-			<Frequency>.2</Frequency>
-			<ArcGap>10</ArcGap>
-			<LifetimeMS>555</LifetimeMS>
+			<LifetimeMS>1000</LifetimeMS>
 		</Projectile>
-	</Object>-->
-	<!--<Object type="0x281" id="Haunted Guard">
+	</Object>
+	<Object type="0x281" id="Haunted Guard">
 		<DisplayId>Haunted Golem</DisplayId>
 		<Class>Character</Class>
 		<Enemy />
 		<AnimatedTexture>
 			<File>Custom16x16Encounters</File>
-			<Index>38</Index>
+			<Index>37</Index>
 		</AnimatedTexture>
 		<Size>120</Size>
 		<MaxHitPoints>12000</MaxHitPoints>
@@ -154,13 +258,9 @@
 			<Damage>40</Damage>
 			<Speed>80</Speed>
 			<Size>90</Size>
-			<ArmorPiercing/>
-			<Amplitude>2</Amplitude>
-			<Frequency>.2</Frequency>
-			<ArcGap>10</ArcGap>
-			<LifetimeMS>555</LifetimeMS>
+			<LifetimeMS>1000</LifetimeMS>
 		</Projectile>
-	</Object>-->
+	</Object>
 	<Object type="0x14D" id="Crawling Devourer">
 		<DisplayId>Crawling Devourer</DisplayId>
 		<Class>Character</Class>
@@ -175,14 +275,14 @@
 		<StasisImmune/>
 		<ParalyzeImmune/>
 		<Projectile id="0">
-			<ObjectId>Crawling Devourer Shoot</ObjectId>
-			<Damage>90</Damage>
-			<Speed>110</Speed>
+			<ObjectId>Devourer Shot</ObjectId>
+			<Damage>220</Damage>
+			<Speed>70</Speed>
 			<Size>90</Size>
 			<MultiHit/>
 			<ArmorPierce/>
 			<Wavy/>
-			<LifetimeMS>545</LifetimeMS>
+			<LifetimeMS>3000</LifetimeMS>
 		</Projectile>
 	</Object>
 	<Object type="0x14E" id="Cursed Mermaid">
@@ -200,13 +300,13 @@
 		<StunImmune/>
 		<SlowImmune/>
 		<Projectile id="0">
-			<ObjectId>Orange HC Shot</ObjectId>
+			<ObjectId>Cursed Mermaid Shot</ObjectId>
 			<Damage>50</Damage>
 			<Speed>110</Speed>
 			<Size>90</Size>
 			<MultiHit/>
 			<Wavy/>
-			<LifetimeMS>545</LifetimeMS>
+			<LifetimeMS>2000</LifetimeMS>
 		</Projectile>
 	</Object>
 	<Object type="0x9950" id="Fire Elemental Sword">

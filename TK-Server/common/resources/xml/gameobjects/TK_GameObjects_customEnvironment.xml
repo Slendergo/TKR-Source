@@ -235,7 +235,7 @@
 		<Class>GameObject</Class>
 		<Size>100</Size>
 		<ShadowSize>110</ShadowSize>
-		<ShadowColor>0x0070FF</ShadowColor>
+		<ShadowColor>0x004193</ShadowColor>
 		<Static />
 		<Texture>
 			<File>custom16x16Environment</File>

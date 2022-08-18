@@ -131,7 +131,7 @@
       <Index>0x35</Index>
     </Texture>
   </Ground>
-  <Ground type="0x149" id="Dark tile">
+  <Ground type="0x149" id="Dark Dirt 1">
     <Texture>
       <File>customEnvironment</File>
       <Index>0x6c</Index>
@@ -167,7 +167,7 @@
       <Index>0x7e</Index>
     </Texture>
   </Ground>
-  <Ground type="0x159" id="Dark dirt 1">
+  <Ground type="0x159" id="Dark Tile">
     <Texture>
       <File>customEnvironment</File>
       <Index>0x6d</Index>

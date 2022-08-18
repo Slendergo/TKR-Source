@@ -33,6 +33,12 @@ namespace wServer.networking.connection
         {
             BytesAvailable = 0;
             BytesSent = 0;
+        }
+
+        public void Clear()
+        {
+            BytesAvailable = 0;
+            BytesSent = 0;
             Pending = new ConcurrentQueue<OutgoingMessage>();
         }
     }

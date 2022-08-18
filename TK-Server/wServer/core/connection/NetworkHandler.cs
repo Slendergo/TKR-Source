@@ -155,7 +155,7 @@ namespace wServer.networking.connection
 
         public void Reset()
         {
-            ((SendToken)SocketAsyncEventArgs.UserToken).Reset();
+            ((SendToken)SocketAsyncEventArgs.UserToken).Clear();
         }
     }
 
@@ -354,10 +354,10 @@ namespace wServer.networking.connection
 
         public void SetSocket(Socket socket)
         {
+            Client.State = ProtocolState.Connected;
+
             NetworkSendHandler.SetSocket(socket);
             NetworkReceiveHandler.SetSocket(socket);
-
-            Client.State = ProtocolState.Connected;
         }
 
         public void SendPacket(OutgoingMessage pkt) => NetworkSendHandler.SendMessage(pkt);

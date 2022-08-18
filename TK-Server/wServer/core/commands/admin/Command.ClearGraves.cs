@@ -5,29 +5,6 @@ namespace wServer.core.commands
 {
     public abstract partial class Command
     {
-        internal class DeltaTimeCommand : Command
-        {
-            public override string CommandName => "deltatime";
-
-            protected override bool Process(Player player, TickTime time, string args)
-            {
-                player.SendInfo($"[DeltaTime]: {player.World.DisplayName} -> {time.ElaspedMsDelta} | {time.LogicTime}");
-                return true;
-            }
-        }
-
-        internal class ToggleDeltaCommand : Command
-        {
-            public override RankingType RankRequirement => RankingType.Admin;
-            public override string CommandName => "tdt";
-
-            protected override bool Process(Player player, TickTime time, string args)
-            {
-                TickThreadSingle.TryNewSystem = !TickThreadSingle.TryNewSystem;
-                return true;
-            }
-        }
-
         internal class ClearGraves : Command
         {
             public override RankingType RankRequirement => RankingType.Admin;

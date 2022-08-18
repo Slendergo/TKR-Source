@@ -106,8 +106,8 @@ namespace wServer.core
             Console.WriteLine("[Initialize] CommandManager");
             CommandManager.Initialize(this);
 
-            Console.WriteLine("[Configure] Loot");
-            Loot.ConfigureDropRates();
+            Console.WriteLine("[Initialize] Loot");
+            Loot.Initialize(this);
 
             Console.WriteLine("[Initialize] MobDrops");
             MobDrops.Initialize(this);

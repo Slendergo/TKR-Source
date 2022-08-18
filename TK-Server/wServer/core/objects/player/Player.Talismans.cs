@@ -40,8 +40,9 @@ namespace wServer.core.objects
 
         public void GiveEssence(int amount)
         {
+            Console.WriteLine("Essence Gained: " + amount);
             var essenceCap = Client.Character.EssenceCap;
-            var essence = Math.Min(essenceCap, essenceCap + amount);
+            var essence = Math.Min(essenceCap, Client.Character.Essence + amount);
             Client.Character.Essence = essence;
 
             if(essence == essenceCap)

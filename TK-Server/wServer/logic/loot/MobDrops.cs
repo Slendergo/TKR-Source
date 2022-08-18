@@ -30,75 +30,19 @@ namespace wServer.logic.loot
 
             foreach (var lootDef in LootDefs)
             {
-
-                // sample:
-                // var previousDropRate = lootDef.Probabilty;
-                // Console.WriteLine($"[MT tier] update drop rate -> item: '{lootDef.Item.ObjectId}' from '{previousDropRate:0.00%}' to '{lootDef.Probabilty:0.00%}'");
-
-                if (lootDef.Item.Mythical || lootDef.Item.Revenge)
-                {
-                    lootDef.Probabilty = Loot.DropRates.MT;
-                    lootDef.Threshold = Loot.DropRates.MT_THRESHOLD;
-                }
-
-                if (lootDef.Item.Legendary)
-                {
-                    lootDef.Probabilty = Loot.DropRates.LG;
-                    lootDef.Threshold = Loot.DropRates.LG_THRESHOLD;
-                }
-
-                if (Loot.DropRates.FRAGMENTS_NAMES.Contains(lootDef.Item.ObjectId))
-                {
-                    lootDef.Probabilty = Loot.DropRates.FRAGMENTS;
-                    lootDef.Threshold = Loot.DropRates.FRAGMENT_THRESHOLD;
-                }
-
-                if (Loot.DropRates.ORYX_ITEMS_NAMES.Contains(lootDef.Item.ObjectId))
-                {
-                    lootDef.Probabilty = Loot.DropRates.ORYX_ITEMS;
-                    lootDef.Threshold = Loot.DropRates.ORYX_ITEMS_THRESHOLD;
-                }
-                if (Loot.DropRates.LG_TALISMAN_NAMES.Contains(lootDef.Item.ObjectId))
-                {
-                    lootDef.Probabilty = Loot.DropRates.LG_TALISMAN;
-                    lootDef.Threshold = Loot.DropRates.LG_TALISMAN_THRESHOLD;
-                }
-                if (Loot.DropRates.MT_TALISMAN_NAMES.Contains(lootDef.Item.ObjectId))
-                {
-                    lootDef.Probabilty = Loot.DropRates.MT_TALISMAN;
-                    lootDef.Threshold = Loot.DropRates.MT_TALISMAN_THRESHOLD;
-                }
-                if (Loot.DropRates.HARD_BOUNTY_NAMES.Contains(lootDef.Item.ObjectId))
-                {
-                    lootDef.Probabilty = Loot.DropRates.HARD_BOUNTY;
-                    lootDef.Threshold = Loot.DropRates.HARD_BOUNTY_THRESHOLD;
-                }
-
                 lootDefs.Add(new LootDef(
                     lootDef.Item,
                     overrides.Probabilty >= 0 ? overrides.Probabilty : lootDef.Probabilty,               
-                    overrides.Threshold >= 0 ? overrides.Threshold : lootDef.Threshold));
+                    overrides.Threshold >= 0 ? overrides.Threshold : lootDef.Threshold, lootDef.Tier, lootDef.ItemType));
             }
         }
     }
 
     public class ItemLoot : MobDrops
     {
-        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
-
         public ItemLoot(string item, double probability = 1, int numRequired = 0, double threshold = 0)
         {
-            try
-            {
-                LootDefs.Add(new LootDef(
-                    XmlData.Items[XmlData.IdToObjectType[item]],
-                    probability,
-                    threshold));
-            }
-            catch (Exception)
-            {
-                Log.Warn($"Problem adding {item} to mob loot table.");
-            }
+            LootDefs.Add(new LootDef(item, probability, threshold));
         }
     }
 
@@ -134,21 +78,26 @@ namespace wServer.logic.loot
             return types;
         }
 
+        public static ItemType SlotTypesToItemType(int slotType)
+        {
+            if (WeaponT.Contains(slotType))
+                return ItemType.Weapon;
+            if (AbilityT.Contains(slotType))
+                return ItemType.Ability;
+            if (ArmorT.Contains(slotType))
+                return ItemType.Armor;
+            if (RingT.Contains(slotType))
+                return ItemType.Ring;
+            if (PotionT.Contains(slotType))
+                return ItemType.Potion;
+            if (TalismanT.Contains(slotType))
+                return ItemType.Talisman;
+            throw new NotSupportedException(slotType.ToString());
+        }
+
         public TierLoot(byte tier, ItemType type, double probability = 1, int numRequired = 0, double threshold = 0)
         {
-            var types = GetSlotTypes(type);
-
-            var items = XmlData.Items
-                .Where(item => Array.IndexOf(types, item.Value.SlotType) != -1)
-                .Where(item => item.Value.Tier == tier)
-                .Select(item => item.Value)
-                .ToArray();
-
-            foreach (var item in items)
-                LootDefs.Add(new LootDef(
-                    item,
-                    probability / items.Length,
-                    threshold));
+            LootDefs.Add(new LootDef(null, probability, threshold, tier, type));
         }
     }
 

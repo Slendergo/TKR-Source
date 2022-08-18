@@ -62,7 +62,7 @@ namespace common.resources
         public string SuccessorId;
         public int Texture1;
         public int Texture2;
-        public int? Tier;
+        public int Tier;
         public float Timer;
         public bool TypeOfConsumable;
         public bool Usable;
@@ -90,10 +90,7 @@ namespace common.resources
             Mythical = e.HasElement("Mythical");
             Resurrects = e.HasElement("Resurrects");
             RateOfFire = e.GetValue<float>("RateOfFire");
-
-            if (e.HasElement("Tier"))
-                Tier = e.GetValue<int>("Tier");
-
+            Tier = e.GetValue<int>("Tier", -1);
             BagType = e.GetValue<int>("BagType");
             FameBonus = e.GetValue<int>("FameBonus");
             NumProjectiles = e.GetValue("NumProjectiles", 1);

@@ -251,48 +251,6 @@ namespace wServer.core
             return ret;
         }
 
-        public float GetHPRegen()
-        {
-            var vit = this[6];
-            if (Owner.HasConditionEffect(ConditionEffects.Regeneration))
-                return (6 + vit * .12f) * 5;
-            if (Owner.HasConditionEffect(ConditionEffects.Sick))
-                vit = 0;
-
-            int local2 = 0;
-            //if (Owner.BigSkill1)
-            //    local2 += 25;
-            //if (Owner.BigSkill7)
-            //    local2 += 10;
-            //if (Owner.BigSkill9)
-            //    local2 += 20;
-
-            var local1 = 6 + vit * .12f;
-            return 6 + vit * .12f + local1;
-        }
-
-        public float GetMPRegen()
-        {
-            var wis = this[7];
-            if (Owner.HasConditionEffect(ConditionEffects.Quiet))
-                return 0;
-            if (Owner.HasConditionEffect(ConditionEffects.MPTRegeneration))
-                return (0.5f + wis * .06f) * 5;
-
-            //int local2 = 0;
-            //if (Owner.BigSkill2)
-            //    local2 += 25;
-            //if (Owner.BigSkill8)
-            //    local2 += 10;
-            //if (Owner.BigSkill10)
-            //    local2 += 20;
-
-            var local1 = 0.5f + wis * .06f;
-            local1 = local1 / 100;
-
-            return 0.5f + wis * .06f + local1;
-        }
-
         public float GetSpeed() => GetSpeed(Owner, this[4]);
 
         public void ReCalculateValues()

@@ -42,7 +42,7 @@ namespace wServer.core.objects
 
             if (!portals.ContainsKey(objType))
             {
-                SLogger.Instance.Warn($"Portal {objType.To4Hex()} does not exist. Using Portal of Cowardice.");
+                StaticLogger.Instance.Warn($"Portal {objType.To4Hex()} does not exist. Using Portal of Cowardice.");
 
                 objType = 0x0703; // default to Portal of Cowardice
             }

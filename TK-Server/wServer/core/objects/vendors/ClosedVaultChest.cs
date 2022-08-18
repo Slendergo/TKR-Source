@@ -48,7 +48,7 @@ namespace wServer.core.objects.vendors
                     Result = 0,
                     ResultString = "Vault chest purchased!"
                 });
-            }).ContinueWith(e => SLogger.Instance.Error(e.Exception.InnerException.ToString()), TaskContinuationOptions.OnlyOnFaulted);
+            }).ContinueWith(e => StaticLogger.Instance.Error(e.Exception.InnerException.ToString()), TaskContinuationOptions.OnlyOnFaulted);
         }
     }
 }

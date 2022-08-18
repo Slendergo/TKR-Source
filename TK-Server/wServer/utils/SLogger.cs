@@ -2,7 +2,7 @@
 
 namespace wServer.utils
 {
-    public static class SLogger
+    public static class StaticLogger
     {
         public static readonly Logger Instance = LogManager.GetCurrentClassLogger();
     }

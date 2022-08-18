@@ -45,7 +45,7 @@ namespace wServer.networking
         public Socket Socket { get; private set; }
         public ProtocolState State { get => _state; internal set => _state = value; }
 
-        public void BeginHandling(Socket skt)
+        public void SetSocket(Socket skt)
         {
             Socket = skt;
 
@@ -58,7 +58,7 @@ namespace wServer.networking
                 IpAddress = "";
             }
 
-            _handler.BeginHandling(Socket);
+            _handler.SetSocket(Socket);
         }
 
         public bool IsReady()

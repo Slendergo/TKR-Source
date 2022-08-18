@@ -492,7 +492,7 @@ namespace wServer.core.objects
                         break;
 
                     default:
-                        SLogger.Instance.Warn("Activate effect {0} not implemented.", eff.Effect);
+                        StaticLogger.Instance.Warn("Activate effect {0} not implemented.", eff.Effect);
                         break;
                 }
             }

@@ -247,7 +247,7 @@ namespace wServer.core.commands
                         }
                         catch (Exception e)
                         {
-                            SLogger.Instance.Error(e.ToString());
+                            StaticLogger.Instance.Error(e.ToString());
                             return;
                         }
 

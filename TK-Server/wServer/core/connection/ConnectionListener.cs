@@ -1,10 +1,12 @@
 ﻿using common.database;
 using System;
+using System.Collections.Concurrent;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using wServer.core;
 using wServer.networking.packets;
+using wServer.networking.packets.outgoing;
 using wServer.utils;
 
 namespace wServer.networking.connection
@@ -18,17 +20,20 @@ namespace wServer.networking.connection
         public int BytesAvailable;
         public int BytesSent;
         public byte[] Data;
-
+        public ConcurrentQueue<OutgoingMessage> Pending;
+        
         public SendToken(int offset)
         {
             BufferOffset = offset;
             Data = new byte[0x100000];
+            Pending = new ConcurrentQueue<OutgoingMessage>();
         }
 
         public void Reset()
         {
             BytesAvailable = 0;
             BytesSent = 0;
+            Pending = new ConcurrentQueue<OutgoingMessage>();
         }
     }
 
@@ -178,7 +183,7 @@ namespace wServer.networking.connection
             catch (Exception e)
             {
                 if (!(e is SocketException se) || se.SocketErrorCode != SocketError.NotConnected)
-                    SLogger.Instance.Error(e);
+                    StaticLogger.Instance.Error(e);
             }
             ListenSocket.Close();
         }
@@ -193,7 +198,7 @@ namespace wServer.networking.connection
             }
 
             acceptEventArgs.AcceptSocket.NoDelay = true;
-            ClientPool.Pop().BeginHandling(acceptEventArgs.AcceptSocket);
+            ClientPool.Pop().SetSocket(acceptEventArgs.AcceptSocket);
 
             acceptEventArgs.AcceptSocket = null;
             EventArgsPoolAccept.Push(acceptEventArgs);
@@ -242,7 +247,7 @@ namespace wServer.networking.connection
             ClientPool.Push(client);
 
             try { MaxConnectionsEnforcer.Release(); }
-            catch (SemaphoreFullException e) { SLogger.Instance.Error(e); }
+            catch (SemaphoreFullException e) { StaticLogger.Instance.Error(e); }
         }
 
         public void Shutdown()

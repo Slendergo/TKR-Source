@@ -201,7 +201,7 @@ namespace wServer.core.objects
                     return new StaticObject(manager, id, null, false, false, false);
 
                 default:
-                    SLogger.Instance.Warn("Not supported type: {0}", type);
+                    StaticLogger.Instance.Warn("Not supported type: {0}", type);
                     return new Entity(manager, id);
             }
         }
@@ -411,7 +411,7 @@ namespace wServer.core.objects
                 }
                 catch (Exception e)
                 {
-                    SLogger.Instance.Error(e);
+                    StaticLogger.Instance.Error(e);
                     continue;
                 }
 
@@ -482,7 +482,7 @@ namespace wServer.core.objects
 
             if (!tiles.ContainsKey(tile.TileId))
             {
-                SLogger.Instance.Error($"There is no tile for tile ID '{tile.TileId}'.");
+                StaticLogger.Instance.Error($"There is no tile for tile ID '{tile.TileId}'.");
                 return false;
             }
 
@@ -497,7 +497,7 @@ namespace wServer.core.objects
 
                 if (!objDescs.ContainsKey(tile.ObjType))
                 {
-                    SLogger.Instance.Error($"There is no object description for tile object type '{tile.ObjType}'.");
+                    StaticLogger.Instance.Error($"There is no object description for tile object type '{tile.ObjType}'.");
 
                     return false;
                 }

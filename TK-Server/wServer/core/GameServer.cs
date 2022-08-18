@@ -145,7 +145,7 @@ namespace wServer.core
             LogManager.Configuration.Variables["buildConfig"] = Utils.GetBuildConfiguration();
             AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
             {
-                SLogger.Instance.Fatal(((Exception)args.ExceptionObject).StackTrace.ToString());
+                StaticLogger.Instance.Fatal(((Exception)args.ExceptionObject).StackTrace.ToString());
                 // todo auto restart
             };
 

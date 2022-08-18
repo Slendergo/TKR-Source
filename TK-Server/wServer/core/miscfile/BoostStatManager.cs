@@ -59,7 +59,7 @@ namespace wServer.core
                     }
                     catch (NullReferenceException e)
                     {
-                        SLogger.Instance.Info(e);
+                        StaticLogger.Instance.Info(e);
                         continue;
                     }
                 }

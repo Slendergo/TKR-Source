@@ -152,7 +152,7 @@ namespace wServer.core
                 Txt = text
             });
 
-            SLogger.Instance.Info($"[{world.IdName}({world.Id})] <{name}> {text}");
+            StaticLogger.Instance.Info($"[{world.IdName}({world.Id})] <{name}> {text}");
         }
 
         public void TalismanKing(World world, string text)
@@ -404,7 +404,7 @@ namespace wServer.core
                 if (predicate(_))
                     _.Client.SendPacket(tp);
             });
-            SLogger.Instance.Info($"[{src.World.IdName}({src.World.Id})] <{src.Name}> {tp.Txt}");
+            StaticLogger.Instance.Info($"[{src.World.IdName}({src.World.Id})] <{src.Name}> {tp.Txt}");
         }
     }
 }

@@ -289,7 +289,7 @@ namespace wServer.core.objects
 
             if (!classes.ContainsKey(ObjectType))
             {
-                SLogger.Instance.Error($"There is no class for object type '{ObjectType}'.");
+                StaticLogger.Instance.Error($"There is no class for object type '{ObjectType}'.");
                 return;
             }
 
@@ -297,7 +297,7 @@ namespace wServer.core.objects
 
             if (desc == null)
             {
-                SLogger.Instance.Error($"There is no player description for object type '{ObjectType}'.");
+                StaticLogger.Instance.Error($"There is no player description for object type '{ObjectType}'.");
                 return;
             }
 
@@ -574,7 +574,7 @@ namespace wServer.core.objects
                     incomingMessage.Client.PacketSpamAmount++;
                     if (incomingMessage.Client.PacketSpamAmount > 32)
                         incomingMessage.Client.Disconnect($"Packet Spam: {incomingMessage.Client.IpAddress}");
-                    SLogger.Instance.Error($"Unknown MessageId: {incomingMessage.MessageId} - {Client.IpAddress}");
+                    StaticLogger.Instance.Error($"Unknown MessageId: {incomingMessage.MessageId} - {Client.IpAddress}");
                     continue;
                 }
 
@@ -589,7 +589,7 @@ namespace wServer.core.objects
                 catch (Exception ex)
                 {
                     if (!(ex is EndOfStreamException))
-                        SLogger.Instance.Error("Error processing packet ({0}, {1}, {2})\n{3}", (incomingMessage.Client.Account != null) ? incomingMessage.Client.Account.Name : "", incomingMessage.Client.IpAddress, incomingMessage.Client.Id, ex);
+                        StaticLogger.Instance.Error("Error processing packet ({0}, {1}, {2})\n{3}", (incomingMessage.Client.Account != null) ? incomingMessage.Client.Account.Name : "", incomingMessage.Client.IpAddress, incomingMessage.Client.Id, ex);
                     incomingMessage.Client.SendFailure("An error occurred while processing data from your client.", FailureMessage.MessageWithDisconnect);
                 }
             }

@@ -1,13 +1,13 @@
 ﻿<AppSettings>
     <MenuMusic>menumusic</MenuMusic>
 	<DeadMusic>menumusic</DeadMusic>
-	<VaultChestPrice>150</VaultChestPrice>
+	<VaultChestPrice>250</VaultChestPrice>
   <NewAccounts>
     <MaxCharSlot>1</MaxCharSlot>
     <VaultCount>1</VaultCount>
     <Fame>0</Fame>
     <Credits>0</Credits>
-    <SlotCost>1000</SlotCost>
+    <SlotCost>1250</SlotCost>
     <SlotCurrency>1</SlotCurrency>
 	<!--<TestingRegister/>-->
     <!--<ClassesUnlocked />-->

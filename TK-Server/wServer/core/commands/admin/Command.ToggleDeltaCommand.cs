@@ -26,8 +26,9 @@ namespace wServer.core.commands
             protected override bool Process(Player player, TickTime time, string args)
             {
                 var currentProcess = System.Diagnostics.Process.GetCurrentProcess();
-                var bytes = currentProcess.PrivateMemorySize64;
+                currentProcess.Refresh();
 
+                var bytes = currentProcess.PrivateMemorySize64;
                 player.SendInfo($"Server is using: {SizeSuffix(bytes)}");
                 return true;
             }

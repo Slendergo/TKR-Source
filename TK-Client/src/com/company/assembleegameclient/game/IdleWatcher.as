@@ -35,8 +35,13 @@ package com.company.assembleegameclient.game
       {
          this.gs_ = gs;
          this.idleTime_ = 0;
-         this.gs_.stage.addEventListener(MouseEvent.MOUSE_MOVE,this.onMouseMove);
-         this.gs_.stage.addEventListener(KeyboardEvent.KEY_DOWN,this.onKeyDown);
+         if(this.gs_.stage){
+            this.gs_.stage.addEventListener(MouseEvent.MOUSE_MOVE,this.onMouseMove);
+            this.gs_.stage.addEventListener(KeyboardEvent.KEY_DOWN,this.onKeyDown);
+         }else{
+            this.gs_.addEventListener(MouseEvent.MOUSE_MOVE,this.onMouseMove);
+            this.gs_.addEventListener(KeyboardEvent.KEY_DOWN,this.onKeyDown);
+         }
       }
       
       public function update(dt:int) : Boolean
@@ -70,8 +75,14 @@ package com.company.assembleegameclient.game
          if(this.gs_ == null){
             return;
          }
-         this.gs_.stage.removeEventListener(MouseEvent.MOUSE_MOVE,this.onMouseMove);
-         this.gs_.stage.removeEventListener(KeyboardEvent.KEY_DOWN,this.onKeyDown);
+
+         if(this.gs_.stage){
+            this.gs_.stage.removeEventListener(MouseEvent.MOUSE_MOVE,this.onMouseMove);
+            this.gs_.stage.removeEventListener(KeyboardEvent.KEY_DOWN,this.onKeyDown);
+         }else{
+            this.gs_.removeEventListener(MouseEvent.MOUSE_MOVE,this.onMouseMove);
+            this.gs_.removeEventListener(KeyboardEvent.KEY_DOWN,this.onKeyDown);
+         }
          this.gs_ = null;
       }
       

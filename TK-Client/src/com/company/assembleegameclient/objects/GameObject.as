@@ -76,6 +76,7 @@ public class GameObject extends BasicObject {
         if ((targetCondition & ConditionEffect.CURSE_BIT) != 0) {
             d = (d * 1.2);
         }
+
         return d;
     }
 

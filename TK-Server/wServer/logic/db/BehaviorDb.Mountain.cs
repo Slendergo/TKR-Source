@@ -552,6 +552,7 @@ namespace wServer.logic
                     new TimedTransition(5000, "Triangle")
                     ),
                 new State("Triangle",
+                    new GiveTemporaryDefense(1000),
                     new State("1",
                         new MoveLine(.7, 40),
                         new Shoot(1, 3, 120, fixedAngle: 34, coolDown: 300),

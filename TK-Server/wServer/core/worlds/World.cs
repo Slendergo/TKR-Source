@@ -467,75 +467,76 @@ namespace wServer.core.worlds
 
         public bool Update(ref TickTime time)
         {
-            Lifetime += time.ElaspedMsDelta;
-
-            WorldBranch.Update(ref time);
-
-            if (IsPastLifetime(ref time))
-                return true;
-            UpdateLogic(ref time);
-            return false;
-        }
-        
-        protected virtual void UpdateLogic(ref TickTime time)
-        {
             try
-            {
-                foreach (var stat in StaticObjects.Values)
-                    stat.Tick(ref time);
+            {   
+                Lifetime += time.ElaspedMsDelta;
 
-                foreach (var container in Containers.Values)
-                    container.Tick(ref time);
-                
-                foreach (var pet in Pets.Values)
-                    pet.Tick(ref time);
+                WorldBranch.Update(ref time);
 
-                foreach (var i in Projectiles.Values)
-                    i.Tick(ref time);
-
-                if (Players.Values.Count > 0)
-                {
-                    foreach (var player in Players.Values)
-                    {
-                        player.HandleIO(ref time);
-                        player.Tick(ref time);
-                    }
-
-                    if (EnemiesCollision != null)
-                    {
-                        foreach (var i in EnemiesCollision.GetActiveChunks(PlayersCollision))
-                            i.Tick(ref time);
-
-                        //foreach (var i in StaticObjects.Where(x => x.Value != null && x.Value is Decoy))
-                        //    i.Value.Tick(time);
-                    }
-                    else
-                    {
-                        foreach (var i in Enemies)
-                            i.Value.Tick(ref time);
-
-                        //foreach (var i in StaticObjects)
-                        //    i.Value.Tick(time);
-                    }
-                }
-
-                for (var i = Timers.Count - 1; i >= 0; i--)
-                    try
-                    {
-                        if (Timers[i].Tick(this, ref time))
-                            Timers.RemoveAt(i);
-                    }
-                    catch (Exception e)
-                    {
-                        var msg = e.Message + "\n" + e.StackTrace;
-                        Log.Error(msg);
-                        Timers.RemoveAt(i);
-                    }
+                if (IsPastLifetime(ref time))
+                    return true;
+                UpdateLogic(ref time);
+                return false;
             }
             catch (Exception e)
             {
-                Log.Error($"Unknown Error with TickLogic {e}");
+                Console.WriteLine($"World Tick: {e}");
+                return false;
             }
+        }
+
+        protected virtual void UpdateLogic(ref TickTime time)
+        {
+            foreach (var stat in StaticObjects.Values)
+                stat.Tick(ref time);
+
+            foreach (var container in Containers.Values)
+                container.Tick(ref time);
+
+            foreach (var pet in Pets.Values)
+                pet.Tick(ref time);
+
+            foreach (var i in Projectiles.Values)
+                i.Tick(ref time);
+
+            if (Players.Values.Count > 0)
+            {
+                foreach (var player in Players.Values)
+                {
+                    player.HandleIO(ref time);
+                    player.Tick(ref time);
+                }
+
+                if (EnemiesCollision != null)
+                {
+                    foreach (var i in EnemiesCollision.GetActiveChunks(PlayersCollision))
+                        i.Tick(ref time);
+
+                    //foreach (var i in StaticObjects.Where(x => x.Value != null && x.Value is Decoy))
+                    //    i.Value.Tick(time);
+                }
+                else
+                {
+                    foreach (var i in Enemies)
+                        i.Value.Tick(ref time);
+
+                    //foreach (var i in StaticObjects)
+                    //    i.Value.Tick(time);
+                }
+            }
+
+            for (var i = Timers.Count - 1; i >= 0; i--)
+                try
+                {
+                    if (Timers[i].Tick(this, ref time))
+                        Timers.RemoveAt(i);
+                }
+                catch (Exception e)
+                {
+                    var msg = e.Message + "\n" + e.StackTrace;
+                    Log.Error(msg);
+                    Timers.RemoveAt(i);
+                }
         }
 
         public void FlagForClose() 

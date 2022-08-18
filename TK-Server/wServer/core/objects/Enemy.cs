@@ -18,9 +18,14 @@ namespace wServer.core.objects
 
         private float bleeding = 0;
         private Position? pos;
+        
+        protected SV<int> _defense;
+
+        public int Defense { get => _defense.GetValue(); set => _defense.SetValue(value); }
 
         public Enemy(GameServer manager, ushort objType) : base(manager, objType)
         {
+            _defense = new SV<int>(this, StatDataType.Defense, ObjectDesc.Defense);
             stat = ObjectDesc.MaxHP == 0;
             DamageCounter = new DamageCounter(this);
         }
@@ -81,6 +86,7 @@ namespace wServer.core.objects
 
                 MaximumHP = MaximumHP * 3;
                 HP = MaximumHP;
+                Defense += 10;
                 GlowEnemy = 0xEAC117;
             }
             else if (clasified == "epic")
@@ -94,6 +100,7 @@ namespace wServer.core.objects
 
                 MaximumHP = MaximumHP * 2;
                 HP = MaximumHP;
+                Defense += 5;
                 GlowEnemy = 0x4B0082;
             }
             else if (clasified == "rare")
@@ -104,7 +111,7 @@ namespace wServer.core.objects
                     Size = Size;
                 else
                     Size = _random.Next(Size, Size + 100);
-
+                Defense += 2;
                 GlowEnemy = 0xFFFFFF;
             }
         }
@@ -119,11 +126,9 @@ namespace wServer.core.objects
 
             if (!HasConditionEffect(ConditionEffects.Paused) && !HasConditionEffect(ConditionEffects.Stasis))
             {
-                var def = ObjectDesc.Defense;
-
+                var def = Defense;
                 if (noDef)
                     def = 0;
-
                 var dmgd = (int)StatsManager.GetDefenseDamage(this, dmg, def);
 
                 var effDmg = dmgd;
@@ -184,22 +189,18 @@ namespace wServer.core.objects
             {
                 var player = projectile.ProjectileOwner as Player;
                 var Inventory = player.Inventory;
-                var def = ObjectDesc.Defense;
+                var def = Defense;
 
                 if (projectile.ProjDesc.ArmorPiercing)
                     def = 0;
 
-
                 var dmg = (int)StatsManager.GetDefenseDamage(this, projectile.Damage, def);
-
                 if (!HasConditionEffect(ConditionEffects.Invulnerable))
                     HP -= dmg;
-
+                
                 var chance = 0.03;
                 chance -= (player.Inventory[0].NumProjectiles / 2) / 100;
                 chance = projectile.ProjDesc.MultiHit ? chance / 1.5 : chance;
-                
-
                 VampireBlast(player, chance, 2, 300, 100, time, this); // (player, chance, radius, damage, heal, time, entity)
 
                 for (var i = 0; i < 4; i++)

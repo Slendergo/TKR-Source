@@ -1,4 +1,5 @@
 ﻿using common.resources;
+using System;
 using wServer.core.objects;
 
 namespace wServer.core
@@ -67,23 +68,28 @@ namespace wServer.core
             }
         }
 
-        public static float GetDefenseDamage(Entity host, int dmg, int def)
+        public static float GetDefenseDamage(Entity host, int dmg, int targetDefense)
         {
+            var def = targetDefense;
             if (host.HasConditionEffect(ConditionEffects.Armored))
                 def *= 2;
             if (host.HasConditionEffect(ConditionEffects.ArmorBroken))
                 def = 0;
 
-            float limit = dmg * 0.15f;
-
-            float ret;
-            if (dmg - def < limit) ret = limit;
-            else ret = dmg - def;
+            var min = (dmg * 3.0) / 20.0;
+            var d = Math.Max(min, dmg - def);
 
             if (host.HasConditionEffect(ConditionEffects.Invulnerable) ||
                 host.HasConditionEffect(ConditionEffects.Invincible))
-                ret = 0;
-            return ret;
+                d = 0;
+
+            if (host.HasConditionEffect(ConditionEffects.Petrify))
+                d *= 0.9;
+
+            if (host.HasConditionEffect(ConditionEffects.Curse))
+                d *= 1.2;
+
+            return (int)d;
         }
 
         public static float GetSpeed(Entity entity, float stat)

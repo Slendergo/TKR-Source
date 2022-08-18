@@ -1815,7 +1815,7 @@ namespace wServer.core.objects
 
         private void PoisonEnemy(World world, Enemy enemy, ActivateEffect eff)
         {
-            var remainingDmg = (int)StatsManager.GetDefenseDamage(enemy, eff.TotalDamage, enemy.ObjectDesc.Defense);
+            var remainingDmg = (int)StatsManager.GetDefenseDamage(enemy, eff.TotalDamage, enemy.Defense);
             var perDmg = remainingDmg * 1000 / eff.DurationMS;
 
             if (PoisonWis)

@@ -167,6 +167,7 @@
     <Compile Include="core\objects\inventory\ItemStacker.cs" />
     <Compile Include="core\objects\player\Player.State.cs" />
     <Compile Include="core\setpieces\TalismanKing.cs" />
+    <Compile Include="logic\behaviors\GiveTemporaryDefense.cs" />
     <Compile Include="logic\db\BehaviourDb.MortomusHideout.cs" />
     <Compile Include="networking\packets\outgoing\talisman\TalismanEssenceData.cs" />
     <Compile Include="utils\ItemUtils.cs" />

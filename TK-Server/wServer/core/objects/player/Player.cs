@@ -108,7 +108,6 @@ namespace wServer.core.objects
         private SV<string> _guild;
         private SV<int> _guildRank;
         private SV<bool> _hasBackpack;
-        private float _hpRegenCounter;
         private SV<int> _level;
         private SV<int> _mp;
         private SV<bool> _nameChosen;
@@ -443,8 +442,6 @@ namespace wServer.core.objects
                 Client.Disconnect("Death");
             }));
         }
-
-        public void DropNextRandom() => Client.Random.NextInt();
 
         public int GetCurrency(CurrencyType currency)
         {

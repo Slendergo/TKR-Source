@@ -34,7 +34,7 @@ namespace wServer.core.worlds
         public string DisplayName { get; set; }
         public WorldResourceInstanceType InstanceType { get; private set; }
         public bool Persist { get; private set; }
-        public int MaxPlayers { get; private set; }
+        public int MaxPlayers { get; protected set; }
 
         public bool IsRealm { get; set; }
         public bool AllowTeleport { get; protected set; }

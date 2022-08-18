@@ -8,7 +8,6 @@
 	<World id="Realm of the Mad God">
 		<Width>2048</Width>
 		<Height>2048</Height>
-		<Capacity>85</Capacity>
 		<MapJM>realm.jm</MapJM>
 		<Music>
 			<Track>wanderlust</Track>

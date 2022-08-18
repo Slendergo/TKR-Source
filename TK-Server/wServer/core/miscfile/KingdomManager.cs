@@ -476,7 +476,6 @@ namespace wServer.core
                     {
                         DisableSpawning = true;
                         World.GameServer.WorldManager.Nexus.PortalMonitor.RemovePortal(World.Id);
-                        World.GameServer.WorldManager.Nexus.PortalMonitor.CreateNewRealm();
 
                         BroadcastMsg("RAAHH MY TROOPS HAVE FAILED ME!");
                         BroadcastMsg("THIS KINDOM SHALL NOT FALL!!");

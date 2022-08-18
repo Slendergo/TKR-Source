@@ -20,8 +20,8 @@
         "logFolder": "./logs",
         "resourceFolder": "./resources",
         "version": "1.2.0",
-        "maxConnections": 90,
-        "maxPlayers": 85,
+        "maxConnections": 640,
+        "maxPlayers": 600,
         "supporterOnly": false,
         "restartTime": 2,
         "whitelist": []

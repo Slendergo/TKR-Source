@@ -23,6 +23,8 @@ namespace wServer.core.worlds.logic
             IsRealm = true;
         }
 
+        public void SetMaxPlayers(int capacity) => MaxPlayers = capacity;
+
         public override void Init()
         {
             SetPieces.ApplySetPieces(this);

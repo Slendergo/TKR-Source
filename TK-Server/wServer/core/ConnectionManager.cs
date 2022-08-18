@@ -53,7 +53,7 @@ namespace wServer.core
                 return;
             }
 
-            if (connectionInfo.Reconnecting || connectionInfo.Account.IsAdmin || PlayerCount() < MaxPlayerCount)
+            if (connectionInfo.Reconnecting || connectionInfo.Account.IsAdmin || GetPlayerCount() < MaxPlayerCount)
             {
                 HandleConnect(connectionInfo);
                 return;
@@ -230,7 +230,7 @@ namespace wServer.core
             Connecting.TryAdd(client, DateTime.Now.AddSeconds(CONNECTING_TTL));
         }
 
-        public int PlayerCount() => Clients.Count + ReconnectInfo.Count;
+        public int GetPlayerCount() => Clients.Count + ReconnectInfo.Count;
 
         public void Tick(long time)
         {
@@ -270,7 +270,7 @@ namespace wServer.core
 
             // recalculate usage statistics
             var serverInfo = GameServer.Configuration.serverInfo;
-            serverInfo.players = PlayerCount();
+            serverInfo.players = GetPlayerCount();
             serverInfo.maxPlayers = MaxPlayerCount;
             serverInfo.playerList.Add(playerInfo);
             return true;
@@ -285,7 +285,7 @@ namespace wServer.core
 
             // recalculate usage statistics
             var serverInfo = GameServer.Configuration.serverInfo;
-            serverInfo.players = PlayerCount();
+            serverInfo.players = GetPlayerCount();
             serverInfo.maxPlayers = MaxPlayerCount;
             serverInfo.playerList.Remove(playerInfo);
         }

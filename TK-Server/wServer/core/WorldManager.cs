@@ -28,12 +28,11 @@ namespace wServer.core
 
         public IEnumerable<World> GetWorlds() => Worlds.Values;
 
-        private readonly Random Random;
+        private readonly Random Random = new Random();
 
         public WorldManager(GameServer gameServer)
         {
             GameServer = gameServer;
-            Random = new Random();
         }
 
         public void Initialize()
@@ -42,9 +41,9 @@ namespace wServer.core
             CreateNewTest();
         }
 
-        public Task<RealmWorld> CreateNewRealmAsync()
+        public void CreateNewRealmAsync(string name)
         {
-            return Task<RealmWorld>.Factory.StartNew(() =>
+            _ = Task.Factory.StartNew(() =>
             {
                 using (var t = new TimedProfiler("CreateNewRealm()"))
                 {
@@ -55,14 +54,17 @@ namespace wServer.core
                     var nextId = Interlocked.Increment(ref NextWorldId);
 
                     var world = new RealmWorld(nextId, worldResource);
+                    world.SetMaxPlayers(KingdomPortalMonitor.MAX_PER_REALM);
+                    world.DisplayName = name;
                     world.GameServer = GameServer; // todo add to ctor
                     var success = world.LoadMapFromData(worldResource);
                     if (!success)
                         return null;
-
                     world.Init();
                     _ = Worlds.TryAdd(world.Id, world);
                     _ = Threads.TryAdd(world.Id, new TickThreadSingle(this, world));
+
+                    (GameServer.WorldManager.Nexus as NexusWorld).PortalMonitor.AddPortal(world);
                     return world;
                 }
             });

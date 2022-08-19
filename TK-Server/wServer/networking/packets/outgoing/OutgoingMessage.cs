@@ -25,14 +25,6 @@ namespace wServer.networking.packets.outgoing
 
                 var bodyLength = (int)s.Position;
                 var packetLength = bodyLength + 5;
-                
-                if (this is NewTick || this is Update)
-                {
-                    if(this is NewTick)
-                        Console.WriteLine("Newtick: " + packetLength);
-                    else
-                        Console.WriteLine("Update: " + packetLength);
-                }
 
                 if (packetLength > buff.Length - offset)
                     return 0;
@@ -42,7 +34,7 @@ namespace wServer.networking.packets.outgoing
                     Buffer.BlockCopy(s.GetBuffer(), 0, buff, offset + 5, bodyLength);
                     Buffer.BlockCopy(BitConverter.GetBytes(IPAddress.HostToNetworkOrder(packetLength)), 0, buff, offset, 4);
                     buff[offset + 4] = (byte)MessageId;
-                }   
+                }
                 catch (ArgumentOutOfRangeException)
                 {
                     return 0;

@@ -43,6 +43,17 @@ namespace common.resources
         public XElement SkinsCombinedXML;
         public XElement TalismansCombinedXML;
 
+        public void Initialize(bool exportXmls)
+        {
+            if (exportXmls)
+            {
+                ObjectCombinedXML = new XElement("Objects");
+                CombinedXMLPlayers = new XElement("Objects");
+                GroundCombinedXML = new XElement("Grounds");
+                SkinsCombinedXML = new XElement("Objects");
+            }
+        }
+
         private void AddGrounds(XElement root, bool exportXmls = false) => root.Elements("Ground").Select(e =>
         {
             if (exportXmls)
@@ -176,14 +187,6 @@ namespace common.resources
 
         public void LoadXmls(string basePath, string ext, bool exportXmls = false)
         {
-            if (exportXmls)
-            {
-                ObjectCombinedXML = new XElement("Objects");
-                CombinedXMLPlayers = new XElement("Objects");
-                GroundCombinedXML = new XElement("Grounds");
-                SkinsCombinedXML = new XElement("Objects");
-            }
-
             var xmls = Directory.GetFiles(basePath, ext, SearchOption.AllDirectories);
             for(var i = 0; i < xmls.Length; i++)
             {

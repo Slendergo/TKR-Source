@@ -24,6 +24,7 @@ namespace common.resources
                 Log.Info("Loading XmlData...");
                 var xmlPath = $"{resourcePath}/xml";
 
+                GameData.Initialize(exportXmls);
                 GameData.LoadXmls(xmlPath, "*.xml", exportXmls);
                 GameData.LoadXmls(xmlPath, "*.dat", exportXmls);
 

@@ -1,4 +1,5 @@
-﻿using common.discord;
+﻿using common;
+using common.discord;
 using common.resources;
 using NLog;
 using System;
@@ -463,7 +464,7 @@ namespace wServer.core
                         {
                             if (time.TickCount % 2 == 0)
                                 HandleAnnouncements();
-                            if(time.TickCount % 2 == 0)
+                            if (time.TickCount % 2 == 0)
                                 EnsureQuest();
                             if (time.TickCount % 6 == 0)
                                 EnsurePopulation();
@@ -513,7 +514,6 @@ namespace wServer.core
                         MovePeopleNaerby(time);
 
                         CurrentState = KindgomState.Waiting;
-                        World.FlagForClose();
                     }
                     break;
                 case KindgomState.Waiting:

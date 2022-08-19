@@ -2,6 +2,7 @@
 using System;
 using System.Diagnostics;
 using System.Threading;
+using System.Threading.Tasks;
 using wServer.core.worlds;
 using wServer.core.worlds.logic;
 
@@ -21,33 +22,67 @@ namespace wServer.core
             WorldManager = worldManager;
             World = world;
 
-            Thread = new Thread(Run);
-            Thread.Name = $"{World.GetDisplayName()}_Logic";
-            Thread.Start();
+
+            Run();
+            //Thread = new Thread(Run);
+            //Thread.Name = $"{World.GetDisplayName()}_Logic";
+            //Thread.Start();
         }
 
         private void Run()
         {
-            var watch = Stopwatch.StartNew();
-
-            var sleep = 200; // 5 tps
-
-            var lastMS = 0L;
-            var mre = new ManualResetEvent(false);
-
-            var realmTime = new TickTime();
-
-            while (!Stopped)
+            Task.Factory.StartNew(() =>
             {
-                if (TryNewSystem)
-                {
-                    var currentMS = realmTime.TotalElapsedMs = watch.ElapsedMilliseconds;
+                var watch = Stopwatch.StartNew();
 
-                    var delta = (int)(currentMS - lastMS); //  (int)Math.Max(currentMS - lastMS, 200);
-                    if (delta >= 200)
+                var sleep = 200; // 5 tps
+
+                var lastMS = 0L;
+                var mre = new ManualResetEvent(false);
+
+                var realmTime = new TickTime();
+
+                while (!Stopped)
+                {
+                    if (TryNewSystem)
                     {
+                        var currentMS = realmTime.TotalElapsedMs = watch.ElapsedMilliseconds;
+
+                        var delta = (int)(currentMS - lastMS); //  (int)Math.Max(currentMS - lastMS, 200);
+                        if (delta >= 200)
+                        {
+                            realmTime.TickCount++;
+                            realmTime.ElaspedMsDelta = delta;
+
+                            try
+                            {
+                                if (World.Update(ref realmTime))
+                                {
+                                    _ = WorldManager.RemoveWorld(World);
+                                    break;
+                                }
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine($"World Tick: {e}");
+                            }
+
+                            lastMS = currentMS;
+                        }
+                    }
+                    else
+                    {
+                        if (sleep > 0)
+                            _ = mre.WaitOne(sleep);
+
+                        var currentMS = realmTime.TotalElapsedMs = watch.ElapsedMilliseconds;
+
+                        var delta = (int)Math.Max(currentMS - lastMS, 200);
+
                         realmTime.TickCount++;
                         realmTime.ElaspedMsDelta = delta;
+
+                        var logicTime = watch.ElapsedMilliseconds;
 
                         try
                         {
@@ -62,41 +97,12 @@ namespace wServer.core
                             Console.WriteLine($"World Tick: {e}");
                         }
 
+                        realmTime.LogicTime = sleep = 200 - (int)(watch.ElapsedMilliseconds - logicTime);
+
                         lastMS = currentMS;
                     }
                 }
-                else
-                {
-                    if (sleep > 0)
-                        _ = mre.WaitOne(sleep);
-
-                    var currentMS = realmTime.TotalElapsedMs = watch.ElapsedMilliseconds;
-
-                    var delta = (int)Math.Max(currentMS - lastMS, 200);
-
-                    realmTime.TickCount++;
-                    realmTime.ElaspedMsDelta = delta;
-
-                    var logicTime = watch.ElapsedMilliseconds;
-
-                    try
-                    {
-                        if (World.Update(ref realmTime))
-                        {
-                            _ = WorldManager.RemoveWorld(World);
-                            break;
-                        }
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine($"World Tick: {e}");
-                    }
-
-                    realmTime.LogicTime = sleep = 200 - (int)(watch.ElapsedMilliseconds - logicTime);
-
-                    lastMS = currentMS;
-                }
-            }
+            });
         }
 
         public void Stop()

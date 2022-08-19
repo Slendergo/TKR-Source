@@ -1386,7 +1386,7 @@ namespace wServer.core.objects
             }
 
             for (var i = 0; i < item.NumProjectiles; i++)
-                World.BroadcastIfVisible(sPkts[i], this);
+                World.BroadcastIfVisibleExclude(sPkts[i], this, this);
         }
 
         private void AEShurikenAbility(TickTime time, Item item, Position target, ActivateEffect eff)

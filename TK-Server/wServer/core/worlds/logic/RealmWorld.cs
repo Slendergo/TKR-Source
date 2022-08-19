@@ -1,4 +1,5 @@
-﻿using common.resources;
+﻿using CA.Profiler;
+using common.resources;
 using NLog;
 using System;
 using System.Threading.Tasks;
@@ -10,12 +11,8 @@ namespace wServer.core.worlds.logic
 {
     public class RealmWorld : World
     {
-        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
-
         public bool Closed { get; private set; }
         public KingdomManager KingdomManager { get; private set; }
-
-        private Task OverseerTask;
 
         public RealmWorld(GameServer gameServer, int id, WorldResource resource) : base(gameServer, id, resource)
         {
@@ -36,29 +33,12 @@ namespace wServer.core.worlds.logic
 
         protected override void UpdateLogic(ref TickTime time)
         {
-            try
-            {
-                if (Closed || IsPlayersMax())
-                    GameServer.WorldManager.Nexus.PortalMonitor.ClosePortal(Id);
-                else if (!GameServer.WorldManager.Nexus.PortalMonitor.PortalIsOpen(Id))
-                    GameServer.WorldManager.Nexus.PortalMonitor.OpenPortal(Id);
+            if (Closed || IsPlayersMax())
+                GameServer.WorldManager.Nexus.PortalMonitor.ClosePortal(Id);
+            else if (!GameServer.WorldManager.Nexus.PortalMonitor.PortalIsOpen(Id))
+                GameServer.WorldManager.Nexus.PortalMonitor.OpenPortal(Id);
 
-                var t = time;
-
-                if (Closed && OverseerTask != null)
-                    OverseerTask = null;
-                else if (OverseerTask == null || OverseerTask.IsCompleted && !Closed)
-                {
-                    OverseerTask = Task.Factory.StartNew(() =>
-                    {
-                        KingdomManager?.Update(ref t);
-                    }).ContinueWith(e => Log.Error(e.Exception.InnerException.ToString()), TaskContinuationOptions.OnlyOnFaulted);
-                }
-            }
-            catch (Exception e)
-            {
-                Log.Error($"Unknown Error with Realm Tick {e}");
-            }
+            KingdomManager.Update(ref time);
             base.UpdateLogic(ref time);
         }
 
@@ -78,7 +58,7 @@ namespace wServer.core.worlds.logic
 
         public void EnemyKilled(Enemy enemy, Player killer)
         {
-            if (KingdomManager != null && !enemy.Spawned)
+            if (!enemy.Spawned)
                 KingdomManager.OnEnemyKilled(enemy, killer);
         }
 
@@ -87,9 +67,8 @@ namespace wServer.core.worlds.logic
             if (Closed)
                 return false;
             Closed = true;
-            if (KingdomManager == null)
-                return false;
             KingdomManager.CurrentState = KindgomState.Closing;
+            FlagForClose();
             return true;
         }
     }

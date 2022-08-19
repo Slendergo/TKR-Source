@@ -102,7 +102,7 @@ namespace wServer.core
                         lastMS = currentMS;
                     }
                 }
-            });
+            }, TaskCreationOptions.LongRunning);
         }
 
         public void Stop()
@@ -110,9 +110,6 @@ namespace wServer.core
             if (Stopped)
                 return;
             Stopped = true;
-            //Console.WriteLine("Before Join");
-            //Thread.Join();
-            //Console.WriteLine("After Join");
         }
     }
 }

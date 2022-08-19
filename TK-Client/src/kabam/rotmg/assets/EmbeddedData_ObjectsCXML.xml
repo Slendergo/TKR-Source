@@ -28308,7 +28308,7 @@
       <ArmorPiercing />
     </Projectile>
     <Projectile id="12">
-      <ObjectId>Morto Bent</ObjectId>
+      <ObjectId>Morto Big Blue</ObjectId>
       <Damage>250</Damage>
       <Size>150</Size>
       <Speed>65</Speed>

@@ -1138,14 +1138,12 @@
       <File>customEnvironment</File>
       <Index>0x84</Index>
     </Texture>
-    <BlendPriority>3</BlendPriority>
   </Ground>
   <Ground type="0x9023" id="Hard Bounty Dead Grass Tile 2">
     <Texture>
       <File>customEnvironment</File>
       <Index>0x85</Index>
     </Texture>
-    <BlendPriority>3</BlendPriority>
   </Ground>
   <Ground type="0x9024" id="Hard Bounty Water Tile">
     <Texture>

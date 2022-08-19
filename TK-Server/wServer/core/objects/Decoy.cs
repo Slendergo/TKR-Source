@@ -8,7 +8,6 @@ namespace wServer.core.objects
 {
     internal class Decoy : StaticObject, IPlayer
     {
-        private static Random rand = new Random();
 
         private readonly int duration;
 
@@ -72,8 +71,7 @@ namespace wServer.core.objects
 
         private Vector2 GetRandDirection()
         {
-            var angle = rand.NextDouble() * 2 * Math.PI;
-
+            var angle = World.Random.NextDouble() * 2 * Math.PI;
             return new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle));
         }
     }

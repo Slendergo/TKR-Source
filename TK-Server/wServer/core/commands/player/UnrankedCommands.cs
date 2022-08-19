@@ -685,15 +685,13 @@ namespace wServer.core.commands
                 player.ApplyConditionEffect(ConditionEffectIndex.Stunned, 3000);
                 player.ApplyConditionEffect(ConditionEffectIndex.Paralyzed, 3000);
 
-                var random = new Random();
-
                 var world = player.World;
 
                 var pt = new IntPoint();
                 do
                 {
-                    pt.X = random.Next(0, world.Map.Width);
-                    pt.Y = random.Next(0, world.Map.Height);
+                    pt.X = world.Random.Next(0, world.Map.Width);
+                    pt.Y = world.Random.Next(0, world.Map.Height);
                 }
                 while (world.Map[pt.X, pt.Y].Terrain != TerrainType.Mountains || !world.IsPassable(pt.X, pt.Y, true) || world.AnyPlayerNearby(pt.X, pt.Y, 5));
             

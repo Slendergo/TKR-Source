@@ -9,7 +9,6 @@ namespace wServer.core.setpieces
     {
         private const int bas = 17;
 
-        private Random rand = new Random();
 
         public override int Size => 60;
 
@@ -20,16 +19,16 @@ namespace wServer.core.setpieces
 
             for (var x = 0; x < 60; x++)                    //Flooring
                 for (var y = 0; y < 60; y++)
-                    if (Math.Abs(x - Size / 2) / (Size / 2.0) + rand.NextDouble() * 0.3 < 0.9 && Math.Abs(y - Size / 2) / (Size / 2.0) + rand.NextDouble() * 0.3 < 0.9)
+                    if (Math.Abs(x - Size / 2) / (Size / 2.0) + world.Random.NextDouble() * 0.3 < 0.9 && Math.Abs(y - Size / 2) / (Size / 2.0) + world.Random.NextDouble() * 0.3 < 0.9)
                     {
                         var dist = Math.Sqrt(((x - Size / 2) * (x - Size / 2) + (y - Size / 2) * (y - Size / 2)) / (Size / 2.0 * (Size / 2.0)));
 
-                        t[x, y] = rand.NextDouble() < (1 - dist) * (1 - dist) ? 2 : 1;
+                        t[x, y] = world.Random.NextDouble() < (1 - dist) * (1 - dist) ? 2 : 1;
                     }
 
             for (var x = 0; x < Size; x++)                  //Corruption
                 for (var y = 0; y < Size; y++)
-                    if (rand.Next() % 50 == 0)
+                    if (world.Random.Next() % 50 == 0)
                         t[x, y] = 0;
 
             for (var x = 0; x < 20; x++)
@@ -74,7 +73,7 @@ namespace wServer.core.setpieces
                 {
                     if (((x > 5 && x < bas) || (x < Size - 5 && x > Size - bas) || (y > 5 && y < bas) || (y < Size - 5 && y > Size - bas)) && o[x, y] == 0 && t[x, y] == 1)
                     {
-                        var r = rand.NextDouble();
+                        var r = world.Random.NextDouble();
 
                         if (r > 0.6)        //0.4
                             o[x, y] = 4;
@@ -85,7 +84,7 @@ namespace wServer.core.setpieces
                     }
                 }
 
-            var rotation = rand.Next(0, 4);               //Rotation
+            var rotation = world.Random.Next(0, 4);               //Rotation
 
             for (var i = 0; i < rotation; i++)
             {
@@ -98,7 +97,7 @@ namespace wServer.core.setpieces
             //Boss & Chest
 
             var container = new Container(world.GameServer, 0x0501, null, false);
-            var items = chest.CalculateItems(world.GameServer, 3, 8).ToArray();
+            var items = chest.CalculateItems(world.GameServer, world.Random,3, 8).ToArray();
 
             for (var i = 0; i < items.Length; i++)
                 container.Inventory[i] = items[i];

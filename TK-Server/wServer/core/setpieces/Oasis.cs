@@ -28,7 +28,6 @@ namespace wServer.core.setpieces
         private static readonly string Tree = "Palm Tree";
         private static readonly string Water = "Shallow Water";
 
-        private Random rand = new Random();
 
         public override int Size => 30;
 
@@ -86,7 +85,7 @@ namespace wServer.core.setpieces
             var trees = new HashSet<IntPoint>();
 
             while (trees.Count < border.Count * 0.5)
-                trees.Add(border[rand.Next(0, border.Count)]);
+                trees.Add(border[world.Random.Next(0, border.Count)]);
 
             foreach (var i in trees)
                 t[i.X, i.Y] = 3;
@@ -115,7 +114,7 @@ namespace wServer.core.setpieces
                         tile.TileId = dat.IdToTileType[Floor];
                         tile.ObjType = dat.IdToObjectType[Tree];
                         tile.ObjDesc = dat.ObjectDescs[tile.ObjType];
-                        tile.ObjCfg = "size:" + (rand.Next() % 2 == 0 ? 120 : 140);
+                        tile.ObjCfg = "size:" + (world.Random.Next() % 2 == 0 ? 120 : 140);
 
                         if (tile.ObjId == 0)
                             tile.ObjId = world.GetNextEntityId();
@@ -128,7 +127,7 @@ namespace wServer.core.setpieces
             world.EnterWorld(giant);
 
             var container = new Container(world.GameServer, 0x0501, null, false);
-            var items = chest.CalculateItems(world.GameServer, 5, 8).ToArray();
+            var items = chest.CalculateItems(world.GameServer, world.Random,5, 8).ToArray();
 
             for (var i = 0; i < items.Length; i++)
                 container.Inventory[i] = items[i];

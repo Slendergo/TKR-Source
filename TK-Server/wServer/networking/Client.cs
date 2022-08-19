@@ -38,7 +38,6 @@ namespace wServer.networking
         public DbAccount Account { get; internal set; }
         public DbChar Character { get; internal set; }
         public GameServer GameServer { get; private set; }
-        public int Id { get; internal set; }
         public string IpAddress { get; private set; }
         public Player Player { get; internal set; }
         public ClientRandom Random { get; internal set; }
@@ -161,17 +160,13 @@ namespace wServer.networking
 
         public void Reset()
         {
-            Id = 0; // needed so that inbound packets that are currently queued are discarded.
             PacketSpamAmount = 0;
-
             Account = null;
             Character = null;
             IpAddress = null;
             Player = null;
-
-            // reset client ping/pong values
-            //_pingTime = -1;
-            //_pongTime = -1;
+            Random = null;
+            Socket = null;
 
             _handler.Reset();
         }

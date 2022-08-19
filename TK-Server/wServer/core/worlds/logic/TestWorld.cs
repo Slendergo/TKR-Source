@@ -6,7 +6,7 @@ namespace wServer.core.worlds.logic
 {
     public class TestWorld : World
     {
-        public TestWorld(int id, WorldResource resource) : base(id, resource)
+        public TestWorld(GameServer gameServer, int id, WorldResource resource) : base(gameServer, id, resource)
         { 
         }
 

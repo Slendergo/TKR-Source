@@ -249,9 +249,8 @@ namespace common
             );
         }
 
-        public static T OneElement<T>(this List<T> list, Random rand) => list[rand.Next(list.Count)];
-
-        public static T OneElement<T>(this T[] array, Random rand) => array[rand.Next(array.Length)];
+        public static T NextLength<T>(this Random rand, IList<T> list) => list[rand.Next(list.Count)];
+        public static T NextLength<T>(this Random rand, T[] array) => array[rand.Next(array.Length)];
 
         public static string Read(string p)
         {

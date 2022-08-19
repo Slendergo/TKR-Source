@@ -75,18 +75,13 @@ namespace wServer.core.objects
             BagOwners = new int[0];
             DbLink = dbLink;
 
-            var node = GameServer.Resources.GameData.ObjectTypeToElement[ObjectType];
+            var objectDesc = GameServer.Resources.GameData.ObjectDescs[ObjectType];
+            SlotTypes = Utils.ResizeArray(objectDesc.SlotTypes, BagSize);
 
-            SlotTypes = Utils.ResizeArray(node.Element("SlotTypes").Value.CommaToArray<int>(), BagSize);
-
-            var eq = node.Element("Equipment");
-
-            if (eq != null)
+            if(objectDesc.Equipment != null)
             {
-                var inv = eq.Value.CommaToArray<ushort>().Select(_ => _ == 0xffff ? null : GameServer.Resources.GameData.Items[_]).ToArray();
-
+                var inv = objectDesc.Equipment.Select(_ => _ == -1 ? null : GameServer.Resources.GameData.Items[(ushort)_]).ToArray();
                 Array.Resize(ref inv, BagSize);
-
                 Inventory.SetItems(inv);
             }
         }

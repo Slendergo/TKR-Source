@@ -46,8 +46,8 @@ namespace wServer.core.worlds
 
         private long Lifetime { get; set; }
 
-        public Wmap Map { get; private set; }
-        public GameServer GameServer { get; set; }
+        public readonly Wmap Map;
+        public readonly GameServer GameServer;
         public CollisionMap<Entity> EnemiesCollision { get; private set; }
         public CollisionMap<Entity> PlayersCollision { get; private set; }
 
@@ -62,10 +62,17 @@ namespace wServer.core.worlds
         public ConcurrentDictionary<Tuple<int, byte>, Projectile> Projectiles { get; private set; } = new ConcurrentDictionary<Tuple<int, byte>, Projectile>();
         public List<WorldTimer> Timers { get; private set; } = new List<WorldTimer>();
 
-        public readonly WorldBranch WorldBranch;
+        public World ParentWorld { get; set; }
 
-        public World(int id, WorldResource resource, World parent = null)
+        public readonly WorldBranch WorldBranch;
+        
+        public readonly Random Random = new Random();
+
+        public World(GameServer gameServer, int id, WorldResource resource, World parent = null)
         {
+            GameServer = gameServer;
+            Map = new Wmap(this);
+
             Id = id;
             IdName = resource.DisplayName;
             DisplayName = resource.DisplayName;
@@ -82,18 +89,15 @@ namespace wServer.core.worlds
 
             IsRealm = false;
 
-            var rnd = new Random();
             if (resource.Music.Count > 0)
-                Music = resource.Music[rnd.Next(0, resource.Music.Count)];
+                Music = resource.Music[Random.Next(0, resource.Music.Count)];
             else
                 Music = "sorc";
 
             WorldBranch = new WorldBranch(this);
             ParentWorld = parent;
         }
-
-        public World ParentWorld { get; set; }
-
+        
         public virtual bool AllowedAccess(Client client) => true;
 
         public void Broadcast(OutgoingMessage outgoingMessage)
@@ -362,32 +366,17 @@ namespace wServer.core.worlds
 
             var dTiles = ras.ExportMap();
 
-            if (Map == null)
-            {
-                Map = new Wmap(this);
-                Interlocked.Add(ref NextEntityId, Map.Load(ref dTiles, NextEntityId));
-            }
-            else
-                Map.ResetTiles();
+            Interlocked.Add(ref NextEntityId, Map.Load(ref dTiles, NextEntityId));
 
             InitMap();
         }
 
         protected void FromWorldMap(Stream dat)
         {
-            if (Map == null)
-            {
-                Map = new Wmap(this);
-                Interlocked.Add(ref NextEntityId, Map.Load(dat, NextEntityId));
-            }
-            else
-                Map.ResetTiles();
-
+            Interlocked.Add(ref NextEntityId, Map.Load(dat, NextEntityId));
             InitMap();
         }
 
-
-        private Random Random = new Random();
         public bool LoadMapFromData(WorldResource worldResource)
         {
             var data = GameServer.Resources.GameData.GetWorldData(worldResource.MapJM[Random.Next(0, worldResource.MapJM.Count)]);

@@ -54,7 +54,7 @@ namespace wServer.core.setpieces
             world.EnterWorld(lord);
 
             var container = new Container(world.GameServer, 0x0501, null, false);
-            var items = chest.CalculateItems(world.GameServer, 5, 8).ToArray();
+            var items = chest.CalculateItems(world.GameServer, world.Random,5, 8).ToArray();
 
             for (var i = 0; i < items.Length; i++)
                 container.Inventory[i] = items[i];

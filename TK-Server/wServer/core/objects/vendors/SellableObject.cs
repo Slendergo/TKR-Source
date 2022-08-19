@@ -8,8 +8,6 @@ namespace wServer.core.objects.vendors
 {
     public abstract class SellableObject : StaticObject
     {
-        protected static Random Rand = new Random();
-
         private SV<CurrencyType> _currency;
         private SV<int> _price;
         private SV<int> _rankReq;

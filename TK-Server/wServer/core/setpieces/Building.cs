@@ -8,14 +8,13 @@ namespace wServer.core.setpieces
         private static readonly string Floor = "Brown Lines";
         private static readonly string Wall = "Wooden Wall";
 
-        private Random rand = new Random();
 
         public override int Size => 21;
 
         public override void RenderSetPiece(World world, IntPoint pos)
         {
-            var w = rand.Next(19, 22);
-            var h = rand.Next(19, 22);
+            var w = world.Random.Next(19, 22);
+            var h = world.Random.Next(19, 22);
             var t = new int[w, h];
 
             for (var x = 0; x < w; x++)                     //Perimeter
@@ -30,10 +29,10 @@ namespace wServer.core.setpieces
                 t[w - 1, y] = 1;
             }
 
-            var midPtH = h / 2 + rand.Next(-2, 3);          //Mid hori wall
-            var sepH = rand.Next(2, 4);
+            var midPtH = h / 2 + world.Random.Next(-2, 3);          //Mid hori wall
+            var sepH = world.Random.Next(2, 4);
 
-            if (rand.Next() % 2 == 0)
+            if (world.Random.Next() % 2 == 0)
             {
                 for (var x = sepH; x < w; x++)
                     t[x, midPtH] = 1;
@@ -46,7 +45,7 @@ namespace wServer.core.setpieces
 
             int begin, end;
 
-            if (rand.Next() % 2 == 0)
+            if (world.Random.Next() % 2 == 0)
             {
                 begin = 0;
                 end = midPtH;
@@ -54,10 +53,10 @@ namespace wServer.core.setpieces
             else
                 begin = midPtH; end = h;
 
-            var midPtV = w / 2 + rand.Next(-2, 3);          //Mid vert wall
-            var sepW = rand.Next(2, 4);
+            var midPtV = w / 2 + world.Random.Next(-2, 3);          //Mid vert wall
+            var sepW = world.Random.Next(2, 4);
 
-            if (rand.Next() % 2 == 0)
+            if (world.Random.Next() % 2 == 0)
             {
                 for (var y = begin + sepW; y < end; y++)
                     t[midPtV, y] = 1;
@@ -74,10 +73,10 @@ namespace wServer.core.setpieces
 
             for (var x = 0; x < w; x++)                     //Corruption
                 for (var y = 0; y < h; y++)
-                    if (rand.Next() % 2 == 0)
+                    if (world.Random.Next() % 2 == 0)
                         t[x, y] = 0;
 
-            var rotation = rand.Next(0, 4);                 //Rotation
+            var rotation = world.Random.Next(0, 4);                 //Rotation
 
             for (var i = 0; i < rotation; i++)
                 t = SetPieces.RotateCW(t);

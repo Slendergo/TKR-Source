@@ -29,13 +29,12 @@ namespace wServer.core.setpieces
             var map = world.Map;
             var w = map.Width;
             var h = map.Height;
-            var rand = new Random();
             var rects = new HashSet<Rect>();
 
             foreach (var dat in Sets)
             {
                 var size = dat.Item1.Size;
-                var count = rand.Next(dat.Item2, dat.Item3);
+                var count = world.Random.Next(dat.Item2, dat.Item3);
 
                 for (var i = 0; i < count; i++)
                 {
@@ -46,8 +45,8 @@ namespace wServer.core.setpieces
 
                     do
                     {
-                        pt.X = rand.Next(0, w);
-                        pt.Y = rand.Next(0, h);
+                        pt.X = world.Random.Next(0, w);
+                        pt.Y = world.Random.Next(0, h);
                         rect = new Rect() { x = pt.X, y = pt.Y, w = size, h = size };
                         max--;
                     } 

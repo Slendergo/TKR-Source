@@ -1,14 +1,15 @@
 ﻿using common.resources;
 using System;
 using System.Collections.Generic;
+using wServer.core.worlds;
 
 namespace wServer.core.objects
 {
     public abstract class Character : Entity
     {
-        protected Random _random;
-
-        private static Random _rnd;
+        public int GlowEnemy { get => _glowcolor.GetValue(); set => _glowcolor.SetValue(value); }
+        public int HP { get => _hp.GetValue(); set => _hp.SetValue(value); }
+        public int MaximumHP { get => _maximumHP.GetValue(); set => _maximumHP.SetValue(value); }
 
         private SV<int> _glowcolor;
         private SV<int> _hp;
@@ -16,16 +17,20 @@ namespace wServer.core.objects
 
         protected Character(GameServer manager, ushort objType) : base(manager, objType)
         {
-            _random = new Random(Random.Next(int.MinValue, int.MaxValue));
             _hp = new SV<int>(this, StatDataType.HP, 0);
             _maximumHP = new SV<int>(this, StatDataType.MaximumHP, 0);
             _glowcolor = new SV<int>(this, StatDataType.GlowEnemy, 0);
+        }
+
+        public override void Init(World owner)
+        {
+            base.Init(owner);
 
             if (ObjectDesc != null)
             {
                 if (ObjectDesc.SizeStep != 0)
                 {
-                    var step = _random.Next(0, (ObjectDesc.MaxSize - ObjectDesc.MinSize) / ObjectDesc.SizeStep + 1) * ObjectDesc.SizeStep;
+                    var step = World.Random.Next(0, (ObjectDesc.MaxSize - ObjectDesc.MinSize) / ObjectDesc.SizeStep + 1) * ObjectDesc.SizeStep;
                     SetDefaultSize(ObjectDesc.MinSize + step);
                 }
                 else
@@ -37,12 +42,6 @@ namespace wServer.core.objects
                 MaximumHP = HP;
             }
         }
-
-        public int GlowEnemy { get => _glowcolor.GetValue(); set => _glowcolor.SetValue(value); }
-        public int HP { get => _hp.GetValue(); set => _hp.SetValue(value); }
-        public int MaximumHP { get => _maximumHP.GetValue(); set => _maximumHP.SetValue(value); }
-
-        private static Random Random => _rnd ?? (_rnd = new Random());
 
         protected override void ExportStats(IDictionary<StatDataType, object> stats)
         {

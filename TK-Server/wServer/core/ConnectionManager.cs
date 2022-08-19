@@ -256,8 +256,6 @@ namespace wServer.core
             if (client?.Account == null)
                 return false;
 
-            client.Id = Interlocked.Increment(ref NextClientId);
-
             var playerInfo = new PlayerInfo()
             {
                 AccountId = client.Account.AccountId,

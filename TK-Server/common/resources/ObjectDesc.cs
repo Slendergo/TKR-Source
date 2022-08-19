@@ -47,6 +47,7 @@ namespace common.resources
         public readonly int Size;
         public readonly int SizeStep;
         public readonly int[] SlotTypes;
+        public readonly int[] Equipment;
         public readonly bool SlowedImmune;
         public readonly bool SpawnPoint;
         public readonly float SpawnProb;
@@ -81,6 +82,9 @@ namespace common.resources
 
             if (e.HasElement("SlotTypes"))
                 SlotTypes = e.GetValue<string>("SlotTypes").CommaToArray<int>();
+
+            if (e.HasElement("Equipment"))
+                Equipment = e.GetValue<string>("Equipment").CommaToArray<int>();
 
             CanPutNormalObjects = e.HasElement("CanPutNormalObjects");
             CanPutSoulboundObjects = e.HasElement("CanPutSoulboundObjects");

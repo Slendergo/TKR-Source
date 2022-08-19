@@ -13,22 +13,21 @@ namespace wServer.logic.loot
 {
     public class ChestLoot
     {
-        private Random Rand = new Random();
         private readonly static List<MobDrops> ChestItems = new List<MobDrops>();
 
         public ChestLoot(params MobDrops[] drops) => ChestItems.AddRange(ChestItems);
 
-        public IEnumerable<Item> CalculateItems(GameServer core, int min, int max)
+        public IEnumerable<Item> CalculateItems(GameServer core, Random random, int min, int max)
         {
             var consideration = new List<LootDef>();
             foreach (var i in ChestItems)
                 i.Populate(consideration);
 
-            var retCount = Rand.Next(min, max);
+            var retCount = random.Next(min, max);
 
             foreach (var i in consideration)
             {
-                if (Rand.NextDouble() < i.Probabilty)
+                if (random.NextDouble() < i.Probabilty)
                 {
                     yield return core.Resources.GameData.Items[core.Resources.GameData.IdToObjectType[i.Item]];
                     retCount--;
@@ -141,8 +140,6 @@ namespace wServer.logic.loot
 
         #endregion Utils
 
-        public static readonly Random Rand = new Random();
-
         public Loot(params MobDrops[] drops) => AddRange(drops);
 
         public void Handle(Enemy enemy, TickTime time)
@@ -159,7 +156,7 @@ namespace wServer.logic.loot
 
             foreach (var i in possDrops)
             {
-                var chance = Rand.NextDouble();
+                var chance = enemy.World.Random.NextDouble();
                 if (i.ItemType == ItemType.None)
                 {
                     // we treat item names as soulbound never public loot
@@ -172,7 +169,7 @@ namespace wServer.logic.loot
                 if (i.Threshold <= 0 && chance < i.Probabilty)
                 {
                     var items = GetItems(i.ItemType, i.Tier);
-                    var chosenTieredItem = items[Rand.Next(items.Count)];
+                    var chosenTieredItem = items[enemy.World.Random.Next(items.Count)];
                     pubDrops.Add(chosenTieredItem);
                 }
             }
@@ -207,7 +204,7 @@ namespace wServer.logic.loot
                 var drops = new List<Item>();
                 foreach (var i in possDrops)
                 {
-                    var c = Rand.Next(0, 100);
+                    var c = enemy.World.Random.Next(0, 100);
                     var chance = Math.Round(c / 100.0, 4);
 
                     var probability = i.Probabilty + (i.Probabilty * playerLootBoost);
@@ -224,7 +221,7 @@ namespace wServer.logic.loot
                         }
 
                         var items = GetItems(i.ItemType, i.Tier);
-                        var chosenTieredItem = items[Rand.Next(items.Count)];
+                        var chosenTieredItem = items[enemy.World.Random.Next(items.Count)];
                         drops.Add(chosenTieredItem);
                     }
                 }
@@ -384,7 +381,7 @@ namespace wServer.logic.loot
             }
 
             container.BagOwners = owners;
-            container.Move(enemy.X + (float)((Rand.NextDouble() * 2 - 1) * 0.5), enemy.Y + (float)((Rand.NextDouble() * 2 - 1) * 0.5));
+            container.Move(enemy.X + (float)((enemy.World.Random.NextDouble() * 2 - 1) * 0.5), enemy.Y + (float)((enemy.World.Random.NextDouble() * 2 - 1) * 0.5));
             container.SetDefaultSize(bagType >= 6 ? 120 : bagType >= 3 ? 90 : 70);
             enemy.World.EnterWorld(container);
         }

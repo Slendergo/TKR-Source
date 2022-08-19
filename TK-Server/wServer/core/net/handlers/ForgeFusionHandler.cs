@@ -9,11 +9,6 @@ namespace wServer.core.net.handlers
 {
     public class ForgeFusionHandler : IMessageHandler
     {
-        private readonly ushort[] _EarthWeaponsList = { 0x500f };
-        private readonly ushort[] _fireWeaponsList = { 0x5012, 0x5013 };
-        private readonly ushort[] _WaterWeaponsList = { 0x5010 };
-        private readonly ushort[] _WindWeaponsList = { 0x5011, 0x500e };
-
         public override MessageId MessageId => MessageId.FORGEFUSION;
 
         public override void Handle(Client client, NReader rdr, ref TickTime time)
@@ -27,10 +22,8 @@ namespace wServer.core.net.handlers
             }
 
 
-            var rnd = new Random();
             //var list = new List<Item>();
             var list = new List<int>();
-            var forgeList = "";
             var gameData = client.GameServer.Resources.GameData;
             var forgeItems = new ForgeItem[myInventory.Length];
 
@@ -63,7 +56,7 @@ namespace wServer.core.net.handlers
 
             list.Sort();
             list.Reverse();
-            forgeList = string.Join(", ", list);
+            var forgeList = string.Join(", ", list);
             //client.Player.SendError(forgeList);
 
             switch (forgeList)

@@ -99,8 +99,8 @@ namespace wServer.networking.connection
         public const int BufferSize = 16384;
 
         private const int Backlog = 1024;
-        private const int MaxSimultaneousAcceptOps = 20;
-        private const int OpsToPreAllocate = 3;
+        private const int MaxSimultaneousAcceptOps = 8;
+        private const int OpsToPreAllocate = 2;
 
         private GameServer GameServer;
         private BufferManager BuffManager;
@@ -245,15 +245,23 @@ namespace wServer.networking.connection
 
                 client.Socket.Shutdown(SocketShutdown.Both);
             }
-            catch { }
+            catch
+            {
+            }
 
             client.Socket.Close();
             client.Reset();
 
             ClientPool.Push(client);
 
-            try { MaxConnectionsEnforcer.Release(); }
-            catch (SemaphoreFullException e) { StaticLogger.Instance.Error(e); }
+            try
+            {
+                MaxConnectionsEnforcer.Release();
+            }
+            catch (SemaphoreFullException e)
+            {
+                StaticLogger.Instance.Error(e);
+            }
         }
 
         public void Shutdown()

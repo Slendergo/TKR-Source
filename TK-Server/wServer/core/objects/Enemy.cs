@@ -5,6 +5,7 @@ using wServer.core.worlds;
 using wServer.logic;
 using wServer.networking;
 using wServer.networking.packets.outgoing;
+using common;
 
 namespace wServer.core.objects
 {
@@ -38,11 +39,11 @@ namespace wServer.core.objects
 
         public void ClasifyEnemy()
         {
-            var chance = _random.NextDouble();
+            var chance = World.Random.NextDouble();
 
             if(chance < 0.2)
             {
-                var type = _random.Next(0, 3);
+                var type = World.Random.Next(0, 3);
                 switch (type)
                 {
                     case 2:
@@ -82,7 +83,7 @@ namespace wServer.core.objects
                 if (Size <= 0)
                     Size = Size;
                 else
-                    Size = _random.Next(Size + 200, Size + 300);
+                    Size = World.Random.Next(Size + 200, Size + 300);
 
                 MaximumHP = MaximumHP * 3;
                 HP = MaximumHP;
@@ -96,7 +97,7 @@ namespace wServer.core.objects
                 if (Size <= 0)
                     Size = Size;
                 else
-                    Size = _random.Next(Size + 100, Size + 200);
+                    Size = World.Random.Next(Size + 100, Size + 200);
 
                 MaximumHP = MaximumHP * 2;
                 HP = MaximumHP;
@@ -110,7 +111,7 @@ namespace wServer.core.objects
                 if (Size <= 0)
                     Size = Size;
                 else
-                    Size = _random.Next(Size, Size + 100);
+                    Size = World.Random.Next(Size, Size + 100);
                 Defense += 2;
                 GlowEnemy = 0xFFFFFF;
             }
@@ -288,7 +289,7 @@ namespace wServer.core.objects
         {
             if (player == null || player.World == null || player.Client == null)
                 return;
-            if (_random.NextDouble() < 0.3 && player.ApplyEffectCooldown(slot))
+            if (World.Random.NextDouble() < 0.3 && player.ApplyEffectCooldown(slot))
             {
                 player.setCooldownTime(4, slot);
 
@@ -315,7 +316,7 @@ namespace wServer.core.objects
         {
             if (player == null || player.World == null || player.Client == null)
                 return;
-            if (_random.NextDouble() < chance)
+            if (World.Random.NextDouble() < chance)
             {
                 Position procPos = new Position() { X = firstHit.X, Y = firstHit.Y };
                 Position playerPos = new Position() { X = player.X, Y = player.Y };
@@ -355,10 +356,9 @@ namespace wServer.core.objects
 
                 if (player.HP < player.MaximumHP && enemies.Count > 0)
                 {
-                    var rand = new Random();
                     for (var i = 0; i < 5; i++)
                     {
-                        var a = enemies[rand.Next(0, enemies.Count)];
+                        var a = player.World.Random.NextLength(enemies);
 
                         World.BroadcastIfVisible(new ShowEffect()
                         {
@@ -401,7 +401,7 @@ namespace wServer.core.objects
         {
             if (player == null || player.World == null || player.Client == null)
                 return;
-            if (_random.NextDouble() < 0.03)
+            if (World.Random.NextDouble() < 0.03)
             {
                 var current = firstHit;
                 var targets = new Entity[5];

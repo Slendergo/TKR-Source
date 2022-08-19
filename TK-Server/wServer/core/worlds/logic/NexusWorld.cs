@@ -8,9 +8,8 @@ namespace wServer.core.worlds.logic
     {
         public KingdomPortalMonitor PortalMonitor { get; private set; }
 
-        public NexusWorld(int id, WorldResource resource) : base(id, resource)
+        public NexusWorld(GameServer gameServer, int id, WorldResource resource) : base(gameServer, id, resource)
         {
-            
         }
 
         public override void Init()

@@ -1,4 +1,5 @@
-﻿using common.resources;
+﻿using common;
+using common.resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,6 @@ namespace wServer.core.setpieces
         private static readonly string WallA = "Grey Wall";
         private static readonly string WallB = "Destructible Grey Wall";
 
-        private Random rand = new Random();
 
         public override int Size => 34;
 
@@ -40,7 +40,7 @@ namespace wServer.core.setpieces
 
             for (var x = 0; x < 23; x++)    //Floor
                 for (var y = 0; y < 35; y++)
-                    t[x, y] = rand.Next() % 3 == 0 ? 0 : 1;
+                    t[x, y] = world.Random.Next() % 3 == 0 ? 0 : 1;
 
             for (var y = 0; y < 35; y++)    //Perimeters
                 t[0, y] = t[22, y] = 2;
@@ -53,7 +53,7 @@ namespace wServer.core.setpieces
             for (var y = 0; y < 11; y++)    //Crosses
                 for (var x = 0; x < 7; x++)
                 {
-                    if (rand.Next() % 3 > 0)
+                    if (world.Random.Next() % 3 > 0)
                         t[2 + 3 * x, 2 + 3 * y] = 4;
                     else
                         pts.Add(new IntPoint(2 + 3 * x, 2 + 3 * y));
@@ -65,7 +65,7 @@ namespace wServer.core.setpieces
                     if (t[x, y] == 1 || t[x, y] == 0 || t[x, y] == 4)
                         continue;
 
-                    var p = rand.NextDouble();
+                    var p = world.Random.NextDouble();
 
                     if (p < 0.1)
                         t[x, y] = 1;
@@ -74,11 +74,11 @@ namespace wServer.core.setpieces
                 }
 
             //Boss & Chest
-            var pt = pts[rand.Next(0, pts.Count)];
+            var pt = world.Random.NextLength(pts);
             t[pt.X, pt.Y] = 5;
             t[pt.X + 1, pt.Y] = 6;
 
-            var r = rand.Next(0, 4);
+            var r = world.Random.Next(0, 4);
 
             for (var i = 0; i < r; i++)     //Rotation
                 t = SetPieces.RotateCW(t);
@@ -133,7 +133,7 @@ namespace wServer.core.setpieces
                     else if (t[x, y] == 5)
                     {
                         var container = new Container(world.GameServer, 0x0501, null, false);
-                        var items = chest.CalculateItems(world.GameServer, 3, 8).ToArray();
+                        var items = chest.CalculateItems(world.GameServer, world.Random,3, 8).ToArray();
 
                         for (int i = 0; i < items.Length; i++)
                             container.Inventory[i] = items[i];

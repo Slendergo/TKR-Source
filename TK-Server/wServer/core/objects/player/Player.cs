@@ -586,7 +586,7 @@ namespace wServer.core.objects
                 catch (Exception ex)
                 {
                     if (!(ex is EndOfStreamException))
-                        StaticLogger.Instance.Error("Error processing packet ({0}, {1}, {2})\n{3}", (incomingMessage.Client.Account != null) ? incomingMessage.Client.Account.Name : "", incomingMessage.Client.IpAddress, incomingMessage.Client.Id, ex);
+                        StaticLogger.Instance.Error("Error processing packet ({0}, {1})\n{3}", (incomingMessage.Client.Account != null) ? incomingMessage.Client.Account.Name : "", incomingMessage.Client.IpAddress, ex);
                     incomingMessage.Client.SendFailure("An error occurred while processing data from your client.", FailureMessage.MessageWithDisconnect);
                 }
             }
@@ -1070,7 +1070,7 @@ namespace wServer.core.objects
 
         private void Clarification(int slot)
         {
-            if (_random.NextDouble() < 0.1 && ApplyEffectCooldown(slot))
+            if (World.Random.NextDouble() < 0.1 && ApplyEffectCooldown(slot))
             {
                 World.BroadcastIfVisible(new ShowEffect()
                 {
@@ -1097,7 +1097,7 @@ namespace wServer.core.objects
         {
             if (item.MonkeyKingsWrath)
             {
-                if (_random.NextDouble() < .5 && ApplyEffectCooldown(slot))// 50 % chance
+                if (World.Random.NextDouble() < .5 && ApplyEffectCooldown(slot))// 50 % chance
                 {
                     Size = 100;
                     setCooldownTime(10, slot);
@@ -1171,7 +1171,7 @@ namespace wServer.core.objects
 
         private void GodBless(int slot)
         {
-            if (_random.NextDouble() < 0.03 && ApplyEffectCooldown(slot))
+            if (World.Random.NextDouble() < 0.03 && ApplyEffectCooldown(slot))
             {
                 World.BroadcastIfVisible(new ShowEffect()
                 {
@@ -1195,7 +1195,7 @@ namespace wServer.core.objects
 
         private void GodTouch(int slot)
         {
-            if (_random.NextDouble() < 0.02 && ApplyEffectCooldown(slot))
+            if (World.Random.NextDouble() < 0.02 && ApplyEffectCooldown(slot))
             {
                 ActivateHealHp(this, 25 * Stats[0] / 100);
                 World.BroadcastIfVisible(new ShowEffect()
@@ -1264,7 +1264,7 @@ namespace wServer.core.objects
 
             if (item.OutOfOneMind)
             {
-                if (_random.NextDouble() < 0.02 && ApplyEffectCooldown(Slot))
+                if (World.Random.NextDouble() < 0.02 && ApplyEffectCooldown(Slot))
                 {
                     World.BroadcastIfVisible(new Notification()
                     {
@@ -1281,7 +1281,7 @@ namespace wServer.core.objects
 
             if (item.SteamRoller)
             {
-                if (_random.NextDouble() < 0.05 && ApplyEffectCooldown(Slot))
+                if (World.Random.NextDouble() < 0.05 && ApplyEffectCooldown(Slot))
                 {
                     World.BroadcastIfVisible(new Notification()
                     {
@@ -1298,7 +1298,7 @@ namespace wServer.core.objects
 
             if (item.Mutilate)
             {
-                if (_random.NextDouble() < 0.08 && ApplyEffectCooldown(Slot))
+                if (World.Random.NextDouble() < 0.08 && ApplyEffectCooldown(Slot))
                 {
                     World.BroadcastIfVisible(new Notification()
                     {
@@ -1316,7 +1316,7 @@ namespace wServer.core.objects
 
         private void MonkeyKingsWrath(int slot)
         {
-            if (_random.NextDouble() < .5 && ApplyEffectCooldown(slot))// 50 % chance
+            if (World.Random.NextDouble() < .5 && ApplyEffectCooldown(slot))// 50 % chance
             {
                 World.BroadcastIfVisible(new ShowEffect()
                 {
@@ -1397,7 +1397,7 @@ namespace wServer.core.objects
         {
             if (item.Lucky)
             {
-                if (_random.NextDouble() < 0.1 && ApplyEffectCooldown(slot))
+                if (World.Random.NextDouble() < 0.1 && ApplyEffectCooldown(slot))
                 {
                     setCooldownTime(20, slot);
                     for (var j = 0; j < 8; j++)
@@ -1436,7 +1436,7 @@ namespace wServer.core.objects
 
             if (item.Insanity)
             {
-                if (_random.NextDouble() < 0.05 && ApplyEffectCooldown(slot))
+                if (World.Random.NextDouble() < 0.05 && ApplyEffectCooldown(slot))
                 {
                     World.BroadcastIfVisible(new Notification()
                     {
@@ -1454,7 +1454,7 @@ namespace wServer.core.objects
 
             if (item.HolyProtection)
             {
-                if (_random.NextDouble() < 0.1 && ApplyEffectCooldown(slot))
+                if (World.Random.NextDouble() < 0.1 && ApplyEffectCooldown(slot))
                 {
                     if (!(HasConditionEffect(ConditionEffects.Quiet)
                         || HasConditionEffect(ConditionEffects.Weak)

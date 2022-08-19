@@ -29,8 +29,6 @@ namespace wServer.core.setpieces
         private static readonly string Floor = "Partial Red Floor";
         private static readonly string Lava = "Lava Blend";
 
-        private Random rand = new Random();
-
         public override int Size => 40;
 
         public override void RenderSetPiece(World world, IntPoint pos)
@@ -56,10 +54,10 @@ namespace wServer.core.setpieces
 
             for (var x = 0; x < Size; x++)      //Floor
                 for (var y = 0; y < Size; y++)
-                    if (p[x, y] == 1 && rand.Next() % 5 == 0)
+                    if (p[x, y] == 1 && world.Random.Next() % 5 == 0)
                         p[x, y] = 2;
 
-            var r = rand.Next(0, 4);            //Rotation
+            var r = world.Random.Next(0, 4);            //Rotation
 
             for (int i = 0; i < r; i++)
                 p = SetPieces.RotateCW(p);
@@ -97,7 +95,7 @@ namespace wServer.core.setpieces
             world.EnterWorld(demon);
 
             var container = new Container(world.GameServer, 0x0501, null, false);
-            var items = chest.CalculateItems(world.GameServer, 5, 8).ToArray();
+            var items = chest.CalculateItems(world.GameServer, world.Random,5, 8).ToArray();
 
             for (int i = 0; i < items.Length; i++)
                 container.Inventory[i] = items[i];

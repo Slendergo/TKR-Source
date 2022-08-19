@@ -36,7 +36,7 @@ namespace wServer.core.objects.vendors
                 }
             }
 
-            var nextItem = ItemList.OneElement(Rand);
+            var nextItem = World.Random.NextLength(ItemList);
 
             ShopItem = nextItem;
             Item = nextItem.ItemId;

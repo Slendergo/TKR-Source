@@ -17,7 +17,7 @@ namespace wServer.core.worlds.logic
 
         private Task OverseerTask;
 
-        public RealmWorld(int id, WorldResource resource) : base(id, resource)
+        public RealmWorld(GameServer gameServer, int id, WorldResource resource) : base(gameServer, id, resource)
         {
             KingdomManager = new KingdomManager(this);
             IsRealm = true;

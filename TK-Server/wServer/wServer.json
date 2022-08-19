@@ -20,7 +20,7 @@
         "logFolder": "./logs",
         "resourceFolder": "./resources",
         "version": "1.2.0",
-        "maxConnections": 640,
+        "maxConnections": 600,
         "maxPlayers": 600,
         "supporterOnly": false,
         "restartTime": 2,

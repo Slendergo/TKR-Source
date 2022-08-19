@@ -443,7 +443,6 @@ namespace wServer.core
         private int[] EnemyCounts = new int[12];
         private int[] EnemyMaxCounts = new int[12];
         private long LastTenSecondsTime;
-        private Random Random = new Random();
 
         public KindgomState CurrentState;
         public bool DisableSpawning;
@@ -528,7 +527,7 @@ namespace wServer.core
                 return;
 
             var events = _events;
-            var evt = events[Random.Next(0, events.Count)];
+            var evt = events[World.Random.Next(0, events.Count)];
             var gameData = World.GameServer.Resources.GameData;
 
             if (gameData.ObjectDescs[gameData.IdToObjectType[evt.Item1]].PerRealmMax == 1)
@@ -570,7 +569,7 @@ namespace wServer.core
 
             var account = World.GameServer.Database.GetAccount(mvp.AccountId);
             var guild = World.GameServer.Database.GetGuild(account.GuildId);
-            var points = Random.Next(1, 10);
+            var points = World.Random.Next(1, 10);
 
             if (guild != null)
             {
@@ -625,7 +624,7 @@ namespace wServer.core
             SpawnEvent("Talisman King", new TalismanKing(), 1024, 1024);
 
             var events = _events;
-            var evt = events[Random.Next(0, events.Count)];
+            var evt = events[World.Random.Next(0, events.Count)];
             var gameData = World.GameServer.Resources.GameData;
 
             if (gameData.ObjectDescs[gameData.IdToObjectType[evt.Item1]].PerRealmMax == 1)
@@ -780,7 +779,7 @@ namespace wServer.core
 
         private ushort GetRandomObjType(IEnumerable<Tuple<string, double>> dat)
         {
-            var p = Random.NextDouble();
+            var p = World.Random.NextDouble();
 
             double n = 0;
             ushort objType = 0;
@@ -804,7 +803,7 @@ namespace wServer.core
             if (World.Closed)
                 return;
 
-            var taunt = CriticalEnemies[Random.Next(0, CriticalEnemies.Length)];
+            var taunt = CriticalEnemies[World.Random.Next(0, CriticalEnemies.Length)];
             var count = 0;
 
             foreach (var i in World.Enemies)
@@ -823,7 +822,7 @@ namespace wServer.core
             if ((count == 1 && taunt.Item2.Final != null) || (taunt.Item2.Final != null && taunt.Item2.NumberOfEnemies == null))
             {
                 var arr = taunt.Item2.Final;
-                var msg = arr[Random.Next(0, arr.Length)];
+                var msg = arr[World.Random.Next(0, arr.Length)];
 
                 BroadcastMsg(msg);
             }
@@ -834,7 +833,7 @@ namespace wServer.core
                 if (arr == null)
                     return;
 
-                var msg = arr[Random.Next(0, arr.Length)];
+                var msg = arr[World.Random.Next(0, arr.Length)];
                 msg = msg.Replace("{COUNT}", count.ToString());
 
                 BroadcastMsg(msg);
@@ -864,7 +863,7 @@ namespace wServer.core
 
             if (desc.Spawn != null)
             {
-                var num = (int)GetNormal(Random, desc.Spawn.Mean, desc.Spawn.StdDev);
+                var num = (int)GetNormal(World.Random, desc.Spawn.Mean, desc.Spawn.StdDev);
 
                 if (num > desc.Spawn.Max)
                     num = desc.Spawn.Max;
@@ -873,14 +872,14 @@ namespace wServer.core
 
                 do
                 {
-                    pt.X = Random.Next(0, w);
-                    pt.Y = Random.Next(0, h);
+                    pt.X = World.Random.Next(0, w);
+                    pt.Y = World.Random.Next(0, h);
                 } while (World.Map[pt.X, pt.Y].Terrain != terrain || !World.IsPassable(pt.X, pt.Y) || World.AnyPlayerNearby(pt.X, pt.Y));
 
                 for (var k = 0; k < num; k++)
                 {
                     entity = Entity.Resolve(World.GameServer, desc.ObjectType);
-                    entity.Move(pt.X + (float)(Random.NextDouble() * 2 - 1) * 5, pt.Y + (float)(Random.NextDouble() * 2 - 1) * 5);
+                    entity.Move(pt.X + (float)(World.Random.NextDouble() * 2 - 1) * 5, pt.Y + (float)(World.Random.NextDouble() * 2 - 1) * 5);
                     (entity as Enemy).Terrain = terrain;
                     World.EnterWorld(entity);
                     ret++;
@@ -891,9 +890,10 @@ namespace wServer.core
 
             do
             {
-                pt.X = Random.Next(0, w);
-                pt.Y = Random.Next(0, h);
-            } while (World.Map[pt.X, pt.Y].Terrain != terrain || !World.IsPassable(pt.X, pt.Y) || World.AnyPlayerNearby(pt.X, pt.Y));
+                pt.X = World.Random.Next(0, w);
+                pt.Y = World.Random.Next(0, h);
+            }
+            while (World.Map[pt.X, pt.Y].Terrain != terrain || !World.IsPassable(pt.X, pt.Y) || World.AnyPlayerNearby(pt.X, pt.Y));
 
             entity = Entity.Resolve(World.GameServer, desc.ObjectType);
             entity.Move(pt.X, pt.Y);
@@ -908,7 +908,7 @@ namespace wServer.core
             var regions = World.Map.Regions.Where(t => t.Value == TileRegion.Defender).ToArray();
             foreach (var player in World.Players.Values)
             {
-                var pos = regions[Random.Next(regions.Length)];
+                var pos = regions[World.Random.Next(regions.Length)];
                 player.TeleportPosition(time, pos.Key.X, pos.Key.Y, true);
             }
         }
@@ -921,8 +921,8 @@ namespace wServer.core
             var pt = new IntPoint(x, y);
             while (World.Map[pt.X, pt.Y].Terrain < TerrainType.Mountains || World.Map[pt.X, pt.Y].Terrain > TerrainType.MidForest || !World.IsPassable(pt.X, pt.Y, true) || World.AnyPlayerNearby(pt.X, pt.Y))
             {
-                pt.X = Random.Next(0, World.Map.Width);
-                pt.Y = Random.Next(0, World.Map.Height);
+                pt.X = World.Random.Next(0, World.Map.Width);
+                pt.Y = World.Random.Next(0, World.Map.Height);
             }
 
             var sp = setpiece ?? new NamedEntitySetPiece(name);

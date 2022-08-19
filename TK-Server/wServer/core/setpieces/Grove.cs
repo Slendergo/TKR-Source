@@ -1,4 +1,5 @@
-﻿using System;
+﻿using common;
+using System;
 using System.Collections.Generic;
 using wServer.core.objects;
 using wServer.core.worlds;
@@ -10,13 +11,12 @@ namespace wServer.core.setpieces
         private static readonly string Floor = "Light Grass";
         private static readonly string Tree = "Cherry Tree";
 
-        private Random rand = new Random();
 
         public override int Size => 25;
 
         public override void RenderSetPiece(World world, IntPoint pos)
         {
-            var radius = rand.Next(Size - 5, Size + 1) / 2;
+            var radius = world.Random.Next(Size - 5, Size + 1) / 2;
             var border = new List<IntPoint>();
             var t = new int[Size, Size];
 
@@ -39,8 +39,8 @@ namespace wServer.core.setpieces
             var trees = new HashSet<IntPoint>();
 
             while (trees.Count < border.Count * 0.5)
-                trees.Add(border[rand.Next(0, border.Count)]);
-
+                trees.Add(world.Random.NextLength(border));
+            
             foreach (var i in trees)
                 t[i.X, i.Y] = 2;
 
@@ -62,7 +62,7 @@ namespace wServer.core.setpieces
                         tile.TileId = dat.IdToTileType[Floor];
                         tile.ObjType = dat.IdToObjectType[Tree];
                         tile.ObjDesc = dat.ObjectDescs[tile.ObjType];
-                        tile.ObjCfg = "size:" + (rand.Next() % 2 == 0 ? 120 : 140);
+                        tile.ObjCfg = "size:" + (world.Random.Next() % 2 == 0 ? 120 : 140);
 
                         if (tile.ObjId == 0)
                             tile.ObjId = world.GetNextEntityId();

@@ -4,7 +4,7 @@ namespace wServer.core.worlds.logic
 {
     public sealed class MarketplaceWorld : World
     {
-        public MarketplaceWorld(int id, WorldResource resource) : base(id, resource)
+        public MarketplaceWorld(GameServer gameServer, int id, WorldResource resource) : base(gameServer, id, resource)
         { 
         }
     }

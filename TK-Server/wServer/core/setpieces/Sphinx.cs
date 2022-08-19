@@ -32,7 +32,6 @@ namespace wServer.core.setpieces
         private static readonly string Floor = "Gold Sand";
         private static readonly string Pillar = "Tomb Wall";
 
-        private Random rand = new Random();
 
         public override int Size => 81;
 
@@ -45,7 +44,7 @@ namespace wServer.core.setpieces
                 {
                     var dx = x - (Size / 2.0);
                     var dy = y - (Size / 2.0);
-                    var r = Math.Sqrt(dx * dx + dy * dy) + rand.NextDouble() * 4 - 2;
+                    var r = Math.Sqrt(dx * dx + dy * dy) + world.Random.NextDouble() * 4 - 2;
 
                     if (r <= 35)
                         t[x, y] = 1;

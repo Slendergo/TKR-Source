@@ -12,7 +12,6 @@ namespace wServer.core.net.handlers
 {
     public class InvDropHandler : IMessageHandler
     {
-        private static readonly Random Rand = new Random();
         private const ushort normBag = 0x0500;
         private const ushort soulBag = 0x0503;
 
@@ -97,7 +96,7 @@ namespace wServer.core.net.handlers
             // init container
             container.Inventory[0] = item;
             container.Inventory.Data[0] = data;
-            container.Move(player.X + (float)((Rand.NextDouble() * 2 - 1) * 0.5), player.Y + (float)((Rand.NextDouble() * 2 - 1) * 0.5));
+            container.Move(player.X + (float)((player.World.Random.NextDouble() * 2 - 1) * 0.5), player.Y + (float)((player.World.Random.NextDouble() * 2 - 1) * 0.5));
             container.SetDefaultSize(75);
 
             player.World.EnterWorld(container);

@@ -11,13 +11,11 @@ using wServer.core.objects.containers;
 using wServer.core.worlds.logic;
 using wServer.networking;
 using wServer.networking.packets.outgoing;
-using static wServer.core.objects.Player;
 
 namespace wServer.core.net.handlers
 {
     public class InvSwapHandler : IMessageHandler
     {
-        private static readonly Random Rand = new Random();
         private const ushort soulBag = 0x0503;
         private static readonly string[] StackableItems = new string[] { "Magic Dust" }; //stackable items
 
@@ -160,7 +158,7 @@ namespace wServer.core.net.handlers
                         case 0x0501:
                             if (CheckNoSoulboundBag(itemFrom) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -172,7 +170,7 @@ namespace wServer.core.net.handlers
                         case 0x0500:
                             if (CheckNoSoulboundBag(itemFrom) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -184,7 +182,7 @@ namespace wServer.core.net.handlers
                         case 0x0534:
                             if (CheckNoSoulboundBag(itemFrom) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -197,7 +195,7 @@ namespace wServer.core.net.handlers
                         case 0x0506:
                             if (CheckNoSoulboundBag(itemFrom) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -209,7 +207,7 @@ namespace wServer.core.net.handlers
                         case 0x0535:
                             if (CheckNoSoulboundBag(itemFrom) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -224,7 +222,7 @@ namespace wServer.core.net.handlers
                         case 0x0503:
                             if (CheckSoulboundBag(container, player) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -236,7 +234,7 @@ namespace wServer.core.net.handlers
                         case 0x0536:
                             if (CheckSoulboundBag(container, player) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -249,7 +247,7 @@ namespace wServer.core.net.handlers
                         case 0x0532:
                             if (CheckSoulboundBag(container, player) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -261,7 +259,7 @@ namespace wServer.core.net.handlers
                         case 0x0537:
                             if (CheckSoulboundBag(container, player) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -274,7 +272,7 @@ namespace wServer.core.net.handlers
                         case 0x0509:
                             if (CheckSoulboundBag(container, player) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -286,7 +284,7 @@ namespace wServer.core.net.handlers
                         case 0x0538:
                             if (CheckSoulboundBag(container, player) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -299,7 +297,7 @@ namespace wServer.core.net.handlers
                         case 0x050b:
                             if (CheckSoulboundBag(container, player) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -311,7 +309,7 @@ namespace wServer.core.net.handlers
                         case 0x0539:
                             if (CheckSoulboundBag(container, player) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -324,7 +322,7 @@ namespace wServer.core.net.handlers
                         case 0x0533:
                             if (CheckSoulboundBag(container, player) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -336,7 +334,7 @@ namespace wServer.core.net.handlers
                         case 0x053b:
                             if (CheckSoulboundBag(container, player) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -349,7 +347,7 @@ namespace wServer.core.net.handlers
                         case 0x50c:
                             if (CheckSoulboundBag(container, player) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -361,7 +359,7 @@ namespace wServer.core.net.handlers
                         case 0x53a:
                             if (CheckSoulboundBag(container, player) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -374,7 +372,7 @@ namespace wServer.core.net.handlers
                         case 0x5076:
                             if (CheckSoulboundBag(container, player) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -386,7 +384,7 @@ namespace wServer.core.net.handlers
                         case 0x5077:
                             if (CheckSoulboundBag(container, player) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -398,7 +396,7 @@ namespace wServer.core.net.handlers
                         case 0xa002:
                             if (CheckSoulboundBag(container, player) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -410,7 +408,7 @@ namespace wServer.core.net.handlers
                         case 0xa003:
                             if (CheckSoulboundBag(container, player) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -432,7 +430,7 @@ namespace wServer.core.net.handlers
                         case 0x0501:
                             if (CheckNoSoulboundBag(itemTo) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -444,7 +442,7 @@ namespace wServer.core.net.handlers
                         case 0x0500:
                             if (CheckNoSoulboundBag(itemTo) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -456,7 +454,7 @@ namespace wServer.core.net.handlers
                         case 0x0534:
                             if (CheckNoSoulboundBag(itemTo) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -469,7 +467,7 @@ namespace wServer.core.net.handlers
                         case 0x0506:
                             if (CheckNoSoulboundBag(itemTo) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -481,7 +479,7 @@ namespace wServer.core.net.handlers
                         case 0x0535:
                             if (CheckNoSoulboundBag(itemTo) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -496,7 +494,7 @@ namespace wServer.core.net.handlers
                         case 0x0503:
                             if (CheckSoulboundBag(container, player) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -508,7 +506,7 @@ namespace wServer.core.net.handlers
                         case 0x0536:
                             if (CheckSoulboundBag(container, player) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -521,7 +519,7 @@ namespace wServer.core.net.handlers
                         case 0x0532:
                             if (CheckSoulboundBag(container, player) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -533,7 +531,7 @@ namespace wServer.core.net.handlers
                         case 0x0537:
                             if (CheckSoulboundBag(container, player) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -546,7 +544,7 @@ namespace wServer.core.net.handlers
                         case 0x0509:
                             if (CheckSoulboundBag(container, player) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -558,7 +556,7 @@ namespace wServer.core.net.handlers
                         case 0x0538:
                             if (CheckSoulboundBag(container, player) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -571,7 +569,7 @@ namespace wServer.core.net.handlers
                         case 0x050b:
                             if (CheckSoulboundBag(container, player) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -583,7 +581,7 @@ namespace wServer.core.net.handlers
                         case 0x0539:
                             if (CheckSoulboundBag(container, player) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -596,7 +594,7 @@ namespace wServer.core.net.handlers
                         case 0x0533:
                             if (CheckSoulboundBag(container, player) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -608,7 +606,7 @@ namespace wServer.core.net.handlers
                         case 0x053b:
                             if (CheckSoulboundBag(container, player) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -621,7 +619,7 @@ namespace wServer.core.net.handlers
                         case 0x50c:
                             if (CheckSoulboundBag(container, player) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -633,7 +631,7 @@ namespace wServer.core.net.handlers
                         case 0x53a:
                             if (CheckSoulboundBag(container, player) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -646,7 +644,7 @@ namespace wServer.core.net.handlers
                         case 0x5076:
                             if (CheckSoulboundBag(container, player) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -658,7 +656,7 @@ namespace wServer.core.net.handlers
                         case 0x5077:
                             if (CheckSoulboundBag(container, player) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -670,7 +668,7 @@ namespace wServer.core.net.handlers
                         case 0xa002:
                             if (CheckSoulboundBag(container, player) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 
@@ -682,7 +680,7 @@ namespace wServer.core.net.handlers
                         case 0xa003:
                             if (CheckSoulboundBag(container, player) == false)
                             {
-                                player.HandleUnavailableInventoryAction(soulBag, Rand, conTo, slotTo);
+                                player.HandleUnavailableInventoryAction(soulBag, container.World.Random, conTo, slotTo);
                                 from.ForceUpdate(slotFrom);
                                 to.ForceUpdate(slotTo);
 

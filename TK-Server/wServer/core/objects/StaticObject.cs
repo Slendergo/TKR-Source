@@ -28,16 +28,6 @@ namespace wServer.core.objects
         public bool Static { get; private set; }
         public bool Vulnerable { get; private set; }
 
-        public static int? GetHP(XElement elem)
-        {
-            var n = elem.Element("MaxHitPoints");
-
-            if (n != null)
-                return Utils.GetInt(n.Value);
-            else
-                return null;
-        }
-
         public override bool HitByProjectile(Projectile projectile, TickTime time)
         {
             if (Vulnerable && projectile.ProjectileOwner is Player)

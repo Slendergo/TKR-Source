@@ -130,9 +130,13 @@ namespace wServer.core.objects
 
         public static Entity Resolve(GameServer manager, ushort id)
         {
-            var node = manager.Resources.GameData.ObjectTypeToElement[id];
-            var type = node.Element("Class").Value;
-
+            var node = manager.Resources.GameData.ObjectDescs[id];
+            int? hp;
+            if (node.MaxHP == 0)
+                hp = null;
+            else
+                hp = node.MaxHP;
+            var type = node.Class;
             switch (type)
             {
                 case "Projectile":
@@ -142,7 +146,7 @@ namespace wServer.core.objects
 
                 case "Wall":
                 case "DoubleWall":
-                    return new Wall(manager, id, node);
+                    return new Wall(manager, id, hp);
 
                 case "ConnectedWall":
                 case "CaveWall":
@@ -152,7 +156,7 @@ namespace wServer.core.objects
                 case "CharacterChanger":
                 case "MoneyChanger":
                 case "NameChanger":
-                    return new StaticObject(manager, id, StaticObject.GetHP(node), true, false, true);
+                    return new StaticObject(manager, id, hp, true, false, true);
 
                 case "GuildRegister":
                 case "GuildChronicle":

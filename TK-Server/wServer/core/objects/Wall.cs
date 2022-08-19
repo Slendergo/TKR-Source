@@ -4,7 +4,8 @@ namespace wServer.core.objects
 {
     public class Wall : StaticObject
     {
-        public Wall(GameServer manager, ushort objType, XElement node) : base(manager, objType, GetHP(node), true, false, true)
-        { }
+        public Wall(GameServer manager, ushort objType, int? hp) : base(manager, objType, hp, true, false, true)
+        {
+        }
     }
 }

@@ -20,13 +20,11 @@ namespace common.resources
         public Dictionary<string, ushort> IdToTileType = new Dictionary<string, ushort>();
         public Dictionary<ushort, Item> Items = new Dictionary<ushort, Item>();
         public Dictionary<ushort, ObjectDesc> ObjectDescs = new Dictionary<ushort, ObjectDesc>();
-        public Dictionary<ushort, XElement> ObjectTypeToElement = new Dictionary<ushort, XElement>();
         public Dictionary<ushort, string> ObjectTypeToId = new Dictionary<ushort, string>();
         public Dictionary<ushort, PortalDesc> Portals = new Dictionary<ushort, PortalDesc>();
         public Dictionary<ushort, SkinDesc> Skins = new Dictionary<ushort, SkinDesc>();
         public Dictionary<int, ItemType> SlotTypeToItemType = new Dictionary<int, ItemType>();
         public Dictionary<ushort, TileDesc> Tiles = new Dictionary<ushort, TileDesc>();
-        public Dictionary<ushort, XElement> TileTypeToElement = new Dictionary<ushort, XElement>();
         public Dictionary<ushort, string> TileTypeToId = new Dictionary<ushort, string>();
 
         private readonly Dictionary<string, WorldResource> Worlds = new Dictionary<string, WorldResource>();
@@ -39,11 +37,11 @@ namespace common.resources
 
         public ItemDusts ItemDusts { get; private set; }
 
-        public XElement ObjectCombinedXML = new XElement("Objects");
-        public XElement CombinedXMLPlayers = new XElement("Objects");
-        public XElement GroundCombinedXML = new XElement("Grounds");
-        public XElement SkinsCombinedXML = new XElement("Objects");
-        public XElement TalismansCombinedXML = null;
+        public XElement ObjectCombinedXML;
+        public XElement CombinedXMLPlayers;
+        public XElement GroundCombinedXML;
+        public XElement SkinsCombinedXML;
+        public XElement TalismansCombinedXML;
 
         private void AddGrounds(XElement root, bool exportXmls = false) => root.Elements("Ground").Select(e =>
         {
@@ -60,7 +58,6 @@ namespace common.resources
                 Log.Warn("'0x{0:x4}' and '0x{1:x4}' have the same id of '{2}'", type, IdToTileType[id], id);
 
             TileTypeToId[type] = id;
-            TileTypeToElement[type] = e;
             IdToTileType[id] = type;
 
             Tiles[type] = new TileDesc(type, e);
@@ -107,7 +104,6 @@ namespace common.resources
                     Log.Warn("'0x{0:x4}' and '0x{1:x4}' have the same id of '{2}'", type, IdToObjectType[id], id);
 
                 ObjectTypeToId[type] = id;
-                ObjectTypeToElement[type] = e;
                 IdToObjectType[id] = type;
                 DisplayIdToObjectType[displayName] = type;
 
@@ -180,6 +176,14 @@ namespace common.resources
 
         public void LoadXmls(string basePath, string ext, bool exportXmls = false)
         {
+            if (exportXmls)
+            {
+                ObjectCombinedXML = new XElement("Objects");
+                CombinedXMLPlayers = new XElement("Objects");
+                GroundCombinedXML = new XElement("Grounds");
+                SkinsCombinedXML = new XElement("Objects");
+            }
+
             var xmls = Directory.GetFiles(basePath, ext, SearchOption.AllDirectories);
             for(var i = 0; i < xmls.Length; i++)
             {

@@ -143,7 +143,6 @@ namespace wServer.core.objects
             {
                 Level++;
                 ExperienceGoal = GetExpGoal(Level);
-                var rand = new Random();
                 for (var i = 0; i < statInfo.Length; i++)
                 {
                     if (Level < 20)
@@ -163,7 +162,7 @@ namespace wServer.core.objects
                     }
                     var min = statInfo[i].MinIncrease;
                     var max = statInfo[i].MaxIncrease + 1;
-                    Stats.Base[i] += rand.Next(min, max);
+                    Stats.Base[i] += World.Random.Next(min, max);
                     if (Stats.Base[i] > statInfo[i].MaxValue && !UpgradeEnabled)
                         Stats.Base[i] = statInfo[i].MaxValue;
                 }

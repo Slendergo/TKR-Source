@@ -21,7 +21,6 @@ namespace wServer.core
         public TestWorld Test => Worlds[-6] as TestWorld;
 
         private readonly ConcurrentDictionary<int, World> Worlds = new ConcurrentDictionary<int, World>();
-        private readonly ConcurrentDictionary<int, VaultWorld> Vaults = new ConcurrentDictionary<int, VaultWorld>();
         private readonly ConcurrentDictionary<int, World> Guilds = new ConcurrentDictionary<int, World>();
         private readonly ConcurrentDictionary<int, int> WorldToGuildId = new ConcurrentDictionary<int, int>();
         private readonly ConcurrentDictionary<int, TickThreadSingle> Threads = new ConcurrentDictionary<int, TickThreadSingle>();
@@ -43,28 +42,26 @@ namespace wServer.core
 
         public void CreateNewRealmAsync(string name)
         {
+            var worldResource = GameServer.Resources.GameData.GetWorld("Realm of the Mad God");
+            if (worldResource == null)
+                return;
+
+            var nextId = Interlocked.Increment(ref NextWorldId);
+
             _ = Task.Factory.StartNew(() =>
             {
                 using (var t = new TimedProfiler("CreateNewRealm()"))
                 {
-                    var worldResource = GameServer.Resources.GameData.GetWorld("Realm of the Mad God");
-                    if (worldResource == null)
-                        return null;
-
-                    var nextId = Interlocked.Increment(ref NextWorldId);
-
-                    var world = new RealmWorld(nextId, worldResource);
+                    var world = new RealmWorld(GameServer, nextId, worldResource);
                     world.SetMaxPlayers(KingdomPortalMonitor.MAX_PER_REALM);
                     world.DisplayName = name;
-                    world.GameServer = GameServer; // todo add to ctor
                     var success = world.LoadMapFromData(worldResource);
                     if (!success)
                         return null;
                     world.Init();
                     _ = Worlds.TryAdd(world.Id, world);
                     _ = Threads.TryAdd(world.Id, new TickThreadSingle(this, world));
-
-                    (GameServer.WorldManager.Nexus as NexusWorld).PortalMonitor.AddPortal(world);
+                    GameServer.WorldManager.Nexus.PortalMonitor.AddPortal(world);
                     return world;
                 }
             });
@@ -83,17 +80,16 @@ namespace wServer.core
             switch (worldResource.Instance)
             {
                 case WorldResourceInstanceType.Nexus:
-                    world = new NexusWorld(nextId, worldResource);
+                    world = new NexusWorld(GameServer, nextId, worldResource);
                     break;
                 case WorldResourceInstanceType.Vault:
-                    world = new VaultWorld(nextId, worldResource, parent);
+                    world = new VaultWorld(GameServer, nextId, worldResource, parent);
                     break;
                 default:
-                    world = new World(nextId, worldResource, parent);
+                    world = new World(GameServer, nextId, worldResource, parent);
                     break;
             }
 
-            world.GameServer = GameServer; // todo add to ctor
             var success = world.LoadMapFromData(worldResource);
             if (!success)
                 return null;
@@ -116,18 +112,11 @@ namespace wServer.core
                 Console.WriteLine("Testing couldnt be made");
                 return;
             }
-            var world = new TestWorld(-6, worldResource);
 
-            world.GameServer = GameServer; // todo add to ctor
-            
+            var world = new TestWorld(GameServer, -6, worldResource);
             world.Init();
             Worlds[world.Id] = world;
             Nexus.WorldBranch.AddBranch(world);
-        }
-
-        public void AddVaultInstance(int accountId, VaultWorld world)
-        {
-            _ = Vaults.TryAdd(accountId, world);
         }
 
         public void AddGuildInstance(int guildId, World world)
@@ -137,7 +126,6 @@ namespace wServer.core
         }
 
         public World GetWorld(int id) => Worlds.TryGetValue(id, out World ret) ? ret : null;
-        public VaultWorld GetVault(int accountId) => Vaults.TryGetValue(accountId, out var ret) ? ret : null;
         public World GetGuild(int guildId) => Guilds.TryGetValue(guildId, out var ret) ? ret : null;
         public int GetGuildId(int gameId) => WorldToGuildId.TryGetValue(gameId, out var ret) ? ret : -1;
 
@@ -150,9 +138,6 @@ namespace wServer.core
             {
                 switch (world.InstanceType)
                 {
-                    case WorldResourceInstanceType.Vault:
-                        _ = Vaults.TryRemove((world as VaultWorld).AccountId, out _);
-                        break;
                     case WorldResourceInstanceType.Guild:
                         var guildId = GetGuildId(world.Id);
                         _ = Guilds.TryRemove(guildId, out _);

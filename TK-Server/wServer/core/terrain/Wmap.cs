@@ -166,7 +166,7 @@ namespace wServer.core.terrain
                 for (short y = 0; y < Height; y++)
                     for (short x = 0; x < Width; x++)
                     {
-                        var tile = new WmapTile(dict[rdr.ReadInt16()], x, y);
+                        var tile = new WmapTile(dict[rdr.ReadInt16()]);
 
                         if (ver == 2)
                             tile.Elevation = rdr.ReadByte();
@@ -240,7 +240,7 @@ namespace wServer.core.terrain
             for (short y = 0; y < Height; y++)
                 for (short x = 0; x < Width; x++)
                 {
-                    var tile = new WmapTile(wTiles[x, y], x, y);
+                    var tile = new WmapTile(wTiles[x, y]);
 
                     if (tile.Region != 0)
                         Regions.Add(new IntPoint(x, y), tile.Region);

@@ -12,17 +12,15 @@ namespace wServer.core.setpieces
         private static readonly string WallA = "Blue Wall";
         private static readonly string WallB = "Destructible Blue Wall";
 
-        private Random rand = new Random();
-
         public override int Size => 26;
 
-        public void RenderSetPiece(World world, IntPoint pos)
+        public override void RenderSetPiece(World world, IntPoint pos)
         {
             var t = new int[25, 26];
 
             for (var x = 2; x < 23; x++)    //Floor
                 for (var y = 1; y < 24; y++)
-                    t[x, y] = rand.Next() % 10 == 0 ? 0 : 1;
+                    t[x, y] = world.Random.Next() % 10 == 0 ? 0 : 1;
 
             for (var y = 1; y < 24; y++)    //Perimeters
                 t[2, y] = t[22, y] = 2;
@@ -52,7 +50,7 @@ namespace wServer.core.setpieces
                     if (t[x, y] == 1 || t[x, y] == 0)
                         continue;
 
-                    var p = rand.NextDouble();
+                    var p = world.Random.NextDouble();
 
                     if (p < 0.1)
                         t[x, y] = 1;
@@ -60,7 +58,7 @@ namespace wServer.core.setpieces
                         t[x, y]++;
                 }
 
-            var r = rand.Next(0, 4);
+            var r = world.Random.Next(0, 4);
 
             for (var i = 0; i < r; i++)     //Rotation
                 t = SetPieces.RotateCW(t);

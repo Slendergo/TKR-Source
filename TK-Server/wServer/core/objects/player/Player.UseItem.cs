@@ -1,4 +1,5 @@
 ﻿using CA.Extensions.Concurrent;
+using common;
 using common.resources;
 using StackExchange.Redis;
 using System;
@@ -44,7 +45,7 @@ namespace wServer.core.objects
         {
             var entity = World.GetEntity(objId);
 
-            var dustItem = World.GameServer.ItemDustWeights.ItemDusts.GetRandom(_random);
+            var dustItem = World.GameServer.ItemDustWeights.ItemDusts.GetRandom(World.Random);
             if (entity is Container container)
                 container.Inventory[slot] = dustItem;
             else
@@ -56,7 +57,7 @@ namespace wServer.core.objects
         {
             var entity = World.GetEntity(objId);
 
-            var dustItem = World.GameServer.ItemDustWeights.SpecialDust.GetRandom(_random);
+            var dustItem = World.GameServer.ItemDustWeights.SpecialDust.GetRandom(World.Random);
             if (entity is Container container)
                 container.Inventory[slot] = dustItem;
             else
@@ -576,7 +577,7 @@ namespace wServer.core.objects
             for (var i = 0; i < shoots; i++)
             {
                 var proj = CreateProjectile(prjDesc, item.ObjectType,
-                    _random.Next(prjDesc.MinDamage, prjDesc.MaxDamage),
+                    World.Random.Next(prjDesc.MinDamage, prjDesc.MaxDamage),
                     time.TotalElapsedMs, target, (float)(i * (Math.PI * 2) / shoots));
                 World.EnterWorld(proj);
                 FameCounter.Shoot(proj);
@@ -1236,7 +1237,7 @@ namespace wServer.core.objects
 
             var entity = World.GetEntity(objId);
 
-            var dustItem = World.GameServer.ItemDustWeights.MagicDust.GetRandom(_random);
+            var dustItem = World.GameServer.ItemDustWeights.MagicDust.GetRandom(World.Random);
             if (entity is Container container)
                 container.Inventory[slot] = dustItem;
             else
@@ -1266,7 +1267,7 @@ namespace wServer.core.objects
         {
             var entity = World.GetEntity(objId);
 
-            var dustItem = World.GameServer.ItemDustWeights.MiscDust.GetRandom(_random);
+            var dustItem = World.GameServer.ItemDustWeights.MiscDust.GetRandom(World.Random);
             if (entity is Container container)
                 container.Inventory[slot] = dustItem;
             else
@@ -1330,7 +1331,7 @@ namespace wServer.core.objects
         {
             var entity = World.GetEntity(objId);
 
-            var dustItem = World.GameServer.ItemDustWeights.PotionDust.GetRandom(_random);
+            var dustItem = World.GameServer.ItemDustWeights.PotionDust.GetRandom(World.Random);
             if (entity is Container container)
                 container.Inventory[slot] = dustItem;
             else
@@ -1730,11 +1731,10 @@ namespace wServer.core.objects
 
             if (enemies.Count > 0)
             {
-                var rand = new Random();
                 for (var i = 0; i < 5; i++)
                 {
-                    var a = enemies[rand.Next(0, enemies.Count)];
-                    var b = players[rand.Next(0, players.Count)];
+                    var a = World.Random.NextLength(enemies);
+                    var b = World.Random.NextLength(players);
 
                     World.BroadcastIfVisible(new ShowEffect()
                     {

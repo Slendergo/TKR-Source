@@ -8,13 +8,13 @@ namespace wServer.logic.transitions
         //State storage: cooldown timer
 
         private readonly int _time;
-        private readonly bool _randomized;
+        private readonly bool Randomized;
 
         public TimedRandomTransition(int time, bool randomizedTime = false, params string[] states)
             : base(states)
         {
             _time = time;
-            _randomized = randomizedTime;
+            Randomized = randomizedTime;
         }
 
         protected override bool TickCore(Entity host, TickTime time, ref object state)
@@ -22,7 +22,7 @@ namespace wServer.logic.transitions
             int cool;
 
             if (state == null)
-                cool = _randomized ?
+                cool = Randomized ?
                     Random.Next(_time) :
                     _time;
             else

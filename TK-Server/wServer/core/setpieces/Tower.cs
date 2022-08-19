@@ -10,8 +10,6 @@ namespace wServer.core.setpieces
         private static readonly string Wall = "Grey Wall";
         private static int[,] quarter;
 
-        private Random rand = new Random();
-
         static Tower()
         {
             var s =
@@ -40,7 +38,7 @@ namespace wServer.core.setpieces
 
         public override int Size => 27;
 
-        public void RenderSetPiece(World world, IntPoint pos)
+        public override void RenderSetPiece(World world, IntPoint pos)
         {
             var t = new int[27, 27];
             var q = (int[,])quarter.Clone();
@@ -73,7 +71,7 @@ namespace wServer.core.setpieces
 
             t[12, 0] = t[13, 0] = t[14, 0] = 2;
 
-            var r = rand.Next(0, 4);                //Rotation
+            var r = world.Random.Next(0, 4);                //Rotation
 
             for (var i = 0; i < r; i++)
                 t = SetPieces.RotateCW(t);

@@ -22,6 +22,7 @@ namespace wServer.core
             World = world;
 
             Thread = new Thread(Run);
+            Thread.Name = $"{World.GetDisplayName()}_Logic";
             Thread.Start();
         }
 
@@ -36,7 +37,7 @@ namespace wServer.core
 
             var realmTime = new TickTime();
 
-            while (true)
+            while (!Stopped)
             {
                 if (TryNewSystem)
                 {
@@ -50,7 +51,7 @@ namespace wServer.core
 
                         try
                         {
-                            if (Stopped || World.Update(ref realmTime))
+                            if (World.Update(ref realmTime))
                             {
                                 _ = WorldManager.RemoveWorld(World);
                                 break;
@@ -80,7 +81,7 @@ namespace wServer.core
 
                     try
                     {
-                        if (Stopped || World.Update(ref realmTime))
+                        if (World.Update(ref realmTime))
                         {
                             _ = WorldManager.RemoveWorld(World);
                             break;
@@ -96,7 +97,6 @@ namespace wServer.core
                     lastMS = currentMS;
                 }
             }
-            Stop();
         }
 
         public void Stop()

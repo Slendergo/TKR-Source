@@ -25,14 +25,14 @@ namespace wServer.core.terrain
 
         private WmapDesc _originalDesc;
 
-        public WmapTile(WmapDesc desc, short x, short y)
+        public WmapTile(WmapDesc desc)
         {
             _originalDesc = desc;
 
             Reset();
         }
 
-        public WmapTile Clone() => new WmapTile(_originalDesc, X, Y)
+        public WmapTile Clone() => new WmapTile(_originalDesc)
         {
             UpdateCount = (byte)(UpdateCount + 1),
             TileId = _originalDesc.TileId,

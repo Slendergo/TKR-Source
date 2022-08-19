@@ -15,22 +15,19 @@ namespace wServer.core.objects
         private SV<int> _hp;
         private SV<int> _maximumHP;
 
+        private static Random R = new Random();//temp fix
+
         protected Character(GameServer manager, ushort objType) : base(manager, objType)
         {
             _hp = new SV<int>(this, StatDataType.HP, 0);
             _maximumHP = new SV<int>(this, StatDataType.MaximumHP, 0);
             _glowcolor = new SV<int>(this, StatDataType.GlowEnemy, 0);
-        }
-
-        public override void Init(World owner)
-        {
-            base.Init(owner);
 
             if (ObjectDesc != null)
             {
                 if (ObjectDesc.SizeStep != 0)
                 {
-                    var step = World.Random.Next(0, (ObjectDesc.MaxSize - ObjectDesc.MinSize) / ObjectDesc.SizeStep + 1) * ObjectDesc.SizeStep;
+                    var step = R.Next(0, (ObjectDesc.MaxSize - ObjectDesc.MinSize) / ObjectDesc.SizeStep + 1) * ObjectDesc.SizeStep;
                     SetDefaultSize(ObjectDesc.MinSize + step);
                 }
                 else

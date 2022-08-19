@@ -639,6 +639,7 @@ namespace wServer.core.objects
             chr.LDBoostTime = LDBoostTime;
             chr.UpgradeEnabled = UpgradeEnabled;
             chr.Datas = Inventory.Data.GetDatas();
+
             Client.Account.TotalFame = Client.Account.Fame;
             Stats.ReCalculateValues();
         }

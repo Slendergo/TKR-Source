@@ -539,12 +539,13 @@ namespace wServer.core
 
         public void AnnounceMVP(Enemy eventDead, string name)
         {
-            var mvp = eventDead.DamageCounter.hitters.Aggregate((a, b) => a.Value > b.Value ? a : b).Key;
+            var hitters = eventDead.DamageCounter.GetHitters();
+            var mvp = hitters.Aggregate((a, b) => a.Value > b.Value ? a : b).Key;
             if (mvp == null)
                 return;
 
-            var playerCount = eventDead.DamageCounter.hitters.Count;
-            var dmgPercentage = (float)Math.Round(100.0 * (eventDead.DamageCounter.hitters[mvp] / (double)eventDead.DamageCounter.TotalDamage), 0);
+            var playerCount = hitters.Count;
+            var dmgPercentage = (float)Math.Round(100.0 * (hitters[mvp] / (double)eventDead.DamageCounter.TotalDamage), 0);
             if (eventDead.Name.Equals("Pentaract"))
                 dmgPercentage = (float)Math.Round(dmgPercentage / 5, 0);
 

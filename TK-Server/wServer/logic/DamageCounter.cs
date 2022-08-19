@@ -10,7 +10,7 @@ namespace wServer.logic
 {
     public class DamageCounter
     {
-        public WeakDictionary<Player, int> hitters = new WeakDictionary<Player, int>();
+        private WeakDictionary<Player, int> Hitters;
 
         public Enemy Host;
 
@@ -21,6 +21,13 @@ namespace wServer.logic
         public Projectile LastProjectile { get; private set; }
         public DamageCounter Parent { get; set; }
         public int TotalDamage { get; private set; }
+
+        public WeakDictionary<Player, int> GetHitters()
+        {
+            if (Hitters == null)
+                Hitters = new WeakDictionary<Player, int>();
+            return Hitters;
+        }
 
         public void Death(TickTime time)
         {
@@ -103,6 +110,8 @@ namespace wServer.logic
             if (Parent != null)
                 return Parent.GetPlayerData();
             List<Tuple<Player, int>> dat = new List<Tuple<Player, int>>();
+
+            var hitters = GetHitters();
             foreach (var i in hitters)
             {
                 if (i.Key == null || i.Key.World == null || i.Key.World.GetEntity(i.Key.Id) == null) continue;
@@ -114,6 +123,7 @@ namespace wServer.logic
 
         public void HitBy(Player player, TickTime time, Projectile projectile, int dmg)
         {
+            var hitters = GetHitters();
             if (!hitters.TryGetValue(player, out int totalDmg))
                 totalDmg = 0;
 
@@ -132,15 +142,17 @@ namespace wServer.logic
             dc.LastProjectile = LastProjectile;
             dc.LastHitter = LastHitter;
             dc.TotalDamage = TotalDamage;
-
+            
+            var hitters = GetHitters();
             foreach (var plr in hitters.Keys)
             {
-                if (!hitters.TryGetValue(plr, out int totalDmg))
+                if (!hitters.TryGetValue(plr, out var totalDmg))
                     totalDmg = 0;
-                if (!dc.hitters.TryGetValue(plr, out int totalExistingDmg))
-                    totalExistingDmg = 0;
 
-                dc.hitters[plr] = totalDmg + totalExistingDmg;
+                var dch = dc.GetHitters();
+                if (!dch.TryGetValue(plr, out int totalExistingDmg))
+                    totalExistingDmg = 0;
+                dch[plr] = totalDmg + totalExistingDmg;
             }
         }
     }

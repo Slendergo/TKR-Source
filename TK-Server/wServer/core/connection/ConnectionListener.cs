@@ -25,7 +25,7 @@ namespace wServer.networking.connection
         public SendToken(int offset)
         {
             BufferOffset = offset;
-            Data = new byte[0x100000];
+            Data = new byte[1024 * 16]; // 16kb;
             Pending = new ConcurrentQueue<OutgoingMessage>();
         }
 

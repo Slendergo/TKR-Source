@@ -26,6 +26,7 @@ namespace wServer.logic.behaviors
         }
 
         protected override void TickCore(Entity host, TickTime time, ref object state)
-        { }
+        {
+        }
     }
 }

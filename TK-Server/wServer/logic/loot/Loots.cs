@@ -336,7 +336,9 @@ namespace wServer.logic.loot
                             msg.Append("a Mythical");
                         else if (i.Eternal)
                             msg.Append("an Eternal");
-                        msg.Append($" [{i.DisplayId ?? i.ObjectId}], by doing {Math.Round(100.0 * (enemy.DamageCounter.hitters[owners[0]] / (double)enemy.DamageCounter.TotalDamage), 0)}% damage!");
+
+                        var hitters = enemy.DamageCounter.GetHitters();
+                        msg.Append($" [{i.DisplayId ?? i.ObjectId}], by doing {Math.Round(100.0 * (hitters[owners[0]] / (double)enemy.DamageCounter.TotalDamage), 0)}% damage!");
                         chat.AnnounceLoot(msg.ToString());
                     }
                 }

@@ -434,7 +434,7 @@
     <Compile Include="networking\packets\outgoing\AllyShoot.cs" />
     <Compile Include="networking\packets\outgoing\Aoe.cs" />
     <Compile Include="networking\packets\outgoing\bounty\BountyMemberListSend.cs" />
-    <Compile Include="networking\packets\outgoing\BuyResult.cs" />
+    <Compile Include="networking\packets\outgoing\BuyResultMessage.cs" />
     <Compile Include="networking\packets\outgoing\SwitchMusic.cs" />
     <Compile Include="networking\packets\outgoing\ClientStat.cs" />
     <Compile Include="networking\packets\outgoing\CreateSuccess.cs" />

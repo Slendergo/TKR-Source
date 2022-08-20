@@ -35,7 +35,7 @@ namespace wServer.core.objects.vendors
             base.ExportStats(stats);
         }
 
-        protected void SendFailed(Player player, BuyResult result) => player.Client.SendPacket(new networking.packets.outgoing.BuyResult
+        protected void SendFailed(Player player, BuyResult result) => player.Client.SendPacket(new networking.packets.outgoing.BuyResultMessage
         {
             Result = 1,
             ResultString = $"Purchase Error: {result.GetDescription()}"

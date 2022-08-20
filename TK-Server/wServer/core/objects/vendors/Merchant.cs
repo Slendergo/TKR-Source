@@ -98,7 +98,7 @@ namespace wServer.core.objects.vendors
 
         protected virtual void SendNotifications(Player player, bool gift)
         {
-            player.Client.SendPacket(new networking.packets.outgoing.BuyResult
+            player.Client.SendPacket(new networking.packets.outgoing.BuyResultMessage
             {
                 Result = 0,
                 ResultString = "Item purchased!"

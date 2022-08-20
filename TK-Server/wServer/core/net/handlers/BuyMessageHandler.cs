@@ -25,6 +25,13 @@ namespace wServer.core.net.handlers
 
             var obj = player.World.GetEntity(objectId) as SellableObject;
             obj?.Buy(player);
+
+            if(obj == null)
+                player.Client.SendPacket(new BuyResultMessage
+                {
+                    Result = 1,
+                    ResultString = $"Purchase Error: {BuyResult.TransactionFailed.GetDescription()}"
+                });
         }
     }
 }

@@ -9,7 +9,7 @@ namespace wServer.networking.packets.outgoing
         NotEnoughFame = 2
     }
 
-    public class BuyResult : OutgoingMessage
+    public class BuyResultMessage : OutgoingMessage
     {
         public const int Success = 0;
         public const int Dialog = 1;

@@ -39,7 +39,7 @@ namespace wServer.core.objects.vendors
 
             if (guild.Fame < Price)
             {
-                player.Client.SendPacket(new networking.packets.outgoing.BuyResult
+                player.Client.SendPacket(new networking.packets.outgoing.BuyResultMessage
                 {
                     ResultString = "Not enough Guild Fame!",
                     Result = 9
@@ -58,7 +58,7 @@ namespace wServer.core.objects.vendors
             guild.GuildLootBoost = guild.GuildLootBoost + 0.05f;
             guild.FlushAsync();
 
-            player.Client.SendPacket(new networking.packets.outgoing.BuyResult
+            player.Client.SendPacket(new networking.packets.outgoing.BuyResultMessage
             {
                 ResultString = "Upgrade successful! Upgrade may take a short period of time.",
                 Result = 0

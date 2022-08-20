@@ -166,6 +166,9 @@ namespace wServer.core
                 return;
             }
 
+            if (world.InstanceType == common.resources.WorldResourceInstanceType.Vault)
+                (world as VaultWorld).SetClient(client);
+
             if (world is TestWorld)
             {
                 var mapFolder = $"{GameServer.Configuration.serverSettings.logFolder}/maps";

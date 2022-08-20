@@ -43,7 +43,7 @@ namespace wServer.core.objects.vendors
                 player.CurrentFame = acc.Fame;
                 (World as VaultWorld)?.AddChest(this);
                 acc.Reload();
-                player.Client.SendPacket(new networking.packets.outgoing.BuyResult()
+                player.Client.SendPacket(new networking.packets.outgoing.BuyResultMessage()
                 {
                     Result = 0,
                     ResultString = "Vault chest purchased!"

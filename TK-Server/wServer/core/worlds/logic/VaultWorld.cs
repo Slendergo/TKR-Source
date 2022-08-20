@@ -17,28 +17,25 @@ namespace wServer.core.worlds.logic
         public int AccountId { get; private set; }
         public Client Client  { get; private set; }
         
-        private readonly LinkedList<Container> Vaults = new LinkedList<Container>();
-
         public VaultWorld(GameServer gameServer, int id, WorldResource resource, World parent) : base(gameServer, id, resource, parent)
         {
         }
 
         public void AddChest(Entity original)
         {
-            var vaultChest = new DbVaultSingle(Client .Account, Client .Account.VaultCount - 1);
-            var con = new Container(Client .GameServer, 0x0504, null, false, vaultChest)
+            var vaultChest = new DbVaultSingle(Client.Account, Client.Account.VaultCount - 1);
+            var con = new Container(Client.GameServer, 0x0504, null, false, vaultChest)
             {
-                BagOwners = new int[] { Client .Account.AccountId }
+                BagOwners = new int[] { Client .Account.AccountId },
+                Size = 65
             };
             con.Inventory.SetItems(con.Inventory.ConvertTypeToItemArray(vaultChest.Items));
             con.Inventory.SetDataItems(vaultChest.ItemDatas);
             con.Inventory.InventoryChanged += (sender, e) => SaveChest(((Inventory)sender).Parent);
             con.Move(original.X, original.Y);
 
-            LeaveWorld(original);
             EnterWorld(con);
-
-            Vaults.AddFirst(con);
+            LeaveWorld(original);
         }
 
         public override bool AllowedAccess(Client client) => AccountId == client.Account.AccountId || client.Account.IsAdmin;
@@ -119,7 +116,6 @@ namespace wServer.core.worlds.logic
                 EnterWorld(con);
 
                 vaultChestPosition.RemoveAt(0);
-                Vaults.AddFirst(con);
             }
             foreach (var i in vaultChestPosition)
             {
@@ -186,6 +182,7 @@ namespace wServer.core.worlds.logic
                 //Console.WriteLine($"Chest With Items, Pos: X: {specialChestPosition[0].X}, Y: {specialChestPosition[0].Y}");
                 specialChestPosition.RemoveAt(0);
             }
+
             foreach (var i in specialChestPosition)
             {
                 var x = new StaticObject(Client .GameServer, 0xa012, null, true, false, false) { Size = 65 };

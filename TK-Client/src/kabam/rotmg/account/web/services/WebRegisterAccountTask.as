@@ -40,6 +40,7 @@ package kabam.rotmg.account.web.services
          obj.guid = this.account.getUserId();
          obj.newGUID = this.data.username;
          obj.newPassword = this.data.password;
+         obj.name = this.data.name;
          return obj;
       }
       
@@ -49,9 +50,12 @@ package kabam.rotmg.account.web.services
          completeTask(isOK,data);
       }
       
-      private function onRegisterDone() : void
-      {
-         this.account.updateUser(this.data.username,this.data.password);
+      private function onRegisterDone() : void {
+         if (this.data.name) {
+            this.model.setName(this.data.name);
+            this.model.isNameChosen = true;
+         }
+         this.account.updateUser(this.data.username, this.data.password);
       }
    }
 }

@@ -112,7 +112,7 @@ import kabam.rotmg.ui.view.components.ScreenBase;
          {
             this.createScrollbar();
          }
-         if(!model.isNameChosen())
+         if(!model.isNameChosen)
          {
             this.createChooseNameLink();
          }
@@ -321,6 +321,7 @@ import kabam.rotmg.ui.view.components.ScreenBase;
             removeChild(this.nameChooseLink_);
             this.nameChooseLink_ = null;
          }
+          this.model.isNameChosen = true;
       }
    }
 }

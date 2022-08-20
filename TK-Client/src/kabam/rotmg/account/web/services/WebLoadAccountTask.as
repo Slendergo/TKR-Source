@@ -48,6 +48,9 @@ package kabam.rotmg.account.web.services
             rotmg = SharedObject.getLocal("OSRotMG","/");
             rotmg.data["GUID"] && (this.data.username = rotmg.data["GUID"]);
             rotmg.data["Password"] && (this.data.password = rotmg.data["Password"]);
+            if (rotmg.data.hasOwnProperty("Name")){
+               this.data.name = rotmg.data["Name"];
+            }
          }
          catch(error:Error)
          {

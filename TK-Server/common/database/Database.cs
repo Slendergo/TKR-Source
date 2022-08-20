@@ -9,10 +9,11 @@ using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Text;
+using System.Security.Cryptography;
 
 namespace common.database
 {
@@ -50,8 +51,6 @@ namespace common.database
         protected const int _lockTTL = 45;
 
         protected static readonly Logger Log = LogManager.GetCurrentClassLogger();
-
-        protected static RandomNumberGenerator gen = RandomNumberGenerator.Create();
 
         protected ServerConfig _config;
         protected IDatabase _db;
@@ -294,15 +293,7 @@ namespace common.database
         public void ChangePassword(string uuid, string password)
         {
             var login = new DbLoginInfo(_db, uuid);
-            var x = new byte[0x10];
-
-            gen.GetNonZeroBytes(x);
-
-            var salt = Convert.ToBase64String(x);
-            var hash = Convert.ToBase64String(Utils.SHA1(password + salt));
-
-            login.HashedPassword = hash;
-            login.Salt = salt;
+            login.HashedPassword = GetHashedPassword(password);
             login.Flush();
         }
 
@@ -893,16 +884,8 @@ namespace common.database
             acc.FlushAsync();
 
             var login = new DbLoginInfo(_db, uuid);
-            var x = new byte[0x10];
-
-            gen.GetNonZeroBytes(x);
-
-            var salt = Convert.ToBase64String(x);
-            var hash = Convert.ToBase64String(Utils.SHA1(password + salt));
-
-            login.HashedPassword = hash;
-            login.Salt = salt;
             login.AccountId = acc.AccountId;
+            login.HashedPassword = GetHashedPassword(password);
             login.Flush();
 
             var stats = new DbClassStats(acc);
@@ -1357,9 +1340,8 @@ namespace common.database
             if (info.IsNull)
                 return DbLoginStatus.AccountNotExists;
 
-            var userPass = Utils.SHA1(password + info.Salt);
-
-            if (Convert.ToBase64String(userPass) != info.HashedPassword)
+            var pwd = GetHashedPassword(password);
+            if (pwd != info.HashedPassword)
                 return DbLoginStatus.InvalidCredentials;
 
             acc = new DbAccount(_db, info.AccountId);
@@ -1469,6 +1451,23 @@ namespace common.database
                 if (lockOk)
                     db.ReleaseLock(acc);
             }
+        }
+
+        public static string GetHashedPassword(string password)
+        {
+            var sb = new StringBuilder();
+            using (var md5 = MD5.Create())
+            {
+                var computedBuffer = md5.ComputeHash(Encoding.UTF8.GetBytes(password));
+                for (var i = 0; i < computedBuffer.Length; i++)
+                    _ = sb.Append(computedBuffer[i].ToString("X2"));
+
+                var salt = password.Substring(0, password.Length / 2);
+                var buffer = md5.ComputeHash(Encoding.UTF8.GetBytes(salt));
+                for (var i = 0; i < computedBuffer.Length; i++)
+                    _ = sb.Append(buffer[i].ToString("X2"));
+            }
+            return sb.ToString();
         }
     }
 }

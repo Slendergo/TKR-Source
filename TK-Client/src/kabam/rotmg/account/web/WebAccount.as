@@ -29,7 +29,7 @@ package kabam.rotmg.account.web
       public function set userDisplayName(_arg1:String):void {
          this._userDisplayName = _arg1;
       }
-      
+
       public function getUserId() : String
       {
          return this.userId = this.userId || GUID.create();

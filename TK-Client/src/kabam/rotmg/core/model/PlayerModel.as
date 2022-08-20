@@ -208,12 +208,17 @@ package kabam.rotmg.core.model
       {
          this.charList.name_ = value;
       }
-      
-      public function isNameChosen() : Boolean
+
+      public function set isNameChosen(_arg1:Boolean):void
+      {
+         this.charList.nameChosen_ = _arg1;
+      }
+
+      public function get isNameChosen() : Boolean
       {
          return this.charList.nameChosen_;
       }
-      
+
       public function getNewUnlocks(objectType_:int, level_:int) : Array
       {
          return this.charList.newUnlocks(objectType_,level_);

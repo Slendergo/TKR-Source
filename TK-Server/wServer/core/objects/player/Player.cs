@@ -586,7 +586,7 @@ namespace wServer.core.objects
                 catch (Exception ex)
                 {
                     if (!(ex is EndOfStreamException))
-                        StaticLogger.Instance.Error("Error processing packet ({0}, {1})\n{3}", (incomingMessage.Client.Account != null) ? incomingMessage.Client.Account.Name : "", incomingMessage.Client.IpAddress, ex);
+                        StaticLogger.Instance.Error($"Error processing packet ({((incomingMessage.Client.Account != null) ? incomingMessage.Client.Account.Name : "")}, {incomingMessage.Client.IpAddress})\n{ex}");
                     incomingMessage.Client.SendFailure("An error occurred while processing data from your client.", FailureMessage.MessageWithDisconnect);
                 }
             }

@@ -280,7 +280,7 @@ namespace wServer.networking.connection
                             catch (Exception exx)
                             {
                                 if (!(exx is EndOfStreamException))
-                                    StaticLogger.Instance.Error("Error processing packet ({0}, {1}, {2})\n{3}", (Client.Account != null) ? Client.Account.Name : "", Client.IpAddress, id, exx);
+                                    StaticLogger.Instance.Error($"Error processing packet ({((Client.Account != null) ? Client.Account.Name : "")}, {Client.IpAddress})\n{exx}");
                                 Client.Disconnect($"Read Error for packet: {id}");
                             }
                         }

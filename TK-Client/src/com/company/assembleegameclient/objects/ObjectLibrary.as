@@ -118,6 +118,9 @@ public class ObjectLibrary
                   }
                }
 
+               if(id.indexOf("Engine") != -1){
+trace ();
+               }
                typeToTextureData_[objectType] = new TextureData(objectXML);
                if (objectXML.hasOwnProperty("Top")) {
                   typeToTopTextureData_[objectType] = new TextureData(XML(objectXML.Top));

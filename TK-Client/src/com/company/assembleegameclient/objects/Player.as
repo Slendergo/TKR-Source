@@ -174,14 +174,6 @@ public class Player extends Character {
     public var maxedDex:Boolean = false;
     public var maxedVit:Boolean = false;
     public var maxedWis:Boolean = false;
-    public var superMaxedLife:Boolean = false;
-    public var superMaxedMana:Boolean = false;
-    public var superMaxedAtt:Boolean = false;
-    public var superMaxedDef:Boolean = false;
-    public var superMaxedSpd:Boolean = false;
-    public var superMaxedDex:Boolean = false;
-    public var superMaxedVit:Boolean = false;
-    public var superMaxedWis:Boolean = false;
     public var hasBackpack_:Boolean = false;
     public var starred_:Boolean = false;
     public var ignored_:Boolean = false;

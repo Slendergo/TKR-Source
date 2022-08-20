@@ -192,6 +192,9 @@ namespace wServer.core.objects
                 case "Merchant":
                     return new WorldMerchant(manager, id);
 
+                case "Engine":
+                    return new Engine(manager, id);
+
                 case "GuildMerchant":
                     return new GuildMerchant(manager, id);
 

@@ -135,14 +135,7 @@ public class StatData
    public static const SPS_VITALITY_COUNT_MAX:int = 155;
    public static const SPS_WISDOM_COUNT:int = 156;
    public static const SPS_WISDOM_COUNT_MAX:int = 157;
-   public static const SUPERMAXEDLIFE:int = 178;
-   public static const SUPERMAXEDMANA:int = 179;
-   public static const SUPERMAXEDATT:int = 180;
-   public static const SUPERMAXEDDEF:int = 181;
-   public static const SUPERMAXEDSPD:int = 182;
-   public static const SUPERMAXEDDEX:int = 183;
-   public static const SUPERMAXEDVIT:int = 184;
-   public static const SUPERMAXEDWIS:int = 185;
+   public static const ENGINE_VALUE:int = 158;
 
 
    public var statType_:uint = 0;

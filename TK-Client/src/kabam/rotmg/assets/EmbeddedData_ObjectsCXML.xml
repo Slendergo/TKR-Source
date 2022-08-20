@@ -27841,8 +27841,8 @@
     <God />
     <Level>20</Level>
     <AnimatedTexture>
-      <File>Custom16x16dEncounters</File>
-      <Index>0</Index>
+      <File>Custom16x16Encounters</File>
+      <Index>43</Index>
     </AnimatedTexture>
     <DisplayedId>Abominable Snowman</DisplayedId>
     <Size>150</Size>
@@ -27898,8 +27898,8 @@
     <God />
     <Level>1</Level>
     <AnimatedTexture>
-      <File>Custom16x16dEncounters</File>
-      <Index>10</Index>
+      <File>Custom16x16Encounters</File>
+      <Index>38</Index>
     </AnimatedTexture>
     <DisplayedId>Queen of Ice</DisplayedId>
     <Size>130</Size>
@@ -27959,13 +27959,245 @@
       <ConditionEffect duration="4">Sick</ConditionEffect>
     </Projectile>
   </Object>
+  <Object type="0xa6a2" id="Queen of Ice Clone">
+    <Class>Character</Class>
+    <Enemy />
+    <SpecialEnemy />
+    <Hero />
+    <God />
+    <Level>1</Level>
+    <AnimatedTexture>
+      <File>Custom16x16Encounters</File>
+      <Index>38</Index>
+    </AnimatedTexture>
+    <DisplayedId>Queen of Ice</DisplayedId>
+    <Size>110</Size>
+    <MaxHitPoints>40000</MaxHitPoints>
+    <Defense>60</Defense>
+    <SlowImmune />
+    <StasisImmune />
+    <StunImmune />
+    <ParalyzeImmune />
+    <XpMult>0</XpMult>
+    <Projectile id="0">
+      <ObjectId>Projectile 0 QI</ObjectId>
+      <MinDamage>60</MinDamage>
+      <MaxDamage>120</MaxDamage>
+      <Size>100</Size>
+      <Speed>90</Speed>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+  </Object>
+  <Object type="0x215" id="Cursed Snowman Switch">
+    <Class>Character</Class>
+    <Enemy />
+    <SpecialEnemy />
+    <Hero />
+    <God />
+    <Level>1</Level>
+    <AnimatedTexture>
+      <File>Custom16x16Encounters</File>
+      <Index>44</Index>
+    </AnimatedTexture>
+    <DisplayedId>Cursed Snowman</DisplayedId>
+    <Size>160</Size>
+    <MaxHitPoints>80000</MaxHitPoints>
+    <Defense>44</Defense>
+    <StasisImmune />
+    <StunImmune />
+    <XpMult>1</XpMult>
+    <Projectile id="0">
+      <ObjectId>Projectile 0 CSS</ObjectId>
+      <Damage>85</Damage>
+      <Size>100</Size>
+      <Speed>90</Speed>
+      <LifetimeMS>1000</LifetimeMS>
+      <MultiHit />
+    </Projectile>
+    <Projectile id="1">
+      <ObjectId>Projectile 1 CSS</ObjectId>
+      <Damage>120</Damage>
+      <Size>90</Size>
+      <Speed>40</Speed>
+      <LifetimeMS>1200</LifetimeMS>
+    </Projectile>
+    <Projectile id="2">
+      <ObjectId>Projectile 2 CSS</ObjectId>
+      <Damage>110</Damage>
+      <Size>100</Size>
+      <Speed>100</Speed>
+      <LifetimeMS>1000</LifetimeMS>
+      <ConditionEffect duration="1.8">Confused</ConditionEffect>
+    </Projectile>
+  </Object>
+  <Object type="0x719c" id="Frozen Tower">
+    <Class>Character</Class>
+    <Enemy />
+    <SpecialEnemy />
+    <Hero />
+    <God />
+    <Level>1</Level>
+    <AnimatedTexture>
+      <File>Custom16x16Encounters</File>
+      <Index>42</Index>
+    </AnimatedTexture>
+    <DisplayedId>Frozen Tower</DisplayedId>
+    <Size>160</Size>
+    <MaxHitPoints>12000</MaxHitPoints>
+    <Defense>42</Defense>
+    <StasisImmune />
+    <StunImmune />
+    <XpMult>1</XpMult>
+    <Projectile id="0">
+      <ObjectId>Projectile 0 FT</ObjectId>
+      <MinDamage>60</MinDamage>
+      <MaxDamage>130</MaxDamage>
+      <Size>100</Size>
+      <Speed>100</Speed>
+      <Wavy>30</Wavy>
+      <LifetimeMS>4000</LifetimeMS>
+      <ConditionEffect duration="2">Confused</ConditionEffect>
+    </Projectile>
+  </Object>
+  <Object type="0xa143" id="Ice Tower">
+    <DisplayId>Ice Tower</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <AnimatedTexture>
+      <File>Custom16x16Encounters</File>
+      <Index>42</Index>
+    </AnimatedTexture>
+    <Size>100</Size>
+    <MaxHitPoints>20000</MaxHitPoints>
+    <Defense>50</Defense>
+    <StasisImmune />
+    <StunImmune />
+    <Projectile id="0">
+      <ObjectId>Projectile 0 FT</ObjectId>
+      <Damage>240</Damage>
+      <Speed>110</Speed>
+      <Size>80</Size>
+      <ArmorPiercing />
+      <LifetimeMS>700</LifetimeMS>
+    </Projectile>
+  </Object>
+  <Object type="0xa144" id="Ice Tower 1">
+    <DisplayId>Ice Tower</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <AnimatedTexture>
+      <File>Custom16x16Encounters</File>
+      <Index>42</Index>
+    </AnimatedTexture>
+    <Size>100</Size>
+    <MaxHitPoints>20000</MaxHitPoints>
+    <Defense>50</Defense>
+    <StasisImmune />
+    <StunImmune />
+    <Projectile id="0">
+      <ObjectId>Projectile 0 FT</ObjectId>
+      <Damage>240</Damage>
+      <Speed>110</Speed>
+      <Size>80</Size>
+      <ArmorPiercing />
+      <LifetimeMS>700</LifetimeMS>
+    </Projectile>
+  </Object>
+  <Object type="0xaad2" id="Ice Tower 2">
+    <DisplayId>Ice Tower</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <AnimatedTexture>
+      <File>Custom16x16Encounters</File>
+      <Index>42</Index>
+    </AnimatedTexture>
+    <Size>100</Size>
+    <MaxHitPoints>20000</MaxHitPoints>
+    <Defense>50</Defense>
+    <StasisImmune />
+    <StunImmune />
+    <Projectile id="0">
+      <ObjectId>Projectile 0 FT</ObjectId>
+      <Damage>240</Damage>
+      <Speed>110</Speed>
+      <Size>80</Size>
+      <ArmorPiercing />
+      <LifetimeMS>700</LifetimeMS>
+    </Projectile>
+  </Object>
+  <Object type="0xaad3" id="Ice Tower 3">
+    <DisplayId>Ice Tower</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <AnimatedTexture>
+      <File>Custom16x16Encounters</File>
+      <Index>42</Index>
+    </AnimatedTexture>
+    <Size>100</Size>
+    <MaxHitPoints>20000</MaxHitPoints>
+    <Defense>50</Defense>
+    <StasisImmune />
+    <StunImmune />
+    <Projectile id="0">
+      <ObjectId>Projectile 0 FT</ObjectId>
+      <Damage>240</Damage>
+      <Speed>110</Speed>
+      <Size>80</Size>
+      <ArmorPiercing />
+      <LifetimeMS>700</LifetimeMS>
+    </Projectile>
+  </Object>
+  <Object type="0xaad4" id="Ice Tower 4">
+    <DisplayId>Ice Tower</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <AnimatedTexture>
+      <File>Custom16x16Encounters</File>
+      <Index>42</Index>
+    </AnimatedTexture>
+    <Size>100</Size>
+    <MaxHitPoints>20000</MaxHitPoints>
+    <Defense>50</Defense>
+    <StasisImmune />
+    <StunImmune />
+    <Projectile id="0">
+      <ObjectId>Projectile 0 FT</ObjectId>
+      <Damage>240</Damage>
+      <Speed>110</Speed>
+      <Size>80</Size>
+      <ArmorPiercing />
+      <LifetimeMS>700</LifetimeMS>
+    </Projectile>
+  </Object>
+  <Object type="0xaad5" id="Ice Tower 5">
+    <DisplayId>Ice Tower</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <AnimatedTexture>
+      <File>Custom16x16Encounters</File>
+      <Index>42</Index>
+    </AnimatedTexture>
+    <Size>100</Size>
+    <MaxHitPoints>20000</MaxHitPoints>
+    <Defense>50</Defense>
+    <StasisImmune />
+    <StunImmune />
+    <Projectile id="0">
+      <ObjectId>Projectile 0 FT</ObjectId>
+      <Damage>240</Damage>
+      <Speed>110</Speed>
+      <Size>80</Size>
+      <ArmorPiercing />
+      <LifetimeMS>700</LifetimeMS>
+    </Projectile>
+  </Object>
   <Object type="0xaad9" id="Guardian of the Ice Queen">
     <DisplayId>Guardian of the Ice Queen</DisplayId>
     <Class>Character</Class>
     <Enemy />
     <AnimatedTexture>
       <File>Custom8x8Encounters</File>
-      <Index>31</Index>
+      <Index>36</Index>
     </AnimatedTexture>
     <Size>150</Size>
     <MaxHitPoints>30000</MaxHitPoints>
@@ -28073,8 +28305,8 @@
     <God />
     <Level>1</Level>
     <AnimatedTexture>
-      <File>Custom16x16dEncounters</File>
-      <Index>11</Index>
+      <File>Custom32x32Encounters</File>
+      <Index>21</Index>
     </AnimatedTexture>
     <DisplayedId>Corrupt Snowman</DisplayedId>
     <Size>160</Size>
@@ -28116,8 +28348,8 @@
     <God />
     <Level>1</Level>
     <AnimatedTexture>
-      <File>Custom16x16dEncounters</File>
-      <Index>11</Index>
+      <File>Custom32x32Encounters</File>
+      <Index>21</Index>
     </AnimatedTexture>
     <DisplayedId>Torn Snowman</DisplayedId>
     <Size>160</Size>
@@ -29183,6 +29415,41 @@
       <MultiHit />
       <LifetimeMS>2800</LifetimeMS>
       <ConditionEffect duration="4">Quiet</ConditionEffect>
+    </Projectile>
+  </Object>
+  <Object type="0xaad1" id="Protector of the Ice Queen">
+    <DisplayId>Protector of the Ice Queen</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <AnimatedTexture>
+      <File>Custom32x32Encounters</File>
+      <Index>20</Index>
+    </AnimatedTexture>
+    <Size>150</Size>
+    <ShadowSize>80</ShadowSize>
+    <MaxHitPoints>120000</MaxHitPoints>
+    <Defense>50</Defense>
+    <StasisImmune />
+    <StunImmune />
+    <ParalyzeImmune />
+    <Projectile id="0">
+      <ObjectId>Projectile 0 GIQ</ObjectId>
+      <Damage>120</Damage>
+      <Speed>65</Speed>
+      <Size>80</Size>
+      <ArmorPiercing />
+      <Boomerang />
+      <LifetimeMS>1000</LifetimeMS>
+    </Projectile>
+    <Projectile id="1">
+      <ObjectId>Projectile 1 GIQ</ObjectId>
+      <Damage>220</Damage>
+      <Speed>25</Speed>
+      <Size>120</Size>
+      <ArmorPiercing />
+      <Boomerang />
+      <ConditionEffect duration="3">Bleeding</ConditionEffect>
+      <LifetimeMS>5000</LifetimeMS>
     </Projectile>
   </Object>
   <Object type="0x9951" id="Elemental Fire Wall">
@@ -30257,7 +30524,7 @@
     <Enemy />
     <AnimatedTexture>
       <File>Custom8x8Encounters</File>
-      <Index>30</Index>
+      <Index>36</Index>
     </AnimatedTexture>
     <Size>100</Size>
     <MaxHitPoints>15000</MaxHitPoints>
@@ -30281,7 +30548,7 @@
     <Enemy />
     <AnimatedTexture>
       <File>Custom8x8Encounters</File>
-      <Index>30</Index>
+      <Index>37</Index>
     </AnimatedTexture>
     <Size>130</Size>
     <MaxHitPoints>50000</MaxHitPoints>
@@ -30313,7 +30580,7 @@
     <Enemy />
     <AnimatedTexture>
       <File>Custom8x8Encounters</File>
-      <Index>31</Index>
+      <Index>37</Index>
     </AnimatedTexture>
     <Size>70</Size>
     <MaxHitPoints>15000</MaxHitPoints>
@@ -30335,7 +30602,7 @@
     <Enemy />
     <AnimatedTexture>
       <File>Custom8x8Encounters</File>
-      <Index>31</Index>
+      <Index>38</Index>
     </AnimatedTexture>
     <Size>70</Size>
     <MaxHitPoints>10000</MaxHitPoints>
@@ -30356,7 +30623,7 @@
     <Enemy />
     <AnimatedTexture>
       <File>Custom8x8Encounters</File>
-      <Index>31</Index>
+      <Index>35</Index>
     </AnimatedTexture>
     <Size>150</Size>
     <MaxHitPoints>50000</MaxHitPoints>
@@ -31609,6 +31876,70 @@
     <ShadowSize>0</ShadowSize>
     <NoMiniMap />
     <StasisImmune />
+  </Object>
+  <Object type="0x238" id="Yeti Chest Check">
+    <DisplayId>Yeti Chest Check</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <Invincible />
+    <Texture>
+      <File>invisible</File>
+      <Index>0x00</Index>
+    </Texture>
+    <MaxHitPoints>150000</MaxHitPoints>
+    <Defense>15</Defense>
+    <Size>160</Size>
+    <ShadowSize>0</ShadowSize>
+    <XpMult>0.0</XpMult>
+    <NoMiniMap />
+  </Object>
+  <Object type="0xa146" id="Yeti Check">
+    <DisplayId>Yeti Check</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <Invincible />
+    <Texture>
+      <File>invisible</File>
+      <Index>0x00</Index>
+    </Texture>
+    <MaxHitPoints>150000</MaxHitPoints>
+    <Defense>15</Defense>
+    <Size>160</Size>
+    <ShadowSize>0</ShadowSize>
+    <XpMult>0.0</XpMult>
+    <NoMiniMap />
+  </Object>
+  <Object type="0x217" id="Snowman Check">
+    <DisplayId>Snowman Check</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <Invincible />
+    <Texture>
+      <File>invisible</File>
+      <Index>0x00</Index>
+    </Texture>
+    <MaxHitPoints>150000</MaxHitPoints>
+    <Defense>15</Defense>
+    <Size>160</Size>
+    <ShadowSize>0</ShadowSize>
+    <XpMult>0.0</XpMult>
+    <NoMiniMap />
+  </Object>
+  <Object type="0x14A" id="Snowman Check 2">
+    <DisplayId>Snowman Check 2</DisplayId>
+    <Class>Character</Class>
+    <Enemy />
+    <Invincible />
+    <Texture>
+      <File>invisible</File>
+      <Index>0x00</Index>
+    </Texture>
+    <MaxHitPoints>150000</MaxHitPoints>
+    <Defense>15</Defense>
+    <Size>160</Size>
+    <ShadowSize>0</ShadowSize>
+    <XpMult>0.0</XpMult>
+    <NoMiniMap />
   </Object>
   <Object type="0x9952" id="Fire wall spawner">
     <Class>Character</Class>
@@ -51846,7 +52177,6 @@
     <Class>Equipment</Class>
     <Item />
     <SPlus />
-    <Soulbound />
     <Description>A special powder that is left by the most notable or terrible enemies, put them together with other powders until you get 5 and see what reward they will give you!.</Description>
     <Texture>
       <File>CustomObj</File>
@@ -66564,6 +66894,20 @@
     <Class>GameObject</Class>
     <Model>Cube</Model>
   </Object>
+  <Object type="0x154" id="Yeti Chest">
+    <DisplayId>Yeti Chest</DisplayId>
+    <Class>Character</Class>
+    <Chest />
+    <Enemy />
+    <Texture>
+      <File>custom16x16Environment</File>
+      <Index>0x20</Index>
+    </Texture>
+    <MaxHitPoints>120000</MaxHitPoints>
+    <Defense>35</Defense>
+    <Size>100</Size>
+    <XpMult>0.0</XpMult>
+  </Object>
   <Object type="0x5110" id="Gold Statue 1">
     <DisplayId>Golden Statue</DisplayId>
     <Class>GameObject</Class>
@@ -67048,6 +67392,306 @@
     <ShadowSize>80</ShadowSize>
     <SizeStep>5</SizeStep>
     <MaxHitPoints>100000</MaxHitPoints>
+  </Object>
+  <Object type="0x506c" id="Skill Tree">
+    <Class>Essence</Class>
+    <Texture>
+      <File>CustomObjectsSkillTree</File>
+      <Index>0x00</Index>
+    </Texture>
+    <Animation prob="1.0" period="0.0">
+      <Frame time="0.15">
+        <Texture>
+          <File>CustomObjectsSkillTree</File>
+          <Index>0x00</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.15">
+        <Texture>
+          <File>CustomObjectsSkillTree</File>
+          <Index>0x01</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.15">
+        <Texture>
+          <File>CustomObjectsSkillTree</File>
+          <Index>0x02</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.15">
+        <Texture>
+          <File>CustomObjectsSkillTree</File>
+          <Index>0x03</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.15">
+        <Texture>
+          <File>CustomObjectsSkillTree</File>
+          <Index>0x04</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.15">
+        <Texture>
+          <File>CustomObjectsSkillTree</File>
+          <Index>0x05</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.15">
+        <Texture>
+          <File>CustomObjectsSkillTree</File>
+          <Index>0x06</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.15">
+        <Texture>
+          <File>CustomObjectsSkillTree</File>
+          <Index>0x07</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.15">
+        <Texture>
+          <File>CustomObjectsSkillTree</File>
+          <Index>0x08</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.15">
+        <Texture>
+          <File>CustomObjectsSkillTree</File>
+          <Index>0x09</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.15">
+        <Texture>
+          <File>CustomObjectsSkillTree</File>
+          <Index>0x0a</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.15">
+        <Texture>
+          <File>CustomObjectsSkillTree</File>
+          <Index>0x0b</Index>
+        </Texture>
+      </Frame>
+    </Animation>
+    <Static />
+  </Object>
+  <Object type="0x506d" id="Engine">
+    <Class>Engine</Class>
+    <Texture>
+      <File>Engine32x32</File>
+      <Index>0x00</Index>
+    </Texture>
+    <Static />
+  </Object>
+  <Object type="0x6500" id="Engine Stage 1">
+    <Class>Engine</Class>
+    <Texture>
+      <File>Engine32x32</File>
+      <Index>10</Index>
+    </Texture>
+    <Animation prob="1.0" period="0">
+      <Frame time="0.1">
+        <Texture>
+          <File>Engine32x32</File>
+          <Index>10</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>Engine32x32</File>
+          <Index>11</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>Engine32x32</File>
+          <Index>12</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>Engine32x32</File>
+          <Index>13</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>Engine32x32</File>
+          <Index>14</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>Engine32x32</File>
+          <Index>15</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>Engine32x32</File>
+          <Index>16</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>Engine32x32</File>
+          <Index>17</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>Engine32x32</File>
+          <Index>18</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>Engine32x32</File>
+          <Index>19</Index>
+        </Texture>
+      </Frame>
+    </Animation>
+    <Static />
+  </Object>
+  <Object type="0x6501" id="Engine Stage 2">
+    <Class>Engine</Class>
+    <Texture>
+      <File>Engine32x32</File>
+      <Index>20</Index>
+    </Texture>
+    <Animation prob="1.0" period="0">
+      <Frame time="0.1">
+        <Texture>
+          <File>Engine32x32</File>
+          <Index>20</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>Engine32x32</File>
+          <Index>21</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>Engine32x32</File>
+          <Index>22</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>Engine32x32</File>
+          <Index>23</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>Engine32x32</File>
+          <Index>24</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>Engine32x32</File>
+          <Index>25</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>Engine32x32</File>
+          <Index>26</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>Engine32x32</File>
+          <Index>27</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>Engine32x32</File>
+          <Index>28</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>Engine32x32</File>
+          <Index>29</Index>
+        </Texture>
+      </Frame>
+    </Animation>
+    <Static />
+  </Object>
+  <Object type="0x6502" id="Engine Stage 3">
+    <Class>Engine</Class>
+    <Texture>
+      <File>Engine32x32</File>
+      <Index>30</Index>
+    </Texture>
+    <Animation prob="1.0" period="0">
+      <Frame time="0.1">
+        <Texture>
+          <File>Engine32x32</File>
+          <Index>30</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>Engine32x32</File>
+          <Index>31</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>Engine32x32</File>
+          <Index>32</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>Engine32x32</File>
+          <Index>33</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>Engine32x32</File>
+          <Index>34</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>Engine32x32</File>
+          <Index>35</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>Engine32x32</File>
+          <Index>36</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>Engine32x32</File>
+          <Index>37</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>Engine32x32</File>
+          <Index>38</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>Engine32x32</File>
+          <Index>39</Index>
+        </Texture>
+      </Frame>
+    </Animation>
+    <Static />
   </Object>
   <Object type="0x0d8b" id="Grey Pillar Snowy">
     <Class>GameObject</Class>
@@ -76298,96 +76942,6 @@
     <Static />
     <Z>0.95</Z>
   </Object>
-  <Object type="0x9905" id="Generator Pog">
-    <Class>GameObject</Class>
-    <Texture>
-      <File>CustomObjectsSkillTree</File>
-      <Index>0x0f</Index>
-    </Texture>
-    <Static />
-  </Object>
-  <Object type="0x506c" id="Skill Tree">
-    <Class>SkillTree</Class>
-    <Texture>
-      <File>CustomObjectsSkillTree</File>
-      <Index>0x00</Index>
-    </Texture>
-    <Animation prob="1.0" period="0.0">
-      <Frame time="0.15">
-        <Texture>
-          <File>CustomObjectsSkillTree</File>
-          <Index>0x00</Index>
-        </Texture>
-      </Frame>
-      <Frame time="0.15">
-        <Texture>
-          <File>CustomObjectsSkillTree</File>
-          <Index>0x01</Index>
-        </Texture>
-      </Frame>
-      <Frame time="0.15">
-        <Texture>
-          <File>CustomObjectsSkillTree</File>
-          <Index>0x02</Index>
-        </Texture>
-      </Frame>
-      <Frame time="0.15">
-        <Texture>
-          <File>CustomObjectsSkillTree</File>
-          <Index>0x03</Index>
-        </Texture>
-      </Frame>
-      <Frame time="0.15">
-        <Texture>
-          <File>CustomObjectsSkillTree</File>
-          <Index>0x04</Index>
-        </Texture>
-      </Frame>
-      <Frame time="0.15">
-        <Texture>
-          <File>CustomObjectsSkillTree</File>
-          <Index>0x05</Index>
-        </Texture>
-      </Frame>
-      <Frame time="0.15">
-        <Texture>
-          <File>CustomObjectsSkillTree</File>
-          <Index>0x06</Index>
-        </Texture>
-      </Frame>
-      <Frame time="0.15">
-        <Texture>
-          <File>CustomObjectsSkillTree</File>
-          <Index>0x07</Index>
-        </Texture>
-      </Frame>
-      <Frame time="0.15">
-        <Texture>
-          <File>CustomObjectsSkillTree</File>
-          <Index>0x08</Index>
-        </Texture>
-      </Frame>
-      <Frame time="0.15">
-        <Texture>
-          <File>CustomObjectsSkillTree</File>
-          <Index>0x09</Index>
-        </Texture>
-      </Frame>
-      <Frame time="0.15">
-        <Texture>
-          <File>CustomObjectsSkillTree</File>
-          <Index>0x0a</Index>
-        </Texture>
-      </Frame>
-      <Frame time="0.15">
-        <Texture>
-          <File>CustomObjectsSkillTree</File>
-          <Index>0x0b</Index>
-        </Texture>
-      </Frame>
-    </Animation>
-    <Static />
-  </Object>
   <Object type="0x0732" id="Spider Web">
     <Class>SpiderWeb</Class>
     <Model>Web</Model>
@@ -76564,6 +77118,80 @@
       <File>lofiEnvironment2</File>
       <Index>0x54</Index>
     </Texture>
+    <ShadowSize>0</ShadowSize>
+  </Object>
+  <Object type="0xa141" id="Cave of Eternal Frost">
+    <Class>Portal</Class>
+    <Size>140</Size>
+    <IntergamePortal />
+    <DisplayId>Cave of Eternal Frost</DisplayId>
+    <DungeonName>Cave of Eternal Frost</DungeonName>
+    <Texture>
+      <File>custom16x16Environment</File>
+      <Index>0x15</Index>
+    </Texture>
+    <Animation prob="1" period="1">
+      <Frame time="0.05">
+        <Texture>
+          <File>custom16x16Environment</File>
+          <Index>0x16</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.10">
+        <Texture>
+          <File>custom16x16Environment</File>
+          <Index>0x17</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.10">
+        <Texture>
+          <File>custom16x16Environment</File>
+          <Index>0x18</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.10">
+        <Texture>
+          <File>custom16x16Environment</File>
+          <Index>0x19</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.10">
+        <Texture>
+          <File>custom16x16Environment</File>
+          <Index>0x1a</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.10">
+        <Texture>
+          <File>custom16x16Environment</File>
+          <Index>0x1b</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.10">
+        <Texture>
+          <File>custom16x16Environment</File>
+          <Index>0x1c</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.10">
+        <Texture>
+          <File>custom16x16Environment</File>
+          <Index>0x1d</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.10">
+        <Texture>
+          <File>custom16x16Environment</File>
+          <Index>0x1e</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.05">
+        <Texture>
+          <File>custom16x16Environment</File>
+          <Index>0x1f</Index>
+        </Texture>
+      </Frame>
+    </Animation>
     <ShadowSize>0</ShadowSize>
   </Object>
   <Object type="0x950d" id="Hideout of Stheno Portal">
@@ -79336,160 +79964,162 @@
   <Object type="0xaa2c" id="Projectile 0 QI">
     <Class>Projectile</Class>
     <Texture>
-      <File>CustomObj</File>
-      <Index>0x8c</Index>
+      <File>CustomProjs</File>
+      <Index>0xfc</Index>
     </Texture>
     <AngleCorrection>1</AngleCorrection>
   </Object>
   <Object type="0xa23c" id="Projectile 1 QI">
     <Class>Projectile</Class>
     <Texture>
-      <File>CustomObj</File>
-      <Index>0x98</Index>
+      <File>CustomProjs</File>
+      <Index>0xf8</Index>
     </Texture>
     <AngleCorrection>1</AngleCorrection>
   </Object>
   <Object type="0xa25c" id="Projectile 2 QI">
     <Class>Projectile</Class>
     <Texture>
-      <File>CustomObj</File>
-      <Index>0x98</Index>
+      <File>CustomProjs</File>
+      <Index>0xf9</Index>
     </Texture>
     <AngleCorrection>1</AngleCorrection>
   </Object>
   <Object type="0xa25e" id="Projectile 3 QI">
     <Class>Projectile</Class>
     <Texture>
-      <File>CustomObj</File>
-      <Index>0x8a</Index>
+      <File>CustomProjs</File>
+      <Index>0xf2</Index>
     </Texture>
     <AngleCorrection>1</AngleCorrection>
   </Object>
   <Object type="0xa27e" id="Projectile 4 QI">
     <Class>Projectile</Class>
     <Texture>
-      <File>CustomObj</File>
-      <Index>0x89</Index>
+      <File>CustomProjs</File>
+      <Index>0x23</Index>
     </Texture>
     <AngleCorrection>1</AngleCorrection>
   </Object>
   <Object type="0xb27c" id="Projectile 0 GIQ">
     <Class>Projectile</Class>
     <Texture>
-      <File>CustomObj</File>
-      <Index>0x98</Index>
+      <File>CustomProjs</File>
+      <Index>0xf0</Index>
     </Texture>
     <AngleCorrection>1</AngleCorrection>
   </Object>
   <Object type="0xb25b" id="Projectile 1 GIQ">
     <Class>Projectile</Class>
     <Texture>
-      <File>CustomObj</File>
-      <Index>0x98</Index>
+      <File>CustomProjs</File>
+      <Index>0xf1</Index>
     </Texture>
     <AngleCorrection>1</AngleCorrection>
   </Object>
   <Object type="0xa26b" id="Projectile 0 ES">
     <Class>Projectile</Class>
     <Texture>
-      <File>CustomObj</File>
-      <Index>0x8c</Index>
+      <File>CustomProjs</File>
+      <Index>0xf3</Index>
     </Texture>
     <AngleCorrection>1</AngleCorrection>
   </Object>
   <Object type="0xb17c" id="Projectile 0 CPB">
     <Class>Projectile</Class>
     <Texture>
-      <File>CustomObj</File>
-      <Index>0x89</Index>
+      <File>CustomProjs</File>
+      <Index>0xf9</Index>
     </Texture>
     <AngleCorrection>1</AngleCorrection>
   </Object>
   <Object type="0xb19d" id="Projectile 1 CPB">
     <Class>Projectile</Class>
     <Texture>
-      <File>CustomObj</File>
-      <Index>0x98</Index>
+      <File>CustomProjs</File>
+      <Index>0xfa</Index>
     </Texture>
     <AngleCorrection>1</AngleCorrection>
   </Object>
   <Object type="0xa37c" id="Projectile 0 EC">
     <Class>Projectile</Class>
     <Texture>
-      <File>CustomObj</File>
-      <Index>0x8c</Index>
+      <File>CustomProjs</File>
+      <Index>0xfb</Index>
     </Texture>
     <AngleCorrection>1</AngleCorrection>
   </Object>
   <Object type="0xb19c" id="Projectile 0 CSS">
     <Class>Projectile</Class>
     <Texture>
-      <File>CustomObj</File>
-      <Index>0x8c</Index>
+      <File>CustomProjs</File>
+      <Index>0xf2</Index>
     </Texture>
     <AngleCorrection>1</AngleCorrection>
   </Object>
   <Object type="0xa37e" id="Projectile 1 CSS">
     <Class>Projectile</Class>
     <Texture>
-      <File>CustomObj</File>
-      <Index>0x59</Index>
+      <File>CustomProjs</File>
+      <Index>0xf2</Index>
     </Texture>
     <AngleCorrection>1</AngleCorrection>
+    <Rotation>80</Rotation>
   </Object>
   <Object type="0xb19e" id="Projectile 2 CSS">
     <Class>Projectile</Class>
     <Texture>
-      <File>CustomObj</File>
-      <Index>0x8c</Index>
+      <File>CustomProjs</File>
+      <Index>0xf8</Index>
     </Texture>
     <AngleCorrection>1</AngleCorrection>
   </Object>
   <Object type="0xf19c" id="Projectile 0 CSS2">
     <Class>Projectile</Class>
     <Texture>
-      <File>CustomObj</File>
-      <Index>0x8c</Index>
+      <File>CustomProjs</File>
+      <Index>0xf2</Index>
     </Texture>
     <AngleCorrection>1</AngleCorrection>
   </Object>
   <Object type="0xa50e" id="Projectile 1 CSS2">
     <Class>Projectile</Class>
     <Texture>
-      <File>CustomObj</File>
-      <Index>0x59</Index>
+      <File>CustomProjs</File>
+      <Index>0xf4</Index>
     </Texture>
     <AngleCorrection>1</AngleCorrection>
   </Object>
   <Object type="0xb51e" id="Projectile 2 CSS2">
     <Class>Projectile</Class>
     <Texture>
-      <File>CustomObj</File>
-      <Index>0x8c</Index>
+      <File>CustomProjs</File>
+      <Index>0xf8</Index>
     </Texture>
     <AngleCorrection>1</AngleCorrection>
   </Object>
   <Object type="0xb41b" id="Projectile 0 GFS">
     <Class>Projectile</Class>
     <Texture>
-      <File>CustomObj</File>
-      <Index>0x8c</Index>
+      <File>CustomProjs</File>
+      <Index>0xfc</Index>
     </Texture>
     <AngleCorrection>1</AngleCorrection>
   </Object>
   <Object type="0xb42b" id="Projectile 1 GFS">
     <Class>Projectile</Class>
     <Texture>
-      <File>CustomObj</File>
-      <Index>0x89</Index>
+      <File>CustomProjs</File>
+      <Index>0xfd</Index>
     </Texture>
-    <Rotation>50</Rotation>
+    <Wavy />
+    <AngleCorrection>1</AngleCorrection>
   </Object>
   <Object type="0xb41a" id="Projectile 0 FE">
     <Class>Projectile</Class>
     <Texture>
-      <File>CustomObj</File>
-      <Index>0x8c</Index>
+      <File>CustomProjs</File>
+      <Index>0xfe</Index>
     </Texture>
     <AngleCorrection>1</AngleCorrection>
   </Object>
@@ -79530,6 +80160,14 @@
     <Texture>
       <File>CustomProjs</File>
       <Index>0xe9</Index>
+    </Texture>
+    <AngleCorrection>1</AngleCorrection>
+  </Object>
+  <Object type="0xa142" id="Projectile 0 FT">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>CustomProjs</File>
+      <Index>0xff</Index>
     </Texture>
     <AngleCorrection>1</AngleCorrection>
   </Object>
@@ -84982,6 +85620,150 @@
     <FullOccupy />
     <OccupySquare />
     <EnemyOccupySquare />
+    <Connects />
+  </Object>
+  <Object type="0x14F" id="Ice Cave Wall BLOCK">
+    <Class>CaveWall</Class>
+    <RandomTexture>
+      <Texture>
+        <File>lofiObj3</File>
+        <Index>0x1d4</Index>
+      </Texture>
+      <Texture>
+        <File>lofiObj3</File>
+        <Index>0x1d5</Index>
+      </Texture>
+      <Texture>
+        <File>lofiObj3</File>
+        <Index>0x1d6</Index>
+      </Texture>
+    </RandomTexture>
+    <ShadowSize>0</ShadowSize>
+    <Static />
+    <FullOccupy />
+    <OccupySquare />
+    <EnemyOccupySquare />
+    <BlocksSight />
+    <Connects />
+  </Object>
+  <Object type="0xa145" id="Ice Cave Wall GATE">
+    <Class>CaveWall</Class>
+    <RandomTexture>
+      <Texture>
+        <File>lofiObj3</File>
+        <Index>0x1d4</Index>
+      </Texture>
+      <Texture>
+        <File>lofiObj3</File>
+        <Index>0x1d5</Index>
+      </Texture>
+      <Texture>
+        <File>lofiObj3</File>
+        <Index>0x1d6</Index>
+      </Texture>
+    </RandomTexture>
+    <ShadowSize>0</ShadowSize>
+    <Static />
+    <FullOccupy />
+    <OccupySquare />
+    <EnemyOccupySquare />
+    <BlocksSight />
+    <Connects />
+  </Object>
+  <Object type="0x237" id="Ice Cave Wall C">
+    <Class>CaveWall</Class>
+    <RandomTexture>
+      <Texture>
+        <File>lofiObj3</File>
+        <Index>0x1d4</Index>
+      </Texture>
+      <Texture>
+        <File>lofiObj3</File>
+        <Index>0x1d5</Index>
+      </Texture>
+      <Texture>
+        <File>lofiObj3</File>
+        <Index>0x1d6</Index>
+      </Texture>
+    </RandomTexture>
+    <ShadowSize>0</ShadowSize>
+    <Static />
+    <FullOccupy />
+    <OccupySquare />
+    <EnemyOccupySquare />
+    <BlocksSight />
+    <Connects />
+  </Object>
+  <Object type="0xa147" id="Ice Cave Wall S">
+    <Class>CaveWall</Class>
+    <RandomTexture>
+      <Texture>
+        <File>lofiObj3</File>
+        <Index>0x1d4</Index>
+      </Texture>
+      <Texture>
+        <File>lofiObj3</File>
+        <Index>0x1d5</Index>
+      </Texture>
+      <Texture>
+        <File>lofiObj3</File>
+        <Index>0x1d6</Index>
+      </Texture>
+    </RandomTexture>
+    <ShadowSize>0</ShadowSize>
+    <Static />
+    <FullOccupy />
+    <OccupySquare />
+    <EnemyOccupySquare />
+    <BlocksSight />
+    <Connects />
+  </Object>
+  <Object type="0xa148" id="Ice Cave Wall S2">
+    <Class>CaveWall</Class>
+    <RandomTexture>
+      <Texture>
+        <File>lofiObj3</File>
+        <Index>0x1d4</Index>
+      </Texture>
+      <Texture>
+        <File>lofiObj3</File>
+        <Index>0x1d5</Index>
+      </Texture>
+      <Texture>
+        <File>lofiObj3</File>
+        <Index>0x1d6</Index>
+      </Texture>
+    </RandomTexture>
+    <ShadowSize>0</ShadowSize>
+    <Static />
+    <FullOccupy />
+    <OccupySquare />
+    <EnemyOccupySquare />
+    <BlocksSight />
+    <Connects />
+  </Object>
+  <Object type="0x155" id="Ice Cave Wall Shortcut">
+    <Class>CaveWall</Class>
+    <RandomTexture>
+      <Texture>
+        <File>lofiObj3</File>
+        <Index>0x1d4</Index>
+      </Texture>
+      <Texture>
+        <File>lofiObj3</File>
+        <Index>0x1d5</Index>
+      </Texture>
+      <Texture>
+        <File>lofiObj3</File>
+        <Index>0x1d6</Index>
+      </Texture>
+    </RandomTexture>
+    <ShadowSize>0</ShadowSize>
+    <Static />
+    <FullOccupy />
+    <OccupySquare />
+    <EnemyOccupySquare />
+    <BlocksSight />
     <Connects />
   </Object>
   <Object type="0x18d6" id="Candy Rock Wall">

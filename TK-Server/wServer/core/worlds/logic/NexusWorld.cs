@@ -11,12 +11,23 @@ namespace wServer.core.worlds.logic
 
         public KingdomPortalMonitor PortalMonitor { get; private set; }
 
+        public int EngineState;
+
         public NexusWorld(GameServer gameServer, int id, WorldResource resource) : base(gameServer, id, resource)
         {
+            EngineState = Random.Next(4);
         }
 
         public override void Init()
         {
+            var lootRegions = GetRegionPoints(TileRegion.Hallway_1);
+            foreach (var loot in lootRegions)
+            {
+                var market = Entity.Resolve(GameServer, "Engine");
+                market.Move(loot.Key.X + 0.5f, loot.Key.Y + 0.5f);
+                EnterWorld(market);
+            }
+
             var marketRegions = GetRegionPoints(TileRegion.Hallway);
 
             if (marketRegions.Length > 0)
@@ -35,14 +46,6 @@ namespace wServer.core.worlds.logic
 
             PortalMonitor = new KingdomPortalMonitor(GameServer, this);
             base.Init();
-
-            var lootRegions = GetRegionPoints(TileRegion.Loot);
-            foreach (var loot in lootRegions)
-            {
-                var market = Entity.Resolve(GameServer, "Market NPC");
-                market.Move(loot.Key.X + 1.0f, loot.Key.Y + 1.0f);
-                EnterWorld(market);
-            }
         }
 
         public bool WithinBoundsOfMarket(float x, float y)

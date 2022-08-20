@@ -138,9 +138,219 @@
 	<Object type="0x506d" id="Engine">
 		<Class>Engine</Class>
 		<Texture>
-			<File>CustomObjectsSkillTree</File>
+			<File>Engine32x32</File>
 			<Index>0x00</Index>
 		</Texture>
+		<Static />
+	</Object>
+	<Object type="0x6500" id="Engine Stage 1">
+		<Class>Engine</Class>
+		<Texture>
+			<File>Engine32x32</File>
+			<Index>10</Index>
+		</Texture>
+		<Animation prob="1.0" period="0">
+			<Frame time="0.1">
+				<Texture>
+					<File>Engine32x32</File>
+					<Index>10</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>Engine32x32</File>
+					<Index>11</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>Engine32x32</File>
+					<Index>12</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>Engine32x32</File>
+					<Index>13</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>Engine32x32</File>
+					<Index>14</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>Engine32x32</File>
+					<Index>15</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>Engine32x32</File>
+					<Index>16</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>Engine32x32</File>
+					<Index>17</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>Engine32x32</File>
+					<Index>18</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>Engine32x32</File>
+					<Index>19</Index>
+				</Texture>
+			</Frame>
+		</Animation>
+		<Static />
+	</Object>
+	<Object type="0x6501" id="Engine Stage 2">
+		<Class>Engine</Class>
+		<Texture>
+			<File>Engine32x32</File>
+			<Index>20</Index>
+		</Texture>
+		<Animation prob="1.0" period="0">
+			<Frame time="0.1">
+				<Texture>
+					<File>Engine32x32</File>
+					<Index>20</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>Engine32x32</File>
+					<Index>21</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>Engine32x32</File>
+					<Index>22</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>Engine32x32</File>
+					<Index>23</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>Engine32x32</File>
+					<Index>24</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>Engine32x32</File>
+					<Index>25</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>Engine32x32</File>
+					<Index>26</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>Engine32x32</File>
+					<Index>27</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>Engine32x32</File>
+					<Index>28</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>Engine32x32</File>
+					<Index>29</Index>
+				</Texture>
+			</Frame>
+		</Animation>
+		<Static />
+	</Object>
+	<Object type="0x6502" id="Engine Stage 3">
+		<Class>Engine</Class>
+		<Texture>
+			<File>Engine32x32</File>
+			<Index>30</Index>
+		</Texture>
+		<Animation prob="1.0" period="0">
+			<Frame time="0.1">
+				<Texture>
+					<File>Engine32x32</File>
+					<Index>30</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>Engine32x32</File>
+					<Index>31</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>Engine32x32</File>
+					<Index>32</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>Engine32x32</File>
+					<Index>33</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>Engine32x32</File>
+					<Index>34</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>Engine32x32</File>
+					<Index>35</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>Engine32x32</File>
+					<Index>36</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>Engine32x32</File>
+					<Index>37</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>Engine32x32</File>
+					<Index>38</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>Engine32x32</File>
+					<Index>39</Index>
+				</Texture>
+			</Frame>
+		</Animation>
 		<Static />
 	</Object>
 </Objects>

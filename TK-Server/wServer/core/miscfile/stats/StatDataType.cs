@@ -132,6 +132,7 @@
         SPS_VITALITY_COUNT_MAX = 155,
         SPS_WISDOM_COUNT = 156,
         SPS_WISDOM_COUNT_MAX = 157,
+        EngineValue = 158,
         None = 255
     }
 }

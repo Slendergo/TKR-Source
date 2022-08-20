@@ -10,6 +10,7 @@ import com.company.assembleegameclient.map.GroundLibrary;
 import com.company.assembleegameclient.map.Map;
 import com.company.assembleegameclient.map.mapoverlay.CharacterStatusText;
 import com.company.assembleegameclient.objects.Container;
+import com.company.assembleegameclient.objects.Engine;
 import com.company.assembleegameclient.objects.FlashDescription;
 import com.company.assembleegameclient.objects.GameObject;
 import com.company.assembleegameclient.objects.Merchant;
@@ -1893,6 +1894,9 @@ public class GameServerConnection
                      player.SPS_Modal.draw();
                   }
                   break;
+               case StatData.ENGINE_VALUE:
+                  (go as Engine).currentValue_ = value;
+                  break;
 
                case StatData.BASESTAT:
                   player.baseStat = value;
@@ -1923,30 +1927,6 @@ public class GameServerConnection
                   continue;
                case StatData.MAXEDWIS:
                   player.maxedWis = Boolean(value);
-                  continue;
-               case StatData.SUPERMAXEDLIFE:
-                  player.superMaxedLife = Boolean(value);
-                  continue;
-               case StatData.SUPERMAXEDMANA:
-                  player.superMaxedMana = Boolean(value);
-                  continue;
-               case StatData.SUPERMAXEDATT:
-                  player.superMaxedAtt = Boolean(value);
-                  continue;
-               case StatData.SUPERMAXEDDEF:
-                  player.superMaxedDef = Boolean(value);
-                  continue;
-               case StatData.SUPERMAXEDSPD:
-                  player.superMaxedSpd = Boolean(value);
-                  continue;
-               case StatData.SUPERMAXEDDEX:
-                  player.superMaxedDex = Boolean(value);
-                  continue;
-               case StatData.SUPERMAXEDVIT:
-                  player.superMaxedVit = Boolean(value);
-                  continue;
-               case StatData.SUPERMAXEDWIS:
-                  player.superMaxedWis = Boolean(value);
                   continue;
                case StatData.GLOW_ENEMY_COLOR:
                   go.setGlowEnemy(value);

@@ -1,4 +1,5 @@
 package kabam.rotmg.Engine.view {
+import com.company.assembleegameclient.objects.Engine;
 import com.company.assembleegameclient.ui.Scrollbar;
 
 import flash.display.Graphics;
@@ -38,22 +39,16 @@ public class EngineView extends ModalPopup {
     public var gs_:GameSprite;
     public var fuelGague_:FuelGauge;
     internal var quitButton:SliceScalingButton;
-    public var player:Player;
+    public var engine_:Engine;
     internal var text_:String;
 
     public var close:Signal = new Signal();
 
-    public var sprite_:Sprite;
-
-    public var upgrade_:SliceScalingButton;
-
-
-    public function EngineView(gs:GameSprite, go:Player) {
+    public function EngineView(gs:GameSprite, go:Engine) {
         this.gs_ = gs;
-        this.player = go;
+        this.engine_ = go;
         super(425, 425, "Strange Engine");
         
-        //stage1 Fuel Guage
         this.fuelGague_ = new FuelGauge();
         this.fuelGague_.x = 16;
         this.fuelGague_.y = 16;
@@ -81,14 +76,8 @@ public class EngineView extends ModalPopup {
         this.close.dispatch();
     }
 
-    public var test_:int;
-
     public function draw():void {
-        test_ ++
-        if(test_ > 850) {
-            test_ = 0
-        }
-        this.fuelGague_.draw(this.test_); // change to fuel
+        this.fuelGague_.draw(this.engine_.currentValue_); // change to fuel
     }
 }
 }

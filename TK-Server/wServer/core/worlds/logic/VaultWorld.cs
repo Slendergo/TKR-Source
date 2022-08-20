@@ -47,6 +47,9 @@ namespace wServer.core.worlds.logic
         {
             base.LeaveWorld(entity);
 
+            if(entity is Player)
+                FlagForClose();
+
             if (entity.ObjectType != 0x0744 && entity.ObjectType != 0xa011)
                 return;
 
@@ -55,12 +58,6 @@ namespace wServer.core.worlds.logic
             x.Move(entity.X, entity.Y);
 
             EnterWorld(x);
-
-            if (Client.Account.Gifts.Length <= 0)
-                Client.SendPacket(new GlobalNotification
-                {
-                    Text = "giftChestEmpty"
-                });
         }
 
         public void SetClient(Client client)

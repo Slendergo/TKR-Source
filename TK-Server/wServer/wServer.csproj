@@ -559,7 +559,6 @@
     <Compile Include="core\worlds\logic\RealmWorld.cs" />
     <Compile Include="core\worlds\logic\TestWorld.cs" />
     <Compile Include="core\worlds\logic\VaultWorld.cs" />
-    <Compile Include="core\worlds\logic\MarketplaceWorld.cs" />
     <Compile Include="core\worlds\World.cs" />
     <Compile Include="core\miscfile\world\WorldTimer.cs" />
     <Compile Include="core\miscfile\structures\Vector2.cs" />

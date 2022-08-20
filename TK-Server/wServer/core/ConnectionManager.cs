@@ -216,6 +216,8 @@ namespace wServer.core
                     Difficulty = world.Difficulty,
                     AllowPlayerTeleport = world.AllowTeleport,
                     ShowDisplays = world.ShowDisplays,
+                    DisableShooting = world.DisableShooting,
+                    DisableAbilities = world.DisableAbilities
                 },
                 new AccountList() // send out account lock/ignore list
                 {

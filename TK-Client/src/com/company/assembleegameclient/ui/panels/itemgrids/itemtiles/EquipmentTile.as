@@ -165,9 +165,18 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
          }
       }
       
-      public function updateDim(player:Player) : void
+      public function updateDim(player:Player, slot:int) : void
       {
-         itemSprite.setDim(player && player.mp_ < this.minManaUsage);
+         var canUse:Boolean = true;
+         if(player.map_ != null){
+            if(player.map_.disableShooting_ && slot == 0){
+               canUse = false;
+            }
+            else if(player.map_.disableAbilities_ && slot == 1){
+               canUse = false;
+            }
+         }
+         itemSprite.setDim(!canUse || player && player.mp_ < this.minManaUsage);
       }
       
       override protected function beginDragCallback() : void

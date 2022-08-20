@@ -14,6 +14,9 @@ namespace wServer.networking.packets.outgoing
         public bool AllowPlayerTeleport { get; set; }
         public bool ShowDisplays { get; set; }
         public string Music { get; set; }
+        public bool DisableShooting { get; set; }
+        public bool DisableAbilities { get; set; }
+
 
         public override MessageId MessageId => MessageId.MAPINFO;
 
@@ -29,6 +32,8 @@ namespace wServer.networking.packets.outgoing
             wtr.Write(AllowPlayerTeleport);
             wtr.Write(ShowDisplays);
             wtr.WriteUTF(Music);
+            wtr.Write(DisableShooting);
+            wtr.Write(DisableAbilities);
         }
     }
 }

@@ -26,14 +26,27 @@ namespace wServer.core.net.handlers
 
             var player = client.Player;
 
+            if (player.World.DisableShooting)
+            {
+                client.Disconnect("Attempting to shoot in a disabled world");
+                return;
+            }
+
             if (!player.GameServer.Resources.GameData.Items.TryGetValue(ContainerType, out var item))
             {
-                //player.DropNextRandom();
+                client.Disconnect("Attempting to shoot a invalid item");
                 return;
             }
 
             if (item == player.Inventory[1])
+            {
+                if (player.World.DisableAbilities)
+                {
+                    client.Disconnect("Attempting to activate ability in a disabled world");
+                    return;
+                }
                 return; // ability shoot handled by useitem
+            }
 
             // validate
             var result = player.ValidatePlayerShoot(item, Time);

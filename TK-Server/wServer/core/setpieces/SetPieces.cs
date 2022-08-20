@@ -107,15 +107,16 @@ namespace wServer.core.setpieces
                     ret[c, m - 1 - r] = mat[r, c];
             return ret;
         }
+    }
 
-        private struct Rect
-        {
-            public int h;
-            public int w;
-            public int x;
-            public int y;
+    public struct Rect
+    {
+        public int h;
+        public int w;
+        public int x;
+        public int y;
 
-            public static bool Intersects(Rect r1, Rect r2) => !(r2.x > r1.x + r1.w || r2.x + r2.w < r1.x || r2.y > r1.y + r1.h || r2.y + r2.h < r1.y);
-        }
+        public static bool Intersects(Rect r1, Rect r2) => !(r2.x > r1.x + r1.w || r2.x + r2.w < r1.x || r2.y > r1.y + r1.h || r2.y + r2.h < r1.y);
+        public static bool ContainsPoint(Rect r1, float x, float y) => x > r1.x && x < r1.x + r1.w && y > r1.y && y < r1.y + r1.h;
     }
 }

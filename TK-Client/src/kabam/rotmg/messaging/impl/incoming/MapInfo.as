@@ -25,7 +25,11 @@ package kabam.rotmg.messaging.impl.incoming
       public var showDisplays_:Boolean;
 
       public var music:String;
-      
+
+      public var disableShooting_:Boolean;
+
+      public var disableAbilitites_:Boolean;
+
       public function MapInfo(id:uint, callback:Function)
       {
          super(id,callback);
@@ -43,6 +47,8 @@ package kabam.rotmg.messaging.impl.incoming
          this.allowPlayerTeleport_ = data.readBoolean();
          this.showDisplays_ = data.readBoolean();
          this.music = data.readUTF();
+         this.disableShooting_ = data.readBoolean();
+         this.disableAbilitites_ = data.readBoolean();
       }
       
       override public function toString() : String

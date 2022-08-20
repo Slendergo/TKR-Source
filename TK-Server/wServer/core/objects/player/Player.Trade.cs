@@ -14,20 +14,38 @@ namespace wServer.core.objects
         internal bool tradeAccepted;
         internal Player tradeTarget;
 
-        public void CancelTrade()
+        public void CancelTrade(bool leftmarket = false)
         {
-            Client.SendPacket(new TradeDone()
+            if (!leftmarket)
             {
-                Code = 1,
-                Description = "Trade canceled!"
-            });
-
-            if (tradeTarget != null && tradeTarget.Client != null)
-                tradeTarget.Client.SendPacket(new TradeDone()
+                Client.SendPacket(new TradeDone()
                 {
                     Code = 1,
                     Description = "Trade canceled!"
                 });
+
+                if (tradeTarget != null && tradeTarget.Client != null)
+                    tradeTarget.Client.SendPacket(new TradeDone()
+                    {
+                        Code = 1,
+                        Description = "Trade canceled!"
+                    });
+            }
+            else
+            {
+                Client.SendPacket(new TradeDone()
+                {
+                    Code = 1,
+                    Description = "You left the market, Trade canceled!"
+                });
+
+                if (tradeTarget != null && tradeTarget.Client != null)
+                    tradeTarget.Client.SendPacket(new TradeDone()
+                    {
+                        Code = 1,
+                        Description = "Client left the market, Trade canceled!"
+                    });
+            }
 
             ResetTrade();
         }
@@ -35,9 +53,10 @@ namespace wServer.core.objects
         public void RequestTrade(string name)
         {
             if (World is TestWorld) return;
-            if (World is MarketplaceWorld)
+
+            if (!IsInMarket)
             {
-                SendError("<Marketplace> Trade is restricted in the Marketplace!");
+                SendError("You cannot trade outside the market.");
                 return;
             }
 

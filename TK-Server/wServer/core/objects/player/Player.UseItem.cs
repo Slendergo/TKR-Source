@@ -96,6 +96,12 @@ namespace wServer.core.objects
 
         public void UseItem(TickTime time, int objId, int slot, Position pos, int sellMaxed)
         {
+            if (World.DisableAbilities && slot == 1) // ability slot
+            {
+                Client.Disconnect("Attempting to activate ability in a disabled world");
+                return;
+            }
+
             //Log.Debug(objId + ":" + slot);
             var entity = World.GetEntity(objId);
             if (entity == null)
@@ -110,10 +116,10 @@ namespace wServer.core.objects
                 return;
             }
 
-            if (entity is Player && (entity as Player).World is MarketplaceWorld)
+            if (IsInMarket)
             {
+                SendInfo("You cannot use items inside the marketplace");
                 Client.SendPacket(new InvResult() { Result = 1 });
-                Client.Player.SendError("<Marketplace> Using an Item is restricted in the Marketplace!");
                 return;
             }
 

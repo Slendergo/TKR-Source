@@ -112,17 +112,22 @@ public class Map extends Sprite {
     private var graphicsData3d_:Vector.<Object3DStage3D>;
     private var lastSoftwareClear:Boolean = false;
 
+    public var disableShooting_:Boolean;
+    public var disableAbilities_:Boolean;
+
     private function get requireInterpolation():Boolean {
         return this.gs_.gsc_.jitterWatcher_ && this.gs_.gsc_.jitterWatcher_.getNetJitter > Parameters.INTERPOLATION_THRESHOLD;
     }
 
-    public function setProps(width:int, height:int, name:String, back:int, allowPlayerTeleport:Boolean, showDisplays:Boolean):void {
+    public function setProps(width:int, height:int, name:String, back:int, allowPlayerTeleport:Boolean, showDisplays:Boolean, disableShooting:Boolean, disableAbilities:Boolean):void {
         this.width_ = width;
         this.height_ = height;
         this.name_ = name;
         this.back_ = back;
         this.allowPlayerTeleport_ = allowPlayerTeleport;
         this.showDisplays_ = showDisplays;
+        this.disableShooting_ = disableShooting;
+        this.disableAbilities_ = disableAbilities;
     }
 
     public function initialize():void {

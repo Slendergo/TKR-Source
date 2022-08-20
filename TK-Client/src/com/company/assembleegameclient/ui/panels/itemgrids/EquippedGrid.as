@@ -61,7 +61,7 @@ package com.company.assembleegameclient.ui.panels.itemgrids
                {
                   this.tiles[i].setItem(-1, null);
                }
-               this.tiles[i].updateDim(curPlayer);
+               this.tiles[i].updateDim(curPlayer, i);
             }
          }
       }

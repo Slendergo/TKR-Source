@@ -17,11 +17,12 @@ namespace wServer.core.commands
 
             protected override bool Process(Player player, TickTime time, string setPiece)
             {
-                if ((player.World is NexusWorld) || (player.World is MarketplaceWorld) || player.World.Id == -10 || player.World.InstanceType == WorldResourceInstanceType.Guild)
+                if ((player.World is NexusWorld) || player.World.Id == -10 || player.World.InstanceType == WorldResourceInstanceType.Guild)
                 {
-                    player.SendError("No");
+                    player.SendError("You cannot use this command here");
                     return false;
                 }
+
                 if (string.IsNullOrWhiteSpace(setPiece))
                 {
                     var type = typeof(ISetPiece);

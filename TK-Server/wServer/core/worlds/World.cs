@@ -43,7 +43,8 @@ namespace wServer.core.worlds
         public string Music { get; set; }
         public int Difficulty { get; protected set; }
         public bool Deleted { get; protected set; }
-
+        public bool DisableShooting { get; set; }
+        public bool DisableAbilities { get; set; }
         private long Lifetime { get; set; }
 
         public readonly Wmap Map;
@@ -81,11 +82,11 @@ namespace wServer.core.worlds
             MaxPlayers = resource.Capacity;
             InstanceType = resource.Instance;
             Persist = resource.Persists;
-            AllowTeleport = true;// !resource.restrictTp;
-            ShowDisplays = Id == -2;// resource.showDisplays;
+            ShowDisplays = Id == -2 || resource.ShowDisplays;
             Blocking = resource.VisibilityType;
-            AllowTeleport = true;
-            ShowDisplays = true;
+            AllowTeleport = resource.AllowTeleport;
+            DisableShooting = resource.DisableShooting;
+            DisableAbilities = resource.DisableAbilities;
 
             IsRealm = false;
 

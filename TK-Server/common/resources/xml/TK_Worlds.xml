@@ -13,6 +13,7 @@
 			<Track>wanderlust</Track>
 		</Music>
 		<Persists/>
+		<AllowTeleport/>
 	</World>
 	<World id="Nexus">
 		<Width>256</Width>
@@ -24,6 +25,9 @@
 			<Track>wanderlust</Track>
 		</Music>
 		<Persists/>
+		<ShowDisplays/>
+		<DisableShooting/>
+		<DisableAbilities/>
 	</World>
 	<World id="Vault">
 		<Width>256</Width>
@@ -32,30 +36,40 @@
 		<MapJM>vault.jm</MapJM>
 		<Instance enum="vault"/>
 		<Persists/>
+		<DisableShooting/>
+		<DisableAbilities/>
 	</World>
 	<World id="Guild Hall 1">
 		<Width>256</Width>
 		<Height>256</Height>
 		<MapJM>guild/guild_hall1.jm</MapJM>
 		<Instance enum="guild"/>
+		<DisableShooting/>
+		<DisableAbilities/>
 	</World>
 	<World id="Guild Hall 2">
 		<Width>256</Width>
 		<Height>256</Height>
 		<MapJM>guild/guild_hall2.jm</MapJM>
 		<Instance enum="guild"/>
+		<DisableShooting/>
+		<DisableAbilities/>
 	</World>
 	<World id="Guild Hall 3">
 		<Width>256</Width>
 		<Height>256</Height>
 		<MapJM>guild/guild_hall3.jm</MapJM>
 		<Instance enum="guild"/>
+		<DisableShooting/>
+		<DisableAbilities/>
 	</World>
 	<World id="Guild Hall 4">
 		<Width>256</Width>
 		<Height>256</Height>
 		<MapJM>guild/guild_hall4.jm</MapJM>
 		<Instance enum="guild"/>
+		<des/>
+		<DisableAbilities/>
 	</World>
 	<World id="Undead Lair">
 		<Width>256</Width>

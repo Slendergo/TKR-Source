@@ -652,6 +652,13 @@ namespace wServer.core.objects
 
         public void Teleport(TickTime time, int objId, bool ignoreRestrictions = false)
         {
+            if (IsInMarket)
+            {
+                SendError("You cannot teleport while inside the market.");
+                RestartTPPeriod();
+                return;
+            }
+
             var obj = World.GetEntity(objId);
             if (obj == null)
             {
@@ -779,6 +786,9 @@ namespace wServer.core.objects
 
                 HandleBreath(ref time);
 
+                if(World is NexusWorld)
+                    HandleNexus(ref time);
+
                 CheckTradeTimeout(time);
                 HandleQuest(time);
 
@@ -803,6 +813,23 @@ namespace wServer.core.objects
             base.Tick(ref time);
         }
 
+        public bool IsInMarket { get; private set; }
+
+        public void HandleNexus(ref TickTime time)
+        {
+            var inMarket = (World as NexusWorld).WithinBoundsOfMarket(X, Y);
+            if (inMarket && !IsInMarket)
+                SendInfo("You have entered the market");
+            if (!inMarket && IsInMarket)
+            {
+                SendInfo("You have left the market");
+                
+                if(tradeTarget != null)
+                    CancelTrade(true);
+            }
+            IsInMarket = inMarket;
+        }
+
         public void HandleBreath(ref TickTime time)
         {
             if (World.IdName != "Ocean Trench")
@@ -810,7 +837,7 @@ namespace wServer.core.objects
             if (Breath > 0)
                 Breath -= 5 * time.DeltaTime * 5;
             else
-                HP -= 5;
+                HP -= (int)(5 * time.DeltaTime * 5);
 
             if (HP < 0)
             {

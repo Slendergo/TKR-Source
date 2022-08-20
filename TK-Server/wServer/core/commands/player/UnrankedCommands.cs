@@ -438,7 +438,7 @@ namespace wServer.core.commands
 
                 if (world == null) return false;
 
-                if (world is VaultWorld || world is MarketplaceWorld || world.InstanceType == WorldResourceInstanceType.Guild)
+                if (world is VaultWorld || world.InstanceType == WorldResourceInstanceType.Guild)
                 {
                     player.SendError("You can't invite players to this World.");
                     return false;

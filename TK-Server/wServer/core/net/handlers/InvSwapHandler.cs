@@ -33,6 +33,15 @@ namespace wServer.core.net.handlers
 
         private void Handle(Player player, Entity from, Entity to, int slotFrom, int slotTo)
         {
+            if (player.IsInMarket)
+            {
+                from.ForceUpdate(slotFrom);
+                to.ForceUpdate(slotTo);
+                player.SendInfo("You cannot swap inventory items inside the marketplace");
+                player.Client.SendPacket(new InvResult() { Result = 1 });
+                return;
+            }
+
             if (player == null || player.Client == null || player.World == null)
                 return;
 
@@ -41,15 +50,6 @@ namespace wServer.core.net.handlers
                 from.ForceUpdate(slotFrom);
                 to.ForceUpdate(slotTo);
                 player.Client.SendPacket(new InvResult() { Result = 1 });
-                return;
-            }
-
-            if (player.World is MarketplaceWorld)
-            {
-                from.ForceUpdate(slotFrom);
-                to.ForceUpdate(slotTo);
-                player.Client.SendPacket(new InvResult() { Result = 1 });
-                player.SendError("<Marketplace> Swap an Item is restricted in the Marketplace!");
                 return;
             }
 

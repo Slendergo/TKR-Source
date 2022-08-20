@@ -788,6 +788,11 @@ public class Player extends Character {
         if (map_ == null || isPaused()) {
             return false;
         }
+
+        if(map_.disableAbilities_){
+            return false;
+        }
+
         var itemType:int = equipment_[1];
         if (itemType == -1) {
             return false;
@@ -998,6 +1003,10 @@ public class Player extends Character {
     }
 
     private function shoot(attackAngle:Number):void {
+        if(map_.disableShooting_){
+            return;
+        }
+
         if (map_ == null || isStunned() || isPaused() || isPetrified()) {
             return;
         }

@@ -58,8 +58,8 @@ public class ForgeInventory extends Sprite {
             if(backPack)
             {
                 var backpackInv:ForgeSlot = new ForgeSlot(items[i + 8], cuts, i);
-                backpackInv.x = int(i % 4) * (Slot.WIDTH + 4);
-                backpackInv.y = inventory.y + 100;
+                backpackInv.x = (168 + 16) + (int(i % 4) * (Slot.WIDTH + 4));
+                backpackInv.y = int(i / 4) * (Slot.HEIGHT + 4) + 46;
                 var itembackpackXML:XML = ObjectLibrary.xmlLibrary_[items[i + 8]];
                 if((itembackpackXML != null))
                     backpackInv.addEventListener(MouseEvent.MOUSE_DOWN,this.onSlotClick);

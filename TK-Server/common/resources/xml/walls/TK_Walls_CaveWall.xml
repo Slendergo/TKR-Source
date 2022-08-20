@@ -36,6 +36,150 @@
     <EnemyOccupySquare />
     <Connects />
   </Object>
+	<Object type="0x14F" id="Ice Cave Wall BLOCK">
+		<Class>CaveWall</Class>
+		<RandomTexture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x1d4</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x1d5</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x1d6</Index>
+			</Texture>
+		</RandomTexture>
+		<ShadowSize>0</ShadowSize>
+		<Static />
+		<FullOccupy />
+		<OccupySquare />
+		<EnemyOccupySquare />
+		<BlocksSight />
+		<Connects />
+	</Object>
+	<Object type="0xa145" id="Ice Cave Wall GATE">
+		<Class>CaveWall</Class>
+		<RandomTexture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x1d4</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x1d5</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x1d6</Index>
+			</Texture>
+		</RandomTexture>
+		<ShadowSize>0</ShadowSize>
+		<Static />
+		<FullOccupy />
+		<OccupySquare />
+		<EnemyOccupySquare />
+		<BlocksSight />
+		<Connects />
+	</Object>
+	<Object type="0x237" id="Ice Cave Wall C">
+		<Class>CaveWall</Class>
+		<RandomTexture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x1d4</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x1d5</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x1d6</Index>
+			</Texture>
+		</RandomTexture>
+		<ShadowSize>0</ShadowSize>
+		<Static />
+		<FullOccupy />
+		<OccupySquare />
+		<EnemyOccupySquare />
+		<BlocksSight />
+		<Connects />
+	</Object>
+	<Object type="0xa147" id="Ice Cave Wall S">
+		<Class>CaveWall</Class>
+		<RandomTexture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x1d4</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x1d5</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x1d6</Index>
+			</Texture>
+		</RandomTexture>
+		<ShadowSize>0</ShadowSize>
+		<Static />
+		<FullOccupy />
+		<OccupySquare />
+		<EnemyOccupySquare />
+		<BlocksSight />
+		<Connects />
+	</Object>
+	<Object type="0xa148" id="Ice Cave Wall S2">
+		<Class>CaveWall</Class>
+		<RandomTexture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x1d4</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x1d5</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x1d6</Index>
+			</Texture>
+		</RandomTexture>
+		<ShadowSize>0</ShadowSize>
+		<Static />
+		<FullOccupy />
+		<OccupySquare />
+		<EnemyOccupySquare />
+		<BlocksSight />
+		<Connects />
+	</Object>
+	<Object type="0x155" id="Ice Cave Wall Shortcut">
+		<Class>CaveWall</Class>
+		<RandomTexture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x1d4</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x1d5</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x1d6</Index>
+			</Texture>
+		</RandomTexture>
+		<ShadowSize>0</ShadowSize>
+		<Static />
+		<FullOccupy />
+		<OccupySquare />
+		<EnemyOccupySquare />
+		<BlocksSight />
+		<Connects />
+	</Object>
   <Object type="0x18d6" id="Candy Rock Wall">
     <Class>CaveWall</Class>
     <RandomTexture>

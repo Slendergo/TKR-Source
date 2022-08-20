@@ -1,4 +1,68 @@
 <Objects>
+	<Object type="0x238" id="Yeti Chest Check">
+		<DisplayId>Yeti Chest Check</DisplayId>
+		<Class>Character</Class>
+		<Enemy />
+		<Invincible />
+		<Texture>
+			<File>invisible</File>
+			<Index>0x00</Index>
+		</Texture>
+		<MaxHitPoints>150000</MaxHitPoints>
+		<Defense>15</Defense>
+		<Size>160</Size>
+		<ShadowSize>0</ShadowSize>
+		<XpMult>0.0</XpMult>
+		<NoMiniMap />
+	</Object>
+	<Object type="0xa146" id="Yeti Check">
+		<DisplayId>Yeti Check</DisplayId>
+		<Class>Character</Class>
+		<Enemy />
+		<Invincible />
+		<Texture>
+			<File>invisible</File>
+			<Index>0x00</Index>
+		</Texture>
+		<MaxHitPoints>150000</MaxHitPoints>
+		<Defense>15</Defense>
+		<Size>160</Size>
+		<ShadowSize>0</ShadowSize>
+		<XpMult>0.0</XpMult>
+		<NoMiniMap />
+	</Object>
+	<Object type="0x217" id="Snowman Check">
+		<DisplayId>Snowman Check</DisplayId>
+		<Class>Character</Class>
+		<Enemy />
+		<Invincible />
+		<Texture>
+			<File>invisible</File>
+			<Index>0x00</Index>
+		</Texture>
+		<MaxHitPoints>150000</MaxHitPoints>
+		<Defense>15</Defense>
+		<Size>160</Size>
+		<ShadowSize>0</ShadowSize>
+		<XpMult>0.0</XpMult>
+		<NoMiniMap />
+	</Object>
+	<Object type="0x14A" id="Snowman Check 2">
+		<DisplayId>Snowman Check 2</DisplayId>
+		<Class>Character</Class>
+		<Enemy />
+		<Invincible />
+		<Texture>
+			<File>invisible</File>
+			<Index>0x00</Index>
+		</Texture>
+		<MaxHitPoints>150000</MaxHitPoints>
+		<Defense>15</Defense>
+		<Size>160</Size>
+		<ShadowSize>0</ShadowSize>
+		<XpMult>0.0</XpMult>
+		<NoMiniMap />
+	</Object>
 	<Object type="0x9952" id="Fire wall spawner">
 		<Class>Character</Class>
 		<Enemy />

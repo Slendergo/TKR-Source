@@ -1,4 +1,18 @@
 <Objects>
+	<Object type="0x154" id="Yeti Chest">
+		<DisplayId>Yeti Chest</DisplayId>
+		<Class>Character</Class>
+		<Chest />
+		<Enemy />
+		<Texture>
+			<File>custom16x16Environment</File>
+			<Index>0x20</Index>
+		</Texture>
+		<MaxHitPoints>120000</MaxHitPoints>
+		<Defense>35</Defense>
+		<Size>100</Size>
+		<XpMult>0.0</XpMult>
+	</Object>
   <Object type="0x5110" id="Gold Statue 1">
     <DisplayId>Golden Statue</DisplayId>
     <Class>GameObject</Class>

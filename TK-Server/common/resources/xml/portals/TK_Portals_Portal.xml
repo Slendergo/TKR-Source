@@ -1,4 +1,78 @@
 <Objects>
+	<Object type="0xa141" id="Cave of Eternal Frost">
+		<Class>Portal</Class>
+		<Size>140</Size>
+		<IntergamePortal />
+		<DisplayId>Cave of Eternal Frost</DisplayId>
+		<DungeonName>Cave of Eternal Frost</DungeonName>
+		<Texture>
+			<File>custom16x16Environment</File>
+			<Index>0x15</Index>
+		</Texture>
+		<Animation prob="1" period="1">
+			<Frame time="0.05">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x16</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.10">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x17</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.10">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x18</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.10">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x19</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.10">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x1a</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.10">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x1b</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.10">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x1c</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.10">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x1d</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.10">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x1e</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.05">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x1f</Index>
+				</Texture>
+			</Frame>
+		</Animation>
+		<ShadowSize>0</ShadowSize>
+	</Object>
 	<Object type="0x950d" id="Hideout of Stheno Portal">
 		<Class>Portal</Class>
 		<IntergamePortal />

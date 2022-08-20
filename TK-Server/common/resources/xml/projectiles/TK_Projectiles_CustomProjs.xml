@@ -1385,160 +1385,162 @@
 	<Object type="0xaa2c" id="Projectile 0 QI">
 		<Class>Projectile</Class>
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x8c</Index>
+			<File>CustomProjs</File>
+			<Index>0xfc</Index>
 		</Texture>
 		<AngleCorrection>1</AngleCorrection>
 	</Object>
 	<Object type="0xa23c" id="Projectile 1 QI">
 		<Class>Projectile</Class>
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x98</Index>
+			<File>CustomProjs</File>
+			<Index>0xf8</Index>
 		</Texture>
 		<AngleCorrection>1</AngleCorrection>
 	</Object>
 	<Object type="0xa25c" id="Projectile 2 QI">
 		<Class>Projectile</Class>
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x98</Index>
+			<File>CustomProjs</File>
+			<Index>0xf9</Index>
 		</Texture>
 		<AngleCorrection>1</AngleCorrection>
 	</Object>
 	<Object type="0xa25e" id="Projectile 3 QI">
 		<Class>Projectile</Class>
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x8a</Index>
+			<File>CustomProjs</File>
+			<Index>0xf2</Index>
 		</Texture>
 		<AngleCorrection>1</AngleCorrection>
 	</Object>
 	<Object type="0xa27e" id="Projectile 4 QI">
 		<Class>Projectile</Class>
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x89</Index>
+			<File>CustomProjs</File>
+			<Index>0x23</Index>
 		</Texture>
 		<AngleCorrection>1</AngleCorrection>
 	</Object>
 	<Object type="0xb27c" id="Projectile 0 GIQ">
 		<Class>Projectile</Class>
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x98</Index>
+			<File>CustomProjs</File>
+			<Index>0xf0</Index>
 		</Texture>
 		<AngleCorrection>1</AngleCorrection>
 	</Object>
 	<Object type="0xb25b" id="Projectile 1 GIQ">
 		<Class>Projectile</Class>
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x98</Index>
+			<File>CustomProjs</File>
+			<Index>0xf1</Index>
 		</Texture>
 		<AngleCorrection>1</AngleCorrection>
 	</Object>
 	<Object type="0xa26b" id="Projectile 0 ES">
 		<Class>Projectile</Class>
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x8c</Index>
+			<File>CustomProjs</File>
+			<Index>0xf3</Index>
 		</Texture>
 		<AngleCorrection>1</AngleCorrection>
 	</Object>
 	<Object type="0xb17c" id="Projectile 0 CPB">
 		<Class>Projectile</Class>
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x89</Index>
+			<File>CustomProjs</File>
+			<Index>0xf9</Index>
 		</Texture>
 		<AngleCorrection>1</AngleCorrection>
 	</Object>
 	<Object type="0xb19d" id="Projectile 1 CPB">
 		<Class>Projectile</Class>
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x98</Index>
+			<File>CustomProjs</File>
+			<Index>0xfa</Index>
 		</Texture>
 		<AngleCorrection>1</AngleCorrection>
 	</Object>
 	<Object type="0xa37c" id="Projectile 0 EC">
 		<Class>Projectile</Class>
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x8c</Index>
+			<File>CustomProjs</File>
+			<Index>0xfb</Index>
 		</Texture>
 		<AngleCorrection>1</AngleCorrection>
 	</Object>
 	<Object type="0xb19c" id="Projectile 0 CSS">
 		<Class>Projectile</Class>
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x8c</Index>
+			<File>CustomProjs</File>
+			<Index>0xf2</Index>
 		</Texture>
 		<AngleCorrection>1</AngleCorrection>
 	</Object>
 	<Object type="0xa37e" id="Projectile 1 CSS">
 		<Class>Projectile</Class>
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x59</Index>
+			<File>CustomProjs</File>
+			<Index>0xf2</Index>
 		</Texture>
 		<AngleCorrection>1</AngleCorrection>
+		<Rotation>80</Rotation>
 	</Object>
 	<Object type="0xb19e" id="Projectile 2 CSS">
 		<Class>Projectile</Class>
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x8c</Index>
+			<File>CustomProjs</File>
+			<Index>0xf8</Index>
 		</Texture>
 		<AngleCorrection>1</AngleCorrection>
 	</Object>
 	<Object type="0xf19c" id="Projectile 0 CSS2">
 		<Class>Projectile</Class>
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x8c</Index>
+			<File>CustomProjs</File>
+			<Index>0xf2</Index>
 		</Texture>
 		<AngleCorrection>1</AngleCorrection>
 	</Object>
 	<Object type="0xa50e" id="Projectile 1 CSS2">
 		<Class>Projectile</Class>
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x59</Index>
+			<File>CustomProjs</File>
+			<Index>0xf4</Index>
 		</Texture>
 		<AngleCorrection>1</AngleCorrection>
 	</Object>
 	<Object type="0xb51e" id="Projectile 2 CSS2">
 		<Class>Projectile</Class>
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x8c</Index>
+			<File>CustomProjs</File>
+			<Index>0xf8</Index>
 		</Texture>
 		<AngleCorrection>1</AngleCorrection>
 	</Object>
 	<Object type="0xb41b" id="Projectile 0 GFS">
 		<Class>Projectile</Class>
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x8c</Index>
+			<File>CustomProjs</File>
+			<Index>0xfc</Index>
 		</Texture>
 		<AngleCorrection>1</AngleCorrection>
 	</Object>
 	<Object type="0xb42b" id="Projectile 1 GFS">
 		<Class>Projectile</Class>
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x89</Index>
+			<File>CustomProjs</File>
+			<Index>0xfd</Index>
 		</Texture>
-		<Rotation>50</Rotation>
+		<Wavy/>
+		<AngleCorrection>1</AngleCorrection>
 	</Object>
 	<Object type="0xb41a" id="Projectile 0 FE">
 		<Class>Projectile</Class>
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x8c</Index>
+			<File>CustomProjs</File>
+			<Index>0xfe</Index>
 		</Texture>
 		<AngleCorrection>1</AngleCorrection>
 	</Object>
@@ -1579,6 +1581,14 @@
 		<Texture>
 			<File>CustomProjs</File>
 			<Index>0xe9</Index>
+		</Texture>
+		<AngleCorrection>1</AngleCorrection>
+	</Object>
+	<Object type="0xa142" id="Projectile 0 FT">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomProjs</File>
+			<Index>0xff</Index>
 		</Texture>
 		<AngleCorrection>1</AngleCorrection>
 	</Object>

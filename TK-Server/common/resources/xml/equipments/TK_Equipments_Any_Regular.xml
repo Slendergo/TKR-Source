@@ -7544,7 +7544,6 @@
     <Class>Equipment</Class>
     <Item/>
     <SPlus/>
-    <Soulbound/>
     <Description>A special powder that is left by the most notable or terrible enemies, put them together with other powders until you get 5 and see what reward they will give you!.</Description>
     <Texture>
       <File>CustomObj</File>

@@ -1071,7 +1071,7 @@
 		<Enemy />
 		<AnimatedTexture>
 			<File>Custom8x8Encounters</File>
-			<Index>30</Index>
+			<Index>36</Index>
 		</AnimatedTexture>
 		<Size>100</Size>
 		<MaxHitPoints>15000</MaxHitPoints>
@@ -1095,7 +1095,7 @@
 		<Enemy />
 		<AnimatedTexture>
 			<File>Custom8x8Encounters</File>
-			<Index>30</Index>
+			<Index>37</Index>
 		</AnimatedTexture>
 		<Size>130</Size>
 		<MaxHitPoints>50000</MaxHitPoints>
@@ -1127,7 +1127,7 @@
 		<Enemy />
 		<AnimatedTexture>
 			<File>Custom8x8Encounters</File>
-			<Index>31</Index>
+			<Index>37</Index>
 		</AnimatedTexture>
 		<Size>70</Size>
 		<MaxHitPoints>15000</MaxHitPoints>
@@ -1149,7 +1149,7 @@
 		<Enemy />
 		<AnimatedTexture>
 			<File>Custom8x8Encounters</File>
-			<Index>31</Index>
+			<Index>38</Index>
 		</AnimatedTexture>
 		<Size>70</Size>
 		<MaxHitPoints>10000</MaxHitPoints>
@@ -1170,7 +1170,7 @@
 		<Enemy />
 		<AnimatedTexture>
 			<File>Custom8x8Encounters</File>
-			<Index>31</Index>
+			<Index>35</Index>
 		</AnimatedTexture>
 		<Size>150</Size>
 		<MaxHitPoints>50000</MaxHitPoints>

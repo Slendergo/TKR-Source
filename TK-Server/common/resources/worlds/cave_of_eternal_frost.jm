@@ -1,1 +1,358 @@
-{"data":"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","width":213,"height":198,"dict":[{},{"ground":"Ice no Walk"},{"objs":[{"id":"Ice Cave Wall"}],"ground":"Ice no Walk"},{"ground":"Snowy Rock"},{"objs":[{"id":"Ice Crystal Tree"}],"ground":"Ice no Walk"},{"objs":[{"id":"Ice Crystal Rock"}],"ground":"Ice no Walk"},{"objs":[{"id":"Winter Rock"}],"ground":"Snow Dark"},{"ground":"Snow Dark"},{"ground":"Snow"},{"objs":[{"id":"Ice Cave Wall"}],"ground":"Ice Slide"},{"objs":[{"id":"Ice Flower"}],"ground":"Snowy Rock"},{"objs":[{"id":"Ice Cave Wall"}],"ground":"Snowy Rock"},{"objs":[{"id":"Winter Drift"}],"ground":"Snowy Rock"},{"objs":[{"id":"Pool of Blood"}],"ground":"Snow Dark"},{"objs":[{"id":"Winter Tree Big"}],"ground":"Snow"},{"objs":[{"id":"Ice Flower"}],"ground":"Snow"},{"objs":[{"id":"Pool of Blood"}],"ground":"Snowy Rock"},{"objs":[{"id":"Winter Rock"}],"ground":"Snowy Rock"},{"objs":[{"id":"Winter Snowman Big"}],"ground":"Snow"},{"objs":[{"id":"Ice Flower"}],"ground":"Snow Dark"},{"objs":[{"id":"Ice Cave Wall"}],"ground":"Snow Dark"},{"ground":"Ice Slide"},{"objs":[{"id":"Dragon Candelabra"}],"ground":"Snow Dark"},{"ground":"Snow White"},{"objs":[{"id":"Winter Rock"}],"ground":"Snow"},{"objs":[{"id":"Winter Tree Small"}],"ground":"Snowy Rock"},{"objs":[{"id":"Ice Cave Wall"}],"ground":"Snow"},{"objs":[{"id":"Dragon Candelabra"}],"ground":"Snowy Rock"},{"objs":[{"id":"Dragon Candelabra"}],"ground":"Ice Slide"},{"objs":[{"id":"Pool of Blood"}],"ground":"Ice Slide"},{"objs":[{"id":"Winter Tree Big"}],"ground":"Snow Dark"},{"objs":[{"id":"Winter Drift"}],"ground":"Snow Dark"},{"objs":[{"id":"Ice Destructible Wall"}],"ground":"Ice no Walk"},{"objs":[{"id":"Winter Snowman Small"}],"ground":"Snow"},{"objs":[{"id":"Winter Tree Big"}],"ground":"Snowy Rock"},{"objs":[{"id":"Winter Tree Small"}],"ground":"Snow"},{"objs":[{"id":"Ice Destructible Wall"}],"ground":"Snow Dark"},{"objs":[{"id":"Ice Destructible Wall"}],"ground":"Ice Slide"},{"objs":[{"id":"Ice Crystal Rock"}],"ground":"Ice Slide"},{"objs":[{"id":"Ice Crystal Rock"}],"ground":"Snow"},{"objs":[{"id":"Winter Drift"}],"ground":"Snow"},{"objs":[{"id":"Ice Destructible Wall"}],"ground":"Snowy Rock"},{"objs":[{"id":"Ice Crystal Tree"}],"ground":"Ice Slide"},{"objs":[{"id":"Gravestone 15/16"}],"ground":"Ice no Walk"},{"objs":[{"id":"Ice Cave Wall"}]},{"objs":[{"id":"Ice Crystal Rock"}],"ground":"Snow Dark"},{"objs":[{"id":"Ice Crystal Tree"}],"ground":"Snowy Rock"},{"objs":[{"id":"Ice Crystal Tree"}],"ground":"Snow Dark"},{"regions":[{"id":"Spawn"}],"ground":"Snow Dark"},{"objs":[{"id":"Gravestone 12/16"}],"ground":"Ice no Walk"}]}
+{
+    "width": 220,
+    "height": 238,
+    "dict": [
+        {},
+        { "objs": [ { "id": "Frozen Elf" } ] },
+        { "ground": "Ice no Walk" },
+        {
+            "objs": [ { "id": "Ice Crystal Tree" } ],
+            "ground": "Ice no Walk"
+        },
+        {
+            "objs": [ { "id": "Ice Cave Wall" } ],
+            "ground": "Ice no Walk"
+        },
+        { "objs": [ { "id": "Ice Crystal Tree" } ] },
+        { "ground": "Snowy Rock" },
+        {
+            "objs": [ { "id": "Ice Flower" } ],
+            "ground": "Snowy Rock"
+        },
+        { "ground": "Ice Slide" },
+        {
+            "objs": [ { "id": "Ice Crystal Tree" } ],
+            "ground": "Snowy Rock"
+        },
+        { "ground": "Snow Dark" },
+        {
+            "objs": [ { "id": "Pool of Blood" } ],
+            "ground": "Snowy Rock"
+        },
+        {
+            "objs": [ { "id": "Pool of Blood" } ],
+            "ground": "Ice Slide"
+        },
+        {
+            "objs": [ { "id": "Winter Drift" } ],
+            "ground": "Snowy Rock"
+        },
+        {
+            "objs": [ { "id": "Ice Crystal Rock" } ],
+            "ground": "Snowy Rock"
+        },
+        {
+            "objs": [ { "id": "Ice Cave Wall" } ],
+            "ground": "Snowy Rock"
+        },
+        {
+            "objs": [ { "id": "Ice Crystal Rock" } ],
+            "ground": "Ice Slide"
+        },
+        {
+            "objs": [ { "id": "Dragon Candelabra" } ],
+            "ground": "Ice Slide"
+        },
+        { "ground": "Snow" },
+        {
+            "objs": [ { "id": "Winter Tree Big" } ],
+            "ground": "Snow"
+        },
+        {
+            "objs": [ { "id": "Ice Flower" } ],
+            "ground": "Snow"
+        },
+        {
+            "objs": [ { "id": "Dragon Candelabra" } ],
+            "ground": "Snow Dark"
+        },
+        {
+            "objs": [ { "id": "Ice Flower" } ],
+            "ground": "Snow Dark"
+        },
+        {
+            "objs": [ { "id": "Frozen Elf" } ],
+            "ground": "Snow"
+        },
+        {
+            "objs": [ { "id": "Winter Snowman Big" } ],
+            "ground": "Snow"
+        },
+        {
+            "objs": [ { "id": "Pool of Blood" } ],
+            "ground": "Snow Dark"
+        },
+        {
+            "objs": [ { "id": "Guardian's Frigid Squire" } ],
+            "ground": "Snowy Rock"
+        },
+        {
+            "objs": [ { "id": "Cursed Polar Bear" } ],
+            "ground": "Snow"
+        },
+        {
+            "objs": [ { "id": "Queen of Ice" } ],
+            "ground": "Ice Slide"
+        },
+        { "ground": "Snow White" },
+        {
+            "objs": [ { "id": "Dragon Candelabra" } ],
+            "ground": "Snowy Rock"
+        },
+        {
+            "objs": [ { "id": "Frozen Tower" } ],
+            "ground": "Snow Dark"
+        },
+        {
+            "objs": [ { "id": "Ice Cave Wall" } ],
+            "ground": "Snow Dark"
+        },
+        {
+            "objs": [ { "id": "Winter Rock" } ],
+            "ground": "Snow"
+        },
+        {
+            "objs": [ { "id": "Ice Cave Wall" } ],
+            "ground": "Snow"
+        },
+        {
+            "objs": [ { "id": "Ice Cave Wall" } ],
+            "ground": "Ice Slide"
+        },
+        {
+            "objs": [ { "id": "Frozen Tower" } ],
+            "ground": "Snow"
+        },
+        {
+            "objs": [ { "id": "Winter Rock" } ],
+            "ground": "Snowy Rock"
+        },
+        {
+            "objs": [ { "id": "Evil Snowman" } ],
+            "ground": "Snow"
+        },
+        {
+            "objs": [ { "id": "Cursed Snowman Switch" } ],
+            "ground": "Snow"
+        },
+        {
+            "objs": [ { "id": "Guardian's Frigid Squire" } ],
+            "ground": "Snow Dark"
+        },
+        {
+            "objs": [ { "id": "Evil Snowman" } ],
+            "ground": "Snow Dark"
+        },
+        {
+            "objs": [ { "id": "Evil Snowman" } ],
+            "ground": "Snowy Rock"
+        },
+        {
+            "objs": [ { "id": "Cursed Polar Bear" } ],
+            "ground": "Snow Dark"
+        },
+        {
+            "objs": [ { "id": "Frozen Tower" } ],
+            "ground": "Snowy Rock"
+        },
+        {
+            "objs": [ { "id": "Winter Rock" } ],
+            "ground": "Snow Dark"
+        },
+        {
+            "objs": [ { "id": "Guardian's Frigid Squire" } ],
+            "ground": "Snow"
+        },
+        {
+            "objs": [ { "id": "Cursed Polar Bear" } ],
+            "ground": "Snowy Rock"
+        },
+        {
+            "objs": [ { "id": "Winter Tree Big" } ],
+            "ground": "Snow Dark"
+        },
+        {
+            "objs": [ { "id": "Ice Cave Wall BLOCK" } ],
+            "ground": "Ice no Walk"
+        },
+        { "objs": [ { "id": "Ice Cave Wall BLOCK" } ] },
+        {
+            "objs": [ { "id": "Winter Drift" } ],
+            "ground": "Snow Dark"
+        },
+        {
+            "objs": [ { "id": "Ice Cave Wall S2" } ],
+            "ground": "Snow Dark"
+        },
+        {
+            "objs": [ { "id": "Ice Crystal Rock" } ],
+            "ground": "Ice no Walk"
+        },
+        {
+            "objs": [ { "id": "Winter Snowman Small" } ],
+            "ground": "Snow"
+        },
+        {
+            "objs": [ { "id": "Snowman Check 2" } ],
+            "ground": "Snowy Rock"
+        },
+        {
+            "objs": [ { "id": "Ice Cave Wall S2" } ],
+            "ground": "Snowy Rock"
+        },
+        {
+            "objs": [ { "id": "Winter Tree Big" } ],
+            "ground": "Snowy Rock"
+        },
+        {
+            "objs": [ { "id": "Frozen Elf" } ],
+            "ground": "Snow Dark"
+        },
+        {
+            "objs": [ { "id": "Frozen Elf" } ],
+            "ground": "Ice Slide"
+        },
+        {
+            "objs": [ { "id": "Frozen Elf" } ],
+            "ground": "Snowy Rock"
+        },
+        {
+            "objs": [ { "id": "Winter Tree Small" } ],
+            "ground": "Snow"
+        },
+        {
+            "objs": [ { "id": "Ice Cave Wall S" } ],
+            "ground": "Snow"
+        },
+        {
+            "objs": [ { "id": "Ice Cave Wall S" } ],
+            "ground": "Snowy Rock"
+        },
+        {
+            "objs": [ { "id": "Snowman Check" } ],
+            "ground": "Snow"
+        },
+        {
+            "objs": [ { "id": "Winter Tree Small" } ],
+            "ground": "Snowy Rock"
+        },
+        {
+            "objs": [ { "id": "Abominable Snowman" } ],
+            "ground": "Snow Dark"
+        },
+        {
+            "objs": [ { "id": "Ice Destructible Wall" } ],
+            "ground": "Snow Dark"
+        },
+        {
+            "objs": [ { "id": "Ice Destructible Wall" } ],
+            "ground": "Ice Slide"
+        },
+        {
+            "objs": [ { "id": "Ice Cave Wall BLOCK" } ],
+            "ground": "Ice Slide"
+        },
+        {
+            "objs": [ { "id": "Ice Cave Wall GATE" } ],
+            "ground": "Ice Slide"
+        },
+        {
+            "objs": [ { "id": "Ice Cave Wall GATE" } ],
+            "ground": "Snowy Rock"
+        },
+        {
+            "objs": [ { "id": "Ice Crystal Rock" } ],
+            "ground": "Snow"
+        },
+        {
+            "objs": [ { "id": "Yeti Check" } ],
+            "ground": "Snow"
+        },
+        {
+            "objs": [ { "id": "Ice Cave Wall GATE" } ],
+            "ground": "Snow Dark"
+        },
+        {
+            "objs": [ { "id": "Winter Drift" } ],
+            "ground": "Snow"
+        },
+        {
+            "objs": [ { "id": "Ice Crystal Tree" } ],
+            "ground": "Ice Slide"
+        },
+        {
+            "objs": [ { "id": "Corrupt Snowman Switch" } ],
+            "ground": "Snow"
+        },
+        {
+            "objs": [ { "id": "Frozen Tower" } ],
+            "ground": "Ice Slide"
+        },
+        {
+            "objs": [ { "id": "Frozen Tower" } ],
+            "ground": "Ice no Walk"
+        },
+        {
+            "objs": [ { "id": "Ice Cave Wall BLOCK" } ],
+            "ground": "Snowy Rock"
+        },
+        {
+            "objs": [ { "id": "Ice Cave Wall BLOCK" } ],
+            "ground": "Snow Dark"
+        },
+        {
+            "objs": [ { "id": "Gravestone 15/16" } ],
+            "ground": "Ice no Walk"
+        },
+        { "objs": [ { "id": "Ice Cave Wall" } ] },
+        {
+            "objs": [ { "id": "Guardian's Frigid Squire" } ],
+            "ground": "Ice Slide"
+        },
+        {
+            "objs": [ { "id": "Ice Crystal Rock" } ],
+            "ground": "Snow Dark"
+        },
+        {
+            "objs": [ { "id": "Evil Snowman" } ],
+            "ground": "Ice Slide"
+        },
+        {
+            "objs": [ { "id": "Ice Cave Wall Shortcut" } ],
+            "ground": "Ice no Walk"
+        },
+        {
+            "objs": [ { "id": "Ice Cave Wall Shortcut" } ],
+            "ground": "Ice Slide"
+        },
+        {
+            "objs": [ { "id": "Ice Cave Wall Shortcut" } ],
+            "ground": "Snow Dark"
+        },
+        {
+            "objs": [ { "id": "Ice Crystal Tree" } ],
+            "ground": "Snow Dark"
+        },
+        {
+            "objs": [ { "id": "Yeti Chest" } ],
+            "ground": "Snow Dark"
+        },
+        {
+            "objs": [ { "id": "Evil Snowman" } ],
+            "ground": "Ice no Walk"
+        },
+        {
+            "objs": [ { "id": "Cursed Polar Bear" } ],
+            "ground": "Ice Slide"
+        },
+        {
+            "regions": [ { "id": "Spawn" } ],
+            "ground": "Snow Dark"
+        },
+        {
+            "objs": [ { "id": "Gravestone 12/16" } ],
+            "ground": "Ice no Walk"
+        }
+    ],
+    "data": "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"
+}

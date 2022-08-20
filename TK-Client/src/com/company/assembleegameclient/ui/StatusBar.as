@@ -34,6 +34,8 @@ public class StatusBar extends Sprite
       public var boost_:int = -1;
       
       public var maxMax_:int = -1;
+
+      public var maxText_:String;
       
       public var labelText_:SimpleText;
       
@@ -135,6 +137,10 @@ public class StatusBar extends Sprite
             this.boostText_.x = -3;
             this.boostText_.rotation = 270;
          }
+      }
+
+      public function setMaxText(text:String):void{
+         this.maxText_ = text;
       }
 
       public function setBarColor(color:uint):void{
@@ -252,6 +258,7 @@ public class StatusBar extends Sprite
          this.colorSprite.graphics.endFill();
          if (!this.disableText_) {
             if (this.bTextEnabled(Parameters.data_.toggleBarText) || this.mouseOver_ && this.h_ > 4 || this.forceNumText_) {
+
                var _loc1_:int = 0;
                var _loc2_:String = "";
                _loc1_ = this.maxMax_ - (this.max_ - this.boost_);
@@ -262,6 +269,9 @@ public class StatusBar extends Sprite
                   this.valueText_.text = "" + this.val_ + "/" + this.max_ + _loc2_;
                } else {
                   this.valueText_.text = "" + this.val_;
+               }
+               if(this.maxText_ != null && this.val_ == this.max_){
+                  this.valueText_.text = this.maxText_;
                }
                this.valueText_.updateMetrics();
                if (!contains(this.valueText_)) {

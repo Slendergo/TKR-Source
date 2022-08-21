@@ -136,6 +136,7 @@ public class StatData
    public static const SPS_WISDOM_COUNT:int = 156;
    public static const SPS_WISDOM_COUNT_MAX:int = 157;
    public static const ENGINE_VALUE:int = 158;
+   public static const ENGINE_TIME:int = 159;
 
 
    public var statType_:uint = 0;

@@ -1897,6 +1897,9 @@ public class GameServerConnection
                case StatData.ENGINE_VALUE:
                   (go as Engine).currentValue_ = value;
                   break;
+               case StatData.ENGINE_TIME:
+                  (go as Engine).engineTime_ = value;
+                  break;
 
                case StatData.BASESTAT:
                   player.baseStat = value;

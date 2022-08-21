@@ -27,12 +27,12 @@ public class FuelGauge extends Sprite
         var count1 = Math.max(0, Math.min(current, 100));
         var count2 = Math.max(0, Math.min(current - 100, 250));
         var count3 = Math.max(0, Math.min(current - 350, 500));
-        this.s1gague_.setMaxText(count1 == 100 ? "Reached" : null);
-        this.s2gague_.setMaxText(count2 == 250 ? "Reached" : null);
-        this.s3gague_.setMaxText(count3 == 500 ? "Reached" : null);
-        this.s1gague_.setBarColor(count1 == 100 ? 0x12cdd4 : 0xfac710)
-        this.s2gague_.setBarColor(count2 == 250 ? 0x12cdd4 : 0xfac710)
-        this.s3gague_.setBarColor(count3 == 500 ? 0x12cdd4 : 0xfac710)
+        this.s1gague_.setMaxText(count1 >= 100 ? "Reached" : null);
+        this.s2gague_.setMaxText(count2 >= 250 ? "Reached" : null);
+        this.s3gague_.setMaxText(count3 >= 500 ? "Reached" : null);
+        this.s1gague_.setBarColor(count1 >= 100 ? 0x12cdd4 : 0xfac710)
+        this.s2gague_.setBarColor(count2 >= 250 ? 0x12cdd4 : 0xfac710)
+        this.s3gague_.setBarColor(count3 >= 500 ? 0x12cdd4 : 0xfac710)
         this.s1gague_.draw(count1, 100,0);
         this.s2gague_.draw(count2, 250,0);
         this.s3gague_.draw(count3, 500,0);

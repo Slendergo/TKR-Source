@@ -31,11 +31,21 @@ public class EngineViewMediator extends Mediator {
     override public function initialize():void
     {
         this.view.close.add(this.onCancel);
+        this.view.fuelButton.addEventListener(MouseEvent.CLICK, this.onFuel);
     }
 
     override public function destroy():void
     {
+        this.view.gs_.mui_.setEnablePlayerInput(true); /* Disable player movement */
+        this.view.gs_.mui_.setEnableHotKeysInput(true); /* Disable Hotkeys */
         this.view.close.remove(this.onCancel);
+        this.view.fuelButton.removeEventListener(MouseEvent.CLICK, this.onFuel);
+    }
+
+    private function onFuel(event:MouseEvent) : void
+    {
+        this.view.gs_.gsc_.acceptFusion(this.view.itemEngineTile.getIncludedItems());
+        this.closeDialogs.dispatch();
     }
 
     private function onCancel():void {

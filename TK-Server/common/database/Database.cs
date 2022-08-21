@@ -1140,42 +1140,7 @@ namespace common.database
             return false;
         }
 
-        public void EngineAddFuel(int amount)
-        {
-            var abi = new DbEngine(_db, "STATE");
-
-            abi.engineFuel = amount;
-            abi.Flush();
-        }
-
-        public void EngineSetTime(int stage, int time)
-        {
-            var abi = new DbEngine(_db, "STATE");
-
-            abi.engineStage = stage;
-            abi.engineStageTime = time;
-            abi.Flush();
-        }
-
-        public int GetEngineFuel()
-        {
-            var abi = new DbEngine(_db, "STATE");
-            return abi.engineFuel;
-        }
-        public int GetEngineTime()
-        {
-            var abi = new DbEngine(_db, "STATE");
-            return abi.engineStageTime;
-        }
-
-        public void EngineFlush()
-        {
-            var abi = new DbEngine(_db, "STATE");
-            abi.engineFuel = 0;
-            abi.engineStage = 0;
-            abi.engineStageTime = 0;
-            abi.Flush();
-        }
+        public DbEngine GetDbEngine() => new DbEngine(_db);
 
         public void UnlockClass(DbAccount acc, ushort type)
         {

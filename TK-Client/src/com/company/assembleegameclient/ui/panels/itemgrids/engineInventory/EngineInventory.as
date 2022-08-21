@@ -38,14 +38,13 @@ public class EngineInventory extends Sprite {
     public var boxInv:SliceScalingBitmap;
     public var boxBackpack:SliceScalingBitmap;
 
-    public function EngineInventory(gs:GameSprite, items:Vector.<int>, backPack:Boolean) {
+    public function EngineInventory(gs:GameSprite, items:Vector.<int>, equipData:Vector.<Object>, backPack:Boolean) {
         this.slots_ = new Vector.<EngineSlot>();
         super();
         this.gs_ = gs;
         for(var i:int = 4; i < GeneralConstants.NUM_EQUIPMENT_SLOTS + GeneralConstants.NUM_INVENTORY_SLOTS; i++)
         {
-
-            var inventory:EngineSlot = new EngineSlot(items[i], cuts, i);
+            var inventory:EngineSlot = new EngineSlot(items[i], cuts, i, equipData[i]);
             inventory.x = int(i % 4) * (Slot.WIDTH + 4);
             inventory.y = int(i / 4) * (Slot.HEIGHT + 4) + 46;
             var itemXML:XML = ObjectLibrary.xmlLibrary_[items[i]];
@@ -58,7 +57,7 @@ public class EngineInventory extends Sprite {
 
             if(backPack)
             {
-                var backpackInv:EngineSlot = new EngineSlot(items[i + 8], cuts, i);
+                var backpackInv:EngineSlot = new EngineSlot(items[i + 8], cuts, i, equipData[i + 8]);
                 backpackInv.x = int(i % 4) * (Slot.WIDTH + 4);
                 backpackInv.y = inventory.y + 100;
                 var itembackpackXML:XML = ObjectLibrary.xmlLibrary_[items[i + 8]];

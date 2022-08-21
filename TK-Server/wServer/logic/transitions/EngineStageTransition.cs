@@ -4,13 +4,13 @@ using wServer.core.worlds.logic;
 
 namespace wServer.logic.transitions
 {
-    internal class EngineStateTransition : Transition
+    internal class EngineStageTransition : Transition
     {
         //State storage: none
 
         private readonly int State;
 
-        public EngineStateTransition(int state, string targetState)
+        public EngineStageTransition(int state, string targetState)
             : base(targetState)
         {
             State = state;
@@ -18,7 +18,7 @@ namespace wServer.logic.transitions
 
         protected override bool TickCore(Entity host, TickTime time, ref object state)
         {
-            return host.GameServer.WorldManager.Nexus.EngineState == State;
+            return host.GameServer.WorldManager.Nexus.EngineStage == State;
         }
     }
 }

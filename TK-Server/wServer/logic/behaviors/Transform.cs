@@ -1,6 +1,7 @@
 ﻿using common.resources;
 using wServer.core;
 using wServer.core.objects;
+using wServer.core.worlds.logic;
 
 namespace wServer.logic.behaviors
 {
@@ -27,6 +28,25 @@ namespace wServer.logic.behaviors
 
             host.World.EnterWorld(entity);
             host.World.LeaveWorld(host);
+        }
+    }
+    
+    internal class EngineTransform : Behavior
+    {
+        private readonly ushort target;
+
+        public EngineTransform(string target) => this.target = GetObjType(target);
+
+        protected override void TickCore(Entity host, TickTime time, ref object state)
+        {
+            var entity = (Engine)Entity.Resolve(host.GameServer, target);
+            if (entity == null)
+                return;
+            entity.Move(host.X, host.Y);
+
+            host.World.EnterWorld(entity);
+            host.World.LeaveWorld(host);
+            (host.World as NexusWorld).SetEngine(entity);
         }
     }
 }

@@ -59,7 +59,7 @@ public class EngineView extends ModalPopup {
         this.fuelGague_.y = 16;
         addChild(this.fuelGague_);
 
-        this.itemEngineTile = new EngineInventory(this.gs_, this.player_.equipment_, this.player_.hasBackpack_);
+        this.itemEngineTile = new EngineInventory(this.gs_, this.player_.equipment_, this.player_.equipData_, this.player_.hasBackpack_);
         this.itemEngineTile.x = 245;
         this.itemEngineTile.y = this.player_.hasBackpack_ ? 100 : 200;
         addChild(this.itemEngineTile);
@@ -95,7 +95,6 @@ public class EngineView extends ModalPopup {
     }
 
     public function draw():void {
-        trace("Drawing currentValue_:" + this.engine_.currentValue_)
         this.fuelGague_.draw(this.engine_.currentValue_);
     }
 }

@@ -777,18 +777,6 @@ namespace wServer.core.objects
 
         public override void Tick(ref TickTime time)
         {
-            var manager = GameServer;
-            var db = manager.Database;
-            var engineF = db.GetEngineFuel();
-            foreach (var entry in World.StaticObjects)
-            {
-                var entity = entry.Value;
-                if (entity.ObjectDesc.ObjectId.StartsWith("Engine"))
-                {
-                    Engine Engine = entity as Engine;
-                    System.Console.WriteLine("Engine fuel:" + engineF +" | Entity stat:" + Engine.CurrentAmount);
-                }
-            }
             if (KeepAlive(time))
             {
                 HandleTalismans(ref time);

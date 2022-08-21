@@ -172,7 +172,7 @@
     <Compile Include="logic\behaviors\GiveTemporaryDefense.cs" />
     <Compile Include="logic\db\BehaviorDb.Nexus.cs" />
     <Compile Include="logic\db\BehaviourDb.MortomusHideout.cs" />
-    <Compile Include="logic\transitions\EngineStateTransition.cs" />
+    <Compile Include="logic\transitions\EngineStageTransition.cs" />
     <Compile Include="networking\packets\outgoing\talisman\TalismanEssenceData.cs" />
     <Compile Include="utils\ItemUtils.cs" />
     <Compile Include="core\miscfile\thread\TickThreadSingle.cs" />

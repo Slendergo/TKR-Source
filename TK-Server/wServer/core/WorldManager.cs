@@ -17,8 +17,8 @@ namespace wServer.core
 
         private int NextWorldId = 0;
 
-        public NexusWorld Nexus => Worlds[-2] as NexusWorld;
-        public TestWorld Test => Worlds[-6] as TestWorld;
+        public NexusWorld Nexus { get; private set; }
+        public TestWorld Test { get; private set; }
 
         private readonly ConcurrentDictionary<int, World> Worlds = new ConcurrentDictionary<int, World>();
         private readonly ConcurrentDictionary<int, World> Guilds = new ConcurrentDictionary<int, World>();
@@ -36,8 +36,24 @@ namespace wServer.core
 
         public void Initialize()
         {
-            CreateNewWorld("Nexus", -2, null);
+            CreateNexusWorld();
             CreateNewTest();
+        }
+
+        public void CreateNexusWorld()
+        {
+            var worldResource = GameServer.Resources.GameData.GetWorld("Nexus");
+            if (worldResource == null)
+                return;
+
+            var world = Nexus = new NexusWorld(GameServer, -2, worldResource);
+            var success = world.LoadMapFromData(worldResource);
+            if (!success)
+                throw new Exception("Unable to initialize nexus");
+            world.Init();
+            _ = Worlds.TryAdd(world.Id, world);
+            _ = Threads.TryAdd(world.Id, new TickThreadSingle(this, world));
+            GameServer.WorldManager.Nexus.PortalMonitor.AddPortal(world);
         }
 
         public void CreateNewRealmAsync(string name)
@@ -113,7 +129,7 @@ namespace wServer.core
                 return;
             }
 
-            var world = new TestWorld(GameServer, -6, worldResource);
+            var world = Test = new TestWorld(GameServer, -6, worldResource);
             world.Init();
             Worlds[world.Id] = world;
             Nexus.WorldBranch.AddBranch(world);

@@ -14,20 +14,20 @@ namespace wServer.core.commands
             protected override bool Process(Player player, TickTime time, string args)
             {
                 var manager = player.GameServer;
-                var db = manager.Database;
-                var amount = int.Parse(args);
-                db.EngineAddFuel(amount);
-                foreach (var entry in player.World.StaticObjects)
+                var success = int.TryParse(args, out var amount);
+                if (!success)
                 {
-                    var entity = entry.Value;
-                    if (entity.ObjectDesc.ObjectId.StartsWith("Engine"))
-                    {
-                        //Engine Engine = entity as Engine;
-                        //Engine.CurrentAmount = amount;
-                    }
+                    player.SendInfo("Enter valid amount");
+                    return true;
                 }
 
-                player.SendInfo("Set engine fuel to: "+amount);
+                if(!manager.WorldManager.Nexus.TryAddFuelToEngine(player, amount))
+                {
+                    player.SendError($"Engine is max capacity");
+                    return true;
+                }
+
+                player.SendInfo($"Added {amount} fuel to engine");
                 return true;
             }
         }

@@ -1,25 +1,36 @@
 ﻿using Newtonsoft.Json;
 using StackExchange.Redis;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace common.database
 {
-    public class DbEngine//DbIpInfo
+    public class EngineFuelContributer
     {
-        public int engineFuel { get; set; }
-        public int engineStage { get; set; }
-        public int engineStageTime { get; set; }
-        public List<int> Contributors { get; set; }
+        public string Name { get; set; }
+        public int Amount { get; set; }
 
-        [JsonIgnore] public string STATE { get; private set; }
+        public EngineFuelContributer(string name, int amount)
+        {
+            Name = name;
+            Amount = amount;
+        }
+    }
+
+    public sealed class DbEngine
+    {
+        public int EngineFuel { get; set; }
+        public int EngineStage { get; set; }
+        public int EngineStageTime { get; set; }
+        public List<EngineFuelContributer> Contributors { get; set; }
+
         [JsonIgnore] public bool IsNull { get; private set; }
 
         private readonly IDatabase _db;
 
-        public DbEngine(IDatabase db, string state)
+        public DbEngine(IDatabase db)
         {
             _db = db;
-            STATE = state;
 
             var json = (string)db.HashGet("engine", "STATE");
             if (json == null)
@@ -28,6 +39,24 @@ namespace common.database
                 JsonConvert.PopulateObject(json, this);
         }
 
-        public void Flush() => _db.HashSetAsync("engine", STATE, JsonConvert.SerializeObject(this));
+        public void AddFuel(string contributer, int amount)
+        {
+            if (Contributors == null)
+                Contributors = new List<EngineFuelContributer>();
+            var engineFuelContributer = Contributors.FirstOrDefault(_ => _.Name == contributer);
+            if (engineFuelContributer == null)
+                Contributors.Add(new EngineFuelContributer(contributer, amount));
+            else
+                engineFuelContributer.Amount += amount;
+            EngineFuel += amount;
+        }
+
+        public void SetEngineStage(int state, int time)
+        {
+            EngineStage = state;
+            EngineStageTime = time;
+        }
+
+        public void Save() => _db.HashSetAsync("engine", "STATE", JsonConvert.SerializeObject(this));
     }
 }

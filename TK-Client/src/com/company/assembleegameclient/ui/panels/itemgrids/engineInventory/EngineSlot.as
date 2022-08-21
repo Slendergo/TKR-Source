@@ -21,14 +21,12 @@ import flash.geom.Point;
 
 public class EngineSlot extends Slot
 {
-
     private static const DOSE_MATRIX:Matrix = function():Matrix
     {
         var m:* = new Matrix();
         m.translate(10,5);
         return m;
     }();
-
 
     public var objectType_:int;
     public var objectId_:String;
@@ -50,13 +48,13 @@ public class EngineSlot extends Slot
 
     private var graphicsData_:Vector.<IGraphicsData>;
 
-    public function EngineSlot(item:int, cuts:Array, id:uint)
+    public function EngineSlot(item:int, cuts:Array, id:uint, equipData:Object)
     {
         var texture:BitmapData = null;
         var eqXML:XML = null;
         var offset:Point = null;
         var tempText:SimpleText = null;
-        this.overlayFill_ = new GraphicsSolidFill(16711310,1);
+        this.overlayFill_ = new GraphicsSolidFill(0x545454,1);
         this.lineStyle_ = new GraphicsStroke(2,false,LineScaleMode.NORMAL,CapsStyle.NONE,JointStyle.ROUND,3,this.overlayFill_);
         this.overlayPath_ = new GraphicsPath(new Vector.<int>(),new Vector.<Number>());
         this.graphicsData_ = new <IGraphicsData>[this.lineStyle_,this.overlayPath_,GraphicsUtil.END_STROKE];
@@ -65,16 +63,23 @@ public class EngineSlot extends Slot
         this.item_ = item;
         if(this.item_ != -1)
         {
-            SpriteUtil.safeRemoveChild(this,backgroundImage_);
+            SpriteUtil.safeRemoveChild(this, backgroundImage_);
             texture = ObjectLibrary.getRedrawnTextureFromType(this.item_,80,true);
             eqXML = ObjectLibrary.xmlLibrary_[this.item_];
             this.objectType_ = eqXML.@type;
             this.objectId_ = eqXML.@id;
-            if(eqXML.hasOwnProperty("Doses"))
+            if(equipData != null && equipData.Stack != null){
+                texture = texture.clone();
+                tempText = new SimpleText(12,16777215,false,0,0);
+                tempText.text = String(equipData.Stack);
+                tempText.updateMetrics();
+                texture.draw(tempText,DOSE_MATRIX);
+            }
+            else if(eqXML.hasOwnProperty("Doses"))
             {
                 texture = texture.clone();
                 tempText = new SimpleText(12,16777215,false,0,0);
-                tempText.text = String(eqXML.Doses);
+                tempText.text = String(equipData.Stack);
                 tempText.updateMetrics();
                 texture.draw(tempText,DOSE_MATRIX);
             }
@@ -106,7 +111,7 @@ public class EngineSlot extends Slot
         }
         else
         {
-            fill_.color = 5526612;
+            fill_.color = 0x454545;
         }
         drawBackground();
     }

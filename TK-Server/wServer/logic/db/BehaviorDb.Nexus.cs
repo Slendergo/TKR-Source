@@ -55,20 +55,20 @@ namespace wServer.logic
             .Init("Engine",
                 new State(
                     new State("Idle",
-                        new EngineStateTransition(1, "1"),
-                        new EngineStateTransition(2, "2"),
-                        new EngineStateTransition(3, "3")
+                        new EngineStageTransition(1, "1"),
+                        new EngineStageTransition(2, "2"),
+                        new EngineStageTransition(3, "3")
                         ),
                     new State("1",
-                        new Transform("Engine Stage 1"),
+                        new EngineTransform("Engine Stage 1"),
                         new Decay()
                         ),
                     new State("2",
-                        new Transform("Engine Stage 2"),
+                        new EngineTransform("Engine Stage 2"),
                         new Decay()
                         ),
                     new State("3",
-                        new Transform("Engine Stage 3"),
+                        new EngineTransform("Engine Stage 3"),
                         new Decay()
                         )
                     )
@@ -76,20 +76,20 @@ namespace wServer.logic
             .Init("Engine Stage 1",
                 new State(
                     new State("Idle",
-                        new EngineStateTransition(0, "0"),
-                        new EngineStateTransition(2, "2"),
-                        new EngineStateTransition(3, "3")
+                        new EngineStageTransition(0, "0"),
+                        new EngineStageTransition(2, "2"),
+                        new EngineStageTransition(3, "3")
                         ),
                     new State("0",
-                        new Transform("Engine"),
+                        new EngineTransform("Engine"),
                         new Decay()
                         ),
                     new State("2",
-                        new Transform("Engine Stage 2"),
+                        new EngineTransform("Engine Stage 2"),
                         new Decay()
                         ),
                     new State("3",
-                        new Transform("Engine Stage 3"),
+                        new EngineTransform("Engine Stage 3"),
                         new Decay()
                         )
                     )
@@ -97,20 +97,20 @@ namespace wServer.logic
             .Init("Engine Stage 2",
                 new State(
                     new State("Idle",
-                        new EngineStateTransition(0, "0"),
-                        new EngineStateTransition(1, "1"),
-                        new EngineStateTransition(3, "3")
+                        new EngineStageTransition(0, "0"),
+                        new EngineStageTransition(1, "1"),
+                        new EngineStageTransition(3, "3")
                         ),
                     new State("0",
-                        new Transform("Engine"),
+                        new EngineTransform("Engine"),
                         new Decay()
                         ),
                     new State("1",
-                        new Transform("Engine Stage 1"),
+                        new EngineTransform("Engine Stage 1"),
                         new Decay()
                         ),
                     new State("3",
-                        new Transform("Engine Stage 3"),
+                        new EngineTransform("Engine Stage 3"),
                         new Decay()
                         )
                     )
@@ -118,20 +118,20 @@ namespace wServer.logic
             .Init("Engine Stage 3",
                 new State(
                     new State("Idle",
-                        new EngineStateTransition(0, "0"),
-                        new EngineStateTransition(1, "1"),
-                        new EngineStateTransition(2, "2")
+                        new EngineStageTransition(0, "0"),
+                        new EngineStageTransition(1, "1"),
+                        new EngineStageTransition(2, "2")
                         ),
                     new State("0",
-                        new Transform("Engine"),
+                        new EngineTransform("Engine"),
                         new Decay()
                         ),
                     new State("1",
-                        new Transform("Engine Stage 1"),
+                        new EngineTransform("Engine Stage 1"),
                         new Decay()
                         ),
                     new State("2",
-                        new Transform("Engine Stage 2"),
+                        new EngineTransform("Engine Stage 2"),
                         new Decay()
                         )
                     )

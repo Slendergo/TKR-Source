@@ -27,7 +27,7 @@ namespace wServer.core.net.handlers
             if (player.HasConditionEffect(ConditionEffects.Hidden))
                 return;
 
-            var prj = player.TryGetProjectile(bulletId);
+            var prj = player.World.GetProjectile(player.Id, bulletId);
             if (prj == null)
                 return;
             prj?.ForceHit(entity, tickTime);

@@ -172,9 +172,10 @@
     <Compile Include="logic\db\BehaviorDb.Nexus.cs" />
     <Compile Include="logic\db\BehaviourDb.MortomusHideout.cs" />
     <Compile Include="logic\transitions\EngineStateTransition.cs" />
+    <Compile Include="memory\ObjectPool.cs" />
     <Compile Include="networking\packets\outgoing\talisman\TalismanEssenceData.cs" />
     <Compile Include="utils\ItemUtils.cs" />
-    <Compile Include="core\miscfile\thread\TickThreadSingle.cs" />
+    <Compile Include="core\miscfile\thread\RootWorldThread.cs" />
     <Compile Include="core\net\handlers\ChangeGuildRankHandler.cs" />
     <Compile Include="core\net\handlers\CancelTradeHandler.cs" />
     <Compile Include="core\net\handlers\AcceptTradeMessageHandler.cs" />

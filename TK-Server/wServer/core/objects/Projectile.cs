@@ -3,57 +3,47 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using wServer.core.worlds;
+using wServer.memory;
 
 namespace wServer.core.objects
 {
-    public interface IProjectileOwner
-    {
-        Entity Self { get; }
-    }
-
-    public class Projectile : Entity
+    public sealed class Projectile : IObjectPoolObject
     {
         public ProjectileDesc ProjDesc;
         private HashSet<Entity> _hit = new HashSet<Entity>();
-        
-        public Projectile(GameServer manager, ProjectileDesc desc) : base(manager, manager.Resources.GameData.IdToObjectType[desc.ObjectId]) => ProjDesc = desc;
+        private bool used;
 
-        public float Angle { get; set; }
-        public ushort Container { get; set; }
-        public long CreationTime { get; set; }
-        public int Damage { get; set; }
-        public byte ProjectileId { get; set; }
-        public IProjectileOwner ProjectileOwner { get; set; }
+        public byte ProjectileId;
+        public float StartX;
+        public float StartY;
+        public float Angle;
+        public ushort Container;
+        public long CreationTime;
+        public int Damage;
+        public Entity Host;
+        public World World;
+        public ConditionEffects ConditionEffects;
 
-        public Entity ProjEntity => this as Entity;
-
-        public Position StartPos { get; set; }
-        private bool _used { get; set; }
+        public Projectile() { }
 
         public void ForceHit(Entity entity, TickTime time)
         {
-            if (!ProjDesc.MultiHit && _used && !(entity is Player))
+            if (!ProjDesc.MultiHit && used && !(entity is Player))
                 return;
 
             if (_hit.Add(entity))
                 entity.HitByProjectile(this, time);
 
-            _used = true;
+            used = true;
         }
 
-        public void OnDestroy() => World?.LeaveWorld(this);
-
-        public override void Tick(ref TickTime time)
+        public bool Tick(ref TickTime time)
         {
             var elapsed = time.TotalElapsedMs - CreationTime;
-
             if (elapsed > ProjDesc.LifetimeMS)
-            {
-                OnDestroy();
-                return;
-            }
-
-            base.Tick(ref time);
+                return false;
+            return true;
         }
 
         public Position GetPosition(long elapsedTicks)
@@ -62,8 +52,8 @@ namespace wServer.core.objects
             double amplitudeFactor;
             double theta;
             
-            var pX = (double)StartPos.X;
-            var pY = (double)StartPos.Y;
+            var pX = (double)StartX;
+            var pY = (double)StartY;
             var dist = elapsedTicks * ProjDesc.Speed / 10000.0;
             var phase = ProjectileId % 2 == 0 ? 0 : Math.PI;
 
@@ -105,8 +95,24 @@ namespace wServer.core.objects
                 }
             }
 
-            return new Position() { X = (float)pX, Y = (float)pY };
+            return new Position((float)pX, (float)pY);
         }
 
+        public void Reset()
+        {
+            ProjDesc = null;
+            _hit.Clear();
+            _hit.TrimExcess();
+            used = false;
+            ProjectileId = 0;
+            StartX = 0.0f;
+            StartY = 0.0f;
+            Angle = 0.0f;
+            Container = 0;
+            CreationTime = 0;
+            Damage = 0;
+            Host = null;
+            World = null;
+        }
     }
 }

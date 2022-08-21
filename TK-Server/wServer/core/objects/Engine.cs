@@ -16,10 +16,6 @@ namespace wServer.core.objects
 
         public override void Tick(ref TickTime time)
         {
-            System.Console.WriteLine($"TICK: {(CurrentAmount % 2 == 0 ? "A" : "B")}");
-            CurrentAmount++;
-            if (CurrentAmount > 850)
-                CurrentAmount = 0;
             base.Tick(ref time);
         }
     }

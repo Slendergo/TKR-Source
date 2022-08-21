@@ -5,6 +5,7 @@ namespace common.resources
     [Flags]
     public enum ConditionEffects : ulong
     {
+        None = 0,
         Dead = 1 << 0,
         Quiet = 1 << 1,
         Weak = 1 << 2,

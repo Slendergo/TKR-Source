@@ -13,7 +13,7 @@ namespace wServer.core.commands
 
             protected override bool Process(Player player, TickTime time, string args)
             {
-                TickThreadSingle.TryNewSystem = !TickThreadSingle.TryNewSystem;
+                RootWorldThread.TryNewSystem = !RootWorldThread.TryNewSystem;
                 return true;
             }
         }

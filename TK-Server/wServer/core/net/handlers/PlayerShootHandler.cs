@@ -61,7 +61,8 @@ namespace wServer.core.net.handlers
             var prjDesc = item.Projectiles[0]; //Assume only one
             var prj = player.PlayerShootProjectile(BulletId, prjDesc, item.ObjectType, Time, StartingPos, Angle);
 
-            player.World.EnterWorld(prj);
+            player.World.AddProjectile(prj);
+
             player.World.BroadcastIfVisibleExclude(new AllyShoot()
             {
                 OwnerId = player.Id,

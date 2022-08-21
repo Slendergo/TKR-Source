@@ -95,7 +95,7 @@ namespace wServer.logic.behaviors
                     {
                         var prj = Host.CreateProjectile(desc, Host.ObjectType, dmg, time.TotalElapsedMs, prjPos, (float)(startAngle + angle * i));
 
-                        Host.World.EnterWorld(prj);
+                        Host.World.AddProjectile(prj);
 
                         if (i == 0)
                             prjId = prj.ProjectileId;

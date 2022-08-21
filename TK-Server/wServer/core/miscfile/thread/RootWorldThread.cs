@@ -8,25 +8,20 @@ using wServer.core.worlds.logic;
 
 namespace wServer.core
 {
-    public sealed class TickThreadSingle
+    public sealed class RootWorldThread
     {
         public static bool TryNewSystem = false;
 
         private readonly WorldManager WorldManager;
         private World World;
-        private readonly Thread Thread;
         private bool Stopped;
 
-        public TickThreadSingle(WorldManager worldManager, World world)
+        public RootWorldThread(WorldManager worldManager, World world)
         {
             WorldManager = worldManager;
             World = world;
 
-
             Run();
-            //Thread = new Thread(Run);
-            //Thread.Name = $"{World.GetDisplayName()}_Logic";
-            //Thread.Start();
         }
 
         private void Run()

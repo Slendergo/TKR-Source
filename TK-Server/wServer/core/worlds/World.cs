@@ -15,19 +15,21 @@ using wServer.core.objects.vendors;
 using wServer.core.terrain;
 using wServer.core.worlds.impl;
 using wServer.core.worlds.logic;
+using wServer.memory;
 using wServer.networking;
 using wServer.networking.packets.outgoing;
+using wServer.utils;
 
 namespace wServer.core.worlds
 {
     public class World
     {
-        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
-
         public const int NEXUS_ID = -2;
         public const int TEST_ID = -6;
 
         private static int NextEntityId;
+
+        public readonly Random Random = new Random();
 
         public int Id { get; }
         public string IdName { get; set; }
@@ -60,14 +62,12 @@ namespace wServer.core.worlds
         public ConcurrentDictionary<int, StaticObject> StaticObjects { get; private set; } = new ConcurrentDictionary<int, StaticObject>();
         public ConcurrentDictionary<int, Container> Containers { get; private set; } = new ConcurrentDictionary<int, Container>();
         public ConcurrentDictionary<int, Pet> Pets { get; private set; } = new ConcurrentDictionary<int, Pet>();
-        public ConcurrentDictionary<Tuple<int, byte>, Projectile> Projectiles { get; private set; } = new ConcurrentDictionary<Tuple<int, byte>, Projectile>();
+        public Dictionary<Tuple<int, byte>, Projectile> Projectiles { get; private set; } = new Dictionary<Tuple<int, byte>, Projectile>();
         public List<WorldTimer> Timers { get; private set; } = new List<WorldTimer>();
 
+        public WorldBranch WorldBranch { get; private set; }
         public World ParentWorld { get; set; }
-
-        public readonly WorldBranch WorldBranch;
-        
-        public readonly Random Random = new Random();
+        public ObjectPools ObjectPools { get; private set; }
 
         public World(GameServer gameServer, int id, WorldResource resource, World parent = null)
         {
@@ -97,6 +97,8 @@ namespace wServer.core.worlds
 
             WorldBranch = new WorldBranch(this);
             ParentWorld = parent;
+
+            ObjectPools = new ObjectPools(this);
         }
         
         public virtual bool AllowedAccess(Client client) => true;
@@ -153,6 +155,22 @@ namespace wServer.core.worlds
                 en.Value.OnChatTextReceived(player, text);
         }
 
+        public void AddProjectile(Projectile projectile)
+        {
+            Projectiles[new Tuple<int, byte>(projectile.Host.Id, projectile.ProjectileId)] = projectile;
+        }
+
+        public Projectile GetProjectile(int objectId, byte bulletId)
+        {
+            return Projectiles.SingleOrDefault(p => p.Value.Host.Id == objectId && p.Value.ProjectileId == bulletId).Value;
+        }
+
+        public void RemoveProjectile(Projectile projectile)
+        {
+            Projectiles.Remove(new Tuple<int, byte>(projectile.Host.Id, projectile.ProjectileId));
+            ObjectPools.Projectiles.Return(projectile);
+        }
+
         public virtual int EnterWorld(Entity entity)
         {
             if (entity is Player)
@@ -173,14 +191,6 @@ namespace wServer.core.worlds
 
                 if (entity.ObjectDesc.Quest)
                     Quests.TryAdd(entity.Id, entity as Enemy);
-            }
-            else if (entity is Projectile)
-            {
-                entity.Init(this);
-
-                var prj = entity as Projectile;
-
-                Projectiles[new Tuple<int, byte>(prj.ProjectileOwner.Self.Id, prj.ProjectileId)] = prj;
             }
             else if (entity is Container)
             {
@@ -236,12 +246,6 @@ namespace wServer.core.worlds
         public int GetNextEntityId() => Interlocked.Increment(ref NextEntityId);
 
         public IEnumerable<Player> GetPlayers() => Players.Values;
-
-        public Projectile GetProjectile(int objectId, byte bulletId)
-        {
-            var entity = GetEntity(objectId);
-            return entity != null ? entity.TryGetProjectile(bulletId) : Projectiles.SingleOrDefault(p => p.Value.ProjectileOwner.Self.Id == objectId && p.Value.ProjectileId == bulletId).Value;
-        }
 
         public Position? GetRegionPosition(TileRegion region)
         {
@@ -317,12 +321,6 @@ namespace wServer.core.worlds
                 EnemiesCollision.Remove(entity);
                 if (entity.ObjectDesc.Quest)
                     Quests.TryRemove(entity.Id, out dummy);
-            }
-            else if (entity is Projectile)
-            {
-                var p = entity as Projectile;
-
-                Projectiles.TryRemove(new Tuple<int, byte>(p.ProjectileOwner.Self.Id, p.ProjectileId), out p);
             }
             else if (entity is Container)
                 Containers.TryRemove(entity.Id, out Container dummy);
@@ -486,8 +484,13 @@ namespace wServer.core.worlds
             foreach (var pet in Pets.Values)
                 pet.Tick(ref time);
 
-            foreach (var i in Projectiles.Values)
-                i.Tick(ref time);
+            var projectilesToRemove = new List<Projectile>();
+            foreach (var projectile in Projectiles.Values)
+                if (!projectile.Tick(ref time))
+                    projectilesToRemove.Add(projectile);
+
+            foreach (var projectile in projectilesToRemove)
+                RemoveProjectile(projectile);
 
             if (Players.Values.Count > 0)
             {
@@ -524,7 +527,7 @@ namespace wServer.core.worlds
                 catch (Exception e)
                 {
                     var msg = e.Message + "\n" + e.StackTrace;
-                    Log.Error(msg);
+                    StaticLogger.Instance.Error(msg);
                     Timers.RemoveAt(i);
                 }
         }

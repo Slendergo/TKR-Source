@@ -30,7 +30,7 @@ namespace wServer.core.objects
 
         public override bool HitByProjectile(Projectile projectile, TickTime time)
         {
-            if (Vulnerable && projectile.ProjectileOwner is Player)
+            if (Vulnerable && projectile.Host is Player)
             {
                 var def = ObjectDesc.Defense;
 
@@ -48,8 +48,8 @@ namespace wServer.core.objects
                     DamageAmount = (ushort)dmg,
                     Kill = !CheckHP(),
                     BulletId = projectile.ProjectileId,
-                    ObjectId = projectile.ProjectileOwner.Self.Id
-                }, this, projectile.ProjectileOwner as Player);
+                    ObjectId = projectile.Host.Id
+                }, this, projectile.Host as Player);
             }
 
             return true;

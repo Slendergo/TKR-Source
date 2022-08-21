@@ -23,7 +23,7 @@ namespace wServer.core
         private readonly ConcurrentDictionary<int, World> Worlds = new ConcurrentDictionary<int, World>();
         private readonly ConcurrentDictionary<int, World> Guilds = new ConcurrentDictionary<int, World>();
         private readonly ConcurrentDictionary<int, int> WorldToGuildId = new ConcurrentDictionary<int, int>();
-        private readonly ConcurrentDictionary<int, TickThreadSingle> Threads = new ConcurrentDictionary<int, TickThreadSingle>();
+        private readonly ConcurrentDictionary<int, RootWorldThread> Threads = new ConcurrentDictionary<int, RootWorldThread>();
 
         public IEnumerable<World> GetWorlds() => Worlds.Values;
 
@@ -60,7 +60,7 @@ namespace wServer.core
                         return null;
                     world.Init();
                     _ = Worlds.TryAdd(world.Id, world);
-                    _ = Threads.TryAdd(world.Id, new TickThreadSingle(this, world));
+                    _ = Threads.TryAdd(world.Id, new RootWorldThread(this, world));
                     GameServer.WorldManager.Nexus.PortalMonitor.AddPortal(world);
                     return world;
                 }
@@ -97,7 +97,7 @@ namespace wServer.core
             _ = Worlds.TryAdd(world.Id, world);
             // null parents are threaded as they get treated as the root
             if (parent == null)
-                _ = Threads.TryAdd(world.Id, new TickThreadSingle(this, world));
+                _ = Threads.TryAdd(world.Id, new RootWorldThread(this, world));
             parent?.WorldBranch.AddBranch(world);
             return world;
         }

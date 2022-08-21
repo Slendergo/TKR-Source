@@ -466,7 +466,7 @@ namespace wServer.core.objects
 
         public override bool HitByProjectile(Projectile projectile, TickTime time)
         {
-            if (projectile.ProjectileOwner is Player || IsInvulnerable)
+            if (projectile.Host is Player || IsInvulnerable)
                 return false;
 
             #region Item Effects
@@ -513,11 +513,11 @@ namespace wServer.core.objects
                 DamageAmount = (ushort)dmg,
                 Kill = HP <= 0,
                 BulletId = projectile.ProjectileId,
-                ObjectId = projectile.ProjectileOwner.Self.Id
+                ObjectId = projectile.Host.Id
             }, this, this);
 
             if (HP <= 0)
-                Death(projectile.ProjectileOwner.Self.ObjectDesc.DisplayId ?? projectile.ProjectileOwner.Self.ObjectDesc.ObjectId, projectile.ProjectileOwner.Self);
+                Death(projectile.Host.ObjectDesc.DisplayId ?? projectile.Host.ObjectDesc.ObjectId, projectile.Host);
 
             return base.HitByProjectile(projectile, time);
         }

@@ -186,9 +186,9 @@ namespace wServer.core.objects
             if (HasConditionEffect(ConditionEffects.Invincible))
                 return false;
 
-            if (projectile.ProjectileOwner is Player && !HasConditionEffect(ConditionEffects.Paused) && !HasConditionEffect(ConditionEffects.Stasis))
+            if (projectile.Host is Player && !HasConditionEffect(ConditionEffects.Paused) && !HasConditionEffect(ConditionEffects.Stasis))
             {
-                var player = projectile.ProjectileOwner as Player;
+                var player = projectile.Host as Player;
                 var Inventory = player.Inventory;
                 var def = Defense;
 
@@ -227,10 +227,10 @@ namespace wServer.core.objects
                     DamageAmount = (ushort)dmg,
                     Kill = HP < 0,
                     BulletId = projectile.ProjectileId,
-                    ObjectId = projectile.ProjectileOwner.Self.Id
-                }, this, projectile.ProjectileOwner as Player);
+                    ObjectId = projectile.Host.Id
+                }, this, projectile.Host as Player);
 
-                DamageCounter.HitBy(projectile.ProjectileOwner as Player, time, projectile, dmg);
+                DamageCounter.HitBy(projectile.Host as Player, time, projectile, dmg);
 
                 if (HP < 0 && World != null)
                     Death(ref time);

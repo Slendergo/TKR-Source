@@ -585,7 +585,7 @@ namespace wServer.core.objects
                 var proj = CreateProjectile(prjDesc, item.ObjectType,
                     World.Random.Next(prjDesc.MinDamage, prjDesc.MaxDamage),
                     time.TotalElapsedMs, target, (float)(i * (Math.PI * 2) / shoots));
-                World.EnterWorld(proj);
+                World.AddProjectile(proj);
                 FameCounter.Shoot(proj);
                 batch[i] = new ServerPlayerShoot()
                 {
@@ -1380,7 +1380,7 @@ namespace wServer.core.objects
             for (var i = 0; i < item.NumProjectiles; i++)
             {
                 var proj = CreateProjectile(prjDesc, item.ObjectType, Stats.GetAttackDamage(prjDesc.MinDamage, prjDesc.MaxDamage, true), time.TotalElapsedMs, new Position() { X = X, Y = Y }, (float)(startAngle + arcGap * i));
-                World.EnterWorld(proj);
+                World.AddProjectile(proj);
                 sPkts[i] = new AllyShoot()
                 {
                     OwnerId = Id,

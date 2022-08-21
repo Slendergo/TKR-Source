@@ -7,19 +7,18 @@ using wServer.core.objects.vendors;
 using wServer.core.worlds;
 using wServer.logic;
 using wServer.logic.transitions;
+using wServer.memory;
 using wServer.utils;
 
 namespace wServer.core.objects
 {
-    public class Entity : IProjectileOwner, ICollidable<Entity>
+    public class Entity : ICollidable<Entity>
     {
         public Player Controller;
         public bool GivesNoXp;
         public float? savedAngle;
         public bool Spawned;
         public bool SpawnedByBehavior;
-
-        protected byte projectileId;
 
         private const float colSkipBoundary = .4f;
         private const int EffectCount = 54;
@@ -34,7 +33,6 @@ namespace wServer.core.objects
         private int _originalSize;
         private Position[] _posHistory;
         private byte _posIdx;
-        private Projectile[] _projectiles;
         private SV<int> _size;
         private bool _stateEntry;
         private State _stateEntryCommonRoot;
@@ -68,7 +66,6 @@ namespace wServer.core.objects
             QuestLevel = _desc.Level;
 
             _posHistory = new Position[256];
-            _projectiles = new Projectile[256];
             _effects = new int[EffectCount];
         }
 
@@ -101,7 +98,6 @@ namespace wServer.core.objects
         public int QuestLevel { get; set; } = 1;
         public float RealX => _x.GetValue();
         public float RealY => _y.GetValue();
-        Entity IProjectileOwner.Self => this;
         public int Size { get => _size.GetValue(); set => _size?.SetValue(value); }
 
         public IDictionary<object, object> StateStorage
@@ -247,29 +243,6 @@ namespace wServer.core.objects
         }
 
         public virtual bool CanBeSeenBy(Player player) => true;
-
-        public Projectile CreateProjectile(ProjectileDesc desc, ushort container, int dmg, long time, Position pos, float angle)
-        {
-            var ret = new Projectile(GameServer, desc) //Assume only one
-            {
-                ProjectileOwner = this,
-                ProjectileId = projectileId++,
-                Container = container,
-                Damage = dmg,
-
-                CreationTime = time,
-                StartPos = pos,
-                Angle = angle,
-
-                X = pos.X,
-                Y = pos.Y
-            };
-
-            if (_projectiles[ret.ProjectileId] != null)
-                _projectiles[ret.ProjectileId].OnDestroy();
-            _projectiles[ret.ProjectileId] = ret;
-            return ret;
-        }
 
         public virtual void Destroy()
         {
@@ -522,15 +495,6 @@ namespace wServer.core.objects
             ObjectType = ObjectType,
             Stats = ExportStats()
         };
-
-        public Projectile TryGetProjectile(byte bulletId)
-        {
-            if (_projectiles == null)
-                return null;
-            if (bulletId > 255)
-                return null;
-            return _projectiles[bulletId];
-        }
 
         public Position? TryGetHistory(long ticks)
         {
@@ -817,7 +781,7 @@ namespace wServer.core.objects
                 }
 
                 CalcNewLocation(pos.X + dx * ds, pos.Y + dy * ds, pos);
-                tds = tds + ds;
+                tds += ds;
             }
         }
 
@@ -825,6 +789,24 @@ namespace wServer.core.objects
         {
             public float X;
             public float Y;
+        }
+
+        protected byte projectileId;
+
+        public Projectile CreateProjectile(ProjectileDesc desc, ushort container, int dmg, long time, Position pos, float angle)
+        {
+            var ret = World.ObjectPools.Projectiles.Rent();
+            ret.Host = this;
+            ret.ConditionEffects = ConditionEffects.None;
+            ret.ProjDesc = desc;
+            ret.ProjectileId = projectileId++;
+            ret.Container = container;
+            ret.Damage = dmg;
+            ret.CreationTime = time;
+            ret.Angle = angle;
+            ret.StartX = pos.X;
+            ret.StartY = pos.Y;
+            return ret;
         }
     }
 }

@@ -34,13 +34,13 @@
     <Eternal	/>
     <SlotType>24</SlotType>
     <Description>A katana formed from the pressurized windstorms released from the element of wind.</Description>
-    <RateOfFire>1.1</RateOfFire>
+    <RateOfFire>1.2</RateOfFire>
     <Sound>weapon/blunt_sword</Sound>
     <Projectile>
       <ObjectId>Wind Elemental Katana Shoot</ObjectId>
       <Speed>300</Speed>
-      <MinDamage>140</MinDamage>
-      <MaxDamage>195</MaxDamage>
+      <MinDamage>170</MinDamage>
+      <MaxDamage>230</MaxDamage>
       <LifetimeMS>190</LifetimeMS>
       <Frequency>1</Frequency>
       <Size>100</Size>

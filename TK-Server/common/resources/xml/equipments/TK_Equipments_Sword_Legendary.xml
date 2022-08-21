@@ -10,14 +10,14 @@
     </Texture>
     <SlotType>1</SlotType>
     <Description>A slow but powerful sword that is a relic of a long forgotten age.</Description>
-    <RateOfFire>0.6</RateOfFire>
+    <RateOfFire>0.85</RateOfFire>
     <Sound>weapon/glass_sword</Sound>
     <Projectile>
       <ObjectId>Stone Slash</ObjectId>
       <Speed>120</Speed>
-      <MinDamage>450</MinDamage>
-      <MaxDamage>550</MaxDamage>
-      <LifetimeMS>300</LifetimeMS>
+      <MinDamage>525</MinDamage>
+      <MaxDamage>625</MaxDamage>
+      <LifetimeMS>333</LifetimeMS>
     </Projectile>
     <BagType>7</BagType>
     <FameBonus>4</FameBonus>
@@ -103,15 +103,15 @@
     <Description>
 			A sword with an impossibly sharp edge. It has been designed with holy magic to slash like no other blade.
 		</Description>
-    <RateOfFire>1.05</RateOfFire>
+    <RateOfFire>1.20</RateOfFire>
     <Sound>weapon/golden_bow</Sound>
     <Projectile>
       <ObjectId>Colossus Slash</ObjectId>
       <Speed>125</Speed>
-      <MinDamage>360</MinDamage>
-      <MaxDamage>400</MaxDamage>
-      <LifetimeMS>360</LifetimeMS>
-      <Amplitude>0.7</Amplitude>
+      <MinDamage>400</MinDamage>
+      <MaxDamage>450</MaxDamage>
+      <LifetimeMS>400</LifetimeMS>
+      <Amplitude>0.8</Amplitude>
       <Frequency>0.5</Frequency>
       <FaceDir />
     </Projectile>
@@ -133,13 +133,13 @@
 		<SlotType>1</SlotType>
 		<Legendary />
 		<Description>“Cowards die many times before their deaths; The valiant never taste of death but once.”</Description>
-		<RateOfFire>0.5</RateOfFire>
+		<RateOfFire>0.6</RateOfFire>
 		<Sound>weapon/mithril_sword</Sound>
 		<Projectile>
 			<ObjectId>Thiram Shot</ObjectId>
 			<Speed>100</Speed>
-			<MinDamage>666</MinDamage>
-			<MaxDamage>666</MaxDamage>
+			<MinDamage>900</MinDamage>
+			<MaxDamage>900</MaxDamage>
 			<LifetimeMS>750</LifetimeMS>
 			<Frequency>1</Frequency>
 			<Amplitude>0.2</Amplitude>
@@ -163,13 +163,13 @@
     <SlotType>1</SlotType>
     <Legendary />
     <Description>The original blade used by The Bridge Sentinel during The Shatter's age of ruin. Countless forces in pursuit of treasure were felled by this blade, effortlessly.</Description>
-    <RateOfFire>1</RateOfFire>
+    <RateOfFire>1.10</RateOfFire>
     <Sound>weapon/mithril_sword</Sound>
     <Projectile>
       <ObjectId>Blade of the Protector Shoot</ObjectId>
       <Speed>140</Speed>
-      <MinDamage>130</MinDamage>
-      <MaxDamage>160</MaxDamage>
+      <MinDamage>160</MinDamage>
+      <MaxDamage>210</MaxDamage>
       <LifetimeMS>336</LifetimeMS>
       <Frequency>0</Frequency>
       <Size>95</Size>
@@ -194,14 +194,14 @@
     <SlotType>1</SlotType>
     <Legendary />
     <Description>“They will know fear.”</Description>
-    <RateOfFire>1</RateOfFire>
+    <RateOfFire>1.10</RateOfFire>
     <Sound>weapon/mithril_sword</Sound>
     <Projectile>
       <ObjectId>Horn Breaker Shot</ObjectId>
       <Speed>125</Speed>
-      <MinDamage>355</MinDamage>
-      <MaxDamage>375</MaxDamage>
-      <LifetimeMS>340</LifetimeMS>
+      <MinDamage>450</MinDamage>
+      <MaxDamage>500</MaxDamage>
+      <LifetimeMS>400</LifetimeMS>
       <Frequency>1</Frequency>
       <Size>80</Size>
       <ArmorPiercing />
@@ -225,15 +225,15 @@
 		<SlotType>1</SlotType>
 		<Legendary />
 		<Description>No longer a tribute to RotF</Description>
-		<RateOfFire>.45</RateOfFire>
+		<RateOfFire>.70</RateOfFire>
 		<Sound>weapon/mithril_sword</Sound>
 		<Projectile>
 			<ObjectId>Possessed Halberd Shot</ObjectId>
 			<Speed>75</Speed>
-			<MinDamage>425</MinDamage>
+			<MinDamage>666</MinDamage>
             <ParticleTrail lifetimeMS="300">0x7E3F00</ParticleTrail>
-			<MaxDamage>500</MaxDamage>
-			<LifetimeMS>600</LifetimeMS>
+			<MaxDamage>666</MaxDamage>
+			<LifetimeMS>627</LifetimeMS>
 			<Size>100</Size>
 			<MultiHit />
 		</Projectile>

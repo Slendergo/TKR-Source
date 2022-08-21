@@ -42,13 +42,13 @@
     <Eternal />
     <SlotType>3</SlotType>
     <Description>Empowered with the element of wind, each shot is as light as a feather and shoots as fast as the speed of sound.</Description>
-    <RateOfFire>1</RateOfFire>
+    <RateOfFire>1.05</RateOfFire>
     <Sound>weapon/poor_quality_bow</Sound>
     <Projectile>
       <ObjectId>Wind Elemental Bow Shoot</ObjectId>
       <Speed>200</Speed>
-      <MinDamage>85</MinDamage>
-      <MaxDamage>130</MaxDamage>
+      <MinDamage>165</MinDamage>
+      <MaxDamage>215</MaxDamage>
       <LifetimeMS>350</LifetimeMS>
       <Amplitude>0.3</Amplitude>
       <Frequency>1.13</Frequency>

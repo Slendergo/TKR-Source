@@ -9,13 +9,13 @@
     <Eternal />
     <SlotType>1</SlotType>
     <Description>A sword forged by combining various precious ores. Every swing releases enough strength to sunder solid ground.</Description>
-    <RateOfFire>.70</RateOfFire>
+    <RateOfFire>.80</RateOfFire>
     <Sound>weapon/blunt_sword</Sound>
     <Projectile>
       <ObjectId>Earth's Power Shoot</ObjectId>
       <Speed>150</Speed>
-      <MinDamage>360</MinDamage>
-      <MaxDamage>390</MaxDamage>
+      <MinDamage>415</MinDamage>
+      <MaxDamage>445</MaxDamage>
       <LifetimeMS>300</LifetimeMS>
       <Amplitude>0.6</Amplitude>
       <Frequency>0.97</Frequency>

@@ -10,14 +10,14 @@
     </Texture>
     <SlotType>2</SlotType>
     <Description>This legendary dagger was commissioned by a band of mad rogues to prove the worth of the Dirk.</Description>
-    <RateOfFire>.9</RateOfFire>
+    <RateOfFire>1.10</RateOfFire>
     <Sound>weapon/fire_dagger</Sound>
     <Projectile>
       <ObjectId>Rainbow Magic</ObjectId>
       <Speed>180</Speed>
-      <MinDamage>160</MinDamage>
-      <MaxDamage>260</MaxDamage>
-      <LifetimeMS>350</LifetimeMS>
+      <MinDamage>335</MinDamage>
+      <MaxDamage>435</MaxDamage>
+      <LifetimeMS>322</LifetimeMS>
       <PassesCover />
     </Projectile>
     <ActivateOnEquip stat="3" amount="50">IncrementStat</ActivateOnEquip>
@@ -38,14 +38,14 @@
     </Texture>
     <SlotType>2</SlotType>
     <Description>A dagger that was condemned to Davy Jones' Locker.</Description>
-    <RateOfFire>.9</RateOfFire>
+    <RateOfFire>1.15</RateOfFire>
     <Sound>weapon/dirk</Sound>
     <Projectile>
       <ObjectId>Spirit Dagger Slash</ObjectId>
       <Speed>130</Speed>
-      <MinDamage>10</MinDamage>
-      <MaxDamage>370</MaxDamage>
-      <LifetimeMS>423</LifetimeMS>
+      <MinDamage>160</MinDamage>
+      <MaxDamage>510</MaxDamage>
+      <LifetimeMS>427</LifetimeMS>
       <Amplitude>0.2</Amplitude>
       <Frequency>0.2</Frequency>
     </Projectile>
@@ -71,11 +71,12 @@
     <Projectile>
       <ObjectId>Melted Shrine Shoot</ObjectId>
       <Speed>180</Speed>
-      <MinDamage>140</MinDamage>
-      <MaxDamage>190</MaxDamage>
+      <MinDamage>180</MinDamage>
+      <MaxDamage>230</MaxDamage>
       <LifetimeMS>305</LifetimeMS>
       <MultiHit />
     </Projectile>
+	 <NumProjectiles>2</NumProjectiles>
     <ActivateOnEquip stat="26" amount="4">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>7</FameBonus>
@@ -92,13 +93,13 @@
     <Legendary />
     <SlotType>2</SlotType>
     <Description>Sharp bone from Malphas' spine was refined into a dagger for the sole purpose of slaying demons.</Description>
-    <RateOfFire>0.8</RateOfFire>
+    <RateOfFire>1.25</RateOfFire>
     <Sound>weapon/fire_dagger</Sound>
     <Projectile>
       <ObjectId>Malphas Bone Shot</ObjectId>
       <Speed>180</Speed>
-      <MinDamage>210</MinDamage>
-      <MaxDamage>365</MaxDamage>
+      <MinDamage>250</MinDamage>
+      <MaxDamage>405</MaxDamage>
       <LifetimeMS>295</LifetimeMS>
       <Size>100</Size>
       <MultiHit />
@@ -122,18 +123,18 @@
     <Legendary />
     <SlotType>2</SlotType>
     <Description>Such a large and cumbersome dagger could almost be confused with a great sword. Who would possibly be foolish enough to brandish it…?</Description>
-    <RateOfFire>0.4</RateOfFire>
+    <RateOfFire>0.75</RateOfFire>
     <Sound>weapon/blunt_dagger</Sound>
     <Projectile>
       <ObjectId>Titan Slayer Shoot</ObjectId>
       <Speed>120</Speed>
-      <MinDamage>500</MinDamage>
-      <MaxDamage>575</MaxDamage>
+      <MinDamage>545</MinDamage>
+      <MaxDamage>640</MaxDamage>
       <LifetimeMS>650</LifetimeMS>
       <Amplitude>0.25</Amplitude>
       <Frequency>1</Frequency>
       <FaceDir />
-      <PassesCover />
+		<MultiHit />
       <Size>110</Size>
     </Projectile>
     <NumProjectiles>1</NumProjectiles>
@@ -156,13 +157,13 @@
     <Legendary />
     <SlotType>2</SlotType>
     <Description>A crude dagger consisting of a shard of the Realm's Crystal with a handle of cloth. Despite it's makeshift nature, it is immensely deadly.</Description>
-    <RateOfFire>.9</RateOfFire>
+    <RateOfFire>1.20</RateOfFire>
     <Sound>weapon/blunt_dagger</Sound>
     <Projectile>
       <ObjectId>Refraction Cutter Shoot</ObjectId>
       <Speed>206</Speed>
-      <MinDamage>220</MinDamage>
-      <MaxDamage>320</MaxDamage>
+      <MinDamage>340</MinDamage>
+      <MaxDamage>440</MaxDamage>
       <LifetimeMS>495</LifetimeMS>
       <Amplitude>0.3</Amplitude>
       <Frequency>1</Frequency>

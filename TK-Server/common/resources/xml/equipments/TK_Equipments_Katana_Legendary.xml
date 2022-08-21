@@ -10,13 +10,13 @@
     </Texture>
     <SlotType>24</SlotType>
     <Description>A great katana charged with the power of the sun itself.</Description>
-    <RateOfFire>1.30</RateOfFire>
+    <RateOfFire>1.25</RateOfFire>
     <Sound>weapon/long_sword</Sound>
     <Projectile>
       <ObjectId>Beam Slash</ObjectId>
       <Speed>180</Speed>
-      <MinDamage>210</MinDamage>
-      <MaxDamage>210</MaxDamage>
+      <MinDamage>320</MinDamage>
+      <MaxDamage>320</MaxDamage>
       <LifetimeMS>361</LifetimeMS>
       <MultiHit />
       <ArmorPiercing />
@@ -42,9 +42,9 @@
     <Projectile id="0">
       <ObjectId>Poison Katana Slash</ObjectId>
       <Speed>129.5</Speed>
-      <MinDamage>220</MinDamage>
-      <MaxDamage>270</MaxDamage>
-      <LifetimeMS>363</LifetimeMS>
+      <MinDamage>275</MinDamage>
+      <MaxDamage>375</MaxDamage>
+      <LifetimeMS>411</LifetimeMS>
       <Amplitude>0.5</Amplitude>
       <Frequency>1</Frequency>
       <Size>90</Size>
@@ -65,14 +65,14 @@
     </Texture>
     <SlotType>24</SlotType>
     <Description>ABlood-drenched from endless slaughter. Any that dare to wield will surely be overcome with indefinite bloodlust.</Description>
-    <RateOfFire>1.15</RateOfFire>
+    <RateOfFire>1.20</RateOfFire>
     <Sound>weapon/long_sword</Sound>
     <Legendary />
     <Projectile>
       <ObjectId>Katana Shoot</ObjectId>
       <Speed>147.5</Speed>
-      <MinDamage>255</MinDamage>
-      <MaxDamage>290</MaxDamage>
+      <MinDamage>355</MinDamage>
+      <MaxDamage>395</MaxDamage>
       <LifetimeMS>346</LifetimeMS>
       <MultiHit />
     </Projectile>
@@ -92,13 +92,13 @@
     </Texture>
     <SlotType>24</SlotType>
     <Description>Overpowering feelings of righteousness radiate from this katana's shine. An embodiment of the Way of The Samurai.</Description>
-    <RateOfFire>1</RateOfFire>
+    <RateOfFire>1.05</RateOfFire>
     <Sound>weapon/long_sword</Sound>
     <Projectile>
       <ObjectId>Lodius Shoot</ObjectId>
       <Speed>154</Speed>
-      <MinDamage>100</MinDamage>
-      <MaxDamage>195</MaxDamage>
+      <MinDamage>170</MinDamage>
+      <MaxDamage>280</MaxDamage>
       <LifetimeMS>344</LifetimeMS>
       <Amplitude>.25</Amplitude>
       <Frequency>1.75</Frequency>

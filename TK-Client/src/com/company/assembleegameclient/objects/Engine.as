@@ -7,6 +7,7 @@ import com.company.assembleegameclient.ui.panels.EnginePanel;
 public class Engine extends GameObject implements IInteractiveObject {
 
     public var currentValue_:int;
+    public var engineTime_:int;
 
     public function Engine(_arg1:XML) {
         super(_arg1);

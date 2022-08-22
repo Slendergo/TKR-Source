@@ -225,6 +225,7 @@ namespace wServer.core.objects
             }
             Player.FameCounter.TileSent(update.Tiles.Count); // adds the new amount to the tiles been sent
         }
+
         public void HandleStatChanges(object entity, StatChangedEventArgs statChange)
         {
             if (!(entity is Entity e) || e.Id != Player.Id && statChange.UpdateSelfOnly)

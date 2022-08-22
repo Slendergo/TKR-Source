@@ -1898,6 +1898,10 @@ public class GameServerConnection
                   (go as Engine).currentValue_ = value;
                   break;
 
+               case StatData.ENGINE_TIME:
+                  (go as Engine).engineTime_ = value;
+                  break;
+
                case StatData.BASESTAT:
                   player.baseStat = value;
                   continue;

@@ -1140,6 +1140,8 @@ namespace common.database
             return false;
         }
 
+        public DbEngine GetDbEngine() => new DbEngine(_db);
+
         public void UnlockClass(DbAccount acc, ushort type)
         {
             var cs = ReadClassStats(acc);

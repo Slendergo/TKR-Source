@@ -139,6 +139,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="database\engine\DbEngine.cs" />
+    <Compile Include="database\engine\DbEngineEntry.cs" />
     <Compile Include="database\vault\DbSpecialVault.cs" />
     <Compile Include="database\talisman\DbTalismanEntry.cs" />
     <Compile Include="database\character\inventory\ItemData.cs" />

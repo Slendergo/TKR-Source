@@ -64,7 +64,7 @@ namespace wServer.networking.connection
 
                 try
                 {
-                    var bytesToSend = s.BytesAvailable > ConnectionListener.BufferSize ? ConnectionListener.BufferSize : s.BytesAvailable;
+                    var bytesToSend = s.BytesAvailable > ConnectionListener.BUFFER_SIZE ? ConnectionListener.BUFFER_SIZE : s.BytesAvailable;
 
                     e.SetBuffer(s.BufferOffset, bytesToSend);
 
@@ -117,7 +117,7 @@ namespace wServer.networking.connection
 
             var delay = 0;
             if (s.BytesAvailable <= 0)
-                delay = 1;
+                delay = 200;
 
             StartSendAsync(e, delay);
         }
@@ -137,7 +137,6 @@ namespace wServer.networking.connection
                         s.Pending.Enqueue(packet);
                         return true;
                     }
-
                     s.BytesAvailable += bytesWritten.Value;
                 }
 
@@ -183,7 +182,7 @@ namespace wServer.networking.connection
             if (Client.State == ProtocolState.Disconnected)
                 return;
 
-            e.SetBuffer(e.Offset, ConnectionListener.BufferSize);
+            e.SetBuffer(e.Offset, ConnectionListener.BUFFER_SIZE);
 
             bool willRaiseEvent;
             try
@@ -242,7 +241,7 @@ namespace wServer.networking.connection
                         break;
                     }
 
-                    if (r.PacketLength < ReceiveToken.PrefixLength || r.PacketLength > ConnectionListener.BufferSize)
+                    if (r.PacketLength < ReceiveToken.PrefixLength || r.PacketLength > ConnectionListener.BUFFER_SIZE)
                     {
                         r.Reset();
                         break;

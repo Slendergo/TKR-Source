@@ -47,18 +47,16 @@ namespace wServer.core.net.handlers
     {
         private static Dictionary<MessageId, IMessageHandler> Handlers;
 
-        public static IMessageHandler GetHandler(MessageId messageId)
+        static MessageHandlers()
         {
-            if (Handlers == null)
+            Handlers = new Dictionary<MessageId, IMessageHandler>();
+            foreach (var type in Assembly.GetAssembly(typeof(IMessageHandler)).GetTypes().Where(_ => _.IsClass && !_.IsAbstract && _.IsSubclassOf(typeof(IMessageHandler))))
             {
-                Handlers = new Dictionary<MessageId, IMessageHandler>();
-                foreach (var type in Assembly.GetAssembly(typeof(IMessageHandler)).GetTypes().Where(_ => _.IsClass && !_.IsAbstract && _.IsSubclassOf(typeof(IMessageHandler))))
-                {
-                    var handler = (IMessageHandler)Activator.CreateInstance(type);
-                    Handlers.Add(handler.MessageId, handler);
-                }
+                var handler = (IMessageHandler)Activator.CreateInstance(type);
+                Handlers.Add(handler.MessageId, handler);
             }
-            return Handlers.ContainsKey(messageId) ? Handlers[messageId] : null;
         }
+
+        public static IMessageHandler GetHandler(MessageId messageId) => Handlers.TryGetValue(messageId, out var ret) ? ret : null;
     }
 }   

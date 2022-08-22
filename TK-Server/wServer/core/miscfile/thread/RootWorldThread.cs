@@ -59,7 +59,7 @@ namespace wServer.core
                             }
                             catch (Exception e)
                             {
-                                Console.WriteLine($"World Tick: {e}");
+                                Console.WriteLine($"World Tick: {e.StackTrace}");
                             }
 
                             lastMS = currentMS;
@@ -89,7 +89,7 @@ namespace wServer.core
                         }
                         catch (Exception e)
                         {
-                            Console.WriteLine($"World Tick: {e}");
+                            Console.WriteLine($"World Tick: {e.StackTrace}");
                         }
 
                         realmTime.LogicTime = sleep = 200 - (int)(watch.ElapsedMilliseconds - logicTime);

@@ -1,4 +1,5 @@
 ﻿using CA.Extensions.Concurrent;
+using CA.Profiler;
 using common.isc.data;
 using System;
 using System.Collections.Concurrent;
@@ -35,7 +36,7 @@ namespace wServer.core
         }
 
         public void AddConnection(ConnectionInfo connectionInfo)
-        {
+    {
             if (connectionInfo == null)
                 return;
 
@@ -107,11 +108,11 @@ namespace wServer.core
                     return;
                 }
             }
-            else
-            {
-                if (gameId != World.TEST_ID)
-                    gameId = World.NEXUS_ID;
-            }
+            //else
+            //{
+            //    if (gameId != World.TEST_ID)
+            //        gameId = World.NEXUS_ID;
+            //}
 
             if (!client.GameServer.Database.AcquireLock(acc))
             {
@@ -139,7 +140,6 @@ namespace wServer.core
             }
 
             var world = client.GameServer.WorldManager.GetWorld(gameId);
-
             if (world == null || world.Deleted)
             {
                 client.SendPacket(new Text()
@@ -202,31 +202,31 @@ namespace wServer.core
 
             client.SendPackets(new OutgoingMessage[]
             {
-                new MapInfo()
-                {
-                    Music = world.Music,
-                    Width = mapSize,
-                    Height = mapSize,
-                    Name = world.IdName,
-                    DisplayName = world.DisplayName,
-                    Seed = seed,
-                    Background = world.Background,
-                    Difficulty = world.Difficulty,
-                    AllowPlayerTeleport = world.AllowTeleport,
-                    ShowDisplays = world.ShowDisplays,
-                    DisableShooting = world.DisableShooting,
-                    DisableAbilities = world.DisableAbilities
-                },
-                new AccountList() // send out account lock/ignore list
-                {
-                    AccountListId = 0, // locked list
-                    AccountIds = client.Account.LockList.Select(i => i.ToString()).ToArray()
-                },
-                new AccountList()
-                {
-                    AccountListId = 1, // ignore list
-                    AccountIds = client.Account.IgnoreList.Select(i => i.ToString()).ToArray()
-                }
+                    new MapInfo()
+                    {
+                        Music = world.Music,
+                        Width = mapSize,
+                        Height = mapSize,
+                        Name = world.IdName,
+                        DisplayName = world.DisplayName,
+                        Seed = seed,
+                        Background = world.Background,
+                        Difficulty = world.Difficulty,
+                        AllowPlayerTeleport = world.AllowTeleport,
+                        ShowDisplays = world.ShowDisplays,
+                        DisableShooting = world.DisableShooting,
+                        DisableAbilities = world.DisableAbilities
+                    },
+                    new AccountList() // send out account lock/ignore list
+                    {
+                        AccountListId = 0, // locked list
+                        AccountIds = client.Account.LockList.Select(i => i.ToString()).ToArray()
+                    },
+                    new AccountList()
+                    {
+                        AccountListId = 1, // ignore list
+                        AccountIds = client.Account.IgnoreList.Select(i => i.ToString()).ToArray()
+                    }
             });
             client.State = ProtocolState.Handshaked;
 
@@ -253,6 +253,7 @@ namespace wServer.core
                     Connecting.TryRemove(c.Key, out var ignored);
             }
         }
+
 
         public bool TryConnect(Client client)
         {

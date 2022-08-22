@@ -26,7 +26,6 @@ namespace wServer.core.net.handlers
             GameId = rdr.ReadInt32();
             if (BuildVersion.Contains("-bot"))
             {
-                System.Console.WriteLine("Bot Connection");
                 BuildVersion = BuildVersion.Replace("-bot", "");
                 GUID = rdr.ReadUTF();
                 Password = rdr.ReadUTF();

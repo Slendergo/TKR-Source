@@ -258,6 +258,8 @@ namespace wServer.core.objects
             });
 
             LoadTalismanData();
+
+            ApplyConditionEffect(new ConditionEffect() { Effect = ConditionEffectIndex.Invincible, DurationMS = -1 });
         }
 
         public bool ApplyEffectCooldown(int slot)
@@ -555,13 +557,10 @@ namespace wServer.core.objects
 
         public void HandleIO(ref TickTime time)
         {
-            while (IncomingMessages.Count > 0)
+            while (IncomingMessages.TryDequeue(out var incomingMessage))
             {
-                if (!IncomingMessages.TryDequeue(out var incomingMessage))
-                    continue;
-
                 if (incomingMessage.Client.State == ProtocolState.Disconnected)
-                    continue;
+                    break;
 
                 var handler = MessageHandlers.GetHandler(incomingMessage.MessageId);
                 if (handler == null)

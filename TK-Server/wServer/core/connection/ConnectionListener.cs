@@ -25,7 +25,7 @@ namespace wServer.networking.connection
         public SendToken(int offset)
         {
             BufferOffset = offset;
-            Data = new byte[1024 * 512];// 512kb
+            Data = new byte[0x100000];
             Pending = new ConcurrentQueue<OutgoingMessage>();
         }
 
@@ -56,7 +56,7 @@ namespace wServer.networking.connection
         public ReceiveToken(int offset)
         {
             BufferOffset = offset;
-            PacketBytes = new byte[ConnectionListener.BufferSize];
+            PacketBytes = new byte[ConnectionListener.BUFFER_SIZE];
             PacketLength = PrefixLength;
         }
 
@@ -96,11 +96,10 @@ namespace wServer.networking.connection
 
     public sealed class ConnectionListener
     {
-        public const int BufferSize = 16384;
-
-        private const int Backlog = 1024;
-        private const int MaxSimultaneousAcceptOps = 8;
-        private const int OpsToPreAllocate = 2;
+        public const int BUFFER_SIZE = ushort.MaxValue * 3;
+        private const int BACKLOG = 100;
+        private const int MAX_SIMULTANEOUS_ACCEPT_OPS = 10;
+        private const int OPS_TO_PRE_ALLOCATE = 2;
 
         private GameServer GameServer;
         private BufferManager BuffManager;
@@ -115,8 +114,8 @@ namespace wServer.networking.connection
             Port = GameServer.Configuration.serverInfo.port;
             MaxConnections = GameServer.Configuration.serverSettings.maxConnections;
 
-            BuffManager = new BufferManager((MaxConnections + 1) * BufferSize * OpsToPreAllocate, BufferSize);
-            EventArgsPoolAccept = new SocketAsyncEventArgsPool(MaxSimultaneousAcceptOps);
+            BuffManager = new BufferManager((MaxConnections + 1) * BUFFER_SIZE * OPS_TO_PRE_ALLOCATE, BUFFER_SIZE);
+            EventArgsPoolAccept = new SocketAsyncEventArgsPool(MAX_SIMULTANEOUS_ACCEPT_OPS);
             ClientPool = new ClientPool(MaxConnections + 1);
             MaxConnectionsEnforcer = new Semaphore(MaxConnections, MaxConnections);
         }
@@ -129,7 +128,7 @@ namespace wServer.networking.connection
         {
             BuffManager.InitBuffer();
 
-            for (var i = 0; i < MaxSimultaneousAcceptOps; i++)
+            for (var i = 0; i < MAX_SIMULTANEOUS_ACCEPT_OPS; i++)
                 EventArgsPoolAccept.Push(CreateNewAcceptEventArgs());
 
             for (var i = 0; i < MaxConnections + 1; i++)
@@ -138,15 +137,17 @@ namespace wServer.networking.connection
                 var receive = CreateNewReceiveEventArgs();
                 ClientPool.Push(new Client(this, GameServer, send, receive));
             }
-
-            var localEndPoint = new IPEndPoint(IPAddress.Any, Port);
-
-            ListenSocket = new Socket(localEndPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-            ListenSocket.Bind(localEndPoint);
-            ListenSocket.Listen(Backlog);
         }
 
-        public void Start() => StartAccept();
+        public void Start()
+        {
+            var localEndPoint = new IPEndPoint(IPAddress.Any, Port);
+            ListenSocket = new Socket(localEndPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            ListenSocket.Bind(localEndPoint);
+            ListenSocket.Listen(BACKLOG);
+
+            StartAccept();
+        }
 
         private void AcceptEventArg_Completed(object sender, SocketAsyncEventArgs e) => ProcessAccept(e);
 
@@ -206,6 +207,8 @@ namespace wServer.networking.connection
             acceptEventArgs.AcceptSocket.NoDelay = true;
             ClientPool.Pop().SetSocket(acceptEventArgs.AcceptSocket);
 
+            Console.WriteLine($"Remaining Clients: {ClientPool.Count}");
+
             acceptEventArgs.AcceptSocket = null;
             EventArgsPoolAccept.Push(acceptEventArgs);
 
@@ -217,21 +220,28 @@ namespace wServer.networking.connection
             SocketAsyncEventArgs acceptEventArg;
 
             if (EventArgsPoolAccept.Count > 1)
-                try { acceptEventArg = EventArgsPoolAccept.Pop(); }
-                catch { acceptEventArg = CreateNewAcceptEventArgs(); }
+                try
+                {
+                    acceptEventArg = EventArgsPoolAccept.Pop();
+                }
+                catch
+                {
+                    acceptEventArg = CreateNewAcceptEventArgs();
+                }
             else
                 acceptEventArg = CreateNewAcceptEventArgs();
 
-            MaxConnectionsEnforcer.WaitOne();
+            _ = MaxConnectionsEnforcer.WaitOne();
 
             try
             {
                 var willRaiseEvent = ListenSocket.AcceptAsync(acceptEventArg);
-
                 if (!willRaiseEvent)
                     ProcessAccept(acceptEventArg);
             }
-            catch { }
+            catch
+            {
+            }
         }
 
         #region Disconnect - Shutdown
@@ -240,13 +250,13 @@ namespace wServer.networking.connection
         {
             try
             {
-                if (!client.Socket.Connected)
-                    return;
-
                 client.Socket.Shutdown(SocketShutdown.Both);
             }
-            catch
+            catch (Exception e)
             {
+                var se = e as SocketException;
+                if (se == null || se.SocketErrorCode != SocketError.NotConnected)
+                    StaticLogger.Instance.Error(se);
             }
 
             client.Socket.Close();
@@ -254,14 +264,9 @@ namespace wServer.networking.connection
 
             ClientPool.Push(client);
 
-            try
-            {
-                MaxConnectionsEnforcer.Release();
-            }
-            catch (SemaphoreFullException e)
-            {
-                StaticLogger.Instance.Error(e);
-            }
+            Console.WriteLine($"Returned Client: {ClientPool.Count}");
+
+            MaxConnectionsEnforcer.Release();
         }
 
         public void Shutdown()

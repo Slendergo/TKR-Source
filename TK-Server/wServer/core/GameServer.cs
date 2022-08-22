@@ -151,6 +151,9 @@ namespace wServer.core
 
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
             Thread.CurrentThread.Name = "Entry";
+            
+            ThreadPool.GetMinThreads(out int workerThreads, out int completionPortThreads);
+            ThreadPool.SetMinThreads(250, completionPortThreads);
 
             var timeout = TimeSpan.FromHours(Configuration.serverSettings.restartTime);
 

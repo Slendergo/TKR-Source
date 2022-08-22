@@ -1,8 +1,14 @@
 ﻿using Bot;
+using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Bot
 {
@@ -12,6 +18,20 @@ namespace Bot
         public byte[] Data;
     }
 
+    public sealed class ReceiveToken
+    {
+        public int ReceivedLength { get; set; } = 0;
+        public byte MessageId { get; set; } = 0;
+        public bool FirstReceive { get; set; } = false;
+
+        public void Reset()
+        {
+            ReceivedLength = 0;
+            MessageId = 0;
+            FirstReceive = false;
+        }
+    }
+
     public class Bot
     {
         public Socket Socket;
@@ -19,201 +39,287 @@ namespace Bot
 
         public int CharacterId;
 
+        public string Guid { get; }
+        public string Password { get; }
+        public int GameId { get; }
+
+        public int MapSize { get; set; }
+
         public Bot(string guid, string password, int gameId, int characterId)
         {
+            Guid = guid;
+            Password = password;
+            GameId = gameId;
             CharacterId = characterId;
 
             Socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             try
             {
-                Socket.Connect("104.194.8.2", 2001);
-
-                var hello = MessageHelper.Hello(gameId, guid, password);
-                SendMessage(ref hello);
-
-                Console.WriteLine($"{guid} Connected");
+                //Socket.Connect("104.194.8.2", 2001);
+                Socket.Connect("127.0.0.1", 2002);
             }
             catch
             {
-                Console.WriteLine($"{guid} Failed to Connect");
             }
         }
 
-        public async void Run()
+        private bool Disconnected { get; set; }
+        private byte[] ReceiveHeaderBuffer { get; set; }
+
+        private byte[] ReceiveLengthBuffer;
+        private readonly SocketAsyncEventArgs ReceiveSocketAsyncEventArgs = new SocketAsyncEventArgs();
+        private readonly SocketAsyncEventArgs SendSocketAsyncEventArgs = new SocketAsyncEventArgs();
+
+        public void Start()
         {
-            await Task.Factory.StartNew(() =>
+            ReceiveHeaderBuffer = new byte[5];
+
+            ReceiveSocketAsyncEventArgs.Completed += ProcessReceive;
+            ReceiveSocketAsyncEventArgs.SetBuffer(ReceiveHeaderBuffer, 0, ReceiveHeaderBuffer.Length);
+            ReceiveSocketAsyncEventArgs.UserToken = new ReceiveToken();
+            ReceiveSocketAsyncEventArgs.AcceptSocket = Socket;
+
+            if (!ReceiveSocketAsyncEventArgs.AcceptSocket.ReceiveAsync(ReceiveSocketAsyncEventArgs))
+                ProcessReceive(null, ReceiveSocketAsyncEventArgs);
+
+            var hello = MessageHelper.Hello(GameId, Guid, Password);
+            SendMessage(ref hello);
+            Console.WriteLine($"{Guid} - Sent Hello");
+        }
+
+        private void ProcessReceive(object sender, SocketAsyncEventArgs e)
+        {
+            if (Disconnected)
+                return;
+
+            if (!e.AcceptSocket.Connected)
             {
-                var playerId = -1;
+                Disconnect("ProcessReceive: !Socket.Connected");
+                return;
+            }
 
-                var x = 0.0f;
-                var y = 0.0f;
-                var lastTickId = 0;
-                var angle = 0.0f;
+            if (e.SocketError != SocketError.Success)
+            {
+                Disconnect($"ProcessReceive: {e.SocketError} != SocketError.Success");
+                return;
+            }
 
-                HandleReceive();
+            var token = (ReceiveToken)e.UserToken;
 
-                while (Socket.Connected)
+            if (!token.FirstReceive)
+            {
+                if (e.BytesTransferred < 5)
                 {
-                    var lastUpdate = Environment.TickCount;
-
-                    while (Messages.TryDequeue(out var payload))
-                    {
-                        var ms = new MemoryStream(payload.Data);
-                        using var rdr = new NetworkReader(ms);
-
-                        switch (payload.Id)
-                        {
-                            case MessageHelper.FAILURE:
-                                {
-                                    var errorCode = rdr.ReadInt32();
-                                    var errorDescription = rdr.ReadUTF();
-
-                                    Console.WriteLine($"Failure: {errorCode} - {errorDescription}");
-                                }
-                                break;
-                            case MessageHelper.MAPINFO:
-                                {
-                                    var width = rdr.ReadInt32();
-                                    var height = rdr.ReadInt32();
-                                    var name = rdr.ReadUTF();
-                                    var displayName = rdr.ReadUTF();
-                                    var seed = rdr.ReadUInt32();
-                                    var background = rdr.ReadInt32();
-                                    var difficulty = rdr.ReadInt32();
-                                    var allowTeleport = rdr.ReadBoolean();
-                                    var showDisplays = rdr.ReadBoolean();
-                                    var music = rdr.ReadUTF();
-                                    var disableShooting = rdr.ReadBoolean();
-                                    var disableAbilitites = rdr.ReadBoolean();
-
-                                    if (CharacterId == -1)
-                                    {
-                                        var create = MessageHelper.Create(0x030e, 0);
-                                        SendMessage(ref create);
-                                    }
-                                    else
-                                    {
-                                        var load = MessageHelper.Load(CharacterId);
-                                        SendMessage(ref load);
-                                    }
-                                }
-                                break;
-                            case MessageHelper.CREATE_SUCCESS:
-                                {
-                                    playerId = rdr.ReadInt32();
-                                    CharacterId = rdr.ReadInt32();
-                                }
-                                break;
-                            case MessageHelper.UPDATE:
-                                {
-                                    var len = rdr.ReadInt16();
-                                    var tiles = new List<TileData>(len);
-                                    for (var i = 0; i < len; i++)
-                                        tiles.Add(new TileData(rdr));
-
-                                    len = rdr.ReadInt16();
-                                    var newObjs = new List<ObjectData>(len);
-                                    for (var i = 0; i < len; i++)
-                                        newObjs.Add(new ObjectData(rdr));
-
-                                    len = rdr.ReadInt16();
-                                    var drops = new List<int>(len);
-                                    for (var i = 0; i < len; i++)
-                                        drops.Add(rdr.ReadInt32());
-
-                                    foreach (var obj in newObjs)
-                                    {
-                                        if (obj.Status.ObjectId == playerId)
-                                        {
-                                            x = obj.Status.X;
-                                            y = obj.Status.Y;
-                                        }
-                                    }
-                                }
-                                break;
-                            case MessageHelper.NEWTICK:
-                                {
-                                    lastTickId = rdr.ReadInt32();
-                                    var tickTime = rdr.ReadInt32();
-                                    var statuses = new List<ObjectStatusData>(rdr.ReadInt16());
-                                    for (var i = 0; i < statuses.Capacity; i++)
-                                        statuses.Add(new ObjectStatusData(rdr));
-
-                                    angle += 2;
-                                    x -= (float)Math.Cos(angle) * 0.4f * (tickTime / 1000.0f) * 5.0f;
-                                    y -= (float)Math.Sin(angle) * 0.4f * (tickTime / 1000.0f) * 5.0f;
-
-                                    // todo
-                                    var move = MessageHelper.Move(lastTickId, lastUpdate, x, y);
-                                    SendMessage(ref move);
-                                }
-                                break;
-                            case MessageHelper.ALLYSHOOT:
-                                {
-
-                                }
-                                break;
-                            case MessageHelper.PING:
-                                {
-                                    var pong = MessageHelper.Pong(rdr.ReadInt32(), Environment.TickCount);
-                                    SendMessage(ref pong);
-                                }
-                                break;
-                            case MessageHelper.GOTOACK:
-                                {
-
-                                }
-                                break;
-                        }
-                    }
-
-                    Thread.Sleep(16);
+                    Disconnect($"ProcessReceive: {e.BytesTransferred} < 5");
+                    return;
                 }
 
-                Console.WriteLine("ENDED");
-                Socket.Close();
+                var len = IPAddress.NetworkToHostOrder(BitConverter.ToInt32(e.Buffer, 0)) - 5;
+
+                var id = e.Buffer[4];
+                e.UserToken = new ReceiveToken()
+                {
+                    FirstReceive = true,
+                    MessageId = id,
+                    ReceivedLength = len
+                };
+
+                if (ReceiveLengthBuffer == null)
+                    ReceiveLengthBuffer = new byte[len];
+                else
+                {
+                    Array.Clear(ReceiveLengthBuffer, 0, ReceiveLengthBuffer.Length);
+                    Array.Resize(ref ReceiveLengthBuffer, len);
+                }
+
+                e.SetBuffer(ReceiveLengthBuffer, 0, ReceiveLengthBuffer.Length);
+                try
+                {
+                    if (!e.AcceptSocket.ReceiveAsync(e))
+                        ProcessReceive(sender, e);
+                }
+                catch (StackOverflowException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Disconnect("Stack overflow");
+                }
+                return;
+            }
+
+            if (e.BytesTransferred < token.ReceivedLength)
+            {
+                Disconnect($"ProcessReceive: {e.BytesTransferred} < {token.ReceivedLength}");
+                return;
+            }
+
+            var b = new byte[e.Buffer.Length];
+            Array.Copy(e.Buffer, b, e.Buffer.Length);
+
+            Messages.Enqueue(new Payload()
+            {
+                Id = token.MessageId,
+                Data = b
             });
-        }
 
-        public async void HandleReceive()
-        {
-            try
+            if (!Disconnected)
             {
-                var headerBuffer = new byte[5];
-
-                while (Socket.Connected)
+                Array.Clear(ReceiveHeaderBuffer, 0, ReceiveHeaderBuffer.Length);
+                e.SetBuffer(ReceiveHeaderBuffer, 0, ReceiveHeaderBuffer.Length);
+                (e.UserToken as ReceiveToken).Reset();
+                try
                 {
-                    var length = await Socket.ReceiveAsync(headerBuffer, SocketFlags.None);
-                    if (length != 5)
-                    {
-                        Console.WriteLine("length != 5");
-                        Socket.Close();
-                        break;
-                    }
-                    
-                    length = IPAddress.NetworkToHostOrder(BitConverter.ToInt32(headerBuffer, 0)) - 5;
-
-                    var payload = new Payload();
-                    payload.Id = headerBuffer[4];
-                    payload.Data = new byte[length];
-
-                    Array.Clear(headerBuffer, 0, headerBuffer.Length);
-
-                    var payloadCount = await Socket.ReceiveAsync(payload.Data, SocketFlags.None);
-                    if (payloadCount != length)
-                    {
-                        Console.WriteLine($"{payload.Id} | {payloadCount} != {length}");
-                        Socket.Close();
-                        break;
-                    }
-
-                    Messages.Enqueue(payload);
+                    if (!e.AcceptSocket.ReceiveAsync(e))
+                        ProcessReceive(sender, e);
+                }
+                catch (StackOverflowException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Disconnect("Stack overflow");
                 }
             }
-            catch(Exception e)
+        }
+
+        public void Disconnect(string reason)
+        {
+            if (Disconnected)
+                return;
+            Disconnected = true;
+
+            ReceiveSocketAsyncEventArgs.Completed -= ProcessReceive;
+
+            Socket.Close();
+
+            if (reason == null)
+                Console.WriteLine($"ClientSession Disconnected");
+            else
+                Console.WriteLine($"ClientSession Disconnected: {reason}");
+        }
+
+        public int playerId = -1;
+        public float x = 0.0f;
+        public float y = 0.0f;
+        public int lastTickId = 0;
+        public float angle = 0.0f;
+
+        static Random Random = new Random();
+
+        public void HandlePackets()
+        {
+            var lastUpdate = Environment.TickCount;
+
+            while (Messages.TryDequeue(out var payload))
             {
-                Console.WriteLine(e);
-                Socket.Close();
+                var ms = new MemoryStream(payload.Data);
+                using (var rdr = new NetworkReader(ms))
+                {
+                    switch (payload.Id)
+                    {
+                        case MessageHelper.FAILURE:
+                            {
+                                var errorCode = rdr.ReadInt32();
+                                var errorDescription = rdr.ReadUTF();
+
+                                Console.WriteLine($"Failure: {errorCode} - {errorDescription}");
+                            }
+                            break;
+                        case MessageHelper.MAPINFO:
+                            {
+                                var width = MapSize = rdr.ReadInt32();
+                                var height = rdr.ReadInt32();
+                                var name = rdr.ReadUTF();
+                                var displayName = rdr.ReadUTF();
+                                var seed = rdr.ReadUInt32();
+                                var background = rdr.ReadInt32();
+                                var difficulty = rdr.ReadInt32();
+                                var allowTeleport = rdr.ReadBoolean();
+                                var showDisplays = rdr.ReadBoolean();
+                                var music = rdr.ReadUTF();
+                                var disableShooting = rdr.ReadBoolean();
+                                var disableAbilitites = rdr.ReadBoolean();
+
+                                if (CharacterId == -1)
+                                {
+                                    var create = MessageHelper.Create(0x030e, 0);
+                                    SendMessage(ref create);
+                                }
+                                else
+                                {
+                                    var load = MessageHelper.Load(CharacterId);
+                                    SendMessage(ref load);
+                                }
+                            }
+                            break;
+                        case MessageHelper.CREATE_SUCCESS:
+                            {
+                                playerId = rdr.ReadInt32();
+                                CharacterId = rdr.ReadInt32();
+                            }
+                            break;
+                        case MessageHelper.UPDATE:
+                            {
+                                var len = rdr.ReadInt16();
+                                var tiles = new List<TileData>(len);
+                                for (var i = 0; i < len; i++)
+                                    tiles.Add(new TileData(rdr));
+
+                                len = rdr.ReadInt16();
+                                var newObjs = new List<ObjectData>(len);
+                                for (var i = 0; i < len; i++)
+                                    newObjs.Add(new ObjectData(rdr));
+
+                                len = rdr.ReadInt16();
+                                var drops = new List<int>(len);
+                                for (var i = 0; i < len; i++)
+                                    drops.Add(rdr.ReadInt32());
+
+                                foreach (var obj in newObjs)
+                                {
+                                    if (obj.Status.ObjectId == playerId)
+                                    {
+                                        x = obj.Status.X;
+                                        y = obj.Status.Y;
+                                    }
+                                }
+                            }
+                            break;
+                        case MessageHelper.NEWTICK:
+                            {
+                                lastTickId = rdr.ReadInt32();
+                                var tickTime = rdr.ReadInt32();
+                                var statuses = new List<ObjectStatusData>(rdr.ReadInt16());
+                                for (var i = 0; i < statuses.Capacity; i++)
+                                    statuses.Add(new ObjectStatusData(rdr));
+
+                                if (Random.NextDouble() < 0.2)
+                                {
+                                    angle += 12;
+                                    x = GameId == -2 ? 53.5f : (MapSize / 2) + (float)Math.Cos(angle) * 0.4f * 5f * (tickTime / 1000.0f) * 5.0f;
+                                    y = GameId == -2 ? 45.5f : (MapSize  / 2) + (float)Math.Sin(angle) * 0.4f * 5f * (tickTime / 1000.0f) * 5.0f;
+                                }
+
+                                // todo
+                                var move = MessageHelper.Move(lastTickId, lastUpdate, x, y);
+                                SendMessage(ref move);
+                            }
+                            break;
+                        case MessageHelper.ALLYSHOOT:
+                            {
+
+                            }
+                            break;
+                        case MessageHelper.PING:
+                            {
+                                var pong = MessageHelper.Pong(rdr.ReadInt32(), Environment.TickCount);
+                                SendMessage(ref pong);
+                            }
+                            break;
+                        case MessageHelper.GOTOACK:
+                            {
+
+                            }
+                            break;
+                    }
+                }
             }
         }
 
@@ -232,19 +338,35 @@ namespace Bot
 
     public sealed class Program
     {
+        public static List<int> BotIds = new List<int>();
+        private static List<Bot> Bots = new List<Bot>();
+        private static int Index;
+
+        public static void AddBot(int gameId)
+        {
+            var bot = new Bot($"test{Index}@gmail.com", "12345", gameId, 1);
+            bot.Start();
+            Bots.Add(bot);
+            Index++;
+        }
+
         public static void Main(string[] args)
         {
-            var bots = new List<Bot>();
+            var sw = Stopwatch.StartNew();
 
-            for (var i = 0; i < 63; i++)
-            {
-                var bot = new Bot($"test{i}@gmail.com", "12345", -2, 1);
-                bot.Run();
-                bots.Add(bot);
-            }
-
+            var last = 0L;
             while (true)
             {
+                foreach (var bot in Bots)
+                    bot.HandlePackets();
+
+                if (sw.ElapsedMilliseconds - last >= 32 && Index < 1024)
+                {
+                    var place = 1 + (Index / 85);
+                    AddBot(place);
+
+                    last = sw.ElapsedMilliseconds;
+                }
                 Thread.Sleep(16);
             }
         }

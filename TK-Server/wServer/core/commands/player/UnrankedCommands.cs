@@ -1083,10 +1083,15 @@ namespace wServer.core.commands
             }
            
             var world = worlds[0];
+
+            var max = int.MinValue;
             foreach (var i in worlds)
             {
-                if (i.Players.Count > world.Players.Count)
+                if (i.Players.Count > max)
+                {
                     world = i;
+                    max = i.Players.Count;
+                }
             }
 
             if (world.IsPlayersMax())

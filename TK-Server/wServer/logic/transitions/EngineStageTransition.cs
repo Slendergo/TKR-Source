@@ -6,19 +6,18 @@ namespace wServer.logic.transitions
 {
     internal class EngineStageTransition : Transition
     {
-        //State storage: none
 
-        private readonly int State;
+        private readonly int Stage;
 
-        public EngineStageTransition(int state, string targetState)
+        public EngineStageTransition(int stage, string targetState)
             : base(targetState)
         {
-            State = state;
+            Stage = stage;
         }
 
         protected override bool TickCore(Entity host, TickTime time, ref object state)
         {
-            return host.GameServer.WorldManager.Nexus.EngineStage == State;
+            return host.GameServer.WorldManager.Nexus.EngineStage == Stage;
         }
     }
 }

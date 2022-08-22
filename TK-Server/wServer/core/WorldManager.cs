@@ -52,7 +52,7 @@ namespace wServer.core
                 throw new Exception("Unable to initialize nexus");
             world.Init();
             _ = Worlds.TryAdd(world.Id, world);
-            _ = Threads.TryAdd(world.Id, new TickThreadSingle(this, world));
+            _ = Threads.TryAdd(world.Id, new RootWorldThread(this, world));
             GameServer.WorldManager.Nexus.PortalMonitor.AddPortal(world);
         }
 

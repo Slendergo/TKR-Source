@@ -53,10 +53,17 @@ namespace wServer.core.objects
 
         public void HandleTalismans(ref TickTime time)
         {
-            if (SendTalismanData && (PlayerUpdate.TickId + 1) % 2 == 0)
+            try
             {
-                UpdateTalsimans();
-                SendTalismanData = false;
+                if (SendTalismanData && (PlayerUpdate.TickId + 1) % 2 == 0)
+                {
+                    UpdateTalsimans();
+                    SendTalismanData = false;
+                }
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
             }
         }
 

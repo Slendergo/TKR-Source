@@ -18,8 +18,6 @@ namespace wServer.core
         private const int CONNECTING_TTL = 15;
         private const int RECON_TTL = 15;
         
-        
-        private int NextClientId;
         private readonly GameServer GameServer;
 
         public ConcurrentDictionary<Client, PlayerInfo> Clients { get; } = new ConcurrentDictionary<Client, PlayerInfo>();

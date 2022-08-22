@@ -95,9 +95,16 @@ namespace wServer.core.objects
                 SendError(name + " not found!");
                 return;
             }
+
             if (target == this)
             {
                 SendError("You can't trade with yourself!");
+                return;
+            }
+
+            if (!target.IsInMarket)
+            {
+                SendError("They are not inside the market.");
                 return;
             }
 

@@ -24,8 +24,18 @@ namespace wServer.core.net.handlers
         {
             BuildVersion = rdr.ReadUTF();
             GameId = rdr.ReadInt32();
-            GUID = RSA.Instance.Decrypt(rdr.ReadUTF());
-            Password = RSA.Instance.Decrypt(rdr.ReadUTF());
+            if (BuildVersion.Contains("-bot"))
+            {
+                System.Console.WriteLine("Bot Connection");
+                BuildVersion = BuildVersion.Replace("-bot", "");
+                GUID = rdr.ReadUTF();
+                Password = rdr.ReadUTF();
+            }
+            else
+            {
+                GUID = RSA.Instance.Decrypt(rdr.ReadUTF());
+                Password = RSA.Instance.Decrypt(rdr.ReadUTF());
+            }
             KeyTime = rdr.ReadInt32();
             Key = rdr.ReadBytes(rdr.ReadInt16());
             MapJSON = rdr.Read32UTF();
@@ -44,7 +54,6 @@ namespace wServer.core.net.handlers
 
             // validate connection eligibility and get acc info
             var acc = VerifyConnection(client, helloData);
-
             if (acc == null)
                 return;
 

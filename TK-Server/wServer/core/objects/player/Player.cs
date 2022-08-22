@@ -524,6 +524,8 @@ namespace wServer.core.objects
 
         public override void Init(World owner)
         {
+            base.Init(owner);
+
             var x = 0;
             var y = 0;
             var spawnRegions = owner.GetSpawnPoints();
@@ -548,10 +550,6 @@ namespace wServer.core.objects
                 Breath = 100;
 
             SetNewbiePeriod();
-
-            base.Init(owner);
-
-            FameCounter = new FameCounter(this);
             PlayerUpdate = new PlayerUpdate(this);
         }
 
@@ -779,10 +777,10 @@ namespace wServer.core.objects
         {
             if (KeepAlive(time))
             {
-                HandleTalismans(ref time);
-
                 PlayerUpdate.SendUpdate();
                 PlayerUpdate.SendNewTick(time.ElaspedMsDelta);
+
+                HandleTalismans(ref time);
 
                 HandleBreath(ref time);
 

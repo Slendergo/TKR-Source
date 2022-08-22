@@ -207,8 +207,6 @@ namespace wServer.networking.connection
             acceptEventArgs.AcceptSocket.NoDelay = true;
             ClientPool.Pop().SetSocket(acceptEventArgs.AcceptSocket);
 
-            Console.WriteLine($"Remaining Clients: {ClientPool.Count}");
-
             acceptEventArgs.AcceptSocket = null;
             EventArgsPoolAccept.Push(acceptEventArgs);
 
@@ -263,8 +261,6 @@ namespace wServer.networking.connection
             client.Reset();
 
             ClientPool.Push(client);
-
-            Console.WriteLine($"Returned Client: {ClientPool.Count}");
 
             MaxConnectionsEnforcer.Release();
         }

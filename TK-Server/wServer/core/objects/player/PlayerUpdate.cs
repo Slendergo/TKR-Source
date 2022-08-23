@@ -160,8 +160,7 @@ namespace wServer.core.objects
 
             var count = 0;
             foreach (var player in players)
-            {
-                
+            {   
                 if ((player.AccountId == Player.AccountId || player.Client.Account != null && player.CanBeSeenBy(Player)) && NewObjects.Add(player))
                 {
                     update.NewObjs.Add(player.ToDefinition(player.AccountId != Player.AccountId));
@@ -198,6 +197,15 @@ namespace wServer.core.objects
 
                 intPoint.X = (int)entity.X;
                 intPoint.Y = (int)entity.Y;
+                if (ActiveTiles.Contains(intPoint) && NewObjects.Add(entity))
+                    update.NewObjs.Add(entity.ToDefinition());
+            }
+
+            foreach (var entity in World.Portals.Values)
+            {
+                intPoint.X = (int)entity.X;
+                intPoint.Y = (int)entity.Y;
+
                 if (ActiveTiles.Contains(intPoint) && NewObjects.Add(entity))
                     update.NewObjs.Add(entity.ToDefinition());
             }

@@ -61,7 +61,6 @@ namespace wServer.core.objects
             {
                 if (Dying)
                     HP -= time.ElaspedMsDelta;
-
                 CheckHP();
             }
 
@@ -75,15 +74,17 @@ namespace wServer.core.objects
                 var x = (int)(X - 0.5);
                 var y = (int)(Y - 0.5);
 
-                if (World?.Map?.Contains(x, y) ?? false)
+                if (World.Map.Contains(x, y))
                     if (ObjectDesc != null && World.Map[x, y].ObjType == ObjectType)
                     {
                         var tile = World.Map[x, y];
                         tile.ObjType = 0;
                         tile.UpdateCount++;
-                    }
 
-                World?.LeaveWorld(this);
+                        foreach (Player player in World.PlayersCollision.HitTest(x, y, PlayerUpdate.VISIBILITY_RADIUS))
+                            player.PlayerUpdate.UpdateTiles = true;
+                    }
+                World.LeaveWorld(this);
 
                 return false;
             }
@@ -94,7 +95,6 @@ namespace wServer.core.objects
         protected override void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)
         {
             stats[StatDataType.HP] = (!Vulnerable) ? int.MaxValue : HP;
-
             base.ExportStats(stats, isOtherPlayer);
         }
     }

@@ -20,16 +20,13 @@ namespace wServer.core
         Closing,
         Emptying,
         Closed,
-        Waiting
+        DoNothing
     }
 
     public sealed class KingdomManager
     {
         public int _EventCount = 0;
         public RealmWorld World;
-
-        private readonly DiscordIntegration _discord;
-        private string _webhook;
 
         private static readonly Tuple<string, TauntData>[] CriticalEnemies = new Tuple<string, TauntData>[]
         {
@@ -443,7 +440,9 @@ namespace wServer.core
 
         private int[] EnemyCounts = new int[12];
         private int[] EnemyMaxCounts = new int[12];
-        private long LastTenSecondsTime;
+        private long LastEnsurePopulationTime;
+        private long LastAnnouncementTime;
+        private long LastQuestTime;
 
         public KindgomState CurrentState;
         public bool DisableSpawning;
@@ -460,15 +459,22 @@ namespace wServer.core
             {
                 case KindgomState.Idle:
                     {
-                        if (time.TotalElapsedMs - LastTenSecondsTime >= 10000)
+                        if (time.TotalElapsedMs - LastQuestTime >= 10000)
                         {
-                            if (time.TickCount % 2 == 0)
-                                HandleAnnouncements();
-                            if (time.TickCount % 2 == 0)
-                                EnsureQuest();
-                            if (time.TickCount % 6 == 0)
-                                EnsurePopulation();
-                            LastTenSecondsTime = time.TotalElapsedMs;
+                            EnsureQuest();
+                            LastQuestTime = time.TotalElapsedMs;
+                        }
+
+                        if (time.TotalElapsedMs - LastAnnouncementTime >= 20000)
+                        {
+                            HandleAnnouncements();
+                            LastAnnouncementTime = time.TotalElapsedMs;
+                        }
+
+                        if (time.TotalElapsedMs - LastEnsurePopulationTime >= 60000)
+                        {
+                            EnsurePopulation();
+                            LastEnsurePopulationTime = time.TotalElapsedMs;
                         }
                     }
                     break;
@@ -485,7 +491,7 @@ namespace wServer.core
                     break;
                 case KindgomState.Emptying:
                     {
-                        CurrentState = KindgomState.Waiting;
+                        CurrentState = KindgomState.DoNothing;
                         foreach (var e in World.Enemies.Values)
                         {
                             if (e.ObjectDesc.ObjectId.Contains("Oryx Guardian TaskMaster") || e.ObjectDesc.ObjectId.Contains("Talisman King's Golden Guardian"))
@@ -513,10 +519,10 @@ namespace wServer.core
 
                         MovePeopleNaerby(time);
 
-                        CurrentState = KindgomState.Waiting;
+                        CurrentState = KindgomState.DoNothing;
                     }
                     break;
-                case KindgomState.Waiting:
+                case KindgomState.DoNothing:
                     break;
             }
         }

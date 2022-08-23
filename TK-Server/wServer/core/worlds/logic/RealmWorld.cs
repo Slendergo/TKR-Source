@@ -39,6 +39,7 @@ namespace wServer.core.worlds.logic
                 GameServer.WorldManager.Nexus.PortalMonitor.OpenPortal(Id);
 
             KingdomManager.Update(ref time);
+            
             base.UpdateLogic(ref time);
         }
 

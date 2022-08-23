@@ -61,6 +61,7 @@ namespace wServer.core.worlds
         public ConcurrentDictionary<int, Enemy> Quests { get; private set; } = new ConcurrentDictionary<int, Enemy>();
         public ConcurrentDictionary<int, StaticObject> StaticObjects { get; private set; } = new ConcurrentDictionary<int, StaticObject>();
         public ConcurrentDictionary<int, Container> Containers { get; private set; } = new ConcurrentDictionary<int, Container>();
+        public ConcurrentDictionary<int, Portal> Portals { get; private set; } = new ConcurrentDictionary<int, Portal>();
         public ConcurrentDictionary<int, Pet> Pets { get; private set; } = new ConcurrentDictionary<int, Pet>();
         public Dictionary<Tuple<int, byte>, Projectile> Projectiles { get; private set; } = new Dictionary<Tuple<int, byte>, Projectile>();
         public List<WorldTimer> Timers { get; private set; } = new List<WorldTimer>();
@@ -173,39 +174,27 @@ namespace wServer.core.worlds
 
         public virtual int EnterWorld(Entity entity)
         {
+            entity.Id = GetNextEntityId();
+
             if (entity is Player)
             {
-                entity.Id = GetNextEntityId();
-                entity.Init(this);
-
                 Players.TryAdd(entity.Id, entity as Player);
                 PlayersCollision.Insert(entity);
             }
             else if (entity is Enemy)
             {
-                entity.Id = GetNextEntityId();
-                entity.Init(this);
-
                 Enemies.TryAdd(entity.Id, entity as Enemy);
                 EnemiesCollision.Insert(entity);
-
                 if (entity.ObjectDesc.Quest)
                     Quests.TryAdd(entity.Id, entity as Enemy);
             }
             else if (entity is Container)
-            {
-                entity.Id = GetNextEntityId();
-                entity.Init(this);
-
                 Containers.TryAdd(entity.Id, entity as Container);
-            }
+            else if (entity is Portal)
+                Portals.TryAdd(entity.Id, entity as Portal);
             else if (entity is StaticObject)
             {
-                entity.Id = GetNextEntityId();
-                entity.Init(this);
-
                 StaticObjects.TryAdd(entity.Id, entity as StaticObject);
-
                 if (entity is Decoy)
                     PlayersCollision.Insert(entity);
                 else
@@ -213,14 +202,10 @@ namespace wServer.core.worlds
             }
             else if (entity is Pet)
             {
-                entity.Id = GetNextEntityId();
-                entity.Init(this);
-
                 Pets.TryAdd(entity.Id, entity as Pet);
-
                 PlayersCollision.Insert(entity);
             }
-
+            entity.Init(this);
             return entity.Id;
         }
 
@@ -239,6 +224,9 @@ namespace wServer.core.worlds
 
             if (Containers.TryGetValue(id, out var ret4))
                 return ret4;
+
+            if (Portals.TryGetValue(id, out var ret5))
+                return ret5;
 
             return null;
         }
@@ -324,6 +312,8 @@ namespace wServer.core.worlds
             }
             else if (entity is Container)
                 Containers.TryRemove(entity.Id, out Container dummy);
+            else if (entity is Portal)
+                Portals.TryRemove(entity.Id, out _);
             else if (entity is StaticObject)
             {
                 StaticObjects.TryRemove(entity.Id, out StaticObject dummy);
@@ -478,6 +468,9 @@ namespace wServer.core.worlds
             foreach (var stat in StaticObjects.Values)
                 stat.Tick(ref time);
 
+            foreach (var container in Portals.Values)
+                container.Tick(ref time);
+
             foreach (var container in Containers.Values)
                 container.Tick(ref time);
 
@@ -492,30 +485,27 @@ namespace wServer.core.worlds
             foreach (var projectile in projectilesToRemove)
                 RemoveProjectile(projectile);
 
-            if (Players.Values.Count > 0)
+            foreach (var player in Players.Values)
             {
-                foreach (var player in Players.Values)
-                {
-                    player.HandleIO(ref time);
-                    player.Tick(ref time);
-                }
+                player.HandleIO(ref time);
+                player.Tick(ref time);
+            }
 
-                if (EnemiesCollision != null)
-                {
-                    foreach (var i in EnemiesCollision.GetActiveChunks(PlayersCollision))
-                        i.Tick(ref time);
+            if (EnemiesCollision != null)
+            {
+                foreach (var i in EnemiesCollision.GetActiveChunks(PlayersCollision))
+                    i.Tick(ref time);
 
-                    //foreach (var i in StaticObjects.Where(x => x.Value != null && x.Value is Decoy))
-                    //    i.Value.Tick(time);
-                }
-                else
-                {
-                    foreach (var i in Enemies)
-                        i.Value.Tick(ref time);
+                //foreach (var i in StaticObjects.Where(x => x.Value != null && x.Value is Decoy))
+                //    i.Value.Tick(time);
+            }
+            else
+            {
+                foreach (var i in Enemies)
+                    i.Value.Tick(ref time);
 
-                    //foreach (var i in StaticObjects)
-                    //    i.Value.Tick(time);
-                }
+                //foreach (var i in StaticObjects)
+                //    i.Value.Tick(time);
             }
 
             for (var i = Timers.Count - 1; i >= 0; i--)

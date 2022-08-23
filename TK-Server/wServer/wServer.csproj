@@ -573,6 +573,7 @@
     <Compile Include="utils\SLogger.cs" />
     <Compile Include="logic\db\BehaviorDb.Colosseum.cs" />
     <Compile Include="utils\WeightedCollection.cs" />
+    <Compile Include="xml_logic\State.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\common\common.csproj">
@@ -656,6 +657,11 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="xml_logic\behaviors\TestBehavior.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

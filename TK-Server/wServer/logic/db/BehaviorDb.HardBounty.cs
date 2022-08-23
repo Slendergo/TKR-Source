@@ -26,7 +26,7 @@ namespace wServer.logic
                         ),
                     new State("Fight",
                         new Prioritize(
-                            new Chase(coolDown: 0),
+                            new Chase(6, coolDown: 0),
                              new Shoot(22, count: 1, projectileIndex: 0, coolDown: 1000)
                          ),
                         new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),

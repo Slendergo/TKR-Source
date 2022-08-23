@@ -1,4 +1,41 @@
 <GroundTypes>
+	<Ground type="0x130" id="CL Water">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x41</Index>
+		</Texture>
+		<Animate dx=".33" dy=".33">Flow</Animate>
+		<BlendPriority>3</BlendPriority>
+		<Sink />
+		<Speed>.666</Speed>
+	</Ground>
+	<Ground type="0x131" id="CL Candy Grass 3">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x44</Index>
+		</Texture>
+		<BlendPriority>1</BlendPriority>
+	</Ground>
+	<Ground type="0x132" id="CL Candy Grass 2">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x43</Index>
+		</Texture>
+		<BlendPriority>1</BlendPriority>
+	</Ground>
+	<Ground type="0x133" id="CL Candy Grass 1">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x42</Index>
+		</Texture>
+		<BlendPriority>1</BlendPriority>
+	</Ground>
+	<Ground type="0x134" id="CL Chocolate Floor">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x40</Index>
+		</Texture>
+	</Ground>
 	<Ground type="0x149" id="Dark Dirt 1">
 		<Texture>
 			<File>customEnvironment</File>

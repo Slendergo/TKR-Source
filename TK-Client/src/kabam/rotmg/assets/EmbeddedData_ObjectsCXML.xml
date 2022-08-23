@@ -12669,16 +12669,6 @@
       <ConditionEffect duration="4">Dazed</ConditionEffect>
     </Projectile>
   </Object>
-  <Object type="0xa005" id="Bdwubz Bee">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars16x16dEncounters2</File>
-      <Index>95</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>120</Size>
-  </Object>
   <Object type="0x1621" id="Lil' Oryx">
     <Class>Character</Class>
     <Group>Hexable</Group>
@@ -25295,828 +25285,6 @@
       <MultiHit />
     </Projectile>
   </Object>
-  <Object type="0x074c" id="Nexus Turkey">
-    <DisplayId>Turkey</DisplayId>
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>44</Index>
-    </AnimatedTexture>
-    <Size>110</Size>
-    <XpMult>0.0</XpMult>
-  </Object>
-  <Object type="0x1600" id="Black Cat">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x00</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1601" id="Grey Cat">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x01</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1602" id="Orange Cat">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x02</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1603" id="Tan Cat">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x02</Index>
-    </AnimatedTexture>
-    <Tex1>0x1ce9f32</Tex1>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1604" id="Yellow Cat">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x02</Index>
-    </AnimatedTexture>
-    <Tex1>0x1cbc916</Tex1>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1605" id="Brown Pup">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x05</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1606" id="Grey Pup">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x05</Index>
-    </AnimatedTexture>
-    <Tex1>0x1767676</Tex1>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1607" id="Golden Pup">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x05</Index>
-    </AnimatedTexture>
-    <Tex1>0x1ce9f32</Tex1>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1608" id="White Cat">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x00</Index>
-    </AnimatedTexture>
-    <Tex1>0x1ffffff</Tex1>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1609" id="Blue Snail">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x03</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x160a" id="Grey Wolf">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x04</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x160b" id="Brown Fox">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x06</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x160c" id="Green Frog">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x07</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>80</Size>
-  </Object>
-  <Object type="0x160d" id="Lion">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x08</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>80</Size>
-  </Object>
-  <Object type="0x160e" id="Penguin">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x09</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x160f" id="Sheepdog">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x0a</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1610" id="Panda">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x0b</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1611" id="Purple Snail">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x03</Index>
-    </AnimatedTexture>
-    <Tex2>0x19829f6</Tex2>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1612" id="Black Wolf">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x04</Index>
-    </AnimatedTexture>
-    <Tex1>0x1333333</Tex1>
-    <Tex2>0x1ff0000</Tex2>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1613" id="Grey Fox">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x06</Index>
-    </AnimatedTexture>
-    <Tex1>0x1808080</Tex1>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1614" id="Purple Frog">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x07</Index>
-    </AnimatedTexture>
-    <Tex1>0x19829f6</Tex1>
-    <NoMiniMap />
-    <Size>80</Size>
-  </Object>
-  <Object type="0x1615" id="White Lion">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x08</Index>
-    </AnimatedTexture>
-    <Tex1>0x1d0d0d0</Tex1>
-    <NoMiniMap />
-    <Size>80</Size>
-  </Object>
-  <Object type="0x1616" id="Green Penguin">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x09</Index>
-    </AnimatedTexture>
-    <Tex1>0x1005302</Tex1>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1617" id="Golden Sheepdog">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x0a</Index>
-    </AnimatedTexture>
-    <Tex1>0x1cf9700</Tex1>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1618" id="Bluebird">
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x0c</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1619" id="Chick">
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x0d</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x161a" id="Pig">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x0e</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x161b" id="Sea Slurp">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x0f</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x161c" id="Squirrel">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>18</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Flying />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x161e" id="Lil' Ghost">
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>16</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Z>0.15</Z>
-    <Flying />
-    <Size>60</Size>
-    <ShadowSize>80</ShadowSize>
-  </Object>
-  <Object type="0x1620" id="Leprechaun">
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>17</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1622" id="Toucan">
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>19</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-    <WhileMoving>
-      <Z>0.35</Z>
-      <Flying />
-    </WhileMoving>
-  </Object>
-  <Object type="0x1623" id="Skunk">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>20</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1624" id="Mallard">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>21</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1625" id="Duck">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>22</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1626" id="Eagle">
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>23</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-    <WhileMoving>
-      <Z>0.35</Z>
-      <Flying />
-    </WhileMoving>
-  </Object>
-  <Object type="0x1627" id="Turtle">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>24</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1628" id="Jelly">
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>25</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-    <ShadowSize>80</ShadowSize>
-  </Object>
-  <Object type="0x1629" id="Bee">
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>26</Index>
-    </AnimatedTexture>
-    <AltTexture id="1">
-      <AnimatedTexture>
-        <File>chars8x8rPets1</File>
-        <Index>27</Index>
-      </AnimatedTexture>
-    </AltTexture>
-    <NoMiniMap />
-    <Z>0.25</Z>
-    <Flying />
-    <ShadowSize>60</ShadowSize>
-    <Size>60</Size>
-  </Object>
-  <Object type="0x162a" id="Raven">
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>28</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-    <WhileMoving>
-      <Z>0.35</Z>
-      <Flying />
-    </WhileMoving>
-  </Object>
-  <Object type="0x162b" id="Purple Penguin">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>29</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-    <ShadowSize>80</ShadowSize>
-  </Object>
-  <Object type="0x162c" id="Grass Penguin">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>30</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-    <ShadowSize>80</ShadowSize>
-  </Object>
-  <Object type="0x162d" id="Elf">
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>31</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-    <ShadowSize>80</ShadowSize>
-  </Object>
-  <Object type="0x162e" id="Crab">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>32</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-    <ShadowSize>80</ShadowSize>
-  </Object>
-  <Object type="0x162f" id="Hamster">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>33</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1630" id="Dino">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>34</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1631" id="Elephant">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>35</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1632" id="Demon Frog">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>36</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1633" id="Gargoyle">
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>37</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-    <WhileMoving>
-      <Z>0.25</Z>
-      <Flying />
-    </WhileMoving>
-  </Object>
-  <Object type="0x1634" id="Gummy Bear">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>38</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1635" id="Dragonfly">
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>39</Index>
-    </AnimatedTexture>
-    <AltTexture id="1">
-      <AnimatedTexture>
-        <File>chars8x8rPets1</File>
-        <Index>40</Index>
-      </AnimatedTexture>
-    </AltTexture>
-    <NoMiniMap />
-    <Z>0.25</Z>
-    <Flying />
-    <ShadowSize>60</ShadowSize>
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1636" id="Lil' Cyclops">
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>42</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1637" id="Snowy Owl">
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>43</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-    <ShadowSize>80</ShadowSize>
-    <WhileMoving>
-      <Z>0.24</Z>
-      <Flying />
-    </WhileMoving>
-  </Object>
-  <Object type="0x1638" id="Turkey">
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>44</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1639" id="Baby">
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>45</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x163a" id="Baby Dragon">
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>46</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x163b" id="Karate Penguin Red">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>47</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x163c" id="Karate Penguin Blue">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>48</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x163d" id="Karate Penguin Yellow">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>49</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x163e" id="Karate Penguin Purple">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>50</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1640" id="Robobuddy">
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>51</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1641" id="Snowman">
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>52</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1642" id="Black Ant">
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>53</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1643" id="Blue Ant">
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>54</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1644" id="Green Ant">
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>55</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1645" id="Red Ant">
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>56</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1646" id="Purple Ant">
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>57</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1649" id="Peppermint Snail">
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>58</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x164a" id="Relief Oriole">
-    <DisplayId>Oriole</DisplayId>
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>59</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <WhileMoving>
-      <Z>0.35</Z>
-      <Flying />
-    </WhileMoving>
-    <Size>60</Size>
-  </Object>
-  <Object type="0x164b" id="Relief Goldfinch">
-    <DisplayId>Goldfinch</DisplayId>
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>60</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <WhileMoving>
-      <Z>0.35</Z>
-      <Flying />
-    </WhileMoving>
-    <Size>60</Size>
-  </Object>
-  <Object type="0x164c" id="Relief Bluebird">
-    <DisplayId>Bluebird</DisplayId>
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>61</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <WhileMoving>
-      <Z>0.35</Z>
-      <Flying />
-    </WhileMoving>
-    <Size>60</Size>
-  </Object>
-  <Object type="0x164d" id="Relief Cardinal">
-    <DisplayId>Cardinal</DisplayId>
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>62</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <WhileMoving>
-      <Z>0.35</Z>
-      <Flying />
-    </WhileMoving>
-    <Size>60</Size>
-  </Object>
-  <Object type="0x164e" id="Tamed Werewolf Cub">
-    <DisplayId>Tamed Werewolf Cub</DisplayId>
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>63</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x164f" id="Tomb Snake">
-    <DisplayId>Tomb Snake</DisplayId>
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>64</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1650" id="Ninja Cat">
-    <DisplayId>Ninja Cat</DisplayId>
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>65</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>60</Size>
-  </Object>
-  <Object type="0x1651" id="Praying Mantis">
-    <DisplayId>Praying Mantis</DisplayId>
-    <Class>Character</Class>
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>66</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>40</Size>
-  </Object>
   <Object type="0x27d" id="Mortomus Ball">
     <DisplayId>Mortomus Ball</DisplayId>
     <Class>Character</Class>
@@ -34632,16 +33800,6 @@
     <Size>0</Size>
     <XpMult>0.0</XpMult>
     <StasisImmune />
-  </Object>
-  <Object type="0x163f" id="Beach Ball">
-    <Class>Character</Class>
-    <Texture>
-      <File>invisible</File>
-      <Index>0</Index>
-    </Texture>
-    <NoMiniMap />
-    <ShadowSize>0</ShadowSize>
-    <Size>0</Size>
   </Object>
   <Object type="0x16aa" id="Ball">
     <Class>Character</Class>
@@ -50736,1443 +49894,6 @@
     <Soulbound />
     <Track />
   </Object>
-  <Object type="0xa004" id="Bdwubz Bee Generator">
-    <DisplayId>Bdwubz's Bee</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>26</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>Bdwubz's LMS custom pet.</Description>
-    <Sound>spell/light_heal</Sound>
-    <Activate objectId="Bdwubz Bee" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-    <InvUse />
-    <VaultItem />
-  </Object>
-  <Object type="0x1500" id="Black Cat Generator">
-    <DisplayId>Black Cat</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x00</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A cute and affectionate cat.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Black Cat" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1501" id="Grey Cat Generator">
-    <DisplayId>Grey Cat</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x01</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A cute and affectionate cat.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Grey Cat" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1502" id="Orange Cat Generator">
-    <DisplayId>Orange Cat</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x02</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A cute and affectionate cat.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Orange Cat" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1503" id="Tan Cat Generator">
-    <DisplayId>Tan Cat</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x02</Index>
-    </AnimatedTexture>
-    <Tex1>0x1ce9f32</Tex1>
-    <SlotType>10</SlotType>
-    <Description>A cute and affectionate cat.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Tan Cat" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1504" id="Yellow Cat Generator">
-    <DisplayId>Yellow Cat</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x02</Index>
-    </AnimatedTexture>
-    <Tex1>0x1cbc916</Tex1>
-    <SlotType>10</SlotType>
-    <Description>A cute and affectionate cat.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Yellow Cat" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1505" id="Brown Pup Generator">
-    <DisplayId>Brown Pup</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x05</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A loyal and friendly pup.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Brown Pup" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1506" id="Grey Pup Generator">
-    <DisplayId>Grey Pup</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x05</Index>
-    </AnimatedTexture>
-    <Tex1>0x1767676</Tex1>
-    <SlotType>10</SlotType>
-    <Description>A loyal and friendly pup.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Grey Pup" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1507" id="Golden Pup Generator">
-    <DisplayId>Golden Pup</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x05</Index>
-    </AnimatedTexture>
-    <Tex1>0x1ce9f32</Tex1>
-    <SlotType>10</SlotType>
-    <Description>A loyal and friendly pup.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Golden Pup" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1508" id="White Cat Generator">
-    <DisplayId>White Cat</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x00</Index>
-    </AnimatedTexture>
-    <Tex1>0x1ffffff</Tex1>
-    <SlotType>10</SlotType>
-    <Description>A cute and affectionate cat.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="White Cat" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1509" id="Blue Snail Generator">
-    <DisplayId>Blue Snail</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x03</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A slimy but lovable snail.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Blue Snail" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x150a" id="Grey Wolf Generator">
-    <DisplayId>Grey Wolf</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x04</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A brave, majestic wolf.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Grey Wolf" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x150b" id="Brown Fox Generator">
-    <DisplayId>Brown Fox</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x06</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A quick and cunning fox.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Brown Fox" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x150c" id="Green Frog Generator">
-    <DisplayId>Green Frog</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x07</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A cute little frog.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Green Frog" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x150d" id="Lion Generator">
-    <DisplayId>Lion</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x08</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A fierce but friendly lion.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Lion" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x150e" id="Penguin Generator">
-    <DisplayId>Penguin</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x09</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A cute little penguin.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Penguin" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x150f" id="Sheepdog Generator">
-    <DisplayId>Sheepdog</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x0a</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A brave and protective sheepdog.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Sheepdog" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1510" id="Panda Generator">
-    <DisplayId>Panda</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x0b</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A rare, beautiful panda.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Panda" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1511" id="Purple Snail Generator">
-    <DisplayId>Purple Snail</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x03</Index>
-    </AnimatedTexture>
-    <Tex2>0x19829f6</Tex2>
-    <SlotType>10</SlotType>
-    <Description>A slimy but lovable snail.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Purple Snail" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1512" id="Black Wolf Generator">
-    <DisplayId>Black Wolf</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x04</Index>
-    </AnimatedTexture>
-    <Tex1>0x1333333</Tex1>
-    <Tex2>0x1ff0000</Tex2>
-    <SlotType>10</SlotType>
-    <Description>A brave, majestic wolf.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Black Wolf" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1513" id="Grey Fox Generator">
-    <DisplayId>Grey Fox</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x06</Index>
-    </AnimatedTexture>
-    <Tex1>0x1808080</Tex1>
-    <SlotType>10</SlotType>
-    <Description>A quick and cunning fox.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Grey Fox" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1514" id="Purple Frog Generator">
-    <DisplayId>Purple Frog</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x07</Index>
-    </AnimatedTexture>
-    <Tex1>0x19829f6</Tex1>
-    <SlotType>10</SlotType>
-    <Description>A cute little frog.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Purple Frog" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1515" id="White Lion Generator">
-    <DisplayId>White Lion</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x08</Index>
-    </AnimatedTexture>
-    <Tex1>0x1d0d0d0</Tex1>
-    <SlotType>10</SlotType>
-    <Description>A fierce but friendly lion.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="White Lion" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1516" id="Green Penguin Generator">
-    <DisplayId>Green Penguin</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x09</Index>
-    </AnimatedTexture>
-    <Tex1>0x1005302</Tex1>
-    <SlotType>10</SlotType>
-    <Description>A cute little penguin.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Green Penguin" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1517" id="Golden Sheepdog Generator">
-    <DisplayId>Golden Sheepdog</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x0a</Index>
-    </AnimatedTexture>
-    <Tex1>0x1cf9700</Tex1>
-    <SlotType>10</SlotType>
-    <Description>A brave and protective sheepdog.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Golden Sheepdog" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1518" id="Bluebird Generator">
-    <DisplayId>Bluebird</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x0c</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A sweet bluebird.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Bluebird" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1519" id="Chick Generator">
-    <DisplayId>Chick</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x0d</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A curious young chicken.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Chick" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x151a" id="Pig Generator">
-    <DisplayId>Pig</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x0e</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A hungry piglet.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Pig" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x151b" id="Sea Slurp Generator">
-    <DisplayId>Sea Slurp</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>0x0f</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A tame sea slurp.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Sea Slurp" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x151c" id="Squirrel Generator">
-    <DisplayId>Squirrel</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>18</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A woodland classic.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Squirrel" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x151d" id="Bat Generator">
-    <DisplayId>Bat</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>lofiChar28x8</File>
-      <Index>0x18</Index>
-    </Texture>
-    <SlotType>10</SlotType>
-    <Description>A little bat.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Bat" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x151e" id="Lil' Ghost Generator">
-    <DisplayId>Lil' Ghost</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>16</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A passive little spirit.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Lil' Ghost" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x151f" id="Valentine Generator">
-    <DisplayId>Valentine</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>lofiChar28x8</File>
-      <Index>0x1a</Index>
-    </Texture>
-    <SlotType>10</SlotType>
-    <Description>Give this valentine to a friend!</Description>
-    <Sound>spell/light_heal</Sound>
-    <Consumable />
-    <Activate objectId="Valentine" cooldown="10" removeSelf="false">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1520" id="Leprechaun Generator">
-    <DisplayId>Leprechaun</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>17</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>It's a little Leprechaun. Happy Saint Patrick's Day!!!</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Leprechaun" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1521" id="Lil' Oryx Generator">
-    <DisplayId>Lil' Oryx</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>lofiObj2</File>
-      <Index>0x5e</Index>
-    </Texture>
-    <SlotType>10</SlotType>
-    <Description>Every evil boss creates miniature versions of himself.  It's just something they do.</Description>
-    <Sound>spell/light_heal</Sound>
-    <Consumable />
-    <Soulbound />
-    <Activate objectId="Lil' Oryx" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1522" id="Toucan Generator">
-    <DisplayId>Toucan</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>19</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>An exotic bird with a large colorful bill.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Toucan" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1523" id="Skunk Generator">
-    <DisplayId>Skunk</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>20</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>Adorable, but watch out for the smell!</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Skunk" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1524" id="Mallard Generator">
-    <DisplayId>Mallard</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>21</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A handsome wild duck.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Mallard" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1525" id="Duck Generator">
-    <DisplayId>Duck</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>22</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A brilliant yellow duck.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Duck" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1526" id="Eagle Generator">
-    <DisplayId>Eagle</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>23</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>The majestic king of the skies.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Eagle" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1527" id="Turtle Generator">
-    <DisplayId>Turtle</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>24</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>An adorable little Turtle.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Turtle" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1528" id="Jelly Generator">
-    <DisplayId>Jelly</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>25</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A jelly buddy!</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Jelly" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1529" id="Bee Generator">
-    <DisplayId>Bee</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>26</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A friendly honey bee.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Bee" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x152a" id="Raven Generator">
-    <DisplayId>Raven</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>28</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>An ominous black bird.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Raven" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x152b" id="Purple Penguin Generator">
-    <DisplayId>Purple Penguin</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>29</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A cute little penguin.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Purple Penguin" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x152c" id="Grass Penguin Generator">
-    <DisplayId>Grass Penguin</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>30</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A cute little penguin.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Grass Penguin" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x152d" id="Elf Generator">
-    <DisplayId>Elf</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>31</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>Your little helper.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Elf" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x152e" id="Crab Generator">
-    <DisplayId>Crab</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>32</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>Your little helper.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Crab" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x152f" id="Hamster Generator">
-    <DisplayId>Hamster</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>33</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A hamster in a ball!</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Hamster" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1530" id="Dino Generator">
-    <DisplayId>Dino</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>34</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A ferocious predator from the past.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Dino" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1531" id="Elephant Generator">
-    <DisplayId>Elephant</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>35</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>The smallest elephant in the world.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Elephant" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1532" id="Demon Frog Generator">
-    <DisplayId>Demon Frog</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>36</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>An amphibian from the abyss.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Demon Frog" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1533" id="Gargoyle Generator">
-    <DisplayId>Gargoyle</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>37</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>Carved of living stone.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Gargoyle" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1534" id="Gummy Bear Generator">
-    <DisplayId>Gummy Bear</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>38</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A gummy buddy. NOT FOR EATING!!!</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Gummy Bear" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1535" id="Dragonfly Generator">
-    <DisplayId>Dragonfly</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>39</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A symbol of strength and courage.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Dragonfly" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1536" id="Lil' Cyclops Generator">
-    <DisplayId>Cyclops</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>42</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A one eyed monster.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Lil' Cyclops" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1537" id="Snowy Owl Generator">
-    <DisplayId>Snowy Owl</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>43</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A beautiful white owl.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Snowy Owl" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1538" id="Turkey Generator">
-    <DisplayId>Turkey</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>44</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A turkey for turkey day!</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Turkey" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1539" id="Baby Generator">
-    <DisplayId>Baby</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>45</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>Take good care of him!</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Baby" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x153a" id="Baby Dragon Generator">
-    <DisplayId>Baby Dragon</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>46</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A baby dragon.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Baby Dragon" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x153b" id="Karate Penguin Red Generator">
-    <DisplayId>Karate Penguin</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>47</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A special penguin trained in the martial arts.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Karate Penguin Red" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x153c" id="Karate Penguin Blue Generator">
-    <DisplayId>Karate Penguin</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>48</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A special penguin trained in the martial arts.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Karate Penguin Blue" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x153d" id="Karate Penguin Yellow Generator">
-    <DisplayId>Karate Penguin</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>49</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A special penguin trained in the martial arts.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Karate Penguin Yellow" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x153e" id="Karate Penguin Purple Generator">
-    <DisplayId>Karate Penguin</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>50</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A special penguin trained in the martial arts.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Karate Penguin Purple" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x153f" id="Beach Ball Generator">
-    <DisplayId>Beach Ball</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>lofiObj3</File>
-      <Index>0x193</Index>
-    </Texture>
-    <SlotType>10</SlotType>
-    <Description>Play with this ball on the beach! (Requires a buddy!)</Description>
-    <BagType>2</BagType>
-    <InvUse />
-    <Activate objectId="Beach Ball" cooldown="1" hideEffect="true">PermaPet</Activate>
-    <Soulbound />
-  </Object>
-  <Object type="0x1540" id="Robobuddy Generator">
-    <DisplayId>Robobuddy</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>51</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A technological marvel.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Robobuddy" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1541" id="Snowman Generator">
-    <DisplayId>Snowman</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>52</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A living snowman!</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Snowman" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1542" id="Black Ant Generator">
-    <DisplayId>Black Ant</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>53</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>Your very own pet ant!</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Black Ant" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1543" id="Blue Ant Generator">
-    <DisplayId>Blue Ant</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>54</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>Your very own pet ant!</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Blue Ant" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1544" id="Green Ant Generator">
-    <DisplayId>Green Ant</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>55</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>Your very own pet ant!</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Green Ant" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1545" id="Red Ant Generator">
-    <DisplayId>Red Ant</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>56</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>Your very own pet ant!</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Red Ant" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1546" id="Purple Ant Generator">
-    <DisplayId>Purple Ant</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>57</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>Your very own pet ant!</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Purple Ant" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1547" id="Beer Slurp Generator">
-    <DisplayId>Beer Slurp</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>lofiObj3</File>
-      <Index>0x244</Index>
-    </Texture>
-    <SlotType>10</SlotType>
-    <Description>This special sea slurp is trained to seek out the elusive Beer God.</Description>
-    <Sound>spell/fire_spray</Sound>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Helps locate Beer Gods in the Realm" />
-    </ExtraTooltipData>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Beer Slurp" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x15aa" id="Ball Generator">
-    <DisplayId>Beach Ball</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>lofiObj3</File>
-      <Index>0x193</Index>
-    </Texture>
-    <SlotType>10</SlotType>
-    <Description>TEST FOR: ObjectToss</Description>
-    <BagType>2</BagType>
-    <InvUse />
-    <Activate objectId="Ball" cooldown="1" hideEffect="true">PermaPet</Activate>
-    <Soulbound />
-  </Object>
-  <Object type="0x1549" id="Peppermint Snail Generator">
-    <DisplayId>Peppermint Snail</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>58</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>Tamed wildlife from the Candyland Hunting Grounds.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Peppermint Snail" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x154a" id="Relief Oriole Generator">
-    <DisplayId>Oriole</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>59</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>This limited-edition bird will keep you company on all of your adventures. Proceeds go to help the victims of Hurricane Sandy.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Relief Oriole" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x154b" id="Relief Goldfinch Generator">
-    <DisplayId>Goldfinch</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>60</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>This limited-edition bird will keep you company on all of your adventures. Proceeds go to help the victims of Hurricane Sandy.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Relief Goldfinch" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x154c" id="Relief Bluebird Generator">
-    <DisplayId>Bluebird</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>61</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>This limited-edition bird will keep you company on all of your adventures. Proceeds go to help the victims of Hurricane Sandy.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Relief Bluebird" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x154d" id="Relief Cardinal Generator">
-    <DisplayId>Cardinal</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>62</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>This limited-edition bird will keep you company on all of your adventures. Proceeds go to help the victims of Hurricane Sandy.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Relief Cardinal" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x154e" id="Tamed Werewolf Cub Generator">
-    <DisplayId>Tamed Werewolf Cub</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>63</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>An adorable, yet horrific abomination!</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Tamed Werewolf Cub" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x154f" id="Tomb Snake Generator">
-    <DisplayId>Tomb Snake</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>64</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A serpent from the egyptian tombs.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Tomb Snake" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1550" id="Ninja Cat Generator">
-    <DisplayId>Ninja Cat</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>65</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A stealthy feline.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Ninja Cat" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1551" id="Praying Mantis Generator">
-    <DisplayId>Praying Mantis</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>66</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>An elegant and noble insect.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Praying Mantis" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
-  <Object type="0x1552" id="Dreidel Generator">
-    <DisplayId>Dreidel</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <AnimatedTexture>
-      <File>chars8x8rPets1</File>
-      <Index>67</Index>
-    </AnimatedTexture>
-    <SlotType>10</SlotType>
-    <Description>A spinning top pet to help you celebrate the holidays.</Description>
-    <Sound>spell/light_heal</Sound>
-    <InvUse />
-    <VaultItem />
-    <Soulbound />
-    <Activate objectId="Dreidel" cooldown="10">PermaPet</Activate>
-    <OldSound>use_potion</OldSound>
-  </Object>
   <Object type="0x498e" id="Magic Dust">
     <Class>Equipment</Class>
     <Item />
@@ -52868,13 +50589,13 @@
     </Texture>
     <SlotType>3</SlotType>
     <Description>A deadly repeater crossbow and a marvel of craftsmanship. This mechanical weapon is efficient, but carries additional weight.</Description>
-    <RateOfFire>1.5</RateOfFire>
+    <RateOfFire>1.2</RateOfFire>
     <Sound>weapon/heavy_crossbow</Sound>
     <Projectile>
       <ObjectId>Thousand Shot Arrow</ObjectId>
       <Speed>165</Speed>
-      <MinDamage>170</MinDamage>
-      <MaxDamage>180</MaxDamage>
+      <MinDamage>400</MinDamage>
+      <MaxDamage>450</MaxDamage>
       <LifetimeMS>460</LifetimeMS>
       <MultiHit />
     </Projectile>
@@ -52898,14 +50619,14 @@
     <Description>
 			Every shot that hits a target frees the soul of a forgotten hero. Every shot that misses is trapped for eternity.
 		</Description>
-    <RateOfFire>.95</RateOfFire>
+    <RateOfFire>1.10</RateOfFire>
     <Sound>weapon/golden_bow</Sound>
     <Projectile>
       <ObjectId>Void Arrow</ObjectId>
       <Speed>200</Speed>
-      <MinDamage>290</MinDamage>
-      <MaxDamage>300</MaxDamage>
-      <LifetimeMS>300</LifetimeMS>
+      <MinDamage>445</MinDamage>
+      <MaxDamage>495</MaxDamage>
+      <LifetimeMS>315</LifetimeMS>
       <MultiHit />
       <Amplitude>0.35</Amplitude>
       <Frequency>0.2</Frequency>
@@ -52928,18 +50649,19 @@
     <SlotType>3</SlotType>
     <Legendary />
     <Description>“The legendary firearm forged from hard steel and pirate blood containing mighty power.”</Description>
-    <RateOfFire>0.25</RateOfFire>
+    <RateOfFire>1.05</RateOfFire>
     <Sound>weapon/poor_quality_bow</Sound>
     <Projectile>
       <ObjectId>Giant Cannonball2</ObjectId>
       <Speed>150</Speed>
-      <MinDamage>750</MinDamage>
-      <MaxDamage>1600</MaxDamage>
+      <MinDamage>115</MinDamage>
+      <MaxDamage>155</MaxDamage>
       <LifetimeMS>500</LifetimeMS>
-      <Size>150</Size>
+      <Size>125</Size>
+      <Wavy />
       <ArmorPiercing />
     </Projectile>
-    <NumProjectiles>1</NumProjectiles>
+    <NumProjectiles>4</NumProjectiles>
     <ArcGap>5</ArcGap>
     <ActivateOnEquip stat="21" amount="5">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
@@ -52957,13 +50679,13 @@
     <SlotType>3</SlotType>
     <Legendary />
     <Description>Once the prideful weapon of Nut. It was ultimately stored in her tomb as no other adventure could pull back the drawstring.</Description>
-    <RateOfFire>1.1</RateOfFire>
+    <RateOfFire>.9</RateOfFire>
     <Sound>weapon/poor_quality_bow</Sound>
     <Projectile>
       <ObjectId>Bow of the Havens Shot</ObjectId>
       <Speed>159.5</Speed>
-      <MinDamage>100</MinDamage>
-      <MaxDamage>115</MaxDamage>
+      <MinDamage>290</MinDamage>
+      <MaxDamage>305</MaxDamage>
       <LifetimeMS>439</LifetimeMS>
       <Frequency>1</Frequency>
       <Size>100</Size>
@@ -52988,21 +50710,22 @@
     <Legendary />
     <SlotType>3</SlotType>
     <Description>The drawstring on this make-shift bow was not designed to notch traditional arrows. Rather, it launches high velocity bones.</Description>
-    <RateOfFire>.80</RateOfFire>
+    <RateOfFire>1</RateOfFire>
     <Sound>weapon/poor_quality_bow</Sound>
     <Projectile>
       <ObjectId>Fang Flinger Shoot</ObjectId>
       <Speed>155</Speed>
-      <MinDamage>170</MinDamage>
-      <MaxDamage>290</MaxDamage>
+      <MinDamage>280</MinDamage>
+      <MaxDamage>300</MaxDamage>
       <LifetimeMS>452</LifetimeMS>
-      <Amplitude>0.5</Amplitude>
+      <Amplitude>0.45</Amplitude>
       <Frequency>2</Frequency>
       <Size>100</Size>
+      <ArmorPiercing />
       <MultiHit />
     </Projectile>
     <NumProjectiles>2</NumProjectiles>
-    <ArcGap>12</ArcGap>
+    <ArcGap>4</ArcGap>
     <ActivateOnEquip stat="22" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="-3">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
@@ -53020,13 +50743,13 @@
     <Eternal />
     <SlotType>3</SlotType>
     <Description>Empowered with the element of wind, each shot is as light as a feather and shoots as fast as the speed of sound.</Description>
-    <RateOfFire>1</RateOfFire>
+    <RateOfFire>1.05</RateOfFire>
     <Sound>weapon/poor_quality_bow</Sound>
     <Projectile>
       <ObjectId>Wind Elemental Bow Shoot</ObjectId>
       <Speed>200</Speed>
-      <MinDamage>85</MinDamage>
-      <MaxDamage>130</MaxDamage>
+      <MinDamage>165</MinDamage>
+      <MaxDamage>215</MaxDamage>
       <LifetimeMS>350</LifetimeMS>
       <Amplitude>0.3</Amplitude>
       <Frequency>1.13</Frequency>
@@ -54097,14 +51820,14 @@
     </Texture>
     <SlotType>2</SlotType>
     <Description>This legendary dagger was commissioned by a band of mad rogues to prove the worth of the Dirk.</Description>
-    <RateOfFire>.9</RateOfFire>
+    <RateOfFire>1.10</RateOfFire>
     <Sound>weapon/fire_dagger</Sound>
     <Projectile>
       <ObjectId>Rainbow Magic</ObjectId>
       <Speed>180</Speed>
-      <MinDamage>160</MinDamage>
-      <MaxDamage>260</MaxDamage>
-      <LifetimeMS>350</LifetimeMS>
+      <MinDamage>335</MinDamage>
+      <MaxDamage>435</MaxDamage>
+      <LifetimeMS>322</LifetimeMS>
       <PassesCover />
     </Projectile>
     <ActivateOnEquip stat="3" amount="50">IncrementStat</ActivateOnEquip>
@@ -54125,14 +51848,14 @@
     </Texture>
     <SlotType>2</SlotType>
     <Description>A dagger that was condemned to Davy Jones' Locker.</Description>
-    <RateOfFire>.9</RateOfFire>
+    <RateOfFire>1.15</RateOfFire>
     <Sound>weapon/dirk</Sound>
     <Projectile>
       <ObjectId>Spirit Dagger Slash</ObjectId>
       <Speed>130</Speed>
-      <MinDamage>10</MinDamage>
-      <MaxDamage>370</MaxDamage>
-      <LifetimeMS>423</LifetimeMS>
+      <MinDamage>160</MinDamage>
+      <MaxDamage>510</MaxDamage>
+      <LifetimeMS>427</LifetimeMS>
       <Amplitude>0.2</Amplitude>
       <Frequency>0.2</Frequency>
     </Projectile>
@@ -54158,11 +51881,12 @@
     <Projectile>
       <ObjectId>Melted Shrine Shoot</ObjectId>
       <Speed>180</Speed>
-      <MinDamage>140</MinDamage>
-      <MaxDamage>190</MaxDamage>
+      <MinDamage>180</MinDamage>
+      <MaxDamage>230</MaxDamage>
       <LifetimeMS>305</LifetimeMS>
       <MultiHit />
     </Projectile>
+    <NumProjectiles>2</NumProjectiles>
     <ActivateOnEquip stat="26" amount="4">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>7</FameBonus>
@@ -54179,13 +51903,13 @@
     <Legendary />
     <SlotType>2</SlotType>
     <Description>Sharp bone from Malphas' spine was refined into a dagger for the sole purpose of slaying demons.</Description>
-    <RateOfFire>0.8</RateOfFire>
+    <RateOfFire>1.25</RateOfFire>
     <Sound>weapon/fire_dagger</Sound>
     <Projectile>
       <ObjectId>Malphas Bone Shot</ObjectId>
       <Speed>180</Speed>
-      <MinDamage>210</MinDamage>
-      <MaxDamage>365</MaxDamage>
+      <MinDamage>250</MinDamage>
+      <MaxDamage>405</MaxDamage>
       <LifetimeMS>295</LifetimeMS>
       <Size>100</Size>
       <MultiHit />
@@ -54209,18 +51933,18 @@
     <Legendary />
     <SlotType>2</SlotType>
     <Description>Such a large and cumbersome dagger could almost be confused with a great sword. Who would possibly be foolish enough to brandish it…?</Description>
-    <RateOfFire>0.4</RateOfFire>
+    <RateOfFire>0.75</RateOfFire>
     <Sound>weapon/blunt_dagger</Sound>
     <Projectile>
       <ObjectId>Titan Slayer Shoot</ObjectId>
       <Speed>120</Speed>
-      <MinDamage>500</MinDamage>
-      <MaxDamage>575</MaxDamage>
+      <MinDamage>545</MinDamage>
+      <MaxDamage>640</MaxDamage>
       <LifetimeMS>650</LifetimeMS>
       <Amplitude>0.25</Amplitude>
       <Frequency>1</Frequency>
       <FaceDir />
-      <PassesCover />
+      <MultiHit />
       <Size>110</Size>
     </Projectile>
     <NumProjectiles>1</NumProjectiles>
@@ -54243,13 +51967,13 @@
     <Legendary />
     <SlotType>2</SlotType>
     <Description>A crude dagger consisting of a shard of the Realm's Crystal with a handle of cloth. Despite it's makeshift nature, it is immensely deadly.</Description>
-    <RateOfFire>.9</RateOfFire>
+    <RateOfFire>1.20</RateOfFire>
     <Sound>weapon/blunt_dagger</Sound>
     <Projectile>
       <ObjectId>Refraction Cutter Shoot</ObjectId>
       <Speed>206</Speed>
-      <MinDamage>220</MinDamage>
-      <MaxDamage>320</MaxDamage>
+      <MinDamage>340</MinDamage>
+      <MaxDamage>440</MaxDamage>
       <LifetimeMS>495</LifetimeMS>
       <Amplitude>0.3</Amplitude>
       <Frequency>1</Frequency>
@@ -54275,13 +51999,13 @@
     <Eternal />
     <SlotType>2</SlotType>
     <Description>Mysterious forces grant the control over the element of water, proving effective in fluid, unpredictable attacks.</Description>
-    <RateOfFire>.85</RateOfFire>
+    <RateOfFire>1.20</RateOfFire>
     <Sound>weapon/blunt_dagger</Sound>
     <Projectile>
       <ObjectId>Tide Shoot</ObjectId>
       <Speed>200</Speed>
-      <MinDamage>200</MinDamage>
-      <MaxDamage>210</MaxDamage>
+      <MinDamage>340</MinDamage>
+      <MaxDamage>440</MaxDamage>
       <LifetimeMS>310</LifetimeMS>
       <Amplitude>0.58</Amplitude>
       <Frequency>0.52</Frequency>
@@ -56378,13 +54102,13 @@
     </Texture>
     <SlotType>24</SlotType>
     <Description>A great katana charged with the power of the sun itself.</Description>
-    <RateOfFire>1.30</RateOfFire>
+    <RateOfFire>1.25</RateOfFire>
     <Sound>weapon/long_sword</Sound>
     <Projectile>
       <ObjectId>Beam Slash</ObjectId>
       <Speed>180</Speed>
-      <MinDamage>210</MinDamage>
-      <MaxDamage>210</MaxDamage>
+      <MinDamage>320</MinDamage>
+      <MaxDamage>320</MaxDamage>
       <LifetimeMS>361</LifetimeMS>
       <MultiHit />
       <ArmorPiercing />
@@ -56410,9 +54134,9 @@
     <Projectile id="0">
       <ObjectId>Poison Katana Slash</ObjectId>
       <Speed>129.5</Speed>
-      <MinDamage>220</MinDamage>
-      <MaxDamage>270</MaxDamage>
-      <LifetimeMS>363</LifetimeMS>
+      <MinDamage>275</MinDamage>
+      <MaxDamage>375</MaxDamage>
+      <LifetimeMS>411</LifetimeMS>
       <Amplitude>0.5</Amplitude>
       <Frequency>1</Frequency>
       <Size>90</Size>
@@ -56433,14 +54157,14 @@
     </Texture>
     <SlotType>24</SlotType>
     <Description>ABlood-drenched from endless slaughter. Any that dare to wield will surely be overcome with indefinite bloodlust.</Description>
-    <RateOfFire>1.15</RateOfFire>
+    <RateOfFire>1.20</RateOfFire>
     <Sound>weapon/long_sword</Sound>
     <Legendary />
     <Projectile>
       <ObjectId>Katana Shoot</ObjectId>
       <Speed>147.5</Speed>
-      <MinDamage>255</MinDamage>
-      <MaxDamage>290</MaxDamage>
+      <MinDamage>355</MinDamage>
+      <MaxDamage>395</MaxDamage>
       <LifetimeMS>346</LifetimeMS>
       <MultiHit />
     </Projectile>
@@ -56460,13 +54184,13 @@
     </Texture>
     <SlotType>24</SlotType>
     <Description>Overpowering feelings of righteousness radiate from this katana's shine. An embodiment of the Way of The Samurai.</Description>
-    <RateOfFire>1</RateOfFire>
+    <RateOfFire>1.05</RateOfFire>
     <Sound>weapon/long_sword</Sound>
     <Projectile>
       <ObjectId>Lodius Shoot</ObjectId>
       <Speed>154</Speed>
-      <MinDamage>100</MinDamage>
-      <MaxDamage>195</MaxDamage>
+      <MinDamage>170</MinDamage>
+      <MaxDamage>280</MaxDamage>
       <LifetimeMS>344</LifetimeMS>
       <Amplitude>.25</Amplitude>
       <Frequency>1.75</Frequency>
@@ -56515,13 +54239,13 @@
     <Eternal />
     <SlotType>24</SlotType>
     <Description>A katana formed from the pressurized windstorms released from the element of wind.</Description>
-    <RateOfFire>1.1</RateOfFire>
+    <RateOfFire>1.2</RateOfFire>
     <Sound>weapon/blunt_sword</Sound>
     <Projectile>
       <ObjectId>Wind Elemental Katana Shoot</ObjectId>
       <Speed>300</Speed>
-      <MinDamage>140</MinDamage>
-      <MaxDamage>195</MaxDamage>
+      <MinDamage>170</MinDamage>
+      <MaxDamage>230</MaxDamage>
       <LifetimeMS>190</LifetimeMS>
       <Frequency>1</Frequency>
       <Size>100</Size>
@@ -62524,20 +60248,21 @@
     </Texture>
     <SlotType>17</SlotType>
     <Description>Ripped from the remains of the King's Avatar. It is oddly smaller than the rest of the corpse.</Description>
-    <RateOfFire>1.20</RateOfFire>
+    <RateOfFire>1.25</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
       <ObjectId>Ashen Spine Shoot</ObjectId>
       <Speed>150</Speed>
-      <MinDamage>95</MinDamage>
-      <MaxDamage>100</MaxDamage>
+      <MinDamage>160</MinDamage>
+      <MaxDamage>210</MaxDamage>
       <LifetimeMS>400</LifetimeMS>
-      <Frequency>0.95</Frequency>
-      <Amplitude>1.25</Amplitude>
+      <Frequency>1.1</Frequency>
+      <Amplitude>0.55</Amplitude>
       <Size>80</Size>
       <ActivateOnEquip stat="22" amount="-3">IncrementStat</ActivateOnEquip>
+      <ArmorPiercing />
     </Projectile>
-    <NumProjectiles>3</NumProjectiles>
+    <NumProjectiles>2</NumProjectiles>
     <ArcGap>5</ArcGap>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
@@ -62559,13 +60284,13 @@
     <ExtraTooltipData>
       <EffectInfo name="" description="Shoots backwards" />
     </ExtraTooltipData>
-    <RateOfFire>0.50</RateOfFire>
+    <RateOfFire>0.60</RateOfFire>
     <Projectile>
       <ObjectId>Cultist Fire Shot</ObjectId>
       <Size>70</Size>
       <Speed>115</Speed>
-      <MinDamage>155</MinDamage>
-      <MaxDamage>200</MaxDamage>
+      <MinDamage>180</MinDamage>
+      <MaxDamage>225</MaxDamage>
       <LifetimeMS>700</LifetimeMS>
       <MultiHit />
     </Projectile>
@@ -62588,14 +60313,14 @@
     <Legendary />
     <SlotType>17</SlotType>
     <Description>An ancient staff used both for sacrifice and communion with the gods.</Description>
-    <RateOfFire>0.95</RateOfFire>
+    <RateOfFire>1.05</RateOfFire>
     <Sound>monster/djinn_hit</Sound>
     <Projectile>
       <ObjectId>Plasma Missile</ObjectId>
       <Speed>110</Speed>
       <Size>120</Size>
-      <MinDamage>75</MinDamage>
-      <MaxDamage>110</MaxDamage>
+      <MinDamage>110</MinDamage>
+      <MaxDamage>165</MaxDamage>
       <Wavy />
       <LifetimeMS>550</LifetimeMS>
       <Amplitude>0.2</Amplitude>
@@ -62603,8 +60328,8 @@
     </Projectile>
     <BagType>7</BagType>
     <FameBonus>8</FameBonus>
-    <NumProjectiles>5</NumProjectiles>
-    <ArcGap>10</ArcGap>
+    <NumProjectiles>3</NumProjectiles>
+    <ArcGap>6</ArcGap>
     <OldSound>magicShoot</OldSound>
   </Object>
   <Object type="0x5151" id="Neptune's Trident">
@@ -62618,16 +60343,16 @@
     <Legendary />
     <SlotType>17</SlotType>
     <Description>“Just keep swimming. Just keep swimming, swimming, swimming.”</Description>
-    <RateOfFire>1</RateOfFire>
+    <RateOfFire>1.15</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
       <ObjectId>Thessal Slayer Shot</ObjectId>
       <Speed>150</Speed>
-      <MinDamage>90</MinDamage>
-      <MaxDamage>145</MaxDamage>
+      <MinDamage>165</MinDamage>
+      <MaxDamage>220</MaxDamage>
       <LifetimeMS>500</LifetimeMS>
       <Amplitude>0.55</Amplitude>
-      <Frequency>2</Frequency>
+      <Frequency>-2</Frequency>
       <Size>100</Size>
       <MultiHit />
     </Projectile>
@@ -62681,13 +60406,13 @@
     </Texture>
     <SlotType>17</SlotType>
     <Description>Harvest the souls of adversaries as a reincarnate of Death.</Description>
-    <RateOfFire>.65</RateOfFire>
+    <RateOfFire>.90</RateOfFire>
     <Sound>weapon/mithril_sword</Sound>
     <Projectile>
       <ObjectId>Scythe of the Reaper Shoot</ObjectId>
       <Speed>170</Speed>
-      <MinDamage>100</MinDamage>
-      <MaxDamage>205</MaxDamage>
+      <MinDamage>130</MinDamage>
+      <MaxDamage>240</MaxDamage>
       <LifetimeMS>353</LifetimeMS>
       <Frequency>0.72</Frequency>
       <Amplitude>0.6</Amplitude>
@@ -62715,13 +60440,13 @@
     <Eternal />
     <SlotType>17</SlotType>
     <Description>Incredible power capable of incinerating everything in sight. But, with the extreme heat that rapidly pours out, extra steps of caution must be implemented to avoid severe burns.</Description>
-    <RateOfFire>.75</RateOfFire>
+    <RateOfFire>.95</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
       <ObjectId>Fire Elemental Staff Shoot</ObjectId>
       <Speed>180</Speed>
-      <MinDamage>210</MinDamage>
-      <MaxDamage>255</MaxDamage>
+      <MinDamage>230</MinDamage>
+      <MaxDamage>300</MaxDamage>
       <LifetimeMS>475</LifetimeMS>
       <Amplitude>0.35</Amplitude>
       <Frequency>2.49</Frequency>
@@ -64091,14 +61816,14 @@
     </Texture>
     <SlotType>1</SlotType>
     <Description>A slow but powerful sword that is a relic of a long forgotten age.</Description>
-    <RateOfFire>0.6</RateOfFire>
+    <RateOfFire>0.85</RateOfFire>
     <Sound>weapon/glass_sword</Sound>
     <Projectile>
       <ObjectId>Stone Slash</ObjectId>
       <Speed>120</Speed>
-      <MinDamage>450</MinDamage>
-      <MaxDamage>550</MaxDamage>
-      <LifetimeMS>300</LifetimeMS>
+      <MinDamage>525</MinDamage>
+      <MaxDamage>625</MaxDamage>
+      <LifetimeMS>333</LifetimeMS>
     </Projectile>
     <BagType>7</BagType>
     <FameBonus>4</FameBonus>
@@ -64152,15 +61877,15 @@
     <Description>
 			A sword with an impossibly sharp edge. It has been designed with holy magic to slash like no other blade.
 		</Description>
-    <RateOfFire>1.05</RateOfFire>
+    <RateOfFire>1.20</RateOfFire>
     <Sound>weapon/golden_bow</Sound>
     <Projectile>
       <ObjectId>Colossus Slash</ObjectId>
       <Speed>125</Speed>
-      <MinDamage>360</MinDamage>
-      <MaxDamage>400</MaxDamage>
-      <LifetimeMS>360</LifetimeMS>
-      <Amplitude>0.7</Amplitude>
+      <MinDamage>400</MinDamage>
+      <MaxDamage>450</MaxDamage>
+      <LifetimeMS>400</LifetimeMS>
+      <Amplitude>0.8</Amplitude>
       <Frequency>0.5</Frequency>
       <FaceDir />
     </Projectile>
@@ -64182,13 +61907,13 @@
     <SlotType>1</SlotType>
     <Legendary />
     <Description>“Cowards die many times before their deaths; The valiant never taste of death but once.”</Description>
-    <RateOfFire>0.5</RateOfFire>
+    <RateOfFire>0.6</RateOfFire>
     <Sound>weapon/mithril_sword</Sound>
     <Projectile>
       <ObjectId>Thiram Shot</ObjectId>
       <Speed>100</Speed>
-      <MinDamage>666</MinDamage>
-      <MaxDamage>666</MaxDamage>
+      <MinDamage>900</MinDamage>
+      <MaxDamage>900</MaxDamage>
       <LifetimeMS>750</LifetimeMS>
       <Frequency>1</Frequency>
       <Amplitude>0.2</Amplitude>
@@ -64212,13 +61937,13 @@
     <SlotType>1</SlotType>
     <Legendary />
     <Description>The original blade used by The Bridge Sentinel during The Shatter's age of ruin. Countless forces in pursuit of treasure were felled by this blade, effortlessly.</Description>
-    <RateOfFire>1</RateOfFire>
+    <RateOfFire>1.10</RateOfFire>
     <Sound>weapon/mithril_sword</Sound>
     <Projectile>
       <ObjectId>Blade of the Protector Shoot</ObjectId>
       <Speed>140</Speed>
-      <MinDamage>130</MinDamage>
-      <MaxDamage>160</MaxDamage>
+      <MinDamage>160</MinDamage>
+      <MaxDamage>210</MaxDamage>
       <LifetimeMS>336</LifetimeMS>
       <Frequency>0</Frequency>
       <Size>95</Size>
@@ -64243,14 +61968,14 @@
     <SlotType>1</SlotType>
     <Legendary />
     <Description>“They will know fear.”</Description>
-    <RateOfFire>1</RateOfFire>
+    <RateOfFire>1.10</RateOfFire>
     <Sound>weapon/mithril_sword</Sound>
     <Projectile>
       <ObjectId>Horn Breaker Shot</ObjectId>
       <Speed>125</Speed>
-      <MinDamage>355</MinDamage>
-      <MaxDamage>375</MaxDamage>
-      <LifetimeMS>340</LifetimeMS>
+      <MinDamage>450</MinDamage>
+      <MaxDamage>500</MaxDamage>
+      <LifetimeMS>400</LifetimeMS>
       <Frequency>1</Frequency>
       <Size>80</Size>
       <ArmorPiercing />
@@ -64274,15 +61999,15 @@
     <SlotType>1</SlotType>
     <Legendary />
     <Description>No longer a tribute to RotF</Description>
-    <RateOfFire>.45</RateOfFire>
+    <RateOfFire>.70</RateOfFire>
     <Sound>weapon/mithril_sword</Sound>
     <Projectile>
       <ObjectId>Possessed Halberd Shot</ObjectId>
       <Speed>75</Speed>
-      <MinDamage>425</MinDamage>
+      <MinDamage>666</MinDamage>
       <ParticleTrail lifetimeMS="300">0x7E3F00</ParticleTrail>
-      <MaxDamage>500</MaxDamage>
-      <LifetimeMS>600</LifetimeMS>
+      <MaxDamage>666</MaxDamage>
+      <LifetimeMS>627</LifetimeMS>
       <Size>100</Size>
       <MultiHit />
     </Projectile>
@@ -64301,13 +62026,13 @@
     <Eternal />
     <SlotType>1</SlotType>
     <Description>A sword forged by combining various precious ores. Every swing releases enough strength to sunder solid ground.</Description>
-    <RateOfFire>.70</RateOfFire>
+    <RateOfFire>.80</RateOfFire>
     <Sound>weapon/blunt_sword</Sound>
     <Projectile>
       <ObjectId>Earth's Power Shoot</ObjectId>
       <Speed>150</Speed>
-      <MinDamage>360</MinDamage>
-      <MaxDamage>390</MaxDamage>
+      <MinDamage>415</MinDamage>
+      <MaxDamage>445</MaxDamage>
       <LifetimeMS>300</LifetimeMS>
       <Amplitude>0.6</Amplitude>
       <Frequency>0.97</Frequency>
@@ -65651,17 +63376,17 @@
     </Texture>
     <SlotType>8</SlotType>
     <Description>This wand is powerful at conducting magical energy into a devastating blast.</Description>
-    <RateOfFire>1.25</RateOfFire>
+    <RateOfFire>1.15</RateOfFire>
     <Sound>weapon/wand_of_death</Sound>
     <Projectile>
       <ObjectId>Directed Explosion</ObjectId>
       <Speed>230</Speed>
       <Size>50</Size>
       <MinDamage>85</MinDamage>
-      <MaxDamage>95</MaxDamage>
+      <MaxDamage>120</MaxDamage>
       <LifetimeMS>400</LifetimeMS>
     </Projectile>
-    <ArcGap>8</ArcGap>
+    <ArcGap>6</ArcGap>
     <ActivateOnEquip stat="28" amount="1">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="4">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
@@ -65680,13 +63405,13 @@
     <SlotType>8</SlotType>
     <Legendary />
     <Description>Capable of absorbing the pain dealt to others, then dishing it back to them at incredible rates.</Description>
-    <RateOfFire>1.10</RateOfFire>
+    <RateOfFire>1.25</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
       <ObjectId>Wand of Pain Shoot</ObjectId>
       <Speed>200</Speed>
       <MinDamage>140</MinDamage>
-      <MaxDamage>145</MaxDamage>
+      <MaxDamage>165</MaxDamage>
       <LifetimeMS>450</LifetimeMS>
       <Amplitude>0.26</Amplitude>
       <Frequency>2.61</Frequency>
@@ -65714,7 +63439,7 @@
     <Projectile>
       <ObjectId>TH Stinger Large2</ObjectId>
       <Speed>140</Speed>
-      <MinDamage>50</MinDamage>
+      <MinDamage>80</MinDamage>
       <MaxDamage>185</MaxDamage>
       <LifetimeMS>536</LifetimeMS>
       <Frequency>0.9</Frequency>
@@ -65725,7 +63450,7 @@
       <ArmorPiercing />
     </Projectile>
     <NumProjectiles>2</NumProjectiles>
-    <ArcGap>6</ArcGap>
+    <ArcGap>3.5</ArcGap>
     <ActivateOnEquip stat="3" amount="50">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="10">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
@@ -65743,13 +63468,13 @@
     <SlotType>8</SlotType>
     <Legendary />
     <Description>A treasure that had to be sealed away, deep within the Tomb of the Ancients as the mystical powers it possesses were too fearful.</Description>
-    <RateOfFire>0.8</RateOfFire>
+    <RateOfFire>0.95</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
       <ObjectId>Geb's Hand Shot</ObjectId>
       <Speed>165.5</Speed>
-      <MinDamage>310</MinDamage>
-      <MaxDamage>350</MaxDamage>
+      <MinDamage>320</MinDamage>
+      <MaxDamage>360</MaxDamage>
       <LifetimeMS>423</LifetimeMS>
       <Size>100</Size>
       <MultiHit />
@@ -65772,13 +63497,13 @@
     <SlotType>8</SlotType>
     <Legendary />
     <Description>It is not often that a succubus falls for a mortal, but their love when they do is overwhelmingly powerful. If manifested, its power can rival that of gods.</Description>
-    <RateOfFire>0.7</RateOfFire>
+    <RateOfFire>0.85</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
       <ObjectId>Wand of Everlasting Love Shot</ObjectId>
       <Speed>150</Speed>
-      <MinDamage>350</MinDamage>
-      <MaxDamage>400</MaxDamage>
+      <MinDamage>360</MinDamage>
+      <MaxDamage>410</MaxDamage>
       <LifetimeMS>600</LifetimeMS>
       <Size>100</Size>
       <ArmorPiercing />
@@ -65799,13 +63524,13 @@
     <Eternal />
     <SlotType>8</SlotType>
     <Description>A precious artifact given new life by purified flames provided from the fire elemental.</Description>
-    <RateOfFire>.85</RateOfFire>
+    <RateOfFire>.95</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
       <ObjectId>Fire Elemental Wand Shoot</ObjectId>
       <Speed>180</Speed>
       <MinDamage>85</MinDamage>
-      <MaxDamage>100</MaxDamage>
+      <MaxDamage>125</MaxDamage>
       <LifetimeMS>500</LifetimeMS>
       <Amplitude>0.34</Amplitude>
       <Frequency>0.98</Frequency>
@@ -76942,6 +74667,96 @@
     <Static />
     <Z>0.95</Z>
   </Object>
+  <Object type="0x9905" id="Generator Pog">
+    <Class>GameObject</Class>
+    <Texture>
+      <File>CustomObjectsSkillTree</File>
+      <Index>0x0f</Index>
+    </Texture>
+    <Static />
+  </Object>
+  <Object type="0x506c" id="Skill Tree">
+    <Class>SkillTree</Class>
+    <Texture>
+      <File>CustomObjectsSkillTree</File>
+      <Index>0x00</Index>
+    </Texture>
+    <Animation prob="1.0" period="0.0">
+      <Frame time="0.15">
+        <Texture>
+          <File>CustomObjectsSkillTree</File>
+          <Index>0x00</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.15">
+        <Texture>
+          <File>CustomObjectsSkillTree</File>
+          <Index>0x01</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.15">
+        <Texture>
+          <File>CustomObjectsSkillTree</File>
+          <Index>0x02</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.15">
+        <Texture>
+          <File>CustomObjectsSkillTree</File>
+          <Index>0x03</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.15">
+        <Texture>
+          <File>CustomObjectsSkillTree</File>
+          <Index>0x04</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.15">
+        <Texture>
+          <File>CustomObjectsSkillTree</File>
+          <Index>0x05</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.15">
+        <Texture>
+          <File>CustomObjectsSkillTree</File>
+          <Index>0x06</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.15">
+        <Texture>
+          <File>CustomObjectsSkillTree</File>
+          <Index>0x07</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.15">
+        <Texture>
+          <File>CustomObjectsSkillTree</File>
+          <Index>0x08</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.15">
+        <Texture>
+          <File>CustomObjectsSkillTree</File>
+          <Index>0x09</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.15">
+        <Texture>
+          <File>CustomObjectsSkillTree</File>
+          <Index>0x0a</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.15">
+        <Texture>
+          <File>CustomObjectsSkillTree</File>
+          <Index>0x0b</Index>
+        </Texture>
+      </Frame>
+    </Animation>
+    <Static />
+  </Object>
   <Object type="0x0732" id="Spider Web">
     <Class>SpiderWeb</Class>
     <Model>Web</Model>
@@ -77100,6 +74915,2259 @@
       </Frame>
     </Animation>
     <Static />
+  </Object>
+  <Object type="0x1500" id="Black Cat Generator">
+    <DisplayId>Black Cat</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x00</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A cute and affectionate cat.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Black Cat" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1501" id="Grey Cat Generator">
+    <DisplayId>Grey Cat</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x01</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A cute and affectionate cat.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Grey Cat" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1502" id="Orange Cat Generator">
+    <DisplayId>Orange Cat</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x02</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A cute and affectionate cat.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Orange Cat" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1503" id="Tan Cat Generator">
+    <DisplayId>Tan Cat</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x02</Index>
+    </AnimatedTexture>
+    <Tex1>0x1ce9f32</Tex1>
+    <SlotType>10</SlotType>
+    <Description>A cute and affectionate cat.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Tan Cat" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1504" id="Yellow Cat Generator">
+    <DisplayId>Yellow Cat</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x02</Index>
+    </AnimatedTexture>
+    <Tex1>0x1cbc916</Tex1>
+    <SlotType>10</SlotType>
+    <Description>A cute and affectionate cat.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Yellow Cat" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1505" id="Brown Pup Generator">
+    <DisplayId>Brown Pup</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x05</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A loyal and friendly pup.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Brown Pup" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1506" id="Grey Pup Generator">
+    <DisplayId>Grey Pup</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x05</Index>
+    </AnimatedTexture>
+    <Tex1>0x1767676</Tex1>
+    <SlotType>10</SlotType>
+    <Description>A loyal and friendly pup.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Grey Pup" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1507" id="Golden Pup Generator">
+    <DisplayId>Golden Pup</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x05</Index>
+    </AnimatedTexture>
+    <Tex1>0x1ce9f32</Tex1>
+    <SlotType>10</SlotType>
+    <Description>A loyal and friendly pup.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Golden Pup" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1508" id="White Cat Generator">
+    <DisplayId>White Cat</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x00</Index>
+    </AnimatedTexture>
+    <Tex1>0x1ffffff</Tex1>
+    <SlotType>10</SlotType>
+    <Description>A cute and affectionate cat.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="White Cat" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1509" id="Blue Snail Generator">
+    <DisplayId>Blue Snail</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x03</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A slimy but lovable snail.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Blue Snail" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x150a" id="Grey Wolf Generator">
+    <DisplayId>Grey Wolf</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x04</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A brave, majestic wolf.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Grey Wolf" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x150b" id="Brown Fox Generator">
+    <DisplayId>Brown Fox</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x06</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A quick and cunning fox.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Brown Fox" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x150c" id="Green Frog Generator">
+    <DisplayId>Green Frog</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x07</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A cute little frog.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Green Frog" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x150d" id="Lion Generator">
+    <DisplayId>Lion</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x08</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A fierce but friendly lion.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Lion" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x150e" id="Penguin Generator">
+    <DisplayId>Penguin</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x09</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A cute little penguin.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Penguin" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x150f" id="Sheepdog Generator">
+    <DisplayId>Sheepdog</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x0a</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A brave and protective sheepdog.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Sheepdog" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1510" id="Panda Generator">
+    <DisplayId>Panda</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x0b</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A rare, beautiful panda.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Panda" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1511" id="Purple Snail Generator">
+    <DisplayId>Purple Snail</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x03</Index>
+    </AnimatedTexture>
+    <Tex2>0x19829f6</Tex2>
+    <SlotType>10</SlotType>
+    <Description>A slimy but lovable snail.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Purple Snail" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1512" id="Black Wolf Generator">
+    <DisplayId>Black Wolf</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x04</Index>
+    </AnimatedTexture>
+    <Tex1>0x1333333</Tex1>
+    <Tex2>0x1ff0000</Tex2>
+    <SlotType>10</SlotType>
+    <Description>A brave, majestic wolf.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Black Wolf" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1513" id="Grey Fox Generator">
+    <DisplayId>Grey Fox</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x06</Index>
+    </AnimatedTexture>
+    <Tex1>0x1808080</Tex1>
+    <SlotType>10</SlotType>
+    <Description>A quick and cunning fox.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Grey Fox" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1514" id="Purple Frog Generator">
+    <DisplayId>Purple Frog</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x07</Index>
+    </AnimatedTexture>
+    <Tex1>0x19829f6</Tex1>
+    <SlotType>10</SlotType>
+    <Description>A cute little frog.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Purple Frog" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1515" id="White Lion Generator">
+    <DisplayId>White Lion</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x08</Index>
+    </AnimatedTexture>
+    <Tex1>0x1d0d0d0</Tex1>
+    <SlotType>10</SlotType>
+    <Description>A fierce but friendly lion.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="White Lion" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1516" id="Green Penguin Generator">
+    <DisplayId>Green Penguin</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x09</Index>
+    </AnimatedTexture>
+    <Tex1>0x1005302</Tex1>
+    <SlotType>10</SlotType>
+    <Description>A cute little penguin.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Green Penguin" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1517" id="Golden Sheepdog Generator">
+    <DisplayId>Golden Sheepdog</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x0a</Index>
+    </AnimatedTexture>
+    <Tex1>0x1cf9700</Tex1>
+    <SlotType>10</SlotType>
+    <Description>A brave and protective sheepdog.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Golden Sheepdog" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1518" id="Bluebird Generator">
+    <DisplayId>Bluebird</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x0c</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A sweet bluebird.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Bluebird" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1519" id="Chick Generator">
+    <DisplayId>Chick</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x0d</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A curious young chicken.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Chick" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x151a" id="Pig Generator">
+    <DisplayId>Pig</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x0e</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A hungry piglet.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Pig" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x151b" id="Sea Slurp Generator">
+    <DisplayId>Sea Slurp</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x0f</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A tame sea slurp.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Sea Slurp" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x151c" id="Squirrel Generator">
+    <DisplayId>Squirrel</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>18</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A woodland classic.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Squirrel" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x151d" id="Bat Generator">
+    <DisplayId>Bat</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiChar28x8</File>
+      <Index>0x18</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>A little bat.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Bat" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x151e" id="Lil' Ghost Generator">
+    <DisplayId>Lil' Ghost</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>16</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A passive little spirit.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Lil' Ghost" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x151f" id="Valentine Generator">
+    <DisplayId>Valentine</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiChar28x8</File>
+      <Index>0x1a</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>Give this valentine to a friend!</Description>
+    <Sound>spell/light_heal</Sound>
+    <Consumable />
+    <Activate objectId="Valentine" cooldown="10" removeSelf="false">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1520" id="Leprechaun Generator">
+    <DisplayId>Leprechaun</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>17</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>It's a little Leprechaun. Happy Saint Patrick's Day!!!</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Leprechaun" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1521" id="Lil' Oryx Generator">
+    <DisplayId>Lil' Oryx</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj2</File>
+      <Index>0x5e</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>Every evil boss creates miniature versions of himself.  It's just something they do.</Description>
+    <Sound>spell/light_heal</Sound>
+    <Consumable />
+    <Soulbound />
+    <Activate objectId="Lil' Oryx" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1522" id="Toucan Generator">
+    <DisplayId>Toucan</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>19</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>An exotic bird with a large colorful bill.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Toucan" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1523" id="Skunk Generator">
+    <DisplayId>Skunk</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>20</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>Adorable, but watch out for the smell!</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Skunk" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1524" id="Mallard Generator">
+    <DisplayId>Mallard</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>21</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A handsome wild duck.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Mallard" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1525" id="Duck Generator">
+    <DisplayId>Duck</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>22</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A brilliant yellow duck.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Duck" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1526" id="Eagle Generator">
+    <DisplayId>Eagle</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>23</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>The majestic king of the skies.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Eagle" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1527" id="Turtle Generator">
+    <DisplayId>Turtle</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>24</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>An adorable little Turtle.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Turtle" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1528" id="Jelly Generator">
+    <DisplayId>Jelly</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>25</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A jelly buddy!</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Jelly" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1529" id="Bee Generator">
+    <DisplayId>Bee</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>26</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A friendly honey bee.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Bee" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x152a" id="Raven Generator">
+    <DisplayId>Raven</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>28</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>An ominous black bird.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Raven" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x152b" id="Purple Penguin Generator">
+    <DisplayId>Purple Penguin</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>29</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A cute little penguin.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Purple Penguin" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x152c" id="Grass Penguin Generator">
+    <DisplayId>Grass Penguin</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>30</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A cute little penguin.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Grass Penguin" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x152d" id="Elf Generator">
+    <DisplayId>Elf</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>31</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>Your little helper.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Elf" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x152e" id="Crab Generator">
+    <DisplayId>Crab</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>32</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>Your little helper.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Crab" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x152f" id="Hamster Generator">
+    <DisplayId>Hamster</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>33</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A hamster in a ball!</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Hamster" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1530" id="Dino Generator">
+    <DisplayId>Dino</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>34</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A ferocious predator from the past.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Dino" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1531" id="Elephant Generator">
+    <DisplayId>Elephant</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>35</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>The smallest elephant in the world.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Elephant" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1532" id="Demon Frog Generator">
+    <DisplayId>Demon Frog</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>36</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>An amphibian from the abyss.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Demon Frog" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1533" id="Gargoyle Generator">
+    <DisplayId>Gargoyle</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>37</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>Carved of living stone.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Gargoyle" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1534" id="Gummy Bear Generator">
+    <DisplayId>Gummy Bear</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>38</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A gummy buddy. NOT FOR EATING!!!</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Gummy Bear" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1535" id="Dragonfly Generator">
+    <DisplayId>Dragonfly</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>39</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A symbol of strength and courage.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Dragonfly" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1536" id="Lil' Cyclops Generator">
+    <DisplayId>Cyclops</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>42</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A one eyed monster.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Lil' Cyclops" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1537" id="Snowy Owl Generator">
+    <DisplayId>Snowy Owl</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>43</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A beautiful white owl.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Snowy Owl" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1538" id="Turkey Generator">
+    <DisplayId>Turkey</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>44</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A turkey for turkey day!</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Turkey" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1539" id="Baby Generator">
+    <DisplayId>Baby</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>45</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>Take good care of him!</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Baby" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x153a" id="Baby Dragon Generator">
+    <DisplayId>Baby Dragon</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>46</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A baby dragon.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Baby Dragon" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x153b" id="Karate Penguin Red Generator">
+    <DisplayId>Karate Penguin</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>47</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A special penguin trained in the martial arts.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Karate Penguin Red" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x153c" id="Karate Penguin Blue Generator">
+    <DisplayId>Karate Penguin</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>48</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A special penguin trained in the martial arts.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Karate Penguin Blue" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x153d" id="Karate Penguin Yellow Generator">
+    <DisplayId>Karate Penguin</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>49</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A special penguin trained in the martial arts.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Karate Penguin Yellow" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x153e" id="Karate Penguin Purple Generator">
+    <DisplayId>Karate Penguin</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>50</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A special penguin trained in the martial arts.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Karate Penguin Purple" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x153f" id="Beach Ball Generator">
+    <DisplayId>Beach Ball</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj3</File>
+      <Index>0x193</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>Play with this ball on the beach! (Requires a buddy!)</Description>
+    <BagType>2</BagType>
+    <InvUse />
+    <Activate objectId="Beach Ball" cooldown="1" hideEffect="true">PermaPet</Activate>
+    <Soulbound />
+  </Object>
+  <Object type="0x1540" id="Robobuddy Generator">
+    <DisplayId>Robobuddy</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>51</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A technological marvel.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Robobuddy" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1541" id="Snowman Generator">
+    <DisplayId>Snowman</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>52</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A living snowman!</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Snowman" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1542" id="Black Ant Generator">
+    <DisplayId>Black Ant</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>53</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>Your very own pet ant!</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Black Ant" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1543" id="Blue Ant Generator">
+    <DisplayId>Blue Ant</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>54</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>Your very own pet ant!</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Blue Ant" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1544" id="Green Ant Generator">
+    <DisplayId>Green Ant</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>55</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>Your very own pet ant!</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Green Ant" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1545" id="Red Ant Generator">
+    <DisplayId>Red Ant</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>56</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>Your very own pet ant!</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Red Ant" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1546" id="Purple Ant Generator">
+    <DisplayId>Purple Ant</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>57</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>Your very own pet ant!</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Purple Ant" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1547" id="Beer Slurp Generator">
+    <DisplayId>Beer Slurp</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj3</File>
+      <Index>0x244</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>This special sea slurp is trained to seek out the elusive Beer God.</Description>
+    <Sound>spell/fire_spray</Sound>
+    <ExtraTooltipData>
+      <EffectInfo name="" description="Helps locate Beer Gods in the Realm" />
+    </ExtraTooltipData>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Beer Slurp" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x15aa" id="Ball Generator">
+    <DisplayId>Beach Ball</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj3</File>
+      <Index>0x193</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>Play with this ball on the beach! (Requires a buddy!)</Description>
+    <BagType>2</BagType>
+    <InvUse />
+    <Activate objectId="Ball" cooldown="1" hideEffect="true">PermaPet</Activate>
+    <Soulbound />
+  </Object>
+  <Object type="0x1549" id="Peppermint Snail Generator">
+    <DisplayId>Peppermint Snail</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>58</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>Tamed wildlife from the Candyland Hunting Grounds.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Peppermint Snail" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x154a" id="Relief Oriole Generator">
+    <DisplayId>Oriole</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>59</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>This limited-edition bird will keep you company on all of your adventures. Proceeds go to help the victims of Hurricane Sandy.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Relief Oriole" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x154b" id="Relief Goldfinch Generator">
+    <DisplayId>Goldfinch</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>60</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>This limited-edition bird will keep you company on all of your adventures. Proceeds go to help the victims of Hurricane Sandy.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Relief Goldfinch" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x154c" id="Relief Bluebird Generator">
+    <DisplayId>Bluebird</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>61</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>This limited-edition bird will keep you company on all of your adventures. Proceeds go to help the victims of Hurricane Sandy.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Relief Bluebird" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x154d" id="Relief Cardinal Generator">
+    <DisplayId>Cardinal</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>62</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>This limited-edition bird will keep you company on all of your adventures. Proceeds go to help the victims of Hurricane Sandy.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Relief Cardinal" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x154e" id="Tamed Werewolf Cub Generator">
+    <DisplayId>Tamed Werewolf Cub</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>63</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>An adorable, yet horrific abomination!</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Tamed Werewolf Cub" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x154f" id="Tomb Snake Generator">
+    <DisplayId>Tomb Snake</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>64</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A serpent from the egyptian tombs.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Tomb Snake" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1550" id="Ninja Cat Generator">
+    <DisplayId>Ninja Cat</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>65</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A stealthy feline.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Ninja Cat" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1551" id="Praying Mantis Generator">
+    <DisplayId>Praying Mantis</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>66</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>An elegant and noble insect.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Praying Mantis" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1552" id="Dreidel Generator">
+    <DisplayId>Dreidel</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>67</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description>A spinning top pet to help you celebrate the holidays.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Dreidel" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x074c" id="Nexus Turkey">
+    <DisplayId>Turkey</DisplayId>
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>44</Index>
+    </AnimatedTexture>
+    <Size>110</Size>
+    <XpMult>0.0</XpMult>
+  </Object>
+  <Object type="0x1600" id="Black Cat">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x00</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1601" id="Grey Cat">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x01</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1602" id="Orange Cat">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x02</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1603" id="Tan Cat">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x02</Index>
+    </AnimatedTexture>
+    <Tex1>0x1ce9f32</Tex1>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1604" id="Yellow Cat">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x02</Index>
+    </AnimatedTexture>
+    <Tex1>0x1cbc916</Tex1>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1605" id="Brown Pup">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x05</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1606" id="Grey Pup">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x05</Index>
+    </AnimatedTexture>
+    <Tex1>0x1767676</Tex1>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1607" id="Golden Pup">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x05</Index>
+    </AnimatedTexture>
+    <Tex1>0x1ce9f32</Tex1>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1608" id="White Cat">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x00</Index>
+    </AnimatedTexture>
+    <Tex1>0x1ffffff</Tex1>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1609" id="Blue Snail">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x03</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x160a" id="Grey Wolf">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x04</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x160b" id="Brown Fox">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x06</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x160c" id="Green Frog">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x07</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>80</Size>
+  </Object>
+  <Object type="0x160d" id="Lion">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x08</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>80</Size>
+  </Object>
+  <Object type="0x160e" id="Penguin">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x09</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x160f" id="Sheepdog">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x0a</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1610" id="Panda">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x0b</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1611" id="Purple Snail">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x03</Index>
+    </AnimatedTexture>
+    <Tex2>0x19829f6</Tex2>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1612" id="Black Wolf">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x04</Index>
+    </AnimatedTexture>
+    <Tex1>0x1333333</Tex1>
+    <Tex2>0x1ff0000</Tex2>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1613" id="Grey Fox">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x06</Index>
+    </AnimatedTexture>
+    <Tex1>0x1808080</Tex1>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1614" id="Purple Frog">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x07</Index>
+    </AnimatedTexture>
+    <Tex1>0x19829f6</Tex1>
+    <NoMiniMap />
+    <Size>80</Size>
+  </Object>
+  <Object type="0x1615" id="White Lion">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x08</Index>
+    </AnimatedTexture>
+    <Tex1>0x1d0d0d0</Tex1>
+    <NoMiniMap />
+    <Size>80</Size>
+  </Object>
+  <Object type="0x1616" id="Green Penguin">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x09</Index>
+    </AnimatedTexture>
+    <Tex1>0x1005302</Tex1>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1617" id="Golden Sheepdog">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x0a</Index>
+    </AnimatedTexture>
+    <Tex1>0x1cf9700</Tex1>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1618" id="Bluebird">
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x0c</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1619" id="Chick">
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x0d</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x161a" id="Pig">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x0e</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x161b" id="Sea Slurp">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>0x0f</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x161c" id="Squirrel">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>18</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Flying />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x161e" id="Lil' Ghost">
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>16</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Z>0.15</Z>
+    <Flying />
+    <Size>60</Size>
+    <ShadowSize>80</ShadowSize>
+  </Object>
+  <Object type="0x1620" id="Leprechaun">
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>17</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1622" id="Toucan">
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>19</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+    <WhileMoving>
+      <Z>0.35</Z>
+      <Flying />
+    </WhileMoving>
+  </Object>
+  <Object type="0x1623" id="Skunk">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>20</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1624" id="Mallard">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>21</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1625" id="Duck">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>22</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1626" id="Eagle">
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>23</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+    <WhileMoving>
+      <Z>0.35</Z>
+      <Flying />
+    </WhileMoving>
+  </Object>
+  <Object type="0x1627" id="Turtle">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>24</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1628" id="Jelly">
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>25</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+    <ShadowSize>80</ShadowSize>
+  </Object>
+  <Object type="0x1629" id="Bee">
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>26</Index>
+    </AnimatedTexture>
+    <AltTexture id="1">
+      <AnimatedTexture>
+        <File>chars8x8rPets1</File>
+        <Index>27</Index>
+      </AnimatedTexture>
+    </AltTexture>
+    <NoMiniMap />
+    <Z>0.25</Z>
+    <Flying />
+    <ShadowSize>60</ShadowSize>
+    <Size>60</Size>
+  </Object>
+  <Object type="0x162a" id="Raven">
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>28</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+    <WhileMoving>
+      <Z>0.35</Z>
+      <Flying />
+    </WhileMoving>
+  </Object>
+  <Object type="0x162b" id="Purple Penguin">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>29</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+    <ShadowSize>80</ShadowSize>
+  </Object>
+  <Object type="0x162c" id="Grass Penguin">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>30</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+    <ShadowSize>80</ShadowSize>
+  </Object>
+  <Object type="0x162d" id="Elf">
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>31</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+    <ShadowSize>80</ShadowSize>
+  </Object>
+  <Object type="0x162e" id="Crab">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>32</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+    <ShadowSize>80</ShadowSize>
+  </Object>
+  <Object type="0x162f" id="Hamster">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>33</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1630" id="Dino">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>34</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1631" id="Elephant">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>35</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1632" id="Demon Frog">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>36</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1633" id="Gargoyle">
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>37</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+    <WhileMoving>
+      <Z>0.25</Z>
+      <Flying />
+    </WhileMoving>
+  </Object>
+  <Object type="0x1634" id="Gummy Bear">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>38</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1635" id="Dragonfly">
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>39</Index>
+    </AnimatedTexture>
+    <AltTexture id="1">
+      <AnimatedTexture>
+        <File>chars8x8rPets1</File>
+        <Index>40</Index>
+      </AnimatedTexture>
+    </AltTexture>
+    <NoMiniMap />
+    <Z>0.25</Z>
+    <Flying />
+    <ShadowSize>60</ShadowSize>
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1636" id="Lil' Cyclops">
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>42</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1637" id="Snowy Owl">
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>43</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+    <ShadowSize>80</ShadowSize>
+    <WhileMoving>
+      <Z>0.24</Z>
+      <Flying />
+    </WhileMoving>
+  </Object>
+  <Object type="0x1638" id="Turkey">
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>44</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1639" id="Baby">
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>45</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x163a" id="Baby Dragon">
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>46</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x163b" id="Karate Penguin Red">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>47</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x163c" id="Karate Penguin Blue">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>48</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x163d" id="Karate Penguin Yellow">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>49</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x163e" id="Karate Penguin Purple">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>50</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x163f" id="Beach Ball">
+    <Class>Character</Class>
+    <Texture>
+      <File>invisible</File>
+      <Index>0</Index>
+    </Texture>
+    <NoMiniMap />
+    <ShadowSize>0</ShadowSize>
+    <Size>0</Size>
+  </Object>
+  <Object type="0x1640" id="Robobuddy">
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>51</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1641" id="Snowman">
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>52</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1642" id="Black Ant">
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>53</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1643" id="Blue Ant">
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>54</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1644" id="Green Ant">
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>55</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1645" id="Red Ant">
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>56</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1646" id="Purple Ant">
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>57</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1649" id="Peppermint Snail">
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>58</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x164a" id="Relief Oriole">
+    <DisplayId>Oriole</DisplayId>
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>59</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <WhileMoving>
+      <Z>0.35</Z>
+      <Flying />
+    </WhileMoving>
+    <Size>60</Size>
+  </Object>
+  <Object type="0x164b" id="Relief Goldfinch">
+    <DisplayId>Goldfinch</DisplayId>
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>60</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <WhileMoving>
+      <Z>0.35</Z>
+      <Flying />
+    </WhileMoving>
+    <Size>60</Size>
+  </Object>
+  <Object type="0x164c" id="Relief Bluebird">
+    <DisplayId>Bluebird</DisplayId>
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>61</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <WhileMoving>
+      <Z>0.35</Z>
+      <Flying />
+    </WhileMoving>
+    <Size>60</Size>
+  </Object>
+  <Object type="0x164d" id="Relief Cardinal">
+    <DisplayId>Cardinal</DisplayId>
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>62</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <WhileMoving>
+      <Z>0.35</Z>
+      <Flying />
+    </WhileMoving>
+    <Size>60</Size>
+  </Object>
+  <Object type="0x164e" id="Tamed Werewolf Cub">
+    <DisplayId>Tamed Werewolf Cub</DisplayId>
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>63</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x164f" id="Tomb Snake">
+    <DisplayId>Tomb Snake</DisplayId>
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>64</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1650" id="Ninja Cat">
+    <DisplayId>Ninja Cat</DisplayId>
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>65</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x1651" id="Praying Mantis">
+    <DisplayId>Praying Mantis</DisplayId>
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>chars8x8rPets1</File>
+      <Index>66</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>40</Size>
   </Object>
   <Object type="0x075b" id="Arena Portal">
     <Class>ArenaPortal</Class>

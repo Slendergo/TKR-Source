@@ -5,14 +5,7 @@ namespace wServer.logic
     partial class BehaviorDb
     {
         private _ Pets = () => Behav()
-        .Init("Bdwubz Bee",
-            new State(
-                new PetFollow()
-
-                )
-            )
-
-        .Init("Black Cat",
+        .InitMany("Black Cat", "Snowman", _ =>
             new State(
                 new PetFollow()
                 )

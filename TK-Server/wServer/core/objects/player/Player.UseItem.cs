@@ -1286,10 +1286,9 @@ namespace wServer.core.objects
         {
             var type = GameServer.Resources.GameData.IdToObjectType[eff.ObjectId];
             var desc = GameServer.Resources.GameData.ObjectDescs[type];
-            //Log.Debug(desc.ObjectType);
+
             PetId = desc.ObjectType;
             SpawnPetIfAttached(World);
-            //Log.Debug("hey!");
         }
 
         private void AEPoisonGrenade(TickTime time, Item item, Position target, ActivateEffect eff)

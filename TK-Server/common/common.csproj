@@ -313,7 +313,7 @@
     <Content Include="resources\xml\characters\TK_Characters_chars8x8rMid2.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="resources\xml\characters\TK_Characters_chars8x8rPets1.xml">
+    <Content Include="resources\xml\pets\TK_Pet_Objects.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\xml\characters\TK_Characters_Custom16x16Encounters.xml">
@@ -908,6 +908,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\xml\npcs\TK_NPCs_Stat.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\pets\TK_Pet_Generators.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\xml\portals\TK_Portals_ArenaPortal.xml">

@@ -17,7 +17,7 @@ namespace wServer.core.objects.vendors
     {
 
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
-
+        
         private static readonly List<ISellableItem> Consumables = new List<ISellableItem>
         {
             new ShopItem("Magic Potion", 1),
@@ -75,7 +75,6 @@ namespace wServer.core.objects.vendors
 
         private static readonly List<ISellableItem> Special = new List<ISellableItem>
         {
-            new ShopItem("Amulet of Resurrection", 50000)
         };
 
         public static void Initialize(GameServer gameServer)
@@ -99,10 +98,10 @@ namespace wServer.core.objects.vendors
 
         public static readonly Dictionary<TileRegion, Tuple<List<ISellableItem>, CurrencyType, int>> Shops = new Dictionary<TileRegion, Tuple<List<ISellableItem>, CurrencyType, int>>()
         {
-            { TileRegion.Store_6, new Tuple<List<ISellableItem>, CurrencyType, int>(PurchasableFame, CurrencyType.Fame, 0) },
-            { TileRegion.Store_7, new Tuple<List<ISellableItem>, CurrencyType, int>(Consumables, CurrencyType.Fame, 0) },
-            { TileRegion.Store_8, new Tuple<List<ISellableItem>, CurrencyType, int>(Special, CurrencyType.Gold, 0) },
-            { TileRegion.Store_15, new Tuple<List<ISellableItem>, CurrencyType, int>(KeysFame, CurrencyType.Fame, 0) }
+            { TileRegion.Store_1, new Tuple<List<ISellableItem>, CurrencyType, int>(PurchasableFame, CurrencyType.Fame, 0) },
+            { TileRegion.Store_2, new Tuple<List<ISellableItem>, CurrencyType, int>(Consumables, CurrencyType.Fame, 0) },
+            { TileRegion.Store_3, new Tuple<List<ISellableItem>, CurrencyType, int>(Special, CurrencyType.Gold, 0) },
+            { TileRegion.Store_4, new Tuple<List<ISellableItem>, CurrencyType, int>(KeysFame, CurrencyType.Fame, 0) }
         };
 
         private static void InitDyes(GameServer gameServer)
@@ -111,9 +110,16 @@ namespace wServer.core.objects.vendors
             var d2 = new List<ISellableItem>();
             var c1 = new List<ISellableItem>();
             var c2 = new List<ISellableItem>();
+            var petGenerators = new List<ISellableItem>();
 
             foreach (var i in gameServer.Resources.GameData.Items.Values)
             {
+                if (i.InvUse && i.ObjectId.Contains("Generator"))
+                {
+                    petGenerators.Add(new ShopItem(i.ObjectId, 1250));
+                    continue;
+                }
+
                 if (!i.Class.Equals("Dye"))
                     continue;
 
@@ -139,10 +145,13 @@ namespace wServer.core.objects.vendors
                 }
             }
 
-            Shops[TileRegion.Store_17] = new Tuple<List<ISellableItem>, CurrencyType, int>(d1, CurrencyType.Gold, 0);
-            Shops[TileRegion.Store_18] = new Tuple<List<ISellableItem>, CurrencyType, int>(d2, CurrencyType.Gold, 0);
-            Shops[TileRegion.Store_19] = new Tuple<List<ISellableItem>, CurrencyType, int>(c1, CurrencyType.Gold, 0);
-            Shops[TileRegion.Store_20] = new Tuple<List<ISellableItem>, CurrencyType, int>(c2, CurrencyType.Gold, 0);
+            Shops[TileRegion.Store_5] = new Tuple<List<ISellableItem>, CurrencyType, int>(petGenerators, CurrencyType.Fame, 0);
+
+            Shops[TileRegion.Store_6] = new Tuple<List<ISellableItem>, CurrencyType, int>(d1, CurrencyType.Gold, 0);
+            Shops[TileRegion.Store_7] = new Tuple<List<ISellableItem>, CurrencyType, int>(d2, CurrencyType.Gold, 0);
+            Shops[TileRegion.Store_8] = new Tuple<List<ISellableItem>, CurrencyType, int>(c1, CurrencyType.Gold, 0);
+            Shops[TileRegion.Store_9] = new Tuple<List<ISellableItem>, CurrencyType, int>(c2, CurrencyType.Gold, 0);
+
         }
     }
 }

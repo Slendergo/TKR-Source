@@ -1806,16 +1806,6 @@
       <ConditionEffect duration="4">Dazed</ConditionEffect>
     </Projectile>
   </Object>
-  <Object type="0xa005" id="Bdwubz Bee">
-    <Class>Character</Class>
-    <Group>Hexable</Group>
-    <AnimatedTexture>
-      <File>chars16x16dEncounters2</File>
-      <Index>95</Index>
-    </AnimatedTexture>
-    <NoMiniMap />
-    <Size>120</Size>
-  </Object>
   <Object type="0x1621" id="Lil' Oryx">
     <Class>Character</Class>
     <Group>Hexable</Group>

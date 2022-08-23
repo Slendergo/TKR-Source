@@ -653,6 +653,16 @@
     <NoMiniMap />
     <Size>60</Size>
   </Object>
+  <Object type="0x163f" id="Beach Ball">
+  	<Class>Character</Class>
+  	<Texture>
+  		<File>invisible</File>
+  		<Index>0</Index>
+  	</Texture>
+  	<NoMiniMap />
+  	<ShadowSize>0</ShadowSize>
+  	<Size>0</Size>
+  </Object>
   <Object type="0x1640" id="Robobuddy">
     <Class>Character</Class>
     <AnimatedTexture>

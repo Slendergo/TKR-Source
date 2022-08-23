@@ -135,7 +135,7 @@ namespace wServer.core.objects.vendors
                 else if (discountType < 15)
                     Discount = 10;
 
-                var discountPrice = (int)(Price * (Discount * 0.01f));
+                var discountPrice = (Price * (Discount / 100));
                 Price -= discountPrice;
             }
         }

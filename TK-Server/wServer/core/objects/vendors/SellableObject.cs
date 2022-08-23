@@ -14,24 +14,23 @@ namespace wServer.core.objects.vendors
 
         protected SellableObject(GameServer manager, ushort objType) : base(manager, objType, null, true, false, false)
         {
-            _price = new SV<int>(this, StatDataType.SellablePrice, 0);
-            _currency = new SV<CurrencyType>(this, StatDataType.SellablePriceCurrency, 0);
-            _rankReq = new SV<int>(this, StatDataType.SellableRankRequirement, 0);
+            _price = new SV<int>(this, StatDataType.MerchandisePrice, 0);
+            _currency = new SV<CurrencyType>(this, StatDataType.MerchandiseCurrency, 0);
+            _rankReq = new SV<int>(this, StatDataType.MerchandiseRankReq, 0);
         }
 
         public CurrencyType Currency { get => _currency.GetValue(); set => _currency.SetValue(value); }
         public int Price { get => _price.GetValue(); set => _price.SetValue(value); }
-        public int RankReq { get => _rankReq.GetValue(); set => _rankReq.SetValue(value); }
+        public int RankRequired { get => _rankReq.GetValue(); set => _rankReq.SetValue(value); }
         public int Tax { get; set; }
 
         public virtual void Buy(Player player) => SendFailed(player, BuyResult.Uninitialized);
 
         protected override void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)
         {
-            stats[StatDataType.SellablePrice] = Price;
-            stats[StatDataType.SellablePriceCurrency] = (int)Currency;
-            stats[StatDataType.SellableRankRequirement] = RankReq;
-
+            stats[StatDataType.MerchandisePrice] = Price;
+            stats[StatDataType.MerchandiseCurrency] = (int)Currency;
+            stats[StatDataType.MerchandiseRankReq] = RankRequired;
             base.ExportStats(stats, isOtherPlayer);
         }
 
@@ -46,7 +45,7 @@ namespace wServer.core.objects.vendors
             if (World is TestWorld)
                 return BuyResult.IsTestMap;
 
-            if (player.Stars < RankReq)
+            if (player.Stars < RankRequired)
                 return BuyResult.InsufficientRank;
 
             var acc = player.Client.Account;
@@ -66,7 +65,6 @@ namespace wServer.core.objects.vendors
             if (item != null) // not perfect, but does the job for now
             {
                 var availableSlot = player.Inventory.CreateTransaction().GetAvailableInventorySlot(item);
-
                 if (availableSlot == -1)
                     return BuyResult.NotEnoughSlots;
             }

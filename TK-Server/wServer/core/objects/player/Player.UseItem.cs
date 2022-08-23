@@ -118,6 +118,7 @@ namespace wServer.core.objects
 
             if (IsInMarket)
             {
+                entity.ForceUpdate(slot);
                 SendInfo("You cannot use items inside the marketplace");
                 Client.SendPacket(new InvResult() { Result = 1 });
                 return;
@@ -128,6 +129,7 @@ namespace wServer.core.objects
             // eheh no more clearing BBQ loot bags
             if (this.Dist(entity) > 3)
             {
+                entity.ForceUpdate(slot);
                 Client.SendPacket(new InvResult() { Result = 1 });
                 return;
             }

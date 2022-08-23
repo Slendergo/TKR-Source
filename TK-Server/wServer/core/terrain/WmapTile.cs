@@ -134,32 +134,32 @@ namespace wServer.core.terrain
                             break;
 
                         case "mtype":
-                            stats.Add(new KeyValuePair<StatDataType, object>(StatDataType.MerchantMerchandiseType, Utils.GetInt(kv[1])));
+                            stats.Add(new KeyValuePair<StatDataType, object>(StatDataType.MerchandiseType, Utils.GetInt(kv[1])));
                             break;
 
                         case "mcost":
-                            stats.Add(new KeyValuePair<StatDataType, object>(StatDataType.SellablePrice, Math.Max(0, Utils.GetInt(kv[1]))));
+                            stats.Add(new KeyValuePair<StatDataType, object>(StatDataType.MerchandisePrice, Math.Max(0, Utils.GetInt(kv[1]))));
                             break;
 
                         case "mcur":
-                            stats.Add(new KeyValuePair<StatDataType, object>(StatDataType.SellablePriceCurrency, Utils.GetInt(kv[1])));
+                            stats.Add(new KeyValuePair<StatDataType, object>(StatDataType.MerchandiseCurrency, Utils.GetInt(kv[1])));
                             break;
 
                         case "mamnt":
-                            stats.Add(new KeyValuePair<StatDataType, object>(StatDataType.MerchantRemainingCount, Utils.GetInt(kv[1])));
+                            stats.Add(new KeyValuePair<StatDataType, object>(StatDataType.MerchandiseCount, Utils.GetInt(kv[1])));
                             break;
 
                         case "mtime":
-                            stats.Add(new KeyValuePair<StatDataType, object>(StatDataType.MerchantRemainingMinute, Utils.GetInt(kv[1])));
+                            stats.Add(new KeyValuePair<StatDataType, object>(StatDataType.MerchandiseMinsLeft, Utils.GetInt(kv[1])));
                             break;
 
                         case "mdisc":
-                            stats.Add(new KeyValuePair<StatDataType, object>(StatDataType.MerchantDiscount, Utils.GetInt(kv[1])));
+                            stats.Add(new KeyValuePair<StatDataType, object>(StatDataType.MerchandiseDiscount, Utils.GetInt(kv[1])));
                             break;
 
                         case "mrank":
                         case "stars":
-                            stats.Add(new KeyValuePair<StatDataType, object>(StatDataType.SellableRankRequirement, Utils.GetInt(kv[1])));
+                            stats.Add(new KeyValuePair<StatDataType, object>(StatDataType.MerchandiseRankReq, Utils.GetInt(kv[1])));
                             break;
                     }
                 }

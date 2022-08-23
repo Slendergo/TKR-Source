@@ -519,10 +519,10 @@
     <Compile Include="core\objects\Trap.cs" />
     <Compile Include="core\objects\vendors\ClosedVaultChest.cs" />
     <Compile Include="core\objects\vendors\GuildMerchant.cs" />
-    <Compile Include="core\objects\vendors\Merchant.cs" />
+    <Compile Include="core\objects\vendors\SellableMerchant.cs" />
     <Compile Include="core\objects\vendors\MerchantLists.cs" />
     <Compile Include="core\objects\vendors\SellableObject.cs" />
-    <Compile Include="core\objects\vendors\WorldMerchant.cs" />
+    <Compile Include="core\objects\vendors\NexusMerchant.cs" />
     <Compile Include="core\objects\Wall.cs" />
     <Compile Include="core\objects\Entity.cs" />
     <Compile Include="core\miscfile\KingdomManager.cs" />

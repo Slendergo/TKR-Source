@@ -377,58 +377,6 @@ namespace wServer.core.worlds
 
         public virtual void Init()
         {
-            // initialize shops
-            foreach (var shop in MerchantLists.Shops)
-            {
-                if (shop.Value.Item1 == null)
-                    continue;
-
-                var shopItems = new List<ISellableItem>(shop.Value.Item1);
-                var mLocations = Map.Regions.Where(r => shop.Key == r.Value).Select(r => r.Key).ToArray();
-
-                if (shopItems.Count <= 0 || shopItems.All(i => i.ItemId == ushort.MaxValue))
-                    continue;
-
-                var rotate = shopItems.Count > mLocations.Length;
-                var reloadOffset = 0;
-
-                foreach (var loc in mLocations)
-                {
-                    var shopItem = shopItems[0];
-                    shopItems.RemoveAt(0);
-
-                    while (shopItem.ItemId == ushort.MaxValue)
-                    {
-                        if (shopItems.Count <= 0)
-                            shopItems.AddRange(shop.Value.Item1);
-
-                        shopItem = shopItems[0];
-                        shopItems.RemoveAt(0);
-                    }
-
-                    reloadOffset += 500;
-
-                    var m = new WorldMerchant(GameServer, 0x01ca)
-                    {
-                        ShopItem = shopItem,
-                        Item = shopItem.ItemId,
-                        Price = shopItem.Price,
-                        Count = shopItem.Count,
-                        Currency = shop.Value.Item2,
-                        RankReq = shop.Value.Item3,
-                        ItemList = shop.Value.Item1,
-                        TimeLeft = -1,
-                        ReloadOffset = reloadOffset,
-                        Rotate = rotate
-                    };
-                    m.Move(loc.X + .5f, loc.Y + .5f);
-
-                    EnterWorld(m);
-
-                    if (shopItems.Count <= 0)
-                        shopItems.AddRange(shop.Value.Item1);
-                }
-            }
         }
 
         private void InitMap()

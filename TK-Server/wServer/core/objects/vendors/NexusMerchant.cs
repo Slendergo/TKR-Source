@@ -135,7 +135,7 @@ namespace wServer.core.objects.vendors
                 else if (discountType < 15)
                     Discount = 10;
 
-                var discountPrice = (Price * (Discount / 100));
+                var discountPrice = (int)(Price * (Discount / 100.0));
                 Price -= discountPrice;
             }
         }
@@ -149,7 +149,7 @@ namespace wServer.core.objects.vendors
 
             if (IsNew && AliveTime > 15.0f)
             {
-                MinsLeft = World.Random.Next(15, 45);
+                MinsLeft = World.Random.Next(10, 30);
                 IsNew = false;
             }
 

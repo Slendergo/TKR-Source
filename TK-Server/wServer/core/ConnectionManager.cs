@@ -108,11 +108,11 @@ namespace wServer.core
                     return;
                 }
             }
-            //else
-            //{
-            //    if (gameId != World.TEST_ID)
-            //        gameId = World.NEXUS_ID;
-            //}
+            else
+            {
+                if (gameId != World.TEST_ID)
+                    gameId = World.NEXUS_ID;
+            }
 
             if (!client.GameServer.Database.AcquireLock(acc))
             {

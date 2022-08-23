@@ -157,9 +157,20 @@ namespace wServer.core.objects
             }
 
             var players = World.GetPlayers();
+
+            var count = 0;
             foreach (var player in players)
+            {
+                
                 if ((player.AccountId == Player.AccountId || player.Client.Account != null && player.CanBeSeenBy(Player)) && NewObjects.Add(player))
-                    update.NewObjs.Add(player.ToDefinition());
+                {
+                    update.NewObjs.Add(player.ToDefinition(player.AccountId != Player.AccountId));
+                    count++;
+
+                    if (count > 12) // 12 players per tick max
+                        break;
+                }
+            }
 
             foreach (var entity in World.PlayersCollision.HitTest(x, y, VISIBILITY_RADIUS))
                 if ((entity is Decoy || entity is Pet) && NewObjects.Add(entity))

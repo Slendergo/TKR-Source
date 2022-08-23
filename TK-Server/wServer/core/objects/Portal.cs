@@ -29,11 +29,11 @@ namespace wServer.core.objects
 
         public override bool HitByProjectile(Projectile projectile, TickTime time) => false;
 
-        protected override void ExportStats(IDictionary<StatDataType, object> stats)
+        protected override void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)
         {
             stats[StatDataType.PortalUsable] = Usable ? 1 : 0;
 
-            base.ExportStats(stats);
+            base.ExportStats(stats, isOtherPlayer);
         }
 
         private static ushort ValidatePortal(GameServer manager, ushort objType)

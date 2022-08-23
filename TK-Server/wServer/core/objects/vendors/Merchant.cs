@@ -87,13 +87,13 @@ namespace wServer.core.objects.vendors
             }
         }
 
-        protected override void ExportStats(IDictionary<StatDataType, object> stats)
+        protected override void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)
         {
             stats[StatDataType.MerchantMerchandiseType] = (int)Item;
             stats[StatDataType.MerchantRemainingCount] = Count;
             stats[StatDataType.MerchantRemainingMinute] = -1; //(int)(TimeLeft / 60000f);
 
-            base.ExportStats(stats);
+            base.ExportStats(stats, isOtherPlayer);
         }
 
         protected virtual void SendNotifications(Player player, bool gift)

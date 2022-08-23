@@ -1908,30 +1908,6 @@ public class GameServerConnection
                case StatData.POINTS:
                   player.points = value;
                   continue;
-               case StatData.MAXEDLIFE:
-                  player.maxedLife = Boolean(value);
-                  continue;
-               case StatData.MAXEDMANA:
-                  player.maxedMana = Boolean(value);
-                  continue;
-               case StatData.MAXEDATT:
-                  player.maxedAtt = Boolean(value);
-                  continue;
-               case StatData.MAXEDDEF:
-                  player.maxedDef = Boolean(value);
-                  continue;
-               case StatData.MAXEDSPD:
-                  player.maxedSpd = Boolean(value);
-                  continue;
-               case StatData.MAXEDDEX:
-                  player.maxedDex = Boolean(value);
-                  continue;
-               case StatData.MAXEDVIT:
-                  player.maxedVit = Boolean(value);
-                  continue;
-               case StatData.MAXEDWIS:
-                  player.maxedWis = Boolean(value);
-                  continue;
                case StatData.GLOW_ENEMY_COLOR:
                   go.setGlowEnemy(value);
                   continue;

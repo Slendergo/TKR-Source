@@ -7,11 +7,9 @@ namespace wServer.core.objects
 {
     public abstract class Character : Entity
     {
-        public int GlowEnemy { get => _glowcolor.GetValue(); set => _glowcolor.SetValue(value); }
         public int HP { get => _hp.GetValue(); set => _hp.SetValue(value); }
         public int MaximumHP { get => _maximumHP.GetValue(); set => _maximumHP.SetValue(value); }
 
-        private SV<int> _glowcolor;
         private SV<int> _hp;
         private SV<int> _maximumHP;
 
@@ -21,7 +19,6 @@ namespace wServer.core.objects
         {
             _hp = new SV<int>(this, StatDataType.HP, 0);
             _maximumHP = new SV<int>(this, StatDataType.MaximumHP, 0);
-            _glowcolor = new SV<int>(this, StatDataType.GlowEnemy, 0);
 
             if (ObjectDesc != null)
             {
@@ -40,16 +37,12 @@ namespace wServer.core.objects
             }
         }
 
-        protected override void ExportStats(IDictionary<StatDataType, object> stats)
+        protected override void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)
         {
+            base.ExportStats(stats, isOtherPlayer);
             stats[StatDataType.HP] = HP;
-
             if (!(this is Player))
                 stats[StatDataType.MaximumHP] = MaximumHP;
-
-            stats[StatDataType.GlowEnemy] = GlowEnemy;
-
-            base.ExportStats(stats);
         }
 
         private void SetConditions()

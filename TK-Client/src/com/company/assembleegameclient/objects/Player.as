@@ -166,14 +166,6 @@ public class Player extends Character {
     public var xpBoost_:int = 0;
     public var baseStat:int = 0;
     public var points:int = 0;
-    public var maxedLife:Boolean = false;
-    public var maxedMana:Boolean = false;
-    public var maxedAtt:Boolean = false;
-    public var maxedDef:Boolean = false;
-    public var maxedSpd:Boolean = false;
-    public var maxedDex:Boolean = false;
-    public var maxedVit:Boolean = false;
-    public var maxedWis:Boolean = false;
     public var hasBackpack_:Boolean = false;
     public var starred_:Boolean = false;
     public var ignored_:Boolean = false;

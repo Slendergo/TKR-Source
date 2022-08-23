@@ -38,6 +38,8 @@ namespace wServer.core
         {
             CreateNexusWorld();
             CreateNewTest();
+            for (var i = 0; i < 14; i++)
+                Nexus.PortalMonitor.CreateNewRealm();
         }
 
         public void CreateNexusWorld()

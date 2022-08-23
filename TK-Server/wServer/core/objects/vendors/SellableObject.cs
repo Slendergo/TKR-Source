@@ -26,13 +26,13 @@ namespace wServer.core.objects.vendors
 
         public virtual void Buy(Player player) => SendFailed(player, BuyResult.Uninitialized);
 
-        protected override void ExportStats(IDictionary<StatDataType, object> stats)
+        protected override void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)
         {
             stats[StatDataType.SellablePrice] = Price;
             stats[StatDataType.SellablePriceCurrency] = (int)Currency;
             stats[StatDataType.SellableRankRequirement] = RankReq;
 
-            base.ExportStats(stats);
+            base.ExportStats(stats, isOtherPlayer);
         }
 
         protected void SendFailed(Player player, BuyResult result) => player.Client.SendPacket(new networking.packets.outgoing.BuyResultMessage

@@ -20,7 +20,7 @@ namespace wServer.core.objects
         {
             if (World == null || !TileOccupied(RealX, RealY) && !TileFullOccupied(RealX, RealY))
                 return false;
-            CheatLog.Info($"{Name} is walking on an occupied tile.");
+            CheatLog.Info($"{Name} is walking on an occupied tile. {RealX},{RealY}");
             return true;
         }
 

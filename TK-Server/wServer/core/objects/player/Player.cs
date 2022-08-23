@@ -83,7 +83,7 @@ namespace wServer.core.objects
         public int Stars { get => _stars.GetValue(); set => _stars.SetValue(value); }
         public int Texture1 { get => _texture1.GetValue(); set => _texture1.SetValue(value); }
         public int Texture2 { get => _texture2.GetValue(); set => _texture2.SetValue(value); }
-        public bool UpgradeEnabled { get => _upgradeEnabled.GetValue(); set => _upgradeEnabled.SetValue(value); }
+        public bool UpgradeEnabled { get; set; }
         public bool XPBoosted { get => _xpBoosted.GetValue(); set => _xpBoosted.SetValue(value); }
         public int XPBoostTime { get; set; }
 
@@ -120,7 +120,6 @@ namespace wServer.core.objects
         private SV<int> _stars;
         private SV<int> _texture1;
         private SV<int> _texture2;
-        private SV<bool> _upgradeEnabled;
         private SV<bool> _xpBoosted;
         internal class APIRank{ public int accID; public int charID; }
         internal class APIResp{ [JsonProperty("rank")] public string charRank { get; set; }}
@@ -155,18 +154,9 @@ namespace wServer.core.objects
             _hasBackpack = new SV<bool>(this, StatDataType.HasBackpack, client.Character.HasBackpack, true);
             _oxygenBar = new SV<int>(this, StatDataType.OxygenBar, -1, true);
             _baseStat = new SV<int>(this, StatDataType.BaseStat, client.Account.SetBaseStat, true);
-            _maxedLife = new SV<bool>(this, StatDataType.MaxedLife, client.Character.MaxedLife, true);
-            _maxedMana = new SV<bool>(this, StatDataType.MaxedMana, client.Character.MaxedMana, true);
-            _maxedAtt = new SV<bool>(this, StatDataType.MaxedAtt, client.Character.MaxedAtt, true);
-            _maxedDef = new SV<bool>(this, StatDataType.MaxedDef, client.Character.MaxedDef, true);
-            _maxedSpd = new SV<bool>(this, StatDataType.MaxedSpd, client.Character.MaxedSpd, true);
-            _maxedDex = new SV<bool>(this, StatDataType.MaxedDex, client.Character.MaxedDex, true);
-            _maxedVit = new SV<bool>(this, StatDataType.MaxedVit, client.Character.MaxedVit, true);
-            _maxedWis = new SV<bool>(this, StatDataType.MaxedWis, client.Character.MaxedWis, true);
             
             _colornamechat = new SV<int>(this, StatDataType.ColorNameChat, 0);
             _colorchat = new SV<int>(this, StatDataType.ColorChat, 0);
-            _upgradeEnabled = new SV<bool>(this, StatDataType.UpgradeEnabled, client.Character.UpgradeEnabled, true);
             _partyId = new SV<int>(this, StatDataType.PartyId, client.Account.PartyId, true);
 
             var addition = 0;
@@ -280,96 +270,6 @@ namespace wServer.core.objects
         }
 
         public override bool CanBeSeenBy(Player player) => Client?.Account != null && Client.Account.Hidden ? false : true;
-
-        public void CheckMaxedStats()
-        {
-            var classes = GameServer?.Resources?.GameData?.Classes;
-
-            if (classes == null)
-                return;
-
-            if (!classes.ContainsKey(ObjectType))
-            {
-                StaticLogger.Instance.Error($"There is no class for object type '{ObjectType}'.");
-                return;
-            }
-
-            var desc = classes[ObjectType];
-
-            if (desc == null)
-            {
-                StaticLogger.Instance.Error($"There is no player description for object type '{ObjectType}'.");
-                return;
-            }
-
-            var statInfo = desc.Stats;
-            var chr = Client.Character;
-
-            if (Stats.Base[0] >= statInfo[0].MaxValue)
-            {
-                if (!MaxedLife)
-                {
-                    MaxedLife = true;
-                    chr.MaxedLife = MaxedLife;
-                }
-            }
-            if (Stats.Base[1] >= statInfo[1].MaxValue)
-            {
-                if (!MaxedMana)
-                {
-                    MaxedMana = true;
-                    chr.MaxedMana = MaxedMana;
-                }
-            }
-            if (Stats.Base[2] >= statInfo[2].MaxValue)
-            {
-                if (!MaxedAtt)
-                {
-                    MaxedAtt = true;
-                    chr.MaxedAtt = MaxedAtt;
-                }
-            }
-            if (Stats.Base[3] >= statInfo[3].MaxValue)
-            {
-                if (!MaxedDef)
-                {
-                    MaxedDef = true;
-                    chr.MaxedDef = MaxedDef;
-                }
-            }
-            if (Stats.Base[4] >= statInfo[4].MaxValue)
-            {
-                if (!MaxedSpd)
-                {
-                    MaxedSpd = true;
-                    chr.MaxedSpd = MaxedSpd;
-                }
-            }
-            if (Stats.Base[5] >= statInfo[5].MaxValue)
-            {
-                if (!MaxedDex)
-                {
-                    MaxedDex = true;
-                    chr.MaxedDex = MaxedDex;
-                }
-            }
-            if (Stats.Base[6] >= statInfo[6].MaxValue)
-            {
-                if (!MaxedVit)
-                {
-                    MaxedVit = true;
-                    chr.MaxedVit = MaxedVit;
-                }
-            }
-            if (Stats.Base[7] >= statInfo[7].MaxValue)
-            {
-                if (!MaxedWis)
-                {
-                    MaxedWis = true;
-                    chr.MaxedWis = MaxedWis;
-                }
-            }
-        }
 
         public void Damage(int dmg, Entity src)
         {
@@ -795,9 +695,6 @@ namespace wServer.core.objects
                 GroundEffect(time);
                 TickActivateEffects(time);
 
-                /* Skill Tree */
-                CheckMaxedStats();
-
                 /* Item Effects */
                 TimeEffects(time);
                 SpecialEffects();
@@ -855,31 +752,20 @@ namespace wServer.core.objects
                 _canApplyEffect3 = time * 1000;
         }
 
-        protected override void ExportStats(IDictionary<StatDataType, object> stats)
+        protected override void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)
         {
-            base.ExportStats(stats);
-            stats[StatDataType.AccountId] = AccountId;
-            stats[StatDataType.Experience] = Experience - GetLevelExp(Level);
-            stats[StatDataType.ExperienceGoal] = ExperienceGoal;
-            stats[StatDataType.Level] = Level;
-            stats[StatDataType.CurrentFame] = CurrentFame;
-            stats[StatDataType.Fame] = Fame;
-            stats[StatDataType.FameGoal] = FameGoal;
-            stats[StatDataType.Stars] = Stars;
-            stats[StatDataType.Guild] = Guild;
-            stats[StatDataType.GuildRank] = GuildRank;
-            stats[StatDataType.Rank] = (int)Rank;
-            stats[StatDataType.Credits] = Credits;
-            stats[StatDataType.NameChosen] = (Client.Account?.NameChosen ?? NameChosen) ? 1 : 0;
-            stats[StatDataType.Texture1] = Texture1;
-            stats[StatDataType.Texture2] = Texture2;
-            stats[StatDataType.Skin] = Skin;
-            stats[StatDataType.Glow] = Glow;
-            stats[StatDataType.MP] = MP;
-            stats[StatDataType.Inventory0] = Inventory[0]?.ObjectType ?? -1;
-            stats[StatDataType.Inventory1] = Inventory[1]?.ObjectType ?? -1;
-            stats[StatDataType.Inventory2] = Inventory[2]?.ObjectType ?? -1;
-            stats[StatDataType.Inventory3] = Inventory[3]?.ObjectType ?? -1;
+            base.ExportStats(stats, isOtherPlayer);
+            if (!isOtherPlayer)
+            {
+                ExportSelf(stats);
+                ExportOther(stats);
+                return;
+            }
+            ExportOther(stats);
+        }
+
+        private void ExportSelf(IDictionary<StatDataType, object> stats)
+        {
             stats[StatDataType.Inventory4] = Inventory[4]?.ObjectType ?? -1;
             stats[StatDataType.Inventory5] = Inventory[5]?.ObjectType ?? -1;
             stats[StatDataType.Inventory6] = Inventory[6]?.ObjectType ?? -1;
@@ -896,16 +782,12 @@ namespace wServer.core.objects
             stats[StatDataType.BackPack5] = Inventory[17]?.ObjectType ?? -1;
             stats[StatDataType.BackPack6] = Inventory[18]?.ObjectType ?? -1;
             stats[StatDataType.BackPack7] = Inventory[19]?.ObjectType ?? -1;
-            stats[StatDataType.MaximumHP] = Stats[0];
-            stats[StatDataType.MaximumMP] = Stats[1];
             stats[StatDataType.Attack] = Stats[2];
             stats[StatDataType.Defense] = Stats[3];
             stats[StatDataType.Speed] = Stats[4];
             stats[StatDataType.Dexterity] = Stats[5];
             stats[StatDataType.Vitality] = Stats[6];
             stats[StatDataType.Wisdom] = Stats[7];
-            stats[StatDataType.HPBoost] = Stats.Boost[0];
-            stats[StatDataType.MPBoost] = Stats.Boost[1];
             stats[StatDataType.AttackBonus] = Stats.Boost[2];
             stats[StatDataType.DefenseBonus] = Stats.Boost[3];
             stats[StatDataType.SpeedBonus] = Stats.Boost[4];
@@ -915,27 +797,10 @@ namespace wServer.core.objects
             stats[StatDataType.HealthStackCount] = HealthPots.Count;
             stats[StatDataType.MagicStackCount] = MagicPots.Count;
             stats[StatDataType.HasBackpack] = HasBackpack ? 1 : 0;
-            stats[StatDataType.OxygenBar] = OxygenBar;
             stats[StatDataType.LDBoostTime] = LDBoostTime / 1000;
             stats[StatDataType.XPBoost] = (XPBoostTime != 0) ? 1 : 0;
             stats[StatDataType.XPBoostTime] = XPBoostTime / 1000;
             stats[StatDataType.BaseStat] = Client?.Account?.SetBaseStat ?? 0;
-            stats[StatDataType.MaxedLife] = MaxedLife;
-            stats[StatDataType.MaxedMana] = MaxedMana;
-            stats[StatDataType.MaxedAtt] = MaxedAtt;
-            stats[StatDataType.MaxedDef] = MaxedDef;
-            stats[StatDataType.MaxedSpd] = MaxedSpd;
-            stats[StatDataType.MaxedDex] = MaxedDex;
-            stats[StatDataType.MaxedVit] = MaxedVit;
-            stats[StatDataType.MaxedWis] = MaxedWis;
-            stats[StatDataType.ColorNameChat] = ColorNameChat;
-            stats[StatDataType.ColorChat] = ColorChat;
-            stats[StatDataType.UpgradeEnabled] = UpgradeEnabled ? 1 : 0;
-            stats[StatDataType.PartyId] = Client.Account.PartyId;
-            stats[StatDataType.InventoryData0] = Inventory.Data[0]?.GetData() ?? "{}";
-            stats[StatDataType.InventoryData1] = Inventory.Data[1]?.GetData() ?? "{}";
-            stats[StatDataType.InventoryData2] = Inventory.Data[2]?.GetData() ?? "{}";
-            stats[StatDataType.InventoryData3] = Inventory.Data[3]?.GetData() ?? "{}";
             stats[StatDataType.InventoryData4] = Inventory.Data[4]?.GetData() ?? "{}";
             stats[StatDataType.InventoryData5] = Inventory.Data[5]?.GetData() ?? "{}";
             stats[StatDataType.InventoryData6] = Inventory.Data[6]?.GetData() ?? "{}";
@@ -952,23 +817,64 @@ namespace wServer.core.objects
             stats[StatDataType.BackPackData5] = Inventory.Data[17]?.GetData() ?? "{}";
             stats[StatDataType.BackPackData6] = Inventory.Data[18]?.GetData() ?? "{}";
             stats[StatDataType.BackPackData7] = Inventory.Data[19]?.GetData() ?? "{}";
-
-            stats[StatDataType.SPS_LIFE_COUNT] = SPSLifeCount;
-            stats[StatDataType.SPS_MANA_COUNT] = SPSManaCount;
-            stats[StatDataType.SPS_ATTACK_COUNT] = SPSAttackCount;
-            stats[StatDataType.SPS_DEFENSE_COUNT] = SPSDefenseCount;
-            stats[StatDataType.SPS_DEXTERITY_COUNT] = SPSDexterityCount;
-            stats[StatDataType.SPS_WISDOM_COUNT] = SPSWisdomCount;
-            stats[StatDataType.SPS_SPEED_COUNT] = SPSSpeedCount;
-            stats[StatDataType.SPS_VITALITY_COUNT] = SPSVitalityCount;
-            stats[StatDataType.SPS_LIFE_COUNT_MAX] = SPSLifeCountMax;
-            stats[StatDataType.SPS_MANA_COUNT_MAX] = SPSManaCountMax;
-            stats[StatDataType.SPS_ATTACK_COUNT_MAX] = SPSAttackCountMax;
-            stats[StatDataType.SPS_DEFENSE_COUNT_MAX] = SPSDefenseCountMax;
-            stats[StatDataType.SPS_DEXTERITY_COUNT_MAX] = SPSDexterityCountMax;
-            stats[StatDataType.SPS_WISDOM_COUNT_MAX] = SPSWisdomCountMax;
-            stats[StatDataType.SPS_SPEED_COUNT_MAX] = SPSSpeedCountMax;
-            stats[StatDataType.SPS_VITALITY_COUNT_MAX] = SPSVitalityCountMax;
+            stats[StatDataType.Credits] = Credits;
+            if (World is VaultWorld)
+            {
+                stats[StatDataType.SPS_LIFE_COUNT] = SPSLifeCount;
+                stats[StatDataType.SPS_MANA_COUNT] = SPSManaCount;
+                stats[StatDataType.SPS_ATTACK_COUNT] = SPSAttackCount;
+                stats[StatDataType.SPS_DEFENSE_COUNT] = SPSDefenseCount;
+                stats[StatDataType.SPS_DEXTERITY_COUNT] = SPSDexterityCount;
+                stats[StatDataType.SPS_WISDOM_COUNT] = SPSWisdomCount;
+                stats[StatDataType.SPS_SPEED_COUNT] = SPSSpeedCount;
+                stats[StatDataType.SPS_VITALITY_COUNT] = SPSVitalityCount;
+                stats[StatDataType.SPS_LIFE_COUNT_MAX] = SPSLifeCountMax;
+                stats[StatDataType.SPS_MANA_COUNT_MAX] = SPSManaCountMax;
+                stats[StatDataType.SPS_ATTACK_COUNT_MAX] = SPSAttackCountMax;
+                stats[StatDataType.SPS_DEFENSE_COUNT_MAX] = SPSDefenseCountMax;
+                stats[StatDataType.SPS_DEXTERITY_COUNT_MAX] = SPSDexterityCountMax;
+                stats[StatDataType.SPS_WISDOM_COUNT_MAX] = SPSWisdomCountMax;
+                stats[StatDataType.SPS_SPEED_COUNT_MAX] = SPSSpeedCountMax;
+                stats[StatDataType.SPS_VITALITY_COUNT_MAX] = SPSVitalityCountMax;
+            }
+        }
+        // minimal export for other players
+        // things we wont see or need to know dont get exported
+        private void ExportOther(IDictionary<StatDataType, object> stats)
+        {
+            stats[StatDataType.AccountId] = AccountId;
+            stats[StatDataType.Experience] = Experience - GetLevelExp(Level);
+            stats[StatDataType.ExperienceGoal] = ExperienceGoal;
+            stats[StatDataType.Level] = Level;
+            stats[StatDataType.CurrentFame] = CurrentFame;
+            stats[StatDataType.Fame] = Fame;
+            stats[StatDataType.FameGoal] = FameGoal;
+            stats[StatDataType.Stars] = Stars;
+            stats[StatDataType.Guild] = Guild;
+            stats[StatDataType.GuildRank] = GuildRank;
+            stats[StatDataType.NameChosen] = (Client.Account?.NameChosen ?? NameChosen) ? 1 : 0;
+            stats[StatDataType.Texture1] = Texture1;
+            stats[StatDataType.Texture2] = Texture2;
+            stats[StatDataType.Skin] = Skin;
+            stats[StatDataType.Glow] = Glow;
+            stats[StatDataType.MP] = MP;
+            stats[StatDataType.Inventory0] = Inventory[0]?.ObjectType ?? -1;
+            stats[StatDataType.Inventory1] = Inventory[1]?.ObjectType ?? -1;
+            stats[StatDataType.Inventory2] = Inventory[2]?.ObjectType ?? -1;
+            stats[StatDataType.Inventory3] = Inventory[3]?.ObjectType ?? -1;
+            stats[StatDataType.Inventory4] = Inventory[4]?.ObjectType ?? -1;
+            stats[StatDataType.MaximumHP] = Stats[0];
+            stats[StatDataType.MaximumMP] = Stats[1];
+            stats[StatDataType.HPBoost] = Stats.Boost[0];
+            stats[StatDataType.MPBoost] = Stats.Boost[1];
+            stats[StatDataType.OxygenBar] = OxygenBar;
+            stats[StatDataType.ColorNameChat] = ColorNameChat;
+            stats[StatDataType.ColorChat] = ColorChat;
+            stats[StatDataType.PartyId] = Client.Account.PartyId;
+            stats[StatDataType.InventoryData0] = Inventory.Data[0]?.GetData() ?? "{}";
+            stats[StatDataType.InventoryData1] = Inventory.Data[1]?.GetData() ?? "{}";
+            stats[StatDataType.InventoryData2] = Inventory.Data[2]?.GetData() ?? "{}";
+            stats[StatDataType.InventoryData3] = Inventory.Data[3]?.GetData() ?? "{}";
         }
 
         private void CerberusClaws(TickTime time)

@@ -30,14 +30,6 @@ namespace common.database
         public int LDBoostTime { get => GetValue<int>("ldBoost"); set => SetValue("ldBoost", value); }
         public int Level { get => GetValue<int>("level"); set => SetValue("level", value); }
         public int MagicStackCount { get => GetValue<int>("mpPotCount"); set => SetValue("mpPotCount", value); }
-        public bool MaxedAtt { get => GetValue<bool>("maxedAtt"); set => SetValue("maxedAtt", value); }
-        public bool MaxedDef { get => GetValue<bool>("maxedDef"); set => SetValue("maxedDef", value); }
-        public bool MaxedDex { get => GetValue<bool>("maxedDex"); set => SetValue("maxedDex", value); }
-        public bool MaxedLife { get => GetValue<bool>("maxedLife"); set => SetValue("maxedLife", value); }
-        public bool MaxedMana { get => GetValue<bool>("maxedMana"); set => SetValue("maxedMana", value); }
-        public bool MaxedSpd { get => GetValue<bool>("maxedSpd"); set => SetValue("maxedSpd", value); }
-        public bool MaxedVit { get => GetValue<bool>("maxedVit"); set => SetValue("maxedVit", value); }
-        public bool MaxedWis { get => GetValue<bool>("maxedWis"); set => SetValue("maxedWis", value); }
         public int MP { get => GetValue<int>("mp"); set => SetValue("mp", value); }
         public ushort ObjectType { get => GetValue<ushort>("charType"); set => SetValue("charType", value); }
         public int PetId { get => GetValue<int>("petId"); set => SetValue("petId", value); }

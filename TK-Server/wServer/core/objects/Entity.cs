@@ -249,12 +249,10 @@ namespace wServer.core.objects
             IsRemovedFromWorld = true;
         }
 
-        public ObjectStats ExportStats()
+        public ObjectStats ExportStats(bool isOtherPlayer)
         {
             var stats = new Dictionary<StatDataType, object>();
-
-            ExportStats(stats);
-
+            ExportStats(stats, isOtherPlayer);
             return new ObjectStats()
             {
                 Id = Id,
@@ -478,22 +476,20 @@ namespace wServer.core.objects
                 if (!objDescs.ContainsKey(tile.ObjType))
                 {
                     StaticLogger.Instance.Error($"There is no object description for tile object type '{tile.ObjType}'.");
-
                     return false;
                 }
 
                 var objDesc = objDescs[tile.ObjType];
-
                 return objDesc != null && objDesc.EnemyOccupySquare;
             }
 
             return false;
         }
 
-        public ObjectDef ToDefinition() => new ObjectDef()
+        public ObjectDef ToDefinition(bool isOtherPlayer = false) => new ObjectDef()
         {
             ObjectType = ObjectType,
-            Stats = ExportStats()
+            Stats = ExportStats(isOtherPlayer)
         };
 
         public Position? TryGetHistory(long ticks)
@@ -516,7 +512,7 @@ namespace wServer.core.objects
             Move(pos.X, pos.Y);
         }
 
-        protected virtual void ExportStats(IDictionary<StatDataType, object> stats)
+        protected virtual void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)
         {
             stats[StatDataType.Name] = Name;
             stats[StatDataType.Size] = Size;

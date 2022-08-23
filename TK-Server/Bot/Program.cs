@@ -45,6 +45,8 @@ namespace Bot
 
         public int MapSize { get; set; }
 
+        public int ContainerType { get; set; } = 0xa97;
+        public byte BulletId { get; set; } = 1;
         public Bot(string guid, string password, int gameId, int characterId)
         {
             Guid = guid;
@@ -55,8 +57,7 @@ namespace Bot
             Socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             try
             {
-                //Socket.Connect("104.194.8.2", 2001);
-                Socket.Connect("127.0.0.1", 2002);
+                Socket.Connect("104.194.8.2", 2001);
             }
             catch
             {
@@ -68,7 +69,6 @@ namespace Bot
 
         private byte[] ReceiveLengthBuffer;
         private readonly SocketAsyncEventArgs ReceiveSocketAsyncEventArgs = new SocketAsyncEventArgs();
-        private readonly SocketAsyncEventArgs SendSocketAsyncEventArgs = new SocketAsyncEventArgs();
 
         public void Start()
         {
@@ -196,8 +196,8 @@ namespace Bot
         }
 
         public int playerId = -1;
-        public float x = 0.0f;
-        public float y = 0.0f;
+        public float x = 53.5f;
+        public float y = 45.5f;
         public int lastTickId = 0;
         public float angle = 0.0f;
 
@@ -290,12 +290,9 @@ namespace Bot
                                 for (var i = 0; i < statuses.Capacity; i++)
                                     statuses.Add(new ObjectStatusData(rdr));
 
-                                if (Random.NextDouble() < 0.2)
-                                {
-                                    angle += 12;
-                                    x = GameId == -2 ? 53.5f : (MapSize / 2) + (float)Math.Cos(angle) * 0.4f * 5f * (tickTime / 1000.0f) * 5.0f;
-                                    y = GameId == -2 ? 45.5f : (MapSize  / 2) + (float)Math.Sin(angle) * 0.4f * 5f * (tickTime / 1000.0f) * 5.0f;
-                                }
+                                angle += 12;
+                                x = GameId == -2 ? 53.5f : (MapSize / 2) + (float)Math.Cos(angle) * 0.4f * 5f * 0.2f * 5.0f;
+                                y = GameId == -2 ? 45.5f : (MapSize / 2) + (float)Math.Sin(angle) * 0.4f * 5f * 0.2f * 5.0f;
 
                                 // todo
                                 var move = MessageHelper.Move(lastTickId, lastUpdate, x, y);
@@ -360,10 +357,12 @@ namespace Bot
                 foreach (var bot in Bots)
                     bot.HandlePackets();
 
-                if (sw.ElapsedMilliseconds - last >= 32 && Index < 1024)
+                if (sw.ElapsedMilliseconds - last >= 32 && Index < 1000)
                 {
-                    var place = 1 + (Index / 85);
+                    var place = Index < 300 ? -2 : 1 + (Index / 83);
                     AddBot(place);
+
+                    //AddBot(1);
 
                     last = sw.ElapsedMilliseconds;
                 }
@@ -735,6 +734,18 @@ namespace Bot
             ret.WriteFloat(x);
             ret.WriteFloat(y);
             ret.WriteInt16(0);
+            return ret;
+        }
+
+        public static OutgoingMessageData Shoot(int time, byte bulletId, int containerType, float x, float y, float angle)
+        {
+            var ret = new OutgoingMessageData(PLAYERSHOOT);
+            ret.WriteInt32(time);
+            ret.WriteByte(bulletId);
+            ret.WriteInt16(containerType);
+            ret.WriteFloat(x);
+            ret.WriteFloat(y);
+            ret.WriteFloat(angle);
             return ret;
         }
     }

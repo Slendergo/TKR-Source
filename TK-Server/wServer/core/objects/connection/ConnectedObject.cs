@@ -11,11 +11,11 @@ namespace wServer.core.objects.connection
 
         public override bool HitByProjectile(Projectile projectile, TickTime time) => true;
 
-        protected override void ExportStats(IDictionary<StatDataType, object> stats)
+        protected override void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)
         {
             stats[StatDataType.ObjectConnection] = (int)Connection.Bits;
 
-            base.ExportStats(stats);
+            base.ExportStats(stats, isOtherPlayer);
         }
     }
 }

@@ -52,7 +52,7 @@ namespace wServer.core
             World = world;
         }
 
-        private void CreateNewRealm()
+        public void CreateNewRealm()
         {
             lock (Access)
             {

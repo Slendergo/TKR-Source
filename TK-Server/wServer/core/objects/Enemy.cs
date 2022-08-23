@@ -21,14 +21,32 @@ namespace wServer.core.objects
         private Position? pos;
         
         protected SV<int> _defense;
+        public int Defense
+        {
+            get => _defense.GetValue(); 
+            set => _defense.SetValue(value);
+        }
 
-        public int Defense { get => _defense.GetValue(); set => _defense.SetValue(value); }
+        private SV<int> _glowcolor;
+        public int GlowEnemy
+        {
+            get => _glowcolor.GetValue(); 
+            set => _glowcolor.SetValue(value);
+        }
+
 
         public Enemy(GameServer manager, ushort objType) : base(manager, objType)
         {
             _defense = new SV<int>(this, StatDataType.Defense, ObjectDesc.Defense);
             stat = ObjectDesc.MaxHP == 0;
             DamageCounter = new DamageCounter(this);
+            _glowcolor = new SV<int>(this, StatDataType.GlowEnemy, 0);
+        }
+
+        protected override void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)
+        {
+            base.ExportStats(stats, isOtherPlayer);
+            stats[StatDataType.GlowEnemy] = GlowEnemy;
         }
 
         public bool Epic { get; set; }

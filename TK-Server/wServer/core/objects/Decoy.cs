@@ -61,12 +61,12 @@ namespace wServer.core.objects
             base.Tick(ref time);
         }
 
-        protected override void ExportStats(IDictionary<StatDataType, object> stats)
+        protected override void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)
         {
             stats[StatDataType.Texture1] = player.Texture1;
             stats[StatDataType.Texture2] = player.Texture2;
 
-            base.ExportStats(stats);
+            base.ExportStats(stats, isOtherPlayer);
         }
 
         private Vector2 GetRandDirection()

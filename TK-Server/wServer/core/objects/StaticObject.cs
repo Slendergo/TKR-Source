@@ -91,11 +91,11 @@ namespace wServer.core.objects
             return true;
         }
 
-        protected override void ExportStats(IDictionary<StatDataType, object> stats)
+        protected override void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)
         {
             stats[StatDataType.HP] = (!Vulnerable) ? int.MaxValue : HP;
 
-            base.ExportStats(stats);
+            base.ExportStats(stats, isOtherPlayer);
         }
     }
 }

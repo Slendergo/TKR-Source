@@ -28,11 +28,11 @@ namespace wServer.core.objects
             _engineTime = new SV<int>(this, StatDataType.EngineTime, nexus.EngineStageTime);
         }
 
-        protected override void ExportStats(IDictionary<StatDataType, object> stats)
+        protected override void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)
         {
             stats[StatDataType.EngineValue] = CurrentAmount;
             stats[StatDataType.EngineTime] = EngineTime;
-            base.ExportStats(stats);
+            base.ExportStats(stats, isOtherPlayer);
         }
     }
 }

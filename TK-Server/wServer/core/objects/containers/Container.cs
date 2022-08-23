@@ -43,7 +43,7 @@ namespace wServer.core.objects
             base.Tick(ref time);
         }
 
-        protected override void ExportStats(IDictionary<StatDataType, object> stats)
+        protected override void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)
         {
             if (Inventory == null)
                 return;
@@ -66,7 +66,7 @@ namespace wServer.core.objects
             stats[StatDataType.InventoryData7] = Inventory.Data[7]?.GetData() ?? "{}";
             stats[StatDataType.OwnerAccountId] = BagOwners.Length == 1 ? BagOwners[0] : -1;
 
-            base.ExportStats(stats);
+            base.ExportStats(stats, isOtherPlayer);
         }
 
         private void Initialize(RInventory dbLink)

@@ -83,14 +83,6 @@ public class StatData
    public static const LD_TIMER_STAT:int = 78;
    public static const BASESTAT:int = 79;
    public static const POINTS:int = 80;
-   public static const MAXEDLIFE:int = 81;
-   public static const MAXEDMANA:int = 82;
-   public static const MAXEDATT:int = 83;
-   public static const MAXEDDEF:int = 84;
-   public static const MAXEDSPD:int = 85;
-   public static const MAXEDDEX:int = 86;
-   public static const MAXEDVIT:int = 87;
-   public static const MAXEDWIS:int = 88;
    public static const CHAT_COLOR:int = 113;
    public static const NAME_CHAT_COLOR:int = 114;
    public static const GLOW_ENEMY_COLOR:int = 115;

@@ -248,8 +248,6 @@ namespace wServer.core.objects
             });
 
             LoadTalismanData();
-
-            ApplyConditionEffect(ConditionEffectIndex.Invincible, -1);
         }
 
         public bool ApplyEffectCooldown(int slot)

@@ -263,12 +263,6 @@ namespace wServer.core.objects
         {
             base.Init(owner);
 
-            if (ObjectDesc.StunImmune)
-                ApplyConditionEffect(ConditionEffectIndex.StunImmune, -1);
-
-            if (ObjectDesc.StasisImmune)
-                ApplyConditionEffect(ConditionEffectIndex.StasisImmune, -1);
-
             if (ObjectDesc.Quest || ObjectDesc.Hero || ObjectDesc.Encounter)
                 ClasifyEnemy();
         }

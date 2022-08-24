@@ -15,7 +15,7 @@ package kabam.rotmg.appengine.impl
       public var setup:ApplicationSetup;
       
       private var isEncrypted:Boolean;
-      
+
       private var maxRetries:int;
       
       private var dataFormat:String;
@@ -59,7 +59,7 @@ package kabam.rotmg.appengine.impl
          {
             target = "/" + target;
          }
-         return this.setup.getAppEngineUrl() + target;
+         return isEncrypted ? this.setup.getAppEngineUrlEncrypted() : this.setup.getAppEngineUrl() + target;
       }
    }
 }

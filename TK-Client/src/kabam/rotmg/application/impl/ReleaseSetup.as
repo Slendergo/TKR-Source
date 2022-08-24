@@ -7,7 +7,9 @@ package kabam.rotmg.application.impl
    {
 //      private const CDN_APPENGINE:String = "http://104.194.8.2:2000"; //For release use "http://{ServerIP}:2000"
 //      private const CDN_STATICS:String = "http://104.194.8.2:2000"; //For release use "http://{ServerIP}:2000"
+//      private const CDN_APPENGINE_S:String = "https://104.194.8.2:2000"; //For release use "http://{ServerIP}:2000"
       private const CDN_APPENGINE:String = "http://127.0.0.1:2000"; //For release use "http://{ServerIP}:2000"
+      private const CDN_APPENGINE_S:String = "https://127.0.0.1:2000"; //For release use "http://{ServerIP}:2000"
       private const CDN_STATICS:String = "http://127.0.0.1:2000"; //For release use "http://{ServerIP}:2000"
       private const BUILD_LABEL:String = "TKR - build: {VERSION}{MINOR}";
 
@@ -19,6 +21,11 @@ package kabam.rotmg.application.impl
       public function getAppEngineUrl(toStatics:Boolean = false) : String
       {
          return toStatics ? this.CDN_STATICS : this.CDN_APPENGINE;
+      }
+
+      public function getAppEngineUrlEncrypted() : String
+      {
+         return CDN_APPENGINE_S;
       }
 
       public function getBuildLabel() : String

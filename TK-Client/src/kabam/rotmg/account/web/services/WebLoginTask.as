@@ -26,6 +26,7 @@ package kabam.rotmg.account.web.services
       
       override protected function startTask() : void
       {
+         this.client.setSendEncrypted(true);
          this.client.complete.addOnce(this.onComplete);
          this.client.sendRequest("/account/verify",{
             "guid":this.data.username,

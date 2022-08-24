@@ -16,29 +16,60 @@ namespace wServer.logic
             new State(
                 new ScaleHP2(20),
                     new State("Pause",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
                         new PlayerWithinTransition(10, "Start")
                         ),
                     new State("Start",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                         new Taunt("AROOOOOOOOOOOOO!"),
                         new TimedTransition(3000, "Fight")
                         ),
                     new State("Fight",
-                        new Prioritize(
-                            new Chase(6, coolDown: 0),
-                             new Shoot(22, count: 1, projectileIndex: 0, coolDown: 1000)
-                         ),
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
-                        new ConditionalEffect(ConditionEffectIndex.Armored),
-                       // new Roar(20, 75, 0x123456, 20, ConditionEffectIndex.Stunned, 5, 5000),
-                        new Shoot(35, 10, shootAngle: 45, projectileIndex: 3, angleOffset: 10, coolDown: 1500, coolDownOffset: 1000),
-                        new Chase(coolDown: 300),
-                        new TimedTransition(1000,"Suicide")
+                        new RemoveConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new StayCloseToSpawn(3, 15),
+                        new Wander(0.4),
+                        new Shoot(12, 1, projectileIndex: 3, coolDown: 500, predictive: 1.1),
+                        new Shoot(15, 3, projectileIndex: 4, fixedAngle: 45, shootAngle: 10, rotateAngle: 25, coolDown: 100),
+                        new Shoot(15, 3, projectileIndex: 4, fixedAngle: 135, shootAngle: 10, rotateAngle: 25, coolDown: 100),
+                        new Shoot(15, 3, projectileIndex: 4, fixedAngle: 225, shootAngle: 10, rotateAngle: 25, coolDown: 100),
+                        new Shoot(15, 3, projectileIndex: 4, fixedAngle: 315, shootAngle: 10, rotateAngle: 25, coolDown: 100),
+                        new HpLessTransition(0.50, "Fight 2")
                         ),
-                   new State("Suicide",
-                        new Shoot(15, 36, shootAngle: 10, projectileIndex: 3, angleOffset: 10, predictive: 0, coolDown: 10000, coolDownOffset: 6000),
-                        new Suicide()
+                    new State("Fight 2",
+                        new ReturnToSpawn(1),
+                        new TimedTransition(2500, "Fight 2.1")
+                        ),
+                    new State ("Fight 2.1",
+                    new Shoot(15, 8, projectileIndex: 5, coolDown: 1000),
+                    new Shoot(15, 4, projectileIndex: 2, shootAngle: 90, fixedAngle: 0, coolDown: 2800, coolDownOffset: 0),
+                    new Shoot(15, 4, projectileIndex: 2, shootAngle: 90, fixedAngle: 6, coolDown: 2800, coolDownOffset: 200),
+                    new Shoot(15, 4, projectileIndex: 2, shootAngle: 90, fixedAngle: 12, coolDown: 2800, coolDownOffset: 400),
+                    new Shoot(15, 4, projectileIndex: 2, shootAngle: 90, fixedAngle: 18, coolDown: 2800, coolDownOffset: 600),
+                    new Shoot(15, 4, projectileIndex: 2, shootAngle: 90, fixedAngle: 24, coolDown: 2800, coolDownOffset: 800),
+                    new Shoot(15, 4, projectileIndex: 2, shootAngle: 90, fixedAngle: 30, coolDown: 2800, coolDownOffset: 1000),
+                    new Shoot(15, 4, projectileIndex: 2, shootAngle: 90, fixedAngle: 36, coolDown: 2800, coolDownOffset: 1200),
+                    new Shoot(15, 4, projectileIndex: 2, shootAngle: 90, fixedAngle: 42, coolDown: 2800, coolDownOffset: 1400),
+                    new Shoot(15, 4, projectileIndex: 2, shootAngle: 90, fixedAngle: 48, coolDown: 2800, coolDownOffset: 1600),
+                    new Shoot(15, 4, projectileIndex: 2, shootAngle: 90, fixedAngle: 54, coolDown: 2800, coolDownOffset: 1800),
+                    new Shoot(15, 4, projectileIndex: 2, shootAngle: 90, fixedAngle: 60, coolDown: 2800, coolDownOffset: 2000),
+                    new Shoot(15, 4, projectileIndex: 2, shootAngle: 90, fixedAngle: 66, coolDown: 2800, coolDownOffset: 2200),
+                    new Shoot(15, 4, projectileIndex: 2, shootAngle: 90, fixedAngle: 72, coolDown: 2800, coolDownOffset: 2400),
+                    new Shoot(15, 4, projectileIndex: 2, shootAngle: 90, fixedAngle: 78, coolDown: 2800, coolDownOffset: 2600),
+                    new Shoot(15, 4, projectileIndex: 2, shootAngle: 90, fixedAngle: 84, coolDown: 2800, coolDownOffset: 2800),
+                    new HpLessTransition(0.10, "Fight 3")
+                        ),
+                    new State("Fight 3",
+                        new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                        new ChangeSize(10, 150),
+                        new HealSelf(coolDown: 500, amount: 25, percentage: true),
+                        new TimedTransition(5000, "Fight 3.1")
+                        ),
+                    new State("Fight 3.1",
+                        new RemoveConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new Shoot(15, 8, projectileIndex: 5, coolDown: 1000),
+                        new Shoot(15, 2, projectileIndex: 0, shootAngle: 15, coolDown: 400),
+                        new Shoot(15, 1, projectileIndex: 1, coolDown: 1000, coolDownOffset: 0),
+                        new Shoot(15, 2, projectileIndex: 1, shootAngle: 10, coolDown: 1000, coolDownOffset: 200),
+                        new Shoot(15, 2, projectileIndex: 1, shootAngle: 20, coolDown: 1000, coolDownOffset: 400)
                          )
                     ),
              new Threshold(0.001,
@@ -48,10 +79,6 @@ namespace wServer.logic
                     new ItemLoot("Cerberus's Ribcage", 0.0015),
                     new ItemLoot("Beast Gem", 0.0015),
                     new ItemLoot("Heart of the Beast", 0.0015)
-                ),
-                  new Threshold(0.1,
-                    new ItemLoot("Cerberus's Left Claw", .0002),
-                    new ItemLoot("Cerberus's Right Claw", .0002)
                   
                 )
             )

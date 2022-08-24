@@ -776,62 +776,74 @@
 			<File>Custom32x32Encounters</File>
 			<Index>12</Index>
 		</AnimatedTexture>
-		<Size>150</Size>
+		<Size>120</Size>
 		<HitSound>monster/dragons_hit</HitSound>
 		<DeathSound>monster/djinn_hit</DeathSound>
-		<MaxHitPoints>1500000</MaxHitPoints>
+		<MaxHitPoints>100000</MaxHitPoints>
 		<Defense>55</Defense>
 		<Experience>100000</Experience>
 		<StasisImmune />
 		<ParalyzeImmune />
 		<Projectile id="0">
 			<ObjectId>Cerebrus's Claw</ObjectId>
-			<Damage>150</Damage>
-			<Speed>100</Speed>
-			<LifetimeMS>1500</LifetimeMS>
-			<ConditionEffect duration="5">Bleeding</ConditionEffect>
-			<Size>300</Size>
+			<Damage>350</Damage>
+			<Speed>120</Speed>
+			<Speed>120</Speed>
+			<LifetimeMS>1000</LifetimeMS>
+			<Amplitude>2</Amplitude>
+			<Frequency>0.47</Frequency>
+			<Size>250</Size>
 			<ArmorPiercing />
 		</Projectile>
 		<Projectile id="1">
 			<ObjectId>Cerebrus's Claw 2</ObjectId>
 			<Damage>90</Damage>
-			<Speed>200</Speed>
+			<Speed>85</Speed>
 			<LifetimeMS>2000</LifetimeMS>
 			<ConditionEffect duration="2">Quiet</ConditionEffect>
-			<ArmorPiercing />
 			<MultiHit />
-			<Size>250</Size>
+			<Size>130</Size>
 		</Projectile>
 		<Projectile id="2">
 			<ObjectId>Cerebrus's Ember</ObjectId>
-			<Damage>120</Damage>
-			<Speed>100</Speed>
-			<LifetimeMS>4750</LifetimeMS>
-			<ArmorPiercing />
+			<Damage>110</Damage>
+			<Speed>65</Speed>
+			<LifetimeMS>3000</LifetimeMS>
 			<MultiHit />
-			<Size>100</Size>
+			<Boomerang/>
+			<Size>150</Size>
 		</Projectile>
 		<Projectile id="3">
 			<ObjectId>Cerebrus Ball Shot</ObjectId>
-			<Damage>300</Damage>
-			<Speed>40</Speed>
-			<LifetimeMS>5000</LifetimeMS>
+			<Damage>180</Damage>
+			<Speed>55</Speed>
+			<LifetimeMS>4000</LifetimeMS>
 			<ConditionEffect duration="3">Slowed</ConditionEffect>
-			<ArmorPiercing />
 			<MultiHit />
+			<Frequency>2</Frequency>
+			<Amplitude>0.3</Amplitude>
 			<Size>150</Size>
 			<Boomerang/>
 		</Projectile>
 		<Projectile id="4">
 			<ObjectId>Void Mist Cannon</ObjectId>
 			<Damage>150</Damage>
-			<Speed>50</Speed>
+			<Speed>85</Speed>
 			<LifetimeMS>3500</LifetimeMS>
-			<ConditionEffect duration="0.5">Blind</ConditionEffect>
-			<ArmorPiercing />
-			<MultiHit />
+			<Wavy />
 			<Size>150</Size>
+		</Projectile>
+		<Projectile id="5">
+			<ObjectId>Cerebrus Ball Shot</ObjectId>
+			<Damage>180</Damage>
+			<Speed>45</Speed>
+			<LifetimeMS>4000</LifetimeMS>
+			<ConditionEffect duration="3">Slowed</ConditionEffect>
+			<MultiHit />
+			<Frequency>1</Frequency>
+			<Amplitude>0.3</Amplitude>
+			<Size>150</Size>
+			<Wavy />
 		</Projectile>
 	</Object>
 	<Object type="0x9419" id="Grim Reaper">

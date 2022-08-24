@@ -67,7 +67,7 @@ namespace wServer.core.terrain
                                 break;
 
                             case "mtype":
-                                (entity as Merchant).Item = (ushort)Utils.GetInt(kv[1]);
+                                (entity as SellableMerchant).Item = (ushort)Utils.GetInt(kv[1]);
                                 break;
 
                             case "mcost":
@@ -79,11 +79,11 @@ namespace wServer.core.terrain
                                 break;
 
                             case "mamnt":
-                                (entity as Merchant).Count = Utils.GetInt(kv[1]);
+                                (entity as SellableMerchant).Count = Utils.GetInt(kv[1]);
                                 break;
 
                             case "mtime":
-                                (entity as Merchant).TimeLeft = Utils.GetInt(kv[1]);
+                                (entity as SellableMerchant).TimeLeft = Utils.GetInt(kv[1]);
                                 break;
 
                             case "mdisc": // not implemented
@@ -91,7 +91,7 @@ namespace wServer.core.terrain
 
                             case "mrank":
                             case "stars": // provided for backwards compatibility with older maps
-                                (entity as SellableObject).RankReq = Utils.GetInt(kv[1]);
+                                (entity as SellableObject).RankRequired = Utils.GetInt(kv[1]);
                                 break;
 
                             case "xOffset":

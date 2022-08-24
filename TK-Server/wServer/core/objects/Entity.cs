@@ -177,6 +177,9 @@ namespace wServer.core.objects
                 case "ClosedVaultChest":
                     return new ClosedVaultChest(manager, id);
 
+                case "Merchant":
+                    return new NexusMerchant(manager, id);
+
                 case "ClosedVaultChestGold":
                 case "ClosedGiftChest":
                 case "SpecialClosedVaultChest":
@@ -185,8 +188,7 @@ namespace wServer.core.objects
                 case "SkillTree":
                 case "Forge":
                 case "StatNPC":
-                case "Merchant":
-                    return new WorldMerchant(manager, id);
+                    return new SellableMerchant(manager, id);
 
                 case "Engine":
                     return new Engine(manager, id);

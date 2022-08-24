@@ -1,11 +1,21 @@
 ﻿using common.resources;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using wServer.core.worlds;
+using System.Linq;
+using common;
+using wServer.core.worlds.logic;
 
 namespace wServer.core.objects.vendors
 {
-    public abstract class Merchant : SellableObject
+    public class SellableMerchant : SellableObject
     {
+        public int Count { get => _count.GetValue(); set => _count.SetValue(value); }
+        public ushort Item { get => _item.GetValue(); set => _item.SetValue(value); }
+        public int ReloadOffset { get; set; }
+        public bool Rotate { get; set; }
+        public int TimeLeft { get => _timeLeft.GetValue(); set => _timeLeft.SetValue(value); }
+
         public volatile bool AwaitingReload;
         public volatile bool BeingPurchased;
         public volatile bool Reloading;
@@ -14,20 +24,14 @@ namespace wServer.core.objects.vendors
         private SV<ushort> _item;
         private SV<int> _timeLeft;
 
-        protected Merchant(GameServer manager, ushort objType) : base(manager, objType)
+        public SellableMerchant(GameServer manager, ushort objType) : base(manager, objType)
         {
-            _item = new SV<ushort>(this, StatDataType.MerchantMerchandiseType, 0xa00);
-            _count = new SV<int>(this, StatDataType.MerchantRemainingCount, -1);
-            _timeLeft = new SV<int>(this, StatDataType.MerchantRemainingMinute, -1);
+            _item = new SV<ushort>(this, StatDataType.MerchandiseType, 0xa00);
+            _count = new SV<int>(this, StatDataType.MerchandiseCount, -1);
+            _timeLeft = new SV<int>(this, StatDataType.MerchandiseMinsLeft, -1);
 
             Rotate = false;
         }
-
-        public int Count { get => _count.GetValue(); set => _count.SetValue(value); }
-        public ushort Item { get => _item.GetValue(); set => _item.SetValue(value); }
-        public int ReloadOffset { get; set; }
-        public bool Rotate { get; set; }
-        public int TimeLeft { get => _timeLeft.GetValue(); set => _timeLeft.SetValue(value); }
 
         public override void Buy(Player player)
         {
@@ -89,9 +93,9 @@ namespace wServer.core.objects.vendors
 
         protected override void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)
         {
-            stats[StatDataType.MerchantMerchandiseType] = (int)Item;
-            stats[StatDataType.MerchantRemainingCount] = Count;
-            stats[StatDataType.MerchantRemainingMinute] = -1; //(int)(TimeLeft / 60000f);
+            stats[StatDataType.MerchandiseType] = (int)Item;
+            stats[StatDataType.MerchandiseCount] = Count;
+            stats[StatDataType.MerchandiseMinsLeft] = -1; //(int)(TimeLeft / 60000f);
 
             base.ExportStats(stats, isOtherPlayer);
         }
@@ -109,12 +113,9 @@ namespace wServer.core.objects.vendors
         {
             var invTrans = player.Inventory.CreateTransaction();
             var slot = invTrans.GetAvailableInventorySlot(item);
-
             if (slot == -1)
                 return null;
-
             invTrans[slot] = item;
-
             return invTrans;
         }
 

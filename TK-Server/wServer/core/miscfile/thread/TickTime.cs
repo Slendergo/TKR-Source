@@ -6,7 +6,7 @@
         public int ElaspedMsDelta;
         public long TickCount;
         public long TotalElapsedMs;
-        public float DeltaTime => ElaspedMsDelta / 1000.0f;
+        public float DeltaTime => ElaspedMsDelta * 0.001f;
         public float BehaviourTickTime => DeltaTime * 5.0f;
     }
 }

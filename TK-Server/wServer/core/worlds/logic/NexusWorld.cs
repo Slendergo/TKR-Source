@@ -1,11 +1,25 @@
 ﻿using common;
 using common.resources;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using wServer.core.objects;
+using wServer.core.objects.vendors;
 using wServer.core.setpieces;
 
 namespace wServer.core.worlds.logic
 {
+    public sealed class MerchantData
+    {
+        public TileRegion TileRegion;
+        public float TimeToSpawn;
+        public IntPoint Position;
+        public NexusMerchant NewMerchant;
+        public ISellableItem SellableItem;
+        public CurrencyType CurrencyType;
+        public int RankRequired;
+    }
+
     public sealed class NexusWorld : World
     {
         private const int ENGINE_STAGE1_TIMEOUT = 3600; //seconds
@@ -16,7 +30,9 @@ namespace wServer.core.worlds.logic
         private const int ENGINE_SECOND_STAGE_AMOUNT = 250 + ENGINE_FIRST_STAGE_AMOUNT;
         private const int ENGINE_THIRD_STAGE_AMOUNT = 500 + ENGINE_SECOND_STAGE_AMOUNT;
 
-        private int MARKET_BOUNDS_SIZE = 31;
+        private int MARKET_BOUNDS_WIDTH = 33;
+        private int MARKET_BOUNDS_HEIGHT = 43;
+
         private Rect? MarketBounds;
 
         public KingdomPortalMonitor PortalMonitor { get; private set; }
@@ -55,14 +71,78 @@ namespace wServer.core.worlds.logic
                 {
                     x = point.Key.X,
                     y = point.Key.Y,
-                    w = MARKET_BOUNDS_SIZE,
-                    h = MARKET_BOUNDS_SIZE
+                    w = MARKET_BOUNDS_WIDTH,
+                    h = MARKET_BOUNDS_HEIGHT
                 };
             }
 
 
             PortalMonitor = new KingdomPortalMonitor(GameServer, this);
+
+            foreach (var shop in MerchantLists.Shops)
+            {
+                var positions = Map.Regions.Where(r => shop.Key == r.Value);
+                foreach (var data in positions)
+                {
+                    var merchantData = new MerchantData();
+                    merchantData.TileRegion = data.Value;
+                    merchantData.Position = data.Key;
+                    InactiveStorePoints.Add(merchantData);
+                }
+            }
+
             base.Init();
+        }
+
+        private List<MerchantData> InactiveStorePoints = new List<MerchantData>();
+        private List<MerchantData> ActiveStorePoints = new List<MerchantData>();
+
+        public void SendOutMerchant(MerchantData merchantData)
+        {
+            InactiveStorePoints.Remove(merchantData);
+            if (MerchantLists.Shops.TryGetValue(merchantData.TileRegion, out var data))
+            {
+                var items = data.Item1;
+                if (items.Count == 0)
+                    return;
+
+                var x = merchantData.Position.X;
+                var y = merchantData.Position.Y;
+                merchantData.NewMerchant = new NexusMerchant(GameServer, 0x01ca);
+                merchantData.NewMerchant.Move(x + 0.5f, y + 0.5f);
+                merchantData.CurrencyType = data.Item2;
+                merchantData.RankRequired = data.Item3;
+
+                merchantData.SellableItem = Random.NextLength(items);
+                merchantData.NewMerchant.SetData(merchantData);
+                _ = MerchantLists.Shops[merchantData.TileRegion].Item1.Remove(merchantData.SellableItem);
+
+                _ = EnterWorld(merchantData.NewMerchant);
+                ActiveStorePoints.Add(merchantData);
+            }
+        }
+
+        private void HandleMerchants(ref TickTime time)
+        {
+            var merchantsToAdd = new List<MerchantData>();
+            foreach (var merchantData in InactiveStorePoints)
+            {
+                merchantData.TimeToSpawn -= time.DeltaTime;
+                if(merchantData.TimeToSpawn <= 0.0f)
+                    merchantsToAdd.Add(merchantData);
+            }
+
+            foreach (var merchant in merchantsToAdd)
+                SendOutMerchant(merchant);
+        }
+
+        public void ReturnMerchant(MerchantData merchantData)
+        {
+            merchantData.TimeToSpawn = 10.0f;
+            MerchantLists.Shops[merchantData.TileRegion].Item1.Add(merchantData.SellableItem);
+            InactiveStorePoints.Add(merchantData);
+            LeaveWorld(merchantData.NewMerchant);
+            merchantData.NewMerchant = null;
         }
 
         public bool WithinBoundsOfMarket(float x, float y)
@@ -74,6 +154,7 @@ namespace wServer.core.worlds.logic
 
         protected override void UpdateLogic(ref TickTime time)
         {
+            HandleMerchants(ref time);
             HandleEngineTimeouts(ref time);
             PortalMonitor.Update(ref time);
             base.UpdateLogic(ref time);

@@ -217,10 +217,10 @@ namespace wServer.core.objects
                 if (!HasConditionEffect(ConditionEffects.Invulnerable))
                     HP -= dmg;
                 
-                var chance = 0.03;
-                chance -= (player.Inventory[0].NumProjectiles / 2) / 100;
-                chance = projectile.ProjDesc.MultiHit ? chance / 1.5 : chance;
-                VampireBlast(player, chance, 2, 300, 100, time, this); // (player, chance, radius, damage, heal, time, entity)
+                //var chance = 0.03;
+                //chance -= (player.Inventory[0].NumProjectiles / 2) / 100;
+                //chance = projectile.ProjDesc.MultiHit ? chance / 1.5 : chance;
+                //VampireBlast(player, chance, 2, 300, 100, time, this); // (player, chance, radius, damage, heal, time, entity)
 
                 for (var i = 0; i < 4; i++)
                 {
@@ -264,18 +264,10 @@ namespace wServer.core.objects
             base.Init(owner);
 
             if (ObjectDesc.StunImmune)
-                ApplyConditionEffect(new ConditionEffect()
-                {
-                    Effect = ConditionEffectIndex.StunImmune,
-                    DurationMS = -1
-                });
+                ApplyConditionEffect(ConditionEffectIndex.StunImmune, -1);
 
             if (ObjectDesc.StasisImmune)
-                ApplyConditionEffect(new ConditionEffect()
-                {
-                    Effect = ConditionEffectIndex.StasisImmune,
-                    DurationMS = -1
-                });
+                ApplyConditionEffect(ConditionEffectIndex.StasisImmune, -1);
 
             if (ObjectDesc.Quest || ObjectDesc.Hero || ObjectDesc.Encounter)
                 ClasifyEnemy();
@@ -450,11 +442,7 @@ namespace wServer.core.objects
                     var damage = 1000;
 
                     (targets[i] as Enemy).Damage(player, time, damage, false);
-                    targets[i].ApplyConditionEffect(new ConditionEffect()
-                    {
-                        Effect = ConditionEffectIndex.Slowed,
-                        DurationMS = 3000
-                    });
+                    targets[i].ApplyConditionEffect(ConditionEffectIndex.Slowed, 3000);
 
                     var prev = i == 0 ? player : targets[i - 1];
                     var notprev = targets[i];

@@ -71,7 +71,7 @@ namespace wServer.logic.behaviors
                             (p as IPlayer).Damage(damage + enemyClasified, host);
 
                             if (!p.HasConditionEffect(ConditionEffects.Invincible) && !p.HasConditionEffect(ConditionEffects.Stasis))
-                                p.ApplyConditionEffect(new ConditionEffect() { Effect = effect, DurationMS = effectDuration });
+                                p.ApplyConditionEffect(new ConditionEffect(effect, effectDuration));
                         });
                     }));
                 }

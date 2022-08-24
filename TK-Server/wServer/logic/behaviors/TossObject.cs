@@ -167,7 +167,7 @@ namespace wServer.logic.behaviors
                             enemyEntity.Terrain = enemyHost.Terrain;
 
                             if (enemyHost.Spawned)
-                                enemyEntity.ApplyConditionEffect(new ConditionEffect() { Effect = ConditionEffectIndex.Invisible, DurationMS = -1 });
+                                enemyEntity.ApplyConditionEffect(ConditionEffectIndex.Invisible, -1);
                         }
 
                         world.EnterWorld(entity);

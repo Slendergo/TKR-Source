@@ -71,11 +71,7 @@ namespace wServer.core.objects
 
             this.AOE(radius, false, enemy =>
             {
-                (enemy as Enemy).Damage(player, time, dmg, false, false, new ConditionEffect()
-                {
-                    Effect = effect,
-                    DurationMS = duration
-                });
+                (enemy as Enemy).Damage(player, time, dmg, false, false, new ConditionEffect(effect, duration));
             });
 
             World.LeaveWorld(this);

@@ -24,20 +24,12 @@ namespace wServer.core.commands
                 if ((target.ConditionEffects & (ConditionEffects)((ulong)1 << (int)effect)) != 0)
                 {
                     //remove
-                    target.ApplyConditionEffect(new ConditionEffect()
-                    {
-                        Effect = effect,
-                        DurationMS = 0
-                    });
+                    target.ApplyConditionEffect(new ConditionEffect(effect, 0));
                 }
                 else
                 {
                     //add
-                    target.ApplyConditionEffect(new ConditionEffect()
-                    {
-                        Effect = effect,
-                        DurationMS = -1
-                    });
+                    target.ApplyConditionEffect(new ConditionEffect(effect, -1));
                 }
                 return true;
             }

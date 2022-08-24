@@ -7,8 +7,14 @@ namespace common.resources
         public int DurationMS;
         public ConditionEffectIndex Effect;
 
-        public ConditionEffect()
-        { }
+        //public ConditionEffect()
+        //{ }
+
+        public ConditionEffect(ConditionEffectIndex effect, int duration)
+        {
+            Effect = effect;
+            DurationMS = duration;
+        }
 
         public ConditionEffect(XElement e)
         {

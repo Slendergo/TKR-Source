@@ -249,7 +249,7 @@ namespace wServer.core.objects
 
             LoadTalismanData();
 
-            ApplyConditionEffect(new ConditionEffect() { Effect = ConditionEffectIndex.Invincible, DurationMS = -1 });
+            ApplyConditionEffect(ConditionEffectIndex.Invincible, -1);
         }
 
         public bool ApplyEffectCooldown(int slot)

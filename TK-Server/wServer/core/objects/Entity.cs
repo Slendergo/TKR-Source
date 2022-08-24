@@ -211,20 +211,15 @@ namespace wServer.core.objects
             }
         }
 
-        public void ApplyConditionEffect(params ConditionEffect[] effs)
+        public void ApplyPermanentConditionEffect(ConditionEffectIndex effect)
         {
-            foreach (var i in effs)
-            {
-                if (!ApplyCondition(i.Effect))
-                    continue;
+            if (!ApplyCondition(effect))
+                return;
 
-                var eff = (int)i.Effect;
+            var eff = (int)effect;
 
-                _effects[eff] = i.DurationMS;
-
-                if (i.DurationMS != 0)
-                    ConditionEffects |= (ConditionEffects)((ulong)1 << eff);
-            }
+            _effects[eff] = -1;
+            ConditionEffects |= (ConditionEffects)((ulong)1 << eff);
 
             _tickingEffects = true;
         }
@@ -240,6 +235,24 @@ namespace wServer.core.objects
 
             if (durationMs != 0)
                 ConditionEffects |= (ConditionEffects)((ulong)1 << eff);
+
+            _tickingEffects = true;
+        }
+
+        public void ApplyConditionEffect(params ConditionEffect[] effs)
+        {
+            foreach (var i in effs)
+            {
+                if (!ApplyCondition(i.Effect))
+                    continue;
+
+                var eff = (int)i.Effect;
+
+                _effects[eff] = i.DurationMS;
+
+                if (i.DurationMS != 0)
+                    ConditionEffects |= (ConditionEffects)((ulong)1 << eff);
+            }
 
             _tickingEffects = true;
         }

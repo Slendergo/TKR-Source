@@ -34,7 +34,7 @@ namespace wServer.logic.behaviors
 
             foreach (var player in players)
                 foreach (var effect in _effects)
-                    player.ApplyConditionEffect(new ConditionEffect() { Effect = effect, DurationMS = _duration });
+                    player.ApplyConditionEffect(new ConditionEffect(effect, _duration));
         }
     }
 }

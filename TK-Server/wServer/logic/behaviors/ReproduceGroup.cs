@@ -95,7 +95,7 @@ namespace wServer.logic.behaviors
                         if (enemyHost.Spawned)
                         {
                             enemyEntity.Spawned = true;
-                            enemyEntity.ApplyConditionEffect(new ConditionEffect() { Effect = ConditionEffectIndex.Invisible, DurationMS = -1 });
+                            enemyEntity.ApplyConditionEffect(ConditionEffectIndex.Invisible, -1);
                         }
                     }
 

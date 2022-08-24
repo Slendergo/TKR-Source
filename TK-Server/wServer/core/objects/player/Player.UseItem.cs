@@ -21,22 +21,22 @@ namespace wServer.core.objects
 
         public static readonly ConditionEffect[] NegativeEffs = new ConditionEffect[]
         {
-            new ConditionEffect() { Effect = ConditionEffectIndex.Slowed, DurationMS = 0 },
-            new ConditionEffect() { Effect = ConditionEffectIndex.Paralyzed, DurationMS = 0 },
-            new ConditionEffect() { Effect = ConditionEffectIndex.Weak, DurationMS = 0 },
-            new ConditionEffect() { Effect = ConditionEffectIndex.Stunned, DurationMS = 0 },
-            new ConditionEffect() { Effect = ConditionEffectIndex.Confused, DurationMS = 0 },
-            new ConditionEffect() { Effect = ConditionEffectIndex.Blind, DurationMS = 0 },
-            new ConditionEffect() { Effect = ConditionEffectIndex.Quiet, DurationMS = 0 },
-            new ConditionEffect() { Effect = ConditionEffectIndex.ArmorBroken, DurationMS = 0 },
-            new ConditionEffect() { Effect = ConditionEffectIndex.Bleeding, DurationMS = 0 },
-            new ConditionEffect() { Effect = ConditionEffectIndex.Dazed,DurationMS = 0 },
-            new ConditionEffect() { Effect = ConditionEffectIndex.Sick, DurationMS = 0 },
-            new ConditionEffect() { Effect = ConditionEffectIndex.Drunk, DurationMS = 0 },
-            new ConditionEffect() { Effect = ConditionEffectIndex.Hallucinating, DurationMS = 0 },
-            new ConditionEffect() { Effect = ConditionEffectIndex.Hexed, DurationMS = 0 },
-            new ConditionEffect() { Effect = ConditionEffectIndex.Curse, DurationMS = 0 },
-            new ConditionEffect() { Effect = ConditionEffectIndex.Unstable, DurationMS = 0 }
+            new ConditionEffect(ConditionEffectIndex.Slowed, 0),
+            new ConditionEffect(ConditionEffectIndex.Paralyzed, 0),
+            new ConditionEffect(ConditionEffectIndex.Weak, 0),
+            new ConditionEffect(ConditionEffectIndex.Stunned, 0),
+            new ConditionEffect(ConditionEffectIndex.Confused, 0),
+            new ConditionEffect(ConditionEffectIndex.Blind, 0),
+            new ConditionEffect(ConditionEffectIndex.Quiet, 0),
+            new ConditionEffect(ConditionEffectIndex.ArmorBroken, 0),
+            new ConditionEffect(ConditionEffectIndex.Bleeding, 0),
+            new ConditionEffect(ConditionEffectIndex.Dazed,0),
+            new ConditionEffect(ConditionEffectIndex.Sick, 0),
+            new ConditionEffect(ConditionEffectIndex.Drunk, 0),
+            new ConditionEffect(ConditionEffectIndex.Hallucinating, 0),
+            new ConditionEffect(ConditionEffectIndex.Hexed, 0),
+            new ConditionEffect(ConditionEffectIndex.Curse, 0),
+            new ConditionEffect(ConditionEffectIndex.Unstable, 0)
         };
 
         public bool PoisonWis = false;
@@ -648,11 +648,7 @@ namespace wServer.core.objects
                 conditions |= (ConditionEffects)(1 << (Byte)condition.Value);
                 if (!condition.HasValue || player.HasConditionEffect(conditions))
                 {
-                    player.ApplyConditionEffect(new ConditionEffect()
-                    {
-                        Effect = eff.ConditionEffect.Value,
-                        DurationMS = 0
-                    });
+                    player.ApplyConditionEffect(new ConditionEffect(eff.ConditionEffect.Value, 0));
                 }
             });
         }
@@ -667,11 +663,7 @@ namespace wServer.core.objects
 
             if (!condition.HasValue || HasConditionEffect(conditions))
             {
-                ApplyConditionEffect(new ConditionEffect()
-                {
-                    Effect = eff.ConditionEffect.Value,
-                    DurationMS = 0
-                });
+                ApplyConditionEffect(new ConditionEffect(eff.ConditionEffect.Value, 0));
             }
         }
 
@@ -687,12 +679,9 @@ namespace wServer.core.objects
 
             this.AOE(range, true, player =>
             {
-                player.ApplyConditionEffect(new ConditionEffect()
-                {
-                    Effect = eff.ConditionEffect.Value,
-                    DurationMS = duration
-                });
+                player.ApplyConditionEffect(new ConditionEffect(eff.ConditionEffect.Value, duration));
             });
+
             var color = 0xffffffff;
             if (eff.ConditionEffect.Value == ConditionEffectIndex.Damaging)
                 color = 0xffff0000;
@@ -711,11 +700,7 @@ namespace wServer.core.objects
             if (eff.UseWisMod)
                 duration = (int)(UseWisMod(eff.DurationSec) * 1000);
 
-            ApplyConditionEffect(new ConditionEffect()
-            {
-                Effect = eff.ConditionEffect.Value,
-                DurationMS = duration
-            });
+            ApplyConditionEffect(new ConditionEffect(eff.ConditionEffect.Value, duration));
             World.BroadcastIfVisible(new ShowEffect()
             {
                 EffectType = EffectType.AreaBlast,
@@ -780,11 +765,7 @@ namespace wServer.core.objects
                 {
                     if (!entity.HasConditionEffect(ConditionEffects.Stasis) && !entity.HasConditionEffect(ConditionEffects.Invincible))
                     {
-                        entity.ApplyConditionEffect(new ConditionEffect()
-                        {
-                            Effect = eff.ConditionEffect.Value,
-                            DurationMS = duration
-                        });
+                        entity.ApplyConditionEffect(new ConditionEffect(eff.ConditionEffect.Value, duration));
                     }
                 });
 
@@ -1215,11 +1196,7 @@ namespace wServer.core.objects
                 (targets[i] as Enemy).Damage(this, time, (int)damage, false);
 
                 if (eff.ConditionEffect != null)
-                    targets[i].ApplyConditionEffect(new ConditionEffect()
-                    {
-                        Effect = eff.ConditionEffect.Value,
-                        DurationMS = (int)(eff.EffectDuration * 1000)
-                    });
+                    targets[i].ApplyConditionEffect(new ConditionEffect(eff.ConditionEffect.Value, (int)(eff.EffectDuration * 1000)));
 
                 World.BroadcastIfVisible(new ShowEffect()
                 {

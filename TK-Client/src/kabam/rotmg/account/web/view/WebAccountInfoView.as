@@ -74,6 +74,8 @@ public class WebAccountInfoView extends Sprite implements AccountInfoView
       this.makeLoginButton();
       this.makeDividerText();
       this.makeRegisterButton();
+      this.accountText.y = 6;
+      this.loginButton.y = 3;
       if(fadeIn_){
          new GTween(this, 0.1, {"alpha": 1});
       }
@@ -149,9 +151,7 @@ public class WebAccountInfoView extends Sprite implements AccountInfoView
    {
       this.accountText.text = "Not Signed in - ";
       this.accountText.updateMetrics();
-      this.accountText.y = 6;
       this.loginButton.setText(LOG_IN);
-      this.loginButton.y = 3;
 //      this.addAndAlignHorizontally(this.accountText,this.registerButton,this.dividerText,this.loginButton);
       this.addAndAlignHorizontally(this.accountText, this.loginButton);
    }

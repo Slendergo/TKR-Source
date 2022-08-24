@@ -59,7 +59,7 @@ package kabam.rotmg.appengine.impl
          {
             target = "/" + target;
          }
-         return isEncrypted ? this.setup.getAppEngineUrlEncrypted() : this.setup.getAppEngineUrl() + target;
+         return (this.isEncrypted ? this.setup.getAppEngineUrlEncrypted()  : this.setup.getAppEngineUrl()) + target;
       }
    }
 }

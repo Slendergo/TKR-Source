@@ -168,7 +168,7 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
       public function updateDim(player:Player, slot:int) : void
       {
          var canUse:Boolean = true;
-         if(player.map_ != null){
+         if(player != null && player.map_ != null){
             if(player.map_.disableShooting_ && slot == 0){
                canUse = false;
             }

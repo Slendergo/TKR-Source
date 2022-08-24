@@ -25,24 +25,15 @@ import org.osflash.signals.Signal;
    {
       private static var TitleScreenGraphic:Class = TitleView_TitleScreenGraphic;
 
-      private static const COPYRIGHT:String = "© 2022 by Slendergo, GlassBBQ, Orb";
-       
-      
+      private static const COPYRIGHT:String = "<font color=\"#FFFF00\">© 2022 by Slendergo, GlassBBQ, Orb<font/>";
+
+
       public var playClicked:Signal;
       public var serversClicked:Signal;
       public var creditsClicked:Signal;
       public var accountClicked:Signal;
       public var legendsClicked:Signal;
       public var editorClicked:Signal;
-
-      private var container:Sprite;
-
-      private var playButton:SliceScalingButton;
-      private var serversButton:SliceScalingButton;
-      private var creditsButton:SliceScalingButton;
-      private var accountButton:SliceScalingButton;
-      private var legendsButton:SliceScalingButton;
-      private var editorButton:SliceScalingButton;
 
       private var versionText:SimpleText;
       private var copyrightText:SimpleText;
@@ -53,7 +44,6 @@ import org.osflash.signals.Signal;
       
       public function TitleView()
       {
-         this.menuOptionsBar = this.makeMenuOptionsBar();
          this.darkenFactory = new DarkenFactory();
          this.buttonsBackground = TextureParser.instance.getSliceScalingBitmap("UI","popup_header_title",800);
          this.buttonsBackground.y = 502.5;
@@ -61,7 +51,6 @@ import org.osflash.signals.Signal;
          addChild(this.darkenFactory.create());
          addChild(new TitleScreenGraphic());
          addChild(this.buttonsBackground);
-         addChild(this.menuOptionsBar);
          addChild(new AccountScreen());
          this.makeChildren();
          addChild(new SoundIcon());
@@ -84,7 +73,9 @@ import org.osflash.signals.Signal;
          var _loc7_:MenuOptionsBar = new MenuOptionsBar();
          _loc7_.addButton(_loc1_,MenuOptionsBar.CENTER);
          _loc7_.addButton(_loc2_,MenuOptionsBar.LEFT);
-         _loc7_.addButton(_loc6_,MenuOptionsBar.LEFT);
+         if(this.data.isAdmin) {
+            _loc7_.addButton(_loc6_, MenuOptionsBar.LEFT);
+         }
          _loc7_.addButton(_loc3_,MenuOptionsBar.RIGHT);
          _loc7_.addButton(_loc4_,MenuOptionsBar.RIGHT);
          return _loc7_;
@@ -92,15 +83,14 @@ import org.osflash.signals.Signal;
       
       private function makeChildren() : void
       {
-         this.container = new Sprite();
          this.versionText = new SimpleText(12,8355711,false,0,0);
          this.versionText.filters = [new DropShadowFilter(0,0,0)];
-         this.container.addChild(this.versionText);
+         this.addChild(this.versionText);
          this.copyrightText = new SimpleText(12,8355711,false,0,0);
-         this.copyrightText.text = COPYRIGHT;
+         this.copyrightText.htmlText = COPYRIGHT;
          this.copyrightText.updateMetrics();
          this.copyrightText.filters = [new DropShadowFilter(0,0,0)];
-         this.container.addChild(this.copyrightText);
+         this.addChild(this.copyrightText);
       }
       
       public function initialize(data:EnvironmentData) : void
@@ -108,7 +98,11 @@ import org.osflash.signals.Signal;
          this.data = data;
          this.updateVersionText();
          this.positionButtons();
-         this.addChildren();
+         if(this.menuOptionsBar != null && contains(this.menuOptionsBar)){
+            removeChild(this.menuOptionsBar);
+         }
+         this.menuOptionsBar = this.makeMenuOptionsBar();
+         addChild(this.menuOptionsBar);
       }
       
       private function updateVersionText() : void
@@ -116,29 +110,11 @@ import org.osflash.signals.Signal;
          this.versionText.htmlText = this.data.buildLabel;
          this.versionText.updateMetrics();
       }
-      
-      private function addChildren() : void
-      {
-         //addChild(this.container);
-         //this.data.isAdmin && this.container.addChild(this.editorButton);
-      }
-      
+
       private function positionButtons() : void
       {
-         /*this.playButton.x = stage.stageWidth / 2 - this.playButton.width / 2;
-         this.playButton.y = 520;
-         this.serversButton.x = stage.stageWidth / 2 - this.serversButton.width / 2 - 94;
-         this.serversButton.y = 532;
-         this.creditsButton.x = 180;
-         this.creditsButton.y = 532;
-         this.accountButton.x = stage.stageWidth / 2 - this.accountButton.width / 2 + 96;
-         this.accountButton.y = 532;
-         this.legendsButton.x = 550;
-         this.legendsButton.y = 532;
-         this.editorButton.x = 100;
-         this.editorButton.y = 532;*/
          this.versionText.y = stage.stageHeight - this.versionText.height;
-         this.copyrightText.x = stage.stageWidth - this.copyrightText.width;
+         this.versionText.x = stage.stageWidth - this.versionText.width;
          this.copyrightText.y = stage.stageHeight - this.copyrightText.height;
       }
    }

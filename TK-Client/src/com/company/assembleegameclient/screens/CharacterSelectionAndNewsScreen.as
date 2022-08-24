@@ -3,6 +3,7 @@ package com.company.assembleegameclient.screens
    import com.company.assembleegameclient.ui.ClickableText;
    import com.company.assembleegameclient.ui.Scrollbar;
 import com.company.assembleegameclient.ui.SoundIcon;
+import com.company.assembleegameclient.ui.dialogs.Dialog;
 import com.company.rotmg.graphics.ScreenGraphic;
    import com.company.ui.SimpleText;
    import flash.display.DisplayObject;
@@ -21,6 +22,7 @@ import io.decagames.rotmg.ui.texture.TextureParser;
 import kabam.rotmg.core.StaticInjectorContext;
 
 import kabam.rotmg.core.model.PlayerModel;
+import kabam.rotmg.dialogs.control.CloseDialogsSignal;
 import kabam.rotmg.dialogs.control.OpenDialogSignal;
 import kabam.rotmg.game.view.CreditDisplay;
    import kabam.rotmg.news.view.NewsView;
@@ -31,8 +33,9 @@ import kabam.rotmg.ui.view.components.MenuOptionsBar;
 import kabam.rotmg.ui.view.components.ScreenBase;
    import org.osflash.signals.Signal;
    import org.osflash.signals.natives.NativeMappedSignal;
-   
-   public class CharacterSelectionAndNewsScreen extends Sprite
+import org.swiftsuspenders.Injector;
+
+public class CharacterSelectionAndNewsScreen extends Sprite
    {
 
        private static const TAB_UNSELECTED:uint = 0xB3B3B3;
@@ -67,8 +70,19 @@ import kabam.rotmg.ui.view.components.ScreenBase;
        private var openCharactersText:SimpleText;
        private var openGraveyardText:SimpleText;
 
+       public var noServersDialogFactory:NoServersDialogFactory;
+       public var openDialog:OpenDialogSignal;
+       public var closeDialogsSignal:CloseDialogsSignal;
+       public var servers:ServerModel;
+
       public function CharacterSelectionAndNewsScreen()
       {
+          var _local2:Injector = StaticInjectorContext.getInjector();
+          this.noServersDialogFactory = _local2.getInstance(NoServersDialogFactory);
+          this.openDialog = _local2.getInstance(OpenDialogSignal);
+          this.closeDialogsSignal = _local2.getInstance(CloseDialogsSignal);
+          this.servers = _local2.getInstance(ServerModel);
+
          this.playButton = ButtonFactory.getPlayButton();
          this.backButton = ButtonFactory.getMainButton();
          this.classesButton = ButtonFactory.getClassesButton();
@@ -299,7 +313,7 @@ import kabam.rotmg.ui.view.components.ScreenBase;
          var servers:ServerModel = StaticInjectorContext.getInjector().getInstance(ServerModel);
          if(!servers.isServerAvailable())
          {
-            StaticInjectorContext.getInjector().getInstance(OpenDialogSignal).dispatch(StaticInjectorContext.getInjector().getInstance(NoServersDialogFactory).makeDialog());
+             this.showNoServersDialog();
          }
          else if(this.model.getCharacterCount() == 0)
          {
@@ -310,8 +324,21 @@ import kabam.rotmg.ui.view.components.ScreenBase;
             this.playGame.dispatch();
          }
       }
-      
-      public function setName(name:String) : void
+
+       private function showNoServersDialog():void
+       {
+           var dialog:Dialog = this.noServersDialogFactory.makeDialog();
+           dialog.addEventListener(Dialog.BUTTON1_EVENT, this.closeDialog);
+           this.openDialog.dispatch(dialog);
+       }
+
+       private function closeDialog(_arg1:Event):void
+       {
+           this.close.dispatch();
+           this.closeDialogsSignal.dispatch();
+       }
+
+       public function setName(name:String) : void
       {
          this.nameText.text = name;
          this.nameText.updateMetrics();

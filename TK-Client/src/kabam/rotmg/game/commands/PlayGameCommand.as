@@ -2,16 +2,24 @@ package kabam.rotmg.game.commands
 {
    import com.company.assembleegameclient.game.GameSprite;
    import com.company.assembleegameclient.parameters.Parameters;
-   import flash.utils.ByteArray;
+import com.company.assembleegameclient.ui.dialogs.Dialog;
+
+import flash.events.Event;
+
+import flash.utils.ByteArray;
    import kabam.lib.tasks.TaskMonitor;
    import kabam.rotmg.account.core.services.GetCharListTask;
    import kabam.rotmg.core.model.PlayerModel;
    import kabam.rotmg.core.signals.SetScreenSignal;
-   import kabam.rotmg.game.model.GameInitData;
+import kabam.rotmg.dialogs.control.CloseDialogsSignal;
+import kabam.rotmg.dialogs.control.OpenDialogSignal;
+import kabam.rotmg.game.model.GameInitData;
    import kabam.rotmg.servers.api.Server;
    import kabam.rotmg.servers.api.ServerModel;
-   
-   public class PlayGameCommand
+import kabam.rotmg.ui.noservers.NoServersDialogFactory;
+import kabam.rotmg.ui.view.TitleView;
+
+public class PlayGameCommand
    {
        
       
@@ -32,7 +40,16 @@ package kabam.rotmg.game.commands
       
       [Inject]
       public var monitor:TaskMonitor;
-      
+
+      [Inject]
+      public var openDialog:OpenDialogSignal;
+
+      [Inject]
+      public var noServersDialogFactory:NoServersDialogFactory;
+
+      [Inject]
+      public var closeDialogsSignal:CloseDialogsSignal;
+
       public function PlayGameCommand()
       {
          super();
@@ -49,9 +66,27 @@ package kabam.rotmg.game.commands
          Parameters.data_.charIdUseMap[this.data.charId] = new Date().getTime();
          Parameters.save();
       }
-      
+
+      private function closeDialog(_arg1:Event):void
+      {
+         this.setScreen.dispatch(new TitleView());
+         this.closeDialogsSignal.dispatch();
+      }
+
+      private function showNoServersDialog():void
+      {
+         var dialog:Dialog = this.noServersDialogFactory.makeDialog();
+         dialog.addEventListener(Dialog.BUTTON1_EVENT, this.closeDialog);
+         this.openDialog.dispatch(dialog);
+      }
+
       private function makeGameView() : void
       {
+         if(!this.servers.isServerAvailable()){
+            showNoServersDialog();
+            return;
+         }
+
          var server:Server = this.data.server || this.servers.getServer();
          var gameId:int = this.data.isNewGame ? -2 : this.data.gameId;
          var createCharacter:Boolean = this.data.createCharacter;

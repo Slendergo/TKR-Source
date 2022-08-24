@@ -1,10 +1,15 @@
 package kabam.rotmg.ui.commands
 {
    import com.company.assembleegameclient.screens.CharacterSelectionAndNewsScreen;
-   import kabam.rotmg.account.core.Account;
+import com.company.assembleegameclient.ui.dialogs.Dialog;
+
+import flash.events.Event;
+
+import kabam.rotmg.account.core.Account;
    import kabam.rotmg.core.model.PlayerModel;
    import kabam.rotmg.core.signals.SetScreenWithValidDataSignal;
-   import kabam.rotmg.dialogs.control.OpenDialogSignal;
+import kabam.rotmg.dialogs.control.CloseDialogsSignal;
+import kabam.rotmg.dialogs.control.OpenDialogSignal;
    import kabam.rotmg.game.model.GameInitData;
    import kabam.rotmg.game.signals.PlayGameSignal;
    import kabam.rotmg.servers.api.ServerModel;
@@ -26,7 +31,10 @@ package kabam.rotmg.ui.commands
       
       [Inject]
       public var openDialog:OpenDialogSignal;
-      
+
+      [Inject]
+      public var closeDialogsSignal:CloseDialogsSignal;
+
       [Inject]
       public var servers:ServerModel;
       
@@ -76,10 +84,17 @@ package kabam.rotmg.ui.commands
          data.isNewGame = true;
          return data;
       }
-      
-      private function showNoServersDialog() : void
+
+      private function close(_arg1:Event):void
       {
-         this.openDialog.dispatch(this.noServersDialogFactory.makeDialog());
+         this.closeDialogsSignal.dispatch();
+      }
+
+      private function showNoServersDialog():void
+      {
+         var dialog:Dialog = this.noServersDialogFactory.makeDialog();
+         dialog.addEventListener(Dialog.BUTTON1_EVENT, this.close);
+         this.openDialog.dispatch(dialog);
       }
    }
 }

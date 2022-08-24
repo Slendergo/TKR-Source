@@ -1,6 +1,9 @@
 package kabam.rotmg.account.web.view
 {
-   import kabam.lib.tasks.Task;
+import flash.net.URLRequest;
+import flash.net.navigateToURL;
+
+import kabam.lib.tasks.Task;
    import kabam.rotmg.account.core.signals.LoginSignal;
    import kabam.rotmg.account.web.model.AccountData;
    import kabam.rotmg.core.signals.TaskErrorSignal;
@@ -58,7 +61,9 @@ package kabam.rotmg.account.web.view
       
       private function onRegister() : void
       {
-         this.openDialog.dispatch(new WebRegisterDialog());
+         navigateToURL(new URLRequest("https://tkr.gg/register"),"_blank");
+
+//         this.openDialog.dispatch(new WebRegisterDialog());
       }
       
       private function onCancel() : void

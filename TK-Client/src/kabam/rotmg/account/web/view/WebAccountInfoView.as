@@ -21,9 +21,8 @@ public class WebAccountInfoView extends Sprite implements AccountInfoView
 
    private static const LOGGED_IN_TEXT:String = "logged in as ${userName} - ";
 
-   private static const GUEST_ACCOUNT:String = "guest account - ";
-
    private static const REGISTER:String = "register";
+   private static const LOGIN:String = "log in";
 
    private static const FONT_SIZE:int = 18;
 
@@ -94,12 +93,13 @@ public class WebAccountInfoView extends Sprite implements AccountInfoView
 
    private function makeLoginButton() : void
    {
-      this.loginButton = new TitleMenuOption("log in",FONT_SIZE,false);
+      this.loginButton = new TitleMenuOption(LOGIN,FONT_SIZE,false);
    }
 
    private function makeRegisterButton() : void
    {
       this.registerButton = new TitleMenuOption(REGISTER,FONT_SIZE,false);
+      this.registerButton.visible = false;
    }
 
    private function makeDividerText() : void
@@ -147,10 +147,13 @@ public class WebAccountInfoView extends Sprite implements AccountInfoView
 
    private function showUIForGuestAccount() : void
    {
-      this.accountText.text = GUEST_ACCOUNT;
+      this.accountText.text = "Not Signed in - ";
       this.accountText.updateMetrics();
+      this.accountText.y = 6;
       this.loginButton.setText(LOG_IN);
-      this.addAndAlignHorizontally(this.accountText,this.registerButton,this.dividerText,this.loginButton);
+      this.loginButton.y = 3;
+//      this.addAndAlignHorizontally(this.accountText,this.registerButton,this.dividerText,this.loginButton);
+      this.addAndAlignHorizontally(this.accountText, this.loginButton);
    }
 
    private function addAndAlignHorizontally(... uiElements) : void

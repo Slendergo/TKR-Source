@@ -1,35 +1,36 @@
 package kabam.rotmg.account.web.commands
 {
-   import kabam.rotmg.account.core.Account;
-   import kabam.rotmg.account.web.view.WebAccountDetailDialog;
-   import kabam.rotmg.account.web.view.WebRegisterDialog;
-   import kabam.rotmg.dialogs.control.OpenDialogSignal;
-   
-   public class WebOpenAccountInfoCommand
+import kabam.rotmg.account.core.Account;
+import kabam.rotmg.account.web.view.WebAccountDetailDialog;
+import kabam.rotmg.account.web.view.WebLoginDialog;
+import kabam.rotmg.account.web.view.WebRegisterDialog;
+import kabam.rotmg.dialogs.control.OpenDialogSignal;
+
+public class WebOpenAccountInfoCommand
+{
+
+
+   [Inject]
+   public var account:Account;
+
+   [Inject]
+   public var openDialog:OpenDialogSignal;
+
+   public function WebOpenAccountInfoCommand()
    {
-       
-      
-      [Inject]
-      public var account:Account;
-      
-      [Inject]
-      public var openDialog:OpenDialogSignal;
-      
-      public function WebOpenAccountInfoCommand()
+      super();
+   }
+
+   public function execute() : void
+   {
+      if(this.account.isRegistered())
       {
-         super();
+         this.openDialog.dispatch(new WebAccountDetailDialog());
       }
-      
-      public function execute() : void
+      else
       {
-         if(this.account.isRegistered())
-         {
-            this.openDialog.dispatch(new WebAccountDetailDialog());
-         }
-         else
-         {
-            this.openDialog.dispatch(new WebRegisterDialog());
-         }
+         this.openDialog.dispatch(new WebLoginDialog());
       }
    }
+}
 }

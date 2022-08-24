@@ -10,8 +10,10 @@ import flash.net.navigateToURL;
 import flash.utils.Dictionary;
 
 public class Parameters {
-    public static const BUILD_VERSION:String = "1.3.0";
-    public static const MINOR_VERSION:String = "";
+    public static const BUILD_VERSION:String = "1";
+    public static const MINOR_VERSION:String = "3";
+    public static const PATCH_VERSION:String = "0";
+    public static const FULL_BUILD_VERSION:String = BUILD_VERSION + "." + MINOR_VERSION + "." + PATCH_VERSION;
     public static const PORT:int = 2050;
     public static const FELLOW_GUILD_COLOR:uint = 10944349;
     public static const PARTY_MEMBER_COLOR:uint = 0xffc0cb;

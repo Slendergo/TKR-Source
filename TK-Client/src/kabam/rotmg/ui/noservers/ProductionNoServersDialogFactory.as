@@ -4,12 +4,9 @@ package kabam.rotmg.ui.noservers
    
    public class ProductionNoServersDialogFactory implements NoServersDialogFactory
    {
-      
-      private static const BODY:String = "Realm of the Mad God is currently offline.\n\nGo here for more information:\n<font color=\"#7777EE\"><a href=\"http://forums.wildshadow.com/\">forums.wildshadow.com</a></font>.";
-      
-      private static const TITLE:String = "Oryx Sleeping";
-       
-      
+      private static const BODY:String = "There are currently no servers online.";
+      static const TITLE:String = "No Servers";
+
       public function ProductionNoServersDialogFactory()
       {
          super();
@@ -17,7 +14,7 @@ package kabam.rotmg.ui.noservers
       
       public function makeDialog() : Dialog
       {
-         return new Dialog(BODY,TITLE,null,null);
+         return new Dialog(BODY,TITLE,"Close",null);
       }
    }
 }

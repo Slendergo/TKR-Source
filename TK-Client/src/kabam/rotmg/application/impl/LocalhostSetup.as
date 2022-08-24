@@ -7,9 +7,12 @@ public class LocalhostSetup implements ApplicationSetup {
 
     private const SERVER:String = "http://127.0.0.1:2000";
 
-
     public function getAppEngineUrl(_arg1:Boolean = false):String {
         return (this.SERVER);
+    }
+
+    public function getAppEngineUrlEncrypted():String {
+        return SERVER;
     }
 
     public function getBuildLabel():String {

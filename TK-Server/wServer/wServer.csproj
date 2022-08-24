@@ -173,7 +173,9 @@
     <Compile Include="logic\db\BehaviorDb.Nexus.cs" />
     <Compile Include="logic\db\BehaviourDb.MortomusHideout.cs" />
     <Compile Include="logic\transitions\EngineStageTransition.cs" />
+    <Compile Include="memory\IObjectPoolObject.cs" />
     <Compile Include="memory\ObjectPool.cs" />
+    <Compile Include="memory\ObjectPools.cs" />
     <Compile Include="networking\packets\outgoing\talisman\TalismanEssenceData.cs" />
     <Compile Include="utils\ItemUtils.cs" />
     <Compile Include="core\miscfile\thread\RootWorldThread.cs" />

@@ -242,7 +242,7 @@ namespace wServer.core.objects
                 Client.SendPacket(new InvResult() { Result = 1 });
         }
 
-        private static void ActivateHealHp(Player player, int amount)
+        public static void ActivateHealHp(Player player, int amount, bool broadcastSelf = false)
         {
             if (amount <= 0)
                 return;
@@ -252,41 +252,67 @@ namespace wServer.core.objects
             if (newHp == player.HP)
                 return;
 
-            player.World.BroadcastIfVisible(new ShowEffect()
+            var effect = new ShowEffect()
             {
                 EffectType = EffectType.Potion,
                 TargetObjectId = player.Id,
                 Color = new ARGB(0xffffffff)
-            }, player);
-            player.World.BroadcastIfVisible(new Notification()
+            };
+
+            var notif = new Notification()
             {
                 Color = new ARGB(0xff00ff00),
                 ObjectId = player.Id,
                 Message = "+" + (newHp - player.HP)
-            }, player);
+            };
+
+            if (broadcastSelf)
+            {
+                player.Client.SendPacket(effect);
+                player.Client.SendPacket(notif);
+
+            }
+            else
+            {
+                player.World.BroadcastIfVisible(effect, player);
+                player.World.BroadcastIfVisible(notif, player);
+            }
 
             player.HP = newHp;
         }
 
-        private static void ActivateHealMp(Player player, int amount)
+        public static void ActivateHealMp(Player player, int amount, bool broadcastSelf = false)
         {
             var maxMp = player.Stats[1];
             var newMp = Math.Min(maxMp, player.MP + amount);
             if (newMp == player.MP)
                 return;
 
-            player.World.BroadcastIfVisible(new ShowEffect()
+            var effect = new ShowEffect()
             {
                 EffectType = EffectType.Potion,
                 TargetObjectId = player.Id,
                 Color = new ARGB(0xffffffff)
-            }, player);
-            player.World.BroadcastIfVisible(new Notification()
+            };
+
+            var notif = new Notification()
             {
-                Color = new ARGB(0xff9000ff),
+                Color = new ARGB(0xff6084E0),
                 ObjectId = player.Id,
                 Message = "+" + (newMp - player.MP)
-            }, player);
+            };
+
+            if (broadcastSelf)
+            {
+                player.Client.SendPacket(effect);
+                player.Client.SendPacket(notif);
+
+            }
+            else
+            {
+                player.World.BroadcastIfVisible(effect, player);
+                player.World.BroadcastIfVisible(notif, player);
+            }
 
             player.MP = newMp;
         }

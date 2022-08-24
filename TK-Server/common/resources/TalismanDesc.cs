@@ -35,13 +35,15 @@ namespace common.resources
 
         public TalismanTierDesc GetTierDesc(int tier) => Tiers.TryGetValue(tier, out var ret) ? ret : null;
     }
-
+			//<Leech prob = "0.5" type="life" amount="2" maximum="100" baseRadius="1.0" radiusPerLevel="0.2" maxRadius="2.0"/>
+			//<Leech prob = "0.5" type="mana" amount="2" maximum="100" baseRadius="1.0" radiusPerLevel="0.2" maxRadius="2.0"/>
     public class TalismanTierDesc
     {
         public readonly int Tier;
         public readonly List<TalismanStatType> StatTypes;
         public readonly List<TalismanLootBoost> LootBoosts;
         public readonly List<ConditionEffectIndex> ImmuneTo;
+        public readonly List<TalismanLeech> Leech;
 
         public TalismanTierDesc(XElement e)
         {
@@ -58,6 +60,10 @@ namespace common.resources
             ImmuneTo = new List<ConditionEffectIndex>();
             foreach (var te in e.Elements("ImmuneTo"))
                 ImmuneTo.Add(Utils.GetEffect(te.GetAttribute<string>("effect")));
+
+            Leech = new List<TalismanLeech>();
+            foreach (var te in e.Elements("Leech"))
+                Leech.Add(new TalismanLeech(te));
         }
     }
 
@@ -87,6 +93,20 @@ namespace common.resources
 
             var scale = e.GetAttribute<string>("scale", "flat");
             ScalesPerLevel = scale == "perLevel";
+        }
+    }
+
+    public class TalismanLeech
+    {
+        public readonly float Probability;
+        public readonly byte Type;
+        public readonly int Amount;
+
+        public TalismanLeech(XElement e)
+        {
+            Probability = e.GetAttribute<float>("prob");
+            Type = (byte)(e.GetAttribute<string>("type") == "life" ? 0 : 1);
+            Amount = e.GetAttribute<int>("amount");
         }
     }
 }

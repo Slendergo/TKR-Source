@@ -50,7 +50,7 @@ namespace wServer.logic.behaviors
                             Pos1 = new Position { X = entity.X, Y = entity.Y },
                             Color = new ARGB(0xffffffff)
                         }, host);
-                        entity.World.BroadcastIfVisible(new Notification() { ObjectId = entity.Id, Message = "+" + n, Color = new ARGB(0xff3366ff) }, entity);
+                        entity.World.BroadcastIfVisible(new Notification() { ObjectId = entity.Id, Message = "+" + n, Color = new ARGB(0xff6084E0) }, entity);
                     }
                 }
 

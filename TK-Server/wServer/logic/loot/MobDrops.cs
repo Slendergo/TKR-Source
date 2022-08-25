@@ -107,9 +107,9 @@ namespace wServer.logic.loot
         {
             return new MobDrops[]
             {
-                new ItemLoot("Potion Dust", 0.01), // 1.0%
-                new ItemLoot("Item Dust", 0.05),  // 5.0%
-                new ItemLoot("Miscellaneous Dust", 0.030), // 3%
+                new ItemLoot("Potion Dust", 0.005), // 0.5%
+                new ItemLoot("Item Dust", 0.025),  // 2.5%
+                new ItemLoot("Miscellaneous Dust", 0.015), // 1.5%
                 new ItemLoot("Special Dust", 0.0025) // 0.25%
              };
         }

@@ -3,9 +3,9 @@
 		
 		<!-- Tiered Weapons-->
 		<ItemPool>
-			<TieredItem weight="600" tier="1">Weapon</TieredItem>
-			<TieredItem weight="550" tier="2">Weapon</TieredItem>
-			<TieredItem weight="500" tier="3">Weapon</TieredItem>
+			<TieredItem weight="500" tier="1">Weapon</TieredItem>
+			<TieredItem weight="450" tier="2">Weapon</TieredItem>
+			<TieredItem weight="400" tier="3">Weapon</TieredItem>
 			<TieredItem weight="450" tier="4">Weapon</TieredItem>
 			<TieredItem weight="400" tier="5">Weapon</TieredItem>
 			<TieredItem weight="350" tier="6">Weapon</TieredItem>
@@ -19,9 +19,9 @@
 		
 		<!-- Tiered Armours -->
 		<ItemPool>
-			<TieredItem weight="600" tier="1">Armor</TieredItem>
-			<TieredItem weight="550" tier="2">Armor</TieredItem>
-			<TieredItem weight="500" tier="3">Armor</TieredItem>
+			<TieredItem weight="500" tier="1">Armor</TieredItem>
+			<TieredItem weight="450" tier="2">Armor</TieredItem>
+			<TieredItem weight="400" tier="3">Armor</TieredItem>
 			<TieredItem weight="450" tier="4">Armor</TieredItem>
 			<TieredItem weight="400" tier="5">Armor</TieredItem>
 			<TieredItem weight="350" tier="6">Armor</TieredItem>
@@ -35,9 +35,9 @@
 		
 		<!-- Tiered Abilities -->
 		<ItemPool>
-			<TieredItem weight="300" tier="1">Ability</TieredItem>
-			<TieredItem weight="250" tier="2">Ability</TieredItem>
-			<TieredItem weight="200" tier="3">Ability</TieredItem>
+			<TieredItem weight="250" tier="1">Ability</TieredItem>
+			<TieredItem weight="200" tier="2">Ability</TieredItem>
+			<TieredItem weight="150" tier="3">Ability</TieredItem>
 			<TieredItem weight="150" tier="4">Ability</TieredItem>
 			<TieredItem weight="100" tier="5">Ability</TieredItem>
 			<TieredItem weight="50" tier="6">Ability</TieredItem>
@@ -45,7 +45,7 @@
 		
 		<!-- Tiered Rings -->
 		<ItemPool>
-			<TieredItem weight="300" tier="1">Ring</TieredItem>
+			<TieredItem weight="250" tier="1">Ring</TieredItem>
 			<TieredItem weight="250" tier="2">Ring</TieredItem>
 			<TieredItem weight="200" tier="3">Ring</TieredItem>
 			<TieredItem weight="150" tier="4">Ring</TieredItem>

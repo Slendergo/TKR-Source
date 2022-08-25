@@ -462,7 +462,7 @@
     <ActivateOnEquip stat="21" amount="3">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>5</FameBonus>
-    <DisplayId>Golden Oryx Sword</DisplayId>
+    <DisplayId>Sword of Golden Fragments</DisplayId>
   </Object>
   <Object type="0x5061" id="Abyssal Sword">
     <Class>Equipment</Class>

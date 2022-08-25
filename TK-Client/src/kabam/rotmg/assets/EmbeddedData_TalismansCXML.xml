@@ -31,6 +31,41 @@
       <StatType type="27" scale="perLevel" amount="1" />
     </Tier>
   </Talisman>
+  <!--UT Talismans-->
+  <Talisman type="0x00">
+    <Name>Pocket Change</Name>
+    <ItemAssociatedWith>Pocket Change</ItemAssociatedWith>
+    <BaseUpgradeCost>500</BaseUpgradeCost>
+    <CostMultiplier>1.5</CostMultiplier>
+    <MaxLevels>5</MaxLevels>
+    <Tier tier="0">
+      <LootBoost amount="2" scale="perLevel" />
+      <LootBoost amount="10" scale="flat" />
+    </Tier>
+  </Talisman>
+  <Talisman type="0x04">
+    <Name>Path of Destruction</Name>
+    <ItemAssociatedWith>Path of Destruction</ItemAssociatedWith>
+    <BaseUpgradeCost>500</BaseUpgradeCost>
+    <CostMultiplier>1.5</CostMultiplier>
+    <MaxLevels>5</MaxLevels>
+    <Tier tier="0">
+      <StatType type="0" scale="perLevel" amount="5" />
+      <StatType type="3" scale="perLevel" amount="5" />
+    </Tier>
+  </Talisman>
+  <Talisman type="0x05">
+    <Name>Heart and Soul</Name>
+    <ItemAssociatedWith>Heart and Soul</ItemAssociatedWith>
+    <BaseUpgradeCost>500</BaseUpgradeCost>
+    <CostMultiplier>1.5</CostMultiplier>
+    <MaxLevels>5</MaxLevels>
+    <Tier tier="0">
+      <StatType type="0" scale="perLevel" amount="5" />
+      <StatType type="3" scale="perLevel" amount="5" />
+    </Tier>
+  </Talisman>
+  <!--UT Talismans-->
   <Talisman type="0x02">
     <Name>Talisman of Luck</Name>
     <ItemAssociatedWith>Talisman of Luck</ItemAssociatedWith>

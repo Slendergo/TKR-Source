@@ -1,9 +1,10 @@
-<Objects>
-
-	<Object type="0x4949" id="Beginner's Talisman">
+<Objects>	
+	<!--UT Talismans-->
+	<Object type="0x4949" id="Pocket Change">
 		<Class>Equipment</Class>
-		<DisplayId>Basic Talisman</DisplayId>
+		<DisplayId>Pocket Change</DisplayId>
 		<Item />
+		<Rare />
 		<InvUse />
 		<Texture>
 			<File>CustomObj</File>
@@ -13,15 +14,378 @@
 			<EffectInfo name="" description="What powers does this item hold?" />
 		</ExtraTooltipData>
 		<SlotType>10</SlotType>
-		<Description>A talisman gifted to you at birth by the gods</Description>
+		<Description>Increase to a player's health, mana, and loot drop chance!</Description>
 		<Sound>use_potion</Sound>
 		<Activate type="0x00">UnlockTalisman</Activate>
 		<Consumable />
 		<Potion />
 		<Soulbound/>
-		<BagType>1</BagType>
+		<BagType>6</BagType>
 	</Object>
+	<Object type="0x40a" id="Path of Destruction">
+		<Class>Equipment</Class>
+		<DisplayId>Path of Destruction</DisplayId>
+		<Item />
+		<Rare />
+		<InvUse />
+		<Texture>
+			<File>CustomObj</File>
+			<Index>0x1c</Index>
+		</Texture>
+		<ExtraTooltipData>
+			<EffectInfo name="" description="What powers does this item hold?" />
+		</ExtraTooltipData>
+		<SlotType>10</SlotType>
+		<Description>Increase to a player's speed, wisdom, vitality, and defense!</Description>
+		<Sound>use_potion</Sound>
+		<Activate type="0x04">UnlockTalisman</Activate>
+		<Consumable />
+		<Potion />
+		<Soulbound/>
+		<BagType>6</BagType>
+	</Object>
+	<Object type="0x40b" id="Heart and Soul">
+		<Class>Equipment</Class>
+		<DisplayId>Heart and Soul</DisplayId>
+		<Item />
+		<Rare />
+		<InvUse />
+		<Texture>
+			<File>CustomObj</File>
+			<Index>0x1c</Index>
+		</Texture>
+		<ExtraTooltipData>
+			<EffectInfo name="" description="What powers does this item hold?" />
+		</ExtraTooltipData>
+		<SlotType>10</SlotType>
+		<Description>Increase to a player's attack and dexterity!</Description>
+		<Sound>use_potion</Sound>
+		<Activate type="0x05">UnlockTalisman</Activate>
+		<Consumable />
+		<Potion />
+		<Soulbound/>
+		<BagType>6</BagType>
+	</Object>
+	<!--UT Talismans-->
+	
+	<!--Legendary Talismans-->
+			<!--Water-->
+	<Object type="0x40c" id="Blood Exchange">
+		<Class>Equipment</Class>
+		<DisplayId>Blood Exchange</DisplayId>
+		<Item />
+		<Legendary />
+		<InvUse />
+		<Texture>
+			<File>CustomObj</File>
+			<Index>0x1c</Index>
+		</Texture>
+		<ExtraTooltipData>
+			<EffectInfo name="" description="What powers does this item hold?" />
+		</ExtraTooltipData>
+		<SlotType>10</SlotType>
+		<Description>Abilities use health instead of mana!</Description>
+		<Sound>use_potion</Sound>
+		<Activate type="0x06">UnlockTalisman</Activate>
+		<Consumable />
+		<Potion />
+		<Soulbound/>
+		<BagType>6</BagType>
+	</Object>
+	<Object type="0x40d" id="Eternal Youth">
+		<Class>Equipment</Class>
+		<DisplayId>Eternal Youth</DisplayId>
+		<Item />
+		<Legendary />
+		<InvUse />
+		<Texture>
+			<File>CustomObj</File>
+			<Index>0x1c</Index>
+		</Texture>
+		<ExtraTooltipData>
+			<EffectInfo name="" description="What powers does this item hold?" />
+		</ExtraTooltipData>
+		<SlotType>10</SlotType>
+		<Description>This gives 200% more HP, but takes away speed, attack, dexterity, and wisdom!</Description>
+		<Sound>use_potion</Sound>
+		<Activate type="0x07">UnlockTalisman</Activate>
+		<Consumable />
+		<Potion />
+		<Soulbound/>
+		<BagType>6</BagType>
+	</Object>
+	<Object type="0x40e" id="Unyielding Resilience">
+		<Class>Equipment</Class>
+		<DisplayId>Unyielding Resilience</DisplayId>
+		<Item />
+		<Legendary />
+		<InvUse />
+		<Texture>
+			<File>CustomObj</File>
+			<Index>0x1c</Index>
+		</Texture>
+		<ExtraTooltipData>
+			<EffectInfo name="" description="What powers does this item hold?" />
+		</ExtraTooltipData>
+		<SlotType>10</SlotType>
+		<Description>Significantly increases your health regeneration, but decreases your mana regeneration.</Description>
+		<Sound>use_potion</Sound>
+		<Activate type="0x08">UnlockTalisman</Activate>
+		<Consumable />
+		<Potion />
+		<Soulbound/>
+		<BagType>6</BagType>
+	</Object>
+			<!--Fire-->
+	<Object type="0x40f" id="Wrath's Incarnate">
+		<Class>Equipment</Class>
+		<DisplayId>Wrath's Incarnate</DisplayId>
+		<Item />
+		<Legendary />
+		<InvUse />
+		<Texture>
+			<File>CustomObj</File>
+			<Index>0x1c</Index>
+		</Texture>
+		<ExtraTooltipData>
+			<EffectInfo name="" description="What powers does this item hold?" />
+		</ExtraTooltipData>
+		<SlotType>10</SlotType>
+		<Description>When a player's health is full your damage is increased, but when health isn't full, damage is decreased.</Description>
+		<Sound>use_potion</Sound>
+		<Activate type="0x09">UnlockTalisman</Activate>
+		<Consumable />
+		<Potion />
+		<Soulbound/>
+		<BagType>6</BagType>
+	</Object>
+	<Object type="0x407" id="Primal Rage">
+		<Class>Equipment</Class>
+		<DisplayId>Primal Rage</DisplayId>
+		<Item />
+		<Legendary />
+		<InvUse />
+		<Texture>
+			<File>CustomObj</File>
+			<Index>0x1c</Index>
+		</Texture>
+		<ExtraTooltipData>
+			<EffectInfo name="" description="What powers does this item hold?" />
+		</ExtraTooltipData>
+		<SlotType>10</SlotType>
+		<Description>Every shot pierces an enemies armor, but your damage is averaged. You're also immune to weaken and damaging.</Description>
+		<Sound>use_potion</Sound>
+		<Activate type="0x10">UnlockTalisman</Activate>
+		<Consumable />
+		<Potion />
+		<Soulbound/>
+		<BagType>6</BagType>
+	</Object>
+	<Object type="0x408" id="Call to Arms">
+		<Class>Equipment</Class>
+		<DisplayId>Call to Arms</DisplayId>
+		<Item />
+		<Legendary />
+		<InvUse />
+		<Texture>
+			<File>CustomObj</File>
+			<Index>0x1c</Index>
+		</Texture>
+		<ExtraTooltipData>
+			<EffectInfo name="" description="What powers does this item hold?" />
+		</ExtraTooltipData>
+		<SlotType>10</SlotType>
+		<Description>When a player is above 75% health, their RoF and Health regeneration is increase. When belore 75%, RoF and health regeneration is decreased.</Description>
+		<Sound>use_potion</Sound>
+		<Activate type="0x11">UnlockTalisman</Activate>
+		<Consumable />
+		<Potion />
+		<Soulbound/>
+		<BagType>6</BagType>
+	</Object>
+			<!--Wind-->
+	<Object type="0x409" id="Divine Intillect">
+		<Class>Equipment</Class>
+		<DisplayId>Divine Intillect</DisplayId>
+		<Item />
+		<Legendary />
+		<InvUse />
+		<Texture>
+			<File>CustomObj</File>
+			<Index>0x1c</Index>
+		</Texture>
+		<ExtraTooltipData>
+			<EffectInfo name="" description="What powers does this item hold?" />
+		</ExtraTooltipData>
+		<SlotType>10</SlotType>
+		<Description>Mana Regeneration is significantly increased, but health regeneration is decreased.</Description>
+		<Sound>use_potion</Sound>
+		<Activate type="0x12">UnlockTalisman</Activate>
+		<Consumable />
+		<Potion />
+		<Soulbound/>
+		<BagType>6</BagType>
+	</Object>
+	<Object type="0x410" id="Insatiable Thirst">
+		<Class>Equipment</Class>
+		<DisplayId>Insatiable Thirst</DisplayId>
+		<Item />
+		<Legendary />
+		<InvUse />
+		<Texture>
+			<File>CustomObj</File>
+			<Index>0x1c</Index>
+		</Texture>
+		<ExtraTooltipData>
+			<EffectInfo name="" description="What powers does this item hold?" />
+		</ExtraTooltipData>
+		<SlotType>10</SlotType>
+		<Description>When hitting an enemy, 1% of your mana is restored, but your mana regeneration is significantly increased.</Description>
+		<Sound>use_potion</Sound>
+		<Activate type="0x13">UnlockTalisman</Activate>
+		<Consumable />
+		<Potion />
+		<Soulbound/>
+		<BagType>6</BagType>
+	</Object>
+	<Object type="0x411" id="Spellslinger">
+		<Class>Equipment</Class>
+		<DisplayId>Spellslinger</DisplayId>
+		<Item />
+		<Legendary />
+		<InvUse />
+		<Texture>
+			<File>CustomObj</File>
+			<Index>0x1c</Index>
+		</Texture>
+		<ExtraTooltipData>
+			<EffectInfo name="" description="What powers does this item hold?" />
+		</ExtraTooltipData>
+		<SlotType>10</SlotType>
+		<Description>Ability damage is increased by 30%, but mana regeneration is decreased.</Description>
+		<Sound>use_potion</Sound>
+		<Activate type="0x14">UnlockTalisman</Activate>
+		<Consumable />
+		<Potion />
+		<Soulbound/>
+		<BagType>6</BagType>
+	</Object>
+			<!--Earth-->
+	<Object type="0x412" id="Iron Will">
+		<Class>Equipment</Class>
+		<DisplayId>Iron Will</DisplayId>
+		<Item />
+		<Legendary />
+		<InvUse />
+		<Texture>
+			<File>CustomObj</File>
+			<Index>0x1c</Index>
+		</Texture>
+		<ExtraTooltipData>
+			<EffectInfo name="" description="What powers does this item hold?" />
+		</ExtraTooltipData>
+		<SlotType>10</SlotType>
+		<Description>A significant increase to a player's defense, but a drawback to the regeneration of mana and health.</Description>
+		<Sound>use_potion</Sound>
+		<Activate type="0x15">UnlockTalisman</Activate>
+		<Consumable />
+		<Potion />
+		<Soulbound/>
+		<BagType>6</BagType>
+	</Object>
+	<Object type="0x413" id="Party of One">
+		<Class>Equipment</Class>
+		<DisplayId>Party of One</DisplayId>
+		<Item />
+		<Legendary />
+		<InvUse />
+		<Texture>
+			<File>CustomObj</File>
+			<Index>0x1c</Index>
+		</Texture>
+		<ExtraTooltipData>
+			<EffectInfo name="" description="What powers does this item hold?" />
+		</ExtraTooltipData>
+		<SlotType>10</SlotType>
+		<Description>Boosts a player's probability of finding loot, but as more players join the same instance as them, their likelihood of finding loot decreases.</Description>
+		<Sound>use_potion</Sound>
+		<Activate type="0x16">UnlockTalisman</Activate>
+		<Consumable />
+		<Potion />
+		<Soulbound/>
+		<BagType>6</BagType>
+	</Object>
+	<Object type="0x414" id="Forbidden Fruit">
+		<Class>Equipment</Class>
+		<DisplayId>Forbidden Fruit</DisplayId>
+		<Item />
+		<Legendary />
+		<InvUse />
+		<Texture>
+			<File>CustomObj</File>
+			<Index>0x1c</Index>
+		</Texture>
+		<ExtraTooltipData>
+			<EffectInfo name="" description="What powers does this item hold?" />
+		</ExtraTooltipData>
+		<SlotType>10</SlotType>
+		<Description>Each HP or MP potion stacked increases a players HP or MP regeneration, but the player is stunned when consuming either potion.</Description>
+		<Sound>use_potion</Sound>
+		<Activate type="0x17">UnlockTalisman</Activate>
+		<Consumable />
+		<Potion />
+		<Soulbound/>
+		<BagType>6</BagType>
+	</Object>
+	<!--Legendary Talismans-->
 
+	<!--Mythical Talismans-->
+	<Object type="0x415" id="Luck of the Irish">
+		<Class>Equipment</Class>
+		<DisplayId>Luck of the Irish</DisplayId>
+		<Item />
+		<Legendary />
+		<InvUse />
+		<Texture>
+			<File>CustomObj</File>
+			<Index>0x1c</Index>
+		</Texture>
+		<ExtraTooltipData>
+			<EffectInfo name="" description="50% whitebag increase, can only obtain whitebags" />
+		</ExtraTooltipData>
+		<SlotType>10</SlotType>
+		<Description>A player's chance at a white bag is increased by 50%, but they can only obtain white bags.</Description>
+		<Sound>use_potion</Sound>
+		<Activate type="0x18">UnlockTalisman</Activate>
+		<Consumable />
+		<Potion />
+		<Soulbound/>
+		<BagType>6</BagType>
+	</Object>
+	<Object type="0x416" id="Known After Death">
+		<Class>Equipment</Class>
+		<DisplayId>Known After Death</DisplayId>
+		<Item />
+		<Legendary />
+		<InvUse />
+		<Texture>
+			<File>CustomObj</File>
+			<Index>0x1c</Index>
+		</Texture>
+		<ExtraTooltipData>
+			<EffectInfo name="" description="+200% Fame Gain, No longer gets loot" />
+		</ExtraTooltipData>
+		<SlotType>10</SlotType>
+		<Description>Significant increase to fame gain, but loot is no longer obtainable.</Description>
+		<Sound>use_potion</Sound>
+		<Activate type="0x19">UnlockTalisman</Activate>
+		<Consumable />
+		<Potion />
+		<Soulbound/>
+		<BagType>6</BagType>
+	</Object>
+	<!--Mythical Talismans-->
+	
 	<Object type="0x4950" id="Severed Marble Hand">
 		<Class>Equipment</Class>
 		<DisplayId>Severed Marble Hand</DisplayId>

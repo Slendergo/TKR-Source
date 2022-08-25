@@ -1,44 +1,375 @@
 ﻿<Talismans>
+	<!--UT Talismans-->
 	<Talisman type="0x00">
-		<Name>Beginner's Talisman</Name>
-		<ItemAssociatedWith>Beginner's Talisman</ItemAssociatedWith>
-		<BaseUpgradeCost>1500</BaseUpgradeCost>
-		<TierUpgradeCost>3500</TierUpgradeCost>
+		<Name>Pocket Change</Name>
+		<ItemAssociatedWith>Pocket Change</ItemAssociatedWith>
+		<BaseUpgradeCost>500</BaseUpgradeCost>
 		<CostMultiplier>1.1</CostMultiplier>
-		<MaxLevels>1</MaxLevels>
+		<MaxLevels>5</MaxLevels>
 		<Tier tier="0">
-			<StatType type="0" scale="perLevel" amount="5" />
-			<StatType type="3" scale="perLevel" amount="5" />
-			
-			<Leech prob="0.03" type="life" amount="10"/>
-			<Leech prob="0.03" type="mana" amount="10"/>
-			<Leech prob="0.06" type="life" amount="5"/>
-			<Leech prob="0.06" type="mana" amount="5"/>
+			<LootBoost amount="2" scale="perLevel"/>
+			<LootBoost amount="10" scale="flat"/>
+			<StatType type="0" scale="perLevel" amount="10" />
+			<StatType type="3" scale="perLevel" amount="10" />
+		</Tier>
+	</Talisman>
+	<Talisman type="0x04">
+		<Name>Path of Destruction</Name>
+		<ItemAssociatedWith>Path of Destruction</ItemAssociatedWith>
+		<BaseUpgradeCost>500</BaseUpgradeCost>
+		<CostMultiplier>1.1</CostMultiplier>
+		<MaxLevels>5</MaxLevels>
+		<Tier tier="0">
+			<StatType type="20" scale="perLevel" amount="2" />
+			<StatType type="28" scale="perLevel" amount="2" />
+		</Tier>
+	</Talisman>
+	<Talisman type="0x05">
+		<Name>Heart and Soul</Name>
+		<ItemAssociatedWith>Heart and Soul</ItemAssociatedWith>
+		<BaseUpgradeCost>500</BaseUpgradeCost>
+		<CostMultiplier>1.1</CostMultiplier>
+		<MaxLevels>5</MaxLevels>
+		<Tier tier="0">
+			<StatType type="21" scale="perLevel" amount="2" />
+			<StatType type="22" scale="perLevel" amount="2" />
+			<StatType type="26" scale="perLevel" amount="2" />
+			<StatType type="27" scale="perLevel" amount="2" />
+		</Tier>
+	</Talisman>
+	<!--UT Talismans-->
+	
+	<!--Legendary Talismans-->
+		<!--Water-->
+	<Talisman type="0x06">
+		<Name>Blood Exchange</Name>
+		<ItemAssociatedWith>Blood Exchange</ItemAssociatedWith>
+		<BaseUpgradeCost>1000</BaseUpgradeCost>
+		<TierUpgradeCost>3000</TierUpgradeCost>
+		<CostMultiplier>1.1</CostMultiplier>
+		<MaxLevels>10</MaxLevels>
+		<Restrictions type="water"/>
+		<Tier tier="0">
+			<StatType type="0" scale="perLevel" amount="10" />
+			<StatType type="28" scale="perLevel" amount="-1" />
 		</Tier>
 		<Tier tier="1">
-			<StatType type="0" scale="perLevel" amount="5" />
-			<StatType type="3" scale="perLevel" amount="5" />
-			<StatType type="20" scale="perLevel" amount="1" />
-			<StatType type="21" scale="perLevel" amount="1" />
+			<StatType type="0" scale="perLevel" amount="15" />
+			<StatType type="28" scale="perLevel" amount="-1" />
 		</Tier>
 		<Tier tier="2">
-			<StatType type="0" scale="perLevel" amount="5" />
-			<StatType type="3" scale="perLevel" amount="5" />
-			<StatType type="20" scale="perLevel" amount="1" />
-			<StatType type="21" scale="perLevel" amount="1" />
-			<StatType type="28" scale="perLevel" amount="1" />
-			<StatType type="22" scale="perLevel" amount="1" />
+			<StatType type="0" scale="perLevel" amount="15" />
+			<StatType type="28" scale="perLevel" amount="-1" />
+			<RemoveManaBar/>
+			<AbilityCost type="life" percentage="0.2"/>
+		</Tier>
+	</Talisman>
+	<Talisman type="0x07">
+		<Name>Eternal Youth</Name>
+		<ItemAssociatedWith>Eternal Youth</ItemAssociatedWith>
+		<BaseUpgradeCost>1000</BaseUpgradeCost>
+		<TierUpgradeCost>3000</TierUpgradeCost>
+		<CostMultiplier>1.1</CostMultiplier>
+		<MaxLevels>10</MaxLevels>
+		<Restrictions type="water"/>
+		<Tier tier="0">
+			<StatType type="0" scale="perLevel" amount="10" />
+			<StatType type="26" scale="perLevel" amount="-1" />
+		</Tier>
+		<Tier tier="1">
+			<StatType type="0" scale="perLevel" amount="20" />
+			<StatType type="26" scale="perLevel" amount="-2" />
+		</Tier>
+		<Tier tier="2">
+			<StatType type="0" scale="perLevel" amount="20" />
+			<StatType type="26" scale="perLevel" amount="-2" />
+			<StatType type="0" scale="perLevel" percentage="0.20" />
+			<StatType type="22" scale="perLevel" percentage="-0.03" />
+			<StatType type="28" scale="perLevel" percentage="-0.05" />
+			<StatType type="20" scale="perLevel" percentage="-0.03" />
+			<StatType type="27" scale="perLevel" percentage="-0.03" />
+		</Tier>
+	</Talisman>
+	<Talisman type="0x08">
+		<Name>Unyielding Resilience</Name>
+		<ItemAssociatedWith>Unyielding Resilience</ItemAssociatedWith>
+		<BaseUpgradeCost>1000</BaseUpgradeCost>
+		<TierUpgradeCost>3000</TierUpgradeCost>
+		<CostMultiplier>1.1</CostMultiplier>
+		<MaxLevels>10</MaxLevels>
+		<Restrictions type="water"/>
+		<Tier tier="0">
+			<StatType type="20" scale="perLevel" amount="-1" />
 			<StatType type="26" scale="perLevel" amount="1" />
-			<StatType type="27" scale="perLevel" amount="1" />
+		</Tier>
+		<Tier tier="1">
+			<StatType type="20" scale="perLevel" amount="-1" />
+			<StatType type="26" scale="perLevel" amount="2" />
+		</Tier>
+		<Tier tier="2">
+			<Extra percentage="0.12" scale="perLevel">LifeRegen</Extra>
+			<Extra percentage="-0.06" scale="perLevel">ManaRegen</Extra>
+			<StatType type="20" scale="perLevel" amount="-1" />
+			<StatType type="26" scale="perLevel" amount="2" />
 		</Tier>
 	</Talisman>
 
+	<!--Fire-->
+	<Talisman type="0x09">
+		<Name>Wrath's Incarnate</Name>
+		<ItemAssociatedWith>Wrath's Incarnate</ItemAssociatedWith>
+		<BaseUpgradeCost>1000</BaseUpgradeCost>
+		<TierUpgradeCost>3000</TierUpgradeCost>
+		<CostMultiplier>1.1</CostMultiplier>
+		<MaxLevels>10</MaxLevels>
+		<Restrictions type="fire"/>
+		<Tier tier="0">
+			<StatType type="0" scale="perLevel" amount="-5" />
+			<StatType type="28" scale="perLevel" amount="1" />
+			<StatType type="22" scale="perLevel" amount="1" />
+		</Tier>
+		<Tier tier="1">
+			<StatType type="0" scale="perLevel" amount="-10" />
+			<StatType type="28" scale="perLevel" amount="2" />
+			<StatType type="22" scale="perLevel" amount="2" />
+		</Tier>
+		<Tier tier="2">
+			<StatType type="0" scale="perLevel" amount="-10" />
+			<StatType type="28" scale="perLevel" amount="2" />
+			<StatType type="22" scale="perLevel" amount="2" />
+			<DamageOn type="full" stat="health" scale="perLevel" percentage="0.04"/>
+			<DamageOn type="notfull" stat="health" scale="perLevel" percentage="-0.04"/>
+		</Tier>
+	</Talisman>
+	<Talisman type="0x10">
+		<Name>Primal Rage</Name>
+		<ItemAssociatedWith>Primal Rage</ItemAssociatedWith>
+		<BaseUpgradeCost>1000</BaseUpgradeCost>
+		<TierUpgradeCost>3000</TierUpgradeCost>
+		<CostMultiplier>1.1</CostMultiplier>
+		<MaxLevels>10</MaxLevels>
+		<Restrictions type="fire"/>
+		<Tier tier="0">
+			<StatType type="21" scale="perLevel" amount="-1" />
+			<StatType type="28" scale="perLevel" amount="1" />
+		</Tier>
+		<Tier tier="1">
+			<StatType type="21" scale="perLevel" amount="-1" />
+			<StatType type="28" scale="perLevel" amount="1" />
+		</Tier>
+		<Tier tier="2">
+			<ImmuneTo effect="Weak"/>
+			<ImmuneTo effect="Damaging"/>
+			<ShotsPierceArmour/>
+			<DamageIsAverage/>
+			<StatType type="21" scale="perLevel" amount="-1" />
+			<StatType type="28" scale="perLevel" amount="1" />
+		</Tier>
+	</Talisman>
+	<Talisman type="0x11">
+		<Name>Call to Arms</Name>
+		<ItemAssociatedWith>Call to Arms</ItemAssociatedWith>
+		<BaseUpgradeCost>1000</BaseUpgradeCost>
+		<TierUpgradeCost>3000</TierUpgradeCost>
+		<CostMultiplier>1.1</CostMultiplier>
+		<MaxLevels>10</MaxLevels>
+		<Restrictions type="fire"/>
+		<Tier tier="0">
+			<StatType type="26" scale="perLevel" amount="-1" />
+			<StatType type="20" scale="perLevel" amount="1" />
+		</Tier>
+		<Tier tier="1">
+			<StatType type="26" scale="perLevel" amount="-1" />
+			<StatType type="20" scale="perLevel" amount="2" />
+		</Tier>
+		<Tier tier="2">
+			<Health condition="above" percent="0.75" scale="perLevel" add="0.035">RateOfFire</Health>
+			<Health condition="above" percent="0.75" scale="perLevel" add="0.035">Regeneration</Health>
+			<Health condition="below" percent="0.75" scale="perLevel" add="-0.015">RateOfFire</Health>
+			<Health condition="below" percent="0.75" scale="perLevel" add="-0.035">Regeneration</Health>
+			<StatType type="26" scale="perLevel" amount="-1" />
+			<StatType type="20" scale="perLevel" amount="2" />
+		</Tier>
+	</Talisman>
+
+	<!--Wind-->
+	<Talisman type="0x12">
+		<Name>Divine Intillect</Name>
+		<ItemAssociatedWith>Divine Intillect</ItemAssociatedWith>
+		<BaseUpgradeCost>1000</BaseUpgradeCost>
+		<TierUpgradeCost>3000</TierUpgradeCost>
+		<CostMultiplier>1.1</CostMultiplier>
+		<MaxLevels>10</MaxLevels>
+		<Restrictions type="wind"/>
+		<Tier tier="0">
+			<StatType type="27" scale="perLevel" amount="1" />
+			<StatType type="0" scale="perLevel" amount="-5" />
+		</Tier>
+		<Tier tier="1">
+			<StatType type="27" scale="perLevel" amount="2" />
+			<StatType type="0" scale="perLevel" amount="-10" />
+		</Tier>
+		<Tier tier="2">
+			<Extra percentage="0.135" scale="perLevel">ManaRegen</Extra>
+			<Extra percentage="-0.05" scale="perLevel">LifeRegen</Extra>
+			<StatType type="27" scale="perLevel" amount="2" />
+			<StatType type="0" scale="perLevel" amount="-10" />
+		</Tier>
+	</Talisman>
+	<Talisman type="0x13">
+		<Name>Insatiable Thirst</Name>
+		<ItemAssociatedWith>Insatiable Thirst</ItemAssociatedWith>
+		<BaseUpgradeCost>1000</BaseUpgradeCost>
+		<TierUpgradeCost>3000</TierUpgradeCost>
+		<CostMultiplier>1.1</CostMultiplier>
+		<MaxLevels>10</MaxLevels>
+		<Restrictions type="wind"/>
+		<Tier tier="0">
+			<StatType type="3" scale="perLevel" amount="5" />
+			<StatType type="0" scale="perLevel" amount="-10" />
+		</Tier>
+		<Tier tier="1">
+			<StatType type="3" scale="perLevel" amount="10" />
+			<StatType type="0" scale="perLevel" amount="-10" />
+		</Tier>
+		<Tier tier="2">
+			<Leech prob="0.06" type="mana" scale="perLevel" percent="0.001"/>
+			<Extra percentage="-0.09" scale="perLevel">LifeRegen</Extra>
+			<StatType type="3" scale="perLevel" amount="10" />
+			<StatType type="0" scale="perLevel" amount="-10" />
+		</Tier>
+	</Talisman>
+	<Talisman type="0x14">
+		<Name>Spellslinger</Name>
+		<ItemAssociatedWith>Spellslinger</ItemAssociatedWith>
+		<BaseUpgradeCost>1000</BaseUpgradeCost>
+		<TierUpgradeCost>3000</TierUpgradeCost>
+		<CostMultiplier>1.1</CostMultiplier>
+		<MaxLevels>10</MaxLevels>
+		<Restrictions type="wind"/>
+		<Tier tier="0">
+			<StatType type="28" scale="perLevel" amount="0.5" />
+			<StatType type="22" scale="perLevel" amount="-1" />
+		</Tier>
+		<Tier tier="1">
+			<StatType type="28" scale="perLevel" amount="1" />
+			<StatType type="22" scale="perLevel" amount="-1" />
+		</Tier>
+		<Tier tier="2">
+			<Extra percentage="0.03" scale="perLevel">AbilityDamage</Extra>
+			<Extra percentage="-0.03" scale="perLevel">ManaRegen</Extra>
+			<StatType type="28" scale="perLevel" amount="1" />
+			<StatType type="22" scale="perLevel" amount="-1" />
+		</Tier>
+	</Talisman>
+
+	<!--Earth-->
+	<Talisman type="0x15">
+		<Name>Iron Will</Name>
+		<ItemAssociatedWith>Iron Will</ItemAssociatedWith>
+		<BaseUpgradeCost>1000</BaseUpgradeCost>
+		<TierUpgradeCost>3000</TierUpgradeCost>
+		<CostMultiplier>1.1</CostMultiplier>
+		<MaxLevels>10</MaxLevels>
+		<Restrictions type="earth"/>
+		<Tier tier="0">
+			<StatType type="3" scale="perLevel" amount="-5" />
+			<StatType type="21" scale="perLevel" amount="1" />
+		</Tier>
+		<Tier tier="1">
+			<StatType type="3" scale="perLevel" amount="-10" />
+			<StatType type="21" scale="perLevel" amount="2" />
+			<ImmuneTo effect="ArmorBroken"/>
+		</Tier>
+		<Tier tier="2">
+			<Extra percentage="-0.04" scale="perLevel">LifeRegen</Extra>
+			<Extra percentage="-0.04" scale="perLevel">ManaRegen</Extra>
+			<StatType type="21" scale="perLevel" percentage="0.06" />
+			<StatType type="3" scale="perLevel" amount="-10" />
+			<StatType type="21" scale="perLevel" amount="2" />
+		</Tier>
+	</Talisman>
+	<Talisman type="0x16">
+		<Name>Party of One</Name>
+		<ItemAssociatedWith>Party of One</ItemAssociatedWith>
+		<BaseUpgradeCost>1000</BaseUpgradeCost>
+		<TierUpgradeCost>3000</TierUpgradeCost>
+		<CostMultiplier>1.1</CostMultiplier>
+		<MaxLevels>10</MaxLevels>
+		<Restrictions type="earth"/>
+		<Tier tier="0">
+			<LootBoost amount="0.5" scale="perLevel"/>
+		</Tier>
+		<Tier tier="1">
+			<LootBoost amount="1" scale="perLevel"/>
+		</Tier>
+		<Tier tier="2">
+			<LootBoost percentage="0.075" scale="perLevel"/>
+			<LootBoostPerPlayer amount="-0.025" scale="perLevel"/>
+			<LootBoost amount="1" scale="perLevel"/>
+		</Tier>
+	</Talisman>
+	<Talisman type="0x17">
+		<Name>Forbidden Fruit</Name>
+		<ItemAssociatedWith>Forbidden Fruit</ItemAssociatedWith>
+		<BaseUpgradeCost>1000</BaseUpgradeCost>
+		<TierUpgradeCost>3000</TierUpgradeCost>
+		<CostMultiplier>1.1</CostMultiplier>
+		<MaxLevels>10</MaxLevels>
+		<Restrictions type="earth"/>
+		<Tier tier="0">
+			<StatType type="26" scale="perLevel" amount="-0.5" />
+			<StatType type="28" scale="perLevel" amount="1" />
+		</Tier>
+		<Tier tier="1">
+			<StatType type="26" scale="perLevel" amount="-1" />
+			<StatType type="28" scale="perLevel" amount="1.5" />
+		</Tier>
+		<Tier tier="2">
+			<PotionStack type="health" stunTime="0.5" scale="perLevel" percentage="0.08"/>
+			<PotionStack type="mana" stunTime="0.5" scale="perLevel" percentage="0.08"/>
+			<NoPotionHealing/>
+			<StatType type="26" scale="perLevel" amount="-1" />
+			<StatType type="28" scale="perLevel" amount="1.5" />
+		</Tier>
+	</Talisman>
+	<!--Legendary Talismans-->
+	
+	<!--Mythical Talismans-->
+	<Talisman type="0x18">
+		<Name>Luck of the Irish</Name>
+		<ItemAssociatedWith>Luck of the Irish</ItemAssociatedWith>
+		<BaseUpgradeCost>1000</BaseUpgradeCost>
+		<TierUpgradeCost>3000</TierUpgradeCost>
+		<CostMultiplier>1.1</CostMultiplier>
+		<MaxLevels>1</MaxLevels>
+		<Restrictions type="mythical"/>
+		<Tier tier="0">
+			<BagBoost type="white" percent="0.5"/>
+			<CanOnlyGetWhiteBags/>
+		</Tier>
+	</Talisman>
+	<Talisman type="0x19">
+		<Name>Known After Death</Name>
+		<ItemAssociatedWith>Known After Death</ItemAssociatedWith>
+		<BaseUpgradeCost>1000</BaseUpgradeCost>
+		<TierUpgradeCost>3000</TierUpgradeCost>
+		<CostMultiplier>1.1</CostMultiplier>
+		<MaxLevels>1</MaxLevels>
+		<Restrictions type="mythical"/>
+		<Tier tier="0">
+			<FameGainBonus percent="2.0"/>
+			<CantGetLoot/>
+		</Tier>
+	</Talisman>
+	<!--Mythical Talismans-->
+	
 	<Talisman type="0x02">
 		<Name>Talisman of Luck</Name>
 		<ItemAssociatedWith>Talisman of Luck</ItemAssociatedWith>
 		<BaseUpgradeCost>2000</BaseUpgradeCost>
 		<TierUpgradeCost>8000</TierUpgradeCost>
-		<CostMultiplier>1.15</CostMultiplier>
+		<CostMultiplier>1.1</CostMultiplier>
 		<MaxLevels>10</MaxLevels>
 		<Tier tier="0">
 			<LootBoost amount="0.5" scale="perLevel"/>

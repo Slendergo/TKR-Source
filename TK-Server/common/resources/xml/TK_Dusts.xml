@@ -3,7 +3,6 @@
 		
 		<!-- Tiered Weapons-->
 		<ItemPool>
-			<TieredItem weight="650" tier="0">Weapon</TieredItem>
 			<TieredItem weight="600" tier="1">Weapon</TieredItem>
 			<TieredItem weight="550" tier="2">Weapon</TieredItem>
 			<TieredItem weight="500" tier="3">Weapon</TieredItem>
@@ -20,7 +19,6 @@
 		
 		<!-- Tiered Armours -->
 		<ItemPool>
-			<TieredItem weight="650" tier="0">Armor</TieredItem>
 			<TieredItem weight="600" tier="1">Armor</TieredItem>
 			<TieredItem weight="550" tier="2">Armor</TieredItem>
 			<TieredItem weight="500" tier="3">Armor</TieredItem>
@@ -37,7 +35,6 @@
 		
 		<!-- Tiered Abilities -->
 		<ItemPool>
-			<TieredItem weight="350" tier="0">Ability</TieredItem>
 			<TieredItem weight="300" tier="1">Ability</TieredItem>
 			<TieredItem weight="250" tier="2">Ability</TieredItem>
 			<TieredItem weight="200" tier="3">Ability</TieredItem>
@@ -48,7 +45,6 @@
 		
 		<!-- Tiered Rings -->
 		<ItemPool>
-			<TieredItem weight="350" tier="0" >Ring</TieredItem>
 			<TieredItem weight="300" tier="1">Ring</TieredItem>
 			<TieredItem weight="250" tier="2">Ring</TieredItem>
 			<TieredItem weight="200" tier="3">Ring</TieredItem>

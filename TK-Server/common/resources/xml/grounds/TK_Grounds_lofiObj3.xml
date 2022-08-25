@@ -745,7 +745,6 @@
         <Index>0x29b</Index>
       </Texture>
     </RandomTexture>
-    <BlendPriority>1</BlendPriority>
   </Ground>
   <Ground type="0x9a" id="Candy Beach">
     <Texture>

@@ -9,6 +9,10 @@
     <Tier tier="0">
       <StatType type="0" scale="perLevel" amount="5" />
       <StatType type="3" scale="perLevel" amount="5" />
+      <Leech prob="0.03" type="life" amount="10" />
+      <Leech prob="0.03" type="mana" amount="10" />
+      <Leech prob="0.06" type="life" amount="5" />
+      <Leech prob="0.06" type="mana" amount="5" />
     </Tier>
     <Tier tier="1">
       <StatType type="0" scale="perLevel" amount="5" />

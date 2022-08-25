@@ -174,7 +174,7 @@
     <DeathSound>monster/blobs_hit</DeathSound>
     <Size>200</Size>
     <ShadowSize>80</ShadowSize>
-    <MaxHitPoints>12000</MaxHitPoints>
+    <MaxHitPoints>45000</MaxHitPoints>
     <Defense>30</Defense>
     <God />
     <Quest />
@@ -187,7 +187,7 @@
     </Projectile>
     <Projectile id="1">
       <ObjectId>Cream Bullet</ObjectId>
-      <Damage>100</Damage>
+      <Damage>135</Damage>
       <Speed>60</Speed>
       <LifetimeMS>1000</LifetimeMS>
       <Size>160</Size>
@@ -205,14 +205,14 @@
     <DeathSound>monster/sprites_death</DeathSound>
     <Size>140</Size>
     <ShadowSize>80</ShadowSize>
-    <MaxHitPoints>30000</MaxHitPoints>
+    <MaxHitPoints>60000</MaxHitPoints>
     <Defense>35</Defense>
     <God />
     <Quest />
     <Projectile id="0">
       <ObjectId>Troll Hair Whip</ObjectId>
-      <Damage>120</Damage>
-      <Speed>90</Speed>
+      <Damage>145</Damage>
+      <Speed>100</Speed>
       <LifetimeMS>1600</LifetimeMS>
       <Size>140</Size>
       <ConditionEffect duration="3">Hallucinating</ConditionEffect>
@@ -221,7 +221,7 @@
     </Projectile>
     <Projectile id="1">
       <ObjectId>Pink Star</ObjectId>
-      <Damage>90</Damage>
+      <Damage>110</Damage>
       <Speed>110</Speed>
       <LifetimeMS>2000</LifetimeMS>
       <Size>80</Size>
@@ -231,14 +231,14 @@
     </Projectile>
     <Projectile id="2">
       <ObjectId>Pink Slash</ObjectId>
-      <Damage>110</Damage>
+      <Damage>115</Damage>
       <Speed>90</Speed>
       <LifetimeMS>1000</LifetimeMS>
       <Size>110</Size>
     </Projectile>
     <Projectile id="3">
       <ObjectId>Pink Slash</ObjectId>
-      <Damage>110</Damage>
+      <Damage>115</Damage>
       <Speed>110</Speed>
       <LifetimeMS>600</LifetimeMS>
       <Size>110</Size>
@@ -256,14 +256,14 @@
     <DeathSound>player/paladin_death</DeathSound>
     <Size>160</Size>
     <ShadowSize>80</ShadowSize>
-    <MaxHitPoints>13000</MaxHitPoints>
+    <MaxHitPoints>40000</MaxHitPoints>
     <Defense>40</Defense>
     <God />
     <Quest />
     <Projectile id="0">
       <ObjectId>Magic Sparkle</ObjectId>
-      <Damage>90</Damage>
-      <Speed>35</Speed>
+      <Damage>110</Damage>
+      <Speed>45</Speed>
       <LifetimeMS>3400</LifetimeMS>
       <Size>140</Size>
       <Amplitude>0.4</Amplitude>
@@ -273,9 +273,9 @@
     </Projectile>
     <Projectile id="1">
       <ObjectId>Magic Sparkle</ObjectId>
-      <Damage>90</Damage>
-      <Speed>35</Speed>
-      <LifetimeMS>44000</LifetimeMS>
+      <Damage>120</Damage>
+      <Speed>45</Speed>
+      <LifetimeMS>4000</LifetimeMS>
       <Size>140</Size>
       <Amplitude>0.4</Amplitude>
       <Frequency>0.2</Frequency>
@@ -295,14 +295,14 @@
     <HitSound>spell/light_heal</HitSound>
     <DeathSound>spell/major_heal</DeathSound>
     <Size>200</Size>
-    <MaxHitPoints>16000</MaxHitPoints>
+    <MaxHitPoints>45000</MaxHitPoints>
     <Defense>35</Defense>
     <God />
     <Quest />
     <Projectile id="0">
       <ObjectId>Unicorn Horn</ObjectId>
-      <Damage>90</Damage>
-      <Speed>70</Speed>
+      <Damage>130</Damage>
+      <Speed>80</Speed>
       <LifetimeMS>2000</LifetimeMS>
       <Size>160</Size>
       <ArmorPiercing />
@@ -310,8 +310,8 @@
     </Projectile>
     <Projectile id="1">
       <ObjectId>Rainbow Brick</ObjectId>
-      <Damage>70</Damage>
-      <Speed>65</Speed>
+      <Damage>90</Damage>
+      <Speed>75</Speed>
       <LifetimeMS>1000</LifetimeMS>
       <Size>160</Size>
       <ArmorPiercing />

@@ -10,37 +10,109 @@ namespace wServer.logic
         private _ Candyland = () => Behav()
         .Init("Candy Gnome",
             new State(
+                new ScaleHP2(20),
+                 new State("IniPrepare1",
+                    new PlayerWithinTransition(15, "IniPrepare"),
+                    new ConditionalEffect(ConditionEffectIndex.Invincible, false)
+                    ),
+                 new State("IniPrepare",
+                     new Shoot(15, 3, projectileIndex: 0, shootAngle: 15, coolDown: 400, predictive: 1.4),
+                     new Shoot(15, 2, projectileIndex: 1, shootAngle: 15, coolDown: 600, predictive: 1.4),
+                     new Wander(0.3),
+                     new TossObject2("Candy Gumball Machine", 5, angle: null, coolDown: 99999, randomToss: true),
+                     new TossObject2("Candy Gumball Machine", 8, angle: null, coolDown: 99999, randomToss: true),
+                    
+                    new InvisiToss("CLand Spike Spawner", 1, angle: 0, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner", 1, angle: 45, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner", 1, angle: 90, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner", 1, angle: 135, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner", 1, angle: 180, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner", 1, angle: 225, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner", 1, angle: 270, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner", 1, angle: 315, coolDown: 3600, coolDownOffset: 0),
+
+                    new InvisiToss("CLand Spike Spawner 1", 2, angle: 0, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 1", 2, angle: 45, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 1", 2, angle: 90, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 1", 2, angle: 135, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 1", 2, angle: 180, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 1", 2, angle: 225, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 1", 2, angle: 270, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 1", 2, angle: 315, coolDown: 3600, coolDownOffset: 0),
+
+                    new InvisiToss("CLand Spike Spawner 2", 3, angle: 0, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 2", 3, angle: 45, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 2", 3, angle: 90, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 2", 3, angle: 135, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 2", 3, angle: 180, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 2", 3, angle: 225, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 2", 3, angle: 270, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 2", 3, angle: 315, coolDown: 3600, coolDownOffset: 0),
+
+                    new InvisiToss("CLand Spike Spawner 3", 4, angle: 0, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 3", 4, angle: 45, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 3", 4, angle: 90, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 3", 4, angle: 135, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 3", 4, angle: 180, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 3", 4, angle: 225, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 3", 4, angle: 270, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 3", 4, angle: 315, coolDown: 3600, coolDownOffset: 0),
+
+                    new InvisiToss("CLand Spike Spawner 4", 5, angle: 0, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 4", 5, angle: 45, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 4", 5, angle: 90, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 4", 5, angle: 135, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 4", 5, angle: 180, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 4", 5, angle: 225, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 4", 5, angle: 270, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 4", 5, angle: 315, coolDown: 3600, coolDownOffset: 0),
+
+                    new InvisiToss("CLand Spike Spawner 5", 6, angle: 0, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 5", 6, angle: 45, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 5", 6, angle: 90, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 5", 6, angle: 135, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 5", 6, angle: 180, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 5", 6, angle: 225, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 5", 6, angle: 270, coolDown: 3600, coolDownOffset: 0),
+                    new InvisiToss("CLand Spike Spawner 5", 6, angle: 315, coolDown: 3600, coolDownOffset: 0),
+                    new TimedTransition(1000, "Ini")
+                     ),
                 new State("Ini",
-                    new Wander(speed: 0.4),
-                    new PlayerWithinTransition(dist: 14, targetState: "Main", seeInvis: true)
+                    new Wander(0.3),
+                    new Order(30, "CLand Spike Spawner", "fire"),
+                    new TimedTransition(300, "spike 1")
                     ),
-                new State("Main",
-                    new Follow(speed: 1.4, acquireRange: 17, range: 6),
-                    new TimedTransition(time: 1600, targetState: "Flee")
+                new State("spike 1",
+                    new Wander(0.3),
+                    new Shoot(15, 3, projectileIndex: 0, shootAngle: 8, predictive: 1.4, coolDown: 300),
+                    new Order(30, "CLand Spike Spawner 1", "fire"),
+                     new TimedTransition(300, "spike 2")
                     ),
-                new State("Flee",
-                    new PlayerWithinTransition(dist: 11, targetState: "RunAwayMed", seeInvis: true),
-                    new PlayerWithinTransition(dist: 8, targetState: "RunAwayMedFast", seeInvis: true),
-                    new PlayerWithinTransition(dist: 5, targetState: "RunAwayFast", seeInvis: true),
-                    new PlayerWithinTransition(dist: 16, targetState: "RunAwaySlow", seeInvis: true)
+                new State("spike 2",
+                    new Wander(0.3),
+                    new TossObject2("Candy Gumball Machine", 5, angle: null, coolDown: 99999, randomToss: true),
+                    new TossObject2("Candy Gumball Machine", 8, angle: null, coolDown: 99999, randomToss: true),
+                    new Order(30, "CLand Spike Spawner 2", "fire"),
+                    new TimedTransition(300, "spike 3")
                     ),
-                new State("RunAwayFast",
-                    new StayBack(speed: 1.9, distance: 30, entity: null),
-                    new TimedRandomTransition(1000, false, "RunAwayMedFast", "RunAwayMed", "RunAwaySlow")
+                new State("spike 3",
+                    new Wander(0.3),
+                    new Shoot(15, 3, projectileIndex: 0, shootAngle: 8, predictive: 1.4, coolDown: 300),
+                    new Order(30, "CLand Spike Spawner 3", "fire"),
+                    new TimedTransition(300, "spike 4")
                     ),
-                new State("RunAwayMedFast",
-                    new StayBack(speed: 1.45, distance: 30, entity: null),
-                    new TimedRandomTransition(1000, false, "RunAwayMed", "RunAwaySlow")
+                new State("spike 4",
+                    new Wander(0.3),
+                    new Order(30, "CLand Spike Spawner 4", "fire"),
+                    new TimedTransition(300, "spike 5")
                     ),
-                new State("RunAwayMed",
-                    new StayBack(speed: 1.1, distance: 30, entity: null),
-                    new TimedRandomTransition(1000, false, "RunAwayMedFast", "RunAwaySlow")
+                new State("spike 5",
+                    new Wander(0.3),
+                    new Shoot(15, 3, projectileIndex: 0, shootAngle: 8, predictive: 1.4, coolDown: 500),
+                    new Order(30, "CLand Spike Spawner 5", "fire"),
+                    new TimedTransition(1000, "IniPrepare")
                     ),
-                new State("RunAwaySlow",
-                    new StayBack(speed: 0.8, distance: 30, entity: null),
-                    new TimedRandomTransition(1000, false, "RunAwayMedFast", "RunAwayMed")
-                    ),
-                new DropPortalOnDeath(target: "Candyland Portal", probability: 0.5, timeout: 30)
+                new DropPortalOnDeath(target: "Candyland Portal", probability: 1, timeout: 30)
                 ),
             new Threshold(0.01,
                 new ItemLoot(item: "Rock Candy", probability: 0.15),
@@ -48,8 +120,121 @@ namespace wServer.logic
                 new ItemLoot(item: "Purple Gumball", probability: 0.15),
                 new ItemLoot(item: "Blue Gumball", probability: 0.15),
                 new ItemLoot(item: "Green Gumball", probability: 0.15),
-                new ItemLoot(item: "Yellow Gumball", probability: 0.15),
-                new ItemLoot(item: "Pixie-Enchanted Sword", probability: 0.005)
+                new ItemLoot(item: "Yellow Gumball", probability: 0.15)
+                )
+            )
+        .Init("Candy Gumball Machine",
+            new State(
+                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new State("flash",
+                    new Flash(0xCC1A1A, 0.5, 12),
+                    new TimedTransition(2000, "fire")
+                    ),
+                new State("fire",
+                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new Shoot(radius: 15, count: 8, projectileIndex: 0, coolDown: 2000),
+                    new TimedTransition(100, "Suicide")
+                    ),
+                new State("Suicide",
+                    new Suicide()
+                    )
+                )
+            )
+         .Init("CLand Spike",
+            new State(
+                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new State("fire",
+                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new Shoot(radius: 15, count: 1, projectileIndex: 0, coolDown: 2000),
+                    new TimedTransition(250, "Suicide")
+                    ),
+                new State("Suicide",
+                    new Suicide()
+                    )
+                )
+            )
+        .Init("CLand Spike Spawner",
+            new State(
+                new State("idle",
+                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    ),
+                new State("fire",
+                    new Spawn("CLand Spike", 1, 1, coolDown: 99999),
+                    new TimedTransition(1000, "Suicide")
+                    ),
+                new State("Suicide",
+                    new Suicide()
+                    )
+                )
+            )
+        .Init("CLand Spike Spawner 1",
+            new State(
+                new State("idle",
+                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    ),
+                new State("fire",
+                    new Spawn("CLand Spike", 1, 1, coolDown: 99999),
+                    new TimedTransition(1000, "Suicide")
+                    ),
+                new State("Suicide",
+                    new Suicide()
+                    )
+                )
+            )
+        .Init("CLand Spike Spawner 2",
+            new State(
+                new State("idle",
+                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    ),
+                new State("fire",
+                    new Spawn("CLand Spike", 1, 1, coolDown: 99999),
+                    new TimedTransition(1000, "Suicide")
+                    ),
+                new State("Suicide",
+                    new Suicide()
+                    )
+                )
+            )
+        .Init("CLand Spike Spawner 3",
+            new State(
+                new State("idle",
+                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    ),
+                new State("fire",
+                    new Spawn("CLand Spike", 1, 1, coolDown: 99999),
+                    new TimedTransition(1000, "Suicide")
+                    ),
+                new State("Suicide",
+                    new Suicide()
+                    )
+                )
+            )
+        .Init("CLand Spike Spawner 4",
+            new State(
+                new State("idle",
+                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    ),
+                new State("fire",
+                    new Spawn("CLand Spike", 1, 1, coolDown: 99999),
+                    new TimedTransition(1000, "Suicide")
+                    ),
+                new State("Suicide",
+                    new Suicide()
+                    )
+                )
+            )
+        .Init("CLand Spike Spawner 5",
+            new State(
+                new State("idle",
+                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    ),
+                new State("fire",
+                    new Spawn("CLand Spike", 1, 1, coolDown: 99999),
+                    new TimedTransition(1000, "Suicide")
+                    ),
+                new State("Suicide",
+                    new Suicide()
+                    )
                 )
             )
         .Init("MegaRototo",
@@ -87,9 +272,7 @@ namespace wServer.logic
                     new TimedTransition(time: 4000, targetState: "Follow")
                     )
                 ),
-            new Threshold(0.01,
-                new ItemLoot(item: "Candy-Coated Armor", probability: 0.005),
-                new ItemLoot(item: "Pixie-Enchanted Sword", probability: 0.005),
+            new Threshold(0.01,            
                 new ItemLoot(item: "Seal of the Enchanted Forest", probability: 0.005),
                 new ItemLoot(item: "Potion of Vitality", probability: 1),
                 new ItemLoot(item: "Potion of Dexterity", probability: 1),
@@ -111,23 +294,20 @@ namespace wServer.logic
         .Init("Spoiled Creampuff",
             new State(
                 new Spawn(children: "Big Creampuff", maxChildren: 2, initialSpawn: 0, givesNoXp: false),
-                new Reproduce(children: "Big Creampuff", densityRadius: 24, densityMax: 2, coolDown: 25000),
-                new Shoot(radius: 10, count: 3, shootAngle: 10, projectileIndex: 0, predictive: 1, coolDown: 1600, coolDownOffset: 200),
-                new Shoot(radius: 10, count: 3, shootAngle: 10, projectileIndex: 0, predictive: 1, coolDown: 1600, coolDownOffset: 500),
-                new Shoot(radius: 10, count: 3, shootAngle: 10, projectileIndex: 0, predictive: 1, coolDown: 1600, coolDownOffset: 800),
-                new Shoot(radius: 4.4, count: 5, shootAngle: 12, projectileIndex: 1, predictive: 0.6, coolDown: 600),
+                new Reproduce(children: "Big Creampuff", densityRadius: 24, densityMax: 2, coolDown: 12500),
+                new Shoot(radius: 12, count: 3, shootAngle: 10, projectileIndex: 0, predictive: 1, coolDown: 1200, coolDownOffset: 200),
+                new Shoot(radius: 12, count: 3, shootAngle: 10, projectileIndex: 0, predictive: 1, coolDown: 1200, coolDownOffset: 400),
+                new Shoot(radius: 12, count: 3, shootAngle: 10, projectileIndex: 0, predictive: 1, coolDown: 1200, coolDownOffset: 600),
+                new Shoot(radius: 8.4, count: 5, shootAngle: 12, projectileIndex: 1, predictive: 0.6, coolDown: 400),
                 new Prioritize(
-                    new StayCloseToSpawn(.4, 4),
-                    new Charge(speed: 1.4, range: 11, coolDown: 800),
-                    new StayBack(speed: 1, distance: 2, entity: null),
-                    new StayBack(speed: 0.5, distance: 2, entity: null)
+                    new StayCloseToSpawn(.4, 6),
+                    new Charge(speed: 4, range: 11, coolDown: 800),
+                    new StayBack(speed: 1, distance: 2, entity: null)
                     ),
                 new Wander(speed: 0.4)
                 ),
             new Threshold(0.01,
                 new ItemLoot(item: "Candy-Coated Armor", probability: 0.005),
-                new ItemLoot(item: "Pixie-Enchanted Sword", probability: 0.005),
-                new ItemLoot(item: "Seal of the Enchanted Forest", probability: 0.005),
                 new ItemLoot(item: "Potion of Attack", probability: 1),
                 new ItemLoot(item: "Potion of Defense", probability: 1),
                 new ItemLoot(item: "Rock Candy", probability: 0.08),
@@ -149,7 +329,7 @@ namespace wServer.logic
             new State(
                 new State("BaseAttack",
                     new StayCloseToSpawn(.4, 6),
-                    new Shoot(radius: 10, count: 6, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 1100),
+                    new Shoot(radius: 10, count: 6, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 800),
                     new Grenade(radius: 5, damage: 200, range: 8, coolDown: 700),
                     new Shoot(radius: 10, count: 3, projectileIndex: 1, predictive: 1, coolDown: 1500),
                     new State("Choose",
@@ -200,8 +380,6 @@ namespace wServer.logic
                 new Wander(speed: 0.4)
                 ),
             new Threshold(0.01,
-                new ItemLoot(item: "Candy-Coated Armor", probability: 0.005),
-                new ItemLoot(item: "Pixie-Enchanted Sword", probability: 0.005),
                 new ItemLoot(item: "Seal of the Enchanted Forest", probability: 0.005),
                 new ItemLoot(item: "Potion of Attack", probability: 1),
                 new ItemLoot(item: "Potion of Wisdom", probability: 1),
@@ -225,7 +403,7 @@ namespace wServer.logic
                 new Spawn(children: "Fairy", maxChildren: 6, initialSpawn: 0, coolDown: 10000, givesNoXp: false),
                 new StayCloseToSpawn(.4, 6),
                 new Prioritize(
-                    new Follow(speed: 0.3, acquireRange: 10, range: 5)
+                    new Follow(speed: 0.8, acquireRange: 10, range: 5)
                     ),
                 new State("Shoot",
                     new StayCloseToSpawn(.4, 6),

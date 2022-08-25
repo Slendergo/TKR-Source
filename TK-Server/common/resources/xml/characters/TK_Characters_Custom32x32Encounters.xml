@@ -1,4 +1,43 @@
 ﻿<Objects>
+	<Object type="0x5e49" id="Candy Gnome">
+		<Enemy />
+		<Class>Character</Class>
+		<AnimatedTexture>
+			<File>Custom16x16Encounters</File>
+			<Index>1</Index>
+		</AnimatedTexture>
+		<HitSound>monster/goblins_hit</HitSound>
+		<DeathSound>monster/goblins_death</DeathSound>
+		<Size>200</Size>
+		<ShadowSize>45</ShadowSize>
+		<MaxHitPoints>65000</MaxHitPoints>
+		<Defense>25</Defense>
+		<XpMult>2.5</XpMult>
+		<Projectile id="0">
+			<ObjectId>Cland spiral</ObjectId>
+			<Damage>130</Damage>
+			<Size>150</Size>
+			<Speed>65</Speed>
+			<ArmorPierce />
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+		<Projectile id="1">
+			<ObjectId>Cland gumball</ObjectId>
+			<Damage>150</Damage>
+			<Size>150</Size>
+			<Speed>40</Speed>
+			<Amplitude>2</Amplitude>
+			<Frequency>2</Frequency>
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+		<Projectile id="2">
+			<ObjectId>Morto Dark Green</ObjectId>
+			<Damage>70</Damage>
+			<Size>150</Size>
+			<Speed>100</Speed>
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+	</Object>
 	<Object type="0x20C" id="Mortomus, Keeper of Souls">
 		<Class>Character</Class>
 		<Enemy />
@@ -787,8 +826,7 @@
 		<Projectile id="0">
 			<ObjectId>Cerebrus's Claw</ObjectId>
 			<Damage>350</Damage>
-			<Speed>120</Speed>
-			<Speed>120</Speed>
+			<Speed>75</Speed>
 			<LifetimeMS>1000</LifetimeMS>
 			<Amplitude>2</Amplitude>
 			<Frequency>0.47</Frequency>
@@ -800,7 +838,7 @@
 			<Damage>90</Damage>
 			<Speed>85</Speed>
 			<LifetimeMS>2000</LifetimeMS>
-			<ConditionEffect duration="2">Quiet</ConditionEffect>
+			<ConditionEffect duration="2">Paralyzed</ConditionEffect>
 			<MultiHit />
 			<Size>130</Size>
 		</Projectile>
@@ -836,9 +874,10 @@
 		<Projectile id="5">
 			<ObjectId>Cerebrus Ball Shot</ObjectId>
 			<Damage>180</Damage>
-			<Speed>45</Speed>
+			<Speed>35</Speed>
 			<LifetimeMS>4000</LifetimeMS>
 			<ConditionEffect duration="3">Slowed</ConditionEffect>
+			<ParticleTrail lifetimeMS="300">0xD80000</ParticleTrail>
 			<MultiHit />
 			<Frequency>1</Frequency>
 			<Amplitude>0.3</Amplitude>

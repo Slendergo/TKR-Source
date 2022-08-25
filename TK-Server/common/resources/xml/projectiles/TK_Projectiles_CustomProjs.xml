@@ -1,4 +1,42 @@
 <Objects>
+	<Object type="0x294" id="Gumball Machine Shot">
+		<Class>Projectile</Class>
+		<RandomTexture>
+			<Texture>
+				<File>CustomProjs</File>
+				<Index>0xd5</Index>
+			</Texture>
+			<Texture>
+				<File>CustomProjs</File>
+				<Index>0xd6</Index>
+			</Texture>
+			<Texture>
+				<File>CustomProjs</File>
+				<Index>0xd7</Index>
+			</Texture>
+			<Texture>
+				<File>CustomProjs</File>
+				<Index>0xd8</Index>
+			</Texture>
+		</RandomTexture>
+		<Rotation>185</Rotation>
+	</Object>
+	<Object type="0x295" id="Cland spiral">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomProjs</File>
+			<Index>0xd4</Index>
+		</Texture>
+		<Rotation>45</Rotation>
+	</Object>
+	<Object type="0x296" id="Cland gumball">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomProjs</File>
+			<Index>0xd3</Index>
+		</Texture>
+		<Rotation>45</Rotation>
+	</Object>
 	<Object type="0x16F" id="Morto Green">
 		<Class>Projectile</Class>
 		<Texture>

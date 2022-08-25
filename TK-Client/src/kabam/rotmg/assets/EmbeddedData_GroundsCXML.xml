@@ -3622,9 +3622,7 @@
       <File>lofiEnvironment3</File>
       <Index>0xea</Index>
     </Texture>
-    <BlendPriority>3</BlendPriority>
     <RandomOffset />
-    <NoWalk />
   </Ground>
   <Ground type="0x9c" id="Candy Rock Ground">
     <Texture>
@@ -4919,7 +4917,6 @@
         <Index>0x29b</Index>
       </Texture>
     </RandomTexture>
-    <BlendPriority>1</BlendPriority>
   </Ground>
   <Ground type="0x9a" id="Candy Beach">
     <Texture>

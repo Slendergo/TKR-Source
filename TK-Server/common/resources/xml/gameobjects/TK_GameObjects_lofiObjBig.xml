@@ -854,7 +854,6 @@
     <ShadowSize>80</ShadowSize>
     <SizeStep>5</SizeStep>
     <Static />
-    <OccupySquare />
   </Object>
   <Object type="0x18f0" id="Gate">
     <Class>GameObject</Class>

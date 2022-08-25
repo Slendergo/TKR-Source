@@ -181,7 +181,8 @@
     <StasisImmune />
     <StunImmune />
   </Object>
-  <Object type="0x5e49" id="Candy Gnome">
+	<!--
+	<Object type="0x5e49" id="Candy Gnome">
     <Enemy />
     <Class>Character</Class>
     <AnimatedTexture>
@@ -197,7 +198,7 @@
     <Terrain>MidPlains</Terrain>
     <XpMult>2.5</XpMult>
     <SpawnProb>0.04</SpawnProb>
-  </Object>
+  </Object> -->
   <Object type="0x734d" id="shtrs Defense System">
     <DisplayId>Avatar of the Forgotten King</DisplayId>
     <Enemy />

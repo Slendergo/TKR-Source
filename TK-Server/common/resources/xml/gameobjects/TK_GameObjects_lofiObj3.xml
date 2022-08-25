@@ -904,7 +904,6 @@
     <MaxSize>160</MaxSize>
     <SizeStep>5</SizeStep>
     <Static />
-    <OccupySquare />
     <ShadowSize>80</ShadowSize>
   </Object>
   <Object type="0x18d2" id="Candy Jelly Bean">
@@ -958,7 +957,6 @@
     <ShadowSize>80</ShadowSize>
     <SizeStep>5</SizeStep>
     <Static />
-    <OccupySquare />
   </Object>
   <Object type="0x18d4" id="Candy Ground Flowers">
     <Class>GameObject</Class>

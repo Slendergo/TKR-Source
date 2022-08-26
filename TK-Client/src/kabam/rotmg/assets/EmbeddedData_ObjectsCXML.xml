@@ -44570,8 +44570,8 @@
     <SPlus />
     <DisplayId>Talisman Fragment</DisplayId>
     <Texture>
-      <File>CustomObj</File>
-      <Index>0x5a</Index>
+      <File>CustomObj1</File>
+      <Index>0x36</Index>
     </Texture>
     <SlotType>10</SlotType>
     <Description>Open and discover the mysteries of the Talisman King.</Description>
@@ -55712,6 +55712,7 @@
     <Activate duration="6">StasisBlast</Activate>
     <Activate effect="Speedy" duration="2" useWisMod="true">ConditionEffectSelf</Activate>
     <Activate effect="Damaging" duration="3" useWisMod="true">ConditionEffectSelf</Activate>
+    <Activate effect="Berserk" duration="3" useWisMod="true">ConditionEffectSelf</Activate>
     <Cooldown>5</Cooldown>
     <feedPower>750</feedPower>
   </Object>
@@ -58668,7 +58669,7 @@
     <Item />
     <Texture>
       <File>CustomObj1</File>
-      <Index>0x03</Index>
+      <Index>0x04</Index>
     </Texture>
     <SlotType>9</SlotType>
     <Description></Description>
@@ -78418,6 +78419,14 @@
     </Texture>
     <ShadowSize>0</ShadowSize>
   </Object>
+  <Object type="0x2020" id="Locked Trial of Souls">
+    <Class>Portal</Class>
+    <LockedPortal />
+    <Texture>
+      <File>customEvironment16x16</File>
+      <Index>0x1b</Index>
+    </Texture>
+  </Object>
   <Object type="0xa141" id="Cave of Eternal Frost">
     <Class>Portal</Class>
     <Size>140</Size>
@@ -78980,8 +78989,8 @@
     <IntergamePortal />
     <DungeonName>Mortomus Hideout</DungeonName>
     <Texture>
-      <File>lofiObj3</File>
-      <Index>0x4BA</Index>
+      <File>CustomEnvironment16x16</File>
+      <Index>0x1c</Index>
     </Texture>
   </Object>
   <Object type="0x2295" id="Lair of Shaitan Portal">

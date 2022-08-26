@@ -386,8 +386,8 @@
 		<Height>256</Height>
 		<MapJM>snake_pit.jm</MapJM>
 		<VisibilityType>1</VisibilityType>
-		<Instance enum="dungeon"/>
 		<AllowTeleport/>
+		<CreateInstance/>
 		<Dungeon/>
 	</World>
 </Worlds>

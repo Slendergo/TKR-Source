@@ -183,10 +183,10 @@
 			<StatType type="20" scale="perLevel" amount="2" />
 		</Tier>
 		<Tier tier="2">
-			<Health condition="above" percentage="0.75" scale="perLevel" add="0.05">RateOfFire</Health>
-			<Health condition="above" percentage="0.75" scale="perLevel" add="0.03">HealthRegen</Health>
-			<Health condition="below" percentage="0.75" scale="perLevel" add="-0.025">RateOfFire</Health>
-			<Health condition="below" percentage="0.75" scale="perLevel" add="-0.03">HealthRegen</Health>
+			<Health condition="below" percent="0.75" scale="perLevel" add="0.035">RateOfFire</Health>
+			<Health condition="below" percent="0.75" scale="perLevel" add="0.035">Regeneration</Health>
+			<Health condition="above" percent="0.75" scale="perLevel" add="-0.015">RateOfFire</Health>
+			<Health condition="above" percent="0.75" scale="perLevel" add="-0.035">Regeneration</Health>
 			<StatType type="26" scale="perLevel" amount="-1" />
 			<StatType type="20" scale="perLevel" amount="2" />
 		</Tier>

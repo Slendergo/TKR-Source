@@ -14,7 +14,9 @@ namespace server.account
             var secret = "2e97e994e19e630da90092ca4ffcd9ee";
             if (query["secret"] == secret)
             {
-                var acc = _db.GetAccount(query["accountId"]);
+                var acc = _db.GetAccount(int.Parse(query["accountId"]));
+                System.Console.WriteLine("post accId: " + query["accountId"]);
+                System.Console.WriteLine("acc accId: " + acc.AccountId);
                 var rank = new DbRank(acc.Database, acc.AccountId);
 
                 rank.NewAmountDonated += int.Parse(query["amountDonated"]);

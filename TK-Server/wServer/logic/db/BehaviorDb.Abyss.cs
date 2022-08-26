@@ -293,7 +293,7 @@ namespace wServer.logic
                     new Wander(0.25)
                     ),
                 new Shoot(8, 3, shootAngle: 10, coolDown: 3000)
-                )
+                ),
             new ItemLoot("Fire Sword", 0.025),
             new ItemLoot("Steel Shield", 0.025)
             )

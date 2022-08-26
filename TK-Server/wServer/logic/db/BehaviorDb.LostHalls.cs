@@ -309,7 +309,7 @@ namespace wServer.logic
                     new HpLessTransition(0.90, "Phase 3")
                     ),
                 new State("Phase 3",
-                    new ReturnToSpawn(3, 50),
+                    new ReturnToSpawn(3, 1),
                     new Taunt("I cast you off!"),
                     new TimedTransition(4000, "Phase 3.1")
                     ),
@@ -331,7 +331,7 @@ namespace wServer.logic
                     new Spawn("LH Colossus Rock 3", 1, 1, 1000000),
                     new OrderOnce(1, "LH Colossus Rock 3", "Move 2"),
                     new TimedTransition(1150, "Phase 3.3"),
-                    new HpLessTransition(.85, "Phase 4")
+                    new HpLessTransition(.80, "Phase 4")
                     ),
                 new State("Phase 3.3",
                     new Spawn("LH Colossus Rock 1", 1, 1, 1000000),
@@ -341,7 +341,7 @@ namespace wServer.logic
                     new Spawn("LH Colossus Rock 3", 1, 1, 1000000),
                     new OrderOnce(1, "LH Colossus Rock 3", "Move"),
                     new TimedTransition(1150, "Phase 3.2"),
-                    new HpLessTransition(.85, "Phase 4")
+                    new HpLessTransition(.80, "Phase 4")
                     ),
                 new State("Phase 4",
                     new Taunt("Your fervent attacks are no match for my strength! BEGONE!"),
@@ -391,7 +391,7 @@ namespace wServer.logic
                     ),
                 new State("Phase 6",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 3000),
-                    new ReturnToSpawn(3, 50),
+                    new ReturnToSpawn(3, 1),
                     new Taunt("Brace for your demise!"),
                     new Spawn("LH Colossus Rock 1", 1, 1, 1000000),
                     new OrderOnce(1, "LH Colossus Rock 1", "Move"),
@@ -446,7 +446,7 @@ namespace wServer.logic
                     ),
                 new State("Phase 10",
                     new Taunt("Perish, blights upon this realm!"),
-                    new ReturnToSpawn(3, 40),
+                    new ReturnToSpawn(3, 1),
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 25000),
                     new Spawn("LH Colossus Rock 7", maxChildren: 1),
                     new OrderOnce(1, "LH Colossus Rock 7", "Shoot And Move"),
@@ -529,7 +529,7 @@ namespace wServer.logic
                     new HpLessTransition(0.4, "Phase 13")
                     ),
                 new State("Phase 13",
-                    new ReturnToSpawn(1, 30),
+                    new ReturnToSpawn(1, 1),
                     new Taunt("It is my duty to protect these catacombs! You dare threaten my purpose?"),
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 2000),
                     new TimedTransition(4000, "Phase 13.1")
@@ -776,25 +776,25 @@ namespace wServer.logic
                 new TierLoot(7, ItemType.Ring, 0.1, 0, 0.002)
                 ),
             new Threshold(0.03,
-                new ItemLoot("Sword of the Colossus", 0.0001),
-                new ItemLoot("Breastplate of New Life", 0.0001),
-                new ItemLoot("Marble Seal", 0.0001),
-                new ItemLoot("Magical Lodestone", 0.0001),
-                new ItemLoot("Bow of the Void", 0.0001),
-                new ItemLoot("Quiver of the Shadows", 0.0001),
-                new ItemLoot("Armor of Nil", 0.0001),
-                new ItemLoot("Sourcestone", 0.0001),
-                new ItemLoot("Staff of Unholy Sacrifice", 0.0001),
-                new ItemLoot("Skull of Corrupted Souls", 0.0001),
-                new ItemLoot("Ritual Robe", 0.0001),
-                new ItemLoot("Bloodshed Ring", 0.0001),
-                new ItemLoot("Severed Marble Hand", 0.0001)
+                new ItemLoot("Sword of the Colossus", 0.000001),
+                new ItemLoot("Breastplate of New Life", 0.000001),
+                new ItemLoot("Marble Seal", 0.000001),
+                new ItemLoot("Magical Lodestone", 0.000001),
+                new ItemLoot("Bow of the Void", 0.000001),
+                new ItemLoot("Quiver of the Shadows", 0.000001),
+                new ItemLoot("Armor of Nil", 0.000001),
+                new ItemLoot("Sourcestone", 0.000001),
+                new ItemLoot("Staff of Unholy Sacrifice", 0.000001),
+                new ItemLoot("Skull of Corrupted Souls", 0.000001),
+                new ItemLoot("Ritual Robe", 0.000001),
+                new ItemLoot("Bloodshed Ring", 0.000001),
+                new ItemLoot("Severed Marble Hand", 0.000001)
            ),
        new Threshold(0.05,
-           new ItemLoot("Marbled Concoction", 0.00008),
-           new ItemLoot("Titan Slayer", 0.00008),
-           new ItemLoot("Colossal Plated Hide", 0.00008),
-           new ItemLoot("Omnipotence Ring", 0.00008)
+           new ItemLoot("Marbled Concoction", 0.0000008),
+           new ItemLoot("Titan Slayer", 0.0000008),
+           new ItemLoot("Colossal Plated Hide", 0.0000008),
+           new ItemLoot("Omnipotence Ring", 0.0000008)
                 )
             );
 

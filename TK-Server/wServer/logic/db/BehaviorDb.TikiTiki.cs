@@ -147,7 +147,8 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.03,
-                new ItemLoot("Tiki's Breastplate", 0.00014)
+                new ItemLoot("Talisman Fragment", 0.00005),
+                new ItemLoot("Tiki's Breastplate", 0.000014)
                 ),
             new Threshold(0.001,
                 new ItemLoot("Potion of Defense", 1),

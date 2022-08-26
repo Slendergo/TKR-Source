@@ -288,7 +288,7 @@
       <Damage>50</Damage>
       <Speed>55</Speed>
       <Size>80</Size>
-      <LifetimeMS>2000</LifetimeMS>
+      <LifetimeMS>45000</LifetimeMS>
       <ConditionEffect duration="4">Sick</ConditionEffect>
       <ConditionEffect duration="1">Confused</ConditionEffect>
     </Projectile>

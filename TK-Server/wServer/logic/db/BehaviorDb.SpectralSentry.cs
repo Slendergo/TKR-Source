@@ -22,17 +22,17 @@ namespace wServer.logic
                 new State("Attack",
                     new RemoveConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new Wander(0.5),
-                    new Shoot(20, count: 5, shootAngle: 45, projectileIndex: 0, predictive: 1, coolDown: 1300),
-                    new Shoot(20, count: 5, shootAngle: 20, projectileIndex: 1, predictive: 0.4, coolDown: 1300),
-                    new Shoot(20, count: 4, shootAngle: 20, projectileIndex: 2, predictive: 0.2, coolDown: 1300),
+                    new Shoot(20, count: 5, shootAngle: 45, projectileIndex: 0, predictive: 1, coolDown: 1000),
+                    new Shoot(20, count: 5, shootAngle: 20, projectileIndex: 1, predictive: 0.4, coolDown: 800),
+                    new Shoot(20, count: 4, shootAngle: 20, projectileIndex: 2, predictive: 0.2, coolDown: 800),
                     new TimedTransition(10000, "Attack 2")
                     ),
                 new State("Attack 2",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new Flash(0xFF0000, 0.5, 5),
-                    new Shoot(radius: 20, count: 15, shootAngle: 30, projectileIndex: 1, coolDownOffset: 600, coolDown: 2000),
-                    new Shoot(radius: 20, count: 15, shootAngle: 30, projectileIndex: 1, coolDownOffset: 800, coolDown: 2000),
-                    new Shoot(radius: 20, count: 15, shootAngle: 30, projectileIndex: 1, coolDownOffset: 1000, coolDown: 2000),
+                    new Shoot(radius: 20, count: 15, shootAngle: 30, projectileIndex: 1, coolDownOffset: 600, coolDown: 1400),
+                    new Shoot(radius: 20, count: 15, shootAngle: 30, projectileIndex: 1, coolDownOffset: 800, coolDown: 1400),
+                    new Shoot(radius: 20, count: 15, shootAngle: 30, projectileIndex: 1, coolDownOffset: 1000, coolDown: 1400),
                     new TimedTransition(1100, "Attack 3")
                     ),
                 new State("Attack 3",                   
@@ -66,6 +66,7 @@ namespace wServer.logic
                 ),
             new Threshold(0.05,
                 new ItemLoot("Spectral Robe", 0.0014, 0, 0.05),
+                new ItemLoot("Talisman Fragment", 0.00005),
                 new ItemLoot("Scythe of the Reaper", 0.0014, 0, 0.05),
                 new ItemLoot("Haunting Incantation", 0.0014, 0, 0.05)
                 )

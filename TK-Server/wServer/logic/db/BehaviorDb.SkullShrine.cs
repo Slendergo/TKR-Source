@@ -38,6 +38,7 @@ namespace wServer.logic
                 ),
             new Threshold(0.03,
                 new ItemLoot("Orb of Conflict", 0.00014, threshold: 0.03),
+                new ItemLoot("Talisman Fragment", 0.0005),
                 new ItemLoot("Shiv of Flaming Eruption", 0.00014, threshold: 0.03)
                 )
             )

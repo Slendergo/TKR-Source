@@ -66,12 +66,6 @@ namespace wServer.core.commands
                     return false;
                 }
 
-                if (player.Client.Rank.IsAdmin)
-                {
-                    player.SendError("Cannot ban admins.");
-                    return false;
-                }
-
                 // ban
                 db.Ban(acc.AccountId, reason);
                 db.BanIp(acc.IP, reason);

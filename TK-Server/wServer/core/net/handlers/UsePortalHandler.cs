@@ -82,45 +82,12 @@ namespace wServer.core.net.handlers
             {
                 switch (portal.ObjectDesc.ObjectId)
                 {
-                    //case TOMB_PORTAL_OF_COWARDICE:
-                    //case PORTAL_OF_COWARDICE:
-                    //case GLOWING_PORTAL_OF_COWARDICE:
-                    //    {
-                    //        var nextWorldInChain = player.World.ParentWorld;
-                    //        if (nextWorldInChain != null)
-                    //            player.Reconnect(nextWorldInChain);
-                    //    }
-                    //    break;
-                    //case RANDOM_REALM_PORTAL:
-                    //    {
-                    //        world = player.GameServer.WorldManager.GetRandomRealm();
-                    //        if (world == null)
-                    //            world = player.GameServer.WorldManager.Nexus;
-                    //        player.Reconnect(world);
-                    //    }
-                    //    break;
-                    //case REALM_PORTAL:
-                    //case GLOWING_REALM_PORTAL:
-                    //    {
-                    //        //while(world == null)
-                    //        //{
-                    //        //    while(player.World.ParentWorld != null)
-                    //        //    {
-
-                    //        //    }
-
-                    //        //    if (player.World.ParentWorld == null)
-                    //        //    {
-                    //        //        // tood random realm
-                    //        //        world = player.GameServer.WorldManager.GetRandomRealm();
-                    //        //    }
-                    //        //}
-
-                    //        //if (world != null)
-                    //        //    player.Reconnect(world);
-                    //    }
-                    //    break;
-                    default:
+                    case TOMB_PORTAL_OF_COWARDICE:
+                    case PORTAL_OF_COWARDICE:
+                    case GLOWING_PORTAL_OF_COWARDICE:
+                    case RANDOM_REALM_PORTAL:
+                    case REALM_PORTAL:
+                    case GLOWING_REALM_PORTAL:
                         {
                             world = player.GameServer.WorldManager.GetRandomRealm();
                             if (world == null)

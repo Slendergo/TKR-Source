@@ -33,6 +33,7 @@ namespace common.database
         public int ColorChat { get => GetValue<int>("colorchat"); set => SetValue("colorchat", value); }
         public int ColorNameChat { get => GetValue<int>("colornamechat"); set => SetValue("colornamechat", value); }
         public int Credits { get => GetValue<int>("credits"); set => SetValue("credits", value); }
+        public int AmountDonated { get => GetValue<int>("amountdonated"); set => SetValue("amountdonated", value); }
         public int EnemiesKilled { get => GetValue<int>("enemyKilled"); set => SetValue("enemyKilled", value); }
         public int Fame { get => GetValue<int>("fame"); set => SetValue("fame", value); }
         public bool FirstDeath { get => GetValue<bool>("firstDeath"); set => SetValue("firstDeath", value); }

@@ -276,6 +276,7 @@ namespace server
         public bool FirstDeath { get; private set; }
 
         public int Credits { get; private set; }
+        public int AmountDonated { get; private set; }
         public int NextCharSlotPrice { get; private set; }
         public int NextCharSlotCurrency { get; private set; }
         public string MenuMusic { get; private set; }
@@ -299,6 +300,7 @@ namespace server
                 FirstDeath = acc.FirstDeath,
 
                 Credits = acc.Credits,
+                AmountDonated = acc.AmountDonated,
                 NextCharSlotPrice = Program.Resources.Settings.NewAccounts.SlotCost,
                 NextCharSlotCurrency = (int)Program.Resources.Settings.NewAccounts.SlotCurrency,
                 MenuMusic = Program.Resources.Settings.MenuMusic,
@@ -324,6 +326,7 @@ namespace server
                     FirstDeath ? new XElement("isFirstDeath", "") : null,
 
                     new XElement("Credits", Credits),
+                    new XElement("AmountDonated", AmountDonated),
                     new XElement("NextCharSlotPrice", NextCharSlotPrice),
                     new XElement("NextCharSlotCurrency", NextCharSlotCurrency),
                     new XElement("MenuMusic", MenuMusic),

@@ -268,6 +268,7 @@ namespace wServer.core.objects
             var rank = Client.Rank.Rank;
             while(newAmountDonated > 0)
             {
+                Console.WriteLine(newAmountDonated + " -> " + amountDonated);
                 if (rank == RankingType.Regular && amountDonated >= 10 && amountDonated < 20)
                 {
                     rank = RankingType.Supporter1;

@@ -99,7 +99,7 @@ namespace wServer.logic
             new Threshold(0.03,
                 new ItemLoot("Water Fragment", 0.0015, threshold: 0.03)
                 ),
-            new Threshold(0.001,
+            new Threshold(0.03,
                 new ItemLoot("Thorn", 0.01),
                 new ItemLoot("Massacre", 0.01),
                 new ItemLoot("Frozen Water Armor", 0.0125),

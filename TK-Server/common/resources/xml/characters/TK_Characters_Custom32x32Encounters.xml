@@ -583,7 +583,6 @@
 	<Object type="0x9902" id="Mushroom Bomb">
 		<Enemy />
 		<DisplayId>Mushroom Bomb</DisplayId>
-		<Quest />
 		<God />
 		<Class>Character</Class>
 		<AnimatedTexture>

@@ -34,38 +34,35 @@ namespace wServer.core.net.handlers
 
             prj?.ForceHit(entity, tickTime);
 
-            using (var t = new TimedProfiler("CheckTalismans"))
+            var totalLife = 0;
+            var totalMana = 0;
+            foreach (var type in player.ActiveTalismans)
             {
-                var totalLife = 0;
-                var totalMana = 0;
-                foreach (var type in player.ActiveTalismans)
+                var talisman = player.GetTalisman(type);
+                if (talisman == null)
+                    continue;
+
+                var desc = player.GameServer.Resources.GameData.GetTalisman(type);
+                if (desc == null)
+                    continue;
+
+                var tierDesc = desc.GetTierDesc(talisman.Tier);
+                if (tierDesc == null)
+                    continue;
+
+                foreach (var leech in tierDesc.Leech)
                 {
-                    var talisman = player.GetTalisman(type);
-                    if (talisman == null)
-                        continue;
-
-                    var desc = player.GameServer.Resources.GameData.GetTalisman(type);
-                    if (desc == null)
-                        continue;
-
-                    var tierDesc = desc.GetTierDesc(talisman.Tier);
-                    if (tierDesc == null)
-                        continue;
-
-                    foreach (var leech in tierDesc.Leech)
+                    if (player.World.Random.NextDouble() < leech.Probability)
                     {
-                        if (player.World.Random.NextDouble() < leech.Probability)
+                        var scale = leech.ScalesPerLevel ? talisman.Level * leech.Percentage : leech.Percentage;
+                        switch (leech.Type)
                         {
-                            var scale = leech.ScalesPerLevel ? talisman.Level * leech.Percentage : leech.Percentage;
-                            switch (leech.Type)
-                            {
-                                case 0:
-                                    totalLife += (int)(player.Stats[0] * scale);
-                                    break;
-                                case 1:
-                                    totalMana += (int)(player.Stats[1] * scale);
-                                    break;
-                            }
+                            case 0:
+                                totalLife += (int)(player.Stats[0] * scale);
+                                break;
+                            case 1:
+                                totalMana += (int)(player.Stats[1] * scale);
+                                break;
                         }
                     }
                 }

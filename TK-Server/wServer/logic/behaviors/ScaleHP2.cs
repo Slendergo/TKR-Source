@@ -40,7 +40,6 @@ namespace wServer.logic.behaviors
 
                 foreach (var player in host.GetNearestEntities(_range, null, true).OfType<Player>())
                 {
-                    System.Console.WriteLine(player.Name);
                     if (scstate.pNamesCounted.Contains(player.Name))
                         continue;
 

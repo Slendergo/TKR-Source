@@ -102,7 +102,7 @@ namespace wServer.core.objects
                 return;
             }
 
-            if (!target.IsInMarket)
+            if (!target.IsInMarket && (target.World is NexusWorld))
             {
                 SendError("They are not inside the market.");
                 return;

@@ -129,7 +129,7 @@ namespace wServer.core.objects
                 return;
             }
 
-            if (IsInMarket)
+            if (IsInMarket && (World is NexusWorld))
             {
                 entity.ForceUpdate(slot);
                 SendInfo("You cannot use items inside the marketplace");

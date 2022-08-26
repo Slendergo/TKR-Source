@@ -1239,7 +1239,7 @@ namespace wServer.core.objects
                 ManaRegenCarry += (0.5 + 0.12 * wisdomStat);
                 if(TalismanExtraManaRegen > 0.0f)
                     ManaRegenCarry += (ManaRegenCarry * TalismanExtraManaRegen);
-                HealthRegenCarry *= time.DeltaTime;
+                ManaRegenCarry *= time.DeltaTime;
 
                 if (HasConditionEffect(ConditionEffects.MPTRegeneration))
                     HealthRegenCarry += 20.0 * time.DeltaTime;

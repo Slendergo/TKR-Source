@@ -125,17 +125,17 @@
 		<Restrictions type="fire"/>
 		<Tier tier="0">
 			<StatType type="0" scale="perLevel" amount="-5" />
-			<StatType type="28" scale="perLevel" amount="1" />
+			<StatType type="20" scale="perLevel" amount="1" />
 			<StatType type="22" scale="perLevel" amount="1" />
 		</Tier>
 		<Tier tier="1">
 			<StatType type="0" scale="perLevel" amount="-10" />
-			<StatType type="28" scale="perLevel" amount="2" />
+			<StatType type="20" scale="perLevel" amount="2" />
 			<StatType type="22" scale="perLevel" amount="2" />
 		</Tier>
 		<Tier tier="2">
 			<StatType type="0" scale="perLevel" amount="-10" />
-			<StatType type="28" scale="perLevel" amount="2" />
+			<StatType type="20" scale="perLevel" amount="2" />
 			<StatType type="22" scale="perLevel" amount="2" />
 			<ExtraDamageOn type="full" stat="health" scale="perLevel" percentage="0.04"/>
 			<ExtraDamageOn type="notfull" stat="health" scale="perLevel" percentage="-0.04"/>
@@ -151,11 +151,11 @@
 		<Restrictions type="fire"/>
 		<Tier tier="0">
 			<StatType type="21" scale="perLevel" amount="-1" />
-			<StatType type="28" scale="perLevel" amount="1" />
+			<StatType type="20" scale="perLevel" amount="1" />
 		</Tier>
 		<Tier tier="1">
 			<StatType type="21" scale="perLevel" amount="-1" />
-			<StatType type="28" scale="perLevel" amount="1" />
+			<StatType type="20" scale="perLevel" amount="1" />
 		</Tier>
 		<Tier tier="2">
 			<ImmuneTo effect="Weak"/>
@@ -163,7 +163,7 @@
 			<ShotsPierceArmour/>
 			<DamageIsAverage/>
 			<StatType type="21" scale="perLevel" amount="-1" />
-			<StatType type="28" scale="perLevel" amount="1" />
+			<StatType type="20" scale="perLevel" amount="1" />
 		</Tier>
 	</Talisman>
 	<Talisman type="0x11">

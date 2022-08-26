@@ -14,10 +14,10 @@ namespace wServer.core.objects
 
         public override bool HitByProjectile(Projectile projectile, TickTime time) => false;
 
-        public override void Init(World owner)
+        public override void Tick(ref TickTime time)
         {
-            base.Init(owner);
-            Size = 200;
+            if (PlayerOwner == null)
+                World.LeaveWorld(this);
         }
 
         public bool IsVisibleToEnemy() => false;

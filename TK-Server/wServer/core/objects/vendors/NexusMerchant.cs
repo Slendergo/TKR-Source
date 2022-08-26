@@ -100,6 +100,38 @@ namespace wServer.core.objects.vendors
             PurchaseItem(player, item);
         }
 
+        protected new BuyResult ValidateCustomer(Player player, Item item)
+        {
+            if (World is TestWorld)
+                return BuyResult.IsTestMap;
+
+            if (player.Stars < RankRequired)
+                return BuyResult.InsufficientRank;
+
+            var acc = player.Client.Account;
+
+            if (acc.Guest)
+            {
+                // reload guest prop just in case user registered in game
+                acc.Reload("guest");
+
+                if (acc.Guest)
+                    return BuyResult.IsGuest;
+            }
+
+            if (player.GetCurrency((CurrencyType)Currency) < Price)
+                return BuyResult.InsufficientFunds;
+
+            if (item != null) // not perfect, but does the job for now
+            {
+                var availableSlot = player.Inventory.CreateTransaction().GetAvailableInventorySlot(item);
+                if (availableSlot == -1)
+                    return BuyResult.NotEnoughSlots;
+            }
+
+            return BuyResult.Ok;
+        }
+
         public void SetData(MerchantData data)
         {
             MerchantData = data;

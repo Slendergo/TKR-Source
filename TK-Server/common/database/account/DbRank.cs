@@ -30,11 +30,11 @@ namespace common.database
 
         public void Flush() => _db.HashSet("ranks", AccountId, JsonConvert.SerializeObject(this));
 
-        public bool IsAdmin => Rank >= RankingType.Admin;
-        public bool IsSupporter1 => Rank >= RankingType.Supporter1;
-        public bool IsSupporter2 => Rank >= RankingType.Supporter2;
-        public bool IsSupporter3 => Rank >= RankingType.Supporter3;
-        public bool IsSupporter4 => Rank >= RankingType.Supporter4;
-        public bool IsSupporter5 => Rank >= RankingType.Supporter5;
+        [JsonIgnore] public bool IsAdmin => Rank >= RankingType.Admin;
+        [JsonIgnore] public bool IsSupporter1 => Rank >= RankingType.Supporter1;
+        [JsonIgnore] public bool IsSupporter2 => Rank >= RankingType.Supporter2;
+        [JsonIgnore] public bool IsSupporter3 => Rank >= RankingType.Supporter3;
+        [JsonIgnore] public bool IsSupporter4 => Rank >= RankingType.Supporter4;
+        [JsonIgnore] public bool IsSupporter5 => Rank >= RankingType.Supporter5;
     }
 }

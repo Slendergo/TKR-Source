@@ -152,7 +152,13 @@ namespace wServer.networking
                         Log.Error(msg);
                     }
                 //StopTask_ = true;
-                Player?.CleanupPlayerUpdate();
+
+                if (Player != null)
+                {
+                    if (Player.Pet != null)
+                        Player.Pet.PlayerOwner = null;
+                    Player?.CleanupPlayerUpdate();
+                }
                 GameServer.ConnectionManager.Disconnect(this);
 
                 _server.Disconnect(this);

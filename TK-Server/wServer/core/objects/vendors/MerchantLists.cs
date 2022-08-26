@@ -28,7 +28,7 @@ namespace wServer.core.objects.vendors
             new ShopItem("Item Dust", 150),
             new ShopItem("Potion Dust", 100),
             new ShopItem("Miscellaneous Dust", 150),
-            new ShopItem("Special Dust", 1000),
+            new ShopItem("Special Dust", 10000),
             new ShopItem("Char Slot Unlocker", 300),
             new ShopItem("XP Booster 20 min", 100),
             new ShopItem("Backpack", 50),

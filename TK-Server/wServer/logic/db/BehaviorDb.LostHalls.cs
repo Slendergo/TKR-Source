@@ -309,7 +309,7 @@ namespace wServer.logic
                     new HpLessTransition(0.90, "Phase 3")
                     ),
                 new State("Phase 3",
-                    new ReturnToSpawn(3, 1),
+                    new ReturnToSpawn(1, 1),
                     new Taunt("I cast you off!"),
                     new TimedTransition(4000, "Phase 3.1")
                     ),
@@ -391,7 +391,7 @@ namespace wServer.logic
                     ),
                 new State("Phase 6",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 3000),
-                    new ReturnToSpawn(3, 1),
+                    new ReturnToSpawn(1, 1),
                     new Taunt("Brace for your demise!"),
                     new Spawn("LH Colossus Rock 1", 1, 1, 1000000),
                     new OrderOnce(1, "LH Colossus Rock 1", "Move"),
@@ -446,7 +446,7 @@ namespace wServer.logic
                     ),
                 new State("Phase 10",
                     new Taunt("Perish, blights upon this realm!"),
-                    new ReturnToSpawn(3, 1),
+                    new ReturnToSpawn(1, 1),
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 25000),
                     new Spawn("LH Colossus Rock 7", maxChildren: 1),
                     new OrderOnce(1, "LH Colossus Rock 7", "Shoot And Move"),

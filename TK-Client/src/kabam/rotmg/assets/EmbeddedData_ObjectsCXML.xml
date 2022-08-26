@@ -25761,7 +25761,7 @@
       <LifetimeMS>1500</LifetimeMS>
       <Amplitude>0.51</Amplitude>
       <Frequency>2</Frequency>
-      <Size>100</Size>
+      <Size>150</Size>
       <FaceDir />
       <MultiHit />
     </Projectile>
@@ -27816,6 +27816,7 @@
     <HitSound>monster/goblins_hit</HitSound>
     <DeathSound>monster/goblins_death</DeathSound>
     <Size>200</Size>
+    <StasisImmune />
     <ShadowSize>45</ShadowSize>
     <MaxHitPoints>65000</MaxHitPoints>
     <Defense>25</Defense>
@@ -28172,7 +28173,6 @@
   <Object type="0x9902" id="Mushroom Bomb">
     <Enemy />
     <DisplayId>Mushroom Bomb</DisplayId>
-    <Quest />
     <God />
     <Class>Character</Class>
     <AnimatedTexture>
@@ -28614,7 +28614,7 @@
     </Projectile>
   </Object>
   <Object type="0x9418" id="Fluffy">
-    <Group>Edition2</Group>
+    <DisplayId>Fluffy</DisplayId>
     <Enemy />
     <Quest />
     <Class>Character</Class>
@@ -34834,12 +34834,16 @@
       <ObjectId>Dark Blue Magic</ObjectId>
       <Speed>100</Speed>
       <Damage>100</Damage>
+      <Multihit />
+      <ArmorPierce />
       <LifetimeMS>2400</LifetimeMS>
     </Projectile>
     <Projectile id="1">
       <ObjectId>Blue Bolt</ObjectId>
       <Speed>80</Speed>
       <Damage>140</Damage>
+      <Multihit />
+      <ArmorPierce />
       <LifetimeMS>2500</LifetimeMS>
     </Projectile>
     <Enemy />
@@ -38226,7 +38230,7 @@
       <Damage>50</Damage>
       <Speed>55</Speed>
       <Size>80</Size>
-      <LifetimeMS>2000</LifetimeMS>
+      <LifetimeMS>45000</LifetimeMS>
       <ConditionEffect duration="4">Sick</ConditionEffect>
       <ConditionEffect duration="1">Confused</ConditionEffect>
     </Projectile>
@@ -43973,8 +43977,8 @@
     <Rare />
     <InvUse />
     <Texture>
-      <File>CustomObj</File>
-      <Index>0x1c</Index>
+      <File>CustomObj1</File>
+      <Index>0x33</Index>
     </Texture>
     <ExtraTooltipData>
       <EffectInfo name="" description="Consume the talisman to reap the power" />
@@ -43994,8 +43998,8 @@
     <Rare />
     <InvUse />
     <Texture>
-      <File>CustomObj</File>
-      <Index>0x1c</Index>
+      <File>CustomObj1</File>
+      <Index>0x34</Index>
     </Texture>
     <ExtraTooltipData>
       <EffectInfo name="" description="Consume the talisman to reap the power" />
@@ -44016,7 +44020,7 @@
     <InvUse />
     <Texture>
       <File>CustomObj</File>
-      <Index>0x1c</Index>
+      <Index>0x35</Index>
     </Texture>
     <ExtraTooltipData>
       <EffectInfo name="" description="Consume the talisman to reap the power" />
@@ -44319,47 +44323,6 @@
     <Description>Significant increase to fame gain, but loot is no longer obtainable.</Description>
     <Sound>use_potion</Sound>
     <Activate type="0x19">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>7</BagType>
-  </Object>
-  <Object type="0x4950" id="Severed Marble Hand">
-    <Class>Equipment</Class>
-    <DisplayId>Severed Marble Hand</DisplayId>
-    <Item />
-    <InvUse />
-    <Texture>
-      <File>CustomObj</File>
-      <Index>0x1c</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>A sundered chunk from the Marble Colossus this item grants power to the wielder</Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x02">UnlockTalisman</Activate>
-    <Legendary />
-    <Consumable />
-    <Potion />
-    <BagType>7</BagType>
-  </Object>
-  <Object type="0x50ec" id="Talisman of Luck">
-    <Class>Equipment</Class>
-    <Item />
-    <InvUse />
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <Texture>
-      <File>CustomObj</File>
-      <Index>0x94</Index>
-    </Texture>
-    <SlotType>10</SlotType>
-    <Description>This talisman contains powers of luck.</Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x01">UnlockTalisman</Activate>
-    <Legendary />
     <Consumable />
     <Potion />
     <BagType>7</BagType>
@@ -50775,25 +50738,6 @@
     <Potion />
     <Activate>SpecialDust</Activate>
     <BagType>7</BagType>
-  </Object>
-  <Object type="0x5060" id="Talisman of Looting">
-    <Class>Equipment</Class>
-    <Item />
-    <InvUse />
-    <ExtraTooltipData>
-      <EffectInfo name="" description="What powers does this item hold?" />
-    </ExtraTooltipData>
-    <Texture>
-      <File>CustomObj</File>
-      <Index>0x7d</Index>
-    </Texture>
-    <SlotType>10</SlotType>
-    <Description>This talisman contains powers of looting.</Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x00">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>3</BagType>
   </Object>
   <Object type="0x5038" id="Cocktail of Vitality">
     <DisplayId>Cocktail of Vitality</DisplayId>
@@ -58731,7 +58675,7 @@
     <ActivateOnEquip stat="21" amount="25">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="-5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="15">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="15">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
   </Object>
@@ -79004,8 +78948,8 @@
     <IntergamePortal />
     <DungeonName>Mortomus Hideout</DungeonName>
     <Texture>
-      <File>CustomEnvironment16x16</File>
-      <Index>0x1c</Index>
+      <File>CustomObj1</File>
+      <Index>0x06</Index>
     </Texture>
   </Object>
   <Object type="0x2295" id="Lair of Shaitan Portal">

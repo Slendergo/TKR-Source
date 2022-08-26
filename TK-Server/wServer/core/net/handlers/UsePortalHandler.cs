@@ -125,10 +125,9 @@ namespace wServer.core.net.handlers
                 return;
             }
 
-            if (world.InstanceType != common.resources.WorldResourceInstanceType.Dungeon)
                 if (world.InstanceType == common.resources.WorldResourceInstanceType.Vault)
                     (world as VaultWorld).SetClient(player.Client);
-                else
+                else if (world.CreateInstance)
                     portal.WorldInstance = world;
             player.Reconnect(world);
         }

@@ -1,9 +1,7 @@
-﻿using CA.Profiler;
-using common.database;
+﻿using common.database;
 using common.resources;
 using dungeonGen;
 using dungeonGen.templates;
-using NLog;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -11,7 +9,6 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using wServer.core.objects;
-using wServer.core.objects.vendors;
 using wServer.core.terrain;
 using wServer.core.worlds.impl;
 using wServer.core.worlds.logic;
@@ -37,6 +34,7 @@ namespace wServer.core.worlds
         public WorldResourceInstanceType InstanceType { get; private set; }
         public bool Persist { get; private set; }
         public int MaxPlayers { get; protected set; }
+        public bool CreateInstance { get; private set; }
 
         public bool IsRealm { get; set; }
         public bool AllowTeleport { get; protected set; }

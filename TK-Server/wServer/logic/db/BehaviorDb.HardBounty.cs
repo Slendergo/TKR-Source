@@ -12,7 +12,7 @@ namespace wServer.logic
     partial class BehaviorDb
     {
         private _ HardBounty = () => Behav()
-        .Init("Cerebrus",
+        .Init("Fluffy",
             new State(
                 new ScaleHP2(20),
                     new State("Pause",
@@ -80,9 +80,11 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
                   new Threshold(0.05,
-                    new ItemLoot("Cerberus's Ribcage", 0.0015),
-                    new ItemLoot("Beast Gem", 0.0015),
-                    new ItemLoot("Heart of the Beast", 0.0015)
+                    new ItemLoot("Magic Dust", 0.5),  
+                    new ItemLoot("Potion of Dexterity", 1),
+                    new ItemLoot("Potion of Defense", 1),
+                    new ItemLoot("Potion of Vitality", 1),
+                    new ItemLoot("Beast Gem", 0.0005)
                   
                 )
             )

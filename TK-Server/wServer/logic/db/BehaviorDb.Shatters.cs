@@ -681,15 +681,15 @@ namespace wServer.logic
 
                 ),
             new Threshold(0.05,
-                new ItemLoot("The Sentinel's Insignia", 0.0014),
-                new ItemLoot("Blade of the Protector", 0.0015)
-                //new ItemLoot("Guardian's Clad", 0.0015)
+                new ItemLoot("The Sentinel's Insignia", 0.0005),
+                new ItemLoot("Blade of the Protector", 0.0005),
+                new ItemLoot("Guardian's Clad", 0.0005)
                 ),
             new Threshold(0.01,
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.03,
-                new ItemLoot("Bracer of the Guardian", 0.009)
+                new ItemLoot("Bracer of the Guardian", 0.0005)
                 ),
             new Threshold(0.001,
                 new TierLoot(12, ItemType.Weapon, 0.2),
@@ -720,10 +720,10 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.05,
-                //new ItemLoot("Rod of Frost Burn", 0.0015),
-                new ItemLoot("Skull of the Archmage", 0.0015)
-                //new ItemLoot("Archmage's Garments", 0.0015),
-                //new ItemLoot("Infused Souls", 0.0015)
+                new ItemLoot("Rod of Frost Burn", 0.0005),
+                new ItemLoot("Skull of the Archmage", 0.0005),
+                new ItemLoot("Archmage's Garments", 0.0005),
+                new ItemLoot("Infused Souls", 0.0005)
                 ),
             new Threshold(0.001,
                 new TierLoot(13, ItemType.Weapon, 0.2),
@@ -2606,12 +2606,12 @@ namespace wServer.logic
                 new State("Crown")
                 ),
             new Threshold(0.05,
-                new ItemLoot("Lodius", 0.0015, 0)
-                //new ItemLoot("Gekdu", 0.0015, 0),
-                //new ItemLoot("Seruna", 0.0015, 0)
+                new ItemLoot("Lodius", 0.0005, 0),
+                new ItemLoot("Gekdu", 0.0005, 0),
+                new ItemLoot("Seruna", 0.0005, 0)
                 ),
             new Threshold(0.03,
-                new ItemLoot("The Forgotten Crown", 0.009),
+                new ItemLoot("The Forgotten Crown", 0.0005),
                 new ItemLoot("Shatters Key", 0.01)
                 ),
             new Threshold(0.01,

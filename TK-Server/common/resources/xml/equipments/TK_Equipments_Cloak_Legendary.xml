@@ -76,4 +76,27 @@
     <Cooldown>1</Cooldown>
     <DisplayId>Shadow Shawl</DisplayId>
   </Object>
+	<Object type="0x464" id="Old Cleric's Cloak">
+		<Class>Equipment</Class>
+		<Item />
+		<Clarification />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x03</Index>
+		</Texture>
+		<SlotType>13</SlotType>
+		<Description></Description>
+		<Sound>spell/fire_nova</Sound>
+		<Usable />
+		<BagType>7</BagType>
+		<Legendary />
+		<FameBonus>6</FameBonus>
+		<MpCost>95</MpCost>
+		<Activate effect="Invisible" duration="5.5">ConditionEffectSelf</Activate>
+		<Activate effect="Speedy" duration="3">ConditionEffectSelf</Activate>
+		<ActivateOnEquip stat="22" amount="10">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="0" amount="40">IncrementStat</ActivateOnEquip>
+		<Cooldown>6</Cooldown>
+		<DisplayId>Old Cleric's Cloak</DisplayId>
+	</Object>
 </Objects>

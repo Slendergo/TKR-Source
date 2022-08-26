@@ -191,4 +191,34 @@
     <feedPower>650</feedPower>
     <DisplayId>Scythe of the Reaper</DisplayId>
   </Object>
+	<Object type="0x460" id="Mortomus' Shovel">
+		<Class>Equipment</Class>
+		<Item />
+		<Mutilate />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x01</Index>
+		</Texture>
+		<Legendary />
+		<SlotType>17</SlotType>
+		<Description></Description>
+		<RateOfFire>0.7</RateOfFire>
+		<Sound>weapon/fire_wand</Sound>
+		<Projectile>
+			<ObjectId>Mortomus Shovel Shot</ObjectId>
+			<Speed>95</Speed>
+			<MinDamage>145</MinDamage>
+			<MaxDamage>175</MaxDamage>
+			<LifetimeMS>800</LifetimeMS>
+			<Amplitude>1</Amplitude>
+			<Frequency>1.2</Frequency>
+			<Size>140</Size>
+			<MultiHit />
+		</Projectile>
+		<NumProjectiles>5</NumProjectiles>
+		<ArcGap>3</ArcGap>
+		<BagType>6</BagType>
+		<FameBonus>6</FameBonus>
+		<DisplayId>Mortomus' Shovel</DisplayId>
+	</Object>
 </Objects>

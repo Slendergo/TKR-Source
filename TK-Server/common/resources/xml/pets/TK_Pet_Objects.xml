@@ -9,6 +9,146 @@
 		<NoMiniMap />
 		<Size>60</Size>
 	</Object>
+	<Object type="0x969a" id="Snorlax">
+		<Class>Character</Class>
+		<Group>Hexable</Group>
+		<AnimatedTexture>
+			<File>Custom32x32Encounters</File>
+			<Index>23</Index>
+		</AnimatedTexture>
+		<NoMiniMap />
+		<Size>60</Size>
+	</Object>
+	<Object type="0x969b" id="Prisoner">
+		<Class>Character</Class>
+		<Group>Hexable</Group>
+		<AnimatedTexture>
+			<File>Custom32x32Encounters</File>
+			<Index>24</Index>
+		</AnimatedTexture>
+		<NoMiniMap />
+		<Size>60</Size>
+	</Object>
+	<Object type="0x969c" id="Wagon">
+		<Class>Character</Class>
+		<Group>Hexable</Group>
+		<AnimatedTexture>
+			<File>Custom32x32Encounters</File>
+			<Index>25</Index>
+		</AnimatedTexture>
+		<NoMiniMap />
+		<Size>60</Size>
+	</Object>
+	<Object type="0x969d" id="Kirby">
+		<Class>Character</Class>
+		<Group>Hexable</Group>
+		<AnimatedTexture>
+			<File>Custom32x32Encounters</File>
+			<Index>26</Index>
+		</AnimatedTexture>
+		<NoMiniMap />
+		<Size>60</Size>
+	</Object>
+	<Object type="0x969e" id="Thot Camel">
+		<Class>Character</Class>
+		<Group>Hexable</Group>
+		<AnimatedTexture>
+			<File>Custom32x32Encounters</File>
+			<Index>27</Index>
+		</AnimatedTexture>
+		<NoMiniMap />
+		<Size>60</Size>
+	</Object>
+	<Object type="0x969f" id="Evil Wolf">
+		<Class>Character</Class>
+		<Group>Hexable</Group>
+		<AnimatedTexture>
+			<File>Custom32x32Encounters</File>
+			<Index>28</Index>
+		</AnimatedTexture>
+		<NoMiniMap />
+		<Size>60</Size>
+	</Object>
+	<Object type="0x690a" id="Shrek Pet">
+		<Class>Character</Class>
+		<Group>Hexable</Group>
+		<AnimatedTexture>
+			<File>Custom16x16Encounters</File>
+			<Index>51</Index>
+		</AnimatedTexture>
+		<NoMiniMap />
+		<Size>60</Size>
+	</Object>
+	<Object type="0x690b" id="Donkey Pet">
+		<Class>Character</Class>
+		<Group>Hexable</Group>
+		<AnimatedTexture>
+			<File>Custom16x16Encounters</File>
+			<Index>50</Index>
+		</AnimatedTexture>
+		<NoMiniMap />
+		<Size>60</Size>
+	</Object>
+	<Object type="0x690c" id="Fat Purple Bunny">
+		<Class>Character</Class>
+		<Group>Hexable</Group>
+		<AnimatedTexture>
+			<File>Custom16x16Encounters</File>
+			<Index>46</Index>
+		</AnimatedTexture>
+		<NoMiniMap />
+		<Size>60</Size>
+	</Object>
+	<Object type="0x690d" id="Bullet Bill">
+		<Class>Character</Class>
+		<Group>Hexable</Group>
+		<AnimatedTexture>
+			<File>Custom16x16Encounters</File>
+			<Index>47</Index>
+		</AnimatedTexture>
+		<NoMiniMap />
+		<Size>60</Size>
+	</Object>
+	<Object type="0x690e" id="Tiny Rogue">
+		<Class>Character</Class>
+		<Group>Hexable</Group>
+		<AnimatedTexture>
+			<File>Custom16x16Encounters</File>
+			<Index>48</Index>
+		</AnimatedTexture>
+		<NoMiniMap />
+		<Size>100</Size>
+	</Object>
+	<Object type="0x690f" id="Bean Warrior">
+		<Class>Character</Class>
+		<Group>Hexable</Group>
+		<AnimatedTexture>
+			<File>Custom16x16Encounters</File>
+			<Index>49</Index>
+		</AnimatedTexture>
+		<NoMiniMap />
+		<Size>60</Size>
+	</Object>
+	<Object type="0x700a" id="Annoyed Slime">
+		<Class>Character</Class>
+		<Group>Hexable</Group>
+		<AnimatedTexture>
+			<File>Custom16x16Encounters</File>
+			<Index>52</Index>
+		</AnimatedTexture>
+		<NoMiniMap />
+		<Size>100</Size>
+	</Object>
+	<Object type="0x700b" id="Giant Rubber Duck">
+		<Class>Character</Class>
+		<Group>Hexable</Group>
+		<AnimatedTexture>
+			<File>Custom16x16Encounters</File>
+			<Index>53</Index>
+		</AnimatedTexture>
+		<NoMiniMap />
+		<Size>60</Size>
+	</Object>
   <Object type="0x074c" id="Nexus Turkey">
     <DisplayId>Turkey</DisplayId>
     <Class>Character</Class>

@@ -115,6 +115,10 @@ namespace wServer.logic
                 new DropPortalOnDeath(target: "Candyland Portal", probability: 1, timeout: 30)
                 ),
             new Threshold(0.01,
+                new ItemLoot("Chocolate Skull", 0.001),
+                new ItemLoot("Potion of Wisdom", 1),
+                new ItemLoot("Potion of Dexterity", 1),
+                new ItemLoot("Potion of Vitality", 1),
                 new ItemLoot(item: "Rock Candy", probability: 0.15),
                 new ItemLoot(item: "Red Gumball", probability: 0.15),
                 new ItemLoot(item: "Purple Gumball", probability: 0.15),

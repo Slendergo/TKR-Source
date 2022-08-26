@@ -1,4 +1,12 @@
 <Objects>
+	<Object type="0x2020" id="Locked Wine Cellar Portal">
+		<Class>Portal</Class>
+		<LockedPortal />
+		<Texture>
+			<File>lofiObj2</File>
+			<Index>0xba</Index>
+		</Texture>
+	</Object>
 	<Object type="0xa141" id="Cave of Eternal Frost">
 		<Class>Portal</Class>
 		<Size>140</Size>

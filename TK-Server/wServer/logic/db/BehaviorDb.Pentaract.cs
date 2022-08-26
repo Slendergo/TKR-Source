@@ -62,7 +62,7 @@ namespace wServer.logic
                 ),
             new Threshold(0.03,
                 new ItemLoot("Seal of Blasphemous Prayer", 0.00014, threshold: 0.03),
-                new ItemLoot("Talisman Fragment", 0.00005),
+                new ItemLoot("Talisman Fragment", 0.005),
                 new ItemLoot("Midnight Star", 0.00014, threshold: 0.03)
                 ),
             new Threshold(0.001,

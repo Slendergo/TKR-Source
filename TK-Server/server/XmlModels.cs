@@ -301,7 +301,7 @@ namespace server
                 FirstDeath = acc.FirstDeath,
 
                 Credits = acc.Credits,
-                AmountDonated = rank.AmountDonated,
+                AmountDonated = rank.TotalAmountDonated,
                 NextCharSlotPrice = Program.Resources.Settings.NewAccounts.SlotCost,
                 NextCharSlotCurrency = (int)Program.Resources.Settings.NewAccounts.SlotCurrency,
                 MenuMusic = Program.Resources.Settings.MenuMusic,

@@ -8,7 +8,8 @@ namespace common.database
         private readonly IDatabase _db;
 
         public RankingType Rank { get; set; }
-        public int AmountDonated { get; set; }
+        public int TotalAmountDonated { get; set; }
+        public int NewAmountDonated { get; set; }
 
         [JsonIgnore] public int AccountId { get; private set; }
         [JsonIgnore] public bool IsNull { get; private set; }

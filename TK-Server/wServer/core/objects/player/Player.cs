@@ -136,6 +136,8 @@ namespace wServer.core.objects
 
             Client = client;
 
+            CalculateRank();
+
             _accountId = new SV<int>(this, StatDataType.AccountId, client.Account.AccountId, true);
             _experience = new SV<int>(this, StatDataType.Experience, client.Character.Experience, true);
             _experienceGoal = new SV<int>(this, StatDataType.ExperienceGoal, 0, true);
@@ -253,6 +255,53 @@ namespace wServer.core.objects
             });
 
             LoadTalismanData();
+        }
+
+        private void CalculateRank()
+        {
+            if (Client.Rank.IsAdmin)
+                return;
+
+            var newAmouintDonated = Client.Rank.NewAmountDonated; // add $10
+            var amountDonated = Client.Rank.TotalAmountDonated;
+
+            var rank = Client.Rank.Rank;
+            while(amountDonated != 0)
+            {
+                if (rank != RankingType.Supporter1 && amountDonated >= 10 && amountDonated < 20)
+                {
+                    rank = RankingType.Supporter1;
+                    GameServer.Database.UpdateCredit(Client.Account, 750);
+                }
+                else if (rank != RankingType.Supporter2 && amountDonated >= 20 && amountDonated < 30)
+                {
+                    rank = RankingType.Supporter2;
+                    GameServer.Database.UpdateCredit(Client.Account, 1500);
+                }
+                else if (rank != RankingType.Supporter3 && amountDonated >= 30 && amountDonated < 40)
+                {
+                    rank = RankingType.Supporter3;
+                    GameServer.Database.UpdateCredit(Client.Account, 2625);
+                }
+                else if (rank != RankingType.Supporter4 && amountDonated >= 40 && amountDonated < 50)
+                {
+                    rank = RankingType.Supporter4;
+                    GameServer.Database.UpdateCredit(Client.Account, 3750);
+                }
+                else if (rank != RankingType.Supporter5 && amountDonated < 50)
+                {
+                    rank = RankingType.Supporter5;
+                    GameServer.Database.UpdateCredit(Client.Account, 5000);
+                }
+
+                amountDonated++;
+                newAmouintDonated--;
+            }
+
+            Client.Rank.TotalAmountDonated = amountDonated;
+            Client.Rank.NewAmountDonated = newAmouintDonated;
+            Client.Rank.Rank = rank;
+            Client.Rank.Flush();
         }
 
         public bool ApplyEffectCooldown(int slot)

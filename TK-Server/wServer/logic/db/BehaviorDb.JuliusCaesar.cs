@@ -124,7 +124,11 @@ namespace wServer.logic
                          ),
                new State("Kill",
                          new ConditionalEffect(ConditionEffectIndex.Armored),
-                         new Shoot(15, count: 3, projectileIndex: 0, shootAngle: 10, predictive: 1, coolDown: 1500)
+                         new Shoot(15, count: 3, projectileIndex: 0, shootAngle: 10, predictive: 1, coolDown: 1500),
+                         new EntityNotExistsTransition("Julius Caesar", 30, "die")
+                    ),
+                new State("die",
+                    new Suicide()
                         )
              )
             )
@@ -144,7 +148,11 @@ namespace wServer.logic
                      ),
                 new State("Orbit2",
                     new Shoot(10, 7, projectileIndex: 0, coolDown: 1500),
-                    new Orbit(6, 6, 10, "Julius Caesar", speedVariance: 0, radiusVariance: 0, orbitClockwise: true)
+                    new Orbit(6, 6, 10, "Julius Caesar", speedVariance: 0, radiusVariance: 0, orbitClockwise: true),
+                    new EntityNotExistsTransition("Julius Caesar", 30, "die")
+                    ),
+                new State("die",
+                    new Suicide()
                  )
             )
                  )
@@ -164,7 +172,11 @@ namespace wServer.logic
                      ),
                 new State("Orbit2",
                     new Shoot(10, 7, projectileIndex: 0, coolDown: 1500),
-                    new Orbit(6, 6, 10, "Julius Caesar", speedVariance: 0, radiusVariance: 0, orbitClockwise: true)
+                    new Orbit(6, 6, 10, "Julius Caesar", speedVariance: 0, radiusVariance: 0, orbitClockwise: true),
+                    new EntityNotExistsTransition("Julius Caesar", 30, "die")
+                    ),
+                new State("die",
+                    new Suicide()
                  )
             )
                  )
@@ -185,7 +197,11 @@ namespace wServer.logic
                      ),
                 new State("Orbit2",
                     new Shoot(30, 1, projectileIndex: 0, coolDown: 25),
-                    new Orbit(8, 8, 10, "Julius Caesar", speedVariance: 0, radiusVariance: 0, orbitClockwise: true)
+                    new Orbit(8, 8, 10, "Julius Caesar", speedVariance: 0, radiusVariance: 0, orbitClockwise: true),
+                    new EntityNotExistsTransition("Julius Caesar", 30, "die")
+                    ),
+                new State("die",
+                    new Suicide()
                 )
                     )
             )
@@ -207,7 +223,11 @@ namespace wServer.logic
                      ),
                 new State("Orbit2",
                     new Shoot(30, 1, projectileIndex: 0, coolDown: 25),
-                    new Orbit(8, 8, 10, "Julius Caesar", speedVariance: 0, radiusVariance: 0, orbitClockwise: true)
+                    new Orbit(8, 8, 10, "Julius Caesar", speedVariance: 0, radiusVariance: 0, orbitClockwise: true),
+                    new EntityNotExistsTransition("Julius Caesar", 30, "die")
+                    ),
+                new State("die",
+                    new Suicide()
                 )
                     )
             )
@@ -227,7 +247,11 @@ namespace wServer.logic
                      ),
                 new State("Orbit2",
                     new Shoot(10, 2, projectileIndex: 0, shootAngle: 15, coolDown: 800),
-                    new Orbit(2, 2, 10, "Julius Caesar", speedVariance: 0, radiusVariance: 0, orbitClockwise: true)
+                    new Orbit(2, 2, 10, "Julius Caesar", speedVariance: 0, radiusVariance: 0, orbitClockwise: true),
+                    new EntityNotExistsTransition("Julius Caesar", 30, "die")
+                    ),
+                new State("die",
+                    new Suicide()
                     )
                  )
             )
@@ -247,7 +271,11 @@ namespace wServer.logic
                      ),
                 new State("Orbit2",
                     new Shoot(10, 2, projectileIndex: 0, shootAngle: 15, coolDown: 800),
-                    new Orbit(2, 2, 10, "Julius Caesar", speedVariance: 0, radiusVariance: 0, orbitClockwise: true)
+                    new Orbit(2, 2, 10, "Julius Caesar", speedVariance: 0, radiusVariance: 0, orbitClockwise: true),
+                    new EntityNotExistsTransition("Julius Caesar", 30, "die")
+                    ),
+                new State("die",
+                    new Suicide()
                     )
                  )
             )
@@ -271,7 +299,11 @@ namespace wServer.logic
                 new State("Orbit2",
                     new Shoot(10, 1, projectileIndex: 0, coolDown: 1300, coolDownOffset: 0),
                     new Shoot(10, 2, projectileIndex: 0, shootAngle: 10, coolDown: 1300, coolDownOffset: 700),
-                    new Orbit(4, 4, 10, "Julius Caesar", speedVariance: 0, radiusVariance: 0, orbitClockwise: true)
+                    new Orbit(4, 4, 10, "Julius Caesar", speedVariance: 0, radiusVariance: 0, orbitClockwise: true),
+                    new EntityNotExistsTransition("Julius Caesar", 30, "die")
+                    ),
+                new State("die",
+                    new Suicide()
                  )
             )
             )
@@ -294,7 +326,11 @@ namespace wServer.logic
                 new State("Orbit2",
                     new Shoot(10, 1, projectileIndex: 0, coolDown: 1300, coolDownOffset: 0),
                     new Shoot(10, 2, projectileIndex: 0, shootAngle: 10, coolDown: 1300, coolDownOffset: 700),
-                    new Orbit(4, 4, 10, "Julius Caesar", speedVariance: 0, radiusVariance: 0, orbitClockwise: true)
+                    new Orbit(4, 4, 10, "Julius Caesar", speedVariance: 0, radiusVariance: 0, orbitClockwise: true),
+                    new EntityNotExistsTransition("Julius Caesar", 30, "die")
+                    ),
+                new State("die",
+                    new Suicide()
                     )
                  )
             )
@@ -307,7 +343,11 @@ namespace wServer.logic
                     ),
                 new State("Offence",
                     new Wander(0.5),
-                    new Shoot(radius: 8, projectileIndex: 0, count: 3, shootAngle: 25, predictive: 10, coolDown: 1000)
+                    new Shoot(radius: 8, projectileIndex: 0, count: 3, shootAngle: 25, predictive: 10, coolDown: 1000),
+                    new EntityNotExistsTransition("Julius Caesar", 30, "die")
+                    ),
+                new State("die",
+                    new Suicide()
                     )
                  )
             )
@@ -320,7 +360,11 @@ namespace wServer.logic
                     ),
                 new State("Offence",
                     new Wander(0.5),
-                    new Shoot(radius: 8, projectileIndex: 0, count: 3, shootAngle: 25, predictive: 10, coolDown: 1000)
+                    new Shoot(radius: 8, projectileIndex: 0, count: 3, shootAngle: 25, predictive: 10, coolDown: 1000),
+                    new EntityNotExistsTransition("Julius Caesar", 30, "die")
+                    ),
+                new State("die",
+                    new Suicide()
                     )
                  )
             )

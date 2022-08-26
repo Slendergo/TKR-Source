@@ -79,6 +79,7 @@
 		<MapJM>undead_lair/undead_lair3.jm</MapJM>
 		<MapJM>undead_lair/undead_lair4.jm</MapJM>
 		<MapJM>undead_lair/undead_lair5.jm</MapJM>
+		<AllowTeleport/>
 		<VisibilityType>1</VisibilityType>
 		<Dungeon/>
 	</World>
@@ -87,6 +88,7 @@
 		<Height>256</Height>
 		<MapJM>snake_pit.jm</MapJM>
 		<VisibilityType>1</VisibilityType>
+		<AllowTeleport/>
 		<Dungeon/>
 	</World>
 	<World id="Hideout of Septavius">
@@ -115,6 +117,7 @@
 		<Height>256</Height>
 		<MapJM>abyss/abyss_of_demons.jm</MapJM>
 		<VisibilityType>1</VisibilityType>
+		<AllowTeleport/>
 		<Dungeon/>
 	</World>
 	<World id="Belladonna's Garden">
@@ -160,6 +163,7 @@
 		<Width>256</Width>
 		<Height>256</Height>
 		<MapJM>tomb_of_the_ancients.jm</MapJM>
+		<AllowTeleport/>
 		<VisibilityType>1</VisibilityType>
 		<Dungeon/>
 	</World>
@@ -202,6 +206,7 @@
 		<Height>256</Height>
 		<MapJM>manor_of_the_immortals.jm</MapJM>
 		<VisibilityType>1</VisibilityType>
+		<AllowTeleport/>
 		<Dungeon/>
 	</World>
 	<World id="Hideout of Stheno">
@@ -230,6 +235,7 @@
 		<Height>256</Height>
 		<MapJM>puppet.jm</MapJM>
 		<VisibilityType>2</VisibilityType>
+		<AllowTeleport/>
 		<Dungeon/>
 	</World>
 	<World id="Haunted Cemetery">
@@ -264,6 +270,7 @@
 		<Height>256</Height>
 		<MapJM>davy.jm</MapJM>
 		<VisibilityType>2</VisibilityType>
+		<AllowTeleport/>
 		<Dungeon/>
 	</World>
 	<World id="Cave of A Thousand Treasures">
@@ -271,6 +278,7 @@
 		<Height>256</Height>
 		<MapJM>cave_of_thousand_treasures.jm</MapJM>
 		<VisibilityType>1</VisibilityType>
+		<AllowTeleport/>
 		<Dungeon/>
 	</World>	
 	<World id="Cave of Eternal Frost">
@@ -313,6 +321,7 @@
 		<Height>256</Height>
 		<MapJM>toxic_sewers.jm</MapJM>
 		<VisibilityType>1</VisibilityType>
+		<AllowTeleport/>
 		<Dungeon/>
 	</World>
 	<World id="The Shatters">
@@ -327,6 +336,7 @@
 		<Height>256</Height>
 		<MapJM>spider_den.jm</MapJM>
 		<VisibilityType>1</VisibilityType>
+		<AllowTeleport/>
 		<Dungeon/>
 	</World>
 	<World id="The Crawling Depths">
@@ -334,6 +344,7 @@
 		<Height>256</Height>
 		<MapJM>the_crawling_depths.jm</MapJM>
 		<Dungeon/>
+		<AllowTeleport/>
 		<VisibilityType>1</VisibilityType>
 	</World>
 	<World id="Stanleys Hideout">
@@ -351,6 +362,7 @@
 		<MapJM>sprite_world/sprite_world3.jm</MapJM>
 		<MapJM>sprite_world/sprite_world4.jm</MapJM>
 		<MapJM>sprite_world/sprite_world5.jm</MapJM>
+		<AllowTeleport/>
 		<Dungeon/>
 	</World>
 	<World id="Strange Library">
@@ -358,6 +370,7 @@
 		<Height>256</Height>
 		<MapJM>strange_library.jm</MapJM>
 		<VisibilityType>1</VisibilityType>
+		<AllowTeleport/>
 		<Dungeon/>
 	</World>
 	<World id="Woodland Labyrinth">
@@ -365,6 +378,7 @@
 		<Height>256</Height>
 		<MapJM>woodland_labyrinth.jm</MapJM>
 		<VisibilityType>1</VisibilityType>
+		<AllowTeleport/>
 		<Dungeon/>
 	</World>
 </Worlds>

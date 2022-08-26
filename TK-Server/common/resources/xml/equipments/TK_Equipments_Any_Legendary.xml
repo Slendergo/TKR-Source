@@ -384,49 +384,6 @@
 	</Object>
 	<!--Mythical Talismans-->
 	
-	<Object type="0x4950" id="Severed Marble Hand">
-		<Class>Equipment</Class>
-		<DisplayId>Severed Marble Hand</DisplayId>
-		<Item />
-		<InvUse />
-		<Texture>
-			<File>CustomObj</File>
-			<Index>0x1c</Index>
-		</Texture>
-		<ExtraTooltipData>
-			<EffectInfo name="" description="Consume the talisman to reap the power" />
-		</ExtraTooltipData>
-		<SlotType>10</SlotType>
-		<Description>A sundered chunk from the Marble Colossus this item grants power to the wielder</Description>
-		<Sound>use_potion</Sound>
-		<Activate type="0x02">UnlockTalisman</Activate>
-		<Legendary />
-		<Consumable />
-		<Potion />
-		<BagType>7</BagType>
-	</Object>
-	
-  <Object type="0x50ec" id="Talisman of Luck">
-    <Class>Equipment</Class>
-    <Item />
-	<InvUse />
-	<ExtraTooltipData>
-		<EffectInfo name="" description="Consume the talisman to reap the power" />
-	</ExtraTooltipData>
-    <Texture>
-      <File>CustomObj</File>
-      <Index>0x94</Index>
-    </Texture>
-    <SlotType>10</SlotType>
-	<Description>This talisman contains powers of luck.</Description>
-	<Sound>use_potion</Sound>
-	<Activate type="0x01">UnlockTalisman</Activate>
-	<Legendary />
-	<Consumable />
-	<Potion />
-    <BagType>7</BagType>
-  </Object>
-	
   <Object type="0x5019" id="Fire Fragment">
     <Class>Equipment</Class>
     <Item />

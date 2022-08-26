@@ -60,7 +60,6 @@ namespace wServer.logic
                     )
                 ),
             new Threshold(.01,
-                new ItemLoot("Talisman of Looting", 0.043333),
                 new TierLoot(5, ItemType.Weapon, 0.26),
                 new TierLoot(6, ItemType.Weapon, 0.18),
                 new TierLoot(7, ItemType.Weapon, 0.10),
@@ -121,7 +120,6 @@ namespace wServer.logic
                     )
                 ),
             new Threshold(.01,
-                new ItemLoot("Talisman of Looting", 0.043333),
                 new TierLoot(4, ItemType.Weapon, 0.2),
                 new TierLoot(5, ItemType.Weapon, 0.1),
                 new TierLoot(4, ItemType.Armor, 0.2),
@@ -191,7 +189,6 @@ namespace wServer.logic
                     )
                 ),
             new Threshold(.01,
-                new ItemLoot("Talisman of Looting", 0.043333),
                 new TierLoot(5, ItemType.Weapon, 0.28),
                 new TierLoot(6, ItemType.Weapon, 0.20),
                 new TierLoot(7, ItemType.Weapon, 0.10),
@@ -268,7 +265,6 @@ namespace wServer.logic
                 new Shoot(10, projectileIndex: 1, predictive: 0.5, coolDown: 1200)
                 ),
             new Threshold(.01,
-                new ItemLoot("Talisman of Looting", 0.043333),
                 new TierLoot(5, ItemType.Weapon, 0.26),
                 new TierLoot(6, ItemType.Weapon, 0.18),
                 new TierLoot(7, ItemType.Weapon, 0.1),
@@ -388,7 +384,6 @@ namespace wServer.logic
                 new Shoot(10, projectileIndex: 1, predictive: 1)
                 ),
             new Threshold(.01,
-                new ItemLoot("Talisman of Looting", 0.043333),
                 new TierLoot(5, ItemType.Weapon, 0.26),
                 new TierLoot(6, ItemType.Weapon, 0.18),
                 new TierLoot(7, ItemType.Weapon, 0.1),
@@ -481,9 +476,6 @@ namespace wServer.logic
                     new Shoot(0, count: 10, shootAngle: 36, fixedAngle: 0),
                     new Decay(0)
                     )
-                ),
-            new Threshold(0.001,
-                new ItemLoot("Talisman of Looting", 0.043333)
                 ),
             new TierLoot(5, ItemType.Weapon, 0.04)
             )
@@ -729,7 +721,6 @@ namespace wServer.logic
                     )
                 ),
             new Threshold(.01,
-                new ItemLoot("Talisman of Looting", 0.043333),
                 new TierLoot(5, ItemType.Weapon, 0.26),
                 new TierLoot(6, ItemType.Weapon, 0.18),
                 new TierLoot(7, ItemType.Weapon, 0.1),

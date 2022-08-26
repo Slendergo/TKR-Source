@@ -9,6 +9,7 @@ import flash.display.Sprite;
 import flash.display.Stage;
 import flash.display.StageScaleMode;
 import flash.events.Event;
+import flash.system.Security;
 import flash.utils.ByteArray;
 
 import kabam.lib.net.NetConfig;

@@ -116,7 +116,7 @@ namespace wServer.core.net.handlers
 
             if (talisman.Tier > 2 || talisman.Tier == desc.Tiers.Count - 1) // we start at tier 0 as first tier
             {
-                player.SendError("You area already at max tier");
+                player.SendError("You are already at max tier");
                 return;
             }
 

@@ -119,21 +119,21 @@ namespace wServer.logic.loot
                 list.Add(new LootDef("Potion Dust", 0.08, 0.001)); // 8%
                 list.Add(new LootDef("Item Dust", 0.12, 0.001)); // 12%
                 list.Add(new LootDef("Miscellaneous Dust", 0.05, 0.001)); // 5% 
-                list.Add(new LootDef("Special Dust", 0.03, 0.001)); // 3%
+                list.Add(new LootDef("Special Dust", 0.003, 0.001)); // 3%
             }
             else if (enemy.Epic)
             {
                 list.Add(new LootDef("Potion Dust", 0.05, 0.001)); // 5%
                 list.Add(new LootDef("Item Dust", 0.08, 0.001)); //8%
                 list.Add(new LootDef("Miscellaneous Dust", 0.02, 0.001)); //2%
-                list.Add(new LootDef("Special Dust", 0.01, 0.001)); // 1%
+                list.Add(new LootDef("Special Dust", 0.001, 0.001)); // 1%
             }
             else if (enemy.Rare)
             {
                 list.Add(new LootDef("Potion Dust", 0.03, 0.001));//3%
                 list.Add(new LootDef("Item Dust", 0.05, 0.001)); //5%
                 list.Add(new LootDef("Miscellaneous Dust", 0.01, 0.001)); //1%
-                list.Add(new LootDef("Special Dust", 0.005, 0.001)); //0.5%
+                list.Add(new LootDef("Special Dust", 0.0005, 0.001)); //0.5%
             }
 
             return list;

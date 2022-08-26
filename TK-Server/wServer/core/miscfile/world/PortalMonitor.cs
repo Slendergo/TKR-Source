@@ -100,7 +100,7 @@ namespace wServer.core
         {
             lock (Access)
             {
-                if (Portals.ContainsKey(worldId))
+                if (!Portals.ContainsKey(worldId))
                     return;
 
                 var portal = Portals[worldId];

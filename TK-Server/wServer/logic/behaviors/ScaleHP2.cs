@@ -38,25 +38,25 @@ namespace wServer.logic.behaviors
                 var plrCount = 0;
                 var itemCount = 0;
 
-                foreach (var entity in host.GetNearestEntities(_range, null, true).OfType<Player>())
+                foreach (var player in host.GetNearestEntities(_range, null, true).OfType<Player>())
                 {
-                    if (scstate.pNamesCounted.Contains(entity.Name))
+                    if (scstate.pNamesCounted.Contains(player.Name))
                         continue;
 
                     if (_range > 0)
                     {
-                        if (host.Dist(entity.Pos) < _range)
+                        if (host.Dist(player.Pos) < _range)
                         {
                             for (var i = 0; i < 4; i++)
                             {
-                                if (entity.Inventory[i].Legendary || entity.Inventory[i].Mythical)
+                                if (player.Inventory[i].Legendary || player.Inventory[i].Mythical)
                                     itemCount++;
                             }
-                            scstate.pNamesCounted.Add(entity.Name);
+                            scstate.pNamesCounted.Add(player.Name);
                         }
                     }
                     else
-                        scstate.pNamesCounted.Add(entity.Name);
+                        scstate.pNamesCounted.Add(player.Name);
                 }
 
                 plrCount = scstate.pNamesCounted.Count;

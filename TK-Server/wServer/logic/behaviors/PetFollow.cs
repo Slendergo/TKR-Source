@@ -15,10 +15,7 @@ namespace wServer.logic.behaviors
         protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             if ((host as Pet)?.PlayerOwner == null)
-            {
-                host.World.LeaveWorld(host);
                 return;
-            }
 
             var pet = (Pet)host;
             var s = state == null ? new FollowState { State = F.DontKnowWhere, RemainingTime = 1000 } : (FollowState)state;
@@ -26,10 +23,7 @@ namespace wServer.logic.behaviors
             Status = CycleStatus.NotStarted;
 
             if (!(host.World.GetEntity(pet.PlayerOwner.Id) is Player player))
-            {
-                host.World.LeaveWorld(host);
                 return;
-            }
 
             Status = CycleStatus.InProgress;
 

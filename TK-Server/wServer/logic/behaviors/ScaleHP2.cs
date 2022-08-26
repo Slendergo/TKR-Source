@@ -40,6 +40,7 @@ namespace wServer.logic.behaviors
 
                 foreach (var player in host.GetNearestEntities(_range, null, true).OfType<Player>())
                 {
+                    System.Console.WriteLine(player.Name);
                     if (scstate.pNamesCounted.Contains(player.Name))
                         continue;
 
@@ -49,8 +50,12 @@ namespace wServer.logic.behaviors
                         {
                             for (var i = 0; i < 4; i++)
                             {
-                                if (player.Inventory[i].Legendary || player.Inventory[i].Mythical)
-                                    itemCount++;
+                                var item = player.Inventory[i];
+
+                                if (item == null || !item.Legendary && !item.Revenge && !item.Eternal && !item.Mythical)
+                                    continue;
+
+                                itemCount++;
                             }
                             scstate.pNamesCounted.Add(player.Name);
                         }

@@ -8,17 +8,8 @@ namespace wServer.core.objects
 
         public Player PlayerOwner { get; set; }
 
-        public void Damage(int dmg, Entity src)
-        {
-        }
-
+        public void Damage(int dmg, Entity src) { }
         public override bool HitByProjectile(Projectile projectile, TickTime time) => false;
-
-        public override void Tick(ref TickTime time)
-        {
-            if (PlayerOwner == null)
-                World.LeaveWorld(this);
-        }
 
         public bool IsVisibleToEnemy() => false;
     }

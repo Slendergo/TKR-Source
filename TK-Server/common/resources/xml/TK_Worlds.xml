@@ -381,4 +381,13 @@
 		<AllowTeleport/>
 		<Dungeon/>
 	</World>
+	<World id="Trial of Souls">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>snake_pit.jm</MapJM>
+		<VisibilityType>1</VisibilityType>
+		<Instance enum="dungeon"/>
+		<AllowTeleport/>
+		<Dungeon/>
+	</World>
 </Worlds>

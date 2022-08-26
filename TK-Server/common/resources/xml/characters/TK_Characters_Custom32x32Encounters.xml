@@ -1025,7 +1025,7 @@
 		</Projectile>
 	</Object>
 	<Object type="0x9418" id="Fluffy">
-		<Group>Edition2</Group>
+		<DisplayId>Fluffy</DisplayId>
 		<Enemy />
 		<Quest />
 		<Class>Character</Class>

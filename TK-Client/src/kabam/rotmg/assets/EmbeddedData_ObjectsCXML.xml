@@ -28614,7 +28614,7 @@
     </Projectile>
   </Object>
   <Object type="0x9418" id="Fluffy">
-    <Group>Edition2</Group>
+    <DisplayId>Fluffy</DisplayId>
     <Enemy />
     <Quest />
     <Class>Character</Class>
@@ -78948,8 +78948,8 @@
     <IntergamePortal />
     <DungeonName>Mortomus Hideout</DungeonName>
     <Texture>
-      <File>CustomEnvironment16x16</File>
-      <Index>0x1c</Index>
+      <File>CustomObj1</File>
+      <Index>0x06</Index>
     </Texture>
   </Object>
   <Object type="0x2295" id="Lair of Shaitan Portal">

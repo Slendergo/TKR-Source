@@ -456,7 +456,6 @@ namespace common.database
                 TotalFame = newAccounts.Fame,
                 Credits = newAccounts.Credits,
                 TotalCredits = newAccounts.Credits,
-                Rank = 0,
                 PassResetToken = ""
             };
 
@@ -553,13 +552,15 @@ namespace common.database
 
             var guild = new DbGuild(acc);
 
-            if (!guild.IsNull && !acc.IsAdmin)
+            var rank = new DbRank(_db, acc.AccountId);
+
+            if (!guild.IsNull && !rank.IsAdmin)
             {
                 UpdateGuildFame(guild, finalFame);
                 UpdatePlayerGuildFame(acc, finalFame);
             }
 
-            if (!acc.IsAdmin)
+            if (!rank.IsAdmin)
                 DbLegend.Insert(_db, acc.AccountId, character.CharId, finalFame);
         }
 
@@ -684,16 +685,6 @@ namespace common.database
         public DbChar[] GetLegendsBoard(string timeSpan) => DbLegend.Get(_db, timeSpan).Select(e => LoadCharacter(e.AccId, e.ChrId)).Where(e => e != null).ToArray();
 
         public TimeSpan? GetLockTime(DbAccount acc) => _db.KeyTimeToLive($"lock:{acc.AccountId}");
-
-        public IEnumerable<(int accountId, string name, int rank, bool admin)> GetStaffAccounts(int from, int to)
-        {
-            for (var i = from; i <= to; i++)
-            {
-                var acc = new DbAccount(_db, i);
-                if (acc.IsAdmin)
-                    yield return (acc.AccountId, acc.Name, (int)acc.Rank, acc.IsAdmin);
-            }
-        }
 
         public void Guest(DbAccount acc, bool isGuest)
         {
@@ -873,7 +864,6 @@ namespace common.database
                 Credits = newAccounts.Credits,
                 TotalCredits = newAccounts.Credits,
                 PassResetToken = "",
-                Rank = 0,
                 LastSeen = (int)DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds,
                 EnemiesKilled = 0
             };

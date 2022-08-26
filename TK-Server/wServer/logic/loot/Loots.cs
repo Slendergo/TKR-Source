@@ -302,7 +302,7 @@ namespace wServer.logic.loot
                                 isMythical ? discord.mtBagImage : discord.lgBagImage,
                                 isMythical ? discord.mtImage : discord.lgImage,
                                 player.Name,
-                                player.Rank,
+                                player.Client.Rank.Rank,
                                 player.Stars,
                                 i.ObjectId,
                                 player.ObjectDesc.ObjectId,

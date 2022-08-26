@@ -51,7 +51,7 @@ namespace wServer.core.objects
             else
                 Inventory[slot] = dustItem;
 
-            SendInfo($"Used a Item Dust and obtained a {item.DisplayName}");
+            SendInfo($"You Scattered a Item Dust and obtained a {item.DisplayName}");
         }
 
         public void AETalismanFragment(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
@@ -64,7 +64,7 @@ namespace wServer.core.objects
             else
                 Inventory[slot] = dustItem;
 
-            SendInfo($"Openned a Talisman Fragment and obtained a {dustItem.DisplayName ?? dustItem.ObjectId}");
+            SendInfo($"Opened a Talisman Fragment and obtained a {dustItem.DisplayName ?? dustItem.ObjectId}");
         }
         public void AESpecialDust(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
@@ -76,7 +76,7 @@ namespace wServer.core.objects
             else
                 Inventory[slot] = dustItem;
 
-            GameServer.ChatManager.AnnounceLoot($"[{Name}] used a Special Dust and Obtained an [{dustItem.DisplayId ?? dustItem.ObjectId}]!");
+            GameServer.ChatManager.AnnounceLoot($"[{Name}] Scattered a Special Dust and Obtained an [{dustItem.DisplayId ?? dustItem.ObjectId}]!");
         }
 
         public void AEUnlockChest(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
@@ -833,7 +833,7 @@ namespace wServer.core.objects
         private void AEIncrementStat(TickTime time, Item item, Position target, ActivateEffect eff, int objId, int slot, int sellMaxed)
         {
             var addition = 0;
-            switch (Rank)
+            switch (Client.Rank.Rank)
             {
                 case common.RankingType.Supporter1:
                     addition = 10;
@@ -1044,7 +1044,7 @@ namespace wServer.core.objects
         private int HandleTX(string statname, int amount)
         {
             var addition = 0;
-            switch (Rank)
+            switch (Client.Rank.Rank)
             {
                 case common.RankingType.Supporter1:
                     addition = 10;
@@ -1301,7 +1301,7 @@ namespace wServer.core.objects
             else
                 Inventory[slot] = dustItem;
 
-            SendInfo($"You used a Miscellaneous Dust and obtained a {dustItem.DisplayName ?? dustItem.ObjectId}");
+            SendInfo($"You Scattered used a Miscellaneous Dust and obtained a {dustItem.DisplayName ?? dustItem.ObjectId}");
         }
 
         private void AEPermaPet(TickTime time, Item item, Position target, ActivateEffect eff)

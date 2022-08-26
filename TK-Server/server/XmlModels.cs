@@ -290,17 +290,18 @@ namespace server
 
         public static Account FromDb(DbAccount acc)
         {
+            var rank = new DbRank(acc.Database, acc.AccountId);
             return new Account()
             {
                 AccountId = acc.AccountId,
                 Name = acc.Name,
 
                 NameChosen = acc.NameChosen,
-                Admin = acc.IsAdmin,
+                Admin = rank.IsAdmin,
                 FirstDeath = acc.FirstDeath,
 
                 Credits = acc.Credits,
-                AmountDonated = acc.AmountDonated,
+                AmountDonated = rank.AmountDonated,
                 NextCharSlotPrice = Program.Resources.Settings.NewAccounts.SlotCost,
                 NextCharSlotCurrency = (int)Program.Resources.Settings.NewAccounts.SlotCurrency,
                 MenuMusic = Program.Resources.Settings.MenuMusic,

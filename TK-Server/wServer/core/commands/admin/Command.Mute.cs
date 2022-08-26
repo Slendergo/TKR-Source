@@ -64,7 +64,7 @@ namespace wServer.core.commands
                     player?.SendError("Mute failed. That action would cause yourself to be muted (IPs are the same).");
                     return false;
                 }
-                if (acc.IsAdmin)
+                if (player.IsAdmin)
                 {
                     player?.SendError("Cannot mute other admins.");
                     return false;
@@ -74,7 +74,7 @@ namespace wServer.core.commands
                 var client = _manager.ConnectionManager.Clients
                     .KeyWhereAsParallel(_ => _.Player != null
                         && _.IpAddress.Equals(acc.IP)
-                        && !_.Account.IsAdmin)
+                        && !_.Rank.IsAdmin)
                     .SingleOrDefault();
                 if (client != default)
                     client.Player.Muted = true;
@@ -112,7 +112,7 @@ namespace wServer.core.commands
                 var client = _manager.ConnectionManager.Clients
                     .KeyWhereAsParallel(_ => _.Player != null
                         && _.IpAddress.Equals(key.Substring(6))
-                        && !_.Account.IsAdmin)
+                        && !_.Rank.IsAdmin)
                     .SingleOrDefault();
                 if (client == default)
                     return;

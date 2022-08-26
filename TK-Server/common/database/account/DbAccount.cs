@@ -33,7 +33,6 @@ namespace common.database
         public int ColorChat { get => GetValue<int>("colorchat"); set => SetValue("colorchat", value); }
         public int ColorNameChat { get => GetValue<int>("colornamechat"); set => SetValue("colornamechat", value); }
         public int Credits { get => GetValue<int>("credits"); set => SetValue("credits", value); }
-        public int AmountDonated { get => GetValue<int>("amountdonated"); set => SetValue("amountdonated", value); }
         public int EnemiesKilled { get => GetValue<int>("enemyKilled"); set => SetValue("enemyKilled", value); }
         public int Fame { get => GetValue<int>("fame"); set => SetValue("fame", value); }
         public bool FirstDeath { get => GetValue<bool>("firstDeath"); set => SetValue("firstDeath", value); }
@@ -48,7 +47,7 @@ namespace common.database
         public string IP { get => GetValue<string>("ip"); set => SetValue("ip", value); }
         public DateTime LastRecoveryTime { get => GetValue<DateTime>("lastRecoveryTime"); set => SetValue("lastRecoveryTime", value); }
         public int LastSeen { get => GetValue<int>("lastSeen"); set => SetValue("lastSeen", value); }
-        public RankingType Rank { get => (RankingType)GetValue<int>("rank"); set => SetValue("rank", (int)value); }
+        //public RankingType Rank { get => (RankingType)GetValue<int>("rank"); set => SetValue("rank", (int)value); }
         public int[] LockList { get => GetValue<int[]>("lockList") ?? new int[0]; set => SetValue("lockList", value); }
         public int[] MarketOffers { get => GetValue<int[]>("marketOffers") ?? new int[0]; set => SetValue("marketOffers", value); }
         public int MaxCharSlot { get => GetValue<int>("maxCharSlot"); set => SetValue("maxCharSlot", value); }
@@ -77,13 +76,6 @@ namespace common.database
         public int SPSWisdomCount { get => GetValue<int>("sps_wisdomCount"); set => SetValue("sps_wisdomCount", value); }
 
         internal string LockToken { get; set; }
-
-        public bool IsAdmin => Rank >= RankingType.Admin;
-        public bool IsSupporter1 => Rank >= RankingType.Supporter1;
-        public bool IsSupporter2 => Rank >= RankingType.Supporter2;
-        public bool IsSupporter3 => Rank >= RankingType.Supporter3;
-        public bool IsSupporter4 => Rank >= RankingType.Supporter4;
-        public bool IsSupporter5 => Rank >= RankingType.Supporter5;
 
         public void RefreshLastSeen() => LastSeen = (int)DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
     }

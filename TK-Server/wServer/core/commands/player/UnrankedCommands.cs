@@ -202,7 +202,7 @@ namespace wServer.core.commands
                 {
                     PartyId = nextId,
                     PartyLeader = (player.Client.Account.Name, player.Client.Account.AccountId),
-                    PartyMembers = new List<DbPartyMemberData>(DbPartySystem.ReturnSize(player.Client.Account.Rank))
+                    PartyMembers = new List<DbPartyMemberData>(DbPartySystem.ReturnSize(player.Client.Rank.Rank))
                 };
                 party.Flush();
 
@@ -509,7 +509,7 @@ namespace wServer.core.commands
             player.SendInfo("Party Information: ");
             player.SendInfo($"Party ID: {party.PartyId}");
             player.SendInfo($"Party Leader => Name: {party.PartyLeader.Item1}");
-            player.SendInfo($"Party Max Players: {DbPartySystem.ReturnSize(player.GameServer.Database.GetAccount(party.PartyLeader.Item2).Rank)}");
+            player.SendInfo($"Party Max Players: {DbPartySystem.ReturnSize(player.Client.Rank.Rank)}");
             player.SendInfo("Members: ");
             foreach (var member in party.PartyMembers)
             {

@@ -30,7 +30,7 @@ namespace wServer.core.commands
             }
         }
 
-        public bool HasPermission(Player player) => player.Client.Account.Rank >= RankRequirement;
+        public bool HasPermission(Player player) => player.Client.Rank.Rank >= RankRequirement;
 
         protected abstract bool Process(Player player, TickTime time, string args);
     }

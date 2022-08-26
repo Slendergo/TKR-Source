@@ -43977,7 +43977,7 @@
       <Index>0x1c</Index>
     </Texture>
     <ExtraTooltipData>
-      <EffectInfo name="" description="What powers does this item hold?" />
+      <EffectInfo name="" description="+2% LB, +10MP, +10HP" />
     </ExtraTooltipData>
     <SlotType>10</SlotType>
     <Description>Increase to a player's health, mana, and loot drop chance!</Description>
@@ -43985,8 +43985,7 @@
     <Activate type="0x00">UnlockTalisman</Activate>
     <Consumable />
     <Potion />
-    <Soulbound />
-    <BagType>6</BagType>
+    <BagType>7</BagType>
   </Object>
   <Object type="0x40a" id="Path of Destruction">
     <Class>Equipment</Class>
@@ -44007,8 +44006,7 @@
     <Activate type="0x04">UnlockTalisman</Activate>
     <Consumable />
     <Potion />
-    <Soulbound />
-    <BagType>6</BagType>
+    <BagType>7</BagType>
   </Object>
   <Object type="0x40b" id="Heart and Soul">
     <Class>Equipment</Class>
@@ -44029,8 +44027,7 @@
     <Activate type="0x05">UnlockTalisman</Activate>
     <Consumable />
     <Potion />
-    <Soulbound />
-    <BagType>6</BagType>
+    <BagType>7</BagType>
   </Object>
   <Object type="0x40c" id="Blood Exchange">
     <Class>Equipment</Class>
@@ -44051,8 +44048,7 @@
     <Activate type="0x06">UnlockTalisman</Activate>
     <Consumable />
     <Potion />
-    <Soulbound />
-    <BagType>6</BagType>
+    <BagType>7</BagType>
   </Object>
   <Object type="0x40d" id="Eternal Youth">
     <Class>Equipment</Class>
@@ -44073,8 +44069,7 @@
     <Activate type="0x07">UnlockTalisman</Activate>
     <Consumable />
     <Potion />
-    <Soulbound />
-    <BagType>6</BagType>
+    <BagType>7</BagType>
   </Object>
   <Object type="0x40e" id="Unyielding Resilience">
     <Class>Equipment</Class>
@@ -44095,8 +44090,7 @@
     <Activate type="0x08">UnlockTalisman</Activate>
     <Consumable />
     <Potion />
-    <Soulbound />
-    <BagType>6</BagType>
+    <BagType>7</BagType>
   </Object>
   <Object type="0x40f" id="Wrath's Incarnate">
     <Class>Equipment</Class>
@@ -44117,8 +44111,7 @@
     <Activate type="0x09">UnlockTalisman</Activate>
     <Consumable />
     <Potion />
-    <Soulbound />
-    <BagType>6</BagType>
+    <BagType>7</BagType>
   </Object>
   <Object type="0x407" id="Primal Rage">
     <Class>Equipment</Class>
@@ -44139,8 +44132,7 @@
     <Activate type="0x10">UnlockTalisman</Activate>
     <Consumable />
     <Potion />
-    <Soulbound />
-    <BagType>6</BagType>
+    <BagType>7</BagType>
   </Object>
   <Object type="0x408" id="Call to Arms">
     <Class>Equipment</Class>
@@ -44161,8 +44153,7 @@
     <Activate type="0x11">UnlockTalisman</Activate>
     <Consumable />
     <Potion />
-    <Soulbound />
-    <BagType>6</BagType>
+    <BagType>7</BagType>
   </Object>
   <Object type="0x409" id="Divine Intellect">
     <Class>Equipment</Class>
@@ -44183,8 +44174,7 @@
     <Activate type="0x12">UnlockTalisman</Activate>
     <Consumable />
     <Potion />
-    <Soulbound />
-    <BagType>6</BagType>
+    <BagType>7</BagType>
   </Object>
   <Object type="0x410" id="Insatiable Thirst">
     <Class>Equipment</Class>
@@ -44205,8 +44195,7 @@
     <Activate type="0x13">UnlockTalisman</Activate>
     <Consumable />
     <Potion />
-    <Soulbound />
-    <BagType>6</BagType>
+    <BagType>7</BagType>
   </Object>
   <Object type="0x411" id="Spellslinger">
     <Class>Equipment</Class>
@@ -44227,8 +44216,7 @@
     <Activate type="0x14">UnlockTalisman</Activate>
     <Consumable />
     <Potion />
-    <Soulbound />
-    <BagType>6</BagType>
+    <BagType>7</BagType>
   </Object>
   <Object type="0x412" id="Iron Will">
     <Class>Equipment</Class>
@@ -44249,8 +44237,7 @@
     <Activate type="0x15">UnlockTalisman</Activate>
     <Consumable />
     <Potion />
-    <Soulbound />
-    <BagType>6</BagType>
+    <BagType>7</BagType>
   </Object>
   <Object type="0x413" id="Party of One">
     <Class>Equipment</Class>
@@ -44271,8 +44258,7 @@
     <Activate type="0x16">UnlockTalisman</Activate>
     <Consumable />
     <Potion />
-    <Soulbound />
-    <BagType>6</BagType>
+    <BagType>7</BagType>
   </Object>
   <Object type="0x414" id="Forbidden Fruit">
     <Class>Equipment</Class>
@@ -44293,8 +44279,7 @@
     <Activate type="0x17">UnlockTalisman</Activate>
     <Consumable />
     <Potion />
-    <Soulbound />
-    <BagType>6</BagType>
+    <BagType>7</BagType>
   </Object>
   <Object type="0x415" id="Luck of the Irish">
     <Class>Equipment</Class>
@@ -44315,8 +44300,7 @@
     <Activate type="0x18">UnlockTalisman</Activate>
     <Consumable />
     <Potion />
-    <Soulbound />
-    <BagType>6</BagType>
+    <BagType>7</BagType>
   </Object>
   <Object type="0x416" id="Known After Death">
     <Class>Equipment</Class>
@@ -44337,8 +44321,7 @@
     <Activate type="0x19">UnlockTalisman</Activate>
     <Consumable />
     <Potion />
-    <Soulbound />
-    <BagType>6</BagType>
+    <BagType>7</BagType>
   </Object>
   <Object type="0x4950" id="Severed Marble Hand">
     <Class>Equipment</Class>
@@ -44515,7 +44498,7 @@
       <EffectInfo name="Info" description="Only usable in the Vault." />
     </ExtraTooltipData>
     <feedPower>200</feedPower>
-    <BagType>6</BagType>
+    <BagType>7</BagType>
   </Object>
   <Object type="0x9703" id="Epic Quest Chest Item">
     <Class>Equipment</Class>
@@ -75471,96 +75454,6 @@
     <ShadowSize>0</ShadowSize>
     <Static />
     <Z>0.95</Z>
-  </Object>
-  <Object type="0x9905" id="Generator Pog">
-    <Class>GameObject</Class>
-    <Texture>
-      <File>CustomObjectsSkillTree</File>
-      <Index>0x0f</Index>
-    </Texture>
-    <Static />
-  </Object>
-  <Object type="0x506c" id="Skill Tree">
-    <Class>SkillTree</Class>
-    <Texture>
-      <File>CustomObjectsSkillTree</File>
-      <Index>0x00</Index>
-    </Texture>
-    <Animation prob="1.0" period="0.0">
-      <Frame time="0.15">
-        <Texture>
-          <File>CustomObjectsSkillTree</File>
-          <Index>0x00</Index>
-        </Texture>
-      </Frame>
-      <Frame time="0.15">
-        <Texture>
-          <File>CustomObjectsSkillTree</File>
-          <Index>0x01</Index>
-        </Texture>
-      </Frame>
-      <Frame time="0.15">
-        <Texture>
-          <File>CustomObjectsSkillTree</File>
-          <Index>0x02</Index>
-        </Texture>
-      </Frame>
-      <Frame time="0.15">
-        <Texture>
-          <File>CustomObjectsSkillTree</File>
-          <Index>0x03</Index>
-        </Texture>
-      </Frame>
-      <Frame time="0.15">
-        <Texture>
-          <File>CustomObjectsSkillTree</File>
-          <Index>0x04</Index>
-        </Texture>
-      </Frame>
-      <Frame time="0.15">
-        <Texture>
-          <File>CustomObjectsSkillTree</File>
-          <Index>0x05</Index>
-        </Texture>
-      </Frame>
-      <Frame time="0.15">
-        <Texture>
-          <File>CustomObjectsSkillTree</File>
-          <Index>0x06</Index>
-        </Texture>
-      </Frame>
-      <Frame time="0.15">
-        <Texture>
-          <File>CustomObjectsSkillTree</File>
-          <Index>0x07</Index>
-        </Texture>
-      </Frame>
-      <Frame time="0.15">
-        <Texture>
-          <File>CustomObjectsSkillTree</File>
-          <Index>0x08</Index>
-        </Texture>
-      </Frame>
-      <Frame time="0.15">
-        <Texture>
-          <File>CustomObjectsSkillTree</File>
-          <Index>0x09</Index>
-        </Texture>
-      </Frame>
-      <Frame time="0.15">
-        <Texture>
-          <File>CustomObjectsSkillTree</File>
-          <Index>0x0a</Index>
-        </Texture>
-      </Frame>
-      <Frame time="0.15">
-        <Texture>
-          <File>CustomObjectsSkillTree</File>
-          <Index>0x0b</Index>
-        </Texture>
-      </Frame>
-    </Animation>
-    <Static />
   </Object>
   <Object type="0x0732" id="Spider Web">
     <Class>SpiderWeb</Class>

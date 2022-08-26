@@ -70,13 +70,15 @@ namespace common.resources
     public class TalismanStatType
     {
         public readonly int StatType;
-        public readonly int Amount;
+        public readonly float Amount;
+        public readonly float Percentage;
         public readonly bool ScalesPerLevel;
 
         public TalismanStatType(XElement e)
         {
             StatType = e.GetAttribute<int>("type");
-            Amount = e.GetAttribute<int>("amount");
+            Amount = e.GetAttribute<float>("amount");
+            Percentage = e.GetAttribute<float>("Percentage", 1.0f);
 
             var scale = e.GetAttribute<string>("scale", "flat");
             ScalesPerLevel = scale == "perLevel";

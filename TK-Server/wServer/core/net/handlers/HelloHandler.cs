@@ -59,15 +59,17 @@ namespace wServer.core.net.handlers
             var cManager = client.GameServer;
             var config = cManager.Configuration;
 
+            var rank = new DbRank(acc.Database, acc.AccountId);
+
             // first check: admin server
-            if (config.serverInfo.adminOnly && !acc.IsAdmin && !cManager.IsWhitelisted(acc.AccountId))
+            if (config.serverInfo.adminOnly && !rank.IsAdmin && !cManager.IsWhitelisted(acc.AccountId))
             {
                 client.SendFailure("You must be whitelisted to join this server.", FailureMessage.MessageNoDisconnect);
                 return;
             }
 
             // second check: supporter server
-            if (config.serverSettings.supporterOnly && acc.Rank < RankingType.Supporter3)
+            if (config.serverSettings.supporterOnly && rank.Rank < RankingType.Supporter3)
             {
                 client.SendFailure($"You must be a supporter join this server.", FailureMessage.MessageNoDisconnect);
                 return;
@@ -79,6 +81,7 @@ namespace wServer.core.net.handlers
             acc.FlushAsync();
 
             client.Account = acc;
+            client.Rank = rank;
 
             cManager.ConnectionManager.AddConnection(new ConnectionInfo(client, helloData));
         }

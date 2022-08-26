@@ -29,7 +29,7 @@ namespace wServer.core.worlds.logic
             base.Init();
         }
 
-        public override bool AllowedAccess(Client client) => !Closed || client.Account.IsAdmin;
+        public override bool AllowedAccess(Client client) => !Closed || client.Rank.IsAdmin;
 
         protected override void UpdateLogic(ref TickTime time)
         {

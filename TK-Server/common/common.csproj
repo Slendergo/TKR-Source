@@ -139,6 +139,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="database\account\DbRank.cs" />
     <Compile Include="database\engine\DbEngine.cs" />
     <Compile Include="database\engine\DbEngineEntry.cs" />
     <Compile Include="database\vault\DbSpecialVault.cs" />

@@ -31,7 +31,6 @@ namespace wServer.core.objects
         public Client Client;
 
         public int AccountId { get => _accountId.GetValue(); set => _accountId.SetValue(value); }
-        public bool IsAdmin { get => _admin.GetValue() == 1; set => _admin.SetValue(value ? 1 : 0); }
         public int BaseStat { get => _baseStat.GetValue(); set => _baseStat.SetValue(value); }
 
         public double Breath
@@ -75,7 +74,6 @@ namespace wServer.core.objects
         public int PetId { get; set; }
         public PlayerUpdate PlayerUpdate { get; private set; }
         public Position Pos => new Position() { X = X, Y = Y };
-        public RankingType Rank { get => (RankingType)_rank.GetValue(); set => _rank.SetValue((int)value); }
         public int Skin { get => _skin.GetValue(); set => _skin.SetValue(value); }
         public int[] SlotTypes { get; private set; }
 
@@ -124,6 +122,13 @@ namespace wServer.core.objects
         internal class APIRank{ public int accID; public int charID; }
         internal class APIResp{ [JsonProperty("rank")] public string charRank { get; set; }}
 
+        public bool IsAdmin => Client.Rank.Rank >= RankingType.Admin;
+        public bool IsSupporter1 => Client.Rank.Rank >= RankingType.Supporter1;
+        public bool IsSupporter2 => Client.Rank.Rank >= RankingType.Supporter2;
+        public bool IsSupporter3 => Client.Rank.Rank >= RankingType.Supporter3;
+        public bool IsSupporter4 => Client.Rank.Rank >= RankingType.Supporter4;
+        public bool IsSupporter5 => Client.Rank.Rank >= RankingType.Supporter5;
+
         public Player(Client client, bool saveInventory = true) : base(client.GameServer, client.Character.ObjectType)
         {
             var settings = GameServer.Resources.Settings;
@@ -141,14 +146,14 @@ namespace wServer.core.objects
             _stars = new SV<int>(this, StatDataType.Stars, 0);
             _guild = new SV<string>(this, StatDataType.Guild, "");
             _guildRank = new SV<int>(this, StatDataType.GuildRank, -1);
-            _rank = new SV<int>(this, StatDataType.Rank, (int)client.Account.Rank);
+            _rank = new SV<int>(this, StatDataType.Rank, (int)client.Rank.Rank); // we need to export this to client so dont remove
             _credits = new SV<int>(this, StatDataType.Credits, client.Account.Credits, true);
             _nameChosen = new SV<bool>(this, StatDataType.NameChosen, client.Account.NameChosen, false, v => Client.Account?.NameChosen ?? v);
             _texture1 = new SV<int>(this, StatDataType.Texture1, client.Character.Tex1);
             _texture2 = new SV<int>(this, StatDataType.Texture2, client.Character.Tex2);
             _skin = new SV<int>(this, StatDataType.Skin, 0);
             _glow = new SV<int>(this, StatDataType.Glow, 0);
-            _admin = new SV<int>(this, StatDataType.Admin, client.Account.IsAdmin ? 1 : 0);
+            _admin = new SV<int>(this, StatDataType.Admin, client.Rank.IsAdmin ? 1 : 0);
             _xpBoosted = new SV<bool>(this, StatDataType.XPBoost, client.Character.XPBoostTime != 0, true);
             _mp = new SV<int>(this, StatDataType.MP, client.Character.MP);
             _hasBackpack = new SV<bool>(this, StatDataType.HasBackpack, client.Character.HasBackpack, true);
@@ -160,7 +165,7 @@ namespace wServer.core.objects
             _partyId = new SV<int>(this, StatDataType.PartyId, client.Account.PartyId, true);
 
             var addition = 0;
-            switch (Rank)
+            switch (client.Rank.Rank)
             {
                 case RankingType.Supporter1:
                     addition = 10;
@@ -239,7 +244,7 @@ namespace wServer.core.objects
 
             GameServer.Database.IsMuted(client.IpAddress).ContinueWith(t =>
             {
-                Muted = !Client.Account.IsAdmin && t.IsCompleted && t.Result;
+                Muted = !Client.Rank.IsAdmin && t.IsCompleted && t.Result;
             });
 
             GameServer.Database.IsLegend(AccountId).ContinueWith(t =>
@@ -966,7 +971,7 @@ namespace wServer.core.objects
 //                }
 //            }
 
-            if ((maxed >= 6 || Fame >= 1000) && !Client.Account.IsAdmin)
+            if ((maxed >= 6 || Fame >= 1000) && !IsAdmin)
             {
                 var worlds = GameServer.WorldManager.GetWorlds();
                 foreach(var world in worlds)

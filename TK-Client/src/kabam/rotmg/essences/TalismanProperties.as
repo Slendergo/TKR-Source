@@ -9,6 +9,7 @@ public class TalismanProperties
     public var costMultiplier_:Number;
     public var maxLevels_:int;
     public var source_:XML;
+    public var tiers_:Vector.<TalismanTierDesc>;
 
     public function TalismanProperties(xml:XML)
     {
@@ -20,6 +21,21 @@ public class TalismanProperties
         this.costMultiplier_ = Number(xml.CostMultiplier);
         this.maxLevels_ = int(xml.MaxLevels);
         this.source_ = xml;
+
+        this.tiers_ = new Vector.<TalismanTierDesc>();
+        for each(var tier:XML in xml.Tier)
+        {
+            this.tiers_.push(new TalismanTierDesc(tier));
+        }
     }
 }
+}
+
+class TalismanTierDesc
+{
+
+    public function TalismanTierDesc(xml:XML)
+    {
+
+    }
 }

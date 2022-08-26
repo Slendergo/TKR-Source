@@ -52,20 +52,23 @@ namespace wServer.core.commands
                     player.SendError("A reason must be provided.");
                     return false;
                 }
+
                 var acc = db.GetAccount(id);
                 if (string.IsNullOrEmpty(acc.IP))
                 {
                     player.SendError("Failed to ip ban player. IP not logged...");
                     return false;
                 }
+
                 if (player.AccountId != acc.AccountId && acc.IP.Equals(player.Client.Account.IP))
                 {
                     player.SendError("IP ban failed. That action would cause yourself to be banned (IPs are the same).");
                     return false;
                 }
-                if (player.AccountId != acc.AccountId && player.Rank <= acc.Rank)
+
+                if (player.Client.Rank.IsAdmin)
                 {
-                    player.SendError("Cannot ban players of equal or higher rank than yourself.");
+                    player.SendError("Cannot ban admins.");
                     return false;
                 }
 

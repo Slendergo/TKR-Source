@@ -130,7 +130,6 @@
     <Compile Include="core\commands\supporter\Command.ColorChat.cs" />
     <Compile Include="core\commands\supporter\Command.ColorNameChat.cs" />
     <Compile Include="core\commands\admin\Command.CreateData.cs" />
-    <Compile Include="core\commands\admin\Command.LogStaff.cs" />
     <Compile Include="core\commands\admin\Command.ForceCleanMarket.cs" />
     <Compile Include="core\commands\admin\Command.GetPartyInfo.cs" />
     <Compile Include="core\commands\supporter\Command.Glow.cs" />

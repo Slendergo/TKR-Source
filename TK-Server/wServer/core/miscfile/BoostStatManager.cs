@@ -159,7 +159,7 @@ namespace wServer.core
                 foreach (var stat in tierDesc.StatTypes)
                 {
                     // scale by level or by flat value
-                    var scale = stat.ScalesPerLevel ? stat.Amount * talisman.Level : stat.Amount;
+                    var scale = (int)(stat.ScalesPerLevel ? stat.Amount * talisman.Level : stat.Amount);
                     IncrementBoost((StatDataType)stat.StatType, scale);
                 }
 

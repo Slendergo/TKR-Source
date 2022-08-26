@@ -81,9 +81,9 @@ namespace wServer.core.commands
 
                 var acc = player.GameServer.Database.GetAccount(bInfo.accountId);
 
-                if (player.AccountId != acc.AccountId && player.Rank <= acc.Rank)
+                if (player.IsAdmin)
                 {
-                    player.SendError("Cannot ban players of equal or higher rank than yourself.");
+                    player.SendError("Cannot ban admins");
 
                     // dispose vars
                     bInfo = null;

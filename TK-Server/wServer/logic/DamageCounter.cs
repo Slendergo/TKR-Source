@@ -68,7 +68,6 @@ namespace wServer.logic
                     continue;
 
                 var level = player.Level;
-                var rank = player.Rank;
                 if (player.HasConditionEffect(common.resources.ConditionEffects.Paused))
                     continue;
 

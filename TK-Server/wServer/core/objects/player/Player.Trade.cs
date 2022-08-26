@@ -76,7 +76,7 @@ namespace wServer.core.objects
                 return;
             }
 
-            if (acc.IsAdmin)
+            if (Client.Rank.IsAdmin)
             {
                 SendError("You cannot trade.");
                 return;

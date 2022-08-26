@@ -31,7 +31,7 @@ namespace wServer.core.net.handlers
                 {
                     PartyId = nextId,
                     PartyLeader = (client.Account.Name, client.Account.AccountId),
-                    PartyMembers = new List<DbPartyMemberData>(DbPartySystem.ReturnSize(client.Account.Rank))
+                    PartyMembers = new List<DbPartyMemberData>(DbPartySystem.ReturnSize(client.Rank.Rank))
                 };
                 party.Flush();
 

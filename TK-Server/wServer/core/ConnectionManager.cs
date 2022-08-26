@@ -1,5 +1,6 @@
 ﻿using CA.Extensions.Concurrent;
 using CA.Profiler;
+using common.database;
 using common.isc.data;
 using System;
 using System.Collections.Concurrent;
@@ -52,7 +53,7 @@ namespace wServer.core
                 return;
             }
 
-            if (connectionInfo.Reconnecting || connectionInfo.Account.IsAdmin || GetPlayerCount() < MaxPlayerCount)
+            if (connectionInfo.Reconnecting || GetPlayerCount() < MaxPlayerCount)
             {
                 HandleConnect(connectionInfo);
                 return;
@@ -131,6 +132,7 @@ namespace wServer.core
 
             acc.Reload(); // make sure we have the latest data
             client.Account = acc;
+            client.Rank = new DbRank(acc.Database, acc.AccountId);
 
             // connect client to realm manager
             if (!client.GameServer.ConnectionManager.TryConnect(client))
@@ -152,7 +154,7 @@ namespace wServer.core
                 world = client.GameServer.WorldManager.GetWorld(World.NEXUS_ID);
             }
 
-            if (world is TestWorld && !acc.IsAdmin)
+            if (world is TestWorld && !client.Rank.IsAdmin)
             {
                 client.SendFailure("Only players with admin permissions can make test maps.", FailureMessage.MessageWithDisconnect);
                 return;

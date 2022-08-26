@@ -1,5 +1,4 @@
 ﻿using common;
-using common.resources;
 using System;
 using System.Linq;
 using wServer.core.objects;
@@ -72,6 +71,7 @@ namespace wServer.core.commands
             private Item GetItem(Player player, string itemName)
             {
                 var gameData = player.GameServer.Resources.GameData;
+
 
                 // allow both DisplayId and Id for query
                 if (!gameData.DisplayIdToObjectType.TryGetValue(itemName, out ushort objType))

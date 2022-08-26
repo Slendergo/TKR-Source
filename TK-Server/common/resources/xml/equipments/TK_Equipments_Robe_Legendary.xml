@@ -10,7 +10,8 @@
     </Texture>
     <SlotType>14</SlotType>
     <Description>Only cheaters wear this robe.</Description>
-    <ActivateOnEquip stat="0" amount="-100">IncrementStat</ActivateOnEquip>
+	<ActivateOnEquip stat="22" amount="20">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="-200">IncrementStat</ActivateOnEquip>
     <BagType>0</BagType>
     <feedPower>300</feedPower>
   </Object>
@@ -24,13 +25,13 @@
       <Index>0xf2</Index>
     </Texture>
     <SlotType>14</SlotType>
-    <ActivateOnEquip stat="0" amount="40">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="3" amount="60">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="8">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="22" amount="12">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="20">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="100">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="9">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="26" amount="10">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="27" amount="8">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="3">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="14">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
     <feedPower>1100</feedPower>
@@ -47,11 +48,11 @@
     </Texture>
     <SlotType>14</SlotType>
     <Description>A soft sheet of bone harvested from the kingdom's defense system. Despite being hollowed out by the ages, it remains immensely durable.</Description>
-    <ActivateOnEquip stat="0" amount="140">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="20" amount="5">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="21">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="22" amount="-7">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="25">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="-5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
+	<ActivateOnEquip stat="21" amount="15">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
   </Object>
@@ -67,10 +68,11 @@
       <Index>0x0b</Index>
     </Texture>
     <SlotType>14</SlotType>
-    <ActivateOnEquip stat="20" amount="5">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="15">IncrementStat</ActivateOnEquip>
+	<ActivateOnEquip stat="0" amount="-50">IncrementStat</ActivateOnEquip>
+	<ActivateOnEquip stat="3" amount="85">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="5">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="10">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="15">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="3" amount="80">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
     <feedPower>1100</feedPower>
@@ -87,11 +89,10 @@
     </Texture>
     <SlotType>14</SlotType>
     <Description>We need more shroooooooooooooooooms!</Description>
-    <ActivateOnEquip stat="20" amount="12">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="14">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="26" amount="7">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="27" amount="7">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="3" amount="80">IncrementStat</ActivateOnEquip>
+	<ActivateOnEquip stat="3" amount="-60">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="12">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="16">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>   
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
   </Object>
@@ -109,10 +110,11 @@
     </Texture>
     <SlotType>14</SlotType>
     <ActivateOnEquip stat="0" amount="50">IncrementStat</ActivateOnEquip>
+	<ActivateOnEquip stat="3" amount="-50">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="10">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="10">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="27" amount="7">IncrementStat</ActivateOnEquip>
+	<ActivateOnEquip stat="22" amount="-5">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
   </Object>

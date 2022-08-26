@@ -1509,6 +1509,9 @@ namespace wServer.core.objects
         private void SpawnPetIfAttached(World owner)
         {
             // despawn old pet if found
+            if(Pet != null)
+                Pet.PlayerOwner = null;
+
             if (Client.Account.Hidden)
                 return;
 

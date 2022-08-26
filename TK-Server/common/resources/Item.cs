@@ -68,6 +68,8 @@ namespace common.resources
         public bool Usable;
         public bool XpBoost;
 
+        public readonly bool DonorItem;
+
         public Item(ushort type, XElement e)
         {
             ObjectType = type;
@@ -108,6 +110,7 @@ namespace common.resources
             MpEndCost = e.GetValue("MpEndCost", 0);
             InvUse = e.HasElement("InvUse");
             TypeOfConsumable = InvUse || Consumable;
+            DonorItem = e.HasElement("DonorItem");
 
             var stats = new List<KeyValuePair<int, int>>();
 

@@ -111,11 +111,17 @@ namespace wServer.core.objects.vendors
             var c1 = new List<ISellableItem>();
             var c2 = new List<ISellableItem>();
             var petGenerators = new List<ISellableItem>();
+            var supporterPetGenerators = new List<ISellableItem>();
 
             foreach (var i in gameServer.Resources.GameData.Items.Values)
             {
                 if (i.InvUse && i.ObjectId.Contains("Generator"))
                 {
+                    if (i.DonorItem)
+                    {
+                        supporterPetGenerators.Add(new ShopItem(i.ObjectId, 1000));
+                        continue;
+                    }
                     petGenerators.Add(new ShopItem(i.ObjectId, 1250));
                     continue;
                 }
@@ -146,6 +152,7 @@ namespace wServer.core.objects.vendors
             }
 
             Shops[TileRegion.Store_5] = new Tuple<List<ISellableItem>, CurrencyType, int>(petGenerators, CurrencyType.Fame, 0);
+            Shops[TileRegion.Store_10] = new Tuple<List<ISellableItem>, CurrencyType, int>(supporterPetGenerators, CurrencyType.Gold, 0);
 
             Shops[TileRegion.Store_6] = new Tuple<List<ISellableItem>, CurrencyType, int>(d1, CurrencyType.Gold, 0);
             Shops[TileRegion.Store_7] = new Tuple<List<ISellableItem>, CurrencyType, int>(d2, CurrencyType.Gold, 0);

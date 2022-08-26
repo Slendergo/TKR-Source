@@ -28613,7 +28613,7 @@
       <MultiHit />
     </Projectile>
   </Object>
-  <Object type="0x9418" id="Cerebrus">
+  <Object type="0x9418" id="Fluffy">
     <Group>Edition2</Group>
     <Enemy />
     <Quest />
@@ -52351,6 +52351,29 @@
     <Cooldown>1</Cooldown>
     <DisplayId>Shadow Shawl</DisplayId>
   </Object>
+  <Object type="0x464" id="Old Cleric's Cloak">
+    <Class>Equipment</Class>
+    <Item />
+    <Clarification />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x03</Index>
+    </Texture>
+    <SlotType>13</SlotType>
+    <Description></Description>
+    <Sound>spell/fire_nova</Sound>
+    <Usable />
+    <BagType>7</BagType>
+    <Legendary />
+    <FameBonus>6</FameBonus>
+    <MpCost>95</MpCost>
+    <Activate effect="Invisible" duration="5.5">ConditionEffectSelf</Activate>
+    <Activate effect="Speedy" duration="3">ConditionEffectSelf</Activate>
+    <ActivateOnEquip stat="22" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="40">IncrementStat</ActivateOnEquip>
+    <Cooldown>6</Cooldown>
+    <DisplayId>Old Cleric's Cloak</DisplayId>
+  </Object>
   <Object type="0xa424" id="Thanatos's Garments">
     <Class>Equipment</Class>
     <Item />
@@ -53504,9 +53527,9 @@
     </Texture>
     <SlotType>7</SlotType>
     <Description>A worn and battered suit of armor embedded with a mystic gem that flows with magical strength.</Description>
-    <ActivateOnEquip stat="3" amount="150">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="17">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="27" amount="15">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="200">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="18">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="20">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>4</FameBonus>
     <feedPower>500</feedPower>
@@ -53522,7 +53545,8 @@
     </Texture>
     <SlotType>7</SlotType>
     <Description>Only cheaters wear this armor.</Description>
-    <ActivateOnEquip stat="0" amount="-100">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="-300">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="18">IncrementStat</ActivateOnEquip>
     <BagType>0</BagType>
     <feedPower>300</feedPower>
   </Object>
@@ -53537,11 +53561,11 @@
     </Texture>
     <SlotType>7</SlotType>
     <Description>Used only by the elite in the group of people who worshipped their idol like a god</Description>
-    <ActivateOnEquip stat="20" amount="6">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="20">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="22" amount="-5">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="4">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="0" amount="80">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="8">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="18">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="-8">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="6">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
   </Object>
@@ -53557,9 +53581,9 @@
       <Index>0x02</Index>
     </Texture>
     <SlotType>7</SlotType>
-    <ActivateOnEquip stat="0" amount="200">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="24">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="27" amount="8">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="220">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="28">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="8">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
     <Legendary />
@@ -53575,10 +53599,10 @@
     </Texture>
     <SlotType>7</SlotType>
     <Description>This titanic chestpiece has seen many conflicts, and it will see many more.</Description>
-    <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="25">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="22" amount="-5">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="27" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="120">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="23">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="-3">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="12">IncrementStat</ActivateOnEquip>
     <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <DisplayId>Guardian's Clad</DisplayId>
@@ -53594,10 +53618,13 @@
     </Texture>
     <SlotType>7</SlotType>
     <Description>During Oryx's conquest over the realm, this heavy armor was one of the main factors that allowed him to rule with an iron fist. Almandine plates cover gems that radiate with life force.</Description>
-    <ActivateOnEquip stat="20" amount="8">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="23">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="26" amount="15">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="150">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="12">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="25">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="20">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="4">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="-5">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
     <DisplayId>Oryx's Armor of War</DisplayId>
@@ -53605,18 +53632,20 @@
   <Object type="0xa427" id="Cerberus's Ribcage">
     <Class>Equipment</Class>
     <Item />
-    <HolyProtection />
-    <Mythical />
+    <Lucky />
+    <Legendary />
     <Texture>
       <File>CustomObj</File>
       <Index>0xdd</Index>
     </Texture>
     <SlotType>7</SlotType>
     <Description>This is the decaying ribcage of Cerberus; it is imbued with the demonic spirit of the Underworld.</Description>
-    <ActivateOnEquip stat="20" amount="20">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="4">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="26" amount="10">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="27" amount="-20">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="2">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="8">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="13">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="-10">IncrementStat</ActivateOnEquip>
     <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <DisplayId>Cerberus's Ribcage</DisplayId>
@@ -54287,11 +54316,11 @@
     </Texture>
     <SlotType>6</SlotType>
     <Description>A ghostly fabric from the other side.</Description>
-    <ActivateOnEquip stat="0" amount="-20">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="20" amount="4">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="12">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="22" amount="8">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="4">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="-40">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="6">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
   </Object>
@@ -54306,7 +54335,8 @@
     </Texture>
     <SlotType>6</SlotType>
     <Description>Only cheaters wear this armor.</Description>
-    <ActivateOnEquip stat="0" amount="-100">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="16">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="-200">IncrementStat</ActivateOnEquip>
     <BagType>0</BagType>
     <feedPower>300</feedPower>
   </Object>
@@ -54321,10 +54351,10 @@
     </Texture>
     <SlotType>6</SlotType>
     <Description>A festive piece of armor, complete with bells. Try not to get too crazy.</Description>
-    <ActivateOnEquip stat="21" amount="15">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="27" amount="8">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="13">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="16">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="3" amount="120">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="170">IncrementStat</ActivateOnEquip>
     <FameBonus>5</FameBonus>
     <BagType>7</BagType>
     <feedPower>250</feedPower>
@@ -54340,12 +54370,15 @@
     </Texture>
     <SlotType>6</SlotType>
     <Description>The doublet of Davy Jones' first mate before he became a spirit forced to haunt Davy Jones' locker.</Description>
-    <ActivateOnEquip stat="0" amount="80">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="14">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="20" amount="4">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="22" amount="10">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="26" amount="4">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="27" amount="4">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="-100">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="16">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="12">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="-6">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
   </Object>
@@ -54360,10 +54393,10 @@
     </Texture>
     <SlotType>6</SlotType>
     <Description>The outer carapace of the former Son of Arachna.</Description>
-    <ActivateOnEquip stat="20" amount="5">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="18">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="26" amount="-5">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="16">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="4">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="7">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
   </Object>
@@ -54378,12 +54411,13 @@
     </Texture>
     <SlotType>6</SlotType>
     <Description>All I can say its a strange armor.</Description>
-    <ActivateOnEquip stat="20" amount="5">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="10">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="27" amount="5">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="3" amount="20">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="0" amount="20">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="50">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="50">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="7">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="15">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="-6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="7">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="-6">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
   </Object>
@@ -54398,9 +54432,9 @@
     </Texture>
     <SlotType>6</SlotType>
     <Description>Armor worn by the most deserving protectors of the Golden Oryx. Honor, fame, and wealth were granted to officials in this apparel.</Description>
-    <ActivateOnEquip stat="28" amount="-2">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="-4">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="-15">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="20" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="8">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="25">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="0" amount="150">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
@@ -54418,10 +54452,10 @@
       <Index>0x07</Index>
     </Texture>
     <SlotType>6</SlotType>
+    <ActivateOnEquip stat="0" amount="120">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="25">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="26" amount="10">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="7">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="8">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
     <feedPower>1100</feedPower>
@@ -54438,10 +54472,13 @@
     </Texture>
     <SlotType>6</SlotType>
     <Description>A protective armor composed of sheets of marble taken from the colossus found in the heart of the Lost Halls. Life-charged energies surge through its bearer.</Description>
-    <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="3" amount="80">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="10">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="26" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="150">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="50">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="15">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="15">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="3">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="-10">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>7</FameBonus>
   </Object>
@@ -54456,7 +54493,7 @@
     </Texture>
     <SlotType>6</SlotType>
     <Description>While offering little in the ways of protection, the crystals on the outer layer of this armor piece enhances the bearer's strength exponentially.</Description>
-    <ActivateOnEquip stat="0" amount="-100">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="-150">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="15">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="15">IncrementStat</ActivateOnEquip>
@@ -54474,9 +54511,9 @@
     </Texture>
     <SlotType>6</SlotType>
     <Description>Expertly crafted armor distributed to the Forgotten King's most loyal assassins. All have been killed, leaving you as the next rightful owner.</Description>
-    <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="50">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="13">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="22" amount="15">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="10">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>7</FameBonus>
   </Object>
@@ -56265,6 +56302,28 @@
     <Activate maxDistance="25">Teleport</Activate>
     <DisplayId>Prismatic Stone</DisplayId>
   </Object>
+  <Object type="0x462" id="Master's Prism">
+    <Class>Equipment</Class>
+    <Item />
+    <Clarification />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x00</Index>
+    </Texture>
+    <SlotType>22</SlotType>
+    <Legendary />
+    <Description></Description>
+    <Usable />
+    <BagType>6</BagType>
+    <FameBonus>5</FameBonus>
+    <MpCost>85</MpCost>
+    <ActivateOnEquip stat="28" amount="8">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="8">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="75">IncrementStat</ActivateOnEquip>
+    <Activate duration="6">Decoy</Activate>
+    <Activate maxDistance="25">Teleport</Activate>
+    <DisplayId>Master's Prism</DisplayId>
+  </Object>
   <Object type="0xae3" id="Decoy Prism">
     <Class>Equipment</Class>
     <Item />
@@ -56857,9 +56916,9 @@
     </Texture>
     <SlotType>9</SlotType>
     <Description>An eerie reminder of what lays in the depths of the Shatters.</Description>
-    <ActivateOnEquip stat="0" amount="150">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="20" amount="8">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="8">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="170">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="10">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>5</FameBonus>
     <feedPower>500</feedPower>
@@ -56874,14 +56933,14 @@
     </Texture>
     <SlotType>9</SlotType>
     <Description>An unfathomable amount of strength pulses through this ring. Only the most righteous mortals can touch this ring and live.</Description>
-    <ActivateOnEquip stat="0" amount="90">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="3" amount="90">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="20" amount="5">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="5">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="5">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="26" amount="5">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="27" amount="5">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="150">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="150">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="15">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="15">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="15">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="15">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="15">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="15">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>7</FameBonus>
     <feedPower>1500</feedPower>
@@ -56897,10 +56956,10 @@
     </Texture>
     <SlotType>9</SlotType>
     <Description>A simple fusion of two conflicting energies, acting as a battery of some sort.</Description>
-    <ActivateOnEquip stat="0" amount="75">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="3" amount="150">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="8">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="27" amount="12">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="50">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="200">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="16">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
     <feedPower>1000</feedPower>
@@ -56917,10 +56976,10 @@
     </Texture>
     <SlotType>9</SlotType>
     <Description>Wearing it makes you feel particularly strong.</Description>
-    <ActivateOnEquip stat="0" amount="80">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="3" amount="50">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="20" amount="12">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="5">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="7">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>5</FameBonus>
     <feedPower>500</feedPower>
@@ -56936,9 +56995,9 @@
     </Texture>
     <SlotType>9</SlotType>
     <Description>The ice this item is made of doesn't seem to melt.</Description>
-    <ActivateOnEquip stat="27" amount="4">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="4">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="3" amount="100">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="120">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>5</FameBonus>
     <feedPower>500</feedPower>
@@ -56954,10 +57013,10 @@
     </Texture>
     <SlotType>9</SlotType>
     <Description>A mysterious light emanates from the stone.</Description>
-    <ActivateOnEquip stat="22" amount="4">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="4">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="0" amount="60">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="3" amount="60">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="70">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="70">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>5</FameBonus>
     <feedPower>900</feedPower>
@@ -56973,9 +57032,9 @@
     </Texture>
     <SlotType>9</SlotType>
     <Description>It's said that this necklace was created to protect the mortal lover of an old God.</Description>
-    <ActivateOnEquip stat="20" amount="4">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="4">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="120">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>5</FameBonus>
     <feedPower>900</feedPower>
@@ -56992,9 +57051,9 @@
     <SlotType>9</SlotType>
     <Description>Captain Davy Jones' Ring.</Description>
     <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="20" amount="6">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="22" amount="10">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="4">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="4">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="15">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="2">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
     <DisplayId>Captain's Ring</DisplayId>
@@ -57009,12 +57068,12 @@
     </Texture>
     <SlotType>9</SlotType>
     <Description>Worn by the Lord of the Lost Lands until his dying breath. It holds overwhelming qualities of fortitude.</Description>
-    <ActivateOnEquip stat="0" amount="200">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="3" amount="-120">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="10">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="26" amount="10">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="27" amount="-10">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="22" amount="-5">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="220">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="-150">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="15">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="15">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="-15">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="-10">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
     <Legendary />
@@ -57030,7 +57089,7 @@
     </Texture>
     <SlotType>9</SlotType>
     <Description>A crystal that was hidden deep in the mountains of the realms. It culminated in immense amounts of monster activity</Description>
-    <ActivateOnEquip stat="0" amount="40">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="80">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="3" amount="80">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="8">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="12">IncrementStat</ActivateOnEquip>
@@ -57051,10 +57110,10 @@
     <Description>
             By sapping the wearer of their life force, this ring helps to create a truly remorseless Reaper.
         </Description>
-    <ActivateOnEquip stat="0" amount="-80">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="20" amount="11">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="16">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="4">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="-120">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="12">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="15">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="10">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
     <feedPower>1000</feedPower>
@@ -57063,7 +57122,7 @@
   <Object type="0x4912" id="Magical Lodestone">
     <Class>Equipment</Class>
     <Item />
-    <Clarification />
+    <OutofOneMind />
     <Texture>
       <File>LostHallsObj</File>
       <Index>0x03</Index>
@@ -57072,6 +57131,8 @@
     <Description>
             The source of power for the Marble Colossus found within his core. It is intended to give life to golems, but it can provide benefits to the living as well.
         </Description>
+    <ActivateOnEquip stat="0" amount="-50">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="-50">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="9">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="9">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="9">IncrementStat</ActivateOnEquip>
@@ -57093,10 +57154,10 @@
     <Description>
             A seemingly shattered ring that keeps itself together with an unknown magnetic force. It only stays together on the finger of a true killer.
         </Description>
-    <ActivateOnEquip stat="21" amount="5">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="27" amount="10">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="0" amount="120">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="3" amount="120">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="60">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="140">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="7">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="12">IncrementStat</ActivateOnEquip>
     <FameBonus>6</FameBonus>
     <feedPower>1000</feedPower>
     <Legendary />
@@ -57111,11 +57172,11 @@
     </Texture>
     <SlotType>9</SlotType>
     <Description>Unknown.</Description>
-    <ActivateOnEquip stat="21" amount="8">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="22" amount="4">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="26" amount="6">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="0" amount="120">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="3" amount="80">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="100">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="8">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
     <feedPower>1000</feedPower>
@@ -57132,10 +57193,12 @@
     </Texture>
     <SlotType>9</SlotType>
     <Description>A giant horn that was severed during battle with Oryx. The conqueror of Oryx shall be bestowed his power if their body is able to welcome it.</Description>
-    <ActivateOnEquip stat="0" amount="-50">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="20" amount="15">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="-10">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="15">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="150">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="100">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="13">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="13">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="13">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>7</FameBonus>
   </Object>
@@ -57150,32 +57213,32 @@
     </Texture>
     <SlotType>9</SlotType>
     <Description>This odd fellow has been blessed with unrivaled knowledge. Unfortunately, they can't talk, so all they can do is lend you the power they gained through their ascension.</Description>
-    <ActivateOnEquip stat="0" amount="-80">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="7">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="22" amount="4">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="27" amount="24">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="120">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="8">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="25">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>7</FameBonus>
   </Object>
   <Object type="0xa428" id="Beast Gem">
     <Class>Equipment</Class>
     <Item />
-    <Electrify />
+    <Demonized />
     <Texture>
       <File>CustomObj</File>
       <Index>0xde</Index>
     </Texture>
     <SlotType>9</SlotType>
     <Description>Diadem of Cerberus, amplifed status by ten-fold.</Description>
-    <ActivateOnEquip stat="3" amount="-100">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="20" amount="15">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="9">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="27" amount="-10">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="5">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="-120">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="-5">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="7">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="7">IncrementStat</ActivateOnEquip>
     <BagType>8</BagType>
     <FameBonus>8</FameBonus>
-    <Mythical />
+    <Legendary />
   </Object>
   <Object type="0xb161" id="Emperor's Crown">
     <Class>Equipment</Class>
@@ -58434,7 +58497,7 @@
     <FameBonus>5</FameBonus>
     <feedPower>900</feedPower>
   </Object>
-  <Object type="0x5403" id="Locket of Venom Extract">
+  <Object type="0x5403" id="Spotted Venom Extrac">
     <Class>Equipment</Class>
     <Item />
     <SPlus />
@@ -58600,6 +58663,20 @@
     <BagType>7</BagType>
     <FameBonus>5</FameBonus>
   </Object>
+  <Object type="0x466" id="Groundkeeper's Lantern">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x03</Index>
+    </Texture>
+    <SlotType>9</SlotType>
+    <Description></Description>
+    <ActivateOnEquip stat="28" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="6">IncrementStat</ActivateOnEquip>
+    <BagType>4</BagType>
+    <feedPower>200</feedPower>
+  </Object>
   <Object type="0xc83" id="Cheater Robe">
     <Class>Equipment</Class>
     <Item />
@@ -58611,7 +58688,8 @@
     </Texture>
     <SlotType>14</SlotType>
     <Description>Only cheaters wear this robe.</Description>
-    <ActivateOnEquip stat="0" amount="-100">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="20">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="-200">IncrementStat</ActivateOnEquip>
     <BagType>0</BagType>
     <feedPower>300</feedPower>
   </Object>
@@ -58625,13 +58703,13 @@
       <Index>0xf2</Index>
     </Texture>
     <SlotType>14</SlotType>
-    <ActivateOnEquip stat="0" amount="40">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="3" amount="60">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="8">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="22" amount="12">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="20">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="100">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="9">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="26" amount="10">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="27" amount="8">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="3">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="14">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
     <feedPower>1100</feedPower>
@@ -58648,11 +58726,11 @@
     </Texture>
     <SlotType>14</SlotType>
     <Description>A soft sheet of bone harvested from the kingdom's defense system. Despite being hollowed out by the ages, it remains immensely durable.</Description>
-    <ActivateOnEquip stat="0" amount="140">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="20" amount="5">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="21">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="22" amount="-7">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="25">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="-5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="15">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
   </Object>
@@ -58668,10 +58746,11 @@
       <Index>0x0b</Index>
     </Texture>
     <SlotType>14</SlotType>
-    <ActivateOnEquip stat="20" amount="5">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="15">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="-50">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="85">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="5">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="10">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="15">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="3" amount="80">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
     <feedPower>1100</feedPower>
@@ -58688,11 +58767,10 @@
     </Texture>
     <SlotType>14</SlotType>
     <Description>We need more shroooooooooooooooooms!</Description>
-    <ActivateOnEquip stat="20" amount="12">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="14">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="26" amount="7">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="27" amount="7">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="3" amount="80">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="-60">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="12">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="16">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
   </Object>
@@ -58710,10 +58788,11 @@
     </Texture>
     <SlotType>14</SlotType>
     <ActivateOnEquip stat="0" amount="50">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="-50">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="10">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="10">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="27" amount="7">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="-5">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
   </Object>
@@ -59325,6 +59404,30 @@
     <MpCost>130</MpCost>
     <Activate totalDamage="1000" maxTargets="2" condEffect="ArmorBroken" condDuration=".75" color="0xB2FAE2" useWisMod="true">Lightning</Activate>
     <DisplayId>Essence Eater</DisplayId>
+  </Object>
+  <Object type="0x467" id="Scepter of Whispers">
+    <Class>Equipment</Class>
+    <Item />
+    <Mutilate />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x02</Index>
+    </Texture>
+    <SlotType>23</SlotType>
+    <Legendary />
+    <Description></Description>
+    <Sound>spell/magic_nova</Sound>
+    <ActivateOnEquip stat="0" amount="-60">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="90">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="-8">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="8">IncrementStat</ActivateOnEquip>
+    <Usable />
+    <BagType>7</BagType>
+    <FameBonus>7</FameBonus>
+    <MpCost>130</MpCost>
+    <Activate totalDamage="1300" maxTargets="3" condEffect="Slowed" condDuration=".75" color="0xB2FAE2" useWisMod="true">Lightning</Activate>
+    <DisplayId>Scepter of Whispers</DisplayId>
   </Object>
   <Object type="0xae5" id="Lightning Scepter">
     <Class>Equipment</Class>
@@ -60334,6 +60437,30 @@
     <Activate radius="5" totalDamage="250" color="0xFFFF0000" useWisMod="false">VampireBlast</Activate>
     <DisplayId>Skull of the Archmage</DisplayId>
   </Object>
+  <Object type="0x468" id="Chocolate Skull">
+    <Class>Equipment</Class>
+    <Item />
+    <SteamRoller />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x23</Index>
+    </Texture>
+    <SlotType>19</SlotType>
+    <Legendary />
+    <Description>We finally get to see the face under the robe. Or, what's left of it at least …</Description>
+    <ActivateOnEquip stat="3" amount="55">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="3">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="-10">IncrementStat</ActivateOnEquip>
+    <Activate effect="Berserk" duration="2">ConditionEffectSelf</Activate>
+    <Activate effect="Speedy" duration="2.5">ConditionEffectSelf</Activate>
+    <Usable />
+    <BagType>7</BagType>
+    <FameBonus>7</FameBonus>
+    <MpCost>120</MpCost>
+    <Activate radius="6" totalDamage="250" color="0x7156340" useWisMod="false">VampireBlast</Activate>
+    <DisplayId>Chocolate Skull</DisplayId>
+  </Object>
   <Object type="0xa423" id="Raven's Head">
     <Class>Equipment</Class>
     <Item />
@@ -61219,6 +61346,36 @@
     <FameBonus>7</FameBonus>
     <feedPower>650</feedPower>
     <DisplayId>Scythe of the Reaper</DisplayId>
+  </Object>
+  <Object type="0x460" id="Mortomus' Shovel">
+    <Class>Equipment</Class>
+    <Item />
+    <Mutilate />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x01</Index>
+    </Texture>
+    <Legendary />
+    <SlotType>17</SlotType>
+    <Description></Description>
+    <RateOfFire>0.7</RateOfFire>
+    <Sound>weapon/fire_wand</Sound>
+    <Projectile>
+      <ObjectId>Mortomus Shovel Shot</ObjectId>
+      <Speed>95</Speed>
+      <MinDamage>145</MinDamage>
+      <MaxDamage>175</MaxDamage>
+      <LifetimeMS>800</LifetimeMS>
+      <Amplitude>1</Amplitude>
+      <Frequency>1.2</Frequency>
+      <Size>140</Size>
+      <MultiHit />
+    </Projectile>
+    <NumProjectiles>5</NumProjectiles>
+    <ArcGap>3</ArcGap>
+    <BagType>6</BagType>
+    <FameBonus>6</FameBonus>
+    <DisplayId>Mortomus' Shovel</DisplayId>
   </Object>
   <Object type="0x5012" id="Cinders of Ruin">
     <Class>Equipment</Class>
@@ -75631,6 +75788,244 @@
     <Activate objectId="Admin Orb" cooldown="10">PermaPet</Activate>
     <OldSound>use_potion</OldSound>
   </Object>
+  <Object type="0x530" id="Snorlax Generator">
+    <DisplayId>Snorlax</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x76</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>I may follow you, but you are not my master.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Snorlax" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x531" id="Prisoner Generator">
+    <DisplayId>Snorlax</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x66</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>I may follow you, but you are not my master.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Prisoner" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1690" id="Wagon Generator">
+    <DisplayId>Wagon</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x75</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>I may follow you, but you are not my master.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Wagon" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1691" id="Kirby Generator">
+    <DisplayId>Kirby</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x65</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>I may follow you, but you are not my master.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Kirby" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1692" id="Evil Wolf Generator">
+    <DisplayId>Evil Wolf</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x64</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>I may follow you, but you are not my master.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Evil Wolf" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1693" id="Thot Camel Generator">
+    <DisplayId>Thor Camel</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x63</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>I may follow you, but you are not my master.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Thot Camel" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1694" id="Shrek Pet Generator">
+    <DisplayId>Shrek Pet</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x52</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>I may follow you, but you are not my master.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Shrek Pet" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1695" id="Donkey Pet Generator">
+    <DisplayId>Donkey Pet</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x77</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>I may follow you, but you are not my master.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Donkey Pet" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x308" id="Fat Purple Bunny Generator">
+    <DisplayId>Fat Purple Bunny</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x61</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>I may follow you, but you are not my master.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Fat Purple Bunny" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x309" id="Bullet Bill Generator">
+    <DisplayId>Bullet Bill</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x72</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>I may follow you, but you are not my master.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Bullet Bill" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x1696" id="Tiny Rogue Generator">
+    <DisplayId>Tiny Rogue</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x73</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>I may follow you, but you are not my master.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Tiny Rogue" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x311" id="Bean Warrior Generator">
+    <DisplayId>Bean Warrior</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x74</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>I may follow you, but you are not my master.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Bean Warrior" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x312" id="Annoyed Slime Generator">
+    <DisplayId>Annoyed Slime</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x70</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>I may follow you, but you are not my master.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Annoyed Slime" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x313" id="Giant Rubber Duck Generator">
+    <DisplayId>Giant Rubber Duck</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x61</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>I may follow you, but you are not my master.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Giant Rubber Duck" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
   <Object type="0x1500" id="Black Cat Generator">
     <DisplayId>Black Cat</DisplayId>
     <Class>Equipment</Class>
@@ -77028,6 +77423,146 @@
     <AnimatedTexture>
       <File>Custom32x32Encounters</File>
       <Index>22</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x969a" id="Snorlax">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>Custom32x32Encounters</File>
+      <Index>23</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x969b" id="Prisoner">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>Custom32x32Encounters</File>
+      <Index>24</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x969c" id="Wagon">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>Custom32x32Encounters</File>
+      <Index>25</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x969d" id="Kirby">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>Custom32x32Encounters</File>
+      <Index>26</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x969e" id="Thot Camel">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>Custom32x32Encounters</File>
+      <Index>27</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x969f" id="Evil Wolf">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>Custom32x32Encounters</File>
+      <Index>28</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x690a" id="Shrek Pet">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>Custom16x16Encounters</File>
+      <Index>51</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x690b" id="Donkey Pet">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>Custom16x16Encounters</File>
+      <Index>50</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x690c" id="Fat Purple Bunny">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>Custom16x16Encounters</File>
+      <Index>46</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x690d" id="Bullet Bill">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>Custom16x16Encounters</File>
+      <Index>47</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x690e" id="Tiny Rogue">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>Custom16x16Encounters</File>
+      <Index>48</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>100</Size>
+  </Object>
+  <Object type="0x690f" id="Bean Warrior">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>Custom16x16Encounters</File>
+      <Index>49</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x700a" id="Annoyed Slime">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>Custom16x16Encounters</File>
+      <Index>52</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>100</Size>
+  </Object>
+  <Object type="0x700b" id="Giant Rubber Duck">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>Custom16x16Encounters</File>
+      <Index>53</Index>
     </AnimatedTexture>
     <NoMiniMap />
     <Size>60</Size>
@@ -79341,6 +79876,20 @@
       <Index>0x7b</Index>
     </Texture>
     <Rotation>90</Rotation>
+  </Object>
+  <Object type="0x461" id="Mortomus Shovel Shot">
+    <Class>Projectile</Class>
+    <RandomTexture>
+      <Texture>
+        <File>CustomObj1</File>
+        <Index>0x13</Index>
+      </Texture>
+      <Texture>
+        <File>CustomObj1</File>
+        <Index>0x14</Index>
+      </Texture>
+    </RandomTexture>
+    <AngleCorrection>1</AngleCorrection>
   </Object>
   <Object type="0x294" id="Gumball Machine Shot">
     <Class>Projectile</Class>

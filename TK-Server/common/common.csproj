@@ -1141,10 +1141,16 @@
     <None Include="resources\worlds\set_piece\avatar.jm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="resources\worlds\set_piece\candygnome.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="resources\worlds\set_piece\earth_elemental.jm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="resources\worlds\set_piece\fire_elemental.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="resources\worlds\set_piece\fluffy.jm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="resources\worlds\set_piece\ghost_ship.jm">
@@ -1162,6 +1168,9 @@
     <None Include="resources\worlds\set_piece\kage_kami.jm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="resources\worlds\set_piece\mushroom.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="resources\worlds\set_piece\rock_dragon.jm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -1172,6 +1181,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="resources\worlds\set_piece\water_elemental.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="resources\worlds\set_piece\wind_elemental.jm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="resources\worlds\shatters.jm">

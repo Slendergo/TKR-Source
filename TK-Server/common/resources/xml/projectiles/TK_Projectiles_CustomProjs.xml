@@ -1,4 +1,18 @@
 <Objects>
+	<Object type="0x461" id="Mortomus Shovel Shot">
+		<Class>Projectile</Class>
+		<RandomTexture>
+			<Texture>
+				<File>CustomObj1</File>
+				<Index>0x13</Index>
+			</Texture>
+			<Texture>
+				<File>CustomObj1</File>
+				<Index>0x14</Index>
+			</Texture>
+		</RandomTexture>
+		<AngleCorrection>1</AngleCorrection>
+	</Object>
 	<Object type="0x294" id="Gumball Machine Shot">
 		<Class>Projectile</Class>
 		<RandomTexture>

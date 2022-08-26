@@ -70,6 +70,26 @@ namespace wServer.core
                 },
                 NameOfDeath = "Julius Caesar"
             }),
+            Tuple.Create("Fluffy", new TauntData()
+            {
+                Spawn = new string[] {
+                    ""
+                },
+                Killed = new string[] {
+                    ""
+                },
+                NameOfDeath = "Fluffy"
+            }),
+            Tuple.Create("Candy Gnome", new TauntData()
+            {
+                Spawn = new string[] {
+                    ""
+                },
+                Killed = new string[] {
+                    ""
+                },
+                NameOfDeath = "Candy Gnome"
+            }),
             Tuple.Create("Wind Elemental", new TauntData()
             {
                 Spawn = new string[] {
@@ -418,11 +438,13 @@ namespace wServer.core
         {
             Tuple.Create("Tiki Tiki", (ISetPiece) null), // null means use the entity name isntead of make a setpiece class
             Tuple.Create("King Slime", (ISetPiece) null),
+            Tuple.Create("Fluffy", (ISetPiece) new Fluffy()),
+            Tuple.Create("Candy Gnome", (ISetPiece) new CandyGnome()),
             Tuple.Create("Strange Magician", (ISetPiece) new StrangeMagician()),
             Tuple.Create("Water Elemental", (ISetPiece) new WaterElemental()),
             Tuple.Create("Earth Elemental", (ISetPiece) new EarthElemental()),
-            Tuple.Create("Mushroom", (ISetPiece) null),
-            Tuple.Create("Wind Elemental", (ISetPiece) null),
+            Tuple.Create("Mushroom", (ISetPiece) new Mushroom()),
+            Tuple.Create("Wind Elemental", (ISetPiece) new WindElemental()),
             Tuple.Create("Fire Elemental", (ISetPiece) new FireElemental()),
             Tuple.Create("Julius Caesar", (ISetPiece) new JuliusCaesar()),
             Tuple.Create("Cube God", (ISetPiece) null),

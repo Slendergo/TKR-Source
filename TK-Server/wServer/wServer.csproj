@@ -167,6 +167,18 @@
     <Compile Include="core\objects\inventory\ItemStacker.cs" />
     <Compile Include="core\objects\player\Player.State.cs" />
     <Compile Include="core\objects\Engine.cs" />
+    <Compile Include="core\setpieces\Fluffy.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="core\setpieces\CandyGnome.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="core\setpieces\WindElemental.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="core\setpieces\Mushroom.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="core\setpieces\TalismanKing.cs" />
     <Compile Include="logic\behaviors\GiveTemporaryDefense.cs" />
     <Compile Include="logic\db\BehaviorDb.Nexus.cs" />

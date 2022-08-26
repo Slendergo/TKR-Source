@@ -262,11 +262,11 @@ namespace wServer.core.objects
             if (Client.Rank.IsAdmin)
                 return;
 
-            var newAmouintDonated = Client.Rank.NewAmountDonated; // add $10
+            var newAmountDonated = Client.Rank.NewAmountDonated; // add $10
             var amountDonated = Client.Rank.TotalAmountDonated;
 
             var rank = Client.Rank.Rank;
-            while(amountDonated != 0)
+            while(newAmountDonated > 0)
             {
                 if (rank != RankingType.Supporter1 && amountDonated >= 10 && amountDonated < 20)
                 {
@@ -295,11 +295,11 @@ namespace wServer.core.objects
                 }
 
                 amountDonated++;
-                newAmouintDonated--;
+                newAmountDonated--;
             }
 
             Client.Rank.TotalAmountDonated = amountDonated;
-            Client.Rank.NewAmountDonated = newAmouintDonated;
+            Client.Rank.NewAmountDonated = newAmountDonated;
             Client.Rank.Rank = rank;
             Client.Rank.Flush();
         }

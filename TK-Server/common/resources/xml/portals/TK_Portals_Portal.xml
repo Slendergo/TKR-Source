@@ -1,10 +1,10 @@
 <Objects>
-	<Object type="0x2020" id="Locked Wine Cellar Portal">
+	<Object type="0x2020" id="Locked Trial of Souls">
 		<Class>Portal</Class>
 		<LockedPortal />
 		<Texture>
-			<File>lofiObj2</File>
-			<Index>0xba</Index>
+			<File>customEvironment16x16</File>
+			<Index>0x1b</Index>
 		</Texture>
 	</Object>
 	<Object type="0xa141" id="Cave of Eternal Frost">
@@ -569,8 +569,8 @@
 		<IntergamePortal />
 		<DungeonName>Mortomus Hideout</DungeonName>
 		<Texture>
-			<File>lofiObj3</File>
-			<Index>0x4BA</Index>
+			<File>CustomEnvironment16x16</File>
+			<Index>0x1c</Index>
 		</Texture>
 	</Object>
   <Object type="0x2295" id="Lair of Shaitan Portal">

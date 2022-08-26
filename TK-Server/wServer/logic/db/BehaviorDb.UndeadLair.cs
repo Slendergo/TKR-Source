@@ -96,9 +96,6 @@ namespace wServer.logic
             new Threshold(0.01,
                 LootTemplates.DustLoot()
                 ),
-            new Threshold(0.03,
-                new ItemLoot("Cape of Septavius", 0.0014)
-                ),
             new Threshold(0.01,
                 new TierLoot(11, ItemType.Weapon, 0.07),
                 new TierLoot(11, ItemType.Armor, 0.07),
@@ -108,12 +105,12 @@ namespace wServer.logic
                 new TierLoot(5, ItemType.Ability, 0.07),
                 new ItemLoot("Potion of Wisdom", 1),
                 new ItemLoot("Potion of Wisdom", 1),
-                new ItemLoot("Doom Bow", 0.01),
-                new ItemLoot("Edictum Praetoris", 0.015),
-                new ItemLoot("Memento Mori", 0.015),
-                new ItemLoot("Toga Picta", 0.015),
-                new ItemLoot("Interregnum", 0.015),
-                new ItemLoot("Tormentor's Wrath", 0.01),
+                new ItemLoot("Doom Bow", 0.001),
+                new ItemLoot("Edictum Praetoris", 0.0015),
+                new ItemLoot("Memento Mori", 0.0015),
+                new ItemLoot("Toga Picta", 0.0015),
+                new ItemLoot("Interregnum", 0.0015),
+                new ItemLoot("Tormentor's Wrath", 0.001),
                 new ItemLoot("Undead Lair Key", 0.001, 0, 0.03),
 
                 new ItemLoot("Magic Dust", 0.5)

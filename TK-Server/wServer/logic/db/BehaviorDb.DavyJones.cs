@@ -66,7 +66,7 @@ namespace wServer.logic
                 new TierLoot(11, ItemType.Armor, 0.07),
                 new TierLoot(12, ItemType.Armor, 0.04),
                 new ItemLoot("Davy's Key", 0.01, 0, 0.03),
-                new ItemLoot("Ghostly Prism", 0.01),
+                new ItemLoot("Ghostly Prism", 0.001),
                 new ItemLoot("Potion of Wisdom", 1),
                 new ItemLoot("Potion of Attack", 1),
                 new ItemLoot("Potion of Wisdom", 1),

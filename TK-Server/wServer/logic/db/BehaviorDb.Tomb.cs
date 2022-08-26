@@ -137,11 +137,11 @@ namespace wServer.logic
                 new ItemLoot("Tomb of the Ancients Key", 0.01, 0, 0.03)
                 ),
             new Threshold(0.03,
-                new ItemLoot("Shield of The Ancient's", 0.0014)
+                new ItemLoot("Shield of The Ancient's", 0.00014)
                 ),
             new Threshold(0.02,
-                new ItemLoot("Ring of the Pyramid", 0.01),
-                new ItemLoot("Tome of Holy Protection", 0.01)
+                new ItemLoot("Ring of the Pyramid", 0.001),
+                new ItemLoot("Tome of Holy Protection", 0.001)
                 )
             )
         .Init("Tomb Support",
@@ -264,13 +264,13 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.03,
-                new ItemLoot("Bow of the Havens", 0.0014)
+                new ItemLoot("Bow of the Havens", 0.00014)
                 ),
             new Threshold(0.01,
                 new ItemLoot("Potion of Life", 1),
                 new ItemLoot("Potion of Life", 0.5),
                 new ItemLoot("Tomb of the Ancients Key", 0.01, 0, 0.03),
-                new ItemLoot("Ring of the Sphinx", 0.01)
+                new ItemLoot("Ring of the Sphinx", 0.001)
                 )
             )
         .Init("Tomb Attacker",
@@ -473,10 +473,10 @@ namespace wServer.logic
                 new ItemLoot("Tomb of the Ancients Key", 0.01, 0, 0.03),
                 new ItemLoot("Potion of Life", 1),
                 new ItemLoot("Potion of Life", 1),
-                new ItemLoot("Ring of the Nile", 0.015),
-                new ItemLoot("Book of Geb", 0.015),
-                new ItemLoot("Scepter of Geb", 0.015),
-                new ItemLoot("Geb's Ring of Wisdom", 0.015)
+                new ItemLoot("Ring of the Nile", 0.0015),
+                new ItemLoot("Book of Geb", 0.0015),
+                new ItemLoot("Scepter of Geb", 0.0015),
+                new ItemLoot("Geb's Ring of Wisdom", 0.0015)
                 )
             )
         //Minions

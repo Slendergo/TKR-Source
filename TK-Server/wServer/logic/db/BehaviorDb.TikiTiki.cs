@@ -147,7 +147,7 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.03,
-                new ItemLoot("Tiki's Breastplate", 0.0014)
+                new ItemLoot("Tiki's Breastplate", 0.00014)
                 ),
             new Threshold(0.001,
                 new ItemLoot("Potion of Defense", 1),
@@ -164,9 +164,9 @@ namespace wServer.logic
                 new TierLoot(10, ItemType.Weapon, 0.12),
                 new TierLoot(4, ItemType.Ring, 0.07),
                 new TierLoot(4, ItemType.Ability, 0.07),
-                new ItemLoot("Hunter's Cloak", 0.015),
-                new ItemLoot("Tribesmen's Shank", 0.01),
-                new ItemLoot("Leaf Staff", 0.01),
+                new ItemLoot("Hunter's Cloak", 0.0015),
+                new ItemLoot("Tribesmen's Shank", 0.001),
+                new ItemLoot("Leaf Staff", 0.001),
 
                 new ItemLoot("Magic Dust", 0.5)
                 )

@@ -231,20 +231,19 @@ namespace wServer.logic
                 new TierLoot(2, ItemType.Potion, numRequired: 3, threshold: 0.07)
                 ),
              new Threshold(0.05,
-                 new ItemLoot("Crafting Material 1", 0.05),
                 new ItemLoot("Potion of Attack", 1),
                 new ItemLoot("Potion of Speed", 1),
                 new ItemLoot("Potion of Attack", 0.5),
                 new ItemLoot("Potion of Speed", 0.5),
-                new ItemLoot("Refraction Cutter", 0.0015),
-                new ItemLoot("Prismatic Stone", 0.0015),
-                new ItemLoot("Rigid Mantle", 0.0015)
+                new ItemLoot("Refraction Cutter", 0.00015),
+                new ItemLoot("Prismatic Stone", 0.00015),
+                new ItemLoot("Rigid Mantle", 0.00015)
                 ),
 
             new Threshold(0.03,
-                new ItemLoot("Crystal Wand", 0.05),
-                new ItemLoot("Heart of the Realm", 0.003),
-                new ItemLoot("Crystal Sword", 0.06)
+                new ItemLoot("Crystal Wand", 0.005),
+                new ItemLoot("Heart of the Realm", 0.0003),
+                new ItemLoot("Crystal Sword", 0.006)
                 )
             )
         .Init("Crystal Prisoner Clone",

@@ -89,14 +89,13 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
              new Threshold(0.05,
-                    new ItemLoot("Romanian Tunic", 0.0014),
-                    new ItemLoot("Spear of Thiram", 0.0014)
+                    new ItemLoot("Spear of Thiram", 0.00014)
                 ),
               new Threshold(0.03,
-                    new ItemLoot("Gladiator's Visage", 0.0014)
+                    new ItemLoot("Gladiator's Visage", 0.00014)
                 ),
                     new Threshold(0.001,
-                        new ItemLoot("Crafting Material 1", 0.05),
+
                     new ItemLoot("Potion of Life", 1),
                     new ItemLoot("Potion of Mana", 1),
                     new ItemLoot("Potion of Life", 0.5),

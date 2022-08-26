@@ -490,11 +490,10 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.03,
-                new ItemLoot("Fire Fragment", 0.0015),
-                new ItemLoot("Phoenix Ashes Orb", 0.0033)
+                new ItemLoot("Fire Fragment", 0.00015),
+                new ItemLoot("Phoenix Ashes Orb", 0.00033)
                 ),
             new Threshold(0.001,
-                new ItemLoot("Crafting Material 1", 0.05),
                 new ItemLoot("Potion of Speed", 1),
                 new ItemLoot("Potion of Defense", 1),
                 new ItemLoot("Potion of Speed", 0.5),

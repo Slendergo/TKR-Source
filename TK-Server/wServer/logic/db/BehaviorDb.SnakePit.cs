@@ -60,18 +60,15 @@ namespace wServer.logic
                     new Grenade(1.5, 75, 6, _rightAngle + 45, 3000, ConditionEffectIndex.Petrify, 1000)
                     )
                 ),
-            new Threshold(0.03,
-                new ItemLoot("Queen's Scale", 0.0014)
-                ),
             new Threshold(0.01,
                 new ItemLoot("Potion of Speed", 1),
                 new ItemLoot("Potion of Speed", 1),
-                new ItemLoot("Hebikira", 0.01),
-                new ItemLoot("Snake Queen's Hide", 0.01),
-                new ItemLoot("Star of Stheno", 0.01),
-                new ItemLoot("Spirit of Snakes", 0.01),
+                new ItemLoot("Hebikira", 0.001),
+                new ItemLoot("Snake Queen's Hide", 0.001),
+                new ItemLoot("Star of Stheno", 0.001),
+                new ItemLoot("Spirit of Snakes", 0.001),
                 new ItemLoot("Snake Pit Key", 0.1),
-                new ItemLoot("Wand of the Bulwark", 0.01),
+                new ItemLoot("Wand of the Bulwark", 0.001),
                 new ItemLoot("Snake Skin Armor", 0.1),
                 new ItemLoot("Snake Skin Shield", 0.1),
                 new ItemLoot("Snake Eye Ring", 0.1),

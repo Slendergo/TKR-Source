@@ -165,8 +165,8 @@ namespace wServer.logic
                     new State("2",
                         new SetAltTexture(0),
                         new Prioritize(
-                            new Wander(0.3),
-                            new StayBack(0.3, 5)
+                            new Wander(0.1),
+                            new StayBack(0.1, 5)
                             ),
                         new Shoot(8.4, count: 1, projectileIndex: 0, coolDown: 450),
                         new Shoot(8.4, count: 3, projectileIndex: 0, shootAngle: 20, coolDown: 1750),
@@ -199,7 +199,7 @@ namespace wServer.logic
                     new State("1",
                         new Prioritize(
                             new Follow(0.3, 8, 1),
-                            new Wander(0.3)
+                            new Wander(0.1)
                             ),
                         new Taunt(1.00, "Fire at will!"),
                         new Shoot(8.4, count: 2, shootAngle: 25, projectileIndex: 1, coolDown: 3850),
@@ -222,7 +222,7 @@ namespace wServer.logic
                 new State("fire",
                     new Prioritize(
                         new Follow(0.3, 8, 1),
-                        new Wander(1)
+                        new Wander(0.1)
                         ),
                     new Shoot(10, count: 4, projectileIndex: 1, coolDownOffset: 1100, angleOffset: 270, coolDown: 1250),
                     new Shoot(10, count: 4, projectileIndex: 1, coolDownOffset: 1100, angleOffset: 90, coolDown: 1250),
@@ -236,7 +236,7 @@ namespace wServer.logic
                 ),
             new ItemLoot("Ghost Pirate Rum", 1),
             new Threshold(0.03,
-                new ItemLoot("Cannon", 0.0014)
+                new ItemLoot("Cannon", 0.00014)
                 ),
             new Threshold(0.001,
                 new TierLoot(4, ItemType.Ability, 0.07),
@@ -244,7 +244,6 @@ namespace wServer.logic
                 new TierLoot(11, ItemType.Armor, 0.09),
                 new TierLoot(10, ItemType.Weapon, 0.12),
                 new TierLoot(4, ItemType.Ring, 0.07),
-                new ItemLoot("Crafting Material 1", 0.05),
                 new ItemLoot("Potion of Defense", 1),
                 new ItemLoot("Potion of Wisdom", 1),
                 new ItemLoot("Potion of Defense", 1),

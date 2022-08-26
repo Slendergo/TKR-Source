@@ -273,7 +273,7 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.03,
-                new ItemLoot("Harlequin Armor", 0.0014, threshold: 0.03)
+                new ItemLoot("Harlequin Armor", 0.00014, threshold: 0.03)
                 ),
 
             new Threshold(0.01,
@@ -283,7 +283,7 @@ namespace wServer.logic
                 new ItemLoot("Potion of Attack", 1),
                 new ItemLoot("Potion of Attack", 0.5),
 
-                new ItemLoot("Prism of Dancing Swords", 0.015),
+                new ItemLoot("Prism of Dancing Swords", 0.0015),
                 new ItemLoot("Large Jester Argyle Cloth", 0.1),
                 new ItemLoot("Small Jester Argyle Cloth", 0.1),
                 new ItemLoot("Theatre Key", 0.001, 0, 0.03)

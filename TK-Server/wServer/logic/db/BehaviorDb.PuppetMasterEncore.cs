@@ -670,9 +670,9 @@ namespace wServer.logic
                 new ItemLoot("Potion of Mana", 0.5)
                 ),
             new Threshold(0.03,
-                new ItemLoot("Thousand Shot", 0.0014, threshold: 0.03),
-                new ItemLoot("Laughing Gas", 0.0014),
-                new ItemLoot("Puppet Master's Encore Key", 0.001, 0, 0.03)
+                new ItemLoot("Thousand Shot", 0.0014, threshold: 0.0003),
+                new ItemLoot("Laughing Gas", 0.00014),
+                new ItemLoot("Puppet Master's Encore Key", 0.001, 0, 0.003)
                 ),
             new Threshold(0.02,
                 new TierLoot(12, ItemType.Armor, 0.15),

@@ -60,12 +60,12 @@ namespace wServer.logic
                 new TierLoot(4, ItemType.Ring, 0.2),
                 new TierLoot(5, ItemType.Ring, 0.07),
                 new ItemLoot("Holy Water", 0.5),
-                new ItemLoot("Chasuble of Holy Light", 0.01),
-                new ItemLoot("St. Abraham's Wand", 0.01),
-                new ItemLoot("Tome of Purification", 0.001),
-                new ItemLoot("Ring of Divine Faith", 0.01),
-                new ItemLoot("Corrupted Pendant", 0.01),
-                new ItemLoot("Bone Dagger", 0.08)
+                new ItemLoot("Chasuble of Holy Light", 0.001),
+                new ItemLoot("St. Abraham's Wand", 0.001),
+                new ItemLoot("Tome of Purification", 0.0001),
+                new ItemLoot("Ring of Divine Faith", 0.001),
+                new ItemLoot("Corrupted Pendant", 0.001),
+                new ItemLoot("Bone Dagger", 0.008)
                 )
             )
         .Init("Hellhound",

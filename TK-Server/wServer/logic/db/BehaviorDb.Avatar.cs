@@ -1543,16 +1543,14 @@ namespace wServer.logic
                                                         //new ItemLoot("Titanium Core", 0.0015) //NO XML
                 ),
             new Threshold(0.03,
-                new ItemLoot("Tablet of the King's Avatar", 0.0014, threshold: 0.03),
-                new ItemLoot("Gem of Life", 0.0006, threshold: 0.03),
-                new ItemLoot("Ashen Spine", 0.0014, threshold: 0.03),
-                new ItemLoot("Flaking Husk", 0.0014, threshold: 0.03)
+                new ItemLoot("Tablet of the King's Avatar", 0.00014, threshold: 0.03),
+                new ItemLoot("Ashen Spine", 0.00014, threshold: 0.03),
+                new ItemLoot("Flaking Husk", 0.00014, threshold: 0.03)
                 ),
             new Threshold(0.001,
                 new ItemLoot("Potion of Defense", 1),
                 new ItemLoot("Potion of Attack", 1),
                 new ItemLoot("Potion of Vitality", 1),
-                new ItemLoot("Crafting Material 1", 0.05),
                 new ItemLoot("Potion of Wisdom", 1),
                 new ItemLoot("Potion of Defense", 0.1),
                 new ItemLoot("Potion of Attack", 0.1),

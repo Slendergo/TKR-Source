@@ -661,7 +661,7 @@
 		<Item />
 		<Texture>
 			<File>CustomObj1</File>
-			<Index>0x03</Index>
+			<Index>0x04</Index>
 		</Texture>
 		<SlotType>9</SlotType>
 		<Description></Description>

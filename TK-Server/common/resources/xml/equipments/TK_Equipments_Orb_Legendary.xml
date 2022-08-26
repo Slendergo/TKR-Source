@@ -17,6 +17,7 @@
     <Activate duration="6">StasisBlast</Activate>
     <Activate effect="Speedy" duration="2" useWisMod="true">ConditionEffectSelf</Activate>
     <Activate effect="Damaging" duration="3" useWisMod="true">ConditionEffectSelf</Activate>
+	<Activate effect="Berserk" duration="3" useWisMod="true">ConditionEffectSelf</Activate>
     <Cooldown>5</Cooldown>
     <feedPower>750</feedPower>
   </Object>

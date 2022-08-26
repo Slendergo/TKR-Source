@@ -98,7 +98,7 @@ namespace wServer.logic
                 new TierLoot(5, ItemType.Ring, 0.03),
                 new TierLoot(3, ItemType.Ability, 0.12),
                 new TierLoot(4, ItemType.Ability, 0.07),
-                new ItemLoot("Sticky Slime Armor", 0.01),
+                new ItemLoot("Sticky Slime Armor", 0.001),
 
                 new ItemLoot("Magic Dust", 0.5)
                 ),

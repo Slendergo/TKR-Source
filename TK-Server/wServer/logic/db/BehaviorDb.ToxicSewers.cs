@@ -229,8 +229,8 @@ namespace wServer.logic
                 new ItemLoot("Potion of Defense", 1)
                 ),
             new Threshold(0.03,
-                new ItemLoot("Void Blade", 0.01, threshold: 0.03),
-                new ItemLoot("Murky Toxin", 0.01),
+                new ItemLoot("Void Blade", 0.001, threshold: 0.03),
+                new ItemLoot("Murky Toxin", 0.001),
                 new ItemLoot("Toxic Sewers Key", 0.1, 0, 0.03),
 
                 new ItemLoot("Magic Dust", 0.5)

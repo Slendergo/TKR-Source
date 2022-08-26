@@ -146,7 +146,6 @@ namespace wServer.logic
                 new TierLoot(11, ItemType.Armor, 0.09),
                 new TierLoot(4, ItemType.Ability, 0.07),
                 new TierLoot(4, ItemType.Ring, 0.07),
-                new ItemLoot("Crafting Material 1", 0.05),
                 new ItemLoot("Potion of Dexterity", 1),
                 new ItemLoot("Potion of Vitality", 1),
                 new ItemLoot("Potion of Dexterity", 1),
@@ -155,7 +154,7 @@ namespace wServer.logic
                 new ItemLoot("Magic Dust", 0.5)
                 ),
             new Threshold(0.03,
-                new ItemLoot("Helm of the Juggernaut", 0.0014, threshold: 0.03)
+                new ItemLoot("Helm of the Juggernaut", 0.00014, threshold: 0.03)
                 )
             )
         .Init("Hermit portal maker",

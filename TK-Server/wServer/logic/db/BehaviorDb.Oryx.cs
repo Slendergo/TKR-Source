@@ -67,10 +67,10 @@ namespace wServer.logic
                     )
                 ),
             new Threshold(0.03,
-                new ItemLoot("The Horn Breaker", 0.0005, 0, 0.05),
-                new ItemLoot("Oryx's Broken Helm", 0.0005, 0, 0.05),
-                new ItemLoot("Oryx's Armor of War", 0.0005, 0, 0.05),
-                new ItemLoot("Shattered Horn of Oryx", 0.0005, 0, 0.05)
+                new ItemLoot("The Horn Breaker", 0.00005, 0, 0.05),
+                new ItemLoot("Oryx's Broken Helm", 0.00005, 0, 0.05),
+                new ItemLoot("Oryx's Armor of War", 0.00005, 0, 0.05),
+                new ItemLoot("Shattered Horn of Oryx", 0.00005, 0, 0.05)
                 ),
             new Threshold(0.02, 
                 new ItemLoot("Potion of Vitality", 1),

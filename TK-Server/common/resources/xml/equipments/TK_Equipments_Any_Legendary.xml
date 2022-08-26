@@ -7,8 +7,8 @@
 		<Rare />
 		<InvUse />
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x1c</Index>
+			<File>CustomObj1</File>
+			<Index>0x33</Index>
 		</Texture>
 		<ExtraTooltipData>
 			<EffectInfo name="" description="Consume the talisman to reap the power" />
@@ -29,8 +29,8 @@
 		<Rare />
 		<InvUse />
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x1c</Index>
+			<File>CustomObj1</File>
+			<Index>0x34</Index>
 		</Texture>
 		<ExtraTooltipData>
 			<EffectInfo name="" description="Consume the talisman to reap the power" />
@@ -45,14 +45,14 @@
 		<BagType>7</BagType>
 	</Object>
 	<Object type="0x40b" id="Heart and Soul">
-		<Class>Equipment</Class>
+		<Class>Equipment1</Class>
 		<DisplayId>Heart and Soul</DisplayId>
 		<Item />
 		<Rare />
 		<InvUse />
 		<Texture>
 			<File>CustomObj</File>
-			<Index>0x1c</Index>
+			<Index>0x35</Index>
 		</Texture>
 		<ExtraTooltipData>
 			<EffectInfo name="" description="Consume the talisman to reap the power" />

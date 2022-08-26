@@ -100,7 +100,7 @@ namespace wServer.core.net.handlers
                 if (world != null)
                     return;
             }
-            
+
             if (world != null)
             {
                 if (world.IsPlayersMax())
@@ -125,10 +125,19 @@ namespace wServer.core.net.handlers
                 return;
             }
 
-                if (world.InstanceType == common.resources.WorldResourceInstanceType.Vault)
-                    (world as VaultWorld).SetClient(player.Client);
-                else if (world.CreateInstance)
-                    portal.WorldInstance = world;
+            if(world.IdName == "Trial of Souls")
+            {
+                if (player.GetMaxedStats() != 8)
+                {
+                    player.SendError($"You must be 8/8 to enter this dungeon");
+                    return;
+                }
+            }
+
+            if (world.InstanceType == common.resources.WorldResourceInstanceType.Vault)
+                (world as VaultWorld).SetClient(player.Client);
+            else if (!world.CreateInstance)
+                portal.WorldInstance = world;
             player.Reconnect(world);
         }
     }

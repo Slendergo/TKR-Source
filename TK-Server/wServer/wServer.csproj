@@ -118,6 +118,7 @@
   <ItemGroup>
     <Compile Include="core\commands\admin\Command.Announce.cs" />
     <Compile Include="core\commands\admin\Command.BanAccount.cs" />
+    <Compile Include="core\commands\admin\Command.CreateNewRealm.cs" />
     <Compile Include="core\commands\admin\Command.DeltaTimeCommand.cs" />
     <Compile Include="core\commands\admin\Command.Give.cs" />
     <Compile Include="core\commands\admin\Command.BanIP.cs" />

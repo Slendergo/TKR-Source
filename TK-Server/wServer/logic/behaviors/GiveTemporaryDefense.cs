@@ -15,7 +15,6 @@ namespace wServer.logic.behaviors
 
         protected override void OnStateEntry(Entity host, TickTime time, ref object state)
         {
-            Console.WriteLine("State Entry");
             if (host is Enemy)
                 (host as Enemy).Defense += amount;
         }
@@ -24,7 +23,6 @@ namespace wServer.logic.behaviors
 
         protected override void OnStateExit(Entity host, TickTime time, ref object state)
         {
-            Console.WriteLine("State Exit");
             if (host is Enemy)
                 (host as Enemy).Defense -= amount;
         }

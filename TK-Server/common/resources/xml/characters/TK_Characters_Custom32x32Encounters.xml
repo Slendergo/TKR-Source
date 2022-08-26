@@ -1,4 +1,222 @@
 ﻿<Objects>
+	<Object type="0x510" id="Baron Turret">
+		<Enemy />
+		<Class>Character</Class>
+		<Hero />
+		<SpecialEnemy />
+		<God />
+		<Level>1</Level>
+		<Texture>
+			<File>invisible</File>
+			<Index>0</Index>
+		</Texture>
+		<HitSound>monster/goblins_hit</HitSound>
+		<DeathSound>monster/goblins_death</DeathSound>
+		<Size>100</Size>
+		<ShadowSize>45</ShadowSize>
+		<MaxHitPoints>65000</MaxHitPoints>
+		<Defense>25</Defense>
+		<XpMult>2.5</XpMult>
+		<Projectile id="0">
+			<ObjectId>Lava Star</ObjectId>
+			<Damage>130</Damage>
+			<Size>150</Size>
+			<Speed>0</Speed>
+			<ArmorPierce />
+			<LifetimeMS>1100</LifetimeMS>
+		</Projectile>
+		<Projectile id="1">
+			<ObjectId>Lava Star</ObjectId>
+			<Damage>130</Damage>
+			<Size>150</Size>
+			<Speed>75</Speed>
+			<ArmorPierce />
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+	</Object>
+	<Object type="0x511" id="Baron Turret 1">
+		<Enemy />
+		<Class>Character</Class>
+		<Hero />
+		<SpecialEnemy />
+		<God />
+		<Level>1</Level>
+		<Texture>
+			<File>invisible</File>
+			<Index>0</Index>
+		</Texture>
+		<HitSound>monster/goblins_hit</HitSound>
+		<DeathSound>monster/goblins_death</DeathSound>
+		<Size>100</Size>
+		<ShadowSize>45</ShadowSize>
+		<MaxHitPoints>65000</MaxHitPoints>
+		<Defense>25</Defense>
+		<XpMult>2.5</XpMult>
+		<Projectile id="0">
+			<ObjectId>Lava Star</ObjectId>
+			<Damage>130</Damage>
+			<Size>150</Size>
+			<Speed>0</Speed>
+			<ArmorPierce />
+			<LifetimeMS>1100</LifetimeMS>
+		</Projectile>
+		<Projectile id="1">
+			<ObjectId>Lava Star</ObjectId>
+			<Damage>130</Damage>
+			<Size>150</Size>
+			<Speed>75</Speed>
+			<ArmorPierce />
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+	</Object>
+	<Object type="0x512" id="Baron Turret 2">
+		<Enemy />
+		<Class>Character</Class>
+		<Hero />
+		<SpecialEnemy />
+		<God />
+		<Level>1</Level>
+		<Texture>
+			<File>invisible</File>
+			<Index>0</Index>
+		</Texture>
+		<HitSound>monster/goblins_hit</HitSound>
+		<DeathSound>monster/goblins_death</DeathSound>
+		<Size>100</Size>
+		<ShadowSize>45</ShadowSize>
+		<MaxHitPoints>65000</MaxHitPoints>
+		<Defense>25</Defense>
+		<XpMult>2.5</XpMult>
+		<Projectile id="0">
+			<ObjectId>Lava Star</ObjectId>
+			<Damage>130</Damage>
+			<Size>150</Size>
+			<Speed>0</Speed>
+			<ArmorPierce />
+			<LifetimeMS>1100</LifetimeMS>
+		</Projectile>
+		<Projectile id="1">
+			<ObjectId>Lava Star</ObjectId>
+			<Damage>130</Damage>
+			<Size>150</Size>
+			<Speed>75</Speed>
+			<ArmorPierce />
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+	</Object>
+	<Object type="0x513" id="Baron Turret 3">
+		<Enemy />
+		<Class>Character</Class>
+		<Hero />
+		<SpecialEnemy />
+		<God />
+		<Level>1</Level>
+		<Texture>
+			<File>invisible</File>
+			<Index>0</Index>
+		</Texture>
+		<HitSound>monster/goblins_hit</HitSound>
+		<DeathSound>monster/goblins_death</DeathSound>
+		<Size>100</Size>
+		<ShadowSize>45</ShadowSize>
+		<MaxHitPoints>65000</MaxHitPoints>
+		<Defense>25</Defense>
+		<XpMult>2.5</XpMult>
+		<Projectile id="0">
+			<ObjectId>Lava Star</ObjectId>
+			<Damage>130</Damage>
+			<Size>150</Size>
+			<Speed>0</Speed>
+			<ArmorPierce />
+			<LifetimeMS>1100</LifetimeMS>
+		</Projectile>
+		<Projectile id="1">
+			<ObjectId>Lava Star</ObjectId>
+			<Damage>130</Damage>
+			<Size>150</Size>
+			<Speed>75</Speed>
+			<ArmorPierce />
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+	</Object>
+	<Object type="0x490" id="The Baron">
+		<Class>Character</Class>
+		<Enemy />
+		<SpecialEnemy />
+		<Hero />
+		<God />
+		<Quest />
+		<KeepDamageRecord />
+		<Level>1</Level>
+		<AnimatedTexture>
+			<File>Custom32x32Encounters</File>
+			<Index>21</Index>
+		</AnimatedTexture>
+		<DisplayId>The Baron</DisplayId>
+		<Size>170</Size>
+		<MaxHitPoints>130000</MaxHitPoints>
+		<Defense>30</Defense>
+		<StasisImmune/>
+		<StunImmune/>
+		<SlowImmune/>
+		<ParalyzeImmune/>
+		<XpMult>1.2</XpMult>
+		<Projectile id="0">
+			<ObjectId>Sonic Black</ObjectId>
+			<Damage>100</Damage>
+			<Size>150</Size>
+			<Speed>90</Speed>
+			<ArmorPierce />
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+		<Projectile id="1">
+			<ObjectId>Sonic White</ObjectId>
+			<Damage>30</Damage>
+			<Size>150</Size>
+			<Speed>100</Speed>
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+		<Projectile id="2">
+			<ObjectId>Big Red Arc</ObjectId>
+			<Damage>70</Damage>
+			<Size>180</Size>
+			<Speed>85</Speed>
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+		<Projectile id="3">
+			<ObjectId>Red Arc</ObjectId>
+			<Damage>80</Damage>
+			<Size>120</Size>
+			<Speed>50</Speed>
+			<ConditionEffect duration="3">Armor Broken</ConditionEffect>
+			<LifetimeMS>4000</LifetimeMS>
+			<ArmorPiercing />
+		</Projectile>
+		<Projectile id="4">
+			<ObjectId>Golden Rings</ObjectId>
+			<Damage>100</Damage>
+			<Size>150</Size>
+			<Speed>90</Speed>
+			<ConditionEffect duration="5">Armor Broken</ConditionEffect>
+			<LifetimeMS>4000</LifetimeMS>
+			<MultiHit />
+			<ArmorPiercing />
+		</Projectile>
+		<Projectile id="5">
+			<ObjectId>Lava Star</ObjectId>
+			<Damage>110</Damage>
+			<Size>150</Size>
+			<Speed>120</Speed>
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+		<Projectile id="6">
+			<ObjectId>Big Red Arc</ObjectId>
+			<Damage>70</Damage>
+			<Size>150</Size>
+			<Speed>65</Speed>
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+	</Object>
 	<Object type="0x5e49" id="Candy Gnome">
 		<Enemy />
 		<Class>Character</Class>

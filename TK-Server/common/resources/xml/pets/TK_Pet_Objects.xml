@@ -1,4 +1,14 @@
 <Objects>
+	<Object type="0x45b" id="Admin Orb">
+		<Class>Character</Class>
+		<Group>Hexable</Group>
+		<AnimatedTexture>
+			<File>Custom32x32Encounters</File>
+			<Index>22</Index>
+		</AnimatedTexture>
+		<NoMiniMap />
+		<Size>60</Size>
+	</Object>
   <Object type="0x074c" id="Nexus Turkey">
     <DisplayId>Turkey</DisplayId>
     <Class>Character</Class>

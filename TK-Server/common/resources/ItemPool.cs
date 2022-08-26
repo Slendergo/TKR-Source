@@ -37,12 +37,16 @@ namespace common.resources
         public List<ItemPool> SpecialPools { get; set; } = new List<ItemPool>();
         public List<ItemPool> MiscPools { get; set; } = new List<ItemPool>();
         public List<ItemPool> PotionPools { get; set; } = new List<ItemPool>();
+        public List<ItemPool> TalismanPools { get; set; } = new List<ItemPool>();
 
         public ItemDusts(XElement element)
         {
             var items = element.Element("ItemDust")?.Elements("ItemPool");
             foreach (var item in items)
                 ItemPools.Add(new ItemPool(item));
+            items = element.Element("TalismanFragment").Elements("ItemPool");
+            foreach (var item in items)
+                TalismanPools.Add(new ItemPool(item));
             items = element.Element("MagicDust").Elements("ItemPool");
             foreach (var item in items)
                 MagicPools.Add(new ItemPool(item));

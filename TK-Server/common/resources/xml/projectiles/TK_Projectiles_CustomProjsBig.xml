@@ -1,4 +1,53 @@
 <Objects>
+	<Object type="0x491" id="Sonic Black">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomProjsBig</File>
+			<Index>0x06</Index>
+		</Texture>
+		<AngleCorrection>1</AngleCorrection>
+	</Object>
+	<Object type="0x492" id="Sonic White">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomProjsBig</File>
+			<Index>0x07</Index>
+		</Texture>
+		<AngleCorrection>1</AngleCorrection>
+	</Object>
+	<Object type="0x493" id="Big Red Arc">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomProjsBig</File>
+			<Index>0x08</Index>
+		</Texture>
+		<AngleCorrection>1</AngleCorrection>
+	</Object>
+	<Object type="0x494" id="Red Arc">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomProjsBig</File>
+			<Index>0x09</Index>
+		</Texture>
+		<AngleCorrection>1</AngleCorrection>
+	</Object>
+	<Object type="0x495" id="Golden Rings">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomProjsBig</File>
+			<Index>0x0a</Index>
+		</Texture>
+		<Rotation>60</Rotation>
+	</Object>
+	<Object type="0x496" id="Lava Star">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomProjsBig</File>
+			<Index>0x0b</Index>
+		</Texture>
+		<Rotation>-40</Rotation>
+	</Object>
+	
 	<Object type="0x210" id="Morto Big Blue">
 		<Class>Projectile</Class>
 		<Texture>

@@ -64,6 +64,7 @@ public class AssetLoader
       AssetLibrary.addImageSet("LostHallsProjs2", new EmbeddedAssets.LostHallsProjs2Embed_().bitmapData, 8, 8);
       AssetLibrary.addImageSet("CustomProjs", new EmbeddedAssets.CustomProjsEmbed_().bitmapData, 8, 8);
       AssetLibrary.addImageSet("CustomObj", new EmbeddedAssets.CustomObjEmbed_().bitmapData, 8, 8);
+      AssetLibrary.addImageSet("CustomObj1", new EmbeddedAssets.CustomObj1Embed_().bitmapData, 8, 8);
       AssetLibrary.addImageSet("LostHallsProjs", new EmbeddedAssets.LostHallsProjsEmbed_().bitmapData, 8, 8);
       AssetLibrary.addImageSet("LostHallsObj", new EmbeddedAssets.LostHallsObjEmbed_().bitmapData, 8, 8);
       AssetLibrary.addImageSet("LostHallsObjects16x16", new EmbeddedAssets.LostHallsObjects16x16Embed_().bitmapData, 16, 16);

@@ -27553,7 +27553,6 @@
       <Speed>65</Speed>
       <Size>100</Size>
       <MultiHit />
-      <ConditionEffect duration="3">Confused</ConditionEffect>
       <LifetimeMS>2000</LifetimeMS>
     </Projectile>
   </Object>
@@ -27588,6 +27587,224 @@
     <Size>100</Size>
     <MaxHitPoints>30000</MaxHitPoints>
     <Defense>20</Defense>
+  </Object>
+  <Object type="0x510" id="Baron Turret">
+    <Enemy />
+    <Class>Character</Class>
+    <Hero />
+    <SpecialEnemy />
+    <God />
+    <Level>1</Level>
+    <Texture>
+      <File>invisible</File>
+      <Index>0</Index>
+    </Texture>
+    <HitSound>monster/goblins_hit</HitSound>
+    <DeathSound>monster/goblins_death</DeathSound>
+    <Size>100</Size>
+    <ShadowSize>45</ShadowSize>
+    <MaxHitPoints>65000</MaxHitPoints>
+    <Defense>25</Defense>
+    <XpMult>2.5</XpMult>
+    <Projectile id="0">
+      <ObjectId>Lava Star</ObjectId>
+      <Damage>130</Damage>
+      <Size>150</Size>
+      <Speed>0</Speed>
+      <ArmorPierce />
+      <LifetimeMS>1100</LifetimeMS>
+    </Projectile>
+    <Projectile id="1">
+      <ObjectId>Lava Star</ObjectId>
+      <Damage>130</Damage>
+      <Size>150</Size>
+      <Speed>75</Speed>
+      <ArmorPierce />
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+  </Object>
+  <Object type="0x511" id="Baron Turret 1">
+    <Enemy />
+    <Class>Character</Class>
+    <Hero />
+    <SpecialEnemy />
+    <God />
+    <Level>1</Level>
+    <Texture>
+      <File>invisible</File>
+      <Index>0</Index>
+    </Texture>
+    <HitSound>monster/goblins_hit</HitSound>
+    <DeathSound>monster/goblins_death</DeathSound>
+    <Size>100</Size>
+    <ShadowSize>45</ShadowSize>
+    <MaxHitPoints>65000</MaxHitPoints>
+    <Defense>25</Defense>
+    <XpMult>2.5</XpMult>
+    <Projectile id="0">
+      <ObjectId>Lava Star</ObjectId>
+      <Damage>130</Damage>
+      <Size>150</Size>
+      <Speed>0</Speed>
+      <ArmorPierce />
+      <LifetimeMS>1100</LifetimeMS>
+    </Projectile>
+    <Projectile id="1">
+      <ObjectId>Lava Star</ObjectId>
+      <Damage>130</Damage>
+      <Size>150</Size>
+      <Speed>75</Speed>
+      <ArmorPierce />
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+  </Object>
+  <Object type="0x512" id="Baron Turret 2">
+    <Enemy />
+    <Class>Character</Class>
+    <Hero />
+    <SpecialEnemy />
+    <God />
+    <Level>1</Level>
+    <Texture>
+      <File>invisible</File>
+      <Index>0</Index>
+    </Texture>
+    <HitSound>monster/goblins_hit</HitSound>
+    <DeathSound>monster/goblins_death</DeathSound>
+    <Size>100</Size>
+    <ShadowSize>45</ShadowSize>
+    <MaxHitPoints>65000</MaxHitPoints>
+    <Defense>25</Defense>
+    <XpMult>2.5</XpMult>
+    <Projectile id="0">
+      <ObjectId>Lava Star</ObjectId>
+      <Damage>130</Damage>
+      <Size>150</Size>
+      <Speed>0</Speed>
+      <ArmorPierce />
+      <LifetimeMS>1100</LifetimeMS>
+    </Projectile>
+    <Projectile id="1">
+      <ObjectId>Lava Star</ObjectId>
+      <Damage>130</Damage>
+      <Size>150</Size>
+      <Speed>75</Speed>
+      <ArmorPierce />
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+  </Object>
+  <Object type="0x513" id="Baron Turret 3">
+    <Enemy />
+    <Class>Character</Class>
+    <Hero />
+    <SpecialEnemy />
+    <God />
+    <Level>1</Level>
+    <Texture>
+      <File>invisible</File>
+      <Index>0</Index>
+    </Texture>
+    <HitSound>monster/goblins_hit</HitSound>
+    <DeathSound>monster/goblins_death</DeathSound>
+    <Size>100</Size>
+    <ShadowSize>45</ShadowSize>
+    <MaxHitPoints>65000</MaxHitPoints>
+    <Defense>25</Defense>
+    <XpMult>2.5</XpMult>
+    <Projectile id="0">
+      <ObjectId>Lava Star</ObjectId>
+      <Damage>130</Damage>
+      <Size>150</Size>
+      <Speed>0</Speed>
+      <ArmorPierce />
+      <LifetimeMS>1100</LifetimeMS>
+    </Projectile>
+    <Projectile id="1">
+      <ObjectId>Lava Star</ObjectId>
+      <Damage>130</Damage>
+      <Size>150</Size>
+      <Speed>75</Speed>
+      <ArmorPierce />
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+  </Object>
+  <Object type="0x490" id="The Baron">
+    <Class>Character</Class>
+    <Enemy />
+    <SpecialEnemy />
+    <Hero />
+    <God />
+    <Quest />
+    <KeepDamageRecord />
+    <Level>1</Level>
+    <AnimatedTexture>
+      <File>Custom32x32Encounters</File>
+      <Index>21</Index>
+    </AnimatedTexture>
+    <DisplayId>The Baron</DisplayId>
+    <Size>170</Size>
+    <MaxHitPoints>130000</MaxHitPoints>
+    <Defense>30</Defense>
+    <StasisImmune />
+    <StunImmune />
+    <SlowImmune />
+    <ParalyzeImmune />
+    <XpMult>1.2</XpMult>
+    <Projectile id="0">
+      <ObjectId>Sonic Black</ObjectId>
+      <Damage>100</Damage>
+      <Size>150</Size>
+      <Speed>90</Speed>
+      <ArmorPierce />
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+    <Projectile id="1">
+      <ObjectId>Sonic White</ObjectId>
+      <Damage>30</Damage>
+      <Size>150</Size>
+      <Speed>100</Speed>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+    <Projectile id="2">
+      <ObjectId>Big Red Arc</ObjectId>
+      <Damage>70</Damage>
+      <Size>180</Size>
+      <Speed>85</Speed>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+    <Projectile id="3">
+      <ObjectId>Red Arc</ObjectId>
+      <Damage>80</Damage>
+      <Size>120</Size>
+      <Speed>50</Speed>
+      <ConditionEffect duration="3">Armor Broken</ConditionEffect>
+      <LifetimeMS>4000</LifetimeMS>
+      <ArmorPiercing />
+    </Projectile>
+    <Projectile id="4">
+      <ObjectId>Golden Rings</ObjectId>
+      <Damage>100</Damage>
+      <Size>150</Size>
+      <Speed>90</Speed>
+      <ConditionEffect duration="5">Armor Broken</ConditionEffect>
+      <LifetimeMS>4000</LifetimeMS>
+      <MultiHit />
+      <ArmorPiercing />
+    </Projectile>
+    <Projectile id="5">
+      <ObjectId>Lava Star</ObjectId>
+      <Damage>110</Damage>
+      <Size>150</Size>
+      <Speed>120</Speed>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+    <Projectile id="6">
+      <ObjectId>Big Red Arc</ObjectId>
+      <Damage>70</Damage>
+      <Size>150</Size>
+      <Speed>65</Speed>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
   </Object>
   <Object type="0x5e49" id="Candy Gnome">
     <Enemy />
@@ -43749,10 +43966,11 @@
       <Index>0x06</Index>
     </Texture>
   </Object>
-  <Object type="0x4949" id="Beginner's Talisman">
+  <Object type="0x4949" id="Pocket Change">
     <Class>Equipment</Class>
-    <DisplayId>Basic Talisman</DisplayId>
+    <DisplayId>Pocket Change</DisplayId>
     <Item />
+    <Rare />
     <InvUse />
     <Texture>
       <File>CustomObj</File>
@@ -43762,13 +43980,365 @@
       <EffectInfo name="" description="What powers does this item hold?" />
     </ExtraTooltipData>
     <SlotType>10</SlotType>
-    <Description>A talisman gifted to you at birth by the gods</Description>
+    <Description>Increase to a player's health, mana, and loot drop chance!</Description>
     <Sound>use_potion</Sound>
     <Activate type="0x00">UnlockTalisman</Activate>
     <Consumable />
     <Potion />
     <Soulbound />
-    <BagType>1</BagType>
+    <BagType>6</BagType>
+  </Object>
+  <Object type="0x40a" id="Path of Destruction">
+    <Class>Equipment</Class>
+    <DisplayId>Path of Destruction</DisplayId>
+    <Item />
+    <Rare />
+    <InvUse />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0x1c</Index>
+    </Texture>
+    <ExtraTooltipData>
+      <EffectInfo name="" description="What powers does this item hold?" />
+    </ExtraTooltipData>
+    <SlotType>10</SlotType>
+    <Description>Increase to a player's speed, wisdom, vitality, and defense!</Description>
+    <Sound>use_potion</Sound>
+    <Activate type="0x04">UnlockTalisman</Activate>
+    <Consumable />
+    <Potion />
+    <Soulbound />
+    <BagType>6</BagType>
+  </Object>
+  <Object type="0x40b" id="Heart and Soul">
+    <Class>Equipment</Class>
+    <DisplayId>Heart and Soul</DisplayId>
+    <Item />
+    <Rare />
+    <InvUse />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0x1c</Index>
+    </Texture>
+    <ExtraTooltipData>
+      <EffectInfo name="" description="What powers does this item hold?" />
+    </ExtraTooltipData>
+    <SlotType>10</SlotType>
+    <Description>Increase to a player's attack and dexterity!</Description>
+    <Sound>use_potion</Sound>
+    <Activate type="0x05">UnlockTalisman</Activate>
+    <Consumable />
+    <Potion />
+    <Soulbound />
+    <BagType>6</BagType>
+  </Object>
+  <Object type="0x40c" id="Blood Exchange">
+    <Class>Equipment</Class>
+    <DisplayId>Blood Exchange</DisplayId>
+    <Item />
+    <Legendary />
+    <InvUse />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x10</Index>
+    </Texture>
+    <ExtraTooltipData>
+      <EffectInfo name="" description="What powers does this item hold?" />
+    </ExtraTooltipData>
+    <SlotType>10</SlotType>
+    <Description>Abilities use health instead of mana!</Description>
+    <Sound>use_potion</Sound>
+    <Activate type="0x06">UnlockTalisman</Activate>
+    <Consumable />
+    <Potion />
+    <Soulbound />
+    <BagType>6</BagType>
+  </Object>
+  <Object type="0x40d" id="Eternal Youth">
+    <Class>Equipment</Class>
+    <DisplayId>Eternal Youth</DisplayId>
+    <Item />
+    <Legendary />
+    <InvUse />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x11</Index>
+    </Texture>
+    <ExtraTooltipData>
+      <EffectInfo name="" description="What powers does this item hold?" />
+    </ExtraTooltipData>
+    <SlotType>10</SlotType>
+    <Description>This gives 200% more HP, but takes away speed, attack, dexterity, and wisdom!</Description>
+    <Sound>use_potion</Sound>
+    <Activate type="0x07">UnlockTalisman</Activate>
+    <Consumable />
+    <Potion />
+    <Soulbound />
+    <BagType>6</BagType>
+  </Object>
+  <Object type="0x40e" id="Unyielding Resilience">
+    <Class>Equipment</Class>
+    <DisplayId>Unyielding Resilience</DisplayId>
+    <Item />
+    <Legendary />
+    <InvUse />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x12</Index>
+    </Texture>
+    <ExtraTooltipData>
+      <EffectInfo name="" description="What powers does this item hold?" />
+    </ExtraTooltipData>
+    <SlotType>10</SlotType>
+    <Description>Significantly increases your health regeneration, but decreases your mana regeneration.</Description>
+    <Sound>use_potion</Sound>
+    <Activate type="0x08">UnlockTalisman</Activate>
+    <Consumable />
+    <Potion />
+    <Soulbound />
+    <BagType>6</BagType>
+  </Object>
+  <Object type="0x40f" id="Wrath's Incarnate">
+    <Class>Equipment</Class>
+    <DisplayId>Wrath's Incarnate</DisplayId>
+    <Item />
+    <Legendary />
+    <InvUse />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x20</Index>
+    </Texture>
+    <ExtraTooltipData>
+      <EffectInfo name="" description="What powers does this item hold?" />
+    </ExtraTooltipData>
+    <SlotType>10</SlotType>
+    <Description>When a player's health is full your damage is increased, but when health isn't full, damage is decreased.</Description>
+    <Sound>use_potion</Sound>
+    <Activate type="0x09">UnlockTalisman</Activate>
+    <Consumable />
+    <Potion />
+    <Soulbound />
+    <BagType>6</BagType>
+  </Object>
+  <Object type="0x407" id="Primal Rage">
+    <Class>Equipment</Class>
+    <DisplayId>Primal Rage</DisplayId>
+    <Item />
+    <Legendary />
+    <InvUse />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x21</Index>
+    </Texture>
+    <ExtraTooltipData>
+      <EffectInfo name="" description="What powers does this item hold?" />
+    </ExtraTooltipData>
+    <SlotType>10</SlotType>
+    <Description>Every shot pierces an enemies armor, but your damage is averaged. You're also immune to weaken and damaging.</Description>
+    <Sound>use_potion</Sound>
+    <Activate type="0x10">UnlockTalisman</Activate>
+    <Consumable />
+    <Potion />
+    <Soulbound />
+    <BagType>6</BagType>
+  </Object>
+  <Object type="0x408" id="Call to Arms">
+    <Class>Equipment</Class>
+    <DisplayId>Call to Arms</DisplayId>
+    <Item />
+    <Legendary />
+    <InvUse />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x22</Index>
+    </Texture>
+    <ExtraTooltipData>
+      <EffectInfo name="" description="What powers does this item hold?" />
+    </ExtraTooltipData>
+    <SlotType>10</SlotType>
+    <Description>When a player is above 75% health, their RoF and Health regeneration is increase. When belore 75%, RoF and health regeneration is decreased.</Description>
+    <Sound>use_potion</Sound>
+    <Activate type="0x11">UnlockTalisman</Activate>
+    <Consumable />
+    <Potion />
+    <Soulbound />
+    <BagType>6</BagType>
+  </Object>
+  <Object type="0x409" id="Divine Intellect">
+    <Class>Equipment</Class>
+    <DisplayId>Divine Intellect</DisplayId>
+    <Item />
+    <Legendary />
+    <InvUse />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x30</Index>
+    </Texture>
+    <ExtraTooltipData>
+      <EffectInfo name="" description="What powers does this item hold?" />
+    </ExtraTooltipData>
+    <SlotType>10</SlotType>
+    <Description>Mana Regeneration is significantly increased, but health regeneration is decreased.</Description>
+    <Sound>use_potion</Sound>
+    <Activate type="0x12">UnlockTalisman</Activate>
+    <Consumable />
+    <Potion />
+    <Soulbound />
+    <BagType>6</BagType>
+  </Object>
+  <Object type="0x410" id="Insatiable Thirst">
+    <Class>Equipment</Class>
+    <DisplayId>Insatiable Thirst</DisplayId>
+    <Item />
+    <Legendary />
+    <InvUse />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x31</Index>
+    </Texture>
+    <ExtraTooltipData>
+      <EffectInfo name="" description="What powers does this item hold?" />
+    </ExtraTooltipData>
+    <SlotType>10</SlotType>
+    <Description>When hitting an enemy, 1% of your mana is restored, but your mana regeneration is significantly increased.</Description>
+    <Sound>use_potion</Sound>
+    <Activate type="0x13">UnlockTalisman</Activate>
+    <Consumable />
+    <Potion />
+    <Soulbound />
+    <BagType>6</BagType>
+  </Object>
+  <Object type="0x411" id="Spellslinger">
+    <Class>Equipment</Class>
+    <DisplayId>Spellslinger</DisplayId>
+    <Item />
+    <Legendary />
+    <InvUse />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x32</Index>
+    </Texture>
+    <ExtraTooltipData>
+      <EffectInfo name="" description="What powers does this item hold?" />
+    </ExtraTooltipData>
+    <SlotType>10</SlotType>
+    <Description>Ability damage is increased by 30%, but mana regeneration is decreased.</Description>
+    <Sound>use_potion</Sound>
+    <Activate type="0x14">UnlockTalisman</Activate>
+    <Consumable />
+    <Potion />
+    <Soulbound />
+    <BagType>6</BagType>
+  </Object>
+  <Object type="0x412" id="Iron Will">
+    <Class>Equipment</Class>
+    <DisplayId>Iron Will</DisplayId>
+    <Item />
+    <Legendary />
+    <InvUse />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x40</Index>
+    </Texture>
+    <ExtraTooltipData>
+      <EffectInfo name="" description="What powers does this item hold?" />
+    </ExtraTooltipData>
+    <SlotType>10</SlotType>
+    <Description>A significant increase to a player's defense, but a drawback to the regeneration of mana and health.</Description>
+    <Sound>use_potion</Sound>
+    <Activate type="0x15">UnlockTalisman</Activate>
+    <Consumable />
+    <Potion />
+    <Soulbound />
+    <BagType>6</BagType>
+  </Object>
+  <Object type="0x413" id="Party of One">
+    <Class>Equipment</Class>
+    <DisplayId>Party of One</DisplayId>
+    <Item />
+    <Legendary />
+    <InvUse />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x41</Index>
+    </Texture>
+    <ExtraTooltipData>
+      <EffectInfo name="" description="What powers does this item hold?" />
+    </ExtraTooltipData>
+    <SlotType>10</SlotType>
+    <Description>Boosts a player's probability of finding loot, but as more players join the same instance as them, their likelihood of finding loot decreases.</Description>
+    <Sound>use_potion</Sound>
+    <Activate type="0x16">UnlockTalisman</Activate>
+    <Consumable />
+    <Potion />
+    <Soulbound />
+    <BagType>6</BagType>
+  </Object>
+  <Object type="0x414" id="Forbidden Fruit">
+    <Class>Equipment</Class>
+    <DisplayId>Forbidden Fruit</DisplayId>
+    <Item />
+    <Legendary />
+    <InvUse />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x42</Index>
+    </Texture>
+    <ExtraTooltipData>
+      <EffectInfo name="" description="What powers does this item hold?" />
+    </ExtraTooltipData>
+    <SlotType>10</SlotType>
+    <Description>Each HP or MP potion stacked increases a players HP or MP regeneration, but the player is stunned when consuming either potion.</Description>
+    <Sound>use_potion</Sound>
+    <Activate type="0x17">UnlockTalisman</Activate>
+    <Consumable />
+    <Potion />
+    <Soulbound />
+    <BagType>6</BagType>
+  </Object>
+  <Object type="0x415" id="Luck of the Irish">
+    <Class>Equipment</Class>
+    <DisplayId>Luck of the Irish</DisplayId>
+    <Item />
+    <Legendary />
+    <InvUse />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x51</Index>
+    </Texture>
+    <ExtraTooltipData>
+      <EffectInfo name="" description="50% whitebag increase, can only obtain whitebags" />
+    </ExtraTooltipData>
+    <SlotType>10</SlotType>
+    <Description>A player's chance at a white bag is increased by 50%, but they can only obtain white bags.</Description>
+    <Sound>use_potion</Sound>
+    <Activate type="0x18">UnlockTalisman</Activate>
+    <Consumable />
+    <Potion />
+    <Soulbound />
+    <BagType>6</BagType>
+  </Object>
+  <Object type="0x416" id="Known After Death">
+    <Class>Equipment</Class>
+    <DisplayId>Known After Death</DisplayId>
+    <Item />
+    <Legendary />
+    <InvUse />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x50</Index>
+    </Texture>
+    <ExtraTooltipData>
+      <EffectInfo name="" description="+200% Fame Gain, No longer gets loot" />
+    </ExtraTooltipData>
+    <SlotType>10</SlotType>
+    <Description>Significant increase to fame gain, but loot is no longer obtainable.</Description>
+    <Sound>use_potion</Sound>
+    <Activate type="0x19">UnlockTalisman</Activate>
+    <Consumable />
+    <Potion />
+    <Soulbound />
+    <BagType>6</BagType>
   </Object>
   <Object type="0x4950" id="Severed Marble Hand">
     <Class>Equipment</Class>
@@ -44009,6 +44579,24 @@
     <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <Mythical />
+  </Object>
+  <Object type="0x520" id="Talisman Fragment">
+    <Class>Equipment</Class>
+    <Item />
+    <NoTierTag />
+    <SPlus />
+    <DisplayId>Talisman Fragment</DisplayId>
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0x5a</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>Open and discover the mysteries of the Talisman King.</Description>
+    <Sound>use_potion</Sound>
+    <InvUse />
+    <Potion />
+    <Activate>TalismanFragment</Activate>
+    <BagType>7</BagType>
   </Object>
   <Object type="0x9903" id="Crafting Material 1">
     <Class>Equipment</Class>
@@ -56303,14 +56891,14 @@
     </Texture>
     <SlotType>9</SlotType>
     <Description>An unfathomable amount of strength pulses through this ring. Only the most righteous mortals can touch this ring and live.</Description>
-    <ActivateOnEquip stat="0" amount="91">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="90">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="3" amount="90">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="20" amount="1">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="2">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="22" amount="3">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="4">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="5">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="5">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="5">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="27" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="5">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>7</FameBonus>
     <feedPower>1500</feedPower>
@@ -63069,7 +63657,7 @@
     <ActivateOnEquip stat="21" amount="3">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>5</FameBonus>
-    <DisplayId>Golden Oryx Sword</DisplayId>
+    <DisplayId>Sword of Golden Fragments</DisplayId>
   </Object>
   <Object type="0x5061" id="Abyssal Sword">
     <Class>Equipment</Class>
@@ -75133,6 +75721,23 @@
     </Animation>
     <Static />
   </Object>
+  <Object type="0x45a" id="Admin Orb Generator">
+    <DisplayId>Admin Orb</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x04</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>I may follow you, but you are not my master.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Admin Orb" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+  </Object>
   <Object type="0x1500" id="Black Cat Generator">
     <DisplayId>Black Cat</DisplayId>
     <Class>Equipment</Class>
@@ -76553,6 +77158,16 @@
     <Soulbound />
     <Activate objectId="Dreidel" cooldown="10">PermaPet</Activate>
     <OldSound>use_potion</OldSound>
+  </Object>
+  <Object type="0x45b" id="Admin Orb">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>Custom32x32Encounters</File>
+      <Index>22</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
   </Object>
   <Object type="0x074c" id="Nexus Turkey">
     <DisplayId>Turkey</DisplayId>
@@ -80493,6 +81108,54 @@
       <Index>0xff</Index>
     </Texture>
     <AngleCorrection>1</AngleCorrection>
+  </Object>
+  <Object type="0x491" id="Sonic Black">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>CustomProjsBig</File>
+      <Index>0x06</Index>
+    </Texture>
+    <AngleCorrection>1</AngleCorrection>
+  </Object>
+  <Object type="0x492" id="Sonic White">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>CustomProjsBig</File>
+      <Index>0x07</Index>
+    </Texture>
+    <AngleCorrection>1</AngleCorrection>
+  </Object>
+  <Object type="0x493" id="Big Red Arc">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>CustomProjsBig</File>
+      <Index>0x08</Index>
+    </Texture>
+    <AngleCorrection>1</AngleCorrection>
+  </Object>
+  <Object type="0x494" id="Red Arc">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>CustomProjsBig</File>
+      <Index>0x09</Index>
+    </Texture>
+    <AngleCorrection>1</AngleCorrection>
+  </Object>
+  <Object type="0x495" id="Golden Rings">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>CustomProjsBig</File>
+      <Index>0x0a</Index>
+    </Texture>
+    <Rotation>60</Rotation>
+  </Object>
+  <Object type="0x496" id="Lava Star">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>CustomProjsBig</File>
+      <Index>0x0b</Index>
+    </Texture>
+    <Rotation>-40</Rotation>
   </Object>
   <Object type="0x210" id="Morto Big Blue">
     <Class>Projectile</Class>

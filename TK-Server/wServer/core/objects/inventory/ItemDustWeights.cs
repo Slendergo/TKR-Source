@@ -13,6 +13,7 @@ namespace wServer.core.objects.inventory
         public ItemDustPools SpecialDust { get; private set; } = new ItemDustPools();
         public ItemDustPools MiscDust { get; private set; } = new ItemDustPools();
         public ItemDustPools PotionDust { get; private set; } = new ItemDustPools();
+        public ItemDustPools TalismanFragment { get; private set; } = new ItemDustPools();
 
         private readonly GameServer GameServer;
 
@@ -29,6 +30,8 @@ namespace wServer.core.objects.inventory
                 SpecialDust.AddPool(GetItems(items, xmlData));
             foreach (var items in xmlData.ItemDusts.MiscPools)
                 MiscDust.AddPool(GetItems(items, xmlData));
+            foreach(var items in xmlData.ItemDusts.TalismanPools)
+                TalismanFragment.AddPool(GetItems(items, xmlData));
             foreach (var items in xmlData.ItemDusts.PotionPools)
                 PotionDust.AddPool(GetItems(items, xmlData));
         }
@@ -52,6 +55,7 @@ namespace wServer.core.objects.inventory
             foreach (var namedItem in items.NamedItems)
             {
                 var foundItem = xmlData.Items.Values.FirstOrDefault(item => item.ObjectId == namedItem.ItemName);
+                Console.WriteLine(namedItem.ItemName);
                 if (foundItem == null)
                     throw new Exception("Invalid Name of item");
                 poolItems.Add(new KeyValuePair<Item, int>(foundItem, namedItem.Weight));

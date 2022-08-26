@@ -1,4 +1,226 @@
 <Objects>
+	<Ground type="0x452" id="Dark Cobblestone 2">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x07</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x453" id="Dark Cobblestone TRL">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x16</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x454" id="Dark Cobblestone TRML">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x17</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x455" id="Dark Cobblestone TRMR">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x18</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x456" id="Dark Cobblestone TRR">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x19</Index>
+		</Texture>
+	</Ground>
+	<!--ff-->
+	<Ground type="0x457" id="Dark Cobblestone MRL">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x26</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x458" id="Dark Cobblestone MRML">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x27</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x459" id="Dark Cobblestone MRMR">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x28</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x460" id="Dark Cobblestone MRR">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x29</Index>
+		</Texture>
+	</Ground>
+	<!--ff-->
+	<Ground type="0x461" id="Dark Cobblestone MMRL">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x36</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x462" id="Dark Cobblestone MMRML">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x37</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x463" id="Dark Cobblestone MMRMR">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x38</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x464" id="Dark Cobblestone MMRR">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x39</Index>
+		</Texture>
+	</Ground>
+	<!--ff-->
+	<Ground type="0x465" id="Dark Cobblestone LRL">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x46</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x466" id="Dark Cobblestone LRML">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x47</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x467" id="Dark Cobblestone LRMR">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x48</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x468" id="Dark Cobblestone LRR">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x49</Index>
+		</Texture>
+	</Ground>
+
+	<Ground type="0x469" id="Dark Cobblestone SS">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x50</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x470" id="Dark Cobblestone SS 1">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x51</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x471" id="Dark Cobblestone SS 2">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x52</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x472" id="Dark Cobblestone SS 3">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x53</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x473" id="Dark Cobblestone SS 4">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x54</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x474" id="Dark Cobblestone SS 5">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x55</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x476" id="Dark Cobblestone SS 6">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x60</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x477" id="Dark Cobblestone SS 7">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x61</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x478" id="Dark Cobblestone SS 8">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x63</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x479" id="Dark Cobblestone SS 9">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x64</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x480" id="Dark Cobblestone SS 10">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x65</Index>
+		</Texture>
+	</Ground>
+
+	<Ground type="0x481" id="Dark Cobblestone SS 11">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x70</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x482" id="Dark Cobblestone SS 12">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x71</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x483" id="Dark Cobblestone SS 13">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x73</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x484" id="Dark Cobblestone SS 14">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x74</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x485" id="Dark Cobblestone SS 15">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x75</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x486" id="Dark Cobblestone SS 16">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x76</Index>
+		</Texture>
+	</Ground>
+	
+	<Ground type="0x451" id="Dark Cobblestone 1">
+		<RandomTexture>
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x05</Index>
+		</Texture>
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x05</Index>
+		</Texture>
+		</RandomTexture>
+	</Ground>
 	<Object type="0x260" id="Dark Death Tree">
 		<Class>GameObject</Class>
 		<Size>120</Size>

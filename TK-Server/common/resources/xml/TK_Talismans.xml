@@ -194,8 +194,8 @@
 
 	<!--Wind-->
 	<Talisman type="0x12">
-		<Name>Divine Intillect</Name>
-		<ItemAssociatedWith>Divine Intillect</ItemAssociatedWith>
+		<Name>Divine Intellect</Name>
+		<ItemAssociatedWith>Divine Intellect</ItemAssociatedWith>
 		<BaseUpgradeCost>1000</BaseUpgradeCost>
 		<TierUpgradeCost>3000</TierUpgradeCost>
 		<CostMultiplier>1.1</CostMultiplier>

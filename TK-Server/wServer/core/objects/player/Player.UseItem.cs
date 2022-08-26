@@ -53,6 +53,19 @@ namespace wServer.core.objects
 
             SendInfo($"Used a Item Dust and obtained a {item.DisplayName}");
         }
+
+        public void AETalismanFragment(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
+        {
+            var entity = World.GetEntity(objId);
+
+            var dustItem = World.GameServer.ItemDustWeights.TalismanFragment.GetRandom(World.Random);
+            if (entity is Container container)
+                container.Inventory[slot] = dustItem;
+            else
+                Inventory[slot] = dustItem;
+
+            SendInfo($"Openned a Talisman Fragment and obtained a {dustItem.DisplayName ?? dustItem.ObjectId}");
+        }
         public void AESpecialDust(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
             var entity = World.GetEntity(objId);
@@ -356,6 +369,10 @@ namespace wServer.core.objects
 
                     case ActivateEffects.SpecialDust:
                         AESpecialDust(time, item, target, slot, objId, eff);
+                        break;
+
+                    case ActivateEffects.TalismanFragment:
+                        AETalismanFragment(time, item, target, slot, objId, eff);
                         break;
 
                     case ActivateEffects.MiscellaneousDust:

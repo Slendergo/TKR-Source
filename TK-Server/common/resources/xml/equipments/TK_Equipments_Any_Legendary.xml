@@ -11,7 +11,7 @@
 			<Index>0x1c</Index>
 		</Texture>
 		<ExtraTooltipData>
-			<EffectInfo name="" description="What powers does this item hold?" />
+			<EffectInfo name="" description="+2% LB, +10MP, +10HP" />
 		</ExtraTooltipData>
 		<SlotType>10</SlotType>
 		<Description>Increase to a player's health, mana, and loot drop chance!</Description>
@@ -77,8 +77,8 @@
 		<Legendary />
 		<InvUse />
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x1c</Index>
+			<File>CustomObj1</File>
+			<Index>0x10</Index>
 		</Texture>
 		<ExtraTooltipData>
 			<EffectInfo name="" description="What powers does this item hold?" />
@@ -99,8 +99,8 @@
 		<Legendary />
 		<InvUse />
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x1c</Index>
+			<File>CustomObj1</File>
+			<Index>0x11</Index>
 		</Texture>
 		<ExtraTooltipData>
 			<EffectInfo name="" description="What powers does this item hold?" />
@@ -121,8 +121,8 @@
 		<Legendary />
 		<InvUse />
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x1c</Index>
+			<File>CustomObj1</File>
+			<Index>0x12</Index>
 		</Texture>
 		<ExtraTooltipData>
 			<EffectInfo name="" description="What powers does this item hold?" />
@@ -144,8 +144,8 @@
 		<Legendary />
 		<InvUse />
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x1c</Index>
+			<File>CustomObj1</File>
+			<Index>0x20</Index>
 		</Texture>
 		<ExtraTooltipData>
 			<EffectInfo name="" description="What powers does this item hold?" />
@@ -166,8 +166,8 @@
 		<Legendary />
 		<InvUse />
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x1c</Index>
+			<File>CustomObj1</File>
+			<Index>0x21</Index>
 		</Texture>
 		<ExtraTooltipData>
 			<EffectInfo name="" description="What powers does this item hold?" />
@@ -188,8 +188,8 @@
 		<Legendary />
 		<InvUse />
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x1c</Index>
+			<File>CustomObj1</File>
+			<Index>0x22</Index>
 		</Texture>
 		<ExtraTooltipData>
 			<EffectInfo name="" description="What powers does this item hold?" />
@@ -204,15 +204,15 @@
 		<BagType>6</BagType>
 	</Object>
 			<!--Wind-->
-	<Object type="0x409" id="Divine Intillect">
+	<Object type="0x409" id="Divine Intellect">
 		<Class>Equipment</Class>
-		<DisplayId>Divine Intillect</DisplayId>
+		<DisplayId>Divine Intellect</DisplayId>
 		<Item />
 		<Legendary />
 		<InvUse />
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x1c</Index>
+			<File>CustomObj1</File>
+			<Index>0x30</Index>
 		</Texture>
 		<ExtraTooltipData>
 			<EffectInfo name="" description="What powers does this item hold?" />
@@ -233,8 +233,8 @@
 		<Legendary />
 		<InvUse />
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x1c</Index>
+			<File>CustomObj1</File>
+			<Index>0x31</Index>
 		</Texture>
 		<ExtraTooltipData>
 			<EffectInfo name="" description="What powers does this item hold?" />
@@ -255,8 +255,8 @@
 		<Legendary />
 		<InvUse />
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x1c</Index>
+			<File>CustomObj1</File>
+			<Index>0x32</Index>
 		</Texture>
 		<ExtraTooltipData>
 			<EffectInfo name="" description="What powers does this item hold?" />
@@ -278,8 +278,8 @@
 		<Legendary />
 		<InvUse />
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x1c</Index>
+			<File>CustomObj1</File>
+			<Index>0x40</Index>
 		</Texture>
 		<ExtraTooltipData>
 			<EffectInfo name="" description="What powers does this item hold?" />
@@ -300,8 +300,8 @@
 		<Legendary />
 		<InvUse />
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x1c</Index>
+			<File>CustomObj1</File>
+			<Index>0x41</Index>
 		</Texture>
 		<ExtraTooltipData>
 			<EffectInfo name="" description="What powers does this item hold?" />
@@ -322,8 +322,8 @@
 		<Legendary />
 		<InvUse />
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x1c</Index>
+			<File>CustomObj1</File>
+			<Index>0x42</Index>
 		</Texture>
 		<ExtraTooltipData>
 			<EffectInfo name="" description="What powers does this item hold?" />
@@ -347,8 +347,8 @@
 		<Legendary />
 		<InvUse />
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x1c</Index>
+			<File>CustomObj1</File>
+			<Index>0x51</Index>
 		</Texture>
 		<ExtraTooltipData>
 			<EffectInfo name="" description="50% whitebag increase, can only obtain whitebags" />
@@ -369,8 +369,8 @@
 		<Legendary />
 		<InvUse />
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0x1c</Index>
+			<File>CustomObj1</File>
+			<Index>0x50</Index>
 		</Texture>
 		<ExtraTooltipData>
 			<EffectInfo name="" description="+200% Fame Gain, No longer gets loot" />

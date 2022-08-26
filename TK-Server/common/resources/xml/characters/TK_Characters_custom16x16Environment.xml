@@ -18,7 +18,6 @@
 			<Speed>65</Speed>
 			<Size>100</Size>
 			<MultiHit/>
-			<ConditionEffect duration="3">Confused</ConditionEffect>
 			<LifetimeMS>2000</LifetimeMS>
 		</Projectile>
 	</Object>

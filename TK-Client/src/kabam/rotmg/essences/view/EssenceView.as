@@ -6,6 +6,7 @@ import flash.display.Graphics;
 import flash.display.Shape;
 
 import flash.display.Sprite;
+import flash.utils.Dictionary;
 
 import io.decagames.rotmg.ui.sliceScaling.SliceScalingBitmap;
 
@@ -58,7 +59,7 @@ public class EssenceView extends ModalPopup {
 
     private var slotsScrollBar_:Scrollbar;
 
-    public var slots_:Vector.<TalismanSlot>;
+    public var slots_:Dictionary;
 
     public var editingSlot_:TalismanSlot;
 
@@ -84,19 +85,24 @@ public class EssenceView extends ModalPopup {
         this.sprite_.addChild(this.slotsContainer_);
         addChild(this.sprite_);
 
-        var talismans:Vector.<TalismanProperties> = TalismanLibrary.getTalismans();
+        var talismans:Vector.<int> = TalismanLibrary.getTalismanTypes();
 
-        this.slots_ = new Vector.<TalismanSlot>();
+        this.slots_ = new Dictionary();
         for(var i:int = 0; i < talismans.length; i++)
         {
-            var slot:TalismanSlot = new TalismanSlot(talismans[i], 152, 96, this);
+            var talisman:TalismanProperties = TalismanLibrary.getTalisman(talismans[i]);
+            if(talisman == null) {
+                continue;
+            }
+
+            var slot:TalismanSlot = new TalismanSlot(talisman, 152, 96, this);
             slot.x = 114 + 72 + slot.w_ * int(i % 3) + 70 - slot.width;
             slot.y = 16 + slot.h_ * int(i / 3);
             this.slotsContainer_.addChild(slot);
 
             slot.disable();
 
-            this.slots_.push(slot);
+            this.slots_[talisman.type_] = slot;
         }
 
         updateSlots();

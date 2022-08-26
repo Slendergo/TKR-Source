@@ -101,6 +101,7 @@ public class WebAccountInfoView extends Sprite implements AccountInfoView
    private function makeRegisterButton() : void
    {
       this.registerButton = new TitleMenuOption(REGISTER,FONT_SIZE,false);
+      this.registerButton.visible = false;
    }
 
    private function makeDividerText() : void
@@ -151,8 +152,8 @@ public class WebAccountInfoView extends Sprite implements AccountInfoView
       this.accountText.text = "Not Signed in - ";
       this.accountText.updateMetrics();
       this.loginButton.setText(LOG_IN);
-      this.addAndAlignHorizontally(this.accountText,this.registerButton,this.dividerText,this.loginButton);
-//      this.addAndAlignHorizontally(this.accountText, this.loginButton);
+//      this.addAndAlignHorizontally(this.accountText,this.registerButton,this.dividerText,this.loginButton);
+      this.addAndAlignHorizontally(this.accountText, this.loginButton);
    }
 
    private function addAndAlignHorizontally(... uiElements) : void

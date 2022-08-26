@@ -2,7 +2,7 @@
 package kabam.rotmg.ui.view {
 import mx.core.BitmapAsset;
 
-[Embed(source="clientimage2.png")]
+[Embed(source="clientimage.png")]
 public class TitleView_TitleScreenBackground extends BitmapAsset {
 
 

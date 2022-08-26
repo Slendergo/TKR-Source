@@ -89,21 +89,185 @@ public class TalismanToolTip extends ToolTip
             }
 
             xml = null;
-            for each(xml in tierXML.ImmuneTo){
-                this.effects.push(new Effect("", "Immune to " + xml.@effect));
-            }
+            for each(xml in tierXML.Extra){
 
-            xml = null;
-            for each(xml in tierXML.LootBoost){
                 var scaleType:String = "";
                 if(xml.@scale == "perLevel") {
                     scaleType = " Per Level"
                 }
+
                 var symbol:String = "+";
-                if(xml.@amount < 0){
+                if(xml.@percentage < 0){
                     symbol = "";
                 }
-                this.effects.push(new Effect("", symbol +xml.@amount + "% Loot Boost" + scaleType));
+
+                var type:String = xml;
+                switch(type){
+                    case "AbilityDamage":
+                        type = "Ability Damage"; break;
+                    case "ManaRegen":
+                        type = "MP Regen"; break;
+                    case "LifeRegen":
+                        type = "HP Regen"; break;
+                }
+
+                this.effects.push(new Effect("" , symbol + (xml.@percentage * 100.0) + "% " + type + scaleType));
+            }
+
+            xml = null;
+            for each(xml in tierXML.ImmuneTo){
+                this.effects.push(new Effect("", "Immune to " + xml.@effect));
+            }
+
+            if(tierXML.hasOwnProperty("CantGetLoot")){
+                this.effects.push(new Effect("", "You cant get loot"));
+            }
+
+            xml = null;
+            for each(xml in tierXML.FameGainBonus){
+                this.effects.push(new Effect("", "+" + (xml.@percentage * 100.0) + " Fame Gain"));
+            }
+
+            if(tierXML.hasOwnProperty("NoPotionHealing")){
+                this.effects.push(new Effect("", "Potion's Dont Heal & Stun you on use"));
+            }
+
+            xml = null;
+            for each(xml in tierXML.PotionStack){
+                var scaleType:String = " Flat";
+                if(xml.@scale == "perLevel") {
+                    scaleType = " Per Level"
+                }
+                var symbol:String = "+";
+                if(xml.@percentage < 0){
+                    symbol = "";
+                }
+
+                var type:String = xml.@type;
+                this.effects.push(new Effect("", symbol + (xml.@percentage * 100.0) + "% " + type + " " + scaleType + " Per Potion Stacked"));
+            }
+
+            if(tierXML.hasOwnProperty("ShotsPierceArmour")){
+                this.effects.push(new Effect("", "Shots Pierce Armour"));
+            }
+
+            if(tierXML.hasOwnProperty("DamageIsAverage")){
+                this.effects.push(new Effect("", "Weapon Damage is Averaged"));
+            }
+
+            if(tierXML.hasOwnProperty("RemoveManaBar")){
+                this.effects.push(new Effect("", "Cant use mana"));
+            }
+
+            if(tierXML.hasOwnProperty("AbilityLifeCost")){
+                this.effects.push(new Effect("", "Abilities cost " + (tierXML.@percentage * 100.0) + "% life"));
+            }
+
+            if(tierXML.hasOwnProperty("CanOnlyGetWhiteBags")){
+                this.effects.push(new Effect("", "You can only get white bag loot"));
+            }
+
+            xml = null;
+            for each(xml in tierXML.Health){
+                var scaleType:String = " Flat";
+                if(xml.@scale == "perLevel") {
+                    scaleType = " Per Level"
+                }
+
+                var condition:String = xml.condition;
+                if(condition == "above"){
+                    condition = "Above";
+                }
+                if(condition == "below"){
+                    condition = "Below";
+                }
+
+                var symbol:String = "+";
+                if(xml.@add < 0){
+                    symbol = "";
+                }
+
+                var type:String = xml;
+                switch(type){
+                    case "RateOfFire":
+                        type = "RateOfFire"; break;
+                    case "HealthRegen":
+                        type = "HP Regen"; break;
+                }
+                this.effects.push(new Effect("", "While " + condition + " " + symbol + (xml.@add * 100.0) + "% HP Gain " + type + scaleType));
+            }
+
+            xml = null;
+            for each(xml in tierXML.Health){
+                var scaleType:String = " Flat";
+                if(xml.@scale == "perLevel") {
+                    scaleType = " Per Level"
+                }
+                var symbol:String = "+";
+                if(xml.@percentage < 0){
+                    symbol = "";
+                }
+
+                var type:String = xml.@type;
+                if(type == "white"){
+                    type = "White Bag";
+                }
+                this.effects.push(new Effect("", symbol + (xml.@percentage * 100.0) + "% " + type + scaleType));
+            }
+
+            xml = null;
+            for each(xml in tierXML.LootBoost){
+                var scaleType:String = "Flat";
+                if(xml.@scale == "perLevel") {
+                    scaleType = " Per Level"
+                }
+                var symbol:String = "+";
+                if(xml.@percentage < 0){
+                    symbol = "";
+                }
+                this.effects.push(new Effect("", symbol + (xml.@percentage * 100.0) + "% Loot Boost" + scaleType));
+            }
+            xml = null;
+            for each(xml in tierXML.LootBoostPerPlayer){
+                var scaleType:String = "Flat";
+                if(xml.@scale == "perLevel") {
+                    scaleType = " Per Level"
+                }
+                var symbol:String = "+";
+                if(xml.@percentage < 0){
+                    symbol = "";
+                }
+                this.effects.push(new Effect("", symbol + (xml.@percentage * 100.0) + "% Loot Boost Per Player" + scaleType));
+            }
+
+            xml = null;
+            for each(xml in tierXML.ExtraDamageOn){
+                var scaleType:String = " Flat";
+                if(xml.@scale == "perLevel") {
+                    scaleType = " Per Level"
+                }
+                var symbol:String = "+";
+                if(xml.@percentage < 0){
+                    symbol = "";
+                }
+
+                var type:String = xml.@type;
+                if(type == "full"){
+                    type = " When full ";
+                }
+                else if(type == "notfull") {
+                    type = " When not full ";
+                }
+
+                var stat:String = xml.@stat;
+                if(stat == "health"){
+                    stat = "HP";
+                }
+                else if(stat == "mana"){
+                    stat = "MP";
+                }
+
+                this.effects.push(new Effect("", symbol + (xml.@percentage * 100.0) + "% Extra Damage" + scaleType + type + stat));
             }
 
             this.effects.push(new Effect("",""));

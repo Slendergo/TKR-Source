@@ -19,8 +19,8 @@
 		<Activate type="0x00">UnlockTalisman</Activate>
 		<Consumable />
 		<Potion />
-		<Soulbound/>
-		<BagType>6</BagType>
+		
+		<BagType>7</BagType>
 	</Object>
 	<Object type="0x40a" id="Path of Destruction">
 		<Class>Equipment</Class>
@@ -41,8 +41,8 @@
 		<Activate type="0x04">UnlockTalisman</Activate>
 		<Consumable />
 		<Potion />
-		<Soulbound/>
-		<BagType>6</BagType>
+		
+		<BagType>7</BagType>
 	</Object>
 	<Object type="0x40b" id="Heart and Soul">
 		<Class>Equipment</Class>
@@ -63,8 +63,7 @@
 		<Activate type="0x05">UnlockTalisman</Activate>
 		<Consumable />
 		<Potion />
-		<Soulbound/>
-		<BagType>6</BagType>
+		<BagType>7</BagType>
 	</Object>
 	<!--UT Talismans-->
 	
@@ -89,8 +88,7 @@
 		<Activate type="0x06">UnlockTalisman</Activate>
 		<Consumable />
 		<Potion />
-		<Soulbound/>
-		<BagType>6</BagType>
+		<BagType>7</BagType>
 	</Object>
 	<Object type="0x40d" id="Eternal Youth">
 		<Class>Equipment</Class>
@@ -111,8 +109,8 @@
 		<Activate type="0x07">UnlockTalisman</Activate>
 		<Consumable />
 		<Potion />
-		<Soulbound/>
-		<BagType>6</BagType>
+		
+		<BagType>7</BagType>
 	</Object>
 	<Object type="0x40e" id="Unyielding Resilience">
 		<Class>Equipment</Class>
@@ -133,8 +131,8 @@
 		<Activate type="0x08">UnlockTalisman</Activate>
 		<Consumable />
 		<Potion />
-		<Soulbound/>
-		<BagType>6</BagType>
+		
+		<BagType>7</BagType>
 	</Object>
 			<!--Fire-->
 	<Object type="0x40f" id="Wrath's Incarnate">
@@ -156,8 +154,8 @@
 		<Activate type="0x09">UnlockTalisman</Activate>
 		<Consumable />
 		<Potion />
-		<Soulbound/>
-		<BagType>6</BagType>
+		
+		<BagType>7</BagType>
 	</Object>
 	<Object type="0x407" id="Primal Rage">
 		<Class>Equipment</Class>
@@ -178,8 +176,8 @@
 		<Activate type="0x10">UnlockTalisman</Activate>
 		<Consumable />
 		<Potion />
-		<Soulbound/>
-		<BagType>6</BagType>
+		
+		<BagType>7</BagType>
 	</Object>
 	<Object type="0x408" id="Call to Arms">
 		<Class>Equipment</Class>
@@ -200,8 +198,8 @@
 		<Activate type="0x11">UnlockTalisman</Activate>
 		<Consumable />
 		<Potion />
-		<Soulbound/>
-		<BagType>6</BagType>
+		
+		<BagType>7</BagType>
 	</Object>
 			<!--Wind-->
 	<Object type="0x409" id="Divine Intellect">
@@ -223,8 +221,8 @@
 		<Activate type="0x12">UnlockTalisman</Activate>
 		<Consumable />
 		<Potion />
-		<Soulbound/>
-		<BagType>6</BagType>
+		
+		<BagType>7</BagType>
 	</Object>
 	<Object type="0x410" id="Insatiable Thirst">
 		<Class>Equipment</Class>
@@ -245,8 +243,8 @@
 		<Activate type="0x13">UnlockTalisman</Activate>
 		<Consumable />
 		<Potion />
-		<Soulbound/>
-		<BagType>6</BagType>
+		
+		<BagType>7</BagType>
 	</Object>
 	<Object type="0x411" id="Spellslinger">
 		<Class>Equipment</Class>
@@ -267,8 +265,8 @@
 		<Activate type="0x14">UnlockTalisman</Activate>
 		<Consumable />
 		<Potion />
-		<Soulbound/>
-		<BagType>6</BagType>
+		
+		<BagType>7</BagType>
 	</Object>
 			<!--Earth-->
 	<Object type="0x412" id="Iron Will">
@@ -290,8 +288,8 @@
 		<Activate type="0x15">UnlockTalisman</Activate>
 		<Consumable />
 		<Potion />
-		<Soulbound/>
-		<BagType>6</BagType>
+		
+		<BagType>7</BagType>
 	</Object>
 	<Object type="0x413" id="Party of One">
 		<Class>Equipment</Class>
@@ -312,8 +310,8 @@
 		<Activate type="0x16">UnlockTalisman</Activate>
 		<Consumable />
 		<Potion />
-		<Soulbound/>
-		<BagType>6</BagType>
+		
+		<BagType>7</BagType>
 	</Object>
 	<Object type="0x414" id="Forbidden Fruit">
 		<Class>Equipment</Class>
@@ -334,8 +332,8 @@
 		<Activate type="0x17">UnlockTalisman</Activate>
 		<Consumable />
 		<Potion />
-		<Soulbound/>
-		<BagType>6</BagType>
+		
+		<BagType>7</BagType>
 	</Object>
 	<!--Legendary Talismans-->
 
@@ -359,8 +357,8 @@
 		<Activate type="0x18">UnlockTalisman</Activate>
 		<Consumable />
 		<Potion />
-		<Soulbound/>
-		<BagType>6</BagType>
+		
+		<BagType>7</BagType>
 	</Object>
 	<Object type="0x416" id="Known After Death">
 		<Class>Equipment</Class>
@@ -381,8 +379,8 @@
 		<Activate type="0x19">UnlockTalisman</Activate>
 		<Consumable />
 		<Potion />
-		<Soulbound/>
-		<BagType>6</BagType>
+		
+		<BagType>7</BagType>
 	</Object>
 	<!--Mythical Talismans-->
 	
@@ -565,7 +563,7 @@
 			<EffectInfo name="Info" description="Only usable in the Vault."/>
 		</ExtraTooltipData>
 		<feedPower>200</feedPower>
-		<BagType>6</BagType>
+		<BagType>7</BagType>
 	</Object>
 	<Object type="0x9703" id="Epic Quest Chest Item">
 		<Class>Equipment</Class>

@@ -266,9 +266,11 @@ namespace wServer.core.objects
             var amountDonated = Client.Rank.TotalAmountDonated;
 
             var rank = Client.Rank.Rank;
-            while(newAmountDonated > 0)
+            while (newAmountDonated > 0)
             {
-                Console.WriteLine(newAmountDonated + " -> " + amountDonated);
+                amountDonated++;
+                newAmountDonated--;
+
                 if (rank == RankingType.Regular && amountDonated >= 10 && amountDonated < 20)
                 {
                     rank = RankingType.Supporter1;
@@ -299,9 +301,6 @@ namespace wServer.core.objects
                     GameServer.Database.UpdateCredit(Client.Account, 5000);
                     Console.WriteLine("Ranked Up");
                 }
-
-                amountDonated++;
-                newAmountDonated--;
             }
 
             Client.Rank.TotalAmountDonated = amountDonated;

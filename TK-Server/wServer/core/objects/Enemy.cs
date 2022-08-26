@@ -213,7 +213,10 @@ namespace wServer.core.objects
                 if (projectile.ProjDesc.ArmorPiercing)
                     def = 0;
 
-                var dmg = (int)StatsManager.GetDefenseDamage(this, projectile.Damage, def);
+
+                var pDamage = (int)(projectile.Damage + (projectile.Damage * (projectile.Host as Player).TalismanExtraAbilityDamage));
+
+                var dmg = (int)StatsManager.GetDefenseDamage(this, pDamage, def);
                 if (!HasConditionEffect(ConditionEffects.Invulnerable))
                     HP -= dmg;
                 

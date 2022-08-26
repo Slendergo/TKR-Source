@@ -34,7 +34,7 @@ namespace wServer.core.net.handlers
             var type = rdr.ReadInt32();
             var amount = rdr.ReadInt32();
 
-            if(type > (byte)TalismanActionType.DISABLE)
+            if(action > (byte)TalismanActionType.DISABLE)
                 return;
 
             Console.WriteLine($"ACTION: {action} | TYPE: {type} | AMOUNT: {amount}");

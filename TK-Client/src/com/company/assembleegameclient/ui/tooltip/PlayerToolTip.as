@@ -58,6 +58,7 @@ package com.company.assembleegameclient.ui.tooltip
          this.mpBar_ = new StatusBar(176,16,6325472,5526612,"MP");
          this.mpBar_.x = 6;
          this.mpBar_.y = yOffset;
+         this.mpBar_.visible = !this.player_.talismanNoManaBar_;
          addChild(this.mpBar_);
          yOffset = yOffset + 24;
          this.eGrid = new EquippedGrid(null,this.player_.slotTypes_,this.player_);

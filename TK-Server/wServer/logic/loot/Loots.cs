@@ -104,6 +104,7 @@ namespace wServer.logic.loot
             var allLoot = 0.0;
             allLoot += player.LDBoostTime > 0 ? 0.1 : 0;
             allLoot += player.TalismanLootBoost;
+            allLoot += player.TalismanLootBoostPerPlayer;
             return allLoot;
         }
 
@@ -185,6 +186,9 @@ namespace wServer.logic.loot
             {
                 var player = tupPlayer.Item1;
                 var playerDamage = tupPlayer.Item2;
+
+                if (player.TalismanCantGetLoot)
+                    continue;
 
                 if (player == null || player.World == null || player.Client == null)
                     continue;

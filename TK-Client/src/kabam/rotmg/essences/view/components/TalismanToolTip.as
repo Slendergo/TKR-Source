@@ -160,7 +160,7 @@ public class TalismanToolTip extends ToolTip
             }
 
             if(tierXML.hasOwnProperty("AbilityLifeCost")){
-                this.effects.push(new Effect("", "Abilities cost " + (tierXML.@percentage * 100) + "% life"));
+                this.effects.push(new Effect("", "Abilities cost " + (tierXML.AbilityLifeCost.@percentage * 100) + "% life"));
             }
 
             if(tierXML.hasOwnProperty("CanOnlyGetWhiteBags")){

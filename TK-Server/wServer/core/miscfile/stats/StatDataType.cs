@@ -125,6 +125,7 @@
         SPS_WISDOM_COUNT_MAX = 157,
         EngineValue = 158,
         EngineTime = 159,
+        NoManaBar = 160,
         None = 255
     }
 }

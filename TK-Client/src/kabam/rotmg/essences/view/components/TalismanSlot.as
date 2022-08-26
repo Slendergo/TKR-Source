@@ -404,7 +404,7 @@ public class TalismanSlot extends Sprite {
 
     public function modifyVisibilities():void {
 
-        var isMaxTier = this.tier_ == this.props_.tiers_.length - 1;
+        var isMaxTier = this.tier_ == (this.props_.tiers_.length - 1);
         var hasReachedGoal = this.current_ + this.delta_ == this.max_;
         var isMaxLevel = this.level_ == this.props_.maxLevels_;
         var isMaxLevelTier = isMaxLevel && hasReachedGoal;

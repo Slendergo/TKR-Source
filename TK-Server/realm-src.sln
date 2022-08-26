@@ -25,7 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApplicationLauncher", "Appl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CheckSum", "Checksum\CheckSum.csproj", "{9921F83C-728B-4E4E-BC07-A7C4BD336B98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bot", "Bot\Bot.csproj", "{E53F7FB6-2D89-486D-A391-9E3A18D039AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bot", "Bot\Bot.csproj", "{E53F7FB6-2D89-486D-A391-9E3A18D039AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

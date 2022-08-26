@@ -175,6 +175,15 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
             else if(player.map_.disableAbilities_ && slot == 1){
                canUse = false;
             }
+
+            if(slot == 1 && player.talismanAbilityLifeCost_ > 0.0){
+               if(player.hp_ - int(player.maxHP_ * player.talismanAbilityLifeCost_) <= 1){
+                  canUse = false;
+               }
+               else{
+                  canUse = player.hp_ >= int(player.maxHP_ * player.talismanAbilityLifeCost_);
+               }
+            }
          }
          itemSprite.setDim(!canUse || player && player.mp_ < this.minManaUsage);
       }

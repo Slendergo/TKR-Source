@@ -55,10 +55,12 @@ public class EssenceViewMediator extends Mediator {
 
     public function onEnable(type:int):void {
         GameServerConnection.instance.talismanAction(TalismanEssenceAction.ENABLE, type, 0);
+        this.view.player.activateTalisman(type);
     }
 
     public function onDisable(type:int):void {
         GameServerConnection.instance.talismanAction(TalismanEssenceAction.DISABLE, type, 0);
+        this.view.player.deactivateTalisman(type);
     }
 
     private function onCancel():void {

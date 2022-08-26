@@ -1,4 +1,6 @@
 package kabam.rotmg.essences {
+import flash.utils.Dictionary;
+
 public class TalismanProperties
 {
     public var type_:int;
@@ -9,7 +11,7 @@ public class TalismanProperties
     public var costMultiplier_:Number;
     public var maxLevels_:int;
     public var source_:XML;
-    public var tiers_:Vector.<TalismanTierDesc>;
+    public var tiers_:Dictionary;
 
     public function TalismanProperties(xml:XML)
     {
@@ -22,20 +24,13 @@ public class TalismanProperties
         this.maxLevels_ = int(xml.MaxLevels);
         this.source_ = xml;
 
-        this.tiers_ = new Vector.<TalismanTierDesc>();
+        this.tiers_ = new Dictionary();
         for each(var tier:XML in xml.Tier)
         {
-            this.tiers_.push(new TalismanTierDesc(tier));
+            var desc:TalismanTierDesc = new TalismanTierDesc(tier);
+            this.tiers_[desc.tier_] = desc;
         }
     }
 }
 }
 
-class TalismanTierDesc
-{
-
-    public function TalismanTierDesc(xml:XML)
-    {
-
-    }
-}

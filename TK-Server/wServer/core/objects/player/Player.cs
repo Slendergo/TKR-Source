@@ -166,6 +166,8 @@ namespace wServer.core.objects
             _colorchat = new SV<int>(this, StatDataType.ColorChat, 0);
             _partyId = new SV<int>(this, StatDataType.PartyId, client.Account.PartyId, true);
 
+            _noManaBar = new SV<int>(this, StatDataType.NoManaBar, 0);
+
             var addition = 0;
             switch (client.Rank.Rank)
             {
@@ -275,31 +277,26 @@ namespace wServer.core.objects
                 {
                     rank = RankingType.Supporter1;
                     GameServer.Database.UpdateCredit(Client.Account, 750);
-                    Console.WriteLine("Ranked Up");
                 }
                 else if (rank == RankingType.Supporter1 && amountDonated >= 20 && amountDonated < 30)
                 {
                     rank = RankingType.Supporter2;
                     GameServer.Database.UpdateCredit(Client.Account, 1500);
-                    Console.WriteLine("Ranked Up");
                 }
                 else if (rank == RankingType.Supporter2 && amountDonated >= 30 && amountDonated < 40)
                 {
                     rank = RankingType.Supporter3;
                     GameServer.Database.UpdateCredit(Client.Account, 2625);
-                    Console.WriteLine("Ranked Up");
                 }
                 else if (rank == RankingType.Supporter3 && amountDonated >= 40 && amountDonated < 50)
                 {
                     rank = RankingType.Supporter4;
                     GameServer.Database.UpdateCredit(Client.Account, 3750);
-                    Console.WriteLine("Ranked Up");
                 }
                 else if (rank == RankingType.Supporter4 && amountDonated < 50)
                 {
                     rank = RankingType.Supporter5;
                     GameServer.Database.UpdateCredit(Client.Account, 5000);
-                    Console.WriteLine("Ranked Up");
                 }
             }
 
@@ -1216,7 +1213,13 @@ namespace wServer.core.objects
             {
                 var vitalityStat = Stats[6];
 
-                HealthRegenCarry += (1 + 0.24 * vitalityStat) * time.DeltaTime;
+                HealthRegenCarry += (1 + 0.24 * vitalityStat);
+                if(TalismanExtraLifeRegen > 0.0f)
+                    HealthRegenCarry += (HealthRegenCarry * TalismanExtraLifeRegen);
+                if(TalismanHealthHPRegen > 0.0f)
+                    HealthRegenCarry += (HealthRegenCarry * TalismanHealthHPRegen);
+                HealthRegenCarry *= time.DeltaTime;
+
                 if (HasConditionEffect(ConditionEffects.Healing))
                     HealthRegenCarry += 20.0 * time.DeltaTime;
 
@@ -1233,7 +1236,11 @@ namespace wServer.core.objects
             {
                 var wisdomStat = Stats[7];
 
-                ManaRegenCarry += (0.5 + 0.12 * wisdomStat) * time.DeltaTime;
+                ManaRegenCarry += (0.5 + 0.12 * wisdomStat);
+                if(TalismanExtraManaRegen > 0.0f)
+                    ManaRegenCarry += (ManaRegenCarry * TalismanExtraManaRegen);
+                HealthRegenCarry *= time.DeltaTime;
+
                 if (HasConditionEffect(ConditionEffects.MPTRegeneration))
                     HealthRegenCarry += 20.0 * time.DeltaTime;
 

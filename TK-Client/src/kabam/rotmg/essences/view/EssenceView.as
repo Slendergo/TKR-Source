@@ -174,6 +174,8 @@ public class EssenceView extends ModalPopup {
             }else{
                 slot.modifyVisibilities();
             }
+
+            slot.draw();
         }
     }
 

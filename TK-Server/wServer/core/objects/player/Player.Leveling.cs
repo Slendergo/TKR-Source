@@ -106,7 +106,12 @@ namespace wServer.core.objects
             }
 
             if (exp != 0)
-                Experience += exp;
+            {
+                if(TalismanFameGainBonus > 0.0)
+                     Experience = (int)(exp + exp * TalismanFameGainBonus);
+                else
+                    Experience += exp;
+            }
 
             FameCounter.Killed(enemy, killer);
             return CheckLevelUp();

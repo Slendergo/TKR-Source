@@ -94,9 +94,12 @@ namespace wServer.logic
 
                 if (enemy.ObjectDesc.Quest)
                 {
-                    var essenceToGive = (int)(enemy.ObjectDesc.MaxHP / 125.0f);
-                    if(essenceToGive > 0)
-                        player.GiveEssence(essenceToGive);
+                    if (enemy.HP > 3000)
+                    {
+                        var essenceToGive = player.World.Random.Next(25, 100);
+                        if (essenceToGive > 0)
+                            player.GiveEssence(essenceToGive);
+                    }
                 }
             }
 

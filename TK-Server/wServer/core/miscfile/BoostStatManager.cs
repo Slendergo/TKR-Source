@@ -162,35 +162,6 @@ namespace wServer.core
                     var scale = (int)(stat.ScalesPerLevel ? stat.Amount * talisman.Level : stat.Amount);
                     IncrementBoost((StatDataType)stat.StatType, scale);
                 }
-
-                foreach (var loot in tierDesc.LootBoosts)
-                {
-                    // scale by level or by flat value
-                    var scale = loot.ScalesPerLevel ? loot.Amount * talisman.Level : loot.Amount;
-                    _player.TalismanLootBoost += scale;
-                }
-
-                foreach (var cond in tierDesc.ImmuneTo)
-                {
-                    switch (cond)
-                    {
-                        case ConditionEffectIndex.Unstable:
-                            _player.ApplyConditionEffect(ConditionEffectIndex.ArmorBreakImmune);
-                            break;
-                        case ConditionEffectIndex.Slowed:
-                            _player.ApplyConditionEffect(ConditionEffectIndex.SlowedImmune);
-                            break;
-                        case ConditionEffectIndex.Dazed:
-                            _player.ApplyConditionEffect(ConditionEffectIndex.DazedImmune);
-                            break;
-                        case ConditionEffectIndex.Stunned:
-                            _player.ApplyConditionEffect(ConditionEffectIndex.StunImmune);
-                            break;
-                        case ConditionEffectIndex.Paralyzed:
-                            _player.ApplyConditionEffect(ConditionEffectIndex.Paralyzed);
-                            break;
-                    }
-                }
             }
         }
 

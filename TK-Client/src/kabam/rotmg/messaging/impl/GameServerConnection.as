@@ -1962,6 +1962,11 @@ public class GameServerConnection
                   index = stat.statType_ - StatData.BACKPACKDATA0 + GeneralConstants.NUM_EQUIPMENT_SLOTS + GeneralConstants.NUM_INVENTORY_SLOTS;
                   (go as Player).equipData_[index] = JSON.parse(stat.strStatValue_);
                   continue;
+
+               case StatData.NO_MANA_BAR:
+                  (go as Player).talismanNoManaBar_ = stat.statValue_ == 1;
+                  this.gs_.hudView.draw();
+                  break;
                default:
                   trace("unhandled stat: " + stat.statType_);
                   continue;

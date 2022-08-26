@@ -60,10 +60,18 @@ namespace wServer.core.objects
 
             if (HasConditionEffect(ConditionEffects.NinjaSpeedy))
             {
-                MP = Math.Max(0, (int)(MP - 10 * time.DeltaTime));
-
-                if (MP == 0)
-                    ApplyConditionEffect(ConditionEffectIndex.NinjaSpeedy, 0);
+                if (TalismanAbilityLifeCost > 0.0f)
+                {
+                    HP = Math.Max(1, (int)(HP - 20 * time.DeltaTime));
+                    if (HP == 1)
+                        ApplyConditionEffect(ConditionEffectIndex.NinjaSpeedy, 0);
+                }
+                else
+                {
+                    MP = Math.Max(0, (int)(MP - 10 * time.DeltaTime));
+                    if (MP == 0)
+                        ApplyConditionEffect(ConditionEffectIndex.NinjaSpeedy, 0);
+                }
             }
 
             if (HasConditionEffect(ConditionEffects.NinjaBerserk))

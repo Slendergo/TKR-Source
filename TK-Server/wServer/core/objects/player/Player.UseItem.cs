@@ -255,6 +255,29 @@ namespace wServer.core.objects
                 Client.SendPacket(new InvResult() { Result = 1 });
         }
 
+        public static void HealDiscrete(Player player, int amount, bool magic)
+        {
+            if (amount <= 0)
+                return;
+
+            if (magic)
+            {
+                var maxMp = player.Stats[1];
+                var newMp = Math.Min(maxMp, player.MP + amount);
+                if (newMp != player.MP)
+                    return;
+                player.MP = newMp;
+                return;
+            }
+
+            var maxHp = player.Stats[0];
+            var newHp = Math.Min(maxHp, player.HP + amount);
+            if (newHp == player.HP)
+                return;
+
+            player.HP = newHp;
+        }
+
         public static void ActivateHealHp(Player player, int amount, bool broadcastSelf = false)
         {
             if (amount <= 0)
@@ -332,14 +355,16 @@ namespace wServer.core.objects
 
         private void Activate(TickTime time, Item item, int slot, Position target, int objId, int sellmaxed)
         {
-            var playeren = this as Player;
-            MP -= item.MpCost;
+            if (item.MpCost != 0 && TalismanAbilityLifeCost > 0.0f)
+                HP -= (int)(Stats[0] * TalismanAbilityLifeCost);
+            else 
+                MP -= item.MpCost;
 
             var entity1 = World.GetEntity(objId);
 
             if (entity1 is GiftChest)
             {
-                playeren.SendError("You can't use items in Gift Chests");
+                SendError("You can't use items in Gift Chests");
                 return;
             }
 
@@ -526,6 +551,10 @@ namespace wServer.core.objects
 
                     case ActivateEffects.ShurikenAbilityBerserk:
                         AEShurikenAbilityBerserk(time, item, target, eff);
+                        break;
+
+                    case ActivateEffects.ShurikenAbilityDamaging:
+                        AEShurikenAbilityDamaging(time, item, target, eff);
                         break;
 
                     case ActivateEffects.DazeBlast:
@@ -798,10 +827,15 @@ namespace wServer.core.objects
 
         private void AEHeal(TickTime time, Item item, Position target, ActivateEffect eff)
         {
-            if (!HasConditionEffect(ConditionEffects.Sick))
+            if (TalismanNoPotionHealing)
+                ApplyConditionEffect(ConditionEffectIndex.Stunned, 500);
+            else
             {
-                var healthAmount = eff.Amount;
-                ActivateHealHp(this, healthAmount);
+                if (!HasConditionEffect(ConditionEffects.Sick))
+                {
+                    var healthAmount = eff.Amount;
+                    ActivateHealHp(this, healthAmount);
+                }
             }
         }
 
@@ -1424,10 +1458,21 @@ namespace wServer.core.objects
                 return;
             }
 
-            if (MP >= item.MpEndCost)
+            if (item.MpEndCost != 0 && TalismanAbilityLifeCost > 0.0f)
             {
-                MP -= item.MpEndCost;
-                AEShoot(time, item, target, eff);
+                if (HP >= item.MpEndCost)
+                {
+                    HP -= (int)(Stats[0] * TalismanAbilityLifeCost);
+                    AEShoot(time, item, target, eff);
+                }
+            }
+            else
+            {
+                if (MP >= item.MpEndCost)
+                {
+                    MP -= item.MpEndCost;
+                    AEShoot(time, item, target, eff);
+                }
             }
 
             ApplyConditionEffect(ConditionEffectIndex.NinjaSpeedy, 0);
@@ -1441,10 +1486,21 @@ namespace wServer.core.objects
                 return;
             }
 
-            if (MP >= item.MpEndCost)
+            if (item.MpEndCost != 0 && TalismanAbilityLifeCost > 0.0f)
             {
-                MP -= item.MpEndCost;
-                AEShoot(time, item, target, eff);
+                if (HP >= item.MpEndCost)
+                {
+                    HP -= (int)(Stats[0] * TalismanAbilityLifeCost);
+                    AEShoot(time, item, target, eff);
+                }
+            }
+            else
+            {
+                if (MP >= item.MpEndCost)
+                {
+                    MP -= item.MpEndCost;
+                    AEShoot(time, item, target, eff);
+                }
             }
 
             ApplyConditionEffect(ConditionEffectIndex.Berserk, 0);
@@ -1458,12 +1514,22 @@ namespace wServer.core.objects
                 return;
             }
 
-            if (MP >= item.MpEndCost)
+            if (item.MpEndCost != 0 && TalismanAbilityLifeCost > 0.0f)
             {
-                MP -= item.MpEndCost;
-                AEShoot(time, item, target, eff);
+                if (HP >= item.MpEndCost)
+                {
+                    HP -= (int)(Stats[0] * TalismanAbilityLifeCost);
+                    AEShoot(time, item, target, eff);
+                }
             }
-
+            else
+            {
+                if (MP >= item.MpEndCost)
+                {
+                    MP -= item.MpEndCost;
+                    AEShoot(time, item, target, eff);
+                }
+            }
             ApplyConditionEffect(ConditionEffectIndex.NinjaDamaging, 0);
         }
 

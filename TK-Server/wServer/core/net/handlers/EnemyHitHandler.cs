@@ -42,27 +42,28 @@ namespace wServer.core.net.handlers
                 {
                     var talisman = player.GetTalisman(type);
                     if (talisman == null)
-                        throw new Exception($"Unknown talisman type: {type}");
+                        continue;
 
                     var desc = player.GameServer.Resources.GameData.GetTalisman(type);
                     if (desc == null)
-                        throw new Exception($"Unknown talisman desc type: {type}");
+                        continue;
 
                     var tierDesc = desc.GetTierDesc(talisman.Tier);
                     if (tierDesc == null)
-                        throw new Exception($"Unknown talisman tier: {talisman.Tier}");
+                        continue;
 
                     foreach (var leech in tierDesc.Leech)
                     {
                         if (player.World.Random.NextDouble() < leech.Probability)
                         {
+                            var scale = leech.ScalesPerLevel ? talisman.Level * leech.Percentage : leech.Percentage;
                             switch (leech.Type)
                             {
                                 case 0:
-                                    totalLife += leech.Amount;
+                                    totalLife += (int)(player.Stats[0] * scale);
                                     break;
                                 case 1:
-                                    totalMana += leech.Amount;
+                                    totalMana += (int)(player.Stats[1] * scale);
                                     break;
                             }
                         }
@@ -70,9 +71,9 @@ namespace wServer.core.net.handlers
                 }
 
                 if (totalLife > 0)
-                    Player.ActivateHealHp(player, totalLife, true);
+                    Player.HealDiscrete(player, totalLife, false);
                 if (totalMana > 0)
-                    Player.ActivateHealMp(player, totalMana, true);
+                    Player.HealDiscrete(player, totalMana, true);
             }
         }
     }

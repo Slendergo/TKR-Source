@@ -248,8 +248,8 @@
 			<Item weight="10">Iron Will</Item>
 			<Item weight="10">Party of One</Item>
 			<Item weight="10">Forbidden Fruit</Item>
-			<Item weight="5">Known After Death</Item>
-			<Item weight="5">Luck of the Irish</Item>
+			<!--<Item weight="5">Known After Death</Item>
+			<Item weight="5">Luck of the Irish</Item>--> <!-- disabled for now needs to be implemented -->
 		</ItemPool>
 	</TalismanFragment>
 </Dusts>

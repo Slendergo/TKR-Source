@@ -100,7 +100,6 @@ namespace wServer.logic
                 new ItemLoot("Water Fragment", 0.0015, threshold: 0.03)
                 ),
             new Threshold(0.001,
-                new ItemLoot("Crafting Material 1", 0.05),
                 new ItemLoot("Thorn", 0.01),
                 new ItemLoot("Massacre", 0.01),
                 new ItemLoot("Frozen Water Armor", 0.0125),
@@ -185,11 +184,10 @@ namespace wServer.logic
                 ),
 
             new Threshold(0.001,
-                new ItemLoot("Crafting Material 1", 0.05),
-                new ItemLoot("Forbidden Jungle's Seal", 0.015),
-                new ItemLoot("Shield of the Forest", 0.01),
-                new ItemLoot("Cometfell Katana", 0.01),
-                new ItemLoot("Forest's Call", 0.015),
+                new ItemLoot("Forbidden Jungle's Seal", 0.0015),
+                new ItemLoot("Shield of the Forest", 0.001),
+                new ItemLoot("Cometfell Katana", 0.001),
+                new ItemLoot("Forest's Call", 0.0015),
                 new ItemLoot("Potion of Wisdom", 1),
                 new ItemLoot("Potion of Speed", 1),
                 new ItemLoot("Potion of Wisdom", 0.5),
@@ -265,15 +263,14 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.01,
-                new ItemLoot("Crafting Material 1", 0.05),
-                new ItemLoot("Staff of Zephyrs", 0.009, threshold: 0.01),
-                new ItemLoot("Cyclone Orb", 0.009, threshold: 0.01),
-                new ItemLoot("Gale Robe", 0.009, threshold: 0.01),
-                new ItemLoot("Wind Charm", 0.009, threshold: 0.01)
+                new ItemLoot("Staff of Zephyrs", 0.0009, threshold: 0.01),
+                new ItemLoot("Cyclone Orb", 0.0009, threshold: 0.01),
+                new ItemLoot("Gale Robe", 0.0009, threshold: 0.01),
+                new ItemLoot("Wind Charm", 0.0009, threshold: 0.01)
                 ),
             new Threshold(0.03,
-                new ItemLoot("Wind Fragment", 0.0015, threshold: 0.03),
-                new ItemLoot("Quiver of Thunder", 0.0033)
+                new ItemLoot("Wind Fragment", 0.00015, threshold: 0.03),
+                new ItemLoot("Quiver of Thunder", 0.00033)
                 ),
             new Threshold(0.001,
                 new ItemLoot("Potion of Speed", 1),

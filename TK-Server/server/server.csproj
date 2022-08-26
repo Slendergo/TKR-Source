@@ -166,6 +166,9 @@
     <Compile Include="account\purchaseSkin.cs" />
     <Compile Include="account\register.cs" />
     <Compile Include="account\setName.cs" />
+    <Compile Include="account\handleDono.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="account\verify.cs" />
     <Compile Include="app\getLanguageStrings.cs" />
     <Compile Include="app\bot.cs" />
@@ -202,6 +205,10 @@
     <ProjectReference Include="..\common\common.csproj">
       <Project>{05d3ca7d-7e4e-4401-bc92-4a988a433c93}</Project>
       <Name>common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\wServer\wServer.csproj">
+      <Project>{13B061EF-7E9F-40A7-A4E3-DA6EEF11A568}</Project>
+      <Name>wServer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

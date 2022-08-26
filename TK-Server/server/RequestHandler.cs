@@ -25,6 +25,7 @@ namespace server
             {"/char/fame", new @char.fame()},
             {"/char/purchaseClassUnlock", new @char.purchaseClassUnlock()},
             {"/account/verify", new account.verify()},
+            {"/account/handleDono", new account.handleDono()},
             {"/account/register", new account.register()},
             {"/account/changePassword", new account.changePassword()},
             {"/account/passwordRecovery", new account.passwordRecovery()},

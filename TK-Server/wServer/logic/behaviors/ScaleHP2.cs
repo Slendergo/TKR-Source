@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using wServer.core;
 using wServer.core.objects;
 
@@ -35,29 +36,37 @@ namespace wServer.logic.behaviors
 
                 var enemy = host as Enemy;
                 var plrCount = 0;
+                var itemCount = 0;
 
-                foreach (var i in host.World.Players)
+                foreach (var entity in host.GetNearestEntities(_range, null, true).OfType<Player>())
                 {
-                    if (scstate.pNamesCounted.Contains(i.Value.Name))
+                    if (scstate.pNamesCounted.Contains(entity.Name))
                         continue;
 
                     if (_range > 0)
                     {
-                        if (host.Dist(i.Value) < _range)
-                            scstate.pNamesCounted.Add(i.Value.Name);
+                        if (host.Dist(entity.Pos) < _range)
+                        {
+                            for (var i = 0; i < 4; i++)
+                            {
+                                if (entity.Inventory[i].Legendary || entity.Inventory[i].Mythical)
+                                    itemCount++;
+                            }
+                            scstate.pNamesCounted.Add(entity.Name);
+                        }
                     }
                     else
-                        scstate.pNamesCounted.Add(i.Value.Name);
+                        scstate.pNamesCounted.Add(entity.Name);
                 }
 
                 plrCount = scstate.pNamesCounted.Count;
 
-                if (plrCount > scstate.initialScaleAmount)
+                if (itemCount * 4 > scstate.initialScaleAmount)
                 {
-                    var amountPerPlayer = _percentage * enemy.ObjectDesc.MaxHP / 100;
-                    var amountInc = (plrCount - scstate.initialScaleAmount) * amountPerPlayer;
+                    var amountPerPlayer = 5 * enemy.ObjectDesc.MaxHP / 100;
+                    var amountInc = ((itemCount * 4) - scstate.initialScaleAmount) * amountPerPlayer;
 
-                    scstate.initialScaleAmount += plrCount - scstate.initialScaleAmount;
+                    scstate.initialScaleAmount += itemCount - scstate.initialScaleAmount;
 
                     var newHpMaximum = enemy.MaximumHP + amountInc;
 

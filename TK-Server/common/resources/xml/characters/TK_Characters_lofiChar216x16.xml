@@ -49,12 +49,16 @@
       <ObjectId>Dark Blue Magic</ObjectId>
       <Speed>100</Speed>
       <Damage>100</Damage>
+		<Multihit/>
+		<ArmorPierce/>
       <LifetimeMS>2400</LifetimeMS>
     </Projectile>
     <Projectile id="1">
       <ObjectId>Blue Bolt</ObjectId>
       <Speed>80</Speed>
       <Damage>140</Damage>
+		<Multihit/>
+		<ArmorPierce/>
       <LifetimeMS>2500</LifetimeMS>
     </Projectile>
     <Enemy />

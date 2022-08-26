@@ -492,7 +492,7 @@
 			<LifetimeMS>1500</LifetimeMS>
 			<Amplitude>0.51</Amplitude>
 			<Frequency>2</Frequency>
-			<Size>100</Size>
+			<Size>150</Size>
 			<FaceDir />
 			<MultiHit />
 		</Projectile>

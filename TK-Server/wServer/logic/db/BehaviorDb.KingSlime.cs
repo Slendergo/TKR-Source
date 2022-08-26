@@ -79,7 +79,7 @@ namespace wServer.logic
                     new Shoot(15, 4, shootAngle: 90, projectileIndex: 2, angleOffset: 90, predictive: 1, coolDown: 4000)
                     )
                 ),
-            new Threshold(0.001,
+            new Threshold(0.005,
                 new ItemLoot("Potion of Defense", 1),
                 new ItemLoot("Potion of Attack", 1),
                 new ItemLoot("Potion of Speed", 1),
@@ -90,7 +90,7 @@ namespace wServer.logic
             new Threshold(0.001,
                 LootTemplates.DustLoot()
                 ),
-            new Threshold(0.001,
+            new Threshold(0.01,
                 new TierLoot(10, ItemType.Armor, 0.12),
                 new TierLoot(11, ItemType.Armor, 0.09),
                 new TierLoot(10, ItemType.Weapon, 0.12),
@@ -98,6 +98,7 @@ namespace wServer.logic
                 new TierLoot(5, ItemType.Ring, 0.03),
                 new TierLoot(3, ItemType.Ability, 0.12),
                 new TierLoot(4, ItemType.Ability, 0.07),
+                new ItemLoot("Talisman Fragment", 0.0005),
                 new ItemLoot("Sticky Slime Armor", 0.001),
 
                 new ItemLoot("Magic Dust", 0.5)

@@ -100,6 +100,7 @@ namespace wServer.logic
                 new ItemLoot("Water Fragment", 0.0015, threshold: 0.03)
                 ),
             new Threshold(0.03,
+                new ItemLoot("Talisman Fragment", 0.0005, 0, 0.05),
                 new ItemLoot("Thorn", 0.01),
                 new ItemLoot("Massacre", 0.01),
                 new ItemLoot("Frozen Water Armor", 0.0125),
@@ -184,6 +185,7 @@ namespace wServer.logic
                 ),
 
             new Threshold(0.001,
+                new ItemLoot("Talisman Fragment", 0.0005, 0, 0.05),
                 new ItemLoot("Forbidden Jungle's Seal", 0.0015),
                 new ItemLoot("Shield of the Forest", 0.001),
                 new ItemLoot("Cometfell Katana", 0.001),
@@ -263,6 +265,7 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.01,
+                new ItemLoot("Talisman Fragment", 0.0005, 0, 0.05),
                 new ItemLoot("Staff of Zephyrs", 0.0009, threshold: 0.01),
                 new ItemLoot("Cyclone Orb", 0.0009, threshold: 0.01),
                 new ItemLoot("Gale Robe", 0.0009, threshold: 0.01),
@@ -473,22 +476,23 @@ namespace wServer.logic
                     new Wander(0.7),
                     new StayCloseToSpawn(1, 10),
                     new Wander(0.3),
-                    new Shoot(20, 3, shootAngle: 15, projectileIndex: 1, coolDown: 2000, coolDownOffset: 0),
-                    new Shoot(20, 3, shootAngle: 15, projectileIndex: 1, coolDown: 2000, coolDownOffset: 100),
-                    new Shoot(20, 3, shootAngle: 15, projectileIndex: 1, coolDown: 2000, coolDownOffset: 200),
-                    new Shoot(20, 3, shootAngle: 15, projectileIndex: 1, coolDown: 2000, coolDownOffset: 300),
-                    new Shoot(20, 3, shootAngle: 15, projectileIndex: 1, coolDown: 2000, coolDownOffset: 400),
-                    new Shoot(20, 3, shootAngle: 15, projectileIndex: 1, coolDown: 2000, coolDownOffset: 500),
-                    new Shoot(20, 3, shootAngle: 15, projectileIndex: 1, coolDown: 2000, coolDownOffset: 600),
-                    new Shoot(20, 3, shootAngle: 15, projectileIndex: 1, coolDown: 2000, coolDownOffset: 700)
+                    new Shoot(20, 3, shootAngle: 25, projectileIndex: 1, coolDown: 2000, coolDownOffset: 0),
+                    new Shoot(20, 3, shootAngle: 25, projectileIndex: 1, coolDown: 2000, coolDownOffset: 100),
+                    new Shoot(20, 3, shootAngle: 25, projectileIndex: 1, coolDown: 2000, coolDownOffset: 200),
+                    new Shoot(20, 3, shootAngle: 25, projectileIndex: 1, coolDown: 2000, coolDownOffset: 300),
+                    new Shoot(20, 3, shootAngle: 25, projectileIndex: 1, coolDown: 2000, coolDownOffset: 400),
+                    new Shoot(20, 3, shootAngle: 25, projectileIndex: 1, coolDown: 2000, coolDownOffset: 500),
+                    new Shoot(20, 3, shootAngle: 25, projectileIndex: 1, coolDown: 2000, coolDownOffset: 600),
+                    new Shoot(20, 3, shootAngle: 25, projectileIndex: 1, coolDown: 2000, coolDownOffset: 700)
                     )
                 ),
             new Threshold(0.001,
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.03,
-                new ItemLoot("Fire Fragment", 0.00015),
-                new ItemLoot("Phoenix Ashes Orb", 0.00033)
+                new ItemLoot("Fire Fragment", 0.000015),
+                new ItemLoot("Talisman Fragment", 0.0005, 0, 0.05),
+                new ItemLoot("Phoenix Ashes Orb", 0.000033)
                 ),
             new Threshold(0.001,
                 new ItemLoot("Potion of Speed", 1),

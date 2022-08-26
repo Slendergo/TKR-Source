@@ -227,6 +227,7 @@
 		<HitSound>monster/goblins_hit</HitSound>
 		<DeathSound>monster/goblins_death</DeathSound>
 		<Size>200</Size>
+		<StasisImmune />
 		<ShadowSize>45</ShadowSize>
 		<MaxHitPoints>65000</MaxHitPoints>
 		<Defense>25</Defense>

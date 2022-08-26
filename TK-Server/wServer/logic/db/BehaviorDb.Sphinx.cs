@@ -91,6 +91,7 @@ namespace wServer.logic
             new Threshold(0.03,
                 new ItemLoot("Helm of the Juggernaut", 0.0014, threshold: 0.005),
                 new ItemLoot("Ray Katana", 0.005),
+                new ItemLoot("Talisman Fragment", 0.00005),
                 new ItemLoot("Dojigiri", 0.0014, threshold: 0.005)
                 ),
             new Threshold(0.001,

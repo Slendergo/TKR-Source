@@ -187,7 +187,8 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.03,
-                new ItemLoot("Magicians Hide", 0.0014)
+                new ItemLoot("Talisman Fragment", 0.00005),
+                new ItemLoot("Magicians Hide", 0.00014)
                 ),
             new Threshold(0.01,
                 new ItemLoot("Potion of Life", 0.18),

@@ -8,7 +8,6 @@
 		<MaxLevels>5</MaxLevels>
 		<Tier tier="0">
 			<LootBoost percentage="0.02" scale="perLevel"/>
-			<LootBoost percentage="0.1" scale="flat"/>
 			<StatType type="0" scale="perLevel" amount="10" />
 			<StatType type="3" scale="perLevel" amount="10" />
 		</Tier>

@@ -1099,21 +1099,6 @@
 		<Activate objectId="Karate Penguin Purple" cooldown="10">PermaPet</Activate>
 		<OldSound>use_potion</OldSound>
 	</Object>
-	<Object type="0x153f" id="Beach Ball Generator">
-		<DisplayId>Beach Ball</DisplayId>
-		<Class>Equipment</Class>
-		<Item />
-		<Texture>
-			<File>lofiObj3</File>
-			<Index>0x193</Index>
-		</Texture>
-		<SlotType>10</SlotType>
-		<Description>Play with this ball on the beach! (Requires a buddy!)</Description>
-		<BagType>2</BagType>
-		<InvUse />
-		<Activate objectId="Beach Ball" cooldown="1" hideEffect="true">PermaPet</Activate>
-		<Soulbound />
-	</Object>
 	<Object type="0x1540" id="Robobuddy Generator">
 		<DisplayId>Robobuddy</DisplayId>
 		<Class>Equipment</Class>
@@ -1253,21 +1238,6 @@
 		<Soulbound />
 		<Activate objectId="Beer Slurp" cooldown="10">PermaPet</Activate>
 		<OldSound>use_potion</OldSound>
-	</Object>
-	<Object type="0x15aa" id="Ball Generator">
-		<DisplayId>Beach Ball</DisplayId>
-		<Class>Equipment</Class>
-		<Item />
-		<Texture>
-			<File>lofiObj3</File>
-			<Index>0x193</Index>
-		</Texture>
-		<SlotType>10</SlotType>
-		<Description>Play with this ball on the beach! (Requires a buddy!)</Description>
-		<BagType>2</BagType>
-		<InvUse />
-		<Activate objectId="Ball" cooldown="1" hideEffect="true">PermaPet</Activate>
-		<Soulbound />
 	</Object>
 	<Object type="0x1549" id="Peppermint Snail Generator">
 		<DisplayId>Peppermint Snail</DisplayId>

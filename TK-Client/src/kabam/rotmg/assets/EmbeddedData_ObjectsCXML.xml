@@ -43977,7 +43977,7 @@
       <Index>0x1c</Index>
     </Texture>
     <ExtraTooltipData>
-      <EffectInfo name="" description="+2% LB, +10MP, +10HP" />
+      <EffectInfo name="" description="Consume the talisman to reap the power" />
     </ExtraTooltipData>
     <SlotType>10</SlotType>
     <Description>Increase to a player's health, mana, and loot drop chance!</Description>
@@ -43998,7 +43998,7 @@
       <Index>0x1c</Index>
     </Texture>
     <ExtraTooltipData>
-      <EffectInfo name="" description="What powers does this item hold?" />
+      <EffectInfo name="" description="Consume the talisman to reap the power" />
     </ExtraTooltipData>
     <SlotType>10</SlotType>
     <Description>Increase to a player's speed, wisdom, vitality, and defense!</Description>
@@ -44019,7 +44019,7 @@
       <Index>0x1c</Index>
     </Texture>
     <ExtraTooltipData>
-      <EffectInfo name="" description="What powers does this item hold?" />
+      <EffectInfo name="" description="Consume the talisman to reap the power" />
     </ExtraTooltipData>
     <SlotType>10</SlotType>
     <Description>Increase to a player's attack and dexterity!</Description>
@@ -44040,7 +44040,7 @@
       <Index>0x10</Index>
     </Texture>
     <ExtraTooltipData>
-      <EffectInfo name="" description="What powers does this item hold?" />
+      <EffectInfo name="" description="Consume the talisman to reap the power" />
     </ExtraTooltipData>
     <SlotType>10</SlotType>
     <Description>Abilities use health instead of mana!</Description>
@@ -44061,7 +44061,7 @@
       <Index>0x11</Index>
     </Texture>
     <ExtraTooltipData>
-      <EffectInfo name="" description="What powers does this item hold?" />
+      <EffectInfo name="" description="Consume the talisman to reap the power" />
     </ExtraTooltipData>
     <SlotType>10</SlotType>
     <Description>This gives 200% more HP, but takes away speed, attack, dexterity, and wisdom!</Description>
@@ -44082,7 +44082,7 @@
       <Index>0x12</Index>
     </Texture>
     <ExtraTooltipData>
-      <EffectInfo name="" description="What powers does this item hold?" />
+      <EffectInfo name="" description="Consume the talisman to reap the power" />
     </ExtraTooltipData>
     <SlotType>10</SlotType>
     <Description>Significantly increases your health regeneration, but decreases your mana regeneration.</Description>
@@ -44103,7 +44103,7 @@
       <Index>0x20</Index>
     </Texture>
     <ExtraTooltipData>
-      <EffectInfo name="" description="What powers does this item hold?" />
+      <EffectInfo name="" description="Consume the talisman to reap the power" />
     </ExtraTooltipData>
     <SlotType>10</SlotType>
     <Description>When a player's health is full your damage is increased, but when health isn't full, damage is decreased.</Description>
@@ -44124,7 +44124,7 @@
       <Index>0x21</Index>
     </Texture>
     <ExtraTooltipData>
-      <EffectInfo name="" description="What powers does this item hold?" />
+      <EffectInfo name="" description="Consume the talisman to reap the power" />
     </ExtraTooltipData>
     <SlotType>10</SlotType>
     <Description>Every shot pierces an enemies armor, but your damage is averaged. You're also immune to weaken and damaging.</Description>
@@ -44145,7 +44145,7 @@
       <Index>0x22</Index>
     </Texture>
     <ExtraTooltipData>
-      <EffectInfo name="" description="What powers does this item hold?" />
+      <EffectInfo name="" description="Consume the talisman to reap the power" />
     </ExtraTooltipData>
     <SlotType>10</SlotType>
     <Description>When a player is above 75% health, their RoF and Health regeneration is increase. When belore 75%, RoF and health regeneration is decreased.</Description>
@@ -44166,7 +44166,7 @@
       <Index>0x30</Index>
     </Texture>
     <ExtraTooltipData>
-      <EffectInfo name="" description="What powers does this item hold?" />
+      <EffectInfo name="" description="Consume the talisman to reap the power" />
     </ExtraTooltipData>
     <SlotType>10</SlotType>
     <Description>Mana Regeneration is significantly increased, but health regeneration is decreased.</Description>
@@ -44187,7 +44187,7 @@
       <Index>0x31</Index>
     </Texture>
     <ExtraTooltipData>
-      <EffectInfo name="" description="What powers does this item hold?" />
+      <EffectInfo name="" description="Consume the talisman to reap the power" />
     </ExtraTooltipData>
     <SlotType>10</SlotType>
     <Description>When hitting an enemy, 1% of your mana is restored, but your mana regeneration is significantly increased.</Description>
@@ -44208,7 +44208,7 @@
       <Index>0x32</Index>
     </Texture>
     <ExtraTooltipData>
-      <EffectInfo name="" description="What powers does this item hold?" />
+      <EffectInfo name="" description="Consume the talisman to reap the power" />
     </ExtraTooltipData>
     <SlotType>10</SlotType>
     <Description>Ability damage is increased by 30%, but mana regeneration is decreased.</Description>
@@ -44229,7 +44229,7 @@
       <Index>0x40</Index>
     </Texture>
     <ExtraTooltipData>
-      <EffectInfo name="" description="What powers does this item hold?" />
+      <EffectInfo name="" description="Consume the talisman to reap the power" />
     </ExtraTooltipData>
     <SlotType>10</SlotType>
     <Description>A significant increase to a player's defense, but a drawback to the regeneration of mana and health.</Description>
@@ -44250,7 +44250,7 @@
       <Index>0x41</Index>
     </Texture>
     <ExtraTooltipData>
-      <EffectInfo name="" description="What powers does this item hold?" />
+      <EffectInfo name="" description="Consume the talisman to reap the power" />
     </ExtraTooltipData>
     <SlotType>10</SlotType>
     <Description>Boosts a player's probability of finding loot, but as more players join the same instance as them, their likelihood of finding loot decreases.</Description>
@@ -44271,7 +44271,7 @@
       <Index>0x42</Index>
     </Texture>
     <ExtraTooltipData>
-      <EffectInfo name="" description="What powers does this item hold?" />
+      <EffectInfo name="" description="Consume the talisman to reap the power" />
     </ExtraTooltipData>
     <SlotType>10</SlotType>
     <Description>Each HP or MP potion stacked increases a players HP or MP regeneration, but the player is stunned when consuming either potion.</Description>
@@ -44292,7 +44292,7 @@
       <Index>0x51</Index>
     </Texture>
     <ExtraTooltipData>
-      <EffectInfo name="" description="50% whitebag increase, can only obtain whitebags" />
+      <EffectInfo name="" description="Consume the talisman to reap the power" />
     </ExtraTooltipData>
     <SlotType>10</SlotType>
     <Description>A player's chance at a white bag is increased by 50%, but they can only obtain white bags.</Description>
@@ -44313,7 +44313,7 @@
       <Index>0x50</Index>
     </Texture>
     <ExtraTooltipData>
-      <EffectInfo name="" description="+200% Fame Gain, No longer gets loot" />
+      <EffectInfo name="" description="Consume the talisman to reap the power" />
     </ExtraTooltipData>
     <SlotType>10</SlotType>
     <Description>Significant increase to fame gain, but loot is no longer obtainable.</Description>
@@ -44333,7 +44333,7 @@
       <Index>0x1c</Index>
     </Texture>
     <ExtraTooltipData>
-      <EffectInfo name="" description="What powers does this item hold?" />
+      <EffectInfo name="" description="Consume the talisman to reap the power" />
     </ExtraTooltipData>
     <SlotType>10</SlotType>
     <Description>A sundered chunk from the Marble Colossus this item grants power to the wielder</Description>
@@ -44349,7 +44349,7 @@
     <Item />
     <InvUse />
     <ExtraTooltipData>
-      <EffectInfo name="" description="What powers does this item hold?" />
+      <EffectInfo name="" description="Consume the talisman to reap the power" />
     </ExtraTooltipData>
     <Texture>
       <File>CustomObj</File>

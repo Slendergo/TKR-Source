@@ -45,7 +45,7 @@
 		<BagType>7</BagType>
 	</Object>
 	<Object type="0x40b" id="Heart and Soul">
-		<Class>Equipment1</Class>
+		<Class>Equipment</Class>
 		<DisplayId>Heart and Soul</DisplayId>
 		<Item />
 		<Rare />

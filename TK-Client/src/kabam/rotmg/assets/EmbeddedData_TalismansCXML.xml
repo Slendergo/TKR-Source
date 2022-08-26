@@ -182,9 +182,9 @@
     </Tier>
     <Tier tier="2">
       <Health condition="below" percent="0.75" scale="perLevel" add="0.035">RateOfFire</Health>
-      <Health condition="below" percent="0.75" scale="perLevel" add="0.035">Regeneration</Health>
+      <Health condition="below" percent="0.75" scale="perLevel" add="0.035">HealthRegen</Health>
       <Health condition="above" percent="0.75" scale="perLevel" add="-0.015">RateOfFire</Health>
-      <Health condition="above" percent="0.75" scale="perLevel" add="-0.035">Regeneration</Health>
+      <Health condition="above" percent="0.75" scale="perLevel" add="-0.035">HealthRegen</Health>
       <StatType type="26" scale="perLevel" amount="-1" />
       <StatType type="20" scale="perLevel" amount="2" />
     </Tier>
@@ -313,6 +313,7 @@
     <CostMultiplier>1.1</CostMultiplier>
     <MaxLevels>10</MaxLevels>
     <Restrictions type="earth" />
+    <!-- 1 elemental per type-->
     <Tier tier="0">
       <StatType type="26" scale="perLevel" amount="-0.5" />
       <StatType type="28" scale="perLevel" amount="1" />
@@ -322,8 +323,8 @@
       <StatType type="28" scale="perLevel" amount="1.5" />
     </Tier>
     <Tier tier="2">
-      <PotionStack type="health" stunTime="0.5" scale="perLevel" percentage="0.008" />
-      <PotionStack type="mana" stunTime="0.5" scale="perLevel" percentage="0.008" />
+      <PotionStack type="health" scale="perLevel" percentage="0.008" />
+      <PotionStack type="mana" scale="perLevel" percentage="0.008" />
       <StatType type="26" scale="perLevel" amount="-1" />
       <StatType type="28" scale="perLevel" amount="1.5" />
       <NoPotionHealing />
@@ -339,6 +340,7 @@
     <CostMultiplier>1.1</CostMultiplier>
     <MaxLevels>1</MaxLevels>
     <Restrictions type="mythical" />
+    <!-- requires 16/16 -->
     <Tier tier="0">
       <BagBoost type="white" percentage="0.5" />
       <CanOnlyGetWhiteBags />

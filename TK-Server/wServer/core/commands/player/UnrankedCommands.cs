@@ -1213,7 +1213,7 @@ namespace wServer.core.commands
                         return false;
                     }
 
-                    if (player.Name.ToLower() == playerName)
+                    if (player.Name.ToLower() == playerName.ToLower())
                     {
                         player.SendError("You cannot teleport to yourself.");
                             return false;

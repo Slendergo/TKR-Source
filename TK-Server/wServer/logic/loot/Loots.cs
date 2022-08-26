@@ -208,15 +208,12 @@ namespace wServer.logic.loot
                 var drops = new List<Item>();
                 foreach (var i in possDrops)
                 {
-                    var c = enemy.World.Random.Next(0, 100);
-                    var chance = Math.Round(c / 100.0, 4);
+                    var c = enemy.World.Random.NextDouble();
 
                     var probability = i.Probabilty + (i.Probabilty * playerLootBoost);
 
-                    if (i.Threshold >= 0 && i.Threshold < percentageOfDamage && chance < probability)
+                    if (i.Threshold >= 0 && i.Threshold < percentageOfDamage && c < probability)
                     {
-                        Console.WriteLine($"{chance} < {probability} [{c}]");
-
                         if (i.ItemType == ItemType.None)
                         {
                             var namedItem = enemy.GameServer.Resources.GameData.Items[enemy.GameServer.Resources.GameData.IdToObjectType[i.Item]];

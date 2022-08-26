@@ -603,7 +603,7 @@ namespace wServer.core.objects
 
         public void Teleport(TickTime time, int objId, bool ignoreRestrictions = false)
         {
-            if (IsInMarket && (World is RealmWorld))
+            if (IsInMarket && (World is NexusWorld))
             {
                 SendError("You cannot teleport while inside the market.");
                 RestartTPPeriod();

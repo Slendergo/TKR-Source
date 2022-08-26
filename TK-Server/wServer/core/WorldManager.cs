@@ -53,7 +53,6 @@ namespace wServer.core
             world.Init();
             _ = Worlds.TryAdd(world.Id, world);
             _ = Threads.TryAdd(world.Id, new RootWorldThread(this, world));
-            GameServer.WorldManager.Nexus.PortalMonitor.AddPortal(world);
         }
 
         public void CreateNewRealmAsync(string name)

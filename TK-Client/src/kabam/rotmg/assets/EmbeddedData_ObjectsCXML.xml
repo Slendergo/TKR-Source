@@ -75788,6 +75788,7 @@
     <Soulbound />
     <Activate objectId="Admin Orb" cooldown="10">PermaPet</Activate>
     <OldSound>use_potion</OldSound>
+    <DonorItem />
   </Object>
   <Object type="0x530" id="Snorlax Generator">
     <DisplayId>Snorlax</DisplayId>
@@ -75805,6 +75806,7 @@
     <Soulbound />
     <Activate objectId="Snorlax" cooldown="10">PermaPet</Activate>
     <OldSound>use_potion</OldSound>
+    <DonorItem />
   </Object>
   <Object type="0x531" id="Prisoner Generator">
     <DisplayId>Snorlax</DisplayId>
@@ -75822,6 +75824,7 @@
     <Soulbound />
     <Activate objectId="Prisoner" cooldown="10">PermaPet</Activate>
     <OldSound>use_potion</OldSound>
+    <DonorItem />
   </Object>
   <Object type="0x1690" id="Wagon Generator">
     <DisplayId>Wagon</DisplayId>
@@ -75839,6 +75842,7 @@
     <Soulbound />
     <Activate objectId="Wagon" cooldown="10">PermaPet</Activate>
     <OldSound>use_potion</OldSound>
+    <DonorItem />
   </Object>
   <Object type="0x1691" id="Kirby Generator">
     <DisplayId>Kirby</DisplayId>
@@ -75856,6 +75860,7 @@
     <Soulbound />
     <Activate objectId="Kirby" cooldown="10">PermaPet</Activate>
     <OldSound>use_potion</OldSound>
+    <DonorItem />
   </Object>
   <Object type="0x1692" id="Evil Wolf Generator">
     <DisplayId>Evil Wolf</DisplayId>
@@ -75873,6 +75878,7 @@
     <Soulbound />
     <Activate objectId="Evil Wolf" cooldown="10">PermaPet</Activate>
     <OldSound>use_potion</OldSound>
+    <DonorItem />
   </Object>
   <Object type="0x1693" id="Thot Camel Generator">
     <DisplayId>Thor Camel</DisplayId>
@@ -75890,6 +75896,7 @@
     <Soulbound />
     <Activate objectId="Thot Camel" cooldown="10">PermaPet</Activate>
     <OldSound>use_potion</OldSound>
+    <DonorItem />
   </Object>
   <Object type="0x1694" id="Shrek Pet Generator">
     <DisplayId>Shrek Pet</DisplayId>
@@ -75907,6 +75914,7 @@
     <Soulbound />
     <Activate objectId="Shrek Pet" cooldown="10">PermaPet</Activate>
     <OldSound>use_potion</OldSound>
+    <DonorItem />
   </Object>
   <Object type="0x1695" id="Donkey Pet Generator">
     <DisplayId>Donkey Pet</DisplayId>
@@ -75924,6 +75932,7 @@
     <Soulbound />
     <Activate objectId="Donkey Pet" cooldown="10">PermaPet</Activate>
     <OldSound>use_potion</OldSound>
+    <DonorItem />
   </Object>
   <Object type="0x308" id="Fat Purple Bunny Generator">
     <DisplayId>Fat Purple Bunny</DisplayId>
@@ -75941,6 +75950,7 @@
     <Soulbound />
     <Activate objectId="Fat Purple Bunny" cooldown="10">PermaPet</Activate>
     <OldSound>use_potion</OldSound>
+    <DonorItem />
   </Object>
   <Object type="0x309" id="Bullet Bill Generator">
     <DisplayId>Bullet Bill</DisplayId>
@@ -75958,6 +75968,7 @@
     <Soulbound />
     <Activate objectId="Bullet Bill" cooldown="10">PermaPet</Activate>
     <OldSound>use_potion</OldSound>
+    <DonorItem />
   </Object>
   <Object type="0x1696" id="Tiny Rogue Generator">
     <DisplayId>Tiny Rogue</DisplayId>
@@ -75975,6 +75986,7 @@
     <Soulbound />
     <Activate objectId="Tiny Rogue" cooldown="10">PermaPet</Activate>
     <OldSound>use_potion</OldSound>
+    <DonorItem />
   </Object>
   <Object type="0x311" id="Bean Warrior Generator">
     <DisplayId>Bean Warrior</DisplayId>
@@ -75992,6 +76004,7 @@
     <Soulbound />
     <Activate objectId="Bean Warrior" cooldown="10">PermaPet</Activate>
     <OldSound>use_potion</OldSound>
+    <DonorItem />
   </Object>
   <Object type="0x312" id="Annoyed Slime Generator">
     <DisplayId>Annoyed Slime</DisplayId>
@@ -76009,6 +76022,7 @@
     <Soulbound />
     <Activate objectId="Annoyed Slime" cooldown="10">PermaPet</Activate>
     <OldSound>use_potion</OldSound>
+    <DonorItem />
   </Object>
   <Object type="0x313" id="Giant Rubber Duck Generator">
     <DisplayId>Giant Rubber Duck</DisplayId>
@@ -76026,6 +76040,7 @@
     <Soulbound />
     <Activate objectId="Giant Rubber Duck" cooldown="10">PermaPet</Activate>
     <OldSound>use_potion</OldSound>
+    <DonorItem />
   </Object>
   <Object type="0x1500" id="Black Cat Generator">
     <DisplayId>Black Cat</DisplayId>

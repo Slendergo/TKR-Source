@@ -154,6 +154,9 @@ namespace wServer.core.objects.vendors
             Count = World.Random.Next(5, 15);
             RankRequired = data.RankRequired;
 
+            if (sellableItem.ItemId == 0x7021 || sellableItem.ItemId == 0x7019 || sellableItem.ItemId == 0x7018 || sellableItem.ItemId == 0x7017 || sellableItem.ItemId == 0x7016)
+                return;
+        
             var discountChance = World.Random.NextDouble();
             if (discountChance < 0.1)
             {

@@ -79,18 +79,6 @@ namespace wServer.core.commands
                     return false;
                 }
 
-                var acc = player.GameServer.Database.GetAccount(bInfo.accountId);
-
-                if (player.IsAdmin)
-                {
-                    player.SendError("Cannot ban admins");
-
-                    // dispose vars
-                    bInfo = null;
-                    acc = null;
-                    return false;
-                }
-
                 // ban player + disconnect if currently connected
                 player.GameServer.Database.Ban(bInfo.accountId, bInfo.banReasons, bInfo.banLiftTime);
 

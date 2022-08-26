@@ -19,6 +19,14 @@ namespace wServer.core.worlds.impl
             Branches.Add(world.Id, world);
         }
 
+        public int GetPlayerCount(ref int count)
+        {
+
+
+
+            return count;
+        }
+
         public bool HasBranches() => Branches.Count > 0;
 
         public void Update(ref TickTime time)

@@ -134,6 +134,8 @@ namespace wServer.core
                     //    continue;
 
                     var count = p.WorldInstance.Players.Count;
+                    p.WorldInstance.GetPlayerCount(ref count);
+
                     var updatedCount = $"{p.WorldInstance.GetDisplayName()} ({Math.Min(count, p.WorldInstance.MaxPlayers)}/{p.WorldInstance.MaxPlayers})";
 
                     if (p.Name.Equals(updatedCount))

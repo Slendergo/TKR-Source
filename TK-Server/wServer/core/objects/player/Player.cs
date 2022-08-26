@@ -1510,7 +1510,7 @@ namespace wServer.core.objects
         {
             // despawn old pet if found
             if (Pet != null)
-                World.LeaveWorld(Pet);
+                owner.LeaveWorld(Pet);
 
             if (Client.Account.Hidden)
                 return;

@@ -271,9 +271,6 @@ namespace wServer.logic
             new Threshold(0.5,
                 new ItemLoot("Cloak of the Red Agent", 0.01),
                 new ItemLoot("Felwasp Toxin", 0.01)
-                ),
-            new Threshold(0.01,
-                new ItemLoot("Talisman of Looting", 0.02)
                 )
             )
         .Init("Demon of the Abyss",
@@ -287,9 +284,6 @@ namespace wServer.logic
             new ItemLoot("Fire Bow", 0.05),
             new Threshold(0.5,
                 new ItemLoot("Mithril Armor", 0.01)
-                ),
-            new Threshold(0.01,
-                new ItemLoot("Talisman of Looting", 0.02)
                 )
             )
         .Init("Demon Warrior of the Abyss",
@@ -299,10 +293,7 @@ namespace wServer.logic
                     new Wander(0.25)
                     ),
                 new Shoot(8, 3, shootAngle: 10, coolDown: 3000)
-                ),
-            new Threshold(0.01,
-                new ItemLoot("Talisman of Looting", 0.02)
-                ),
+                )
             new ItemLoot("Fire Sword", 0.025),
             new ItemLoot("Steel Shield", 0.025)
             )

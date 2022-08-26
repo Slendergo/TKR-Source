@@ -54,7 +54,7 @@ namespace wServer.core.objects
         {
             if (World is TestWorld) return;
 
-            if (!IsInMarket)
+            if (!IsInMarket && (World is NexusWorld))
             {
                 SendError("You cannot trade outside the market.");
                 return;

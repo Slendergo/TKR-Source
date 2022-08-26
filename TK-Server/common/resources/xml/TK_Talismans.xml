@@ -361,47 +361,4 @@
 			<CantGetLoot/>
 		</Tier>
 	</Talisman>
-	<!--Mythical Talismans-->
-
-	<Talisman type="0x02">
-		<Name>Talisman of Luck</Name>
-		<ItemAssociatedWith>Talisman of Luck</ItemAssociatedWith>
-		<BaseUpgradeCost>2000</BaseUpgradeCost>
-		<TierUpgradeCost>8000</TierUpgradeCost>
-		<CostMultiplier>1.1</CostMultiplier>
-		<MaxLevels>10</MaxLevels>
-		<Tier tier="0">
-			<LootBoost percentage="0.001" scale="perLevel"/>
-			<LootBoost percentage="0.05" scale="flat"/>
-		</Tier>
-		<Tier tier="1">
-			<LootBoost percentage="0.01" scale="perLevel"/>
-			<LootBoost percentage="0.075" scale="flat"/>
-		</Tier>
-		<Tier tier="2">
-			<LootBoost percentage="0.015" scale="perLevel"/>
-			<LootBoost percentage="0.1" scale="flat"/>
-		</Tier>
-	</Talisman>
-	
-	<Talisman type="0x03">
-		<Name>Severed Marble Hand</Name>
-		<ItemAssociatedWith>Severed Marble Hand</ItemAssociatedWith>
-		<BaseUpgradeCost>1500</BaseUpgradeCost>
-		<TierUpgradeCost>5000</TierUpgradeCost>
-		<CostMultiplier>1.5</CostMultiplier>
-		<MaxLevels>10</MaxLevels>
-		<Tier tier="0">
-			<StatType type="0" scale="perLevel" amount="5" />
-			<StatType type="3" scale="perLevel" amount="-5" />
-		</Tier>
-		<Tier tier="1">
-			<StatType type="0" scale="perLevel" amount="7" />
-			<StatType type="3" scale="perLevel" amount="-5" />
-		</Tier>
-		<Tier tier="2">
-			<StatType type="0" scale="perLevel" amount="7" />
-			<StatType type="3" scale="perLevel" amount="-3" />
-		</Tier>
-	</Talisman>
 </Talismans>

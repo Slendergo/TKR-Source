@@ -599,7 +599,7 @@ namespace wServer.core.commands
             var lootBoost = Loot.GetPlayerLootBoost(player);
 
             player.SendInfo($"Talisman's provide: {(player.LDBoostTime > 0 ? 0.1 : 0)}%");
-            player.SendInfo($"Talisman's provide: {player.TalismanLootBoost + player.TalismanLootBoostPerPlayer}%");
+            player.SendInfo($"Talisman's provide: {(player.TalismanLootBoost + player.TalismanLootBoostPerPlayer) * 100.0} % ");
             player.SendInfo($"You have {Math.Round(lootBoost * 100.0f, 3)}% increased loot chance");
             return true;
         }
@@ -1213,7 +1213,7 @@ namespace wServer.core.commands
                         return false;
                     }
 
-                    if (player.Name.ToLower() == playerName)
+                    if (player.Name.ToLower() == playerName.ToLower())
                     {
                         player.SendError("You cannot teleport to yourself.");
                             return false;

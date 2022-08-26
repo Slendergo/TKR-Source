@@ -525,10 +525,6 @@ namespace wServer.logic
                 new Shoot(12, 5, 10, predictive: 1, coolDown: 1250)
 
                 ),
-            new Threshold(0.03,
-                new ItemLoot("Talisman of Luck", 0.002),
-                new ItemLoot("Talisman of Looting", 0.25)
-                ),
             new TierLoot(5, ItemType.Weapon, 0.08),
             new TierLoot(6, ItemType.Weapon, 0.04),
             new TierLoot(7, ItemType.Weapon, 0.02),

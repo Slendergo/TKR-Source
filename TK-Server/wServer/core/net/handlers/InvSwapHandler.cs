@@ -33,7 +33,7 @@ namespace wServer.core.net.handlers
 
         private void Handle(Player player, Entity from, Entity to, int slotFrom, int slotTo)
         {
-            if (player.IsInMarket)
+            if (player.IsInMarket && (player.World is NexusWorld))
             {
                 from.ForceUpdate(slotFrom);
                 to.ForceUpdate(slotTo);

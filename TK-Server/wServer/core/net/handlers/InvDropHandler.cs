@@ -35,7 +35,7 @@ namespace wServer.core.net.handlers
             //    }
             //}
 
-            if (player.IsInMarket)
+            if (player.IsInMarket && (player.World is NexusWorld))
             {
                 player.ForceUpdate(slot.SlotId);
                 player.SendInfo("You cannot drop items inside the marketplace");

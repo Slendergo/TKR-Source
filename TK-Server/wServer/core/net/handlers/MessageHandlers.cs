@@ -34,11 +34,6 @@ namespace wServer.core.net.handlers
                     return false;
                 }
             }
-            else
-            {
-                client.Player.SendError("You can't use this Feature.");
-                return false;
-            }
             return true;
         }
     }

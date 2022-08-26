@@ -787,8 +787,7 @@ namespace wServer.logic
                 new ItemLoot("Staff of Unholy Sacrifice", 0.000001),
                 new ItemLoot("Skull of Corrupted Souls", 0.000001),
                 new ItemLoot("Ritual Robe", 0.000001),
-                new ItemLoot("Bloodshed Ring", 0.000001),
-                new ItemLoot("Severed Marble Hand", 0.000001)
+                new ItemLoot("Bloodshed Ring", 0.000001)
            ),
        new Threshold(0.05,
            new ItemLoot("Marbled Concoction", 0.0000008),

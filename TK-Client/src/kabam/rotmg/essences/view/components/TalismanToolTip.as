@@ -111,7 +111,7 @@ public class TalismanToolTip extends ToolTip
                         type = "HP Regen"; break;
                 }
 
-                this.effects.push(new Effect("" , symbol + (xml.@percentage * 100.0) + "% " + type + scaleType));
+                this.effects.push(new Effect("" , symbol + (xml.@percentage * 100) + "% " + type + scaleType));
             }
 
             xml = null;
@@ -125,7 +125,7 @@ public class TalismanToolTip extends ToolTip
 
             xml = null;
             for each(xml in tierXML.FameGainBonus){
-                this.effects.push(new Effect("", "+" + (xml.@percentage * 100.0) + " Fame Gain"));
+                this.effects.push(new Effect("", "+" + (xml.@percentage * 100) + " Fame Gain"));
             }
 
             if(tierXML.hasOwnProperty("NoPotionHealing")){
@@ -144,7 +144,7 @@ public class TalismanToolTip extends ToolTip
                 }
 
                 var type:String = xml.@type;
-                this.effects.push(new Effect("", symbol + (xml.@percentage * 100.0) + "% " + type + " " + scaleType + " Per Potion Stacked"));
+                this.effects.push(new Effect("", symbol + (xml.@percentage * 100) + "% " + type + " " + scaleType + " Per Potion Stacked"));
             }
 
             if(tierXML.hasOwnProperty("ShotsPierceArmour")){
@@ -160,7 +160,7 @@ public class TalismanToolTip extends ToolTip
             }
 
             if(tierXML.hasOwnProperty("AbilityLifeCost")){
-                this.effects.push(new Effect("", "Abilities cost " + (tierXML.@percentage * 100.0) + "% life"));
+                this.effects.push(new Effect("", "Abilities cost " + (tierXML.@percentage * 100) + "% life"));
             }
 
             if(tierXML.hasOwnProperty("CanOnlyGetWhiteBags")){
@@ -174,7 +174,7 @@ public class TalismanToolTip extends ToolTip
                     scaleType = " Per Level"
                 }
 
-                var condition:String = xml.condition;
+                var condition:String = xml.@condition;
                 if(condition == "above"){
                     condition = "Above";
                 }
@@ -194,11 +194,11 @@ public class TalismanToolTip extends ToolTip
                     case "HealthRegen":
                         type = "HP Regen"; break;
                 }
-                this.effects.push(new Effect("", "While " + condition + " " + symbol + (xml.@add * 100.0) + "% HP Gain " + type + scaleType));
+                this.effects.push(new Effect("", "If " + condition + " " + (xml.@percentage * 100) + "% HP Gain " + (xml.@add * 100) + "% " + type + scaleType));
             }
 
             xml = null;
-            for each(xml in tierXML.Health){
+            for each(xml in tierXML.BagBoost){
                 var scaleType:String = " Flat";
                 if(xml.@scale == "perLevel") {
                     scaleType = " Per Level"
@@ -212,7 +212,7 @@ public class TalismanToolTip extends ToolTip
                 if(type == "white"){
                     type = "White Bag";
                 }
-                this.effects.push(new Effect("", symbol + (xml.@percentage * 100.0) + "% " + type + scaleType));
+                this.effects.push(new Effect("", symbol + (xml.@percentage * 100) + "% " + type + scaleType));
             }
 
             xml = null;
@@ -225,7 +225,7 @@ public class TalismanToolTip extends ToolTip
                 if(xml.@percentage < 0){
                     symbol = "";
                 }
-                this.effects.push(new Effect("", symbol + (xml.@percentage * 100.0) + "% Loot Boost" + scaleType));
+                this.effects.push(new Effect("", symbol + (xml.@percentage * 100) + "% Loot Boost" + scaleType));
             }
             xml = null;
             for each(xml in tierXML.LootBoostPerPlayer){
@@ -237,7 +237,7 @@ public class TalismanToolTip extends ToolTip
                 if(xml.@percentage < 0){
                     symbol = "";
                 }
-                this.effects.push(new Effect("", symbol + (xml.@percentage * 100.0) + "% Loot Boost Per Player" + scaleType));
+                this.effects.push(new Effect("", symbol + (xml.@percentage * 100) + "% Loot Boost Per Player" + scaleType));
             }
 
             xml = null;
@@ -267,7 +267,7 @@ public class TalismanToolTip extends ToolTip
                     stat = "MP";
                 }
 
-                this.effects.push(new Effect("", symbol + (xml.@percentage * 100.0) + "% Extra Damage" + scaleType + type + stat));
+                this.effects.push(new Effect("", symbol + (xml.@percentage * 100) + "% Extra Damage" + scaleType + type + stat));
             }
 
             this.effects.push(new Effect("",""));

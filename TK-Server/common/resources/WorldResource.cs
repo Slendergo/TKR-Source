@@ -30,6 +30,7 @@ namespace common.resources
         public readonly bool ShowDisplays;
         public readonly bool DisableShooting;
         public readonly bool DisableAbilities;
+        public readonly bool CreateInstance;
 
         public WorldResource(XElement elem)
         {
@@ -47,6 +48,7 @@ namespace common.resources
             ShowDisplays = elem.HasElement("ShowDisplays");
             DisableShooting = elem.HasElement("DisableShooting");
             DisableAbilities = elem.HasElement("DisableAbilities");
+            CreateInstance = elem.HasElement("CreateInstance");
 
             MapJM = new List<string>();
             foreach (var map in elem.Elements("MapJM"))

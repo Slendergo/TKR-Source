@@ -33,7 +33,7 @@ namespace wServer.logic
         public void Death(TickTime time)
         {
             if (Dead)
-                return
+                return;
 
             Dead = true;
 

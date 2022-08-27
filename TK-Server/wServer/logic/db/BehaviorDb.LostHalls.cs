@@ -772,8 +772,8 @@ namespace wServer.logic
                 new ItemLoot("Greater Potion of Life", 0.5, 0, 0.002),
                 new TierLoot(14, ItemType.Weapon, 0.1, 0, 0.002),
                 new TierLoot(14, ItemType.Armor, 0.1, 0, 0.002),
-                new TierLoot(7, ItemType.Ability, 0.1, 0, 0.002),
-                new TierLoot(7, ItemType.Ring, 0.1, 0, 0.002)
+                new TierLoot(6, ItemType.Ability, 0.1, 0, 0.002),
+                new TierLoot(6, ItemType.Ring, 0.1, 0, 0.002)
                 ),
             new Threshold(0.03,
                 new ItemLoot("Sword of the Colossus", 0.000001),

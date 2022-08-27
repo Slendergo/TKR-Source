@@ -44,7 +44,7 @@ namespace common.resources
             Difficulty = elem.GetValue<byte>("Difficulty");
             Background = elem.GetValue<byte>("Background");
             VisibilityType = (byte)elem.GetValue<int>("VisibilityType");
-            AllowTeleport = elem.HasElement("AllowTeleport");
+            AllowTeleport = !elem.HasElement("DisableTeleport");
             ShowDisplays = elem.HasElement("ShowDisplays");
             DisableShooting = elem.HasElement("DisableShooting");
             DisableAbilities = elem.HasElement("DisableAbilities");

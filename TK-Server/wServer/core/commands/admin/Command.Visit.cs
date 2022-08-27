@@ -34,12 +34,6 @@ namespace wServer.core.commands
                     return false;
                 }
 
-                if (target?.Player?.World is VaultWorld)
-                {
-                    player.SendError("He's in the Vault.");
-                    return false;
-                }
-
                 var owner = target.Player.World;
 
                 if ((owner is VaultWorld || owner.IdName.Contains("Vault")) && !player.IsAdmin)

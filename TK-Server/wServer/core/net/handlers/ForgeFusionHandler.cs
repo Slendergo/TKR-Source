@@ -9,11 +9,16 @@ namespace wServer.core.net.handlers
 {
     public class ForgeFusionHandler : IMessageHandler
     {
+        private readonly ushort[] _EarthWeaponsList = { 0x500f };
+        private readonly ushort[] _fireWeaponsList = { 0x5012, 0x5013 };
+        private readonly ushort[] _WaterWeaponsList = { 0x5010 };
+        private readonly ushort[] _WindWeaponsList = { 0x5011, 0x500e };
         public override MessageId MessageId => MessageId.FORGEFUSION;
 
         public override void Handle(Client client, NReader rdr, ref TickTime time)
         {
             var myInventory = new ForgeItem[rdr.ReadInt16()];
+            var rnd = new Random();
             for (int i = 0; i < myInventory.Length; i++)
             {
                 myInventory[i].ObjectType = rdr.ReadUInt16();
@@ -97,92 +102,36 @@ namespace wServer.core.net.handlers
                 //        client.Player.Inventory[forgeItems[i].slotID] = null;
                 //    return;
 
-                case "2793, 2793":
-                    client.Player.SendInfo("Successfully forged " + client.GameServer.Resources.GameData.Items[0x4970].DisplayName); // life
-                    list.Clear();
-                    client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[0x4970];
-                    for (var i = 1; i < forgeItems.Length; i++)
-                        client.Player.Inventory[forgeItems[i].slotID] = null;
-                    return;
-                case "2591, 2591":
-                    client.Player.SendInfo("Successfully forged " + client.GameServer.Resources.GameData.Items[0x4972].DisplayName); // att
-                    list.Clear();
-                    client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[0x4972];
-                    for (var i = 1; i < forgeItems.Length; i++)
-                        client.Player.Inventory[forgeItems[i].slotID] = null;
-                    return;
-                case "2592, 2592":
-                    client.Player.SendInfo("Successfully forged " + client.GameServer.Resources.GameData.Items[0x4973].DisplayName); // def
-                    list.Clear();
-                    client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[0x4973];
-                    for (var i = 1; i < forgeItems.Length; i++)
-                        client.Player.Inventory[forgeItems[i].slotID] = null;
-                    return;
-                case "2794, 2794":
-                    client.Player.SendInfo("Successfully forged " + client.GameServer.Resources.GameData.Items[0x4971].DisplayName); // mana
-                    list.Clear();
-                    client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[0x4971];
-                    for (var i = 1; i < forgeItems.Length; i++)
-                        client.Player.Inventory[forgeItems[i].slotID] = null;
-                    return;
-                case "2612, 2612":
-                    client.Player.SendInfo("Successfully forged " + client.GameServer.Resources.GameData.Items[0x4976].DisplayName); // vit
-                    list.Clear();
-                    client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[0x4976];
-                    for (var i = 1; i < forgeItems.Length; i++)
-                        client.Player.Inventory[forgeItems[i].slotID] = null;
-                    return;
-                case "2613, 2613":
-                    client.Player.SendInfo("Successfully forged " + client.GameServer.Resources.GameData.Items[0x4977].DisplayName); // wis
-                    list.Clear();
-                    client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[0x4977];
-                    for (var i = 1; i < forgeItems.Length; i++)
-                        client.Player.Inventory[forgeItems[i].slotID] = null;
-                    return;
-                case "2593, 2593":
-                    client.Player.SendInfo("Successfully forged " + client.GameServer.Resources.GameData.Items[0x4974].DisplayName); // spd
-                    list.Clear();
-                    client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[0x4974];
-                    for (var i = 1; i < forgeItems.Length; i++)
-                        client.Player.Inventory[forgeItems[i].slotID] = null;
-                    return;
-                case "2636, 2636":
-                    client.Player.SendInfo("Successfully forged " + client.GameServer.Resources.GameData.Items[0x4975].DisplayName); // dex
-                    list.Clear();
-                    client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[0x4975];
-                    for (var i = 1; i < forgeItems.Length; i++)
-                        client.Player.Inventory[forgeItems[i].slotID] = null;
-                    return;
-
-
-                case "18803, 18802":
-                    client.Player.SendInfo("Successfully forged " + client.GameServer.Resources.GameData.Items[0x4979].DisplayName); //att/def soul
-                    list.Clear();
-                    client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[0x4979];
-                    for (var i = 1; i < forgeItems.Length; i++)
-                        client.Player.Inventory[forgeItems[i].slotID] = null;
-                    return;
-                case "18805, 18804":
-                    client.Player.SendInfo("Successfully forged " + client.GameServer.Resources.GameData.Items[0x497A].DisplayName); //spd/dex soul
-                    list.Clear();
-                    client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[0x497A];
-                    for (var i = 1; i < forgeItems.Length; i++)
-                        client.Player.Inventory[forgeItems[i].slotID] = null;
-                    return;
-                case "18807, 18806":
-                    client.Player.SendInfo("Successfully forged " + client.GameServer.Resources.GameData.Items[0x497B].DisplayName); //vit/wis soul
-                    list.Clear();
-                    client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[0x497b];
-                    for (var i = 1; i < forgeItems.Length; i++)
-                        client.Player.Inventory[forgeItems[i].slotID] = null;
-                    return;
                 case "18801, 18800":
-                    client.Player.SendInfo("Successfully forged " + client.GameServer.Resources.GameData.Items[0x4978].DisplayName); //life/mana soul
+                    client.Player.SendInfo("Successfully forged " + client.GameServer.Resources.GameData.Items[0x4978].DisplayName); // life/mana
                     list.Clear();
                     client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[0x4978];
                     for (var i = 1; i < forgeItems.Length; i++)
                         client.Player.Inventory[forgeItems[i].slotID] = null;
                     return;
+                case "18803, 18802":
+                    client.Player.SendInfo("Successfully forged " + client.GameServer.Resources.GameData.Items[0x4979].DisplayName); // att/def
+                    list.Clear();
+                    client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[0x4979];
+                    for (var i = 1; i < forgeItems.Length; i++)
+                        client.Player.Inventory[forgeItems[i].slotID] = null;
+                    return;
+                case "18804, 18805":
+                    client.Player.SendInfo("Successfully forged " + client.GameServer.Resources.GameData.Items[0x497A].DisplayName); // spd/dex
+                    list.Clear();
+                    client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[0x497A];
+                    for (var i = 1; i < forgeItems.Length; i++)
+                        client.Player.Inventory[forgeItems[i].slotID] = null;
+                    return;
+                case "18806, 18807":
+                    client.Player.SendInfo("Successfully forged " + client.GameServer.Resources.GameData.Items[0x497B].DisplayName); // vit/wis
+                    list.Clear();
+                    client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[0x497B];
+                    for (var i = 1; i < forgeItems.Length; i++)
+                        client.Player.Inventory[forgeItems[i].slotID] = null;
+                    return;
+
+
                 case "39172, 18809, 18808":
                     client.Player.SendInfo("Successfully forged " + client.GameServer.Resources.GameData.Items[0x497c].DisplayName); //Life/Mana/Att/Def
                     list.Clear();
@@ -198,10 +147,70 @@ namespace wServer.core.net.handlers
                         client.Player.Inventory[forgeItems[i].slotID] = null;
                     return;
                 case "39171, 18813, 18812":
-                    //client.Player.SendInfo("Successfully forged " + client.CoreServerManager.Resources.GameData.Items[0x497e].DisplayName); //Sup Potion
+                    //client.Player.SendInfo("Successfully forged " + client.CoreServerManager.Resources.GameData.Items[0x497e].DisplayName);
                     AnnounceForger(0x497e, client);
                     list.Clear();
                     client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[0x497e];
+                    for (var i = 1; i < forgeItems.Length; i++)
+                        client.Player.Inventory[forgeItems[i].slotID] = null;
+                    return;
+                case "20506, 20505": //Fire/Water Fragment
+                    //client.Player.SendInfo("Successfully forged " + client.CoreServerManager.Resources.GameData.Items[0x497e].DisplayName);
+                    AnnounceForger(0x501e, client);
+                    list.Clear();
+                    client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[0x501e];
+                    for (var i = 1; i < forgeItems.Length; i++)
+                        client.Player.Inventory[forgeItems[i].slotID] = null;
+                    return;
+                case "20507, 20506": //Wind/Earth Fragment
+                    //client.Player.SendInfo("Successfully forged " + client.CoreServerManager.Resources.GameData.Items[0x497e].DisplayName);
+                    AnnounceForger(0x501d, client);
+                    list.Clear();
+                    client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[0x501d];
+                    for (var i = 1; i < forgeItems.Length; i++)
+                        client.Player.Inventory[forgeItems[i].slotID] = null;
+                    return;
+                case "20510, 20509": //Elemental Fragment
+                    //client.Player.SendInfo("Successfully forged " + client.CoreServerManager.Resources.GameData.Items[0x497e].DisplayName);
+                    AnnounceForger(0x501f, client);
+                    list.Clear();
+                    client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[0x501f];
+                    for (var i = 1; i < forgeItems.Length; i++)
+                        client.Player.Inventory[forgeItems[i].slotID] = null;
+                    return;
+                case "20511, 20505": //Fire Items
+                    //client.Player.SendInfo("Successfully forged " + client.CoreServerManager.Resources.GameData.Items[0x497e].DisplayName); 
+                    ushort itemValue1 = _fireWeaponsList[rnd.Next(_fireWeaponsList.Length)];
+                    AnnounceForger(itemValue1, client);
+                    list.Clear();
+                    client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[itemValue1];
+                    for (var i = 1; i < forgeItems.Length; i++)
+                        client.Player.Inventory[forgeItems[i].slotID] = null;
+                    return;
+                case "20511, 20506": //Water Items
+                    //client.Player.SendInfo("Successfully forged " + client.CoreServerManager.Resources.GameData.Items[0x497e].DisplayName); 
+                    ushort itemValue2 = _WaterWeaponsList[rnd.Next(_WaterWeaponsList.Length)];
+                    AnnounceForger(itemValue2, client);
+                    list.Clear();
+                    client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[itemValue2];
+                    for (var i = 1; i < forgeItems.Length; i++)
+                        client.Player.Inventory[forgeItems[i].slotID] = null;
+                    return;
+                case "20511, 20507": //Wind Items
+                    //client.Player.SendInfo("Successfully forged " + client.CoreServerManager.Resources.GameData.Items[0x497e].DisplayName);
+                    ushort itemValue3 = _WindWeaponsList[rnd.Next(_WindWeaponsList.Length)];
+                    AnnounceForger(itemValue3, client);
+                    list.Clear();
+                    client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[itemValue3];
+                    for (var i = 1; i < forgeItems.Length; i++)
+                        client.Player.Inventory[forgeItems[i].slotID] = null;
+                    return;
+                case "20511, 20508": //Earth Items
+                    //client.Player.SendInfo("Successfully forged " + client.CoreServerManager.Resources.GameData.Items[0x497e].DisplayName);
+                    ushort itemValue4 = _EarthWeaponsList[rnd.Next(_EarthWeaponsList.Length)];
+                    AnnounceForger(itemValue4, client);
+                    list.Clear();
+                    client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[itemValue4];
                     for (var i = 1; i < forgeItems.Length; i++)
                         client.Player.Inventory[forgeItems[i].slotID] = null;
                     return;

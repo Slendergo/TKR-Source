@@ -66,7 +66,7 @@ namespace wServer.logic
                 ),
             new Threshold(0.05,
                 new ItemLoot("Spectral Robe", 0.0014, 0, 0.05),
-                new ItemLoot("Talisman Fragment", 0.005),
+                new ItemLoot("Talisman Fragment", 0.01),
                 new ItemLoot("Scythe of the Reaper", 0.0014, 0, 0.05),
                 new ItemLoot("Haunting Incantation", 0.0014, 0, 0.05)
                 )

@@ -89,7 +89,7 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
              new Threshold(0.05,
-                 new ItemLoot("Talisman Fragment", 0.005),
+                 new ItemLoot("Talisman Fragment", 0.01),
                     new ItemLoot("Spear of Thiram", 0.00014)
                 ),
               new Threshold(0.03,

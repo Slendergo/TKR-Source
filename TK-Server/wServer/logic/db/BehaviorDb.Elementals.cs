@@ -100,7 +100,7 @@ namespace wServer.logic
                 new ItemLoot("Water Fragment", 0.0015, threshold: 0.03)
                 ),
             new Threshold(0.01,
-                new ItemLoot("Talisman Fragment", 0.0005, 0, 0.05),
+                new ItemLoot("Talisman Fragment", 0.01, 0, 0.05),
                 new ItemLoot("Thorn", 0.01),
                 new ItemLoot("Massacre", 0.01),
                 new ItemLoot("Frozen Water Armor", 0.0125),
@@ -185,7 +185,7 @@ namespace wServer.logic
                 ),
 
             new Threshold(0.001,
-                new ItemLoot("Talisman Fragment", 0.0005, 0, 0.05),
+                new ItemLoot("Talisman Fragment", 0.01, 0, 0.05),
                 new ItemLoot("Forbidden Jungle's Seal", 0.0015),
                 new ItemLoot("Shield of the Forest", 0.001),
                 new ItemLoot("Cometfell Katana", 0.001),
@@ -265,7 +265,7 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.01,
-                new ItemLoot("Talisman Fragment", 0.0005, 0, 0.05),
+                new ItemLoot("Talisman Fragment", 0.01, 0, 0.05),
                 new ItemLoot("Staff of Zephyrs", 0.0009, threshold: 0.01),
                 new ItemLoot("Cyclone Orb", 0.0009, threshold: 0.01),
                 new ItemLoot("Gale Robe", 0.0009, threshold: 0.01),
@@ -491,7 +491,7 @@ namespace wServer.logic
                 ),
             new Threshold(0.03,
                 new ItemLoot("Fire Fragment", 0.000015),
-                new ItemLoot("Talisman Fragment", 0.0005, 0, 0.05),
+                new ItemLoot("Talisman Fragment", 0.01, 0, 0.05),
                 new ItemLoot("Phoenix Ashes Orb", 0.000033)
                 ),
             new Threshold(0.001,

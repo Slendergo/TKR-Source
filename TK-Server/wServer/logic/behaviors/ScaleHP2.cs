@@ -29,7 +29,7 @@ namespace wServer.logic.behaviors
 
             if (scstate.cooldown <= 0)
             {
-                scstate.cooldown = 1000;
+                scstate.cooldown = 10000;
 
                 if (!(host is Enemy))
                     return;
@@ -65,10 +65,10 @@ namespace wServer.logic.behaviors
 
                 plrCount = scstate.pNamesCounted.Count;
 
-                if (itemCount * 4 > scstate.initialScaleAmount)
+                if (itemCount * 2 > scstate.initialScaleAmount)
                 {
-                    var amountPerPlayer = (plrCount + 5) * enemy.ObjectDesc.MaxHP / 100;
-                    var amountInc = ((itemCount * 4) - scstate.initialScaleAmount) * amountPerPlayer;
+                    var amountPerPlayer = (plrCount) * enemy.ObjectDesc.MaxHP / 100;
+                    var amountInc = ((itemCount * 2) - scstate.initialScaleAmount) * amountPerPlayer;
 
                     scstate.initialScaleAmount += itemCount - scstate.initialScaleAmount;
 

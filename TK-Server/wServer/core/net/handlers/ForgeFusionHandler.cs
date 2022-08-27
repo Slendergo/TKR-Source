@@ -116,14 +116,14 @@ namespace wServer.core.net.handlers
                     for (var i = 1; i < forgeItems.Length; i++)
                         client.Player.Inventory[forgeItems[i].slotID] = null;
                     return;
-                case "18804, 18805":
+                case "18805, 18804":
                     client.Player.SendInfo("Successfully forged " + client.GameServer.Resources.GameData.Items[0x497A].DisplayName); // spd/dex
                     list.Clear();
                     client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[0x497A];
                     for (var i = 1; i < forgeItems.Length; i++)
                         client.Player.Inventory[forgeItems[i].slotID] = null;
                     return;
-                case "18806, 18807":
+                case "18807, 18806":
                     client.Player.SendInfo("Successfully forged " + client.GameServer.Resources.GameData.Items[0x497B].DisplayName); // vit/wis
                     list.Clear();
                     client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[0x497B];
@@ -162,7 +162,7 @@ namespace wServer.core.net.handlers
                     for (var i = 1; i < forgeItems.Length; i++)
                         client.Player.Inventory[forgeItems[i].slotID] = null;
                     return;
-                case "20507, 20506": //Wind/Earth Fragment
+                case "20508, 20507": //Wind/Earth Fragment
                     //client.Player.SendInfo("Successfully forged " + client.CoreServerManager.Resources.GameData.Items[0x497e].DisplayName);
                     AnnounceForger(0x501d, client);
                     list.Clear();

@@ -127,6 +127,12 @@ namespace wServer.core.net.handlers
 
             if(world.IdName == "Trial of Souls")
             {
+                if (player.Client.Character.CompletedTrialOfSouls)
+                {
+                    player.SendError($"You have already completed the trial of souls");
+                    return;
+                }
+
                 if (player.GetMaxedStats() != 8)
                 {
                     player.SendError($"You must be 8/8 to enter this dungeon");

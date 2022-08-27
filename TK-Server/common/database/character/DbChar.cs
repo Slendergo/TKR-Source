@@ -42,5 +42,6 @@ namespace common.database
         public int XPBoostTime { get => GetValue<int>("xpBoost"); set => SetValue("xpBoost", value); }
         public int Essence { get => GetValue<int>("essence"); set => SetValue("essence", value); }
         public int EssenceCap { get => GetValue<int>("essenceCap"); set => SetValue("essenceCap", value); }
+        public bool CompletedTrialOfSouls { get => GetValue<bool>("completedTrialOfSouls"); set => SetValue("completedTrialOfSouls", value); }
     }
 }

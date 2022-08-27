@@ -10,6 +10,7 @@ namespace wServer.logic
         private _ TrialofSouls = () => Behav()
         .Init("The Baron",
             new State(
+                new CompletedTrialOfSouls(),
                 new ScaleHP2(20),
                 new State("Spawned",
                     new HpLessTransition(threshold: 0.99, targetState: "Choose")

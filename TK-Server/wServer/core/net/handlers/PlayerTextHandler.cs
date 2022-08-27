@@ -56,11 +56,12 @@ namespace wServer.core.net.handlers
                     return;
                 }
 
-                if (player.Stars < 2)
-                {
-                    player.SendHelp("To use this feature you need 2");
-                    return;
-                }
+                if (!player.IsAdmin)
+                    if (player.Stars < 2)
+                    {
+                        player.SendHelp("To use this feature you need 2 stars");
+                        return;
+                    }
 
                 // save message for mob behaviors
                 player.World.ChatReceived(player, text);

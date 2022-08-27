@@ -15,7 +15,10 @@ namespace wServer.logic.behaviors
         protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             if ((host as Pet)?.PlayerOwner == null)
+            {
+                host.World.LeaveWorld(host);
                 return;
+            }
 
             var pet = (Pet)host;
             var s = state == null ? new FollowState { State = F.DontKnowWhere, RemainingTime = 1000 } : (FollowState)state;
@@ -54,10 +57,8 @@ namespace wServer.logic.behaviors
                     else if (vect.Length() > 1)
                     {
                         var dist = host.GetSpeed(0.5f) * time.BehaviourTickTime;
-
                         if (vect.Length() > 2)
                             dist = host.GetSpeed(0.7f + ((float)player.Stats[4] / 100)) * time.BehaviourTickTime;
-
                         vect.Normalize();
 
                         host.ValidateAndMove(host.X + vect.X * dist, host.Y + vect.Y * dist);

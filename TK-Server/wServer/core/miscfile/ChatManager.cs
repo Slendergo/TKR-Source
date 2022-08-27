@@ -209,7 +209,7 @@ namespace wServer.core
 
                 var tp = new Text()
                 {
-                    Name = (src.Client.Account.Name == "Slendergo" || src.Client.Account.Name == "ModBBQ" || src.Client.Account.Name == "Orb" ? "[Owner] " : supporter == 0 ? "" : $"[Supporter {supporter}]") + src.Name,
+                    Name = (src.Client.Account.Name == "Slendergo" || src.Client.Account.Name == "ModBBQ" || src.Client.Account.Name == "Orb" ? "[Owner] " : supporter == 0 ? "" : $"[S-{supporter}] ") + src.Name,
                     ObjectId = src.Id,
                     NumStars = src.Stars,
                     BubbleTime = 5,

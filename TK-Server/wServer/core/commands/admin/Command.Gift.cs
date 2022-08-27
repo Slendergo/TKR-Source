@@ -33,12 +33,7 @@ namespace wServer.core.commands
                 var item = GetItem(player, args.Substring(index + 1));
                 if (item == null)
                 {
-                    return false;
-                }
-
-                if ((item.Soulbound || item.ObjectId == "Ring of The Talisman's Kingdom" || item.ObjectId == "Excalibur") && (player.Client.Account.Name != "Filisha" || player.Client.Account.Name != "ModNidhogg"))
-                {
-                    player.SendError("What are you trying to do!?");
+                    player.SendError("Unable to find item");
                     return false;
                 }
 
@@ -74,7 +69,7 @@ namespace wServer.core.commands
                 var gameData = player.GameServer.Resources.GameData;
 
                 // allow both DisplayId and Id for query
-                if (!gameData.IdToObjectType.TryGetValue(itemName, out ushort objType))
+                if (!gameData.IdToObjectType.TryGetValue(itemName, out var objType))
                     return null;
 
                 if (!gameData.Items.ContainsKey(objType))

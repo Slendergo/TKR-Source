@@ -28,6 +28,7 @@ namespace wServer.logic
                     new TimedRandomTransition(5000, false, "Phase 1", "Phase 2")
                     ),
                 new State("Phase 1",
+                    new RemoveConditionalEffect(ConditionEffectIndex.Invincible),
                     new Order(30, "Baron Turret", "Shoot"),
                     new Order(30, "Baron Turret 1", "Shoot"),
                     new Order(30, "Baron Turret 2", "Shoot"),
@@ -37,6 +38,7 @@ namespace wServer.logic
                     new Shoot(15, 7, projectileIndex: 3, coolDown: 1000, coolDownOffset: 0)
                     ),
                 new State("Phase 2",
+                    new RemoveConditionalEffect(ConditionEffectIndex.Invincible),
                     new Order(30, "Baron Turret", "Shoot"),
                     new Order(30, "Baron Turret 1", "Shoot"),
                     new Order(30, "Baron Turret 2", "Shoot"),

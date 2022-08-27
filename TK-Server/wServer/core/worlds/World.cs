@@ -86,6 +86,7 @@ namespace wServer.core.worlds
             AllowTeleport = resource.AllowTeleport;
             DisableShooting = resource.DisableShooting;
             DisableAbilities = resource.DisableAbilities;
+            CreateInstance = resource.CreateInstance;
 
             IsRealm = false;
 

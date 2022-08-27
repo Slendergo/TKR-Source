@@ -14,18 +14,25 @@ namespace wServer.core.commands
             {
                 var inventory = player.Inventory;
                 var fixedStacks = 0;
+                int maxStacks = 0;
 
                 for (int i = 4; i < 12; i++)
                 {
-                    if (inventory[i] != null && inventory[i].ObjectId == "Magic Dust")
+                    if (inventory[i] != null)
                     {
+                        switch (inventory[i].ObjectId)
+                        {
+                            case "Magic Dust": maxStacks = 5; break;
+                            case "Glowing Shard": maxStacks = 50; break;
+                            default: continue;
+                        }
                         if (inventory.Data[i] == null)
                         {
                             inventory.Data[i] = new ItemData()
                             {
                                 ObjectId = null,
                                 Stack = 1,
-                                MaxStack = 5
+                                MaxStack = maxStacks
                             };
                             fixedStacks ++;
                             player.SendInfo($"Successfully fixed ItemData in Slot {i}");

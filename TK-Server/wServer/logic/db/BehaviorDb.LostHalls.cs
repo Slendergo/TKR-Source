@@ -756,7 +756,7 @@ namespace wServer.logic
                     new Shoot(30, 48, projectileIndex: 17, defaultAngle: 0, shootAngle: 7.5, coolDown: 100000, seeInvis: true),
                     new Shoot(30, 24, projectileIndex: 18, defaultAngle: 0, shootAngle: 15, coolDown: 100000, coolDownOffset: 50, seeInvis: true),
                     new Shoot(30, 48, projectileIndex: 16, defaultAngle: 0, shootAngle: 7.5, coolDown: 1000000, seeInvis: true), //VOID BULLET
-                    new TimedTransition(50, "Death 3")
+                    new TimedTransition(400, "Death 3")
                     ),
                 new State("Death 3",
                     new Suicide()

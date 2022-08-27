@@ -44013,7 +44013,7 @@
     <BagType>7</BagType>
   </Object>
   <Object type="0x40b" id="Heart and Soul">
-    <Class>Equipment1</Class>
+    <Class>Equipment</Class>
     <DisplayId>Heart and Soul</DisplayId>
     <Item />
     <Rare />
@@ -78378,14 +78378,6 @@
     </Texture>
     <ShadowSize>0</ShadowSize>
   </Object>
-  <Object type="0x2020" id="Locked Trial of Souls">
-    <Class>Portal</Class>
-    <LockedPortal />
-    <Texture>
-      <File>customEvironment16x16</File>
-      <Index>0x1b</Index>
-    </Texture>
-  </Object>
   <Object type="0xa141" id="Cave of Eternal Frost">
     <Class>Portal</Class>
     <Size>140</Size>
@@ -78947,6 +78939,16 @@
     <Class>Portal</Class>
     <IntergamePortal />
     <DungeonName>Mortomus Hideout</DungeonName>
+    <Texture>
+      <File>CustomEnvironment16x16</File>
+      <Index>0x1c</Index>
+    </Texture>
+  </Object>
+  <Object type="0x2022" id="Trial of Souls">
+    <DisplayId>Trial of Souls</DisplayId>
+    <Class>Portal</Class>
+    <IntergamePortal />
+    <DungeonName>Trial of Souls</DungeonName>
     <Texture>
       <File>CustomObj1</File>
       <Index>0x06</Index>

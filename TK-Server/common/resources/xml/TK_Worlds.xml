@@ -384,7 +384,7 @@
 	<World id="Trial of Souls">
 		<Width>256</Width>
 		<Height>256</Height>
-		<MapJM>snake_pit.jm</MapJM>
+		<MapJM>trials_of_souls.jm</MapJM>
 		<VisibilityType>1</VisibilityType>
 		<AllowTeleport/>
 		<CreateInstance/>

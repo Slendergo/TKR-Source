@@ -45,6 +45,9 @@ namespace wServer.logic
                     new Shoot(15, 7, projectileIndex: 6, coolDown: 1000, coolDownOffset: 0),
                     new Shoot(15, 7, projectileIndex: 3, coolDown: 1000, coolDownOffset: 0)
                     )
+                ),
+            new Threshold(0.05,
+                new ItemLoot("Crafting Material 1", 1)
                 )
             )
         .Init("Baron Turret 1",

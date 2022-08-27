@@ -567,6 +567,7 @@ namespace common.database
         public void DeleteCharacter(DbAccount acc, int charId)
         {
             _db.KeyDeleteAsync("char." + acc.AccountId + "." + charId);
+            _db.KeyDeleteAsync("talismans." + acc.AccountId + "." + charId);
 
             var buff = BitConverter.GetBytes(charId);
 
@@ -822,7 +823,7 @@ namespace common.database
             if (cost > 0)
                 acc.TotalCredits = (int)_db.HashIncrement(acc.Key, "totalCredits", cost);
 
-            acc.Credits = (int)_db.HashIncrement(acc.Key, "credits", cost);
+            acc.Credits = (int)_db.HashIncrement(acc.Key, "credits", -cost);
 
             // not thread safe
             var ownedSkins = acc.Skins.ToList();

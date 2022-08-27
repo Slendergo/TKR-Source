@@ -3,11 +3,6 @@
 		
 		<!-- Tiered Weapons-->
 		<ItemPool>
-			<TieredItem weight="500" tier="1">Weapon</TieredItem>
-			<TieredItem weight="450" tier="2">Weapon</TieredItem>
-			<TieredItem weight="400" tier="3">Weapon</TieredItem>
-			<TieredItem weight="450" tier="4">Weapon</TieredItem>
-			<TieredItem weight="400" tier="5">Weapon</TieredItem>
 			<TieredItem weight="350" tier="6">Weapon</TieredItem>
 			<TieredItem weight="300" tier="7">Weapon</TieredItem>
 			<TieredItem weight="250" tier="8">Weapon</TieredItem>
@@ -15,15 +10,12 @@
 			<TieredItem weight="150" tier="10">Weapon</TieredItem>
 			<TieredItem weight="100" tier="11">Weapon</TieredItem>
 			<TieredItem weight="50" tier="12">Weapon</TieredItem>
+			<TieredItem weight="25" tier="13">Weapon</TieredItem>
+			<TieredItem weight="12" tier="14">Weapon</TieredItem>
 		</ItemPool>
 		
 		<!-- Tiered Armours -->
 		<ItemPool>
-			<TieredItem weight="500" tier="1">Armor</TieredItem>
-			<TieredItem weight="450" tier="2">Armor</TieredItem>
-			<TieredItem weight="400" tier="3">Armor</TieredItem>
-			<TieredItem weight="450" tier="4">Armor</TieredItem>
-			<TieredItem weight="400" tier="5">Armor</TieredItem>
 			<TieredItem weight="350" tier="6">Armor</TieredItem>
 			<TieredItem weight="300" tier="7">Armor</TieredItem>
 			<TieredItem weight="250" tier="8">Armor</TieredItem>
@@ -31,12 +23,12 @@
 			<TieredItem weight="150" tier="10">Armor</TieredItem>
 			<TieredItem weight="100" tier="11">Armor</TieredItem>
 			<TieredItem weight="50" tier="12">Armor</TieredItem>
+			<TieredItem weight="25" tier="13">Weapon</TieredItem>
+			<TieredItem weight="12" tier="14">Weapon</TieredItem>
 		</ItemPool>
 		
 		<!-- Tiered Abilities -->
 		<ItemPool>
-			<TieredItem weight="250" tier="1">Ability</TieredItem>
-			<TieredItem weight="200" tier="2">Ability</TieredItem>
 			<TieredItem weight="150" tier="3">Ability</TieredItem>
 			<TieredItem weight="150" tier="4">Ability</TieredItem>
 			<TieredItem weight="100" tier="5">Ability</TieredItem>
@@ -45,8 +37,6 @@
 		
 		<!-- Tiered Rings -->
 		<ItemPool>
-			<TieredItem weight="250" tier="1">Ring</TieredItem>
-			<TieredItem weight="250" tier="2">Ring</TieredItem>
 			<TieredItem weight="200" tier="3">Ring</TieredItem>
 			<TieredItem weight="150" tier="4">Ring</TieredItem>
 			<TieredItem weight="100" tier="5">Ring</TieredItem>
@@ -219,7 +209,6 @@
 			<TieredItem weight="100" tier="2">Potion</TieredItem> <!-- Regular Stat-->
 			<TieredItem weight="50" tier="3">Potion</TieredItem> <!-- Wines -->
 			<TieredItem weight="25" tier="4">Potion</TieredItem> <!-- Greater Stat -->
-			<Item weight="5">Supreme Potion</Item>
 			<Item weight="10">Soul of Life</Item>
 			<Item weight="10">Soul of Mana</Item>
 			<Item weight="10">Soul of Attack</Item>

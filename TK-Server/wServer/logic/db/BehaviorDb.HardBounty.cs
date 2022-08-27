@@ -17,7 +17,7 @@ namespace wServer.logic
                 new ScaleHP2(20),
                     new State("Pause",
                         new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
-                        new DropPortalOnDeath("Mortomus Hideout Portal", 0.7),
+                        new DropPortalOnDeath("Defiled Graveyard Portal", 0.7),
                         new PlayerWithinTransition(10, "Start")
                         ),
                     new State("Start",

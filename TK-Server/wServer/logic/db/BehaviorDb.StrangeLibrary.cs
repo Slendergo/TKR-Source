@@ -319,14 +319,13 @@ namespace wServer.logic
                 new ItemLoot("Wand of Pain", .003)
                 ),
             new Threshold(0.05,
-                new ItemLoot("Tome of Universal Theory", .0015, threshold: 0.05)//,
+                new ItemLoot("Tome of Universal Theory", .00015, threshold: 0.05)//,
                 //new ItemLoot("All-Knowing Bookworm", .0015, threshold: 0.05) //NO XML
                 ),
             new Threshold(0.01,
-                new ItemLoot("Crafting Material 1", 0.01),
-                new ItemLoot("Head of Calamity", 0.007),
-                new ItemLoot("Blood-Soaked Robe", 0.015),
-                new ItemLoot("The Dance of Fire", 0.01),
+                new ItemLoot("Head of Calamity", 0.0007),
+                new ItemLoot("Blood-Soaked Robe", 0.0015),
+                new ItemLoot("The Dance of Fire", 0.001),
                 new ItemLoot("Potion of Attack", 1),
                 new ItemLoot("Potion of Defense", 1),
                 new ItemLoot("Potion of Defense", 1),

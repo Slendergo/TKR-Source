@@ -104,13 +104,13 @@
 		<Defense>30</Defense>
 		<StasisImmune/>
 		<Projectile id="0">
-			<ObjectId>Fire Shot</ObjectId>
+			<ObjectId>Undead Bat Shot</ObjectId>
 			<Damage>110</Damage>
 			<Speed>50</Speed>
 			<Size>90</Size>
 			<MultiHit/>
 			<ConditionEffect duration="2">Slowed</ConditionEffect>
-			<LifetimeMS>800</LifetimeMS>
+			<LifetimeMS>1500</LifetimeMS>
 		</Projectile>
 		<Projectile id="1">
 			<ObjectId>Undead Bat Shot</ObjectId>
@@ -119,7 +119,7 @@
 			<Size>90</Size>
 			<MultiHit/>
 			<ConditionEffect duration="2">Slowed</ConditionEffect>
-			<LifetimeMS>800</LifetimeMS>
+			<LifetimeMS>1500</LifetimeMS>
 		</Projectile>
 		<Projectile id="2">
 			<ObjectId>Undead Bat Shot</ObjectId>
@@ -128,7 +128,7 @@
 			<Size>90</Size>
 			<MultiHit/>
 			<ConditionEffect duration="2">Slowed</ConditionEffect>
-			<LifetimeMS>800</LifetimeMS>
+			<LifetimeMS>1500</LifetimeMS>
 		</Projectile>
 	</Object>
 	<Object type="0x239" id="Haunted Bat">

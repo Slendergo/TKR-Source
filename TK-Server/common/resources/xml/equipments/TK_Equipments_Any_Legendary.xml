@@ -51,7 +51,7 @@
 		<Rare />
 		<InvUse />
 		<Texture>
-			<File>CustomObj</File>
+			<File>CustomObj1</File>
 			<Index>0x35</Index>
 		</Texture>
 		<ExtraTooltipData>

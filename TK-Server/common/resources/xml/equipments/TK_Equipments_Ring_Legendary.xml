@@ -38,7 +38,7 @@
     <BagType>7</BagType>
     <FameBonus>7</FameBonus>
     <feedPower>1500</feedPower>
-    <Legendary />
+    <Mythical />
   </Object>
   <Object type="0xbac" id="Infused Souls">
     <Class>Equipment</Class>

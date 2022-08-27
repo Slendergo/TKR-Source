@@ -191,7 +191,9 @@
     <Compile Include="logic\db\BehaviorDb.TrialofSouls.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="logic\db\BehaviourDb.MortomusHideout.cs" />
+    <Compile Include="logic\db\BehaviourDb.DefiledGraveyard.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="logic\transitions\EngineStageTransition.cs" />
     <Compile Include="memory\IObjectPoolObject.cs" />
     <Compile Include="memory\ObjectPool.cs" />

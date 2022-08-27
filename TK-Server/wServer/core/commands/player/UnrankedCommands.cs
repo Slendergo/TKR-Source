@@ -984,7 +984,7 @@ namespace wServer.core.commands
             }
 
             player.Client.Account.Guest = false;
-            player.SendInfo("You're not more a Guest!");
+            player.SendInfo("You're no longer a guest!");
             return true;
         }
     }

@@ -131,7 +131,7 @@
 			<Index>0xdf</Index>
 		</Texture>
 		<SlotType>1</SlotType>
-		<Legendary />
+		<Mythical />
 		<Description>“Cowards die many times before their deaths; The valiant never taste of death but once.”</Description>
 		<RateOfFire>0.6</RateOfFire>
 		<Sound>weapon/mithril_sword</Sound>

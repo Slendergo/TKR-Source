@@ -348,7 +348,7 @@ namespace wServer.logic
                 new TierLoot(11, ItemType.Armor, 0.1),
                 new TierLoot(5, ItemType.Ring, 0.1),
                 new TierLoot(5, ItemType.Ability, 0.1),
-                new ItemLoot("Sword of Golden Fragments", 0.005),
+                new ItemLoot("Sword of Golden Fragments", 0.003),
                 new ItemLoot("Jewel-Encrusted Helmet", 0.005),
                 new ItemLoot("Luminous Body Armor", 0.005),
                 new ItemLoot("Ring of Golden Shine", 0.005)
@@ -566,9 +566,9 @@ namespace wServer.logic
                     ),
                 new State("Attack",
                     new RemoveConditionalEffect(ConditionEffectIndex.Invulnerable),
-                    new Shoot(12, 3, projectileIndex: 1, shootAngle: 25, coolDown: 1000),
+                    new Shoot(12, 3, projectileIndex: 1, shootAngle: 25, coolDown: 500),
                     new Prioritize(
-                        new Orbit(speed: 0.5, radius: 5, acquireRange: 6, target: "Stanley, the Golden Knight", speedVariance: 0, radiusVariance: 0))
+                        new Orbit(speed: 3, radius: 5, acquireRange: 6, target: "Stanley, the Golden Knight", speedVariance: 0, radiusVariance: 0))
                     )
                 )
             )
@@ -584,9 +584,9 @@ namespace wServer.logic
                     new TimedTransition(1500, "Attack")
                     ),
                 new State("Attack",
-                    new Shoot(8, 3, projectileIndex: 2, shootAngle: 25, coolDown: 1000),
+                    new Shoot(8, 3, projectileIndex: 2, shootAngle: 25, coolDown: 500),
                     new Prioritize(
-                        new Orbit(speed: 0.5, radius: 5, acquireRange: 6, target: "Stanley, the Golden Knight", speedVariance: 0, radiusVariance: 0))
+                        new Orbit(speed: 3, radius: 5, acquireRange: 6, target: "Stanley, the Golden Knight", speedVariance: 0, radiusVariance: 0))
                     )
                 )
             )
@@ -602,9 +602,9 @@ namespace wServer.logic
                     new TimedTransition(500, "Attack")
                     ),
                 new State("Attack",
-                    new Shoot(8, 3, projectileIndex: 0, shootAngle: 25, coolDown: 1000),
+                    new Shoot(8, 3, projectileIndex: 0, shootAngle: 25, coolDown: 500),
                     new Prioritize(
-                        new Orbit(speed: 0.5, radius: 5, acquireRange: 6, target: "Stanley, the Golden Knight", speedVariance: 0, radiusVariance: 0))
+                        new Orbit(speed: 3, radius: 5, acquireRange: 6, target: "Stanley, the Golden Knight", speedVariance: 0, radiusVariance: 0))
                     )
                 )
             )

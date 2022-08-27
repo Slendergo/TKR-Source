@@ -16,21 +16,40 @@ namespace wServer.logic
                 new ScaleHP2(30),
                 new State("idle",
                     new ConditionalEffect(ConditionEffectIndex.Invincible, true),
-                    new PlayerWithinTransition(20, "prepare")
+                    new PlayerWithinTransition(20, "talk")
+                    ),
+                new State("talk",
+                    new Taunt("Prove your worth, kill my minions"),
+                    new EntitiesNotExistsTransition(200, "prepare", "Crawling Devourer", "Cursed Mermaid", "Undead Blood Bat")
                     ),
                 new State("prepare",
                     new Taunt("Who goes there and how have you found this place? Cereberus must have failed me!"),
                     new Taunt("I've hidden here for a millenia. Why have you come to this place! Deal with them, my hallowed knights!"),
-                    new TimedTransition(10000, "prepare 1")
+                    new TimedRandomTransition(10000, false, "prepare 1", "prepare 1.1", "prepare 1.2")
                     ),
                 new State("prepare 1",
+                    new TossObject("Haunted Guard", 8, 270, coolDown: 999999),
+                    new TossObject("Haunted Knight", 4, 315, coolDown: 999999),
+                    new TossObject("Haunted Warrior", 4, 225, coolDown: 999999),
+                    new TossObject("Haunted Knight", 4, 90, coolDown: 999999),
+                    new TossObject("Haunted Warrior", 4, 180, coolDown: 999999),
+                    new TimedTransition(5000, "phase 1")
+                    ),
+                new State("prepare 1.1",
+                    new TossObject("Haunted Guard", 8, 270, coolDown: 999999),
+                    new TossObject("Haunted Knight", 4, 315, coolDown: 999999),
+                    new TossObject("Haunted Warrior", 4, 225, coolDown: 999999),
+                    new TossObject("Haunted Knight", 4, 90, coolDown: 999999),
+                    new TimedTransition(5000, "phase 1")
+                    ),
+                new State("prepare 1.2",
                     new TossObject("Haunted Guard", 8, 270, coolDown: 999999),
                     new TossObject("Haunted Knight", 4, 315, coolDown: 999999),
                     new TossObject("Haunted Warrior", 4, 225, coolDown: 999999),
                     new TimedTransition(5000, "phase 1")
                     ),
                 new State("phase 1",
-                    new Shoot(15, 12, projectileIndex: 2, fixedAngle: 0, coolDown: 1000, rotateAngle: 3),
+                    new Shoot(15, 12, projectileIndex: 2, fixedAngle: 0, coolDown: 600, rotateAngle: 3),
                     new EntitiesNotExistsTransition(40, "phase 2", "Haunted Guard", "Haunted Knight", "Haunted Warrior")
                     ),
                 new State("phase 2",
@@ -211,10 +230,10 @@ namespace wServer.logic
             new State(
                 new ScaleHP2(4),
                 new State("attack",
-                    new Wander(0.4),
-                    new Shoot(12, 1, projectileIndex: 0, predictive: 1, coolDown: 2000, coolDownOffset: 0),
-                    new Shoot(12, 2, shootAngle: 10, projectileIndex: 0, predictive: 1, coolDown: 2000, coolDownOffset: 0),
-                    new Shoot(12, 3, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 2000, coolDownOffset: 0)
+                    new Wander(0.6),
+                    new Shoot(15, 1, projectileIndex: 0, predictive: 1, coolDown: 1000, coolDownOffset: 0),
+                    new Shoot(15, 2, shootAngle: 10, projectileIndex: 1, predictive: 1, coolDown: 1000, coolDownOffset: 0),
+                    new Shoot(15, 3, shootAngle: 15, projectileIndex: 2, predictive: 1, coolDown: 1000, coolDownOffset: 0)
                     )
                 )
             )
@@ -337,12 +356,12 @@ namespace wServer.logic
                 new ScaleHP2(5),
                  new State("attack",
                      new Wander(.3),
-                     new Grenade(radius: 2, damage: 110, range: 12, coolDown: 1500, effect: ConditionEffectIndex.ArmorBroken, effectDuration: 1000, color: 0xffffff),
+                     new Grenade(radius: 2, damage: 110, range: 12, coolDown: 800, effect: ConditionEffectIndex.ArmorBroken, effectDuration: 1000, color: 0xffffff),
                      new HpLessTransition(0.5, "charge")
                      ),
                  new State("charge",
-                     new Follow(1.5, 10),
-                     new Shoot(8, 3, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 1500)
+                     new Follow(3, 10),
+                     new Shoot(8, 3, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 700)
                     )
                 ));
     }

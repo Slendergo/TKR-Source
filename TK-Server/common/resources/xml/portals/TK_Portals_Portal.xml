@@ -555,15 +555,47 @@
       <Index>0x4BA</Index>
     </Texture>
   </Object>
-	<Object type="0x22BE" id="Mortomus Hideout Portal">
-		<DisplayId>Mortomus Hideout</DisplayId>
+	<Object type="0x2023" id="Defiled Graveyard Portal">
+		<DisplayId>Defiled Graveyard</DisplayId>
 		<Class>Portal</Class>
 		<IntergamePortal />
-		<DungeonName>Mortomus Hideout</DungeonName>
+		<DungeonName>Defiled Graveyard</DungeonName>
 		<Texture>
-			<File>CustomEnvironment16x16</File>
-			<Index>0x1c</Index>
+			<File>custom16x16Environment</File>
+			<Index>0x7b</Index>
 		</Texture>
+		<Animation prob="1" period="1">
+			<Frame time="0.05">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x7b</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.10">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x7c</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.10">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x7d</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.10">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x7e</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.10">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x7f</Index>
+				</Texture>
+			</Frame>
+		</Animation>
 	</Object>
 	<Object type="0x2022" id="Trial of Souls">
 		<DisplayId>Trial of Souls</DisplayId>
@@ -1326,21 +1358,33 @@
 			<Frame time="0.1">
 				<Texture>
 					<File>custom16x16Environment</File>
-					<Index>0x51</Index>
+					<Index>0x45</Index>
 				</Texture>
 			</Frame>
 			<Frame time="0.1">
 				<Texture>
 					<File>custom16x16Environment</File>
-					<Index>0x52</Index>
+					<Index>0x44</Index>
 				</Texture>
 			</Frame>
 			<Frame time="0.1">
 				<Texture>
 					<File>custom16x16Environment</File>
-					<Index>0x53</Index>
+					<Index>0x43</Index>
 				</Texture>
 				<Frame time="0.2">
+					<Texture>
+						<File>custom16x16Environment</File>
+						<Index>0x42</Index>
+					</Texture>
+				</Frame>
+				<Frame time="0.1">
+					<Texture>
+						<File>custom16x16Environment</File>
+						<Index>0x41</Index>
+					</Texture>
+				</Frame>
+				<Frame time="0.1">
 					<Texture>
 						<File>custom16x16Environment</File>
 						<Index>0x40</Index>

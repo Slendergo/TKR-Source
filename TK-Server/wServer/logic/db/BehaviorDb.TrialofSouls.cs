@@ -50,7 +50,7 @@ namespace wServer.logic
                     )
                 ),
             new Threshold(0.05,
-                new ItemLoot("Crafting Material 1", 1)
+                new ItemLoot("Supreme Potion", 1)
                 )
             )
         .Init("Baron Turret 1",
@@ -61,7 +61,11 @@ namespace wServer.logic
                     ),
                 new State("Shoot",
                     new Shoot(15, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 0),
-                    new Shoot(15, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1000, predictive: 1.2)
+                    new Shoot(15, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1000, predictive: 1.2),
+                    new EntityNotExistsTransition("The Baron", 20, "die")
+                    ),
+                new State("die",
+                    new Suicide()
                     )
                 )
             )
@@ -73,7 +77,11 @@ namespace wServer.logic
                     ),
                 new State("Shoot",
                     new Shoot(15, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 200),
-                    new Shoot(15, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1200, predictive: 1.2)
+                    new Shoot(15, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1200, predictive: 1.2),
+                     new EntityNotExistsTransition("The Baron", 20, "die")
+                    ),
+                new State("die",
+                    new Suicide()
                     )
                 )
             )
@@ -85,7 +93,11 @@ namespace wServer.logic
                     ),
                 new State("Shoot",
                     new Shoot(15, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 400),
-                    new Shoot(15, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1400, predictive: 1.2)
+                    new Shoot(15, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1400, predictive: 1.2),
+                     new EntityNotExistsTransition("The Baron", 20, "die")
+                    ),
+                new State("die",
+                    new Suicide()
                     )
                 )
             )
@@ -97,7 +109,11 @@ namespace wServer.logic
                     ),
                 new State("Shoot",
                     new Shoot(15, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 600),
-                    new Shoot(15, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1600, predictive: 1.2)
+                    new Shoot(15, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1600, predictive: 1.2),
+                     new EntityNotExistsTransition("The Baron", 20, "die")
+                    ),
+                new State("die",
+                    new Suicide()
                     )
                 )
             )

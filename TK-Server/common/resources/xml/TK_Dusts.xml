@@ -3,7 +3,6 @@
 		
 		<!-- Tiered Weapons-->
 		<ItemPool>
-			<TieredItem weight="350" tier="6">Weapon</TieredItem>
 			<TieredItem weight="300" tier="7">Weapon</TieredItem>
 			<TieredItem weight="250" tier="8">Weapon</TieredItem>
 			<TieredItem weight="200" tier="9">Weapon</TieredItem>
@@ -16,8 +15,6 @@
 		
 		<!-- Tiered Armours -->
 		<ItemPool>
-			<TieredItem weight="350" tier="6">Armor</TieredItem>
-			<TieredItem weight="300" tier="7">Armor</TieredItem>
 			<TieredItem weight="250" tier="8">Armor</TieredItem>
 			<TieredItem weight="200" tier="9">Armor</TieredItem>
 			<TieredItem weight="150" tier="10">Armor</TieredItem>
@@ -29,18 +26,14 @@
 		
 		<!-- Tiered Abilities -->
 		<ItemPool>
-			<TieredItem weight="150" tier="3">Ability</TieredItem>
 			<TieredItem weight="150" tier="4">Ability</TieredItem>
 			<TieredItem weight="100" tier="5">Ability</TieredItem>
-			<TieredItem weight="50" tier="6">Ability</TieredItem>
 		</ItemPool>
 		
 		<!-- Tiered Rings -->
 		<ItemPool>
-			<TieredItem weight="200" tier="3">Ring</TieredItem>
 			<TieredItem weight="150" tier="4">Ring</TieredItem>
 			<TieredItem weight="100" tier="5">Ring</TieredItem>
-			<TieredItem weight="50" tier="6">Ring</TieredItem>
 		</ItemPool>
 		
 		<!-- Defined By Name -->
@@ -72,7 +65,7 @@
 
 	<MagicDust>
 		<ItemPool>
-			<Item weight="5">Special Dust</Item>
+			<Item weight="1">Special Dust</Item>
 			<Item weight="10">Miscellaneous Dust</Item>
 			<Item weight="25">Item Dust</Item>
 			<Item weight="50">Potion Dust</Item>
@@ -82,28 +75,28 @@
 	<SpecialDust>
 		<!-- all will have equal weight chance -->
 		<ItemPool> <!-- Non Special Weapons -->
-			<Item weight="1">Poison Fang Dagger</Item>
-			<Item weight="1">Sunshine Shiv</Item>
-			<Item weight="1">Chicken Leg of Doom</Item>
-			<Item weight="1">Leaf Bow</Item>
-			<Item weight="1">Coral Bow</Item>
-			<Item weight="1">Robobow</Item>
-			<Item weight="1">Staff of the Crystal Serpent</Item>
-			<Item weight="1">Staff of Extreme Prejudice</Item>
-			<Item weight="1">Anatis Staff</Item>
-			<Item weight="1">KoalaPOW</Item>
-			<Item weight="1">St. Abraham's Wand</Item>
-			<Item weight="1">Conducting Wand</Item>
-			<Item weight="1">Wand of the Fallen</Item>
-			<Item weight="1">Wand of the Bulwark</Item>
-			<Item weight="1">Spicy Wand of Spice</Item>
-			<Item weight="1">Crystal Sword</Item>
-			<Item weight="1">Pirate King's Cutlass</Item>
-			<Item weight="1">Sword of Illumination</Item>
-			<Item weight="1">Doctor Swordsworth</Item>
-			<Item weight="1">Apocalypse Feather</Item>
-			<Item weight="1">Void Blade</Item>
-			<Item weight="1">Crystal Wand</Item>
+			<Item weight="100">Poison Fang Dagger</Item>
+			<Item weight="100">Sunshine Shiv</Item>
+			<Item weight="100">Chicken Leg of Doom</Item>
+			<Item weight="100">Leaf Bow</Item>
+			<Item weight="100">Coral Bow</Item>
+			<Item weight="100">Robobow</Item>
+			<Item weight="100">Staff of the Crystal Serpent</Item>
+			<Item weight="100">Staff of Extreme Prejudice</Item>
+			<Item weight="100">Anatis Staff</Item>
+			<Item weight="100">KoalaPOW</Item>
+			<Item weight="100">St. Abraham's Wand</Item>
+			<Item weight="100">Conducting Wand</Item>
+			<Item weight="100">Wand of the Fallen</Item>
+			<Item weight="100">Wand of the Bulwark</Item>
+			<Item weight="100">Spicy Wand of Spice</Item>
+			<Item weight="100">Crystal Sword</Item>
+			<Item weight="100">Pirate King's Cutlass</Item>
+			<Item weight="100">Sword of Illumination</Item>
+			<Item weight="100">Doctor Swordsworth</Item>
+			<Item weight="100">Apocalypse Feather</Item>
+			<Item weight="100">Void Blade</Item>
+			<Item weight="100">Crystal Wand</Item>
 		</ItemPool>
 		<ItemPool> <!-- Special Weapons -->
 			<Item weight="1">Spirit Dagger</Item>
@@ -203,20 +196,6 @@
 			<TieredItem weight="100" tier="2">Potion</TieredItem> <!-- Regular Stat-->
 			<TieredItem weight="50" tier="3">Potion</TieredItem> <!-- Wines -->
 			<TieredItem weight="25" tier="4">Potion</TieredItem> <!-- Greater Stat -->
-		</ItemPool>
-		<ItemPool> <!-- Soul -->
-			<TieredItem weight="200" tier="1">Potion</TieredItem> <!-- HP/MP -->
-			<TieredItem weight="100" tier="2">Potion</TieredItem> <!-- Regular Stat-->
-			<TieredItem weight="50" tier="3">Potion</TieredItem> <!-- Wines -->
-			<TieredItem weight="25" tier="4">Potion</TieredItem> <!-- Greater Stat -->
-			<Item weight="10">Soul of Life</Item>
-			<Item weight="10">Soul of Mana</Item>
-			<Item weight="10">Soul of Attack</Item>
-			<Item weight="10">Soul of Defense</Item>
-			<Item weight="10">Soul of Speed</Item>
-			<Item weight="10">Soul of Dexterity</Item>
-			<Item weight="10">Soul of Vitality</Item>
-			<Item weight="10">Soul of Wisdom</Item>
 		</ItemPool>
 	</PotionDust>
 

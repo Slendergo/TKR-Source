@@ -130,7 +130,7 @@
     </Texture>
     <HitSound>monster/cubes_hit</HitSound>
     <DeathSound>monster/cubes_death</DeathSound>
-    <MaxHitPoints>5000</MaxHitPoints>
+    <MaxHitPoints>3000</MaxHitPoints>
     <Defense>30</Defense>
     <Cube />
     <Projectile id="0">
@@ -165,7 +165,7 @@
       <ObjectId>Yellow Magic</ObjectId>
       <Speed>60</Speed>
       <Damage>40</Damage>
-      <LifetimeMS>2400</LifetimeMS>
+      <LifetimeMS>1000</LifetimeMS>
       <Wavy />
     </Projectile>
     <Size>100</Size>

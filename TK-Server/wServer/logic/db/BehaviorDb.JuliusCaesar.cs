@@ -82,7 +82,24 @@ namespace wServer.logic
                     new Order(20, "Roman Archer 2", "Orbit2"),
                     new Order(20, "Roman Archer 2.1", "Orbit2"),
                     new Order(20, "Roman Soldier 1", "Orbit2"),
-                    new Order(20, "Roman Soldier 1.1", "Orbit2")
+                    new Order(20, "Roman Soldier 1.1", "Orbit2"),
+                    new HpLessTransition(0.05, "remove")
+                    ),
+                new State("remove",
+                    new Taunt("NOOOO"),
+                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new RemoveEntity(20, "Roman Gladiator 1"),
+                    new RemoveEntity(20, "Roman Gladiator 1.1"),
+                    new RemoveEntity(20, "Roman Archer 1"),
+                    new RemoveEntity(20, "Roman Archer 1.1"),
+                    new RemoveEntity(20, "Roman Roman Archer 2"),
+                    new RemoveEntity(20, "Roman Roman Archer 2.1"),
+                    new RemoveEntity(20, "Roman Soldier 1"),
+                    new RemoveEntity(20, "Roman Soldier 1.1"),
+                    new TimedTransition(1000, "die")
+                    ),
+                new State("die",
+                    new Suicide()
                     )
                 ),
             new Threshold(0.001,

@@ -1,4 +1,12 @@
 <Objects>
+	<Object type="0x2026" id="Sugar Cane Shot">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x82</Index>
+		</Texture>
+		<Rotation>45</Rotation>
+	</Object>
 	<Object type="0x461" id="Mortomus Shovel Shot">
 		<Class>Projectile</Class>
 		<RandomTexture>
@@ -1616,7 +1624,7 @@
 		<Class>Projectile</Class>
 		<Texture>
 			<File>CustomProjs</File>
-			<Index>0xea</Index>
+			<Index>0xe7</Index>
 		</Texture>
 		<AngleCorrection>1</AngleCorrection>
 	</Object>

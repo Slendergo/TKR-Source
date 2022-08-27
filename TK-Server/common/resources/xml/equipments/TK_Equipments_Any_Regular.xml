@@ -17,7 +17,7 @@
 		<Activate>TalismanFragment</Activate>
 		<BagType>7</BagType>
 	</Object>
-	<Object type="0x9903" id="Crafting Material 1">
+	<Object type="0x9903" id="Empty Vial">
 		<Class>Equipment</Class>
 		<Item />
 		<Texture>

@@ -2,6 +2,7 @@
 	<Object type="0x510" id="Baron Turret">
 		<Enemy />
 		<Class>Character</Class>
+		<NoMiniMap/>
 		<Hero />
 		<SpecialEnemy />
 		<God />
@@ -39,6 +40,7 @@
 		<Class>Character</Class>
 		<Hero />
 		<SpecialEnemy />
+		<NoMiniMap/>
 		<God />
 		<Level>1</Level>
 		<Texture>
@@ -74,6 +76,7 @@
 		<Class>Character</Class>
 		<Hero />
 		<SpecialEnemy />
+		<NoMiniMap/>
 		<God />
 		<Level>1</Level>
 		<Texture>
@@ -108,6 +111,7 @@
 		<Enemy />
 		<Class>Character</Class>
 		<Hero />
+		<NoMiniMap/>
 		<SpecialEnemy />
 		<God />
 		<Level>1</Level>
@@ -219,6 +223,8 @@
 	</Object>
 	<Object type="0x5e49" id="Candy Gnome">
 		<Enemy />
+		<Quest />
+		<Event />
 		<Class>Character</Class>
 		<AnimatedTexture>
 			<File>Custom16x16Encounters</File>
@@ -1027,6 +1033,7 @@
 	<Object type="0x9418" id="Fluffy">
 		<DisplayId>Fluffy</DisplayId>
 		<Enemy />
+		<Event />
 		<Quest />
 		<Class>Character</Class>
 		<AnimatedTexture>

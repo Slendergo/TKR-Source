@@ -182,6 +182,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="core\setpieces\TalismanKing.cs" />
+    <Compile Include="logic\behaviors\CompleteTrialOfSouls.cs" />
     <Compile Include="logic\behaviors\GiveTemporaryDefense.cs" />
     <Compile Include="logic\db\BehaviorDb.Nexus.cs" />
     <Compile Include="logic\db\BehaviorDb.TrialofSouls.cs">

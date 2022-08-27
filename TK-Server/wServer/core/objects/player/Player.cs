@@ -60,7 +60,7 @@ namespace wServer.core.objects
         public bool HasBackpack { get => _hasBackpack.GetValue(); set => _hasBackpack.SetValue(value); }
         public ItemStacker HealthPots { get; private set; }
         public Inventory Inventory { get; private set; }
-        public bool IsInvulnerable => HasConditionEffect(ConditionEffects.Paused) || HasConditionEffect(ConditionEffects.Stasis) || HasConditionEffect(ConditionEffects.Invincible) || HasConditionEffect(ConditionEffects.Invulnerable);
+        public bool IsInvulnerable => HasConditionEffect(ConditionEffectIndex.Paused) || HasConditionEffect(ConditionEffectIndex.Stasis) || HasConditionEffect(ConditionEffectIndex.Invincible) || HasConditionEffect(ConditionEffectIndex.Invulnerable);
         public int LDBoostTime { get; set; }
         public int Level { get => _level.GetValue(); set => _level.SetValue(value); }
         public ItemStacker MagicPots { get; private set; }
@@ -211,7 +211,6 @@ namespace wServer.core.objects
 
             Name = client.Account.Name;
             HP = client.Character.HP;
-            ConditionEffects = 0;
 
             XPBoostTime = client.Character.XPBoostTime;
             LDBoostTime = client.Character.LDBoostTime;
@@ -333,7 +332,7 @@ namespace wServer.core.objects
                 return;
 
             dmg = (int)Stats.GetDefenseDamage(dmg, false);
-            if (!HasConditionEffect(ConditionEffects.Invulnerable))
+            if (!HasConditionEffect(ConditionEffectIndex.Invulnerable))
                 HP -= dmg;
             World.BroadcastIfVisibleExclude(new Damage()
             {
@@ -460,13 +459,13 @@ namespace wServer.core.objects
             #endregion Item Effects
 
             var dmg = (int)Stats.GetDefenseDamage(projectile.Damage, projectile.ProjDesc.ArmorPiercing);
-            if (!HasConditionEffect(ConditionEffects.Invulnerable))
+            if (!HasConditionEffect(ConditionEffectIndex.Invulnerable))
                 HP -= dmg;
             ApplyConditionEffect(projectile.ProjDesc.Effects);
             World.BroadcastIfVisibleExclude(new Damage()
             {
                 TargetId = Id,
-                Effects = HasConditionEffect(ConditionEffects.Invincible) ? 0 : projectile.ConditionEffects,
+                Effects = HasConditionEffect(ConditionEffectIndex.Invincible) ? 0 : projectile.ConditionEffects,
                 DamageAmount = (ushort)dmg,
                 Kill = HP <= 0,
                 BulletId = projectile.ProjectileId,
@@ -634,7 +633,7 @@ namespace wServer.core.objects
                     return;
                 }
 
-                if (HasConditionEffect(ConditionEffects.Paused))
+                if (HasConditionEffect(ConditionEffectIndex.Paused))
                 {
                     SendError("Cannot teleport while paused.");
                     RestartTPPeriod();
@@ -648,21 +647,21 @@ namespace wServer.core.objects
                     return;
                 }
 
-                if (obj.HasConditionEffect(ConditionEffects.Invisible))
+                if (obj.HasConditionEffect(ConditionEffectIndex.Invisible))
                 {
                     SendError("Cannot teleport to an invisible player.");
                     RestartTPPeriod();
                     return;
                 }
 
-                if (obj.HasConditionEffect(ConditionEffects.Paused))
+                if (obj.HasConditionEffect(ConditionEffectIndex.Paused))
                 {
                     SendError("Cannot teleport to a paused player.");
                     RestartTPPeriod();
                     return;
                 }
 
-                if (obj.HasConditionEffect(ConditionEffects.Hidden))
+                if (obj.HasConditionEffect(ConditionEffectIndex.Hidden))
                 {
                     SendError("Target does not exist.");
                     RestartTPPeriod();
@@ -1221,7 +1220,7 @@ namespace wServer.core.objects
                     HealthRegenCarry += (HealthRegenCarry * TalismanHealthHPRegen);
                 HealthRegenCarry *= time.DeltaTime;
 
-                if (HasConditionEffect(ConditionEffects.Healing))
+                if (HasConditionEffect(ConditionEffectIndex.Healing))
                     HealthRegenCarry += 20.0 * time.DeltaTime;
 
                 var regen = (int)HealthRegenCarry;
@@ -1242,7 +1241,7 @@ namespace wServer.core.objects
                     ManaRegenCarry += (ManaRegenCarry * TalismanExtraManaRegen);
                 ManaRegenCarry *= time.DeltaTime;
 
-                if (HasConditionEffect(ConditionEffects.MPTRegeneration))
+                if (HasConditionEffect(ConditionEffectIndex.MPTRegeneration))
                     HealthRegenCarry += 20.0 * time.DeltaTime;
 
                 var regen = (int)ManaRegenCarry;
@@ -1452,23 +1451,23 @@ namespace wServer.core.objects
             {
                 if (World.Random.NextDouble() < 0.1 && ApplyEffectCooldown(slot))
                 {
-                    if (!(HasConditionEffect(ConditionEffects.Quiet)
-                        || HasConditionEffect(ConditionEffects.Weak)
-                        || HasConditionEffect(ConditionEffects.Slowed)
-                        || HasConditionEffect(ConditionEffects.Sick)
-                        || HasConditionEffect(ConditionEffects.Dazed)
-                        || HasConditionEffect(ConditionEffects.Stunned)
-                        || HasConditionEffect(ConditionEffects.Blind)
-                        || HasConditionEffect(ConditionEffects.Hallucinating)
-                        || HasConditionEffect(ConditionEffects.Drunk)
-                        || HasConditionEffect(ConditionEffects.Confused)
-                        || HasConditionEffect(ConditionEffects.Paralyzed)
-                        || HasConditionEffect(ConditionEffects.Bleeding)
-                        || HasConditionEffect(ConditionEffects.Hexed)
-                        || HasConditionEffect(ConditionEffects.Unstable)
-                        || HasConditionEffect(ConditionEffects.Curse)
-                        || HasConditionEffect(ConditionEffects.Petrify)
-                        || HasConditionEffect(ConditionEffects.Darkness)))
+                    if (!(HasConditionEffect(ConditionEffectIndex.Quiet)
+                        || HasConditionEffect(ConditionEffectIndex.Weak)
+                        || HasConditionEffect(ConditionEffectIndex.Slowed)
+                        || HasConditionEffect(ConditionEffectIndex.Sick)
+                        || HasConditionEffect(ConditionEffectIndex.Dazed)
+                        || HasConditionEffect(ConditionEffectIndex.Stunned)
+                        || HasConditionEffect(ConditionEffectIndex.Blind)
+                        || HasConditionEffect(ConditionEffectIndex.Hallucinating)
+                        || HasConditionEffect(ConditionEffectIndex.Drunk)
+                        || HasConditionEffect(ConditionEffectIndex.Confused)
+                        || HasConditionEffect(ConditionEffectIndex.Paralyzed)
+                        || HasConditionEffect(ConditionEffectIndex.Bleeding)
+                        || HasConditionEffect(ConditionEffectIndex.Hexed)
+                        || HasConditionEffect(ConditionEffectIndex.Unstable)
+                        || HasConditionEffect(ConditionEffectIndex.Curse)
+                        || HasConditionEffect(ConditionEffectIndex.Petrify)
+                        || HasConditionEffect(ConditionEffectIndex.Darkness)))
                         return;
                     World.BroadcastIfVisible(new Notification()
                     {

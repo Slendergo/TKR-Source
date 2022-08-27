@@ -140,10 +140,10 @@ namespace wServer.core.objects
             if (stat)
                 return 0;
 
-            if (!itsPoison && HasConditionEffect(ConditionEffects.Invincible))
+            if (!itsPoison && HasConditionEffect(ConditionEffectIndex.Invincible))
                 return 0;
 
-            if (!HasConditionEffect(ConditionEffects.Paused) && !HasConditionEffect(ConditionEffects.Stasis))
+            if (!HasConditionEffect(ConditionEffectIndex.Paused) && !HasConditionEffect(ConditionEffectIndex.Stasis))
             {
                 var def = Defense;
                 if (noDef)
@@ -155,7 +155,7 @@ namespace wServer.core.objects
                 if (effDmg > HP)
                     effDmg = HP;
 
-                if (!HasConditionEffect(ConditionEffects.Invulnerable))
+                if (!HasConditionEffect(ConditionEffectIndex.Invulnerable))
                     HP -= effDmg;
 
                 ApplyConditionEffect(effs);
@@ -197,10 +197,10 @@ namespace wServer.core.objects
             if (projectile == null)
                 return false;
 
-            if (HasConditionEffect(ConditionEffects.Invincible))
+            if (HasConditionEffect(ConditionEffectIndex.Invincible))
                 return false;
 
-            if (projectile.Host is Player && !HasConditionEffect(ConditionEffects.Paused) && !HasConditionEffect(ConditionEffects.Stasis))
+            if (projectile.Host is Player && !HasConditionEffect(ConditionEffectIndex.Paused) && !HasConditionEffect(ConditionEffectIndex.Stasis))
             {
                 var player = projectile.Host as Player;
                 var Inventory = player.Inventory;
@@ -213,7 +213,7 @@ namespace wServer.core.objects
                 var pDamage = (int)(projectile.Damage + (projectile.Damage * (projectile.Host as Player).TalismanExtraAbilityDamage));
 
                 var dmg = (int)StatsManager.GetDefenseDamage(this, pDamage, def);
-                if (!HasConditionEffect(ConditionEffects.Invulnerable))
+                if (!HasConditionEffect(ConditionEffectIndex.Invulnerable))
                     HP -= dmg;
                 
                 //var chance = 0.03;
@@ -274,7 +274,7 @@ namespace wServer.core.objects
             if (HP == 0)
                 Death(ref time);
 
-            if (!stat && HasConditionEffect(ConditionEffects.Bleeding))
+            if (!stat && HasConditionEffect(ConditionEffectIndex.Bleeding))
             {
                 if (bleeding > 1)
                 {
@@ -354,7 +354,7 @@ namespace wServer.core.objects
                     totalDmg += (enemy as Enemy).Damage(player, time, (int)totalDmg, false);
                 });
 
-                if (!player.HasConditionEffect(ConditionEffects.Sick))
+                if (!player.HasConditionEffect(ConditionEffectIndex.Sick))
                     ActivateHealHp(player, heal);
 
                 if (player.HP < player.MaximumHP && enemies.Count > 0)
@@ -415,7 +415,7 @@ namespace wServer.core.objects
 
                     var next = current.GetNearestEntity(10, false, e =>
                     {
-                        if (!(e is Enemy) || e.HasConditionEffect(ConditionEffects.Invincible) || e.HasConditionEffect(ConditionEffects.Stasis) || Array.IndexOf(targets, e) != -1)
+                        if (!(e is Enemy) || e.HasConditionEffect(ConditionEffectIndex.Invincible) || e.HasConditionEffect(ConditionEffectIndex.Stasis) || Array.IndexOf(targets, e) != -1)
                             return false;
 
                         return true;

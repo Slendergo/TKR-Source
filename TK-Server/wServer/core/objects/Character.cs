@@ -48,31 +48,31 @@ namespace wServer.core.objects
         private void SetConditions()
         {
             if (ObjectDesc.Invincible)
-                ApplyConditionEffect(ConditionEffectIndex.Invincible);
+                ApplyPermanentConditionEffect(ConditionEffectIndex.Invincible);
 
             if (ObjectDesc.ArmorBreakImmune)
-                ApplyConditionEffect(ConditionEffectIndex.ArmorBreakImmune);
+                ApplyPermanentConditionEffect(ConditionEffectIndex.ArmorBreakImmune);
 
             if (ObjectDesc.CurseImmune)
-                ApplyConditionEffect(ConditionEffectIndex.CurseImmune);
+                ApplyPermanentConditionEffect(ConditionEffectIndex.CurseImmune);
 
             if (ObjectDesc.DazedImmune)
-                ApplyConditionEffect(ConditionEffectIndex.DazedImmune);
+                ApplyPermanentConditionEffect(ConditionEffectIndex.DazedImmune);
 
             if (ObjectDesc.ParalyzeImmune)
-                ApplyConditionEffect(ConditionEffectIndex.ParalyzeImmune);
+                ApplyPermanentConditionEffect(ConditionEffectIndex.ParalyzeImmune);
 
             if (ObjectDesc.PetrifyImmune)
-                ApplyConditionEffect(ConditionEffectIndex.PetrifyImmune);
+                ApplyPermanentConditionEffect(ConditionEffectIndex.PetrifyImmune);
 
             if (ObjectDesc.SlowedImmune)
-                ApplyConditionEffect(ConditionEffectIndex.SlowedImmune);
+                ApplyPermanentConditionEffect(ConditionEffectIndex.SlowedImmune);
 
             if (ObjectDesc.StasisImmune)
-                ApplyConditionEffect(ConditionEffectIndex.StasisImmune);
+                ApplyPermanentConditionEffect(ConditionEffectIndex.StasisImmune);
 
             if (ObjectDesc.StunImmune)
-                ApplyConditionEffect(ConditionEffectIndex.StunImmune);
+                ApplyPermanentConditionEffect(ConditionEffectIndex.StunImmune);
         }
     }
 }

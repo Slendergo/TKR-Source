@@ -30,7 +30,7 @@ namespace wServer.logic.behaviors
 
             if (cool <= 0)
             {
-                if (host.HasConditionEffect(ConditionEffects.Stunned))
+                if (host.HasConditionEffect(ConditionEffectIndex.Stunned))
                     return;
 
                 var target = new Position { X = host.X + (float)(range * Math.Cos(angle.Value)), Y = host.Y + (float)(range * Math.Sin(angle.Value)) };

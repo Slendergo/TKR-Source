@@ -53,13 +53,14 @@ namespace wServer.core.terrain
                                 break;
 
                             case "name":
-                                entity.Name = kv[1]; break;
+                                entity.Name = kv[1];
+                                break;
                             case "size":
                                 entity.SetDefaultSize(Math.Min(500, Utils.GetInt(kv[1])));
                                 break;
 
                             case "eff":
-                                entity.ConditionEffects = (ConditionEffects)ulong.Parse(kv[1]);
+                                entity.ApplyPermanentConditionEffect((ConditionEffectIndex)ulong.Parse(kv[1]));
                                 break;
 
                             case "conn":

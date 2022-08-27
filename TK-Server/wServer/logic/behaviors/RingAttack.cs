@@ -43,7 +43,7 @@ namespace wServer.logic.behaviors
             if (Host == null || Host.World == null)
                 return;
 
-            if (Host.HasConditionEffect(ConditionEffects.Stunned))
+            if (Host.HasConditionEffect(ConditionEffectIndex.Stunned))
                 return;
 
             var dist = (float)_radius;
@@ -80,7 +80,7 @@ namespace wServer.logic.behaviors
                         angle = entity == null ? _offset : (float)Math.Atan2(entity.Y - chr.Y, entity.X - chr.X) + _offset;
 
                     var count = _count;
-                    if (Host.HasConditionEffect(ConditionEffects.Dazed))
+                    if (Host.HasConditionEffect(ConditionEffectIndex.Dazed))
                         count = Math.Max(1, count / 2);
 
                     var dmg = Random.Next(desc.MinDamage + enemyClasified, desc.MaxDamage + enemyClasified);

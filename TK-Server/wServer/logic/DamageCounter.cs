@@ -73,7 +73,7 @@ namespace wServer.logic
                     continue;
 
                 var level = player.Level;
-                if (player.HasConditionEffect(common.resources.ConditionEffects.Paused))
+                if (player.HasConditionEffect(common.resources.ConditionEffectIndex.Paused))
                     continue;
 
                 var xp = (enemy.ObjectDesc.MaxHP / 10.0f) * enemy.ObjectDesc.ExpMultiplier;

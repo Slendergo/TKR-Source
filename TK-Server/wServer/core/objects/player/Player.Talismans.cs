@@ -138,11 +138,11 @@ namespace wServer.core.objects
             TalismanHealthHPRegen = 0.0f;
             TalismanHealthRateOfFire = 0.0f;
 
-            ApplyConditionEffect(ConditionEffectIndex.ArmorBreakImmune, 0);
-            ApplyConditionEffect(ConditionEffectIndex.SlowedImmune, 0);
-            ApplyConditionEffect(ConditionEffectIndex.DazedImmune, 0);
-            ApplyConditionEffect(ConditionEffectIndex.StunImmune, 0);
-            ApplyConditionEffect(ConditionEffectIndex.Paralyzed, 0);
+            RemoveCondition(ConditionEffectIndex.ArmorBreakImmune);
+            RemoveCondition(ConditionEffectIndex.SlowedImmune);
+            RemoveCondition(ConditionEffectIndex.DazedImmune);
+            RemoveCondition(ConditionEffectIndex.StunImmune);
+            RemoveCondition(ConditionEffectIndex.Paralyzed);
 
             // readd
 
@@ -183,19 +183,19 @@ namespace wServer.core.objects
                     switch (cond)
                     {
                         case ConditionEffectIndex.Unstable:
-                            ApplyConditionEffect(ConditionEffectIndex.ArmorBreakImmune);
+                            ApplyPermanentConditionEffect(ConditionEffectIndex.ArmorBreakImmune);
                             break;
                         case ConditionEffectIndex.Slowed:
-                            ApplyConditionEffect(ConditionEffectIndex.SlowedImmune);
+                            ApplyPermanentConditionEffect(ConditionEffectIndex.SlowedImmune);
                             break;
                         case ConditionEffectIndex.Dazed:
-                            ApplyConditionEffect(ConditionEffectIndex.DazedImmune);
+                            ApplyPermanentConditionEffect(ConditionEffectIndex.DazedImmune);
                             break;
                         case ConditionEffectIndex.Stunned:
-                            ApplyConditionEffect(ConditionEffectIndex.StunImmune);
+                            ApplyPermanentConditionEffect(ConditionEffectIndex.StunImmune);
                             break;
                         case ConditionEffectIndex.Paralyzed:
-                            ApplyConditionEffect(ConditionEffectIndex.Paralyzed);
+                            ApplyPermanentConditionEffect(ConditionEffectIndex.Paralyzed);
                             break;
                         case ConditionEffectIndex.Weak:
                             TalismanImmuneToWeak = true;

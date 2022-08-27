@@ -39,7 +39,7 @@ namespace wServer.logic.behaviors
                 {
                     if (en is Player p)
                     {
-                        if ((host.AttackTarget != null && host.AttackTarget != p) || p.HasConditionEffect(ConditionEffects.Sick))
+                        if ((host.AttackTarget != null && host.AttackTarget != p) || p.HasConditionEffect(ConditionEffectIndex.Sick))
                             continue;
 
                         var maxHp = p.Stats[0];

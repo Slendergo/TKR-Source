@@ -20,7 +20,7 @@ namespace wServer.logic.behaviors
         {
             if (!(host is Enemy)) return;
 
-            if (host.HasConditionEffect(ConditionEffects.Paralyzed))
+            if (host.HasConditionEffect(ConditionEffectIndex.Paralyzed))
                 return;
 
             var spawn = (host as Enemy).SpawnPoint;

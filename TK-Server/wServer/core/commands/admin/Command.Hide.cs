@@ -20,14 +20,14 @@ namespace wServer.core.commands
 
                 if (acc.Hidden)
                 {
-                    player.ApplyConditionEffect(ConditionEffectIndex.Hidden);
-                    player.ApplyConditionEffect(ConditionEffectIndex.Invincible);
+                    player.ApplyPermanentConditionEffect(ConditionEffectIndex.Hidden);
+                    player.ApplyPermanentConditionEffect(ConditionEffectIndex.Invincible);
                     player.GameServer.ConnectionManager.Clients[player.Client].Hidden = true;
                 }
                 else
                 {
-                    player.ApplyConditionEffect(ConditionEffectIndex.Hidden, 0);
-                    player.ApplyConditionEffect(ConditionEffectIndex.Invincible, 0);
+                    player.RemoveCondition(ConditionEffectIndex.Hidden);
+                    player.RemoveCondition(ConditionEffectIndex.Invincible);
                     player.GameServer.ConnectionManager.Clients[player.Client].Hidden = false;
                 }
 

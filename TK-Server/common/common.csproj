@@ -206,7 +206,7 @@
     <Compile Include="resources\AppSettings.cs" />
     <Compile Include="resources\ConditionEffect.cs" />
     <Compile Include="resources\ConditionEffectIndex.cs" />
-    <Compile Include="resources\ConditionEffects.cs" />
+    <Compile Include="resources\ConditionEffectsIndex.cs" />
     <Compile Include="resources\CurrencyType.cs" />
     <Compile Include="resources\ItemPool.cs" />
     <Compile Include="resources\Item.cs" />

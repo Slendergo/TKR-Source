@@ -126,7 +126,7 @@ namespace wServer.core.terrain
                             break;
 
                         case "eff":
-                            stats.Add(new KeyValuePair<StatDataType, object>(StatDataType.Effects, Utils.GetInt(kv[1])));
+                            stats.Add(new KeyValuePair<StatDataType, object>(StatDataType.ConditionBatch1, Utils.GetInt(kv[1])));
                             break;
 
                         case "conn":

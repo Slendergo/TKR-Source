@@ -36,7 +36,7 @@ namespace wServer.core.objects
 
         public void ForceGroundHit(TickTime time, Position pos, int timeHit)
         {
-            if (World == null || World.Map == null || HasConditionEffect(ConditionEffects.Paused) || HasConditionEffect(ConditionEffects.Invincible))
+            if (World == null || World.Map == null || HasConditionEffect(ConditionEffectIndex.Paused) || HasConditionEffect(ConditionEffectIndex.Invincible))
                 return;
 
             var tile = World.Map[(int)pos.X, (int)pos.Y];
@@ -67,7 +67,7 @@ namespace wServer.core.objects
 
         public void GroundEffect(TickTime time)
         {
-            if (World == null || World.Map == null || HasConditionEffect(ConditionEffects.Paused) || HasConditionEffect(ConditionEffects.Invincible) || HasConditionEffect(ConditionEffects.Stasis))
+            if (World == null || World.Map == null || HasConditionEffect(ConditionEffectIndex.Paused) || HasConditionEffect(ConditionEffectIndex.Invincible) || HasConditionEffect(ConditionEffectIndex.Stasis))
                 return;
 
             var tile = World.Map[(int)X, (int)Y];
@@ -79,8 +79,8 @@ namespace wServer.core.objects
 
             if (time.TotalElapsedMs - l > 500 && !anticheat)
             {
-                if (HasConditionEffect(ConditionEffects.Paused) ||
-                    HasConditionEffect(ConditionEffects.Invincible))
+                if (HasConditionEffect(ConditionEffectIndex.Paused) ||
+                    HasConditionEffect(ConditionEffectIndex.Invincible))
                     return;
 
                 if (tileDesc.Damaging && (objDesc == null || !objDesc.ProtectFromGroundDamage))

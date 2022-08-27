@@ -31,7 +31,7 @@ namespace wServer.logic.behaviors
             {
                 foreach (var entity in host.GetNearestEntities(_range, null, true).OfType<Player>())
                 {
-                    if ((host.AttackTarget != null && host.AttackTarget != entity) || entity.HasConditionEffect(ConditionEffects.Quiet))
+                    if ((host.AttackTarget != null && host.AttackTarget != entity) || entity.HasConditionEffect(ConditionEffectIndex.Quiet))
                         continue;
 
                     var maxMp = entity.Stats[1];

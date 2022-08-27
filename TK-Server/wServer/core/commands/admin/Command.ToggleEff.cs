@@ -20,16 +20,15 @@ namespace wServer.core.commands
                     return false;
                 }
 
-                var target = player;
-                if ((target.ConditionEffects & (ConditionEffects)((ulong)1 << (int)effect)) != 0)
+                if (!player.HasConditionEffect(effect))
                 {
-                    //remove
-                    target.ApplyConditionEffect(new ConditionEffect(effect, 0));
+                    player.ApplyPermanentConditionEffect(effect);
+                    player.SendInfo($"{effect} Has been added!");
                 }
                 else
                 {
-                    //add
-                    target.ApplyConditionEffect(new ConditionEffect(effect, -1));
+                    player.RemoveCondition(effect);
+                    player.SendInfo($"{effect} Has been removed!");
                 }
                 return true;
             }

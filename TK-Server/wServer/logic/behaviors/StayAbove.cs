@@ -23,7 +23,7 @@ namespace wServer.logic.behaviors
             if (host == null || host.World == null)
                 return;
 
-            if (host.HasConditionEffect(ConditionEffects.Paralyzed))
+            if (host.HasConditionEffect(ConditionEffectIndex.Paralyzed))
                 return;
 
             var map = host.World.Map;

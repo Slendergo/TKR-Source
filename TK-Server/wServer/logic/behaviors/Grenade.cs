@@ -41,7 +41,7 @@ namespace wServer.logic.behaviors
 
             if (cool <= 0)
             {
-                if (host.HasConditionEffect(ConditionEffects.Stunned))
+                if (host.HasConditionEffect(ConditionEffectIndex.Stunned))
                     return;
 
                 var enemy = host as Enemy;
@@ -70,7 +70,7 @@ namespace wServer.logic.behaviors
                         {
                             (p as IPlayer).Damage(damage + enemyClasified, host);
 
-                            if (!p.HasConditionEffect(ConditionEffects.Invincible) && !p.HasConditionEffect(ConditionEffects.Stasis))
+                            if (!p.HasConditionEffect(ConditionEffectIndex.Invincible) && !p.HasConditionEffect(ConditionEffectIndex.Stasis))
                                 p.ApplyConditionEffect(new ConditionEffect(effect, effectDuration));
                         });
                     }));

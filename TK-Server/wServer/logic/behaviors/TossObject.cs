@@ -81,7 +81,7 @@ namespace wServer.logic.behaviors
 
             if (cool <= 0)
             {
-                if (host.HasConditionEffect(ConditionEffects.Stunned))
+                if (host.HasConditionEffect(ConditionEffectIndex.Stunned))
                     return;
 
                 var entity = Entity.Resolve(host.GameServer, _children[Random.Next(_children.Length)]);

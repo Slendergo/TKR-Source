@@ -34,7 +34,7 @@ namespace wServer.logic.behaviors
                     if (entity == null || entity.World == null)
                         continue;
 
-                    if ((host.AttackTarget != null && host.AttackTarget != entity) || entity.HasConditionEffect(ConditionEffects.Sick))
+                    if ((host.AttackTarget != null && host.AttackTarget != entity) || entity.HasConditionEffect(ConditionEffectIndex.Sick))
                         continue;
 
                     var maxHp = entity.Stats[0];

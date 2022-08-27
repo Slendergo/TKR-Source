@@ -31,7 +31,7 @@ namespace wServer.logic.behaviors
 
             if (cool <= 0)
             {
-                if (host.HasConditionEffect(ConditionEffects.Stunned))
+                if (host.HasConditionEffect(ConditionEffectIndex.Stunned))
                     return;
 
                 foreach (var entity in host.GetNearestEntitiesByGroup(range, group).OfType<Enemy>())

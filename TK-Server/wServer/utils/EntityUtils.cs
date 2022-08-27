@@ -47,7 +47,7 @@ namespace wServer
         {
             foreach (var i in entity.World.PlayersCollision.HitTest(entity.X, entity.Y, radius).Where(e => e is Player))
             {
-                if (i.HasConditionEffect(ConditionEffects.Hidden))
+                if (i.HasConditionEffect(ConditionEffectIndex.Hidden))
                     continue;
 
                 var d = i.DistSqr(entity);
@@ -63,7 +63,7 @@ namespace wServer
         {
             foreach (var i in world.PlayersCollision.HitTest(x, y, radius).Where(e => e is Player))
             {
-                if (i.HasConditionEffect(ConditionEffects.Hidden)) continue;
+                if (i.HasConditionEffect(ConditionEffectIndex.Hidden)) continue;
 
                 var d = MathsUtils.DistSqr(i.X, i.Y, x, y);
 
@@ -490,7 +490,7 @@ namespace wServer
             return entities.Aggregate((curmin, x) => curmin == null || x.DistSqr(entity) < curmin.DistSqr(entity) ? x : curmin);
         }
 
-        public static float GetSpeed(this Entity entity, float spd) => entity.HasConditionEffect(ConditionEffects.Slowed) ? spd * 0.5f : spd;
+        public static float GetSpeed(this Entity entity, float spd) => entity.HasConditionEffect(ConditionEffectIndex.Slowed) ? spd * 0.5f : spd;
         //public static float GetSpeed(this Entity entity, float spd) => entity.HasConditionEffect(ConditionEffects.Slowed) ? (5.55f * spd + 0.74f) / 2 : 5.55f * spd + 0.74f;
 
         public static void HandleUnavailableInventoryAction(this Player player, ushort objectId, Random random, IContainer container, int slotId)

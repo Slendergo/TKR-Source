@@ -71,22 +71,22 @@ namespace wServer.core
         public static float GetDefenseDamage(Entity host, int dmg, int targetDefense)
         {
             var def = targetDefense;
-            if (host.HasConditionEffect(ConditionEffects.Armored))
+            if (host.HasConditionEffect(ConditionEffectIndex.Armored))
                 def *= 2;
-            if (host.HasConditionEffect(ConditionEffects.ArmorBroken))
+            if (host.HasConditionEffect(ConditionEffectIndex.ArmorBroken))
                 def = 0;
 
             var min = (dmg * 3.0) / 20.0;
             var d = Math.Max(min, dmg - def);
 
-            if (host.HasConditionEffect(ConditionEffects.Invulnerable) ||
-                host.HasConditionEffect(ConditionEffects.Invincible))
+            if (host.HasConditionEffect(ConditionEffectIndex.Invulnerable) ||
+                host.HasConditionEffect(ConditionEffectIndex.Invincible))
                 d = 0;
 
-            if (host.HasConditionEffect(ConditionEffects.Petrify))
+            if (host.HasConditionEffect(ConditionEffectIndex.Petrify))
                 d *= 0.9;
 
-            if (host.HasConditionEffect(ConditionEffects.Curse))
+            if (host.HasConditionEffect(ConditionEffectIndex.Curse))
                 d *= 1.2;
 
             return (int)d;
@@ -95,11 +95,11 @@ namespace wServer.core
         public static float GetSpeed(Entity entity, float stat)
         {
             var ret = 4 + 5.6f * (stat / 75f);
-            if (entity.HasConditionEffect(ConditionEffects.Speedy))
+            if (entity.HasConditionEffect(ConditionEffectIndex.Speedy))
                 ret *= 1.4f;
-            if (entity.HasConditionEffect(ConditionEffects.Slowed))
+            if (entity.HasConditionEffect(ConditionEffectIndex.Slowed))
                 ret = 4;
-            if (entity.HasConditionEffect(ConditionEffects.Paralyzed))
+            if (entity.HasConditionEffect(ConditionEffectIndex.Paralyzed))
                 ret = 0;
             return ret;
         }
@@ -206,12 +206,12 @@ namespace wServer.core
 
         public float GetAttackFrequency()
         {
-            if (Owner.HasConditionEffect(ConditionEffects.Dazed))
+            if (Owner.HasConditionEffect(ConditionEffectIndex.Dazed))
                 return MIN_ATTACK_FREQ;
 
             var rof = MIN_ATTACK_FREQ + this[5] / 75f * (MAX_ATTACK_FREQ - MIN_ATTACK_FREQ);
 
-            if (Owner.HasConditionEffect(ConditionEffects.Berserk) || Owner.HasConditionEffect(ConditionEffects.NinjaBerserk))
+            if (Owner.HasConditionEffect(ConditionEffectIndex.Berserk) || Owner.HasConditionEffect(ConditionEffectIndex.NinjaBerserk))
                 rof *= 1.25f;
 
             return rof;
@@ -222,11 +222,11 @@ namespace wServer.core
             if (isAbility)
                 return 1;
 
-            if (Owner.HasConditionEffect(ConditionEffects.Weak))
+            if (Owner.HasConditionEffect(ConditionEffectIndex.Weak))
                 return MIN_ATTACK_MULT;
 
             var mult = MIN_ATTACK_MULT + this[2] / 75f * (MAX_ATTACK_MULT - MIN_ATTACK_MULT);
-            if (Owner.HasConditionEffect(ConditionEffects.Damaging) || Owner.HasConditionEffect(ConditionEffects.NinjaDamaging))
+            if (Owner.HasConditionEffect(ConditionEffectIndex.Damaging) || Owner.HasConditionEffect(ConditionEffectIndex.NinjaDamaging))
                 mult *= 1.25f;
             return mult;
         }
@@ -235,10 +235,10 @@ namespace wServer.core
         {
             var def = this[3];
 
-            if (Owner.HasConditionEffect(ConditionEffects.Armored))
+            if (Owner.HasConditionEffect(ConditionEffectIndex.Armored))
                 def *= 2;
 
-            if (Owner.HasConditionEffect(ConditionEffects.ArmorBroken) || noDef)
+            if (Owner.HasConditionEffect(ConditionEffectIndex.ArmorBroken) || noDef)
                 def = 0;
 
             float limit = dmg * 0.15f;
@@ -247,12 +247,12 @@ namespace wServer.core
             if (dmg - def < limit) ret = limit;
             else ret = dmg - def;
 
-            if (Owner.HasConditionEffect(ConditionEffects.Petrify))
+            if (Owner.HasConditionEffect(ConditionEffectIndex.Petrify))
                 ret = (int)(ret * .9);
-            if (Owner.HasConditionEffect(ConditionEffects.Curse))
+            if (Owner.HasConditionEffect(ConditionEffectIndex.Curse))
                 ret = (int)(ret * 1.20);
-            if (Owner.HasConditionEffect(ConditionEffects.Invulnerable) ||
-                Owner.HasConditionEffect(ConditionEffects.Invincible))
+            if (Owner.HasConditionEffect(ConditionEffectIndex.Invulnerable) ||
+                Owner.HasConditionEffect(ConditionEffectIndex.Invincible))
                 ret = 0;
             return ret;
         }

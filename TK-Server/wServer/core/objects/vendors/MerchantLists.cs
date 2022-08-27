@@ -23,16 +23,10 @@ namespace wServer.core.objects.vendors
             new ShopItem("Magic Potion", 1),
             new ShopItem("Health Potion", 1),
             new ShopItem("XP Booster 20 min", 100),
-            new ShopItem("Backpack", 50),
-            new ShopItem("Loot Drop Potion", 100),
-            new ShopItem("Item Dust", 150),
-            new ShopItem("Potion Dust", 100),
-            new ShopItem("Miscellaneous Dust", 150),
-            // new ShopItem("Special Dust", 10000),
-            new ShopItem("Char Slot Unlocker", 300),
-            new ShopItem("XP Booster 20 min", 100),
-            new ShopItem("Backpack", 50),
-            new ShopItem("Loot Drop Potion", 100)
+            new ShopItem("Loot Drop Potion", 200),
+            new ShopItem("Item Dust", 175),
+            new ShopItem("Backpack", 250),
+            new ShopItem("Loot Drop Potion", 200)
         };
 
         private static readonly List<ISellableItem> KeysFame = new List<ISellableItem>

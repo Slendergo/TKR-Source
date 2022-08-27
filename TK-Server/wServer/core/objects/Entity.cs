@@ -21,12 +21,9 @@ namespace wServer.core.objects
         public bool SpawnedByBehavior;
 
         private const float colSkipBoundary = .4f;
-        private const int EffectCount = 54;
 
         private SV<int> _altTextureIndex;
-        private ConditionEffects _conditionEffects;
-        private SV<int> _conditionEffects1;
-        private SV<int> _conditionEffects2;
+        private ConditionEffectIndex _conditionEffects;
         private ObjectDesc _desc;
         private int[] _effects;
         private SV<string> _name;
@@ -37,10 +34,10 @@ namespace wServer.core.objects
         private bool _stateEntry;
         private State _stateEntryCommonRoot;
         private Dictionary<object, object> _states;
-        private bool _tickingEffects;
         private SV<float> _x;
         private SV<float> _y;
         private Player playerOwner;
+        private ConditionEffectManager ConditionEffectManager;
 
         protected Entity(GameServer coreServerManager, ushort objType)
         {
@@ -52,13 +49,13 @@ namespace wServer.core.objects
             _altTextureIndex = new SV<int>(this, StatDataType.AltTextureIndex, -1);
             _x = new SV<float>(this, StatDataType.None, 0);
             _y = new SV<float>(this, StatDataType.None, 0);
-            _conditionEffects1 = new SV<int>(this, StatDataType.Effects, 0);
-            _conditionEffects2 = new SV<int>(this, StatDataType.Effects2, 0);
 
             ObjectType = objType;
 
             coreServerManager.BehaviorDb.ResolveBehavior(this);
             coreServerManager.Resources.GameData.ObjectDescs.TryGetValue(ObjectType, out _desc);
+
+            ConditionEffectManager = new ConditionEffectManager(this);
 
             if (_desc == null)
                 return;
@@ -66,7 +63,6 @@ namespace wServer.core.objects
             QuestLevel = _desc.Level;
 
             _posHistory = new Position[256];
-            _effects = new int[EffectCount];
         }
 
         public event EventHandler<StatChangedEventArgs> StatChanged;
@@ -74,17 +70,6 @@ namespace wServer.core.objects
         public int AltTextureIndex { get => _altTextureIndex.GetValue(); set => _altTextureIndex?.SetValue(value); }
         public Player AttackTarget { get; set; }
         public CollisionNode<Entity> CollisionNode { get; set; }
-
-        public ConditionEffects ConditionEffects
-        {
-            get => _conditionEffects;
-            set
-            {
-                _conditionEffects = value;
-                _conditionEffects1?.SetValue((int)value);
-                _conditionEffects2?.SetValue((int)((ulong)value >> 31));
-            }
-        }
 
         public GameServer GameServer { get; private set; }
         public State CurrentState { get; private set; }
@@ -110,8 +95,6 @@ namespace wServer.core.objects
                 return _states;
             }
         }
-
-        public bool TickStateManually { get; set; }
 
         public float X { get => _x.GetValue(); set => _x.SetValue(value); }
         public float Y { get => _y.GetValue(); set => _y.SetValue(value); }
@@ -213,56 +196,55 @@ namespace wServer.core.objects
 
         public void ApplyPermanentConditionEffect(ConditionEffectIndex effect)
         {
-            if (!ApplyCondition(effect))
+            if (!CanApplyCondition(effect))
                 return;
-
-            var eff = (int)effect;
-
-            _effects[eff] = -1;
-            ConditionEffects |= (ConditionEffects)((ulong)1 << eff);
-
-            _tickingEffects = true;
+            ConditionEffectManager.AddPermanentCondition((byte)effect);
         }
 
-        public void ApplyConditionEffect(ConditionEffectIndex effect, int durationMs = -1)
+        public void ApplyConditionEffect(ConditionEffectIndex effect, int durationMs)
         {
-            if (!ApplyCondition(effect))
+            if (!CanApplyCondition(effect))
                 return;
-
-            var eff = (int)effect;
-
-            _effects[eff] = durationMs;
-
-            if (durationMs != 0)
-                ConditionEffects |= (ConditionEffects)((ulong)1 << eff);
-
-            _tickingEffects = true;
+            ConditionEffectManager.AddCondition((byte)effect, (int)(durationMs / 1000.0f));
         }
 
         public void ApplyConditionEffect(params ConditionEffect[] effs)
         {
             foreach (var i in effs)
             {
-                if (!ApplyCondition(i.Effect))
+                if (!CanApplyCondition(i.Effect))
                     continue;
-
-                var eff = (int)i.Effect;
-
-                _effects[eff] = i.DurationMS;
-
-                if (i.DurationMS != 0)
-                    ConditionEffects |= (ConditionEffects)((ulong)1 << eff);
+                ConditionEffectManager.AddCondition((byte)i.Effect, (int)(i.DurationMS / 1000.0f));
             }
+        }
 
-            _tickingEffects = true;
+        public bool HasConditionEffect(ConditionEffectIndex effect) => ConditionEffectManager.HasCondition((byte)effect);
+        public void RemoveCondition(ConditionEffectIndex effect) => ConditionEffectManager.RemoveCondition((byte)effect);
+
+        private bool CanApplyCondition(ConditionEffectIndex effect)
+        {
+            if (effect == ConditionEffectIndex.Stunned && HasConditionEffect(ConditionEffectIndex.StunImmune))
+                return false;
+            if (effect == ConditionEffectIndex.Stasis && HasConditionEffect(ConditionEffectIndex.StasisImmune))
+                return false;
+            if (effect == ConditionEffectIndex.Paralyzed && HasConditionEffect(ConditionEffectIndex.ParalyzeImmune))
+                return false;
+            if (effect == ConditionEffectIndex.ArmorBroken && HasConditionEffect(ConditionEffectIndex.ArmorBreakImmune))
+                return false;
+            if (effect == ConditionEffectIndex.Unstable && HasConditionEffect(ConditionEffectIndex.UnstableImmune))
+                return false;
+            if (effect == ConditionEffectIndex.Curse && HasConditionEffect(ConditionEffectIndex.CurseImmune))
+                return false;
+            if (effect == ConditionEffectIndex.Petrify && HasConditionEffect(ConditionEffectIndex.PetrifyImmune))
+                return false;
+            if (effect == ConditionEffectIndex.Dazed && HasConditionEffect(ConditionEffectIndex.DazedImmune))
+                return false;
+            if (effect == ConditionEffectIndex.Slowed && HasConditionEffect(ConditionEffectIndex.SlowedImmune))
+                return false;
+            return true;
         }
 
         public virtual bool CanBeSeenBy(Player player) => true;
-
-        public virtual void Destroy()
-        {
-            IsRemovedFromWorld = true;
-        }
 
         public ObjectStats ExportStats(bool isOtherPlayer)
         {
@@ -275,8 +257,6 @@ namespace wServer.core.objects
                 Stats = stats.ToArray()
             };
         }
-
-        public bool HasConditionEffect(ConditionEffects eff) => (ConditionEffects & eff) != 0;
 
         public virtual bool HitByProjectile(Projectile projectile, TickTime time)
         {
@@ -343,20 +323,19 @@ namespace wServer.core.objects
 
         public virtual void Tick(ref TickTime time)
         {
-            if (this == null || this is Projectile || World == null)
+            if (this == null || World == null)
                 return;
 
             if (CurrentState != null && World != null)
             {
-                if (!HasConditionEffect(ConditionEffects.Stasis) && !TickStateManually && (this.AnyPlayerNearby() || ConditionEffects != 0))
+                if (!HasConditionEffect(ConditionEffectIndex.Stasis) && this.AnyPlayerNearby())
                     TickState(time);
             }
 
+            ConditionEffectManager.Update(time.DeltaTime);
+
             if (_posHistory != null)
                 _posHistory[++_posIdx] = new Position() { X = X, Y = Y };
-
-            if (_effects != null)
-                ProcessConditionEffects(time);
         }
 
         public void TickState(TickTime time)
@@ -532,40 +511,7 @@ namespace wServer.core.objects
             stats[StatDataType.Name] = Name;
             stats[StatDataType.Size] = Size;
             stats[StatDataType.AltTextureIndex] = AltTextureIndex;
-            stats[StatDataType.Effects] = _conditionEffects1.GetValue();
-            stats[StatDataType.Effects2] = _conditionEffects2.GetValue();
-        }
-
-        private bool ApplyCondition(ConditionEffectIndex effect)
-        {
-            if (effect == ConditionEffectIndex.Stunned && HasConditionEffect(ConditionEffects.StunImmune))
-                return false;
-
-            if (effect == ConditionEffectIndex.Stasis && HasConditionEffect(ConditionEffects.StasisImmune))
-                return false;
-
-            if (effect == ConditionEffectIndex.Paralyzed && HasConditionEffect(ConditionEffects.ParalyzeImmune))
-                return false;
-
-            if (effect == ConditionEffectIndex.ArmorBroken && HasConditionEffect(ConditionEffects.ArmorBreakImmune))
-                return false;
-
-            if (effect == ConditionEffectIndex.Unstable && HasConditionEffect(ConditionEffects.UnstableImmune))
-                return false;
-
-            if (effect == ConditionEffectIndex.Curse && HasConditionEffect(ConditionEffects.CurseImmune))
-                return false;
-
-            if (effect == ConditionEffectIndex.Petrify && HasConditionEffect(ConditionEffects.PetrifyImmune))
-                return false;
-
-            if (effect == ConditionEffectIndex.Dazed && HasConditionEffect(ConditionEffects.DazedImmune))
-                return false;
-
-            if (effect == ConditionEffectIndex.Slowed && HasConditionEffect(ConditionEffects.SlowedImmune))
-                return false;
-
-            return true;
+            ConditionEffectManager.ExportStats(stats);
         }
 
         private void CalcNewLocation(float x, float y, FPoint pos)
@@ -664,36 +610,6 @@ namespace wServer.core.objects
                     CurrentState = CurrentState.States[0];
         }
 
-        private void ProcessConditionEffects(TickTime time)
-        {
-            if (_effects == null || !_tickingEffects) 
-                return;
-
-            ConditionEffects newEffects = 0;
-
-            _tickingEffects = false;
-
-            for (var i = 0; i < _effects.Length; i++)
-            {
-                if (_effects[i] > 0)
-                {
-                    _effects[i] -= time.ElaspedMsDelta;
-
-                    if (_effects[i] > 0)
-                    {
-                        newEffects |= (ConditionEffects)((ulong)1 << i);
-                        _tickingEffects = true;
-                    }
-                    else
-                        _effects[i] = 0;
-                }
-                else if (_effects[i] == -1)
-                    newEffects |= (ConditionEffects)((ulong)1 << i);
-            }
-
-            ConditionEffects = newEffects;
-        }
-
         private bool RegionUnblocked(float x, float y)
         {
             if (TileOccupied(x, y))
@@ -759,7 +675,7 @@ namespace wServer.core.objects
 
         private void ResolveNewLocation(float x, float y, FPoint pos)
         {
-            if (HasConditionEffect(ConditionEffects.Paralyzed))
+            if (HasConditionEffect(ConditionEffectIndex.Paralyzed))
             {
                 pos.X = X;
                 pos.Y = Y;
@@ -796,6 +712,11 @@ namespace wServer.core.objects
             }
         }
 
+        public virtual void Destroy()
+        {
+            IsRemovedFromWorld = true;
+        }
+
         private class FPoint
         {
             public float X;
@@ -808,7 +729,7 @@ namespace wServer.core.objects
         {
             var ret = World.ObjectPools.Projectiles.Rent();
             ret.Host = this;
-            ret.ConditionEffects = ConditionEffects.None;
+            ret.ConditionEffects = ConditionEffectIndex.None;
             ret.ProjDesc = desc;
             ret.ProjectileId = projectileId++;
             ret.Container = container;

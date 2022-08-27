@@ -159,6 +159,7 @@
     <Compile Include="core\ConnectionInfo.cs" />
     <Compile Include="core\GameServer.cs" />
     <Compile Include="core\net\handlers\talisman\TalismanEssenceActionHandler.cs" />
+    <Compile Include="core\objects\ConditionEffectManager.cs" />
     <Compile Include="core\objects\inventory\ItemDustPools.cs" />
     <Compile Include="core\objects\inventory\ItemDustWeights.cs" />
     <Compile Include="core\objects\inventory\Inventory.cs" />
@@ -183,6 +184,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="core\setpieces\TalismanKing.cs" />
+    <Compile Include="core\_core\entities\GameObject.cs" />
     <Compile Include="logic\behaviors\CompleteTrialOfSouls.cs" />
     <Compile Include="logic\behaviors\GiveTemporaryDefense.cs" />
     <Compile Include="logic\db\BehaviorDb.Nexus.cs" />

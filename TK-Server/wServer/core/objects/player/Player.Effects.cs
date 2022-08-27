@@ -13,13 +13,13 @@ namespace wServer.core.objects
             if (_newbieTime > 0)
                 return false;
 
-            if (HasConditionEffect(ConditionEffects.Paused))
+            if (HasConditionEffect(ConditionEffectIndex.Paused))
                 return false;
 
-            if (HasConditionEffect(ConditionEffects.Invisible))
+            if (HasConditionEffect(ConditionEffectIndex.Invisible))
                 return false;
 
-            if (HasConditionEffect(ConditionEffects.Hidden))
+            if (HasConditionEffect(ConditionEffectIndex.Hidden))
                 return false;
 
             return true;
@@ -33,53 +33,53 @@ namespace wServer.core.objects
 
         internal void SetTPDisabledPeriod() => _canTpCooldownTime = 10000;
 
-        private bool CanHpRegen() => !(HasConditionEffect(ConditionEffects.Bleeding) || HasConditionEffect(ConditionEffects.Sick));
+        private bool CanHpRegen() => !(HasConditionEffect(ConditionEffectIndex.Bleeding) || HasConditionEffect(ConditionEffectIndex.Sick));
 
-        private bool CanMpRegen() => !(HasConditionEffect(ConditionEffects.Quiet) || HasConditionEffect(ConditionEffects.NinjaSpeedy));
+        private bool CanMpRegen() => !(HasConditionEffect(ConditionEffectIndex.Quiet) || HasConditionEffect(ConditionEffectIndex.NinjaSpeedy));
 
         private void HandleEffects(ref TickTime time)
         {
             if (Client == null || Client.Account == null) return;
 
-            if (Client.Account.Hidden && !HasConditionEffect(ConditionEffects.Hidden))
+            if (Client.Account.Hidden && !HasConditionEffect(ConditionEffectIndex.Hidden))
             {
-                ApplyConditionEffect(ConditionEffectIndex.Hidden);
-                ApplyConditionEffect(ConditionEffectIndex.Invincible);
+                RemoveCondition(ConditionEffectIndex.Hidden);
+                RemoveCondition(ConditionEffectIndex.Invincible);
                 GameServer.ConnectionManager.Clients[Client].Hidden = true;
             }
 
-            if (HasConditionEffect(ConditionEffects.Quiet) && MP > 0)
+            if (HasConditionEffect(ConditionEffectIndex.Quiet) && MP > 0)
                 MP = 0;
 
-            if (HasConditionEffect(ConditionEffects.Bleeding) && HP > 1)
+            if (HasConditionEffect(ConditionEffectIndex.Bleeding) && HP > 1)
             {
                 HP -= (int)(20 * time.DeltaTime); // 20 per second
                 if (HP < 1)
                     HP = 1;
             }
 
-            if (HasConditionEffect(ConditionEffects.NinjaSpeedy))
+            if (HasConditionEffect(ConditionEffectIndex.NinjaSpeedy))
             {
                 if (TalismanAbilityLifeCost > 0.0f)
                 {
                     HP = Math.Max(1, (int)(HP - 20 * time.DeltaTime));
                     if (HP == 1)
-                        ApplyConditionEffect(ConditionEffectIndex.NinjaSpeedy, 0);
+                        RemoveCondition(ConditionEffectIndex.NinjaSpeedy);
                 }
                 else
                 {
                     MP = Math.Max(0, (int)(MP - 10 * time.DeltaTime));
                     if (MP == 0)
-                        ApplyConditionEffect(ConditionEffectIndex.NinjaSpeedy, 0);
+                        RemoveCondition(ConditionEffectIndex.NinjaSpeedy);
                 }
             }
 
-            if (HasConditionEffect(ConditionEffects.NinjaBerserk))
+            if (HasConditionEffect(ConditionEffectIndex.NinjaBerserk))
             {
                 MP = Math.Max(0, (int)(MP - 10 * time.DeltaTime));
 
                 if (MP == 0)
-                    ApplyConditionEffect(ConditionEffectIndex.NinjaBerserk, 0);
+                    RemoveCondition(ConditionEffectIndex.NinjaBerserk);
             }
 
             if (_newbieTime > 0)

@@ -21,7 +21,7 @@ namespace wServer.logic.behaviors
 
             Status = CycleStatus.NotStarted;
 
-            if (host.HasConditionEffect(ConditionEffects.Paralyzed))
+            if (host.HasConditionEffect(ConditionEffectIndex.Paralyzed))
                 return;
 
             var moveDist = host.GetSpeed(speed) * time.BehaviourTickTime;

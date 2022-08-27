@@ -50,7 +50,7 @@ namespace wServer.logic.behaviors
 
             Status = CycleStatus.NotStarted;
 
-            if (host.HasConditionEffect(ConditionEffects.Paralyzed))
+            if (host.HasConditionEffect(ConditionEffectIndex.Paralyzed))
                 return;
 
             var entity = host.AttackTarget ?? host.GetNearestEntity(acquireRange, target);

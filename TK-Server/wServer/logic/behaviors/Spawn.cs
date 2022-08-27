@@ -80,7 +80,7 @@ namespace wServer.logic.behaviors
                     if (enemyHost.Spawned)
                     {
                         enemyEntity.Spawned = true;
-                        enemyEntity.ApplyConditionEffect(ConditionEffectIndex.Invisible);
+                        enemyEntity.ApplyPermanentConditionEffect(ConditionEffectIndex.Invisible);
                     }
                 }
 

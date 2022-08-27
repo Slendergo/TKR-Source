@@ -34,7 +34,7 @@ namespace wServer.logic.behaviors
 
             Status = CycleStatus.NotStarted;
 
-            if (host.HasConditionEffect(common.resources.ConditionEffects.Paralyzed))
+            if (host.HasConditionEffect(common.resources.ConditionEffectIndex.Paralyzed))
                 return;
 
             var en = host.GetNearestEntity(sightRange, null);

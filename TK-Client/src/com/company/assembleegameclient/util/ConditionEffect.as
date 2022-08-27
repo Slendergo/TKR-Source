@@ -69,8 +69,6 @@ import flash.display.BitmapData;
       public static const SILENCED:uint = 53;
       public static const UNSTABLEIMMUNE:uint = 54;
 
-
-
       public static const DEAD_BIT:uint = 1 << DEAD - 1;
       public static const QUIET_BIT:uint = 1 << QUIET - 1;
       public static const WEAK_BIT:uint = 1 << WEAK - 1;

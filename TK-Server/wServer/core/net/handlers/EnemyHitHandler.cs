@@ -22,10 +22,10 @@ namespace wServer.core.net.handlers
             var player = client.Player;
             var entity = player?.World?.GetEntity(targetId);
 
-            if (entity?.World == null || entity.HasConditionEffect(ConditionEffects.Invulnerable))
+            if (entity?.World == null || entity.HasConditionEffect(ConditionEffectIndex.Invulnerable))
                 return;
 
-            if (player.HasConditionEffect(ConditionEffects.Hidden))
+            if (player.HasConditionEffect(ConditionEffectIndex.Hidden))
                 return;
 
             var prj = player.World.GetProjectile(player.Id, bulletId);

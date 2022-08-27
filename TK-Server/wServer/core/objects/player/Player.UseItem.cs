@@ -690,8 +690,8 @@ namespace wServer.core.objects
             this.AOE(eff.Range, true, player =>
             {
                 var condition = eff.CheckExistingEffect;
-                ConditionEffects conditions = 0;
-                conditions |= (ConditionEffects)(1 << (Byte)condition.Value);
+                ConditionEffectIndex conditions = 0;
+                conditions |= (ConditionEffectIndex)(1 << (Byte)condition.Value);
                 if (!condition.HasValue || player.HasConditionEffect(conditions))
                 {
                     player.ApplyConditionEffect(new ConditionEffect(eff.ConditionEffect.Value, 0));
@@ -702,10 +702,10 @@ namespace wServer.core.objects
         private void AEClearConditionEffectSelf(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             var condition = eff.CheckExistingEffect;
-            ConditionEffects conditions = 0;
+            ConditionEffectIndex conditions = 0;
 
             if (condition.HasValue)
-                conditions |= (ConditionEffects)(1 << (Byte)condition.Value);
+                conditions |= (ConditionEffectIndex)(1 << (Byte)condition.Value);
 
             if (!condition.HasValue || HasConditionEffect(conditions))
             {
@@ -809,7 +809,7 @@ namespace wServer.core.objects
             if (eff.ConditionEffect != null)
                 World.AOE(eff.Center.Equals("mouse") ? target : new Position { X = X, Y = Y }, range, targetPlayer, entity =>
                 {
-                    if (!entity.HasConditionEffect(ConditionEffects.Stasis) && !entity.HasConditionEffect(ConditionEffects.Invincible))
+                    if (!entity.HasConditionEffect(ConditionEffectIndex.Stasis) && !entity.HasConditionEffect(ConditionEffectIndex.Invincible))
                     {
                         entity.ApplyConditionEffect(new ConditionEffect(eff.ConditionEffect.Value, duration));
                     }
@@ -831,7 +831,7 @@ namespace wServer.core.objects
                 ApplyConditionEffect(ConditionEffectIndex.Stunned, 500);
             else
             {
-                if (!HasConditionEffect(ConditionEffects.Sick))
+                if (!HasConditionEffect(ConditionEffectIndex.Sick))
                 {
                     var healthAmount = eff.Amount;
                     ActivateHealHp(this, healthAmount);
@@ -851,7 +851,7 @@ namespace wServer.core.objects
 
             this.AOE(range, true, player =>
             {
-                if (!player.HasConditionEffect(ConditionEffects.Sick))
+                if (!player.HasConditionEffect(ConditionEffectIndex.Sick))
                     ActivateHealHp(player as Player, amount);
             });
 
@@ -1221,8 +1221,8 @@ namespace wServer.core.objects
                 var next = current.GetNearestEntity(10, false, e =>
                 {
                     if (!(e is Enemy) ||
-                        e.HasConditionEffect(ConditionEffects.Invincible) ||
-                        e.HasConditionEffect(ConditionEffects.Stasis) ||
+                        e.HasConditionEffect(ConditionEffectIndex.Invincible) ||
+                        e.HasConditionEffect(ConditionEffectIndex.Stasis) ||
                         Array.IndexOf(targets, e) != -1)
                         return false;
 
@@ -1452,9 +1452,9 @@ namespace wServer.core.objects
 
         private void AEShurikenAbility(TickTime time, Item item, Position target, ActivateEffect eff)
         {
-            if (!HasConditionEffect(ConditionEffects.NinjaSpeedy))
+            if (!HasConditionEffect(ConditionEffectIndex.NinjaSpeedy))
             {
-                ApplyConditionEffect(ConditionEffectIndex.NinjaSpeedy);
+                ApplyPermanentConditionEffect(ConditionEffectIndex.NinjaSpeedy);
                 return;
             }
 
@@ -1480,9 +1480,9 @@ namespace wServer.core.objects
 
         private void AEShurikenAbilityBerserk(TickTime time, Item item, Position target, ActivateEffect eff)
         {
-            if (!HasConditionEffect(ConditionEffects.Berserk))
+            if (!HasConditionEffect(ConditionEffectIndex.Berserk))
             {
-                ApplyConditionEffect(ConditionEffectIndex.Berserk);
+                ApplyPermanentConditionEffect(ConditionEffectIndex.Berserk);
                 return;
             }
 
@@ -1508,9 +1508,9 @@ namespace wServer.core.objects
 
         private void AEShurikenAbilityDamaging(TickTime time, Item item, Position target, ActivateEffect eff)
         {
-            if (!HasConditionEffect(ConditionEffects.NinjaDamaging))
+            if (!HasConditionEffect(ConditionEffectIndex.NinjaDamaging))
             {
-                ApplyConditionEffect(ConditionEffectIndex.NinjaDamaging);
+                ApplyPermanentConditionEffect(ConditionEffectIndex.NinjaDamaging);
                 return;
             }
 
@@ -1548,12 +1548,12 @@ namespace wServer.core.objects
 
             this.AOE(range, true, player =>
             {
-                if (player.HasConditionEffect(ConditionEffects.HPBoost))
+                if (player.HasConditionEffect(ConditionEffectIndex.HPBoost))
                 {
                     return;
                 }
 
-                if (!player.HasConditionEffect(ConditionEffects.HPBoost))
+                if (!player.HasConditionEffect(ConditionEffectIndex.HPBoost))
                 {
                     World.Timers.Add(new WorldTimer(0, (world, t) => player.ApplyConditionEffect(ConditionEffectIndex.HPBoost, duration)));
                 }
@@ -1813,7 +1813,7 @@ namespace wServer.core.objects
             var players = new List<Player>();
             this.AOE(eff.Radius, true, player =>
             {
-                if (!player.HasConditionEffect(ConditionEffects.Sick))
+                if (!player.HasConditionEffect(ConditionEffectIndex.Sick))
                 {
                     players.Add(player as Player);
                     ActivateHealHp(player as Player, totalDmg);
@@ -1959,7 +1959,7 @@ namespace wServer.core.objects
 
             World.AOE(target, 3, false, enemy =>
             {
-                if (enemy.HasConditionEffect(ConditionEffects.StasisImmune))
+                if (enemy.HasConditionEffect(ConditionEffectIndex.StasisImmune))
                 {
                     World.BroadcastIfVisible(new Notification()
                     {
@@ -1969,7 +1969,7 @@ namespace wServer.core.objects
                         PlayerId = Id
                     }, enemy);
                 }
-                else if (!enemy.HasConditionEffect(ConditionEffects.Stasis) && !enemy.HasConditionEffect(ConditionEffects.StasisImmune))
+                else if (!enemy.HasConditionEffect(ConditionEffectIndex.Stasis) && !enemy.HasConditionEffect(ConditionEffectIndex.StasisImmune))
                 {
                     enemy.ApplyConditionEffect(ConditionEffectIndex.Stasis, eff.DurationMS);
 

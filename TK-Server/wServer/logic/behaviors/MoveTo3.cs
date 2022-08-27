@@ -54,7 +54,7 @@ namespace wServer.logic.behaviors
 
             if (!returned)
             {
-                if (host.HasConditionEffect(ConditionEffects.Paralyzed))
+                if (host.HasConditionEffect(ConditionEffectIndex.Paralyzed))
                     return;
 
                 var spd = host.GetSpeed(speed) * time.BehaviourTickTime;

@@ -25,7 +25,7 @@ namespace wServer.logic.behaviors
             if (host == null || host.World == null)
                 return;
 
-            if (host.HasConditionEffect(ConditionEffects.Paused))
+            if (host.HasConditionEffect(ConditionEffectIndex.Paused))
                 return;
 
             var hx = (int)host.X;

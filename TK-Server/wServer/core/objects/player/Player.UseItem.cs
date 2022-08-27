@@ -1820,7 +1820,7 @@ namespace wServer.core.objects
                 }
             });
 
-            if (enemies.Count > 0)
+            if (enemies.Count > 0 && players.Count > 0)
             {
                 for (var i = 0; i < 5; i++)
                 {

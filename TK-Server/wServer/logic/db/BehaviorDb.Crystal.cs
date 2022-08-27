@@ -93,22 +93,18 @@ namespace wServer.logic
                         new Wander(1)
                         ),
                     new State("Quadforce1",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                         new Shoot(0, projectileIndex: 0, count: 4, shootAngle: 90, fixedAngle: 0, coolDown: 300),
                         new TimedTransition(200, "Quadforce2")
                         ),
                     new State("Quadforce2",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                         new Shoot(0, projectileIndex: 0, count: 4, shootAngle: 90, fixedAngle: 15, coolDown: 300),
                         new TimedTransition(200, "Quadforce3")
                         ),
                     new State("Quadforce3",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                         new Shoot(0, projectileIndex: 0, count: 4, shootAngle: 90, fixedAngle: 30, coolDown: 300),
                         new TimedTransition(200, "Quadforce4")
                         ),
                     new State("Quadforce4",
-                        new Shoot(10, projectileIndex: 3, coolDown: 1000),
                         new Shoot(0, projectileIndex: 0, count: 4, shootAngle: 90, fixedAngle: 45, coolDown: 300),
                         new TimedTransition(200, "Quadforce5")
                         ),
@@ -117,17 +113,14 @@ namespace wServer.logic
                         new TimedTransition(200, "Quadforce6")
                         ),
                     new State("Quadforce6",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                         new Shoot(0, projectileIndex: 0, count: 4, shootAngle: 90, fixedAngle: 75, coolDown: 300),
                         new TimedTransition(200, "Quadforce7")
                         ),
                     new State("Quadforce7",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                         new Shoot(0, projectileIndex: 0, count: 4, shootAngle: 90, fixedAngle: 90, coolDown: 300),
                         new TimedTransition(200, "Quadforce8")
                         ),
                     new State("Quadforce8",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                         new Shoot(10, projectileIndex: 3, coolDown: 1000),
                         new Shoot(0, projectileIndex: 0, count: 4, shootAngle: 90, fixedAngle: 105, coolDown: 300),
                         new TimedTransition(200, "Quadforce1")

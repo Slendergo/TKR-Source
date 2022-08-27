@@ -261,7 +261,7 @@ namespace wServer.core.objects
             LoadTalismanData();
         }
 
-        private void CalculateRank()
+        public void CalculateRank()
         {
             if (Client.Rank.IsAdmin)
                 return;

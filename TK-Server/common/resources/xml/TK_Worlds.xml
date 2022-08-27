@@ -125,10 +125,11 @@
 		<MapJM>belladonna.jm</MapJM>
 		<Dungeon/>
 	</World>
-	<World id="Mortomus Hideout">
+	<World id="Defiled Graveyard">
 		<Width>256</Width>
 		<Height>256</Height>
 		<MapJM>mortomus_hideout.jm</MapJM>
+		<DisableTeleport/>
 		<Dungeon/>
 	</World>
 	<World id="Bilgewater's Grotto">

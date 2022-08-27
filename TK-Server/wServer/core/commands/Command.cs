@@ -25,7 +25,7 @@ namespace wServer.core.commands
             }
             catch (Exception e)
             {
-                Console.WriteLine($"Error when executing the command: {CommandName}", e);
+                Console.WriteLine($"{player.Name} | Error when executing the command: {CommandName}", e);
                 return false;
             }
         }

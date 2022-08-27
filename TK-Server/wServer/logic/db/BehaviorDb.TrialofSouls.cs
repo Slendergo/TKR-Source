@@ -50,7 +50,7 @@ namespace wServer.logic
                     )
                 ),
             new Threshold(0.05,
-                new ItemLoot("Supreme Potion", 1)
+                new ItemLoot("Crafting Material 1", 1)
                 )
             )
         .Init("Baron Turret 1",

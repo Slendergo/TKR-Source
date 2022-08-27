@@ -71,7 +71,7 @@ namespace common.discord
                             Name = $"{rarity} Loot!",
                             Icon = discord.webhookResourcesURL + bagImage,
                         },
-                        Title = $"<:{star.Value.name}:{star.Value.id}> {(rank >= RankingType.Supporter4 && rank != RankingType.Admin ? $"(Supporter #{rank})" : "")}) {playerName}",
+                        Title = $"<:{star.Value.name}:{star.Value.id}> {(rank > RankingType.Regular && rank <= RankingType.Supporter5 ? $"(Supporter #{rank})" : "")}) {playerName}",
                         Description = $"Player looted **{itemName}** at {worldName}, __{info.name}__!",
                         Color = 0x7289DA,
                         Fields = new[]

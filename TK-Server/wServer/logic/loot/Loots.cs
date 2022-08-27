@@ -240,6 +240,11 @@ namespace wServer.logic.loot
                         }
 
                         var items = GetItems(i.ItemType, i.Tier);
+                        if(items == null)
+                        {
+                            player.SendError($"There was a error giving u the item: {i.Tier} {i.ItemType}, please report this [#4]");
+                            continue;
+                        }
                         var chosenTieredItem = items[enemy.World.Random.Next(items.Count)];
                         drops.Add(chosenTieredItem);
                     }

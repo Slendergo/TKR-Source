@@ -205,6 +205,8 @@ namespace wServer.logic.loot
                     player.Stacks[1].Push(player.GameServer.Resources.GameData.Items[0xa23]);
                 }
 
+                var gameData = enemy.GameServer.Resources.GameData;
+
                 var drops = new List<Item>();
                 foreach (var i in possDrops)
                 {
@@ -216,8 +218,24 @@ namespace wServer.logic.loot
                     {
                         if (i.ItemType == ItemType.None)
                         {
-                            var namedItem = enemy.GameServer.Resources.GameData.Items[enemy.GameServer.Resources.GameData.IdToObjectType[i.Item]];
-                            drops.Add(namedItem);
+                            if (!gameData.IdToObjectType.TryGetValue(i.Item, out var type))
+                            {
+                                player.SendError($"There was a error giving u the item: {i.Item}, please report this [#1]");
+                                continue;
+                            }
+                             
+                            if(!gameData.Items.TryGetValue(type, out var item))
+                            {
+                                player.SendError($"There was a error giving u the item: {i.Item}, please report this [#2]");
+                                continue;
+                            }
+
+                            if (item == null)
+                            {
+                                player.SendError($"There was a error giving u the item: {i.Item}, please report this [#3]");
+                                continue;
+                            }
+                            drops.Add(item);
                             continue;
                         }
 

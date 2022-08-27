@@ -29,12 +29,11 @@ namespace wServer.logic
             return Hitters;
         }
 
-        public bool Dead;
+        private bool Dead;
         public void Death(TickTime time)
         {
             if (Dead)
                 return;
-
             Dead = true;
 
             if (Corpse != null)

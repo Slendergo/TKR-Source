@@ -37,8 +37,6 @@ namespace wServer.core.net.handlers
             if(action > (byte)TalismanActionType.DISABLE)
                 return;
 
-            Console.WriteLine($"ACTION: {action} | TYPE: {type} | AMOUNT: {amount}");
-
             var player = client.Player;
             
             var talisman = player.GetTalisman(type);

@@ -106,8 +106,8 @@ namespace wServer.networking
 
             Player.SaveTalismanData();
             Player.SaveToCharacter();
-            acc?.RefreshLastSeen();
-            acc?.FlushAsync();
+            acc.RefreshLastSeen();
+            acc.FlushAsync();
 
             if (GameServer != null && GameServer.Database != null && Player.FameCounter != null && Player.FameCounter.ClassStats != null)
                 if (GameServer.Database.SaveCharacter(acc, Character, Player.FameCounter.ClassStats, true))

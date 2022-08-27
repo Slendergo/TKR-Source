@@ -1730,8 +1730,6 @@ namespace wServer.core.objects
             }
             SendInfo("Your Character has been Upgraded successfully.");
             UpgradeEnabled = true;
-            var chr = Client.Character;
-            chr.UpgradeEnabled = UpgradeEnabled;
         }
 
         private void AEUpgradeStat(TickTime time, Item item, Position target, int objId, int slot, ActivateEffect eff)

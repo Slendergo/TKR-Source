@@ -57,6 +57,10 @@ namespace wServer.core
             BehaviorDb = new BehaviorDb(this);
             CommandManager = new CommandManager();
             DbEvents = new DbEvents(this);
+
+            InstanceId = Configuration.serverInfo.instanceId = Guid.NewGuid().ToString();
+            Console.WriteLine($"[Set] InstanceId [{InstanceId}]");
+
             InterServerManager = new ISManager(Database, Configuration);
             WorldManager = new WorldManager(this);
             SignalListener = new SignalListener(this);
@@ -96,9 +100,6 @@ namespace wServer.core
                 f5.Write(Resources.GameData.TalismansCombinedXML.ToString());
                 f5.Close();
             }
-
-            InstanceId = Configuration.serverInfo.instanceId = Guid.NewGuid().ToString();
-            Console.WriteLine($"[Set] InstanceId [{InstanceId}]");
 
             Console.WriteLine("[Initialize] ItemDustWeights");
             ItemDustWeights.Initialize();

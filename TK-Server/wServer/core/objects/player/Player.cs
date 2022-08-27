@@ -168,6 +168,8 @@ namespace wServer.core.objects
 
             _noManaBar = new SV<int>(this, StatDataType.NoManaBar, 0);
 
+            UpgradeEnabled = client.Character.UpgradeEnabled;
+
             var addition = 0;
             switch (client.Rank.Rank)
             {
@@ -383,7 +385,6 @@ namespace wServer.core.objects
             GenerateGravestone();
             AnnounceDeath(killer);
 
-            Console.WriteLine($"Sending death packet {AccountId} {Client.Character.CharId} {killer}");
             Client.SendPacket(new Death()
             {
                 AccountId = AccountId,

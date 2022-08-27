@@ -1052,10 +1052,8 @@ namespace common.database
         public int ResolveId(string ign)
         {
             var val = (string)_db.HashGet("names", ign.ToUpperInvariant());
-
             if (val == null)
                 return 0;
-
             return int.Parse(val);
         }
 
@@ -1064,15 +1062,11 @@ namespace common.database
         public bool SaveCharacter(DbAccount acc, DbChar character, DbClassStats stats, bool lockAcc)
         {
             var trans = _db.CreateTransaction();
-
             if (lockAcc)
                 trans.AddCondition(Condition.StringEqual($"lock:{acc.AccountId}", acc.LockToken));
-
             character.FlushAsync(trans);
-
             stats.Update(character);
             stats.FlushAsync(trans);
-
             return trans.Execute();
         }
 

@@ -180,16 +180,17 @@ namespace wServer.core.objects
             return 0;
         }
 
+        private bool GivenLoot;
         public void Death(ref TickTime time)
         {
-            if (this == null || World == null)
-                return;
-
             DamageCounter.Death(time);
-
             CurrentState?.OnDeath(this, ref time);
-            if (GameServer.BehaviorDb.Definitions.TryGetValue(ObjectType, out var loot))
-                loot.Item2?.Handle(this, time);
+            if (!GivenLoot)
+            {
+                if (GameServer.BehaviorDb.Definitions.TryGetValue(ObjectType, out var loot))
+                    loot.Item2?.Handle(this, time);
+                GivenLoot = true;
+            }
             World.LeaveWorld(this);
         }
 

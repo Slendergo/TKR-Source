@@ -571,25 +571,25 @@
 					<Index>0x7b</Index>
 				</Texture>
 			</Frame>
-			<Frame time="0.10">
+			<Frame time="0.20">
 				<Texture>
 					<File>custom16x16Environment</File>
 					<Index>0x7c</Index>
 				</Texture>
 			</Frame>
-			<Frame time="0.10">
+			<Frame time="0.20">
 				<Texture>
 					<File>custom16x16Environment</File>
 					<Index>0x7d</Index>
 				</Texture>
 			</Frame>
-			<Frame time="0.10">
+			<Frame time="0.20">
 				<Texture>
 					<File>custom16x16Environment</File>
 					<Index>0x7e</Index>
 				</Texture>
 			</Frame>
-			<Frame time="0.10">
+			<Frame time="50">
 				<Texture>
 					<File>custom16x16Environment</File>
 					<Index>0x7f</Index>

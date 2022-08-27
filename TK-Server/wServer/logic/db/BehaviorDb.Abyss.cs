@@ -224,7 +224,7 @@ namespace wServer.logic
                 new ItemLoot("Demon's Sigil", 0.009),
                 new ItemLoot("Abyss of Demons Key", 0.0001, 0, 0.03),
                 new ItemLoot("Demon Blade", 0.005),
-                new ItemLoot("Sword of Illumination", 0.001),
+                new ItemLoot("Sword of Illumination", 0.003),
                 new ItemLoot("Potion of Vitality", 1, 1),
                 new ItemLoot("Potion of Defense", 1, 1),
                 new ItemLoot("Potion of Vitality", 1, 1),

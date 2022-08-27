@@ -10,8 +10,8 @@ namespace wServer.logic
         private _ KingSlime = () => Behav()
         .Init("King Slime",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.ParalyzeImmune),
                 new ScaleHP2(20),
+                new ConditionalEffect(ConditionEffectIndex.ParalyzeImmune),
                 new State("idle",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
                     new PlayerWithinTransition(25, "Prepare")

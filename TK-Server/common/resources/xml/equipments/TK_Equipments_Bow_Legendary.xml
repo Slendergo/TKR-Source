@@ -15,8 +15,8 @@
     <Projectile>
       <ObjectId>Thousand Shot Arrow</ObjectId>
       <Speed>165</Speed>
-      <MinDamage>400</MinDamage>
-      <MaxDamage>450</MaxDamage>
+      <MinDamage>375</MinDamage>
+      <MaxDamage>375</MaxDamage>
       <LifetimeMS>460</LifetimeMS>
       <MultiHit />
     </Projectile>

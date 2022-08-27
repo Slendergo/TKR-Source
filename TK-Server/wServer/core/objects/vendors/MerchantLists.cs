@@ -21,6 +21,7 @@ namespace wServer.core.objects.vendors
         private static readonly List<ISellableItem> Consumables = new List<ISellableItem>
         {
             new ShopItem("Magic Potion", 1),
+            new ShopItem("Special Dust", 10000),
             new ShopItem("Health Potion", 1),
             new ShopItem("XP Booster 20 min", 100),
             new ShopItem("Loot Drop Potion", 200),
@@ -29,16 +30,16 @@ namespace wServer.core.objects.vendors
             new ShopItem("Loot Drop Potion", 200)
         };
 
-        private static readonly List<ISellableItem> KeysFame = new List<ISellableItem>
+        private static readonly List<ISellableItem> KeysGold = new List<ISellableItem>
         {
             new ShopItem("Strange Library Key", 200),
             new ShopItem("Cemetery Key", 200),
-            new ShopItem("Lost Halls Key", 200),
+            new ShopItem("Lost Halls Key", 1000),
 			new ShopItem("Davy's Key", 200),
             new ShopItem("The Crawling Depths Key", 200),
-            new ShopItem("Shatters Key", 200),
+            new ShopItem("Shatters Key", 1000),
             new ShopItem("Ocean Trench Key", 200),
-            new ShopItem("Tomb of the Ancients Key", 200),
+            new ShopItem("Tomb of the Ancients Key", 1000),
             new ShopItem("Deadwater Docks Key", 200),
             new ShopItem("Woodland Labyrinth Key", 200),
             new ShopItem("Pirate Cave Key", 25),
@@ -95,7 +96,7 @@ namespace wServer.core.objects.vendors
             { TileRegion.Store_1, new Tuple<List<ISellableItem>, CurrencyType, int>(PurchasableFame, CurrencyType.Fame, 0) },
             { TileRegion.Store_2, new Tuple<List<ISellableItem>, CurrencyType, int>(Consumables, CurrencyType.Fame, 0) },
             { TileRegion.Store_3, new Tuple<List<ISellableItem>, CurrencyType, int>(Special, CurrencyType.Gold, 0) },
-            { TileRegion.Store_4, new Tuple<List<ISellableItem>, CurrencyType, int>(KeysFame, CurrencyType.Fame, 0) }
+            { TileRegion.Store_4, new Tuple<List<ISellableItem>, CurrencyType, int>(KeysGold, CurrencyType.Gold, 0) }
         };
 
         private static void InitDyes(GameServer gameServer)

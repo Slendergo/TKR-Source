@@ -1319,9 +1319,9 @@ namespace wServer.logic
                         new HpLessTransition(0.7, "Rage"),
                         new RemoveConditionalEffect(ConditionEffectIndex.Invulnerable),
 
-                        new Shoot(12, 6, projectileIndex: 0, shootAngle: 7, coolDown: 2000, coolDownOffset: 300, predictive: 1.2),
-                        new Shoot(12, 6, projectileIndex: 0, shootAngle: 7, coolDown: 2000, coolDownOffset: 600, predictive: 1.2),
-                        new Shoot(12, 6, projectileIndex: 0, shootAngle: 7, coolDown: 2000, coolDownOffset: 900, predictive: 1.2),
+                        new Shoot(12, 6, projectileIndex: 0, shootAngle: 9, coolDown: 2000, coolDownOffset: 300, predictive: 1.2),
+                        new Shoot(12, 6, projectileIndex: 0, shootAngle: 9, coolDown: 2000, coolDownOffset: 600, predictive: 1.2),
+                        new Shoot(12, 6, projectileIndex: 0, shootAngle: 9, coolDown: 2000, coolDownOffset: 900, predictive: 1.2),
 
                         new Shoot(12, 10, projectileIndex: 2, coolDown: 700),
 

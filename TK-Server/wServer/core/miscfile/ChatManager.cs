@@ -195,9 +195,21 @@ namespace wServer.core
                 return;
             else
             {
+                var supporter = 0;
+                if (src.IsSupporter1)
+                    supporter++;
+                if (src.IsSupporter2)
+                    supporter++;
+                if (src.IsSupporter3)
+                    supporter++;
+                if (src.IsSupporter4)
+                    supporter++;
+                if (src.IsSupporter5)
+                    supporter++;
+
                 var tp = new Text()
                 {
-                    Name = (src.Client.Account.Name == "Slendergo" || src.Client.Account.Name == "ModBBQ" || src.Client.Account.Name == "Orb" ? "[Owner] " : "[Regular] ") + src.Name,
+                    Name = (src.Client.Account.Name == "Slendergo" || src.Client.Account.Name == "ModBBQ" || src.Client.Account.Name == "Orb" ? "[Owner] " : supporter == 0 ? "" : $"[Supporter {supporter}]") + src.Name,
                     ObjectId = src.Id,
                     NumStars = src.Stars,
                     BubbleTime = 5,

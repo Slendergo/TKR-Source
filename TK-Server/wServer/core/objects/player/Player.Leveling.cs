@@ -26,7 +26,7 @@ namespace wServer.core.objects
         {
             if (fame >= 2000) return 128000;
             if (fame >= 800) return 64000;
-            if (fame >= 400) return 64000;
+            if (fame >= 400) return 32000;
             if (fame >= 150) return 16000;
             if (fame >= 20) return 8000;
             return 4000;

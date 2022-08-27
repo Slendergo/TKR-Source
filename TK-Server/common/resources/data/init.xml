@@ -1,7 +1,7 @@
 ﻿<AppSettings>
     <MenuMusic>menumusic</MenuMusic>
 	<DeadMusic>menumusic</DeadMusic>
-	<VaultChestPrice>250</VaultChestPrice>
+	<VaultChestPrice>300</VaultChestPrice>
   <NewAccounts>
     <MaxCharSlot>1</MaxCharSlot>
     <VaultCount>1</VaultCount>

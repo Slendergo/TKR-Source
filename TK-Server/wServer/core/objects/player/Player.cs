@@ -278,27 +278,27 @@ namespace wServer.core.objects
                 if (rank == RankingType.Regular && amountDonated >= 10 && amountDonated < 20)
                 {
                     rank = RankingType.Supporter1;
-                    GameServer.Database.UpdateCredit(Client.Account, 750);
+                    GameServer.Database.UpdateCredit(Client.Account, 1000);
                 }
                 else if (rank == RankingType.Supporter1 && amountDonated >= 20 && amountDonated < 30)
                 {
                     rank = RankingType.Supporter2;
-                    GameServer.Database.UpdateCredit(Client.Account, 1500);
+                    GameServer.Database.UpdateCredit(Client.Account, 1000);
                 }
                 else if (rank == RankingType.Supporter2 && amountDonated >= 30 && amountDonated < 40)
                 {
                     rank = RankingType.Supporter3;
-                    GameServer.Database.UpdateCredit(Client.Account, 2625);
+                    GameServer.Database.UpdateCredit(Client.Account, 1000);
                 }
                 else if (rank == RankingType.Supporter3 && amountDonated >= 40 && amountDonated < 50)
                 {
                     rank = RankingType.Supporter4;
-                    GameServer.Database.UpdateCredit(Client.Account, 3750);
+                    GameServer.Database.UpdateCredit(Client.Account, 1000);
                 }
                 else if (rank == RankingType.Supporter4 && amountDonated < 50)
                 {
                     rank = RankingType.Supporter5;
-                    GameServer.Database.UpdateCredit(Client.Account, 5000);
+                    GameServer.Database.UpdateCredit(Client.Account, 1000);
                 }
             }
 

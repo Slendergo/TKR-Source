@@ -15,8 +15,8 @@
     <Projectile>
       <ObjectId>Beam Slash</ObjectId>
       <Speed>180</Speed>
-      <MinDamage>320</MinDamage>
-      <MaxDamage>320</MaxDamage>
+      <MinDamage>275</MinDamage>
+      <MaxDamage>275</MaxDamage>
       <LifetimeMS>361</LifetimeMS>
       <MultiHit />
       <ArmorPiercing />

@@ -1447,7 +1447,6 @@ public class GameServerConnection
                map.addObj(e,showEffect.pos1_.x_,showEffect.pos1_.y_);
                break;
             case ShowEffect.THROW_EFFECT_TYPE:
-               if(showEffect.pos2_.x_ != 222 && showEffect.targetObjectId_ != this.playerId_ && Parameters.data_.disableAllParticles) return;
                go = map.goDict_[showEffect.targetObjectId_];
                start = go != null?new Point(go.x_,go.y_):showEffect.pos2_.toPoint();
                e = new ThrowEffect(start,showEffect.pos1_.toPoint(),showEffect.color_, showEffect.duration_ * 1000);
@@ -1554,7 +1553,6 @@ public class GameServerConnection
                go.flash_ = new FlashDescription(getTimer(),showEffect.color_,showEffect.pos1_.x_,showEffect.pos1_.y_);
                break;
             case ShowEffect.THROW_PROJECTILE_EFFECT_TYPE:
-               if(showEffect.targetObjectId_ != this.playerId_ && Parameters.data_.disableAllParticles) return;
                go = map.goDict_[showEffect.targetObjectId_];
                start = (((start) != null) ? new Point(go.x_, go.y_) : showEffect.pos2_.toPoint());
                e = new ThrowProjectileEffect(showEffect.objectType, showEffect.pos1_.toPoint(), start, showEffect.duration_ * 1000);

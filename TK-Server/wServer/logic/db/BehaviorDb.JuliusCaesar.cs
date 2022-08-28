@@ -10,7 +10,7 @@ namespace wServer.logic
         private _ JuliusCaesar = () => Behav()
         .Init("Julius Caesar",
             new State(
-                new ScaleHP2(20),
+                new ScaleHP2(35),
                 new State("idle",
                     new ConditionalEffect(ConditionEffectIndex.Invincible, true), //invuln
                     new PlayerWithinTransition(15, "Prepare")

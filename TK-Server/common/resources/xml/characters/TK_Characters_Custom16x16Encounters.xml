@@ -100,7 +100,7 @@
 			<Index>33</Index>
 		</AnimatedTexture>
 		<Size>100</Size>
-		<MaxHitPoints>9000</MaxHitPoints>
+		<MaxHitPoints>3000</MaxHitPoints>
 		<Defense>30</Defense>
 		<StasisImmune/>
 		<Projectile id="0">
@@ -206,7 +206,7 @@
 			<Index>37</Index>
 		</AnimatedTexture>
 		<Size>120</Size>
-		<MaxHitPoints>12000</MaxHitPoints>
+		<MaxHitPoints>3000</MaxHitPoints>
 		<Defense>40</Defense>
 		<StasisImmune/>
 		<StunImmune/>
@@ -228,7 +228,7 @@
 			<Index>37</Index>
 		</AnimatedTexture>
 		<Size>120</Size>
-		<MaxHitPoints>12000</MaxHitPoints>
+		<MaxHitPoints>3000</MaxHitPoints>
 		<Defense>40</Defense>
 		<StasisImmune/>
 		<StunImmune/>
@@ -249,7 +249,7 @@
 			<Index>37</Index>
 		</AnimatedTexture>
 		<Size>120</Size>
-		<MaxHitPoints>12000</MaxHitPoints>
+		<MaxHitPoints>3000</MaxHitPoints>
 		<Defense>40</Defense>
 		<StasisImmune/>
 		<StunImmune/>
@@ -270,7 +270,7 @@
 			<Index>35</Index>
 		</AnimatedTexture>
 		<Size>120</Size>
-		<MaxHitPoints>11000</MaxHitPoints>
+		<MaxHitPoints>5000</MaxHitPoints>
 		<Defense>25</Defense>
 		<StasisImmune/>
 		<ParalyzeImmune/>
@@ -294,7 +294,7 @@
 			<Index>36</Index>
 		</AnimatedTexture>
 		<Size>110</Size>
-		<MaxHitPoints>8000</MaxHitPoints>
+		<MaxHitPoints>5000</MaxHitPoints>
 		<Defense>30</Defense>
 		<StasisImmune/>
 		<StunImmune/>

@@ -80,7 +80,7 @@ namespace wServer.logic
              new Threshold(0.001,
                 LootTemplates.DustLoot()
                 ),
-                  new Threshold(0.01,
+                  new Threshold(0.001,
                     new TierLoot(5, ItemType.Ability, 0.07),
                     new TierLoot(11, ItemType.Armor, 0.12),
                     new TierLoot(12, ItemType.Armor, 0.09),
@@ -91,7 +91,7 @@ namespace wServer.logic
                     new ItemLoot("Potion of Defense", 1),
                     new ItemLoot("Potion of Vitality", 1)
                       ),
-                  new Threshold(0.03,
+                  new Threshold(0.01,
                     new ItemLoot("Beast Gem", 0.0005)
                 )
             )

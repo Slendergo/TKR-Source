@@ -1047,7 +1047,7 @@
 		<Size>120</Size>
 		<HitSound>monster/dragons_hit</HitSound>
 		<DeathSound>monster/djinn_hit</DeathSound>
-		<MaxHitPoints>100000</MaxHitPoints>
+		<MaxHitPoints>60000</MaxHitPoints>
 		<Defense>55</Defense>
 		<Projectile id="0">
 			<ObjectId>Cerebrus's Claw</ObjectId>

@@ -205,7 +205,7 @@ namespace wServer.core.objects
         {
             if (!CanApplyCondition(effect))
                 return;
-            ConditionEffectManager.AddCondition((byte)effect, (int)(durationMs / 1000.0f));
+            ConditionEffectManager.AddCondition((byte)effect, durationMs);
         }
 
         public void ApplyConditionEffect(params ConditionEffect[] effs)
@@ -214,7 +214,7 @@ namespace wServer.core.objects
             {
                 if (!CanApplyCondition(i.Effect))
                     continue;
-                ConditionEffectManager.AddCondition((byte)i.Effect, (int)(i.DurationMS / 1000.0f));
+                ConditionEffectManager.AddCondition((byte)i.Effect, i.DurationMS);
             }
         }
 
@@ -332,7 +332,7 @@ namespace wServer.core.objects
                     TickState(time);
             }
 
-            ConditionEffectManager.Update(time.DeltaTime);
+            ConditionEffectManager.Update(ref time);
 
             if (_posHistory != null)
                 _posHistory[++_posIdx] = new Position() { X = X, Y = Y };
@@ -729,7 +729,6 @@ namespace wServer.core.objects
         {
             var ret = World.ObjectPools.Projectiles.Rent();
             ret.Host = this;
-            ret.ConditionEffects = ConditionEffectIndex.None;
             ret.ProjDesc = desc;
             ret.ProjectileId = projectileId++;
             ret.Container = container;

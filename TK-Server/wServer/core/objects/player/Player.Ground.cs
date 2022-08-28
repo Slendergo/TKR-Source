@@ -74,8 +74,8 @@ namespace wServer.core.objects
             var objDesc = tile.ObjType == 0 ? null : GameServer.Resources.GameData.ObjectDescs[tile.ObjType];
             var tileDesc = GameServer.Resources.GameData.Tiles[tile.TileId];
 
-            if (tileDesc.Effects != null)
-                ApplyConditionEffect(tileDesc.Effects);
+            //if (tileDesc.Effects != null)
+            //    ApplyConditionEffect(tileDesc.Effects);
 
             if (time.TotalElapsedMs - l > 500 && !anticheat)
             {

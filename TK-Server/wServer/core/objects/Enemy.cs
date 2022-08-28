@@ -240,7 +240,7 @@ namespace wServer.core.objects
                 World.BroadcastIfVisibleExclude(new Damage()
                 {
                     TargetId = Id,
-                    Effects = projectile.ConditionEffects,
+                    Effects = 0,
                     DamageAmount = (ushort)dmg,
                     Kill = HP < 0,
                     BulletId = projectile.ProjectileId,

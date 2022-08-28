@@ -18,7 +18,7 @@ namespace wServer.core.objects
         private SV<int> Batch2;
 
         private int[] Masks;
-        private float[] Durations;
+        private int[] Durations;
 
         private Entity Host;
 
@@ -28,19 +28,14 @@ namespace wServer.core.objects
             Host = host;
 
             Masks = new int[NUMBER_CE_BATCHES];
-            Durations = new float[(int)ConditionEffectIndex.UnstableImmune];
+            Durations = new int[(int)ConditionEffectIndex.UnstableImmune];
 
             Batch1 = new SV<int>(host, StatDataType.ConditionBatch1, 0);
             Batch2 = new SV<int>(host, StatDataType.ConditionBatch2, 0);
         }
 
-        public void AddCondition(byte effect, float duration)
+        public void AddCondition(byte effect, int duration)
         {
-            if (Host is Player)
-            {
-                Console.WriteLine();
-            }
-
             Durations[effect] = duration;
 
             var batchType = GetBatch(effect);
@@ -51,11 +46,7 @@ namespace wServer.core.objects
 
         public void AddPermanentCondition(byte effect)
         {
-            if (Host is Player)
-            {
-                Console.WriteLine();
-            }
-            Durations[effect] = float.MinValue;
+            Durations[effect] = -1;
 
             var batchType = GetBatch(effect);
             Masks[batchType] |= GetBit(effect);
@@ -65,32 +56,32 @@ namespace wServer.core.objects
 
         public bool HasCondition(byte effect)
         {
-            return (Masks[GetBatch(effect)] & GetBit(effect)) != 0 ;
+            return (Masks[GetBatch(effect)] & GetBit(effect)) != 0;
         }
 
-        public void Update(float dt)
+        public void Update(ref TickTime time)
         {
+            var dt = time.ElaspedMsDelta;
             if (Masks[0] != 0 || Masks[1] != 0)
-
-            for(byte effect = 0; effect < Durations.Length; effect++)
-            {
-                var duration = Durations[effect];
-                if (duration == 0.0f || duration == float.MinValue)
-                    continue;
-
-                if (duration <= dt)
+                for(byte effect = 0; effect < Durations.Length; effect++)
                 {
-                    RemoveCondition(effect);
-                    continue;
-                }
+                    var duration = Durations[effect];
+                    if (duration == -1)
+                        continue;
 
-                Durations[effect] -= dt;
-             }
+                    if (duration <= dt)
+                    {
+                        RemoveCondition(effect);
+                        continue;
+                    }
+
+                    Durations[effect] -= dt;
+                 }
         }
 
         public void RemoveCondition(byte effect)
         {
-            Durations[effect] = 0.0f;
+            Durations[effect] = 0;
 
             var batchType = GetBatch(effect);
             Masks[batchType] &= ~GetBit(effect);

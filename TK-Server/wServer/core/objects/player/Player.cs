@@ -465,12 +465,12 @@ namespace wServer.core.objects
             World.BroadcastIfVisibleExclude(new Damage()
             {
                 TargetId = Id,
-                Effects = HasConditionEffect(ConditionEffectIndex.Invincible) ? 0 : projectile.ConditionEffects,
+                Effects = 0,
                 DamageAmount = (ushort)dmg,
                 Kill = HP <= 0,
                 BulletId = projectile.ProjectileId,
                 ObjectId = projectile.Host.Id
-            }, this, this);
+            }, this, this);;
 
             if (HP <= 0)
                 Death(projectile.Host.ObjectDesc.DisplayId ?? projectile.Host.ObjectDesc.ObjectId, projectile.Host);
@@ -789,9 +789,9 @@ namespace wServer.core.objects
             if (World.IdName != "Ocean Trench")
                 return;
             if (Breath > 0)
-                Breath -= 5 * time.DeltaTime * 5;
+                Breath -= 20 * time.DeltaTime * 5;
             else
-                HP -= (int)(5 * time.DeltaTime * 5);
+                HP -= (int)(20 * time.DeltaTime * 5);
 
             if (HP < 0)
             {

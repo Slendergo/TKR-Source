@@ -126,7 +126,7 @@ namespace wServer.logic
                 new ItemLoot("Magic Dust", 0.5)
                 ),
             new Threshold(0.03,
-                new ItemLoot("Talisman Fragment", 0.01),
+                new ItemLoot("Talisman Fragment", 0.0005),
                 new ItemLoot("Shield of Ogmur", 0.00014, threshold: 0.03)
                 )
             )

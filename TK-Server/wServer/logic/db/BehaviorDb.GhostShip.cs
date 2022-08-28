@@ -237,7 +237,7 @@ namespace wServer.logic
             new ItemLoot("Ghost Pirate Rum", 1),
             new Threshold(0.03,
                 new ItemLoot("Cannon", 0.00014),
-                new ItemLoot("Talisman Fragment", 0.01)
+                new ItemLoot("Talisman Fragment", 0.0005)
                 ),
             new Threshold(0.001,
                 new TierLoot(4, ItemType.Ability, 0.07),

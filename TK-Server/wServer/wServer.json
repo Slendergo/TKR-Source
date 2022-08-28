@@ -19,7 +19,7 @@
     "serverSettings": {
         "logFolder": "./logs",
         "resourceFolder": "./resources",
-        "version": "3.1.0",
+        "version": "2.2.0",
         "maxConnections": 300,
         "maxPlayers": 300,
         "supporterOnly": false,

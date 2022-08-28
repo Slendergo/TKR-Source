@@ -10,7 +10,7 @@ namespace wServer.logic.behaviors
 
         public RemoveConditionalEffect(ConditionEffectIndex effect) => _effect = effect;
 
-        protected override void OnStateEntry(Entity host, TickTime time, ref object state) => host.ApplyConditionEffect(new ConditionEffect(_effect, 0));
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state) => host.RemoveCondition(_effect);
 
         protected override void TickCore(Entity host, TickTime time, ref object state)
         { }

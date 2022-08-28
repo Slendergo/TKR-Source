@@ -23,7 +23,6 @@ namespace wServer.core.objects
         public int Damage;
         public Entity Host;
         public World World;
-        public ConditionEffectIndex ConditionEffects;
 
         public Projectile() { }
 

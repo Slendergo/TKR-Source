@@ -198,11 +198,11 @@
 		</Projectile>
 		<Projectile id="4">
 			<ObjectId>Golden Rings</ObjectId>
-			<Damage>100</Damage>
+			<Damage>150</Damage>
 			<Size>150</Size>
-			<Speed>90</Speed>
-			<ConditionEffect duration="5">Armor Broken</ConditionEffect>
-			<LifetimeMS>4000</LifetimeMS>
+			<Speed>15</Speed>
+			<ConditionEffect duration="5">Paralyzed</ConditionEffect>
+			<LifetimeMS>10000</LifetimeMS>
 			<MultiHit />
 			<ArmorPiercing />
 		</Projectile>

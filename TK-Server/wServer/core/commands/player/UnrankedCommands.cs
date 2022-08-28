@@ -453,6 +453,13 @@ namespace wServer.core.commands
                     return false;
                 }
 
+                if (world.IdName == "Trial of Souls")
+                {
+                    Console.WriteLine(player.Name + " tried to pinviteworlds into Trial of Souls");
+                    player.SendError("You can't invite players to this World.");
+                    return false;
+                }
+
                 if (party.WorldId == player.World.Id)
                 {
                     player.SendError("Already invited your Party Members to this World!");

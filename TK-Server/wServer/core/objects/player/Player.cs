@@ -667,9 +667,14 @@ namespace wServer.core.objects
                     RestartTPPeriod();
                     return;
                 }
-            }
 
-            ApplyConditionEffect(ConditionEffectIndex.Invincible, 2000);
+                if (!TPCooledDown())
+                {
+                    SendError("Too soon to teleport again!");
+                    return;
+                }
+            }
+            ApplyConditionEffect(ConditionEffectIndex.Invulnerable, 2500);
             ApplyConditionEffect(ConditionEffectIndex.Stunned, 1000);
             TeleportPosition(time, obj.X, obj.Y, ignoreRestrictions);
         }

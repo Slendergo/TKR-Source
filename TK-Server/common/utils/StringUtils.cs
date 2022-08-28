@@ -11,6 +11,9 @@ namespace common.database
         public static bool EqualsIgnoreCase(this string self, string val)
             => self.Equals(val, StringComparison.InvariantCultureIgnoreCase);
 
+        public static bool StartsWithIgnoreCase(this string self, string val)
+             => self.StartsWith(val, StringComparison.InvariantCultureIgnoreCase);
+
         public static byte[] StringToByteArray(string hex)
             => Enumerable.Range(0, hex.Length)
             .Where(x => x % 2 == 0)

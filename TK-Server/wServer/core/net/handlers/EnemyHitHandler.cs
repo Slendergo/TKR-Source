@@ -18,7 +18,6 @@ namespace wServer.core.net.handlers
             var killed = rdr.ReadBoolean();
             var itemType = rdr.ReadUInt16();
 
-
             var player = client.Player;
             var entity = player?.World?.GetEntity(targetId);
 

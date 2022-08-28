@@ -48,7 +48,6 @@ namespace common.discord
             )
         {
             var star = discord.stars.FindStar(stars);
-
             if (!star.HasValue)
             {
                 logger.Log.Error($"Unhandled star value: {stars}");
@@ -56,9 +55,9 @@ namespace common.discord
             }
 
             var cInfo = discord.classes.FirstOrDefault(classInfo => classInfo.name.Equals(className.ToLower()));
-            if (first == default(ClassModel))
+            if (string.IsNullOrWhiteSpace(cInfo.name))
             {
-                logger.Log.Error($"Invalid Class Emoji: {cName}");
+                logger.Log.Error($"Invalid Class Emoji: {className}");
                 cInfo = discord.classes.FirstOrDefault(classInfo => classInfo.name.Equals("wizard"));
             }
 

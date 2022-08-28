@@ -21,7 +21,6 @@ namespace wServer.core.objects
             this.duration = duration;
 
             var history = player.TryGetHistory(1);
-
             if (history == null)
                 direction = GetRandDirection();
             else
@@ -71,7 +70,7 @@ namespace wServer.core.objects
 
         private Vector2 GetRandDirection()
         {
-            var angle = World.Random.NextDouble() * 2 * Math.PI;
+            var angle = World == null ? 0 : World.Random.NextDouble() * 2 * Math.PI;
             return new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle));
         }
     }

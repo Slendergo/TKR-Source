@@ -123,6 +123,9 @@ namespace wServer.core.commands
         {
             var config = player.GameServer.Configuration;
 
+            if (player.IsAdmin)
+                return true;
+
             if (config.serverInfo.adminOnly)
             {
                 if (!player.GameServer.IsWhitelisted(player.AccountId) || !player.IsAdmin)

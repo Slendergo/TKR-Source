@@ -1,10 +1,60 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using wServer.core;
 using wServer.core.objects;
 
 namespace wServer.logic.behaviors
 {
+    internal class ScaleDefense : Behavior
+    {
+        private readonly double AmountPerPerson;
+        private readonly double Range;
+
+        public ScaleDefense(double perPerson, double range = 25.0)
+        {
+            AmountPerPerson = perPerson;
+            Range = range;
+        }
+
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state) => state = new DefScaleState() { pNamesCounted = new List<string>(), cooldown = 0};
+
+        protected override void TickCore(Entity host, TickTime time, ref object state)
+        {
+            var defScaleState = (DefScaleState)state;
+
+            if (defScaleState == null)
+                return;
+
+            if (defScaleState.cooldown <= 0)
+            {
+                defScaleState.cooldown = 1000;
+
+                if (!(host is Enemy))
+                    return;
+
+                var enemy = host as Enemy;
+                foreach (var player in host.GetNearestEntities(Range, null, true).OfType<Player>())
+                    if (!defScaleState.pNamesCounted.Contains(player.Name))
+                        defScaleState.pNamesCounted.Add(player.Name);
+
+                var playerCount = defScaleState.pNamesCounted.Count;
+                var amountInc = playerCount * AmountPerPerson;
+                enemy.Defense = enemy.ObjectDesc.Defense + (int)Math.Ceiling(amountInc);
+            }
+            else
+                defScaleState.cooldown -= time.ElaspedMsDelta;
+
+            state = defScaleState;
+        }
+
+        private class DefScaleState
+        {
+            public int cooldown;
+            public IList<string> pNamesCounted;
+        }
+    }
+
     internal class ScaleHP2 : Behavior
     {
         private readonly int _percentage;
@@ -29,7 +79,7 @@ namespace wServer.logic.behaviors
 
             if (scstate.cooldown <= 0)
             {
-                scstate.cooldown = 10000;
+                scstate.cooldown = 1000;
 
                 if (!(host is Enemy))
                     return;

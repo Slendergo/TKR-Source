@@ -712,7 +712,8 @@ namespace wServer.core.net.handlers
 
                 if (trans.Execute())
                 {
-                    while (queue.Count > 0) queue.Dequeue()();
+                    while (queue.Count > 0) 
+                        queue.Dequeue()();
 
                     player.Client.SendPacket(new InvResult() { Result = 0 });
                     return;
@@ -783,8 +784,7 @@ namespace wServer.core.net.handlers
                 !(to as Container).BagOwners.Contains(player.AccountId))
                 return false;
 
-            if (from is GiftChest && to != player ||
-                to is GiftChest && from != player)
+            if (from is GiftChest && to != player || to is GiftChest && from != player)
                 return false;
 
             if (from is SpecialChest && to != player ||

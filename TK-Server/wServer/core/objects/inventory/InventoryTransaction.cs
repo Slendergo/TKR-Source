@@ -26,7 +26,6 @@ namespace wServer.core
         public void Execute()
         {
             var inv = _parent.Inventory;
-
             for (var i = 0; i < inv.Length; i++)
                 if (OriginalItems[i] != ChangedItems[i])
                     inv[i] = ChangedItems[i];

@@ -22,7 +22,7 @@
 		<Instance enum="nexus"/>
 		<Music>
 			<Track>wanderlust</Track>
-		</Music>
+		</Music>sd
 		<Persists/>
 		<ShowDisplays/>
 		<DisableShooting/>
@@ -35,6 +35,7 @@
 		<Capacity>1</Capacity>
 		<MapJM>vault.jm</MapJM>
 		<Instance enum="vault"/>
+		<CreateInstance/>
 		<Persists/>
 		<DisableShooting/>
 		<DisableAbilities/>

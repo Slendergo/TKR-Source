@@ -117,6 +117,7 @@ namespace wServer.core.worlds.logic
 
                 vaultChestPosition.RemoveAt(0);
             }
+
             foreach (var i in vaultChestPosition)
             {
                 var x = new ClosedVaultChest(Client.GameServer, 0x0505) { Size = 65 };
@@ -128,6 +129,8 @@ namespace wServer.core.worlds.logic
             var gifts = Client.Account.Gifts.ToList();
             while (gifts.Count > 0 && giftChestPosition.Count > 0)
             {
+                Console.WriteLine($"{giftChestPosition.Count}");
+
                 var c = Math.Min(8, gifts.Count);
                 var items = gifts.GetRange(0, c);
 
@@ -138,7 +141,7 @@ namespace wServer.core.worlds.logic
 
                 var con = new GiftChest(Client .GameServer, 0x0744, null, false)
                 {
-                    BagOwners = new int[] { Client .Account.AccountId },
+                    BagOwners = new int[] { Client.Account.AccountId },
                     Size = 65
                 };
                 con.Inventory.SetItems(con.Inventory.ConvertTypeToItemArray(items));
@@ -162,7 +165,7 @@ namespace wServer.core.worlds.logic
 
         private void GenerateSpecialChests(List<IntPoint> specialChestPosition)
         {
-            for (var i = 0; i < 6; i++)
+            for (var i = 0; i < specialChestPosition.Count; i++)
             {
                 var specialVault = new DbSpecialVault(Client.Account, i);
                 if (!specialVault.GetItems())
@@ -185,7 +188,7 @@ namespace wServer.core.worlds.logic
 
             foreach (var i in specialChestPosition)
             {
-                var x = new StaticObject(Client .GameServer, 0xa012, null, true, false, false) { Size = 65 };
+                var x = new StaticObject(Client.GameServer, 0xa012, null, true, false, false) { Size = 65 };
                 x.Move(i.X + 0.5f, i.Y + 0.5f);
 
                 EnterWorld(x);

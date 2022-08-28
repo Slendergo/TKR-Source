@@ -164,14 +164,16 @@ namespace wServer.core.objects
                     return new NexusMerchant(manager, id);
 
                 case "ClosedVaultChestGold":
-                case "ClosedGiftChest":
-                case "SpecialClosedVaultChest":
                 case "VaultChest":
                 case "MarketNPC":
                 case "SkillTree":
                 case "Forge":
                 case "StatNPC":
                     return new SellableMerchant(manager, id);
+
+                case "ClosedGiftChest":
+                case "SpecialClosedVaultChest":
+                    return new StaticObject(manager, id, null, false, false, false);
 
                 case "Engine":
                     return new Engine(manager, id);

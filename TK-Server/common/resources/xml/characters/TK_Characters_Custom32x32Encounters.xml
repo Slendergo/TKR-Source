@@ -910,8 +910,8 @@
 		<Projectile id="0">
 			<ObjectId>Corrupted Mage Shoot</ObjectId>
 			<Speed>180</Speed>
-			<MinDamage>160</MinDamage>
-			<MaxDamage>180</MaxDamage>
+			<MinDamage>120</MinDamage>
+			<MaxDamage>130</MaxDamage>
 			<LifetimeMS>800</LifetimeMS>
 			<Amplitude>0.5</Amplitude>
 			<Frequency>2</Frequency>
@@ -921,8 +921,8 @@
 		<Projectile id="1">
 			<ObjectId>Corrupted Mage Shoot Ball</ObjectId>
 			<Speed>70</Speed>
-			<MinDamage>180</MinDamage>
-			<MaxDamage>210</MaxDamage>
+			<MinDamage>140</MinDamage>
+			<MaxDamage>150</MaxDamage>
 			<LifetimeMS>1800</LifetimeMS>
 			<Frequency>1</Frequency>
 			<Size>100</Size>
@@ -944,8 +944,8 @@
 		<XpMult>0.0</XpMult>
 		<Projectile id="0">
 			<ObjectId>Corrupted Priest Shoot</ObjectId>
-			<Speed>180</Speed>
-			<Damage>140</Damage>
+			<Speed>110</Speed>
+			<Damage>120</Damage>
 			<LifetimeMS>800</LifetimeMS>
 			<Frequency>1</Frequency>
 			<Size>130</Size>
@@ -955,7 +955,7 @@
 		<Projectile id="1">
 			<ObjectId>Corrupted Priest Shoot Ball</ObjectId>
 			<Speed>70</Speed>
-			<Damage>200</Damage>
+			<Damage>130</Damage>
 			<LifetimeMS>1500</LifetimeMS>
 			<Frequency>1</Frequency>
 			<Size>110</Size>
@@ -989,8 +989,8 @@
 		<Projectile id="1">
 			<ObjectId>Corrupted Priest Shoot Ball</ObjectId>
 			<Speed>70</Speed>
-			<MinDamage>170</MinDamage>
-			<MaxDamage>180</MaxDamage>
+			<MinDamage>105</MinDamage>
+			<MaxDamage>125</MaxDamage>
 			<LifetimeMS>1500</LifetimeMS>
 			<Frequency>1</Frequency>
 			<Size>100</Size>
@@ -1012,7 +1012,7 @@
 		<XpMult>0.0</XpMult>
 		<Projectile id="3">
 			<ObjectId>Colossal Bullet</ObjectId>
-			<Damage>200</Damage>
+			<Damage>150</Damage>
 			<Speed>30</Speed>
 			<Size>100</Size>
 			<LifetimeMS>6200</LifetimeMS>
@@ -1021,8 +1021,8 @@
 		<Projectile id="1">
 			<ObjectId>Corrupted Mage Shoot Ball</ObjectId>
 			<Speed>70</Speed>
-			<MinDamage>170</MinDamage>
-			<MaxDamage>200</MaxDamage>
+			<MinDamage>130</MinDamage>
+			<MaxDamage>150</MaxDamage>
 			<LifetimeMS>1500</LifetimeMS>
 			<Frequency>1</Frequency>
 			<Size>100</Size>
@@ -1035,6 +1035,10 @@
 		<Enemy />
 		<Event />
 		<Quest />
+		<God />
+		<Encounter />
+		<StasisImmune />
+		<ParalyzeImmune />
 		<Class>Character</Class>
 		<AnimatedTexture>
 			<File>Custom32x32Encounters</File>
@@ -1045,9 +1049,6 @@
 		<DeathSound>monster/djinn_hit</DeathSound>
 		<MaxHitPoints>100000</MaxHitPoints>
 		<Defense>55</Defense>
-		<Experience>100000</Experience>
-		<StasisImmune />
-		<ParalyzeImmune />
 		<Projectile id="0">
 			<ObjectId>Cerebrus's Claw</ObjectId>
 			<Damage>350</Damage>
@@ -1063,7 +1064,7 @@
 			<Damage>90</Damage>
 			<Speed>85</Speed>
 			<LifetimeMS>2000</LifetimeMS>
-			<ConditionEffect duration="2">Paralyzed</ConditionEffect>
+			<ConditionEffect duration="0.5">Paralyzed</ConditionEffect>
 			<MultiHit />
 			<Size>130</Size>
 		</Projectile>

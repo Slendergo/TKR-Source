@@ -22,9 +22,9 @@ namespace wServer.logic
                     new Order(100, "Red Gas Spawner UR", "OFF"),
                     new Order(100, "Red Gas Spawner LL", "OFF"),
                     new Order(100, "Red Gas Spawner LR", "OFF"),
-                    new Wander(0.5),
+                    new Wander(0.7),
                     new SetAltTexture(0),
-                    new TossObject2("Green Potion", coolDown: 800, coolDownOffset: 0),
+                    new TossObject2("Green Potion", coolDown: 1000, coolDownOffset: 0),
                     new TimedTransition(12000, "rage TA")
                     ),
                 new State("rage TA",
@@ -34,7 +34,7 @@ namespace wServer.logic
                     new Order(100, "Red Gas Spawner UR", "OFF"),
                     new Order(100, "Red Gas Spawner LL", "OFF"),
                     new Order(100, "Red Gas Spawner LR", "OFF"),
-                    new Wander(0.5),
+                    new Wander(0.7),
                     new SetAltTexture(0),
                     new TossObject2("Turret Attack", coolDown: 2000, coolDownOffset: 0),
                     new TimedTransition(10000, "rage")
@@ -46,10 +46,10 @@ namespace wServer.logic
                     new Order(100, "Red Gas Spawner UR", "ON"),
                     new Order(100, "Red Gas Spawner LL", "ON"),
                     new Order(100, "Red Gas Spawner LR", "ON"),
-                    new Wander(0.5),
+                    new Wander(0.7),
                     new SetAltTexture(0),
                     new Taunt(0.5, "For Science"),
-                    new TossObject2("Green Potion", coolDown: 500, coolDownOffset: 0),
+                    new TossObject2("Green Potion", coolDown: 1000, coolDownOffset: 0),
                     new TimedTransition(12000, "TA")
                     ),
                 new State("TA",
@@ -59,9 +59,9 @@ namespace wServer.logic
                     new Order(100, "Red Gas Spawner UR", "ON"),
                     new Order(100, "Red Gas Spawner LL", "ON"),
                     new Order(100, "Red Gas Spawner LR", "ON"),
-                    new Wander(0.5),
+                    new Wander(0.7),
                     new SetAltTexture(0),
-                    new TossObject("Turret Attack", coolDown: 800, coolDownOffset: 0),
+                    new TossObject("Turret Attack", coolDown: 1000, coolDownOffset: 0),
                     new TimedTransition(10000, "hide")
                     ),
                 new State("hide",
@@ -87,9 +87,9 @@ namespace wServer.logic
                     new Order(100, "Red Gas Spawner UR", "OFF"),
                     new Order(100, "Red Gas Spawner LL", "ON"),
                     new Order(100, "Red Gas Spawner LR", "ON"),
-                    new Wander(0.5),
+                    new Wander(0.7),
                     new SetAltTexture(0),
-                    new TossObject2("Green Potion", coolDown: 500, coolDownOffset: 0),
+                    new TossObject2("Green Potion", coolDown: 1000, coolDownOffset: 0),
                     new TimedTransition(12000, "TA2")
                     ),
                 new State("TA2",
@@ -99,9 +99,9 @@ namespace wServer.logic
                     new Order(100, "Red Gas Spawner UR", "OFF"),
                     new Order(100, "Red Gas Spawner LL", "ON"),
                     new Order(100, "Red Gas Spawner LR", "ON"),
-                    new Wander(0.5),
+                    new Wander(0.7),
                     new SetAltTexture(0),
-                    new TossObject2("Green Potion", coolDown: 500, coolDownOffset: 0),
+                    new TossObject2("Green Potion", coolDown: 1000, coolDownOffset: 0),
                     new TimedTransition(10000, "hide2")
                     ),
                 new State("hide2",
@@ -127,9 +127,9 @@ namespace wServer.logic
                     new Order(100, "Red Gas Spawner UR", "ON"),
                     new Order(100, "Red Gas Spawner LL", "OFF"),
                     new Order(100, "Red Gas Spawner LR", "ON"),
-                    new Wander(0.5),
+                    new Wander(0.7),
                     new SetAltTexture(0),
-                    new TossObject2("Green Potion", coolDown: 500, coolDownOffset: 0),
+                    new TossObject2("Green Potion", coolDown: 1000, coolDownOffset: 0),
                     new TimedTransition(12000, "TA3")
                     ),
                 new State("TA3",
@@ -139,9 +139,9 @@ namespace wServer.logic
                     new Order(100, "Red Gas Spawner UR", "ON"),
                     new Order(100, "Red Gas Spawner LL", "OFF"),
                     new Order(100, "Red Gas Spawner LR", "ON"),
-                    new Wander(0.5),
+                    new Wander(0.7),
                     new SetAltTexture(0),
-                    new TossObject2("Green Potion", coolDown: 500, coolDownOffset: 0),
+                    new TossObject2("Green Potion", coolDown: 1000, coolDownOffset: 0),
                     new TimedTransition(10000, "hide3")
                     ),
                 new State("hide3",
@@ -167,9 +167,9 @@ namespace wServer.logic
                     new Order(100, "Red Gas Spawner UR", "ON"),
                     new Order(100, "Red Gas Spawner LL", "ON"),
                     new Order(100, "Red Gas Spawner LR", "OFF"),
-                    new Wander(0.5),
+                    new Wander(0.7),
                     new SetAltTexture(0),
-                    new TossObject2("Green Potion", coolDown: 500, coolDownOffset: 0),
+                    new TossObject2("Green Potion", coolDown: 1000, coolDownOffset: 0),
                     new TimedTransition(12000, "TA4")
                     ),
                 new State("TA4",
@@ -179,9 +179,9 @@ namespace wServer.logic
                     new Order(100, "Red Gas Spawner UR", "ON"),
                     new Order(100, "Red Gas Spawner LL", "ON"),
                     new Order(100, "Red Gas Spawner LR", "OFF"),
-                    new Wander(0.5),
+                    new Wander(0.7),
                     new SetAltTexture(0),
-                    new TossObject2("Green Potion", coolDown: 55, coolDownOffset: 0),
+                    new TossObject2("Green Potion", coolDown: 1000, coolDownOffset: 0),
                     new TimedTransition(10000, "hide4")
                     ),
                 new State("hide4",
@@ -201,7 +201,7 @@ namespace wServer.logic
                     new EntitiesNotExistsTransition(30, "idle", "Dr Terrible Rampage Cyborg", "Dr Terrible Mini Bot", "Dr Terrible Escaped Experiment")
                     )
                 ),
-            new Threshold(0.032,
+            new Threshold(0.03,
                 new ItemLoot("Potion of Wisdom", 1)
                 ),
             new Threshold(0.01,
@@ -215,8 +215,8 @@ namespace wServer.logic
                 ),
             new Threshold(0.03,
                 new ItemLoot("The Plasma Buster", .0015),
-                new ItemLoot("Scepter of Fulmination", 0.0024, threshold: 0.03),
-                new ItemLoot("Conducting Wand", 0.0024)
+                new ItemLoot("Scepter of Fulmination", 0.0015, threshold: 0.03),
+                new ItemLoot("Conducting Wand", 0.0015)
                 ),
             new Threshold(0.01,
                 new ItemLoot("Robe of the Mad Scientist", 0.005),
@@ -366,33 +366,33 @@ namespace wServer.logic
             new State(
                 new State("1 step",
                     new Wander(0.5),
-                    new Shoot(10, 3, 20, angleOffset: 0 / 3, projectileIndex: 0, coolDown: 1000),
+                    new Shoot(12, 3, 20, angleOffset: 0 / 3, projectileIndex: 0, coolDown: 700),
                     new HpLessTransition(.75, "2 step")
                     ),
                 new State("2 step",
                     new Wander(0.5),
                     new ChangeSize(11, 150),
-                    new Shoot(10, 2, 20, angleOffset: 0 / 3, projectileIndex: 1, coolDown: 1000),
+                    new Shoot(12, 2, 20, angleOffset: 0 / 3, projectileIndex: 1, coolDown: 700),
                     new HpLessTransition(.5, "3 step")
                     ),
                 new State("3 step",
                     new Wander(0.5),
                     new ChangeSize(11, 175),
-                    new Shoot(10, 2, 20, angleOffset: 0 / 3, projectileIndex: 2, coolDown: 1000),
+                    new Shoot(12, 2, 20, angleOffset: 0 / 3, projectileIndex: 2, coolDown: 700),
                     new HpLessTransition(.25, "4 step")
                     ),
                 new State("4 step",
                     new Wander(0.5),
                     new ChangeSize(11, 200),
-                    new Shoot(10, 2, 20, angleOffset: 0 / 3, projectileIndex: 3, coolDown: 1000)
+                    new Shoot(12, 2, 20, angleOffset: 0 / 3, projectileIndex: 3, coolDown: 700)
                     )
                 )
             )
         .Init("Enforcer Bot 3000",
             new State(
                 new Wander(0.5),
-                new Shoot(10, 3, 20, angleOffset: 0 / 3, projectileIndex: 0, coolDown: 1000),
-                new Shoot(10, 4, 20, angleOffset: 0 / 4, projectileIndex: 1, coolDown: 1000),
+                new Shoot(10, 3, 20, angleOffset: 0 / 3, projectileIndex: 0, coolDown: 500),
+                new Shoot(10, 4, 20, angleOffset: 0 / 4, projectileIndex: 1, coolDown: 500),
                 new TransformOnDeath("Mini Bot", 0, 3)
 
                 )
@@ -400,7 +400,8 @@ namespace wServer.logic
         .Init("Green Potion",
             new State(
                 new State("Idle",
-                    new TimedTransition(300, "explode")
+                    new Flash(0x2DB804, 5, 12),
+                    new TimedTransition(800, "explode")
                     ),
                 new State("explode",
                     new Shoot(10, count: 12, projectileIndex: 0, fixedAngle: 22.5f),
@@ -458,7 +459,7 @@ namespace wServer.logic
             )
         .Init("Turret Attack",
             new State(
-                new Shoot(10, 3, 15, angleOffset: 0 / 2, projectileIndex: 0, coolDown: 800)
+                new Shoot(10, 3, 15, angleOffset: 0 / 2, projectileIndex: 0, coolDown: 500)
                 )
             )
         /*.Init("Mad Lab Open Wall",//need fix

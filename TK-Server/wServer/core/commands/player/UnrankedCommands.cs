@@ -625,9 +625,9 @@ namespace wServer.core.commands
             player.SendInfo($"Talisman's provide: {(int)((player.TalismanLootBoost + player.TalismanLootBoostPerPlayer) * 100.0)} % ");
             switch (player.GameServer.WorldManager.Nexus.EngineStage)
             {
-                case 1: player.SendInfo($"Stage 1 Strange Engine proivdes: 50%"); break;
-                case 2: player.SendInfo($"Stage 2 Strange Engine proivdes: 100%"); break;
-                case 3: player.SendInfo($"Stage 3 Strange Engine proivdes: 200%"); break;
+                case 1: player.SendInfo($"Stage 1 Strange Engine proivdes: 25%"); break;
+                case 2: player.SendInfo($"Stage 2 Strange Engine proivdes: 50%"); break;
+                case 3: player.SendInfo($"Stage 3 Strange Engine proivdes: 100%"); break;
                 default: break;
             }
             player.SendInfo($"You have {Math.Round(lootBoost * 100.0f, 3)}% increased loot chance");

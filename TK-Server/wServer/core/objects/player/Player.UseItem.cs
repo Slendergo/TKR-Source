@@ -139,7 +139,6 @@ namespace wServer.core.objects
 
             var container = entity as IContainer;
 
-            // eheh no more clearing BBQ loot bags
             if (this.Dist(entity) > 3)
             {
                 entity.ForceUpdate(slot);
@@ -147,25 +146,23 @@ namespace wServer.core.objects
                 return;
             }
 
-            var cInv = container?.Inventory.CreateTransaction();
+            var containerInventory = container?.Inventory.CreateTransaction();
 
             // get item
             Item item = null;
             foreach (var stack in Stacks.Where(stack => stack.Slot == slot))
             {
                 item = stack.Pop();
-
                 if (item == null)
                     return;
-
                 break;
             }
+
             if (item == null)
             {
                 if (container == null)
                     return;
-
-                item = cInv[slot];
+                item = containerInventory[slot];
             }
 
             if (item == null)
@@ -174,6 +171,7 @@ namespace wServer.core.objects
             // make sure not trading and trying to cunsume item
             if (tradeTarget != null && item.Consumable)
                 return;
+
             Player player = this as Player;
             if (MP < item.MpCost)
             {
@@ -183,7 +181,7 @@ namespace wServer.core.objects
 
             // use item
             var slotType = 10;
-            if (slot < cInv.Length)
+            if (slot < containerInventory.Length)
             {
                 slotType = container.SlotTypes[slot];
 
@@ -197,7 +195,7 @@ namespace wServer.core.objects
                         Item successor = null;
                         if (item.SuccessorId != null)
                             successor = gameData.Items[gameData.IdToObjectType[item.SuccessorId]];
-                        cInv[slot] = successor;
+                        containerInventory[slot] = successor;
 
                         var trans = db.Conn.CreateTransaction();
                         if (container is GiftChest)
@@ -210,7 +208,7 @@ namespace wServer.core.objects
                             }
                     }
 
-                    if (!Inventory.Execute(cInv)) // can result in the loss of an item if inv trans fails..
+                    if (!Inventory.Execute(containerInventory)) // can result in the loss of an item if inv trans fails..
                     {
                         entity.ForceUpdate(slot);
                         return;

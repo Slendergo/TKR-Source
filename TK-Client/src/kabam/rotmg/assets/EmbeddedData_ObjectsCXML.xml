@@ -27787,11 +27787,11 @@
     </Projectile>
     <Projectile id="4">
       <ObjectId>Golden Rings</ObjectId>
-      <Damage>100</Damage>
+      <Damage>150</Damage>
       <Size>150</Size>
-      <Speed>90</Speed>
-      <ConditionEffect duration="5">Armor Broken</ConditionEffect>
-      <LifetimeMS>4000</LifetimeMS>
+      <Speed>15</Speed>
+      <ConditionEffect duration="5">Paralyzed</ConditionEffect>
+      <LifetimeMS>10000</LifetimeMS>
       <MultiHit />
       <ArmorPiercing />
     </Projectile>
@@ -51362,8 +51362,8 @@
     <Projectile>
       <ObjectId>Thousand Shot Arrow</ObjectId>
       <Speed>165</Speed>
-      <MinDamage>400</MinDamage>
-      <MaxDamage>450</MaxDamage>
+      <MinDamage>375</MinDamage>
+      <MaxDamage>375</MaxDamage>
       <LifetimeMS>460</LifetimeMS>
       <MultiHit />
     </Projectile>
@@ -61378,9 +61378,9 @@
       <MinDamage>145</MinDamage>
       <MaxDamage>175</MaxDamage>
       <LifetimeMS>800</LifetimeMS>
-      <Amplitude>1</Amplitude>
-      <Frequency>1.2</Frequency>
-      <Size>140</Size>
+      <Amplitude>0.5</Amplitude>
+      <Frequency>1</Frequency>
+      <Size>120</Size>
       <MultiHit />
     </Projectile>
     <NumProjectiles>5</NumProjectiles>

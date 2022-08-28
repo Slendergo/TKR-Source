@@ -99,7 +99,7 @@ namespace wServer.logic
             new State(
                 new StayBack(0.5, 5),
                 new State("1st",
-                    new Follow(1.8, range: 7),
+                    new Follow(1, range: 7),
                     new Shoot(12, projectileIndex: 2, count: 1, coolDown: 350),
                     new TimedTransition(5000, "next")
                     ),
@@ -127,7 +127,7 @@ namespace wServer.logic
             new State(
                 new State("Main",
                     new TimedTransition(5000, "Throw"),
-                    new Follow(1.8, range: 1),
+                    new Follow(1.3, range: 1),
                     new Shoot(10, 1, projectileIndex: 0, coolDown: 200, predictive: 1),
                     new Shoot(10, 3, projectileIndex: 1, shootAngle: 10, coolDown: 4000, predictive: 1)
                     ),
@@ -363,18 +363,40 @@ namespace wServer.logic
                     ),
                 new State("Death",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
-                    new TransferDamageOnDeath("shtrs Loot Balloon Bridge"),
                     new Taunt("I tried to protect you... I have failed. You release a great evil upon this realm...."),
                     new TimedTransition(2000, "Suicide")
                     ),
                 new State("Suicide",
                     new Shoot(35, projectileIndex: 0, count: 30),
-                    new Order(1, "shtrs Chest Spawner 1", "Open"),
                     new Suicide()
                     )
+               ),
+            new Threshold(0.05,
+                new ItemLoot("The Sentinel's Insignia", 0.0005),
+                new ItemLoot("Blade of the Protector", 0.0005),
+                new ItemLoot("Guardian's Clad", 0.0005)
+                ),
+            new Threshold(0.01,
+                LootTemplates.DustLoot()
+                ),
+            new Threshold(0.03,
+                new ItemLoot("Bracer of the Guardian", 0.0005)
+                ),
+            new Threshold(0.001,
+                new TierLoot(12, ItemType.Weapon, 0.2),
+                new TierLoot(13, ItemType.Weapon, 0.1),
+                new TierLoot(6, ItemType.Ability, 0.2),
+                new TierLoot(12, ItemType.Armor, 0.07),
+                new TierLoot(13, ItemType.Armor, 0.05),
+                new TierLoot(6, ItemType.Ring, 0.04),
+                new ItemLoot("Special Dust", 0.01),
+                new ItemLoot("Greater Potion of Attack", 1),
+                new ItemLoot("Greater Potion of Defense", 1),
+                new ItemLoot("Greater Potion of Attack", 0.5),
+                new ItemLoot("Greater Potion of Defense", 0.5)
                 )
             )
-        #endregion 1stboss
+#endregion 1stboss
         #region blobomb
         .Init("shtrs Blobomb",
             new State(
@@ -570,14 +592,29 @@ namespace wServer.logic
                 new State("Death",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new Taunt("IM..POSSI...BLE!"),
-                    new TransferDamageOnDeath("shtrs Loot Balloon Mage"),
-                    new Order(1, "shtrs Chest Spawner 2", "Open"),
                     new TimedTransition(2000, "Suicide")
                     ),
                 new State("Suicide",
                     new Shoot(35, projectileIndex: 0, count: 30),
                     new Suicide()
                     )
+               ),
+            new Threshold(0.01,
+                LootTemplates.DustLoot()
+                ),
+            new Threshold(0.05,
+                new ItemLoot("Rod of Frost Burn", 0.0005),
+                new ItemLoot("Skull of the Archmage", 0.0005),
+                new ItemLoot("Archmage's Garments", 0.0005),
+                new ItemLoot("Infused Souls", 0.0005)
+                ),
+            new Threshold(0.001,
+                new TierLoot(13, ItemType.Weapon, 0.2),
+                new TierLoot(6, ItemType.Ability, 0.2),
+                new TierLoot(13, ItemType.Armor, 0.2),
+                new TierLoot(6, ItemType.Ring, 0.04),
+                new ItemLoot("Greater Potion of Mana", 1),
+                new ItemLoot("Greater Potion of Mana", 0.5)
                 )
             )
         #endregion 2ndboss
@@ -2390,8 +2427,6 @@ namespace wServer.logic
 
                 new State("Death",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
-                    new TransferDamageOnDeath("shtrs Loot Balloon King"),
-                    new Order(1, "shtrs Chest Spawner 3", "Open"),
                     new Taunt("Impossible..........IMPOSSIBLE!"),
                     new TimedTransition(2000, "Suicide")
                     ),
@@ -2399,6 +2434,26 @@ namespace wServer.logic
                     new Shoot(35, projectileIndex: 0, count: 30),
                     new Suicide()
                     )
+                ),
+            new Threshold(0.05,
+                new ItemLoot("Lodius", 0.0005, 0),
+                new ItemLoot("Gekdu", 0.0005, 0),
+                new ItemLoot("Seruna", 0.0005, 0)
+                ),
+            new Threshold(0.03,
+                new ItemLoot("The Forgotten Crown", 0.0005),
+                new ItemLoot("Shatters Key", 0.01)
+                ),
+            new Threshold(0.01,
+                LootTemplates.DustLoot()
+                ),
+            new Threshold(0.001,
+                new TierLoot(14, ItemType.Weapon, 0.2),
+                new TierLoot(6, ItemType.Ability, 0.2),
+                new TierLoot(14, ItemType.Armor, 0.2),
+                new TierLoot(6, ItemType.Ring, 0.2),
+                new ItemLoot("Greater Potion of Life", 1),
+                new ItemLoot("Greater Potion of Life", 1)
                 )
             )
         .Init("shtrs Royal Guardian J",

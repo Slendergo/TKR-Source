@@ -118,14 +118,14 @@ namespace wServer.core.objects
 
             foreach(var entity in NewObjects)
             {
-                if (entity.IsRemovedFromWorld)
+                if(entity.IsRemovedFromWorld)
                 {
                     drops.Add(entity.Id);
                     update.Drops.Add(entity.Id);
                     continue;
                 }
 
-                if (entity == Player.Quest && !entity.IsRemovedFromWorld || entity is Player || ActiveTiles.Contains(new IntPoint((int)entity.X, (int)entity.Y)))
+                if (entity is Player || ActiveTiles.Contains(new IntPoint((int)entity.X, (int)entity.Y)))
                     continue;
 
                 drops.Add(entity.Id);

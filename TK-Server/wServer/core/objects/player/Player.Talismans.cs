@@ -61,10 +61,10 @@ namespace wServer.core.objects
             var essence = Math.Min(essenceCap, Client.Account.Essence + amount);
             Client.Account.Essence = essence;
 
-            if(essence == essenceCap)
+            if(essence >= essenceCap)
                 SendInfo($"You have hit the limit of Talisman Essence");
             else
-                SendInfo($"You have gained: {amount} Talisman Essence");
+                SendInfo($"+{amount} Talisman Essence [{essence}/{essenceCap}]");
         }
 
         public void HandleTalismans(ref TickTime time)

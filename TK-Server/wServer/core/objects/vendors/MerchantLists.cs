@@ -21,7 +21,7 @@ namespace wServer.core.objects.vendors
         private static readonly List<ISellableItem> Consumables = new List<ISellableItem>
         {
             new ShopItem("Magic Potion", 1),
-            new ShopItem("Special Dust", 10000),
+            new ShopItem("Special Dust", 6500),
             new ShopItem("Health Potion", 1),
             new ShopItem("XP Booster 20 min", 100),
             new ShopItem("Loot Drop Potion", 200),

@@ -38,13 +38,13 @@
     </Texture>
     <SlotType>2</SlotType>
     <Description>A dagger that was condemned to Davy Jones' Locker.</Description>
-    <RateOfFire>1.15</RateOfFire>
+    <RateOfFire>1</RateOfFire>
     <Sound>weapon/dirk</Sound>
     <Projectile>
       <ObjectId>Spirit Dagger Slash</ObjectId>
       <Speed>130</Speed>
-      <MinDamage>160</MinDamage>
-      <MaxDamage>510</MaxDamage>
+      <MinDamage>175</MinDamage>
+      <MaxDamage>475</MaxDamage>
       <LifetimeMS>427</LifetimeMS>
       <Amplitude>0.2</Amplitude>
       <Frequency>0.2</Frequency>

@@ -172,21 +172,33 @@ namespace wServer.core.worlds.logic
             switch (EngineStage)
             {
                 case 1:
-                    if (currentTime < EngineStageTime + ENGINE_STAGE1_TIMEOUT)
+                    if (currentTime >= EngineStageTime + ENGINE_STAGE1_TIMEOUT)
+                    {
                         ResetEngineState(1);
+                        EngineStageTime = currentTime;
+                    }
                     break;
                 case 2:
-                    if (currentTime < EngineStageTime + ENGINE_STAGE2_TIMEOUT)
+                    if (currentTime >= EngineStageTime + ENGINE_STAGE2_TIMEOUT)
+                    {
                         ResetEngineState(2);
+                        EngineStageTime = currentTime;
+                    }
                     break;
                 case 3:
-                    if (currentTime < EngineStageTime + ENGINE_STAGE3_TIMEOUT)
+                    if (currentTime >= EngineStageTime + ENGINE_STAGE3_TIMEOUT)
+                    {
                         ResetEngineState(3);
+                        EngineStageTime = currentTime;
+                    }
                     break;
                 default: break;
             }
-
-            Console.WriteLine(EngineStageTime + " " + currentTime);
+            
+            Console.WriteLine();
+            Console.WriteLine(currentTime + " " + (EngineStageTime + ENGINE_STAGE1_TIMEOUT) + " " + (currentTime >= EngineStageTime + ENGINE_STAGE1_TIMEOUT));
+            Console.WriteLine(currentTime + " " + (EngineStageTime + ENGINE_STAGE2_TIMEOUT) + " " + (currentTime >= EngineStageTime + ENGINE_STAGE2_TIMEOUT));
+            Console.WriteLine(currentTime + " " + (EngineStageTime + ENGINE_STAGE3_TIMEOUT) + " " + (currentTime >= EngineStageTime + ENGINE_STAGE3_TIMEOUT));
         }
 
         private void ResetEngineState(int state)
@@ -258,7 +270,7 @@ namespace wServer.core.worlds.logic
             else
                 GameServer.ChatManager.AnnounceEngine($"The Strange Engine slowly powers down.");
             var engine = GameServer.Database.GetDbEngine();
-            engine.SetEngineStage(state, EngineStageTime = DateTime.UtcNow.ToUnixTimestamp());
+            engine.SetEngineStage(state, DateTime.UtcNow.ToUnixTimestamp());
             engine.Save();
         }
     }

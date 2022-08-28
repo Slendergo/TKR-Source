@@ -776,24 +776,24 @@ namespace wServer.logic
                 new TierLoot(6, ItemType.Ring, 0.1, 0, 0.002)
                 ),
             new Threshold(0.03,
-                new ItemLoot("Sword of the Colossus", 0.000001),
-                new ItemLoot("Breastplate of New Life", 0.000001),
-                new ItemLoot("Marble Seal", 0.000001),
-                new ItemLoot("Magical Lodestone", 0.000001),
-                new ItemLoot("Bow of the Void", 0.000001),
-                new ItemLoot("Quiver of the Shadows", 0.000001),
-                new ItemLoot("Armor of Nil", 0.000001),
-                new ItemLoot("Sourcestone", 0.000001),
-                new ItemLoot("Staff of Unholy Sacrifice", 0.000001),
-                new ItemLoot("Skull of Corrupted Souls", 0.000001),
-                new ItemLoot("Ritual Robe", 0.000001),
-                new ItemLoot("Bloodshed Ring", 0.000001)
+                new ItemLoot("Sword of the Colossus", 0.001),
+                new ItemLoot("Breastplate of New Life", 0.001),
+                new ItemLoot("Marble Seal", 0.001),
+                new ItemLoot("Magical Lodestone", 0.001),
+                new ItemLoot("Bow of the Void", 0.001),
+                new ItemLoot("Quiver of the Shadows", 0.001),
+                new ItemLoot("Armor of Nil", 0.001),
+                new ItemLoot("Sourcestone", 0.001),
+                new ItemLoot("Staff of Unholy Sacrifice", 0.001),
+                new ItemLoot("Skull of Corrupted Souls", 0.001),
+                new ItemLoot("Ritual Robe", 0.001),
+                new ItemLoot("Bloodshed Ring", 0.001)
            ),
        new Threshold(0.05,
-           new ItemLoot("Marbled Concoction", 0.0000008),
-           new ItemLoot("Titan Slayer", 0.0000008),
-           new ItemLoot("Colossal Plated Hide", 0.0000008),
-           new ItemLoot("Omnipotence Ring", 0.0000008)
+           new ItemLoot("Marbled Concoction", 0.0008),
+           new ItemLoot("Titan Slayer", 0.0008),
+           new ItemLoot("Colossal Plated Hide", 0.0008),
+           new ItemLoot("Omnipotence Ring", 0.0008)
                 )
             );
 

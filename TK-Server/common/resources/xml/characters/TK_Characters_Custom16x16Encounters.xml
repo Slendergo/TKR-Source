@@ -1059,15 +1059,15 @@
 		<Size>80</Size>
 		<Projectile id="0">
 			<ObjectId>Undead Septavius First Shot</ObjectId>
-			<Speed>100</Speed>
-			<Damage>135</Damage>
-			<LifetimeMS>1500</LifetimeMS>
+			<Speed>85</Speed>
+			<Damage>100</Damage>
+			<LifetimeMS>2000</LifetimeMS>
 			<Size>110</Size>
 		</Projectile>
 		<Projectile id="1">
 			<ObjectId>Undead Septavius Second Shot</ObjectId>
 			<Speed>80</Speed>
-			<Damage>145</Damage>
+			<Damage>135</Damage>
 			<LifetimeMS>1200</LifetimeMS>
 			<Size>110</Size>
 			<Wavy />

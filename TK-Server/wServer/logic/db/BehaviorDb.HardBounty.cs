@@ -17,7 +17,6 @@ namespace wServer.logic
                 new ScaleHP2(20),
                     new State("Pause",
                         new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
-                        new DropPortalOnDeath("Defiled Graveyard Portal", 0.7),
                         new PlayerWithinTransition(10, "Start")
                         ),
                     new State("Start",
@@ -68,6 +67,7 @@ namespace wServer.logic
                         new TimedTransition(5000, "Fight 3.1")
                         ),
                     new State("Fight 3.1",
+                        new DropPortalOnDeath("Defiled Graveyard Portal", 0.7),
                         new Chase(8, coolDown: 0),
                         new RemoveConditionalEffect(ConditionEffectIndex.Invulnerable),
                         new Shoot(15, 8, projectileIndex: 5, coolDown: 1000),
@@ -80,13 +80,19 @@ namespace wServer.logic
              new Threshold(0.001,
                 LootTemplates.DustLoot()
                 ),
-                  new Threshold(0.05,
+                  new Threshold(0.01,
+                    new TierLoot(5, ItemType.Ability, 0.07),
+                    new TierLoot(11, ItemType.Armor, 0.12),
+                    new TierLoot(12, ItemType.Armor, 0.09),
+                    new TierLoot(12, ItemType.Weapon, 0.12),
+                    new TierLoot(5, ItemType.Ring, 0.07),
                     new ItemLoot("Magic Dust", 0.5),  
                     new ItemLoot("Potion of Dexterity", 1),
                     new ItemLoot("Potion of Defense", 1),
-                    new ItemLoot("Potion of Vitality", 1),
+                    new ItemLoot("Potion of Vitality", 1)
+                      ),
+                  new Threshold(0.03,
                     new ItemLoot("Beast Gem", 0.0005)
-                  
                 )
             )
         .Init("Grim Reaper",

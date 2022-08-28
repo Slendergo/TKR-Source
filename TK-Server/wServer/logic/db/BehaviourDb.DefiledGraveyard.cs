@@ -219,10 +219,10 @@ namespace wServer.logic
                 new ItemLoot("Potion of Mana", 1),
                 new ItemLoot("Potion of Defense", 1),
                 new ItemLoot("Potion of Attack", 1),
-                new ItemLoot("Old Cleric's Cloak", 0.0016),
-                new ItemLoot("Mortomus' Shovel", 0.0001),
-                new ItemLoot("Groundkeeper's Lantern", 0.016),
-                new ItemLoot("Scepter of Whispers", 0.0016),
+                new ItemLoot("Old Cleric's Cloak", 0.001),
+                new ItemLoot("Mortomus' Shovel", 0.001),
+                new ItemLoot("Groundkeeper's Lantern", 0.005),
+                new ItemLoot("Scepter of Whispers", 0.005),
                 new ItemLoot("Magic Dust", 0.5)
                 )
             )

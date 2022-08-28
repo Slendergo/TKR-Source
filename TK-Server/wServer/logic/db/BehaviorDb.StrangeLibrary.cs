@@ -17,9 +17,9 @@ namespace wServer.logic
                     new PlayerWithinTransition(15, "Start")
                     ),
                 new State("Start",
-                    new Wander(0.6),
-                    new StayBack(0.6, 5),
-                    new Shoot(20, 2, shootAngle: 10, 0, coolDown: 200),
+                    new Wander(0.4),
+                    new StayBack(0.3, 5),
+                    new Shoot(20, 2, shootAngle: 10, 0, coolDown: 600),
                     new Shoot(20, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1000)
                     )
                 )
@@ -30,12 +30,12 @@ namespace wServer.logic
                     new PlayerWithinTransition(15, "Start")
                     ),
                 new State("Start",
-                    new Wander(0.6),
-                    new Protect(0.6, "Corrupted Mage", 20, 5, 5),
-                    new StayBack(0.6, 5),
-                    new Shoot(20, 1, 0, coolDown: 300),
-                    new HealEntity(15, "Corrupted Mage", 100, coolDown: 500),
-                    new HealEntity(15, "Strange Priest", 1500, coolDown: 500),
+                    new Wander(0.5),
+                    new Protect(0.3, "Corrupted Mage", 20, 5, 5),
+                    new StayBack(0.3, 5),
+                    new Shoot(20, 1, 0, coolDown: 600),
+                    new HealEntity(15, "Corrupted Mage", 100, coolDown: 1500),
+                    new HealEntity(15, "Strange Priest", 1500, coolDown: 1500),
                     new Shoot(20, 2, shootAngle: 25, projectileIndex: 1, coolDown: 3000, coolDownOffset: 1500)
                     )
                 )
@@ -43,10 +43,10 @@ namespace wServer.logic
         .Init("Corrupted Mini Priest",
             new State(
                 new State("Start",
-                    new Wander(0.6),
-                    new StayBack(0.6, 5),
-                    new Shoot(20, 1, 0, coolDown: 300),
-                    new HealEntity(15, "Strange Priest", 100, coolDown: 500),
+                    new Wander(0.5),
+                    new StayBack(0.3, 5),
+                    new Shoot(20, 1, 0, coolDown: 800),
+                    new HealEntity(15, "Strange Priest", 100, coolDown: 1500),
                     new Shoot(20, 2, shootAngle: 25, projectileIndex: 1, coolDown: 3000, coolDownOffset: 1500)
                     )
                 )
@@ -59,7 +59,7 @@ namespace wServer.logic
                 new ChangeSize(100, 0),
                 new TimedTransition(1500, "Shoot"),
                 new State("Follow Player",
-                    new Follow(0.5, 20, 0),
+                    new Follow(0.9, 20, 0),
                     new PlayerWithinTransition(1, "Shoot")
                     ),
                 new State("Shoot",
@@ -187,8 +187,8 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.03,
-                new ItemLoot("Talisman Fragment", 0.0005),
-                new ItemLoot("Magicians Hide", 0.00014)
+                new ItemLoot("Talisman Fragment", 0.01),
+                new ItemLoot("Magicians Hide", 0.001)
                 ),
             new Threshold(0.01,
                 new ItemLoot("Potion of Life", 0.18),

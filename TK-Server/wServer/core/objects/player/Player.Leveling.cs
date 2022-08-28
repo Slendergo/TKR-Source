@@ -53,22 +53,29 @@ namespace wServer.core.objects
                     Color = new ARGB(0xFF00FF00),
                     Message = "Quest Complete!"
                 }, this);
+                var prevStars = Stars;
                 Stars = GetStars();
 
-                var cap = Client.Account.EssenceCap;
-                UpdateEssenceCap();
-                var newCap = Client.Account.EssenceCap;
-
-                SendInfo($"Your 'Talisman Essence' capacity has increased by {newCap - cap}!");
+                if (Stars != prevStars)
+                {
+                    var cap = Client.Account.EssenceCap;
+                    UpdateEssenceCap();
+                    var newCap = Client.Account.EssenceCap;
+                    SendInfo($"Your 'Talisman Essence' capacity has increased by {newCap - cap}!");
+                }
             }
             else if (newFame != Fame)
             {
-                World.BroadcastIfVisible(new Notification()
+                var delta = newFame - Fame;
+                if (delta > 0)
                 {
-                    ObjectId = Id,
-                    Color = new ARGB(0xFFE25F00),
-                    Message = "+" + (newFame - Fame) + "Fame"
-                }, this);
+                    World.BroadcastIfVisible(new Notification()
+                    {
+                        ObjectId = Id,
+                        Color = new ARGB(0xFFE25F00),
+                        Message = $"+{delta}"
+                    }, this);
+                }
             }
 
             Fame = newFame;

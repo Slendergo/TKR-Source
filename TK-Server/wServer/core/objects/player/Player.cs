@@ -1215,12 +1215,11 @@ namespace wServer.core.objects
         private void HandleRegen(ref TickTime time)
         {
             var maxHP = Stats[0];
-
             if(CanHpRegen() && HP < maxHP)
             {
                 var vitalityStat = Stats[6];
 
-                HealthRegenCarry += (1 + 0.24 * vitalityStat);
+                HealthRegenCarry += (1.0 + (0.24 * vitalityStat));
                 if(TalismanExtraLifeRegen > 0.0f)
                     HealthRegenCarry += (HealthRegenCarry * TalismanExtraLifeRegen);
                 if(TalismanHealthHPRegen > 0.0f)
@@ -1230,7 +1229,7 @@ namespace wServer.core.objects
                 if (HasConditionEffect(ConditionEffectIndex.Healing))
                     HealthRegenCarry += 20.0 * time.DeltaTime;
 
-                var regen = (int)HealthRegenCarry;
+                var regen = (int)Math.Ceiling(HealthRegenCarry);
                 if (regen > 0)
                 {
                     HP = Math.Min(HP + regen, maxHP);
@@ -1251,7 +1250,7 @@ namespace wServer.core.objects
                 if (HasConditionEffect(ConditionEffectIndex.MPTRegeneration))
                     HealthRegenCarry += 20.0 * time.DeltaTime;
 
-                var regen = (int)ManaRegenCarry;
+                var regen = (int)Math.Ceiling(ManaRegenCarry);
                 if (regen > 0)
                 {
                     MP = Math.Min(MP + regen, maxMP);

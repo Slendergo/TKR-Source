@@ -194,11 +194,6 @@ namespace wServer.core.worlds.logic
                     break;
                 default: break;
             }
-            
-            Console.WriteLine();
-            Console.WriteLine(currentTime + " " + (EngineStageTime + ENGINE_STAGE1_TIMEOUT) + " " + (currentTime >= EngineStageTime + ENGINE_STAGE1_TIMEOUT));
-            Console.WriteLine(currentTime + " " + (EngineStageTime + ENGINE_STAGE2_TIMEOUT) + " " + (currentTime >= EngineStageTime + ENGINE_STAGE2_TIMEOUT));
-            Console.WriteLine(currentTime + " " + (EngineStageTime + ENGINE_STAGE3_TIMEOUT) + " " + (currentTime >= EngineStageTime + ENGINE_STAGE3_TIMEOUT));
         }
 
         private void ResetEngineState(int state)

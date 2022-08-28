@@ -435,6 +435,7 @@
   <Object type="0x0d3d" id="Tomb Support Statue">
     <Group>Tomb Boss Statues</Group>
     <Enemy />
+	<Quest/>
     <Class>Character</Class>
     <DisplayId>Nut Statue</DisplayId>
     <Size>140</Size>
@@ -447,6 +448,7 @@
   <Object type="0x0d3e" id="Tomb Attacker Statue">
     <Group>Tomb Boss Statues</Group>
     <Enemy />
+	  <Quest/>
     <Class>Character</Class>
     <DisplayId>Geb Statue</DisplayId>
     <Size>140</Size>
@@ -459,6 +461,7 @@
   <Object type="0x0d3f" id="Tomb Defender Statue">
     <Group>Tomb Boss Statues</Group>
     <Enemy />
+	<Quest/>
     <Class>Character</Class>
     <DisplayId>Bes Statue</DisplayId>
     <Size>140</Size>

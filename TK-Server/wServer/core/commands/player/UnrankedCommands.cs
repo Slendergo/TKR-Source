@@ -391,6 +391,15 @@ namespace wServer.core.commands
                     return false;
                 }
 
+                if(world.IdName == "Trial of Souls")
+                {
+                    Console.WriteLine(player.Name + " tried to pjoin into Trial of Souls");
+                    party.WorldId = -1;
+                    player.GameServer.Database.FlushParty(party.PartyId, party);
+                    player.SendError("You can't connect to those Worlds.");
+                    return false;
+                }
+
                 if (party.ReturnWorldId() != -1 && (world.InstanceType == WorldResourceInstanceType.Guild || world is VaultWorld || world is NexusWorld))
                 {
                     party.WorldId = -1;
@@ -1245,12 +1254,9 @@ namespace wServer.core.commands
             var targets = player.World.GetPlayers();
             foreach (var target in targets)
             {
-                if (!target.Name.StartsWithIgnoreCase(args))
+                if (!target.Name.EqualsIgnoreCase(args))
                     continue;
-
                 player.Teleport(time, target.Id, player.IsAdmin);
-                //player.ApplyConditionEffect(ConditionEffectIndex.Invulnerable, 2500);
-                //player.ApplyConditionEffect(ConditionEffectIndex.Stunned, 2500);
                 return true;
             }
 

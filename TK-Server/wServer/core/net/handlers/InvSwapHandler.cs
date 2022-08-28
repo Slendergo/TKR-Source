@@ -142,6 +142,12 @@ namespace wServer.core.net.handlers
                 }
             }
 
+            if (!Inventory.DatExecute(conDataFromTrans, conDataToTrans))
+            {
+                if (!Inventory.DatRevert(conDataFromTrans, conDataToTrans))
+                    Log.Warn($"Failed to Revert Data Changes. {player.Name} has an extra data [ {dataFrom.GetData()} or {dataTo.GetData()} ]");
+            }
+
             #region Check
 
             if (!(to is Player) || !(from is Player))
@@ -694,11 +700,6 @@ namespace wServer.core.net.handlers
 
             #endregion Check
 
-            if (!Inventory.DatExecute(conDataFromTrans, conDataToTrans))
-            {
-                if (!Inventory.DatRevert(conDataFromTrans, conDataToTrans))
-                    Log.Warn($"Failed to Revert Data Changes. {player.Name} has an extra data [ {dataFrom.GetData()} or {dataTo.GetData()} ]");
-            }
 
             // swap items
             if (Inventory.Execute(conFromTrans, conToTrans))
@@ -753,6 +754,9 @@ namespace wServer.core.net.handlers
 
         private bool IsSameKindOfItem(Item itemA, Item itemB, string[] objsId)
         {
+            if (itemA == null || itemB == null)
+                return false;
+
             var itemAObjId = itemA.ObjectId;
             var itemBObjId = itemB.ObjectId;
             foreach (var obj in objsId)

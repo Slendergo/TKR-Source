@@ -23,8 +23,8 @@ namespace wServer.core.worlds.logic
     public sealed class NexusWorld : World
     {
         private const int ENGINE_STAGE1_TIMEOUT = 3600; //seconds
-        private const int ENGINE_STAGE2_TIMEOUT = 10800;
-        private const int ENGINE_STAGE3_TIMEOUT = 21600;
+        private const int ENGINE_STAGE2_TIMEOUT = ENGINE_STAGE1_TIMEOUT * 2;
+        private const int ENGINE_STAGE3_TIMEOUT = ENGINE_STAGE1_TIMEOUT * 3;
 
         private const int ENGINE_FIRST_STAGE_AMOUNT = 100;
         private const int ENGINE_SECOND_STAGE_AMOUNT = 250 + ENGINE_FIRST_STAGE_AMOUNT;

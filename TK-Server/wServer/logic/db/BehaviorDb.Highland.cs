@@ -733,7 +733,8 @@ namespace wServer.logic
             )
         .Init("Kage Kami",
             new State(
-                new DropPortalOnDeath("Manor of the Immortals Portal", 0.5),
+                new ScaleHP2(30),
+                new DropPortalOnDeath("Manor of the Immortals Portal", 0.2),
                 /*            new State("Grave", // Bug
                 new SetAltTexture(0),
                 new HpLessTransition(.90,"yay i am good")
@@ -770,7 +771,7 @@ namespace wServer.logic
                    )
                 ),
             new Threshold(.01,
-                new ItemLoot("Essence Eater", 0.043333),
+                new ItemLoot("Essence Eater", 0.0003),
                 new ItemLoot("Potion of Vitality", 1),
                 new ItemLoot("Potion of Dexterity", 1),
                 new ItemLoot("Potion of Defense", 1),

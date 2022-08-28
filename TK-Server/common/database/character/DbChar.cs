@@ -40,5 +40,6 @@ namespace common.database
         public int Tex2 { get => GetValue<int>("tex2"); set => SetValue("tex2", value); }
         public bool UpgradeEnabled { get => GetValue<bool>("upgradeEnabled"); set => SetValue("upgradeEnabled", value); }
         public int XPBoostTime { get => GetValue<int>("xpBoost"); set => SetValue("xpBoost", value); }
+        public bool CompletedTrialOfSouls { get => GetValue<bool>("completedTrialOfSouls"); set => SetValue("completedTrialOfSouls", value); }
     }
 }

@@ -105,6 +105,12 @@ namespace wServer.logic
                         if (essenceToGive > 0)
                             player.GiveEssence(essenceToGive);
                     }
+                    else
+                    {
+                        var essenceToGive = player.World.Random.Next(5, 10);
+                        if (essenceToGive > 0)
+                            player.GiveEssence(essenceToGive);
+                    }
                 }
             }
 

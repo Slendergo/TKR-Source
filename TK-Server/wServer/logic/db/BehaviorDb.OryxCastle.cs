@@ -144,7 +144,8 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.03,
-                new ItemLoot("Ancient Stone Sword", 0.0014)
+                new ItemLoot("Ancient Stone Sword", 0.0014),
+                new ItemLoot("Glowing Talisman", 0.0014)
                 ),
             new Threshold(0.01,
                 new ItemLoot("Potion of Defense", 1),
@@ -302,7 +303,8 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.03,
-                new ItemLoot("Ancient Stone Sword", 0.0014)
+                new ItemLoot("Ancient Stone Sword", 0.0014),
+                new ItemLoot("Glowing Talisman", 0.0014)
                 ),
             new Threshold(0.01,
                 new ItemLoot("Potion of Defense", 1),

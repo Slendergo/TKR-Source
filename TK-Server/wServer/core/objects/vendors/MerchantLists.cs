@@ -70,6 +70,10 @@ namespace wServer.core.objects.vendors
 
         private static readonly List<ISellableItem> Special = new List<ISellableItem>
         {
+            new ShopItem("Glowing Talisman", 200),
+            new ShopItem("Glowing Talisman", 200),
+            new ShopItem("Glowing Talisman", 200),
+            new ShopItem("Glowing Talisman", 200)
         };
 
         public static void Initialize(GameServer gameServer)

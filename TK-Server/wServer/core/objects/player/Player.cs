@@ -786,7 +786,7 @@ namespace wServer.core.objects
 
         public void HandleBreath(ref TickTime time)
         {
-            if (World.IdName != "Ocean Trench")
+            if (World.IdName != "Ocean Trench" || World.IdName != "Hideout of Thessal")
                 return;
             if (Breath > 0)
                 Breath -= 20 * time.DeltaTime * 5;

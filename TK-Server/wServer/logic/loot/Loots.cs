@@ -104,9 +104,9 @@ namespace wServer.logic.loot
             var allLoot = 0.0;
             switch (player.GameServer.WorldManager.Nexus.EngineStage)
             {
-                case 1: allLoot += 0.5; break;
-                case 2: allLoot += 1; break;
-                case 3: allLoot += 2; break;
+                case 1: allLoot += 0.25; break;
+                case 2: allLoot += 0.5; break;
+                case 3: allLoot += 1.0; break;
                 default: break;
             }
             allLoot += player.LDBoostTime > 0 ? 0.1 : 0;

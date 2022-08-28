@@ -172,19 +172,21 @@ namespace wServer.core.worlds.logic
             switch (EngineStage)
             {
                 case 1:
-                    if (currentTime >= EngineStageTime + ENGINE_STAGE1_TIMEOUT)
+                    if (currentTime < EngineStageTime + ENGINE_STAGE1_TIMEOUT)
                         ResetEngineState(1);
                     break;
                 case 2:
-                    if (currentTime >= EngineStageTime + ENGINE_STAGE2_TIMEOUT)
+                    if (currentTime < EngineStageTime + ENGINE_STAGE2_TIMEOUT)
                         ResetEngineState(2);
                     break;
                 case 3:
-                    if (currentTime >= EngineStageTime + ENGINE_STAGE3_TIMEOUT)
+                    if (currentTime < EngineStageTime + ENGINE_STAGE3_TIMEOUT)
                         ResetEngineState(3);
                     break;
                 default: break;
             }
+
+            Console.WriteLine(EngineStageTime + " " + currentTime);
         }
 
         private void ResetEngineState(int state)

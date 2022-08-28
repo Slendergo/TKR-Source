@@ -391,7 +391,13 @@ namespace wServer.core.commands
                     return false;
                 }
 
-                if(world.IdName == "Trial of Souls")
+                if (world is RealmWorld && (world as RealmWorld).Closed)
+                {
+                    player.SendError("You can't invite players to this World.");
+                    return false;
+                }
+
+                if (world.IdName == "Trial of Souls")
                 {
                     Console.WriteLine(player.Name + " tried to pjoin into Trial of Souls");
                     party.WorldId = -1;
@@ -446,6 +452,12 @@ namespace wServer.core.commands
                 var world = player.World;
 
                 if (world == null) return false;
+
+                if(world is RealmWorld && (world as RealmWorld).Closed)
+                {
+                    player.SendError("You can't invite players to this World.");
+                    return false;
+                }
 
                 if (world is VaultWorld || world.InstanceType == WorldResourceInstanceType.Guild)
                 {

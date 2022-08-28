@@ -1224,12 +1224,12 @@ namespace wServer.core.commands
             var targets = player.World.GetPlayers();
             foreach (var target in targets)
             {
-                if (!target.Name.EqualsIgnoreCase(args))
+                if (!target.Name.StartsWithIgnoreCase(args))
                     continue;
 
                 player.Teleport(time, target.Id, player.IsAdmin);
-                player.ApplyConditionEffect(ConditionEffectIndex.Invulnerable, 2500);
-                player.ApplyConditionEffect(ConditionEffectIndex.Stunned, 2500);
+                //player.ApplyConditionEffect(ConditionEffectIndex.Invulnerable, 2500);
+                //player.ApplyConditionEffect(ConditionEffectIndex.Stunned, 2500);
                 return true;
             }
 

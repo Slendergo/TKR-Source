@@ -501,6 +501,7 @@ namespace wServer.core.objects
             FameGoal = GetFameGoal(FameCounter.ClassStats[ObjectType].BestFame);
             ExperienceGoal = GetExpGoal(Client.Character.Level);
             Stars = GetStars();
+            UpdateEssenceCap();
 
             if (owner.IdName.Equals("Ocean Trench"))
                 Breath = 100;

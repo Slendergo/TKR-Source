@@ -19,7 +19,7 @@ namespace wServer.logic
             )
         .Init("Pentaract Tower",
             new State(
-                new ScaleHP2(20),
+                new ScaleHP2(50),
                 new Spawn("Pentaract Eye", 5, coolDown: 5000, givesNoXp: false),
                 new Grenade(4, 100, 8, coolDown: 5000),
                 new TransformOnDeath("Pentaract Tower Corpse"),

@@ -37,7 +37,7 @@
 		<DonorItem/>
 	</Object>
 	<Object type="0x531" id="Prisoner Generator">
-		<DisplayId>Snorlax</DisplayId>
+		<DisplayId>Prisoner</DisplayId>
 		<Class>Equipment</Class>
 		<Item />
 		<Texture>

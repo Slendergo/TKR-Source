@@ -25,15 +25,15 @@ namespace wServer.logic
                      new TimedTransition(2000, "Choose 2")
                     ),
                 new State("Choose 2",
-                    new Taunt("Fail to do so, and I'll leave you trembling HAHAHAH"),
+                    new Taunt("Fail to do so, and I'll leave you trembling! HAHAHAH"),
                     new TimedRandomTransition(5000, false, "Phase 1", "Phase 2")
                     ),
                 new State("Phase 1",
+                    new RemoveConditionalEffect(ConditionEffectIndex.Invincible),
                     new Chase(8),
                     new Shoot(15, 3, projectileIndex: 4, coolDown: 2500),
                     new Shoot(15, 5, projectileIndex: 0, shootAngle: 10, coolDown: 1200, coolDownOffset: 0),
                     new Shoot(15, 5, projectileIndex: 1, shootAngle: 15, coolDown: 1200, coolDownOffset: 600),
-                    new RemoveConditionalEffect(ConditionEffectIndex.Invincible),
                     new Order(30, "Baron Turret", "Shoot"),
                     new Order(30, "Baron Turret 1", "Shoot"),
                     new Order(30, "Baron Turret 2", "Shoot"),

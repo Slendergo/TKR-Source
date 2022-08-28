@@ -10,7 +10,7 @@
     <Projectile id="0">
       <ObjectId>Red Star</ObjectId>
       <Speed>66</Speed>
-      <Damage>150</Damage>
+      <Damage>100</Damage>
       <Size>100</Size>
       <LifetimeMS>760</LifetimeMS>
       <MultiHit />

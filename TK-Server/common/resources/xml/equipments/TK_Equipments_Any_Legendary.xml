@@ -14,7 +14,7 @@
 			<EffectInfo name="" description="Consume the talisman to reap the power" />
 		</ExtraTooltipData>
 		<SlotType>10</SlotType>
-		<Description>Increase to a player's health, mana, and loot drop chance!</Description>
+		<Description>It’s rough out here on these streets. Can’t I catch a break?</Description>
 		<Sound>use_potion</Sound>
 		<Activate type="0x00">UnlockTalisman</Activate>
 		<Consumable />
@@ -36,7 +36,7 @@
 			<EffectInfo name="" description="Consume the talisman to reap the power" />
 		</ExtraTooltipData>
 		<SlotType>10</SlotType>
-		<Description>Increase to a player's speed, wisdom, vitality, and defense!</Description>
+		<Description>A long, treacherous path has been laid out before you. Gain the skill needed to vanquish foes or fall as other adventures have.</Description>
 		<Sound>use_potion</Sound>
 		<Activate type="0x04">UnlockTalisman</Activate>
 		<Consumable />
@@ -58,7 +58,7 @@
 			<EffectInfo name="" description="Consume the talisman to reap the power" />
 		</ExtraTooltipData>
 		<SlotType>10</SlotType>
-		<Description>Increase to a player's attack and dexterity!</Description>
+		<Description>Those that put both Heart and Soul into everything they do are rewarded appropriately so.</Description>
 		<Sound>use_potion</Sound>
 		<Activate type="0x05">UnlockTalisman</Activate>
 		<Consumable />
@@ -83,7 +83,7 @@
 			<EffectInfo name="" description="Consume the talisman to reap the power" />
 		</ExtraTooltipData>
 		<SlotType>10</SlotType>
-		<Description>Abilities use health instead of mana!</Description>
+		<Description>What price will you pay for power? Will you tempt fate to gain wealth and riches or pay the ultimate price trying?</Description>
 		<Sound>use_potion</Sound>
 		<Activate type="0x06">UnlockTalisman</Activate>
 		<Consumable />
@@ -104,7 +104,7 @@
 			<EffectInfo name="" description="Consume the talisman to reap the power" />
 		</ExtraTooltipData>
 		<SlotType>10</SlotType>
-		<Description>This gives 200% more HP, but takes away speed, attack, dexterity, and wisdom!</Description>
+		<Description>A fabled chalice filled to the brim with substance from the fountain of youth, capable of rejuvenating someone back from the brink of death.</Description>
 		<Sound>use_potion</Sound>
 		<Activate type="0x07">UnlockTalisman</Activate>
 		<Consumable />
@@ -126,7 +126,7 @@
 			<EffectInfo name="" description="Consume the talisman to reap the power" />
 		</ExtraTooltipData>
 		<SlotType>10</SlotType>
-		<Description>Significantly increases your health regeneration, but decreases your mana regeneration.</Description>
+		<Description>Known to persevere even through the harshest of times, you’ve become a pillar to the survival of humanity. Now a vital cornerstone for your allies, able to withstand the test of time.</Description>
 		<Sound>use_potion</Sound>
 		<Activate type="0x08">UnlockTalisman</Activate>
 		<Consumable />
@@ -149,7 +149,7 @@
 			<EffectInfo name="" description="Consume the talisman to reap the power" />
 		</ExtraTooltipData>
 		<SlotType>10</SlotType>
-		<Description>When a player's health is full your damage is increased, but when health isn't full, damage is decreased.</Description>
+		<Description>Fear is a double-edged sword. It can be used as an advantage, or it can be used against you.</Description>
 		<Sound>use_potion</Sound>
 		<Activate type="0x09">UnlockTalisman</Activate>
 		<Consumable />
@@ -171,7 +171,7 @@
 			<EffectInfo name="" description="Consume the talisman to reap the power" />
 		</ExtraTooltipData>
 		<SlotType>10</SlotType>
-		<Description>Every shot pierces an enemies armor, but your damage is averaged. You're also immune to weaken and damaging.</Description>
+		<Description>Revert to your natural instincts, allowing your rage to flow through your veins. Become an unstoppable force of reckoning. </Description>
 		<Sound>use_potion</Sound>
 		<Activate type="0x10">UnlockTalisman</Activate>
 		<Consumable />
@@ -193,7 +193,7 @@
 			<EffectInfo name="" description="Consume the talisman to reap the power" />
 		</ExtraTooltipData>
 		<SlotType>10</SlotType>
-		<Description>When a player is above 75% health, their RoF and Health regeneration is increase. When belore 75%, RoF and health regeneration is decreased.</Description>
+		<Description>Warriors that live life on the edge keeps them in a heightened state of awareness, giving them complete advantage, preparing them for anything. </Description>
 		<Sound>use_potion</Sound>
 		<Activate type="0x11">UnlockTalisman</Activate>
 		<Consumable />
@@ -216,7 +216,7 @@
 			<EffectInfo name="" description="Consume the talisman to reap the power" />
 		</ExtraTooltipData>
 		<SlotType>10</SlotType>
-		<Description>Mana Regeneration is significantly increased, but health regeneration is decreased.</Description>
+		<Description>Instead of braving the front of battle, you’ve decided to take a more studious route in your journey for power. Knowledge of primordial times enrich your magic capabilities further than humanly possible.</Description>
 		<Sound>use_potion</Sound>
 		<Activate type="0x12">UnlockTalisman</Activate>
 		<Consumable />
@@ -238,7 +238,7 @@
 			<EffectInfo name="" description="Consume the talisman to reap the power" />
 		</ExtraTooltipData>
 		<SlotType>10</SlotType>
-		<Description>When hitting an enemy, 1% of your mana is restored, but your mana regeneration is significantly increased.</Description>
+		<Description>Acquire the ability to sap magical energy away from foes at the expense of siphoning away at your lifeforce. </Description>
 		<Sound>use_potion</Sound>
 		<Activate type="0x13">UnlockTalisman</Activate>
 		<Consumable />
@@ -260,7 +260,7 @@
 			<EffectInfo name="" description="Consume the talisman to reap the power" />
 		</ExtraTooltipData>
 		<SlotType>10</SlotType>
-		<Description>Ability damage is increased by 30%, but mana regeneration is decreased.</Description>
+		<Description>As you progress farther into the arcane arts, you begin to lose yourself in the dark, unknown, and mysterious world that is magic.</Description>
 		<Sound>use_potion</Sound>
 		<Activate type="0x14">UnlockTalisman</Activate>
 		<Consumable />
@@ -283,7 +283,7 @@
 			<EffectInfo name="" description="Consume the talisman to reap the power" />
 		</ExtraTooltipData>
 		<SlotType>10</SlotType>
-		<Description>A significant increase to a player's defense, but a drawback to the regeneration of mana and health.</Description>
+		<Description>A strong offense starts with a good defense. Your impenetrable defenses qualify you to be a battle-hardened veteran of war.</Description>
 		<Sound>use_potion</Sound>
 		<Activate type="0x15">UnlockTalisman</Activate>
 		<Consumable />
@@ -305,7 +305,7 @@
 			<EffectInfo name="" description="Consume the talisman to reap the power" />
 		</ExtraTooltipData>
 		<SlotType>10</SlotType>
-		<Description>Boosts a player's probability of finding loot, but as more players join the same instance as them, their likelihood of finding loot decreases.</Description>
+		<Description>“Oh, you don’t want any? More for me then.”</Description>
 		<Sound>use_potion</Sound>
 		<Activate type="0x16">UnlockTalisman</Activate>
 		<Consumable />
@@ -327,7 +327,7 @@
 			<EffectInfo name="" description="Consume the talisman to reap the power" />
 		</ExtraTooltipData>
 		<SlotType>10</SlotType>
-		<Description>Each HP or MP potion stacked increases a players HP or MP regeneration, but the player is stunned when consuming either potion.</Description>
+		<Description>Resist the temptation to consume or suffer the cost of succumbing to addiction.</Description>
 		<Sound>use_potion</Sound>
 		<Activate type="0x17">UnlockTalisman</Activate>
 		<Consumable />
@@ -352,7 +352,7 @@
 			<EffectInfo name="" description="Consume the talisman to reap the power" />
 		</ExtraTooltipData>
 		<SlotType>10</SlotType>
-		<Description>A player's chance at a white bag is increased by 50%, but they can only obtain white bags.</Description>
+		<Description>Strike it rich or die trying.</Description>
 		<Sound>use_potion</Sound>
 		<Activate type="0x18">UnlockTalisman</Activate>
 		<Consumable />
@@ -374,7 +374,7 @@
 			<EffectInfo name="" description="Consume the talisman to reap the power" />
 		</ExtraTooltipData>
 		<SlotType>10</SlotType>
-		<Description>Significant increase to fame gain, but loot is no longer obtainable.</Description>
+		<Description>Some go through life, known by none. Others talented and fortunate enough to conquer legends and myths of old receive a life after death, known for centuries to come.</Description>
 		<Sound>use_potion</Sound>
 		<Activate type="0x19">UnlockTalisman</Activate>
 		<Consumable />

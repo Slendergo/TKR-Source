@@ -1236,7 +1236,7 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.03,
-                new ItemLoot("Cadaverous Knife", 0.00014)
+                new ItemLoot("Cadaverous Knife", 0.001)
                 ),
             new Threshold(0.01,
                 new ItemLoot("Crafting Material 2", 0.1),

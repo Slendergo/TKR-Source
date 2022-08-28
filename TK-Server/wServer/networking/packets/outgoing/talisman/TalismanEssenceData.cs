@@ -20,7 +20,6 @@ namespace wServer.networking.packets.outgoing.talisman
             CurrentXP = entry.Exp;
             ExpGoal = entry.Goal;
             Tier = entry.Tier;
-            Active = entry.Active;
         }
 
         public TalismanData(byte type, byte level, int xp, int goal, byte tier, bool active)

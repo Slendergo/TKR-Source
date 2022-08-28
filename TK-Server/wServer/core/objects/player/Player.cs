@@ -674,8 +674,9 @@ namespace wServer.core.objects
                     return;
                 }
             }
+            
             ApplyConditionEffect(ConditionEffectIndex.Invulnerable, 2500);
-            ApplyConditionEffect(ConditionEffectIndex.Stunned, 1000);
+            ApplyConditionEffect(ConditionEffectIndex.Stunned, 2500);
             TeleportPosition(time, obj.X, obj.Y, ignoreRestrictions);
         }
 

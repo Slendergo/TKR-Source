@@ -74,6 +74,8 @@ namespace common.database
         public int SPSSpeedCount { get => GetValue<int>("sps_speedCount"); set => SetValue("sps_speedCount", value); }
         public int SPSVitalityCount { get => GetValue<int>("sps_vitalityCount"); set => SetValue("sps_vitalityCount", value); }
         public int SPSWisdomCount { get => GetValue<int>("sps_wisdomCount"); set => SetValue("sps_wisdomCount", value); }
+        public int Essence { get => GetValue<int>("essence"); set => SetValue("essence", value); }
+        public int EssenceCap { get => GetValue<int>("essenceCap"); set => SetValue("essenceCap", value); }
 
         internal string LockToken { get; set; }
 

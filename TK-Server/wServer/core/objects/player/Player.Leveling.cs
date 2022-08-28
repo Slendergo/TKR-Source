@@ -22,14 +22,10 @@ namespace wServer.core.objects
             return 20;
         }
 
-        public static int GetTalismanEssenceCap(int fame)
+        public static int GetTalismanEssenceCap(int stars)
         {
-            if (fame >= 2000) return 128000;
-            if (fame >= 800) return 64000;
-            if (fame >= 400) return 32000;
-            if (fame >= 150) return 16000;
-            if (fame >= 20) return 8000;
-            return 4000;
+            var baseCount = 1000;
+            return baseCount + (stars * baseCount);
         }
 
         public static int GetLevelExp(int level)
@@ -59,9 +55,9 @@ namespace wServer.core.objects
                 }, this);
                 Stars = GetStars();
 
-                var cap = Client.Character.EssenceCap;
+                var cap = Client.Account.EssenceCap;
                 UpdateEssenceCap();
-                var newCap = Client.Character.EssenceCap;
+                var newCap = Client.Account.EssenceCap;
 
                 SendInfo($"Your 'Talisman Essence' capacity has increased by {newCap - cap}!");
             }

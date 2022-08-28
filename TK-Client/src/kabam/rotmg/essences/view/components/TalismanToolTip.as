@@ -111,7 +111,7 @@ public class TalismanToolTip extends ToolTip
                         type = "HP Regen"; break;
                 }
 
-                this.effects.push(new Effect("" , symbol + (xml.@percentage * 100) + "% " + type + scaleType));
+                this.effects.push(new Effect("" , symbol + (xml.@percentage * 100.0) + "% " + type + scaleType));
             }
 
             xml = null;
@@ -125,7 +125,7 @@ public class TalismanToolTip extends ToolTip
 
             xml = null;
             for each(xml in tierXML.FameGainBonus){
-                this.effects.push(new Effect("", "+" + (xml.@percentage * 100) + " Fame Gain"));
+                this.effects.push(new Effect("", "+" + (xml.@percentage * 100.0) + " Fame Gain"));
             }
 
             if(tierXML.hasOwnProperty("NoPotionHealing")){
@@ -144,7 +144,7 @@ public class TalismanToolTip extends ToolTip
                 }
 
                 var type:String = xml.@type;
-                this.effects.push(new Effect("", symbol + (xml.@percentage * 100) + "% " + type + " " + scaleType + " Per Potion Stacked"));
+                this.effects.push(new Effect("", symbol + (xml.@percentage * 100.0) + "% " + type + " " + scaleType + " Per Potion Stacked"));
             }
 
             if(tierXML.hasOwnProperty("ShotsPierceArmour")){
@@ -160,7 +160,7 @@ public class TalismanToolTip extends ToolTip
             }
 
             if(tierXML.hasOwnProperty("AbilityLifeCost")){
-                this.effects.push(new Effect("", "Abilities cost " + (tierXML.AbilityLifeCost.@percentage * 100) + "% life"));
+                this.effects.push(new Effect("", "Abilities cost " + (tierXML.AbilityLifeCost.@percentage * 100.0) + "% life"));
             }
 
             if(tierXML.hasOwnProperty("CanOnlyGetWhiteBags")){
@@ -194,7 +194,7 @@ public class TalismanToolTip extends ToolTip
                     case "HealthRegen":
                         type = "HP Regen"; break;
                 }
-                this.effects.push(new Effect("", "If " + condition + " " + (xml.@percentage * 100) + "% HP Gain " + (xml.@add * 100) + "% " + type + scaleType));
+                this.effects.push(new Effect("", "If " + condition + " " + (xml.@percent * 100.0) + "% HP Gain " + (roundDecimal(xml.@add * 100.0, 3)) + "% " + type + scaleType));
             }
 
             xml = null;
@@ -212,7 +212,7 @@ public class TalismanToolTip extends ToolTip
                 if(type == "white"){
                     type = "White Bag";
                 }
-                this.effects.push(new Effect("", symbol + (xml.@percentage * 100) + "% " + type + scaleType));
+                this.effects.push(new Effect("", symbol + (xml.@percentage * 100.0) + "% " + type + scaleType));
             }
 
             xml = null;
@@ -225,7 +225,7 @@ public class TalismanToolTip extends ToolTip
                 if(xml.@percentage < 0){
                     symbol = "";
                 }
-                this.effects.push(new Effect("", symbol + (xml.@percentage * 100) + "% Loot Boost" + scaleType));
+                this.effects.push(new Effect("", symbol + (xml.@percentage * 100.0) + "% Loot Boost" + scaleType));
             }
             xml = null;
             for each(xml in tierXML.LootBoostPerPlayer){
@@ -237,7 +237,7 @@ public class TalismanToolTip extends ToolTip
                 if(xml.@percentage < 0){
                     symbol = "";
                 }
-                this.effects.push(new Effect("", symbol + (xml.@percentage * 100) + "% Loot Boost Per Player" + scaleType));
+                this.effects.push(new Effect("", symbol + (xml.@percentage * 100.0) + "% Loot Boost Per Player" + scaleType));
             }
 
             xml = null;
@@ -267,7 +267,7 @@ public class TalismanToolTip extends ToolTip
                     stat = "MP";
                 }
 
-                this.effects.push(new Effect("", symbol + (xml.@percentage * 100) + "% Extra Damage" + scaleType + type + stat));
+                this.effects.push(new Effect("", symbol + (xml.@percentage * 100.0) + "% Extra Damage" + scaleType + type + stat));
             }
 
             this.effects.push(new Effect("",""));
@@ -282,6 +282,11 @@ public class TalismanToolTip extends ToolTip
 
         this.line2_ = new LineBreakDesign(MAX_WIDTH - 12,0);
         addChild(this.line2_);
+    }
+
+    private function roundDecimal(n:Number, precision:Number):Number {
+        var factor:int = Math.pow(10, precision);
+        return (Math.round(n * factor) / factor);
     }
 
     private function BuildEffectsHTML(effects:Vector.<Effect>) : String

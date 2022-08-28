@@ -57,9 +57,9 @@ namespace wServer.core.objects
 
         public void GiveEssence(int amount)
         {
-            var essenceCap = Client.Character.EssenceCap;
-            var essence = Math.Min(essenceCap, Client.Character.Essence + amount);
-            Client.Character.Essence = essence;
+            var essenceCap = Client.Account.EssenceCap;
+            var essence = Math.Min(essenceCap, Client.Account.Essence + amount);
+            Client.Account.Essence = essence;
 
             if(essence == essenceCap)
                 SendInfo($"You have hit the limit of Talisman Essence");
@@ -95,27 +95,26 @@ namespace wServer.core.objects
                     Level = talisman.Level,
                     Exp = talisman.CurrentXP,
                     Goal = talisman.ExpGoal,
-                    Active = talisman.Active
                 });
-            GameServer.Database.SaveTalismansToCharacter(Client.Account.AccountId, Client.Character.CharId, talismans);
+            GameServer.Database.SaveTalismans(Client.Account.AccountId, talismans);
         }
 
         private void LoadTalismanData()
         {
             UpdateEssenceCap();
-            var talismans = GameServer.Database.GetTalismansFromCharacter(Client.Account.AccountId, Client.Character.CharId);
+            var talismans = GameServer.Database.GetUnlockedTalismans(Client.Account.AccountId);
             foreach (var talisman in talismans)
-            {
                 TalismanDatas.Add(talisman.Type, new TalismanData(talisman));
-                if (talisman.Active)
-                    ActiveTalismans.Add(talisman.Type);
-            }
+            ActiveTalismans = GameServer.Database.GetActiveTalismans(Client.Account.AccountId, Client.Character.CharId);
+            foreach(var active in TalismanDatas)
+                if(ActiveTalismans.Contains(active.Key))
+                    active.Value.Active = true;
             ApplyTalismanEffects();
         }
 
         public void UpdateEssenceCap()
         {
-            Client.Character.EssenceCap = GetTalismanEssenceCap(Fame);
+            Client.Account.EssenceCap = GetTalismanEssenceCap(Stars);
         }
 
         private void ApplyTalismanEffects()
@@ -293,8 +292,8 @@ namespace wServer.core.objects
             ApplyTalismanEffects();
             var data = new TalismanEssenceData()
             {
-                Essence = Client.Character.Essence,
-                EssenceCap = Client.Character.EssenceCap
+                Essence = Client.Account.Essence,
+                EssenceCap = Client.Account.EssenceCap
             };
             foreach (var talisman in TalismanDatas.Values)  
                 data.Talismans.Add(talisman);

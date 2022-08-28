@@ -592,7 +592,7 @@ namespace wServer.core.objects
             var characterId = Client.Character.CharId;
             var accountId = AccountId;
 
-            if (GameServer.Database.HasTalismanOnCharacter(accountId, characterId, eff.Type)) {
+            if (GameServer.Database.HasTalismanUnlocked(accountId, eff.Type)) {
                 SendInfo("You have already unlocked this talisman!");
                 Inventory[slot] = item;
                 return;
@@ -602,7 +602,7 @@ namespace wServer.core.objects
             if (desc.MaxLevels == 1)
                 cost = (int)(desc.BaseUpgradeCost + desc.TierUpgradeCost * desc.CostMultiplier);
             
-            GameServer.Database.AddTalismanToCharacter(accountId, characterId, eff.Type, 1, 0, cost, 0);
+            GameServer.Database.UnlockTalisman(accountId, eff.Type, 1, 0, cost, 0);
 
             var newTalismanInfo = new TalismanData(eff.Type, 1, 0, cost, 0, false);
 

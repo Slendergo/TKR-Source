@@ -145,7 +145,7 @@
     <Compile Include="database\vault\DbSpecialVault.cs" />
     <Compile Include="database\talisman\DbTalismanEntry.cs" />
     <Compile Include="database\character\inventory\ItemData.cs" />
-    <Compile Include="database\talisman\DbTalisman.cs" />
+    <Compile Include="database\talisman\DbAccountTalisman.cs" />
     <Compile Include="database\DbStatuses.cs" />
     <Compile Include="BaseDictionary.Collection.cs" />
     <Compile Include="BaseDictionary.cs" />

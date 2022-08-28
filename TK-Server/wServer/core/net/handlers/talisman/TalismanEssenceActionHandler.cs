@@ -95,11 +95,9 @@ namespace wServer.core.net.handlers
                     talisman.ExpGoal = (int)(talisman.Level * desc.BaseUpgradeCost + desc.TierUpgradeCost * desc.CostMultiplier);
             }
 
-            player.GameServer.Database.UpdateTalismanToCharacter(player.AccountId, player.Client.Character.CharId, talisman.Type, talisman.Level, talisman.CurrentXP, talisman.ExpGoal, talisman.Tier, talisman.Active);
+            player.GameServer.Database.UpdateTalisman(player.AccountId, talisman.Type, talisman.Level, talisman.CurrentXP, talisman.ExpGoal, talisman.Tier);
 
-            player.Client.Character.Essence -= amount;
-            _ = player.Client.Character.FlushAsync();
-
+            player.Client.Account.Essence -= amount;
             player.UpdateTalsimans();
         }
 
@@ -126,11 +124,9 @@ namespace wServer.core.net.handlers
             else
                 talisman.ExpGoal = (int)(talisman.Level * desc.BaseUpgradeCost * desc.CostMultiplier);
 
-            player.GameServer.Database.UpdateTalismanToCharacter(player.AccountId, player.Client.Character.CharId, talisman.Type, talisman.Level, talisman.CurrentXP, talisman.ExpGoal, talisman.Tier, talisman.Active);
+            player.GameServer.Database.UpdateTalisman(player.AccountId, talisman.Type, talisman.Level, talisman.CurrentXP, talisman.ExpGoal, talisman.Tier);
 
-            player.Client.Character.Essence -= amount;
-            _ = player.Client.Character.FlushAsync();
-
+            player.Client.Account.Essence -= amount;
             player.UpdateTalsimans();
         }
 
@@ -142,8 +138,15 @@ namespace wServer.core.net.handlers
                 return;
             }
 
+            if(player.ActiveTalismans.Count >= 2)
+            {
+                player.UpdateTalsimans();
+                player.SendError("You can only equip 2 talismans for now");
+                return;
+            }
+
             talisman.Active = true;
-            player.GameServer.Database.UpdateTalismanToCharacter(player.AccountId, player.Client.Character.CharId, talisman.Type, talisman.Level, talisman.CurrentXP, talisman.ExpGoal, talisman.Tier, talisman.Active);
+            player.GameServer.Database.SetCharacterActiveTalisman(player.AccountId, player.Client.Character.CharId, talisman.Type, talisman.Active);
             player.ActivateTalisman(talisman.Type);
         }
 
@@ -156,10 +159,10 @@ namespace wServer.core.net.handlers
             }
 
             talisman.Active = false;
-            player.GameServer.Database.UpdateTalismanToCharacter(player.AccountId, player.Client.Character.CharId, talisman.Type, talisman.Level, talisman.CurrentXP, talisman.ExpGoal, talisman.Tier, talisman.Active);
+            player.GameServer.Database.SetCharacterActiveTalisman(player.AccountId, player.Client.Character.CharId, talisman.Type, talisman.Active);
             player.DeactivateTalisman(talisman.Type);
         }
 
-        private int GetEssenceRemaining(Player player, int amount) => player.Client.Character.Essence - amount;
+        private int GetEssenceRemaining(Player player, int amount) => player.Client.Account.Essence - amount;
     }
 }

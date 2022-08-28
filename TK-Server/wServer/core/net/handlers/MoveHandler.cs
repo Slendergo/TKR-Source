@@ -1,6 +1,7 @@
 ﻿using common;
 using wServer.core;
 using wServer.networking;
+using wServer.utils;
 
 namespace wServer.core.net.handlers
 {
@@ -38,7 +39,15 @@ namespace wServer.core.net.handlers
                 player.Move(newX, newY);
                 player.PlayerUpdate.UpdateTiles = true;
                 if (player.IsNoClipping())
-                    player.Client.Disconnect("No clipping");
+                {
+                    if(player.NoClipCountTollerance > 2)
+                    {
+                        StaticLogger.Instance.Info($"{player.Name} is walking on an occupied tile. {player.RealX}, {player.RealY} [REACHED MAX TOLERANCE]");
+                        player.Client.Disconnect("No clipping");
+                    }
+                }
+                else
+                    player.NoClipCountTollerance--;
             }
         }
     }

@@ -26,6 +26,9 @@ namespace wServer.core.net.handlers
         {
             var config = client.Player.GameServer.Configuration;
 
+            if (client.Player.IsAdmin)
+                return true;
+
             if (config.serverInfo.adminOnly)
             {
                 if (!client.Player.GameServer.IsWhitelisted(client.Player.AccountId) || !client.Player.IsAdmin)

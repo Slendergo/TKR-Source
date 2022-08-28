@@ -38,8 +38,6 @@ namespace wServer.logic.behaviors
                 if (scstate.maxHP == 0)
                     scstate.maxHP = (host as Enemy).MaximumHP + maxAdditional;
 
-                var plrCount = 0;
-
                 foreach (var i in host.World.Players)
                 {
                     if (scstate.pNamesCounted.Contains(i.Value.Name))
@@ -54,7 +52,7 @@ namespace wServer.logic.behaviors
                         scstate.pNamesCounted.Add(i.Value.Name);
                 }
 
-                plrCount = scstate.pNamesCounted.Count;
+                var plrCount = scstate.pNamesCounted.Count;
 
                 if (plrCount > scstate.initialScaleAmount)
                 {

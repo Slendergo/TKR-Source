@@ -67,7 +67,7 @@ namespace wServer.logic.behaviors
 
                 if (itemCount * 2 > scstate.initialScaleAmount)
                 {
-                    var amountPerPlayer = (plrCount * 4) * enemy.ObjectDesc.MaxHP / 100;
+                    var amountPerPlayer = (plrCount * 2) * enemy.ObjectDesc.MaxHP / 100;
                     var amountInc = ((itemCount * 2) - scstate.initialScaleAmount) * amountPerPlayer;
 
                     scstate.initialScaleAmount += itemCount - scstate.initialScaleAmount;

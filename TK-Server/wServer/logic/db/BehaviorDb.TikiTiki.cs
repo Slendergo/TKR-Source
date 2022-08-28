@@ -10,7 +10,7 @@ namespace wServer.logic
         private _ TikiTiki = () => Behav()
         .Init("Tiki Tiki",
             new State(
-                new ScaleHP2(20),
+                new ScaleHP2(35),
                 new State("idle",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
                     new ConditionalEffect(ConditionEffectIndex.Invincible, true),

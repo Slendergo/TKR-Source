@@ -44,7 +44,7 @@ public class EngineViewMediator extends Mediator {
 
     private function onFuel(event:MouseEvent) : void
     {
-        this.view.gs_.gsc_.acceptFusion(this.view.itemEngineTile.getIncludedItems());
+        this.view.gs_.gsc_.acceptFuel(this.view.itemEngineTile.getIncludedItems());
         this.closeDialogs.dispatch();
     }
 

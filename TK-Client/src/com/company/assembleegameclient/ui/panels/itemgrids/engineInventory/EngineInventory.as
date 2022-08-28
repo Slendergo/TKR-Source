@@ -21,6 +21,7 @@ import io.decagames.rotmg.ui.texture.TextureParser;
 
 import kabam.rotmg.constants.GeneralConstants;
 import kabam.rotmg.messaging.impl.data.ForgeItem;
+import kabam.rotmg.messaging.impl.data.FuelEngine;
 
 public class EngineInventory extends Sprite {
 
@@ -83,17 +84,18 @@ public class EngineInventory extends Sprite {
     }
 
 
-    public function getIncludedItems() : Vector.<ForgeItem>
+    public function getIncludedItems() : Vector.<FuelEngine>
     {
-        var included:Vector.<ForgeItem> = new Vector.<ForgeItem>();
+        var included:Vector.<FuelEngine> = new Vector.<FuelEngine>();
         for(var i:int = 0; i < this.slots_.length; i++)
         {
             if(this.slots_[i].included_)
             {
-                var forgeItem:ForgeItem = new ForgeItem();
+                var forgeItem:FuelEngine = new FuelEngine();
                 forgeItem.objectType_ = this.slots_[i].item_;
                 forgeItem.slotId_ = this.slotId[i];
                 forgeItem.included_ = this.slots_[i].included_;
+                forgeItem.itemData_ = this.slots_[i].itemData_;
                 included.push(forgeItem);
             }
         }

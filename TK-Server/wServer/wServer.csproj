@@ -158,6 +158,12 @@
     <Compile Include="core\commands\CommandManager.cs" />
     <Compile Include="core\ConnectionInfo.cs" />
     <Compile Include="core\GameServer.cs" />
+    <Compile Include="core\miscfile\datas\FuelEngine.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="core\net\handlers\FuelEngineHandler.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="core\net\handlers\talisman\TalismanEssenceActionHandler.cs" />
     <Compile Include="core\objects\ConditionEffectManager.cs" />
     <Compile Include="core\objects\inventory\ItemDustPools.cs" />

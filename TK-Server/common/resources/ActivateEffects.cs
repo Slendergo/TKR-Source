@@ -52,6 +52,7 @@
         ShurikenAbilityDamaging,
         ShurikenAbilityBerserk,
         GenericActivate,
-        UnlockTalisman
+        UnlockTalisman,
+        FuelEngine
     }
 }

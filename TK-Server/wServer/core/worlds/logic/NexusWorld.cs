@@ -163,7 +163,7 @@ namespace wServer.core.worlds.logic
         private void HandleEngineTimeouts(ref TickTime time)
         {
             // todo implement a system to expire the engine stages
-            TryAddFuelToEngine(null, 1);
+            //TryAddFuelToEngine(null, 1);
         }
 
         public bool TryAddFuelToEngine(Player player, int amount)

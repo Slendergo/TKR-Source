@@ -4,8 +4,9 @@ import com.company.assembleegameclient.objects.ObjectLibrary;
 import com.company.assembleegameclient.ui.Slot;
 import com.company.ui.SimpleText;
 import com.company.util.GraphicsUtil;
-import com.company.util.MoreColorUtil;
 import com.company.util.SpriteUtil;
+import com.hurlant.util.der.Integer;
+
 import flash.display.Bitmap;
 import flash.display.BitmapData;
 import flash.display.CapsStyle;
@@ -31,6 +32,8 @@ public class EngineSlot extends Slot
     public var objectType_:int;
     public var objectId_:String;
     public var included_:Boolean;
+
+    public var itemData_:int;
 
     public var id:uint;
 
@@ -69,6 +72,7 @@ public class EngineSlot extends Slot
             this.objectType_ = eqXML.@type;
             this.objectId_ = eqXML.@id;
             if(equipData != null && equipData.Stack != null){
+                this.itemData_ = int(equipData.Stack);
                 texture = texture.clone();
                 tempText = new SimpleText(12,16777215,false,0,0);
                 tempText.text = String(equipData.Stack);

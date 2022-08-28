@@ -93,6 +93,7 @@ import kabam.rotmg.market.signals.MemMarketMyOffersSignal;
 import kabam.rotmg.market.signals.MemMarketRemoveSignal;
 import kabam.rotmg.market.signals.MemMarketSearchSignal;
 import kabam.rotmg.messaging.impl.data.ForgeItem;
+import kabam.rotmg.messaging.impl.data.FuelEngine;
 import kabam.rotmg.messaging.impl.data.GroundTileData;
 import kabam.rotmg.messaging.impl.data.ObjectData;
 import kabam.rotmg.messaging.impl.data.ObjectStatusData;
@@ -152,6 +153,7 @@ import kabam.rotmg.messaging.impl.outgoing.EditAccountList;
 import kabam.rotmg.messaging.impl.outgoing.EnemyHit;
 import kabam.rotmg.messaging.impl.outgoing.Escape;
 import kabam.rotmg.messaging.impl.outgoing.ForgeFusion;
+import kabam.rotmg.messaging.impl.outgoing.FuelEngineAction;
 import kabam.rotmg.messaging.impl.outgoing.GotoAck;
 import kabam.rotmg.messaging.impl.outgoing.GroundDamage;
 import kabam.rotmg.messaging.impl.outgoing.GuildInvite;
@@ -325,6 +327,8 @@ public class GameServerConnection
       public static const TALISMAN_ESSENCE_DATA:int = 100;
       public static const TALISMAN_ESSENCE_ACTION:int = 101;
 
+      public static const ENGINE_FUEL_ACTION:int = 102;
+
       private static const TO_MILLISECONDS:int = 1000;
 
       public static var instance:GameServerConnection;
@@ -474,6 +478,7 @@ public class GameServerConnection
          messages.map(EDITACCOUNTLIST).toMessage(EditAccountList);
          messages.map(UPGRADESTAT).toMessage(UpgradeStat);
          messages.map(FORGEFUSION).toMessage(ForgeFusion);
+         messages.map(ENGINE_FUEL_ACTION).toMessage(FuelEngineAction);
          messages.map(ESCAPE).toMessage(Escape);
 
          /* Bounty */
@@ -610,6 +615,7 @@ public class GameServerConnection
          messages.unmap(PLAYSOUND);
          messages.unmap(UPGRADESTAT);
          messages.unmap(FORGEFUSION);
+         messages.unmap(ENGINE_FUEL_ACTION);
          messages.unmap(ESCAPE);
 
          /* Market */
@@ -1062,6 +1068,13 @@ public class GameServerConnection
          var forgeFusion:ForgeFusion = this.messages.require(FORGEFUSION) as ForgeFusion;
          forgeFusion.myInv = myInventory;
          this.serverConnection.sendMessage(forgeFusion);
+      }
+
+      public function acceptFuel(myInventory:Vector.<FuelEngine>) : void
+      {
+         var fuelEngine:FuelEngineAction = this.messages.require(ENGINE_FUEL_ACTION) as FuelEngineAction;
+         fuelEngine.myInv = myInventory;
+         this.serverConnection.sendMessage(fuelEngine);
       }
 
       public function cancelTrade() : void

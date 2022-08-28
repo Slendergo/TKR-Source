@@ -82,7 +82,7 @@ namespace wServer.core.objects
                         tile.UpdateCount++;
 
                         foreach (var player in World.PlayersCollision.HitTest(x, y, PlayerUpdate.VISIBILITY_RADIUS))
-                            if(player is Player)
+                            if(player is Player && (player as Player).PlayerUpdate != null)
                                 (player as Player).PlayerUpdate.UpdateTiles = true;
                     }
                 World.LeaveWorld(this);

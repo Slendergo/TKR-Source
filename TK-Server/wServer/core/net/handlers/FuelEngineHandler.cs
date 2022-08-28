@@ -74,6 +74,9 @@ namespace wServer.core.net.handlers
                 client.Player.Inventory[myInventory[i].slotID] = null;
                 client.Player.Inventory.Data[myInventory[i].slotID] = null;
             }
+            var acc = client.Player.GameServer.Database.GetAccount(client.Player.AccountId);
+            acc.FuelContributed += fuel;
+            acc.FlushAsync();
             client.Player.SendInfo("You manage to power up the engine by "+fuel);
         }
 

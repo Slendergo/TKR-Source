@@ -93,6 +93,12 @@ namespace wServer.core.worlds.logic
 
             base.Init();
         }
+        public override int EnterWorld(Entity entity)
+        {
+            if((entity is Player) && EngineStage != 0) 
+                (entity as Player).EngineNotif($"The engine runs smoothly with enough fuel to last a while.");
+            return base.EnterWorld(entity);
+        }
 
         private List<MerchantData> InactiveStorePoints = new List<MerchantData>();
         private List<MerchantData> ActiveStorePoints = new List<MerchantData>();
@@ -162,8 +168,29 @@ namespace wServer.core.worlds.logic
 
         private void HandleEngineTimeouts(ref TickTime time)
         {
-            // todo implement a system to expire the engine stages
-            //TryAddFuelToEngine(null, 1);
+            var currentTime = DateTime.UtcNow.ToUnixTimestamp();
+            switch (EngineStage)
+            {
+                case 1:
+                    if (currentTime >= EngineStageTime + ENGINE_STAGE1_TIMEOUT)
+                        ResetEngineState(1);
+                    break;
+                case 2:
+                    if (currentTime >= EngineStageTime + ENGINE_STAGE2_TIMEOUT)
+                        ResetEngineState(2);
+                    break;
+                case 3:
+                    if (currentTime >= EngineStageTime + ENGINE_STAGE3_TIMEOUT)
+                        ResetEngineState(3);
+                    break;
+                default: break;
+            }
+        }
+
+        private void ResetEngineState(int state)
+        {
+            //Player.GameServer.ChatManager.AnnounceEngine($"The machine slowly powers down");
+            TryAddFuelToEngine(null, state == 1 ? -100 : state == 2 ? -250 : state == 3 ? -500 : 0);
         }
 
         public bool TryAddFuelToEngine(Player player, int amount)
@@ -178,35 +205,35 @@ namespace wServer.core.worlds.logic
             {
                 case 0:
                     if (current >= ENGINE_FIRST_STAGE_AMOUNT && current < ENGINE_SECOND_STAGE_AMOUNT)
-                        SetEngineSetStage(1);
+                        SetEngineSetStage(1, player);
                     else if (current >= ENGINE_SECOND_STAGE_AMOUNT && current < ENGINE_THIRD_STAGE_AMOUNT)
-                        SetEngineSetStage(2);
+                        SetEngineSetStage(2, player);
                     else if (current >= ENGINE_THIRD_STAGE_AMOUNT)
-                        SetEngineSetStage(3);
+                        SetEngineSetStage(3, player);
                     break;
                 case 1:
                     if (current < ENGINE_FIRST_STAGE_AMOUNT)
-                        SetEngineSetStage(0);
+                        SetEngineSetStage(0, player);
                     else if (current >= ENGINE_SECOND_STAGE_AMOUNT && current < ENGINE_THIRD_STAGE_AMOUNT)
-                        SetEngineSetStage(2);
+                        SetEngineSetStage(2, player);
                     else if (current >= ENGINE_THIRD_STAGE_AMOUNT)
-                        SetEngineSetStage(3);
+                        SetEngineSetStage(3, player);
                     break;
                 case 2:
                     if (current < ENGINE_FIRST_STAGE_AMOUNT)
-                        SetEngineSetStage(0);
+                        SetEngineSetStage(0, player);
                     else if (current >= ENGINE_FIRST_STAGE_AMOUNT && current < ENGINE_SECOND_STAGE_AMOUNT)
-                        SetEngineSetStage(1);
+                        SetEngineSetStage(1, player);
                     else if (current >= ENGINE_THIRD_STAGE_AMOUNT)
-                        SetEngineSetStage(3);
+                        SetEngineSetStage(3, player);
                     break;
                 case 3:
                     if (current < ENGINE_FIRST_STAGE_AMOUNT)
-                        SetEngineSetStage(0);
+                        SetEngineSetStage(0, player);
                     else if (current >= ENGINE_FIRST_STAGE_AMOUNT && current < ENGINE_SECOND_STAGE_AMOUNT)
-                        SetEngineSetStage(1);
+                        SetEngineSetStage(1, player);
                     else if (current >= ENGINE_SECOND_STAGE_AMOUNT && current < ENGINE_THIRD_STAGE_AMOUNT)
-                        SetEngineSetStage(2);
+                        SetEngineSetStage(2, player);
                     break;
             }
 
@@ -221,11 +248,15 @@ namespace wServer.core.worlds.logic
 
         public void SetEngine(Engine engine) => Engine = engine;
 
-        private void SetEngineSetStage(int state)
+        private void SetEngineSetStage(int state, Player player)
         {
             EngineStage = state;
+            if(player != null)
+                GameServer.ChatManager.AnnounceEngine($"[{player.Name}] adds the last bit of fuel and kicks the machine, it powers on to Stage "+state+"!");
+            else
+                GameServer.ChatManager.AnnounceEngine($"The Strange Engine slowly powers down.");
             var engine = GameServer.Database.GetDbEngine();
-            engine.SetEngineStage(state, DateTime.UtcNow.ToUnixTimestamp());
+            engine.SetEngineStage(state, EngineStageTime = DateTime.UtcNow.ToUnixTimestamp());
             engine.Save();
         }
     }

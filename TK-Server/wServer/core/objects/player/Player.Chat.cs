@@ -216,6 +216,16 @@ namespace wServer.core.objects
             NameColor = 696969
         });
 
+        internal void EngineNotif(string text) => Client.SendPacket(new Text()
+        {
+            BubbleTime = 0,
+            NumStars = -1,
+            Name = "Strange Engine",
+            Txt = text,
+            TextColor = 0xFFFFFF,
+            NameColor = 0x3e9bff
+        });
+
         internal void GuildReceived(int objId, int stars, string from, string text) => Client.SendPacket(new Text()
         {
             ObjectId = objId,

@@ -47,6 +47,7 @@ namespace common.database
         public string IP { get => GetValue<string>("ip"); set => SetValue("ip", value); }
         public DateTime LastRecoveryTime { get => GetValue<DateTime>("lastRecoveryTime"); set => SetValue("lastRecoveryTime", value); }
         public int LastSeen { get => GetValue<int>("lastSeen"); set => SetValue("lastSeen", value); }
+        public int FuelContributed { get => GetValue<int>("fuelContributed"); set => SetValue("fuelContributed", value); }
         //public RankingType Rank { get => (RankingType)GetValue<int>("rank"); set => SetValue("rank", (int)value); }
         public int[] LockList { get => GetValue<int[]>("lockList") ?? new int[0]; set => SetValue("lockList", value); }
         public int[] MarketOffers { get => GetValue<int[]>("marketOffers") ?? new int[0]; set => SetValue("marketOffers", value); }

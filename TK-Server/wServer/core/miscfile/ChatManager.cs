@@ -62,6 +62,17 @@ namespace wServer.core
                 clients[i].Player.ForgerNotif(text);
         }
 
+        public void AnnounceEngine(string text)
+        {
+            if (string.IsNullOrWhiteSpace(text))
+                return;
+
+            var clients = GameServer.ConnectionManager.Clients
+                .KeyWhereAsParallel(_ => _.Player != null);
+            for (var i = 0; i < clients.Length; i++)
+                clients[i].Player.EngineNotif(text);
+        }
+
         public void AnnounceLoot(string text)
         {
             if (string.IsNullOrWhiteSpace(text))

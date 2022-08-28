@@ -572,6 +572,19 @@ namespace wServer.core.commands
         }
     }
 
+    internal class CheckFuelContributed : Command
+    {
+        public override string CommandName => "checkfuelcontributed";
+        public override string Alias => "cfc";
+
+        protected override bool Process(Player player, TickTime time, string args)
+        {
+            var account = player.GameServer.Database.GetAccount(player.AccountId);
+            player.SendInfo("Fuel Contributed: " + account.FuelContributed);
+            return true;
+        }
+    }
+
     internal class CheckAccId : Command
     {
         public override string CommandName => "checkid";
@@ -598,8 +611,16 @@ namespace wServer.core.commands
         {
             var lootBoost = Loot.GetPlayerLootBoost(player);
 
-            player.SendInfo($"Talisman's provide: {(player.LDBoostTime > 0 ? 0.1 : 0)}%");
+            if (player.LDBoostTime > 0)
+                player.SendInfo($"Loot Drop provides: 10%");
             player.SendInfo($"Talisman's provide: {(int)((player.TalismanLootBoost + player.TalismanLootBoostPerPlayer) * 100.0)} % ");
+            switch (player.GameServer.WorldManager.Nexus.EngineStage)
+            {
+                case 1: player.SendInfo($"Stage 1 Strange Engine proivdes: 50%"); break;
+                case 2: player.SendInfo($"Stage 2 Strange Engine proivdes: 100%"); break;
+                case 3: player.SendInfo($"Stage 3 Strange Engine proivdes: 200%"); break;
+                default: break;
+            }
             player.SendInfo($"You have {Math.Round(lootBoost * 100.0f, 3)}% increased loot chance");
             return true;
         }

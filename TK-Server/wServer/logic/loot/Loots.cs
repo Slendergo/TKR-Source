@@ -102,6 +102,13 @@ namespace wServer.logic.loot
             if (player == null) 
                 return 0;
             var allLoot = 0.0;
+            switch (player.GameServer.WorldManager.Nexus.EngineStage)
+            {
+                case 1: allLoot += 0.5; break;
+                case 2: allLoot += 1; break;
+                case 3: allLoot += 2; break;
+                default: break;
+            }
             allLoot += player.LDBoostTime > 0 ? 0.1 : 0;
             allLoot += player.TalismanLootBoost;
             allLoot += player.TalismanLootBoostPerPlayer;
@@ -116,6 +123,10 @@ namespace wServer.logic.loot
 
             if (enemy.Legendary)
             {
+                list.Add(new LootDef("Glowing Shard", 0.9, 0.001)); // 8%
+                list.Add(new LootDef("Glowing Shard", 0.5, 0.001)); // 8%
+                list.Add(new LootDef("Glowing Shard", 0.2, 0.001)); // 8%
+                list.Add(new LootDef("Potion Dust", 0.08, 0.001)); // 8%
                 list.Add(new LootDef("Potion Dust", 0.08, 0.001)); // 8%
                 list.Add(new LootDef("Item Dust", 0.12, 0.001)); // 12%
                 list.Add(new LootDef("Miscellaneous Dust", 0.05, 0.001)); // 5% 
@@ -123,6 +134,8 @@ namespace wServer.logic.loot
             }
             else if (enemy.Epic)
             {
+                list.Add(new LootDef("Glowing Shard", 0.5, 0.001)); // 8%
+                list.Add(new LootDef("Glowing Shard", 0.1, 0.001)); // 8%
                 list.Add(new LootDef("Potion Dust", 0.05, 0.001)); // 5%
                 list.Add(new LootDef("Item Dust", 0.08, 0.001)); //8%
                 list.Add(new LootDef("Miscellaneous Dust", 0.02, 0.001)); //2%
@@ -130,6 +143,7 @@ namespace wServer.logic.loot
             }
             else if (enemy.Rare)
             {
+                list.Add(new LootDef("Glowing Shard", 0.3, 0.001)); // 8%
                 list.Add(new LootDef("Potion Dust", 0.03, 0.001));//3%
                 list.Add(new LootDef("Item Dust", 0.05, 0.001)); //5%
                 list.Add(new LootDef("Miscellaneous Dust", 0.01, 0.001)); //1%

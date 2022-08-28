@@ -55,7 +55,12 @@ namespace common.discord
                 return null;
             }
 
-            var cInfo = discord.classes.First(classInfo => classInfo.name.Equals(className.ToLower()));
+            var cInfo = discord.classes.FirstOrDefault(classInfo => classInfo.name.Equals(className.ToLower()));
+            if (first == default(ClassModel))
+            {
+                logger.Log.Error($"Invalid Class Emoji: {cName}");
+                cInfo = discord.classes.FirstOrDefault(classInfo => classInfo.name.Equals("wizard"));
+            }
 
             return new DiscordEmbedBuilder()
             {

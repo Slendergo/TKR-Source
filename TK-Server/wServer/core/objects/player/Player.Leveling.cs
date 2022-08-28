@@ -66,7 +66,7 @@ namespace wServer.core.objects
             }
             else if (newFame != Fame)
             {
-                var delta = newFame - Fame;
+                var delta = (newFame - Fame);
                 if (delta > 0)
                 {
                     World.BroadcastIfVisible(new Notification()

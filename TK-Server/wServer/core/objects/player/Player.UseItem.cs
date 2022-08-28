@@ -19,24 +19,24 @@ namespace wServer.core.objects
     {
         public const int MaxAbilityDist = 14;
 
-        public static readonly ConditionEffect[] NegativeEffs = new ConditionEffect[]
+        public static readonly ConditionEffectIndex[] NegativeEffs = new ConditionEffectIndex[]
         {
-            new ConditionEffect(ConditionEffectIndex.Slowed, 0),
-            new ConditionEffect(ConditionEffectIndex.Paralyzed, 0),
-            new ConditionEffect(ConditionEffectIndex.Weak, 0),
-            new ConditionEffect(ConditionEffectIndex.Stunned, 0),
-            new ConditionEffect(ConditionEffectIndex.Confused, 0),
-            new ConditionEffect(ConditionEffectIndex.Blind, 0),
-            new ConditionEffect(ConditionEffectIndex.Quiet, 0),
-            new ConditionEffect(ConditionEffectIndex.ArmorBroken, 0),
-            new ConditionEffect(ConditionEffectIndex.Bleeding, 0),
-            new ConditionEffect(ConditionEffectIndex.Dazed,0),
-            new ConditionEffect(ConditionEffectIndex.Sick, 0),
-            new ConditionEffect(ConditionEffectIndex.Drunk, 0),
-            new ConditionEffect(ConditionEffectIndex.Hallucinating, 0),
-            new ConditionEffect(ConditionEffectIndex.Hexed, 0),
-            new ConditionEffect(ConditionEffectIndex.Curse, 0),
-            new ConditionEffect(ConditionEffectIndex.Unstable, 0)
+            ConditionEffectIndex.Slowed,
+            ConditionEffectIndex.Paralyzed,
+            ConditionEffectIndex.Weak,
+            ConditionEffectIndex.Stunned,
+            ConditionEffectIndex.Confused,
+            ConditionEffectIndex.Blind,
+            ConditionEffectIndex.Quiet,
+            ConditionEffectIndex.ArmorBroken,
+            ConditionEffectIndex.Bleeding,
+            ConditionEffectIndex.Dazed,
+            ConditionEffectIndex.Sick,
+            ConditionEffectIndex.Drunk,
+            ConditionEffectIndex.Hallucinating,
+            ConditionEffectIndex.Hexed,
+            ConditionEffectIndex.Curse,
+            ConditionEffectIndex.Unstable
         };
 
         public bool PoisonWis = false;
@@ -1401,7 +1401,11 @@ namespace wServer.core.objects
 
         private void AERemoveNegativeConditions(TickTime time, Item item, Position target, ActivateEffect eff)
         {
-            this.AOE(eff.Range, true, player => player.ApplyConditionEffect(NegativeEffs));
+            this.AOE(eff.Range, true, player =>
+            {
+                foreach (var effect in NegativeEffs)
+                    player.RemoveCondition(effect);
+            });
             World.BroadcastIfVisible(new ShowEffect()
             {
                 EffectType = EffectType.AreaBlast,
@@ -1413,7 +1417,8 @@ namespace wServer.core.objects
 
         private void AERemoveNegativeConditionSelf(TickTime time, Item item, Position target, ActivateEffect eff)
         {
-            ApplyConditionEffect(NegativeEffs);
+            foreach (var effect in NegativeEffs)
+                RemoveCondition(effect);
             World.BroadcastIfVisible(new ShowEffect()
             {
                 EffectType = EffectType.AreaBlast,

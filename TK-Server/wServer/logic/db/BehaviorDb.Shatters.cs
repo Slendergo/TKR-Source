@@ -265,7 +265,7 @@ namespace wServer.logic
                 new State("Close Bridge4",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new Order(46, "shtrs Bridge Closer4", "Closer"),
-                    new TimedTransition(6000, "BEGIN")
+                    new TimedTransition(5000, "BEGIN")
                     ),
                 new State("BEGIN",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),

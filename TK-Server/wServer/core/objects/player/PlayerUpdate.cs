@@ -320,10 +320,21 @@ namespace wServer.core.objects
 
             var t = World.Map[x, y];
             if (!(t.ObjType != 0 && t.ObjDesc != null && t.ObjDesc.BlocksSight))
-                for (var dx = -1; dx <= 1; dx++)
-                    for (var dy = -1; dy <= 1; dy++)
-                        StepPath(points, pathMap, x + dx, y + dy, px, py);
+                //for (var dx = -1; dx <= 1; dx++)
+                //    for (var dy = -1; dy <= 1; dy++)
+                        //StepPath(points, pathMap, x + dx, y + dy, px, py);
+                foreach(var p in Points)
+                    StepPath(points, pathMap, x + p.X, y + p.Y, px, py);
         }
+
+        private static IntPoint[] Points = new IntPoint[5]
+        {
+            new IntPoint(0, 0),
+            new IntPoint(1, 0),
+            new IntPoint(0, 1),
+            new IntPoint(-1, 0),
+            new IntPoint(0, -1)
+        };
 
         public void Dispose()
         {

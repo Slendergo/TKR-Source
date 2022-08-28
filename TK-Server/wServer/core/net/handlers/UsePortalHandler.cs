@@ -145,6 +145,9 @@ namespace wServer.core.net.handlers
             else if (!world.CreateInstance)
                 portal.WorldInstance = world;
             player.Reconnect(world);
+
+            if (player.Pet != null)
+                player.World.LeaveWorld(player.Pet);
         }
     }
 }

@@ -1484,7 +1484,9 @@ namespace wServer.core.objects
                     }, this);
 
                     setCooldownTime(7, slot);
-                    ApplyConditionEffect(NegativeEffs);
+
+                    foreach (var effect in NegativeEffs)
+                        RemoveCondition(effect);
                 }
             }
 

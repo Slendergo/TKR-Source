@@ -11,7 +11,7 @@ import flash.utils.Dictionary;
 
 public class Parameters {
     public static const BUILD_VERSION:String = "2";
-    public static const MINOR_VERSION:String = "3";
+    public static const MINOR_VERSION:String = "2";
     public static const PATCH_VERSION:String = "0";
     public static const FULL_BUILD_VERSION:String = BUILD_VERSION + "." + MINOR_VERSION + "." + PATCH_VERSION;
     public static const PORT:int = 2050;
@@ -91,6 +91,7 @@ public class Parameters {
     }
 
     public static function setDefaults():void {
+        setDefaultKey("tpToCaller", KeyCodes.UNSET);
         setDefaultKey("partyJoinWorld", KeyCodes.UNSET);
         setDefaultKey("partyInviteWorld", KeyCodes.UNSET);
         setDefaultKey("partyChat", KeyCodes.P);

@@ -11,8 +11,13 @@ package com.company.assembleegameclient.ui.panels
    import flash.events.MouseEvent;
    import flash.geom.ColorTransform;
    import flash.utils.getTimer;
-   
-   public class PartyPanel extends Panel
+   import flash.display.DisplayObjectContainer;
+
+import kabam.rotmg.core.StaticInjectorContext;
+
+import kabam.rotmg.core.view.Layers;
+
+public class PartyPanel extends Panel
    {
        
       
@@ -23,11 +28,15 @@ package com.company.assembleegameclient.ui.panels
       private var menu_:PlayerMenu = null;
       
       private var mouseOver_:Boolean = false;
+
+      private var menuLayer:DisplayObjectContainer;
       
       public function PartyPanel(gs:GameSprite)
       {
          this.memberPanels_ = new Vector.<GameObjectListItem>(Party.NUM_MEMBERS,true);
          super(gs);
+         var layers:Layers = StaticInjectorContext.getInjector().getInstance(Layers);
+         this.menuLayer = layers.top;
          this.memberPanels_[0] = this.createPartyMemberPanel(0,0);
          this.memberPanels_[1] = this.createPartyMemberPanel(100,0);
          this.memberPanels_[2] = this.createPartyMemberPanel(0,32);
@@ -101,7 +110,8 @@ package com.company.assembleegameclient.ui.panels
          this.removeTooltip();
          this.removeMenu();
          var pmp:GameObjectListItem = event.target as GameObjectListItem;
-         this.menu_ = new PlayerMenu(gs_,pmp.go_ as Player);
+         this.menu_ = new PlayerMenu();
+         this.menu_.init(gs_,pmp.go_ as Player);
          stage.addChild(this.menu_);
       }
       

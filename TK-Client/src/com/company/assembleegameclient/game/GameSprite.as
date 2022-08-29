@@ -13,6 +13,7 @@ import com.company.assembleegameclient.tutorial.Tutorial;
 import com.company.assembleegameclient.ui.GuildText;
 import com.company.assembleegameclient.ui.RankText;
 import com.company.assembleegameclient.ui.TextBox;
+import com.company.assembleegameclient.ui.menu.PlayerMenu;
 import com.company.assembleegameclient.util.TextureRedrawer;
 import com.company.ui.SimpleText;
 import com.company.util.BitmapUtil;
@@ -26,6 +27,7 @@ import flash.display.BitmapData;
 import flash.display.Sprite;
 import flash.display.StageScaleMode;
 import flash.events.Event;
+import flash.events.MouseEvent;
 import flash.external.ExternalInterface;
 import flash.filters.ColorMatrixFilter;
 import flash.filters.DropShadowFilter;
@@ -81,6 +83,7 @@ public class GameSprite extends Sprite
    private var isGameStarted:Boolean;
    private var displaysPosY:uint = 4;
    public var dmgCounter:SimpleText;
+   public var chatPlayerMenu:PlayerMenu;
 
    public function GameSprite(server:Server, gameId:int, createCharacter:Boolean, charId:int, keyTime:int, key:ByteArray, model:PlayerModel, mapJSON:String)
    {
@@ -94,6 +97,8 @@ public class GameSprite extends Sprite
       this.mui_ = new MapUserInput(this);
       this.textBox_ = new TextBox(this,600,600);
       addChild(this.textBox_);
+      this.textBox_.addEventListener(MouseEvent.MOUSE_DOWN,this.onChatDown);
+      this.textBox_.addEventListener(MouseEvent.MOUSE_UP,this.onChatUp);
       this.idleWatcher_ = new IdleWatcher();
       this.dmgCounter = new SimpleText(14,16777215,false,0,0);
       this.dmgCounter.setBold(true);
@@ -501,6 +506,39 @@ public class GameSprite extends Sprite
       var delta:int = getTimer() - time;
       this.monitor.dispatch("GameSprite.loop",delta);
       this.DamageCounter();
+   }
+
+   public function onChatDown(param1:MouseEvent) : void
+   {
+      if(this.chatPlayerMenu != null)
+      {
+         this.removeChatPlayerMenu();
+      }
+      this.mui_.onMouseDown(param1);
+   }
+
+   public function onChatUp(param1:MouseEvent) : void
+   {
+      this.mui_.onMouseUp(param1);
+   }
+
+   public function addChatPlayerMenu(param1:Player, param2:Number, param3:Number) : void
+   {
+      this.removeChatPlayerMenu();
+      this.chatPlayerMenu = new PlayerMenu();
+      this.chatPlayerMenu.init(this,param1);
+      addChild(this.chatPlayerMenu);
+      this.chatPlayerMenu.x = param2;
+      this.chatPlayerMenu.y = param3 - this.chatPlayerMenu.height;
+   }
+
+   public function removeChatPlayerMenu() : void
+   {
+      if(this.chatPlayerMenu != null && this.chatPlayerMenu.parent != null)
+      {
+         removeChild(this.chatPlayerMenu);
+         this.chatPlayerMenu = null;
+      }
    }
 }
 }

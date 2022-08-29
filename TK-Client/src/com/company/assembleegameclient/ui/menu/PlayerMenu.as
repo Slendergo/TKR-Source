@@ -20,10 +20,14 @@ package com.company.assembleegameclient.ui.menu
       
       public var playerPanel_:GameObjectListItem;
       
-      public function PlayerMenu(gs:GameSprite, player:Player)
+      public function PlayerMenu()
+      {
+         super(3552822,16777215);
+      }
+
+      public function init(gs:GameSprite, player:Player)
       {
          var option:MenuOption = null;
-         super(3552822,16777215);
          this.gs_ = gs;
          this.playerName_ = player.name_;
          this.player_ = player;

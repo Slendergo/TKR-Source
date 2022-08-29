@@ -24,6 +24,9 @@ import flash.ui.Keyboard;
 import flash.utils.Timer;
 import flash.utils.getTimer;
 
+import kabam.rotmg.core.StaticInjectorContext;
+import kabam.rotmg.ui.model.HUDModel;
+
 import org.hamcrest.text.re;
 
 import org.osflash.signals.Signal;
@@ -83,6 +86,9 @@ public class TextBox extends Sprite
 
    public const message:Signal = new Signal(String);
 
+   private var hudModel:HUDModel;
+   private var player:Player;
+
    public var speechBubbleClicked:NativeSignal;
    public var _nameColor:int;
    public var _textColor:int;
@@ -98,8 +104,8 @@ public class TextBox extends Sprite
       this.textSprite_ = new Sprite();
       this.textSprite_.x = 2;
       this.textSprite_.filters = [new GlowFilter(0,1,3,3,2,1)];
-      this.textSprite_.mouseEnabled = false;
-      this.textSprite_.mouseChildren = false;
+      //this.textSprite_.mouseEnabled = true;
+      //this.textSprite_.mouseChildren = false;
       addChild(this.textSprite_);
       var format:TextFormat = new TextFormat();
       format.font = "Myriad Pro";
@@ -222,7 +228,7 @@ public class TextBox extends Sprite
       this.textSpriteYPos_ = 0;
    }
 
-   private function addTextBlock(textBlock:TextBlock) : void
+   private function addTextBlock(textBlock:TextBlock, line:TextBoxLine) : void
    {
       var blockSprite:Sprite = null;
       blockSprite = new Sprite();
@@ -234,6 +240,7 @@ public class TextBox extends Sprite
          textLine.y = textLine.ascent + yPos;
          yPos = yPos + Math.max(MIN_LINE_HEIGHT,textLine.height);
          blockSprite.addChild(textLine);
+         blockSprite.addEventListener(MouseEvent.RIGHT_CLICK,this.onRightMouseDown(line));
       }
       if(this.textSpriteYPos_ != 0)
       {
@@ -242,6 +249,28 @@ public class TextBox extends Sprite
       blockSprite.y = this.textSpriteYPos_;
       this.textSprite_.addChild(blockSprite);
       this.textSpriteYPos_ = this.textSpriteYPos_ + yPos;
+   }
+
+   public function onRightMouseDown(line:TextBoxLine) : Function
+   {
+      var textLine:TextBoxLine = line;
+      return function(line:MouseEvent):void
+      {
+         hudModel = StaticInjectorContext.getInjector().getInstance(HUDModel);
+         if(hudModel.gameSprite.map.goDict_[textLine.playerObjectId] != null && hudModel.gameSprite.map.goDict_[textLine.playerObjectId] is Player && hudModel.gameSprite.map.player_.objectId_ != textLine.playerObjectId)
+         {
+            player = hudModel.gameSprite.map.goDict_[textLine.playerObjectId] as Player;
+            hudModel.gameSprite.addChatPlayerMenu(player,line.stageX,line.stageY);
+         }
+         else if(textLine.name_ != null && textLine.name_ != "" && hudModel.gameSprite.map.player_.name_ != textLine.name_)
+         {
+            hudModel.gameSprite.addChatPlayerMenu(null,line.stageX,line.stageY);
+         }
+         else if(textLine.name_ != null && textLine.name_ != "" && hudModel.gameSprite.map.player_.name_ != textLine.name_)
+         {
+            hudModel.gameSprite.addChatPlayerMenu(null,line.stageX,line.stageY);
+         }
+      };
    }
 
    private function refreshStatusBox() : void
@@ -258,7 +287,7 @@ public class TextBox extends Sprite
          if(!(!this.showMax_ && now > line.time_ + 20000))
          {
             textBlock = line.getTextBlock();
-            this.addTextBlock(textBlock);
+            this.addTextBlock(textBlock, line);
          }
       }
       this.placeTextField();

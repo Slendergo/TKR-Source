@@ -17,6 +17,7 @@ public class TextBoxLine
 
    public var time_:int;
    public var name_:String;
+   public var playerObjectId:int;
    public var rankIcon_:Sprite = null;
    public var recipient_:String;
    public var toMe_:Boolean;
@@ -29,6 +30,7 @@ public class TextBoxLine
       super();
       this.time_ = time;
       this.name_ = name;
+      this.playerObjectId = objectId;
       if(numStars >= 0)
       {
          this.rankIcon_ = FameUtil.numStarsToIcon(numStars);

@@ -191,7 +191,7 @@ public class MapUserInput
       this.clearInput();
    }
 
-   private function onMouseDown(event:MouseEvent) : void
+   internal function onMouseDown(event:MouseEvent) : void
    {
       var mouseX:Number = NaN;
       var mouseY:Number = NaN;
@@ -279,7 +279,7 @@ public class MapUserInput
       }
    }
 
-   private function onMouseUp(event:MouseEvent) : void
+   internal function onMouseUp(event:MouseEvent) : void
    {
       this.mouseDown_ = false;
    }

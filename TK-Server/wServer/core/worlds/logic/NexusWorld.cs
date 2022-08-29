@@ -169,7 +169,8 @@ namespace wServer.core.worlds.logic
         private void HandleEngineTimeouts(ref TickTime time)
         {
             var currentTime = DateTime.UtcNow.ToUnixTimestamp();
-
+            if (EngineStageTime < currentTime)
+                return;
             Console.WriteLine(currentTime + " " + (EngineStageTime + ENGINE_STAGE1_TIMEOUT));
             if (currentTime >= EngineStageTime + ENGINE_STAGE1_TIMEOUT)
             {

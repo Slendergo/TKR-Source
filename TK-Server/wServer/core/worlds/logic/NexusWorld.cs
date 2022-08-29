@@ -169,35 +169,29 @@ namespace wServer.core.worlds.logic
         private void HandleEngineTimeouts(ref TickTime time)
         {
             var currentTime = DateTime.UtcNow.ToUnixTimestamp();
-            if (EngineStageTime < currentTime)
-                return;
+
+            Console.WriteLine();
             Console.WriteLine(currentTime + " " + (EngineStageTime + ENGINE_STAGE1_TIMEOUT));
+            Console.WriteLine(currentTime + " " + (EngineStageTime + ENGINE_STAGE2_TIMEOUT));
+            Console.WriteLine(currentTime + " " + (EngineStageTime + ENGINE_STAGE3_TIMEOUT));
+
             if (currentTime >= EngineStageTime + ENGINE_STAGE1_TIMEOUT)
-            {
                 ResetEngineState(1);
-                EngineStageTime = currentTime;
-            }
             if (currentTime >= EngineStageTime + ENGINE_STAGE2_TIMEOUT)
-            {
                 ResetEngineState(2);
-                EngineStageTime = currentTime;
-            }
             if (currentTime >= EngineStageTime + ENGINE_STAGE3_TIMEOUT)
-            {
                 ResetEngineState(3);
-                EngineStageTime = currentTime;
-            }
         }
 
         private void ResetEngineState(int state)
         {
             //Player.GameServer.ChatManager.AnnounceEngine($"The machine slowly powers down");
-            TryAddFuelToEngine(null, state == 1 ? -100 : state == 2 ? -250 : state == 3 ? -500 : 0);
+            TryAddFuelToEngine(null, state == 1 ? -ENGINE_FIRST_STAGE_AMOUNT : state == 2 ? -ENGINE_SECOND_STAGE_AMOUNT : state == 3 ? -ENGINE_THIRD_STAGE_AMOUNT : 0);
         }
 
         public bool TryAddFuelToEngine(Player player, int amount)
         {
-            if (Engine.CurrentAmount == ENGINE_THIRD_STAGE_AMOUNT)
+            if (Engine.CurrentAmount == ENGINE_THIRD_STAGE_AMOUNT && amount >= 0)
                 return false;
 
             // clamp it to the max
@@ -252,13 +246,31 @@ namespace wServer.core.worlds.logic
 
         private void SetEngineSetStage(int state, Player player)
         {
+            var time = DateTime.UtcNow.ToUnixTimestamp();
+            switch (state)
+            {
+                case 0:
+                    time = EngineStageTime = 0;
+                    break;
+                case 1:
+                    time = EngineStageTime = time + ENGINE_STAGE1_TIMEOUT;
+                    break;
+                case 2:
+                    time = EngineStageTime = time + ENGINE_STAGE2_TIMEOUT;
+                    break;
+                case 3:
+                    time = EngineStageTime = time + ENGINE_STAGE3_TIMEOUT;
+                    break;
+            }
+
             EngineStage = state;
             if(player != null)
                 GameServer.ChatManager.AnnounceEngine($"[{player.Name}] adds the last bit of fuel and kicks the machine, it powers on to Stage "+state+"!");
             else
                 GameServer.ChatManager.AnnounceEngine($"The Strange Engine slowly powers down.");
+
             var engine = GameServer.Database.GetDbEngine();
-            engine.SetEngineStage(state, DateTime.UtcNow.ToUnixTimestamp());
+            engine.SetEngineStage(state, time);
             engine.Save();
         }
     }

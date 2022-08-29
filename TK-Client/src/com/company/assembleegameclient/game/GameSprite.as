@@ -527,7 +527,7 @@ public class GameSprite extends Sprite
       this.removeChatPlayerMenu();
       this.chatPlayerMenu = new PlayerMenu();
       this.chatPlayerMenu.init(this,param1);
-      addChild(this.chatPlayerMenu);
+      stage.addChild(this.chatPlayerMenu);
       this.chatPlayerMenu.x = param2;
       this.chatPlayerMenu.y = param3 - this.chatPlayerMenu.height;
    }

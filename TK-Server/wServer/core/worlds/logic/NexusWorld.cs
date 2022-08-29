@@ -169,12 +169,6 @@ namespace wServer.core.worlds.logic
         private void HandleEngineTimeouts(ref TickTime time)
         {
             var currentTime = DateTime.UtcNow.ToUnixTimestamp();
-
-            Console.WriteLine();
-            Console.WriteLine(currentTime + " " + (EngineStageTime + ENGINE_STAGE1_TIMEOUT));
-            Console.WriteLine(currentTime + " " + (EngineStageTime + ENGINE_STAGE2_TIMEOUT));
-            Console.WriteLine(currentTime + " " + (EngineStageTime + ENGINE_STAGE3_TIMEOUT));
-
             if (currentTime >= EngineStageTime + ENGINE_STAGE1_TIMEOUT)
                 ResetEngineState(1);
             if (currentTime >= EngineStageTime + ENGINE_STAGE2_TIMEOUT)
@@ -186,7 +180,55 @@ namespace wServer.core.worlds.logic
         private void ResetEngineState(int state)
         {
             //Player.GameServer.ChatManager.AnnounceEngine($"The machine slowly powers down");
-            TryAddFuelToEngine(null, state == 1 ? -ENGINE_FIRST_STAGE_AMOUNT : state == 2 ? -ENGINE_SECOND_STAGE_AMOUNT : state == 3 ? -ENGINE_THIRD_STAGE_AMOUNT : 0);
+
+            var amount = 0;
+            if (state == 1)
+            {
+                if (EngineStage == 3)
+                {
+                    amount = ENGINE_THIRD_STAGE_AMOUNT;
+                }
+                if (EngineStage == 2)
+                {
+                    amount = ENGINE_SECOND_STAGE_AMOUNT;
+                }
+                if (EngineStage == 1)
+                {
+                    amount = ENGINE_FIRST_STAGE_AMOUNT;
+                }
+            }
+            if (state == 2)
+            {
+                if (EngineStage == 3)
+                {
+                    amount = ENGINE_THIRD_STAGE_AMOUNT;
+                }
+                if (EngineStage == 2)
+                {
+                    amount = ENGINE_SECOND_STAGE_AMOUNT;
+                }
+                if (EngineStage == 1)
+                {
+                    amount = ENGINE_FIRST_STAGE_AMOUNT;
+                }
+            }
+            if (state == 3)
+            {
+                if (EngineStage == 3)
+                {
+                    amount = ENGINE_THIRD_STAGE_AMOUNT;
+                }
+                if (EngineStage == 2)
+                {
+                    amount = ENGINE_SECOND_STAGE_AMOUNT;
+                }
+                if (EngineStage == 1)
+                {
+                    amount = ENGINE_FIRST_STAGE_AMOUNT;
+                }
+            }
+
+            TryAddFuelToEngine(null, -amount);
         }
 
         public bool TryAddFuelToEngine(Player player, int amount)

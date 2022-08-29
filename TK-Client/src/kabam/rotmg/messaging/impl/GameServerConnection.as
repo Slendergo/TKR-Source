@@ -2344,7 +2344,7 @@ public class GameServerConnection
 
       private function handleIncorrectVersionFailure(event:Failure) : void
       {
-         var dialog:Dialog = new Dialog("Client version: " + Parameters.BUILD_VERSION + "\nServer version: " + event.errorDescription_,"Client Update Needed","Ok",null);
+         var dialog:Dialog = new Dialog("Client version: " + Parameters.FULL_BUILD_VERSION + "\nServer version: " + event.errorDescription_,"Client Update Needed","Ok",null);
          dialog.addEventListener(Dialog.BUTTON1_EVENT,this.onDoClientUpdate);
          this.gs_.stage.addChild(dialog);
          this.retryConnection_ = false;

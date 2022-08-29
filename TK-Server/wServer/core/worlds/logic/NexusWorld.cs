@@ -169,30 +169,22 @@ namespace wServer.core.worlds.logic
         private void HandleEngineTimeouts(ref TickTime time)
         {
             var currentTime = DateTime.UtcNow.ToUnixTimestamp();
-            switch (EngineStage)
+
+            Console.WriteLine(currentTime + " " + (EngineStageTime + ENGINE_STAGE1_TIMEOUT));
+            if (currentTime >= EngineStageTime + ENGINE_STAGE1_TIMEOUT)
             {
-                case 1:
-                    if (currentTime >= EngineStageTime + ENGINE_STAGE1_TIMEOUT)
-                    {
-                        ResetEngineState(1);
-                        EngineStageTime = currentTime;
-                    }
-                    break;
-                case 2:
-                    if (currentTime >= EngineStageTime + ENGINE_STAGE2_TIMEOUT)
-                    {
-                        ResetEngineState(2);
-                        EngineStageTime = currentTime;
-                    }
-                    break;
-                case 3:
-                    if (currentTime >= EngineStageTime + ENGINE_STAGE3_TIMEOUT)
-                    {
-                        ResetEngineState(3);
-                        EngineStageTime = currentTime;
-                    }
-                    break;
-                default: break;
+                ResetEngineState(1);
+                EngineStageTime = currentTime;
+            }
+            if (currentTime >= EngineStageTime + ENGINE_STAGE2_TIMEOUT)
+            {
+                ResetEngineState(2);
+                EngineStageTime = currentTime;
+            }
+            if (currentTime >= EngineStageTime + ENGINE_STAGE3_TIMEOUT)
+            {
+                ResetEngineState(3);
+                EngineStageTime = currentTime;
             }
         }
 

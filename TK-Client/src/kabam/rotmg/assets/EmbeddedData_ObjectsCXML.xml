@@ -25369,7 +25369,7 @@
       <Index>33</Index>
     </AnimatedTexture>
     <Size>100</Size>
-    <MaxHitPoints>9000</MaxHitPoints>
+    <MaxHitPoints>3000</MaxHitPoints>
     <Defense>30</Defense>
     <StasisImmune />
     <Projectile id="0">
@@ -25475,7 +25475,7 @@
       <Index>37</Index>
     </AnimatedTexture>
     <Size>120</Size>
-    <MaxHitPoints>12000</MaxHitPoints>
+    <MaxHitPoints>3000</MaxHitPoints>
     <Defense>40</Defense>
     <StasisImmune />
     <StunImmune />
@@ -25497,7 +25497,7 @@
       <Index>37</Index>
     </AnimatedTexture>
     <Size>120</Size>
-    <MaxHitPoints>12000</MaxHitPoints>
+    <MaxHitPoints>3000</MaxHitPoints>
     <Defense>40</Defense>
     <StasisImmune />
     <StunImmune />
@@ -25518,7 +25518,7 @@
       <Index>37</Index>
     </AnimatedTexture>
     <Size>120</Size>
-    <MaxHitPoints>12000</MaxHitPoints>
+    <MaxHitPoints>3000</MaxHitPoints>
     <Defense>40</Defense>
     <StasisImmune />
     <StunImmune />
@@ -25539,7 +25539,7 @@
       <Index>35</Index>
     </AnimatedTexture>
     <Size>120</Size>
-    <MaxHitPoints>11000</MaxHitPoints>
+    <MaxHitPoints>5000</MaxHitPoints>
     <Defense>25</Defense>
     <StasisImmune />
     <ParalyzeImmune />
@@ -25563,7 +25563,7 @@
       <Index>36</Index>
     </AnimatedTexture>
     <Size>110</Size>
-    <MaxHitPoints>8000</MaxHitPoints>
+    <MaxHitPoints>5000</MaxHitPoints>
     <Defense>30</Defense>
     <StasisImmune />
     <StunImmune />
@@ -26328,15 +26328,15 @@
     <Size>80</Size>
     <Projectile id="0">
       <ObjectId>Undead Septavius First Shot</ObjectId>
-      <Speed>100</Speed>
-      <Damage>135</Damage>
-      <LifetimeMS>1500</LifetimeMS>
+      <Speed>85</Speed>
+      <Damage>100</Damage>
+      <LifetimeMS>2000</LifetimeMS>
       <Size>110</Size>
     </Projectile>
     <Projectile id="1">
       <ObjectId>Undead Septavius Second Shot</ObjectId>
       <Speed>80</Speed>
-      <Damage>145</Damage>
+      <Damage>135</Damage>
       <LifetimeMS>1200</LifetimeMS>
       <Size>110</Size>
       <Wavy />
@@ -28499,8 +28499,8 @@
     <Projectile id="0">
       <ObjectId>Corrupted Mage Shoot</ObjectId>
       <Speed>180</Speed>
-      <MinDamage>160</MinDamage>
-      <MaxDamage>180</MaxDamage>
+      <MinDamage>120</MinDamage>
+      <MaxDamage>130</MaxDamage>
       <LifetimeMS>800</LifetimeMS>
       <Amplitude>0.5</Amplitude>
       <Frequency>2</Frequency>
@@ -28510,8 +28510,8 @@
     <Projectile id="1">
       <ObjectId>Corrupted Mage Shoot Ball</ObjectId>
       <Speed>70</Speed>
-      <MinDamage>180</MinDamage>
-      <MaxDamage>210</MaxDamage>
+      <MinDamage>140</MinDamage>
+      <MaxDamage>150</MaxDamage>
       <LifetimeMS>1800</LifetimeMS>
       <Frequency>1</Frequency>
       <Size>100</Size>
@@ -28533,8 +28533,8 @@
     <XpMult>0.0</XpMult>
     <Projectile id="0">
       <ObjectId>Corrupted Priest Shoot</ObjectId>
-      <Speed>180</Speed>
-      <Damage>140</Damage>
+      <Speed>110</Speed>
+      <Damage>120</Damage>
       <LifetimeMS>800</LifetimeMS>
       <Frequency>1</Frequency>
       <Size>130</Size>
@@ -28544,7 +28544,7 @@
     <Projectile id="1">
       <ObjectId>Corrupted Priest Shoot Ball</ObjectId>
       <Speed>70</Speed>
-      <Damage>200</Damage>
+      <Damage>130</Damage>
       <LifetimeMS>1500</LifetimeMS>
       <Frequency>1</Frequency>
       <Size>110</Size>
@@ -28578,8 +28578,8 @@
     <Projectile id="1">
       <ObjectId>Corrupted Priest Shoot Ball</ObjectId>
       <Speed>70</Speed>
-      <MinDamage>170</MinDamage>
-      <MaxDamage>180</MaxDamage>
+      <MinDamage>105</MinDamage>
+      <MaxDamage>125</MaxDamage>
       <LifetimeMS>1500</LifetimeMS>
       <Frequency>1</Frequency>
       <Size>100</Size>
@@ -28601,7 +28601,7 @@
     <XpMult>0.0</XpMult>
     <Projectile id="3">
       <ObjectId>Colossal Bullet</ObjectId>
-      <Damage>200</Damage>
+      <Damage>150</Damage>
       <Speed>30</Speed>
       <Size>100</Size>
       <LifetimeMS>6200</LifetimeMS>
@@ -28610,8 +28610,8 @@
     <Projectile id="1">
       <ObjectId>Corrupted Mage Shoot Ball</ObjectId>
       <Speed>70</Speed>
-      <MinDamage>170</MinDamage>
-      <MaxDamage>200</MaxDamage>
+      <MinDamage>130</MinDamage>
+      <MaxDamage>150</MaxDamage>
       <LifetimeMS>1500</LifetimeMS>
       <Frequency>1</Frequency>
       <Size>100</Size>
@@ -28624,6 +28624,10 @@
     <Enemy />
     <Event />
     <Quest />
+    <God />
+    <Encounter />
+    <StasisImmune />
+    <ParalyzeImmune />
     <Class>Character</Class>
     <AnimatedTexture>
       <File>Custom32x32Encounters</File>
@@ -28632,11 +28636,8 @@
     <Size>120</Size>
     <HitSound>monster/dragons_hit</HitSound>
     <DeathSound>monster/djinn_hit</DeathSound>
-    <MaxHitPoints>100000</MaxHitPoints>
+    <MaxHitPoints>60000</MaxHitPoints>
     <Defense>55</Defense>
-    <Experience>100000</Experience>
-    <StasisImmune />
-    <ParalyzeImmune />
     <Projectile id="0">
       <ObjectId>Cerebrus's Claw</ObjectId>
       <Damage>350</Damage>
@@ -28652,7 +28653,7 @@
       <Damage>90</Damage>
       <Speed>85</Speed>
       <LifetimeMS>2000</LifetimeMS>
-      <ConditionEffect duration="2">Paralyzed</ConditionEffect>
+      <ConditionEffect duration="0.5">Paralyzed</ConditionEffect>
       <MultiHit />
       <Size>130</Size>
     </Projectile>
@@ -52345,10 +52346,11 @@
     <FameBonus>6</FameBonus>
     <MpCost>95</MpCost>
     <Activate effect="Invisible" duration="5.5">ConditionEffectSelf</Activate>
-    <Activate effect="Speedy" duration="3">ConditionEffectSelf</Activate>
-    <ActivateOnEquip stat="22" amount="10">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="0" amount="40">IncrementStat</ActivateOnEquip>
-    <Cooldown>6</Cooldown>
+    <Activate effect="Berserk" duration="4">ConditionEffectSelf</Activate>
+    <Activate effect="Speedy" duration="4">ConditionEffectSelf</Activate>
+    <ActivateOnEquip stat="20" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="6">IncrementStat</ActivateOnEquip>
+    <Cooldown>7</Cooldown>
     <DisplayId>Old Cleric's Cloak</DisplayId>
   </Object>
   <Object type="0xa424" id="Thanatos's Garments">
@@ -75977,7 +75979,7 @@
     <Item />
     <Texture>
       <File>CustomObj1</File>
-      <Index>0x61</Index>
+      <Index>0x62</Index>
     </Texture>
     <SlotType>10</SlotType>
     <Description>I may follow you, but you are not my master.</Description>

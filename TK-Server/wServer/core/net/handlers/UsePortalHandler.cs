@@ -140,7 +140,9 @@ namespace wServer.core.net.handlers
                 }
             }
 
-            if (!world.CreateInstance)
+            if (world.InstanceType == common.resources.WorldResourceInstanceType.Vault)
+                (world as VaultWorld).SetOwner(player.AccountId);
+            else if (!world.CreateInstance)
                 portal.WorldInstance = world;
             player.Reconnect(world);
 

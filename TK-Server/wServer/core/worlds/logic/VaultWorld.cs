@@ -38,7 +38,7 @@ namespace wServer.core.worlds.logic
             LeaveWorld(original);
         }
 
-        public override bool AllowedAccess(Client client) => AccountId == client.Account.AccountId || client.Rank.IsAdmin;
+        public override bool AllowedAccess(Client client) => AccountId == client.Account.AccountId || client.Player.IsAdmin;
 
         public override void LeaveWorld(Entity entity)
         {
@@ -56,6 +56,9 @@ namespace wServer.core.worlds.logic
 
             EnterWorld(x);
         }
+
+
+        public void SetOwner(int accountId) => AccountId = accountId;
 
         public void SetClient(Client client)
         {
@@ -129,8 +132,6 @@ namespace wServer.core.worlds.logic
             var gifts = Client.Account.Gifts.ToList();
             while (gifts.Count > 0 && giftChestPosition.Count > 0)
             {
-                Console.WriteLine($"{giftChestPosition.Count}");
-
                 var c = Math.Min(8, gifts.Count);
                 var items = gifts.GetRange(0, c);
 

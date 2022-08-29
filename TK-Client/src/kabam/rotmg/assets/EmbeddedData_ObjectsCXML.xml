@@ -10641,7 +10641,8 @@
     <Class>Character</Class>
     <DisplayId>Nut</DisplayId>
     <Quest />
-    <Level>1</Level>
+    <Event />
+    <Level>20</Level>
     <AnimatedTexture>
       <File>chars16x16dEncounters</File>
       <Index>10</Index>
@@ -10739,6 +10740,8 @@
     <DisplayId>Geb</DisplayId>
     <Flying />
     <Quest />
+    <Event />
+    <Level>20</Level>
     <God />
     <StasisImmune />
     <AnimatedTexture>
@@ -10809,7 +10812,8 @@
     <Class>Character</Class>
     <DisplayId>Bes</DisplayId>
     <Quest />
-    <Level>1</Level>
+    <Event />
+    <Level>20</Level>
     <AnimatedTexture>
       <File>chars16x16dEncounters</File>
       <Index>12</Index>
@@ -11742,6 +11746,8 @@
     <DisplayId>Thessal the Mermaid Goddess</DisplayId>
     <Group>Ocean Trench</Group>
     <Enemy />
+    <Quest />
+    <Event />
     <Class>Character</Class>
     <StasisImmune />
     <AnimatedTexture>
@@ -11756,7 +11762,7 @@
     </AltTexture>
     <HitSound>monster/medusa_hit</HitSound>
     <DeathSound>monster/medusa_death</DeathSound>
-    <MaxHitPoints>960000</MaxHitPoints>
+    <MaxHitPoints>65000</MaxHitPoints>
     <ShadowSize>0</ShadowSize>
     <God />
     <Quest />
@@ -14916,7 +14922,6 @@
       <Speed>65</Speed>
       <Size>130</Size>
       <LifetimeMS>1400</LifetimeMS>
-      <ConditionEffect duration="4">Drunk</ConditionEffect>
     </Projectile>
     <Projectile id="1">
       <ObjectId>Beer Shockwave</ObjectId>
@@ -15870,7 +15875,6 @@
       <Damage>50</Damage>
       <Speed>70</Speed>
       <LifetimeMS>1400</LifetimeMS>
-      <ConditionEffect duration="4">Drunk</ConditionEffect>
     </Projectile>
   </Object>
   <Object type="0x7433" id="The Puppet Master">
@@ -15878,6 +15882,8 @@
     <Class>Character</Class>
     <Group>Master</Group>
     <Enemy />
+    <Quest />
+    <Event />
     <AnimatedTexture>
       <File>chars16x16rEncounters</File>
       <Index>120</Index>
@@ -19992,7 +19998,7 @@
       <Speed>50</Speed>
       <Size>100</Size>
       <LifetimeMS>2000</LifetimeMS>
-      <ConditionEffect duration=".5">Confused</ConditionEffect>
+      <ConditionEffect duration="1">Confused</ConditionEffect>
     </Projectile>
   </Object>
   <Object type="0x1e25" id="Dr Terrible Mini Bot">
@@ -25811,6 +25817,8 @@
     <Defense>45</Defense>
     <Enemy />
     <Chest />
+    <Quest />
+    <Event />
     <StasisImmune />
     <StunImmune />
     <DazeImmune />
@@ -27814,6 +27822,7 @@
     <Enemy />
     <Quest />
     <Event />
+    <Level>20</Level>
     <Class>Character</Class>
     <AnimatedTexture>
       <File>Custom16x16Encounters</File>
@@ -27859,6 +27868,7 @@
     <Hero />
     <God />
     <Quest />
+    <Event />
     <KeepDamageRecord />
     <Level>1</Level>
     <AnimatedTexture>
@@ -28628,6 +28638,7 @@
     <Encounter />
     <StasisImmune />
     <ParalyzeImmune />
+    <Level>20</Level>
     <Class>Character</Class>
     <AnimatedTexture>
       <File>Custom32x32Encounters</File>
@@ -28640,7 +28651,7 @@
     <Defense>55</Defense>
     <Projectile id="0">
       <ObjectId>Cerebrus's Claw</ObjectId>
-      <Damage>350</Damage>
+      <Damage>250</Damage>
       <Speed>75</Speed>
       <LifetimeMS>1000</LifetimeMS>
       <Amplitude>2</Amplitude>
@@ -28659,7 +28670,7 @@
     </Projectile>
     <Projectile id="2">
       <ObjectId>Cerebrus's Ember</ObjectId>
-      <Damage>110</Damage>
+      <Damage>90</Damage>
       <Speed>65</Speed>
       <LifetimeMS>3000</LifetimeMS>
       <MultiHit />
@@ -28668,7 +28679,7 @@
     </Projectile>
     <Projectile id="3">
       <ObjectId>Cerebrus Ball Shot</ObjectId>
-      <Damage>180</Damage>
+      <Damage>160</Damage>
       <Speed>55</Speed>
       <LifetimeMS>4000</LifetimeMS>
       <ConditionEffect duration="3">Slowed</ConditionEffect>
@@ -28680,7 +28691,7 @@
     </Projectile>
     <Projectile id="4">
       <ObjectId>Void Mist Cannon</ObjectId>
-      <Damage>150</Damage>
+      <Damage>120</Damage>
       <Speed>85</Speed>
       <LifetimeMS>3500</LifetimeMS>
       <Wavy />
@@ -28688,7 +28699,7 @@
     </Projectile>
     <Projectile id="5">
       <ObjectId>Cerebrus Ball Shot</ObjectId>
-      <Damage>180</Damage>
+      <Damage>150</Damage>
       <Speed>35</Speed>
       <LifetimeMS>4000</LifetimeMS>
       <ConditionEffect duration="3">Slowed</ConditionEffect>
@@ -28758,7 +28769,7 @@
     <ArmorBreakImmune />
     <SlowedImmune />
     <Level>20</Level>
-    <MaxHitPoints>75000</MaxHitPoints>
+    <MaxHitPoints>85000</MaxHitPoints>
     <Defense>30</Defense>
     <Projectile id="0">
       <ObjectId>Rome Bomb</ObjectId>
@@ -34921,7 +34932,7 @@
         </Texture>
       </Frame>
     </Animation>
-    <MaxHitPoints>18000</MaxHitPoints>
+    <MaxHitPoints>30000</MaxHitPoints>
     <Size>120</Size>
     <XpMult>0.1</XpMult>
     <God />
@@ -38228,7 +38239,7 @@
     </AltTexture>
     <HitSound>monster/medusa_hit</HitSound>
     <DeathSound>monster/undead_dwarves_hit</DeathSound>
-    <MaxHitPoints>3000</MaxHitPoints>
+    <MaxHitPoints>45000</MaxHitPoints>
     <Defense>63</Defense>
     <XpMult>1.4</XpMult>
     <Size>120</Size>
@@ -51500,7 +51511,7 @@
     <BagType>7</BagType>
     <FameBonus>7</FameBonus>
     <SteamRoller />
-    <DisplayId>Fang Flinger</DisplayId>
+    <DisplayId>Bone Flinger</DisplayId>
   </Object>
   <Object type="0x500e" id="Hurricane">
     <Class>Equipment</Class>
@@ -54049,8 +54060,8 @@
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
     <MpCost>100</MpCost>
+    <Activate effect="Berserk" duration="6" range="3" color="0xff0080" target="player" center="player" visualEffect="0" useWisMod="true">GenericActivate</Activate>
     <Activate effect="Speedy" duration="6">ConditionEffectSelf</Activate>
-    <Activate effect="Berserk" duration="6">ConditionEffectSelf</Activate>
     <Cooldown>6</Cooldown>
     <feedPower>1250</feedPower>
   </Object>
@@ -55611,7 +55622,7 @@
     <ArcGap>4</ArcGap>
     <BagType>7</BagType>
     <feedPower>5</feedPower>
-    <DisplayId>Earth Katana</DisplayId>
+    <DisplayId>Cometfell Katana</DisplayId>
   </Object>
   <Object type="0x5041" id="Jikken">
     <Class>Equipment</Class>
@@ -56004,9 +56015,9 @@
     <BagType>7</BagType>
     <FameBonus>4</FameBonus>
     <MpCost>110</MpCost>
-    <Activate radius="4" impactDamage="1200" totalDamage="3500" duration="3" throwTime="3" color="0xf5ce42" useWisMod="false">PoisonGrenade</Activate>
-    <Activate radius="6" impactDamage="800" totalDamage="2000" duration="5" throwTime="2" color="0x85837e" useWisMod="false">PoisonGrenade</Activate>
-    <Activate radius="2" impactDamage="200" totalDamage="1500" duration="2" throwTime="1" color="0xAF6D2B" useWisMod="false">PoisonGrenade</Activate>
+    <Activate radius="4" impactDamage="1200" totalDamage="3500" duration="3" throwTime="3" color="0xf5ce42" useWisMod="true">PoisonGrenade</Activate>
+    <Activate radius="6" impactDamage="800" totalDamage="2000" duration="5" throwTime="2" color="0x85837e" useWisMod="true">PoisonGrenade</Activate>
+    <Activate radius="2" impactDamage="200" totalDamage="1500" duration="2" throwTime="1" color="0xAF6D2B" useWisMod="true">PoisonGrenade</Activate>
   </Object>
   <Object type="0xaa3" id="Centipede Poison">
     <Class>Equipment</Class>
@@ -59927,7 +59938,7 @@
     <FameBonus>5</FameBonus>
   </Object>
   <Object type="0xa425" id="Dark Skeleton's Shield" spritePeriod="2" spriteFile="CustomObj" spriteArray="219-220">"
-	    <Class>Equipment</Class><Item /><Insanity /><Mythical /><Texture><File>CustomObj</File><Index>0xdb</Index></Texture><SlotType>5</SlotType><Description>You can still hear the screams of the souls trapped in the shield...</Description><Sound>spell/fire_spray</Sound><Projectile><ObjectId>Dark Skeleton Shield Shot</ObjectId><Speed>160</Speed><MinDamage>800</MinDamage><MaxDamage>1000</MaxDamage><LifetimeMS>300</LifetimeMS><Size>140</Size><ConditionEffect duration="4">Stunned</ConditionEffect><ConditionEffect duration="2.5">Paralyzed</ConditionEffect><ConditionEffect duration="4">Curse</ConditionEffect><ConditionEffect duration="3">Dazed</ConditionEffect><MultiHit /><PassesCover /><ParticleTrail /></Projectile><ActivateOnEquip stat="21" amount="25">IncrementStat</ActivateOnEquip><ActivateOnEquip stat="27" amount="10">IncrementStat</ActivateOnEquip><ActivateOnEquip stat="22" amount="-5">IncrementStat</ActivateOnEquip><Usable /><BagType>7</BagType><FameBonus>6</FameBonus><MpCost>125</MpCost><Activate>Shoot</Activate><NumProjectiles>5</NumProjectiles><feedPower>1000</feedPower></Object>
+	    <Class>Equipment</Class><Item /><Insanity /><Mythical /><Texture><File>CustomObj</File><Index>0xdb</Index></Texture><SlotType>5</SlotType><Description>You can still hear the screams of the souls trapped in the shield...</Description><Sound>spell/fire_spray</Sound><Projectile><ObjectId>Dark Skeleton Shield Shot</ObjectId><Speed>160</Speed><MinDamage>800</MinDamage><MaxDamage>1000</MaxDamage><LifetimeMS>300</LifetimeMS><Size>140</Size><ConditionEffect duration="4">Stunned</ConditionEffect><ConditionEffect duration="2.5">Paralyzed</ConditionEffect><ConditionEffect duration="4">Curse</ConditionEffect><MultiHit /><PassesCover /><ParticleTrail /></Projectile><ActivateOnEquip stat="21" amount="25">IncrementStat</ActivateOnEquip><ActivateOnEquip stat="27" amount="10">IncrementStat</ActivateOnEquip><ActivateOnEquip stat="22" amount="-5">IncrementStat</ActivateOnEquip><Usable /><BagType>7</BagType><FameBonus>6</FameBonus><MpCost>125</MpCost><Activate>Shoot</Activate><NumProjectiles>5</NumProjectiles><feedPower>1000</feedPower></Object>
   <Object type="0xc0f" id="Shield of Ogmur">
     <Class>Equipment</Class>
     <Item />
@@ -59947,7 +59958,6 @@
       <MaxDamage>600</MaxDamage>
       <LifetimeMS>200</LifetimeMS>
       <Size>140</Size>
-      <ConditionEffect duration="4">Armor Broken</ConditionEffect>
       <MultiHit />
       <PassesCover />
       <ParticleTrail />
@@ -60461,7 +60471,7 @@
     </Texture>
     <SlotType>19</SlotType>
     <Legendary />
-    <Description>We finally get to see the face under the robe. Or, what's left of it at least …</Description>
+    <Description></Description>
     <ActivateOnEquip stat="3" amount="55">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="3">IncrementStat</ActivateOnEquip>
@@ -64474,6 +64484,34 @@
     <NumProjectiles>1</NumProjectiles>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
+  </Object>
+  <Object type="0x2035" id="Sludge-Covered Cane">
+    <Class>Equipment</Class>
+    <Item />
+    <OutOfOneMind />
+    <Texture>
+      <File>CustomObj</File>
+      <Index>0xda</Index>
+    </Texture>
+    <SlotType>8</SlotType>
+    <Legendary />
+    <Description></Description>
+    <RateOfFire>0.85</RateOfFire>
+    <Sound>weapon/fire_wand</Sound>
+    <Projectile>
+      <ObjectId>Morto Square</ObjectId>
+      <Speed>120</Speed>
+      <MinDamage>320</MinDamage>
+      <MaxDamage>360</MaxDamage>
+      <LifetimeMS>542</LifetimeMS>
+      <Size>100</Size>
+      <MultiHit />
+    </Projectile>
+    <NumProjectiles>2</NumProjectiles>
+    <ArcGap>10</ArcGap>
+    <BagType>7</BagType>
+    <FameBonus>6</FameBonus>
+    <DisplayId>Sludge-Covered Cane</DisplayId>
   </Object>
   <Object type="0x5013" id="Eldritch Fury">
     <Class>Equipment</Class>
@@ -75919,8 +75957,8 @@
     <OldSound>use_potion</OldSound>
     <DonorItem />
   </Object>
-  <Object type="0x1693" id="Thot Camel Generator">
-    <DisplayId>Thor Camel</DisplayId>
+  <Object type="0x1693" id="Drip Camel Generator">
+    <DisplayId>Drip Camel</DisplayId>
     <Class>Equipment</Class>
     <Item />
     <Texture>
@@ -75933,7 +75971,7 @@
     <InvUse />
     <VaultItem />
     <Soulbound />
-    <Activate objectId="Thot Camel" cooldown="10">PermaPet</Activate>
+    <Activate objectId="Drip Camel" cooldown="10">PermaPet</Activate>
     <OldSound>use_potion</OldSound>
     <DonorItem />
   </Object>
@@ -77522,7 +77560,7 @@
     <NoMiniMap />
     <Size>60</Size>
   </Object>
-  <Object type="0x969e" id="Thot Camel">
+  <Object type="0x969e" id="Drip Camel">
     <Class>Character</Class>
     <Group>Hexable</Group>
     <AnimatedTexture>
@@ -80608,7 +80646,7 @@
     <Class>Projectile</Class>
     <Texture>
       <File>CustomProjs</File>
-      <Index>0x27</Index>
+      <Index>0xf8</Index>
     </Texture>
     <AngleCorrection>1</AngleCorrection>
   </Object>

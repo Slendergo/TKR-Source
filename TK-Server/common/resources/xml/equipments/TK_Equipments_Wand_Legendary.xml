@@ -147,4 +147,32 @@
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
   </Object>
+	<Object type="0x2035" id="Sludge-Covered Cane">
+		<Class>Equipment</Class>
+		<Item />
+		<OutOfOneMind />
+		<Texture>
+			<File>CustomObj</File>
+			<Index>0xda</Index>
+		</Texture>
+		<SlotType>8</SlotType>
+		<Legendary />
+		<Description></Description>
+		<RateOfFire>0.85</RateOfFire>
+		<Sound>weapon/fire_wand</Sound>
+		<Projectile>
+			<ObjectId>Morto Square</ObjectId>
+			<Speed>120</Speed>
+			<MinDamage>320</MinDamage>
+			<MaxDamage>360</MaxDamage>
+			<LifetimeMS>542</LifetimeMS>
+			<Size>100</Size>
+			<MultiHit />
+		</Projectile>
+		<NumProjectiles>2</NumProjectiles>
+		<ArcGap>10</ArcGap>
+		<BagType>7</BagType>
+		<FameBonus>6</FameBonus>
+		<DisplayId>Sludge-Covered Cane</DisplayId>
+	</Object>
 </Objects>

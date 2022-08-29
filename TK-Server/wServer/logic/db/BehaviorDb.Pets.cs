@@ -30,7 +30,7 @@ namespace wServer.logic
                 new PetFollow()
                 )
             )
-        .Init("Thot Camel",
+        .Init("Drip Camel",
             new State(
                 new PetFollow()
                 )

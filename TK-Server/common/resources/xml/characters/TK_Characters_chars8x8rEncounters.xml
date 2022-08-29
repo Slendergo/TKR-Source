@@ -1330,7 +1330,7 @@
       <Speed>50</Speed>
       <Size>100</Size>
       <LifetimeMS>2000</LifetimeMS>
-      <ConditionEffect duration=".5">Confused</ConditionEffect>
+      <ConditionEffect duration="1">Confused</ConditionEffect>
     </Projectile>
   </Object>
   <Object type="0x1e25" id="Dr Terrible Mini Bot">

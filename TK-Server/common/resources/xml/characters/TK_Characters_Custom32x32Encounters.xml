@@ -225,6 +225,7 @@
 		<Enemy />
 		<Quest />
 		<Event />
+		<Level>20</Level>
 		<Class>Character</Class>
 		<AnimatedTexture>
 			<File>Custom16x16Encounters</File>
@@ -270,6 +271,7 @@
 		<Hero />
 		<God />
 		<Quest />
+		<Event />
 		<KeepDamageRecord />
 		<Level>1</Level>
 		<AnimatedTexture>
@@ -1039,6 +1041,7 @@
 		<Encounter />
 		<StasisImmune />
 		<ParalyzeImmune />
+		<Level>20</Level>
 		<Class>Character</Class>
 		<AnimatedTexture>
 			<File>Custom32x32Encounters</File>
@@ -1051,7 +1054,7 @@
 		<Defense>55</Defense>
 		<Projectile id="0">
 			<ObjectId>Cerebrus's Claw</ObjectId>
-			<Damage>350</Damage>
+			<Damage>250</Damage>
 			<Speed>75</Speed>
 			<LifetimeMS>1000</LifetimeMS>
 			<Amplitude>2</Amplitude>
@@ -1070,7 +1073,7 @@
 		</Projectile>
 		<Projectile id="2">
 			<ObjectId>Cerebrus's Ember</ObjectId>
-			<Damage>110</Damage>
+			<Damage>90</Damage>
 			<Speed>65</Speed>
 			<LifetimeMS>3000</LifetimeMS>
 			<MultiHit />
@@ -1079,7 +1082,7 @@
 		</Projectile>
 		<Projectile id="3">
 			<ObjectId>Cerebrus Ball Shot</ObjectId>
-			<Damage>180</Damage>
+			<Damage>160</Damage>
 			<Speed>55</Speed>
 			<LifetimeMS>4000</LifetimeMS>
 			<ConditionEffect duration="3">Slowed</ConditionEffect>
@@ -1091,7 +1094,7 @@
 		</Projectile>
 		<Projectile id="4">
 			<ObjectId>Void Mist Cannon</ObjectId>
-			<Damage>150</Damage>
+			<Damage>120</Damage>
 			<Speed>85</Speed>
 			<LifetimeMS>3500</LifetimeMS>
 			<Wavy />
@@ -1099,7 +1102,7 @@
 		</Projectile>
 		<Projectile id="5">
 			<ObjectId>Cerebrus Ball Shot</ObjectId>
-			<Damage>180</Damage>
+			<Damage>150</Damage>
 			<Speed>35</Speed>
 			<LifetimeMS>4000</LifetimeMS>
 			<ConditionEffect duration="3">Slowed</ConditionEffect>
@@ -1169,7 +1172,7 @@
 		<ArmorBreakImmune/>
 		<SlowedImmune/>
 		<Level>20</Level>
-		<MaxHitPoints>75000</MaxHitPoints>
+		<MaxHitPoints>85000</MaxHitPoints>
 		<Defense>30</Defense>
 		<Projectile id="0">
 			<ObjectId>Rome Bomb</ObjectId>

@@ -1798,7 +1798,6 @@
       <Speed>65</Speed>
       <Size>130</Size>
       <LifetimeMS>1400</LifetimeMS>
-      <ConditionEffect duration="4">Drunk</ConditionEffect>
     </Projectile>
     <Projectile id="1">
       <ObjectId>Beer Shockwave</ObjectId>
@@ -2752,7 +2751,6 @@
       <Damage>50</Damage>
       <Speed>70</Speed>
       <LifetimeMS>1400</LifetimeMS>
-      <ConditionEffect duration="4">Drunk</ConditionEffect>
     </Projectile>
   </Object>
   <Object type="0x7433" id="The Puppet Master">
@@ -2760,6 +2758,8 @@
     <Class>Character</Class>
     <Group>Master</Group>
     <Enemy />
+	  <Quest/>
+	  <Event/>
     <AnimatedTexture>
       <File>chars16x16rEncounters</File>
       <Index>120</Index>

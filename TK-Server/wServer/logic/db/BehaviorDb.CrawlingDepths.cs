@@ -12,13 +12,12 @@ namespace wServer.logic
             new State(
                 new ScaleHP2(20),
                 new DropPortalOnDeath("Realm Portal", 1, 0, 0, 0, 120),
-                //new EntitiesNotExistsTransition(50, "Attack 2", "Yellow Son of Arachna Giant Egg Sac", "Blue Son of Arachna Giant Egg Sac", "Red Son of Arachna Giant Egg Sac", "Silver Son of Arachna Giant Egg Sac"),
+                new EntitiesNotExistsTransition(50, "Attack 2", "Yellow Son of Arachna Giant Egg Sac", "Blue Son of Arachna Giant Egg Sac", "Red Son of Arachna Giant Egg Sac", "Silver Son of Arachna Giant Egg Sac"),
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
                     new PlayerWithinTransition(9, "MakeWeb")
                     ),
                 new State("MakeWeb",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new TossObject("Epic Arachna Web Spoke 1", range: 10, angle: 0, coolDown: 100000),
                     new TossObject("Epic Arachna Web Spoke 7", range: 6, angle: 0, coolDown: 100000),
                     new TossObject("Epic Arachna Web Spoke 2", range: 10, angle: 60, coolDown: 100000),
@@ -35,8 +34,7 @@ namespace wServer.logic
                 new State("Attack",
                     //new Taunt("Check 1"),
                     new EntitiesNotExistsTransition(25, "Attack 2", "Yellow Son of Arachna Giant Egg Sac", "Blue Son of Arachna Giant Egg Sac", "Red Son of Arachna Giant Egg Sac", "Silver Son of Arachna Giant Egg Sac"),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
-                    new Shoot(3, projectileIndex: 0, count: 8, shootAngle: 15, coolDown: 1200),
+                    new Shoot(15, projectileIndex: 0, count: 8, shootAngle: 15, coolDown: 1200),
                     new Shoot(16, projectileIndex: 1, coolDown: 2200),
                     new TimedTransition(2200, "Follow")
                     ),
@@ -59,8 +57,9 @@ namespace wServer.logic
                         ),
                 // BUCLE VULNERABLE
                 new State("Attack 2",
-                    new Shoot(1, projectileIndex: 0, count: 8, coolDown: 2200, shootAngle: 45, fixedAngle: 0),
-                    new Shoot(10, projectileIndex: 1, coolDown: 3000),
+                    new RemoveConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new Shoot(15, projectileIndex: 0, count: 8, coolDown: 2200, shootAngle: 45, fixedAngle: 0),
+                    new Shoot(15, projectileIndex: 1, coolDown: 3000),
                     new TimedTransition(1500, "Follow 2")
                     ),
                     new State("Follow 2",

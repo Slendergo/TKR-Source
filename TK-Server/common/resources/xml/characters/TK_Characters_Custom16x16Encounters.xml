@@ -542,6 +542,8 @@
 		<Defense>45</Defense>
 		<Enemy />
 		<Chest />
+		<Quest/>
+		<Event/>
 		<StasisImmune />
 		<StunImmune />
 		<DazeImmune />

@@ -106,7 +106,7 @@ namespace wServer.core.objects
                 MaximumHP = MaximumHP * 3;
                 HP = MaximumHP;
                 Defense += 10;
-                GlowEnemy = 0xEAC117;
+                GlowEnemy = 0xFFFFFF;
             }
             else if (clasified == "epic")
             {
@@ -131,7 +131,7 @@ namespace wServer.core.objects
                 else
                     Size = World.Random.Next(Size, Size + 100);
                 Defense += 2;
-                GlowEnemy = 0xFFFFFF;
+                GlowEnemy = 0xEAC117;
             }
         }
 

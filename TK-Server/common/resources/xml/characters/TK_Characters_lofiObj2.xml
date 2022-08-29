@@ -278,7 +278,7 @@
     </AltTexture>
     <HitSound>monster/medusa_hit</HitSound>
     <DeathSound>monster/undead_dwarves_hit</DeathSound>
-    <MaxHitPoints>3000</MaxHitPoints>
+    <MaxHitPoints>45000</MaxHitPoints>
     <Defense>63</Defense>
     <XpMult>1.4</XpMult>
     <Size>120</Size>

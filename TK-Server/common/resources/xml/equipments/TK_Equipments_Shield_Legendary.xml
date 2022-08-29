@@ -20,8 +20,7 @@
 			<Size>140</Size>
 			<ConditionEffect duration="4">Stunned</ConditionEffect>
 			<ConditionEffect duration="2.5">Paralyzed</ConditionEffect>
-			<ConditionEffect duration="4">Curse</ConditionEffect>
-			<ConditionEffect duration="3">Dazed</ConditionEffect>		
+			<ConditionEffect duration="4">Curse</ConditionEffect>		
 			<MultiHit />
 			<PassesCover />
 			<ParticleTrail />
@@ -56,7 +55,6 @@
       <MaxDamage>600</MaxDamage>
       <LifetimeMS>200</LifetimeMS>
       <Size>140</Size>
-      <ConditionEffect duration="4">Armor Broken</ConditionEffect>
       <MultiHit />
       <PassesCover />
       <ParticleTrail />

@@ -49,7 +49,7 @@
 		<NoMiniMap />
 		<Size>60</Size>
 	</Object>
-	<Object type="0x969e" id="Thot Camel">
+	<Object type="0x969e" id="Drip Camel">
 		<Class>Character</Class>
 		<Group>Hexable</Group>
 		<AnimatedTexture>

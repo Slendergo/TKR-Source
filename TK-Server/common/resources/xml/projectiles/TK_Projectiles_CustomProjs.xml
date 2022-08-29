@@ -621,7 +621,7 @@
 		<Class>Projectile</Class>
 		<Texture>
 			<File>CustomProjs</File>
-			<Index>0x27</Index>
+			<Index>0xf8</Index>
 		</Texture>
 		<AngleCorrection>1</AngleCorrection>
 	</Object>

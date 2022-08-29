@@ -181,7 +181,7 @@
     <ArcGap>4</ArcGap>
     <BagType>7</BagType>
     <feedPower>5</feedPower>
-    <DisplayId>Earth Katana</DisplayId>
+    <DisplayId>Cometfell Katana</DisplayId>
   </Object>
   <Object type="0x5041" id="Jikken">
     <Class>Equipment</Class>

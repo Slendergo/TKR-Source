@@ -897,6 +897,8 @@
     <DisplayId>Thessal the Mermaid Goddess</DisplayId>
     <Group>Ocean Trench</Group>
     <Enemy />
+	  <Quest/>
+	  <Event/>
     <Class>Character</Class>
     <StasisImmune />
     <AnimatedTexture>
@@ -911,7 +913,7 @@
     </AltTexture>
     <HitSound>monster/medusa_hit</HitSound>
     <DeathSound>monster/medusa_death</DeathSound>
-    <MaxHitPoints>960000</MaxHitPoints>
+    <MaxHitPoints>65000</MaxHitPoints>
     <ShadowSize>0</ShadowSize>
     <God />
     <Quest />

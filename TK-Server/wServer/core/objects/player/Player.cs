@@ -1081,7 +1081,7 @@ namespace wServer.core.objects
                 }, this);
 
                 ActivateHealMp(this, 30 * Stats[1] / 100);
-                setCooldownTime(15, slot);
+                setCooldownTime(10, slot);
             }
         }
 
@@ -1219,7 +1219,7 @@ namespace wServer.core.objects
             {
                 var vitalityStat = Stats[6];
 
-                HealthRegenCarry += (1.0 + (0.24 * vitalityStat));
+                HealthRegenCarry += (1.0 + (0.20 * vitalityStat));
                 if(TalismanExtraLifeRegen > 0.0f)
                     HealthRegenCarry += (HealthRegenCarry * TalismanExtraLifeRegen);
                 if(TalismanHealthHPRegen > 0.0f)

@@ -540,7 +540,8 @@
     <Class>Character</Class>
     <DisplayId>Nut</DisplayId>
     <Quest />
-    <Level>1</Level>
+	  <Event />
+	  <Level>20</Level>
     <AnimatedTexture>
       <File>chars16x16dEncounters</File>
       <Index>10</Index>
@@ -638,6 +639,8 @@
     <DisplayId>Geb</DisplayId>
     <Flying />
     <Quest />
+	  <Event />
+	  <Level>20</Level>
     <God />
     <StasisImmune />
     <AnimatedTexture>
@@ -708,7 +711,8 @@
     <Class>Character</Class>
     <DisplayId>Bes</DisplayId>
     <Quest />
-    <Level>1</Level>
+	  <Event />
+    <Level>20</Level>
     <AnimatedTexture>
       <File>chars16x16dEncounters</File>
       <Index>12</Index>

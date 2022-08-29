@@ -128,7 +128,7 @@
         </Texture>
       </Frame>
     </Animation>
-    <MaxHitPoints>18000</MaxHitPoints>
+    <MaxHitPoints>30000</MaxHitPoints>
     <Size>120</Size>
     <XpMult>0.1</XpMult>
     <God />

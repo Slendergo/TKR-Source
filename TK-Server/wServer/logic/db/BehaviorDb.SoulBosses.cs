@@ -829,15 +829,13 @@ namespace wServer.logic
                         new Spawn(children: "Ice Sprite", maxChildren: 10, initialSpawn: 0, coolDown: 500)
                         )
                     ),
-            new Threshold(0.005,
-                new ItemLoot("Soul of Dexterity", 1)
-                ),
             new Threshold(0.01,
                 LootTemplates.DustLoot()
                 ),
-            new Threshold(0.03,
-                new ItemLoot("Spatial Distortion", 0.005),
-                new ItemLoot("Celestial Dual Blades", 0.005),
+            new Threshold(0.005,
+                new ItemLoot("Soul of Dexterity", 1),
+                new ItemLoot("Spatial Distortion", 0.01),
+                new ItemLoot("Celestial Dual Blades", 0.01),
                 new ItemLoot("Crafting Material 2", 0.1),
                 new ItemLoot("Chromatic Extinction", 0.001)
                 ),
@@ -1371,8 +1369,7 @@ namespace wServer.logic
                 new ItemLoot("Possessed Halberd", 0.001),
                 new ItemLoot("Cape of Septavius", 0.001),
                 new ItemLoot("Potion of Wisdom", 1),
-                new ItemLoot("Potion of Wisdom", 1),
-                new ItemLoot("Soul-Stealing Trap", 0.001)
+                new ItemLoot("Potion of Wisdom", 1)
                 ),
             new Threshold(0.005,
                 new ItemLoot("Soul of Wisdom", 1)

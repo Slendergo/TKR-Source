@@ -58,7 +58,7 @@ namespace wServer.logic
                     new State("Wait",
                         new Follow(1, range: 2),
                         new Flash(0xff00ff00, 0.1, 20),
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionalEffect(ConditionEffectIndex.Invincible),
                         new TimedTransition(2000, "Bullet")
                         ),
                     new NoPlayerWithinTransition(13, "Idle")
@@ -211,7 +211,7 @@ namespace wServer.logic
                     new Shoot(3, 6, 60, projectileIndex: 0, fixedAngle: 50, coolDown: 1200, coolDownOffset: 1000)
                     ),
                 new State("Death",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                     new ConditionalEffect(ConditionEffectIndex.Invincible, true),
                     new Shoot(13, 45, 8, projectileIndex: 1, fixedAngle: 1, coolDown: 10000),
                     new Timed(1000, new Suicide())
                     )
@@ -244,41 +244,42 @@ namespace wServer.logic
                 new Shoot(2, projectileIndex: 6, count: 3, fixedAngle: 180, coolDown: 1000),
                 new HpLessTransition(0.1, "Death"),
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
                     new PlayerWithinTransition(15, "Close Bridge")
                     ),
                 new State("Close Bridge",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new Order(46, "shtrs Bridge Closer", "Closer"),
                     new TimedTransition(5000, "Close Bridge2")
                     ),
                 new State("Close Bridge2",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new Order(46, "shtrs Bridge Closer2", "Closer"),
                     new TimedTransition(5000, "Close Bridge3")
                     ),
                 new State("Close Bridge3",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new Order(46, "shtrs Bridge Closer3", "Closer"),
                     new TimedTransition(5000, "Close Bridge4")
                     ),
                 new State("Close Bridge4",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new Order(46, "shtrs Bridge Closer4", "Closer"),
                     new TimedTransition(5000, "BEGIN")
                     ),
                 new State("BEGIN",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new Order(50, "shtrs Bridge Obelisk A", "TALK"),
+                    new Order(50, "shtrs Bridge Obelisk B", "TALK"),
+                    new Order(50, "shtrs Bridge Obelisk D", "TALK"),
+                    new Order(50, "shtrs Bridge Obelisk E", "TALK"),
+                    new Order(50, "shtrs Bridge Obelisk C", "TALK"),
+                    new Order(50, "shtrs Bridge Obelisk F", "TALK"),
                     new EntitiesNotExistsTransition(30, "Wake", "shtrs Bridge Obelisk A", "shtrs Bridge Obelisk B", "shtrs Bridge Obelisk D", "shtrs Bridge Obelisk E", "shtrs Bridge Obelisk C", "shtrs Bridge Obelisk F")
                     ),
                 new State("Wake",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new Taunt("Who has woken me...? Leave this place."),
                     new Timed(2100, new Shoot(15, 15, 12, projectileIndex: 0, fixedAngle: 180, coolDown: 700, coolDownOffset: 3000)),
                     new TimedTransition(8000, "Swirl Shot")
                     ),
                 new State("Swirl Shot",
                     new Taunt("Go."),
+                    new RemoveConditionalEffect(ConditionEffectIndex.Invincible),
                     new TimedTransition(10000, "Blobomb"),
                     new State("Swirl1",
                         new Shoot(50, projectileIndex: 0, count: 1, shootAngle: 102, fixedAngle: 102, coolDown: 6000),
@@ -362,7 +363,7 @@ namespace wServer.logic
                         )
                     ),
                 new State("Death",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                     new ConditionalEffect(ConditionEffectIndex.Invincible, true),
                     new Taunt("I tried to protect you... I have failed. You release a great evil upon this realm...."),
                     new TimedTransition(2000, "Suicide")
                     ),
@@ -380,7 +381,7 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.03,
-                new ItemLoot("Bracer of the Guardian", 0.0005)
+                new ItemLoot("Bracer of the Guardian", 0.0008)
                 ),
             new Threshold(0.001,
                 new TierLoot(12, ItemType.Weapon, 0.2),
@@ -792,7 +793,7 @@ namespace wServer.logic
                 new State("activatetimer",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new Order(60, "shtrs obelisk timer", "timer1"),
-                    new TimedTransition(1, "stopsettingoffmytimer")
+                    new TimedTransition(100, "stopsettingoffmytimer")
                     ),
                 new State("stopsettingoffmytimer",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable)

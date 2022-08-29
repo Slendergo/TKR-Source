@@ -42,8 +42,8 @@
   <Talisman type="0x06">
     <Name>Blood Exchange</Name>
     <ItemAssociatedWith>Blood Exchange</ItemAssociatedWith>
-    <BaseUpgradeCost>1000</BaseUpgradeCost>
-    <TierUpgradeCost>3000</TierUpgradeCost>
+    <BaseUpgradeCost>500</BaseUpgradeCost>
+    <TierUpgradeCost>1000</TierUpgradeCost>
     <CostMultiplier>1.1</CostMultiplier>
     <MaxLevels>10</MaxLevels>
     <Restrictions type="water" />
@@ -65,8 +65,8 @@
   <Talisman type="0x07">
     <Name>Eternal Youth</Name>
     <ItemAssociatedWith>Eternal Youth</ItemAssociatedWith>
-    <BaseUpgradeCost>1000</BaseUpgradeCost>
-    <TierUpgradeCost>3000</TierUpgradeCost>
+    <BaseUpgradeCost>500</BaseUpgradeCost>
+    <TierUpgradeCost>1000</TierUpgradeCost>
     <CostMultiplier>1.1</CostMultiplier>
     <MaxLevels>10</MaxLevels>
     <Restrictions type="water" />
@@ -91,8 +91,8 @@
   <Talisman type="0x08">
     <Name>Unyielding Resilience</Name>
     <ItemAssociatedWith>Unyielding Resilience</ItemAssociatedWith>
-    <BaseUpgradeCost>1000</BaseUpgradeCost>
-    <TierUpgradeCost>3000</TierUpgradeCost>
+    <BaseUpgradeCost>500</BaseUpgradeCost>
+    <TierUpgradeCost>1000</TierUpgradeCost>
     <CostMultiplier>1.1</CostMultiplier>
     <MaxLevels>10</MaxLevels>
     <Restrictions type="water" />
@@ -115,8 +115,8 @@
   <Talisman type="0x09">
     <Name>Wrath's Incarnate</Name>
     <ItemAssociatedWith>Wrath's Incarnate</ItemAssociatedWith>
-    <BaseUpgradeCost>1000</BaseUpgradeCost>
-    <TierUpgradeCost>3000</TierUpgradeCost>
+    <BaseUpgradeCost>500</BaseUpgradeCost>
+    <TierUpgradeCost>1000</TierUpgradeCost>
     <CostMultiplier>1.1</CostMultiplier>
     <MaxLevels>10</MaxLevels>
     <Restrictions type="fire" />
@@ -141,8 +141,8 @@
   <Talisman type="0x10">
     <Name>Primal Rage</Name>
     <ItemAssociatedWith>Primal Rage</ItemAssociatedWith>
-    <BaseUpgradeCost>1000</BaseUpgradeCost>
-    <TierUpgradeCost>3000</TierUpgradeCost>
+    <BaseUpgradeCost>500</BaseUpgradeCost>
+    <TierUpgradeCost>1000</TierUpgradeCost>
     <CostMultiplier>1.1</CostMultiplier>
     <MaxLevels>10</MaxLevels>
     <Restrictions type="fire" />
@@ -166,8 +166,8 @@
   <Talisman type="0x11">
     <Name>Call to Arms</Name>
     <ItemAssociatedWith>Call to Arms</ItemAssociatedWith>
-    <BaseUpgradeCost>1000</BaseUpgradeCost>
-    <TierUpgradeCost>3000</TierUpgradeCost>
+    <BaseUpgradeCost>500</BaseUpgradeCost>
+    <TierUpgradeCost>1000</TierUpgradeCost>
     <CostMultiplier>1.1</CostMultiplier>
     <MaxLevels>10</MaxLevels>
     <Restrictions type="fire" />
@@ -192,8 +192,8 @@
   <Talisman type="0x12">
     <Name>Divine Intellect</Name>
     <ItemAssociatedWith>Divine Intellect</ItemAssociatedWith>
-    <BaseUpgradeCost>1000</BaseUpgradeCost>
-    <TierUpgradeCost>3000</TierUpgradeCost>
+    <BaseUpgradeCost>500</BaseUpgradeCost>
+    <TierUpgradeCost>1000</TierUpgradeCost>
     <CostMultiplier>1.1</CostMultiplier>
     <MaxLevels>10</MaxLevels>
     <Restrictions type="wind" />
@@ -215,8 +215,8 @@
   <Talisman type="0x13">
     <Name>Insatiable Thirst</Name>
     <ItemAssociatedWith>Insatiable Thirst</ItemAssociatedWith>
-    <BaseUpgradeCost>1000</BaseUpgradeCost>
-    <TierUpgradeCost>3000</TierUpgradeCost>
+    <BaseUpgradeCost>500</BaseUpgradeCost>
+    <TierUpgradeCost>1000</TierUpgradeCost>
     <CostMultiplier>1.1</CostMultiplier>
     <MaxLevels>10</MaxLevels>
     <Restrictions type="wind" />
@@ -238,8 +238,8 @@
   <Talisman type="0x14">
     <Name>Spellslinger</Name>
     <ItemAssociatedWith>Spellslinger</ItemAssociatedWith>
-    <BaseUpgradeCost>1000</BaseUpgradeCost>
-    <TierUpgradeCost>3000</TierUpgradeCost>
+    <BaseUpgradeCost>500</BaseUpgradeCost>
+    <TierUpgradeCost>1000</TierUpgradeCost>
     <CostMultiplier>1.1</CostMultiplier>
     <MaxLevels>10</MaxLevels>
     <Restrictions type="wind" />
@@ -262,8 +262,8 @@
   <Talisman type="0x15">
     <Name>Iron Will</Name>
     <ItemAssociatedWith>Iron Will</ItemAssociatedWith>
-    <BaseUpgradeCost>1000</BaseUpgradeCost>
-    <TierUpgradeCost>3000</TierUpgradeCost>
+    <BaseUpgradeCost>500</BaseUpgradeCost>
+    <TierUpgradeCost>1000</TierUpgradeCost>
     <CostMultiplier>1.1</CostMultiplier>
     <MaxLevels>10</MaxLevels>
     <Restrictions type="earth" />
@@ -287,8 +287,8 @@
   <Talisman type="0x16">
     <Name>Party of One</Name>
     <ItemAssociatedWith>Party of One</ItemAssociatedWith>
-    <BaseUpgradeCost>1000</BaseUpgradeCost>
-    <TierUpgradeCost>3000</TierUpgradeCost>
+    <BaseUpgradeCost>500</BaseUpgradeCost>
+    <TierUpgradeCost>1000</TierUpgradeCost>
     <CostMultiplier>1.1</CostMultiplier>
     <MaxLevels>10</MaxLevels>
     <Restrictions type="earth" />
@@ -307,8 +307,8 @@
   <Talisman type="0x17">
     <Name>Forbidden Fruit</Name>
     <ItemAssociatedWith>Forbidden Fruit</ItemAssociatedWith>
-    <BaseUpgradeCost>1000</BaseUpgradeCost>
-    <TierUpgradeCost>3000</TierUpgradeCost>
+    <BaseUpgradeCost>500</BaseUpgradeCost>
+    <TierUpgradeCost>1000</TierUpgradeCost>
     <CostMultiplier>1.1</CostMultiplier>
     <MaxLevels>10</MaxLevels>
     <Restrictions type="earth" />
@@ -334,8 +334,8 @@
   <Talisman type="0x18">
     <Name>Luck of the Irish</Name>
     <ItemAssociatedWith>Luck of the Irish</ItemAssociatedWith>
-    <BaseUpgradeCost>1000</BaseUpgradeCost>
-    <TierUpgradeCost>3000</TierUpgradeCost>
+    <BaseUpgradeCost>500</BaseUpgradeCost>
+    <TierUpgradeCost>1000</TierUpgradeCost>
     <CostMultiplier>1.1</CostMultiplier>
     <MaxLevels>1</MaxLevels>
     <Restrictions type="mythical" />
@@ -348,8 +348,8 @@
   <Talisman type="0x19">
     <Name>Known After Death</Name>
     <ItemAssociatedWith>Known After Death</ItemAssociatedWith>
-    <BaseUpgradeCost>1000</BaseUpgradeCost>
-    <TierUpgradeCost>3000</TierUpgradeCost>
+    <BaseUpgradeCost>500</BaseUpgradeCost>
+    <TierUpgradeCost>1000</TierUpgradeCost>
     <CostMultiplier>1.1</CostMultiplier>
     <MaxLevels>1</MaxLevels>
     <Restrictions type="mythical" />

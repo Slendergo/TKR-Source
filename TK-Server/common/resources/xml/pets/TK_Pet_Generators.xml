@@ -108,8 +108,8 @@
 		<OldSound>use_potion</OldSound>
 		<DonorItem/>
 	</Object>
-	<Object type="0x1693" id="Thot Camel Generator">
-		<DisplayId>Thor Camel</DisplayId>
+	<Object type="0x1693" id="Drip Camel Generator">
+		<DisplayId>Drip Camel</DisplayId>
 		<Class>Equipment</Class>
 		<Item />
 		<Texture>
@@ -122,7 +122,7 @@
 		<InvUse />
 		<VaultItem />
 		<Soulbound />
-		<Activate objectId="Thot Camel" cooldown="10">PermaPet</Activate>
+		<Activate objectId="Drip Camel" cooldown="10">PermaPet</Activate>
 		<OldSound>use_potion</OldSound>
 		<DonorItem/>
 	</Object>

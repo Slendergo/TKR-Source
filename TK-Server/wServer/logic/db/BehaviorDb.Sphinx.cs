@@ -21,26 +21,26 @@ namespace wServer.logic
                     new Prioritize(
                         new Wander(0.5)
                         ),
-                    new Shoot(12, count: 1, coolDown: 800),
-                    new Shoot(12, count: 3, shootAngle: 10, coolDown: 1000),
-                    new Shoot(12, count: 1, shootAngle: 130, coolDown: 1000),
-                    new Shoot(12, count: 1, shootAngle: 230, coolDown: 1000),
+                    new Shoot(12, count: 1, coolDown: 600),
+                    new Shoot(12, count: 3, shootAngle: 10, coolDown: 800),
+                    new Shoot(12, count: 1, shootAngle: 130, coolDown: 700),
+                    new Shoot(12, count: 1, shootAngle: 230, coolDown: 800),
                     new TimedTransition(6000, "TransAttack2")
                     ),
                 new State("TransAttack2",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new Wander(0.5),
                     new Flash(0x00FF0C, .25, 8),
-                    new Taunt(0.99, "You hide behind rocks like cowards but you cannot hide from this!"),
+                    new Taunt("You hide behind rocks like cowards but you cannot hide from this!"),
                     new TimedTransition(2000, "Attack2")
                     ),
                 new State("Attack2",
                     new Prioritize(
                         new Wander(0.5)
                         ),
-                    new Shoot(10, count: 8, shootAngle: 10, fixedAngle: 0, rotateAngle: 70, coolDown: 2000,
+                    new Shoot(12, count: 8, shootAngle: 10, fixedAngle: 0, rotateAngle: 70, coolDown: 1200,
                         projectileIndex: 1),
-                    new Shoot(10, count: 8, shootAngle: 10, fixedAngle: 180, rotateAngle: 70, coolDown: 2000,
+                    new Shoot(12, count: 8, shootAngle: 10, fixedAngle: 180, rotateAngle: 70, coolDown: 1000,
                         projectileIndex: 1),
                     new TimedTransition(6200, "TransAttack3")
                     ),
@@ -54,7 +54,7 @@ namespace wServer.logic
                     new Prioritize(
                         new Wander(0.5)
                         ),
-                    new Shoot(20, count: 9, fixedAngle: 360 / 9, projectileIndex: 2, coolDown: 2300),
+                    new Shoot(20, count: 9, fixedAngle: 360 / 9, projectileIndex: 2, coolDown: 1200),
                     new TimedTransition(6000, "TransAttack1"),
                     new State("Shoot1",
                         new Shoot(20, count: 2, shootAngle: 4, projectileIndex: 2, coolDown: 700),
@@ -64,7 +64,7 @@ namespace wServer.logic
                             )
                         ),
                     new State("Shoot2",
-                        new Shoot(20, count: 8, shootAngle: 5, projectileIndex: 2, coolDown: 1100),
+                        new Shoot(20, count: 8, shootAngle: 5, projectileIndex: 2, coolDown: 800),
                         new TimedRandomTransition(1000, false,
                             "Shoot1",
                             "Shoot2"
@@ -89,9 +89,8 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.03,
-                new ItemLoot("Helm of the Juggernaut", 0.0014, threshold: 0.005),
                 new ItemLoot("Ray Katana", 0.005),
-                new ItemLoot("Talisman Fragment", 0.0005),
+                new ItemLoot("Talisman Fragment", 0.009),
                 new ItemLoot("Dojigiri", 0.0014, threshold: 0.005)
                 ),
             new Threshold(0.001,
@@ -122,7 +121,7 @@ namespace wServer.logic
                     new TimedRandomTransition(2000, true, "Attack")
                     ),
                 new State("Attack",
-                    new Shoot(0, count: 6, fixedAngle: 360 / 6, coolDown: 700),
+                    new Shoot(8, count: 6, fixedAngle: 360 / 6, coolDown: 700),
                     new PlayerWithinTransition(2, "Follow"),
                     new TimedRandomTransition(5000, true, "Move")
                     ),

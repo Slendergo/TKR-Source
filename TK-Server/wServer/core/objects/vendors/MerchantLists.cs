@@ -35,26 +35,26 @@ namespace wServer.core.objects.vendors
         private static readonly List<ISellableItem> KeysFame = new List<ISellableItem>
         {
             new ShopItem("Strange Library Key", 500),
-            new ShopItem("Cemetery Key", 500),
+            new ShopItem("Cemetery Key", 250),
             new ShopItem("Lost Halls Key", 1000),
 			new ShopItem("Davy's Key", 500),
-            new ShopItem("The Crawling Depths Key", 500),
+            new ShopItem("The Crawling Depths Key", 250),
             new ShopItem("Shatters Key", 1000),
             new ShopItem("Ocean Trench Key", 500),
             new ShopItem("Tomb of the Ancients Key", 1000),
             new ShopItem("Deadwater Docks Key", 500),
             new ShopItem("Woodland Labyrinth Key", 500),
-            new ShopItem("Spider Den Key", 500),
-            new ShopItem("Undead Lair Key", 500),
-            new ShopItem("Sprite World Key", 500),
-            new ShopItem("Abyss of Demons Key", 500),
+            new ShopItem("Spider Den Key", 250),
+            new ShopItem("Undead Lair Key", 250),
+            new ShopItem("Sprite World Key", 250),
+            new ShopItem("Abyss of Demons Key", 250),
             new ShopItem("Snake Pit Key", 500),
             new ShopItem("Beachzone Key", 500),
-            new ShopItem("Lab Key", 500),
+            new ShopItem("Lab Key", 250),
             new ShopItem("Totem Key", 500),
-            new ShopItem("Manor Key", 500),
-            new ShopItem("Candy Key", 500),
-            new ShopItem("Cemetery Key", 500),
+            new ShopItem("Manor Key", 250),
+            new ShopItem("Candy Key", 250),
+            new ShopItem("Cemetery Key", 250),
             new ShopItem("Davy's Key", 500),
             new ShopItem("Ocean Trench Key", 500),
             new ShopItem("Tomb of the Ancients Key", 1000)
@@ -72,9 +72,11 @@ namespace wServer.core.objects.vendors
         private static readonly List<ISellableItem> Special = new List<ISellableItem>
         {
             new ShopItem("Glowing Talisman", 200),
-            new ShopItem("Glowing Talisman", 200),
-            new ShopItem("Glowing Talisman", 200),
-            new ShopItem("Glowing Talisman", 200)
+            new ShopItem("XP Booster 20 min", 25),
+            new ShopItem("Loot Drop Potion", 100),
+            new ShopItem("Backpack", 100),
+            new ShopItem("Char Slot Unlocker", 300),
+            new ShopItem("Vault Chest Unlocker", 200)
         };
 
         public static void Initialize(GameServer gameServer)

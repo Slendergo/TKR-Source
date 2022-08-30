@@ -38,8 +38,8 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.03,
-                new ItemLoot("Talisman Fragment", 0.0005),
-                new ItemLoot("Dirk of Cronus", 0.0006)
+                new ItemLoot("Talisman Fragment", 0.009),
+                new ItemLoot("Dirk of Cronus", 0.001)
                 ),
             new Threshold(0.0015,
                 new TierLoot(10, ItemType.Armor, 0.12),

@@ -58,7 +58,7 @@ namespace wServer.logic
                     new State("Wait",
                         new Follow(1, range: 2),
                         new Flash(0xff00ff00, 0.1, 20),
-                        new ConditionalEffect(ConditionEffectIndex.Invincible),
+                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                         new TimedTransition(2000, "Bullet")
                         ),
                     new NoPlayerWithinTransition(13, "Idle")
@@ -99,7 +99,7 @@ namespace wServer.logic
             new State(
                 new StayBack(0.5, 5),
                 new State("1st",
-                    new Follow(1, range: 7),
+                    new Follow(1.8, range: 7),
                     new Shoot(12, projectileIndex: 2, count: 1, coolDown: 350),
                     new TimedTransition(5000, "next")
                     ),
@@ -127,7 +127,7 @@ namespace wServer.logic
             new State(
                 new State("Main",
                     new TimedTransition(5000, "Throw"),
-                    new Follow(1.3, range: 1),
+                    new Follow(1.8, range: 1),
                     new Shoot(10, 1, projectileIndex: 0, coolDown: 200, predictive: 1),
                     new Shoot(10, 3, projectileIndex: 1, shootAngle: 10, coolDown: 4000, predictive: 1)
                     ),
@@ -211,7 +211,7 @@ namespace wServer.logic
                     new Shoot(3, 6, 60, projectileIndex: 0, fixedAngle: 50, coolDown: 1200, coolDownOffset: 1000)
                     ),
                 new State("Death",
-                     new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new Shoot(13, 45, 8, projectileIndex: 1, fixedAngle: 1, coolDown: 10000),
                     new Timed(1000, new Suicide())
                     )
@@ -244,42 +244,41 @@ namespace wServer.logic
                 new Shoot(2, projectileIndex: 6, count: 3, fixedAngle: 180, coolDown: 1000),
                 new HpLessTransition(0.1, "Death"),
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new PlayerWithinTransition(15, "Close Bridge")
                     ),
                 new State("Close Bridge",
-                    new Order(46, "shtrs Bridge Closer", "Closer"),
+                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new OrderOnce(46, "shtrs Bridge Closer", "Closer"),
                     new TimedTransition(5000, "Close Bridge2")
                     ),
                 new State("Close Bridge2",
-                    new Order(46, "shtrs Bridge Closer2", "Closer"),
+                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new OrderOnce(46, "shtrs Bridge Closer2", "Closer"),
                     new TimedTransition(5000, "Close Bridge3")
                     ),
                 new State("Close Bridge3",
-                    new Order(46, "shtrs Bridge Closer3", "Closer"),
+                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new OrderOnce(46, "shtrs Bridge Closer3", "Closer"),
                     new TimedTransition(5000, "Close Bridge4")
                     ),
                 new State("Close Bridge4",
-                    new Order(46, "shtrs Bridge Closer4", "Closer"),
-                    new TimedTransition(5000, "BEGIN")
+                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new OrderOnce(46, "shtrs Bridge Closer4", "Closer"),
+                    new TimedTransition(6000, "BEGIN")
                     ),
                 new State("BEGIN",
-                    new Order(50, "shtrs Bridge Obelisk A", "TALK"),
-                    new Order(50, "shtrs Bridge Obelisk B", "TALK"),
-                    new Order(50, "shtrs Bridge Obelisk D", "TALK"),
-                    new Order(50, "shtrs Bridge Obelisk E", "TALK"),
-                    new Order(50, "shtrs Bridge Obelisk C", "TALK"),
-                    new Order(50, "shtrs Bridge Obelisk F", "TALK"),
+                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new EntitiesNotExistsTransition(30, "Wake", "shtrs Bridge Obelisk A", "shtrs Bridge Obelisk B", "shtrs Bridge Obelisk D", "shtrs Bridge Obelisk E", "shtrs Bridge Obelisk C", "shtrs Bridge Obelisk F")
                     ),
                 new State("Wake",
+                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new Taunt("Who has woken me...? Leave this place."),
                     new Timed(2100, new Shoot(15, 15, 12, projectileIndex: 0, fixedAngle: 180, coolDown: 700, coolDownOffset: 3000)),
                     new TimedTransition(8000, "Swirl Shot")
                     ),
                 new State("Swirl Shot",
                     new Taunt("Go."),
-                    new RemoveConditionalEffect(ConditionEffectIndex.Invincible),
                     new TimedTransition(10000, "Blobomb"),
                     new State("Swirl1",
                         new Shoot(50, projectileIndex: 0, count: 1, shootAngle: 102, fixedAngle: 102, coolDown: 6000),
@@ -319,7 +318,7 @@ namespace wServer.logic
                 new State("Blobomb",
                     new Taunt("You live still? DO NOT TEMPT FATE!"),
                     new Taunt("CONSUME!"),
-                    new Order(20, "shtrs blobomb maker", "Spawn"),
+                    new OrderOnce(20, "shtrs blobomb maker", "Spawn"),
                     new EntityNotExistsTransition("shtrs Blobomb", 30, "SwirlAndShoot")
                     ),
                 new State("SwirlAndShoot",
@@ -363,41 +362,19 @@ namespace wServer.logic
                         )
                     ),
                 new State("Death",
-                     new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new TransferDamageOnDeath("shtrs Loot Balloon Bridge"),
                     new Taunt("I tried to protect you... I have failed. You release a great evil upon this realm...."),
                     new TimedTransition(2000, "Suicide")
                     ),
                 new State("Suicide",
                     new Shoot(35, projectileIndex: 0, count: 30),
+                    new OrderOnce(1, "shtrs Chest Spawner 1", "Open"),
                     new Suicide()
                     )
-               ),
-            new Threshold(0.05,
-                new ItemLoot("The Sentinel's Insignia", 0.0005),
-                new ItemLoot("Blade of the Protector", 0.0005),
-                new ItemLoot("Guardian's Clad", 0.0005)
-                ),
-            new Threshold(0.01,
-                LootTemplates.DustLoot()
-                ),
-            new Threshold(0.03,
-                new ItemLoot("Bracer of the Guardian", 0.0008)
-                ),
-            new Threshold(0.001,
-                new TierLoot(12, ItemType.Weapon, 0.2),
-                new TierLoot(13, ItemType.Weapon, 0.1),
-                new TierLoot(6, ItemType.Ability, 0.2),
-                new TierLoot(12, ItemType.Armor, 0.07),
-                new TierLoot(13, ItemType.Armor, 0.05),
-                new TierLoot(6, ItemType.Ring, 0.04),
-                new ItemLoot("Special Dust", 0.01),
-                new ItemLoot("Greater Potion of Attack", 1),
-                new ItemLoot("Greater Potion of Defense", 1),
-                new ItemLoot("Greater Potion of Attack", 0.5),
-                new ItemLoot("Greater Potion of Defense", 0.5)
                 )
             )
-#endregion 1stboss
+        #endregion 1stboss
         #region blobomb
         .Init("shtrs Blobomb",
             new State(
@@ -502,7 +479,7 @@ namespace wServer.logic
                     ),
                 new State("Active2",
                     new Taunt("THE POWER...IT CONSUMES ME!"),
-                    new Order(2, "shtrs MagiGenerators", "vulnerable"),
+                    new OrderOnce(2, "shtrs MagiGenerators", "vulnerable"),
                     new Shoot(15, 20, projectileIndex: 2, coolDown: 100000000, coolDownOffset: 100),
                     new Shoot(15, 20, projectileIndex: 3, coolDown: 100000000, coolDownOffset: 200),
                     new Shoot(15, 20, projectileIndex: 4, coolDown: 100000000, coolDownOffset: 300),
@@ -518,7 +495,7 @@ namespace wServer.logic
                     ),
                 new State("Active3",
                     new Taunt("THE POWER...IT CONSUMES ME!"),
-                    new Order(2, "shtrs MagiGenerators", "vulnerable"),
+                    new OrderOnce(2, "shtrs MagiGenerators", "vulnerable"),
                     new Shoot(15, 20, projectileIndex: 2, coolDown: 100000000, coolDownOffset: 100),
                     new Shoot(15, 20, projectileIndex: 3, coolDown: 100000000, coolDownOffset: 200),
                     new Shoot(15, 20, projectileIndex: 4, coolDown: 100000000, coolDownOffset: 300),
@@ -534,7 +511,7 @@ namespace wServer.logic
                     ),
                 new State("Active4",
                     new Taunt("THE POWER...IT CONSUMES ME!"),
-                    new Order(2, "shtrs MagiGenerators", "vulnerable"),
+                    new OrderOnce(2, "shtrs MagiGenerators", "vulnerable"),
                     new Shoot(15, 20, projectileIndex: 2, coolDown: 100000000, coolDownOffset: 100),
                     new Shoot(15, 20, projectileIndex: 3, coolDown: 100000000, coolDownOffset: 200),
                     new Shoot(15, 20, projectileIndex: 4, coolDown: 100000000, coolDownOffset: 300),
@@ -550,7 +527,7 @@ namespace wServer.logic
                     ),
                 new State("Active5",
                     new Taunt("THE POWER...IT CONSUMES ME!"),
-                    new Order(2, "shtrs MagiGenerators", "vulnerable"),
+                    new OrderOnce(2, "shtrs MagiGenerators", "vulnerable"),
                     new Shoot(15, 20, projectileIndex: 2, coolDown: 100000000, coolDownOffset: 100),
                     new Shoot(15, 20, projectileIndex: 3, coolDown: 100000000, coolDownOffset: 200),
                     new Shoot(15, 20, projectileIndex: 4, coolDown: 100000000, coolDownOffset: 300),
@@ -566,7 +543,7 @@ namespace wServer.logic
                     ),
                 new State("Active6",
                     new Taunt("THE POWER...IT CONSUMES ME!"),
-                    new Order(2, "shtrs MagiGenerators", "vulnerable"),
+                    new OrderOnce(2, "shtrs MagiGenerators", "vulnerable"),
                     new Shoot(15, 20, projectileIndex: 2, coolDown: 100000000, coolDownOffset: 100),
                     new Shoot(15, 20, projectileIndex: 3, coolDown: 100000000, coolDownOffset: 200),
                     new Shoot(15, 20, projectileIndex: 4, coolDown: 100000000, coolDownOffset: 300),
@@ -582,7 +559,7 @@ namespace wServer.logic
                     ),
                 new State("Active7",
                     new Taunt("THE POWER...IT CONSUMES ME!"),
-                    new Order(2, "shtrs MagiGenerators", "vulnerable"),
+                    new OrderOnce(2, "shtrs MagiGenerators", "vulnerable"),
                     new Shoot(15, 20, projectileIndex: 2, coolDown: 100000000, coolDownOffset: 100),
                     new Shoot(15, 20, projectileIndex: 3, coolDown: 100000000, coolDownOffset: 200),
                     new Shoot(15, 20, projectileIndex: 4, coolDown: 100000000, coolDownOffset: 300),
@@ -593,29 +570,14 @@ namespace wServer.logic
                 new State("Death",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new Taunt("IM..POSSI...BLE!"),
+                    new TransferDamageOnDeath("shtrs Loot Balloon Mage"),
+                    new OrderOnce(1, "shtrs Chest Spawner 2", "Open"),
                     new TimedTransition(2000, "Suicide")
                     ),
                 new State("Suicide",
                     new Shoot(35, projectileIndex: 0, count: 30),
                     new Suicide()
                     )
-               ),
-            new Threshold(0.01,
-                LootTemplates.DustLoot()
-                ),
-            new Threshold(0.05,
-                new ItemLoot("Rod of Frost Burn", 0.0005),
-                new ItemLoot("Skull of the Archmage", 0.0005),
-                new ItemLoot("Archmage's Garments", 0.0005),
-                new ItemLoot("Infused Souls", 0.0005)
-                ),
-            new Threshold(0.001,
-                new TierLoot(13, ItemType.Weapon, 0.2),
-                new TierLoot(6, ItemType.Ability, 0.2),
-                new TierLoot(13, ItemType.Armor, 0.2),
-                new TierLoot(6, ItemType.Ring, 0.04),
-                new ItemLoot("Greater Potion of Mana", 1),
-                new ItemLoot("Greater Potion of Mana", 0.5)
                 )
             )
         #endregion 2ndboss
@@ -712,22 +674,22 @@ namespace wServer.logic
                 new ScaleHP2(20),
                 new State("Idle",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
-                    new Order(46, "shtrs Spawn Bridge", "Open"),
+                    new OrderOnce(46, "shtrs Spawn Bridge", "Open"),
                     new TimedTransition(5000, "Bridge")
                     ),
                 new State("Bridge")
 
                 ),
             new Threshold(0.05,
-                new ItemLoot("The Sentinel's Insignia", 0.0005),
-                new ItemLoot("Blade of the Protector", 0.0005),
-                new ItemLoot("Guardian's Clad", 0.0005)
+                new ItemLoot("The Sentinel's Insignia", 0.0014),
+                new ItemLoot("Blade of the Protector", 0.0015)
+                //new ItemLoot("Guardian's Clad", 0.0015)
                 ),
             new Threshold(0.01,
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.03,
-                new ItemLoot("Bracer of the Guardian", 0.0005)
+                new ItemLoot("Bracer of the Guardian", 0.009)
                 ),
             new Threshold(0.001,
                 new TierLoot(12, ItemType.Weapon, 0.2),
@@ -758,10 +720,10 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.05,
-                new ItemLoot("Rod of Frost Burn", 0.0005),
-                new ItemLoot("Skull of the Archmage", 0.0005),
-                new ItemLoot("Archmage's Garments", 0.0005),
-                new ItemLoot("Infused Souls", 0.0005)
+                //new ItemLoot("Rod of Frost Burn", 0.0015),
+                new ItemLoot("Skull of the Archmage", 0.0015)
+                //new ItemLoot("Archmage's Garments", 0.0015),
+                //new ItemLoot("Infused Souls", 0.0015)
                 ),
             new Threshold(0.001,
                 new TierLoot(13, ItemType.Weapon, 0.2),
@@ -792,8 +754,8 @@ namespace wServer.logic
                     ),
                 new State("activatetimer",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
-                    new Order(60, "shtrs obelisk timer", "timer1"),
-                    new TimedTransition(100, "stopsettingoffmytimer")
+                    new OrderOnce(60, "shtrs obelisk timer", "timer1"),
+                    new TimedTransition(1, "stopsettingoffmytimer")
                     ),
                 new State("stopsettingoffmytimer",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable)
@@ -877,7 +839,7 @@ namespace wServer.logic
                     ),
                 new State("activatetimer",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
-                    new Order(60, "shtrs obelisk timer", "timer1"),
+                    new OrderOnce(60, "shtrs obelisk timer", "timer1"),
                     new TimedTransition(1, "stopsettingoffmytimer")
                     ),
                 new State("stopsettingoffmytimer",
@@ -965,7 +927,7 @@ namespace wServer.logic
                     ),
                 new State("activatetimer",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
-                    new Order(60, "shtrs obelisk timer", "timer1"),
+                    new OrderOnce(60, "shtrs obelisk timer", "timer1"),
                     new TimedTransition(1, "stopsettingoffmytimer")
                     ),
                 new State("stopsettingoffmytimer",
@@ -1053,7 +1015,7 @@ namespace wServer.logic
                     ),
                 new State("activatetimer",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
-                    new Order(60, "shtrs obelisk timer", "timer1"),
+                    new OrderOnce(60, "shtrs obelisk timer", "timer1"),
                     new TimedTransition(1, "stopsettingoffmytimer")
                     ),
                 new State("stopsettingoffmytimer",
@@ -1292,16 +1254,16 @@ namespace wServer.logic
                     //new EntitiesNotExistsTransition(30, "obeliskshoot", "shtrs Bridge Obelisk A", "shtrs Bridge Obelisk B", "shtrs Bridge Obelisk D", "shtrs Bridge Obelisk E")
                     ),
                 new State("obeliskshoot",
-                    new Order(60, "shtrs Bridge Obelisk A", "Shoot"),
-                    new Order(60, "shtrs Bridge Obelisk B", "Shoot"),
-                    new Order(60, "shtrs Bridge Obelisk D", "Shoot"),
-                    new Order(60, "shtrs Bridge Obelisk E", "Shoot")
+                    new OrderOnce(60, "shtrs Bridge Obelisk A", "Shoot"),
+                    new OrderOnce(60, "shtrs Bridge Obelisk B", "Shoot"),
+                    new OrderOnce(60, "shtrs Bridge Obelisk D", "Shoot"),
+                    new OrderOnce(60, "shtrs Bridge Obelisk E", "Shoot")
                     ),
                 new State("guardiancheck",
-                    new Order(60, "shtrs Bridge Obelisk A", "Pause"),
-                    new Order(60, "shtrs Bridge Obelisk B", "guardiancheck"),
-                    new Order(60, "shtrs Bridge Obelisk D", "guardiancheck"),
-                    new Order(60, "shtrs Bridge Obelisk E", "guardiancheck"),
+                    new OrderOnce(60, "shtrs Bridge Obelisk A", "Pause"),
+                    new OrderOnce(60, "shtrs Bridge Obelisk B", "guardiancheck"),
+                    new OrderOnce(60, "shtrs Bridge Obelisk D", "guardiancheck"),
+                    new OrderOnce(60, "shtrs Bridge Obelisk E", "guardiancheck"),
                     new TimedTransition(1, "leavemychecksalone")
                     ),
                 new State("leavemychecksalone",
@@ -1316,11 +1278,11 @@ namespace wServer.logic
                     //new EntitiesNotExistsTransition(30, "timer1", "shtrs Bridge Obelisk A", "shtrs Bridge Obelisk B", "shtrs Bridge Obelisk D", "shtrs Bridge Obelisk E")
                     ),
                 new State("timer1",
-                    new Order(60, "shtrs obelisk controller", "obeliskshoot"),
+                    new OrderOnce(60, "shtrs obelisk controller", "obeliskshoot"),
                     new TimedTransition(10000, "guardiancheck")
                     ),
                 new State("guardiancheck",
-                    new Order(60, "shtrs obelisk controller", "guardiancheck"),
+                    new OrderOnce(60, "shtrs obelisk controller", "guardiancheck"),
                     new TimedTransition(1, "leavemychecksalone")
                     ),
                 new State("leavemychecksalone",
@@ -1861,8 +1823,8 @@ namespace wServer.logic
                     new ConditionalEffect(ConditionEffectIndex.Invincible),
                     new ConditionalEffect(ConditionEffectIndex.Invisible),
                     new ConditionalEffect(ConditionEffectIndex.Stasis),
-                    new Order(60, "shtrs Lava Souls maker", "Spawn"),
-                    new Order(60, "shtrs king lava1", "lava"),
+                    new OrderOnce(60, "shtrs Lava Souls maker", "Spawn"),
+                    new OrderOnce(60, "shtrs king lava1", "lava"),
                     new Shoot(50, projectileIndex: 4, count: 6, shootAngle: 60, fixedAngle: 3, coolDown: 15000),
                     new Shoot(50, projectileIndex: 4, count: 6, shootAngle: 60, fixedAngle: 4, coolDown: 15000),
                     new Shoot(50, projectileIndex: 4, count: 6, shootAngle: 60, fixedAngle: 6, coolDown: 15000, coolDownOffset: 200),
@@ -1996,9 +1958,9 @@ namespace wServer.logic
                     new ConditionalEffect(ConditionEffectIndex.Invisible),
                     new ConditionalEffect(ConditionEffectIndex.Stasis),
                     new MoveTo2(0, -8, 0.5f, once: true),
-                    new Order(40, "shtrs Lava Souls maker", "Idle"),
-                    new Order(60, "shtrs king lava1", "lava"),
-                    new Order(60, "shtrs king lava2", "lava"),
+                    new OrderOnce(40, "shtrs Lava Souls maker", "Idle"),
+                    new OrderOnce(60, "shtrs king lava1", "lava"),
+                    new OrderOnce(60, "shtrs king lava2", "lava"),
                     new TimedTransition(3000, "aftertentacles")
                     ),
                 new State("aftertentacles",
@@ -2160,18 +2122,18 @@ namespace wServer.logic
                     new TimedTransition(4000, "aftertentacles")
                     ),
                 new State("godpatience",
-                    new Order(60, "shtrs king lava1", "lava"),
-                    new Order(60, "shtrs king lava2", "lava"),
+                    new OrderOnce(60, "shtrs king lava1", "lava"),
+                    new OrderOnce(60, "shtrs king lava2", "lava"),
                     new ConditionalEffect(ConditionEffectIndex.Invincible),
                     new ConditionalEffect(ConditionEffectIndex.Invisible),
                     new ConditionalEffect(ConditionEffectIndex.Stasis),
                     new Taunt("YOU TEST THE PATIENCE OF A GOD!"),
-                    new Order(40, "shtrs Lava Souls maker", "Spawn"),
+                    new OrderOnce(40, "shtrs Lava Souls maker", "Spawn"),
                     new Spawn("shtrs king timer", maxChildren: 1, initialSpawn: 1, coolDown: 999999),
                     new TimedTransition(2000, "diedie")
                     ),
                 new State("diedie",
-                    new Order(60, "shtrs king timer", "timer1"),
+                    new OrderOnce(60, "shtrs king timer", "timer1"),
                     new ConditionalEffect(ConditionEffectIndex.Invincible),
                     new ConditionalEffect(ConditionEffectIndex.Invisible),
                     new ConditionalEffect(ConditionEffectIndex.Stasis),
@@ -2428,6 +2390,8 @@ namespace wServer.logic
 
                 new State("Death",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new TransferDamageOnDeath("shtrs Loot Balloon King"),
+                    new OrderOnce(1, "shtrs Chest Spawner 3", "Open"),
                     new Taunt("Impossible..........IMPOSSIBLE!"),
                     new TimedTransition(2000, "Suicide")
                     ),
@@ -2435,26 +2399,6 @@ namespace wServer.logic
                     new Shoot(35, projectileIndex: 0, count: 30),
                     new Suicide()
                     )
-                ),
-            new Threshold(0.05,
-                new ItemLoot("Lodius", 0.0005, 0),
-                new ItemLoot("Gekdu", 0.0005, 0),
-                new ItemLoot("Seruna", 0.0005, 0)
-                ),
-            new Threshold(0.03,
-                new ItemLoot("The Forgotten Crown", 0.0005),
-                new ItemLoot("Shatters Key", 0.01)
-                ),
-            new Threshold(0.01,
-                LootTemplates.DustLoot()
-                ),
-            new Threshold(0.001,
-                new TierLoot(14, ItemType.Weapon, 0.2),
-                new TierLoot(6, ItemType.Ability, 0.2),
-                new TierLoot(14, ItemType.Armor, 0.2),
-                new TierLoot(6, ItemType.Ring, 0.2),
-                new ItemLoot("Greater Potion of Life", 1),
-                new ItemLoot("Greater Potion of Life", 1)
                 )
             )
         .Init("shtrs Royal Guardian J",
@@ -2596,7 +2540,7 @@ namespace wServer.logic
                     new TimedTransition(28000, "heheh")
                     ),
                 new State("heheh",
-                    new Order(60, "shtrs The Forgotten King", "heheh"),
+                    new OrderOnce(60, "shtrs The Forgotten King", "heheh"),
                     new TimedTransition(1, "wait")
                     ),
                 new State("death",
@@ -2662,12 +2606,12 @@ namespace wServer.logic
                 new State("Crown")
                 ),
             new Threshold(0.05,
-                new ItemLoot("Lodius", 0.0005, 0),
-                new ItemLoot("Gekdu", 0.0005, 0),
-                new ItemLoot("Seruna", 0.0005, 0)
+                new ItemLoot("Lodius", 0.0015, 0)
+                //new ItemLoot("Gekdu", 0.0015, 0),
+                //new ItemLoot("Seruna", 0.0015, 0)
                 ),
             new Threshold(0.03,
-                new ItemLoot("The Forgotten Crown", 0.0005),
+                new ItemLoot("The Forgotten Crown", 0.009),
                 new ItemLoot("Shatters Key", 0.01)
                 ),
             new Threshold(0.01,
@@ -2675,7 +2619,7 @@ namespace wServer.logic
                 ),
             new Threshold(0.001,
                 new TierLoot(14, ItemType.Weapon, 0.2),
-                new TierLoot(6, ItemType.Ability, 0.2),
+                new TierLoot(7, ItemType.Ability, 0.2),
                 new TierLoot(14, ItemType.Armor, 0.2),
                 new TierLoot(6, ItemType.Ring, 0.2),
                 new ItemLoot("Greater Potion of Life", 1),

@@ -69,7 +69,7 @@ namespace wServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.0005),
+            new ItemLoot("Talisman Fragment", 0.009),
             new Threshold(.18, new ItemLoot("Potion of Attack", 0.05))
         )
         .Init("Sprite God",
@@ -96,7 +96,7 @@ namespace wServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.0005),
+            new ItemLoot("Talisman Fragment", 0.009),
             new Threshold(.18, new ItemLoot("Potion of Attack", 0.05))
         )
         .Init("Sprite Child",
@@ -133,7 +133,7 @@ namespace wServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.0005),
+            new ItemLoot("Talisman Fragment", 0.009),
             new Threshold(.18, new ItemLoot("Potion of Speed", 0.05))
         )
         .Init("Ent God",
@@ -159,7 +159,7 @@ namespace wServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.0005),
+            new ItemLoot("Talisman Fragment", 0.009),
             new Threshold(.18, new ItemLoot("Potion of Defense", 0.025))
             )
         .Init("Beholder",
@@ -185,7 +185,7 @@ namespace wServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.0005),
+            new ItemLoot("Talisman Fragment", 0.009),
             new Threshold(.18, new ItemLoot("Potion of Defense", 0.025))
             )
         .Init("Flying Brain",
@@ -211,7 +211,7 @@ namespace wServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.0005),
+            new ItemLoot("Talisman Fragment", 0.009),
             new Threshold(.18, new ItemLoot("Potion of Attack", 0.025))
         )
         .Init("Slime God",
@@ -238,7 +238,7 @@ namespace wServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.0005),
+            new ItemLoot("Talisman Fragment", 0.009),
             new Threshold(.18, new ItemLoot("Potion of Defense", 0.025))
             )
         .Init("Ghost God",
@@ -264,7 +264,7 @@ namespace wServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.0005),
+            new ItemLoot("Talisman Fragment", 0.009),
             new Threshold(.18, new ItemLoot("Potion of Speed", 0.05))
             
         )
@@ -295,7 +295,7 @@ namespace wServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.0005),
+            new ItemLoot("Talisman Fragment", 0.009),
             new Threshold(.18, new ItemLoot("Potion of Attack", 0.205))
             )
         .Init("Paper Bot",
@@ -331,7 +331,7 @@ namespace wServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.0005),
+            new ItemLoot("Talisman Fragment", 0.009),
             new Threshold(.18, new ItemLoot("Potion of Attack", 0.025))
             )
         .Init("Steel Bot",
@@ -367,7 +367,7 @@ namespace wServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.0005),
+            new ItemLoot("Talisman Fragment", 0.009),
             new Threshold(.18, new ItemLoot("Potion of Speed", 0.05))
             )
         .Init("Djinn",
@@ -450,7 +450,7 @@ namespace wServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.0005),
+            new ItemLoot("Talisman Fragment", 0.009),
             new Threshold(.18, new ItemLoot("Potion of Speed", 0.05))
             )
         .Init("Lucky Djinn",
@@ -523,7 +523,7 @@ namespace wServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.0005),
+            new ItemLoot("Talisman Fragment", 0.009),
             new Threshold(.18, new ItemLoot("Potion of Speed", 0.05))
             )
         .Init("Lucky Ent God",
@@ -598,7 +598,7 @@ namespace wServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.0005),
+            new ItemLoot("Talisman Fragment", 0.009),
             new Threshold(.18, new ItemLoot("Potion of Defense", 0.025))
             )
         ;

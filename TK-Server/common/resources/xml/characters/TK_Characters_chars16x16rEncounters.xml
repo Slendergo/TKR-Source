@@ -819,7 +819,7 @@
     <Size>130</Size>
     <Event />
     <ShadowSize>100</ShadowSize>
-    <MaxHitPoints>155000</MaxHitPoints>
+    <MaxHitPoints>130000</MaxHitPoints>
     <Defense>40</Defense>
     <Flying />
     <Hero />
@@ -830,16 +830,16 @@
     <KeepDamageRecord />
     <Projectile id="0">
       <ObjectId>Cannonball</ObjectId>
-      <Damage>80</Damage>
-      <Speed>60</Speed>
-      <Size>80</Size>
+      <Damage>95</Damage>
+      <Speed>85</Speed>
+      <Size>100</Size>
       <LifetimeMS>4000</LifetimeMS>
       <MultiHit />
     </Projectile>
     <Projectile id="1">
       <ObjectId>Giant Cannonball</ObjectId>
       <Damage>250</Damage>
-      <Speed>40</Speed>
+      <Speed>65</Speed>
       <Size>180</Size>
       <LifetimeMS>4000</LifetimeMS>
       <MultiHit />

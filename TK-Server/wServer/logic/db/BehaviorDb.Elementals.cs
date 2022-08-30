@@ -15,15 +15,15 @@ namespace wServer.logic
             new State(
                 new ScaleHP2(5),
                 new State("Start",
-                    new Shoot(15, 4, projectileIndex: 0, coolDown: 1000, coolDownOffset: 1000),
+                    new Shoot(15, 4, projectileIndex: 0, coolDown: 600),
                     new Prioritize(
-                        new Orbit(1, 6, 20, "Water Elemental", orbitClockwise: true)),
-                    new EntityNotExistsTransition("Water Elemental", 200, "Die")
+                        new Orbit(3, 6, 20, "Water Elemental", orbitClockwise: true)),
+                    new HpLessTransition(0.4, "Suicide")
                     ),
                 new State("Suicide",
-                    new Shoot(15, 8, projectileIndex: 0, coolDown: 1000, coolDownOffset: 1000),
-                    new Orbit(1, 6, 20, "Water Elemental", orbitClockwise: true),
-                    new TimedTransition(1000, "Die")
+                    new Shoot(15, 8, projectileIndex: 0, coolDown: 400),
+                    new Orbit(3, 6, 20, "Water Elemental", orbitClockwise: false),
+                    new HpLessTransition(0.05, "Die")
                     ),
                 new State("Die",
                     new Suicide()
@@ -36,61 +36,25 @@ namespace wServer.logic
                 new ScaleHP2(15),
                 new State("Waiting Player",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
-                    new PlayerWithinTransition(10, "Start", false)
-                    ),
-                new State("Start",
-                    new TimedTransition(3000, "One Now")
-                    ),
-                new State("One Now",
-                    new Spawn("Water Elemental Minion", 1, 1, 99999),
-                    new Taunt("One..."),
-                    new Shoot(15, 3, shootAngle: 25, projectileIndex: 0, coolDown: 1500),
-                    new EntitiesNotExistsTransition(30, "Two Now", "Water Elemental Minion")
-                    ),
-                new State("Two Now",
-                    new Taunt("Two..."),
-                    new TimedTransition(1500, "Two Spawn")
-                    ),
-                new State("Two Spawn",
-                    new SetAltTexture(1, 1),
-                    new Spawn("Water Elemental Minion", 2, 1, 1000),
-                    new Shoot(15, 3, shootAngle: 25, projectileIndex: 0, coolDown: 1500),
-                    new EntitiesNotExistsTransition(30, "Three Now", "Water Elemental Minion")
-                    ),
-                new State("Three Now",
-                    new Taunt("Three..."),
-                    new TimedTransition(1500, "Three Spawn")
-                    ),
-                new State("Three Spawn",
-                    new Spawn("Water Elemental Minion", 3, 1, 1000),
-                    new Shoot(15, 8, projectileIndex: 0, coolDown: 4000, coolDownOffset: 1000),
-                    new Shoot(15, 3, shootAngle: 25, projectileIndex: 0, coolDown: 1500),
-                    new EntitiesNotExistsTransition(30, "Four Now", "Water Elemental Minion")
-                    ),
-                new State("Four Now",
-                    new Taunt("Four..."),
-                    new TimedTransition(1500, "Four Spawn")
-                    ),
-                new State("Four Spawn",
-                    new SetAltTexture(2, 2),
-                    new Spawn("Water Elemental Minion", 4, 1, 1000),
-                    new Shoot(15, 8, projectileIndex: 0, coolDown: 4000, coolDownOffset: 1000),
-                    new Shoot(15, 3, shootAngle: 25, projectileIndex: 0, coolDown: 1500),
-                    new EntitiesNotExistsTransition(30, "Rage", "Water Elemental Minion")
+                    new PlayerWithinTransition(10, "Rage", false)
                     ),
                 new State("Rage",
-                    new Taunt("..."),
-                    new TimedTransition(1500, "Shoot")
+                    new Taunt("Lower your expectations warrior..."),
+                    new TimedTransition(4000, "Shoot")
                     ),
                 new State("Shoot",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
-                    new Wander(0.3),
-                    new StayCloseToSpawn(1, 8),
+                    new TossObject2("Water Elemental Minion", range: 8, angle: 0, coolDown: 999999),
+                    new TossObject2("Water Elemental Minion", range: 8, angle: 90, coolDown: 999999),
+                    new TossObject2("Water Elemental Minion", range: 8, angle: 180, coolDown: 999999),
+                    new TossObject2("Water Elemental Minion", range: 8, angle: 270, coolDown: 999999),
+                    new Wander(0.5),
+                    new Charge(6, 12, coolDown: 2000),
+                    new StayCloseToSpawn(1, 15),
                     new Taunt("FIVE!"),
-                    new ChangeSize(25, 200),
-                    new Shoot(15, 8, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1000),
-                    new Shoot(15, 5, shootAngle: 25, projectileIndex: 0, coolDown: 1000),
-                    new Shoot(15, 5, projectileIndex: 2, shootAngle: 25, coolDown: 3000, coolDownOffset: 3000)
+                    new Shoot(15, 8, projectileIndex: 1, coolDown: 1200),
+                    new Shoot(15, 5, shootAngle: 25, projectileIndex: 0, coolDown: 600),
+                    new Shoot(15, 5, projectileIndex: 2, shootAngle: 25, coolDown: 1500)
                     )
                 ),
             new Threshold(0.001,
@@ -100,7 +64,7 @@ namespace wServer.logic
                 new ItemLoot("Water Fragment", 0.0015, threshold: 0.03)
                 ),
             new Threshold(0.01,
-                new ItemLoot("Talisman Fragment", 0.0005, 0, 0.05),
+                new ItemLoot("Talisman Fragment", 0.009, 0, 0.05),
                 new ItemLoot("Thorn", 0.01),
                 new ItemLoot("Massacre", 0.01),
                 new ItemLoot("Frozen Water Armor", 0.0125),
@@ -229,7 +193,7 @@ namespace wServer.logic
                     new Wander(0.3),
                     new Follow(1.5, 1, 6, 2000, 3000),
                     new StayCloseToSpawn(1, 7),
-                    new Shoot(20, 4, projectileIndex: 1, shootAngle: 15, coolDown: 1000),
+                    new Shoot(20, 4, projectileIndex: 1, shootAngle: 15, coolDown: 600),
                     new HpLessTransition(0.75, "Second Phase Charge")
                     ),
                 new State("Second Phase Charge",
@@ -241,11 +205,11 @@ namespace wServer.logic
                     ),
                 new State("Second Phase",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
-                    new Wander(0.3),
+                    new Wander(0.5),
                     new Follow(1.5, 1, 6, 2000, 3000),
                     new StayCloseToSpawn(1, 7),
-                    new Shoot(20, 3, projectileIndex: 0, shootAngle: 15, coolDown: 1000),
-                    new Shoot(20, 5, projectileIndex: 1, shootAngle: 20, coolDown: 2000),
+                    new Shoot(20, 3, projectileIndex: 0, shootAngle: 15, coolDown: 700),
+                    new Shoot(20, 5, projectileIndex: 1, shootAngle: 20, coolDown: 1300),
                     new HpLessTransition(0.50, "Third Phase Charge")
                     ),
                 new State("Third Phase Charge",
@@ -257,19 +221,19 @@ namespace wServer.logic
                 new State("Third Phase",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
                     new Spawn("Wind Elemental Tornado", 4, 0.5, coolDown: 100, true),
-                    new Shoot(20, 3, projectileIndex: 0, shootAngle: 15, coolDown: 1000),
-                    new Shoot(20, 5, projectileIndex: 1, shootAngle: 20, coolDown: 1000)
+                    new Shoot(20, 3, projectileIndex: 0, shootAngle: 15, coolDown: 700),
+                    new Shoot(20, 5, projectileIndex: 1, shootAngle: 20, coolDown: 1300)
                     )
                 ),
             new Threshold(0.001,
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.01,
-                new ItemLoot("Talisman Fragment", 0.0005, 0, 0.05),
-                new ItemLoot("Staff of Zephyrs", 0.0009, threshold: 0.01),
-                new ItemLoot("Cyclone Orb", 0.0009, threshold: 0.01),
-                new ItemLoot("Gale Robe", 0.0009, threshold: 0.01),
-                new ItemLoot("Wind Charm", 0.0009, threshold: 0.01)
+                new ItemLoot("Talisman Fragment", 0.009, 0, 0.05),
+                new ItemLoot("Staff of Zephyrs", 0.009, threshold: 0.01),
+                new ItemLoot("Cyclone Orb", 0.01, threshold: 0.01),
+                new ItemLoot("Gale Robe", 0.01, threshold: 0.01),
+                new ItemLoot("Wind Charm", 0.01, threshold: 0.01)
                 ),
             new Threshold(0.03,
                 new ItemLoot("Wind Fragment", 0.00015, threshold: 0.03),
@@ -490,9 +454,9 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.03,
-                new ItemLoot("Fire Fragment", 0.000015),
-                new ItemLoot("Talisman Fragment", 0.0005, 0, 0.05),
-                new ItemLoot("Phoenix Ashes Orb", 0.000033)
+                new ItemLoot("Fire Fragment", 0.0015),
+                new ItemLoot("Talisman Fragment", 0.009, 0, 0.05),
+                new ItemLoot("Phoenix Ashes Orb", 0.001)
                 ),
             new Threshold(0.001,
                 new ItemLoot("Potion of Speed", 1),

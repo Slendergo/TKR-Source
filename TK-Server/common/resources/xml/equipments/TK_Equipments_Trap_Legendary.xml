@@ -34,10 +34,10 @@
 		<Mutilate />
 		<BagType>7</BagType>
 		<MpCost>95</MpCost>
-		<ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="28" amount="5">IncrementStat</ActivateOnEquip>
-		<Activate radius="6" condEffect="Curse" totalDamage="225" condDuration="4.0">Trap</Activate>
-		<Activate radius="6" totalDamage="200" condDuration="5.0">Trap</Activate>
+		<ActivateOnEquip stat="22" amount="7">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="28" amount="7">IncrementStat</ActivateOnEquip>
+		<Activate radius="6" condEffect="Curse" totalDamage="325" condDuration="4.0">Trap</Activate>
+		<Activate radius="6" totalDamage="350" condDuration="5.0">Trap</Activate>
 		<FameBonus>5</FameBonus>
 	</Object>
 	  <Object type="0x9922" id="Lotus Flower">

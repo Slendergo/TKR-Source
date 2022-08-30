@@ -63,10 +63,10 @@ namespace wServer.logic
                         new StayCloseToSpawn(1, 5)
                         ),
                     new Order(20, "Whirlpool", "Die"),
-                    new Shoot(20, count: 1, defaultAngle: 0, fixedAngle: 0, rotateAngle: 45, projectileIndex: 1,
-                        coolDown: 1000),
-                    new Shoot(20, count: 1, defaultAngle: 0, fixedAngle: 180, rotateAngle: 45, projectileIndex: 1,
-                        coolDown: 1000),
+                    new Shoot(20, count: 2, defaultAngle: 10, fixedAngle: 0, rotateAngle: 45, projectileIndex: 1,
+                        coolDown: 500),
+                    new Shoot(20, count: 2, defaultAngle: 10, fixedAngle: 180, rotateAngle: 45, projectileIndex: 1,
+                        coolDown: 500),
                     new TimedTransition(6000, "Spawn Tentacle")
                     )
                 )
@@ -75,11 +75,11 @@ namespace wServer.logic
             new State(
                 new Prioritize(
                     new Follow(1, 4, 1),
-                    new Orbit(3, 10, 15, "Hermit God", speedVariance: .2, radiusVariance: 1.5),
+                    new Orbit(4, 10, 15, "Hermit God", speedVariance: .2, radiusVariance: 1.5),
                     new Wander(0.5)
                     ),
-                new Shoot(6, count: 3, shootAngle: 10, coolDown: 1000),
-                new Shoot(6, count: 2, shootAngle: 20, projectileIndex: 1, coolDown: 2600, predictive: 0.8)
+                new Shoot(12, count: 3, shootAngle: 10, coolDown: 700),
+                new Shoot(12, count: 2, shootAngle: 20, projectileIndex: 1, coolDown: 1300, predictive: 0.8)
                 ),
             new ItemLoot("Health Potion", 0.1),
             new ItemLoot("Magic Potion", 0.1)
@@ -89,7 +89,7 @@ namespace wServer.logic
                 new State("Attack",
                     new EntityNotExistsTransition("Hermit God", 100, "Die"),
                     new Prioritize(
-                        new Orbit(3, 6, 10, "Hermit God")
+                        new Orbit(4, 6, 10, "Hermit God")
                         ),
                     new Shoot(10, 1, fixedAngle: 0, rotateAngle: 30, coolDown: 400)
                     ),
@@ -105,7 +105,7 @@ namespace wServer.logic
                     new Follow(1, 4, 1),
                     new Orbit(3, 6, 15, "Hermit God", speedVariance: .2, radiusVariance: .5)
                     ),
-                new Shoot(3, count: 8, shootAngle: 360 / 8, coolDown: 500)
+                new Shoot(8, count: 8, shootAngle: 360 / 8, coolDown: 500)
                 )
             )
         .Init("Hermit God Tentacle Spawner",
@@ -121,7 +121,7 @@ namespace wServer.logic
                     new EntityExistsTransition("Whirlpool", 1, "Waiting Order")
                     ),
                 new State("Minions",
-                    new Reproduce("Hermit Minion", 40, 20, coolDown: 1000),
+                    new Reproduce("Hermit Minion", 40, 20, coolDown: 700),
                     new TimedTransition(2000, "Waiting Order")
                     ),
                 new State("Die",
@@ -154,8 +154,8 @@ namespace wServer.logic
                 new ItemLoot("Magic Dust", 0.5)
                 ),
             new Threshold(0.03,
-                new ItemLoot("Talisman Fragment", 0.0005),
-                new ItemLoot("Helm of the Juggernaut", 0.00014, threshold: 0.03)
+                new ItemLoot("Talisman Fragment", 0.009),
+                new ItemLoot("Helm of the Juggernaut", 0.001, threshold: 0.03)
                 )
             )
         .Init("Hermit portal maker",

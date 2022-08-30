@@ -207,6 +207,7 @@
       <Speed>30</Speed>
       <Size>100</Size>
       <LifetimeMS>6200</LifetimeMS>
+		<ArmorPiercing/>
       <MultiHit />
     </Projectile>
     <Projectile id="4">

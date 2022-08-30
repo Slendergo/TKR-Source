@@ -425,7 +425,7 @@
 		<HitSound>monster/lizard_god_hit</HitSound>
 		<DeathSound>monster/lizard_god_death</DeathSound>
 		<Size>100</Size>
-		<MaxHitPoints>8000</MaxHitPoints>
+		<MaxHitPoints>4500</MaxHitPoints>
 		<Defense>5</Defense>
 		<Level>20</Level>
 		<XpMult>1.4</XpMult>

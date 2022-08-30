@@ -308,6 +308,22 @@ namespace wServer.logic.loot
             if (owners.Count() == 1 && GetPlayerLootBoost(player) > 1.0)
                 boosted = true;
 
+            if (player.TalismanCanOnlyGetWhiteBags)
+            {
+                var isWhiteBag = false;
+                foreach (var i in loots)
+                {
+                    if (i.BagType >= 7)
+                    {
+                        isWhiteBag = true;
+                        break;
+                    }
+                }
+
+                if (!isWhiteBag)
+                    return;
+            }
+
             foreach (var i in loots)
             {
                 if (i.BagType > bagType)

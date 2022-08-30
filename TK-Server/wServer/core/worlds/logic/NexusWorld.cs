@@ -206,7 +206,7 @@ namespace wServer.core.worlds.logic
                 if (EngineStage == 2)
                 {
                     amount = ENGINE_SECOND_STAGE_AMOUNT;
-                }
+                   }
                 if (EngineStage == 1)
                 {
                     amount = ENGINE_FIRST_STAGE_AMOUNT;
@@ -275,7 +275,7 @@ namespace wServer.core.worlds.logic
                     break;
             }
 
-            Engine.CurrentAmount = EngineFuel = Math.Min(current, ENGINE_THIRD_STAGE_AMOUNT);
+            Engine.CurrentAmount = EngineFuel = Math.Min(Math.Max(current, 0), ENGINE_THIRD_STAGE_AMOUNT);
             Engine.EngineTime = EngineStageTime;
 
             var engine = GameServer.Database.GetDbEngine();

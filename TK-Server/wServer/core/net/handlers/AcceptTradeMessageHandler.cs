@@ -32,23 +32,26 @@ namespace wServer.core.net.handlers
             if (player == null || client?.Player?.World is TestWorld)
                 return;
 
-            if (player.tradeAccepted) return;
+            if (player.tradeAccepted)
+                return;
+
+            var tradeTarget = player.tradeTarget;
 
             player.trade = myOffer;
-            if (player.tradeTarget.trade.SequenceEqual(yourOffer))
+            if (tradeTarget.trade.SequenceEqual(yourOffer))
             {
                 player.tradeAccepted = true;
-                player.tradeTarget.Client.SendPacket(new TradeAccepted()
+                tradeTarget.Client.SendPacket(new TradeAccepted()
                 {
-                    MyOffer = player.tradeTarget.trade,
+                    MyOffer = tradeTarget.trade,
                     YourOffer = player.trade
                 });
 
-                if (player.tradeAccepted && player.tradeTarget.tradeAccepted)
+                if (player.tradeAccepted && tradeTarget.tradeAccepted)
                 {
-                    if (player.IsAdmin || player.IsAdmin)
+                    if (player.IsAdmin || tradeTarget.IsAdmin)
                     {
-                        player.tradeTarget.CancelTrade();
+                        tradeTarget.CancelTrade();
                         player.CancelTrade();
                         return;
                     }

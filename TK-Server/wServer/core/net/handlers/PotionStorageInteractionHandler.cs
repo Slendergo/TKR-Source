@@ -24,9 +24,8 @@ namespace wServer.core.net.handlers
             var action = rdr.ReadByte();
 
             var player = client.Player;
-
             var typeName = type == 0 ? POTION_OF_LIFE : type == 1 ? POTION_OF_MANA : type == 2 ? POTION_OF_ATTACK : type == 3 ? POTION_OF_DEFENSE : type == 4 ? POTION_OF_SPEED : type == 5 ? POTION_OF_DEXTERITY : type == 6 ? POTION_OF_VITALITY : type == 7 ? POTION_OF_WISDOM : "Unknown";
-            if (typeName == "Unknown")
+            if (player == null || typeName == "Unknown")
             {
                 player.SendInfo("Unknown Error");
                 return;
@@ -257,18 +256,18 @@ namespace wServer.core.net.handlers
             }
         }
 
-        private bool CanModifyStat(Player Player, byte type, bool checkZero)
+        private bool CanModifyStat(Player player, byte type, bool checkZero)
         {
             switch (type)
             {
-                case 0: return checkZero ? Player.SPSLifeCount <= 0 : Player.SPSLifeCount < Player.SPSLifeCountMax;
-                case 1: return checkZero ? Player.SPSManaCount <= 0 : Player.SPSManaCount < Player.SPSManaCountMax;
-                case 2: return checkZero ? Player.SPSAttackCount <= 0 : Player.SPSAttackCount < Player.SPSAttackCountMax;
-                case 3: return checkZero ? Player.SPSDefenseCount <= 0 : Player.SPSDefenseCount < Player.SPSDefenseCountMax;
-                case 4: return checkZero ? Player.SPSSpeedCount <= 0 : Player.SPSSpeedCount < Player.SPSSpeedCountMax;
-                case 5: return checkZero ? Player.SPSDexterityCount <= 0 : Player.SPSDexterityCount < Player.SPSDexterityCountMax;
-                case 6: return checkZero ? Player.SPSVitalityCount <= 0 : Player.SPSVitalityCount < Player.SPSVitalityCountMax;
-                case 7: return checkZero ? Player.SPSWisdomCount <= 0 : Player.SPSWisdomCount < Player.SPSWisdomCountMax;
+                case 0: return checkZero ? player.SPSLifeCount <= 0 : player.SPSLifeCount < player.SPSLifeCountMax;
+                case 1: return checkZero ? player.SPSManaCount <= 0 : player.SPSManaCount < player.SPSManaCountMax;
+                case 2: return checkZero ? player.SPSAttackCount <= 0 : player.SPSAttackCount < player.SPSAttackCountMax;
+                case 3: return checkZero ? player.SPSDefenseCount <= 0 : player.SPSDefenseCount < player.SPSDefenseCountMax;
+                case 4: return checkZero ? player.SPSSpeedCount <= 0 : player.SPSSpeedCount < player.SPSSpeedCountMax;
+                case 5: return checkZero ? player.SPSDexterityCount <= 0 : player.SPSDexterityCount < player.SPSDexterityCountMax;
+                case 6: return checkZero ? player.SPSVitalityCount <= 0 : player.SPSVitalityCount < player.SPSVitalityCountMax;
+                case 7: return checkZero ? player.SPSWisdomCount <= 0 : player.SPSWisdomCount < player.SPSWisdomCountMax;
                 default: return false;
             }
         }

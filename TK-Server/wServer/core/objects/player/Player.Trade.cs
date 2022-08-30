@@ -190,7 +190,6 @@ namespace wServer.core.objects
                 tradeTarget.trade = null;
                 tradeTarget.tradeAccepted = false;
             }
-
             tradeTarget = null;
             trade = null;
             tradeAccepted = false;

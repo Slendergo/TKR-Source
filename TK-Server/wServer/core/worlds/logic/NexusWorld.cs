@@ -206,7 +206,7 @@ namespace wServer.core.worlds.logic
                 if (EngineStage == 2)
                 {
                     amount = ENGINE_SECOND_STAGE_AMOUNT;
-                }
+                   }
                 if (EngineStage == 1)
                 {
                     amount = ENGINE_FIRST_STAGE_AMOUNT;

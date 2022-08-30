@@ -101,9 +101,18 @@ namespace wServer.logic
                 {
                     if (enemy.HP > 3000)
                     {
-                        var essenceToGive = player.World.Random.Next(25, 100);
-                        if (essenceToGive > 0)
-                            player.GiveEssence(essenceToGive);
+                        if(player.ActiveTalismans.Count > 0)
+                        {
+                            var essenceToGive = player.World.Random.Next(100, 200);
+                            if (essenceToGive > 0)
+                                player.GiveEssence(essenceToGive);
+                        }
+                        else
+                        {
+                            var essenceToGive = player.World.Random.Next(25, 100);
+                            if (essenceToGive > 0)
+                                player.GiveEssence(essenceToGive);
+                        }
                     }
                     else
                     {

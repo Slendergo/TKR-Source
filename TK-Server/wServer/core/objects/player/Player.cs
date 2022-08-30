@@ -784,9 +784,11 @@ namespace wServer.core.objects
             if (!inMarket && IsInMarket)
             {
                 SendInfo("You have left the market");
-                
-                if(tradeTarget != null)
+                if (tradeTarget != null)
+                {
+                    tradeTarget.CancelTrade(true);
                     CancelTrade(true);
+                }
             }
             IsInMarket = inMarket;
         }
@@ -1225,7 +1227,7 @@ namespace wServer.core.objects
             {
                 var vitalityStat = Stats[6];
 
-                HealthRegenCarry += (1.0 + (0.20 * vitalityStat));
+                HealthRegenCarry += (0.7 + (0.20 * vitalityStat));
                 if(TalismanExtraLifeRegen > 0.0f)
                     HealthRegenCarry += (HealthRegenCarry * TalismanExtraLifeRegen);
                 if(TalismanHealthHPRegen > 0.0f)

@@ -252,12 +252,14 @@ namespace wServer.core.objects
 
             if (e.Id == Player.Id && statChange.Stat == StatDataType.None)
                 return;
+            lock (StatsUpdates)
+            {
+                if (!StatsUpdates.ContainsKey(e))
+                    StatsUpdates[e] = new Dictionary<StatDataType, object>();
 
-            if (!StatsUpdates.ContainsKey(e))
-                StatsUpdates[e] = new Dictionary<StatDataType, object>();
-
-            if (statChange.Stat != StatDataType.None)
-                StatsUpdates[e][statChange.Stat] = statChange.Value;
+                if (statChange.Stat != StatDataType.None)
+                    StatsUpdates[e][statChange.Stat] = statChange.Value;
+            }
         }
 
         public void SendNewTick(int delta)
@@ -267,8 +269,12 @@ namespace wServer.core.objects
             var newTick = new NewTick()
             {
                 TickId = TickId,
-                TickTime = delta,
-                Statuses = StatsUpdates.Select(_ => new ObjectStats()
+                TickTime = delta
+            };
+
+            lock (StatsUpdates)
+            {
+                newTick.Statuses = StatsUpdates.Select(_ => new ObjectStats()
                 {
                     Id = _.Key.Id,
                     Position = new Position()
@@ -277,8 +283,9 @@ namespace wServer.core.objects
                         Y = _.Key.RealY
                     },
                     Stats = _.Value.ToArray()
-                }).ToList()
-            };
+                }).ToList();
+            }
+
             StatsUpdates.Clear();
 
             Player.Client.SendPacket(newTick);

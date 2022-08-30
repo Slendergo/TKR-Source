@@ -79,8 +79,11 @@ namespace wServer.core.net.handlers
                 return;
             }
 
-            if (talisman.CurrentXP == talisman.ExpGoal && talisman.Level == desc.MaxLevels)
+            if (talisman.CurrentXP >= talisman.ExpGoal && talisman.Level >= desc.MaxLevels)
             {
+                talisman.CurrentXP = talisman.ExpGoal;
+                talisman.Level = (byte)desc.MaxLevels;
+                player.UpdateTalsimans();
                 player.SendError("You area alraedy at max level");
                 return;
             }
@@ -110,7 +113,13 @@ namespace wServer.core.net.handlers
                 return;
             }
 
-            if (talisman.Tier > 2 || talisman.Tier == desc.Tiers.Count - 1) // we start at tier 0 as first tier
+            if (talisman.Level != desc.MaxLevels)
+            {
+                player.SendError("You must max all levels to upgrade tier");
+                return;
+            }
+
+            if (talisman.Tier > 2 || talisman.Tier >= desc.Tiers.Count - 1) // we start at tier 0 as first tier
             {
                 player.SendError("You are already at max tier");
                 return;

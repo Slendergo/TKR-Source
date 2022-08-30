@@ -1018,9 +1018,9 @@ namespace wServer.logic
                 new State("Wave 1",
                     new Shoot(15, 5, projectileIndex: 1, coolDown: 1000),
 
-                    new Shoot(8, 1, projectileIndex: 0, coolDown: 1000, predictive: 1.5, coolDownOffset: 100),
-                    new Shoot(8, 2, shootAngle: 10, projectileIndex: 4, predictive: 1.5, coolDown: 1000, coolDownOffset: 100),
-                    new Shoot(8, 2, shootAngle: 20, projectileIndex: 5, predictive: 1.5, coolDown: 1000, coolDownOffset: 100),
+                    new Shoot(8, 1, projectileIndex: 0, coolDown: 1000, predictive: 1, coolDownOffset: 100),
+                    new Shoot(8, 2, shootAngle: 10, projectileIndex: 4, predictive: 1, coolDown: 1000, coolDownOffset: 100),
+                    new Shoot(8, 2, shootAngle: 20, projectileIndex: 5, predictive: 1, coolDown: 1000, coolDownOffset: 100),
 
                     new Shoot(30, 2, projectileIndex: 3, fixedAngle: 0, coolDown: 7200, coolDownOffset: 100),
                     new Shoot(30, 2, projectileIndex: 3, fixedAngle: 5, coolDown: 7200, coolDownOffset: 200),

@@ -15,6 +15,7 @@ namespace wServer.logic
         .Init("Fluffy",
             new State(
                 new ScaleHP2(20),
+                new DropPortalOnDeath("Defiled Graveyard Portal", 0.7),
                     new State("Pause",
                         new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
                         new PlayerWithinTransition(10, "Start")
@@ -67,7 +68,6 @@ namespace wServer.logic
                         new TimedTransition(5000, "Fight 3.1")
                         ),
                     new State("Fight 3.1",
-                        new DropPortalOnDeath("Defiled Graveyard Portal", 0.7),
                         new Chase(8, coolDown: 0),
                         new RemoveConditionalEffect(ConditionEffectIndex.Invulnerable),
                         new Shoot(15, 8, projectileIndex: 5, coolDown: 1000),

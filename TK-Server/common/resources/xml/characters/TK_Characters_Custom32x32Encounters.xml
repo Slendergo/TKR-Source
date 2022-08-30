@@ -284,6 +284,7 @@
 		<Defense>30</Defense>
 		<StasisImmune/>
 		<StunImmune/>
+		<DazedImmune/>
 		<ParalyzeImmune/>
 		<XpMult>1.2</XpMult>
 		<Projectile id="0">
@@ -1050,7 +1051,7 @@
 		<Size>120</Size>
 		<HitSound>monster/dragons_hit</HitSound>
 		<DeathSound>monster/djinn_hit</DeathSound>
-		<MaxHitPoints>60000</MaxHitPoints>
+		<MaxHitPoints>95000</MaxHitPoints>
 		<Defense>55</Defense>
 		<Projectile id="0">
 			<ObjectId>Cerebrus's Claw</ObjectId>

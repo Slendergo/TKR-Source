@@ -206,7 +206,7 @@ namespace wServer.logic
                 new Threshold(0.01,
                 LootTemplates.DustLoot()
                     ),
-            new Threshold(0.05,
+            new Threshold(0.001,
                 new TierLoot(12, ItemType.Weapon, 0.05),
                 new TierLoot(13, ItemType.Armor, 0.05),
                 new TierLoot(5, ItemType.Ring, 0.05),
@@ -220,7 +220,7 @@ namespace wServer.logic
                 new ItemLoot("Potion of Defense", 1),
                 new ItemLoot("Potion of Attack", 1),
                 new ItemLoot("Old Cleric's Cloak", 0.001),
-                new ItemLoot("Mortomus' Shovel", 0.001),
+                new ItemLoot("Mortomus' Shovel", 0.001, 0.03),
                 new ItemLoot("Groundkeeper's Lantern", 0.005),
                 new ItemLoot("Scepter of Whispers", 0.005),
                 new ItemLoot("Magic Dust", 0.5)

@@ -25,8 +25,8 @@ namespace wServer.logic
                     new SetAltTexture(1),
                     new SetAltTexture(3),
                     new Wander(0.3),
-                    new Shoot(10, 5, 10, 0, coolDown: 2000),
-                    new Shoot(10, 1, 10, 1, coolDown: 4000),
+                    new Shoot(10, 5, 10, 0, coolDown: 1000),
+                    new Shoot(10, 1, 10, 1, coolDown: 2000),
                     new EntityNotExistsTransition("Ghost Lanturn Off", 30, "Vunerable"),
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable)
                     ),
@@ -51,9 +51,9 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.03,
-                new ItemLoot("Spirit Dagger", 0.003),
-                new ItemLoot("Spectral Cloth Armor", 0.003),
-                new ItemLoot("Captain's Ring", 0.003)
+                new ItemLoot("Spirit Dagger", 0.001),
+                new ItemLoot("Spectral Cloth Armor", 0.001),
+                new ItemLoot("Captain's Ring", 0.001)
                 ),
               new Threshold(0.05,
                 new ItemLoot("Shadow Shawl", 0.0015)
@@ -65,7 +65,7 @@ namespace wServer.logic
                 new TierLoot(5, ItemType.Ability, 0.03),
                 new TierLoot(11, ItemType.Armor, 0.07),
                 new TierLoot(12, ItemType.Armor, 0.04),
-                new ItemLoot("Davy's Key", 0.01, 0, 0.03),
+                new ItemLoot("Davy's Key", 0.009, 0, 0.03),
                 new ItemLoot("Ghostly Prism", 0.001),
                 new ItemLoot("Potion of Wisdom", 1),
                 new ItemLoot("Potion of Attack", 1),

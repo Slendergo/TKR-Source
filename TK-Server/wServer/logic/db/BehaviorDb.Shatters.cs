@@ -269,6 +269,12 @@ namespace wServer.logic
                     ),
                 new State("BEGIN",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new OrderOnce(50, "shtrs Bridge Obelisk A", "TALK"),
+                    new OrderOnce(50, "shtrs Bridge Obelisk B", "TALK"),
+                    new OrderOnce(50, "shtrs Bridge Obelisk D", "TALK"),
+                    new OrderOnce(50, "shtrs Bridge Obelisk E", "TALK"),
+                    new OrderOnce(50, "shtrs Bridge Obelisk C", "JustKillMe"),
+                    new OrderOnce(50, "shtrs Bridge Obelisk F", "JustKillMe"),
                     new EntitiesNotExistsTransition(30, "Wake", "shtrs Bridge Obelisk A", "shtrs Bridge Obelisk B", "shtrs Bridge Obelisk D", "shtrs Bridge Obelisk E", "shtrs Bridge Obelisk C", "shtrs Bridge Obelisk F")
                     ),
                 new State("Wake",

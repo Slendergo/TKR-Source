@@ -2619,7 +2619,7 @@ namespace wServer.logic
                 ),
             new Threshold(0.001,
                 new TierLoot(14, ItemType.Weapon, 0.2),
-                new TierLoot(7, ItemType.Ability, 0.2),
+                new TierLoot(6, ItemType.Ability, 0.2),
                 new TierLoot(14, ItemType.Armor, 0.2),
                 new TierLoot(6, ItemType.Ring, 0.2),
                 new ItemLoot("Greater Potion of Life", 1),

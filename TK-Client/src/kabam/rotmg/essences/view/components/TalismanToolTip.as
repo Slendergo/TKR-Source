@@ -63,7 +63,10 @@ public class TalismanToolTip extends ToolTip
         this.effects = new Vector.<Effect>();
 //        this.effects.push(new Effect("Base Cost", this.props_.baseUpgradeCost_.toString()));
 //        this.effects.push(new Effect("Cost Multiplier", this.props_.costMultiplier_.toString()));
-//        this.effects.push(new Effect("Max Level", this.props_.maxLevels_.toString()));
+        this.effects.push(new Effect("Max Level", this.props_.maxLevels_.toString()));
+        if(this.props_.requires16_) {
+            this.effects.push(new Effect("", "Requires 16/16"));
+        }
 
         var tierXML:XML = null;
         for each(tierXML in this.props_.source_.Tier)
@@ -125,7 +128,7 @@ public class TalismanToolTip extends ToolTip
 
             xml = null;
             for each(xml in tierXML.FameGainBonus){
-                this.effects.push(new Effect("", "+" + (xml.@percentage * 100.0) + " Fame Gain"));
+                this.effects.push(new Effect("", "+" + (xml.@percentage * 100.0) + "% Fame Gain"));
             }
 
             if(tierXML.hasOwnProperty("NoPotionHealing")){

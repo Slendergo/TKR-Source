@@ -340,6 +340,7 @@
     <MaxLevels>1</MaxLevels>
     <Restrictions type="mythical" />
     <!-- requires 16/16 -->
+    <Requires16/>
     <Tier tier="0">
       <BagBoost type="white" percentage="0.5" />
       <CanOnlyGetWhiteBags />

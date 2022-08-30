@@ -138,7 +138,14 @@ namespace wServer.core.net.handlers
                 return;
             }
 
-            if(player.ActiveTalismans.Count >= 2)
+            if(desc.Requires16 && player.GetMaxedStats() != 16)
+            {
+                player.UpdateTalsimans();
+                player.SendError("You must be 16/16");
+                return;
+            }
+
+            if (player.ActiveTalismans.Count >= 2)
             {
                 player.UpdateTalsimans();
                 player.SendError("You can only equip 2 talismans for now");

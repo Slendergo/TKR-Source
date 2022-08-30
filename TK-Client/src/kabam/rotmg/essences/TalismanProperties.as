@@ -10,6 +10,7 @@ public class TalismanProperties
     public var tierUpgradeCost_:int;
     public var costMultiplier_:Number;
     public var maxLevels_:int;
+    public var requires16_:Boolean;
     public var source_:XML;
     public var tiers_:Dictionary;
 
@@ -22,6 +23,7 @@ public class TalismanProperties
         this.tierUpgradeCost_ = int(xml.TierUpgradeCost);
         this.costMultiplier_ = Number(xml.CostMultiplier);
         this.maxLevels_ = int(xml.MaxLevels);
+        this.requires16_ = xml.hasOwnProperty("Requires16");
         this.source_ = xml;
 
         this.tiers_ = new Dictionary();

@@ -13,6 +13,7 @@ namespace common.resources
         public readonly int TierUpgradeCost;
         public readonly float CostMultiplier;
         public readonly int MaxLevels;
+        public readonly bool Requires16;
         public readonly Dictionary<int, TalismanTierDesc> Tiers = new Dictionary<int, TalismanTierDesc>();
 
         public TalismanDesc(XElement e)
@@ -24,6 +25,7 @@ namespace common.resources
             TierUpgradeCost = e.GetValue<int>("TierUpgradeCost");
             CostMultiplier = e.GetValue<float>("CostMultiplier");
             MaxLevels = e.GetValue<int>("MaxLevels");
+            Requires16 = e.HasElement("Requires16");
 
             Tiers = new Dictionary<int, TalismanTierDesc>();
             foreach (var te in e.Elements("Tier"))
@@ -55,7 +57,7 @@ namespace common.resources
         //public readonly bool DamageIsAverage;
         public readonly bool RemoveManaBar;
         public readonly float AbilityLifeCost;
-        //public readonly bool CanOnlyGetWhiteBags;
+        public readonly bool CanOnlyGetWhiteBags;
         //public readonly List<TalismanBagBoost> BagBoost;
         //public readonly List<TalismanExtraDamageOn> ExtraDamageOn;
 
@@ -101,6 +103,7 @@ namespace common.resources
                 Health.Add(new TalismanHealth(te));
 
             NoPotionHealing = e.HasElement("NoPotionHealing");
+            CanOnlyGetWhiteBags = e.HasElement("CanOnlyGetWhiteBags");
         }
     }
 

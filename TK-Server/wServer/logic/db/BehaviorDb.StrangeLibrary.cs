@@ -153,9 +153,8 @@ namespace wServer.logic
                     new RemoveConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new Reproduce("Strange Magician Spell", 20, 3, 3000),
                     new Flash(0xFF0000, 1, 1),
-                    new Charge(speed: 3, range: 15, coolDown: 3000), //wanna offset this so it happens 1 second after the reproduce but its whatever
-                    new Shoot(20, 2, shootAngle: 20, projectileIndex: 0, predictive: 1, coolDown: 500),
-                    new Shoot(20, 1, shootAngle: 0, projectileIndex: 1, predictive: 0, coolDown: 1750),
+                    new Chase(speed: 8, sightRange: 11, range: 15, duration: 5, coolDown: 3000), new Shoot(20, 2, shootAngle: 20, projectileIndex: 0, predictive: 1, coolDown: 500),
+                    new Shoot(20, 1, shootAngle: 0, projectileIndex: 1, predictive: 0, coolDown: 950),
                     new HpLessTransition(0.5, "Shoot Two")
                     ),
                 new State("Shoot Two",
@@ -177,7 +176,7 @@ namespace wServer.logic
                 new State("Rage Start",
                     new Reproduce("Strange Magician Spell", 20, 3, 1500),
                     new Wander(0.5),
-                    new Chase(speed: 3, sightRange: 11, range: 15, duration: 5, coolDown: 3000),
+                    new Chase(speed: 8, sightRange: 11, range: 15, duration: 5, coolDown: 3000),
                     new Shoot(20, 2, shootAngle: 20, projectileIndex: 0, predictive: 0, coolDown: 750),
                     new Shoot(20, 2, shootAngle: 20, projectileIndex: 0, predictive: 0, coolDown: 1000),
                     new Shoot(20, 1, shootAngle: 20, projectileIndex: 1, predictive: 0, coolDown: 1200)

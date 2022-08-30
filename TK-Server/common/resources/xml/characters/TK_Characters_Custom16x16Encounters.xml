@@ -212,7 +212,7 @@
 		<StunImmune/>
 		<Projectile id="0">
 			<ObjectId>Yellow HC Shot</ObjectId>
-			<Damage>40</Damage>
+			<Damage>130</Damage>
 			<Speed>80</Speed>
 			<Size>90</Size>
 			<ArmorPiercing/>
@@ -234,7 +234,7 @@
 		<StunImmune/>
 		<Projectile id="0">
 			<ObjectId>Yellow HC Shot</ObjectId>
-			<Damage>40</Damage>
+			<Damage>110</Damage>
 			<Speed>80</Speed>
 			<Size>90</Size>
 			<LifetimeMS>1000</LifetimeMS>
@@ -255,7 +255,7 @@
 		<StunImmune/>
 		<Projectile id="0">
 			<ObjectId>Yellow HC Shot</ObjectId>
-			<Damage>40</Damage>
+			<Damage>135</Damage>
 			<Speed>80</Speed>
 			<Size>90</Size>
 			<LifetimeMS>1000</LifetimeMS>

@@ -1028,7 +1028,7 @@
     <Projectile id="0">
       <ObjectId>Ghost Boss Slash</ObjectId>
       <Speed>65</Speed>
-      <Damage>130</Damage>
+      <Damage>160</Damage>
       <LifetimeMS>1700</LifetimeMS>
       <Size>100</Size>
       <ConditionEffect duration="4">Bleeding</ConditionEffect>
@@ -1036,7 +1036,7 @@
     <Projectile id="1">
       <ObjectId>Ghost Boss Spinner</ObjectId>
       <Speed>45</Speed>
-      <Damage>140</Damage>
+      <Damage>190</Damage>
       <Size>110</Size>
       <LifetimeMS>3600</LifetimeMS>
       <Boomerang />

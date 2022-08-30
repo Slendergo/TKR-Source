@@ -733,8 +733,14 @@ namespace wServer.core.objects
             PlayerUpdate.UpdateTiles = true;
         }
 
+
+        public bool DeltaTime;
+
         public override void Tick(ref TickTime time)
         {
+            if (DeltaTime)
+                SendInfo($"[DeltaTime]: {World.DisplayName} -> {time.ElaspedMsDelta} | {time.LogicTime}");
+            
             if (KeepAlive(time))
             {
                 PlayerUpdate.SendUpdate();

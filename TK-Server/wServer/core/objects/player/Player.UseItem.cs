@@ -579,11 +579,15 @@ namespace wServer.core.objects
 
         private void AEUnlockTalisman(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
+            var entity = World.GetEntity(objId);
             var desc = GameServer.Resources.GameData.GetTalisman(eff.Type);
             if (desc == null)
             {
                 SendError("Error unable to consume!");
-                Inventory[slot] = item;
+                if (entity is Container container)
+                    container.Inventory[slot] = item;
+                else
+                    Inventory[slot] = item;
                 return;
             }
 
@@ -592,7 +596,10 @@ namespace wServer.core.objects
 
             if (GameServer.Database.HasTalismanUnlocked(accountId, eff.Type)) {
                 SendInfo("You have already unlocked this talisman!");
-                Inventory[slot] = item;
+                if (entity is Container container)
+                    container.Inventory[slot] = item;
+                else
+                    Inventory[slot] = item;
                 return;
             }
 

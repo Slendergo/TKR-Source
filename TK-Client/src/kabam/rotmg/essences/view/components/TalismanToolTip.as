@@ -167,7 +167,7 @@ public class TalismanToolTip extends ToolTip
             }
 
             if(tierXML.hasOwnProperty("CanOnlyGetWhiteBags")){
-                this.effects.push(new Effect("", "You can only get white bag loot"));
+                this.effects.push(new Effect("", "You can only get white bag loot, chances increase by 50%"));
             }
 
             xml = null;
@@ -198,24 +198,6 @@ public class TalismanToolTip extends ToolTip
                         type = "HP Regen"; break;
                 }
                 this.effects.push(new Effect("", "If " + condition + " " + (xml.@percent * 100.0) + "% HP Gain " + (roundDecimal(xml.@add * 100.0, 3)) + "% " + type + scaleType));
-            }
-
-            xml = null;
-            for each(xml in tierXML.BagBoost){
-                var scaleType:String = " Flat";
-                if(xml.@scale == "perLevel") {
-                    scaleType = " Per Level"
-                }
-                var symbol:String = "+";
-                if(xml.@percentage < 0){
-                    symbol = "";
-                }
-
-                var type:String = xml.@type;
-                if(type == "white"){
-                    type = "White Bag";
-                }
-                this.effects.push(new Effect("", symbol + (xml.@percentage * 100.0) + "% " + type + scaleType));
             }
 
             xml = null;

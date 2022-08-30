@@ -112,6 +112,7 @@ namespace wServer.logic.loot
             allLoot += player.LDBoostTime > 0 ? 0.1 : 0;
             allLoot += player.TalismanLootBoost;
             allLoot += player.TalismanLootBoostPerPlayer;
+            allLoot += player.TalismanCanOnlyGetWhiteBags ? 0.5 : 0;
             return allLoot;
         }
 

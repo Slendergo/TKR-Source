@@ -58,7 +58,6 @@ namespace common.resources
         public readonly bool RemoveManaBar;
         public readonly float AbilityLifeCost;
         public readonly bool CanOnlyGetWhiteBags;
-        //public readonly List<TalismanBagBoost> BagBoost;
         //public readonly List<TalismanExtraDamageOn> ExtraDamageOn;
 
         public TalismanTierDesc(XElement e)

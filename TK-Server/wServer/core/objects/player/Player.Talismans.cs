@@ -28,7 +28,7 @@ namespace wServer.core.objects
         public bool TalismanNoPotionHealing { get; set; }
         public float TalismanHealthHPRegen { get; set; }
         public float TalismanHealthRateOfFire { get; set; }
-        public bool TalismanWhiteBagOnly { get; set; }
+        public bool TalismanCanOnlyGetWhiteBags { get; set; }
 
         private SV<int> _noManaBar { get; set; }
 
@@ -137,7 +137,7 @@ namespace wServer.core.objects
             TalismanNoPotionHealing = false;
             TalismanHealthHPRegen = 0.0f;
             TalismanHealthRateOfFire = 0.0f;
-            TalismanWhiteBagOnly = false;
+            TalismanCanOnlyGetWhiteBags = false;
 
             RemoveCondition(ConditionEffectIndex.ArmorBreakImmune);
             RemoveCondition(ConditionEffectIndex.SlowedImmune);
@@ -233,7 +233,7 @@ namespace wServer.core.objects
                     TalismanFameGainBonus += percentage;
                 TalismanCantGetLoot = tierDesc.CantGetLoot;
                 TalismanNoPotionHealing = tierDesc.NoPotionHealing;
-                TalismanWhiteBagOnly = tierDesc.CanOnlyGetWhiteBags;
+                TalismanCanOnlyGetWhiteBags = tierDesc.CanOnlyGetWhiteBags;
             }
         }
 

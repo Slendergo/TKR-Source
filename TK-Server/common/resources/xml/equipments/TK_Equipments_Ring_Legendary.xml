@@ -216,7 +216,7 @@
   <Object type="0x4912" id="Magical Lodestone">
     <Class>Equipment</Class>
     <Item />
-    <OutofOneMind />
+	  <SteamRoller />
     <Texture>
       <File>LostHallsObj</File>
       <Index>0x03</Index>

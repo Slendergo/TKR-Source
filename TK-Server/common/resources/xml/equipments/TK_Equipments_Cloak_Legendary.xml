@@ -64,11 +64,10 @@
     <BagType>7</BagType>
     <Legendary />
     <FameBonus>7</FameBonus>
-    <MpCost>95</MpCost>
+    <HpCost>95</HpCost>
     <Activate effect="Invisible" duration="3.5">ConditionEffectSelf</Activate>
     <Activate effect="Damaging" duration="3">ConditionEffectSelf</Activate>
     <Activate effect="Slowed" duration="1.5">ConditionEffectSelf</Activate>
-    <Activate effect="Sick" duration="3.5">ConditionEffectSelf</Activate>
     <ActivateOnEquip stat="0" amount="-30">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="9">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>

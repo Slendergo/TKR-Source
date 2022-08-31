@@ -31,13 +31,8 @@ namespace wServer.core.worlds.logic
 
         public override bool AllowedAccess(Client client) => !Closed || client.Rank.IsAdmin;
 
-        private int ticks = 0;
         protected override void UpdateLogic(ref TickTime time)
         {
-            ticks++;
-            if (ticks == 60)
-                CloseRealm();
-
             if (IsPlayersMax())
                 GameServer.WorldManager.Nexus.PortalMonitor.ClosePortal(Id);
             else if (!GameServer.WorldManager.Nexus.PortalMonitor.PortalIsOpen(Id))

@@ -216,6 +216,7 @@
 			<Speed>80</Speed>
 			<Size>90</Size>
 			<ArmorPiercing/>
+			<ConditionEffect duration="3">Armor Broken</ConditionEffect>
 			<LifetimeMS>1000</LifetimeMS>
 		</Projectile>
 	</Object>
@@ -258,6 +259,7 @@
 			<Damage>195</Damage>
 			<Speed>80</Speed>
 			<Size>90</Size>
+			<ConditionEffect duration="3">Armor Broken</ConditionEffect>
 			<LifetimeMS>1000</LifetimeMS>
 		</Projectile>
 	</Object>

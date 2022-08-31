@@ -58,14 +58,14 @@
     <Defense>30</Defense>
     <Projectile id="1">
       <ObjectId>Golden Blast</ObjectId>
-      <Damage>80</Damage>
+      <Damage>130</Damage>
       <Speed>60</Speed>
       <LifetimeMS>3000</LifetimeMS>
       <Size>150</Size>
     </Projectile>
     <Projectile id="2">
       <ObjectId>Gold Fireball</ObjectId>
-      <Damage>90</Damage>
+      <Damage>150</Damage>
       <Speed>60</Speed>
       <LifetimeMS>3000</LifetimeMS>
       <Size>150</Size>
@@ -87,7 +87,7 @@
     <Defense>30</Defense>
     <Projectile id="1">
       <ObjectId>Golden Blast</ObjectId>
-      <Damage>80</Damage>
+      <Damage>140</Damage>
       <Speed>30</Speed>
       <LifetimeMS>3000</LifetimeMS>
       <Size>125</Size>

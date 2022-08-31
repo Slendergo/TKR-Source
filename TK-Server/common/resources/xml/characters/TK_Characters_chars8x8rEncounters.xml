@@ -128,7 +128,7 @@
     <StasisImmune />
     <Projectile id="1">
       <ObjectId>Grey Spiral</ObjectId>
-      <Damage>60</Damage>
+      <Damage>110</Damage>
       <Speed>60</Speed>
       <LifetimeMS>900</LifetimeMS>
       <Size>150</Size>
@@ -136,7 +136,7 @@
     </Projectile>
     <Projectile id="2">
       <ObjectId>Black Ball</ObjectId>
-      <Damage>80</Damage>
+      <Damage>90</Damage>
       <Speed>60</Speed>
       <LifetimeMS>900</LifetimeMS>
       <Size>150</Size>

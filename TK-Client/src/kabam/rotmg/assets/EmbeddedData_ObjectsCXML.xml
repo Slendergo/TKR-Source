@@ -1,4 +1,18 @@
 <Objects>
+	<Object type="0x2080" id="Mortomus Spawner">
+		<Class>Character</Class>
+		<Enemy />
+		<MaxHitPoints>9999</MaxHitPoints>
+		<Texture>
+			<File>invisible</File>
+			<Index>0</Index>
+		</Texture>
+		<NoMiniMap />
+		<Size>0</Size>
+		<XpMult>0.0</XpMult>
+		<StasisImmune />
+		<DisplayId>Mortomus Spawner</DisplayId>
+	</Object>
   <Object type="0x1000" id="Alice Blue Clothing Dye">
     <Class>Dye</Class>
     <DisplayId>Alice Blue Clothing Dye</DisplayId>
@@ -27476,12 +27490,14 @@
     <Defense>42</Defense>
     <StasisImmune />
     <StunImmune />
+	  <DazedImmune />
+	  <SlowedImmune />
     <XpMult>1</XpMult>
     <Projectile id="0">
       <ObjectId>Projectile 0 CSS</ObjectId>
       <Damage>175</Damage>
       <Size>100</Size>
-      <Speed>100</Speed>
+      <Speed>85</Speed>
       <LifetimeMS>4000</LifetimeMS>
       <MultiHit />
       <ArmorPiercing />
@@ -27490,16 +27506,15 @@
       <ObjectId>Projectile 1 CSS</ObjectId>
       <Damage>210</Damage>
       <Size>90</Size>
-      <Speed>90</Speed>
+      <Speed>75</Speed>
       <LifetimeMS>4000</LifetimeMS>
     </Projectile>
     <Projectile id="2">
       <ObjectId>Projectile 2 CSS</ObjectId>
       <Damage>350</Damage>
       <Size>100</Size>
-      <Speed>100</Speed>
+      <Speed>90</Speed>
       <LifetimeMS>5000</LifetimeMS>
-      <ConditionEffect duration="1.8">Confused</ConditionEffect>
     </Projectile>
   </Object>
   <Object type="0x712c" id="Corrupt Snowman Switch 2">
@@ -28990,6 +29005,7 @@
     <ShadowSize>85</ShadowSize>
     <MaxHitPoints>90000</MaxHitPoints>
     <Defense>80</Defense>
+	  <XpMult>0.0</XpMult>
     <Projectile id="0">
       <ObjectId>Invisible</ObjectId>
       <MinDamage>90</MinDamage>
@@ -30243,7 +30259,7 @@
     <Projectile id="0">
       <ObjectId>Projectile 0 FE</ObjectId>
       <Damage>90</Damage>
-      <Speed>100</Speed>
+      <Speed>45</Speed>
       <Size>90</Size>
       <ArmorPiercing />
       <LifetimeMS>4000</LifetimeMS>

@@ -63,8 +63,8 @@
       <ObjectId>Invisible</ObjectId>
       <Damage>120</Damage>
       <Speed>10</Speed>
-      <LifetimeMS>300</LifetimeMS>
-      <Size>75</Size>
+      <LifetimeMS>1000</LifetimeMS>
+      <Size>100</Size>
       <MultiHit />
     </Projectile>
     <DisplayId>Boulder</DisplayId>

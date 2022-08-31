@@ -92,9 +92,9 @@ namespace wServer.logic
             new State(
                 new SetAltTexture(0, 3, 100, true),
                 new ConditionalEffect(ConditionEffectIndex.Invincible, true),
-                new Shoot(20, 1, projectileIndex: 0, coolDown: 200),
                 new State("Move",
-                    new MoveLine(5, 90),
+                    new Shoot(20, 1, projectileIndex: 0, coolDown: 200),
+                    new MoveLine(3, 90),
                     new GroundTransition("Tunnel Ground M", "Suicide")
                     ),
                 new State("Suicide",

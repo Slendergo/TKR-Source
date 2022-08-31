@@ -235,6 +235,7 @@ namespace wServer.logic
             new State(
                 new ScaleHP2(4),
                 new State("attack",
+                    new Charge(7, range: 8, coolDown: 600),
                     new Wander(0.6),
                     new Shoot(15, 1, projectileIndex: 0, predictive: 1, coolDown: 1000, coolDownOffset: 0),
                     new Shoot(15, 2, shootAngle: 10, projectileIndex: 1, predictive: 1, coolDown: 1000, coolDownOffset: 0),

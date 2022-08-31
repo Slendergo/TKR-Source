@@ -617,9 +617,10 @@ namespace wServer.logic
                     new Taunt("RAHHHH"),
                     new Flash(0xCC1A1A, 0.5, 12),
                     new ChangeSize(5, 180),
-                    new TimedTransition(10000, "attack1")
+                    new TimedTransition(5000, "attack1")
                     ),
                 new State("attack1",
+                    new Wander(0.5),
                     new Shoot(15, 2, shootAngle: 10, projectileIndex: 0, predictive: .9, coolDown: 400),
                     new Shoot(20, 6, projectileIndex: 1, coolDown: 1000),
                     new TossObject("Cursed Polar Bear", 5, 90, coolDown: 20000),
@@ -921,9 +922,7 @@ namespace wServer.logic
                 new ScaleHP2(20),
                 new State("attack1",
                     new Wander(.25),
-                    new TossObject("Frozen Elf", range: 3, angle: 0, coolDown: 10000),
-                    new TossObject("Frozen Elf", range: 3, angle: 135, coolDown: 10000),
-                    new TossObject("Frozen Elf", range: 3, angle: 270, coolDown: 10000),
+                    new TossObject2("Frozen Elf", range: 3, coolDown: 1500, randomToss: true),
                     new Shoot(20, 2, projectileIndex: 0, shootAngle: 5, predictive: .9, coolDown: 200),
                     new Shoot(15, 8, projectileIndex: 1, predictive: 1, coolDown: 1000)
                     )
@@ -932,22 +931,15 @@ namespace wServer.logic
         .Init("Frozen Elf",
             new State(
                 new ScaleHP2(20),
-                new State("rage",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, false),
-                    new Charge(3, 12, coolDown: 200),
-                    new TimedTransition(1000, "explodeprep")
-                    ),
                 new State("explodeprep",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, false),
+                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
                     new Taunt("explode!"),
                     new Flash(0xCC1A1A, 0.5, 12),
                     new TimedTransition(650, "explode")
                     ),
                 new State("explode",
-                    new Shoot(4, 12, projectileIndex: 0, coolDown: 5000),
-                    new TimedTransition(100, "suicide")
+                    new Shoot(4, 12, projectileIndex: 0, coolDown: 1000),
+                    new TimedTransition(250, "suicide")
                     ),
                 new State("suicide",
                     new Suicide()
@@ -961,7 +953,7 @@ namespace wServer.logic
                     new PlayerWithinTransition(20, "attack")
                     ),
                 new State("attack",
-                    new Shoot(12, 4, shootAngle: 15, projectileIndex: 0, predictive: .6, coolDown: 800)
+                    new Shoot(12, 3, shootAngle: 15, projectileIndex: 0, coolDown: 1000)
                     )
                 ));
     }

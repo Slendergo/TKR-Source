@@ -165,6 +165,8 @@
 			<Speed>120</Speed>
 			<MinDamage>320</MinDamage>
 			<MaxDamage>360</MaxDamage>
+			<Amplitude>1</Amplitude>
+			<Frequency>1.16</Frequency>
 			<LifetimeMS>542</LifetimeMS>
 			<Size>100</Size>
 			<MultiHit />

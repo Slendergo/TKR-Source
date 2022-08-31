@@ -293,6 +293,7 @@
 			<Size>150</Size>
 			<Speed>90</Speed>
 			<ArmorPierce />
+			<MultiHit />
 			<ConditionEffect duration="3">Bleeding</ConditionEffect>
 			<LifetimeMS>4000</LifetimeMS>
 		</Projectile>
@@ -301,6 +302,7 @@
 			<Damage>30</Damage>
 			<Size>150</Size>
 			<Speed>100</Speed>
+			<MultiHit />
 			<ConditionEffect duration="3">Speedy</ConditionEffect>
 			<LifetimeMS>1200</LifetimeMS>
 		</Projectile>
@@ -309,6 +311,7 @@
 			<Damage>70</Damage>
 			<Size>150</Size>
 			<Speed>100</Speed>
+			<MultiHit />
 			<LifetimeMS>4000</LifetimeMS>
 		</Projectile>
 		<Projectile id="3">
@@ -319,6 +322,7 @@
 			<ConditionEffect duration="3">Armor Broken</ConditionEffect>
 			<LifetimeMS>4000</LifetimeMS>
 			<ArmorPiercing />
+			<MultiHit />
 		</Projectile>
 		<Projectile id="4">
 			<ObjectId>Morto Wisp</ObjectId>

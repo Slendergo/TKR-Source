@@ -89,7 +89,6 @@
 			<File>CustomProjs</File>
 			<Index>0xe3</Index>
 		</Texture>
-		<Rotation>80</Rotation>
 	</Object>
 	<Object type="0x1FB" id="Morto Wisp">
 		<Class>Projectile</Class>

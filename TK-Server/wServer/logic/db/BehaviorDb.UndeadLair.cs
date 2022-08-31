@@ -132,21 +132,21 @@ namespace wServer.logic
                     new Protect(0.625, "Septavius the Ghost God", protectionRange: 6),
                     new Follow(0.75, range: 7)
                     ),
-                new Wander(0.25),
+                new Wander(0.4),
                 new Shoot(8, 1, coolDown: 1000)
                 )
             )
         .Init("Ghost Rogue of Septavius",
             new State(
                 new Follow(0.75, range: 1),
-                new Wander(0.25),
+                new Wander(0.4),
                 new Shoot(8, 1, coolDown: 1000)
                 )
             )
         .Init("Ghost Warrior of Septavius",
             new State(
                 new Follow(0.75, range: 1),
-                new Wander(0.25),
+                new Wander(0.4),
                 new Shoot(8, 1, coolDown: 1000)
                 )
             )
@@ -156,14 +156,14 @@ namespace wServer.logic
                     new Protect(0.625, "Septavius the Ghost God", protectionRange: 6),
                     new Follow(0.75, range: 7)
                     ),
-                new Wander(0.25),
+                new Wander(0.4),
                 new Shoot(8, 1, coolDown: 1000)
                 )
             )
         .Init("Lair Ghost Knight",
             new State(
                 new Follow(0.75, range: 1),
-                new Wander(0.25),
+                new Wander(0.4),
                 new Shoot(8, 1, coolDown: 1000)
                 )
             )
@@ -173,14 +173,14 @@ namespace wServer.logic
                     new Protect(0.625, "Septavius the Ghost God", protectionRange: 6),
                     new Follow(0.75, range: 7)
                     ),
-                new Wander(0.25),
+                new Wander(0.4),
                 new Shoot(8, 1, coolDown: 1000)
                 )
             )
         .Init("Lair Ghost Paladin",
             new State(
                 new Follow(0.75, range: 1),
-                new Wander(0.25),
+                new Wander(0.4),
                 new Shoot(8, 1, coolDown: 1000),
                 new HealSelf(coolDown: 5000)
                 )
@@ -188,7 +188,7 @@ namespace wServer.logic
         .Init("Lair Ghost Rogue",
             new State(
                 new Follow(0.75, range: 1),
-                new Wander(0.25),
+                new Wander(0.4),
                 new Shoot(8, 1, coolDown: 1000)
                 ),
             new ItemLoot("Magic Potion", 0.25),
@@ -197,7 +197,7 @@ namespace wServer.logic
         .Init("Lair Ghost Warrior",
             new State(
                 new Follow(0.75, range: 1),
-                new Wander(0.25),
+                new Wander(0.4),
                 new Shoot(8, 1, coolDown: 1000)
                 ),
             new ItemLoot("Magic Potion", 0.25),
@@ -259,17 +259,15 @@ namespace wServer.logic
                 new Shoot(10),
                 new Prioritize(
                     new Follow(1, range: 7),
-                    new Wander(0.4)
+                    new Wander(0.5)
                     )
                 )
             )
         .Init("Lair Skeleton Swordsman",
             new State(
                 new Shoot(5),
-                new Prioritize(
-                    new Follow(1, range: 1),
-                    new Wander(0.4)
-                    )
+                    new Follow(1, range: 5),
+                    new Wander(0.5)
                 ),
             new ItemLoot("Magic Potion", 0.05),
             new ItemLoot("Health Potion", 0.05)
@@ -278,7 +276,7 @@ namespace wServer.logic
             new State(
                 new Shoot(5),
                 new Prioritize(
-                    new Follow(1, range: 1),
+                    new Follow(1, range: 5),
                     new Wander(0.4)
                     )
                 ),

@@ -49,7 +49,7 @@ namespace wServer.logic
                     new TossObject2("Water Elemental Minion", range: 8, angle: 180, coolDown: 999999),
                     new TossObject2("Water Elemental Minion", range: 8, angle: 270, coolDown: 999999),
                     new Wander(0.5),
-                    new Charge(6, 12, coolDown: 2000),
+                    new Charge(5, 12, coolDown: 2000),
                     new StayCloseToSpawn(1, 15),
                     new Taunt("FIVE!"),
                     new Shoot(15, 8, projectileIndex: 1, coolDown: 1200),

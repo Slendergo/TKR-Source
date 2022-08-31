@@ -1016,7 +1016,7 @@ namespace wServer.logic
                     new TimedTransition(2000, "Wave 1")
                     ),
                 new State("Wave 1",
-                    new Shoot(15, 5, projectileIndex: 1, coolDown: 1000),
+                    new Shoot(15, 5, projectileIndex: 1, coolDown: 600),
 
                     new Shoot(8, 1, projectileIndex: 0, coolDown: 1000, predictive: 1, coolDownOffset: 100),
                     new Shoot(8, 2, shootAngle: 10, projectileIndex: 4, predictive: 1, coolDown: 1000, coolDownOffset: 100),
@@ -1096,7 +1096,7 @@ namespace wServer.logic
                     new Shoot(30, 2, projectileIndex: 3, fixedAngle: 10, coolDown: 7200, coolDownOffset: 7100),
                     new Shoot(30, 2, projectileIndex: 3, fixedAngle: 5, coolDown: 7200, coolDownOffset: 7200),
                     
-                    new HpLessTransition(0.4, "Prepare Phase 1")
+                    new HpLessTransition(0.6, "Prepare Phase 1")
                     ),
                 new State("Prepare Phase 1",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),

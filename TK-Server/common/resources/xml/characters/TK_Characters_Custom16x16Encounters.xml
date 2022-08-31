@@ -105,8 +105,8 @@
 		<StasisImmune/>
 		<Projectile id="0">
 			<ObjectId>Undead Bat Shot</ObjectId>
-			<Damage>110</Damage>
-			<Speed>50</Speed>
+			<Damage>160</Damage>
+			<Speed>80</Speed>
 			<Size>90</Size>
 			<MultiHit/>
 			<ConditionEffect duration="2">Slowed</ConditionEffect>
@@ -115,7 +115,7 @@
 		<Projectile id="1">
 			<ObjectId>Undead Bat Shot</ObjectId>
 			<Damage>130</Damage>
-			<Speed>40</Speed>
+			<Speed>65</Speed>
 			<Size>90</Size>
 			<MultiHit/>
 			<ConditionEffect duration="2">Slowed</ConditionEffect>
@@ -124,7 +124,7 @@
 		<Projectile id="2">
 			<ObjectId>Undead Bat Shot</ObjectId>
 			<Damage>150</Damage>
-			<Speed>30</Speed>
+			<Speed>50</Speed>
 			<Size>90</Size>
 			<MultiHit/>
 			<ConditionEffect duration="2">Slowed</ConditionEffect>
@@ -212,7 +212,7 @@
 		<StunImmune/>
 		<Projectile id="0">
 			<ObjectId>Yellow HC Shot</ObjectId>
-			<Damage>130</Damage>
+			<Damage>195</Damage>
 			<Speed>80</Speed>
 			<Size>90</Size>
 			<ArmorPiercing/>
@@ -234,7 +234,7 @@
 		<StunImmune/>
 		<Projectile id="0">
 			<ObjectId>Yellow HC Shot</ObjectId>
-			<Damage>110</Damage>
+			<Damage>210</Damage>
 			<Speed>80</Speed>
 			<Size>90</Size>
 			<LifetimeMS>1000</LifetimeMS>
@@ -255,7 +255,7 @@
 		<StunImmune/>
 		<Projectile id="0">
 			<ObjectId>Yellow HC Shot</ObjectId>
-			<Damage>135</Damage>
+			<Damage>195</Damage>
 			<Speed>80</Speed>
 			<Size>90</Size>
 			<LifetimeMS>1000</LifetimeMS>
@@ -276,7 +276,7 @@
 		<ParalyzeImmune/>
 		<Projectile id="0">
 			<ObjectId>Devourer Shot</ObjectId>
-			<Damage>220</Damage>
+			<Damage>350</Damage>
 			<Speed>70</Speed>
 			<Size>90</Size>
 			<MultiHit/>
@@ -301,7 +301,7 @@
 		<SlowImmune/>
 		<Projectile id="0">
 			<ObjectId>Cursed Mermaid Shot</ObjectId>
-			<Damage>50</Damage>
+			<Damage>160</Damage>
 			<Speed>110</Speed>
 			<Size>90</Size>
 			<MultiHit/>

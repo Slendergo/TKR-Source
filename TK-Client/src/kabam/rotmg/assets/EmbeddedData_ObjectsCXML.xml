@@ -25380,8 +25380,8 @@
     <StasisImmune />
     <Projectile id="0">
       <ObjectId>Undead Bat Shot</ObjectId>
-      <Damage>110</Damage>
-      <Speed>50</Speed>
+      <Damage>160</Damage>
+      <Speed>80</Speed>
       <Size>90</Size>
       <MultiHit />
       <ConditionEffect duration="2">Slowed</ConditionEffect>
@@ -25390,7 +25390,7 @@
     <Projectile id="1">
       <ObjectId>Undead Bat Shot</ObjectId>
       <Damage>130</Damage>
-      <Speed>40</Speed>
+      <Speed>65</Speed>
       <Size>90</Size>
       <MultiHit />
       <ConditionEffect duration="2">Slowed</ConditionEffect>
@@ -25399,7 +25399,7 @@
     <Projectile id="2">
       <ObjectId>Undead Bat Shot</ObjectId>
       <Damage>150</Damage>
-      <Speed>30</Speed>
+      <Speed>50</Speed>
       <Size>90</Size>
       <MultiHit />
       <ConditionEffect duration="2">Slowed</ConditionEffect>
@@ -25488,6 +25488,7 @@
     <Projectile id="0">
       <ObjectId>Yellow HC Shot</ObjectId>
       <Damage>130</Damage>
+      <Damage>195</Damage>
       <Speed>80</Speed>
       <Size>90</Size>
       <ArmorPiercing />
@@ -25510,6 +25511,7 @@
     <Projectile id="0">
       <ObjectId>Yellow HC Shot</ObjectId>
       <Damage>110</Damage>
+      <Damage>210</Damage>
       <Speed>80</Speed>
       <Size>90</Size>
       <LifetimeMS>1000</LifetimeMS>
@@ -25531,6 +25533,7 @@
     <Projectile id="0">
       <ObjectId>Yellow HC Shot</ObjectId>
       <Damage>135</Damage>
+      <Damage>195</Damage>
       <Speed>80</Speed>
       <Size>90</Size>
       <LifetimeMS>1000</LifetimeMS>
@@ -25551,7 +25554,7 @@
     <ParalyzeImmune />
     <Projectile id="0">
       <ObjectId>Devourer Shot</ObjectId>
-      <Damage>220</Damage>
+      <Damage>350</Damage>
       <Speed>70</Speed>
       <Size>90</Size>
       <MultiHit />
@@ -25576,7 +25579,7 @@
     <SlowImmune />
     <Projectile id="0">
       <ObjectId>Cursed Mermaid Shot</ObjectId>
-      <Damage>50</Damage>
+      <Damage>160</Damage>
       <Speed>110</Speed>
       <Size>90</Size>
       <MultiHit />
@@ -27890,6 +27893,7 @@
       <Size>150</Size>
       <Speed>90</Speed>
       <ArmorPierce />
+      <MultiHit />
       <ConditionEffect duration="3">Bleeding</ConditionEffect>
       <LifetimeMS>4000</LifetimeMS>
     </Projectile>
@@ -27898,6 +27902,7 @@
       <Damage>30</Damage>
       <Size>150</Size>
       <Speed>100</Speed>
+      <MultiHit />
       <ConditionEffect duration="3">Speedy</ConditionEffect>
       <LifetimeMS>1200</LifetimeMS>
     </Projectile>
@@ -27906,6 +27911,7 @@
       <Damage>70</Damage>
       <Size>150</Size>
       <Speed>100</Speed>
+      <MultiHit />
       <LifetimeMS>4000</LifetimeMS>
     </Projectile>
     <Projectile id="3">
@@ -27916,6 +27922,7 @@
       <ConditionEffect duration="3">Armor Broken</ConditionEffect>
       <LifetimeMS>4000</LifetimeMS>
       <ArmorPiercing />
+      <MultiHit />
     </Projectile>
     <Projectile id="4">
       <ObjectId>Morto Wisp</ObjectId>
@@ -64504,6 +64511,8 @@
       <Speed>120</Speed>
       <MinDamage>320</MinDamage>
       <MaxDamage>360</MaxDamage>
+      <Amplitude>1</Amplitude>
+      <Frequency>1.16</Frequency>
       <LifetimeMS>542</LifetimeMS>
       <Size>100</Size>
       <MultiHit />
@@ -80115,7 +80124,6 @@
       <File>CustomProjs</File>
       <Index>0xe3</Index>
     </Texture>
-    <Rotation>80</Rotation>
   </Object>
   <Object type="0x1FB" id="Morto Wisp">
     <Class>Projectile</Class>

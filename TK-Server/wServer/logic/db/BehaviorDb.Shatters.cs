@@ -221,7 +221,7 @@ namespace wServer.logic
             new State(
                 new HpLessTransition(0.3, "Death"),
                 new State(
-                    new Orbit(0.5, 5, 1, "shtrs Twilight Archmage"),
+                    new Orbit(3, 5, 1, "shtrs Twilight Archmage", speedVariance: 0, radiusVariance: 0),
                     new Charge(0.1, 6, coolDown: 10000),
                     new Shoot(13, 10, 8, projectileIndex: 0, coolDown: 1000, fixedAngle: 1)
                     ),
@@ -590,7 +590,7 @@ namespace wServer.logic
         #region birds
         .Init("shtrs Inferno",
             new State(
-                new Orbit(1, 4, 15, "shtrs Blizzard"),
+                new Orbit(3, 4, 15, "shtrs Blizzard", speedVariance: 0, radiusVariance: 0),
                 new Shoot(10, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 15, coolDown: 4333),
                 new Shoot(10, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 30, coolDown: 3500),
                 new Shoot(10, projectileIndex: 0, count: 6, shootAngle: 60, fixedAngle: 60, coolDown: 7250),
@@ -688,8 +688,8 @@ namespace wServer.logic
                 ),
             new Threshold(0.05,
                 new ItemLoot("The Sentinel's Insignia", 0.0014),
-                new ItemLoot("Blade of the Protector", 0.0015)
-                //new ItemLoot("Guardian's Clad", 0.0015)
+                new ItemLoot("Blade of the Protector", 0.0015),
+                new ItemLoot("Guardian's Clad", 0.0015)
                 ),
             new Threshold(0.01,
                 LootTemplates.DustLoot()
@@ -2409,9 +2409,9 @@ namespace wServer.logic
             )
         .Init("shtrs Royal Guardian J",
             new State(
-                new ScaleHP2(20),
+                new ScaleHP2(5),
                 new State("shoot",
-                    new Orbit(3, 5, 5, "shtrs The Forgotten King"),
+                    new Orbit(3, 5, 5, "shtrs The Forgotten King", speedVariance: 0, radiusVariance: 0),
                     new Shoot(15, 8, projectileIndex: 0, coolDown: 2000)
                     )
                 )
@@ -2612,12 +2612,12 @@ namespace wServer.logic
                 new State("Crown")
                 ),
             new Threshold(0.05,
-                new ItemLoot("Lodius", 0.0015, 0)
-                //new ItemLoot("Gekdu", 0.0015, 0),
-                //new ItemLoot("Seruna", 0.0015, 0)
+                new ItemLoot("Lodius", 0.001, 0),
+                new ItemLoot("Gekdu", 0.001, 0),
+                new ItemLoot("Seruna", 0.001, 0)
                 ),
             new Threshold(0.03,
-                new ItemLoot("The Forgotten Crown", 0.009),
+                new ItemLoot("The Forgotten Crown", 0.001),
                 new ItemLoot("Shatters Key", 0.01)
                 ),
             new Threshold(0.01,

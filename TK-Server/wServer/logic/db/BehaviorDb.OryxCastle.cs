@@ -183,16 +183,16 @@ namespace wServer.logic
                     new State("Lets go",
                         new TimedTransition(10000, "Circle"),
                         new State("Imma Follow",
-                            new Follow(1, 2, 0.3),
-                            new Shoot(5, 5, shootAngle: 5, coolDown: 1000),
+                            new Follow(2, 2, 0.3),
+                            new Shoot(15, 5, shootAngle: 5, coolDown: 500),
                             new TimedTransition(5000, "Imma chill")
                             ),
                         new State("Imma chill",
                             new Prioritize(
-                                new StayCloseToSpawn(0.5, 3),
+                                new StayCloseToSpawn(1, 3),
                                 new Wander(0.5)
                                 ),
-                            new Shoot(20, 10, projectileIndex: 2, fixedAngle: 0, coolDown: 1000),
+                            new Shoot(20, 10, projectileIndex: 2, fixedAngle: 0, coolDown: 600),
                             new TimedTransition(5000, "Imma Follow")
                             )
                         ),

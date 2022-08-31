@@ -1,4 +1,224 @@
 <GroundTypes>
+	<Ground type="0x2040" id="Nexus Stairs UP 1">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x80</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x2041" id="Nexus Stairs UP 2">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x81</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x2042" id="Nexus Stairs UP 3">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x82</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x2043" id="Nexus Stairs UP 4">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x90</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x2044" id="Nexus Stairs UP 5">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x91</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x2045" id="Nexus Stairs UP 6">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x92</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x2046" id="Nexus Stairs UP 7">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0xa0</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x2047" id="Nexus Stairs UP 8">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0xa1</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x2048" id="Nexus Stairs UP 9">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0xa2</Index>
+		</Texture>
+	</Ground>
+
+	<Ground type="0x2049" id="Nexus Stairs RT 1">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x83</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x2050" id="Nexus Stairs RT 2">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x84</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x2051" id="Nexus Stairs RT 3">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x85</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x2052" id="Nexus Stairs RT 4">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x93</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x2053" id="Nexus Stairs RT 5">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x94</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x2054" id="Nexus Stairs RT 6">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x95</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x2055" id="Nexus Stairs RT 7">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0xa3</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x2056" id="Nexus Stairs RT 8">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0xa4</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x2057" id="Nexus Stairs RT 9">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0xa5</Index>
+		</Texture>
+	</Ground>
+
+	<Ground type="0x2058" id="Nexus Stairs LF 1">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0xb3</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x2059" id="Nexus Stairs LF 2">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0xb4</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x2060" id="Nexus Stairs LF 3">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0xb5</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x2061" id="Nexus Stairs LF 4">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0xc3</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x2062" id="Nexus Stairs LF 5">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0xc4</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x2063" id="Nexus Stairs LF 6">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0xc5</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x2064" id="Nexus Stairs LF 7">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0xd3</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x2065" id="Nexus Stairs LF 8">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0xd4</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x2066" id="Nexus Stairs LF 9">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0xd5</Index>
+		</Texture>
+	</Ground>
+
+	<Ground type="0x2067" id="Nexus Stairs DN 1">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0xb0</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x2068" id="Nexus Stairs DN 2">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0xb1</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x2069" id="Nexus Stairs DN 3">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0xb2</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x2070" id="Nexus Stairs DN 4">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0xc0</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x2071" id="Nexus Stairs DN 5">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0xc1</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x2072" id="Nexus Stairs DN 6">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0xc2</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x2073" id="Nexus Stairs DN 7">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0xd0</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x2074" id="Nexus Stairs DN 8">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0xd1</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x2075" id="Nexus Stairs DN 9">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0xd2</Index>
+		</Texture>
+	</Ground>
+
 	<Ground type="0x130" id="CL Water">
 		<Texture>
 			<File>customEnvironmentMortomus</File>
@@ -772,49 +992,49 @@
 			<Index>0x59</Index>
 		</Texture>
 	</Ground>
-	<Ground type="0x16c5" id="Small Cloud 1">
+	<Ground type="0x16c5" id="Nexus Rug 11">
 		<Texture>
 			<File>customEnvironment</File>
 			<Index>0x1c</Index>
 		</Texture>
 	</Ground>
-	<Ground type="0x16c6" id="Small Cloud 2">
+	<Ground type="0x16c6" id="SNexus Rug 12">
 		<Texture>
 			<File>customEnvironment</File>
 			<Index>0x1d</Index>
 		</Texture>
 	</Ground>
-	<Ground type="0x16c7" id="Small Cloud 3">
+	<Ground type="0x16c7" id="Nexus Rug 13">
 		<Texture>
 			<File>customEnvironment</File>
 			<Index>0x1e</Index>
 		</Texture>
 	</Ground>
-	<Ground type="0x16c8" id="Small Cloud 4">
+	<Ground type="0x16c8" id="Nexus Rug 14">
 		<Texture>
 			<File>customEnvironment</File>
 			<Index>0x1f</Index>
 		</Texture>
 	</Ground>
-	<Ground type="0x16c9" id="Small Cloud 5">
+	<Ground type="0x16c9" id="Nexus Rug 15">
 		<Texture>
 			<File>customEnvironment</File>
 			<Index>0x2c</Index>
 		</Texture>
 	</Ground>
-	<Ground type="0x16ca" id="Small Cloud 6">
+	<Ground type="0x16ca" id="Nexus Rug 16">
 		<Texture>
 			<File>customEnvironment</File>
 			<Index>0x2d</Index>
 		</Texture>
 	</Ground>
-	<Ground type="0x16cb" id="Small Cloud 7">
+	<Ground type="0x16cb" id="Nexus Rug 17">
 		<Texture>
 			<File>customEnvironment</File>
 			<Index>0x2e</Index>
 		</Texture>
 	</Ground>
-	<Ground type="0x16cc" id="Small Cloud 8">
+	<Ground type="0x16cc" id="Nexus Rug 18">
 		<Texture>
 			<File>customEnvironment</File>
 			<Index>0x2f</Index>
@@ -1074,61 +1294,61 @@
 			<Index>0x8a</Index>
 		</Texture>
 	</Ground>
-	<Ground type="0x9504" id="UDL 1">
+	<Ground type="0x9504" id="Nexus Rug 1">
 		<Texture>
 			<File>customEnvironment</File>
 			<Index>0x10</Index>
 		</Texture>
 	</Ground>
-	<Ground type="0x9505" id="UDL 2">
+	<Ground type="0x9505" id="Nexus Rug 2">
 		<Texture>
 			<File>customEnvironment</File>
 			<Index>0x11</Index>
 		</Texture>
 	</Ground>
-	<Ground type="0x9506" id="UDL 3">
+	<Ground type="0x9506" id="Nexus Rug 3">
 		<Texture>
 			<File>customEnvironment</File>
 			<Index>0x12</Index>
 		</Texture>
 	</Ground>
-	<Ground type="0x9507" id="UDL 4">
+	<Ground type="0x9507" id="Nexus Rug 4">
 		<Texture>
 			<File>customEnvironment</File>
 			<Index>0x13</Index>
 		</Texture>
 	</Ground>
-	<Ground type="0x9508" id="UDL 5">
+	<Ground type="0x9508" id="Nexus Rug 5">
 		<Texture>
 			<File>customEnvironment</File>
 			<Index>0x14</Index>
 		</Texture>
 	</Ground>
-	<Ground type="0x9509" id="UDL 6">
+	<Ground type="0x9509" id="Nexus Rug 6">
 		<Texture>
 			<File>customEnvironment</File>
 			<Index>0x20</Index>
 		</Texture>
 	</Ground>
-	<Ground type="0x9510" id="UDL 7">
+	<Ground type="0x9510" id="Nexus Rug 7">
 		<Texture>
 			<File>customEnvironment</File>
 			<Index>0x21</Index>
 		</Texture>
 	</Ground>
-	<Ground type="0x9511" id="UDL 8">
+	<Ground type="0x9511" id="Nexus Rug 8">
 		<Texture>
 			<File>customEnvironment</File>
 			<Index>0x22</Index>
 		</Texture>
 	</Ground>
-	<Ground type="0x9512" id="UDL 9">
+	<Ground type="0x9512" id="Nexus Rug 9">
 		<Texture>
 			<File>customEnvironment</File>
 			<Index>0x24</Index>
 		</Texture>
 	</Ground>
-	<Ground type="0x9513" id="UDL 10">
+	<Ground type="0x9513" id="Nexus Rug 10">
 		<Texture>
 			<File>customEnvironment</File>
 			<Index>0x23</Index>

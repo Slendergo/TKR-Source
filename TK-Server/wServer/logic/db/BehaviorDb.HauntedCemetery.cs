@@ -2479,7 +2479,7 @@ namespace wServer.logic
                 //new ItemLoot("Amulet of Resurrection", 0.01),
                 //new ItemLoot("Tamed Werewolf Cub Egg", 0.03),
                 new ItemLoot("Wine Cellar Incantation", 0.01),
-                new ItemLoot("Dark Skeleton's Shield", 0.0002),
+                new ItemLoot("Dark Skeleton's Shield", 0.0008),
                 new ItemLoot("Plague Poison", 0.008),
                 new ItemLoot("Resurrected Warrior's Armor", 0.008)
                 )

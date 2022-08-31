@@ -161,8 +161,8 @@ namespace wServer.logic
                 new ItemLoot("Magic Dust", 0.5)
                 ),
              new Threshold(0.03,
-                new ItemLoot("PermaFrost GreatShield", 0.0005),
-                new ItemLoot("Axe of the Frozen Tundra", 0.0005)
+                new ItemLoot("PermaFrost GreatShield", 0.001),
+                new ItemLoot("Axe of the Frozen Tundra", 0.001)
                 )
             )
         .Init("Yeti Chest",

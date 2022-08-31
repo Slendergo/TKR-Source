@@ -324,6 +324,7 @@
 		<Width>256</Width>
 		<Height>256</Height>
 		<MapJM>shatters.jm</MapJM>
+		<DisableTeleport/>
 		<VisibilityType>2</VisibilityType>
 		<Dungeon/>
 	</World>

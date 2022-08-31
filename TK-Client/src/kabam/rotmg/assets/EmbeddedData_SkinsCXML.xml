@@ -8,6 +8,15 @@
     </AnimatedTexture>
     <PlayerClassType>0x0310</PlayerClassType>
   </Object>
+  <Object type="0x3400" id="Auru">
+    <Skin />
+    <Class>Skin</Class>
+    <AnimatedTexture>
+      <File>playerskins</File>
+      <Index>166</Index>
+    </AnimatedTexture>
+    <PlayerClassType>0x030e</PlayerClassType>
+  </Object>
   <Object type="0x0342" id="Bandit">
     <Skin />
     <Class>Skin</Class>

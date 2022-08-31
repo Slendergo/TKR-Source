@@ -44567,6 +44567,20 @@
     <BagType>5</BagType>
     <feedPower>2000</feedPower>
   </Object>
+  <Object type="0x3402" id="Auru's Skin">
+    <Class>Equipment</Class>
+    <Item />
+    <AnimatedTexture>
+      <File>playerskins</File>
+      <Index>166</Index>
+    </AnimatedTexture>
+    <SlotType>10</SlotType>
+    <Description></Description>
+    <Activate skinType="1027">UnlockSkin</Activate>
+    <Consumable />
+    <BagType>5</BagType>
+    <feedPower>2000</feedPower>
+  </Object>
   <Object type="0x520" id="Talisman Fragment">
     <Class>Equipment</Class>
     <Item />

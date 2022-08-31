@@ -124,9 +124,9 @@ namespace wServer.logic.loot
 
             if (enemy.Legendary)
             {
-                list.Add(new LootDef("Glowing Shard", 0.02, 0.001)); // 8%
-                list.Add(new LootDef("Glowing Shard", 0.01, 0.001)); // 8%
-                list.Add(new LootDef("Glowing Shard", 0.05, 0.001)); // 8%
+                list.Add(new LootDef("Glowing Shard", 0.20, 0.001)); // 8%
+                list.Add(new LootDef("Glowing Shard", 0.20, 0.001)); // 8%
+                list.Add(new LootDef("Glowing Shard", 0.20, 0.001)); // 8%
                 list.Add(new LootDef("Potion Dust", 0.08, 0.001)); // 8%
                 list.Add(new LootDef("Potion Dust", 0.08, 0.001)); // 8%
                 list.Add(new LootDef("Item Dust", 0.12, 0.001)); // 12%
@@ -135,8 +135,8 @@ namespace wServer.logic.loot
             }
             else if (enemy.Epic)
             {
-                list.Add(new LootDef("Glowing Shard", 0.02, 0.001)); // 8%
-                list.Add(new LootDef("Glowing Shard", 0.02, 0.001)); // 8%
+                list.Add(new LootDef("Glowing Shard", 0.10, 0.001)); // 8%
+                list.Add(new LootDef("Glowing Shard", 0.10, 0.001)); // 8%
                 list.Add(new LootDef("Potion Dust", 0.05, 0.001)); // 5%
                 list.Add(new LootDef("Item Dust", 0.08, 0.001)); //8%
                 list.Add(new LootDef("Miscellaneous Dust", 0.02, 0.001)); //2%
@@ -144,7 +144,7 @@ namespace wServer.logic.loot
             }
             else if (enemy.Rare)
             {
-                list.Add(new LootDef("Glowing Shard", 0.02, 0.001)); // 8%
+                list.Add(new LootDef("Glowing Shard", 0.08, 0.001)); // 8%
                 list.Add(new LootDef("Potion Dust", 0.03, 0.001));//3%
                 list.Add(new LootDef("Item Dust", 0.05, 0.001)); //5%
                 list.Add(new LootDef("Miscellaneous Dust", 0.01, 0.001)); //1%

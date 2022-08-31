@@ -96,7 +96,7 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.03,
-                new ItemLoot("Fungal Cloth", 0.00014)
+                new ItemLoot("Fungal Cloth", 0.001)
                 ),
             new Threshold(0.001,
                 new TierLoot(11, ItemType.Armor, 0.01),

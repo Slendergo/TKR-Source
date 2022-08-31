@@ -154,7 +154,7 @@ namespace wServer.core.net.handlers
                 return;
             }
 
-            if (player.ActiveTalismans.Count >= 2)
+            if (player.ActiveTalismans.Count >= 4)
             {
                 player.UpdateTalsimans();
                 player.SendError("You can only equip 2 talismans for now");

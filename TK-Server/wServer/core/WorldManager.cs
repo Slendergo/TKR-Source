@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using wServer.core.worlds;
 using wServer.core.worlds.logic;
+using wServer.utils;
 
 namespace wServer.core
 {
@@ -23,7 +24,7 @@ namespace wServer.core
         private readonly ConcurrentDictionary<int, World> Worlds = new ConcurrentDictionary<int, World>();
         private readonly ConcurrentDictionary<int, World> Guilds = new ConcurrentDictionary<int, World>();
         private readonly ConcurrentDictionary<int, int> WorldToGuildId = new ConcurrentDictionary<int, int>();
-        private readonly ConcurrentDictionary<int, RootWorldThread> Threads = new ConcurrentDictionary<int, RootWorldThread>();
+        private readonly Dictionary<int, RootWorldThread> Threads = new Dictionary<int, RootWorldThread>();
 
         public IEnumerable<World> GetWorlds() => Worlds.Values;
 
@@ -52,7 +53,10 @@ namespace wServer.core
                 throw new Exception("Unable to initialize nexus");
             world.Init();
             _ = Worlds.TryAdd(world.Id, world);
-            _ = Threads.TryAdd(world.Id, new RootWorldThread(this, world));
+            lock (Threads)
+            {
+                Threads.Add(world.Id, new RootWorldThread(this, world));
+            }
         }
 
         public void CreateNewRealmAsync(string name)
@@ -75,7 +79,10 @@ namespace wServer.core
                         return null;
                     world.Init();
                     _ = Worlds.TryAdd(world.Id, world);
-                    _ = Threads.TryAdd(world.Id, new RootWorldThread(this, world));
+                    lock (Threads)
+                    {
+                        Threads.Add(world.Id, new RootWorldThread(this, world));
+                    }
                     GameServer.WorldManager.Nexus.PortalMonitor.AddPortal(world);
                     return world;
                 }
@@ -112,7 +119,10 @@ namespace wServer.core
             _ = Worlds.TryAdd(world.Id, world);
             // null parents are threaded as they get treated as the root
             if (parent == null)
-                _ = Threads.TryAdd(world.Id, new RootWorldThread(this, world));
+                lock (Threads)
+                {
+                    Threads.Add(world.Id, new RootWorldThread(this, world));
+                }
             parent?.WorldBranch.AddBranch(world);
             return world;
         }
@@ -146,8 +156,12 @@ namespace wServer.core
 
         public bool RemoveWorld(World world)
         {
-            if (Threads.TryRemove(world.Id, out var thread))
-                thread.Stop();
+            lock (Threads)
+            {
+                var removed = Threads.Remove(world.Id);
+                if (!removed)
+                    StaticLogger.Instance.Warn($"Unable to remove Thread: {world.Id} {world.IdName}");
+            }
 
             if (Worlds.TryRemove(world.Id, out _))
             {

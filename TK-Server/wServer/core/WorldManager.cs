@@ -161,6 +161,8 @@ namespace wServer.core
                 var removed = Threads.Remove(world.Id);
                 if (!removed)
                     StaticLogger.Instance.Warn($"Unable to remove Thread: {world.Id} {world.IdName}");
+                else
+                    StaticLogger.Instance.Warn($"Removed Thread: {world.Id} {world.IdName}");
             }
 
             if (Worlds.TryRemove(world.Id, out _))
@@ -179,8 +181,11 @@ namespace wServer.core
 
         public void Dispose()
         {
-            foreach (var thread in Threads.Values)
-                thread.Stop();
+            lock (Threads)
+            {
+                foreach (var thread in Threads.Values)
+                    thread.Stop();
+            }
         }
 
         public List<World> GetRealms() => Worlds.Values.Where(_ => _ is RealmWorld && !(_ as RealmWorld).KingdomManager.DisableSpawning).ToList(); // todo mabye not have a tolist

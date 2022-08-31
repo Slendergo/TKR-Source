@@ -726,10 +726,10 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.05,
-                //new ItemLoot("Rod of Frost Burn", 0.0015),
-                new ItemLoot("Skull of the Archmage", 0.0015)
-                //new ItemLoot("Archmage's Garments", 0.0015),
-                //new ItemLoot("Infused Souls", 0.0015)
+                new ItemLoot("Rod of Frost Burn", 0.001),
+                new ItemLoot("Skull of the Archmage", 0.001),
+                new ItemLoot("Archmage's Garments", 0.001),
+                new ItemLoot("Infused Souls", 0.001)
                 ),
             new Threshold(0.001,
                 new TierLoot(13, ItemType.Weapon, 0.2),

@@ -145,7 +145,6 @@ namespace wServer.core
             }
         }
 
-        static int i = -1;
         private void CreateRealmIfExists()
         {
             if (Names.Count == 0 || Actives.Count >= 14)

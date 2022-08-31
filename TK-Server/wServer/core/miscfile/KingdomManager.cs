@@ -503,7 +503,6 @@ namespace wServer.core
                 case KindgomState.Closing:
                     {
                         DisableSpawning = true;
-                        World.GameServer.WorldManager.Nexus.PortalMonitor.RemovePortal(World.Id);
 
                         BroadcastMsg("RAAHH MY TROOPS HAVE FAILED ME!");
                         BroadcastMsg("THIS KINDOM SHALL NOT FALL!!");
@@ -638,8 +637,7 @@ namespace wServer.core
 
             if (_EventCount >= 30 && !DisableSpawning)
             {
-                DisableSpawning = true;
-                CurrentState = KindgomState.Closing;
+                World.CloseRealm();
                 World.GameServer.ChatManager.AnnounceRealm("(" + _EventCount + "/30) " + eventDead + " has been defeated!", World.DisplayName);
             }
             else if (_EventCount <= 30 && !World.Closed)

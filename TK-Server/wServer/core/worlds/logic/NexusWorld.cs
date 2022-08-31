@@ -48,7 +48,7 @@ namespace wServer.core.worlds.logic
 
         public override void Init()
         {
-            var engine = GameServer.Database.GetDbEngine();
+            var engine = GameServer.Database.GetDbEngine(GameServer.Configuration.serverInfo.name);
             EngineStage = engine.EngineStage;
             EngineFuel = engine.EngineFuel;
             EngineStageTime = engine.EngineStageTime;
@@ -278,7 +278,7 @@ namespace wServer.core.worlds.logic
             Engine.CurrentAmount = EngineFuel = Math.Min(Math.Max(current, 0), ENGINE_THIRD_STAGE_AMOUNT);
             Engine.EngineTime = EngineStageTime;
 
-            var engine = GameServer.Database.GetDbEngine();
+            var engine = GameServer.Database.GetDbEngine(GameServer.Configuration.serverInfo.name);
             engine.AddFuel(player?.Name ?? "Server", amount);
             engine.Save();
             return true;
@@ -311,7 +311,7 @@ namespace wServer.core.worlds.logic
             else
                 GameServer.ChatManager.AnnounceEngine($"The Strange Engine slowly powers down.");
 
-            var engine = GameServer.Database.GetDbEngine();
+            var engine = GameServer.Database.GetDbEngine(GameServer.Configuration.serverInfo.name);
             engine.SetEngineStage(state, time);
             engine.Save();
         }

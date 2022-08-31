@@ -240,7 +240,7 @@ namespace wServer.core
             Console.WriteLine("[Dispose] ChatManager");
             ChatManager.Dispose();
             
-            Console.WriteLine("[Dispose] Configuration");
+            Console.WriteLine("[Dispose] WorldManager");
             WorldManager.Dispose();
             
             Console.WriteLine("[Dispose] Configuration");

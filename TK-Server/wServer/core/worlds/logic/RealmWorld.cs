@@ -31,15 +31,19 @@ namespace wServer.core.worlds.logic
 
         public override bool AllowedAccess(Client client) => !Closed || client.Rank.IsAdmin;
 
+        private int ticks = 0;
         protected override void UpdateLogic(ref TickTime time)
         {
-            if (Closed || IsPlayersMax())
+            ticks++;
+            if (ticks == 60)
+                CloseRealm();
+
+            if (IsPlayersMax())
                 GameServer.WorldManager.Nexus.PortalMonitor.ClosePortal(Id);
             else if (!GameServer.WorldManager.Nexus.PortalMonitor.PortalIsOpen(Id))
                 GameServer.WorldManager.Nexus.PortalMonitor.OpenPortal(Id);
 
             KingdomManager.Update(ref time);
-            
             base.UpdateLogic(ref time);
         }
 
@@ -68,7 +72,9 @@ namespace wServer.core.worlds.logic
             if (Closed)
                 return false;
             Closed = true;
+            KingdomManager.DisableSpawning = true;
             KingdomManager.CurrentState = KindgomState.Closing;
+            GameServer.WorldManager.Nexus.PortalMonitor.RemovePortal(Id);
             FlagForClose();
             return true;
         }

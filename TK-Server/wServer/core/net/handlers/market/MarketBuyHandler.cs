@@ -112,42 +112,46 @@ namespace wServer.core.net.handlers.market
             });
 
             //Send the item to the API
-            SendToAPI(marketData.ItemType, marketData.Price);
+            SendToAPIAsync(marketData.ItemType, marketData.Price);
         }
 
-        private void SendToAPI(int itemId, int price)
+        private void SendToAPIAsync(int itemId, int price)
         {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create($"https://tkprices.herokuapp.com/api/item/addtx");
-            httpWebRequest.ContentType = "application/json";
-            httpWebRequest.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            System.Threading.Tasks.Task.Factory.StartNew(() =>
             {
-                string json = new JavaScriptSerializer().Serialize(new APIItem() //Added new Package, Nancy.Json, if you don't have it, search it in NuGet
-                {
-                    itemID = itemId,
-                    value = price
-                });
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
 
-            try
-            {
-                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create($"https://tkprices.herokuapp.com/api/item/addtx");
+                httpWebRequest.ContentType = "application/json";
+                httpWebRequest.Method = "POST";
+
+                using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
-                    var result = streamReader.ReadToEnd();
-                    if (!result.Contains("200")) //200 is normal result, if it doesn't contains it, somethingb bad happened
-                        Console.WriteLine(result);
+                    string json = new JavaScriptSerializer().Serialize(new APIItem() //Added new Package, Nancy.Json, if you don't have it, search it in NuGet
+                    {
+                        itemID = itemId,
+                        value = price
+                    });
+                    streamWriter.Write(json);
+                    streamWriter.Flush();
+                    streamWriter.Close();
                 }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                return;
-            }
+
+                try
+                {
+                    var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                    using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                    {
+                        var result = streamReader.ReadToEnd();
+                        if (!result.Contains("200")) //200 is normal result, if it doesn't contains it, somethingb bad happened
+                            Console.WriteLine(result);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    return;
+                }
+            });
         }
 
         private void AddFameToSeller(Client client, DbAccount acc, int realPrice, string itemId)

@@ -1139,7 +1139,7 @@ namespace common.database
             return false;
         }
 
-        public DbEngine GetDbEngine() => new DbEngine(_db);
+        public DbEngine GetDbEngine(string serverName) => new DbEngine(_db, serverName);
 
         public void UnlockClass(DbAccount acc, ushort type)
         {

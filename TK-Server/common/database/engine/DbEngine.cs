@@ -26,13 +26,16 @@ namespace common.database
 
         [JsonIgnore] public bool IsNull { get; private set; }
 
+        [JsonIgnore] public string ServerName { get; private set; }
+
         private readonly IDatabase _db;
 
-        public DbEngine(IDatabase db)
+        public DbEngine(IDatabase db, string serverName)
         {
             _db = db;
+            ServerName = serverName;
 
-            var json = (string)db.HashGet("engine", "STATE");
+            var json = (string)db.HashGet("engine", ServerName);
             if (json == null)
                 IsNull = true;
             else
@@ -57,6 +60,6 @@ namespace common.database
             EngineStageTime = time;
         }
 
-        public void Save() => _db.HashSetAsync("engine", "STATE", JsonConvert.SerializeObject(this));
+        public void Save() => _db.HashSetAsync("engine", ServerName, JsonConvert.SerializeObject(this));
     }
 }

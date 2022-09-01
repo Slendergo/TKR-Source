@@ -117,7 +117,7 @@ namespace common.resources
         {
             StatType = e.GetAttribute<int>("type");
             Amount = e.GetAttribute<float>("amount");
-            Percentage = e.GetAttribute<float>("Percentage", 1.0f);
+            Percentage = e.GetAttribute<float>("percentage", 0.0f);
 
             var scale = e.GetAttribute<string>("scale", "flat");
             ScalesPerLevel = scale == "perLevel";

@@ -89,7 +89,6 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.03,
-                new ItemLoot("Ray Katana", 0.005),
                 new ItemLoot("Talisman Fragment", 0.009),
                 new ItemLoot("Dojigiri", 0.0014, threshold: 0.005)
                 ),

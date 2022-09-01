@@ -1950,6 +1950,7 @@ namespace wServer.logic
             )
         .Init("Zombie Hulk",
             new State(
+                new ScaleHP2(5),
                 new State("1",
                     new Prioritize(
                         new Wander(0.7)
@@ -1968,6 +1969,7 @@ namespace wServer.logic
             )
         .Init("Classic Ghost",
             new State(
+                new ScaleHP2(5),
                 new Wander(0.6),
                 new Follow(0.6, 10, 1),
                 new Shoot(10, 4, shootAngle: 15, projectileIndex: 0, coolDown: 400)
@@ -1975,6 +1977,7 @@ namespace wServer.logic
             )
         .Init("Werewolf",
             new State(
+                new ScaleHP2(5),
                 new Prioritize(
                     new Wander(0.3),
                     new StayBack(0.6, 10)
@@ -1987,6 +1990,7 @@ namespace wServer.logic
             )
         .Init("Mini Werewolf",
             new State(
+                new ScaleHP2(5),
                 new Orbit(0.7, 2, 10, "Werewolf"),
                 new Shoot(10, 1, projectileIndex: 0, coolDown: 300),
                 new State("1",
@@ -2000,6 +2004,7 @@ namespace wServer.logic
             )
         .Init("Ghost of Skuld",
             new State(
+                new ScaleHP2(10),
                 new SetAltTexture(11),
                 new ConditionalEffect(ConditionEffectIndex.Invincible),
                 new DropPortalOnDeath("Realm Portal", 1),

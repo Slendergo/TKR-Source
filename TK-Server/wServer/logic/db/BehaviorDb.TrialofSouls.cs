@@ -58,7 +58,6 @@ namespace wServer.logic
                     new TossObject2("Baron Turret 1", 2, angle: 90, coolDown: 999999),
                     new TossObject2("Baron Turret 2", 2, angle: 180, coolDown: 999999),
                     new TossObject2("Baron Turret 3", 2, angle: 270, coolDown: 999999),
-                    new RemoveConditionalEffect(ConditionEffectIndex.Invincible),
                     new Order(30, "Baron Turret", "Shoot"),
                     new Order(30, "Baron Turret 1", "Shoot"),
                     new Order(30, "Baron Turret 2", "Shoot"),

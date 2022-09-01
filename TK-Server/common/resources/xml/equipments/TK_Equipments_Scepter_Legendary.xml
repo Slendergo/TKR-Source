@@ -78,16 +78,14 @@
 		<Legendary />
 		<Description></Description>
 		<Sound>spell/magic_nova</Sound>
-		<ActivateOnEquip stat="0" amount="-60">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="3" amount="90">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="28" amount="6">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="26" amount="-8">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="3" amount="110">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="28" amount="8">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="27" amount="8">IncrementStat</ActivateOnEquip>
 		<Usable />
 		<BagType>7</BagType>
 		<FameBonus>7</FameBonus>
 		<MpCost>130</MpCost>
-		<Activate totalDamage="1300" maxTargets="3" condEffect="Slowed" condDuration=".75" color="0xB2FAE2" useWisMod="true">Lightning</Activate>
+		<Activate totalDamage="1500" maxTargets="3" condEffect="Slowed" condDuration="2" color="0xB2FAE2" useWisMod="true">Lightning</Activate>
 		<DisplayId>Scepter of Whispers</DisplayId>
 	</Object>
 </Objects>

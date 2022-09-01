@@ -835,6 +835,7 @@ namespace wServer.logic
             new Threshold(0.005,
                 new ItemLoot("Soul of Dexterity", 1),
                 new ItemLoot("Spatial Distortion", 0.01),
+                new ItemLoot("Ray Katana", 0.001),
                 new ItemLoot("Celestial Dual Blades", 0.01),
                 new ItemLoot("Crafting Material 2", 0.1),
                 new ItemLoot("Chromatic Extinction", 0.001)

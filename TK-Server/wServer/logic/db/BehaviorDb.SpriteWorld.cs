@@ -107,11 +107,11 @@ namespace wServer.logic
                     new TimedTransition(time: 300, targetState: "circle_player")
                     ),
                 new State("circle_player",
-                    new Shoot(radius: 8, count: 2, shootAngle: 10, projectileIndex: 0, angleOffset: 0.7, predictive: 0.4, coolDown: 400),
-                    new Shoot(radius: 8, count: 2, shootAngle: 180, projectileIndex: 0, angleOffset: 0.7, predictive: 0.4, coolDown: 400),
+                    new Shoot(radius: 12, count: 2, shootAngle: 10, projectileIndex: 0, angleOffset: 0.7, predictive: 0.4, coolDown: 400),
+                    new Shoot(radius: 12, count: 2, shootAngle: 180, projectileIndex: 0, angleOffset: 0.7, predictive: 0.4, coolDown: 400),
                     new Prioritize(
                         new StayCloseToSpawn(speed: 1.3, range: 7),
-                        new Orbit(speed: 1.8, radius: 4, acquireRange: 5, target: null),
+                        new Orbit(speed: 3, radius: 4, acquireRange: 5, target: null),
                         new Follow(speed: 6, acquireRange: 10, range: 2),
                         new Follow(speed: 0.3, acquireRange: 10, range: 0.2)
                         ),
@@ -136,13 +136,13 @@ namespace wServer.logic
                     new TossObject(child: "Limon Element 4", range: 14, angle: 45, coolDown: 1000000),
                     new State("shielded1",
                         new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 1500),
-                        new Shoot(radius: 8, count: 1, predictive: 0.1, coolDown: 1000),
-                        new Shoot(radius: 8, count: 3, shootAngle: 120, angleOffset: 0.3, predictive: 0.1, coolDown: 500),
+                        new Shoot(radius: 12, count: 1, predictive: 0.1, coolDown: 1000),
+                        new Shoot(radius: 2, count: 3, shootAngle: 120, angleOffset: 0.3, predictive: 0.1, coolDown: 500),
                         new TimedTransition(1500, targetState: "shielded2")
                         ),
                     new State("shielded2",
                         new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
-                        new Shoot(radius: 8, count: 3, shootAngle: 120, angleOffset: 0.3, predictive: 0.2, coolDown: 800),
+                        new Shoot(radius: 12, count: 3, shootAngle: 120, angleOffset: 0.3, predictive: 0.2, coolDown: 800),
                         new TimedTransition(3500, targetState: "shielded1")
                         ),
                     new TimedTransition(time: 20000, targetState: "Summon_the_sprites")
@@ -163,16 +163,16 @@ namespace wServer.logic
                 ),
             new Threshold(0.01,
                 new ItemLoot("Potion of Dexterity", 1, 1),
-                new ItemLoot("Celestial Dual Blades", 0.001),
-                new ItemLoot("Spatial Distortion", 0.001),
+                new ItemLoot("Celestial Dual Blades", 0.009),
+                new ItemLoot("Spatial Distortion", 0.009),
                 new ItemLoot("Sprite World Key", 0.1, 0, 0.03),
                 new ItemLoot("Potion of Defense", 1),
                 new ItemLoot("Sprite Wand", 0.01),
-                new ItemLoot("Cloak of the Planewalker", 0.001),
-                new ItemLoot("Staff of Extreme Prejudice", 0.001),
-                new TierLoot(4, ItemType.Ring, 0.12),
-                new TierLoot(10, ItemType.Armor, 0.12),
-                new TierLoot(4, ItemType.Ability, 0.07),
+                new ItemLoot("Cloak of the Planewalker", 0.009),
+                new ItemLoot("Staff of Extreme Prejudice", 0.009),
+                new TierLoot(5, ItemType.Ring, 0.12),
+                new TierLoot(12, ItemType.Armor, 0.12),
+                new TierLoot(5, ItemType.Ability, 0.07),
 
                 new ItemLoot("Magic Dust", 0.5)
                 )

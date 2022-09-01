@@ -1315,7 +1315,7 @@
     <Size>120</Size>
     <ShadowSize>60</ShadowSize>
     <NoMiniMap />
-    <MaxHitPoints>48000</MaxHitPoints>
+    <MaxHitPoints>75000</MaxHitPoints>
     <XpMult>0.85</XpMult>
     <Defense>15</Defense>
     <StasisImmune />
@@ -1328,7 +1328,7 @@
     </Projectile>
     <Projectile id="1">
       <ObjectId>Ghost X</ObjectId>
-      <Damage>75</Damage>
+      <Damage>95</Damage>
       <Speed>85</Speed>
       <Size>100</Size>
       <LifetimeMS>2000</LifetimeMS>
@@ -1365,7 +1365,7 @@
     <ShadowSize>80</ShadowSize>
     <HitSound>monster/archdemon_hit</HitSound>
     <DeathSound>monster/abyss_demons_death</DeathSound>
-    <MaxHitPoints>3000</MaxHitPoints>
+    <MaxHitPoints>6000</MaxHitPoints>
     <XpMult>0.35</XpMult>
     <Defense>13</Defense>
     <Projectile id="0">
@@ -1399,7 +1399,7 @@
     <HitSound>monster/demons_hit</HitSound>
     <DeathSound>monster/cyclops_death</DeathSound>
     <Size>120</Size>
-    <MaxHitPoints>3000</MaxHitPoints>
+    <MaxHitPoints>6000</MaxHitPoints>
     <Defense>15</Defense>
     <Projectile id="0">
       <ObjectId>Wereblast</ObjectId>
@@ -1430,7 +1430,7 @@
       <ObjectId>Orange Pumpkin Blast</ObjectId>
       <Damage>85</Damage>
       <Speed>75</Speed>
-      <LifetimeMS>2000</LifetimeMS>
+      <LifetimeMS>4000</LifetimeMS>
       <Size>140</Size>
     </Projectile>
     <Projectile id="1">

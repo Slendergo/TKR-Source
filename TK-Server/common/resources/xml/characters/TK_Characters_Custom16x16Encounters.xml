@@ -548,7 +548,7 @@
 		<Event/>
 		<StasisImmune />
 		<StunImmune />
-		<DazeImmune />
+		<DazedImmune />
 		<AnimatedTexture>
 			<File>Custom16x16Encounters</File>
 			<Index>15</Index>
@@ -600,7 +600,7 @@
 		<Chest />
 		<StasisImmune />
 		<StunImmune />
-		<DazeImmune />
+		<DazedImmune />
 		<AnimatedTexture>
 			<File>Custom16x16Encounters</File>
 			<Index>10</Index>
@@ -730,7 +730,7 @@
 		<Chest />
 		<StasisImmune />
 		<StunImmune />
-		<DazeImmune />
+		<DazedImmune />
 		<AnimatedTexture>
 			<File>Custom16x16Encounters</File>
 			<Index>12</Index>
@@ -829,7 +829,7 @@
 		<Defense>30</Defense>
 		<Enemy />
 		<StasisImmune />
-		<DazeImmune />
+		<DazedImmune />
 		<AnimatedTexture>
 			<File>Custom16x16Encounters</File>
 			<Index>12</Index>
@@ -881,7 +881,7 @@
 		<Chest />
 		<StasisImmune />
 		<StunImmune />
-		<DazeImmune />
+		<DazedImmune />
 		<AnimatedTexture>
 			<File>Custom16x16Encounters</File>
 			<Index>14</Index>
@@ -925,7 +925,7 @@
 		<Chest />
 		<StasisImmune />
 		<StunImmune />
-		<DazeImmune />
+		<DazedImmune />
 		<AnimatedTexture>
 			<File>Custom16x16Encounters</File>
 			<Index>9</Index>
@@ -965,7 +965,7 @@
 		<Chest />
 		<StasisImmune />
 		<StunImmune />
-		<DazeImmune />
+		<DazedImmune />
 		<AnimatedTexture>
 			<File>Custom16x16Encounters</File>
 			<Index>11</Index>

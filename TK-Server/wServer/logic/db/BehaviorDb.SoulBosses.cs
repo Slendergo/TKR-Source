@@ -371,6 +371,7 @@ namespace wServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("Start",
+                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new PlayerWithinTransition(15, "Taunt")
                     ),
                 new State("Taunt",

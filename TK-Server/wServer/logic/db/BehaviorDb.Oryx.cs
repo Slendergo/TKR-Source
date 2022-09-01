@@ -16,6 +16,7 @@ namespace wServer.logic
             new State(
                 new ScaleHP2(35),
                 new State("CheckPlayer",
+                    new ConditionalEffect(ConditionEffectIndex.Invincible, false),
                     new PlayerWithinTransition(15, "Wait", false)
                     ),
                 new State("Wait",

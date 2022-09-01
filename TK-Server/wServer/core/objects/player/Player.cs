@@ -257,6 +257,12 @@ namespace wServer.core.objects
                 Glow = t.Result && client.Account.GlowColor == 0 ? 0xFF0000 : client.Account.GlowColor;
             });
 
+            if (Client.Account.Hidden)
+            {
+                ApplyPermanentConditionEffect(ConditionEffectIndex.Hidden);
+                ApplyPermanentConditionEffect(ConditionEffectIndex.Invincible);
+            }
+
             LoadTalismanData();
         }
 
@@ -738,11 +744,11 @@ namespace wServer.core.objects
 
         public override void Tick(ref TickTime time)
         {
-            if (DeltaTime)
-                SendInfo($"[DeltaTime]: {World.DisplayName} -> {time.ElaspedMsDelta} | {time.LogicTime}");
-            
             if (KeepAlive(time))
             {
+                if (DeltaTime)
+                    SendInfo($"[DeltaTime]: {World.DisplayName} -> {time.ElaspedMsDelta} | {time.LogicTime}");
+            
                 PlayerUpdate.SendUpdate();
                 PlayerUpdate.SendNewTick(time.ElaspedMsDelta);
 
@@ -959,6 +965,7 @@ namespace wServer.core.objects
             if (elasped % 15000 == 0)
                 ApplyConditionEffect(ConditionEffectIndex.Berserk, 5000);
         }
+
         private string CheckRankAPI(int accID, int charID)
         {
             var httpWebRequest = (HttpWebRequest)WebRequest.Create($"https://tkr.gg/api/getRank");

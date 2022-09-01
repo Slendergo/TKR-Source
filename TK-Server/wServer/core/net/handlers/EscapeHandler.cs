@@ -1,4 +1,5 @@
 ﻿using common;
+using common.resources;
 using wServer.core.worlds;
 using wServer.networking;
 using wServer.networking.packets.outgoing;
@@ -15,13 +16,14 @@ namespace wServer.core.net.handlers
                 return;
 
             var map = client.Player.World;
-
             if (map.Id == World.NEXUS_ID)
             {
                 client.Disconnect("Already in Nexus!");
                 return;
             }
 
+            client.Player.SendInfo("You issued a nexus, if you die its because you dont see this");
+            client.Player.ApplyPermanentConditionEffect(ConditionEffectIndex.Invincible);
             client.Reconnect(new Reconnect()
             {
                 Host = "",

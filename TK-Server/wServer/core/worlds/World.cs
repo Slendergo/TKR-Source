@@ -419,6 +419,12 @@ namespace wServer.core.worlds
 
         protected virtual void UpdateLogic(ref TickTime time)
         {
+            foreach (var player in Players.Values)
+            {
+                player.HandleIO(ref time);
+                player.Tick(ref time);
+            }
+
             foreach (var stat in StaticObjects.Values)
                 stat.Tick(ref time);
 
@@ -438,12 +444,6 @@ namespace wServer.core.worlds
 
             foreach (var projectile in projectilesToRemove)
                 RemoveProjectile(projectile);
-
-            foreach (var player in Players.Values)
-            {
-                player.HandleIO(ref time);
-                player.Tick(ref time);
-            }
 
             if (EnemiesCollision != null)
             {

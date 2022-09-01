@@ -119,7 +119,6 @@ namespace wServer.core.net.handlers.market
         {
             System.Threading.Tasks.Task.Factory.StartNew(() =>
             {
-
                 var httpWebRequest = (HttpWebRequest)WebRequest.Create($"https://tkprices.herokuapp.com/api/item/addtx");
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";

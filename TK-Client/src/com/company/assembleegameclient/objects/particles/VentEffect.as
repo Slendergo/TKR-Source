@@ -19,7 +19,7 @@ package com.company.assembleegameclient.objects.particles
          this.go_ = go;
       }
       
-      override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+      override public function update(time:int, dt:int) : Boolean
       {
          var t:int = 0;
          var part:VentParticle = null;
@@ -85,7 +85,7 @@ class VentParticle extends Particle
       FreeList.deleteObject(this);
    }
    
-   override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+   override public function update(time:int, dt:int) : Boolean
    {
       var t:Number = (time - this.startTime_) / 1000;
       z_ = 0 + this.speed_ * t;

@@ -1993,10 +1993,6 @@ public class GameServerConnection
          message.consume();
       }
 
-       private function get requireInterpolation():Boolean {
-           return this.jitterWatcher_ && this.jitterWatcher_.getNetJitter > Parameters.INTERPOLATION_THRESHOLD;
-       }
-
       private function processObjectStatus(objectStatus:ObjectStatusData, tickTime:int, tickId:int) : void
       {
          var oldLevel:int = 0;
@@ -2015,7 +2011,7 @@ public class GameServerConnection
          var allyNotifs:Boolean = Parameters.data_.allyNotifs;
          if(tickTime != 0 && !isMyObject)
          {
-            go.onTickPos(objectStatus.pos_.x_,objectStatus.pos_.y_,tickTime,tickId, this.requireInterpolation);
+            go.onTickPos(objectStatus.pos_.x_,objectStatus.pos_.y_,tickTime,tickId);
          }
          var player:Player = go as Player;
          if(player != null)

@@ -48,7 +48,7 @@ package com.company.assembleegameclient.objects.particles
          return new ParticleGenerator(effectProperties,go);
       }
       
-      override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+      override public function update(time:int, dt:int) : Boolean
       {
          var tDelta:Number = NaN;
          var newParticle:BaseParticle = null;

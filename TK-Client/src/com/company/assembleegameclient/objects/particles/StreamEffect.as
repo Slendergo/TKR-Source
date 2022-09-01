@@ -23,7 +23,7 @@ import flash.geom.Point;
          this.color_ = color;
       }
       
-      override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+      override public function update(time:int, dt:int) : Boolean
       {
          var size:int = 0;
          var part:StreamParticle = null;
@@ -101,7 +101,7 @@ class StreamParticle extends Particle
       this.period_ = 0.25 + Math.random() * 0.5;
    }
    
-   override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+   override public function update(time:int, dt:int) : Boolean
    {
       this.timeLeft_ = this.timeLeft_ - dt;
       if(this.timeLeft_ <= 0)

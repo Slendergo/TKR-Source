@@ -81,11 +81,11 @@ public class Merchant extends SellableObject implements IInteractiveObject {
         super.removeFromMap();
     }
 
-    override public function update(time:int, dt:int, interpolate:Boolean):Boolean {
+    override public function update(time:int, dt:int):Boolean {
         var tween0:GTween = null;
         var tween1:GTween = null;
 
-        super.update(time, dt, interpolate);
+        super.update(time, dt);
 
         if (this.firstUpdate_) {
             if (this.minsLeft_ == 2147483647) {

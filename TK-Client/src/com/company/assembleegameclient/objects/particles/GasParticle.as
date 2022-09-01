@@ -12,7 +12,7 @@ package com.company.assembleegameclient.objects.particles
          super(size,color,lifetime,z,dx,dy);
       }
       
-      override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+      override public function update(time:int, dt:int) : Boolean
       {
          var varY:Number = NaN;
          timeLeft_ = timeLeft_ - dt;

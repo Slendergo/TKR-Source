@@ -32,7 +32,7 @@ package com.company.assembleegameclient.objects.particles
          }
       }
       
-      override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+      override public function update(time:int, dt:int) : Boolean
       {
          if(this.go_.map_ == null)
          {
@@ -119,7 +119,7 @@ class LevelUpParticle extends Particle
       super(color,0,size);
    }
    
-   override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+   override public function update(time:int, dt:int) : Boolean
    {
       return this.alive_;
    }

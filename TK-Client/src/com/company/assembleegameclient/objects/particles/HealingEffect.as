@@ -17,7 +17,7 @@ package com.company.assembleegameclient.objects.particles
          this.lastPart_ = 0;
       }
       
-      override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+      override public function update(time:int, dt:int) : Boolean
       {
          var angle:Number = NaN;
          var size:int = 0;

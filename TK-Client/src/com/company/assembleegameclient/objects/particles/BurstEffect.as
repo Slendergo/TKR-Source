@@ -24,7 +24,7 @@ import flash.geom.Point;
          this.color_ = color;
       }
       
-      override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+      override public function update(time:int, dt:int) : Boolean
       {
          var angle:Number = NaN;
          var p:Point = null;

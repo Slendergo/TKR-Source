@@ -24,7 +24,7 @@ public class HitEffect extends ParticleEffect
          this.speed_ = speed;
       }
       
-      override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+      override public function update(time:int, dt:int) : Boolean
       {
          if(Parameters.data_.disableAllParticles) return false;
          var color:uint = 0;
@@ -69,7 +69,7 @@ class HitParticle extends Particle
       this.moveVec_.z = moveVecZ;
    }
    
-   override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+   override public function update(time:int, dt:int) : Boolean
    {
       this.timeLeft_ = this.timeLeft_ - dt;
       if(this.timeLeft_ <= 0)

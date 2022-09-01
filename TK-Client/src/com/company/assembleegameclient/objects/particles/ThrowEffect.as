@@ -20,7 +20,7 @@ public class ThrowEffect extends ParticleEffect
       this.duration_ = duration;
    }
 
-   override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+   override public function update(time:int, dt:int) : Boolean
    {
       x_ = this.start_.x;
       y_ = this.start_.y;
@@ -76,7 +76,7 @@ class ThrowParticle extends Particle
       this.pathY_ = y_ = this.start_.y;
    }
 
-   override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+   override public function update(time:int, dt:int) : Boolean
    {
       this.timeLeft_ = this.timeLeft_ - dt;
       if(this.timeLeft_ <= 0)

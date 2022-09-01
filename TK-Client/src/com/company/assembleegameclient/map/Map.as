@@ -115,10 +115,6 @@ public class Map extends Sprite {
     public var disableShooting_:Boolean;
     public var disableAbilities_:Boolean;
 
-    private function get requireInterpolation():Boolean {
-        return this.gs_.gsc_.jitterWatcher_ && this.gs_.gsc_.jitterWatcher_.getNetJitter > Parameters.INTERPOLATION_THRESHOLD;
-    }
-
     public function setProps(width:int, height:int, name:String, back:int, allowPlayerTeleport:Boolean, showDisplays:Boolean, disableShooting:Boolean, disableAbilities:Boolean):void {
         this.width_ = width;
         this.height_ = height;
@@ -193,7 +189,7 @@ public class Map extends Sprite {
         this.hitTPlayers_.length = 0;
         this.hitTEnemies_.length = 0;
         for each(go in this.goDict_) {
-            if (!go.update(time, dt, this.requireInterpolation)) {
+            if (!go.update(time, dt)) {
                 this.idsToRemove_.push(go.objectId_);
             }
             else {
@@ -210,7 +206,7 @@ public class Map extends Sprite {
             }
         }
         for each(bo in this.boDict_) {
-            if (!bo.update(time, dt, this.requireInterpolation)) {
+            if (!bo.update(time, dt)) {
                 this.idsToRemove_.push(bo.objectId_);
             }
         }

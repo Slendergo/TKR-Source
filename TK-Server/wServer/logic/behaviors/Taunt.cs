@@ -14,8 +14,15 @@ namespace wServer.logic.behaviors
         private Cooldown cooldown = new Cooldown(0, 0);
         private int? ordered;
         private string[] text;
+        private byte BubbleTime = 10;
 
         public Taunt(params string[] text) => this.text = text;
+
+        public Taunt(byte bubbleTime, params string[] text)
+        {
+            this.text = text;
+            BubbleTime = bubbleTime;
+        }
 
         public Taunt(double probability, params string[] text)
         {
@@ -119,7 +126,7 @@ namespace wServer.logic.behaviors
                   enemy.Rare ? $"Rare {host.ObjectDesc.DisplayId ?? host.ObjectDesc.ObjectId}" :
                   host.ObjectDesc.DisplayId ?? host.ObjectDesc.ObjectId;
 
-            var packet = new Text() { Name = "#" + displayenemy, ObjectId = host.Id, NumStars = -1, BubbleTime = 3, Recipient = "", Txt = taunt };
+            var packet = new Text() { Name = "#" + displayenemy, ObjectId = host.Id, NumStars = -1, BubbleTime = BubbleTime, Recipient = "", Txt = taunt };
 
             if (broadcast)
                 host.World.Broadcast(packet);

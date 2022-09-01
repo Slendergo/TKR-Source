@@ -17,7 +17,7 @@ package com.company.assembleegameclient.objects.particles
          this.go_ = go;
       }
       
-      override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+      override public function update(time:int, dt:int) : Boolean
       {
          var t:int = 0;
          var part:FountainParticle = null;
@@ -88,7 +88,7 @@ class FountainParticle extends Particle
       FreeList.deleteObject(this);
    }
    
-   override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+   override public function update(time:int, dt:int) : Boolean
    {
       var t:Number = (time - this.startTime_) / 1000;
       moveTo(x_ + this.moveVec_.x * dt * 0.0008,y_ + this.moveVec_.y * dt * 0.0008);

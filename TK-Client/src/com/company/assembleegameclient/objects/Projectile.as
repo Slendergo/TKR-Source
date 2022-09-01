@@ -45,7 +45,6 @@ public class Projectile extends BasicObject
    public var sound_:String;
    public var startX_:Number;
    public var startY_:Number;
-   public var first:Boolean = false;
    public var startTime_:int;
    public var angle_:Number = 0;
    public var radius:Number;
@@ -234,7 +233,7 @@ public class Projectile extends BasicObject
       }
    }
 
-   override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+   override public function update(time:int, dt:int) : Boolean
    {
       var colors:Vector.<uint> = null;
       var player:Player = null;

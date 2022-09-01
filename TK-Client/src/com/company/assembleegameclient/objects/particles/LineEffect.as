@@ -24,7 +24,7 @@ import com.company.assembleegameclient.util.RandomUtil;
          this.color_ = color;
       }
       
-      override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+      override public function update(time:int, dt:int) : Boolean
       {
          var p:Point = null;
          var part:Particle = null;

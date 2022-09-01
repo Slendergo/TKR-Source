@@ -325,10 +325,7 @@ namespace wServer.core.objects
 
         public virtual void Tick(ref TickTime time)
         {
-            if (this == null || World == null)
-                return;
-
-            if (CurrentState != null && World != null)
+            if (CurrentState != null)
             {
                 if (!HasConditionEffect(ConditionEffectIndex.Stasis) && this.AnyPlayerNearby())
                     TickState(time);

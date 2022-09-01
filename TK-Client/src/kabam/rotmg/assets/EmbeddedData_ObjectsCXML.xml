@@ -14439,7 +14439,7 @@
     <Size>120</Size>
     <ShadowSize>60</ShadowSize>
     <NoMiniMap />
-    <MaxHitPoints>48000</MaxHitPoints>
+    <MaxHitPoints>75000</MaxHitPoints>
     <XpMult>0.85</XpMult>
     <Defense>15</Defense>
     <StasisImmune />
@@ -14452,7 +14452,7 @@
     </Projectile>
     <Projectile id="1">
       <ObjectId>Ghost X</ObjectId>
-      <Damage>75</Damage>
+      <Damage>95</Damage>
       <Speed>85</Speed>
       <Size>100</Size>
       <LifetimeMS>2000</LifetimeMS>
@@ -14489,7 +14489,7 @@
     <ShadowSize>80</ShadowSize>
     <HitSound>monster/archdemon_hit</HitSound>
     <DeathSound>monster/abyss_demons_death</DeathSound>
-    <MaxHitPoints>3000</MaxHitPoints>
+    <MaxHitPoints>6000</MaxHitPoints>
     <XpMult>0.35</XpMult>
     <Defense>13</Defense>
     <Projectile id="0">
@@ -14523,7 +14523,7 @@
     <HitSound>monster/demons_hit</HitSound>
     <DeathSound>monster/cyclops_death</DeathSound>
     <Size>120</Size>
-    <MaxHitPoints>3000</MaxHitPoints>
+    <MaxHitPoints>6000</MaxHitPoints>
     <Defense>15</Defense>
     <Projectile id="0">
       <ObjectId>Wereblast</ObjectId>
@@ -14554,7 +14554,7 @@
       <ObjectId>Orange Pumpkin Blast</ObjectId>
       <Damage>85</Damage>
       <Speed>75</Speed>
-      <LifetimeMS>2000</LifetimeMS>
+      <LifetimeMS>4000</LifetimeMS>
       <Size>140</Size>
     </Projectile>
     <Projectile id="1">
@@ -34601,7 +34601,7 @@
     </Texture>
     <HitSound>monster/oryx_hit</HitSound>
     <DeathSound>monster/oryx_death</DeathSound>
-    <Size>120</Size>
+    <Size>150</Size>
     <MaxHitPoints>100000</MaxHitPoints>
     <Defense>60</Defense>
     <Quest />
@@ -34616,12 +34616,14 @@
       <ObjectId>Fire Bolt</ObjectId>
       <Damage>135</Damage>
       <Speed>70</Speed>
+      <Size>150</Size>
       <LifetimeMS>2500</LifetimeMS>
     </Projectile>
     <Projectile id="1">
       <ObjectId>Green Star</ObjectId>
       <Damage>160</Damage>
       <Speed>70</Speed>
+      <Size>150</Size>
       <LifetimeMS>2500</LifetimeMS>
       <ConditionEffect duration="10">Slowed</ConditionEffect>
     </Projectile>
@@ -34629,12 +34631,14 @@
       <ObjectId>Blade</ObjectId>
       <Damage>240</Damage>
       <Speed>100</Speed>
+      <Size>150</Size>
       <LifetimeMS>450</LifetimeMS>
     </Projectile>
     <Projectile id="3">
       <ObjectId>Purple Star</ObjectId>
       <Damage>160</Damage>
       <Speed>55</Speed>
+      <Size>150</Size>
       <LifetimeMS>3000</LifetimeMS>
       <ConditionEffect duration="5">Blind</ConditionEffect>
     </Projectile>
@@ -34642,6 +34646,7 @@
       <ObjectId>Blue Star</ObjectId>
       <Damage>160</Damage>
       <Speed>105</Speed>
+      <Size>150</Size>
       <LifetimeMS>1200</LifetimeMS>
       <ConditionEffect duration="5">Confused</ConditionEffect>
     </Projectile>
@@ -34649,6 +34654,7 @@
       <ObjectId>Grey Star</ObjectId>
       <Damage>160</Damage>
       <Speed>45</Speed>
+      <Size>130</Size>
       <LifetimeMS>3000</LifetimeMS>
       <ConditionEffect duration="3">Quiet</ConditionEffect>
     </Projectile>
@@ -34656,6 +34662,7 @@
       <ObjectId>Red Star</ObjectId>
       <Damage>160</Damage>
       <Speed>55</Speed>
+      <Size>130</Size>
       <LifetimeMS>3000</LifetimeMS>
       <ArmorPiercing />
     </Projectile>
@@ -34664,6 +34671,7 @@
       <Speed>90</Speed>
       <Size>100</Size>
       <Damage>1</Damage>
+      <Size>130</Size>
       <LifetimeMS>1800</LifetimeMS>
       <ConditionEffect duration="20">Quiet</ConditionEffect>
       <MultiHit />
@@ -34673,6 +34681,7 @@
       <Speed>90</Speed>
       <Size>100</Size>
       <Damage>1</Damage>
+      <Size>130</Size>
       <LifetimeMS>1800</LifetimeMS>
       <ConditionEffect duration="60">Weak</ConditionEffect>
       <MultiHit />
@@ -52374,7 +52383,7 @@
     <ActivateOnEquip stat="20" amount="9">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="8">IncrementStat</ActivateOnEquip>
-    <Cooldown>5</Cooldown>
+    <Cooldown>1</Cooldown>
     <DisplayId>Shadow Shawl</DisplayId>
   </Object>
   <Object type="0x464" id="Old Cleric's Cloak">
@@ -52398,7 +52407,7 @@
     <Activate effect="Speedy" duration="4">ConditionEffectSelf</Activate>
     <ActivateOnEquip stat="20" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="6">IncrementStat</ActivateOnEquip>
-    <Cooldown>7</Cooldown>
+    <Cooldown>6</Cooldown>
     <DisplayId>Old Cleric's Cloak</DisplayId>
   </Object>
   <Object type="0xa424" id="Thanatos's Garments">
@@ -59479,16 +59488,14 @@
     <Legendary />
     <Description></Description>
     <Sound>spell/magic_nova</Sound>
-    <ActivateOnEquip stat="0" amount="-60">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="3" amount="90">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="6">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="26" amount="-8">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="110">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="8">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="8">IncrementStat</ActivateOnEquip>
     <Usable />
     <BagType>7</BagType>
     <FameBonus>7</FameBonus>
     <MpCost>130</MpCost>
-    <Activate totalDamage="1300" maxTargets="3" condEffect="Slowed" condDuration=".75" color="0xB2FAE2" useWisMod="true">Lightning</Activate>
+    <Activate totalDamage="1500" maxTargets="3" condEffect="Slowed" condDuration="2" color="0xB2FAE2" useWisMod="true">Lightning</Activate>
     <DisplayId>Scepter of Whispers</DisplayId>
   </Object>
   <Object type="0xae5" id="Lightning Scepter">

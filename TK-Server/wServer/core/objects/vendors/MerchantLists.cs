@@ -36,10 +36,11 @@ namespace wServer.core.objects.vendors
         {
             new ShopItem("Strange Library Key", 500),
             new ShopItem("Cemetery Key", 250),
-            new ShopItem("Lost Halls Key", 1000),
-			new ShopItem("Davy's Key", 500),
+            new ShopItem("Lost Halls Key", 2500),
+            new ShopItem("Defiled Graveyard Key", 1500),
+            new ShopItem("Davy's Key", 500),
             new ShopItem("The Crawling Depths Key", 500),
-            new ShopItem("Shatters Key", 1000),
+            new ShopItem("Shatters Key", 2500),
             new ShopItem("Ocean Trench Key", 500),
             new ShopItem("Tomb of the Ancients Key", 1000),
             new ShopItem("Deadwater Docks Key", 500),
@@ -57,7 +58,7 @@ namespace wServer.core.objects.vendors
             new ShopItem("Cemetery Key", 250),
             new ShopItem("Davy's Key", 500),
             new ShopItem("Ocean Trench Key", 500),
-            new ShopItem("Tomb of the Ancients Key", 1000)
+            new ShopItem("Tomb of the Ancients Key", 1500)
         };
 
         private static readonly List<ISellableItem> PurchasableFame = new List<ISellableItem>

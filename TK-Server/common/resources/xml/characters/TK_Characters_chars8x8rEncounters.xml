@@ -2789,7 +2789,7 @@
       <Speed>100</Speed>
       <LifetimeMS>300</LifetimeMS>
       <Size>200</Size>
-      <ConditionEffect duration="0.7">Paralyzed</ConditionEffect>
+      <ConditionEffect duration="1">Paralyzed</ConditionEffect>
       <MultiHit />
       <PassesCover />
       <ParticleTrail />

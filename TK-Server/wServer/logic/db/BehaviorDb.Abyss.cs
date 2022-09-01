@@ -211,6 +211,8 @@ namespace wServer.logic
                     new Shoot(30, 4, projectileIndex: 1, fixedAngle: -180, coolDown: 7400, coolDownOffset: 7400),
                     new Shoot(20, 3, shootAngle: 15, projectileIndex: 4, coolDown: 1000),
                     new Wander(0.3),
+                    new ChangeGroundOnDeath(new[] { "Lava" }, new[] { "Red Small Checks" },
+                        4),
                     new Reproduce("Malphas Missile", coolDown: 2000)
                     )
                 ),

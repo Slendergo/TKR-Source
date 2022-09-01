@@ -309,6 +309,7 @@ namespace wServer.logic
                     new HpLessTransition(0.90, "Phase 3")
                     ),
                 new State("Phase 3",
+                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new ReturnToSpawn(1, 1),
                     new Taunt("I cast you off!"),
                     new TimedTransition(4000, "Phase 3.1")

@@ -1177,7 +1177,7 @@
 		<ArmorBreakImmune/>
 		<SlowedImmune/>
 		<Level>20</Level>
-		<MaxHitPoints>85000</MaxHitPoints>
+		<MaxHitPoints>95000</MaxHitPoints>
 		<Defense>30</Defense>
 		<Projectile id="0">
 			<ObjectId>Rome Bomb</ObjectId>

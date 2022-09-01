@@ -333,13 +333,13 @@ namespace wServer.logic
                     ),
                 new State("Orbit",
                     new Prioritize(
-                        new Orbit(5, 8, 20, "Fire Elemental")),
+                        new Orbit(5, 8, 20, "Fire Elemental", speedVariance: 0, radiusVariance: 0)),
                     new Shoot(20, 12, projectileIndex: 0, coolDown: 500),
                     new EntityNotExistsTransition("Fire Elemental", 20, "Die")
                     ),
                 new State("Orbit 2",
                     new Prioritize(
-                        new Orbit(5, 5, 20, "Fire Elemental")),
+                        new Orbit(5, 5, 20, "Fire Elemental", speedVariance: 0, radiusVariance: 0)),
                     new Shoot(20, 12, projectileIndex: 0, coolDown: 500),
                     new EntityNotExistsTransition("Fire Elemental", 20, "Die")
                     ), 
@@ -360,13 +360,13 @@ namespace wServer.logic
                     ),
                 new State("Orbit",
                     new Prioritize(
-                        new Orbit(5, 8, 20, "Fire Elemental")),
+                        new Orbit(5, 8, 20, "Fire Elemental", speedVariance: 0, radiusVariance: 0)),
                     new Shoot(20, 12, projectileIndex: 0, coolDown: 500),
                     new EntityNotExistsTransition("Fire Elemental", 20, "Die")
                     ),
                  new State("Orbit 2",
                     new Prioritize(
-                        new Orbit(5, 5, 20, "Fire Elemental")),
+                        new Orbit(5, 5, 20, "Fire Elemental", speedVariance: 0, radiusVariance: 0)),
                     new Shoot(20, 12, projectileIndex: 0, coolDown: 500),
                     new EntityNotExistsTransition("Fire Elemental", 20, "Die")
                     ),

@@ -6172,7 +6172,7 @@
     <Class>Equipment</Class>
     <Item/>
     <SPlus/>
-    <Description>A glowing shard of something once powerful. You can feel the remaining energy resonate from this small piece.</Description>
+    <Description>Fuel used to power the LB Generator! Stack up to 50 and help provide LB to the entire server.</Description>
     <Texture>
       <File>CustomObj</File>
       <Index>0x125</Index>
@@ -6427,4 +6427,20 @@
     <Track />
 	  <Soulbound />
   </Object>
+	<Object type="0x4011" id="Defiled Graveyard Key">
+		<Class>Equipment</Class>
+		<Item />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x15</Index>
+		</Texture>
+		<SlotType>10</SlotType>
+		<Description>A key which opens an entrance to an Defiled Graveyard.</Description>
+		<Sound>use_key</Sound>
+		<Consumable />
+		<Activate id="Defiled Graveyard Portal">Create</Activate>
+		<BagType>6</BagType>
+		<Track />
+		<Soulbound />
+	</Object>
 </Objects>

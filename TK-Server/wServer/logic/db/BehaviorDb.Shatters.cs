@@ -601,7 +601,7 @@ namespace wServer.logic
         .Init("shtrs Blizzard",
             new State(
                 new State("Follow",
-                    new Follow(0.6, range: 1, coolDown: 1000),
+                    new Follow(1, range: 1, coolDown: 1000),
                     new Shoot(10, projectileIndex: 0, count: 4, shootAngle: 90, fixedAngle: 45, coolDown: 250),
                     new TimedTransition(7000, "Spin")
                     ),

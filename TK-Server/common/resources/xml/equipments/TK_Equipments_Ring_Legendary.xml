@@ -106,11 +106,11 @@
       <Index>0x6b</Index>
     </Texture>
     <SlotType>9</SlotType>
-    <Description>A mysterious light emanates from the stone.</Description>
-    <ActivateOnEquip stat="22" amount="6">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="6">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="0" amount="70">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="3" amount="70">IncrementStat</ActivateOnEquip>
+    <Description>A mysterious light emanates from the stone.</Description>   
+    <ActivateOnEquip stat="0" amount="85">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="85">IncrementStat</ActivateOnEquip>
+	<ActivateOnEquip stat="22" amount="7">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="7">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>5</FameBonus>
     <feedPower>900</feedPower>

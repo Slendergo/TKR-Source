@@ -2884,6 +2884,7 @@
     <Class>Character</Class>
     <Group>Stones</Group>
     <Enemy />
+	  <Quest/>
     <AnimatedTexture>
       <File>chars16x16rEncounters</File>
       <Index>109</Index>
@@ -2969,7 +2970,7 @@
       <Index>114</Index>
     </AnimatedTexture>
     <Size>150</Size>
-    <MaxHitPoints>50000</MaxHitPoints>
+    <MaxHitPoints>10000</MaxHitPoints>
     <Defense>45</Defense>
     <XpMult>0.2</XpMult>
     <Projectile id="0">
@@ -2997,7 +2998,7 @@
       <Index>114</Index>
     </AnimatedTexture>
     <Size>100</Size>
-    <MaxHitPoints>50000</MaxHitPoints>
+    <MaxHitPoints>10000</MaxHitPoints>
     <Defense>45</Defense>
     <XpMult>0.0</XpMult>
     <Projectile id="0">
@@ -3014,12 +3015,13 @@
     <Group>Stone Monster</Group>
     <Enemy />
     <God />
+	  <Quest/>
     <AnimatedTexture>
       <File>chars16x16rEncounters</File>
       <Index>115</Index>
     </AnimatedTexture>
     <Size>100</Size>
-    <MaxHitPoints>150000</MaxHitPoints>
+    <MaxHitPoints>90000</MaxHitPoints>
     <Defense>65</Defense>
     <XpMult>1.25</XpMult>
     <AltTexture id="1">
@@ -3031,6 +3033,7 @@
     <StasisImmune />
     <StunImmune />
     <ParalyzeImmune />
+	  <SlowImmune />
     <DazedImmune />
     <Projectile id="0">
       <ObjectId>White Bullet</ObjectId>
@@ -3084,7 +3087,7 @@
       <Index>112</Index>
     </AnimatedTexture>
     <Size>125</Size>
-    <MaxHitPoints>50000</MaxHitPoints>
+    <MaxHitPoints>30000</MaxHitPoints>
     <ParalyzeImmune />
     <StasisImmune />
     <Defense>45</Defense>
@@ -3115,7 +3118,7 @@
       <Index>113</Index>
     </AnimatedTexture>
     <Size>125</Size>
-    <MaxHitPoints>65000</MaxHitPoints>
+    <MaxHitPoints>30000</MaxHitPoints>
     <StunImmune />
     <ParalyzeImmune />
     <Defense>100</Defense>

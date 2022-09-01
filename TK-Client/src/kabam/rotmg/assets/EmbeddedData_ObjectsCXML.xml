@@ -16008,6 +16008,7 @@
     <Class>Character</Class>
     <Group>Stones</Group>
     <Enemy />
+    <Quest />
     <AnimatedTexture>
       <File>chars16x16rEncounters</File>
       <Index>109</Index>
@@ -16093,7 +16094,7 @@
       <Index>114</Index>
     </AnimatedTexture>
     <Size>150</Size>
-    <MaxHitPoints>50000</MaxHitPoints>
+    <MaxHitPoints>10000</MaxHitPoints>
     <Defense>45</Defense>
     <XpMult>0.2</XpMult>
     <Projectile id="0">
@@ -16121,7 +16122,7 @@
       <Index>114</Index>
     </AnimatedTexture>
     <Size>100</Size>
-    <MaxHitPoints>50000</MaxHitPoints>
+    <MaxHitPoints>10000</MaxHitPoints>
     <Defense>45</Defense>
     <XpMult>0.0</XpMult>
     <Projectile id="0">
@@ -16138,12 +16139,13 @@
     <Group>Stone Monster</Group>
     <Enemy />
     <God />
+    <Quest />
     <AnimatedTexture>
       <File>chars16x16rEncounters</File>
       <Index>115</Index>
     </AnimatedTexture>
     <Size>100</Size>
-    <MaxHitPoints>150000</MaxHitPoints>
+    <MaxHitPoints>90000</MaxHitPoints>
     <Defense>65</Defense>
     <XpMult>1.25</XpMult>
     <AltTexture id="1">
@@ -16155,6 +16157,7 @@
     <StasisImmune />
     <StunImmune />
     <ParalyzeImmune />
+    <SlowImmune />
     <DazedImmune />
     <Projectile id="0">
       <ObjectId>White Bullet</ObjectId>
@@ -16208,7 +16211,7 @@
       <Index>112</Index>
     </AnimatedTexture>
     <Size>125</Size>
-    <MaxHitPoints>50000</MaxHitPoints>
+    <MaxHitPoints>30000</MaxHitPoints>
     <ParalyzeImmune />
     <StasisImmune />
     <Defense>45</Defense>
@@ -16239,7 +16242,7 @@
       <Index>113</Index>
     </AnimatedTexture>
     <Size>125</Size>
-    <MaxHitPoints>65000</MaxHitPoints>
+    <MaxHitPoints>30000</MaxHitPoints>
     <StunImmune />
     <ParalyzeImmune />
     <Defense>100</Defense>
@@ -21457,7 +21460,7 @@
       <Speed>100</Speed>
       <LifetimeMS>300</LifetimeMS>
       <Size>200</Size>
-      <ConditionEffect duration="0.7">Paralyzed</ConditionEffect>
+      <ConditionEffect duration="1">Paralyzed</ConditionEffect>
       <MultiHit />
       <PassesCover />
       <ParticleTrail />
@@ -28776,7 +28779,7 @@
     <ArmorBreakImmune />
     <SlowedImmune />
     <Level>20</Level>
-    <MaxHitPoints>85000</MaxHitPoints>
+    <MaxHitPoints>95000</MaxHitPoints>
     <Defense>30</Defense>
     <Projectile id="0">
       <ObjectId>Rome Bomb</ObjectId>
@@ -50736,7 +50739,7 @@
     <Class>Equipment</Class>
     <Item />
     <SPlus />
-    <Description>A glowing shard of something once powerful. You can feel the remaining energy resonate from this small piece.</Description>
+    <Description>Fuel used to power the LB Generator! Stack up to 50 and help provide LB to the entire server.</Description>
     <Texture>
       <File>CustomObj</File>
       <Index>0x125</Index>
@@ -50986,6 +50989,22 @@
     <Sound>use_key</Sound>
     <Consumable />
     <Activate id="Strange Door">Create</Activate>
+    <BagType>6</BagType>
+    <Track />
+    <Soulbound />
+  </Object>
+  <Object type="0x4011" id="Defiled Graveyard Key">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x15</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>A key which opens an entrance to an Defiled Graveyard.</Description>
+    <Sound>use_key</Sound>
+    <Consumable />
+    <Activate id="Defiled Graveyard Portal">Create</Activate>
     <BagType>6</BagType>
     <Track />
     <Soulbound />
@@ -57050,10 +57069,10 @@
     </Texture>
     <SlotType>9</SlotType>
     <Description>A mysterious light emanates from the stone.</Description>
-    <ActivateOnEquip stat="22" amount="6">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="6">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="0" amount="70">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="3" amount="70">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="85">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="85">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="7">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="7">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>5</FameBonus>
     <feedPower>900</feedPower>

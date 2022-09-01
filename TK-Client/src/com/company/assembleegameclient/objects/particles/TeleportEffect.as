@@ -11,7 +11,7 @@ public class TeleportEffect extends ParticleEffect
          super();
       }
       
-      override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+      override public function update(time:int, dt:int) : Boolean
       {
          var angle:Number = NaN;
          var dist:Number = NaN;
@@ -61,7 +61,7 @@ class TeleportParticle extends Particle
       this.timeLeft_ = lifetime;
    }
    
-   override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+   override public function update(time:int, dt:int) : Boolean
    {
       this.timeLeft_ = this.timeLeft_ - dt;
       if(this.timeLeft_ <= 0)

@@ -20,7 +20,7 @@ public class HealEffect extends ParticleEffect
          this.color_ = color;
       }
       
-      override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+      override public function update(time:int, dt:int) : Boolean
       {
          if(Parameters.data_.disableAllParticles) return false;
          var angle:Number = NaN;

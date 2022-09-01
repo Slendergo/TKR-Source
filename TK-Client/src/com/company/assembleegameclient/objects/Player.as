@@ -290,7 +290,7 @@ public class Player extends Character {
         return ret;
     }
 
-    override public function update(time:int, dt:int, interpolate:Boolean):Boolean {
+    override public function update(time:int, dt:int):Boolean {
         var playerAngle:Number = NaN;
         var moveSpeed:Number = NaN;
         var moveVecAngle:Number = NaN;
@@ -320,9 +320,11 @@ public class Player extends Character {
             map_.removeObj(this.healingEffect_.objectId_);
             this.healingEffect_ = null;
         }
+
         if (map_.player_ == this && isPaused()) {
             return true;
         }
+
         if (this.relMoveVec_ != null) {
             playerAngle = Parameters.data_.cameraAngle;
             if (this.rotate_ != 0) {
@@ -345,7 +347,7 @@ public class Player extends Character {
             }
             this.walkTo(x_ + dt * moveVec_.x, y_ + dt * moveVec_.y);
         }
-        else if (!super.update(time, dt, interpolate)) {
+        else if (!super.update(time, dt)) {
             return false;
         }
 

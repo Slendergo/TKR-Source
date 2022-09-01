@@ -28,7 +28,7 @@ package com.company.assembleegameclient.objects.particles
          this.dist_ = dist;
       }
       
-      override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+      override public function update(time:int, dt:int) : Boolean
       {
          this.timeLeft_ = this.timeLeft_ - dt;
          if(this.timeLeft_ <= 0)

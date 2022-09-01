@@ -26,7 +26,7 @@ package com.company.assembleegameclient.objects.particles
          this.props = props;
       }
       
-      override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+      override public function update(time:int, dt:int) : Boolean
       {
          var size:Number = NaN;
          var r:Number = NaN;

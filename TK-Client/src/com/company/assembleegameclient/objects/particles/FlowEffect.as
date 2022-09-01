@@ -24,7 +24,7 @@ import flash.geom.Point;
          this.color_ = color;
       }
       
-      override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+      override public function update(time:int, dt:int) : Boolean
       {
          var size:int = 0;
          var part:Particle = null;
@@ -80,7 +80,7 @@ class FlowParticle extends Particle
       this.flowSpeed_ = Math.random() * 5;
    }
    
-   override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+   override public function update(time:int, dt:int) : Boolean
    {
       var ACCEL:Number = 8;
       var here:Point = new Point(x_,y_);
@@ -134,7 +134,7 @@ class FlowParticle2 extends Particle
       this.dy_ = Math.random() - 0.5;
    }
    
-   override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+   override public function update(time:int, dt:int) : Boolean
    {
       var here:Point = new Point(x_,y_);
       var target:Point = new Point(this.go_.x_,this.go_.y_);

@@ -16,7 +16,7 @@ package com.company.assembleegameclient.objects.particles
          this.numParts_ = numParts;
       }
       
-      override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+      override public function update(time:int, dt:int) : Boolean
       {
          var color:uint = 0;
          var part:Particle = null;
@@ -58,7 +58,7 @@ class ExplosionParticle extends Particle
       this.moveVec_.z = moveVecZ;
    }
    
-   override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+   override public function update(time:int, dt:int) : Boolean
    {
       this.timeLeft_ = this.timeLeft_ - dt;
       if(this.timeLeft_ <= 0)

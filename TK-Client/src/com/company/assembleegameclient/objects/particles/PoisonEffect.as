@@ -19,7 +19,7 @@ import com.company.assembleegameclient.util.RandomUtil;
          this.color_ = color;
       }
       
-      override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+      override public function update(time:int, dt:int) : Boolean
       {
          if(this.go_.map_ == null)
          {

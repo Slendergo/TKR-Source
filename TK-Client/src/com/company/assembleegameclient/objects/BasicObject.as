@@ -59,7 +59,7 @@ public class BasicObject
          this.posS_ = null;
       }
       
-      public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+      public function update(time:int, dt:int) : Boolean
       {
          return true;
       }

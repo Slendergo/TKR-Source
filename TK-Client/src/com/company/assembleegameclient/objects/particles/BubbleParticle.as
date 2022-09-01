@@ -70,7 +70,7 @@ package com.company.assembleegameclient.objects.particles
          super.removeFromMap();
       }
       
-      override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+      override public function update(time:int, dt:int) : Boolean
       {
          var t:Number = (time - this.startTime) / 1000;
          this.timeLeft = this.timeLeft - dt;

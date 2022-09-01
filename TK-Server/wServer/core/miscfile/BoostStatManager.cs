@@ -159,6 +159,19 @@ namespace wServer.core
                 foreach (var stat in tierDesc.StatTypes)
                 {
                     // scale by level or by flat value
+               
+                    if(stat.Percentage != 0.0f)
+                    {
+                        var scaledAmount = stat.ScalesPerLevel ? stat.Percentage * talisman.Level : stat.Percentage;
+
+                        var statVal = this[StatsManager.GetStatIndex((StatDataType)stat.StatType)];
+
+                        var amountToBoostBy = (int)(statVal * scaledAmount);
+                        
+                        IncrementBoost((StatDataType)stat.StatType, amountToBoostBy);
+                        continue;
+                    }
+
                     var scale = (int)(stat.ScalesPerLevel ? stat.Amount * talisman.Level : stat.Amount);
                     IncrementBoost((StatDataType)stat.StatType, scale);
                 }

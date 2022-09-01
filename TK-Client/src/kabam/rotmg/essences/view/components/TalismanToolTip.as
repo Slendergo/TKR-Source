@@ -88,7 +88,13 @@ public class TalismanToolTip extends ToolTip
                     symbol = "";
                 }
 
-                this.effects.push(new Effect("" , symbol + xml.@amount + " " + StatData.statToName(xml.@type) + scaleType));
+                var percentage:Number = xml.@percentage;
+                if(percentage > 0.0 || percentage < 0.0){
+                    this.effects.push(new Effect("" , (percentage < 0 ? "" : " +") + (percentage * 100.0) + "% " + StatData.statToName(xml.@type) + scaleType));
+                }
+                else{
+                    this.effects.push(new Effect("" , symbol + xml.@amount + " " + StatData.statToName(xml.@type) + scaleType));
+                }
             }
 
             xml = null;

@@ -28,7 +28,7 @@ package com.company.assembleegameclient.objects.particles
          this.poolID = "BubbleEffect_" + Math.random();
       }
       
-      override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+      override public function update(time:int, dt:int) : Boolean
       {
          var start:int = 0;
          var t:int = 0;

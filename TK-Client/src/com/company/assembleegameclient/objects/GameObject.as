@@ -80,11 +80,6 @@ public class GameObject extends BasicObject {
         return d;
     }
 
-    public static function interpolation(number:Number, number2:Number, f:Number):Number {
-        var result:Number = f * number + (1 - f) * number2;
-        return result;
-    }
-
     public function GameObject(objectXML:XML) {
         var i:int = 0;
         this.props_ = ObjectLibrary.defaultProps_;
@@ -326,44 +321,24 @@ public class GameObject extends BasicObject {
         this.dispose();
     }
 
-    override public function update(time:int, dt:int, interpolate:Boolean):Boolean {
+    override public function update(time:int, dt:int):Boolean {
         var tickDT:Number;
         var pX:Number;
         var pY:Number;
         var moving:Boolean;
 
-        if (interpolate) {
-            if (this.myLastTickId_ > map_.gs_.gsc_.lastTickId_) {
+        if (!((this.moveVec_.x == 0) && (this.moveVec_.y == 0))) {
+            if (this.myLastTickId_ < map_.gs_.gsc_.lastTickId_) {
                 this.moveVec_.x = 0;
                 this.moveVec_.y = 0;
-            }
-
-            if (distToEnd() < 0.1) {
-                this.moveVec_.x = 0;
-                this.moveVec_.y = 0;
+                this.moveTo(this.tickPosition_.x, this.tickPosition_.y);
             }
             else {
-                tickDT = dt * 0.0020666;
-                pX = interpolation(this.tickPosition_.x, this.x_, tickDT);
-                pY = interpolation(this.tickPosition_.y, this.y_, tickDT);
+                tickDT = (time - this.lastTickUpdateTime_);
+                pX = (this.posAtTick_.x + (tickDT * this.moveVec_.x));
+                pY = (this.posAtTick_.y + (tickDT * this.moveVec_.y));
                 this.moveTo(pX, pY);
                 moving = true;
-            }
-        }
-        else {
-            if (!((this.moveVec_.x == 0) && (this.moveVec_.y == 0))) {
-                if (this.myLastTickId_ < map_.gs_.gsc_.lastTickId_) {
-                    this.moveVec_.x = 0;
-                    this.moveVec_.y = 0;
-                    this.moveTo(this.tickPosition_.x, this.tickPosition_.y);
-                }
-                else {
-                    tickDT = (time - this.lastTickUpdateTime_);
-                    pX = (this.posAtTick_.x + (tickDT * this.moveVec_.x));
-                    pY = (this.posAtTick_.y + (tickDT * this.moveVec_.y));
-                    this.moveTo(pX, pY);
-                    moving = true;
-                }
             }
         }
 
@@ -779,11 +754,10 @@ public class GameObject extends BasicObject {
         this.moveVec_.y = 0;
     }
 
-    public function onTickPos(x:Number, y:Number, tickTime:int, tickId:int, interpolate:Boolean):void {
-        if (!interpolate)
-            if (this.myLastTickId_ < map_.gs_.gsc_.lastTickId_)
-                this.moveTo(this.tickPosition_.x,this.tickPosition_.y);
-
+    public function onTickPos(x:Number, y:Number, tickTime:int, tickId:int):void {
+        if (this.myLastTickId_ < map_.gs_.gsc_.lastTickId_) {
+            this.moveTo(this.tickPosition_.x, this.tickPosition_.y);
+        }
         this.lastTickUpdateTime_ = map_.gs_.lastUpdate_;
         this.tickPosition_.x = x;
         this.tickPosition_.y = y;

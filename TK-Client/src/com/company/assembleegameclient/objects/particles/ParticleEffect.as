@@ -42,7 +42,7 @@ import flash.display.IGraphicsData;
          }
       }
       
-      override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+      override public function update(time:int, dt:int) : Boolean
       {
          return false;
       }

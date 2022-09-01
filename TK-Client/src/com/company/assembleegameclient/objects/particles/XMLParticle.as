@@ -74,7 +74,7 @@ package com.company.assembleegameclient.objects.particles
          return true;
       }
       
-      override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+      override public function update(time:int, dt:int) : Boolean
       {
          var fdt:Number = dt / 1000;
          this.durationLeft_ = this.durationLeft_ - fdt;

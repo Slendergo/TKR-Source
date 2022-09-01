@@ -21,7 +21,7 @@ package com.company.assembleegameclient.objects.thrown
          this.duration_ = duration;
       }
       
-      override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+      override public function update(time:int, dt:int) : Boolean
       {
          x_ = this.start_.x;
          y_ = this.start_.y;

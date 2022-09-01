@@ -23,7 +23,7 @@ package com.company.assembleegameclient.objects.particles
          this.cooldownLeft_ = 0;
       }
       
-      override public function update(time:int, dt:int, interpolate:Boolean) : Boolean
+      override public function update(time:int, dt:int) : Boolean
       {
          if(this.go_.map_ == null)
          {

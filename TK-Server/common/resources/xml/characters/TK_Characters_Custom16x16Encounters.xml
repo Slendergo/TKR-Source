@@ -434,7 +434,7 @@
 		<Projectile id="0">
 			<ObjectId>Elemental Water Shoot</ObjectId>
 			<Damage>100</Damage>
-			<Speed>120</Speed>
+			<Speed>60</Speed>
 			<Size>100</Size>
 			<LifetimeMS>1200</LifetimeMS>
 			<ArmorPiercing />

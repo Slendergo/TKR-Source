@@ -347,6 +347,40 @@
       <Index>0x35</Index>
     </Texture>
   </Ground>
+  <Ground type="0x4010" id="Water Elemental">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x34</Index>
+    </Texture>
+    <Sink />
+    <Speed>0.85</Speed>
+    <Animate dx=".4" dy=".4">Wave</Animate>
+    <BlendPriority>-10</BlendPriority>
+  </Ground>
+  <Ground type="0x4000" id="Water Bridge UP">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x08</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x4001" id="Water Bridge DN">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x09</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x4002" id="Water Bridge RT">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x0a</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x4003" id="Water Bridge LT">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x0b</Index>
+    </Texture>
+  </Ground>
   <Ground type="0x2040" id="Nexus Stairs UP 1">
     <Texture>
       <File>customEnvironmentMortomus</File>

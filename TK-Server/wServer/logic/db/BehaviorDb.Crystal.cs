@@ -228,15 +228,15 @@ namespace wServer.logic
                 new ItemLoot("Potion of Speed", 1),
                 new ItemLoot("Potion of Attack", 0.5),
                 new ItemLoot("Potion of Speed", 0.5),
-                new ItemLoot("Refraction Cutter", 0.00015),
-                new ItemLoot("Prismatic Stone", 0.00015),
-                new ItemLoot("Rigid Mantle", 0.00015)
+                new ItemLoot("Refraction Cutter", 0.001),
+                new ItemLoot("Prismatic Stone", 0.001),
+                new ItemLoot("Rigid Mantle", 0.001)
                 ),
 
             new Threshold(0.03,
-                new ItemLoot("Crystal Wand", 0.005),
-                new ItemLoot("Heart of the Realm", 0.0003),
-                new ItemLoot("Crystal Sword", 0.006)
+                new ItemLoot("Crystal Wand", 0.009),
+                new ItemLoot("Heart of the Realm", 0.001),
+                new ItemLoot("Crystal Sword", 0.009)
                 )
             )
         .Init("Crystal Prisoner Clone",

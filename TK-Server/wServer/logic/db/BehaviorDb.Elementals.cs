@@ -15,14 +15,14 @@ namespace wServer.logic
             new State(
                 new ScaleHP2(5),
                 new State("Start",
-                    new Shoot(15, 4, projectileIndex: 0, coolDown: 600),
+                    new Shoot(15, 4, projectileIndex: 0, coolDown: 1200),
                     new Prioritize(
-                        new Orbit(3, 6, 20, "Water Elemental", orbitClockwise: true)),
+                        new Orbit(3, 3, 20, "Water Elemental", orbitClockwise: true)),
                     new HpLessTransition(0.4, "Suicide")
                     ),
                 new State("Suicide",
                     new Shoot(15, 8, projectileIndex: 0, coolDown: 400),
-                    new Orbit(3, 6, 20, "Water Elemental", orbitClockwise: false),
+                    new Orbit(3, 4, 20, "Water Elemental", orbitClockwise: false),
                     new HpLessTransition(0.05, "Die")
                     ),
                 new State("Die",
@@ -40,21 +40,65 @@ namespace wServer.logic
                     ),
                 new State("Rage",
                     new Taunt("Lower your expectations warrior..."),
-                    new TimedTransition(4000, "Shoot")
+                    new TimedTransition(4000, "PrepareShoot")
                     ),
-                new State("Shoot",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
+                new State("PrepareShoot",
                     new TossObject2("Water Elemental Minion", range: 8, angle: 0, coolDown: 999999),
                     new TossObject2("Water Elemental Minion", range: 8, angle: 90, coolDown: 999999),
                     new TossObject2("Water Elemental Minion", range: 8, angle: 180, coolDown: 999999),
                     new TossObject2("Water Elemental Minion", range: 8, angle: 270, coolDown: 999999),
-                    new Wander(0.5),
-                    new Charge(5, 12, coolDown: 2000),
-                    new StayCloseToSpawn(1, 15),
-                    new Taunt("FIVE!"),
+                    new TimedRandomTransition(1000, false, "Shoot", "Shoot1", "Shoot2", "Shoot3")
+                    ),
+                new State("Shoot1",
+                    new MoveTo2(-8, 0, 2, isMapPosition: false),
+                    new RemoveConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new Shoot(15, 8, projectileIndex: 1, coolDown: 1200),
                     new Shoot(15, 5, shootAngle: 25, projectileIndex: 0, coolDown: 600),
-                    new Shoot(15, 5, projectileIndex: 2, shootAngle: 25, coolDown: 1500)
+                    new Shoot(15, 5, projectileIndex: 2, shootAngle: 25, coolDown: 1500),
+                    new TimedTransition(4000, "Return")
+                    ),
+                new State("Return",
+                    new ReturnToSpawn(2, 1),
+                    new TimedRandomTransition(1000, false, "Shoot", "Shoot2", "Shoot3")
+                    ),
+                new State("Shoot",
+                    new MoveTo2(8, 0, 2, isMapPosition: false),
+                    new RemoveConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new Charge(5, 12, coolDown: 2000),
+                    new Shoot(15, 8, projectileIndex: 1, coolDown: 1200),
+                    new Shoot(15, 5, shootAngle: 25, projectileIndex: 0, coolDown: 600),
+                    new Shoot(15, 5, projectileIndex: 2, shootAngle: 25, coolDown: 1500),
+                    new TimedTransition(4000, "Return")
+                    ),
+                new State("Return",
+                    new ReturnToSpawn(2, 1),
+                    new TimedRandomTransition(1000, false, "Shoot1", "Shoot2", "Shoot3")
+                    ),
+                new State("Shoot2",
+                    new MoveTo2(0, 8, 2, isMapPosition: false),
+                    new RemoveConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new Charge(5, 12, coolDown: 2000),
+                    new Shoot(15, 8, projectileIndex: 1, coolDown: 1200),
+                    new Shoot(15, 5, shootAngle: 25, projectileIndex: 0, coolDown: 600),
+                    new Shoot(15, 5, projectileIndex: 2, shootAngle: 25, coolDown: 1500),
+                    new TimedTransition(4000, "Return")
+                    ),
+                new State("Return",
+                    new ReturnToSpawn(2, 1),
+                    new TimedRandomTransition(1000, false, "Shoot1", "Shoot", "Shoot3")
+                    ),
+                 new State("Shoot3",
+                    new MoveTo2(0, -8, 2, isMapPosition: false),
+                    new RemoveConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new Charge(5, 12, coolDown: 2000),
+                    new Shoot(15, 8, projectileIndex: 1, coolDown: 1200),
+                    new Shoot(15, 5, shootAngle: 25, projectileIndex: 0, coolDown: 600),
+                    new Shoot(15, 5, projectileIndex: 2, shootAngle: 25, coolDown: 1500),
+                    new TimedTransition(4000, "Return")
+                    ),
+                new State("Return",
+                    new ReturnToSpawn(2, 1),
+                    new TimedRandomTransition(1000, false, "Shoot1", "Shoot2", "Shoot")
                     )
                 ),
             new Threshold(0.001,

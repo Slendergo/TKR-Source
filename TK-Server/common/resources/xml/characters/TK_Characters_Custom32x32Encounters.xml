@@ -498,7 +498,7 @@
 		<Projectile id="0">
 			<ObjectId>Elemental Water Shoot</ObjectId>
 			<Damage>90</Damage>
-			<Speed>125</Speed>
+			<Speed>80</Speed>
 			<Size>180</Size>
 			<LifetimeMS>4000</LifetimeMS>
 			<MultiHit />
@@ -506,7 +506,7 @@
 		<Projectile id="1">
 			<ObjectId>Elemental Water Shoot 2</ObjectId>
 			<Damage>125</Damage>
-			<Speed>75</Speed>
+			<Speed>70</Speed>
 			<Size>160</Size>
 			<LifetimeMS>4000</LifetimeMS>
 			<MultiHit />

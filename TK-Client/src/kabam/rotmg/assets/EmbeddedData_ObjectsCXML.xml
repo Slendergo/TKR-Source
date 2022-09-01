@@ -25709,7 +25709,7 @@
     <Projectile id="0">
       <ObjectId>Elemental Water Shoot</ObjectId>
       <Damage>100</Damage>
-      <Speed>120</Speed>
+      <Speed>60</Speed>
       <Size>100</Size>
       <LifetimeMS>1200</LifetimeMS>
       <ArmorPiercing />
@@ -28097,7 +28097,7 @@
     <Projectile id="0">
       <ObjectId>Elemental Water Shoot</ObjectId>
       <Damage>90</Damage>
-      <Speed>125</Speed>
+      <Speed>80</Speed>
       <Size>180</Size>
       <LifetimeMS>4000</LifetimeMS>
       <MultiHit />
@@ -28105,7 +28105,7 @@
     <Projectile id="1">
       <ObjectId>Elemental Water Shoot 2</ObjectId>
       <Damage>125</Damage>
-      <Speed>75</Speed>
+      <Speed>70</Speed>
       <Size>160</Size>
       <LifetimeMS>4000</LifetimeMS>
       <MultiHit />
@@ -34607,6 +34607,7 @@
     <Quest />
     <God />
     <Oryx />
+    <Event />
     <StasisImmune />
     <Level>1</Level>
     <XpMult>1</XpMult>
@@ -80637,7 +80638,7 @@
       <File>CustomProjs</File>
       <Index>0x21</Index>
     </Texture>
-    <AngleCorrection>1</AngleCorrection>
+    <Rotation>110</Rotation>
   </Object>
   <Object type="0x4985" id="Elemental Water Shoot 2">
     <Class>Projectile</Class>
@@ -81863,7 +81864,7 @@
       <File>CustomProjsBig</File>
       <Index>0x00</Index>
     </Texture>
-    <Rotation>90</Rotation>
+    <AngleCorrection>1</AngleCorrection>
   </Object>
   <Object type="0x499a" id="Earth Elemental Big Shoot">
     <Class>Projectile</Class>
@@ -87734,8 +87735,8 @@
   <Object type="0xff1" id="Onsen Waterfall">
     <Class>DoubleWall</Class>
     <Texture>
-      <File>SakuraEnvironment8x8</File>
-      <Index>0x5c</Index>
+      <File>customEnvironmentMortomus</File>
+      <Index>0xb6</Index>
     </Texture>
     <Top>
       <Texture>
@@ -87743,29 +87744,41 @@
         <Index>0x5b</Index>
       </Texture>
     </Top>
-    <Animation sync="true" prob="1" period="0.8">
+    <Animation sync="true" prob="1" period="1.2">
       <Frame time="0.2">
         <Texture>
-          <File>SakuraEnvironment8x8</File>
-          <Index>0x5c</Index>
+          <File>customEnvironmentMortomus</File>
+          <Index>0xb7</Index>
         </Texture>
       </Frame>
       <Frame time="0.2">
         <Texture>
-          <File>SakuraEnvironment8x8</File>
-          <Index>0x5d</Index>
+          <File>customEnvironmentMortomus</File>
+          <Index>0xb8</Index>
         </Texture>
       </Frame>
       <Frame time="0.2">
         <Texture>
-          <File>SakuraEnvironment8x8</File>
-          <Index>0x5e</Index>
+          <File>customEnvironmentMortomus</File>
+          <Index>0xb9</Index>
         </Texture>
       </Frame>
       <Frame time="0.2">
         <Texture>
-          <File>SakuraEnvironment8x8</File>
-          <Index>0x5f</Index>
+          <File>customEnvironmentMortomus</File>
+          <Index>0xba</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.2">
+        <Texture>
+          <File>customEnvironmentMortomus</File>
+          <Index>0xbb</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.2">
+        <Texture>
+          <File>customEnvironmentMortomus</File>
+          <Index>0xbc</Index>
         </Texture>
       </Frame>
     </Animation>

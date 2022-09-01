@@ -574,7 +574,7 @@
 			<File>CustomProjs</File>
 			<Index>0x21</Index>
 		</Texture>
-		<AngleCorrection>1</AngleCorrection>
+		<Rotation>110</Rotation>
 	</Object>
 	<Object type="0x4985" id="Elemental Water Shoot 2">
 		<Class>Projectile</Class>

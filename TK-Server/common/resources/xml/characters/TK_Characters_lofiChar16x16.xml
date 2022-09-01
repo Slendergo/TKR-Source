@@ -316,6 +316,7 @@
     <Quest />
     <God />
     <Oryx />
+	  <Event/>
     <StasisImmune />
     <Level>1</Level>
     <XpMult>1</XpMult>

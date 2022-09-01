@@ -8,7 +8,7 @@
     </AnimatedTexture>
     <PlayerClassType>0x0310</PlayerClassType>
   </Object>
-  <Object type="0x3400" id="Auru">
+  <Object type="0x3406" id="Auru">
     <Skin />
     <Class>Skin</Class>
     <AnimatedTexture>

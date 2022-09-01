@@ -14,15 +14,8 @@ namespace wServer.logic.behaviors
         private Cooldown cooldown = new Cooldown(0, 0);
         private int? ordered;
         private string[] text;
-        private byte BubbleTime = 10;
 
         public Taunt(params string[] text) => this.text = text;
-
-        public Taunt(byte bubbleTime, params string[] text)
-        {
-            this.text = text;
-            BubbleTime = bubbleTime;
-        }
 
         public Taunt(double probability, params string[] text)
         {

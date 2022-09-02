@@ -16,8 +16,8 @@
 			<Speed>80</Speed>
 			<Wavy/>
 			<LifetimeMS>1000</LifetimeMS>
-			<MinDamage>125</MinDamage>
-			<MaxDamage>135</MaxDamage>
+			<MinDamage>300</MinDamage>
+			<MaxDamage>305</MaxDamage>
 			<ArmorPiercing />
 		</Projectile>
 		<BagType>7</BagType>

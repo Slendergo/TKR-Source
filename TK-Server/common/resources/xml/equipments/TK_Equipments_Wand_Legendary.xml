@@ -163,8 +163,8 @@
 		<Projectile>
 			<ObjectId>Morto Square</ObjectId>
 			<Speed>120</Speed>
-			<MinDamage>375</MinDamage>
-			<MaxDamage>410</MaxDamage>
+			<MinDamage>245</MinDamage>
+			<MaxDamage>265</MaxDamage>
 			<Amplitude>1</Amplitude>
 			<Frequency>1.16</Frequency>
 			<LifetimeMS>542</LifetimeMS>

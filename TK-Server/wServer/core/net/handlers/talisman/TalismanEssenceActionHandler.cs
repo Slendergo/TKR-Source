@@ -79,6 +79,15 @@ namespace wServer.core.net.handlers
                 return;
             }
 
+            if(talisman.Level >= desc.MaxLevels)
+            {
+                talisman.CurrentXP = talisman.ExpGoal;
+                talisman.Level = (byte)desc.MaxLevels;
+                player.UpdateTalsimans();
+                player.SendError("You area alraedy at max level");
+                return;
+            }
+
             if (talisman.CurrentXP >= talisman.ExpGoal && talisman.Level >= desc.MaxLevels)
             {
                 talisman.CurrentXP = talisman.ExpGoal;

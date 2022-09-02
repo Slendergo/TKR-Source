@@ -8,7 +8,6 @@ namespace wServer.networking.packets.outgoing
 
         public override MessageId MessageId => MessageId.QUESTOBJID;
 
-
         protected override void Write(NWriter wtr)
         {
             wtr.Write(ObjectId);

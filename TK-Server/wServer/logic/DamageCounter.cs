@@ -96,28 +96,6 @@ namespace wServer.logic
                 var killer = (Parent ?? this).LastHitter == player;
                 if (player.EnemyKilled(enemy, (int)playerXp, killer) && !killer)
                     lvlUps++;
-
-                if (enemy.ObjectDesc.Quest)
-                {
-                    if (enemy.ObjectDesc.Level >= 18)
-                    {
-                        var essenceToGive = player.World.Random.Next(350, 500);
-                        if (essenceToGive > 0)
-                            player.GiveEssence(essenceToGive);
-                    }
-                    else if (enemy.ObjectDesc.Level >= 15)
-                    {
-                        var essenceToGive = player.World.Random.Next(75, 100);
-                        if (essenceToGive > 0)
-                            player.GiveEssence(essenceToGive);
-                    }
-                    else if (enemy.ObjectDesc.Level >= 5)
-                    {
-                        var essenceToGive = player.World.Random.Next(1, 50);
-                        if (essenceToGive > 0)
-                            player.GiveEssence(essenceToGive);
-                    }
-                }
             }
 
             if ((Parent ?? this).LastHitter != null)

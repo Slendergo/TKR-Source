@@ -111,7 +111,8 @@ namespace wServer.logic.loot
             }
             allLoot += player.LDBoostTime > 0 ? 0.1 : 0;
             allLoot += player.TalismanLootBoost;
-            allLoot += player.TalismanLootBoostPerPlayer;
+            if(player.World.Players.Count != 1)
+                allLoot += (player.TalismanLootBoostPerPlayer * player.World.Players.Count - 1);
             allLoot += player.TalismanCanOnlyGetWhiteBags ? 0.5 : 0;
             return allLoot;
         }
@@ -209,7 +210,37 @@ namespace wServer.logic.loot
                     continue;
 
                 var percentageOfDamage = (Math.Round(100.0 * (playerDamage / (double)enemy.DamageCounter.TotalDamage), 4) / 100);
-                
+                if (percentageOfDamage >= 0.001) // 0.01%
+                {
+                    if (enemy.ObjectDesc.Encounter)
+                    {
+                        var essenceToGive = player.World.Random.Next(350, 500);
+                        if (essenceToGive > 0)
+                            player.GiveEssence(essenceToGive);
+                    }
+                    else
+                    {
+                        if (enemy.ObjectDesc.Level >= 18)
+                        {
+                            var essenceToGive = player.World.Random.Next(100, 250);
+                            if (essenceToGive > 0)
+                                player.GiveEssence(essenceToGive);
+                        }
+                        else if (enemy.ObjectDesc.Level >= 15)
+                        {
+                            var essenceToGive = player.World.Random.Next(75, 100);
+                            if (essenceToGive > 0)
+                                player.GiveEssence(essenceToGive);
+                        }
+                        else if (enemy.ObjectDesc.Level >= 5)
+                        {
+                            var essenceToGive = player.World.Random.Next(1, 50);
+                            if (essenceToGive > 0)
+                                player.GiveEssence(essenceToGive);
+                        }
+                    }
+                }
+
                 var playerLootBoost = GetPlayerLootBoost(player);
 
                 //Console.WriteLine($"Loot Boost: {playerLootBoost}");

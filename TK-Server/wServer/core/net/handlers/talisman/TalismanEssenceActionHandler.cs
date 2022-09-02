@@ -79,7 +79,7 @@ namespace wServer.core.net.handlers
                 return;
             }
 
-            if(talisman.Level >= desc.MaxLevels)
+            if(talisman.Level >= desc.MaxLevels && desc.MaxLevels != 1)
             {
                 talisman.CurrentXP = talisman.ExpGoal;
                 talisman.Level = (byte)desc.MaxLevels;
@@ -170,7 +170,7 @@ namespace wServer.core.net.handlers
                 return;
             }
 
-            if (talisman.Level >= desc.MaxLevels)
+            if (talisman.Level >= desc.MaxLevels && desc.MaxLevels != 1)
             {
                 talisman.CurrentXP = talisman.ExpGoal;
                 talisman.Level = (byte)desc.MaxLevels;

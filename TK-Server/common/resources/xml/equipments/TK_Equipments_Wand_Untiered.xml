@@ -405,13 +405,13 @@
     <SlotType>8</SlotType>
     <Rare />
     <Description>Frozen water and stones give this wand exceptional grip and power.</Description>
-    <RateOfFire>.6</RateOfFire>
+    <RateOfFire>1</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
       <ObjectId>Thorn Shoot</ObjectId>
       <Speed>180</Speed>
-      <MinDamage>90</MinDamage>
-      <MaxDamage>110</MaxDamage>
+      <MinDamage>135</MinDamage>
+      <MaxDamage>175</MaxDamage>
       <LifetimeMS>500</LifetimeMS>
       <Amplitude>0.24</Amplitude>
       <Frequency>1.37</Frequency>
@@ -435,13 +435,13 @@
     <SlotType>8</SlotType>
     <SPlus />
     <Description>Tormented souls lay dormant in this wand's crystal, supplying it with power. Choose to use that power for good or for evil…</Description>
-    <RateOfFire>1</RateOfFire>
+    <RateOfFire>1.2</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
       <ObjectId>Deathhail Wand Shoot</ObjectId>
       <Speed>200</Speed>
-      <MinDamage>130</MinDamage>
-      <MaxDamage>150</MaxDamage>
+      <MinDamage>220</MinDamage>
+      <MaxDamage>260</MaxDamage>
       <LifetimeMS>450</LifetimeMS>
       <Frequency>1</Frequency>
       <Size>100</Size>

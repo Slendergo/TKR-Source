@@ -47,8 +47,8 @@
     <Projectile>
       <ObjectId>Wind Elemental Bow Shoot</ObjectId>
       <Speed>200</Speed>
-      <MinDamage>165</MinDamage>
-      <MaxDamage>215</MaxDamage>
+      <MinDamage>150</MinDamage>
+      <MaxDamage>205</MaxDamage>
       <LifetimeMS>350</LifetimeMS>
       <Amplitude>0.3</Amplitude>
       <Frequency>1.13</Frequency>

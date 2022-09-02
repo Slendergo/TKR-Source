@@ -15,8 +15,8 @@
     <Projectile>
       <ObjectId>Thousand Shot Arrow</ObjectId>
       <Speed>165</Speed>
-      <MinDamage>375</MinDamage>
-      <MaxDamage>375</MaxDamage>
+      <MinDamage>305</MinDamage>
+      <MaxDamage>320</MaxDamage>
       <LifetimeMS>460</LifetimeMS>
       <MultiHit />
     </Projectile>
@@ -45,8 +45,8 @@
     <Projectile>
       <ObjectId>Void Arrow</ObjectId>
       <Speed>200</Speed>
-      <MinDamage>445</MinDamage>
-      <MaxDamage>495</MaxDamage>
+      <MinDamage>350</MinDamage>
+      <MaxDamage>385</MaxDamage>
       <LifetimeMS>315</LifetimeMS>
       <MultiHit />
       <Amplitude>0.35</Amplitude>
@@ -70,14 +70,15 @@
     <SlotType>3</SlotType>
     <Legendary />
     <Description>“The legendary firearm forged from hard steel and pirate blood containing mighty power.”</Description>
-    <RateOfFire>1.05</RateOfFire>
+    <RateOfFire>.95</RateOfFire>
     <Sound>weapon/poor_quality_bow</Sound>
     <Projectile>
       <ObjectId>Giant Cannonball2</ObjectId>
       <Speed>150</Speed>
-      <MinDamage>115</MinDamage>
-      <MaxDamage>155</MaxDamage>
+      <MinDamage>110</MinDamage>
+      <MaxDamage>150</MaxDamage>
       <LifetimeMS>500</LifetimeMS>
+		<MultiHit/>
       <Size>125</Size>
 		<Wavy />
       <ArmorPiercing />
@@ -100,13 +101,13 @@
     <SlotType>3</SlotType>
     <Legendary />
     <Description>Once the prideful weapon of Nut. It was ultimately stored in her tomb as no other adventure could pull back the drawstring.</Description>
-    <RateOfFire>.9</RateOfFire>
+    <RateOfFire>.8</RateOfFire>
     <Sound>weapon/poor_quality_bow</Sound>
     <Projectile>
       <ObjectId>Bow of the Havens Shot</ObjectId>
       <Speed>159.5</Speed>
-      <MinDamage>290</MinDamage>
-      <MaxDamage>305</MaxDamage>
+      <MinDamage>250</MinDamage>
+      <MaxDamage>295</MaxDamage>
       <LifetimeMS>439</LifetimeMS>
       <Frequency>1</Frequency>
       <Size>100</Size>
@@ -131,13 +132,13 @@
     <Legendary />
     <SlotType>3</SlotType>
     <Description>The drawstring on this make-shift bow was not designed to notch traditional arrows. Rather, it launches high velocity bones.</Description>
-    <RateOfFire>1</RateOfFire>
+    <RateOfFire>.95</RateOfFire>
     <Sound>weapon/poor_quality_bow</Sound>
     <Projectile>
       <ObjectId>Fang Flinger Shoot</ObjectId>
       <Speed>155</Speed>
-      <MinDamage>280</MinDamage>
-      <MaxDamage>300</MaxDamage>
+      <MinDamage>255</MinDamage>
+      <MaxDamage>275</MaxDamage>
       <LifetimeMS>452</LifetimeMS>
       <Amplitude>0.45</Amplitude>
       <Frequency>2</Frequency>

@@ -15,8 +15,8 @@
     <Projectile>
       <ObjectId>Fire Elemental Staff Shoot</ObjectId>
       <Speed>180</Speed>
-      <MinDamage>230</MinDamage>
-      <MaxDamage>300</MaxDamage>
+      <MinDamage>215</MinDamage>
+      <MaxDamage>275</MaxDamage>
       <LifetimeMS>475</LifetimeMS>
       <Amplitude>0.35</Amplitude>
       <Frequency>2.49</Frequency>

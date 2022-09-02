@@ -10,14 +10,14 @@
     </Texture>
     <SlotType>1</SlotType>
     <Description>A slow but powerful sword that is a relic of a long forgotten age.</Description>
-    <RateOfFire>0.85</RateOfFire>
+    <RateOfFire>0.75</RateOfFire>
     <Sound>weapon/glass_sword</Sound>
     <Projectile>
       <ObjectId>Stone Slash</ObjectId>
       <Speed>120</Speed>
-      <MinDamage>525</MinDamage>
-      <MaxDamage>625</MaxDamage>
-      <LifetimeMS>333</LifetimeMS>
+      <MinDamage>510</MinDamage>
+      <MaxDamage>610</MaxDamage>
+      <LifetimeMS>375</LifetimeMS>
     </Projectile>
     <BagType>7</BagType>
     <FameBonus>4</FameBonus>
@@ -103,13 +103,13 @@
     <Description>
 			A sword with an impossibly sharp edge. It has been designed with holy magic to slash like no other blade.
 		</Description>
-    <RateOfFire>1.20</RateOfFire>
+    <RateOfFire>1.10</RateOfFire>
     <Sound>weapon/golden_bow</Sound>
     <Projectile>
       <ObjectId>Colossus Slash</ObjectId>
       <Speed>125</Speed>
-      <MinDamage>400</MinDamage>
-      <MaxDamage>450</MaxDamage>
+      <MinDamage>385</MinDamage>
+      <MaxDamage>425</MaxDamage>
       <LifetimeMS>400</LifetimeMS>
       <Amplitude>0.8</Amplitude>
       <Frequency>0.5</Frequency>
@@ -133,13 +133,13 @@
 		<SlotType>1</SlotType>
 		<Mythical />
 		<Description>“Cowards die many times before their deaths; The valiant never taste of death but once.”</Description>
-		<RateOfFire>0.6</RateOfFire>
+		<RateOfFire>0.55</RateOfFire>
 		<Sound>weapon/mithril_sword</Sound>
 		<Projectile>
 			<ObjectId>Thiram Shot</ObjectId>
 			<Speed>100</Speed>
-			<MinDamage>900</MinDamage>
-			<MaxDamage>900</MaxDamage>
+			<MinDamage>950</MinDamage>
+			<MaxDamage>950</MaxDamage>
 			<LifetimeMS>750</LifetimeMS>
 			<Frequency>1</Frequency>
 			<Amplitude>0.2</Amplitude>
@@ -168,8 +168,8 @@
     <Projectile>
       <ObjectId>Blade of the Protector Shoot</ObjectId>
       <Speed>140</Speed>
-      <MinDamage>160</MinDamage>
-      <MaxDamage>210</MaxDamage>
+      <MinDamage>150</MinDamage>
+      <MaxDamage>200</MaxDamage>
       <LifetimeMS>336</LifetimeMS>
       <Frequency>0</Frequency>
       <Size>95</Size>
@@ -199,8 +199,8 @@
     <Projectile>
       <ObjectId>Horn Breaker Shot</ObjectId>
       <Speed>125</Speed>
-      <MinDamage>450</MinDamage>
-      <MaxDamage>500</MaxDamage>
+      <MinDamage>400</MinDamage>
+      <MaxDamage>450</MaxDamage>
       <LifetimeMS>400</LifetimeMS>
       <Frequency>1</Frequency>
       <Size>80</Size>
@@ -230,9 +230,9 @@
 		<Projectile>
 			<ObjectId>Possessed Halberd Shot</ObjectId>
 			<Speed>75</Speed>
-			<MinDamage>666</MinDamage>
+			<MinDamage>560</MinDamage>
             <ParticleTrail lifetimeMS="300">0x7E3F00</ParticleTrail>
-			<MaxDamage>666</MaxDamage>
+			<MaxDamage>560</MaxDamage>
 			<LifetimeMS>627</LifetimeMS>
 			<Size>100</Size>
 			<MultiHit />

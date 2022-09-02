@@ -9,13 +9,13 @@
     </Texture>
     <SlotType>3</SlotType>
     <Description>No mortal can fire this dreaded bow without resting in between shots. It requires tremendous skill to wield.</Description>
-    <RateOfFire>0.4</RateOfFire>
+    <RateOfFire>0.65</RateOfFire>
     <Sound>weapon/golden_bow</Sound>
     <Projectile>
       <ObjectId>Black Arrow</ObjectId>
       <Speed>140</Speed>
-      <MinDamage>400</MinDamage>
-      <MaxDamage>500</MaxDamage>
+      <MinDamage>440</MinDamage>
+      <MaxDamage>475</MaxDamage>
       <LifetimeMS>503</LifetimeMS>
       <MultiHit />
     </Projectile>
@@ -35,13 +35,13 @@
     </Texture>
     <SlotType>3</SlotType>
     <Description>A bow fashioned from living coral found in only the deepest ocean trenches.  It is the favored weapon of those that inhabit the realms beneath the waves.</Description>
-    <RateOfFire>1.25</RateOfFire>
+    <RateOfFire>1.2</RateOfFire>
     <Sound>weapon/double_bow</Sound>
     <Projectile>
       <ObjectId>Coral Arrow</ObjectId>
       <Speed>185</Speed>
-      <MinDamage>80</MinDamage>
-      <MaxDamage>100</MaxDamage>
+      <MinDamage>105</MinDamage>
+      <MaxDamage>125</MaxDamage>
       <LifetimeMS>420</LifetimeMS>
       <MultiHit />
     </Projectile>
@@ -306,8 +306,8 @@
     <Projectile>
       <ObjectId>Earth Elemental Arrow</ObjectId>
       <Speed>145</Speed>
-      <MinDamage>110</MinDamage>
-      <MaxDamage>125</MaxDamage>
+      <MinDamage>135</MinDamage>
+      <MaxDamage>155</MaxDamage>
       <LifetimeMS>440</LifetimeMS>
       <Frequency>1</Frequency>
       <Size>100</Size>
@@ -331,13 +331,13 @@
 		</Texture>
 		<SlotType>3</SlotType>
 		<Description>Glass' baby</Description>
-		<RateOfFire>1.2</RateOfFire>
+		<RateOfFire>1.25</RateOfFire>
 		<Sound>weapon/golden_bow</Sound>
 		<Projectile>
 			<ObjectId>Blossom Shot</ObjectId>
 			<Speed>70</Speed>
-			<MinDamage>95</MinDamage>
-			<MaxDamage>145</MaxDamage>
+			<MinDamage>115</MinDamage>
+			<MaxDamage>150</MaxDamage>
 			<LifetimeMS>1000</LifetimeMS>
 			<Size>50</Size>
 			<Wavy />

@@ -10,13 +10,13 @@
     <Eternal	/>
     <SlotType>2</SlotType>
     <Description>Mysterious forces grant the control over the element of water, proving effective in fluid, unpredictable attacks.</Description>
-    <RateOfFire>1.20</RateOfFire>
+    <RateOfFire>.85</RateOfFire>
     <Sound>weapon/blunt_dagger</Sound>
     <Projectile>
       <ObjectId>Tide Shoot</ObjectId>
       <Speed>200</Speed>
-      <MinDamage>340</MinDamage>
-      <MaxDamage>440</MaxDamage>
+      <MinDamage>240</MinDamage>
+      <MaxDamage>270</MaxDamage>
       <LifetimeMS>310</LifetimeMS>
       <Amplitude>0.58</Amplitude>
       <Frequency>0.52</Frequency>

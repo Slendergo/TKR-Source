@@ -419,8 +419,8 @@
     <Projectile>
       <ObjectId>Massacre Shoot</ObjectId>
       <Speed>178.5</Speed>
-      <MinDamage>190</MinDamage>
-      <MaxDamage>205</MaxDamage>
+      <MinDamage>210</MinDamage>
+      <MaxDamage>230</MaxDamage>
       <LifetimeMS>280</LifetimeMS>
       <Amplitude>0.3</Amplitude>
       <Frequency>1.5</Frequency>
@@ -444,15 +444,15 @@
       <File>CustomObj</File>
       <Index>0x53</Index>
     </Texture>
-    <SlotType>1</SlotType>
+    <SlotType>1.15</SlotType>
     <Description>Shards from the body of the Golden Oryx Effigy empower this sword and give it an illustrious shine. </Description>
     <RateOfFire>.95</RateOfFire>
     <Sound>weapon/mithril_sword</Sound>
     <Projectile>
       <ObjectId>Golden Oryx Sword Shoot</ObjectId>
       <Speed>100</Speed>
-      <MinDamage>275</MinDamage>
-      <MaxDamage>290</MaxDamage>
+      <MinDamage>285</MinDamage>
+      <MaxDamage>310</MaxDamage>
       <LifetimeMS>450</LifetimeMS>
       <Frequency>1</Frequency>
       <Size>100</Size>
@@ -473,13 +473,13 @@
     </Texture>
     <SlotType>1</SlotType>
     <Description>Worthy enough to once be wielded by the Archdemon of Hell, Malphas.</Description>
-    <RateOfFire>1.05</RateOfFire>
+    <RateOfFire>1</RateOfFire>
     <Sound>weapon/mithril_sword</Sound>
     <Projectile>
       <ObjectId>Malphas Sword Shoot</ObjectId>
       <Speed>100</Speed>
-      <MinDamage>140</MinDamage>
-      <MaxDamage>190</MaxDamage>
+      <MinDamage>125</MinDamage>
+      <MaxDamage>165</MaxDamage>
       <LifetimeMS>420</LifetimeMS>
 	    <Amplitude>0.5</Amplitude>
       <Frequency>1.5</Frequency>
@@ -506,8 +506,8 @@
     <Projectile>
       <ObjectId>Slime Sword Shoot</ObjectId>
       <Speed>110</Speed>
-      <MinDamage>215</MinDamage>
-      <MaxDamage>215</MaxDamage>
+      <MinDamage>265</MinDamage>
+      <MaxDamage>270</MaxDamage>
       <LifetimeMS>409</LifetimeMS>
       <Frequency>1.5</Frequency>
       <Amplitude>0.2</Amplitude>

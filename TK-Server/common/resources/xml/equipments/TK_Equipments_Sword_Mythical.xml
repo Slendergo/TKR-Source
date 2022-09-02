@@ -14,8 +14,8 @@
     <Projectile>
       <ObjectId>Earth's Power Shoot</ObjectId>
       <Speed>150</Speed>
-      <MinDamage>415</MinDamage>
-      <MaxDamage>445</MaxDamage>
+      <MinDamage>400</MinDamage>
+      <MaxDamage>430</MaxDamage>
       <LifetimeMS>300</LifetimeMS>
       <Amplitude>0.6</Amplitude>
       <Frequency>0.97</Frequency>

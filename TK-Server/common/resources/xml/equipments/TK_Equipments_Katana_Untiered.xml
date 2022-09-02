@@ -163,13 +163,13 @@
     <SlotType>24</SlotType>
     <Rare />
     <Description>The durability of this katana was refined to a higher degree with the help of extraterrestrial metals.</Description>
-    <RateOfFire>1</RateOfFire>
+    <RateOfFire>1.25</RateOfFire>
     <Sound>weapon/blunt_sword</Sound>
     <Projectile>
       <ObjectId>Earth Elemental Katana Shoot</ObjectId>
       <Speed>130.5</Speed>
-      <MinDamage>165</MinDamage>
-      <MaxDamage>220</MaxDamage>
+      <MinDamage>190</MinDamage>
+      <MaxDamage>225</MaxDamage>
       <LifetimeMS>345</LifetimeMS>
       <Amplitude>0.34</Amplitude>
       <Frequency>0.59</Frequency>
@@ -193,13 +193,13 @@
     <SetTier />
     <SlotType>24</SlotType>
     <Description>A katana that was dipped in the experimental acid used by Dr. Terrible in his crazy creations.</Description>
-    <RateOfFire>1</RateOfFire>
+    <RateOfFire>1.15</RateOfFire>
     <Sound>weapon/blunt_sword</Sound>
     <Projectile>
       <ObjectId>Acid Katana N-3012 Shoot</ObjectId>
       <Speed>130</Speed>
-      <MinDamage>155</MinDamage>
-      <MaxDamage>200</MaxDamage>
+      <MinDamage>200</MinDamage>
+      <MaxDamage>225</MaxDamage>
       <LifetimeMS>365</LifetimeMS>
       <Amplitude>0.05</Amplitude>
       <Frequency>1</Frequency>
@@ -224,13 +224,13 @@
     </Texture>
     <SlotType>24</SlotType>
     <Description>A high-quality katana made from the flexible skin of Stheno, the Snake Queen.</Description>
-    <RateOfFire>0.4</RateOfFire>
+    <RateOfFire>0.6</RateOfFire>
     <Sound>weapon/long_sword</Sound>
     <Projectile>
       <ObjectId>Stheno Katana Shoot</ObjectId>
       <Speed>96</Speed>
-      <MinDamage>250</MinDamage>
-      <MaxDamage>525</MaxDamage>
+      <MinDamage>260</MinDamage>
+      <MaxDamage>495</MaxDamage>
       <LifetimeMS>667</LifetimeMS>
       <Frequency>1</Frequency>
       <Size>100</Size>

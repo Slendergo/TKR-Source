@@ -8,13 +8,13 @@
 		</Texture>
 		<SlotType>2</SlotType>
 		<Description>Bits of cosmic residue dropped by sprites were collected and forged into blades under the heavy pressure of space.</Description>
-		<RateOfFire>1.20</RateOfFire>
+		<RateOfFire>1.30</RateOfFire>
 		<Sound>weapon/fire_dagger</Sound>
 		<Projectile>
 			<ObjectId>Dual Blade Shot</ObjectId>
 			<Speed>90</Speed>
-			<MinDamage>150</MinDamage>
-			<MaxDamage>150</MaxDamage>
+			<MinDamage>175</MinDamage>
+			<MaxDamage>175</MaxDamage>
 			<LifetimeMS>425</LifetimeMS>
 			<Frequency>1</Frequency>
 			<Size>100</Size>
@@ -323,13 +323,13 @@
     </Texture>
     <SlotType>2</SlotType>
     <Description>Not the strongest of daggers, but it gets the job done when you need it most.</Description>
-    <RateOfFire>1.05</RateOfFire>
+    <RateOfFire>1.25</RateOfFire>
     <Sound>weapon/fire_dagger</Sound>
     <Projectile>
       <ObjectId>Dagger Shoot</ObjectId>
       <Speed>180</Speed>
-      <MinDamage>120</MinDamage>
-      <MaxDamage>195</MaxDamage>
+      <MinDamage>165</MinDamage>
+      <MaxDamage>225</MaxDamage>
       <LifetimeMS>275</LifetimeMS>
       <Frequency>1</Frequency>
       <Size>100</Size>

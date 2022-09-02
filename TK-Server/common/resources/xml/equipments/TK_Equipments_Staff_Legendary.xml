@@ -15,8 +15,8 @@
     <Projectile>
       <ObjectId>Ashen Spine Shoot</ObjectId>
       <Speed>150</Speed>
-      <MinDamage>160</MinDamage>
-      <MaxDamage>210</MaxDamage>
+      <MinDamage>150</MinDamage>
+      <MaxDamage>200</MaxDamage>
       <LifetimeMS>400</LifetimeMS>
       <Frequency>1.1</Frequency>
       <Amplitude>0.55</Amplitude>
@@ -51,8 +51,8 @@
       <ObjectId>Cultist Fire Shot</ObjectId>
       <Size>70</Size>
       <Speed>115</Speed>
-      <MinDamage>180</MinDamage>
-      <MaxDamage>225</MaxDamage>
+      <MinDamage>160</MinDamage>
+      <MaxDamage>200</MaxDamage>
       <LifetimeMS>700</LifetimeMS>
       <MultiHit />
     </Projectile>
@@ -75,14 +75,14 @@
     <Legendary />
     <SlotType>17</SlotType>
     <Description>An ancient staff used both for sacrifice and communion with the gods.</Description>
-    <RateOfFire>1.05</RateOfFire>
+    <RateOfFire>1</RateOfFire>
     <Sound>monster/djinn_hit</Sound>
     <Projectile>
       <ObjectId>Plasma Missile</ObjectId>
       <Speed>110</Speed>
 		<Size>120</Size>
-      <MinDamage>110</MinDamage>
-      <MaxDamage>165</MaxDamage>
+      <MinDamage>115</MinDamage>
+      <MaxDamage>145</MaxDamage>
 		<Wavy/>
       <LifetimeMS>550</LifetimeMS>
       <Amplitude>0.2</Amplitude>
@@ -105,13 +105,13 @@
     <Legendary />
     <SlotType>17</SlotType>
     <Description>“Just keep swimming. Just keep swimming, swimming, swimming.”</Description>
-    <RateOfFire>1.15</RateOfFire>
+    <RateOfFire>1.10</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
       <ObjectId>Thessal Slayer Shot</ObjectId>
       <Speed>150</Speed>
       <MinDamage>165</MinDamage>
-      <MaxDamage>220</MaxDamage>
+      <MaxDamage>200</MaxDamage>
       <LifetimeMS>500</LifetimeMS>
       <Amplitude>0.55</Amplitude>
       <Frequency>-2</Frequency>
@@ -168,13 +168,13 @@
     </Texture>
     <SlotType>17</SlotType>
     <Description>Harvest the souls of adversaries as a reincarnate of Death.</Description>
-    <RateOfFire>.90</RateOfFire>
+    <RateOfFire>.85</RateOfFire>
     <Sound>weapon/mithril_sword</Sound>
     <Projectile>
       <ObjectId>Scythe of the Reaper Shoot</ObjectId>
       <Speed>170</Speed>
       <MinDamage>130</MinDamage>
-      <MaxDamage>240</MaxDamage>
+      <MaxDamage>235</MaxDamage>
       <LifetimeMS>353</LifetimeMS>
       <Frequency>0.72</Frequency>
       <Amplitude>0.6</Amplitude>

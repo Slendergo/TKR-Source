@@ -15,8 +15,8 @@
     <Projectile>
       <ObjectId>Rainbow Magic</ObjectId>
       <Speed>180</Speed>
-      <MinDamage>300</MinDamage>
-      <MaxDamage>400</MaxDamage>
+      <MinDamage>200</MinDamage>
+      <MaxDamage>345</MaxDamage>
       <LifetimeMS>322</LifetimeMS>
       <PassesCover />
     </Projectile>
@@ -66,13 +66,15 @@
     </Texture>
     <SlotType>2</SlotType>
     <Description>Forged in the depths of the realm, a dagger once used to overthrow the rule of the Skull Shrine. Competent enough to melt the hottest, coldest, and hardest materials the realm has to offer.</Description>
-    <RateOfFire>1.1</RateOfFire>
+    <RateOfFire>1</RateOfFire>
     <Sound>weapon/fire_dagger</Sound>
     <Projectile>
       <ObjectId>Melted Shrine Shoot</ObjectId>
       <Speed>180</Speed>
-      <MinDamage>180</MinDamage>
-      <MaxDamage>230</MaxDamage>
+		<Amplitude>0.55</Amplitude>
+		<Frequency>1.5</Frequency>
+      <MinDamage>175</MinDamage>
+      <MaxDamage>205</MaxDamage>
       <LifetimeMS>305</LifetimeMS>
       <MultiHit />
     </Projectile>
@@ -93,13 +95,13 @@
     <Legendary />
     <SlotType>2</SlotType>
     <Description>Sharp bone from Malphas' spine was refined into a dagger for the sole purpose of slaying demons.</Description>
-    <RateOfFire>1.25</RateOfFire>
+    <RateOfFire>1.15</RateOfFire>
     <Sound>weapon/fire_dagger</Sound>
     <Projectile>
       <ObjectId>Malphas Bone Shot</ObjectId>
       <Speed>180</Speed>
-      <MinDamage>250</MinDamage>
-      <MaxDamage>405</MaxDamage>
+      <MinDamage>235</MinDamage>
+      <MaxDamage>330</MaxDamage>
       <LifetimeMS>295</LifetimeMS>
       <Size>100</Size>
       <MultiHit />
@@ -123,13 +125,13 @@
     <Legendary />
     <SlotType>2</SlotType>
     <Description>Such a large and cumbersome dagger could almost be confused with a great sword. Who would possibly be foolish enough to brandish it…?</Description>
-    <RateOfFire>0.75</RateOfFire>
+    <RateOfFire>0.65</RateOfFire>
     <Sound>weapon/blunt_dagger</Sound>
     <Projectile>
       <ObjectId>Titan Slayer Shoot</ObjectId>
       <Speed>120</Speed>
-      <MinDamage>545</MinDamage>
-      <MaxDamage>640</MaxDamage>
+      <MinDamage>525</MinDamage>
+      <MaxDamage>585</MaxDamage>
       <LifetimeMS>650</LifetimeMS>
       <Amplitude>0.25</Amplitude>
       <Frequency>1</Frequency>
@@ -157,13 +159,13 @@
     <Legendary />
     <SlotType>2</SlotType>
     <Description>A crude dagger consisting of a shard of the Realm's Crystal with a handle of cloth. Despite it's makeshift nature, it is immensely deadly.</Description>
-    <RateOfFire>1.20</RateOfFire>
+    <RateOfFire>1.10</RateOfFire>
     <Sound>weapon/blunt_dagger</Sound>
     <Projectile>
       <ObjectId>Refraction Cutter Shoot</ObjectId>
       <Speed>206</Speed>
-      <MinDamage>340</MinDamage>
-      <MaxDamage>440</MaxDamage>
+      <MinDamage>350</MinDamage>
+      <MaxDamage>385</MaxDamage>
       <LifetimeMS>495</LifetimeMS>
       <Amplitude>0.3</Amplitude>
       <Frequency>1</Frequency>

@@ -15,8 +15,8 @@
     <Projectile>
       <ObjectId>Fire Elemental Wand Shoot</ObjectId>
       <Speed>180</Speed>
-      <MinDamage>85</MinDamage>
-      <MaxDamage>125</MaxDamage>
+      <MinDamage>125</MinDamage>
+      <MaxDamage>155</MaxDamage>
       <LifetimeMS>500</LifetimeMS>
       <Amplitude>0.34</Amplitude>
       <Frequency>0.98</Frequency>

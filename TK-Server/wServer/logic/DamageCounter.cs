@@ -99,24 +99,21 @@ namespace wServer.logic
 
                 if (enemy.ObjectDesc.Quest)
                 {
-                    if (enemy.HP > 3000)
+                    if (enemy.ObjectDesc.Level >= 18)
                     {
-                        if(player.ActiveTalismans.Count > 0)
-                        {
-                            var essenceToGive = player.World.Random.Next(100, 200);
-                            if (essenceToGive > 0)
-                                player.GiveEssence(essenceToGive);
-                        }
-                        else
-                        {
-                            var essenceToGive = player.World.Random.Next(25, 100);
-                            if (essenceToGive > 0)
-                                player.GiveEssence(essenceToGive);
-                        }
+                        var essenceToGive = player.World.Random.Next(350, 500);
+                        if (essenceToGive > 0)
+                            player.GiveEssence(essenceToGive);
                     }
-                    else
+                    else if (enemy.ObjectDesc.Level >= 15)
                     {
-                        var essenceToGive = player.World.Random.Next(5, 10);
+                        var essenceToGive = player.World.Random.Next(75, 100);
+                        if (essenceToGive > 0)
+                            player.GiveEssence(essenceToGive);
+                    }
+                    else if (enemy.ObjectDesc.Level >= 5)
+                    {
+                        var essenceToGive = player.World.Random.Next(1, 50);
                         if (essenceToGive > 0)
                             player.GiveEssence(essenceToGive);
                     }

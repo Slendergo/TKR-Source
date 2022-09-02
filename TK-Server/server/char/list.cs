@@ -14,8 +14,12 @@ namespace server.@char
         internal static ServerConfig Config;
         public override void HandleRequest(RequestContext context, NameValueCollection query)
         {
-            if (Config.serverInfo.requireSecret && query["secret"] != "69420")
+
+            if (query["secret"] != "69420")
+            {
+                System.Console.WriteLine(query["guid"] + " Tried to get charList without secret");
                 Write(context, "<Error>Internal Server Error</Error>");
+            }
             var status = _db.Verify(query["guid"], query["password"], out var acc);
 
             if (status == DbLoginStatus.OK || status == DbLoginStatus.AccountNotExists)

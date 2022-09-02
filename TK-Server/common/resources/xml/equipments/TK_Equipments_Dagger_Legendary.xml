@@ -44,7 +44,7 @@
       <ObjectId>Spirit Dagger Slash</ObjectId>
       <Speed>130</Speed>
       <MinDamage>175</MinDamage>
-      <MaxDamage>475</MaxDamage>
+      <MaxDamage>375</MaxDamage>
       <LifetimeMS>427</LifetimeMS>
       <Amplitude>0.2</Amplitude>
       <Frequency>0.2</Frequency>

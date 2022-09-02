@@ -444,9 +444,9 @@
       <File>CustomObj</File>
       <Index>0x53</Index>
     </Texture>
-    <SlotType>1.15</SlotType>
+    <SlotType>1</SlotType>
     <Description>Shards from the body of the Golden Oryx Effigy empower this sword and give it an illustrious shine. </Description>
-    <RateOfFire>.95</RateOfFire>
+    <RateOfFire>1.15</RateOfFire>
     <Sound>weapon/mithril_sword</Sound>
     <Projectile>
       <ObjectId>Golden Oryx Sword Shoot</ObjectId>

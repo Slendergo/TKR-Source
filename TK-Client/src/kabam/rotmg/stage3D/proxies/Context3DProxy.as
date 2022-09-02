@@ -20,7 +20,7 @@ package kabam.rotmg.stage3D.proxies
          return this.context3D;
       }
       
-      public function configureBackBuffer(width:int, height:int, antiAlias:int, enableDepthAndStencil:Boolean = true) : void
+      public function configureBackBuffer(width:int, height:int, antiAlias:int, enableDepthAndStencil:Boolean = false) : void
       {
          this.context3D.configureBackBuffer(width,height,antiAlias,enableDepthAndStencil);
       }

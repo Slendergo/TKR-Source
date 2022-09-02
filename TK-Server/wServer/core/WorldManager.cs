@@ -156,13 +156,16 @@ namespace wServer.core
 
         public bool RemoveWorld(World world)
         {
-            lock (Threads)
+            if (world is RealmWorld)
             {
-                var removed = Threads.Remove(world.Id);
-                if (!removed)
-                    StaticLogger.Instance.Warn($"Unable to remove Thread: {world.Id} {world.IdName}");
-                else
-                    StaticLogger.Instance.Warn($"Removed Thread: {world.Id} {world.IdName}");
+                lock (Threads)
+                {
+                    var removed = Threads.Remove(world.Id);
+                    if (!removed)
+                        StaticLogger.Instance.Warn($"Unable to remove Thread: {world.Id} {world.IdName}");
+                    else
+                        StaticLogger.Instance.Warn($"Removed Thread: {world.Id} {world.IdName}");
+                }
             }
 
             if (Worlds.TryRemove(world.Id, out _))

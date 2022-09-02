@@ -5,6 +5,7 @@ using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using wServer.core.objects.containers;
 using wServer.core.worlds;
 using wServer.core.worlds.logic;
 using wServer.networking;
@@ -109,12 +110,6 @@ namespace wServer.core.objects
 
         public void UseItem(TickTime time, int objId, int slot, Position pos, int sellMaxed)
         {
-            if (World.DisableAbilities && slot == 1) // ability slot
-            {
-                Client.Disconnect("Attempting to activate ability in a disabled world");
-                return;
-            }
-
             //Log.Debug(objId + ":" + slot);
             var entity = World.GetEntity(objId);
             if (entity == null)
@@ -129,8 +124,14 @@ namespace wServer.core.objects
                 return;
             }
 
-            if (IsInMarket && (World is NexusWorld))
+            if (World.DisableAbilities && slot == 1 && entity is Player) // ability slot
             {
+                Client.Disconnect("Attempting to activate ability in a disabled world");
+                return;
+            }
+
+            if (IsInMarket && (World is NexusWorld))
+            {   
                 entity.ForceUpdate(slot);
                 SendInfo("You cannot use items inside the marketplace");
                 Client.SendPacket(new InvResult() { Result = 1 });
@@ -138,7 +139,6 @@ namespace wServer.core.objects
             }
 
             var container = entity as IContainer;
-
             if (this.Dist(entity) > 3)
             {
                 entity.ForceUpdate(slot);
@@ -168,11 +168,18 @@ namespace wServer.core.objects
             if (item == null)
                 return;
 
+            if (container is GiftChest)
+            {
+                entity.ForceUpdate(slot);
+                Client.SendPacket(new InvResult() { Result = 1 });
+                SendError("Can't use items if they are in a Gift Chest.");
+                return;
+            }
+
             // make sure not trading and trying to cunsume item
             if (tradeTarget != null && item.Consumable)
                 return;
 
-            Player player = this as Player;
             if (MP < item.MpCost)
             {
                 Client.SendPacket(new InvResult() { Result = 1 });
@@ -197,15 +204,16 @@ namespace wServer.core.objects
                             successor = gameData.Items[gameData.IdToObjectType[item.SuccessorId]];
                         containerInventory[slot] = successor;
 
-                        var trans = db.Conn.CreateTransaction();
                         if (container is GiftChest)
+                        {
+                            var trans = db.Conn.CreateTransaction();
+
                             if (successor != null)
                                 db.SwapGift(Client.Account, item.ObjectType, successor.ObjectType, trans);
                             else
-                            {
-                                player.SendError("Can't use items if they are in a Gift Chest.");
-                                return;
-                            }
+                                db.RemoveGift(Client.Account, item.ObjectType, trans);
+                            trans.Execute();
+                        }
                     }
 
                     if (!Inventory.Execute(containerInventory)) // can result in the loss of an item if inv trans fails..

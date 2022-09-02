@@ -119,7 +119,7 @@ namespace wServer.logic.behaviors
                   enemy.Rare ? $"Rare {host.ObjectDesc.DisplayId ?? host.ObjectDesc.ObjectId}" :
                   host.ObjectDesc.DisplayId ?? host.ObjectDesc.ObjectId;
 
-            var packet = new Text() { Name = "#" + displayenemy, ObjectId = host.Id, NumStars = -1, BubbleTime = BubbleTime, Recipient = "", Txt = taunt };
+            var packet = new Text() { Name = "#" + displayenemy, ObjectId = host.Id, NumStars = -1, BubbleTime = 3, Recipient = "", Txt = taunt };
 
             if (broadcast)
                 host.World.Broadcast(packet);

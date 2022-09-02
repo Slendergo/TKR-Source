@@ -79,7 +79,7 @@ namespace wServer.core.net.handlers
                 return;
             }
 
-            if(talisman.Level >= desc.MaxLevels && desc.MaxLevels != 1)
+            if(talisman.Level > desc.MaxLevels)
             {
                 talisman.CurrentXP = talisman.ExpGoal;
                 talisman.Level = (byte)desc.MaxLevels;
@@ -170,7 +170,7 @@ namespace wServer.core.net.handlers
                 return;
             }
 
-            if (talisman.Level >= desc.MaxLevels && desc.MaxLevels != 1)
+            if (talisman.Level > desc.MaxLevels)
             {
                 talisman.CurrentXP = talisman.ExpGoal;
                 talisman.Level = (byte)desc.MaxLevels;
@@ -192,7 +192,7 @@ namespace wServer.core.net.handlers
                 return;
             }
 
-            if (talisman.Level >= desc.MaxLevels)
+            if (talisman.Level > desc.MaxLevels)
             {
                 talisman.CurrentXP = talisman.ExpGoal;
                 talisman.Level = (byte)desc.MaxLevels;
@@ -206,6 +206,11 @@ namespace wServer.core.net.handlers
             player.DeactivateTalisman(talisman.Type);
         }
 
-        private int GetEssenceRemaining(Player player, int amount) => player.Client.Account.Essence - amount;
+        private int GetEssenceRemaining(Player player, int amount)
+        {
+            if(amount < 0)
+                return -1;
+            return player.Client.Account.Essence - amount;
+        }
     }
 }

@@ -51495,7 +51495,7 @@
     <Legendary />
     <Description>“The legendary firearm forged from hard steel and pirate blood containing mighty power.”</Description>
     <RateOfFire>.95</RateOfFire>
-    <Sound>weapon/poor_quality_bow</Sound>
+    <OldSound>weapon/cannon_shot</OldSound>
     <Projectile>
       <ObjectId>Giant Cannonball2</ObjectId>
       <Speed>150</Speed>

@@ -111,8 +111,8 @@ namespace wServer.logic.loot
             }
             allLoot += player.LDBoostTime > 0 ? 0.1 : 0;
             allLoot += player.TalismanLootBoost;
-            if(player.World.Players.Count != 1)
-                allLoot += (player.TalismanLootBoostPerPlayer * player.World.Players.Count - 1);
+            if(player.TalismanLootBoostPerPlayer != 0.0 && player.World.Players.Count != 1)
+                allLoot += (player.TalismanLootBoostPerPlayer * (player.World.Players.Count - 1));
             allLoot += player.TalismanCanOnlyGetWhiteBags ? 0.5 : 0;
             return allLoot;
         }
@@ -218,7 +218,7 @@ namespace wServer.logic.loot
                         if (essenceToGive > 0)
                             player.GiveEssence(essenceToGive);
                     }
-                    else
+                    else if (enemy.ObjectDesc.Quest)
                     {
                         if (enemy.ObjectDesc.Level >= 18)
                         {

@@ -145,7 +145,7 @@ package com.company.assembleegameclient.objects
                this.sizeStep_ = objectXML.SizeStep;
             }
          }
-         this.oldSound_ = Boolean(objectXML.hasOwnProperty("OldSound"))?String(objectXML.OldSound):null;
+         this.oldSound_ = Boolean(objectXML.hasOwnProperty("OldSound")) ? String(objectXML.OldSound) : null;
          for each(projectileXML in objectXML.Projectile)
          {
             bulletType = int(projectileXML.@id);

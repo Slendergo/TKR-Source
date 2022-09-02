@@ -641,7 +641,12 @@ namespace wServer.core.commands
 
             if (player.LDBoostTime > 0)
                 player.SendInfo($"Loot Drop provides: 10%");
-            player.SendInfo($"Talisman's provide: {(int)((player.TalismanLootBoost + player.TalismanLootBoostPerPlayer + (player.TalismanCanOnlyGetWhiteBags ? 0.5 : 0.0)) * 100.0)} % ");
+
+            var allLoot = 0.0;
+            if (player.TalismanLootBoostPerPlayer != 0.0 && player.World.Players.Count != 1)
+                allLoot += (player.TalismanLootBoostPerPlayer * (player.World.Players.Count - 1));
+
+            player.SendInfo($"Talisman's provide: {(int)((player.TalismanLootBoost + allLoot + (player.TalismanCanOnlyGetWhiteBags ? 0.5 : 0.0)) * 100.0)} % ");
             switch (player.GameServer.WorldManager.Nexus.EngineStage)
             {
                 case 1: player.SendInfo($"Stage 1 Strange Engine provides: 25%"); break;

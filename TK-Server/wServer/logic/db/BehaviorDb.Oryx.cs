@@ -17,15 +17,21 @@ namespace wServer.logic
                 new ScaleHP2(35),
                 new State("CheckPlayer",
                     new ConditionalEffect(ConditionEffectIndex.Invincible, false),
-                    new PlayerWithinTransition(15, "Wait", false)
+                    new PlayerWithinTransition(15, "Wait", true)
                     ),
                 new State("Wait",
                     new Taunt("HAHAHAH!, THIS WILL BE YOUR END!"),
                     new ConditionalEffect(ConditionEffectIndex.Invincible, false),
-                    new TimedTransition(5000, "Fight")
+                    new TimedTransition(7000, "Fight1")
+                    ),
+                new State("Fight1",
+                    new Taunt("I suggest bringing help!"),
+                    new ConditionalEffect(ConditionEffectIndex.Invincible, false),
+                    new TimedTransition(7000, "Fight")
                     ),
                 new State("Fight",
                     new Wander(0.05),
+                    new Taunt("Ah, now this shall be fun..."),
                     new Shoot(25, projectileIndex: 0, count: 8, shootAngle: 45, coolDown: 1500, seeInvis: true),
                     new Shoot(25, projectileIndex: 1, count: 3, shootAngle: 10, coolDown: 1000, seeInvis: true),
                     new Shoot(25, projectileIndex: 2, count: 3, shootAngle: 10, predictive: 0.2, coolDown: 1000, seeInvis: true),

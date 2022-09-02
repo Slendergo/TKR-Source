@@ -104,10 +104,10 @@ namespace wServer.logic
             new Threshold(0.001,
                 LootTemplates.DustLoot()
                 ),
-            new Threshold(0.03,
+            new Threshold(0.01,
                 new ItemLoot("Water Fragment", 0.0015, threshold: 0.03)
                 ),
-            new Threshold(0.01,
+            new Threshold(0.001,
                 new ItemLoot("Talisman Fragment", 0.009, 0, 0.05),
                 new ItemLoot("Thorn", 0.01),
                 new ItemLoot("Massacre", 0.01),
@@ -188,7 +188,7 @@ namespace wServer.logic
             new Threshold(0.001,
                 LootTemplates.DustLoot()
                 ),
-            new Threshold(0.03,
+            new Threshold(0.01,
                 new ItemLoot("Earth Fragment", 0.0015, threshold: 0.03)
                 ),
 
@@ -272,16 +272,16 @@ namespace wServer.logic
             new Threshold(0.001,
                 LootTemplates.DustLoot()
                 ),
-            new Threshold(0.01,
+            new Threshold(0.001,
                 new ItemLoot("Talisman Fragment", 0.009, 0, 0.05),
                 new ItemLoot("Staff of Zephyrs", 0.009, threshold: 0.01),
                 new ItemLoot("Cyclone Orb", 0.01, threshold: 0.01),
                 new ItemLoot("Gale Robe", 0.01, threshold: 0.01),
                 new ItemLoot("Wind Charm", 0.01, threshold: 0.01)
                 ),
-            new Threshold(0.03,
-                new ItemLoot("Wind Fragment", 0.00015, threshold: 0.03),
-                new ItemLoot("Quiver of Thunder", 0.00033)
+            new Threshold(0.01,
+                new ItemLoot("Wind Fragment", 0.00125, threshold: 0.03),
+                new ItemLoot("Quiver of Thunder", 0.00125)
                 ),
             new Threshold(0.001,
                 new ItemLoot("Potion of Speed", 1),
@@ -497,8 +497,8 @@ namespace wServer.logic
             new Threshold(0.001,
                 LootTemplates.DustLoot()
                 ),
-            new Threshold(0.03,
-                new ItemLoot("Fire Fragment", 0.0015),
+            new Threshold(0.01,
+                new ItemLoot("Fire Fragment", 0.00125),
                 new ItemLoot("Talisman Fragment", 0.009, 0, 0.05),
                 new ItemLoot("Phoenix Ashes Orb", 0.001)
                 ),

@@ -90,7 +90,7 @@ namespace wServer.logic
             new Threshold(0.001,
                 LootTemplates.DustLoot()
                 ),
-            new Threshold(0.01,
+            new Threshold(0.001,
                 new TierLoot(10, ItemType.Armor, 0.12),
                 new TierLoot(11, ItemType.Armor, 0.09),
                 new TierLoot(10, ItemType.Weapon, 0.12),
@@ -103,9 +103,9 @@ namespace wServer.logic
 
                 new ItemLoot("Magic Dust", 0.5)
                 ),
-            new Threshold(0.04,
+            new Threshold(0.01,
                 new ItemLoot("Slime Slayer", 0.001),
-                new ItemLoot("Withering Poison", 0.001, threshold: 0.05)
+                new ItemLoot("Withering Poison", 0.001)
                 )
             );
     }

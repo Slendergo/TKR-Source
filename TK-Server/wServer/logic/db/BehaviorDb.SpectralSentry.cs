@@ -61,10 +61,10 @@ namespace wServer.logic
 
                 new ItemLoot("Magic Dust", 0.5)
                 ),
-            new Threshold(0.03,
+            new Threshold(0.01,
                 new ItemLoot("Necklace of Stolen Life", 0.00125, 0, 0.03)
                 ),
-            new Threshold(0.05,
+            new Threshold(0.01,
                 new ItemLoot("Spectral Robe", 0.00125, 0, 0.05),
                 new ItemLoot("Talisman Fragment", 0.009),
                 new ItemLoot("Scythe of the Reaper", 0.00125, 0, 0.05),

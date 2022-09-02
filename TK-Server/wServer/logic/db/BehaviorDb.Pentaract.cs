@@ -53,14 +53,14 @@ namespace wServer.logic
                     new Suicide()
                     )
                 ),
-            new Threshold(0.3,
+            new Threshold(0.001,
                 new ItemLoot("Potion of Defense", 1)
                 ),
-            new Threshold(0.2,
+            new Threshold(0.001,
                 new ItemLoot("Potion of Speed", 1),
                 new ItemLoot("Potion of Wisdom", 1)
                 ),
-            new Threshold(0.03,
+            new Threshold(0.01,
                 new ItemLoot("Seal of Blasphemous Prayer", 0.001, threshold: 0.03),
                 new ItemLoot("Talisman Fragment", 0.009),
                 new ItemLoot("Midnight Star", 0.001, threshold: 0.03)

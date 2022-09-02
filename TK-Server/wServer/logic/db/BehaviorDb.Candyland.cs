@@ -114,7 +114,7 @@ namespace wServer.logic
                     ),
                 new DropPortalOnDeath(target: "Candyland Portal", probability: 1, timeout: 30)
                 ),
-            new Threshold(0.03,
+            new Threshold(0.001,
                 new ItemLoot("Chocolate Skull", 0.00125)
                 ),
             new Threshold(0.01,

@@ -235,9 +235,9 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new ItemLoot("Ghost Pirate Rum", 1),
-            new Threshold(0.03,
+            new Threshold(0.01,
                 new ItemLoot("Cannon", 0.001),
-                new ItemLoot("Soul-Stealing Trap", 0.0014),
+                new ItemLoot("Soul-Stealing Trap", 0.001),
                 new ItemLoot("Talisman Fragment", 0.009)
                 ),
             new Threshold(0.001,

@@ -80,55 +80,55 @@
     </Projectile>
     <Animation prob="1.0" period="0.0">
       <Frame time="0.2">
-        <Texture>
-          <File>lofiCharBig</File>
-          <Index>0x00</Index>
-        </Texture>
+		  <Texture>
+			  <File>lofiChar216x16</File>
+			  <Index>0x38</Index>
+		  </Texture>
       </Frame>
       <Frame time="0.4">
-        <Texture>
-          <File>lofiChar216x16</File>
-          <Index>0x38</Index>
-        </Texture>
+		  <Texture>
+			  <File>lofiChar216x16</File>
+			  <Index>0x38</Index>
+		  </Texture>
       </Frame>
       <Frame time="0.2">
-        <Texture>
-          <File>lofiCharBig</File>
-          <Index>0x00</Index>
-        </Texture>
+		  <Texture>
+			  <File>lofiChar216x16</File>
+			  <Index>0x38</Index>
+		  </Texture>
       </Frame>
       <Frame time="0.1">
-        <Texture>
-          <File>lofiCharBig</File>
-          <Index>0x01</Index>
-        </Texture>
+		  <Texture>
+			  <File>lofiChar216x16</File>
+			  <Index>0x38</Index>
+		  </Texture>
       </Frame>
       <Frame time="0.2">
-        <Texture>
-          <File>lofiCharBig</File>
-          <Index>0x02</Index>
-        </Texture>
+		  <Texture>
+			  <File>lofiChar216x16</File>
+			  <Index>0x38</Index>
+		  </Texture>
       </Frame>
       <Frame time="0.4">
-        <Texture>
-          <File>lofiCharBig</File>
-          <Index>0x03</Index>
-        </Texture>
+		  <Texture>
+			  <File>lofiChar216x16</File>
+			  <Index>0x38</Index>
+		  </Texture>
       </Frame>
       <Frame time="0.2">
-        <Texture>
-          <File>lofiCharBig</File>
-          <Index>0x02</Index>
-        </Texture>
+		  <Texture>
+			  <File>lofiChar216x16</File>
+			  <Index>0x38</Index>
+		  </Texture>
       </Frame>
       <Frame time="0.1">
-        <Texture>
-          <File>lofiCharBig</File>
-          <Index>0x01</Index>
-        </Texture>
+		  <Texture>
+			  <File>lofiChar216x16</File>
+			  <Index>0x38</Index>
+		  </Texture>
       </Frame>
     </Animation>
-    <MaxHitPoints>30000</MaxHitPoints>
+    <MaxHitPoints>15000</MaxHitPoints>
     <Size>120</Size>
     <XpMult>0.1</XpMult>
     <God />

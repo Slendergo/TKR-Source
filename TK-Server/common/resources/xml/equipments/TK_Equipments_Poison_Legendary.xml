@@ -58,8 +58,8 @@
     <BagType>7</BagType>
     <FameBonus>4</FameBonus>
     <MpCost>110</MpCost>
-    <Activate radius="4" impactDamage="1200" totalDamage="3500" duration="3" throwTime="3" color="0xf5ce42" useWisMod="true">PoisonGrenade</Activate>
-    <Activate radius="6" impactDamage="800" totalDamage="2000" duration="5" throwTime="2" color="0x85837e" useWisMod="true">PoisonGrenade</Activate>
-    <Activate radius="2" impactDamage="200" totalDamage="1500" duration="2" throwTime="1" color="0xAF6D2B" useWisMod="true">PoisonGrenade</Activate>
+    <Activate radius="4" impactDamage="1200" totalDamage="3500" duration="3" throwTime="3" color="0xf5ce42" useWisMod="false">PoisonGrenade</Activate>
+    <Activate radius="6" impactDamage="800" totalDamage="2000" duration="5" throwTime="2" color="0x85837e" useWisMod="false">PoisonGrenade</Activate>
+    <Activate radius="2" impactDamage="200" totalDamage="1500" duration="2" throwTime="1" color="0xAF6D2B" useWisMod="false">PoisonGrenade</Activate>
   </Object>
 </Objects>

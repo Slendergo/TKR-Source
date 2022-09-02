@@ -375,7 +375,7 @@
       <LifetimeMS>3000</LifetimeMS>
       <ArmorPiercing />
     </Projectile>
-    <Projectile id="13">
+    <Projectile id="7">
       <ObjectId>Dark Gray Spinner</ObjectId>
       <Speed>90</Speed>
       <Size>100</Size>
@@ -385,7 +385,7 @@
       <ConditionEffect duration="20">Quiet</ConditionEffect>
       <MultiHit />
     </Projectile>
-    <Projectile id="14">
+    <Projectile id="8">
       <ObjectId>Gray Spinner</ObjectId>
       <Speed>90</Speed>
       <Size>100</Size>

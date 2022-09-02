@@ -64,8 +64,8 @@ namespace wServer.logic
                     ),
                 new State("rage",
                     new Chase(9),
-                    new Shoot(25, 30, projectileIndex: 7, coolDown: 90000001, coolDownOffset: 8000),
-                    new Shoot(25, 30, projectileIndex: 8, coolDown: 90000001, coolDownOffset: 8500),
+                    new Shoot(25, 30, projectileIndex: 7, coolDown: 90000, coolDownOffset: 8000),
+                    new Shoot(25, 30, projectileIndex: 8, coolDown: 90000, coolDownOffset: 8500),
                     new Shoot(25, projectileIndex: 0, count: 8, shootAngle: 45, coolDown: 750),
                     new Shoot(25, projectileIndex: 1, count: 3, shootAngle: 10, coolDown: 950),
                     new Shoot(25, projectileIndex: 2, count: 3, shootAngle: 10, predictive: 0.2, coolDown: 700),
@@ -84,7 +84,7 @@ namespace wServer.logic
                 new ItemLoot("Oryx's Armor of War", 0.00033, 0, 0.05),
                 new ItemLoot("Shattered Horn of Oryx", 0.00033, 0, 0.05)
                 ),
-            new Threshold(0.02, 
+            new Threshold(0.01, 
                 new ItemLoot("Potion of Vitality", 1),
                 new ItemLoot("Potion of Attack", 1),
                 new ItemLoot("Potion of Wisdom", 1),
@@ -94,7 +94,7 @@ namespace wServer.logic
                 new ItemLoot("Potion of Life", 1),
                 new ItemLoot("Potion of Mana", 1)
                 ),
-            new Threshold(0.01,
+            new Threshold(0.001,
                 new ItemLoot("Potion of Attack", 1),
                 new ItemLoot("Potion of Defense", 1),
                 new ItemLoot("Potion of Wisdom", 1)

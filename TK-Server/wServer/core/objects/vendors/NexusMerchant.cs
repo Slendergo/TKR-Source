@@ -184,7 +184,7 @@ namespace wServer.core.objects.vendors
 
             if (IsNew && AliveTime > 15.0f)
             {
-                MinsLeft = World.Random.Next(0, 2); // 10, 30);
+                MinsLeft = World.Random.Next(10, 30);
                 IsNew = false;
             }
 

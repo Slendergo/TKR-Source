@@ -57,7 +57,7 @@ import kabam.rotmg.appengine.api.AppEngineClient;
       {
          this.client.setSendEncrypted(true);
          this.client.complete.addOnce(this.onComplete);
-         this.client.sendRequest("/char/list",this.requestData); // For Release: "/api/charList" For Local: /char/list
+         this.client.sendRequest("/api/charList",this.requestData); // For Release: "/api/charList" For Local: /char/list
       }
       
       private function onComplete(isOK:Boolean, data:*) : void

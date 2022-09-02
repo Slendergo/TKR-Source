@@ -82,10 +82,10 @@
       <StatType type="0" scale="perLevel" amount="20" />
       <StatType type="26" scale="perLevel" amount="-2" />
       <StatType type="0" scale="perLevel" percentage="0.20" />
-      <StatType type="22" scale="perLevel" percentage="-0.03" />
-      <StatType type="28" scale="perLevel" percentage="-0.05" />
-      <StatType type="20" scale="perLevel" percentage="-0.03" />
-      <StatType type="27" scale="perLevel" percentage="-0.03" />
+      <StatType type="22" scale="perLevel" percentage="-0.015" />
+      <StatType type="28" scale="perLevel" percentage="-0.025" />
+      <StatType type="20" scale="perLevel" percentage="-0.015" />
+      <StatType type="27" scale="perLevel" percentage="-0.015" />
     </Tier>
   </Talisman>
   <Talisman type="0x08">
@@ -299,7 +299,7 @@
       <LootBoost percentage="0.01" scale="perLevel" />
     </Tier>
     <Tier tier="2">
-      <LootBoost percentage="0.075" scale="flat" />
+      <LootBoost percentage="0.075" scale="perLevel" />
       <LootBoostPerPlayer percentage="-0.025" scale="perLevel" />
       <LootBoost percentage="0.01" scale="perLevel" />
     </Tier>

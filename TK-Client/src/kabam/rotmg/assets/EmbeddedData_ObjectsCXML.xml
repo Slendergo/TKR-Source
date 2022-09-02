@@ -25826,7 +25826,7 @@
     <Event />
     <StasisImmune />
     <StunImmune />
-    <DazeImmune />
+    <DazedImmune />
     <AnimatedTexture>
       <File>Custom16x16Encounters</File>
       <Index>15</Index>
@@ -25878,7 +25878,7 @@
     <Chest />
     <StasisImmune />
     <StunImmune />
-    <DazeImmune />
+    <DazedImmune />
     <AnimatedTexture>
       <File>Custom16x16Encounters</File>
       <Index>10</Index>
@@ -26008,7 +26008,7 @@
     <Chest />
     <StasisImmune />
     <StunImmune />
-    <DazeImmune />
+    <DazedImmune />
     <AnimatedTexture>
       <File>Custom16x16Encounters</File>
       <Index>12</Index>
@@ -26107,7 +26107,7 @@
     <Defense>30</Defense>
     <Enemy />
     <StasisImmune />
-    <DazeImmune />
+    <DazedImmune />
     <AnimatedTexture>
       <File>Custom16x16Encounters</File>
       <Index>12</Index>
@@ -26159,7 +26159,7 @@
     <Chest />
     <StasisImmune />
     <StunImmune />
-    <DazeImmune />
+    <DazedImmune />
     <AnimatedTexture>
       <File>Custom16x16Encounters</File>
       <Index>14</Index>
@@ -26203,7 +26203,7 @@
     <Chest />
     <StasisImmune />
     <StunImmune />
-    <DazeImmune />
+    <DazedImmune />
     <AnimatedTexture>
       <File>Custom16x16Encounters</File>
       <Index>9</Index>
@@ -26243,7 +26243,7 @@
     <Chest />
     <StasisImmune />
     <StunImmune />
-    <DazeImmune />
+    <DazedImmune />
     <AnimatedTexture>
       <File>Custom16x16Encounters</File>
       <Index>11</Index>
@@ -51439,8 +51439,8 @@
     <Projectile>
       <ObjectId>Thousand Shot Arrow</ObjectId>
       <Speed>165</Speed>
-      <MinDamage>375</MinDamage>
-      <MaxDamage>375</MaxDamage>
+      <MinDamage>305</MinDamage>
+      <MaxDamage>320</MaxDamage>
       <LifetimeMS>460</LifetimeMS>
       <MultiHit />
     </Projectile>
@@ -51469,8 +51469,8 @@
     <Projectile>
       <ObjectId>Void Arrow</ObjectId>
       <Speed>200</Speed>
-      <MinDamage>445</MinDamage>
-      <MaxDamage>495</MaxDamage>
+      <MinDamage>350</MinDamage>
+      <MaxDamage>385</MaxDamage>
       <LifetimeMS>315</LifetimeMS>
       <MultiHit />
       <Amplitude>0.35</Amplitude>
@@ -51494,14 +51494,15 @@
     <SlotType>3</SlotType>
     <Legendary />
     <Description>“The legendary firearm forged from hard steel and pirate blood containing mighty power.”</Description>
-    <RateOfFire>1.05</RateOfFire>
+    <RateOfFire>.95</RateOfFire>
     <Sound>weapon/poor_quality_bow</Sound>
     <Projectile>
       <ObjectId>Giant Cannonball2</ObjectId>
       <Speed>150</Speed>
-      <MinDamage>115</MinDamage>
-      <MaxDamage>155</MaxDamage>
+      <MinDamage>110</MinDamage>
+      <MaxDamage>150</MaxDamage>
       <LifetimeMS>500</LifetimeMS>
+      <MultiHit />
       <Size>125</Size>
       <Wavy />
       <ArmorPiercing />
@@ -51524,13 +51525,13 @@
     <SlotType>3</SlotType>
     <Legendary />
     <Description>Once the prideful weapon of Nut. It was ultimately stored in her tomb as no other adventure could pull back the drawstring.</Description>
-    <RateOfFire>.9</RateOfFire>
+    <RateOfFire>.8</RateOfFire>
     <Sound>weapon/poor_quality_bow</Sound>
     <Projectile>
       <ObjectId>Bow of the Havens Shot</ObjectId>
       <Speed>159.5</Speed>
-      <MinDamage>290</MinDamage>
-      <MaxDamage>305</MaxDamage>
+      <MinDamage>250</MinDamage>
+      <MaxDamage>295</MaxDamage>
       <LifetimeMS>439</LifetimeMS>
       <Frequency>1</Frequency>
       <Size>100</Size>
@@ -51555,13 +51556,13 @@
     <Legendary />
     <SlotType>3</SlotType>
     <Description>The drawstring on this make-shift bow was not designed to notch traditional arrows. Rather, it launches high velocity bones.</Description>
-    <RateOfFire>1</RateOfFire>
+    <RateOfFire>.95</RateOfFire>
     <Sound>weapon/poor_quality_bow</Sound>
     <Projectile>
       <ObjectId>Fang Flinger Shoot</ObjectId>
       <Speed>155</Speed>
-      <MinDamage>280</MinDamage>
-      <MaxDamage>300</MaxDamage>
+      <MinDamage>255</MinDamage>
+      <MaxDamage>275</MaxDamage>
       <LifetimeMS>452</LifetimeMS>
       <Amplitude>0.45</Amplitude>
       <Frequency>2</Frequency>
@@ -51593,8 +51594,8 @@
     <Projectile>
       <ObjectId>Wind Elemental Bow Shoot</ObjectId>
       <Speed>200</Speed>
-      <MinDamage>165</MinDamage>
-      <MaxDamage>215</MaxDamage>
+      <MinDamage>150</MinDamage>
+      <MaxDamage>205</MaxDamage>
       <LifetimeMS>350</LifetimeMS>
       <Amplitude>0.3</Amplitude>
       <Frequency>1.13</Frequency>
@@ -51989,13 +51990,13 @@
     </Texture>
     <SlotType>3</SlotType>
     <Description>No mortal can fire this dreaded bow without resting in between shots. It requires tremendous skill to wield.</Description>
-    <RateOfFire>0.4</RateOfFire>
+    <RateOfFire>0.65</RateOfFire>
     <Sound>weapon/golden_bow</Sound>
     <Projectile>
       <ObjectId>Black Arrow</ObjectId>
       <Speed>140</Speed>
-      <MinDamage>400</MinDamage>
-      <MaxDamage>500</MaxDamage>
+      <MinDamage>440</MinDamage>
+      <MaxDamage>475</MaxDamage>
       <LifetimeMS>503</LifetimeMS>
       <MultiHit />
     </Projectile>
@@ -52015,13 +52016,13 @@
     </Texture>
     <SlotType>3</SlotType>
     <Description>A bow fashioned from living coral found in only the deepest ocean trenches.  It is the favored weapon of those that inhabit the realms beneath the waves.</Description>
-    <RateOfFire>1.25</RateOfFire>
+    <RateOfFire>1.2</RateOfFire>
     <Sound>weapon/double_bow</Sound>
     <Projectile>
       <ObjectId>Coral Arrow</ObjectId>
       <Speed>185</Speed>
-      <MinDamage>80</MinDamage>
-      <MaxDamage>100</MaxDamage>
+      <MinDamage>105</MinDamage>
+      <MaxDamage>125</MaxDamage>
       <LifetimeMS>420</LifetimeMS>
       <MultiHit />
     </Projectile>
@@ -52286,8 +52287,8 @@
     <Projectile>
       <ObjectId>Earth Elemental Arrow</ObjectId>
       <Speed>145</Speed>
-      <MinDamage>110</MinDamage>
-      <MaxDamage>125</MaxDamage>
+      <MinDamage>135</MinDamage>
+      <MaxDamage>155</MaxDamage>
       <LifetimeMS>440</LifetimeMS>
       <Frequency>1</Frequency>
       <Size>100</Size>
@@ -52311,13 +52312,13 @@
     </Texture>
     <SlotType>3</SlotType>
     <Description>Glass' baby</Description>
-    <RateOfFire>1.2</RateOfFire>
+    <RateOfFire>1.25</RateOfFire>
     <Sound>weapon/golden_bow</Sound>
     <Projectile>
       <ObjectId>Blossom Shot</ObjectId>
       <Speed>70</Speed>
-      <MinDamage>95</MinDamage>
-      <MaxDamage>145</MaxDamage>
+      <MinDamage>115</MinDamage>
+      <MaxDamage>150</MaxDamage>
       <LifetimeMS>1000</LifetimeMS>
       <Size>50</Size>
       <Wavy />
@@ -52694,8 +52695,8 @@
     <Projectile>
       <ObjectId>Rainbow Magic</ObjectId>
       <Speed>180</Speed>
-      <MinDamage>300</MinDamage>
-      <MaxDamage>400</MaxDamage>
+      <MinDamage>200</MinDamage>
+      <MaxDamage>345</MaxDamage>
       <LifetimeMS>322</LifetimeMS>
       <PassesCover />
     </Projectile>
@@ -52745,13 +52746,15 @@
     </Texture>
     <SlotType>2</SlotType>
     <Description>Forged in the depths of the realm, a dagger once used to overthrow the rule of the Skull Shrine. Competent enough to melt the hottest, coldest, and hardest materials the realm has to offer.</Description>
-    <RateOfFire>1.1</RateOfFire>
+    <RateOfFire>1</RateOfFire>
     <Sound>weapon/fire_dagger</Sound>
     <Projectile>
       <ObjectId>Melted Shrine Shoot</ObjectId>
       <Speed>180</Speed>
-      <MinDamage>180</MinDamage>
-      <MaxDamage>230</MaxDamage>
+      <Amplitude>0.55</Amplitude>
+      <Frequency>1.5</Frequency>
+      <MinDamage>175</MinDamage>
+      <MaxDamage>205</MaxDamage>
       <LifetimeMS>305</LifetimeMS>
       <MultiHit />
     </Projectile>
@@ -52772,13 +52775,13 @@
     <Legendary />
     <SlotType>2</SlotType>
     <Description>Sharp bone from Malphas' spine was refined into a dagger for the sole purpose of slaying demons.</Description>
-    <RateOfFire>1.25</RateOfFire>
+    <RateOfFire>1.15</RateOfFire>
     <Sound>weapon/fire_dagger</Sound>
     <Projectile>
       <ObjectId>Malphas Bone Shot</ObjectId>
       <Speed>180</Speed>
-      <MinDamage>250</MinDamage>
-      <MaxDamage>405</MaxDamage>
+      <MinDamage>235</MinDamage>
+      <MaxDamage>330</MaxDamage>
       <LifetimeMS>295</LifetimeMS>
       <Size>100</Size>
       <MultiHit />
@@ -52802,13 +52805,13 @@
     <Legendary />
     <SlotType>2</SlotType>
     <Description>Such a large and cumbersome dagger could almost be confused with a great sword. Who would possibly be foolish enough to brandish it…?</Description>
-    <RateOfFire>0.75</RateOfFire>
+    <RateOfFire>0.65</RateOfFire>
     <Sound>weapon/blunt_dagger</Sound>
     <Projectile>
       <ObjectId>Titan Slayer Shoot</ObjectId>
       <Speed>120</Speed>
-      <MinDamage>545</MinDamage>
-      <MaxDamage>640</MaxDamage>
+      <MinDamage>525</MinDamage>
+      <MaxDamage>585</MaxDamage>
       <LifetimeMS>650</LifetimeMS>
       <Amplitude>0.25</Amplitude>
       <Frequency>1</Frequency>
@@ -52836,13 +52839,13 @@
     <Legendary />
     <SlotType>2</SlotType>
     <Description>A crude dagger consisting of a shard of the Realm's Crystal with a handle of cloth. Despite it's makeshift nature, it is immensely deadly.</Description>
-    <RateOfFire>1.20</RateOfFire>
+    <RateOfFire>1.10</RateOfFire>
     <Sound>weapon/blunt_dagger</Sound>
     <Projectile>
       <ObjectId>Refraction Cutter Shoot</ObjectId>
       <Speed>206</Speed>
-      <MinDamage>340</MinDamage>
-      <MaxDamage>440</MaxDamage>
+      <MinDamage>350</MinDamage>
+      <MaxDamage>385</MaxDamage>
       <LifetimeMS>495</LifetimeMS>
       <Amplitude>0.3</Amplitude>
       <Frequency>1</Frequency>
@@ -52868,13 +52871,13 @@
     <Eternal />
     <SlotType>2</SlotType>
     <Description>Mysterious forces grant the control over the element of water, proving effective in fluid, unpredictable attacks.</Description>
-    <RateOfFire>1.20</RateOfFire>
+    <RateOfFire>.85</RateOfFire>
     <Sound>weapon/blunt_dagger</Sound>
     <Projectile>
       <ObjectId>Tide Shoot</ObjectId>
       <Speed>200</Speed>
-      <MinDamage>340</MinDamage>
-      <MaxDamage>440</MaxDamage>
+      <MinDamage>240</MinDamage>
+      <MaxDamage>270</MaxDamage>
       <LifetimeMS>310</LifetimeMS>
       <Amplitude>0.58</Amplitude>
       <Frequency>0.52</Frequency>
@@ -53237,13 +53240,13 @@
     </Texture>
     <SlotType>2</SlotType>
     <Description>Bits of cosmic residue dropped by sprites were collected and forged into blades under the heavy pressure of space.</Description>
-    <RateOfFire>1.20</RateOfFire>
+    <RateOfFire>1.30</RateOfFire>
     <Sound>weapon/fire_dagger</Sound>
     <Projectile>
       <ObjectId>Dual Blade Shot</ObjectId>
       <Speed>90</Speed>
-      <MinDamage>150</MinDamage>
-      <MaxDamage>150</MaxDamage>
+      <MinDamage>175</MinDamage>
+      <MaxDamage>175</MaxDamage>
       <LifetimeMS>425</LifetimeMS>
       <Frequency>1</Frequency>
       <Size>100</Size>
@@ -53552,13 +53555,13 @@
     </Texture>
     <SlotType>2</SlotType>
     <Description>Not the strongest of daggers, but it gets the job done when you need it most.</Description>
-    <RateOfFire>1.05</RateOfFire>
+    <RateOfFire>1.25</RateOfFire>
     <Sound>weapon/fire_dagger</Sound>
     <Projectile>
       <ObjectId>Dagger Shoot</ObjectId>
       <Speed>180</Speed>
-      <MinDamage>120</MinDamage>
-      <MaxDamage>195</MaxDamage>
+      <MinDamage>165</MinDamage>
+      <MaxDamage>225</MaxDamage>
       <LifetimeMS>275</LifetimeMS>
       <Frequency>1</Frequency>
       <Size>100</Size>
@@ -54990,8 +54993,8 @@
     <Projectile>
       <ObjectId>Beam Slash</ObjectId>
       <Speed>180</Speed>
-      <MinDamage>275</MinDamage>
-      <MaxDamage>275</MaxDamage>
+      <MinDamage>250</MinDamage>
+      <MaxDamage>250</MaxDamage>
       <LifetimeMS>361</LifetimeMS>
       <MultiHit />
       <ArmorPiercing />
@@ -55012,13 +55015,13 @@
     </Texture>
     <SlotType>24</SlotType>
     <Description>Stuck in the maw of the Son of Arachna, this Katana is coated in the creature's poisonous venom. In the hands of the right person, this is a truly deadly weapon.</Description>
-    <RateOfFire>1.20</RateOfFire>
+    <RateOfFire>1.10</RateOfFire>
     <Sound>weapon/long_sword</Sound>
     <Projectile id="0">
       <ObjectId>Poison Katana Slash</ObjectId>
       <Speed>129.5</Speed>
-      <MinDamage>275</MinDamage>
-      <MaxDamage>375</MaxDamage>
+      <MinDamage>235</MinDamage>
+      <MaxDamage>325</MaxDamage>
       <LifetimeMS>411</LifetimeMS>
       <Amplitude>0.5</Amplitude>
       <Frequency>1</Frequency>
@@ -55040,14 +55043,14 @@
     </Texture>
     <SlotType>24</SlotType>
     <Description>ABlood-drenched from endless slaughter. Any that dare to wield will surely be overcome with indefinite bloodlust.</Description>
-    <RateOfFire>1.20</RateOfFire>
+    <RateOfFire>1.15</RateOfFire>
     <Sound>weapon/long_sword</Sound>
     <Legendary />
     <Projectile>
       <ObjectId>Katana Shoot</ObjectId>
       <Speed>147.5</Speed>
-      <MinDamage>355</MinDamage>
-      <MaxDamage>395</MaxDamage>
+      <MinDamage>310</MinDamage>
+      <MaxDamage>335</MaxDamage>
       <LifetimeMS>346</LifetimeMS>
       <MultiHit />
     </Projectile>
@@ -55067,13 +55070,13 @@
     </Texture>
     <SlotType>24</SlotType>
     <Description>Overpowering feelings of righteousness radiate from this katana's shine. An embodiment of the Way of The Samurai.</Description>
-    <RateOfFire>1.05</RateOfFire>
+    <RateOfFire>1</RateOfFire>
     <Sound>weapon/long_sword</Sound>
     <Projectile>
       <ObjectId>Lodius Shoot</ObjectId>
       <Speed>154</Speed>
-      <MinDamage>170</MinDamage>
-      <MaxDamage>280</MaxDamage>
+      <MinDamage>150</MinDamage>
+      <MaxDamage>245</MaxDamage>
       <LifetimeMS>344</LifetimeMS>
       <Amplitude>.25</Amplitude>
       <Frequency>1.75</Frequency>
@@ -55122,13 +55125,13 @@
     <Eternal />
     <SlotType>24</SlotType>
     <Description>A katana formed from the pressurized windstorms released from the element of wind.</Description>
-    <RateOfFire>1.2</RateOfFire>
+    <RateOfFire>1.1</RateOfFire>
     <Sound>weapon/blunt_sword</Sound>
     <Projectile>
       <ObjectId>Wind Elemental Katana Shoot</ObjectId>
       <Speed>300</Speed>
       <MinDamage>170</MinDamage>
-      <MaxDamage>230</MaxDamage>
+      <MaxDamage>225</MaxDamage>
       <LifetimeMS>190</LifetimeMS>
       <Frequency>1</Frequency>
       <Size>100</Size>
@@ -55669,13 +55672,13 @@
     <SlotType>24</SlotType>
     <Rare />
     <Description>The durability of this katana was refined to a higher degree with the help of extraterrestrial metals.</Description>
-    <RateOfFire>1</RateOfFire>
+    <RateOfFire>1.25</RateOfFire>
     <Sound>weapon/blunt_sword</Sound>
     <Projectile>
       <ObjectId>Earth Elemental Katana Shoot</ObjectId>
       <Speed>130.5</Speed>
-      <MinDamage>165</MinDamage>
-      <MaxDamage>220</MaxDamage>
+      <MinDamage>190</MinDamage>
+      <MaxDamage>225</MaxDamage>
       <LifetimeMS>345</LifetimeMS>
       <Amplitude>0.34</Amplitude>
       <Frequency>0.59</Frequency>
@@ -55699,13 +55702,13 @@
     <SetTier />
     <SlotType>24</SlotType>
     <Description>A katana that was dipped in the experimental acid used by Dr. Terrible in his crazy creations.</Description>
-    <RateOfFire>1</RateOfFire>
+    <RateOfFire>1.15</RateOfFire>
     <Sound>weapon/blunt_sword</Sound>
     <Projectile>
       <ObjectId>Acid Katana N-3012 Shoot</ObjectId>
       <Speed>130</Speed>
-      <MinDamage>155</MinDamage>
-      <MaxDamage>200</MaxDamage>
+      <MinDamage>200</MinDamage>
+      <MaxDamage>225</MaxDamage>
       <LifetimeMS>365</LifetimeMS>
       <Amplitude>0.05</Amplitude>
       <Frequency>1</Frequency>
@@ -55730,13 +55733,13 @@
     </Texture>
     <SlotType>24</SlotType>
     <Description>A high-quality katana made from the flexible skin of Stheno, the Snake Queen.</Description>
-    <RateOfFire>0.4</RateOfFire>
+    <RateOfFire>0.6</RateOfFire>
     <Sound>weapon/long_sword</Sound>
     <Projectile>
       <ObjectId>Stheno Katana Shoot</ObjectId>
       <Speed>96</Speed>
-      <MinDamage>250</MinDamage>
-      <MaxDamage>525</MaxDamage>
+      <MinDamage>260</MinDamage>
+      <MaxDamage>495</MaxDamage>
       <LifetimeMS>667</LifetimeMS>
       <Frequency>1</Frequency>
       <Size>100</Size>
@@ -61258,8 +61261,8 @@
     <Projectile>
       <ObjectId>Ashen Spine Shoot</ObjectId>
       <Speed>150</Speed>
-      <MinDamage>160</MinDamage>
-      <MaxDamage>210</MaxDamage>
+      <MinDamage>150</MinDamage>
+      <MaxDamage>200</MaxDamage>
       <LifetimeMS>400</LifetimeMS>
       <Frequency>1.1</Frequency>
       <Amplitude>0.55</Amplitude>
@@ -61294,8 +61297,8 @@
       <ObjectId>Cultist Fire Shot</ObjectId>
       <Size>70</Size>
       <Speed>115</Speed>
-      <MinDamage>180</MinDamage>
-      <MaxDamage>225</MaxDamage>
+      <MinDamage>160</MinDamage>
+      <MaxDamage>200</MaxDamage>
       <LifetimeMS>700</LifetimeMS>
       <MultiHit />
     </Projectile>
@@ -61318,14 +61321,14 @@
     <Legendary />
     <SlotType>17</SlotType>
     <Description>An ancient staff used both for sacrifice and communion with the gods.</Description>
-    <RateOfFire>1.05</RateOfFire>
+    <RateOfFire>1</RateOfFire>
     <Sound>monster/djinn_hit</Sound>
     <Projectile>
       <ObjectId>Plasma Missile</ObjectId>
       <Speed>110</Speed>
       <Size>120</Size>
-      <MinDamage>110</MinDamage>
-      <MaxDamage>165</MaxDamage>
+      <MinDamage>115</MinDamage>
+      <MaxDamage>145</MaxDamage>
       <Wavy />
       <LifetimeMS>550</LifetimeMS>
       <Amplitude>0.2</Amplitude>
@@ -61348,13 +61351,13 @@
     <Legendary />
     <SlotType>17</SlotType>
     <Description>“Just keep swimming. Just keep swimming, swimming, swimming.”</Description>
-    <RateOfFire>1.15</RateOfFire>
+    <RateOfFire>1.10</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
       <ObjectId>Thessal Slayer Shot</ObjectId>
       <Speed>150</Speed>
       <MinDamage>165</MinDamage>
-      <MaxDamage>220</MaxDamage>
+      <MaxDamage>200</MaxDamage>
       <LifetimeMS>500</LifetimeMS>
       <Amplitude>0.55</Amplitude>
       <Frequency>-2</Frequency>
@@ -61411,13 +61414,13 @@
     </Texture>
     <SlotType>17</SlotType>
     <Description>Harvest the souls of adversaries as a reincarnate of Death.</Description>
-    <RateOfFire>.90</RateOfFire>
+    <RateOfFire>.85</RateOfFire>
     <Sound>weapon/mithril_sword</Sound>
     <Projectile>
       <ObjectId>Scythe of the Reaper Shoot</ObjectId>
       <Speed>170</Speed>
       <MinDamage>130</MinDamage>
-      <MaxDamage>240</MaxDamage>
+      <MaxDamage>235</MaxDamage>
       <LifetimeMS>353</LifetimeMS>
       <Frequency>0.72</Frequency>
       <Amplitude>0.6</Amplitude>
@@ -61480,8 +61483,8 @@
     <Projectile>
       <ObjectId>Fire Elemental Staff Shoot</ObjectId>
       <Speed>180</Speed>
-      <MinDamage>230</MinDamage>
-      <MaxDamage>300</MaxDamage>
+      <MinDamage>215</MinDamage>
+      <MaxDamage>275</MaxDamage>
       <LifetimeMS>475</LifetimeMS>
       <Amplitude>0.35</Amplitude>
       <Frequency>2.49</Frequency>
@@ -62269,8 +62272,8 @@
     <Projectile>
       <ObjectId>SpiritSpiral</ObjectId>
       <Speed>150</Speed>
-      <MinDamage>40</MinDamage>
-      <MaxDamage>105</MaxDamage>
+      <MinDamage>80</MinDamage>
+      <MaxDamage>125</MaxDamage>
       <LifetimeMS>570</LifetimeMS>
       <Frequency>1</Frequency>
       <Amplitude>0.3</Amplitude>
@@ -62298,8 +62301,8 @@
     <Projectile>
       <ObjectId>Leaf Shoot</ObjectId>
       <Speed>180</Speed>
-      <MinDamage>60</MinDamage>
-      <MaxDamage>65</MaxDamage>
+      <MinDamage>55</MinDamage>
+      <MaxDamage>100</MaxDamage>
       <LifetimeMS>390</LifetimeMS>
       <Amplitude>0.5</Amplitude>
       <Frequency>2</Frequency>
@@ -62324,13 +62327,13 @@
     </Texture>
     <SlotType>17</SlotType>
     <Description>A stem of an enormous mushroom cap filled with spores that was pulled from the great Mushroom.</Description>
-    <RateOfFire>0.65</RateOfFire>
+    <RateOfFire>0.7</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
       <ObjectId>Mushroom Staff Shoot</ObjectId>
       <Speed>75</Speed>
-      <MinDamage>70</MinDamage>
-      <MaxDamage>80</MaxDamage>
+      <MinDamage>85</MinDamage>
+      <MaxDamage>120</MaxDamage>
       <LifetimeMS>1000</LifetimeMS>
       <Amplitude>0.5</Amplitude>
       <Frequency>1.35</Frequency>
@@ -62339,7 +62342,7 @@
       <MultiHit />
     </Projectile>
     <NumProjectiles>4</NumProjectiles>
-    <ArcGap>7</ArcGap>
+    <ArcGap>5</ArcGap>
     <ActivateOnEquip stat="20" amount="2">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="2">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
@@ -62361,8 +62364,8 @@
     <Projectile>
       <ObjectId>Emerald Staff Shoot</ObjectId>
       <Speed>165</Speed>
-      <MinDamage>115</MinDamage>
-      <MaxDamage>220</MaxDamage>
+      <MinDamage>110</MinDamage>
+      <MaxDamage>115</MaxDamage>
       <LifetimeMS>512</LifetimeMS>
       <Amplitude>0.8</Amplitude>
       <Frequency>1.5</Frequency>
@@ -62370,7 +62373,7 @@
       <FaceDir />
     </Projectile>
     <ActivateOnEquip stat="27" amount="5">IncrementStat</ActivateOnEquip>
-    <NumProjectiles>1</NumProjectiles>
+    <NumProjectiles>2</NumProjectiles>
     <ArcGap>0</ArcGap>
     <BagType>7</BagType>
     <FameBonus>5</FameBonus>
@@ -62386,13 +62389,13 @@
     <SlotType>17</SlotType>
     <SNormal />
     <Description>So powerful that each attack creates miniature sonic booms from the edge of this staff.</Description>
-    <RateOfFire>1.15</RateOfFire>
+    <RateOfFire>1.2</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
       <ObjectId>Wind Staff Shot</ObjectId>
       <Speed>268</Speed>
-      <MinDamage>70</MinDamage>
-      <MaxDamage>95</MaxDamage>
+      <MinDamage>115</MinDamage>
+      <MaxDamage>125</MaxDamage>
       <LifetimeMS>260</LifetimeMS>
       <Amplitude>0.5</Amplitude>
       <Frequency>0.5</Frequency>
@@ -62851,14 +62854,14 @@
     </Texture>
     <SlotType>1</SlotType>
     <Description>A slow but powerful sword that is a relic of a long forgotten age.</Description>
-    <RateOfFire>0.85</RateOfFire>
+    <RateOfFire>0.75</RateOfFire>
     <Sound>weapon/glass_sword</Sound>
     <Projectile>
       <ObjectId>Stone Slash</ObjectId>
       <Speed>120</Speed>
-      <MinDamage>525</MinDamage>
-      <MaxDamage>625</MaxDamage>
-      <LifetimeMS>333</LifetimeMS>
+      <MinDamage>510</MinDamage>
+      <MaxDamage>610</MaxDamage>
+      <LifetimeMS>375</LifetimeMS>
     </Projectile>
     <BagType>7</BagType>
     <FameBonus>4</FameBonus>
@@ -62912,13 +62915,13 @@
     <Description>
 			A sword with an impossibly sharp edge. It has been designed with holy magic to slash like no other blade.
 		</Description>
-    <RateOfFire>1.20</RateOfFire>
+    <RateOfFire>1.10</RateOfFire>
     <Sound>weapon/golden_bow</Sound>
     <Projectile>
       <ObjectId>Colossus Slash</ObjectId>
       <Speed>125</Speed>
-      <MinDamage>400</MinDamage>
-      <MaxDamage>450</MaxDamage>
+      <MinDamage>385</MinDamage>
+      <MaxDamage>425</MaxDamage>
       <LifetimeMS>400</LifetimeMS>
       <Amplitude>0.8</Amplitude>
       <Frequency>0.5</Frequency>
@@ -62942,13 +62945,13 @@
     <SlotType>1</SlotType>
     <Mythical />
     <Description>“Cowards die many times before their deaths; The valiant never taste of death but once.”</Description>
-    <RateOfFire>0.6</RateOfFire>
+    <RateOfFire>0.55</RateOfFire>
     <Sound>weapon/mithril_sword</Sound>
     <Projectile>
       <ObjectId>Thiram Shot</ObjectId>
       <Speed>100</Speed>
-      <MinDamage>900</MinDamage>
-      <MaxDamage>900</MaxDamage>
+      <MinDamage>950</MinDamage>
+      <MaxDamage>950</MaxDamage>
       <LifetimeMS>750</LifetimeMS>
       <Frequency>1</Frequency>
       <Amplitude>0.2</Amplitude>
@@ -62977,8 +62980,8 @@
     <Projectile>
       <ObjectId>Blade of the Protector Shoot</ObjectId>
       <Speed>140</Speed>
-      <MinDamage>160</MinDamage>
-      <MaxDamage>210</MaxDamage>
+      <MinDamage>150</MinDamage>
+      <MaxDamage>200</MaxDamage>
       <LifetimeMS>336</LifetimeMS>
       <Frequency>0</Frequency>
       <Size>95</Size>
@@ -63008,8 +63011,8 @@
     <Projectile>
       <ObjectId>Horn Breaker Shot</ObjectId>
       <Speed>125</Speed>
-      <MinDamage>450</MinDamage>
-      <MaxDamage>500</MaxDamage>
+      <MinDamage>400</MinDamage>
+      <MaxDamage>450</MaxDamage>
       <LifetimeMS>400</LifetimeMS>
       <Frequency>1</Frequency>
       <Size>80</Size>
@@ -63039,9 +63042,9 @@
     <Projectile>
       <ObjectId>Possessed Halberd Shot</ObjectId>
       <Speed>75</Speed>
-      <MinDamage>666</MinDamage>
+      <MinDamage>560</MinDamage>
       <ParticleTrail lifetimeMS="300">0x7E3F00</ParticleTrail>
-      <MaxDamage>666</MaxDamage>
+      <MaxDamage>560</MaxDamage>
       <LifetimeMS>627</LifetimeMS>
       <Size>100</Size>
       <MultiHit />
@@ -63066,8 +63069,8 @@
     <Projectile>
       <ObjectId>Earth's Power Shoot</ObjectId>
       <Speed>150</Speed>
-      <MinDamage>415</MinDamage>
-      <MaxDamage>445</MaxDamage>
+      <MinDamage>400</MinDamage>
+      <MaxDamage>430</MaxDamage>
       <LifetimeMS>300</LifetimeMS>
       <Amplitude>0.6</Amplitude>
       <Frequency>0.97</Frequency>
@@ -63841,8 +63844,8 @@
     <Projectile>
       <ObjectId>Massacre Shoot</ObjectId>
       <Speed>178.5</Speed>
-      <MinDamage>190</MinDamage>
-      <MaxDamage>205</MaxDamage>
+      <MinDamage>210</MinDamage>
+      <MaxDamage>230</MaxDamage>
       <LifetimeMS>280</LifetimeMS>
       <Amplitude>0.3</Amplitude>
       <Frequency>1.5</Frequency>
@@ -63868,13 +63871,13 @@
     </Texture>
     <SlotType>1</SlotType>
     <Description>Shards from the body of the Golden Oryx Effigy empower this sword and give it an illustrious shine. </Description>
-    <RateOfFire>.95</RateOfFire>
+    <RateOfFire>1.15</RateOfFire>
     <Sound>weapon/mithril_sword</Sound>
     <Projectile>
       <ObjectId>Golden Oryx Sword Shoot</ObjectId>
       <Speed>100</Speed>
-      <MinDamage>275</MinDamage>
-      <MaxDamage>290</MaxDamage>
+      <MinDamage>285</MinDamage>
+      <MaxDamage>310</MaxDamage>
       <LifetimeMS>450</LifetimeMS>
       <Frequency>1</Frequency>
       <Size>100</Size>
@@ -63895,13 +63898,13 @@
     </Texture>
     <SlotType>1</SlotType>
     <Description>Worthy enough to once be wielded by the Archdemon of Hell, Malphas.</Description>
-    <RateOfFire>1.05</RateOfFire>
+    <RateOfFire>1</RateOfFire>
     <Sound>weapon/mithril_sword</Sound>
     <Projectile>
       <ObjectId>Malphas Sword Shoot</ObjectId>
       <Speed>100</Speed>
-      <MinDamage>140</MinDamage>
-      <MaxDamage>190</MaxDamage>
+      <MinDamage>125</MinDamage>
+      <MaxDamage>165</MaxDamage>
       <LifetimeMS>420</LifetimeMS>
       <Amplitude>0.5</Amplitude>
       <Frequency>1.5</Frequency>
@@ -63928,8 +63931,8 @@
     <Projectile>
       <ObjectId>Slime Sword Shoot</ObjectId>
       <Speed>110</Speed>
-      <MinDamage>215</MinDamage>
-      <MaxDamage>215</MaxDamage>
+      <MinDamage>265</MinDamage>
+      <MaxDamage>270</MaxDamage>
       <LifetimeMS>409</LifetimeMS>
       <Frequency>1.5</Frequency>
       <Amplitude>0.2</Amplitude>
@@ -64411,13 +64414,13 @@
     </Texture>
     <SlotType>8</SlotType>
     <Description>This wand is powerful at conducting magical energy into a devastating blast.</Description>
-    <RateOfFire>1.15</RateOfFire>
+    <RateOfFire>1.1</RateOfFire>
     <Sound>weapon/wand_of_death</Sound>
     <Projectile>
       <ObjectId>Directed Explosion</ObjectId>
       <Speed>230</Speed>
       <Size>50</Size>
-      <MinDamage>85</MinDamage>
+      <MinDamage>110</MinDamage>
       <MaxDamage>120</MaxDamage>
       <LifetimeMS>400</LifetimeMS>
     </Projectile>
@@ -64440,13 +64443,13 @@
     <SlotType>8</SlotType>
     <Legendary />
     <Description>Capable of absorbing the pain dealt to others, then dishing it back to them at incredible rates.</Description>
-    <RateOfFire>1.25</RateOfFire>
+    <RateOfFire>1.1</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
       <ObjectId>Wand of Pain Shoot</ObjectId>
       <Speed>200</Speed>
-      <MinDamage>140</MinDamage>
-      <MaxDamage>165</MaxDamage>
+      <MinDamage>215</MinDamage>
+      <MaxDamage>235</MaxDamage>
       <LifetimeMS>450</LifetimeMS>
       <Amplitude>0.26</Amplitude>
       <Frequency>2.61</Frequency>
@@ -64469,13 +64472,13 @@
     <SlotType>8</SlotType>
     <Legendary />
     <Description>Gain the lifespan of vampires since no foe lives for long when faced with the punishment of vampiric bats.</Description>
-    <RateOfFire>1.05</RateOfFire>
+    <RateOfFire>1.15</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
       <ObjectId>TH Stinger Large2</ObjectId>
       <Speed>140</Speed>
-      <MinDamage>80</MinDamage>
-      <MaxDamage>185</MaxDamage>
+      <MinDamage>145</MinDamage>
+      <MaxDamage>225</MaxDamage>
       <LifetimeMS>536</LifetimeMS>
       <Frequency>0.9</Frequency>
       <Amplitude>0.45</Amplitude>
@@ -64485,7 +64488,7 @@
       <ArmorPiercing />
     </Projectile>
     <NumProjectiles>2</NumProjectiles>
-    <ArcGap>3.5</ArcGap>
+    <ArcGap>3</ArcGap>
     <ActivateOnEquip stat="3" amount="50">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="10">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
@@ -64503,13 +64506,13 @@
     <SlotType>8</SlotType>
     <Legendary />
     <Description>A treasure that had to be sealed away, deep within the Tomb of the Ancients as the mystical powers it possesses were too fearful.</Description>
-    <RateOfFire>0.95</RateOfFire>
+    <RateOfFire>1.2</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
       <ObjectId>Geb's Hand Shot</ObjectId>
       <Speed>165.5</Speed>
-      <MinDamage>320</MinDamage>
-      <MaxDamage>360</MaxDamage>
+      <MinDamage>335</MinDamage>
+      <MaxDamage>385</MaxDamage>
       <LifetimeMS>423</LifetimeMS>
       <Size>100</Size>
       <MultiHit />
@@ -64532,13 +64535,13 @@
     <SlotType>8</SlotType>
     <Legendary />
     <Description>It is not often that a succubus falls for a mortal, but their love when they do is overwhelmingly powerful. If manifested, its power can rival that of gods.</Description>
-    <RateOfFire>0.85</RateOfFire>
+    <RateOfFire>1.2</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
       <ObjectId>Wand of Everlasting Love Shot</ObjectId>
       <Speed>150</Speed>
-      <MinDamage>360</MinDamage>
-      <MaxDamage>410</MaxDamage>
+      <MinDamage>415</MinDamage>
+      <MaxDamage>450</MaxDamage>
       <LifetimeMS>600</LifetimeMS>
       <Size>100</Size>
       <ArmorPiercing />
@@ -64564,8 +64567,8 @@
     <Projectile>
       <ObjectId>Morto Square</ObjectId>
       <Speed>120</Speed>
-      <MinDamage>320</MinDamage>
-      <MaxDamage>360</MaxDamage>
+      <MinDamage>245</MinDamage>
+      <MaxDamage>265</MaxDamage>
       <Amplitude>1</Amplitude>
       <Frequency>1.16</Frequency>
       <LifetimeMS>542</LifetimeMS>
@@ -64594,8 +64597,8 @@
     <Projectile>
       <ObjectId>Fire Elemental Wand Shoot</ObjectId>
       <Speed>180</Speed>
-      <MinDamage>85</MinDamage>
-      <MaxDamage>125</MaxDamage>
+      <MinDamage>125</MinDamage>
+      <MaxDamage>155</MaxDamage>
       <LifetimeMS>500</LifetimeMS>
       <Amplitude>0.34</Amplitude>
       <Frequency>0.98</Frequency>
@@ -64981,8 +64984,8 @@
       <Speed>80</Speed>
       <Wavy />
       <LifetimeMS>1000</LifetimeMS>
-      <MinDamage>125</MinDamage>
-      <MaxDamage>135</MaxDamage>
+      <MinDamage>300</MinDamage>
+      <MaxDamage>305</MaxDamage>
       <ArmorPiercing />
     </Projectile>
     <BagType>7</BagType>
@@ -65370,13 +65373,13 @@
     <SlotType>8</SlotType>
     <Rare />
     <Description>Frozen water and stones give this wand exceptional grip and power.</Description>
-    <RateOfFire>.6</RateOfFire>
+    <RateOfFire>1</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
       <ObjectId>Thorn Shoot</ObjectId>
       <Speed>180</Speed>
-      <MinDamage>90</MinDamage>
-      <MaxDamage>110</MaxDamage>
+      <MinDamage>135</MinDamage>
+      <MaxDamage>175</MaxDamage>
       <LifetimeMS>500</LifetimeMS>
       <Amplitude>0.24</Amplitude>
       <Frequency>1.37</Frequency>
@@ -65400,13 +65403,13 @@
     <SlotType>8</SlotType>
     <SPlus />
     <Description>Tormented souls lay dormant in this wand's crystal, supplying it with power. Choose to use that power for good or for evil…</Description>
-    <RateOfFire>1</RateOfFire>
+    <RateOfFire>1.2</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
       <ObjectId>Deathhail Wand Shoot</ObjectId>
       <Speed>200</Speed>
-      <MinDamage>130</MinDamage>
-      <MaxDamage>150</MaxDamage>
+      <MinDamage>220</MinDamage>
+      <MaxDamage>260</MaxDamage>
       <LifetimeMS>450</LifetimeMS>
       <Frequency>1</Frequency>
       <Size>100</Size>

@@ -140,8 +140,8 @@
     <Projectile>
       <ObjectId>Rod of Frost Burn Shoot</ObjectId>
       <Speed>160</Speed>
-      <MinDamage>255</MinDamage>
-      <MaxDamage>290</MaxDamage>
+      <MinDamage>355</MinDamage>
+      <MaxDamage>380</MaxDamage>
       <LifetimeMS>500</LifetimeMS>
       <Frequency>0.55</Frequency>
       <Amplitude>0.6</Amplitude>

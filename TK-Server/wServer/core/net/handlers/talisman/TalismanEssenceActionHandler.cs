@@ -79,6 +79,15 @@ namespace wServer.core.net.handlers
                 return;
             }
 
+            if(talisman.Level >= desc.MaxLevels)
+            {
+                talisman.CurrentXP = talisman.ExpGoal;
+                talisman.Level = (byte)desc.MaxLevels;
+                player.UpdateTalsimans();
+                player.SendError("You area alraedy at max level");
+                return;
+            }
+
             if (talisman.CurrentXP >= talisman.ExpGoal && talisman.Level >= desc.MaxLevels)
             {
                 talisman.CurrentXP = talisman.ExpGoal;
@@ -161,6 +170,15 @@ namespace wServer.core.net.handlers
                 return;
             }
 
+            if (talisman.Level >= desc.MaxLevels)
+            {
+                talisman.CurrentXP = talisman.ExpGoal;
+                talisman.Level = (byte)desc.MaxLevels;
+                player.UpdateTalsimans();
+                player.SendError("You area alraedy at max level");
+                return;
+            }
+
             talisman.Active = true;
             player.GameServer.Database.SetCharacterActiveTalisman(player.AccountId, player.Client.Character.CharId, talisman.Type, talisman.Active);
             player.ActivateTalisman(talisman.Type);
@@ -171,6 +189,15 @@ namespace wServer.core.net.handlers
             if (!talisman.Active)
             {
                 player.SendError("Talisman is already disabled");
+                return;
+            }
+
+            if (talisman.Level >= desc.MaxLevels)
+            {
+                talisman.CurrentXP = talisman.ExpGoal;
+                talisman.Level = (byte)desc.MaxLevels;
+                player.UpdateTalsimans();
+                player.SendError("You area alraedy at max level");
                 return;
             }
 

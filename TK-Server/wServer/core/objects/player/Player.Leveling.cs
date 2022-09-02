@@ -114,7 +114,7 @@ namespace wServer.core.objects
                     exp *= 2;
 
                 if(TalismanFameGainBonus > 0.0)
-                    Experience = (int)(exp + exp * TalismanFameGainBonus);
+                    Experience = (int)(exp + (exp * TalismanFameGainBonus));
                 else
                     Experience += exp;
             }
@@ -143,7 +143,7 @@ namespace wServer.core.objects
             if (World is RealmWorld)
                 CheckForEncounter();
 
-            if (force || Quest == null || Quest.World == null || time.TickCount % 50 == 0)
+            if (force || Quest == null || Quest.World == null || time.TickCount % 10 == 0)
                 CheckForEncounter();
         }
 

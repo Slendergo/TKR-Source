@@ -1257,7 +1257,7 @@ namespace wServer.core.objects
             {
                 var wisdomStat = Stats[7];
 
-                ManaRegenCarry += (0.5 + 0.12 * wisdomStat);
+                ManaRegenCarry += (0.5 + 0.08 * wisdomStat);
                 if(TalismanExtraManaRegen > 0.0f)
                     ManaRegenCarry += (ManaRegenCarry * TalismanExtraManaRegen);
                 ManaRegenCarry *= time.DeltaTime;

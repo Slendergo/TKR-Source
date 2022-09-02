@@ -341,7 +341,7 @@ namespace wServer.logic
             new Threshold(0.03,
                 new ItemLoot("Crafting Material 2", 0.1),
                 new ItemLoot("Soul of Defense", 0.1),
-                new ItemLoot("Golden Coat", 0.00014)
+                new ItemLoot("Golden Coat", 0.00125)
                 ),
             new Threshold(0.01,
                 new TierLoot(10, ItemType.Armor, 0.15),
@@ -540,7 +540,7 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.03,
-                new ItemLoot("Golden Coat", 0.0014)
+                new ItemLoot("Golden Coat", 0.00125)
                 ),
              new Threshold(0.05,
                 new TierLoot(10, ItemType.Armor, 0.15),
@@ -844,10 +844,10 @@ namespace wServer.logic
             new Threshold(0.005,
                 new ItemLoot("Soul of Dexterity", 1),
                 new ItemLoot("Spatial Distortion", 0.01),
-                new ItemLoot("Ray Katana", 0.001),
+                new ItemLoot("Ray Katana", 0.00125),
                 new ItemLoot("Celestial Dual Blades", 0.01),
                 new ItemLoot("Crafting Material 2", 0.1),
-                new ItemLoot("Chromatic Extinction", 0.001)
+                new ItemLoot("Chromatic Extinction", 0.00125)
                 ),
             new Threshold(0.01,
                 new TierLoot(4, ItemType.Ring, 0.15),
@@ -997,7 +997,7 @@ namespace wServer.logic
                 ),
             new Threshold(0.03,
                 new ItemLoot("Soul of Vitality", 0.1),
-                new ItemLoot("Cadaverous Knife", 0.0014)
+                new ItemLoot("Cadaverous Knife", 0.00125)
                 ),
             new Threshold(0.01,
                 new ItemLoot("Abyssal Sword", 0.005),
@@ -1281,9 +1281,9 @@ namespace wServer.logic
                     )
                 ),
             new Threshold(0.03,
-                new ItemLoot("Cape of Septavius", 0.0014),
+                new ItemLoot("Cape of Septavius", 0.00125),
                 new ItemLoot("Soul of Wisdom", 0.1),
-                new ItemLoot("Soul-Stealing Trap", 0.0014)
+                new ItemLoot("Soul-Stealing Trap", 0.00125)
                 ),
             new Threshold(0.005,
                 new ItemLoot("Soul of Wisdom", 1)
@@ -1376,8 +1376,8 @@ namespace wServer.logic
                 ),
 
             new Threshold(0.03,
-                new ItemLoot("Possessed Halberd", 0.001),
-                new ItemLoot("Cape of Septavius", 0.001),
+                new ItemLoot("Possessed Halberd", 0.00125),
+                new ItemLoot("Cape of Septavius", 0.00125),
                 new ItemLoot("Potion of Wisdom", 1),
                 new ItemLoot("Potion of Wisdom", 1)
                 ),

@@ -251,11 +251,11 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.01,
-                new ItemLoot("Coral Bow", 0.001),
-                new ItemLoot("Coral Venom Trap", 0.00032),
-                new ItemLoot("Coral Silk Armor", 0.001),
-                new ItemLoot("Coral Ring", 0.001),
-                new ItemLoot("Ocean Trench Key", 0.001, 0, 0.03)
+                new ItemLoot("Coral Bow", 0.01),
+                new ItemLoot("Coral Venom Trap", 0.00125),
+                new ItemLoot("Coral Silk Armor", 0.01),
+                new ItemLoot("Coral Ring", 0.01),
+                new ItemLoot("Ocean Trench Key", 0.01, 0, 0.03)
                 ),
             new Threshold(0.02,
                 new ItemLoot("Potion of Mana", 1),

@@ -37,9 +37,9 @@ namespace wServer.logic
                 new ItemLoot("Magic Dust", 0.5)
                 ),
             new Threshold(0.03,
-                new ItemLoot("Orb of Conflict", 0.001, threshold: 0.03),
+                new ItemLoot("Orb of Conflict", 0.00125, threshold: 0.03),
                 new ItemLoot("Talisman Fragment", 0.009),
-                new ItemLoot("Shiv of Flaming Eruption", 0.001, threshold: 0.03)
+                new ItemLoot("Shiv of Flaming Eruption", 0.00125, threshold: 0.03)
                 )
             )
         .Init("Red Flaming Skull",

@@ -148,7 +148,7 @@ namespace wServer.logic
                 ),
             new Threshold(0.03,
                 new ItemLoot("Talisman Fragment", 0.009),
-                new ItemLoot("Tiki's Breastplate", 0.0014)
+                new ItemLoot("Tiki's Breastplate", 0.00125)
                 ),
             new Threshold(0.001,
                 new ItemLoot("Potion of Defense", 1),

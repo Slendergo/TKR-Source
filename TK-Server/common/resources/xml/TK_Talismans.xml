@@ -303,7 +303,7 @@
 			<LootBoost percentage="0.01" scale="perLevel"/>
 		</Tier>
 		<Tier tier="2">
-			<LootBoost percentage="0.075" scale="flat"/>
+			<LootBoost percentage="0.075" scale="perLevel"/>
 			<LootBoostPerPlayer percentage="-0.025" scale="perLevel"/>
 			<LootBoost percentage="0.01" scale="perLevel"/>
 		</Tier>

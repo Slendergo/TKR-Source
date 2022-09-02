@@ -105,13 +105,13 @@ namespace wServer.logic
                 new TierLoot(5, ItemType.Ability, 0.07),
                 new ItemLoot("Potion of Wisdom", 1),
                 new ItemLoot("Potion of Wisdom", 1),
-                new ItemLoot("Doom Bow", 0.001),
-                new ItemLoot("Edictum Praetoris", 0.0015),
-                new ItemLoot("Memento Mori", 0.0015),
-                new ItemLoot("Toga Picta", 0.0015),
-                new ItemLoot("Interregnum", 0.0015),
-                new ItemLoot("Tormentor's Wrath", 0.001),
-                new ItemLoot("Undead Lair Key", 0.001, 0, 0.03),
+                new ItemLoot("Doom Bow", 0.009),
+                new ItemLoot("Edictum Praetoris", 0.009),
+                new ItemLoot("Memento Mori", 0.009),
+                new ItemLoot("Toga Picta", 0.009),
+                new ItemLoot("Interregnum", 0.009),
+                new ItemLoot("Tormentor's Wrath", 0.009),
+                new ItemLoot("Undead Lair Key", 0.009, 0, 0.03),
 
                 new ItemLoot("Magic Dust", 0.5)
                 )

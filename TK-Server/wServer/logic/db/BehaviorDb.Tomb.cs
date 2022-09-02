@@ -137,7 +137,7 @@ namespace wServer.logic
                 new ItemLoot("Tomb of the Ancients Key", 0.01, 0, 0.03)
                 ),
             new Threshold(0.03,
-                new ItemLoot("Shield of The Ancient's", 0.001)
+                new ItemLoot("Shield of The Ancient's", 0.00125)
                 ),
             new Threshold(0.02,
                 new ItemLoot("Ring of the Pyramid", 0.009),
@@ -264,7 +264,7 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.03,
-                new ItemLoot("Bow of the Havens", 0.001)
+                new ItemLoot("Bow of the Havens", 0.00125)
                 ),
             new Threshold(0.01,
                 new ItemLoot("Potion of Life", 1),
@@ -467,7 +467,7 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.03,
-                new ItemLoot("Mummified Rod", 0.001)
+                new ItemLoot("Mummified Rod", 0.00125)
                 ),
             new Threshold(0.01,
                 new ItemLoot("Tomb of the Ancients Key", 0.01, 0, 0.03),

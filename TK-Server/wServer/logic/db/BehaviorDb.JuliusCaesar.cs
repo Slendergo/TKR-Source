@@ -108,10 +108,10 @@ namespace wServer.logic
                 ),
              new Threshold(0.05,
                  new ItemLoot("Talisman Fragment", 0.009),
-                    new ItemLoot("Spear of Thiram", 0.00025)
+                    new ItemLoot("Spear of Thiram", 0.00033)
                 ),
               new Threshold(0.03,
-                    new ItemLoot("Gladiator's Visage", 0.001)
+                    new ItemLoot("Gladiator's Visage", 0.00125)
                 ),
                     new Threshold(0.001,
 

@@ -107,7 +107,7 @@ namespace wServer.logic
                 new TierLoot(6, ItemType.Ring, 0.07),
                 new TierLoot(6, ItemType.Ability, 0.07),
                 new ItemLoot("Blossom Bow", 0.01),
-                new ItemLoot("Rose Buckler", 0.01),
+                new ItemLoot("Rose Buckler", 0.00125),
                 new ItemLoot("Lotus Flower", 0.01),
                 new ItemLoot("Potion of Speed", 1),
                 new ItemLoot("Potion of Life", 0.30),

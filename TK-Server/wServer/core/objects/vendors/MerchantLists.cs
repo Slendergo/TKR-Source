@@ -36,8 +36,8 @@ namespace wServer.core.objects.vendors
         {
             new ShopItem("Strange Library Key", 500),
             new ShopItem("Cemetery Key", 250),
-            new ShopItem("Lost Halls Key", 2500),
-            new ShopItem("Defiled Graveyard Key", 1500),
+            new ShopItem("Lost Halls Key", 1500),
+            new ShopItem("Defiled Graveyard Key", 1000),
             new ShopItem("Davy's Key", 500),
             new ShopItem("The Crawling Depths Key", 500),
             new ShopItem("Shatters Key", 2500),
@@ -53,6 +53,7 @@ namespace wServer.core.objects.vendors
             new ShopItem("Beachzone Key", 500),
             new ShopItem("Lab Key", 250),
             new ShopItem("Totem Key", 500),
+            new ShopItem("Toxic Sewers Key", 250),
             new ShopItem("Manor Key", 500),
             new ShopItem("Candy Key", 500),
             new ShopItem("Cemetery Key", 250),

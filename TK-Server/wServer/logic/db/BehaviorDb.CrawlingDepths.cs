@@ -81,12 +81,12 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.03,
-                new ItemLoot("Doku No Ken", 0.001, 0, 0.03),
-                new ItemLoot("Arachne Carapace", 0.001, 0, 0.03)
+                new ItemLoot("Doku No Ken", 0.00125, 0, 0.03),
+                new ItemLoot("Arachne Carapace", 0.00125, 0, 0.03)
                 ),
             new Threshold(0.05,
-                new ItemLoot("Bone Flinger", 0.001),
-                new ItemLoot("Venomous Quiver", 0.001)
+                new ItemLoot("Bone Flinger", 0.00125),
+                new ItemLoot("Venomous Quiver", 0.00125)
                 ),
             new Threshold(0.01,
                 new TierLoot(12, ItemType.Weapon, 0.2),
@@ -95,7 +95,7 @@ namespace wServer.logic
                 new TierLoot(6, ItemType.Ring, 0.2),
                 new ItemLoot("Potion of Mana", 1),
                 new ItemLoot("Potion of Mana", 1),
-                new ItemLoot("Spotted Venom Extract", 0.001),
+                new ItemLoot("Spotted Venom Extract", 0.00125),
                 new ItemLoot("The Crawling Depths Key", 0.01, 0, 0.03)
                 )
             )

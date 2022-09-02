@@ -109,7 +109,7 @@ namespace wServer.logic
                 new TierLoot(4, ItemType.Ring, 0.01),
                 new ItemLoot("Talisman Fragment", 0.009),
                 new ItemLoot("Magical Mushroom Staff", 0.001),
-                new ItemLoot("Mushroom Loop", 0.001),
+                new ItemLoot("Mushroom Loop", 0.01),
 
                 new ItemLoot("Magic Dust", 0.5)
                 )

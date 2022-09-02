@@ -35,31 +35,31 @@ namespace wServer.core.objects.vendors
         private static readonly List<ISellableItem> KeysFame = new List<ISellableItem>
         {
             new ShopItem("Strange Library Key", 500),
-            new ShopItem("Cemetery Key", 250),
-            new ShopItem("Lost Halls Key", 1500),
-            new ShopItem("Defiled Graveyard Key", 1000),
+            new ShopItem("Cemetery Key", 200),
+            new ShopItem("Lost Halls Key", 1000),
+            new ShopItem("Defiled Graveyard Key", 500),
             new ShopItem("Davy's Key", 500),
             new ShopItem("The Crawling Depths Key", 500),
-            new ShopItem("Shatters Key", 2500),
+            new ShopItem("Shatters Key", 1000),
             new ShopItem("Ocean Trench Key", 500),
             new ShopItem("Tomb of the Ancients Key", 1000),
             new ShopItem("Deadwater Docks Key", 500),
             new ShopItem("Woodland Labyrinth Key", 500),
-            new ShopItem("Spider Den Key", 250),
-            new ShopItem("Undead Lair Key", 250),
-            new ShopItem("Sprite World Key", 250),
-            new ShopItem("Abyss of Demons Key", 250),
-            new ShopItem("Snake Pit Key", 500),
+            new ShopItem("Spider Den Key", 200),
+            new ShopItem("Undead Lair Key", 200),
+            new ShopItem("Sprite World Key", 200),
+            new ShopItem("Abyss of Demons Key", 200),
+            new ShopItem("Snake Pit Key", 200),
             new ShopItem("Beachzone Key", 500),
-            new ShopItem("Lab Key", 250),
+            new ShopItem("Lab Key", 200),
             new ShopItem("Totem Key", 500),
-            new ShopItem("Toxic Sewers Key", 250),
+            new ShopItem("Toxic Sewers Key", 200),
             new ShopItem("Manor Key", 500),
             new ShopItem("Candy Key", 500),
-            new ShopItem("Cemetery Key", 250),
+            new ShopItem("Cemetery Key", 200),
             new ShopItem("Davy's Key", 500),
             new ShopItem("Ocean Trench Key", 500),
-            new ShopItem("Tomb of the Ancients Key", 1500)
+            new ShopItem("Tomb of the Ancients Key", 500)
         };
 
         private static readonly List<ISellableItem> PurchasableFame = new List<ISellableItem>
@@ -103,7 +103,7 @@ namespace wServer.core.objects.vendors
         public static readonly Dictionary<TileRegion, Tuple<List<ISellableItem>, CurrencyType, int>> Shops = new Dictionary<TileRegion, Tuple<List<ISellableItem>, CurrencyType, int>>()
         {
             { TileRegion.Store_1, new Tuple<List<ISellableItem>, CurrencyType, int>(PurchasableFame, CurrencyType.Fame, 0) },
-            { TileRegion.Store_2, new Tuple<List<ISellableItem>, CurrencyType, int>(Consumables, CurrencyType.Fame, 0) },
+            { TileRegion.Store_2, new Tuple<List<ISellableItem>, CurrencyType, int>(Consumables, CurrencyType.Gold, 0) },
             { TileRegion.Store_3, new Tuple<List<ISellableItem>, CurrencyType, int>(Special, CurrencyType.Gold, 0) },
             { TileRegion.Store_4, new Tuple<List<ISellableItem>, CurrencyType, int>(KeysFame, CurrencyType.Fame, 0) }
         };

@@ -634,10 +634,10 @@ namespace wServer.core
             _EventCount++;
             World.ForeachPlayer(player => 
             {
-                player.SendInfo($"({_EventCount}/30) {eventDead} has been defeated!");
+                player.SendInfo($"({_EventCount}/40) {eventDead} has been defeated!");
             });
 
-            if (_EventCount == 30)
+            if (_EventCount == 40)
                 _ = World.CloseRealm();
         }
 

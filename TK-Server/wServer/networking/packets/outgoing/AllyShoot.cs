@@ -6,7 +6,7 @@ namespace wServer.networking.packets.outgoing
     {
         public byte BulletId { get; set; }
         public int OwnerId { get; set; }
-        public ushort ContainerType { get; set; }
+        public int ContainerType { get; set; }
         public float Angle { get; set; }
 
         public override MessageId MessageId => MessageId.ALLYSHOOT;
@@ -15,7 +15,7 @@ namespace wServer.networking.packets.outgoing
         {
             wtr.Write(BulletId);
             wtr.Write(OwnerId);
-            wtr.Write((short)ContainerType);
+            wtr.Write(ContainerType);
             wtr.Write(Angle);
         }
     }

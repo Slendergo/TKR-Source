@@ -742,7 +742,7 @@ namespace Bot
             var ret = new OutgoingMessageData(PLAYERSHOOT);
             ret.WriteInt32(time);
             ret.WriteByte(bulletId);
-            ret.WriteInt16(containerType);
+            ret.WriteInt32(containerType);
             ret.WriteFloat(x);
             ret.WriteFloat(y);
             ret.WriteFloat(angle);

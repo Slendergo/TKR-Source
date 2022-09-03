@@ -10,7 +10,7 @@ namespace wServer.core.net.handlers
     {
         public int Time { get; set; }
         public byte BulletId { get; set; }
-        public ushort ContainerType { get; set; }
+        public int ContainerType { get; set; }
         public Position StartingPos { get; set; }
         public float Angle { get; set; }
 
@@ -20,7 +20,7 @@ namespace wServer.core.net.handlers
         {
             Time = rdr.ReadInt32();
             BulletId = rdr.ReadByte();
-            ContainerType = rdr.ReadUInt16();
+            ContainerType = rdr.ReadInt32();
             StartingPos = Position.Read(rdr);
             Angle = rdr.ReadSingle();
 
@@ -32,7 +32,7 @@ namespace wServer.core.net.handlers
                 return;
             }
 
-            if (!player.GameServer.Resources.GameData.Items.TryGetValue(ContainerType, out var item))
+            if (!player.GameServer.Resources.GameData.Items.TryGetValue((ushort)ContainerType, out var item))
             {
                 client.Disconnect("Attempting to shoot a invalid item");
                 return;

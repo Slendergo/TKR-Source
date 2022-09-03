@@ -16,10 +16,17 @@ namespace wServer.core.commands
             {
                 if (!(player.World is RealmWorld gw))
                 {
-                    player.SendError("You must be in a realm to clsoe it.");
-                    return false;
+                    player.SendError("You must be in a kingdom to clsoe it.");
+                    return true;
                 }
-                gw.CloseRealm();
+
+                if (!gw.CloseRealm())
+                {
+                    player.SendError("Kingdom has already closed its borders.");
+                    return true;
+                }
+
+                player.SendError("You have closed the kingdom borders.");
                 return true;
             }
         }

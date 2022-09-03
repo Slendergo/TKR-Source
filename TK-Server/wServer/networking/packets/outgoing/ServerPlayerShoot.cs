@@ -17,7 +17,7 @@ namespace wServer.networking.packets.outgoing
         {
             wtr.Write(BulletId);
             wtr.Write(OwnerId);
-            wtr.Write((short)ContainerType);
+            wtr.Write(ContainerType);
             StartingPos.Write(wtr);
             wtr.Write(Angle);
             wtr.Write(Damage);

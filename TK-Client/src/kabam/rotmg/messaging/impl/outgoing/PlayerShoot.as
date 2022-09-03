@@ -27,7 +27,7 @@ package kabam.rotmg.messaging.impl.outgoing
       {
          data.writeInt(this.time_);
          data.writeByte(this.bulletId_);
-         data.writeShort(this.containerType_);
+         data.writeInt(this.containerType_);
          this.startingPos_.writeToOutput(data);
          data.writeFloat(this.angle_);
       }

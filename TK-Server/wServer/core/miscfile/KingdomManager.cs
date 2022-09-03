@@ -631,15 +631,14 @@ namespace wServer.core
                 return;
             HasQuestAlready = false;
 
-            World.ForeachPlayer(_ => 
-            {
-
-            });
-            World.GameServer.ChatManager.AnnounceRealm("(" + _EventCount + "/30) " + eventDead + " has been defeated!", World.DisplayName);
-
             _EventCount++;
+            World.ForeachPlayer(player => 
+            {
+                player.SendInfo($"({_EventCount}/30) {eventDead} has been defeated!");
+            });
+
             if (_EventCount == 30)
-                World.CloseRealm();
+                _ = World.CloseRealm();
         }
 
         public void Init()

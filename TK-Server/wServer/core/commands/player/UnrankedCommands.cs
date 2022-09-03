@@ -646,7 +646,7 @@ namespace wServer.core.commands
             if (player.TalismanLootBoostPerPlayer != 0.0 && player.World.Players.Count != 1)
                 allLoot += (player.TalismanLootBoostPerPlayer * (player.World.Players.Count - 1));
 
-            player.SendInfo($"Talisman's provide: {(int)((player.TalismanLootBoost + allLoot + (player.TalismanCanOnlyGetWhiteBags ? 0.5 : 0.0)) * 100.0)} % ");
+            player.SendInfo($"Talisman's provide: {((player.TalismanLootBoost + allLoot + (player.TalismanCanOnlyGetWhiteBags ? 0.5 : 0.0)) * 100.0)} % ");
             switch (player.GameServer.WorldManager.Nexus.EngineStage)
             {
                 case 1: player.SendInfo($"Stage 1 Strange Engine provides: 25%"); break;

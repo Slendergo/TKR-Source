@@ -133,7 +133,7 @@ namespace wServer.core
                     //if (p.WorldInstance == null || p.WorldInstance.Deleted)
                     //    continue;
 
-                    var count = p.WorldInstance.Players.Count;
+                    var count = 0;
                     p.WorldInstance.GetPlayerCount(ref count);
 
                     var updatedCount = $"{p.WorldInstance.GetDisplayName()} ({Math.Min(count, p.WorldInstance.MaxPlayers)}/{p.WorldInstance.MaxPlayers})";

@@ -18,12 +18,11 @@ namespace wServer.core.worlds.impl
             Branches.Add(world.Id, world);
         }
 
-        public int GetPlayerCount(ref int count)
+        public void GetPlayerCount(ref int count)
         {
-
-
-
-            return count;
+            count += Branch.Players.Values.Count;
+            foreach (var branch in Branches.Values)
+                branch.GetPlayerCount(ref count);
         }
 
         public bool HasBranches() => Branches.Count > 0;

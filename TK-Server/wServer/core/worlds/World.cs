@@ -210,12 +210,7 @@ namespace wServer.core.worlds
 
         public string GetDisplayName() => DisplayName != null && DisplayName.Length > 0 ? DisplayName : IdName;
         
-        public int GetPlayerCount(ref int count) {
-
-
-
-            return count;
-        }
+        public void GetPlayerCount(ref int count) => WorldBranch.GetPlayerCount(ref count);
 
         public Entity GetEntity(int id)
         {

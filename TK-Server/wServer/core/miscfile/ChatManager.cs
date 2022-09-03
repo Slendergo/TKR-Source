@@ -204,44 +204,43 @@ namespace wServer.core
         {
             if (string.IsNullOrWhiteSpace(text))
                 return;
-            else
+
+            var supporter = 0;
+            if (src.IsSupporter1)
+                supporter++;
+            if (src.IsSupporter2)
+                supporter++;
+            if (src.IsSupporter3)
+                supporter++;
+            if (src.IsSupporter4)
+                supporter++;
+            if (src.IsSupporter5)
+                supporter++;
+
+            var nameTag = "";
+             if (src.IsCommunityManager)
+                nameTag = "[CM] ";
+            if(src.IsCommunityManager && supporter > 0)
+                nameTag = $"[CM | S-{supporter}] ";
+            else if (supporter > 0)
+                nameTag = $"[S-{supporter}] ";
+
+            if (src.Client.Account.Name == "Slendergo" || src.Client.Account.Name == "ModBBQ" || src.Client.Account.Name == "Orb")
+                nameTag = "[Owner] ";
+
+            var tp = new Text()
             {
-                var supporter = 0;
-                if (src.IsSupporter1)
-                    supporter++;
-                if (src.IsSupporter2)
-                    supporter++;
-                if (src.IsSupporter3)
-                    supporter++;
-                if (src.IsSupporter4)
-                    supporter++;
-                if (src.IsSupporter5)
-                    supporter++;
+                Name = $"{nameTag}{src.Name}",
+                ObjectId = src.Id,
+                NumStars = src.Stars,
+                BubbleTime = 5,
+                Recipient = "",
+                Txt = text,
+                NameColor = (src.Client.Account.ColorNameChat != 0) ? src.Client.Account.ColorNameChat : 0x123456,
+                TextColor = (src.Client.Account.ColorChat != 0) ? src.Client.Account.ColorChat : 0xFFFFFF
+            };
 
-                var nameTag = "";
-                if (src.Client.Account.Name == "Slendergo" || src.Client.Account.Name == "ModBBQ" || src.Client.Account.Name == "Orb")
-                    nameTag = "[Owner]";
-                else if (src.IsCommunityManager)
-                    nameTag = "[CM]";
-                if(src.IsCommunityManager && supporter > 0)
-                    nameTag = $"[CM | S-{supporter}]";
-                else if (supporter > 0)
-                    nameTag = $"[S-{supporter}]";
-
-                var tp = new Text()
-                {
-                    Name = $"{nameTag} {src.Name}",
-                    ObjectId = src.Id,
-                    NumStars = src.Stars,
-                    BubbleTime = 5,
-                    Recipient = "",
-                    Txt = text,
-                    NameColor = (src.Client.Account.ColorNameChat != 0) ? src.Client.Account.ColorNameChat : 0x123456,
-                    TextColor = (src.Client.Account.ColorChat != 0) ? src.Client.Account.ColorChat : 0xFFFFFF
-                };
-
-                SendTextPacket(src, tp, p => !p.Client.Account.IgnoreList.Contains(src.AccountId));
-            }
+            SendTextPacket(src, tp, p => !p.Client.Account.IgnoreList.Contains(src.AccountId));
         }
 
         public bool SendInfo(int target, string text)

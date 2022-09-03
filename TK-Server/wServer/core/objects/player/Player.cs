@@ -122,12 +122,12 @@ namespace wServer.core.objects
         internal class APIRank{ public int accID; public int charID; }
         internal class APIResp{ [JsonProperty("rank")] public string charRank { get; set; }}
 
-        public bool IsAdmin => Client.Rank.Rank >= RankingType.Admin;
-        public bool IsSupporter1 => Client.Rank.Rank >= RankingType.Supporter1;
-        public bool IsSupporter2 => Client.Rank.Rank >= RankingType.Supporter2;
-        public bool IsSupporter3 => Client.Rank.Rank >= RankingType.Supporter3;
-        public bool IsSupporter4 => Client.Rank.Rank >= RankingType.Supporter4;
-        public bool IsSupporter5 => Client.Rank.Rank >= RankingType.Supporter5;
+        public bool IsAdmin => Client.Rank.Rank == RankingType.Admin;
+        public bool IsSupporter1 => Client.Rank.Rank == RankingType.Supporter1;
+        public bool IsSupporter2 => Client.Rank.Rank == RankingType.Supporter2;
+        public bool IsSupporter3 => Client.Rank.Rank == RankingType.Supporter3;
+        public bool IsSupporter4 => Client.Rank.Rank == RankingType.Supporter4;
+        public bool IsSupporter5 => Client.Rank.Rank == RankingType.Supporter5;
         public bool IsCommunityManager => Client.Rank.IsCommunityManager;
 
         public Player(Client client, bool saveInventory = true) : base(client.GameServer, client.Character.ObjectType)

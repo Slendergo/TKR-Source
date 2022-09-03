@@ -123,22 +123,22 @@ namespace wServer.core.objects
         private void ApplyTalismanEffects()
         {
             //reset
-            TalismanLootBoost = 0.0f;
-            TalismanLootBoostPerPlayer = 0.0f;
-            TalismanAbilityLifeCost = 0.0f;
+            TalismanLootBoost = 0.0;
+            TalismanLootBoostPerPlayer = 0.0;
+            TalismanAbilityLifeCost = 0.0;
             TalismanImmuneToDamaging = false;
             TalismanImmuneToWeak = false;
             TalismanDamageShotsPierceArmour = false;
             TalismanDamageIsAverage = false;
             _noManaBar.SetValue(0);
-            TalismanExtraAbilityDamage = 0.0f;
-            TalismanExtraLifeRegen = 0.0f;
-            TalismanExtraManaRegen = 0.0f;
-            TalismanFameGainBonus = 0.0f;
+            TalismanExtraAbilityDamage = 0.0;
+            TalismanExtraLifeRegen = 0.0;
+            TalismanExtraManaRegen = 0.0;
+            TalismanFameGainBonus = 0.0;
             TalismanCantGetLoot = false;
             TalismanNoPotionHealing = false;
-            TalismanHealthHPRegen = 0.0f;
-            TalismanHealthRateOfFire = 0.0f;
+            TalismanHealthHPRegen = 0.0;
+            TalismanHealthRateOfFire = 0.0;
             TalismanCanOnlyGetWhiteBags = false;
 
             RemoveCondition(ConditionEffectIndex.ArmorBreakImmune);

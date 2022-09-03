@@ -73,7 +73,7 @@ namespace wServer.core.objects
                     {
                         ObjectId = Id,
                         Color = new ARGB(0xFFE25F00),
-                        Message = $"+{delta}"
+                        Message = $"+{delta} Fame"
                     }, this);
                 }
             }
@@ -97,8 +97,12 @@ namespace wServer.core.objects
 
             if (exp != 0)
             {
+                if (Name.Contains("Slendergo"))
+                    if(TalismanFameGainBonus > 0.0)
+                        SendInfo($"You have: {TalismanFameGainBonus} Somehow");
+
                 if(TalismanFameGainBonus > 0.0)
-                    Experience = (int)(exp + (exp * TalismanFameGainBonus));
+                    Experience += (int)(exp + (exp * TalismanFameGainBonus));
                 else
                     Experience += exp;
             }

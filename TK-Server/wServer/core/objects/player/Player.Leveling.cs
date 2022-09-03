@@ -97,9 +97,6 @@ namespace wServer.core.objects
 
             if (exp != 0)
             {
-                if (XPBoosted)
-                    exp *= 2;
-
                 if(TalismanFameGainBonus > 0.0)
                     Experience = (int)(exp + (exp * TalismanFameGainBonus));
                 else

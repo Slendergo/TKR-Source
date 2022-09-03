@@ -1234,12 +1234,11 @@ namespace wServer.core.objects
             {
                 var vitalityStat = Stats[6];
 
-                HealthRegenCarry += (0.7 + (0.20 * vitalityStat));
+                HealthRegenCarry += (1.0 + (0.24 * vitalityStat)) * time.DeltaTime;
                 if(TalismanExtraLifeRegen > 0.0f)
                     HealthRegenCarry += (HealthRegenCarry * TalismanExtraLifeRegen);
                 if(TalismanHealthHPRegen > 0.0f)
                     HealthRegenCarry += (HealthRegenCarry * TalismanHealthHPRegen);
-                HealthRegenCarry *= time.DeltaTime;
 
                 if (HasConditionEffect(ConditionEffectIndex.Healing))
                     HealthRegenCarry += 20.0 * time.DeltaTime;
@@ -1257,13 +1256,12 @@ namespace wServer.core.objects
             {
                 var wisdomStat = Stats[7];
 
-                ManaRegenCarry += (0.5 + 0.08 * wisdomStat);
+                ManaRegenCarry += (0.5 + 0.12 * wisdomStat) * time.DeltaTime;
                 if(TalismanExtraManaRegen > 0.0f)
                     ManaRegenCarry += (ManaRegenCarry * TalismanExtraManaRegen);
-                ManaRegenCarry *= time.DeltaTime;
 
                 if (HasConditionEffect(ConditionEffectIndex.MPTRegeneration))
-                    HealthRegenCarry += 20.0 * time.DeltaTime;
+                    ManaRegenCarry += 20.0 * time.DeltaTime;
 
                 var regen = (int)Math.Ceiling(ManaRegenCarry);
                 if (regen > 0)

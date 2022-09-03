@@ -20,6 +20,14 @@ namespace server.account
 
         public override void HandleRequest(RequestContext context, NameValueCollection query)
         {
+
+            if (Program.Config.serverInfo.requireSecret && query["secret"] != "69420")
+            {
+                System.Console.WriteLine(query["newGUID"] + " Tried to register without secret");
+                Write(context, "<Error>Internal Server Error</Error>");
+                return;
+            }
+
             if (Program.Resources.Settings.NewAccounts.TestingRegister)
             {
                 Write(context, "<Error>Testers Only</Error>");

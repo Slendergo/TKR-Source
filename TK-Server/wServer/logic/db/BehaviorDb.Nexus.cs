@@ -11,7 +11,7 @@ namespace wServer.logic
 
 
         private _ Nexus = () => Behav()
-            .Init("Nexus Crier",
+            .Init("Crier",
                 new State(
                     new State("Welcome",
                         new Wander(0.1),
@@ -43,7 +43,7 @@ namespace wServer.logic
                         new TimedRandomTransition(10000, false, "1", "3", "Welcome")
                         ),
                     new State("3",
-                        new Taunt("Want a new look? Check out the cloth bazaar!"),
+                        new Taunt("Want a new look? Check out the styles in the market!"),
                         new TimedTransition(4000, "3 k")
                         ),
                     new State("3 k",

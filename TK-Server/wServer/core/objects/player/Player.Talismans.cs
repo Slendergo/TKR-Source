@@ -13,23 +13,23 @@ namespace wServer.core.objects
         private Dictionary<int, TalismanData> TalismanDatas = new Dictionary<int, TalismanData>();
         public List<int> ActiveTalismans = new List<int>();
 
-        public float TalismanLootBoost { get; set; }
-        public float TalismanLootBoostPerPlayer { get; set; }
-        public float TalismanAbilityLifeCost { get; set; }
+        public double TalismanLootBoost { get; set; }
+        public double TalismanLootBoostPerPlayer { get; set; }
+        public double TalismanAbilityLifeCost { get; set; }
         public bool TalismanImmuneToDamaging { get; set; } // todo talisman
         public bool TalismanImmuneToWeak { get; set; }
         public bool TalismanDamageShotsPierceArmour { get; set; }
         public bool TalismanDamageIsAverage { get; set; }
-        public float TalismanExtraLifeRegen { get; set; }
-        public float TalismanExtraManaRegen { get; set; }
-        public float TalismanExtraAbilityDamage { get; set; }
-        public float TalismanFameGainBonus { get; set; }
+        public double TalismanExtraLifeRegen { get; set; }
+        public double TalismanExtraManaRegen { get; set; }
+        public double TalismanExtraAbilityDamage { get; set; }
+        public double TalismanFameGainBonus { get; set; }
         public bool TalismanCantGetLoot { get; set; }
         public bool TalismanNoPotionHealing { get; set; }
-        public float TalismanHealthHPRegen { get; set; }
-        public float TalismanHealthRateOfFire { get; set; }
-        public float TalismanPotionHealthPercent { get; set; }
-        public float TalismanPotionManaPercent { get; set; }
+        public double TalismanHealthHPRegen { get; set; }
+        public double TalismanHealthRateOfFire { get; set; }
+        public double TalismanPotionHealthPercent { get; set; }
+        public double TalismanPotionManaPercent { get; set; }
         public bool TalismanCanOnlyGetWhiteBags { get; set; }
 
         private SV<int> _noManaBar { get; set; }
@@ -215,16 +215,17 @@ namespace wServer.core.objects
 
                 foreach (var extra in tierDesc.Extra)
                 {
+                    var scale = extra.ScalesPerLevel ? extra.Percentage * talisman.Level : extra.Percentage;
                     switch (extra.Type)
                     {
                         case TalismanExtra.ABILITY_DAMAGE:
-                            TalismanExtraAbilityDamage += extra.Percentage;
+                            TalismanExtraAbilityDamage += scale;
                             break;
                         case TalismanExtra.LIFE_REGEN:
-                            TalismanExtraLifeRegen += extra.Percentage;
+                            TalismanExtraLifeRegen += scale;
                             break;
                         case TalismanExtra.MANA_REGEN:
-                            TalismanExtraManaRegen += extra.Percentage;
+                            TalismanExtraManaRegen += scale;
                             break;
                     }
                 }
@@ -262,13 +263,14 @@ namespace wServer.core.objects
 
                 foreach(var potion in tierDesc.PotionStack)
                 {
+                    var scale = potion.ScalesPerLevel ? (potion.Percentage * talisman.Level) : potion.Percentage;
                     switch (potion.Type)
                     {
                         case TalismanPotionStack.HEALTH:
-                            TalismanPotionHealthPercent += potion.ScalesPerLevel ? (potion.Percentage * talisman.Level) : potion.Percentage;
+                            TalismanPotionHealthPercent += scale;
                             break;
                         case TalismanPotionStack.MANA:
-                            TalismanPotionManaPercent += potion.ScalesPerLevel ? (potion.Percentage * talisman.Level) : potion.Percentage;
+                            TalismanPotionManaPercent += scale;
                             break;
                     }
                 }
@@ -302,15 +304,16 @@ namespace wServer.core.objects
                 {
                     var perc = (Stats[0] * health.HealthPercent);
 
+                    var scale = health.ScalesPerLevel ? (health.AddPercent * talisman.Level) : health.AddPercent;
                     if (!health.Above && HP <= perc)
                     {
                         switch (health.Type)
                         {
                             case TalismanHealth.RATE_OF_FIRE:
-                                TalismanHealthRateOfFire += health.ScalesPerLevel ? (health.AddPercent * talisman.Level) : health.AddPercent;
+                                TalismanHealthRateOfFire += scale;
                                 break;
                             case TalismanHealth.HEALTH_REGEN:
-                                TalismanHealthHPRegen += health.ScalesPerLevel ? (health.AddPercent * talisman.Level) : health.AddPercent;
+                                TalismanHealthHPRegen += scale;
                                 break;
                         }
                         continue;
@@ -321,10 +324,10 @@ namespace wServer.core.objects
                         switch(health.Type)
                         {
                             case TalismanHealth.RATE_OF_FIRE:
-                                TalismanHealthRateOfFire += health.ScalesPerLevel ? (health.AddPercent * talisman.Level) : health.AddPercent;
+                                TalismanHealthRateOfFire += scale;
                                 break;
                             case TalismanHealth.HEALTH_REGEN:
-                                TalismanHealthHPRegen += health.ScalesPerLevel ? (health.AddPercent * talisman.Level) : health.AddPercent;
+                                TalismanHealthHPRegen += scale;
                                 break;
                         }
                     }

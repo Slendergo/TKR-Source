@@ -669,8 +669,11 @@ namespace wServer.core.objects
             var batch = new OutgoingMessage[shoots + 1];
             for (var i = 0; i < shoots; i++)
             {
+                var baseDmg = World.Random.Next(prjDesc.MinDamage, prjDesc.MaxDamage);
+                var dmg = (int)(baseDmg + (baseDmg * TalismanExtraAbilityDamage));
+
                 var proj = CreateProjectile(prjDesc, item.ObjectType,
-                    World.Random.Next(prjDesc.MinDamage, prjDesc.MaxDamage),
+                    dmg, 
                     time.TotalElapsedMs, target, (float)(i * (Math.PI * 2) / shoots));
                 World.AddProjectile(proj);
                 FameCounter.Shoot(proj);
@@ -824,7 +827,7 @@ namespace wServer.core.objects
                 {
                     if (!entity.HasConditionEffect(ConditionEffectIndex.Stasis) && !entity.HasConditionEffect(ConditionEffectIndex.Invincible))
                     {
-                        entity.ApplyConditionEffect(new ConditionEffect(eff.ConditionEffect.Value, duration));
+                        entity.ApplyConditionEffect(eff.ConditionEffect.Value, duration);
                     }
                 });
 
@@ -1257,7 +1260,9 @@ namespace wServer.core.objects
 
                 var damage = eff.UseWisMod ? UseWisMod(eff.TotalDamage) : eff.TotalDamage;
 
-                (targets[i] as Enemy).Damage(this, time, (int)damage, false);
+                var dmg = (int)(damage + (damage * TalismanExtraAbilityDamage));
+
+                (targets[i] as Enemy).Damage(this, time, (int)dmg, false);
 
                 if (eff.ConditionEffect != null)
                     targets[i].ApplyConditionEffect(new ConditionEffect(eff.ConditionEffect.Value, (int)(eff.EffectDuration * 1000)));
@@ -1397,8 +1402,10 @@ namespace wServer.core.objects
 
                 world.AOE(target, eff.Radius, false, entity =>
                 {
+                    var dmg = (int)(impDamage + (impDamage * TalismanExtraAbilityDamage));
+
                     PoisonEnemy(world, (Enemy)entity, eff);
-                    ((Enemy)entity).Damage(this, time, impDamage, true);
+                    ((Enemy)entity).Damage(this, time, dmg, true);
                 });
             }));
         }
@@ -1454,7 +1461,10 @@ namespace wServer.core.objects
             var sPkts = new OutgoingMessage[item.NumProjectiles];
             for (var i = 0; i < item.NumProjectiles; i++)
             {
-                var proj = CreateProjectile(prjDesc, item.ObjectType, Stats.GetAttackDamage(prjDesc.MinDamage, prjDesc.MaxDamage, true), time.TotalElapsedMs, new Position() { X = X, Y = Y }, (float)(startAngle + arcGap * i));
+                var baseDmg = Stats.GetAttackDamage(prjDesc.MinDamage, prjDesc.MaxDamage, true);
+                var dmg = (int)(baseDmg + (baseDmg * TalismanExtraAbilityDamage));
+
+                var proj = CreateProjectile(prjDesc, item.ObjectType, dmg, time.TotalElapsedMs, new Position() { X = X, Y = Y }, (float)(startAngle + arcGap * i));
                 World.AddProjectile(proj);
                 sPkts[i] = new AllyShoot()
                 {
@@ -1826,8 +1836,11 @@ namespace wServer.core.objects
 
             World.AOE(target, eff.Radius, false, enemy =>
             {
+                var baseDmg = effDamage;
+                var dmg = (int)(baseDmg + (baseDmg * TalismanExtraAbilityDamage));
+
                 enemies.Add(enemy as Enemy);
-                totalDmg += (enemy as Enemy).Damage(this, time, (int)effDamage, false);
+                totalDmg += (enemy as Enemy).Damage(this, time, (int)dmg, false);
             });
 
             var players = new List<Player>();
@@ -1920,7 +1933,7 @@ namespace wServer.core.objects
                 return false;
             }
 
-            tmr = new WorldTimer(250, healTick);
+            tmr = new WorldTimer(200, healTick);
             world.Timers.Add(tmr);
         }
 
@@ -1962,7 +1975,7 @@ namespace wServer.core.objects
                 return false;
             }
 
-            tmr = new WorldTimer(250, poisonTick);
+            tmr = new WorldTimer(200, poisonTick);
             world.Timers.Add(tmr);
         }
 

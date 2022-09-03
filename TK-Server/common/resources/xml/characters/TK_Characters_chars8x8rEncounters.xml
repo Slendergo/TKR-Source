@@ -1632,7 +1632,7 @@
     <Size>110</Size>
     <XpMult>0.0</XpMult>
   </Object>
-  <Object type="0x0e78" id="Nexus Crier">
+  <Object type="0x0e78" id="Crier">
     <Class>Character</Class>
 	  <MaxHitPoints>4000</MaxHitPoints>
     <AnimatedTexture>

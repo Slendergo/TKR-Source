@@ -143,14 +143,14 @@ namespace common.resources
     {
         public readonly int StatType;
         public readonly float Amount;
-        public readonly float Percentage;
+        public readonly double Percentage;
         public readonly bool ScalesPerLevel;
 
         public TalismanStatType(XElement e)
         {
             StatType = e.GetAttribute<int>("type");
             Amount = e.GetAttribute<float>("amount");
-            Percentage = e.GetAttribute<float>("percentage", 0.0f);
+            Percentage = e.GetAttribute<double>("percentage", 0.0);
 
             var scale = e.GetAttribute<string>("scale", "flat");
             ScalesPerLevel = scale == "perLevel";
@@ -159,12 +159,12 @@ namespace common.resources
 
     public class TalismanLootBoost
     {
-        public readonly float Percentage;
+        public readonly double Percentage;
         public readonly bool ScalesPerLevel;
 
         public TalismanLootBoost(XElement e)
         {
-            Percentage = e.GetAttribute<float>("percentage");
+            Percentage = e.GetAttribute<double>("percentage");
 
             var scale = e.GetAttribute<string>("scale", "flat");
             ScalesPerLevel = scale == "perLevel";
@@ -178,14 +178,14 @@ namespace common.resources
 
         public readonly byte Type;
         public readonly bool Above;
-        public readonly float HealthPercent;
-        public readonly float AddPercent;
+        public readonly double HealthPercent;
+        public readonly double AddPercent;
         public readonly bool ScalesPerLevel;
 
         public TalismanHealth(XElement e)
         {
-            HealthPercent = e.GetAttribute<float>("percent");
-            AddPercent = e.GetAttribute<float>("add");
+            HealthPercent = e.GetAttribute<double>("percent");
+            AddPercent = e.GetAttribute<double>("add");
             Above = e.GetAttribute<string>("condition", "above") == "above";
 
             var t = e.Value;

@@ -281,11 +281,11 @@
 			<ImmuneTo effect="ArmorBroken"/>
 		</Tier>
 		<Tier tier="2">
+			<StatType type="21" scale="perLevel" amount="2" />
 			<Extra percentage="-0.04" scale="perLevel">LifeRegen</Extra>
 			<Extra percentage="-0.04" scale="perLevel">ManaRegen</Extra>
 			<StatType type="21" scale="perLevel" percentage="0.06" />
 			<StatType type="3" scale="perLevel" amount="-10" />
-			<StatType type="21" scale="perLevel" amount="2" />
 		</Tier>
 	</Talisman>
 	<Talisman type="0x16">

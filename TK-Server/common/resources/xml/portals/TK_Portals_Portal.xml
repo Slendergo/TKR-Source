@@ -233,9 +233,10 @@
     <IntergamePortal />
     <DungeonName>Vault</DungeonName>
     <Texture>
-      <File>lofiEnvironment3</File>
-      <Index>0xf8</Index>
+      <File>custom16x16Environment</File>
+      <Index>0x1f</Index>
     </Texture>
+	<Size>80</Size>
     <ShadowSize>0</ShadowSize>
   </Object>
   <Object type="0x0750" id="Cloth Bazaar Portal">

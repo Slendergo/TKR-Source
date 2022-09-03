@@ -20303,7 +20303,7 @@
     <Size>110</Size>
     <XpMult>0.0</XpMult>
   </Object>
-  <Object type="0x0e78" id="Nexus Crier">
+  <Object type="0x0e78" id="Crier">
     <Class>Character</Class>
     <MaxHitPoints>4000</MaxHitPoints>
     <AnimatedTexture>
@@ -34669,7 +34669,7 @@
       <LifetimeMS>3000</LifetimeMS>
       <ArmorPiercing />
     </Projectile>
-    <Projectile id="13">
+    <Projectile id="7">
       <ObjectId>Dark Gray Spinner</ObjectId>
       <Speed>90</Speed>
       <Size>100</Size>
@@ -34679,7 +34679,7 @@
       <ConditionEffect duration="20">Quiet</ConditionEffect>
       <MultiHit />
     </Projectile>
-    <Projectile id="14">
+    <Projectile id="8">
       <ObjectId>Gray Spinner</ObjectId>
       <Speed>90</Speed>
       <Size>100</Size>
@@ -34905,8 +34905,8 @@
     <Animation prob="1.0" period="0.0">
       <Frame time="0.2">
         <Texture>
-          <File>lofiCharBig</File>
-          <Index>0x00</Index>
+          <File>lofiChar216x16</File>
+          <Index>0x38</Index>
         </Texture>
       </Frame>
       <Frame time="0.4">
@@ -34917,42 +34917,42 @@
       </Frame>
       <Frame time="0.2">
         <Texture>
-          <File>lofiCharBig</File>
-          <Index>0x00</Index>
+          <File>lofiChar216x16</File>
+          <Index>0x38</Index>
         </Texture>
       </Frame>
       <Frame time="0.1">
         <Texture>
-          <File>lofiCharBig</File>
-          <Index>0x01</Index>
+          <File>lofiChar216x16</File>
+          <Index>0x38</Index>
         </Texture>
       </Frame>
       <Frame time="0.2">
         <Texture>
-          <File>lofiCharBig</File>
-          <Index>0x02</Index>
+          <File>lofiChar216x16</File>
+          <Index>0x38</Index>
         </Texture>
       </Frame>
       <Frame time="0.4">
         <Texture>
-          <File>lofiCharBig</File>
-          <Index>0x03</Index>
+          <File>lofiChar216x16</File>
+          <Index>0x38</Index>
         </Texture>
       </Frame>
       <Frame time="0.2">
         <Texture>
-          <File>lofiCharBig</File>
-          <Index>0x02</Index>
+          <File>lofiChar216x16</File>
+          <Index>0x38</Index>
         </Texture>
       </Frame>
       <Frame time="0.1">
         <Texture>
-          <File>lofiCharBig</File>
-          <Index>0x01</Index>
+          <File>lofiChar216x16</File>
+          <Index>0x38</Index>
         </Texture>
       </Frame>
     </Animation>
-    <MaxHitPoints>30000</MaxHitPoints>
+    <MaxHitPoints>15000</MaxHitPoints>
     <Size>120</Size>
     <XpMult>0.1</XpMult>
     <God />
@@ -52723,8 +52723,8 @@
     <Projectile>
       <ObjectId>Spirit Dagger Slash</ObjectId>
       <Speed>130</Speed>
-      <MinDamage>175</MinDamage>
-      <MaxDamage>475</MaxDamage>
+      <MinDamage>130</MinDamage>
+      <MaxDamage>375</MaxDamage>
       <LifetimeMS>427</LifetimeMS>
       <Amplitude>0.2</Amplitude>
       <Frequency>0.2</Frequency>
@@ -56083,9 +56083,9 @@
     <BagType>7</BagType>
     <FameBonus>4</FameBonus>
     <MpCost>110</MpCost>
-    <Activate radius="4" impactDamage="1200" totalDamage="3500" duration="3" throwTime="3" color="0xf5ce42" useWisMod="true">PoisonGrenade</Activate>
-    <Activate radius="6" impactDamage="800" totalDamage="2000" duration="5" throwTime="2" color="0x85837e" useWisMod="true">PoisonGrenade</Activate>
-    <Activate radius="2" impactDamage="200" totalDamage="1500" duration="2" throwTime="1" color="0xAF6D2B" useWisMod="true">PoisonGrenade</Activate>
+    <Activate radius="4" impactDamage="1200" totalDamage="3500" duration="3" throwTime="3" color="0xf5ce42" useWisMod="false">PoisonGrenade</Activate>
+    <Activate radius="6" impactDamage="800" totalDamage="2000" duration="5" throwTime="2" color="0x85837e" useWisMod="false">PoisonGrenade</Activate>
+    <Activate radius="2" impactDamage="200" totalDamage="1500" duration="2" throwTime="1" color="0xAF6D2B" useWisMod="false">PoisonGrenade</Activate>
   </Object>
   <Object type="0xaa3" id="Centipede Poison">
     <Class>Equipment</Class>
@@ -58556,7 +58556,7 @@
     <FameBonus>5</FameBonus>
     <feedPower>900</feedPower>
   </Object>
-  <Object type="0x5403" id="Spotted Venom Extrac">
+  <Object type="0x5403" id="Spotted Venom Extract">
     <Class>Equipment</Class>
     <Item />
     <SPlus />
@@ -61386,8 +61386,8 @@
     <Projectile>
       <ObjectId>Rod of Frost Burn Shoot</ObjectId>
       <Speed>160</Speed>
-      <MinDamage>255</MinDamage>
-      <MaxDamage>290</MaxDamage>
+      <MinDamage>355</MinDamage>
+      <MaxDamage>380</MaxDamage>
       <LifetimeMS>500</LifetimeMS>
       <Frequency>0.55</Frequency>
       <Amplitude>0.6</Amplitude>
@@ -62975,13 +62975,13 @@
     <SlotType>1</SlotType>
     <Legendary />
     <Description>The original blade used by The Bridge Sentinel during The Shatter's age of ruin. Countless forces in pursuit of treasure were felled by this blade, effortlessly.</Description>
-    <RateOfFire>1.10</RateOfFire>
+    <RateOfFire>1.05</RateOfFire>
     <Sound>weapon/mithril_sword</Sound>
     <Projectile>
       <ObjectId>Blade of the Protector Shoot</ObjectId>
       <Speed>140</Speed>
       <MinDamage>150</MinDamage>
-      <MaxDamage>200</MaxDamage>
+      <MaxDamage>215</MaxDamage>
       <LifetimeMS>336</LifetimeMS>
       <Frequency>0</Frequency>
       <Size>95</Size>
@@ -64570,7 +64570,7 @@
       <MinDamage>245</MinDamage>
       <MaxDamage>265</MaxDamage>
       <Amplitude>1</Amplitude>
-      <Frequency>1.16</Frequency>
+      <Frequency>1.05</Frequency>
       <LifetimeMS>542</LifetimeMS>
       <Size>100</Size>
       <MultiHit />
@@ -78813,9 +78813,10 @@
     <IntergamePortal />
     <DungeonName>Vault</DungeonName>
     <Texture>
-      <File>lofiEnvironment3</File>
-      <Index>0xf8</Index>
+      <File>custom16x16Environment</File>
+      <Index>0x1f</Index>
     </Texture>
+    <Size>80</Size>
     <ShadowSize>0</ShadowSize>
   </Object>
   <Object type="0x0750" id="Cloth Bazaar Portal">

@@ -12,7 +12,7 @@ namespace wServer.core.objects
         public int LastClientTime = -1;
         public long LastServerTime = -1;
 
-        private const int PingPeriod = 3000;
+        private const int PingPeriod = 5000;
 
         private ConcurrentQueue<int> _clientTimeLog = new ConcurrentQueue<int>();
         private int _cnt;

@@ -206,9 +206,7 @@ namespace wServer.core.objects
                 var Inventory = player.Inventory;
                 var def = Defense;
 
-                var pDamage = (int)(projectile.Damage + (projectile.Damage * (projectile.Host as Player).TalismanExtraAbilityDamage));
-
-                var dmg = StatsManager.DamageWithDefense(this, pDamage, projectile.ProjDesc.ArmorPiercing, def);
+                var dmg = StatsManager.DamageWithDefense(this, projectile.Damage, projectile.ProjDesc.ArmorPiercing, def);
                 if (!HasConditionEffect(ConditionEffectIndex.Invulnerable))
                     HP -= dmg;
                 

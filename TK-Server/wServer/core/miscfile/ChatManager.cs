@@ -218,9 +218,19 @@ namespace wServer.core
                 if (src.IsSupporter5)
                     supporter++;
 
+                var nameTag = "";
+                if (src.Client.Account.Name == "Slendergo" || src.Client.Account.Name == "ModBBQ" || src.Client.Account.Name == "Orb")
+                    nameTag = "[Owner]";
+                else if (src.IsCommunityManager)
+                    nameTag = "[CM]";
+                if(src.IsCommunityManager && supporter > 0)
+                    nameTag = $"[CM | S-{supporter}]";
+                else if (supporter > 0)
+                    nameTag = $"[S-{supporter}]";
+
                 var tp = new Text()
                 {
-                    Name = (src.Client.Account.Name == "Slendergo" || src.Client.Account.Name == "ModBBQ" || src.Client.Account.Name == "Orb" ? "[Owner] " : supporter == 0 ? "" : $"[S-{supporter}] ") + src.Name,
+                    Name = $"{nameTag} {src.Name}",
                     ObjectId = src.Id,
                     NumStars = src.Stars,
                     BubbleTime = 5,

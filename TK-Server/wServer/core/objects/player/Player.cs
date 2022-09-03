@@ -128,6 +128,7 @@ namespace wServer.core.objects
         public bool IsSupporter3 => Client.Rank.Rank >= RankingType.Supporter3;
         public bool IsSupporter4 => Client.Rank.Rank >= RankingType.Supporter4;
         public bool IsSupporter5 => Client.Rank.Rank >= RankingType.Supporter5;
+        public bool IsCommunityManager => Client.Rank.IsCommunityManager;
 
         public Player(Client client, bool saveInventory = true) : base(client.GameServer, client.Character.ObjectType)
         {

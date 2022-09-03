@@ -49,6 +49,9 @@ namespace wServer.core.objects
 
             coreServerManager.BehaviorDb.ResolveBehavior(this);
             coreServerManager.Resources.GameData.ObjectDescs.TryGetValue(ObjectType, out _desc);
+           
+            if(_desc != null)
+                _originalSize = Size = _desc.Size;
 
             ConditionEffectManager = new ConditionEffectManager(this);
         }
@@ -265,8 +268,13 @@ namespace wServer.core.objects
         {
             if (World != null && !(this is Projectile) && !(this is Pet) && (!(this is StaticObject) || (this as StaticObject).Hittestable))
                 ((this is Enemy || this is StaticObject && !(this is Decoy)) ? World.EnemiesCollision : World.PlayersCollision).Move(this, x, y);
+
+            var prevX = X;
+            var prevY = Y;
             X = x;
             Y = y;
+            PrevX = prevX;
+            PrevY = prevY;
         }
 
         public void OnChatTextReceived(Player player, string text)

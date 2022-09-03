@@ -160,11 +160,11 @@ namespace wServer.core
                 {
                     // scale by level or by flat value
 
-                    if (stat.Percentage != 0.0f)
+                    if (stat.Percentage != 0.0)
                     {
                         var scaledAmount = stat.ScalesPerLevel ? stat.Percentage * talisman.Level : stat.Percentage;
 
-                        var statVal = this[StatsManager.GetStatIndex((StatDataType)stat.StatType)];
+                        var statVal = _parent.Base[StatsManager.GetStatIndex((StatDataType)stat.StatType)];
 
                         var amountToBoostBy = (int)(statVal * scaledAmount);
 
@@ -179,13 +179,13 @@ namespace wServer.core
 
             if (_player.TalismanPotionHealthPercent != 0.0)
             {
-                var incrHealth = (int)(this[0] * _player.TalismanPotionHealthPercent);
+                var incrHealth = (int)(_parent.Base[0] * _player.TalismanPotionHealthPercent);
                 IncrementBoost(StatDataType.MaximumHP, incrHealth);
             }
 
             if (_player.TalismanPotionManaPercent != 0.0)
             {
-                var incrMana = (int)(this[1] * _player.TalismanPotionManaPercent);
+                var incrMana = (int)(_parent.Base[1] * _player.TalismanPotionManaPercent);
                 IncrementBoost(StatDataType.MaximumMP, incrMana);
             }
         }

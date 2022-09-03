@@ -10,6 +10,7 @@ namespace common.database
         public RankingType Rank { get; set; }
         public int TotalAmountDonated { get; set; }
         public int NewAmountDonated { get; set; }
+        public bool IsCommunityManager { get; set; }
 
         [JsonIgnore] public int AccountId { get; private set; }
         [JsonIgnore] public bool IsNull { get; private set; }

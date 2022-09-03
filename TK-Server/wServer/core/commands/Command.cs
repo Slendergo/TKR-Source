@@ -30,7 +30,15 @@ namespace wServer.core.commands
             }
         }
 
-        public bool HasPermission(Player player) => player.Client.Rank.Rank >= RankRequirement;
+        public bool HasPermission(Player player)
+        {
+            var rank = player.Client.Rank.Rank;
+            if (player.IsAdmin)
+                return true;
+            if (RankRequirement == RankingType.CommunityModerator && player.IsCommunityManager)
+                return true;
+            return rank >= RankRequirement;
+        }
 
         protected abstract bool Process(Player player, TickTime time, string args);
     }

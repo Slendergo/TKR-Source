@@ -32,12 +32,7 @@ namespace wServer.core.objects
         {
             if (Vulnerable && projectile.Host is Player)
             {
-                var def = ObjectDesc.Defense;
-
-                if (projectile.ProjDesc.ArmorPiercing)
-                    def = 0;
-
-                var dmg = (int)StatsManager.GetDefenseDamage(this, projectile.Damage, def);
+                var dmg = StatsManager.DamageWithDefense(this, projectile.Damage, projectile.ProjDesc.ArmorPiercing, ObjectDesc.Defense);
 
                 HP -= dmg;
 

@@ -68,19 +68,18 @@ namespace wServer.core
             }
         }
 
-        public static float GetDefenseDamage(Entity host, int dmg, int targetDefense)
+        public static int DamageWithDefense(Entity host, int dmg, bool pierce, int targetDefense)
         {
             var def = targetDefense;
             if (host.HasConditionEffect(ConditionEffectIndex.Armored))
                 def *= 2;
-            if (host.HasConditionEffect(ConditionEffectIndex.ArmorBroken))
+            if (pierce || host.HasConditionEffect(ConditionEffectIndex.ArmorBroken))
                 def = 0;
 
-            var min = (dmg * 3.0) / 20.0;
-            var d = Math.Max(min, dmg - def);
+            var min = (dmg * 3) / 20;
+            var d = (double)Math.Max(min, dmg - def);
 
-            if (host.HasConditionEffect(ConditionEffectIndex.Invulnerable) ||
-                host.HasConditionEffect(ConditionEffectIndex.Invincible))
+            if (host.HasConditionEffect(ConditionEffectIndex.Invulnerable))
                 d = 0;
 
             if (host.HasConditionEffect(ConditionEffectIndex.Petrify))

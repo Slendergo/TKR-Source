@@ -146,9 +146,7 @@ namespace wServer.core.objects
             if (!HasConditionEffect(ConditionEffectIndex.Paused) && !HasConditionEffect(ConditionEffectIndex.Stasis))
             {
                 var def = Defense;
-                if (noDef)
-                    def = 0;
-                var dmgd = (int)StatsManager.GetDefenseDamage(this, dmg, def);
+                var dmgd = (int)StatsManager.DamageWithDefense(this, dmg, noDef, def);
 
                 var effDmg = dmgd;
 
@@ -206,21 +204,12 @@ namespace wServer.core.objects
                 var Inventory = player.Inventory;
                 var def = Defense;
 
-                if (projectile.ProjDesc.ArmorPiercing)
-                    def = 0;
-
-
                 var pDamage = (int)(projectile.Damage + (projectile.Damage * (projectile.Host as Player).TalismanExtraAbilityDamage));
 
-                var dmg = (int)StatsManager.GetDefenseDamage(this, pDamage, def);
+                var dmg = StatsManager.DamageWithDefense(this, pDamage, projectile.ProjDesc.ArmorPiercing, def);
                 if (!HasConditionEffect(ConditionEffectIndex.Invulnerable))
                     HP -= dmg;
                 
-                //var chance = 0.03;
-                //chance -= (player.Inventory[0].NumProjectiles / 2) / 100;
-                //chance = projectile.ProjDesc.MultiHit ? chance / 1.5 : chance;
-                //VampireBlast(player, chance, 2, 300, 100, time, this); // (player, chance, radius, damage, heal, time, entity)
-
                 for (var i = 0; i < 4; i++)
                 {
                     var item = Inventory[i];

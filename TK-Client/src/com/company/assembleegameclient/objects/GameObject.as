@@ -63,9 +63,9 @@ public class GameObject extends BasicObject {
             def = 0;
         }
         else if ((targetCondition & ConditionEffect.ARMORED_BIT) != 0) {
-            def = def * 2;
+            def *= 2;
         }
-        var min:int = origDamage * 3 / 20;
+        var min:int = (origDamage * 3) / 20;
         var d:int = Math.max(min, origDamage - def);
         if ((targetCondition & ConditionEffect.INVULNERABLE_BIT) != 0) {
             d = 0;

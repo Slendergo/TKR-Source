@@ -230,6 +230,16 @@ namespace wServer.logic
         .Init("Undead Blood Bat",
             new State(
                 new ScaleHP2(4),
+                new State("idle",
+                    new PlayerWithinTransition(10, "attack1", true)
+                    ),
+                new State("attack1",
+                    new Wander(0.3),
+                    new Shoot(15, 1, projectileIndex: 0, predictive: 1, coolDown: 1000, coolDownOffset: 0),
+                    new Shoot(15, 2, shootAngle: 10, projectileIndex: 1, predictive: 1, coolDown: 1000, coolDownOffset: 0),
+                    new Shoot(15, 3, shootAngle: 15, projectileIndex: 2, predictive: 1, coolDown: 1000, coolDownOffset: 0),
+                    new TimedTransition(3000, "attack")
+                    ),
                 new State("attack",
                     new Charge(7, range: 8, coolDown: 600),
                     new Wander(0.6),

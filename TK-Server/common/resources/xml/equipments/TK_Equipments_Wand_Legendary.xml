@@ -166,7 +166,7 @@
 			<MinDamage>245</MinDamage>
 			<MaxDamage>265</MaxDamage>
 			<Amplitude>1</Amplitude>
-			<Frequency>1.16</Frequency>
+			<Frequency>1.05</Frequency>
 			<LifetimeMS>542</LifetimeMS>
 			<Size>100</Size>
 			<MultiHit />

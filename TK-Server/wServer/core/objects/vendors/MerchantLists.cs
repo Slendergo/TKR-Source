@@ -32,7 +32,7 @@ namespace wServer.core.objects.vendors
             new ShopItem("Loot Drop Potion", 200)
         };
 
-        private static readonly List<ISellableItem> KeysFame = new List<ISellableItem>
+        private static readonly List<ISellableItem> KeysGold = new List<ISellableItem>
         {
             new ShopItem("Strange Library Key", 250),
             new ShopItem("Cemetery Key", 150),
@@ -60,6 +60,36 @@ namespace wServer.core.objects.vendors
             new ShopItem("Davy's Key", 250),
             new ShopItem("Ocean Trench Key", 250),
             new ShopItem("Tomb of the Ancients Key", 500)
+        };
+
+        private static readonly List<ISellableItem> KeysFame = new List<ISellableItem>
+        {
+            new ShopItem("Strange Library Key", 750),
+            new ShopItem("Cemetery Key", 400),
+            new ShopItem("Lost Halls Key", 1500),
+            new ShopItem("Defiled Graveyard Key", 750),
+            new ShopItem("Davy's Key", 750),
+            new ShopItem("The Crawling Depths Key", 750),
+            new ShopItem("Shatters Key", 1500),
+            new ShopItem("Ocean Trench Key", 750),
+            new ShopItem("Tomb of the Ancients Key", 1500),
+            new ShopItem("Deadwater Docks Key", 750),
+            new ShopItem("Woodland Labyrinth Key", 750),
+            new ShopItem("Spider Den Key", 400),
+            new ShopItem("Undead Lair Key", 400),
+            new ShopItem("Sprite World Key", 400),
+            new ShopItem("Abyss of Demons Key", 400),
+            new ShopItem("Snake Pit Key", 400),
+            new ShopItem("Beachzone Key", 500),
+            new ShopItem("Lab Key", 400),
+            new ShopItem("Totem Key", 750),
+            new ShopItem("Toxic Sewers Key", 400),
+            new ShopItem("Manor Key", 750),
+            new ShopItem("Candy Key", 750),
+            new ShopItem("Cemetery Key", 400),
+            new ShopItem("Davy's Key", 750),
+            new ShopItem("Ocean Trench Key", 750),
+            new ShopItem("Tomb of the Ancients Key", 1500)
         };
 
         private static readonly List<ISellableItem> PurchasableFame = new List<ISellableItem>
@@ -105,7 +135,8 @@ namespace wServer.core.objects.vendors
             { TileRegion.Store_1, new Tuple<List<ISellableItem>, CurrencyType, int>(PurchasableFame, CurrencyType.Fame, 0) },
             { TileRegion.Store_2, new Tuple<List<ISellableItem>, CurrencyType, int>(Consumables, CurrencyType.Fame, 0) },
             { TileRegion.Store_3, new Tuple<List<ISellableItem>, CurrencyType, int>(Special, CurrencyType.Gold, 0) },
-            { TileRegion.Store_4, new Tuple<List<ISellableItem>, CurrencyType, int>(KeysFame, CurrencyType.Gold, 0) }
+            { TileRegion.Store_4, new Tuple<List<ISellableItem>, CurrencyType, int>(KeysGold, CurrencyType.Gold, 0) },
+            { TileRegion.Store_11, new Tuple<List<ISellableItem>, CurrencyType, int>(KeysFame, CurrencyType.Fame, 0) }
         };
 
         private static void InitDyes(GameServer gameServer)

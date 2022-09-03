@@ -82,19 +82,6 @@ namespace wServer.core.objects
             FameGoal = newGoal;
         }
 
-        public void CheckForEncounter(Position? destination = null)
-        {
-            var newQuest = FindQuest(destination);
-            if (newQuest != null && newQuest != Quest)
-            {
-                Client.SendPacket(new QuestObjId()
-                {
-                    ObjectId = newQuest.Id
-                });
-                Quest = newQuest;
-            }
-        }
-
         public bool EnemyKilled(Enemy enemy, int exp, bool killer)
         {
             if (enemy == Quest)
@@ -138,13 +125,23 @@ namespace wServer.core.objects
             return ret;
         }
 
-        public void HandleQuest(TickTime time, bool force = false, Position? destination = null)
+        public void HandleQuest(TickTime time)
         {
-            if (World is RealmWorld)
-                CheckForEncounter();
+            if (Quest != null && Quest.IsRemovedFromWorld)
+                Quest = null;
 
-            if (force || Quest == null || Quest.World == null || time.TickCount % 10 == 0)
-                CheckForEncounter();
+            if (Quest == null || time.TickCount % 10 == 0)
+            {
+                var newQuest = FindQuest();
+                if (newQuest != null && newQuest != Quest)
+                {
+                    Client.SendPacket(new QuestObjId()
+                    {
+                        ObjectId = newQuest.Id
+                    });
+                    Quest = newQuest;
+                }
+            }
         }
 
         private bool CheckLevelUp()
@@ -213,24 +210,18 @@ namespace wServer.core.objects
             return false;
         }
 
-        private Entity FindQuest(Position? destination = null)
+        private Entity FindQuest()
         {
             Entity ret = null;
-            var pX = !destination.HasValue ? X : destination.Value.X;
-            var pY = !destination.HasValue ? Y : destination.Value.Y;
-
-            if (World == null || World.Quests == null)
-                return null;
-
-            double? bestScore = null;
+            double bestScore = 0.0;
             foreach (var entry in World.Quests)
             {
                 var quest = entry.Value;
                 if (quest.ObjectDesc == null || !quest.ObjectDesc.Quest)
                     continue;
 
-                var maxVisibleLevel = Math.Min(quest.QuestLevel + 5, 20);
-                var minVisibleLevel = Math.Max(quest.QuestLevel - 5, 1);
+                var maxVisibleLevel = Math.Min(quest.ObjectDesc.Level + 5, 20);
+                var minVisibleLevel = Math.Max(quest.ObjectDesc.Level - 5, 1);
                 var force = false;
                 if (!(quest.World is RealmWorld) && quest.ObjectDesc.Quest && !quest.ObjectDesc.Hero)
                     force = true;
@@ -244,7 +235,7 @@ namespace wServer.core.objects
                         //minus 1 for every 100 tile distance
                         this.Dist(quest) / 100;
 
-                    if (bestScore == null || score > bestScore)
+                    if (score > bestScore)
                     {
                         bestScore = score;
                         ret = quest;

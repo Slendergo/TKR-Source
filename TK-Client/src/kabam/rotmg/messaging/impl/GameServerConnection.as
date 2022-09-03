@@ -86,6 +86,7 @@ import kabam.rotmg.game.model.GameModel;
 import kabam.rotmg.game.model.PotionInventoryModel;
 import kabam.rotmg.game.signals.AddSpeechBalloonSignal;
 import kabam.rotmg.game.signals.AddTextLineSignal;
+import kabam.rotmg.game.view.components.QueuedStatusText;
 import kabam.rotmg.maploading.signals.HideMapLoadingSignal;
 import kabam.rotmg.market.signals.MemMarketAddSignal;
 import kabam.rotmg.market.signals.MemMarketBuySignal;
@@ -1345,24 +1346,25 @@ public class GameServerConnection
 
       private function onNotification(notification:Notification) : void
       {
-         // used to be queued
-         var text:CharacterStatusText = null;
          var go:GameObject = this.gs_.map.goDict_[notification.objectId_];
-
-         if(go != null)
-         {
-            if (this.gs_.map.player_.objectId_ != notification.playerId_ && notification.objectId_ != playerId_ && !Parameters.data_.allyNotifs)
-            {
-               return;
-            }
-
-            text = new CharacterStatusText(go,notification.text_,notification.color_,2000);
-            this.gs_.map.mapOverlay_.addStatusText(text);
-            if(go == this.player && notification.text_ == "Quest Complete!")
-            {
-               this.gs_.map.quest_.completed();
+         if (go != null){
+            if (go == this.player){
+               if(notification.text_ == "Quest Complete!"){
+                  this.gs_.map.quest_.completed();
+               }
+               this.makeNotification(notification.text_, go, notification.color_, 1000);
+            }else{
+               if(go.props_.isEnemy_ || !Parameters.data_.noAllyNotifications) {
+                  this.makeNotification(notification.text_, go, notification.color_, 1000);
+               }
             }
          }
+      }
+
+      private function makeNotification(text:String, go:GameObject, color:uint, lifetime:int):void
+      {
+         var queuedStatusText:QueuedStatusText = new QueuedStatusText(go, text, color, lifetime);
+         this.gs_.map.mapOverlay_.addQueuedText(queuedStatusText);
       }
 
       private function onGlobalNotification(notification:GlobalNotification) : void
@@ -2008,7 +2010,7 @@ public class GameServerConnection
             return;
          }
          var isMyObject:Boolean = objectStatus.objectId_ == this.playerId_;
-         var allyNotifs:Boolean = Parameters.data_.allyNotifs;
+         var noAllyNotifications:Boolean = Parameters.data_.noAllyNotifications;
          if(tickTime != 0 && !isMyObject)
          {
             go.onTickPos(objectStatus.pos_.x_,objectStatus.pos_.y_,tickTime,tickId);
@@ -2037,7 +2039,7 @@ public class GameServerConnection
                }
                else
                {
-                  if (allyNotifs)
+                  if (noAllyNotifications)
                   {
                      player.levelUpEffect("Level Up!");
                   }
@@ -2045,7 +2047,7 @@ public class GameServerConnection
             }
             else if(player.exp_ > oldExp)
             {
-               if (!allyNotifs && !isMyObject)
+               if (!noAllyNotifications && !isMyObject)
                {
                   return;
                }

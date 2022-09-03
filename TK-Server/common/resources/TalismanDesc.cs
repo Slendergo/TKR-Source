@@ -52,7 +52,7 @@ namespace common.resources
         public readonly bool CantGetLoot;
         public readonly List<float> FameGainBonus;
         public readonly bool NoPotionHealing;
-        //public readonly List<TalismanPotionStack> PotionStack;
+        public readonly List<TalismanPotionStack> PotionStack;
         //public readonly bool ShotsPierceArmour;
         //public readonly bool DamageIsAverage;
         public readonly bool RemoveManaBar;
@@ -101,8 +101,41 @@ namespace common.resources
             foreach (var te in e.Elements("Health"))
                 Health.Add(new TalismanHealth(te));
 
+            PotionStack = new List<TalismanPotionStack>();
+            foreach (var te in e.Elements("PotionStack"))
+                PotionStack.Add(new TalismanPotionStack(te));
+
             NoPotionHealing = e.HasElement("NoPotionHealing");
             CanOnlyGetWhiteBags = e.HasElement("CanOnlyGetWhiteBags");
+        }
+    }
+
+    public class TalismanPotionStack
+    {
+        public const byte HEALTH = 0;
+        public const byte MANA = 1;
+
+        public readonly byte Type;
+        public readonly float Percentage;
+        public readonly bool ScalesPerLevel;
+
+        public TalismanPotionStack(XElement e)
+        {
+            var type = e.GetAttribute<string>("type");
+
+            switch (type)
+            {
+                case "health":
+                    Type = HEALTH;
+                    break;
+                case "mana":
+                    Type = MANA;
+                    break;
+            }
+            Percentage = e.GetAttribute("percentage", 0.0f);
+
+            var scale = e.GetAttribute("scale", "flat");
+            ScalesPerLevel = scale == "perLevel";
         }
     }
 
@@ -123,6 +156,7 @@ namespace common.resources
             ScalesPerLevel = scale == "perLevel";
         }
     }
+
     public class TalismanLootBoost
     {
         public readonly float Percentage;

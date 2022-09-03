@@ -54,15 +54,14 @@ package com.company.assembleegameclient.map.mapoverlay
       public function draw(camera:Camera, time:int) : void
       {
          var elem:IMapOverlayElement = null;
-         for(var i:int = 0; i < numChildren; )
+         var i:int = 0;
+         while(i < numChildren)
          {
             elem = getChildAt(i) as IMapOverlayElement;
-            if(!elem || elem.draw(camera,time))
-            {
+            if(!elem || elem.draw(camera, time)) {
                i++;
             }
-            else
-            {
+            else {
                elem.dispose();
             }
          }

@@ -373,7 +373,7 @@ public class Options extends Sprite
       this.addOption(new ChoiceOption("hpBars", new <String>["On","Off"], [true,false], "Health Bars", "This toggles whether to health bars under entities (players & enemies).", null));
       this.addOption(new ChoiceOption("allyShots", new <String>["On","Off"], [true,false], "Ally Shots", "This toggles whether to show and render ally shots. Disable this to improve performance.", null));
       this.addOption(new ChoiceOption("allyDamage", new <String>["On","Off"], [true,false], "Ally Damage", "This toggles whether to show damage dealt to and by allies. Disable this to improve performance.", null));
-      this.addOption(new ChoiceOption("allyNotifs", new <String>["On","Off"], [true,false], "Ally Notifications", "This toggles whether to show notifications targeted at other players. Disable this to improve performance.", null));
+      this.addOption(new ChoiceOption("noAllyNotifications", new <String>["On","Off"], [true, false], "Disable Ally Notifications", "Disable text notifications above allies.", null));
       this.addOption(new ChoiceOption("dynamicHPcolor", new <String>["On","Off"],[true,false],"Dynamic Damage Text Color","Makes the damage text change color based on health",null));
       this.addOption(new ChoiceOption("smartProjectiles", new <String>["On", "Off"], [true,false], "Projectile Direction", "Makes projectiles face the direction they're going.", null));
       this.addOption(new ChoiceOption("projOutline", new <String>["On", "Off"], [true,false], "Projectile Outline", "Makes projectiles have an outline.", null));

@@ -153,7 +153,14 @@ public class TalismanToolTip extends ToolTip
                 }
 
                 var type:String = xml.@type;
-                this.effects.push(new Effect("", symbol + (xml.@percentage * 100.0) + "% " + type + " " + scaleType + " Per Potion Stacked"));
+                switch(type){
+                    case "health":
+                        type = " Maximum HP"; break;
+                    case "mana":
+                        type = " Maximum MP"; break;
+                }
+
+                this.effects.push(new Effect("", symbol + (xml.@percentage * 100.0) + "%" + type + scaleType + " Per Potion Stacked"));
             }
 
             if(tierXML.hasOwnProperty("ShotsPierceArmour")){

@@ -111,7 +111,7 @@ namespace common.resources
             SpawnPoint = e.HasElement("SpawnPoint");
             Group = e.GetValue<string>("Group");
             Quest = e.HasElement("Quest");
-            Level = e.GetValue<int>("Level");
+            Level = e.GetValue("Level", 1);
             God = e.HasElement("God");
             NoArticle = e.HasElement("NoArticle");
             Invincible = e.HasElement("Invincible");

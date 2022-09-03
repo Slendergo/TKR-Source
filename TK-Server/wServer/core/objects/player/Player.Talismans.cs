@@ -28,6 +28,8 @@ namespace wServer.core.objects
         public bool TalismanNoPotionHealing { get; set; }
         public float TalismanHealthHPRegen { get; set; }
         public float TalismanHealthRateOfFire { get; set; }
+        public float TalismanPotionHealthPercent { get; set; }
+        public float TalismanPotionManaPercent { get; set; }
         public bool TalismanCanOnlyGetWhiteBags { get; set; }
 
         private SV<int> _noManaBar { get; set; }
@@ -147,8 +149,6 @@ namespace wServer.core.objects
 
             // readd
 
-            Stats.ReCalculateValues();
-            
             foreach (var type in ActiveTalismans)
             {
                 var talisman = GetTalisman(type);
@@ -235,6 +235,48 @@ namespace wServer.core.objects
                 TalismanNoPotionHealing = tierDesc.NoPotionHealing;
                 TalismanCanOnlyGetWhiteBags = tierDesc.CanOnlyGetWhiteBags;
             }
+
+            var doubleprevent = RecalculateStackedPotions();
+            if(!doubleprevent)
+                Stats.ReCalculateValues();
+        }
+
+        public bool RecalculateStackedPotions()
+        {
+            TalismanPotionHealthPercent = 0.0f;
+            TalismanPotionManaPercent = 0.0f;
+
+            foreach (var type in ActiveTalismans)
+            {
+                var talisman = GetTalisman(type);
+                if (talisman == null)
+                    continue;
+
+                var desc = GameServer.Resources.GameData.GetTalisman(type);
+                if (desc == null)
+                    continue;
+
+                var tierDesc = desc.GetTierDesc(talisman.Tier);
+                if (tierDesc == null)
+                    continue;
+
+                foreach(var potion in tierDesc.PotionStack)
+                {
+                    switch (potion.Type)
+                    {
+                        case TalismanPotionStack.HEALTH:
+                            TalismanPotionHealthPercent += potion.ScalesPerLevel ? (potion.Percentage * talisman.Level) : potion.Percentage;
+                            break;
+                        case TalismanPotionStack.MANA:
+                            TalismanPotionManaPercent += potion.ScalesPerLevel ? (potion.Percentage * talisman.Level) : potion.Percentage;
+                            break;
+                    }
+                }
+            }
+
+            Stats.ReCalculateValues();
+
+            return TalismanPotionHealthPercent != 0.0 && TalismanPotionManaPercent != 0.0;
         }
 
         public void CheckHealthTalismans()

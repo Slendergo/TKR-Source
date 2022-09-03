@@ -68,7 +68,7 @@ namespace wServer.core.worlds.logic
                 return false;
             Closed = true;
             KingdomManager.DisableSpawning = true;
-            KingdomManager.CurrentState = KingdomState.Closing;
+            KingdomManager.CurrentState = KingdomState.Emptying;
             GameServer.WorldManager.Nexus.PortalMonitor.RemovePortal(Id);
             FlagForClose();
             return true;

@@ -11,6 +11,15 @@ namespace wServer.core.objects
 {
     public sealed class PlayerUpdate
     {
+        private static readonly IntPoint[] SurroundingPoints = new IntPoint[5]
+        {
+            new IntPoint(0, 0),
+            new IntPoint(1, 0),
+            new IntPoint(0, 1),
+            new IntPoint(-1, 0),
+            new IntPoint(0, -1)
+        };
+
         public const int VISIBILITY_CIRCUMFERENCE_SQR = (VISIBILITY_RADIUS - 2) * (VISIBILITY_RADIUS - 2);
         public const int VISIBILITY_RADIUS = 15;
         public const int VISIBILITY_RADIUS_SQR = VISIBILITY_RADIUS * VISIBILITY_RADIUS;
@@ -66,7 +75,7 @@ namespace wServer.core.objects
             foreach (var point in CircleCircumferenceSightPoints)
                 DrawLine(px, py, px + point.X, py + point.Y, (x, y) =>
                 {
-                    points.Add(new IntPoint(x - px, y - py));
+                    _ = points.Add(new IntPoint(x - px, y - py));
 
                     if (World.Map.Contains(x, y))
                     {
@@ -118,6 +127,9 @@ namespace wServer.core.objects
 
             foreach(var entity in NewObjects)
             {
+                if(entity == Player.Quest)
+                    continue;
+                
                 if(entity.IsRemovedFromWorld)
                 {
                     drops.Add(entity.Id);
@@ -217,17 +229,13 @@ namespace wServer.core.objects
         public void GetNewTiles(Update update)
         {
             ActiveTiles.Clear();
-
             var cachedTiles = DetermineSight();
-            if (cachedTiles == null)
-                return;
-
             foreach (var point in cachedTiles)
             {
                 var playerX = point.X + (int)Player.X;
                 var playerY = point.Y + (int)Player.Y;
 
-                ActiveTiles.Add(new IntPoint(playerX, playerY));
+                _ = ActiveTiles.Add(new IntPoint(playerX, playerY));
 
                 var tile = World.Map[playerX, playerY];
 
@@ -327,21 +335,9 @@ namespace wServer.core.objects
 
             var t = World.Map[x, y];
             if (!(t.ObjType != 0 && t.ObjDesc != null && t.ObjDesc.BlocksSight))
-                //for (var dx = -1; dx <= 1; dx++)
-                //    for (var dy = -1; dy <= 1; dy++)
-                        //StepPath(points, pathMap, x + dx, y + dy, px, py);
-                foreach(var p in Points)
+                foreach(var p in SurroundingPoints)
                     StepPath(points, pathMap, x + p.X, y + p.Y, px, py);
         }
-
-        private static IntPoint[] Points = new IntPoint[5]
-        {
-            new IntPoint(0, 0),
-            new IntPoint(1, 0),
-            new IntPoint(0, 1),
-            new IntPoint(-1, 0),
-            new IntPoint(0, -1)
-        };
 
         public void Dispose()
         {

@@ -4,29 +4,17 @@ package kabam.rotmg.game.view.components
    
    public class QueuedStatusTextList
    {
-       
-      
       public var target:DisplayObjectContainer;
-      
       private var head:QueuedStatusText;
-      
       private var tail:QueuedStatusText;
-      
-      public function QueuedStatusTextList()
-      {
-         super();
-      }
-      
+
       public function shift() : void
       {
          this.target.removeChild(this.head);
          this.head = this.head.next;
-         if(this.head)
-         {
+         if (this.head){
             this.target.addChild(this.head);
-         }
-         else
-         {
+         } else {
             this.tail = null;
          }
       }

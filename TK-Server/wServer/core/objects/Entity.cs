@@ -14,22 +14,17 @@ namespace wServer.core.objects
 {
     public class Entity : ICollidable<Entity>
     {
-        public Player Controller;
+        private const float COL_SKIP_BOUNDARY = 0.4f;
+
         public bool GivesNoXp;
         public float? savedAngle;
         public bool Spawned;
         public bool SpawnedByBehavior;
 
-        private const float colSkipBoundary = .4f;
-
         private SV<int> _altTextureIndex;
-        private ConditionEffectIndex _conditionEffects;
         private ObjectDesc _desc;
-        private int[] _effects;
         private SV<string> _name;
         private int _originalSize;
-        private Position[] _posHistory;
-        private byte _posIdx;
         private SV<int> _size;
         private bool _stateEntry;
         private State _stateEntryCommonRoot;
@@ -56,13 +51,6 @@ namespace wServer.core.objects
             coreServerManager.Resources.GameData.ObjectDescs.TryGetValue(ObjectType, out _desc);
 
             ConditionEffectManager = new ConditionEffectManager(this);
-
-            if (_desc == null)
-                return;
-
-            QuestLevel = _desc.Level;
-
-            _posHistory = new Position[256];
         }
 
         public event EventHandler<StatChangedEventArgs> StatChanged;
@@ -80,7 +68,6 @@ namespace wServer.core.objects
         public ushort ObjectType { get; protected set; }
         public World World { get; private set; }
         public CollisionMap<Entity> Parent { get; set; }
-        public int QuestLevel { get; set; } = 1;
         public float RealX => _x.GetValue();
         public float RealY => _y.GetValue();
         public int Size { get => _size.GetValue(); set => _size?.SetValue(value); }
@@ -98,6 +85,8 @@ namespace wServer.core.objects
 
         public float X { get => _x.GetValue(); set => _x.SetValue(value); }
         public float Y { get => _y.GetValue(); set => _y.SetValue(value); }
+        public float PrevX {get; private set; }
+        public float PrevY { get; private set; }
 
         public static Entity Resolve(GameServer manager, string name)
         {
@@ -272,20 +261,12 @@ namespace wServer.core.objects
 
         public void InvokeStatChange(StatDataType t, object val, bool updateSelfOnly = false) => StatChanged?.Invoke(this, new StatChangedEventArgs(t, val, updateSelfOnly));
 
-        public virtual void Move(float x, float y)
-        {
-            if (Controller != null)
-                return;
-
-            MoveEntity(x, y);
-        }
-
-        public void MoveEntity(float x, float y)
+        public void Move(float x, float y)
         {
             if (World != null && !(this is Projectile) && !(this is Pet) && (!(this is StaticObject) || (this as StaticObject).Hittestable))
                 ((this is Enemy || this is StaticObject && !(this is Decoy)) ? World.EnemiesCollision : World.PlayersCollision).Move(this, x, y);
-
-            X = x; Y = y;
+            X = x;
+            Y = y;
         }
 
         public void OnChatTextReceived(Player player, string text)
@@ -332,9 +313,6 @@ namespace wServer.core.objects
             }
 
             ConditionEffectManager.Update(ref time);
-
-            if (_posHistory != null)
-                _posHistory[++_posIdx] = new Position() { X = X, Y = Y };
         }
 
         public void TickState(TickTime time)
@@ -485,22 +463,12 @@ namespace wServer.core.objects
             Stats = ExportStats(isOtherPlayer)
         };
 
-        public Position? TryGetHistory(long ticks)
-        {
-            if (_posHistory == null)
-                return null;
-            if (ticks > 255)
-                return null;
-            return _posHistory[(byte)(_posIdx - (byte)ticks)];
-        }
-
         public void ValidateAndMove(float x, float y)
         {
             if (this == null || World == null)
                 return;
 
             var pos = new FPoint();
-
             ResolveNewLocation(x, y, pos);
             Move(pos.X, pos.Y);
         }
@@ -684,13 +652,13 @@ namespace wServer.core.objects
             var dx = x - X;
             var dy = y - Y;
 
-            if (dx < colSkipBoundary && dx > -colSkipBoundary && dy < colSkipBoundary && dy > -colSkipBoundary)
+            if (dx < COL_SKIP_BOUNDARY && dx > -COL_SKIP_BOUNDARY && dy < COL_SKIP_BOUNDARY && dy > -COL_SKIP_BOUNDARY)
             {
                 CalcNewLocation(x, y, pos);
                 return;
             }
 
-            var ds = colSkipBoundary / Math.Max(Math.Abs(dx), Math.Abs(dy));
+            var ds = COL_SKIP_BOUNDARY / Math.Max(Math.Abs(dx), Math.Abs(dy));
             var tds = 0f;
 
             pos.X = X;

@@ -841,15 +841,15 @@ namespace wServer.core.objects
         private void AEHeal(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             if (TalismanNoPotionHealing)
-                ApplyConditionEffect(ConditionEffectIndex.Stunned, 500);
-            else
             {
-                if (!HasConditionEffect(ConditionEffectIndex.Sick))
-                {
-                    var healthAmount = eff.Amount;
-                    ActivateHealHp(this, healthAmount);
-                }
+                ApplyConditionEffect(ConditionEffectIndex.Stunned, 600);
+                return;
             }
+
+            if (HasConditionEffect(ConditionEffectIndex.Sick))
+                return;
+
+            ActivateHealHp(this, eff.Amount);
         }
 
         private void AEHealNova(TickTime time, Item item, Position target, ActivateEffect eff)
@@ -1279,6 +1279,12 @@ namespace wServer.core.objects
 
         private void AEMagic(TickTime time, Item item, Position target, ActivateEffect eff)
         {
+            if (TalismanNoPotionHealing)
+            {
+                ApplyConditionEffect(ConditionEffectIndex.Stunned, 600);
+                return;
+            }
+
             for (var i = 0; i < 4; i++)
             {
                 var item1 = Inventory[i];
@@ -1289,14 +1295,10 @@ namespace wServer.core.objects
                 if (item1.SonicBlaster)
                 {
                     SonicBlaster(i);
+                    break;
                 }
             }
-            
-            var pkts = new List<OutgoingMessage>();
-            var healthAmount = eff.Amount;
-            //if (BigSkill10)
-            //    healthAmount = 75 * healthAmount / 100;
-            ActivateHealMp(this, healthAmount);
+            ActivateHealMp(this, eff.Amount);
         }
 
         private void AEMagicDust(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)

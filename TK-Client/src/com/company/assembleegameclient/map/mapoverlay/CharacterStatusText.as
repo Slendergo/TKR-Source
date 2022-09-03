@@ -9,8 +9,6 @@ package com.company.assembleegameclient.map.mapoverlay
    
    public class CharacterStatusText extends Sprite implements IMapOverlayElement
    {
-       
-      
       public const MAX_DRIFT:int = 40;
       
       public var go_:GameObject;
@@ -27,7 +25,6 @@ package com.company.assembleegameclient.map.mapoverlay
       
       public function CharacterStatusText(go:GameObject, text:String, color:uint, lifetime:int, offsetTime:int = 0)
       {
-         super();
          this.go_ = go;
          this.offset_ = new Point(0,-go.texture_.height * (go.size_ / 100) * 5 - 20);
          this.color_ = color;

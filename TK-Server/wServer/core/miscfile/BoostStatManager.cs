@@ -142,32 +142,32 @@ namespace wServer.core
 
         private void ApplyTalismanBonus()
         {
-            foreach(var type in _player.ActiveTalismans)
+            foreach (var type in _player.ActiveTalismans)
             {
                 var talisman = _player.GetTalisman(type);
                 if (talisman == null)
                     throw new Exception($"Unknown talisman type: {type}");
 
                 var desc = _player.GameServer.Resources.GameData.GetTalisman(type);
-                if(desc == null)
+                if (desc == null)
                     throw new Exception($"Unknown talisman desc type: {type}");
 
                 var tierDesc = desc.GetTierDesc(talisman.Tier);
-                if(tierDesc == null)
+                if (tierDesc == null)
                     throw new Exception($"Unknown talisman tier: {talisman.Tier}");
 
                 foreach (var stat in tierDesc.StatTypes)
                 {
                     // scale by level or by flat value
-               
-                    if(stat.Percentage != 0.0f)
+
+                    if (stat.Percentage != 0.0f)
                     {
                         var scaledAmount = stat.ScalesPerLevel ? stat.Percentage * talisman.Level : stat.Percentage;
 
                         var statVal = this[StatsManager.GetStatIndex((StatDataType)stat.StatType)];
 
                         var amountToBoostBy = (int)(statVal * scaledAmount);
-                        
+
                         IncrementBoost((StatDataType)stat.StatType, amountToBoostBy);
                         continue;
                     }
@@ -175,6 +175,18 @@ namespace wServer.core
                     var scale = (int)(stat.ScalesPerLevel ? stat.Amount * talisman.Level : stat.Amount);
                     IncrementBoost((StatDataType)stat.StatType, scale);
                 }
+            }
+
+            if (_player.TalismanPotionHealthPercent != 0.0)
+            {
+                var incrHealth = (int)(this[0] * _player.TalismanPotionHealthPercent);
+                IncrementBoost(StatDataType.MaximumHP, incrHealth);
+            }
+
+            if (_player.TalismanPotionManaPercent != 0.0)
+            {
+                var incrMana = (int)(this[1] * _player.TalismanPotionManaPercent);
+                IncrementBoost(StatDataType.MaximumMP, incrMana);
             }
         }
 

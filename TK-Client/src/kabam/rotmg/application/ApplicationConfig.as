@@ -1,4 +1,6 @@
 package kabam.rotmg.application {
+import com.company.assembleegameclient.parameters.Parameters;
+
 import flash.display.DisplayObjectContainer;
 import flash.display.LoaderInfo;
 import flash.system.Capabilities;
@@ -21,11 +23,10 @@ public class ApplicationConfig implements IConfig {
 
     public function configure():void {
         var _local1:ApplicationSetup;
-
-        _local1 = new LocalhostSetup();
-        if(Capabilities.playerType == "Desktop" || this.loaderInfo.parameters["build"] == "release")
+        if(!Parameters.LOCAL_HOST && (Capabilities.playerType == "Desktop" || this.loaderInfo.parameters["build"] == "release"))
             _local1 = new ReleaseSetup();
-
+        else
+            _local1 = new LocalhostSetup();
         this.injector.map(ApplicationSetup).toValue(_local1);
     }
 }

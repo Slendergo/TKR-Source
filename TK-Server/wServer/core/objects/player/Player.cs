@@ -1360,7 +1360,7 @@ namespace wServer.core.objects
             if (entity == null)
                 return false;
 
-            if (!entity.Spawned && entity.Controller == null)
+            if (!entity.Spawned)
                 return false;
 
             GenerateGravestone(true);
@@ -1530,8 +1530,8 @@ namespace wServer.core.objects
                     ObjectId = Id
                 }, this);
 
-                ApplyConditionEffect(ConditionEffectIndex.Invisible, 6000);
-                ApplyConditionEffect(ConditionEffectIndex.Speedy, 6000);
+                ApplyConditionEffect(ConditionEffectIndex.Invisible, 4000);
+                ApplyConditionEffect(ConditionEffectIndex.Speedy, 4000);
                 setCooldownTime(30, slot);
             }
         }

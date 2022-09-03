@@ -11,11 +11,6 @@ package kabam.rotmg.application.impl
       // Also Needs changes to GetCharListTask.as & WebLoginTask.as ctrl+shift+f -> "For release"
       private const BUILD_LABEL:String = "<font color=\"#FF0000\">TKR</font> <font color=\"#FFFF00\">v{VERSION}.{MINOR}.{PATCH}</font>";
 
-      public function ReleaseSetup()
-      {
-         super();
-      }
-
       public function getAppEngineUrl(toStatics:Boolean = false) : String
       {
          return toStatics ? this.CDN_STATICS : this.CDN_APPENGINE;

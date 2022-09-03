@@ -1,6 +1,8 @@
 package kabam.rotmg.account.web.services
 {
-   import kabam.lib.tasks.BaseTask;
+import com.company.assembleegameclient.parameters.Parameters;
+
+import kabam.lib.tasks.BaseTask;
    import kabam.rotmg.account.core.Account;
    import kabam.rotmg.account.core.services.LoginTask;
    import kabam.rotmg.account.web.model.AccountData;
@@ -28,7 +30,7 @@ package kabam.rotmg.account.web.services
       {
          this.client.setSendEncrypted(true);
          this.client.complete.addOnce(this.onComplete);
-         this.client.sendRequest("/api/verifyAcc", { // For Release: "/api/verifyAcc" For Local: "/account/verify"
+         this.client.sendRequest(Parameters.LOCAL_HOST ? "/account/verify" : "/api/verifyAcc", { // For Release: "/api/verifyAcc" For Local: "/account/verify"
             "guid":this.data.username,
             "password":this.data.password
          });

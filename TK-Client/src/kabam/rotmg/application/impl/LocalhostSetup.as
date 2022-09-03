@@ -4,55 +4,35 @@ import com.company.assembleegameclient.parameters.Parameters;
 import kabam.rotmg.application.api.ApplicationSetup;
 
 public class LocalhostSetup implements ApplicationSetup {
+    private const LOCALHOST:String = "http://127.0.0.1:2000";
+    private const BUILD_LABEL:String = " <font color=\"#00FFFF\">LOCALHOST</font> <font color=\"#FF0000\">TKR</font> <font color=\"#FFFF00\">v{VERSION}.{MINOR}.{PATCH}</font>";
 
-    private const SERVER:String = "http://127.0.0.1:2000";
-
-    public function getAppEngineUrl(_arg1:Boolean = false):String {
-        return (this.SERVER);
+    public function getAppEngineUrl(toStatics:Boolean = false):String {
+        return LOCALHOST;
     }
 
     public function getAppEngineUrlEncrypted():String {
-        return SERVER;
+        return LOCALHOST;
     }
 
     public function getBuildLabel():String {
-        return "TK1* - build: "
-            + Parameters.BUILD_VERSION.toString()
-            + "" + Parameters.MINOR_VERSION.toString();
-    }
-
-    public function useLocalTextures():Boolean {
-        return (true);
-    }
-
-    public function isToolingEnabled():Boolean {
-        return (true);
-    }
-
-    public function isServerLocal():Boolean {
-        return (true);
+        return this.BUILD_LABEL.replace("{VERSION}", Parameters.BUILD_VERSION).replace("{MINOR}", Parameters.MINOR_VERSION).replace("{PATCH}", Parameters.PATCH_VERSION);
     }
 
     public function isGameLoopMonitored():Boolean {
-        return (true);
+        return false;
     }
 
     public function useProductionDialogs():Boolean {
-        return (false);
+        return true;
     }
 
     public function areErrorsReported():Boolean {
-        return (true);
-    }
-
-    public function areDeveloperHotkeysEnabled():Boolean {
-        return (true);
+        return false;
     }
 
     public function isDebug():Boolean {
-        return (true);
+        return false;
     }
-
-
 }
 }

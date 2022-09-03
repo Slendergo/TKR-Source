@@ -11,7 +11,6 @@ namespace wServer.logic.behaviors
     internal class Shoot : CycleBehavior
     {
         private const int PREDICT_NUM_TICKS = 4;
-        private static double _multiplier = -1;
 
         private readonly float _angleOffset;
         private readonly int _coolDownOffset;
@@ -152,31 +151,11 @@ namespace wServer.logic.behaviors
             state = cool;
         }
 
-        private static float CollisionTime(Vector2 position, Vector2 relativeV, float bulletV)
-        {
-            var a = Vector2.Dot(relativeV, relativeV) - bulletV * bulletV;
-            var b = 2f * Vector2.Dot(relativeV, position);
-            var c = Vector2.Dot(position, position);
-            var det = b * b - 4f * a * c;
-
-            if (det > 0f)
-                return 2f * c / ((float)Math.Sqrt(det) - b);
-
-            return -1f;
-        }
-
         private static float Predict(Entity host, Entity target, ProjectileDesc desc)
         {
-            // trying prod prediction
-            var history = target.TryGetHistory(1);
-
-            if (history == null)
-                return (float)Math.Atan2(target.Y - host.Y, target.X - host.X);
-
-            var targetX = target.X + PREDICT_NUM_TICKS * (target.X - history.Value.X);
-            var targetY = target.Y + PREDICT_NUM_TICKS * (target.Y - history.Value.Y);
+            var targetX = target.X + PREDICT_NUM_TICKS * (target.X - target.PrevX);
+            var targetY = target.Y + PREDICT_NUM_TICKS * (target.Y - target.PrevY);
             var angle = (float)Math.Atan2(targetY - host.Y, targetX - host.X);
-
             return angle;
         }
     }

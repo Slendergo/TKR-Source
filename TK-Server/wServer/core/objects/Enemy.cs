@@ -178,8 +178,10 @@ namespace wServer.core.objects
             return 0;
         }
 
+        private bool Dead;
         public void Death(ref TickTime time)
         {
+            Dead = true;
             DamageCounter.Death(time);
             CurrentState?.OnDeath(this, ref time);
             if (GameServer.BehaviorDb.Definitions.TryGetValue(ObjectType, out var loot))
@@ -260,7 +262,7 @@ namespace wServer.core.objects
             if (pos == null)
                 pos = new Position() { X = X, Y = Y };
 
-            if (HP == 0)
+            if (HP == 0 && !Dead)
                 Death(ref time);
 
             if (!stat && HasConditionEffect(ConditionEffectIndex.Bleeding))

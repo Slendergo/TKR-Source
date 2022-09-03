@@ -17,7 +17,6 @@ namespace wServer.core
     public enum KingdomState
     {
         Idle,
-        Closing,
         Emptying,
         Closed,
         DoNothing
@@ -500,19 +499,13 @@ namespace wServer.core
                         }
                     }
                     break;
-                case KingdomState.Closing:
+                case KingdomState.Emptying:
                     {
-                        DisableSpawning = true;
-
                         BroadcastMsg("RAAHH MY TROOPS HAVE FAILED ME!");
                         BroadcastMsg("THIS KINDOM SHALL NOT FALL!!");
 
-                        CurrentState = KingdomState.Emptying;
-                    }
-                    break;
-                case KingdomState.Emptying:
-                    {
                         CurrentState = KingdomState.DoNothing;
+
                         foreach (var e in World.Enemies.Values)
                         {
                             if (e.ObjectDesc.ObjectId.Contains("Oryx Guardian TaskMaster") || e.ObjectDesc.ObjectId.Contains("Talisman King's Golden Guardian"))
@@ -567,6 +560,9 @@ namespace wServer.core
         public void AnnounceMVP(Enemy eventDead, string name)
         {
             var hitters = eventDead.DamageCounter.GetHitters();
+            if (hitters.Count == 0)
+                return;
+
             var mvp = hitters.Aggregate((a, b) => a.Value > b.Value ? a : b).Key;
             if (mvp == null)
                 return;
@@ -629,21 +625,17 @@ namespace wServer.core
                 mvp.SendInfo("Sorry, points cannot be rewarded. Please join a guild first.");
         }
 
-        public int CountingEvents(string eventDead)
+        public void CountingEvents(string eventDead)
         {
+            if (DisableSpawning)
+                return;
             HasQuestAlready = false;
 
+            World.GameServer.ChatManager.AnnounceRealm("(" + _EventCount + "/30) " + eventDead + " has been defeated!", World.DisplayName);
+
             _EventCount++;
-
-            if (_EventCount >= 30 && !DisableSpawning)
-            {
+            if (_EventCount == 30)
                 World.CloseRealm();
-                World.GameServer.ChatManager.AnnounceRealm("(" + _EventCount + "/30) " + eventDead + " has been defeated!", World.DisplayName);
-            }
-            else if (_EventCount <= 30 && !World.Closed)
-                World.GameServer.ChatManager.AnnounceRealm("(" + _EventCount + "/30) " + eventDead + " has been defeated!", World.DisplayName);
-
-            return _EventCount;
         }
 
         public void Init()
@@ -932,10 +924,10 @@ namespace wServer.core
 
         private void MovePeopleNaerby(TickTime time)
         {
-            var regions = World.Map.Regions.Where(t => t.Value == TileRegion.Defender).ToArray();
+            var regions = World.GetRegionPoints(TileRegion.Defender);
             foreach (var player in World.Players.Values)
             {
-                var pos = regions[World.Random.Next(regions.Length)];
+                var pos = World.Random.NextLength(regions);
                 player.TeleportPosition(time, pos.Key.X, pos.Key.Y, true);
             }
         }
@@ -957,7 +949,6 @@ namespace wServer.core
             pt.X -= (sp.Size - 1) / 2;
             pt.Y -= (sp.Size - 1) / 2;
             sp.RenderSetPiece(World, pt);
-            World.ForeachPlayer(_ => _.CheckForEncounter());
 
             var taunt = $"{name} has been spawned!";
 

@@ -20,18 +20,11 @@ namespace wServer.core.objects
             this.player = player;
             this.duration = duration;
 
-            var history = player.TryGetHistory(1);
-            if (history == null)
+            direction = new Vector2(player.X - player.PrevX, player.Y - player.PrevY);
+            if (direction.LengthSquared() == 0)
                 direction = GetRandDirection();
             else
-            {
-                direction = new Vector2(player.X - history.Value.X, player.Y - history.Value.Y);
-
-                if (direction.LengthSquared() == 0)
-                    direction = GetRandDirection();
-                else
-                    direction.Normalize();
-            }
+                direction.Normalize();
         }
 
         public void Damage(int dmg, Entity src)

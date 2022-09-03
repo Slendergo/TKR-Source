@@ -107,6 +107,7 @@ namespace common
             else if (t == typeof(double)) return (T)Convert.ChangeType(double.Parse(val, CultureInfo.InvariantCulture), t);
             else if (t == typeof(float)) return (T)Convert.ChangeType(float.Parse(val, CultureInfo.InvariantCulture), t);
             else if (t == typeof(bool)) return (T)Convert.ChangeType(string.IsNullOrWhiteSpace(val) || bool.Parse(val), t);
+            else if (t == typeof(byte)) return (T)Convert.ChangeType(byte.Parse(val), t);
 
             Log.Error(string.Format("Type of {0} is not supported by this method, returning default value: {1}...", t, def));
 
@@ -249,8 +250,8 @@ namespace common
             );
         }
 
-        public static T NextLength<T>(this Random rand, IList<T> list) => list[rand.Next(list.Count)];
-        public static T NextLength<T>(this Random rand, T[] array) => array[rand.Next(array.Length)];
+        public static T NextLength<T>(this Random rand, IList<T> list) => list.Count == 0 ? default : list[rand.Next(list.Count)];
+        public static T NextLength<T>(this Random rand, T[] array) => array.Length == 0 ? default : array[rand.Next(array.Length)];
 
         public static string Read(string p)
         {

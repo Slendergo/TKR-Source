@@ -6,18 +6,6 @@ namespace wServer.core.commands
 {
     public abstract partial class Command
     {
-        internal class ToggleDeltaCommand : Command
-        {
-            public override RankingType RankRequirement => RankingType.Admin;
-            public override string CommandName => "tdt";
-
-            protected override bool Process(Player player, TickTime time, string args)
-            {
-                RootWorldThread.TryNewSystem = !RootWorldThread.TryNewSystem;
-                return true;
-            }
-        }
-
         internal class MemoryCommand : Command
         {
             public override RankingType RankRequirement => RankingType.Admin;

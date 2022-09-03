@@ -140,7 +140,7 @@ namespace wServer.core.worlds.logic
                 if (c < 8)
                     items.AddRange(Enumerable.Repeat(ushort.MaxValue, 8 - c));
 
-                var con = new GiftChest(Client .GameServer, 0x0744, null, false)
+                var con = new GiftChest(Client.GameServer, 0x0744, null, false)
                 {
                     BagOwners = new int[] { Client.Account.AccountId },
                     Size = 65

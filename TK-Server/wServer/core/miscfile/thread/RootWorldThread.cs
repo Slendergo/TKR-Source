@@ -10,7 +10,7 @@ namespace wServer.core
 {
     public sealed class RootWorldThread
     {
-        public static bool TryNewSystem = false;
+        public const int TICK_TIME_MS = 200;
 
         private readonly WorldManager WorldManager;
         private World World;
@@ -30,7 +30,7 @@ namespace wServer.core
             {
                 var watch = Stopwatch.StartNew();
 
-                var sleep = 200; // 5 tps
+                var sleep = TICK_TIME_MS; // 5 tps
 
                 var lastMS = 0L;
                 var mre = new ManualResetEvent(false);
@@ -39,64 +39,38 @@ namespace wServer.core
 
                 while (!Stopped)
                 {
-                    if (TryNewSystem)
+                    if (sleep > 0)
+                        _ = mre.WaitOne(sleep);
+
+                    var currentMS = realmTime.TotalElapsedMs = watch.ElapsedMilliseconds;
+
+                    var delta = (int)Math.Max(currentMS - lastMS, TICK_TIME_MS);
+
+                    realmTime.TickCount++;
+                    realmTime.ElaspedMsDelta = delta;
+
+                    var logicTime = watch.ElapsedMilliseconds;
+
+                    try
                     {
-                        var currentMS = realmTime.TotalElapsedMs = watch.ElapsedMilliseconds;
-
-                        var delta = (int)(currentMS - lastMS); //  (int)Math.Max(currentMS - lastMS, 200);
-                        if (delta >= 200)
+                        if (World.Update(ref realmTime))
                         {
-                            realmTime.TickCount++;
-                            realmTime.ElaspedMsDelta = delta;
-
-                            try
-                            {
-                                if (World.Update(ref realmTime))
-                                {
-                                    _ = WorldManager.RemoveWorld(World);
-                                    break;
-                                }
-                            }
-                            catch (Exception e)
-                            {
-                                Console.WriteLine($"World Tick: {e.StackTrace}");
-                            }
-
-                            lastMS = currentMS;
+                            Stopped = true;
+                            break;
                         }
                     }
-                    else
+                    catch (Exception e)
                     {
-                        if (sleep > 0)
-                            _ = mre.WaitOne(sleep);
-
-                        var currentMS = realmTime.TotalElapsedMs = watch.ElapsedMilliseconds;
-
-                        var delta = (int)Math.Max(currentMS - lastMS, 200);
-
-                        realmTime.TickCount++;
-                        realmTime.ElaspedMsDelta = delta;
-
-                        var logicTime = watch.ElapsedMilliseconds;
-
-                        try
-                        {
-                            if (World.Update(ref realmTime))
-                            {
-                                _ = WorldManager.RemoveWorld(World);
-                                break;
-                            }
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine($"World Tick: {e.StackTrace}");
-                        }
-
-                        realmTime.LogicTime = sleep = 200 - (int)(watch.ElapsedMilliseconds - logicTime);
-
-                        lastMS = currentMS;
+                        Console.WriteLine($"World Tick: {e.StackTrace}");
                     }
+
+                    realmTime.LogicTime = sleep = TICK_TIME_MS - (int)(watch.ElapsedMilliseconds - logicTime);
+
+                    lastMS = currentMS;
                 }
+
+                _ = WorldManager.RemoveWorld(World);
+
             }, TaskCreationOptions.LongRunning);
         }
 

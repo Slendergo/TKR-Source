@@ -15,7 +15,6 @@ namespace wServer.core.net.handlers
         public override void Handle(Client client, NReader rdr, ref TickTime time)
         {
             var myInventory = new FuelEngine[rdr.ReadInt16()];
-            var rnd = new Random();
             for (int i = 0; i < myInventory.Length; i++)
             {
                 myInventory[i].ObjectType = rdr.ReadUInt16();
@@ -24,24 +23,13 @@ namespace wServer.core.net.handlers
                 myInventory[i].ItemData = rdr.ReadInt32();
             }
 
-
-            //var list = new List<Item>();
-            var list = new List<int>();
-            var gameData = client.GameServer.Resources.GameData;
-            var forgeItems = new FuelEngine[myInventory.Length];
-            int fuel = 0;
-
-            if (forgeItems.Length < 1)
+            if (myInventory.Length < 1)
             {
                 client.Player.SendError("You throw nothing into the engine - sad!");
                 return;
             }
 
-            for (var i = 0; i < myInventory.Length; i++)
-            {
-                Console.WriteLine("i=" + i +" | SlotID="+ myInventory[i].slotID +" | ObjectType="+ myInventory[i].ObjectType);
-            }
-
+            var fuel = 0;
             for (var i = 0; i < myInventory.Length; i++)
             {
                 var slot = myInventory[i].slotID;
@@ -59,8 +47,12 @@ namespace wServer.core.net.handlers
 
                 switch (client.Player.Inventory[slot].DisplayName)
                 {
-                    case "Glowing Shard": fuel += myInventory[i].ItemData; break;
-                    case "Glowing Talisman": fuel += 50; break;
+                    case "Glowing Shard": 
+                        fuel += myInventory[i].ItemData; 
+                        break;
+                    case "Glowing Talisman":
+                        fuel += 50;
+                        break;
                 }
             }
 
@@ -69,43 +61,18 @@ namespace wServer.core.net.handlers
                 client.Player.SendError($"Engine is max capacity");
                 return;
             }
+
             for (var i = 0; i < myInventory.Length; i++)
             {
                 client.Player.Inventory[myInventory[i].slotID] = null;
                 client.Player.Inventory.Data[myInventory[i].slotID] = null;
             }
+
             var acc = client.Player.GameServer.Database.GetAccount(client.Player.AccountId);
             acc.FuelContributed += fuel;
             acc.FlushAsync();
-            client.Player.SendInfo("You manage to power up the engine by "+fuel);
+
+            client.Player.SendInfo($"You manage to power up the engine by {fuel}");
         }
-
-        //private void AnnounceFuel(int fuel, Client client)
-        //{
-        //    var miscItem = client.GameServer.Resources.GameData.Items[itemValue];
-
-        //    //  if (client.Player.Rank >= 60)
-        //    //    return;
-
-        //    if (itemValue == 0x497e) //Supreme
-        //        client.Player.GameServer.ChatManager.AnnounceForger($"[{client.Player.Name}] has forged a [{miscItem.DisplayName}]!");
-
-        //    if (itemValue == 0x5012 || itemValue == 0x5013) //Fire Items
-        //        client.Player.GameServer.ChatManager.AnnounceForger($"[{client.Player.Name}] has forged a Fire Elemental Item [{miscItem.DisplayName}]!");
-
-        //    if (itemValue == 0x5010) //Water Item
-        //        client.Player.GameServer.ChatManager.AnnounceForger($"[{client.Player.Name}] has forged a Water Elemental Item [{miscItem.DisplayName}]!");
-
-        //    if (itemValue == 0x5011 || itemValue == 0x500e) //Wind Items
-        //        client.Player.GameServer.ChatManager.AnnounceForger($"[{client.Player.Name}] has forged a Wind Elemental Item [{miscItem.DisplayName}]!");
-
-        //    if (itemValue == 0x500f) //Earth Item
-        //        client.Player.GameServer.ChatManager.AnnounceForger($"[{client.Player.Name}] has forged an Earth Elemental Item [{miscItem.DisplayName}]!");
-        //    if (itemValue == 0xa420)
-        //    {
-        //        client.Player.GameServer.ChatManager.AnnounceForger($"[{client.Player.Name}] has forged both Claws of Cerberus into [{miscItem.DisplayName}]!");
-        //        client.Player.Client.SendPacket(new GlobalNotification() { Text = "eternalloot" });
-        //    }
-        //}
     }
 }

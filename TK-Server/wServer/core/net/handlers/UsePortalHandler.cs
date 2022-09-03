@@ -10,6 +10,7 @@ namespace wServer.core.net.handlers
 {
     public class UsePortalHandler : IMessageHandler
     {
+        private const string PORTAL_TO_NEXUS = "Portal To Nexus";
         private const string TOMB_PORTAL_OF_COWARDICE = "Tomb Portal of Cowardice";
         private const string PORTAL_OF_COWARDICE = "Portal of Cowardice";
         private const string GLOWING_PORTAL_OF_COWARDICE = "Glowing Portal of Cowardice";
@@ -82,6 +83,12 @@ namespace wServer.core.net.handlers
             {
                 switch (portal.ObjectDesc.ObjectId)
                 {
+                    case PORTAL_TO_NEXUS:
+                        {
+                            world = player.GameServer.WorldManager.Nexus;
+                            player.Reconnect(world);
+                        }
+                        break;
                     case TOMB_PORTAL_OF_COWARDICE:
                     case PORTAL_OF_COWARDICE:
                     case GLOWING_PORTAL_OF_COWARDICE:

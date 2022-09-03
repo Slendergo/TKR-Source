@@ -14,7 +14,7 @@ using wServer.networking.packets.outgoing;
 
 namespace wServer.core
 {
-    public enum KindgomState
+    public enum KingdomState
     {
         Idle,
         Closing,
@@ -466,20 +466,20 @@ namespace wServer.core
         private long LastAnnouncementTime;
         private long LastQuestTime;
 
-        public KindgomState CurrentState;
+        public KingdomState CurrentState;
         public bool DisableSpawning;
 
         public KingdomManager(RealmWorld world)
         {
             World = world;
-            CurrentState = KindgomState.Idle;
+            CurrentState = KingdomState.Idle;
         }
 
         public void Update(ref TickTime time)
         {
             switch (CurrentState)
             {
-                case KindgomState.Idle:
+                case KingdomState.Idle:
                     {
                         if (time.TotalElapsedMs - LastQuestTime >= 10000)
                         {
@@ -500,19 +500,19 @@ namespace wServer.core
                         }
                     }
                     break;
-                case KindgomState.Closing:
+                case KingdomState.Closing:
                     {
                         DisableSpawning = true;
 
                         BroadcastMsg("RAAHH MY TROOPS HAVE FAILED ME!");
                         BroadcastMsg("THIS KINDOM SHALL NOT FALL!!");
 
-                        CurrentState = KindgomState.Emptying;
+                        CurrentState = KingdomState.Emptying;
                     }
                     break;
-                case KindgomState.Emptying:
+                case KingdomState.Emptying:
                     {
-                        CurrentState = KindgomState.DoNothing;
+                        CurrentState = KingdomState.DoNothing;
                         foreach (var e in World.Enemies.Values)
                         {
                             if (e.ObjectDesc.ObjectId.Contains("Oryx Guardian TaskMaster") || e.ObjectDesc.ObjectId.Contains("Talisman King's Golden Guardian"))
@@ -520,10 +520,10 @@ namespace wServer.core
                             World.LeaveWorld(e);
                         }
 
-                        World.Timers.Add(new WorldTimer(30000, (w, t) => CurrentState = KindgomState.Closed));
+                        World.Timers.Add(new WorldTimer(30000, (w, t) => CurrentState = KingdomState.Closed));
                     }
                     break;
-                case KindgomState.Closed:
+                case KingdomState.Closed:
                     {
                         BroadcastMsg("ENOUGH WAITING!");
                         BroadcastMsg("YOU SHALL MEET YOUR DOOM BY MY HAND!!!");
@@ -540,10 +540,10 @@ namespace wServer.core
 
                         MovePeopleNaerby(time);
 
-                        CurrentState = KindgomState.DoNothing;
+                        CurrentState = KingdomState.DoNothing;
                     }
                     break;
-                case KindgomState.DoNothing:
+                case KingdomState.DoNothing:
                     break;
             }
         }

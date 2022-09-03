@@ -7,7 +7,6 @@ namespace wServer.core.worlds.impl
     {
         private readonly World Branch;
         private readonly Dictionary<int, World> Branches = new Dictionary<int, World>();
-        private readonly List<World> ToRemove = new List<World>();
 
         public WorldBranch(World branch)
         {
@@ -31,20 +30,18 @@ namespace wServer.core.worlds.impl
 
         public void Update(ref TickTime time)
         {
+            var toRemove = new List<World>();
             foreach (var world in Branches.Values)
                 if (world.Update(ref time))
-                    ToRemove.Add(world);
+                    toRemove.Add(world);
 
-            if (ToRemove.Count > 0)
+            foreach (var world in toRemove)
             {
-                foreach (var world in ToRemove)
-                {
-                    world.ParentWorld = null;
-                    _ = Branch.GameServer.WorldManager.RemoveWorld(world);
-                    _ = Branches.Remove(world.Id);
-                }
-                ToRemove.Clear();
+                world.ParentWorld = null;
+                _ = Branch.GameServer.WorldManager.RemoveWorld(world);
+                _ = Branches.Remove(world.Id);
             }
+            toRemove.Clear();
         }
     }
 

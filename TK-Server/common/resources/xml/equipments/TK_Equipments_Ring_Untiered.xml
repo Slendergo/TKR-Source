@@ -472,7 +472,7 @@
     <FameBonus>5</FameBonus>
     <feedPower>900</feedPower>
   </Object>
-  <Object type="0x5403" id="Spotted Venom Extrac">
+  <Object type="0x5403" id="Spotted Venom Extract">
     <Class>Equipment</Class>
     <Item />
     <SPlus />

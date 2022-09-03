@@ -2469,7 +2469,7 @@
       <ConditionEffect duration="3.6">Bleeding</ConditionEffect>
     </Projectile>
   </Object>
-  <Object type="0x0950" id="Shambling Sludge">
+  <Object type="0x0950" id="Shambling cSludge">
     <Group>Sludges</Group>
     <Enemy />
     <Class>Character</Class>

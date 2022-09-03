@@ -94,7 +94,7 @@ namespace common.resources
             AbilityLifeCost = e.Element("AbilityLifeCost")?.GetAttribute<float>("percentage") ?? 0.0f;
 
             FameGainBonus = new List<float>();
-            foreach (var te in e.Elements("Extra"))
+            foreach (var te in e.Elements("FameGainBonus"))
                 FameGainBonus.Add(te.GetAttribute<float>("percentage"));
 
             Health = new List<TalismanHealth>();

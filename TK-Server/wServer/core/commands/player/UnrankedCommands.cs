@@ -631,9 +631,9 @@ namespace wServer.core.commands
         }
     }
 
-    internal class CheckLoot : Command
+    internal class ChecKBoostsCommand : Command
     {
-        public override string CommandName => "checkloot";
+        public override string CommandName => "checkboosts";
 
         protected override bool Process(Player player, TickTime time, string args)
         {

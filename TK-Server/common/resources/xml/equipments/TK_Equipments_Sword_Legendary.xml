@@ -163,13 +163,13 @@
     <SlotType>1</SlotType>
     <Legendary />
     <Description>The original blade used by The Bridge Sentinel during The Shatter's age of ruin. Countless forces in pursuit of treasure were felled by this blade, effortlessly.</Description>
-    <RateOfFire>1.10</RateOfFire>
+    <RateOfFire>1.05</RateOfFire>
     <Sound>weapon/mithril_sword</Sound>
     <Projectile>
       <ObjectId>Blade of the Protector Shoot</ObjectId>
       <Speed>140</Speed>
       <MinDamage>150</MinDamage>
-      <MaxDamage>200</MaxDamage>
+      <MaxDamage>215</MaxDamage>
       <LifetimeMS>336</LifetimeMS>
       <Frequency>0</Frequency>
       <Size>95</Size>

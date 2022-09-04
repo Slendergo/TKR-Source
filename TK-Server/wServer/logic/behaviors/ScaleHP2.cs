@@ -115,12 +115,14 @@ namespace wServer.logic.behaviors
 
                 plrCount = scstate.pNamesCounted.Count;
 
-                if (itemCount * 2 > scstate.initialScaleAmount)
+                if (plrCount > scstate.initialScaleAmount)
                 {
-                    var amountPerPlayer = (plrCount * 2) * enemy.ObjectDesc.MaxHP / 100;
-                    var amountInc = ((itemCount * 2) - scstate.initialScaleAmount) * amountPerPlayer;
+                    var amountPerPlayer = _percentage * enemy.ObjectDesc.MaxHP / 100;
+                    var amountInc = (plrCount - scstate.initialScaleAmount) * amountPerPlayer;
+                    amountInc += (itemCount - scstate.initialItemScaleAmount) * enemy.ObjectDesc.MaxHP / 100;
 
-                    scstate.initialScaleAmount += itemCount - scstate.initialScaleAmount;
+                    scstate.initialScaleAmount += plrCount - scstate.initialScaleAmount;
+                    scstate.initialItemScaleAmount += itemCount - scstate.initialItemScaleAmount;
 
                     var newHpMaximum = enemy.MaximumHP + amountInc;
 
@@ -138,6 +140,7 @@ namespace wServer.logic.behaviors
         {
             public int cooldown;
             public int initialScaleAmount = 0;
+            public int initialItemScaleAmount = 0;
             public IList<string> pNamesCounted;
         }
     }

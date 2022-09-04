@@ -15,14 +15,27 @@ namespace server.account
             if (query["secret"] == secret)
             {
                 var acc = _db.GetAccount(int.Parse(query["accountId"]));
-                System.Console.WriteLine("post accId: " + query["accountId"]);
-                System.Console.WriteLine("acc accId: " + acc.AccountId);
-                var rank = new DbRank(acc.Database, acc.AccountId);
+                if (query["type"] == "rank")
+                {
+                    
+                    System.Console.WriteLine("post accId: " + query["accountId"]);
+                    System.Console.WriteLine("acc accId: " + acc.AccountId);
+                    var rank = new DbRank(acc.Database, acc.AccountId);
 
-                rank.NewAmountDonated += int.Parse(query["amountDonated"]);
+                    rank.NewAmountDonated += int.Parse(query["amountDonated"]);
 
-                rank.Flush();
-                Write(context, "<Success />");
+                    rank.Flush();
+                    Write(context, "<Success />");
+                }
+                else if (query["type"] == "gold")
+                {
+                    var amount = int.Parse(query["amountDonated"]);
+                    acc.Credits += amount;
+                    acc.TotalCredits += amount;
+                    acc.FlushAsync();
+                    Write(context, "<Success />");
+                }
+
             }
             else
                 Write(context, "<Error>Internal Server Error.</Error>");

@@ -26,6 +26,7 @@ namespace common.resources
         public bool GodTouch;
         public bool HolyProtection;
         public bool Insanity;
+        public bool Vampiric;
         public bool InvUse;
         public bool LDBoosted;
         public bool Legendary;
@@ -159,6 +160,7 @@ namespace common.resources
             Demonized = e.HasElement("Demonized");
             Clarification = e.HasElement("Clarification");
             SonicBlaster = e.HasElement("SonicBlaster");
+            Vampiric = e.HasElement("Vampiric");
         }
     }
 }

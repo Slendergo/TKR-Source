@@ -105,9 +105,10 @@ import kabam.rotmg.appengine.api.AppEngineClient;
       
       private function clearAccountAndReloadCharacters() : void
       {
+         this.client.setSendEncrypted(true);
          this.logger.info("GetUserDataTask invalid credentials");
          this.account.clear();
-         this.client.sendRequest("/char/list",this.requestData);
+         this.client.sendRequest(Parameters.LOCAL_HOST ? "/char/list" : "/api/charList", this.requestData);
       }
       
       private function waitForASecondThenRetryRequest() : void

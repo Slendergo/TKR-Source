@@ -220,6 +220,9 @@ namespace wServer.core.objects
                     if (item.Demonized)
                         Demonized(player, i);
 
+                    if (item.Vampiric)
+                        VampireBlast(player, i, time, this, projectile.ProjDesc.MultiHit);
+
                     if (item.Electrify)
                         Electrify(player, i, time, this);
                 }
@@ -304,12 +307,16 @@ namespace wServer.core.objects
             }
         }
 
-        private void VampireBlast(Player player, double chance, int size, int dam, int heal, TickTime time, Entity firstHit)
+        private void VampireBlast(Player player, int slot, TickTime time, Entity firstHit, bool multi)
         {
             if (player == null || player.World == null || player.Client == null)
                 return;
+            var chance = 0.03;
+            chance -= (player.Inventory[0].NumProjectiles / 3) / 100;
+            chance = multi ? chance / 1.5 : chance;
             if (World.Random.NextDouble() < chance)
             {
+
                 Position procPos = new Position() { X = firstHit.X, Y = firstHit.Y };
                 Position playerPos = new Position() { X = player.X, Y = player.Y };
                 var pkts = new List<OutgoingMessage>()
@@ -327,24 +334,31 @@ namespace wServer.core.objects
                         Color = new ARGB(0xFFFF0000),
                         TargetObjectId = Id,
                         Pos1 = procPos,
-                        Pos2 = new Position { X = firstHit.X + size, Y = firstHit.Y }
-                    }
+                        Pos2 = new Position { X = firstHit.X + 3, Y = firstHit.Y }
+                    },
+                        new Notification
+                        {
+                            Color = new ARGB(0xFFD336B3),
+                            ObjectId = firstHit.Id,
+                            PlayerId = player.Id,
+                            Message = "Vampiric!"
+                        }
                 };
 
                 World.BroadcastIfVisible(pkts[0], ref procPos);
                 World.BroadcastIfVisible(pkts[1], ref procPos);
 
-                var totalDmg = dam;
+                var totalDmg = 300;
                 var enemies = new List<Enemy>();
 
-                World.AOE(procPos, size, false, enemy =>
+                World.AOE(procPos, 3, false, enemy =>
                 {
                     enemies.Add(enemy as Enemy);
                     totalDmg += (enemy as Enemy).Damage(player, time, (int)totalDmg, false);
                 });
 
                 if (!player.HasConditionEffect(ConditionEffectIndex.Sick))
-                    ActivateHealHp(player, heal);
+                    ActivateHealHp(player, 50);
 
                 if (player.HP < player.MaximumHP && enemies.Count > 0)
                 {

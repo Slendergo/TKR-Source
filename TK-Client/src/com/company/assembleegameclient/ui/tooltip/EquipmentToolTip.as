@@ -235,6 +235,13 @@ public class EquipmentToolTip extends ToolTip
             else if(this.objectXML_.hasOwnProperty("Electrify")){
                this.itemEffectText_.text = "Electrify -> Upon hitting an enemy, you have a 3% chance to “cast” a scepter-like ability that deals 1000 damage and inflicts Slowed for 3 seconds to up to 5 targets.";
             }
+            else if(this.objectXML_.hasOwnProperty("Vampiric")){
+               var numProj:int = this.objectXML_.NumProjectiles;
+               var multi:Boolean = this.objectXML_.Projectile.hasOwnProperty("MultiHit")
+               var chance:Number = 3 - ((numProj / 3))
+               chance = multi ? chance / 1.5 : chance;
+               this.itemEffectText_.text = "Vampriric -> Upon hitting an enemy, you have a "+ round2(chance,1) +"% chance to “cast” a skull-like ability that deals 300 damage AOE damage and heals for 50hp.";
+            }
          }
          else if(this.objectXML_.hasOwnProperty("Revenge") || this.objectXML_.hasOwnProperty("Mythical"))
          {
@@ -258,6 +265,13 @@ public class EquipmentToolTip extends ToolTip
             }
             else if(this.objectXML_.hasOwnProperty("Electrify")){
                this.itemEffectText_.text = "Electrify -> Upon hitting an enemy, you have a 3% chance to “cast” a scepter-like ability that deals 1000 damage and inflicts Slowed for 3 seconds to up to 5 targets.";
+            }
+            else if(this.objectXML_.hasOwnProperty("Vampiric")){
+               var numProj:int = this.objectXML_.NumProjectiles;
+               var multi:Boolean = this.objectXML_.Projectile.hasOwnProperty("MultiHit")
+               var chance:Number = 3 - ((numProj / 3))
+               chance = multi ? chance / 1.5 : chance;
+               this.itemEffectText_.text = "Vampriric -> Upon hitting an enemy, you have a "+ round2(chance,1) +"% chance to “cast” a skull-like ability that deals 300 damage AOE damage and heals for 50hp.";
             }
 
          }
@@ -286,6 +300,13 @@ public class EquipmentToolTip extends ToolTip
             }
             else if(this.objectXML_.hasOwnProperty("Electrify")){
                this.itemEffectText_.text = "Electrify -> Upon hitting an enemy, you have a 3% chance to “cast” a scepter-like ability that deals 1000 damage and inflicts Slowed for 3 seconds to up to 5 targets.";
+            }
+            else if(this.objectXML_.hasOwnProperty("Vampiric")){
+               var numProj:int = this.objectXML_.NumProjectiles;
+               var multi:Boolean = this.objectXML_.Projectile.hasOwnProperty("MultiHit")
+               var chance:Number = 3 - ((numProj / 3))
+               chance = multi ? chance / 1.5 : chance;
+               this.itemEffectText_.text = "Vampriric -> Upon hitting an enemy, you have a "+ round2(chance,1) +"% chance to “cast” a skull-like ability that deals 300 damage AOE damage and heals for 50hp.";
             }
 
          }
@@ -1102,6 +1123,12 @@ public class EquipmentToolTip extends ToolTip
          this.descText_.y = this.icon_.height + 2;
          addChild(this.descText_);
       }*/
+
+      private function round2(num:Number, decimals:int):Number
+      {
+         var m:int = Math.pow(10, decimals);
+         return Math.round(num * m) / m;
+      }
 
       private function buildCategorySpecificText() : void
       {

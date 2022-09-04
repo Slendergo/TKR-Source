@@ -8,52 +8,33 @@ namespace wServer.core.terrain
 {
     public class WmapTile
     {
-        public byte Elevation;
-        public string ObjCfg;
-        public ObjectDesc ObjDesc;
-        public int ObjId;
-        public ushort ObjType;
-        public TileRegion Region;
-        public bool Spawned;
-        public TerrainType Terrain;
-        public TileDesc TileDesc;
-        public ushort TileId;
-        public ObjectDef? ToDefine;
-        public byte UpdateCount;
         public short X;
         public short Y;
 
-        private WmapDesc _originalDesc;
+        public ushort TileId;
 
-        public WmapTile(WmapDesc desc)
+        // static entity stuff
+        public int ObjId;
+        public ushort ObjType;
+        public string ObjCfg;
+        public ObjectDesc ObjDesc;
+
+        public TileRegion Region;
+        public TerrainType Terrain;
+        public ObjectDef? ToDefine;
+        public byte Elevation;
+        public byte UpdateCount = 1;
+        public bool Spawned;
+
+        public WmapTile(WmapDesc _originalDesc)
         {
-            _originalDesc = desc;
-
-            Reset();
-        }
-
-        public WmapTile Clone() => new WmapTile(_originalDesc)
-        {
-            UpdateCount = (byte)(UpdateCount + 1),
-            TileId = _originalDesc.TileId,
-            TileDesc = _originalDesc.TileDesc,
-            ObjType = _originalDesc.ObjType,
-            ObjDesc = ObjDesc,
-            ObjCfg = _originalDesc.ObjCfg,
-            Terrain = _originalDesc.Terrain,
-            Region = _originalDesc.Region,
-        };
-
-        public void CopyTo(WmapTile tile)
-        {
-            tile.TileId = TileId;
-            tile.TileDesc = TileDesc;
-            tile.ObjType = ObjType;
-            tile.ObjDesc = ObjDesc;
-            tile.ObjCfg = ObjCfg;
-            tile.Terrain = Terrain;
-            tile.Region = Region;
-            tile.Elevation = Elevation;
+            TileId = _originalDesc.TileId;
+            ObjType = _originalDesc.ObjType;
+            ObjDesc = _originalDesc.ObjDesc;
+            ObjCfg = _originalDesc.ObjCfg;
+            Terrain = _originalDesc.Terrain;
+            Region = _originalDesc.Region;
+            Elevation = _originalDesc.Elevation;
         }
 
         public void InitConnection(Wmap map, int x, int y)
@@ -61,40 +42,19 @@ namespace wServer.core.terrain
             if (ObjDesc == null || !ObjDesc.Connects || ObjCfg.Contains("conn:"))
                 return;
 
-            var connStr = ConnectionComputer.GetConnString((dx, dy) => map.Contains(x + dx, y + dy) && map[x + dx, y + dy].ObjType == ObjDesc.ObjectType);
-
+            var connStr = ConnectionComputer.GetConnString((dx, dy) => map.Contains(x + dx, y + dy) && map[x + dx, y + dy].ObjType == ObjType);
             ObjCfg = $"{ObjCfg};{connStr};";
         }
 
-        public void Reset(Wmap map = null, int x = 0, int y = 0)
+        public void CopyTo(WmapTile tile)
         {
-            TileId = _originalDesc.TileId;
-            TileDesc = _originalDesc.TileDesc;
-            ObjType = _originalDesc.ObjType;
-            ObjDesc = _originalDesc.ObjDesc;
-            ObjCfg = _originalDesc.ObjCfg;
-            Terrain = _originalDesc.Terrain;
-            Region = _originalDesc.Region;
-            Elevation = _originalDesc.Elevation;
-
-            if (map != null)
-                InitConnection(map, x, y);
-
-            UpdateCount++;
-        }
-
-        public void SetTile(WmapTile tile)
-        {
-            TileId = tile.TileId;
-            TileDesc = tile.TileDesc;
-            ObjType = tile.ObjType;
-            ObjDesc = tile.ObjDesc;
-            ObjCfg = tile.ObjCfg;
-            Terrain = tile.Terrain;
-            Region = tile.Region;
-            Elevation = tile.Elevation;
-
-            UpdateCount++;
+            tile.TileId = TileId;
+            tile.ObjType = ObjType;
+            tile.ObjDesc = ObjDesc;
+            tile.ObjCfg = ObjCfg;
+            tile.Terrain = Terrain;
+            tile.Region = Region;
+            tile.Elevation = Elevation;
         }
 
         public ObjectDef ToObjectDef(int x, int y)

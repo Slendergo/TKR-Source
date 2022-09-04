@@ -154,7 +154,7 @@ namespace wServer.core
         public World GetGuild(int guildId) => Guilds.TryGetValue(guildId, out var ret) ? ret : null;
         public int GetGuildId(int gameId) => WorldToGuildId.TryGetValue(gameId, out var ret) ? ret : -1;
 
-        public bool RemoveWorld(World world)
+        public void RemoveWorld(World world)
         {
             if (world is RealmWorld)
             {
@@ -177,9 +177,9 @@ namespace wServer.core
                         _ = Guilds.TryRemove(guildId, out _);
                         break;
                 }
-                return true;
             }
-            return false;
+
+            world.OnRemovedFromWorldManager();
         }
 
         public void Dispose()

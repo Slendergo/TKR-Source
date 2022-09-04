@@ -28,18 +28,18 @@ namespace wServer.core.setpieces
                 {
                     if (SetPiece[y, x] == 1)
                     {
-                        var tile = world.Map[x + p.X, y + p.Y].Clone();
+                        var tile = world.Map[x + p.X, y + p.Y];
                         tile.TileId = dat.IdToTileType["Red Quad"];
                         tile.ObjType = 0;
-                        world.Map[x + p.X, y + p.Y] = tile;
+                        tile.UpdateCount++;
                     }
 
                     if (SetPiece[y, x] == 2)
                     {
-                        var tile = world.Map[x + p.X, y + p.Y].Clone();
+                        var tile = world.Map[x + p.X, y + p.Y];
                         tile.TileId = dat.IdToTileType["Red Quad"];
                         tile.ObjType = 0;
-                        world.Map[x + p.X, y + p.Y] = tile;
+                        tile.UpdateCount++;
 
                         var en = Entity.Resolve(world.GameServer, "Realm Portal");
                         en.Move(x + p.X + 0.5f, y + p.Y + 0.5f);

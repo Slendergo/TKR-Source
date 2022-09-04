@@ -39,8 +39,6 @@ namespace wServer.logic.behaviors
 
                     tile.ObjType = 0;
                     tile.UpdateCount++;
-
-                    map[x, y] = tile;
                 }
         }
 

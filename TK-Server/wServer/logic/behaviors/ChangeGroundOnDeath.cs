@@ -35,38 +35,25 @@ namespace wServer.logic.behaviors
             for (var x = 0; x < dist; x++)
                 for (var y = 0; y < dist; y++)
                 {
-                    var tile = w.Map[x + pos.X, y + pos.Y].Clone();
+                    var tile = w.Map[x + pos.X, y + pos.Y];
 
+                    var r = Random.Next(targetType.Length);
                     if (groundToChange != null)
                     {
                         foreach (string type in groundToChange)
                         {
-                            var r = Random.Next(targetType.Length);
-
                             if (tile.TileId == dat.IdToTileType[type])
                             {
                                 tile.TileId = dat.IdToTileType[targetType[r]];
-
-                                var tileDesc = host.GameServer.Resources.GameData.Tiles[tile.TileId];
-
-                                tile.TileDesc = tileDesc;
-
-                                w.Map[x + pos.X, y + pos.Y].SetTile(tile);
                             }
                         }
                     }
                     else
                     {
-                        var r = Random.Next(targetType.Length);
-
                         tile.TileId = dat.IdToTileType[targetType[r]];
-
-                        var tileDesc = host.GameServer.Resources.GameData.Tiles[tile.TileId];
-
-                        tile.TileDesc = tileDesc;
-
-                        w.Map[x + pos.X, y + pos.Y].SetTile(tile);
                     }
+
+                    tile.UpdateCount++;
                 }
         }
 

@@ -32,8 +32,6 @@ namespace wServer.logic.behaviors
         protected override void OnStateEntry(Entity host, TickTime time, ref object state)
         {
             var map = host.World.Map;
-            var w = map.Width;
-            var h = map.Height;
 
             if (usearea)
                 for (var x = (int)host.X - area; x <= (int)host.X + area; x++)
@@ -45,8 +43,6 @@ namespace wServer.logic.behaviors
                         {
                             tile.ObjType = 0;
                             tile.UpdateCount++;
-
-                            host.World.Map[x, y] = tile;
                         }
                     }
             else
@@ -56,8 +52,6 @@ namespace wServer.logic.behaviors
                         var tile = host.World.Map[x, y];
                         tile.ObjType = 0;
                         tile.UpdateCount++;
-
-                        host.World.Map[x, y] = tile;
                     }
         }
 

@@ -312,17 +312,9 @@ namespace wServer.core.terrain
             }
         }
 
-        public void ResetTiles()
+        public void Clear()
         {
-            Regions.Clear();
-            for (var y = 0; y < Height; y++)
-                for (var x = 0; x < Width; x++)
-                {
-                    var t = Tiles[x, y];
-                    t.Reset();
-                    if (t.Region != 0)
-                        Regions.Add(new IntPoint(x, y), t.Region);
-                }
+            Tiles = null;
         }
     }
 }

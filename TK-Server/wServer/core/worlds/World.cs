@@ -278,7 +278,8 @@ namespace wServer.core.worlds
 
             var tile = Map[x_, y_];
 
-            if (tile.TileDesc.NoWalk)
+            var tileDesc = GameServer.Resources.GameData.Tiles[tile.TileId];
+            if (tileDesc.NoWalk)
                 return false;
 
             if (tile.ObjType != 0 && tile.ObjDesc != null)
@@ -392,6 +393,12 @@ namespace wServer.core.worlds
                 _ = EnterWorld(i);
         }
 
+        public void ProcessPlayerIO(ref TickTime time)
+        {
+            foreach (var player in Players.Values)
+                player.HandleIO(ref time);
+        }
+
         public bool Update(ref TickTime time)
         {
             try
@@ -415,10 +422,7 @@ namespace wServer.core.worlds
         protected virtual void UpdateLogic(ref TickTime time)
         {
             foreach (var player in Players.Values)
-            {
-                player.HandleIO(ref time);
                 player.Tick(ref time);
-            }
 
             foreach (var stat in StaticObjects.Values)
                 stat.Tick(ref time);
@@ -498,6 +502,11 @@ namespace wServer.core.worlds
             if (Lifetime >= 60000)
                 return true;
             return false;
+        }
+
+        public void OnRemovedFromWorldManager()
+        {
+            Map.Clear();
         }
     }
 }

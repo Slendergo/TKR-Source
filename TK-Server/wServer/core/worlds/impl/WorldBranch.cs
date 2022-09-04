@@ -5,40 +5,37 @@ namespace wServer.core.worlds.impl
 {
     public sealed class WorldBranch
     {
-        private readonly World Branch;
-        private readonly Dictionary<int, World> Branches = new Dictionary<int, World>();
+        private readonly World World;
+        private readonly Dictionary<int, World> SubWorlds = new Dictionary<int, World>();
 
-        public WorldBranch(World branch)
+        public WorldBranch(World world)
         {
-            Branch = branch;
+            World = world;
         }
 
-        public void AddBranch(World world)
-        {
-            Branches.Add(world.Id, world);
-        }
+        public void AddBranch(World world) => SubWorlds.Add(world.Id, world);
 
         public void GetPlayerCount(ref int count)
         {
-            count += Branch.Players.Values.Count;
-            foreach (var branch in Branches.Values)
+            count += World.Players.Values.Count;
+            foreach (var branch in SubWorlds.Values)
                 branch.GetPlayerCount(ref count);
         }
 
-        public bool HasBranches() => Branches.Count > 0;
+        public bool HasBranches() => SubWorlds.Count > 0;
 
         public void Update(ref TickTime time)
         {
             var toRemove = new List<World>();
-            foreach (var world in Branches.Values)
+            foreach (var world in SubWorlds.Values)
                 if (world.Update(ref time))
                     toRemove.Add(world);
 
             foreach (var world in toRemove)
             {
                 world.ParentWorld = null;
-                _ = Branch.GameServer.WorldManager.RemoveWorld(world);
-                _ = Branches.Remove(world.Id);
+                World.GameServer.WorldManager.RemoveWorld(world);
+                _ = SubWorlds.Remove(world.Id);
             }
             toRemove.Clear();
         }

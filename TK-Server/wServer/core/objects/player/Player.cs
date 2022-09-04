@@ -361,7 +361,6 @@ namespace wServer.core.objects
         {
             if (Client.State == ProtocolState.Disconnected || _dead)
                 return;
-
             _dead = true;
 
             if (tile != null && tile.Spawned)

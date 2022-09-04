@@ -21,10 +21,9 @@ namespace wServer.core.setpieces
                 for (var y = 0; y < Size; y++)
                     if (SetPiece[y, x] == 1)
                     {
-                        var tile = world.Map[x + p.X, y + p.Y].Clone();
+                        var tile = world.Map[x + p.X, y + p.Y];
                         tile.TileId = dat.IdToTileType["Puke Water"];
                         tile.ObjType = 0;
-                        world.Map[x + p.X, y + p.Y] = tile;
                     }
         }
     }

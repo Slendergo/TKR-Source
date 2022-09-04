@@ -42,14 +42,9 @@ namespace wServer.logic.behaviors
 
                     tile.TileId = replacedTileId;
 
-                    var tileDesc = host.GameServer.Resources.GameData.Tiles[tile.TileId];
-
-                    tile.TileDesc = tileDesc;
-
                     if (tile.ObjId == 0)
                         tile.ObjId = host.World.GetNextEntityId();
-
-                    map[x, y].SetTile(tile);
+                    tile.UpdateCount++;
                 }
         }
 

@@ -1,4 +1,28 @@
 <Objects>
+	<Object type="0x4127" id="Quetzalcoat Laser">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x07</Index>
+		</Texture>
+		<AngleCorrection>45</AngleCorrection>
+	</Object>
+	<Object type="0x4128" id="Quetzalcoat Small">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x08</Index>
+		</Texture>
+		<AngleCorrection>1</AngleCorrection>
+	</Object>
+	<Object type="0x4129" id="Quetzalcoat Small Arc">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x09</Index>
+		</Texture>
+		<AngleCorrection>1</AngleCorrection>
+	</Object>
 	<Object type="0x2026" id="Sugar Cane Shot">
 		<Class>Projectile</Class>
 		<Texture>

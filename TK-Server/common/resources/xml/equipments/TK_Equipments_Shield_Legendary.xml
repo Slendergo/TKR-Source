@@ -70,7 +70,7 @@
     <NumProjectiles>5</NumProjectiles>
     <feedPower>1000</feedPower>
   </Object>
-  <Object type="0x50f2" id="Shield of The Ancient's">
+  <Object type="0x50f2" id="Shield of The Ancients">
     <Class>Equipment</Class>
     <Item />
     <SteamRoller />

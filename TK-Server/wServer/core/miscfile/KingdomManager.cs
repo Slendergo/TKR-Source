@@ -362,8 +362,7 @@ namespace wServer.core
                     Tuple.Create("Swarm", 0.05),
                     Tuple.Create("Wasp Queen", 0.2),
                     Tuple.Create("Shambling Sludge", 0.03),
-                    Tuple.Create("Orc King", 0.06),
-                    Tuple.Create("Candy Gnome", 0.02)
+                    Tuple.Create("Orc King", 0.06)
                 })
             },
             { TerrainType.MidForest, Tuple.Create(
@@ -502,7 +501,7 @@ namespace wServer.core
                 case KingdomState.Emptying:
                     {
                         BroadcastMsg("RAAHH MY TROOPS HAVE FAILED ME!");
-                        BroadcastMsg("THIS KINDOM SHALL NOT FALL!!");
+                        BroadcastMsg("THIS KINGDOM SHALL NOT FALL!!");
 
                         CurrentState = KingdomState.DoNothing;
 

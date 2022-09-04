@@ -20,6 +20,7 @@
 			<MaxDamage>305</MaxDamage>
 			<ArmorPiercing />
 		</Projectile>
+		<NumProjectiles>1</NumProjectiles>
 		<BagType>7</BagType>
 		<FameBonus>4</FameBonus>
 		<OldSound>magicShoot</OldSound>

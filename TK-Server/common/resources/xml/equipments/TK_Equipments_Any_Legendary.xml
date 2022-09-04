@@ -396,7 +396,6 @@
     <Sound>use_potion</Sound>
     <Forgeable />
     <Legendary />
-    <Soulbound />
     <BagType>7</BagType>
   </Object>
   <Object type="0x501a" id="Water Fragment">
@@ -411,7 +410,6 @@
     <Sound>use_potion</Sound>
     <Forgeable />
     <Legendary />
-    <Soulbound />
     <BagType>7</BagType>
   </Object>
   <Object type="0x501b" id="Wind Fragment">
@@ -426,7 +424,6 @@
     <Sound>use_potion</Sound>
     <Forgeable />
     <Legendary />
-    <Soulbound />
     <BagType>7</BagType>
   </Object>
   <Object type="0x501c" id="Earth Fragment">
@@ -441,7 +438,6 @@
     <Sound>use_potion</Sound>
     <Forgeable />
     <Legendary />
-    <Soulbound />
     <BagType>7</BagType>
   </Object>
   <Object type="0x501d" id="Bedrock Fragment">

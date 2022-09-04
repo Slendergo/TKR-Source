@@ -87,7 +87,7 @@ namespace wServer.logic
             new Threshold(0.03,
                 new ItemLoot("Bow of the Havens", 0.00014),
                 new ItemLoot("Mummified Rod", 0.00014),
-                new ItemLoot("Shield of The Ancient's", 0.00014),
+                new ItemLoot("Shield of The Ancients", 0.00014),
                 new ItemLoot("Soul of Mana", 0.1),
                 new ItemLoot("Pharaoh's Scripture", 0.00014)
                 ),

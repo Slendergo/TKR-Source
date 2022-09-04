@@ -187,7 +187,7 @@ namespace wServer.logic
                 ),
             new Threshold(0.03,
                 new ItemLoot("Talisman Fragment", 0.01),
-                new ItemLoot("Magicians Hide", 0.001)
+                new ItemLoot("Magician's Hide", 0.001)
                 ),
             new Threshold(0.01,
                 new ItemLoot("Potion of Life", 0.18),

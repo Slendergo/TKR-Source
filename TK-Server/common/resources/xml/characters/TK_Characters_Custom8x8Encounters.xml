@@ -844,6 +844,7 @@
 		<Size>130</Size>
 		<StasisImmune/>
 		<DazedImmune/>
+		<SlowedImmune/>
 		<MaxHitPoints>20000</MaxHitPoints>
 		<Defense>45</Defense>
 		<Projectile id="0">
@@ -889,6 +890,7 @@
 		<Size>130</Size>
 		<StasisImmune/>
 		<DazedImmune/>
+		<SlowedImmune/>
 		<MaxHitPoints>20000</MaxHitPoints>
 		<Defense>45</Defense>
 		<Projectile id="0">
@@ -934,6 +936,7 @@
 		<Size>130</Size>
 		<StasisImmune/>
 		<DazedImmune/>
+		<SlowedImmune/>
 		<MaxHitPoints>50000</MaxHitPoints>
 		<Defense>45</Defense>
 		<Projectile id="0">
@@ -986,6 +989,7 @@
 		<Size>130</Size>
 		<StasisImmune/>
 		<DazedImmune/>
+		<SlowedImmune/>
 		<MaxHitPoints>50000</MaxHitPoints>
 		<Defense>45</Defense>
 		<Projectile id="0">
@@ -1038,6 +1042,7 @@
 		<Size>120</Size>
 		<StasisImmune/>
 		<DazedImmune/>
+		<SlowedImmune/>
 		<MaxHitPoints>20000</MaxHitPoints>
 		<Defense>45</Defense>
 		<Projectile id="0">
@@ -1064,6 +1069,7 @@
 		<Size>120</Size>
 		<StasisImmune/>
 		<DazedImmune/>
+		<SlowedImmune/>
 		<MaxHitPoints>20000</MaxHitPoints>
 		<Defense>45</Defense>
 		<Projectile id="0">
@@ -1090,6 +1096,7 @@
 		<Size>120</Size>
 		<StasisImmune/>
 		<DazedImmune/>
+		<SlowedImmune/>
 		<MaxHitPoints>25000</MaxHitPoints>
 		<Defense>45</Defense>
 		<Projectile id="0">
@@ -1117,6 +1124,7 @@
 		<Size>120</Size>
 		<StasisImmune/>
 		<DazedImmune/>
+		<SlowedImmune/>
 		<MaxHitPoints>25000</MaxHitPoints>
 		<Defense>45</Defense>
 		<Projectile id="0">
@@ -1144,6 +1152,7 @@
 		<Size>80</Size>
 		<StasisImmune/>
 		<DazedImmune/>
+		<SlowedImmune/>
 		<MaxHitPoints>25000</MaxHitPoints>
 		<Defense>45</Defense>
 		<Projectile id="0">
@@ -1171,6 +1180,7 @@
 		<Size>80</Size>
 		<StasisImmune/>
 		<DazedImmune/>
+		<SlowedImmune/>
 		<MaxHitPoints>25000</MaxHitPoints>
 		<Defense>45</Defense>
 		<Projectile id="0">

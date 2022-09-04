@@ -94,7 +94,7 @@
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
   </Object>
-  <Object type="0x50e6" id="Magicians Hide">
+  <Object type="0x50e6" id="Magician's Hide">
     <Class>Equipment</Class>
     <Item />
     <Mutilate />

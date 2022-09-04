@@ -247,4 +247,28 @@
 		</Texture>
 		<Rotation>90</Rotation>
 	</Object>
+	<Object type="0x4112" id="Quetzalcoat Arc">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomProjsBig</File>
+			<Index>0x24</Index>
+		</Texture>
+		<AngleCorrection>1</AngleCorrection>
+	</Object>
+	<Object type="0x4113" id="Quetzalcoat Rings">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomProjsBig</File>
+			<Index>0x25</Index>
+		</Texture>
+		<Rotation>110</Rotation>
+	</Object>
+	<Object type="0x4114" id="Quetzalcoat Star">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomProjsBig</File>
+			<Index>0x26</Index>
+		</Texture>
+		<Rotation>90</Rotation>
+	</Object>
 </Objects>

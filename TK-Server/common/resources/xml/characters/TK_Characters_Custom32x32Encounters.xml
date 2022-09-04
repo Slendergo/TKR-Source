@@ -1,4 +1,356 @@
 ﻿<Objects>
+	<Object type="0x4125" id="Snowy Turret Toss">
+		<Enemy />
+		<Class>Character</Class>
+		<NoMiniMap/>
+		<Hero />
+		<SpecialEnemy />
+		<God />
+		<Level>1</Level>
+		<Texture>
+			<File>invisible</File>
+			<Index>0</Index>
+		</Texture>
+		<HitSound>monster/goblins_hit</HitSound>
+		<DeathSound>monster/goblins_death</DeathSound>
+		<Size>100</Size>
+		<ShadowSize>0</ShadowSize>
+		<MaxHitPoints>65000</MaxHitPoints>
+		<Defense>25</Defense>
+		<XpMult>2.5</XpMult>
+		<Projectile id="0">
+			<ObjectId>Quetzalcoat Star</ObjectId>
+			<Damage>130</Damage>
+			<Size>150</Size>
+			<Speed>0</Speed>
+			<ArmorPierce />
+			<LifetimeMS>1100</LifetimeMS>
+		</Projectile>
+		<Projectile id="1">
+			<ObjectId>Quetzalcoat Star</ObjectId>
+			<Damage>130</Damage>
+			<Size>150</Size>
+			<Speed>75</Speed>
+			<ArmorPierce />
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+	</Object>
+	<Object type="0x4120" id="Snowy Turret">
+		<Enemy />
+		<Class>Character</Class>
+		<NoMiniMap/>
+		<Hero />
+		<SpecialEnemy />
+		<God />
+		<Level>1</Level>
+		<Texture>
+			<File>invisible</File>
+			<Index>0</Index>
+		</Texture>
+		<HitSound>monster/goblins_hit</HitSound>
+		<DeathSound>monster/goblins_death</DeathSound>
+		<Size>100</Size>
+		<ShadowSize>0</ShadowSize>
+		<MaxHitPoints>65000</MaxHitPoints>
+		<Defense>25</Defense>
+		<XpMult>2.5</XpMult>
+		<Projectile id="0">
+			<ObjectId>Quetzalcoat Star</ObjectId>
+			<Damage>225</Damage>
+			<Size>150</Size>
+			<Speed>0</Speed>
+			<ArmorPierce />
+			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
+			<LifetimeMS>1100</LifetimeMS>
+		</Projectile>
+		<Projectile id="1">
+			<ObjectId>Quetzalcoat Star</ObjectId>
+			<Damage>225</Damage>
+			<Size>150</Size>
+			<Speed>75</Speed>
+			<ArmorPierce />
+			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+	</Object>
+	<Object type="0x4121" id="Snowy Turret 1">
+		<Enemy />
+		<Class>Character</Class>
+		<NoMiniMap/>
+		<Hero />
+		<SpecialEnemy />
+		<God />
+		<Level>1</Level>
+		<Texture>
+			<File>invisible</File>
+			<Index>0</Index>
+		</Texture>
+		<HitSound>monster/goblins_hit</HitSound>
+		<DeathSound>monster/goblins_death</DeathSound>
+		<Size>100</Size>
+		<ShadowSize>0</ShadowSize>
+		<MaxHitPoints>65000</MaxHitPoints>
+		<Defense>25</Defense>
+		<XpMult>2.5</XpMult>
+		<Projectile id="0">
+			<ObjectId>Quetzalcoat Star</ObjectId>
+			<Damage>225</Damage>
+			<Size>150</Size>
+			<Speed>0</Speed>
+			<ArmorPierce />
+			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
+			<LifetimeMS>1100</LifetimeMS>
+		</Projectile>
+		<Projectile id="1">
+			<ObjectId>Quetzalcoat Star</ObjectId>
+			<Damage>225</Damage>
+			<Size>150</Size>
+			<Speed>75</Speed>
+			<ArmorPierce />
+			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+	</Object>
+	<Object type="0x4122" id="Snowy Turret 2">
+		<Enemy />
+		<Class>Character</Class>
+		<NoMiniMap/>
+		<Hero />
+		<SpecialEnemy />
+		<God />
+		<Level>1</Level>
+		<Texture>
+			<File>invisible</File>
+			<Index>0</Index>
+		</Texture>
+		<HitSound>monster/goblins_hit</HitSound>
+		<DeathSound>monster/goblins_death</DeathSound>
+		<Size>100</Size>
+		<ShadowSize>0</ShadowSize>
+		<MaxHitPoints>65000</MaxHitPoints>
+		<Defense>25</Defense>
+		<XpMult>2.5</XpMult>
+		<Projectile id="0">
+			<ObjectId>Quetzalcoat Star</ObjectId>
+			<Damage>225</Damage>
+			<Size>150</Size>
+			<Speed>0</Speed>
+			<ArmorPierce />
+			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
+			<LifetimeMS>1100</LifetimeMS>
+		</Projectile>
+		<Projectile id="1">
+			<ObjectId>Quetzalcoat Star</ObjectId>
+			<Damage>225</Damage>
+			<Size>150</Size>
+			<Speed>75</Speed>
+			<ArmorPierce />
+			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+	</Object>
+	<Object type="0x4123" id="Snowy Turret 3">
+		<Enemy />
+		<Class>Character</Class>
+		<NoMiniMap/>
+		<Hero />
+		<SpecialEnemy />
+		<God />
+		<Level>1</Level>
+		<Texture>
+			<File>invisible</File>
+			<Index>0</Index>
+		</Texture>
+		<HitSound>monster/goblins_hit</HitSound>
+		<DeathSound>monster/goblins_death</DeathSound>
+		<Size>100</Size>
+		<ShadowSize>0</ShadowSize>
+		<MaxHitPoints>65000</MaxHitPoints>
+		<Defense>25</Defense>
+		<XpMult>2.5</XpMult>
+		<Projectile id="0">
+			<ObjectId>Quetzalcoat Star</ObjectId>
+			<Damage>225</Damage>
+			<Size>150</Size>
+			<Speed>0</Speed>
+			<ArmorPierce />
+			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
+			<LifetimeMS>1100</LifetimeMS>
+		</Projectile>
+		<Projectile id="1">
+			<ObjectId>Quetzalcoat Star</ObjectId>
+			<Damage>225</Damage>
+			<Size>150</Size>
+			<Speed>75</Speed>
+			<ArmorPierce />
+			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+	</Object>
+	<Object type="0x4124" id="Snowy Turret 4">
+		<Enemy />
+		<Class>Character</Class>
+		<NoMiniMap/>
+		<Hero />
+		<SpecialEnemy />
+		<God />
+		<Level>1</Level>
+		<Texture>
+			<File>invisible</File>
+			<Index>0</Index>
+		</Texture>
+		<HitSound>monster/goblins_hit</HitSound>
+		<DeathSound>monster/goblins_death</DeathSound>
+		<Size>100</Size>
+		<ShadowSize>0</ShadowSize>
+		<MaxHitPoints>65000</MaxHitPoints>
+		<Defense>25</Defense>
+		<XpMult>2.5</XpMult>
+		<Projectile id="0">
+			<ObjectId>Quetzalcoat Star</ObjectId>
+			<Damage>225</Damage>
+			<Size>150</Size>
+			<Speed>0</Speed>
+			<ArmorPierce />
+			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
+			<LifetimeMS>1100</LifetimeMS>
+		</Projectile>
+		<Projectile id="1">
+			<ObjectId>Quetzalcoat Star</ObjectId>
+			<Damage>225</Damage>
+			<Size>150</Size>
+			<Speed>75</Speed>
+			<ArmorPierce />
+			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+	</Object>
+	<Object type="0x4109" id="Primordial Quetzalcoatl">
+		<DisplayId>Primordial Quetzalcoatl</DisplayId>
+		<Enemy />
+		<Event />
+		<Quest />
+		<God />
+		<Encounter />
+		<StasisImmune />
+		<ParalyzeImmune />
+		<Level>20</Level>
+		<Class>Character</Class>
+		<AnimatedTexture>
+			<File>Custom32x32Encounters</File>
+			<Index>29</Index>
+		</AnimatedTexture>
+		<Size>120</Size>
+		<HitSound>monster/dragons_hit</HitSound>
+		<DeathSound>monster/djinn_hit</DeathSound>
+		<MaxHitPoints>95000</MaxHitPoints>
+		<Defense>55</Defense>
+		<Projectile id="0">
+			<ObjectId>Cerebrus's Claw</ObjectId>
+			<Damage>250</Damage>
+			<Speed>75</Speed>
+			<LifetimeMS>1000</LifetimeMS>
+			<Amplitude>2</Amplitude>
+			<Frequency>0.47</Frequency>
+			<Size>250</Size>
+			<ArmorPiercing />
+		</Projectile>
+		<Projectile id="1">
+			<ObjectId>Quetzalcoat Arc</ObjectId>
+			<Damage>90</Damage>
+			<Speed>85</Speed>
+			<LifetimeMS>2000</LifetimeMS>
+			<ConditionEffect duration="0.5">Paralyzed</ConditionEffect>
+			<MultiHit />
+			<Size>130</Size>
+		</Projectile>
+		<Projectile id="2">
+			<ObjectId>Quetzalcoat Rings</ObjectId>
+			<Damage>175</Damage>
+			<Speed>25</Speed>
+			<LifetimeMS>3000</LifetimeMS>
+			<MultiHit />
+			<Boomerang/>
+			<Size>150</Size>
+		</Projectile>
+		<Projectile id="3">
+			<ObjectId>Quetzalcoat Star</ObjectId>
+			<Damage>160</Damage>
+			<Speed>55</Speed>
+			<LifetimeMS>4000</LifetimeMS>
+			<ConditionEffect duration="3">Slowed</ConditionEffect>
+			<MultiHit />
+			<Frequency>2</Frequency>
+			<Amplitude>0.3</Amplitude>
+			<Size>150</Size>
+			<Boomerang/>
+		</Projectile>
+		<Projectile id="4">
+			<ObjectId>Quetzalcoat Arc</ObjectId>
+			<Damage>120</Damage>
+			<Speed>100</Speed>
+			<LifetimeMS>3500</LifetimeMS>
+			<Size>150</Size>
+		</Projectile>
+		<Projectile id="5">
+			<ObjectId>Quetzalcoat Arc</ObjectId>
+			<Damage>120</Damage>
+			<Speed>85</Speed>
+			<LifetimeMS>3500</LifetimeMS>
+			<Size>150</Size>
+		</Projectile>
+		<Projectile id="6">
+			<ObjectId>Quetzalcoat Arc</ObjectId>
+			<Damage>120</Damage>
+			<Speed>65</Speed>
+			<LifetimeMS>3500</LifetimeMS>
+			<Size>150</Size>
+		</Projectile>
+		<Projectile id="7">
+			<ObjectId>Quetzalcoat Laser</ObjectId>
+			<Damage>120</Damage>
+			<Speed>30</Speed>
+			<LifetimeMS>3500</LifetimeMS>
+			<Size>150</Size>
+		</Projectile>
+		<Projectile id="8">
+			<ObjectId>Quetzalcoat Small</ObjectId>
+			<Damage>120</Damage>
+			<Speed>65</Speed>
+			<LifetimeMS>3500</LifetimeMS>
+			<Size>150</Size>
+		</Projectile>
+		<Projectile id="9">
+			<ObjectId>Quetzalcoat Small Arc</ObjectId>
+			<Damage>120</Damage>
+			<Speed>100</Speed>
+			<LifetimeMS>3500</LifetimeMS>
+			<Size>150</Size>
+		</Projectile>
+		<Projectile id="10">
+			<ObjectId>Quetzalcoat Star</ObjectId>
+			<Damage>160</Damage>
+			<Speed>50</Speed>
+			<Amplitude>4</Amplitude>
+			<Frequency>1</Frequency>
+			<LifetimeMS>1000</LifetimeMS>
+			<Size>100</Size>
+		</Projectile>
+		<Projectile id="11">
+			<ObjectId>Quetzalcoat Small Arc</ObjectId>
+			<Damage>120</Damage>
+			<Speed>85</Speed>
+			<LifetimeMS>3500</LifetimeMS>
+			<Size>150</Size>
+		</Projectile>
+		<Projectile id="12">
+			<ObjectId>Quetzalcoat Small Arc</ObjectId>
+			<Damage>120</Damage>
+			<Speed>50</Speed>
+			<LifetimeMS>3500</LifetimeMS>
+			<Size>150</Size>
+		</Projectile>
+	</Object>
 	<Object type="0x510" id="Baron Turret">
 		<Enemy />
 		<Class>Character</Class>
@@ -14,7 +366,7 @@
 		<HitSound>monster/goblins_hit</HitSound>
 		<DeathSound>monster/goblins_death</DeathSound>
 		<Size>100</Size>
-		<ShadowSize>45</ShadowSize>
+		<ShadowSize>0</ShadowSize>
 		<MaxHitPoints>65000</MaxHitPoints>
 		<Defense>25</Defense>
 		<XpMult>2.5</XpMult>
@@ -50,7 +402,7 @@
 		<HitSound>monster/goblins_hit</HitSound>
 		<DeathSound>monster/goblins_death</DeathSound>
 		<Size>100</Size>
-		<ShadowSize>45</ShadowSize>
+		<ShadowSize>0</ShadowSize>
 		<MaxHitPoints>65000</MaxHitPoints>
 		<Defense>25</Defense>
 		<XpMult>2.5</XpMult>
@@ -86,7 +438,7 @@
 		<HitSound>monster/goblins_hit</HitSound>
 		<DeathSound>monster/goblins_death</DeathSound>
 		<Size>100</Size>
-		<ShadowSize>45</ShadowSize>
+		<ShadowSize>0</ShadowSize>
 		<MaxHitPoints>65000</MaxHitPoints>
 		<Defense>25</Defense>
 		<XpMult>2.5</XpMult>
@@ -122,7 +474,7 @@
 		<HitSound>monster/goblins_hit</HitSound>
 		<DeathSound>monster/goblins_death</DeathSound>
 		<Size>100</Size>
-		<ShadowSize>45</ShadowSize>
+		<ShadowSize>0</ShadowSize>
 		<MaxHitPoints>65000</MaxHitPoints>
 		<Defense>25</Defense>
 		<XpMult>2.5</XpMult>

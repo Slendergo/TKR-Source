@@ -66,11 +66,11 @@ namespace wServer.core.objects.vendors
         {
             new ShopItem("Strange Library Key", 750),
             new ShopItem("Cemetery Key", 400),
-            new ShopItem("Lost Halls Key", 1500),
+            new ShopItem("Lost Halls Key", 3000),
             new ShopItem("Defiled Graveyard Key", 750),
             new ShopItem("Davy's Key", 750),
             new ShopItem("The Crawling Depths Key", 750),
-            new ShopItem("Shatters Key", 1500),
+            new ShopItem("Shatters Key", 3000),
             new ShopItem("Ocean Trench Key", 750),
             new ShopItem("Tomb of the Ancients Key", 1500),
             new ShopItem("Deadwater Docks Key", 750),

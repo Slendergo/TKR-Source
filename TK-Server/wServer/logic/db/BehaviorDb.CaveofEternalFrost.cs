@@ -48,6 +48,140 @@ namespace wServer.logic
                     )
                 )
             )
+        .Init("Snowy Turret",
+            new State(
+                new State("Shoot",
+                    new Shoot(15, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 0),
+                    new Shoot(15, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1000),
+                    new TimedTransition(1200, "die")
+                    ),
+                new State("die",
+                    new Suicide()
+                    )
+                )
+            )
+        .Init("Snowy Turret 1",
+            new State(
+                new State("Shoot",
+                    new Shoot(15, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 0),
+                    new Shoot(15, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1000),
+                    new TimedTransition(1200, "die")
+                    ),
+                new State("die",
+                    new Suicide()
+                    )
+                )
+            )
+        .Init("Snowy Turret 2",
+            new State(
+                new State("Shoot",
+                    new Shoot(15, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 0),
+                    new Shoot(15, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1000),
+                    new TimedTransition(1200, "die")
+                    ),
+                new State("die",
+                    new Suicide()
+                    )
+                )
+            )
+        .Init("Snowy Turret 3",
+            new State(
+                new State("Shoot",
+                    new Shoot(15, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 0),
+                    new Shoot(15, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1000),
+                    new TimedTransition(1200, "die")
+                    ),
+                new State("die",
+                    new Suicide()
+                    )
+                )
+            )
+        .Init("Snowy Turret 4",
+            new State(
+                new State("Shoot",
+                    new Shoot(15, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 0),
+                    new Shoot(15, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1000),
+                    new TimedTransition(1200, "die")
+                    ),
+                new State("die",
+                    new Suicide()
+                    )
+                )
+            )
+        .Init("Snowy Turret Toss",
+            new State(
+                new State("Check",
+                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    ),
+                new State("Shoot",
+                    new InvisiToss("Snowy Turret", 8, angle: 0, coolDown: 2800, coolDownOffset: 0),
+                    new InvisiToss("Snowy Turret 1", 8, angle: 72, coolDown: 2800, coolDownOffset: 0),
+                    new InvisiToss("Snowy Turret 2", 8, angle: 144, coolDown: 2800, coolDownOffset: 0),
+                    new InvisiToss("Snowy Turret 3", 8, angle: 216, coolDown: 2800, coolDownOffset: 0),
+                    new InvisiToss("Snowy Turret 4", 8, angle: 288, coolDown: 2800, coolDownOffset: 0),
+
+                    new InvisiToss("Snowy Turret", 8, angle: 36, coolDown: 2800, coolDownOffset: 1400),
+                    new InvisiToss("Snowy Turret 1", 8, angle: 108, coolDown: 2800, coolDownOffset: 1400),
+                    new InvisiToss("Snowy Turret 2", 8, angle: 180, coolDown: 2800, coolDownOffset: 1400),
+                    new InvisiToss("Snowy Turret 3", 8, angle: 252, coolDown: 2800, coolDownOffset: 1400),
+                    new InvisiToss("Snowy Turret 4", 8, angle: 324, coolDown: 2800, coolDownOffset: 1400),
+                    new EntityNotExistsTransition("Primordial Quetzalcoatl", 50, "die")
+                    ),
+                new State("die",
+                    new Suicide()
+                    )
+                )
+            )
+        .Init("Primordial Quetzalcoatl",
+            new State(
+                new State("Check",
+                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new PlayerWithinTransition(8, "Remove1")
+                    ),
+                new State("Remove1",
+                    new Spawn("Snowy Turret Toss", coolDown: 99999),
+                    new TimedTransition(600, "Remove2")
+                    ),
+                new State("Remove",
+                    new ReturnToSpawn(2, 1),
+                    new Shoot(12, 1, projectileIndex: 9, coolDown: 600),
+                    new Shoot(12, 2, projectileIndex: 11, shootAngle: 10, coolDown: 600),
+                    new Shoot(12, 3, projectileIndex: 12, shootAngle: 15, coolDown: 600),
+                    new TimedTransition(1000, "Remove2")
+                    ),
+                new State("Remove2",
+                    new RemoveConditionalEffect(ConditionEffectIndex.Invincible),
+                    new Wander(0.4),
+                    new Charge(10, 8, coolDown: 3000),
+                    new Shoot(12, 1, projectileIndex: 9, coolDown: 600),
+                    new Shoot(12, 2, projectileIndex: 11, shootAngle: 10, coolDown: 600),
+                    new Shoot(12, 3, projectileIndex: 12, shootAngle: 15, coolDown: 600),
+                    new OrderOnce(10, "Snowy Turret Toss", "Shoot"),
+                    new Taunt("ahahahaHAHAHAHAH"),
+                    new TimedTransition(5000, "Ring")
+                    ),
+                new State("Ring",
+                    new StayCloseToSpawn(3, 15),
+                    new Shoot(12, 2, projectileIndex: 9, fixedAngle: 0, coolDown: 1600, coolDownOffset: 0),
+                    new Shoot(12, 2, projectileIndex: 9, fixedAngle: 10, coolDown: 1600, coolDownOffset: 200),
+                    new Shoot(12, 2, projectileIndex: 9, fixedAngle: -10, coolDown: 1600, coolDownOffset: 200),
+                    new Shoot(12, 2, projectileIndex: 11, fixedAngle: 20, coolDown: 1600, coolDownOffset: 400),
+                    new Shoot(12, 2, projectileIndex: 11, fixedAngle: -20, coolDown: 1600, coolDownOffset: 400),
+                    new Shoot(12, 2, projectileIndex: 11, fixedAngle: 30, coolDown: 1600, coolDownOffset: 600),
+                    new Shoot(12, 2, projectileIndex: 11, fixedAngle: -30, coolDown: 1600, coolDownOffset: 600),
+                    new Shoot(12, 2, projectileIndex: 11, fixedAngle: 40, coolDown: 1600, coolDownOffset: 800),
+                    new Shoot(12, 2, projectileIndex: 11, fixedAngle: -40, coolDown: 1600, coolDownOffset: 800),
+                    new Shoot(12, 2, projectileIndex: 11, fixedAngle: 50, coolDown: 1600, coolDownOffset: 1000),
+                    new Shoot(12, 2, projectileIndex: 11, fixedAngle: -50, coolDown: 1600, coolDownOffset: 1000),
+                    new Shoot(12, 2, projectileIndex: 12, fixedAngle: 60, coolDown: 1600, coolDownOffset: 1200),
+                    new Shoot(12, 2, projectileIndex: 12, fixedAngle: -60, coolDown: 1600, coolDownOffset: 1200),
+                    new Shoot(12, 2, projectileIndex: 12, fixedAngle: 70, coolDown: 1600, coolDownOffset: 1400),
+                    new Shoot(12, 2, projectileIndex: 12, fixedAngle: -70, coolDown: 1600, coolDownOffset: 1400),
+                    new Wander(0.4),
+                    new TimedTransition(1600, "Remove")
+                    )
+                )
+            )
         .Init("Abominable Snowman",
             new State(
                 new ScaleHP2(20),

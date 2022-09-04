@@ -459,7 +459,7 @@
       <File>CustomObj</File>
       <Index>0x69</Index>
     </Texture>
-    <SetTier />
+    <Rare />
     <SlotType>17</SlotType>
     <Description>This staff has an azurite gem lodged in at the top of magically enchanted wood. It was used by fairies for self-defense.</Description>
     <RateOfFire>1.25</RateOfFire>

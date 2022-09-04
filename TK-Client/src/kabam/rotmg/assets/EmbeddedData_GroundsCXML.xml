@@ -347,6 +347,24 @@
       <Index>0x35</Index>
     </Texture>
   </Ground>
+  <Ground type="0x4115" id="Corrupt Floor">
+    <RandomTexture>
+      <Texture>
+        <File>CustomObj1</File>
+        <Index>0xa1</Index>
+      </Texture>
+      <Texture>
+        <File>CustomObj1</File>
+        <Index>0xa2</Index>
+      </Texture>
+      <Texture>
+        <File>CustomObj1</File>
+        <Index>0xa3</Index>
+      </Texture>
+    </RandomTexture>
+    <RandomOffset />
+    <BlendingPriority>1</BlendingPriority>
+  </Ground>
   <Ground type="0x4010" id="Water Elemental">
     <Texture>
       <File>customEnvironmentMortomus</File>
@@ -644,6 +662,12 @@
     <Texture>
       <File>customEnvironment</File>
       <Index>0x6b</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x4220" id="Dark Red Grass">
+    <Texture>
+      <File>customEnvironment</File>
+      <Index>0x8c</Index>
     </Texture>
   </Ground>
   <Ground type="0x155" id="Lava creep 1">

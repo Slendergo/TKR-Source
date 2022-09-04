@@ -27601,6 +27601,358 @@
     <MaxHitPoints>30000</MaxHitPoints>
     <Defense>20</Defense>
   </Object>
+  <Object type="0x4125" id="Snowy Turret Toss">
+    <Enemy />
+    <Class>Character</Class>
+    <NoMiniMap />
+    <Hero />
+    <SpecialEnemy />
+    <God />
+    <Level>1</Level>
+    <Texture>
+      <File>invisible</File>
+      <Index>0</Index>
+    </Texture>
+    <HitSound>monster/goblins_hit</HitSound>
+    <DeathSound>monster/goblins_death</DeathSound>
+    <Size>100</Size>
+    <ShadowSize>0</ShadowSize>
+    <MaxHitPoints>65000</MaxHitPoints>
+    <Defense>25</Defense>
+    <XpMult>2.5</XpMult>
+    <Projectile id="0">
+      <ObjectId>Quetzalcoat Star</ObjectId>
+      <Damage>130</Damage>
+      <Size>150</Size>
+      <Speed>0</Speed>
+      <ArmorPierce />
+      <LifetimeMS>1100</LifetimeMS>
+    </Projectile>
+    <Projectile id="1">
+      <ObjectId>Quetzalcoat Star</ObjectId>
+      <Damage>130</Damage>
+      <Size>150</Size>
+      <Speed>75</Speed>
+      <ArmorPierce />
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+  </Object>
+  <Object type="0x4120" id="Snowy Turret">
+    <Enemy />
+    <Class>Character</Class>
+    <NoMiniMap />
+    <Hero />
+    <SpecialEnemy />
+    <God />
+    <Level>1</Level>
+    <Texture>
+      <File>invisible</File>
+      <Index>0</Index>
+    </Texture>
+    <HitSound>monster/goblins_hit</HitSound>
+    <DeathSound>monster/goblins_death</DeathSound>
+    <Size>100</Size>
+    <ShadowSize>0</ShadowSize>
+    <MaxHitPoints>65000</MaxHitPoints>
+    <Defense>25</Defense>
+    <XpMult>2.5</XpMult>
+    <Projectile id="0">
+      <ObjectId>Quetzalcoat Star</ObjectId>
+      <Damage>225</Damage>
+      <Size>150</Size>
+      <Speed>0</Speed>
+      <ArmorPierce />
+      <ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
+      <LifetimeMS>1100</LifetimeMS>
+    </Projectile>
+    <Projectile id="1">
+      <ObjectId>Quetzalcoat Star</ObjectId>
+      <Damage>225</Damage>
+      <Size>150</Size>
+      <Speed>75</Speed>
+      <ArmorPierce />
+      <ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+  </Object>
+  <Object type="0x4121" id="Snowy Turret 1">
+    <Enemy />
+    <Class>Character</Class>
+    <NoMiniMap />
+    <Hero />
+    <SpecialEnemy />
+    <God />
+    <Level>1</Level>
+    <Texture>
+      <File>invisible</File>
+      <Index>0</Index>
+    </Texture>
+    <HitSound>monster/goblins_hit</HitSound>
+    <DeathSound>monster/goblins_death</DeathSound>
+    <Size>100</Size>
+    <ShadowSize>0</ShadowSize>
+    <MaxHitPoints>65000</MaxHitPoints>
+    <Defense>25</Defense>
+    <XpMult>2.5</XpMult>
+    <Projectile id="0">
+      <ObjectId>Quetzalcoat Star</ObjectId>
+      <Damage>225</Damage>
+      <Size>150</Size>
+      <Speed>0</Speed>
+      <ArmorPierce />
+      <ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
+      <LifetimeMS>1100</LifetimeMS>
+    </Projectile>
+    <Projectile id="1">
+      <ObjectId>Quetzalcoat Star</ObjectId>
+      <Damage>225</Damage>
+      <Size>150</Size>
+      <Speed>75</Speed>
+      <ArmorPierce />
+      <ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+  </Object>
+  <Object type="0x4122" id="Snowy Turret 2">
+    <Enemy />
+    <Class>Character</Class>
+    <NoMiniMap />
+    <Hero />
+    <SpecialEnemy />
+    <God />
+    <Level>1</Level>
+    <Texture>
+      <File>invisible</File>
+      <Index>0</Index>
+    </Texture>
+    <HitSound>monster/goblins_hit</HitSound>
+    <DeathSound>monster/goblins_death</DeathSound>
+    <Size>100</Size>
+    <ShadowSize>0</ShadowSize>
+    <MaxHitPoints>65000</MaxHitPoints>
+    <Defense>25</Defense>
+    <XpMult>2.5</XpMult>
+    <Projectile id="0">
+      <ObjectId>Quetzalcoat Star</ObjectId>
+      <Damage>225</Damage>
+      <Size>150</Size>
+      <Speed>0</Speed>
+      <ArmorPierce />
+      <ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
+      <LifetimeMS>1100</LifetimeMS>
+    </Projectile>
+    <Projectile id="1">
+      <ObjectId>Quetzalcoat Star</ObjectId>
+      <Damage>225</Damage>
+      <Size>150</Size>
+      <Speed>75</Speed>
+      <ArmorPierce />
+      <ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+  </Object>
+  <Object type="0x4123" id="Snowy Turret 3">
+    <Enemy />
+    <Class>Character</Class>
+    <NoMiniMap />
+    <Hero />
+    <SpecialEnemy />
+    <God />
+    <Level>1</Level>
+    <Texture>
+      <File>invisible</File>
+      <Index>0</Index>
+    </Texture>
+    <HitSound>monster/goblins_hit</HitSound>
+    <DeathSound>monster/goblins_death</DeathSound>
+    <Size>100</Size>
+    <ShadowSize>0</ShadowSize>
+    <MaxHitPoints>65000</MaxHitPoints>
+    <Defense>25</Defense>
+    <XpMult>2.5</XpMult>
+    <Projectile id="0">
+      <ObjectId>Quetzalcoat Star</ObjectId>
+      <Damage>225</Damage>
+      <Size>150</Size>
+      <Speed>0</Speed>
+      <ArmorPierce />
+      <ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
+      <LifetimeMS>1100</LifetimeMS>
+    </Projectile>
+    <Projectile id="1">
+      <ObjectId>Quetzalcoat Star</ObjectId>
+      <Damage>225</Damage>
+      <Size>150</Size>
+      <Speed>75</Speed>
+      <ArmorPierce />
+      <ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+  </Object>
+  <Object type="0x4124" id="Snowy Turret 4">
+    <Enemy />
+    <Class>Character</Class>
+    <NoMiniMap />
+    <Hero />
+    <SpecialEnemy />
+    <God />
+    <Level>1</Level>
+    <Texture>
+      <File>invisible</File>
+      <Index>0</Index>
+    </Texture>
+    <HitSound>monster/goblins_hit</HitSound>
+    <DeathSound>monster/goblins_death</DeathSound>
+    <Size>100</Size>
+    <ShadowSize>0</ShadowSize>
+    <MaxHitPoints>65000</MaxHitPoints>
+    <Defense>25</Defense>
+    <XpMult>2.5</XpMult>
+    <Projectile id="0">
+      <ObjectId>Quetzalcoat Star</ObjectId>
+      <Damage>225</Damage>
+      <Size>150</Size>
+      <Speed>0</Speed>
+      <ArmorPierce />
+      <ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
+      <LifetimeMS>1100</LifetimeMS>
+    </Projectile>
+    <Projectile id="1">
+      <ObjectId>Quetzalcoat Star</ObjectId>
+      <Damage>225</Damage>
+      <Size>150</Size>
+      <Speed>75</Speed>
+      <ArmorPierce />
+      <ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+  </Object>
+  <Object type="0x4109" id="Primordial Quetzalcoatl">
+    <DisplayId>Primordial Quetzalcoatl</DisplayId>
+    <Enemy />
+    <Event />
+    <Quest />
+    <God />
+    <Encounter />
+    <StasisImmune />
+    <ParalyzeImmune />
+    <Level>20</Level>
+    <Class>Character</Class>
+    <AnimatedTexture>
+      <File>Custom32x32Encounters</File>
+      <Index>29</Index>
+    </AnimatedTexture>
+    <Size>120</Size>
+    <HitSound>monster/dragons_hit</HitSound>
+    <DeathSound>monster/djinn_hit</DeathSound>
+    <MaxHitPoints>95000</MaxHitPoints>
+    <Defense>55</Defense>
+    <Projectile id="0">
+      <ObjectId>Cerebrus's Claw</ObjectId>
+      <Damage>250</Damage>
+      <Speed>75</Speed>
+      <LifetimeMS>1000</LifetimeMS>
+      <Amplitude>2</Amplitude>
+      <Frequency>0.47</Frequency>
+      <Size>250</Size>
+      <ArmorPiercing />
+    </Projectile>
+    <Projectile id="1">
+      <ObjectId>Quetzalcoat Arc</ObjectId>
+      <Damage>90</Damage>
+      <Speed>85</Speed>
+      <LifetimeMS>2000</LifetimeMS>
+      <ConditionEffect duration="0.5">Paralyzed</ConditionEffect>
+      <MultiHit />
+      <Size>130</Size>
+    </Projectile>
+    <Projectile id="2">
+      <ObjectId>Quetzalcoat Rings</ObjectId>
+      <Damage>175</Damage>
+      <Speed>25</Speed>
+      <LifetimeMS>3000</LifetimeMS>
+      <MultiHit />
+      <Boomerang />
+      <Size>150</Size>
+    </Projectile>
+    <Projectile id="3">
+      <ObjectId>Quetzalcoat Star</ObjectId>
+      <Damage>160</Damage>
+      <Speed>55</Speed>
+      <LifetimeMS>4000</LifetimeMS>
+      <ConditionEffect duration="3">Slowed</ConditionEffect>
+      <MultiHit />
+      <Frequency>2</Frequency>
+      <Amplitude>0.3</Amplitude>
+      <Size>150</Size>
+      <Boomerang />
+    </Projectile>
+    <Projectile id="4">
+      <ObjectId>Quetzalcoat Arc</ObjectId>
+      <Damage>120</Damage>
+      <Speed>100</Speed>
+      <LifetimeMS>3500</LifetimeMS>
+      <Size>150</Size>
+    </Projectile>
+    <Projectile id="5">
+      <ObjectId>Quetzalcoat Arc</ObjectId>
+      <Damage>120</Damage>
+      <Speed>85</Speed>
+      <LifetimeMS>3500</LifetimeMS>
+      <Size>150</Size>
+    </Projectile>
+    <Projectile id="6">
+      <ObjectId>Quetzalcoat Arc</ObjectId>
+      <Damage>120</Damage>
+      <Speed>65</Speed>
+      <LifetimeMS>3500</LifetimeMS>
+      <Size>150</Size>
+    </Projectile>
+    <Projectile id="7">
+      <ObjectId>Quetzalcoat Laser</ObjectId>
+      <Damage>120</Damage>
+      <Speed>30</Speed>
+      <LifetimeMS>3500</LifetimeMS>
+      <Size>150</Size>
+    </Projectile>
+    <Projectile id="8">
+      <ObjectId>Quetzalcoat Small</ObjectId>
+      <Damage>120</Damage>
+      <Speed>65</Speed>
+      <LifetimeMS>3500</LifetimeMS>
+      <Size>150</Size>
+    </Projectile>
+    <Projectile id="9">
+      <ObjectId>Quetzalcoat Small Arc</ObjectId>
+      <Damage>120</Damage>
+      <Speed>100</Speed>
+      <LifetimeMS>3500</LifetimeMS>
+      <Size>150</Size>
+    </Projectile>
+    <Projectile id="10">
+      <ObjectId>Quetzalcoat Star</ObjectId>
+      <Damage>160</Damage>
+      <Speed>50</Speed>
+      <Amplitude>4</Amplitude>
+      <Frequency>1</Frequency>
+      <LifetimeMS>1000</LifetimeMS>
+      <Size>100</Size>
+    </Projectile>
+    <Projectile id="11">
+      <ObjectId>Quetzalcoat Small Arc</ObjectId>
+      <Damage>120</Damage>
+      <Speed>85</Speed>
+      <LifetimeMS>3500</LifetimeMS>
+      <Size>150</Size>
+    </Projectile>
+    <Projectile id="12">
+      <ObjectId>Quetzalcoat Small Arc</ObjectId>
+      <Damage>120</Damage>
+      <Speed>50</Speed>
+      <LifetimeMS>3500</LifetimeMS>
+      <Size>150</Size>
+    </Projectile>
+  </Object>
   <Object type="0x510" id="Baron Turret">
     <Enemy />
     <Class>Character</Class>
@@ -27616,7 +27968,7 @@
     <HitSound>monster/goblins_hit</HitSound>
     <DeathSound>monster/goblins_death</DeathSound>
     <Size>100</Size>
-    <ShadowSize>45</ShadowSize>
+    <ShadowSize>0</ShadowSize>
     <MaxHitPoints>65000</MaxHitPoints>
     <Defense>25</Defense>
     <XpMult>2.5</XpMult>
@@ -27652,7 +28004,7 @@
     <HitSound>monster/goblins_hit</HitSound>
     <DeathSound>monster/goblins_death</DeathSound>
     <Size>100</Size>
-    <ShadowSize>45</ShadowSize>
+    <ShadowSize>0</ShadowSize>
     <MaxHitPoints>65000</MaxHitPoints>
     <Defense>25</Defense>
     <XpMult>2.5</XpMult>
@@ -27688,7 +28040,7 @@
     <HitSound>monster/goblins_hit</HitSound>
     <DeathSound>monster/goblins_death</DeathSound>
     <Size>100</Size>
-    <ShadowSize>45</ShadowSize>
+    <ShadowSize>0</ShadowSize>
     <MaxHitPoints>65000</MaxHitPoints>
     <Defense>25</Defense>
     <XpMult>2.5</XpMult>
@@ -27724,7 +28076,7 @@
     <HitSound>monster/goblins_hit</HitSound>
     <DeathSound>monster/goblins_death</DeathSound>
     <Size>100</Size>
-    <ShadowSize>45</ShadowSize>
+    <ShadowSize>0</ShadowSize>
     <MaxHitPoints>65000</MaxHitPoints>
     <Defense>25</Defense>
     <XpMult>2.5</XpMult>
@@ -29768,6 +30120,7 @@
     <Size>130</Size>
     <StasisImmune />
     <DazedImmune />
+    <SlowedImmune />
     <MaxHitPoints>20000</MaxHitPoints>
     <Defense>45</Defense>
     <Projectile id="0">
@@ -29813,6 +30166,7 @@
     <Size>130</Size>
     <StasisImmune />
     <DazedImmune />
+    <SlowedImmune />
     <MaxHitPoints>20000</MaxHitPoints>
     <Defense>45</Defense>
     <Projectile id="0">
@@ -29858,6 +30212,7 @@
     <Size>130</Size>
     <StasisImmune />
     <DazedImmune />
+    <SlowedImmune />
     <MaxHitPoints>50000</MaxHitPoints>
     <Defense>45</Defense>
     <Projectile id="0">
@@ -29910,6 +30265,7 @@
     <Size>130</Size>
     <StasisImmune />
     <DazedImmune />
+    <SlowedImmune />
     <MaxHitPoints>50000</MaxHitPoints>
     <Defense>45</Defense>
     <Projectile id="0">
@@ -29962,6 +30318,7 @@
     <Size>120</Size>
     <StasisImmune />
     <DazedImmune />
+    <SlowedImmune />
     <MaxHitPoints>20000</MaxHitPoints>
     <Defense>45</Defense>
     <Projectile id="0">
@@ -29988,6 +30345,7 @@
     <Size>120</Size>
     <StasisImmune />
     <DazedImmune />
+    <SlowedImmune />
     <MaxHitPoints>20000</MaxHitPoints>
     <Defense>45</Defense>
     <Projectile id="0">
@@ -30014,6 +30372,7 @@
     <Size>120</Size>
     <StasisImmune />
     <DazedImmune />
+    <SlowedImmune />
     <MaxHitPoints>25000</MaxHitPoints>
     <Defense>45</Defense>
     <Projectile id="0">
@@ -30041,6 +30400,7 @@
     <Size>120</Size>
     <StasisImmune />
     <DazedImmune />
+    <SlowedImmune />
     <MaxHitPoints>25000</MaxHitPoints>
     <Defense>45</Defense>
     <Projectile id="0">
@@ -30068,6 +30428,7 @@
     <Size>80</Size>
     <StasisImmune />
     <DazedImmune />
+    <SlowedImmune />
     <MaxHitPoints>25000</MaxHitPoints>
     <Defense>45</Defense>
     <Projectile id="0">
@@ -30095,6 +30456,7 @@
     <Size>80</Size>
     <StasisImmune />
     <DazedImmune />
+    <SlowedImmune />
     <MaxHitPoints>25000</MaxHitPoints>
     <Defense>45</Defense>
     <Projectile id="0">
@@ -44379,7 +44741,6 @@
     <Sound>use_potion</Sound>
     <Forgeable />
     <Legendary />
-    <Soulbound />
     <BagType>7</BagType>
   </Object>
   <Object type="0x501a" id="Water Fragment">
@@ -44394,7 +44755,6 @@
     <Sound>use_potion</Sound>
     <Forgeable />
     <Legendary />
-    <Soulbound />
     <BagType>7</BagType>
   </Object>
   <Object type="0x501b" id="Wind Fragment">
@@ -44409,7 +44769,6 @@
     <Sound>use_potion</Sound>
     <Forgeable />
     <Legendary />
-    <Soulbound />
     <BagType>7</BagType>
   </Object>
   <Object type="0x501c" id="Earth Fragment">
@@ -44424,7 +44783,6 @@
     <Sound>use_potion</Sound>
     <Forgeable />
     <Legendary />
-    <Soulbound />
     <BagType>7</BagType>
   </Object>
   <Object type="0x501d" id="Bedrock Fragment">
@@ -54458,7 +54816,7 @@
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
   </Object>
-  <Object type="0x50e6" id="Magicians Hide">
+  <Object type="0x50e6" id="Magician's Hide">
     <Class>Equipment</Class>
     <Item />
     <Mutilate />
@@ -55699,7 +56057,7 @@
       <File>CustomObj</File>
       <Index>0x64</Index>
     </Texture>
-    <SetTier />
+    <Rare />
     <SlotType>24</SlotType>
     <Description>A katana that was dipped in the experimental acid used by Dr. Terrible in his crazy creations.</Description>
     <RateOfFire>1.15</RateOfFire>
@@ -60039,7 +60397,7 @@
     <NumProjectiles>5</NumProjectiles>
     <feedPower>1000</feedPower>
   </Object>
-  <Object type="0x50f2" id="Shield of The Ancient's">
+  <Object type="0x50f2" id="Shield of The Ancients">
     <Class>Equipment</Class>
     <Item />
     <SteamRoller />
@@ -60775,7 +61133,7 @@
       <Index>0x6a</Index>
     </Texture>
     <SlotType>19</SlotType>
-    <SetTier />
+    <Rare />
     <Description>An odd skull of unknown origin. Unidentifiable features make it impossible to trace back.</Description>
     <ActivateOnEquip stat="26" amount="3">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="3">IncrementStat</ActivateOnEquip>
@@ -62356,7 +62714,7 @@
       <File>CustomObj</File>
       <Index>0x69</Index>
     </Texture>
-    <SetTier />
+    <Rare />
     <SlotType>17</SlotType>
     <Description>This staff has an azurite gem lodged in at the top of magically enchanted wood. It was used by fairies for self-defense.</Description>
     <RateOfFire>1.25</RateOfFire>
@@ -64988,6 +65346,7 @@
       <MaxDamage>305</MaxDamage>
       <ArmorPiercing />
     </Projectile>
+    <NumProjectiles>1</NumProjectiles>
     <BagType>7</BagType>
     <FameBonus>4</FameBonus>
     <OldSound>magicShoot</OldSound>
@@ -80093,6 +80452,30 @@
     </Texture>
     <Rotation>90</Rotation>
   </Object>
+  <Object type="0x4127" id="Quetzalcoat Laser">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x07</Index>
+    </Texture>
+    <AngleCorrection>45</AngleCorrection>
+  </Object>
+  <Object type="0x4128" id="Quetzalcoat Small">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x08</Index>
+    </Texture>
+    <AngleCorrection>1</AngleCorrection>
+  </Object>
+  <Object type="0x4129" id="Quetzalcoat Small Arc">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x09</Index>
+    </Texture>
+    <AngleCorrection>1</AngleCorrection>
+  </Object>
   <Object type="0x2026" id="Sugar Cane Shot">
     <Class>Projectile</Class>
     <Texture>
@@ -81988,6 +82371,30 @@
     <Texture>
       <File>CustomProjsBig</File>
       <Index>0x23</Index>
+    </Texture>
+    <Rotation>90</Rotation>
+  </Object>
+  <Object type="0x4112" id="Quetzalcoat Arc">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>CustomProjsBig</File>
+      <Index>0x24</Index>
+    </Texture>
+    <AngleCorrection>1</AngleCorrection>
+  </Object>
+  <Object type="0x4113" id="Quetzalcoat Rings">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>CustomProjsBig</File>
+      <Index>0x25</Index>
+    </Texture>
+    <Rotation>110</Rotation>
+  </Object>
+  <Object type="0x4114" id="Quetzalcoat Star">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>CustomProjsBig</File>
+      <Index>0x26</Index>
     </Texture>
     <Rotation>90</Rotation>
   </Object>

@@ -47,6 +47,8 @@ namespace wServer.core
 
                         var delta = (int)(currentMS - lastMS);
 
+                        World.ProcessPlayerIO(ref realmTime);
+
                         if (delta >= TICK_TIME_MS)
                         {
                             realmTime.TickCount++;
@@ -88,6 +90,7 @@ namespace wServer.core
 
                         try
                         {
+                            World.ProcessPlayerIO(ref realmTime);
                             if (World.Update(ref realmTime))
                             {
                                 Stopped = true;

@@ -404,11 +404,12 @@ namespace wServer.core.worlds
             try
             {   
                 Lifetime += time.ElaspedMsDelta;
-
+                
                 WorldBranch.Update(ref time);
 
                 if (IsPastLifetime(ref time))
                     return true;
+
                 UpdateLogic(ref time);
                 return false;
             }

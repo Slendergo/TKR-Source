@@ -41,20 +41,17 @@ namespace wServer.core
 
                 while (!Stopped)
                 {
-                    if (DifferentTickThread)
+                    if (!DifferentTickThread)
                     {
+                        World.ProcessPlayerIO(ref realmTime);
+
                         var currentMS = realmTime.TotalElapsedMs = watch.ElapsedMilliseconds;
 
                         var delta = (int)(currentMS - lastMS);
-
-                        World.ProcessPlayerIO(ref realmTime);
-
-                        if (delta >= TICK_TIME_MS)
+                        while (delta >= TICK_TIME_MS)
                         {
                             realmTime.TickCount++;
                             realmTime.ElaspedMsDelta = delta;
-
-                            var logicTime = watch.ElapsedMilliseconds;
 
                             try
                             {
@@ -69,9 +66,8 @@ namespace wServer.core
                                 Console.WriteLine($"World Tick: {e.StackTrace}");
                             }
 
-                            realmTime.LogicTime = sleep = TICK_TIME_MS - (int)(watch.ElapsedMilliseconds - logicTime);
-
-                            lastMS = currentMS;
+                            lastMS += TICK_TIME_MS;
+                            delta -= TICK_TIME_MS;
                         }
                     }
                     else

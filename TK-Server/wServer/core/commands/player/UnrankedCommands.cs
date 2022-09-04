@@ -17,6 +17,24 @@ using File = TagLib.File;
 namespace wServer.core.commands
 {
 
+    internal class RemovePetcommand : Command
+    {
+        public override string CommandName => "removepet";
+
+        protected override bool Process(Player player, TickTime time, string args)
+        {
+            if(player.Pet != null)
+            {
+                player.PetId = 0;
+                player.World.LeaveWorld(player.Pet);
+                player.SendInfo("You pet runs away");
+            }
+            else
+                player.SendError("You do not have a pet");
+            return true;
+        }
+    }
+
     #region Party
 
     internal class PartyChatCommand : Command

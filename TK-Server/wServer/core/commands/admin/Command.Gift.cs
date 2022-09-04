@@ -55,8 +55,7 @@ namespace wServer.core.commands
 
                 // send out success notifications
                 player.SendInfoFormat("You gifted {0} one {1}.", acc.Name, item.DisplayName);
-                var gifted = player.GameServer.ConnectionManager.Clients.Keys
-                    .SingleOrDefault(p => p.Account.AccountId == acc.AccountId);
+                var gifted = player.GameServer.ConnectionManager.Clients.Keys.SingleOrDefault(p => p.Account.AccountId == acc.AccountId);
                 gifted?.Player?.SendInfoFormat(
                     "You received a gift from {0}. Enjoy your {1}.",
                     player.Name,

@@ -69,6 +69,9 @@ namespace wServer.core
                             lastMS += TICK_TIME_MS;
                             delta -= TICK_TIME_MS;
                         }
+
+                        if(World.Players.Count == 0)
+                            _ = Thread.Yield();
                     }
                     else
                     {

@@ -27601,6 +27601,44 @@
     <MaxHitPoints>30000</MaxHitPoints>
     <Defense>20</Defense>
   </Object>
+  <Object type="0x4140" id="Dungeon Snowy Turret">
+    <Enemy />
+    <Class>Character</Class>
+    <NoMiniMap />
+    <Hero />
+    <SpecialEnemy />
+    <God />
+    <Level>1</Level>
+    <Texture>
+      <File>invisible</File>
+      <Index>0</Index>
+    </Texture>
+    <HitSound>monster/goblins_hit</HitSound>
+    <DeathSound>monster/goblins_death</DeathSound>
+    <Size>100</Size>
+    <ShadowSize>0</ShadowSize>
+    <MaxHitPoints>65000</MaxHitPoints>
+    <Defense>25</Defense>
+    <XpMult>2.5</XpMult>
+    <Projectile id="0">
+      <ObjectId>Quetzalcoat Star</ObjectId>
+      <Damage>225</Damage>
+      <Size>150</Size>
+      <Speed>0</Speed>
+      <ArmorPierce />
+      <ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
+      <LifetimeMS>700</LifetimeMS>
+    </Projectile>
+    <Projectile id="1">
+      <ObjectId>Quetzalcoat Star</ObjectId>
+      <Damage>225</Damage>
+      <Size>150</Size>
+      <Speed>75</Speed>
+      <ArmorPierce />
+      <ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+  </Object>
   <Object type="0x4125" id="Snowy Turret Toss">
     <Enemy />
     <Class>Character</Class>

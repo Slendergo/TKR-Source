@@ -48,9 +48,26 @@ namespace wServer.logic
                     )
                 )
             )
+        .Init("Dungeon Snowy Turret",
+            new State(
+                new State("idle",
+                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new PlayerWithinTransition(10, "Shoot", true)
+                    ),
+                new State("Shoot",
+                    new Shoot(15, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 0),
+                    new Shoot(15, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 600),
+                    new TimedTransition(1200, "die")
+                    ),
+                new State("die",
+                    new Suicide()
+                    )
+                )
+            )
         .Init("Snowy Turret",
             new State(
                 new State("Shoot",
+                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
                     new Shoot(15, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 0),
                     new Shoot(15, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1000),
                     new TimedTransition(1200, "die")
@@ -63,6 +80,7 @@ namespace wServer.logic
         .Init("Snowy Turret 1",
             new State(
                 new State("Shoot",
+                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
                     new Shoot(15, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 0),
                     new Shoot(15, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1000),
                     new TimedTransition(1200, "die")
@@ -75,6 +93,7 @@ namespace wServer.logic
         .Init("Snowy Turret 2",
             new State(
                 new State("Shoot",
+                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
                     new Shoot(15, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 0),
                     new Shoot(15, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1000),
                     new TimedTransition(1200, "die")
@@ -87,6 +106,7 @@ namespace wServer.logic
         .Init("Snowy Turret 3",
             new State(
                 new State("Shoot",
+                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
                     new Shoot(15, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 0),
                     new Shoot(15, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1000),
                     new TimedTransition(1200, "die")
@@ -99,6 +119,7 @@ namespace wServer.logic
         .Init("Snowy Turret 4",
             new State(
                 new State("Shoot",
+                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
                     new Shoot(15, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 0),
                     new Shoot(15, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1000),
                     new TimedTransition(1200, "die")
@@ -162,23 +183,27 @@ namespace wServer.logic
                     ),
                 new State("Ring",
                     new StayCloseToSpawn(3, 15),
-                    new Shoot(12, 2, projectileIndex: 9, fixedAngle: 0, coolDown: 1600, coolDownOffset: 0),
-                    new Shoot(12, 2, projectileIndex: 9, fixedAngle: 10, coolDown: 1600, coolDownOffset: 200),
-                    new Shoot(12, 2, projectileIndex: 9, fixedAngle: -10, coolDown: 1600, coolDownOffset: 200),
-                    new Shoot(12, 2, projectileIndex: 11, fixedAngle: 20, coolDown: 1600, coolDownOffset: 400),
-                    new Shoot(12, 2, projectileIndex: 11, fixedAngle: -20, coolDown: 1600, coolDownOffset: 400),
-                    new Shoot(12, 2, projectileIndex: 11, fixedAngle: 30, coolDown: 1600, coolDownOffset: 600),
-                    new Shoot(12, 2, projectileIndex: 11, fixedAngle: -30, coolDown: 1600, coolDownOffset: 600),
-                    new Shoot(12, 2, projectileIndex: 11, fixedAngle: 40, coolDown: 1600, coolDownOffset: 800),
-                    new Shoot(12, 2, projectileIndex: 11, fixedAngle: -40, coolDown: 1600, coolDownOffset: 800),
-                    new Shoot(12, 2, projectileIndex: 11, fixedAngle: 50, coolDown: 1600, coolDownOffset: 1000),
-                    new Shoot(12, 2, projectileIndex: 11, fixedAngle: -50, coolDown: 1600, coolDownOffset: 1000),
-                    new Shoot(12, 2, projectileIndex: 12, fixedAngle: 60, coolDown: 1600, coolDownOffset: 1200),
-                    new Shoot(12, 2, projectileIndex: 12, fixedAngle: -60, coolDown: 1600, coolDownOffset: 1200),
-                    new Shoot(12, 2, projectileIndex: 12, fixedAngle: 70, coolDown: 1600, coolDownOffset: 1400),
-                    new Shoot(12, 2, projectileIndex: 12, fixedAngle: -70, coolDown: 1600, coolDownOffset: 1400),
+                    new Shoot(12, 2, projectileIndex: 9, fixedAngle: 0, coolDown: 2000, coolDownOffset: 0),
+                    new Shoot(12, 2, projectileIndex: 9, fixedAngle: 10, coolDown: 2000, coolDownOffset: 200),
+                    new Shoot(12, 2, projectileIndex: 9, fixedAngle: -10, coolDown: 2000, coolDownOffset: 200),
+                    new Shoot(12, 2, projectileIndex: 11, fixedAngle: 20, coolDown: 2000, coolDownOffset: 400),
+                    new Shoot(12, 2, projectileIndex: 11, fixedAngle: -20, coolDown: 2000, coolDownOffset: 400),
+                    new Shoot(12, 2, projectileIndex: 11, fixedAngle: 30, coolDown: 2000, coolDownOffset: 600),
+                    new Shoot(12, 2, projectileIndex: 11, fixedAngle: -30, coolDown: 2000, coolDownOffset: 600),
+                    new Shoot(12, 2, projectileIndex: 11, fixedAngle: 40, coolDown: 2000, coolDownOffset: 800),
+                    new Shoot(12, 2, projectileIndex: 11, fixedAngle: -40, coolDown: 2000, coolDownOffset: 800),
+                    new Shoot(12, 2, projectileIndex: 11, fixedAngle: 50, coolDown: 2000, coolDownOffset: 1000),
+                    new Shoot(12, 2, projectileIndex: 11, fixedAngle: -50, coolDown: 2000, coolDownOffset: 1000),
+                    new Shoot(12, 2, projectileIndex: 12, fixedAngle: 60, coolDown: 2000, coolDownOffset: 1200),
+                    new Shoot(12, 2, projectileIndex: 12, fixedAngle: -60, coolDown: 2000, coolDownOffset: 1200),
+                    new Shoot(12, 2, projectileIndex: 12, fixedAngle: 70, coolDown: 2000, coolDownOffset: 1400),
+                    new Shoot(12, 2, projectileIndex: 12, fixedAngle: -70, coolDown: 2000, coolDownOffset: 1400),
+                    new Shoot(12, 2, projectileIndex: 12, fixedAngle: 80, coolDown: 2000, coolDownOffset: 1600),
+                    new Shoot(12, 2, projectileIndex: 12, fixedAngle: -80, coolDown: 2000, coolDownOffset: 1600),
+                    new Shoot(12, 2, projectileIndex: 12, fixedAngle: 90, coolDown: 2000, coolDownOffset: 1800),
+                    new Shoot(12, 2, projectileIndex: 12, fixedAngle: -90, coolDown: 2000, coolDownOffset: 1800),
                     new Wander(0.4),
-                    new TimedTransition(1600, "Remove")
+                    new TimedTransition(1800, "Remove")
                     )
                 )
             )

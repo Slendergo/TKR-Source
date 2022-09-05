@@ -148,7 +148,7 @@ namespace wServer.core
                 return;
 
             var totalPlayers = World.GameServer.ConnectionManager.GetPlayerCount();
-            var realmsNeeded = 1 + totalPlayers / (MAX_PER_REALM + 5);
+            var realmsNeeded = 1 + totalPlayers / (MAX_PER_REALM + 15);
             if (Actives.Count < realmsNeeded)
             {
                 CreateNewRealm();

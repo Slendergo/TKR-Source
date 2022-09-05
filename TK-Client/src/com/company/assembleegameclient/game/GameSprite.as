@@ -340,29 +340,25 @@ public class GameSprite extends Sprite
       }
    }
 
-   public var fpsCounterEnabled:Boolean;
-   private var fpsCounter:GameStatistics;
+   public var gameStatistics_:GameStatistics;
 
    public function enableGameStatistics():void {
-      this.fpsCounterEnabled = true;
-      if (this.fpsCounter) {
-         this.fpsCounter.visible = true;
+      if (this.gameStatistics_ != null) {
+         this.gameStatistics_.visible = true;
       }
       else {
-         this.fpsCounter = new GameStatistics(this);
-         this.fpsCounter.x = this.creditDisplay_.x - 20;
-         this.fpsCounter.y = this.creditDisplay_.y + this.creditDisplay_.height;
-         addChild(this.fpsCounter);
+         this.gameStatistics_ = new GameStatistics();
+         this.gameStatistics_.x = 8;
+         this.gameStatistics_.y = this.map.name_ == "Nexus" ? 32 : 8;
+         addChild(this.gameStatistics_);
       }
    }
 
    public function disableGameStatistics():void {
-      if (!this.fpsCounter) {
-         this.fpsCounter.visible = false;
-         this.fpsCounterEnabled = false;
+      if (!this.gameStatistics_) {
+         this.gameStatistics_.visible = false;
       }
    }
-
 
    public function connect() : void
    {
@@ -485,8 +481,8 @@ public class GameSprite extends Sprite
       this.frameTimeCount_++;
       if(this.frameTimeSum_ >= 60)
       {
-         if (this.fpsCounterEnabled) {
-            this.fpsCounter.update(int(Math.round(1000 * this.frameTimeCount_ / this.frameTimeSum_)));
+         if (this.gameStatistics_ != null && this.gameStatistics_.visible) {
+            this.gameStatistics_.update(int(Math.round(1000 * this.frameTimeCount_ / this.frameTimeSum_)));
          }
          this.frameTimeCount_ = 0;
          this.frameTimeSum_ = 0;

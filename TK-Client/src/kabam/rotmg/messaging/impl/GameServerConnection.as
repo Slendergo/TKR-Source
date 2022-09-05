@@ -2121,6 +2121,7 @@ public class GameServerConnection
 
       private function onPing(ping:Ping) : void
       {
+         this.gs_.gameStatistics_.setPing(ping.roundTripTime_);
          var pong:Pong = this.messages.require(PONG) as Pong;
          pong.serial_ = ping.serial_;
          pong.time_ = getTimer();

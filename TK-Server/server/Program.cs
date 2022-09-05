@@ -68,7 +68,7 @@ namespace server
 
                 var port = Config.serverInfo.port;
                 var address = Config.serverInfo.bindAddress;
-                var url = $"http://{"127.0.0.1"}:{port}/";
+                var url = $"http://{address}:{port}/";
                 var source = new CancellationTokenSource();
 
                 using (var server = new HttpServer(url))

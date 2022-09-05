@@ -144,7 +144,7 @@ namespace wServer.core
 
         private void CreateRealmIfExists()
         {
-            if (Names.Count == 0 || Actives.Count >= 14)
+            if (Names.Count == 0 || Actives.Count >= 4)
                 return;
 
             var totalPlayers = World.GameServer.ConnectionManager.GetPlayerCount();

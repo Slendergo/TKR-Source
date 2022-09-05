@@ -161,7 +161,7 @@ namespace wServer.core.objects
             Client.SendPacket(new Ping()
             {
                 Serial = (int)time.TotalElapsedMs,
-                RTT = (int)(_pingTime - _pongTime - PingPeriod)
+                RTT = (int)(_pongTime - _pingTime) + PingPeriod - (int)time.ElaspedMsDelta
             });
             return UpdateOnPing();
         }

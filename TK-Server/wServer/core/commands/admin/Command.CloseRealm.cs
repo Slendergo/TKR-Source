@@ -13,8 +13,8 @@ namespace wServer.core.commands
 
             protected override bool Process(Player player, TickTime time, string args)
             {
-                RootWorldThread.DifferentTickThread = !RootWorldThread.DifferentTickThread;
-                if (RootWorldThread.DifferentTickThread)
+                RootWorldThread.TickWithSleep = !RootWorldThread.TickWithSleep;
+                if (RootWorldThread.TickWithSleep)
                     player.SendInfo($"Removed Thread Sleep from RootWorldThread");
                 else
                     player.SendInfo($"Added Thread Sleep back to RootWorldThread");

@@ -10,7 +10,7 @@ namespace wServer.core
 {
     public sealed class RootWorldThread
     {
-        public static volatile bool DifferentTickThread;
+        public static volatile bool TickWithSleep;
 
         public const int TICK_TIME_MS = 200;
 
@@ -41,7 +41,7 @@ namespace wServer.core
 
                 while (!Stopped)
                 {
-                    if (DifferentTickThread)
+                    if (!TickWithSleep)
                     {
                         World.ProcessPlayerIO(ref realmTime);
 
@@ -63,7 +63,7 @@ namespace wServer.core
                             }
                             catch (Exception e)
                             {
-                                Console.WriteLine($"World Tick: {e.StackTrace}");
+                                Console.WriteLine($"[{World.IdName} {World.Id}] Tick: {e.StackTrace}");
                             }
 
                             lastMS += TICK_TIME_MS;
@@ -95,7 +95,7 @@ namespace wServer.core
                         }
                         catch (Exception e)
                         {
-                            Console.WriteLine($"World Tick: {e.StackTrace}");
+                            Console.WriteLine($"[{World.IdName} {World.Id}] Tick: {e.StackTrace}");
                         }
 
                         realmTime.LogicTime = sleep = TICK_TIME_MS - (int)(watch.ElapsedMilliseconds - logicTime);

@@ -20,7 +20,6 @@ namespace server.account
 
         public override void HandleRequest(RequestContext context, NameValueCollection query)
         {
-
             if (Program.Config.serverInfo.requireSecret && query["secret"] != "69420")
             {
                 System.Console.WriteLine(query["newGUID"] + " Tried to register without secret");

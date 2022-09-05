@@ -270,7 +270,7 @@ namespace wServer.core.objects
             {
                 var maxMp = player.Stats[1];
                 var newMp = Math.Min(maxMp, player.MP + amount);
-                if (newMp != player.MP)
+                if (newMp == player.MP)
                     return;
                 player.MP = newMp;
                 return;

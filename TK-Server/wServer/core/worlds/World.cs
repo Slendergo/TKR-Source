@@ -397,6 +397,7 @@ namespace wServer.core.worlds
         {
             foreach (var player in Players.Values)
                 player.HandleIO(ref time);
+            WorldBranch.HandleIO(ref time);
         }
 
         public bool Update(ref TickTime time)

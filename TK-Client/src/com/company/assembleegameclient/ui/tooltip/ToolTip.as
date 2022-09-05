@@ -106,21 +106,21 @@ public class ToolTip extends Sprite
          this.alignUI();
          this.draw();
          this.position();
-         addEventListener(Event.ENTER_FRAME,this.onEnterFrame);
       }
+      addEventListener(Event.ENTER_FRAME,this.onEnterFrame);
    }
 
    private function onRemovedFromStage(event:Event) : void
    {
-      if(this.followMouse_)
-      {
-         removeEventListener(Event.ENTER_FRAME,this.onEnterFrame);
-      }
+      removeEventListener(Event.ENTER_FRAME,this.onEnterFrame);
    }
 
    private function onEnterFrame(event:Event) : void
    {
-      this.position();
+      if(this.followMouse_) {
+         this.position();
+      }
+      this.draw();
    }
 
 

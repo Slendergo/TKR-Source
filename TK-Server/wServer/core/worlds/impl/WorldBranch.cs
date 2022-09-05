@@ -24,6 +24,12 @@ namespace wServer.core.worlds.impl
 
         public bool HasBranches() => SubWorlds.Count > 0;
 
+        public void HandleIO(ref TickTime time)
+        {
+            foreach (var world in SubWorlds.Values)
+                world.ProcessPlayerIO(ref time);
+        }
+
         public void Update(ref TickTime time)
         {
             var toRemove = new List<World>();

@@ -58,7 +58,7 @@ namespace common.resources
         public readonly bool RemoveManaBar;
         public readonly float AbilityLifeCost;
         public readonly bool CanOnlyGetWhiteBags;
-        //public readonly List<TalismanExtraDamageOn> ExtraDamageOn;
+        public readonly List<TalismanExtraDamageOn> ExtraDamageOn;
 
         public TalismanTierDesc(XElement e)
         {
@@ -166,6 +166,41 @@ namespace common.resources
         {
             Percentage = e.GetAttribute<double>("percentage");
 
+            var scale = e.GetAttribute<string>("scale", "flat");
+            ScalesPerLevel = scale == "perLevel";
+        }
+    }
+    
+	//<ExtraDamageOn type = "full" stat="health" scale="perLevel" percentage="0.04"/>
+	//<ExtraDamageOn type = "notfull" stat="health" scale="perLevel" percentage="-0.04"/>
+
+    public class TalismanExtraDamageOn
+    {
+        public const byte RATE_OF_FIRE = 0;
+        public const byte HEALTH_REGEN = 1;
+
+        public readonly byte Type;
+        public readonly bool Above;
+        public readonly double HealthPercent;
+        public readonly double AddPercent;
+        public readonly bool ScalesPerLevel;
+
+        public TalismanExtraDamageOn(XElement e)
+        {
+            HealthPercent = e.GetAttribute<double>("percent");
+            AddPercent = e.GetAttribute<double>("add");
+            Above = e.GetAttribute<string>("condition", "above") == "above";
+
+            var t = e.Value;
+            switch (t)
+            {
+                case "RateOfFire":
+                    Type = RATE_OF_FIRE;
+                    break;
+                case "HealthRegen":
+                    Type = HEALTH_REGEN;
+                    break;
+            }
             var scale = e.GetAttribute<string>("scale", "flat");
             ScalesPerLevel = scale == "perLevel";
         }

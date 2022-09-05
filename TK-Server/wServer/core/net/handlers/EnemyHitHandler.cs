@@ -33,8 +33,8 @@ namespace wServer.core.net.handlers
 
             prj?.ForceHit(entity, tickTime);
 
-            var totalLife = 0;
-            var totalMana = 0;
+            var totalLife = 0.0;
+            var totalMana = 0.0;
             foreach (var type in player.ActiveTalismans)
             {
                 var talisman = player.GetTalisman(type);
@@ -51,25 +51,26 @@ namespace wServer.core.net.handlers
 
                 foreach (var leech in tierDesc.Leech)
                 {
-                    if (player.World.Random.NextDouble() < leech.Probability)
+                    if (player.World.Random.NextDouble() <= leech.Probability)
                     {
                         var scale = leech.ScalesPerLevel ? talisman.Level * leech.Percentage : leech.Percentage;
                         switch (leech.Type)
                         {
                             case 0:
-                                totalLife += (int)(player.Stats[0] * scale);
+                                totalLife += player.Stats[0] * scale;
                                 break;
                             case 1:
-                                totalMana += (int)(player.Stats[1] * scale);
+                                totalMana += player.Stats[1] * scale;
                                 break;
                         }
                     }
                 }
 
+                Console.WriteLine($"LEECHED: {totalMana}");
                 if (totalLife > 0)
-                    Player.HealDiscrete(player, totalLife, false);
+                    Player.HealDiscrete(player, (int)totalLife, false);
                 if (totalMana > 0)
-                    Player.HealDiscrete(player, totalMana, true);
+                      Player.HealDiscrete(player, (int)totalMana, true);
             }
         }
     }

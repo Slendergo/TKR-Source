@@ -463,6 +463,7 @@ public class MapUserInput
                this.addTextLine.dispatch(new AddTextLineVO(Parameters.ERROR_CHAT_NAME, (("You're already are in the Nexus..."))));
                return;
             }
+            this.gs_.hudView.triggerNexus();
             this.gs_.gsc_.escape();
             Parameters.data_.needsRandomRealm = false;
             Parameters.save();

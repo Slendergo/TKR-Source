@@ -23,9 +23,9 @@ public class Character extends GameObject
    {
       if(param1 > 50)
       {
-         return 65280 + 327680 * (100 - param1);
+         return 0xFF00 + 0x50000 * (100 - param1);
       }
-      return 16776960 - 1280 * (50 - param1);
+      return 0xFFFF00 - 0x500 * (50 - param1);
    }
 
    override public function damage(origType:int, damageAmount:int, effects:Vector.<uint>, kill:Boolean, proj:Projectile) : void

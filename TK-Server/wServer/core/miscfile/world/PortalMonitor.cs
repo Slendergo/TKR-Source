@@ -130,9 +130,6 @@ namespace wServer.core
 
                 foreach (var p in Portals.Values)
                 {
-                    //if (p.WorldInstance == null || p.WorldInstance.Deleted)
-                    //    continue;
-
                     var count = 0;
                     p.WorldInstance.GetPlayerCount(ref count);
 

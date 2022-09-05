@@ -31,6 +31,8 @@ namespace wServer.core.objects
         public double TalismanPotionHealthPercent { get; set; }
         public double TalismanPotionManaPercent { get; set; }
         public bool TalismanCanOnlyGetWhiteBags { get; set; }
+        public double TalismanExtraDamageOnHitHealth { get; set; }
+        public double TalismanExtraDamageOnHitMana { get; set; }
 
         private SV<int> _noManaBar { get; set; }
 
@@ -140,6 +142,8 @@ namespace wServer.core.objects
             TalismanHealthHPRegen = 0.0;
             TalismanHealthRateOfFire = 0.0;
             TalismanCanOnlyGetWhiteBags = false;
+            TalismanExtraDamageOnHitHealth = 0.0;
+            TalismanExtraDamageOnHitMana = 0.0;
 
             RemoveCondition(ConditionEffectIndex.ArmorBreakImmune);
             RemoveCondition(ConditionEffectIndex.SlowedImmune);
@@ -230,12 +234,23 @@ namespace wServer.core.objects
                     }
                 }
 
+                foreach (var extra in tierDesc.ExtraDamageOn)
+                {
+                    var scale = extra.ScalesPerLevel ? talisman.Level * extra.Percentage : extra.Percentage;
+                    if (extra.StatType == TalismanExtraDamageOn.HEALTH)
+                        TalismanExtraDamageOnHitHealth += scale;
+
+                    if (extra.StatType == TalismanExtraDamageOn.MANA)
+                        TalismanExtraDamageOnHitMana += scale;
+                }
+
                 foreach (var percentage in tierDesc.FameGainBonus)
                     TalismanFameGainBonus += percentage;
                 TalismanCantGetLoot = tierDesc.CantGetLoot;
                 TalismanNoPotionHealing = tierDesc.NoPotionHealing;
                 TalismanCanOnlyGetWhiteBags = tierDesc.CanOnlyGetWhiteBags;
             }
+
 
             var doubleprevent = RecalculateStackedPotions();
             if(!doubleprevent)
@@ -283,8 +298,8 @@ namespace wServer.core.objects
 
         public void CheckHealthTalismans()
         {
-            TalismanHealthRateOfFire = 0.0f;
-            TalismanHealthHPRegen = 0.0f;
+            TalismanHealthRateOfFire = 0.0;
+            TalismanHealthHPRegen = 0.0;
 
             foreach (var type in ActiveTalismans)
             {

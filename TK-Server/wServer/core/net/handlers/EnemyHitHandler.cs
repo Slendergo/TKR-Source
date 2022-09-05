@@ -66,7 +66,6 @@ namespace wServer.core.net.handlers
                     }
                 }
 
-                Console.WriteLine($"LEECHED: {totalMana}");
                 if (totalLife > 0)
                     Player.HealDiscrete(player, (int)totalLife, false);
                 if (totalMana > 0)

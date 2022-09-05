@@ -13,6 +13,7 @@ import com.company.util.BitmapUtil;
 
       public function PortraitToolTip(go:GameObject)
       {
+         this.updateRedraw_ = true;
          super(6036765,1,16549442,1,false);
          this.portrait_ = new Bitmap();
          this.portrait_.x = 0;

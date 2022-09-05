@@ -244,18 +244,6 @@ public class TalismanToolTip extends ToolTip
                 if(xml.@scale == "perLevel") {
                     scaleType = " Per Level"
                 }
-                var symbol:String = "+";
-                if(xml.@percentage < 0){
-                    symbol = "";
-                }
-
-                var type:String = xml.@type;
-                if(type == "full"){
-                    type = " When full ";
-                }
-                else if(type == "notfull") {
-                    type = " When not full ";
-                }
 
                 var stat:String = xml.@stat;
                 if(stat == "health"){
@@ -265,7 +253,7 @@ public class TalismanToolTip extends ToolTip
                     stat = "MP";
                 }
 
-                this.effects.push(new Effect("", symbol + (xml.@percentage * 100.0) + "% Extra Damage" + scaleType + type + stat));
+                this.effects.push(new Effect("", (xml.@percentage * 100.0) + "% Extra Weapon Damage " + scaleType + " When full " + stat + " - when not"));
             }
 
             this.effects.push(new Effect("",""));

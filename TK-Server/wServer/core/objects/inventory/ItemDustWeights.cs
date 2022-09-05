@@ -55,7 +55,6 @@ namespace wServer.core.objects.inventory
             foreach (var namedItem in items.NamedItems)
             {
                 var foundItem = xmlData.Items.Values.FirstOrDefault(item => item.ObjectId == namedItem.ItemName);
-                Console.WriteLine(namedItem.ItemName);
                 if (foundItem == null)
                     throw new Exception("Invalid Name of item");
                 poolItems.Add(new KeyValuePair<Item, int>(foundItem, namedItem.Weight));

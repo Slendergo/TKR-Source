@@ -105,6 +105,10 @@ namespace common.resources
             foreach (var te in e.Elements("PotionStack"))
                 PotionStack.Add(new TalismanPotionStack(te));
 
+            ExtraDamageOn = new List<TalismanExtraDamageOn>();
+            foreach (var te in e.Elements("ExtraDamageOn"))
+                ExtraDamageOn.Add(new TalismanExtraDamageOn(te));
+
             NoPotionHealing = e.HasElement("NoPotionHealing");
             CanOnlyGetWhiteBags = e.HasElement("CanOnlyGetWhiteBags");
         }
@@ -170,37 +174,33 @@ namespace common.resources
             ScalesPerLevel = scale == "perLevel";
         }
     }
-    
-	//<ExtraDamageOn type = "full" stat="health" scale="perLevel" percentage="0.04"/>
-	//<ExtraDamageOn type = "notfull" stat="health" scale="perLevel" percentage="-0.04"/>
 
     public class TalismanExtraDamageOn
     {
-        public const byte RATE_OF_FIRE = 0;
-        public const byte HEALTH_REGEN = 1;
+        public const byte HEALTH = 0;
+        public const byte MANA = 1;
 
-        public readonly byte Type;
-        public readonly bool Above;
-        public readonly double HealthPercent;
-        public readonly double AddPercent;
+        public readonly byte StatType;
+        public readonly bool IsFull;
+        public readonly double Percentage;
         public readonly bool ScalesPerLevel;
 
         public TalismanExtraDamageOn(XElement e)
         {
-            HealthPercent = e.GetAttribute<double>("percent");
-            AddPercent = e.GetAttribute<double>("add");
-            Above = e.GetAttribute<string>("condition", "above") == "above";
-
-            var t = e.Value;
+            var t = e.GetAttribute<string>("stat", "health");
             switch (t)
             {
-                case "RateOfFire":
-                    Type = RATE_OF_FIRE;
+                case "health":
+                    StatType = HEALTH;
                     break;
-                case "HealthRegen":
-                    Type = HEALTH_REGEN;
+                case "mana":
+                    StatType = MANA;
                     break;
             }
+            IsFull = e.GetAttribute("type", "full") == "full";
+
+            Percentage = e.GetAttribute<double>("percentage");
+
             var scale = e.GetAttribute<string>("scale", "flat");
             ScalesPerLevel = scale == "perLevel";
         }

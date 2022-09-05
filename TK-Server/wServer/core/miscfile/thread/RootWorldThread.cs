@@ -41,7 +41,7 @@ namespace wServer.core
 
                 while (!Stopped)
                 {
-                    if (!DifferentTickThread)
+                    if (DifferentTickThread)
                     {
                         World.ProcessPlayerIO(ref realmTime);
 

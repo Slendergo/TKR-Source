@@ -21,7 +21,10 @@ public class QuestToolTip extends ToolTip
 
    public function QuestToolTip(go:GameObject)
    {
+      this.updateRedraw_ = true;
+
       super(6036765,1,16549442,1,false);
+
       this.text_ = new SimpleText(22,16549442,false,0,0);
       this.text_.setBold(true);
       this.text_.text = "Quest!";
@@ -47,8 +50,6 @@ public class QuestToolTip extends ToolTip
 
    public override function draw():void
    {
-      trace("Draw");
-
       this.hpBar_.draw();
       super.draw();
    }

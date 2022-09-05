@@ -34,7 +34,6 @@ namespace wServer.core.objects
             set => _glowcolor.SetValue(value);
         }
 
-
         public Enemy(GameServer manager, ushort objType) : base(manager, objType)
         {
             _defense = new SV<int>(this, StatDataType.Defense, ObjectDesc.Defense);

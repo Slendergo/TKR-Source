@@ -1,4 +1,5 @@
-﻿using common.database;
+﻿using common;
+using common.database;
 using common.discord;
 using common.resources;
 using System;
@@ -260,39 +261,50 @@ namespace wServer.logic.loot
 
                     var probability = i.Probabilty + (i.Probabilty * playerLootBoost);
 
-                    if (i.Threshold >= 0 && i.Threshold < percentageOfDamage && c < probability)
+                    if (i.Threshold >= 0 && i.Threshold < percentageOfDamage)
                     {
-                        if (i.ItemType == ItemType.None)
+                        Item item = null;
+                        if (i.ItemType != ItemType.None)
+                        {
+                            var items = GetItems(i.ItemType, i.Tier);
+                            if (items != null)
+                                item = enemy.World.Random.NextLength(items);
+                        }
+                        else
                         {
                             if (!gameData.IdToObjectType.TryGetValue(i.Item, out var type))
-                            {
-                                player.SendError($"There was a error giving u the item: {i.Item}, please report this [#1]");
                                 continue;
-                            }
-                             
-                            if(!gameData.Items.TryGetValue(type, out var item))
-                            {
-                                player.SendError($"There was a error giving u the item: {i.Item}, please report this [#2]");
-                                continue;
-                            }
 
-                            if (item == null)
-                            {
-                                player.SendError($"There was a error giving u the item: {i.Item}, please report this [#3]");
+                            if (!gameData.Items.TryGetValue(type, out item))
                                 continue;
-                            }
-                            drops.Add(item);
-                            continue;
                         }
 
-                        var items = GetItems(i.ItemType, i.Tier);
-                        if(items == null)
+                        if (item == null)
                         {
-                            player.SendError($"There was a error giving u the item: {i.Tier} {i.ItemType}, please report this [#4]");
+                            player.SendError($"There was a error calculating the item roll for item: {i.Item}, please report this [#1]");
                             continue;
                         }
-                        var chosenTieredItem = items[enemy.World.Random.Next(items.Count)];
-                        drops.Add(chosenTieredItem);
+
+                        var isEligible = item.Revenge || item.Mythical || item.Legendary;
+                        if (isEligible)
+                        {
+                            var chance = (int)(1 / probability);
+                            var roll = (int)(c / probability);
+
+                            if (roll > chance * 0.8)
+                                player.SendInfo($"You have rolled: {roll}/{chance} for: {item.DisplayId ?? item.ObjectId}");
+                        }
+
+                        if (c >= probability)
+                            continue;
+
+                        if (item == null)
+                        {
+                            player.SendError($"There was a error giving u the item: {i.Item}, please report this [#2]");
+                            continue;
+                        }
+
+                        drops.Add(item);
                     }
                 }
 

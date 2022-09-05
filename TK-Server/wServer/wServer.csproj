@@ -183,6 +183,9 @@
     <Compile Include="core\setpieces\CandyGnome.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="core\setpieces\PrimordialQuetzalcoatl.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="core\setpieces\WindElemental.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>

@@ -76,7 +76,7 @@
 		</Texture>
 		<SlotType>23</SlotType>
 		<Legendary />
-		<Description></Description>
+		<Description>The Keeper of Souls most precious item. Corrupt and evil magic lingers at the edge of the blade from burying dead adventurers.</Description>
 		<Sound>spell/magic_nova</Sound>
 		<ActivateOnEquip stat="3" amount="110">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="28" amount="8">IncrementStat</ActivateOnEquip>

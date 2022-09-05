@@ -117,13 +117,13 @@
 		</Texture>
 		<SlotType>5</SlotType>
 		<Legendary />
-		<Description></Description>
+		<Description>Different assortments of flowers were woven together to create a delicate, but sturdy shield.</Description>
 		<Sound>spell/fire_spray</Sound>
 		<Projectile>
 			<ObjectId>Rose Buckler Shot</ObjectId>
 			<Speed>160</Speed>
-			<MinDamage>210</MinDamage>
-			<MaxDamage>290</MaxDamage>
+			<MinDamage>310</MinDamage>
+			<MaxDamage>390</MaxDamage>
 			<LifetimeMS>200</LifetimeMS>
 			<Size>140</Size>
 			<ConditionEffect duration="4">Stunned</ConditionEffect>
@@ -136,7 +136,7 @@
 		<ActivateOnEquip stat="0" amount="75">IncrementStat</ActivateOnEquip>
 		<Usable />
 		<BagType>7</BagType>
-		<MpCost>115</MpCost>
+		<MpCost>105</MpCost>
 		<Activate>Shoot</Activate>
 		<NumProjectiles>4</NumProjectiles>
 		<feedPower>5</feedPower>

@@ -157,7 +157,7 @@
 		</Texture>
 		<SlotType>8</SlotType>
 		<Legendary />
-		<Description></Description>
+		<Description>The acidic goop dissolved the previous owner whole, leaving behind only the weapon and what remains of the toxic sludge.</Description>
 		<RateOfFire>0.85</RateOfFire>
 		<Sound>weapon/fire_wand</Sound>
 		<Projectile>

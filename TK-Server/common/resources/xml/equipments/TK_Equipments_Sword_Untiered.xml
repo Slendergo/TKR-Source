@@ -494,7 +494,7 @@
   <Object type="0x48d5" id="Slime Slayer">
     <Class>Equipment</Class>
     <Item/>
-    <Splus/>
+    <Rare/>
     <Texture>
       <File>CustomObj</File>
       <Index>0x08</Index>
@@ -520,6 +520,6 @@
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
     <feedPower>650</feedPower>
-    <DisplayId>Slime Sword</DisplayId>
+    <DisplayId>SSlime Slayer</DisplayId>
   </Object>
 </Objects>

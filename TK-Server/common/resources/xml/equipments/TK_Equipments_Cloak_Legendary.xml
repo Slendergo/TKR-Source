@@ -85,7 +85,7 @@
 			<Index>0x03</Index>
 		</Texture>
 		<SlotType>13</SlotType>
-		<Description></Description>
+		<Description>Worn down and tattered clothing of the Keeper of Souls. The stench of rotten corpses envelops the cloth.</Description>
 		<Sound>spell/fire_nova</Sound>
 		<Usable />
 		<BagType>7</BagType>

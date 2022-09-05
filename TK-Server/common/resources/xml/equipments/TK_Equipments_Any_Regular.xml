@@ -6185,7 +6185,6 @@
   <Object type="0x6499" id="Glowing Talisman">
     <Class>Equipment</Class>
     <Item/>
-    <Legendary />
     <Description>A strange old trinket that resonates an old power once forgotten.</Description>
     <Texture>
       <File>CustomObj</File>

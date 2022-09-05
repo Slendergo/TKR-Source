@@ -1740,9 +1740,9 @@
 		<XpMult>3</XpMult>
 		<Projectile id="0">
 			<ObjectId>Projectile 0 AB</ObjectId>
-			<Damage>150</Damage>
-			<Size>100</Size>
-			<Speed>100</Speed>
+			<Damage>275</Damage>
+			<Size>140</Size>
+			<Speed>80</Speed>
 			<LifetimeMS>2000</LifetimeMS>
 			<MultiHit />
 			<ArmorPiercing />
@@ -1751,29 +1751,25 @@
 		<Projectile id="1">
 			<ObjectId>Projectile 1 AB</ObjectId>
 			<Damage>200</Damage>
-			<Size>100</Size>
+			<Size>150</Size>
 			<Speed>85</Speed>
 			<LifetimeMS>3000</LifetimeMS>
 			<MultiHit />
 			<ArmorPiercing />
-			<ConditionEffect duration="4">Bleeding</ConditionEffect>
 		</Projectile>
 		<Projectile id="2">
 			<ObjectId>Projectile 2 AB</ObjectId>
 			<Damage>300</Damage>
-			<Size>100</Size>
+			<Size>150</Size>
 			<Speed>80</Speed>
 			<LifetimeMS>4000</LifetimeMS>
-			<ConditionEffect duration="3">Stunned</ConditionEffect>
 		</Projectile>
 		<Projectile id="3">
 			<ObjectId>Projectile 3 AB</ObjectId>
 			<Damage>90</Damage>
-			<Size>100</Size>
+			<Size>150</Size>
 			<Speed>90</Speed>
 			<LifetimeMS>5000</LifetimeMS>
-			<ConditionEffect duration="2">Paralyzed</ConditionEffect>
-			<ConditionEffect duration="3">Stunned</ConditionEffect>
 		</Projectile>
 	</Object>
 	<Object type="0xa6a1" id="Queen of Ice">

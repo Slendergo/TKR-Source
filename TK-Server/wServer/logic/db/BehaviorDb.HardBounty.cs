@@ -92,6 +92,7 @@ namespace wServer.logic
                     new ItemLoot("Potion of Vitality", 1)
                       ),
                   new Threshold(0.01,
+                    new ItemLoot("Fluffy's Ribcage", 0.001),
                     new ItemLoot("Beast Gem", 0.0005)
                 )
             )

@@ -201,7 +201,7 @@
 		</Texture>
 		<Legendary />
 		<SlotType>17</SlotType>
-		<Description></Description>
+		<Description>The Keeper of Souls most precious item. Corrupt and evil magic lingers at the edge of the blade from burying dead adventurers.</Description>
 		<RateOfFire>0.7</RateOfFire>
 		<Sound>weapon/fire_wand</Sound>
 		<Projectile>

@@ -1248,6 +1248,7 @@ namespace wServer.logic
                 ),
             new Threshold(0.01,
                 new ItemLoot("Crafting Material 2", 0.1),
+                new ItemLoot("Demonic Codex", 0.001),
                 new ItemLoot("Abyssal Sword", 0.009),
                 new ItemLoot("Archdemon's Remains", 0.009),
                 new ItemLoot("Seal of the Underworld", 0.009),

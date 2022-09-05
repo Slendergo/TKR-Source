@@ -153,7 +153,7 @@ namespace wServer.logic
                 new TierLoot(12, ItemType.Armor, 0.1),
                 new TierLoot(13, ItemType.Armor, 0.05),
                 new TierLoot(5, ItemType.Ring, 0.1),
-                new ItemLoot("Master's Prism", 0.0014),
+                new ItemLoot("Pirate’s Treasure", 0.0014),
                 new ItemLoot("Pirate King's Cutlass", 0.001),
                 new ItemLoot("Deadwater Docks Key", 0.01, 0, 0.03)
                 )

@@ -49,13 +49,12 @@
 			  <Index>0x8a</Index>
 		  </Texture>
 		  <SlotType>20</SlotType>
-		  <Description></Description>
-		  <ActivateOnEquip stat="20" amount="6">IncrementStat</ActivateOnEquip>
+		  <Description>A lush lotus flower that grew along with Plantera. The leaves seem to have dim properties of magic flowing through the roots.</Description>
 		  <Usable />
 		  <BagType>7</BagType>
 		  <FameBonus>4</FameBonus>
 		  <MpCost>85</MpCost>
-		  <Activate radius="4.5" totalDamage="200" condEffect="Slowed" condDuration="3">Trap</Activate>
+		  <Activate radius="3" totalDamage="450" condEffect="Paralyzed" condDuration="2">Trap</Activate>
 		  <feedPower>500</feedPower>
 	  </Object>
 </Objects>

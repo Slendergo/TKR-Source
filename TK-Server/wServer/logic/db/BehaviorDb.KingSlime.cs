@@ -98,13 +98,13 @@ namespace wServer.logic
                 new TierLoot(5, ItemType.Ring, 0.03),
                 new TierLoot(3, ItemType.Ability, 0.12),
                 new TierLoot(4, ItemType.Ability, 0.07),
-                new ItemLoot("Talisman Fragment", 0.0005),
-                new ItemLoot("Sticky Slime Armor", 0.001),
+                new ItemLoot("Talisman Fragment", 0.009),
+                new ItemLoot("Sticky Slime Armor", 0.009),
 
                 new ItemLoot("Magic Dust", 0.5)
                 ),
             new Threshold(0.01,
-                new ItemLoot("Slime Slayer", 0.001),
+                new ItemLoot("Slime Slayer", 0.009),
                 new ItemLoot("Withering Poison", 0.001)
                 )
             );

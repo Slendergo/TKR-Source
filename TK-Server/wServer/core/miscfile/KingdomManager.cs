@@ -445,6 +445,7 @@ namespace wServer.core
             Tuple.Create("Wind Elemental", (ISetPiece) new WindElemental()),
             Tuple.Create("Fire Elemental", (ISetPiece) new FireElemental()),
             Tuple.Create("Julius Caesar", (ISetPiece) new JuliusCaesar()),
+            Tuple.Create("Primordial Quetzalcoatl", (ISetPiece) new PrimordialQuetzalcoatl()),
             Tuple.Create("Cube God", (ISetPiece) null),
             Tuple.Create("Pentaract", (ISetPiece) new Pentaract()),
             Tuple.Create("Lord of the Lost Lands", (ISetPiece) null),

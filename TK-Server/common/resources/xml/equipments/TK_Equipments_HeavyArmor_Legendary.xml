@@ -112,7 +112,7 @@
     <FameBonus>6</FameBonus>
     <DisplayId>Oryx's Armor of War</DisplayId>
   </Object>
-	<Object type="0xa427" id="Cerberus's Ribcage">
+	<Object type="0xa427" id="Fluffy's Ribcage">
 		<Class>Equipment</Class>
 		<Item />
 		<Lucky />
@@ -122,15 +122,16 @@
 			<Index>0xdd</Index>
 		</Texture>
 		<SlotType>7</SlotType>
-		<Description>This is the decaying ribcage of Cerberus; it is imbued with the demonic spirit of the Underworld.</Description>
-		<ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="22" amount="2">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="20" amount="8">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="26" amount="13">IncrementStat</ActivateOnEquip>
+		<Description>Imbued with the demonic spirit of the Underworld.</Description>
+		<ActivateOnEquip stat="0" amount="110">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="21" amount="25">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="22" amount="12">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="28" amount="10">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="20" amount="10">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="26" amount="10">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="27" amount="-10">IncrementStat</ActivateOnEquip>
-		<BagType>8</BagType>
+		<BagType>7</BagType>
 		<FameBonus>7</FameBonus>
-		<DisplayId>Cerberus's Ribcage</DisplayId>
+		<DisplayId>Fluffy's Ribcage</DisplayId>
 	</Object>
 </Objects>

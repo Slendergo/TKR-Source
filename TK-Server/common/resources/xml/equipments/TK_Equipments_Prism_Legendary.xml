@@ -97,7 +97,7 @@
     <Activate maxDistance="25">Teleport</Activate>
     <DisplayId>Prismatic Stone</DisplayId>
   </Object>
-	<Object type="0x462" id="Master's Prism">
+	<Object type="0x462" id="Pirate’s Treasure">
 		<Class>Equipment</Class>
 		<Item />
 		<Clarification />
@@ -107,7 +107,7 @@
 		</Texture>
 		<SlotType>22</SlotType>
 		<Legendary />
-		<Description></Description>
+		<Description>Jon Bilgewater kept this jewel separate from all the others. Rumors from the crew say he found it during his visit in Davy Jones’ Locker and has not parted from it since.</Description>
 		<Usable />
 		<BagType>6</BagType>
 		<FameBonus>5</FameBonus>
@@ -117,6 +117,6 @@
 		<ActivateOnEquip stat="3" amount="75">IncrementStat</ActivateOnEquip>
 		<Activate duration="6">Decoy</Activate>
 		<Activate maxDistance="25">Teleport</Activate>
-		<DisplayId>Master's Prism</DisplayId>
+		<DisplayId>MPirate’s Treasure</DisplayId>
 	</Object>
 </Objects>

@@ -281,7 +281,7 @@
 		<Size>120</Size>
 		<HitSound>monster/dragons_hit</HitSound>
 		<DeathSound>monster/djinn_hit</DeathSound>
-		<MaxHitPoints>95000</MaxHitPoints>
+		<MaxHitPoints>140000</MaxHitPoints>
 		<Defense>55</Defense>
 		<Projectile id="0">
 			<ObjectId>Cerebrus's Claw</ObjectId>
@@ -295,7 +295,7 @@
 		</Projectile>
 		<Projectile id="1">
 			<ObjectId>Quetzalcoat Arc</ObjectId>
-			<Damage>90</Damage>
+			<Damage>185</Damage>
 			<Speed>85</Speed>
 			<LifetimeMS>2000</LifetimeMS>
 			<ConditionEffect duration="0.5">Paralyzed</ConditionEffect>
@@ -809,7 +809,7 @@
 		</AnimatedTexture>
 		<HitSound>monster/lizard_god_hit</HitSound>
 		<DeathSound>monster/lizard_god_death</DeathSound>
-		<Size>300</Size>
+		<Size>250</Size>
 		<Encounter />
 		<MaxHitPoints>60000</MaxHitPoints>
 		<Defense>15</Defense>

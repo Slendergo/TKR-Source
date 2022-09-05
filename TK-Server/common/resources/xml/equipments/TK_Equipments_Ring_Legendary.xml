@@ -334,7 +334,7 @@
 		<FameBonus>8</FameBonus>
 		<Legendary />
 	</Object>
-	<Object type="0xa428" id="Fossilized Horns">
+	<Object type="0x4246" id="Fossilized Horns">
 		<Class>Equipment</Class>
 		<Item />
 		<Demonized />

@@ -155,6 +155,7 @@ namespace wServer.logic
             )
         .Init("Primordial Quetzalcoatl",
             new State(
+                new ScaleHP2(35),
                 new State("Check",
                     new ConditionalEffect(ConditionEffectIndex.Invincible, true),
                     new PlayerWithinTransition(8, "Remove1")

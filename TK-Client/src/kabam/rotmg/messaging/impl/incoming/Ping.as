@@ -4,10 +4,9 @@ package kabam.rotmg.messaging.impl.incoming
    
    public class Ping extends IncomingMessage
    {
-       
-      
       public var serial_:int;
-      
+      public var roundTripTime_:int;
+
       public function Ping(id:uint, callback:Function)
       {
          super(id,callback);
@@ -16,6 +15,7 @@ package kabam.rotmg.messaging.impl.incoming
       override public function parseFromInput(data:IDataInput) : void
       {
          this.serial_ = data.readInt();
+         this.roundTripTime_ = data.readInt();
       }
       
       override public function toString() : String

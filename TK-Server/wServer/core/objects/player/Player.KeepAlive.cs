@@ -160,7 +160,8 @@ namespace wServer.core.objects
             _pingTime = time.TotalElapsedMs;
             Client.SendPacket(new Ping()
             {
-                Serial = (int)time.TotalElapsedMs
+                Serial = (int)time.TotalElapsedMs,
+                RTT = (int)(_pingTime - _pongTime - PingPeriod)
             });
             return UpdateOnPing();
         }

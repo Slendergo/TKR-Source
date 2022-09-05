@@ -183,6 +183,8 @@ public class GameSprite extends Sprite
       this.hidePreloader();
       stage.dispatchEvent(new Event(Event.RESIZE));
       this.parent.parent.setChildIndex((this.parent.parent as Layers).top, 2);
+
+      this.enableGameStatistics();
    }
 
    private function showSafeAreaDisplays() : void
@@ -338,6 +340,30 @@ public class GameSprite extends Sprite
       }
    }
 
+   public var fpsCounterEnabled:Boolean;
+   private var fpsCounter:GameStatistics;
+
+   public function enableGameStatistics():void {
+      this.fpsCounterEnabled = true;
+      if (this.fpsCounter) {
+         this.fpsCounter.visible = true;
+      }
+      else {
+         this.fpsCounter = new GameStatistics(this);
+         this.fpsCounter.x = this.creditDisplay_.x - 20;
+         this.fpsCounter.y = this.creditDisplay_.y + this.creditDisplay_.height;
+         addChild(this.fpsCounter);
+      }
+   }
+
+   public function disableGameStatistics():void {
+      if (!this.fpsCounter) {
+         this.fpsCounter.visible = false;
+         this.fpsCounterEnabled = false;
+      }
+   }
+
+
    public function connect() : void
    {
       if(!this.isGameStarted)
@@ -456,10 +482,12 @@ public class GameSprite extends Sprite
       }
       LoopedProcess.runProcesses(time);
       this.frameTimeSum_ = this.frameTimeSum_ + dt;
-      this.frameTimeCount_ = this.frameTimeCount_ + 1;
-      if(this.frameTimeSum_ > 300000)
+      this.frameTimeCount_++;
+      if(this.frameTimeSum_ >= 60)
       {
-         avgFrameRate = int(Math.round(1000 * this.frameTimeCount_ / this.frameTimeSum_));
+         if (this.fpsCounterEnabled) {
+            this.fpsCounter.update(int(Math.round(1000 * this.frameTimeCount_ / this.frameTimeSum_)));
+         }
          this.frameTimeCount_ = 0;
          this.frameTimeSum_ = 0;
       }

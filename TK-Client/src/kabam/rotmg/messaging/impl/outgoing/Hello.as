@@ -9,7 +9,7 @@ public class Hello extends OutgoingMessage {
         this.password_ = "";
         this.key_ = new ByteArray();
         this.mapJSON_ = "";
-        super(id, callback, true);
+        super(id, callback);
     }
 
     public var buildVersion_:String;

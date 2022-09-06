@@ -34,10 +34,8 @@ public class Message {
         this.parseFromInput(data);
     }
 
-    public function write(data:ByteArray):ByteArray {
+    public function write(data:ByteArray):void {
         this.writeToOutput(data);
-
-        return this.setBuffer ? BUFFER : null;
     }
 
     public function toString():String {

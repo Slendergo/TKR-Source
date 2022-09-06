@@ -7,8 +7,6 @@ package kabam.rotmg.stage3D
    
    public class Render3D extends Signal
    {
-       
-      
       public function Render3D()
       {
          super(Vector.<IGraphicsData>,Vector.<Object3DStage3D>,Number,Number,Camera,uint);

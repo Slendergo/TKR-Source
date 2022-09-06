@@ -1,7 +1,5 @@
 package kabam.lib.net.impl {
 import com.company.assembleegameclient.parameters.Parameters;
-import com.hurlant.crypto.hash.SHA1;
-import com.hurlant.crypto.symmetric.ICipher;
 
 import flash.events.Event;
 import flash.events.IOErrorEvent;
@@ -23,7 +21,6 @@ public class SocketServer {
 
     private const unsentPlaceholder:Message = new Message(0);
     private const data:ByteArray = new ByteArray();
-    private const sha1:SHA1 = new SHA1();
 
     private static function logError(message:Message = null, error:Error = null):void {
         trace("Socket-Server Protocol Error!" + (!message ? " Unknown message." : ""));
@@ -107,19 +104,20 @@ public class SocketServer {
     }
 
     private function sendPendingMessages():void {
-        var temp:Message = this.head.next;
-        var msg:Message = temp;
 
-        if (!this.socket.connected)
+        if (!this.socket.connected){
             return;
+        }
 
         var i:Number = 0;
-
-        while (msg) {
+        var temp:Message = this.head.next;
+        var msg:Message = temp;
+        while (msg)
+        {
             this.data.position = 0;
             this.data.length = 0;
 
-            var buffer:ByteArray = msg.write(this.data);
+            msg.write(this.data);
 
             this.data.position = 0;
 

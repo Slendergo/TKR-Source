@@ -25,11 +25,6 @@ package kabam.rotmg.application.impl
          return this.BUILD_LABEL.replace("{VERSION}",Parameters.BUILD_VERSION).replace("{MINOR}",Parameters.MINOR_VERSION).replace("{PATCH}",Parameters.PATCH_VERSION);
       }
 
-      public function isGameLoopMonitored() : Boolean
-      {
-         return false;
-      }
-
       public function useProductionDialogs() : Boolean
       {
          return true;

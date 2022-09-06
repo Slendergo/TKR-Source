@@ -30,12 +30,16 @@ package com.company.assembleegameclient.screens
       private var scrollBar_:Scrollbar;
       
       public var gotoTitle:Signal;
-      
+      public var refresh:Signal;
+      public var updateServers:Signal;
+
       public function ServersScreen()
       {
          super();
          addChild(new ScreenBase());
          this.gotoTitle = new Signal();
+         this.refresh = new Signal();
+         this.updateServers = new Signal()
          addChild(new ScreenBase());
          addChild(new AccountScreen());
       }
@@ -96,7 +100,8 @@ package com.company.assembleegameclient.screens
       
       private function onDone(event:Event) : void
       {
-         this.gotoTitle.dispatch();
+         this.refresh.dispatch();
+//         this.gotoTitle.dispatch();
       }
    }
 }

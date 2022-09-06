@@ -25,7 +25,7 @@ package com.company.assembleegameclient.ui.menu
          super(3552822,16777215);
       }
 
-      public function init(gs:GameSprite, player:Player)
+      public function init(gs:GameSprite, player:Player):void
       {
          var option:MenuOption = null;
          this.gs_ = gs;

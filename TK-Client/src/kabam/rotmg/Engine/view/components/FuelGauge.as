@@ -24,9 +24,9 @@ public class FuelGauge extends Sprite
 
     public function draw(current:int):void
     {
-        var count1 = Math.max(0, Math.min(current, 100));
-        var count2 = Math.max(0, Math.min(current - 100, 250));
-        var count3 = Math.max(0, Math.min(current - 350, 500));
+        var count1:int = Math.max(0, Math.min(current, 100));
+        var count2:int = Math.max(0, Math.min(current - 100, 250));
+        var count3:int = Math.max(0, Math.min(current - 350, 500));
         this.s1gague_.setMaxText(count1 >= 100 ? "Reached" : null);
         this.s2gague_.setMaxText(count2 >= 250 ? "Reached" : null);
         this.s3gague_.setMaxText(count3 >= 500 ? "Reached" : null);

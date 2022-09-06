@@ -9,7 +9,6 @@ package kabam.rotmg.game.view
    import kabam.rotmg.core.signals.SetScreenSignal;
    import kabam.rotmg.core.signals.SetScreenWithValidDataSignal;
    import kabam.rotmg.dialogs.control.CloseDialogsSignal;
-   import kabam.rotmg.game.logging.LoopMonitor;
    import kabam.rotmg.game.model.GameInitData;
    import kabam.rotmg.game.signals.DisconnectGameSignal;
    import kabam.rotmg.game.signals.GameClosedSignal;
@@ -58,9 +57,6 @@ package kabam.rotmg.game.view
       public var disconnect:DisconnectGameSignal;
       
       [Inject]
-      public var monitor:LoopMonitor;
-      
-      [Inject]
       public var hudSetupStarted:HUDSetupStarted;
       
       [Inject]
@@ -82,7 +78,6 @@ package kabam.rotmg.game.view
          this.view.drawCharacterWindow.add(this.onStatusPanelDraw);
          this.hudModelInitialized.add(this.onHUDModelInitialized);
          this.disconnect.add(this.onDisconnect);
-         this.view.monitor.add(this.onMonitor);
          this.view.closed.add(this.onClosed);
          this.view.mapModel = this.mapModel;
          this.view.connect();
@@ -97,7 +92,6 @@ package kabam.rotmg.game.view
          this.hudModelInitialized.remove(this.onHUDModelInitialized);
          this.disconnect.remove(this.onDisconnect);
          this.view.closed.remove(this.onClosed);
-         this.view.monitor.remove(this.onMonitor);
          this.view.disconnect();
       }
       
@@ -105,12 +99,7 @@ package kabam.rotmg.game.view
       {
          this.view.disconnect();
       }
-      
-      private function onMonitor(name:String, time:int) : void
-      {
-         this.monitor.recordTime(name,time);
-      }
-      
+
       public function onSetWorldInteraction(value:Boolean) : void
       {
          this.view.mui_.setEnablePlayerInput(value);

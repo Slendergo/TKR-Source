@@ -170,8 +170,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="account\verify.cs" />
-    <Compile Include="app\getLanguageStrings.cs" />
     <Compile Include="app\bot.cs" />
+    <Compile Include="app\getLanguageStrings.cs" />
+    <Compile Include="app\serverList.cs" />
     <Compile Include="app\globalNews.cs" />
     <Compile Include="app\init.cs" />
     <Compile Include="char\purchaseClassUnlock.cs" />

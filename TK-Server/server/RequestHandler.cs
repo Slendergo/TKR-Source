@@ -35,9 +35,10 @@ namespace server
             {"/fame/list", new fame.list()},
             {"/app/init", new app.init()},
             {"/app/globalNews", new app.globalNews()},
+            {"/app/serverList", new app.serverList()},
             {"/guild/listMembers", new guild.listMembers()},
             {"/guild/getBoard", new guild.getBoard()},
-            {"/guild/setBoard", new guild.setBoard()}
+            {"/guild/setBoard", new guild.setBoard()},
         };
 
         public static void Initialize(Resources resources)

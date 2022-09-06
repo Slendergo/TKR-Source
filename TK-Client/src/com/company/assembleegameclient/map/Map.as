@@ -23,7 +23,6 @@ import flash.geom.Rectangle;
 import flash.utils.Dictionary;
 
 import kabam.rotmg.core.StaticInjectorContext;
-import kabam.rotmg.game.logging.RollingMeanLoopMonitor;
 import kabam.rotmg.stage3D.GraphicsFillExtra;
 import kabam.rotmg.stage3D.Object3D.Object3DStage3D;
 import kabam.rotmg.stage3D.Render3D;
@@ -65,7 +64,6 @@ public class Map extends Sprite {
         this.partyOverlay_ = new PartyOverlay(this);
         this.party_ = new Party(this);
         this.quest_ = new Quest(this);
-        this.loopMonitor = StaticInjectorContext.getInjector().getInstance(RollingMeanLoopMonitor);
         this.signalRenderSwitch = new Signal();
         this.hitTEnemies_ = new Vector.<GameObject>();
         this.hitTPlayers_ = new Vector.<GameObject>();
@@ -103,7 +101,6 @@ public class Map extends Sprite {
     // good projectile optimization
     public var hitTEnemies_:Vector.<GameObject>;
     public var hitTPlayers_:Vector.<GameObject>;
-    private var loopMonitor:RollingMeanLoopMonitor;
     private var inUpdate_:Boolean = false;
     private var objsToAdd_:Vector.<BasicObject>;
     private var idsToRemove_:Vector.<int>;

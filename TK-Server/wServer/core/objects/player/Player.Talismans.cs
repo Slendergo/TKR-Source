@@ -282,10 +282,10 @@ namespace wServer.core.objects
                     switch (potion.Type)
                     {
                         case TalismanPotionStack.HEALTH:
-                            TalismanPotionHealthPercent += scale;
+                            TalismanPotionHealthPercent += scale * Stacks[0].Count;
                             break;
                         case TalismanPotionStack.MANA:
-                            TalismanPotionManaPercent += scale;
+                            TalismanPotionManaPercent += scale * Stacks[1].Count;
                             break;
                     }
                 }

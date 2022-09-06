@@ -19,10 +19,6 @@ public class LocalhostSetup implements ApplicationSetup {
         return this.BUILD_LABEL.replace("{VERSION}", Parameters.BUILD_VERSION).replace("{MINOR}", Parameters.MINOR_VERSION).replace("{PATCH}", Parameters.PATCH_VERSION);
     }
 
-    public function isGameLoopMonitored():Boolean {
-        return false;
-    }
-
     public function useProductionDialogs():Boolean {
         return true;
     }
@@ -32,7 +28,7 @@ public class LocalhostSetup implements ApplicationSetup {
     }
 
     public function isDebug():Boolean {
-        return false;
+        return true;
     }
 }
 }

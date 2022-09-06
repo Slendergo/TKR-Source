@@ -6,8 +6,6 @@ package kabam.rotmg.servers.control
    
    public class ParseServerDataCommand
    {
-       
-      
       [Inject]
       public var servers:ServerModel;
       

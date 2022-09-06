@@ -91,7 +91,6 @@ public class Parameters {
     }
 
     public static function setDefaults():void {
-        setDefaultKey("tpToCaller", KeyCodes.UNSET);
         setDefaultKey("partyJoinWorld", KeyCodes.UNSET);
         setDefaultKey("partyInviteWorld", KeyCodes.UNSET);
         setDefaultKey("partyChat", KeyCodes.P);

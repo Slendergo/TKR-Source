@@ -4,8 +4,8 @@ import flash.utils.IDataInput;
 import kabam.lib.net.impl.Message;
 
 public class OutgoingMessage extends Message {
-    public function OutgoingMessage(id:uint, callback:Function, setBuffer:Boolean = false) {
-        super(id, callback, setBuffer);
+    public function OutgoingMessage(id:uint, callback:Function) {
+        super(id, callback);
     }
 
     override public final function parseFromInput(data:IDataInput):void {

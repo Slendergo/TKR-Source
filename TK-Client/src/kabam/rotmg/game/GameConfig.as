@@ -37,9 +37,6 @@ import kabam.rotmg.game.commands.PlayGameCommand;
 import kabam.rotmg.game.commands.TransitionFromGameToMenuCommand;
 import kabam.rotmg.game.commands.UseBuyPotionCommand;
 import kabam.rotmg.game.focus.GameFocusConfig;
-import kabam.rotmg.game.logging.LoopMonitor;
-import kabam.rotmg.game.logging.NullLoopMonitor;
-import kabam.rotmg.game.logging.RollingMeanLoopMonitor;
 import kabam.rotmg.game.model.ChatFilter;
 import kabam.rotmg.game.model.GameModel;
 import kabam.rotmg.game.signals.AddSpeechBalloonSignal;
@@ -137,7 +134,6 @@ public class GameConfig implements IConfig
          this.commandMap.map(GameClosedSignal).toCommand(TransitionFromGameToMenuCommand);
          this.commandMap.map(PlayGameSignal).toCommand(PlayGameCommand);
          this.commandMap.map(ParseChatMessageSignal).toCommand(ParseChatMessageCommand);
-         this.mapLoopMonitor();
       }
 
 
@@ -156,18 +152,6 @@ public class GameConfig implements IConfig
          this.mediatorMap.map(CreditDisplay).toMediator(CreditDisplayMediator);
          this.mediatorMap.map(MoneyChangerPanel).toMediator(MoneyChangerPanelMediator);
          this.mediatorMap.map(SellableObjectPanel).toMediator(SellableObjectPanelMediator);
-      }
-      
-      private function mapLoopMonitor() : void
-      {
-         if(this.setup.isGameLoopMonitored())
-         {
-            this.injector.map(LoopMonitor).toType(RollingMeanLoopMonitor);
-         }
-         else
-         {
-            this.injector.map(LoopMonitor).toType(NullLoopMonitor);
-         }
       }
    }
 }

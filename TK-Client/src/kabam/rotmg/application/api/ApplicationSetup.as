@@ -7,8 +7,6 @@ package kabam.rotmg.application.api
       function getAppEngineUrl(param1:Boolean = false) : String;
       function getAppEngineUrlEncrypted() : String;
 
-      function isGameLoopMonitored() : Boolean;
-      
       function useProductionDialogs() : Boolean;
       
       function areErrorsReported() : Boolean;

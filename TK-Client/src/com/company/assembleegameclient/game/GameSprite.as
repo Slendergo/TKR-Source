@@ -1,6 +1,5 @@
 package com.company.assembleegameclient.game
 {
-import com.company.assembleegameclient.game.events.MoneyChangedEvent;
 import com.company.assembleegameclient.map.Camera;
 import com.company.assembleegameclient.map.Map;
 import com.company.assembleegameclient.objects.GameObject;
@@ -56,7 +55,6 @@ public class GameSprite extends Sprite
    protected static const PAUSED_FILTER:ColorMatrixFilter = new ColorMatrixFilter(MoreColorUtil.greyscaleFilterMatrix);
 
    public const closed:Signal = new Signal();
-   public const monitor:Signal = new Signal(String,int);
    public const modelInitialized:Signal = new Signal();
    public const drawCharacterWindow:Signal = new Signal(Player);
    public var map:Map;
@@ -371,7 +369,6 @@ public class GameSprite extends Sprite
          this.gsc_.connect();
          this.idleWatcher_.start(this);
          this.lastUpdate_ = getTimer();
-         //stage.addEventListener(MoneyChangedEvent.MONEY_CHANGED,this.onMoneyChanged);
          stage.addEventListener(Event.ENTER_FRAME,this.onEnterFrame);
          if(Parameters.data_.FS){
             if (Parameters.data_.mscale == undefined)
@@ -395,7 +392,6 @@ public class GameSprite extends Sprite
          if(!contains(this.dmgCounter)){
             addChild(this.dmgCounter);
          }
-         LoopedProcess.addProcess(new LoopedCallback(100,this.updateNearestInteractive));
       }
    }
 
@@ -407,11 +403,9 @@ public class GameSprite extends Sprite
          Renderer.inGame = false;
          this.idleWatcher_.stop();
          this.gsc_.serverConnection.disconnect();
-         //stage.removeEventListener(MoneyChangedEvent.MONEY_CHANGED,this.onMoneyChanged);
          stage.removeEventListener(Event.ENTER_FRAME,this.onEnterFrame);
          stage.removeEventListener(Event.RESIZE, this.onScreenResize);
          stage.scaleMode = StageScaleMode.EXACT_FIT;
-         LoopedProcess.destroyAll();
          stage.dispatchEvent(new Event(Event.RESIZE));
          contains(this.map) && removeChild(this.map);
          this.map.dispose();
@@ -473,7 +467,6 @@ public class GameSprite extends Sprite
 
    private function onEnterFrame(event:Event) : void
    {
-      var avgFrameRate:Number = NaN;
       var time:int = getTimer();
       var dt:int = time - this.lastUpdate_;
       if(this.idleWatcher_.update(dt))
@@ -481,7 +474,9 @@ public class GameSprite extends Sprite
          this.closed.dispatch();
          return;
       }
-      LoopedProcess.runProcesses(time);
+
+      this.updateNearestInteractive();
+
       this.frameTimeSum_ = this.frameTimeSum_ + dt;
       this.frameTimeCount_++;
       if(this.frameTimeSum_ >= 60)
@@ -492,9 +487,7 @@ public class GameSprite extends Sprite
          this.frameTimeCount_ = 0;
          this.frameTimeSum_ = 0;
       }
-      var mapTime:int = getTimer();
       this.map.update(time,dt);
-      this.monitor.dispatch("Map.update",getTimer() - mapTime);
       this.camera_.update(dt);
       var player:Player = this.map.player_;
       if(this.focus)
@@ -511,6 +504,7 @@ public class GameSprite extends Sprite
             this.rankText_.draw(player.numStars_);
             this.guildText_.draw(player.guildName_,player.guildRank_);
          }
+
          if(player.isPaused())
          {
             this.map.filters = [PAUSED_FILTER];
@@ -532,8 +526,6 @@ public class GameSprite extends Sprite
          this.moveRecords_.addRecord(time,player.x_,player.y_);
       }
       this.lastUpdate_ = time;
-      var delta:int = getTimer() - time;
-      this.monitor.dispatch("GameSprite.loop",delta);
       this.DamageCounter();
    }
 

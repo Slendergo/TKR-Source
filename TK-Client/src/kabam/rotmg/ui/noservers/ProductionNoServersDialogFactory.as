@@ -4,9 +4,6 @@ package kabam.rotmg.ui.noservers
    
    public class ProductionNoServersDialogFactory implements NoServersDialogFactory
    {
-      private static const BODY:String = "There are currently no servers online.";
-      static const TITLE:String = "No Servers";
-
       public function ProductionNoServersDialogFactory()
       {
          super();
@@ -14,7 +11,7 @@ package kabam.rotmg.ui.noservers
       
       public function makeDialog() : Dialog
       {
-         return new Dialog(BODY,TITLE,"Close",null);
+         return new Dialog("There are currently no servers online.", "No Servers","Close",null);
       }
    }
 }

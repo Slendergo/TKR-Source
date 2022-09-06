@@ -4,7 +4,9 @@ package kabam.rotmg.servers
    import kabam.rotmg.servers.api.ServerModel;
    import kabam.rotmg.servers.control.ParseServerDataCommand;
    import kabam.rotmg.servers.model.LiveServerModel;
-   import org.swiftsuspenders.Injector;
+import kabam.rotmg.servers.signals.RefreshServerSignal;
+
+import org.swiftsuspenders.Injector;
    import robotlegs.bender.extensions.signalCommandMap.api.ISignalCommandMap;
    import robotlegs.bender.framework.api.IConfig;
    
@@ -30,6 +32,7 @@ package kabam.rotmg.servers
       {
          this.injector.map(ServerModel).toSingleton(LiveServerModel);
          this.commandMap.map(CharListDataSignal).toCommand(ParseServerDataCommand);
+         this.commandMap.map(RefreshServerSignal).toCommand(ParseServerDataCommand);
       }
    }
 }

@@ -8,6 +8,7 @@ using common.resources;
 using NLog;
 using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Reactive.Linq;
@@ -68,6 +69,7 @@ namespace server
 
                 var port = Config.serverInfo.port;
                 var address = Config.serverInfo.bindAddress;
+                address = "127.0.0.1";
                 var url = $"http://{address}:{port}/";
                 var source = new CancellationTokenSource();
 
@@ -170,6 +172,30 @@ namespace server
 
             Config.serverInfo.players = players;
             Config.serverInfo.maxPlayers = maxPlayers;
+        }
+
+        public static List<ServerItem> GetServerList()
+        {
+            var ret = new List<ServerItem>();
+            foreach (var server in ISManager.GetServerList().ToList())
+            {
+                if (server.type != ServerType.World)
+                    continue;
+
+                ret.Add(new ServerItem()
+                {
+                    Name = server.name,
+                    Lat = server.latitude,
+                    Long = server.longitude,
+                    Port = server.port,
+                    DNS = server.address,
+                    Usage = server.players / (double)server.maxPlayers,
+                    AdminOnly = server.adminOnly,
+                    UsageText = server.IsJustStarted() ? "- NEW!" : $"{server.players}/{server.maxPlayers}"
+                });
+            }
+            ret = ret.OrderBy(_ => _.Port).ToList();
+            return ret;
         }
     }
 }

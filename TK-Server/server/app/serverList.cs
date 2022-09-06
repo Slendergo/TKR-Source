@@ -12,8 +12,15 @@ namespace server.app
     {
         public override void HandleRequest(RequestContext context, NameValueCollection query)
         {
-            var response = new XElement("Servers", Program.GetServerList().Select(_ => _.ToXml()).ToList()).ToString();
-            Write(context, response);
+            var servers = Program.GetServerList().Select(_ => _.ToXml()).ToList();
+            if (servers.Any())
+            {
+                var response = new XElement("Servers", new XElement("Servers", servers)).ToString();
+                Write(context, response);
+                return;
+            }
+
+            Write(context, "<Error>No Servers</Error>");
         }
-}
+    }
 }

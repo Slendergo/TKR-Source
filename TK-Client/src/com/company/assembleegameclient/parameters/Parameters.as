@@ -135,6 +135,7 @@ public class Parameters {
         setDefaultKey("useHealthPotion", KeyCodes.F);
         setDefaultKey("useMagicPotion", KeyCodes.V);
         setDefaultKey("switchTabs", KeyCodes.B);
+        setDefaultKey("refresh_button_servers", KeyCodes.R);
         setDefault("showStatistics", false);
         setDefault("disableAllParticles", false);
         setDefault("uiQuality", false);
@@ -176,7 +177,6 @@ public class Parameters {
         setDefault("allyShots", true);
         setDefault("allyDamage", true);
         setDefault("noAllyNotifications", false);
-
     }
 
     private static function setDefaultKey(keyName:String, key:uint):void {

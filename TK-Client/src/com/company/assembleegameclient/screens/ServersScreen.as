@@ -1,19 +1,34 @@
 package com.company.assembleegameclient.screens
 {
-   import com.company.assembleegameclient.ui.Scrollbar;
-   import com.company.rotmg.graphics.ScreenGraphic;
+import com.company.assembleegameclient.parameters.Parameters;
+import com.company.assembleegameclient.ui.IconButton;
+import com.company.assembleegameclient.ui.Scrollbar;
+import com.company.assembleegameclient.ui.dialogs.Dialog;
+import com.company.rotmg.graphics.ScreenGraphic;
    import com.company.ui.SimpleText;
-   import flash.display.Graphics;
+import com.company.util.AssetLibrary;
+
+import flash.display.Graphics;
    import flash.display.Shape;
    import flash.display.Sprite;
    import flash.events.Event;
-   import flash.events.MouseEvent;
+import flash.events.KeyboardEvent;
+import flash.events.MouseEvent;
    import flash.filters.DropShadowFilter;
-   import kabam.rotmg.servers.api.Server;
-   import kabam.rotmg.ui.view.components.ScreenBase;
+
+import kabam.rotmg.appengine.api.AppEngineClient;
+import kabam.rotmg.core.StaticInjectorContext;
+import kabam.rotmg.dialogs.control.CloseDialogsSignal;
+import kabam.rotmg.dialogs.control.OpenDialogSignal;
+import kabam.rotmg.servers.api.Server;
+import kabam.rotmg.servers.api.ServerModel;
+import kabam.rotmg.servers.signals.RefreshServerSignal;
+import kabam.rotmg.ui.noservers.NoServersDialogFactory;
+import kabam.rotmg.ui.view.components.ScreenBase;
    import org.osflash.signals.Signal;
-   
-   public class ServersScreen extends Sprite
+import org.osflash.signals.natives.NativeSignal;
+
+public class ServersScreen extends Sprite
    {
        
       
@@ -28,17 +43,18 @@ package com.company.assembleegameclient.screens
       private var serverBoxes_:ServerBoxes;
       
       private var scrollBar_:Scrollbar;
-      
+
+      private var button:IconButton;
+
       public var gotoTitle:Signal;
-      public var refresh:Signal;
       public var updateServers:Signal;
+      private var nexusClicked:NativeSignal;
 
       public function ServersScreen()
       {
          super();
          addChild(new ScreenBase());
          this.gotoTitle = new Signal();
-         this.refresh = new Signal();
          this.updateServers = new Signal()
          addChild(new ScreenBase());
          addChild(new AccountScreen());
@@ -96,12 +112,98 @@ package com.company.assembleegameclient.screens
          g.lineStyle();
          this.doneButton_.x = stage.stageWidth / 2 - this.doneButton_.width / 2;
          this.doneButton_.y = 524;
+
+         this.button = new IconButton(AssetLibrary.getImageFromSet("lofiInterfaceBig",15),"Refresh","refresh_button_servers");
+         this.button.x = 604;
+         this.button.y = 126;
+         addChild(this.button);
+
+         this.nexusClicked = new NativeSignal(this.button,MouseEvent.CLICK,MouseEvent);
+         this.nexusClicked.add(this.onNexusClick);
+
+         this.addEventListener(Event.ADDED_TO_STAGE,this.onAddedToStage);
+         this.addEventListener(Event.REMOVED_FROM_STAGE,this.onRemovedFromStage);
       }
-      
+
+      private function onAddedToStage(event:Event) : void
+      {
+         stage.addEventListener(KeyboardEvent.KEY_DOWN,this.onKeyDown);
+      }
+
+      private function onRemovedFromStage(event:Event) : void
+      {
+         stage.removeEventListener(KeyboardEvent.KEY_DOWN,this.onKeyDown);
+      }
+
+      private function onKeyDown(event:KeyboardEvent) : void {
+         if (event.keyCode == Parameters.data_.refresh_button_servers) {
+            this.request();
+         }
+      }
+
       private function onDone(event:Event) : void
       {
-         this.refresh.dispatch();
-//         this.gotoTitle.dispatch();
+         this.gotoTitle.dispatch();
+      }
+
+      private function onNexusClick(event:MouseEvent) : void
+      {
+         request();
+      }
+
+      private function request():void{
+
+         var client:AppEngineClient = StaticInjectorContext.getInjector().getInstance(AppEngineClient);
+
+         client.complete.addOnce(this.onComplete);
+         client.sendRequest("/app/serverList", {});
+      }
+
+      private function onComplete(isOK:Boolean, data:*) : void {
+         var refreshServerSignal:RefreshServerSignal = StaticInjectorContext.getInjector().getInstance(RefreshServerSignal);
+         refreshServerSignal.dispatch(XML(data));
+
+         var serverModel:ServerModel = StaticInjectorContext.getInjector().getInstance(ServerModel);
+
+         if (this.content_.contains(this.serverBoxes_)) {
+            this.serverBoxes_.removeEventListener(Event.COMPLETE, this.onDone);
+            this.content_.removeChild(this.serverBoxes_);
+         }
+
+         if (this.scrollBar_ && contains(this.scrollBar_)) {
+            this.scrollBar_.removeEventListener(Event.CHANGE, this.onScrollBarChange);
+            removeChild(this.scrollBar_);
+         }
+
+         var servers:Vector.<Server> = serverModel.getServers();
+         this.serverBoxes_ = new ServerBoxes(servers);
+         this.serverBoxes_.y = 8;
+         this.serverBoxes_.addEventListener(Event.COMPLETE, this.onDone);
+         this.content_.addChild(this.serverBoxes_);
+         if (this.serverBoxes_.height > 400) {
+            this.scrollBar_ = new Scrollbar(16, 400);
+            this.scrollBar_.x = 800 - this.scrollBar_.width - 4;
+            this.scrollBar_.y = 104;
+            this.scrollBar_.setIndicatorSize(400, this.serverBoxes_.height);
+            this.scrollBar_.addEventListener(Event.CHANGE, this.onScrollBarChange);
+            addChild(this.scrollBar_);
+         }
+
+         if (servers.length == 0) {
+
+            var noServersDialogFactory:NoServersDialogFactory = StaticInjectorContext.getInjector().getInstance(NoServersDialogFactory);
+            var openDialog:OpenDialogSignal = StaticInjectorContext.getInjector().getInstance(OpenDialogSignal);
+
+            var dialog:Dialog = noServersDialogFactory.makeDialog();
+            dialog.addEventListener(Dialog.BUTTON1_EVENT, this.closeDialog);
+            openDialog.dispatch(dialog);
+         }
+      }
+
+      private function closeDialog(_arg1:Event):void
+      {
+         var closeDialogs:CloseDialogsSignal = StaticInjectorContext.getInjector().getInstance(CloseDialogsSignal);
+         closeDialogs.dispatch();
       }
    }
 }

@@ -26,9 +26,6 @@ import robotlegs.bender.bundles.mvcs.Mediator;
       public var setScreen:SetScreenSignal;
 
       [Inject]
-      public var task:GetServerListTask;
-
-      [Inject]
       public var monitor:TaskMonitor;
 
       public function ServersMediator()
@@ -40,21 +37,11 @@ import robotlegs.bender.bundles.mvcs.Mediator;
       {
          this.view.gotoTitle.add(this.onGotoTitle);
          this.view.initialize(this.servers.getServers());
-         this.view.refresh.add(this.onRefresh);
-      }
-
-      public function onRefresh():void{
-         var sequence:TaskSequence = new TaskSequence();
-         sequence.add(this.task);
-//         sequence.add(new DispatchSignalTask(this.setScreen, new ServersScreen()));
-         this.monitor.add(sequence);
-         sequence.start();
       }
 
       override public function destroy() : void
       {
          this.view.gotoTitle.remove(this.onGotoTitle);
-         this.view.refresh.remove(this.onRefresh);
       }
 
       private function onGotoTitle() : void

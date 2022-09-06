@@ -290,9 +290,11 @@ namespace wServer.logic.loot
                         {
                             var chance = Math.Round(1 / probability, 2);
                             var roll = Math.Round(c / probability, 2);
+                            var baseChance = Math.Round(1 / i.Probabilty, 2);
 
-                            if (roll > chance * 0.8)
-                                player.SendInfo($"You have rolled: {roll}/{chance} for: {item.DisplayId ?? item.ObjectId}");
+                            // roll must be > 80% of the chance to show
+                            if (roll > chance * 0.8) 
+                                player.SendInfo($"You have rolled: {roll}/{chance} (Base Chance: {baseChance}) for: {item.DisplayId ?? item.ObjectId}");
                         }
 
                         if (c >= probability)

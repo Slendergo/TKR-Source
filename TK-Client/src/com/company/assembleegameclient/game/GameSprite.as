@@ -421,6 +421,9 @@ public class GameSprite extends Sprite
          if(contains(this.dmgCounter)){
             removeChild(this.dmgCounter);
          }
+         if(contains(this.gameStatistics_)){
+            removeChild(this.gameStatistics_);
+         }
       }
    }
 

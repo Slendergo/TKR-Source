@@ -1276,18 +1276,18 @@
 		<StasisImmune/>
 		<Projectile id="0">
 			<ObjectId>Projectile 0 CPB</ObjectId>
-			<Damage>180</Damage>
+			<Damage>190</Damage>
 			<Speed>90</Speed>
-			<Size>90</Size>
+			<Size>140</Size>
 			<ArmorPiercing/>
-			<ConditionEffect duration="2.8">Bleeding</ConditionEffect>
+			<ConditionEffect duration="3">Armor Broken</ConditionEffect>
 			<LifetimeMS>4000</LifetimeMS>
 		</Projectile>
 		<Projectile id="1">
 			<ObjectId>Projectile 1 CPB</ObjectId>
 			<Damage>420</Damage>
 			<Speed>50</Speed>
-			<Size>90</Size>
+			<Size>140</Size>
 			<ArmorPiercing/>
 			<MultiHit/>
 			<ConditionEffect duration="3">Confused</ConditionEffect>

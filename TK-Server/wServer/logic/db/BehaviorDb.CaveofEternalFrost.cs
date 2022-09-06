@@ -406,12 +406,6 @@ namespace wServer.logic
                     new Chase(8),
                     new Shoot(8, 8, projectileIndex: 1, shootAngle: 10, coolDown: 2000),
                     new Shoot(20, 6, projectileIndex: 2, coolDown: 600),
-                    new TossObject("Evil Snowman", 5, 0, coolDown: 10000),
-                    new TossObject("Evil Snowman", 8, 60, coolDown: 10000),
-                    new TossObject("Evil Snowman", 3, 120, coolDown: 10000),
-                    new TossObject("Evil Snowman", 4, 180, coolDown: 10000),
-                    new TossObject("Evil Snowman", 8, 240, coolDown: 10000),
-                    new TossObject("Evil Snowman", 5, 300, coolDown: 10000),
                     new HpLessTransition(.85, "return to spawn")
                     ),
                 new State("return to spawn",
@@ -809,12 +803,10 @@ namespace wServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, false),
+                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
                     new PlayerWithinTransition(20, "prepare")
                     ),
                 new State("prepare",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
                     new ConditionalEffect(ConditionEffectIndex.Invincible, false),
                     new Taunt("I see you have obtained 1 of the 2 keys.."),
                     new Taunt("This time.. it won't be so easy!"),
@@ -829,7 +821,6 @@ namespace wServer.logic
                     ),
                 new State("rage",
                     new ReturnToSpawn(4, 0),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
                     new ConditionalEffect(ConditionEffectIndex.Invincible, false),
                     new Shoot(25, 32, predictive: 1, projectileIndex: 1, coolDown: 1000),
                     new Shoot(25, 23, predictive: 1, projectileIndex: 0, coolDown: 1200),
@@ -852,7 +843,6 @@ namespace wServer.logic
                     ),
                 new State("granted",
                     new ReturnToSpawn(3),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
                     new ConditionalEffect(ConditionEffectIndex.Invincible, false),
                     new Taunt("I have failed you my master.. the gate has been OPENNED!"),
                     new Shoot(20, 30, projectileIndex: 0, coolDown: 5000),
@@ -986,7 +976,7 @@ namespace wServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("attack",
-                    new Shoot(4, 2, shootAngle: 120, projectileIndex: 0, fixedAngle: 180, coolDown: 50)
+                    new Shoot(4, 2, shootAngle: 120, projectileIndex: 0, fixedAngle: 180, coolDown: 200)
                     )
                 )
             )
@@ -994,7 +984,7 @@ namespace wServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("attack",
-                    new Shoot(4, 2, shootAngle: 120, projectileIndex: 0, fixedAngle: 240, coolDown: 50)
+                    new Shoot(4, 2, shootAngle: 120, projectileIndex: 0, fixedAngle: 240, coolDown: 200)
                     )
                 )
             )
@@ -1002,7 +992,7 @@ namespace wServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("attack",
-                    new Shoot(4, 2, shootAngle: 120, projectileIndex: 0, fixedAngle: 300, coolDown: 50)
+                    new Shoot(4, 2, shootAngle: 120, projectileIndex: 0, fixedAngle: 300, coolDown: 200)
                     )
                 )
             )
@@ -1010,7 +1000,7 @@ namespace wServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("attack",
-                    new Shoot(4, 2, shootAngle: 120, projectileIndex: 0, fixedAngle: 0, coolDown: 50)
+                    new Shoot(4, 2, shootAngle: 120, projectileIndex: 0, fixedAngle: 0, coolDown: 200)
                     )
                 )
             )
@@ -1018,7 +1008,7 @@ namespace wServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("attack",
-                    new Shoot(4, 2, shootAngle: 120, projectileIndex: 0, fixedAngle: 60, coolDown: 50)
+                    new Shoot(4, 2, shootAngle: 120, projectileIndex: 0, fixedAngle: 60, coolDown: 200)
                     )
                 )
             )
@@ -1026,7 +1016,7 @@ namespace wServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("attack",
-                    new Shoot(4, 2, shootAngle: 120, projectileIndex: 0, fixedAngle: 120, coolDown: 50)
+                    new Shoot(4, 2, shootAngle: 120, projectileIndex: 0, fixedAngle: 120, coolDown: 200)
                     )
                 )
             )
@@ -1046,8 +1036,6 @@ namespace wServer.logic
                 new ScaleHP2(20),
                 new State("attack",
                     new Wander(0.5),
-                    new TossObject("Enraged Cub", range: 3, angle: 90, coolDown: 15000),
-                    new TossObject("Enraged Cub", range: 3, angle: 180, coolDown: 15000),
                     new Shoot(10, 3, projectileIndex: 0, predictive: 1, shootAngle: 20, coolDown: 1000),
                     new Shoot(20, 1, projectileIndex: 1, predictive: 1.2, coolDown: 1500)
                     )
@@ -1068,7 +1056,6 @@ namespace wServer.logic
                 new ScaleHP2(20),
                 new State("attack1",
                     new Wander(.25),
-                    new TossObject2("Frozen Elf", range: 3, coolDown: 1500, randomToss: true),
                     new Shoot(20, 2, projectileIndex: 0, shootAngle: 5, predictive: .9, coolDown: 200),
                     new Shoot(15, 8, projectileIndex: 1, predictive: 1, coolDown: 1000)
                     )

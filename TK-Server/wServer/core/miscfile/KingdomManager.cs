@@ -129,6 +129,16 @@ namespace wServer.core
                 },
                 NameOfDeath = "Water Elemental"
             }),
+             Tuple.Create("Primordial Quetzalcoatl", new TauntData()
+            {
+                Spawn = new string[] {
+                    ""
+                },
+                Killed = new string[] {
+                    ""
+                },
+                NameOfDeath = "Primordial Quetzalcoatl"
+            }),
             Tuple.Create("Tiki Tiki", new TauntData()
             {
                 Spawn = new string[] {

@@ -707,7 +707,7 @@ namespace wServer.core
             player.SendInfo("Welcome to Talisman's Kingdom!");
             player.SendEnemy("The Talisman King", "You are a pest to my kingdom!");
             player.SendInfo("Use [WASDQE] to move; click to shoot!");
-            player.SendInfo("Type \"/help\" for more help");
+            player.SendInfo("Type \"/commands\" for more help");
         }
 
         private static double GetNormal(Random rand)

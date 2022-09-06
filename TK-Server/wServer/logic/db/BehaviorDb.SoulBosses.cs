@@ -85,11 +85,11 @@ namespace wServer.logic
                 new ItemLoot("Soul of Life", 1)
                 ),
             new Threshold(0.03,
-                new ItemLoot("Bow of the Havens", 0.00014),
-                new ItemLoot("Mummified Rod", 0.00014),
-                new ItemLoot("Shield of The Ancients", 0.00014),
+                new ItemLoot("Bow of the Havens", 0.001),
+                new ItemLoot("Mummified Rod", 0.001),
+                new ItemLoot("Shield of The Ancients", 0.001),
                 new ItemLoot("Soul of Mana", 0.1),
-                new ItemLoot("Pharaoh's Scripture", 0.00014)
+                new ItemLoot("Pharaoh's Scripture", 0.001)
                 ),
             new Threshold(0.01,
                 new TierLoot(10, ItemType.Weapon, 0.25),

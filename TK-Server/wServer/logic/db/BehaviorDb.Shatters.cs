@@ -236,7 +236,7 @@ namespace wServer.logic
         #region 1stboss
         .Init("shtrs Bridge Sentinel",
             new State(
-                new ScaleHP2(20),
+                new ScaleHP2(35),
                 new Shoot(2, projectileIndex: 6, count: 3, fixedAngle: 0, coolDown: 1000),
                 new Shoot(2, projectileIndex: 6, count: 3, fixedAngle: 45, coolDown: 1000),
                 new Shoot(2, projectileIndex: 6, count: 3, fixedAngle: 90, coolDown: 1000),
@@ -427,7 +427,7 @@ namespace wServer.logic
         #region 2ndboss
         .Init("shtrs Twilight Archmage",
             new State(
-                new ScaleHP2(20),
+                new ScaleHP2(35),
                 new HpLessTransition(.1, "Death"),
                 new State("Idle",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
@@ -1697,7 +1697,7 @@ namespace wServer.logic
         #region 3rdboss
         .Init("shtrs The Forgotten King",
             new State(
-                new ScaleHP2(20),
+                new ScaleHP2(35),
                 new HpLessTransition(0.1, "Death"),
                 new State("Idle",
                     new ConditionalEffect(ConditionEffectIndex.Invincible),
@@ -2755,7 +2755,6 @@ namespace wServer.logic
                     new EntityNotExistsTransition("shtrs Twilight Archmage", 500, "Open")
                     ),
                 new State("Open",
-                    new TransformOnDeath("shtrs Loot Balloon Mage"),
                     new Suicide()
                     )
                 )

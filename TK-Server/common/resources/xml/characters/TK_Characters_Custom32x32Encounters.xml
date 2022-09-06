@@ -24,6 +24,7 @@
 			<Size>150</Size>
 			<Speed>0</Speed>
 			<ArmorPierce />
+			<MultiHit/>
 			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
 			<LifetimeMS>700</LifetimeMS>
 		</Projectile>
@@ -33,6 +34,7 @@
 			<Size>150</Size>
 			<Speed>75</Speed>
 			<ArmorPierce />
+			<MultiHit/>
 			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
 			<LifetimeMS>4000</LifetimeMS>
 		</Projectile>
@@ -98,6 +100,7 @@
 			<Size>150</Size>
 			<Speed>0</Speed>
 			<ArmorPierce />
+			<MultiHit/>
 			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
 			<LifetimeMS>1100</LifetimeMS>
 		</Projectile>
@@ -107,6 +110,7 @@
 			<Size>150</Size>
 			<Speed>75</Speed>
 			<ArmorPierce />
+			<MultiHit/>
 			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
 			<LifetimeMS>4000</LifetimeMS>
 		</Projectile>
@@ -136,6 +140,7 @@
 			<Size>150</Size>
 			<Speed>0</Speed>
 			<ArmorPierce />
+			<MultiHit/>
 			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
 			<LifetimeMS>1100</LifetimeMS>
 		</Projectile>
@@ -145,6 +150,7 @@
 			<Size>150</Size>
 			<Speed>75</Speed>
 			<ArmorPierce />
+			<MultiHit/>
 			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
 			<LifetimeMS>4000</LifetimeMS>
 		</Projectile>
@@ -174,6 +180,7 @@
 			<Size>150</Size>
 			<Speed>0</Speed>
 			<ArmorPierce />
+			<MultiHit/>
 			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
 			<LifetimeMS>1100</LifetimeMS>
 		</Projectile>
@@ -183,6 +190,7 @@
 			<Size>150</Size>
 			<Speed>75</Speed>
 			<ArmorPierce />
+			<MultiHit/>
 			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
 			<LifetimeMS>4000</LifetimeMS>
 		</Projectile>
@@ -212,6 +220,7 @@
 			<Size>150</Size>
 			<Speed>0</Speed>
 			<ArmorPierce />
+			<MultiHit/>
 			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
 			<LifetimeMS>1100</LifetimeMS>
 		</Projectile>
@@ -221,6 +230,7 @@
 			<Size>150</Size>
 			<Speed>75</Speed>
 			<ArmorPierce />
+			<MultiHit/>
 			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
 			<LifetimeMS>4000</LifetimeMS>
 		</Projectile>
@@ -250,6 +260,7 @@
 			<Size>150</Size>
 			<Speed>0</Speed>
 			<ArmorPierce />
+			<MultiHit/>
 			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
 			<LifetimeMS>1100</LifetimeMS>
 		</Projectile>
@@ -259,6 +270,7 @@
 			<Size>150</Size>
 			<Speed>75</Speed>
 			<ArmorPierce />
+			<MultiHit/>
 			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
 			<LifetimeMS>4000</LifetimeMS>
 		</Projectile>
@@ -306,7 +318,7 @@
 			<ObjectId>Quetzalcoat Rings</ObjectId>
 			<Damage>175</Damage>
 			<Speed>25</Speed>
-			<LifetimeMS>3000</LifetimeMS>
+			<LifetimeMS>5000</LifetimeMS>
 			<MultiHit />
 			<Boomerang/>
 			<Size>150</Size>
@@ -548,7 +560,7 @@
 		</AnimatedTexture>
 		<DisplayId>The Baron</DisplayId>
 		<Size>170</Size>
-		<MaxHitPoints>130000</MaxHitPoints>
+		<MaxHitPoints>160000</MaxHitPoints>
 		<Defense>30</Defense>
 		<StasisImmune/>
 		<StunImmune/>
@@ -626,7 +638,7 @@
 		<Size>200</Size>
 		<StasisImmune />
 		<ShadowSize>45</ShadowSize>
-		<MaxHitPoints>65000</MaxHitPoints>
+		<MaxHitPoints>120000</MaxHitPoints>
 		<Defense>25</Defense>
 		<XpMult>2.5</XpMult>
 		<Projectile id="0">
@@ -811,7 +823,7 @@
 		<DeathSound>monster/lizard_god_death</DeathSound>
 		<Size>250</Size>
 		<Encounter />
-		<MaxHitPoints>60000</MaxHitPoints>
+		<MaxHitPoints>110000</MaxHitPoints>
 		<Defense>15</Defense>
 		<Terrain>Mountains</Terrain>
 		<Level>20</Level>
@@ -881,7 +893,7 @@
 		<HitSound>monster/lizard_god_hit</HitSound>
 		<DeathSound>monster/lizard_god_death</DeathSound>
 		<Size>175</Size>
-		<MaxHitPoints>80000</MaxHitPoints>
+		<MaxHitPoints>130000</MaxHitPoints>
 		<Defense>18</Defense>
 		<Level>20</Level>
 		<XpMult>1.4</XpMult>
@@ -1080,7 +1092,7 @@
 		<HitSound>monster/lizard_god_hit</HitSound>
 		<DeathSound>monster/lizard_god_death</DeathSound>
 		<Size>180</Size>
-		<MaxHitPoints>80000</MaxHitPoints>
+		<MaxHitPoints>150000</MaxHitPoints>
 		<Defense>20</Defense>
 		<Level>20</Level>
 		<XpMult>1.4</XpMult>
@@ -1139,7 +1151,7 @@
 		<HitSound>monster/lizard_god_hit</HitSound>
 		<DeathSound>monster/lizard_god_death</DeathSound>
 		<Size>170</Size>
-		<MaxHitPoints>80000</MaxHitPoints>
+		<MaxHitPoints>140000</MaxHitPoints>
 		<Defense>5</Defense>
 		<Level>20</Level>
 		<XpMult>1.4</XpMult>
@@ -1179,7 +1191,7 @@
 		<HitSound>monster/lizard_god_hit</HitSound>
 		<DeathSound>monster/lizard_god_death</DeathSound>
 		<Size>150</Size>
-		<MaxHitPoints>80000</MaxHitPoints>
+		<MaxHitPoints>170000</MaxHitPoints>
 		<Defense>10</Defense>
 		<Level>20</Level>
 		<XpMult>1.4</XpMult>
@@ -1245,7 +1257,7 @@
 			<File>Custom32x32Encounters</File>
 			<Index>9</Index>
 		</AnimatedTexture>
-		<MaxHitPoints>100000</MaxHitPoints>
+		<MaxHitPoints>200000</MaxHitPoints>
 		<Size>150</Size>
 		<Projectile id="0">
 			<ObjectId>Dark Gray Spinner</ObjectId>
@@ -1445,7 +1457,7 @@
 		<Size>120</Size>
 		<HitSound>monster/dragons_hit</HitSound>
 		<DeathSound>monster/djinn_hit</DeathSound>
-		<MaxHitPoints>95000</MaxHitPoints>
+		<MaxHitPoints>160000</MaxHitPoints>
 		<Defense>55</Defense>
 		<Projectile id="0">
 			<ObjectId>Cerebrus's Claw</ObjectId>
@@ -1567,7 +1579,7 @@
 		<ArmorBreakImmune/>
 		<SlowedImmune/>
 		<Level>20</Level>
-		<MaxHitPoints>95000</MaxHitPoints>
+		<MaxHitPoints>180000</MaxHitPoints>
 		<Defense>30</Defense>
 		<Projectile id="0">
 			<ObjectId>Rome Bomb</ObjectId>

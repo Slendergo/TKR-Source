@@ -135,17 +135,17 @@ namespace wServer.logic
                     new ConditionalEffect(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("Shoot",
-                    new InvisiToss("Snowy Turret", 8, angle: 0, coolDown: 2800, coolDownOffset: 0),
-                    new InvisiToss("Snowy Turret 1", 8, angle: 72, coolDown: 2800, coolDownOffset: 0),
-                    new InvisiToss("Snowy Turret 2", 8, angle: 144, coolDown: 2800, coolDownOffset: 0),
-                    new InvisiToss("Snowy Turret 3", 8, angle: 216, coolDown: 2800, coolDownOffset: 0),
-                    new InvisiToss("Snowy Turret 4", 8, angle: 288, coolDown: 2800, coolDownOffset: 0),
+                    new InvisiToss("Snowy Turret", 3, angle: 0, coolDown: 2800, coolDownOffset: 0),
+                    new InvisiToss("Snowy Turret 1", 3, angle: 72, coolDown: 2800, coolDownOffset: 0),
+                    new InvisiToss("Snowy Turret 2", 3, angle: 144, coolDown: 2800, coolDownOffset: 0),
+                    new InvisiToss("Snowy Turret 3", 3, angle: 216, coolDown: 2800, coolDownOffset: 0),
+                    new InvisiToss("Snowy Turret 4", 3, angle: 288, coolDown: 2800, coolDownOffset: 0),
 
-                    new InvisiToss("Snowy Turret", 8, angle: 36, coolDown: 2800, coolDownOffset: 1400),
-                    new InvisiToss("Snowy Turret 1", 8, angle: 108, coolDown: 2800, coolDownOffset: 1400),
-                    new InvisiToss("Snowy Turret 2", 8, angle: 180, coolDown: 2800, coolDownOffset: 1400),
-                    new InvisiToss("Snowy Turret 3", 8, angle: 252, coolDown: 2800, coolDownOffset: 1400),
-                    new InvisiToss("Snowy Turret 4", 8, angle: 324, coolDown: 2800, coolDownOffset: 1400),
+                    new InvisiToss("Snowy Turret", 3, angle: 36, coolDown: 2800, coolDownOffset: 1400),
+                    new InvisiToss("Snowy Turret 1", 3, angle: 108, coolDown: 2800, coolDownOffset: 1400),
+                    new InvisiToss("Snowy Turret 2", 3, angle: 180, coolDown: 2800, coolDownOffset: 1400),
+                    new InvisiToss("Snowy Turret 3", 3, angle: 252, coolDown: 2800, coolDownOffset: 1400),
+                    new InvisiToss("Snowy Turret 4", 3, angle: 324, coolDown: 2800, coolDownOffset: 1400),
                     new EntityNotExistsTransition("Primordial Quetzalcoatl", 50, "die")
                     ),
                 new State("die",
@@ -169,18 +169,19 @@ namespace wServer.logic
                     new Shoot(12, 1, projectileIndex: 9, coolDown: 600),
                     new Shoot(12, 2, projectileIndex: 11, shootAngle: 10, coolDown: 600),
                     new Shoot(12, 3, projectileIndex: 12, shootAngle: 15, coolDown: 600),
-                    new TimedTransition(1000, "Remove2")
+                    new TimedTransition(1200, "Remove2")
                     ),
                 new State("Remove2",
                     new RemoveConditionalEffect(ConditionEffectIndex.Invincible),
                     new Wander(0.4),
                     new Charge(10, 8, coolDown: 3000),
+                    new Shoot(12, 4, projectileIndex: 2, coolDown: 2000),
                     new Shoot(12, 1, projectileIndex: 9, coolDown: 600),
                     new Shoot(12, 2, projectileIndex: 11, shootAngle: 10, coolDown: 600),
                     new Shoot(12, 3, projectileIndex: 12, shootAngle: 15, coolDown: 600),
                     new OrderOnce(10, "Snowy Turret Toss", "Shoot"),
                     new Taunt("ahahahaHAHAHAHAH"),
-                    new TimedTransition(5000, "Ring")
+                    new TimedTransition(1800, "Ring")
                     ),
                 new State("Ring",
                     new StayCloseToSpawn(3, 15),
@@ -235,10 +236,10 @@ namespace wServer.logic
                     new PlayerWithinTransition(10, "attack")
                     ),
                 new State("attack",
-                    new Wander(0.5),
-                    new Shoot(25, projectileIndex: 0, count: 4, shootAngle: 15, coolDown: 1200, coolDownOffset: 400),
-                    new Shoot(25, projectileIndex: 0, count: 4, shootAngle: 74, coolDown: 1200, coolDownOffset: 800),
-                    new Shoot(25, projectileIndex: 2, count: 1, shootAngle: 10, coolDown: 1200, coolDownOffset: 1200),
+                    new Chase(8),
+                    new Shoot(25, projectileIndex: 0, count: 7, shootAngle: 15, coolDown: 1200, coolDownOffset: 400),
+                    new Shoot(25, projectileIndex: 0, count: 5, shootAngle: 22, coolDown: 1200, coolDownOffset: 800),
+                    new Shoot(25, projectileIndex: 2, count: 9, shootAngle: 10, coolDown: 1200, coolDownOffset: 1200),
                     new HpLessTransition(.7, "attack2prepare")
                     ),
                 new State("attack2prepare",
@@ -247,7 +248,7 @@ namespace wServer.logic
                     new TimedTransition(8000, "attack2")
                     ),
                 new State("attack2",
-                        new Follow(0.8, 15, 3),
+                        new Follow(1, 15, 3),
                         new StayCloseToSpawn(2, 15),
                         new Shoot(15, projectileIndex: 0, count: 4, shootAngle: 15, coolDown: 1500, coolDownOffset: 500),
                         new Shoot(15, projectileIndex: 0, count: 4, shootAngle: 74, coolDown: 1500, coolDownOffset: 1000),
@@ -312,16 +313,16 @@ namespace wServer.logic
                     new TimedTransition(3000, "attack4")
                     ),
                 new State("attack4",
-                    new Chase(2, 12, duration: 8, coolDown: 2000),
-                    new Shoot(25, projectileIndex: 0, count: 10, shootAngle: 45, coolDown: 1500, coolDownOffset: 500),
-                    new Shoot(25, projectileIndex: 0, count: 4, shootAngle: 15, coolDown: 1000, coolDownOffset: 1000),
-                    new Shoot(25, projectileIndex: 2, count: 5, shootAngle: 30, coolDown: 3000, coolDownOffset: 1500),
-                    new Shoot(25, projectileIndex: 1, count: 1, coolDown: 2800, coolDownOffset: 500),
+                    new Chase(10),
+                    new Shoot(25, projectileIndex: 0, count: 10, shootAngle: 45, coolDown: 1200, coolDownOffset: 400),
+                    new Shoot(25, projectileIndex: 0, count: 4, shootAngle: 15, coolDown: 1200, coolDownOffset: 800),
+                    new Shoot(25, projectileIndex: 2, count: 5, shootAngle: 30, coolDown: 1200, coolDownOffset: 1200),
+                    new Shoot(25, projectileIndex: 1, count: 1, coolDown: 1000, coolDownOffset: 500),
                     new Shoot(25, projectileIndex: 3, count: 1, predictive: 0.8, coolDown: 1000, coolDownOffset: 2500),
-                    new Grenade(5, 150, 5, 0, coolDown: 3500, color: 0x00ffff),
-                    new Grenade(5, 150, 10, 90, coolDown: 3500, color: 0x00ffff),
-                    new Grenade(5, 150, 5, 180, coolDown: 3500, color: 0x00ffff),
-                    new Grenade(5, 150, 10, 270, coolDown: 3500, color: 0x00ffff)
+                    new Grenade(5, 150, 5, 0, coolDown: 1500, color: 0x00ffff),
+                    new Grenade(5, 150, 10, 90, coolDown: 1500, color: 0x00ffff),
+                    new Grenade(5, 150, 5, 180, coolDown: 1500, color: 0x00ffff),
+                    new Grenade(5, 150, 10, 270, coolDown: 1500, color: 0x00ffff)
                     )
                 ),
             new Threshold(0.01,
@@ -335,8 +336,8 @@ namespace wServer.logic
                 new ItemLoot("Greater Potion of Vitality", 0.5),
                 new ItemLoot("Greater Potion of Mana", 0.5),
                 new ItemLoot("Magic Dust", 0.5),
-                new ItemLoot("Visage of the Frozen", 0.0016),
-                new ItemLoot("Queen's Guardian Signet", 0.0016),
+                new ItemLoot("Visage of the Frozen", 0.001),
+                new ItemLoot("Queen's Guardian Signet", 0.001),
                 new ItemLoot("Magic Dust", 0.5)
                 ),
              new Threshold(0.03,
@@ -788,53 +789,19 @@ namespace wServer.logic
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
                     new ConditionalEffect(ConditionEffectIndex.Invincible, false),
                     new Taunt("I am one of the protectors of the key! Defeat me and gain access to what lies ahead!"),
-                    new TimedTransition(5000, "changesize")
+                    new TimedTransition(2500, "changesize")
                     ),
                 new State("changesize",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
                     new ConditionalEffect(ConditionEffectIndex.Invincible, false),
-                    new Taunt("RAHHHH"),
                     new Flash(0xCC1A1A, 0.5, 12),
                     new ChangeSize(5, 180),
-                    new TimedTransition(5000, "attack1")
+                    new TimedTransition(3600, "attack1")
                     ),
                 new State("attack1",
                     new Wander(0.5),
                     new Shoot(15, 2, shootAngle: 10, projectileIndex: 0, predictive: .9, coolDown: 400),
-                    new Shoot(20, 6, projectileIndex: 1, coolDown: 1000),
-                    new TossObject("Cursed Polar Bear", 5, 90, coolDown: 20000),
-                    new TossObject("Cursed Polar Bear", 5, 180, coolDown: 20000),
-                    new HpLessTransition(.4, "attack2")
-                    ),
-                new State("attack2",
-                    new Taunt("DIE!"),
-                    new Follow(3, 15, 10, 5, coolDown: 1200),
-                    new Shoot(6, 3, shootAngle: 15, projectileIndex: 2, predictive: .8, coolDown: 500),
-                    new Shoot(7, 12, projectileIndex: 1, coolDown: 1000),
-                    new TossObject("Frozen Elf", 5, 0, coolDown: 5000),
-                    new TossObject("Frozen Elf", 5, 60, coolDown: 5500),
-                    new TossObject("Frozen Elf", 5, 120, coolDown: 6000),
-                    new TossObject("Frozen Elf", 5, 180, coolDown: 6500),
-                    new HpLessTransition(.1, "granted")
-                    ),
-                new State("granted",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
-                    new Taunt("I shall grant you access!"),
-                    new TimedTransition(5000, "changesize1")
-                    ),
-                new State("changesize1",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, false),
-                    new ChangeSize(5, 130),
-                    new Flash(0xCC1A1A, 0.5, 12),
-                    new TimedTransition(5000, "granted1")
-                    ),
-                new State("granted1",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, false),
-                    new Taunt("I have failed you!"),
-                    new Shoot(12, 8, projectileIndex: 1, shootAngle: 45, coolDown: 5000),
-                    new Suicide()
+                    new Shoot(20, 6, projectileIndex: 1, coolDown: 1000)
                     )
                 )
             )

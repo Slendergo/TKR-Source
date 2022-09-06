@@ -2193,14 +2193,14 @@
 		<DisplayedId>Corrupt Snowman</DisplayedId>
 		<Size>160</Size>
 		<MaxHitPoints>200000</MaxHitPoints>
-		<Defense>42</Defense>
+		<Defense>41</Defense>
 		<StasisImmune/>
 		<StunImmune/>
 		<XpMult>1</XpMult>
 		<Projectile id="0">
 			<ObjectId>Projectile 0 CSS</ObjectId>
 			<Damage>175</Damage>
-			<Size>100</Size>
+			<Size>150</Size>
 			<Speed>100</Speed>
 			<LifetimeMS>4000</LifetimeMS>
 			<MultiHit />
@@ -2209,14 +2209,14 @@
 		<Projectile id="1">
 			<ObjectId>Projectile 1 CSS</ObjectId>
 			<Damage>210</Damage>
-			<Size>90</Size>
+			<Size>150</Size>
 			<Speed>90</Speed>
 			<LifetimeMS>4000</LifetimeMS>
 		</Projectile>
 		<Projectile id="2">
 			<ObjectId>Projectile 2 CSS</ObjectId>
 			<Damage>350</Damage>
-			<Size>100</Size>
+			<Size>150</Size>
 			<Speed>100</Speed>
 			<LifetimeMS>5000</LifetimeMS>
 			<ConditionEffect duration="1.8">Confused</ConditionEffect>

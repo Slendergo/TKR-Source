@@ -167,7 +167,7 @@
     <Sound>weapon/mithril_sword</Sound>
     <Projectile>
       <ObjectId>Blade of the Protector Shoot</ObjectId>
-      <Speed>140</Speed>
+      <Speed>95</Speed>
       <MinDamage>150</MinDamage>
       <MaxDamage>215</MaxDamage>
       <LifetimeMS>336</LifetimeMS>

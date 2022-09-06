@@ -77,7 +77,7 @@ namespace wServer.core.objects
             else
                 Inventory[slot] = dustItem;
 
-            GameServer.ChatManager.AnnounceLoot($"[{Name}] Scattered a Special Dust and Obtained an [{dustItem.DisplayId ?? dustItem.ObjectId}]!");
+            GameServer.ChatManager.AnnounceLoot($"[{Name}] Scattered a Special Dust and Obtained [{dustItem.DisplayId ?? dustItem.ObjectId}]!");
         }
 
         public void AEUnlockChest(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)

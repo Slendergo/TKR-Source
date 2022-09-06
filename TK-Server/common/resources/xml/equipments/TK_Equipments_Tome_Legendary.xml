@@ -58,7 +58,7 @@
 		<Sound>spell/major_heal</Sound>
 		<ActivateOnEquip stat="26" amount="8">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="3" amount="65">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="3" amount="-40">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="0" amount="-40">IncrementStat</ActivateOnEquip>
 		<Usable />
 		<FameBonus>5</FameBonus>
 		<BagType>7</BagType>

@@ -2890,7 +2890,7 @@
       <Index>109</Index>
     </AnimatedTexture>
     <Size>150</Size>
-    <MaxHitPoints>90000</MaxHitPoints>
+    <MaxHitPoints>190000</MaxHitPoints>
     <Defense>70</Defense>
     <StasisImmune />
     <StunImmune />
@@ -3021,7 +3021,7 @@
       <Index>115</Index>
     </AnimatedTexture>
     <Size>100</Size>
-    <MaxHitPoints>90000</MaxHitPoints>
+    <MaxHitPoints>250000</MaxHitPoints>
     <Defense>65</Defense>
     <XpMult>1.25</XpMult>
     <AltTexture id="1">

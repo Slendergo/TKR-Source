@@ -1539,14 +1539,14 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.05,
-                new ItemLoot("Forgotten Flames", 0.0015)//,
+                new ItemLoot("Forgotten Flames", 0.001)//,
                                                         //new ItemLoot("Titanium Core", 0.0015) //NO XML
                 ),
-            new Threshold(0.001,
-                new ItemLoot("Tablet of the King's Avatar", 0.00014, threshold: 0.03),
-                new ItemLoot("Talisman Fragment", 0.0005),
-                new ItemLoot("Ashen Spine", 0.00014, threshold: 0.03),
-                new ItemLoot("Flaking Husk", 0.00014, threshold: 0.03)
+            new Threshold(0.01,
+                new ItemLoot("Tablet of the King's Avatar", 0.001, threshold: 0.03),
+                new ItemLoot("Talisman Fragment", 0.009),
+                new ItemLoot("Ashen Spine", 0.001, threshold: 0.03),
+                new ItemLoot("Flaking Husk", 0.001, threshold: 0.03)
                 ),
             new Threshold(0.001,
                 new ItemLoot("Potion of Defense", 1),

@@ -1397,7 +1397,7 @@
       <Index>0x150</Index>
     </Texture>
     <Size>150</Size>
-    <MaxHitPoints>91000</MaxHitPoints>
+    <MaxHitPoints>190000</MaxHitPoints>
     <Defense>70</Defense>
     <XpMult>1.25</XpMult>
     <ShadowSize>40</ShadowSize>

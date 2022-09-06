@@ -58,7 +58,7 @@ namespace wServer.core.objects
                 World.BroadcastIfVisibleExclude(new Damage()
                 {
                     TargetId = Id,
-                    DamageAmount = (ushort)dmg,
+                    DamageAmount = dmg,
                     Kill = HP <= 0,
                 }, this, this);
                 anticheat = true;
@@ -98,7 +98,7 @@ namespace wServer.core.objects
                     World.BroadcastIfVisibleExclude(new Damage()
                     {
                         TargetId = Id,
-                        DamageAmount = (ushort)dmg,
+                        DamageAmount = dmg,
                         Kill = HP <= 0,
                     }, this, this);
 

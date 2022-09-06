@@ -69,7 +69,7 @@ namespace wServer.logic.behaviors
         }
 
         // test
-        protected override void OnStateEntry(Entity host, TickTime time, ref object state) => state = new ScaleHPState { pNamesCounted = new List<string>(), initialItemScaleAmount = 5, initialScaleAmount = _scaleAfter, cooldown = 0 };
+        protected override void OnStateEntry(Entity host, TickTime time, ref object state) => state = new ScaleHPState { pNamesCounted = new List<string>(), initialItemScaleAmount = 0, initialScaleAmount = _scaleAfter, cooldown = 0 };
 
         protected override void TickCore(Entity host, TickTime time, ref object state)
         {
@@ -104,7 +104,8 @@ namespace wServer.logic.behaviors
 
                                 if (item == null || !item.Legendary && !item.Revenge && !item.Eternal && !item.Mythical)
                                     continue;
-
+                                if(i == 0)
+                                    itemCount = itemCount + 9;
                                 itemCount++;
                             }
                             scstate.pNamesCounted.Add(player.Name);
@@ -120,7 +121,8 @@ namespace wServer.logic.behaviors
                 {
                     var amountPerPlayer = _percentage * enemy.ObjectDesc.MaxHP / 100;
                     var amountInc = (plrCount - scstate.initialScaleAmount) * amountPerPlayer;
-                    amountInc += (itemCount - scstate.initialItemScaleAmount) * enemy.ObjectDesc.MaxHP / 100;
+                    amountInc += (itemCount - scstate.initialItemScaleAmount) * enemy.ObjectDesc.MaxHP / 25;
+                    //Console.WriteLine(itemCount + " - "+scstate.initialItemScaleAmount + " * "+enemy.ObjectDesc.MaxHP + " / 100 = " + (itemCount - scstate.initialItemScaleAmount) * enemy.ObjectDesc.MaxHP / 100);
 
                     scstate.initialScaleAmount += plrCount - scstate.initialScaleAmount;
                     scstate.initialItemScaleAmount += itemCount - scstate.initialItemScaleAmount;

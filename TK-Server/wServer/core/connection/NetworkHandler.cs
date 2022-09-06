@@ -117,7 +117,7 @@ namespace wServer.networking.connection
 
             var delay = 0;
             if (s.BytesAvailable <= 0)
-                delay = 200;
+                delay = 1;
 
             StartSendAsync(e, delay);
         }

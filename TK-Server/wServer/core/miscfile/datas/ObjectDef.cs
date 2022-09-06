@@ -4,12 +4,12 @@ namespace wServer
 {
     public struct ObjectDef
     {
-        public ushort ObjectType;
+        public int ObjectType;
         public ObjectStats Stats;
 
         public static ObjectDef Read(NReader rdr) => new ObjectDef
         {
-            ObjectType = rdr.ReadUInt16(),
+            ObjectType = rdr.ReadInt32(),
             Stats = ObjectStats.Read(rdr)
         };
 

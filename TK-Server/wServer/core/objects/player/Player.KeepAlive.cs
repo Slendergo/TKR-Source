@@ -12,7 +12,7 @@ namespace wServer.core.objects
         public int LastClientTime = -1;
         public long LastServerTime = -1;
 
-        private const int PingPeriod = 5000;
+        private const int PingPeriod = 1000;
 
         private ConcurrentQueue<int> _clientTimeLog = new ConcurrentQueue<int>();
         private int _cnt;
@@ -161,7 +161,7 @@ namespace wServer.core.objects
             Client.SendPacket(new Ping()
             {
                 Serial = (int)time.TotalElapsedMs,
-                RTT = (int)(_pongTime - _pingTime) + PingPeriod - (int)time.ElaspedMsDelta
+                RTT = Latency//(int)(_pingTime - _pongTime) - PingPeriod
             });
             return UpdateOnPing();
         }

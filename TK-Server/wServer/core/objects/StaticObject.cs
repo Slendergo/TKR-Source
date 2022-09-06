@@ -40,7 +40,7 @@ namespace wServer.core.objects
                 {
                     TargetId = Id,
                     Effects = 0,
-                    DamageAmount = (ushort)dmg,
+                    DamageAmount = dmg,
                     Kill = !CheckHP(),
                     BulletId = projectile.ProjectileId,
                     ObjectId = projectile.Host.Id

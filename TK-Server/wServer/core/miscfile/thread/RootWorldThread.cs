@@ -48,7 +48,7 @@ namespace wServer.core
                         var currentMS = realmTime.TotalElapsedMs = watch.ElapsedMilliseconds;
 
                         var delta = (int)(currentMS - lastMS);
-                        while (delta >= TICK_TIME_MS)
+                        if (delta >= TICK_TIME_MS)
                         {
                             realmTime.TickCount++;
                             realmTime.ElaspedMsDelta = delta;
@@ -66,12 +66,11 @@ namespace wServer.core
                                 Console.WriteLine($"[{World.IdName} {World.Id}] Tick: {e.StackTrace}");
                             }
 
-                            lastMS += TICK_TIME_MS;
-                            delta -= TICK_TIME_MS;
+                            lastMS += delta; //TICK_TIME_MS
                         }
 
-                        if(World.Players.Count == 0)
-                            _ = Thread.Yield();
+                        if (World.Players.Count == 0)
+                            Thread.Sleep(TICK_TIME_MS);
                     }
                     else
                     {

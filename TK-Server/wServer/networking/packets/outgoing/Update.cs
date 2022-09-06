@@ -31,7 +31,7 @@ namespace wServer.networking.packets.outgoing
             {
                 wtr.Write((short)i.X);
                 wtr.Write((short)i.Y);
-                wtr.Write((ushort)i.Tile);
+                wtr.Write(i.Tile);
             }
             wtr.Write((short)NewObjs.Count);
             foreach (var i in NewObjs)

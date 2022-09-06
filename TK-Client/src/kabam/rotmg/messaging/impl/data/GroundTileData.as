@@ -21,7 +21,7 @@ package kabam.rotmg.messaging.impl.data
       {
          this.x_ = data.readShort();
          this.y_ = data.readShort();
-         this.type_ = data.readUnsignedShort();
+         this.type_ = data.readInt();
       }
       
       public function toString() : String

@@ -9,7 +9,7 @@ namespace wServer.networking.packets.outgoing
         public int ContainerType { get; set; }
         public Position StartingPos { get; set; }
         public float Angle { get; set; }
-        public short Damage { get; set; }
+        public int Damage { get; set; }
 
         public override MessageId MessageId => MessageId.SERVERPLAYERSHOOT;
 

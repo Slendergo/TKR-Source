@@ -12,7 +12,7 @@ namespace wServer
         {
             ObjectId = rdr.ReadInt32(),
             SlotId = rdr.ReadByte(),
-            ObjectType = rdr.ReadInt16()
+            ObjectType = rdr.ReadInt32()
         };
 
         public override string ToString() => string.Format("{{ObjectId: {0}, SlotId: {1}, ObjectType: {2}}}", ObjectId, SlotId, ObjectType);
@@ -21,7 +21,7 @@ namespace wServer
         {
             wtr.Write(ObjectId);
             wtr.Write(SlotId);
-            wtr.Write((short)ObjectType);
+            wtr.Write(ObjectType);
         }
     }
 }

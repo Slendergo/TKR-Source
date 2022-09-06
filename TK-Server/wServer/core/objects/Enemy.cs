@@ -160,7 +160,7 @@ namespace wServer.core.objects
                 {
                     TargetId = Id,
                     Effects = 0,
-                    DamageAmount = (ushort)effDmg,
+                    DamageAmount = effDmg,
                     Kill = HP < 0,
                     BulletId = 0,
                     ObjectId = from.Id
@@ -232,7 +232,7 @@ namespace wServer.core.objects
                 {
                     TargetId = Id,
                     Effects = 0,
-                    DamageAmount = (ushort)dmg,
+                    DamageAmount = dmg,
                     Kill = HP < 0,
                     BulletId = projectile.ProjectileId,
                     ObjectId = projectile.Host.Id

@@ -8,7 +8,7 @@ namespace wServer.networking.packets.outgoing
     {
         public int TargetId { get; set; }
         public ConditionEffectIndex Effects { get; set; }
-        public ushort DamageAmount { get; set; }
+        public int DamageAmount { get; set; }
         public bool Kill { get; set; }
         public byte BulletId { get; set; }
         public int ObjectId { get; set; }

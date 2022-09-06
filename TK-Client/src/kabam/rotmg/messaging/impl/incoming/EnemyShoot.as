@@ -36,7 +36,7 @@ package kabam.rotmg.messaging.impl.incoming
          this.bulletType_ = data.readUnsignedByte();
          this.startingPos_.parseFromInput(data);
          this.angle_ = data.readFloat();
-         this.damage_ = data.readShort();
+         this.damage_ = data.readInt();
          if(data.bytesAvailable > 0)
          {
             this.numShots_ = data.readUnsignedByte();

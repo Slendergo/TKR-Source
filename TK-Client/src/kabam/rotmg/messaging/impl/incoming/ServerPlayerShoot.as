@@ -32,7 +32,7 @@ package kabam.rotmg.messaging.impl.incoming
          this.containerType_ = data.readInt();
          this.startingPos_.parseFromInput(data);
          this.angle_ = data.readFloat();
-         this.damage_ = data.readShort();
+         this.damage_ = data.readInt();
       }
       
       override public function toString() : String

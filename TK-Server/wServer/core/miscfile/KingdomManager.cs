@@ -59,6 +59,16 @@ namespace wServer.core
                 },
                 NameOfDeath = "Kage Kami"
             }),
+            Tuple.Create("Primordial Quetzalcoatl", new TauntData()
+            {
+                Spawn = new string[] {
+                    ""
+                },
+                Killed = new string[] {
+                    ""
+                },
+                NameOfDeath = "Primordial Quetzalcoatl"
+            }),
             Tuple.Create("Julius Caesar", new TauntData()
             {
                 Spawn = new string[] {

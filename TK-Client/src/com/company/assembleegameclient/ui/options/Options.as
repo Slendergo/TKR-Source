@@ -363,6 +363,7 @@ public class Options extends Sprite
       {
          this.addOption(new ChoiceOption("GPURender",new <String>["On","Off"],[true,false],"Hardware Acceleration","Enables Hardware Acceleration if your system supports it",this.renderer));
       }
+      this.addOption(new ChoiceOption("showStatistics", new <String>["On","Off"], [true, false], "Show Statistics", "Enable/Disable Statistics.", this.statistics));
    }
 
    private function addMiscOptions() : void
@@ -391,6 +392,17 @@ public class Options extends Sprite
     {
         Parameters.root.dispatchEvent(new Event(Event.RESIZE));
     }
+
+   private function statistics() : void
+   {
+      if(Parameters.data_.showStatistics){
+         this.gs_.enableGameStatistics();
+      }
+      else{
+         this.gs_.disableGameStatistics();
+      }
+      Parameters.root.dispatchEvent(new Event(Event.RESIZE));
+   }
 
     private function fsv3() : void
    {

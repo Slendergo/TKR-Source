@@ -650,10 +650,12 @@ public class GameServerConnection
       }
 
       private function onTalismanEssenceData(talismanEssenceData:TalismanEssenceData):void {
-         this.gs_.map.player_.essence_ = talismanEssenceData.essence_;
-         this.gs_.map.player_.essenceCap_ = talismanEssenceData.essenceCap_;
-         for(var i:int = 0; i < talismanEssenceData.talismans_.length; i++){
-            this.gs_.map.player_.addTalisman(talismanEssenceData.talismans_[i]);
+         if(this.player){
+            this.player.essence_ = talismanEssenceData.essence_;
+            this.player.essenceCap_ = talismanEssenceData.essenceCap_;
+            for(var i:int = 0; i < talismanEssenceData.talismans_.length; i++){
+               this.player.addTalisman(talismanEssenceData.talismans_[i]);
+            }
          }
       }
 
@@ -2121,7 +2123,9 @@ public class GameServerConnection
 
       private function onPing(ping:Ping) : void
       {
-         this.gs_.gameStatistics_.setPing(ping.roundTripTime_);
+         if(this.gs_.gameStatistics_ != null){
+            this.gs_.gameStatistics_.setPing(ping.roundTripTime_);
+         }
          var pong:Pong = this.messages.require(PONG) as Pong;
          pong.serial_ = ping.serial_;
          pong.time_ = getTimer();

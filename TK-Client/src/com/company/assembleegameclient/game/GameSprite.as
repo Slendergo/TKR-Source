@@ -184,7 +184,9 @@ public class GameSprite extends Sprite
       stage.dispatchEvent(new Event(Event.RESIZE));
       this.parent.parent.setChildIndex((this.parent.parent as Layers).top, 2);
 
-      this.enableGameStatistics();
+      if(Parameters.data_.showStatistics){
+         this.enableGameStatistics();
+      }
    }
 
    private function showSafeAreaDisplays() : void
@@ -421,7 +423,7 @@ public class GameSprite extends Sprite
          if(contains(this.dmgCounter)){
             removeChild(this.dmgCounter);
          }
-         if(contains(this.gameStatistics_)){
+         if(this.gameStatistics_ != null && contains(this.gameStatistics_)){
             removeChild(this.gameStatistics_);
          }
       }

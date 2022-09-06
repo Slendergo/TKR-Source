@@ -375,7 +375,6 @@ public class GameServerConnection
 
       public function GameServerConnection(gs:GameSprite, server:Server, gameId:int, createCharacter:Boolean, charId:int, keyTime:int, key:ByteArray, mapJSON:String)
       {
-         super();
          this.injector = StaticInjectorContext.getInjector();
          this.addTextLine = this.injector.getInstance(AddTextLineSignal);
          this.addSpeechBalloon = this.injector.getInstance(AddSpeechBalloonSignal);
@@ -1572,15 +1571,15 @@ public class GameServerConnection
          }
       }
 
-      private function onGoto(goto:Goto) : void
+      private function onGoto(_arg1:Goto) : void
       {
          this.gotoAck(this.gs_.lastUpdate_);
-         var go:GameObject = this.gs_.map.goDict_[goto.objectId_];
+         var go:GameObject = this.gs_.map.goDict_[_arg1.objectId_];
          if(go == null)
          {
             return;
          }
-         go.onGoto(goto.pos_.x_,goto.pos_.y_,this.gs_.lastUpdate_);
+         go.onGoto(_arg1.pos_.x_,_arg1.pos_.y_,this.gs_.lastUpdate_);
       }
 
       private function updateGameObject(go:GameObject, stats:Vector.<StatData>, isMyObject:Boolean) : void

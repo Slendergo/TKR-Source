@@ -29,25 +29,16 @@ package kabam.rotmg.stage3D
 
    public class Renderer
    {
-
       public static const STAGE3D_FILTER_PAUSE:uint = 1;
-
       public static const STAGE3D_FILTER_BLIND:uint = 2;
-
       public static const STAGE3D_FILTER_DRUNK:uint = 3;
+      private static const POST_FILTER_VERTEX_CONSTANTS:Vector.<Number> = new <Number>[1, 2, 0, 0];
+      private static const GRAYSCALE_FRAGMENT_CONSTANTS:Vector.<Number> = new <Number>[0.3, 0.59, 0.11, 0];
+      private static const BLIND_FRAGMENT_CONSTANTS:Vector.<Number> = new <Number>[0.05, 0.05, 0.05, 0];
+      private static const POST_FILTER_POSITIONS:Vector.<Number> = new <Number>[-1, 1, 0, 0, 1, 1, 1, 0, 1, -1, 1, 1, -1, -1, 0, 1];
+      private static const POST_FILTER_TRIS:Vector.<uint> = new <uint>[0, 2, 3, 0, 1, 2];
 
       public static var inGame:Boolean;
-
-      private static const POST_FILTER_VERTEX_CONSTANTS:Vector.<Number> = new <Number>[1,2,0,0];
-
-      private static const GRAYSCALE_FRAGMENT_CONSTANTS:Vector.<Number> = new <Number>[0.3,0.59,0.11,0];
-
-      private static const BLIND_FRAGMENT_CONSTANTS:Vector.<Number> = new <Number>[0.05,0.05,0.05,0];
-
-      private static const POST_FILTER_POSITIONS:Vector.<Number> = new <Number>[-1,1,0,0,1,1,1,0,1,-1,1,1,-1,-1,0,1];
-
-      private static const POST_FILTER_TRIS:Vector.<uint> = new <uint>[0,2,3,0,1,2];
-
 
       [Inject]
       public var context3D:Context3DProxy;
@@ -365,11 +356,12 @@ package kabam.rotmg.stage3D
 
       private function setTranslationToGame() : void
       {
-         this.tX = -200 / Parameters.data_.mscale * (WebMain.STAGE.stageHeight / 600);
-         this.tY = !Parameters.data_.centerOnPlayer?Number(Number((Camera.OFFSET_SCREEN_RECT.y + Camera.CENTER_SCREEN_RECT.height / 2) * 2)):Number(Number(-50 / Parameters.data_.mscale * (WebMain.STAGE.stageHeight / 600)));
 
-         //this.tX = 0;
-         //this.tY = Boolean(Parameters.data_.centerOnPlayer)?Number(-50):Number((Camera.OFFSET_SCREEN_RECT.y + Camera.CENTER_SCREEN_RECT.height / 2) * 2);
+         this.tX = 0;
+         this.tY = ((Parameters.data_.centerOnPlayer) ? -50 : ((Camera.OFFSET_SCREEN_RECT.y + (Camera.CENTER_SCREEN_RECT.height / 2)) * 2));
+
+//         this.tX = -200 / Parameters.data_.mscale * (WebMain.STAGE.stageHeight / 600);
+//         this.tY = !Parameters.data_.centerOnPlayer?Number(Number((Camera.OFFSET_SCREEN_RECT.y + Camera.CENTER_SCREEN_RECT.height / 2) * 2)):Number(Number(-50 / Parameters.data_.mscale * (WebMain.STAGE.stageHeight / 600)));
       }
 
       private function setTranslationToTitle() : void

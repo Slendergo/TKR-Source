@@ -26,7 +26,7 @@ package kabam.rotmg.messaging.impl.incoming
          {
             this.effects_.push(data.readUnsignedByte());
          }
-         this.damageAmount_ = data.readUnsignedShort();
+         this.damageAmount_ = data.readInt();
          this.kill_ = data.readBoolean();
          this.bulletId_ = data.readUnsignedByte();
          this.objectId_ = data.readInt();

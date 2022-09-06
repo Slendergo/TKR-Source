@@ -355,7 +355,7 @@ public class GameSprite extends Sprite
    }
 
    public function disableGameStatistics():void {
-      if (!this.gameStatistics_) {
+      if (this.gameStatistics_ != null) {
          this.gameStatistics_.visible = false;
       }
    }

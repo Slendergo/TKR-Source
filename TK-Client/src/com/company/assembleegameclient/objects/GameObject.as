@@ -769,6 +769,7 @@ public class GameObject extends BasicObject {
     }
 
     public function damage(origType:int, damageAmount:int, effects:Vector.<uint>, kill:Boolean, proj:Projectile):void {
+
         var offsetTime:int = 0;
         var conditionEffect:uint = 0;
         var ce:ConditionEffect = null;

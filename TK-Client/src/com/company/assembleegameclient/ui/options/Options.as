@@ -401,7 +401,6 @@ public class Options extends Sprite
       else{
          this.gs_.disableGameStatistics();
       }
-      Parameters.root.dispatchEvent(new Event(Event.RESIZE));
    }
 
     private function fsv3() : void

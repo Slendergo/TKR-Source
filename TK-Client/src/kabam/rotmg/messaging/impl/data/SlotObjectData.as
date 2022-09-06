@@ -29,7 +29,7 @@ package kabam.rotmg.messaging.impl.data
       {
          data.writeInt(this.objectId_);
          data.writeByte(this.slotId_);
-         data.writeShort(this.objectType_);
+         data.writeInt(this.objectType_);
       }
       
       public function toString() : String

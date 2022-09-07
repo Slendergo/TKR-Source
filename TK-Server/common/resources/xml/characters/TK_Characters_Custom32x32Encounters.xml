@@ -17,7 +17,7 @@
 		<ShadowSize>0</ShadowSize>
 		<MaxHitPoints>65000</MaxHitPoints>
 		<Defense>25</Defense>
-		<XpMult>2.5</XpMult>
+		<XpMult>0</XpMult>
 		<Projectile id="0">
 			<ObjectId>Quetzalcoat Star</ObjectId>
 			<Damage>225</Damage>
@@ -57,7 +57,7 @@
 		<ShadowSize>0</ShadowSize>
 		<MaxHitPoints>65000</MaxHitPoints>
 		<Defense>25</Defense>
-		<XpMult>2.5</XpMult>
+		<XpMult>0</XpMult>
 		<Projectile id="0">
 			<ObjectId>Quetzalcoat Star</ObjectId>
 			<Damage>130</Damage>
@@ -93,7 +93,7 @@
 		<ShadowSize>0</ShadowSize>
 		<MaxHitPoints>65000</MaxHitPoints>
 		<Defense>25</Defense>
-		<XpMult>2.5</XpMult>
+		<XpMult>0</XpMult>
 		<Projectile id="0">
 			<ObjectId>Quetzalcoat Star</ObjectId>
 			<Damage>225</Damage>
@@ -131,7 +131,7 @@
 		<ShadowSize>0</ShadowSize>
 		<MaxHitPoints>65000</MaxHitPoints>
 		<Defense>25</Defense>
-		<XpMult>2.5</XpMult>
+		<XpMult>0</XpMult>
 		<Projectile id="0">
 			<ObjectId>Quetzalcoat Star</ObjectId>
 			<Damage>225</Damage>
@@ -169,7 +169,7 @@
 		<ShadowSize>0</ShadowSize>
 		<MaxHitPoints>65000</MaxHitPoints>
 		<Defense>25</Defense>
-		<XpMult>2.5</XpMult>
+		<XpMult>0</XpMult>
 		<Projectile id="0">
 			<ObjectId>Quetzalcoat Star</ObjectId>
 			<Damage>225</Damage>
@@ -207,7 +207,7 @@
 		<ShadowSize>0</ShadowSize>
 		<MaxHitPoints>65000</MaxHitPoints>
 		<Defense>25</Defense>
-		<XpMult>2.5</XpMult>
+		<XpMult>0</XpMult>
 		<Projectile id="0">
 			<ObjectId>Quetzalcoat Star</ObjectId>
 			<Damage>225</Damage>
@@ -245,7 +245,7 @@
 		<ShadowSize>0</ShadowSize>
 		<MaxHitPoints>65000</MaxHitPoints>
 		<Defense>25</Defense>
-		<XpMult>2.5</XpMult>
+		<XpMult>0</XpMult>
 		<Projectile id="0">
 			<ObjectId>Quetzalcoat Star</ObjectId>
 			<Damage>225</Damage>
@@ -630,7 +630,7 @@
 		<ShadowSize>45</ShadowSize>
 		<MaxHitPoints>120000</MaxHitPoints>
 		<Defense>25</Defense>
-		<XpMult>2.5</XpMult>
+		<XpMult>0</XpMult>
 		<Projectile id="0">
 			<ObjectId>Cland spiral</ObjectId>
 			<Damage>130</Damage>

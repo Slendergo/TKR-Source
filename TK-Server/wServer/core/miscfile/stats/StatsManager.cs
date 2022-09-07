@@ -12,10 +12,10 @@ namespace wServer.core
         internal BoostStatManager Boost;
         internal Player Owner;
 
-        private const float MAX_ATTACK_FREQ = 0.008f;
-        private const float MAX_ATTACK_MULT = 2f;
-        private const float MIN_ATTACK_FREQ = 0.0015f;
-        private const float MIN_ATTACK_MULT = 0.5f;
+        private const double MAX_ATTACK_FREQ = 0.008;
+        private const double MAX_ATTACK_MULT = 2.0;
+        private const double MIN_ATTACK_FREQ = 0.0015;
+        private const double MIN_ATTACK_MULT = 0.5;
 
         private SV<int>[] _stats;
 
@@ -203,30 +203,28 @@ namespace wServer.core
 
         public int GetAttackDamage(int min, int max, bool isAbility = false) => (int)(Owner.Client.Random.NextIntRange((uint)min, (uint)max) * GetAttackMult(isAbility));
 
-        public float GetAttackFrequency()
+        public double GetAttackFrequency()
         {
             if (Owner.HasConditionEffect(ConditionEffectIndex.Dazed))
                 return MIN_ATTACK_FREQ;
 
-            var rof = MIN_ATTACK_FREQ + this[5] / 75f * (MAX_ATTACK_FREQ - MIN_ATTACK_FREQ);
-
+            var rof = MIN_ATTACK_FREQ + this[5] / (double)75.0 * (MAX_ATTACK_FREQ - MIN_ATTACK_FREQ);
             if (Owner.HasConditionEffect(ConditionEffectIndex.Berserk) || Owner.HasConditionEffect(ConditionEffectIndex.NinjaBerserk))
-                rof *= 1.25f;
-
+                rof *= 1.25;
             return rof;
         }
 
-        public float GetAttackMult(bool isAbility)
+        public double GetAttackMult(bool isAbility)
         {
             if (isAbility)
-                return 1;
+                return 1.0;
 
             if (Owner.HasConditionEffect(ConditionEffectIndex.Weak))
                 return MIN_ATTACK_MULT;
 
-            var mult = MIN_ATTACK_MULT + this[2] / 75f * (MAX_ATTACK_MULT - MIN_ATTACK_MULT);
+            var mult = MIN_ATTACK_MULT + this[2] / (double)75.0 * (MAX_ATTACK_MULT - MIN_ATTACK_MULT);
             if (Owner.HasConditionEffect(ConditionEffectIndex.Damaging) || Owner.HasConditionEffect(ConditionEffectIndex.NinjaDamaging))
-                mult *= 1.25f;
+                mult *= 1.25;
             return mult;
         }
 

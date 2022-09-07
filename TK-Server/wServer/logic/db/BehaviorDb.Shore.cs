@@ -10,11 +10,11 @@ namespace wServer.logic
         private _ Shore = () => Behav()
         .Init("Pirate",
             new State(
-                new Prioritize(
-                    new Follow(0.85, range: 1, duration: 5000, coolDown: 0),
-                    new Wander(0.4)
-                    ),
-                new Shoot(3, coolDown: 2500)
+                new Shoot(3, coolDown: 2500),
+                new OrderedBehavior(
+                    new NewFollow(range: 1, speed: 0.85f),
+                    new NewWander(0.4f)
+                    )
                 ),
             new TierLoot(1, ItemType.Weapon, 0.2),
             new ItemLoot("Health Potion", 0.03)

@@ -209,6 +209,14 @@ namespace wServer
             return Math.Sqrt(dx * dx + dy * dy);
         }
 
+        public static double Dist(this Entity a, float x, float y)
+        {
+            var dx = a.X - x;
+            var dy = a.Y - y;
+
+            return Math.Sqrt(dx * dx + dy * dy);
+        }
+
         public static double Dist(this Entity a, Position b)
         {
             var dx = a.X - b.X;
@@ -411,6 +419,25 @@ namespace wServer
                     if (d < dist)
                         yield return i;
                 }
+        }
+
+        public static Entity FindPlayerTarget(this Entity host)   //Null for player
+        {
+            Entity closestObj = null;
+            var minDist = double.MaxValue;
+            foreach (var obj in host.World.Players.Values)
+            {
+                if (!(obj as IPlayer).IsVisibleToEnemy())
+                    continue;
+
+                var dist = obj.Dist(host);
+                if (dist < minDist)
+                {
+                    minDist = dist;
+                    closestObj = obj;
+                }
+            }
+            return closestObj;
         }
 
         public static Entity GetNearestEntity(this Entity entity, double dist, ushort? objType, bool seeInvis = false)   //Null for player

@@ -167,7 +167,7 @@ namespace wServer.core.objects
                 if (tierDesc == null)
                     continue;
 
-                // todo rest
+                TalismanCanOnlyGetWhiteBags = tierDesc.CanOnlyGetWhiteBags;
 
                 foreach (var loot in tierDesc.LootBoosts)
                 {
@@ -248,7 +248,6 @@ namespace wServer.core.objects
                     TalismanFameGainBonus += percentage;
                 TalismanCantGetLoot = tierDesc.CantGetLoot;
                 TalismanNoPotionHealing = tierDesc.NoPotionHealing;
-                TalismanCanOnlyGetWhiteBags = tierDesc.CanOnlyGetWhiteBags;
             }
 
 

@@ -64,7 +64,7 @@
 		<BagType>7</BagType>
 		<MpCost>100</MpCost>
 		<Activate amount="325" range="3" useWisMod="false">HealNova</Activate>
-		<Activate effect="Damaging" duration="2" useWisMod="true">ConditionEffectAura</Activate>
+		<Activate effect="Damaging" duration="2" useWisMod="false">ConditionEffectSelf</Activate>
 		<Activate effect="Berserk" duration="2" useWisMod="true">ConditionEffectSelf</Activate>
 	</Object>
 </Objects>

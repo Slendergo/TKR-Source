@@ -32,7 +32,7 @@
 			<ObjectId>Quetzalcoat Star</ObjectId>
 			<Damage>225</Damage>
 			<Size>150</Size>
-			<Speed>75</Speed>
+			<Speed>65</Speed>
 			<ArmorPierce />
 			<MultiHit/>
 			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
@@ -70,7 +70,7 @@
 			<ObjectId>Quetzalcoat Star</ObjectId>
 			<Damage>130</Damage>
 			<Size>150</Size>
-			<Speed>75</Speed>
+			<Speed>65</Speed>
 			<ArmorPierce />
 			<LifetimeMS>4000</LifetimeMS>
 		</Projectile>
@@ -99,7 +99,6 @@
 			<Damage>225</Damage>
 			<Size>150</Size>
 			<Speed>0</Speed>
-			<ArmorPierce />
 			<MultiHit/>
 			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
 			<LifetimeMS>1100</LifetimeMS>
@@ -108,8 +107,7 @@
 			<ObjectId>Quetzalcoat Star</ObjectId>
 			<Damage>225</Damage>
 			<Size>150</Size>
-			<Speed>75</Speed>
-			<ArmorPierce />
+			<Speed>65</Speed>
 			<MultiHit/>
 			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
 			<LifetimeMS>4000</LifetimeMS>
@@ -139,7 +137,6 @@
 			<Damage>225</Damage>
 			<Size>150</Size>
 			<Speed>0</Speed>
-			<ArmorPierce />
 			<MultiHit/>
 			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
 			<LifetimeMS>1100</LifetimeMS>
@@ -148,8 +145,7 @@
 			<ObjectId>Quetzalcoat Star</ObjectId>
 			<Damage>225</Damage>
 			<Size>150</Size>
-			<Speed>75</Speed>
-			<ArmorPierce />
+			<Speed>65</Speed>
 			<MultiHit/>
 			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
 			<LifetimeMS>4000</LifetimeMS>
@@ -179,7 +175,6 @@
 			<Damage>225</Damage>
 			<Size>150</Size>
 			<Speed>0</Speed>
-			<ArmorPierce />
 			<MultiHit/>
 			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
 			<LifetimeMS>1100</LifetimeMS>
@@ -188,8 +183,7 @@
 			<ObjectId>Quetzalcoat Star</ObjectId>
 			<Damage>225</Damage>
 			<Size>150</Size>
-			<Speed>75</Speed>
-			<ArmorPierce />
+			<Speed>65</Speed>
 			<MultiHit/>
 			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
 			<LifetimeMS>4000</LifetimeMS>
@@ -219,7 +213,6 @@
 			<Damage>225</Damage>
 			<Size>150</Size>
 			<Speed>0</Speed>
-			<ArmorPierce />
 			<MultiHit/>
 			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
 			<LifetimeMS>1100</LifetimeMS>
@@ -228,8 +221,7 @@
 			<ObjectId>Quetzalcoat Star</ObjectId>
 			<Damage>225</Damage>
 			<Size>150</Size>
-			<Speed>75</Speed>
-			<ArmorPierce />
+			<Speed>65</Speed>
 			<MultiHit/>
 			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
 			<LifetimeMS>4000</LifetimeMS>
@@ -259,7 +251,6 @@
 			<Damage>225</Damage>
 			<Size>150</Size>
 			<Speed>0</Speed>
-			<ArmorPierce />
 			<MultiHit/>
 			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
 			<LifetimeMS>1100</LifetimeMS>
@@ -268,8 +259,7 @@
 			<ObjectId>Quetzalcoat Star</ObjectId>
 			<Damage>225</Damage>
 			<Size>150</Size>
-			<Speed>75</Speed>
-			<ArmorPierce />
+			<Speed>65</Speed>
 			<MultiHit/>
 			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
 			<LifetimeMS>4000</LifetimeMS>

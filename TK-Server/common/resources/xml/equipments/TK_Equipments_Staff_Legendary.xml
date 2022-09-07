@@ -135,7 +135,7 @@
     </Texture>
     <SlotType>17</SlotType>
     <Description>An unstable marriage of polar opposites. Such an anomaly only leads to disaster.</Description>
-    <RateOfFire>.95</RateOfFire>
+    <RateOfFire>1.2</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
       <ObjectId>Rod of Frost Burn Shoot</ObjectId>

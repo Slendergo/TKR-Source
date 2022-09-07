@@ -1244,11 +1244,11 @@ namespace wServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.03,
-                new ItemLoot("Cadaverous Knife", 0.001)
+                new ItemLoot("Cadaverous Knife", 0.00125)
                 ),
             new Threshold(0.01,
                 new ItemLoot("Crafting Material 2", 0.1),
-                new ItemLoot("Demonic Codex", 0.001),
+                new ItemLoot("Demonic Codex", 0.00125),
                 new ItemLoot("Abyssal Sword", 0.009),
                 new ItemLoot("Archdemon's Remains", 0.009),
                 new ItemLoot("Seal of the Underworld", 0.009),

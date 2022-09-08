@@ -5,18 +5,12 @@ package kabam.rotmg.messaging.impl.outgoing
    
    public class PlayerShoot extends OutgoingMessage
    {
-       
-      
       public var time_:int;
-      
       public var bulletId_:uint;
-      
       public var containerType_:int;
-      
       public var startingPos_:WorldPosData;
-      
       public var angle_:Number;
-      
+
       public function PlayerShoot(id:uint, callback:Function)
       {
          this.startingPos_ = new WorldPosData();

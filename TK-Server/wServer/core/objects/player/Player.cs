@@ -123,11 +123,11 @@ namespace wServer.core.objects
         internal class APIResp{ [JsonProperty("rank")] public string charRank { get; set; }}
 
         public bool IsAdmin => Client.Rank.Rank == RankingType.Admin;
-        public bool IsSupporter1 => Client.Rank.Rank == RankingType.Supporter1;
-        public bool IsSupporter2 => Client.Rank.Rank == RankingType.Supporter2;
-        public bool IsSupporter3 => Client.Rank.Rank == RankingType.Supporter3;
-        public bool IsSupporter4 => Client.Rank.Rank == RankingType.Supporter4;
-        public bool IsSupporter5 => Client.Rank.Rank == RankingType.Supporter5;
+        public bool IsSupporter1 => Client.Rank.Rank >= RankingType.Supporter1;
+        public bool IsSupporter2 => Client.Rank.Rank >= RankingType.Supporter2;
+        public bool IsSupporter3 => Client.Rank.Rank >= RankingType.Supporter3;
+        public bool IsSupporter4 => Client.Rank.Rank >= RankingType.Supporter4;
+        public bool IsSupporter5 => Client.Rank.Rank >= RankingType.Supporter5;
         public bool IsCommunityManager => Client.Rank.IsCommunityManager;
 
         public Player(Client client, bool saveInventory = true) : base(client.GameServer, client.Character.ObjectType)
@@ -331,7 +331,12 @@ namespace wServer.core.objects
             return true;
         }
 
-        public override bool CanBeSeenBy(Player player) => Client?.Account != null && Client.Account.Hidden ? false : true;
+        public override bool CanBeSeenBy(Player player)
+        {
+            if (IsAdmin || IsCommunityManager)
+                return true;
+            return Client?.Account != null && Client.Account.Hidden ? false : true;
+        }
 
         public void Damage(int dmg, Entity src)
         {

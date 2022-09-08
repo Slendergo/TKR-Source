@@ -32,27 +32,24 @@ namespace wServer.core.net.handlers
                 return;
             }
 
-            if (!player.GameServer.Resources.GameData.Items.TryGetValue((ushort)ContainerType, out var item))
+            if (player.Inventory[0] == null || player.Inventory[1] == null || !player.GameServer.Resources.GameData.Items.TryGetValue((ushort)ContainerType, out var item))
             {
                 client.Disconnect("Attempting to shoot a invalid item");
                 return;
             }
 
-            if (item == player.Inventory[1])
+            if (item.ObjectType == player.Inventory[1].ObjectType)
             {
                 if (player.World.DisableAbilities)
-                {
                     client.Disconnect("Attempting to activate ability in a disabled world");
-                    return;
-                }
                 return; // ability shoot handled by useitem
             }
 
             // validate
             var result = player.ValidatePlayerShoot(item, Time);
-            if (result != PlayerShootStatus.OK)
+            if (result == PlayerShootStatus.ITEM_MISMATCH)
             {
-                System.Console.WriteLine($"PlayerShoot validation failure ({player.Name}:{player.AccountId}): {result}");
+                System.Console.WriteLine($"PlayerShoot validation ITEM_MISMATCH ({player.Name}:{player.AccountId}): {item.ObjectType} != {player.Inventory[0].ObjectType}");
                 return;
             }
 

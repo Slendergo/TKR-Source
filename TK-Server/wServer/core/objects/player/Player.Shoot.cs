@@ -26,7 +26,7 @@ namespace wServer.core.objects
 
         public PlayerShootStatus ValidatePlayerShoot(Item item, int time)
         {
-            if (item != Inventory[0])
+            if (item.ObjectType != Inventory[0].ObjectType)
                 return PlayerShootStatus.ITEM_MISMATCH;
 
             // todo figure out a way to stop desync
@@ -36,21 +36,21 @@ namespace wServer.core.objects
             //if (time < _time.LastClientTime() + dt)
             //    return PlayerShootStatus.COOLDOWN_STILL_ACTIVE;
 
-            if (time != _lastShootTime)
-            {
-                _lastShootTime = time;
-                if (_shotsLeft != 0 && _shotsLeft < item.NumProjectiles)
-                {
-                    _shotsLeft = 0;
-                    _time.Push(time, Environment.TickCount);
-                    return PlayerShootStatus.NUM_PROJECTILE_MISMATCH;
-                }
-                _shotsLeft = 0;
-            }
+            //if (time != _lastShootTime)
+            //{
+            //    _lastShootTime = time;
+            //    if (_shotsLeft != 0 && _shotsLeft < item.NumProjectiles)
+            //    {
+            //        _shotsLeft = 0;
+            //        _time.Push(time, Environment.TickCount);
+            //        return PlayerShootStatus.NUM_PROJECTILE_MISMATCH;
+            //    }
+            //    _shotsLeft = 0;
+            //}
 
-            _shotsLeft++;
-            if (_shotsLeft >= item.NumProjectiles)
-                _time.Push(time, Environment.TickCount);
+            //_shotsLeft++;
+            //if (_shotsLeft >= item.NumProjectiles)
+            //    _time.Push(time, Environment.TickCount);
 
             //var timeDiff = _time.TimeDiff();
             ////Log.Info($"timeDiff: {timeDiff}");

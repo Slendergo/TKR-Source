@@ -137,6 +137,9 @@ namespace wServer.core.objects
                     continue;
                 }
 
+                if (entity is Player && (entity as Player).CanBeSeenBy(Player))
+                    continue;
+
                 if (entity is Player || ActiveTiles.Contains(new IntPoint((int)entity.X, (int)entity.Y)))
                     continue;
 

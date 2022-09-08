@@ -180,17 +180,14 @@ namespace wServer.core.objects
         private bool Dead;
         public void Death(ref TickTime time)
         {
-            if (Dead)
+            if (!Dead)
             {
-                Console.WriteLine("Death Called More than Once");
-                return;
+                Dead = true;
+                DamageCounter.Death(time);
+                CurrentState?.OnDeath(this, ref time);
+                if (GameServer.BehaviorDb.Definitions.TryGetValue(ObjectType, out var loot))
+                    loot.Item2?.Handle(this, time);
             }
-            Dead = true;
-
-            DamageCounter.Death(time);
-            CurrentState?.OnDeath(this, ref time);
-            if (GameServer.BehaviorDb.Definitions.TryGetValue(ObjectType, out var loot))
-                loot.Item2?.Handle(this, time);
             World.LeaveWorld(this);
         }
 

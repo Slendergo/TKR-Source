@@ -356,12 +356,9 @@ package kabam.rotmg.stage3D
 
       private function setTranslationToGame() : void
       {
-
          this.tX = 0;
-         this.tY = ((Parameters.data_.centerOnPlayer) ? -50 : ((Camera.OFFSET_SCREEN_RECT.y + (Camera.CENTER_SCREEN_RECT.height / 2)) * 2));
-
-//         this.tX = -200 / Parameters.data_.mscale * (WebMain.STAGE.stageHeight / 600);
-//         this.tY = !Parameters.data_.centerOnPlayer?Number(Number((Camera.OFFSET_SCREEN_RECT.y + Camera.CENTER_SCREEN_RECT.height / 2) * 2)):Number(Number(-50 / Parameters.data_.mscale * (WebMain.STAGE.stageHeight / 600)));
+         this.tX = -200 / Parameters.data_.mscale * (WebMain.STAGE.stageHeight / 600);
+         this.tY = !Parameters.data_.centerOnPlayer?Number(Number((Camera.OFFSET_SCREEN_RECT.y + Camera.CENTER_SCREEN_RECT.height / 2) * 2)):Number(Number(-50 / Parameters.data_.mscale * (WebMain.STAGE.stageHeight / 600)));
       }
 
       private function setTranslationToTitle() : void

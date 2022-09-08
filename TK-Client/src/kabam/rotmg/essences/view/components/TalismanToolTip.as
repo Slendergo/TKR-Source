@@ -122,7 +122,7 @@ public class TalismanToolTip extends ToolTip
 
                 this.effects.push(new Effect("" , symbol + (xml.@percentage * 100.0) + "% " + type + scaleType));
             }
-            
+
             xml = null;
             for each(xml in tierXML.Leech){
 
@@ -136,17 +136,15 @@ public class TalismanToolTip extends ToolTip
                     symbol = "";
                 }
 
-                var type:String = xml;
+                var type:String = xml.@type;
                 switch(type){
-                    case "AbilityDamage":
-                        type = "Ability Damage"; break;
-                    case "ManaRegen":
-                        type = "MP Regen"; break;
-                    case "LifeRegen":
-                        type = "HP Regen"; break;
+                    case "health":
+                        type = " Maximum HP"; break;
+                    case "mana":
+                        type = " Maximum MP"; break;
                 }
 
-                this.effects.push(new Effect("" , symbol + (xml.@percentage * 100.0) + "% " + type + scaleType));
+                this.effects.push(new Effect("" , (xml.@prob * 100.0) + "% chance to leech " + (xml.@percentage * 100.0) + "% of" + type + scaleType));
             }
 
 

@@ -29,10 +29,8 @@ namespace wServer.core.net.handlers
 
             var prj = player.World.GetProjectile(player.Id, bulletId);
             if (prj == null)
-            {
-                Console.WriteLine($"NULL Projectile: {bulletId} {targetId}");
                 return;
-            }
+
             prj?.ForceHit(entity, tickTime);
 
             var totalLife = 0.0;

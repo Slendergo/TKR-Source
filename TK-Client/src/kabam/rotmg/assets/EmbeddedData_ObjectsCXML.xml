@@ -27615,7 +27615,7 @@
     <ShadowSize>0</ShadowSize>
     <MaxHitPoints>65000</MaxHitPoints>
     <Defense>25</Defense>
-    <XpMult>2.5</XpMult>
+    <XpMult>0</XpMult>
     <Projectile id="0">
       <ObjectId>Quetzalcoat Star</ObjectId>
       <Damage>225</Damage>
@@ -27630,7 +27630,7 @@
       <ObjectId>Quetzalcoat Star</ObjectId>
       <Damage>225</Damage>
       <Size>150</Size>
-      <Speed>75</Speed>
+      <Speed>65</Speed>
       <ArmorPierce />
       <MultiHit />
       <ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
@@ -27655,7 +27655,7 @@
     <ShadowSize>0</ShadowSize>
     <MaxHitPoints>65000</MaxHitPoints>
     <Defense>25</Defense>
-    <XpMult>2.5</XpMult>
+    <XpMult>0</XpMult>
     <Projectile id="0">
       <ObjectId>Quetzalcoat Star</ObjectId>
       <Damage>130</Damage>
@@ -27668,7 +27668,7 @@
       <ObjectId>Quetzalcoat Star</ObjectId>
       <Damage>130</Damage>
       <Size>150</Size>
-      <Speed>75</Speed>
+      <Speed>65</Speed>
       <ArmorPierce />
       <LifetimeMS>4000</LifetimeMS>
     </Projectile>
@@ -27691,13 +27691,12 @@
     <ShadowSize>0</ShadowSize>
     <MaxHitPoints>65000</MaxHitPoints>
     <Defense>25</Defense>
-    <XpMult>2.5</XpMult>
+    <XpMult>0</XpMult>
     <Projectile id="0">
       <ObjectId>Quetzalcoat Star</ObjectId>
       <Damage>225</Damage>
       <Size>150</Size>
       <Speed>0</Speed>
-      <ArmorPierce />
       <MultiHit />
       <ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
       <LifetimeMS>1100</LifetimeMS>
@@ -27706,8 +27705,7 @@
       <ObjectId>Quetzalcoat Star</ObjectId>
       <Damage>225</Damage>
       <Size>150</Size>
-      <Speed>75</Speed>
-      <ArmorPierce />
+      <Speed>65</Speed>
       <MultiHit />
       <ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
       <LifetimeMS>4000</LifetimeMS>
@@ -27731,13 +27729,12 @@
     <ShadowSize>0</ShadowSize>
     <MaxHitPoints>65000</MaxHitPoints>
     <Defense>25</Defense>
-    <XpMult>2.5</XpMult>
+    <XpMult>0</XpMult>
     <Projectile id="0">
       <ObjectId>Quetzalcoat Star</ObjectId>
       <Damage>225</Damage>
       <Size>150</Size>
       <Speed>0</Speed>
-      <ArmorPierce />
       <MultiHit />
       <ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
       <LifetimeMS>1100</LifetimeMS>
@@ -27746,8 +27743,7 @@
       <ObjectId>Quetzalcoat Star</ObjectId>
       <Damage>225</Damage>
       <Size>150</Size>
-      <Speed>75</Speed>
-      <ArmorPierce />
+      <Speed>65</Speed>
       <MultiHit />
       <ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
       <LifetimeMS>4000</LifetimeMS>
@@ -27771,13 +27767,12 @@
     <ShadowSize>0</ShadowSize>
     <MaxHitPoints>65000</MaxHitPoints>
     <Defense>25</Defense>
-    <XpMult>2.5</XpMult>
+    <XpMult>0</XpMult>
     <Projectile id="0">
       <ObjectId>Quetzalcoat Star</ObjectId>
       <Damage>225</Damage>
       <Size>150</Size>
       <Speed>0</Speed>
-      <ArmorPierce />
       <MultiHit />
       <ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
       <LifetimeMS>1100</LifetimeMS>
@@ -27786,8 +27781,7 @@
       <ObjectId>Quetzalcoat Star</ObjectId>
       <Damage>225</Damage>
       <Size>150</Size>
-      <Speed>75</Speed>
-      <ArmorPierce />
+      <Speed>65</Speed>
       <MultiHit />
       <ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
       <LifetimeMS>4000</LifetimeMS>
@@ -27811,13 +27805,12 @@
     <ShadowSize>0</ShadowSize>
     <MaxHitPoints>65000</MaxHitPoints>
     <Defense>25</Defense>
-    <XpMult>2.5</XpMult>
+    <XpMult>0</XpMult>
     <Projectile id="0">
       <ObjectId>Quetzalcoat Star</ObjectId>
       <Damage>225</Damage>
       <Size>150</Size>
       <Speed>0</Speed>
-      <ArmorPierce />
       <MultiHit />
       <ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
       <LifetimeMS>1100</LifetimeMS>
@@ -27826,8 +27819,7 @@
       <ObjectId>Quetzalcoat Star</ObjectId>
       <Damage>225</Damage>
       <Size>150</Size>
-      <Speed>75</Speed>
-      <ArmorPierce />
+      <Speed>65</Speed>
       <MultiHit />
       <ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
       <LifetimeMS>4000</LifetimeMS>
@@ -27851,13 +27843,12 @@
     <ShadowSize>0</ShadowSize>
     <MaxHitPoints>65000</MaxHitPoints>
     <Defense>25</Defense>
-    <XpMult>2.5</XpMult>
+    <XpMult>0</XpMult>
     <Projectile id="0">
       <ObjectId>Quetzalcoat Star</ObjectId>
       <Damage>225</Damage>
       <Size>150</Size>
       <Speed>0</Speed>
-      <ArmorPierce />
       <MultiHit />
       <ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
       <LifetimeMS>1100</LifetimeMS>
@@ -27866,8 +27857,7 @@
       <ObjectId>Quetzalcoat Star</ObjectId>
       <Damage>225</Damage>
       <Size>150</Size>
-      <Speed>75</Speed>
-      <ArmorPierce />
+      <Speed>65</Speed>
       <MultiHit />
       <ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
       <LifetimeMS>4000</LifetimeMS>
@@ -28238,7 +28228,7 @@
     <ShadowSize>45</ShadowSize>
     <MaxHitPoints>120000</MaxHitPoints>
     <Defense>25</Defense>
-    <XpMult>2.5</XpMult>
+    <XpMult>0</XpMult>
     <Projectile id="0">
       <ObjectId>Cland spiral</ObjectId>
       <Damage>130</Damage>
@@ -56490,10 +56480,10 @@
     <Usable />
     <BagType>7</BagType>
     <FameBonus>4</FameBonus>
-    <MpCost>110</MpCost>
-    <Activate radius="4" impactDamage="1200" totalDamage="3500" duration="3" throwTime="3" color="0xf5ce42" useWisMod="false">PoisonGrenade</Activate>
-    <Activate radius="6" impactDamage="800" totalDamage="2000" duration="5" throwTime="2" color="0x85837e" useWisMod="false">PoisonGrenade</Activate>
-    <Activate radius="2" impactDamage="200" totalDamage="1500" duration="2" throwTime="1" color="0xAF6D2B" useWisMod="false">PoisonGrenade</Activate>
+    <MpCost>130</MpCost>
+    <Activate radius="4" impactDamage="1200" totalDamage="2500" duration="3" throwTime="3" color="0xf5ce42" useWisMod="true">PoisonGrenade</Activate>
+    <Activate radius="6" impactDamage="800" totalDamage="1500" duration="5" throwTime="2" color="0x85837e" useWisMod="true">PoisonGrenade</Activate>
+    <Activate radius="2" impactDamage="200" totalDamage="1000" duration="2" throwTime="1" color="0xAF6D2B" useWisMod="true">PoisonGrenade</Activate>
   </Object>
   <Object type="0xaa3" id="Centipede Poison">
     <Class>Equipment</Class>
@@ -61826,7 +61816,7 @@
     </Texture>
     <SlotType>17</SlotType>
     <Description>An unstable marriage of polar opposites. Such an anomaly only leads to disaster.</Description>
-    <RateOfFire>.95</RateOfFire>
+    <RateOfFire>1.2</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
       <ObjectId>Rod of Frost Burn Shoot</ObjectId>
@@ -61893,13 +61883,13 @@
     <Legendary />
     <SlotType>17</SlotType>
     <Description>The Keeper of Souls most precious item. Corrupt and evil magic lingers at the edge of the blade from burying dead adventurers.</Description>
-    <RateOfFire>0.7</RateOfFire>
+    <RateOfFire>0.65</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
       <ObjectId>Mortomus Shovel Shot</ObjectId>
       <Speed>95</Speed>
-      <MinDamage>145</MinDamage>
-      <MaxDamage>175</MaxDamage>
+      <MinDamage>125</MinDamage>
+      <MaxDamage>170</MaxDamage>
       <LifetimeMS>800</LifetimeMS>
       <Amplitude>0.5</Amplitude>
       <Frequency>1</Frequency>
@@ -63394,10 +63384,10 @@
     <Sound>weapon/mithril_sword</Sound>
     <Projectile>
       <ObjectId>Thiram Shot</ObjectId>
-      <Speed>100</Speed>
+      <Speed>130</Speed>
       <MinDamage>950</MinDamage>
       <MaxDamage>950</MaxDamage>
-      <LifetimeMS>750</LifetimeMS>
+      <LifetimeMS>600</LifetimeMS>
       <Frequency>1</Frequency>
       <Amplitude>0.2</Amplitude>
       <Size>100</Size>
@@ -64457,7 +64447,7 @@
     <BagType>7</BagType>
     <MpCost>100</MpCost>
     <Activate amount="325" range="3" useWisMod="false">HealNova</Activate>
-    <Activate effect="Damaging" duration="2" useWisMod="true">ConditionEffectAura</Activate>
+    <Activate effect="Damaging" duration="2" useWisMod="false">ConditionEffectSelf</Activate>
     <Activate effect="Berserk" duration="2" useWisMod="true">ConditionEffectSelf</Activate>
   </Object>
   <Object type="0xa31" id="Healing Tome">

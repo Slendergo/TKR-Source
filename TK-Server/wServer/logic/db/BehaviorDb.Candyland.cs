@@ -165,7 +165,7 @@ namespace wServer.logic
                     new ConditionalEffect(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("fire",
-                    new Spawn("CLand Spike", 1, 1, coolDown: 99999),
+                    new Spawn("CLand Spike", 1, 1, coolDown: 99999, givesNoXp: true),
                     new TimedTransition(1000, "Suicide")
                     ),
                 new State("Suicide",
@@ -179,7 +179,7 @@ namespace wServer.logic
                     new ConditionalEffect(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("fire",
-                    new Spawn("CLand Spike", 1, 1, coolDown: 99999),
+                    new Spawn("CLand Spike", 1, 1, coolDown: 99999, givesNoXp: true),
                     new TimedTransition(1000, "Suicide")
                     ),
                 new State("Suicide",
@@ -193,7 +193,7 @@ namespace wServer.logic
                     new ConditionalEffect(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("fire",
-                    new Spawn("CLand Spike", 1, 1, coolDown: 99999),
+                    new Spawn("CLand Spike", 1, 1, coolDown: 99999, givesNoXp: true),
                     new TimedTransition(1000, "Suicide")
                     ),
                 new State("Suicide",
@@ -207,7 +207,7 @@ namespace wServer.logic
                     new ConditionalEffect(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("fire",
-                    new Spawn("CLand Spike", 1, 1, coolDown: 99999),
+                    new Spawn("CLand Spike", 1, 1, coolDown: 99999, givesNoXp: true),
                     new TimedTransition(1000, "Suicide")
                     ),
                 new State("Suicide",
@@ -221,7 +221,7 @@ namespace wServer.logic
                     new ConditionalEffect(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("fire",
-                    new Spawn("CLand Spike", 1, 1, coolDown: 99999),
+                    new Spawn("CLand Spike", 1, 1, coolDown: 99999, givesNoXp: true),
                     new TimedTransition(1000, "Suicide")
                     ),
                 new State("Suicide",
@@ -235,7 +235,7 @@ namespace wServer.logic
                     new ConditionalEffect(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("fire",
-                    new Spawn("CLand Spike", 1, 1, coolDown: 99999),
+                    new Spawn("CLand Spike", 1, 1, coolDown: 99999, givesNoXp: true),
                     new TimedTransition(1000, "Suicide")
                     ),
                 new State("Suicide",

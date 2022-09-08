@@ -28,20 +28,13 @@ namespace wServer.core.objects
         {
             if (item != Inventory[0])
                 return PlayerShootStatus.ITEM_MISMATCH;
-            /*
-            var bigSkill = BigSkill11 ? 0.35 : 0;
-            if (SmallSkill11 > 0)
-                bigSkill += SmallSkill11 * 0.02;
-            if (BigSkill1)
-                bigSkill -= 0.10;
-            if (BigSkill4)
-                bigSkill -= 0.05; 
-            var rateSkill = bigSkill * item.RateOfFire;*/
-            var rateOfFire = item.RateOfFire;
 
-            var dt = (int)(1 / Stats.GetAttackFrequency() * 1 / rateOfFire);
-            if (time < _time.LastClientTime() + dt)
-                return PlayerShootStatus.COOLDOWN_STILL_ACTIVE;
+            // todo figure out a way to stop desync
+            
+            //var rateOfFire = item.RateOfFire;
+            //var dt = (int)(1 / Stats.GetAttackFrequency() * 1 / rateOfFire);
+            //if (time < _time.LastClientTime() + dt)
+            //    return PlayerShootStatus.COOLDOWN_STILL_ACTIVE;
 
             if (time != _lastShootTime)
             {
@@ -59,12 +52,12 @@ namespace wServer.core.objects
             if (_shotsLeft >= item.NumProjectiles)
                 _time.Push(time, Environment.TickCount);
 
-            var timeDiff = _time.TimeDiff();
-            //Log.Info($"timeDiff: {timeDiff}");
-            if (timeDiff < MinTimeDiff)
-                return PlayerShootStatus.CLIENT_TOO_SLOW;
-            if (timeDiff > MaxTimeDiff)
-                return PlayerShootStatus.CLIENT_TOO_FAST;
+            //var timeDiff = _time.TimeDiff();
+            ////Log.Info($"timeDiff: {timeDiff}");
+            //if (timeDiff < MinTimeDiff)
+            //    return PlayerShootStatus.CLIENT_TOO_SLOW;
+            //if (timeDiff > MaxTimeDiff)
+            //    return PlayerShootStatus.CLIENT_TOO_FAST;
             return PlayerShootStatus.OK;
         }
     }

@@ -11,6 +11,7 @@ using wServer.networking;
 using wServer.networking.packets;
 using wServer.core.net.handlers;
 using wServer.networking.packets.outgoing;
+using wServer.utils;
 
 namespace wServer.core.net.handlers
 {
@@ -150,6 +151,15 @@ namespace wServer.core.net.handlers
 
         private void TradeDone(Player player, Player tradeTarget, string msg)
         {
+            try
+            {
+                StaticLogger.Instance.Info($"[{player.World.IdName}({player.World.Id})] <{player.Name} {player.AccountId}-{player.Client.Character.CharId}> traded to <{tradeTarget.Name} {tradeTarget.AccountId}-{tradeTarget.Client.Character.CharId}>");
+            }
+            catch
+            {
+                System.Console.WriteLine($"<{player.Name} {player.AccountId}-{player.Client.Character.CharId}> Trade Log Error");
+            }
+
             player.Client.SendPacket(new TradeDone
             {
                 Code = 1,
@@ -164,6 +174,7 @@ namespace wServer.core.net.handlers
                     Description = msg
                 });
             }
+
             player.ResetTrade();
         }
     }

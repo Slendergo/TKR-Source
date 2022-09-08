@@ -1089,9 +1089,11 @@ public class Player extends Character {
         var rateOfFire:Number = Number(weaponXML.RateOfFire);
 
         this.attackPeriod_ = 1 / this.attackFrequency() * (1 / rateOfFire);
+
         if (time < attackStart_ + this.attackPeriod_) {
             return;
         }
+
         doneAction(map_.gs_, Tutorial.ATTACK_ACTION);
         attackAngle_ = attackAngle;
         attackStart_ = time;

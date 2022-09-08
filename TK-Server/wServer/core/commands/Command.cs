@@ -35,8 +35,8 @@ namespace wServer.core.commands
             var rank = player.Client.Rank.Rank;
             if (player.IsAdmin)
                 return true;
-            if (RankRequirement == RankingType.CommunityModerator && player.IsCommunityManager)
-                return true;
+            if (RankRequirement == RankingType.CommunityModerator)
+                return player.IsCommunityManager;
             return rank >= RankRequirement;
         }
 

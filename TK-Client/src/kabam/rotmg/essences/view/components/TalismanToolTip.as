@@ -122,6 +122,33 @@ public class TalismanToolTip extends ToolTip
 
                 this.effects.push(new Effect("" , symbol + (xml.@percentage * 100.0) + "% " + type + scaleType));
             }
+            
+            xml = null;
+            for each(xml in tierXML.Leech){
+
+                var scaleType:String = "";
+                if(xml.@scale == "perLevel") {
+                    scaleType = " Per Level"
+                }
+
+                var symbol:String = "+";
+                if(xml.@percentage < 0){
+                    symbol = "";
+                }
+
+                var type:String = xml;
+                switch(type){
+                    case "AbilityDamage":
+                        type = "Ability Damage"; break;
+                    case "ManaRegen":
+                        type = "MP Regen"; break;
+                    case "LifeRegen":
+                        type = "HP Regen"; break;
+                }
+
+                this.effects.push(new Effect("" , symbol + (xml.@percentage * 100.0) + "% " + type + scaleType));
+            }
+
 
             xml = null;
             for each(xml in tierXML.ImmuneTo){

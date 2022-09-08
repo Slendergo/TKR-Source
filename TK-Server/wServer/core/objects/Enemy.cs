@@ -180,9 +180,11 @@ namespace wServer.core.objects
         private bool Dead;
         public void Death(ref TickTime time)
         {
-            Console.WriteLine("Death Called");
             if (Dead)
+            {
+                Console.WriteLine("Death Called More than Once");
                 return;
+            }
             Dead = true;
 
             DamageCounter.Death(time);

@@ -122,7 +122,7 @@ namespace wServer.core.objects
         internal class APIRank{ public int accID; public int charID; }
         internal class APIResp{ [JsonProperty("rank")] public string charRank { get; set; }}
 
-        public bool IsAdmin => Client.Rank.Rank == RankingType.Admin;
+        public bool IsAdmin => Client.Rank.Rank >= RankingType.Admin;
         public bool IsSupporter1 => Client.Rank.Rank >= RankingType.Supporter1;
         public bool IsSupporter2 => Client.Rank.Rank >= RankingType.Supporter2;
         public bool IsSupporter3 => Client.Rank.Rank >= RankingType.Supporter3;

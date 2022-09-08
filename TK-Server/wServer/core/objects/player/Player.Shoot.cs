@@ -26,8 +26,8 @@ namespace wServer.core.objects
 
         public PlayerShootStatus ValidatePlayerShoot(Item item, int time)
         {
-            if (item.ObjectType != Inventory[0].ObjectType)
-                return PlayerShootStatus.ITEM_MISMATCH;
+            //if (item.ObjectType != Inventory[0].ObjectType)
+            //    return PlayerShootStatus.ITEM_MISMATCH;
 
             // todo figure out a way to stop desync
             

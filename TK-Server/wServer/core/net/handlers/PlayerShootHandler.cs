@@ -45,13 +45,13 @@ namespace wServer.core.net.handlers
                 return; // ability shoot handled by useitem
             }
 
-            // validate
-            var result = player.ValidatePlayerShoot(item, Time);
-            if (result == PlayerShootStatus.ITEM_MISMATCH)
-            {
-                System.Console.WriteLine($"PlayerShoot validation ITEM_MISMATCH ({player.Name}:{player.AccountId}): {item.ObjectType} != {player.Inventory[0].ObjectType}");
-                return;
-            }
+            // validate is buggy
+            //var result = player.ValidatePlayerShoot(item, Time);
+            //if (result == PlayerShootStatus.ITEM_MISMATCH)
+            //{
+            //    System.Console.WriteLine($"PlayerShoot validation ITEM_MISMATCH ({player.Name}:{player.AccountId}): {item.ObjectType} != {player.Inventory[0].ObjectType}");
+            //    return;
+            //}
 
             // create projectile and show other players
             var prjDesc = item.Projectiles[0]; //Assume only one

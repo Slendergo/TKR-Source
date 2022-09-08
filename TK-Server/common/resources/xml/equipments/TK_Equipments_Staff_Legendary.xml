@@ -135,7 +135,7 @@
     </Texture>
     <SlotType>17</SlotType>
     <Description>An unstable marriage of polar opposites. Such an anomaly only leads to disaster.</Description>
-    <RateOfFire>1.2</RateOfFire>
+    <RateOfFire>1.05</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
       <ObjectId>Rod of Frost Burn Shoot</ObjectId>
@@ -202,7 +202,7 @@
 		<Legendary />
 		<SlotType>17</SlotType>
 		<Description>The Keeper of Souls most precious item. Corrupt and evil magic lingers at the edge of the blade from burying dead adventurers.</Description>
-		<RateOfFire>0.65</RateOfFire>
+		<RateOfFire>0.75</RateOfFire>
 		<Sound>weapon/fire_wand</Sound>
 		<Projectile>
 			<ObjectId>Mortomus Shovel Shot</ObjectId>

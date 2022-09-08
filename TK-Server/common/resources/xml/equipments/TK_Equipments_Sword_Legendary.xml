@@ -137,10 +137,10 @@
 		<Sound>weapon/mithril_sword</Sound>
 		<Projectile>
 			<ObjectId>Thiram Shot</ObjectId>
-			<Speed>100</Speed>
+			<Speed>130</Speed>
 			<MinDamage>950</MinDamage>
 			<MaxDamage>950</MaxDamage>
-			<LifetimeMS>750</LifetimeMS>
+			<LifetimeMS>600</LifetimeMS>
 			<Frequency>1</Frequency>
 			<Amplitude>0.2</Amplitude>
 			<Size>100</Size>

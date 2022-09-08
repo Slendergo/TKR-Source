@@ -202,13 +202,13 @@
 		<Legendary />
 		<SlotType>17</SlotType>
 		<Description>The Keeper of Souls most precious item. Corrupt and evil magic lingers at the edge of the blade from burying dead adventurers.</Description>
-		<RateOfFire>0.7</RateOfFire>
+		<RateOfFire>0.65</RateOfFire>
 		<Sound>weapon/fire_wand</Sound>
 		<Projectile>
 			<ObjectId>Mortomus Shovel Shot</ObjectId>
 			<Speed>95</Speed>
-			<MinDamage>145</MinDamage>
-			<MaxDamage>175</MaxDamage>
+			<MinDamage>125</MinDamage>
+			<MaxDamage>170</MaxDamage>
 			<LifetimeMS>800</LifetimeMS>
 			<Amplitude>0.5</Amplitude>
 			<Frequency>1</Frequency>

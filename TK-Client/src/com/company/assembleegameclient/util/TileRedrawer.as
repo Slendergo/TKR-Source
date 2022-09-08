@@ -9,12 +9,15 @@ package com.company.assembleegameclient.util
    import com.company.util.BitmapUtil;
    import com.company.util.ImageSet;
    import com.company.util.PointUtil;
-   import flash.display.BitmapData;
+import com.hurlant.util.Hex;
+
+import flash.display.BitmapData;
    import flash.geom.Point;
    import flash.geom.Rectangle;
    import flash.utils.ByteArray;
-   
-   public class TileRedrawer
+import flash.utils.Dictionary;
+
+public class TileRedrawer
    {
       
       private static const rect0:Rectangle = new Rectangle(0,0,4,4);
@@ -46,9 +49,9 @@ package com.company.assembleegameclient.util
       private static const INNERP2:int = 5;
       
       private static const mlist_:Vector.<Vector.<ImageSet>> = getMasks();
-      
-      private static var cache_:Vector.<Object> = new <Object>[null,new Object()];
-      
+
+      private static var cache__:Dictionary = new Dictionary();
+
       private static const RECT01:Rectangle = new Rectangle(0,0,8,4);
       
       private static const RECT13:Rectangle = new Rectangle(4,0,4,8);
@@ -72,13 +75,19 @@ package com.company.assembleegameclient.util
       private static const POINT2:Point = new Point(0,4);
       
       private static const POINT3:Point = new Point(4,4);
-       
-      
+
       public function TileRedrawer()
       {
          super();
       }
-      
+
+      public static function clearCache():void{
+         for each (var _local2 in cache__) {
+            ((_local2) && (_local2.dispose()));
+         }
+         cache__ = new Dictionary();
+      }
+
       public static function redraw(square:Square, origBackground:Boolean) : BitmapData
       {
          var sig:ByteArray = null;
@@ -99,21 +108,22 @@ package com.company.assembleegameclient.util
          {
             return null;
          }
-         var dict:Object = cache_[1];
-         if(dict.hasOwnProperty(sig))
-         {
-            return dict[sig];
+
+         var hex:String = Hex.fromArray(sig);
+         if (hex in cache__){
+            return (cache__[hex]);
          }
+
          if(square.tileType_ == 253)
          {
             newBitmapData = buildComposite(sig);
-            dict[sig] = newBitmapData;
+            cache__[sig] = newBitmapData;
             return newBitmapData;
          }
          if(square.props_.hasEdge_)
          {
             newBitmapData = drawEdges(sig);
-            dict[sig] = newBitmapData;
+            cache__[sig] = newBitmapData;
             return newBitmapData;
          }
          var redraw0:Boolean = false;
@@ -158,7 +168,7 @@ package com.company.assembleegameclient.util
          }
          if(!redraw0 && !redraw1 && !redraw2 && !redraw3)
          {
-            dict[sig] = null;
+            cache__[sig] = null;
             return null;
          }
          var orig:BitmapData = GroundLibrary.getBitmapData(square.tileType_);
@@ -186,7 +196,7 @@ package com.company.assembleegameclient.util
          {
             redrawRect(newBitmapData,rect3,p3,mlist_[3],sig[4],sig[5],sig[8],sig[7]);
          }
-         dict[sig] = newBitmapData;
+         cache__[sig] = newBitmapData;
          return newBitmapData;
       }
       

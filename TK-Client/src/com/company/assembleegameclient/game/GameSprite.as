@@ -14,6 +14,8 @@ import com.company.assembleegameclient.ui.RankText;
 import com.company.assembleegameclient.ui.TextBox;
 import com.company.assembleegameclient.ui.menu.PlayerMenu;
 import com.company.assembleegameclient.util.TextureRedrawer;
+import com.company.assembleegameclient.util.TileRedrawer;
+import com.company.assembleegameclient.util.redrawers.GlowRedrawer;
 import com.company.ui.SimpleText;
 import com.company.util.BitmapUtil;
 import com.company.util.CachingColorTransformer;
@@ -30,6 +32,7 @@ import flash.events.MouseEvent;
 import flash.external.ExternalInterface;
 import flash.filters.ColorMatrixFilter;
 import flash.filters.DropShadowFilter;
+import flash.system.System;
 import flash.utils.ByteArray;
 import flash.utils.getTimer;
 import flash.utils.setTimeout;
@@ -411,6 +414,8 @@ public class GameSprite extends Sprite
          this.map.dispose();
          CachingColorTransformer.clear();
          TextureRedrawer.clearCache();
+         TileRedrawer.clearCache();
+         GlowRedrawer.clearCache();
          Projectile.dispose();
          this.gsc_.disconnect();
          Parameters.DamageCounter = [];
@@ -420,6 +425,7 @@ public class GameSprite extends Sprite
          if(this.gameStatistics_ != null && contains(this.gameStatistics_)){
             removeChild(this.gameStatistics_);
          }
+         System.pauseForGCIfCollectionImminent(0);
       }
    }
 

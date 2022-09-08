@@ -16,18 +16,23 @@ import flash.utils.Dictionary;
 public class GlowRedrawer
 {
 
-    private static const GRADIENT_MAX_SUB:uint = 2631720;
-
     private static const GLOW_FILTER:GlowFilter = new GlowFilter(0,0.3,12,12,2,BitmapFilterQuality.LOW,false,false);
-
-    private static const GLOW_FILTER_ALT:GlowFilter = new GlowFilter(0,0.5,16,16,3,BitmapFilterQuality.LOW,false,false);
-
-    private static var tempMatrix_:Matrix = new Matrix();
-
-    private static var gradient_:Shape = getGradient();
 
     private static var glowHashes:Dictionary = new Dictionary();
 
+    public static function clearCache():void{
+        var _local5:int;
+        var _local6:*;
+        for each (var _local3 in glowHashes) {
+            _local5 = 0;
+            _local6 = _local3;
+            for each (var _local4 in _local3) {
+                delete _local3[_local4];
+            }
+            delete glowHashes[_local3];
+        }
+        glowHashes = new Dictionary();
+    }
 
     public function GlowRedrawer()
     {
@@ -42,16 +47,13 @@ public class GlowRedrawer
             return glowHashes[texture][hash];
         }
         var newTexture:BitmapData = texture.clone();
-        tempMatrix_.identity();
-        tempMatrix_.scale(texture.width / 256,texture.height / 256);
-        newTexture.draw(gradient_,tempMatrix_,null,BlendMode.SUBTRACT);
         var origBitmap:Bitmap = new Bitmap(texture);
         newTexture.draw(origBitmap,null,null,BlendMode.ALPHA);
         TextureRedrawer.OUTLINE_FILTER.blurX = outlineSize;
         TextureRedrawer.OUTLINE_FILTER.blurY = outlineSize;
         TextureRedrawer.OUTLINE_FILTER.color = outlineColor;
         newTexture.applyFilter(newTexture,newTexture.rect,PointUtil.ORIGIN,TextureRedrawer.OUTLINE_FILTER);
-        if(glowColor != 4294967295)
+        if(glowColor != 0xFFFFFFFF)
         {
             if(Parameters.isGpuRender() && glowColor != 0)
             {
@@ -104,17 +106,6 @@ public class GlowRedrawer
     private static function getHash(glowColor:uint, outlineSize:Number, outlineColor:int) : String
     {
         return int(outlineSize * 10).toString() + glowColor + outlineColor;
-    }
-
-    private static function getGradient() : Shape
-    {
-        var gradient:Shape = new Shape();
-        var gm:Matrix = new Matrix();
-        gm.createGradientBox(256,256,Math.PI / 2,0,0);
-        gradient.graphics.beginGradientFill(GradientType.LINEAR,[0,GRADIENT_MAX_SUB],[1,1],[127,255],gm);
-        gradient.graphics.drawRect(0,0,256,256);
-        gradient.graphics.endFill();
-        return gradient;
     }
 }
 }

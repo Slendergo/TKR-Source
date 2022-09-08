@@ -29,7 +29,7 @@ public class TextureRedrawer {
    private static var textureShaderData_:ByteArray = (new textureShaderEmbed_() as ByteArray);
    private static var colorTexture1:BitmapData = new BitmapDataSpy(1, 1, false);
    private static var colorTexture2:BitmapData = new BitmapDataSpy(1, 1, false);
-
+   private static var rect:Rectangle = new Rectangle();
 
    public static function redraw(tex:BitmapData, size:int, padBottom:Boolean, glowColor:uint, useCache:Boolean = true, sMult:Number = 5, glowMult:Number = 1.4):BitmapData {
       var hash:* = getHash(size, padBottom, glowColor, sMult, glowColor);
@@ -93,7 +93,11 @@ public class TextureRedrawer {
       if (tex != null) {
          return tex;
       }
-      tex = new BitmapDataSpy(size + 4 + 4, size + 4 + 4, true, 0);
+      rect.x = 4;
+      rect.y = 4;
+      rect.width = size;
+      rect.height = size;
+      tex = new BitmapDataSpy(size + 8, size + 8, true, 0);
       tex.fillRect(new Rectangle(4, 4, size, size), 0xFF000000 | color);
       tex.applyFilter(tex, tex.rect, PointUtil.ORIGIN, OUTLINE_FILTER);
       colorDict[color] = tex;

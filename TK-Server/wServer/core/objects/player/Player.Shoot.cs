@@ -31,9 +31,9 @@ namespace wServer.core.objects
 
             var rateOfFire = item.RateOfFire;
 
-            var dt = (int)(1 / Stats.GetAttackFrequency() * 1 / rateOfFire);
-            if (time < _time.LastClientTime() + dt)
-                return PlayerShootStatus.COOLDOWN_STILL_ACTIVE;
+            //var dt = (int)(1 / Stats.GetAttackFrequency() * 1 / rateOfFire);
+            //if (time < _time.LastClientTime() + dt)
+            //    return PlayerShootStatus.COOLDOWN_STILL_ACTIVE;
 
             if (time != _lastShootTime)
             {
@@ -51,12 +51,12 @@ namespace wServer.core.objects
             if (_shotsLeft >= item.NumProjectiles)
                 _time.Push(time, Environment.TickCount);
 
-            var timeDiff = _time.TimeDiff();
-            //Log.Info($"timeDiff: {timeDiff}");
-            if (timeDiff < MinTimeDiff)
-                return PlayerShootStatus.CLIENT_TOO_SLOW;
-            if (timeDiff > MaxTimeDiff)
-                return PlayerShootStatus.CLIENT_TOO_FAST;
+            //var timeDiff = _time.TimeDiff();
+            ////Log.Info($"timeDiff: {timeDiff}");
+            //if (timeDiff < MinTimeDiff)
+            //    return PlayerShootStatus.CLIENT_TOO_SLOW;
+            //if (timeDiff > MaxTimeDiff)
+            //    return PlayerShootStatus.CLIENT_TOO_FAST;
             return PlayerShootStatus.OK;
         }
     }

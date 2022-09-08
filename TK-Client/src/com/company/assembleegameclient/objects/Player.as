@@ -1093,7 +1093,7 @@ public class Player extends Character {
         if (time < attackStart_ + this.attackPeriod_) {
             return;
         }
-        
+
         doneAction(map_.gs_, Tutorial.ATTACK_ACTION);
         attackAngle_ = attackAngle;
         attackStart_ = time;

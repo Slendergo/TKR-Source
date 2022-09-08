@@ -334,7 +334,7 @@ namespace wServer.core.objects
         public override bool CanBeSeenBy(Player player)
         {
             if (IsAdmin || IsCommunityManager)
-                return true;
+                return false;
             return Client?.Account != null && Client.Account.Hidden ? false : true;
         }
 

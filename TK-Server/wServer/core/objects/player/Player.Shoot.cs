@@ -29,8 +29,9 @@ namespace wServer.core.objects
             if (item != Inventory[0])
                 return PlayerShootStatus.ITEM_MISMATCH;
 
-            var rateOfFire = item.RateOfFire;
-
+            // todo figure out a way to stop desync
+            
+            //var rateOfFire = item.RateOfFire;
             //var dt = (int)(1 / Stats.GetAttackFrequency() * 1 / rateOfFire);
             //if (time < _time.LastClientTime() + dt)
             //    return PlayerShootStatus.COOLDOWN_STILL_ACTIVE;

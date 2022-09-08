@@ -34,6 +34,9 @@ namespace wServer.core.objects
             if (_hit.Add(entity))
                 entity.HitByProjectile(this, time);
 
+            if (!ProjDesc.MultiHit)
+                entity.World.RemoveProjectile(this);
+
             used = true;
         }
 

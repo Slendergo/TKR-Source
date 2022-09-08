@@ -1,4 +1,5 @@
 ﻿using common;
+using common.resources;
 using NLog;
 using System;
 using wServer.core;
@@ -72,17 +73,35 @@ namespace wServer.logic
                 host.StateStorage[this] = state;
         }
 
+        public bool TickOrdered(Entity host, TickTime time)
+        {
+            if (!host.StateStorage.TryGetValue(this, out object state))
+                state = null;
+
+            var ret = TickCoreOrdered(host, time, ref state);
+
+            if (state == null)
+                host.StateStorage.Remove(this);
+            else
+                host.StateStorage[this] = state;
+         
+            return ret;
+        }
+
         public virtual void OnDeath(Entity host, ref TickTime time) { }
 
-        protected internal virtual void Resolve(State parent)
-        { }
+        protected internal virtual void Resolve(State parent) { }
 
-        protected virtual void OnStateEntry(Entity host, TickTime time, ref object state)
-        { }
+        protected virtual void OnStateEntry(Entity host, TickTime time, ref object state) { }
 
-        protected virtual void OnStateExit(Entity host, TickTime time, ref object state)
-        { }
+        protected virtual void OnStateExit(Entity host, TickTime time, ref object state) { }
 
-        protected abstract void TickCore(Entity host, TickTime time, ref object state);
+        protected virtual void TickCore(Entity host, TickTime time, ref object state) { }
+
+        protected virtual bool TickCoreOrdered(Entity host, TickTime time, ref object state) => true;
+
+        protected static Position PointAt(Entity host, float angle, float radius) => new Position((float)(host.X + Math.Cos(angle) * radius), (float)(host.Y + Math.Sin(angle) * radius));
+        protected static float ClampSpeed(float value, float min, float max) => (value < min) ? min : (value > max) ? max : value;
+        protected static float GetSpeedMultiplier(Entity host, float spd) => host.HasConditionEffect(ConditionEffectIndex.Slowed) ? spd * 0.5f : host.HasConditionEffect(ConditionEffectIndex.Speedy) ? spd * 1.5f : spd;
     }
 }

@@ -61,7 +61,7 @@ namespace wServer.core.worlds
         public ConcurrentDictionary<int, Container> Containers { get; private set; } = new ConcurrentDictionary<int, Container>();
         public ConcurrentDictionary<int, Portal> Portals { get; private set; } = new ConcurrentDictionary<int, Portal>();
         public ConcurrentDictionary<int, Pet> Pets { get; private set; } = new ConcurrentDictionary<int, Pet>();
-        public Dictionary<Tuple<int, byte>, Projectile> Projectiles { get; private set; } = new Dictionary<Tuple<int, byte>, Projectile>();
+        public Dictionary<int, Dictionary<byte, Projectile>> Projectiles { get; private set; } = new Dictionary<int, Dictionary<byte, Projectile>>();
         public List<WorldTimer> Timers { get; private set; } = new List<WorldTimer>();
 
         public WorldBranch WorldBranch { get; private set; }
@@ -157,17 +157,23 @@ namespace wServer.core.worlds
 
         public void AddProjectile(Projectile projectile)
         {
-            Projectiles[new Tuple<int, byte>(projectile.Host.Id, projectile.ProjectileId)] = projectile;
+            if (!Projectiles.ContainsKey(projectile.Host.Id))
+                Projectiles.Add(projectile.Host.Id, new Dictionary<byte, Projectile>());
+            Projectiles[projectile.Host.Id][projectile.ProjectileId] = projectile;
         }
 
         public Projectile GetProjectile(int objectId, byte bulletId)
         {
-            return Projectiles.SingleOrDefault(p => p.Value.Host.Id == objectId && p.Value.ProjectileId == bulletId).Value;
+            if (Projectiles.TryGetValue(objectId, out var projectiles))
+                if (projectiles.TryGetValue(bulletId, out var ret))
+                    return ret;
+            return null;
         }
 
         public void RemoveProjectile(Projectile projectile)
         {
-            Projectiles.Remove(new Tuple<int, byte>(projectile.Host.Id, projectile.ProjectileId));
+            if (Projectiles.ContainsKey(projectile.Host.Id))
+                Projectiles[projectile.Host.Id].Remove(projectile.ProjectileId);
             ObjectPools.Projectiles.Return(projectile);
         }
 
@@ -439,9 +445,10 @@ namespace wServer.core.worlds
                 pet.Tick(ref time);
 
             var projectilesToRemove = new List<Projectile>();
-            foreach (var projectile in Projectiles.Values)
-                if (!projectile.Tick(ref time))
-                    projectilesToRemove.Add(projectile);
+            foreach (var k in Projectiles.Values)
+                foreach (var projectile in k.Values)
+                    if (!projectile.Tick(ref time))
+                        projectilesToRemove.Add(projectile);
 
             foreach (var projectile in projectilesToRemove)
                 RemoveProjectile(projectile);

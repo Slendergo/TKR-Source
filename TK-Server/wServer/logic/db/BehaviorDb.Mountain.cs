@@ -49,11 +49,15 @@ namespace wServer.logic
         .Init("White Demon",
             new State(
                 new DropPortalOnDeath("Abyss of Demons Portal", .25),
-                new Prioritize(
-                    new StayAbove(1, 200),
-                    new Follow(1, range: 7),
-                    new Wander(0.4)
+                new OrderedBehavior(
+                    new NewFollow(range: 7, speed: 1.0f),
+                    new NewWander(0.4f)
                     ),
+                //new Prioritize(
+                //    new StayAbove(1, 200),
+                //    new Follow(1, range: 7),
+                //    new Wander(0.4)
+                //    ),
                 new Shoot(10, count: 3, shootAngle: 20, predictive: 1, coolDown: 500),
                 new Reproduce(densityMax: 3)
                 ),
@@ -75,9 +79,12 @@ namespace wServer.logic
         .Init("Sprite God",
             new State(
                 new DropPortalOnDeath("Glowing Portal", .25),
-                new Prioritize(
-                    new StayAbove(1, 200),
-                    new Wander(0.4)
+                //new Prioritize(
+                //    new StayAbove(1, 200),
+                //    new Wander(0.4)
+                //    ),
+                new OrderedBehavior(
+                    new NewWander(0.4f)
                     ),
                 new Shoot(12, projectileIndex: 0, count: 4, shootAngle: 10),
                 new Shoot(10, projectileIndex: 1, predictive: 1),
@@ -112,11 +119,15 @@ namespace wServer.logic
         .Init("Medusa",
             new State(
                 new DropPortalOnDeath("Snake Pit Portal", .25),
-                new Prioritize(
-                    new StayAbove(1, 200),
-                    new Follow(1, range: 7),
-                    new Wander(0.4)
+                new OrderedBehavior(
+                    new NewFollow(range: 7, speed: 1.0f),
+                    new NewWander(0.4f)
                     ),
+                //new Prioritize(
+                //    new StayAbove(1, 200),
+                //    new Follow(1, range: 7),
+                //    new Wander(0.4)
+                //    ),
                 new Shoot(12, count: 5, shootAngle: 10, coolDown: 1000),
                 new Grenade(4, 150, range: 8, coolDown: 3000),
                 new Reproduce(densityMax: 3)
@@ -139,11 +150,15 @@ namespace wServer.logic
         .Init("Ent God",
             new State(
                 new DropPortalOnDeath("Garden of Horror Portal", 0.3),
-                new Prioritize(
-                    new StayAbove(1, 200),
-                    new Follow(1, range: 7),
-                    new Wander(0.4)
+                new OrderedBehavior(
+                    new NewFollow(range: 7, speed: 1.0f),
+                    new NewWander(0.4f)
                     ),
+                //new Prioritize(
+                //    new StayAbove(1, 200),
+                //    new Follow(1, range: 7),
+                //    new Wander(0.4)
+                //    ),
                 new Shoot(12, count: 5, shootAngle: 10, predictive: 1, coolDown: 1250),
                 new Reproduce(densityMax: 3)
                 ),
@@ -164,11 +179,15 @@ namespace wServer.logic
             )
         .Init("Beholder",
             new State(
-                new Prioritize(
-                    new StayAbove(1, 200),
-                    new Follow(1, range: 7),
-                    new Wander(0.4)
+                new OrderedBehavior(
+                    new NewFollow(range: 7, speed: 1.0f),
+                    new NewWander(0.4f)
                     ),
+                //new Prioritize(
+                //    new StayAbove(1, 200),
+                //    new Follow(1, range: 7),
+                //    new Wander(0.4)
+                //    ),
                 new Shoot(12, projectileIndex: 0, count: 5, shootAngle: 72, predictive: 0.5, coolDown: 750),
                 new Shoot(10, projectileIndex: 1, predictive: 1),
                 new Reproduce(densityMax: 3)
@@ -190,11 +209,15 @@ namespace wServer.logic
             )
         .Init("Flying Brain",
             new State(
-                new Prioritize(
-                    new StayAbove(1, 200),
-                    new Follow(1, range: 7),
-                    new Wander(0.4)
+                new OrderedBehavior(
+                    new NewFollow(range: 7, speed: 1.0f),
+                    new NewWander(0.4f)
                     ),
+                //new Prioritize(
+                //    new StayAbove(1, 200),
+                //    new Follow(1, range: 7),
+                //    new Wander(0.4)
+                //    ),
                 new Shoot(12, count: 5, shootAngle: 72, coolDown: 500),
                 new Reproduce(densityMax: 3),
                 new DropPortalOnDeath("Mad Lab Portal", .17)
@@ -216,11 +239,15 @@ namespace wServer.logic
         )
         .Init("Slime God",
             new State(
-                new Prioritize(
-                    new StayAbove(1, 200),
-                    new Follow(1, range: 7),
-                    new Wander(0.4)
+                new OrderedBehavior(
+                    new NewFollow(range: 7, speed: 1.0f),
+                    new NewWander(0.4f)
                     ),
+                //new Prioritize(
+                //    new StayAbove(1, 200),
+                //    new Follow(1, range: 7),
+                //    new Wander(0.4)
+                //    ),
                 new Shoot(12, projectileIndex: 0, count: 5, shootAngle: 10, predictive: 1, coolDown: 1000),
                 new Shoot(10, projectileIndex: 1, predictive: 1, coolDown: 650),
                 new Reproduce(densityMax: 2),
@@ -243,11 +270,15 @@ namespace wServer.logic
             )
         .Init("Ghost God",
             new State(
-                new Prioritize(
-                    new StayAbove(1, 200),
-                    new Follow(1, range: 7),
-                    new Wander(0.4)
+                new OrderedBehavior(
+                    new NewFollow(range: 7, speed: 1.0f),
+                    new NewWander(0.4f)
                     ),
+                //new Prioritize(
+                //    new StayAbove(1, 200),
+                //    new Follow(1, range: 7),
+                //    new Wander(0.4)
+                //    ),
                 new Shoot(12, count: 7, shootAngle: 25, predictive: 0.5, coolDown: 900),
                 new Reproduce(densityMax: 3),
                 new DropPortalOnDeath("Undead Lair Portal", 0.25)
@@ -374,10 +405,13 @@ namespace wServer.logic
             new State(
                 new DropPortalOnDeath("Treasure Cave Portal", 0.25),
                 new State("Idle",
-                    new Prioritize(
-                        new StayAbove(1, 200),
-                        new Wander(0.4)
+                    new OrderedBehavior(
+                        new NewWander(0.4f)
                         ),
+                    //new Prioritize(
+                    //    new StayAbove(1, 200),
+                    //    new Wander(0.4)
+                    //    ),
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new Reproduce(densityMax: 3, densityRadius: 20),
                     new PlayerWithinTransition(8, "Attacking")
@@ -458,10 +492,13 @@ namespace wServer.logic
                 new ScaleHP2(30),
                 new DropPortalOnDeath("The Crawling Depths", 1),
                 new State("Idle",
-                    new Prioritize(
-                        //new StayAbove(1, 200),
-                        new Wander(0.4)
-                        ),
+                //new Prioritize(
+                //    //new StayAbove(1, 200),
+                //    new Wander(0.4)
+                //    ),
+                new OrderedBehavior(
+                    new NewWander(0.4f)
+                    ),
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new PlayerWithinTransition(8, "Attacking")
                     ),
@@ -530,10 +567,14 @@ namespace wServer.logic
             new State(
                 new ScaleHP2(20),
                 new DropPortalOnDeath("Woodland Labyrinth", 1),
-                new Prioritize(
-                    //new StayAbove(1, 200),
-                    new Follow(1, range: 7),
-                    new Wander(0.4)
+                //new Prioritize(
+                //    //new StayAbove(1, 200),
+                //    new Follow(1, range: 7),
+                //    new Wander(0.4)
+                //    ),
+                new OrderedBehavior(
+                    new NewFollow(range: 7, speed: 1.0f),
+                    new NewWander(0.4f)
                     ),
                 new Shoot(12, 5, 10, predictive: 1, coolDown: 1250)
 

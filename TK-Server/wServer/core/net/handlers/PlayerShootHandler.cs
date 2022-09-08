@@ -52,8 +52,7 @@ namespace wServer.core.net.handlers
             var result = player.ValidatePlayerShoot(item, Time);
             if (result != PlayerShootStatus.OK)
             {
-                //System.Console.WriteLine($"PlayerShoot validation failure ({player.Name}:{player.AccountId}): {result}");
-                //player.DropNextRandom();
+                System.Console.WriteLine($"PlayerShoot validation failure ({player.Name}:{player.AccountId}): {result}");
                 return;
             }
 

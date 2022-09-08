@@ -180,7 +180,11 @@ namespace wServer.core.objects
         private bool Dead;
         public void Death(ref TickTime time)
         {
+            Console.WriteLine("Death Called");
+            if (Dead)
+                return;
             Dead = true;
+
             DamageCounter.Death(time);
             CurrentState?.OnDeath(this, ref time);
             if (GameServer.BehaviorDb.Definitions.TryGetValue(ObjectType, out var loot))

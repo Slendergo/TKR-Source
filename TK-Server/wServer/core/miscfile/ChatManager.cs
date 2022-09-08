@@ -310,6 +310,8 @@ namespace wServer.core
                 SrcIP = src.Client.IpAddress
             });
 
+            var world = src.World;
+            StaticLogger.Instance.Info($"[{world.IdName}({world.Id})] <{src.Name}> -> <{acc.Name}> | {text}");
             return true;
         }
 

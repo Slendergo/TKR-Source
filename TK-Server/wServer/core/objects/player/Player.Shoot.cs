@@ -28,15 +28,7 @@ namespace wServer.core.objects
         {
             if (item != Inventory[0])
                 return PlayerShootStatus.ITEM_MISMATCH;
-            /*
-            var bigSkill = BigSkill11 ? 0.35 : 0;
-            if (SmallSkill11 > 0)
-                bigSkill += SmallSkill11 * 0.02;
-            if (BigSkill1)
-                bigSkill -= 0.10;
-            if (BigSkill4)
-                bigSkill -= 0.05; 
-            var rateSkill = bigSkill * item.RateOfFire;*/
+
             var rateOfFire = item.RateOfFire;
 
             var dt = (int)(1 / Stats.GetAttackFrequency() * 1 / rateOfFire);

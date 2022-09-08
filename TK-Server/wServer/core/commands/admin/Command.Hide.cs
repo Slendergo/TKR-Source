@@ -8,7 +8,7 @@ namespace wServer.core.commands
     {
         internal class Hide : Command
         {
-            public override RankingType RankRequirement => RankingType.Admin;
+            public override RankingType RankRequirement => RankingType.CommunityModerator;
             public override string CommandName => "hide";
 
             protected override bool Process(Player player, TickTime time, string args)

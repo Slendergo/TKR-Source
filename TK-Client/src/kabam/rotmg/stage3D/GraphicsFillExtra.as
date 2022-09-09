@@ -85,8 +85,7 @@ package kabam.rotmg.stage3D
 
       private static function testOffsetUV(bitmapFill:GraphicsBitmapFill) : void
       {
-         if(!Parameters.isGpuRender())
-         {
+         if(!Parameters.isGpuRender()) {
             return;
          }
          if(textureOffsets[bitmapFill] == null)

@@ -19,7 +19,7 @@ namespace wServer
                 if (!(i is Enemy) || entity == i)
                     continue;
 
-                var d = i.DistSqr(entity);
+                var d = i.SqDistTo(entity);
                 if (d < radius * radius)
                     return true;
             }
@@ -34,8 +34,7 @@ namespace wServer
                 if (!(i is Enemy))
                     continue;
 
-                var d = MathsUtils.DistSqr(i.X, i.Y, x, y);
-
+                var d = i.SqDistTo(x, y);
                 if (d < radius * radius)
                     return true;
             }
@@ -50,7 +49,7 @@ namespace wServer
                 if (i.HasConditionEffect(ConditionEffectIndex.Hidden))
                     continue;
 
-                var d = i.DistSqr(entity);
+                var d = i.SqDistTo(entity);
 
                 if (d < radius * radius)
                     return true;
@@ -65,8 +64,7 @@ namespace wServer
             {
                 if (i.HasConditionEffect(ConditionEffectIndex.Hidden)) continue;
 
-                var d = MathsUtils.DistSqr(i.X, i.Y, x, y);
-
+                var d = i.SqDistTo(x, y);
                 if (d < radius * radius)
                     return true;
             }
@@ -79,8 +77,7 @@ namespace wServer
             if (objType == null)
                 foreach (var i in entity.World.PlayersCollision.HitTest(entity.X, entity.Y, radius).Where(e => e is Player))
                 {
-                    var d = i.Dist(entity);
-
+                    var d = i.DistTo(entity);
                     if (d < radius)
                         callback(i);
                 }
@@ -90,8 +87,7 @@ namespace wServer
                     if (i.ObjectType != objType.Value)
                         continue;
 
-                    var d = i.Dist(entity);
-
+                    var d = i.DistTo(entity);
                     if (d < radius)
                         callback(i);
                 }
@@ -102,8 +98,7 @@ namespace wServer
             if (players)
                 foreach (var i in entity.World.PlayersCollision.HitTest(entity.X, entity.Y, radius).Where(e => e is Player))
                 {
-                    var d = i.Dist(entity);
-
+                    var d = i.DistTo(entity);
                     if (d < radius)
                         callback(i);
                 }
@@ -113,7 +108,7 @@ namespace wServer
                     if (!(i is Enemy))
                         continue;
 
-                    var d = i.Dist(entity);
+                    var d = i.DistTo(entity);
 
                     if (d < radius)
                         callback(i);
@@ -126,8 +121,7 @@ namespace wServer
             {
                 foreach (var i in world.PlayersCollision.HitTest(pos.X, pos.Y, radius).Where(e => e is Player))
                 {
-                    var d = MathsUtils.Dist(i.X, i.Y, pos.X, pos.Y);
-
+                    var d = i.DistTo(pos.X, pos.Y);
                     if (d < radius)
                         callback(i);
                 }
@@ -139,8 +133,7 @@ namespace wServer
                     if (!(i is Enemy e) || e.ObjectDesc.Static)
                         continue;
 
-                    var d = MathsUtils.Dist(i.X, i.Y, pos.X, pos.Y);
-
+                    var d = i.DistTo(pos.X, pos.Y);
                     if (d < radius)
                         callback(i);
                 }
@@ -160,8 +153,7 @@ namespace wServer
                     if (!(i as IPlayer).IsVisibleToEnemy())
                         continue;
 
-                    var d = i.Dist(entity);
-
+                    var d = i.DistTo(entity);
                     if (d < dist)
                         ret++;
                 }
@@ -171,8 +163,7 @@ namespace wServer
                     if (i.ObjectType != objType.Value)
                         continue;
 
-                    var d = i.Dist(entity);
-
+                    var d = i.DistTo(entity);
                     if (d < dist)
                         ret++;
                 }
@@ -192,53 +183,12 @@ namespace wServer
                 if (i.ObjectDesc == null || i.ObjectDesc.Group != group)
                     continue;
 
-                var d = i.Dist(entity);
-
+                var d = i.DistTo(entity);
                 if (d < dist)
                     ret++;
             }
 
             return ret;
-        }
-
-        public static double Dist(this Position a, Position b)
-        {
-            var dx = a.X - b.X;
-            var dy = a.Y - b.Y;
-
-            return Math.Sqrt(dx * dx + dy * dy);
-        }
-
-        public static double Dist(this Entity a, float x, float y)
-        {
-            var dx = a.X - x;
-            var dy = a.Y - y;
-
-            return Math.Sqrt(dx * dx + dy * dy);
-        }
-
-        public static double Dist(this Entity a, Position b)
-        {
-            var dx = a.X - b.X;
-            var dy = a.Y - b.Y;
-
-            return Math.Sqrt(dx * dx + dy * dy);
-        }
-
-        public static double DistSqr(this Entity a, ref Position b)
-        {
-            var dx = a.X - b.X;
-            var dy = a.Y - b.Y;
-            return dx * dx + dy * dy;
-        }
-
-        public static double Dist(this Entity a, Entity b) => Math.Sqrt(a.DistSqr(b));
-
-        public static double DistSqr(this Entity a, Entity b)
-        {
-            var dx = a.X - b.X;
-            var dy = a.Y - b.Y;
-            return dx * dx + dy * dy;
         }
 
         public static void ForceUpdate(this Entity e, int slot)
@@ -340,7 +290,7 @@ namespace wServer
                     if (!seeInvis && !(i as IPlayer).IsVisibleToEnemy())
                         continue;
 
-                    var d = i.Dist(entity);
+                    var d = i.DistTo(entity);
 
                     if (d < dist)
                         yield return i;
@@ -351,7 +301,7 @@ namespace wServer
                     if (i.ObjectType != objType.Value)
                         continue;
 
-                    var d = i.Dist(entity);
+                    var d = i.DistTo(entity);
 
                     if (d < dist)
                         yield return i;
@@ -368,7 +318,7 @@ namespace wServer
                 if (i.ObjectDesc == null || i.ObjectDesc.Group == null || !i.ObjectDesc.Group.Equals(group, StringComparison.InvariantCultureIgnoreCase))
                     continue;
 
-                var d = i.Dist(entity);
+                var d = i.DistTo(entity);
 
                 if (d < dist)
                     yield return i;
@@ -385,7 +335,7 @@ namespace wServer
                 if (i.ObjectDesc == null || (id != null && !i.ObjectDesc.ObjectId.ContainsIgnoreCase(id)))
                     continue;
 
-                var d = i.Dist(entity);
+                var d = i.DistTo(entity);
 
                 if (d < dist)
                     yield return i;
@@ -403,7 +353,7 @@ namespace wServer
                     if (!seeInvis && !(i as IPlayer).IsVisibleToEnemy())
                         continue;
 
-                    var d = i.Dist(entity);
+                    var d = i.DistTo(entity);
 
                     if (d < dist)
                         yield return i;
@@ -414,7 +364,7 @@ namespace wServer
                     if (i.ObjectType != objType.Value)
                         continue;
 
-                    var d = i.Dist(entity);
+                    var d = i.DistTo(entity);
 
                     if (d < dist)
                         yield return i;
@@ -430,7 +380,7 @@ namespace wServer
                 if (!(obj as IPlayer).IsVisibleToEnemy())
                     continue;
 
-                var dist = obj.Dist(host);
+                var dist = obj.DistTo(host);
                 if (dist < minDist)
                 {
                     minDist = dist;
@@ -447,7 +397,7 @@ namespace wServer
             if (entities.Length <= 0)
                 return null;
 
-            return entities.Aggregate((curmin, x) => curmin == null || x.DistSqr(entity) < curmin.DistSqr(entity) ? x : curmin);
+            return entities.Aggregate((curmin, x) => curmin == null || x.SqDistTo(entity) < curmin.SqDistTo(entity) ? x : curmin);
         }
 
         public static Entity GetNearestEntity(this Entity entity, double dist, bool players, Predicate<Entity> predicate = null)
@@ -463,7 +413,7 @@ namespace wServer
                     if (!(i as IPlayer).IsVisibleToEnemy() || i == entity)
                         continue;
 
-                    var d = i.Dist(entity);
+                    var d = i.DistTo(entity);
 
                     if (d < dist)
                     {
@@ -480,8 +430,7 @@ namespace wServer
                     if (i == entity)
                         continue;
 
-                    var d = i.Dist(entity);
-
+                    var d = i.DistTo(entity);
                     if (d < dist)
                     {
                         if (predicate != null && !predicate(i))
@@ -503,7 +452,7 @@ namespace wServer
             if (entities.Length <= 0)
                 return null;
 
-            return entities.Aggregate((curmin, x) => curmin == null || x.DistSqr(entity) < curmin.DistSqr(entity) ? x : curmin);
+            return entities.Aggregate((curmin, x) => curmin == null || x.SqDistTo(entity) < curmin.SqDistTo(entity) ? x : curmin);
         }
 
         public static Entity GetNearestEntityByName(this Entity entity, double dist, string id)
@@ -514,27 +463,10 @@ namespace wServer
             if (entities.Length <= 0)
                 return null;
 
-            return entities.Aggregate((curmin, x) => curmin == null || x.DistSqr(entity) < curmin.DistSqr(entity) ? x : curmin);
+            return entities.Aggregate((curmin, x) => curmin == null || x.SqDistTo(entity) < curmin.SqDistTo(entity) ? x : curmin);
         }
 
         public static float GetSpeed(this Entity entity, float spd) => entity.HasConditionEffect(ConditionEffectIndex.Slowed) ? spd * 0.5f : spd;
         //public static float GetSpeed(this Entity entity, float spd) => entity.HasConditionEffect(ConditionEffects.Slowed) ? (5.55f * spd + 0.74f) / 2 : 5.55f * spd + 0.74f;
-
-        public static void HandleUnavailableInventoryAction(this Player player, ushort objectId, Random random, IContainer container, int slotId)
-        {
-            var bag = new Container(player.GameServer, objectId, 60000, true)
-            {
-                BagOwners = new[] { player.AccountId }
-            };
-            bag.Inventory[0] = container.Inventory[slotId];
-            bag.Inventory.Data[0] = container.Inventory.Data[slotId];
-            bag.Move(player.X + (float)((random.NextDouble() * 2 - 1) * 0.5), player.Y + (float)((random.NextDouble() * 2 - 1) * 0.5));
-            bag.SetDefaultSize(75);
-
-            container.Inventory[slotId] = null;
-            container.Inventory.Data[slotId] = null;
-
-            player.World.EnterWorld(bag);
-        }
     }
 }

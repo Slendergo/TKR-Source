@@ -139,7 +139,7 @@ namespace wServer.core.objects
             }
 
             var container = entity as IContainer;
-            if (this.Dist(entity) > 3)
+            if (this.DistTo(entity) > 3)
             {
                 entity.ForceUpdate(slot);
                 Client.SendPacket(new InvResult() { Result = 1 });
@@ -697,7 +697,7 @@ namespace wServer.core.objects
             };
 
             foreach (var player in World.Players.Values)
-                if(player.DistSqr(this) < PlayerUpdate.VISIBILITY_RADIUS_SQR)
+                if(player.SqDistTo(this) < PlayerUpdate.VISIBILITY_RADIUS_SQR)
                    player.Client.SendPackets(batch);
         }
 
@@ -1389,6 +1389,7 @@ namespace wServer.core.objects
             var x = new Placeholder(GameServer, eff.ThrowTime * 1000);
             x.Move(target.X, target.Y);
             World.EnterWorld(x);
+
             World.Timers.Add(new WorldTimer(eff.ThrowTime, (world, t) =>
             {
                 world.BroadcastIfVisible(new ShowEffect()
@@ -1405,6 +1406,7 @@ namespace wServer.core.objects
                     var dmg = (int)(impDamage + (impDamage * TalismanExtraAbilityDamage));
 
                     PoisonEnemy(world, (Enemy)entity, eff);
+
                     ((Enemy)entity).Damage(this, time, dmg, true);
                 });
             }));
@@ -1953,16 +1955,13 @@ namespace wServer.core.objects
 
             bool poisonTick(World w, TickTime t)
             {
-                if (enemy.World == null || w == null)
-                    return true;
-
                 if (x % 4 == 0)
                 {
                     var thisDmg = perDmg;
                     if (remainingDmg < thisDmg)
                         thisDmg = remainingDmg;
 
-                    if (enemy == null)
+                    if (enemy.IsRemovedFromWorld)
                         return false;
                     enemy?.Damage(this, t, thisDmg, true);
                     remainingDmg -= thisDmg;

@@ -45,7 +45,7 @@ namespace wServer.logic.behaviors
 
                     if (dist > 0)
                     {
-                        if (host.Dist(i.Value) < dist)
+                        if (host.DistTo(i.Value) < dist)
                             scstate.pNamesCounted.Add(i.Value.Name);
                     }
                     else

@@ -714,5 +714,23 @@ namespace wServer.core.objects
             ret.StartY = pos.Y;
             return ret;
         }
+
+        public double AngleTo(Entity host) => Math.Atan2(host.Y - Y, host.X - X);
+        public double AngleTo(ref Position position) => Math.Atan2(position.Y - Y, position.X - X);
+        public double AngleTo(double x, double y) => Math.Atan2(y - Y, x - X);
+
+        public double SqDistTo(Entity host) => (host.X - X) * (host.X - X) + (host.Y - Y) * (host.Y - Y);
+        public double SqDistTo(ref Position position) => (position.X - X) * (position.X - X) + (position.Y - Y) * (position.Y - Y);
+        public double SqDistTo(double x, double y) => (x - X) * (x - X) + (y - Y) * (y - Y);
+
+        public double DistTo(Entity host) => Math.Sqrt((host.X - X) * (host.X - X) + (host.Y - Y) * (host.Y - Y));
+        public double DistTo(ref Position position) => Math.Sqrt((position.X - X) * (position.X - X) + (position.Y - Y) * (position.Y - Y));
+        public double DistTo(double x, double y) => Math.Sqrt((x - X) * (x - X) + (y - Y) * (y - Y));
+
+        public void PointAt(ref Position pos, double angle, double radius)
+        {
+            pos.X += (float)(Math.Cos(angle) * radius);
+            pos.Y += (float)(Math.Sin(angle) * radius);
+        }
     }
 }

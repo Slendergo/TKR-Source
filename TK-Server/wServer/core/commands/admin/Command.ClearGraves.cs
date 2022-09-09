@@ -19,7 +19,7 @@ namespace wServer.core.commands
                     if (entity is Container || entity.ObjectDesc == null)
                         continue;
 
-                    if (entity.ObjectDesc.ObjectId.StartsWith("Gravestone") && entity.Dist(player) < 15d)
+                    if (entity.ObjectDesc.ObjectId.StartsWith("Gravestone") && entity.DistTo(player) < 15d)
                     {
                         player.World.LeaveWorld(entity);
                         total++;

@@ -112,21 +112,21 @@ namespace wServer.core.worlds
         public void BroadcastIfVisible(OutgoingMessage outgoingMessage, ref Position worldPosData)
         {
             foreach (var player in Players.Values)
-                if (player.DistSqr(ref worldPosData) < PlayerUpdate.VISIBILITY_RADIUS_SQR)
+                if (player.SqDistTo(ref worldPosData) < PlayerUpdate.VISIBILITY_RADIUS_SQR)
                     player.Client.SendPacket(outgoingMessage);
         }
 
         public void BroadcastIfVisible(OutgoingMessage outgoingMessage, Entity host)
         {
             foreach (var player in Players.Values)
-                if (player.DistSqr(host) < PlayerUpdate.VISIBILITY_RADIUS_SQR)
+                if (player.SqDistTo(host) < PlayerUpdate.VISIBILITY_RADIUS_SQR)
                     player.Client.SendPacket(outgoingMessage);
         }
 
         public void BroadcastIfVisibleExclude(OutgoingMessage outgoingMessage, Entity broadcaster, Entity exclude)
         {
             foreach (var player in Players.Values)
-                if (player.Id != exclude.Id && player.Dist(broadcaster) <= 15d)
+                if (player.Id != exclude.Id && player.DistTo(broadcaster) <= 15d)
                     player.Client.SendPacket(outgoingMessage);
         }
 
@@ -344,6 +344,16 @@ namespace wServer.core.worlds
         {
             foreach(var player in Players.Values)
                 action?.Invoke(player);
+        }
+
+        public void ObjsWithin(Entity host, double radius, List<Entity> enemies)
+        {
+            foreach(var enemy in EnemiesCollision.HitTest(host.X, host.Y, radius))
+            {
+                if(enemy.SqDistTo(host.X, host.Y) >= radius * radius)
+                    continue;
+                enemies.Add(enemy);
+            }
         }
 
         public void WorldAnnouncement(string msg)

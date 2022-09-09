@@ -31,7 +31,7 @@ namespace wServer.core.net.handlers
                     return;
                 }
 
-                if (player.Stars <= 2 && player.Quest != null && player.Dist(new Position(newX, newY)) > 50 && player.Quest.Dist(new Position(newX, newY)) < 0.25)
+                if (player.Stars <= 2 && player.Quest != null && player.DistTo(newX, newY) > 50 && player.Quest.DistTo(newX, newY) < 0.25)
                 {
                     StaticLogger.Instance.Warn($"{player.Name} was caught teleporting directly to a quest, uh oh");
                     player.Client.Disconnect("Unexpected Error Occured");

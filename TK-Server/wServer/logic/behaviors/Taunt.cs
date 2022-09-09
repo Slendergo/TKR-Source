@@ -125,7 +125,7 @@ namespace wServer.logic.behaviors
                 host.World.Broadcast(packet);
             else
                 foreach (var i in host.World.PlayersCollision.HitTest(host.X, host.Y, 15).Where(e => e is Player))
-                    if (i is Player && host.Dist(i) < 15)
+                    if (i is Player && host.DistTo(i) < 15)
                         (i as Player).Client.SendPacket(packet);
         }
     }

@@ -69,7 +69,7 @@ namespace wServer.logic
             var lvlUps = 0;
             foreach (var player in enemy.World.Players.Values)
             {
-                if (player.Dist(enemy) > 25)
+                if (player.DistTo(enemy) > 25)
                     continue;
 
                 var level = player.Level;

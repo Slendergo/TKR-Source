@@ -96,7 +96,7 @@ namespace wServer.logic.behaviors
 
                     if (_range > 0)
                     {
-                        if (host.Dist(player.Pos) < _range)
+                        if (host.DistTo(player) < _range)
                         {
                             for (var i = 0; i < 4; i++)
                             {

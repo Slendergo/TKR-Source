@@ -68,7 +68,7 @@ namespace wServer.logic.behaviors
                 return false;
             }
 
-            var dist = host.Dist(target);
+            var dist = host.DistTo(target);
             if (dist > acquireRange)
             {
                 if (s.Following)
@@ -100,7 +100,7 @@ namespace wServer.logic.behaviors
             var facing = (float)Math.Atan2(targetY - host.Y, targetX - host.X);
 
             var spd = GetSpeedMultiplier(host, speed * time.BehaviourTickTime);
-            spd = ClampSpeed(spd, 0.0f, (float)host.Dist(targetX, targetY));
+            spd = ClampSpeed(spd, 0.0f, (float)host.DistTo(targetX, targetY));
             
             var newPos = PointAt(host, facing, spd);
 
@@ -138,7 +138,7 @@ namespace wServer.logic.behaviors
             var facing = (float)Math.Atan2(targetY - host.Y, targetX - host.X);
 
             var spd = GetSpeedMultiplier(host, speed * time.BehaviourTickTime);
-            spd = ClampSpeed(spd, 0.0f, (float)host.Dist(targetX, targetY));
+            spd = ClampSpeed(spd, 0.0f, (float)host.DistTo(targetX, targetY));
 
             var newPos = PointAt(host, facing, spd);
 

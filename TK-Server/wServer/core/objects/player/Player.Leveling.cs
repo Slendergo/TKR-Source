@@ -234,7 +234,7 @@ namespace wServer.core.objects
                         //priority * level diff
                         (20 - Math.Abs(quest.ObjectDesc.Level - Level)) * priority -
                         //minus 1 for every 100 tile distance
-                        this.Dist(quest) / 100;
+                        this.DistTo(quest) / 100;
 
                     if (score > bestScore)
                     {

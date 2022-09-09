@@ -29,7 +29,7 @@ namespace wServer.logic.behaviors
                     continue;
 
                 var player = o as Player;
-                var distSq = player.DistSqr(host);
+                var distSq = player.SqDistTo(host);
 
                 if (distSq < radiusSqr)
                     player.Breath = Math.Min(100.0, player.Breath + time.DeltaTime * speed);

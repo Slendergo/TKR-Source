@@ -214,6 +214,19 @@ namespace wServer.core
             return rof;
         }
 
+        private const double MIN_MOVE_SPEED = 0.004;
+        private const double MAX_MOVE_SPEED = 0.0096;
+
+        public double MoveSpeed(double multiplier)
+        {
+            if (Owner.HasConditionEffect(ConditionEffectIndex.Slowed))
+                return MIN_MOVE_SPEED * multiplier;
+            var spdMult = MIN_MOVE_SPEED + this[4] / (double)75.0 * (MAX_MOVE_SPEED - MIN_MOVE_SPEED);
+            if (Owner.HasConditionEffect(ConditionEffectIndex.Speedy))
+                spdMult *= 1.5;
+            return spdMult * multiplier;
+        }
+
         public double GetAttackMult(bool isAbility)
         {
             if (isAbility)

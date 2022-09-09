@@ -15,6 +15,7 @@ namespace wServer.core.objects
         private TimeCop _time = new TimeCop();
 
         public int NoClipCountTollerance;
+        public int SpeedCountTollerance;
 
         public bool IsNoClipping()
         {

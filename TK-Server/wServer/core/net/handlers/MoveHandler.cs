@@ -38,48 +38,89 @@ namespace wServer.core.net.handlers
                     return;
                 }
 
+                var dt = time - player.LastClientTime;
 
-                // s = d / t
+                var dx = Math.Abs(newX - player.X);
+                var dy = Math.Abs(newY - player.Y);
 
-                // calculate the distance
+                var multiplier = player.World.GameServer.Resources.GameData.Tiles[player.World.Map[(int)newX, (int)newY].TileId].Speed;
+                
+                var serverDistance = player.Stats.MoveSpeed(multiplier) * dt;
+                var clientDistance = Math.Sqrt(Math.Pow(dx, 2)) + Math.Sqrt(Math.Pow(dy, 2));
 
-                // d = s * t;
-
-                // time between this move and last move
-                var dt = time - player.LastClientTime; 
-
-                // time in seconds
-                var moveTime = dt / 1000.0;
-
-                // distance
-                var distance = player.Dist(newX, newY);
-
-                // speed
-                var clientSpeed = distance / moveTime;
-                var serverSpeed = player.Stats.GetSpeed();
-
-                // only check if canTp
-                if (!player.Teleported)
-                    if(clientSpeed > serverSpeed)
+                var absDis = Math.Abs(serverDistance - clientDistance);
+                if(absDis > 3.0)
+                {
+                    player.SpeedCountTollerance++;
+                    if (player.SpeedCountTollerance > 4)
                     {
-                        var delta = clientSpeed - serverSpeed;
-                        if (delta > 0.5)
-                        {
-                            foreach(var other in player.World.Players.Values)
+                        foreach (var w in player.GameServer.WorldManager.GetWorlds())
+                            w.ForeachPlayer(other =>
                             {
-                                if(other.IsAdmin || other.IsCommunityManager)
-                                {
-                                    if (delta > 1.0)
-                                        other.SendInfo($"Warning: [{player.Name}] {player.AccountId}-{player.Client.Character.CharId} is moving exceptionally faster than expected! ({delta} | tolerance: 0.5)");
-                                    else
-                                        other.SendInfo($"Warning: [{player.Name}] {player.AccountId}-{player.Client.Character.CharId} is faster than expected! ({delta} | tolerance: 0.5)");
-                                }
-                            }
-                        
-                            player.Client.Disconnect("Speed Delta Too Fast");
-                            return;
-                        }
+                                if (other.IsAdmin || other.IsCommunityManager)
+                                    other.SendInfo($"Warning: [{player.Name}] {player.AccountId}-{player.Client.Character.CharId} is faster than expected!");
+                            });
+                        StaticLogger.Instance.Info($"[{player.Name}] {player.AccountId}-{player.Client.Character.CharId} is moving faster than expected!");
+                        player.Client.Disconnect("Speed Delta Too Fast");
                     }
+                }
+                else
+                {
+                    player.SpeedCountTollerance--;
+                    if (player.SpeedCountTollerance < 0)
+                        player.SpeedCountTollerance = 0;
+                }
+
+                ////// s = d / t
+
+                ////// calculate the distance
+
+                ////// d = s * t;
+
+                ////// time between this move and last move
+                //var dt = time - player.LastClientTime;
+
+                //// time in seconds
+                //var moveTime = dt / 1000.0;
+
+                //// distance
+                //var distance = player.Dist(newX, newY);
+
+                //var multiplier = player.World.GameServer.Resources.GameData.Tiles[player.World.Map[(int)newX, (int)newY].TileId].Speed;
+
+                //// speed
+                //var clientSpeed = distance / moveTime;
+                //var serverSpeed = player.Stats.MoveSpeed(multiplier) * dt; // player.Stats.GetSpeed() * multiplier;
+
+                //// only check if canTp
+                //if (clientSpeed > serverSpeed)
+                //{
+                //    player.SpeedCountTollerance++;
+                //    var delta = clientSpeed - serverSpeed;
+                //    if (delta > 0.5) // tollerance
+                //    {
+                //        Console.WriteLine(clientSpeed + " " + dt + " " + distance + " " + clientSpeed + " " + serverSpeed);
+
+                //        foreach (var other in player.World.Players.Values)
+                //            if (other.IsAdmin || other.IsCommunityManager)
+                //            {
+                //                if (delta > 1.0)
+                //                    other.SendInfo($"Warning: [{player.Name}] {player.AccountId}-{player.Client.Character.CharId} is moving exceptionally faster than expected! ({delta} | tolerance: 0.5)");
+                //                else
+                //                    other.SendInfo($"Warning: [{player.Name}] {player.AccountId}-{player.Client.Character.CharId} is faster than expected! ({delta} | tolerance: 0.5)");
+                //            }
+                //        StaticLogger.Instance.Info($"[{player.Name}] {player.AccountId}-{player.Client.Character.CharId} is moving faster than expected! {delta} ({delta} | tolerance: 0.5)");
+
+                //        if (player.SpeedCountTollerance > 3)
+                //            player.Client.Disconnect("Speed Delta Too Fast");
+                //    }
+                //    else
+                //    {
+                //        player.SpeedCountTollerance--;
+                //        if(player.SpeedCountTollerance < 0)
+                //            player.SpeedCountTollerance = 0;
+                //    }
+                //}
 
                 player.Move(newX, newY);
                 player.PlayerUpdate.UpdateTiles = true;
@@ -91,13 +132,13 @@ namespace wServer.core.net.handlers
                 {
                     StaticLogger.Instance.Info($"{player.Name} is walking on an occupied tile. {player.RealX}, {player.RealY} [REACHED MAX TOLERANCE]");
                     player.Client.Disconnect("No clipping");
+                    return;
                 }
             }
             else
                 player.NoClipCountTollerance--;
 
             player.MoveReceived(tickTime, time, tickId);
-            player.Teleported = false;
         }
     }
 }

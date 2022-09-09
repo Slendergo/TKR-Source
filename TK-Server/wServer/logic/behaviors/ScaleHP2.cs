@@ -105,8 +105,8 @@ namespace wServer.logic.behaviors
                                 if (item == null || !item.Legendary && !item.Revenge && !item.Eternal && !item.Mythical)
                                     continue;
                                 if(i == 0)
-                                    itemCount = itemCount + 9;
-                                itemCount++;
+                                    itemCount = itemCount + 19;
+                                itemCount = itemCount + 4;
                             }
                             scstate.pNamesCounted.Add(player.Name);
                         }
@@ -121,8 +121,8 @@ namespace wServer.logic.behaviors
                 {
                     var amountPerPlayer = _percentage * enemy.ObjectDesc.MaxHP / 100;
                     var amountInc = (plrCount - scstate.initialScaleAmount) * amountPerPlayer;
-                    amountInc += (itemCount - scstate.initialItemScaleAmount) * enemy.ObjectDesc.MaxHP / 25;
-                    //Console.WriteLine(itemCount + " - "+scstate.initialItemScaleAmount + " * "+enemy.ObjectDesc.MaxHP + " / 100 = " + (itemCount - scstate.initialItemScaleAmount) * enemy.ObjectDesc.MaxHP / 100);
+                    amountInc += (itemCount - scstate.initialItemScaleAmount) * enemy.ObjectDesc.MaxHP / 40;
+                    //Console.WriteLine(itemCount + " - "+scstate.initialItemScaleAmount + " * "+enemy.ObjectDesc.MaxHP + " / 25 = " + (itemCount - scstate.initialItemScaleAmount) * enemy.ObjectDesc.MaxHP / 50);
 
                     scstate.initialScaleAmount += plrCount - scstate.initialScaleAmount;
                     scstate.initialItemScaleAmount += itemCount - scstate.initialItemScaleAmount;

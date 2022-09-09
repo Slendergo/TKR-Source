@@ -359,10 +359,11 @@ public class Options extends Sprite
       this.addOption(new ChoiceOption("showTradePopup",new <String>["On","Off"],[true,false],"Show Trade Request Panel","This toggles whether to show trade requests in the " + "lower-right panel or just in chat.",null));
       this.addOption(new ChoiceOption("showGuildInvitePopup",new <String>["On","Off"],[true,false],"Show Guild Invite Panel","This toggles whether to show guild invites in the " + "lower-right panel or just in chat.",null));
       this.addOption(new ChoiceOption("cursorSelect", new <String>["Off", "ProX", "X2", "X3", "X4", "Corner1", "Corner2", "Symb", "Alien", "Xhair", "Dystopia+"], [MouseCursor.AUTO, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"], "Custom Cursor", "Click here to change the mouse cursor. May help with aiming.", refreshCursor));
-      if (!Parameters.GPURenderError)
-      {
-         this.addOption(new ChoiceOption("GPURender",new <String>["On","Off"],[true,false],"Hardware Acceleration","Enables Hardware Acceleration if your system supports it",this.renderer));
+      if (!Parameters.GPURenderError) {
+         this.addOption(new ChoiceOption("GPURender", new <String>["On","Off"],[true,false],"Hardware Acceleration","Enables Hardware Acceleration if your system supports it",this.renderer));
       }
+      this.addOption(new ChoiceOption("fps", new <String>["60", "75", "120", "144", "244", "240"], [60, 75, 144, 240, 244, 360], "FPS", "Increase or Decrease the framerate.", this.fps));
+      this.addOption(new ChoiceOption("vsync", new <String>["On","Off"], [true, false], "Toggle VSync", "Enable/Disable Vsync.", this.vsync));
       this.addOption(new ChoiceOption("showStatistics", new <String>["On","Off"], [true, false], "Show Statistics", "Enable/Disable Statistics.", this.statistics));
    }
 
@@ -392,6 +393,16 @@ public class Options extends Sprite
     {
         Parameters.root.dispatchEvent(new Event(Event.RESIZE));
     }
+
+   private function fps() : void
+   {
+      WebMain.STAGE.frameRate = Parameters.data_.fps;
+   }
+
+   private function vsync() : void
+   {
+      WebMain.STAGE.vsyncEnabled = Parameters.data_.vsync;
+   }
 
    private function statistics() : void
    {

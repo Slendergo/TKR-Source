@@ -142,6 +142,9 @@ namespace wServer.core.objects
             if (!itsPoison && HasConditionEffect(ConditionEffectIndex.Invincible))
                 return 0;
 
+            if (from.TalismanDamageShotsPierceArmour)
+                noDef = true;
+
             if (!HasConditionEffect(ConditionEffectIndex.Paused) && !HasConditionEffect(ConditionEffectIndex.Stasis))
             {
                 var def = Defense;

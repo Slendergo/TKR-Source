@@ -315,12 +315,12 @@ public class Projectile extends BasicObject
             if(target == player)
             {
                map_.gs_.gsc_.playerHit(this.bulletId_,this.ownerId_);
-               target.damage(this.containerType_,dmg,this.projProps_.effects_,false,this);
+               target.damage(this.containerType_,dmg,this.projProps_.effects_,false,this, player.shotsPierce_);
             }
             else if(target.props_.isEnemy_)
             {
                map_.gs_.gsc_.enemyHit(elapsed,this.bulletId_,target.objectId_, dead, this.containerType_);
-               target.damage(this.containerType_,dmg,this.projProps_.effects_,dead,this);
+               target.damage(this.containerType_,dmg,this.projProps_.effects_,dead,this, false);
                if(target != null && (target.props_.isQuest_ || target.props_.isChest_))
                {
                   if(isNaN(Parameters.DamageCounter[target.objectId_]))

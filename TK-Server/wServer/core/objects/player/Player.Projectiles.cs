@@ -8,7 +8,16 @@ namespace wServer.core.objects
         {
             projectileId = id;
 
-            var dmg = Stats.GetAttackDamage(desc.MinDamage, desc.MaxDamage);
+            var min = desc.MinDamage;
+            var max = desc.MaxDamage;
+            if (TalismanDamageIsAverage)
+            {
+                var avg = (int)((min + max) * 0.5);
+                min = avg;
+                max = avg;
+            }
+
+            var dmg = Stats.GetAttackDamage(min, max);
 
             var isFullHp = HP == Stats[0];
             if (TalismanExtraDamageOnHitHealth != 0.0)

@@ -211,6 +211,8 @@ public class Player extends Character {
     private var activeTalismans_:Vector.<int>;
     public var essence_:int = 0;
     public var essenceCap_:int = 0;
+    public var damageIsAveraged_:Boolean;
+    public var shotsPierce_:Boolean;
 
     public function addTalisman(talismanData:TalismanData):void {
         this.talismans_[talismanData.type_] = new TalismanModel(talismanData);
@@ -276,6 +278,8 @@ public class Player extends Character {
             if(tierDesc.abilityLifeCost > 0.0){
                 this.talismanAbilityLifeCost_ = tierDesc.abilityLifeCost;
             }
+            this.damageIsAveraged_ = tierDesc.damageIsAveraged_;
+            this.shotsPierce_ = tierDesc.shotsPierce_;
         }
     }
 
@@ -353,7 +357,7 @@ public class Player extends Character {
 
         if (map_.player_ == this && square_.props_.maxDamage_ > 0 && square_.lastDamage_ + 500 < time && !isInvincible() && (square_.obj_ == null || !square_.obj_.props_.protectFromGroundDamage_)) {
             d = map_.gs_.gsc_.getNextDamage(square_.props_.minDamage_, square_.props_.maxDamage_);
-            damage(-1, d, null, hp_ <= d, null);
+            damage(-1, d, null, hp_ <= d, null, false);
             map_.gs_.gsc_.groundDamage(time, x_, y_);
             square_.lastDamage_ = time;
         }

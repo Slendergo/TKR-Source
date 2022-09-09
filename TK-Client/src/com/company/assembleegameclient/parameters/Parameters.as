@@ -177,6 +177,8 @@ public class Parameters {
         setDefault("allyShots", true);
         setDefault("allyDamage", true);
         setDefault("noAllyNotifications", false);
+        setDefault("fps", 60);
+        setDefault("vsync", true);
     }
 
     private static function setDefaultKey(keyName:String, key:uint):void {

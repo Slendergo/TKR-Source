@@ -1167,7 +1167,7 @@ public class GameServerConnection
          var target:GameObject = map.goDict_[damage.targetId_];
          if(target != null)
          {
-            target.damage(-1,damage.damageAmount_,damage.effects_,damage.kill_,proj);
+            target.damage(-1,damage.damageAmount_,damage.effects_,damage.kill_,proj, damage.pierce_);
          }
 
          if (damage.objectId_ != playerId_ && damage.targetId_ != playerId_) // aka nothing to do wit parent player
@@ -2228,7 +2228,7 @@ public class GameServerConnection
                effects = new Vector.<uint>();
                effects.push(aoe.effect_);
             }
-            this.player.damage(aoe.origType_,d,effects,false,null);
+            this.player.damage(aoe.origType_,d,effects,false,null, false);
          }
          //this.aoeAck(this.gs_.lastUpdate_,this.player.x_,this.player.y_);
       }

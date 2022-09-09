@@ -734,7 +734,7 @@ namespace wServer.logic
         .Init("Kage Kami",
             new State(
                 new ScaleHP2(30),
-                new DropPortalOnDeath("Manor of the Immortals Portal", 0.2),
+                new DropPortalOnDeath("Manor of the Immortals Portal", 1.0),
                 /*            new State("Grave", // Bug
                 new SetAltTexture(0),
                 new HpLessTransition(.90,"yay i am good")

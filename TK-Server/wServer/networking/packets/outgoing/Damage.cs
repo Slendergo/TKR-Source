@@ -12,6 +12,7 @@ namespace wServer.networking.packets.outgoing
         public bool Kill { get; set; }
         public byte BulletId { get; set; }
         public int ObjectId { get; set; }
+        public bool Pierce { get; set; }
 
         public override MessageId MessageId => MessageId.DAMAGE;
 
@@ -28,6 +29,7 @@ namespace wServer.networking.packets.outgoing
             wtr.Write(Kill);
             wtr.Write(BulletId);
             wtr.Write(ObjectId);
+            wtr.Write(Pierce);
         }
     }
 }

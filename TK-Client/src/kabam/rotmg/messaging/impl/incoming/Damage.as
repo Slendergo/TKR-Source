@@ -10,7 +10,8 @@ package kabam.rotmg.messaging.impl.incoming
       public var kill_:Boolean;
       public var bulletId_:uint;
       public var objectId_:int;
-      
+      public var pierce_:Boolean;
+
       public function Damage(id:uint, callback:Function)
       {
          this.effects_ = new Vector.<uint>();
@@ -30,6 +31,7 @@ package kabam.rotmg.messaging.impl.incoming
          this.kill_ = data.readBoolean();
          this.bulletId_ = data.readUnsignedByte();
          this.objectId_ = data.readInt();
+         this.pierce_ = data.readBoolean();
       }
       
       override public function toString() : String

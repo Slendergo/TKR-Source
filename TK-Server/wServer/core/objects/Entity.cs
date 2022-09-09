@@ -215,7 +215,7 @@ namespace wServer.core.objects
         public bool HasConditionEffect(ConditionEffectIndex effect) => ConditionEffectManager.HasCondition((byte)effect);
         public void RemoveCondition(ConditionEffectIndex effect) => ConditionEffectManager.RemoveCondition((byte)effect);
 
-        private bool CanApplyCondition(ConditionEffectIndex effect)
+        protected virtual bool CanApplyCondition(ConditionEffectIndex effect)
         {
             if (effect == ConditionEffectIndex.Stunned && HasConditionEffect(ConditionEffectIndex.StunImmune))
                 return false;

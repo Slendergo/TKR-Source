@@ -28,9 +28,9 @@ public class Character extends GameObject
       return 0xFFFF00 - 0x500 * (50 - param1);
    }
 
-   override public function damage(origType:int, damageAmount:int, effects:Vector.<uint>, kill:Boolean, proj:Projectile) : void
+   override public function damage(origType:int, damageAmount:int, effects:Vector.<uint>, kill:Boolean, proj:Projectile, pierce:Boolean) : void
    {
-      super.damage(origType,damageAmount,effects,kill,proj);
+      super.damage(origType,damageAmount,effects,kill,proj, pierce);
       if(dead_)
       {
          SoundEffectLibrary.play(this.deathSound_);

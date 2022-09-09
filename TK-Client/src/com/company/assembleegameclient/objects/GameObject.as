@@ -768,7 +768,7 @@ public class GameObject extends BasicObject {
         this.myLastTickId_ = tickId;
     }
 
-    public function damage(origType:int, damageAmount:int, effects:Vector.<uint>, kill:Boolean, proj:Projectile):void {
+    public function damage(origType:int, damageAmount:int, effects:Vector.<uint>, kill:Boolean, proj:Projectile, pierce:Boolean):void {
 
         var offsetTime:int = 0;
         var conditionEffect:uint = 0;
@@ -861,7 +861,7 @@ public class GameObject extends BasicObject {
         }
 
         if (damageAmount > 0) {
-            pierced = this.isArmorBroken() || proj != null && proj.projProps_.armorPiercing_;
+            pierced = this.isArmorBroken() || proj != null && proj.projProps_.armorPiercing_ || pierce;
             var _loc4_:CharacterStatusText = null;
             var _loc3_:String = "-" + damageAmount + " [" + (this.hp_ - damageAmount) + "]";
             if (Parameters.data_.dynamicHPcolor) {

@@ -53,8 +53,8 @@ namespace common.resources
         public readonly List<float> FameGainBonus;
         public readonly bool NoPotionHealing;
         public readonly List<TalismanPotionStack> PotionStack;
-        //public readonly bool ShotsPierceArmour;
-        //public readonly bool DamageIsAverage;
+        public readonly bool ShotsPierceArmour;
+        public readonly bool DamageIsAverage;
         public readonly bool RemoveManaBar;
         public readonly float AbilityLifeCost;
         public readonly bool CanOnlyGetWhiteBags;
@@ -91,6 +91,8 @@ namespace common.resources
 
             CantGetLoot = e.HasElement("CantGetLoot");
             RemoveManaBar = e.HasElement("RemoveManaBar");
+            ShotsPierceArmour = e.HasElement("ShotsPierceArmour");
+            DamageIsAverage = e.HasElement("DamageIsAverage");
             AbilityLifeCost = e.Element("AbilityLifeCost")?.GetAttribute<float>("percentage") ?? 0.0f;
 
             FameGainBonus = new List<float>();

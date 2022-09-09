@@ -122,6 +122,15 @@ namespace wServer.core.objects
             Client.Account.EssenceCap = GetTalismanEssenceCap(Stars);
         }
 
+        protected override bool CanApplyCondition(ConditionEffectIndex effect)
+        {
+            if (TalismanImmuneToWeak && effect == ConditionEffectIndex.Weak)
+                return false;
+            if (TalismanImmuneToDamaging && effect == ConditionEffectIndex.Damaging)
+                return false;
+            return base.CanApplyCondition(effect);
+        }
+
         private void ApplyTalismanEffects()
         {
             //reset
@@ -149,7 +158,7 @@ namespace wServer.core.objects
             RemoveCondition(ConditionEffectIndex.SlowedImmune);
             RemoveCondition(ConditionEffectIndex.DazedImmune);
             RemoveCondition(ConditionEffectIndex.StunImmune);
-            RemoveCondition(ConditionEffectIndex.Paralyzed);
+            RemoveCondition(ConditionEffectIndex.ParalyzeImmune);
 
             // readd
 
@@ -200,7 +209,7 @@ namespace wServer.core.objects
                             ApplyPermanentConditionEffect(ConditionEffectIndex.StunImmune);
                             break;
                         case ConditionEffectIndex.Paralyzed:
-                            ApplyPermanentConditionEffect(ConditionEffectIndex.Paralyzed);
+                            ApplyPermanentConditionEffect(ConditionEffectIndex.ParalyzeImmune);
                             break;
                         case ConditionEffectIndex.Weak:
                             TalismanImmuneToWeak = true;
@@ -210,6 +219,9 @@ namespace wServer.core.objects
                             break;
                     }
                 }
+
+                TalismanDamageIsAverage = tierDesc.DamageIsAverage;
+                TalismanDamageShotsPierceArmour = tierDesc.ShotsPierceArmour;
 
                 if (tierDesc.RemoveManaBar)
                     _noManaBar.SetValue(1);

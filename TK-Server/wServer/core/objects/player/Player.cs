@@ -742,10 +742,11 @@ namespace wServer.core.objects
                 }
             });
 
+            Teleported = true;
             PlayerUpdate.UpdateTiles = true;
         }
 
-
+        public bool Teleported;
         public bool DeltaTime;
 
         public override void Tick(ref TickTime time)

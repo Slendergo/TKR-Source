@@ -18,9 +18,14 @@ namespace wServer.core.commands
                     return false;
                 }
 
+                if (!player.TPCooledDown())
+                {
+                    player.SendError($"Teleport is on cooldown");
+                    return true;
+                }
                 player.SetNewbiePeriod();
-                player.TeleportPosition(time, player.Quest.RealX, player.Quest.RealY, true);
-                player.SendInfo($"Teleported to Quest Location: ({player.Quest.X}, {player.Quest.Y}");
+                player.TeleportPosition(time, player.Quest.RealX, player.Quest.RealY);
+                player.SendInfo($"Teleported to Quest Location: ({player.Quest.X}, {player.Quest.Y})");
                 return true;
             }
         }

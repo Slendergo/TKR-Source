@@ -21,22 +21,13 @@ public class GlowRedrawer
     private static var glowHashes:Dictionary = new Dictionary();
 
     public static function clearCache():void{
-        var _local5:int;
-        var _local6:*;
         for each (var _local3 in glowHashes) {
-            _local5 = 0;
-            _local6 = _local3;
             for each (var _local4 in _local3) {
                 delete _local3[_local4];
             }
             delete glowHashes[_local3];
         }
         glowHashes = new Dictionary();
-    }
-
-    public function GlowRedrawer()
-    {
-        super();
     }
 
     public static function outlineGlow(texture:BitmapData, glowColor:uint, outlineSize:Number = 1.4, caching:Boolean = true, outlineColor:int = 0) : BitmapData

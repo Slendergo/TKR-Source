@@ -405,17 +405,23 @@ public class GameObject extends BasicObject {
         this.vS_.push(posS_[3] - w / 2, posS_[4] - h + h2, posS_[3] + w / 2, posS_[4] - h + h2, posS_[3] + w / 2, posS_[4], posS_[3] - w / 2, posS_[4]);
         this.path_.data = this.vS_;
 
-        if (this.flash_ != null) {
-            if (!this.flash_.doneAt(time)) {
-                if (Parameters.isGpuRender()) {
-                    this.flash_.applyGPUTextureColorTransform(texture, time);
-                }
-                else {
-                    texture = this.flash_.apply(texture, time);
+        if (!(this.props_.isPlayer_ && this != this.map_.player_)) {
+            if (this.flash_ != null) {
+                if (this.flash_.doneAt(time)) {
+                    this.flash_ = null;
+                    if (Parameters.isGpuRender()) {
+                        GraphicsFillExtra.clearColorTransform(texture);
+                    }
+                } else {
+                    if(Parameters.isGpuRender()) {
+                        this.flash_.applyGPU(texture,time);
+                    } else {
+                        texture = this.flash_.applyCPU(texture,time);
+                    }
                 }
             }
-            else {
-                this.flash_ = null;
+            else if(Parameters.isGpuRender() && GraphicsFillExtra.getColorTransform(texture) != null) {
+                GraphicsFillExtra.clearColorTransform(texture);
             }
         }
 

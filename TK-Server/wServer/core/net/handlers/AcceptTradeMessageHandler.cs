@@ -12,6 +12,7 @@ using wServer.networking.packets;
 using wServer.core.net.handlers;
 using wServer.networking.packets.outgoing;
 using wServer.utils;
+using System.Text;
 
 namespace wServer.core.net.handlers
 {
@@ -50,13 +51,13 @@ namespace wServer.core.net.handlers
 
                 if (player.tradeAccepted && tradeTarget.tradeAccepted)
                 {
-                    if (player.IsAdmin || tradeTarget.IsAdmin)
-                    {
-                        tradeTarget.CancelTrade();
-                        player.CancelTrade();
-                        return;
-                    }
-
+                    if(!(player.IsAdmin && tradeTarget.IsAdmin))
+                        if (player.IsAdmin || tradeTarget.IsAdmin)
+                        {
+                            tradeTarget.CancelTrade();
+                            player.CancelTrade();
+                            return;
+                        }
                     DoTrade(player);
                 }
             }
@@ -144,22 +145,35 @@ namespace wServer.core.net.handlers
             {
                 msg = "An error occured while trading! Some items were lost!";
             }
+            else
+            {
+                LogTrade(player, tradeTarget, thisItems);
+                LogTrade(tradeTarget, player, targetItems);
+            }
 
             // trade successful, notify and save
             TradeDone(player, tradeTarget, msg);
         }
 
-        private void TradeDone(Player player, Player tradeTarget, string msg)
+        private void LogTrade(Player player, Player tradeTarget, List<(Item, ItemData)> items)
         {
             try
             {
-                StaticLogger.Instance.Info($"[{player.World.IdName}({player.World.Id})] <{player.Name} {player.AccountId}-{player.Client.Character.CharId}> traded to <{tradeTarget.Name} {tradeTarget.AccountId}-{tradeTarget.Client.Character.CharId}>");
+                System.Console.WriteLine(items.Count);
+                var sb = new StringBuilder($"[{player.World.IdName}({player.World.Id})] ");
+                sb.Append($"<{player.Stars} {player.Name} {player.AccountId}-{player.Client.Character.CharId}> traded: ");
+                sb.Append(string.Join(", ", items.Select(_ => _.Item1.DisplayId ?? _.Item1.ObjectId)));
+                sb.Append($" to <{tradeTarget.Stars} {tradeTarget.Name} {tradeTarget.AccountId}-{tradeTarget.Client.Character.CharId}>");
+                StaticLogger.Instance.Info(sb.ToString());
             }
             catch
             {
                 System.Console.WriteLine($"<{player.Name} {player.AccountId}-{player.Client.Character.CharId}> Trade Log Error");
             }
+        }
 
+        private void TradeDone(Player player, Player tradeTarget, string msg)
+        {
             player.Client.SendPacket(new TradeDone
             {
                 Code = 1,

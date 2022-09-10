@@ -39,7 +39,7 @@ package kabam.rotmg.ui.view
 
       private var background:CharacterWindowBackground;
 
-      private var miniMap:MiniMap;
+      public var miniMap:MiniMap;
 
       private var equippedGrid:EquippedGrid;
 

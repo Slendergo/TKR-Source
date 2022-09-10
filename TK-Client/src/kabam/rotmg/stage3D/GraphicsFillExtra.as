@@ -17,50 +17,47 @@ package kabam.rotmg.stage3D
       private static var textureOffsetsSize:uint = 0;
       private static var waterSinks:Dictionary = new Dictionary();
       private static var waterSinksSize:uint = 0;
+      private static var ctMarkers:Vector.<BitmapData> = new Vector.<BitmapData>();
       private static var colorTransforms:Dictionary = new Dictionary();
       private static var colorTransformsSize:uint = 0;
+      private static var nullTfm:ColorTransform = new ColorTransform();
       private static var vertexBuffers:Dictionary = new Dictionary();
       private static var vertexBuffersSize:uint = 0;
       private static var softwareDraw:Dictionary = new Dictionary();
       private static var softwareDrawSize:uint = 0;
       private static var softwareDrawSolid:Dictionary = new Dictionary();
       private static var softwareDrawSolidSize:uint = 0;
-      private static var lastChecked:uint = 0;
       private static const DEFAULT_OFFSET:Vector.<Number> = Vector.<Number>([0,0,0,0]);
 
       public function GraphicsFillExtra()
       {
          super();
       }
-
-      public static function setColorTransform(bitmap:BitmapData, value:ColorTransform) : void
-      {
-         if(!Parameters.isGpuRender())
-         {
+      public static function setColorTransform(tex: BitmapData, ct: ColorTransform): void {
+         if (!Parameters.isGpuRender())
             return;
-         }
-         if(colorTransforms[bitmap] == null)
-         {
+
+         if (ctMarkers.indexOf(tex) == -1) {
             colorTransformsSize++;
+            ctMarkers.push(tex);
+            colorTransforms[tex] = ct;
          }
-         colorTransforms[bitmap] = value;
       }
 
-      public static function getColorTransform(bitmap:BitmapData) : ColorTransform
-      {
-         var colorTransform:ColorTransform = null;
-         if(bitmap in colorTransforms)
-         {
-            colorTransform = colorTransforms[bitmap];
-            colorTransforms[bitmap] = new ColorTransform();
+      public static function getColorTransform(tex: BitmapData): ColorTransform {
+         if (ctMarkers.indexOf(tex) != -1) {
+            return colorTransforms[tex];
          }
-         else
-         {
-            colorTransform = new ColorTransform();
-            colorTransforms[bitmap] = colorTransform;
-            colorTransformsSize++;
+         return nullTfm;
+      }
+
+      public static function clearColorTransform(tex: BitmapData): void {
+         var idx:int = ctMarkers.indexOf(tex);
+         if (ctMarkers.indexOf(tex) != -1) {
+            colorTransformsSize--;
+            ctMarkers.removeAt(idx);
+            delete colorTransforms[tex];
          }
-         return colorTransform;
       }
 
       public static function setOffsetUV(bitmapFill:GraphicsBitmapFill, u:Number, v:Number) : void
@@ -117,6 +114,19 @@ package kabam.rotmg.stage3D
          return 0;
       }
 
+      public static function clearSink(bitmapFill:GraphicsBitmapFill) : void
+      {
+         if(!Parameters.isGpuRender())
+         {
+            return;
+         }
+         if(waterSinks[bitmapFill] != null)
+         {
+            waterSinksSize--;
+            delete waterSinks[bitmapFill];
+         }
+      }
+
       public static function setVertexBuffer(bitmapFill:GraphicsBitmapFill, verts:Vector.<Number>) : void
       {
          if(!Parameters.isGpuRender())
@@ -142,19 +152,6 @@ package kabam.rotmg.stage3D
             return vertexBuffers[bitmapFill];
          }
          return null;
-      }
-
-      public static function clearSink(bitmapFill:GraphicsBitmapFill) : void
-      {
-         if(!Parameters.isGpuRender())
-         {
-            return;
-         }
-         if(waterSinks[bitmapFill] != null)
-         {
-            waterSinksSize--;
-            delete waterSinks[bitmapFill];
-         }
       }
 
       public static function setSoftwareDraw(bitmapFill:GraphicsBitmapFill, value:Boolean) : void
@@ -201,10 +198,13 @@ package kabam.rotmg.stage3D
          return false;
       }
 
-      public static function dispose() : void
-      {
+      public static function dispose() : void {
          textureOffsets = new Dictionary();
          waterSinks = new Dictionary();
+//         for each (var tex: BitmapData in ctMarkers) {
+//            tex.dispose();
+//         }
+         ctMarkers = new Vector.<BitmapData>();
          colorTransforms = new Dictionary();
          disposeVertexBuffers();
          softwareDraw = new Dictionary();

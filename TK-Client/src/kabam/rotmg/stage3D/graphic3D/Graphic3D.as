@@ -51,7 +51,9 @@ import flash.display3D.Context3DProgramType;
       private var ctMult:Vector.<Number>;
       private var ctOffset:Vector.<Number>;
       private var rawMatrix3D:Vector.<Number>;
-      
+      private var ct:ColorTransform;
+      private var c3d:Context3D;
+
       public function Graphic3D()
       {
          this.matrix3D = new Matrix3D();
@@ -77,18 +79,21 @@ import flash.display3D.Context3DProgramType;
             this.offsetMatrix = sinkOffset;
          }
          this.transform();
-         var ct:ColorTransform = GraphicsFillExtra.getColorTransform(this.bitmapData);
-         ctMult[0] = ct.redMultiplier;
-         ctMult[1] = ct.greenMultiplier;
-         ctMult[2] = ct.blueMultiplier;
-         ctMult[3] = ct.alphaMultiplier;
-         ctOffset[0] = ct.redOffset / 0xFF;
-         ctOffset[1] = ct.greenOffset / 0xFF;
-         ctOffset[2] = ct.blueOffset / 0xFF;
-         ctOffset[3] = ct.alphaOffset / 0xFF;
-         var c3d:Context3D = context3D.GetContext3D();
-         c3d.setProgramConstantsFromVector(Context3DProgramType.FRAGMENT, 2, ctMult);
-         c3d.setProgramConstantsFromVector(Context3DProgramType.FRAGMENT, 3, ctOffset);
+
+         this.ct = GraphicsFillExtra.getColorTransform(this.bitmapData);
+         if(this.ctMult[0] != this.ct.redMultiplier || this.ctMult[1] != this.ct.greenMultiplier || this.ctMult[2] != this.ct.blueMultiplier || this.ctMult[3] != this.ct.alphaMultiplier || this.ctOffset[0] != this.ct.redOffset / 255 || this.ctOffset[1] != this.ct.greenOffset / 255 || this.ctOffset[2] != this.ct.blueOffset / 255 || this.ctOffset[3] != this.ct.alphaOffset / 255) {
+            this.ctMult[0] = this.ct.redMultiplier;
+            this.ctMult[1] = this.ct.greenMultiplier;
+            this.ctMult[2] = this.ct.blueMultiplier;
+            this.ctMult[3] = this.ct.alphaMultiplier;
+            this.ctOffset[0] = this.ct.redOffset / 255;
+            this.ctOffset[1] = this.ct.greenOffset / 255;
+            this.ctOffset[2] = this.ct.blueOffset / 255;
+            this.ctOffset[3] = this.ct.alphaOffset / 255;
+            this.c3d = context3D.GetContext3D();
+            this.c3d.setProgramConstantsFromVector("fragment",2,ctMult);
+            this.c3d.setProgramConstantsFromVector("fragment",3,ctOffset);
+         }
       }
       
       public function setGradientFill(gradientFill:GraphicsGradientFill, context3D:Context3DProxy, width:Number, height:Number) : void

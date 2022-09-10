@@ -121,6 +121,15 @@ public class TextureRedrawer {
          }
       }
       faceCache_ = new Dictionary();
+
+      for each (dict in redrawCaches) {
+         for each (tex in dict) {
+            tex.dispose();
+            delete dict[tex];
+         }
+         delete redrawCaches[dict];
+      }
+      redrawCaches = new Dictionary();
    }
 
    public static function redrawFace(tex:BitmapData, shade:Number):BitmapData {

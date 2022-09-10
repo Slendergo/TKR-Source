@@ -31,7 +31,7 @@ package kabam.rotmg.messaging.impl.incoming
          this.kill_ = data.readBoolean();
          this.bulletId_ = data.readUnsignedByte();
          this.objectId_ = data.readInt();
-         this.pierce_ = data.readBoolean();
+//         this.pierce_ = data.readBoolean();
       }
       
       override public function toString() : String

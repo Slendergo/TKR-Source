@@ -76,12 +76,6 @@ namespace wServer.core.objects
                 return;
             }
 
-            if (Client.Rank.IsAdmin)
-            {
-                SendError("You cannot trade.");
-                return;
-            }
-
             if (Database.GuestNames.Contains(name))
             {
                 SendError(name + " needs to choose a unique name first!");
@@ -93,6 +87,12 @@ namespace wServer.core.objects
             if (target == null || !target.CanBeSeenBy(this))
             {
                 SendError(name + " not found!");
+                return;
+            }
+
+            if (IsAdmin && !target.IsAdmin)
+            {
+                SendError("You cannot trade.");
                 return;
             }
 

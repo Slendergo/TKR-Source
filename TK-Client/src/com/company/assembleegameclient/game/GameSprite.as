@@ -415,6 +415,7 @@ public class GameSprite extends Sprite
          stage.dispatchEvent(new Event(Event.RESIZE));
          contains(this.map) && removeChild(this.map);
          this.map.dispose();
+         this.hudView.miniMap.dispose();
          CachingColorTransformer.clear();
          TextureRedrawer.clearCache();
          TileRedrawer.clearCache();
@@ -428,18 +429,7 @@ public class GameSprite extends Sprite
          if(this.gameStatistics_ != null && contains(this.gameStatistics_)){
             removeChild(this.gameStatistics_);
          }
-         System.pauseForGCIfCollectionImminent(0);
       }
-   }
-
-   /*private function onMoneyChanged(event:Event) : void
-   {
-      this.gsc_.checkCredits();
-   }*/
-
-   public function evalIsNotInCombatMapArea() : Boolean
-   {
-      return this.map.name_ == "Nexus" || this.map.name_ == "Vault" || this.map.name_ == "Guild Hall";
    }
 
    public function DamageCounter() : void

@@ -24,7 +24,7 @@
     <OldSound>bladeSwing</OldSound>
     <feedPower>900</feedPower>
   </Object>
-  <!--<Object type="0x48d5" id="Slime Slayer">
+  <!--<Object type="0x4281" id="Axe of the Frozen Tundra">
     <Class>Equipment</Class>
     <Item />
     <Legendary />

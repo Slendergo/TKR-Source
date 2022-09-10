@@ -1168,8 +1168,44 @@
     <SizeStep>5</SizeStep>
     <ShadowSize>75</ShadowSize>
     <Static />
+	  <BlockSight/>
     <OccupySquare />
   </Object>
+	<Object type="0x4271" id="Winter Tree Small Secret">
+		<Class>GameObject</Class>
+		<RandomTexture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x337</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x338</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x339</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x49b</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x49c</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x49d</Index>
+			</Texture>
+		</RandomTexture>
+		<MinSize>100</MinSize>
+		<MaxSize>120</MaxSize>
+		<SizeStep>5</SizeStep>
+		<ShadowSize>75</ShadowSize>
+		<Static />
+		<BlockSight/>
+	</Object>
   <Object type="0x1916" id="Winter Rock">
     <Class>GameObject</Class>
     <RandomTexture>
@@ -1187,7 +1223,6 @@
     <SizeStep>5</SizeStep>
     <ShadowSize>0</ShadowSize>
     <Static />
-    <OccupySquare />
   </Object>
   <Object type="0x1918" id="Winter Snowman Small">
     <Class>GameObject</Class>

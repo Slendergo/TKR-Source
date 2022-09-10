@@ -82,10 +82,10 @@
       <StatType type="0" scale="perLevel" amount="20" />
       <StatType type="26" scale="perLevel" amount="-2" />
       <StatType type="0" scale="perLevel" percentage="0.20" />
-      <StatType type="22" scale="perLevel" percentage="-0.015" />
-      <StatType type="28" scale="perLevel" percentage="-0.025" />
-      <StatType type="20" scale="perLevel" percentage="-0.015" />
-      <StatType type="27" scale="perLevel" percentage="-0.015" />
+      <StatType type="22" scale="perLevel" percentage="-0.030" />
+      <StatType type="28" scale="perLevel" percentage="-0.050" />
+      <StatType type="20" scale="perLevel" percentage="-0.030" />
+      <StatType type="27" scale="perLevel" percentage="-0.030" />
     </Tier>
   </Talisman>
   <Talisman type="0x08">
@@ -179,10 +179,10 @@
       <StatType type="20" scale="perLevel" amount="2" />
     </Tier>
     <Tier tier="2">
-      <Health condition="above" percent="0.75" scale="perLevel" add="0.015">RateOfFire</Health>
-      <Health condition="above" percent="0.75" scale="perLevel" add="0.035">HealthRegen</Health>
-      <Health condition="below" percent="0.75" scale="perLevel" add="-0.035">RateOfFire</Health>
-      <Health condition="below" percent="0.75" scale="perLevel" add="-0.035">HealthRegen</Health>
+      <Health condition="below" percent="0.80" scale="perLevel" add="0.015">RateOfFire</Health>
+      <Health condition="below" percent="0.80" scale="perLevel" add="0.035">HealthRegen</Health>
+      <Health condition="above" percent="0.80" scale="perLevel" add="-0.035">RateOfFire</Health>
+      <Health condition="above" percent="0.80" scale="perLevel" add="-0.035">HealthRegen</Health>
       <StatType type="26" scale="perLevel" amount="-1" />
       <StatType type="20" scale="perLevel" amount="2" />
     </Tier>

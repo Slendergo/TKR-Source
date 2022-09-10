@@ -33,6 +33,7 @@
     <Static />
     <FullOccupy />
     <OccupySquare />
+	  <BlockSight/>
     <EnemyOccupySquare />
     <Connects />
   </Object>

@@ -3,29 +3,20 @@ package kabam.rotmg.messaging.impl.incoming
    import flash.utils.IDataInput;
    import kabam.rotmg.messaging.impl.data.WorldPosData;
    
-   public class Aoe extends IncomingMessage
+   public class AoeData
    {
-       
-      
       public var pos_:WorldPosData;
-      
       public var radius_:Number;
-      
       public var damage_:int;
-      
       public var effect_:int;
-      
       public var duration_:Number;
-      
       public var origType_:int;
-      
-      public function Aoe(id:uint, callback:Function)
-      {
+
+      public function AoeData(){
          this.pos_ = new WorldPosData();
-         super(id,callback);
       }
-      
-      override public function parseFromInput(data:IDataInput) : void
+
+      public function parseFromInput(data:IDataInput) : void
       {
          this.pos_.parseFromInput(data);
          this.radius_ = data.readFloat();
@@ -33,11 +24,6 @@ package kabam.rotmg.messaging.impl.incoming
          this.effect_ = data.readUnsignedByte();
          this.duration_ = data.readFloat();
          this.origType_ = data.readUnsignedShort();
-      }
-      
-      override public function toString() : String
-      {
-         return formatToString("AOE","pos_","radius_","damage_","effect_","duration_","origType_");
       }
    }
 }

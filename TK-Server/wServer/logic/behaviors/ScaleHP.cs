@@ -87,7 +87,7 @@ namespace wServer.logic.behaviors
                 }
             }
             else
-                scstate.cooldown -= time.ElaspedMsDelta;
+                scstate.cooldown -= time.ElapsedMsDelta;
 
             state = scstate;
         }

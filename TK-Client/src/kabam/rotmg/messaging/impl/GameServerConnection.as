@@ -101,7 +101,7 @@ import kabam.rotmg.messaging.impl.data.ObjectStatusData;
 import kabam.rotmg.messaging.impl.data.StatData;
 import kabam.rotmg.messaging.impl.incoming.AccountList;
 import kabam.rotmg.messaging.impl.incoming.AllyShoot;
-import kabam.rotmg.messaging.impl.incoming.Aoe;
+import kabam.rotmg.messaging.impl.incoming.AoeData;
 import kabam.rotmg.messaging.impl.incoming.BuyResult;
 import kabam.rotmg.messaging.impl.incoming.ClientStat;
 import kabam.rotmg.messaging.impl.incoming.CreateSuccess;
@@ -512,7 +512,7 @@ public class GameServerConnection
          messages.map(PIC).toMessage(Pic).toMethod(this.onPic);
          messages.map(DEATH).toMessage(Death).toMethod(this.onDeath);
          messages.map(BUYRESULT).toMessage(BuyResult).toMethod(this.onBuyResult);
-         messages.map(AOE).toMessage(Aoe).toMethod(this.onAoe);
+         messages.map(AOE).toMessage(AoeData).toMethod(this.onAoe);
          messages.map(ACCOUNTLIST).toMessage(AccountList).toMethod(this.onAccountList);
          messages.map(QUESTOBJID).toMessage(QuestObjId).toMethod(this.onQuestObjId);
          messages.map(NAMERESULT).toMessage(NameResult).toMethod(this.onNameResult);
@@ -1411,7 +1411,10 @@ public class GameServerConnection
 
       private function onNewTick(newTick:NewTick) : void
       {
-         //this.addTextLine.dispatch(new AddTextLineVO("","TickTime: " + newTick.tickTime_));
+         for each(var aoeData:AoeData in newTick.aoes_) {
+            onAoe(aoeData)
+         }
+
          var objectStatus:ObjectStatusData = null;
          if(this.jitterWatcher_ != null)
          {
@@ -2209,7 +2212,7 @@ public class GameServerConnection
          this.gs_.map.quest_.setObject(questObjId.objectId_);
       }
 
-      private function onAoe(aoe:Aoe) : void
+      private function onAoe(aoe:AoeData) : void
       {
          var d:int = 0;
          var effects:Vector.<uint> = null;
@@ -2218,6 +2221,7 @@ public class GameServerConnection
             this.aoeAck(this.gs_.lastUpdate_,0,0);
             return;
          }
+
          var e:AOEEffect = new AOEEffect(aoe.pos_.toPoint(),aoe.radius_,16711680);
          this.gs_.map.addObj(e,aoe.pos_.x_,aoe.pos_.y_);
          if(this.player.isInvincible() || this.player.isPaused())
@@ -2225,6 +2229,7 @@ public class GameServerConnection
             this.aoeAck(this.gs_.lastUpdate_,this.player.x_,this.player.y_);
             return;
          }
+
          var hit:Boolean = this.player.distTo(aoe.pos_) < aoe.radius_;
          if(hit)
          {

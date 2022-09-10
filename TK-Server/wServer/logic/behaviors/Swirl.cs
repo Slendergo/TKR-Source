@@ -71,7 +71,7 @@ namespace wServer.logic.behaviors
                     s.RemainingTime = 5000;
             }
             else
-                s.RemainingTime -= time.ElaspedMsDelta;
+                s.RemainingTime -= time.ElapsedMsDelta;
 
             var angle = host.Y == s.Center.Y && host.X == s.Center.X
                 ? Math.Atan2(host.Y - s.Center.Y + (Random.NextDouble() * 2 - 1), host.X - s.Center.X + (Random.NextDouble() * 2 - 1))

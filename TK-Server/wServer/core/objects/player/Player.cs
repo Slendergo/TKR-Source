@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using wServer.core.net.handlers;
+using wServer.core.objects.player.state;
 using wServer.core.terrain;
 using wServer.core.worlds;
 using wServer.core.worlds.logic;
@@ -130,8 +131,11 @@ namespace wServer.core.objects
         public bool IsSupporter5 => Client.Rank.Rank >= RankingType.Supporter5;
         public bool IsCommunityManager => Client.Rank.IsCommunityManager;
 
+        public ClientState ClientState { get; private set; }
         public Player(Client client, bool saveInventory = true) : base(client.GameServer, client.Character.ObjectType)
         {
+            ClientState = new ClientState(this);
+
             var settings = GameServer.Resources.Settings;
             var gameData = GameServer.Resources.GameData;
 
@@ -263,6 +267,8 @@ namespace wServer.core.objects
                 ApplyPermanentConditionEffect(ConditionEffectIndex.Hidden);
                 ApplyPermanentConditionEffect(ConditionEffectIndex.Invincible);
             }
+
+            ApplyPermanentConditionEffect(ConditionEffectIndex.Invincible);
 
             LoadTalismanData();
         }
@@ -752,10 +758,9 @@ namespace wServer.core.objects
             if (KeepAlive(time))
             {
                 if (DeltaTime)
-                    SendInfo($"[DeltaTime]: {World.DisplayName} -> {time.ElaspedMsDelta} | {time.LogicTime}");
-            
-                PlayerUpdate.SendUpdate();
-                PlayerUpdate.SendNewTick(time.ElaspedMsDelta);
+                    SendInfo($"[DeltaTime]: {World.DisplayName} -> {time.ElapsedMsDelta} | {time.LogicTime}");
+
+                ClientState.Update(ref time);
 
                 HandleTalismans(ref time);
 
@@ -1590,7 +1595,7 @@ namespace wServer.core.objects
 
         private void TickActivateEffects(TickTime time)
         {
-            var dt = time.ElaspedMsDelta;
+            var dt = time.ElapsedMsDelta;
             if (World is VaultWorld || World is NexusWorld || World.InstanceType == WorldResourceInstanceType.Guild || World.Id == 10)
                 return;
             
@@ -1612,28 +1617,28 @@ namespace wServer.core.objects
         {
             if (_canApplyEffect0 > 0)
             {
-                _canApplyEffect0 -= time.ElaspedMsDelta;
+                _canApplyEffect0 -= time.ElapsedMsDelta;
                 if (_canApplyEffect0 < 0)
                     _canApplyEffect0 = 0;
             }
 
             if (_canApplyEffect1 > 0)
             {
-                _canApplyEffect1 -= time.ElaspedMsDelta;
+                _canApplyEffect1 -= time.ElapsedMsDelta;
                 if (_canApplyEffect1 < 0)
                     _canApplyEffect1 = 0;
             }
 
             if (_canApplyEffect2 > 0)
             {
-                _canApplyEffect2 -= time.ElaspedMsDelta;
+                _canApplyEffect2 -= time.ElapsedMsDelta;
                 if (_canApplyEffect2 < 0)
                     _canApplyEffect2 = 0;
             }
 
             if (_canApplyEffect3 > 0)
             {
-                _canApplyEffect3 -= time.ElaspedMsDelta;
+                _canApplyEffect3 -= time.ElapsedMsDelta;
                 if (_canApplyEffect3 < 0)
                     _canApplyEffect3 = 0;
             }

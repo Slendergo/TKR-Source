@@ -56,7 +56,7 @@ namespace wServer.logic.behaviors
                     host.World.BroadcastIfVisible(new ShowEffect() { EffectType = EffectType.Throw, Color = new ARGB(color), TargetObjectId = host.Id, Pos1 = target, Pos2 = new Position() { X = 222 } }, host);
                     host.World.Timers.Add(new WorldTimer(1500, (world, t) =>
                     {
-                        world.BroadcastIfVisible(new Aoe()
+                        world.BroadcastAoeIfVisible(new AoeData()
                         {
                             Pos = target,
                             Radius = radius,
@@ -66,19 +66,12 @@ namespace wServer.logic.behaviors
                             OrigType = host.ObjectType,
                             Color = new ARGB(color)
                         }, host);
-                        world.AOE(target, radius, true, p =>
-                        {
-                            (p as IPlayer).Damage(damage + enemyClasified, host);
-
-                            if (!p.HasConditionEffect(ConditionEffectIndex.Invincible) && !p.HasConditionEffect(ConditionEffectIndex.Stasis))
-                                p.ApplyConditionEffect(new ConditionEffect(effect, effectDuration));
-                        });
                     }));
                 }
                 cool = coolDown.Next(Random);
             }
             else
-                cool -= time.ElaspedMsDelta;
+                cool -= time.ElapsedMsDelta;
 
             state = cool;
         }

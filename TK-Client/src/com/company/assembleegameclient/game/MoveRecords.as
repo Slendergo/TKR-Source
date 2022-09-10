@@ -36,9 +36,10 @@ package com.company.assembleegameclient.game
          var currId:int = this.getId(currRecord.time_);
          if(id != currId)
          {
-            this.records_.push(new MoveRecord(time,x,y));
+            this.records_.push(new MoveRecord(time, x, y));
             return;
          }
+
          var score:int = this.getScore(id,time);
          var currScore:int = this.getScore(id,currRecord.time_);
          if(score < currScore)
@@ -46,7 +47,6 @@ package com.company.assembleegameclient.game
             currRecord.time_ = time;
             currRecord.x_ = x;
             currRecord.y_ = y;
-            return;
          }
       }
       

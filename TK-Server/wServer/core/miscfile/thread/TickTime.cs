@@ -3,10 +3,10 @@
     public struct TickTime
     {
         public int LogicTime;
-        public int ElaspedMsDelta;
+        public int ElapsedMsDelta;
         public long TickCount;
         public long TotalElapsedMs;
-        public float DeltaTime => ElaspedMsDelta * 0.001f;
+        public float DeltaTime => ElapsedMsDelta * 0.001f;
         public float BehaviourTickTime => DeltaTime * 5.0f;
     }
 }

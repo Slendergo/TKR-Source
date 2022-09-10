@@ -161,9 +161,11 @@
     <Compile Include="core\miscfile\datas\FuelEngine.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="core\net\handlers\AoeAckMessageHandler.cs" />
     <Compile Include="core\net\handlers\FuelEngineHandler.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="core\net\handlers\ShoootAckMessageHandler.cs" />
     <Compile Include="core\net\handlers\talisman\TalismanEssenceActionHandler.cs" />
     <Compile Include="core\objects\ConditionEffectManager.cs" />
     <Compile Include="core\objects\inventory\ItemDustPools.cs" />
@@ -177,6 +179,7 @@
     <Compile Include="core\objects\inventory\ItemStacker.cs" />
     <Compile Include="core\objects\player\Player.State.cs" />
     <Compile Include="core\objects\Engine.cs" />
+    <Compile Include="core\objects\player\state\ClientState.cs" />
     <Compile Include="core\setpieces\Fluffy.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
@@ -437,7 +440,6 @@
     <Compile Include="core\net\handlers\EnemyHitHandler.cs" />
     <Compile Include="core\net\handlers\party\JoinPartyHandler.cs" />
     <Compile Include="core\net\handlers\party\PartyInviteHandler.cs" />
-    <Compile Include="core\net\handlers\ShootAckHandler.cs" />
     <Compile Include="core\net\handlers\GotoAckHandler.cs" />
     <Compile Include="core\net\handlers\EscapeHandler.cs" />
     <Compile Include="core\net\handlers\ForgeFusionHandler.cs" />
@@ -470,7 +472,7 @@
     <Compile Include="core\net\handlers\UsePortalHandler.cs" />
     <Compile Include="networking\packets\outgoing\AccountList.cs" />
     <Compile Include="networking\packets\outgoing\AllyShoot.cs" />
-    <Compile Include="networking\packets\outgoing\Aoe.cs" />
+    <Compile Include="networking\packets\outgoing\AoeData.cs" />
     <Compile Include="networking\packets\outgoing\bounty\BountyMemberListSend.cs" />
     <Compile Include="networking\packets\outgoing\BuyResultMessage.cs" />
     <Compile Include="networking\packets\outgoing\SwitchMusic.cs" />

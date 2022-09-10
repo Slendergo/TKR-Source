@@ -100,7 +100,7 @@ namespace wServer.logic
 
         public void Tick(TickTime time)
         {
-            elapsed += time.ElaspedMsDelta;
+            elapsed += time.ElapsedMsDelta;
 
             if (elapsed > 60000)
             {

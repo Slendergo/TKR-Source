@@ -60,7 +60,7 @@ namespace wServer.logic.behaviors
                     }
 
                     if (s.RemainingTime > 0)
-                        s.RemainingTime -= time.ElaspedMsDelta;
+                        s.RemainingTime -= time.ElapsedMsDelta;
 
                     break;
 
@@ -84,7 +84,7 @@ namespace wServer.logic.behaviors
                     }
 
                     if (s.RemainingTime > 0)
-                        s.RemainingTime -= time.ElaspedMsDelta;
+                        s.RemainingTime -= time.ElapsedMsDelta;
 
                     vect = new Vector2(player.X - host.X, player.Y - host.Y);
 

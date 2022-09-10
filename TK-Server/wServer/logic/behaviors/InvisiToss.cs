@@ -51,7 +51,7 @@ namespace wServer.logic.behaviors
                 cool = coolDown.Next(Random);
             }
             else
-                cool -= time.ElaspedMsDelta;
+                cool -= time.ElapsedMsDelta;
 
             state = cool;
         }

@@ -90,7 +90,7 @@ namespace wServer.logic.behaviors
                 spawn.CurrentNumber++;
             }
             else
-                spawn.RemainingTime -= time.ElaspedMsDelta;
+                spawn.RemainingTime -= time.ElapsedMsDelta;
         }
 
         private class SpawnState

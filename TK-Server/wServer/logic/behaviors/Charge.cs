@@ -65,7 +65,7 @@ namespace wServer.logic.behaviors
                 Status = CycleStatus.InProgress;
             }
 
-            s.RemainingTime -= time.ElaspedMsDelta;
+            s.RemainingTime -= time.ElapsedMsDelta;
 
             state = s;
         }

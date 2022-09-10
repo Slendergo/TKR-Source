@@ -1,5 +1,6 @@
 ﻿using common;
 using System;
+using wServer.core.objects;
 
 namespace wServer
 {
@@ -29,6 +30,10 @@ namespace wServer
             wtr.Write(X);
             wtr.Write(Y);
         }
+
+        public double DistTo(Entity host) => Math.Sqrt((host.X - X) * (host.X - X) + (host.Y - Y) * (host.Y - Y));
+        public double DistTo(ref Position position) => Math.Sqrt((position.X - X) * (position.X - X) + (position.Y - Y) * (position.Y - Y));
+        public double DistTo(double x, double y) => Math.Sqrt((x - X) * (x - X) + (y - Y) * (y - Y));
 
         public float Distance(Position from, Position to)
         {

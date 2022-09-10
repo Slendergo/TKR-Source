@@ -55,7 +55,7 @@ namespace wServer.core.objects
             if (Vulnerable)
             {
                 if (Dying)
-                    HP -= time.ElaspedMsDelta;
+                    HP -= time.ElapsedMsDelta;
                 CheckHP();
             }
 

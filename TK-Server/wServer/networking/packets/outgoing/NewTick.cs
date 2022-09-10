@@ -8,12 +8,14 @@ namespace wServer.networking.packets.outgoing
         public int TickId { get; set; }
         public int TickTime { get; set; }
         public List<ObjectStats> Statuses { get; set; }
+        public List<AoeData> AoeDatas { get; set; }
 
         public override MessageId MessageId => MessageId.NEWTICK;
 
         public NewTick()
         {
             Statuses = new List<ObjectStats>();
+            AoeDatas = new List<AoeData>();
         }
 
         protected override void Write(NWriter wtr)
@@ -23,6 +25,9 @@ namespace wServer.networking.packets.outgoing
             wtr.Write((short)Statuses.Count);
             foreach (var status in Statuses)
                 status.Write(wtr);
+            wtr.Write((short)AoeDatas.Count);
+            foreach (var aoeData in AoeDatas)
+                aoeData.Write(wtr);
         }
     }
 }

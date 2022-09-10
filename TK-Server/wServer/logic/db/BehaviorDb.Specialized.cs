@@ -24,7 +24,6 @@ namespace wServer.logic
                         ),
                     new State("Explode 2",
                         new JumpToRandomOffset(-2, 2, -2, 2),
-
                         new EnemyAOE(1, false, 40, 90, false, 0xFF9933),
                         new TimedTransition(100, "Explode 3")
                         ),

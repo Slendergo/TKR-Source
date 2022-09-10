@@ -45,7 +45,7 @@ namespace wServer.logic.behaviors
                 textState.remainingTime = _cooldown.Next(Random);
             }
             else
-                textState.remainingTime -= time.ElaspedMsDelta;
+                textState.remainingTime -= time.ElapsedMsDelta;
         }
 
         private class TextureState

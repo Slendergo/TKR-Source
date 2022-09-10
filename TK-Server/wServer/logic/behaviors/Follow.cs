@@ -56,7 +56,7 @@ namespace wServer.logic.behaviors
                         goto case F.Acquired;
                     }
                     else if (s.RemainingTime > 0)
-                        s.RemainingTime -= time.ElaspedMsDelta;
+                        s.RemainingTime -= time.ElapsedMsDelta;
 
                     break;
 
@@ -78,7 +78,7 @@ namespace wServer.logic.behaviors
                         break;
                     }
                     if (s.RemainingTime > 0)
-                        s.RemainingTime -= time.ElaspedMsDelta;
+                        s.RemainingTime -= time.ElapsedMsDelta;
 
                     vect = new Vector2(player.X - host.X, player.Y - host.Y);
 

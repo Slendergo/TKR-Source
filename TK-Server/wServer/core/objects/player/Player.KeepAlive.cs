@@ -14,14 +14,11 @@ namespace wServer.core.objects
 
         private const int PingPeriod = 1000;
 
-        private ConcurrentQueue<int> _clientTimeLog = new ConcurrentQueue<int>();
         private int _cnt;
         private ConcurrentQueue<long> _gotoAckTimeout = new ConcurrentQueue<long>();
         private long _latSum;
-        private ConcurrentQueue<int> _move = new ConcurrentQueue<int>();
         private long _pingTime = -1;
         private long _pongTime = -1;
-        private ConcurrentQueue<int> _serverTimeLog = new ConcurrentQueue<int>();
         private ConcurrentQueue<long> _shootAckTimeout = new ConcurrentQueue<long>();
         private long _sum;
         public int _tps;
@@ -32,8 +29,6 @@ namespace wServer.core.objects
 
         public void AwaitGotoAck(long serverTime) => _gotoAckTimeout.Enqueue(serverTime + DcThresold);
 
-        public void AwaitMove(int tickId) => _move.Enqueue(tickId);
-
         public long C2STime(int clientTime) => clientTime + TimeMap;
 
         public int GotoAckCount() => _gotoAckTimeout.Count;
@@ -42,48 +37,6 @@ namespace wServer.core.objects
         {
             if (!_gotoAckTimeout.TryDequeue(out var ignored))
                 Client.Disconnect("One too many GotoAcks");
-        }
-
-        public void MoveReceived(TickTime ticKTime, int time, int moveTickId)
-        {
-            if (!_move.TryDequeue(out var tickId))
-            {
-                Client.Disconnect("One too many MovePackets");
-                return;
-            }
-
-            if (tickId != moveTickId)
-            {
-                Client.Disconnect("[NewTick -> Move] TickIds don't match");
-                return;
-            }
-
-            if (moveTickId > PlayerUpdate.TickId)
-            {
-                Client.Disconnect("[NewTick -> Move] Invalid tickId");
-                return;
-            }
-
-            var lastClientTime = LastClientTime;
-            var lastServerTime = LastServerTime;
-
-            LastClientTime = time;
-            LastServerTime = ticKTime.TotalElapsedMs;
-
-            if (lastClientTime == -1)
-                return;
-
-            _clientTimeLog.Enqueue(time - lastClientTime);
-            _serverTimeLog.Enqueue((int)(ticKTime.TotalElapsedMs - lastServerTime));
-
-            if (_clientTimeLog.Count < 30)
-                return;
-
-            if (_clientTimeLog.Count > 30)
-            {
-                _clientTimeLog.TryDequeue(out var ignore);
-                _serverTimeLog.TryDequeue(out ignore);
-            }
         }
 
         public void Pong(TickTime tickTime, int time, int serial)

@@ -72,7 +72,7 @@ namespace wServer.logic.behaviors
                 return;    //cooldown = 0 -> once per state entry
 
             var c = state == null ? cooldown.Next(Random) : (int)state;
-            c -= time.ElaspedMsDelta;
+            c -= time.ElapsedMsDelta;
 
             state = c;
 

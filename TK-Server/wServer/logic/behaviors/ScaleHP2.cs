@@ -43,7 +43,7 @@ namespace wServer.logic.behaviors
                 enemy.Defense = enemy.ObjectDesc.Defense + (int)Math.Ceiling(amountInc);
             }
             else
-                defScaleState.cooldown -= time.ElaspedMsDelta;
+                defScaleState.cooldown -= time.ElapsedMsDelta;
 
             state = defScaleState;
         }
@@ -134,7 +134,7 @@ namespace wServer.logic.behaviors
                 }
             }
             else
-                scstate.cooldown -= time.ElaspedMsDelta;
+                scstate.cooldown -= time.ElapsedMsDelta;
 
             state = scstate;
         }

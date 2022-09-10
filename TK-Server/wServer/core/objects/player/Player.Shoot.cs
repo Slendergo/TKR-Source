@@ -14,16 +14,7 @@ namespace wServer.core.objects
 
         private TimeCop _time = new TimeCop();
 
-        public int NoClipCountTollerance;
         public int SpeedCountTollerance;
-
-        public bool IsNoClipping()
-        {
-            if (World == null || !TileOccupied(RealX, RealY) && !TileFullOccupied(RealX, RealY))
-                return false;
-            NoClipCountTollerance++;
-            return true;
-        }
 
         public PlayerShootStatus ValidatePlayerShoot(Item item, int time)
         {

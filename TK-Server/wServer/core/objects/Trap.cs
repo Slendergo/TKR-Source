@@ -47,7 +47,7 @@ namespace wServer.core.objects
                 }
             }
 
-            t += time.ElaspedMsDelta;
+            t += time.ElapsedMsDelta;
 
             var monsterNearby = false;
 

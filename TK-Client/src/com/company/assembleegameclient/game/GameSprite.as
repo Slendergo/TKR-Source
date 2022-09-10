@@ -415,7 +415,7 @@ public class GameSprite extends Sprite
          stage.dispatchEvent(new Event(Event.RESIZE));
          contains(this.map) && removeChild(this.map);
          this.map.dispose();
-         this.hudView.miniMap.dispose();
+         this.hudView && this.hudView.miniMap.dispose();
          CachingColorTransformer.clear();
          TextureRedrawer.clearCache();
          TileRedrawer.clearCache();

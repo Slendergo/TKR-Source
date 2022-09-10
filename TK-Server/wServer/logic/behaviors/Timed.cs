@@ -32,7 +32,7 @@ namespace wServer.logic.behaviors
 
                 Status = CycleStatus.InProgress;
 
-                period -= time.ElaspedMsDelta;
+                period -= time.ElapsedMsDelta;
 
                 if (period <= 0)
                 {

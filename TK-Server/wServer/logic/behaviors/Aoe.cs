@@ -31,7 +31,7 @@ namespace wServer.logic.behaviors
             host.World.AOE(pos, radius, players, enemy =>
             {
                 if (!players)
-                    host.World.BroadcastIfVisible(new Aoe() { Pos = pos, Radius = radius, Damage = (ushort)damage, Duration = 0, Effect = 0, OrigType = host.ObjectType }, host);
+                    host.World.BroadcastAoeIfVisible(new AoeData() { Pos = pos, Radius = radius, Damage = (ushort)damage, Duration = 0, Effect = 0, OrigType = host.ObjectType }, host);
             });
         }
 

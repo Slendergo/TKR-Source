@@ -37,7 +37,7 @@ namespace wServer.logic.behaviors
                 cool = 150;
             }
             else
-                cool -= time.ElaspedMsDelta;
+                cool -= time.ElapsedMsDelta;
 
             state = cool;
         }

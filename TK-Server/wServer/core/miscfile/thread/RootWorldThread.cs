@@ -51,7 +51,7 @@ namespace wServer.core
                         if (delta >= TICK_TIME_MS)
                         {
                             realmTime.TickCount++;
-                            realmTime.ElaspedMsDelta = delta;
+                            realmTime.ElapsedMsDelta = delta;
 
                             try
                             {
@@ -82,7 +82,7 @@ namespace wServer.core
                         var delta = (int)Math.Max(currentMS - lastMS, TICK_TIME_MS);
 
                         realmTime.TickCount++;
-                        realmTime.ElaspedMsDelta = delta;
+                        realmTime.ElapsedMsDelta = delta;
 
                         var logicTime = watch.ElapsedMilliseconds;
 

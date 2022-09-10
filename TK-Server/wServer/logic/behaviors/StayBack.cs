@@ -50,7 +50,7 @@ namespace wServer.logic.behaviors
                 {
                     Status = CycleStatus.InProgress;
 
-                    cooldown -= time.ElaspedMsDelta;
+                    cooldown -= time.ElapsedMsDelta;
                 }
             }
 

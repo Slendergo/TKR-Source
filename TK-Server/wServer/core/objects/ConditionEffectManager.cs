@@ -61,7 +61,7 @@ namespace wServer.core.objects
 
         public void Update(ref TickTime time)
         {
-            var dt = time.ElaspedMsDelta;
+            var dt = time.ElapsedMsDelta;
             if (Masks[0] != 0 || Masks[1] != 0)
                 for(byte effect = 0; effect < Durations.Length; effect++)
                 {

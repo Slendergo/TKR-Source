@@ -32,7 +32,7 @@ namespace wServer.logic.behaviors
 
             if (storage.RemainingTime > 0)
             {
-                storage.RemainingTime -= time.ElaspedMsDelta;
+                storage.RemainingTime -= time.ElapsedMsDelta;
 
                 Status = CycleStatus.NotStarted;
             }

@@ -34,7 +34,7 @@ namespace wServer.logic.behaviors
             {
                 case F.DontKnowWhere:
                     if (s.RemainingTime > 0)
-                        s.RemainingTime -= time.ElaspedMsDelta;
+                        s.RemainingTime -= time.ElapsedMsDelta;
                     else
                         s.State = F.Acquired;
                     break;
@@ -48,7 +48,7 @@ namespace wServer.logic.behaviors
                     }
 
                     if (s.RemainingTime > 0)
-                        s.RemainingTime -= time.ElaspedMsDelta;
+                        s.RemainingTime -= time.ElapsedMsDelta;
 
                     var vect = new Vector2(player.X - host.X, player.Y - host.Y);
 

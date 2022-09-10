@@ -176,7 +176,7 @@ namespace wServer.logic.behaviors
                 }
             }
             else
-                cool -= time.ElaspedMsDelta;
+                cool -= time.ElapsedMsDelta;
 
             state = cool;
         }

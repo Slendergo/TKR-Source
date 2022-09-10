@@ -84,14 +84,14 @@ namespace wServer.core.objects
 
             if (_newbieTime > 0)
             {
-                _newbieTime -= time.ElaspedMsDelta;
+                _newbieTime -= time.ElapsedMsDelta;
                 if (_newbieTime < 0)
                     _newbieTime = 0;
             }
 
             if (_canTpCooldownTime > 0)
             {
-                _canTpCooldownTime -= time.ElaspedMsDelta;
+                _canTpCooldownTime -= time.ElapsedMsDelta;
                 if (_canTpCooldownTime <= 0)
                     _canTpCooldownTime = 0;
             }

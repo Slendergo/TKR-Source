@@ -135,7 +135,7 @@ namespace wServer.logic.behaviors
             }
             else
             {
-                rastate.coolDown.CoolDown -= time.ElaspedMsDelta;
+                rastate.coolDown.CoolDown -= time.ElapsedMsDelta;
 
                 Status = CycleStatus.InProgress;
             }

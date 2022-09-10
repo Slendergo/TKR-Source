@@ -273,14 +273,15 @@ namespace wServer.core.objects
             }
         }
 
-        public void SendNewTick(int delta)
+        public void SendNewTick(int delta, List<AoeData> aoes) // lazy
         {
             TickId++;
 
             var newTick = new NewTick()
             {
                 TickId = TickId,
-                TickTime = delta
+                TickTime = delta,
+                AoeDatas = aoes
             };
 
             lock (StatsUpdates)
@@ -300,7 +301,7 @@ namespace wServer.core.objects
             StatsUpdates.Clear();
 
             Player.Client.SendPacket(newTick);
-            Player.AwaitMove(TickId);
+            Player.ClientState.AwaitMove(TickId);
         }
 
         public void SendUpdate()

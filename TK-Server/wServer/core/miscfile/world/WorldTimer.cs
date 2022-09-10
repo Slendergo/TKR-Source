@@ -24,7 +24,7 @@ namespace wServer.core
 
         public bool Tick(World world, ref TickTime time)
         {
-            Remaining -= time.ElaspedMsDelta;
+            Remaining -= time.ElapsedMsDelta;
             if (Remaining >= 0)
                 return false;
 

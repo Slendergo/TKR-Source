@@ -143,6 +143,8 @@ import kabam.rotmg.messaging.impl.incoming.market.MarketSearchResult;
 import kabam.rotmg.messaging.impl.incoming.party.InvitedToParty;
 import kabam.rotmg.messaging.impl.incoming.talisman.TalismanEssenceData;
 import kabam.rotmg.messaging.impl.outgoing.AcceptTrade;
+import kabam.rotmg.messaging.impl.outgoing.AoeAck;
+import kabam.rotmg.messaging.impl.outgoing.AoeAck;
 import kabam.rotmg.messaging.impl.outgoing.Buy;
 import kabam.rotmg.messaging.impl.outgoing.CancelTrade;
 import kabam.rotmg.messaging.impl.outgoing.ChangeGuildRank;
@@ -173,6 +175,7 @@ import kabam.rotmg.messaging.impl.outgoing.Pong;
 import kabam.rotmg.messaging.impl.outgoing.PotionStorageInteraction;
 import kabam.rotmg.messaging.impl.outgoing.RequestTrade;
 import kabam.rotmg.messaging.impl.outgoing.Reskin;
+import kabam.rotmg.messaging.impl.outgoing.ShootAck;
 import kabam.rotmg.messaging.impl.outgoing.SquareHit;
 import kabam.rotmg.messaging.impl.outgoing.Teleport;
 import kabam.rotmg.messaging.impl.outgoing.UpgradeStat;
@@ -544,6 +547,8 @@ public class GameServerConnection
 
          messages.map(TALISMAN_ESSENCE_DATA).toMessage(TalismanEssenceData).toMethod(this.onTalismanEssenceData);
          messages.map(TALISMAN_ESSENCE_ACTION).toMessage(TalismanEssenceAction);
+         messages.map(AOEACK).toMessage(AoeAck);
+         messages.map(SHOOTACK).toMessage(ShootAck);
       }
 
       private function unmapMessages() : void {
@@ -617,6 +622,8 @@ public class GameServerConnection
          messages.unmap(FORGEFUSION);
          messages.unmap(ENGINE_FUEL_ACTION);
          messages.unmap(ESCAPE);
+         messages.unmap(AOEACK);
+         messages.unmap(SHOOTACK);
 
          /* Market */
          messages.unmap(MARKET_SEARCH);
@@ -758,14 +765,14 @@ public class GameServerConnection
          this.serverConnection.sendMessage(squareHit);
       }
 
-      /*public function aoeAck(time:int, x:Number, y:Number) : void
+      public function aoeAck(time:int, x:Number, y:Number) : void
       {
          var aoeAck:AoeAck = this.messages.require(AOEACK) as AoeAck;
          aoeAck.time_ = time;
          aoeAck.position_.x_ = x;
          aoeAck.position_.y_ = y;
          this.serverConnection.sendMessage(aoeAck);
-      }*/
+      }
 
       public function groundDamage(time:int, x:Number, y:Number) : void
       {
@@ -776,12 +783,12 @@ public class GameServerConnection
          this.serverConnection.sendMessage(groundDamage);
       }
 
-      /*public function shootAck(time:int) : void
+      public function shootAck(time:int) : void
       {
          var shootAck:ShootAck = this.messages.require(SHOOTACK) as ShootAck;
          shootAck.time_ = time;
          this.serverConnection.sendMessage(shootAck);
-      }*/
+      }
 
       public function playerText(textStr:String) : void
       {
@@ -1200,7 +1207,7 @@ public class GameServerConnection
          {
             if(needsAck)
             {
-               //this.shootAck(-1);
+               this.shootAck(-1);
             }
             return;
          }
@@ -1210,7 +1217,7 @@ public class GameServerConnection
          this.gs_.map.addObj(proj,serverPlayerShoot.startingPos_.x_,serverPlayerShoot.startingPos_.y_);
          if(needsAck)
          {
-            //this.shootAck(this.gs_.lastUpdate_);
+            this.shootAck(this.gs_.lastUpdate_);
          }
       }
 
@@ -1239,7 +1246,7 @@ public class GameServerConnection
          var owner:GameObject = this.gs_.map.goDict_[enemyShoot.ownerId_];
          if(owner == null || owner.dead_)
          {
-            //this.shootAck(-1);
+            this.shootAck(-1);
             return;
          }
          for(var i:int = 0; i < enemyShoot.numShots_; i++)
@@ -1251,7 +1258,7 @@ public class GameServerConnection
             this.gs_.map.addObj(proj,enemyShoot.startingPos_.x_,enemyShoot.startingPos_.y_);
             proj.addTo(this.gs_.map, enemyShoot.startingPos_.x_, enemyShoot.startingPos_.y_);
          }
-         //this.shootAck(this.gs_.lastUpdate_);
+         this.shootAck(this.gs_.lastUpdate_);
          owner.setAttack(owner.objectType_,enemyShoot.angle_ + enemyShoot.angleInc_ * ((enemyShoot.numShots_ - 1) / 2));
       }
 
@@ -2208,14 +2215,14 @@ public class GameServerConnection
          var effects:Vector.<uint> = null;
          if(this.player == null)
          {
-            //this.aoeAck(this.gs_.lastUpdate_,0,0);
+            this.aoeAck(this.gs_.lastUpdate_,0,0);
             return;
          }
          var e:AOEEffect = new AOEEffect(aoe.pos_.toPoint(),aoe.radius_,16711680);
          this.gs_.map.addObj(e,aoe.pos_.x_,aoe.pos_.y_);
          if(this.player.isInvincible() || this.player.isPaused())
          {
-            //this.aoeAck(this.gs_.lastUpdate_,this.player.x_,this.player.y_);
+            this.aoeAck(this.gs_.lastUpdate_,this.player.x_,this.player.y_);
             return;
          }
          var hit:Boolean = this.player.distTo(aoe.pos_) < aoe.radius_;
@@ -2230,7 +2237,7 @@ public class GameServerConnection
             }
             this.player.damage(aoe.origType_,d,effects,false,null, false);
          }
-         //this.aoeAck(this.gs_.lastUpdate_,this.player.x_,this.player.y_);
+         this.aoeAck(this.gs_.lastUpdate_,this.player.x_,this.player.y_);
       }
 
       private function onNameResult(nameResult:NameResult) : void

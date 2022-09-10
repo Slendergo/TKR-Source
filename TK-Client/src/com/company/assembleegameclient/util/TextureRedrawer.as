@@ -1,4 +1,5 @@
 package com.company.assembleegameclient.util {
+import com.adobe.protocols.dict.Dict;
 import com.company.assembleegameclient.util.redrawers.GlowRedrawer;
 import com.company.util.AssetLibrary;
 import com.company.util.PointUtil;
@@ -54,14 +55,14 @@ public class TextureRedrawer {
 
    private static function cache(tex:BitmapData, hash:*, modifiedTex:BitmapData):void {
       if (!(tex in redrawCaches)) {
-         redrawCaches[tex] = {};
+         redrawCaches[tex] = new Dictionary;
       }
       redrawCaches[tex][hash] = modifiedTex;
    }
 
    private static function isCached(tex:BitmapData, hash:*):Boolean {
-      if (tex in redrawCaches) {
-         if (hash in redrawCaches[tex]) {
+      if (redrawCaches[tex] != null) {
+         if (redrawCaches[tex][hash] != null) {
             return true;
          }
       }

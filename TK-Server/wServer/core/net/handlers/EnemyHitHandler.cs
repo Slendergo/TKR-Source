@@ -29,7 +29,10 @@ namespace wServer.core.net.handlers
 
             var prj = player.World.GetProjectile(player.Id, bulletId);
             if (prj == null)
+            {
+                Console.WriteLine($"NULL PROJ| {player.Id} {bulletId}");
                 return;
+            }
 
             prj?.ForceHit(entity, tickTime);
 

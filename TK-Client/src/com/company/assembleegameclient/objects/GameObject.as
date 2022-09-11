@@ -145,6 +145,9 @@ public class GameObject extends BasicObject {
             this.tex2Id_ = int(objectXML.Tex2);
         }
         this.props_.loadSounds();
+
+        this.hpBarBackFillMatrix = new Matrix();
+        this.hpBarFillMatrix = new Matrix();
     }
 
     public var props_:ObjectProperties;
@@ -206,10 +209,12 @@ public class GameObject extends BasicObject {
     private var icons_:Vector.<BitmapData> = null;
     private var iconFills_:Vector.<GraphicsBitmapFill> = null;
     private var iconPaths_:Vector.<GraphicsPath> = null;
-    private var hpbarBackFill_:GraphicsSolidFill = null;
-    private var hpbarBackPath_:GraphicsPath = null;
-    private var hpbarFill_:GraphicsSolidFill = null;
-    private var hpbarPath_:GraphicsPath = null;
+    private var hpBarBackFill:GraphicsBitmapFill = null;
+    private var hpBarBackPath:GraphicsPath = null;
+    private var hpBarFill:GraphicsBitmapFill = null;
+    private var hpBarPath:GraphicsPath = null;
+    private var hpBarBackFillMatrix:Matrix = null;
+    private var hpBarFillMatrix:Matrix = null;
 
     override public function dispose():void {
         var obj:Object = null;
@@ -283,13 +288,13 @@ public class GameObject extends BasicObject {
             this.shadowPath_ = null;
         }
 
-        if (this.hpbarPath_ != null) {
-            this.hpbarPath_.data.length = 0;
-            this.hpbarBackPath_.data.length = 0;
-            this.hpbarBackFill_ = null;
-            this.hpbarBackPath_ = null;
-            this.hpbarFill_ = null;
-            this.hpbarPath_ = null;
+        if (this.hpBarPath != null) {
+            this.hpBarPath.data.length = 0;
+            this.hpBarBackPath.data.length = 0;
+            this.hpBarBackFill = null;
+            this.hpBarBackPath = null;
+            this.hpBarFill = null;
+            this.hpBarPath = null;
         }
     }
 
@@ -1077,42 +1082,45 @@ public class GameObject extends BasicObject {
         return texture;
     }
 
-    protected function drawHpBar(graphicsData:Vector.<IGraphicsData>, yOffset:int = 6):void {
-        var fPerc:Number = NaN;
-        var bw:Number = NaN;
-        if (this.hpbarPath_ == null) {
-            this.hpbarBackFill_ = new GraphicsSolidFill();
-            this.hpbarBackPath_ = new GraphicsPath(GraphicsUtil.QUAD_COMMANDS, new Vector.<Number>());
-            this.hpbarFill_ = new GraphicsSolidFill();
-            this.hpbarPath_ = new GraphicsPath(GraphicsUtil.QUAD_COMMANDS, new Vector.<Number>());
-            this.hpbarBackFill_.color = 1118481;
-            this.hpbarFill_.color = 1113856;
+    protected function drawHpBar(param1:Vector.<IGraphicsData>, param2:int = 6) : void {
+        var _loc7_:Number = NaN;
+        var _loc3_:Number = NaN;
+        var _loc6_:* = 0;
+        if(this.hpBarPath == null || this.hpBarFill == null || this.hpBarBackFill == null || this.hpBarBackPath == null) {
+            this.hpBarFill = new GraphicsBitmapFill();
+            this.hpBarPath = new GraphicsPath(GraphicsUtil.QUAD_COMMANDS,new Vector.<Number>());
+            this.hpBarBackFill = new GraphicsBitmapFill();
+            this.hpBarBackPath = new GraphicsPath(GraphicsUtil.QUAD_COMMANDS,new Vector.<Number>());
         }
-
-        //var sw:int = size_ / 4;
-        var w:int = 20;//isPlayer ? DEFAULT_HP_BAR_WIDTH : (sw < 25) ? 25 : sw;
-        var h:int = 5;//isPlayer ? DEFAULT_HP_BAR_HEIGHT : 3;
-        var Bw:int = 21;
-        var Bh:int = 7;
-        this.hpbarBackPath_.data.length = 0;
-        this.hpbarBackPath_.data.push(posS_[0] - Bw, posS_[1] + (yOffset - 1), posS_[0] + Bw, posS_[1] + (yOffset - 1), posS_[0] + Bw, posS_[1] + (yOffset - 1) + Bh, posS_[0] - Bw, posS_[1] + (yOffset - 1) + Bh);
-
-        graphicsData.push(this.hpbarBackFill_);
-        graphicsData.push(this.hpbarBackPath_);
-        graphicsData.push(GraphicsUtil.END_FILL);
-
-        if (this.hp_ > 0) {
-            fPerc = this.hp_ / this.maxHP_;
-            bw = fPerc * 2 * w;
-            this.hpbarPath_.data.length = 0;
-            this.hpbarPath_.data.push(posS_[0] - w, posS_[1] + yOffset, posS_[0] - w + bw, posS_[1] + yOffset, posS_[0] - w + bw, posS_[1] + yOffset + h, posS_[0] - w, posS_[1] + yOffset + h);
-
-            graphicsData.push(this.hpbarFill_);
-            graphicsData.push(this.hpbarPath_);
-            graphicsData.push(GraphicsUtil.END_FILL);
+        if(this.hp_ > this.maxHP_) {
+            this.maxHP_ = this.hp_;
         }
-        GraphicsFillExtra.setSoftwareDrawSolid(this.hpbarFill_, true);
-        GraphicsFillExtra.setSoftwareDrawSolid(this.hpbarBackFill_, true);
+        this.hpBarBackFill.bitmapData = TextureRedrawer.redrawSolidSquare(1118481,42,7,-1);
+        this.hpBarBackPath.data.length = 0;
+        var _loc4_:int = posS_[0];
+        var _loc5_:int = posS_[1];
+        (this.hpBarBackPath.data as Vector.<Number>).push(_loc4_ - 20 + 1,_loc5_ + param2 - 1,_loc4_ + 20 + 1,_loc5_ + param2 - 1,_loc4_ + 20 + 1,_loc5_ + param2 + 6,_loc4_ - 20 + 1,_loc5_ + param2 + 6);
+        this.hpBarBackFillMatrix.identity();
+        this.hpBarBackFillMatrix.translate(_loc4_ - 20 - 1 - 5,_loc5_ + param2 - 1);
+        this.hpBarBackFill.matrix = this.hpBarBackFillMatrix;
+        param1.push(this.hpBarBackFill);
+        param1.push(this.hpBarBackPath);
+        param1.push(GraphicsUtil.END_FILL);
+        var _loc8_:int = this.hp_;
+        if(_loc8_ > 0) {
+            _loc7_ = _loc8_ / this.maxHP_;
+            _loc3_ = _loc7_ * 40;
+            this.hpBarPath.data.length = 0;
+            (this.hpBarPath.data as Vector.<Number>).push(_loc4_ - 20,_loc5_ + param2,_loc4_ - 20 + _loc3_,_loc5_ + param2,_loc4_ - 20 + _loc3_,_loc5_ + param2 + 5,_loc4_ - 20,_loc5_ + param2 + 5);
+            _loc6_ = uint(Character.green2redu(_loc7_ * 100));
+            this.hpBarFill.bitmapData = TextureRedrawer.redrawSolidSquare(_loc6_,_loc3_,5,-1);
+            this.hpBarFillMatrix.identity();
+            this.hpBarFillMatrix.translate(_loc4_ - 20 - 5,_loc5_ + param2);
+            this.hpBarFill.matrix = this.hpBarFillMatrix;
+            param1.push(this.hpBarFill);
+            param1.push(this.hpBarPath);
+            param1.push(GraphicsUtil.END_FILL);
+        }
     }
 }
 }

@@ -669,17 +669,14 @@ namespace wServer.core.objects
             var batch = new OutgoingMessage[shoots + 1];
             for (var i = 0; i < shoots; i++)
             {
-                var baseDmg = World.Random.Next(prjDesc.MinDamage, prjDesc.MaxDamage);
-                var dmg = (int)(baseDmg + (baseDmg * TalismanExtraAbilityDamage));
+                var bulletId = GetNextBulletId(1);
+                var proj = PlayerShootProjectile(bulletId, prjDesc, item.ObjectType, (int)time.TotalElapsedMs, target, (float)(i * (Math.PI * 2) / shoots), true);
 
-                var proj = CreateProjectile(prjDesc, item.ObjectType,
-                    dmg, 
-                    time.TotalElapsedMs, target, (float)(i * (Math.PI * 2) / shoots));
                 World.AddProjectile(proj);
                 FameCounter.Shoot(proj);
                 batch[i] = new ServerPlayerShoot()
                 {
-                    BulletId = proj.ProjectileId,
+                    BulletId = bulletId,
                     OwnerId = Id,
                     ContainerType = item.ObjectType,
                     StartingPos = target,
@@ -1473,7 +1470,7 @@ namespace wServer.core.objects
                     OwnerId = Id,
                     Angle = proj.Angle,
                     ContainerType = item.ObjectType,
-                    BulletId = proj.ProjectileId
+                    BulletId = proj.BulletId
                 };
                 FameCounter.Shoot(proj);
             }

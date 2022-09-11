@@ -36,6 +36,7 @@ public class Projectile extends BasicObject
    public var projProps_:ProjectileProperties;
    public var texture_:BitmapData;
    public var bulletId_:uint;
+   public var colors_:Vector.<uint>;
    public var ownerId_:int;
    public var containerType_:int;
    public var bulletType_:uint;
@@ -105,6 +106,7 @@ public class Projectile extends BasicObject
       hasShadow_ = Parameters.data_.drawShadows && this.props_.shadowSize_ > 0;
       var textureData:TextureData = ObjectLibrary.typeToTextureData_[this.props_.type_];
       this.texture_ = textureData.getTexture(objectId_);
+      this.colors_ = BloodComposition.getColors(this.texture_);
       this.damagesPlayers_ = this.containerProps_.isEnemy_;
       this.damagesEnemies_ = !this.damagesPlayers_;
       this.sound_ = this.containerProps_.oldSound_;
@@ -116,6 +118,9 @@ public class Projectile extends BasicObject
       else
       {
          size = ObjectLibrary.getSizeFromType(this.containerType_);
+      }
+      if (Parameters.data_.projOutline) {
+         this.texture_ = TextureRedrawer.redraw(this.texture_, size * 4, false, 0, true, 3, 15.5 * (size / 800));
       }
       this.p_.setSize(8 * (size / 100));
       this.damage_ = 0;
@@ -257,13 +262,12 @@ public class Projectile extends BasicObject
          }
          else if(square_.obj_ != null)
          {
-            colors = BloodComposition.getColors(this.texture_);
             switch(Parameters.data_.reduceParticles){
                case 2:
-                  map_.addObj(new HitEffect(colors, 100, 3, this.angle_, this.projProps_.speed_), p.x, p.y);
+                  map_.addObj(new HitEffect(colors_, 100, 3, this.angle_, this.projProps_.speed_), p.x, p.y);
                   break;
                case 1:
-                  map_.addObj(new HitEffect(colors, 100, 1, this.angle_, this.projProps_.speed_), p.x, p.y);
+                  map_.addObj(new HitEffect(colors_, 100, 1, this.angle_, this.projProps_.speed_), p.x, p.y);
                   break;
                case 0:
                   break;
@@ -279,13 +283,12 @@ public class Projectile extends BasicObject
          }
          else
          {
-            colors = BloodComposition.getColors(this.texture_);
             switch(Parameters.data_.reduceParticles){
                case 2:
-                     map_.addObj(new HitEffect(colors, 100, 3, this.angle_, this.projProps_.speed_), p.x, p.y);
+                     map_.addObj(new HitEffect(colors_, 100, 3, this.angle_, this.projProps_.speed_), p.x, p.y);
                     break;
                case 1:
-                     map_.addObj(new HitEffect(colors, 100, 1, this.angle_, this.projProps_.speed_), p.x, p.y);
+                     map_.addObj(new HitEffect(colors_, 100, 1, this.angle_, this.projProps_.speed_), p.x, p.y);
                     break;
                case 0:
                     break;
@@ -409,11 +412,6 @@ public class Projectile extends BasicObject
    override public function draw(graphicsData:Vector.<IGraphicsData>, camera:Camera, time:int) : void
    {
       var texture:BitmapData = this.texture_;
-
-      if (Parameters.data_.projOutline) {
-         var size:Number = (this.projProps_.size_ >= 0?this.projProps_.size_:ObjectLibrary.getSizeFromType(this.containerType_)) * 8;
-         texture = TextureRedrawer.redraw(texture, size, false, 0, true, 3, 15.5 * (size / 800));
-      }
       var r:Number = this.props_.rotation_ == 0?Number(0):Number(time / this.props_.rotation_);
       this.staticVector3D_.x = x_;
       this.staticVector3D_.y = y_;

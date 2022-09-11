@@ -69,6 +69,7 @@ namespace wServer.core.objects.player.state
         private int MoveRecordsWindow = 0;
         private MoveRecord[] MoveRecords = new MoveRecord[110];
         private List<AoeData> Aoes = new List<AoeData>();
+        private bool LastTickHadAoe;
 
         public ClientState(Player player)
         {
@@ -80,7 +81,9 @@ namespace wServer.core.objects.player.state
             //check the sent aoes have all been received
             Player.PlayerUpdate.SendUpdate();
             Player.PlayerUpdate.SendNewTick(time.ElapsedMsDelta, Aoes);
-            
+
+
+            LastTickHadAoe = Aoes.Count > 0;
             // no longer need
             Aoes.Clear();
         }
@@ -95,8 +98,20 @@ namespace wServer.core.objects.player.state
             // upon updateack received we push them to active client state
         }
 
+        public void AddEnemyShoot(EnemyShoot enemyShoot)
+        {
+            // todo
+        }
+
+        public void AddServerPlayerShoot(ServerPlayerShoot serverPlayerShoot)
+        {
+
+            // todo
+        }
+
         public void OnShootAck(int time)
         {
+            // todo
             //upon shoreceived we get the first send pending shoot
             //if the time is -1 it means client entity doesnt exist or is dead
             //so it would need to check the owner of projectile is dead or not
@@ -107,7 +122,6 @@ namespace wServer.core.objects.player.state
         private Queue<AoeData> PendingAoe = new Queue<AoeData>();
 
         private int SentAoes;
-        private int ReceivedAoes;
 
         public void AwaitAoe(AoeData aoe)
         {
@@ -118,20 +132,19 @@ namespace wServer.core.objects.player.state
 
         public void OnAoeAck(int time, float x, float y)
         {
-            if(x == 0 || y == 0)
-            {
-                Console.WriteLine("AoeAck: 0, 0");
-            }
-
             if (PendingAoe.Count == 0)
             {
                 Disconnect("Received AoeAck without sending Aoe");
                 return;
             }
 
-            ReceivedAoes++;
-
+            SentAoes--;
             var aoe = PendingAoe.Dequeue();
+
+            if (x == 0 || y == 0)
+            {
+                Console.WriteLine("AoeAck: 0, 0");
+            }
 
             MoveRecord record = null;
             var minDelta = int.MaxValue;
@@ -228,10 +241,16 @@ namespace wServer.core.objects.player.state
                 return;
             }
 
-            if (SentAoes > ReceivedAoes)
+            if (LastTickHadAoe)
             {
-                Disconnect("Didnt receive correct count of Aoe Acks");
-                return;
+                if (SentAoes != 0)
+                {
+                    Console.WriteLine($"TickId: {tickId} | {SentAoes} != 0");
+                    Disconnect("Didnt receive correct count of Aoe Acks");
+                    return;
+                }
+
+                LastTickHadAoe = false;
             }
 
             Player.LastClientTime = time;

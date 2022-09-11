@@ -166,7 +166,7 @@ namespace wServer.core.worlds
         {
             if (!Projectiles.ContainsKey(projectile.Host.Id))
                 Projectiles.Add(projectile.Host.Id, new Dictionary<byte, Projectile>());
-            Projectiles[projectile.Host.Id][projectile.ProjectileId] = projectile;
+            Projectiles[projectile.Host.Id][projectile.BulletId] = projectile;
         }
 
         public Projectile GetProjectile(int objectId, byte bulletId)
@@ -180,7 +180,7 @@ namespace wServer.core.worlds
         public void RemoveProjectile(Projectile projectile)
         {
             if (Projectiles.ContainsKey(projectile.Host.Id))
-                Projectiles[projectile.Host.Id].Remove(projectile.ProjectileId);
+                Projectiles[projectile.Host.Id].Remove(projectile.BulletId);
             ObjectPools.Projectiles.Return(projectile);
         }
 
@@ -446,9 +446,6 @@ namespace wServer.core.worlds
 
         protected virtual void UpdateLogic(ref TickTime time)
         {
-            foreach (var player in Players.Values)
-                player.Tick(ref time);
-
             foreach (var stat in StaticObjects.Values)
                 stat.Tick(ref time);
 
@@ -499,6 +496,9 @@ namespace wServer.core.worlds
                     StaticLogger.Instance.Error(msg);
                     Timers.RemoveAt(i);
                 }
+
+            foreach (var player in Players.Values)
+                player.Tick(ref time);
         }
 
         public void FlagForClose() 

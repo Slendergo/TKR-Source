@@ -12,11 +12,11 @@ namespace wServer.core.net.handlers
 
         public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
         {
-            var Time = rdr.ReadInt32();
-            var BulletId = rdr.ReadByte();
+            var time = rdr.ReadInt32();
+            var bulletId = rdr.ReadByte();
             var ContainerType = rdr.ReadInt32();
-            var StartingPos = Position.Read(rdr);
-            var Angle = rdr.ReadSingle();
+            var startingPosition = Position.Read(rdr);
+            var angle = rdr.ReadSingle();
 
             var player = client.Player;
 
@@ -34,20 +34,32 @@ namespace wServer.core.net.handlers
                     return;
                 }
 
-                // create projectile and show other players
-                var prjDesc = item.Projectiles[0]; //Assume only one
-                var prj = player.PlayerShootProjectile(BulletId, prjDesc, item.ObjectType, Time, StartingPos, Angle);
-
-                player.World.AddProjectile(prj);
-
-                player.World.BroadcastIfVisibleExclude(new AllyShoot()
+                var arcGap = item.ArcGap;
+                for (var i = 0; i < item.NumProjectiles; i++)
                 {
-                    OwnerId = player.Id,
-                    Angle = Angle,
-                    ContainerType = ContainerType,
-                    BulletId = BulletId
-                }, player, player);
-                player.FameCounter.Shoot(prj);
+                    var newBulletId = player.GetNextBulletId();
+                    var clientBulletId = (bulletId + i) % 128;
+                    if (newBulletId != clientBulletId)
+                    {
+                        client.Disconnect("bullet id desync");
+                        return;
+                    }
+
+                    // create projectile and show other players
+                    var prjDesc = item.Projectiles[0]; //Assume only one
+                    var prj = player.PlayerShootProjectile(newBulletId, prjDesc, item.ObjectType, C2STime(time), startingPosition, angle + arcGap * i);
+
+                    player.World.AddProjectile(prj);
+
+                    player.World.BroadcastIfVisibleExclude(new AllyShoot()
+                    {
+                        OwnerId = player.Id,
+                        Angle = angle,
+                        ContainerType = ContainerType,
+                        BulletId = newBulletId
+                    }, player, player);
+                    player.FameCounter.Shoot(prj);
+                }
                 return;
             }
 

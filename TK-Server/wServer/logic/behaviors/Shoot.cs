@@ -110,7 +110,7 @@ namespace wServer.logic.behaviors
                         host.World.AddProjectile(prj);
 
                         if (i == 0)
-                            prjId = prj.ProjectileId;
+                            prjId = prj.BulletId;
 
                         prjs[i] = prj;
                     }

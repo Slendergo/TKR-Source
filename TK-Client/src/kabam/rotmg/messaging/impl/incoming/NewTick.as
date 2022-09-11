@@ -42,7 +42,7 @@ package kabam.rotmg.messaging.impl.incoming
          {
             this.statuses_[i].parseFromInput(data);
          }
-         var len:int = data.readShort();
+         len = data.readShort();
          for(i = len; i < this.aoes_.length; i++)
          {
             FreeList.deleteObject(this.aoes_[i]);

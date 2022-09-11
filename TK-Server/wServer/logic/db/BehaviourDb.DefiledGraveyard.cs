@@ -255,6 +255,7 @@ namespace wServer.logic
         .Init("Mortomus Ball",
             new State(
                 new ScaleHP2(4),
+                new SetNoXP(),
                 new State("attack",
                     new ConditionalEffect(ConditionEffectIndex.Invincible, true),
                     new Shoot(12, 12, projectileIndex: 0, predictive: 1, coolDown: 100),
@@ -268,6 +269,7 @@ namespace wServer.logic
         .Init("Mortomus Ball 1",
             new State(
                 new ScaleHP2(4),
+                new SetNoXP(),
                 new State("attack",
                     new ConditionalEffect(ConditionEffectIndex.Invincible, true),
                     new Shoot(12, 12, projectileIndex: 0, predictive: 1, coolDown: 100),
@@ -281,6 +283,7 @@ namespace wServer.logic
         .Init("Mortomus Ball 2",
             new State(
                 new ScaleHP2(4),
+                new SetNoXP(),
                 new State("attack",
                     new ConditionalEffect(ConditionEffectIndex.Invincible, true),
                     new Shoot(12, 12, projectileIndex: 0, predictive: 1, coolDown: 100),
@@ -294,6 +297,7 @@ namespace wServer.logic
         .Init("Mortomus Ball 3",
             new State(
                 new ScaleHP2(4),
+                new SetNoXP(),
                 new State("attack",
                     new ConditionalEffect(ConditionEffectIndex.Invincible, true),
                     new Shoot(12, 12, projectileIndex: 0, predictive: 1, coolDown: 100),

@@ -161,11 +161,10 @@
     <Compile Include="core\miscfile\datas\FuelEngine.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="core\net\handlers\AoeAckMessageHandler.cs" />
     <Compile Include="core\net\handlers\FuelEngineHandler.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="core\net\handlers\ShoootAckMessageHandler.cs" />
+    <Compile Include="core\net\handlers\ShootAckMessageHandler.cs" />
     <Compile Include="core\net\handlers\talisman\TalismanEssenceActionHandler.cs" />
     <Compile Include="core\objects\ConditionEffectManager.cs" />
     <Compile Include="core\objects\inventory\ItemDustPools.cs" />
@@ -448,7 +447,6 @@
     <Compile Include="core\net\handlers\GuildRemoveHandler.cs" />
     <Compile Include="core\net\handlers\HelloHandler.cs" />
     <Compile Include="core\net\handlers\InvDropHandler.cs" />
-    <Compile Include="core\net\handlers\InvSwapHandler.cs" />
     <Compile Include="core\net\handlers\JoinGuildHandler.cs" />
     <Compile Include="core\net\handlers\LoadHandler.cs" />
     <Compile Include="core\net\handlers\market\MarketAddHandler.cs" />
@@ -459,7 +457,6 @@
     <Compile Include="core\net\handlers\MoveHandler.cs" />
     <Compile Include="core\net\handlers\OtherHitHandler.cs" />
     <Compile Include="core\net\handlers\PlayerHitHandler.cs" />
-    <Compile Include="core\net\handlers\PlayerShootHandler.cs" />
     <Compile Include="core\net\handlers\PlayerTextHandler.cs" />
     <Compile Include="core\net\handlers\PongHandler.cs" />
     <Compile Include="core\net\handlers\RequestTradeHandler.cs" />

@@ -61,7 +61,6 @@ namespace wServer.core.worlds
         public ConcurrentDictionary<int, Container> Containers { get; private set; } = new ConcurrentDictionary<int, Container>();
         public ConcurrentDictionary<int, Portal> Portals { get; private set; } = new ConcurrentDictionary<int, Portal>();
         public ConcurrentDictionary<int, Pet> Pets { get; private set; } = new ConcurrentDictionary<int, Pet>();
-        public Dictionary<int, Dictionary<byte, Projectile>> Projectiles { get; private set; } = new Dictionary<int, Dictionary<byte, Projectile>>();
         public List<WorldTimer> Timers { get; private set; } = new List<WorldTimer>();
 
         public WorldBranch WorldBranch { get; private set; }
@@ -116,6 +115,26 @@ namespace wServer.core.worlds
                     player.ClientState.AwaitAoe(aoeData);
         }
 
+        public void BroadcastEnemyShootIfVisible(EnemyShoot enemyShoot, Entity host)
+        {
+            foreach (var player in Players.Values)
+                if (player.SqDistTo(host) < PlayerUpdate.VISIBILITY_RADIUS_SQR)
+                {
+                    player.ClientState.AddEnemyShoot(enemyShoot);
+                    player.Client.SendPacket(enemyShoot);
+                }
+        }
+
+        public void BroadcastServerPlayerShootIfVisible(ServerPlayerShoot serverPlayerShoot, Entity host)
+        {
+            foreach (var player in Players.Values)
+                if (player.SqDistTo(host) < PlayerUpdate.VISIBILITY_RADIUS_SQR)
+                {
+                    player.ClientState.AddServerPlayerShoot(serverPlayerShoot);
+                    player.Client.SendPacket(serverPlayerShoot);
+                }
+        }
+
         public void BroadcastIfVisible(OutgoingMessage outgoingMessage, ref Position worldPosData)
         {
             foreach (var player in Players.Values)
@@ -160,28 +179,6 @@ namespace wServer.core.worlds
                 en.Value.OnChatTextReceived(player, text);
             foreach (var en in StaticObjects)
                 en.Value.OnChatTextReceived(player, text);
-        }
-
-        public void AddProjectile(Projectile projectile)
-        {
-            if (!Projectiles.ContainsKey(projectile.Host.Id))
-                Projectiles.Add(projectile.Host.Id, new Dictionary<byte, Projectile>());
-            Projectiles[projectile.Host.Id][projectile.BulletId] = projectile;
-        }
-
-        public Projectile GetProjectile(int objectId, byte bulletId)
-        {
-            if (Projectiles.TryGetValue(objectId, out var projectiles))
-                if (projectiles.TryGetValue(bulletId, out var ret))
-                    return ret;
-            return null;
-        }
-
-        public void RemoveProjectile(Projectile projectile)
-        {
-            if (Projectiles.ContainsKey(projectile.Host.Id))
-                Projectiles[projectile.Host.Id].Remove(projectile.BulletId);
-            ObjectPools.Projectiles.Return(projectile);
         }
 
         public virtual int EnterWorld(Entity entity)
@@ -457,15 +454,6 @@ namespace wServer.core.worlds
 
             foreach (var pet in Pets.Values)
                 pet.Tick(ref time);
-
-            var projectilesToRemove = new List<Projectile>();
-            foreach (var k in Projectiles.Values)
-                foreach (var projectile in k.Values)
-                    if (!projectile.Tick(ref time))
-                        projectilesToRemove.Add(projectile);
-
-            foreach (var projectile in projectilesToRemove)
-                RemoveProjectile(projectile);
 
             if (EnemiesCollision != null)
             {

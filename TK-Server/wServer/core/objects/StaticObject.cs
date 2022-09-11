@@ -30,22 +30,22 @@ namespace wServer.core.objects
 
         public override bool HitByProjectile(Projectile projectile, TickTime time)
         {
-            if (Vulnerable && projectile.Host is Player)
-            {
-                var dmg = StatsManager.DamageWithDefense(this, projectile.Damage, projectile.ProjDesc.ArmorPiercing, ObjectDesc.Defense);
+            //if (Vulnerable && projectile.Host is Player)
+            //{
+            //    var dmg = StatsManager.DamageWithDefense(this, projectile.Damage, projectile.ProjDesc.ArmorPiercing, ObjectDesc.Defense);
 
-                HP -= dmg;
+            //    HP -= dmg;
 
-                World.BroadcastIfVisibleExclude(new Damage()
-                {
-                    TargetId = Id,
-                    Effects = 0,
-                    DamageAmount = dmg,
-                    Kill = !CheckHP(),
-                    BulletId = projectile.BulletId,
-                    ObjectId = projectile.Host.Id
-                }, this, projectile.Host as Player);
-            }
+            //    World.BroadcastIfVisibleExclude(new Damage()
+            //    {
+            //        TargetId = Id,
+            //        Effects = 0,
+            //        DamageAmount = dmg,
+            //        Kill = !CheckHP(),
+            //        BulletId = projectile.BulletId,
+            //        ObjectId = projectile.Host.Id
+            //    }, this, projectile.Host as Player);
+            //}
 
             return true;
         }

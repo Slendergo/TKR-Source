@@ -6,12 +6,8 @@ package kabam.rotmg.messaging.impl.incoming
    
    public class NewTick extends IncomingMessage
    {
-       
-      
       public var tickId_:int;
-      
       public var tickTime_:int;
-
       public var statuses_:Vector.<ObjectStatusData>;
       public var aoes_:Vector.<AoeData>;
 

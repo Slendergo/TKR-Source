@@ -196,61 +196,61 @@ namespace wServer.core.objects
 
         public override bool HitByProjectile(Projectile projectile, TickTime time)
         {
-            if (stat)
-                return false;
+            //if (stat)
+            //    return false;
 
-            if (projectile == null)
-                return false;
+            //if (projectile == null)
+            //    return false;
 
-            if (HasConditionEffect(ConditionEffectIndex.Invincible))
-                return false;
+            //if (HasConditionEffect(ConditionEffectIndex.Invincible))
+            //    return false;
 
-            if (projectile.Host is Player && !HasConditionEffect(ConditionEffectIndex.Paused) && !HasConditionEffect(ConditionEffectIndex.Stasis))
-            {
-                var player = projectile.Host as Player;
-                var Inventory = player.Inventory;
-                var def = Defense;
+            //if (projectile.Host is Player && !HasConditionEffect(ConditionEffectIndex.Paused) && !HasConditionEffect(ConditionEffectIndex.Stasis))
+            //{
+            //    var player = projectile.Host as Player;
+            //    var Inventory = player.Inventory;
+            //    var def = Defense;
 
-                var dmg = StatsManager.DamageWithDefense(this, projectile.Damage, projectile.ProjDesc.ArmorPiercing, def);
-                if (!HasConditionEffect(ConditionEffectIndex.Invulnerable))
-                    HP -= dmg;
+            //    var dmg = StatsManager.DamageWithDefense(this, projectile.Damage, projectile.ProjDesc.ArmorPiercing, def);
+            //    if (!HasConditionEffect(ConditionEffectIndex.Invulnerable))
+            //        HP -= dmg;
                 
-                for (var i = 0; i < 4; i++)
-                {
-                    var item = Inventory[i];
+            //    for (var i = 0; i < 4; i++)
+            //    {
+            //        var item = Inventory[i];
 
-                    if (item == null || !item.Legendary && !item.Revenge && !item.Mythical && !item.Eternal)
-                        continue;
+            //        if (item == null || !item.Legendary && !item.Revenge && !item.Mythical && !item.Eternal)
+            //            continue;
 
-                    if (item.Demonized)
-                        Demonized(player, i);
+            //        if (item.Demonized)
+            //            Demonized(player, i);
 
-                    if (item.Vampiric)
-                        VampireBlast(player, i, time, this, projectile.ProjDesc.MultiHit);
+            //        if (item.Vampiric)
+            //            VampireBlast(player, i, time, this, projectile.ProjDesc.MultiHit);
 
-                    if (item.Electrify)
-                        Electrify(player, i, time, this);
-                }
+            //        if (item.Electrify)
+            //            Electrify(player, i, time, this);
+            //    }
 
-                ApplyConditionEffect(projectile.ProjDesc.Effects);
+            //    ApplyConditionEffect(projectile.ProjDesc.Effects);
 
-                World.BroadcastIfVisibleExclude(new Damage()
-                {
-                    TargetId = Id,
-                    Effects = 0,
-                    DamageAmount = dmg,
-                    Kill = HP < 0,
-                    BulletId = projectile.BulletId,
-                    ObjectId = projectile.Host.Id
-                }, this, projectile.Host as Player);
+            //    World.BroadcastIfVisibleExclude(new Damage()
+            //    {
+            //        TargetId = Id,
+            //        Effects = 0,
+            //        DamageAmount = dmg,
+            //        Kill = HP < 0,
+            //        BulletId = projectile.BulletId,
+            //        ObjectId = projectile.Host.Id
+            //    }, this, projectile.Host as Player);
 
-                DamageCounter.HitBy(projectile.Host as Player, time, projectile, dmg);
+            //    DamageCounter.HitBy(projectile.Host as Player, time, projectile, dmg);
 
-                if (HP < 0 && World != null)
-                    Death(ref time);
+            //    if (HP < 0 && World != null)
+            //        Death(ref time);
 
-                return true;
-            }
+            //    return true;
+            //}
 
             return false;
         }

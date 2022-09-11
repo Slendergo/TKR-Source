@@ -70,7 +70,7 @@ namespace wServer.core.objects
         public bool Muted { get; set; }
         public bool NameChosen { get => _nameChosen.GetValue(); set => _nameChosen.SetValue(value); }
         public int OxygenBar { get => _oxygenBar.GetValue(); set => _oxygenBar.SetValue(value); }
-        public ConcurrentQueue<InboundBuffer> IncomingMessages { get; private set; }
+        public Queue<InboundBuffer> IncomingMessages { get; private set; }
         public Pet Pet { get; set; }
         public int PetId { get; set; }
         public PlayerUpdate PlayerUpdate { get; private set; }
@@ -212,7 +212,7 @@ namespace wServer.core.objects
             _SPSWisdomCount = new SV<int>(this, StatDataType.SPS_WISDOM_COUNT, client.Account.SPSWisdomCount, true);
             _SPSWisdomCountMax = new SV<int>(this, StatDataType.SPS_WISDOM_COUNT_MAX, maxPotionAmount, true);
 
-            IncomingMessages = new ConcurrentQueue<InboundBuffer>();
+            IncomingMessages = new Queue<InboundBuffer>();
 
             Name = client.Account.Name;
             HP = client.Character.HP;
@@ -439,58 +439,58 @@ namespace wServer.core.objects
 
         public override bool HitByProjectile(Projectile projectile, TickTime time)
         {
-            if (projectile.Host is Player || IsInvulnerable)
-                return false;
+            //if (projectile.Host is Player || IsInvulnerable)
+            //    return false;
 
-            #region Item Effects
+            //#region Item Effects
 
-            for (var i = 0; i < 4; i++)
-            {
-                var item = Inventory[i];
-                if (item == null || !item.Legendary && !item.Revenge && !item.Eternal && !item.Mythical)
-                    continue;
+            //for (var i = 0; i < 4; i++)
+            //{
+            //    var item = Inventory[i];
+            //    if (item == null || !item.Legendary && !item.Revenge && !item.Eternal && !item.Mythical)
+            //        continue;
 
-                /* Eternal Effects */
-                if (item.MonkeyKingsWrath)
-                {
-                    MonkeyKingsWrath(i);
-                }
-                /* Revenge Effects */
-                if (item.GodTouch)
-                {
-                    GodTouch(i);
-                }
+            //    /* Eternal Effects */
+            //    if (item.MonkeyKingsWrath)
+            //    {
+            //        MonkeyKingsWrath(i);
+            //    }
+            //    /* Revenge Effects */
+            //    if (item.GodTouch)
+            //    {
+            //        GodTouch(i);
+            //    }
 
-                if (item.GodBless)
-                {
-                    GodBless(i);
-                }
+            //    if (item.GodBless)
+            //    {
+            //        GodBless(i);
+            //    }
 
-                /* Legendary Effects */
-                if (item.Clarification)
-                {
-                    Clarification(i);
-                }
-            }
+            //    /* Legendary Effects */
+            //    if (item.Clarification)
+            //    {
+            //        Clarification(i);
+            //    }
+            //}
 
-            #endregion Item Effects
+            //#endregion Item Effects
 
-            var dmg = (int)Stats.GetDefenseDamage(projectile.Damage, projectile.ProjDesc.ArmorPiercing);
-            if (!HasConditionEffect(ConditionEffectIndex.Invulnerable))
-                HP -= dmg;
-            ApplyConditionEffect(projectile.ProjDesc.Effects);
-            World.BroadcastIfVisibleExclude(new Damage()
-            {
-                TargetId = Id,
-                Effects = 0,
-                DamageAmount = dmg,
-                Kill = HP <= 0,
-                BulletId = projectile.BulletId,
-                ObjectId = projectile.Host.Id
-            }, this, this);;
+            //var dmg = (int)Stats.GetDefenseDamage(projectile.Damage, projectile.ProjDesc.ArmorPiercing);
+            //if (!HasConditionEffect(ConditionEffectIndex.Invulnerable))
+            //    HP -= dmg;
+            //ApplyConditionEffect(projectile.ProjDesc.Effects);
+            //World.BroadcastIfVisibleExclude(new Damage()
+            //{
+            //    TargetId = Id,
+            //    Effects = 0,
+            //    DamageAmount = dmg,
+            //    Kill = HP <= 0,
+            //    BulletId = projectile.BulletId,
+            //    ObjectId = projectile.Host.Id
+            //}, this, this);;
 
-            if (HP <= 0)
-                Death(projectile.Host.ObjectDesc.DisplayId ?? projectile.Host.ObjectDesc.ObjectId, projectile.Host);
+            //if (HP <= 0)
+            //    Death(projectile.Host.ObjectDesc.DisplayId ?? projectile.Host.ObjectDesc.ObjectId, projectile.Host);
 
             return base.HitByProjectile(projectile, time);
         }
@@ -529,35 +529,40 @@ namespace wServer.core.objects
 
         public void HandleIO(ref TickTime time)
         {
-            while (IncomingMessages.TryDequeue(out var incomingMessage))
+            lock (IncomingMessages)
             {
-                if (incomingMessage.Client.State == ProtocolState.Disconnected)
-                    break;
+                while (IncomingMessages.Count > 0)
+                {
+                    var incomingMessage = IncomingMessages.Dequeue();
 
-                var handler = MessageHandlers.GetHandler(incomingMessage.MessageId);
-                if (handler == null)
-                {
-                    incomingMessage.Client.PacketSpamAmount++;
-                    if (incomingMessage.Client.PacketSpamAmount > 32)
-                        incomingMessage.Client.Disconnect($"Packet Spam: {incomingMessage.Client.IpAddress}");
-                    StaticLogger.Instance.Error($"Unknown MessageId: {incomingMessage.MessageId} - {Client.IpAddress}");
-                    continue;
-                }
+                    if (incomingMessage.Client.State == ProtocolState.Disconnected)
+                        break;
 
-                try
-                {
-                    NReader rdr = null;
-                    if (incomingMessage.Payload.Length != 0)
-                        rdr = new NReader(new MemoryStream(incomingMessage.Payload));
-                    handler.Handle(incomingMessage.Client, rdr, ref time);
-                    rdr?.Dispose();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error processing packet ({((incomingMessage.Client.Account != null) ? incomingMessage.Client.Account.Name : "")}, {incomingMessage.Client.IpAddress})\n{ex}");
-                    if (!(ex is EndOfStreamException))
-                        StaticLogger.Instance.Error($"Error processing packet ({((incomingMessage.Client.Account != null) ? incomingMessage.Client.Account.Name : "")}, {incomingMessage.Client.IpAddress})\n{ex}");
-                    incomingMessage.Client.SendFailure("An error occurred while processing data from your client.", FailureMessage.MessageWithDisconnect);
+                    var handler = MessageHandlers.GetHandler(incomingMessage.MessageId);
+                    if (handler == null)
+                    {
+                        incomingMessage.Client.PacketSpamAmount++;
+                        if (incomingMessage.Client.PacketSpamAmount > 32)
+                            incomingMessage.Client.Disconnect($"Packet Spam: {incomingMessage.Client.IpAddress}");
+                        StaticLogger.Instance.Error($"Unknown MessageId: {incomingMessage.MessageId} - {Client.IpAddress}");
+                        continue;
+                    }
+
+                    try
+                    {
+                        NReader rdr = null;
+                        if (incomingMessage.Payload.Length != 0)
+                            rdr = new NReader(new MemoryStream(incomingMessage.Payload));
+                        handler.Handle(incomingMessage.Client, rdr, ref time);
+                        rdr?.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error processing packet ({((incomingMessage.Client.Account != null) ? incomingMessage.Client.Account.Name : "")}, {incomingMessage.Client.IpAddress})\n{ex}");
+                        if (!(ex is EndOfStreamException))
+                            StaticLogger.Instance.Error($"Error processing packet ({((incomingMessage.Client.Account != null) ? incomingMessage.Client.Account.Name : "")}, {incomingMessage.Client.IpAddress})\n{ex}");
+                        incomingMessage.Client.SendFailure("An error occurred while processing data from your client.", FailureMessage.MessageWithDisconnect);
+                    }
                 }
             }
         }

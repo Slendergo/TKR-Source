@@ -5,18 +5,11 @@ package kabam.rotmg.messaging.impl.incoming
    
    public class ServerPlayerShoot extends IncomingMessage
    {
-       
-      
       public var bulletId_:uint;
-      
       public var ownerId_:int;
-      
       public var containerType_:int;
-      
       public var startingPos_:WorldPosData;
-      
       public var angle_:Number;
-      
       public var damage_:int;
       
       public function ServerPlayerShoot(id:uint, callback:Function)

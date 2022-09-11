@@ -128,6 +128,9 @@ namespace wServer.networking.connection
             {
                 while (s.Pending.TryDequeue(out var packet))
                 {
+                    if (packet == null) // temp
+                        continue;
+
                     var bytesWritten = packet.Write(s.Data, s.BytesAvailable);
                     if (!bytesWritten.HasValue)
                         continue;
@@ -285,7 +288,10 @@ namespace wServer.networking.connection
                             }
                         }
                         else
-                            Client.Player.IncomingMessages.Enqueue(new InboundBuffer(Client, id, payload));
+                            lock (Client.Player.IncomingMessages)
+                            {
+                                Client.Player.IncomingMessages.Enqueue(new InboundBuffer(Client, id, payload));
+                            }
                     }
                     r.Reset();
                 }

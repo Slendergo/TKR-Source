@@ -252,7 +252,6 @@ public class GameServerConnection
       public static const GROUNDDAMAGE:int = 33;
       public static const PLAYERHIT:int = 34;
       public static const ENEMYHIT:int = 35;
-      public static const AOEACK:int = 36;
       public static const SHOOTACK:int = 37;
       public static const OTHERHIT:int = 38;
       public static const SQUAREHIT:int = 39;
@@ -401,6 +400,9 @@ public class GameServerConnection
          this.keyTime_ = keyTime;
          this.key_ = key;
          this.mapJSON_ = mapJSON;
+
+         playerShoots_ = new Vector.<PlayerShoot>();
+         invSwaps_ = new Vector.<InvSwap>();
       }
 
       public function disconnect() : void
@@ -547,7 +549,6 @@ public class GameServerConnection
 
          messages.map(TALISMAN_ESSENCE_DATA).toMessage(TalismanEssenceData).toMethod(this.onTalismanEssenceData);
          messages.map(TALISMAN_ESSENCE_ACTION).toMessage(TalismanEssenceAction);
-         messages.map(AOEACK).toMessage(AoeAck);
          messages.map(SHOOTACK).toMessage(ShootAck);
       }
 
@@ -622,7 +623,6 @@ public class GameServerConnection
          messages.unmap(FORGEFUSION);
          messages.unmap(ENGINE_FUEL_ACTION);
          messages.unmap(ESCAPE);
-         messages.unmap(AOEACK);
          messages.unmap(SHOOTACK);
 
          /* Market */
@@ -717,14 +717,14 @@ public class GameServerConnection
 
       public function playerShoot(time:int, proj:Projectile) : void
       {
-         var playerShoot:PlayerShoot = this.messages.require(PLAYERSHOOT) as PlayerShoot;
+         var playerShoot:PlayerShoot = new PlayerShoot();
          playerShoot.time_ = time;
          playerShoot.bulletId_ = proj.bulletId_;
          playerShoot.containerType_ = proj.containerType_;
-         playerShoot.startingPos_.x_ = proj.x_;
-         playerShoot.startingPos_.y_ = proj.y_;
+         playerShoot.startingPosX_ = proj.x_;
+         playerShoot.startingPosY_ = proj.y_;
          playerShoot.angle_ = proj.angle_;
-         this.serverConnection.sendMessage(playerShoot);
+         playerShoots_.push(playerShoot)
       }
 
       public function playerHit(bulletId:int, objectId:int) : void
@@ -735,14 +735,13 @@ public class GameServerConnection
          this.serverConnection.sendMessage(playerHit);
       }
 
-      public function enemyHit(time:int, bulletId:int, targetId:int, kill:Boolean, itemType:int) : void
+      public function enemyHit(time:int, bulletId:int, targetId:int, kill:Boolean) : void
       {
          var enemyHit:EnemyHit = this.messages.require(ENEMYHIT) as EnemyHit;
          enemyHit.time_ = time;
          enemyHit.bulletId_ = bulletId;
          enemyHit.targetId_ = targetId;
          enemyHit.kill_ = kill;
-         enemyHit.itemType_ = itemType;
          this.serverConnection.sendMessage(enemyHit);
       }
 
@@ -763,15 +762,6 @@ public class GameServerConnection
          squareHit.bulletId_ = bulletId;
          squareHit.objectId_ = objectId;
          this.serverConnection.sendMessage(squareHit);
-      }
-
-      public function aoeAck(time:int, x:Number, y:Number) : void
-      {
-         var aoeAck:AoeAck = this.messages.require(AOEACK) as AoeAck;
-         aoeAck.time_ = time;
-         aoeAck.position_.x_ = x;
-         aoeAck.position_.y_ = y;
-         this.serverConnection.sendMessage(aoeAck);
       }
 
       public function groundDamage(time:int, x:Number, y:Number) : void
@@ -803,7 +793,8 @@ public class GameServerConnection
          {
             return false;
          }
-         var invSwap:InvSwap = this.messages.require(INVSWAP) as InvSwap;
+
+         var invSwap:InvSwap = new InvSwap();
          invSwap.time_ = this.gs_.lastUpdate_;
          invSwap.position_.x_ = player.x_;
          invSwap.position_.y_ = player.y_;
@@ -813,7 +804,7 @@ public class GameServerConnection
          invSwap.slotObject2_.objectId_ = targetObj.objectId_;
          invSwap.slotObject2_.slotId_ = slotId2;
          invSwap.slotObject2_.objectType_ = objectType2;
-         this.serverConnection.sendMessage(invSwap);
+         invSwaps_.push(invSwap)
 
          var tempType:int = sourceObj.equipment_[slotId1];
          sourceObj.equipment_[slotId1] = targetObj.equipment_[slotId2];
@@ -823,6 +814,7 @@ public class GameServerConnection
          sourceObj.equipData_[slotId1] = targetObj.equipData_[slotId2];
          targetObj.equipData_[slotId2] = tempData;
          SoundEffectLibrary.play("inventory_move_item");
+
          return true;
       }
 
@@ -832,9 +824,10 @@ public class GameServerConnection
          {
             return false;
          }
-         var invSwap:InvSwap = this.messages.require(INVSWAP) as InvSwap;
+
+         var invSwap:InvSwap = new InvSwap();
          invSwap.time_ = this.gs_.lastUpdate_;
-         invSwap.position_.x_ = player.x_;
+         invSwap.position_.x_ = player.x_;al
          invSwap.position_.y_ = player.y_;
          invSwap.slotObject1_.objectId_ = sourceObj.objectId_;
          invSwap.slotObject1_.slotId_ = slotId1;
@@ -852,7 +845,7 @@ public class GameServerConnection
          {
             player.magicPotionCount_++;
          }
-         this.serverConnection.sendMessage(invSwap);
+         invSwaps_.push(invSwap)
          SoundEffectLibrary.play("inventory_move_item");
          return true;
       }
@@ -962,6 +955,10 @@ public class GameServerConnection
                move.records_.push(this.gs_.moveRecords_.records_[i]);
             }
          }
+         move.invSwaps_ = invSwaps_;
+         move.playerShoots_ = playerShoots_;
+         move.aoeAcks_ = aoeAcks_;
+
          this.gs_.moveRecords_.clear(move.time_);
          this.serverConnection.sendMessage(move);
          player && player.onMove();
@@ -1409,6 +1406,10 @@ public class GameServerConnection
          }
       }
 
+      private var invSwaps_:Vector.<InvSwap>;
+      private var playerShoots_:Vector.<PlayerShoot>;
+      private var aoeAcks_:int;
+
       private function onNewTick(newTick:NewTick) : void
       {
          for each(var aoeData:AoeData in newTick.aoes_){
@@ -1426,6 +1427,11 @@ public class GameServerConnection
             this.processObjectStatus(objectStatus,newTick.tickTime_,newTick.tickId_);
          }
          this.lastTickId_ = newTick.tickId_;
+
+         // reset move stuff
+         this.invSwaps_.length = 0;
+         this.playerShoots_.length = 0;
+         this.aoeAcks_ = 0;
       }
 
       private function canShowEffect(go:GameObject) : Boolean {
@@ -2214,11 +2220,12 @@ public class GameServerConnection
 
       private function onAoe(aoe:AoeData) : void
       {
+         aoeAcks_++;
+
          var d:int = 0;
          var effects:Vector.<uint> = null;
          if(this.player == null)
          {
-            this.aoeAck(this.gs_.lastUpdate_,0,0);
             return;
          }
 
@@ -2226,7 +2233,6 @@ public class GameServerConnection
          this.gs_.map.addObj(e,aoe.pos_.x_,aoe.pos_.y_);
          if(this.player.isInvincible() || this.player.isPaused())
          {
-            this.aoeAck(this.gs_.lastUpdate_,this.player.x_,this.player.y_);
             return;
          }
 
@@ -2242,7 +2248,6 @@ public class GameServerConnection
             }
             this.player.damage(aoe.origType_,d,effects,false,null, false);
          }
-         this.aoeAck(this.gs_.lastUpdate_,this.player.x_,this.player.y_);
       }
 
       private function onNameResult(nameResult:NameResult) : void

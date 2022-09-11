@@ -95,46 +95,21 @@ namespace wServer.logic.behaviors
 
                     var startAngle = a - _shootAngle * (count - 1) / 2;
 
-                    byte prjId = 0;
-
                     var prjPos = new Position() { X = host.X, Y = host.Y };
-                    var prjs = new Projectile[count];
-
-                    for (var i = 0; i < count; i++)
-                    {
-                        if (host == null || host.World == null)
-                            return;
-
-                        var prj = host.CreateProjectile(desc, host.ObjectType, (int)dmg, time.TotalElapsedMs, prjPos, startAngle + _shootAngle * i);
-
-                        host.World.AddProjectile(prj);
-
-                        if (i == 0)
-                            prjId = prj.BulletId;
-
-                        prjs[i] = prj;
-                    }
 
                     var pkt = new EnemyShoot()
                     {
-                        BulletId = prjId,
-                        OwnerId = host.Id,
+                        BulletId = host.GetNextBulletId(count),
+                        ObjectId = host.Id,
                         StartingPos = prjPos,
                         Angle = startAngle,
                         Damage = (short)dmg,
                         BulletType = (byte)desc.BulletType,
                         AngleInc = _shootAngle,
                         NumShots = (byte)count,
+                        ObjectType = host.ObjectType
                     };
-
-                    // changed to this
-                    host.World.BroadcastIfVisible(pkt, host);
-                    
-                    // from this
-                    //var players = host.World.Players
-                    //    .Values.Where(_ => _.DistSqr(host) < PlayerUpdate.VISIBILITY_RADIUS_SQR);
-                    //for (var i = 0; i < players.Length; i++)
-                    //    players[i].Client.SendPacket(pkt);
+                    host.World.BroadcastEnemyShootIfVisible(pkt, host);
                 }
 
                 cool = _coolDown.Next(Random);

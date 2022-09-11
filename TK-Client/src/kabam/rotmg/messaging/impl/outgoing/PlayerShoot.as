@@ -1,34 +1,27 @@
 package kabam.rotmg.messaging.impl.outgoing
 {
-   import flash.utils.IDataOutput;
+import avmplus.constructorXml;
+
+import flash.utils.IDataOutput;
    import kabam.rotmg.messaging.impl.data.WorldPosData;
    
-   public class PlayerShoot extends OutgoingMessage
+   public class PlayerShoot
    {
       public var time_:int;
       public var bulletId_:uint;
       public var containerType_:int;
-      public var startingPos_:WorldPosData;
+      public var startingPosX_:Number;
+      public var startingPosY_:Number;
       public var angle_:Number;
 
-      public function PlayerShoot(id:uint, callback:Function)
-      {
-         this.startingPos_ = new WorldPosData();
-         super(id,callback);
-      }
-      
-      override public function writeToOutput(data:IDataOutput) : void
+      public function writeToOutput(data:IDataOutput) : void
       {
          data.writeInt(this.time_);
          data.writeByte(this.bulletId_);
          data.writeInt(this.containerType_);
-         this.startingPos_.writeToOutput(data);
+         data.writeFloat(this.startingPosX_);
+         data.writeFloat(this.startingPosY_);
          data.writeFloat(this.angle_);
-      }
-      
-      override public function toString() : String
-      {
-         return formatToString("PLAYERSHOOT","time_","bulletId_","containerType_","startingPos_","angle_");
       }
    }
 }

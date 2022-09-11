@@ -86,47 +86,22 @@ namespace wServer.logic.behaviors
                     var dmg = Random.Next(desc.MinDamage + enemyClasified, desc.MaxDamage + enemyClasified);
                     var startAngle = angle * (count - 1) / 2;
 
-                    byte prjId = 0;
 
                     var prjPos = new Position() { X = Host.X, Y = Host.Y };
-                    var prjs = new Projectile[count];
-
-                    for (var i = 0; i < count; i++)
-                    {
-                        var prj = Host.CreateProjectile(desc, Host.ObjectType, dmg, time.TotalElapsedMs, prjPos, (float)(startAngle + angle * i));
-
-                        Host.World.AddProjectile(prj);
-
-                        if (i == 0)
-                            prjId = prj.BulletId;
-
-                        prjs[i] = prj;
-                    }
 
                     var pkt = new EnemyShoot()
                     {
-                        BulletId = prjId,
-                        OwnerId = Host.Id,
+                        BulletId = Host.GetNextBulletId(count),
+                        ObjectId = Host.Id,
                         StartingPos = prjPos,
                         Angle = (float)angle,
                         Damage = (short)dmg,
                         BulletType = (byte)desc.BulletType,
                         AngleInc = (float)angleInc,
-                        NumShots = (byte)count
+                        NumShots = (byte)count,
+                        ObjectType = Host.ObjectType
                     };
-
-                    if (isQuest)
-                        Host.World.ForeachPlayer(_ => _.Client.SendPacket(pkt));
-                    else
-                    {
-                        // replaced to this
-                        Host.World.BroadcastIfVisible(pkt, Host);
-                        
-                        // from this
-                        //var players = Host.World.Players.Values.Where(_ => _.DistSqr(Host) < PlayerUpdate.VISIBILITY_RADIUS_SQR);
-                        //for (var i = 0; i < players.Length; i++)
-                        //    players[i].Client.SendPacket(pkt);
-                    }
+                    Host.World.BroadcastEnemyShootIfVisible(pkt, Host);
                 }
 
                 rastate.coolDown = _coolDown.Next(Random);

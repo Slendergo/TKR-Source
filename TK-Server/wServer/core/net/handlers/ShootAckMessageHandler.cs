@@ -3,7 +3,7 @@ using wServer.networking;
 
 namespace wServer.core.net.handlers
 {
-    public sealed class ShoootAckMessageHandler : IMessageHandler
+    public sealed class ShootAckMessageHandler : IMessageHandler
     {
         public override MessageId MessageId => MessageId.SHOOTACK;
 

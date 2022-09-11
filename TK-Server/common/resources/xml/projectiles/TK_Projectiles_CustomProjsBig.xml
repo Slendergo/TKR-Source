@@ -271,4 +271,20 @@
 		</Texture>
 		<Rotation>90</Rotation>
 	</Object>
+	<Object type="0x4270" id="ASM Big Shot">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomProjsBig</File>
+			<Index>0x33</Index>
+		</Texture>
+		<AngleCorrection>320</AngleCorrection>
+	</Object>
+	<Object type="0x4269" id="ASM Big Shot 1">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomProjsBig</File>
+			<Index>0x34</Index>
+		</Texture>
+		<AngleCorrection>1</AngleCorrection>
+	</Object>
 </Objects>

@@ -113,7 +113,7 @@ namespace wServer.logic
                 new ItemLoot("Tome of Universal Theory", 0.001)
                 ),
             new Threshold(0.03,
-                new ItemLoot("Wand of Pain", 0.0015, threshold: 0.1)
+                new ItemLoot("Wand of Pain", 0.00125, threshold: 0.1)
                 ),
             new Threshold(0.01,
                 new ItemLoot("Head of Calamity", 0.007),
@@ -315,7 +315,7 @@ namespace wServer.logic
                     )
                 ),
             new Threshold(0.03,
-                new ItemLoot("Wand of Pain", 0.003)
+                new ItemLoot("Wand of Pain", 0.00125)
                 ),
             new Threshold(0.05,
                 new ItemLoot("Tome of Universal Theory", 0.00125, threshold: 0.05)//,

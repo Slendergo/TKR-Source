@@ -57,6 +57,7 @@ namespace wServer.logic
                     new TimedTransition(5000, "phase 3")
                     ),
                 new State("phase 3",
+                    new Shoot(15, 12, projectileIndex: 2, fixedAngle: 0, coolDown: 600, rotateAngle: 3),
                     new RemoveConditionalEffect(ConditionEffectIndex.Invincible),
                     new Shoot(30, 4, projectileIndex: 0, fixedAngle: 0, coolDown: 3600, coolDownOffset: 0),
                     new Shoot(30, 4, projectileIndex: 0, fixedAngle: 5, coolDown: 3600, coolDownOffset: 100),
@@ -98,6 +99,7 @@ namespace wServer.logic
                     new HpLessTransition(0.60, "attack2.1")
                     ),
                 new State("attack2.1",
+                    new Shoot(15, 12, projectileIndex: 2, fixedAngle: 0, coolDown: 600, rotateAngle: 3),
                     new Taunt("HAHAHA! Good, good! Glimpse into the power of a dark magician!"),
                     new TossObject2("Undead Blood Bat", 4, angle: 45, coolDown: 999999),
                     new TossObject2("Undead Blood Bat", 4, angle: 135, coolDown: 999999),
@@ -144,6 +146,7 @@ namespace wServer.logic
                     new HpLessTransition(0.30, "attack3")
                     ),
                 new State("attack3",
+                    new Shoot(15, 12, projectileIndex: 2, fixedAngle: 0, coolDown: 600, rotateAngle: 3),
                     new Taunt("Souls, come to me! Bestow onto me enough power to relinquish our foes from this domain!"),
                     new TossObject2("Mortomus Ball", 4, null, coolDown: 8000, coolDownOffset: 0, randomToss: true),
                     new TossObject2("Mortomus Ball 1", 6, null, coolDown: 8000, coolDownOffset: 2000, randomToss: true),
@@ -220,8 +223,8 @@ namespace wServer.logic
                 new ItemLoot("Potion of Mana", 1),
                 new ItemLoot("Potion of Defense", 1),
                 new ItemLoot("Potion of Attack", 1),
-                new ItemLoot("Old Cleric's Cloak", 0.001),
-                new ItemLoot("Mortomus' Shovel", 0.001, threshold: 0.03),
+                new ItemLoot("Old Cleric's Cloak", 0.00033),
+                new ItemLoot("Mortomus' Shovel", 0.0009, threshold: 0.03),
                 new ItemLoot("Groundkeeper's Lantern", 0.005),
                 new ItemLoot("Scepter of Whispers", 0.005),
                 new ItemLoot("Magic Dust", 0.5)

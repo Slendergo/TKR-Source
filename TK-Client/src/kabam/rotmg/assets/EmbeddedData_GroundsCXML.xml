@@ -2320,7 +2320,12 @@
       <File>d3LofiObjEmbed</File>
       <Index>0x5b</Index>
     </Texture>
-    <NoWalk />
+    <Sink />
+    <Speed>0.75</Speed>
+    <Animate dx="1.5">Flow</Animate>
+    <Push />
+    <XOffset>.0625</XOffset>
+    <YOffset>.0625</YOffset>
   </Ground>
   <Ground type="0xd6a" id="Black Water Light Frozen">
     <Texture>

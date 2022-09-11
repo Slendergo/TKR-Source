@@ -1771,6 +1771,20 @@
 			<Speed>90</Speed>
 			<LifetimeMS>5000</LifetimeMS>
 		</Projectile>
+		<Projectile id="4">
+			<ObjectId>ASM Big Shot 1</ObjectId>
+			<Damage>90</Damage>
+			<Size>150</Size>
+			<Speed>75</Speed>
+			<LifetimeMS>5000</LifetimeMS>
+		</Projectile>
+		<Projectile id="5">
+			<ObjectId>ASM Big Shot</ObjectId>
+			<Damage>90</Damage>
+			<Size>150</Size>
+			<Speed>45</Speed>
+			<LifetimeMS>5000</LifetimeMS>
+		</Projectile>
 	</Object>
 	<Object type="0xa6a1" id="Queen of Ice">
 		<Class>Character</Class>
@@ -1795,7 +1809,7 @@
 		<Projectile id="0">
 			<ObjectId>Projectile 0 QI</ObjectId>
 			<Damage>160</Damage>
-			<Size>100</Size>
+			<Size>150</Size>
 			<Speed>90</Speed>
 			<LifetimeMS>4000</LifetimeMS>
 			<ArmorPiercing/>
@@ -1804,7 +1818,7 @@
 		<Projectile id="1">
 			<ObjectId>Projectile 1 QI</ObjectId>
 			<Damage>130</Damage>
-			<Size>100</Size>
+			<Size>150</Size>
 			<Speed>100</Speed>
 			<LifetimeMS>4000</LifetimeMS>
 			<MultiHit />
@@ -1814,7 +1828,7 @@
 		<Projectile id="2">
 			<ObjectId>Projectile 2 QI</ObjectId>
 			<Damage>150</Damage>
-			<Size>100</Size>
+			<Size>150</Size>
 			<Speed>85</Speed>
 			<LifetimeMS>4000</LifetimeMS>
 			<MultiHit />
@@ -1824,7 +1838,7 @@
 		<Projectile id="3">
 			<ObjectId>Projectile 3 QI</ObjectId>
 			<Damage>180</Damage>
-			<Size>75</Size>
+			<Size>150</Size>
 			<Speed>80</Speed>
 			<LifetimeMS>4000</LifetimeMS>
 			<MultiHit />
@@ -1834,7 +1848,7 @@
 		<Projectile id="4">
 			<ObjectId>Projectile 4 QI</ObjectId>
 			<Damage>270</Damage>
-			<Size>100</Size>
+			<Size>150</Size>
 			<Speed>60</Speed>
 			<LifetimeMS>4000</LifetimeMS>
 			<MultiHit />
@@ -1850,7 +1864,7 @@
 		<Level>1</Level>
 		<AnimatedTexture>
 			<File>Custom16x16Encounters</File>
-			<Index>38</Index>
+			<Index>41</Index>
 		</AnimatedTexture>
 		<DisplayedId>Queen of Ice</DisplayedId>
 		<Size>110</Size>
@@ -1865,7 +1879,7 @@
 			<ObjectId>Projectile 0 QI</ObjectId>
 			<MinDamage>60</MinDamage>
 			<MaxDamage>120</MaxDamage>
-			<Size>100</Size>
+			<Size>150</Size>
 			<Speed>90</Speed>
 			<LifetimeMS>4000</LifetimeMS>
 		</Projectile>
@@ -1883,33 +1897,47 @@
 		</AnimatedTexture>
 		<DisplayedId>Cursed Snowman</DisplayedId>
 		<Size>160</Size>
-		<MaxHitPoints>80000</MaxHitPoints>
+		<MaxHitPoints>900000</MaxHitPoints>
 		<Defense>44</Defense>
 		<StasisImmune/>
 		<StunImmune/>
 		<XpMult>1</XpMult>
 		<Projectile id="0">
-			<ObjectId>Projectile 0 CSS</ObjectId>
-			<Damage>85</Damage>
-			<Size>100</Size>
+			<ObjectId>ASM Big Shot 1</ObjectId>
+			<Damage>275</Damage>
+			<Size>150</Size>
 			<Speed>90</Speed>
 			<LifetimeMS>1000</LifetimeMS>
 			<MultiHit />
 		</Projectile>
 		<Projectile id="1">
 			<ObjectId>Projectile 1 CSS</ObjectId>
-			<Damage>120</Damage>
+			<Damage>225</Damage>
 			<Size>90</Size>
 			<Speed>40</Speed>
 			<LifetimeMS>1200</LifetimeMS>
 		</Projectile>
 		<Projectile id="2">
 			<ObjectId>Projectile 2 CSS</ObjectId>
-			<Damage>110</Damage>
+			<Damage>205</Damage>
 			<Size>100</Size>
 			<Speed>100</Speed>
 			<LifetimeMS>1000</LifetimeMS>
 			<ConditionEffect duration="1.8">Confused</ConditionEffect>
+		</Projectile>
+		<Projectile id="3">
+			<ObjectId>Projectile 1 CSS</ObjectId>
+			<Damage>195</Damage>
+			<Size>110</Size>
+			<Speed>60</Speed>
+			<LifetimeMS>1200</LifetimeMS>
+		</Projectile>
+		<Projectile id="4">
+			<ObjectId>Projectile 1 CSS</ObjectId>
+			<Damage>180</Damage>
+			<Size>130</Size>
+			<Speed>80</Speed>
+			<LifetimeMS>1200</LifetimeMS>
 		</Projectile>
 	</Object>
 	<Object type="0x719c" id="Frozen Tower">
@@ -1934,11 +1962,10 @@
 			<ObjectId>Projectile 0 FT</ObjectId>
 			<MinDamage>60</MinDamage>
 			<MaxDamage>130</MaxDamage>
-			<Size>100</Size>
+			<Size>150</Size>
 			<Speed>100</Speed>
-			<Wavy>30</Wavy>
+			<Wavy/>
 			<LifetimeMS>4000</LifetimeMS>
-			<ConditionEffect duration="2">Confused</ConditionEffect>
 		</Projectile>
 	</Object>
 	<Object type="0xa143" id="Ice Tower">
@@ -2187,39 +2214,49 @@
 		<God />
 		<Level>1</Level>
 		<AnimatedTexture>
-			<File>Custom32x32Encounters</File>
-			<Index>21</Index>
+			<File>Custom16x16Encounters</File>
+			<Index>44</Index>
 		</AnimatedTexture>
 		<DisplayedId>Corrupt Snowman</DisplayedId>
 		<Size>160</Size>
-		<MaxHitPoints>200000</MaxHitPoints>
+		<MaxHitPoints>700000</MaxHitPoints>
 		<Defense>41</Defense>
 		<StasisImmune/>
 		<StunImmune/>
 		<XpMult>1</XpMult>
 		<Projectile id="0">
-			<ObjectId>Projectile 0 CSS</ObjectId>
-			<Damage>175</Damage>
+			<ObjectId>ASM Big Shot</ObjectId>
+			<Damage>285</Damage>
 			<Size>150</Size>
-			<Speed>100</Speed>
+			<Speed>90</Speed>
+			<Frequency>1</Frequency>
+			<Amplitude>2</Amplitude>
 			<LifetimeMS>4000</LifetimeMS>
 			<MultiHit />
 			<ArmorPiercing />
 		</Projectile>
 		<Projectile id="1">
 			<ObjectId>Projectile 1 CSS</ObjectId>
-			<Damage>210</Damage>
+			<Damage>405</Damage>
 			<Size>150</Size>
 			<Speed>90</Speed>
 			<LifetimeMS>4000</LifetimeMS>
 		</Projectile>
 		<Projectile id="2">
 			<ObjectId>Projectile 2 CSS</ObjectId>
-			<Damage>350</Damage>
+			<Damage>515</Damage>
 			<Size>150</Size>
 			<Speed>100</Speed>
 			<LifetimeMS>5000</LifetimeMS>
-			<ConditionEffect duration="1.8">Confused</ConditionEffect>
+		</Projectile>
+		<Projectile id="3">
+			<ObjectId>Projectile 0 GFS</ObjectId>
+			<Damage>300</Damage>
+			<Size>150</Size>
+			<Speed>100</Speed>
+			<Frequency>2</Frequency>
+			<Amplitude>0.5</Amplitude>
+			<LifetimeMS>5000</LifetimeMS>
 		</Projectile>
 	</Object>
 	<Object type="0x712c" id="Corrupt Snowman Switch 2">

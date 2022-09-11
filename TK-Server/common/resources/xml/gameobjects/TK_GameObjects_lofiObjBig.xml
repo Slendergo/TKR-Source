@@ -1230,11 +1230,60 @@
       </Texture>
     </RandomTexture>
     <Static />
-    <OccupySquare />
-    <EnemyOccupySquare />
+	  <BlockSight/>
     <HitSound>monster/trees_hit</HitSound>
     <DeathSound>monster/tress_death</DeathSound>
   </Object>
+	<Object type="0x4280" id="Winter Tree Big Secret">
+		<Class>GameObject</Class>
+		<Size>120</Size>
+		<RandomTexture>
+			<Texture>
+				<File>lofiObjBig</File>
+				<Index>0x9e</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObjBig</File>
+				<Index>0x9f</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObjBig</File>
+				<Index>0xa0</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObjBig</File>
+				<Index>0xa1</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObjBig</File>
+				<Index>0xa2</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObjBig</File>
+				<Index>0xa3</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObjBig</File>
+				<Index>0xa4</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObjBig</File>
+				<Index>0x155</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObjBig</File>
+				<Index>0x156</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObjBig</File>
+				<Index>0x157</Index>
+			</Texture>
+		</RandomTexture>
+		<Static />
+		<BlockSight/>
+		<HitSound>monster/trees_hit</HitSound>
+		<DeathSound>monster/tress_death</DeathSound>
+	</Object>
   <Object type="0x1917" id="Winter Snowman Big">
     <Class>GameObject</Class>
     <RandomTexture>

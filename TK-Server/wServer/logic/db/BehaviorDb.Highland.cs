@@ -771,7 +771,7 @@ namespace wServer.logic
                    )
                 ),
             new Threshold(.01,
-                new ItemLoot("Essence Eater", 0.0003),
+                new ItemLoot("Essence Eater", 0.0001),
                 new ItemLoot("Potion of Vitality", 1),
                 new ItemLoot("Potion of Dexterity", 1),
                 new ItemLoot("Potion of Defense", 1),

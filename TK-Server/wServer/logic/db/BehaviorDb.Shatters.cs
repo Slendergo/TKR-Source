@@ -438,25 +438,25 @@ namespace wServer.logic
                         new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                         new SetAltTexture(1),
                         new Taunt("Ha...ha........hahahahahaha! You will make a fine sacrifice!"),
-                        new TimedTransition(3000, "Comment2")
+                        new TimedTransition(5000, "Comment2")
                         ),
                     new SetAltTexture(1),
                     new State("Comment2",
                         new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                         new Taunt("You will find that it was...unwise...to wake me."),
-                        new TimedTransition(1000, "Comment3")
+                        new TimedTransition(5000, "Comment3")
                         ),
                     new State("Comment3",
                         new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                         new SetAltTexture(1),
                         new Taunt("Let us see what can conjure up!"),
-                        new TimedTransition(1000, "Comment4")
+                        new TimedTransition(5000, "Comment4")
                         ),
                     new State("Comment4",
                         new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                         new SetAltTexture(1),
                         new Taunt("I will freeze the life from you!"),
-                        new TimedTransition(1000, "Shoot")
+                        new TimedTransition(5000, "Shoot")
                         )
                     ),
                 new State("TossShit",

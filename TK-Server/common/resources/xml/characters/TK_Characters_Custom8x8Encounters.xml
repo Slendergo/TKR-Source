@@ -1342,30 +1342,32 @@
 		<Class>Character</Class>
 		<Enemy />
 		<AnimatedTexture>
-			<File>Custom8x8Encounters</File>
-			<Index>35</Index>
+			<File>Custom32x32Encounters</File>
+			<Index>20</Index>
 		</AnimatedTexture>
 		<Size>150</Size>
-		<MaxHitPoints>50000</MaxHitPoints>
+		<MaxHitPoints>22000</MaxHitPoints>
 		<Defense>50</Defense>
 		<StasisImmune/>
 		<StunImmune/>
 		<ParalyzeImmune/>
 		<Projectile id="0">
 			<ObjectId>Projectile 0 GFS</ObjectId>
-			<Damage>80</Damage>
-			<Speed>110</Speed>
-			<Size>90</Size>
+			<Damage>260</Damage>
+			<Speed>95</Speed>
+			<Size>140</Size>
 			<ArmorPiercing/>
-			<LifetimeMS>4000</LifetimeMS>
+			<MultiHit/>
+			<ConditionEffect duration="2">Speedy</ConditionEffect>
+			<LifetimeMS>2500</LifetimeMS>
 		</Projectile>
-		<Projectile id="0">
+		<Projectile id="1">
 			<ObjectId>Projectile 1 GFS</ObjectId>
-			<Damage>185</Damage>
-			<Speed>80</Speed>
-			<Size>110</Size>
+			<Damage>405</Damage>
+			<Speed>65</Speed>
+			<Size>140</Size>
 			<ArmorPiercing/>
-			<LifetimeMS>4000</LifetimeMS>
+			<LifetimeMS>800</LifetimeMS>
 		</Projectile>
 	</Object>
 </Objects>

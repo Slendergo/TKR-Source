@@ -42,13 +42,13 @@
     <Usable />
     <BagType>6</BagType>
     <FameBonus>5</FameBonus>
-    <MpCost>85</MpCost>
+    <MpCost>90</MpCost>
     <ActivateOnEquip stat="20" amount="8">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="22" amount="4">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="3" amount="50">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="60">IncrementStat</ActivateOnEquip>
     <Activate duration="8">Decoy</Activate>
     <Activate maxDistance="25">Teleport</Activate>
-    <Activate amount="50" range="1">HealNova</Activate>
+    <Activate amount="75" range="2">HealNova</Activate>
     <DisplayId>Heart of the Sea</DisplayId>
   </Object>
   <Object type="0x50e0" id="Queen's Scale">
@@ -65,11 +65,11 @@
     <Usable />
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
-    <MpCost>70</MpCost>
-    <ActivateOnEquip stat="20" amount="4">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="0" amount="50">IncrementStat</ActivateOnEquip>
+    <MpCost>80</MpCost>
+    <ActivateOnEquip stat="20" amount="5">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="4">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="30">IncrementStat</ActivateOnEquip>
     <Activate effect="Speedy" duration="4">ConditionEffectSelf</Activate>
     <Activate duration="7">Decoy</Activate>
     <Activate maxDistance="25">Teleport</Activate>
@@ -86,12 +86,12 @@
     <SlotType>22</SlotType>
     <Legendary />
     <Description>The crystals derived from the Mysterious Crystal seem to sap creatures of their strength while empowering the user.</Description>
-    <ActivateOnEquip stat="20" amount="4">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="4">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="6">IncrementStat</ActivateOnEquip>
     <Usable />
     <BagType>7</BagType>
     <FameBonus>7</FameBonus>
-    <MpCost>110</MpCost>
+    <MpCost>130</MpCost>
     <Activate totalDamage="0" maxTargets="3" condEffect="Paralyzed" condDuration="5" color="0xecf4fd" useWisMod="false">Lightning</Activate>
     <Activate effect="Armored" duration="5">ConditionEffectSelf</Activate>
     <Activate maxDistance="25">Teleport</Activate>

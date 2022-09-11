@@ -14,20 +14,19 @@
 		<Projectile>
 			<ObjectId>Dark Skeleton Shield Shot</ObjectId>
 			<Speed>160</Speed>
-			<MinDamage>800</MinDamage>
-			<MaxDamage>1000</MaxDamage>
-			<LifetimeMS>300</LifetimeMS>
+			<MinDamage>1000</MinDamage>
+			<MaxDamage>1200</MaxDamage>
+			<LifetimeMS>320</LifetimeMS>
 			<Size>140</Size>
-			<ConditionEffect duration="4">Stunned</ConditionEffect>
-			<ConditionEffect duration="2.5">Paralyzed</ConditionEffect>
-			<ConditionEffect duration="4">Curse</ConditionEffect>		
+			<ConditionEffect duration="4.5">Stunned</ConditionEffect>
+			<ConditionEffect duration="3">Paralyzed</ConditionEffect>
+			<ConditionEffect duration="3.5">Curse</ConditionEffect>		
 			<MultiHit />
 			<PassesCover />
 			<ParticleTrail />
 		</Projectile>
-		<ActivateOnEquip stat="21" amount="25">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="27" amount="10">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="22" amount="-5">IncrementStat</ActivateOnEquip>		
+		<ActivateOnEquip stat="21" amount="30">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="26" amount="15">IncrementStat</ActivateOnEquip>	
 		<Usable />
 		<BagType>7</BagType>
 		<FameBonus>6</FameBonus>
@@ -51,21 +50,22 @@
     <Projectile>
       <ObjectId>Silver Shield</ObjectId>
       <Speed>160</Speed>
-      <MinDamage>450</MinDamage>
-      <MaxDamage>600</MaxDamage>
-      <LifetimeMS>200</LifetimeMS>
+      <MinDamage>500</MinDamage>
+      <MaxDamage>650</MaxDamage>
+      <LifetimeMS>250</LifetimeMS>
       <Size>140</Size>
       <MultiHit />
       <PassesCover />
       <ParticleTrail />
     </Projectile>
-    <ActivateOnEquip stat="21" amount="15">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="20">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="150">IncrementStat</ActivateOnEquip>
     <ConditionEffect duration="4">Armor Broken</ConditionEffect>
+	  <ConditionEffect duration="3.5">Stunned</ConditionEffect>
     <Usable />
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
-    <MpCost>100</MpCost>
+    <MpCost>120</MpCost>
     <Activate>Shoot</Activate>
     <NumProjectiles>5</NumProjectiles>
     <feedPower>1000</feedPower>
@@ -85,9 +85,9 @@
     <Projectile>
       <ObjectId>Shield of The Ancient's Shot</ObjectId>
       <Speed>160</Speed>
-      <MinDamage>270</MinDamage>
-      <MaxDamage>330</MaxDamage>
-      <LifetimeMS>155</LifetimeMS>
+      <MinDamage>300</MinDamage>
+      <MaxDamage>360</MaxDamage>
+      <LifetimeMS>185</LifetimeMS>
       <Size>140</Size>
       <ConditionEffect duration="3">Stunned</ConditionEffect>
       <ConditionEffect duration="3">Paralyzed</ConditionEffect>
@@ -95,9 +95,9 @@
       <PassesCover />
       <ParticleTrail />
     </Projectile>
-    <ActivateOnEquip stat="21" amount="12">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="0" amount="50">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="3" amount="50">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="14">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="70">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="70">IncrementStat</ActivateOnEquip>
     <ConditionEffect duration="3">Stunned</ConditionEffect>
     <ConditionEffect duration="3">Paralyzed</ConditionEffect>
     <Usable />
@@ -122,21 +122,21 @@
 		<Projectile>
 			<ObjectId>Rose Buckler Shot</ObjectId>
 			<Speed>160</Speed>
-			<MinDamage>310</MinDamage>
-			<MaxDamage>390</MaxDamage>
-			<LifetimeMS>200</LifetimeMS>
+			<MinDamage>230</MinDamage>
+			<MaxDamage>310</MaxDamage>
+			<LifetimeMS>220</LifetimeMS>
 			<Size>140</Size>
 			<ConditionEffect duration="4">Stunned</ConditionEffect>
 			<MultiHit />
 			<PassesCover />
 			<ParticleTrail />
 		</Projectile>
-		<ActivateOnEquip stat="26" amount="12">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="21" amount="15">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="0" amount="75">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="26" amount="14">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="21" amount="17">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="0" amount="95">IncrementStat</ActivateOnEquip>
 		<Usable />
 		<BagType>7</BagType>
-		<MpCost>105</MpCost>
+		<MpCost>130</MpCost>
 		<Activate>Shoot</Activate>
 		<NumProjectiles>4</NumProjectiles>
 		<feedPower>5</feedPower>

@@ -700,12 +700,12 @@ namespace wServer.core.objects
 
         protected byte projectileId;
 
-        public Projectile CreateProjectile(ProjectileDesc desc, ushort container, int dmg, long time, Position pos, float angle)
+        public Projectile CreateProjectile(ProjectileDesc desc, ushort container, int dmg, long time, Position pos, float angle, int bulletId = -1)
         {
             var ret = World.ObjectPools.Projectiles.Rent();
             ret.Host = this;
             ret.ProjDesc = desc;
-            ret.ProjectileId = projectileId++;
+            ret.BulletId = bulletId != -1 ? (byte)bulletId : projectileId++;
             ret.Container = container;
             ret.Damage = dmg;
             ret.CreationTime = time;

@@ -1115,6 +1115,8 @@ public class Player extends Character {
         var arcGap:Number = (Boolean(weaponXML.hasOwnProperty("ArcGap")) ? Number(weaponXML.ArcGap) : 11.25) * Trig.toRadians;
         var totalArc:Number = arcGap * (numProjs - 1);
         var angle:Number = attackAngle - totalArc / 2;
+
+        var firstProj:Boolean = true;
         for (var i:int = 0; i < numProjs; i++) {
             bulletId = getBulletId();
             proj = FreeList.newObject(Projectile) as Projectile;
@@ -1131,8 +1133,12 @@ public class Player extends Character {
                 SoundEffectLibrary.play(proj.sound_, 0.75, false);
             }
             map_.addObj(proj, x_ + Math.cos(attackAngle) * 0.3, y_ + Math.sin(attackAngle) * 0.3);
-            map_.gs_.gsc_.playerShoot(time, proj);
-            angle = angle + arcGap;
+            angle += arcGap;
+
+            if(firstProj){
+                map_.gs_.gsc_.playerShoot(time, proj);
+                firstProj = false;
+            }
         }
     }
 }

@@ -42,7 +42,7 @@ namespace wServer.core.objects
                     Effects = 0,
                     DamageAmount = dmg,
                     Kill = !CheckHP(),
-                    BulletId = projectile.ProjectileId,
+                    BulletId = projectile.BulletId,
                     ObjectId = projectile.Host.Id
                 }, this, projectile.Host as Player);
             }

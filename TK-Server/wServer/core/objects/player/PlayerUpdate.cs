@@ -281,7 +281,7 @@ namespace wServer.core.objects
             {
                 TickId = TickId,
                 TickTime = delta,
-                AoeDatas = aoes
+                AoeDatas = aoes.ToArray()
             };
 
             lock (StatsUpdates)

@@ -1411,7 +1411,7 @@ public class GameServerConnection
 
       private function onNewTick(newTick:NewTick) : void
       {
-         for each(var aoeData:AoeData in newTick.aoes_) {
+         for each(var aoeData:AoeData in newTick.aoes_){
             onAoe(aoeData)
          }
 
@@ -2222,7 +2222,7 @@ public class GameServerConnection
             return;
          }
 
-         var e:AOEEffect = new AOEEffect(aoe.pos_.toPoint(),aoe.radius_,16711680);
+         var e:AOEEffect = new AOEEffect(aoe.pos_.toPoint(),aoe.radius_,aoe.color_);// 16711680 color
          this.gs_.map.addObj(e,aoe.pos_.x_,aoe.pos_.y_);
          if(this.player.isInvincible() || this.player.isPaused())
          {

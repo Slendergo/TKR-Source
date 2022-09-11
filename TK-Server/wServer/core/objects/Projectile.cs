@@ -1,8 +1,6 @@
 ﻿using common.resources;
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Linq;
 using wServer.core.worlds;
 using wServer.memory;
 
@@ -14,7 +12,7 @@ namespace wServer.core.objects
         private HashSet<Entity> _hit = new HashSet<Entity>();
         private bool used;
 
-        public byte ProjectileId;
+        public byte BulletId;
         public float StartX;
         public float StartY;
         public float Angle;
@@ -54,7 +52,7 @@ namespace wServer.core.objects
             var pX = (double)StartX;
             var pY = (double)StartY;
             var dist = elapsedTicks * ProjDesc.Speed / 10000.0;
-            var phase = ProjectileId % 2 == 0 ? 0 : Math.PI;
+            var phase = BulletId % 2 == 0 ? 0 : Math.PI;
 
             if (ProjDesc.Wavy)
             {
@@ -67,8 +65,8 @@ namespace wServer.core.objects
             else if (ProjDesc.Parametric)
             {
                 var t = elapsedTicks / ProjDesc.LifetimeMS * 2 * Math.PI;
-                var x = Math.Sin(t) * (ProjectileId % 2 == 0 ? 1 : -1);
-                var y = Math.Sin(2 * t) * (ProjectileId % 4 < 2 ? 1 : -1);
+                var x = Math.Sin(t) * (BulletId % 2 == 0 ? 1 : -1);
+                var y = Math.Sin(2 * t) * (BulletId % 4 < 2 ? 1 : -1);
                 var sin = Math.Sin(Angle);
                 var cos = Math.Cos(Angle);
                 pX += (x * cos - y * sin) * ProjDesc.Magnitude;
@@ -103,7 +101,7 @@ namespace wServer.core.objects
             _hit.Clear();
             _hit.TrimExcess();
             used = false;
-            ProjectileId = 0;
+            BulletId = 0;
             StartX = 0.0f;
             StartY = 0.0f;
             Angle = 0.0f;

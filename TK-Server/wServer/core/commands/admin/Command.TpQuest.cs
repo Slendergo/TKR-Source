@@ -24,8 +24,15 @@ namespace wServer.core.commands
                     return true;
                 }
                 player.SetNewbiePeriod();
-                player.TeleportPosition(time, player.Quest.RealX, player.Quest.RealY);
-                player.SendInfo($"Teleported to Quest Location: ({player.Quest.X}, {player.Quest.Y})");
+
+                var x = player.Quest.RealX;
+                var y = player.Quest.RealY;
+
+                if (player.Quest.ObjectDesc.ObjectId.Contains("Hermit"))
+                    y += 6;
+
+                player.TeleportPosition(time, x, y);
+                player.SendInfo($"Teleported to Quest Location: ({x}, {y})");
                 return true;
             }
         }

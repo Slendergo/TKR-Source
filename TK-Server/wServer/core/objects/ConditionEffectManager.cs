@@ -36,7 +36,7 @@ namespace wServer.core.objects
 
         public void AddCondition(byte effect, int duration)
         {
-            Durations[effect] = Math.Max(Durations[effect], duration);
+            Durations[effect] = duration;// Math.Max(Durations[effect], duration);
 
             var batchType = GetBatch(effect);
             Masks[batchType] |= GetBit(effect);

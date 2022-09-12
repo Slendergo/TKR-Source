@@ -12,22 +12,14 @@ namespace wServer.core.net.handlers
 
         public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
         {
-            var time = rdr.ReadInt32(); // the time it was hit so we can predict the position
-            var bulletId = rdr.ReadByte(); // the bullet player sent
-            var targetId = rdr.ReadInt32(); // the entity
-            var killed = rdr.ReadBoolean(); // tells the server that the entity is dead and should be removed
+            var time = rdr.ReadInt32();
+            var bulletId = rdr.ReadByte();
+            var targetId = rdr.ReadInt32();
+            var killed = rdr.ReadBoolean();
 
             // todo get projectile from the list of acknowldged projectiles
             // check if entity is in the visible list (not killed)
             // use time with moverecords to validate the position
-            
-            var player = client.Player;
-            var entity = player.World.GetEntity(targetId);
-            if(entity == null)
-                return;
-
-            if(killed && )
-
 
             //if (entity?.World == null || entity.HasConditionEffect(ConditionEffectIndex.Invulnerable))
             //    return;
@@ -44,6 +36,7 @@ namespace wServer.core.net.handlers
 
             //prj?.ForceHit(entity, tickTime);
 
+            var player = client.Player;
 
             var totalLife = 0.0;
             var totalMana = 0.0;

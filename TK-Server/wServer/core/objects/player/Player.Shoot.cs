@@ -13,7 +13,7 @@ namespace wServer.core.objects
             if (time < LastShootTime + attackPeriod)
                 return false;
             LastShootTime = time;
-            return true
+            return true;
         }
 
         public Dictionary<int, Dictionary<int, Projectile>> Projectiles { get; private set; } = new Dictionary<int, Dictionary<int, Projectile>>();

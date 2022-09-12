@@ -36,6 +36,8 @@ namespace wServer.core.objects
         {
             if (Projectiles.ContainsKey(projectile.ObjectId))
                 Projectiles[projectile.ObjectId].Remove(projectile.BulletId);
+            if (Projectiles[projectile.ObjectId].Count == 0)
+                Projectiles.Remove(projectile.ObjectId);
         }
     }
 }

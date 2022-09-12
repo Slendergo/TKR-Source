@@ -669,21 +669,21 @@ namespace wServer.core.objects
             var batch = new OutgoingMessage[shoots + 1];
             for (var i = 0; i < shoots; i++)
             {
-                //var bulletId = GetNextBulletId(1);
-                //var proj = PlayerShootProjectile(bulletId, prjDesc, item.ObjectType, (int)time.TotalElapsedMs, target, (float)(i * (Math.PI * 2) / shoots), true);
+                var bulletId = GetNextBulletId(1);
+                var proj = PlayerShootProjectile(bulletId, prjDesc, item.ObjectType, (int)time.TotalElapsedMs, target, (float)(i * (Math.PI * 2) / shoots), true);
 
-                //World.AddProjectile(proj);
-                //FameCounter.Shoot(proj);
-                //batch[i] = new ServerPlayerShoot()
-                //{
-                //    BulletId = bulletId,
-                //    ObjectId = Id,
-                //    ObjectType = item.ObjectType,
-                //    StartingPos = target,
-                //    Angle = proj.Angle,
-                //    Damage = (short)proj.Damage
-                //};
-                //prjs[i] = proj;
+                World.AddProjectile(proj);
+                FameCounter.Shoot(proj);
+                batch[i] = new ServerPlayerShoot()
+                {
+                    BulletId = bulletId,
+                    OwnerId = Id,
+                    ContainerType = item.ObjectType,
+                    StartingPos = target,
+                    Angle = proj.Angle,
+                    Damage = (short)proj.Damage
+                };
+                prjs[i] = proj;
             }
             batch[shoots] = new ShowEffect()
             {
@@ -1463,16 +1463,16 @@ namespace wServer.core.objects
                 var baseDmg = Stats.GetAttackDamage(prjDesc.MinDamage, prjDesc.MaxDamage, true);
                 var dmg = (int)(baseDmg + (baseDmg * TalismanExtraAbilityDamage));
 
-                //var proj = CreateProjectile(prjDesc, item.ObjectType, dmg, time.TotalElapsedMs, new Position() { X = X, Y = Y }, (float)(startAngle + arcGap * i));
-                //World.AddProjectile(proj);
-                //sPkts[i] = new AllyShoot()
-                //{
-                //    OwnerId = Id,
-                //    Angle = proj.Angle,
-                //    ContainerType = item.ObjectType,
-                //    BulletId = proj.BulletId
-                //};
-                //FameCounter.Shoot(proj);
+                var proj = CreateProjectile(prjDesc, item.ObjectType, dmg, time.TotalElapsedMs, new Position() { X = X, Y = Y }, (float)(startAngle + arcGap * i));
+                World.AddProjectile(proj);
+                sPkts[i] = new AllyShoot()
+                {
+                    OwnerId = Id,
+                    Angle = proj.Angle,
+                    ContainerType = item.ObjectType,
+                    BulletId = proj.BulletId
+                };
+                FameCounter.Shoot(proj);
             }
 
             for (var i = 0; i < item.NumProjectiles; i++)

@@ -16,27 +16,25 @@ namespace wServer.core.net.handlers
             var bulletId = rdr.ReadByte();
             var targetId = rdr.ReadInt32();
             var killed = rdr.ReadBoolean();
-
-            // todo get projectile from the list of acknowldged projectiles
-            // check if entity is in the visible list (not killed)
-            // use time with moverecords to validate the position
-
-            //if (entity?.World == null || entity.HasConditionEffect(ConditionEffectIndex.Invulnerable))
-            //    return;
-
-            //if (player.HasConditionEffect(ConditionEffectIndex.Hidden))
-            //    return;
-
-            //var prj = player.World.GetProjectile(player.Id, bulletId);
-            //if (prj == null)
-            //{
-            //    Console.WriteLine($"NULL PROJ| {player.Id} {bulletId}");
-            //    return;
-            //}
-
-            //prj?.ForceHit(entity, tickTime);
+            var itemType = rdr.ReadUInt16();
 
             var player = client.Player;
+            var entity = player?.World?.GetEntity(targetId);
+
+            if (entity?.World == null || entity.HasConditionEffect(ConditionEffectIndex.Invulnerable))
+                return;
+
+            if (player.HasConditionEffect(ConditionEffectIndex.Hidden))
+                return;
+
+            var prj = player.World.GetProjectile(player.Id, bulletId);
+            if (prj == null)
+            {
+                Console.WriteLine($"NULL PROJ| {player.Id} {bulletId}");
+                return;
+            }
+
+            prj?.ForceHit(entity, tickTime);
 
             var totalLife = 0.0;
             var totalMana = 0.0;

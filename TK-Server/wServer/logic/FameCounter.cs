@@ -94,7 +94,7 @@ namespace wServer.logic
 
         public void LevelUpAssist(int count) => Stats.LevelUpAssists += count;
 
-        public void Shoot() => Stats.Shots++;
+        public void Shoot(Projectile proj) => Stats.Shots++;
 
         public void Teleport() => Stats.Teleports++;
 

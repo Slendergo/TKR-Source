@@ -7,7 +7,6 @@ import com.company.assembleegameclient.objects.ObjectLibrary;
 import com.company.assembleegameclient.objects.OneWayContainer;
 import com.company.assembleegameclient.objects.Player;
 import com.company.assembleegameclient.parameters.Parameters;
-import com.company.assembleegameclient.sound.SoundEffectLibrary;
 import com.company.assembleegameclient.ui.panels.itemgrids.ContainerGrid;
 import com.company.assembleegameclient.ui.panels.itemgrids.InventoryGrid;
 import com.company.assembleegameclient.ui.panels.itemgrids.ItemGrid;
@@ -15,8 +14,6 @@ import com.company.assembleegameclient.ui.panels.itemgrids.itemtiles.Interactive
 import com.company.assembleegameclient.ui.panels.itemgrids.itemtiles.ItemTile;
 import com.company.assembleegameclient.ui.panels.itemgrids.itemtiles.ItemTileEvent;
 import com.company.assembleegameclient.util.DisplayHierarchy;
-
-import flash.utils.getTimer;
 
 import kabam.rotmg.constants.ItemConstants;
 import kabam.rotmg.core.model.MapModel;
@@ -75,12 +72,6 @@ public class ItemGridMediator extends Mediator
          var tsv:TabStripView = null;
          var slot:int = 0;
          var sourceTile:InteractiveItemTile = e.tile;
-
-         if (this.swapTooSoon()){
-            sourceTile.resetItemPosition();
-            return;
-         }
-
          if(sourceTile.getItemId() == PotionInventoryModel.HEALTH_POTION_ID || sourceTile.getItemId() == PotionInventoryModel.MAGIC_POTION_ID)
          {
             this.onPotionMove(e);
@@ -232,13 +223,8 @@ public class ItemGridMediator extends Mediator
       {
          var tile:InteractiveItemTile = null;
          var slot:int = 0;
-
          if(Parameters.data_.inventorySwap)
          {
-            if (this.swapTooSoon()){
-               return;
-            }
-
             tile = e.tile;
             if(tile.ownerGrid is InventoryGrid)
             {
@@ -255,10 +241,6 @@ public class ItemGridMediator extends Mediator
       
       private function onDoubleClick(e:ItemTileEvent) : void
       {
-         if (this.swapTooSoon()){
-            return;
-         }
-
          var tile:InteractiveItemTile = e.tile;
          if(this.isStackablePotion(tile))
          {
@@ -302,18 +284,7 @@ public class ItemGridMediator extends Mediator
             GameServerConnection.instance.useItem_new(tileOwner,tile.tileId);
          }
       }
-
-      private function swapTooSoon():Boolean
-      {
-         var _local1:int = getTimer();
-         if ((this.view.curPlayer.lastSwap_ + 200) > _local1){
-            SoundEffectLibrary.play("error");
-            return true;
-         }
-         this.view.curPlayer.lastSwap_ = _local1;
-         return false;
-      }
-
+      
       private function equipOrUseInventory(tile:InteractiveItemTile) : void
       {
          var tileOwner:GameObject = tile.ownerGrid.owner;

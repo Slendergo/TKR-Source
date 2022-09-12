@@ -698,6 +698,23 @@ namespace wServer.core.objects
             public float Y;
         }
 
+        protected byte projectileId;
+
+        public Projectile CreateProjectile(ProjectileDesc desc, ushort container, int dmg, long time, Position pos, float angle, int bulletId = -1)
+        {
+            var ret = World.ObjectPools.Projectiles.Rent();
+            ret.Host = this;
+            ret.ProjDesc = desc;
+            ret.BulletId = bulletId != -1 ? (byte)bulletId : projectileId++;
+            ret.Container = container;
+            ret.Damage = dmg;
+            ret.CreationTime = time;
+            ret.Angle = angle;
+            ret.StartX = pos.X;
+            ret.StartY = pos.Y;
+            return ret;
+        }
+
         public double AngleTo(Entity host) => Math.Atan2(host.Y - Y, host.X - X);
         public double AngleTo(ref Position position) => Math.Atan2(position.Y - Y, position.X - X);
         public double AngleTo(double x, double y) => Math.Atan2(y - Y, x - X);
@@ -714,15 +731,6 @@ namespace wServer.core.objects
         {
             pos.X += (float)(Math.Cos(angle) * radius);
             pos.Y += (float)(Math.Sin(angle) * radius);
-        }
-
-
-        private byte NextBulletId = 1;
-        public byte GetNextBulletId(int numShots)
-        {
-            var currentBulletId = NextBulletId;
-            NextBulletId = (byte)((NextBulletId + numShots) % 256);
-            return currentBulletId;
         }
     }
 }

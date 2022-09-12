@@ -5,7 +5,6 @@ import com.company.assembleegameclient.objects.GameObject;
 import com.company.assembleegameclient.objects.ObjectLibrary;
 import com.company.assembleegameclient.objects.Player;
 import com.company.assembleegameclient.parameters.Parameters;
-import com.company.assembleegameclient.sound.SoundEffectLibrary;
 import com.company.assembleegameclient.tutorial.Tutorial;
 import com.company.assembleegameclient.tutorial.doneAction;
 import com.company.assembleegameclient.ui.options.Options;
@@ -19,8 +18,6 @@ import flash.events.TimerEvent;
 import flash.geom.Point;
 import flash.system.Capabilities;
 import flash.utils.Timer;
-import flash.utils.getTimer;
-
 import kabam.rotmg.application.api.ApplicationSetup;
 import kabam.rotmg.constants.GeneralConstants;
 import kabam.rotmg.constants.UseType;
@@ -578,31 +575,18 @@ public class MapUserInput
       }
    }
 
-   private function swapTooSoon():Boolean {
-      var _local1:int = getTimer();
-      if ((this.gs_.map.player_.lastSwap_ + 600) > _local1) {
-         SoundEffectLibrary.play("error");
-         return (true);
-      }
-      ;
-      this.gs_.map.player_.lastSwap_ = _local1;
-      return (false);
-   }
-
    private function useItem(slot:int):void {
       if (this.tabStripModel.currentSelection == TabStripModel.BACKPACK) {
          slot = slot + GeneralConstants.NUM_INVENTORY_SLOTS;
       }
       var slotIndex:int = ObjectLibrary.getMatchingSlotIndex(this.gs_.map.player_.equipment_[slot], this.gs_.map.player_);
       if (slotIndex != -1) {
-         if (!swapTooSoon()) {
-            GameServerConnection.instance.invSwap(
-                    this.gs_.map.player_,
-                    this.gs_.map.player_, slot,
-                    this.gs_.map.player_.equipment_[slot],
-                    this.gs_.map.player_, slotIndex,
-                    this.gs_.map.player_.equipment_[slotIndex]);
-         }
+         GameServerConnection.instance.invSwap(
+                 this.gs_.map.player_,
+                 this.gs_.map.player_, slot,
+                 this.gs_.map.player_.equipment_[slot],
+                 this.gs_.map.player_, slotIndex,
+                 this.gs_.map.player_.equipment_[slotIndex]);
       }
       else {
          GameServerConnection.instance.useItem_new(this.gs_.map.player_, slot);

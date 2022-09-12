@@ -1,79 +1,115 @@
 ﻿using common.resources;
 using System;
 using System.Collections.Generic;
+using wServer.core.worlds;
+using wServer.memory;
 
 namespace wServer.core.objects
 {
-    public sealed class Projectile
+    public sealed class Projectile : IObjectPoolObject
     {
-        public int StartTime { get; }
-        public byte BulletId { get; }
-        public ushort ContainerType { get; }
-        public double Angle { get; }
-        public double StartX { get; }
-        public double StartY { get; }
-        public int Damage { get; }
-        public ProjectileDesc XMLProjectile { get; }
+        public ProjectileDesc ProjDesc;
+        private HashSet<Entity> _hit = new HashSet<Entity>();
+        private bool used;
 
-        public List<int> HitDictionary { get; }
+        public byte BulletId;
+        public float StartX;
+        public float StartY;
+        public float Angle;
+        public ushort Container;
+        public long CreationTime;
+        public int Damage;
+        public Entity Host;
+        public World World;
 
-        public Projectile(int startTime, byte bulletId, ushort containerType, double angle, double startX, double startY, int damage, ProjectileDesc xmlProjectile)
+        public Projectile() { }
+
+        public void ForceHit(Entity entity, TickTime time)
         {
-            StartTime = startTime;
-            BulletId = bulletId;
-            ContainerType = containerType;
-            Angle = angle;
-            StartX = startX;
-            StartY = startY;
-            Damage = damage;
-            XMLProjectile = xmlProjectile;
+            if (!ProjDesc.MultiHit && used && !(entity is Player))
+                return;
 
-            HitDictionary = new List<int>();
+            if (_hit.Add(entity))
+                entity.HitByProjectile(this, time);
+
+            used = true;
         }
 
-        public Position ProjectilePositionAt(int elapsed)
+        public bool Tick(ref TickTime time)
         {
-            var x = StartX;
-            var y = StartY;
+            var elapsed = time.TotalElapsedMs - CreationTime;
+            if (elapsed > ProjDesc.LifetimeMS)
+                return false;
+            return true;
+        }
 
-            var dist = elapsed * (XMLProjectile.Speed / 10000.0);
-            var phase = BulletId % 2 == 0 ? 0.0 : Math.PI;
-            if (XMLProjectile.Wavy)
+        public Position GetPosition(long elapsedTicks)
+        {
+            double periodFactor;
+            double amplitudeFactor;
+            double theta;
+            
+            var pX = (double)StartX;
+            var pY = (double)StartY;
+            var dist = elapsedTicks * ProjDesc.Speed / 10000.0;
+            var phase = BulletId % 2 == 0 ? 0 : Math.PI;
+
+            if (ProjDesc.Wavy)
             {
-                var periodFactor = 6.0 * Math.PI;
-                var amplitudeFactor = Math.PI / 64.0;
-                var theta = Angle + amplitudeFactor * Math.Sin(phase + periodFactor * elapsed / 1000.0);
-                x += dist * Math.Cos(theta);
-                y += dist * Math.Sin(theta);
+                periodFactor = 6 * Math.PI;
+                amplitudeFactor = Math.PI / 64;
+                theta = Angle + amplitudeFactor * Math.Sin(phase + periodFactor * elapsedTicks / 1000);
+                pX += dist * Math.Cos(theta);
+                pY += dist * Math.Sin(theta);
             }
-            else if (XMLProjectile.Parametric)
+            else if (ProjDesc.Parametric)
             {
-                var t = elapsed / XMLProjectile.LifetimeMS * 2 * Math.PI;
-                x = Math.Sin(t) * (BulletId % 2 == 0 ? 1.0 : -1.0);
-                y = Math.Sin(2.0 * t) * (BulletId % 4 < 2 ? 1.0 : -1.0);
+                var t = elapsedTicks / ProjDesc.LifetimeMS * 2 * Math.PI;
+                var x = Math.Sin(t) * (BulletId % 2 == 0 ? 1 : -1);
+                var y = Math.Sin(2 * t) * (BulletId % 4 < 2 ? 1 : -1);
                 var sin = Math.Sin(Angle);
                 var cos = Math.Cos(Angle);
-                x += (x * cos - y * sin) * XMLProjectile.Magnitude;
-                y += (x * sin + y * cos) * XMLProjectile.Magnitude;
+                pX += (x * cos - y * sin) * ProjDesc.Magnitude;
+                pY += (x * sin + y * cos) * ProjDesc.Magnitude;
             }
             else
             {
-                if (XMLProjectile.Boomerang)
+                if (ProjDesc.Boomerang)
                 {
-                    var halfway = XMLProjectile.LifetimeMS * (XMLProjectile.Speed / 10000.0) / 2.0;
+                    double halfway = ProjDesc.LifetimeMS * (ProjDesc.Speed / 10000) / 2;
+
                     if (dist > halfway)
                         dist = halfway - (dist - halfway);
                 }
-                x += dist * Math.Cos(Angle);
-                y += dist * Math.Sin(Angle);
-                if (XMLProjectile.Amplitude != 0.0)
+                pX += dist * Math.Cos(Angle);
+                pY += dist * Math.Sin(Angle);
+
+                if (ProjDesc.Amplitude != 0)
                 {
-                    var deflection = XMLProjectile.Amplitude * Math.Sin(phase + elapsed / XMLProjectile.LifetimeMS * XMLProjectile.Frequency * 2.0 * Math.PI);
-                    x += deflection * Math.Cos(Angle + Math.PI / 2.0);
-                    y += deflection * Math.Sin(Angle + Math.PI / 2.0);
+                    var deflection = ProjDesc.Amplitude * Math.Sin(phase + elapsedTicks / ProjDesc.LifetimeMS * ProjDesc.Frequency * 2 * Math.PI);
+                    pX += deflection * Math.Cos(Angle + Math.PI / 2);
+                    pY += deflection * Math.Sin(Angle + Math.PI / 2);
                 }
             }
-            return new Position((float)x, (float)y);
+
+            return new Position((float)pX, (float)pY);
+        }
+
+        public void Reset()
+        {
+            ProjDesc = null;
+            _hit.Clear();
+            _hit.TrimExcess();
+            used = false;
+            BulletId = 0;
+            StartX = 0.0f;
+            StartY = 0.0f;
+            Angle = 0.0f;
+            Container = 0;
+            CreationTime = 0;
+            Damage = 0;
+            Host = null;
+            World = null;
         }
     }
 }

@@ -121,7 +121,6 @@ public class Player extends Character {
     public var skinId:int;
     public var skin:AnimatedChar;
     public var accountId_:int = -1;
-    public var lastSwap_:int = -1;
     public var credits_:int = 0;
     public var numStars_:int = 0;
     public var fame_:int = 0;
@@ -1116,8 +1115,6 @@ public class Player extends Character {
         var arcGap:Number = (Boolean(weaponXML.hasOwnProperty("ArcGap")) ? Number(weaponXML.ArcGap) : 11.25) * Trig.toRadians;
         var totalArc:Number = arcGap * (numProjs - 1);
         var angle:Number = attackAngle - totalArc / 2;
-
-        trace("Shoot: " + weaponXML.@id);
 
         var firstProj:Boolean = true;
         for (var i:int = 0; i < numProjs; i++) {

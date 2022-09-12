@@ -16,8 +16,13 @@ namespace wServer.core.net.handlers
             var objectId = rdr.ReadInt32();
 
             var player = client.Player;
+            if (player?.World == null)
+                return;
 
-
+            var prj = player.World.GetProjectile(objectId, bulletId);
+            if (prj == null)
+                return;
+            prj?.ForceHit(player, tickTime);
         }
     }
 }

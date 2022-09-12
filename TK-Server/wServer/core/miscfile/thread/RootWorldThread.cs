@@ -66,7 +66,7 @@ namespace wServer.core
                                 Console.WriteLine($"[{World.IdName} {World.Id}] Tick: {e.StackTrace}");
                             }
 
-                            lastMS = currentMS;// += delta; //TICK_TIME_MS
+                            lastMS += delta; //TICK_TIME_MS
                         }
 
                         if (World.Players.Count == 0)

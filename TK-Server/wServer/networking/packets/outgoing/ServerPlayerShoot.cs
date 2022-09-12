@@ -5,8 +5,8 @@ namespace wServer.networking.packets.outgoing
     public class ServerPlayerShoot : OutgoingMessage
     {
         public byte BulletId { get; set; }
-        public int ObjectId { get; set; }
-        public int ObjectType { get; set; }
+        public int OwnerId { get; set; }
+        public int ContainerType { get; set; }
         public Position StartingPos { get; set; }
         public float Angle { get; set; }
         public int Damage { get; set; }
@@ -16,8 +16,8 @@ namespace wServer.networking.packets.outgoing
         protected override void Write(NWriter wtr)
         {
             wtr.Write(BulletId);
-            wtr.Write(ObjectId);
-            wtr.Write(ObjectType);
+            wtr.Write(OwnerId);
+            wtr.Write(ContainerType);
             StartingPos.Write(wtr);
             wtr.Write(Angle);
             wtr.Write(Damage);

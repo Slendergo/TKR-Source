@@ -24,51 +24,31 @@ namespace wServer.core.objects
             return currentBulletId;
         }
 
-        public int LastShootTime;
-        public int LastAbilityTime;
-
-        public bool IsValidAbilityTime(int time, int cooldown)
+        internal Projectile PlayerShootProjectile(byte id, ProjectileDesc desc, ushort objType, int time, Position position, float angle, bool ability = false)
         {
-            if (time < LastAbilityTime + cooldown)
-                return false;
-            LastAbilityTime = time;
-            return true;
+            var min = desc.MinDamage;
+            var max = desc.MaxDamage;
+            if (TalismanDamageIsAverage)
+            {
+                var avg = (int)((min + max) * 0.5);
+                min = avg;
+                max = avg;
+            }
+
+            var dmg = Stats.GetAttackDamage(min, max, ability);
+
+            if(ability && TalismanExtraAbilityDamage > 0.0)
+                dmg = (int)(dmg + (dmg * TalismanExtraAbilityDamage));
+
+            var isFullHp = HP == Stats[0];
+            if (TalismanExtraDamageOnHitHealth != 0.0)
+                dmg += (int)(dmg * (isFullHp ? TalismanExtraDamageOnHitHealth : -TalismanExtraDamageOnHitHealth));
+
+            var isFullMp = MP == Stats[1];
+            if (TalismanExtraDamageOnHitMana != 0.0)
+                dmg += (int)(dmg * (isFullMp ? TalismanExtraDamageOnHitMana : -TalismanExtraDamageOnHitMana));
+
+            return CreateProjectile(desc, objType, dmg, time, position, angle, id);
         }
-
-        public bool IsValidShoot(int time, double rateOfFire)
-        {
-            var attackPeriod = (int)(1.0 / Stats.GetAttackFrequency() * (1.0 / rateOfFire));
-            if (time < LastShootTime + attackPeriod)
-                return false;
-            LastShootTime = time;
-            return true;
-        }
-
-        //internal Projectile PlayerShootProjectile(byte id, ProjectileDesc desc, ushort objType, int time, Position position, float angle, bool ability = false)
-        //{
-        //    var min = desc.MinDamage;
-        //    var max = desc.MaxDamage;
-        //    if (TalismanDamageIsAverage)
-        //    {
-        //        var avg = (int)((min + max) * 0.5);
-        //        min = avg;
-        //        max = avg;
-        //    }
-
-        //    var dmg = Stats.GetAttackDamage(min, max, ability);
-
-        //    if(ability && TalismanExtraAbilityDamage > 0.0)
-        //        dmg = (int)(dmg + (dmg * TalismanExtraAbilityDamage));
-
-        //    var isFullHp = HP == Stats[0];
-        //    if (TalismanExtraDamageOnHitHealth != 0.0)
-        //        dmg += (int)(dmg * (isFullHp ? TalismanExtraDamageOnHitHealth : -TalismanExtraDamageOnHitHealth));
-
-        //    var isFullMp = MP == Stats[1];
-        //    if (TalismanExtraDamageOnHitMana != 0.0)
-        //        dmg += (int)(dmg * (isFullMp ? TalismanExtraDamageOnHitMana : -TalismanExtraDamageOnHitMana));
-
-        //    return CreateProjectile(desc, objType, dmg, time, position, angle, id);
-        //}
     }
 }

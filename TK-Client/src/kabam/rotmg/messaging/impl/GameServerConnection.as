@@ -101,7 +101,7 @@ import kabam.rotmg.messaging.impl.data.ObjectStatusData;
 import kabam.rotmg.messaging.impl.data.StatData;
 import kabam.rotmg.messaging.impl.incoming.AccountList;
 import kabam.rotmg.messaging.impl.incoming.AllyShoot;
-import kabam.rotmg.messaging.impl.incoming.AoeData;
+import kabam.rotmg.messaging.impl.incoming.Aoe;
 import kabam.rotmg.messaging.impl.incoming.BuyResult;
 import kabam.rotmg.messaging.impl.incoming.ClientStat;
 import kabam.rotmg.messaging.impl.incoming.CreateSuccess;
@@ -144,7 +144,6 @@ import kabam.rotmg.messaging.impl.incoming.party.InvitedToParty;
 import kabam.rotmg.messaging.impl.incoming.talisman.TalismanEssenceData;
 import kabam.rotmg.messaging.impl.outgoing.AcceptTrade;
 import kabam.rotmg.messaging.impl.outgoing.AoeAck;
-import kabam.rotmg.messaging.impl.outgoing.AoeAck;
 import kabam.rotmg.messaging.impl.outgoing.Buy;
 import kabam.rotmg.messaging.impl.outgoing.CancelTrade;
 import kabam.rotmg.messaging.impl.outgoing.ChangeGuildRank;
@@ -174,8 +173,8 @@ import kabam.rotmg.messaging.impl.outgoing.PlayerText;
 import kabam.rotmg.messaging.impl.outgoing.Pong;
 import kabam.rotmg.messaging.impl.outgoing.PotionStorageInteraction;
 import kabam.rotmg.messaging.impl.outgoing.RequestTrade;
-import kabam.rotmg.messaging.impl.outgoing.Reskin;
 import kabam.rotmg.messaging.impl.outgoing.ShootAck;
+import kabam.rotmg.messaging.impl.outgoing.Reskin;
 import kabam.rotmg.messaging.impl.outgoing.SquareHit;
 import kabam.rotmg.messaging.impl.outgoing.Teleport;
 import kabam.rotmg.messaging.impl.outgoing.UpgradeStat;
@@ -512,7 +511,7 @@ public class GameServerConnection
          messages.map(PIC).toMessage(Pic).toMethod(this.onPic);
          messages.map(DEATH).toMessage(Death).toMethod(this.onDeath);
          messages.map(BUYRESULT).toMessage(BuyResult).toMethod(this.onBuyResult);
-         messages.map(AOE).toMessage(AoeData).toMethod(this.onAoe);
+         messages.map(AOE).toMessage(Aoe).toMethod(this.onAoe);
          messages.map(ACCOUNTLIST).toMessage(AccountList).toMethod(this.onAccountList);
          messages.map(QUESTOBJID).toMessage(QuestObjId).toMethod(this.onQuestObjId);
          messages.map(NAMERESULT).toMessage(NameResult).toMethod(this.onNameResult);
@@ -1411,10 +1410,7 @@ public class GameServerConnection
 
       private function onNewTick(newTick:NewTick) : void
       {
-         for each(var aoeData:AoeData in newTick.aoes_){
-            onAoe(aoeData)
-         }
-
+         //this.addTextLine.dispatch(new AddTextLineVO("","TickTime: " + newTick.tickTime_));
          var objectStatus:ObjectStatusData = null;
          if(this.jitterWatcher_ != null)
          {
@@ -2212,7 +2208,7 @@ public class GameServerConnection
          this.gs_.map.quest_.setObject(questObjId.objectId_);
       }
 
-      private function onAoe(aoe:AoeData) : void
+      private function onAoe(aoe:Aoe) : void
       {
          var d:int = 0;
          var effects:Vector.<uint> = null;
@@ -2221,7 +2217,6 @@ public class GameServerConnection
             this.aoeAck(this.gs_.lastUpdate_,0,0);
             return;
          }
-
          var e:AOEEffect = new AOEEffect(aoe.pos_.toPoint(),aoe.radius_,aoe.color_);// 16711680 color
          this.gs_.map.addObj(e,aoe.pos_.x_,aoe.pos_.y_);
          if(this.player.isInvincible() || this.player.isPaused())
@@ -2229,7 +2224,6 @@ public class GameServerConnection
             this.aoeAck(this.gs_.lastUpdate_,this.player.x_,this.player.y_);
             return;
          }
-
          var hit:Boolean = this.player.distTo(aoe.pos_) < aoe.radius_;
          if(hit)
          {

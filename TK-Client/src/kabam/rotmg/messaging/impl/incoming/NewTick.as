@@ -11,15 +11,12 @@ package kabam.rotmg.messaging.impl.incoming
       public var tickId_:int;
       
       public var tickTime_:int;
-
+      
       public var statuses_:Vector.<ObjectStatusData>;
-      public var aoes_:Vector.<AoeData>;
-
+      
       public function NewTick(id:uint, callback:Function)
       {
          this.statuses_ = new Vector.<ObjectStatusData>();
-         this.aoes_ = new Vector.<AoeData>();
-
          super(id,callback);
       }
       
@@ -41,20 +38,6 @@ package kabam.rotmg.messaging.impl.incoming
          for(i = 0; i < len; i++)
          {
             this.statuses_[i].parseFromInput(data);
-         }
-         len = data.readShort();
-         for(i = len; i < this.aoes_.length; i++)
-         {
-            FreeList.deleteObject(this.aoes_[i]);
-         }
-         this.aoes_.length = Math.min(len,this.aoes_.length);
-         while(this.aoes_.length < len)
-         {
-            this.aoes_.push(FreeList.newObject(AoeData) as AoeData);
-         }
-         for(i = 0; i < len; i++)
-         {
-            this.aoes_[i].parseFromInput(data);
          }
       }
       

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace wServer.core.objects
 {
@@ -8,11 +9,11 @@ namespace wServer.core.objects
 
         public bool IsValidShoot(int time, double rateOfFire)
         {
-            var dt = (int)(1 / Stats.GetAttackFrequency() * 1 / rateOfFire);
-            if (time < LastShootTime + dt)
-                return true;
+            var attackPeriod = (int)(1 / Stats.GetAttackFrequency() * 1 / rateOfFire);
+            if (time < LastShootTime + attackPeriod)
+                return false;
             LastShootTime = time;
-            return false;
+            return true
         }
 
         public Dictionary<int, Dictionary<int, Projectile>> Projectiles { get; private set; } = new Dictionary<int, Dictionary<int, Projectile>>();

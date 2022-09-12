@@ -52,9 +52,9 @@ namespace wServer.core.net.handlers
                 return;
             }
 
-            if(player.IsValidShoot(time, item.RateOfFire))
+            if(!player.IsValidShoot(time, item.RateOfFire))
             {
-                client.Disconnect("Attempting to shoot a item that they dont have");
+                client.Disconnect("Shooting way to fast");
                 return;
             }
 

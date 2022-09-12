@@ -36,7 +36,7 @@ namespace wServer.core.objects
 
         public void AddCondition(byte effect, int duration)
         {
-            Durations[effect] = duration;
+            Durations[effect] = Math.Max(Durations[effect], duration);
 
             var batchType = GetBatch(effect);
             Masks[batchType] |= GetBit(effect);
@@ -54,10 +54,7 @@ namespace wServer.core.objects
             UpdateConditionStat(batchType);
         }
 
-        public bool HasCondition(byte effect)
-        {
-            return (Masks[GetBatch(effect)] & GetBit(effect)) != 0;
-        }
+        public bool HasCondition(byte effect) => (Masks[GetBatch(effect)] & GetBit(effect)) != 0;
 
         public void Update(ref TickTime time)
         {

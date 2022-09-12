@@ -108,7 +108,7 @@ namespace wServer.core.objects
             player1.SendInfo("New Character Slot Unlocked!, go to Character selector to use them!");
         }
 
-        public void UseItem(TickTime time, int objId, int slot, Position pos, int sellMaxed)
+        public void UseItem(int clientTime, TickTime time, int objId, int slot, Position pos, int sellMaxed)
         {
             //Log.Debug(objId + ":" + slot);
             var entity = World.GetEntity(objId);
@@ -237,7 +237,7 @@ namespace wServer.core.objects
                         }
                     }
 
-                    Activate(time, item, slot, pos, objId, sellMaxed);
+                    Activate(clientTime, time, item, slot, pos, objId, sellMaxed);
                     return;
                 }
 
@@ -253,10 +253,10 @@ namespace wServer.core.objects
 
             //Log.Debug(item.SlotType + ":" + slotType);
             if (item.InvUse)
-                Activate(time, item, slot, pos, objId, sellMaxed);
+                Activate(clientTime, time, item, slot, pos, objId, sellMaxed);
 
             if (item.Consumable || item.SlotType == slotType)
-                Activate(time, item, slot, pos, objId, sellMaxed);
+                Activate(clientTime, time, item, slot, pos, objId, sellMaxed);
             else
                 Client.SendPacket(new InvResult() { Result = 1 });
         }
@@ -359,7 +359,7 @@ namespace wServer.core.objects
             player.MP = newMp;
         }
 
-        private void Activate(TickTime time, Item item, int slot, Position target, int objId, int sellmaxed)
+        private void Activate(int clientTime, TickTime time, Item item, int slot, Position target, int objId, int sellmaxed)
         {
             if (item.MpCost != 0 && TalismanAbilityLifeCost > 0.0f)
                 HP -= (int)(Stats[0] * TalismanAbilityLifeCost);
@@ -443,7 +443,7 @@ namespace wServer.core.objects
                         break;
 
                     case ActivateEffects.Shoot:
-                        AEShoot(time, item, target, eff);
+                        AEShoot(clientTime, item, target, eff);
                         break;
 
                     case ActivateEffects.IncrementStat:
@@ -471,7 +471,7 @@ namespace wServer.core.objects
                         break;
 
                     case ActivateEffects.BulletNova:
-                        AEBulletNova(time, item, target, eff);
+                        AEBulletNova(clientTime, time, item, target, eff);
                         break;
 
                     case ActivateEffects.ConditionEffectSelf:
@@ -552,15 +552,15 @@ namespace wServer.core.objects
                         break;
 
                     case ActivateEffects.ShurikenAbility:
-                        AEShurikenAbility(time, item, target, eff);
+                        AEShurikenAbility(clientTime, item, target, eff);
                         break;
 
                     case ActivateEffects.ShurikenAbilityBerserk:
-                        AEShurikenAbilityBerserk(time, item, target, eff);
+                        AEShurikenAbilityBerserk(clientTime, item, target, eff);
                         break;
 
                     case ActivateEffects.ShurikenAbilityDamaging:
-                        AEShurikenAbilityDamaging(time, item, target, eff);
+                        AEShurikenAbilityDamaging(clientTime, item, target, eff);
                         break;
 
                     case ActivateEffects.DazeBlast:
@@ -599,10 +599,10 @@ namespace wServer.core.objects
                 return;
             }
 
-            var characterId = Client.Character.CharId;
             var accountId = AccountId;
 
-            if (GameServer.Database.HasTalismanUnlocked(accountId, eff.Type)) {
+            if (GameServer.Database.HasTalismanUnlocked(accountId, eff.Type))
+            {
                 SendInfo("You have already unlocked this talisman!");
                 if (entity is Container container)
                     container.Inventory[slot] = item;
@@ -661,41 +661,28 @@ namespace wServer.core.objects
             HasBackpack = true;
         }
 
-        private void AEBulletNova(TickTime time, Item item, Position target, ActivateEffect eff)
+        private void AEBulletNova(int clientTime, TickTime time, Item item, Position target, ActivateEffect eff)
         {
-            var shoots = item.SpellProjectiles == 0 ? 20 : item.SpellProjectiles;
-            var prjs = new Projectile[shoots];
-            var prjDesc = item.Projectiles[0]; //Assume only one
-            var batch = new OutgoingMessage[shoots + 1];
-            for (var i = 0; i < shoots; i++)
-            {
-                var bulletId = GetNextBulletId(1);
-                var proj = PlayerShootProjectile(bulletId, prjDesc, item.ObjectType, (int)time.TotalElapsedMs, target, (float)(i * (Math.PI * 2) / shoots), true);
+            var numShots = item.SpellProjectiles == 0 ? 20 : item.SpellProjectiles;
+            
+            var prjDesc = item.Projectiles[0];
 
-                World.AddProjectile(proj);
-                FameCounter.Shoot(proj);
-                batch[i] = new ServerPlayerShoot()
-                {
-                    BulletId = bulletId,
-                    OwnerId = Id,
-                    ContainerType = item.ObjectType,
-                    StartingPos = target,
-                    Angle = proj.Angle,
-                    Damage = (short)proj.Damage
-                };
-                prjs[i] = proj;
+            for (var i = 0; i < numShots; i++)
+            {
+                var bulletId = GetNextAbilityBulletId();
+                var proj = PlayerShootProjectile(clientTime, bulletId, item.ObjectType, (float)(i * (Math.PI * 2) / numShots), target, prjDesc, true);
+
+                FameCounter.Shoot();
+                World.BroadcastIfVisible(new ServerPlayerShoot(bulletId, Id, item.ObjectType, target, proj.Angle, proj.Damage), this);
             }
-            batch[shoots] = new ShowEffect()
+
+            World.BroadcastIfVisible(new ShowEffect()
             {
                 EffectType = EffectType.Trail,
                 Pos1 = target,
                 TargetObjectId = Id,
                 Color = new ARGB(eff.Color != 0 ? eff.Color : 0xFFFF00AA)
-            };
-
-            foreach (var player in World.Players.Values)
-                if(player.SqDistTo(this) < PlayerUpdate.VISIBILITY_RADIUS_SQR)
-                   player.Client.SendPackets(batch);
+            }, this);
         }
 
         private void AEClearConditionEffectAura(TickTime time, Item item, Position target, ActivateEffect eff)
@@ -1451,7 +1438,7 @@ namespace wServer.core.objects
             }, this);
         }
 
-        private void AEShoot(TickTime time, Item item, Position target, ActivateEffect eff)
+        private void AEShoot(int time, Item item, Position target, ActivateEffect eff)
         {
             var arcGap = item.ArcGap * Math.PI / 180;
             var startAngle = Math.Atan2(target.Y - Y, target.X - X) - (item.NumProjectiles - 1) / 2 * arcGap;
@@ -1460,11 +1447,9 @@ namespace wServer.core.objects
             var sPkts = new OutgoingMessage[item.NumProjectiles];
             for (var i = 0; i < item.NumProjectiles; i++)
             {
-                var baseDmg = Stats.GetAttackDamage(prjDesc.MinDamage, prjDesc.MaxDamage, true);
-                var dmg = (int)(baseDmg + (baseDmg * TalismanExtraAbilityDamage));
+                var bulletId = GetNextBulletId();
+                var proj = PlayerShootProjectile(time, bulletId, item.ObjectType, (float)(startAngle + arcGap * i), target, prjDesc, true);
 
-                var proj = CreateProjectile(prjDesc, item.ObjectType, dmg, time.TotalElapsedMs, new Position() { X = X, Y = Y }, (float)(startAngle + arcGap * i));
-                World.AddProjectile(proj);
                 sPkts[i] = new AllyShoot()
                 {
                     OwnerId = Id,
@@ -1472,14 +1457,14 @@ namespace wServer.core.objects
                     ContainerType = item.ObjectType,
                     BulletId = proj.BulletId
                 };
-                FameCounter.Shoot(proj);
+                FameCounter.Shoot();
             }
 
             for (var i = 0; i < item.NumProjectiles; i++)
                 World.BroadcastIfVisibleExclude(sPkts[i], this, this);
         }
 
-        private void AEShurikenAbility(TickTime time, Item item, Position target, ActivateEffect eff)
+        private void AEShurikenAbility(int time, Item item, Position target, ActivateEffect eff)
         {
             if (!HasConditionEffect(ConditionEffectIndex.NinjaSpeedy))
             {
@@ -1507,7 +1492,7 @@ namespace wServer.core.objects
             ApplyConditionEffect(ConditionEffectIndex.NinjaSpeedy, 0);
         }
 
-        private void AEShurikenAbilityBerserk(TickTime time, Item item, Position target, ActivateEffect eff)
+        private void AEShurikenAbilityBerserk(int time, Item item, Position target, ActivateEffect eff)
         {
             if (!HasConditionEffect(ConditionEffectIndex.Berserk))
             {
@@ -1535,7 +1520,7 @@ namespace wServer.core.objects
             ApplyConditionEffect(ConditionEffectIndex.Berserk, 0);
         }
 
-        private void AEShurikenAbilityDamaging(TickTime time, Item item, Position target, ActivateEffect eff)
+        private void AEShurikenAbilityDamaging(int time, Item item, Position target, ActivateEffect eff)
         {
             if (!HasConditionEffect(ConditionEffectIndex.NinjaDamaging))
             {

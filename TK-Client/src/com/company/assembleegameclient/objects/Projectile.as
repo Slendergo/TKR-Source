@@ -322,7 +322,7 @@ public class Projectile extends BasicObject
             }
             else if(target.props_.isEnemy_)
             {
-               map_.gs_.gsc_.enemyHit(elapsed,this.bulletId_,target.objectId_, dead, this.containerType_);
+               map_.gs_.gsc_.enemyHit(time, this.bulletId_ ,target.objectId_, dead);
                target.damage(this.containerType_,dmg,this.projProps_.effects_,dead,this, false);
                if(target != null && (target.props_.isQuest_ || target.props_.isChest_))
                {

@@ -4,27 +4,7 @@ namespace wServer.core.objects
 {
     public partial class Player
     {
-        public byte[] NextBulletId = new byte[2] { 1, 128 };
-
-        public byte GetNextBulletId(int index = 0)
-        {
-            var currentBulletId = NextBulletId[index];
-
-            switch (index)
-            {
-                case 0:
-                    NextBulletId[index] = (byte)((NextBulletId[index] + 1) % 128);
-                    break;
-
-                case 1:
-                    NextBulletId[index] = (byte)((NextBulletId[index] + 1) % 256);
-                    break;
-            }
-
-            return currentBulletId;
-        }
-
-        internal Projectile PlayerShootProjectile(byte id, ProjectileDesc desc, ushort objType, int time, Position position, float angle, bool ability = false)
+        internal Projectile PlayerShootProjectile(int time, int bulletId, ushort objectType, float angle, Position position, ProjectileDesc desc, bool ability = false)
         {
             var min = desc.MinDamage;
             var max = desc.MaxDamage;
@@ -48,7 +28,9 @@ namespace wServer.core.objects
             if (TalismanExtraDamageOnHitMana != 0.0)
                 dmg += (int)(dmg * (isFullMp ? TalismanExtraDamageOnHitMana : -TalismanExtraDamageOnHitMana));
 
-            return CreateProjectile(desc, objType, dmg, time, position, angle, id);
+            var ret = new Projectile(time, Id, bulletId, objectType, angle, Pos.X, Pos.Y, dmg, desc);
+            AddProjectile(ret);
+            return ret;
         }
     }
 }

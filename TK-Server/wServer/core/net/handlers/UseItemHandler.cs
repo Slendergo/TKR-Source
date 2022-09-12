@@ -20,7 +20,7 @@ namespace wServer.core.net.handlers
             if (player?.World == null)
                 return;
 
-            player.UseItem(tickTime, slotObject.ObjectId, slotObject.SlotId, itemUsePos, sellMaxed);
+            player.UseItem(time, tickTime, slotObject.ObjectId, slotObject.SlotId, itemUsePos, sellMaxed);
         }
     }
 }

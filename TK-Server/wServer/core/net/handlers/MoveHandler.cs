@@ -1,6 +1,8 @@
 ﻿using common;
 using System;
+using System.Collections.Generic;
 using wServer.core;
+using wServer.core.objects;
 using wServer.networking;
 using wServer.utils;
 
@@ -21,6 +23,14 @@ namespace wServer.core.net.handlers
                 moveRecords[i] = TimedPosition.Read(rdr);
 
             var player = client.Player;
+
+            var projectilesToRemove = new List<Projectile>();
+            foreach (var k in player.Projectiles.Values)
+                foreach (var projectile in k.Values)
+                    if (projectile.IsElapsed(time))
+                        projectilesToRemove.Add(projectile);
+            foreach (var projectile in projectilesToRemove)
+                player.RemoveProjectile(projectile);
 
             if (newX != -1 && newX != player.X || newY != -1 && newY != player.Y)
             {

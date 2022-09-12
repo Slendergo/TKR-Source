@@ -13,28 +13,33 @@ namespace wServer.core.net.handlers
         public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
         {
             var time = rdr.ReadInt32();
-            var bulletId = rdr.ReadByte();
+            var bulletId = rdr.ReadInt32();
             var targetId = rdr.ReadInt32();
             var killed = rdr.ReadBoolean();
-            var itemType = rdr.ReadUInt16();
 
             var player = client.Player;
-            var entity = player?.World?.GetEntity(targetId);
-
-            if (entity?.World == null || entity.HasConditionEffect(ConditionEffectIndex.Invulnerable))
-                return;
-
+            
             if (player.HasConditionEffect(ConditionEffectIndex.Hidden))
                 return;
+            
+            var entity = player?.World?.GetEntity(targetId);
+            if(entity == null)
+                return;
 
-            var prj = player.World.GetProjectile(player.Id, bulletId);
-            if (prj == null)
+            var projectile = player.GetProjectile(player.Id, bulletId);
+            if (projectile == null)
             {
-                Console.WriteLine($"NULL PROJ| {player.Id} {bulletId}");
+                Console.WriteLine($"NULL PROJ | {player.Id} {bulletId}");
                 return;
             }
 
-            prj?.ForceHit(entity, tickTime);
+            projectile.HitEntity(player, entity, tickTime);
+
+
+            var delta = time - projectile.StartTime;
+            var hitSpot = projectile.GetPosition(delta);
+
+            Console.WriteLine($"EnemyHit: predicted location: {hitSpot.X}, {hitSpot.Y} | Server Location: {entity.X}, {entity.Y}");
 
             var totalLife = 0.0;
             var totalMana = 0.0;
@@ -72,7 +77,7 @@ namespace wServer.core.net.handlers
                 if (totalLife > 0)
                     Player.HealDiscrete(player, (int)totalLife, false);
                 if (totalMana > 0)
-                      Player.HealDiscrete(player, (int)totalMana, true);
+                    Player.HealDiscrete(player, (int)totalMana, true);
             }
         }
     }

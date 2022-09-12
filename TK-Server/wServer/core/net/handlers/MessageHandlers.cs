@@ -48,10 +48,19 @@ namespace wServer.core.net.handlers
         static MessageHandlers()
         {
             Handlers = new Dictionary<MessageId, IMessageHandler>();
-            foreach (var type in Assembly.GetAssembly(typeof(IMessageHandler)).GetTypes().Where(_ => _.IsClass && !_.IsAbstract && _.IsSubclassOf(typeof(IMessageHandler))))
+
+            try
             {
-                var handler = (IMessageHandler)Activator.CreateInstance(type);
-                Handlers.Add(handler.MessageId, handler);
+                foreach (var type in Assembly.GetAssembly(typeof(IMessageHandler)).GetTypes().Where(_ => _.IsClass && !_.IsAbstract && _.IsSubclassOf(typeof(IMessageHandler))))
+                {
+                    var handler = (IMessageHandler)Activator.CreateInstance(type);
+                    Console.WriteLine(handler.MessageId);
+                    Handlers.Add(handler.MessageId, handler);
+                }
+            }
+            catch
+            {
+                Console.WriteLine();
             }
         }
 

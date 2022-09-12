@@ -734,14 +734,13 @@ public class GameServerConnection
          this.serverConnection.sendMessage(playerHit);
       }
 
-      public function enemyHit(time:int, bulletId:int, targetId:int, kill:Boolean, itemType:int) : void
+      public function enemyHit(time:int, bulletId:int, targetId:int, kill:Boolean) : void
       {
          var enemyHit:EnemyHit = this.messages.require(ENEMYHIT) as EnemyHit;
          enemyHit.time_ = time;
          enemyHit.bulletId_ = bulletId;
          enemyHit.targetId_ = targetId;
          enemyHit.kill_ = kill;
-         enemyHit.itemType_ = itemType;
          this.serverConnection.sendMessage(enemyHit);
       }
 
@@ -1210,8 +1209,9 @@ public class GameServerConnection
             }
             return;
          }
+
          var proj:Projectile = FreeList.newObject(Projectile) as Projectile;
-         proj.reset(serverPlayerShoot.containerType_,0,serverPlayerShoot.ownerId_,serverPlayerShoot.bulletId_,serverPlayerShoot.angle_,this.gs_.lastUpdate_);
+         proj.reset(serverPlayerShoot.containerType_,0, serverPlayerShoot.ownerId_, serverPlayerShoot.bulletId_, serverPlayerShoot.angle_,this.gs_.lastUpdate_);
          proj.setDamage(serverPlayerShoot.damage_);
          this.gs_.map.addObj(proj,serverPlayerShoot.startingPos_.x_,serverPlayerShoot.startingPos_.y_);
          if(needsAck)
@@ -1252,7 +1252,7 @@ public class GameServerConnection
          {
             proj = FreeList.newObject(Projectile) as Projectile;
             angle = enemyShoot.angle_ + enemyShoot.angleInc_ * i;
-            proj.reset(owner.objectType_,enemyShoot.bulletType_,enemyShoot.ownerId_,(enemyShoot.bulletId_ + i) % 256,angle,this.gs_.lastUpdate_);
+            proj.reset(owner.objectType_,enemyShoot.bulletType_,enemyShoot.ownerId_,(enemyShoot.bulletId_ + i) % 0xFFFF, angle,this.gs_.lastUpdate_);
             proj.setDamage(enemyShoot.damage_);
             this.gs_.map.addObj(proj,enemyShoot.startingPos_.x_,enemyShoot.startingPos_.y_);
             proj.addTo(this.gs_.map, enemyShoot.startingPos_.x_, enemyShoot.startingPos_.y_);

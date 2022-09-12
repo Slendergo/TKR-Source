@@ -13,7 +13,7 @@ namespace wServer.core.net.handlers
         public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
         {
             var time = rdr.ReadInt32();
-            var bulletId = rdr.ReadByte();
+            var bulletId = rdr.ReadInt32();
             var containerType = rdr.ReadInt32();
             var startingPosition = Position.Read(rdr);
             var angle = rdr.ReadSingle();
@@ -32,7 +32,6 @@ namespace wServer.core.net.handlers
                     hasItemType = true;
                     break;
                 }
-
 
             if (!hasItemType)
             {
@@ -63,27 +62,23 @@ namespace wServer.core.net.handlers
             for (var i = 0; i < item.NumProjectiles; i++)
             {
                 var newBulletId = player.GetNextBulletId();
-                var clientBulletId = (bulletId + i) % 128;
+                var clientBulletId = (bulletId + i) % (0xFFFF - 0xFF);
                 if (newBulletId != clientBulletId)
                 {
                     client.Disconnect("bullet id desync");
                     return;
                 }
 
-                // create projectile and show other players
-                var prjDesc = item.Projectiles[0]; //Assume only one
-                var prj = player.PlayerShootProjectile(newBulletId, prjDesc, item.ObjectType, time, startingPosition, angle + arcGap * i);
-
-                player.World.AddProjectile(prj);
-
+                var prjDesc = item.Projectiles[0];
+                var prj = player.PlayerShootProjectile(time, newBulletId, item.ObjectType, angle + arcGap * i, startingPosition, prjDesc);
                 player.World.BroadcastIfVisibleExclude(new AllyShoot()
                 {
                     OwnerId = player.Id,
-                    Angle = angle,
-                    ContainerType = containerType,
-                    BulletId = newBulletId
+                    Angle = prj.Angle,
+                    ContainerType = item.ObjectType,
+                    BulletId = prj.BulletId
                 }, player, player);
-                player.FameCounter.Shoot(prj);
+                player.FameCounter.Shoot();
             }
         }
     }

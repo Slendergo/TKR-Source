@@ -165,7 +165,7 @@
     <Compile Include="core\net\handlers\FuelEngineHandler.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="core\net\handlers\ShoootAckMessageHandler.cs" />
+    <Compile Include="core\net\handlers\ShootAckMessageHandler.cs" />
     <Compile Include="core\net\handlers\talisman\TalismanEssenceActionHandler.cs" />
     <Compile Include="core\objects\ConditionEffectManager.cs" />
     <Compile Include="core\objects\inventory\ItemDustPools.cs" />
@@ -226,7 +226,6 @@
     <Compile Include="core\worlds\impl\WorldBranch.cs" />
     <Compile Include="logic\behaviors\ChangeMusic.cs" />
     <Compile Include="logic\behaviors\ChangeMusicOnDeath.cs" />
-    <Compile Include="logic\behaviors\Roar.cs" />
     <Compile Include="logic\db\BehaviorDb.GardenofHorror.cs" />
     <Compile Include="logic\db\BehaviorDb.HardBounty.cs" />
     <Compile Include="logic\db\BehaviorDb.HauntedCemetery.cs" />

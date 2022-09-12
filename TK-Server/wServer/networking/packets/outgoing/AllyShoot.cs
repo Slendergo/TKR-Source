@@ -4,7 +4,7 @@ namespace wServer.networking.packets.outgoing
 {
     public class AllyShoot : OutgoingMessage
     {
-        public byte BulletId { get; set; }
+        public int BulletId { get; set; }
         public int OwnerId { get; set; }
         public int ContainerType { get; set; }
         public float Angle { get; set; }

@@ -34,33 +34,33 @@ namespace wServer.logic.behaviors
 
         protected override void OnStateEntry(Entity host, TickTime time, ref object state) => state = new RingAttackState { angleToIncrement = _angleToIncrement, fixedAngle = _fixedAngle, coolDown = _coolDown };
 
-        protected override void TickCore(Entity Host, TickTime time, ref object state)
+        protected override void TickCore(Entity host, TickTime time, ref object state)
         {
             var rastate = (RingAttackState)state;
 
             Status = CycleStatus.NotStarted;
 
-            if (Host == null || Host.World == null)
+            if (host == null || host.World == null)
                 return;
 
-            if (Host.HasConditionEffect(ConditionEffectIndex.Stunned))
+            if (host.HasConditionEffect(ConditionEffectIndex.Stunned))
                 return;
 
             var dist = (float)_radius;
-            var isQuest = Host.ObjectDesc.Quest;
+            var isQuest = host.ObjectDesc.Quest;
 
             if (rastate.coolDown.CoolDown <= 0)
             {
-                var entity = _radius == 0 ? null : Host.GetNearestEntity((float)_radius, null, _seeInvis);
-                var enemy = Host as Enemy;
+                var entity = _radius == 0 ? null : host.GetNearestEntity((float)_radius, null, _seeInvis);
+                var enemy = host as Enemy;
                 var enemyClasified = enemy.Legendary ? 50 : enemy.Epic ? 25 : enemy.Rare ? 10 : 0;
 
                 if (_radius == 0)
                 {
-                    if (!(Host is Character chr) || chr.World == null) return;
+                    if (!(host is Character chr) || chr.World == null) return;
 
                     var angleInc = 2 * Math.PI / _count;
-                    var desc = Host.ObjectDesc.Projectiles[_projectileIndex];
+                    var desc = host.ObjectDesc.Projectiles[_projectileIndex];
 
                     float? angle = null;
 
@@ -69,10 +69,10 @@ namespace wServer.logic.behaviors
                         if (rastate.angleToIncrement != null)
                         {
                             if (_useSavedAngle)
-                                rastate.fixedAngle = Host.savedAngle;
+                                rastate.fixedAngle = host.savedAngle;
 
                             rastate.fixedAngle += rastate.angleToIncrement;
-                            Host.savedAngle = rastate.fixedAngle;
+                            host.savedAngle = rastate.fixedAngle;
                         }
                         angle = (float)rastate.fixedAngle;
                     }
@@ -80,53 +80,17 @@ namespace wServer.logic.behaviors
                         angle = entity == null ? _offset : (float)Math.Atan2(entity.Y - chr.Y, entity.X - chr.X) + _offset;
 
                     var count = _count;
-                    if (Host.HasConditionEffect(ConditionEffectIndex.Dazed))
+                    if (host.HasConditionEffect(ConditionEffectIndex.Dazed))
                         count = Math.Max(1, count / 2);
 
                     var dmg = Random.Next(desc.MinDamage + enemyClasified, desc.MaxDamage + enemyClasified);
-                    var startAngle = angle * (count - 1) / 2;
 
-                    byte prjId = 0;
+                    var prjPos = new Position() { X = host.X, Y = host.Y };
 
-                    var prjPos = new Position() { X = Host.X, Y = Host.Y };
-                    var prjs = new Projectile[count];
-
-                    for (var i = 0; i < count; i++)
-                    {
-                        var prj = Host.CreateProjectile(desc, Host.ObjectType, dmg, time.TotalElapsedMs, prjPos, (float)(startAngle + angle * i));
-
-                        Host.World.AddProjectile(prj);
-
-                        if (i == 0)
-                            prjId = prj.BulletId;
-
-                        prjs[i] = prj;
-                    }
-
-                    var pkt = new EnemyShoot()
-                    {
-                        BulletId = prjId,
-                        OwnerId = Host.Id,
-                        StartingPos = prjPos,
-                        Angle = (float)angle,
-                        Damage = (short)dmg,
-                        BulletType = (byte)desc.BulletType,
-                        AngleInc = (float)angleInc,
-                        NumShots = (byte)count
-                    };
-
-                    if (isQuest)
-                        Host.World.ForeachPlayer(_ => _.Client.SendPacket(pkt));
-                    else
-                    {
-                        // replaced to this
-                        Host.World.BroadcastIfVisible(pkt, Host);
-                        
-                        // from this
-                        //var players = Host.World.Players.Values.Where(_ => _.DistSqr(Host) < PlayerUpdate.VISIBILITY_RADIUS_SQR);
-                        //for (var i = 0; i < players.Length; i++)
-                        //    players[i].Client.SendPacket(pkt);
-                    }
+                    var bulletId = host.GetNextBulletId(count);
+                    var pkt = new EnemyShoot(bulletId, host.Id, (byte)desc.BulletType, host.ObjectType, ref prjPos, (float)angle, dmg, (byte)count, (float)angleInc);
+                    
+                    host.World.BroadcastIfVisible(pkt, host);
                 }
 
                 rastate.coolDown = _coolDown.Next(Random);

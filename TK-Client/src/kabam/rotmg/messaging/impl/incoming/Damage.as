@@ -29,9 +29,9 @@ package kabam.rotmg.messaging.impl.incoming
          }
          this.damageAmount_ = data.readInt();
          this.kill_ = data.readBoolean();
-         this.bulletId_ = data.readUnsignedByte();
+         this.bulletId_ = data.readInt();
          this.objectId_ = data.readInt();
-//         this.pierce_ = data.readBoolean();
+         this.pierce_ = data.readBoolean();
       }
       
       override public function toString() : String

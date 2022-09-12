@@ -433,9 +433,9 @@ namespace wServer.core.objects
             return playerDesc.Stats.Where((t, i) => Stats.Base[i] >= t.MaxValue).Count() + (UpgradeEnabled ? playerDesc.Stats.Where((t, i) => i == 0 ? Stats.Base[i] >= t.MaxValue + 50 : i == 1 ? Stats.Base[i] >= t.MaxValue + 50 : Stats.Base[i] >= t.MaxValue + 10).Count() : 0);
         }
 
-        public override bool HitByProjectile(Projectile projectile, TickTime time)
+        public override bool HitByProjectile(Entity shooter, Projectile projectile, TickTime time)
         {
-            if (projectile.Host is Player || IsInvulnerable)
+            if (shooter is Player || IsInvulnerable)
                 return false;
 
             #region Item Effects
@@ -471,10 +471,10 @@ namespace wServer.core.objects
 
             #endregion Item Effects
 
-            var dmg = (int)Stats.GetDefenseDamage(projectile.Damage, projectile.ProjDesc.ArmorPiercing);
+            var dmg = (int)Stats.GetDefenseDamage(projectile.Damage, projectile.ProjectileDesc.ArmorPiercing);
             if (!HasConditionEffect(ConditionEffectIndex.Invulnerable))
                 HP -= dmg;
-            ApplyConditionEffect(projectile.ProjDesc.Effects);
+            ApplyConditionEffect(projectile.ProjectileDesc.Effects);
             World.BroadcastIfVisibleExclude(new Damage()
             {
                 TargetId = Id,
@@ -482,13 +482,13 @@ namespace wServer.core.objects
                 DamageAmount = dmg,
                 Kill = HP <= 0,
                 BulletId = projectile.BulletId,
-                ObjectId = projectile.Host.Id
+                ObjectId = projectile.ObjectId
             }, this, this);;
 
             if (HP <= 0)
-                Death(projectile.Host.ObjectDesc.DisplayId ?? projectile.Host.ObjectDesc.ObjectId, projectile.Host);
+                Death(shooter.Name, shooter);
 
-            return base.HitByProjectile(projectile, time);
+            return base.HitByProjectile(shooter, projectile, time);
         }
 
         public override void Init(World owner)

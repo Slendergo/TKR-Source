@@ -75,6 +75,23 @@ namespace wServer.core.objects
         public float RealY => _y.GetValue();
         public int Size { get => _size.GetValue(); set => _size?.SetValue(value); }
 
+        public int NextBulletId = 1;
+        public int NextAbilityBulletId = 1;
+
+        public int GetNextBulletId(int numShots = 1)
+        {
+            var currentBulletId = NextBulletId;
+            NextBulletId = (NextBulletId + numShots) % (0xFFFF - 0xFF);
+            return currentBulletId;
+        }
+
+        public int GetNextAbilityBulletId()
+        {
+            var currentBulletId = NextAbilityBulletId;
+            NextAbilityBulletId = (NextAbilityBulletId + 1) % 0xFF;
+            return currentBulletId;
+        }
+
         public IDictionary<object, object> StateStorage
         {
             get
@@ -252,11 +269,10 @@ namespace wServer.core.objects
             };
         }
 
-        public virtual bool HitByProjectile(Projectile projectile, TickTime time)
+        public virtual bool HitByProjectile(Entity shooter, Projectile projectile, TickTime time)
         {
             if (ObjectDesc == null)
                 return true;
-
             return ObjectDesc.Enemy || ObjectDesc.Player;
         }
 
@@ -696,23 +712,6 @@ namespace wServer.core.objects
         {
             public float X;
             public float Y;
-        }
-
-        protected byte projectileId;
-
-        public Projectile CreateProjectile(ProjectileDesc desc, ushort container, int dmg, long time, Position pos, float angle, int bulletId = -1)
-        {
-            var ret = World.ObjectPools.Projectiles.Rent();
-            ret.Host = this;
-            ret.ProjDesc = desc;
-            ret.BulletId = bulletId != -1 ? (byte)bulletId : projectileId++;
-            ret.Container = container;
-            ret.Damage = dmg;
-            ret.CreationTime = time;
-            ret.Angle = angle;
-            ret.StartX = pos.X;
-            ret.StartY = pos.Y;
-            return ret;
         }
 
         public double AngleTo(Entity host) => Math.Atan2(host.Y - Y, host.X - X);

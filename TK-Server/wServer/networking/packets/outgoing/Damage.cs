@@ -10,7 +10,7 @@ namespace wServer.networking.packets.outgoing
         public ConditionEffectIndex Effects { get; set; }
         public int DamageAmount { get; set; }
         public bool Kill { get; set; }
-        public byte BulletId { get; set; }
+        public int BulletId { get; set; }
         public int ObjectId { get; set; }
         public bool Pierce { get; set; }
 

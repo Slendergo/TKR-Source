@@ -4,17 +4,10 @@ package kabam.rotmg.messaging.impl.outgoing
    
    public class EnemyHit extends OutgoingMessage
    {
-       
-      
       public var time_:int;
-      
       public var bulletId_:uint;
-      
       public var targetId_:int;
-      
       public var kill_:Boolean;
-
-      public var itemType_:int;
       
       public function EnemyHit(id:uint, callback:Function)
       {
@@ -24,10 +17,9 @@ package kabam.rotmg.messaging.impl.outgoing
       override public function writeToOutput(data:IDataOutput) : void
       {
          data.writeInt(this.time_);
-         data.writeByte(this.bulletId_);
+         data.writeInt(this.bulletId_);
          data.writeInt(this.targetId_);
          data.writeBoolean(this.kill_);
-         data.writeShort(this.itemType_);
       }
       
       override public function toString() : String

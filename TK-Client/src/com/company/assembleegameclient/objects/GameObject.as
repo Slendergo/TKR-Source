@@ -721,7 +721,7 @@ public class GameObject extends BasicObject {
 
     public function getBulletId():uint {
         var ret:uint = this.nextBulletId_;
-        this.nextBulletId_ = (this.nextBulletId_ + 1) % 128;
+        this.nextBulletId_ = (this.nextBulletId_ + 1) % (0xFFFF - 0xFF);
         return ret;
     }
 

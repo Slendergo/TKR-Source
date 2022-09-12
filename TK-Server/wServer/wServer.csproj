@@ -179,7 +179,6 @@
     <Compile Include="core\objects\inventory\ItemStacker.cs" />
     <Compile Include="core\objects\player\Player.State.cs" />
     <Compile Include="core\objects\Engine.cs" />
-    <Compile Include="core\objects\player\state\ClientState.cs" />
     <Compile Include="core\setpieces\Fluffy.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
@@ -472,7 +471,7 @@
     <Compile Include="core\net\handlers\UsePortalHandler.cs" />
     <Compile Include="networking\packets\outgoing\AccountList.cs" />
     <Compile Include="networking\packets\outgoing\AllyShoot.cs" />
-    <Compile Include="networking\packets\outgoing\AoeData.cs" />
+    <Compile Include="networking\packets\outgoing\Aoe.cs" />
     <Compile Include="networking\packets\outgoing\bounty\BountyMemberListSend.cs" />
     <Compile Include="networking\packets\outgoing\BuyResultMessage.cs" />
     <Compile Include="networking\packets\outgoing\SwitchMusic.cs" />
@@ -691,6 +690,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="core\objects\player\state\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

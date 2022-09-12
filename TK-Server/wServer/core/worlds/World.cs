@@ -109,13 +109,6 @@ namespace wServer.core.worlds
                 player.Client.SendPacket(outgoingMessage);
         }
 
-        public void BroadcastAoeIfVisible(AoeData aoeData, Entity host)
-        {
-            foreach (var player in Players.Values)
-                if (player.SqDistTo(host) < PlayerUpdate.VISIBILITY_RADIUS_SQR)
-                    player.ClientState.AwaitAoe(aoeData);
-        }
-
         public void BroadcastIfVisible(OutgoingMessage outgoingMessage, ref Position worldPosData)
         {
             foreach (var player in Players.Values)

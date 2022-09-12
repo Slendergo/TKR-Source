@@ -10,7 +10,6 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using wServer.core.net.handlers;
-using wServer.core.objects.player.state;
 using wServer.core.terrain;
 using wServer.core.worlds;
 using wServer.core.worlds.logic;
@@ -131,11 +130,8 @@ namespace wServer.core.objects
         public bool IsSupporter5 => Client.Rank.Rank >= RankingType.Supporter5;
         public bool IsCommunityManager => Client.Rank.IsCommunityManager;
 
-        public ClientState ClientState { get; private set; }
         public Player(Client client, bool saveInventory = true) : base(client.GameServer, client.Character.ObjectType)
         {
-            ClientState = new ClientState(this);
-
             var settings = GameServer.Resources.Settings;
             var gameData = GameServer.Resources.GameData;
 
@@ -759,8 +755,9 @@ namespace wServer.core.objects
             {
                 if (DeltaTime)
                     SendInfo($"[DeltaTime]: {World.DisplayName} -> {time.ElapsedMsDelta} | {time.LogicTime}");
-
-                ClientState.Update(ref time);
+                
+                PlayerUpdate.SendUpdate();
+                PlayerUpdate.SendNewTick(time.ElapsedMsDelta);
 
                 HandleTalismans(ref time);
 

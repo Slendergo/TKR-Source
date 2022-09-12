@@ -10,7 +10,6 @@ namespace wServer.core.net.handlers
         public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
         {
             var time = rdr.ReadInt32();
-            client.Player.ClientState.OnShootAck(time);
         }
     }
 }

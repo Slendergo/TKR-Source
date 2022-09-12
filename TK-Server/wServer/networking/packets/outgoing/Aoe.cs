@@ -3,7 +3,7 @@ using common.resources;
 
 namespace wServer.networking.packets.outgoing
 {
-    public class AoeData
+    public class Aoe : OutgoingMessage
     {
         public Position Pos { get; set; }
         public float Radius { get; set; }
@@ -13,7 +13,9 @@ namespace wServer.networking.packets.outgoing
         public ushort OrigType { get; set; }
         public ARGB Color { get; set; }
 
-        public void Write(NWriter wtr)
+        public override MessageId MessageId => MessageId.AOE;
+
+        protected override void Write(NWriter wtr)
         {
             Pos.Write(wtr);
             wtr.Write(Radius);

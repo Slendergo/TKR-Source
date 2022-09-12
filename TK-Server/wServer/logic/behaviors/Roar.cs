@@ -52,7 +52,7 @@ namespace wServer.logic.behaviors
 
                     host.World.Timers.Add(new WorldTimer(1500, (world, t) =>
                     {
-                        world.BroadcastAoeIfVisible(new AoeData()
+                        world.BroadcastIfVisible(new Aoe()
                         {
                             Pos = target,
                             Radius = _radius,
@@ -62,6 +62,13 @@ namespace wServer.logic.behaviors
                             OrigType = host.ObjectType,
                             Color = new ARGB(_color)
                         }, host);
+
+                        world.AOE(target, _radius, true, p =>
+                        {
+                            (p as IPlayer).Damage(_damage + enemyClasified, host);
+                            if (!p.HasConditionEffect(ConditionEffectIndex.Invincible) && !p.HasConditionEffect(ConditionEffectIndex.Stasis))
+                                p.ApplyConditionEffect(new ConditionEffect(_effect, _effectDuration));
+                        });
                     }));
                 }
                 cool = _cooldown.Next(Random);

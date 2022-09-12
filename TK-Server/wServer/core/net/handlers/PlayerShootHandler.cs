@@ -14,64 +14,77 @@ namespace wServer.core.net.handlers
         {
             var time = rdr.ReadInt32();
             var bulletId = rdr.ReadByte();
-            var ContainerType = rdr.ReadInt32();
+            var containerType = rdr.ReadInt32();
             var startingPosition = Position.Read(rdr);
             var angle = rdr.ReadSingle();
 
             var player = client.Player;
-
-            if (player.Inventory[0] == null || player.Inventory[1] == null || !player.GameServer.Resources.GameData.Items.TryGetValue((ushort)ContainerType, out var item))
+            if (!player.GameServer.Resources.GameData.Items.TryGetValue((ushort)containerType, out var item))
             {
                 client.Disconnect("Attempting to shoot a invalid item");
                 return;
             }
 
-            if (item.ObjectType == player.Inventory[0].ObjectType)
+            var hasItemType = false;
+            for(var i = 0; i < player.Inventory.Length; i++)
+                if (player.Inventory[i] != null && player.Inventory[i].ObjectType == containerType)
+                {
+                    hasItemType = true;
+                    break;
+                }
+
+
+            if (!hasItemType)
             {
-                if (player.World.DisableShooting)
-                {
-                    client.Disconnect("Attempting to shoot in a disabled world");
-                    return;
-                }
-
-                var arcGap = item.ArcGap;
-                for (var i = 0; i < item.NumProjectiles; i++)
-                {
-                    var newBulletId = player.GetNextBulletId();
-                    var clientBulletId = (bulletId + i) % 128;
-                    if (newBulletId != clientBulletId)
-                    {
-                        client.Disconnect("bullet id desync");
-                        return;
-                    }
-
-                    // create projectile and show other players
-                    var prjDesc = item.Projectiles[0]; //Assume only one
-                    var prj = player.PlayerShootProjectile(newBulletId, prjDesc, item.ObjectType, C2STime(time), startingPosition, angle + arcGap * i);
-
-                    player.World.AddProjectile(prj);
-
-                    player.World.BroadcastIfVisibleExclude(new AllyShoot()
-                    {
-                        OwnerId = player.Id,
-                        Angle = angle,
-                        ContainerType = ContainerType,
-                        BulletId = newBulletId
-                    }, player, player);
-                    player.FameCounter.Shoot(prj);
-                }
+                client.Disconnect("Attempting to shoot a item that they dont have");
                 return;
             }
 
-            // ability shoot handled by useitem
             if (item.ObjectType == player.Inventory[1].ObjectType)
             {
                 if (player.World.DisableAbilities)
                     client.Disconnect("Attempting to activate ability in a disabled world");
-                return; // ability shoot handled by useitem
+                return; // todo
             }
 
-            System.Console.WriteLine($"{player.Name} has reached the end of handler");
+            if (player.World.DisableShooting)
+            {
+                client.Disconnect("Attempting to shoot in a disabled world");
+                return;
+            }
+
+            if(player.IsValidShoot(time, item.RateOfFire))
+            {
+                client.Disconnect("Attempting to shoot a item that they dont have");
+                return;
+            }
+
+            var arcGap = item.ArcGap;
+            for (var i = 0; i < item.NumProjectiles; i++)
+            {
+                var newBulletId = player.GetNextBulletId();
+                var clientBulletId = (bulletId + i) % 128;
+                if (newBulletId != clientBulletId)
+                {
+                    client.Disconnect("bullet id desync");
+                    return;
+                }
+
+                // create projectile and show other players
+                var prjDesc = item.Projectiles[0]; //Assume only one
+                var prj = player.PlayerShootProjectile(newBulletId, prjDesc, item.ObjectType, time, startingPosition, angle + arcGap * i);
+
+                player.World.AddProjectile(prj);
+
+                player.World.BroadcastIfVisibleExclude(new AllyShoot()
+                {
+                    OwnerId = player.Id,
+                    Angle = angle,
+                    ContainerType = containerType,
+                    BulletId = newBulletId
+                }, player, player);
+                player.FameCounter.Shoot(prj);
+            }
         }
     }
 }

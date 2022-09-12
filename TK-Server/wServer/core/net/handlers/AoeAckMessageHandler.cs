@@ -26,8 +26,6 @@ namespace wServer.core.net.handlers
             var x = rdr.ReadSingle();
             var y = rdr.ReadSingle();
 
-
-            client.Player.ClientState.OnAoeAck(time, x, y);
         }
     }
 }

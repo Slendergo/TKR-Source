@@ -39,6 +39,7 @@
     <ActivateOnEquip stat="0" amount="110">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="5">IncrementStat</ActivateOnEquip>
     <Activate effect="Armored" duration="3.5">ConditionEffectSelf</Activate>
+    <Activate effect="Damaging" duration="2.5">ConditionEffectSelf</Activate>
     <Usable />
     <BagType>7</BagType>
     <FameBonus>7</FameBonus>

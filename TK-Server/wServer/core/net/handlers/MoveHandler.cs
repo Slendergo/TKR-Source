@@ -81,8 +81,6 @@ namespace wServer.core.net.handlers
                     var delta = clientSpeed - serverSpeed;
                     if (delta > 0.5 * clientSpeed && delta < 30.0 * clientSpeed) // tollerance
                     {
-                        Console.WriteLine(clientSpeed + " " + dt + " " + distance + " " + clientSpeed + " " + serverSpeed);
-
                         foreach (var other in player.World.Players.Values)
                             if (other.IsAdmin || other.IsCommunityManager)
                             {
@@ -92,7 +90,7 @@ namespace wServer.core.net.handlers
                                     other.SendInfo($"Warning: [{player.Name}] {player.AccountId}-{player.Client.Character.CharId} is faster than expected! ({delta} | tolerance: 0.5)");
                             }
                         
-                        StaticLogger.Instance.Info($"[{player.Name}] {player.AccountId}-{player.Client.Character.CharId} is moving faster than expected! {delta} ({delta} | tolerance: 0.5)");
+                        StaticLogger.Instance.Warn($"[{player.Name}] {player.AccountId}-{player.Client.Character.CharId} is moving faster than expected! {delta} ({delta} | tolerance: 0.5)");
                     }
                 }
 

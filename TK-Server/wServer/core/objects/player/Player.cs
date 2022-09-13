@@ -1416,45 +1416,6 @@ namespace wServer.core.objects
 
         private void RevengeEffects(Item item, int slot)
         {
-            if (item.Lucky)
-            {
-                if (World.Random.NextDouble() < 0.1 && ApplyEffectCooldown(slot))
-                {
-                    setCooldownTime(20, slot);
-                    for (var j = 0; j < 8; j++)
-                        Stats.Boost.ActivateBoost[j].Push(j == 0 ? 100 : j == 1 ? 100 : 15, true);
-                    Stats.ReCalculateValues();
-
-                    #region Boosted Eff
-
-                    ApplyConditionEffect(ConditionEffectIndex.HPBoost, 5000);
-                    ApplyConditionEffect(ConditionEffectIndex.MPBoost, 5000);
-                    ApplyConditionEffect(ConditionEffectIndex.AttBoost, 5000);
-                    ApplyConditionEffect(ConditionEffectIndex.DefBoost, 5000);
-                    ApplyConditionEffect(ConditionEffectIndex.DexBoost, 5000);
-                    ApplyConditionEffect(ConditionEffectIndex.SpdBoost, 5000);
-                    ApplyConditionEffect(ConditionEffectIndex.WisBoost, 5000);
-                    ApplyConditionEffect(ConditionEffectIndex.VitBoost, 5000);
-
-                    #endregion Boosted Eff
-
-                    World.BroadcastIfVisible(new Notification()
-                    {
-                        Message = "Boosted!",
-                        Color = new ARGB(0xFF00FF00),
-                        PlayerId = Id,
-                        ObjectId = Id
-                    }, this);
-
-                    World.Timers.Add(new WorldTimer(5000, (world, t) =>
-                    {
-                        for (var i = 0; i < 8; i++)
-                            Stats.Boost.ActivateBoost[i].Pop(i == 0 ? 100 : i == 1 ? 100 : 15, true);
-                        Stats.ReCalculateValues();
-                    }));
-                }
-            }
-
             if (item.Insanity)
             {
                 if (World.Random.NextDouble() < 0.05 && ApplyEffectCooldown(slot))
@@ -1564,20 +1525,59 @@ namespace wServer.core.objects
 
         private void SpecialEffects()
         {
-            for (var i = 0; i < 4; i++)
+            for (var slot = 0; slot < 4; slot++)
             {
-                var item = Inventory[i];
+                var item = Inventory[slot];
                 if (item == null || !item.Legendary && !item.Revenge && !item.Mythical)
                     continue;
 
+                if (item.Lucky)
+                {
+                    if (World.Random.NextDouble() < 0.1 && ApplyEffectCooldown(slot))
+                    {
+                        setCooldownTime(20, slot);
+                        for (var j = 0; j < 8; j++)
+                            Stats.Boost.ActivateBoost[j].Push(j == 0 ? 100 : j == 1 ? 100 : 15, true);
+                        Stats.ReCalculateValues();
+
+                        #region Boosted Eff
+
+                        ApplyConditionEffect(ConditionEffectIndex.HPBoost, 5000);
+                        ApplyConditionEffect(ConditionEffectIndex.MPBoost, 5000);
+                        ApplyConditionEffect(ConditionEffectIndex.AttBoost, 5000);
+                        ApplyConditionEffect(ConditionEffectIndex.DefBoost, 5000);
+                        ApplyConditionEffect(ConditionEffectIndex.DexBoost, 5000);
+                        ApplyConditionEffect(ConditionEffectIndex.SpdBoost, 5000);
+                        ApplyConditionEffect(ConditionEffectIndex.WisBoost, 5000);
+                        ApplyConditionEffect(ConditionEffectIndex.VitBoost, 5000);
+
+                        #endregion Boosted Eff
+
+                        World.BroadcastIfVisible(new Notification()
+                        {
+                            Message = "Boosted!",
+                            Color = new ARGB(0xFF00FF00),
+                            PlayerId = Id,
+                            ObjectId = Id
+                        }, this);
+
+                        World.Timers.Add(new WorldTimer(5000, (world, t) =>
+                        {
+                            for (var i = 0; i < 8; i++)
+                                Stats.Boost.ActivateBoost[i].Pop(i == 0 ? 100 : i == 1 ? 100 : 15, true);
+                            Stats.ReCalculateValues();
+                        }));
+                    }
+                }
+
                 if (item.Mythical || item.Revenge || item.ObjectId == "Possessed Halberd" || item.ObjectId == "The Horn Breaker")
-                    RevengeEffects(item, i);
+                    RevengeEffects(item, slot);
 
                 if (item.Legendary)
-                    LegendaryEffects(item, i);
+                    LegendaryEffects(item, slot);
 
                 if (item.Eternal)
-                    EternalEffects(item, i);
+                    EternalEffects(item, slot);
             }
         }
 

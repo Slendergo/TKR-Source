@@ -3,6 +3,7 @@ using common.resources;
 using System;
 using wServer.core.objects;
 using wServer.networking;
+using wServer.utils;
 
 namespace wServer.core.net.handlers
 {
@@ -33,13 +34,21 @@ namespace wServer.core.net.handlers
                 return;
             }
 
-            projectile.HitEntity(player, entity, tickTime);
-
-
             var delta = time - projectile.StartTime;
+
             var hitSpot = projectile.GetPosition(delta);
 
-            Console.WriteLine($"EnemyHit: predicted location: {hitSpot.X}, {hitSpot.Y} | Server Location: {entity.X}, {entity.Y}");
+            var distanceFromHit = entity.DistTo(hitSpot.X, hitSpot.Y);
+            if (distanceFromHit > 7.5)
+            {
+                foreach (var other in player.World.Players.Values)
+                    if (other.IsAdmin || other.IsCommunityManager)
+                        other.SendInfo($"Warning: [{player.Name}] {player.AccountId}-{player.Client.Character.CharId} potentially AOE hacks! ({distanceFromHit} | tolerance: 7.5)");
+                StaticLogger.Instance.Warn($"[{player.Name}] {player.AccountId}-{player.Client.Character.CharId} potentially AOE hacks! ({distanceFromHit} | tolerance: 7.5)");
+                return;
+            }
+
+            projectile.HitEntity(player, entity, tickTime);
 
             var totalLife = 0.0;
             var totalMana = 0.0;

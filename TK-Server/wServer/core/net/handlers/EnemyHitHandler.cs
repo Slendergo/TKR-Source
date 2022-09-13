@@ -3,6 +3,7 @@ using common.resources;
 using System;
 using wServer.core.objects;
 using wServer.networking;
+using wServer.utils;
 
 namespace wServer.core.net.handlers
 {
@@ -40,7 +41,10 @@ namespace wServer.core.net.handlers
             var distanceFromHit = entity.DistTo(hitSpot.X, hitSpot.Y);
             if (distanceFromHit > 7.5)
             {
-                Console.WriteLine("Possible AOE");
+                foreach (var other in player.World.Players.Values)
+                    if (other.IsAdmin || other.IsCommunityManager)
+                        other.SendInfo($"Warning: [{player.Name}] {player.AccountId}-{player.Client.Character.CharId} potentially AOE hacks! ({distanceFromHit} | tolerance: 7.5)");
+                StaticLogger.Instance.Warn($"[{player.Name}] {player.AccountId}-{player.Client.Character.CharId} potentially AOE hacks! ({distanceFromHit} | tolerance: 7.5)");
                 return;
             }
 

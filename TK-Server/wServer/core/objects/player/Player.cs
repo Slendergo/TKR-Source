@@ -1570,7 +1570,6 @@ namespace wServer.core.objects
                     }
                 }
 
-
                 if (item.Mythical || item.Revenge || item.ObjectId == "Possessed Halberd" || item.ObjectId == "The Horn Breaker")
                     RevengeEffects(item, slot);
 

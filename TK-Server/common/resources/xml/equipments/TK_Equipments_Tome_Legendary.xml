@@ -20,7 +20,7 @@
     <MpCost>100</MpCost>
     <Activate amount="350" range="5" useWisMod="false">HealNova</Activate>
     <Activate effect="Healing" duration="3.5" range="3">ConditionEffectAura</Activate>
-    <Activate effect="Berserk" duration="2" useWisMod="true">ConditionEffectSelf</Activate>
+    <Activate effect="Berserk" duration="3" useWisMod="true">ConditionEffectSelf</Activate>
   </Object>
   <Object type="0x505d" id="Tome of Universal Theory">
     <Class>Equipment</Class>
@@ -62,6 +62,6 @@
 		<BagType>7</BagType>
 		<MpCost>100</MpCost>
 		<Activate amount="325" range="3" useWisMod="false">HealNova</Activate>
-		<Activate effect="Damaging" duration="2" useWisMod="false">ConditionEffectSelf</Activate>
+		<Activate effect="Damaging" duration="3" useWisMod="false">ConditionEffectSelf</Activate>
 	</Object>
 </Objects>

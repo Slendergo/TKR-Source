@@ -37,7 +37,7 @@
   <Object type="0x7448" id="Harlequin Armor">
     <Class>Equipment</Class>
     <Item />
-    <Clarification />
+	  <SteamRoller />
     <Legendary />
     <Texture>
       <File>d3LofiObjEmbed</File>

@@ -76,7 +76,7 @@
 	<Object type="0x464" id="Old Cleric's Cloak">
 		<Class>Equipment</Class>
 		<Item />
-		<Clarification />
+		<Demonized />
 		<Texture>
 			<File>CustomObj1</File>
 			<Index>0x03</Index>

@@ -134,8 +134,8 @@
 		<Projectile>
 			<ObjectId>Thiram Shot</ObjectId>
 			<Speed>130</Speed>
-			<MinDamage>950</MinDamage>
-			<MaxDamage>950</MaxDamage>
+			<MinDamage>850</MinDamage>
+			<MaxDamage>890</MaxDamage>
 			<LifetimeMS>600</LifetimeMS>
 			<Frequency>1</Frequency>
 			<Amplitude>0.2</Amplitude>
@@ -195,8 +195,8 @@
     <Projectile>
       <ObjectId>Horn Breaker Shot</ObjectId>
       <Speed>125</Speed>
-      <MinDamage>400</MinDamage>
-      <MaxDamage>450</MaxDamage>
+      <MinDamage>415</MinDamage>
+      <MaxDamage>465</MaxDamage>
       <LifetimeMS>400</LifetimeMS>
       <Frequency>1</Frequency>
       <Size>80</Size>

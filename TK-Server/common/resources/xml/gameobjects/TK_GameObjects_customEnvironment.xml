@@ -457,6 +457,399 @@
 		<Class>GameObject</Class>
 		<Size>100</Size>
 		<ShadowSize>110</ShadowSize>
+		<ShadowColor>0x0070FF</ShadowColor>
+		<Static />
+		<Texture>
+			<File>custom16x16Environment</File>
+			<Index>0x77</Index>
+		</Texture>
+		<Animation prob="1" period="0">
+			<Frame time="0.2">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x77</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.2">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x78</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.2">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x79</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.2">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x7a</Index>
+				</Texture>
+			</Frame>
+		</Animation>
+	</Object>
+  <Object type="0xb0b9" id="SL Rug">
+    <Class>GameObject</Class>
+    <Texture>
+      <File>customEnvironment</File>
+      <Index>0xc4</Index>
+    </Texture>
+    <DrawOnGround />
+    <Static />
+  </Object>
+    <Object type="0xb0bf" id="SL Rug Tl">
+    <Class>GameObject</Class>
+    <Texture>
+      <File>customEnvironment</File>
+      <Index>0xb3</Index>
+    </Texture>
+    <DrawOnGround />
+    <Static />
+  </Object>
+    <Object type="0xb0c0" id="SL Rug T">
+    <Class>GameObject</Class>
+    <Texture>
+      <File>customEnvironment</File>
+      <Index>0xb4</Index>
+    </Texture>
+    <DrawOnGround />
+    <Static />
+  </Object>
+    <Object type="0xb0c1" id="SL Rug TR">
+    <Class>GameObject</Class>
+    <Texture>
+      <File>customEnvironment</File>
+      <Index>0xb5</Index>
+    </Texture>
+    <DrawOnGround />
+    <Static />
+  </Object>
+      <Object type="0xb0c2" id="SL Rug L">
+    <Class>GameObject</Class>
+    <Texture>
+      <File>customEnvironment</File>
+      <Index>0xc3</Index>
+    </Texture>
+    <DrawOnGround />
+    <Static />
+  </Object>
+      <Object type="0xb0c3" id="SL Rug R">
+    <Class>GameObject</Class>
+    <Texture>
+      <File>customEnvironment</File>
+      <Index>0xc5</Index>
+    </Texture>
+    <DrawOnGround />
+    <Static />
+  </Object>
+      <Object type="0xb0c4" id="SL Rug BL">
+    <Class>GameObject</Class>
+    <Texture>
+      <File>customEnvironment</File>
+      <Index>0xd3</Index>
+    </Texture>
+    <DrawOnGround />
+    <Static />
+  </Object>
+        <Object type="0xb0c5" id="SL Rug B">
+    <Class>GameObject</Class>
+    <Texture>
+      <File>customEnvironment</File>
+      <Index>0xd4</Index>
+    </Texture>
+    <DrawOnGround />
+    <Static />
+  </Object>
+        <Object type="0xb0c6" id="SL Rug BR">
+    <Class>GameObject</Class>
+    <Texture>
+      <File>customEnvironment</File>
+      <Index>0xd5</Index>
+    </Texture>
+    <DrawOnGround />
+    <Static />
+  </Object>
+  <Object type="0x9001" id="Easy Bounty Tree">
+    <Class>GameObject</Class>
+    <Texture>
+      <File>customEnvironment</File>
+      <Index>0x81</Index>
+    </Texture>
+    <ShadowSize>75</ShadowSize>
+    <Static />
+  </Object>
+  <Object type="0x9002" id="Easy Bounty Rose">
+    <Class>GameObject</Class>
+    <Texture>
+      <File>customEnvironment</File>
+      <Index>0x82</Index>
+    </Texture>
+    <ShadowSize>50</ShadowSize>
+    <Static />
+  </Object>
+  <Object type="0x9003" id="Easy Bounty Skull">
+    <Class>GameObject</Class>
+    <Texture>
+      <File>customEnvironment</File>
+      <Index>0x83</Index>
+    </Texture>
+    <ShadowSize>75</ShadowSize>
+    <Static />
+  </Object>
+  <Object type="0x9026" id="Hard Bounty Withered Grass 1">
+    <Class>GameObject</Class>
+    <Texture>
+      <File>customEnvironment</File>
+      <Index>0x88</Index>
+    </Texture>
+    <ShadowSize>50</ShadowSize>
+  </Object>
+  <Object type="0x9027" id="Hard Bounty Withered Grass 2">
+    <Class>GameObject</Class>
+    <Texture>
+      <File>customEnvironment</File>
+      <Index>0x89</Index>
+    </Texture>
+    <ShadowSize>50</ShadowSize>
+  </Object>
+	<Object type="0xaa01" id="Wind Tile 1">
+		<Class>GameObject</Class>
+		<Size>120</Size>
+		<RandomTexture>
+			<Texture>
+				<File>custom16x16Environment</File>
+				<Index>0x37</Index>
+			</Texture>
+			<Texture>
+				<File>custom16x16Environment</File>
+				<Index>0x38</Index>
+			</Texture>
+			<Texture>
+				<File>custom16x16Environment</File>
+				<Index>0x39</Index>
+			</Texture>
+			<Texture>
+				<File>custom16x16Environment</File>
+				<Index>0x3a</Index>
+			</Texture>
+			<Texture>
+				<File>custom16x16Environment</File>
+				<Index>0x3b</Index>
+			</Texture>
+			<Texture>
+				<File>custom16x16Environment</File>
+				<Index>0x3c</Index>
+			</Texture>
+			<Texture>
+				<File>custom16x16Environment</File>
+				<Index>0x3d</Index>
+			</Texture>
+		</RandomTexture>
+		<Static />
+		<OccupySquare />
+		<EnemyOccupySquare />
+		<BlockSight />
+		<HitSound>monster/trees_hit</HitSound>
+		<DeathSound>monster/tress_death</DeathSound>
+	</Object>
+	<Ground type="0x250" id="Wind Light 1">
+		<Texture>
+			<File>customEnvironment1</File>
+			<Index>0x37</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x251" id="Wind Light 2">
+		<Texture>
+			<File>customEnvironment1</File>
+			<Index>0x36</Index>
+		</Texture>
+	</Ground>
+	<Object type="0x279" id="Trap Door 1">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>CustomObjectsSkillTree</File>
+			<Index>0x20</Index>
+		</Texture>
+		<Static />
+		<Size>100</Size>
+	</Object>
+	<Object type="0x271" id="Dark Tree 1">
+		<Class>GameObject</Class>
+		<RandomTexture>
+			<Texture>
+				<File>custom16x16Environment</File>
+				<Index>0x47</Index>
+			</Texture>
+			<Texture>
+				<File>custom16x16Environment</File>
+				<Index>0x48</Index>
+			</Texture>
+			<Texture>
+				<File>custom16x16Environment</File>
+				<Index>0x4b</Index>
+			</Texture>
+			<Texture>
+				<File>custom16x16Environment</File>
+				<Index>0x4a</Index>
+			</Texture>
+		</RandomTexture>
+		<Static />
+		<BlocksSight />
+		<OccupySquare />
+		<EnemyOccupySquare />
+		<Size>100</Size>
+	</Object>
+	<Object type="0x20A" id="Dark Tree 2">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>custom16x16Environment</File>
+			<Index>0x48</Index>
+		</Texture>
+		<Static />
+		<Size>100</Size>
+	</Object>
+	<Object type="0x20B" id="Dark Tree 3">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>custom16x16Environment</File>
+			<Index>0x4b</Index>
+		</Texture>
+		<Static />
+		<OccupySquare />
+		<EnemyOccupySquare />
+		<Size>100</Size>
+	</Object>
+	<Object type="0x270" id="Dark Tree 4">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>custom16x16Environment</File>
+			<Index>0x4a</Index>
+		</Texture>
+		<Static />
+		<OccupySquare />
+		<EnemyOccupySquare />
+		<Size>100</Size>
+	</Object>
+	<Object type="0x272" id="Dark Bush 1">
+		<Class>GameObject</Class>
+		<Texture>
+			<File>custom16x16Environment</File>
+			<Index>0x49</Index>
+		</Texture>
+		<Static />
+		<Size>100</Size>
+	</Object>
+	<Object type="0x273" id="Dark Wood Wall">
+		<Class>Wall</Class>
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x23</Index>
+		</Texture>
+		<Top>
+			<Texture>
+				<File>customEnvironmentMortomus</File>
+				<Index>0x13</Index>
+			</Texture>
+		</Top>
+		<HitSound>monster/stone_walls_hit</HitSound>
+		<DeathSound>monster/stone_walls_death</DeathSound>
+		<Static />
+		<FullOccupy />
+		<OccupySquare />
+		<EnemyOccupySquare />
+		<BlocksSight />
+	</Object>
+	<Ground type="0x15E" id="Dark Wood Floor">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x00</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x177" id="Dark Wood Floor 1">
+		<Texture>
+			<File>customEnvironment</File>
+			<Index>0x8b</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x15F" id="Dark Above Wood Stairs TL">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x01</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x164" id="Dark Above Wood Stairs TM">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x02</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x165" id="Dark Above Wood Stairs TR">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x10</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x166" id="Dark Above Wood Stairs ML">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x11</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x167" id="Dark Above Wood Stairs MM">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x12</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x168" id="Dark Above Wood Stairs MR">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x03</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x16E" id="Dark Below Wood Stairs TL">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x30</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x169" id="Dark Below Wood Stairs TM">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x31</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x16A" id="Dark Below Wood Stairs TR">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x32</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x16B" id="Dark Below Wood Stairs ML">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x20</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x16C" id="Dark Below Wood Stairs MM">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x21</Index>
+		</Texture>
+	</Ground>
+	<Ground type="0x16D" id="Dark Below Wood Stairs MR">
+		<Texture>
+			<File>customEnvironmentMortomus</File>
+			<Index>0x22</Index>
+		</Texture>
+	</Ground>
+
+	<Object type="0xb0b8" id="SL Torch">
+		<Class>GameObject</Class>
+		<Size>100</Size>
+		<ShadowSize>110</ShadowSize>
 		<ShadowColor>0x004193</ShadowColor>
 		<Static />
 		<Texture>

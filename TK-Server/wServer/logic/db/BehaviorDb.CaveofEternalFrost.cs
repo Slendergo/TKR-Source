@@ -36,7 +36,7 @@ namespace wServer.logic
                     )
                 )
             )
-        .Init("Ice Wall Spawner",
+        .Init("Ice Wall Spawner 1",
             new State(
                 new State("idle",
                     new EntityNotExistsTransition("Cursed Snowman Switch", 30, "dead"),

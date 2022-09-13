@@ -483,7 +483,7 @@ namespace wServer.core.objects
                 Kill = HP <= 0,
                 BulletId = projectile.BulletId,
                 ObjectId = projectile.ObjectId
-            }, this, this);;
+            }, this, this);
 
             if (HP <= 0)
                 Death(shooter.Name, shooter);

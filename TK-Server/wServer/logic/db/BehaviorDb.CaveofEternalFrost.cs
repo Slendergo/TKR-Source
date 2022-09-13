@@ -383,7 +383,7 @@ namespace wServer.logic
                     new Shoot(30, 3, projectileIndex: 4, fixedAngle: 0, coolDown: 2400, coolDownOffset: 100),
                     new TimedTransition(10000, "attack2.1")
                     ),
-                new State("attack2",
+                new State("attack2.1",
                     new HpLessTransition(0.5, "freedps"),
                     new Orbit(4, 8, 10, "Ice Wall Spawner 1", speedVariance: 0, radiusVariance: 0),
                     new TossObject2("Frozen Elf", 3, coolDown: 3000, randomToss: true),
@@ -391,7 +391,7 @@ namespace wServer.logic
                     new TossObject2("Frozen Elf", 4, coolDown: 3200, randomToss: true),
                     new TossObject2("Frozen Elf", 8, coolDown: 2600, randomToss: true),
                     new Shoot(30, 3, projectileIndex: 4, fixedAngle: 0, coolDown: 2400, coolDownOffset: 100),
-                    new TimedTransition(10000, "attack1")
+                    new TimedTransition(10000, "attack3")
                     ),
                  new State("attack3",
                     new Orbit(3, 8, 10, "Ice Wall Spawner 1", speedVariance: 0, radiusVariance: 0, orbitClockwise: true),
@@ -419,7 +419,6 @@ namespace wServer.logic
                     new Shoot(30, 5, projectileIndex: 6, fixedAngle: -105, coolDown: 2400, coolDownOffset: 2200),
                     new Shoot(30, 5, projectileIndex: 6, fixedAngle: -110, coolDown: 2400, coolDownOffset: 2300),
                     new Shoot(30, 5, projectileIndex: 6, fixedAngle: -115, coolDown: 2400, coolDownOffset: 2400),
-
                     new TimedTransition(10000, "attack4")
                      ),
                   new State("attack4",

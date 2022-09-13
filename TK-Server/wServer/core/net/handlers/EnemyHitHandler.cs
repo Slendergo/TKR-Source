@@ -30,7 +30,7 @@ namespace wServer.core.net.handlers
             var projectile = player.GetProjectile(player.Id, bulletId);
             if (projectile == null)
             {
-                Console.WriteLine($"NULL PROJ | {player.Id} {bulletId}");
+                //Console.WriteLine($"NULL PROJ | {player.Id} {bulletId}");
                 return;
             }
 

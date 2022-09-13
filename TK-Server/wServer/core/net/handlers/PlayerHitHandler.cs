@@ -19,7 +19,7 @@ namespace wServer.core.net.handlers
             var prj = player.GetProjectile(objectId, bulletId);
             if (prj == null)
             {
-                System.Console.WriteLine("Null Projectile PlayerHit");
+                //System.Console.WriteLine("Null Projectile PlayerHit");
                 return;
             }
 

@@ -221,4 +221,34 @@
 		<FameBonus>6</FameBonus>
 		<DisplayId>Mortomus' Shovel</DisplayId>
 	</Object>
+	<Object type="0x4292" id="The Expanse">
+		<Class>Equipment</Class>
+		<Item />
+		<Mutilate />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x48</Index>
+		</Texture>
+		<Mythical />
+		<SlotType>17</SlotType>
+		<Description>The Keeper of Souls most precious item. Corrupt and evil magic lingers at the edge of the blade from burying dead adventurers.</Description>
+		<RateOfFire>0.75</RateOfFire>
+		<Sound>weapon/fire_wand</Sound>
+		<Projectile>
+			<ObjectId>Expanse Shot</ObjectId>
+			<Speed>95</Speed>
+			<MinDamage>125</MinDamage>
+			<MaxDamage>170</MaxDamage>
+			<LifetimeMS>800</LifetimeMS>
+			<Amplitude>0.5</Amplitude>
+			<Frequency>1</Frequency>
+			<Size>120</Size>
+			<MultiHit />
+		</Projectile>
+		<NumProjectiles>5</NumProjectiles>
+		<ArcGap>3</ArcGap>
+		<BagType>6</BagType>
+		<FameBonus>6</FameBonus>
+		<DisplayId>The Expanse</DisplayId>
+	</Object>
 </Objects>

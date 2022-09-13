@@ -1785,6 +1785,13 @@
 			<Speed>45</Speed>
 			<LifetimeMS>5000</LifetimeMS>
 		</Projectile>
+		<Projectile id="6">
+			<ObjectId>ASM Big Shot 1</ObjectId>
+			<Damage>90</Damage>
+			<Size>150</Size>
+			<Speed>75</Speed>
+			<LifetimeMS>5000</LifetimeMS>
+		</Projectile>
 	</Object>
 	<Object type="0xa6a1" id="Queen of Ice">
 		<Class>Character</Class>

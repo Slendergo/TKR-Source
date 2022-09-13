@@ -211,4 +211,21 @@
     <BagType>7</BagType>
     <FameBonus>7</FameBonus>
   </Object>
+	<Object type="0x4299" id="Ice Hide Armor">
+		<Class>Equipment</Class>
+		<Item />
+		<SonicBlaster />
+		<Mythical />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x3a</Index>
+		</Texture>
+		<SlotType>6</SlotType>
+		<Description></Description>
+		<ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="21" amount="26">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="22" amount="25">IncrementStat</ActivateOnEquip>
+		<BagType>7</BagType>
+		<FameBonus>7</FameBonus>
+	</Object>
 </Objects>

@@ -10,11 +10,13 @@ namespace wServer.core.objects
         public bool IsValidShoot(int time, double rateOfFire)
         {
             var attackPeriod = (int)(1 / Stats.GetAttackFrequency() * 1 / rateOfFire);
+            Console.WriteLine("Attack Period: " + attackPeriod + " " + Math.Abs(time - LastShootTime + attackPeriod));
             if (time < LastShootTime + attackPeriod)
                 return false;
             LastShootTime = time;
             return true;
         }
+
 
         public Dictionary<int, Dictionary<int, Projectile>> Projectiles { get; private set; } = new Dictionary<int, Dictionary<int, Projectile>>();
         

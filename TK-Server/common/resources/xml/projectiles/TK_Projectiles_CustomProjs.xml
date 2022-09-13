@@ -1,4 +1,12 @@
 <Objects>
+	<Object type="0x4182" id="Snow Sword Shot">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x38</Index>
+		</Texture>
+		<AngleCorrection>1</AngleCorrection>
+	</Object>
 	<Object type="0x4127" id="Quetzalcoat Laser">
 		<Class>Projectile</Class>
 		<Texture>
@@ -30,6 +38,14 @@
 			<Index>0x82</Index>
 		</Texture>
 		<Rotation>45</Rotation>
+	</Object>
+	<Object type="0x4293" id="Expanse Shot">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x58</Index>
+		</Texture>
+		<AngleCorrection>1</AngleCorrection>
 	</Object>
 	<Object type="0x461" id="Mortomus Shovel Shot">
 		<Class>Projectile</Class>
@@ -112,6 +128,13 @@
 		<Texture>
 			<File>CustomProjs</File>
 			<Index>0xe3</Index>
+		</Texture>
+	</Object>
+	<Object type="0x4285" id="Ice Wand Shot">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x37</Index>
 		</Texture>
 	</Object>
 	<Object type="0x1FB" id="Morto Wisp">
@@ -224,6 +247,14 @@
 			<Index>0x99</Index>
 		</Texture>
 		<Rotation>60</Rotation>
+		<AngleCorrection>1</AngleCorrection>
+	</Object>
+	<Object type="0x4288" id="Ice Bow Shot">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x39</Index>
+		</Texture>
 		<AngleCorrection>1</AngleCorrection>
 	</Object>
 	<Object type="0xb016" id="Venom Striker Shoot">
@@ -549,6 +580,14 @@
 		<Texture>
 			<File>CustomProjs</File>
 			<Index>0x19</Index>
+		</Texture>
+		<AngleCorrection>1</AngleCorrection>
+	</Object>
+	<Object type="0x4298" id="Ice Katana Shot">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x5a</Index>
 		</Texture>
 		<AngleCorrection>1</AngleCorrection>
 	</Object>
@@ -1372,8 +1411,8 @@
 	<Object type="0xa42a" id="Thiram Shot">
 		<Class>Projectile</Class>
 		<Texture>
-			<File>CustomObj</File>
-			<Index>0xdf</Index>
+			<File>CustomObj1</File>
+			<Index>0x25</Index>
 		</Texture>
 		<AngleCorrection>1</AngleCorrection>
 	</Object>

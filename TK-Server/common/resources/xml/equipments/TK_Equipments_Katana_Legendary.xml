@@ -112,4 +112,35 @@
     <FameBonus>7</FameBonus>
     <DisplayId>Lodius</DisplayId>
   </Object>
+	<Object type="0x4297" id="Ice Katana">
+		<Class>Equipment</Class>
+		<Item />
+		<Mythical />
+		<Mutilate />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x4a</Index>
+		</Texture>
+		<SlotType>24</SlotType>
+		<Description></Description>
+		<RateOfFire>1</RateOfFire>
+		<Sound>weapon/long_sword</Sound>
+		<Projectile>
+			<ObjectId>Lodius Shoot</ObjectId>
+			<Speed>154</Speed>
+			<MinDamage>150</MinDamage>
+			<MaxDamage>245</MaxDamage>
+			<LifetimeMS>344</LifetimeMS>
+			<Amplitude>.25</Amplitude>
+			<Frequency>1.75</Frequency>
+			<Size>100</Size>
+			<MultiHit />
+			<ArmorPiercing />
+		</Projectile>
+		<NumProjectiles>2</NumProjectiles>
+		<ArcGap>3</ArcGap>
+		<BagType>7</BagType>
+		<FameBonus>7</FameBonus>
+		<DisplayId>Ice Katana</DisplayId>
+	</Object>
 </Objects>

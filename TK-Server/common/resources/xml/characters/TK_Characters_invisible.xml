@@ -63,6 +63,34 @@
 		<XpMult>0.0</XpMult>
 		<NoMiniMap />
 	</Object>
+	<Object type="0x4301" id="Ice Wall Spawner">
+		<Class>Character</Class>
+		<Enemy />
+		<MaxHitPoints>9999</MaxHitPoints>
+		<Texture>
+			<File>invisible</File>
+			<Index>0</Index>
+		</Texture>
+		<NoMiniMap />
+		<Size>0</Size>
+		<XpMult>0.0</XpMult>
+		<StasisImmune />
+		<DisplayId>Ice wall spawner</DisplayId>
+	</Object>
+	<Object type="0x4304" id="Ice Wall Spawner 1">
+		<Class>Character</Class>
+		<Enemy />
+		<MaxHitPoints>9999</MaxHitPoints>
+		<Texture>
+			<File>invisible</File>
+			<Index>0</Index>
+		</Texture>
+		<NoMiniMap />
+		<Size>0</Size>
+		<XpMult>0.0</XpMult>
+		<StasisImmune />
+		<DisplayId>Ice wall spawner</DisplayId>
+	</Object>
 	<Object type="0x9952" id="Fire wall spawner">
 		<Class>Character</Class>
 		<Enemy />

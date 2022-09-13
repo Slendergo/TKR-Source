@@ -24,38 +24,34 @@
     <OldSound>bladeSwing</OldSound>
     <feedPower>900</feedPower>
   </Object>
-  <!--<Object type="0x4281" id="Axe of the Frozen Tundra">
+  <Object type="0x4281" id="Winter Solstice">
     <Class>Equipment</Class>
     <Item />
-    <Legendary />
+    <Mythical />
     <Demonized />
     <Texture>
-      <File>CustomObj</File>
-      <Index>0x08</Index>
+      <File>CustomObj1</File>
+      <Index>0x28</Index>
     </Texture>
     <SlotType>1</SlotType>
     <Description>The world will know their power...</Description>
     <RateOfFire>1.25</RateOfFire>
     <Sound>weapon/mithril_sword</Sound>
     <Projectile>
-      <ObjectId>Slime Sword Shoot</ObjectId>
+      <ObjectId>Snow Sword Shot</ObjectId>
       <Speed>110</Speed>
       <MinDamage>255</MinDamage>
       <MaxDamage>255</MaxDamage>
-      <LifetimeMS>409</LifetimeMS>
-      <Frequency>1.5</Frequency>
-      <Amplitude>0.2</Amplitude>
+      <LifetimeMS>250</LifetimeMS>
       <ArmorPiercing />
       <Size>100</Size>
-      <ConditionEffect duration="0.3">Slowed</ConditionEffect>
     </Projectile>
     <NumProjectiles>1</NumProjectiles>
-    <ArcGap>11</ArcGap>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
     <feedPower>650</feedPower>
-    <DisplayId>Slime Sword</DisplayId>
-  </Object>-->
+    <DisplayId>Axe of the Frozen Tundra</DisplayId>
+  </Object>
   <Object type="0x4928" id="Excalibur">
     <Class>Equipment</Class>
     <Item />

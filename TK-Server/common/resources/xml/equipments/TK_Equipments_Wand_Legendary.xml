@@ -44,8 +44,8 @@
     <Projectile>
       <ObjectId>Wand of Pain Shoot</ObjectId>
       <Speed>200</Speed>
-      <MinDamage>215</MinDamage>
-      <MaxDamage>235</MaxDamage>
+      <MinDamage>200</MinDamage>
+      <MaxDamage>215</MaxDamage>
       <LifetimeMS>450</LifetimeMS>
       <Amplitude>0.26</Amplitude>
       <Frequency>2.61</Frequency>
@@ -162,6 +162,36 @@
 		<Sound>weapon/fire_wand</Sound>
 		<Projectile>
 			<ObjectId>Morto Square</ObjectId>
+			<Speed>120</Speed>
+			<MinDamage>245</MinDamage>
+			<MaxDamage>265</MaxDamage>
+			<Amplitude>1</Amplitude>
+			<Frequency>1.05</Frequency>
+			<LifetimeMS>542</LifetimeMS>
+			<Size>100</Size>
+			<MultiHit />
+		</Projectile>
+		<NumProjectiles>2</NumProjectiles>
+		<ArcGap>10</ArcGap>
+		<BagType>7</BagType>
+		<FameBonus>6</FameBonus>
+		<DisplayId>Sludge-Covered Cane</DisplayId>
+	</Object>
+	<Object type="0x4284" id="Polar Vortex">
+		<Class>Equipment</Class>
+		<Item />
+		<OutOfOneMind />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x27</Index>
+		</Texture>
+		<SlotType>8</SlotType>
+		<Mythical />
+		<Description>The acidic goop dissolved the previous owner whole, leaving behind only the weapon and what remains of the toxic sludge.</Description>
+		<RateOfFire>0.85</RateOfFire>
+		<Sound>weapon/fire_wand</Sound>
+		<Projectile>
+			<ObjectId>Ice Wand Shot</ObjectId>
 			<Speed>120</Speed>
 			<MinDamage>245</MinDamage>
 			<MaxDamage>265</MaxDamage>

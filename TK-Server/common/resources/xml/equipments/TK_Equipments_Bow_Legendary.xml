@@ -155,4 +155,37 @@
     <SteamRoller />
     <DisplayId>Bone Flinger</DisplayId>
   </Object>
+	<Object type="0x4286" id="World of Ice">
+		<Class>Equipment</Class>
+		<Item />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x29</Index>
+		</Texture>
+		<Mythical />
+		<SlotType>3</SlotType>
+		<Description>The drawstring on this make-shift bow was not designed to notch traditional arrows. Rather, it launches high velocity bones.</Description>
+		<RateOfFire>.95</RateOfFire>
+		<Sound>weapon/poor_quality_bow</Sound>
+		<Projectile>
+			<ObjectId>Fang Flinger Shoot</ObjectId>
+			<Speed>155</Speed>
+			<MinDamage>255</MinDamage>
+			<MaxDamage>275</MaxDamage>
+			<LifetimeMS>452</LifetimeMS>
+			<Amplitude>0.45</Amplitude>
+			<Frequency>2</Frequency>
+			<Size>100</Size>
+			<ArmorPiercing />
+			<MultiHit />
+		</Projectile>
+		<NumProjectiles>2</NumProjectiles>
+		<ArcGap>4</ArcGap>
+		<ActivateOnEquip stat="22" amount="6">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="26" amount="-3">IncrementStat</ActivateOnEquip>
+		<BagType>7</BagType>
+		<FameBonus>7</FameBonus>
+		<SteamRoller />
+		<DisplayId>Bone Flinger</DisplayId>
+	</Object>
 </Objects>

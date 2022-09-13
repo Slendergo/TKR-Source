@@ -207,7 +207,6 @@ namespace wServer.core
         {
             if (Owner.HasConditionEffect(ConditionEffectIndex.Dazed))
                 return MIN_ATTACK_FREQ;
-
             var rof = MIN_ATTACK_FREQ + this[5] / (double)75.0 * (MAX_ATTACK_FREQ - MIN_ATTACK_FREQ);
             if (Owner.HasConditionEffect(ConditionEffectIndex.Berserk) || Owner.HasConditionEffect(ConditionEffectIndex.NinjaBerserk))
                 rof *= 1.25;

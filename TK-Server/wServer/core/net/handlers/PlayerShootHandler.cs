@@ -52,9 +52,10 @@ namespace wServer.core.net.handlers
                 return;
             }
 
-            if(!player.IsValidShoot(time, item.RateOfFire))
+            if (!player.IsValidShoot(time, item.RateOfFire))
             {
-                client.Disconnect("Shooting way to fast");
+                for (var i = 0; i < item.NumProjectiles; i++)
+                    _ = player.GetNextBulletId();
                 return;
             }
 

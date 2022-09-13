@@ -44,55 +44,49 @@ namespace wServer.core.objects
 
         public bool IsElapsed(int time) => time - StartTime >= ProjectileDesc.LifetimeMS + RootWorldThread.TICK_TIME_MS; // 1 tick tollerance might remove in future
 
-        public Position GetPosition(long elapsedTicks)
+        public Position GetPosition(int elapsed)
         {
-            double periodFactor;
-            double amplitudeFactor;
-            double theta;
-            
-            var pX = (double)StartX;
-            var pY = (double)StartY;
-            var dist = elapsedTicks * ProjectileDesc.Speed / 10000.0;
-            var phase = BulletId % 2 == 0 ? 0 : Math.PI;
+            var x = (double)StartX;
+            var y = (double)StartY;
 
+            var dist = elapsed * (ProjectileDesc.Speed / 10000.0);
+            var phase = BulletId % 2 == 0 ? 0.0 : Math.PI;
             if (ProjectileDesc.Wavy)
             {
-                periodFactor = 6 * Math.PI;
-                amplitudeFactor = Math.PI / 64;
-                theta = Angle + amplitudeFactor * Math.Sin(phase + periodFactor * elapsedTicks / 1000);
-                pX += dist * Math.Cos(theta);
-                pY += dist * Math.Sin(theta);
+                var periodFactor = 6.0 * Math.PI;
+                var amplitudeFactor = Math.PI / 64.0;
+                var theta = Angle + amplitudeFactor * Math.Sin(phase + periodFactor * elapsed / 1000.0);
+                x += dist * Math.Cos(theta);
+                y += dist * Math.Sin(theta);
             }
             else if (ProjectileDesc.Parametric)
             {
-                var t = elapsedTicks / ProjectileDesc.LifetimeMS * 2 * Math.PI;
-                var x = Math.Sin(t) * (BulletId % 2 == 0 ? 1 : -1);
-                var y = Math.Sin(2 * t) * (BulletId % 4 < 2 ? 1 : -1);
+                var t = elapsed / ProjectileDesc.LifetimeMS * 2 * Math.PI;
+                x = Math.Sin(t) * (BulletId % 2 == 0 ? 1.0 : -1.0);
+                y = Math.Sin(2.0 * t) * (BulletId % 4 < 2 ? 1.0 : -1.0);
                 var sin = Math.Sin(Angle);
                 var cos = Math.Cos(Angle);
-                pX += (x * cos - y * sin) * ProjectileDesc.Magnitude;
-                pY += (x * sin + y * cos) * ProjectileDesc.Magnitude;
+                x += (x * cos - y * sin) * ProjectileDesc.Magnitude;
+                y += (x * sin + y * cos) * ProjectileDesc.Magnitude;
             }
             else
             {
                 if (ProjectileDesc.Boomerang)
                 {
-                    double halfway = ProjectileDesc.LifetimeMS * (ProjectileDesc.Speed / 10000) / 2;
-
+                    var halfway = ProjectileDesc.LifetimeMS * (ProjectileDesc.Speed / 10000.0) / 2.0;
                     if (dist > halfway)
                         dist = halfway - (dist - halfway);
                 }
-                pX += dist * Math.Cos(Angle);
-                pY += dist * Math.Sin(Angle);
-
-                if (ProjectileDesc.Amplitude != 0)
+                x += dist * Math.Cos(Angle);
+                y += dist * Math.Sin(Angle);
+                if (ProjectileDesc.Amplitude != 0.0)
                 {
-                    var deflection = ProjectileDesc.Amplitude * Math.Sin(phase + elapsedTicks / ProjectileDesc.LifetimeMS * ProjectileDesc.Frequency * 2 * Math.PI);
-                    pX += deflection * Math.Cos(Angle + Math.PI / 2);
-                    pY += deflection * Math.Sin(Angle + Math.PI / 2);
+                    var deflection = ProjectileDesc.Amplitude * Math.Sin(phase + elapsed / ProjectileDesc.LifetimeMS * ProjectileDesc.Frequency * 2.0 * Math.PI);
+                    x += deflection * Math.Cos(Angle + Math.PI / 2.0);
+                    y += deflection * Math.Sin(Angle + Math.PI / 2.0);
                 }
             }
-            return new Position((float)pX, (float)pY);
+            return new Position((float)x, (float)y);
         }
     }
 }

@@ -33,13 +33,18 @@ namespace wServer.core.net.handlers
                 return;
             }
 
-            projectile.HitEntity(player, entity, tickTime);
-
-
             var delta = time - projectile.StartTime;
+
             var hitSpot = projectile.GetPosition(delta);
 
-            Console.WriteLine($"EnemyHit: predicted location: {hitSpot.X}, {hitSpot.Y} | Server Location: {entity.X}, {entity.Y}");
+            var distanceFromHit = entity.DistTo(hitSpot.X, hitSpot.Y);
+            if (distanceFromHit > 7.5)
+            {
+                Console.WriteLine("Possible AOE");
+                return;
+            }
+
+            projectile.HitEntity(player, entity, tickTime);
 
             var totalLife = 0.0;
             var totalMana = 0.0;

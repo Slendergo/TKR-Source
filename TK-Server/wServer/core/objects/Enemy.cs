@@ -194,7 +194,7 @@ namespace wServer.core.objects
             World.LeaveWorld(this);
         }
 
-        public override bool HitByProjectile(Entity shooter, Projectile projectile, TickTime time)
+        public override bool HitByProjectile(Projectile projectile, TickTime time)
         {
             if (stat)
                 return false;
@@ -202,13 +202,13 @@ namespace wServer.core.objects
             if (HasConditionEffect(ConditionEffectIndex.Invincible))
                 return false;
 
-            if (shooter is Player && !HasConditionEffect(ConditionEffectIndex.Paused) && !HasConditionEffect(ConditionEffectIndex.Stasis))
+            if (projectile.Host is Player && !HasConditionEffect(ConditionEffectIndex.Paused) && !HasConditionEffect(ConditionEffectIndex.Stasis))
             {
-                var player = shooter as Player;
+                var player = projectile.Host as Player;
                 var Inventory = player.Inventory;
                 var def = Defense;
 
-                var dmg = StatsManager.DamageWithDefense(this, projectile.Damage, projectile.ProjectileDesc.ArmorPiercing, def);
+                var dmg = StatsManager.DamageWithDefense(this, projectile.Damage, projectile.ProjDesc.ArmorPiercing, def);
                 if (!HasConditionEffect(ConditionEffectIndex.Invulnerable))
                     HP -= dmg;
                 
@@ -223,13 +223,13 @@ namespace wServer.core.objects
                         Demonized(player, i);
 
                     if (item.Vampiric)
-                        VampireBlast(player, i, time, this, projectile.ProjectileDesc.MultiHit);
+                        VampireBlast(player, i, time, this, projectile.ProjDesc.MultiHit);
 
                     if (item.Electrify)
                         Electrify(player, i, time, this);
                 }
 
-                ApplyConditionEffect(projectile.ProjectileDesc.Effects);
+                ApplyConditionEffect(projectile.ProjDesc.Effects);
 
                 World.BroadcastIfVisibleExclude(new Damage()
                 {
@@ -237,11 +237,11 @@ namespace wServer.core.objects
                     Effects = 0,
                     DamageAmount = dmg,
                     Kill = HP < 0,
-                    BulletId = projectile.BulletId,
-                    ObjectId = projectile.ObjectId
-                }, this, shooter as Player);
+                    BulletId = projectile.ProjectileId,
+                    ObjectId = projectile.Host.Id
+                }, this, projectile.Host as Player);
 
-                DamageCounter.HitBy(shooter as Player, time, projectile, dmg);
+                DamageCounter.HitBy(projectile.Host as Player, time, projectile, dmg);
 
                 if (HP < 0 && World != null)
                     Death(ref time);

@@ -6,6 +6,8 @@ namespace wServer.core.objects
     {
         internal Projectile PlayerShootProjectile(int time, int bulletId, ushort objectType, float angle, Position position, ProjectileDesc desc, bool ability = false)
         {
+            projectileId = bulletId;
+
             var min = desc.MinDamage;
             var max = desc.MaxDamage;
             if (TalismanDamageIsAverage)
@@ -28,9 +30,7 @@ namespace wServer.core.objects
             if (TalismanExtraDamageOnHitMana != 0.0)
                 dmg += (int)(dmg * (isFullMp ? TalismanExtraDamageOnHitMana : -TalismanExtraDamageOnHitMana));
 
-            var ret = new Projectile(time, Id, bulletId, objectType, angle, Pos.X, Pos.Y, dmg, desc);
-            AddProjectile(ret);
-            return ret;
+            return CreateProjectile(desc, objectType, dmg, C2STime(time), position, angle);
         }
     }
 }

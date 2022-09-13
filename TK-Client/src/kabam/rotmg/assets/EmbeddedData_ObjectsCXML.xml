@@ -27063,6 +27063,13 @@
       <Speed>45</Speed>
       <LifetimeMS>5000</LifetimeMS>
     </Projectile>
+    <Projectile id="6">
+      <ObjectId>ASM Big Shot 1</ObjectId>
+      <Damage>90</Damage>
+      <Size>150</Size>
+      <Speed>75</Speed>
+      <LifetimeMS>5000</LifetimeMS>
+    </Projectile>
   </Object>
   <Object type="0xa6a1" id="Queen of Ice">
     <Class>Character</Class>
@@ -32012,7 +32019,21 @@
     <XpMult>0.0</XpMult>
     <NoMiniMap />
   </Object>
-  <Object type="0x4301" id="Ice wall spawner">
+  <Object type="0x4301" id="Ice Wall Spawner">
+    <Class>Character</Class>
+    <Enemy />
+    <MaxHitPoints>9999</MaxHitPoints>
+    <Texture>
+      <File>invisible</File>
+      <Index>0</Index>
+    </Texture>
+    <NoMiniMap />
+    <Size>0</Size>
+    <XpMult>0.0</XpMult>
+    <StasisImmune />
+    <DisplayId>Ice wall spawner</DisplayId>
+  </Object>
+  <Object type="0x4304" id="Ice Wall Spawner 1">
     <Class>Character</Class>
     <Enemy />
     <MaxHitPoints>9999</MaxHitPoints>
@@ -61204,6 +61225,7 @@
     <ActivateOnEquip stat="0" amount="110">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="5">IncrementStat</ActivateOnEquip>
     <Activate effect="Armored" duration="3.5">ConditionEffectSelf</Activate>
+    <Activate effect="Damaging" duration="2.5">ConditionEffectSelf</Activate>
     <Usable />
     <BagType>7</BagType>
     <FameBonus>7</FameBonus>

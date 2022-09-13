@@ -39,7 +39,7 @@ namespace wServer.core.net.handlers
                 return;
             }
 
-            if (item.ObjectType == player.Inventory[1].ObjectType)
+            if (player.Inventory[1] != null && item.ObjectType == player.Inventory[1].ObjectType)
             {
                 if (player.World.DisableAbilities)
                     client.Disconnect("Attempting to activate ability in a disabled world");
@@ -72,12 +72,13 @@ namespace wServer.core.net.handlers
 
                 var prjDesc = item.Projectiles[0];
                 var prj = player.PlayerShootProjectile(time, newBulletId, item.ObjectType, angle + arcGap * i, startingPosition, prjDesc);
+                player.World.AddProjectile(prj);
                 player.World.BroadcastIfVisibleExclude(new AllyShoot()
                 {
                     OwnerId = player.Id,
                     Angle = prj.Angle,
                     ContainerType = item.ObjectType,
-                    BulletId = prj.BulletId
+                    BulletId = prj.ProjectileId
                 }, player, player);
                 player.FameCounter.Shoot();
             }

@@ -18,7 +18,7 @@ namespace wServer.core.objects
         public Inventory Inventory { get; private set; }
         public int[] SlotTypes { get; private set; }
 
-        public override bool HitByProjectile(Entity shooter, Projectile projectile, TickTime time) => false;
+        public override bool HitByProjectile(Projectile projectile, TickTime time) => false;
 
         public override void Tick(ref TickTime time)
         {

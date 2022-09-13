@@ -443,7 +443,7 @@ namespace wServer.core.objects
                         break;
 
                     case ActivateEffects.Shoot:
-                        AEShoot(clientTime, item, target, eff);
+                        AEShoot(time, item, target, eff);
                         break;
 
                     case ActivateEffects.IncrementStat:
@@ -552,15 +552,15 @@ namespace wServer.core.objects
                         break;
 
                     case ActivateEffects.ShurikenAbility:
-                        AEShurikenAbility(clientTime, item, target, eff);
+                        AEShurikenAbility(time, item, target, eff);
                         break;
 
                     case ActivateEffects.ShurikenAbilityBerserk:
-                        AEShurikenAbilityBerserk(clientTime, item, target, eff);
+                        AEShurikenAbilityBerserk(time, item, target, eff);
                         break;
 
                     case ActivateEffects.ShurikenAbilityDamaging:
-                        AEShurikenAbilityDamaging(clientTime, item, target, eff);
+                        AEShurikenAbilityDamaging(time, item, target, eff);
                         break;
 
                     case ActivateEffects.DazeBlast:
@@ -661,30 +661,46 @@ namespace wServer.core.objects
             HasBackpack = true;
         }
 
-        private void AEBulletNova(int clientTime, TickTime time, Item item, Position target, ActivateEffect eff)
+      
+        private void AEBulletNova(int clientTimem, TickTime time, Item item, Position target, ActivateEffect eff)
         {
-            var numShots = item.SpellProjectiles == 0 ? 20 : item.SpellProjectiles;
-            
-            var prjDesc = item.Projectiles[0];
-
-            for (var i = 0; i < numShots; i++)
+            var shoots = item.SpellProjectiles == 0 ? 20 : item.SpellProjectiles;
+            var prjs = new Projectile[shoots];
+            var prjDesc = item.Projectiles[0]; //Assume only one
+            var batch = new OutgoingMessage[shoots + 1];
+            for (var i = 0; i < shoots; i++)
             {
-                var bulletId = GetNextAbilityBulletId();
-                var proj = PlayerShootProjectile(clientTime, bulletId, item.ObjectType, (float)(i * (Math.PI * 2) / numShots), target, prjDesc, true);
+                var baseDmg = World.Random.Next(prjDesc.MinDamage, prjDesc.MaxDamage);
+                var dmg = (int)(baseDmg + (baseDmg * TalismanExtraAbilityDamage));
 
+                var proj = CreateProjectile(prjDesc, item.ObjectType,
+                    dmg, 
+                    time.TotalElapsedMs, target, (float)(i * (Math.PI * 2) / shoots));
+                World.AddProjectile(proj);
                 FameCounter.Shoot();
-                World.BroadcastIfVisible(new ServerPlayerShoot(bulletId, Id, item.ObjectType, target, proj.Angle, proj.Damage), this);
+                batch[i] = new ServerPlayerShoot()
+                {
+                    BulletId = proj.ProjectileId,
+                    OwnerId = Id,
+                    ContainerType = item.ObjectType,
+                    StartingPos = target,
+                    Angle = proj.Angle,
+                    Damage = (short)proj.Damage
+                };
+                prjs[i] = proj;
             }
-
-            World.BroadcastIfVisible(new ShowEffect()
+            batch[shoots] = new ShowEffect()
             {
                 EffectType = EffectType.Trail,
                 Pos1 = target,
                 TargetObjectId = Id,
                 Color = new ARGB(eff.Color != 0 ? eff.Color : 0xFFFF00AA)
-            }, this);
-        }
+            };
 
+            foreach (var player in World.Players.Values)
+                if(player.SqDistTo(this) < PlayerUpdate.VISIBILITY_RADIUS_SQR)
+                   player.Client.SendPackets(batch);
+        }
         private void AEClearConditionEffectAura(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             this.AOE(eff.Range, true, player =>
@@ -1438,7 +1454,7 @@ namespace wServer.core.objects
             }, this);
         }
 
-        private void AEShoot(int time, Item item, Position target, ActivateEffect eff)
+        private void AEShoot(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             var arcGap = item.ArcGap * Math.PI / 180;
             var startAngle = Math.Atan2(target.Y - Y, target.X - X) - (item.NumProjectiles - 1) / 2 * arcGap;
@@ -1448,14 +1464,14 @@ namespace wServer.core.objects
             for (var i = 0; i < item.NumProjectiles; i++)
             {
                 var bulletId = GetNextBulletId();
-                var proj = PlayerShootProjectile(time, bulletId, item.ObjectType, (float)(startAngle + arcGap * i), target, prjDesc, true);
-
+                var proj = PlayerShootProjectile((int)time.TotalElapsedMs, bulletId, item.ObjectType, (float)(startAngle + arcGap * i), target, prjDesc, true);
+                World.AddProjectile(proj);
                 sPkts[i] = new AllyShoot()
                 {
                     OwnerId = Id,
                     Angle = proj.Angle,
                     ContainerType = item.ObjectType,
-                    BulletId = proj.BulletId
+                    BulletId = proj.ProjectileId
                 };
                 FameCounter.Shoot();
             }
@@ -1464,7 +1480,7 @@ namespace wServer.core.objects
                 World.BroadcastIfVisibleExclude(sPkts[i], this, this);
         }
 
-        private void AEShurikenAbility(int time, Item item, Position target, ActivateEffect eff)
+        private void AEShurikenAbility(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             if (!HasConditionEffect(ConditionEffectIndex.NinjaSpeedy))
             {
@@ -1492,7 +1508,7 @@ namespace wServer.core.objects
             ApplyConditionEffect(ConditionEffectIndex.NinjaSpeedy, 0);
         }
 
-        private void AEShurikenAbilityBerserk(int time, Item item, Position target, ActivateEffect eff)
+        private void AEShurikenAbilityBerserk(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             if (!HasConditionEffect(ConditionEffectIndex.Berserk))
             {
@@ -1520,7 +1536,7 @@ namespace wServer.core.objects
             ApplyConditionEffect(ConditionEffectIndex.Berserk, 0);
         }
 
-        private void AEShurikenAbilityDamaging(int time, Item item, Position target, ActivateEffect eff)
+        private void AEShurikenAbilityDamaging(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             if (!HasConditionEffect(ConditionEffectIndex.NinjaDamaging))
             {

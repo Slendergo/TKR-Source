@@ -28,11 +28,11 @@ namespace wServer.core.objects
         public bool Static { get; private set; }
         public bool Vulnerable { get; private set; }
 
-        public override bool HitByProjectile(Entity shooter, Projectile projectile, TickTime time)
+        public override bool HitByProjectile(Projectile projectile, TickTime time)
         {
-            if (Vulnerable && shooter is Player)
+            if (Vulnerable && projectile.Host is Player)
             {
-                var dmg = StatsManager.DamageWithDefense(this, projectile.Damage, projectile.ProjectileDesc.ArmorPiercing, ObjectDesc.Defense);
+                var dmg = StatsManager.DamageWithDefense(this, projectile.Damage, projectile.ProjDesc.ArmorPiercing, ObjectDesc.Defense);
 
                 HP -= dmg;
 
@@ -42,11 +42,10 @@ namespace wServer.core.objects
                     Effects = 0,
                     DamageAmount = dmg,
                     Kill = !CheckHP(),
-                    BulletId = projectile.BulletId,
-                    ObjectId = projectile.ObjectId
-                }, this, shooter as Player);
+                    BulletId = projectile.ProjectileId,
+                    ObjectId = projectile.Host.Id
+                }, this, projectile.Host as Player);
             }
-
             return true;
         }
 

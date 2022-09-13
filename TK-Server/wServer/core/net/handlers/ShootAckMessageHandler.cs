@@ -23,20 +23,6 @@ namespace wServer.core.net.handlers
         public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
         {
             var time = rdr.ReadInt32();
-
-            var player = client.Player;
-
-            // time is used to set projectile start time
-            var pendingServerShoot = player.PendingShootAcks.Dequeue();
-            if (time == -1)
-            {
-                // check if entity was removed like how -1 works in client
-                return;
-            }
-
-            var projectiles = pendingServerShoot.Acknowledge(player.GameServer, time);
-            foreach (var projectile in projectiles.Value)
-                player.AddProjectile(projectile);
         }
     }
 }

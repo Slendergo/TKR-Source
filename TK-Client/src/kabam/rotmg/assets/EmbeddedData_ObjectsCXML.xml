@@ -27192,7 +27192,7 @@
       <Damage>275</Damage>
       <Size>150</Size>
       <Speed>90</Speed>
-      <LifetimeMS>1000</LifetimeMS>
+      <LifetimeMS>3000</LifetimeMS>
       <MultiHit />
     </Projectile>
     <Projectile id="1">
@@ -27200,14 +27200,14 @@
       <Damage>225</Damage>
       <Size>90</Size>
       <Speed>40</Speed>
-      <LifetimeMS>1200</LifetimeMS>
+      <LifetimeMS>3000</LifetimeMS>
     </Projectile>
     <Projectile id="2">
       <ObjectId>Projectile 2 CSS</ObjectId>
       <Damage>205</Damage>
       <Size>100</Size>
       <Speed>100</Speed>
-      <LifetimeMS>1000</LifetimeMS>
+      <LifetimeMS>3000</LifetimeMS>
       <ConditionEffect duration="1.8">Confused</ConditionEffect>
     </Projectile>
     <Projectile id="3">
@@ -27215,21 +27215,21 @@
       <Damage>195</Damage>
       <Size>110</Size>
       <Speed>60</Speed>
-      <LifetimeMS>1200</LifetimeMS>
+      <LifetimeMS>3000</LifetimeMS>
     </Projectile>
     <Projectile id="4">
       <ObjectId>Projectile 1 CSS</ObjectId>
       <Damage>180</Damage>
       <Size>130</Size>
       <Speed>80</Speed>
-      <LifetimeMS>1200</LifetimeMS>
+      <LifetimeMS>3000</LifetimeMS>
     </Projectile>
     <Projectile id="5">
       <ObjectId>ASM Big Shot 1</ObjectId>
       <Damage>275</Damage>
       <Size>150</Size>
       <Speed>70</Speed>
-      <LifetimeMS>1000</LifetimeMS>
+      <LifetimeMS>3000</LifetimeMS>
       <MultiHit />
     </Projectile>
     <Projectile id="6">
@@ -27237,7 +27237,7 @@
       <Damage>275</Damage>
       <Size>150</Size>
       <Speed>50</Speed>
-      <LifetimeMS>1000</LifetimeMS>
+      <LifetimeMS>3000</LifetimeMS>
       <MultiHit />
     </Projectile>
   </Object>
@@ -52549,16 +52549,18 @@
     </Texture>
     <Mythical />
     <SlotType>3</SlotType>
-    <Description>The drawstring on this make-shift bow was not designed to notch traditional arrows. Rather, it launches high velocity bones.</Description>
+    <Description></Description>
     <RateOfFire>.95</RateOfFire>
     <Sound>weapon/poor_quality_bow</Sound>
     <Projectile>
-      <ObjectId>Fang Flinger Shoot</ObjectId>
-      <Speed>155</Speed>
+      <ObjectId>Ice Bow Shot</ObjectId>
+      <Speed>165</Speed>
       <MinDamage>255</MinDamage>
-      <MaxDamage>275</MaxDamage>
-      <LifetimeMS>452</LifetimeMS>
-      <Amplitude>0.45</Amplitude>
+      <MaxDamage>285</MaxDamage>
+      <Boomerang />
+      <LifetimeMS>850</LifetimeMS>
+      <Amplitude>0.4</Amplitude>
+      <ParticleTrail lifetimeMS="300">0x0089D1</ParticleTrail>
       <Frequency>2</Frequency>
       <Size>100</Size>
       <ArmorPiercing />
@@ -52571,7 +52573,7 @@
     <BagType>7</BagType>
     <FameBonus>7</FameBonus>
     <SteamRoller />
-    <DisplayId>Bone Flinger</DisplayId>
+    <DisplayId>World of Ice</DisplayId>
   </Object>
   <Object type="0x500e" id="Hurricane">
     <Class>Equipment</Class>
@@ -54703,7 +54705,7 @@
   <Object type="0x4289" id="Absolute Zero">
     <Class>Equipment</Class>
     <Item />
-    <Lucky />
+    <Insanity />
     <Mythical />
     <Texture>
       <File>CustomObj1</File>
@@ -54711,13 +54713,13 @@
     </Texture>
     <SlotType>7</SlotType>
     <Description></Description>
-    <ActivateOnEquip stat="0" amount="75">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="15">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="22" amount="6">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="5">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="20" amount="5">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="26" amount="5">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="27" amount="-5">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="200">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="30">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="8">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="15">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="-10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="25">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>7</FameBonus>
     <DisplayId>Absolute Zero</DisplayId>
@@ -55591,7 +55593,7 @@
     <BagType>7</BagType>
     <FameBonus>7</FameBonus>
   </Object>
-  <Object type="0x4299" id="Ice Hide Armor">
+  <Object type="0x4299" id="Condemned Frostbite">
     <Class>Equipment</Class>
     <Item />
     <SonicBlaster />
@@ -55602,9 +55604,14 @@
     </Texture>
     <SlotType>6</SlotType>
     <Description></Description>
-    <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="26">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="22" amount="25">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="125">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="75">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="12">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="12">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="20">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="7">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="10">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>7</FameBonus>
   </Object>
@@ -56123,7 +56130,7 @@
     <FameBonus>7</FameBonus>
     <DisplayId>Lodius</DisplayId>
   </Object>
-  <Object type="0x4297" id="Ice Katana">
+  <Object type="0x4297" id="Agdluak">
     <Class>Equipment</Class>
     <Item />
     <Mythical />
@@ -56137,22 +56144,23 @@
     <RateOfFire>1</RateOfFire>
     <Sound>weapon/long_sword</Sound>
     <Projectile>
-      <ObjectId>Lodius Shoot</ObjectId>
-      <Speed>154</Speed>
-      <MinDamage>150</MinDamage>
-      <MaxDamage>245</MaxDamage>
-      <LifetimeMS>344</LifetimeMS>
+      <ObjectId>Ice Katana Shot</ObjectId>
+      <Speed>180</Speed>
+      <MinDamage>350</MinDamage>
+      <MaxDamage>490</MaxDamage>
+      <LifetimeMS>615</LifetimeMS>
+      <ParticleTrail lifetimeMS="300">0x0089D1</ParticleTrail>
       <Amplitude>.25</Amplitude>
       <Frequency>1.75</Frequency>
       <Size>100</Size>
       <MultiHit />
       <ArmorPiercing />
     </Projectile>
-    <NumProjectiles>2</NumProjectiles>
+    <NumProjectiles>1</NumProjectiles>
     <ArcGap>3</ArcGap>
     <BagType>7</BagType>
     <FameBonus>7</FameBonus>
-    <DisplayId>Ice Katana</DisplayId>
+    <DisplayId>Agdluak</DisplayId>
   </Object>
   <Object type="0x914" id="Useless Katana">
     <Class>Equipment</Class>
@@ -56885,7 +56893,7 @@
   <Object type="0x4295" id="Cryogenic Freeze">
     <Class>Equipment</Class>
     <Item />
-    <Clarification />
+    <Lucky />
     <Texture>
       <File>CustomObj1</File>
       <Index>0x59</Index>
@@ -56893,15 +56901,18 @@
     <Mythical />
     <SlotType>21</SlotType>
     <Description></Description>
-    <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="5">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="100">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="8">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="8">IncrementStat</ActivateOnEquip>
     <Usable />
     <BagType>7</BagType>
     <FameBonus>7</FameBonus>
-    <MpCost>130</MpCost>
-    <Activate effect="Paralyzed" duration="4.25" range="4" color="0xE9A92D" target="enemy" center="mouse" visualEffect="4" useWisMod="false">GenericActivate</Activate>
-    <Activate effect="Berserk" duration="4" useWisMod="true">ConditionEffectSelf</Activate>
-    <Activate effect="Armored" duration="2" useWisMod="false">ConditionEffectSelf</Activate>
+    <MpCost>150</MpCost>
+    <Activate effect="Curse" duration="8" range="5" color="0xE9A92D" target="enemy" center="mouse" visualEffect="4" useWisMod="false">GenericActivate</Activate>
+    <Activate effect="Paralyzed" duration="5" range="5" color="0xE9A92D" target="enemy" center="mouse" visualEffect="4" useWisMod="false">GenericActivate</Activate>
+    <Activate effect="Damaging" duration="5" useWisMod="true">ConditionEffectSelf</Activate>
+    <Activate effect="Berserk" duration="5" useWisMod="true">ConditionEffectSelf</Activate>
+    <Activate effect="Speedy" duration="3" useWisMod="true">ConditionEffectSelf</Activate>
     <Cooldown>3.5</Cooldown>
   </Object>
   <Object type="0xae4" id="Stasis Orb">
@@ -58082,14 +58093,14 @@
     </Texture>
     <SlotType>9</SlotType>
     <Description>An unfathomable amount of strength pulses through this ring. Only the most righteous mortals can touch this ring and live.</Description>
-    <ActivateOnEquip stat="0" amount="150">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="3" amount="150">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="20" amount="15">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="15">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="22" amount="15">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="15">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="26" amount="15">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="27" amount="15">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="120">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="120">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="12">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="12">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="12">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="12">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="12">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="12">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>7</FameBonus>
     <feedPower>1500</feedPower>
@@ -58411,18 +58422,21 @@
   <Object type="0x4290" id="The Northern Star">
     <Class>Equipment</Class>
     <Item />
-    <Demonized />
+    <Insanity />
     <Texture>
       <File>CustomObj1</File>
       <Index>0x47</Index>
     </Texture>
     <SlotType>9</SlotType>
     <Description></Description>
-    <ActivateOnEquip stat="3" amount="120">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="20" amount="4">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="4">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="27" amount="12">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="150">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="150">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="15">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="15">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="15">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="15">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="15">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="15">IncrementStat</ActivateOnEquip>
     <BagType>8</BagType>
     <FameBonus>8</FameBonus>
     <Mythical />
@@ -60045,21 +60059,21 @@
     <Class>Equipment</Class>
     <Item />
     <Description></Description>
-    <OutOfOneMind />
+    <Lucky />
     <Mythical />
     <Texture>
       <File>CustomObj1</File>
       <Index>0x49</Index>
     </Texture>
     <SlotType>14</SlotType>
-    <ActivateOnEquip stat="20" amount="6">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="6">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="26" amount="6">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="27" amount="6">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="22" amount="6">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="6">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="0" amount="60">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="3" amount="60">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="100">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
   </Object>
@@ -60967,15 +60981,16 @@
     <Usable />
     <BagType>7</BagType>
     <FameBonus>7</FameBonus>
-    <MpCost>135</MpCost>
-    <Activate effect="Healing" duration="5" range="5" color="0x760000" target="player" center="player" useWisMod="true">GenericActivate</Activate>
-    <Activate effect="Damaging" duration="5">ConditionEffectSelf</Activate>
-    <Activate effect="Berserk" duration="4">ConditionEffectSelf</Activate>
+    <MpCost>125</MpCost>
+    <Activate effect="Healing" duration="5" range="6" color="0x760000" target="player" center="player" useWisMod="true">GenericActivate</Activate>
+    <Activate effect="Damaging" duration="5" range="6" color="0x760000" target="player" center="player" useWisMod="true">GenericActivate</Activate>
+    <Activate effect="Berserk" duration="5">ConditionEffectSelf</Activate>
     <Activate amount="150" range="4">HealNova</Activate>
-    <ActivateOnEquip stat="27" amount="10">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="5">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="0" amount="50">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="3" amount="50">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="100">IncrementStat</ActivateOnEquip>
     <DisplayId>Iceberg</DisplayId>
   </Object>
   <Object type="0xa422" id="Heart of the Beast">
@@ -65898,7 +65913,7 @@
       <MinDamage>230</MinDamage>
       <MaxDamage>250</MaxDamage>
       <ParticleTrail lifetimeMS="100">0x0089D1</ParticleTrail>
-      <LifetimeMS>450</LifetimeMS>
+      <LifetimeMS>1100</LifetimeMS>
       <Parametric />
       <Size>100</Size>
       <MultiHit />
@@ -80031,80 +80046,6 @@
     </Texture>
     <ShadowSize>0</ShadowSize>
   </Object>
-  <Object type="0xa141" id="Cave of Eternal Frost">
-    <Class>Portal</Class>
-    <Size>140</Size>
-    <IntergamePortal />
-    <DisplayId>Cave of Eternal Frost</DisplayId>
-    <DungeonName>Cave of Eternal Frost</DungeonName>
-    <Texture>
-      <File>custom16x16Environment</File>
-      <Index>0x15</Index>
-    </Texture>
-    <Animation prob="1" period="1">
-      <Frame time="0.05">
-        <Texture>
-          <File>custom16x16Environment</File>
-          <Index>0x16</Index>
-        </Texture>
-      </Frame>
-      <Frame time="0.10">
-        <Texture>
-          <File>custom16x16Environment</File>
-          <Index>0x17</Index>
-        </Texture>
-      </Frame>
-      <Frame time="0.10">
-        <Texture>
-          <File>custom16x16Environment</File>
-          <Index>0x18</Index>
-        </Texture>
-      </Frame>
-      <Frame time="0.10">
-        <Texture>
-          <File>custom16x16Environment</File>
-          <Index>0x19</Index>
-        </Texture>
-      </Frame>
-      <Frame time="0.10">
-        <Texture>
-          <File>custom16x16Environment</File>
-          <Index>0x1a</Index>
-        </Texture>
-      </Frame>
-      <Frame time="0.10">
-        <Texture>
-          <File>custom16x16Environment</File>
-          <Index>0x1b</Index>
-        </Texture>
-      </Frame>
-      <Frame time="0.10">
-        <Texture>
-          <File>custom16x16Environment</File>
-          <Index>0x1c</Index>
-        </Texture>
-      </Frame>
-      <Frame time="0.10">
-        <Texture>
-          <File>custom16x16Environment</File>
-          <Index>0x1d</Index>
-        </Texture>
-      </Frame>
-      <Frame time="0.10">
-        <Texture>
-          <File>custom16x16Environment</File>
-          <Index>0x1e</Index>
-        </Texture>
-      </Frame>
-      <Frame time="0.05">
-        <Texture>
-          <File>custom16x16Environment</File>
-          <Index>0x1f</Index>
-        </Texture>
-      </Frame>
-    </Animation>
-    <ShadowSize>0</ShadowSize>
-  </Object>
   <Object type="0x950d" id="Hideout of Stheno Portal">
     <Class>Portal</Class>
     <IntergamePortal />
@@ -81222,6 +81163,80 @@
       <Index>0x03</Index>
     </Texture>
     <ShadowSize>0</ShadowSize>
+  </Object>
+  <Object type="0x4335" id="Cave of Eternal Frost Portal">
+    <Class>Portal</Class>
+    <IntergamePortal />
+    <DisplayId>Cave of Eternal Frost</DisplayId>
+    <DungeonName>Cave of Eternal Frost</DungeonName>
+    <Size>80</Size>
+    <Texture>
+      <File>custom16x16Environment</File>
+      <Index>0x85</Index>
+    </Texture>
+    <Animation prob="1" period="1">
+      <Frame time="0.1">
+        <Texture>
+          <File>custom16x16Environment</File>
+          <Index>0x86</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>custom16x16Environment</File>
+          <Index>0x87</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>custom16x16Environment</File>
+          <Index>0x88</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>custom16x16Environment</File>
+          <Index>0x89</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>custom16x16Environment</File>
+          <Index>0x8a</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>custom16x16Environment</File>
+          <Index>0x89</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>custom16x16Environment</File>
+          <Index>0x88</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>custom16x16Environment</File>
+          <Index>0x87</Index>
+        </Texture>
+      </Frame>
+      <Frame time="0.1">
+        <Texture>
+          <File>custom16x16Environment</File>
+          <Index>0x86</Index>
+        </Texture>
+        <Frame time="0.2">
+          <Texture>
+            <File>custom16x16Environment</File>
+            <Index>0x85</Index>
+          </Texture>
+        </Frame>
+      </Frame>
+    </Animation>
+    <ShadowSize>75</ShadowSize>
   </Object>
   <Object type="0x950a" id="Hideout of Septavius Portal">
     <Class>Portal</Class>

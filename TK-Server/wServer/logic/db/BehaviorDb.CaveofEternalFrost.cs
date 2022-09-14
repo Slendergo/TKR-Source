@@ -144,7 +144,11 @@ namespace wServer.logic
                     new Reproduce("Snowball Roll 4", 20, 1, coolDown: 200),
                     new Reproduce("Snowball Roll 5", 20, 1, coolDown: 200),
                     new Reproduce("Snowball Roll 6", 20, 1, coolDown: 200),
-                    new Reproduce("Snowball Roll 7", 20, 1, coolDown: 200)
+                    new Reproduce("Snowball Roll 7", 20, 1, coolDown: 200),
+                    new EntitiesNotExistsTransition(25, "die", "Corrupt Snowman Switch")
+                    ),
+                new State("die",
+                    new Suicide()
 
                     )
                 )
@@ -484,6 +488,7 @@ namespace wServer.logic
                     ),
                 new State("attack",
                     new Spawn("Ice Wall Spawner 1", 1, 1, coolDown: 999999),
+                    new RemoveConditionalEffect(ConditionEffectIndex.Invincible),
                     new HpLessTransition(0.5, "freedps"),
                     new Shoot(30, 3, projectileIndex: 4, fixedAngle: 0, coolDown: 2400, coolDownOffset: 100),
                     new Shoot(30, 3, projectileIndex: 4, fixedAngle: -5, coolDown: 2400, coolDownOffset: 200),
@@ -696,9 +701,9 @@ namespace wServer.logic
                 new ItemLoot("Special Dust", 0.01)
                 ),
              new Threshold(0.03,
-                 new ItemLoot("Iceberg", 0.0003),
-                new ItemLoot("Condemned Frostbite", 0.0003),
-                new ItemLoot("The Expanse", 0.5)
+                 new ItemLoot("Iceberg", 0.0001),
+                new ItemLoot("Condemned Frostbite", 0.0001),
+                new ItemLoot("The Expansion", 0.0001)
                  )
             )
         .Init("Queen of Ice",
@@ -1055,13 +1060,13 @@ namespace wServer.logic
                 new ItemLoot("Magic Dust", 0.5)
                 ),
              new Threshold(0.03,
-                 new ItemLoot("Winter Solstice", 0.0003),
-                 new ItemLoot("Polar Vortex", 0.0003),
-                 new ItemLoot("Iceberg", 0.0003),
-                new ItemLoot("Condemned Frostbite", 0.0003)
+                 new ItemLoot("Winter Solstice", 0.0001),
+                 new ItemLoot("Polar Vortex", 0.0001),
+                 new ItemLoot("Iceberg", 0.0001),
+                new ItemLoot("Condemned Frostbite", 0.0001)
                 ),
              new Threshold(0.03,
-                 new ItemLoot("Snow Angle", 0.0003)
+                 new ItemLoot("Snow Angle", 0.0001)
                  )
             )
         .Init("Corrupt Snowman Switch", //finished
@@ -1132,10 +1137,10 @@ namespace wServer.logic
                 new ItemLoot("Magic Dust", 0.5)
                 ),
              new Threshold(0.03,
-                 new ItemLoot("World of Ice", 0.0003),
-                 new ItemLoot("Agdluak", 0.0003),
-                 new ItemLoot("Absolute Zero", 0.0003),
-                new ItemLoot("Cryogenic Freeze", 0.0003)
+                 new ItemLoot("World of Ice", 0.0001),
+                 new ItemLoot("Agdluak", 0.0001),
+                 new ItemLoot("Absolute Zero", 0.0001),
+                new ItemLoot("Cryogenic Freeze", 0.0001)
                  )
             )
         .Init("Cursed Snowman Switch", //finished
@@ -1162,50 +1167,34 @@ namespace wServer.logic
                     new Shoot(18, 5, shootAngle: 15, projectileIndex: 0, coolDown: 1200, coolDownOffset: 0),
                     new Shoot(18, 6, shootAngle: 20, projectileIndex: 0, coolDown: 1200, coolDownOffset: 0),
                     new Shoot(16, 8, shootAngle: 10, projectileIndex: 1, coolDown: 1000),
-                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 3, coolDown: 1000),
-                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 4, coolDown: 1000),
                     new Shoot(20, 12, projectileIndex: 0, coolDown: 1000),
                     new TimedTransition(4000, "attack1.1")
                     ),
                  new State("attack1.1",
-                     new TossObject("Frozen Elf", 8, 0, coolDown: 3000),
-                    new TossObject("Frozen Elf", 8, 90, coolDown: 3000),
-                    new TossObject("Frozen Elf", 8, 180, coolDown: 3000),
-                    new TossObject("Frozen Elf", 8, 270, coolDown: 3000),
+                     new TossObject("Frozen Elf", 8, 0, coolDown: 5000),
+                    new TossObject("Frozen Elf", 8, 90, coolDown: 5000),
+                    new TossObject("Frozen Elf", 8, 180, coolDown: 5000),
+                    new TossObject("Frozen Elf", 8, 270, coolDown: 5000),
                     new HpLessTransition(.6, "rage"),
                     new ReplaceTile("Black Water Frozen", "Black Water Frozen 1", 30),
                     new Shoot(18, 4, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 800),
-                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 1, coolDown: 1000),
-                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 3, coolDown: 1000),
-                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 4, coolDown: 1000),
+                    new Shoot(16, 6, shootAngle: 10, projectileIndex: 1, coolDown: 1000),
                     new Shoot(20, 12, projectileIndex: 0, coolDown: 1000),
                     new TimedTransition(4000, "attack1.2")
                     ),
                  new State("attack1.2",
                     new HpLessTransition(.6, "rage"),
-                    new TossObject("Frozen Elf", 8, 0, coolDown: 3000),
-                    new TossObject("Frozen Elf", 8, 90, coolDown: 3000),
-                    new TossObject("Frozen Elf", 8, 180, coolDown: 3000),
-                    new TossObject("Frozen Elf", 8, 270, coolDown: 3000),
                     new ReplaceTile("Black Water Frozen 1", "Black Water Frozen", 30),
                     new Shoot(18, 4, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 800),
-                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 1, coolDown: 1000),
-                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 3, coolDown: 1000),
-                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 4, coolDown: 1000),
+                    new Shoot(16, 6, shootAngle: 10, projectileIndex: 1, coolDown: 1000),
                     new Shoot(20, 12, projectileIndex: 0, coolDown: 1000),
                     new TimedTransition(4000, "attack1")
                     ),
                 new State("rage",
                     new ReplaceTile("Black Water Frozen", "Black Water Frozen 1", 30),
-                    new TossObject("Frozen Elf", 8, 0, coolDown: 3000),
-                    new TossObject("Frozen Elf", 8, 90, coolDown: 3000),
-                    new TossObject("Frozen Elf", 8, 180, coolDown: 3000),
-                    new TossObject("Frozen Elf", 8, 270, coolDown: 3000),
                     new ConditionalEffect(ConditionEffectIndex.Invincible, false),
                     new Shoot(18, 4, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 800),
-                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 1, coolDown: 1000),
-                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 3, coolDown: 1000),
-                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 4, coolDown: 1000),
+                    new Shoot(16, 6, shootAngle: 10, projectileIndex: 1, coolDown: 1000),
                     new TossObject("Frozen Tower", 8, 45, coolDown: 999999),
                     new TossObject("Frozen Tower", 8, 135, coolDown: 999999),
                     new TossObject("Frozen Tower", 8, 225, coolDown: 999999),
@@ -1218,16 +1207,10 @@ namespace wServer.logic
                     new HpLessTransition(.4, "attack2")
                     ),
                 new State("attack2",
-                    new TossObject("Frozen Elf", 8, 0, coolDown: 3000),
-                    new TossObject("Frozen Elf", 8, 90, coolDown: 3000),
-                    new TossObject("Frozen Elf", 8, 180, coolDown: 3000),
-                    new TossObject("Frozen Elf", 8, 270, coolDown: 3000),
                     new HpLessTransition(.1, "granted"),
                     new ReplaceTile("Black Water Frozen 1", "Black Water Frozen", 30),
                     new Shoot(18, 4, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 800),
-                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 1, coolDown: 1000),
-                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 3, coolDown: 1000),
-                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 4, coolDown: 1000),
+                    new Shoot(16, 6, shootAngle: 10, projectileIndex: 1, coolDown: 1000),
                     new Shoot(20, 12, projectileIndex: 0, coolDown: 1000),
                     new TimedTransition(4000, "attack2.1")
                     ),
@@ -1239,23 +1222,16 @@ namespace wServer.logic
                     new HpLessTransition(.1, "granted"),
                     new ReplaceTile("Black Water Frozen", "Black Water Frozen 1", 30),
                     new Shoot(18, 4, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 800),
-                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 1, coolDown: 1000),
-                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 3, coolDown: 1000),
-                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 4, coolDown: 1000),
+                    new Shoot(16, 6, shootAngle: 10, projectileIndex: 1, coolDown: 1000),
                     new Shoot(20, 12, projectileIndex: 0, coolDown: 1000),
                     new TimedTransition(4000, "attack2.2")
                     ),
                  new State("attack2.2",
-                     new TossObject("Frozen Elf", 8, 0, coolDown: 3000),
-                    new TossObject("Frozen Elf", 8, 90, coolDown: 3000),
-                    new TossObject("Frozen Elf", 8, 180, coolDown: 3000),
-                    new TossObject("Frozen Elf", 8, 270, coolDown: 3000),
                     new HpLessTransition(.1, "granted"),
                     new ReplaceTile("Black Water Frozen 1", "Black Water Frozen", 30),
                     new Shoot(18, 4, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 800),
-                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 1, coolDown: 1000),
-                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 3, coolDown: 1000),
-                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 4, coolDown: 1000),
+                    new Shoot(16, 6, shootAngle: 10, projectileIndex: 1, coolDown: 1000),
+                    new Shoot(16, 6, shootAngle: 10, projectileIndex: 3, coolDown: 1000),
                     new Shoot(20, 12, projectileIndex: 0, coolDown: 1000),
                     new TimedTransition(4000, "attack2")
                     ),
@@ -1282,10 +1258,10 @@ namespace wServer.logic
                 new ItemLoot("Magic Dust", 0.5)
                 ),
              new Threshold(0.03,
-                 new ItemLoot("World of Ice", 0.0003),
-                 new ItemLoot("Agdluak", 0.0003),
-                 new ItemLoot("Absolute Zero", 0.0003),
-                new ItemLoot("Cryogenic Freeze", 0.0003)
+                 new ItemLoot("World of Ice", 0.0001),
+                 new ItemLoot("Agdluak", 0.0001),
+                 new ItemLoot("Absolute Zero", 0.0001),
+                new ItemLoot("Cryogenic Freeze", 0.0001)
                  )
             )
         .Init("Guardian of the Ice Queen",

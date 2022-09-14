@@ -130,7 +130,7 @@
 			<Speed>180</Speed>
 			<MinDamage>350</MinDamage>
 			<MaxDamage>490</MaxDamage>
-			<LifetimeMS>615</LifetimeMS>
+			<LifetimeMS>300</LifetimeMS>
 			<ParticleTrail lifetimeMS="300">0x0089D1</ParticleTrail>
 			<Amplitude>.25</Amplitude>
 			<Frequency>1.75</Frequency>
@@ -142,6 +142,6 @@
 		<ArcGap>3</ArcGap>
 		<BagType>7</BagType>
 		<FameBonus>7</FameBonus>
-		<DisplayId>Ice Katana</DisplayId>
+		<DisplayId>Agdluak</DisplayId>
 	</Object>
 </Objects>

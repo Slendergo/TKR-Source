@@ -221,7 +221,7 @@
 		<FameBonus>6</FameBonus>
 		<DisplayId>Mortomus' Shovel</DisplayId>
 	</Object>
-	<Object type="0x4292" id="The Expanse">
+	<Object type="0x4340" id="The Expansion">
 		<Class>Equipment</Class>
 		<Item />
 		<Insanity />

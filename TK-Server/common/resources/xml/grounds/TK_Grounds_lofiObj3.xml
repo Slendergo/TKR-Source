@@ -482,6 +482,80 @@
     <BlendPriority>20</BlendPriority>
     <Speed>1</Speed>
   </Ground>
+	<Ground type="0x4310" id="Snow Replace">
+		<RandomTexture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x1c0</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x1c0</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x1c0</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x1c1</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x1c2</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x1c3</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x1c4</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x1c5</Index>
+			</Texture>
+		</RandomTexture>
+		<Speed>.95</Speed>
+	</Ground>
+	<Ground type="0x4325" id="Snow Replace Snowball">
+		<RandomTexture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x1c0</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x1c0</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x1c0</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x1c1</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x1c2</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x1c3</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x1c4</Index>
+			</Texture>
+			<Texture>
+				<File>lofiObj3</File>
+				<Index>0x1c5</Index>
+			</Texture>
+		</RandomTexture>
+		<Speed>.95</Speed>
+	</Ground>
   <Ground type="0xb9" id="Snow">
     <RandomTexture>
       <Texture>
@@ -528,6 +602,13 @@
     <Speed>.95</Speed>
     <BlendPriority>21</BlendPriority>
   </Ground>
+	<Ground type="0x4311" id="Turret Ground">
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x53</Index>
+		</Texture>
+		<Speed>.95</Speed>
+	</Ground>
   <Ground type="0x81" id="Snow White">
     <Texture>
       <File>lofiObj3</File>

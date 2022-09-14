@@ -287,4 +287,12 @@
 		</Texture>
 		<AngleCorrection>1</AngleCorrection>
 	</Object>
+	<Object type="0x4312" id="CSS Big 1">
+		<Class>Projectile</Class>
+		<Texture>
+			<File>CustomProjsBig</File>
+			<Index>0x35</Index>
+		</Texture>
+		<Rotation>45</Rotation>
+	</Object>
 </Objects>

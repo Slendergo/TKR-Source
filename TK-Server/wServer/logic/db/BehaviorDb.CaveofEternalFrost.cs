@@ -18,6 +18,179 @@ namespace wServer.logic
                     )
                 )
             )
+        .Init("Snowball Roll",
+            new State(
+                new SetAltTexture(0, 3, 100, true),
+                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new State("Move",
+                    new Shoot(20, 1, projectileIndex: 0, coolDown: 200),
+                    new MoveLine(1, 90),
+                    new GroundTransition("Snow Replace Snowball", "Suicide")
+                    ),
+                new State("Suicide",
+                    new Suicide()
+                    )
+                )
+            )
+        .Init("Snowball Roll 1",
+            new State(
+                new SetAltTexture(0, 3, 100, true),
+                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new State("Move",
+                    new Shoot(20, 1, projectileIndex: 0, coolDown: 200),
+                    new MoveLine(1, 180),
+                    new GroundTransition("Snow Replace Snowball", "Suicide")
+                    ),
+                new State("Suicide",
+                    new Suicide()
+                    )
+                )
+            )
+        .Init("Snowball Roll 2",
+            new State(
+                new SetAltTexture(0, 3, 100, true),
+                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new State("Move",
+                    new Shoot(20, 1, projectileIndex: 0, coolDown: 200),
+                    new MoveLine(1, 270),
+                    new GroundTransition("Snow Replace Snowball", "Suicide")
+                    ),
+                new State("Suicide",
+                    new Suicide()
+                    )
+                )
+            )
+        .Init("Snowball Roll 3",
+            new State(
+                new SetAltTexture(0, 3, 100, true),
+                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new State("Move",
+                    new Shoot(20, 1, projectileIndex: 0, coolDown: 200),
+                    new MoveLine(1, 0),
+                    new GroundTransition("Snow Replace Snowball", "Suicide")
+                    ),
+                new State("Suicide",
+                    new Suicide()
+                    )
+                )
+            )
+        .Init("Snowball Roll 4",
+            new State(
+                new SetAltTexture(0, 3, 100, true),
+                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new State("Move",
+                    new Shoot(20, 1, projectileIndex: 0, coolDown: 200),
+                    new MoveLine(1, 45),
+                    new GroundTransition("Snow Replace Snowball", "Suicide")
+                    ),
+                new State("Suicide",
+                    new Suicide()
+                    )
+                )
+            )
+        .Init("Snowball Roll 5",
+            new State(
+                new SetAltTexture(0, 3, 100, true),
+                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new State("Move",
+                    new Shoot(20, 1, projectileIndex: 0, coolDown: 200),
+                    new MoveLine(1, 135),
+                    new GroundTransition("Snow Replace Snowball", "Suicide")
+                    ),
+                new State("Suicide",
+                    new Suicide()
+                    )
+                )
+            )
+        .Init("Snowball Roll 6",
+            new State(
+                new SetAltTexture(0, 3, 100, true),
+                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new State("Move",
+                    new Shoot(20, 1, projectileIndex: 0, coolDown: 200),
+                    new MoveLine(1, 225),
+                    new GroundTransition("Snow Replace Snowball", "Suicide")
+                    ),
+                new State("Suicide",
+                    new Suicide()
+                    )
+                )
+            )
+        .Init("Snowball Roll 7",
+            new State(
+                new SetAltTexture(0, 3, 100, true),
+                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new State("Move",
+                    new Shoot(20, 1, projectileIndex: 0, coolDown: 200),
+                    new MoveLine(1, 315),
+                    new GroundTransition("Snow Replace Snowball", "Suicide")
+                    ),
+                new State("Suicide",
+                    new Suicide()
+                    )
+                )
+            )
+        .Init("Snowball Spawner",
+            new State(
+                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new State("Check Player",
+                    new PlayerWithinTransition(100, "Start")
+                    ),
+                new State("Start",
+                    new Reproduce("Snowball Roll", 20, 1, coolDown: 200),
+                    new Reproduce("Snowball Roll 1", 20, 1, coolDown: 200),
+                    new Reproduce("Snowball Roll 2", 20, 1, coolDown: 200),
+                    new Reproduce("Snowball Roll 3", 20, 1, coolDown: 200),
+                    new Reproduce("Snowball Roll 4", 20, 1, coolDown: 200),
+                    new Reproduce("Snowball Roll 5", 20, 1, coolDown: 200),
+                    new Reproduce("Snowball Roll 6", 20, 1, coolDown: 200),
+                    new Reproduce("Snowball Roll 7", 20, 1, coolDown: 200)
+
+                    )
+                )
+            )
+        .Init("Snowball Spawner TP",
+            new State(
+                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new State("Check Player",
+                    new PlayerWithinTransition(100, "Start")
+                    ),
+               new State("Start",
+                    new Reproduce("Snowball Roll 4", 20, 1, coolDown: 200),
+                    new Reproduce("Snowball Roll 5", 20, 1, coolDown: 200),
+                    new Reproduce("Snowball Roll 6", 20, 1, coolDown: 200),
+                    new Reproduce("Snowball Roll 7", 20, 1, coolDown: 200)
+                    )
+                )
+            )
+        .Init("Snowball Spawner BT",
+            new State(
+                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new State("Check Player",
+                    new PlayerWithinTransition(100, "Start")
+                    ),
+                new State("Start",
+                    new Reproduce("Snowball Roll", 20, 1, coolDown: 200),
+                    new Reproduce("Snowball Roll 1", 20, 1, coolDown: 200),
+                    new Reproduce("Snowball Roll 2", 20, 1, coolDown: 200),
+                    new Reproduce("Snowball Roll 3", 20, 1, coolDown: 200)
+                    )
+                )
+            )
+        .Init("Snowball Spawner LF",
+            new State(
+                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new State("Check Player",
+                    new PlayerWithinTransition(100, "Start")
+                    ),
+                new State("Start",
+                    new Reproduce("Snowball Roll", 20, 1, coolDown: 200),
+                    new Reproduce("Snowball Roll 1", 20, 1, coolDown: 200),
+                    new Reproduce("Snowball Roll 2", 20, 1, coolDown: 200),
+                    new Reproduce("Snowball Roll 3", 20, 1, coolDown: 200)
+                    )
+                )
+            )
         .Init("Ice Wall Spawner",
             new State(
                 new State("idle",
@@ -44,6 +217,50 @@ namespace wServer.logic
                     ),
                 new State("dead",
                     new Suicide()
+                    )
+                )
+            )
+        .Init("Water Creator",
+            new State(
+                new State("idl",
+                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    ),
+                new State("idle",
+                    new Orbit(1, 8, 15, "Cursed Snowman Switch", speedVariance: 0, radiusVariance: 0),
+                    new ReplaceTile("Snow", "Black Water Frozen", 1)
+                    )
+                )
+            )
+        .Init("Water Creator 1",
+            new State(
+                new State("idl",
+                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    ),
+                new State("idle",
+                    new Orbit(2, 8, 15, "Cursed Snowman Switch", speedVariance: 0, radiusVariance: 0),
+                    new ReplaceTile("Black Water Frozen", "Snow", 1)
+                    )
+                )
+            )
+        .Init("Water Creator 2",
+            new State(
+                new State("idl",
+                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    ),
+                new State("idle",
+                    new Orbit(1, 8, 15, "Cursed Snowman Switch", speedVariance: 0, radiusVariance: 0),
+                    new ReplaceTile("Snow", "Black Water Frozen", 1)
+                    )
+                )
+            )
+        .Init("Water Creator 3",
+            new State(
+                new State("idl",
+                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    ),
+                new State("idle",
+                    new Orbit(2, 8, 15, "Cursed Snowman Switch", speedVariance: 0, radiusVariance: 0),
+                    new ReplaceTile("Black Water Frozen", "Snow", 1)
                     )
                 )
             )
@@ -503,15 +720,16 @@ namespace wServer.logic
                 new State("scream",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
                     new Flash(0xCC1A1A, 0.5, 12),
-                    new Shoot(20, 8, projectileIndex: 0, coolDownOffset: 1240),
-                    new Shoot(20, 17, projectileIndex: 1, coolDownOffset: 1570),
-                    new Shoot(20, 29, projectileIndex: 2, coolDownOffset: 3150),
+                    new Shoot(20, 8, projectileIndex: 0, coolDownOffset: 1000),
+                    new Shoot(20, 17, projectileIndex: 1, coolDownOffset: 1500),
+                    new Shoot(20, 29, projectileIndex: 2, coolDownOffset: 2000),
                     new TimedTransition(10000, "Protection")
                     ),
                 new State("attack1",
                     new Taunt("Hello friend. You seem to be lost. LET ME SHOW YOU THE WAY OUT!"),
-                    new Chase(8),
-                    new Shoot(8, 8, projectileIndex: 1, shootAngle: 10, coolDown: 2000),
+                    new StayCloseToSpawn(2, 20),
+                    new Chase(12),
+                    new Shoot(8, 8, projectileIndex: 1, shootAngle: 10, coolDown: 1200),
                     new Shoot(20, 6, projectileIndex: 2, coolDown: 600),
                     new HpLessTransition(.85, "return to spawn")
                     ),
@@ -534,44 +752,73 @@ namespace wServer.logic
                     ),
                 new State("waiting",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
-                    new Shoot(12, 1, projectileIndex: 1, predictive: .4, coolDown: 400),
-                    new Shoot(8, 1, projectileIndex: 0, fixedAngle: 0, coolDown: 100),
-                    new Shoot(8, 1, projectileIndex: 0, fixedAngle: 60, coolDown: 100),
-                    new Shoot(8, 1, projectileIndex: 0, fixedAngle: 120, coolDown: 100),
-                    new Shoot(8, 1, projectileIndex: 0, fixedAngle: 180, coolDown: 100),
-                    new Shoot(8, 1, projectileIndex: 0, fixedAngle: 240, coolDown: 100),
-                    new Shoot(8, 1, projectileIndex: 0, fixedAngle: 300, coolDown: 100),
+                    new Shoot(12, 2, projectileIndex: 1, shootAngle: 10, predictive: .4, coolDown: 400),
+                    new Shoot(18, 2, projectileIndex: 0, shootAngle: 10, fixedAngle: 0, coolDown: 200),
+                    new Shoot(18, 2, projectileIndex: 0, shootAngle: 10, fixedAngle: 60, coolDown: 200),
+                    new Shoot(18, 2, projectileIndex: 0, shootAngle: 10, fixedAngle: 120, coolDown: 200),
+                    new Shoot(18, 2, projectileIndex: 0, shootAngle: 10, fixedAngle: 180, coolDown: 200),
+                    new Shoot(18, 2, projectileIndex: 0, shootAngle: 10, fixedAngle: 240, coolDown: 200),
+                    new Shoot(18, 2, projectileIndex: 0, shootAngle: 10, fixedAngle: 300, coolDown: 200),
                     new Shoot(10, 6, projectileIndex: 4, coolDown: 400),
                     new EntitiesNotExistsTransition(100, "tentacles", "Ice Tower", "Ice Tower 1", "Ice Tower 2", "Ice Tower 3", "Ice Tower 4", "Ice Tower 5")
                     ),
                 new State("tentacles",
                     new ConditionalEffect(ConditionEffectIndex.Invincible, false),
-                    new TossObject2("Evil Snowman", 5, coolDown: 5000, randomToss: true),
-                    new TossObject2("Evil Snowman", 5, coolDown: 5000, randomToss: true),
-                    new TossObject2("Evil Snowman", 5, coolDown: 5000, randomToss: true),
+                    new TossObject2("Frozen Elf", 5, coolDown: 3000, randomToss: true),
+                    new TossObject2("Frozen Elf", 8, coolDown: 3000, randomToss: true),
+                    new TossObject2("Frozen Elf", 3, coolDown: 3000, randomToss: true),
                     new Shoot(20, 4, shootAngle: 10, projectileIndex: 3, predictive: 1.2, coolDown: 1200),
-                    new Shoot(30, 10, projectileIndex: 2, fixedAngle: 0, coolDown: 800, coolDownOffset: 100),
-                    new Shoot(30, 10, projectileIndex: 2, fixedAngle: 5, coolDown: 800, coolDownOffset: 200),
-                    new Shoot(30, 10, projectileIndex: 2, fixedAngle: 10, coolDown: 800, coolDownOffset: 300),
-                    new Shoot(30, 10, projectileIndex: 2, fixedAngle: 15, coolDown: 800, coolDownOffset: 400),
-                    new Shoot(30, 10, projectileIndex: 2, fixedAngle: 20, coolDown: 800, coolDownOffset: 500),
-                    new Shoot(30, 10, projectileIndex: 2, fixedAngle: 25, coolDown: 800, coolDownOffset: 600),
-                    new Shoot(30, 10, projectileIndex: 2, fixedAngle: 30, coolDown: 800, coolDownOffset: 700),
-                    new Shoot(30, 10, projectileIndex: 2, fixedAngle: 35, coolDown: 800, coolDownOffset: 800),
-                    new TimedTransition(30000, "scream2")
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 0, coolDown: 3700, coolDownOffset: 100),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 5, coolDown: 3700, coolDownOffset: 200),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 10, coolDown: 3700, coolDownOffset: 300),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 15, coolDown: 3700, coolDownOffset: 400),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 20, coolDown: 3700, coolDownOffset: 500),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 25, coolDown: 3700, coolDownOffset: 600),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 30, coolDown: 3700, coolDownOffset: 700),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 35, coolDown: 3700, coolDownOffset: 800),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 40, coolDown: 3700, coolDownOffset: 900),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 45, coolDown: 3700, coolDownOffset: 1000),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 50, coolDown: 3700, coolDownOffset: 1100),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 55, coolDown: 3700, coolDownOffset: 1200),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 60, coolDown: 3700, coolDownOffset: 1300),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 65, coolDown: 3700, coolDownOffset: 1400),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 70, coolDown: 3700, coolDownOffset: 1500),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 75, coolDown: 3700, coolDownOffset: 1600),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 80, coolDown: 3700, coolDownOffset: 1700),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 85, coolDown: 3700, coolDownOffset: 1800),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 90, coolDown: 3700, coolDownOffset: 1900),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 95, coolDown: 3700, coolDownOffset: 2000),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 100, coolDown: 3700, coolDownOffset: 2100),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 105, coolDown: 3700, coolDownOffset: 2200),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 110, coolDown: 3700, coolDownOffset: 2300),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 115, coolDown: 3700, coolDownOffset: 2400),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 120, coolDown: 3700, coolDownOffset: 2500),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 125, coolDown: 3700, coolDownOffset: 2600),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 130, coolDown: 3700, coolDownOffset: 2700),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 135, coolDown: 3700, coolDownOffset: 2800),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 140, coolDown: 3700, coolDownOffset: 2900),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 145, coolDown: 3700, coolDownOffset: 3000),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 150, coolDown: 3700, coolDownOffset: 3100),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 155, coolDown: 3700, coolDownOffset: 3200),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 160, coolDown: 3700, coolDownOffset: 3300),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 165, coolDown: 3700, coolDownOffset: 3400),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 170, coolDown: 3700, coolDownOffset: 3500),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 175, coolDown: 3700, coolDownOffset: 3600),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 180, coolDown: 3700, coolDownOffset: 3700),
+                    
+                    new TimedTransition(15000, "scream2")
                     ),
                 new State("scream2",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
                     new ConditionalEffect(ConditionEffectIndex.Invincible, false),
                     new Taunt("ARHHHHH"),
                     new Flash(0x5279FD, 0.5, 12),
-                    new ChangeSize(5, 160),
-                    new TimedTransition(10000, "attackoftheminions")
+                    new ChangeSize(5, 200),
+                    new TimedTransition(5000, "attackoftheminions")
                     ),
                 new State("attackoftheminions",
-                    new Charge(speed: 1.4, range: 8, coolDown: 1500),
+                    new Charge(10, range: 8),
                     new Shoot(12, 6, projectileIndex: 2, shootAngle: 10, coolDown: 600),
-                    new Shoot(2, 30, projectileIndex: 1, coolDown: 500),
+                    new Shoot(12, 30, projectileIndex: 1, coolDown: 1000),
                     new Reproduce("Evil Snowman", 5, 5, coolDown: 5000),
                     new TossObject("Frozen Elf", 4, angle: 0, coolDown: 5000),
                     new TossObject("Frozen Elf", 8, angle: 60, coolDown: 5000),
@@ -583,7 +830,7 @@ namespace wServer.logic
                 new State("healing",
                     new ReturnToSpawn(1.3, 0),
                     new Taunt("THE COLD MAKES ME STRONGER!!!!"),
-                    new HealSelf(coolDown: 5000, amount: 25000),
+                    new HealSelf(coolDown: 5000, amount: 10, percentage: true),
                     new HpLessTransition(.6, "clonesprepare")
                     ),
                 new State("clonesprepare",
@@ -600,104 +847,103 @@ namespace wServer.logic
                     new EntityExistsTransition("Queen of Ice Clone", 10, "waiting1")
                     ),
                 new State("waiting1",
-                    new Shoot(10, 4, projectileIndex: 2, shootAngle: 15, predictive: 1, coolDown: 1000),
+                    new Shoot(12, 6, projectileIndex: 2, shootAngle: 15, predictive: 1, coolDown: 600),
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
                     new EntitiesNotExistsTransition(10, "prepareattack2", "Queen of Ice Clone", "Queen of Ice Clone", "Queen of Ice Clone", "Queen of Ice Clone")
                     ),
                 new State("prepareattack2",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
-                    new ReturnToSpawn(1.3, 0),
                     new TimedTransition(5000, "attack2")
                     ),
                 new State("attack2",
                     new HpLessTransition(.45, "guards2"),
                     new Taunt("I’VE GOT PLENTY MORE TRICKS UP MY SLEEVE!"),
-                    new Shoot(3, 40, projectileIndex: 3, coolDown: 300),
-                    new Shoot(12, 2, projectileIndex: 1, shootAngle: 12, predictive: .5, coolDown: 100),
-                    new Shoot(20, 4, shootAngle: 10, projectileIndex: 3, fixedAngle: 216, coolDown: 300),
-                    new Grenade(radius: 4, damage: 90, range: 6, fixedAngle: 36, coolDown: 99999, effect: ConditionEffectIndex.ArmorBroken, effectDuration: 3000, color: 0x5279FD),
-                    new Grenade(radius: 4, damage: 90, range: 12, fixedAngle: 36, coolDown: 99999, effect: ConditionEffectIndex.ArmorBroken, effectDuration: 3000, color: 0x5279FD),
+                    new Shoot(13, 40, projectileIndex: 3, coolDown: 1200),
+                    new Shoot(12, 2, projectileIndex: 1, shootAngle: 12, predictive: .5, coolDown: 200),
+                    new Shoot(20, 4, shootAngle: 10, projectileIndex: 3, fixedAngle: 216, coolDown: 400),
+                    new Grenade(radius: 4, damage: 200, range: 6, fixedAngle: 36, coolDown: 99999, effect: ConditionEffectIndex.Darkness, effectDuration: 3000, color: 0x5279FD),
+                    new Grenade(radius: 4, damage: 200, range: 12, fixedAngle: 36, coolDown: 99999, effect: ConditionEffectIndex.ArmorBroken, effectDuration: 3000, color: 0x5279FD),
                     new TimedTransition(400, "attack2.1")
                     ),
                 new State("attack2.1",
                     new HpLessTransition(.45, "guards2"),
-                    new Shoot(3, 40, projectileIndex: 3, coolDown: 300),
+                    new Shoot(13, 40, projectileIndex: 3, coolDown: 1200),
                     new Shoot(12, 2, projectileIndex: 1, shootAngle: 12, predictive: .5, coolDown: 100),
                     new Shoot(20, 4, shootAngle: 10, projectileIndex: 3, fixedAngle: 252, coolDown: 300),
-                    new Grenade(radius: 4, damage: 90, range: 12, fixedAngle: 72, coolDown: 99999, effect: ConditionEffectIndex.ArmorBroken, effectDuration: 3000, color: 0x5279FD),
-                    new Grenade(radius: 4, damage: 90, range: 6, fixedAngle: 72, coolDown: 99999, effect: ConditionEffectIndex.ArmorBroken, effectDuration: 3000, color: 0x5279FD),
+                    new Grenade(radius: 4, damage: 200, range: 12, fixedAngle: 72, coolDown: 99999, effect: ConditionEffectIndex.Darkness, effectDuration: 3000, color: 0x5279FD),
+                    new Grenade(radius: 4, damage: 200, range: 6, fixedAngle: 72, coolDown: 99999, effect: ConditionEffectIndex.ArmorBroken, effectDuration: 3000, color: 0x5279FD),
                     new TimedTransition(400, "attack2.2")
                     ),
                 new State("attack2.2",
                     new HpLessTransition(.45, "guards2"),
-                    new Shoot(3, 40, projectileIndex: 3, coolDown: 300),
+                    new Shoot(13, 40, projectileIndex: 3, coolDown: 1200),
                     new Shoot(12, 2, projectileIndex: 1, shootAngle: 12, predictive: .5, coolDown: 100),
                     new Shoot(20, 4, shootAngle: 10, projectileIndex: 3, fixedAngle: 288, coolDown: 300),
-                    new Grenade(radius: 4, damage: 90, range: 12, fixedAngle: 108, coolDown: 99999, effect: ConditionEffectIndex.ArmorBroken, effectDuration: 3000, color: 0x5279FD),
-                    new Grenade(radius: 4, damage: 90, range: 6, fixedAngle: 108, coolDown: 99999, effect: ConditionEffectIndex.ArmorBroken, effectDuration: 3000, color: 0x5279FD),
+                    new Grenade(radius: 4, damage: 200, range: 12, fixedAngle: 108, coolDown: 99999, effect: ConditionEffectIndex.Darkness, effectDuration: 3000, color: 0x5279FD),
+                    new Grenade(radius: 4, damage: 200, range: 6, fixedAngle: 108, coolDown: 99999, effect: ConditionEffectIndex.ArmorBroken, effectDuration: 3000, color: 0x5279FD),
                     new TimedTransition(400, "attack2.3")
                     ),
                 new State("attack2.3",
                     new HpLessTransition(.45, "guards2"),
-                    new Shoot(3, 40, projectileIndex: 3, coolDown: 300),
+                    new Shoot(13, 40, projectileIndex: 3, coolDown: 1200),
                     new Shoot(12, 2, projectileIndex: 1, shootAngle: 12, predictive: .5, coolDown: 100),
                     new Shoot(20, 4, shootAngle: 10, projectileIndex: 3, fixedAngle: 324, coolDown: 300),
-                    new Grenade(radius: 4, damage: 90, range: 12, fixedAngle: 144, coolDown: 99999, effect: ConditionEffectIndex.ArmorBroken, effectDuration: 3000, color: 0x5279FD),
-                    new Grenade(radius: 4, damage: 90, range: 6, fixedAngle: 144, coolDown: 99999, effect: ConditionEffectIndex.ArmorBroken, effectDuration: 3000, color: 0x5279FD),
+                    new Grenade(radius: 4, damage: 200, range: 12, fixedAngle: 144, coolDown: 99999, effect: ConditionEffectIndex.Darkness, effectDuration: 3000, color: 0x5279FD),
+                    new Grenade(radius: 4, damage: 200, range: 6, fixedAngle: 144, coolDown: 99999, effect: ConditionEffectIndex.ArmorBroken, effectDuration: 3000, color: 0x5279FD),
                     new TimedTransition(400, "attack2.4")
                     ),
                 new State("attack2.4",
                     new HpLessTransition(.45, "guards2"),
                     new Taunt("I’VE GOT PLENTY MORE TRICKS UP MY SLEEVE!"),
-                    new Shoot(3, 40, projectileIndex: 3, coolDown: 300),
+                    new Shoot(13, 40, projectileIndex: 3, coolDown: 1200),
                     new Shoot(12, 2, projectileIndex: 1, shootAngle: 12, predictive: .5, coolDown: 100),
                     new Shoot(20, 4, shootAngle: 10, projectileIndex: 3, fixedAngle: 0, coolDown: 300),
-                    new Grenade(radius: 4, damage: 90, range: 12, fixedAngle: 180, coolDown: 99999, effect: ConditionEffectIndex.ArmorBroken, effectDuration: 3000, color: 0x5279FD),
-                    new Grenade(radius: 4, damage: 90, range: 6, fixedAngle: 180, coolDown: 99999, effect: ConditionEffectIndex.ArmorBroken, effectDuration: 3000, color: 0x5279FD),
+                    new Grenade(radius: 4, damage: 200, range: 12, fixedAngle: 180, coolDown: 99999, effect: ConditionEffectIndex.Darkness, effectDuration: 3000, color: 0x5279FD),
+                    new Grenade(radius: 4, damage: 200, range: 6, fixedAngle: 180, coolDown: 99999, effect: ConditionEffectIndex.ArmorBroken, effectDuration: 3000, color: 0x5279FD),
                     new TimedTransition(400, "attack2.5")
                     ),
                 new State("attack2.5",
                     new HpLessTransition(.45, "guards2"),
-                    new Shoot(3, 40, projectileIndex: 3, coolDown: 300),
+                    new Shoot(13, 40, projectileIndex: 3, coolDown: 1200),
                     new Shoot(12, 2, projectileIndex: 1, shootAngle: 12, predictive: .5, coolDown: 100),
                     new Shoot(20, 4, shootAngle: 10, projectileIndex: 3, fixedAngle: 36, coolDown: 300),
-                    new Grenade(radius: 4, damage: 90, range: 12, fixedAngle: 216, coolDown: 99999, effect: ConditionEffectIndex.ArmorBroken, effectDuration: 3000, color: 0x5279FD),
-                    new Grenade(radius: 4, damage: 90, range: 6, fixedAngle: 216, coolDown: 99999, effect: ConditionEffectIndex.ArmorBroken, effectDuration: 3000, color: 0x5279FD),
+                    new Grenade(radius: 4, damage: 200, range: 12, fixedAngle: 216, coolDown: 99999, effect: ConditionEffectIndex.Darkness, effectDuration: 3000, color: 0x5279FD),
+                    new Grenade(radius: 4, damage: 200, range: 6, fixedAngle: 216, coolDown: 99999, effect: ConditionEffectIndex.ArmorBroken, effectDuration: 3000, color: 0x5279FD),
                     new TimedTransition(400, "attack2.6")
                     ),
                 new State("attack2.6",
                     new HpLessTransition(.45, "guards2"),
-                    new Shoot(3, 40, projectileIndex: 3, coolDown: 300),
+                    new Shoot(13, 40, projectileIndex: 3, coolDown: 1200),
                     new Shoot(12, 2, projectileIndex: 1, shootAngle: 12, predictive: .5, coolDown: 100),
                     new Shoot(20, 4, shootAngle: 10, projectileIndex: 3, fixedAngle: 72, coolDown: 300),
-                    new Grenade(radius: 4, damage: 90, range: 12, fixedAngle: 252, coolDown: 99999, effect: ConditionEffectIndex.ArmorBroken, effectDuration: 3000, color: 0x5279FD),
-                    new Grenade(radius: 4, damage: 90, range: 6, fixedAngle: 252, coolDown: 99999, effect: ConditionEffectIndex.ArmorBroken, effectDuration: 3000, color: 0x5279FD),
+                    new Grenade(radius: 4, damage: 200, range: 12, fixedAngle: 252, coolDown: 99999, effect: ConditionEffectIndex.Darkness, effectDuration: 3000, color: 0x5279FD),
+                    new Grenade(radius: 4, damage: 200, range: 6, fixedAngle: 252, coolDown: 99999, effect: ConditionEffectIndex.ArmorBroken, effectDuration: 3000, color: 0x5279FD),
                     new TimedTransition(400, "attack2.7")
                     ),
                 new State("attack2.7",
                     new HpLessTransition(.45, "guards2"),
-                    new Shoot(3, 40, projectileIndex: 3, coolDown: 300),
+                    new Shoot(13, 40, projectileIndex: 3, coolDown: 1200),
                     new Shoot(12, 2, projectileIndex: 1, shootAngle: 12, predictive: .5, coolDown: 100),
                     new Shoot(20, 4, shootAngle: 10, projectileIndex: 3, fixedAngle: 108, coolDown: 300),
-                    new Grenade(radius: 4, damage: 90, range: 12, fixedAngle: 288, coolDown: 99999, effect: ConditionEffectIndex.ArmorBroken, effectDuration: 3000, color: 0x5279FD),
-                    new Grenade(radius: 4, damage: 90, range: 6, fixedAngle: 288, coolDown: 99999, effect: ConditionEffectIndex.ArmorBroken, effectDuration: 3000, color: 0x5279FD),
+                    new Grenade(radius: 4, damage: 200, range: 12, fixedAngle: 288, coolDown: 99999, effect: ConditionEffectIndex.Darkness, effectDuration: 3000, color: 0x5279FD),
+                    new Grenade(radius: 4, damage: 200, range: 6, fixedAngle: 288, coolDown: 99999, effect: ConditionEffectIndex.ArmorBroken, effectDuration: 3000, color: 0x5279FD),
                     new TimedTransition(400, "attack2.8")
                     ),
                 new State("attack2.8",
                     new HpLessTransition(.45, "guards2"),
-                    new Shoot(3, 40, projectileIndex: 3, coolDown: 300),
+                    new Shoot(13, 40, projectileIndex: 3, coolDown: 1200),
                     new Shoot(12, 2, projectileIndex: 1, shootAngle: 12, predictive: .5, coolDown: 100),
                     new Shoot(20, 4, shootAngle: 10, projectileIndex: 3, fixedAngle: 144, coolDown: 300),
-                    new Grenade(radius: 4, damage: 90, range: 12, fixedAngle: 324, coolDown: 99999, effect: ConditionEffectIndex.ArmorBroken, effectDuration: 3000, color: 0x5279FD),
-                    new Grenade(radius: 4, damage: 90, range: 6, fixedAngle: 324, coolDown: 99999, effect: ConditionEffectIndex.ArmorBroken, effectDuration: 3000, color: 0x5279FD),
+                    new Grenade(radius: 4, damage: 200, range: 12, fixedAngle: 324, coolDown: 99999, effect: ConditionEffectIndex.Darkness, effectDuration: 3000, color: 0x5279FD),
+                    new Grenade(radius: 4, damage: 200, range: 6, fixedAngle: 324, coolDown: 99999, effect: ConditionEffectIndex.ArmorBroken, effectDuration: 3000, color: 0x5279FD),
                     new TimedTransition(400, "attack2.9")
                     ),
                 new State("attack2.9",
                     new HpLessTransition(.45, "guards2"),
-                    new Shoot(3, 40, projectileIndex: 3, coolDown: 300),
+                    new Shoot(13, 40, projectileIndex: 3, coolDown: 1200),
                     new Shoot(15, 3, projectileIndex: 0, coolDown: 800),
-                    new Grenade(radius: 4, damage: 90, range: 12, fixedAngle: 360, coolDown: 99999, effect: ConditionEffectIndex.ArmorBroken, effectDuration: 3000, color: 0x5279FD),
-                    new Grenade(radius: 4, damage: 90, range: 8, fixedAngle: 360, coolDown: 99999, effect: ConditionEffectIndex.ArmorBroken, effectDuration: 3000, color: 0x5279FD),
+                    new Grenade(radius: 4, damage: 200, range: 12, fixedAngle: 360, coolDown: 99999, effect: ConditionEffectIndex.Darkness, effectDuration: 3000, color: 0x5279FD),
+                    new Grenade(radius: 4, damage: 200, range: 8, fixedAngle: 360, coolDown: 99999, effect: ConditionEffectIndex.ArmorBroken, effectDuration: 3000, color: 0x5279FD),
                     new TimedTransition(400, "attack2")
                     ),
                 new State("guards2",
@@ -712,13 +958,13 @@ namespace wServer.logic
                     new EntityExistsTransition("Ice Tower", 10, "waiting2")
                     ),
                 new State("waiting2",
-                    new Shoot(12, 1, projectileIndex: 1, predictive: .4, coolDown: 400),
-                    new Shoot(8, 1, projectileIndex: 0, fixedAngle: 0, coolDown: 100),
-                    new Shoot(8, 1, projectileIndex: 0, fixedAngle: 60, coolDown: 100),
-                    new Shoot(8, 1, projectileIndex: 0, fixedAngle: 120, coolDown: 100),
-                    new Shoot(8, 1, projectileIndex: 0, fixedAngle: 180, coolDown: 100),
-                    new Shoot(8, 1, projectileIndex: 0, fixedAngle: 240, coolDown: 100),
-                    new Shoot(8, 1, projectileIndex: 0, fixedAngle: 300, coolDown: 100),
+                    new Shoot(12, 1, projectileIndex: 1, coolDown: 400),
+                    new Shoot(18, 3, projectileIndex: 0, fixedAngle: 0, coolDown: 100),
+                    new Shoot(18, 3, projectileIndex: 0, fixedAngle: 60, coolDown: 100),
+                    new Shoot(18, 3, projectileIndex: 0, fixedAngle: 120, coolDown: 100),
+                    new Shoot(18, 3, projectileIndex: 0, fixedAngle: 180, coolDown: 100),
+                    new Shoot(18, 3, projectileIndex: 0, fixedAngle: 240, coolDown: 100),
+                    new Shoot(18, 3, projectileIndex: 0, fixedAngle: 300, coolDown: 100),
                     new Shoot(10, 6, projectileIndex: 4, coolDown: 400),
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
                     new EntitiesNotExistsTransition(100, "attack4", "Ice Tower", "Ice Tower 1", "Ice Tower 2", "Ice Tower 3", "Ice Tower 4", "Ice Tower 5")
@@ -829,28 +1075,48 @@ namespace wServer.logic
                     ),
                 new State("prepare",
                     new Taunt("huh..."),
-                    new TimedTransition(2500, "changesize")
+                    new TimedTransition(5000, "changesize")
                     ),
                 new State("changesize",
                     new Flash(0xCC1A1A, 0.5, 12),
-                    new ChangeSize(5, 210),
+                    new ChangeSize(5, 230),
+                    new Spawn("Snowball Spawner", 1, 1, coolDown: 999999),
                     new TimedTransition(3600, "attack1")
                     ),
                 new State("attack1",
-                    new Wander(0.8),
-                    new Shoot(15, 8, shootAngle: 10, projectileIndex: 0, predictive: .9, coolDown: 400),
-                    new Shoot(15, 2, shootAngle: 10, projectileIndex: 3, predictive: .9, coolDown: 800),
-                    new TimedTransition(6000, "explode")
+                    new RemoveConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ReturnToSpawn(1, 0),
+                    new StayCloseToSpawn(1, 15),
+                    new Order(10, "Snowball Spawner", "Start"),
+                    //new Shoot(15, 1, projectileIndex: 4, predictive: .9, coolDown: 1000),
+                    //new Shoot(15, 1, projectileIndex: 5, predictive: .9, coolDown: 500),
+                    //new Shoot(15, 1, projectileIndex: 6, predictive: .9, coolDown: 1500),
+                    new Shoot(15, 15, projectileIndex: 0, coolDown: 1000, angleOffset: 3),
+                    new Shoot(15, 1, projectileIndex: 5, coolDown: 400, coolDownOffset: 0),
+                    new Shoot(15, 2, shootAngle: 10, projectileIndex: 7, coolDown: 400, coolDownOffset: 0),
+                    new Shoot(15, 2, shootAngle: 15, projectileIndex: 8, coolDown: 400, coolDownOffset: 0),
+                    new Shoot(15, 2, shootAngle: 20, projectileIndex: 9, coolDown: 400, coolDownOffset: 0),
+                    new TimedRandomTransition(9000, false, "Orbit", "Rush", "Orbit1")
                     ),
-                new State("explode",
-                    new Follow(3, 12, 1),
-                    new TimedTransition(1000, "explode1")
+                new State("Orbit",
+                    new Orbit(6, 7, 15, "Snowball Spawner", speedVariance: 0, radiusVariance: 0),
+                    new Shoot(15, 15, projectileIndex: 4, coolDown: 1000, angleOffset: 3),
+                    new Shoot(15, 4, projectileIndex: 5, shootAngle: 10, coolDown: 1000),
+                    new TimedRandomTransition(10000, false, "attack1", "Rush", "Orbit1")
                     ),
-                new State("explode1",
-                    new Shoot(15, 20, projectileIndex: 1, coolDown: 2000, coolDownOffset: 0),
-                    new Shoot(15, 20, projectileIndex: 1, coolDown: 2000, coolDownOffset: 400),
-                    new Shoot(15, 20, projectileIndex: 1, coolDown: 2000, coolDownOffset: 800),
-                    new TimedTransition(1000, "attack1")
+                new State("Orbit1",
+                    new Orbit(6, 7, 15, "Snowball Spawner", speedVariance: 0, radiusVariance: 0, true),
+                    new Shoot(15, 15, projectileIndex: 4, coolDown: 1000, angleOffset: 3),
+                    new Shoot(15, 4, projectileIndex: 5, shootAngle: 10, coolDown: 1000),
+                    new TimedRandomTransition(10000, false, "attack1", "Rush", "Orbit")
+                    ),
+                new State("Rush",
+                    new Charge(10),
+                    new Follow(1, 8, 8),
+                    new Wander(0.3),
+                    new Shoot(15, 10, projectileIndex: 0, shootAngle: 10, coolDown: 1000, angleOffset: 3),
+                    new Shoot(15, 4, projectileIndex: 5, shootAngle: 15, coolDown: 600),
+                    new TimedRandomTransition(7000, false, "attack1", "Orbit", "Orbit1")
                     )
                 )
             )
@@ -868,51 +1134,48 @@ namespace wServer.logic
                     ),
                 new State("prepare1",
                     new Taunt("There's no escaping..."),
-                    new OrderOnce(40, "Ice Wall Spawner", "Fire"),
                     new TimedTransition(5000, "attack1")
                     ),
                 new State("attack1",
                     new RemoveConditionalEffect(ConditionEffectIndex.Invincible),
                     new HpLessTransition(.6, "rage"),
-                    new Follow(1.5, 1, 15, duration: 6),
                     new ReplaceTile("Black Water Frozen 1", "Black Water Frozen", 30),
-                    new Shoot(8, 4, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 800),
-                    new Shoot(6, 8, shootAngle: 5, projectileIndex: 1, predictive: .8, coolDown: 600),
-                    new Shoot(6, 8, shootAngle: 5, projectileIndex: 3, predictive: .8, coolDown: 600),
-                    new Shoot(6, 8, shootAngle: 5, projectileIndex: 4, predictive: .8, coolDown: 600),
+                    new Shoot(18, 3, shootAngle: 10, projectileIndex: 0, coolDown: 1200, coolDownOffset: 0),
+                    new Shoot(18, 5, shootAngle: 15, projectileIndex: 0, coolDown: 1200, coolDownOffset: 0),
+                    new Shoot(18, 6, shootAngle: 20, projectileIndex: 0, coolDown: 1200, coolDownOffset: 0),
+                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 1, coolDown: 1000),
+                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 3, coolDown: 1000),
+                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 4, coolDown: 1000),
                     new Shoot(20, 12, projectileIndex: 0, coolDown: 1000),
                     new TimedTransition(4000, "attack1.1")
                     ),
                  new State("attack1.1",
                     new HpLessTransition(.6, "rage"),
-                    new Follow(1.5, 1, 15, duration: 6),
                     new ReplaceTile("Black Water Frozen", "Black Water Frozen 1", 30),
-                    new Shoot(8, 4, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 800),
-                    new Shoot(6, 8, shootAngle: 5, projectileIndex: 1, predictive: .8, coolDown: 600),
-                    new Shoot(6, 8, shootAngle: 5, projectileIndex: 3, predictive: .8, coolDown: 600),
-                    new Shoot(6, 8, shootAngle: 5, projectileIndex: 4, predictive: .8, coolDown: 600),
+                    new Shoot(18, 4, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 800),
+                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 1, coolDown: 1000),
+                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 3, coolDown: 1000),
+                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 4, coolDown: 1000),
                     new Shoot(20, 12, projectileIndex: 0, coolDown: 1000),
                     new TimedTransition(4000, "attack1.2")
                     ),
                  new State("attack1.2",
                     new HpLessTransition(.6, "rage"),
-                    new Follow(1.5, 1, 15, duration: 6),
                     new ReplaceTile("Black Water Frozen 1", "Black Water Frozen", 30),
-                    new Shoot(8, 4, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 800),
-                    new Shoot(6, 8, shootAngle: 5, projectileIndex: 1, predictive: .8, coolDown: 600),
-                    new Shoot(6, 8, shootAngle: 5, projectileIndex: 3, predictive: .8, coolDown: 600),
-                    new Shoot(6, 8, shootAngle: 5, projectileIndex: 4, predictive: .8, coolDown: 600),
+                    new Shoot(18, 4, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 800),
+                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 1, coolDown: 1000),
+                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 3, coolDown: 1000),
+                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 4, coolDown: 1000),
                     new Shoot(20, 12, projectileIndex: 0, coolDown: 1000),
                     new TimedTransition(4000, "attack1")
                     ),
                 new State("rage",
                     new ReplaceTile("Black Water Frozen", "Black Water Frozen 1", 30),
-                    new ReturnToSpawn(4, 0),
                     new ConditionalEffect(ConditionEffectIndex.Invincible, false),
-                    new Shoot(8, 4, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 800),
-                    new Shoot(6, 8, shootAngle: 5, projectileIndex: 1, predictive: .8, coolDown: 600),
-                    new Shoot(6, 8, shootAngle: 5, projectileIndex: 3, predictive: .8, coolDown: 600),
-                    new Shoot(6, 8, shootAngle: 5, projectileIndex: 4, predictive: .8, coolDown: 600),
+                    new Shoot(18, 4, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 800),
+                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 1, coolDown: 1000),
+                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 3, coolDown: 1000),
+                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 4, coolDown: 1000),
                     new TossObject("Frozen Tower", 8, 45, coolDown: 999999),
                     new TossObject("Frozen Tower", 8, 135, coolDown: 999999),
                     new TossObject("Frozen Tower", 8, 225, coolDown: 999999),
@@ -927,33 +1190,30 @@ namespace wServer.logic
                 new State("attack2",
                     new HpLessTransition(.1, "granted"),
                     new ReplaceTile("Black Water Frozen 1", "Black Water Frozen", 30),
-                    new Follow(1.5, 15, 1, duration: 8),
-                    new Shoot(8, 4, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 800),
-                    new Shoot(6, 8, shootAngle: 5, projectileIndex: 1, predictive: .8, coolDown: 600),
-                    new Shoot(6, 8, shootAngle: 5, projectileIndex: 3, predictive: .8, coolDown: 600),
-                    new Shoot(6, 8, shootAngle: 5, projectileIndex: 4, predictive: .8, coolDown: 600),
+                    new Shoot(18, 4, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 800),
+                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 1, coolDown: 1000),
+                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 3, coolDown: 1000),
+                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 4, coolDown: 1000),
                     new Shoot(20, 12, projectileIndex: 0, coolDown: 1000),
                     new TimedTransition(4000, "attack2.1")
                     ),
                 new State("attack2.1",
                     new HpLessTransition(.1, "granted"),
                     new ReplaceTile("Black Water Frozen", "Black Water Frozen 1", 30),
-                    new Follow(1.5, 15, 1, duration: 8),
-                    new Shoot(8, 4, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 800),
-                    new Shoot(6, 8, shootAngle: 5, projectileIndex: 1, predictive: .8, coolDown: 600),
-                    new Shoot(6, 8, shootAngle: 5, projectileIndex: 3, predictive: .8, coolDown: 600),
-                    new Shoot(6, 8, shootAngle: 5, projectileIndex: 4, predictive: .8, coolDown: 600),
+                    new Shoot(18, 4, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 800),
+                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 1, coolDown: 1000),
+                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 3, coolDown: 1000),
+                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 4, coolDown: 1000),
                     new Shoot(20, 12, projectileIndex: 0, coolDown: 1000),
                     new TimedTransition(4000, "attack2.2")
                     ),
                  new State("attack2.2",
                     new HpLessTransition(.1, "granted"),
                     new ReplaceTile("Black Water Frozen 1", "Black Water Frozen", 30),
-                    new Follow(1.5, 15, 1, duration: 8),
-                    new Shoot(8, 4, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 800),
-                    new Shoot(6, 8, shootAngle: 5, projectileIndex: 1, predictive: .8, coolDown: 600),
-                    new Shoot(6, 8, shootAngle: 5, projectileIndex: 3, predictive: .8, coolDown: 600),
-                    new Shoot(6, 8, shootAngle: 5, projectileIndex: 4, predictive: .8, coolDown: 600),
+                    new Shoot(18, 4, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 800),
+                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 1, coolDown: 1000),
+                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 3, coolDown: 1000),
+                    new Shoot(16, 8, shootAngle: 10, projectileIndex: 4, coolDown: 1000),
                     new Shoot(20, 12, projectileIndex: 0, coolDown: 1000),
                     new TimedTransition(4000, "attack2")
                     ),
@@ -1083,7 +1343,7 @@ namespace wServer.logic
             new State(
                 new ScaleHP2(20),
                 new Prioritize(
-                    new Orbit(1, 6.0, 25, "Queen of Ice")
+                    new Orbit(4, 6.0, 25, "Queen of Ice")
                     ),
                 new Shoot(10, 4, projectileIndex: 0, shootAngle: 5, predictive: .6, coolDown: 400)
                 )
@@ -1185,11 +1445,10 @@ namespace wServer.logic
                     new PlayerWithinTransition(8, "explodeprep")
                     ),
                 new State("explodeprep",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
                     new Taunt("explode!"),
-                    new Follow(1.5, 1, 10),
+                    new Follow(1.5, 10, 1),
                     new Flash(0xCC1A1A, 0.5, 12),
-                    new TimedTransition(650, "explode")
+                    new TimedTransition(1000, "explode")
                     ),
                 new State("explode",
                     new Shoot(4, 12, projectileIndex: 0, coolDown: 600),

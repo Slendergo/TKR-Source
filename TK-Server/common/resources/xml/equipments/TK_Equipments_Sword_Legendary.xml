@@ -28,29 +28,33 @@
     <Class>Equipment</Class>
     <Item />
     <Mythical />
-    <Demonized />
+    <Vampiric />
     <Texture>
       <File>CustomObj1</File>
       <Index>0x28</Index>
     </Texture>
     <SlotType>1</SlotType>
-    <Description>The world will know their power...</Description>
-    <RateOfFire>1.25</RateOfFire>
+    <Description></Description>
+    <RateOfFire>0.65</RateOfFire>
     <Sound>weapon/mithril_sword</Sound>
     <Projectile>
       <ObjectId>Snow Sword Shot</ObjectId>
-      <Speed>110</Speed>
-      <MinDamage>255</MinDamage>
-      <MaxDamage>255</MaxDamage>
-      <LifetimeMS>250</LifetimeMS>
-      <ArmorPiercing />
+      <Speed>150</Speed>
+      <MinDamage>850</MinDamage>
+      <MaxDamage>1000</MaxDamage>
+		<Amplitude>0.3</Amplitude>
+		<Frequency>0.5</Frequency>
+      <LifetimeMS>300</LifetimeMS>
+		<ParticleTrail lifetimeMS="300">0x0089D1</ParticleTrail>
+		<MultiHit/>
       <Size>100</Size>
     </Projectile>
     <NumProjectiles>1</NumProjectiles>
+	  <ArcGap>4</ArcGap>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
     <feedPower>650</feedPower>
-    <DisplayId>Axe of the Frozen Tundra</DisplayId>
+    <DisplayId>Winter Solstice</DisplayId>
   </Object>
   <Object type="0x4928" id="Excalibur">
     <Class>Equipment</Class>

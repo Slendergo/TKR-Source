@@ -42,6 +42,20 @@
 		<XOffset>.0625</XOffset>
 		<YOffset>.0625</YOffset>
 	</Ground>
+	<Ground type="0x4330" id="Black Water Frozen Dmg">
+		<Texture>
+			<File>d3LofiObjEmbed</File>
+			<Index>0x5b</Index>
+		</Texture>
+		<Sink/>
+		<Speed>0.75</Speed>
+		<Animate dx="2.5">Flow</Animate>
+		<Push />
+		<MinDamage>45</MinDamage>
+		<MaxDamage>55</MaxDamage>
+		<XOffset>.0625</XOffset>
+		<YOffset>.0625</YOffset>
+	</Ground>
   <Ground type="0xd6a" id="Black Water Light Frozen">
     <Texture>
       <File>d3LofiObjEmbed</File>

@@ -27063,6 +27063,13 @@
       <Speed>45</Speed>
       <LifetimeMS>5000</LifetimeMS>
     </Projectile>
+    <Projectile id="6">
+      <ObjectId>ASM Big Shot 1</ObjectId>
+      <Damage>90</Damage>
+      <Size>150</Size>
+      <Speed>75</Speed>
+      <LifetimeMS>5000</LifetimeMS>
+    </Projectile>
   </Object>
   <Object type="0xa6a1" id="Queen of Ice">
     <Class>Character</Class>
@@ -27216,6 +27223,22 @@
       <Size>130</Size>
       <Speed>80</Speed>
       <LifetimeMS>1200</LifetimeMS>
+    </Projectile>
+    <Projectile id="5">
+      <ObjectId>ASM Big Shot 1</ObjectId>
+      <Damage>275</Damage>
+      <Size>150</Size>
+      <Speed>70</Speed>
+      <LifetimeMS>1000</LifetimeMS>
+      <MultiHit />
+    </Projectile>
+    <Projectile id="6">
+      <ObjectId>ASM Big Shot 1</ObjectId>
+      <Damage>275</Damage>
+      <Size>150</Size>
+      <Speed>50</Speed>
+      <LifetimeMS>1000</LifetimeMS>
+      <MultiHit />
     </Projectile>
   </Object>
   <Object type="0x719c" id="Frozen Tower">
@@ -27536,6 +27559,48 @@
       <Amplitude>0.5</Amplitude>
       <LifetimeMS>5000</LifetimeMS>
     </Projectile>
+    <Projectile id="4">
+      <ObjectId>CSS Big 1</ObjectId>
+      <Damage>300</Damage>
+      <Size>150</Size>
+      <Speed>100</Speed>
+      <LifetimeMS>1500</LifetimeMS>
+    </Projectile>
+    <Projectile id="5">
+      <ObjectId>CSS Shot 1</ObjectId>
+      <Damage>300</Damage>
+      <Size>150</Size>
+      <Speed>90</Speed>
+      <LifetimeMS>5000</LifetimeMS>
+    </Projectile>
+    <Projectile id="6">
+      <ObjectId>CSS Shot 2</ObjectId>
+      <Damage>300</Damage>
+      <Size>150</Size>
+      <Speed>90</Speed>
+      <LifetimeMS>5000</LifetimeMS>
+    </Projectile>
+    <Projectile id="7">
+      <ObjectId>CSS Shot 1</ObjectId>
+      <Damage>300</Damage>
+      <Size>150</Size>
+      <Speed>80</Speed>
+      <LifetimeMS>5000</LifetimeMS>
+    </Projectile>
+    <Projectile id="8">
+      <ObjectId>CSS Shot 1</ObjectId>
+      <Damage>300</Damage>
+      <Size>150</Size>
+      <Speed>70</Speed>
+      <LifetimeMS>5000</LifetimeMS>
+    </Projectile>
+    <Projectile id="9">
+      <ObjectId>CSS Shot 1</ObjectId>
+      <Damage>300</Damage>
+      <Size>150</Size>
+      <Speed>60</Speed>
+      <LifetimeMS>5000</LifetimeMS>
+    </Projectile>
   </Object>
   <Object type="0x712c" id="Corrupt Snowman Switch 2">
     <Class>Character</Class>
@@ -27579,6 +27644,382 @@
       <LifetimeMS>5000</LifetimeMS>
       <ConditionEffect duration="1.8">Confused</ConditionEffect>
     </Projectile>
+  </Object>
+  <Object type="0x4319" id="Snowball Spawner">
+    <Class>Character</Class>
+    <Texture>
+      <File>invisible</File>
+      <Index>0</Index>
+    </Texture>
+    <NoMiniMap />
+    <MaxHitPoints>100</MaxHitPoints>
+    <Size>0</Size>
+    <StasisImmune />
+    <DisplayId>Boulder Spawner</DisplayId>
+  </Object>
+  <Object type="0x4326" id="Snowball Spawner TP">
+    <Class>Character</Class>
+    <Texture>
+      <File>invisible</File>
+      <Index>0</Index>
+    </Texture>
+    <NoMiniMap />
+    <MaxHitPoints>100</MaxHitPoints>
+    <Size>0</Size>
+    <StasisImmune />
+    <DisplayId>Boulder Spawner</DisplayId>
+  </Object>
+  <Object type="0x4327" id="Snowball Spawner BT">
+    <Class>Character</Class>
+    <Texture>
+      <File>invisible</File>
+      <Index>0</Index>
+    </Texture>
+    <NoMiniMap />
+    <MaxHitPoints>100</MaxHitPoints>
+    <Size>0</Size>
+    <StasisImmune />
+    <DisplayId>Boulder Spawner</DisplayId>
+  </Object>
+  <Object type="0x4332" id="Snowball Spawner LF">
+    <Class>Character</Class>
+    <Texture>
+      <File>invisible</File>
+      <Index>0</Index>
+    </Texture>
+    <NoMiniMap />
+    <MaxHitPoints>100</MaxHitPoints>
+    <Size>0</Size>
+    <StasisImmune />
+    <DisplayId>Snowball Spawner</DisplayId>
+  </Object>
+  <Object type="0x4315" id="Snowball Roll">
+    <Class>Character</Class>
+    <Enemy />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x83</Index>
+    </Texture>
+    <AltTexture id="1">
+      <Texture>
+        <File>CustomObj1</File>
+        <Index>0x84</Index>
+      </Texture>
+    </AltTexture>
+    <AltTexture id="2">
+      <Texture>
+        <File>CustomObj1</File>
+        <Index>0x85</Index>
+      </Texture>
+    </AltTexture>
+    <AltTexture id="3">
+      <Texture>
+        <File>CustomObj1</File>
+        <Index>0x86</Index>
+      </Texture>
+    </AltTexture>
+    <HitSound>monster/slimes_death</HitSound>
+    <DeathSound>monster/flying_brain_death</DeathSound>
+    <Size>250</Size>
+    <ShadowSize>0</ShadowSize>
+    <MaxHitPoints>1000</MaxHitPoints>
+    <Defense>10</Defense>
+    <Projectile id="0">
+      <ObjectId>Invisible</ObjectId>
+      <Damage>500</Damage>
+      <Speed>10</Speed>
+      <LifetimeMS>1000</LifetimeMS>
+      <Size>100</Size>
+      <MultiHit />
+    </Projectile>
+    <DisplayId>Snowball</DisplayId>
+  </Object>
+  <Object type="0x4320" id="Snowball Roll 1">
+    <Class>Character</Class>
+    <Enemy />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x83</Index>
+    </Texture>
+    <AltTexture id="1">
+      <Texture>
+        <File>CustomObj1</File>
+        <Index>0x84</Index>
+      </Texture>
+    </AltTexture>
+    <AltTexture id="2">
+      <Texture>
+        <File>CustomObj1</File>
+        <Index>0x85</Index>
+      </Texture>
+    </AltTexture>
+    <AltTexture id="3">
+      <Texture>
+        <File>CustomObj1</File>
+        <Index>0x86</Index>
+      </Texture>
+    </AltTexture>
+    <HitSound>monster/slimes_death</HitSound>
+    <DeathSound>monster/flying_brain_death</DeathSound>
+    <Size>250</Size>
+    <ShadowSize>0</ShadowSize>
+    <MaxHitPoints>1000</MaxHitPoints>
+    <Defense>10</Defense>
+    <Projectile id="0">
+      <ObjectId>Invisible</ObjectId>
+      <Damage>500</Damage>
+      <Speed>10</Speed>
+      <LifetimeMS>1000</LifetimeMS>
+      <Size>100</Size>
+      <MultiHit />
+    </Projectile>
+    <DisplayId>Snowball</DisplayId>
+  </Object>
+  <Object type="0x4321" id="Snowball Roll 2">
+    <Class>Character</Class>
+    <Enemy />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x83</Index>
+    </Texture>
+    <AltTexture id="1">
+      <Texture>
+        <File>CustomObj1</File>
+        <Index>0x84</Index>
+      </Texture>
+    </AltTexture>
+    <AltTexture id="2">
+      <Texture>
+        <File>CustomObj1</File>
+        <Index>0x85</Index>
+      </Texture>
+    </AltTexture>
+    <AltTexture id="3">
+      <Texture>
+        <File>CustomObj1</File>
+        <Index>0x86</Index>
+      </Texture>
+    </AltTexture>
+    <HitSound>monster/slimes_death</HitSound>
+    <DeathSound>monster/flying_brain_death</DeathSound>
+    <Size>250</Size>
+    <ShadowSize>0</ShadowSize>
+    <MaxHitPoints>1000</MaxHitPoints>
+    <Defense>10</Defense>
+    <Projectile id="0">
+      <ObjectId>Invisible</ObjectId>
+      <Damage>500</Damage>
+      <Speed>10</Speed>
+      <LifetimeMS>1000</LifetimeMS>
+      <Size>100</Size>
+      <MultiHit />
+    </Projectile>
+    <DisplayId>Snowball</DisplayId>
+  </Object>
+  <Object type="0x4322" id="Snowball Roll 3">
+    <Class>Character</Class>
+    <Enemy />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x83</Index>
+    </Texture>
+    <AltTexture id="1">
+      <Texture>
+        <File>CustomObj1</File>
+        <Index>0x84</Index>
+      </Texture>
+    </AltTexture>
+    <AltTexture id="2">
+      <Texture>
+        <File>CustomObj1</File>
+        <Index>0x85</Index>
+      </Texture>
+    </AltTexture>
+    <AltTexture id="3">
+      <Texture>
+        <File>CustomObj1</File>
+        <Index>0x86</Index>
+      </Texture>
+    </AltTexture>
+    <HitSound>monster/slimes_death</HitSound>
+    <DeathSound>monster/flying_brain_death</DeathSound>
+    <Size>250</Size>
+    <ShadowSize>0</ShadowSize>
+    <MaxHitPoints>1000</MaxHitPoints>
+    <Defense>10</Defense>
+    <Projectile id="0">
+      <ObjectId>Invisible</ObjectId>
+      <Damage>500</Damage>
+      <Speed>10</Speed>
+      <LifetimeMS>1000</LifetimeMS>
+      <Size>100</Size>
+      <MultiHit />
+    </Projectile>
+    <DisplayId>Snowball</DisplayId>
+  </Object>
+  <Object type="0x4328" id="Snowball Roll 4">
+    <Class>Character</Class>
+    <Enemy />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x83</Index>
+    </Texture>
+    <AltTexture id="1">
+      <Texture>
+        <File>CustomObj1</File>
+        <Index>0x84</Index>
+      </Texture>
+    </AltTexture>
+    <AltTexture id="2">
+      <Texture>
+        <File>CustomObj1</File>
+        <Index>0x85</Index>
+      </Texture>
+    </AltTexture>
+    <AltTexture id="3">
+      <Texture>
+        <File>CustomObj1</File>
+        <Index>0x86</Index>
+      </Texture>
+    </AltTexture>
+    <HitSound>monster/slimes_death</HitSound>
+    <DeathSound>monster/flying_brain_death</DeathSound>
+    <Size>250</Size>
+    <ShadowSize>0</ShadowSize>
+    <MaxHitPoints>1000</MaxHitPoints>
+    <Defense>10</Defense>
+    <Projectile id="0">
+      <ObjectId>Invisible</ObjectId>
+      <Damage>500</Damage>
+      <Speed>10</Speed>
+      <LifetimeMS>1000</LifetimeMS>
+      <Size>100</Size>
+      <MultiHit />
+    </Projectile>
+    <DisplayId>Snowball</DisplayId>
+  </Object>
+  <Object type="0x4329" id="Snowball Roll 5">
+    <Class>Character</Class>
+    <Enemy />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x83</Index>
+    </Texture>
+    <AltTexture id="1">
+      <Texture>
+        <File>CustomObj1</File>
+        <Index>0x84</Index>
+      </Texture>
+    </AltTexture>
+    <AltTexture id="2">
+      <Texture>
+        <File>CustomObj1</File>
+        <Index>0x85</Index>
+      </Texture>
+    </AltTexture>
+    <AltTexture id="3">
+      <Texture>
+        <File>CustomObj1</File>
+        <Index>0x86</Index>
+      </Texture>
+    </AltTexture>
+    <HitSound>monster/slimes_death</HitSound>
+    <DeathSound>monster/flying_brain_death</DeathSound>
+    <Size>250</Size>
+    <ShadowSize>0</ShadowSize>
+    <MaxHitPoints>1000</MaxHitPoints>
+    <Defense>10</Defense>
+    <Projectile id="0">
+      <ObjectId>Invisible</ObjectId>
+      <Damage>500</Damage>
+      <Speed>10</Speed>
+      <LifetimeMS>1000</LifetimeMS>
+      <Size>100</Size>
+      <MultiHit />
+    </Projectile>
+    <DisplayId>Snowball</DisplayId>
+  </Object>
+  <Object type="0x4330" id="Snowball Roll 6">
+    <Class>Character</Class>
+    <Enemy />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x83</Index>
+    </Texture>
+    <AltTexture id="1">
+      <Texture>
+        <File>CustomObj1</File>
+        <Index>0x84</Index>
+      </Texture>
+    </AltTexture>
+    <AltTexture id="2">
+      <Texture>
+        <File>CustomObj1</File>
+        <Index>0x85</Index>
+      </Texture>
+    </AltTexture>
+    <AltTexture id="3">
+      <Texture>
+        <File>CustomObj1</File>
+        <Index>0x86</Index>
+      </Texture>
+    </AltTexture>
+    <HitSound>monster/slimes_death</HitSound>
+    <DeathSound>monster/flying_brain_death</DeathSound>
+    <Size>250</Size>
+    <ShadowSize>0</ShadowSize>
+    <MaxHitPoints>1000</MaxHitPoints>
+    <Defense>10</Defense>
+    <Projectile id="0">
+      <ObjectId>Invisible</ObjectId>
+      <Damage>500</Damage>
+      <Speed>10</Speed>
+      <LifetimeMS>1000</LifetimeMS>
+      <Size>100</Size>
+      <MultiHit />
+    </Projectile>
+    <DisplayId>Snowball</DisplayId>
+  </Object>
+  <Object type="0x4331" id="Snowball Roll 7">
+    <Class>Character</Class>
+    <Enemy />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x83</Index>
+    </Texture>
+    <AltTexture id="1">
+      <Texture>
+        <File>CustomObj1</File>
+        <Index>0x84</Index>
+      </Texture>
+    </AltTexture>
+    <AltTexture id="2">
+      <Texture>
+        <File>CustomObj1</File>
+        <Index>0x85</Index>
+      </Texture>
+    </AltTexture>
+    <AltTexture id="3">
+      <Texture>
+        <File>CustomObj1</File>
+        <Index>0x86</Index>
+      </Texture>
+    </AltTexture>
+    <HitSound>monster/slimes_death</HitSound>
+    <DeathSound>monster/flying_brain_death</DeathSound>
+    <Size>250</Size>
+    <ShadowSize>0</ShadowSize>
+    <MaxHitPoints>1000</MaxHitPoints>
+    <Defense>10</Defense>
+    <Projectile id="0">
+      <ObjectId>Invisible</ObjectId>
+      <Damage>500</Damage>
+      <Speed>10</Speed>
+      <LifetimeMS>1000</LifetimeMS>
+      <Size>100</Size>
+      <MultiHit />
+    </Projectile>
+    <DisplayId>Snowball</DisplayId>
   </Object>
   <Object type="0x30a" id="Candy Gumball Machine">
     <DisplayId>Candy Gumball Machine</DisplayId>
@@ -32012,7 +32453,77 @@
     <XpMult>0.0</XpMult>
     <NoMiniMap />
   </Object>
-  <Object type="0x4301" id="Ice wall spawner">
+  <Object type="0x4301" id="Ice Wall Spawner">
+    <Class>Character</Class>
+    <Enemy />
+    <MaxHitPoints>9999</MaxHitPoints>
+    <Texture>
+      <File>invisible</File>
+      <Index>0</Index>
+    </Texture>
+    <NoMiniMap />
+    <Size>0</Size>
+    <XpMult>0.0</XpMult>
+    <StasisImmune />
+    <DisplayId>Ice wall spawner</DisplayId>
+  </Object>
+  <Object type="0x4305" id="Water Creator">
+    <Class>Character</Class>
+    <Enemy />
+    <MaxHitPoints>9999</MaxHitPoints>
+    <Texture>
+      <File>invisible</File>
+      <Index>0</Index>
+    </Texture>
+    <NoMiniMap />
+    <Size>0</Size>
+    <XpMult>0.0</XpMult>
+    <StasisImmune />
+    <DisplayId>Water Creator</DisplayId>
+  </Object>
+  <Object type="0x4306" id="Water Creator 1">
+    <Class>Character</Class>
+    <Enemy />
+    <MaxHitPoints>9999</MaxHitPoints>
+    <Texture>
+      <File>invisible</File>
+      <Index>0</Index>
+    </Texture>
+    <NoMiniMap />
+    <Size>0</Size>
+    <XpMult>0.0</XpMult>
+    <StasisImmune />
+    <DisplayId>Water Creator</DisplayId>
+  </Object>
+  <Object type="0x4316" id="Water Creator 2">
+    <Class>Character</Class>
+    <Enemy />
+    <MaxHitPoints>9999</MaxHitPoints>
+    <Texture>
+      <File>invisible</File>
+      <Index>0</Index>
+    </Texture>
+    <NoMiniMap />
+    <Size>0</Size>
+    <XpMult>0.0</XpMult>
+    <StasisImmune />
+    <DisplayId>Water Creator</DisplayId>
+  </Object>
+  <Object type="0x4317" id="Water Creator 3">
+    <Class>Character</Class>
+    <Enemy />
+    <MaxHitPoints>9999</MaxHitPoints>
+    <Texture>
+      <File>invisible</File>
+      <Index>0</Index>
+    </Texture>
+    <NoMiniMap />
+    <Size>0</Size>
+    <XpMult>0.0</XpMult>
+    <StasisImmune />
+    <DisplayId>Water Creator</DisplayId>
+  </Object>
+  <Object type="0x4304" id="Ice Wall Spawner 1">
     <Class>Character</Class>
     <Enemy />
     <MaxHitPoints>9999</MaxHitPoints>
@@ -52889,7 +53400,7 @@
   <Object type="0x464" id="Old Cleric's Cloak">
     <Class>Equipment</Class>
     <Item />
-    <Clarification />
+    <Demonized />
     <Texture>
       <File>CustomObj1</File>
       <Index>0x03</Index>
@@ -54906,7 +55417,7 @@
   <Object type="0x7448" id="Harlequin Armor">
     <Class>Equipment</Class>
     <Item />
-    <Clarification />
+    <SteamRoller />
     <Legendary />
     <Texture>
       <File>d3LofiObjEmbed</File>
@@ -61204,6 +61715,7 @@
     <ActivateOnEquip stat="0" amount="110">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="5">IncrementStat</ActivateOnEquip>
     <Activate effect="Armored" duration="3.5">ConditionEffectSelf</Activate>
+    <Activate effect="Damaging" duration="2.5">ConditionEffectSelf</Activate>
     <Usable />
     <BagType>7</BagType>
     <FameBonus>7</FameBonus>
@@ -62153,29 +62665,31 @@
   <Object type="0x4292" id="The Expanse">
     <Class>Equipment</Class>
     <Item />
-    <Mutilate />
+    <Insanity />
     <Texture>
       <File>CustomObj1</File>
       <Index>0x48</Index>
     </Texture>
     <Mythical />
     <SlotType>17</SlotType>
-    <Description>The Keeper of Souls most precious item. Corrupt and evil magic lingers at the edge of the blade from burying dead adventurers.</Description>
-    <RateOfFire>0.75</RateOfFire>
+    <Description></Description>
+    <RateOfFire>1</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
       <ObjectId>Expanse Shot</ObjectId>
-      <Speed>95</Speed>
-      <MinDamage>125</MinDamage>
-      <MaxDamage>170</MaxDamage>
-      <LifetimeMS>800</LifetimeMS>
+      <Speed>180</Speed>
+      <MinDamage>210</MinDamage>
+      <MaxDamage>300</MaxDamage>
+      <ParticleTrail lifetimeMS="300">0x0089D1</ParticleTrail>
+      <LifetimeMS>700</LifetimeMS>
       <Amplitude>0.5</Amplitude>
-      <Frequency>1</Frequency>
+      <Frequency>2</Frequency>
+      <Boomerang />
       <Size>120</Size>
       <MultiHit />
     </Projectile>
-    <NumProjectiles>5</NumProjectiles>
-    <ArcGap>3</ArcGap>
+    <NumProjectiles>1</NumProjectiles>
+    <ArcGap>0</ArcGap>
     <BagType>6</BagType>
     <FameBonus>6</FameBonus>
     <DisplayId>The Expanse</DisplayId>
@@ -63585,29 +64099,33 @@
     <Class>Equipment</Class>
     <Item />
     <Mythical />
-    <Demonized />
+    <Vampiric />
     <Texture>
       <File>CustomObj1</File>
       <Index>0x28</Index>
     </Texture>
     <SlotType>1</SlotType>
-    <Description>The world will know their power...</Description>
-    <RateOfFire>1.25</RateOfFire>
+    <Description></Description>
+    <RateOfFire>0.65</RateOfFire>
     <Sound>weapon/mithril_sword</Sound>
     <Projectile>
       <ObjectId>Snow Sword Shot</ObjectId>
-      <Speed>110</Speed>
-      <MinDamage>255</MinDamage>
-      <MaxDamage>255</MaxDamage>
-      <LifetimeMS>250</LifetimeMS>
-      <ArmorPiercing />
+      <Speed>150</Speed>
+      <MinDamage>850</MinDamage>
+      <MaxDamage>1000</MaxDamage>
+      <Amplitude>0.3</Amplitude>
+      <Frequency>0.5</Frequency>
+      <LifetimeMS>300</LifetimeMS>
+      <ParticleTrail lifetimeMS="300">0x0089D1</ParticleTrail>
+      <MultiHit />
       <Size>100</Size>
     </Projectile>
     <NumProjectiles>1</NumProjectiles>
+    <ArcGap>4</ArcGap>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
     <feedPower>650</feedPower>
-    <DisplayId>Axe of the Frozen Tundra</DisplayId>
+    <DisplayId>Winter Solstice</DisplayId>
   </Object>
   <Object type="0x4928" id="Excalibur">
     <Class>Equipment</Class>
@@ -63691,8 +64209,8 @@
     <Projectile>
       <ObjectId>Thiram Shot</ObjectId>
       <Speed>130</Speed>
-      <MinDamage>950</MinDamage>
-      <MaxDamage>950</MaxDamage>
+      <MinDamage>850</MinDamage>
+      <MaxDamage>890</MaxDamage>
       <LifetimeMS>600</LifetimeMS>
       <Frequency>1</Frequency>
       <Amplitude>0.2</Amplitude>
@@ -63752,8 +64270,8 @@
     <Projectile>
       <ObjectId>Horn Breaker Shot</ObjectId>
       <Speed>125</Speed>
-      <MinDamage>400</MinDamage>
-      <MaxDamage>450</MaxDamage>
+      <MinDamage>415</MinDamage>
+      <MaxDamage>465</MaxDamage>
       <LifetimeMS>400</LifetimeMS>
       <Frequency>1</Frequency>
       <Size>80</Size>
@@ -64709,7 +65227,7 @@
     <MpCost>100</MpCost>
     <Activate amount="350" range="5" useWisMod="false">HealNova</Activate>
     <Activate effect="Healing" duration="3.5" range="3">ConditionEffectAura</Activate>
-    <Activate effect="Berserk" duration="2" useWisMod="true">ConditionEffectSelf</Activate>
+    <Activate effect="Berserk" duration="3" useWisMod="true">ConditionEffectSelf</Activate>
   </Object>
   <Object type="0x505d" id="Tome of Universal Theory">
     <Class>Equipment</Class>
@@ -64751,7 +65269,7 @@
     <BagType>7</BagType>
     <MpCost>100</MpCost>
     <Activate amount="325" range="3" useWisMod="false">HealNova</Activate>
-    <Activate effect="Damaging" duration="2" useWisMod="false">ConditionEffectSelf</Activate>
+    <Activate effect="Damaging" duration="3" useWisMod="false">ConditionEffectSelf</Activate>
   </Object>
   <Object type="0xa31" id="Healing Tome">
     <Class>Equipment</Class>
@@ -64900,7 +65418,7 @@
     <FameBonus>6</FameBonus>
     <MpCost>120</MpCost>
     <Activate amount="200" range="6" useWisMod="true">HealNova</Activate>
-    <Activate effect="Armored" duration="5.3" useWisMod="true">ConditionEffectSelf</Activate>
+    <Activate effect="Armored" duration="3" useWisMod="true">ConditionEffectSelf</Activate>
     <feedPower>1300</feedPower>
   </Object>
   <Object type="0xc09" id="Tome of Purification">
@@ -65364,32 +65882,32 @@
   <Object type="0x4284" id="Polar Vortex">
     <Class>Equipment</Class>
     <Item />
-    <OutOfOneMind />
+    <Lucky />
     <Texture>
       <File>CustomObj1</File>
       <Index>0x27</Index>
     </Texture>
     <SlotType>8</SlotType>
     <Mythical />
-    <Description>The acidic goop dissolved the previous owner whole, leaving behind only the weapon and what remains of the toxic sludge.</Description>
+    <Description></Description>
     <RateOfFire>0.85</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
       <ObjectId>Ice Wand Shot</ObjectId>
-      <Speed>120</Speed>
-      <MinDamage>245</MinDamage>
-      <MaxDamage>265</MaxDamage>
-      <Amplitude>1</Amplitude>
-      <Frequency>1.05</Frequency>
-      <LifetimeMS>542</LifetimeMS>
+      <Speed>4</Speed>
+      <MinDamage>230</MinDamage>
+      <MaxDamage>250</MaxDamage>
+      <ParticleTrail lifetimeMS="100">0x0089D1</ParticleTrail>
+      <LifetimeMS>450</LifetimeMS>
+      <Parametric />
       <Size>100</Size>
       <MultiHit />
     </Projectile>
-    <NumProjectiles>2</NumProjectiles>
+    <NumProjectiles>4</NumProjectiles>
     <ArcGap>10</ArcGap>
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
-    <DisplayId>Sludge-Covered Cane</DisplayId>
+    <DisplayId>Polar Vortex</DisplayId>
   </Object>
   <Object type="0x5013" id="Eldritch Fury">
     <Class>Equipment</Class>
@@ -67994,7 +68512,6 @@
       </Texture>
     </RandomTexture>
     <Static />
-    <OccupySquare />
     <Z>-0.15</Z>
     <ShadowSize>0</ShadowSize>
   </Object>
@@ -81028,13 +81545,29 @@
     </Texture>
     <Rotation>90</Rotation>
   </Object>
+  <Object type="0x4313" id="CSS Shot 1">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x55</Index>
+    </Texture>
+    <AngleCorrection>1</AngleCorrection>
+  </Object>
+  <Object type="0x4314" id="CSS Shot 2">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x54</Index>
+    </Texture>
+    <Rotation>120</Rotation>
+  </Object>
   <Object type="0x4182" id="Snow Sword Shot">
     <Class>Projectile</Class>
     <Texture>
       <File>CustomObj1</File>
-      <Index>0x38</Index>
+      <Index>0x28</Index>
     </Texture>
-    <AngleCorrection>1</AngleCorrection>
+    <Rotation>120</Rotation>
   </Object>
   <Object type="0x4127" id="Quetzalcoat Laser">
     <Class>Projectile</Class>
@@ -83028,6 +83561,14 @@
       <Index>0x34</Index>
     </Texture>
     <AngleCorrection>1</AngleCorrection>
+  </Object>
+  <Object type="0x4312" id="CSS Big 1">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>CustomProjsBig</File>
+      <Index>0x35</Index>
+    </Texture>
+    <Rotation>45</Rotation>
   </Object>
   <Object type="0x7fcc" id="Dragon Arrow">
     <Class>Projectile</Class>

@@ -2339,6 +2339,20 @@
     <XOffset>.0625</XOffset>
     <YOffset>.0625</YOffset>
   </Ground>
+  <Ground type="0x4330" id="Black Water Frozen Dmg">
+    <Texture>
+      <File>d3LofiObjEmbed</File>
+      <Index>0x5b</Index>
+    </Texture>
+    <Sink />
+    <Speed>0.75</Speed>
+    <Animate dx="2.5">Flow</Animate>
+    <Push />
+    <MinDamage>45</MinDamage>
+    <MaxDamage>55</MaxDamage>
+    <XOffset>.0625</XOffset>
+    <YOffset>.0625</YOffset>
+  </Ground>
   <Ground type="0xd6a" id="Black Water Light Frozen">
     <Texture>
       <File>d3LofiObjEmbed</File>
@@ -5161,6 +5175,80 @@
     <BlendPriority>20</BlendPriority>
     <Speed>1</Speed>
   </Ground>
+  <Ground type="0x4310" id="Snow Replace">
+    <RandomTexture>
+      <Texture>
+        <File>lofiObj3</File>
+        <Index>0x1c0</Index>
+      </Texture>
+      <Texture>
+        <File>lofiObj3</File>
+        <Index>0x1c0</Index>
+      </Texture>
+      <Texture>
+        <File>lofiObj3</File>
+        <Index>0x1c0</Index>
+      </Texture>
+      <Texture>
+        <File>lofiObj3</File>
+        <Index>0x1c1</Index>
+      </Texture>
+      <Texture>
+        <File>lofiObj3</File>
+        <Index>0x1c2</Index>
+      </Texture>
+      <Texture>
+        <File>lofiObj3</File>
+        <Index>0x1c3</Index>
+      </Texture>
+      <Texture>
+        <File>lofiObj3</File>
+        <Index>0x1c4</Index>
+      </Texture>
+      <Texture>
+        <File>lofiObj3</File>
+        <Index>0x1c5</Index>
+      </Texture>
+    </RandomTexture>
+    <Speed>.95</Speed>
+  </Ground>
+  <Ground type="0x4325" id="Snow Replace Snowball">
+    <RandomTexture>
+      <Texture>
+        <File>lofiObj3</File>
+        <Index>0x1c0</Index>
+      </Texture>
+      <Texture>
+        <File>lofiObj3</File>
+        <Index>0x1c0</Index>
+      </Texture>
+      <Texture>
+        <File>lofiObj3</File>
+        <Index>0x1c0</Index>
+      </Texture>
+      <Texture>
+        <File>lofiObj3</File>
+        <Index>0x1c1</Index>
+      </Texture>
+      <Texture>
+        <File>lofiObj3</File>
+        <Index>0x1c2</Index>
+      </Texture>
+      <Texture>
+        <File>lofiObj3</File>
+        <Index>0x1c3</Index>
+      </Texture>
+      <Texture>
+        <File>lofiObj3</File>
+        <Index>0x1c4</Index>
+      </Texture>
+      <Texture>
+        <File>lofiObj3</File>
+        <Index>0x1c5</Index>
+      </Texture>
+    </RandomTexture>
+    <Speed>.95</Speed>
+  </Ground>
   <Ground type="0xb9" id="Snow">
     <RandomTexture>
       <Texture>
@@ -5206,6 +5294,13 @@
     </Texture>
     <Speed>.95</Speed>
     <BlendPriority>21</BlendPriority>
+  </Ground>
+  <Ground type="0x4311" id="Turret Ground">
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x53</Index>
+    </Texture>
+    <Speed>.95</Speed>
   </Ground>
   <Ground type="0x81" id="Snow White">
     <Texture>

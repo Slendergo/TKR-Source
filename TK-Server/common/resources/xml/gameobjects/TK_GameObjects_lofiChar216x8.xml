@@ -16,7 +16,6 @@
       </Texture>
     </RandomTexture>
     <Static />
-    <OccupySquare />
     <Z>-0.15</Z>
     <ShadowSize>0</ShadowSize>
   </Object>

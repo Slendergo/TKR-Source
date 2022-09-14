@@ -180,31 +180,31 @@
 	<Object type="0x4284" id="Polar Vortex">
 		<Class>Equipment</Class>
 		<Item />
-		<OutOfOneMind />
+		<Lucky />
 		<Texture>
 			<File>CustomObj1</File>
 			<Index>0x27</Index>
 		</Texture>
 		<SlotType>8</SlotType>
 		<Mythical />
-		<Description>The acidic goop dissolved the previous owner whole, leaving behind only the weapon and what remains of the toxic sludge.</Description>
+		<Description></Description>
 		<RateOfFire>0.85</RateOfFire>
 		<Sound>weapon/fire_wand</Sound>
 		<Projectile>
 			<ObjectId>Ice Wand Shot</ObjectId>
-			<Speed>120</Speed>
-			<MinDamage>245</MinDamage>
-			<MaxDamage>265</MaxDamage>
-			<Amplitude>1</Amplitude>
-			<Frequency>1.05</Frequency>
-			<LifetimeMS>542</LifetimeMS>
+			<Speed>4</Speed>
+			<MinDamage>230</MinDamage>
+			<MaxDamage>250</MaxDamage>
+			<ParticleTrail lifetimeMS="100">0x0089D1</ParticleTrail>
+			<LifetimeMS>1100</LifetimeMS>
+			<Parametric />
 			<Size>100</Size>
 			<MultiHit />
 		</Projectile>
-		<NumProjectiles>2</NumProjectiles>
+		<NumProjectiles>4</NumProjectiles>
 		<ArcGap>10</ArcGap>
 		<BagType>7</BagType>
 		<FameBonus>6</FameBonus>
-		<DisplayId>Sludge-Covered Cane</DisplayId>
+		<DisplayId>Polar Vortex</DisplayId>
 	</Object>
 </Objects>

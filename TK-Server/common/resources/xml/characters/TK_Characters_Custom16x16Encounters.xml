@@ -1914,7 +1914,7 @@
 			<Damage>275</Damage>
 			<Size>150</Size>
 			<Speed>90</Speed>
-			<LifetimeMS>1000</LifetimeMS>
+			<LifetimeMS>3000</LifetimeMS>
 			<MultiHit />
 		</Projectile>
 		<Projectile id="1">
@@ -1922,14 +1922,14 @@
 			<Damage>225</Damage>
 			<Size>90</Size>
 			<Speed>40</Speed>
-			<LifetimeMS>1200</LifetimeMS>
+			<LifetimeMS>3000</LifetimeMS>
 		</Projectile>
 		<Projectile id="2">
 			<ObjectId>Projectile 2 CSS</ObjectId>
 			<Damage>205</Damage>
 			<Size>100</Size>
 			<Speed>100</Speed>
-			<LifetimeMS>1000</LifetimeMS>
+			<LifetimeMS>3000</LifetimeMS>
 			<ConditionEffect duration="1.8">Confused</ConditionEffect>
 		</Projectile>
 		<Projectile id="3">
@@ -1937,14 +1937,30 @@
 			<Damage>195</Damage>
 			<Size>110</Size>
 			<Speed>60</Speed>
-			<LifetimeMS>1200</LifetimeMS>
+			<LifetimeMS>3000</LifetimeMS>
 		</Projectile>
 		<Projectile id="4">
 			<ObjectId>Projectile 1 CSS</ObjectId>
 			<Damage>180</Damage>
 			<Size>130</Size>
 			<Speed>80</Speed>
-			<LifetimeMS>1200</LifetimeMS>
+			<LifetimeMS>3000</LifetimeMS>
+		</Projectile>
+		<Projectile id="5">
+			<ObjectId>ASM Big Shot 1</ObjectId>
+			<Damage>275</Damage>
+			<Size>150</Size>
+			<Speed>70</Speed>
+			<LifetimeMS>3000</LifetimeMS>
+			<MultiHit />
+		</Projectile>
+		<Projectile id="6">
+			<ObjectId>ASM Big Shot 1</ObjectId>
+			<Damage>275</Damage>
+			<Size>150</Size>
+			<Speed>50</Speed>
+			<LifetimeMS>3000</LifetimeMS>
+			<MultiHit />
 		</Projectile>
 	</Object>
 	<Object type="0x719c" id="Frozen Tower">
@@ -2265,6 +2281,48 @@
 			<Amplitude>0.5</Amplitude>
 			<LifetimeMS>5000</LifetimeMS>
 		</Projectile>
+		<Projectile id="4">
+			<ObjectId>CSS Big 1</ObjectId>
+			<Damage>300</Damage>
+			<Size>150</Size>
+			<Speed>100</Speed>
+			<LifetimeMS>1500</LifetimeMS>
+		</Projectile>
+		<Projectile id="5">
+			<ObjectId>CSS Shot 1</ObjectId>
+			<Damage>300</Damage>
+			<Size>150</Size>
+			<Speed>90</Speed>
+			<LifetimeMS>5000</LifetimeMS>
+		</Projectile>
+		<Projectile id="6">
+			<ObjectId>CSS Shot 2</ObjectId>
+			<Damage>300</Damage>
+			<Size>150</Size>
+			<Speed>90</Speed>
+			<LifetimeMS>5000</LifetimeMS>
+		</Projectile>
+		<Projectile id="7">
+			<ObjectId>CSS Shot 1</ObjectId>
+			<Damage>300</Damage>
+			<Size>150</Size>
+			<Speed>80</Speed>
+			<LifetimeMS>5000</LifetimeMS>
+		</Projectile>
+		<Projectile id="8">
+			<ObjectId>CSS Shot 1</ObjectId>
+			<Damage>300</Damage>
+			<Size>150</Size>
+			<Speed>70</Speed>
+			<LifetimeMS>5000</LifetimeMS>
+		</Projectile>
+		<Projectile id="9">
+			<ObjectId>CSS Shot 1</ObjectId>
+			<Damage>300</Damage>
+			<Size>150</Size>
+			<Speed>60</Speed>
+			<LifetimeMS>5000</LifetimeMS>
+		</Projectile>
 	</Object>
 	<Object type="0x712c" id="Corrupt Snowman Switch 2">
 		<Class>Character</Class>
@@ -2308,5 +2366,381 @@
 			<LifetimeMS>5000</LifetimeMS>
 			<ConditionEffect duration="1.8">Confused</ConditionEffect>
 		</Projectile>
+	</Object>
+	<Object type="0x4319" id="Snowball Spawner">
+		<Class>Character</Class>
+		<Texture>
+			<File>invisible</File>
+			<Index>0</Index>
+		</Texture>
+		<NoMiniMap />
+		<MaxHitPoints>100</MaxHitPoints>
+		<Size>0</Size>
+		<StasisImmune />
+		<DisplayId>Boulder Spawner</DisplayId>
+	</Object>
+	<Object type="0x4326" id="Snowball Spawner TP">
+		<Class>Character</Class>
+		<Texture>
+			<File>invisible</File>
+			<Index>0</Index>
+		</Texture>
+		<NoMiniMap />
+		<MaxHitPoints>100</MaxHitPoints>
+		<Size>0</Size>
+		<StasisImmune />
+		<DisplayId>Boulder Spawner</DisplayId>
+	</Object>
+	<Object type="0x4327" id="Snowball Spawner BT">
+		<Class>Character</Class>
+		<Texture>
+			<File>invisible</File>
+			<Index>0</Index>
+		</Texture>
+		<NoMiniMap />
+		<MaxHitPoints>100</MaxHitPoints>
+		<Size>0</Size>
+		<StasisImmune />
+		<DisplayId>Boulder Spawner</DisplayId>
+	</Object>
+	<Object type="0x4332" id="Snowball Spawner LF">
+		<Class>Character</Class>
+		<Texture>
+			<File>invisible</File>
+			<Index>0</Index>
+		</Texture>
+		<NoMiniMap />
+		<MaxHitPoints>100</MaxHitPoints>
+		<Size>0</Size>
+		<StasisImmune />
+		<DisplayId>Snowball Spawner</DisplayId>
+	</Object>
+	<Object type="0x4315" id="Snowball Roll">
+		<Class>Character</Class>
+		<Enemy />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x83</Index>
+		</Texture>
+		<AltTexture id="1">
+			<Texture>
+				<File>CustomObj1</File>
+				<Index>0x84</Index>
+			</Texture>
+		</AltTexture>
+		<AltTexture id="2">
+			<Texture>
+				<File>CustomObj1</File>
+				<Index>0x85</Index>
+			</Texture>
+		</AltTexture>
+		<AltTexture id="3">
+			<Texture>
+				<File>CustomObj1</File>
+				<Index>0x86</Index>
+			</Texture>
+		</AltTexture>
+		<HitSound>monster/slimes_death</HitSound>
+		<DeathSound>monster/flying_brain_death</DeathSound>
+		<Size>250</Size>
+		<ShadowSize>0</ShadowSize>
+		<MaxHitPoints>1000</MaxHitPoints>
+		<Defense>10</Defense>
+		<Projectile id="0">
+			<ObjectId>Invisible</ObjectId>
+			<Damage>500</Damage>
+			<Speed>10</Speed>
+			<LifetimeMS>1000</LifetimeMS>
+			<Size>100</Size>
+			<MultiHit />
+		</Projectile>
+		<DisplayId>Snowball</DisplayId>
+	</Object>
+	<Object type="0x4320" id="Snowball Roll 1">
+		<Class>Character</Class>
+		<Enemy />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x83</Index>
+		</Texture>
+		<AltTexture id="1">
+			<Texture>
+				<File>CustomObj1</File>
+				<Index>0x84</Index>
+			</Texture>
+		</AltTexture>
+		<AltTexture id="2">
+			<Texture>
+				<File>CustomObj1</File>
+				<Index>0x85</Index>
+			</Texture>
+		</AltTexture>
+		<AltTexture id="3">
+			<Texture>
+				<File>CustomObj1</File>
+				<Index>0x86</Index>
+			</Texture>
+		</AltTexture>
+		<HitSound>monster/slimes_death</HitSound>
+		<DeathSound>monster/flying_brain_death</DeathSound>
+		<Size>250</Size>
+		<ShadowSize>0</ShadowSize>
+		<MaxHitPoints>1000</MaxHitPoints>
+		<Defense>10</Defense>
+		<Projectile id="0">
+			<ObjectId>Invisible</ObjectId>
+			<Damage>500</Damage>
+			<Speed>10</Speed>
+			<LifetimeMS>1000</LifetimeMS>
+			<Size>100</Size>
+			<MultiHit />
+		</Projectile>
+		<DisplayId>Snowball</DisplayId>
+	</Object>
+	<Object type="0x4321" id="Snowball Roll 2">
+		<Class>Character</Class>
+		<Enemy />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x83</Index>
+		</Texture>
+		<AltTexture id="1">
+			<Texture>
+				<File>CustomObj1</File>
+				<Index>0x84</Index>
+			</Texture>
+		</AltTexture>
+		<AltTexture id="2">
+			<Texture>
+				<File>CustomObj1</File>
+				<Index>0x85</Index>
+			</Texture>
+		</AltTexture>
+		<AltTexture id="3">
+			<Texture>
+				<File>CustomObj1</File>
+				<Index>0x86</Index>
+			</Texture>
+		</AltTexture>
+		<HitSound>monster/slimes_death</HitSound>
+		<DeathSound>monster/flying_brain_death</DeathSound>
+		<Size>250</Size>
+		<ShadowSize>0</ShadowSize>
+		<MaxHitPoints>1000</MaxHitPoints>
+		<Defense>10</Defense>
+		<Projectile id="0">
+			<ObjectId>Invisible</ObjectId>
+			<Damage>500</Damage>
+			<Speed>10</Speed>
+			<LifetimeMS>1000</LifetimeMS>
+			<Size>100</Size>
+			<MultiHit />
+		</Projectile>
+		<DisplayId>Snowball</DisplayId>
+	</Object>
+	<Object type="0x4322" id="Snowball Roll 3">
+		<Class>Character</Class>
+		<Enemy />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x83</Index>
+		</Texture>
+		<AltTexture id="1">
+			<Texture>
+				<File>CustomObj1</File>
+				<Index>0x84</Index>
+			</Texture>
+		</AltTexture>
+		<AltTexture id="2">
+			<Texture>
+				<File>CustomObj1</File>
+				<Index>0x85</Index>
+			</Texture>
+		</AltTexture>
+		<AltTexture id="3">
+			<Texture>
+				<File>CustomObj1</File>
+				<Index>0x86</Index>
+			</Texture>
+		</AltTexture>
+		<HitSound>monster/slimes_death</HitSound>
+		<DeathSound>monster/flying_brain_death</DeathSound>
+		<Size>250</Size>
+		<ShadowSize>0</ShadowSize>
+		<MaxHitPoints>1000</MaxHitPoints>
+		<Defense>10</Defense>
+		<Projectile id="0">
+			<ObjectId>Invisible</ObjectId>
+			<Damage>500</Damage>
+			<Speed>10</Speed>
+			<LifetimeMS>1000</LifetimeMS>
+			<Size>100</Size>
+			<MultiHit />
+		</Projectile>
+		<DisplayId>Snowball</DisplayId>
+	</Object>
+	<Object type="0x4328" id="Snowball Roll 4">
+		<Class>Character</Class>
+		<Enemy />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x83</Index>
+		</Texture>
+		<AltTexture id="1">
+			<Texture>
+				<File>CustomObj1</File>
+				<Index>0x84</Index>
+			</Texture>
+		</AltTexture>
+		<AltTexture id="2">
+			<Texture>
+				<File>CustomObj1</File>
+				<Index>0x85</Index>
+			</Texture>
+		</AltTexture>
+		<AltTexture id="3">
+			<Texture>
+				<File>CustomObj1</File>
+				<Index>0x86</Index>
+			</Texture>
+		</AltTexture>
+		<HitSound>monster/slimes_death</HitSound>
+		<DeathSound>monster/flying_brain_death</DeathSound>
+		<Size>250</Size>
+		<ShadowSize>0</ShadowSize>
+		<MaxHitPoints>1000</MaxHitPoints>
+		<Defense>10</Defense>
+		<Projectile id="0">
+			<ObjectId>Invisible</ObjectId>
+			<Damage>500</Damage>
+			<Speed>10</Speed>
+			<LifetimeMS>1000</LifetimeMS>
+			<Size>100</Size>
+			<MultiHit />
+		</Projectile>
+		<DisplayId>Snowball</DisplayId>
+	</Object>
+	<Object type="0x4329" id="Snowball Roll 5">
+		<Class>Character</Class>
+		<Enemy />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x83</Index>
+		</Texture>
+		<AltTexture id="1">
+			<Texture>
+				<File>CustomObj1</File>
+				<Index>0x84</Index>
+			</Texture>
+		</AltTexture>
+		<AltTexture id="2">
+			<Texture>
+				<File>CustomObj1</File>
+				<Index>0x85</Index>
+			</Texture>
+		</AltTexture>
+		<AltTexture id="3">
+			<Texture>
+				<File>CustomObj1</File>
+				<Index>0x86</Index>
+			</Texture>
+		</AltTexture>
+		<HitSound>monster/slimes_death</HitSound>
+		<DeathSound>monster/flying_brain_death</DeathSound>
+		<Size>250</Size>
+		<ShadowSize>0</ShadowSize>
+		<MaxHitPoints>1000</MaxHitPoints>
+		<Defense>10</Defense>
+		<Projectile id="0">
+			<ObjectId>Invisible</ObjectId>
+			<Damage>500</Damage>
+			<Speed>10</Speed>
+			<LifetimeMS>1000</LifetimeMS>
+			<Size>100</Size>
+			<MultiHit />
+		</Projectile>
+		<DisplayId>Snowball</DisplayId>
+	</Object>
+	<Object type="0x4330" id="Snowball Roll 6">
+		<Class>Character</Class>
+		<Enemy />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x83</Index>
+		</Texture>
+		<AltTexture id="1">
+			<Texture>
+				<File>CustomObj1</File>
+				<Index>0x84</Index>
+			</Texture>
+		</AltTexture>
+		<AltTexture id="2">
+			<Texture>
+				<File>CustomObj1</File>
+				<Index>0x85</Index>
+			</Texture>
+		</AltTexture>
+		<AltTexture id="3">
+			<Texture>
+				<File>CustomObj1</File>
+				<Index>0x86</Index>
+			</Texture>
+		</AltTexture>
+		<HitSound>monster/slimes_death</HitSound>
+		<DeathSound>monster/flying_brain_death</DeathSound>
+		<Size>250</Size>
+		<ShadowSize>0</ShadowSize>
+		<MaxHitPoints>1000</MaxHitPoints>
+		<Defense>10</Defense>
+		<Projectile id="0">
+			<ObjectId>Invisible</ObjectId>
+			<Damage>500</Damage>
+			<Speed>10</Speed>
+			<LifetimeMS>1000</LifetimeMS>
+			<Size>100</Size>
+			<MultiHit />
+		</Projectile>
+		<DisplayId>Snowball</DisplayId>
+	</Object>
+	<Object type="0x4331" id="Snowball Roll 7">
+		<Class>Character</Class>
+		<Enemy />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x83</Index>
+		</Texture>
+		<AltTexture id="1">
+			<Texture>
+				<File>CustomObj1</File>
+				<Index>0x84</Index>
+			</Texture>
+		</AltTexture>
+		<AltTexture id="2">
+			<Texture>
+				<File>CustomObj1</File>
+				<Index>0x85</Index>
+			</Texture>
+		</AltTexture>
+		<AltTexture id="3">
+			<Texture>
+				<File>CustomObj1</File>
+				<Index>0x86</Index>
+			</Texture>
+		</AltTexture>
+		<HitSound>monster/slimes_death</HitSound>
+		<DeathSound>monster/flying_brain_death</DeathSound>
+		<Size>250</Size>
+		<ShadowSize>0</ShadowSize>
+		<MaxHitPoints>1000</MaxHitPoints>
+		<Defense>10</Defense>
+		<Projectile id="0">
+			<ObjectId>Invisible</ObjectId>
+			<Damage>500</Damage>
+			<Speed>10</Speed>
+			<LifetimeMS>1000</LifetimeMS>
+			<Size>100</Size>
+			<MultiHit />
+		</Projectile>
+		<DisplayId>Snowball</DisplayId>
 	</Object>
 </Objects>

@@ -77,6 +77,63 @@
 		<StasisImmune />
 		<DisplayId>Ice wall spawner</DisplayId>
 	</Object>
+	<Object type="0x4305" id="Water Creator">
+		<Class>Character</Class>
+		<Enemy />
+		<MaxHitPoints>9999</MaxHitPoints>
+		<Texture>
+			<File>invisible</File>
+			<Index>0</Index>
+		</Texture>
+		<NoMiniMap />
+		<Size>0</Size>
+		<XpMult>0.0</XpMult>
+		<StasisImmune />
+		<DisplayId>Water Creator</DisplayId>
+	</Object>
+	<Object type="0x4306" id="Water Creator 1">
+		<Class>Character</Class>
+		<Enemy />
+		<MaxHitPoints>9999</MaxHitPoints>
+		<Texture>
+			<File>invisible</File>
+			<Index>0</Index>
+		</Texture>
+		<NoMiniMap />
+		<Size>0</Size>
+		<XpMult>0.0</XpMult>
+		<StasisImmune />
+		<DisplayId>Water Creator</DisplayId>
+	</Object>
+	<Object type="0x4316" id="Water Creator 2">
+		<Class>Character</Class>
+		<Enemy />
+		<MaxHitPoints>9999</MaxHitPoints>
+		<Texture>
+			<File>invisible</File>
+			<Index>0</Index>
+		</Texture>
+		<NoMiniMap />
+		<Size>0</Size>
+		<XpMult>0.0</XpMult>
+		<StasisImmune />
+		<DisplayId>Water Creator</DisplayId>
+	</Object>
+	<Object type="0x4317" id="Water Creator 3">
+		<Class>Character</Class>
+		<Enemy />
+		<MaxHitPoints>9999</MaxHitPoints>
+		<Texture>
+			<File>invisible</File>
+			<Index>0</Index>
+		</Texture>
+		<NoMiniMap />
+		<Size>0</Size>
+		<XpMult>0.0</XpMult>
+		<StasisImmune />
+		<DisplayId>Water Creator</DisplayId>
+	</Object>
+	
 	<Object type="0x4304" id="Ice Wall Spawner 1">
 		<Class>Character</Class>
 		<Enemy />

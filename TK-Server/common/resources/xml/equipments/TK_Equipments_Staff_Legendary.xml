@@ -224,29 +224,31 @@
 	<Object type="0x4292" id="The Expanse">
 		<Class>Equipment</Class>
 		<Item />
-		<Mutilate />
+		<Insanity />
 		<Texture>
 			<File>CustomObj1</File>
 			<Index>0x48</Index>
 		</Texture>
 		<Mythical />
 		<SlotType>17</SlotType>
-		<Description>The Keeper of Souls most precious item. Corrupt and evil magic lingers at the edge of the blade from burying dead adventurers.</Description>
-		<RateOfFire>0.75</RateOfFire>
+		<Description></Description>
+		<RateOfFire>1</RateOfFire>
 		<Sound>weapon/fire_wand</Sound>
 		<Projectile>
 			<ObjectId>Expanse Shot</ObjectId>
-			<Speed>95</Speed>
-			<MinDamage>125</MinDamage>
-			<MaxDamage>170</MaxDamage>
-			<LifetimeMS>800</LifetimeMS>
+			<Speed>180</Speed>
+			<MinDamage>210</MinDamage>
+			<MaxDamage>300</MaxDamage>
+			<ParticleTrail lifetimeMS="300">0x0089D1</ParticleTrail>
+			<LifetimeMS>700</LifetimeMS>
 			<Amplitude>0.5</Amplitude>
-			<Frequency>1</Frequency>
+			<Frequency>2</Frequency>
+			<Boomerang/>
 			<Size>120</Size>
 			<MultiHit />
 		</Projectile>
-		<NumProjectiles>5</NumProjectiles>
-		<ArcGap>3</ArcGap>
+		<NumProjectiles>1</NumProjectiles>
+		<ArcGap>0</ArcGap>
 		<BagType>6</BagType>
 		<FameBonus>6</FameBonus>
 		<DisplayId>The Expanse</DisplayId>

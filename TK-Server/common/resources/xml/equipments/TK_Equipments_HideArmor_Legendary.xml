@@ -211,7 +211,7 @@
     <BagType>7</BagType>
     <FameBonus>7</FameBonus>
   </Object>
-	<Object type="0x4299" id="Ice Hide Armor">
+	<Object type="0x4299" id="Condemned Frostbite">
 		<Class>Equipment</Class>
 		<Item />
 		<SonicBlaster />
@@ -222,9 +222,14 @@
 		</Texture>
 		<SlotType>6</SlotType>
 		<Description></Description>
-		<ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="21" amount="26">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="22" amount="25">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="0" amount="125">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="3" amount="75">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="20" amount="12">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="28" amount="12">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="21" amount="20">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="22" amount="7">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="26" amount="10">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="27" amount="10">IncrementStat</ActivateOnEquip>
 		<BagType>7</BagType>
 		<FameBonus>7</FameBonus>
 	</Object>

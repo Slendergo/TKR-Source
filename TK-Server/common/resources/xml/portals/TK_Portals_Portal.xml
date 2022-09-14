@@ -1191,6 +1191,80 @@
     </Texture>
     <ShadowSize>0</ShadowSize>
   </Object>
+	<Object type="0x4331" id="Cave of Eternal Frost Portal">
+		<Class>Portal</Class>
+		<IntergamePortal />
+		<DisplayId>Cave of Eternal Frost</DisplayId>
+		<DungeonName>Cave of Eternal Frost</DungeonName>
+		<Size>80</Size>
+		<Texture>
+			<File>custom16x16Environment</File>
+			<Index>0x85</Index>
+		</Texture>
+		<Animation prob="1" period="1">
+			<Frame time="0.1">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x86</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x87</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x88</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x89</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x8a</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x89</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x88</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x87</Index>
+				</Texture>
+			</Frame>
+			<Frame time="0.1">
+				<Texture>
+					<File>custom16x16Environment</File>
+					<Index>0x86</Index>
+				</Texture>
+				<Frame time="0.2">
+					<Texture>
+						<File>custom16x16Environment</File>
+						<Index>0x85</Index>
+					</Texture>
+				</Frame>
+			</Frame>
+		</Animation>
+		<ShadowSize>75</ShadowSize>
+	</Object>
 	<Object type="0x950a" id="Hideout of Septavius Portal">
 		<Class>Portal</Class>
 		<IntergamePortal />

@@ -112,7 +112,7 @@
     <FameBonus>7</FameBonus>
     <DisplayId>Lodius</DisplayId>
   </Object>
-	<Object type="0x4297" id="Ice Katana">
+	<Object type="0x4297" id="Agdluak">
 		<Class>Equipment</Class>
 		<Item />
 		<Mythical />
@@ -126,18 +126,19 @@
 		<RateOfFire>1</RateOfFire>
 		<Sound>weapon/long_sword</Sound>
 		<Projectile>
-			<ObjectId>Lodius Shoot</ObjectId>
-			<Speed>154</Speed>
-			<MinDamage>150</MinDamage>
-			<MaxDamage>245</MaxDamage>
-			<LifetimeMS>344</LifetimeMS>
+			<ObjectId>Ice Katana Shot</ObjectId>
+			<Speed>180</Speed>
+			<MinDamage>350</MinDamage>
+			<MaxDamage>490</MaxDamage>
+			<LifetimeMS>615</LifetimeMS>
+			<ParticleTrail lifetimeMS="300">0x0089D1</ParticleTrail>
 			<Amplitude>.25</Amplitude>
 			<Frequency>1.75</Frequency>
 			<Size>100</Size>
 			<MultiHit />
 			<ArmorPiercing />
 		</Projectile>
-		<NumProjectiles>2</NumProjectiles>
+		<NumProjectiles>1</NumProjectiles>
 		<ArcGap>3</ArcGap>
 		<BagType>7</BagType>
 		<FameBonus>7</FameBonus>

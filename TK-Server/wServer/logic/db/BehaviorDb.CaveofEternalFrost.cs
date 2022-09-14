@@ -402,6 +402,7 @@ namespace wServer.logic
         .Init("Primordial Quetzalcoatl",
             new State(
                 new ScaleHP2(35),
+                new DropPortalOnDeath("Cave of Eternal Frost Portal", 0.5),
                 new State("Check",
                     new ConditionalEffect(ConditionEffectIndex.Invincible, true),
                     new PlayerWithinTransition(8, "Remove1")
@@ -685,21 +686,19 @@ namespace wServer.logic
            new Threshold(0.01,
                 LootTemplates.DustLoot()
                 ),
-            new Threshold(0.01,
+            new Threshold(0.001,
                 new TierLoot(14, ItemType.Weapon, 0.05),
                 new TierLoot(14, ItemType.Armor, 0.05),
                 new TierLoot(6, ItemType.Ring, 0.05),
                 new TierLoot(6, ItemType.Ability, 0.07),
-                new ItemLoot("Greater Potion of Vitality", 0.5),
-                new ItemLoot("Greater Potion of Mana", 0.5),
-                new ItemLoot("Magic Dust", 0.5),
-                new ItemLoot("Visage of the Frozen", 0.0016),
-                new ItemLoot("Queen's Guardian Signet", 0.0016),
-                new ItemLoot("Magic Dust", 0.5)
+                new ItemLoot("Greater Potion of Vitality", 1),
+                new ItemLoot("Greater Potion of Mana", 1),
+                new ItemLoot("Special Dust", 0.01)
                 ),
              new Threshold(0.03,
-                 new ItemLoot("PermaFrost GreatShield", 0.0005),
-                 new ItemLoot("Axe of the Frozen Tundra", 0.0005)
+                 new ItemLoot("Iceberg", 0.0003),
+                new ItemLoot("Condemned Frostbite", 0.0003),
+                new ItemLoot("The Expanse", 0.5)
                  )
             )
         .Init("Queen of Ice",
@@ -1046,24 +1045,23 @@ namespace wServer.logic
                 new Threshold(0.01,
                 LootTemplates.DustLoot()
                     ),
-            new Threshold(0.01,
+            new Threshold(0.001,
                 new TierLoot(14, ItemType.Weapon, 0.05),
                 new TierLoot(14, ItemType.Armor, 0.05),
                 new TierLoot(6, ItemType.Ring, 0.05),
                 new TierLoot(6, ItemType.Ability, 0.07),
-                new ItemLoot("Greater Potion of Speed", 0.5),
-                new ItemLoot("Greater Potion of Life", 0.5),
-                new ItemLoot("Chilled UnderGarments", 0.0016),
-                new ItemLoot("Queen's Crystalized Rage", 0.0016),
-                new ItemLoot("Magic Dust", 0.5),
-                new ItemLoot("Special Dust", 0.005)
+                new ItemLoot("Greater Potion of Speed", 1),
+                new ItemLoot("Greater Potion of Life", 1),
+                new ItemLoot("Magic Dust", 0.5)
                 ),
              new Threshold(0.03,
-                 new ItemLoot("Trinity of the Frozen Core", 0.0005),
-                 new ItemLoot("Eternal Queen's Friend", 0.0005)
+                 new ItemLoot("Winter Solstice", 0.0003),
+                 new ItemLoot("Polar Vortex", 0.0003),
+                 new ItemLoot("Iceberg", 0.0003),
+                new ItemLoot("Condemned Frostbite", 0.0003)
                 ),
-             new Threshold(0.05,
-                 new ItemLoot("Living Heart of Ice", 0.000125)
+             new Threshold(0.03,
+                 new ItemLoot("Snow Angle", 0.0003)
                  )
             )
         .Init("Corrupt Snowman Switch", //finished
@@ -1118,7 +1116,27 @@ namespace wServer.logic
                     new Shoot(15, 4, projectileIndex: 5, shootAngle: 15, coolDown: 600),
                     new TimedRandomTransition(7000, false, "attack1", "Orbit", "Orbit1")
                     )
-                )
+                ),
+                new Threshold(0.01,
+                LootTemplates.DustLoot()
+                    ),
+            new Threshold(0.001,
+                new TierLoot(14, ItemType.Weapon, 0.05),
+                new TierLoot(14, ItemType.Armor, 0.05),
+                new TierLoot(6, ItemType.Ring, 0.05),
+                new TierLoot(6, ItemType.Ability, 0.07),
+                new ItemLoot("Greater Potion of Attack", 1),
+                new ItemLoot("Greater Potion of Dexterity", 1),
+                new ItemLoot("Greater Potion of Attack", 1),
+                new ItemLoot("Greater Potion of Dexterity", 1),
+                new ItemLoot("Magic Dust", 0.5)
+                ),
+             new Threshold(0.03,
+                 new ItemLoot("World of Ice", 0.0003),
+                 new ItemLoot("Agdluak", 0.0003),
+                 new ItemLoot("Absolute Zero", 0.0003),
+                new ItemLoot("Cryogenic Freeze", 0.0003)
+                 )
             )
         .Init("Cursed Snowman Switch", //finished
             new State(
@@ -1150,6 +1168,10 @@ namespace wServer.logic
                     new TimedTransition(4000, "attack1.1")
                     ),
                  new State("attack1.1",
+                     new TossObject("Frozen Elf", 8, 0, coolDown: 3000),
+                    new TossObject("Frozen Elf", 8, 90, coolDown: 3000),
+                    new TossObject("Frozen Elf", 8, 180, coolDown: 3000),
+                    new TossObject("Frozen Elf", 8, 270, coolDown: 3000),
                     new HpLessTransition(.6, "rage"),
                     new ReplaceTile("Black Water Frozen", "Black Water Frozen 1", 30),
                     new Shoot(18, 4, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 800),
@@ -1161,6 +1183,10 @@ namespace wServer.logic
                     ),
                  new State("attack1.2",
                     new HpLessTransition(.6, "rage"),
+                    new TossObject("Frozen Elf", 8, 0, coolDown: 3000),
+                    new TossObject("Frozen Elf", 8, 90, coolDown: 3000),
+                    new TossObject("Frozen Elf", 8, 180, coolDown: 3000),
+                    new TossObject("Frozen Elf", 8, 270, coolDown: 3000),
                     new ReplaceTile("Black Water Frozen 1", "Black Water Frozen", 30),
                     new Shoot(18, 4, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 800),
                     new Shoot(16, 8, shootAngle: 10, projectileIndex: 1, coolDown: 1000),
@@ -1171,6 +1197,10 @@ namespace wServer.logic
                     ),
                 new State("rage",
                     new ReplaceTile("Black Water Frozen", "Black Water Frozen 1", 30),
+                    new TossObject("Frozen Elf", 8, 0, coolDown: 3000),
+                    new TossObject("Frozen Elf", 8, 90, coolDown: 3000),
+                    new TossObject("Frozen Elf", 8, 180, coolDown: 3000),
+                    new TossObject("Frozen Elf", 8, 270, coolDown: 3000),
                     new ConditionalEffect(ConditionEffectIndex.Invincible, false),
                     new Shoot(18, 4, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 800),
                     new Shoot(16, 8, shootAngle: 10, projectileIndex: 1, coolDown: 1000),
@@ -1188,6 +1218,10 @@ namespace wServer.logic
                     new HpLessTransition(.4, "attack2")
                     ),
                 new State("attack2",
+                    new TossObject("Frozen Elf", 8, 0, coolDown: 3000),
+                    new TossObject("Frozen Elf", 8, 90, coolDown: 3000),
+                    new TossObject("Frozen Elf", 8, 180, coolDown: 3000),
+                    new TossObject("Frozen Elf", 8, 270, coolDown: 3000),
                     new HpLessTransition(.1, "granted"),
                     new ReplaceTile("Black Water Frozen 1", "Black Water Frozen", 30),
                     new Shoot(18, 4, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 800),
@@ -1198,6 +1232,10 @@ namespace wServer.logic
                     new TimedTransition(4000, "attack2.1")
                     ),
                 new State("attack2.1",
+                    new TossObject("Frozen Elf", 8, 0, coolDown: 3000),
+                    new TossObject("Frozen Elf", 8, 90, coolDown: 3000),
+                    new TossObject("Frozen Elf", 8, 180, coolDown: 3000),
+                    new TossObject("Frozen Elf", 8, 270, coolDown: 3000),
                     new HpLessTransition(.1, "granted"),
                     new ReplaceTile("Black Water Frozen", "Black Water Frozen 1", 30),
                     new Shoot(18, 4, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 800),
@@ -1208,6 +1246,10 @@ namespace wServer.logic
                     new TimedTransition(4000, "attack2.2")
                     ),
                  new State("attack2.2",
+                     new TossObject("Frozen Elf", 8, 0, coolDown: 3000),
+                    new TossObject("Frozen Elf", 8, 90, coolDown: 3000),
+                    new TossObject("Frozen Elf", 8, 180, coolDown: 3000),
+                    new TossObject("Frozen Elf", 8, 270, coolDown: 3000),
                     new HpLessTransition(.1, "granted"),
                     new ReplaceTile("Black Water Frozen 1", "Black Water Frozen", 30),
                     new Shoot(18, 4, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 800),
@@ -1224,7 +1266,27 @@ namespace wServer.logic
                     new Shoot(20, 30, projectileIndex: 0, coolDown: 5000),
                     new Suicide()
                     )
-                )
+                ),
+                new Threshold(0.01,
+                LootTemplates.DustLoot()
+                    ),
+            new Threshold(0.001,
+                new TierLoot(14, ItemType.Weapon, 0.05),
+                new TierLoot(14, ItemType.Armor, 0.05),
+                new TierLoot(6, ItemType.Ring, 0.05),
+                new TierLoot(6, ItemType.Ability, 0.07),
+                new ItemLoot("Greater Potion of Defense", 1),
+                new ItemLoot("Greater Potion of Wisdom", 1),
+                new ItemLoot("Greater Potion of Defense", 1),
+                new ItemLoot("Greater Potion of Wisdom", 1),
+                new ItemLoot("Magic Dust", 0.5)
+                ),
+             new Threshold(0.03,
+                 new ItemLoot("World of Ice", 0.0003),
+                 new ItemLoot("Agdluak", 0.0003),
+                 new ItemLoot("Absolute Zero", 0.0003),
+                new ItemLoot("Cryogenic Freeze", 0.0003)
+                 )
             )
         .Init("Guardian of the Ice Queen",
             new State(

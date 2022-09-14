@@ -328,6 +328,14 @@
 		<VisibilityType>2</VisibilityType>
 		<Dungeon/>
 	</World>
+	<World id="Cave of Eternal Frost">
+		<Width>256</Width>
+		<Height>256</Height>
+		<MapJM>cave_of_eternal_frost.jm</MapJM>
+		<DisableTeleport/>
+		<VisibilityType>2</VisibilityType>
+		<Dungeon/>
+	</World>
 	<World id="Spider Den">
 		<Width>256</Width>
 		<Height>256</Height>

@@ -164,16 +164,18 @@
 		</Texture>
 		<Mythical />
 		<SlotType>3</SlotType>
-		<Description>The drawstring on this make-shift bow was not designed to notch traditional arrows. Rather, it launches high velocity bones.</Description>
+		<Description></Description>
 		<RateOfFire>.95</RateOfFire>
 		<Sound>weapon/poor_quality_bow</Sound>
 		<Projectile>
-			<ObjectId>Fang Flinger Shoot</ObjectId>
-			<Speed>155</Speed>
+			<ObjectId>Ice Bow Shot</ObjectId>
+			<Speed>165</Speed>
 			<MinDamage>255</MinDamage>
-			<MaxDamage>275</MaxDamage>
-			<LifetimeMS>452</LifetimeMS>
-			<Amplitude>0.45</Amplitude>
+			<MaxDamage>285</MaxDamage>
+			<Boomerang/>
+			<LifetimeMS>850</LifetimeMS>
+			<Amplitude>0.4</Amplitude>
+			<ParticleTrail lifetimeMS="300">0x0089D1</ParticleTrail>
 			<Frequency>2</Frequency>
 			<Size>100</Size>
 			<ArmorPiercing />

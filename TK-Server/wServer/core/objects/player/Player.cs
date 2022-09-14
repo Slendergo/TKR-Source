@@ -264,8 +264,6 @@ namespace wServer.core.objects
                 ApplyPermanentConditionEffect(ConditionEffectIndex.Invincible);
             }
 
-            ApplyPermanentConditionEffect(ConditionEffectIndex.Invincible);
-
             LoadTalismanData();
         }
 
@@ -433,9 +431,9 @@ namespace wServer.core.objects
             return playerDesc.Stats.Where((t, i) => Stats.Base[i] >= t.MaxValue).Count() + (UpgradeEnabled ? playerDesc.Stats.Where((t, i) => i == 0 ? Stats.Base[i] >= t.MaxValue + 50 : i == 1 ? Stats.Base[i] >= t.MaxValue + 50 : Stats.Base[i] >= t.MaxValue + 10).Count() : 0);
         }
 
-        public override bool HitByProjectile(Entity shooter, Projectile projectile, TickTime time)
+        public override bool HitByProjectile(Projectile projectile, TickTime time)
         {
-            if (shooter is Player || IsInvulnerable)
+            if (projectile.Host is Player || IsInvulnerable)
                 return false;
 
             #region Item Effects
@@ -471,24 +469,24 @@ namespace wServer.core.objects
 
             #endregion Item Effects
 
-            var dmg = (int)Stats.GetDefenseDamage(projectile.Damage, projectile.ProjectileDesc.ArmorPiercing);
+            var dmg = (int)Stats.GetDefenseDamage(projectile.Damage, projectile.ProjDesc.ArmorPiercing);
             if (!HasConditionEffect(ConditionEffectIndex.Invulnerable))
                 HP -= dmg;
-            ApplyConditionEffect(projectile.ProjectileDesc.Effects);
+            ApplyConditionEffect(projectile.ProjDesc.Effects);
             World.BroadcastIfVisibleExclude(new Damage()
             {
                 TargetId = Id,
                 Effects = 0,
                 DamageAmount = dmg,
                 Kill = HP <= 0,
-                BulletId = projectile.BulletId,
-                ObjectId = projectile.ObjectId
+                BulletId = projectile.ProjectileId,
+                ObjectId = projectile.Host.Id
             }, this, this);
 
             if (HP <= 0)
-                Death(shooter.Name, shooter);
+                Death(projectile.Host.ObjectDesc.DisplayId ?? projectile.Host.ObjectDesc.ObjectId, projectile.Host);
 
-            return base.HitByProjectile(shooter, projectile, time);
+            return base.HitByProjectile(projectile, time);
         }
 
         public override void Init(World owner)

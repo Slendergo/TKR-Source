@@ -95,11 +95,39 @@ namespace wServer.logic.behaviors
 
                     var startAngle = a - _shootAngle * (count - 1) / 2;
 
+                    int prjId = 0;
+
                     var prjPos = new Position() { X = host.X, Y = host.Y };
+                    var prjs = new Projectile[count];
 
-                    var bulletId = host.GetNextBulletId(count);
+                    for (var i = 0; i < count; i++)
+                    {
+                        if (host == null || host.World == null)
+                            return;
 
-                    var pkt = new EnemyShoot(bulletId, host.Id, (byte)desc.BulletType, host.ObjectType, ref prjPos, (float)startAngle, (int)dmg, (byte)count, _shootAngle);
+                        var prj = host.CreateProjectile(desc, host.ObjectType, (int)dmg, time.TotalElapsedMs, prjPos, startAngle + _shootAngle * i);
+
+                        host.World.AddProjectile(prj);
+
+                        if (i == 0)
+                            prjId = prj.ProjectileId;
+
+                        prjs[i] = prj;
+                    }
+
+                    var pkt = new EnemyShoot()
+                    {
+                        BulletId = prjId,
+                        OwnerId = host.Id,
+                        StartingPos = prjPos,
+                        Angle = startAngle,
+                        Damage = (short)dmg,
+                        BulletType = (byte)desc.BulletType,
+                        AngleInc = _shootAngle,
+                        NumShots = (byte)count,
+                    };
+
+                    // changed to this
                     host.World.BroadcastIfVisible(pkt, host);
                 }
 

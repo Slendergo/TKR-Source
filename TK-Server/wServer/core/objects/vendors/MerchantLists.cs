@@ -103,7 +103,7 @@ namespace wServer.core.objects.vendors
 
         private static readonly List<ISellableItem> Special = new List<ISellableItem>
         {
-            new ShopItem("Glowing Talisman", 200),
+            new ShopItem("Glowing Talisman", 125),
             new ShopItem("XP Booster 20 min", 25),
             new ShopItem("Loot Drop Potion", 100),
             new ShopItem("Backpack", 100),

@@ -872,7 +872,10 @@ public class GameObject extends BasicObject {
         }
 
         if (damageAmount > 0) {
-            pierced = this.isArmorBroken() || proj != null && proj.projProps_.armorPiercing_ || pierce;
+            pierced = this.isArmorBroken() || proj != null && proj.projProps_.armorPiercing_;
+            if(pierce && proj.ownerId_ == map_.player_.objectId_){
+                pierced = true;
+            }
             var _loc4_:CharacterStatusText = null;
             var _loc3_:String = "-" + damageAmount + " [" + (this.hp_ - damageAmount) + "]";
             if (Parameters.data_.dynamicHPcolor) {

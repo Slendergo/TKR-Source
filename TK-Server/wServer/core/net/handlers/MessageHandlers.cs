@@ -54,7 +54,6 @@ namespace wServer.core.net.handlers
                 foreach (var type in Assembly.GetAssembly(typeof(IMessageHandler)).GetTypes().Where(_ => _.IsClass && !_.IsAbstract && _.IsSubclassOf(typeof(IMessageHandler))))
                 {
                     var handler = (IMessageHandler)Activator.CreateInstance(type);
-                    Console.WriteLine(handler.MessageId);
                     Handlers.Add(handler.MessageId, handler);
                 }
             }

@@ -9,7 +9,7 @@ namespace wServer.core.objects.connection
 
         public ConnectedObjectInfo Connection { get; set; }
 
-        public override bool HitByProjectile(Entity shooter, Projectile projectile, TickTime time) => true;
+        public override bool HitByProjectile(Projectile projectile, TickTime time) => true;
 
         protected override void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)
         {

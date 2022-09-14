@@ -16,17 +16,10 @@ namespace wServer.core.net.handlers
             if (player?.World == null)
                 return;
 
-            var prj = player.GetProjectile(objectId, bulletId);
+            var prj = player.World.GetProjectile(objectId, bulletId);
             if (prj == null)
-            {
-                //System.Console.WriteLine("Null Projectile PlayerHit");
                 return;
-            }
-
-            var shooter = player.World.GetEntity(objectId);
-            prj?.HitEntity(shooter, player, tickTime);
-
-            System.Console.WriteLine("PLAYER HIT");
+            prj?.ForceHit(player, tickTime);
         }
     }
 }

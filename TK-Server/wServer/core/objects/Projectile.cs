@@ -1,92 +1,117 @@
 ﻿using common.resources;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Linq;
 using wServer.core.worlds;
 using wServer.memory;
 
 namespace wServer.core.objects
 {
-    public sealed class Projectile
+    public sealed class Projectile : IObjectPoolObject
     {
-        public int StartTime { get; }
-        public int ObjectId { get; }
-        public int BulletId { get; }
-        public int ContainerType { get; }
-        public float Angle { get; }
-        public float StartX { get; }
-        public float StartY { get; }
-        public int Damage { get; }
-        public ProjectileDesc ProjectileDesc { get; }
+        public ProjectileDesc ProjDesc;
+        private HashSet<Entity> _hit = new HashSet<Entity>();
+        private bool used;
 
-        public List<int> HitDictionary { get; } = new List<int>();
+        public int ProjectileId;
+        public float StartX;
+        public float StartY;
+        public float Angle;
+        public ushort Container;
+        public long CreationTime;
+        public int Damage;
+        public Entity Host;
+        public World World;
 
-        public Projectile(int startTime, int objectId, int bulletId, int containerType, float angle, float startX, float startY, int damage, ProjectileDesc projectileDesc)
+        public Projectile() { }
+
+        public void ForceHit(Entity entity, TickTime time)
         {
-            StartTime = startTime;
-            ObjectId = objectId;
-            BulletId = bulletId;
-            ContainerType = containerType;
-            Angle = angle;
-            StartX = startX;
-            StartY = startY;
-            Damage = damage;
-            ProjectileDesc = projectileDesc;
+            if (!ProjDesc.MultiHit && used && !(entity is Player))
+                return;
+
+            if (_hit.Add(entity))
+                entity.HitByProjectile(this, time);
+
+            used = true;
         }
 
-        public bool HitEntity(Entity shooter, Entity entity, TickTime time)
+        public bool Tick(ref TickTime time)
         {
-            if (ProjectileDesc.MultiHit && HitDictionary.Contains(entity.Id))
+            var elapsed = time.TotalElapsedMs - CreationTime;
+            if (elapsed > ProjDesc.LifetimeMS)
                 return false;
-            HitDictionary.Add(entity.Id);
-            _ = entity.HitByProjectile(shooter, this, time);
             return true;
         }
 
-        public bool IsElapsed(int time) => time - StartTime >= ProjectileDesc.LifetimeMS + RootWorldThread.TICK_TIME_MS; // 1 tick tollerance might remove in future
-
-        public Position GetPosition(int elapsed)
+        public Position GetPosition(long elapsedTicks)
         {
-            var x = (double)StartX;
-            var y = (double)StartY;
+            double periodFactor;
+            double amplitudeFactor;
+            double theta;
 
-            var dist = elapsed * (ProjectileDesc.Speed / 10000.0);
-            var phase = BulletId % 2 == 0 ? 0.0 : Math.PI;
-            if (ProjectileDesc.Wavy)
+            var pX = (double)StartX;
+            var pY = (double)StartY;
+            var dist = elapsedTicks * ProjDesc.Speed / 10000.0;
+            var phase = ProjectileId % 2 == 0 ? 0 : Math.PI;
+
+            if (ProjDesc.Wavy)
             {
-                var periodFactor = 6.0 * Math.PI;
-                var amplitudeFactor = Math.PI / 64.0;
-                var theta = Angle + amplitudeFactor * Math.Sin(phase + periodFactor * elapsed / 1000.0);
-                x += dist * Math.Cos(theta);
-                y += dist * Math.Sin(theta);
+                periodFactor = 6 * Math.PI;
+                amplitudeFactor = Math.PI / 64;
+                theta = Angle + amplitudeFactor * Math.Sin(phase + periodFactor * elapsedTicks / 1000);
+                pX += dist * Math.Cos(theta);
+                pY += dist * Math.Sin(theta);
             }
-            else if (ProjectileDesc.Parametric)
+            else if (ProjDesc.Parametric)
             {
-                var t = elapsed / ProjectileDesc.LifetimeMS * 2 * Math.PI;
-                x = Math.Sin(t) * (BulletId % 2 == 0 ? 1.0 : -1.0);
-                y = Math.Sin(2.0 * t) * (BulletId % 4 < 2 ? 1.0 : -1.0);
+                var t = elapsedTicks / ProjDesc.LifetimeMS * 2 * Math.PI;
+                var x = Math.Sin(t) * (ProjectileId % 2 == 0 ? 1 : -1);
+                var y = Math.Sin(2 * t) * (ProjectileId % 4 < 2 ? 1 : -1);
                 var sin = Math.Sin(Angle);
                 var cos = Math.Cos(Angle);
-                x += (x * cos - y * sin) * ProjectileDesc.Magnitude;
-                y += (x * sin + y * cos) * ProjectileDesc.Magnitude;
+                pX += (x * cos - y * sin) * ProjDesc.Magnitude;
+                pY += (x * sin + y * cos) * ProjDesc.Magnitude;
             }
             else
             {
-                if (ProjectileDesc.Boomerang)
+                if (ProjDesc.Boomerang)
                 {
-                    var halfway = ProjectileDesc.LifetimeMS * (ProjectileDesc.Speed / 10000.0) / 2.0;
+                    double halfway = ProjDesc.LifetimeMS * (ProjDesc.Speed / 10000) / 2;
+
                     if (dist > halfway)
                         dist = halfway - (dist - halfway);
                 }
-                x += dist * Math.Cos(Angle);
-                y += dist * Math.Sin(Angle);
-                if (ProjectileDesc.Amplitude != 0.0)
+                pX += dist * Math.Cos(Angle);
+                pY += dist * Math.Sin(Angle);
+
+                if (ProjDesc.Amplitude != 0)
                 {
-                    var deflection = ProjectileDesc.Amplitude * Math.Sin(phase + elapsed / ProjectileDesc.LifetimeMS * ProjectileDesc.Frequency * 2.0 * Math.PI);
-                    x += deflection * Math.Cos(Angle + Math.PI / 2.0);
-                    y += deflection * Math.Sin(Angle + Math.PI / 2.0);
+                    var deflection = ProjDesc.Amplitude * Math.Sin(phase + elapsedTicks / ProjDesc.LifetimeMS * ProjDesc.Frequency * 2 * Math.PI);
+                    pX += deflection * Math.Cos(Angle + Math.PI / 2);
+                    pY += deflection * Math.Sin(Angle + Math.PI / 2);
                 }
             }
-            return new Position((float)x, (float)y);
+
+            return new Position((float)pX, (float)pY);
+        }
+
+        public void Reset()
+        {
+            ProjDesc = null;
+            _hit.Clear();
+            _hit.TrimExcess();
+            used = false;
+            ProjectileId = 0;
+            StartX = 0.0f;
+            StartY = 0.0f;
+            Angle = 0.0f;
+            Container = 0;
+            CreationTime = 0;
+            Damage = 0;
+            Host = null;
+            World = null;
         }
     }
 }

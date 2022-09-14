@@ -269,7 +269,7 @@ namespace wServer.core.objects
             };
         }
 
-        public virtual bool HitByProjectile(Entity shooter, Projectile projectile, TickTime time)
+        public virtual bool HitByProjectile(Projectile projectile, TickTime time)
         {
             if (ObjectDesc == null)
                 return true;
@@ -730,6 +730,24 @@ namespace wServer.core.objects
         {
             pos.X += (float)(Math.Cos(angle) * radius);
             pos.Y += (float)(Math.Sin(angle) * radius);
+        }
+
+
+        protected int projectileId;
+
+        public Projectile CreateProjectile(ProjectileDesc desc, ushort container, int dmg, long time, Position pos, float angle)
+        {
+            var ret = World.ObjectPools.Projectiles.Rent();
+            ret.Host = this;
+            ret.ProjDesc = desc;
+            ret.ProjectileId = projectileId++;
+            ret.Container = container;
+            ret.Damage = dmg;
+            ret.CreationTime = time;
+            ret.Angle = angle;
+            ret.StartX = pos.X;
+            ret.StartY = pos.Y;
+            return ret;
         }
     }
 }

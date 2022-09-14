@@ -122,7 +122,7 @@ package kabam.rotmg.ui.view.components
          showPots = potions > 0;
          if(showPots)
          {
-            this.text.text = String(potions + "/9");
+            this.text.text = String(potions + "/6");
             iconX = CENTER_ICON_X;
             this.bg.graphics.clear();
             this.bg.graphics.drawGraphicsData(this.useGraphicsData);

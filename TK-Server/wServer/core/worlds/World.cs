@@ -61,7 +61,10 @@ namespace wServer.core.worlds
         public ConcurrentDictionary<int, Container> Containers { get; private set; } = new ConcurrentDictionary<int, Container>();
         public ConcurrentDictionary<int, Portal> Portals { get; private set; } = new ConcurrentDictionary<int, Portal>();
         public ConcurrentDictionary<int, Pet> Pets { get; private set; } = new ConcurrentDictionary<int, Pet>();
+        public Dictionary<int, Dictionary<int, Projectile>> Projectiles { get; private set; } = new Dictionary<int, Dictionary<int, Projectile>>();
         public List<WorldTimer> Timers { get; private set; } = new List<WorldTimer>();
+        
+        public ObjectPools ObjectPools { get; private set; }
 
         public WorldBranch WorldBranch { get; private set; }
         public World ParentWorld { get; set; }
@@ -70,6 +73,7 @@ namespace wServer.core.worlds
         {
             GameServer = gameServer;
             Map = new Wmap(this);
+            ObjectPools = new ObjectPools(this);
 
             Id = id;
             IdName = resource.DisplayName;
@@ -116,18 +120,7 @@ namespace wServer.core.worlds
         {
             foreach (var player in Players.Values)
                 if (player.SqDistTo(host) < PlayerUpdate.VISIBILITY_RADIUS_SQR)
-                {
-                    switch(outgoingMessage.MessageId)
-                    {
-                        case MessageId.ENEMYSHOOT:
-                            player.AddPendingEnemyShoot(outgoingMessage as EnemyShoot);
-                            break;
-                        case MessageId.SERVERPLAYERSHOOT:
-                            player.AddPendingServerPlayerShoot(outgoingMessage as ServerPlayerShoot);
-                            break;
-                    }
                     player.Client.SendPacket(outgoingMessage);
-                }
         }
 
         public void BroadcastIfVisibleExclude(OutgoingMessage outgoingMessage, Entity broadcaster, Entity exclude)
@@ -160,6 +153,28 @@ namespace wServer.core.worlds
                 en.Value.OnChatTextReceived(player, text);
             foreach (var en in StaticObjects)
                 en.Value.OnChatTextReceived(player, text);
+        }
+        
+        public void AddProjectile(Projectile projectile)
+        {
+            if (!Projectiles.ContainsKey(projectile.Host.Id))
+                Projectiles.Add(projectile.Host.Id, new Dictionary<int, Projectile>());
+            Projectiles[projectile.Host.Id][projectile.ProjectileId] = projectile;
+        }
+
+        public Projectile GetProjectile(int objectId, int bulletId)
+        {
+            if (Projectiles.TryGetValue(objectId, out var projectiles))
+                if (projectiles.TryGetValue(bulletId, out var ret))
+                    return ret;
+            return null;
+        }
+
+        public void RemoveProjectile(Projectile projectile)
+        {
+            if (Projectiles.ContainsKey(projectile.Host.Id))
+                Projectiles[projectile.Host.Id].Remove(projectile.ProjectileId);
+            ObjectPools.Projectiles.Return(projectile);
         }
 
         public virtual int EnterWorld(Entity entity)
@@ -424,6 +439,9 @@ namespace wServer.core.worlds
 
         protected virtual void UpdateLogic(ref TickTime time)
         {
+            foreach (var player in Players.Values)
+                player.Tick(ref time);
+
             foreach (var stat in StaticObjects.Values)
                 stat.Tick(ref time);
 
@@ -435,6 +453,15 @@ namespace wServer.core.worlds
 
             foreach (var pet in Pets.Values)
                 pet.Tick(ref time);
+
+            var projectilesToRemove = new List<Projectile>();
+            foreach (var k in Projectiles.Values)
+                foreach (var projectile in k.Values)
+                    if (!projectile.Tick(ref time))
+                        projectilesToRemove.Add(projectile);
+
+            foreach (var projectile in projectilesToRemove)
+                RemoveProjectile(projectile);
 
             if (EnemiesCollision != null)
             {
@@ -465,9 +492,6 @@ namespace wServer.core.worlds
                     StaticLogger.Instance.Error(msg);
                     Timers.RemoveAt(i);
                 }
-
-            foreach (var player in Players.Values)
-                player.Tick(ref time);
         }
 
         public void FlagForClose() 

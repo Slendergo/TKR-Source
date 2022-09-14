@@ -17,38 +17,22 @@ namespace wServer.core.net.handlers
             var bulletId = rdr.ReadInt32();
             var targetId = rdr.ReadInt32();
             var killed = rdr.ReadBoolean();
-
+            
             var player = client.Player;
             
+            var entity = player.World.GetEntity(targetId);
+
+            if (entity?.World == null || entity.HasConditionEffect(ConditionEffectIndex.Invulnerable))
+                return;
+
             if (player.HasConditionEffect(ConditionEffectIndex.Hidden))
                 return;
-            
-            var entity = player?.World?.GetEntity(targetId);
-            if(entity == null)
+
+            var prj = player.World.GetProjectile(player.Id, bulletId);
+            if (prj == null)
                 return;
 
-            var projectile = player.GetProjectile(player.Id, bulletId);
-            if (projectile == null)
-            {
-                //Console.WriteLine($"NULL PROJ | {player.Id} {bulletId}");
-                return;
-            }
-
-            var delta = time - projectile.StartTime;
-
-            var hitSpot = projectile.GetPosition(delta);
-
-            var distanceFromHit = entity.DistTo(hitSpot.X, hitSpot.Y);
-            if (distanceFromHit > 7.5)
-            {
-                foreach (var other in player.World.Players.Values)
-                    if (other.IsAdmin || other.IsCommunityManager)
-                        other.SendInfo($"Warning: [{player.Name}] {player.AccountId}-{player.Client.Character.CharId} potentially AOE hacks! ({distanceFromHit} | tolerance: 7.5)");
-                StaticLogger.Instance.Warn($"[{player.Name}] {player.AccountId}-{player.Client.Character.CharId} potentially AOE hacks! ({distanceFromHit} | tolerance: 7.5)");
-                return;
-            }
-
-            projectile.HitEntity(player, entity, tickTime);
+            prj?.ForceHit(entity, tickTime);
 
             var totalLife = 0.0;
             var totalMana = 0.0;

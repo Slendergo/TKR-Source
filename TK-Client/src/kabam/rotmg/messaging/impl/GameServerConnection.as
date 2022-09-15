@@ -2159,9 +2159,6 @@ public class GameServerConnection
 
       private function onDeath(death:Death) : void
       {
-         // keep for now, seems to fix the death issue
-         disconnect();
-
          this.death = death;
          var data:BitmapData = new BitmapData(this.gs_.stage.stageWidth,this.gs_.stage.stageHeight);
          data.draw(this.gs_);

@@ -731,7 +731,7 @@ namespace wServer.logic
                     ),
                 new State("attack1",
                     new Taunt("Hello friend. You seem to be lost. LET ME SHOW YOU THE WAY OUT!"),
-                    new StayCloseToSpawn(2, 20),
+                    new StayCloseToSpawn(2, 15),
                     new Chase(12),
                     new Shoot(8, 8, projectileIndex: 1, shootAngle: 10, coolDown: 1200),
                     new Shoot(20, 6, projectileIndex: 2, coolDown: 600),
@@ -743,7 +743,7 @@ namespace wServer.logic
                     new TimedTransition(5000, "Protection")
                     ),
                 new State("Protection",
-                    new ReturnToSpawn(1.3, 0),
+                    new ReturnToSpawn(3, 0),
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
                     new Taunt("Guardians! Protect me!"),
                     new TossObject("Ice Tower", 8, angle: 0, coolDown: 99999),

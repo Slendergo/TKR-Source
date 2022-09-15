@@ -901,7 +901,6 @@ public class Player extends Character {
         else if (objectXML.hasOwnProperty("MultiPhase")) {
             map_.gs_.gsc_.useItem(now, objectId_, 1, itemType, pW.x, pW.y, useType);
 
-
             if(this.talismanNoManaBar_) {
                 mpCost = int(this.maxHP_ * this.talismanAbilityLifeCost_);
                 if (mpCost <= this.hp_) {

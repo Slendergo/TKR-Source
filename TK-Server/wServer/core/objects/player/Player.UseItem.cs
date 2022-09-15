@@ -18,6 +18,10 @@ namespace wServer.core.objects
 {
     partial class Player
     {
+        public const int DEFAULT = 0;
+        public const int START_USE = 1;
+        public const int END_USE = 2;
+
         public const int MaxAbilityDist = 14;
 
         public static readonly ConditionEffectIndex[] NegativeEffs = new ConditionEffectIndex[]
@@ -108,7 +112,7 @@ namespace wServer.core.objects
             player1.SendInfo("New Character Slot Unlocked!, go to Character selector to use them!");
         }
 
-        public void UseItem(int clientTime, TickTime time, int objId, int slot, Position pos, int sellMaxed)
+        public void UseItem(int clientTime, TickTime time, int objId, int slot, Position pos, int sellMaxed, int useType)
         {
             //Log.Debug(objId + ":" + slot);
             var entity = World.GetEntity(objId);
@@ -237,26 +241,18 @@ namespace wServer.core.objects
                         }
                     }
 
-                    Activate(clientTime, time, item, slot, pos, objId, sellMaxed);
+                    Activate(clientTime, time, item, slot, pos, objId, sellMaxed, useType);
                     return;
                 }
 
                 if (slotType > 0)
-                {
                     FameCounter.UseAbility();
-                }
             }
             else
-            {
                 FameCounter.DrinkPot();
-            }
 
-            //Log.Debug(item.SlotType + ":" + slotType);
-            if (item.InvUse)
-                Activate(clientTime, time, item, slot, pos, objId, sellMaxed);
-
-            if (item.Consumable || item.SlotType == slotType)
-                Activate(clientTime, time, item, slot, pos, objId, sellMaxed);
+            if (item.InvUse || item.Consumable || item.SlotType == slotType)
+                Activate(clientTime, time, item, slot, pos, objId, sellMaxed, useType);
             else
                 Client.SendPacket(new InvResult() { Result = 1 });
         }
@@ -359,12 +355,15 @@ namespace wServer.core.objects
             player.MP = newMp;
         }
 
-        private void Activate(int clientTime, TickTime time, Item item, int slot, Position target, int objId, int sellmaxed)
+        private void Activate(int clientTime, TickTime time, Item item, int slot, Position target, int objId, int sellmaxed, int useType)
         {
-            if (item.MpCost != 0 && TalismanAbilityLifeCost > 0.0f)
-                HP -= (int)(Stats[0] * TalismanAbilityLifeCost);
-            else 
-                MP -= item.MpCost;
+            if(useType == 0)
+            {
+                if (item.MpCost != 0 && TalismanAbilityLifeCost > 0.0f)
+                    HP -= (int)(Stats[0] * TalismanAbilityLifeCost);
+                else 
+                    MP -= item.MpCost;
+            }
 
             var entity1 = World.GetEntity(objId);
 
@@ -552,15 +551,15 @@ namespace wServer.core.objects
                         break;
 
                     case ActivateEffects.ShurikenAbility:
-                        AEShurikenAbility(time, item, target, eff);
+                        AEShurikenAbility(time, item, target, eff, useType);
                         break;
 
                     case ActivateEffects.ShurikenAbilityBerserk:
-                        AEShurikenAbilityBerserk(time, item, target, eff);
+                        AEShurikenAbilityBerserk(time, item, target, eff, useType);
                         break;
 
                     case ActivateEffects.ShurikenAbilityDamaging:
-                        AEShurikenAbilityDamaging(time, item, target, eff);
+                        AEShurikenAbilityDamaging(time, item, target, eff, useType);
                         break;
 
                     case ActivateEffects.DazeBlast:
@@ -1480,87 +1479,91 @@ namespace wServer.core.objects
                 World.BroadcastIfVisibleExclude(sPkts[i], this, this);
         }
 
-        private void AEShurikenAbility(TickTime time, Item item, Position target, ActivateEffect eff)
+        private void AEShurikenAbility(TickTime time, Item item, Position target, ActivateEffect eff, int useType)
         {
-            if (!HasConditionEffect(ConditionEffectIndex.NinjaSpeedy))
+            switch (useType)
             {
-                ApplyPermanentConditionEffect(ConditionEffectIndex.NinjaSpeedy);
-                return;
+                case START_USE:
+                    ApplyPermanentConditionEffect(ConditionEffectIndex.NinjaSpeedy);
+                    break;
+                case END_USE:
+                    if (item.MpEndCost != 0 && TalismanAbilityLifeCost > 0.0f)
+                    {
+                        if (HP >= item.MpEndCost)
+                        {
+                            HP -= (int)(Stats[0] * TalismanAbilityLifeCost);
+                            AEShoot(time, item, target, eff);
+                        }
+                    }
+                    else
+                    {
+                        if (MP >= item.MpEndCost)
+                        {
+                            MP -= item.MpEndCost;
+                            AEShoot(time, item, target, eff);
+                        }
+                    }
+                    RemoveCondition(ConditionEffectIndex.NinjaSpeedy);
+                    break;
             }
-
-            if (item.MpEndCost != 0 && TalismanAbilityLifeCost > 0.0f)
-            {
-                if (HP >= item.MpEndCost)
-                {
-                    HP -= (int)(Stats[0] * TalismanAbilityLifeCost);
-                    AEShoot(time, item, target, eff);
-                }
-            }
-            else
-            {
-                if (MP >= item.MpEndCost)
-                {
-                    MP -= item.MpEndCost;
-                    AEShoot(time, item, target, eff);
-                }
-            }
-
-            ApplyConditionEffect(ConditionEffectIndex.NinjaSpeedy, 0);
         }
 
-        private void AEShurikenAbilityBerserk(TickTime time, Item item, Position target, ActivateEffect eff)
+        private void AEShurikenAbilityBerserk(TickTime time, Item item, Position target, ActivateEffect eff, int useType)
         {
-            if (!HasConditionEffect(ConditionEffectIndex.Berserk))
+            switch (useType)
             {
-                ApplyPermanentConditionEffect(ConditionEffectIndex.Berserk);
-                return;
+                case START_USE:
+                    ApplyPermanentConditionEffect(ConditionEffectIndex.NinjaBerserk);
+                    break;
+                case END_USE:
+                    if (item.MpEndCost != 0 && TalismanAbilityLifeCost > 0.0f)
+                    {
+                        if (HP >= item.MpEndCost)
+                        {
+                            HP -= (int)(Stats[0] * TalismanAbilityLifeCost);
+                            AEShoot(time, item, target, eff);
+                        }
+                    }
+                    else
+                    {
+                        if (MP >= item.MpEndCost)
+                        {
+                            MP -= item.MpEndCost;
+                            AEShoot(time, item, target, eff);
+                        }
+                    }
+                    RemoveCondition(ConditionEffectIndex.NinjaBerserk);
+                    break;
             }
-
-            if (item.MpEndCost != 0 && TalismanAbilityLifeCost > 0.0f)
-            {
-                if (HP >= item.MpEndCost)
-                {
-                    HP -= (int)(Stats[0] * TalismanAbilityLifeCost);
-                    AEShoot(time, item, target, eff);
-                }
-            }
-            else
-            {
-                if (MP >= item.MpEndCost)
-                {
-                    MP -= item.MpEndCost;
-                    AEShoot(time, item, target, eff);
-                }
-            }
-
-            ApplyConditionEffect(ConditionEffectIndex.Berserk, 0);
         }
 
-        private void AEShurikenAbilityDamaging(TickTime time, Item item, Position target, ActivateEffect eff)
+        private void AEShurikenAbilityDamaging(TickTime time, Item item, Position target, ActivateEffect eff, int useType)
         {
-            if (!HasConditionEffect(ConditionEffectIndex.NinjaDamaging))
+            switch (useType)
             {
-                ApplyPermanentConditionEffect(ConditionEffectIndex.NinjaDamaging);
-                return;
+                case START_USE:
+                    ApplyPermanentConditionEffect(ConditionEffectIndex.NinjaDamaging);
+                    break;
+                case END_USE:
+                    if (item.MpEndCost != 0 && TalismanAbilityLifeCost > 0.0f)
+                    {
+                        if (HP >= item.MpEndCost)
+                        {
+                            HP -= (int)(Stats[0] * TalismanAbilityLifeCost);
+                            AEShoot(time, item, target, eff);
+                        }
+                    }
+                    else
+                    {
+                        if (MP >= item.MpEndCost)
+                        {
+                            MP -= item.MpEndCost;
+                            AEShoot(time, item, target, eff);
+                        }
+                    }
+                    RemoveCondition(ConditionEffectIndex.NinjaDamaging);
+                    break;
             }
-
-            if (item.MpEndCost != 0 && TalismanAbilityLifeCost > 0.0f)
-            {
-                if (HP >= item.MpEndCost)
-                {
-                    HP -= (int)(Stats[0] * TalismanAbilityLifeCost);
-                    AEShoot(time, item, target, eff);
-                }
-            }
-            else
-            {
-                if (MP >= item.MpEndCost)
-                {
-                    MP -= item.MpEndCost;
-                    AEShoot(time, item, target, eff);
-                }
-            }
-            ApplyConditionEffect(ConditionEffectIndex.NinjaDamaging, 0);
         }
 
         private void AEStatBoostAura(TickTime time, Item item, Position target, ActivateEffect eff)

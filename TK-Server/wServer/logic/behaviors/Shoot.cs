@@ -52,11 +52,14 @@ namespace wServer.logic.behaviors
 
             Status = CycleStatus.NotStarted;
 
+            if (host.HasConditionEffect(ConditionEffectIndex.Stunned))
+            {
+                state = 0;
+                return;
+            }
+
             if (cool <= 0)
             {
-                if (host.HasConditionEffect(ConditionEffectIndex.Stunned))
-                    return;
-
                 var count = _count;
 
                 if (host.HasConditionEffect(ConditionEffectIndex.Dazed))

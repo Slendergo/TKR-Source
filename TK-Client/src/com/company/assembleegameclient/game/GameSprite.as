@@ -49,6 +49,7 @@ import kabam.rotmg.messaging.impl.incoming.MapInfo;
 import kabam.rotmg.servers.api.Server;
 import kabam.rotmg.stage3D.Renderer;
 import kabam.rotmg.ui.UIUtils;
+import kabam.rotmg.ui.view.BossHealthBar;
 import kabam.rotmg.ui.view.HUDView;
 
 import org.osflash.signals.Signal;
@@ -85,6 +86,7 @@ public class GameSprite extends Sprite
    private var displaysPosY:uint = 4;
    public var dmgCounter:SimpleText;
    public var chatPlayerMenu:PlayerMenu;
+   public var bossHealthBar:BossHealthBar;
 
    public function GameSprite(server:Server, gameId:int, createCharacter:Boolean, charId:int, keyTime:int, key:ByteArray, model:PlayerModel, mapJSON:String)
    {
@@ -113,6 +115,10 @@ public class GameSprite extends Sprite
       else{
          this.updateScaleForTextBox(1.0);
       }
+
+      this.bossHealthBar = new BossHealthBar();
+      this.bossHealthBar.visible = false;
+      addChild(this.bossHealthBar);
    }
 
    public function updateScaleForTextBox(percentage:Number):void{
@@ -301,6 +307,20 @@ public class GameSprite extends Sprite
             this.creditDisplay_.x = (this.hudView.x - (6 * this.creditDisplay_.scaleX));
          }
       }
+      if (this.bossHealthBar != null)
+      {
+         if (uiscale)
+         {
+            this.bossHealthBar.scaleX = result;
+            this.bossHealthBar.scaleY = 1;
+            this.bossHealthBar.y = 0;
+         }
+         else
+         {
+            this.bossHealthBar.scaleX = sWidth;
+            this.bossHealthBar.scaleY = sHeight;
+         }
+      }
       if (this.rankText_ != null)
       {
          if (uiscale)
@@ -472,6 +492,10 @@ public class GameSprite extends Sprite
       {
          this.closed.dispatch();
          return;
+      }
+
+      if(this.bossHealthBar != null && this.bossHealthBar.visible){
+         this.bossHealthBar.draw();
       }
 
       this.updateNearestInteractive();

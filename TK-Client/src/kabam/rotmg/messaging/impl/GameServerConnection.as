@@ -986,7 +986,6 @@ public class GameServerConnection
             return;
          }
          var sObj:SellableObject = this.gs_.map.goDict_[sellableObjectId];
-         trace(sObj);
          if(sObj == null)
             return;
 
@@ -1602,9 +1601,16 @@ public class GameServerConnection
             {
                case StatData.MAX_HP_STAT:
                   go.maxHP_ = value;
+                  if(go.hp_ > go.maxHP_) {
+                     go.maxHP_ = go.hp_;
+                  }
                   continue;
                case StatData.HP_STAT:
                   go.hp_ = value;
+                  go.rtHp_ = go.hp_;
+                  if(go.hp_ > go.maxHP_) {
+                     go.maxHP_ = go.hp_;
+                  }
                   continue;
                case StatData.SIZE_STAT:
                   go.size_ = value;
@@ -2159,6 +2165,8 @@ public class GameServerConnection
 
       private function onDeath(death:Death) : void
       {
+         disconnect();
+
          this.death = death;
          var data:BitmapData = new BitmapData(this.gs_.stage.stageWidth,this.gs_.stage.stageHeight);
          data.draw(this.gs_);

@@ -219,6 +219,9 @@ namespace wServer.core
 
         public void Dispose()
         {
+            Console.WriteLine("[Dispose] ConnectionListener");
+            ConnectionListener.Shutdown();
+
             Console.WriteLine("[Dispose] InterServerManager");
             InterServerManager.Shutdown();
 
@@ -233,9 +236,6 @@ namespace wServer.core
             
             Console.WriteLine("[Dispose] ConnectionManager");
             ConnectionManager.Dispose();
-            
-            Console.WriteLine("[Dispose] ConnectionListener");
-            ConnectionListener.Shutdown();
             
             Console.WriteLine("[Dispose] ChatManager");
             ChatManager.Dispose();

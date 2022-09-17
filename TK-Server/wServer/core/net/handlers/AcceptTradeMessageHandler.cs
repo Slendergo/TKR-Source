@@ -159,10 +159,9 @@ namespace wServer.core.net.handlers
         {
             try
             {
-                System.Console.WriteLine(items.Count);
                 var sb = new StringBuilder($"[{player.World.IdName}({player.World.Id})] ");
                 sb.Append($"<{player.Stars} {player.Name} {player.AccountId}-{player.Client.Character.CharId}> traded: ");
-                sb.Append(string.Join(", ", items.Select(_ => _.Item1.DisplayId ?? _.Item1.ObjectId)));
+                sb.Append(string.Join(", ", items.Select(_ => _.Item1.DisplayId ?? _.Item1.ObjectId))); // todo fix
                 sb.Append($" to <{tradeTarget.Stars} {tradeTarget.Name} {tradeTarget.AccountId}-{tradeTarget.Client.Character.CharId}>");
                 StaticLogger.Instance.Info(sb.ToString());
             }

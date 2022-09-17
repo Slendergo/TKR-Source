@@ -27014,6 +27014,8 @@
     <Defense>60</Defense>
     <StasisImmune />
     <StunImmune />
+    <SlowImmune />
+    <DazedImmune />
     <ParalyzeImmune />
     <XpMult>3</XpMult>
     <Projectile id="0">
@@ -27044,30 +27046,33 @@
     </Projectile>
     <Projectile id="3">
       <ObjectId>Projectile 3 AB</ObjectId>
-      <Damage>90</Damage>
+      <Damage>290</Damage>
       <Size>150</Size>
       <Speed>90</Speed>
       <LifetimeMS>5000</LifetimeMS>
     </Projectile>
     <Projectile id="4">
       <ObjectId>ASM Big Shot 1</ObjectId>
-      <Damage>90</Damage>
+      <Damage>190</Damage>
       <Size>150</Size>
       <Speed>75</Speed>
+      <MultiHit />
       <LifetimeMS>5000</LifetimeMS>
     </Projectile>
     <Projectile id="5">
       <ObjectId>ASM Big Shot</ObjectId>
-      <Damage>90</Damage>
+      <Damage>290</Damage>
       <Size>150</Size>
       <Speed>45</Speed>
+      <MultiHit />
       <LifetimeMS>5000</LifetimeMS>
     </Projectile>
     <Projectile id="6">
       <ObjectId>ASM Big Shot 1</ObjectId>
-      <Damage>90</Damage>
+      <Damage>190</Damage>
       <Size>150</Size>
       <Speed>75</Speed>
+      <MultiHit />
       <LifetimeMS>5000</LifetimeMS>
     </Projectile>
   </Object>
@@ -27086,9 +27091,10 @@
     <Size>130</Size>
     <MaxHitPoints>540000</MaxHitPoints>
     <Defense>60</Defense>
-    <SlowImmune />
     <StasisImmune />
     <StunImmune />
+    <SlowImmune />
+    <DazedImmune />
     <ParalyzeImmune />
     <XpMult>3</XpMult>
     <Projectile id="0">
@@ -27155,9 +27161,10 @@
     <Size>110</Size>
     <MaxHitPoints>40000</MaxHitPoints>
     <Defense>60</Defense>
-    <SlowImmune />
     <StasisImmune />
     <StunImmune />
+    <SlowImmune />
+    <DazedImmune />
     <ParalyzeImmune />
     <XpMult>0</XpMult>
     <Projectile id="0">
@@ -27186,10 +27193,13 @@
     <Defense>44</Defense>
     <StasisImmune />
     <StunImmune />
+    <SlowImmune />
+    <DazedImmune />
+    <ParalyzeImmune />
     <XpMult>1</XpMult>
     <Projectile id="0">
       <ObjectId>ASM Big Shot 1</ObjectId>
-      <Damage>275</Damage>
+      <Damage>215</Damage>
       <Size>150</Size>
       <Speed>90</Speed>
       <LifetimeMS>3000</LifetimeMS>
@@ -27258,11 +27268,14 @@
     <Defense>42</Defense>
     <StasisImmune />
     <StunImmune />
+    <SlowImmune />
+    <DazedImmune />
+    <ParalyzeImmune />
     <XpMult>1</XpMult>
     <Projectile id="0">
       <ObjectId>Projectile 0 FT</ObjectId>
-      <MinDamage>60</MinDamage>
-      <MaxDamage>130</MaxDamage>
+      <MinDamage>110</MinDamage>
+      <MaxDamage>150</MaxDamage>
       <Size>150</Size>
       <Speed>100</Speed>
       <Wavy />
@@ -27524,6 +27537,7 @@
     <Defense>41</Defense>
     <StasisImmune />
     <StunImmune />
+    <SlowImmune />
     <XpMult>1</XpMult>
     <Projectile id="0">
       <ObjectId>ASM Big Shot</ObjectId>
@@ -27619,6 +27633,7 @@
     <Defense>42</Defense>
     <StasisImmune />
     <StunImmune />
+    <SlowImmune />
     <XpMult>1</XpMult>
     <Projectile id="0">
       <ObjectId>Projectile 0 CSS2</ObjectId>
@@ -27721,6 +27736,9 @@
     <HitSound>monster/slimes_death</HitSound>
     <DeathSound>monster/flying_brain_death</DeathSound>
     <Size>250</Size>
+    <StasisImmune />
+    <StunImmune />
+    <SlowImmune />
     <ShadowSize>0</ShadowSize>
     <MaxHitPoints>1000</MaxHitPoints>
     <Defense>10</Defense>
@@ -27762,6 +27780,9 @@
     <HitSound>monster/slimes_death</HitSound>
     <DeathSound>monster/flying_brain_death</DeathSound>
     <Size>250</Size>
+    <StasisImmune />
+    <StunImmune />
+    <SlowImmune />
     <ShadowSize>0</ShadowSize>
     <MaxHitPoints>1000</MaxHitPoints>
     <Defense>10</Defense>
@@ -27803,6 +27824,9 @@
     <HitSound>monster/slimes_death</HitSound>
     <DeathSound>monster/flying_brain_death</DeathSound>
     <Size>250</Size>
+    <StasisImmune />
+    <StunImmune />
+    <SlowImmune />
     <ShadowSize>0</ShadowSize>
     <MaxHitPoints>1000</MaxHitPoints>
     <Defense>10</Defense>
@@ -27844,6 +27868,9 @@
     <HitSound>monster/slimes_death</HitSound>
     <DeathSound>monster/flying_brain_death</DeathSound>
     <Size>250</Size>
+    <StasisImmune />
+    <StunImmune />
+    <SlowImmune />
     <ShadowSize>0</ShadowSize>
     <MaxHitPoints>1000</MaxHitPoints>
     <Defense>10</Defense>
@@ -27885,6 +27912,9 @@
     <HitSound>monster/slimes_death</HitSound>
     <DeathSound>monster/flying_brain_death</DeathSound>
     <Size>250</Size>
+    <StasisImmune />
+    <StunImmune />
+    <SlowImmune />
     <ShadowSize>0</ShadowSize>
     <MaxHitPoints>1000</MaxHitPoints>
     <Defense>10</Defense>
@@ -27926,6 +27956,9 @@
     <HitSound>monster/slimes_death</HitSound>
     <DeathSound>monster/flying_brain_death</DeathSound>
     <Size>250</Size>
+    <StasisImmune />
+    <StunImmune />
+    <SlowImmune />
     <ShadowSize>0</ShadowSize>
     <MaxHitPoints>1000</MaxHitPoints>
     <Defense>10</Defense>
@@ -27967,6 +28000,9 @@
     <HitSound>monster/slimes_death</HitSound>
     <DeathSound>monster/flying_brain_death</DeathSound>
     <Size>250</Size>
+    <StasisImmune />
+    <StunImmune />
+    <SlowImmune />
     <ShadowSize>0</ShadowSize>
     <MaxHitPoints>1000</MaxHitPoints>
     <Defense>10</Defense>
@@ -28008,6 +28044,9 @@
     <HitSound>monster/slimes_death</HitSound>
     <DeathSound>monster/flying_brain_death</DeathSound>
     <Size>250</Size>
+    <StasisImmune />
+    <StunImmune />
+    <SlowImmune />
     <ShadowSize>0</ShadowSize>
     <MaxHitPoints>1000</MaxHitPoints>
     <Defense>10</Defense>
@@ -56148,7 +56187,7 @@
       <Speed>180</Speed>
       <MinDamage>350</MinDamage>
       <MaxDamage>490</MaxDamage>
-      <LifetimeMS>615</LifetimeMS>
+      <LifetimeMS>300</LifetimeMS>
       <ParticleTrail lifetimeMS="300">0x0089D1</ParticleTrail>
       <Amplitude>.25</Amplitude>
       <Frequency>1.75</Frequency>
@@ -62677,7 +62716,7 @@
     <FameBonus>6</FameBonus>
     <DisplayId>Mortomus' Shovel</DisplayId>
   </Object>
-  <Object type="0x4292" id="The Expanse">
+  <Object type="0x4340" id="The Expansion">
     <Class>Equipment</Class>
     <Item />
     <Insanity />

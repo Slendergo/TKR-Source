@@ -41,7 +41,6 @@ namespace wServer.logic
         {
             if (Variance == 0)
                 return CoolDown;
-
             return CoolDown + rand.Next(-Variance, Variance + 1);
         }
 

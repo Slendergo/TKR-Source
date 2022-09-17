@@ -1334,6 +1334,11 @@ namespace common.database
         public DbLoginStatus Verify(string uuid, string password, out DbAccount acc)
         {
             acc = null;
+            if (string.IsNullOrWhiteSpace(uuid))
+            {
+                Log.Warn($"Invalid UUID: {uuid}");
+                return DbLoginStatus.InvalidCredentials;
+            }
 
             //check login
             var info = new DbLoginInfo(_db, uuid);

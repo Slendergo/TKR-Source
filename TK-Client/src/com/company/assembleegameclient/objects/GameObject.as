@@ -168,6 +168,7 @@ public class GameObject extends BasicObject {
     public var dead_:Boolean = false;
     public var maxHP_:int = 200;
     public var hp_:int = 200;
+    public var rtHp_:int = 200;
     public var size_:int = 100;
     public var level_:int = -1;
     public var defense_:int = 0;
@@ -188,8 +189,8 @@ public class GameObject extends BasicObject {
     protected var portrait_:BitmapData = null;
     protected var portrait2_:BitmapData = null;
     protected var texturingCache_:Dictionary = null;
-    protected var tex1Id_:int = 0;
-    protected var tex2Id_:int = 0;
+    public var tex1Id_:int = 0;
+    public var tex2Id_:int = 0;
     protected var lastTickUpdateTime_:int = 0;
     protected var myLastTickId_:int = -1;
     protected var posAtTick_:Point;
@@ -702,7 +703,6 @@ public class GameObject extends BasicObject {
             if (go is Character && go.props_.isEnemy_) {
                 dx = x_ > go.x_ ? int(x_ - go.x_) : int(go.x_ - x_);
                 dy = y_ > go.y_ ? int(y_ - go.y_) : int(go.y_ - y_);
-                trace((go as Character).objectType_, dx, dy);
                 if (dx < size && dy < size) {
                     return false;
                 }
@@ -885,6 +885,11 @@ public class GameObject extends BasicObject {
                 _loc4_ = new CharacterStatusText(this, _loc3_, pierced ? (9437439) : (16711680), 1000);
             }
             map_.mapOverlay_.addStatusText(_loc4_);
+
+            rtHp_ -= damageAmount;
+            if(rtHp_ < 0)
+                rtHp_ = 0;
+
             //map_.mapOverlay_.addStatusText(new CharacterStatusText(this,"-" + damageAmount,pierced?9437439:16711680,1000));
         }
 
@@ -1094,9 +1099,6 @@ public class GameObject extends BasicObject {
             this.hpBarPath = new GraphicsPath(GraphicsUtil.QUAD_COMMANDS,new Vector.<Number>());
             this.hpBarBackFill = new GraphicsBitmapFill();
             this.hpBarBackPath = new GraphicsPath(GraphicsUtil.QUAD_COMMANDS,new Vector.<Number>());
-        }
-        if(this.hp_ > this.maxHP_) {
-            this.maxHP_ = this.hp_;
         }
         this.hpBarBackFill.bitmapData = TextureRedrawer.redrawSolidSquare(1118481,42,7,-1);
         this.hpBarBackPath.data.length = 0;

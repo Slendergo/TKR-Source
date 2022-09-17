@@ -8,7 +8,6 @@ namespace server.account
 {
     internal class verify : RequestHandler
     {
-        internal static ServerConfig Config;
         public override void HandleRequest(RequestContext context, NameValueCollection query)
         {
             if (Program.Config.serverInfo.requireSecret && query["secret"] != "69420")

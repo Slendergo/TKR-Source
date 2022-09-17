@@ -21,7 +21,6 @@ namespace server.@char
             }
 
             var status = _db.Verify(query["guid"], query["password"], out var acc);
-
             if (status == DbLoginStatus.OK || status == DbLoginStatus.AccountNotExists)
             {
                 if (status == DbLoginStatus.AccountNotExists)

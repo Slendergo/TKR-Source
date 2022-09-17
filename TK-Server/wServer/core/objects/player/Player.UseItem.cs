@@ -357,13 +357,10 @@ namespace wServer.core.objects
 
         private void Activate(int clientTime, TickTime time, Item item, int slot, Position target, int objId, int sellmaxed, int useType)
         {
-            if(useType == 0)
-            {
-                if (item.MpCost != 0 && TalismanAbilityLifeCost > 0.0f)
-                    HP -= (int)(Stats[0] * TalismanAbilityLifeCost);
-                else 
-                    MP -= item.MpCost;
-            }
+            if (item.MpCost != 0 && TalismanAbilityLifeCost > 0.0f)
+                HP -= (int)(Stats[0] * TalismanAbilityLifeCost);
+            else 
+                MP -= item.MpCost;
 
             var entity1 = World.GetEntity(objId);
 

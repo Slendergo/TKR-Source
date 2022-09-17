@@ -125,6 +125,12 @@ namespace server
                     return;
                 }
 
+                if(!rContext.Request.Url.LocalPath.Contains("sfx") && !rContext.Request.Url.LocalPath.Contains("music"))
+                {
+                    Log.Info($"Request \"{rContext.Request.Url.LocalPath}\" from: {rContext.Request.ClientIP()}");
+
+                }
+
                 if (rContext.Request.HttpMethod.Equals("GET"))
                 {
                     var request = rContext.Request.Url.LocalPath;
@@ -139,7 +145,7 @@ namespace server
 
                 var cr = new ContextRequest();
                 var acr = new AsyncContextRequest(cr.HandleContext);
-                acr.BeginInvoke(rContext, 4096, new AsyncCallback(cr.HandleContextCallback), null);
+                acr.BeginInvoke(rContext, short.MaxValue, new AsyncCallback(cr.HandleContextCallback), null);
             }
             catch (Exception e) { OnError(e, rContext); }
         }

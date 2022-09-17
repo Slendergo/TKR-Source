@@ -262,13 +262,13 @@ namespace wServer.networking.connection
 
             ClientPool.Push(client);
 
-            MaxConnectionsEnforcer.Release();
+            _ = MaxConnectionsEnforcer.Release();
         }
 
         public void Shutdown()
         {
             foreach (var client in GameServer.ConnectionManager.Clients)
-                client.Key?.Disconnect("Shutdown Server");
+                client.Key.Disconnect("Shutdown Server");
 
             while (EventArgsPoolAccept.Count > 0)
             {

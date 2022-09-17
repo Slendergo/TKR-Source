@@ -26,6 +26,8 @@ import flash.geom.Point;
 import flash.geom.Vector3D;
 import flash.utils.Dictionary;
 
+import kabam.rotmg.messaging.impl.GameServerConnection;
+
 public class Projectile extends BasicObject
 {
 
@@ -240,24 +242,17 @@ public class Projectile extends BasicObject
 
    override public function update(time:int, dt:int) : Boolean
    {
-      var colors:Vector.<uint> = null;
-      var player:Player = null;
-      var isPlayer:Boolean = false;
-      var isTargetAnEnemy:Boolean = false;
-      var sendMessage:Boolean = false;
-      var dmg:int = 0;
-      var dead:Boolean = false;
       var elapsed:int = time - this.startTime_;
-      if(elapsed > this.projProps_.lifetime_)
-      {
+      if(elapsed > this.projProps_.lifetime_) {
          return false;
       }
+
       var p:Point = this.staticPoint_;
       this.positionAt(elapsed,p);
-      if(!this.moveTo(p.x,p.y) || square_.tileType_ == 255)
+
+      if(!this.moveTo(p.x,p.y) || square_.tileType_ == 0xFF)
       {
-         if(this.damagesPlayers_)
-         {
+         if(this.damagesPlayers_) {
             map_.gs_.gsc_.squareHit(time,this.bulletId_,this.ownerId_);
          }
          else if(square_.obj_ != null)
@@ -275,10 +270,10 @@ public class Projectile extends BasicObject
          }
          return false;
       }
+
       if(square_.obj_ != null && (!square_.obj_.props_.isEnemy_ || !this.damagesEnemies_) && (square_.obj_.props_.enemyOccupySquare_ || !this.projProps_.passesCover_ && square_.obj_.props_.occupySquare_))
       {
-         if(this.damagesPlayers_)
-         {
+         if(this.damagesPlayers_) {
             map_.gs_.gsc_.otherHit(time,this.bulletId_,this.ownerId_,square_.obj_.objectId_);
          }
          else
@@ -296,17 +291,18 @@ public class Projectile extends BasicObject
          }
          return false;
       }
+
       var target:GameObject = this.getHit(p.x,p.y);
       if(target != null)
       {
-         player = map_.player_;
-         isPlayer = player != null;
-         isTargetAnEnemy = target.props_.isEnemy_;
-         sendMessage = isPlayer && !player.isPaused() && !player.isHidden() && (this.damagesPlayers_ || isTargetAnEnemy && this.ownerId_ == player.objectId_);
+         var player:Player = map_.player_;
+         var isPlayer:Boolean = player != null;
+         var isTargetAnEnemy:Boolean = target.props_.isEnemy_;
+         var sendMessage:Boolean = (isPlayer && this.damagesPlayers_) || (isTargetAnEnemy && this.ownerId_ == player.objectId_);
          if(sendMessage)
          {
-            dmg = GameObject.damageWithDefense(this.damage_,target.defense_,this.projProps_.armorPiercing_,target.condition_[0]);
-            dead = false;
+            var dmg:int = GameObject.damageWithDefense(this.damage_,target.defense_,this.projProps_.armorPiercing_,target.condition_[0]);
+            var dead:Boolean = false;
             if(target.hp_ <= dmg)
             {
                dead = true;
@@ -315,15 +311,16 @@ public class Projectile extends BasicObject
                   doneAction(map_.gs_,Tutorial.KILL_ACTION);
                }
             }
+
             if(target == player)
             {
                map_.gs_.gsc_.playerHit(this.bulletId_,this.ownerId_);
-               target.damage(this.containerType_,dmg,this.projProps_.effects_,false,this, player.shotsPierce_);
+               target.damage(this.containerType_, dmg, this.projProps_.effects_,false, this, player.shotsPierce_);
             }
             else if(target.props_.isEnemy_)
             {
-               map_.gs_.gsc_.enemyHit(time, this.bulletId_ ,target.objectId_, dead);
-               target.damage(this.containerType_,dmg,this.projProps_.effects_,dead,this, false);
+               map_.gs_.gsc_.enemyHit(time, this.bulletId_, target.objectId_, dead);
+               target.damage(this.containerType_, dmg, this.projProps_.effects_, dead, this, false);
                if(target != null && (target.props_.isQuest_ || target.props_.isChest_))
                {
                   if(isNaN(Parameters.DamageCounter[target.objectId_]))
@@ -340,6 +337,7 @@ public class Projectile extends BasicObject
                map_.gs_.gsc_.otherHit(time,this.bulletId_,this.ownerId_,target.objectId_);
             }
          }
+
          if(this.projProps_.multiHit_)
          {
             this.multiHitDict_[target] = true;
@@ -361,46 +359,31 @@ public class Projectile extends BasicObject
       var minDist:Number = Number.MAX_VALUE;
       var minGO:GameObject = null;
 
-      if (damagesEnemies_)
+      var hittables:Vector.<GameObject> = damagesEnemies_ ? map_.hitTEnemies_ : map_.hitTPlayers_;
+      for each(go in hittables)
       {
-         for each(go in map_.hitTEnemies_)
-         {
-            xDiff = go.x_ > pX?Number(go.x_ - pX):Number(pX - go.x_);
-            yDiff = go.y_ > pY?Number(go.y_ - pY):Number(pY - go.y_);
-            if(!(xDiff > go.radius_ || yDiff > go.radius_))
-            {
-               if(!(this.projProps_.multiHit_ && this.multiHitDict_[go] != null))
-               {
-                  dist = Math.sqrt(xDiff * xDiff + yDiff * yDiff);
-                  if(dist < minDist)
-                  {
-                     minDist = dist;
-                     minGO = go;
-                  }
-               }
-            }
+         if (this.projProps_.multiHit_ && this.multiHitDict_[go] != null) {
+            continue;
          }
-      }
-      else if (damagesPlayers_)
-      {
-         for each(go in map_.hitTPlayers_)
-         {
+
+         if(go.isInvincible() || go.dead_ || go.isPaused() || go.isHidden() || go.isStasis()) {
+            continue;
+         }
+
+         if ((this.damagesEnemies_ && go.props_.isEnemy_) || (this.damagesPlayers_ && go.props_.isPlayer_)) {
             xDiff = go.x_ > pX?Number(go.x_ - pX):Number(pX - go.x_);
             yDiff = go.y_ > pY?Number(go.y_ - pY):Number(pY - go.y_);
             if(!(xDiff > go.radius_ || yDiff > go.radius_))
             {
-               if(!(this.projProps_.multiHit_ && this.multiHitDict_[go] != null))
+               if(go == map_.player_) {
+                  return go;
+               }
+
+               dist = Math.sqrt(xDiff * xDiff + yDiff * yDiff);
+               if(dist < minDist)
                {
-                  if(go == map_.player_)
-                  {
-                     return go;
-                  }
-                  dist = Math.sqrt(xDiff * xDiff + yDiff * yDiff);
-                  if(dist < minDist)
-                  {
-                     minDist = dist;
-                     minGO = go;
-                  }
+                  minDist = dist;
+                  minGO = go;
                }
             }
          }

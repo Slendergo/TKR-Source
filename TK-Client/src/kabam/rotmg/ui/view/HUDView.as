@@ -77,7 +77,6 @@ package kabam.rotmg.ui.view
          this.tabStrip = new TabStripView(186,153);
          this.characterDetails = new CharacterDetailsView();
          this.statMeters = new StatMetersView();
-
          var bitmapData:BitmapData = AssetLibrary.getImageFromSet("lofiInterfaceBig",6);
          this.nexusIndicatorBitmap_ = new Bitmap(TextureRedrawer.redraw(bitmapData, 320 / bitmapData.width, true, 0));
          this.nexusIndicatorBitmap_.transform.colorTransform = MoreColorUtil.redCT;

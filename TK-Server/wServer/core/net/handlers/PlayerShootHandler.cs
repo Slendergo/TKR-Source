@@ -67,6 +67,7 @@ namespace wServer.core.net.handlers
                 if (newBulletId != clientBulletId)
                 {
                     client.Disconnect("bullet id desync");
+                    System.Console.WriteLine($"DESYNC PROJECTILES: {player.Name} {player.ObjectDesc.DisplayId ?? player.ObjectDesc.ObjectId}");
                     return;
                 }
 

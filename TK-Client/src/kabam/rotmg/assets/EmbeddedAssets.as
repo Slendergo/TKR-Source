@@ -159,7 +159,7 @@ package kabam.rotmg.assets
       public static var LostHallsObjects16x16Embed_:Class = EmbeddedAssets_LostHallsObjects16x16Embed_;
       public static var Engine32x32Embed:Class = EmbeddedAssets_Engine32x32Embed_;
       public static var tieredItems:Class = EmbeddedAssets_TieredItems;
-      
+
       public static var models_:Object = {
          "Monster Tank1":new monsterTank1Embed_(),
          "Monster Tank2":new monsterTank2Embed_(),

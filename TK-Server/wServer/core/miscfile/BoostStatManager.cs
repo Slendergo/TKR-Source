@@ -34,56 +34,6 @@ namespace wServer.core
 
         public int this[int index] => _boost[index];
 
-        public void CheckItems()
-        {
-            if (_player == null || _player.Client == null || _player.Client.Account == null)
-                return;
-
-            for (var i = 0; i < 20; i++)
-            {
-                if (_player.Inventory[i] == null)
-                    continue;
-                if (_player.Inventory[i].ObjectId == "Cerberus's Left Claw" && _player.Inventory[i] != null)
-                {
-                    try
-                    {
-                        var surrounding = _player.World.EnemiesCollision.HitTest(_player.X, _player.Y, 10).Count();
-                        var maxBoost = 20;
-                        var countBoost = 0;
-                        for (int j = 0; j < surrounding; j++)
-                            if (countBoost <= maxBoost)
-                            {
-                                IncrementBoost(StatDataType.Attack, 1);
-                                countBoost++;
-                            }
-                    }
-                    catch (NullReferenceException e)
-                    {
-                        StaticLogger.Instance.Info(e);
-                        continue;
-                    }
-                }
-                if (_player.Inventory[i].ObjectId == "Cerberus's Right Claw" && _player.Inventory[i] != null)
-                {
-                    var acc = _player.GameServer.Database.GetAccount(_player.AccountId);
-                    var enemiesKilled = acc.EnemiesKilled;
-                    var countHPBoost = 0;
-                    for (int k = 0; k < enemiesKilled; k++)
-                    {
-                        if (k % 1000 == 0 && countHPBoost<=10) // every 1500 of the enemies
-                        {
-                            IncrementBoost(StatDataType.MaximumHP, 50);
-                            countHPBoost++;
-                        }
-                    }
-                    
-                }
-                foreach (var b in _player.Inventory[i].StatsBoostOnHandle)
-                    IncrementBoost((StatDataType)b.Key, b.Value);
-                
-            }
-        }
-
         public void CheckItemsNoStack() //TODO
         {
             if (_player == null || _player.Client == null || _player.Client.Account == null)
@@ -107,12 +57,11 @@ namespace wServer.core
             for (var i = 0; i < _boost.Length; i++)
                 _boost[i] = 0;
 
+            ApplyTalismanBonus();
             ApplyEquipBonus();
             ApplyActivateBonus();
-            //CheckItems();
             CheckItemsNoStack();
             IncrementStatBoost();
-            ApplyTalismanBonus();
 
             for (var i = 0; i < _boost.Length; i++)
                 _boostSV[i].SetValue(_boost[i]);

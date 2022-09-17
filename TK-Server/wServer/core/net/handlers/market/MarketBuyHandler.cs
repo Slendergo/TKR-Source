@@ -7,6 +7,7 @@ using System.Net;
 using wServer.networking;
 using wServer.networking.packets;
 using wServer.networking.packets.outgoing.market;
+using wServer.utils;
 
 namespace wServer.core.net.handlers.market
 {
@@ -90,6 +91,9 @@ namespace wServer.core.net.handlers.market
                 client.Player?.SendError("Not enough Fame.");
                 return;
             }
+
+            var player = client.Player;
+            StaticLogger.Instance.Warn($"<{player.Name} {player.AccountId}> brought: {item.ObjectId} on market for: {marketData.Price} from: <{sellerAcc.Name} {sellerAcc.AccountId}>");
 
             /* Add fame to the Seller */
             AddFameToSeller(client, sellerAcc, marketData.Price, item.ObjectId);

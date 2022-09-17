@@ -136,7 +136,6 @@ import kabam.rotmg.util.components.LegacyBuyButton;
          }
          this.owner = _owner;
          var title:String = this.owner.soldObjectName();
-         trace(this.gs_.map.player_);
          if(this.owner.soldObjectName() == "Vault Chest")
          {
             this.owner.price_ = calculatePrice(this.gs_.map.player_);

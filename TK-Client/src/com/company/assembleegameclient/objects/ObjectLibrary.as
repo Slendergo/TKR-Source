@@ -129,7 +129,7 @@ trace ();
                   typeToAnimationsData_[objectType] = new AnimationsData(objectXML);
                }
             } catch (e:Error) {
-               trace("Failure to add XML Object: " + id)
+               trace("Failure to add XML Object: " + id + " " + e.getStackTrace())
             }
          }
 

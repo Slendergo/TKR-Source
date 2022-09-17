@@ -3,13 +3,11 @@ import com.company.assembleegameclient.objects.GameObject;
 import com.company.assembleegameclient.util.TextureRedrawer;
 import com.company.assembleegameclient.util.redrawers.GlowRedrawer;
 import com.company.util.AssetLibrary;
-import com.company.util.MoreColorUtil;
 
 import flash.display.Bitmap;
 import flash.display.BitmapData;
 import flash.display.Sprite;
 import flash.filters.DropShadowFilter;
-import flash.geom.ColorTransform;
 import flash.utils.getTimer;
 
 public class BossHealthBar extends Sprite {
@@ -78,13 +76,6 @@ public class BossHealthBar extends Sprite {
             mask_.width = background.width;
             return;
         }
-
-        if(go_.isInvulnerable()) {
-            background.transform.colorTransform = MoreColorUtil.blueCT;
-        }else{
-            background.transform.colorTransform = null;
-        }
-
         mask_.width = (go_.rtHp_ / go_.maxHP_) * background.width;
     }
 }

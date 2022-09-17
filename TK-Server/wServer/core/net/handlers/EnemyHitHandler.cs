@@ -36,6 +36,9 @@ namespace wServer.core.net.handlers
 
             prj?.ForceHit(entity, tickTime);
 
+            if(killed && (entity as Enemy).HP > 0)
+                player.PlayerUpdate.ForceAdd(entity);
+
             var totalLife = 0.0;
             var totalMana = 0.0;
             foreach (var type in player.ActiveTalismans)

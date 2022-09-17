@@ -43,6 +43,7 @@ namespace wServer.core.objects
             return ret;
         }
 
+
         private readonly Dictionary<Entity, Dictionary<StatDataType, object>> StatsUpdates = new Dictionary<Entity, Dictionary<StatDataType, object>>();
 
         public bool UpdateTiles { get; set; }
@@ -153,10 +154,21 @@ namespace wServer.core.objects
                 _ = NewStaticObjects.RemoveWhere(_ => staticDrops.Contains(_.ObjId));
         }
 
+        private List<Entity> ForceAdds = new List<Entity>();
+        
+        public void ForceAdd(Entity entity)
+        {
+            ForceAdds.Add(entity);
+        }
+
         public void GetNewObjects(Update update)
         {
             var x = Player.X;
             var y = Player.Y;
+
+            foreach(var forceAdd in ForceAdds)
+                update.NewObjs.Add(forceAdd.ToDefinition(false));
+            ForceAdds.Clear();
 
             foreach (var point in ActiveTiles) //static objects
             {

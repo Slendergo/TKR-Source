@@ -125,6 +125,7 @@ public class AssetLoader
       AssetLibrary.addImageSet("buffedBunnyObjects16x16", new EmbeddedAssets.buffedBunnyObjects16x16Embed_().bitmapData, 16, 16);
       AssetLibrary.addImageSet("SakuraEnvironment16x16", new EmbeddedAssets.SakuraEnvironment16x16Embed_().bitmapData, 16, 16);
       AssetLibrary.addImageSet("SakuraEnvironment8x8", new EmbeddedAssets.SakuraEnvironment8x8Embed_().bitmapData, 8, 8);
+      AssetLibrary.addImageSet("Engine32x32", new EmbeddedAssets.Engine32x32Embed().bitmapData, 32, 32);
       AssetLibrary.addImageSet("BossBar", new BossBar().bitmapData, 224, 17);
    }
 

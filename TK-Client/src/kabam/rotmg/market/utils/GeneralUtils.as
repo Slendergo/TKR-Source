@@ -10,7 +10,7 @@ public class GeneralUtils
     /* Add restricted values to this */
     public static function isBanned(itemType:int) : Boolean
     {
-        return ObjectLibrary.isSoulbound(itemType)
+        return ObjectLibrary.isSoulbound(itemType);
     }
 
     /* Draw the fame icon */

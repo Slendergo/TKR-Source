@@ -141,10 +141,12 @@ public class MemMarketBuyTab extends MemMarketTab
         var index:int = 0;
         if (first)
         {
-            for each (var w:String in ObjectLibrary.xmlLibrary_)
+            for each (var w:String in ObjectLibrary.typeToIdItems_)
             {
-                if (GeneralUtils.isBanned(ObjectLibrary.idToTypeItems_[w]) || ObjectLibrary.idToTypeItems_[w] == null) /* Skip on banned items */
+                /* Skip on banned items */
+                if (GeneralUtils.isBanned(ObjectLibrary.idToTypeItems_[w]) || ObjectLibrary.idToTypeItems_[w] == null){
                     continue;
+                }
 
                 var preloaded:MemMarketItem = new MemMarketItem(this.gameSprite_, SEARCH_ITEM_SIZE, SEARCH_ITEM_SIZE, 80, ObjectLibrary.idToTypeItems_[w], null);
                 preloaded.x = SEARCH_ITEM_SIZE * int(index % 5) + SEARCH_X_OFFSET;

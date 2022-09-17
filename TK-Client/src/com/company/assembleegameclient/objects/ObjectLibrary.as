@@ -72,72 +72,75 @@ public class ObjectLibrary
          super();
       }
 
-      public static function parseFromXML(xml:XML) : void
-      {
-         var objectXML:XML = null;
-         var id:String = null;
-         var displayId:String = null;
-         var objectType:int = 0;
-         var found:Boolean = false;
-         var i:int = 0;
-         for each(objectXML in xml.Object)
-         {
-            try {
-               id = String(objectXML.@id);
-               displayId = id;
-               if (objectXML.hasOwnProperty("DisplayId")) {
-                  displayId = objectXML.DisplayId;
-               }
-               if (objectXML.hasOwnProperty("Group")) {
-                  if (objectXML.Group == "Hexable") {
-                     hexTransforms_.push(objectXML);
+      public static function parseFromXML(xml:XML) : void {
+          var objectXML:XML = null;
+          var id:String = null;
+          var displayId:String = null;
+          var objectType:int = 0;
+          var found:Boolean = false;
+          var i:int = 0;
+          for each(objectXML in xml.Object) {
+              try {
+                  id = String(objectXML.@id);
+                  displayId = id;
+                  if (objectXML.hasOwnProperty("DisplayId")) {
+                      displayId = objectXML.DisplayId;
                   }
-               }
-               objectType = int(objectXML.@type);
-               propsLibrary_[objectType] = new ObjectProperties(objectXML);
-               xmlLibrary_[objectType] = objectXML;
-               idToType_[id] = objectType;
-               typeToDisplayId_[objectType] = displayId;
-
-               if (String(objectXML.Class) == "Equipment") {
-                  typeToIdItems_[objectType] = id.toLowerCase(); /* Saves us the power to do this later */
-                  idToTypeItems_[id.toLowerCase()] = objectType;
-               }
-
-               if (String(objectXML.Class) == "Player") {
-                  playerClassAbbr_[objectType] = String(objectXML.@id).substr(0, 2);
-                  found = false;
-                  for (i = 0; i < playerChars_.length; i++) {
-                     if (int(playerChars_[i].@type) == objectType) {
-                        playerChars_[i] = objectXML;
-                        found = true;
-                     }
+                  if (objectXML.hasOwnProperty("Group")) {
+                      if (objectXML.Group == "Hexable") {
+                          hexTransforms_.push(objectXML);
+                      }
                   }
-                  if (!found) {
-                     playerChars_.push(objectXML);
+                  objectType = int(objectXML.@type);
+                  propsLibrary_[objectType] = new ObjectProperties(objectXML);
+                  xmlLibrary_[objectType] = objectXML;
+                  idToType_[id] = objectType;
+                  typeToDisplayId_[objectType] = displayId;
+
+                  if (String(objectXML.Class) == "Equipment") {
+                      typeToIdItems_[objectType] = id.toLowerCase(); /* Saves us the power to do this later */
+                      idToTypeItems_[id.toLowerCase()] = objectType;
+                      typeToIdItems_.sort();
                   }
-               }
 
-               if(id.indexOf("Engine") != -1){
-trace ();
-               }
-               typeToTextureData_[objectType] = new TextureData(objectXML);
-               if (objectXML.hasOwnProperty("Top")) {
-                  typeToTopTextureData_[objectType] = new TextureData(XML(objectXML.Top));
-               }
-               if (objectXML.hasOwnProperty("Animation")) {
-                  typeToAnimationsData_[objectType] = new AnimationsData(objectXML);
-               }
-            } catch (e:Error) {
-               trace("Failure to add XML Object: " + id + " " + e.getStackTrace())
-            }
-         }
+                  if (String(objectXML.Class) == "Player") {
+                      playerClassAbbr_[objectType] = String(objectXML.@id).substr(0, 2);
+                      found = false;
+                      for (i = 0; i < playerChars_.length; i++) {
+                          if (int(playerChars_[i].@type) == objectType) {
+                              playerChars_[i] = objectXML;
+                              found = true;
+                          }
+                      }
+                      if (!found) {
+                          playerChars_.push(objectXML);
+                      }
+                  }
 
-
-
+                  typeToTextureData_[objectType] = new TextureData(objectXML);
+                  if (objectXML.hasOwnProperty("Top")) {
+                      typeToTopTextureData_[objectType] = new TextureData(XML(objectXML.Top));
+                  }
+                  if (objectXML.hasOwnProperty("Animation")) {
+                      typeToAnimationsData_[objectType] = new AnimationsData(objectXML);
+                  }
+              } catch (e:Error) {
+                  trace("Failure to add XML Object: " + id + " " + e.getStackTrace())
+              }
+          }
       }
 
-      public static function getIdFromType(type:int) : String
+        public static function sortDictionaryByValue(d:Dictionary):Array
+        {
+           var a:Array = new Array();
+           for (var dictionaryKey:Object in d)
+           {
+               a.push({key:dictionaryKey,value:d[dictionaryKey]});
+           }
+           a.sortOn("value",[Array.NUMERIC|Array.DESCENDING]);
+           return a;
+        }
+       public static function getIdFromType(type:int) : String
       {
          var objectXML:XML = xmlLibrary_[type];
          if(objectXML == null)

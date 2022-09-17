@@ -19,14 +19,16 @@ namespace wServer.core.net.handlers
             var killed = rdr.ReadBoolean();
             
             var player = client.Player;
-            
-            var entity = player.World.GetEntity(targetId);
-
-            if (entity?.World == null || entity.HasConditionEffect(ConditionEffectIndex.Invulnerable))
+            if(player.World == null)
                 return;
 
             if (player.HasConditionEffect(ConditionEffectIndex.Hidden))
                 return;
+
+            var entity = player.World.GetEntity(targetId);
+            if (entity == null || entity.HasConditionEffect(ConditionEffectIndex.Invulnerable))
+                return;
+
 
             var prj = player.World.GetProjectile(player.Id, bulletId);
             if (prj == null)

@@ -1490,9 +1490,6 @@ namespace wServer.logic
                     ),
                 new State("explode",
                     new Shoot(4, 12, projectileIndex: 0, coolDown: 600),
-                    new TimedTransition(250, "suicide")
-                    ),
-                new State("suicide",
                     new Suicide()
                     )
                 )

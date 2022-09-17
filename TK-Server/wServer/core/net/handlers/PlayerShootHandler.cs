@@ -77,7 +77,7 @@ namespace wServer.core.net.handlers
                 player.World.BroadcastIfVisibleExclude(new AllyShoot()
                 {
                     OwnerId = player.Id,
-                    Angle = prj.Angle,
+                    Angle = angle,
                     ContainerType = item.ObjectType,
                     BulletId = prj.ProjectileId
                 }, player, player);

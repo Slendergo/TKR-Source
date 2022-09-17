@@ -64,7 +64,7 @@ namespace wServer.logic
                     ),
                 new State("Shoot",
                     new Taunt("EXPLODE!"),
-                    new TimedTransition(1000, "Shoot2")
+                    new TimedTransition(0, "Shoot2")
                     ),
                 new State("Shoot2",
                     new Shoot(20, 8, projectileIndex: 0, coolDown: 5000),

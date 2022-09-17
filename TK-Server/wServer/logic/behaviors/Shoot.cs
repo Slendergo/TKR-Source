@@ -52,98 +52,99 @@ namespace wServer.logic.behaviors
 
             Status = CycleStatus.NotStarted;
 
-            if (cool <= 0)
-            {
-                if (host.HasConditionEffect(ConditionEffectIndex.Stunned))
-                {
-                    state = 0;
-                    return;
-                }
-
-                var count = _count;
-
-                if (host.HasConditionEffect(ConditionEffectIndex.Dazed))
-                    count = (int)Math.Ceiling(_count / 2.0);
-
-                var player = host.AttackTarget ?? (_shootLowHp ? host.GetLowestHpEntity(_radius, null, _seeInvis) : host.GetNearestEntity(_radius, null, _seeInvis));
-
-                if (player != null || _defaultAngle != null || _fixedAngle != null)
-                {
-                    var desc = host.ObjectDesc.Projectiles[_projectileIndex];
-
-                    float a;
-
-                    if (_fixedAngle != null)
-                        a = (float)_fixedAngle;
-                    else if (player != null)
-                    {
-                        if (_predictive != 0 && _predictive > Random.NextDouble())
-                            a = Predict(host, player, desc);
-                        else
-                            a = (float)Math.Atan2(player.Y - host.Y, player.X - host.X);
-                    }
-                    else if (_defaultAngle != null)
-                        a = (float)_defaultAngle;
-                    else
-                        a = 0;
-
-                    a += _angleOffset + ((_rotateAngle != null) ? (float)_rotateAngle * _rotateCount : 0);
-
-                    _rotateCount++;
-
-                    var dmg = (double)Random.Next(desc.MinDamage, desc.MaxDamage);
-
-                    if (host.HasConditionEffect(ConditionEffectIndex.Weak))
-                        dmg /= 2;
-
-                    var startAngle = a - _shootAngle * (count - 1) / 2;
-
-                    int prjId = 0;
-
-                    var prjPos = new Position() { X = host.X, Y = host.Y };
-                    var prjs = new Projectile[count];
-
-                    for (var i = 0; i < count; i++)
-                    {
-                        if (host == null || host.World == null)
-                            return;
-
-                        var prj = host.CreateProjectile(desc, host.ObjectType, (int)dmg, time.TotalElapsedMs, prjPos, startAngle + _shootAngle * i);
-
-                        host.World.AddProjectile(prj);
-
-                        if (i == 0)
-                            prjId = prj.ProjectileId;
-
-                        prjs[i] = prj;
-                    }
-
-                    var pkt = new EnemyShoot()
-                    {
-                        BulletId = prjId,
-                        OwnerId = host.Id,
-                        StartingPos = prjPos,
-                        Angle = startAngle,
-                        Damage = (short)dmg,
-                        BulletType = (byte)desc.BulletType,
-                        AngleInc = _shootAngle,
-                        NumShots = (byte)count,
-                    };
-
-                    // changed to this
-                    host.World.BroadcastIfVisible(pkt, host);
-                }
-
-                cool = _coolDown.Next(Random);
-
-                Status = CycleStatus.Completed;
-            }
-            else
+            if (cool > 0)
             {
                 cool -= time.ElapsedMsDelta;
-
                 Status = CycleStatus.InProgress;
+                state = cool;
+                return;
             }
+
+            if (host.HasConditionEffect(ConditionEffectIndex.Stunned))
+            {
+                cool = _coolDown.Next(Random);
+                Status = CycleStatus.Completed;
+                state = cool;
+                return;
+            }
+
+            var count = _count;
+
+            if (host.HasConditionEffect(ConditionEffectIndex.Dazed))
+                count = (int)Math.Ceiling(_count / 2.0);
+
+            var player = host.AttackTarget ?? (_shootLowHp ? host.GetLowestHpEntity(_radius, null, _seeInvis) : host.GetNearestEntity(_radius, null, _seeInvis));
+
+            if (player != null || _defaultAngle != null || _fixedAngle != null)
+            {
+                var desc = host.ObjectDesc.Projectiles[_projectileIndex];
+
+                float a;
+
+                if (_fixedAngle != null)
+                    a = (float)_fixedAngle;
+                else if (player != null)
+                {
+                    if (_predictive != 0 && _predictive > Random.NextDouble())
+                        a = Predict(host, player, desc);
+                    else
+                        a = (float)Math.Atan2(player.Y - host.Y, player.X - host.X);
+                }
+                else if (_defaultAngle != null)
+                    a = (float)_defaultAngle;
+                else
+                    a = 0;
+
+                a += _angleOffset + ((_rotateAngle != null) ? (float)_rotateAngle * _rotateCount : 0);
+
+                _rotateCount++;
+
+                var dmg = (double)Random.Next(desc.MinDamage, desc.MaxDamage);
+
+                if (host.HasConditionEffect(ConditionEffectIndex.Weak))
+                    dmg /= 2;
+
+                var startAngle = a - _shootAngle * (count - 1) / 2;
+
+                int prjId = 0;
+
+                var prjPos = new Position() { X = host.X, Y = host.Y };
+                var prjs = new Projectile[count];
+
+                for (var i = 0; i < count; i++)
+                {
+                    if (host == null || host.World == null)
+                        return;
+
+                    var prj = host.CreateProjectile(desc, host.ObjectType, (int)dmg, time.TotalElapsedMs, prjPos, startAngle + _shootAngle * i);
+
+                    host.World.AddProjectile(prj);
+
+                    if (i == 0)
+                        prjId = prj.ProjectileId;
+
+                    prjs[i] = prj;
+                }
+
+                var pkt = new EnemyShoot()
+                {
+                    BulletId = prjId,
+                    OwnerId = host.Id,
+                    StartingPos = prjPos,
+                    Angle = startAngle,
+                    Damage = (short)dmg,
+                    BulletType = (byte)desc.BulletType,
+                    AngleInc = _shootAngle,
+                    NumShots = (byte)count,
+                };
+
+                // changed to this
+                host.World.BroadcastIfVisible(pkt, host);
+            }
+
+            cool = _coolDown.Next(Random);
+
+            Status = CycleStatus.Completed;
 
             state = cool;
         }

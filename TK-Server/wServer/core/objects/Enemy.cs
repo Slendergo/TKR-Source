@@ -199,9 +199,6 @@ namespace wServer.core.objects
             if (stat)
                 return false;
 
-            if (HasConditionEffect(ConditionEffectIndex.Invincible))
-                return false;
-
             if (projectile.Host is Player && !HasConditionEffect(ConditionEffectIndex.Paused) && !HasConditionEffect(ConditionEffectIndex.Stasis))
             {
                 var player = projectile.Host as Player;
@@ -211,6 +208,9 @@ namespace wServer.core.objects
                 var dmg = StatsManager.DamageWithDefense(this, projectile.Damage, projectile.ProjDesc.ArmorPiercing, def);
                 if (!HasConditionEffect(ConditionEffectIndex.Invulnerable))
                     HP -= dmg;
+
+                if (HasConditionEffect(ConditionEffectIndex.Invincible))
+                    dmg = 0;
                 
                 for (var i = 0; i < 4; i++)
                 {

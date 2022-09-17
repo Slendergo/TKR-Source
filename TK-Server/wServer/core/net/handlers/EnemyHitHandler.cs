@@ -26,7 +26,7 @@ namespace wServer.core.net.handlers
                 return;
 
             var entity = player.World.GetEntity(targetId);
-            if (entity == null || entity.HasConditionEffect(ConditionEffectIndex.Invulnerable))
+            if (entity == null)
                 return;
 
 

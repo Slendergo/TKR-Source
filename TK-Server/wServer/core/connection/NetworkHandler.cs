@@ -256,6 +256,13 @@ namespace wServer.networking.connection
                         var payload = r.GetPacketBody();
                         if (Client.Player == null) // read it instantly if there is no player otherwise we will append it to the world instance
                         {
+                            if (id != MessageId.HELLO && id != MessageId.LOAD && id != MessageId.CREATE)
+                            {
+                                Console.WriteLine(id + " Received with null player");
+                                Client.Disconnect("Invalid State");
+                                continue;
+                            }
+
                             var handler = MessageHandlers.GetHandler(id);
                             if (handler == null)
                             {

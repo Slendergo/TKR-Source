@@ -152,7 +152,6 @@ namespace wServer.networking
                         Log.Error(msg);
                     }
                 //StopTask_ = true;
-                Player?.CleanupPlayerUpdate();
                 GameServer.ConnectionManager.Disconnect(this);
 
                 _server.Disconnect(this);
@@ -165,6 +164,7 @@ namespace wServer.networking
             Account = null;
             Character = null;
             IpAddress = null;
+            Player?.CleanupPlayerUpdate();
             Player = null;
             Random = null;
             Socket = null;

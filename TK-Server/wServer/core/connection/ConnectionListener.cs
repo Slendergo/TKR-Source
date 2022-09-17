@@ -254,7 +254,7 @@ namespace wServer.networking.connection
             {
                 var se = e as SocketException;
                 if (se == null || se.SocketErrorCode != SocketError.NotConnected)
-                    StaticLogger.Instance.Error(se);
+                    StaticLogger.Instance.Error($"{se.Message} {se.StackTrace}");
             }
 
             client.Socket.Close();
@@ -262,7 +262,16 @@ namespace wServer.networking.connection
 
             ClientPool.Push(client);
 
-            _ = MaxConnectionsEnforcer.Release();
+            try
+            {
+                MaxConnectionsEnforcer.Release();
+            }
+            catch (SemaphoreFullException e)
+            {
+                // This should happen only on server restart
+                // If it doesn't need to handle the problem somwhere else
+                StaticLogger.Instance.Error($"MaxConnectionsEnforcer.Release(): {e.StackTrace}");
+            }
         }
 
         public void Shutdown()

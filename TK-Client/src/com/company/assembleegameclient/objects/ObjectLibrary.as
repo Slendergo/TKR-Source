@@ -100,7 +100,6 @@ public class ObjectLibrary
                   if (String(objectXML.Class) == "Equipment") {
                       typeToIdItems_[objectType] = id.toLowerCase(); /* Saves us the power to do this later */
                       idToTypeItems_[id.toLowerCase()] = objectType;
-                      typeToIdItems_.sort();
                   }
 
                   if (String(objectXML.Class) == "Player") {

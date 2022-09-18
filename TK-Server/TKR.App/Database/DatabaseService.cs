@@ -1,13 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using StackExchange.Redis;
-using System;
-using System.Security.Cryptography;
+﻿using StackExchange.Redis;
 using System.Text;
 using TKR.App.Database.Models;
 
 namespace TKR.App.Database
 {
-
     public sealed class DatabaseService
     {
         private readonly ILogger<DatabaseService> _logger;

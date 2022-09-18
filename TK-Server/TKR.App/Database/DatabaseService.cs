@@ -33,7 +33,7 @@ namespace TKR.App.Database
 
         public LoginModelResult ValidateLogin(string guid, string password)
         {
-            if (string.IsNullOrWhiteSpace(guid) || string.IsNullOrWhiteSpace(password))
+            if (string.IsNullOrWhiteSpace(guid))
                 return LoginModelResult.InvalidCredentials;
 
             var model = new LoginModel(_database, guid);
@@ -45,6 +45,21 @@ namespace TKR.App.Database
                 return LoginModelResult.InvalidCredentials;
 
             return LoginModelResult.OK;
+        }
+
+        public AccountModel GetAccount(string uuid)
+        {
+            var loginModel = new LoginModel(_database, uuid);
+            if (loginModel.Exists)
+                return null;
+            var accountModel = new AccountModel(_database, loginModel.AccountId);
+            return accountModel.HasKeys ? accountModel : null;
+        }
+
+        public AccountModel GetAccount(int accountId)
+        {
+            var accountModel = new AccountModel(_database, accountId);
+            return accountModel.HasKeys ? accountModel : null;
         }
     }
 }

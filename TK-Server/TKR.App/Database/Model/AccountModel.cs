@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using StackExchange.Redis;
+using System;
 using System.Text;
 
 namespace TKR.App.Database.Models
@@ -52,7 +53,7 @@ namespace TKR.App.Database.Models
 
         public IDatabase Database { get; private set; }
 
-        public bool IsNull => Entries.Count == 0;
+        public bool HasKeys => Entries.Count != 0;
 
         protected void Init(IDatabase db, string key)
         {
@@ -208,7 +209,6 @@ namespace TKR.App.Database.Models
         public readonly RedisField<int> Credits;
         public readonly RedisField<int> Fame;
         public readonly RedisField<bool> FirstDeath;
-        public readonly RedisField<int> GuildFame;
         public readonly RedisField<int> GuildId;
         public readonly RedisField<int> GuildRank;
         public readonly RedisField<int> MaxCharSlot;
@@ -222,10 +222,17 @@ namespace TKR.App.Database.Models
 
             Init(db, $"account.{accountId}");
 
-            Name = RedisField<string>.Create(this, "name");
             UUID = RedisField<string>.Create(this, "uuid");
+            Name = RedisField<string>.Create(this, "name");
+            Credits = RedisField<int>.Create(this, "credits");
+            Fame = RedisField<int>.Create(this, "fame");
+            FirstDeath = RedisField<bool>.Create(this, "firstDeath");
+            GuildId = RedisField<int>.Create(this, "guildId");
+            GuildRank = RedisField<int>.Create(this, "guildRank");
+            MaxCharSlot = RedisField<int>.Create(this, "maxCharSlot");
+            NextCharId = RedisField<int>.Create(this, "nextCharId");
+            TotalCredits = RedisField<int>.Create(this, "totalCredits");
+            TotalFame = RedisField<int>.Create(this, "totalFame");
         }
-
-        internal string LockToken { get; set; }
     }
 }

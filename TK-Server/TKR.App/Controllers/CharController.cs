@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TKR.App.Database;
+using TKR.App.Database.Models;
 
 namespace TKR.App.Controllers
 {
@@ -45,26 +46,66 @@ namespace TKR.App.Controllers
             //else
             //    Write(context, "<Error>" + status.GetInfo() + "</Error>");
 
-            //var status = _database.ValidateLogin(guid, password);
-            //switch (status)
-            //{
-            //    case LoginModelResult.OK:
-            //        {
-            //            if(_database.GetAccount(guid, out var accountId))
-            //            {
-            //                Response.CreateXml(RespondCharacter());
-            //                return;
-            //            }
-            //            Response.CreateError("Account credentials not valid");
-            //        }
-            //        break;
-            //    case LoginModelResult.AccountNotExists:
-            //        Response.CreateXml(RespondGuest());
-            //        break;
-            //    case LoginModelResult.InvalidCredentials:
-            //        Response.CreateError("Account credentials not valid");
-            //        break;
-            //}
+            var status = _database.ValidateLogin(guid, password);
+            switch (status)
+            {
+                case LoginModelResult.OK:
+                    {
+                        var accountModel = _database.GetAccount(guid);
+                        if (accountModel != null)
+                        {
+                            // load the rest
+
+
+
+                            return;
+                        }
+                        Response.CreateError("Account credentials not valid");
+                    }
+                    break;
+                case LoginModelResult.AccountNotExists:
+                    Response.CreateXml(RespondGuest());
+                    break;
+                case LoginModelResult.InvalidCredentials:
+                    Response.CreateError("Account credentials not valid");
+                    break;
+            }
         }
+
+        private static string RespondGuest() => @"<Chars nextCharId=""1"" maxNumChars=""1"">
+    <Account>
+        <Credits>100</Credits>
+        <NextCharSlotPrice>600</NextCharSlotPrice>
+        <AccountId>-1</AccountId>
+        <Name>Orothi</Name>
+        <BeginnerPackageTimeLeft>604800</BeginnerPackageTimeLeft>
+        <IsAgeVerified>0</IsAgeVerified>
+        <PetYardType>1</PetYardType>
+        <isFirstDeath />
+        <Stats>
+            <BestCharFame>0</BestCharFame>
+            <TotalFame>0</TotalFame>
+            <Fame>0</Fame>
+        </Stats>
+    </Account>
+    <News/>
+    <Servers/>
+    <ClassAvailabilityList>
+        <ClassAvailability id=""Rogue"">available</ClassAvailability>
+        <ClassAvailability id=""Assassin"">available</ClassAvailability>
+        <ClassAvailability id=""Huntress"">available</ClassAvailability>
+        <ClassAvailability id=""Mystic"">available</ClassAvailability>
+        <ClassAvailability id=""Trickster"">available</ClassAvailability>
+        <ClassAvailability id=""Sorcerer"">available</ClassAvailability>
+        <ClassAvailability id=""Ninja"">unavailable</ClassAvailability>
+        <ClassAvailability id=""Archer"">available</ClassAvailability>
+        <ClassAvailability id=""Wizard"">available</ClassAvailability>
+        <ClassAvailability id=""Priest"">available</ClassAvailability>
+        <ClassAvailability id=""Necromancer"">available</ClassAvailability>
+        <ClassAvailability id=""Warrior"">available</ClassAvailability>
+        <ClassAvailability id=""Knight"">available</ClassAvailability>
+        <ClassAvailability id=""Paladin"">available</ClassAvailability>
+    </ClassAvailabilityList>
+</Chars>";
     }
 }

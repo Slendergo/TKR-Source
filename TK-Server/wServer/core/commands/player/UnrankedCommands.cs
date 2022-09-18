@@ -1,5 +1,4 @@
-﻿using CA.Extensions.Concurrent;
-using common;
+﻿using common;
 using common.database;
 using common.isc.data;
 using common.resources;
@@ -8,7 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using wServer.core.objects;
-using wServer.core.worlds;
 using wServer.core.worlds.logic;
 using wServer.logic.loot;
 using wServer.networking.packets.outgoing;
@@ -796,7 +794,7 @@ namespace wServer.core.commands
             }
 
             var targetClient = player.Client.GameServer.ConnectionManager.Clients
-                .KeyWhereAsParallel(_ => _.Account != null && _.Account.AccountId == targetAccId)
+                .Keys.Where(_ => _.Account != null && _.Account.AccountId == targetAccId)
                 .FirstOrDefault();
 
             var servers = player.GameServer.InterServerManager.GetServerList();
@@ -886,7 +884,7 @@ namespace wServer.core.commands
 
             // find target player (if connected)
             var targetClient = player.Client.GameServer.ConnectionManager.Clients
-                .KeyWhereAsParallel(_ => _.Account != null && _.Account.AccountId == targetAccId)
+                .Keys.Where(_ => _.Account != null && _.Account.AccountId == targetAccId)
                 .FirstOrDefault();
 
             // try to remove connected member
@@ -1521,6 +1519,12 @@ namespace wServer.core.commands
 
         protected override bool Process(Player player, TickTime time, string args)
         {
+            if (player.IsInMarket)
+            {
+                player.SendInfo("You cannot vault while in the market!");
+                return true;
+            }
+
             var world = player.GameServer.WorldManager.CreateNewWorld("Vault", null, player.World);
             (world as VaultWorld).SetOwner(player.AccountId);
             if (world == null)

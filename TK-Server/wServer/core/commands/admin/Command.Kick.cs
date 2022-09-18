@@ -1,5 +1,4 @@
-﻿using CA.Extensions.Concurrent;
-using common;
+﻿using common;
 using common.database;
 using System.Linq;
 using wServer.core.objects;
@@ -16,7 +15,7 @@ namespace wServer.core.commands
             protected override bool Process(Player player, TickTime time, string args)
             {
                 var client = player.GameServer.ConnectionManager.Clients
-                    .KeyWhereAsParallel(_ => _.Account.Name.EqualsIgnoreCase(args) && !_.Account.Hidden)
+                    .Keys.Where(_ => _.Account.Name.EqualsIgnoreCase(args) && !_.Account.Hidden)
                     .SingleOrDefault();
                 if (client != default)
                 {

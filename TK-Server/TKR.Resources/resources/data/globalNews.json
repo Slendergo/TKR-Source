@@ -1,0 +1,26 @@
+﻿[
+  {
+    "slot": 1,
+    "linkType": 1,
+    "title": "cat",
+    "image": "",
+    "linkDetail": "https://tkgames.gg/",
+    "priority": 0
+  },
+  {
+    "slot": 2,
+    "linkType": 0,
+    "title": "small cato 1",
+    "image": "",
+    "linkDetail": "",
+    "priority": 0
+  },
+  {
+    "slot": 3,
+    "linkType": 0,
+    "title": "small cato 2",
+    "image": "",
+    "linkDetail": "",
+    "priority": 0
+  }
+]

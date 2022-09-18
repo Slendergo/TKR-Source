@@ -1,5 +1,4 @@
-﻿using CA.Extensions.Concurrent;
-using common;
+﻿using common;
 using common.database;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,7 +41,7 @@ namespace wServer.core.net.handlers
             }
 
             var target = client.GameServer.ConnectionManager.Clients
-                .KeyWhereAsParallel(_ => _ != null && _.Account != null && _.Account.Name.Equals(name))
+                .Keys.Where(_ => _ != null && _.Account != null && _.Account.Name.Equals(name))
                 .FirstOrDefault();
             if (target == null || target.Account == null || target.Player == null)
             {

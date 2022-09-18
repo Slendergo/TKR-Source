@@ -1,12 +1,9 @@
-﻿using CA.Extensions.Concurrent;
-using common;
+﻿using common;
 using common.isc;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using wServer.core.objects;
 using wServer.core.worlds;
-using wServer.networking;
 using wServer.networking.packets.outgoing;
 using wServer.utils;
 
@@ -24,9 +21,9 @@ namespace wServer.core
                 return;
 
             var clients = GameServer.ConnectionManager.Clients
-                .KeyWhereAsParallel(_ => _.Player != null);
-            for (var i = 0; i < clients.Length; i++)
-                clients[i].Player.AnnouncementReceived(text);
+                .Keys.Where(_ => _.Player != null);
+            foreach(var client in clients)
+                client.Player.AnnouncementReceived(text);
         }
 
         public void Announce(Player player, string text)
@@ -35,9 +32,9 @@ namespace wServer.core
                 return;
 
             var clients = GameServer.ConnectionManager.Clients
-                .KeyWhereAsParallel(_ => _.Player != null);
-            for (var i = 0; i < clients.Length; i++)
-                clients[i].Player.AnnouncementReceived(text, player.Name);
+                .Keys.Where(_ => _.Player != null);
+            foreach(var client in clients)
+                client.Player.AnnouncementReceived(text, player.Name);
         }
 
         public void AnnounceEternalLoot(string text)
@@ -46,9 +43,9 @@ namespace wServer.core
                 return;
 
             var clients = GameServer.ConnectionManager.Clients
-                .KeyWhereAsParallel(_ => _.Player != null);
-            for (var i = 0; i < clients.Length; i++)
-                clients[i].Player.SendEternalNotif(text);
+                .Keys.Where(_ => _.Player != null);
+            foreach(var client in clients)
+                client.Player.SendEternalNotif(text);
         }
 
         public void AnnounceForger(string text)
@@ -57,9 +54,9 @@ namespace wServer.core
                 return;
 
             var clients = GameServer.ConnectionManager.Clients
-                .KeyWhereAsParallel(_ => _.Player != null);
-            for (var i = 0; i < clients.Length; i++)
-                clients[i].Player.ForgerNotif(text);
+                .Keys.Where(_ => _.Player != null);
+            foreach(var client in clients)
+                client.Player.ForgerNotif(text);
         }
 
         public void AnnounceEngine(string text)
@@ -68,9 +65,9 @@ namespace wServer.core
                 return;
 
             var clients = GameServer.ConnectionManager.Clients
-                .KeyWhereAsParallel(_ => _.Player != null);
-            for (var i = 0; i < clients.Length; i++)
-                clients[i].Player.EngineNotif(text);
+                .Keys.Where(_ => _.Player != null);
+            foreach(var client in clients)
+                client.Player.EngineNotif(text);
         }
 
         public void AnnounceLoot(string text)
@@ -79,9 +76,9 @@ namespace wServer.core
                 return;
 
             var clients = GameServer.ConnectionManager.Clients
-                .KeyWhereAsParallel(_ => _.Player != null);
-            for (var i = 0; i < clients.Length; i++)
-                clients[i].Player.SendLootNotif(text);
+                .Keys.Where(_ => _.Player != null);
+            foreach(var client in clients)
+                client.Player.SendLootNotif(text);
         }
 
         public void AnnounceRealm(string text, string name)
@@ -90,9 +87,9 @@ namespace wServer.core
                 return;
 
             var clients = GameServer.ConnectionManager.Clients
-                .KeyWhereAsParallel(_ => _.Player != null);
-            for (var i = 0; i < clients.Length; i++)
-                clients[i].Player.AnnouncementRealm(text, name);
+                .Keys.Where(_ => _.Player != null);
+            foreach(var client in clients)
+                client.Player.AnnouncementRealm(text, name);
         }
 
         public void AnnounceMythicalLoot(string text)
@@ -101,9 +98,9 @@ namespace wServer.core
                 return;
 
             var clients = GameServer.ConnectionManager.Clients
-                .KeyWhereAsParallel(_ => _.Player != null);
-            for (var i = 0; i < clients.Length; i++)
-                clients[i].Player.SendMythicalNotif(text);
+                .Keys.Where(_ => _.Player != null);
+            foreach(var client in clients)
+                client.Player.SendMythicalNotif(text);
         }
 
         public bool Guild(Player src, string text)
@@ -339,34 +336,33 @@ namespace wServer.core
             var messageTemplate = $"({DateTime.UtcNow:hh:mm:ss}) Staff {user} says: {message}";
             var botName = GameServer.Configuration.discordIntegration.botName;
             var clients = GameServer.ConnectionManager.Clients
-                .KeyWhereAsParallel(_ => _.Player != null);
-            for (var i = 0; i < clients.Length; i++)
-                clients[i].SendPacket(new Text()
+                .Keys.Where(_ => _.Player != null);
+            foreach(var client in clients)
+                client.SendPacket(new Text()
                 {
                     ObjectId = -1,
                     BubbleTime = 10,
                     NumStars = 70,
                     Name = botName,
-                    Recipient = clients[i].Player.Name,
+                    Recipient = client.Player.Name,
                     Txt = messageTemplate
                 });
         }
 
         private void HandleChat(object sender, InterServerEventArgs<ChatMsg> e)
         {
-            Client[] dummies;
             switch (e.Content.Type)
             {
                 case ChatType.Tell:
                     {
                         var from = GameServer.Database.ResolveIgn(e.Content.From);
                         var to = GameServer.Database.ResolveIgn(e.Content.To);
-                        dummies = GameServer.ConnectionManager.Clients
-                            .KeyWhereAsParallel(_ => _.Player != null
+                        var dummies = GameServer.ConnectionManager.Clients
+                            .Keys.Where(_ => _.Player != null
                                 && !_.Account.IgnoreList.Contains(e.Content.From)
                                 && (_.Account.AccountId == e.Content.From || _.Account.AccountId == e.Content.To || _.Account.IP == e.Content.SrcIP));
-                        for (var i = 0; i < dummies.Length; i++)
-                            dummies[i].Player.TellReceived(
+                        foreach(var dummy in dummies)
+                            dummy.Player.TellReceived(
                                 e.Content.Instance == GameServer.InstanceId
                                     ? e.Content.ObjectId
                                     : -1,
@@ -382,23 +378,23 @@ namespace wServer.core
                 case ChatType.Info:
                     {
                         var to = GameServer.Database.GetAccount(e.Content.To);
-                        dummies = GameServer.ConnectionManager.Clients
-                            .KeyWhereAsParallel(_ => _.Player != null && _.Account.AccountId == to.AccountId);
-                        for (var i = 0; i < dummies.Length; i++)
-                            dummies[i].Player.SendInfo(e.Content.Text);
+                        var dummies = GameServer.ConnectionManager.Clients
+                            .Keys.Where(_ => _.Player != null && _.Account.AccountId == to.AccountId);
+                        foreach (var dummy in dummies)
+                            dummy.Player.SendInfo(e.Content.Text);
                     }
                     break;
 
                 case ChatType.Guild:
                     {
                         var from = GameServer.Database.ResolveIgn(e.Content.From);
-                        dummies = GameServer.ConnectionManager.Clients
-                            .KeyWhereAsParallel(_ => _.Player != null
+                        var dummies = GameServer.ConnectionManager.Clients
+                            .Keys.Where(_ => _.Player != null
                                 && !_.Account.IgnoreList.Contains(e.Content.From)
                                 && _.Account.GuildId > 0
                                 && _.Account.GuildId == e.Content.To);
-                        for (var i = 0; i < dummies.Length; i++)
-                            dummies[i].Player.GuildReceived(
+                        foreach (var dummy in dummies)
+                            dummy.Player.GuildReceived(
                                 e.Content.Instance == GameServer.InstanceId
                                     ? e.Content.ObjectId
                                     : -1,
@@ -412,13 +408,13 @@ namespace wServer.core
                 case ChatType.Party:
                     {
                         var from = GameServer.Database.ResolveIgn(e.Content.From);
-                        dummies = GameServer.ConnectionManager.Clients
-                            .KeyWhereAsParallel(_ => _.Player != null
+                        var dummies = GameServer.ConnectionManager.Clients
+                            .Keys.Where(_ => _.Player != null
                                 && !_.Account.IgnoreList.Contains(e.Content.From)
                                 && _.Account.PartyId > 0
                                 && _.Account.PartyId == e.Content.To);
-                        for (var i = 0; i < dummies.Length; i++)
-                            dummies[i].Player.PartyReceived(
+                        foreach (var dummy in dummies)
+                            dummy.Player.PartyReceived(
                                 e.Content.Instance == GameServer.InstanceId
                                     ? e.Content.ObjectId
                                     : -1,

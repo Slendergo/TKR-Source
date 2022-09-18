@@ -41,12 +41,26 @@ namespace wServer.core
 
         public DateTime RestartCloseTime { get; private set; }
 
-        public GameServer(string[] args)
+        public GameServer(string[] appArgs)
         {
-            if (args.Length > 1)
+            if (appArgs.Length > 1)
                 throw new Exception("Too many arguments expected 1.");
 
-            Configuration = ServerConfig.ReadFile(args.Length == 1 ? args[0] : "wServer.json");
+            Configuration = ServerConfig.ReadFile(appArgs.Length == 1 ? appArgs[0] : "wServer.json");
+            LogManager.Configuration.Variables["logDirectory"] = $"{Configuration.serverSettings.logFolder}/wServer";
+            LogManager.Configuration.Variables["buildConfig"] = Utils.GetBuildConfiguration();
+
+            AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
+            {
+                StaticLogger.Instance.Fatal(((Exception)args.ExceptionObject).StackTrace.ToString());
+            };
+
+            Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
+            Thread.CurrentThread.Name = "Entry";
+
+            ThreadPool.GetMinThreads(out int workerThreads, out int completionPortThreads);
+            ThreadPool.SetMinThreads(250, completionPortThreads);
+
             Resources = new Resources(Configuration.serverSettings.resourceFolder, true, ExportXMLS);
             ItemDustWeights = new ItemDustWeights(this);
             Database = new Database(Resources, Configuration);
@@ -101,60 +115,19 @@ namespace wServer.core
                 f5.Close();
             }
 
-            Console.WriteLine("[Initialize] ItemDustWeights");
             ItemDustWeights.Initialize();
-
-            Console.WriteLine("[Initialize] CommandManager");
             CommandManager.Initialize(this);
-
-            Console.WriteLine("[Initialize] Loot");
             Loot.Initialize(this);
-
-            Console.WriteLine("[Initialize] MobDrops");
             MobDrops.Initialize(this);
-
-            Console.WriteLine("[Initialize] BehaviorDb");
             BehaviorDb.Initialize();
-
-            Console.WriteLine("[Initialize] MerchantLists");
             MerchantLists.Initialize(this);
-
-            Console.WriteLine("[Initialize] WorldManager");
             WorldManager.Initialize();
-
-            Console.WriteLine("[Initialize] InterServerManager");
             InterServerManager.Initialize();
-            
-            Console.WriteLine("[Initialize] ChatManager");
             ChatManager.Initialize();
-            
-            Console.WriteLine("[Initialize] ConnectionListener");
             ConnectionListener.Initialize();
-
-            Console.WriteLine("[Start] MarketSweeper");
             MarketSweeper.Start();
-
-            Console.WriteLine("[Start] ConnectionListener");
             ConnectionListener.Start();
-
-            Console.WriteLine("[Initialize Success]");
-            
-            Console.WriteLine("[Network] Internal Joined");
             InterServerManager.JoinNetwork();
-
-            LogManager.Configuration.Variables["logDirectory"] = $"{Configuration.serverSettings.logFolder}/wServer";
-            LogManager.Configuration.Variables["buildConfig"] = Utils.GetBuildConfiguration();
-            AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
-            {
-                StaticLogger.Instance.Fatal(((Exception)args.ExceptionObject).StackTrace.ToString());
-                // todo auto restart
-            };
-
-            Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
-            Thread.CurrentThread.Name = "Entry";
-            
-            ThreadPool.GetMinThreads(out int workerThreads, out int completionPortThreads);
-            ThreadPool.SetMinThreads(250, completionPortThreads);
 
             var timeout = TimeSpan.FromHours(Configuration.serverSettings.restartTime);
 

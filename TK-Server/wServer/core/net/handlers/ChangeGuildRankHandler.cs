@@ -1,17 +1,7 @@
-﻿using CA.Extensions.Concurrent;
-using common;
-using common.database;
-using common.resources;
-using System.Collections.Generic;
+﻿using common;
 using System.Linq;
-using wServer.core;
-using wServer.core.objects;
-using wServer.core.objects.vendors;
 using wServer.core.worlds.logic;
 using wServer.networking;
-using wServer.networking.packets;
-using wServer.core.net.handlers;
-using wServer.networking.packets.outgoing;
 
 namespace wServer.core.net.handlers
 {
@@ -41,7 +31,7 @@ namespace wServer.core.net.handlers
             // get target client if available (player is currently connected to the server)
             // otherwise pull account from db
             var target = client.GameServer.ConnectionManager.Clients
-                .KeyWhereAsParallel(_ => _.Account.AccountId == targetId)
+                .Keys.Where(_ => _.Account.AccountId == targetId)
                 .FirstOrDefault();
             var targetAcnt = target != null ? target.Account : manager.Database.GetAccount(targetId);
 

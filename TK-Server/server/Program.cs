@@ -1,6 +1,5 @@
 ﻿using Anna;
 using Anna.Request;
-using CA.Threading.Tasks;
 using common;
 using common.database;
 using common.isc;
@@ -9,11 +8,14 @@ using NLog;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Reactive.Linq;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Web;
+using wServer.core;
 using static server.Program.ContextRequest;
 
 namespace server
@@ -60,28 +62,24 @@ namespace server
                 Config.serverInfo.instanceId = Guid.NewGuid().ToString();
 
                 ISManager = new ISManager(Database, Config, true);
+                ISManager.OnTick += () => UpdateServersUsage();
                 ISManager.Initialize();
 
                 LegendSweeper = new LegendSweeper(Database);
                 LegendSweeper.Run();
-
                 Console.CancelKeyPress += delegate { Shutdown.Set(); };
-
                 var port = Config.serverInfo.port;
                 var address = Config.serverInfo.bindAddress;
                 var url = $"http://{address}:{port}/";
-                var source = new CancellationTokenSource();
 
                 using (var server = new HttpServer(url))
                 {
-                    foreach (var uri in RequestHandlers.Get.Keys.ToList()) server.GET(uri).Subscribe(Response);
-                    foreach (var uri in RequestHandlers.Post.Keys.ToList()) server.POST(uri).Subscribe(Response);
+                    foreach (var uri in RequestHandlers.Get.Keys.ToList())
+                        server.GET(uri).Subscribe(Response);
+                    foreach (var uri in RequestHandlers.Post.Keys.ToList())
+                        server.POST(uri).Subscribe(Response);
 
                     Log.Info("Listening at address {0}:{1}...", address, port);
-
-                    var routine = new InternalRoutine(200, UpdateServersUsage);
-                    routine.AttachToParent(source.Token);
-                    routine.Start();
 
                     IsReadyToAccept = true;
 
@@ -92,7 +90,6 @@ namespace server
 
                 Log.Info("Terminating...");
 
-                source.Cancel();
                 ISManager.Dispose();
             }
         }
@@ -166,7 +163,6 @@ namespace server
 
             var players = 0;
             var maxPlayers = 0;
-
             for (var i = 0; i < servers.Length; i++)
             {
                 var server = servers[i];

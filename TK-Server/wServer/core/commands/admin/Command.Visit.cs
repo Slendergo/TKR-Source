@@ -1,9 +1,7 @@
-﻿using CA.Extensions.Concurrent;
-using common;
+﻿using common;
 using System;
 using System.Linq;
 using wServer.core.objects;
-using wServer.core.worlds;
 using wServer.core.worlds.logic;
 using wServer.networking.packets.outgoing;
 
@@ -24,10 +22,7 @@ namespace wServer.core.commands
                     return true;
                 }
 
-                var target = player.GameServer.ConnectionManager.Clients
-                    .KeyWhereAsParallel(_ => _.Account != null && _.Account.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase))
-                    .SingleOrDefault();
-
+                var target = player.GameServer.ConnectionManager.Clients.Keys.SingleOrDefault(_ => _.Account != null && _.Account.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase));
                 if (target?.Player?.World == null || !target.Player.CanBeSeenBy(player))
                 {
                     player.SendError("Player not found!");

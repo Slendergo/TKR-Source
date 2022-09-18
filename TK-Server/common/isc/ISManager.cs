@@ -42,6 +42,7 @@ namespace common.isc
         private Dictionary<string, ServerInfo> _servers = new Dictionary<string, ServerInfo>();
         private ServerConfig _settings;
         private Timer _tmr = new Timer(PingPeriod);
+        public Action OnTick;
 
         public ISManager(Database db, ServerConfig settings, bool isAppEngine = false) : base(db, settings.serverInfo.instanceId)
         {
@@ -142,6 +143,7 @@ namespace common.isc
         {
             try
             {
+                OnTick?.Invoke();
                 using (TimedLock.Lock(_dicLock))
                 {
                     Console.Title = GetFormattedTitle();

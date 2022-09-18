@@ -1,0 +1,6 @@
+<Objects>
+  <Object type="0x073f" id="Tetra">
+    <Class>GameObject</Class>
+    <Model>Tetra</Model>
+  </Object>
+</Objects>

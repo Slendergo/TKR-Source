@@ -13,11 +13,6 @@ namespace wServer.core.commands
 
             protected override bool Process(Player player, TickTime time, string args)
             {
-                if (player.Client.Account.Name != "ModNidhogg")
-                {
-                    player.SendError("Nope.");
-                    return false;
-                }
                 DbMarketData.ForceCleanMarket(player.GameServer.Database);
                 player.SendInfo("Done.");
                 return true;

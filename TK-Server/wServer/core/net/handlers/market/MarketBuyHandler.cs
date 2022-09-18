@@ -61,6 +61,7 @@ namespace wServer.core.net.handlers.market
                 client.Player?.SendError("Something wrong happened, try again. (Unexpected Error)");
                 return;
             }
+
             if (sellerId == 0 || sellerAcc == null)
             {
                 client.SendPacket(new MarketBuyResult()
@@ -71,6 +72,7 @@ namespace wServer.core.net.handlers.market
                 client.Player?.SendError("Something wrong happened, try again. (Seller Account not exist)");
                 return;
             }
+
             if (item == null)
             {
                 client.SendPacket(new MarketBuyResult()
@@ -81,6 +83,7 @@ namespace wServer.core.net.handlers.market
                 client.Player?.SendError("Something wrong happened, try again. (Item not registered in Server)");
                 return;
             }
+
             if (buyerAcc.Fame < marketData.Price)
             {
                 client.SendPacket(new MarketBuyResult()

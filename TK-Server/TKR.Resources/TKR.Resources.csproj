@@ -1,0 +1,1291 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="resources\data\globalNews.json" />
+    <None Remove="resources\data\init.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_buffedBunnyObjects16x16.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_chars16x16dEncounters.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_chars16x16dEncounters2.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_chars16x16dMountains1.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_chars16x16dMountains2.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_chars16x16rEncounters.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_chars16x8dEncounters.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_chars16x8rEncounters.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_chars8x8dBeach.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_chars8x8dEncounters.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_chars8x8dHero1.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_chars8x8rBeach.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_chars8x8rEncounters.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_chars8x8rHero1.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_chars8x8rHero2.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_chars8x8rHigh.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_chars8x8rLow1.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_chars8x8rLow2.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_chars8x8rMid.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_chars8x8rMid2.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_Custom16x16Encounters.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_custom16x16Environment.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_Custom32x32Encounters.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_Custom8x8Encounters.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_CustomObj.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_CustomProjsBig.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_d1chars16x16r.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_d1lofiObjBig.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_d3Chars16x16rEmbed.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_d3Chars8x8rEmbed.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_d3LofiObjEmbed.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_d3LofiObjEmbed16.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_HanamiParts.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_invisible.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_lofiChar16x16.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_lofiChar16x8.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_lofiChar216x16.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_lofiChar216x8.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_lofiChar28x8.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_lofiChar8x8.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_lofiCharBig.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_lofiEnvironment.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_lofiEnvironment2.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_lofiEnvironment3.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_lofiInterfaceBig.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_lofiObj.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_lofiObj2.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_lofiObj3.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_lofiObj4.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_lofiObjBig.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_lofiProjs.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_LostHallsBosses.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_LostHallsChars16x16a.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_LostHallsObj.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_LostHallsProjs2.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_mountainTempleChars16x16.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_mountainTempleChars8x8.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_mountainTempleObjects16x16.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_players.xml" />
+    <None Remove="resources\xml\characters\TK_Characters_SakuraEnvironment8x8.xml" />
+    <None Remove="resources\xml\containers\TK_Containers_Container.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Any_Legendary.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Any_Mythical.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Any_Regular.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Any_Tiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Bow_Legendary.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Bow_Mythical.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Bow_Tiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Bow_Untiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Cloak_Legendary.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Cloak_Mythical.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Cloak_Tiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Cloak_Untiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Dagger_Legendary.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Dagger_Mythical.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Dagger_Tiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Dagger_Untiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_HeavyArmor_Legendary.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_HeavyArmor_Mythical.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_HeavyArmor_Tiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_HeavyArmor_Untiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Helm_Legendary.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Helm_Mythical.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Helm_Tiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Helm_Untiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_HideArmor_Legendary.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_HideArmor_Mythical.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_HideArmor_Tiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_HideArmor_Untiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Katana_Legendary.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Katana_Mythical.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Katana_Tiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Katana_Untiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Orb_Legendary.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Orb_Mythical.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Orb_Tiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Orb_Untiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Poison_Legendary.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Poison_Mythical.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Poison_Tiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Poison_Untiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Prism_Legendary.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Prism_Mythical.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Prism_Tiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Prism_Untiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Quiver_Legendary.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Quiver_Mythical.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Quiver_Tiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Quiver_Untiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Ring_Legendary.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Ring_Mythical.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Ring_Tiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Ring_Untiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Robe_Legendary.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Robe_Mythical.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Robe_Tiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Robe_Untiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Scepter_Legendary.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Scepter_Mythical.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Scepter_Tiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Scepter_Untiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Seal_Legendary.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Seal_Mythical.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Seal_Tiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Seal_Untiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Shield_Legendary.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Shield_Tiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Shield_Untiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Skull_Legendary.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Skull_Mythical.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Skull_Tiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Skull_Untiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Spell_Legendary.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Spell_Mythical.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Spell_Tiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Spell_Untiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Staff_Legendary.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Staff_Mythical.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Staff_Tiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Staff_Untiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Star_Legendary.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Star_Mythical.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Star_Tiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Star_Untiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Sword_Legendary.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Sword_Mythical.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Sword_Tiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Sword_Untiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Tome_Legendary.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Tome_Mythical.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Tome_Tiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Tome_Untiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Trap_Legendary.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Trap_Tiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Wand_Legendary.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Wand_Mythical.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Wand_Tiered.xml" />
+    <None Remove="resources\xml\equipments\TK_Equipments_Wand_Untiered.xml" />
+    <None Remove="resources\xml\gameobjects\TK_GameObjects_Big_Cube.xml" />
+    <None Remove="resources\xml\gameobjects\TK_GameObjects_buffedBunnyObjects16x16.xml" />
+    <None Remove="resources\xml\gameobjects\TK_GameObjects_buffedBunnyObjects8x8.xml" />
+    <None Remove="resources\xml\gameobjects\TK_GameObjects_chars16x16dEncounters2.xml" />
+    <None Remove="resources\xml\gameobjects\TK_GameObjects_chars8x8dEncounters.xml" />
+    <None Remove="resources\xml\gameobjects\TK_GameObjects_Cube.xml" />
+    <None Remove="resources\xml\gameobjects\TK_GameObjects_custom16x16Environment.xml" />
+    <None Remove="resources\xml\gameobjects\TK_GameObjects_customEnvironment.xml" />
+    <None Remove="resources\xml\gameobjects\TK_GameObjects_customEnvironment16x16.xml" />
+    <None Remove="resources\xml\gameobjects\TK_GameObjects_CustomObjects32x32.xml" />
+    <None Remove="resources\xml\gameobjects\TK_GameObjects_d3LofiObjEmbed.xml" />
+    <None Remove="resources\xml\gameobjects\TK_GameObjects_Dodec.xml" />
+    <None Remove="resources\xml\gameobjects\TK_GameObjects_Ico.xml" />
+    <None Remove="resources\xml\gameobjects\TK_GameObjects_invisible.xml" />
+    <None Remove="resources\xml\gameobjects\TK_GameObjects_lofiChar216x16.xml" />
+    <None Remove="resources\xml\gameobjects\TK_GameObjects_lofiChar216x8.xml" />
+    <None Remove="resources\xml\gameobjects\TK_GameObjects_lofiChar28x8.xml" />
+    <None Remove="resources\xml\gameobjects\TK_GameObjects_lofiChar8x8.xml" />
+    <None Remove="resources\xml\gameobjects\TK_GameObjects_lofiCharBig.xml" />
+    <None Remove="resources\xml\gameobjects\TK_GameObjects_lofiEnvironment.xml" />
+    <None Remove="resources\xml\gameobjects\TK_GameObjects_lofiEnvironment2.xml" />
+    <None Remove="resources\xml\gameobjects\TK_GameObjects_lofiEnvironment3.xml" />
+    <None Remove="resources\xml\gameobjects\TK_GameObjects_lofiObj.xml" />
+    <None Remove="resources\xml\gameobjects\TK_GameObjects_lofiObj3.xml" />
+    <None Remove="resources\xml\gameobjects\TK_GameObjects_lofiObj4.xml" />
+    <None Remove="resources\xml\gameobjects\TK_GameObjects_lofiObjBig.xml" />
+    <None Remove="resources\xml\gameobjects\TK_GameObjects_LostHallsChars16x16b.xml" />
+    <None Remove="resources\xml\gameobjects\TK_GameObjects_mountainTempleObjects16x16.xml" />
+    <None Remove="resources\xml\gameobjects\TK_GameObjects_mountainTempleObjects8x8.xml" />
+    <None Remove="resources\xml\gameobjects\TK_GameObjects_Octa.xml" />
+    <None Remove="resources\xml\gameobjects\TK_GameObjects_Pyramid.xml" />
+    <None Remove="resources\xml\gameobjects\TK_GameObjects_SakuraEnvironment16x16.xml" />
+    <None Remove="resources\xml\gameobjects\TK_GameObjects_SakuraEnvironment8x8.xml" />
+    <None Remove="resources\xml\gameobjects\TK_GameObjects_Tetra.xml" />
+    <None Remove="resources\xml\grounds\TK_Grounds_customEnvironment.xml" />
+    <None Remove="resources\xml\grounds\TK_Grounds_d3LofiObjEmbed.xml" />
+    <None Remove="resources\xml\grounds\TK_Grounds_lofiEnvironment.xml" />
+    <None Remove="resources\xml\grounds\TK_Grounds_lofiEnvironment2.xml" />
+    <None Remove="resources\xml\grounds\TK_Grounds_lofiEnvironment3.xml" />
+    <None Remove="resources\xml\grounds\TK_Grounds_lofiObj3.xml" />
+    <None Remove="resources\xml\grounds\TK_Grounds_LostHallsProjs2.xml" />
+    <None Remove="resources\xml\grounds\TK_Grounds_SakuraEnvironment8x8.xml" />
+    <None Remove="resources\xml\grounds\TK_Grounds_stPatricksObjects8x8.xml" />
+    <None Remove="resources\xml\miscellaneous\TK_Miscellaneous_ArenaGuard.xml" />
+    <None Remove="resources\xml\miscellaneous\TK_Miscellaneous_BountyBoard.xml" />
+    <None Remove="resources\xml\miscellaneous\TK_Miscellaneous_CharacterChanger.xml" />
+    <None Remove="resources\xml\miscellaneous\TK_Miscellaneous_Forge.xml" />
+    <None Remove="resources\xml\miscellaneous\TK_Miscellaneous_GuildBoard.xml" />
+    <None Remove="resources\xml\miscellaneous\TK_Miscellaneous_GuildChronicle.xml" />
+    <None Remove="resources\xml\miscellaneous\TK_Miscellaneous_GuildMerchant.xml" />
+    <None Remove="resources\xml\miscellaneous\TK_Miscellaneous_GuildRegister.xml" />
+    <None Remove="resources\xml\miscellaneous\TK_Miscellaneous_Merchant.xml" />
+    <None Remove="resources\xml\miscellaneous\TK_Miscellaneous_MoneyChanger.xml" />
+    <None Remove="resources\xml\miscellaneous\TK_Miscellaneous_NameChanger.xml" />
+    <None Remove="resources\xml\miscellaneous\TK_Miscellaneous_ReskinVendor.xml" />
+    <None Remove="resources\xml\miscellaneous\TK_Miscellaneous_Sign.xml" />
+    <None Remove="resources\xml\miscellaneous\TK_Miscellaneous_SpiderWeb.xml" />
+    <None Remove="resources\xml\miscellaneous\TK_Miscellaneous_Stalagmite.xml" />
+    <None Remove="resources\xml\npcs\TK_NPCs_Market.xml" />
+    <None Remove="resources\xml\npcs\TK_NPCs_Stat.xml" />
+    <None Remove="resources\xml\pets\TK_Pet_Generators.xml" />
+    <None Remove="resources\xml\pets\TK_Pet_Objects.xml" />
+    <None Remove="resources\xml\portals\TK_Portals_ArenaPortal.xml" />
+    <None Remove="resources\xml\portals\TK_Portals_GuildHallPortal.xml" />
+    <None Remove="resources\xml\portals\TK_Portals_Portal.xml" />
+    <None Remove="resources\xml\projectiles\TK_Projectiles_buffedBunnyObjects8x8.xml" />
+    <None Remove="resources\xml\projectiles\TK_Projectiles_CustomObj.xml" />
+    <None Remove="resources\xml\projectiles\TK_Projectiles_CustomProjs.xml" />
+    <None Remove="resources\xml\projectiles\TK_Projectiles_CustomProjsBig.xml" />
+    <None Remove="resources\xml\projectiles\TK_Projectiles_d2LofiObjEmbed.xml" />
+    <None Remove="resources\xml\projectiles\TK_Projectiles_d3LofiObjEmbed.xml" />
+    <None Remove="resources\xml\projectiles\TK_Projectiles_d3LofiObjEmbed16.xml" />
+    <None Remove="resources\xml\projectiles\TK_Projectiles_invisible.xml" />
+    <None Remove="resources\xml\projectiles\TK_Projectiles_lofiChar16x16.xml" />
+    <None Remove="resources\xml\projectiles\TK_Projectiles_lofiChar216x16.xml" />
+    <None Remove="resources\xml\projectiles\TK_Projectiles_lofiChar216x8.xml" />
+    <None Remove="resources\xml\projectiles\TK_Projectiles_lofiObj.xml" />
+    <None Remove="resources\xml\projectiles\TK_Projectiles_lofiObj2.xml" />
+    <None Remove="resources\xml\projectiles\TK_Projectiles_lofiObj3.xml" />
+    <None Remove="resources\xml\projectiles\TK_Projectiles_lofiObj4.xml" />
+    <None Remove="resources\xml\projectiles\TK_Projectiles_lofiObjBig.xml" />
+    <None Remove="resources\xml\projectiles\TK_Projectiles_lofiProjs.xml" />
+    <None Remove="resources\xml\projectiles\TK_Projectiles_lofiProjsBig.xml" />
+    <None Remove="resources\xml\projectiles\TK_Projectiles_LostHallsChars16x16b.xml" />
+    <None Remove="resources\xml\projectiles\TK_Projectiles_LostHallsProjs.xml" />
+    <None Remove="resources\xml\projectiles\TK_Projectiles_LostHallsProjs2.xml" />
+    <None Remove="resources\xml\projectiles\TK_Projectiles_mountainTempleObjects16x16.xml" />
+    <None Remove="resources\xml\projectiles\TK_Projectiles_mountainTempleObjects8x8.xml" />
+    <None Remove="resources\xml\projectiles\TK_Projectiles_stPatricksObjects8x8.xml" />
+    <None Remove="resources\xml\projectiles\TK_Projectiles_tieredItems.xml" />
+    <None Remove="resources\xml\TK_Classes.xml" />
+    <None Remove="resources\xml\TK_Dusts.xml" />
+    <None Remove="resources\xml\TK_Dyes.xml" />
+    <None Remove="resources\xml\TK_Skins.xml" />
+    <None Remove="resources\xml\TK_Talismans.xml" />
+    <None Remove="resources\xml\TK_Unknown.xml" />
+    <None Remove="resources\xml\TK_Worlds.xml" />
+    <None Remove="resources\xml\walls\TK_Walls_CaveWall.xml" />
+    <None Remove="resources\xml\walls\TK_Walls_ConnectedWall.xml" />
+    <None Remove="resources\xml\walls\TK_Walls_DoubleWall.xml" />
+    <None Remove="resources\xml\walls\TK_Walls_Wall.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="resources\data\globalNews.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\data\init.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_buffedBunnyObjects16x16.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_chars16x16dEncounters.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_chars16x16dEncounters2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_chars16x16dMountains1.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_chars16x16dMountains2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_chars16x16rEncounters.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_chars16x8dEncounters.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_chars16x8rEncounters.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_chars8x8dBeach.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_chars8x8dEncounters.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_chars8x8dHero1.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_chars8x8rBeach.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_chars8x8rEncounters.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_chars8x8rHero1.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_chars8x8rHero2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_chars8x8rHigh.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_chars8x8rLow1.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_chars8x8rLow2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_chars8x8rMid.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_chars8x8rMid2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_Custom16x16Encounters.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_custom16x16Environment.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_Custom32x32Encounters.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_Custom8x8Encounters.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_CustomObj.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_CustomProjsBig.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_d1chars16x16r.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_d1lofiObjBig.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_d3Chars16x16rEmbed.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_d3Chars8x8rEmbed.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_d3LofiObjEmbed.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_d3LofiObjEmbed16.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_HanamiParts.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_invisible.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_lofiChar16x16.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_lofiChar16x8.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_lofiChar216x16.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_lofiChar216x8.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_lofiChar28x8.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_lofiChar8x8.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_lofiCharBig.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_lofiEnvironment.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_lofiEnvironment2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_lofiEnvironment3.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_lofiInterfaceBig.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_lofiObj.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_lofiObj2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_lofiObj3.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_lofiObj4.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_lofiObjBig.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_lofiProjs.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_LostHallsBosses.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_LostHallsChars16x16a.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_LostHallsObj.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_LostHallsProjs2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_mountainTempleChars16x16.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_mountainTempleChars8x8.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_mountainTempleObjects16x16.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_players.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\characters\TK_Characters_SakuraEnvironment8x8.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\containers\TK_Containers_Container.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Any_Legendary.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Any_Mythical.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Any_Regular.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Any_Tiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Bow_Legendary.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Bow_Mythical.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Bow_Tiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Bow_Untiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Cloak_Legendary.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Cloak_Mythical.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Cloak_Tiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Cloak_Untiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Dagger_Legendary.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Dagger_Mythical.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Dagger_Tiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Dagger_Untiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_HeavyArmor_Legendary.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_HeavyArmor_Mythical.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_HeavyArmor_Tiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_HeavyArmor_Untiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Helm_Legendary.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Helm_Mythical.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Helm_Tiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Helm_Untiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_HideArmor_Legendary.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_HideArmor_Mythical.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_HideArmor_Tiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_HideArmor_Untiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Katana_Legendary.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Katana_Mythical.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Katana_Tiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Katana_Untiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Orb_Legendary.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Orb_Mythical.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Orb_Tiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Orb_Untiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Poison_Legendary.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Poison_Mythical.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Poison_Tiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Poison_Untiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Prism_Legendary.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Prism_Mythical.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Prism_Tiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Prism_Untiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Quiver_Legendary.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Quiver_Mythical.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Quiver_Tiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Quiver_Untiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Ring_Legendary.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Ring_Mythical.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Ring_Tiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Ring_Untiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Robe_Legendary.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Robe_Mythical.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Robe_Tiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Robe_Untiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Scepter_Legendary.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Scepter_Mythical.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Scepter_Tiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Scepter_Untiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Seal_Legendary.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Seal_Mythical.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Seal_Tiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Seal_Untiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Shield_Legendary.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Shield_Tiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Shield_Untiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Skull_Legendary.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Skull_Mythical.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Skull_Tiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Skull_Untiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Spell_Legendary.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Spell_Mythical.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Spell_Tiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Spell_Untiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Staff_Legendary.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Staff_Mythical.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Staff_Tiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Staff_Untiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Star_Legendary.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Star_Mythical.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Star_Tiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Star_Untiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Sword_Legendary.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Sword_Mythical.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Sword_Tiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Sword_Untiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Tome_Legendary.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Tome_Mythical.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Tome_Tiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Tome_Untiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Trap_Legendary.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Trap_Tiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Wand_Legendary.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Wand_Mythical.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Wand_Tiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\equipments\TK_Equipments_Wand_Untiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\gameobjects\TK_GameObjects_Big_Cube.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\gameobjects\TK_GameObjects_buffedBunnyObjects16x16.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\gameobjects\TK_GameObjects_buffedBunnyObjects8x8.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\gameobjects\TK_GameObjects_chars16x16dEncounters2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\gameobjects\TK_GameObjects_chars8x8dEncounters.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\gameobjects\TK_GameObjects_Cube.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\gameobjects\TK_GameObjects_custom16x16Environment.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\gameobjects\TK_GameObjects_customEnvironment.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\gameobjects\TK_GameObjects_customEnvironment16x16.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\gameobjects\TK_GameObjects_CustomObjects32x32.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\gameobjects\TK_GameObjects_d3LofiObjEmbed.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\gameobjects\TK_GameObjects_Dodec.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\gameobjects\TK_GameObjects_Ico.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\gameobjects\TK_GameObjects_invisible.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\gameobjects\TK_GameObjects_lofiChar216x16.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\gameobjects\TK_GameObjects_lofiChar216x8.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\gameobjects\TK_GameObjects_lofiChar28x8.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\gameobjects\TK_GameObjects_lofiChar8x8.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\gameobjects\TK_GameObjects_lofiCharBig.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\gameobjects\TK_GameObjects_lofiEnvironment.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\gameobjects\TK_GameObjects_lofiEnvironment2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\gameobjects\TK_GameObjects_lofiEnvironment3.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\gameobjects\TK_GameObjects_lofiObj.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\gameobjects\TK_GameObjects_lofiObj3.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\gameobjects\TK_GameObjects_lofiObj4.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\gameobjects\TK_GameObjects_lofiObjBig.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\gameobjects\TK_GameObjects_LostHallsChars16x16b.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\gameobjects\TK_GameObjects_mountainTempleObjects16x16.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\gameobjects\TK_GameObjects_mountainTempleObjects8x8.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\gameobjects\TK_GameObjects_Octa.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\gameobjects\TK_GameObjects_Pyramid.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\gameobjects\TK_GameObjects_SakuraEnvironment16x16.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\gameobjects\TK_GameObjects_SakuraEnvironment8x8.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\gameobjects\TK_GameObjects_Tetra.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\grounds\TK_Grounds_customEnvironment.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\grounds\TK_Grounds_d3LofiObjEmbed.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\grounds\TK_Grounds_lofiEnvironment.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\grounds\TK_Grounds_lofiEnvironment2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\grounds\TK_Grounds_lofiEnvironment3.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\grounds\TK_Grounds_lofiObj3.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\grounds\TK_Grounds_LostHallsProjs2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\grounds\TK_Grounds_SakuraEnvironment8x8.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\grounds\TK_Grounds_stPatricksObjects8x8.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\miscellaneous\TK_Miscellaneous_ArenaGuard.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\miscellaneous\TK_Miscellaneous_BountyBoard.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\miscellaneous\TK_Miscellaneous_CharacterChanger.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\miscellaneous\TK_Miscellaneous_Forge.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\miscellaneous\TK_Miscellaneous_GuildBoard.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\miscellaneous\TK_Miscellaneous_GuildChronicle.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\miscellaneous\TK_Miscellaneous_GuildMerchant.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\miscellaneous\TK_Miscellaneous_GuildRegister.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\miscellaneous\TK_Miscellaneous_Merchant.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\miscellaneous\TK_Miscellaneous_MoneyChanger.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\miscellaneous\TK_Miscellaneous_NameChanger.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\miscellaneous\TK_Miscellaneous_ReskinVendor.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\miscellaneous\TK_Miscellaneous_Sign.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\miscellaneous\TK_Miscellaneous_SpiderWeb.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\miscellaneous\TK_Miscellaneous_Stalagmite.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\npcs\TK_NPCs_Market.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\npcs\TK_NPCs_Stat.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\pets\TK_Pet_Generators.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\pets\TK_Pet_Objects.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\portals\TK_Portals_ArenaPortal.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\portals\TK_Portals_GuildHallPortal.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\portals\TK_Portals_Portal.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\projectiles\TK_Projectiles_buffedBunnyObjects8x8.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\projectiles\TK_Projectiles_CustomObj.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\projectiles\TK_Projectiles_CustomProjs.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\projectiles\TK_Projectiles_CustomProjsBig.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\projectiles\TK_Projectiles_d2LofiObjEmbed.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\projectiles\TK_Projectiles_d3LofiObjEmbed.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\projectiles\TK_Projectiles_d3LofiObjEmbed16.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\projectiles\TK_Projectiles_invisible.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\projectiles\TK_Projectiles_lofiChar16x16.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\projectiles\TK_Projectiles_lofiChar216x16.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\projectiles\TK_Projectiles_lofiChar216x8.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\projectiles\TK_Projectiles_lofiObj.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\projectiles\TK_Projectiles_lofiObj2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\projectiles\TK_Projectiles_lofiObj3.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\projectiles\TK_Projectiles_lofiObj4.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\projectiles\TK_Projectiles_lofiObjBig.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\projectiles\TK_Projectiles_lofiProjs.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\projectiles\TK_Projectiles_lofiProjsBig.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\projectiles\TK_Projectiles_LostHallsChars16x16b.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\projectiles\TK_Projectiles_LostHallsProjs.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\projectiles\TK_Projectiles_LostHallsProjs2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\projectiles\TK_Projectiles_mountainTempleObjects16x16.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\projectiles\TK_Projectiles_mountainTempleObjects8x8.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\projectiles\TK_Projectiles_stPatricksObjects8x8.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\projectiles\TK_Projectiles_tieredItems.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\TK_Classes.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\TK_Dusts.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\TK_Dyes.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\TK_Skins.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\TK_Talismans.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\TK_Unknown.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\TK_Worlds.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\walls\TK_Walls_CaveWall.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\walls\TK_Walls_ConnectedWall.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\walls\TK_Walls_DoubleWall.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\xml\walls\TK_Walls_Wall.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="resources\worlds\abyss\abyss_epic.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\abyss\abyss_of_demons.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\arena.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\beachzone.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\belladonna.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\bilge_grotto.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\candy_land_hunting_grounds.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\cave_of_eternal_frost.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\cave_of_thousand_treasures.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\chamber.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\cloth_bazaar.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\davy.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\deadwater_docks.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\forbidden_jungle.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\forest_maze.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\garden_of_horror.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\guild\guild_hall1.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\guild\guild_hall2.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\guild\guild_hall3.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\guild\guild_hall4.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\haunted_cemetery.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\hideout_of_limon.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\hideout_of_stheno.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\hideout_of_thessal.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\lost_halls.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\mad_lab.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\manor_of_the_immortals.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\marketplace.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\mortomus_hideout.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\Nexus.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\ocean_trench.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\oryx_castle.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\pirate_cave.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\puppet.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\puppet_master_encore.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\realm.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\set_piece\avatar.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\set_piece\candygnome.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\set_piece\earth_elemental.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\set_piece\fire_elemental.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\set_piece\fluffy.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\set_piece\ghost_ship.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\set_piece\hermit.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\set_piece\horde.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\set_piece\julius.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\set_piece\kage_kami.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\set_piece\mushroom.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\set_piece\primordial_quetzalcoatl.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\set_piece\rock_dragon.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\set_piece\strange_magician.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\set_piece\talisman_king.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\set_piece\water_elemental.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\set_piece\wind_elemental.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\shatters.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\snake_pit.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\spider_den.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\sprite_world\sprite_world1.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\sprite_world\sprite_world2.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\sprite_world\sprite_world3.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\sprite_world\sprite_world4.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\sprite_world\sprite_world5.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\stanleys_hideout.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\strange_library.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\the_crawling_depths.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\the_ivory_wyvern.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\tomb_of_the_ancients.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\toxic_sewers.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\trials_of_souls.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\undead_lair\undead_lair1.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\undead_lair\undead_lair2.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\undead_lair\undead_lair3.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\undead_lair\undead_lair4.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\undead_lair\undead_lair5.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\undead_lair\undead_Lair_epic.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\Vault.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\wine_cellar.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\worlds\woodland_labyrinth.jm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

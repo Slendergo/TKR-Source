@@ -1,7 +1,5 @@
-﻿using CA.Extensions.Concurrent;
-using common;
+﻿using common;
 using System.Linq;
-using wServer.core;
 using wServer.core.worlds.logic;
 using wServer.networking;
 
@@ -49,7 +47,7 @@ namespace wServer.core.net.handlers
 
             // find target player (if connected)
             var targetClient = client.GameServer.ConnectionManager.Clients
-                .KeyWhereAsParallel(_ => _.Account != null && _.Account.AccountId == targetAccId).FirstOrDefault();
+                .Keys.Where(_ => _.Account != null && _.Account.AccountId == targetAccId).FirstOrDefault();
 
             // try to remove connected member
             if (targetClient != null)

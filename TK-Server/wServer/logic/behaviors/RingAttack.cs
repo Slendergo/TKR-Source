@@ -1,5 +1,4 @@
-﻿using CA.Extensions.Concurrent;
-using common.resources;
+﻿using common.resources;
 using System;
 using wServer.core;
 using wServer.core.objects;

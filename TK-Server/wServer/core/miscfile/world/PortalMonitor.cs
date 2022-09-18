@@ -150,10 +150,7 @@ namespace wServer.core
             var totalPlayers = World.GameServer.ConnectionManager.GetPlayerCount();
             var realmsNeeded = 1 + totalPlayers / (MAX_PER_REALM + 15);
             if (Actives.Count < realmsNeeded)
-            {
                 CreateNewRealm();
-                Console.WriteLine($"There are: {totalPlayers} player online right now: this requires: {realmsNeeded} realms and we have {Actives.Count}");
-            }
         }
 
         public void RemovePortal(int worldId)

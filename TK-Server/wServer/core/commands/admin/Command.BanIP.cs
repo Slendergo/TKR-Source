@@ -1,6 +1,6 @@
-﻿using CA.Extensions.Concurrent;
-using common;
+﻿using common;
 using common.database;
+using NLog.LayoutRenderers;
 using System.Linq;
 using System.Text.RegularExpressions;
 using wServer.core.objects;
@@ -71,9 +71,9 @@ namespace wServer.core.commands
                 db.BanIp(acc.IP, reason);
 
                 // disconnect currently connected
-                var targets = manager.ConnectionManager.Clients.KeyWhereAsParallel(_ => _.IpAddress.Equals(acc.IP));
-                for (var i = 0; i < targets.Length; i++)
-                    targets[i].Disconnect("BanIPCommand");
+                var targets = manager.ConnectionManager.Clients.Keys.Where(_ => _.IpAddress.Equals(acc.IP));
+                foreach(var target in targets)
+                    target.Disconnect("BanIPCommand");
 
                 // send notification
                 player.SendInfo($"Banned {acc.Name} (both account and ip).");

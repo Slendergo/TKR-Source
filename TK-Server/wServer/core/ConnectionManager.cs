@@ -1,16 +1,12 @@
-﻿using CA.Extensions.Concurrent;
-using CA.Profiler;
-using common.database;
+﻿using common.database;
 using common.isc.data;
 using System;
 using System.Collections.Concurrent;
 using System.IO;
 using System.Linq;
-using System.Threading;
 using wServer.core.worlds;
 using wServer.core.worlds.logic;
 using wServer.networking;
-using wServer.networking.connection;
 using wServer.networking.packets.outgoing;
 
 namespace wServer.core
@@ -118,7 +114,7 @@ namespace wServer.core
             if (!client.GameServer.Database.AcquireLock(acc))
             {
                 // disconnect current connected client (if any)
-                var otherClients = Clients.KeyWhereAsParallel(_ => _ == client || _.Account != null && (_.Account.AccountId == acc.AccountId));
+                var otherClients = Clients.Keys.Where(_ => _ == client || _.Account != null && (_.Account.AccountId == acc.AccountId));
                 foreach (var otherClient in otherClients)
                     otherClient.Disconnect("!client.Manager.Database.AcquireLock(acc)");
 

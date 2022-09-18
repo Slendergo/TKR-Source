@@ -1,15 +1,12 @@
-﻿using CA.Extensions.Concurrent;
-using common;
+﻿using common;
 using common.resources;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using wServer.core.objects.containers;
 using wServer.core.worlds;
 using wServer.core.worlds.logic;
 using wServer.networking;
-using wServer.networking.packets;
 using wServer.networking.packets.outgoing;
 using wServer.networking.packets.outgoing.talisman;
 using wServer.utils;

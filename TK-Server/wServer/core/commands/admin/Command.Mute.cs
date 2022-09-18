@@ -1,5 +1,4 @@
-﻿using CA.Extensions.Concurrent;
-using common;
+﻿using common;
 using System;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -72,7 +71,7 @@ namespace wServer.core.commands
 
                 // mute player if currently connected
                 var client = _manager.ConnectionManager.Clients
-                    .KeyWhereAsParallel(_ => _.Player != null
+                    .Keys.Where(_ => _.Player != null
                         && _.IpAddress.Equals(acc.IP)
                         && !_.Rank.IsAdmin)
                     .SingleOrDefault();
@@ -110,10 +109,9 @@ namespace wServer.core.commands
                     return;
 
                 var client = _manager.ConnectionManager.Clients
-                    .KeyWhereAsParallel(_ => _.Player != null
+                    .Keys.SingleOrDefault(_ => _.Player != null
                         && _.IpAddress.Equals(key.Substring(6))
-                        && !_.Rank.IsAdmin)
-                    .SingleOrDefault();
+                        && !_.Rank.IsAdmin);
                 if (client == default)
                     return;
 

@@ -1,0 +1,13 @@
+<Objects>
+  <Object type="0x01df" id="Guild Register">
+    <Class>GuildRegister</Class>
+    <Texture>
+      <File>lofiEnvironment2</File>
+      <Index>0x55</Index>
+    </Texture>
+    <OccupySquare />
+    <ShadowSize>0</ShadowSize>
+    <Size>110</Size>
+    <Static />
+  </Object>
+</Objects>

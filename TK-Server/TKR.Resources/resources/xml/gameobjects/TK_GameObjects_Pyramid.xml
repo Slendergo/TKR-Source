@@ -1,0 +1,6 @@
+<Objects>
+  <Object type="0x073e" id="Pyramid">
+    <Class>GameObject</Class>
+    <Model>Pyramid</Model>
+  </Object>
+</Objects>

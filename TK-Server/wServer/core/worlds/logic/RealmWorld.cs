@@ -1,8 +1,4 @@
-﻿using CA.Profiler;
-using common.resources;
-using NLog;
-using System;
-using System.Threading.Tasks;
+﻿using common.resources;
 using wServer.core.objects;
 using wServer.core.setpieces;
 using wServer.networking;

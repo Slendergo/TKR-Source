@@ -41,23 +41,21 @@ public class BossHealthBar extends Sprite {
         timeSinceNull_ = getTimer();
     }
 
-    private function getPortrait(go:GameObject):BitmapData
-    {
+    private function getPortrait(go:GameObject):BitmapData {
         var portraitTexture:BitmapData = go.props_.portrait_ != null ? go.props_.portrait_.getTexture() : go.texture_;
         var size:int = 8 / portraitTexture.width * 100;
         return GlowRedrawer.outlineGlow(TextureRedrawer.resize(portraitTexture, go.mask_, size, true, go.tex1Id_, go.tex2Id_), 0, 0);
     }
 
-    public function setGameObject(go:GameObject):void
-    {
-        if(go_ == go){
+    public function setGameObject(go:GameObject):void {
+        if (go_ == go) {
             return;
         }
 
         go_ = go;
 
         var isNull:Boolean = go == null;
-        if(!isNull) {
+        if (!isNull) {
             portrait_.bitmapData = isNull ? null : getPortrait(go);
 
             foreground.x = portrait_.width + 2;
@@ -73,18 +71,18 @@ public class BossHealthBar extends Sprite {
     }
 
     public function draw():void {
-        if(go_ == null){
+        if (go_ == null) {
             visible = false;
             mask_.width = background.width;
             return;
         }
 
-        if(go_.isInvulnerable()) {
-            background.transform.colorTransform = new ColorTransform(50 / 255, 100 / 255,190 / 255,1,0,0);
-        if(go_.isArmored() && !go_.isArmorBroken()) {
-            background.transform.colorTransform = new ColorTransform(42 / 255, 20 / 255, 2 / 255, 1, 0, 0);
-        }else{
-            background.transform.colorTransform = new ColorTransform(0, 1, 0,1,0,0,0,0);;
+        if (go_.isInvulnerable()) {
+            background.transform.colorTransform = new ColorTransform(50 / 255, 100 / 255, 190 / 255);
+        } else if (go_.isArmored() && !go_.isArmorBroken()) {
+            background.transform.colorTransform = new ColorTransform(85 / 255, 60 / 255, 50 / 255);
+        } else {
+            background.transform.colorTransform = new ColorTransform(0, 1, 0, 1);
         }
 
         mask_.width = (go_.rtHp_ / go_.maxHP_) * background.width;

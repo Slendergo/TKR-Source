@@ -1358,50 +1358,6 @@ namespace wServer.core.commands
         }
     }
 
-    internal class TransferFame : Command
-    {
-        public override string CommandName => "transferfame";
-        public override string Alias => "tf";
-
-        protected override bool Process(Player player, TickTime time, string args)
-        {
-            if (String.IsNullOrWhiteSpace(args))
-            {
-                player.SendError("Usage: /tf <amount>");
-                return false;
-            }
-            var amount = (int)Utils.FromString(args);
-            // SLogger.Instance.Info(player.Fame);
-            if (amount > player.Fame)
-            {
-                player.SendError("Amount asked is greater than current fame");
-                return false;
-            }
-
-            if (amount < 0)
-            {
-                player.SendError("Amount cannot be lower than 0");
-                return false;
-            }
-            var acc = player.GameServer.Database.GetAccount(player.AccountId);
-            //  SLogger.Instance.Info(acc.Fame);
-            if (acc != null)
-            {
-                acc.Fame += amount;
-                player.Fame -= amount;
-                player.Experience -= amount * 1000;
-                acc.FlushAsync();
-                player.SendInfo($"Success! You have transferred {amount} into your account!");
-                var clients = player.GameServer.ConnectionManager.Clients
-                    .KeyWhereAsParallel(_ => _.Account.Name.EqualsIgnoreCase(player.Name));
-                for (var i = 0; i < clients.Length; i++)
-                    clients[i].Disconnect("Fame Transfer");
-            }
-
-            return true;
-        }
-    }
-
     internal class TradeCommand : Command
     {
         public override string CommandName => "trade";

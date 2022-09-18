@@ -1,7 +1,6 @@
 package com.company.assembleegameclient.ui.tooltip
 {
    import com.company.assembleegameclient.objects.GameObject;
-import com.company.assembleegameclient.ui.QuestHealthBar;
 import com.company.util.BitmapUtil;
    import flash.display.Bitmap;
    import flash.display.BitmapData;
@@ -9,7 +8,6 @@ import com.company.util.BitmapUtil;
    public class PortraitToolTip extends ToolTip
    {
       private var portrait_:Bitmap;
-      private var hpBar_:QuestHealthBar;
 
       public function PortraitToolTip(go:GameObject)
       {
@@ -23,17 +21,7 @@ import com.company.util.BitmapUtil;
          this.portrait_.bitmapData = portraitBD;
          addChild(this.portrait_);
 
-         this.hpBar_ = new QuestHealthBar(go, 24, 3);
-         this.hpBar_.y = this.portrait_.height + 4;
-         addChild(this.hpBar_);
-
          filters = [];
-      }
-
-      public override function draw():void
-      {
-         this.hpBar_.draw();
-         super.draw();
       }
    }
 }

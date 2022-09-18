@@ -6,12 +6,14 @@ namespace TKR.App
     {
         public static async void CreateError(this HttpResponse httpResponse, string error)
         {
+            httpResponse.StatusCode = 404;
             httpResponse.ContentType = "application/xml";
             await httpResponse.Body.WriteAsync(Encoding.UTF8.GetBytes($"<Error>{error}</Error>"));
         }
 
         public static async void CreateFatalError(this HttpResponse httpResponse, string error)
         {
+            httpResponse.StatusCode = 404;
             httpResponse.ContentType = "application/xml";
             await httpResponse.Body.WriteAsync(Encoding.UTF8.GetBytes($"<FatalError>{error}</FatalError>"));
         }

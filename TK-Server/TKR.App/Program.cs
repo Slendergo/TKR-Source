@@ -1,4 +1,9 @@
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.Extensions.FileProviders;
+using System.Net;
+using TKR.App.Controllers;
+using TKR.App.Database;
 
 namespace TKR.App
 {
@@ -8,40 +13,46 @@ namespace TKR.App
 
         public static void Main(string[] args)
         {
-            ResourcePath = $"{Environment.CurrentDirectory}/web";
+            ResourcePath = $"{Environment.CurrentDirectory}/resources/web";
 
             var builder = WebApplication.CreateBuilder(args);
+            var service = builder.Services;
 
-            builder.Services.AddControllers();
-            builder.Services.AddMvc(setupAction =>
-            {
-                setupAction.OutputFormatters.Add(new XmlSerializerOutputFormatter());
-            }).AddXmlSerializerFormatters();
+            service.AddSingleton<RedisDatabase>();
 
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            service.AddControllers();
+
+            service.AddEndpointsApiExplorer();
+            service.AddSwaggerGen();
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
+                app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
 
-            //app.UseHttpsRedirection();
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider($"{ResourcePath}/sfx"),
+                RequestPath = "/sfx"
+            });
 
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider($"{ResourcePath}/music"),
+                RequestPath = "/music"
+            });
+
+            app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthorization();
+            app.MapControllers(); //app.MapEndpoints(endpoints => endpoints.MapControllers());
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute("sfx", "{controller}/{type}");
-                endpoints.MapControllerRoute("music", "{controller}/{type}");
-                endpoints.MapControllers();
-            });
+            // create instance of DB now
+            _ = app.Services.GetService<RedisDatabase>();
 
             app.Run();
         }

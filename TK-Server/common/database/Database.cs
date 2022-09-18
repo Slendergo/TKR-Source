@@ -74,7 +74,6 @@ namespace common.database
             DatabaseIndex = config.dbInfo.index;
 
             var conString = config.dbInfo.host + ":" + config.dbInfo.port + ",syncTimeout=120000";
-
             if (!string.IsNullOrWhiteSpace(config.dbInfo.auth))
                 conString += ",password=" + config.dbInfo.auth;
 

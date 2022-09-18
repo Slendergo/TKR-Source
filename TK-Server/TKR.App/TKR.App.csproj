@@ -13,8 +13,764 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="resources\web\crossdomain.xml" />
+    <None Remove="resources\web\data\init.xml" />
+    <None Remove="resources\web\music\menumusic.mp3" />
+    <None Remove="resources\web\music\sorc.mp3" />
+    <None Remove="resources\web\music\wanderlust.mp3" />
+    <None Remove="resources\web\sfx\arrowShoot.mp3" />
+    <None Remove="resources\web\sfx\bladeSwing.mp3" />
+    <None Remove="resources\web\sfx\button_click.mp3" />
+    <None Remove="resources\web\sfx\daggerSwing.mp3" />
+    <None Remove="resources\web\sfx\death_screen.mp3" />
+    <None Remove="resources\web\sfx\enter_realm.mp3" />
+    <None Remove="resources\web\sfx\error.mp3" />
+    <None Remove="resources\web\sfx\inventory_move_item.mp3" />
+    <None Remove="resources\web\sfx\level_up.mp3" />
+    <None Remove="resources\web\sfx\loot_appears.mp3" />
+    <None Remove="resources\web\sfx\magicShoot.mp3" />
+    <None Remove="resources\web\sfx\monster\abyss_brutes_death.mp3" />
+    <None Remove="resources\web\sfx\monster\abyss_brutes_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\abyss_demons_death.mp3" />
+    <None Remove="resources\web\sfx\monster\abyss_demons_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\bats_death.mp3" />
+    <None Remove="resources\web\sfx\monster\bats_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\beholder_death.mp3" />
+    <None Remove="resources\web\sfx\monster\beholder_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\blobs_death.mp3" />
+    <None Remove="resources\web\sfx\monster\blobs_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\cave_pirates_death.mp3" />
+    <None Remove="resources\web\sfx\monster\cave_pirates_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\chicken_death.mp3" />
+    <None Remove="resources\web\sfx\monster\chicken_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\cubes_death.mp3" />
+    <None Remove="resources\web\sfx\monster\cubes_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\cyclops_death.mp3" />
+    <None Remove="resources\web\sfx\monster\cyclops_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\dark_elves_death.mp3" />
+    <None Remove="resources\web\sfx\monster\dark_elves_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\default_death.mp3" />
+    <None Remove="resources\web\sfx\monster\default_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\demons_death.mp3" />
+    <None Remove="resources\web\sfx\monster\demons_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\djinn_death.mp3" />
+    <None Remove="resources\web\sfx\monster\djinn_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\dragons_death.mp3" />
+    <None Remove="resources\web\sfx\monster\dragons_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\dwarf_god_death.mp3" />
+    <None Remove="resources\web\sfx\monster\dwarf_god_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\dwarves_death.mp3" />
+    <None Remove="resources\web\sfx\monster\dwarves_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\eggs_death.mp3" />
+    <None Remove="resources\web\sfx\monster\eggs_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\elves_death.mp3" />
+    <None Remove="resources\web\sfx\monster\elves_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\ents_death.mp3" />
+    <None Remove="resources\web\sfx\monster\ents_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\flaming_skulls_death.mp3" />
+    <None Remove="resources\web\sfx\monster\flaming_skulls_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\flayers_death.mp3" />
+    <None Remove="resources\web\sfx\monster\flayers_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\flying_brain_death.mp3" />
+    <None Remove="resources\web\sfx\monster\flying_brain_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\ghosts_death.mp3" />
+    <None Remove="resources\web\sfx\monster\ghosts_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\ghost_god_death.mp3" />
+    <None Remove="resources\web\sfx\monster\ghost_god_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\goblins_death.mp3" />
+    <None Remove="resources\web\sfx\monster\goblins_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\golems_death.mp3" />
+    <None Remove="resources\web\sfx\monster\golems_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\greater_demons_death.mp3" />
+    <None Remove="resources\web\sfx\monster\greater_demons_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\greater_pit_snakes_death.mp3" />
+    <None Remove="resources\web\sfx\monster\greater_pit_snakes_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\hobbits_death.mp3" />
+    <None Remove="resources\web\sfx\monster\hobbits_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\lizard_god_death.mp3" />
+    <None Remove="resources\web\sfx\monster\lizard_god_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\medusa_death.mp3" />
+    <None Remove="resources\web\sfx\monster\medusa_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\minion_of_oryx_death.mp3" />
+    <None Remove="resources\web\sfx\monster\minion_of_oryx_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\mummies_death.mp3" />
+    <None Remove="resources\web\sfx\monster\mummies_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\night_elves_death.mp3" />
+    <None Remove="resources\web\sfx\monster\night_elves_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\ogres_death.mp3" />
+    <None Remove="resources\web\sfx\monster\ogres_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\orcs_death.mp3" />
+    <None Remove="resources\web\sfx\monster\orcs_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\oryx_death.mp3" />
+    <None Remove="resources\web\sfx\monster\oryx_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\pirates_death.mp3" />
+    <None Remove="resources\web\sfx\monster\pirates_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\pirate_king_death.mp3" />
+    <None Remove="resources\web\sfx\monster\pirate_king_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\pit_snakes_death.mp3" />
+    <None Remove="resources\web\sfx\monster\pit_snakes_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\pythons_death.mp3" />
+    <None Remove="resources\web\sfx\monster\pythons_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\rocks_death.mp3" />
+    <None Remove="resources\web\sfx\monster\rocks_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\scorpions_death.mp3" />
+    <None Remove="resources\web\sfx\monster\scorpions_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\skeletons_death.mp3" />
+    <None Remove="resources\web\sfx\monster\skeletons_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\skull_shrine_death.mp3" />
+    <None Remove="resources\web\sfx\monster\skull_shrine_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\slimes_death.mp3" />
+    <None Remove="resources\web\sfx\monster\slimes_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\snakes_death.mp3" />
+    <None Remove="resources\web\sfx\monster\snakes_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\snake_queen_death.mp3" />
+    <None Remove="resources\web\sfx\monster\snake_queen_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\spiders_death.mp3" />
+    <None Remove="resources\web\sfx\monster\spiders_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\spider_queen_death.mp3" />
+    <None Remove="resources\web\sfx\monster\spider_queen_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\sprites_death.mp3" />
+    <None Remove="resources\web\sfx\monster\sprites_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\sprite_god_death.mp3" />
+    <None Remove="resources\web\sfx\monster\sprite_god_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\stone_walls_death.mp3" />
+    <None Remove="resources\web\sfx\monster\stone_walls_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\thunder_god_death.mp3" />
+    <None Remove="resources\web\sfx\monster\thunder_god_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\traps_death.mp3" />
+    <None Remove="resources\web\sfx\monster\traps_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\trees_death.mp3" />
+    <None Remove="resources\web\sfx\monster\trees_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\undead_dwarves_death.mp3" />
+    <None Remove="resources\web\sfx\monster\undead_dwarves_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\undead_hobbits_death.mp3" />
+    <None Remove="resources\web\sfx\monster\undead_hobbits_hit.mp3" />
+    <None Remove="resources\web\sfx\monster\wooden_walls_death.mp3" />
+    <None Remove="resources\web\sfx\monster\wooden_walls_hit.mp3" />
+    <None Remove="resources\web\sfx\no_mana.mp3" />
+    <None Remove="resources\web\sfx\player\archer_death.mp3" />
+    <None Remove="resources\web\sfx\player\archer_hit.mp3" />
+    <None Remove="resources\web\sfx\player\knight_death.mp3" />
+    <None Remove="resources\web\sfx\player\knight_hit.mp3" />
+    <None Remove="resources\web\sfx\player\paladin_death.mp3" />
+    <None Remove="resources\web\sfx\player\paladin_hit.mp3" />
+    <None Remove="resources\web\sfx\player\priest_death.mp3" />
+    <None Remove="resources\web\sfx\player\priest_hit.mp3" />
+    <None Remove="resources\web\sfx\player\rogue_death.mp3" />
+    <None Remove="resources\web\sfx\player\rogue_hit.mp3" />
+    <None Remove="resources\web\sfx\player\warrior_death.mp3" />
+    <None Remove="resources\web\sfx\player\warrior_hit.mp3" />
+    <None Remove="resources\web\sfx\player\wizard_death.mp3" />
+    <None Remove="resources\web\sfx\player\wizard_hit.mp3" />
+    <None Remove="resources\web\sfx\spell\fire_nova.mp3" />
+    <None Remove="resources\web\sfx\spell\fire_spray.mp3" />
+    <None Remove="resources\web\sfx\spell\light_heal.mp3" />
+    <None Remove="resources\web\sfx\spell\magic_nova.mp3" />
+    <None Remove="resources\web\sfx\spell\major_heal.mp3" />
+    <None Remove="resources\web\sfx\use_key.mp3" />
+    <None Remove="resources\web\sfx\use_potion.mp3" />
+    <None Remove="resources\web\sfx\weapon\blunt_dagger.mp3" />
+    <None Remove="resources\web\sfx\weapon\blunt_sword.mp3" />
+    <None Remove="resources\web\sfx\weapon\cannon_shot.mp3" />
+    <None Remove="resources\web\sfx\weapon\crossbow.mp3" />
+    <None Remove="resources\web\sfx\weapon\dirk.mp3" />
+    <None Remove="resources\web\sfx\weapon\double_bow.mp3" />
+    <None Remove="resources\web\sfx\weapon\firework.mp3" />
+    <None Remove="resources\web\sfx\weapon\fire_bow.mp3" />
+    <None Remove="resources\web\sfx\weapon\fire_dagger.mp3" />
+    <None Remove="resources\web\sfx\weapon\fire_sword.mp3" />
+    <None Remove="resources\web\sfx\weapon\fire_wand.mp3" />
+    <None Remove="resources\web\sfx\weapon\glass_sword.mp3" />
+    <None Remove="resources\web\sfx\weapon\golden_bow.mp3" />
+    <None Remove="resources\web\sfx\weapon\golden_dagger.mp3" />
+    <None Remove="resources\web\sfx\weapon\golden_sword.mp3" />
+    <None Remove="resources\web\sfx\weapon\heavy_crossbow.mp3" />
+    <None Remove="resources\web\sfx\weapon\hells_fire_wand.mp3" />
+    <None Remove="resources\web\sfx\weapon\long_sword.mp3" />
+    <None Remove="resources\web\sfx\weapon\missile_wand.mp3" />
+    <None Remove="resources\web\sfx\weapon\mithril_dagger.mp3" />
+    <None Remove="resources\web\sfx\weapon\mithril_sword.mp3" />
+    <None Remove="resources\web\sfx\weapon\obsidian_dagger.mp3" />
+    <None Remove="resources\web\sfx\weapon\poison_fang_dagger.mp3" />
+    <None Remove="resources\web\sfx\weapon\poor_quality_bow.mp3" />
+    <None Remove="resources\web\sfx\weapon\spear_woosh.mp3" />
+    <None Remove="resources\web\sfx\weapon\sprite_wand.mp3" />
+    <None Remove="resources\web\sfx\weapon\wand_of_dark_magic.mp3" />
+    <None Remove="resources\web\sfx\weapon\wand_of_death.mp3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="resources\web\crossdomain.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\data\init.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\music\menumusic.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\music\sorc.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\music\wanderlust.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\arrowShoot.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\bladeSwing.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\button_click.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\daggerSwing.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\death_screen.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\enter_realm.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\error.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\inventory_move_item.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\level_up.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\loot_appears.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\magicShoot.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\abyss_brutes_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\abyss_brutes_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\abyss_demons_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\abyss_demons_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\bats_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\bats_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\beholder_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\beholder_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\blobs_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\blobs_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\cave_pirates_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\cave_pirates_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\chicken_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\chicken_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\cubes_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\cubes_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\cyclops_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\cyclops_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\dark_elves_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\dark_elves_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\default_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\default_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\demons_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\demons_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\djinn_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\djinn_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\dragons_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\dragons_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\dwarf_god_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\dwarf_god_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\dwarves_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\dwarves_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\eggs_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\eggs_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\elves_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\elves_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\ents_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\ents_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\flaming_skulls_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\flaming_skulls_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\flayers_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\flayers_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\flying_brain_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\flying_brain_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\ghosts_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\ghosts_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\ghost_god_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\ghost_god_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\goblins_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\goblins_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\golems_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\golems_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\greater_demons_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\greater_demons_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\greater_pit_snakes_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\greater_pit_snakes_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\hobbits_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\hobbits_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\lizard_god_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\lizard_god_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\medusa_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\medusa_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\minion_of_oryx_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\minion_of_oryx_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\mummies_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\mummies_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\night_elves_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\night_elves_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\ogres_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\ogres_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\orcs_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\orcs_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\oryx_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\oryx_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\pirates_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\pirates_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\pirate_king_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\pirate_king_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\pit_snakes_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\pit_snakes_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\pythons_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\pythons_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\rocks_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\rocks_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\scorpions_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\scorpions_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\skeletons_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\skeletons_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\skull_shrine_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\skull_shrine_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\slimes_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\slimes_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\snakes_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\snakes_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\snake_queen_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\snake_queen_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\spiders_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\spiders_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\spider_queen_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\spider_queen_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\sprites_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\sprites_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\sprite_god_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\sprite_god_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\stone_walls_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\stone_walls_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\thunder_god_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\thunder_god_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\traps_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\traps_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\trees_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\trees_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\undead_dwarves_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\undead_dwarves_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\undead_hobbits_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\undead_hobbits_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\wooden_walls_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\monster\wooden_walls_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\no_mana.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\player\archer_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\player\archer_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\player\knight_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\player\knight_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\player\paladin_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\player\paladin_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\player\priest_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\player\priest_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\player\rogue_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\player\rogue_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\player\warrior_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\player\warrior_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\player\wizard_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\player\wizard_hit.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\spell\fire_nova.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\spell\fire_spray.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\spell\light_heal.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\spell\magic_nova.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\spell\major_heal.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\use_key.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\use_potion.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\weapon\blunt_dagger.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\weapon\blunt_sword.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\weapon\cannon_shot.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\weapon\crossbow.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\weapon\dirk.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\weapon\double_bow.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\weapon\firework.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\weapon\fire_bow.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\weapon\fire_dagger.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\weapon\fire_sword.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\weapon\fire_wand.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\weapon\glass_sword.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\weapon\golden_bow.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\weapon\golden_dagger.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\weapon\golden_sword.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\weapon\heavy_crossbow.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\weapon\hells_fire_wand.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\weapon\long_sword.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\weapon\missile_wand.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\weapon\mithril_dagger.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\weapon\mithril_sword.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\weapon\obsidian_dagger.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\weapon\poison_fang_dagger.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\weapon\poor_quality_bow.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\weapon\spear_woosh.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\weapon\sprite_wand.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\weapon\wand_of_dark_magic.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\web\sfx\weapon\wand_of_death.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="StackExchange.Redis" Version="2.6.66" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="resources\web\data\languages\en.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\web\music\test.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\web\sfx\suweoww.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

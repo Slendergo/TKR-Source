@@ -24,8 +24,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TKR.App", "TKR.App\TKR.App.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TKR.Resources", "TKR.Resources\TKR.Resources.csproj", "{A1AA2F86-8165-4975-8096-DDF410DF1B3D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TKR.WebResources", "TKR.WebResources\TKR.WebResources.csproj", "{7B71A6F9-F4B7-438F-BE20-3882A75EDCFC}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -108,18 +106,6 @@ Global
 		{A1AA2F86-8165-4975-8096-DDF410DF1B3D}.Release|x64.Build.0 = Release|Any CPU
 		{A1AA2F86-8165-4975-8096-DDF410DF1B3D}.Release|x86.ActiveCfg = Release|Any CPU
 		{A1AA2F86-8165-4975-8096-DDF410DF1B3D}.Release|x86.Build.0 = Release|Any CPU
-		{7B71A6F9-F4B7-438F-BE20-3882A75EDCFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7B71A6F9-F4B7-438F-BE20-3882A75EDCFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7B71A6F9-F4B7-438F-BE20-3882A75EDCFC}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{7B71A6F9-F4B7-438F-BE20-3882A75EDCFC}.Debug|x64.Build.0 = Debug|Any CPU
-		{7B71A6F9-F4B7-438F-BE20-3882A75EDCFC}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{7B71A6F9-F4B7-438F-BE20-3882A75EDCFC}.Debug|x86.Build.0 = Debug|Any CPU
-		{7B71A6F9-F4B7-438F-BE20-3882A75EDCFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7B71A6F9-F4B7-438F-BE20-3882A75EDCFC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7B71A6F9-F4B7-438F-BE20-3882A75EDCFC}.Release|x64.ActiveCfg = Release|Any CPU
-		{7B71A6F9-F4B7-438F-BE20-3882A75EDCFC}.Release|x64.Build.0 = Release|Any CPU
-		{7B71A6F9-F4B7-438F-BE20-3882A75EDCFC}.Release|x86.ActiveCfg = Release|Any CPU
-		{7B71A6F9-F4B7-438F-BE20-3882A75EDCFC}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -127,7 +113,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{F931B1EF-F3C5-4397-A908-6953E33E14D1} = {821F7681-1891-4BCA-AA07-26B1B1702A96}
 		{A1AA2F86-8165-4975-8096-DDF410DF1B3D} = {821F7681-1891-4BCA-AA07-26B1B1702A96}
-		{7B71A6F9-F4B7-438F-BE20-3882A75EDCFC} = {821F7681-1891-4BCA-AA07-26B1B1702A96}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E7AFEAF5-AF5C-409C-8EEA-63D690E643D7}

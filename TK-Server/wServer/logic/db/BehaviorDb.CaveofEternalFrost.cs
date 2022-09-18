@@ -743,9 +743,9 @@ namespace wServer.logic
                 new State("attack1",
                     new Taunt("Hello friend. You seem to be lost. LET ME SHOW YOU THE WAY OUT!"),
                     new StayCloseToSpawn(2, 15),
-                    new Chase(12),
-                    new Shoot(8, 8, projectileIndex: 1, shootAngle: 10, coolDown: 1200),
-                    new Shoot(20, 6, projectileIndex: 2, coolDown: 600),
+                    new Wander(0.6),
+                    new Shoot(8, 8, projectileIndex: 1, shootAngle: 10, coolDown: 1400),
+                    new Shoot(20, 6, projectileIndex: 2, coolDown: 1000),
                     new HpLessTransition(.85, "return to spawn")
                     ),
                 new State("return to spawn",

@@ -82,7 +82,7 @@ public class BossHealthBar extends Sprite {
         if(go_.isInvulnerable()) {
             background.transform.colorTransform = MoreColorUtil.blueCT;
         }else{
-            background.transform.colorTransform = null;
+            background.transform.colorTransform = MoreColorUtil.redCT; //fix this "non null" error in console
         }
 
         mask_.width = (go_.rtHp_ / go_.maxHP_) * background.width;

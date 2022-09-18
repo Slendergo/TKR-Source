@@ -2272,7 +2272,7 @@
 			<ObjectId>ASM Big Shot</ObjectId>
 			<Damage>285</Damage>
 			<Size>150</Size>
-			<Speed>90</Speed>
+			<Speed>80</Speed>
 			<Frequency>1</Frequency>
 			<Amplitude>2</Amplitude>
 			<LifetimeMS>4000</LifetimeMS>
@@ -2283,21 +2283,21 @@
 			<ObjectId>Projectile 1 CSS</ObjectId>
 			<Damage>405</Damage>
 			<Size>150</Size>
-			<Speed>90</Speed>
+			<Speed>80</Speed>
 			<LifetimeMS>4000</LifetimeMS>
 		</Projectile>
 		<Projectile id="2">
 			<ObjectId>Projectile 2 CSS</ObjectId>
 			<Damage>515</Damage>
 			<Size>150</Size>
-			<Speed>100</Speed>
+			<Speed>80</Speed>
 			<LifetimeMS>5000</LifetimeMS>
 		</Projectile>
 		<Projectile id="3">
 			<ObjectId>Projectile 0 GFS</ObjectId>
 			<Damage>300</Damage>
 			<Size>150</Size>
-			<Speed>100</Speed>
+			<Speed>80</Speed>
 			<Frequency>2</Frequency>
 			<Amplitude>0.5</Amplitude>
 			<LifetimeMS>5000</LifetimeMS>
@@ -2306,14 +2306,14 @@
 			<ObjectId>CSS Big 1</ObjectId>
 			<Damage>300</Damage>
 			<Size>150</Size>
-			<Speed>100</Speed>
+			<Speed>80</Speed>
 			<LifetimeMS>1500</LifetimeMS>
 		</Projectile>
 		<Projectile id="5">
 			<ObjectId>CSS Shot 1</ObjectId>
 			<Damage>300</Damage>
 			<Size>150</Size>
-			<Speed>90</Speed>
+			<Speed>80</Speed>
 			<LifetimeMS>5000</LifetimeMS>
 		</Projectile>
 		<Projectile id="6">

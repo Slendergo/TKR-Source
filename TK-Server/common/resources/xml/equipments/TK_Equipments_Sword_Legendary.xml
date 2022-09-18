@@ -133,7 +133,7 @@
 		<SlotType>1</SlotType>
 		<Legendary />
 		<Description>“Cowards die many times before their deaths; The valiant never taste of death but once.”</Description>
-		<RateOfFire>0.55</RateOfFire>
+		<RateOfFire>1</RateOfFire>
 		<Sound>weapon/mithril_sword</Sound>
 		<Projectile>
 			<ObjectId>Thiram Shot</ObjectId>
@@ -232,7 +232,7 @@
 			<Speed>75</Speed>
 			<MinDamage>666</MinDamage>
             <ParticleTrail lifetimeMS="300">0x7E3F00</ParticleTrail>
-			<MaxDamage>600</MaxDamage>
+			<MaxDamage>667</MaxDamage>
 			<LifetimeMS>627</LifetimeMS>
 			<Size>100</Size>
 			<MultiHit />

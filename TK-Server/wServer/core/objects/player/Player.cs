@@ -264,8 +264,12 @@ namespace wServer.core.objects
                 ApplyPermanentConditionEffect(ConditionEffectIndex.Invincible);
             }
 
+            ToggleLootChanceNotification = client.Account.ToggleLootChanceNotification;
+
             LoadTalismanData();
         }
+
+        public bool ToggleLootChanceNotification { get; private set; }
 
         public void CalculateRank()
         {

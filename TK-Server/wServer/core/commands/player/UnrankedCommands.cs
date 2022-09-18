@@ -1358,6 +1358,16 @@ namespace wServer.core.commands
         }
     }
 
+    internal class ToggleLootChanceDisplaycommand : Command
+    {
+        public override string CommandName => "togglelootchances";
+
+        protected override bool Process(Player player, TickTime time, string args)
+        {
+            player.Client.Account.ToggleLootChanceNotification = !player.Client.Account.ToggleLootChanceNotification;
+            return true;
+        }
+    }
     internal class TradeCommand : Command
     {
         public override string CommandName => "trade";

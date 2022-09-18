@@ -285,15 +285,18 @@ namespace wServer.logic.loot
                             continue;
                         }
 
-                        //var isEligible = item.Revenge || item.Mythical || item.Legendary;
-                        //if (isEligible)
-                        //{
-                        //    var chance = Math.Round(1 / probability, 2);
-                        //    var roll = Math.Round(c / probability, 2);
+                        if (player.ToggleLootChanceNotification) 
+                        {
+                            var isEligible = item.Revenge || item.Mythical || item.Legendary;
+                            if (isEligible)
+                            {
+                                var chance = Math.Round(1 / probability, 2);
+                                var roll = Math.Round(c / probability, 2);
 
-                        //    if (roll > chance * 0.8)
-                        //        player.SendInfo($"You have rolled: {roll}/{chance} for: {item.DisplayId ?? item.ObjectId}");
-                        //}
+                                if (roll > chance * 0.8)
+                                    player.SendInfo($"You have rolled: {roll}/{chance} for: {item.DisplayId ?? item.ObjectId}");
+                            }
+                        }
 
                         if (c >= probability)
                             continue;

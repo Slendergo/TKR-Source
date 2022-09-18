@@ -920,6 +920,8 @@
 		<Quest />
 		<God />
 		<StasisImmune />
+		<StunImmune />
+		<ParalyzedImmune />
 		<Class>Character</Class>
 		<AnimatedTexture>
 			<File>Custom32x32Encounters</File>

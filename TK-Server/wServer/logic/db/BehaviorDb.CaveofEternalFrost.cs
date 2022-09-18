@@ -476,7 +476,7 @@ namespace wServer.logic
                 new ItemLoot("Potion of Mana", 1),
                 new ItemLoot("Potion of Vitality", 1),
                 new ItemLoot("Potion of Mana", 1),
-                new ItemLoot("Frozen Coin", 0.05),
+                new ItemLoot("Frozen Coin", 0.1),
                 new ItemLoot("Magic Dust", 0.5)
                 )
             )
@@ -664,7 +664,7 @@ namespace wServer.logic
                 new ItemLoot("Greater Potion of Vitality", 1),
                 new ItemLoot("Greater Potion of Mana", 1),
                 new ItemLoot("Magic Dust", 0.5),
-                new ItemLoot("Frozen Coin", 0.05),
+                new ItemLoot("Frozen Coin", 0.1),
                 new ItemLoot("Glowing Talisman", 0.0014)
                 ),
              new Threshold(0.03,
@@ -713,7 +713,7 @@ namespace wServer.logic
                 new ItemLoot("Agdluak", 0.0001),
                 new ItemLoot("Absolute Zero", 0.0001),
                 new ItemLoot("Cryogenic Freeze", 0.0001),
-                new ItemLoot("Frozen Coin", 0.05),
+                new ItemLoot("Frozen Coin", 0.1),
                 new ItemLoot("Glowing Talisman", 0.0014)
                  )
             )
@@ -1142,7 +1142,7 @@ namespace wServer.logic
                 new ItemLoot("Greater Potion of Dexterity", 1),
                 new ItemLoot("Greater Potion of Attack", 1),
                 new ItemLoot("Greater Potion of Dexterity", 1),
-                new ItemLoot("Frozen Coin", 0.05),
+                new ItemLoot("Frozen Coin", 0.1),
                 new ItemLoot("Glowing Talisman", 0.0014)
                 ),
              new Threshold(0.03,

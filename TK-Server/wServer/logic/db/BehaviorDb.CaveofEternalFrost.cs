@@ -1266,9 +1266,9 @@ namespace wServer.logic
                 new ItemLoot("Glowing Talisman", 0.0014)
                 ),
              new Threshold(0.03,
-                new ItemLoot("Agdluak", 0.0001),
-                new ItemLoot("Absolute Zero", 0.0001),
-                new ItemLoot("Cryogenic Freeze", 0.0001)
+                new ItemLoot("Agdluak", 0.0003),
+                new ItemLoot("Absolute Zero", 0.0003),
+                new ItemLoot("Cryogenic Freeze", 0.0003)
                  )
             )
         .Init("Guardian of the Ice Queen",

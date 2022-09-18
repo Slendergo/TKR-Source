@@ -334,8 +334,8 @@ namespace wServer.core.objects
         public override bool CanBeSeenBy(Player player)
         {
             if (IsAdmin || IsCommunityManager)
-                return true;
-            return !player.HasConditionEffect(ConditionEffectIndex.Hidden);
+                return false;
+            return !HasConditionEffect(ConditionEffectIndex.Hidden);
         }
 
         public void Damage(int dmg, Entity src)

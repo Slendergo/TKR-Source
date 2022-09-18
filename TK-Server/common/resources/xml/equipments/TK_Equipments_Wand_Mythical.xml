@@ -2,7 +2,7 @@
   <Object type="0x5013" id="Eldritch Fury">
     <Class>Equipment</Class>
     <Item />
-    <Insanity />
+	  <Insanity />
     <Texture>
       <File>CustomObj</File>
       <Index>0x46</Index>

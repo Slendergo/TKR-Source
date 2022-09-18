@@ -25,7 +25,7 @@ namespace wServer.logic
                         new TimedTransition(10000, "Circle"),
                         new State("Imma Follow",
                             new Follow(1, 2, 0.3),
-                            new Shoot(5, 5, shootAngle: 5, coolDown: 1000),
+                            new Shoot(15, 5, shootAngle: 5, coolDown: 1000),
                             new TimedTransition(5000, "Imma chill")
                             ),
                         new State("Imma chill",
@@ -47,7 +47,7 @@ namespace wServer.logic
                             new TimedTransition(1000, "PrepareEnd")
                             ),
                         new State("PrepareEnd",
-                            new Orbit(1, 5, target: "Oryx Guardian TaskMaster"),
+                            new Orbit(3, 5, target: "Oryx Guardian TaskMaster"),
                             new State("cpe_1",
                                 new Shoot(20, 2, fixedAngle: 0, projectileIndex: 1),
                                 new TimedTransition(200, "cpe_2")

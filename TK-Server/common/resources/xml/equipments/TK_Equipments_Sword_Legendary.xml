@@ -125,7 +125,7 @@
   	<Object type="0xa429" id="Spear of Thiram">
 		<Class>Equipment</Class>
 		<Item />
-		<Insanity />
+		<Vampiric />
 		<Texture>
 			<File>CustomObj</File>
 			<Index>0xdf</Index>

@@ -6168,10 +6168,26 @@
     <Potion/>
     <BagType>5</BagType>
   </Object>
+	<Object type="0x4341" id="Frozen Coin">
+		<Class>Equipment</Class>
+		<Item/>
+		<SPlus/>
+		<NoTierTag/>
+		<Description>Freezing</Description>
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x26</Index>
+		</Texture>
+		<SlotType>10</SlotType>
+		<QuantityLimit>200</QuantityLimit>
+		<Quantity>1</Quantity>
+		<BagType>5</BagType>
+	</Object>
   <Object type="0x6498" id="Glowing Shard">
     <Class>Equipment</Class>
     <Item/>
     <SPlus/>
+	  <NoTierTag/>
     <Description>Fuel used to power the LB Generator! Stack up to 50 and help provide LB to the entire server.</Description>
     <Texture>
       <File>CustomObj</File>

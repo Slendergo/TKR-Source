@@ -77,6 +77,20 @@
 		<StasisImmune />
 		<DisplayId>Ice wall spawner</DisplayId>
 	</Object>
+	<Object type="0x4333" id="Mortomus Wall Spawner">
+		<Class>Character</Class>
+		<Enemy />
+		<MaxHitPoints>9999</MaxHitPoints>
+		<Texture>
+			<File>invisible</File>
+			<Index>0</Index>
+		</Texture>
+		<NoMiniMap />
+		<Size>0</Size>
+		<XpMult>0.0</XpMult>
+		<StasisImmune />
+		<DisplayId>Mortomus Wall spawner</DisplayId>
+	</Object>
 	<Object type="0x4305" id="Water Creator">
 		<Class>Character</Class>
 		<Enemy />

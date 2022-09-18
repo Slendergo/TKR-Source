@@ -24,6 +24,7 @@ namespace wServer.core.commands
                         {
                             case "Magic Dust": maxStacks = 5; break;
                             case "Glowing Shard": maxStacks = 50; break;
+                            case "Frozen Coin": maxStacks = 200; break;
                             default: continue;
                         }
                         if (inventory.Data[i] == null)

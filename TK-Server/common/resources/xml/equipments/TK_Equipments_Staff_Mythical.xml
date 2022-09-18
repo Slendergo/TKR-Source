@@ -10,13 +10,13 @@
     <Eternal />
     <SlotType>17</SlotType>
     <Description>Incredible power capable of incinerating everything in sight. But, with the extreme heat that rapidly pours out, extra steps of caution must be implemented to avoid severe burns.</Description>
-    <RateOfFire>.95</RateOfFire>
+    <RateOfFire>1</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
       <ObjectId>Fire Elemental Staff Shoot</ObjectId>
       <Speed>180</Speed>
-      <MinDamage>225</MinDamage>
-      <MaxDamage>285</MaxDamage>
+      <MinDamage>260</MinDamage>
+      <MaxDamage>305</MaxDamage>
       <LifetimeMS>475</LifetimeMS>
       <Amplitude>0.35</Amplitude>
       <Frequency>2.49</Frequency>

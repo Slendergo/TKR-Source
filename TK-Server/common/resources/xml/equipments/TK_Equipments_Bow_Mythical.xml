@@ -59,7 +59,7 @@
     </Projectile>
     <NumProjectiles>3</NumProjectiles>
     <ArcGap>3</ArcGap>
-    <ActivateOnEquip stat="22" amount="3">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="3">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
     <BagType>8</BagType>
     <FameBonus>7</FameBonus>

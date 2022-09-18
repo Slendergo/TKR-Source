@@ -388,7 +388,6 @@
 		<Static />
 		<BlocksSight />
 		<OccupySquare />
-		<EnemyOccupySquare />
 		<Size>100</Size>
 	</Object>
 	<Object type="0x20A" id="Dark Tree 2">

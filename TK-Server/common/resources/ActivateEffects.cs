@@ -39,6 +39,7 @@
         UpgradeStat,
         UpgradeActivate,
         MagicDust,
+        FrozenCoin,
         UnlockSkin,
         MysteryDyes,
         Fame,

@@ -133,7 +133,7 @@
 		<ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
       <BagType>7</BagType>
       <FameBonus>4</FameBonus>
-      <MpCost>185</MpCost>
+      <MpCost>110</MpCost>
       <ArcGap>6</ArcGap>
       <NumProjectiles>4</NumProjectiles>
       <Activate>Shoot</Activate>

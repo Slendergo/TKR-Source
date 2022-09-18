@@ -10,12 +10,12 @@
     </Texture>
     <SlotType>17</SlotType>
     <Description>Ripped from the remains of the King's Avatar. It is oddly smaller than the rest of the corpse.</Description>
-    <RateOfFire>1.25</RateOfFire>
+    <RateOfFire>1.2</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
       <ObjectId>Ashen Spine Shoot</ObjectId>
       <Speed>150</Speed>
-      <MinDamage>150</MinDamage>
+      <MinDamage>175</MinDamage>
       <MaxDamage>200</MaxDamage>
       <LifetimeMS>400</LifetimeMS>
       <Frequency>1.1</Frequency>
@@ -46,12 +46,12 @@
     <ExtraTooltipData>
       <EffectInfo name="" description="Shoots backwards" />
     </ExtraTooltipData>
-    <RateOfFire>0.60</RateOfFire>
+    <RateOfFire>0.65</RateOfFire>
     <Projectile>
       <ObjectId>Cultist Fire Shot</ObjectId>
       <Size>70</Size>
       <Speed>115</Speed>
-      <MinDamage>160</MinDamage>
+      <MinDamage>170</MinDamage>
       <MaxDamage>200</MaxDamage>
       <LifetimeMS>700</LifetimeMS>
       <MultiHit />
@@ -75,14 +75,14 @@
     <Legendary />
     <SlotType>17</SlotType>
     <Description>An ancient staff used both for sacrifice and communion with the gods.</Description>
-    <RateOfFire>1</RateOfFire>
+    <RateOfFire>.95</RateOfFire>
     <Sound>monster/djinn_hit</Sound>
     <Projectile>
       <ObjectId>Plasma Missile</ObjectId>
       <Speed>110</Speed>
 		<Size>120</Size>
       <MinDamage>115</MinDamage>
-      <MaxDamage>145</MaxDamage>
+      <MaxDamage>140</MaxDamage>
 		<Wavy/>
       <LifetimeMS>550</LifetimeMS>
       <Amplitude>0.2</Amplitude>
@@ -105,13 +105,13 @@
     <Legendary />
     <SlotType>17</SlotType>
     <Description>“Just keep swimming. Just keep swimming, swimming, swimming.”</Description>
-    <RateOfFire>1.10</RateOfFire>
+    <RateOfFire>1.05</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
       <ObjectId>Thessal Slayer Shot</ObjectId>
       <Speed>150</Speed>
       <MinDamage>165</MinDamage>
-      <MaxDamage>200</MaxDamage>
+      <MaxDamage>205</MaxDamage>
       <LifetimeMS>500</LifetimeMS>
       <Amplitude>0.55</Amplitude>
       <Frequency>-2</Frequency>
@@ -135,13 +135,13 @@
     </Texture>
     <SlotType>17</SlotType>
     <Description>An unstable marriage of polar opposites. Such an anomaly only leads to disaster.</Description>
-    <RateOfFire>1.05</RateOfFire>
+    <RateOfFire>1.1</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
       <ObjectId>Rod of Frost Burn Shoot</ObjectId>
       <Speed>160</Speed>
-      <MinDamage>355</MinDamage>
-      <MaxDamage>380</MaxDamage>
+      <MinDamage>370</MinDamage>
+      <MaxDamage>395</MaxDamage>
       <LifetimeMS>500</LifetimeMS>
       <Frequency>0.55</Frequency>
       <Amplitude>0.6</Amplitude>
@@ -173,8 +173,8 @@
     <Projectile>
       <ObjectId>Scythe of the Reaper Shoot</ObjectId>
       <Speed>170</Speed>
-      <MinDamage>130</MinDamage>
-      <MaxDamage>235</MaxDamage>
+      <MinDamage>170</MinDamage>
+      <MaxDamage>230</MaxDamage>
       <LifetimeMS>353</LifetimeMS>
       <Frequency>0.72</Frequency>
       <Amplitude>0.6</Amplitude>
@@ -202,13 +202,13 @@
 		<Legendary />
 		<SlotType>17</SlotType>
 		<Description>The Keeper of Souls most precious item. Corrupt and evil magic lingers at the edge of the blade from burying dead adventurers.</Description>
-		<RateOfFire>0.75</RateOfFire>
+		<RateOfFire>0.7</RateOfFire>
 		<Sound>weapon/fire_wand</Sound>
 		<Projectile>
 			<ObjectId>Mortomus Shovel Shot</ObjectId>
 			<Speed>95</Speed>
-			<MinDamage>125</MinDamage>
-			<MaxDamage>170</MaxDamage>
+			<MinDamage>135</MinDamage>
+			<MaxDamage>175</MaxDamage>
 			<LifetimeMS>800</LifetimeMS>
 			<Amplitude>0.5</Amplitude>
 			<Frequency>1</Frequency>
@@ -232,13 +232,13 @@
 		<Mythical />
 		<SlotType>17</SlotType>
 		<Description></Description>
-		<RateOfFire>1</RateOfFire>
+		<RateOfFire>1.05</RateOfFire>
 		<Sound>weapon/fire_wand</Sound>
 		<Projectile>
 			<ObjectId>Expanse Shot</ObjectId>
 			<Speed>180</Speed>
-			<MinDamage>210</MinDamage>
-			<MaxDamage>300</MaxDamage>
+			<MinDamage>250</MinDamage>
+			<MaxDamage>290</MaxDamage>
 			<ParticleTrail lifetimeMS="300">0x0089D1</ParticleTrail>
 			<LifetimeMS>700</LifetimeMS>
 			<Amplitude>0.5</Amplitude>
@@ -251,6 +251,6 @@
 		<ArcGap>0</ArcGap>
 		<BagType>6</BagType>
 		<FameBonus>6</FameBonus>
-		<DisplayId>The Expanse</DisplayId>
+		<DisplayId>The Expansion</DisplayId>
 	</Object>
 </Objects>

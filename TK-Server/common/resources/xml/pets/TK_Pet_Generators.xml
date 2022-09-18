@@ -108,6 +108,24 @@
 		<OldSound>use_potion</OldSound>
 		<DonorItem/>
 	</Object>
+	<Object type="0x4336" id="Flying Lion Generator">
+		<DisplayId>Flying Lion</DisplayId>
+		<Class>Equipment</Class>
+		<Item />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x56</Index>
+		</Texture>
+		<SlotType>10</SlotType>
+		<Description>I may follow you, but you are not my master.</Description>
+		<Sound>spell/light_heal</Sound>
+		<InvUse />
+		<VaultItem />
+		<Soulbound />
+		<Activate objectId="Flying Lion" cooldown="10">PermaPet</Activate>
+		<OldSound>use_potion</OldSound>
+		<DonorItem/>
+	</Object>
 	<Object type="0x1693" id="Drip Camel Generator">
 		<DisplayId>Drip Camel</DisplayId>
 		<Class>Equipment</Class>

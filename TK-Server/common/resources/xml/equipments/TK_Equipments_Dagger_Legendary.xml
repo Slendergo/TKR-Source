@@ -130,8 +130,8 @@
     <Projectile>
       <ObjectId>Titan Slayer Shoot</ObjectId>
       <Speed>120</Speed>
-      <MinDamage>525</MinDamage>
-      <MaxDamage>585</MaxDamage>
+      <MinDamage>485</MinDamage>
+      <MaxDamage>535</MaxDamage>
       <LifetimeMS>650</LifetimeMS>
       <Amplitude>0.25</Amplitude>
       <Frequency>1</Frequency>

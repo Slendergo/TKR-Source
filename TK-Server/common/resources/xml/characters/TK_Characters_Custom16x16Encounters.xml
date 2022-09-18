@@ -1724,6 +1724,8 @@
 		<Enemy />
 		<SpecialEnemy />
 		<Hero />
+		<Event/>
+		<Quest/>
 		<God />
 		<Level>20</Level>
 		<AnimatedTexture>
@@ -1803,6 +1805,8 @@
 		<Enemy />
 		<SpecialEnemy />
 		<Hero />
+		<Event/>
+		<Quest/>
 		<God />
 		<Level>1</Level>
 		<AnimatedTexture>
@@ -1821,42 +1825,41 @@
 		<XpMult>3</XpMult>
 		<Projectile id="0">
 			<ObjectId>Projectile 0 QI</ObjectId>
-			<Damage>160</Damage>
+			<Damage>260</Damage>
 			<Size>150</Size>
 			<Speed>90</Speed>
 			<LifetimeMS>4000</LifetimeMS>
 			<ArmorPiercing/>
-			<ConditionEffect duration="3">Paralyzed</ConditionEffect>
 		</Projectile>
 		<Projectile id="1">
 			<ObjectId>Projectile 1 QI</ObjectId>
-			<Damage>130</Damage>
+			<Damage>230</Damage>
 			<Size>150</Size>
 			<Speed>100</Speed>
 			<LifetimeMS>4000</LifetimeMS>
 			<MultiHit />
 			<ArmorPiercing/>
-			<ConditionEffect duration="4">Confused</ConditionEffect>
+			<ConditionEffect duration="1">Confused</ConditionEffect>
 		</Projectile>
 		<Projectile id="2">
 			<ObjectId>Projectile 2 QI</ObjectId>
-			<Damage>150</Damage>
+			<Damage>250</Damage>
 			<Size>150</Size>
 			<Speed>85</Speed>
 			<LifetimeMS>4000</LifetimeMS>
 			<MultiHit />
 			<ConditionEffect duration="1">Quiet</ConditionEffect>
-			<ConditionEffect duration="2.5">Stunned</ConditionEffect>
+			<ConditionEffect duration="1.5">Stunned</ConditionEffect>
 		</Projectile>
 		<Projectile id="3">
 			<ObjectId>Projectile 3 QI</ObjectId>
-			<Damage>180</Damage>
+			<Damage>280</Damage>
 			<Size>150</Size>
 			<Speed>80</Speed>
 			<LifetimeMS>4000</LifetimeMS>
 			<MultiHit />
 			<ConditionEffect duration="1">Quiet</ConditionEffect>
-			<ConditionEffect duration="2.5">Stunned</ConditionEffect>
+			<ConditionEffect duration="1.5">Stunned</ConditionEffect>
 		</Projectile>
 		<Projectile id="4">
 			<ObjectId>Projectile 4 QI</ObjectId>
@@ -1904,6 +1907,8 @@
 		<SpecialEnemy />
 		<Hero />
 		<God />
+		<Event/>
+		<Quest/>
 		<Level>1</Level>
 		<AnimatedTexture>
 			<File>Custom16x16Encounters</File>
@@ -2246,6 +2251,8 @@
 		<Class>Character</Class>
 		<Enemy />
 		<SpecialEnemy />
+		<Event/>
+		<Quest/>
 		<Hero />
 		<God />
 		<Level>1</Level>

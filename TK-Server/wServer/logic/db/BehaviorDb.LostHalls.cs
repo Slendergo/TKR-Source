@@ -791,10 +791,10 @@ namespace wServer.logic
                 new ItemLoot("Bloodshed Ring", 0.00125)
            ),
        new Threshold(0.05,
-           new ItemLoot("Marbled Concoction", 0.00033),
-           new ItemLoot("Titan Slayer", 0.00033),
-           new ItemLoot("Colossal Plated Hide", 0.00033),
-           new ItemLoot("Omnipotence Ring", 0.00033)
+           new ItemLoot("Marbled Concoction", 0.00125),
+           new ItemLoot("Titan Slayer", 0.00125),
+           new ItemLoot("Colossal Plated Hide", 0.00125),
+           new ItemLoot("Omnipotence Ring", 0.0003)
                 )
             );
 

@@ -672,7 +672,7 @@
 		</AnimatedTexture>
 		<DisplayId>Mortomus, Keeper of Souls</DisplayId>
 		<Size>170</Size>
-		<MaxHitPoints>300000</MaxHitPoints>
+		<MaxHitPoints>450000</MaxHitPoints>
 		<Defense>30</Defense>
 		<StasisImmune/>
 		<StunImmune/>
@@ -681,7 +681,7 @@
 		<XpMult>1.2</XpMult>
 		<Projectile id="0">
 			<ObjectId>Morto Green</ObjectId>
-			<Damage>100</Damage>
+			<Damage>190</Damage>
 			<Size>150</Size>
 			<Speed>90</Speed>
 			<ArmorPierce />
@@ -700,7 +700,7 @@
 		</Projectile>
 		<Projectile id="2">
 			<ObjectId>Morto Dark Green</ObjectId>
-			<Damage>70</Damage>
+			<Damage>165</Damage>
 			<Size>150</Size>
 			<Speed>100</Speed>
 			<MultiHit />
@@ -1695,7 +1695,7 @@
 		<ParalyzeImmune/>
 		<Projectile id="0">
 			<ObjectId>Projectile 0 GIQ</ObjectId>
-			<Damage>120</Damage>
+			<Damage>220</Damage>
 			<Speed>65</Speed>
 			<Size>80</Size>
 			<ArmorPiercing/>

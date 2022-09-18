@@ -45,8 +45,8 @@
     <Projectile>
       <ObjectId>Void Arrow</ObjectId>
       <Speed>200</Speed>
-      <MinDamage>350</MinDamage>
-      <MaxDamage>385</MaxDamage>
+      <MinDamage>425</MinDamage>
+      <MaxDamage>455</MaxDamage>
       <LifetimeMS>315</LifetimeMS>
       <MultiHit />
       <Amplitude>0.35</Amplitude>
@@ -70,12 +70,12 @@
     <SlotType>3</SlotType>
     <Legendary />
     <Description>“The legendary firearm forged from hard steel and pirate blood containing mighty power.”</Description>
-    <RateOfFire>.95</RateOfFire>
+    <RateOfFire>1</RateOfFire>
 	<OldSound>weapon/cannon_shot</OldSound>
     <Projectile>
       <ObjectId>Giant Cannonball2</ObjectId>
       <Speed>150</Speed>
-      <MinDamage>110</MinDamage>
+      <MinDamage>105</MinDamage>
       <MaxDamage>150</MaxDamage>
       <LifetimeMS>500</LifetimeMS>
 		<MultiHit/>
@@ -132,17 +132,17 @@
     <Legendary />
     <SlotType>3</SlotType>
     <Description>The drawstring on this make-shift bow was not designed to notch traditional arrows. Rather, it launches high velocity bones.</Description>
-    <RateOfFire>.95</RateOfFire>
+    <RateOfFire>.85</RateOfFire>
     <Sound>weapon/poor_quality_bow</Sound>
     <Projectile>
       <ObjectId>Fang Flinger Shoot</ObjectId>
       <Speed>155</Speed>
-      <MinDamage>255</MinDamage>
-      <MaxDamage>275</MaxDamage>
+      <MinDamage>230</MinDamage>
+      <MaxDamage>250</MaxDamage>
       <LifetimeMS>452</LifetimeMS>
       <Amplitude>0.45</Amplitude>
       <Frequency>2</Frequency>
-      <Size>100</Size>
+      <Size>70</Size>
 		<ArmorPiercing />
       <MultiHit />
     </Projectile>
@@ -165,13 +165,13 @@
 		<Mythical />
 		<SlotType>3</SlotType>
 		<Description></Description>
-		<RateOfFire>.95</RateOfFire>
+		<RateOfFire>1</RateOfFire>
 		<Sound>weapon/poor_quality_bow</Sound>
 		<Projectile>
 			<ObjectId>Ice Bow Shot</ObjectId>
 			<Speed>165</Speed>
-			<MinDamage>255</MinDamage>
-			<MaxDamage>285</MaxDamage>
+			<MinDamage>250</MinDamage>
+			<MaxDamage>295</MaxDamage>
 			<Boomerang/>
 			<LifetimeMS>850</LifetimeMS>
 			<Amplitude>0.4</Amplitude>
@@ -183,11 +183,9 @@
 		</Projectile>
 		<NumProjectiles>2</NumProjectiles>
 		<ArcGap>4</ArcGap>
-		<ActivateOnEquip stat="22" amount="6">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="26" amount="-3">IncrementStat</ActivateOnEquip>
 		<BagType>7</BagType>
 		<FameBonus>7</FameBonus>
-		<SteamRoller />
+		<Insanity />
 		<DisplayId>World of Ice</DisplayId>
 	</Object>
 </Objects>

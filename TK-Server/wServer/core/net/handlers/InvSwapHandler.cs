@@ -17,7 +17,7 @@ namespace wServer.core.net.handlers
     public class InvSwapHandler : IMessageHandler
     {
         private const ushort soulBag = 0x0503;
-        private static readonly string[] StackableItems = new string[] { "Magic Dust", "Glowing Shard" }; //stackable items
+        private static readonly string[] StackableItems = new string[] { "Magic Dust", "Glowing Shard", "Frozen Coin" }; //stackable items
 
         public override MessageId MessageId => MessageId.INVSWAP;
 

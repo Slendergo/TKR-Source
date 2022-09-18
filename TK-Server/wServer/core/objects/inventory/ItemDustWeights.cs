@@ -14,6 +14,7 @@ namespace wServer.core.objects.inventory
         public ItemDustPools MiscDust { get; private set; } = new ItemDustPools();
         public ItemDustPools PotionDust { get; private set; } = new ItemDustPools();
         public ItemDustPools TalismanFragment { get; private set; } = new ItemDustPools();
+        public ItemDustPools FrozenCoin { get; private set; } = new ItemDustPools();
 
         private readonly GameServer GameServer;
 
@@ -32,6 +33,8 @@ namespace wServer.core.objects.inventory
                 MiscDust.AddPool(GetItems(items, xmlData));
             foreach(var items in xmlData.ItemDusts.TalismanPools)
                 TalismanFragment.AddPool(GetItems(items, xmlData));
+            foreach (var items in xmlData.ItemDusts.FrozenCoinPools)
+                FrozenCoin.AddPool(GetItems(items, xmlData));
             foreach (var items in xmlData.ItemDusts.PotionPools)
                 PotionDust.AddPool(GetItems(items, xmlData));
         }

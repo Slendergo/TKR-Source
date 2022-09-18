@@ -38,9 +38,10 @@
     <Usable />
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
-    <MpCost>100</MpCost>
+    <MpCost>125</MpCost>
     <Activate effect="Curse" duration="8" range="5" color="0x808080" target="enemy" center="mouse" visualEffect="8" useWisMod="false">GenericActivate</Activate>
-    <Activate effect="Damaging" duration="4" useWisMod="false">ConditionEffectSelf</Activate>
+    <Activate effect="Damaging" duration="2.5" useWisMod="false">ConditionEffectSelf</Activate>
+	<Activate effect="Berserk" duration="2.5" useWisMod="false">ConditionEffectSelf</Activate>
 		<Cooldown>5</Cooldown></Object>
 		  <Object type="0x50f6" id="Forgotten Flames">
     <Class>Equipment</Class>

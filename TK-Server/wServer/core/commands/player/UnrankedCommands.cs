@@ -651,7 +651,7 @@ namespace wServer.core.commands
 
     internal class ChecKBoostsCommand : Command
     {
-        public override string CommandName => "checkboosts";
+        public override string CommandName => "lb";
 
         protected override bool Process(Player player, TickTime time, string args)
         {

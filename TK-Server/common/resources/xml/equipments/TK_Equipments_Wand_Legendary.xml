@@ -10,7 +10,7 @@
     </Texture>
     <SlotType>8</SlotType>
     <Description>This wand is powerful at conducting magical energy into a devastating blast.</Description>
-    <RateOfFire>1.1</RateOfFire>
+    <RateOfFire>1</RateOfFire>
     <Sound>weapon/wand_of_death</Sound>
     <Projectile>
       <ObjectId>Directed Explosion</ObjectId>
@@ -39,12 +39,12 @@
     <SlotType>8</SlotType>
     <Legendary />
     <Description>Capable of absorbing the pain dealt to others, then dishing it back to them at incredible rates.</Description>
-    <RateOfFire>1.1</RateOfFire>
+    <RateOfFire>1</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
       <ObjectId>Wand of Pain Shoot</ObjectId>
       <Speed>200</Speed>
-      <MinDamage>200</MinDamage>
+      <MinDamage>205</MinDamage>
       <MaxDamage>215</MaxDamage>
       <LifetimeMS>450</LifetimeMS>
       <Amplitude>0.26</Amplitude>
@@ -73,8 +73,8 @@
     <Projectile>
       <ObjectId>TH Stinger Large2</ObjectId>
       <Speed>140</Speed>
-      <MinDamage>145</MinDamage>
-      <MaxDamage>225</MaxDamage>
+      <MinDamage>205</MinDamage>
+      <MaxDamage>220</MaxDamage>
       <LifetimeMS>536</LifetimeMS>
       <Frequency>0.9</Frequency>
       <Amplitude>0.45</Amplitude>
@@ -107,8 +107,8 @@
     <Projectile>
       <ObjectId>Geb's Hand Shot</ObjectId>
       <Speed>165.5</Speed>
-      <MinDamage>335</MinDamage>
-      <MaxDamage>385</MaxDamage>
+      <MinDamage>360</MinDamage>
+      <MaxDamage>400</MaxDamage>
       <LifetimeMS>423</LifetimeMS>
       <Size>100</Size>
       <MultiHit />
@@ -158,13 +158,13 @@
 		<SlotType>8</SlotType>
 		<Legendary />
 		<Description>The acidic goop dissolved the previous owner whole, leaving behind only the weapon and what remains of the toxic sludge.</Description>
-		<RateOfFire>0.85</RateOfFire>
+		<RateOfFire>0.8</RateOfFire>
 		<Sound>weapon/fire_wand</Sound>
 		<Projectile>
 			<ObjectId>Morto Square</ObjectId>
 			<Speed>120</Speed>
-			<MinDamage>245</MinDamage>
-			<MaxDamage>265</MaxDamage>
+			<MinDamage>235</MinDamage>
+			<MaxDamage>250</MaxDamage>
 			<Amplitude>1</Amplitude>
 			<Frequency>1.05</Frequency>
 			<LifetimeMS>542</LifetimeMS>
@@ -188,7 +188,7 @@
 		<SlotType>8</SlotType>
 		<Mythical />
 		<Description></Description>
-		<RateOfFire>0.85</RateOfFire>
+		<RateOfFire>0.55</RateOfFire>
 		<Sound>weapon/fire_wand</Sound>
 		<Projectile>
 			<ObjectId>Ice Wand Shot</ObjectId>

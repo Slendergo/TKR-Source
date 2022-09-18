@@ -10,13 +10,13 @@
     <Eternal />
     <SlotType>8</SlotType>
     <Description>A precious artifact given new life by purified flames provided from the fire elemental.</Description>
-    <RateOfFire>.95</RateOfFire>
+    <RateOfFire>1.05</RateOfFire>
     <Sound>weapon/fire_wand</Sound>
     <Projectile>
       <ObjectId>Fire Elemental Wand Shoot</ObjectId>
       <Speed>180</Speed>
-      <MinDamage>125</MinDamage>
-      <MaxDamage>155</MaxDamage>
+      <MinDamage>105</MinDamage>
+      <MaxDamage>150</MaxDamage>
       <LifetimeMS>500</LifetimeMS>
       <Amplitude>0.34</Amplitude>
       <Frequency>0.98</Frequency>

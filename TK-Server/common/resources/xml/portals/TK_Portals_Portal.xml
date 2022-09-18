@@ -485,6 +485,7 @@
 	<Object type="0x2023" id="Defiled Graveyard Portal">
 		<DisplayId>Defiled Graveyard</DisplayId>
 		<Class>Portal</Class>
+		<Size>60</Size>
 		<IntergamePortal />
 		<DungeonName>Defiled Graveyard</DungeonName>
 		<Texture>

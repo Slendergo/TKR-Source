@@ -40,6 +40,11 @@ namespace wServer.logic
                 new PetFollow()
                 )
             )
+        .Init("Flying Lion",
+            new State(
+                new PetFollow()
+                )
+            )
         .Init("Shrek Pet",
             new State(
                 new PetFollow()

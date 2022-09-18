@@ -15,7 +15,7 @@ namespace wServer.logic
         .Init("Fluffy",
             new State(
                 new ScaleHP2(20),
-                new DropPortalOnDeath("Defiled Graveyard Portal", 0.7),
+                new DropPortalOnDeath("Defiled Graveyard Portal", 0.6),
                     new State("Pause",
                         new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
                         new PlayerWithinTransition(10, "Start")

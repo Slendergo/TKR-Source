@@ -69,6 +69,16 @@
 		<NoMiniMap />
 		<Size>60</Size>
 	</Object>
+	<Object type="0x4348" id="Flying Lion">
+		<Class>Character</Class>
+		<Group>Hexable</Group>
+		<AnimatedTexture>
+			<File>Custom32x32Encounters</File>
+			<Index>30</Index>
+		</AnimatedTexture>
+		<NoMiniMap />
+		<Size>75</Size>
+	</Object>
 	<Object type="0x690a" id="Shrek Pet">
 		<Class>Character</Class>
 		<Group>Hexable</Group>

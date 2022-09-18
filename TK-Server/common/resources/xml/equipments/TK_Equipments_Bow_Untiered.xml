@@ -14,7 +14,7 @@
     <Projectile>
       <ObjectId>Black Arrow</ObjectId>
       <Speed>140</Speed>
-      <MinDamage>440</MinDamage>
+      <MinDamage>425</MinDamage>
       <MaxDamage>475</MaxDamage>
       <LifetimeMS>503</LifetimeMS>
       <MultiHit />
@@ -301,13 +301,13 @@
     <SlotType>3</SlotType>
     <Rare />
     <Description>A bow crafted from bark of sacred jungle trees, allowing it to rival that of otherworldly power.</Description>
-    <RateOfFire>1.25</RateOfFire>
+    <RateOfFire>1.35</RateOfFire>
     <Sound>weapon/poor_quality_bow</Sound>
     <Projectile>
       <ObjectId>Earth Elemental Arrow</ObjectId>
       <Speed>145</Speed>
-      <MinDamage>135</MinDamage>
-      <MaxDamage>155</MaxDamage>
+      <MinDamage>210</MinDamage>
+      <MaxDamage>250</MaxDamage>
       <LifetimeMS>440</LifetimeMS>
       <Frequency>1</Frequency>
       <Size>100</Size>
@@ -336,7 +336,7 @@
 		<Projectile>
 			<ObjectId>Blossom Shot</ObjectId>
 			<Speed>70</Speed>
-			<MinDamage>115</MinDamage>
+			<MinDamage>120</MinDamage>
 			<MaxDamage>150</MaxDamage>
 			<LifetimeMS>1000</LifetimeMS>
 			<Size>50</Size>

@@ -103,7 +103,7 @@
     <Description>
 			A sword with an impossibly sharp edge. It has been designed with holy magic to slash like no other blade.
 		</Description>
-    <RateOfFire>1.10</RateOfFire>
+    <RateOfFire>1.20</RateOfFire>
     <Sound>weapon/golden_bow</Sound>
     <Projectile>
       <ObjectId>Colossus Slash</ObjectId>
@@ -131,16 +131,16 @@
 			<Index>0xdf</Index>
 		</Texture>
 		<SlotType>1</SlotType>
-		<Mythical />
+		<Legendary />
 		<Description>“Cowards die many times before their deaths; The valiant never taste of death but once.”</Description>
 		<RateOfFire>0.55</RateOfFire>
 		<Sound>weapon/mithril_sword</Sound>
 		<Projectile>
 			<ObjectId>Thiram Shot</ObjectId>
-			<Speed>130</Speed>
-			<MinDamage>850</MinDamage>
-			<MaxDamage>890</MaxDamage>
-			<LifetimeMS>600</LifetimeMS>
+			<Speed>120</Speed>
+			<MinDamage>400</MinDamage>
+			<MaxDamage>500</MaxDamage>
+			<LifetimeMS>542</LifetimeMS>
 			<Frequency>1</Frequency>
 			<Amplitude>0.2</Amplitude>
 			<Size>100</Size>
@@ -230,9 +230,9 @@
 		<Projectile>
 			<ObjectId>Possessed Halberd Shot</ObjectId>
 			<Speed>75</Speed>
-			<MinDamage>560</MinDamage>
+			<MinDamage>666</MinDamage>
             <ParticleTrail lifetimeMS="300">0x7E3F00</ParticleTrail>
-			<MaxDamage>560</MaxDamage>
+			<MaxDamage>600</MaxDamage>
 			<LifetimeMS>627</LifetimeMS>
 			<Size>100</Size>
 			<MultiHit />

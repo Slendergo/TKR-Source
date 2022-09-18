@@ -137,14 +137,14 @@ namespace wServer.logic
                     new PlayerWithinTransition(100, "Start")
                     ),
                 new State("Start",
-                    new Reproduce("Snowball Roll", 20, 1, coolDown: 200),
-                    new Reproduce("Snowball Roll 1", 20, 1, coolDown: 200),
-                    new Reproduce("Snowball Roll 2", 20, 1, coolDown: 200),
-                    new Reproduce("Snowball Roll 3", 20, 1, coolDown: 200),
-                    new Reproduce("Snowball Roll 4", 20, 1, coolDown: 200),
-                    new Reproduce("Snowball Roll 5", 20, 1, coolDown: 200),
-                    new Reproduce("Snowball Roll 6", 20, 1, coolDown: 200),
-                    new Reproduce("Snowball Roll 7", 20, 1, coolDown: 200),
+                    new Reproduce("Snowball Roll", 20, 1, coolDown: 600),
+                    new Reproduce("Snowball Roll 1", 20, 1, coolDown: 600),
+                    new Reproduce("Snowball Roll 2", 20, 1, coolDown: 600),
+                    new Reproduce("Snowball Roll 3", 20, 1, coolDown: 600),
+                    new Reproduce("Snowball Roll 4", 20, 1, coolDown: 600),
+                    new Reproduce("Snowball Roll 5", 20, 1, coolDown: 600),
+                    new Reproduce("Snowball Roll 6", 20, 1, coolDown: 600),
+                    new Reproduce("Snowball Roll 7", 20, 1, coolDown: 600),
                     new EntitiesNotExistsTransition(25, "die", "Corrupt Snowman Switch")
                     ),
                 new State("die",
@@ -406,7 +406,7 @@ namespace wServer.logic
         .Init("Primordial Quetzalcoatl",
             new State(
                 new ScaleHP2(35),
-                new DropPortalOnDeath("Cave of Eternal Frost Portal", 0.5),
+                new DropPortalOnDeath("Cave of Eternal Frost Portal", 0.8),
                 new State("Check",
                     new ConditionalEffect(ConditionEffectIndex.Invincible, true),
                     new PlayerWithinTransition(8, "Remove1")
@@ -476,6 +476,7 @@ namespace wServer.logic
                 new ItemLoot("Potion of Mana", 1),
                 new ItemLoot("Potion of Vitality", 1),
                 new ItemLoot("Potion of Mana", 1),
+                new ItemLoot("Frozen Coin", 0.01),
                 new ItemLoot("Magic Dust", 0.5)
                 )
             )
@@ -484,7 +485,11 @@ namespace wServer.logic
                 new ScaleHP2(20),
                 new State("idle",
                     new ConditionalEffect(ConditionEffectIndex.Invincible, true),
-                    new PlayerWithinTransition(10, "attack")
+                    new PlayerWithinTransition(10, "prepattack")
+                    ),
+                 new State("prepattack",
+                    new Spawn("Ice Wall Spawner 1", 1, 1, coolDown: 999999),
+                    new TimedTransition(5000, "attack")
                     ),
                 new State("attack",
                     new Spawn("Ice Wall Spawner 1", 1, 1, coolDown: 999999),
@@ -597,13 +602,10 @@ namespace wServer.logic
                     ),
                 new State("attack1",
                     new HpLessTransition(0.5, "freedps"),
-                    new Spawn("Ice Wall Spawner 1", 1, 1, coolDown: 999999),
                     new TossObject2("Frozen Elf", 3, coolDown: 3000, randomToss: true),
                     new TossObject2("Frozen Elf", 2, coolDown: 2500, randomToss: true),
-                    new TossObject2("Frozen Elf", 4, coolDown: 3200, randomToss: true),
-                    new TossObject2("Frozen Elf", 8, coolDown: 2600, randomToss: true),
-                    new Follow(2, 1, 10),
-                    new Shoot(30, 3, projectileIndex: 4, fixedAngle: 0, coolDown: 2400, coolDownOffset: 100),
+                    new Follow(1, 12, 2),
+                    new Shoot(30, 3, shootAngle: 10, projectileIndex: 4, coolDown: 1200),
                     new TimedTransition(10000, "attack2.1")
                     ),
                 new State("attack2.1",
@@ -611,9 +613,7 @@ namespace wServer.logic
                     new Orbit(4, 8, 10, "Ice Wall Spawner 1", speedVariance: 0, radiusVariance: 0),
                     new TossObject2("Frozen Elf", 3, coolDown: 3000, randomToss: true),
                     new TossObject2("Frozen Elf", 2, coolDown: 2500, randomToss: true),
-                    new TossObject2("Frozen Elf", 4, coolDown: 3200, randomToss: true),
-                    new TossObject2("Frozen Elf", 8, coolDown: 2600, randomToss: true),
-                    new Shoot(30, 3, projectileIndex: 4, fixedAngle: 0, coolDown: 2400, coolDownOffset: 100),
+                    new Shoot(30, 3, shootAngle: 10, projectileIndex: 4, coolDown: 1200),
                     new TimedTransition(10000, "attack3")
                     ),
                  new State("attack3",
@@ -649,8 +649,6 @@ namespace wServer.logic
                     new Orbit(4, 8, 10, "Ice Wall Spawner 1", speedVariance: 0, radiusVariance: 0),
                     new TossObject2("Frozen Elf", 3, coolDown: 3000, randomToss: true),
                     new TossObject2("Frozen Elf", 2, coolDown: 2500, randomToss: true),
-                    new TossObject2("Frozen Elf", 4, coolDown: 3200, randomToss: true),
-                    new TossObject2("Frozen Elf", 8, coolDown: 2600, randomToss: true),
                     new Shoot(30, 3, projectileIndex: 4, fixedAngle: 0, coolDown: 2400, coolDownOffset: 100),
                     new TimedTransition(10000, "attack1")
                     )
@@ -663,16 +661,16 @@ namespace wServer.logic
                 new TierLoot(14, ItemType.Armor, 0.05),
                 new TierLoot(6, ItemType.Ring, 0.05),
                 new TierLoot(6, ItemType.Ability, 0.07),
-                new ItemLoot("Greater Potion of Vitality", 0.5),
-                new ItemLoot("Greater Potion of Mana", 0.5),
+                new ItemLoot("Greater Potion of Vitality", 1),
+                new ItemLoot("Greater Potion of Mana", 1),
                 new ItemLoot("Magic Dust", 0.5),
-                new ItemLoot("Visage of the Frozen", 0.001),
-                new ItemLoot("Queen's Guardian Signet", 0.001),
-                new ItemLoot("Magic Dust", 0.5)
+                new ItemLoot("Frozen Coin", 0.01),
+                new ItemLoot("Glowing Talisman", 0.0014)
                 ),
              new Threshold(0.03,
-                new ItemLoot("PermaFrost GreatShield", 0.001),
-                new ItemLoot("Winter Solstice", 0.001)
+                new ItemLoot("Winter Solstice", 0.0003),
+                new ItemLoot("Polar Vortex", 0.0003),
+                new ItemLoot("Iceberg", 0.0003)
                 )
             )
         .Init("Yeti Chest",
@@ -701,9 +699,22 @@ namespace wServer.logic
                 new ItemLoot("Special Dust", 0.01)
                 ),
              new Threshold(0.03,
-                 new ItemLoot("Iceberg", 0.0001),
+                new ItemLoot("Winter Solstice", 0.0001),
+                new ItemLoot("Polar Vortex", 0.0001),
+                new ItemLoot("Iceberg", 0.0001),
+
                 new ItemLoot("Condemned Frostbite", 0.0001),
-                new ItemLoot("The Expansion", 0.0001)
+                new ItemLoot("The Expansion", 0.0001),
+                new ItemLoot("The Northern Star", 0.0001),
+                
+                new ItemLoot("Snow Angle", 0.0001),
+                new ItemLoot("World of Ice", 0.0001),
+                
+                new ItemLoot("Agdluak", 0.0001),
+                new ItemLoot("Absolute Zero", 0.0001),
+                new ItemLoot("Cryogenic Freeze", 0.0001),
+                new ItemLoot("Frozen Coin", 0.01),
+                new ItemLoot("Glowing Talisman", 0.0014)
                  )
             )
         .Init("Queen of Ice",
@@ -746,12 +757,12 @@ namespace wServer.logic
                     new ReturnToSpawn(3, 0),
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
                     new Taunt("Guardians! Protect me!"),
-                    new TossObject("Ice Tower", 8, angle: 0, coolDown: 99999),
-                    new TossObject("Ice Tower 1", 8, angle: 60, coolDown: 99999),
-                    new TossObject("Ice Tower 2", 8, angle: 120, coolDown: 99999),
-                    new TossObject("Ice Tower 3", 8, angle: 180, coolDown: 99999),
-                    new TossObject("Ice Tower 4", 8, angle: 240, coolDown: 99999),
-                    new TossObject("Ice Tower 5", 8, angle: 300, coolDown: 99999),
+                    new TossObject("Ice Tower", 8, angle: 0, coolDown: 999999),
+                    new TossObject("Ice Tower 1", 8, angle: 60, coolDown: 999999),
+                    new TossObject("Ice Tower 2", 8, angle: 120, coolDown: 999999),
+                    new TossObject("Ice Tower 3", 8, angle: 180, coolDown: 999999),
+                    new TossObject("Ice Tower 4", 8, angle: 240, coolDown: 999999),
+                    new TossObject("Ice Tower 5", 8, angle: 300, coolDown: 999999),
                     new EntityExistsTransition("Ice Tower", 10, "waiting")
                     ),
                 new State("waiting",
@@ -768,47 +779,47 @@ namespace wServer.logic
                     ),
                 new State("tentacles",
                     new ConditionalEffect(ConditionEffectIndex.Invincible, false),
-                    new TossObject2("Frozen Elf", 5, coolDown: 3000, randomToss: true),
-                    new TossObject2("Frozen Elf", 8, coolDown: 3000, randomToss: true),
-                    new TossObject2("Frozen Elf", 3, coolDown: 3000, randomToss: true),
-                    new Shoot(20, 4, shootAngle: 10, projectileIndex: 3, predictive: 1.2, coolDown: 1200),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 0, coolDown: 3700, coolDownOffset: 100),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 5, coolDown: 3700, coolDownOffset: 200),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 10, coolDown: 3700, coolDownOffset: 300),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 15, coolDown: 3700, coolDownOffset: 400),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 20, coolDown: 3700, coolDownOffset: 500),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 25, coolDown: 3700, coolDownOffset: 600),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 30, coolDown: 3700, coolDownOffset: 700),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 35, coolDown: 3700, coolDownOffset: 800),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 40, coolDown: 3700, coolDownOffset: 900),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 45, coolDown: 3700, coolDownOffset: 1000),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 50, coolDown: 3700, coolDownOffset: 1100),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 55, coolDown: 3700, coolDownOffset: 1200),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 60, coolDown: 3700, coolDownOffset: 1300),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 65, coolDown: 3700, coolDownOffset: 1400),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 70, coolDown: 3700, coolDownOffset: 1500),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 75, coolDown: 3700, coolDownOffset: 1600),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 80, coolDown: 3700, coolDownOffset: 1700),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 85, coolDown: 3700, coolDownOffset: 1800),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 90, coolDown: 3700, coolDownOffset: 1900),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 95, coolDown: 3700, coolDownOffset: 2000),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 100, coolDown: 3700, coolDownOffset: 2100),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 105, coolDown: 3700, coolDownOffset: 2200),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 110, coolDown: 3700, coolDownOffset: 2300),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 115, coolDown: 3700, coolDownOffset: 2400),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 120, coolDown: 3700, coolDownOffset: 2500),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 125, coolDown: 3700, coolDownOffset: 2600),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 130, coolDown: 3700, coolDownOffset: 2700),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 135, coolDown: 3700, coolDownOffset: 2800),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 140, coolDown: 3700, coolDownOffset: 2900),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 145, coolDown: 3700, coolDownOffset: 3000),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 150, coolDown: 3700, coolDownOffset: 3100),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 155, coolDown: 3700, coolDownOffset: 3200),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 160, coolDown: 3700, coolDownOffset: 3300),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 165, coolDown: 3700, coolDownOffset: 3400),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 170, coolDown: 3700, coolDownOffset: 3500),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 175, coolDown: 3700, coolDownOffset: 3600),
-                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 180, coolDown: 3700, coolDownOffset: 3700),
+                    new TossObject2("Frozen Elf", 5, coolDown: 8000, coolDownOffset: 2000, randomToss: true),
+                    new TossObject2("Frozen Elf", 8, coolDown: 8000, coolDownOffset: 3000, randomToss: true),
+                    new TossObject2("Frozen Elf", 3, coolDown: 8000, coolDownOffset: 4500, randomToss: true),
+                    new Shoot(20, 4, shootAngle: 10, projectileIndex: 3, coolDown: 1200),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 0, coolDown: 7400, rotateAngle: 3, coolDownOffset: 200),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 5, coolDown: 7400, rotateAngle: 3, coolDownOffset: 400),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 10, coolDown: 7400, rotateAngle: 3, coolDownOffset: 600),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 15, coolDown: 7400, rotateAngle: 3, coolDownOffset: 800),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 20, coolDown: 7400, rotateAngle: 3, coolDownOffset: 1000),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 25, coolDown: 7400, rotateAngle: 3, coolDownOffset: 1200),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 30, coolDown: 7400, rotateAngle: 3, coolDownOffset: 1400),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 35, coolDown: 7400, rotateAngle: 3, coolDownOffset: 1600),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 40, coolDown: 7400, rotateAngle: 3, coolDownOffset: 1800),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 45, coolDown: 7400, rotateAngle: 3, coolDownOffset: 2000),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 50, coolDown: 7400, rotateAngle: 3, coolDownOffset: 2200),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 55, coolDown: 7400, rotateAngle: 3, coolDownOffset: 2400),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 60, coolDown: 7400, rotateAngle: 3, coolDownOffset: 2600),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 65, coolDown: 7400, rotateAngle: 3, coolDownOffset: 2800),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 70, coolDown: 7400, rotateAngle: 3, coolDownOffset: 3000),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 75, coolDown: 7400, rotateAngle: 3, coolDownOffset: 3200),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 80, coolDown: 7400, rotateAngle: 3, coolDownOffset: 3400),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 85, coolDown: 7400, rotateAngle: 3, coolDownOffset: 3600),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 90, coolDown: 7400, rotateAngle: 3, coolDownOffset: 3800),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 95, coolDown: 7400, rotateAngle: 3, coolDownOffset: 4000),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 100, coolDown: 7400, rotateAngle: 3, coolDownOffset: 4200),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 105, coolDown: 7400, rotateAngle: 3, coolDownOffset: 4400),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 110, coolDown: 7400, rotateAngle: 3, coolDownOffset: 4600),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 115, coolDown: 7400, rotateAngle: 3, coolDownOffset: 4800),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 120, coolDown: 7400, rotateAngle: 3, coolDownOffset: 5000),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 125, coolDown: 7400, rotateAngle: 3, coolDownOffset: 5200),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 130, coolDown: 7400, rotateAngle: 3, coolDownOffset: 5400),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 135, coolDown: 7400, rotateAngle: 3, coolDownOffset: 5600),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 140, coolDown: 7400, rotateAngle: 3, coolDownOffset: 5800),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 145, coolDown: 7400, rotateAngle: 3, coolDownOffset: 6000),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 150, coolDown: 7400, rotateAngle: 3, coolDownOffset: 6200),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 155, coolDown: 7400, rotateAngle: 3, coolDownOffset: 6400),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 160, coolDown: 7400, rotateAngle: 3, coolDownOffset: 6600),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 165, coolDown: 7400, rotateAngle: 3, coolDownOffset: 6800),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 170, coolDown: 7400, rotateAngle: 3, coolDownOffset: 7000),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 175, coolDown: 7400, rotateAngle: 3, coolDownOffset: 7200),
+                    new Shoot(30, 5, projectileIndex: 2, fixedAngle: 180, coolDown: 7400, rotateAngle: 3, coolDownOffset: 7400),
                     
                     new TimedTransition(15000, "scream2")
                     ),
@@ -824,11 +835,11 @@ namespace wServer.logic
                     new Shoot(12, 6, projectileIndex: 2, shootAngle: 10, coolDown: 600),
                     new Shoot(12, 30, projectileIndex: 1, coolDown: 1000),
                     new Reproduce("Evil Snowman", 5, 5, coolDown: 5000),
-                    new TossObject("Frozen Elf", 4, angle: 0, coolDown: 5000),
-                    new TossObject("Frozen Elf", 8, angle: 60, coolDown: 5000),
-                    new TossObject("Frozen Elf", 4, angle: 120, coolDown: 5000),
-                    new TossObject("Frozen Elf", 8, angle: 180, coolDown: 5000),
-                    new TossObject("Frozen Elf", 4, angle: 270, coolDown: 5000),
+                    new TossObject("Frozen Elf", 4, angle: 0, coolDown: 10000),
+                    new TossObject("Frozen Elf", 8, angle: 60, coolDown: 10000),
+                    new TossObject("Frozen Elf", 4, angle: 120, coolDown: 10000),
+                    new TossObject("Frozen Elf", 8, angle: 180, coolDown: 10000),
+                    new TossObject("Frozen Elf", 4, angle: 270, coolDown: 10000),
                     new HpLessTransition(.7, "healing")
                     ),
                 new State("healing",
@@ -844,10 +855,10 @@ namespace wServer.logic
                     ),
                 new State("clones",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
-                    new TossObject("Queen of Ice Clone", 6, 45, coolDown: 99999),
-                    new TossObject("Queen of Ice Clone", 6, 135, coolDown: 99999),
-                    new TossObject("Queen of Ice Clone", 6, 225, coolDown: 99999),
-                    new TossObject("Queen of Ice Clone", 6, 315, coolDown: 99999),
+                    new TossObject("Queen of Ice Clone", 6, 45, coolDown: 999999),
+                    new TossObject("Queen of Ice Clone", 6, 135, coolDown: 999999),
+                    new TossObject("Queen of Ice Clone", 6, 225, coolDown: 999999),
+                    new TossObject("Queen of Ice Clone", 6, 315, coolDown: 999999),
                     new EntityExistsTransition("Queen of Ice Clone", 10, "waiting1")
                     ),
                 new State("waiting1",
@@ -1057,16 +1068,13 @@ namespace wServer.logic
                 new TierLoot(6, ItemType.Ability, 0.07),
                 new ItemLoot("Greater Potion of Speed", 1),
                 new ItemLoot("Greater Potion of Life", 1),
-                new ItemLoot("Magic Dust", 0.5)
+                new ItemLoot("Frozen Coin", 0.01)
                 ),
              new Threshold(0.03,
-                 new ItemLoot("Winter Solstice", 0.0001),
-                 new ItemLoot("Polar Vortex", 0.0001),
-                 new ItemLoot("Iceberg", 0.0001),
-                new ItemLoot("Condemned Frostbite", 0.0001)
-                ),
-             new Threshold(0.03,
-                 new ItemLoot("Snow Angle", 0.0001)
+                new ItemLoot("Condemned Frostbite", 0.0003),
+                new ItemLoot("The Expansion", 0.0003),
+                new ItemLoot("The Northern Star", 0.0003),
+                new ItemLoot("Glowing Talisman", 0.0014)
                  )
             )
         .Init("Corrupt Snowman Switch", //finished
@@ -1117,8 +1125,8 @@ namespace wServer.logic
                     new Charge(10),
                     new Follow(1, 8, 8),
                     new Wander(0.3),
-                    new Shoot(15, 10, projectileIndex: 0, shootAngle: 10, coolDown: 1000, angleOffset: 3),
-                    new Shoot(15, 4, projectileIndex: 5, shootAngle: 15, coolDown: 600),
+                    new Shoot(15, 10, projectileIndex: 0, shootAngle: 10, coolDown: 1600, angleOffset: 3),
+                    new Shoot(15, 4, projectileIndex: 5, shootAngle: 15, coolDown: 1200),
                     new TimedRandomTransition(7000, false, "attack1", "Orbit", "Orbit1")
                     )
                 ),
@@ -1134,13 +1142,12 @@ namespace wServer.logic
                 new ItemLoot("Greater Potion of Dexterity", 1),
                 new ItemLoot("Greater Potion of Attack", 1),
                 new ItemLoot("Greater Potion of Dexterity", 1),
-                new ItemLoot("Magic Dust", 0.5)
+                new ItemLoot("Frozen Coin", 0.01),
+                new ItemLoot("Glowing Talisman", 0.0014)
                 ),
              new Threshold(0.03,
-                 new ItemLoot("World of Ice", 0.0001),
-                 new ItemLoot("Agdluak", 0.0001),
-                 new ItemLoot("Absolute Zero", 0.0001),
-                new ItemLoot("Cryogenic Freeze", 0.0001)
+                 new ItemLoot("Snow Angle", 0.0003),
+                new ItemLoot("World of Ice", 0.0003)
                  )
             )
         .Init("Cursed Snowman Switch", //finished
@@ -1163,22 +1170,22 @@ namespace wServer.logic
                     new RemoveConditionalEffect(ConditionEffectIndex.Invincible),
                     new HpLessTransition(.6, "rage"),
                     new ReplaceTile("Black Water Frozen 1", "Black Water Frozen", 30),
-                    new Shoot(18, 3, shootAngle: 10, projectileIndex: 0, coolDown: 1200, coolDownOffset: 0),
-                    new Shoot(18, 5, shootAngle: 15, projectileIndex: 0, coolDown: 1200, coolDownOffset: 0),
-                    new Shoot(18, 6, shootAngle: 20, projectileIndex: 0, coolDown: 1200, coolDownOffset: 0),
+                    new Shoot(18, 3, shootAngle: 15, projectileIndex: 0, coolDown: 2200, coolDownOffset: 0),
+                    new Shoot(18, 5, shootAngle: 20, projectileIndex: 0, coolDown: 2200, coolDownOffset: 0),
+                    new Shoot(18, 6, shootAngle: 25, projectileIndex: 0, coolDown: 2200, coolDownOffset: 0),
                     new Shoot(16, 8, shootAngle: 10, projectileIndex: 1, coolDown: 1000),
                     new Shoot(20, 12, projectileIndex: 0, coolDown: 1000),
                     new TimedTransition(4000, "attack1.1")
                     ),
                  new State("attack1.1",
-                     new TossObject("Frozen Elf", 8, 0, coolDown: 5000),
+                     new TossObject("Frozen Elf", 8, 0, coolDown: 8000),
                     new TossObject("Frozen Elf", 8, 90, coolDown: 5000),
-                    new TossObject("Frozen Elf", 8, 180, coolDown: 5000),
+                    new TossObject("Frozen Elf", 8, 180, coolDown: 8000),
                     new TossObject("Frozen Elf", 8, 270, coolDown: 5000),
                     new HpLessTransition(.6, "rage"),
                     new ReplaceTile("Black Water Frozen", "Black Water Frozen 1", 30),
                     new Shoot(18, 4, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 800),
-                    new Shoot(16, 6, shootAngle: 10, projectileIndex: 1, coolDown: 1000),
+                    new Shoot(16, 6, shootAngle: 10, projectileIndex: 1, coolDown: 1200),
                     new Shoot(20, 12, projectileIndex: 0, coolDown: 1000),
                     new TimedTransition(4000, "attack1.2")
                     ),
@@ -1215,10 +1222,10 @@ namespace wServer.logic
                     new TimedTransition(4000, "attack2.1")
                     ),
                 new State("attack2.1",
-                    new TossObject("Frozen Elf", 8, 0, coolDown: 3000),
-                    new TossObject("Frozen Elf", 8, 90, coolDown: 3000),
-                    new TossObject("Frozen Elf", 8, 180, coolDown: 3000),
-                    new TossObject("Frozen Elf", 8, 270, coolDown: 3000),
+                    new TossObject("Frozen Elf", 8, 0, coolDown: 8000),
+                    new TossObject("Frozen Elf", 8, 90, coolDown: 5000),
+                    new TossObject("Frozen Elf", 8, 180, coolDown: 8000),
+                    new TossObject("Frozen Elf", 8, 270, coolDown: 5000),
                     new HpLessTransition(.1, "granted"),
                     new ReplaceTile("Black Water Frozen", "Black Water Frozen 1", 30),
                     new Shoot(18, 4, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 800),
@@ -1255,12 +1262,12 @@ namespace wServer.logic
                 new ItemLoot("Greater Potion of Wisdom", 1),
                 new ItemLoot("Greater Potion of Defense", 1),
                 new ItemLoot("Greater Potion of Wisdom", 1),
-                new ItemLoot("Magic Dust", 0.5)
+                new ItemLoot("Magic Dust", 0.01),
+                new ItemLoot("Glowing Talisman", 0.0014)
                 ),
              new Threshold(0.03,
-                 new ItemLoot("World of Ice", 0.0001),
-                 new ItemLoot("Agdluak", 0.0001),
-                 new ItemLoot("Absolute Zero", 0.0001),
+                new ItemLoot("Agdluak", 0.0001),
+                new ItemLoot("Absolute Zero", 0.0001),
                 new ItemLoot("Cryogenic Freeze", 0.0001)
                  )
             )
@@ -1278,7 +1285,7 @@ namespace wServer.logic
                     new TimedTransition(10000, "attack1")
                     ),
                 new State("attack1",
-                    new Follow(4, 15, duration: 5, coolDown: 2000),
+                    new Follow(2, 15, duration: 5, coolDown: 2000),
                     new Shoot(12, 2, shootAngle: 10, predictive: 1.2, projectileIndex: 0, coolDown: 200),
                     new Shoot(7, 12, projectileIndex: 1, coolDown: 800),
                     new Grenade(2, 20, range: 12, fixedAngle: 180, coolDown: 1000, ConditionEffectIndex.Paralyzed, effectDuration: 500, color: 0x5279FD),
@@ -1294,8 +1301,8 @@ namespace wServer.logic
                     new TimedTransition(5000, "attack2")
                     ),
                 new State("attack2",
-                    new Charge(3, 8, coolDown: 2000),
-                    new Shoot(2, 24, projectileIndex: 0, coolDown: 500),
+                    new Charge(10, 8, coolDown: 2000),
+                    new Shoot(12, 24, projectileIndex: 0, coolDown: 2000),
                     new Grenade(2, 30, 8, fixedAngle: 0, 2000, ConditionEffectIndex.Paralyzed, 800, color: 0x5279FD),
                     new Grenade(2, 30, 8, fixedAngle: 22.5, 2000, ConditionEffectIndex.Paralyzed, 800, color: 0x5279FD),
                     new Grenade(2, 30, 8, fixedAngle: 45, 2000, ConditionEffectIndex.Paralyzed, 800, color: 0x5279FD),
@@ -1320,7 +1327,7 @@ namespace wServer.logic
                     new TimedTransition(3000, "attack3")
                     ),
                 new State("attack3",
-                    new Chase(3),
+                    new Chase(10),
                     new Shoot(12, 2, shootAngle: 10, predictive: 1.2, projectileIndex: 1, coolDown: 200),
                     new Shoot(7, 12, projectileIndex: 0, coolDown: 800),
                     new Grenade(2, 20, range: 7, fixedAngle: 180, coolDown: 1000, ConditionEffectIndex.Paralyzed, effectDuration: 500, color: 0x5279FD),
@@ -1351,16 +1358,16 @@ namespace wServer.logic
                     new TimedTransition(10000, "attack1")
                     ),
                 new State("attack1",
-                    new TossObject("Frozen Elf", 5, angle: 180, coolDown: 500),
-                    new TossObject("Frozen Elf", 5, angle: 190, coolDown: 1000),
-                    new TossObject("Frozen Elf", 5, angle: 160, coolDown: 1500),
-                    new TossObject("Frozen Elf", 5, angle: 200, coolDown: 2000),
-                    new TossObject("Frozen Elf", 5, angle: 170, coolDown: 2500),
+                    new TossObject("Frozen Elf", 5, angle: 180, coolDown: 10000, coolDownOffset: 0),
+                    new TossObject("Frozen Elf", 5, angle: 190, coolDown: 10000, coolDownOffset: 500),
+                    new TossObject("Frozen Elf", 5, angle: 160, coolDown: 10000, coolDownOffset: 1000),
+                    new TossObject("Frozen Elf", 5, angle: 200, coolDown: 10000, coolDownOffset: 1500),
+                    new TossObject("Frozen Elf", 5, angle: 170, coolDown: 10000, coolDownOffset: 2000),
                     new Shoot(12, 8, shootAngle: 10, predictive: 1, projectileIndex: 0, coolDown: 1000),
                     new HpLessTransition(.6, "attack2")
                     ),
                 new State("attack2",
-                    new Chase(2),
+                    new Chase(10),
                     new Shoot(12, 8, shootAngle: 10, predictive: 1, projectileIndex: 0, coolDown: 600),
                     new Shoot(20, 1, projectileIndex: 1, predictive: 1, coolDown: 1000),
                     new HpLessTransition(.3, "attack3")
@@ -1369,11 +1376,11 @@ namespace wServer.logic
                     new ReturnToSpawn(1.3, 0),
                     new Shoot(12, 8, shootAngle: 10, predictive: 1, projectileIndex: 0, coolDown: 600),
                     new Shoot(20, 1, projectileIndex: 1, predictive: 1, coolDown: 1000),
-                    new TossObject("Frozen Elf", 5, angle: 180, coolDown: 500),
-                    new TossObject("Frozen Elf", 5, angle: 190, coolDown: 1000),
-                    new TossObject("Frozen Elf", 5, angle: 160, coolDown: 1500),
-                    new TossObject("Frozen Elf", 5, angle: 200, coolDown: 2000),
-                    new TossObject("Frozen Elf", 5, angle: 170, coolDown: 2500)
+                    new TossObject("Frozen Elf", 5, angle: 180, coolDown: 10000, coolDownOffset: 0),
+                    new TossObject("Frozen Elf", 5, angle: 190, coolDown: 10000, coolDownOffset: 500),
+                    new TossObject("Frozen Elf", 5, angle: 160, coolDown: 10000, coolDownOffset: 1000),
+                    new TossObject("Frozen Elf", 5, angle: 200, coolDown: 10000, coolDownOffset: 1500),
+                    new TossObject("Frozen Elf", 5, angle: 170, coolDown: 10000, coolDownOffset: 2000)
                     )
                 )
             )
@@ -1489,7 +1496,10 @@ namespace wServer.logic
                     new TimedTransition(1000, "explode")
                     ),
                 new State("explode",
-                    new Shoot(4, 12, projectileIndex: 0, coolDown: 600),
+                    new Shoot(14, 12, projectileIndex: 0, coolDown: 600),
+                    new TimedTransition(450, "suicide")
+                    ),
+                new State("suicide",
                     new Suicide()
                     )
                 )

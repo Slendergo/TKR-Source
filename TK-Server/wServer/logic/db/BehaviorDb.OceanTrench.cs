@@ -255,6 +255,9 @@ namespace wServer.logic
                 new ItemLoot("Coral Venom Trap", 0.00125),
                 new ItemLoot("Coral Silk Armor", 0.01),
                 new ItemLoot("Coral Ring", 0.01),
+                new ItemLoot("Thessal's Head", 0.009),
+                new ItemLoot("Brass Diver Helmet", 0.009),
+                new ItemLoot("Ocean's Gem", 0.009),
                 new ItemLoot("Ocean Trench Key", 0.01, 0, 0.03)
                 ),
             new Threshold(0.02,

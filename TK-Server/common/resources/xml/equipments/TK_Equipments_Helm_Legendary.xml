@@ -40,7 +40,7 @@
     <MpCost>100</MpCost>
 	  <Activate effect="Berserk" duration="6" range="3" color="0xff0080" target="player" center="player" visualEffect="0" useWisMod="true">GenericActivate</Activate>
     <Activate effect="Speedy" duration="6">ConditionEffectSelf</Activate>
-	  <Activate effect="Invulnerable" duration="1">ConditionEffectSelf</Activate>
+	  <Activate effect="Slowed" duration="5" range="3" color="0x05c2b5" target="enemy" center="player" visualEffect="0" useWisMod="true">GenericActivate</Activate>
     <Cooldown>6</Cooldown>
     <feedPower>1250</feedPower>
   </Object>
@@ -58,7 +58,6 @@
     <ActivateOnEquip stat="20" amount="6">IncrementStat</ActivateOnEquip>
     <Activate effect="Berserk" duration="7" range="4.5">ConditionEffectAura</Activate>
     <Activate effect="Damaging" duration="7">ConditionEffectSelf</Activate>
-	  <Activate effect="Armored" duration="3">ConditionEffectSelf</Activate>
     <Usable />
     <Mythical />
     <BagType>7</BagType>

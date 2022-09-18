@@ -15,7 +15,7 @@
       <ObjectId>Fire Missile</ObjectId>
       <Speed>110</Speed>
       <MinDamage>80</MinDamage>
-      <MaxDamage>95</MaxDamage>
+      <MaxDamage>85</MaxDamage>
       <LifetimeMS>364</LifetimeMS>
       <Amplitude>0.15</Amplitude>
       <Frequency>2</Frequency>
@@ -375,7 +375,7 @@
     <Projectile>
       <ObjectId>SpiritSpiral</ObjectId>
       <Speed>150</Speed>
-      <MinDamage>80</MinDamage>
+      <MinDamage>85</MinDamage>
       <MaxDamage>125</MaxDamage>
       <LifetimeMS>570</LifetimeMS>
       <Frequency>1</Frequency>
@@ -404,7 +404,7 @@
     <Projectile>
       <ObjectId>Leaf Shoot</ObjectId>
       <Speed>180</Speed>
-      <MinDamage>55</MinDamage>
+      <MinDamage>60</MinDamage>
       <MaxDamage>100</MaxDamage>
       <LifetimeMS>390</LifetimeMS>
       <Amplitude>0.5</Amplitude>
@@ -467,8 +467,8 @@
     <Projectile>
       <ObjectId>Emerald Staff Shoot</ObjectId>
       <Speed>165</Speed>
-      <MinDamage>110</MinDamage>
-      <MaxDamage>115</MaxDamage>
+      <MinDamage>105</MinDamage>
+      <MaxDamage>110</MaxDamage>
       <LifetimeMS>512</LifetimeMS>
       <Amplitude>0.8</Amplitude>
       <Frequency>1.5</Frequency>

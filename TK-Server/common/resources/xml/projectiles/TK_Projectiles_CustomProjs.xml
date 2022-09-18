@@ -262,8 +262,7 @@
 			<File>CustomProjs</File>
 			<Index>0x99</Index>
 		</Texture>
-		<Rotation>60</Rotation>
-		<AngleCorrection>1</AngleCorrection>
+		<Rotation>120</Rotation>
 	</Object>
 	<Object type="0x4288" id="Ice Bow Shot">
 		<Class>Projectile</Class>
@@ -645,7 +644,7 @@
 			<File>CustomProjs</File>
 			<Index>0x20</Index>
 		</Texture>
-		<AngleCorrection>1</AngleCorrection>
+		<AngleCorrection>45</AngleCorrection>
 	</Object>
 	<Object type="0x4984" id="Elemental Water Shoot">
 		<Class>Projectile</Class>

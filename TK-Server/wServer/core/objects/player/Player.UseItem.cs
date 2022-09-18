@@ -394,6 +394,10 @@ namespace wServer.core.objects
                         AEMagicDust(time, item, target, slot, objId, eff);
                         break;
 
+                    case ActivateEffects.FrozenCoin:
+                        AEFrozenCoin(time, item, target, slot, objId, eff);
+                        break;
+
                     case ActivateEffects.SpecialDust:
                         AESpecialDust(time, item, target, slot, objId, eff);
                         break;
@@ -1322,6 +1326,31 @@ namespace wServer.core.objects
                 Inventory[slot] = dustItem;
             
             SendInfo($"Used a Magic Dust and obtained a {dustItem.DisplayName ?? dustItem.ObjectId}");
+
+            Inventory.Data[slot] = null;
+            InvokeStatChange((StatDataType)((int)StatDataType.InventoryData0 + slot), Inventory.Data[slot]?.GetData() ?? "{}");
+        }
+
+        private void AEFrozenCoin(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
+        {
+            if (Inventory.Data[slot] == null)
+            {
+                SendError("Something wrong happened with your Frozen Coin!");
+                return;
+            }
+
+            if (Inventory.Data[slot].Stack < Inventory.Data[slot].MaxStack)
+                return;
+
+            var entity = World.GetEntity(objId);
+
+            var dustItem = World.GameServer.ItemDustWeights.FrozenCoin.GetRandom(World.Random);
+            if (entity is Container container)
+                container.Inventory[slot] = dustItem;
+            else
+                Inventory[slot] = dustItem;
+
+            GameServer.ChatManager.AnnounceLoot($"[{Name}] Stacked 200x CoEF Coins and Obtained [{dustItem.DisplayId ?? dustItem.ObjectId}]!");
 
             Inventory.Data[slot] = null;
             InvokeStatChange((StatDataType)((int)StatDataType.InventoryData0 + slot), Inventory.Data[slot]?.GetData() ?? "{}");

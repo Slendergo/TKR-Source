@@ -1331,7 +1331,7 @@
 		<Projectile id="0">
 			<ObjectId>Projectile 0 FE</ObjectId>
 			<Damage>90</Damage>
-			<Speed>100</Speed>
+			<Speed>75</Speed>
 			<Size>90</Size>
 			<ArmorPiercing/>
 			<LifetimeMS>4000</LifetimeMS>

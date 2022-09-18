@@ -64,17 +64,17 @@ namespace wServer.core.objects.vendors
 
         private static readonly List<ISellableItem> KeysFame = new List<ISellableItem>
         {
-            new ShopItem("Strange Library Key", 750),
+            new ShopItem("Strange Library Key", 1200),
             new ShopItem("Cemetery Key", 400),
-            new ShopItem("Lost Halls Key", 3000),
-            new ShopItem("Defiled Graveyard Key", 750),
-            new ShopItem("Davy's Key", 750),
-            new ShopItem("The Crawling Depths Key", 750),
-            new ShopItem("Shatters Key", 3000),
-            new ShopItem("Ocean Trench Key", 750),
-            new ShopItem("Tomb of the Ancients Key", 1500),
-            new ShopItem("Deadwater Docks Key", 750),
-            new ShopItem("Woodland Labyrinth Key", 750),
+            new ShopItem("Lost Halls Key", 5000),
+            new ShopItem("Defiled Graveyard Key", 2000),
+            new ShopItem("Davy's Key", 1200),
+            new ShopItem("The Crawling Depths Key", 2000),
+            new ShopItem("Shatters Key", 5000),
+            new ShopItem("Ocean Trench Key", 1200),
+            new ShopItem("Tomb of the Ancients Key", 2000),
+            new ShopItem("Deadwater Docks Key", 1200),
+            new ShopItem("Woodland Labyrinth Key", 1200),
             new ShopItem("Spider Den Key", 400),
             new ShopItem("Undead Lair Key", 400),
             new ShopItem("Sprite World Key", 400),
@@ -82,23 +82,23 @@ namespace wServer.core.objects.vendors
             new ShopItem("Snake Pit Key", 400),
             new ShopItem("Beachzone Key", 500),
             new ShopItem("Lab Key", 400),
-            new ShopItem("Totem Key", 750),
+            new ShopItem("Totem Key", 1200),
             new ShopItem("Toxic Sewers Key", 400),
-            new ShopItem("Manor Key", 750),
-            new ShopItem("Candy Key", 750),
+            new ShopItem("Manor Key", 1200),
+            new ShopItem("Candy Key", 1200),
             new ShopItem("Cemetery Key", 400),
-            new ShopItem("Davy's Key", 750),
-            new ShopItem("Ocean Trench Key", 750),
-            new ShopItem("Tomb of the Ancients Key", 1500)
+            new ShopItem("Davy's Key", 1200),
+            new ShopItem("Ocean Trench Key", 1200),
+            new ShopItem("Tomb of the Ancients Key", 5000)
         };
 
         private static readonly List<ISellableItem> PurchasableFame = new List<ISellableItem>
         {
-            new ShopItem("50 Fame", 50),
-            new ShopItem("100 Fame", 100),
-            new ShopItem("500 Fame", 500),
-            new ShopItem("1000 Fame", 1000),
-            new ShopItem("5000 Fame", 5000)
+            new ShopItem("50 Fame", 53),
+            new ShopItem("100 Fame", 105),
+            new ShopItem("500 Fame", 525),
+            new ShopItem("1000 Fame", 1050),
+            new ShopItem("5000 Fame", 5250)
         };
 
         private static readonly List<ISellableItem> Special = new List<ISellableItem>
@@ -189,10 +189,10 @@ namespace wServer.core.objects.vendors
             Shops[TileRegion.Store_5] = new Tuple<List<ISellableItem>, CurrencyType, int>(petGenerators, CurrencyType.Fame, 0);
             Shops[TileRegion.Store_10] = new Tuple<List<ISellableItem>, CurrencyType, int>(supporterPetGenerators, CurrencyType.Gold, 0);
 
-            Shops[TileRegion.Store_6] = new Tuple<List<ISellableItem>, CurrencyType, int>(d1, CurrencyType.Gold, 0);
-            Shops[TileRegion.Store_7] = new Tuple<List<ISellableItem>, CurrencyType, int>(d2, CurrencyType.Gold, 0);
-            Shops[TileRegion.Store_8] = new Tuple<List<ISellableItem>, CurrencyType, int>(c1, CurrencyType.Gold, 0);
-            Shops[TileRegion.Store_9] = new Tuple<List<ISellableItem>, CurrencyType, int>(c2, CurrencyType.Gold, 0);
+            Shops[TileRegion.Store_6] = new Tuple<List<ISellableItem>, CurrencyType, int>(d1, CurrencyType.Fame, 0);
+            Shops[TileRegion.Store_7] = new Tuple<List<ISellableItem>, CurrencyType, int>(d2, CurrencyType.Fame, 0);
+            Shops[TileRegion.Store_8] = new Tuple<List<ISellableItem>, CurrencyType, int>(c1, CurrencyType.Fame, 0);
+            Shops[TileRegion.Store_9] = new Tuple<List<ISellableItem>, CurrencyType, int>(c2, CurrencyType.Fame, 0);
 
         }
     }

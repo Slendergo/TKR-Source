@@ -1,4 +1,19 @@
 ﻿<Dusts>
+	<FrozenCoin>
+		<ItemPool>
+			<Item weight="10">Winter Solstice</Item>
+			<Item weight="10">Polar Vortex</Item>
+			<Item weight="10">Iceberg</Item>
+			<Item weight="10">Condemned Frostbite</Item>
+			<Item weight="10">The Expansion</Item>
+			<Item weight="10">The Northern Star</Item>
+			<Item weight="10">Snow Angle</Item>
+			<Item weight="10">World of Ice</Item>
+			<Item weight="10">Agdluak</Item>
+			<Item weight="10">Absolute Zero</Item>
+			<Item weight="10">Cryogenic Freeze</Item>
+		</ItemPool>
+	</FrozenCoin>
 	<ItemDust>
 		
 		<!-- Tiered Weapons-->
@@ -212,4 +227,5 @@
 			<Item weight="10">Luck of the Irish</Item>
 		</ItemPool>
 	</TalismanFragment>
+
 </Dusts>

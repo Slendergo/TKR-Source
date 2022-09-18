@@ -41,6 +41,7 @@
     <BagType>7</BagType>
     <MpCost>140</MpCost>
     <Activate amount="175" range="6" useWisMod="true">HealNova</Activate>
+	<Activate range="6">RemoveNegativeConditions</Activate>
     <Activate effect="Armored" duration="4.5" useWisMod="true">ConditionEffectSelf</Activate>
   </Object>
 	<Object type="0x4035" id="Demonic Codex">

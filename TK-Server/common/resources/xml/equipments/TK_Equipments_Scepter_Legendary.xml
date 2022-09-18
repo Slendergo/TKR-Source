@@ -40,7 +40,7 @@
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
     <MpCost>110</MpCost>
-    <Activate totalDamage="1000" maxTargets="3" condEffect="Paralyzed" condDuration="3" color="0xff9933" useWisMod="true">Lightning</Activate>
+    <Activate totalDamage="1000" maxTargets="3" condEffect="Paralyzed" condDuration="1.5" color="0xff9933" useWisMod="true">Lightning</Activate>
     <DisplayId>Butterfly Effect</DisplayId>
   </Object>
     <Object type="0x50f8" id="Essence Eater">
@@ -63,7 +63,7 @@
     <BagType>7</BagType>
     <FameBonus>7</FameBonus>
     <MpCost>140</MpCost>
-    <Activate totalDamage="2000" maxTargets="2" condEffect="ArmorBroken" condDuration="3" color="0xB2FAE2" useWisMod="true">Lightning</Activate>
+    <Activate totalDamage="1000" maxTargets="2" condEffect="ArmorBroken" condDuration="3" color="0xB2FAE2" useWisMod="true">Lightning</Activate>
     <DisplayId>Essence Eater</DisplayId>
   </Object>
 	<Object type="0x467" id="Scepter of Whispers">
@@ -87,7 +87,7 @@
 		<BagType>7</BagType>
 		<FameBonus>7</FameBonus>
 		<MpCost>140</MpCost>
-		<Activate totalDamage="2500" maxTargets="3" condEffect="Slowed" condDuration="2" color="0xB2FAE2" useWisMod="true">Lightning</Activate>
+		<Activate totalDamage="1500" maxTargets="3" condEffect="Slowed" condDuration="2" color="0xB2FAE2" useWisMod="true">Lightning</Activate>
 		<DisplayId>Scepter of Whispers</DisplayId>
 	</Object>
 </Objects>

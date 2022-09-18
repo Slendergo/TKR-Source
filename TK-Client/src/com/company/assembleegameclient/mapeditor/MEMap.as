@@ -33,7 +33,7 @@ package com.company.assembleegameclient.mapeditor
       
       public static const SIZE:int = 512;
       
-      public static const MIN_ZOOM:Number = 0.125;
+      public static const MIN_ZOOM:Number = 0.0625;
       
       public static const MAX_ZOOM:Number = 16;
        

@@ -9,7 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "server", "server\server.csp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8676B034-2A70-4675-A54D-4C07D0A29B6C}"
 	ProjectSection(SolutionItems) = preProject
-		Core Algorithms.dll = Core Algorithms.dll
 		LICENSE = LICENSE
 		README.md = README.md
 		RotMG.Common.dll = RotMG.Common.dll

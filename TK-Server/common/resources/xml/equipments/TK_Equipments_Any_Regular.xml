@@ -6173,11 +6173,12 @@
 		<Item/>
 		<SPlus/>
 		<NoTierTag/>
-		<Description>Freezing</Description>
+		<Description>Stack up to 200x for a COOL reward!</Description>
 		<Texture>
 			<File>CustomObj1</File>
 			<Index>0x26</Index>
 		</Texture>
+		<Soulbound/>
 		<SlotType>10</SlotType>
 		<QuantityLimit>200</QuantityLimit>
 		<Quantity>1</Quantity>

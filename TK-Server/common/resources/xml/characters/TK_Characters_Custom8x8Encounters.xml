@@ -1354,7 +1354,7 @@
 		<Projectile id="0">
 			<ObjectId>Projectile 0 GFS</ObjectId>
 			<Damage>260</Damage>
-			<Speed>95</Speed>
+			<Speed>75</Speed>
 			<Size>140</Size>
 			<ArmorPiercing/>
 			<MultiHit/>

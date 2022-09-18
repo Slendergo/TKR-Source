@@ -1916,7 +1916,7 @@
 		</AnimatedTexture>
 		<DisplayedId>Cursed Snowman</DisplayedId>
 		<Size>160</Size>
-		<MaxHitPoints>900000</MaxHitPoints>
+		<MaxHitPoints>450000</MaxHitPoints>
 		<Defense>44</Defense>
 		<StasisImmune/>
 		<StunImmune/>
@@ -2262,7 +2262,7 @@
 		</AnimatedTexture>
 		<DisplayedId>Corrupt Snowman</DisplayedId>
 		<Size>160</Size>
-		<MaxHitPoints>700000</MaxHitPoints>
+		<MaxHitPoints>350000</MaxHitPoints>
 		<Defense>41</Defense>
 		<StasisImmune/>
 		<StunImmune/>

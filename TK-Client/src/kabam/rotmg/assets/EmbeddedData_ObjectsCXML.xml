@@ -27194,7 +27194,7 @@
     </AnimatedTexture>
     <DisplayedId>Cursed Snowman</DisplayedId>
     <Size>160</Size>
-    <MaxHitPoints>900000</MaxHitPoints>
+    <MaxHitPoints>450000</MaxHitPoints>
     <Defense>44</Defense>
     <StasisImmune />
     <StunImmune />
@@ -27540,7 +27540,7 @@
     </AnimatedTexture>
     <DisplayedId>Corrupt Snowman</DisplayedId>
     <Size>160</Size>
-    <MaxHitPoints>700000</MaxHitPoints>
+    <MaxHitPoints>350000</MaxHitPoints>
     <Defense>41</Defense>
     <StasisImmune />
     <StunImmune />
@@ -27550,7 +27550,7 @@
       <ObjectId>ASM Big Shot</ObjectId>
       <Damage>285</Damage>
       <Size>150</Size>
-      <Speed>90</Speed>
+      <Speed>80</Speed>
       <Frequency>1</Frequency>
       <Amplitude>2</Amplitude>
       <LifetimeMS>4000</LifetimeMS>
@@ -27561,21 +27561,21 @@
       <ObjectId>Projectile 1 CSS</ObjectId>
       <Damage>405</Damage>
       <Size>150</Size>
-      <Speed>90</Speed>
+      <Speed>80</Speed>
       <LifetimeMS>4000</LifetimeMS>
     </Projectile>
     <Projectile id="2">
       <ObjectId>Projectile 2 CSS</ObjectId>
       <Damage>515</Damage>
       <Size>150</Size>
-      <Speed>100</Speed>
+      <Speed>80</Speed>
       <LifetimeMS>5000</LifetimeMS>
     </Projectile>
     <Projectile id="3">
       <ObjectId>Projectile 0 GFS</ObjectId>
       <Damage>300</Damage>
       <Size>150</Size>
-      <Speed>100</Speed>
+      <Speed>80</Speed>
       <Frequency>2</Frequency>
       <Amplitude>0.5</Amplitude>
       <LifetimeMS>5000</LifetimeMS>
@@ -27584,14 +27584,14 @@
       <ObjectId>CSS Big 1</ObjectId>
       <Damage>300</Damage>
       <Size>150</Size>
-      <Speed>100</Speed>
+      <Speed>80</Speed>
       <LifetimeMS>1500</LifetimeMS>
     </Projectile>
     <Projectile id="5">
       <ObjectId>CSS Shot 1</ObjectId>
       <Damage>300</Damage>
       <Size>150</Size>
-      <Speed>90</Speed>
+      <Speed>80</Speed>
       <LifetimeMS>5000</LifetimeMS>
     </Projectile>
     <Projectile id="6">
@@ -31190,7 +31190,7 @@
     <Projectile id="0">
       <ObjectId>Projectile 0 GFS</ObjectId>
       <Damage>260</Damage>
-      <Speed>95</Speed>
+      <Speed>75</Speed>
       <Size>140</Size>
       <ArmorPiercing />
       <MultiHit />
@@ -51762,11 +51762,12 @@
     <Item />
     <SPlus />
     <NoTierTag />
-    <Description>Freezing</Description>
+    <Description>Stack up to 200x for a COOL reward!</Description>
     <Texture>
       <File>CustomObj1</File>
       <Index>0x26</Index>
     </Texture>
+    <Soulbound />
     <SlotType>10</SlotType>
     <QuantityLimit>200</QuantityLimit>
     <Quantity>1</Quantity>
@@ -64333,7 +64334,7 @@
     <SlotType>1</SlotType>
     <Legendary />
     <Description>“Cowards die many times before their deaths; The valiant never taste of death but once.”</Description>
-    <RateOfFire>0.55</RateOfFire>
+    <RateOfFire>1</RateOfFire>
     <Sound>weapon/mithril_sword</Sound>
     <Projectile>
       <ObjectId>Thiram Shot</ObjectId>
@@ -64432,7 +64433,7 @@
       <Speed>75</Speed>
       <MinDamage>666</MinDamage>
       <ParticleTrail lifetimeMS="300">0x7E3F00</ParticleTrail>
-      <MaxDamage>600</MaxDamage>
+      <MaxDamage>667</MaxDamage>
       <LifetimeMS>627</LifetimeMS>
       <Size>100</Size>
       <MultiHit />

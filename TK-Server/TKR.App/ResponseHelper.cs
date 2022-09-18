@@ -4,6 +4,12 @@ namespace TKR.App
 {
     public static class ResponseHelper
     {
+        public static async void InternalServerError(this HttpResponse httpResponse, string error)
+        {
+            httpResponse.StatusCode = 500;
+            await httpResponse.Body.WriteAsync(Encoding.UTF8.GetBytes($"<Error>Internal Server Error</Error>"));
+        }
+
         public static async void CreateError(this HttpResponse httpResponse, string error)
         {
             httpResponse.StatusCode = 404;

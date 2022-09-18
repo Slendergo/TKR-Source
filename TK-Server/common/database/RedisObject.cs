@@ -171,7 +171,6 @@ namespace common.database
             else
             {
                 var entry = new HashEntry[] { new HashEntry(field, db.HashGet(key, field)) };
-
                 _entries = entry.ToDictionary(x => x.Name, x => new KeyValuePair<byte[], bool>(x.Value, false));
             }
         }

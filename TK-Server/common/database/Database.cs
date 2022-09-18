@@ -624,12 +624,10 @@ namespace common.database
         public DbAccount GetAccount(string uuid)
         {
             var info = new DbLoginInfo(_db, uuid);
-
             if (info.IsNull)
                 return null;
 
             var ret = new DbAccount(_db, info.AccountId);
-
             if (ret.IsNull)
                 return null;
 

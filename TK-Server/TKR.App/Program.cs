@@ -1,8 +1,4 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.FileProviders;
-using System.Net;
-using TKR.App.Controllers;
 using TKR.App.Database;
 
 namespace TKR.App
@@ -18,7 +14,7 @@ namespace TKR.App
             var builder = WebApplication.CreateBuilder(args);
             var service = builder.Services;
 
-            service.AddSingleton<RedisDatabase>();
+            service.AddSingleton<DatabaseService>();
 
             service.AddControllers();
 
@@ -46,13 +42,19 @@ namespace TKR.App
                 RequestPath = "/music"
             });
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthorization();
             app.MapControllers(); //app.MapEndpoints(endpoints => endpoints.MapControllers());
 
+            app.Use(async (context, next) =>
+            {
+                Console.WriteLine($"{context.Request.Path}{context.Request.QueryString}");
+                await next();
+            });
+
             // create instance of DB now
-            _ = app.Services.GetService<RedisDatabase>();
+            _ = app.Services.GetService<DatabaseService>();
 
             app.Run();
         }

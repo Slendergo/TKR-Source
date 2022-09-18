@@ -378,14 +378,12 @@ namespace common
         public static string ToCommaSepString<T>(this T[] arr)
         {
             var ret = new StringBuilder();
-
             for (var i = 0; i < arr.Length; i++)
             {
-                if (i != 0) ret.Append(", ");
-
-                ret.Append(arr[i].ToString());
+                if (i != 0)
+                    ret.Append(", ");
+                _ = ret.Append(arr[i].ToString());
             }
-
             return ret.ToString();
         }
 
@@ -405,7 +403,6 @@ namespace common
 
         public static int ToInt32(this string str) => GetInt(str);
 
-        public static int ToUnixTimestamp(this DateTime dateTime)
-            => (int)(dateTime - new DateTime(1970, 1, 1)).TotalSeconds;
+        public static int ToUnixTimestamp(this DateTime dateTime) => (int)(dateTime - new DateTime(1970, 1, 1)).TotalSeconds;
     }
 }

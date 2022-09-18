@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <None Remove="resources\web\crossdomain.xml" />
-    <None Remove="resources\web\data\init.xml" />
+    <None Remove="resources\web\app\init.xml" />
     <None Remove="resources\web\music\menumusic.mp3" />
     <None Remove="resources\web\music\sorc.mp3" />
     <None Remove="resources\web\music\wanderlust.mp3" />
@@ -203,7 +203,7 @@
     <Content Include="resources\web\crossdomain.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="resources\web\data\init.xml">
+    <Content Include="resources\web\app\init.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\web\music\menumusic.mp3">
@@ -756,13 +756,13 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="StackExchange.Redis" Version="2.6.66" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="StackExchange.Redis" Version="2.1.28" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="resources\web\data\languages\en.txt">
+    <None Update="resources\web\app\languages\en.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="resources\web\music\test.mp3">

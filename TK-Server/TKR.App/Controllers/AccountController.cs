@@ -9,34 +9,32 @@ namespace TKR.App.Controllers
     public class AccountController : ControllerBase
     {
         private readonly ILogger<AccountController> _logger;
-        private readonly RedisDatabase _database;
+        private readonly DatabaseService _database;
 
-        public AccountController(ILogger<AccountController> logger, RedisDatabase database)
+        public AccountController(ILogger<AccountController> logger, DatabaseService database)
         {
             _logger = logger;
             _database = database;
         }
 
         [HttpPost("verify")]
-        public void AccountVerify([FromForm] string guid, [FromForm] string password)
+        public void Verify([FromForm] string guid, [FromForm] string password)
         {
             var status = _database.ValidateLogin(guid, password);
             switch (status)
             {
                 case LoginModelResult.OK:
-                    Response.CreateSuccess("Unknown Error");
+                    Response.CreateXml("Success");
                     break;
                 case LoginModelResult.AccountNotExists:
-                    Response.CreateError("Unknown Error");
-                    break;
                 case LoginModelResult.InvalidCredentials:
-                    Response.CreateError("Unknown Error");
+                    Response.CreateError("Account credentials not valid");
                     break;
             }
         }
 
         [HttpPost("register")]
-        public void AccountRegister([FromForm] string guid, [FromForm] string newGuid, [FromForm] string newPassword, [FromForm] string name)
+        public void Register([FromForm] string guid, [FromForm] string newGuid, [FromForm] string newPassword, [FromForm] string name)
         {
             _logger.LogInformation(guid + " " + newGuid + " " + newPassword + " " + name);
             Response.CreateError("Unknown Error");

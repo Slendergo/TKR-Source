@@ -8,13 +8,13 @@ using TKR.App.Database.Models;
 namespace TKR.App.Database
 {
 
-    public sealed class RedisDatabase
+    public sealed class DatabaseService
     {
-        private readonly ILogger<RedisDatabase> _logger;
+        private readonly ILogger<DatabaseService> _logger;
         private readonly IDatabase _database;
         private readonly ConnectionMultiplexer _multiplexer;
 
-        public RedisDatabase(IConfiguration configuration, ILogger<RedisDatabase> logger)
+        public DatabaseService(IConfiguration configuration, ILogger<DatabaseService> logger)
         {
             _logger = logger;
 

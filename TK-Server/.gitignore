@@ -350,6 +350,7 @@ MigrationBackup/
 
 # Redis
 *.rdb
-redis/tk_database__log
+TKR.Redis/tk_database__log
+TKR.App/logs
 *.prfsession
 *.diagsession

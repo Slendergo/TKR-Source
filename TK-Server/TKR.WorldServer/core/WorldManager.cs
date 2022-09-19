@@ -72,23 +72,20 @@ namespace TKR.WorldServer.core
 
             _ = Task.Factory.StartNew(() =>
             {
-                using (var t = new TimedProfiler("CreateNewRealm()"))
+                var world = new RealmWorld(GameServer, nextId, worldResource);
+                world.SetMaxPlayers(KingdomPortalMonitor.MAX_PER_REALM);
+                world.DisplayName = name;
+                var success = world.LoadMapFromData(worldResource);
+                if (!success)
+                    return null;
+                world.Init();
+                _ = Worlds.TryAdd(world.Id, world);
+                lock (Threads)
                 {
-                    var world = new RealmWorld(GameServer, nextId, worldResource);
-                    world.SetMaxPlayers(KingdomPortalMonitor.MAX_PER_REALM);
-                    world.DisplayName = name;
-                    var success = world.LoadMapFromData(worldResource);
-                    if (!success)
-                        return null;
-                    world.Init();
-                    _ = Worlds.TryAdd(world.Id, world);
-                    lock (Threads)
-                    {
-                        Threads.Add(world.Id, new RootWorldThread(this, world));
-                    }
-                    GameServer.WorldManager.Nexus.PortalMonitor.AddPortal(world);
-                    return world;
+                    Threads.Add(world.Id, new RootWorldThread(this, world));
                 }
+                GameServer.WorldManager.Nexus.PortalMonitor.AddPortal(world);
+                return world;
             });
         }
 

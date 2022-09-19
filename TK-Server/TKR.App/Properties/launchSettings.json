@@ -2,13 +2,13 @@
   "profiles": {
     "TKR.App": {
       "commandName": "Project",
-      "launchBrowser": true,
-      "launchUrl": "swagger",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      },
+      //"launchBrowser": true,
+      //"launchUrl": "swagger",
+      //"environmentVariables": {
+      //  "ASPNETCORE_ENVIRONMENT": "Development"
+      //},
       "dotnetRunMessages": true,
-      "applicationUrl": "http://localhost:2000/;"
+      //"applicationUrl": "http://localhost:2000/;"
     },
     "IIS Express": {
       "commandName": "IISExpress",

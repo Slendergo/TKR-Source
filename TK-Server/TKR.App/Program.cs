@@ -1,9 +1,6 @@
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
-using Microsoft.Extensions.Hosting;
-using System;
 
 namespace TKR.App
 {
@@ -17,19 +14,23 @@ namespace TKR.App
             service.AddSingleton<CoreService>();
             service.AddControllers();
 
+#if DEBUG
+            service.AddEndpointsApiExplorer();
+            service.AddSwaggerGen();
+#endif
+
             var app = builder.Build();
 
             var core = app.Services.GetService<CoreService>();
 
             app.Urls.Clear();
-            app.Urls.Add($"http://{core.Config.serverInfo.bindAddress}:{core.Config.serverInfo.port}");
-
-            if (!core.IsProduction())
-            {
-                service.AddEndpointsApiExplorer();
-                service.AddSwaggerGen();
-            }
-
+#if DEBUG
+            var address = "localhost";
+#else
+            var address = core.Config.serverInfo.bindAddress;
+#endif
+            app.Urls.Add($"http://{address}:{core.Config.serverInfo.port}");
+            
             if (!core.IsProduction())
             {
                 app.UseDeveloperExceptionPage();

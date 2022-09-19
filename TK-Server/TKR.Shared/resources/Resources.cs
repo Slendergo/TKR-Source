@@ -16,27 +16,24 @@ namespace TKR.Shared.resources
 
         public Resources(string resourcePath, bool wServer, bool exportXmls = false)
         {
-            using (var t = new TimedProfiler("Resources"))
-            {
-                Log.Info("Loading resources...");
-                ResourcePath = Path.GetFullPath(resourcePath);
+            Log.Info("Loading resources...");
+            ResourcePath = Path.GetFullPath(resourcePath);
 
-                Log.Info("Loading XmlData...");
-                var xmlPath = $"{resourcePath}/xml";
+            Log.Info("Loading XmlData...");
+            var xmlPath = $"{resourcePath}/xml";
 
-                GameData.Initialize(exportXmls);
-                GameData.LoadXmls(xmlPath, "*.xml", exportXmls);
-                GameData.LoadXmls(xmlPath, "*.dat", exportXmls);
+            GameData.Initialize(exportXmls);
+            GameData.LoadXmls(xmlPath, "*.xml", exportXmls);
+            GameData.LoadXmls(xmlPath, "*.dat", exportXmls);
 
-                Log.Info("Loading Settings...");
-                var settingsPath = $"{resourcePath}/data/init.xml";
-                Settings.LoadSettings(settingsPath);
+            Log.Info("Loading Settings...");
+            var settingsPath = $"{resourcePath}/data/init.xml";
+            Settings.LoadSettings(settingsPath);
 
-                if (!wServer)
-                    LoadWebFiles(resourcePath + "/web");
-                else
-                    GameData.LoadMaps($"{resourcePath}/worlds");
-            }
+            if (!wServer)
+                LoadWebFiles(resourcePath + "/web");
+            else
+                GameData.LoadMaps($"{resourcePath}/worlds");
         }
 
         private void LoadWebFiles(string dir)

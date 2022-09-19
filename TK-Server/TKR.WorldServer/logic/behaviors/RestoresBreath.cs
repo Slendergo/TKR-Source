@@ -1,0 +1,41 @@
+﻿using System;
+using TKR.WorldServer.core.miscfile.thread;
+using TKR.WorldServer.core.objects;
+using TKR.WorldServer.logic;
+using TKR.WorldServer.core.objects;
+
+namespace TKR.WorldServer.logic.behaviors
+{
+    public sealed class RestoresBreath : Behavior
+    {
+        private readonly float radius;
+        private readonly float radiusSqr;
+        private readonly float speed;
+
+        public RestoresBreath(double radius = 1.0, double speed = 50)
+        {
+            this.radius = (float)radius;
+
+            radiusSqr = (float)(radius * radius);
+
+            this.speed = (float)speed;
+        }
+
+        protected override void TickCore(Entity host, TickTime time, ref object state)
+        {
+            var players = host.World.PlayersCollision.HitTest(host.X, host.Y, radius);
+
+            foreach (var o in players)
+            {
+                if (!(o is Player))
+                    continue;
+
+                var player = o as Player;
+                var distSq = player.SqDistTo(host);
+
+                if (distSq < radiusSqr)
+                    player.Breath = Math.Min(100.0, player.Breath + time.DeltaTime * speed);
+            }
+        }
+    }
+}

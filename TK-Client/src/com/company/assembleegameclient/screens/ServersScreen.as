@@ -15,6 +15,7 @@ import flash.display.Graphics;
 import flash.events.KeyboardEvent;
 import flash.events.MouseEvent;
    import flash.filters.DropShadowFilter;
+import flash.utils.getTimer;
 
 import kabam.rotmg.appengine.api.AppEngineClient;
 import kabam.rotmg.core.StaticInjectorContext;
@@ -135,9 +136,12 @@ public class ServersScreen extends Sprite
          stage.removeEventListener(KeyboardEvent.KEY_DOWN,this.onKeyDown);
       }
 
+      private var lastTime:int = 200;
+
       private function onKeyDown(event:KeyboardEvent) : void {
-         if (event.keyCode == Parameters.data_.refresh_button_servers) {
+         if (getTimer() - lastTime >= 200 && event.keyCode == Parameters.data_.refresh_button_servers) {
             this.request();
+            lastTime = getTimer();
          }
       }
 

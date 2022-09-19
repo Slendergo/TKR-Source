@@ -1,0 +1,3 @@
+﻿namespace TKR.Shared.isc
+{
+}

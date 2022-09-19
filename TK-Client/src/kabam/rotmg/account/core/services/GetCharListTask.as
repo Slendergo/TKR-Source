@@ -108,6 +108,7 @@ import kabam.rotmg.appengine.api.AppEngineClient;
          this.client.setSendEncrypted(true);
          this.logger.info("GetUserDataTask invalid credentials");
          this.account.clear();
+         this.client.complete.addOnce(this.onComplete);
          this.client.sendRequest(Parameters.LOCAL_HOST ? "/char/list" : "/api/charList", this.requestData);
       }
       

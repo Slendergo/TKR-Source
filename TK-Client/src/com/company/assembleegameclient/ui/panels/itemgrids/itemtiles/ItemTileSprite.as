@@ -119,7 +119,7 @@ import kabam.rotmg.constants.ItemConstants;
                  this.next = this.first;
                  var animatedTimer:Timer = new Timer(spritePeriod);
                  animatedTimer.addEventListener(TimerEvent.TIMER, this.makeAnimation);
-                 animatedTimer.start( );
+                 animatedTimer.start();
              } else {
                  this.spriteFile = null;
                  this.first = this.last = this.next = -1;

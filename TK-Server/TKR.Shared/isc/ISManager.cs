@@ -12,8 +12,8 @@ namespace TKR.Shared.isc
         public EventHandler ServerPing;
         public EventHandler ServerQuit;
 
-        private const int PingPeriod = 1000;
-        private const int ServerTimeout = 2000;
+        private const int PingPeriod = 2000;
+        private const int ServerTimeout = 30000;
 
         private static readonly string AppEngineTitleFormat = string.Format("[App] Servers: {0} | Connections: {1} of {2}",
             ISTextKeys.SERVER_AMOUNT,

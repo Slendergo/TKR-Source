@@ -3,13 +3,13 @@ using TKR.Shared.resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TKR.WorldServer.core.miscfile.datas;
 using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.core.miscfile.world;
 using TKR.WorldServer.core.objects;
 using TKR.WorldServer.core.objects.vendors;
 using TKR.WorldServer.core.setpieces;
 using TKR.WorldServer.core.objects;
+using TKR.WorldServer.core.miscfile.structures;
 
 namespace TKR.WorldServer.core.worlds.logic
 {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TKR.Shared;
 using TKR.WorldServer.core.miscfile.stats;
+using TKR.WorldServer.core.miscfile.structures;
 
 namespace TKR.WorldServer.core.miscfile.datas
 {

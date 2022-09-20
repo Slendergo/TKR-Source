@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Text;
-using TKR.WorldServer.core;
 
 namespace TKR.WorldServer.core.miscfile
 {
     public sealed class DbEventArgs : EventArgs
     {
         public string Message { get; private set; }
-
         public DbEventArgs(string message) => Message = message;
     }
 

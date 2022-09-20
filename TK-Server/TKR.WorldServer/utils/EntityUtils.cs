@@ -5,10 +5,10 @@ using TKR.Shared.resources;
 using TKR.Shared.utils;
 using TKR.WorldServer.core.miscfile;
 using TKR.WorldServer.core.miscfile.stats;
-using TKR.WorldServer.core.miscfile.datas;
 using TKR.WorldServer.core.objects;
 using TKR.WorldServer.core.objects.player;
 using TKR.WorldServer.core.worlds;
+using TKR.WorldServer.core.miscfile.structures;
 
 namespace TKR.WorldServer.utils
 {

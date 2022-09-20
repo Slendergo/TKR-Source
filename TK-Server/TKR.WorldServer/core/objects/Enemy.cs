@@ -5,12 +5,12 @@ using TKR.Shared.resources;
 using TKR.WorldServer.core.miscfile;
 using TKR.WorldServer.core.miscfile.datas;
 using TKR.WorldServer.core.miscfile.stats;
-using TKR.WorldServer.core.miscfile.datas;
 using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.core.worlds;
 using TKR.WorldServer.logic;
 using TKR.WorldServer.networking.packets.outgoing;
 using TKR.WorldServer.utils;
+using TKR.WorldServer.core.miscfile.structures;
 
 namespace TKR.WorldServer.core.objects
 {

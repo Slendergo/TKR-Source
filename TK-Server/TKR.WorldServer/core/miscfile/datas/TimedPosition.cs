@@ -1,4 +1,5 @@
 ﻿using TKR.Shared;
+using TKR.WorldServer.core.miscfile.structures;
 
 namespace TKR.WorldServer.core.miscfile.datas
 {

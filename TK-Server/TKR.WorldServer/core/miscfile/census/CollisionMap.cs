@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using TKR.WorldServer.core.miscfile.datas;
+using TKR.WorldServer.core.miscfile.structures;
 
 namespace TKR.WorldServer.core.miscfile.census
 {

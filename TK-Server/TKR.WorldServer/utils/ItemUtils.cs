@@ -1,5 +1,5 @@
 ﻿using TKR.Shared.resources;
-using TKR.WorldServer.core.miscfile;
+using TKR.WorldServer.core.objects;
 using TKR.WorldServer.core.objects.containers;
 
 namespace TKR.WorldServer.utils

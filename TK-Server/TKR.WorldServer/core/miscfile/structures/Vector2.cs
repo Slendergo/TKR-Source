@@ -5,7 +5,7 @@ using System.Globalization;
 using System.Runtime.Serialization;
 #endif
 
-namespace TKR.WorldServer.core.miscfile.datas
+namespace TKR.WorldServer.core.miscfile.structures
 {
 #if WINRT
     [DataContract]

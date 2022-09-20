@@ -2,10 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TKR.WorldServer.core.miscfile.datas;
 using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.core.objects;
 using TKR.WorldServer.utils;
+using TKR.WorldServer.core.miscfile.structures;
 
 namespace TKR.WorldServer.logic.behaviors
 {

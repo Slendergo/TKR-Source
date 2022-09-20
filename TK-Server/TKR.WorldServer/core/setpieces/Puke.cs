@@ -1,4 +1,4 @@
-﻿using TKR.WorldServer.core.miscfile.datas;
+﻿using TKR.WorldServer.core.miscfile.structures;
 using TKR.WorldServer.core.worlds;
 
 namespace TKR.WorldServer.core.setpieces

@@ -1,7 +1,8 @@
-﻿using TKR.Shared;
+﻿using System.Xml.Linq;
+using TKR.Shared;
 using TKR.WorldServer.core.objects.inventory;
 
-namespace TKR.WorldServer.core.miscfile
+namespace TKR.WorldServer.core.objects
 {
     public interface IContainer
     {

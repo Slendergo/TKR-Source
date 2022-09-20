@@ -5,7 +5,6 @@ using System.Linq;
 using TKR.WorldServer.core.miscfile.census;
 using TKR.WorldServer.core.miscfile.datas;
 using TKR.WorldServer.core.miscfile.stats;
-using TKR.WorldServer.core.miscfile.datas;
 using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.core.worlds;
 using TKR.WorldServer.logic;
@@ -16,6 +15,7 @@ using TKR.WorldServer.core.objects.connection;
 using TKR.WorldServer.core.objects.vendors;
 using TKR.WorldServer.memory;
 using TKR.WorldServer.core.objects.containers;
+using TKR.WorldServer.core.miscfile.structures;
 
 namespace TKR.WorldServer.core.objects
 {

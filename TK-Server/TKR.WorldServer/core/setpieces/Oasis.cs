@@ -2,13 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TKR.WorldServer.core.miscfile.datas;
 using TKR.WorldServer.core.objects;
 using TKR.WorldServer.core.worlds;
 using TKR.WorldServer.logic.loot;
 using TKR.WorldServer.core.objects;
 using TKR.WorldServer.logic.loot;
 using TKR.WorldServer.core.objects.containers;
+using TKR.WorldServer.core.miscfile.structures;
 
 namespace TKR.WorldServer.core.setpieces
 {

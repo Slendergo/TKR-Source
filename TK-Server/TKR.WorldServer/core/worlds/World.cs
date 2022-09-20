@@ -7,7 +7,7 @@ using System.Threading;
 using TKR.Shared.database;
 using TKR.Shared.resources;
 using TKR.WorldServer.core.miscfile.census;
-using TKR.WorldServer.core.miscfile.structures;
+using TKR.WorldServer.core.miscfile.datas;
 using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.core.miscfile.world;
 using TKR.WorldServer.core.objects;

@@ -2,81 +2,13 @@
 using TKR.Shared.resources;
 using NLog;
 using System;
-using TKR.WorldServer.core.miscfile.structures;
+using TKR.WorldServer.core.miscfile.datas;
 using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.core.objects;
 using TKR.WorldServer.logic;
 
 namespace TKR.WorldServer.logic
 {
-    struct Vector2
-    {
-        public static Vector2 Zero = new Vector2(0.0f, 0.0f);
-
-        public float X;
-        public float Y;
-
-        public Vector2(float x, float y)
-        {
-            X = x;
-            Y = y;
-        }
-
-        public float Length() => MathF.Sqrt((X * X) + (Y * Y));
-        public float LengthSquared() => (X * X) + (Y * Y);
-
-        public void Normalize()
-        {
-            float val = 1.0f / MathF.Sqrt((X * X) + (Y * Y));
-            X *= val;
-            Y *= val;
-        }
-
-        public static Vector2 operator +(Vector2 value1, Vector2 value2)
-        {
-            value1.X += value2.X;
-            value1.Y += value2.Y;
-            return value1;
-        }
-
-        public static Vector2 operator -(Vector2 value)
-        {
-            value.X = -value.X;
-            value.Y = -value.Y;
-            return value;
-        }
-
-        public static Vector2 operator -(Vector2 value1, Vector2 value2)
-        {
-            value1.X -= value2.X;
-            value1.Y -= value2.Y;
-            return value1;
-        }
-        public static Vector2 operator *(Vector2 value1, Vector2 value2)
-        {
-            value1.X *= value2.X;
-            value1.Y *= value2.Y;
-            return value1;
-        }
-
-        public static Vector2 operator *(Vector2 value, float scaleFactor)
-        {
-            value.X *= scaleFactor;
-            value.Y *= scaleFactor;
-            return value;
-        }
-
-        public static bool operator ==(Vector2 value1, Vector2 value2)
-        {
-            return value1.X == value2.X && value1.Y == value2.Y;
-        }
-
-        public static bool operator !=(Vector2 value1, Vector2 value2)
-        {
-            return value1.X != value2.X || value1.Y != value2.Y;
-        }
-    }
-
     public abstract class Behavior : IStateChildren
     {
         protected static readonly Logger Log = LogManager.GetCurrentClassLogger();

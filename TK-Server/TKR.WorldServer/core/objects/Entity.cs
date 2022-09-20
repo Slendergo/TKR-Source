@@ -5,7 +5,7 @@ using System.Linq;
 using TKR.WorldServer.core.miscfile.census;
 using TKR.WorldServer.core.miscfile.datas;
 using TKR.WorldServer.core.miscfile.stats;
-using TKR.WorldServer.core.miscfile.structures;
+using TKR.WorldServer.core.miscfile.datas;
 using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.core.worlds;
 using TKR.WorldServer.logic;

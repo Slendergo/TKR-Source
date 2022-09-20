@@ -2,7 +2,7 @@
 using System;
 using TKR.WorldServer.core.objects;
 
-namespace TKR.WorldServer.core.miscfile.structures
+namespace TKR.WorldServer.core.miscfile.datas
 {
     public struct Position
     {

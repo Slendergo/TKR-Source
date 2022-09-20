@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using TKR.Shared.resources;
-using TKR.WorldServer.core.miscfile.structures;
+using TKR.WorldServer.core.miscfile.datas;
 using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.networking;
 using TKR.WorldServer.networking.packets.outgoing;

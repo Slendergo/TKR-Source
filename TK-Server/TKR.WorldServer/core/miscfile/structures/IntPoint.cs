@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TKR.WorldServer.core.miscfile.structures
+namespace TKR.WorldServer.core.miscfile.datas
 {
     public struct IntPoint : IEquatable<IntPoint>
     {

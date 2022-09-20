@@ -129,6 +129,9 @@ namespace TKR.WorldServer.core.net.handlers
                     }
                 }
 
+            LogTrade(player, tradeTarget, thisItems);
+            LogTrade(tradeTarget, player, targetItems);
+
             // save
             if (!Inventory.DatExecute(pInvDataTrans, tInvDataTrans))
             {
@@ -146,12 +149,7 @@ namespace TKR.WorldServer.core.net.handlers
             {
                 msg = "An error occured while trading! Some items were lost!";
             }
-            else
-            {
-                LogTrade(player, tradeTarget, thisItems);
-                LogTrade(tradeTarget, player, targetItems);
-            }
-
+            
             // trade successful, notify and save
             TradeDone(player, tradeTarget, msg);
         }
@@ -161,8 +159,8 @@ namespace TKR.WorldServer.core.net.handlers
             try
             {
                 var sb = new StringBuilder($"[{player.World.IdName}({player.World.Id})] ");
-                sb.Append($"<{player.Stars} {player.Name} {player.AccountId}-{player.Client.Character.CharId}> traded: ");
-                sb.Append(string.Join(", ", items.Select(_ => _.Item1.DisplayId ?? _.Item1.ObjectId))); // todo fix
+                sb.Append($"<{player.Stars} {player.Name} {player.AccountId}-{player.Client.Character.CharId}> traded ");
+                //sb.Append(string.Join(", ", items.Select(_ => _.Item1.DisplayId ?? _.Item1.ObjectId))); // todo fix
                 sb.Append($" to <{tradeTarget.Stars} {tradeTarget.Name} {tradeTarget.AccountId}-{tradeTarget.Client.Character.CharId}>");
                 StaticLogger.Instance.Info(sb.ToString());
             }

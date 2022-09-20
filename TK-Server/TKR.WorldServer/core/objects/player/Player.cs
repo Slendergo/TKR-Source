@@ -415,12 +415,12 @@ namespace TKR.WorldServer.core.objects
                 KilledBy = killer
             });
 
-            World.Timers.Add(new WorldTimer(1000, (w, t) =>
+            World.StartNewTimer(1000, (w, t) =>
             {
                 if (Client.Player != this)
                     return;
                 Client.Disconnect("Death");
-            }));
+            });
         }
 
         public int GetCurrency(CurrencyType currency)
@@ -1572,12 +1572,12 @@ namespace TKR.WorldServer.core.objects
                             ObjectId = Id
                         }, this);
 
-                        World.Timers.Add(new WorldTimer(5000, (world, t) =>
+                        World.StartNewTimer(5000, (world, t) =>
                         {
                             for (var i = 0; i < 8; i++)
                                 Stats.Boost.ActivateBoost[i].Pop(i == 0 ? 100 : i == 1 ? 100 : 15, true);
                             Stats.ReCalculateValues();
-                        }));
+                        });
                     }
                 }
 

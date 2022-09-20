@@ -75,13 +75,9 @@ namespace TKR.WorldServer.core.net.handlers
                 var prjDesc = item.Projectiles[0];
                 var prj = player.PlayerShootProjectile(time, newBulletId, item.ObjectType, angle + arcGap * i, startingPosition, prjDesc);
                 player.World.AddProjectile(prj);
-                player.World.BroadcastIfVisibleExclude(new AllyShoot()
-                {
-                    OwnerId = player.Id,
-                    Angle = angle,
-                    ContainerType = item.ObjectType,
-                    BulletId = prj.ProjectileId
-                }, player, player);
+
+                var allyShoot = new AllyShoot(prj.ProjectileId, player.Id, item.ObjectType, angle);
+                player.World.BroadcastIfVisibleExclude(allyShoot, player, player);
                 player.FameCounter.Shoot();
             }
         }

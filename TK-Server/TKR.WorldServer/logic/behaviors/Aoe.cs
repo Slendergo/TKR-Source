@@ -35,7 +35,10 @@ namespace TKR.WorldServer.logic.behaviors
             host.World.AOE(pos, radius, players, enemy =>
             {
                 if (!players)
-                    host.World.BroadcastIfVisible(new Aoe() { Pos = pos, Radius = radius, Damage = (ushort)damage, Duration = 0, Effect = 0, OrigType = host.ObjectType }, host);
+                {
+                    var aoe = new Aoe(pos, radius, damage, 0, 0, host.ObjectType, color);
+                    host.World.BroadcastIfVisible(aoe, host);
+                }
             });
         }
 

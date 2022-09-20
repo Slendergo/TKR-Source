@@ -4,7 +4,7 @@ using TKR.WorldServer.core.worlds;
 
 namespace TKR.WorldServer.core.miscfile.world
 {
-    public class WorldTimer
+    public sealed class WorldTimer
     {
         private readonly Action<World, TickTime> Callback;
         private readonly Func<World, TickTime, bool> FuncCallback;
@@ -37,9 +37,6 @@ namespace TKR.WorldServer.core.miscfile.world
             return FuncCallback.Invoke(world, time);
         }
 
-        public void Reset()
-        {
-            Remaining = Total;
-        }
+        public void Reset() => Remaining = Total;
     }
 }

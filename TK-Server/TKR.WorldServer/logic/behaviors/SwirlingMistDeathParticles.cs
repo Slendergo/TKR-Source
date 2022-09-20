@@ -13,7 +13,7 @@ namespace TKR.WorldServer.logic.behaviors
             var entity = Entity.Resolve(host.GameServer, "SwirlingMist Particles");
             entity.Move(host.X, host.Y);
 
-            host.World.Timers.Add(new WorldTimer(1000, (w, t) => w.LeaveWorld(entity)));
+            host.World.StartNewTimer(1000, (w, t) => w.LeaveWorld(entity));
             host.World.EnterWorld(entity);
         }
 

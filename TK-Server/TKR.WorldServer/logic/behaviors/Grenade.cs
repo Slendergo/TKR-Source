@@ -58,18 +58,10 @@ namespace TKR.WorldServer.logic.behaviors
                     : new Position() { X = player.X, Y = player.Y };
 
                     host.World.BroadcastIfVisible(new ShowEffect() { EffectType = EffectType.Throw, Color = new ARGB(color), TargetObjectId = host.Id, Pos1 = target, Pos2 = new Position() { X = 222 } }, host);
-                    host.World.Timers.Add(new WorldTimer(1500, (world, t) =>
+                    host.World.StartNewTimer(1500, (world, t) =>
                     {
-                        world.BroadcastIfVisible(new Aoe()
-                        {
-                            Pos = target,
-                            Radius = radius,
-                            Damage = (ushort)(damage + enemyClasified),
-                            Duration = 0,
-                            Effect = 0,
-                            OrigType = host.ObjectType,
-                            Color = new ARGB(color)
-                        }, host);
+                        var aoe = new Aoe(target, radius, damage + enemyClasified, 0, 0, host.ObjectType, new ARGB(color));
+                        world.BroadcastIfVisible(aoe, host);
 
                         world.AOE(target, radius, true, p =>
                         {
@@ -77,7 +69,7 @@ namespace TKR.WorldServer.logic.behaviors
                             if (!p.HasConditionEffect(ConditionEffectIndex.Invincible) && !p.HasConditionEffect(ConditionEffectIndex.Stasis))
                                 p.ApplyConditionEffect(new ConditionEffect(effect, effectDuration));
                         });
-                    }));
+                    });
                 }
                 cool = coolDown.Next(Random);
             }

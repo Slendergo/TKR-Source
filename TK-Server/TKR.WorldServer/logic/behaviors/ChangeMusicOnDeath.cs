@@ -25,7 +25,7 @@ namespace TKR.WorldServer.logic.behaviors
                 var i = 0;
                 foreach (var plr in owner.Players.Values)
                 {
-                    owner.Timers.Add(new WorldTimer(100 * i, (w, t) =>
+                    owner.StartNewTimer(100 * i, (w, t) =>
                     {
                         if (plr == null)
                             return;
@@ -34,7 +34,7 @@ namespace TKR.WorldServer.logic.behaviors
                         {
                             Music = _music
                         });
-                    }));
+                    });
                     i++;
                 }
             }

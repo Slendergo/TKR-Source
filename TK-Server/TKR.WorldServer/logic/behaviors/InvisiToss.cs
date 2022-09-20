@@ -5,6 +5,7 @@ using TKR.WorldServer.core.miscfile.structures;
 using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.core.miscfile.world;
 using TKR.WorldServer.core.objects;
+using TKR.WorldServer.core.worlds;
 
 namespace TKR.WorldServer.logic.behaviors
 {
@@ -38,18 +39,15 @@ namespace TKR.WorldServer.logic.behaviors
 
                 var target = new Position { X = host.X + (float)(range * Math.Cos(angle.Value)), Y = host.Y + (float)(range * Math.Sin(angle.Value)) };
 
-                host.World.Timers.Add(new WorldTimer(0, (world, t) =>
-                {
-                    var entity = Entity.Resolve(world.GameServer, child);
+                var entity = Entity.Resolve(host.GameServer, child);
 
-                    if (host.Spawned)
-                        entity.Spawned = true;
+                if (host.Spawned)
+                    entity.Spawned = true;
 
-                    entity.Move(target.X, target.Y);
-                    (entity as Enemy).Terrain = (host as Enemy).Terrain;
+                entity.Move(target.X, target.Y);
+                (entity as Enemy).Terrain = (host as Enemy).Terrain;
 
-                    world.EnterWorld(entity);
-                }));
+                host.World.EnterWorld(entity);
 
                 cool = coolDown.Next(Random);
             }

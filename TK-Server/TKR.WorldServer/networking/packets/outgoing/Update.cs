@@ -4,22 +4,22 @@ using TKR.WorldServer.core.miscfile.datas;
 
 namespace TKR.WorldServer.networking.packets.outgoing
 {
+    public struct TileData
+    {
+        public int X;
+        public int Y;
+        public int Tile;
+
+        public TileData(int x, int y, int tile)
+        {
+            X = x;
+            Y = y;
+            Tile = tile;
+        }
+    }
+
     public class Update : OutgoingMessage
     {
-        public struct TileData
-        {
-            public int X;
-            public int Y;
-            public int Tile;
-
-            public TileData(int x, int y, int tile)
-            {
-                X = x;
-                Y = y;
-                Tile = tile;
-            }
-        }
-
         public List<TileData> Tiles { get; set; } = new List<TileData>();
         public List<ObjectDef> NewObjs { get; set; } = new List<ObjectDef>();
         public List<int> Drops { get; set; } = new List<int>();

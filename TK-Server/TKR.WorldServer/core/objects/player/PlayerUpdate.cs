@@ -268,7 +268,7 @@ namespace TKR.WorldServer.core.objects.player
 
                 SeenTiles[hash] = tile.UpdateCount;
 
-                var tileData = new Update.TileData(playerX, playerY, tile.TileId);
+                var tileData = new TileData(playerX, playerY, tile.TileId);
                 update.Tiles.Add(tileData);
             }
             Player.FameCounter.TileSent(update.Tiles.Count); // adds the new amount to the tiles been sent

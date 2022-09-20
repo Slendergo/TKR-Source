@@ -66,7 +66,7 @@ namespace TKR.WorldServer.core.worlds
         public ConcurrentDictionary<int, Portal> Portals { get; private set; } = new ConcurrentDictionary<int, Portal>();
         public ConcurrentDictionary<int, Pet> Pets { get; private set; } = new ConcurrentDictionary<int, Pet>();
         public Dictionary<int, Dictionary<int, Projectile>> Projectiles { get; private set; } = new Dictionary<int, Dictionary<int, Projectile>>();
-        public List<WorldTimer> Timers { get; private set; } = new List<WorldTimer>();
+        private readonly List<WorldTimer> Timers = new List<WorldTimer>();
 
         public ObjectPools ObjectPools { get; private set; }
 
@@ -426,6 +426,20 @@ namespace TKR.WorldServer.core.worlds
             }
         }
 
+        public WorldTimer StartNewTimer(int timeMs, Action<World, TickTime> callback)
+        {
+            var ret = new WorldTimer(timeMs, callback);
+            Timers.Add(ret);
+            return ret;
+        }
+
+        public WorldTimer StartNewTimer(int timeMs, Func<World, TickTime, bool> callback)
+        {
+            var ret = new WorldTimer(timeMs, callback);
+            Timers.Add(ret);
+            return ret;
+        }
+
         protected virtual void UpdateLogic(ref TickTime time)
         {
             foreach (var player in Players.Values)
@@ -477,8 +491,7 @@ namespace TKR.WorldServer.core.worlds
                 }
                 catch (Exception e)
                 {
-                    var msg = e.Message + "\n" + e.StackTrace;
-                    StaticLogger.Instance.Error(msg);
+                    StaticLogger.Instance.Error($"{e.Message}\n{e.StackTrace}");
                     Timers.RemoveAt(i);
                 }
         }

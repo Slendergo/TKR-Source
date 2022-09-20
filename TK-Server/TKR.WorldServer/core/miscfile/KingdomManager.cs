@@ -534,7 +534,7 @@ namespace TKR.WorldServer.core.miscfile
                             World.LeaveWorld(e);
                         }
 
-                        World.Timers.Add(new WorldTimer(30000, (w, t) => CurrentState = KingdomState.Closed));
+                        World.StartNewTimer(30000, (w, t) => CurrentState = KingdomState.Closed);
                     }
                     break;
                 case KingdomState.Closed:
@@ -707,7 +707,7 @@ namespace TKR.WorldServer.core.miscfile
                 }
             }
 
-            World.Timers.Add(new WorldTimer(15000, (world, t) => SpawnEvent(evt.Item1, evt.Item2)));
+            World.StartNewTimer(15000, (world, t) => SpawnEvent(evt.Item1, evt.Item2));
         }
 
         public void OnEnemyKilled(Enemy enemy, Player killer)

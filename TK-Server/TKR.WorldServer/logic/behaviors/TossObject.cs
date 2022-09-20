@@ -154,7 +154,7 @@ namespace TKR.WorldServer.logic.behaviors
                             Pos1 = target
                         }, ref target);
 
-                    host.World.Timers.Add(new WorldTimer(1000, (world, t) =>
+                    host.World.StartNewTimer(1000, (world, t) =>
                     {
                         if (!world.IsPassable(target.X, target.Y, true))
                             return;
@@ -175,7 +175,7 @@ namespace TKR.WorldServer.logic.behaviors
                         }
 
                         world.EnterWorld(entity);
-                    }));
+                    });
                     cool = _coolDown.Next(Random);
                 }
             }

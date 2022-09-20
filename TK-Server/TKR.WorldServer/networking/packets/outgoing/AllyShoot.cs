@@ -11,6 +11,14 @@ namespace TKR.WorldServer.networking.packets.outgoing
 
         public override MessageId MessageId => MessageId.ALLYSHOOT;
 
+        public AllyShoot(int bulletId, int ownerId, int containerType, float angle)
+        {
+            BulletId = bulletId;
+            OwnerId = ownerId;
+            ContainerType = containerType;
+            Angle = angle;
+        }
+
         protected override void Write(NWriter wtr)
         {
             wtr.Write(BulletId);

@@ -238,7 +238,7 @@ namespace TKR.WorldServer.core.commands
                 var pX = player.X;
                 var pY = player.Y;
 
-                player.World.Timers.Add(new WorldTimer(Delay * 1000, (world, t) => // spawn mob in delay seconds
+                player.World.StartNewTimer(Delay * 1000, (world, t) => // spawn mob in delay seconds
                 {
                     for (var i = 0; i < num && i < 500; i++)
                     {
@@ -287,7 +287,7 @@ namespace TKR.WorldServer.core.commands
                         if (!world.Deleted)
                             world.EnterWorld(entity);
                     }
-                }));
+                });
             }
         }
     }

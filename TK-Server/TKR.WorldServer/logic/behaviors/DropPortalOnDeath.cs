@@ -51,12 +51,12 @@ namespace TKR.WorldServer.logic.behaviors
                 owner.EnterWorld(entity);
 
                 if (timeoutTime != 0)
-                    owner.Timers.Add(new WorldTimer(timeoutTime * 1000, (world, t) => //default portal close time * 1000
+                    owner.StartNewTimer(timeoutTime * 1000, (world, t) => //default portal close time * 1000
                     {
                         try { world.LeaveWorld(entity); }
                         //couldn't remove portal, Owner became null. Should be fixed with RealmManager implementation
                         catch { Console.WriteLine("Couldn't despawn portal."); }
-                    }));
+                    });
             }
         }
 

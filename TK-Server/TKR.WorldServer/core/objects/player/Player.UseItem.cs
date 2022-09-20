@@ -516,10 +516,10 @@ namespace TKR.WorldServer.core.objects
                         en.Move(X, Y);
                         en.SetPlayerOwner(this);
                         World.EnterWorld(en);
-                        World.Timers.Add(new WorldTimer(30 * 1000, (w, t) =>
+                        World.StartNewTimer(30 * 1000, (w, t) =>
                         {
                             w.LeaveWorld(en);
-                        }));
+                        });
 
                         #endregion Pet
 
@@ -792,7 +792,7 @@ namespace TKR.WorldServer.core.objects
             entity.Move(X, Y);
             World.EnterWorld(entity);
 
-            World.Timers.Add(new WorldTimer(timeoutTime * 1000, (world, t) => world.LeaveWorld(entity)));
+            World.StartNewTimer(timeoutTime * 1000, (world, t) => world.LeaveWorld(entity));
 
             var openedByMsg = gameData.Portals[objType].DungeonName + " opened by " + Name + "!";
             World.Broadcast(new Notification
@@ -1421,7 +1421,7 @@ namespace TKR.WorldServer.core.objects
             x.Move(target.X, target.Y);
             World.EnterWorld(x);
 
-            World.Timers.Add(new WorldTimer(eff.ThrowTime, (world, t) =>
+            World.StartNewTimer(eff.ThrowTime, (world, t) =>
             {
                 world.BroadcastIfVisible(new ShowEffect()
                 {
@@ -1440,7 +1440,7 @@ namespace TKR.WorldServer.core.objects
 
                     ((Enemy)entity).Damage(this, time, dmg, true);
                 });
-            }));
+            });
         }
 
         private void AEPotionDust(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
@@ -1497,13 +1497,7 @@ namespace TKR.WorldServer.core.objects
                 var bulletId = GetNextBulletId();
                 var proj = PlayerShootProjectile((int)time.TotalElapsedMs, bulletId, item.ObjectType, (float)(startAngle + arcGap * i), target, prjDesc, true);
                 World.AddProjectile(proj);
-                sPkts[i] = new AllyShoot()
-                {
-                    OwnerId = Id,
-                    Angle = proj.Angle,
-                    ContainerType = item.ObjectType,
-                    BulletId = proj.ProjectileId
-                };
+                sPkts[i] = new AllyShoot(proj.ProjectileId, Id, item.ObjectType, proj.Angle);
                 FameCounter.Shoot();
             }
 
@@ -1611,7 +1605,7 @@ namespace TKR.WorldServer.core.objects
                 range = UseWisMod(eff.Range);
             }
 
-            this.AOE(range, true, player =>
+            this.AOE(range, true, (Action<Entity>)(player =>
             {
                 if (player.HasConditionEffect(ConditionEffectIndex.HPBoost))
                 {
@@ -1620,7 +1614,7 @@ namespace TKR.WorldServer.core.objects
 
                 if (!player.HasConditionEffect(ConditionEffectIndex.HPBoost))
                 {
-                    World.Timers.Add(new WorldTimer(0, (world, t) => player.ApplyConditionEffect(ConditionEffectIndex.HPBoost, duration)));
+                    World.StartNewTimer(0, (Action<World, TickTime>)((world, t) => player.ApplyConditionEffect(ConditionEffectIndex.HPBoost, duration)));
                 }
 
                 ((Player)player).Stats.Boost.ActivateBoost[idx].Push(amount, false);
@@ -1632,12 +1626,12 @@ namespace TKR.WorldServer.core.objects
                 //    ((Player)player).HP = Math.Min(((Player)player).Stats[0], ((Player)player).HP + amount);
                 //}
 
-                World.Timers.Add(new WorldTimer(duration, (world, t) =>
+                World.StartNewTimer(duration, (Action<World, TickTime>)((world, t) =>
                 {
                     ((Player)player).Stats.Boost.ActivateBoost[idx].Pop(amount, false);
                     ((Player)player).Stats.ReCalculateValues();
                 }));
-            });
+            }));
 
             World.BroadcastIfVisible(new ShowEffect()
             {
@@ -1654,11 +1648,11 @@ namespace TKR.WorldServer.core.objects
             var s = eff.Amount;
             Stats.Boost.ActivateBoost[idx].Push(s, false);
             Stats.ReCalculateValues();
-            World.Timers.Add(new WorldTimer(eff.DurationMS, (world, t) =>
+            World.StartNewTimer(eff.DurationMS, (world, t) =>
             {
                 Stats.Boost.ActivateBoost[idx].Pop(s, false);
                 Stats.ReCalculateValues();
-            }));
+            });
 
             World.BroadcastIfVisible(new ShowEffect()
             {
@@ -1683,12 +1677,12 @@ namespace TKR.WorldServer.core.objects
                 Pos1 = target
             }, ref target);
 
-            World.Timers.Add(new WorldTimer(1500, (world, t) =>
+            World.StartNewTimer(1500, (world, t) =>
             {
                 var trap = new Trap(this, eff.Radius, eff.TotalDamage, eff.ConditionEffect ?? ConditionEffectIndex.Slowed, eff.EffectDuration);
                 trap.Move(target.X, target.Y);
                 world.EnterWorld(trap);
-            }));
+            });
         }
 
         private void AEUnlockPortal(TickTime time, Item item, Position target, ActivateEffect eff)
@@ -1968,8 +1962,7 @@ namespace TKR.WorldServer.core.objects
                 return false;
             }
 
-            tmr = new WorldTimer(200, healTick);
-            world.Timers.Add(tmr);
+            tmr = world.StartNewTimer(200, healTick);
         }
 
         private void PoisonEnemy(World world, Enemy enemy, ActivateEffect eff)
@@ -2007,8 +2000,7 @@ namespace TKR.WorldServer.core.objects
                 return false;
             }
 
-            tmr = new WorldTimer(200, poisonTick);
-            world.Timers.Add(tmr);
+            tmr = world.StartNewTimer(200, poisonTick);
         }
 
         private void StasisBlast(TickTime time, Item item, Position target, ActivateEffect eff)
@@ -2022,7 +2014,7 @@ namespace TKR.WorldServer.core.objects
                 Color = new ARGB(0xffffffff)
             }, ref target);
 
-            World.AOE(target, 3, false, enemy =>
+            World.AOE(target, 3, false, (Action<Entity>)(enemy =>
             {
                 if (enemy.HasConditionEffect(ConditionEffectIndex.StasisImmune))
                 {
@@ -2038,7 +2030,7 @@ namespace TKR.WorldServer.core.objects
                 {
                     enemy.ApplyConditionEffect(ConditionEffectIndex.Stasis, eff.DurationMS);
 
-                    World.Timers.Add(new WorldTimer(eff.DurationMS - 200, (world, t) => enemy.ApplyConditionEffect(ConditionEffectIndex.StasisImmune, 3200)));
+                    World.StartNewTimer(eff.DurationMS - 200, (Action<World, TickTime>)((world, t) => enemy.ApplyConditionEffect(ConditionEffectIndex.StasisImmune, 3200)));
 
                     World.BroadcastIfVisible(new Notification()
                     {
@@ -2048,7 +2040,7 @@ namespace TKR.WorldServer.core.objects
                         PlayerId = Id
                     }, enemy);
                 }
-            });
+            }));
         }
 
         private float UseWisMod(float value, int offset = 1)

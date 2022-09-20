@@ -17,6 +17,17 @@ namespace TKR.WorldServer.networking.packets.outgoing
 
         public override MessageId MessageId => MessageId.AOE;
 
+        public Aoe(Position pos, float radius, int damage, ConditionEffectIndex effect, float duration, ushort origType, ARGB color)
+        {
+            Pos = pos;
+            Radius = radius;
+            Damage = damage;
+            Effect = effect;
+            Duration = duration;
+            OrigType = origType;
+            Color = color;
+        }
+
         protected override void Write(NWriter wtr)
         {
             Pos.Write(wtr);

@@ -95,11 +95,11 @@ namespace TKR.WorldServer.core.objects.vendors
 
         private static readonly List<ISellableItem> PurchasableFame = new List<ISellableItem>
         {
-            new ShopItem("50 Fame", 53),
-            new ShopItem("100 Fame", 105),
-            new ShopItem("500 Fame", 525),
-            new ShopItem("1000 Fame", 1050),
-            new ShopItem("5000 Fame", 5250)
+            new ShopItem("50 Fame", 60),
+            new ShopItem("100 Fame", 110),
+            new ShopItem("500 Fame", 550),
+            new ShopItem("1000 Fame", 1100),
+            new ShopItem("5000 Fame", 5500)
         };
 
         private static readonly List<ISellableItem> Special = new List<ISellableItem>

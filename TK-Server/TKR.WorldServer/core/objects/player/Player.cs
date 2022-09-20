@@ -347,8 +347,8 @@ namespace TKR.WorldServer.core.objects
         public override bool CanBeSeenBy(Player player)
         {
             if (IsAdmin || IsCommunityManager)
-                return false;
-            return !HasConditionEffect(ConditionEffectIndex.Hidden);
+                return !HasConditionEffect(ConditionEffectIndex.Hidden);
+            return true;
         }
 
         public void Damage(int dmg, Entity src)

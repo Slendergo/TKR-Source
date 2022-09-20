@@ -3,38 +3,31 @@ using System.Diagnostics;
 
 namespace TKR.Shared
 {
-    /// <summary>
-    /// Display total elapsed time of a procedure interval
-    /// until <see cref="TimedProfiler"/> is disposed.
-    /// </summary>
     public sealed class TimedProfiler : IDisposable
     {
-        private readonly Action<string> _action;
-        private readonly string _message;
-        private readonly Stopwatch _stopwatch;
+        private readonly Action<string> Action;
+        private readonly string Message;
+        private readonly Stopwatch StopWatch;
 
-        public TimedProfiler(string message) : this(message, null)
-        { }
+        public TimedProfiler(string message) : this(message, null) { }
 
         public TimedProfiler(string message, Action<string> action)
         {
-            _message = message;
-            _action = action;
-            _stopwatch = Stopwatch.StartNew();
+            Message = message;
+            Action = action;
+            StopWatch = Stopwatch.StartNew();
         }
 
         public void Dispose()
         {
-            _stopwatch.Stop();
+            StopWatch.Stop();
 
-            var time = _stopwatch.Elapsed;
-            var ms = _stopwatch.ElapsedMilliseconds;
-            var info = $"{_message} - Elapsed: {time} ({ms}ms)";
+            var time = StopWatch.Elapsed;
+            var ms = StopWatch.ElapsedMilliseconds;
+            var info = $"{Message} - Elapsed: {time} ({ms}ms)";
 
-            if (_action != null)
-                _action.Invoke(info);
-            else
-                Console.WriteLine(info);
+            Action?.Invoke(info);
+            Console.WriteLine(info);
         }
     }
 }

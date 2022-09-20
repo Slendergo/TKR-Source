@@ -22,18 +22,17 @@ namespace TKR.WorldServer.core.commands
                     return false;
                 }
 
-                var eligibleEnemies = player.World.Enemies
-                    .Values.Where(_ => _.ObjectDesc != null
-                        && _.ObjectDesc.ObjectId != null
-                        && _.ObjectDesc.Enemy
-                        && _.ObjectDesc.ObjectId != "Tradabad Nexus Crier"
-                        && _.ObjectDesc.ObjectId.ContainsIgnoreCase(args)
-                    );
                 var total = 0;
-                foreach(var enemy in eligibleEnemies)
+                foreach(var _ in player.World.Enemies.Values)
                 {
-                    enemy.Spawned = true;
-                    enemy.Death(ref time);
+                    if(_.ObjectDesc == null
+                        || _.ObjectDesc.ObjectId == null
+                        || !_.ObjectDesc.Enemy
+                        || !_.ObjectDesc.ObjectId.ContainsIgnoreCase(args))
+                        continue;
+
+                    _.Spawned = true;
+                    _.Death(ref time);
                     total++;
                 }
                 player.SendInfo($"{total} enem{(total > 1 ? "ies" : "y")} killed!");

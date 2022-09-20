@@ -18,6 +18,7 @@ using TKR.WorldServer.logic.loot;
 using TKR.WorldServer.networking.packets.outgoing;
 using TKR.WorldServer.networking.packets.outgoing.party;
 using TKR.WorldServer.utils;
+using TKR.WorldServer.core.miscfile.structures;
 
 namespace TKR.WorldServer.core.commands.player
 {

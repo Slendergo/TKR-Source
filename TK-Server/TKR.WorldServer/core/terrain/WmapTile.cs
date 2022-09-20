@@ -6,6 +6,7 @@ using TKR.WorldServer.core.miscfile.datas;
 using TKR.WorldServer.core.miscfile.stats;
 using TKR.WorldServer.core.miscfile.datas;
 using TKR.WorldServer.core.objects.connection;
+using TKR.WorldServer.core.miscfile.structures;
 
 namespace TKR.WorldServer.core.terrain
 {

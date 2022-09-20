@@ -1,7 +1,5 @@
-﻿using TKR.Shared.resources;
-using System;
-using TKR.WorldServer.core.miscfile;
-using TKR.WorldServer.core.objects;
+﻿using System;
+using TKR.Shared.resources;
 using TKR.WorldServer.core.objects;
 
 namespace TKR.WorldServer.core.miscfile.stats

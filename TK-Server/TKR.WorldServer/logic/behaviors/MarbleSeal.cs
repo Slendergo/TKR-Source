@@ -8,6 +8,7 @@ using TKR.WorldServer.core.objects;
 using TKR.WorldServer.networking.packets.outgoing;
 using TKR.WorldServer.core.miscfile.datas;
 using TKR.WorldServer.core.miscfile.datas;
+using TKR.WorldServer.core.miscfile.structures;
 
 namespace TKR.WorldServer.logic.behaviors
 {

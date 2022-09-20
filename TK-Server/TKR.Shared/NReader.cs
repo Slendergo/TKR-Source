@@ -15,9 +15,7 @@ namespace TKR.Shared
         public override double ReadDouble()
         {
             var arr = base.ReadBytes(8);
-
             Array.Reverse(arr);
-
             return BitConverter.ToDouble(arr, 0);
         }
 

@@ -89,7 +89,6 @@ namespace TKR.WorldServer.logic.behaviors
                     return;
 
                 var entity = Entity.Resolve(host.GameServer, _children[Random.Next(_children.Length)]);
-
                 if (Random.NextDouble() > _probability)
                 {
                     state = _coolDown.Next(Random);
@@ -165,7 +164,6 @@ namespace TKR.WorldServer.logic.behaviors
                             entity.Spawned = true;
 
                         var enemyEntity = entity as Enemy;
-
                         if (host is Enemy enemyHost && enemyEntity != null)
                         {
                             enemyEntity.Terrain = enemyHost.Terrain;
@@ -173,7 +171,6 @@ namespace TKR.WorldServer.logic.behaviors
                             if (enemyHost.Spawned)
                                 enemyEntity.ApplyConditionEffect(ConditionEffectIndex.Invisible, -1);
                         }
-
                         world.EnterWorld(entity);
                     });
                     cool = _coolDown.Next(Random);

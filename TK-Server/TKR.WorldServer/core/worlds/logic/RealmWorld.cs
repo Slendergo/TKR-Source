@@ -4,7 +4,6 @@ using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.core.objects;
 using TKR.WorldServer.core.setpieces;
 using TKR.WorldServer.networking;
-using TKR.WorldServer.core.objects;
 
 namespace TKR.WorldServer.core.worlds.logic
 {
@@ -49,17 +48,12 @@ namespace TKR.WorldServer.core.worlds.logic
             return ret;
         }
 
-        public override void LeaveWorld(Entity entity)
-        {
-            // use it if needed
-            base.LeaveWorld(entity);
-        }
-
         public void EnemyKilled(Enemy enemy, Player killer)
         {
             if (!enemy.Spawned)
                 KingdomManager.OnEnemyKilled(enemy, killer);
         }
+
 
         public bool CloseRealm()
         {

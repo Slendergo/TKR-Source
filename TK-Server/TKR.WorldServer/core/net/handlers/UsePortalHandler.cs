@@ -21,10 +21,11 @@ namespace TKR.WorldServer.core.net.handlers
 
         public override void Handle(Client client, NReader rdr, ref TickTime time)
         {
-            var objectId = rdr.ReadInt32();
             var player = client.Player;
-            if (player?.World == null || client?.Player?.World is TestWorld)
+            if (player == null || player?.World == null || client?.Player?.World is TestWorld)
                 return;
+
+            var objectId = rdr.ReadInt32();
 
             var entity = player.World.GetEntity(objectId);
             if (entity == null)

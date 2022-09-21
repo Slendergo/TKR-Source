@@ -25,7 +25,7 @@ namespace TKR.WorldServer.logic
                 new State("Move",
                     new Shoot(20, 1, projectileIndex: 0, coolDown: 200),
                     new MoveLine(1, 90),
-                    new GroundTransition("Snow Replace Snowball", "Suicide")
+                    new OnGroundTransition("Snow Replace Snowball", "Suicide")
                     ),
                 new State("Suicide",
                     new Suicide()
@@ -39,7 +39,7 @@ namespace TKR.WorldServer.logic
                 new State("Move",
                     new Shoot(20, 1, projectileIndex: 0, coolDown: 200),
                     new MoveLine(1, 180),
-                    new GroundTransition("Snow Replace Snowball", "Suicide")
+                    new OnGroundTransition("Snow Replace Snowball", "Suicide")
                     ),
                 new State("Suicide",
                     new Suicide()
@@ -53,7 +53,7 @@ namespace TKR.WorldServer.logic
                 new State("Move",
                     new Shoot(20, 1, projectileIndex: 0, coolDown: 200),
                     new MoveLine(1, 270),
-                    new GroundTransition("Snow Replace Snowball", "Suicide")
+                    new OnGroundTransition("Snow Replace Snowball", "Suicide")
                     ),
                 new State("Suicide",
                     new Suicide()
@@ -67,7 +67,7 @@ namespace TKR.WorldServer.logic
                 new State("Move",
                     new Shoot(20, 1, projectileIndex: 0, coolDown: 200),
                     new MoveLine(1, 0),
-                    new GroundTransition("Snow Replace Snowball", "Suicide")
+                    new OnGroundTransition("Snow Replace Snowball", "Suicide")
                     ),
                 new State("Suicide",
                     new Suicide()
@@ -81,7 +81,7 @@ namespace TKR.WorldServer.logic
                 new State("Move",
                     new Shoot(20, 1, projectileIndex: 0, coolDown: 200),
                     new MoveLine(1, 45),
-                    new GroundTransition("Snow Replace Snowball", "Suicide")
+                    new OnGroundTransition("Snow Replace Snowball", "Suicide")
                     ),
                 new State("Suicide",
                     new Suicide()
@@ -95,7 +95,7 @@ namespace TKR.WorldServer.logic
                 new State("Move",
                     new Shoot(20, 1, projectileIndex: 0, coolDown: 200),
                     new MoveLine(1, 135),
-                    new GroundTransition("Snow Replace Snowball", "Suicide")
+                    new OnGroundTransition("Snow Replace Snowball", "Suicide")
                     ),
                 new State("Suicide",
                     new Suicide()
@@ -109,7 +109,7 @@ namespace TKR.WorldServer.logic
                 new State("Move",
                     new Shoot(20, 1, projectileIndex: 0, coolDown: 200),
                     new MoveLine(1, 225),
-                    new GroundTransition("Snow Replace Snowball", "Suicide")
+                    new OnGroundTransition("Snow Replace Snowball", "Suicide")
                     ),
                 new State("Suicide",
                     new Suicide()
@@ -123,7 +123,7 @@ namespace TKR.WorldServer.logic
                 new State("Move",
                     new Shoot(20, 1, projectileIndex: 0, coolDown: 200),
                     new MoveLine(1, 315),
-                    new GroundTransition("Snow Replace Snowball", "Suicide")
+                    new OnGroundTransition("Snow Replace Snowball", "Suicide")
                     ),
                 new State("Suicide",
                     new Suicide()

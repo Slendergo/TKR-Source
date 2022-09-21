@@ -820,7 +820,6 @@ namespace TKR.Shared.database
         public void LogAccountByIp(string ip, int accountId)
         {
             var abi = new DbIpInfo(_db, ip);
-
             if (!abi.IsNull && !abi.Accounts.Contains(accountId))
                 abi.Accounts.Add(accountId);
             else

@@ -409,6 +409,6 @@ namespace TKR.WorldServer.logic
                     )
                 )
             )
-        .Init("Ocean Vent", new State(new RestoresBreath()));
+        .Init("Ocean Vent", new State(new RestoresBreathBehavior()));
     }
 }

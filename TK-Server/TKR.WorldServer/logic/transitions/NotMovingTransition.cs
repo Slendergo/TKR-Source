@@ -35,7 +35,6 @@ namespace TKR.WorldServer.logic.transitions
             }
 
             var s = (NotMovingState)state;
-
             if (s.Delay <= 0)
             {
                 var hostPos = new Vector2(host.X, host.Y);

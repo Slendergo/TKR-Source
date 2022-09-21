@@ -53,37 +53,37 @@ namespace TKR.WorldServer.logic
                 new ConditionalEffect(ConditionEffectIndex.Invincible, true),
                 new SetAltTexture(0, 3, 100, true),
                 new State("Check Ground",
-                    new GroundTransition("Track N End", "Move Down"),
-                    new GroundTransition("Track S End", "Move Up"),
-                    new GroundTransition("Track W End", "Move Left"),
-                    new GroundTransition("Track E End", "Move Right")
+                    new OnGroundTransition("Track N End", "Move Down"),
+                    new OnGroundTransition("Track S End", "Move Up"),
+                    new OnGroundTransition("Track W End", "Move Left"),
+                    new OnGroundTransition("Track E End", "Move Right")
                     ),
                 new State("Move Down",
-                    new GroundTransition("Track N End", "Move Down"),
-                    new GroundTransition("Track S End", "Move Up"),
-                    new GroundTransition("Track W End", "Move Left"),
-                    new GroundTransition("Track E End", "Move Right"),
+                    new OnGroundTransition("Track N End", "Move Down"),
+                    new OnGroundTransition("Track S End", "Move Up"),
+                    new OnGroundTransition("Track W End", "Move Left"),
+                    new OnGroundTransition("Track E End", "Move Right"),
                     new MoveLine(0.5, 90)
                     ),
                 new State("Move Up",
-                    new GroundTransition("Track N End", "Move Down"),
-                    new GroundTransition("Track S End", "Move Up"),
-                    new GroundTransition("Track W End", "Move Left"),
-                    new GroundTransition("Track E End", "Move Right"),
+                    new OnGroundTransition("Track N End", "Move Down"),
+                    new OnGroundTransition("Track S End", "Move Up"),
+                    new OnGroundTransition("Track W End", "Move Left"),
+                    new OnGroundTransition("Track E End", "Move Right"),
                     new MoveLine(0.5, -90)
                     ),
                 new State("Move Left",
-                    new GroundTransition("Track N End", "Move Down"),
-                    new GroundTransition("Track S End", "Move Up"),
-                    new GroundTransition("Track W End", "Move Left"),
-                    new GroundTransition("Track E End", "Move Right"),
+                    new OnGroundTransition("Track N End", "Move Down"),
+                    new OnGroundTransition("Track S End", "Move Up"),
+                    new OnGroundTransition("Track W End", "Move Left"),
+                    new OnGroundTransition("Track E End", "Move Right"),
                     new MoveLine(0.5, 0)
                     ),
                 new State("Move Right",
-                    new GroundTransition("Track N End", "Move Down"),
-                    new GroundTransition("Track S End", "Move Up"),
-                    new GroundTransition("Track W End", "Move Left"),
-                    new GroundTransition("Track E End", "Move Right"),
+                    new OnGroundTransition("Track N End", "Move Down"),
+                    new OnGroundTransition("Track S End", "Move Up"),
+                    new OnGroundTransition("Track W End", "Move Left"),
+                    new OnGroundTransition("Track E End", "Move Right"),
                     new MoveLine(0.5, 180)
                     )
                 )
@@ -95,7 +95,7 @@ namespace TKR.WorldServer.logic
                 new State("Move",
                     new Shoot(20, 1, projectileIndex: 0, coolDown: 200),
                     new MoveLine(3, 90),
-                    new GroundTransition("Tunnel Ground M", "Suicide")
+                    new OnGroundTransition("Tunnel Ground M", "Suicide")
                     ),
                 new State("Suicide",
                     new Suicide()

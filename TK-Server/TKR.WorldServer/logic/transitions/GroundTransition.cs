@@ -4,14 +4,14 @@ using TKR.WorldServer.logic;
 
 namespace TKR.WorldServer.logic.transitions
 {
-    internal class GroundTransition : Transition
+    internal class OnGroundTransition : Transition
     {
         //State storage: none
 
         private readonly string _ground;
         private ushort? _groundType;
 
-        public GroundTransition(string ground, string targetState)
+        public OnGroundTransition(string ground, string targetState)
             : base(targetState)
         {
             _ground = ground;
@@ -23,7 +23,6 @@ namespace TKR.WorldServer.logic.transitions
                 _groundType = host.GameServer.Resources.GameData.IdToTileType[_ground];
 
             var tile = host.World.Map[(int)host.X, (int)host.Y];
-
             return tile.TileId == _groundType;
         }
     }

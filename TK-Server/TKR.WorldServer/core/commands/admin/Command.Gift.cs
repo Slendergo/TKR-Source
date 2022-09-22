@@ -54,17 +54,17 @@ namespace TKR.WorldServer.core.commands
                     return false;
                 }
 
-                // send out success notifications
-                player.SendInfoFormat("You gifted {0} one {1}.", acc.Name, item.DisplayName);
-                var gifted = player.GameServer.ConnectionManager.Clients.Keys.SingleOrDefault(p => p.Account.AccountId == acc.AccountId);
-                gifted?.Player?.SendInfoFormat(
-                    "You received a gift from {0}. Enjoy your {1}.",
-                    player.Name,
-                    item.DisplayName);
+                player.SendInfo($"You have gifted {acc.Name} - {item.DisplayName}.");
+                var gifted = player.GameServer.ConnectionManager.FindClient(acc.AccountId);
+                if(gifted != null)
+                {
+                    gifted.Player.SendInfo($"You received a gift from {player.Name}. Enjoy your {item.DisplayName}.");
+                    return false;
+                }
                 return true;
             }
 
-            private Item GetItem(Player player, string itemName)
+            private static Item GetItem(Player player, string itemName)
             {
                 var gameData = player.GameServer.Resources.GameData;
 

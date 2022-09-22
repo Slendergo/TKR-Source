@@ -644,6 +644,9 @@ namespace TKR.WorldServer.core.commands.player
         {
             var lootBoost = Loot.GetPlayerLootBoost(player);
 
+            if (NexusWorld.WeekendLootBoostEvent > 0.0f)
+                player.SendInfo($"Weekend Bonus provides: {(int)(NexusWorld.WeekendLootBoostEvent * 100.0)}%");
+
             if (player.LDBoostTime > 0)
                 player.SendInfo($"Loot Drop provides: 10%");
 

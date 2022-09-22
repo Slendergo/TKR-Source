@@ -1,19 +1,17 @@
-﻿using TKR.Shared;
-using TKR.Shared.isc;
-using System;
+﻿using System;
 using System.Linq;
-using TKR.WorldServer.core;
+using TKR.Shared;
+using TKR.Shared.isc;
 using TKR.WorldServer.core.objects;
 using TKR.WorldServer.core.worlds;
 using TKR.WorldServer.networking.packets.outgoing;
 using TKR.WorldServer.utils;
-using TKR.WorldServer.core.objects;
 
 namespace TKR.WorldServer.core.miscfile
 {
-    public class ChatManager
+    public sealed class ChatManager
     {
-        private GameServer GameServer;
+        private readonly GameServer GameServer;
 
         public ChatManager(GameServer gameServer) => GameServer = gameServer;
 
@@ -21,10 +19,7 @@ namespace TKR.WorldServer.core.miscfile
         {
             if (string.IsNullOrWhiteSpace(text))
                 return;
-
-            var clients = GameServer.ConnectionManager.Clients
-                .Keys.Where(_ => _.Player != null);
-            foreach (var client in clients)
+            foreach (var client in GameServer.ConnectionManager.Clients.Keys)
                 client.Player.AnnouncementReceived(text);
         }
 
@@ -32,10 +27,7 @@ namespace TKR.WorldServer.core.miscfile
         {
             if (string.IsNullOrWhiteSpace(text))
                 return;
-
-            var clients = GameServer.ConnectionManager.Clients
-                .Keys.Where(_ => _.Player != null);
-            foreach (var client in clients)
+            foreach (var client in GameServer.ConnectionManager.Clients.Keys)
                 client.Player.AnnouncementReceived(text, player.Name);
         }
 
@@ -43,10 +35,7 @@ namespace TKR.WorldServer.core.miscfile
         {
             if (string.IsNullOrWhiteSpace(text))
                 return;
-
-            var clients = GameServer.ConnectionManager.Clients
-                .Keys.Where(_ => _.Player != null);
-            foreach (var client in clients)
+            foreach (var client in GameServer.ConnectionManager.Clients.Keys)
                 client.Player.SendEternalNotif(text);
         }
 
@@ -54,10 +43,7 @@ namespace TKR.WorldServer.core.miscfile
         {
             if (string.IsNullOrWhiteSpace(text))
                 return;
-
-            var clients = GameServer.ConnectionManager.Clients
-                .Keys.Where(_ => _.Player != null);
-            foreach (var client in clients)
+            foreach (var client in GameServer.ConnectionManager.Clients.Keys)
                 client.Player.ForgerNotif(text);
         }
 
@@ -65,10 +51,7 @@ namespace TKR.WorldServer.core.miscfile
         {
             if (string.IsNullOrWhiteSpace(text))
                 return;
-
-            var clients = GameServer.ConnectionManager.Clients
-                .Keys.Where(_ => _.Player != null);
-            foreach (var client in clients)
+            foreach (var client in GameServer.ConnectionManager.Clients.Keys)
                 client.Player.EngineNotif(text);
         }
 
@@ -76,32 +59,15 @@ namespace TKR.WorldServer.core.miscfile
         {
             if (string.IsNullOrWhiteSpace(text))
                 return;
-
-            var clients = GameServer.ConnectionManager.Clients
-                .Keys.Where(_ => _.Player != null);
-            foreach (var client in clients)
+            foreach (var client in GameServer.ConnectionManager.Clients.Keys)
                 client.Player.SendLootNotif(text);
-        }
-
-        public void AnnounceRealm(string text, string name)
-        {
-            if (string.IsNullOrWhiteSpace(text))
-                return;
-
-            var clients = GameServer.ConnectionManager.Clients
-                .Keys.Where(_ => _.Player != null);
-            foreach (var client in clients)
-                client.Player.AnnouncementRealm(text, name);
         }
 
         public void AnnounceMythicalLoot(string text)
         {
             if (string.IsNullOrWhiteSpace(text))
                 return;
-
-            var clients = GameServer.ConnectionManager.Clients
-                .Keys.Where(_ => _.Player != null);
-            foreach (var client in clients)
+            foreach (var client in GameServer.ConnectionManager.Clients.Keys)
                 client.Player.SendMythicalNotif(text);
         }
 

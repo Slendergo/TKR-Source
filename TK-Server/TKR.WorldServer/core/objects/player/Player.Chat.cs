@@ -112,7 +112,7 @@ namespace TKR.WorldServer.core.objects
         {
             BubbleTime = 0,
             NumStars = -1,
-            Name = "#" + name,
+            Name = $"#{name}",
             Txt = text
         });
 
@@ -120,7 +120,7 @@ namespace TKR.WorldServer.core.objects
         {
             BubbleTime = 0,
             NumStars = -1,
-            Name = "#" + name,
+            Name = $"#{name}",
             Txt = string.Format(text, args)
         });
 
@@ -165,33 +165,6 @@ namespace TKR.WorldServer.core.objects
             NumStars = -1,
             Name = "",
             Txt = text
-        });
-
-        public void SendInfo2(string text) => Client.SendPacket(new Text()
-        {
-            BubbleTime = 0,
-            NumStars = -1,
-            Name = "",
-            Txt = text,
-            TextColor = 0xEA8010
-        });
-
-        public void SendInfoFormat(string text, params object[] args) => Client.SendPacket(new Text()
-        {
-            BubbleTime = 0,
-            NumStars = -1,
-            Name = "",
-            Txt = string.Format(text, args)
-        });
-
-        internal void AnnouncementRealm(string text, string name) => Client.SendPacket(new Text()
-        {
-            BubbleTime = 0,
-            NumStars = -1,
-            Name = name,
-            Txt = text,
-            TextColor = 0xFFFFFF,
-            NameColor = 0xFF681F
         });
 
         internal void AnnouncementReceived(string text, string user = null) => Client.Player.SendInfo(string.Concat($"<{user ?? "ANNOUNCEMENT"}> ", text));

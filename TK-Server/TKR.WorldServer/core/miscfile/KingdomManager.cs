@@ -7,10 +7,10 @@ using TKR.Shared;
 using TKR.Shared.resources;
 using TKR.WorldServer.core.miscfile.structures;
 using TKR.WorldServer.core.miscfile.thread;
-using TKR.WorldServer.core.miscfile.world;
 using TKR.WorldServer.core.objects;
 using TKR.WorldServer.core.setpieces;
 using TKR.WorldServer.core.worlds.logic;
+using TKR.WorldServer.networking.packets.outgoing;
 using TKR.WorldServer.utils;
 
 namespace TKR.WorldServer.core.miscfile
@@ -552,7 +552,7 @@ namespace TKR.WorldServer.core.miscfile
                                 e.Death(ref time);
                         }
 
-                        MovePeopleNaerby(time);
+                        MovePeopleNearby(time);
 
                         CurrentState = KingdomState.DoNothing;
                     }
@@ -590,60 +590,32 @@ namespace TKR.WorldServer.core.miscfile
 
             var playerCount = hitters.Count;
             var dmgPercentage = (float)Math.Round(100.0 * (hitters[mvp] / (double)eventDead.DamageCounter.TotalDamage), 0);
-            if (eventDead.Name.Equals("Pentaract"))
+            if (eventDead.Name.Contains("Pentaract"))
                 dmgPercentage = (float)Math.Round(dmgPercentage / 5, 0);
 
-            var sb = new StringBuilder();
-            sb.Append($"MVP goes to {mvp.Name} for doing {dmgPercentage}% damage to {name}");
-
+            var sb = new StringBuilder($"MVP goes to {mvp.Name} for doing {dmgPercentage}% damage to {name}");
             if (playerCount > 1)
             {
                 var playerAssist = playerCount - 1;
-
                 if (playerAssist == 1)
-                    sb.Append(" one other person helping");
+                    _ = sb.Append(" one other person helping");
                 else
-                    sb.Append($" with {playerAssist} people helping");
+                    _ = sb.Append($" with {playerAssist} people helping");
             }
             else
-                sb.Append(" solo");
+                _ = sb.Append(" solo");
+            _ = sb.Append("!");
 
-            sb.Append("!");
-
-            World.GameServer.ChatManager.AnnounceRealm(sb.ToString(), "The Talisman King");
-
-            var account = World.GameServer.Database.GetAccount(mvp.AccountId);
-            var guild = World.GameServer.Database.GetGuild(account.GuildId);
-            var points = World.Random.Next(1, 10);
-
-            if (guild != null)
+            var text = new Text()
             {
-                if (!mvp.IsAdmin)
-                {
-                    mvp.SendInfo("You are awarded " + points + " guild points for doing the most damage to boss!");
-
-                    guild.GuildPoints += points;
-                    guild.FlushAsync();
-
-                    if (guild.GuildPoints > 5000 && guild.GuildLootBoost < MAX_GUILD_LOOT_BOOST)
-                    {
-                        guild.GuildPoints -= 5000;
-                        var pguild = mvp.Client.Account.GuildId;
-                        guild.GuildLootBoost += .01f;
-                        guild.FlushAsync();
-
-                        var worlds = mvp.GameServer.WorldManager.GetWorlds();
-                        foreach (var world in worlds)
-                            world.ForeachPlayer(_ =>
-                            {
-                                if (_.Client.Account.GuildId == pguild)
-                                    _.SendInfo($"Congratulations! Your guild's loot boost increased to {guild.GuildLootBoost:P} (max: {MAX_GUILD_LOOT_BOOST:P}).");
-                            });
-                    }
-                }
-            }
-            else
-                mvp.SendInfo("Sorry, points cannot be rewarded. Please join a guild first.");
+                BubbleTime = 0,
+                NumStars = -1,
+                Name = "The Talisman King",
+                Txt = sb.ToString(),
+                TextColor = 0xFFFFFF,
+                NameColor = 0xFF681F
+            };
+            World.Broadcast(text);
         }
 
         public void CountingEvents(string eventDead)
@@ -946,7 +918,7 @@ namespace TKR.WorldServer.core.miscfile
             return ret;
         }
 
-        private void MovePeopleNaerby(TickTime time)
+        private void MovePeopleNearby(TickTime time)
         {
             var regions = World.GetRegionPoints(TileRegion.Defender);
             foreach (var player in World.Players.Values)

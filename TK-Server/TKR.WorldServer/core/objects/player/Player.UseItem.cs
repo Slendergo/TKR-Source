@@ -1191,13 +1191,9 @@ namespace TKR.WorldServer.core.objects
                 return;
 
             if (LDBoostTime <= 0)
-            {
-                SendInfo2("Your Loot Drop Potion has been activated!");
-            }
+                SendInfo("Your Loot Drop Potion has been activated!");
             if (LDBoostTime > 0)
-            {
-                SendInfo2("Your Loot Drop Potion has been stacked up!");
-            }
+                SendInfo("Your Loot Drop Potion has been stacked up!");
             LDBoostTime = eff.DurationMS + LDBoostTime;
             InvokeStatChange(StatDataType.LDBoostTime, LDBoostTime / 1000, true);
         }

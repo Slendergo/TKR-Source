@@ -23,7 +23,7 @@ namespace TKR.WorldServer.core.commands
                     return true;
                 }
 
-                var target = player.GameServer.ConnectionManager.Clients.Keys.SingleOrDefault(_ => _.Account != null && _.Account.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase));
+                var target = player.GameServer.ConnectionManager.FindClient(name);
                 if (target?.Player?.World == null || !target.Player.CanBeSeenBy(player))
                 {
                     player.SendError("Player not found!");

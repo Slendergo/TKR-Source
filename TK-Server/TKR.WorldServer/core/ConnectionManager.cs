@@ -2,6 +2,7 @@
 using System.Collections.Concurrent;
 using System.IO;
 using System.Linq;
+using System.Security.Principal;
 using TKR.Shared.database.account;
 using TKR.Shared.isc.data;
 using TKR.Shared.resources;
@@ -33,6 +34,9 @@ namespace TKR.WorldServer.core
 
             MaxPlayerCount = GameServer.Configuration.serverSettings.maxPlayers;
         }
+
+        public Client FindClient(int accountId) => Clients.Keys.SingleOrDefault(_ => _.Account.AccountId == accountId);
+        public Client FindClient(string name) => Clients.Keys.SingleOrDefault(_ => string.Equals(_.Account.Name, name, StringComparison.InvariantCultureIgnoreCase));
 
         public void AddConnection(ConnectionInfo connectionInfo)
         {

@@ -10,6 +10,7 @@ using TKR.WorldServer.core;
 using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.core.objects;
 using TKR.WorldServer.core.objects.containers;
+using TKR.WorldServer.core.worlds.logic;
 using TKR.WorldServer.networking.packets.outgoing;
 
 namespace TKR.WorldServer.logic.loot
@@ -117,6 +118,7 @@ namespace TKR.WorldServer.logic.loot
             if (player.TalismanLootBoostPerPlayer != 0.0 && player.World.Players.Count != 1)
                 allLoot += player.TalismanLootBoostPerPlayer * (player.World.Players.Count - 1);
             allLoot += player.TalismanCanOnlyGetWhiteBags ? 0.5 : 0;
+            allLoot += NexusWorld.WeekendLootBoostEvent;
             return allLoot;
         }
 

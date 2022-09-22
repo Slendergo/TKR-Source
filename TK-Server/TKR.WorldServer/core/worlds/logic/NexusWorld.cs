@@ -39,6 +39,9 @@ namespace TKR.WorldServer.core.worlds.logic
 
         private Rect? MarketBounds;
 
+        // i dont really want to use static but it works so?
+        public static float WeekendLootBoostEvent = 0.0f;
+
         public KingdomPortalMonitor PortalMonitor { get; private set; }
 
         public int EngineStage { get; private set; }
@@ -164,10 +167,26 @@ namespace TKR.WorldServer.core.worlds.logic
 
         protected override void UpdateLogic(ref TickTime time)
         {
+            CheckWeekendLootBoostEvent();
             HandleMerchants(ref time);
             HandleEngineTimeouts(ref time);
             PortalMonitor.Update(ref time);
             base.UpdateLogic(ref time);
+        }
+
+        private void CheckWeekendLootBoostEvent()
+        {
+            var day = DateTime.Now.DayOfWeek;
+            if (day > DayOfWeek.Sunday && day <= DayOfWeek.Friday)
+                return;
+            
+            if (WeekendLootBoostEvent == 0.0f)
+                WeekendLootBoostEvent = 0.25f;
+            else if(WeekendLootBoostEvent == 0.25f && day == DayOfWeek.Monday)
+            {
+                WeekendLootBoostEvent = 0.0f;
+                GameServer.ChatManager.ServerAnnounce("The weekend loot event has ended!");
+            }
         }
 
         private void HandleEngineTimeouts(ref TickTime time)

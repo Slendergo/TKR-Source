@@ -649,13 +649,15 @@ namespace TKR.WorldServer.core.commands.player
                 player.SendInfo($"Weekend Bonus provides: {(int)(NexusWorld.WeekendLootBoostEvent * 100.0)}%");
 
             if (player.LDBoostTime > 0)
-                player.SendInfo($"Loot Drop provides: {(int)(player.LDBoostTime * 100.0)}% ");
+                player.SendInfo($"Loot Drop provides: 20% ");
 
             var allLoot = 0.0;
             if (player.TalismanLootBoostPerPlayer != 0.0 && player.World.Players.Count != 1)
                 allLoot += player.TalismanLootBoostPerPlayer * (player.World.Players.Count - 1);
 
-            player.SendInfo($"Talisman's provide: {(player.TalismanLootBoost + allLoot + (player.TalismanCanOnlyGetWhiteBags ? 0.5 : 0.0)) * 100.0} % ");
+            var amt = (player.TalismanLootBoost + allLoot + (player.TalismanCanOnlyGetWhiteBags ? 0.5 : 0.0));
+            if(amt != 0.0)
+                player.SendInfo($"Talisman's provide: {amt * 100.0} % ");
             switch (player.GameServer.WorldManager.Nexus.EngineStage)
             {
                 case 1: player.SendInfo($"Stage 1 Strange Engine provides: 25%"); break;
@@ -1356,6 +1358,7 @@ namespace TKR.WorldServer.core.commands.player
         protected override bool Process(Player player, TickTime time, string args)
         {
             var state = player.Client.Account.ToggleLootChanceNotification = !player.Client.Account.ToggleLootChanceNotification;
+            player.ToggleLootChanceNotification = state;
             player.SendInfo($"Loot chances now {(state ? "Enabled" : "Disabled")}.");
             return true;
         }

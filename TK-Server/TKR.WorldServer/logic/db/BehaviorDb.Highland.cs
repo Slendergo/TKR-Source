@@ -747,6 +747,7 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(2000, "Attack")
                     ),
                 new State("Attack",
+                    new ConditionalEffect(ConditionEffectIndex.Invincible, false, 0),
                     new Wander(0.4),
                     new SetAltTexture(1),
                     new TimedTransition(5000, "Charge"),

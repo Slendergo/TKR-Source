@@ -87,7 +87,7 @@ namespace TKR.WorldServer.core.objects
             }
             catch(Exception e)
             {
-                Console.WriteLine(e);
+                Console.WriteLine("TALISMAN EXCEPTION: " + e);
             }
         }
 

@@ -278,7 +278,7 @@ namespace TKR.WorldServer.core.objects
             LoadTalismanData();
         }
 
-        public bool ToggleLootChanceNotification { get; private set; }
+        public bool ToggleLootChanceNotification;
 
         public void CalculateRank()
         {

@@ -113,7 +113,7 @@ namespace TKR.WorldServer.logic.loot
                 case 3: allLoot += 1.0; break;
                 default: break;
             }
-            allLoot += player.LDBoostTime > 0 ? 0.5 : 0;
+            allLoot += player.LDBoostTime > 0 ? 0.25 : 0;
             allLoot += player.TalismanLootBoost;
             if (player.TalismanLootBoostPerPlayer != 0.0 && player.World.Players.Count != 1)
                 allLoot += player.TalismanLootBoostPerPlayer * (player.World.Players.Count - 1);

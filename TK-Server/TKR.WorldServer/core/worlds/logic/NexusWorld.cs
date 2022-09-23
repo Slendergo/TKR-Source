@@ -178,7 +178,7 @@ namespace TKR.WorldServer.core.worlds.logic
         private void CheckWeekendLootBoostEvent()
         {
             var day = DateTime.Now.DayOfWeek;
-            if (day > DayOfWeek.Sunday && day <= DayOfWeek.Friday)
+            if (day != DayOfWeek.Saturday && day != DayOfWeek.Sunday)
                 return;
             
             if (WeekendLootBoostEvent == 0.0f)

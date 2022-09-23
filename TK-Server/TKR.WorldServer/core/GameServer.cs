@@ -18,8 +18,6 @@ using TKR.WorldServer.utils;
 using TKR.WorldServer.logic;
 using NLog;
 using TKR.WorldServer.core.miscfile.datas;
-using TKR.WorldServer.networking.packets.outgoing;
-using TKR.WorldServer.core.objects;
 
 namespace TKR.WorldServer.core
 {
@@ -44,13 +42,6 @@ namespace TKR.WorldServer.core
         private bool Running { get; set; } = true;
 
         public DateTime RestartCloseTime { get; private set; }
-        private bool RestartUpdate;
-
-        public void FlagForRestartUpdate()
-        {
-            RestartUpdate = true;
-            RestartCloseTime = DateTime.Now.AddMinutes(5);
-        }
 
         public GameServer(string[] appArgs)
         {
@@ -143,8 +134,7 @@ namespace TKR.WorldServer.core
             var utcNow = DateTime.UtcNow;
             var startedAt = utcNow;
             RestartCloseTime = utcNow.Add(timeout);
-            var restartsIn = RestartCloseTime.Add(TimeSpan.FromMinutes(5));
-            var announceRestartTime = restartsIn;
+            var restartsIn = utcNow.Add(TimeSpan.FromMinutes(5));
 
             var restart = false;
 
@@ -158,21 +148,12 @@ namespace TKR.WorldServer.core
                     // restarting crashes for some reason :(
                     // todo future me will fix
 
+                    foreach (var world in WorldManager.GetWorlds())
+                        ChatManager.ServerAnnounce("Server **Restart** in 5 minutes, prepare to leave");
+
                     Console.WriteLine("[Restart] Procdure Commensing");
                     ConnectionListener.Disable();
                     restart = true;
-                }
-                
-                if (restart && DateTime.UtcNow >= announceRestartTime)
-                {
-                    var end = RestartCloseTime;
-                    var timeLeft = end.Subtract(DateTime.UtcNow);
-
-                    var delta = string.Format("{0}m {1}s", timeLeft.Minutes.ToString("D2"), timeLeft.Seconds.ToString("D2"));
-
-                    foreach (var world in WorldManager.GetWorlds())
-                        ChatManager.ServerAnnounce($"Server **{(RestartUpdate ? "Update" : "Automated Restart")}** in {delta}, prepare to leave");
-                    announceRestartTime = announceRestartTime.AddMinutes(1);
                 }
 
                 if (restart && DateTime.UtcNow >= restartsIn)

@@ -9,6 +9,7 @@ using TKR.WorldServer.networking;
 using TKR.WorldServer.networking.packets.outgoing.market;
 using TKR.WorldServer.core.objects;
 using TKR.Shared.database.character.inventory;
+using TKR.WorldServer.utils;
 
 namespace TKR.WorldServer.core.net.handlers.market
 {
@@ -114,6 +115,8 @@ namespace TKR.WorldServer.core.net.handlers.market
                 Code = -1,
                 Description = $"Successfully added {amountOfItems} item{(amountOfItems > 1 ? "s" : "")} to the market."
             });
+
+            StaticLogger.Instance.Warn($"<{player.Name} {player.AccountId}> Added {slots.Length} item's on market for: {price}");
         }
 
         private bool HandleInvalidCurrency(Client client, int currency)

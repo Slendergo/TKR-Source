@@ -20,7 +20,8 @@ namespace TKR.WorldServer.core.miscfile
             if (string.IsNullOrWhiteSpace(text))
                 return;
             foreach (var client in GameServer.ConnectionManager.Clients.Keys)
-                client.Player.AnnouncementReceived(text);
+                if (client.Player != null)
+                    client.Player.AnnouncementReceived(text);
         }
 
         public void Announce(Player player, string text)
@@ -28,7 +29,8 @@ namespace TKR.WorldServer.core.miscfile
             if (string.IsNullOrWhiteSpace(text))
                 return;
             foreach (var client in GameServer.ConnectionManager.Clients.Keys)
-                client.Player.AnnouncementReceived(text, player.Name);
+                if (client.Player != null)
+                    client.Player.AnnouncementReceived(text, player.Name);
         }
 
         public void AnnounceEternalLoot(string text)
@@ -36,7 +38,8 @@ namespace TKR.WorldServer.core.miscfile
             if (string.IsNullOrWhiteSpace(text))
                 return;
             foreach (var client in GameServer.ConnectionManager.Clients.Keys)
-                client.Player.SendEternalNotif(text);
+                if (client.Player != null)
+                    client.Player.SendEternalNotif(text);
         }
 
         public void AnnounceForger(string text)
@@ -44,7 +47,8 @@ namespace TKR.WorldServer.core.miscfile
             if (string.IsNullOrWhiteSpace(text))
                 return;
             foreach (var client in GameServer.ConnectionManager.Clients.Keys)
-                client.Player.ForgerNotif(text);
+                if (client.Player != null)
+                    client.Player.ForgerNotif(text);
         }
 
         public void AnnounceEngine(string text)
@@ -52,7 +56,8 @@ namespace TKR.WorldServer.core.miscfile
             if (string.IsNullOrWhiteSpace(text))
                 return;
             foreach (var client in GameServer.ConnectionManager.Clients.Keys)
-                client.Player.EngineNotif(text);
+                if (client.Player != null)
+                    client.Player.EngineNotif(text);
         }
 
         public void AnnounceLoot(string text)
@@ -60,7 +65,8 @@ namespace TKR.WorldServer.core.miscfile
             if (string.IsNullOrWhiteSpace(text))
                 return;
             foreach (var client in GameServer.ConnectionManager.Clients.Keys)
-                client.Player.SendLootNotif(text);
+                if (client.Player != null)
+                    client.Player.SendLootNotif(text);
         }
 
         public void AnnounceMythicalLoot(string text)
@@ -68,7 +74,8 @@ namespace TKR.WorldServer.core.miscfile
             if (string.IsNullOrWhiteSpace(text))
                 return;
             foreach (var client in GameServer.ConnectionManager.Clients.Keys)
-                client.Player.SendMythicalNotif(text);
+                if (client.Player != null)
+                    client.Player.SendMythicalNotif(text);
         }
 
         public bool Guild(Player src, string text)

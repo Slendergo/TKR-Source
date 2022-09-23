@@ -6,7 +6,6 @@ namespace TKR.Shared.resources
     public class Item
     {
         public ActivateEffect[] ActivateEffects;
-        public int AmountSetNoStack;
         public float ArcGap;
         public bool Backpack;
         public int BagType;
@@ -49,7 +48,6 @@ namespace TKR.Shared.resources
         public float RateOfFire;
         public bool Resurrects;
         public bool Revenge;
-        public bool SetStatsNoStack;
         public int SlotType;
         public bool SNormal;
         public bool SonicBlaster;
@@ -58,7 +56,6 @@ namespace TKR.Shared.resources
         public bool SPlus;
         public KeyValuePair<int, int>[] StatsBoost;
         public KeyValuePair<int, int>[] StatsBoostOnHandle;
-        public int StatSetNoStack;
         public bool SteamRoller;
         public string SuccessorId;
         public int Texture1;
@@ -140,9 +137,6 @@ namespace TKR.Shared.resources
                 projs.Add(new ProjectileDesc(i));
 
             Projectiles = projs.ToArray();
-            StatSetNoStack = e.GetValue("StatSetNoStack", 0);
-            AmountSetNoStack = e.GetValue("AmountSetNoStack", 0);
-            SetStatsNoStack = e.Element("SetStatsNoStack") != null;
             Quantity = e.GetValue("Quantity", 0);
             QuantityLimit = e.GetValue("QuantityLimit", 0);
             SNormal = e.Element("SNormal") != null;

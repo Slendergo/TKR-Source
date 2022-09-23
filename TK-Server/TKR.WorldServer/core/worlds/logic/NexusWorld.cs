@@ -41,6 +41,7 @@ namespace TKR.WorldServer.core.worlds.logic
 
         // i dont really want to use static but it works so?
         public static float WeekendLootBoostEvent = 0.0f;
+        public bool MarketEnabled = true;
 
         public KingdomPortalMonitor PortalMonitor { get; private set; }
 

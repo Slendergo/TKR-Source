@@ -15,25 +15,30 @@ namespace TKR.WorldServer.core.net.handlers
         public abstract MessageId MessageId { get; }
         public abstract void Handle(Client client, NReader rdr, ref TickTime time);
 
-        public static bool IsAvailable(Client client)
-        {
-            if (client == null || client.Account == null || client.Player == null || client.Player.World == null || client?.Player?.World is TestWorld)
-                return false;
-            return true;
-        }
+        public static bool IsAvailable(Client client) => client.GameServer.WorldManager.Nexus.MarketEnabled;
 
         public static bool IsEnabledOrIsVipMarket(Client client)
         {
-            var config = client.Player.GameServer.Configuration;
-
-            if (client.Player.IsAdmin)
+            var player = client.Player;
+            if (player.IsAdmin)
                 return true;
 
-            if (config.serverInfo.adminOnly)
+            if(player.Stars < 5)
             {
-                if (!client.Player.GameServer.IsWhitelisted(client.Player.AccountId) || !client.Player.IsAdmin)
+                player.SendError("You must be atleast 5 stars to use the market");
+                return false;
+            }
+
+            if (player.Level != 20) {
+                player.SendError("You must be level 20 to use the market");
+                return false;
+            }
+
+            if (player.GameServer.Configuration.serverInfo.adminOnly)
+            {
+                if (!player.GameServer.IsWhitelisted(player.AccountId) || !player.IsAdmin)
                 {
-                    client.Player.SendError("Admin Only, you need to be Whitelisted to use this.");
+                    player.SendError("Admin Only, you need to be Whitelisted to use this.");
                     return false;
                 }
             }

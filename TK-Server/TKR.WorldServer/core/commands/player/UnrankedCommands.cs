@@ -19,6 +19,7 @@ using TKR.WorldServer.networking.packets.outgoing;
 using TKR.WorldServer.networking.packets.outgoing.party;
 using TKR.WorldServer.utils;
 using TKR.WorldServer.core.miscfile.structures;
+using TKR.WorldServer.logic;
 
 namespace TKR.WorldServer.core.commands.player
 {
@@ -1354,10 +1355,12 @@ namespace TKR.WorldServer.core.commands.player
 
         protected override bool Process(Player player, TickTime time, string args)
         {
-            player.Client.Account.ToggleLootChanceNotification = !player.Client.Account.ToggleLootChanceNotification;
+            var state = player.Client.Account.ToggleLootChanceNotification = !player.Client.Account.ToggleLootChanceNotification;
+            player.SendInfo($"You now {(state ? "See" : "Don't See")} loot roll.");
             return true;
         }
     }
+
     internal class TradeCommand : Command
     {
         public override string CommandName => "trade";
@@ -1370,11 +1373,11 @@ namespace TKR.WorldServer.core.commands.player
                 return false;
             }
 
-            //if (player.Stars < 2 && player.Rank < 10)
-            //{
-            //    player.SendHelp("To use this feature you need 2 stars or D-1 rank.");
-            //    return false;
-            //}
+            if (player.Stars < 2)
+            {
+                player.SendHelp("To use this feature you need 2.");
+                return false;
+            }
 
             if (player.IsAdmin)
             {

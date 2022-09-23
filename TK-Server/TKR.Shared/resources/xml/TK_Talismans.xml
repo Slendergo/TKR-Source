@@ -82,7 +82,7 @@
 		<Tier tier="2">
 			<StatType type="0" scale="perLevel" amount="20" />
 			<StatType type="26" scale="perLevel" amount="-2" />
-			<StatType type="0" scale="perLevel" percentage="0.20" />
+			<StatType type="0" scale="perLevel" percentage="0.15" />
 			<StatType type="22" scale="perLevel" percentage="-0.030" />
 			<StatType type="28" scale="perLevel" percentage="-0.050" />
 			<StatType type="20" scale="perLevel" percentage="-0.030" />

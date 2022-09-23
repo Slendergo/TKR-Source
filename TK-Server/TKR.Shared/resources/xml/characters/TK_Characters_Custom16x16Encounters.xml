@@ -1815,7 +1815,7 @@
 		</AnimatedTexture>
 		<DisplayedId>Queen of Ice</DisplayedId>
 		<Size>130</Size>
-		<MaxHitPoints>540000</MaxHitPoints>
+		<MaxHitPoints>350000</MaxHitPoints>
 		<Defense>60</Defense>
 		<StasisImmune/>
 		<StunImmune/>
@@ -1838,14 +1838,13 @@
 			<Speed>100</Speed>
 			<LifetimeMS>4000</LifetimeMS>
 			<MultiHit />
-			<ArmorPiercing/>
 			<ConditionEffect duration="1">Confused</ConditionEffect>
 		</Projectile>
 		<Projectile id="2">
 			<ObjectId>Projectile 2 QI</ObjectId>
 			<Damage>250</Damage>
 			<Size>150</Size>
-			<Speed>85</Speed>
+			<Speed>75</Speed>
 			<LifetimeMS>4000</LifetimeMS>
 			<MultiHit />
 			<ConditionEffect duration="1">Quiet</ConditionEffect>
@@ -1916,7 +1915,7 @@
 		</AnimatedTexture>
 		<DisplayedId>Cursed Snowman</DisplayedId>
 		<Size>160</Size>
-		<MaxHitPoints>450000</MaxHitPoints>
+		<MaxHitPoints>250000</MaxHitPoints>
 		<Defense>44</Defense>
 		<StasisImmune/>
 		<StunImmune/>

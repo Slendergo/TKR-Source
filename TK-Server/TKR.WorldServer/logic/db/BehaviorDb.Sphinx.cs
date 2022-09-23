@@ -96,6 +96,7 @@ namespace TKR.WorldServer.logic
                 new ItemLoot("Potion of Vitality", 1),
                 new ItemLoot("Potion of Wisdom", 1),
                 new ItemLoot("Potion of Vitality", 1),
+                new ItemLoot("Glowing Talisman", 0.005),
                 new ItemLoot("Potion of Wisdom", 1),
                 new TierLoot(10, ItemType.Weapon, .12),
                 new TierLoot(11, ItemType.Weapon, .09),

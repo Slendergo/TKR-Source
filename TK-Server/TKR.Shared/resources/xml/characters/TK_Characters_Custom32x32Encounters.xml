@@ -804,6 +804,9 @@
 		<God />
 		<Encounter />
 		<StasisImmune />
+		<StunImmune />
+		<ParalyzedImmune />
+		<DazedImmune />
 		<Class>Character</Class>
 		<AnimatedTexture>
 			<File>Custom32x32Encounters</File>
@@ -862,7 +865,9 @@
 		<God />
 		<Encounter />
 		<StasisImmune />
-		<ParalyzeImmune />
+		<StunImmune />
+		<ParalyzedImmune />
+		<DazedImmune />
 		<Class>Character</Class>
 		<AnimatedTexture>
 			<File>Custom32x32Encounters</File>
@@ -922,6 +927,7 @@
 		<StasisImmune />
 		<StunImmune />
 		<ParalyzedImmune />
+		<DazedImmune />
 		<Class>Character</Class>
 		<AnimatedTexture>
 			<File>Custom32x32Encounters</File>
@@ -1073,9 +1079,11 @@
 		<DisplayId>Earth Elemental</DisplayId>
 		<Quest />
 		<God />
-		<StasisImmune />
 		<Encounter />
-		<ParalyzeImmune />
+		<StasisImmune />
+		<StunImmune />
+		<ParalyzedImmune />
+		<DazedImmune />
 		<Class>Character</Class>
 		<AnimatedTexture>
 			<File>Custom32x32Encounters</File>
@@ -1132,9 +1140,10 @@
 		<Quest />
 		<God />
 		<StasisImmune />
-		<ParalyzeImmune />
+		<StunImmune />
+		<ParalyzedImmune />
+		<DazedImmune />
 		<Encounter />
-		<SlowedImmune />
 		<Class>Character</Class>
 		<AnimatedTexture>
 			<File>Custom32x32Encounters</File>
@@ -1172,8 +1181,9 @@
 		<Quest />
 		<God />
 		<StasisImmune />
-		<ParalyzeImmune />
-		<SlowedImmune />
+		<StunImmune />
+		<ParalyzedImmune />
+		<DazedImmune />
 		<Encounter />
 		<Class>Character</Class>
 		<AnimatedTexture>
@@ -1243,7 +1253,8 @@
 		<Enemy />
 		<StasisImmune />
 		<StunImmune />
-		<DazeImmune />
+		<ParalyzedImmune />
+		<DazedImmune />
 		<Chest />
 		<AnimatedTexture>
 			<File>Custom32x32Encounters</File>
@@ -1439,7 +1450,9 @@
 		<God />
 		<Encounter />
 		<StasisImmune />
-		<ParalyzeImmune />
+		<StunImmune />
+		<ParalyzedImmune />
+		<DazedImmune />
 		<Level>20</Level>
 		<Class>Character</Class>
 		<AnimatedTexture>

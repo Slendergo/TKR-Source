@@ -108,6 +108,7 @@ namespace TKR.WorldServer.logic
                 new TierLoot(5, ItemType.Ring, 0.03),
                 new TierLoot(4, ItemType.Ring, 0.01),
                 new ItemLoot("Talisman Fragment", 0.009),
+                new ItemLoot("Glowing Talisman", 0.005),
                 new ItemLoot("Magical Mushroom Staff", 0.001),
                 new ItemLoot("Mushroom Loop", 0.01),
 

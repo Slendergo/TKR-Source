@@ -232,7 +232,7 @@
 		</Tier>
 		<Tier tier="2">
 			<Leech prob="1" type="mana" scale="perLevel" percentage="0.001"/>
-			<Extra percentage="-0.09" scale="perLevel">LifeRegen</Extra>
+			<Extra percentage="-0.09" scale="perLevel">ManaRegen</Extra>
 			<StatType type="3" scale="perLevel" amount="10" />
 			<StatType type="0" scale="perLevel" amount="-10" />
 		</Tier>

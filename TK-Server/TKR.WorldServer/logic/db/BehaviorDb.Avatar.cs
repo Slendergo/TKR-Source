@@ -1549,6 +1549,7 @@ namespace TKR.WorldServer.logic
                 new ItemLoot("Flaking Husk", 0.001, threshold: 0.03)
                 ),
             new Threshold(0.001,
+                new ItemLoot("Glowing Talisman", 0.005),
                 new ItemLoot("Potion of Defense", 1),
                 new ItemLoot("Potion of Attack", 1),
                 new ItemLoot("Potion of Vitality", 1),

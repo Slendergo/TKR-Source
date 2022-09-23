@@ -119,6 +119,7 @@ namespace TKR.WorldServer.logic
                 new TierLoot(4, ItemType.Ring, 0.06),
                 new TierLoot(5, ItemType.Ring, 0.03),
                 new ItemLoot("Potion of Wisdom", 1),
+                new ItemLoot("Glowing Talisman", 0.005),
                 new ItemLoot("Potion of Vitality", 1),
                 new ItemLoot("Potion of Wisdom", 0.5),
                 new ItemLoot("Potion of Vitality", 0.5),

@@ -147,6 +147,9 @@ namespace TKR.WorldServer.logic
                     new Reproduce("Snowball Roll 7", 20, 1, coolDown: 600),
                     new EntitiesNotExistsTransition(25, "die", "Corrupt Snowman Switch")
                     ),
+                new State("idle",
+                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    ),
                 new State("die",
                     new Suicide()
 
@@ -305,8 +308,8 @@ namespace TKR.WorldServer.logic
                     new PlayerWithinTransition(10, "Shoot", true)
                     ),
                 new State("Shoot",
-                    new Shoot(15, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 0),
-                    new Shoot(15, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 600, predictive: 1.2)
+                    new Shoot(6, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 0),
+                    new Shoot(6, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 600, predictive: 1.2)
                     )
                 )
             )
@@ -314,8 +317,8 @@ namespace TKR.WorldServer.logic
             new State(
                 new State("Shoot",
                     new ConditionalEffect(ConditionEffectIndex.Invincible, true),
-                    new Shoot(15, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 0),
-                    new Shoot(15, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1000),
+                    new Shoot(8, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 0),
+                    new Shoot(8, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1000),
                     new TimedTransition(1200, "die")
                     ),
                 new State("die",
@@ -327,8 +330,8 @@ namespace TKR.WorldServer.logic
             new State(
                 new State("Shoot",
                     new ConditionalEffect(ConditionEffectIndex.Invincible, true),
-                    new Shoot(15, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 0),
-                    new Shoot(15, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1000),
+                    new Shoot(8, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 0),
+                    new Shoot(8, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1000),
                     new TimedTransition(1200, "die")
                     ),
                 new State("die",
@@ -340,8 +343,8 @@ namespace TKR.WorldServer.logic
             new State(
                 new State("Shoot",
                     new ConditionalEffect(ConditionEffectIndex.Invincible, true),
-                    new Shoot(15, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 0),
-                    new Shoot(15, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1000),
+                    new Shoot(8, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 0),
+                    new Shoot(8, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1000),
                     new TimedTransition(1200, "die")
                     ),
                 new State("die",
@@ -353,8 +356,8 @@ namespace TKR.WorldServer.logic
             new State(
                 new State("Shoot",
                     new ConditionalEffect(ConditionEffectIndex.Invincible, true),
-                    new Shoot(15, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 0),
-                    new Shoot(15, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1000),
+                    new Shoot(8, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 0),
+                    new Shoot(8, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1000),
                     new TimedTransition(1200, "die")
                     ),
                 new State("die",
@@ -366,8 +369,8 @@ namespace TKR.WorldServer.logic
             new State(
                 new State("Shoot",
                     new ConditionalEffect(ConditionEffectIndex.Invincible, true),
-                    new Shoot(15, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 0),
-                    new Shoot(15, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1000),
+                    new Shoot(8, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 0),
+                    new Shoot(8, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1000),
                     new TimedTransition(1200, "die")
                     ),
                 new State("die",
@@ -476,7 +479,7 @@ namespace TKR.WorldServer.logic
                 new ItemLoot("Potion of Mana", 1),
                 new ItemLoot("Potion of Vitality", 1),
                 new ItemLoot("Potion of Mana", 1),
-                new ItemLoot("Frozen Coin", 0.1),
+                new ItemLoot("Frozen Coin", 0.05),
                 new ItemLoot("Magic Dust", 0.5)
                 )
             )
@@ -604,7 +607,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.5, "freedps"),
                     new TossObject2("Frozen Elf", 3, coolDown: 3000, randomToss: true),
                     new TossObject2("Frozen Elf", 2, coolDown: 2500, randomToss: true),
-                    new Follow(1, 12, 2),
+                    new Wander(0.3),
                     new Shoot(30, 3, shootAngle: 10, projectileIndex: 4, coolDown: 1200),
                     new TimedTransition(10000, "attack2.1")
                     ),
@@ -664,7 +667,7 @@ namespace TKR.WorldServer.logic
                 new ItemLoot("Greater Potion of Vitality", 1),
                 new ItemLoot("Greater Potion of Mana", 1),
                 new ItemLoot("Magic Dust", 0.5),
-                new ItemLoot("Frozen Coin", 0.1),
+                new ItemLoot("Frozen Coin", 0.05),
                 new ItemLoot("Glowing Talisman", 0.0014)
                 ),
              new Threshold(0.03,
@@ -699,21 +702,21 @@ namespace TKR.WorldServer.logic
                 new ItemLoot("Special Dust", 0.01)
                 ),
              new Threshold(0.03,
-                new ItemLoot("Winter Solstice", 0.0001),
-                new ItemLoot("Polar Vortex", 0.0001),
-                new ItemLoot("Iceberg", 0.0001),
+                new ItemLoot("Winter Solstice", 0.00033),
+                new ItemLoot("Polar Vortex", 0.00033),
+                new ItemLoot("Iceberg", 0.00033),
 
-                new ItemLoot("Condemned Frostbite", 0.0001),
-                new ItemLoot("The Expansion", 0.0001),
-                new ItemLoot("The Northern Star", 0.0001),
+                new ItemLoot("Condemned Frostbite", 0.00033),
+                new ItemLoot("The Expansion", 0.00033),
+                new ItemLoot("The Northern Star", 0.00033),
                 
-                new ItemLoot("Snow Angle", 0.0001),
-                new ItemLoot("World of Ice", 0.0001),
+                new ItemLoot("Snow Angle", 0.00033),
+                new ItemLoot("World of Ice", 0.00033),
                 
-                new ItemLoot("Agdluak", 0.0001),
-                new ItemLoot("Absolute Zero", 0.0001),
-                new ItemLoot("Cryogenic Freeze", 0.0001),
-                new ItemLoot("Frozen Coin", 0.1),
+                new ItemLoot("Agdluak", 0.00033),
+                new ItemLoot("Absolute Zero", 0.00033),
+                new ItemLoot("Cryogenic Freeze", 0.00033),
+                new ItemLoot("Frozen Coin", 0.05),
                 new ItemLoot("Glowing Talisman", 0.0014)
                  )
             )
@@ -1104,27 +1107,28 @@ namespace TKR.WorldServer.logic
                     //new Shoot(15, 1, projectileIndex: 6, predictive: .9, coolDown: 1500),
                     new Shoot(15, 15, projectileIndex: 0, coolDown: 1000, angleOffset: 3),
                     new Shoot(15, 1, projectileIndex: 5, coolDown: 400, coolDownOffset: 0),
-                    new Shoot(15, 2, shootAngle: 10, projectileIndex: 7, coolDown: 400, coolDownOffset: 0),
-                    new Shoot(15, 2, shootAngle: 15, projectileIndex: 8, coolDown: 400, coolDownOffset: 0),
-                    new Shoot(15, 2, shootAngle: 20, projectileIndex: 9, coolDown: 400, coolDownOffset: 0),
+                    new Shoot(15, 2, shootAngle: 15, projectileIndex: 7, coolDown: 400, coolDownOffset: 0),
+                    new Shoot(15, 2, shootAngle: 20, projectileIndex: 8, coolDown: 400, coolDownOffset: 0),
+                    new Shoot(15, 2, shootAngle: 25, projectileIndex: 9, coolDown: 400, coolDownOffset: 0),
                     new TimedRandomTransition(9000, false, "Orbit", "Rush", "Orbit1")
                     ),
                 new State("Orbit",
                     new Orbit(6, 7, 15, "Snowball Spawner", speedVariance: 0, radiusVariance: 0),
-                    new Shoot(15, 15, projectileIndex: 4, coolDown: 1000, angleOffset: 3),
-                    new Shoot(15, 4, projectileIndex: 5, shootAngle: 10, coolDown: 1000),
+                    new Order(10, "Snowball Spawner", "idle"),
+                    new Shoot(15, 14, projectileIndex: 4, coolDown: 1000),
+                    new Shoot(15, 7, projectileIndex: 5, coolDown: 800),
                     new TimedRandomTransition(10000, false, "attack1", "Rush", "Orbit1")
                     ),
                 new State("Orbit1",
                     new Orbit(6, 7, 15, "Snowball Spawner", speedVariance: 0, radiusVariance: 0, true),
-                    new Shoot(15, 15, projectileIndex: 4, coolDown: 1000, angleOffset: 3),
-                    new Shoot(15, 4, projectileIndex: 5, shootAngle: 10, coolDown: 1000),
+                    new Order(10, "Snowball Spawner", "idle"),
+                    new Shoot(15, 14, projectileIndex: 4, coolDown: 1000),
+                    new Shoot(15, 7, projectileIndex: 5, coolDown: 800),
                     new TimedRandomTransition(10000, false, "attack1", "Rush", "Orbit")
                     ),
                 new State("Rush",
-                    new Charge(10),
-                    new Follow(1, 8, 8),
-                    new Wander(0.3),
+                    new Order(10, "Snowball Spawner", "idle"),
+                    new Wander(0.4),
                     new Shoot(15, 10, projectileIndex: 0, shootAngle: 10, coolDown: 1600, angleOffset: 3),
                     new Shoot(15, 4, projectileIndex: 5, shootAngle: 15, coolDown: 1200),
                     new TimedRandomTransition(7000, false, "attack1", "Orbit", "Orbit1")
@@ -1142,7 +1146,7 @@ namespace TKR.WorldServer.logic
                 new ItemLoot("Greater Potion of Dexterity", 1),
                 new ItemLoot("Greater Potion of Attack", 1),
                 new ItemLoot("Greater Potion of Dexterity", 1),
-                new ItemLoot("Frozen Coin", 0.1),
+                new ItemLoot("Frozen Coin", 0.05),
                 new ItemLoot("Glowing Talisman", 0.0014)
                 ),
              new Threshold(0.03,
@@ -1285,9 +1289,9 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(10000, "attack1")
                     ),
                 new State("attack1",
-                    new Follow(2, 15, duration: 5, coolDown: 2000),
+                    new Wander(0.3),
                     new Shoot(12, 2, shootAngle: 10, predictive: 1.2, projectileIndex: 0, coolDown: 200),
-                    new Shoot(7, 12, projectileIndex: 1, coolDown: 800),
+                    new Shoot(12, 12, projectileIndex: 1, coolDown: 800),
                     new Grenade(2, 20, range: 12, fixedAngle: 180, coolDown: 1000, ConditionEffectIndex.Paralyzed, effectDuration: 500, color: 0x5279FD),
                     new Grenade(2, 20, range: 12, fixedAngle: 160, coolDown: 1500, ConditionEffectIndex.Paralyzed, effectDuration: 500, color: 0x5279FD),
                     new Grenade(2, 20, range: 12, fixedAngle: 200, coolDown: 2000, ConditionEffectIndex.Paralyzed, effectDuration: 500, color: 0x5279FD),
@@ -1446,7 +1450,7 @@ namespace TKR.WorldServer.logic
                 new ScaleHP2(20),
                 new State("attack",
                     new Taunt("attack!"),
-                    new Chase(9, 15, coolDown: 1500),
+                    new Chase(10, 15, coolDown: 1500),
                     new Shoot(8, 6, projectileIndex: 0, predictive: 0.8, coolDown: 500),
                     new HealSelf(amount: 2000, coolDown: 5000)
                     )
@@ -1487,17 +1491,16 @@ namespace TKR.WorldServer.logic
                 new ScaleHP2(20),
                 new State("within",
                     new ConditionalEffect(ConditionEffectIndex.Invincible, true),
-                    new PlayerWithinTransition(8, "explodeprep")
+                    new PlayerWithinTransition(15, "explodeprep")
                     ),
-                new State("explodeprep",
-                    new Taunt("explode!"),
-                    new Follow(1.5, 10, 1),
+                new State("explodeprep",                  
                     new Flash(0xCC1A1A, 0.5, 12),
-                    new TimedTransition(1000, "explode")
+                    new TimedTransition(1400, "explode")
                     ),
                 new State("explode",
-                    new Shoot(14, 12, projectileIndex: 0, coolDown: 600),
-                    new TimedTransition(450, "suicide")
+                    new Taunt("explode!"),
+                    new Shoot(14, 12, projectileIndex: 0, coolDown: 200),
+                    new TimedTransition(200, "suicide")
                     ),
                 new State("suicide",
                     new Suicide()

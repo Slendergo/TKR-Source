@@ -19,7 +19,7 @@
       <LifetimeMS>503</LifetimeMS>
       <MultiHit />
     </Projectile>
-    <BagType>6</BagType>
+	  <BagType>7</BagType>
     <FameBonus>6</FameBonus>
     <NumProjectiles>1</NumProjectiles>
     <OldSound>arrowShoot</OldSound>

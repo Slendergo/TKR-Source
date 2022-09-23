@@ -54,6 +54,7 @@ namespace TKR.WorldServer.logic
             new Threshold(0.001,
                 new ItemLoot("Potion of Attack", 0.5, 0, 0.0012),
                 new ItemLoot("Potion of Speed", 0.5, 0, 0.0012),
+                new ItemLoot("Glowing Talisman", 0.005),
                 new ItemLoot("Potion of Life", 1, 0, 0.0012),
                 new ItemLoot("Potion of Mana", 1, 0, 0.0012),
                 new TierLoot(13, ItemType.Weapon, 0.08, 0, 0.002),

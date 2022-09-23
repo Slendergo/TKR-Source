@@ -6182,7 +6182,7 @@
 		<SlotType>10</SlotType>
 		<QuantityLimit>200</QuantityLimit>
 		<Quantity>1</Quantity>
-		<BagType>5</BagType>
+		<BagType>7</BagType>
 	</Object>
   <Object type="0x6498" id="Glowing Shard">
     <Class>Equipment</Class>
@@ -6202,7 +6202,8 @@
   <Object type="0x6499" id="Glowing Talisman">
     <Class>Equipment</Class>
     <Item/>
-    <Description>A strange old trinket that resonates an old power once forgotten.</Description>
+	  <NoTierTag/>
+    <Description>A strange old trinket that resonates an old power once forgotten. (Use this item to fuel the strange generator)</Description>
     <Texture>
       <File>CustomObj</File>
       <Index>0x124</Index>

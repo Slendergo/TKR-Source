@@ -2277,25 +2277,24 @@
 			<Amplitude>2</Amplitude>
 			<LifetimeMS>4000</LifetimeMS>
 			<MultiHit />
-			<ArmorPiercing />
 		</Projectile>
 		<Projectile id="1">
 			<ObjectId>Projectile 1 CSS</ObjectId>
-			<Damage>405</Damage>
+			<Damage>305</Damage>
 			<Size>150</Size>
 			<Speed>80</Speed>
 			<LifetimeMS>4000</LifetimeMS>
 		</Projectile>
 		<Projectile id="2">
 			<ObjectId>Projectile 2 CSS</ObjectId>
-			<Damage>515</Damage>
+			<Damage>315</Damage>
 			<Size>150</Size>
 			<Speed>80</Speed>
 			<LifetimeMS>5000</LifetimeMS>
 		</Projectile>
 		<Projectile id="3">
 			<ObjectId>Projectile 0 GFS</ObjectId>
-			<Damage>300</Damage>
+			<Damage>200</Damage>
 			<Size>150</Size>
 			<Speed>80</Speed>
 			<Frequency>2</Frequency>
@@ -2468,12 +2467,13 @@
 		<StasisImmune/>
 		<StunImmune/>
 		<SlowImmune/>
+		<DazedImmune/>
 		<ShadowSize>0</ShadowSize>
 		<MaxHitPoints>1000</MaxHitPoints>
 		<Defense>10</Defense>
 		<Projectile id="0">
 			<ObjectId>Invisible</ObjectId>
-			<Damage>500</Damage>
+			<Damage>350</Damage>
 			<Speed>10</Speed>
 			<LifetimeMS>1000</LifetimeMS>
 			<Size>100</Size>
@@ -2517,7 +2517,7 @@
 		<Defense>10</Defense>
 		<Projectile id="0">
 			<ObjectId>Invisible</ObjectId>
-			<Damage>500</Damage>
+			<Damage>350</Damage>
 			<Speed>10</Speed>
 			<LifetimeMS>1000</LifetimeMS>
 			<Size>100</Size>
@@ -2561,7 +2561,7 @@
 		<Defense>10</Defense>
 		<Projectile id="0">
 			<ObjectId>Invisible</ObjectId>
-			<Damage>500</Damage>
+			<Damage>350</Damage>
 			<Speed>10</Speed>
 			<LifetimeMS>1000</LifetimeMS>
 			<Size>100</Size>
@@ -2605,7 +2605,7 @@
 		<Defense>10</Defense>
 		<Projectile id="0">
 			<ObjectId>Invisible</ObjectId>
-			<Damage>500</Damage>
+			<Damage>350</Damage>
 			<Speed>10</Speed>
 			<LifetimeMS>1000</LifetimeMS>
 			<Size>100</Size>
@@ -2649,7 +2649,7 @@
 		<Defense>10</Defense>
 		<Projectile id="0">
 			<ObjectId>Invisible</ObjectId>
-			<Damage>500</Damage>
+			<Damage>350</Damage>
 			<Speed>10</Speed>
 			<LifetimeMS>1000</LifetimeMS>
 			<Size>100</Size>
@@ -2693,7 +2693,7 @@
 		<Defense>10</Defense>
 		<Projectile id="0">
 			<ObjectId>Invisible</ObjectId>
-			<Damage>500</Damage>
+			<Damage>350</Damage>
 			<Speed>10</Speed>
 			<LifetimeMS>1000</LifetimeMS>
 			<Size>100</Size>
@@ -2737,7 +2737,7 @@
 		<Defense>10</Defense>
 		<Projectile id="0">
 			<ObjectId>Invisible</ObjectId>
-			<Damage>500</Damage>
+			<Damage>350</Damage>
 			<Speed>10</Speed>
 			<LifetimeMS>1000</LifetimeMS>
 			<Size>100</Size>
@@ -2781,7 +2781,7 @@
 		<Defense>10</Defense>
 		<Projectile id="0">
 			<ObjectId>Invisible</ObjectId>
-			<Damage>500</Damage>
+			<Damage>350</Damage>
 			<Speed>10</Speed>
 			<LifetimeMS>1000</LifetimeMS>
 			<Size>100</Size>

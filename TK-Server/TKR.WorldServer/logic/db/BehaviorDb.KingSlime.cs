@@ -99,6 +99,7 @@ namespace TKR.WorldServer.logic
                 new TierLoot(3, ItemType.Ability, 0.12),
                 new TierLoot(4, ItemType.Ability, 0.07),
                 new ItemLoot("Talisman Fragment", 0.009),
+                new ItemLoot("Glowing Talisman", 0.005),
                 new ItemLoot("Sticky Slime Armor", 0.009),
 
                 new ItemLoot("Magic Dust", 0.5)

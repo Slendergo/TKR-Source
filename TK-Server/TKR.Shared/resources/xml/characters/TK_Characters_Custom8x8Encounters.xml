@@ -1331,8 +1331,8 @@
 		<Projectile id="0">
 			<ObjectId>Projectile 0 FE</ObjectId>
 			<Damage>90</Damage>
-			<Speed>75</Speed>
-			<Size>90</Size>
+			<Speed>35</Speed>
+			<Size>120</Size>
 			<ArmorPiercing/>
 			<LifetimeMS>4000</LifetimeMS>
 		</Projectile>
@@ -1346,7 +1346,7 @@
 			<Index>20</Index>
 		</AnimatedTexture>
 		<Size>150</Size>
-		<MaxHitPoints>22000</MaxHitPoints>
+		<MaxHitPoints>13000</MaxHitPoints>
 		<Defense>50</Defense>
 		<StasisImmune/>
 		<StunImmune/>
@@ -1356,17 +1356,16 @@
 			<Damage>260</Damage>
 			<Speed>75</Speed>
 			<Size>140</Size>
-			<ArmorPiercing/>
 			<MultiHit/>
 			<ConditionEffect duration="2">Speedy</ConditionEffect>
 			<LifetimeMS>2500</LifetimeMS>
 		</Projectile>
 		<Projectile id="1">
 			<ObjectId>Projectile 1 GFS</ObjectId>
-			<Damage>405</Damage>
+			<Damage>345</Damage>
 			<Speed>65</Speed>
 			<Size>140</Size>
-			<ArmorPiercing/>
+			<MultiHit/>
 			<LifetimeMS>800</LifetimeMS>
 		</Projectile>
 	</Object>

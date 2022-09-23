@@ -223,7 +223,8 @@ namespace TKR.WorldServer.logic
             new Threshold(0.015,
                 new TierLoot(2, ItemType.Potion, numRequired: 3, threshold: 0.07)
                 ),
-             new Threshold(0.05,
+             new Threshold(0.001,
+                new ItemLoot("Glowing Talisman", 0.005),
                 new ItemLoot("Potion of Attack", 1),
                 new ItemLoot("Potion of Speed", 1),
                 new ItemLoot("Potion of Attack", 0.5),
@@ -233,7 +234,7 @@ namespace TKR.WorldServer.logic
                 new ItemLoot("Rigid Mantle", 0.001)
                 ),
 
-            new Threshold(0.03,
+            new Threshold(0.01,
                 new ItemLoot("Crystal Wand", 0.009),
                 new ItemLoot("Heart of the Realm", 0.001),
                 new ItemLoot("Crystal Sword", 0.009)

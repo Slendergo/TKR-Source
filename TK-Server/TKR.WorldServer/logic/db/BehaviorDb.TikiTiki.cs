@@ -156,6 +156,7 @@ namespace TKR.WorldServer.logic
                 new ItemLoot("Potion of Speed", 1),
                 new ItemLoot("Potion of Defense", 1),
                 new ItemLoot("Potion of Attack", 1),
+                new ItemLoot("Glowing Talisman", 0.005),
                 new ItemLoot("Potion of Speed", 1)
                 ),
             new Threshold(0.005,

@@ -29,5 +29,17 @@ namespace TKR.WorldServer.core.commands
                 return true;
             }
         }
+
+        internal class ServerRestartAnnounce : Command
+        {
+            public override RankingType RankRequirement => RankingType.Admin;
+            public override string CommandName => "restart";
+
+            protected override bool Process(Player player, TickTime time, string args)
+            {
+                player.GameServer.ChatManager.ServerAnnounce("Server will be restarting in 5 minutes prepare to disconnect.");
+                return true;
+            }
+        }
     }
 }

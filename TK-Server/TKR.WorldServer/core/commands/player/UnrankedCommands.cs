@@ -1356,7 +1356,7 @@ namespace TKR.WorldServer.core.commands.player
         protected override bool Process(Player player, TickTime time, string args)
         {
             var state = player.Client.Account.ToggleLootChanceNotification = !player.Client.Account.ToggleLootChanceNotification;
-            player.SendInfo($"You now {(state ? "See" : "Don't See")} your loot roll.");
+            player.SendInfo($"Loot chances now {(state ? "Enabled" : "Disabled")}.");
             return true;
         }
     }

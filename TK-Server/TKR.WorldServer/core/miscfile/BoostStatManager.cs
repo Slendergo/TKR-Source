@@ -35,34 +35,15 @@ namespace TKR.WorldServer.core.miscfile
 
         public int this[int index] => _boost[index];
 
-        public void CheckItemsNoStack() //TODO
-        {
-            if (_player == null || _player.Client == null || _player.Client.Account == null)
-                return;
-
-            for (var i = 0; i < 20; i++)
-            {
-                if (_player.Inventory[i] == null)
-                    continue;
-
-                if (_player.Inventory[i].SetStatsNoStack)
-                {
-                    IncrementBoost((StatDataType)_player.Inventory[i].StatSetNoStack, _player.Inventory[i].AmountSetNoStack);
-                    break;
-                }
-            }
-        }
-
         protected internal void ReCalculateValues()
         {
             for (var i = 0; i < _boost.Length; i++)
                 _boost[i] = 0;
 
-            ApplyTalismanBonus();
             ApplyEquipBonus();
             ApplyActivateBonus();
-            CheckItemsNoStack();
             IncrementStatBoost();
+            ApplyTalismanBonus();
 
             for (var i = 0; i < _boost.Length; i++)
                 _boostSV[i].SetValue(_boost[i]);

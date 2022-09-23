@@ -155,12 +155,15 @@ namespace TKR.WorldServer.core.objects
             TalismanCanOnlyGetWhiteBags = false;
             TalismanExtraDamageOnHitHealth = 0.0;
             TalismanExtraDamageOnHitMana = 0.0;
+            TalismanPotionHealthPercent = 0.0f;
+            TalismanPotionManaPercent = 0.0f;
 
             RemoveCondition(ConditionEffectIndex.ArmorBreakImmune);
             RemoveCondition(ConditionEffectIndex.SlowedImmune);
             RemoveCondition(ConditionEffectIndex.DazedImmune);
             RemoveCondition(ConditionEffectIndex.StunImmune);
             RemoveCondition(ConditionEffectIndex.ParalyzeImmune);
+
 
             // readd
 
@@ -262,34 +265,8 @@ namespace TKR.WorldServer.core.objects
                     TalismanFameGainBonus += percentage;
                 TalismanCantGetLoot = tierDesc.CantGetLoot;
                 TalismanNoPotionHealing = tierDesc.NoPotionHealing;
-            }
 
-
-            var doubleprevent = RecalculateStackedPotions();
-            if(!doubleprevent)
-                Stats.ReCalculateValues();
-        }
-
-        public bool RecalculateStackedPotions()
-        {
-            TalismanPotionHealthPercent = 0.0f;
-            TalismanPotionManaPercent = 0.0f;
-
-            foreach (var type in ActiveTalismans)
-            {
-                var talisman = GetTalisman(type);
-                if (talisman == null)
-                    continue;
-
-                var desc = GameServer.Resources.GameData.GetTalisman(type);
-                if (desc == null)
-                    continue;
-
-                var tierDesc = desc.GetTierDesc(talisman.Tier);
-                if (tierDesc == null)
-                    continue;
-
-                foreach(var potion in tierDesc.PotionStack)
+                foreach (var potion in tierDesc.PotionStack)
                 {
                     var scale = potion.ScalesPerLevel ? (potion.Percentage * talisman.Level) : potion.Percentage;
                     switch (potion.Type)
@@ -303,13 +280,10 @@ namespace TKR.WorldServer.core.objects
                     }
                 }
             }
-
             Stats.ReCalculateValues();
-
-            return TalismanPotionHealthPercent != 0.0 && TalismanPotionManaPercent != 0.0;
         }
 
-        public void CheckHealthTalismans()
+        private void CheckHealthTalismans()
         {
             TalismanHealthRateOfFire = 0.0;
             TalismanHealthHPRegen = 0.0;

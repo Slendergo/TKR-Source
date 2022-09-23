@@ -6182,7 +6182,7 @@
 		<SlotType>10</SlotType>
 		<QuantityLimit>200</QuantityLimit>
 		<Quantity>1</Quantity>
-		<BagType>7</BagType>
+		<BagType>4</BagType>
 	</Object>
   <Object type="0x6498" id="Glowing Shard">
     <Class>Equipment</Class>

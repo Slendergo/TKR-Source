@@ -662,7 +662,7 @@ namespace TKR.WorldServer.core.commands.player
             {
                 case 1: player.SendInfo($"Stage 1 Strange Engine provides: 25%"); break;
                 case 2: player.SendInfo($"Stage 2 Strange Engine provides: 50%"); break;
-                case 3: player.SendInfo($"Stage 3 Strange Engine provides: 100%"); break;
+                case 3: player.SendInfo($"Stage 3 Strange Engine provides: 75%"); break;
                 default: break;
             }
             player.SendInfo($"You have {Math.Round(lootBoost * 100.0f, 3)}% increased loot chance");

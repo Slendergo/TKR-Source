@@ -110,7 +110,7 @@ namespace TKR.WorldServer.logic.loot
             {
                 case 1: allLoot += 0.25; break;
                 case 2: allLoot += 0.5; break;
-                case 3: allLoot += 1.0; break;
+                case 3: allLoot += 0.75; break;
                 default: break;
             }
             allLoot += player.LDBoostTime > 0 ? 0.25 : 0;

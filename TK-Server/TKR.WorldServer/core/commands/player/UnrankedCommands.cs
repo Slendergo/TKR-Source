@@ -649,7 +649,7 @@ namespace TKR.WorldServer.core.commands.player
                 player.SendInfo($"Weekend Bonus provides: {(int)(NexusWorld.WeekendLootBoostEvent * 100.0)}%");
 
             if (player.LDBoostTime > 0)
-                player.SendInfo($"Loot Drop provides: 20% ");
+                player.SendInfo($"Loot Drop provides: 25%");
 
             var allLoot = 0.0;
             if (player.TalismanLootBoostPerPlayer != 0.0 && player.World.Players.Count != 1)

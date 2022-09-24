@@ -1,15 +1,14 @@
-﻿using TKR.Shared;
-using TKR.Shared.resources;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using TKR.Shared;
+using TKR.Shared.resources;
+using TKR.WorldServer.core.miscfile.structures;
 using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.core.miscfile.world;
 using TKR.WorldServer.core.objects;
 using TKR.WorldServer.core.objects.vendors;
 using TKR.WorldServer.core.setpieces;
-using TKR.WorldServer.core.objects;
-using TKR.WorldServer.core.miscfile.structures;
 
 namespace TKR.WorldServer.core.worlds.logic
 {
@@ -182,8 +181,8 @@ namespace TKR.WorldServer.core.worlds.logic
                 return;
             
             if (WeekendLootBoostEvent == 0.0f)
-                WeekendLootBoostEvent = 0.25f;
-            else if(WeekendLootBoostEvent == 0.25f && day == DayOfWeek.Monday)
+                WeekendLootBoostEvent = 0.30f;
+            else if(WeekendLootBoostEvent == 0.30f && day == DayOfWeek.Monday)
             {
                 WeekendLootBoostEvent = 0.0f;
                 GameServer.ChatManager.ServerAnnounce("The weekend loot event has ended!");

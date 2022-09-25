@@ -7,6 +7,7 @@ using TKR.Shared.database.account;
 using TKR.Shared.database.market;
 using TKR.Shared.database.vault;
 using TKR.WorldServer.core.miscfile.thread;
+using TKR.WorldServer.core.objects;
 using TKR.WorldServer.networking;
 using TKR.WorldServer.networking.packets.outgoing.market;
 using TKR.WorldServer.utils;
@@ -26,9 +27,9 @@ namespace TKR.WorldServer.core.net.handlers.market
             if (!IsAvailable(client) || !IsEnabledOrIsVipMarket(client))
                 return;
 
-            var db = client.Player.GameServer.Database;
-            var marketData = DbMarketData.GetSpecificOffer(client?.Account?.Database, id);
+            var player = client.Player;
 
+            var marketData = DbMarketData.GetSpecificOffer(client?.Account?.Database, id);
             if (marketData == null)
             {
                 client.SendPacket(new MarketBuyResult()
@@ -36,46 +37,11 @@ namespace TKR.WorldServer.core.net.handlers.market
                     Code = MarketBuyResult.ERROR,
                     Description = "Something wrong happened, try again. (Item doesn't exist in Market)"
                 });
-                client.Player?.SendError("That item doesn't exist.");
+                player.SendError("That item doesn't exist.");
                 return;
             }
 
-            var sellerId = db.ResolveId(marketData.SellerName);
-            var sellerAcc = db.GetAccount(sellerId);
-            if (sellerAcc == null)
-            {
-                client.Player?.SendError("Unable to find seller.");
-                return;
-            }
-
-            var item = client.Player.GameServer.Resources.GameData.Items[marketData.ItemType];
-
-            var buyerId = db.ResolveId(client.Player.Name);
-            var buyerAcc = db.GetAccount(client.Player.AccountId);
-
-            if (buyerId == 0 || buyerAcc == null)
-            {
-                client.SendPacket(new MarketBuyResult()
-                {
-                    Code = MarketBuyResult.ERROR,
-                    Description = "Something wrong happened, try again. (Unexpected Error)"
-                });
-                client.Player?.SendError("Something wrong happened, try again. (Unexpected Error)");
-                return;
-            }
-
-            if (sellerId == 0 || sellerAcc == null)
-            {
-                client.SendPacket(new MarketBuyResult()
-                {
-                    Code = MarketBuyResult.ERROR,
-                    Description = "Something wrong happened, try again. (Seller Account not exist)"
-                });
-                client.Player?.SendError("Something wrong happened, try again. (Seller Account not exist)");
-                return;
-            }
-
-            if (item == null)
+            if (!player.GameServer.Resources.GameData.Items.TryGetValue(marketData.ItemType, out var item))
             {
                 client.SendPacket(new MarketBuyResult()
                 {
@@ -86,7 +52,7 @@ namespace TKR.WorldServer.core.net.handlers.market
                 return;
             }
 
-            if (buyerAcc.Fame < marketData.Price)
+            if (player.CurrentFame < marketData.Price)
             {
                 client.SendPacket(new MarketBuyResult()
                 {
@@ -97,21 +63,40 @@ namespace TKR.WorldServer.core.net.handlers.market
                 return;
             }
 
-            var player = client.Player;
+            var db = player.GameServer.Database;
+            var sellerId = db.ResolveId(marketData.SellerName);
+            var sellerAcc = db.GetAccount(sellerId);
+            if (sellerAcc == null)
+            {
+                player.SendError("Unable to find seller.");
+                return;
+            }
+
+            if (sellerId == 0 || sellerAcc == null)
+            {
+                client.SendPacket(new MarketBuyResult()
+                {
+                    Code = MarketBuyResult.ERROR,
+                    Description = "Something wrong happened, try again. (Seller Account not exist)"
+                });
+                player.SendError("Something wrong happened, try again. (Seller Account not exist)");
+                return;
+            }
+
             StaticLogger.Instance.Warn($"<{player.Name} {player.AccountId}> brought: {item.ObjectId} on market for: {marketData.Price} from: <{sellerAcc.Name} {sellerAcc.AccountId}>");
 
             /* Add fame to the Seller */
             AddFameToSeller(client, sellerAcc, marketData.Price, item.ObjectId);
 
             /* Remove fame to Buyer */
-            RemoveFameToBuyer(buyerAcc, marketData.Price, client);
+            RemoveFameToBuyer(player, marketData.Price);
 
             db.RemoveMarketEntrySafety(sellerAcc, marketData.Id);
 
             if (!string.IsNullOrEmpty(marketData.ItemData))
-                DbSpecialVault.AddItem(buyerAcc, marketData.ItemType, marketData.ItemData);
+                DbSpecialVault.AddItem(client.Account, marketData.ItemType, marketData.ItemData);
             else
-                db.AddGift(buyerAcc, marketData.ItemType);
+                db.AddGift(client.Account, marketData.ItemType);
 
             client.SendPacket(new MarketBuyResult()
             {
@@ -178,21 +163,12 @@ namespace TKR.WorldServer.core.net.handlers.market
             client.Player.GameServer.ChatManager.SendInfoMarket(acc.AccountId, itemId, realPrice, resultPrice, TAX_PERCENTAGE);
         }
 
-        private void RemoveFameToBuyer(DbAccount acc, int realPrice, Client client = null)
+        private void RemoveFameToBuyer(Player player, int price)
         {
-            acc.Reload("fame");
-            acc.Reload("totalFame");
-            acc.Fame -= realPrice;
-            acc.TotalFame -= realPrice;
-            acc.FlushAsync();
-            acc.Reload("fame");
-            acc.Reload("totalFame");
-
-            if (client != null && client.Player != null)
-            {
-                client.Player.CurrentFame = acc.Fame;
-                client.Player.SendInfo("<Marketplace> The purchase item has been sent to your gift chests at Vault.");
-            }
+            player.CurrentFame = player.Client.Account.Fame -= price;
+            player.Client.Account.TotalFame += price;
+            player.GameServer.Database.ReloadAccount(player.Client.Account);
+            player.SendInfo("<Marketplace> The purchase item has been sent to your gift chests at Vault.");
         }
 
         internal class APIItem //if u want, you can remove this and make it different?

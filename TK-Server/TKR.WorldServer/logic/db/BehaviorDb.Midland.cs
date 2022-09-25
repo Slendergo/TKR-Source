@@ -332,12 +332,11 @@ namespace TKR.WorldServer.logic
             )
         .Init("Black Bat",
             new State(
-                new Prioritize(
-                    new Charge(),
-                    new Wander(0.4)
+                new OrderedBehavior(
+                    new NewCharge(),
+                    new NewWander()
                     ),
-                new Shoot(1),
-                new Reproduce(densityMax: 5, densityRadius: 20, coolDown: 20000)
+                new Shoot(1)
                 ),
             new ItemLoot("Health Potion", 0.01),
             new ItemLoot("Magic Potion", 0.01),
@@ -345,9 +344,8 @@ namespace TKR.WorldServer.logic
             )
         .Init("Red Spider",
             new State(
-                new Wander(0.4),
                 new Shoot(9),
-                new Reproduce(densityMax: 3, densityRadius: 15, coolDown: 45000)
+                new Wander(0.4)
                 ),
             new ItemLoot("Health Potion", 0.03),
             new ItemLoot("Magic Potion", 0.03)

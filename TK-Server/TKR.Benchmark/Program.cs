@@ -1,47 +1,209 @@
 ﻿using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
-using Microsoft.Diagnostics.Tracing.Parsers.MicrosoftWindowsTCPIP;
-using System;
 
-BenchmarkRunner.Run<Benchmark>();
+//BenchmarkRunner.Run<Benchmark>();
+
+Console.WriteLine(DistTo(72, 58, 74, 27) + " < " + 15);
+
+var d = SqDistTo(72, 58, 74, 27);
+Console.WriteLine(d + " < "+ 15 * 15);
+
+double DistTo(double x, double y, double xx, double yy)
+{
+    var dx = x - xx;
+    var dy = y - yy;
+    return Math.Sqrt(dx * dx + dy * dy);
+}
+
+double SqDistTo(double x, double y, double xx, double yy)
+{
+    var dx = x - xx;
+    var dy = y - yy;
+    return dx * dx + dy * dy;
+}
 
 [MemoryDiagnoser(true)]
 public class Benchmark
 {
-    public Dictionary<int, string> Clients = new Dictionary<int, string>();
+    public List<Entity> Entities100 = new List<Entity>();
+    public List<Entity> Entities10000 = new List<Entity>();
 
     public Benchmark()
     {
-        for(var i =0; i < 300; i++)
-            Clients.Add(i, RandomString(10));
-
-        string RandomString(int length)
+        Entities100 = new List<Entity>(100);
+        for (var i = 0; i < 100; i++)
         {
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            return new string(Enumerable.Repeat(chars, length)
-                .Select(s => s[Random.Shared.Next(s.Length)]).ToArray());
+            Entities10000.Add(new Entity()
+            {
+                X = Random.Shared.Next(0, 256),
+                Y = Random.Shared.Next(0, 256)
+            });
+        }
+        Entities10000 = new List<Entity>(10000);
+        for (var i = 0; i < 10000; i++)
+        {
+            Entities10000.Add(new Entity()
+            {
+                X = Random.Shared.Next(0, 256),
+                Y = Random.Shared.Next(0, 256)
+            });
         }
     }
 
     [Benchmark]
-    public void A()
+    public Entity DistTo100()
     {
-        FindClient("Test");
+        Entity closestEntity = null;
+        var closestDist = double.MinValue;
+        foreach (var entity in Entities100)
+        {
+            var dist = entity.DistTo(32, 32);
+            if (dist < closestDist)
+            {
+                closestEntity = entity;
+                closestDist = dist;
+            }
+        }
+        return closestEntity;
     }
 
     [Benchmark]
-    public void B()
+    public Entity SqDistToA100()
     {
-        FindClient("Test");
+        Entity closestEntity = null;
+        var closestDist = double.MinValue;
+        foreach (var entity in Entities100)
+        {
+            var dist = entity.SqDistTo(32, 32);
+            if (dist < closestDist)
+            {
+                closestEntity = entity;
+                closestDist = dist;
+            }
+        }
+        return closestEntity;
     }
 
-    public string FindClient(string name) => Clients.Values.SingleOrDefault(_ => string.Equals(_, name, StringComparison.InvariantCultureIgnoreCase));
-
-    public string FindClient2(string name)
+    [Benchmark]
+    public Entity SqDistTo100()
     {
-        foreach (var cname in Clients.Values)
-            if (string.Equals(cname, name, StringComparison.InvariantCultureIgnoreCase))
-                return cname;
-        return null;
+        Entity closestEntity = null;
+        var closestDist = double.MinValue;
+        foreach (var entity in Entities100)
+        {
+            var dist = entity.SqDistTo(32, 32);
+            if (dist * dist < closestDist)
+            {
+                closestEntity = entity;
+                closestDist = dist;
+            }
+        }
+        return closestEntity;
+    }
+
+    [Benchmark]
+    public Entity DistTo100000()
+    {
+        Entity closestEntity = null;
+        var closestDist = double.MinValue;
+        foreach (var entity in Entities10000)
+        {
+            var dist = entity.DistTo(32, 32);
+            if (dist < closestDist)
+            {
+                closestEntity = entity;
+                closestDist = dist;
+            }
+        }
+        return closestEntity;
+    }
+
+    [Benchmark]
+    public Entity SqDistToA100000()
+    {
+        Entity closestEntity = null;
+        var closestDist = double.MinValue;
+        foreach (var entity in Entities10000)
+        {
+            var dist = entity.SqDistTo(32, 32);
+            if (dist < closestDist)
+            {
+                closestEntity = entity;
+                closestDist = dist;
+            }
+        }
+        return closestEntity;
+    }
+
+    [Benchmark]
+    public Entity SqDistToB100000()
+    {
+        Entity closestEntity = null;
+        var closestDist = double.MinValue;
+        foreach (var entity in Entities10000)
+        {
+            var dist = entity.SqDistTo(32, 32);
+            if (dist * dist < closestDist)
+            {
+                closestEntity = entity;
+                closestDist = dist;
+            }
+        }
+        return closestEntity;
+    }
+}
+
+
+public struct Position
+{
+    public double X;
+    public double Y;
+}
+
+public class Entity
+{
+    public double X;
+    public double Y;
+
+    public double DistTo(ref Position pos)
+    {
+        var dx = pos.X - X;
+        var dy = pos.Y - Y;
+        return Math.Sqrt(dx * dx + dy * dy);
+    }
+
+    public double SqDistTo(ref Position pos)
+    {
+        var dx = pos.X - X;
+        var dy = pos.Y - Y;
+        return dx * dx + dy * dy;
+    }
+
+    public double DistTo(Entity entity)
+    {
+        var dx = entity.X - X;
+        var dy = entity.Y - Y;
+        return Math.Sqrt(dx * dx + dy * dy);
+    }
+
+    public double SqDistTo(Entity entity)
+    {
+        var dx = entity.X - X;
+        var dy = entity.Y - Y;
+        return dx * dx + dy * dy;
+    }
+
+    public double DistTo(double x, double y)
+    {
+        var dx = x - X;
+        var dy = y - Y;
+        return Math.Sqrt(dx * dx + dy * dy);
+    }
+
+    public double SqDistTo(double x, double y)
+    {
+        var dx = x - X;
+        var dy = y - Y;
+        return dx * dx + dy * dy;
     }
 }

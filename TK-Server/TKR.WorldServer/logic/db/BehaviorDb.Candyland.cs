@@ -355,7 +355,7 @@ namespace TKR.WorldServer.logic
                         ),
                     new State("Attack",
                         new StayCloseToSpawn(.4, 6),
-                        new Charge(speed: 1.2, range: 11, coolDown: 1000),
+                        new NewCharge(speed: 1.2f, range: 11.0f, cooldown: 1.0f),
                         new TimedTransition(time: 500, targetState: "Choose")
                         ),
                     new HpLessTransition(threshold: 0.6, targetState: "NextAttack")

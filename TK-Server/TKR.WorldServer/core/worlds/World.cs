@@ -398,6 +398,25 @@ namespace TKR.WorldServer.core.worlds
                 _ = EnterWorld(i);
         }
 
+        public Entity FindPlayerTarget(Entity host)
+        {
+            Entity closestObj = null;
+            var closestSqDist = double.MaxValue;
+            foreach (var obj in host.World.Players.Values)
+            {
+                if (!(obj as IPlayer).IsVisibleToEnemy())
+                    continue;
+
+                var sqDist = obj.SqDistTo(host);
+                if (sqDist < closestSqDist)
+                {
+                    closestSqDist = sqDist;
+                    closestObj = obj;
+                }
+            }
+            return closestObj;
+        }
+
         public void ProcessPlayerIO(ref TickTime time)
         {
             foreach (var player in Players.Values)

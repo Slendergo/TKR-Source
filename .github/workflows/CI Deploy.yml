@@ -19,6 +19,6 @@ jobs:
     - name: Build and Push to DockerHub
       uses: docker/build-push-action@v3
       with:
-        context: "{{defaultContext}}:TKR.App"
+        context: "{{defaultContext}}:TK-Server/TKR.App"
         push: true
         tags: tkrofficial/tkr:app

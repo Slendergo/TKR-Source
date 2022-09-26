@@ -74,7 +74,11 @@ namespace TKR.WorldServer.logic
                     new Shoot(7, 4, shootAngle: 15, projectileIndex: 2, coolDown: 300),
                     new Shoot(30, 5, shootAngle: 25, projectileIndex: 1, coolDown: 1000),
                     new Shoot(30, 5, shootAngle: 25, projectileIndex: 1, coolDown: 1200, coolDownOffset: 1200),
-                    new Shoot(30, 3, shootAngle: 35, projectileIndex: 4, coolDown: 500)
+                    new Shoot(30, 3, shootAngle: 35, projectileIndex: 4, coolDown: 500),
+                    new HpLessTransition(0.05, "dead1")
+                    ),
+                new State("dead1",
+                    new Suicide()
                      )
                 ),
             new Threshold(0.01,
@@ -169,7 +173,11 @@ namespace TKR.WorldServer.logic
                     new StayBack(0.7, 7),
                     new Shoot(15, 1, projectileIndex: 3, coolDown: 1250),
                     new Shoot(15, 2, shootAngle: 25, projectileIndex: 3, coolDownOffset: 500, coolDown: 1250),
-                    new Shoot(20, 3, shootAngle: 15, projectileIndex: 0, coolDown: 500)
+                    new Shoot(20, 3, shootAngle: 15, projectileIndex: 0, coolDown: 500),
+                    new HpLessTransition(0.05, "dead1")
+                    ),
+                new State("dead1",
+                    new Suicide()
                      )
                 ),
             new Threshold(0.01,
@@ -530,7 +538,11 @@ namespace TKR.WorldServer.logic
                     new Shoot(20, 1, fixedAngle: 315, projectileIndex: 5, coolDown: 2550, coolDownOffset: 1400),
                     new Shoot(20, 2, fixedAngle: 315, shootAngle: 20, projectileIndex: 5, coolDown: 2550, coolDownOffset: 1450),
                     new Shoot(20, 1, fixedAngle: 315, projectileIndex: 6, coolDown: 2550, coolDownOffset: 1500),
-                    new Shoot(20, 1, fixedAngle: 315, projectileIndex: 7, coolDown: 2550, coolDownOffset: 1550)
+                    new Shoot(20, 1, fixedAngle: 315, projectileIndex: 7, coolDown: 2550, coolDownOffset: 1550),
+                    new HpLessTransition(0.05, "dead1")
+                    ),
+                new State("dead1",
+                    new Suicide()
                      )
                 ),
             new Threshold(0.005,
@@ -569,7 +581,11 @@ namespace TKR.WorldServer.logic
                     new RemoveConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new Shoot(12, 3, projectileIndex: 1, shootAngle: 25, coolDown: 500),
                     new Prioritize(
-                        new Orbit(speed: 3, radius: 5, acquireRange: 6, target: "Stanley, the Golden Knight", speedVariance: 0, radiusVariance: 0))
+                        new Orbit(speed: 3, radius: 5, acquireRange: 6, target: "Stanley, the Golden Knight", speedVariance: 0, radiusVariance: 0)),
+                    new HpLessTransition(0.05, "dead1")
+                    ),
+                new State("dead1",
+                    new Suicide()
                     )
                 )
             )
@@ -587,7 +603,11 @@ namespace TKR.WorldServer.logic
                 new State("Attack",
                     new Shoot(8, 3, projectileIndex: 2, shootAngle: 25, coolDown: 500),
                     new Prioritize(
-                        new Orbit(speed: 3, radius: 5, acquireRange: 6, target: "Stanley, the Golden Knight", speedVariance: 0, radiusVariance: 0))
+                        new HpLessTransition(0.05, "dead1")
+                    ),
+                new State("dead1",
+                    new Suicide()
+                        new Orbit(speed: 3, radius: 5, acquireRange: 6, target: "Stanley, the Golden Knight", speedVariance: 0, radiusVariance: 0)),
                     )
                 )
             )
@@ -605,7 +625,11 @@ namespace TKR.WorldServer.logic
                 new State("Attack",
                     new Shoot(8, 3, projectileIndex: 0, shootAngle: 25, coolDown: 500),
                     new Prioritize(
-                        new Orbit(speed: 3, radius: 5, acquireRange: 6, target: "Stanley, the Golden Knight", speedVariance: 0, radiusVariance: 0))
+                        new Orbit(speed: 3, radius: 5, acquireRange: 6, target: "Stanley, the Golden Knight", speedVariance: 0, radiusVariance: 0)),
+                    new HpLessTransition(0.05, "dead1")
+                    ),
+                new State("dead1",
+                    new Suicide()
                     )
                 )
             )
@@ -750,8 +774,12 @@ namespace TKR.WorldServer.logic
                     new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 340, coolDown: 3600, coolDownOffset: 3300),
                     new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 345, coolDown: 3600, coolDownOffset: 3400),
                     new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 350, coolDown: 3600, coolDownOffset: 3500),
-                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 355, coolDown: 3600, coolDownOffset: 3600)
-                    
+                    new Shoot(30, 3, projectileIndex: 1, shootAngle: 20, fixedAngle: 355, coolDown: 3600, coolDownOffset: 3600),
+                    new HpLessTransition(0.05, "dead1")
+                    ),
+                new State("dead1",
+                    new Suicide()
+
                          )
                 ),
             new Threshold(0.01,
@@ -835,7 +863,11 @@ namespace TKR.WorldServer.logic
                         new Shoot(20, 5, shootAngle: 10, projectileIndex: 0, coolDown: 500),
                         new Shoot(20, 16, projectileIndex: 1, coolDown: 1200),
                         new Spawn(children: "Magic Sprite", maxChildren: 10, initialSpawn: 0, coolDown: 500),
-                        new Spawn(children: "Ice Sprite", maxChildren: 10, initialSpawn: 0, coolDown: 500)
+                        new Spawn(children: "Ice Sprite", maxChildren: 10, initialSpawn: 0, coolDown: 500),
+                        new HpLessTransition(0.05, "dead1")
+                    ),
+                new State("dead1",
+                    new Suicide()
                         )
                     ),
             new Threshold(0.01,
@@ -1372,7 +1404,11 @@ namespace TKR.WorldServer.logic
 
                         new Shoot(8, 7, shootAngle: 10, projectileIndex: 1, coolDown: 300, predictive: 2),
                         new Shoot(20, 8, projectileIndex: 2, coolDown: 800),
-                        new Shoot(20, 6, shootAngle: 25, projectileIndex: 0, coolDown: 600)
+                        new Shoot(20, 6, shootAngle: 25, projectileIndex: 0, coolDown: 600),
+                        new HpLessTransition(0.05, "dead1")
+                    ),
+                new State("dead1",
+                    new Suicide()
                         )
                 ),
 

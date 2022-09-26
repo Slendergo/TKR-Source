@@ -211,7 +211,11 @@ namespace TKR.WorldServer.logic
                     new Follow(1, 15, 0),
                     new Shoot(15, 2, shootAngle: 25, projectileIndex: 0, coolDown: 100),
                     new Shoot(15, 8, fixedAngle: 0, projectileIndex: 2, coolDown: 500, coolDownOffset: 500),
-                    new Shoot(15, 1, projectileIndex: 1, coolDown: 400)
+                    new Shoot(15, 1, projectileIndex: 1, coolDown: 400),
+                    new HpLessTransition(0.05, "dead1")
+                    ),
+                new State("dead1",
+                    new Suicide()
                     )
                 ),
             new Threshold(0.01,

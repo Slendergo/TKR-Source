@@ -213,7 +213,11 @@ namespace TKR.WorldServer.logic
                     new Wander(0.3),
                     new ChangeGroundOnDeath(new[] { "Lava" }, new[] { "Red Small Checks" },
                         4),
-                    new Reproduce("Malphas Missile", coolDown: 2000)
+                    new Reproduce("Malphas Missile", coolDown: 2000),
+                    new HpLessTransition(0.05, "dead1")
+                    ),
+                new State("dead1",
+                    new Suicide()
                     )
                 ),
             new Threshold(0.01,

@@ -93,7 +93,11 @@ namespace TKR.WorldServer.logic
                     new Shoot(15, 1, projectileIndex: 3, fixedAngle: 315, coolDown: 2600, coolDownOffset: 1800),
                     new Shoot(15, 1, projectileIndex: 3, fixedAngle: 330, coolDown: 2600, coolDownOffset: 2000),
                     new Shoot(15, 1, projectileIndex: 3, fixedAngle: 345, coolDown: 2600, coolDownOffset: 2200),
-                    new Shoot(15, 1, projectileIndex: 3, fixedAngle: 360, coolDown: 2600, coolDownOffset: 24000)
+                    new Shoot(15, 1, projectileIndex: 3, fixedAngle: 360, coolDown: 2600, coolDownOffset: 2400),
+                    new HpLessTransition(0.05, "dead1")
+                    ),
+                new State("dead1",
+                    new Suicide()
                     )
                 ),
             new Threshold(0.01,
@@ -120,7 +124,11 @@ namespace TKR.WorldServer.logic
                 new State("attack",
                     new Prioritize(
                     new Orbit(2, 6, 20, "Plantera", orbitClockwise: true)),
-                    new Shoot(10, 3, projectileIndex: 0, shootAngle: 10, predictive: .8, coolDown: 1200)
+                    new Shoot(10, 3, projectileIndex: 0, shootAngle: 10, predictive: .8, coolDown: 1200),
+                    new HpLessTransition(0.05, "dead1")
+                    ),
+                new State("dead1",
+                    new Suicide()
                     )
                 )
             )
@@ -131,7 +139,11 @@ namespace TKR.WorldServer.logic
                 new State("attack",
                 new Taunt("FLUHH"),
                 new Chase(6),
-                new Shoot(12, 2, projectileIndex: 0, shootAngle: 10, predictive: 1.2, coolDown: 800)
+                new Shoot(12, 2, projectileIndex: 0, shootAngle: 10, predictive: 1.2, coolDown: 800),
+                new HpLessTransition(0.05, "dead1")
+                    ),
+                new State("dead1",
+                    new Suicide()
                     )
                 ));
     }

@@ -90,7 +90,11 @@ namespace TKR.WorldServer.logic
                     new Shoot(20, 8, projectileIndex: 5, coolDown: 1500),
                     new Shoot(20, 5, shootAngle: 5, projectileIndex: 0, coolDown: 500, coolDownOffset: 500),
                     new Shoot(20, 3, shootAngle: 15, projectileIndex: 1, coolDown: 1000, coolDownOffset: 1500),
-                    new Shoot(20, 2, shootAngle: 25, projectileIndex: 2, coolDown: 1000, coolDownOffset: 500)
+                    new Shoot(20, 2, shootAngle: 25, projectileIndex: 2, coolDown: 1000, coolDownOffset: 500),
+                    new HpLessTransition(0.05, "dead1")
+                    ),
+                new State("dead1",
+                    new Suicide()
                     )
                 ),
             new Threshold(0.01,

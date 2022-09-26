@@ -692,7 +692,7 @@ namespace TKR.WorldServer.logic
            new Threshold(0.01,
                 LootTemplates.DustLoot()
                 ),
-            new Threshold(0.001,
+            new Threshold(0.03,
                 new TierLoot(14, ItemType.Weapon, 0.05),
                 new TierLoot(14, ItemType.Armor, 0.05),
                 new TierLoot(6, ItemType.Ring, 0.05),
@@ -702,20 +702,20 @@ namespace TKR.WorldServer.logic
                 new ItemLoot("Special Dust", 0.01)
                 ),
              new Threshold(0.03,
-                new ItemLoot("Winter Solstice", 0.00033),
-                new ItemLoot("Polar Vortex", 0.00033),
-                new ItemLoot("Iceberg", 0.00033),
+                new ItemLoot("Winter Solstice", 0.0003),
+                new ItemLoot("Polar Vortex", 0.0003),
+                new ItemLoot("Iceberg", 0.0003),
 
-                new ItemLoot("Condemned Frostbite", 0.00033),
-                new ItemLoot("The Expansion", 0.00033),
-                new ItemLoot("The Northern Star", 0.00033),
+                new ItemLoot("Condemned Frostbite", 0.0003),
+                new ItemLoot("The Expansion", 0.0003),
+                new ItemLoot("The Northern Star", 0.0003),
                 
-                new ItemLoot("Snow Angle", 0.00033),
-                new ItemLoot("World of Ice", 0.00033),
+                new ItemLoot("Snow Angle", 0.0003),
+                new ItemLoot("World of Ice", 0.0003),
                 
-                new ItemLoot("Agdluak", 0.00033),
-                new ItemLoot("Absolute Zero", 0.00033),
-                new ItemLoot("Cryogenic Freeze", 0.00033),
+                new ItemLoot("Agdluak", 0.0003),
+                new ItemLoot("Absolute Zero", 0.0003),
+                new ItemLoot("Cryogenic Freeze", 0.0003),
                 new ItemLoot("Frozen Coin", 0.05),
                 new ItemLoot("Glowing Talisman", 0.0014)
                  )

@@ -101,13 +101,19 @@ namespace TKR.WorldServer.logic
             )
         .Init("Hermit God Tentacle",
             new State(
+                new State("Attack",
                 new Prioritize(
                     new Follow(1, 4, 1),
                     new Orbit(3, 6, 15, "Hermit God", speedVariance: .2, radiusVariance: .5)
                     ),
-                new Shoot(8, count: 8, shootAngle: 360 / 8, coolDown: 500)
+                new Shoot(8, count: 8, shootAngle: 360 / 8, coolDown: 500),
+                new HpLessTransition(0.05, "dead1")
+                    ),
+                new State("dead1",
+                    new Suicide()
                 )
             )
+        )
         .Init("Hermit God Tentacle Spawner",
             new State(
                 new ConditionalEffect(ConditionEffectIndex.Invincible, true),

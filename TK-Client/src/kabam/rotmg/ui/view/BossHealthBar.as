@@ -14,6 +14,7 @@ import flash.utils.getTimer;
 
 public class BossHealthBar extends Sprite {
 
+    private var background2:Bitmap;
     private var background:Bitmap;
     private var foreground:Bitmap;
     private var mask_:Bitmap;
@@ -25,6 +26,7 @@ public class BossHealthBar extends Sprite {
         portrait_ = new Bitmap();
         portrait_.filters = [new DropShadowFilter(0, 0, 0, 0.5, 12, 12)];
         foreground = new Bitmap(AssetLibrary.getImageFromSet("BossBar", 0));
+        background2 = new Bitmap(AssetLibrary.getImageFromSet("BossBar", 2));
         background = new Bitmap(AssetLibrary.getImageFromSet("BossBar", 2));
         mask_ = new Bitmap(AssetLibrary.getImageFromSet("BossBar", 4));
 
@@ -32,6 +34,7 @@ public class BossHealthBar extends Sprite {
 
         addChild(mask_);
         addChild(foreground);
+        addChild(background2);
         addChild(background);
         addChild(portrait_);
 
@@ -64,6 +67,9 @@ public class BossHealthBar extends Sprite {
             background.x = foreground.x;
             background.y = foreground.y + 2;
 
+            background2.x = foreground.x;
+            background2.y = foreground.y + 2;
+
             mask_.x = background.x;
             mask_.y = background.y + 2;
             visible = true;
@@ -79,10 +85,13 @@ public class BossHealthBar extends Sprite {
 
         if (go_.isInvulnerable()) {
             background.transform.colorTransform = new ColorTransform(50 / 255, 100 / 255, 190 / 255);
+            background2.transform.colorTransform = new ColorTransform(50 / 255, 100 / 255, 190 / 255, 0.5);
         } else if (go_.isArmored() && !go_.isArmorBroken()) {
             background.transform.colorTransform = new ColorTransform(85 / 255, 60 / 255, 50 / 255);
+            background2.transform.colorTransform = new ColorTransform(85 / 255, 60 / 255, 50 / 255, 0.5);
         } else {
-            background.transform.colorTransform = new ColorTransform(0, 1, 0, 1);
+            background.transform.colorTransform = new ColorTransform(0, 1, 0);
+            background2.transform.colorTransform = new ColorTransform(0, 1, 0, 0.5);
         }
 
         mask_.width = (go_.rtHp_ / go_.maxHP_) * background.width;

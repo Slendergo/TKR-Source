@@ -105,7 +105,6 @@ namespace TKR.WorldServer.core.objects
             {
                 if (_states == null)
                     _states = new Dictionary<object, object>();
-
                 return _states;
             }
         }
@@ -114,6 +113,20 @@ namespace TKR.WorldServer.core.objects
         public float Y { get => _y.GetValue(); set => _y.SetValue(value); }
         public float PrevX { get; private set; }
         public float PrevY { get; private set; }
+
+        public bool MoveToward(ref Position pos, float speed) => MoveToward(pos.X, pos.Y, speed);
+        public bool MoveToward(float x, float y, float speed)
+        {
+            var facing = AngleTo(x, y);
+            var spd = ClampSpeed(GetSpeedMultiplier(speed), 0.0f, (float)DistTo(x, y));
+            var newPos = PointAt(facing, spd);
+            if (X != newPos.X || Y != newPos.Y)
+            {
+                ValidateAndMove(newPos.X, newPos.Y);
+                return true;
+            }
+            return false;
+        }
 
         public static Entity Resolve(GameServer manager, string name)
         {
@@ -721,24 +734,19 @@ namespace TKR.WorldServer.core.objects
             public float Y;
         }
 
-        public double AngleTo(Entity host) => Math.Atan2(host.Y - Y, host.X - X);
-        public double AngleTo(ref Position position) => Math.Atan2(position.Y - Y, position.X - X);
-        public double AngleTo(double x, double y) => Math.Atan2(y - Y, x - X);
+        public float AngleTo(Entity host) => MathF.Atan2(host.Y - Y, host.X - X);
+        public float AngleTo(ref Position position) => MathF.Atan2(position.Y - Y, position.X - X);
+        public float AngleTo(float x, float y) => MathF.Atan2(y - Y, x - X);
 
-        public double SqDistTo(Entity host) => (host.X - X) * (host.X - X) + (host.Y - Y) * (host.Y - Y);
-        public double SqDistTo(ref Position position) => (position.X - X) * (position.X - X) + (position.Y - Y) * (position.Y - Y);
-        public double SqDistTo(double x, double y) => (x - X) * (x - X) + (y - Y) * (y - Y);
+        public float SqDistTo(Entity host) => (host.X - X) * (host.X - X) + (host.Y - Y) * (host.Y - Y);
+        public float SqDistTo(ref Position position) => (position.X - X) * (position.X - X) + (position.Y - Y) * (position.Y - Y);
+        public float SqDistTo(float x, float y) => (x - X) * (x - X) + (y - Y) * (y - Y);
 
-        public double DistTo(Entity host) => Math.Sqrt((host.X - X) * (host.X - X) + (host.Y - Y) * (host.Y - Y));
-        public double DistTo(ref Position position) => Math.Sqrt((position.X - X) * (position.X - X) + (position.Y - Y) * (position.Y - Y));
-        public double DistTo(double x, double y) => Math.Sqrt((x - X) * (x - X) + (y - Y) * (y - Y));
+        public float DistTo(Entity host) => MathF.Sqrt((host.X - X) * (host.X - X) + (host.Y - Y) * (host.Y - Y));
+        public float DistTo(ref Position position) => MathF.Sqrt((position.X - X) * (position.X - X) + (position.Y - Y) * (position.Y - Y));
+        public float DistTo(float x, float y) => MathF.Sqrt((x - X) * (x - X) + (y - Y) * (y - Y));
 
-        public void PointAt(ref Position pos, double angle, double radius)
-        {
-            pos.X += (float)(Math.Cos(angle) * radius);
-            pos.Y += (float)(Math.Sin(angle) * radius);
-        }
-
+        public Position PointAt(float angle, float radius) => new Position(X + MathF.Cos(angle) * radius, Y + MathF.Sin(angle) * radius);
 
         protected int projectileId;
 
@@ -756,5 +764,8 @@ namespace TKR.WorldServer.core.objects
             ret.StartY = pos.Y;
             return ret;
         }
+
+        protected static float ClampSpeed(float value, float min, float max) => value < min ? min : value > max ? max : value;
+        protected float GetSpeedMultiplier(float spd) => HasConditionEffect(ConditionEffectIndex.Slowed) ? spd * 0.5f : HasConditionEffect(ConditionEffectIndex.Speedy) ? spd * 1.5f : spd;
     }
 }

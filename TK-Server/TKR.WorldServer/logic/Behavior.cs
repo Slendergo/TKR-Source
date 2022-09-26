@@ -101,9 +101,5 @@ namespace TKR.WorldServer.logic
         protected virtual void TickCore(Entity host, TickTime time, ref object state) { }
 
         protected virtual bool TickCoreOrdered(Entity host, TickTime time, ref object state) => true;
-
-        protected static Position PointAt(Entity host, float angle, float radius) => new Position((float)(host.X + Math.Cos(angle) * radius), (float)(host.Y + Math.Sin(angle) * radius));
-        protected static float ClampSpeed(float value, float min, float max) => value < min ? min : value > max ? max : value;
-        protected static float GetSpeedMultiplier(Entity host, float spd) => host.HasConditionEffect(ConditionEffectIndex.Slowed) ? spd * 0.5f : host.HasConditionEffect(ConditionEffectIndex.Speedy) ? spd * 1.5f : spd;
     }
 }

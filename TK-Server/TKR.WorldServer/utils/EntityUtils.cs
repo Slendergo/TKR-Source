@@ -29,7 +29,7 @@ namespace TKR.WorldServer.utils
             return false;
         }
 
-        public static bool AnyEnemyNearby(this World world, double x, double y, int radius = PlayerUpdate.VISIBILITY_RADIUS)
+        public static bool AnyEnemyNearby(this World world, float x, float y, int radius = PlayerUpdate.VISIBILITY_RADIUS)
         {
             foreach (var i in world.EnemiesCollision.HitTest(x, y, radius))
             {
@@ -60,7 +60,7 @@ namespace TKR.WorldServer.utils
             return false;
         }
 
-        public static bool AnyPlayerNearby(this World world, double x, double y, int radius = PlayerUpdate.VISIBILITY_RADIUS)
+        public static bool AnyPlayerNearby(this World world, float x, float y, int radius = PlayerUpdate.VISIBILITY_RADIUS)
         {
             foreach (var i in world.PlayersCollision.HitTest(x, y, radius).Where(e => e is Player))
             {
@@ -371,25 +371,6 @@ namespace TKR.WorldServer.utils
                     if (d < dist)
                         yield return i;
                 }
-        }
-
-        public static Entity FindPlayerTarget(this Entity host)   //Null for player
-        {
-            Entity closestObj = null;
-            var minDist = double.MaxValue;
-            foreach (var obj in host.World.Players.Values)
-            {
-                if (!(obj as IPlayer).IsVisibleToEnemy())
-                    continue;
-
-                var dist = obj.DistTo(host);
-                if (dist < minDist)
-                {
-                    minDist = dist;
-                    closestObj = obj;
-                }
-            }
-            return closestObj;
         }
 
         public static Entity GetNearestEntity(this Entity entity, double dist, ushort? objType, bool seeInvis = false)   //Null for player

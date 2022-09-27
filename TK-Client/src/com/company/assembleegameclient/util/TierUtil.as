@@ -66,7 +66,7 @@ public class TierUtil
             else if (xml.hasOwnProperty("Revenge") || xml.hasOwnProperty("Mythical"))
             {
                 color = 0x9b111e;
-                tierTag = "M";
+                tierTag = "MT";
             }
             else if (xml.hasOwnProperty("Eternal"))
             {

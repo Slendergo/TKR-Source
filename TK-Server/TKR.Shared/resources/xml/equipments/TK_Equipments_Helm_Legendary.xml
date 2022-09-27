@@ -47,7 +47,7 @@
   <Object type="0x506f" id="Oryx's Broken Helm">
     <Class>Equipment</Class>
     <Item />
-    <Demonized />
+    <Electrify />
     <Texture>
       <File>CustomObj</File>
       <Index>0x7f</Index>

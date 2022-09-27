@@ -438,7 +438,7 @@ public class GameSprite extends Sprite
          this.hudView && this.hudView.miniMap.dispose();
          CachingColorTransformer.clear();
          TextureRedrawer.clearCache();
-         TileRedrawer.clearCache();
+//         TileRedrawer.clearCache();
          GlowRedrawer.clearCache();
          Projectile.dispose();
          this.gsc_.disconnect();

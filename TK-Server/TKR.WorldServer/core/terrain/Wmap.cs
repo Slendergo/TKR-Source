@@ -168,7 +168,6 @@ namespace TKR.WorldServer.core.terrain
                     for (short x = 0; x < Width; x++)
                     {
                         var tile = new WmapTile(dict[rdr.ReadInt16()]);
-
                         if (ver == 2)
                             tile.Elevation = rdr.ReadByte();
 
@@ -180,7 +179,6 @@ namespace TKR.WorldServer.core.terrain
                         if (tile.ObjType != 0 && (desc == null || !desc.Static || desc.Enemy))
                         {
                             entities.Add(new Tuple<IntPoint, ushort, string>(new IntPoint(x, y), tile.ObjType, tile.ObjCfg));
-
                             if (desc == null || !(desc.Enemy && desc.Static))
                                 tile.ObjType = 0;
                         }
@@ -190,6 +188,9 @@ namespace TKR.WorldServer.core.terrain
                             enCount++;
                             tile.ObjId = idBase + enCount;
                         }
+
+                        if (desc != null && desc.Connects)
+                            tile.TileId = 0xFD;
 
                         Tiles[x, y] = tile;
                     }

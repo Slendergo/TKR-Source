@@ -347,6 +347,138 @@
       <Index>0x35</Index>
     </Texture>
   </Ground>
+  <Ground type="0x4500" id="Eagle SP 1">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x15</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x4501" id="Eagle SP 2">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x24</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x4502" id="Eagle SP 3">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x25</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x4503" id="Eagle SP 4">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x1a</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x4504" id="Eagle SP 5">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x1b</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x4505" id="Eagle SP 6">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x1c</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x4506" id="Eagle SP 7">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x2a</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x4507" id="Eagle SP 8">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x2b</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x4508" id="Eagle SP 9">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x2c</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x4509" id="Eagle SP 10">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x56</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x4510" id="Eagle SP 11">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x57</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x4511" id="Eagle SP 12">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x58</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x4512" id="Eagle SP 13">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x59</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x4513" id="Eagle SP 14">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x66</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x4514" id="Eagle SP 15">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x67</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x4515" id="Eagle SP 16">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x68</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x4516" id="Eagle SP 17">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x69</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x4517" id="Eagle SP 18">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x76</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x4518" id="Eagle SP 19">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0x77</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x4519" id="Eagle SP 20">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0xa6</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x4520" id="Eagle SP 21">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0xa7</Index>
+    </Texture>
+  </Ground>
+  <Ground type="0x4521" id="Eagle SP 22">
+    <Texture>
+      <File>customEnvironmentMortomus</File>
+      <Index>0xa8</Index>
+    </Texture>
+  </Ground>
   <Ground type="0x4115" id="Corrupt Floor">
     <RandomTexture>
       <Texture>

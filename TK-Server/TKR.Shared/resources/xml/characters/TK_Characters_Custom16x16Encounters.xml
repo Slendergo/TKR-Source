@@ -1727,7 +1727,7 @@
 		<Event/>
 		<Quest/>
 		<God />
-		<Level>20</Level>
+		<Level>14</Level>
 		<AnimatedTexture>
 			<File>Custom16x16Encounters</File>
 			<Index>43</Index>
@@ -1808,7 +1808,7 @@
 		<Event/>
 		<Quest/>
 		<God />
-		<Level>1</Level>
+		<Level>20</Level>
 		<AnimatedTexture>
 			<File>Custom16x16Encounters</File>
 			<Index>38</Index>
@@ -2079,7 +2079,7 @@
 		<God />
 		<Event/>
 		<Quest/>
-		<Level>1</Level>
+		<Level>16</Level>
 		<AnimatedTexture>
 			<File>Custom16x16Encounters</File>
 			<Index>44</Index>

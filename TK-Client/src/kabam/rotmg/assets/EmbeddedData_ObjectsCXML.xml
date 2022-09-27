@@ -13,7 +13,7 @@
     </Mask>
     <Tex1>0x01F0F8FF</Tex1>
     <SlotType>10</SlotType>
-    <Description>{dyes.clothing_description}</Description>
+    <Description></Description>
     <Activate>Dye</Activate>
     <Sound>use_potion</Sound>
     <Consumable />
@@ -22,7 +22,7 @@
   </Object>
   <Object type="0x1100" id="Alice Blue Accessory Dye">
     <Class>Dye</Class>
-    <DisplayId>{dyes.Alice_Blue_Accessory_Dye}</DisplayId>
+    <DisplayId>Alice Blue Accessory Dye</DisplayId>
     <Item />
     <Texture>
       <File>lofiObj3</File>
@@ -34,7 +34,7 @@
     </Mask>
     <Tex2>0x01F0F8FF</Tex2>
     <SlotType>10</SlotType>
-    <Description>{dyes.accessory_description}</Description>
+    <Description></Description>
     <Activate>Dye</Activate>
     <Sound>use_potion</Sound>
     <Consumable />
@@ -43,7 +43,7 @@
   </Object>
   <Object type="0x1001" id="Antique White Clothing Dye">
     <Class>Dye</Class>
-    <DisplayId>{dyes.Antique_White_Clothing_Dye}</DisplayId>
+    <DisplayId>Antique White Clothing Dye</DisplayId>
     <Item />
     <Texture>
       <File>lofiObj3</File>
@@ -55,7 +55,7 @@
     </Mask>
     <Tex1>0x01FAEBD7</Tex1>
     <SlotType>10</SlotType>
-    <Description>{dyes.clothing_description}</Description>
+    <Description></Description>
     <Activate>Dye</Activate>
     <Sound>use_potion</Sound>
     <Consumable />
@@ -64,7 +64,7 @@
   </Object>
   <Object type="0x1101" id="Antique White Accessory Dye">
     <Class>Dye</Class>
-    <DisplayId>{dyes.Antique_White_Accessory_Dye}</DisplayId>
+    <DisplayId>Antique White Accessory Dye</DisplayId>
     <Item />
     <Texture>
       <File>lofiObj3</File>
@@ -76,7 +76,7 @@
     </Mask>
     <Tex2>0x01FAEBD7</Tex2>
     <SlotType>10</SlotType>
-    <Description>{dyes.accessory_description}</Description>
+    <Description></Description>
     <Activate>Dye</Activate>
     <Sound>use_potion</Sound>
     <Consumable />
@@ -85,7 +85,7 @@
   </Object>
   <Object type="0x1002" id="Aqua Clothing Dye">
     <Class>Dye</Class>
-    <DisplayId>{dyes.Aqua_Clothing_Dye}</DisplayId>
+    <DisplayId>Aqua Clothing Dye</DisplayId>
     <Item />
     <Texture>
       <File>lofiObj3</File>
@@ -97,7 +97,7 @@
     </Mask>
     <Tex1>0x0100FFFF</Tex1>
     <SlotType>10</SlotType>
-    <Description>{dyes.clothing_description}</Description>
+    <Description></Description>
     <Activate>Dye</Activate>
     <Sound>use_potion</Sound>
     <Consumable />
@@ -106,7 +106,7 @@
   </Object>
   <Object type="0x1102" id="Aqua Accessory Dye">
     <Class>Dye</Class>
-    <DisplayId>{dyes.Aqua_Accessory_Dye}</DisplayId>
+    <DisplayId>Aqua Accessory Dye</DisplayId>
     <Item />
     <Texture>
       <File>lofiObj3</File>
@@ -118,7 +118,7 @@
     </Mask>
     <Tex2>0x0100FFFF</Tex2>
     <SlotType>10</SlotType>
-    <Description>{dyes.accessory_description}</Description>
+    <Description></Description>
     <Activate>Dye</Activate>
     <Sound>use_potion</Sound>
     <Consumable />
@@ -127,7 +127,7 @@
   </Object>
   <Object type="0x1003" id="Aquamarine Clothing Dye">
     <Class>Dye</Class>
-    <DisplayId>{dyes.Aquamarine_Clothing_Dye}</DisplayId>
+    <DisplayId>Aquamarine Clothing Dye</DisplayId>
     <Item />
     <Texture>
       <File>lofiObj3</File>
@@ -139,7 +139,7 @@
     </Mask>
     <Tex1>0x017FFFD4</Tex1>
     <SlotType>10</SlotType>
-    <Description>{dyes.clothing_description}</Description>
+    <Description></Description>
     <Activate>Dye</Activate>
     <Sound>use_potion</Sound>
     <Consumable />
@@ -148,7 +148,7 @@
   </Object>
   <Object type="0x1103" id="Aquamarine Accessory Dye">
     <Class>Dye</Class>
-    <DisplayId>{dyes.Aquamarine_Accessory_Dye}</DisplayId>
+    <DisplayId>Aquamarine Accessory Dye</DisplayId>
     <Item />
     <Texture>
       <File>lofiObj3</File>
@@ -160,7 +160,7 @@
     </Mask>
     <Tex2>0x017FFFD4</Tex2>
     <SlotType>10</SlotType>
-    <Description>{dyes.accessory_description}</Description>
+    <Description></Description>
     <Activate>Dye</Activate>
     <Sound>use_potion</Sound>
     <Consumable />
@@ -27006,7 +27006,7 @@
     <Event />
     <Quest />
     <God />
-    <Level>20</Level>
+    <Level>14</Level>
     <AnimatedTexture>
       <File>Custom16x16Encounters</File>
       <Index>43</Index>
@@ -27087,7 +27087,7 @@
     <Event />
     <Quest />
     <God />
-    <Level>1</Level>
+    <Level>20</Level>
     <AnimatedTexture>
       <File>Custom16x16Encounters</File>
       <Index>38</Index>
@@ -27137,7 +27137,6 @@
       <LifetimeMS>4000</LifetimeMS>
       <MultiHit />
       <ConditionEffect duration="1">Quiet</ConditionEffect>
-      <ConditionEffect duration="1.5">Stunned</ConditionEffect>
     </Projectile>
     <Projectile id="4">
       <ObjectId>Projectile 4 QI</ObjectId>
@@ -27146,7 +27145,7 @@
       <Speed>60</Speed>
       <LifetimeMS>4000</LifetimeMS>
       <MultiHit />
-      <ConditionEffect duration="4">Sick</ConditionEffect>
+      <ConditionEffect duration="3">Sick</ConditionEffect>
     </Projectile>
     <Projectile id="5">
       <ObjectId>Projectile 1 QI</ObjectId>
@@ -27359,7 +27358,7 @@
     <God />
     <Event />
     <Quest />
-    <Level>1</Level>
+    <Level>16</Level>
     <AnimatedTexture>
       <File>Custom16x16Encounters</File>
       <Index>44</Index>
@@ -31280,8 +31279,6 @@
       <Damage>120</Damage>
       <Speed>35</Speed>
       <Size>80</Size>
-      <ArmorPiercing />
-      <MiltiHit />
       <LifetimeMS>6000</LifetimeMS>
     </Projectile>
   </Object>
@@ -54976,12 +54973,12 @@
     </Texture>
     <SlotType>7</SlotType>
     <Description></Description>
-    <ActivateOnEquip stat="0" amount="200">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="30">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="22" amount="8">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="10">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="20" amount="15">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="26" amount="-10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="0" amount="175">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="50">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="40">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="12">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="6">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="-20">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="25">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>7</FameBonus>
@@ -55416,7 +55413,7 @@
   <Object type="0x506f" id="Oryx's Broken Helm">
     <Class>Equipment</Class>
     <Item />
-    <Demonized />
+    <GodTouch />
     <Texture>
       <File>CustomObj</File>
       <Index>0x7f</Index>
@@ -58711,14 +58708,10 @@
     </Texture>
     <SlotType>9</SlotType>
     <Description></Description>
-    <ActivateOnEquip stat="0" amount="150">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="3" amount="150">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="20" amount="15">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="15">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="22" amount="15">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="15">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="26" amount="15">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="27" amount="15">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="200">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="20">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="40">IncrementStat</ActivateOnEquip>
     <BagType>8</BagType>
     <FameBonus>8</FameBonus>
     <Mythical />
@@ -62292,7 +62285,7 @@
     <BagType>7</BagType>
     <FameBonus>5</FameBonus>
     <MpCost>115</MpCost>
-    <Activate effect="Paralyzed" duration="2" useWisMod="false">ConditionEffectSelf</Activate>
+    <Activate radius="4" condEffect="Paralyzed" condDuration="2" useWisMod="false">VampireBlast</Activate>
     <Activate radius="4" totalDamage="75" color="0xFF606070">VampireBlast</Activate>
   </Object>
   <Object type="0xb41" id="Tablet of the King's Avatar">
@@ -66218,7 +66211,7 @@
   <Object type="0x4284" id="Polar Vortex">
     <Class>Equipment</Class>
     <Item />
-    <Lucky />
+    <Electrify />
     <Texture>
       <File>CustomObj1</File>
       <Index>0x27</Index>
@@ -66236,7 +66229,7 @@
       <ParticleTrail lifetimeMS="100">0x0089D1</ParticleTrail>
       <LifetimeMS>1100</LifetimeMS>
       <Parametric />
-      <Size>100</Size>
+      <Size>140</Size>
       <MultiHit />
       <PassesCover />
     </Projectile>
@@ -82063,6 +82056,7 @@
       <File>CustomObj1</File>
       <Index>0x37</Index>
     </Texture>
+    <Rotation>340</Rotation>
   </Object>
   <Object type="0x1FB" id="Morto Wisp">
     <Class>Projectile</Class>
@@ -84399,8 +84393,8 @@
   <Object type="0x001b" id="Silver Shield">
     <Class>Projectile</Class>
     <Texture>
-      <File>lofiObj2</File>
-      <Index>0x13</Index>
+      <File>CustomObj1</File>
+      <Index>0x46</Index>
     </Texture>
     <AngleCorrection>3</AngleCorrection>
   </Object>

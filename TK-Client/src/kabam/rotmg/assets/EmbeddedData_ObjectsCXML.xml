@@ -27087,7 +27087,7 @@
     <Event />
     <Quest />
     <God />
-    <Level>20</Level>
+    <Level>13</Level>
     <AnimatedTexture>
       <File>Custom16x16Encounters</File>
       <Index>38</Index>

@@ -1601,16 +1601,10 @@ public class GameServerConnection
             {
                case StatData.MAX_HP_STAT:
                   go.maxHP_ = value;
-                  if(go.hp_ > go.maxHP_) {
-                     go.maxHP_ = go.hp_;
-                  }
                   continue;
                case StatData.HP_STAT:
                   go.hp_ = value;
                   go.rtHp_ = go.hp_;
-                  if(go.hp_ > go.maxHP_) {
-                     go.maxHP_ = go.hp_;
-                  }
                   continue;
                case StatData.SIZE_STAT:
                   go.size_ = value;

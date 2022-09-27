@@ -91,9 +91,9 @@ import kabam.rotmg.constants.ItemConstants;
              var last:Number = -1;
              var next:Number = -1;
              var makeAnimation:Function;
-             var hasPeriod:Boolean = eqXML.hasOwnProperty("@spritePeriod");
-             var hasFile:Boolean = eqXML.hasOwnProperty("@spriteFile");
-             var hasArray:Boolean = eqXML.hasOwnProperty("@spriteArray");
+             var hasPeriod:Boolean = !eqXML ? false : eqXML.hasOwnProperty("@spritePeriod");
+             var hasFile:Boolean = !eqXML ? false : eqXML.hasOwnProperty("@spriteFile");
+             var hasArray:Boolean = !eqXML ? false : eqXML.hasOwnProperty("@spriteArray");
              var hasAnimatedSprites:Boolean = hasPeriod && hasFile && hasArray;
 
              if (hasPeriod)

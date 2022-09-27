@@ -11,9 +11,7 @@ namespace TKR.WorldServer.core.miscfile
         public BaseStatManager(StatsManager parent)
         {
             _parent = parent;
-            _base = Utils.ResizeArray(
-                parent.Owner.Client.Character.Stats,
-                StatsManager.NumStatTypes);
+            _base = Utils.ResizeArray(parent.Owner.Client.Character.Stats, StatsManager.NumStatTypes);
 
             ReCalculateValues();
         }

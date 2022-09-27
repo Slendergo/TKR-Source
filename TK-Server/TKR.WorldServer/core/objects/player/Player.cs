@@ -1548,21 +1548,14 @@ namespace TKR.WorldServer.core.objects
                     {
                         setCooldownTime(20, slot);
                         for (var j = 0; j < 8; j++)
-                            Stats.Boost.ActivateBoost[j].Push(j == 0 ? 100 : j == 1 ? 100 : 15, true);
+                            Stats.Boost.ActivateBoost[j].Push(j == 0 || j == 1 ? 100 : 15, false);
                         Stats.ReCalculateValues();
-
-                        #region Boosted Eff
-
-                        ApplyConditionEffect(ConditionEffectIndex.HPBoost, 5000);
-                        ApplyConditionEffect(ConditionEffectIndex.MPBoost, 5000);
-                        ApplyConditionEffect(ConditionEffectIndex.AttBoost, 5000);
-                        ApplyConditionEffect(ConditionEffectIndex.DefBoost, 5000);
-                        ApplyConditionEffect(ConditionEffectIndex.DexBoost, 5000);
-                        ApplyConditionEffect(ConditionEffectIndex.SpdBoost, 5000);
-                        ApplyConditionEffect(ConditionEffectIndex.WisBoost, 5000);
-                        ApplyConditionEffect(ConditionEffectIndex.VitBoost, 5000);
-
-                        #endregion Boosted Eff
+                        World.StartNewTimer(5000, (world, t) =>
+                        {
+                            for (var i = 0; i < 8; i++)
+                                Stats.Boost.ActivateBoost[i].Pop(i == 0 || i == 1 ? 100 : 15, false);
+                            Stats.ReCalculateValues();
+                        });
 
                         World.BroadcastIfVisible(new Notification()
                         {
@@ -1571,13 +1564,6 @@ namespace TKR.WorldServer.core.objects
                             PlayerId = Id,
                             ObjectId = Id
                         }, this);
-
-                        World.StartNewTimer(5000, (world, t) =>
-                        {
-                            for (var i = 0; i < 8; i++)
-                                Stats.Boost.ActivateBoost[i].Pop(i == 0 ? 100 : i == 1 ? 100 : 15, true);
-                            Stats.ReCalculateValues();
-                        });
                     }
                 }
 

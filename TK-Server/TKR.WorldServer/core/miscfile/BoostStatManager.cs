@@ -26,7 +26,6 @@ namespace TKR.WorldServer.core.miscfile
                 _boostSV[i] = new SV<int>(_player, StatsManager.GetBoostStatType(i), _boost[i], i != 0 && i != 1);
 
             ActivateBoost = new ActivateBoost[_boost.Length];
-
             for (var i = 0; i < ActivateBoost.Length; i++)
                 ActivateBoost[i] = new ActivateBoost();
 
@@ -56,6 +55,21 @@ namespace TKR.WorldServer.core.miscfile
                 // set boost
                 var b = ActivateBoost[i].GetBoost();
                 _boost[i] += b;
+
+                // set condition icon
+
+                var effect = (ConditionEffectIndex)((int)ConditionEffectIndex.HPBoost + i);
+                var haveCondition = _player.HasConditionEffect(effect);
+                if (b > 0)
+                {
+                    if (!haveCondition)
+                        _player.ApplyPermanentConditionEffect(effect);
+                }
+                else
+                {
+                    if (haveCondition)
+                        _player.RemoveCondition(effect);
+                }
             }
         }
 

@@ -13,7 +13,7 @@
     </Mask>
     <Tex1>0x01F0F8FF</Tex1>
     <SlotType>10</SlotType>
-    <Description>{dyes.clothing_description}</Description>
+    <Description></Description>
     <Activate>Dye</Activate>
     <Sound>use_potion</Sound>
     <Consumable />
@@ -22,7 +22,7 @@
   </Object>
   <Object type="0x1100" id="Alice Blue Accessory Dye">
     <Class>Dye</Class>
-    <DisplayId>{dyes.Alice_Blue_Accessory_Dye}</DisplayId>
+    <DisplayId>Alice Blue Accessory Dye</DisplayId>
     <Item />
     <Texture>
       <File>lofiObj3</File>
@@ -34,7 +34,7 @@
     </Mask>
     <Tex2>0x01F0F8FF</Tex2>
     <SlotType>10</SlotType>
-    <Description>{dyes.accessory_description}</Description>
+    <Description></Description>
     <Activate>Dye</Activate>
     <Sound>use_potion</Sound>
     <Consumable />
@@ -43,7 +43,7 @@
   </Object>
   <Object type="0x1001" id="Antique White Clothing Dye">
     <Class>Dye</Class>
-    <DisplayId>{dyes.Antique_White_Clothing_Dye}</DisplayId>
+    <DisplayId>Antique White Clothing Dye</DisplayId>
     <Item />
     <Texture>
       <File>lofiObj3</File>
@@ -55,7 +55,7 @@
     </Mask>
     <Tex1>0x01FAEBD7</Tex1>
     <SlotType>10</SlotType>
-    <Description>{dyes.clothing_description}</Description>
+    <Description></Description>
     <Activate>Dye</Activate>
     <Sound>use_potion</Sound>
     <Consumable />
@@ -64,7 +64,7 @@
   </Object>
   <Object type="0x1101" id="Antique White Accessory Dye">
     <Class>Dye</Class>
-    <DisplayId>{dyes.Antique_White_Accessory_Dye}</DisplayId>
+    <DisplayId>Antique White Accessory Dye</DisplayId>
     <Item />
     <Texture>
       <File>lofiObj3</File>
@@ -76,7 +76,7 @@
     </Mask>
     <Tex2>0x01FAEBD7</Tex2>
     <SlotType>10</SlotType>
-    <Description>{dyes.accessory_description}</Description>
+    <Description></Description>
     <Activate>Dye</Activate>
     <Sound>use_potion</Sound>
     <Consumable />
@@ -85,7 +85,7 @@
   </Object>
   <Object type="0x1002" id="Aqua Clothing Dye">
     <Class>Dye</Class>
-    <DisplayId>{dyes.Aqua_Clothing_Dye}</DisplayId>
+    <DisplayId>Aqua Clothing Dye</DisplayId>
     <Item />
     <Texture>
       <File>lofiObj3</File>
@@ -97,7 +97,7 @@
     </Mask>
     <Tex1>0x0100FFFF</Tex1>
     <SlotType>10</SlotType>
-    <Description>{dyes.clothing_description}</Description>
+    <Description></Description>
     <Activate>Dye</Activate>
     <Sound>use_potion</Sound>
     <Consumable />
@@ -106,7 +106,7 @@
   </Object>
   <Object type="0x1102" id="Aqua Accessory Dye">
     <Class>Dye</Class>
-    <DisplayId>{dyes.Aqua_Accessory_Dye}</DisplayId>
+    <DisplayId>Aqua Accessory Dye</DisplayId>
     <Item />
     <Texture>
       <File>lofiObj3</File>
@@ -118,7 +118,7 @@
     </Mask>
     <Tex2>0x0100FFFF</Tex2>
     <SlotType>10</SlotType>
-    <Description>{dyes.accessory_description}</Description>
+    <Description></Description>
     <Activate>Dye</Activate>
     <Sound>use_potion</Sound>
     <Consumable />
@@ -127,7 +127,7 @@
   </Object>
   <Object type="0x1003" id="Aquamarine Clothing Dye">
     <Class>Dye</Class>
-    <DisplayId>{dyes.Aquamarine_Clothing_Dye}</DisplayId>
+    <DisplayId>Aquamarine Clothing Dye</DisplayId>
     <Item />
     <Texture>
       <File>lofiObj3</File>
@@ -139,7 +139,7 @@
     </Mask>
     <Tex1>0x017FFFD4</Tex1>
     <SlotType>10</SlotType>
-    <Description>{dyes.clothing_description}</Description>
+    <Description></Description>
     <Activate>Dye</Activate>
     <Sound>use_potion</Sound>
     <Consumable />
@@ -148,7 +148,7 @@
   </Object>
   <Object type="0x1103" id="Aquamarine Accessory Dye">
     <Class>Dye</Class>
-    <DisplayId>{dyes.Aquamarine_Accessory_Dye}</DisplayId>
+    <DisplayId>Aquamarine Accessory Dye</DisplayId>
     <Item />
     <Texture>
       <File>lofiObj3</File>
@@ -160,7 +160,7 @@
     </Mask>
     <Tex2>0x017FFFD4</Tex2>
     <SlotType>10</SlotType>
-    <Description>{dyes.accessory_description}</Description>
+    <Description></Description>
     <Activate>Dye</Activate>
     <Sound>use_potion</Sound>
     <Consumable />

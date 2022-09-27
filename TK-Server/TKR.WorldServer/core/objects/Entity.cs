@@ -95,7 +95,7 @@ namespace TKR.WorldServer.core.objects
         public int GetNextAbilityBulletId()
         {
             var currentBulletId = NextAbilityBulletId;
-            NextAbilityBulletId = (NextAbilityBulletId + 1) % 0xFF;
+            NextAbilityBulletId = (0xFFFF - 0xFF) + ((NextAbilityBulletId + 1) % 0xFF);
             return currentBulletId;
         }
 

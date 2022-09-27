@@ -45,7 +45,7 @@ package com.company.assembleegameclient.ui.tooltip
          this.hash[ItemConstants.QUIVER_TYPE] = new QuiverComparison();
          this.hash[ItemConstants.HELM_TYPE] = new HelmetComparison();
          this.hash[ItemConstants.STAFF_TYPE] = projectileComparison;
-         this.hash[ItemConstants.POISON_TYPE] = new PoisonComparison();
+//         this.hash[ItemConstants.POISON_TYPE] = new PoisonComparison();
          this.hash[ItemConstants.SKULL_TYPE] = new SkullComparison();
          this.hash[ItemConstants.TRAP_TYPE] = new TrapComparison();
          this.hash[ItemConstants.ORB_TYPE] = new OrbComparison();

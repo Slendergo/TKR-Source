@@ -83,21 +83,14 @@ namespace TKR.WorldServer.core.objects
         public int Size { get => _size.GetValue(); set => _size?.SetValue(value); }
 
         public int NextBulletId = 1;
-        public int NextAbilityBulletId = 1;
 
         public int GetNextBulletId(int numShots = 1)
         {
             var currentBulletId = NextBulletId;
-            NextBulletId = (NextBulletId + numShots) % (0xFFFF - 0xFF);
+            NextBulletId = (NextBulletId + numShots) % 0xFFFF;
             return currentBulletId;
         }
 
-        public int GetNextAbilityBulletId()
-        {
-            var currentBulletId = NextAbilityBulletId;
-            NextAbilityBulletId = (0xFFFF - 0xFF) + ((NextAbilityBulletId + 1) % 0xFF);
-            return currentBulletId;
-        }
 
         public IDictionary<object, object> StateStorage
         {

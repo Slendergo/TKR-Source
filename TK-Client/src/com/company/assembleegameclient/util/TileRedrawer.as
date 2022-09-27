@@ -19,61 +19,61 @@ import flash.utils.Dictionary;
 
 public class TileRedrawer
    {
-      
+
       private static const rect0:Rectangle = new Rectangle(0,0,4,4);
-      
+
       private static const p0:Point = new Point(0,0);
-      
+
       private static const rect1:Rectangle = new Rectangle(4,0,4,4);
-      
+
       private static const p1:Point = new Point(4,0);
-      
+
       private static const rect2:Rectangle = new Rectangle(0,4,4,4);
-      
+
       private static const p2:Point = new Point(0,4);
-      
+
       private static const rect3:Rectangle = new Rectangle(4,4,4,4);
-      
+
       private static const p3:Point = new Point(4,4);
-      
+
       private static const INNER:int = 0;
-      
+
       private static const SIDE0:int = 1;
-      
+
       private static const SIDE1:int = 2;
-      
+
       private static const OUTER:int = 3;
-      
+
       private static const INNERP1:int = 4;
-      
+
       private static const INNERP2:int = 5;
-      
+
       private static const mlist_:Vector.<Vector.<ImageSet>> = getMasks();
 
-      private static var cache__:Dictionary = new Dictionary();
+      private static var cache__:Vector.<Object> = new <Object>[null, new Object()];
 
       private static const RECT01:Rectangle = new Rectangle(0,0,8,4);
-      
+
       private static const RECT13:Rectangle = new Rectangle(4,0,4,8);
-      
+
       private static const RECT23:Rectangle = new Rectangle(0,4,8,4);
-      
+
       private static const RECT02:Rectangle = new Rectangle(0,0,4,8);
-      
+
       private static const RECT0:Rectangle = new Rectangle(0,0,4,4);
-      
+
       private static const RECT1:Rectangle = new Rectangle(4,0,4,4);
-      
+
       private static const RECT2:Rectangle = new Rectangle(0,4,4,4);
-      
+
       private static const RECT3:Rectangle = new Rectangle(4,4,4,4);
-      
+
       private static const POINT0:Point = new Point(0,0);
-      
+
       private static const POINT1:Point = new Point(4,0);
-      
+
       private static const POINT2:Point = new Point(0,4);
-      
+
       private static const POINT3:Point = new Point(4,4);
 
       public function TileRedrawer()
@@ -81,16 +81,9 @@ public class TileRedrawer
          super();
       }
 
-      public static function clearCache():void{
-         for each (var _local2 in cache__) {
-            ((_local2) && (_local2.dispose()));
-         }
-         cache__ = new Dictionary();
-      }
-
       public static function redraw(square:Square, origBackground:Boolean) : BitmapData
       {
-         var sig:ByteArray = null;
+         var sig:Array;
          var newBitmapData:BitmapData = null;
          if(square.tileType_ == 253)
          {
@@ -104,26 +97,28 @@ public class TileRedrawer
          {
             sig = getSig(square);
          }
+
          if(sig == null)
          {
             return null;
          }
 
-         var hex:String = Hex.fromArray(sig);
-         if (hex in cache__){
-            return (cache__[hex]);
+         var cache:Object = cache__[1];
+         if (cache.hasOwnProperty(sig)){
+            return (cache[sig]);
          }
 
          if(square.tileType_ == 253)
          {
             newBitmapData = buildComposite(sig);
-            cache__[sig] = newBitmapData;
+            cache[sig] = newBitmapData;
             return newBitmapData;
          }
+
          if(square.props_.hasEdge_)
          {
             newBitmapData = drawEdges(sig);
-            cache__[sig] = newBitmapData;
+            cache[sig] = newBitmapData;
             return newBitmapData;
          }
          var redraw0:Boolean = false;
@@ -168,7 +163,7 @@ public class TileRedrawer
          }
          if(!redraw0 && !redraw1 && !redraw2 && !redraw3)
          {
-            cache__[sig] = null;
+            cache[sig] = null;
             return null;
          }
          var orig:BitmapData = GroundLibrary.getBitmapData(square.tileType_);
@@ -196,10 +191,10 @@ public class TileRedrawer
          {
             redrawRect(newBitmapData,rect3,p3,mlist_[3],sig[4],sig[5],sig[8],sig[7]);
          }
-         cache__[sig] = newBitmapData;
+         cache[sig] = newBitmapData;
          return newBitmapData;
       }
-      
+
       private static function redrawRect(bitmapData:BitmapData, rect:Rectangle, p:Point, masks:Vector.<ImageSet>, base:uint, n0:uint, n1:uint, n2:uint) : void
       {
          var blend:BitmapData = null;
@@ -232,12 +227,12 @@ public class TileRedrawer
          }
          bitmapData.copyPixels(blend,rect,p,mask,p0,true);
       }
-      
-      private static function getSig(square:Square) : ByteArray
+
+      private static function getSig(square:Square) : Array
       {
          var x:int = 0;
          var n:Square = null;
-         var sig:ByteArray = new ByteArray();
+         var sig:Array = new Array();
          var map:Map = square.map_;
          var baseType:uint = square.tileType_;
          for(var y:int = square.y_ - 1; y <= square.y_ + 1; y++)
@@ -246,32 +241,32 @@ public class TileRedrawer
             {
                if(x < 0 || x >= map.width_ || y < 0 || y >= map.height_ || x == square.x_ && y == square.y_)
                {
-                  sig.writeByte(baseType);
+                  sig.push(baseType);
                }
                else
                {
                   n = map.squares_[x + y * map.width_];
                   if(n == null || n.props_.blendPriority_ <= square.props_.blendPriority_)
                   {
-                     sig.writeByte(baseType);
+                     sig.push(baseType);
                   }
                   else
                   {
-                     sig.writeByte(n.tileType_);
+                     sig.push(n.tileType_);
                   }
                }
             }
          }
          return sig;
       }
-      
+
       private static function getMasks() : Vector.<Vector.<ImageSet>>
       {
          var mlist:Vector.<Vector.<ImageSet>> = new Vector.<Vector.<ImageSet>>();
          addMasks(mlist,AssetLibrary.getImageSet("inner_mask"),AssetLibrary.getImageSet("sides_mask"),AssetLibrary.getImageSet("outer_mask"),AssetLibrary.getImageSet("innerP1_mask"),AssetLibrary.getImageSet("innerP2_mask"));
          return mlist;
       }
-      
+
       private static function addMasks(mlist:Vector.<Vector.<ImageSet>>, inner:ImageSet, side:ImageSet, outer:ImageSet, innerP1:ImageSet, innerP2:ImageSet) : void
       {
          var i:int = 0;
@@ -280,7 +275,7 @@ public class TileRedrawer
             mlist.push(new <ImageSet>[rotateImageSet(inner,i),rotateImageSet(side,i - 1),rotateImageSet(side,i),rotateImageSet(outer,i),rotateImageSet(innerP1,i),rotateImageSet(innerP2,i)]);
          }
       }
-      
+
       private static function rotateImageSet(imageSet:ImageSet, clockwiseTurns:int) : ImageSet
       {
          var bitmapData:BitmapData = null;
@@ -291,14 +286,14 @@ public class TileRedrawer
          }
          return newImageSet;
       }
-      
-      private static function getCompositeSig(square:Square) : ByteArray
+
+      private static function getCompositeSig(square:Square) : Array
       {
          var n0:Square = null;
          var n2:Square = null;
          var n6:Square = null;
          var n8:Square = null;
-         var sig:ByteArray = new ByteArray();
+         var sig:Array = new Array();
          sig.length = 4;
          var map:Map = square.map_;
          var x:int = square.x_;
@@ -365,8 +360,8 @@ public class TileRedrawer
          }
          return sig;
       }
-      
-      private static function buildComposite(sig:ByteArray) : BitmapData
+
+      private static function buildComposite(sig:Array) : BitmapData
       {
          var neighbor:BitmapData = null;
          var newBitmapData:BitmapData = new BitmapData(8,8,false,0);
@@ -392,13 +387,13 @@ public class TileRedrawer
          }
          return newBitmapData;
       }
-      
-      private static function getEdgeSig(square:Square) : ByteArray
+
+      private static function getEdgeSig(square:Square) : Array
       {
          var x:int = 0;
          var n:Square = null;
          var b:Boolean = false;
-         var sig:ByteArray = new ByteArray();
+         var sig:Array = new Array();
          var map:Map = square.map_;
          var hasEdge:Boolean = false;
          var sameTypeEdgeMode:Boolean = square.props_.sameTypeEdgeMode_;
@@ -409,7 +404,7 @@ public class TileRedrawer
                n = map.lookupSquare(x,y);
                if(x == square.x_ && y == square.y_)
                {
-                  sig.writeByte(n.tileType_);
+                  sig.push(n.tileType_);
                }
                else
                {
@@ -419,17 +414,17 @@ public class TileRedrawer
                   }
                   else
                   {
-                     b = n == null || n.tileType_ != 255;
+                     b = n == null || n.tileType_ != 0xFF;
                   }
-                  sig.writeBoolean(b);
+                  sig.push(b);
                   hasEdge = hasEdge || !b;
                }
             }
          }
          return !!hasEdge?sig:null;
       }
-      
-      private static function drawEdges(sig:ByteArray) : BitmapData
+
+      private static function drawEdges(sig:Array) : BitmapData
       {
          var orig:BitmapData = GroundLibrary.getBitmapData(sig[4]);
          var newBitmapData:BitmapData = orig.clone();

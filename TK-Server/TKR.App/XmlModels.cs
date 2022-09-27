@@ -353,7 +353,7 @@ namespace TKR.App
         public int Level { get; private set; }
         public int Exp { get; private set; }
         public int CurrentFame { get; private set; }
-        public ushort[] Equipment { get; private set; }
+        public int[] Equipment { get; private set; }
         public string[] ItemData { get; private set; }
         public int MaxHitPoints { get; private set; }
         public int HitPoints { get; private set; }
@@ -383,7 +383,7 @@ namespace TKR.App
                 Level = character.Level,
                 Exp = character.Experience,
                 CurrentFame = character.Fame,
-                Equipment = character.Items,
+                Equipment = character.Items.Select(x => x == 0xFFFF ? -1 : x).ToArray(),
                 ItemData = GetJson(character.Datas ?? new ItemData[20]),
                 MaxHitPoints = character.Stats[0],
                 MaxMagicPoints = character.Stats[1],
@@ -423,7 +423,7 @@ namespace TKR.App
                     new XElement("Level", Level),
                     new XElement("Exp", Exp),
                     new XElement("CurrentFame", CurrentFame),
-                    new XElement("Equipment", Equipment.Select(x => (short)x).ToArray().ToCommaSepString()),
+                    new XElement("Equipment", Equipment.ToCommaSepString()),
                     new XElement("ItemDatas", ItemData.ToArray().ToCommaDotSepString()),
                     new XElement("MaxHitPoints", MaxHitPoints),
                     new XElement("HitPoints", HitPoints),

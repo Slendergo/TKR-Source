@@ -263,7 +263,7 @@ namespace TKR.WorldServer.core.objects.player
                 var hash = playerX << 16 | playerY;
                 _ = SeenTiles.TryGetValue(hash, out var updateCount);
 
-                if (tile == null || updateCount >= tile.UpdateCount)
+                if (tile == null || tile.TileId == 0xFF || updateCount >= tile.UpdateCount)
                     continue;
 
                 SeenTiles[hash] = tile.UpdateCount;

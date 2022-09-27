@@ -36,9 +36,6 @@ namespace TKR.WorldServer.core.net.handlers
                     acc.Fame -= 10000;
                     acc.SetBaseStat += 1;
                     player.SendInfo("Your Stat Base was upgraded to +1! \n Restart your Character to update it!");
-                    player.Stats.ReCalculateValues();
-                    player.Stats.Base.ReCalculateValues();
-                    player.Stats.Boost.ReCalculateValues();
                     acc.FlushAsync();
                     dummy = player.GameServer.ConnectionManager.Clients.Keys.Where(_ => _.Account.Name.Equals(player.Name)).SingleOrDefault();
                     dummy?.Disconnect("Magician Upgrade");
@@ -53,9 +50,6 @@ namespace TKR.WorldServer.core.net.handlers
                     acc.Fame -= 20000;
                     acc.SetBaseStat += 1;
                     player.SendInfo("Your Stat Base was upgraded to +1! \n Restart your Character to update it!");
-                    player.Stats.ReCalculateValues();
-                    player.Stats.Base.ReCalculateValues();
-                    player.Stats.Boost.ReCalculateValues();
                     acc.FlushAsync();
                     dummy = player.GameServer.ConnectionManager.Clients
                         .Keys.Where(_ => _.Account.Name.Equals(player.Name))
@@ -72,9 +66,6 @@ namespace TKR.WorldServer.core.net.handlers
                     acc.Fame -= 30000;
                     acc.SetBaseStat += 1;
                     player.SendInfo("Your Stat Base was upgraded to +1! \n Restart your Character to update it!");
-                    player.Stats.ReCalculateValues();
-                    player.Stats.Base.ReCalculateValues();
-                    player.Stats.Boost.ReCalculateValues();
                     acc.FlushAsync();
                     dummy = player.GameServer.ConnectionManager.Clients
                         .Keys.Where(_ => _.Account.Name.Equals(player.Name))
@@ -91,9 +82,6 @@ namespace TKR.WorldServer.core.net.handlers
                     acc.Fame -= 40000;
                     acc.SetBaseStat += 1;
                     player.SendInfo("Your Stat Base was upgraded to +1! \n Restart your Character to update it!");
-                    player.Stats.ReCalculateValues();
-                    player.Stats.Base.ReCalculateValues();
-                    player.Stats.Boost.ReCalculateValues();
                     acc.FlushAsync();
                     dummy = player.GameServer.ConnectionManager.Clients
                         .Keys.Where(_ => _.Account.Name.Equals(player.Name))
@@ -110,9 +98,6 @@ namespace TKR.WorldServer.core.net.handlers
                     acc.Fame -= 50000;
                     acc.SetBaseStat += 1;
                     player.SendInfo("Your Stat Base was upgraded to +1! \n Restart your Character to update it!");
-                    player.Stats.ReCalculateValues();
-                    player.Stats.Base.ReCalculateValues();
-                    player.Stats.Boost.ReCalculateValues();
                     acc.FlushAsync();
                     dummy = player.GameServer.ConnectionManager.Clients
                         .Keys.Where(_ => _.Account.Name.Equals(player.Name))
@@ -129,9 +114,6 @@ namespace TKR.WorldServer.core.net.handlers
                     acc.Fame -= 60000;
                     acc.SetBaseStat += 1;
                     player.SendInfo("Your Stat Base was upgraded to +1! \n Restart your Character to update it!");
-                    player.Stats.ReCalculateValues();
-                    player.Stats.Base.ReCalculateValues();
-                    player.Stats.Boost.ReCalculateValues();
                     acc.FlushAsync();
                     dummy = player.GameServer.ConnectionManager.Clients
                         .Keys.Where(_ => _.Account.Name.Equals(player.Name))
@@ -148,9 +130,6 @@ namespace TKR.WorldServer.core.net.handlers
                     acc.Fame -= 70000;
                     acc.SetBaseStat += 1;
                     player.SendInfo("Your Stat Base was upgraded to +1! \n Restart your Character to update it!");
-                    player.Stats.ReCalculateValues();
-                    player.Stats.Base.ReCalculateValues();
-                    player.Stats.Boost.ReCalculateValues();
                     acc.FlushAsync();
                     dummy = player.GameServer.ConnectionManager.Clients
                         .Keys.Where(_ => _.Account.Name.Equals(player.Name))
@@ -167,9 +146,6 @@ namespace TKR.WorldServer.core.net.handlers
                     acc.Fame -= 80000;
                     acc.SetBaseStat += 1;
                     player.SendInfo("Your Stat Base was upgraded to +1! \n Restart your Character to update it!");
-                    player.Stats.ReCalculateValues();
-                    player.Stats.Base.ReCalculateValues();
-                    player.Stats.Boost.ReCalculateValues();
                     acc.FlushAsync();
                     dummy = player.GameServer.ConnectionManager.Clients
                         .Keys.Where(_ => _.Account.Name.Equals(player.Name))
@@ -186,9 +162,6 @@ namespace TKR.WorldServer.core.net.handlers
                     acc.Fame -= 90000;
                     acc.SetBaseStat += 1;
                     player.SendInfo("Your Stat Base was upgraded to +1! \n Restart your Character to update it!");
-                    player.Stats.ReCalculateValues();
-                    player.Stats.Base.ReCalculateValues();
-                    player.Stats.Boost.ReCalculateValues();
                     acc.FlushAsync();
                     dummy = player.GameServer.ConnectionManager.Clients
                         .Keys.Where(_ => _.Account.Name.Equals(player.Name))
@@ -205,9 +178,6 @@ namespace TKR.WorldServer.core.net.handlers
                     acc.Fame -= 100000;
                     acc.SetBaseStat += 1;
                     player.SendInfo("Your Stat Base was upgraded to +1! \n Restart your Character to update it!");
-                    player.Stats.ReCalculateValues();
-                    player.Stats.Base.ReCalculateValues();
-                    player.Stats.Boost.ReCalculateValues();
                     acc.FlushAsync();
                     dummy = player.GameServer.ConnectionManager.Clients
                         .Keys.Where(_ => _.Account.Name.Equals(player.Name))
@@ -219,6 +189,7 @@ namespace TKR.WorldServer.core.net.handlers
                     player.SendError("You have maxed your Base Stat!");
                     break;
             }
+            player.Stats.ReCalculateValues();
         }
     }
 }

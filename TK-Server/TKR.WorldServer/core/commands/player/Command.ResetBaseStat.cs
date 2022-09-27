@@ -12,9 +12,7 @@ namespace TKR.WorldServer.core.commands
             protected override bool Process(Player player, TickTime time, string args)
             {
                 player.Client.Account.SetBaseStat = 0;
-                player.Stats.Base.ReCalculateValues();
                 player.Stats.ReCalculateValues();
-                player.Stats.Boost.ReCalculateValues();
                 player.SendInfo("Your Base Stat got reset!");
                 return true;
             }

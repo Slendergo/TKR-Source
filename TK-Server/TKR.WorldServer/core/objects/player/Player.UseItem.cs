@@ -449,7 +449,7 @@ namespace TKR.WorldServer.core.objects
                         break;
 
                     case ActivateEffects.Shoot:
-                        AEShoot(time, item, target, eff);
+                        AEShoot(clientTime, time, item, target, eff);
                         break;
 
                     case ActivateEffects.IncrementStat:
@@ -558,15 +558,15 @@ namespace TKR.WorldServer.core.objects
                         break;
 
                     case ActivateEffects.ShurikenAbility:
-                        AEShurikenAbility(time, item, target, eff, useType);
+                        AEShurikenAbility(clientTime, time, item, target, eff, useType);
                         break;
 
                     case ActivateEffects.ShurikenAbilityBerserk:
-                        AEShurikenAbilityBerserk(time, item, target, eff, useType);
+                        AEShurikenAbilityBerserk(clientTime, time, item, target, eff, useType);
                         break;
 
                     case ActivateEffects.ShurikenAbilityDamaging:
-                        AEShurikenAbilityDamaging(time, item, target, eff, useType);
+                        AEShurikenAbilityDamaging(clientTime, time, item, target, eff, useType);
                         break;
 
                     case ActivateEffects.DazeBlast:
@@ -1481,7 +1481,7 @@ namespace TKR.WorldServer.core.objects
             }, this);
         }
 
-        private void AEShoot(TickTime time, Item item, Position target, ActivateEffect eff)
+        private void AEShoot(int time, TickTime tickTime, Item item, Position target, ActivateEffect eff)
         {
             var arcGap = item.ArcGap * Math.PI / 180;
             var startAngle = Math.Atan2(target.Y - Y, target.X - X) - (item.NumProjectiles - 1) / 2 * arcGap;
@@ -1491,7 +1491,7 @@ namespace TKR.WorldServer.core.objects
             for (var i = 0; i < item.NumProjectiles; i++)
             {
                 var bulletId = GetNextBulletId();
-                var proj = PlayerShootProjectile((int)time.TotalElapsedMs, bulletId, item.ObjectType, (float)(startAngle + arcGap * i), target, prjDesc, true);
+                var proj = PlayerShootProjectile(time, bulletId, item.ObjectType, (float)(startAngle + arcGap * i), target, prjDesc, true);
                 World.AddProjectile(proj);
                 sPkts[i] = new AllyShoot(proj.ProjectileId, Id, item.ObjectType, proj.Angle);
                 FameCounter.Shoot();
@@ -1501,7 +1501,7 @@ namespace TKR.WorldServer.core.objects
                 World.BroadcastIfVisibleExclude(sPkts[i], this, this);
         }
 
-        private void AEShurikenAbility(TickTime time, Item item, Position target, ActivateEffect eff, int useType)
+        private void AEShurikenAbility(int time, TickTime tickTime, Item item, Position target, ActivateEffect eff, int useType)
         {
             switch (useType)
             {
@@ -1514,7 +1514,7 @@ namespace TKR.WorldServer.core.objects
                         if (HP >= item.MpEndCost)
                         {
                             HP -= (int)(Stats[0] * TalismanAbilityLifeCost);
-                            AEShoot(time, item, target, eff);
+                            AEShoot(time, tickTime, item, target, eff);
                         }
                     }
                     else
@@ -1522,7 +1522,7 @@ namespace TKR.WorldServer.core.objects
                         if (MP >= item.MpEndCost)
                         {
                             MP -= item.MpEndCost;
-                            AEShoot(time, item, target, eff);
+                            AEShoot(time, tickTime, item, target, eff);
                         }
                     }
                     RemoveCondition(ConditionEffectIndex.NinjaSpeedy);
@@ -1530,7 +1530,7 @@ namespace TKR.WorldServer.core.objects
             }
         }
 
-        private void AEShurikenAbilityBerserk(TickTime time, Item item, Position target, ActivateEffect eff, int useType)
+        private void AEShurikenAbilityBerserk(int time, TickTime tickTime, Item item, Position target, ActivateEffect eff, int useType)
         {
             switch (useType)
             {
@@ -1543,7 +1543,7 @@ namespace TKR.WorldServer.core.objects
                         if (HP >= item.MpEndCost)
                         {
                             HP -= (int)(Stats[0] * TalismanAbilityLifeCost);
-                            AEShoot(time, item, target, eff);
+                            AEShoot(time, tickTime, item, target, eff);
                         }
                     }
                     else
@@ -1551,7 +1551,7 @@ namespace TKR.WorldServer.core.objects
                         if (MP >= item.MpEndCost)
                         {
                             MP -= item.MpEndCost;
-                            AEShoot(time, item, target, eff);
+                            AEShoot(time, tickTime, item, target, eff);
                         }
                     }
                     RemoveCondition(ConditionEffectIndex.NinjaBerserk);
@@ -1559,7 +1559,7 @@ namespace TKR.WorldServer.core.objects
             }
         }
 
-        private void AEShurikenAbilityDamaging(TickTime time, Item item, Position target, ActivateEffect eff, int useType)
+        private void AEShurikenAbilityDamaging(int time, TickTime tickTime, Item item, Position target, ActivateEffect eff, int useType)
         {
             switch (useType)
             {
@@ -1572,7 +1572,7 @@ namespace TKR.WorldServer.core.objects
                         if (HP >= item.MpEndCost)
                         {
                             HP -= (int)(Stats[0] * TalismanAbilityLifeCost);
-                            AEShoot(time, item, target, eff);
+                            AEShoot(time, tickTime, item, target, eff);
                         }
                     }
                     else
@@ -1580,7 +1580,7 @@ namespace TKR.WorldServer.core.objects
                         if (MP >= item.MpEndCost)
                         {
                             MP -= item.MpEndCost;
-                            AEShoot(time, item, target, eff);
+                            AEShoot(time, tickTime, item, target, eff);
                         }
                     }
                     RemoveCondition(ConditionEffectIndex.NinjaDamaging);

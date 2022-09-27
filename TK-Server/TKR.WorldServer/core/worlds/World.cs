@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pipelines.Sockets.Unofficial.Arenas;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
@@ -476,15 +477,6 @@ namespace TKR.WorldServer.core.worlds
             foreach (var pet in Pets.Values)
                 pet.Tick(ref time);
 
-            var projectilesToRemove = new List<Projectile>();
-            foreach (var k in Projectiles.Values)
-                foreach (var projectile in k.Values)
-                    if (!projectile.Tick(ref time))
-                        projectilesToRemove.Add(projectile);
-
-            foreach (var projectile in projectilesToRemove)
-                RemoveProjectile(projectile);
-
             if (EnemiesCollision != null)
             {
                 foreach (var i in EnemiesCollision.GetActiveChunks(PlayersCollision))
@@ -513,6 +505,15 @@ namespace TKR.WorldServer.core.worlds
                     StaticLogger.Instance.Error($"{e.Message}\n{e.StackTrace}");
                     Timers.RemoveAt(i);
                 }
+
+            var projectilesToRemove = new List<Projectile>();
+            foreach (var k in Projectiles.Values)
+                foreach (var projectile in k.Values)
+                    if (!projectile.Tick(ref time))
+                        projectilesToRemove.Add(projectile);
+
+            foreach (var projectile in projectilesToRemove)
+                RemoveProjectile(projectile);
         }
 
         public void FlagForClose()

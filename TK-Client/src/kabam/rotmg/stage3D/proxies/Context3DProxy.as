@@ -32,7 +32,7 @@ package kabam.rotmg.stage3D.proxies
       
       public function clear() : void
       {
-         this.context3D.clear(0.05,0.05,0.05);
+         this.context3D.clear(0.0, 0, 0, 0);
       }
       
       public function present() : void

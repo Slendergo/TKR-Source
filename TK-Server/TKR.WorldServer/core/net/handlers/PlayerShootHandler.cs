@@ -44,7 +44,8 @@ namespace TKR.WorldServer.core.net.handlers
             {
                 if (player.World.DisableAbilities)
                     client.Disconnect("Attempting to activate ability in a disabled world");
-                return; // todo
+                // todo abilities
+                return;
             }
 
             if (player.World.DisableShooting)
@@ -55,31 +56,25 @@ namespace TKR.WorldServer.core.net.handlers
 
             if (!player.IsValidShoot(time, item.RateOfFire))
             {
-                for (var i = 0; i < item.NumProjectiles; i++)
-                    _ = player.GetNextBulletId();
+                System.Console.WriteLine(player.Name + " invalid shoot");
+            }
+
+            var newBulletId = player.GetNextBulletId();
+            var clientBulletId = bulletId % 0xFFFF;
+            if (newBulletId != clientBulletId)
+            {
+                client.Disconnect("bullet id desync");
+                System.Console.WriteLine($"DESYNC PROJECTILES: {player.Name} {player.ObjectDesc.DisplayId ?? player.ObjectDesc.ObjectId}");
                 return;
             }
 
-            var arcGap = item.ArcGap;
-            for (var i = 0; i < item.NumProjectiles; i++)
-            {
-                var newBulletId = player.GetNextBulletId();
-                var clientBulletId = (bulletId + i) % (0xFFFF - 0xFF);
-                if (newBulletId != clientBulletId)
-                {
-                    client.Disconnect("bullet id desync");
-                    System.Console.WriteLine($"DESYNC PROJECTILES: {player.Name} {player.ObjectDesc.DisplayId ?? player.ObjectDesc.ObjectId}");
-                    return;
-                }
+            var prjDesc = item.Projectiles[0];
+            var prj = player.PlayerShootProjectile(time, newBulletId, item.ObjectType, angle, startingPosition, prjDesc);
+            player.World.AddProjectile(prj);
 
-                var prjDesc = item.Projectiles[0];
-                var prj = player.PlayerShootProjectile(time, newBulletId, item.ObjectType, angle + arcGap * i, startingPosition, prjDesc);
-                player.World.AddProjectile(prj);
-
-                var allyShoot = new AllyShoot(prj.ProjectileId, player.Id, item.ObjectType, angle);
-                player.World.BroadcastIfVisibleExclude(allyShoot, player, player);
-                player.FameCounter.Shoot();
-            }
+            var allyShoot = new AllyShoot(prj.ProjectileId, player.Id, item.ObjectType, angle);
+            player.World.BroadcastIfVisibleExclude(allyShoot, player, player);
+            player.FameCounter.Shoot();
         }
     }
 }

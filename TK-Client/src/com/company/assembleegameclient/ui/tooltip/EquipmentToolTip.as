@@ -775,6 +775,65 @@ public class EquipmentToolTip extends ToolTip
             }
          }
       }
+      private function getPoison(_arg1:XML, _arg2:XML=null):void
+      {
+         var _local3:ComPair = new ComPair(_arg1, _arg2, "totalDamage");
+         var _local4:ComPair = new ComPair(_arg1, _arg2, "radius");
+         var _local5:ComPair = new ComPair(_arg1, _arg2, "duration");
+         var _local7:ComPair = new ComPair(_arg1, _arg2, "impactDamage", 0);
+         var _local10:String = this.colorUntiered("Poison: ");
+
+
+
+
+
+
+
+
+         _local10 = (_local10 + TooltipHelper.compare(_local3.a, _local3.b, true, "", false, !(this.sameActivateEffect)) + " damage");
+         if (_local7.a){
+            _local10 = (_local10 + " (" + TooltipHelper.compare(_local7.a, _local7.b, true, "", false, !(this.sameActivateEffect)) + " on impact)");
+         }
+         _local10 = (_local10 + " within " + TooltipHelper.compareAndGetPlural(_local4.a, _local4.b, "square", true, !(this.sameActivateEffect)));
+         _local10 = (_local10 + " over "+ TooltipHelper.compareAndGetPlural(_local5.a, _local5.b, "second", false, !(this.sameActivateEffect)));
+         this.effects.push(new Effect(_local10, ""));
+         this.AddConditionToEffects(_arg1, _arg2, "Nothing", 5);
+         this.sameActivateEffect = true;
+      }
+      private var sameActivateEffect:Boolean;
+
+      private function AddConditionToEffects(_arg1:XML, _arg2:XML, _arg3:String="Nothing", _arg4:Number=5):void
+      {
+         var _local6:ComPair;
+         var _local7:String;
+         var _local5:String = ((_arg1.hasOwnProperty("@condEffect")) ? _arg1.@condEffect : _arg3);
+         if (_local5 != "Nothing"){
+            _local6 = new ComPair(_arg1, _arg2, "condDuration", _arg4);
+            if (_arg2){
+               _local7 = ((_arg2.hasOwnProperty("@condEffect")) ? _arg2.@condEffect : _arg3);
+               if (_local7 == "Nothing"){
+                  _local6.b = 0;
+               }
+            }
+
+            var condition:String = TooltipHelper.compareAndGetPlural(_local6.a, _local6.b, "second");
+            var duration:String = _local5;
+            this.effects.push(new Effect("Inflicts " + condition + " for " + duration, "Something"));
+         }
+      }
+
+      private function colorUntiered(_arg1:String):String
+      {
+         var _local2:Boolean = this.objectXML_.hasOwnProperty("Tier");
+         var _local3:Boolean = this.objectXML_.hasOwnProperty("@setType");
+         if (_local3){
+            return (TooltipHelper.wrapInFontTag(_arg1, ("#" + TooltipHelper.SET_COLOR.toString(16))));
+         }
+         if (!_local2){
+            return (TooltipHelper.wrapInFontTag(_arg1, ("#" + TooltipHelper.UNTIERED_COLOR.toString(16))));
+         }
+         return (_arg1);
+      }
 
       override protected function alignUI():void {
          this.titleText_.x = (this.icon_.width + 4);
@@ -1264,6 +1323,26 @@ public class EquipmentToolTip extends ToolTip
       }
 
    }
+}
+
+class ComPair
+{
+   public var a:Number;
+   public var b:Number;
+
+   public function ComPair(_arg1:XML, _arg2:XML, _arg3:String, _arg4:Number=0)
+   {
+      this.a = (this.b = ((_arg1.hasOwnProperty(("@" + _arg3))) ? _arg1.@[_arg3] : _arg4));
+      if (_arg2){
+         this.b = ((_arg2.hasOwnProperty(("@" + _arg3))) ? _arg2.@[_arg3] : _arg4);
+      };
+   }
+   public function add(_arg1:Number):void
+   {
+      this.a = (this.a + _arg1);
+      this.b = (this.b + _arg1);
+   }
+
 }
 
 class Effect

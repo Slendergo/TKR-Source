@@ -34,7 +34,10 @@ namespace TKR.WorldServer.core.net.handlers
 
             var prj = player.World.GetProjectile(player.Id, bulletId);
             if (prj == null)
+            {
+                Console.WriteLine($"Null Projectile: {bulletId}");
                 return;
+            }
 
             prj?.ForceHit(entity, tickTime);
 
@@ -44,7 +47,7 @@ namespace TKR.WorldServer.core.net.handlers
                     player.PlayerUpdate.ForceAdd(entity);
             }
             else if (entity is Enemy)
-                if (killed && (entity as Enemy).HP > 0)
+                 if (killed && (entity as Enemy).HP > 0)
                     player.PlayerUpdate.ForceAdd(entity);
 
             var totalLife = 0.0;

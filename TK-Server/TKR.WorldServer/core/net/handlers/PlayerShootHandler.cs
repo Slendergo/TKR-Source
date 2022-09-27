@@ -44,7 +44,8 @@ namespace TKR.WorldServer.core.net.handlers
             {
                 if (player.World.DisableAbilities)
                     client.Disconnect("Attempting to activate ability in a disabled world");
-                return; // todo
+                // todo abilities
+                return;
             }
 
             if (player.World.DisableShooting)
@@ -55,8 +56,7 @@ namespace TKR.WorldServer.core.net.handlers
 
             if (!player.IsValidShoot(time, item.RateOfFire))
             {
-                _ = player.GetNextBulletId();
-                return;
+                System.Console.WriteLine(player.Name + " invalid shoot");
             }
 
             var newBulletId = player.GetNextBulletId();

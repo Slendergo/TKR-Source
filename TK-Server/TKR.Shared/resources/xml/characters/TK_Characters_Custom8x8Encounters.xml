@@ -1352,7 +1352,7 @@
 		<Projectile id="0">
 			<ObjectId>Projectile 0 GFS</ObjectId>
 			<Damage>260</Damage>
-			<Speed>75</Speed>
+			<Speed>65</Speed>
 			<Size>140</Size>
 			<MultiHit/>
 			<ConditionEffect duration="2">Speedy</ConditionEffect>
@@ -1361,7 +1361,7 @@
 		<Projectile id="1">
 			<ObjectId>Projectile 1 GFS</ObjectId>
 			<Damage>345</Damage>
-			<Speed>65</Speed>
+			<Speed>55</Speed>
 			<Size>140</Size>
 			<MultiHit/>
 			<LifetimeMS>800</LifetimeMS>

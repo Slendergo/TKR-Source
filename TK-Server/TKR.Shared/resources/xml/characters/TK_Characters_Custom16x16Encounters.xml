@@ -1727,7 +1727,7 @@
 		<Event/>
 		<Quest/>
 		<God />
-		<Level>20</Level>
+		<Level>14</Level>
 		<AnimatedTexture>
 			<File>Custom16x16Encounters</File>
 			<Index>43</Index>
@@ -1808,7 +1808,7 @@
 		<Event/>
 		<Quest/>
 		<God />
-		<Level>1</Level>
+		<Level>13</Level>
 		<AnimatedTexture>
 			<File>Custom16x16Encounters</File>
 			<Index>38</Index>
@@ -2079,7 +2079,7 @@
 		<God />
 		<Event/>
 		<Quest/>
-		<Level>1</Level>
+		<Level>16</Level>
 		<AnimatedTexture>
 			<File>Custom16x16Encounters</File>
 			<Index>44</Index>
@@ -2098,7 +2098,7 @@
 			<ObjectId>ASM Big Shot 1</ObjectId>
 			<Damage>215</Damage>
 			<Size>150</Size>
-			<Speed>90</Speed>
+			<Speed>75</Speed>
 			<LifetimeMS>3000</LifetimeMS>
 			<MultiHit />
 		</Projectile>
@@ -2113,7 +2113,7 @@
 			<ObjectId>Projectile 2 CSS</ObjectId>
 			<Damage>205</Damage>
 			<Size>100</Size>
-			<Speed>100</Speed>
+			<Speed>80</Speed>
 			<LifetimeMS>3000</LifetimeMS>
 			<ConditionEffect duration="1.8">Confused</ConditionEffect>
 		</Projectile>

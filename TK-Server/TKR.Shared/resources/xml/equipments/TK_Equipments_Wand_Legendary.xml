@@ -180,7 +180,7 @@
 	<Object type="0x4284" id="Polar Vortex">
 		<Class>Equipment</Class>
 		<Item />
-		<Lucky />
+		<Electrify />
 		<Texture>
 			<File>CustomObj1</File>
 			<Index>0x27</Index>

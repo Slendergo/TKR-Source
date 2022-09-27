@@ -839,7 +839,6 @@ namespace TKR.WorldServer.logic
                     new Shoot(12, 13, projectileIndex: 1, coolDown: 1000),
                     new Shoot(12, 11, projectileIndex: 2, coolDown: 1500),
                     new Shoot(12, 9, projectileIndex: 3, coolDown: 1800),
-                    new Reproduce("Evil Snowman", 5, 5, coolDown: 5000),
                     new TossObject("Frozen Elf", 4, angle: 0, coolDown: 10000),
                     new TossObject("Frozen Elf", 8, angle: 60, coolDown: 10000),
                     new TossObject("Frozen Elf", 4, angle: 120, coolDown: 10000),
@@ -1455,10 +1454,8 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("attack",
-                    new Taunt("attack!"),
-                    new Chase(10, 15, coolDown: 1500),
-                    new Shoot(8, 6, projectileIndex: 0, predictive: 0.8, coolDown: 500),
-                    new HealSelf(amount: 2000, coolDown: 5000)
+                    new Orbit(2, 2, 5, "Guardian's Frigid Squire", speedVariance: 0, radiusVariance: 0),
+                    new Shoot(8, 6, projectileIndex: 0, predictive: 0.8, coolDown: 1400)
                     )
                 )
             )
@@ -1487,6 +1484,9 @@ namespace TKR.WorldServer.logic
                 new ScaleHP2(20),
                 new State("attack1",
                     new Wander(.25),
+                    new Reproduce("Evil Snowman", coolDown: 999999),
+                    new Reproduce("Evil Snowman", coolDown: 999999),
+                    new Reproduce("Evil Snowman", coolDown: 999999),
                     new Shoot(20, 2, projectileIndex: 0, shootAngle: 5, predictive: .9, coolDown: 600),
                     new Shoot(15, 8, projectileIndex: 1, predictive: 1, coolDown: 1200)
                     )

@@ -1254,8 +1254,8 @@
 		<ParalyzeImmune/>
 		<Projectile id="0">
 			<ObjectId>Projectile 0 ES</ObjectId>
-			<Damage>60</Damage>
-			<Speed>100</Speed>
+			<Damage>120</Damage>
+			<Speed>45</Speed>
 			<Size>80</Size>
 			<ArmorPiercing/>
 			<MiltiHit/>

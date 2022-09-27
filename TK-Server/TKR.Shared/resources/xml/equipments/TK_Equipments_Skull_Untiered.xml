@@ -107,7 +107,7 @@
 		<BagType>7</BagType>
 		<FameBonus>5</FameBonus>
 		<MpCost>115</MpCost>
-		<Activate effect="Paralyzed" duration="2" useWisMod="false">ConditionEffectSelf</Activate>
+		<Activate radius="4" condEffect="Paralyzed" condDuration="2" useWisMod="false">VampireBlast</Activate>
 		<Activate radius="4" totalDamage="75" color="0xFF606070">VampireBlast</Activate>
 	</Object>
 </Objects>

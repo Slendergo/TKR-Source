@@ -38,7 +38,7 @@ namespace TKR.WorldServer.core.objects.vendors
             new ShopItem("Strange Library Key", 250),
             new ShopItem("Cemetery Key", 150),
             new ShopItem("Lost Halls Key", 500),
-            new ShopItem("Defiled Graveyard Key", 250),
+            new ShopItem("Defiled Graveyard Key", 350),
             new ShopItem("Davy's Key", 250),
             new ShopItem("The Crawling Depths Key", 250),
             new ShopItem("Shatters Key", 500),
@@ -51,7 +51,7 @@ namespace TKR.WorldServer.core.objects.vendors
             new ShopItem("Sprite World Key", 150),
             new ShopItem("Abyss of Demons Key", 150),
             new ShopItem("Snake Pit Key", 150),
-            new ShopItem("Beachzone Key", 500),
+            new ShopItem("Beachzone Key", 150),
             new ShopItem("Lab Key", 150),
             new ShopItem("Totem Key", 250),
             new ShopItem("Toxic Sewers Key", 150),
@@ -60,7 +60,7 @@ namespace TKR.WorldServer.core.objects.vendors
             new ShopItem("Cemetery Key", 150),
             new ShopItem("Davy's Key", 250),
             new ShopItem("Ocean Trench Key", 250),
-            new ShopItem("Tomb of the Ancients Key", 500)
+            new ShopItem("Tomb of the Ancients Key", 350)
         };
 
         private static readonly List<ISellableItem> KeysFame = new List<ISellableItem>
@@ -68,12 +68,11 @@ namespace TKR.WorldServer.core.objects.vendors
             new ShopItem("Strange Library Key", 1200),
             new ShopItem("Cemetery Key", 400),
             new ShopItem("Lost Halls Key", 5000),
-            new ShopItem("Defiled Graveyard Key", 2000),
+            new ShopItem("Defiled Graveyard Key", 3500),
             new ShopItem("Davy's Key", 1200),
             new ShopItem("The Crawling Depths Key", 2000),
             new ShopItem("Shatters Key", 5000),
             new ShopItem("Ocean Trench Key", 1200),
-            new ShopItem("Tomb of the Ancients Key", 2000),
             new ShopItem("Deadwater Docks Key", 1200),
             new ShopItem("Woodland Labyrinth Key", 1200),
             new ShopItem("Spider Den Key", 400),
@@ -90,7 +89,7 @@ namespace TKR.WorldServer.core.objects.vendors
             new ShopItem("Cemetery Key", 400),
             new ShopItem("Davy's Key", 1200),
             new ShopItem("Ocean Trench Key", 1200),
-            new ShopItem("Tomb of the Ancients Key", 5000)
+            new ShopItem("Tomb of the Ancients Key", 3500)
         };
 
         private static readonly List<ISellableItem> PurchasableFame = new List<ISellableItem>

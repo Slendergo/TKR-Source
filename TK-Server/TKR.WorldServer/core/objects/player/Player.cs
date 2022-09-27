@@ -1196,7 +1196,7 @@ namespace TKR.WorldServer.core.objects
 
         private void GodBless(int slot)
         {
-            if (World.Random.NextDouble() < 0.03 && ApplyEffectCooldown(slot))
+            if (World.Random.NextDouble() < 0.07 && ApplyEffectCooldown(slot))
             {
                 World.BroadcastIfVisible(new ShowEffect()
                 {
@@ -1214,7 +1214,7 @@ namespace TKR.WorldServer.core.objects
                 }, this);
 
                 ApplyConditionEffect(ConditionEffectIndex.Invulnerable, 3000);
-                setCooldownTime(5, slot);
+                setCooldownTime(10, slot);
             }
         }
 

@@ -1488,7 +1488,7 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("attack",
-                    new Shoot(4, 2, shootAngle: 120, projectileIndex: 0, fixedAngle: 240, coolDown: 50)
+                    new Shoot(4, 2, shootAngle: 120, projectileIndex: 0, fixedAngle: 240, coolDown: 200)
                     )
                 )
             )
@@ -1496,7 +1496,7 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("attack",
-                    new Shoot(4, 2, shootAngle: 120, projectileIndex: 0, fixedAngle: 300, coolDown: 50)
+                    new Shoot(4, 2, shootAngle: 120, projectileIndex: 0, fixedAngle: 300, coolDown: 200)
                     )
                 )
             )
@@ -1504,7 +1504,7 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("attack",
-                    new Shoot(4, 2, shootAngle: 120, projectileIndex: 0, fixedAngle: 0, coolDown: 50)
+                    new Shoot(4, 2, shootAngle: 120, projectileIndex: 0, fixedAngle: 0, coolDown: 200)
                     )
                 )
             )
@@ -1512,7 +1512,7 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("attack",
-                    new Shoot(4, 2, shootAngle: 120, projectileIndex: 0, fixedAngle: 60, coolDown: 50)
+                    new Shoot(4, 2, shootAngle: 120, projectileIndex: 0, fixedAngle: 60, coolDown: 200)
                     )
                 )
             )
@@ -1520,7 +1520,7 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("attack",
-                    new Shoot(4, 2, shootAngle: 120, projectileIndex: 0, fixedAngle: 120, coolDown: 50)
+                    new Shoot(4, 2, shootAngle: 120, projectileIndex: 0, fixedAngle: 120, coolDown: 200)
                     )
                 )
             )

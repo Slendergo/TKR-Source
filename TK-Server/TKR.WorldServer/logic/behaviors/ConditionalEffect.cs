@@ -26,7 +26,7 @@ namespace TKR.WorldServer.logic.behaviors
         protected override void OnStateExit(Entity host, TickTime time, ref object state)
         {
             if (!perm)
-                host.ApplyConditionEffect(effect, 0);
+                host.RemoveCondition(effect);
         }
 
         protected override void TickCore(Entity host, TickTime time, ref object state)

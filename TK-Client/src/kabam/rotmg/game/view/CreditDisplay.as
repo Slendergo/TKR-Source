@@ -63,15 +63,16 @@ package kabam.rotmg.game.view
          this.credits_ = credits;
          this.fame_ = fame;
          this.coinIcon_.x = -this.coinIcon_.width;
+         this.fameIcon_.x = -this.fameIcon_.width;
          this.creditsText_.text = this.credits_.toString();
          this.creditsText_.updateMetrics();
-         this.creditsText_.x = this.coinIcon_.x - this.creditsText_.width + 8;
-         this.creditsText_.y = this.coinIcon_.height / 2 - this.creditsText_.height / 2;
-         this.fameIcon_.x = this.creditsText_.x - this.fameIcon_.width;
          this.fameText_.text = this.fame_.toString();
          this.fameText_.updateMetrics();
+         this.creditsText_.x = this.coinIcon_.x - this.creditsText_.width + 8;
+         this.creditsText_.y = this.coinIcon_.height / 2 - this.creditsText_.height / 2;
          this.fameText_.x = this.fameIcon_.x - this.fameText_.width + 8;
-         this.fameText_.y = this.fameIcon_.height / 2 - this.fameText_.height / 2;
+         this.fameText_.y = creditsText_.height + 4 + this.fameIcon_.height / 2 - this.fameText_.height / 2;
+         this.fameIcon_.y = this.fameText_.y - this.fameIcon_.height /2 + 8;
       }
    }
 }

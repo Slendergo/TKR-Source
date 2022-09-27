@@ -94,7 +94,7 @@ namespace TKR.WorldServer.logic.behaviors
                         if (enemyHost.Spawned)
                         {
                             enemyEntity.Spawned = true;
-                            enemyEntity.ApplyConditionEffect(new ConditionEffect(ConditionEffectIndex.Invisible, -1));
+                            enemyEntity.ApplyPermanentConditionEffect(ConditionEffectIndex.Invisible);
                         }
                     }
 

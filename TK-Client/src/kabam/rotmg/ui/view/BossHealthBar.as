@@ -104,7 +104,7 @@ public class BossHealthBar extends Sprite {
         hpText_.updateMetrics();
 
         hpText_.x = foreground.x + foreground.width / 2 - hpText_.width / 2;
-        hpText_.y = foreground.y + foreground.height / 2 - hpText_.height / 2 - 2;
+        hpText_.y = foreground.y + foreground.height / 2 - hpText_.height / 2 - 1;
 
         if (go_.isInvulnerable()) {
             background.transform.colorTransform = new ColorTransform(50 / 255, 100 / 255, 190 / 255);

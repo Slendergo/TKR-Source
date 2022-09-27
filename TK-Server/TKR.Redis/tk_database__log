@@ -433,3 +433,7 @@
 [37988] 27 Sep 22:56:25.079 * Background saving started by pid 13000
 [37988] 27 Sep 22:56:25.683 # fork operation complete
 [37988] 27 Sep 22:56:25.684 * Background saving terminated with success
+[37988] 27 Sep 23:01:26.048 * 10 changes in 300 seconds. Saving...
+[37988] 27 Sep 23:01:26.050 * Background saving started by pid 5920
+[37988] 27 Sep 23:01:26.755 # fork operation complete
+[37988] 27 Sep 23:01:26.756 * Background saving terminated with success

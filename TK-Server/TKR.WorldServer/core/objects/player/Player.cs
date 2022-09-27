@@ -974,7 +974,7 @@ namespace TKR.WorldServer.core.objects
         {
             var elasped = time.TotalElapsedMs;
             if (elasped % 2000 == 0)
-                Stats.Boost.ReCalculateValues();
+                Stats.ReCalculateValues();
         }
 
         private void CerberusCore(TickTime time)

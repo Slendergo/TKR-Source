@@ -214,7 +214,7 @@
 	<Object type="0x4299" id="Condemned Frostbite">
 		<Class>Equipment</Class>
 		<Item />
-		<SonicBlaster />
+		<Lucky />
 		<Mythical />
 		<Texture>
 			<File>CustomObj1</File>

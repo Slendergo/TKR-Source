@@ -147,7 +147,7 @@
 		<Item />
 		<Description>
 		</Description>
-		<Lucky />
+		<Insanity />
 		<Mythical />
 		<Texture>
 			<File>CustomObj1</File>

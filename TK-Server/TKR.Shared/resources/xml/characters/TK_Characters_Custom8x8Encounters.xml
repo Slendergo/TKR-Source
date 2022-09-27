@@ -1254,12 +1254,10 @@
 		<ParalyzeImmune/>
 		<Projectile id="0">
 			<ObjectId>Projectile 0 ES</ObjectId>
-			<Damage>60</Damage>
-			<Speed>100</Speed>
+			<Damage>120</Damage>
+			<Speed>35</Speed>
 			<Size>80</Size>
-			<ArmorPiercing/>
-			<MiltiHit/>
-			<LifetimeMS>4000</LifetimeMS>
+			<LifetimeMS>6000</LifetimeMS>
 		</Projectile>
 	</Object>
 	<Object type="0xa89e" id="Cursed Polar Bear">

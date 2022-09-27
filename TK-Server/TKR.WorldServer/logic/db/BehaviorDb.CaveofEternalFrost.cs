@@ -495,7 +495,7 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(5000, "attack")
                     ),
                 new State("attack",
-                    new Spawn("Ice Wall Spawner 1", 1, 1, coolDown: 999999),
+                    new Spawn("Snowball Spawner", 1, 1, coolDown: 999999),
                     new RemoveConditionalEffect(ConditionEffectIndex.Invincible),
                     new HpLessTransition(0.5, "freedps"),
                     new Shoot(30, 3, projectileIndex: 4, fixedAngle: 0, coolDown: 2400, coolDownOffset: 100),
@@ -521,8 +521,8 @@ namespace TKR.WorldServer.logic
                     new Shoot(30, 3, projectileIndex: 4, fixedAngle: -100, coolDown: 2400, coolDownOffset: 2100),
                     new Shoot(30, 3, projectileIndex: 4, fixedAngle: -105, coolDown: 2400, coolDownOffset: 2200),
                     new Shoot(30, 3, projectileIndex: 4, fixedAngle: -110, coolDown: 2400, coolDownOffset: 2300),
-                    new Shoot(30, 3, projectileIndex: 4, fixedAngle: -115, coolDown: 2400, coolDownOffset: 2400),                  
-                                  
+                    new Shoot(30, 3, projectileIndex: 4, fixedAngle: -115, coolDown: 2400, coolDownOffset: 2400),
+
                     new Shoot(30, 4, projectileIndex: 5, fixedAngle: 0, coolDown: 7200, coolDownOffset: 100),
                     new Shoot(30, 4, projectileIndex: 5, fixedAngle: 5, coolDown: 7200, coolDownOffset: 200),
                     new Shoot(30, 4, projectileIndex: 5, fixedAngle: 10, coolDown: 7200, coolDownOffset: 300),
@@ -560,7 +560,7 @@ namespace TKR.WorldServer.logic
                     new Shoot(30, 4, projectileIndex: 5, fixedAngle: 170, coolDown: 7200, coolDownOffset: 3500),
                     new Shoot(30, 4, projectileIndex: 5, fixedAngle: 175, coolDown: 7200, coolDownOffset: 3600),
                     new Shoot(30, 4, projectileIndex: 5, fixedAngle: 180, coolDown: 7200, coolDownOffset: 3700),
-                                                  
+
                     new Shoot(30, 4, projectileIndex: 5, fixedAngle: 175, coolDown: 7200, coolDownOffset: 3800),
                     new Shoot(30, 4, projectileIndex: 5, fixedAngle: 170, coolDown: 7200, coolDownOffset: 3900),
                     new Shoot(30, 4, projectileIndex: 5, fixedAngle: 165, coolDown: 7200, coolDownOffset: 4000),
@@ -605,22 +605,34 @@ namespace TKR.WorldServer.logic
                     ),
                 new State("attack1",
                     new HpLessTransition(0.5, "freedps"),
-                    new TossObject2("Frozen Elf", 3, coolDown: 3000, randomToss: true),
-                    new TossObject2("Frozen Elf", 2, coolDown: 2500, randomToss: true),
-                    new Wander(0.3),
+                    new TossObject2("Evil Snowman", 6, 60, coolDown: 3000),
+                    new TossObject2("Evil Snowman", 9, 120, coolDown: 3000),
+                    new TossObject2("Evil Snowman", 6, 180, coolDown: 3000),
+                    new TossObject2("Evil Snowman", 9, 240, coolDown: 3000),
+                    new TossObject2("Evil Snowman", 6, 300, coolDown: 3000),
+                    new TossObject2("Evil Snowman", 9, 360, coolDown: 3000),
+                    new Shoot(15, 3, shootAngle: 10, projectileIndex: 4, coolDown: 2000, coolDownOffset: 0),
+                    new Shoot(15, 5, shootAngle: 10, projectileIndex: 5, coolDown: 2000, coolDownOffset: 600),
+                    new Shoot(15, 7, shootAngle: 10, projectileIndex: 4, coolDown: 2000, coolDownOffset: 1200),
                     new Shoot(30, 3, shootAngle: 10, projectileIndex: 4, coolDown: 1200),
                     new TimedTransition(10000, "attack2.1")
                     ),
                 new State("attack2.1",
                     new HpLessTransition(0.5, "freedps"),
-                    new Orbit(4, 8, 10, "Ice Wall Spawner 1", speedVariance: 0, radiusVariance: 0),
-                    new TossObject2("Frozen Elf", 3, coolDown: 3000, randomToss: true),
-                    new TossObject2("Frozen Elf", 2, coolDown: 2500, randomToss: true),
-                    new Shoot(30, 3, shootAngle: 10, projectileIndex: 4, coolDown: 1200),
+                    new Orbit(4, 8, 10, "Snowball Spawner", speedVariance: 0, radiusVariance: 0),
+                    new Shoot(15, 3, shootAngle: 10, projectileIndex: 4, coolDown: 2000, coolDownOffset: 0),
+                    new Shoot(15, 5, shootAngle: 10, projectileIndex: 5, coolDown: 2000, coolDownOffset: 600),
+                    new Shoot(15, 7, shootAngle: 10, projectileIndex: 4, coolDown: 2000, coolDownOffset: 1200),
                     new TimedTransition(10000, "attack3")
                     ),
                  new State("attack3",
-                    new Orbit(3, 8, 10, "Ice Wall Spawner 1", speedVariance: 0, radiusVariance: 0, orbitClockwise: true),
+                    new Orbit(3, 8, 10, "Snowball Spawner", speedVariance: 0, radiusVariance: 0, orbitClockwise: true),
+                    new TossObject2("Evil Snowman", 6, 60, coolDown: 3000),
+                    new TossObject2("Evil Snowman", 9, 120, coolDown: 3000),
+                    new TossObject2("Evil Snowman", 6, 180, coolDown: 3000),
+                    new TossObject2("Evil Snowman", 9, 240, coolDown: 3000),
+                    new TossObject2("Evil Snowman", 6, 300, coolDown: 3000),
+                    new TossObject2("Evil Snowman", 9, 360, coolDown: 3000),
                     new Shoot(30, 5, projectileIndex: 6, fixedAngle: 0, coolDown: 2400, coolDownOffset: 100),
                     new Shoot(30, 5, projectileIndex: 6, fixedAngle: -5, coolDown: 2400, coolDownOffset: 200),
                     new Shoot(30, 5, projectileIndex: 6, fixedAngle: -10, coolDown: 2400, coolDownOffset: 300),
@@ -650,8 +662,6 @@ namespace TKR.WorldServer.logic
                   new State("attack4",
                     new HpLessTransition(0.5, "freedps"),
                     new Orbit(4, 8, 10, "Ice Wall Spawner 1", speedVariance: 0, radiusVariance: 0),
-                    new TossObject2("Frozen Elf", 3, coolDown: 3000, randomToss: true),
-                    new TossObject2("Frozen Elf", 2, coolDown: 2500, randomToss: true),
                     new Shoot(30, 3, projectileIndex: 4, fixedAngle: 0, coolDown: 2400, coolDownOffset: 100),
                     new TimedTransition(10000, "attack1")
                     )
@@ -702,20 +712,20 @@ namespace TKR.WorldServer.logic
                 new ItemLoot("Special Dust", 0.01)
                 ),
              new Threshold(0.03,
-                new ItemLoot("Winter Solstice", 0.0003),
-                new ItemLoot("Polar Vortex", 0.0003),
-                new ItemLoot("Iceberg", 0.0003),
+                new ItemLoot("Winter Solstice", 0.0002),
+                new ItemLoot("Polar Vortex", 0.0002),
+                new ItemLoot("Iceberg", 0.0002),
 
-                new ItemLoot("Condemned Frostbite", 0.0003),
-                new ItemLoot("The Expansion", 0.0003),
-                new ItemLoot("The Northern Star", 0.0003),
-                
-                new ItemLoot("Snow Angle", 0.0003),
-                new ItemLoot("World of Ice", 0.0003),
-                
-                new ItemLoot("Agdluak", 0.0003),
-                new ItemLoot("Absolute Zero", 0.0003),
-                new ItemLoot("Cryogenic Freeze", 0.0003),
+                new ItemLoot("Condemned Frostbite", 0.0002),
+                new ItemLoot("The Expansion", 0.0002),
+                new ItemLoot("The Northern Star", 0.0002),
+
+                new ItemLoot("Snow Angle", 0.0002),
+                new ItemLoot("World of Ice", 0.0002),
+
+                new ItemLoot("Agdluak", 0.0002),
+                new ItemLoot("Absolute Zero", 0.0002),
+                new ItemLoot("Cryogenic Freeze", 0.0002),
                 new ItemLoot("Frozen Coin", 0.05),
                 new ItemLoot("Glowing Talisman", 0.0014)
                  )
@@ -732,20 +742,32 @@ namespace TKR.WorldServer.logic
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
                     new ConditionalEffect(ConditionEffectIndex.Invincible, false),
                     new Flash(0xCC1A1A, 0.5, 12),
+                    new TossObject("Queen of Ice Clone", 12, 45, coolDown: 999999),
+                    new TossObject("Queen of Ice Clone 2", 12, 135, coolDown: 999999),
+                    new TossObject("Queen of Ice Clone 3", 12, 225, coolDown: 999999),
+                    new TossObject("Queen of Ice Clone 4", 12, 315, coolDown: 999999),
                     new Taunt("You've killed my beloved Yeti!"),
                     new TimedTransition(5000, "scream")
                     ),
                 new State("scream",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
-                    new Flash(0xCC1A1A, 0.5, 12),
-                    new Shoot(20, 8, projectileIndex: 0, coolDownOffset: 1000),
-                    new Shoot(20, 17, projectileIndex: 1, coolDownOffset: 1500),
-                    new Shoot(20, 29, projectileIndex: 2, coolDownOffset: 2000),
-                    new TimedTransition(10000, "Protection")
+                    new Shoot(12, 3, projectileIndex: 1, shootAngle: 15, coolDown: 4000, coolDownOffset: 0),
+                    new Shoot(12, 5, projectileIndex: 5, shootAngle: 15, coolDown: 4000, coolDownOffset: 0),
+                    new Shoot(12, 7, projectileIndex: 6, shootAngle: 15, coolDown: 4000, coolDownOffset: 0),
+                    new Shoot(12, 9, projectileIndex: 1, shootAngle: 15, coolDown: 4000, coolDownOffset: 1000),
+                    new Shoot(12, 11, projectileIndex: 5, shootAngle: 15, coolDown: 4000, coolDownOffset: 1000),
+                    new Shoot(12, 13, projectileIndex: 6, shootAngle: 15, coolDown: 4000, coolDownOffset: 1000),
+                    new Shoot(12, 15, projectileIndex: 1, shootAngle: 15, coolDown: 4000, coolDownOffset: 2000),
+                    new Shoot(12, 17, projectileIndex: 5, shootAngle: 15, coolDown: 4000, coolDownOffset: 2000),
+                    new Shoot(12, 19, projectileIndex: 6, shootAngle: 15, coolDown: 4000, coolDownOffset: 2000),
+                    new TimedTransition(6000, "attack1")
                     ),
                 new State("attack1",
-                    new Taunt("Hello friend. You seem to be lost. LET ME SHOW YOU THE WAY OUT!"),
-                    new StayCloseToSpawn(2, 15),
+                    new OrderOnce(30, "Queen of Ice Clone", "attack"),
+                    new OrderOnce(30, "Queen of Ice Clone 2", "attack"),
+                    new OrderOnce(30, "Queen of Ice Clone 3", "attack"),
+                    new OrderOnce(30, "Queen of Ice Clone 4", "attack"),
+                    new StayCloseToSpawn(2, 4),
                     new Wander(0.3),
                     new Shoot(12, 11, projectileIndex: 1, coolDown: 800),
                     new Shoot(20, 13, projectileIndex: 2, coolDown: 1000),
@@ -753,13 +775,20 @@ namespace TKR.WorldServer.logic
                     ),
                 new State("return to spawn",
                     new ReturnToSpawn(1.3, 0),
+                    new InvisiToss("Evil Snowman", 6, 60, coolDown: 999999),
+                    new InvisiToss("Evil Snowman", 6, 120, coolDown: 999999),
+                    new InvisiToss("Evil Snowman", 6, 180, coolDown: 999999),
+                    new InvisiToss("Evil Snowman", 6, 240, coolDown: 999999),
+                    new InvisiToss("Evil Snowman", 6, 300, coolDown: 999999),
+                    new InvisiToss("Evil Snowman", 6, 360, coolDown: 999999),
                     new Taunt("You have damaged me!"),
-                    new TimedTransition(5000, "Protection")
+                    new TimedTransition(1400, "Protection")
                     ),
                 new State("Protection",
                     new ReturnToSpawn(3, 0),
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
                     new Taunt("Guardians! Protect me!"),
+                    new OrderOnce(30, "Evil Snowman", "attack2"),
                     new TossObject("Ice Tower", 8, angle: 0, coolDown: 999999),
                     new TossObject("Ice Tower 1", 8, angle: 60, coolDown: 999999),
                     new TossObject("Ice Tower 2", 8, angle: 120, coolDown: 999999),
@@ -769,23 +798,28 @@ namespace TKR.WorldServer.logic
                     new EntityExistsTransition("Ice Tower", 10, "waiting")
                     ),
                 new State("waiting",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
-                    new Shoot(12, 2, projectileIndex: 1, shootAngle: 15, predictive: .4, coolDown: 400),
-                    new Shoot(12, 3, projectileIndex: 0, shootAngle: 20, fixedAngle: 0, coolDown: 200),
-                    new Shoot(12, 2, projectileIndex: 0, shootAngle: 21, fixedAngle: 60, coolDown: 200),
-                    new Shoot(12, 3, projectileIndex: 0, shootAngle: 15, fixedAngle: 120, coolDown: 200),
-                    new Shoot(12, 3, projectileIndex: 0, shootAngle: 16, fixedAngle: 180, coolDown: 200),
-                    new Shoot(12, 2, projectileIndex: 0, shootAngle: 13, fixedAngle: 240, coolDown: 200),
-                    new Shoot(12, 3, projectileIndex: 0, shootAngle: 22, fixedAngle: 300, coolDown: 200),
-                    new Shoot(10, 6, projectileIndex: 4, coolDown: 800),
+                    new ConditionalEffect(ConditionEffectIndex.Invincible, false),
+                    //new Shoot(12, 2, projectileIndex: 1, shootAngle: 15, predictive: .4, coolDown: 400),
+                    //new Shoot(12, 3, projectileIndex: 0, shootAngle: 20, fixedAngle: 0, coolDown: 200),
+                    //new Shoot(12, 2, projectileIndex: 0, shootAngle: 21, fixedAngle: 60, coolDown: 200),
+                    //new Shoot(12, 3, projectileIndex: 0, shootAngle: 15, fixedAngle: 120, coolDown: 200),
+                    //new Shoot(12, 3, projectileIndex: 0, shootAngle: 16, fixedAngle: 180, coolDown: 200),
+                    //new Shoot(12, 2, projectileIndex: 0, shootAngle: 13, fixedAngle: 240, coolDown: 200),
+                    //new Shoot(12, 3, projectileIndex: 0, shootAngle: 22, fixedAngle: 300, coolDown: 200),
+                    //new Shoot(10, 6, projectileIndex: 4, coolDown: 800),
                     new EntitiesNotExistsTransition(100, "tentacles", "Ice Tower", "Ice Tower 1", "Ice Tower 2", "Ice Tower 3", "Ice Tower 4", "Ice Tower 5")
                     ),
                 new State("tentacles",
                     new ConditionalEffect(ConditionEffectIndex.Invincible, false),
-                    new TossObject2("Frozen Elf", 5, coolDown: 8000, coolDownOffset: 2000, randomToss: true),
-                    new TossObject2("Frozen Elf", 8, coolDown: 8000, coolDownOffset: 3000, randomToss: true),
-                    new TossObject2("Frozen Elf", 3, coolDown: 8000, coolDownOffset: 4500, randomToss: true),
-                    new Shoot(20, 4, shootAngle: 10, projectileIndex: 3, coolDown: 1200),
+                    new TimedTransition(1000, "tentacles2")
+                    ),
+                new State("tentacles2",
+                    new OrderOnce(30, "Queen of Ice Clone", "idle"),
+                    new OrderOnce(30, "Queen of Ice Clone 2", "idle"),
+                    new OrderOnce(30, "Queen of Ice Clone 3", "idle"),
+                    new OrderOnce(30, "Queen of Ice Clone 4", "idle"),
+                    new ConditionalEffect(ConditionEffectIndex.Invincible, false),
+                    new Shoot(20, 4, shootAngle: 12, projectileIndex: 3, coolDown: 800),
                     new Shoot(30, 5, projectileIndex: 2, fixedAngle: 0, coolDown: 3700, rotateAngle: 3, coolDownOffset: 100),
                     new Shoot(30, 5, projectileIndex: 2, fixedAngle: 5, coolDown: 3700, rotateAngle: 3, coolDownOffset: 200),
                     new Shoot(30, 5, projectileIndex: 2, fixedAngle: 10, coolDown: 3700, rotateAngle: 3, coolDownOffset: 300),
@@ -823,10 +857,11 @@ namespace TKR.WorldServer.logic
                     new Shoot(30, 5, projectileIndex: 2, fixedAngle: 170, coolDown: 3700, rotateAngle: 3, coolDownOffset: 3500),
                     new Shoot(30, 5, projectileIndex: 2, fixedAngle: 175, coolDown: 3700, rotateAngle: 3, coolDownOffset: 3600),
                     new Shoot(30, 5, projectileIndex: 2, fixedAngle: 180, coolDown: 3700, rotateAngle: 3, coolDownOffset: 3700),
-                    
-                    new TimedTransition(15000, "scream2")
+
+                    new TimedTransition(10000, "scream2")
                     ),
                 new State("scream2",
+                    new RemoveEntity(20, "Evil Snowman"),
                     new ConditionalEffect(ConditionEffectIndex.Invincible, false),
                     new Taunt("ARHHHHH"),
                     new Flash(0x5279FD, 0.5, 12),
@@ -834,48 +869,36 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(5000, "attackoftheminions")
                     ),
                 new State("attackoftheminions",
-                    new Charge(10, range: 8),
-                    new Shoot(12, 5, projectileIndex: 2, shootAngle: 20, coolDown: 600),
-                    new Shoot(12, 13, projectileIndex: 1, coolDown: 1000),
-                    new Shoot(12, 11, projectileIndex: 2, coolDown: 1500),
-                    new Shoot(12, 9, projectileIndex: 3, coolDown: 1800),
-                    new Reproduce("Evil Snowman", 5, 5, coolDown: 5000),
-                    new TossObject("Frozen Elf", 4, angle: 0, coolDown: 10000),
-                    new TossObject("Frozen Elf", 8, angle: 60, coolDown: 10000),
-                    new TossObject("Frozen Elf", 4, angle: 120, coolDown: 10000),
-                    new TossObject("Frozen Elf", 8, angle: 180, coolDown: 10000),
-                    new TossObject("Frozen Elf", 4, angle: 270, coolDown: 10000),
+                    new Wander(0.3),
+                    new OrderOnce(30, "Queen of Ice Clone", "attack"),
+                    new OrderOnce(30, "Queen of Ice Clone 2", "attack"),
+                    new OrderOnce(30, "Queen of Ice Clone 3", "attack"),
+                    new OrderOnce(30, "Queen of Ice Clone 4", "attack"),
+                    new Shoot(12, 13, projectileIndex: 5, coolDown: 1000),
                     new HpLessTransition(.7, "healing")
                     ),
                 new State("healing",
                     new ReturnToSpawn(1.3, 0),
                     new Taunt("THE COLD MAKES ME STRONGER!!!!"),
                     new HealSelf(coolDown: 5000, amount: 10, percentage: true),
-                    new HpLessTransition(.6, "clonesprepare")
-                    ),
-                new State("clonesprepare",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
-                    new Taunt("I HOPE YOU CAME PREPARED"),
-                    new TimedTransition(5000, "clones")
-                    ),
-                new State("clones",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
-                    new TossObject("Queen of Ice Clone", 6, 45, coolDown: 999999),
-                    new TossObject("Queen of Ice Clone", 6, 135, coolDown: 999999),
-                    new TossObject("Queen of Ice Clone", 6, 225, coolDown: 999999),
-                    new TossObject("Queen of Ice Clone", 6, 315, coolDown: 999999),
-                    new EntityExistsTransition("Queen of Ice Clone", 10, "waiting1")
-                    ),
-                new State("waiting1",
-                    new Shoot(12, 6, projectileIndex: 2, shootAngle: 15, predictive: 1, coolDown: 600),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
-                    new EntitiesNotExistsTransition(10, "prepareattack2", "Queen of Ice Clone", "Queen of Ice Clone", "Queen of Ice Clone", "Queen of Ice Clone")
+                    new HpLessTransition(.6, "prepareattack2")
                     ),
                 new State("prepareattack2",
+                    new InvisiToss("Evil Snowman", 6, 60, coolDown: 999999),
+                    new InvisiToss("Evil Snowman", 6, 120, coolDown: 999999),
+                    new InvisiToss("Evil Snowman", 6, 180, coolDown: 999999),
+                    new InvisiToss("Evil Snowman", 6, 240, coolDown: 999999),
+                    new InvisiToss("Evil Snowman", 6, 300, coolDown: 999999),
+                    new InvisiToss("Evil Snowman", 6, 360, coolDown: 999999),
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
-                    new TimedTransition(5000, "attack2")
+                    new TimedTransition(1000, "attack2")
                     ),
                 new State("attack2",
+                    new OrderOnce(30, "Evil Snowman", "attack2"),
+                    new OrderOnce(30, "Queen of Ice Clone", "idle"),
+                    new OrderOnce(30, "Queen of Ice Clone 2", "idle"),
+                    new OrderOnce(30, "Queen of Ice Clone 3", "idle"),
+                    new OrderOnce(30, "Queen of Ice Clone 4", "idle"),
                     new HpLessTransition(.45, "guards2"),
                     new Taunt("I’VE GOT PLENTY MORE TRICKS UP MY SLEEVE!"),
                     new Shoot(13, 40, projectileIndex: 3, coolDown: 1200),
@@ -969,6 +992,10 @@ namespace TKR.WorldServer.logic
                 new State("guards2",
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
                     new Taunt("Guardians! Protect me!"),
+                    new OrderOnce(30, "Queen of Ice Clone", "attack"),
+                    new OrderOnce(30, "Queen of Ice Clone 2", "attack"),
+                    new OrderOnce(30, "Queen of Ice Clone 3", "attack"),
+                    new OrderOnce(30, "Queen of Ice Clone 4", "attack"),
                     new TossObject("Ice Tower", 8, angle: 0, coolDown: 99999),
                     new TossObject("Ice Tower 1", 8, angle: 60, coolDown: 99999),
                     new TossObject("Ice Tower 2", 8, angle: 120, coolDown: 99999),
@@ -978,13 +1005,6 @@ namespace TKR.WorldServer.logic
                     new EntityExistsTransition("Ice Tower", 10, "waiting2")
                     ),
                 new State("waiting2",
-                    new Shoot(12, 1, projectileIndex: 1, coolDown: 400),
-                    new Shoot(18, 3, projectileIndex: 0, fixedAngle: 0, coolDown: 100),
-                    new Shoot(18, 3, projectileIndex: 0, fixedAngle: 60, coolDown: 100),
-                    new Shoot(18, 3, projectileIndex: 0, fixedAngle: 120, coolDown: 100),
-                    new Shoot(18, 3, projectileIndex: 0, fixedAngle: 180, coolDown: 100),
-                    new Shoot(18, 3, projectileIndex: 0, fixedAngle: 240, coolDown: 100),
-                    new Shoot(18, 3, projectileIndex: 0, fixedAngle: 300, coolDown: 100),
                     new Shoot(10, 6, projectileIndex: 4, coolDown: 400),
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
                     new EntitiesNotExistsTransition(100, "attack4", "Ice Tower", "Ice Tower 1", "Ice Tower 2", "Ice Tower 3", "Ice Tower 4", "Ice Tower 5")
@@ -1177,8 +1197,8 @@ namespace TKR.WorldServer.logic
                     new RemoveConditionalEffect(ConditionEffectIndex.Invincible),
                     new HpLessTransition(.6, "rage"),
                     new ReplaceTile("Black Water Frozen 1", "Black Water Frozen", 30),
-                    new Shoot(18, 7,  projectileIndex: 0, coolDown: 1200),
-                    new Shoot(18, 9,  projectileIndex: 0, coolDown: 1500),
+                    new Shoot(18, 7, projectileIndex: 0, coolDown: 1200),
+                    new Shoot(18, 9, projectileIndex: 0, coolDown: 1500),
                     new Shoot(18, 11, projectileIndex: 0, coolDown: 1700),
                     new Shoot(16, 8, shootAngle: 10, projectileIndex: 1, coolDown: 1000),
                     new Shoot(20, 12, projectileIndex: 0, coolDown: 2000),
@@ -1397,17 +1417,70 @@ namespace TKR.WorldServer.logic
         .Init("Queen of Ice Clone", // finished
             new State(
                 new ScaleHP2(20),
-                new Prioritize(
-                    new Orbit(4, 6.0, 25, "Queen of Ice")
+                new State("idle",
+                    new ConditionalEffect(ConditionEffectIndex.Invincible)
                     ),
-                new Shoot(10, 4, projectileIndex: 0, shootAngle: 5, predictive: .6, coolDown: 400)
+                new State("attack",
+                new Shoot(10, 1, projectileIndex: 0, fixedAngle: 225, coolDown: 1500, coolDownOffset: 0),
+                new Shoot(10, 1, projectileIndex: 1, fixedAngle: 225, coolDown: 1500, coolDownOffset: 0),
+                new Shoot(10, 1, projectileIndex: 2, fixedAngle: 225, coolDown: 1500, coolDownOffset: 0)
                 )
             )
+        )
+        .Init("Queen of Ice Clone 2", // finished
+           new State(
+                new ScaleHP2(20),
+                new State("idle",
+                    new ConditionalEffect(ConditionEffectIndex.Invincible)
+                    ),
+                new State("attack",
+                new Shoot(10, 1, projectileIndex: 0, fixedAngle: 315, coolDown: 1500, coolDownOffset: 0),
+                new Shoot(10, 1, projectileIndex: 1, fixedAngle: 315, coolDown: 1500, coolDownOffset: 0),
+                new Shoot(10, 1, projectileIndex: 2, fixedAngle: 315, coolDown: 1500, coolDownOffset: 0)
+                )
+            )
+        )
+        .Init("Queen of Ice Clone 3", // finished
+            new State(
+                new ScaleHP2(20),
+                new State("idle",
+                    new ConditionalEffect(ConditionEffectIndex.Invincible)
+                    ),
+                new State("attack",
+                new Shoot(10, 1, projectileIndex: 0, fixedAngle: 45, coolDown: 1500, coolDownOffset: 0),
+                new Shoot(10, 1, projectileIndex: 1, fixedAngle: 45, coolDown: 1500, coolDownOffset: 0),
+                new Shoot(10, 1, projectileIndex: 2, fixedAngle: 45, coolDown: 1500, coolDownOffset: 0)
+                )
+            )
+        )
+        .Init("Queen of Ice Clone 4", // finished
+            new State(
+                new ScaleHP2(20),
+                new State("idle",
+                    new ConditionalEffect(ConditionEffectIndex.Invincible)
+                    ),
+                new State("attack",
+                new Shoot(10, 1, projectileIndex: 0, fixedAngle: 135, coolDown: 1500, coolDownOffset: 0),
+                new Shoot(10, 1, projectileIndex: 1, fixedAngle: 135, coolDown: 1500, coolDownOffset: 0),
+                new Shoot(10, 1, projectileIndex: 2, fixedAngle: 135, coolDown: 1500, coolDownOffset: 0)
+                )
+            )
+        )
         .Init("Ice Tower",
             new State(
                 new ScaleHP2(20),
                 new State("attack",
-                    new Shoot(4, 2, shootAngle: 120, projectileIndex: 0, fixedAngle: 180, coolDown: 50)
+                    new Shoot(4, 2, shootAngle: 120, projectileIndex: 0, fixedAngle: 180, coolDown: 50),
+                    new HpLessTransition(0.05, "explode")
+                    ),
+                new State("explode",
+                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new Flash(0xFFFFF, 0.5, 12),
+                    new TimedTransition(1500, "die")
+                    ),
+                new State("die",
+                    new Shoot(8, 11, coolDown: 400),
+                    new Suicide()
                     )
                 )
             )
@@ -1455,10 +1528,13 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("attack",
-                    new Taunt("attack!"),
-                    new Chase(10, 15, coolDown: 1500),
-                    new Shoot(8, 6, projectileIndex: 0, predictive: 0.8, coolDown: 500),
-                    new HealSelf(amount: 2000, coolDown: 5000)
+                    new Orbit(2, 2, 10, "Guardian's Frigid Squire", speedVariance: 0, radiusVariance: 0),
+                    new Shoot(8, 3, shootAngle: 10, projectileIndex: 0, predictive: 0.8, coolDown: 400)
+                    ),
+                new State("attack2",
+                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new Orbit(3, 6, 10, "Queen of Ice", speedVariance: 0, radiusVariance: 0),
+                    new Shoot(12, 3, shootAngle: 10, projectileIndex: 0, predictive: 0.8, coolDown: 400)
                     )
                 )
             )
@@ -1487,6 +1563,7 @@ namespace TKR.WorldServer.logic
                 new ScaleHP2(20),
                 new State("attack1",
                     new Wander(.25),
+                    new Spawn("Evil Snowman", coolDown: 999999),
                     new Shoot(20, 2, projectileIndex: 0, shootAngle: 5, predictive: .9, coolDown: 600),
                     new Shoot(15, 8, projectileIndex: 1, predictive: 1, coolDown: 1200)
                     )

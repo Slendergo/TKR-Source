@@ -224,7 +224,7 @@
 	<Object type="0x4340" id="The Expansion">
 		<Class>Equipment</Class>
 		<Item />
-		<Insanity />
+		<Vampiric />
 		<Texture>
 			<File>CustomObj1</File>
 			<Index>0x48</Index>
@@ -239,7 +239,7 @@
 			<Speed>180</Speed>
 			<MinDamage>250</MinDamage>
 			<MaxDamage>290</MaxDamage>
-			<ParticleTrail lifetimeMS="300">0x0089D1</ParticleTrail>
+			<ParticleTrail lifetimeMS="100">0x0089D1</ParticleTrail>
 			<LifetimeMS>700</LifetimeMS>
 			<Amplitude>0.5</Amplitude>
 			<Frequency>2</Frequency>
@@ -247,7 +247,7 @@
 			<Size>120</Size>
 			<MultiHit />
 		</Projectile>
-		<NumProjectiles>1</NumProjectiles>
+		<NumProjectiles>2</NumProjectiles>
 		<ArcGap>0</ArcGap>
 		<BagType>6</BagType>
 		<FameBonus>6</FameBonus>

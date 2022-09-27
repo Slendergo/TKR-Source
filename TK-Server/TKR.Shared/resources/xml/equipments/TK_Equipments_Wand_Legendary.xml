@@ -193,13 +193,14 @@
 		<Projectile>
 			<ObjectId>Ice Wand Shot</ObjectId>
 			<Speed>4</Speed>
-			<MinDamage>230</MinDamage>
-			<MaxDamage>250</MaxDamage>
+			<MinDamage>300</MinDamage>
+			<MaxDamage>305</MaxDamage>
 			<ParticleTrail lifetimeMS="100">0x0089D1</ParticleTrail>
 			<LifetimeMS>1100</LifetimeMS>
 			<Parametric />
-			<Size>100</Size>
+			<Size>140</Size>
 			<MultiHit />
+			<PassesCover />
 		</Projectile>
 		<NumProjectiles>4</NumProjectiles>
 		<ArcGap>10</ArcGap>

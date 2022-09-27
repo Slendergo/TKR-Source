@@ -19,9 +19,9 @@
 		<Class>Projectile</Class>
 		<Texture>
 			<File>CustomObj1</File>
-			<Index>0x28</Index>
+			<Index>0x38</Index>
 		</Texture>
-		<Rotation>120</Rotation>
+		<AngleCorrection>1</AngleCorrection>
 	</Object>
 	<Object type="0x4127" id="Quetzalcoat Laser">
 		<Class>Projectile</Class>
@@ -152,6 +152,7 @@
 			<File>CustomObj1</File>
 			<Index>0x37</Index>
 		</Texture>
+		<Rotation>340</Rotation>
 	</Object>
 	<Object type="0x1FB" id="Morto Wisp">
 		<Class>Projectile</Class>
@@ -1581,7 +1582,7 @@
 			<File>CustomProjs</File>
 			<Index>0xf3</Index>
 		</Texture>
-		<AngleCorrection>1</AngleCorrection>
+		<Rotation>140</Rotation>
 	</Object>
 	<Object type="0xb17c" id="Projectile 0 CPB">
 		<Class>Projectile</Class>

@@ -1581,7 +1581,7 @@ namespace TKR.WorldServer.core.objects
                     }
                 }
 
-                if (item.Mythical || item.Revenge || item.ObjectId == "Possessed Halberd" || item.ObjectId == "The Horn Breaker")
+                if (item.Mythical || item.Revenge || item.ObjectId == "Possessed Halberd" || item.ObjectId == "The Horn Breaker" || item.ObjectId == "Spear of Thiram")
                     RevengeEffects(item, slot);
 
                 if (item.Legendary)

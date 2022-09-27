@@ -2890,10 +2890,11 @@
       <Index>109</Index>
     </AnimatedTexture>
     <Size>150</Size>
-    <MaxHitPoints>190000</MaxHitPoints>
+    <MaxHitPoints>300000</MaxHitPoints>
     <Defense>70</Defense>
     <StasisImmune />
     <StunImmune />
+	<DazedImmune />
     <ParalyzeImmune />
     <God />
     <XpMult>1.25</XpMult>

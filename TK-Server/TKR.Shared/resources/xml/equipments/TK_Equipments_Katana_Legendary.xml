@@ -116,7 +116,7 @@
 		<Class>Equipment</Class>
 		<Item />
 		<Mythical />
-		<Mutilate />
+		<Insanity />
 		<Texture>
 			<File>CustomObj1</File>
 			<Index>0x4a</Index>

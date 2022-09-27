@@ -106,8 +106,8 @@
 		<Projectile id="1">
 			<ObjectId>Quetzalcoat Star</ObjectId>
 			<Damage>130</Damage>
-			<Size>150</Size>
-			<Speed>65</Speed>
+			<Size>125</Size>
+			<Speed>45</Speed>
 			<MultiHit/>
 			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
 			<LifetimeMS>4000</LifetimeMS>
@@ -144,8 +144,8 @@
 		<Projectile id="1">
 			<ObjectId>Quetzalcoat Star</ObjectId>
 			<Damage>130</Damage>
-			<Size>150</Size>
-			<Speed>65</Speed>
+			<Size>125</Size>
+			<Speed>45</Speed>
 			<MultiHit/>
 			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
 			<LifetimeMS>4000</LifetimeMS>
@@ -182,8 +182,8 @@
 		<Projectile id="1">
 			<ObjectId>Quetzalcoat Star</ObjectId>
 			<Damage>130</Damage>
-			<Size>150</Size>
-			<Speed>65</Speed>
+			<Size>125</Size>
+			<Speed>45</Speed>
 			<MultiHit/>
 			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
 			<LifetimeMS>4000</LifetimeMS>
@@ -220,8 +220,8 @@
 		<Projectile id="1">
 			<ObjectId>Quetzalcoat Star</ObjectId>
 			<Damage>130</Damage>
-			<Size>150</Size>
-			<Speed>65</Speed>
+			<Size>125</Size>
+			<Speed>45</Speed>
 			<MultiHit/>
 			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
 			<LifetimeMS>4000</LifetimeMS>
@@ -258,8 +258,8 @@
 		<Projectile id="1">
 			<ObjectId>Quetzalcoat Star</ObjectId>
 			<Damage>130</Damage>
-			<Size>150</Size>
-			<Speed>65</Speed>
+			<Size>125</Size>
+			<Speed>45</Speed>
 			<MultiHit/>
 			<ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
 			<LifetimeMS>4000</LifetimeMS>
@@ -298,7 +298,7 @@
 		<Projectile id="1">
 			<ObjectId>Quetzalcoat Arc</ObjectId>
 			<Damage>185</Damage>
-			<Speed>85</Speed>
+			<Speed>65</Speed>
 			<LifetimeMS>2000</LifetimeMS>
 			<ConditionEffect duration="0.5">Paralyzed</ConditionEffect>
 			<MultiHit />

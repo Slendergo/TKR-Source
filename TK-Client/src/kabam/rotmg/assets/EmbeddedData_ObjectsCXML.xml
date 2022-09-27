@@ -16014,10 +16014,11 @@
       <Index>109</Index>
     </AnimatedTexture>
     <Size>150</Size>
-    <MaxHitPoints>190000</MaxHitPoints>
+    <MaxHitPoints>300000</MaxHitPoints>
     <Defense>70</Defense>
     <StasisImmune />
     <StunImmune />
+    <DazedImmune />
     <ParalyzeImmune />
     <God />
     <XpMult>1.25</XpMult>
@@ -27093,7 +27094,7 @@
     </AnimatedTexture>
     <DisplayedId>Queen of Ice</DisplayedId>
     <Size>130</Size>
-    <MaxHitPoints>540000</MaxHitPoints>
+    <MaxHitPoints>350000</MaxHitPoints>
     <Defense>60</Defense>
     <StasisImmune />
     <StunImmune />
@@ -27104,8 +27105,8 @@
     <Projectile id="0">
       <ObjectId>Projectile 0 QI</ObjectId>
       <Damage>260</Damage>
-      <Size>150</Size>
-      <Speed>90</Speed>
+      <Size>120</Size>
+      <Speed>65</Speed>
       <LifetimeMS>4000</LifetimeMS>
       <ArmorPiercing />
     </Projectile>
@@ -27116,14 +27117,13 @@
       <Speed>100</Speed>
       <LifetimeMS>4000</LifetimeMS>
       <MultiHit />
-      <ArmorPiercing />
       <ConditionEffect duration="1">Confused</ConditionEffect>
     </Projectile>
     <Projectile id="2">
       <ObjectId>Projectile 2 QI</ObjectId>
       <Damage>250</Damage>
       <Size>150</Size>
-      <Speed>85</Speed>
+      <Speed>50</Speed>
       <LifetimeMS>4000</LifetimeMS>
       <MultiHit />
       <ConditionEffect duration="1">Quiet</ConditionEffect>
@@ -27148,6 +27148,24 @@
       <MultiHit />
       <ConditionEffect duration="4">Sick</ConditionEffect>
     </Projectile>
+    <Projectile id="5">
+      <ObjectId>Projectile 1 QI</ObjectId>
+      <Damage>230</Damage>
+      <Size>120</Size>
+      <Speed>80</Speed>
+      <LifetimeMS>4000</LifetimeMS>
+      <MultiHit />
+      <ConditionEffect duration="1">Confused</ConditionEffect>
+    </Projectile>
+    <Projectile id="6">
+      <ObjectId>Projectile 1 QI</ObjectId>
+      <Damage>230</Damage>
+      <Size>100</Size>
+      <Speed>60</Speed>
+      <LifetimeMS>4000</LifetimeMS>
+      <MultiHit />
+      <ConditionEffect duration="1">Confused</ConditionEffect>
+    </Projectile>
   </Object>
   <Object type="0xa6a2" id="Queen of Ice Clone">
     <Class>Character</Class>
@@ -27171,11 +27189,165 @@
     <ParalyzeImmune />
     <XpMult>0</XpMult>
     <Projectile id="0">
-      <ObjectId>Projectile 0 QI</ObjectId>
+      <ObjectId>Quetzalcoat Star</ObjectId>
       <MinDamage>60</MinDamage>
       <MaxDamage>120</MaxDamage>
-      <Size>150</Size>
-      <Speed>90</Speed>
+      <Size>180</Size>
+      <Speed>75</Speed>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+    <Projectile id="1">
+      <ObjectId>Quetzalcoat Star</ObjectId>
+      <MinDamage>60</MinDamage>
+      <MaxDamage>120</MaxDamage>
+      <Size>120</Size>
+      <Speed>60</Speed>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+    <Projectile id="2">
+      <ObjectId>Quetzalcoat Star</ObjectId>
+      <MinDamage>60</MinDamage>
+      <MaxDamage>120</MaxDamage>
+      <Size>180</Size>
+      <Speed>45</Speed>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+  </Object>
+  <Object type="0x4512" id="Queen of Ice Clone 2">
+    <Class>Character</Class>
+    <Enemy />
+    <SpecialEnemy />
+    <Hero />
+    <God />
+    <Level>1</Level>
+    <AnimatedTexture>
+      <File>Custom16x16Encounters</File>
+      <Index>41</Index>
+    </AnimatedTexture>
+    <DisplayedId>Queen of Ice</DisplayedId>
+    <Size>110</Size>
+    <MaxHitPoints>40000</MaxHitPoints>
+    <Defense>60</Defense>
+    <StasisImmune />
+    <StunImmune />
+    <SlowImmune />
+    <DazedImmune />
+    <ParalyzeImmune />
+    <XpMult>0</XpMult>
+    <Projectile id="0">
+      <ObjectId>Quetzalcoat Star</ObjectId>
+      <MinDamage>60</MinDamage>
+      <MaxDamage>120</MaxDamage>
+      <Size>180</Size>
+      <Speed>75</Speed>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+    <Projectile id="1">
+      <ObjectId>Quetzalcoat Star</ObjectId>
+      <MinDamage>60</MinDamage>
+      <MaxDamage>120</MaxDamage>
+      <Size>120</Size>
+      <Speed>60</Speed>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+    <Projectile id="2">
+      <ObjectId>Quetzalcoat Star</ObjectId>
+      <MinDamage>60</MinDamage>
+      <MaxDamage>120</MaxDamage>
+      <Size>180</Size>
+      <Speed>45</Speed>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+  </Object>
+  <Object type="0x4511" id="Queen of Ice Clone 3">
+    <Class>Character</Class>
+    <Enemy />
+    <SpecialEnemy />
+    <Hero />
+    <God />
+    <Level>1</Level>
+    <AnimatedTexture>
+      <File>Custom16x16Encounters</File>
+      <Index>41</Index>
+    </AnimatedTexture>
+    <DisplayedId>Queen of Ice</DisplayedId>
+    <Size>110</Size>
+    <MaxHitPoints>40000</MaxHitPoints>
+    <Defense>60</Defense>
+    <StasisImmune />
+    <StunImmune />
+    <SlowImmune />
+    <DazedImmune />
+    <ParalyzeImmune />
+    <XpMult>0</XpMult>
+    <Projectile id="0">
+      <ObjectId>Quetzalcoat Star</ObjectId>
+      <MinDamage>60</MinDamage>
+      <MaxDamage>120</MaxDamage>
+      <Size>180</Size>
+      <Speed>75</Speed>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+    <Projectile id="1">
+      <ObjectId>Quetzalcoat Star</ObjectId>
+      <MinDamage>60</MinDamage>
+      <MaxDamage>120</MaxDamage>
+      <Size>120</Size>
+      <Speed>60</Speed>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+    <Projectile id="2">
+      <ObjectId>Quetzalcoat Star</ObjectId>
+      <MinDamage>60</MinDamage>
+      <MaxDamage>120</MaxDamage>
+      <Size>180</Size>
+      <Speed>45</Speed>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+  </Object>
+  <Object type="0x4510" id="Queen of Ice Clone 4">
+    <Class>Character</Class>
+    <Enemy />
+    <SpecialEnemy />
+    <Hero />
+    <God />
+    <Level>1</Level>
+    <AnimatedTexture>
+      <File>Custom16x16Encounters</File>
+      <Index>41</Index>
+    </AnimatedTexture>
+    <DisplayedId>Queen of Ice</DisplayedId>
+    <Size>110</Size>
+    <MaxHitPoints>40000</MaxHitPoints>
+    <Defense>60</Defense>
+    <StasisImmune />
+    <StunImmune />
+    <SlowImmune />
+    <DazedImmune />
+    <ParalyzeImmune />
+    <XpMult>0</XpMult>
+    <Projectile id="0">
+      <ObjectId>Quetzalcoat Star</ObjectId>
+      <MinDamage>60</MinDamage>
+      <MaxDamage>120</MaxDamage>
+      <Size>180</Size>
+      <Speed>75</Speed>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+    <Projectile id="1">
+      <ObjectId>Quetzalcoat Star</ObjectId>
+      <MinDamage>60</MinDamage>
+      <MaxDamage>120</MaxDamage>
+      <Size>120</Size>
+      <Speed>60</Speed>
+      <LifetimeMS>4000</LifetimeMS>
+    </Projectile>
+    <Projectile id="2">
+      <ObjectId>Quetzalcoat Star</ObjectId>
+      <MinDamage>60</MinDamage>
+      <MaxDamage>120</MaxDamage>
+      <Size>180</Size>
+      <Speed>45</Speed>
       <LifetimeMS>4000</LifetimeMS>
     </Projectile>
   </Object>
@@ -27194,7 +27366,7 @@
     </AnimatedTexture>
     <DisplayedId>Cursed Snowman</DisplayedId>
     <Size>160</Size>
-    <MaxHitPoints>450000</MaxHitPoints>
+    <MaxHitPoints>250000</MaxHitPoints>
     <Defense>44</Defense>
     <StasisImmune />
     <StunImmune />
@@ -27303,7 +27475,7 @@
     <Projectile id="0">
       <ObjectId>Projectile 0 FT</ObjectId>
       <Damage>240</Damage>
-      <Speed>110</Speed>
+      <Speed>60</Speed>
       <Size>80</Size>
       <ArmorPiercing />
       <LifetimeMS>700</LifetimeMS>
@@ -27325,7 +27497,7 @@
     <Projectile id="0">
       <ObjectId>Projectile 0 FT</ObjectId>
       <Damage>240</Damage>
-      <Speed>110</Speed>
+      <Speed>60</Speed>
       <Size>80</Size>
       <ArmorPiercing />
       <LifetimeMS>700</LifetimeMS>
@@ -27347,7 +27519,7 @@
     <Projectile id="0">
       <ObjectId>Projectile 0 FT</ObjectId>
       <Damage>240</Damage>
-      <Speed>110</Speed>
+      <Speed>60</Speed>
       <Size>80</Size>
       <ArmorPiercing />
       <LifetimeMS>700</LifetimeMS>
@@ -27369,7 +27541,7 @@
     <Projectile id="0">
       <ObjectId>Projectile 0 FT</ObjectId>
       <Damage>240</Damage>
-      <Speed>110</Speed>
+      <Speed>60</Speed>
       <Size>80</Size>
       <ArmorPiercing />
       <LifetimeMS>700</LifetimeMS>
@@ -27391,7 +27563,7 @@
     <Projectile id="0">
       <ObjectId>Projectile 0 FT</ObjectId>
       <Damage>240</Damage>
-      <Speed>110</Speed>
+      <Speed>60</Speed>
       <Size>80</Size>
       <ArmorPiercing />
       <LifetimeMS>700</LifetimeMS>
@@ -27413,7 +27585,7 @@
     <Projectile id="0">
       <ObjectId>Projectile 0 FT</ObjectId>
       <Damage>240</Damage>
-      <Speed>110</Speed>
+      <Speed>60</Speed>
       <Size>80</Size>
       <ArmorPiercing />
       <LifetimeMS>700</LifetimeMS>
@@ -27555,25 +27727,24 @@
       <Amplitude>2</Amplitude>
       <LifetimeMS>4000</LifetimeMS>
       <MultiHit />
-      <ArmorPiercing />
     </Projectile>
     <Projectile id="1">
       <ObjectId>Projectile 1 CSS</ObjectId>
-      <Damage>405</Damage>
+      <Damage>305</Damage>
       <Size>150</Size>
       <Speed>80</Speed>
       <LifetimeMS>4000</LifetimeMS>
     </Projectile>
     <Projectile id="2">
       <ObjectId>Projectile 2 CSS</ObjectId>
-      <Damage>515</Damage>
+      <Damage>315</Damage>
       <Size>150</Size>
       <Speed>80</Speed>
       <LifetimeMS>5000</LifetimeMS>
     </Projectile>
     <Projectile id="3">
       <ObjectId>Projectile 0 GFS</ObjectId>
-      <Damage>300</Damage>
+      <Damage>200</Damage>
       <Size>150</Size>
       <Speed>80</Speed>
       <Frequency>2</Frequency>
@@ -27746,12 +27917,13 @@
     <StasisImmune />
     <StunImmune />
     <SlowImmune />
+    <DazedImmune />
     <ShadowSize>0</ShadowSize>
     <MaxHitPoints>1000</MaxHitPoints>
     <Defense>10</Defense>
     <Projectile id="0">
       <ObjectId>Invisible</ObjectId>
-      <Damage>500</Damage>
+      <Damage>350</Damage>
       <Speed>10</Speed>
       <LifetimeMS>1000</LifetimeMS>
       <Size>100</Size>
@@ -27795,7 +27967,7 @@
     <Defense>10</Defense>
     <Projectile id="0">
       <ObjectId>Invisible</ObjectId>
-      <Damage>500</Damage>
+      <Damage>350</Damage>
       <Speed>10</Speed>
       <LifetimeMS>1000</LifetimeMS>
       <Size>100</Size>
@@ -27839,7 +28011,7 @@
     <Defense>10</Defense>
     <Projectile id="0">
       <ObjectId>Invisible</ObjectId>
-      <Damage>500</Damage>
+      <Damage>350</Damage>
       <Speed>10</Speed>
       <LifetimeMS>1000</LifetimeMS>
       <Size>100</Size>
@@ -27883,7 +28055,7 @@
     <Defense>10</Defense>
     <Projectile id="0">
       <ObjectId>Invisible</ObjectId>
-      <Damage>500</Damage>
+      <Damage>350</Damage>
       <Speed>10</Speed>
       <LifetimeMS>1000</LifetimeMS>
       <Size>100</Size>
@@ -27927,7 +28099,7 @@
     <Defense>10</Defense>
     <Projectile id="0">
       <ObjectId>Invisible</ObjectId>
-      <Damage>500</Damage>
+      <Damage>350</Damage>
       <Speed>10</Speed>
       <LifetimeMS>1000</LifetimeMS>
       <Size>100</Size>
@@ -27971,7 +28143,7 @@
     <Defense>10</Defense>
     <Projectile id="0">
       <ObjectId>Invisible</ObjectId>
-      <Damage>500</Damage>
+      <Damage>350</Damage>
       <Speed>10</Speed>
       <LifetimeMS>1000</LifetimeMS>
       <Size>100</Size>
@@ -28015,7 +28187,7 @@
     <Defense>10</Defense>
     <Projectile id="0">
       <ObjectId>Invisible</ObjectId>
-      <Damage>500</Damage>
+      <Damage>350</Damage>
       <Speed>10</Speed>
       <LifetimeMS>1000</LifetimeMS>
       <Size>100</Size>
@@ -28059,7 +28231,7 @@
     <Defense>10</Defense>
     <Projectile id="0">
       <ObjectId>Invisible</ObjectId>
-      <Damage>500</Damage>
+      <Damage>350</Damage>
       <Speed>10</Speed>
       <LifetimeMS>1000</LifetimeMS>
       <Size>100</Size>
@@ -28228,8 +28400,8 @@
     <Projectile id="1">
       <ObjectId>Quetzalcoat Star</ObjectId>
       <Damage>130</Damage>
-      <Size>150</Size>
-      <Speed>65</Speed>
+      <Size>125</Size>
+      <Speed>45</Speed>
       <MultiHit />
       <ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
       <LifetimeMS>4000</LifetimeMS>
@@ -28266,8 +28438,8 @@
     <Projectile id="1">
       <ObjectId>Quetzalcoat Star</ObjectId>
       <Damage>130</Damage>
-      <Size>150</Size>
-      <Speed>65</Speed>
+      <Size>125</Size>
+      <Speed>45</Speed>
       <MultiHit />
       <ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
       <LifetimeMS>4000</LifetimeMS>
@@ -28304,8 +28476,8 @@
     <Projectile id="1">
       <ObjectId>Quetzalcoat Star</ObjectId>
       <Damage>130</Damage>
-      <Size>150</Size>
-      <Speed>65</Speed>
+      <Size>125</Size>
+      <Speed>45</Speed>
       <MultiHit />
       <ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
       <LifetimeMS>4000</LifetimeMS>
@@ -28342,8 +28514,8 @@
     <Projectile id="1">
       <ObjectId>Quetzalcoat Star</ObjectId>
       <Damage>130</Damage>
-      <Size>150</Size>
-      <Speed>65</Speed>
+      <Size>125</Size>
+      <Speed>45</Speed>
       <MultiHit />
       <ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
       <LifetimeMS>4000</LifetimeMS>
@@ -28380,8 +28552,8 @@
     <Projectile id="1">
       <ObjectId>Quetzalcoat Star</ObjectId>
       <Damage>130</Damage>
-      <Size>150</Size>
-      <Speed>65</Speed>
+      <Size>125</Size>
+      <Speed>45</Speed>
       <MultiHit />
       <ParticleTrail intensity="0.3" lifetimeMS="200">0x005E90</ParticleTrail>
       <LifetimeMS>4000</LifetimeMS>
@@ -28420,7 +28592,7 @@
     <Projectile id="1">
       <ObjectId>Quetzalcoat Arc</ObjectId>
       <Damage>185</Damage>
-      <Speed>85</Speed>
+      <Speed>65</Speed>
       <LifetimeMS>2000</LifetimeMS>
       <ConditionEffect duration="0.5">Paralyzed</ConditionEffect>
       <MultiHit />
@@ -28926,6 +29098,9 @@
     <God />
     <Encounter />
     <StasisImmune />
+    <StunImmune />
+    <ParalyzedImmune />
+    <DazedImmune />
     <Class>Character</Class>
     <AnimatedTexture>
       <File>Custom32x32Encounters</File>
@@ -28984,7 +29159,9 @@
     <God />
     <Encounter />
     <StasisImmune />
-    <ParalyzeImmune />
+    <StunImmune />
+    <ParalyzedImmune />
+    <DazedImmune />
     <Class>Character</Class>
     <AnimatedTexture>
       <File>Custom32x32Encounters</File>
@@ -29042,6 +29219,9 @@
     <Quest />
     <God />
     <StasisImmune />
+    <StunImmune />
+    <ParalyzedImmune />
+    <DazedImmune />
     <Class>Character</Class>
     <AnimatedTexture>
       <File>Custom32x32Encounters</File>
@@ -29193,9 +29373,11 @@
     <DisplayId>Earth Elemental</DisplayId>
     <Quest />
     <God />
-    <StasisImmune />
     <Encounter />
-    <ParalyzeImmune />
+    <StasisImmune />
+    <StunImmune />
+    <ParalyzedImmune />
+    <DazedImmune />
     <Class>Character</Class>
     <AnimatedTexture>
       <File>Custom32x32Encounters</File>
@@ -29252,9 +29434,10 @@
     <Quest />
     <God />
     <StasisImmune />
-    <ParalyzeImmune />
+    <StunImmune />
+    <ParalyzedImmune />
+    <DazedImmune />
     <Encounter />
-    <SlowedImmune />
     <Class>Character</Class>
     <AnimatedTexture>
       <File>Custom32x32Encounters</File>
@@ -29292,8 +29475,9 @@
     <Quest />
     <God />
     <StasisImmune />
-    <ParalyzeImmune />
-    <SlowedImmune />
+    <StunImmune />
+    <ParalyzedImmune />
+    <DazedImmune />
     <Encounter />
     <Class>Character</Class>
     <AnimatedTexture>
@@ -29363,7 +29547,8 @@
     <Enemy />
     <StasisImmune />
     <StunImmune />
-    <DazeImmune />
+    <ParalyzedImmune />
+    <DazedImmune />
     <Chest />
     <AnimatedTexture>
       <File>Custom32x32Encounters</File>
@@ -29559,7 +29744,9 @@
     <God />
     <Encounter />
     <StasisImmune />
-    <ParalyzeImmune />
+    <StunImmune />
+    <ParalyzedImmune />
+    <DazedImmune />
     <Level>20</Level>
     <Class>Character</Class>
     <AnimatedTexture>
@@ -31090,12 +31277,12 @@
     <ParalyzeImmune />
     <Projectile id="0">
       <ObjectId>Projectile 0 ES</ObjectId>
-      <Damage>60</Damage>
-      <Speed>100</Speed>
+      <Damage>120</Damage>
+      <Speed>35</Speed>
       <Size>80</Size>
       <ArmorPiercing />
       <MiltiHit />
-      <LifetimeMS>4000</LifetimeMS>
+      <LifetimeMS>6000</LifetimeMS>
     </Projectile>
   </Object>
   <Object type="0xa89e" id="Cursed Polar Bear">
@@ -31167,8 +31354,8 @@
     <Projectile id="0">
       <ObjectId>Projectile 0 FE</ObjectId>
       <Damage>90</Damage>
-      <Speed>75</Speed>
-      <Size>90</Size>
+      <Speed>35</Speed>
+      <Size>120</Size>
       <ArmorPiercing />
       <LifetimeMS>4000</LifetimeMS>
     </Projectile>
@@ -31182,7 +31369,7 @@
       <Index>20</Index>
     </AnimatedTexture>
     <Size>150</Size>
-    <MaxHitPoints>22000</MaxHitPoints>
+    <MaxHitPoints>13000</MaxHitPoints>
     <Defense>50</Defense>
     <StasisImmune />
     <StunImmune />
@@ -31192,17 +31379,16 @@
       <Damage>260</Damage>
       <Speed>75</Speed>
       <Size>140</Size>
-      <ArmorPiercing />
       <MultiHit />
       <ConditionEffect duration="2">Speedy</ConditionEffect>
       <LifetimeMS>2500</LifetimeMS>
     </Projectile>
     <Projectile id="1">
       <ObjectId>Projectile 1 GFS</ObjectId>
-      <Damage>405</Damage>
+      <Damage>345</Damage>
       <Speed>65</Speed>
       <Size>140</Size>
-      <ArmorPiercing />
+      <MultiHit />
       <LifetimeMS>800</LifetimeMS>
     </Projectile>
   </Object>
@@ -51771,7 +51957,7 @@
     <SlotType>10</SlotType>
     <QuantityLimit>200</QuantityLimit>
     <Quantity>1</Quantity>
-    <BagType>5</BagType>
+    <BagType>4</BagType>
   </Object>
   <Object type="0x6498" id="Glowing Shard">
     <Class>Equipment</Class>
@@ -51791,7 +51977,8 @@
   <Object type="0x6499" id="Glowing Talisman">
     <Class>Equipment</Class>
     <Item />
-    <Description>A strange old trinket that resonates an old power once forgotten.</Description>
+    <NoTierTag />
+    <Description>A strange old trinket that resonates an old power once forgotten. (Use this item to fuel the strange generator)</Description>
     <Texture>
       <File>CustomObj</File>
       <Index>0x124</Index>
@@ -53071,7 +53258,7 @@
       <LifetimeMS>503</LifetimeMS>
       <MultiHit />
     </Projectile>
-    <BagType>6</BagType>
+    <BagType>7</BagType>
     <FameBonus>6</FameBonus>
     <NumProjectiles>1</NumProjectiles>
     <OldSound>arrowShoot</OldSound>
@@ -55691,7 +55878,7 @@
   <Object type="0x4299" id="Condemned Frostbite">
     <Class>Equipment</Class>
     <Item />
-    <SonicBlaster />
+    <Lucky />
     <Mythical />
     <Texture>
       <File>CustomObj1</File>
@@ -56229,7 +56416,7 @@
     <Class>Equipment</Class>
     <Item />
     <Mythical />
-    <Mutilate />
+    <Insanity />
     <Texture>
       <File>CustomObj1</File>
       <Index>0x4a</Index>
@@ -58174,8 +58361,8 @@
     <SlotType>9</SlotType>
     <Description>An eerie reminder of what lays in the depths of the Shatters.</Description>
     <ActivateOnEquip stat="0" amount="170">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="20" amount="10">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="8">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="8">IncrementStat</ActivateOnEquip>
     <BagType>7</BagType>
     <FameBonus>5</FameBonus>
     <feedPower>500</feedPower>
@@ -58507,11 +58694,9 @@
     </Texture>
     <SlotType>9</SlotType>
     <Description>A pair of horns well preserved and near fully intact, unearthed from a prehistoric being and held in new light. </Description>
-    <ActivateOnEquip stat="3" amount="120">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="20" amount="4">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="4">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="27" amount="12">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="26" amount="15">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="150">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="20">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="12">IncrementStat</ActivateOnEquip>
     <BagType>8</BagType>
     <FameBonus>8</FameBonus>
     <Legendary />
@@ -59975,7 +60160,7 @@
     <ActivateOnEquip stat="21" amount="10">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="4">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="8">IncrementStat</ActivateOnEquip>
-    <BagType>4</BagType>
+    <BagType>7</BagType>
     <feedPower>200</feedPower>
   </Object>
   <Object type="0x2027" id="Red Candy Apple">
@@ -59990,7 +60175,7 @@
     <ActivateOnEquip stat="0" amount="120">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="6">IncrementStat</ActivateOnEquip>
-    <BagType>4</BagType>
+    <BagType>7</BagType>
     <feedPower>200</feedPower>
   </Object>
   <Object type="0x2024" id="Green Candy Apple">
@@ -60006,7 +60191,7 @@
     <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="8">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="8">IncrementStat</ActivateOnEquip>
-    <BagType>4</BagType>
+    <BagType>7</BagType>
     <feedPower>200</feedPower>
   </Object>
   <Object type="0xc83" id="Cheater Robe">
@@ -60156,7 +60341,7 @@
     <Class>Equipment</Class>
     <Item />
     <Description></Description>
-    <Lucky />
+    <Insanity />
     <Mythical />
     <Texture>
       <File>CustomObj1</File>
@@ -61065,7 +61250,7 @@
   <Object type="0x4296" id="Iceberg">
     <Class>Equipment</Class>
     <Item />
-    <Clarification />
+    <GodTouch />
     <Texture>
       <File>CustomObj1</File>
       <Index>0x57</Index>
@@ -61337,8 +61522,7 @@
     </Projectile>
     <ActivateOnEquip stat="21" amount="20">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="0" amount="150">IncrementStat</ActivateOnEquip>
-    <ConditionEffect duration="4">Armor Broken</ConditionEffect>
-    <Activate effect="Armored" duration="2">ConditionEffectSelf</Activate>
+    <ConditionEffect duration="3">Armor Broken</ConditionEffect>
     <Usable />
     <BagType>7</BagType>
     <FameBonus>6</FameBonus>
@@ -62795,7 +62979,7 @@
   <Object type="0x4340" id="The Expansion">
     <Class>Equipment</Class>
     <Item />
-    <Insanity />
+    <Vampiric />
     <Texture>
       <File>CustomObj1</File>
       <Index>0x48</Index>
@@ -62810,7 +62994,7 @@
       <Speed>180</Speed>
       <MinDamage>250</MinDamage>
       <MaxDamage>290</MaxDamage>
-      <ParticleTrail lifetimeMS="300">0x0089D1</ParticleTrail>
+      <ParticleTrail lifetimeMS="100">0x0089D1</ParticleTrail>
       <LifetimeMS>700</LifetimeMS>
       <Amplitude>0.5</Amplitude>
       <Frequency>2</Frequency>
@@ -62818,7 +63002,7 @@
       <Size>120</Size>
       <MultiHit />
     </Projectile>
-    <NumProjectiles>1</NumProjectiles>
+    <NumProjectiles>2</NumProjectiles>
     <ArcGap>0</ArcGap>
     <BagType>6</BagType>
     <FameBonus>6</FameBonus>
@@ -62827,7 +63011,7 @@
   <Object type="0x5012" id="Cinders of Ruin">
     <Class>Equipment</Class>
     <Item />
-    <GodTouch />
+    <Lucky />
     <Texture>
       <File>CustomObj</File>
       <Index>0x45</Index>
@@ -64326,7 +64510,7 @@
   <Object type="0xa429" id="Spear of Thiram">
     <Class>Equipment</Class>
     <Item />
-    <Insanity />
+    <Vampiric />
     <Texture>
       <File>CustomObj</File>
       <Index>0xdf</Index>
@@ -66047,13 +66231,14 @@
     <Projectile>
       <ObjectId>Ice Wand Shot</ObjectId>
       <Speed>4</Speed>
-      <MinDamage>230</MinDamage>
-      <MaxDamage>250</MaxDamage>
+      <MinDamage>300</MinDamage>
+      <MaxDamage>305</MaxDamage>
       <ParticleTrail lifetimeMS="100">0x0089D1</ParticleTrail>
       <LifetimeMS>1100</LifetimeMS>
       <Parametric />
       <Size>100</Size>
       <MultiHit />
+      <PassesCover />
     </Projectile>
     <NumProjectiles>4</NumProjectiles>
     <ArcGap>10</ArcGap>
@@ -81745,9 +81930,9 @@
     <Class>Projectile</Class>
     <Texture>
       <File>CustomObj1</File>
-      <Index>0x28</Index>
+      <Index>0x38</Index>
     </Texture>
-    <Rotation>120</Rotation>
+    <AngleCorrection>1</AngleCorrection>
   </Object>
   <Object type="0x4127" id="Quetzalcoat Laser">
     <Class>Projectile</Class>
@@ -83306,7 +83491,7 @@
       <File>CustomProjs</File>
       <Index>0xf3</Index>
     </Texture>
-    <AngleCorrection>1</AngleCorrection>
+    <Rotation>140</Rotation>
   </Object>
   <Object type="0xb17c" id="Projectile 0 CPB">
     <Class>Projectile</Class>

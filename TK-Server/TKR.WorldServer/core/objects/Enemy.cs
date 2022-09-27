@@ -345,10 +345,10 @@ namespace TKR.WorldServer.core.objects
                     },
                         new Notification
                         {
+                            Message = "Vampiric!",
                             Color = new ARGB(0xFFD336B3),
                             ObjectId = firstHit.Id,
-                            PlayerId = player.Id,
-                            Message = "Vampiric!"
+                            PlayerId = player.Id
                         }
                 };
 

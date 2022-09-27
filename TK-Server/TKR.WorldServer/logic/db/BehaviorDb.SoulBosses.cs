@@ -603,11 +603,11 @@ namespace TKR.WorldServer.logic
                 new State("Attack",
                     new Shoot(8, 3, projectileIndex: 2, shootAngle: 25, coolDown: 500),
                     new Prioritize(
-                        new HpLessTransition(0.05, "dead1")
+                        new Orbit(speed: 3, radius: 5, acquireRange: 6, target: "Stanley, the Golden Knight", speedVariance: 0, radiusVariance: 0)),
+                    new HpLessTransition(0.05, "dead1")
                     ),
                 new State("dead1",
-                    new Suicide()
-                        new Orbit(speed: 3, radius: 5, acquireRange: 6, target: "Stanley, the Golden Knight", speedVariance: 0, radiusVariance: 0)),
+                    new Suicide()                       
                     )
                 )
             )

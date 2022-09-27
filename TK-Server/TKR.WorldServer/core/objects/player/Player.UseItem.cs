@@ -62,7 +62,7 @@ namespace TKR.WorldServer.core.objects
             else
                 Inventory[slot] = dustItem;
 
-            SendInfo($"You Scattered a Item Dust and obtained a {item.DisplayName}");
+            SendInfo($"You Scattered a Item Dust and obtained a [{dustItem.DisplayId ?? dustItem.ObjectId}]");
         }
 
         public void AETalismanFragment(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)

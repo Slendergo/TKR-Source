@@ -1826,8 +1826,8 @@
 		<Projectile id="0">
 			<ObjectId>Projectile 0 QI</ObjectId>
 			<Damage>260</Damage>
-			<Size>150</Size>
-			<Speed>90</Speed>
+			<Size>120</Size>
+			<Speed>65</Speed>
 			<LifetimeMS>4000</LifetimeMS>
 			<ArmorPiercing/>
 		</Projectile>
@@ -1844,7 +1844,7 @@
 			<ObjectId>Projectile 2 QI</ObjectId>
 			<Damage>250</Damage>
 			<Size>150</Size>
-			<Speed>75</Speed>
+			<Speed>50</Speed>
 			<LifetimeMS>4000</LifetimeMS>
 			<MultiHit />
 			<ConditionEffect duration="1">Quiet</ConditionEffect>
@@ -1858,7 +1858,6 @@
 			<LifetimeMS>4000</LifetimeMS>
 			<MultiHit />
 			<ConditionEffect duration="1">Quiet</ConditionEffect>
-			<ConditionEffect duration="1.5">Stunned</ConditionEffect>
 		</Projectile>
 		<Projectile id="4">
 			<ObjectId>Projectile 4 QI</ObjectId>
@@ -1867,8 +1866,26 @@
 			<Speed>60</Speed>
 			<LifetimeMS>4000</LifetimeMS>
 			<MultiHit />
-			<ConditionEffect duration="4">Sick</ConditionEffect>
+			<ConditionEffect duration="3">Sick</ConditionEffect>
 		</Projectile>
+	<Projectile id="5">
+		<ObjectId>Projectile 1 QI</ObjectId>
+		<Damage>230</Damage>
+		<Size>120</Size>
+		<Speed>80</Speed>
+		<LifetimeMS>4000</LifetimeMS>
+		<MultiHit />
+		<ConditionEffect duration="1">Confused</ConditionEffect>
+	</Projectile>
+	<Projectile id="6">
+		<ObjectId>Projectile 1 QI</ObjectId>
+		<Damage>230</Damage>
+		<Size>100</Size>
+		<Speed>60</Speed>
+		<LifetimeMS>4000</LifetimeMS>
+		<MultiHit />
+		<ConditionEffect duration="1">Confused</ConditionEffect>
+	</Projectile>
 	</Object>
 	<Object type="0xa6a2" id="Queen of Ice Clone">
 		<Class>Character</Class>
@@ -1892,11 +1909,165 @@
 		<ParalyzeImmune/>
 		<XpMult>0</XpMult>
 		<Projectile id="0">
-			<ObjectId>Projectile 0 QI</ObjectId>
+			<ObjectId>Quetzalcoat Star</ObjectId>
 			<MinDamage>60</MinDamage>
 			<MaxDamage>120</MaxDamage>
-			<Size>150</Size>
-			<Speed>90</Speed>
+			<Size>180</Size>
+			<Speed>75</Speed>
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+	<Projectile id="1">
+		<ObjectId>Quetzalcoat Star</ObjectId>
+		<MinDamage>60</MinDamage>
+		<MaxDamage>120</MaxDamage>
+		<Size>120</Size>
+		<Speed>60</Speed>
+		<LifetimeMS>4000</LifetimeMS>
+	</Projectile>
+	<Projectile id="2">
+		<ObjectId>Quetzalcoat Star</ObjectId>
+		<MinDamage>60</MinDamage>
+		<MaxDamage>120</MaxDamage>
+		<Size>180</Size>
+		<Speed>45</Speed>
+		<LifetimeMS>4000</LifetimeMS>
+	</Projectile>
+	</Object>
+	<Object type="0x4512" id="Queen of Ice Clone 2">
+		<Class>Character</Class>
+		<Enemy />
+		<SpecialEnemy />
+		<Hero />
+		<God />
+		<Level>1</Level>
+		<AnimatedTexture>
+			<File>Custom16x16Encounters</File>
+			<Index>41</Index>
+		</AnimatedTexture>
+		<DisplayedId>Queen of Ice</DisplayedId>
+		<Size>110</Size>
+		<MaxHitPoints>40000</MaxHitPoints>
+		<Defense>60</Defense>
+		<StasisImmune/>
+		<StunImmune/>
+		<SlowImmune/>
+		<DazedImmune/>
+		<ParalyzeImmune/>
+		<XpMult>0</XpMult>
+		<Projectile id="0">
+			<ObjectId>Quetzalcoat Star</ObjectId>
+			<MinDamage>60</MinDamage>
+			<MaxDamage>120</MaxDamage>
+			<Size>180</Size>
+			<Speed>75</Speed>
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+		<Projectile id="1">
+			<ObjectId>Quetzalcoat Star</ObjectId>
+			<MinDamage>60</MinDamage>
+			<MaxDamage>120</MaxDamage>
+			<Size>120</Size>
+			<Speed>60</Speed>
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+		<Projectile id="2">
+			<ObjectId>Quetzalcoat Star</ObjectId>
+			<MinDamage>60</MinDamage>
+			<MaxDamage>120</MaxDamage>
+			<Size>180</Size>
+			<Speed>45</Speed>
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+	</Object>
+	<Object type="0x4511" id="Queen of Ice Clone 3">
+		<Class>Character</Class>
+		<Enemy />
+		<SpecialEnemy />
+		<Hero />
+		<God />
+		<Level>1</Level>
+		<AnimatedTexture>
+			<File>Custom16x16Encounters</File>
+			<Index>41</Index>
+		</AnimatedTexture>
+		<DisplayedId>Queen of Ice</DisplayedId>
+		<Size>110</Size>
+		<MaxHitPoints>40000</MaxHitPoints>
+		<Defense>60</Defense>
+		<StasisImmune/>
+		<StunImmune/>
+		<SlowImmune/>
+		<DazedImmune/>
+		<ParalyzeImmune/>
+		<XpMult>0</XpMult>
+		<Projectile id="0">
+			<ObjectId>Quetzalcoat Star</ObjectId>
+			<MinDamage>60</MinDamage>
+			<MaxDamage>120</MaxDamage>
+			<Size>180</Size>
+			<Speed>75</Speed>
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+		<Projectile id="1">
+			<ObjectId>Quetzalcoat Star</ObjectId>
+			<MinDamage>60</MinDamage>
+			<MaxDamage>120</MaxDamage>
+			<Size>120</Size>
+			<Speed>60</Speed>
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+		<Projectile id="2">
+			<ObjectId>Quetzalcoat Star</ObjectId>
+			<MinDamage>60</MinDamage>
+			<MaxDamage>120</MaxDamage>
+			<Size>180</Size>
+			<Speed>45</Speed>
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+	</Object>
+	<Object type="0x4510" id="Queen of Ice Clone 4">
+		<Class>Character</Class>
+		<Enemy />
+		<SpecialEnemy />
+		<Hero />
+		<God />
+		<Level>1</Level>
+		<AnimatedTexture>
+			<File>Custom16x16Encounters</File>
+			<Index>41</Index>
+		</AnimatedTexture>
+		<DisplayedId>Queen of Ice</DisplayedId>
+		<Size>110</Size>
+		<MaxHitPoints>40000</MaxHitPoints>
+		<Defense>60</Defense>
+		<StasisImmune/>
+		<StunImmune/>
+		<SlowImmune/>
+		<DazedImmune/>
+		<ParalyzeImmune/>
+		<XpMult>0</XpMult>
+		<Projectile id="0">
+			<ObjectId>Quetzalcoat Star</ObjectId>
+			<MinDamage>60</MinDamage>
+			<MaxDamage>120</MaxDamage>
+			<Size>180</Size>
+			<Speed>75</Speed>
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+		<Projectile id="1">
+			<ObjectId>Quetzalcoat Star</ObjectId>
+			<MinDamage>60</MinDamage>
+			<MaxDamage>120</MaxDamage>
+			<Size>120</Size>
+			<Speed>60</Speed>
+			<LifetimeMS>4000</LifetimeMS>
+		</Projectile>
+		<Projectile id="2">
+			<ObjectId>Quetzalcoat Star</ObjectId>
+			<MinDamage>60</MinDamage>
+			<MaxDamage>120</MaxDamage>
+			<Size>180</Size>
+			<Speed>45</Speed>
 			<LifetimeMS>4000</LifetimeMS>
 		</Projectile>
 	</Object>
@@ -2024,7 +2195,7 @@
 		<Projectile id="0">
 			<ObjectId>Projectile 0 FT</ObjectId>
 			<Damage>240</Damage>
-			<Speed>110</Speed>
+			<Speed>60</Speed>
 			<Size>80</Size>
 			<ArmorPiercing/>
 			<LifetimeMS>700</LifetimeMS>
@@ -2046,7 +2217,7 @@
 		<Projectile id="0">
 			<ObjectId>Projectile 0 FT</ObjectId>
 			<Damage>240</Damage>
-			<Speed>110</Speed>
+			<Speed>60</Speed>
 			<Size>80</Size>
 			<ArmorPiercing/>
 			<LifetimeMS>700</LifetimeMS>
@@ -2068,7 +2239,7 @@
 		<Projectile id="0">
 			<ObjectId>Projectile 0 FT</ObjectId>
 			<Damage>240</Damage>
-			<Speed>110</Speed>
+			<Speed>60</Speed>
 			<Size>80</Size>
 			<ArmorPiercing/>
 			<LifetimeMS>700</LifetimeMS>
@@ -2090,7 +2261,7 @@
 		<Projectile id="0">
 			<ObjectId>Projectile 0 FT</ObjectId>
 			<Damage>240</Damage>
-			<Speed>110</Speed>
+			<Speed>60</Speed>
 			<Size>80</Size>
 			<ArmorPiercing/>
 			<LifetimeMS>700</LifetimeMS>
@@ -2112,7 +2283,7 @@
 		<Projectile id="0">
 			<ObjectId>Projectile 0 FT</ObjectId>
 			<Damage>240</Damage>
-			<Speed>110</Speed>
+			<Speed>60</Speed>
 			<Size>80</Size>
 			<ArmorPiercing/>
 			<LifetimeMS>700</LifetimeMS>
@@ -2134,7 +2305,7 @@
 		<Projectile id="0">
 			<ObjectId>Projectile 0 FT</ObjectId>
 			<Damage>240</Damage>
-			<Speed>110</Speed>
+			<Speed>60</Speed>
 			<Size>80</Size>
 			<ArmorPiercing/>
 			<LifetimeMS>700</LifetimeMS>

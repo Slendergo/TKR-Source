@@ -81,7 +81,7 @@
 	<Object type="0x4296" id="Iceberg">
 		<Class>Equipment</Class>
 		<Item />
-		<Clarification />
+		<GodTouch />
 		<Texture>
 			<File>CustomObj1</File>
 			<Index>0x57</Index>

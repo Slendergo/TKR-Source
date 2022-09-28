@@ -712,20 +712,20 @@ namespace TKR.WorldServer.logic
                 new ItemLoot("Special Dust", 0.01)
                 ),
              new Threshold(0.03,
-                new ItemLoot("Winter Solstice", 0.0002),
-                new ItemLoot("Polar Vortex", 0.0002),
-                new ItemLoot("Iceberg", 0.0002),
+                new ItemLoot("Winter Solstice", 0.000125),
+                new ItemLoot("Polar Vortex", 0.000125),
+                new ItemLoot("Iceberg", 0.000125),
 
-                new ItemLoot("Condemned Frostbite", 0.0002),
-                new ItemLoot("The Expansion", 0.0002),
-                new ItemLoot("The Northern Star", 0.0002),
+                new ItemLoot("Condemned Frostbite", 0.000125),
+                new ItemLoot("The Expansion", 0.000125),
+                new ItemLoot("The Northern Star", 0.000125),
 
-                new ItemLoot("Snow Angle", 0.0002),
-                new ItemLoot("World of Ice", 0.0002),
+                new ItemLoot("Snow Angle", 0.000125),
+                new ItemLoot("World of Ice", 0.000125),
 
-                new ItemLoot("Agdluak", 0.0002),
-                new ItemLoot("Absolute Zero", 0.0002),
-                new ItemLoot("Cryogenic Freeze", 0.0002),
+                new ItemLoot("Agdluak", 0.000125),
+                new ItemLoot("Absolute Zero", 0.000125),
+                new ItemLoot("Cryogenic Freeze", 0.000125),
                 new ItemLoot("Frozen Coin", 0.05),
                 new ItemLoot("Glowing Talisman", 0.0014)
                  )

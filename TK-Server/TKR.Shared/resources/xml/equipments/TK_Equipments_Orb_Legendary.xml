@@ -65,7 +65,7 @@
     <Activate effect="Armored" duration="2" useWisMod="false">ConditionEffectSelf</Activate>
     <Cooldown>3.5</Cooldown>
   </Object>
-	<Object type="0x4525" id="Cryogenic Freeze">
+	<Object type="0x4295" id="Cryogenic Freeze">
 		<Class>Equipment</Class>
 		<Item />
 		<Lucky />

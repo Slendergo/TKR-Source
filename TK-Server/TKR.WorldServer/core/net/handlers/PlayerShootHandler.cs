@@ -54,10 +54,10 @@ namespace TKR.WorldServer.core.net.handlers
                 return;
             }
 
-            if (!player.IsValidShoot(time, item.RateOfFire))
-            {
-                System.Console.WriteLine(player.Name + " invalid shoot");
-            }
+            //if (!player.IsValidShoot(time, item.RateOfFire))
+            //{
+            //    //System.Console.WriteLine(player.Name + " invalid shoot");
+            //}
 
             var newBulletId = player.GetNextBulletId();
             var clientBulletId = bulletId % 0xFFFF;

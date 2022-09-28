@@ -27377,7 +27377,7 @@
       <ObjectId>ASM Big Shot 1</ObjectId>
       <Damage>215</Damage>
       <Size>150</Size>
-      <Speed>90</Speed>
+      <Speed>75</Speed>
       <LifetimeMS>3000</LifetimeMS>
       <MultiHit />
     </Projectile>
@@ -27392,7 +27392,7 @@
       <ObjectId>Projectile 2 CSS</ObjectId>
       <Damage>205</Damage>
       <Size>100</Size>
-      <Speed>100</Speed>
+      <Speed>80</Speed>
       <LifetimeMS>3000</LifetimeMS>
       <ConditionEffect duration="1.8">Confused</ConditionEffect>
     </Projectile>
@@ -27731,21 +27731,21 @@
       <ObjectId>Projectile 1 CSS</ObjectId>
       <Damage>305</Damage>
       <Size>150</Size>
-      <Speed>80</Speed>
+      <Speed>70</Speed>
       <LifetimeMS>4000</LifetimeMS>
     </Projectile>
     <Projectile id="2">
       <ObjectId>Projectile 2 CSS</ObjectId>
       <Damage>315</Damage>
       <Size>150</Size>
-      <Speed>80</Speed>
+      <Speed>70</Speed>
       <LifetimeMS>5000</LifetimeMS>
     </Projectile>
     <Projectile id="3">
       <ObjectId>Projectile 0 GFS</ObjectId>
       <Damage>200</Damage>
       <Size>150</Size>
-      <Speed>80</Speed>
+      <Speed>70</Speed>
       <Frequency>2</Frequency>
       <Amplitude>0.5</Amplitude>
       <LifetimeMS>5000</LifetimeMS>
@@ -27754,42 +27754,42 @@
       <ObjectId>CSS Big 1</ObjectId>
       <Damage>300</Damage>
       <Size>150</Size>
-      <Speed>80</Speed>
+      <Speed>70</Speed>
       <LifetimeMS>1500</LifetimeMS>
     </Projectile>
     <Projectile id="5">
       <ObjectId>CSS Shot 1</ObjectId>
       <Damage>300</Damage>
       <Size>150</Size>
-      <Speed>80</Speed>
+      <Speed>70</Speed>
       <LifetimeMS>5000</LifetimeMS>
     </Projectile>
     <Projectile id="6">
       <ObjectId>CSS Shot 2</ObjectId>
       <Damage>300</Damage>
       <Size>150</Size>
-      <Speed>90</Speed>
+      <Speed>80</Speed>
       <LifetimeMS>5000</LifetimeMS>
     </Projectile>
     <Projectile id="7">
       <ObjectId>CSS Shot 1</ObjectId>
       <Damage>300</Damage>
       <Size>150</Size>
-      <Speed>80</Speed>
+      <Speed>70</Speed>
       <LifetimeMS>5000</LifetimeMS>
     </Projectile>
     <Projectile id="8">
       <ObjectId>CSS Shot 1</ObjectId>
       <Damage>300</Damage>
       <Size>150</Size>
-      <Speed>70</Speed>
+      <Speed>60</Speed>
       <LifetimeMS>5000</LifetimeMS>
     </Projectile>
     <Projectile id="9">
       <ObjectId>CSS Shot 1</ObjectId>
       <Damage>300</Damage>
       <Size>150</Size>
-      <Speed>60</Speed>
+      <Speed>50</Speed>
       <LifetimeMS>5000</LifetimeMS>
     </Projectile>
   </Object>
@@ -31374,7 +31374,7 @@
     <Projectile id="0">
       <ObjectId>Projectile 0 GFS</ObjectId>
       <Damage>260</Damage>
-      <Speed>75</Speed>
+      <Speed>65</Speed>
       <Size>140</Size>
       <MultiHit />
       <ConditionEffect duration="2">Speedy</ConditionEffect>
@@ -31383,7 +31383,7 @@
     <Projectile id="1">
       <ObjectId>Projectile 1 GFS</ObjectId>
       <Damage>345</Damage>
-      <Speed>65</Speed>
+      <Speed>55</Speed>
       <Size>140</Size>
       <MultiHit />
       <LifetimeMS>800</LifetimeMS>
@@ -77987,41 +77987,41 @@
     <DonorItem />
   </Object>
   <Object type="0x4526" id="Three Headed Snake Generator">
-		<DisplayId>Three Headed Snake</DisplayId>
-		<Class>Equipment</Class>
-		<Item />
-		<Texture>
-			<File>CustomObj1</File>
-			<Index>0x19</Index>
-		</Texture>
-		<SlotType>10</SlotType>
-		<Description>I may follow you, but you are not my master.</Description>
-		<Sound>spell/light_heal</Sound>
-		<InvUse />
-		<VaultItem />
-		<Soulbound />
-		<Activate objectId="Three Headed Snake" cooldown="10">PermaPet</Activate>
-		<OldSound>use_potion</OldSound>
-		<DonorItem/>
-	</Object>
-	<Object type="0x4529" id="Black Widow Generator">
-		<DisplayId>Black Widow</DisplayId>
-		<Class>Equipment</Class>
-		<Item />
-		<Texture>
-			<File>CustomObj1</File>
-			<Index>0x67</Index>
-		</Texture>
-		<SlotType>10</SlotType>
-		<Description>I may follow you, but you are not my master.</Description>
-		<Sound>spell/light_heal</Sound>
-		<InvUse />
-		<VaultItem />
-		<Soulbound />
-		<Activate objectId="Black Widow" cooldown="10">PermaPet</Activate>
-		<OldSound>use_potion</OldSound>
-		<DonorItem/>
-	</Object>
+    <DisplayId>Three Headed Snake</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x19</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>I may follow you, but you are not my master.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Three Headed Snake" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+    <DonorItem />
+  </Object>
+  <Object type="0x4529" id="Black Widow Generator">
+    <DisplayId>Black Widow</DisplayId>
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x67</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>I may follow you, but you are not my master.</Description>
+    <Sound>spell/light_heal</Sound>
+    <InvUse />
+    <VaultItem />
+    <Soulbound />
+    <Activate objectId="Black Widow" cooldown="10">PermaPet</Activate>
+    <OldSound>use_potion</OldSound>
+    <DonorItem />
+  </Object>
   <Object type="0x1500" id="Black Cat Generator">
     <DisplayId>Black Cat</DisplayId>
     <Class>Equipment</Class>
@@ -79574,25 +79574,25 @@
     <Size>60</Size>
   </Object>
   <Object type="0x4528" id="Three Headed Snake">
-		<Class>Character</Class>
-		<Group>Hexable</Group>
-		<AnimatedTexture>
-			<File>Custom16x16Encounters</File>
-			<Index>54</Index>
-		</AnimatedTexture>
-		<NoMiniMap />
-		<Size>60</Size>
-	</Object>
-	<Object type="0x4530" id="Black Widow">
-		<Class>Character</Class>
-		<Group>Hexable</Group>
-		<AnimatedTexture>
-			<File>Custom16x16Encounters</File>
-			<Index>55</Index>
-		</AnimatedTexture>
-		<NoMiniMap />
-		<Size>60</Size>
-	</Object>
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>Custom16x16Encounters</File>
+      <Index>54</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
+  <Object type="0x4530" id="Black Widow">
+    <Class>Character</Class>
+    <Group>Hexable</Group>
+    <AnimatedTexture>
+      <File>Custom16x16Encounters</File>
+      <Index>55</Index>
+    </AnimatedTexture>
+    <NoMiniMap />
+    <Size>60</Size>
+  </Object>
   <Object type="0x074c" id="Nexus Turkey">
     <DisplayId>Turkey</DisplayId>
     <Class>Character</Class>

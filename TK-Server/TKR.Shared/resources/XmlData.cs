@@ -154,6 +154,8 @@ namespace TKR.Shared.resources
 
         public void LoadMaps(string basePath)
         {
+			var isDocker = Environment.GetEnvironmentVariable("IS_DOCKER") != null;
+			
             var directories = Directory.GetDirectories(basePath, "*", SearchOption.AllDirectories).ToList();
             directories.Add(basePath);
             foreach (var directory in directories)
@@ -164,7 +166,15 @@ namespace TKR.Shared.resources
                 foreach (var jm in jms)
                 {
                     var id = $"{(directoryName == "" ? "" : $"{directoryName}/")}{Path.GetFileName(jm)}";
-
+					
+					if(isDocker){
+						if(id[0] == '/'){
+							id = id.Substring(1, id.Length - 1);
+						}
+					}
+		
+					Console.WriteLine(id);
+		
                     if (id == "realm.jm")
                         WorldDataCache.Add(id, File.ReadAllBytes(jm));
                     else

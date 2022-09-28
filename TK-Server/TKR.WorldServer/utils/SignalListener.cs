@@ -3,9 +3,16 @@ using TKR.WorldServer.core;
 
 namespace TKR.WorldServer.utils
 {
-    public sealed class SignalListener
-    {
-        public enum CtrlTypes
+	public sealed class SignalListenerLinux : SignalListener
+	{
+		public SignalListenerLinux(GameServer gameServer) : base(gameServer) 
+		{
+		}
+	}
+	
+	public sealed class SignalListenerWindows : SignalListener
+	{
+		public enum CtrlTypes
         {
             CTRL_C_EVENT = 0,
             CTRL_BREAK_EVENT = 1,
@@ -20,11 +27,9 @@ namespace TKR.WorldServer.utils
         public delegate bool HandlerRoutine(CtrlTypes CtrlType);
 
         private readonly HandlerRoutine ConsoleCtrlCheckRoutine;
-        private readonly GameServer GameServer;
 
-        public SignalListener(GameServer gameServer)
-        {
-            GameServer = gameServer;
+		public SignalListenerWindows(GameServer gameServer) : base(gameServer) {
+		
 
             ConsoleCtrlCheckRoutine = ConsoleCtrlCheck;
             SetConsoleCtrlHandler(ConsoleCtrlCheckRoutine, true);
@@ -42,8 +47,14 @@ namespace TKR.WorldServer.utils
                     GameServer.Stop();
                     break;
             }
-
             return true;
         }
+	}
+	
+    public abstract class SignalListener
+    {
+		protected readonly GameServer GameServer;
+   
+        public SignalListener(GameServer gameServer) => GameServer = gameServer;
     }
 }

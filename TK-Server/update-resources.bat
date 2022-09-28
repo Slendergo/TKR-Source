@@ -1,2 +1,2 @@
 del /F /S /Q \\wsl$\docker-desktop-data\data\docker\volumes\tkr_resources\_data\resources
-xcopy /S /Q /Y /F /exclude:resourceignore.txt .\TKR.Shared\resources\ \\wsl$\docker-desktop-data\data\docker\volumes\tkr_resources\_data\*
+xcopy /S /Q /Y /F /exclude:resourceignore.txt .\TKR.Shared\resources \\wsl$\docker-desktop-data\data\docker\volumes\tkr_resources\_data\resources\*

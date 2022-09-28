@@ -78,7 +78,9 @@ namespace TKR.WorldServer.core
 
             InterServerManager = new ISManager(Database.Subscriber, Configuration);
             WorldManager = new WorldManager(this);
-            SignalListener = new SignalListener(this);
+            
+            var isDocker = Environment.GetEnvironmentVariable("IS_DOCKER") != null;
+			SignalListener = isDocker ? new SignalListenerLinux(this) : new SignalListenerWindows(this);
         }
 
         public bool IsWhitelisted(int accountId) => Configuration.serverSettings.whitelist.Contains(accountId);

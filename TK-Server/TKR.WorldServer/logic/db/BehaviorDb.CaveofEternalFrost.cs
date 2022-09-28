@@ -1423,7 +1423,11 @@ namespace TKR.WorldServer.logic
                 new State("attack",
                 new Shoot(10, 1, projectileIndex: 0, fixedAngle: 225, coolDown: 1500, coolDownOffset: 0),
                 new Shoot(10, 1, projectileIndex: 1, fixedAngle: 225, coolDown: 1500, coolDownOffset: 0),
-                new Shoot(10, 1, projectileIndex: 2, fixedAngle: 225, coolDown: 1500, coolDownOffset: 0)
+                new Shoot(10, 1, projectileIndex: 2, fixedAngle: 225, coolDown: 1500, coolDownOffset: 0),
+                new EntityExistsTransition("Queen of Ice", 20, "die")
+                    ),
+                new State("die",
+                    new Suicide()
                 )
             )
         )
@@ -1436,7 +1440,11 @@ namespace TKR.WorldServer.logic
                 new State("attack",
                 new Shoot(10, 1, projectileIndex: 0, fixedAngle: 315, coolDown: 1500, coolDownOffset: 0),
                 new Shoot(10, 1, projectileIndex: 1, fixedAngle: 315, coolDown: 1500, coolDownOffset: 0),
-                new Shoot(10, 1, projectileIndex: 2, fixedAngle: 315, coolDown: 1500, coolDownOffset: 0)
+                new Shoot(10, 1, projectileIndex: 2, fixedAngle: 315, coolDown: 1500, coolDownOffset: 0),
+                new EntityExistsTransition("Queen of Ice", 20, "die")
+                    ),
+                new State("die",
+                    new Suicide()
                 )
             )
         )
@@ -1449,7 +1457,11 @@ namespace TKR.WorldServer.logic
                 new State("attack",
                 new Shoot(10, 1, projectileIndex: 0, fixedAngle: 45, coolDown: 1500, coolDownOffset: 0),
                 new Shoot(10, 1, projectileIndex: 1, fixedAngle: 45, coolDown: 1500, coolDownOffset: 0),
-                new Shoot(10, 1, projectileIndex: 2, fixedAngle: 45, coolDown: 1500, coolDownOffset: 0)
+                new Shoot(10, 1, projectileIndex: 2, fixedAngle: 45, coolDown: 1500, coolDownOffset: 0),
+                new EntityExistsTransition("Queen of Ice", 20, "die")
+                    ),
+                new State("die",
+                    new Suicide()
                 )
             )
         )
@@ -1462,7 +1474,11 @@ namespace TKR.WorldServer.logic
                 new State("attack",
                 new Shoot(10, 1, projectileIndex: 0, fixedAngle: 135, coolDown: 1500, coolDownOffset: 0),
                 new Shoot(10, 1, projectileIndex: 1, fixedAngle: 135, coolDown: 1500, coolDownOffset: 0),
-                new Shoot(10, 1, projectileIndex: 2, fixedAngle: 135, coolDown: 1500, coolDownOffset: 0)
+                new Shoot(10, 1, projectileIndex: 2, fixedAngle: 135, coolDown: 1500, coolDownOffset: 0),
+                new EntityExistsTransition("Queen of Ice", 20, "die")
+                    ),
+                new State("die",
+                    new Suicide()
                 )
             )
         )

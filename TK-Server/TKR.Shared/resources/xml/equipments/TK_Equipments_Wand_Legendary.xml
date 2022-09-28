@@ -195,7 +195,6 @@
 			<Speed>4</Speed>
 			<MinDamage>300</MinDamage>
 			<MaxDamage>305</MaxDamage>
-			<ParticleTrail lifetimeMS="100">0x0089D1</ParticleTrail>
 			<LifetimeMS>1100</LifetimeMS>
 			<Parametric />
 			<Size>140</Size>

@@ -239,7 +239,6 @@
 			<Speed>180</Speed>
 			<MinDamage>250</MinDamage>
 			<MaxDamage>290</MaxDamage>
-			<ParticleTrail lifetimeMS="100">0x0089D1</ParticleTrail>
 			<LifetimeMS>700</LifetimeMS>
 			<Amplitude>0.5</Amplitude>
 			<Frequency>2</Frequency>

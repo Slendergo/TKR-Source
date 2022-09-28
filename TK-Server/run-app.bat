@@ -1,1 +1,1 @@
-docker run --network redis --name app --expose 2005 -p 2005:2000 -d -v tkr_resources:/data tkr-app /data/server.conf
+docker run --network redis --name app --expose 2005 -e IS_DOCKER=true -p 2005:2000 -d -v tkr_resources:/data tkr-app /data/server.conf

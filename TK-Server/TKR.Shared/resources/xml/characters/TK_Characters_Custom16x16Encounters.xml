@@ -2452,21 +2452,21 @@
 			<ObjectId>Projectile 1 CSS</ObjectId>
 			<Damage>305</Damage>
 			<Size>150</Size>
-			<Speed>80</Speed>
+			<Speed>70</Speed>
 			<LifetimeMS>4000</LifetimeMS>
 		</Projectile>
 		<Projectile id="2">
 			<ObjectId>Projectile 2 CSS</ObjectId>
 			<Damage>315</Damage>
 			<Size>150</Size>
-			<Speed>80</Speed>
+			<Speed>70</Speed>
 			<LifetimeMS>5000</LifetimeMS>
 		</Projectile>
 		<Projectile id="3">
 			<ObjectId>Projectile 0 GFS</ObjectId>
 			<Damage>200</Damage>
 			<Size>150</Size>
-			<Speed>80</Speed>
+			<Speed>70</Speed>
 			<Frequency>2</Frequency>
 			<Amplitude>0.5</Amplitude>
 			<LifetimeMS>5000</LifetimeMS>
@@ -2475,42 +2475,42 @@
 			<ObjectId>CSS Big 1</ObjectId>
 			<Damage>300</Damage>
 			<Size>150</Size>
-			<Speed>80</Speed>
+			<Speed>70</Speed>
 			<LifetimeMS>1500</LifetimeMS>
 		</Projectile>
 		<Projectile id="5">
 			<ObjectId>CSS Shot 1</ObjectId>
 			<Damage>300</Damage>
 			<Size>150</Size>
-			<Speed>80</Speed>
+			<Speed>70</Speed>
 			<LifetimeMS>5000</LifetimeMS>
 		</Projectile>
 		<Projectile id="6">
 			<ObjectId>CSS Shot 2</ObjectId>
 			<Damage>300</Damage>
 			<Size>150</Size>
-			<Speed>90</Speed>
+			<Speed>80</Speed>
 			<LifetimeMS>5000</LifetimeMS>
 		</Projectile>
 		<Projectile id="7">
 			<ObjectId>CSS Shot 1</ObjectId>
 			<Damage>300</Damage>
 			<Size>150</Size>
-			<Speed>80</Speed>
+			<Speed>70</Speed>
 			<LifetimeMS>5000</LifetimeMS>
 		</Projectile>
 		<Projectile id="8">
 			<ObjectId>CSS Shot 1</ObjectId>
 			<Damage>300</Damage>
 			<Size>150</Size>
-			<Speed>70</Speed>
+			<Speed>60</Speed>
 			<LifetimeMS>5000</LifetimeMS>
 		</Projectile>
 		<Projectile id="9">
 			<ObjectId>CSS Shot 1</ObjectId>
 			<Damage>300</Damage>
 			<Size>150</Size>
-			<Speed>60</Speed>
+			<Speed>50</Speed>
 			<LifetimeMS>5000</LifetimeMS>
 		</Projectile>
 	</Object>

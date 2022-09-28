@@ -153,8 +153,8 @@ namespace TKR.WorldServer.logic
                     new RemoveConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new Reproduce("Strange Magician Spell", 20, 3, 3000),
                     new Flash(0xFF0000, 1, 1),
-                    new Chase(speed: 8, sightRange: 11, range: 15, duration: 5, coolDown: 3000), new Shoot(20, 2, shootAngle: 20, projectileIndex: 0, predictive: 1, coolDown: 500),
-                    new Shoot(20, 1, shootAngle: 0, projectileIndex: 1, predictive: 0, coolDown: 950),
+                    new Chase(speed: 8, sightRange: 11, range: 15, duration: 5, coolDown: 3000), new Shoot(20, 4, shootAngle: 20, projectileIndex: 0, predictive: 1, coolDown: 500),
+                    new Shoot(20, 3, shootAngle: 0, projectileIndex: 1, predictive: 0, coolDown: 950),
                     new HpLessTransition(0.5, "Shoot Two")
                     ),
                 new State("Shoot Two",
@@ -164,8 +164,8 @@ namespace TKR.WorldServer.logic
                     new Shoot(radius: 20, count: 1, shootAngle: 20, projectileIndex: 0, fixedAngle: 90, coolDown: 0),
                     new Shoot(radius: 20, count: 1, shootAngle: 20, projectileIndex: 0, fixedAngle: 180, coolDown: 0),
                     new Shoot(radius: 20, count: 1, shootAngle: 20, projectileIndex: 0, fixedAngle: 270, coolDown: 0),
-                    new Shoot(20, 3, shootAngle: 20, projectileIndex: 0, predictive: 0.7, coolDown: 500),
-                    new Shoot(20, 1, shootAngle: 0, projectileIndex: 1, predictive: 1, coolDown: 0),
+                    new Shoot(20, 5, shootAngle: 20, projectileIndex: 0, predictive: 0.7, coolDown: 500),
+                    new Shoot(20, 3, shootAngle: 0, projectileIndex: 1, predictive: 1, coolDown: 0),
                     new HpLessTransition(0.25, "Rage")
                     ),
                 new State("Rage",
@@ -177,9 +177,9 @@ namespace TKR.WorldServer.logic
                     new Reproduce("Strange Magician Spell", 20, 3, 1500),
                     new Wander(0.5),
                     new Chase(speed: 8, sightRange: 11, range: 15, duration: 5, coolDown: 3000),
-                    new Shoot(20, 2, shootAngle: 20, projectileIndex: 0, predictive: 0, coolDown: 750),
-                    new Shoot(20, 2, shootAngle: 20, projectileIndex: 0, predictive: 0, coolDown: 1000),
-                    new Shoot(20, 1, shootAngle: 20, projectileIndex: 1, predictive: 0, coolDown: 1200)
+                    new Shoot(20, 4, shootAngle: 20, projectileIndex: 0, predictive: 0, coolDown: 750),
+                    new Shoot(20, 4, shootAngle: 20, projectileIndex: 0, predictive: 0, coolDown: 1000),
+                    new Shoot(20, 2, shootAngle: 20, projectileIndex: 1, predictive: 0, coolDown: 1200)
                     )
                 ),
             new Threshold(0.001,

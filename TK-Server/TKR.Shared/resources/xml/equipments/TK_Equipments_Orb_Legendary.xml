@@ -90,4 +90,25 @@
 		<Activate effect="Speedy" duration="3" useWisMod="true">ConditionEffectSelf</Activate>
 		<Cooldown>3.5</Cooldown>
 	</Object>
+	<Object type="0x4525" id="Orb of Sludge">
+		<Class>Equipment</Class>
+		<Item />
+		<Mutilate />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x18</Index>
+		</Texture>
+		<Legendary />
+		<SlotType>21</SlotType>
+		<Description>Gulpord, the Slime God, produced an orb. Even its existence may be questioned...</Description>
+		<ActivateOnEquip stat="26" amount="8">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="22" amount="12">IncrementStat</ActivateOnEquip>
+		<Usable />
+		<BagType>7</BagType>
+		<FameBonus>7</FameBonus>
+		<MpCost>110</MpCost>
+		<Activate effect="Slowed" duration="4" range="5" color="0x045300" target="enemy" center="mouse" visualEffect="4" useWisMod="false">GenericActivate</Activate>
+		<Activate effect="Speedy" duration="3" useWisMod="true">ConditionEffectSelf</Activate>
+		<Cooldown>4.5</Cooldown>
+	</Object>
 </Objects>

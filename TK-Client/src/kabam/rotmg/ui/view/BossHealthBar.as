@@ -107,7 +107,7 @@ public class BossHealthBar extends Sprite {
         hpText_.y = foreground.y + foreground.height / 2 - hpText_.height / 2 - 1;
 
         if (go_.isInvulnerable()) {
-            background.transform.colorTransform = new ColorTransform(50 / 255, 100 / 255, 190 / 255);
+            background.transform.colorTransform = new ColorTransform(50 / 255, 100 / 255,  190 / 255);
             background2.transform.colorTransform = new ColorTransform(50 / 255, 100 / 255, 190 / 255, 0.5);
         } else if (go_.isArmored() && !go_.isArmorBroken()) {
             background.transform.colorTransform = new ColorTransform(85 / 255, 60 / 255, 50 / 255);

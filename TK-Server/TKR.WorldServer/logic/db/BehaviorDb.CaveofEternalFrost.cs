@@ -1129,9 +1129,9 @@ namespace TKR.WorldServer.logic
                     //new Shoot(15, 1, projectileIndex: 6, predictive: .9, coolDown: 1500),
                     new Shoot(15, 15, projectileIndex: 0, coolDown: 1000, angleOffset: 3),
                     new Shoot(15, 1, projectileIndex: 5, coolDown: 400, coolDownOffset: 0),
-                    new Shoot(15, 2, shootAngle: 15, projectileIndex: 7, coolDown: 400, coolDownOffset: 0),
-                    new Shoot(15, 2, shootAngle: 20, projectileIndex: 8, coolDown: 400, coolDownOffset: 0),
-                    new Shoot(15, 2, shootAngle: 25, projectileIndex: 9, coolDown: 400, coolDownOffset: 0),
+                    new Shoot(15, 2, shootAngle: 20, projectileIndex: 7, coolDown: 800, coolDownOffset: 0),
+                    new Shoot(15, 2, shootAngle: 30, projectileIndex: 8, coolDown: 800, coolDownOffset: 0),
+                    new Shoot(15, 2, shootAngle: 40, projectileIndex: 9, coolDown: 800, coolDownOffset: 0),
                     new TimedRandomTransition(9000, false, "Orbit", "Rush", "Orbit1")
                     ),
                 new State("Orbit",

@@ -32,8 +32,6 @@ namespace TKR.WorldServer.logic.behaviors
                 return true;
             }
 
-            Console.WriteLine(s.CooldownLeft + " " + time.DeltaTime);
- 
             s.CooldownLeft -= time.DeltaTime;
             if (s.CooldownLeft > 0.0f)
                 return false;

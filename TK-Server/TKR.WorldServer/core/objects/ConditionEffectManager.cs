@@ -65,7 +65,7 @@ namespace TKR.WorldServer.core.objects
                 for (byte effect = 0; effect < Durations.Length; effect++)
                 {
                     var duration = Durations[effect];
-                    if (duration == -1 || duration == 0)
+                    if (duration == -1)
                         continue;
 
                     if (duration <= dt)

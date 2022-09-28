@@ -1534,7 +1534,11 @@ namespace TKR.WorldServer.logic
                 new State("attack2",
                     new ConditionalEffect(ConditionEffectIndex.Invincible),
                     new Orbit(3, 6, 10, "Queen of Ice", speedVariance: 0, radiusVariance: 0),
-                    new Shoot(12, 3, shootAngle: 10, projectileIndex: 0, predictive: 0.8, coolDown: 400)
+                    new Shoot(12, 3, shootAngle: 10, projectileIndex: 0, predictive: 0.8, coolDown: 400),
+                    new EntityExistsTransition("Queen of Ice", 20, "die")
+                    ),
+                new State("die",
+                    new Suicide()
                     )
                 )
             )

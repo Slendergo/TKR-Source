@@ -85,6 +85,16 @@ namespace TKR.WorldServer.logic
                 new PetFollow()
                 )
             )
+        .Init("Three Headed Snake",
+            new State(
+                new PetFollow()
+                )
+            )
+        .Init("Black Widow",
+            new State(
+                new PetFollow()
+                )
+            )
         .InitMany("Black Cat", "Snowman", _ =>
             new State(
                 new PetFollow()

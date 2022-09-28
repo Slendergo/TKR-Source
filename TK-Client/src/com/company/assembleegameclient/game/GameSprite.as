@@ -195,7 +195,7 @@ public class GameSprite extends Sprite
          this.enableGameStatistics();
       }
 
-      //WebMain.STAGE.vsyncEnabled = Parameters.data_.vsync;
+      WebMain.STAGE.vsyncEnabled = Parameters.data_.vsync;
       WebMain.STAGE.frameRate = Parameters.data_.fps;
    }
 
@@ -374,8 +374,8 @@ public class GameSprite extends Sprite
       }
       else {
          this.gameStatistics_ = new GameStatistics();
-         this.gameStatistics_.x = 8;
-         this.gameStatistics_.y = this.map.name_ == "Nexus" ? 32 : 8;
+         this.gameStatistics_.x = 600 - this.gameStatistics_.width * 2 - 24;
+         this.gameStatistics_.y = 64;
          addChild(this.gameStatistics_);
       }
    }

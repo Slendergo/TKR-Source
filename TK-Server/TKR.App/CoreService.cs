@@ -47,7 +47,7 @@ namespace TKR.App
 			else
 				Config = ServerConfig.ReadFile("server.json");
             
-			Config.serverInfo.instanceId = hGuid.NewGuid().ToString();
+			Config.serverInfo.instanceId = Guid.NewGuid().ToString();
 
             LogManager.Configuration.Variables["logDirectory"] = $"{Config.serverSettings.logFolder}/app";
             LogManager.Configuration.Variables["buildConfig"] = Utils.GetBuildConfiguration();

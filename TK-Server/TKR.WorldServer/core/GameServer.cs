@@ -44,9 +44,10 @@ namespace TKR.WorldServer.core
         public DateTime RestartCloseTime { get; private set; }
 
         public GameServer(string[] appArgs)
-        {
-            Configuration = ServerConfig.ReadFile("wServer.json");
-
+        {	
+			var configPath = appArgs.Length == 0 ? "wServer.json" : appArgs[0];
+			Configuration = ServerConfig.ReadFile(configPath);
+			
             LogManager.Configuration.Variables["logDirectory"] = $"{Configuration.serverSettings.logFolder}/wServer";
             LogManager.Configuration.Variables["buildConfig"] = Utils.GetBuildConfiguration();
 

@@ -40,7 +40,6 @@ namespace TKR.App
 
             Logger = LogManager.GetCurrentClassLogger();
 			
-			
             var isDocker = Environment.GetEnvironmentVariable("IS_DOCKER") != null;
             if(isDocker)
 				Config = ServerConfig.ReadFile("/data/server.json");

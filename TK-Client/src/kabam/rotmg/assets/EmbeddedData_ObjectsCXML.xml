@@ -49036,7 +49036,7 @@
     <Track />
     <Soulbound />
   </Object>
-  <Object type="0x2292" id="Slime Wizard Skin">
+  <Object type="0x2292" id="Djinn Wizzy Skin">
     <Class>Equipment</Class>
     <Item />
     <AnimatedTexture>
@@ -77986,6 +77986,42 @@
     <OldSound>use_potion</OldSound>
     <DonorItem />
   </Object>
+  <Object type="0x4526" id="Three Headed Snake Generator">
+		<DisplayId>Three Headed Snake</DisplayId>
+		<Class>Equipment</Class>
+		<Item />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x19</Index>
+		</Texture>
+		<SlotType>10</SlotType>
+		<Description>I may follow you, but you are not my master.</Description>
+		<Sound>spell/light_heal</Sound>
+		<InvUse />
+		<VaultItem />
+		<Soulbound />
+		<Activate objectId="Three Headed Snake" cooldown="10">PermaPet</Activate>
+		<OldSound>use_potion</OldSound>
+		<DonorItem/>
+	</Object>
+	<Object type="0x4529" id="Black Widow Generator">
+		<DisplayId>Black Widow</DisplayId>
+		<Class>Equipment</Class>
+		<Item />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x67</Index>
+		</Texture>
+		<SlotType>10</SlotType>
+		<Description>I may follow you, but you are not my master.</Description>
+		<Sound>spell/light_heal</Sound>
+		<InvUse />
+		<VaultItem />
+		<Soulbound />
+		<Activate objectId="Black Widow" cooldown="10">PermaPet</Activate>
+		<OldSound>use_potion</OldSound>
+		<DonorItem/>
+	</Object>
   <Object type="0x1500" id="Black Cat Generator">
     <DisplayId>Black Cat</DisplayId>
     <Class>Equipment</Class>
@@ -79537,6 +79573,26 @@
     <NoMiniMap />
     <Size>60</Size>
   </Object>
+  <Object type="0x4528" id="Three Headed Snake">
+		<Class>Character</Class>
+		<Group>Hexable</Group>
+		<AnimatedTexture>
+			<File>Custom16x16Encounters</File>
+			<Index>54</Index>
+		</AnimatedTexture>
+		<NoMiniMap />
+		<Size>60</Size>
+	</Object>
+	<Object type="0x4530" id="Black Widow">
+		<Class>Character</Class>
+		<Group>Hexable</Group>
+		<AnimatedTexture>
+			<File>Custom16x16Encounters</File>
+			<Index>55</Index>
+		</AnimatedTexture>
+		<NoMiniMap />
+		<Size>60</Size>
+	</Object>
   <Object type="0x074c" id="Nexus Turkey">
     <DisplayId>Turkey</DisplayId>
     <Class>Character</Class>

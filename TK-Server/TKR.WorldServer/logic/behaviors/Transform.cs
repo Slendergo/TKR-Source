@@ -24,7 +24,7 @@ namespace TKR.WorldServer.logic.behaviors
             if (host is Enemy && entity is Enemy && (host as Enemy).Spawned)
             {
                 (entity as Enemy).Spawned = true;
-                (entity as Enemy).ApplyConditionEffect(ConditionEffectIndex.Invisible, -1);
+                (entity as Enemy).ApplyPermanentConditionEffect(ConditionEffectIndex.Invisible);
             }
 
             host.World.EnterWorld(entity);

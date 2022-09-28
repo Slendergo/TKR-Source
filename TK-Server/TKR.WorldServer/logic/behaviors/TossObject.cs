@@ -169,7 +169,7 @@ namespace TKR.WorldServer.logic.behaviors
                             enemyEntity.Terrain = enemyHost.Terrain;
 
                             if (enemyHost.Spawned)
-                                enemyEntity.ApplyConditionEffect(ConditionEffectIndex.Invisible, -1);
+                                enemyEntity.ApplyPermanentConditionEffect(ConditionEffectIndex.Invisible);
                         }
                         world.EnterWorld(entity);
                     });

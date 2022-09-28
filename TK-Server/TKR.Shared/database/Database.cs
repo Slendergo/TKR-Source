@@ -81,6 +81,8 @@ namespace TKR.Shared.database
             if (!string.IsNullOrWhiteSpace(config.dbInfo.auth))
                 conString += ",password=" + config.dbInfo.auth;
 
+			Console.WriteLine($"Connecting to: {conString}");
+
             _multiplexer = ConnectionMultiplexer.Connect(conString);
             _server = _multiplexer.GetServer(_multiplexer.GetEndPoints(true)[0]);
             _db = _multiplexer.GetDatabase(DatabaseIndex);

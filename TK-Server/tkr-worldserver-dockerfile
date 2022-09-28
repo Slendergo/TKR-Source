@@ -1,0 +1,26 @@
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+WORKDIR /src
+
+# copy csproj and restore as distinct layers
+COPY TKR.sln .
+COPY TKR.App/TKR.App.csproj TKR.App/
+COPY TKR.WorldServer/TKR.WorldServer.csproj TKR.WorldServer/
+COPY TKR.Shared/TKR.Shared.csproj TKR.Shared/
+COPY TKR.Redis/TKR.Redis.csproj TKR.Redis/
+COPY TKR.Benchmark/TKR.Benchmark.csproj TKR.Benchmark/
+
+RUN dotnet restore "TKR.App/TKR.App.csproj"
+RUN dotnet restore "TKR.Redis/TKR.Redis.csproj"
+RUN dotnet restore "TKR.Benchmark/TKR.Benchmark.csproj"
+RUN dotnet restore "TKR.Shared/TKR.Shared.csproj"
+RUN dotnet restore "TKR.WorldServer/TKR.WorldServer.csproj"
+
+# copy and publish app and libraries
+COPY . .
+RUN dotnet publish -c Release -o /app --no-restore
+
+# final stage/image
+FROM mcr.microsoft.com/dotnet/runtime:6.0
+WORKDIR /app
+COPY --from=build /app .
+ENTRYPOINT ["dotnet", "TKR.WorldServer.dll"]

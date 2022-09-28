@@ -39,9 +39,14 @@ namespace TKR.App
             _webHostingEnvronment = webHostingEnvronment;
 
             Logger = LogManager.GetCurrentClassLogger();
+			
+            var isDocker = Environment.GetEnvironmentVariable("IS_DOCKER") != null;
+            if(isDocker)
+				Config = ServerConfig.ReadFile("/data/server.json");
+			else
+				Config = ServerConfig.ReadFile("server.json");
             
-            Config = ServerConfig.ReadFile("server.json");
-            Config.serverInfo.instanceId = Guid.NewGuid().ToString();
+			Config.serverInfo.instanceId = Guid.NewGuid().ToString();
 
             LogManager.Configuration.Variables["logDirectory"] = $"{Config.serverSettings.logFolder}/app";
             LogManager.Configuration.Variables["buildConfig"] = Utils.GetBuildConfiguration();

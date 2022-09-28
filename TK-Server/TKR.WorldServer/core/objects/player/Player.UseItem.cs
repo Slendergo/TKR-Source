@@ -715,9 +715,7 @@ namespace TKR.WorldServer.core.objects
                 ConditionEffectIndex conditions = 0;
                 conditions |= (ConditionEffectIndex)(1 << (Byte)condition.Value);
                 if (!condition.HasValue || player.HasConditionEffect(conditions))
-                {
-                    player.ApplyConditionEffect(new ConditionEffect(eff.ConditionEffect.Value, 0));
-                }
+                    player.RemoveCondition(eff.ConditionEffect.Value);
             });
         }
 
@@ -730,9 +728,7 @@ namespace TKR.WorldServer.core.objects
                 conditions |= (ConditionEffectIndex)(1 << (Byte)condition.Value);
 
             if (!condition.HasValue || HasConditionEffect(conditions))
-            {
-                ApplyConditionEffect(new ConditionEffect(eff.ConditionEffect.Value, 0));
-            }
+                RemoveCondition(eff.ConditionEffect.Value);
         }
 
         private void AEConditionEffectAura(TickTime time, Item item, Position target, ActivateEffect eff)

@@ -159,6 +159,26 @@
 		<NoMiniMap />
 		<Size>60</Size>
 	</Object>
+	<Object type="0x4528" id="Three Headed Snake">
+		<Class>Character</Class>
+		<Group>Hexable</Group>
+		<AnimatedTexture>
+			<File>Custom16x16Encounters</File>
+			<Index>54</Index>
+		</AnimatedTexture>
+		<NoMiniMap />
+		<Size>60</Size>
+	</Object>
+	<Object type="0x4530" id="Black Widow">
+		<Class>Character</Class>
+		<Group>Hexable</Group>
+		<AnimatedTexture>
+			<File>Custom16x16Encounters</File>
+			<Index>55</Index>
+		</AnimatedTexture>
+		<NoMiniMap />
+		<Size>60</Size>
+	</Object>
   <Object type="0x074c" id="Nexus Turkey">
     <DisplayId>Turkey</DisplayId>
     <Class>Character</Class>

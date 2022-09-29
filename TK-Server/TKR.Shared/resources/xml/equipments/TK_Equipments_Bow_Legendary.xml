@@ -175,7 +175,6 @@
 			<Boomerang/>
 			<LifetimeMS>850</LifetimeMS>
 			<Amplitude>0.4</Amplitude>
-			<ParticleTrail lifetimeMS="300">0x0089D1</ParticleTrail>
 			<Frequency>2</Frequency>
 			<Size>100</Size>
 			<ArmorPiercing />

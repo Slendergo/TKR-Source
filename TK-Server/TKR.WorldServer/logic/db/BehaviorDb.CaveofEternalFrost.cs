@@ -605,12 +605,12 @@ namespace TKR.WorldServer.logic
                     ),
                 new State("attack1",
                     new HpLessTransition(0.5, "freedps"),
-                    new TossObject2("Evil Snowman", 6, 60, coolDown: 3000),
-                    new TossObject2("Evil Snowman", 9, 120, coolDown: 3000),
-                    new TossObject2("Evil Snowman", 6, 180, coolDown: 3000),
-                    new TossObject2("Evil Snowman", 9, 240, coolDown: 3000),
-                    new TossObject2("Evil Snowman", 6, 300, coolDown: 3000),
-                    new TossObject2("Evil Snowman", 9, 360, coolDown: 3000),
+                    new TossObject2("Frozen Elf", 6, 60, coolDown: 3000),
+                    new TossObject2("Frozen Elf", 9, 120, coolDown: 3000),
+                    new TossObject2("Frozen Elf", 6, 180, coolDown: 3000),
+                    new TossObject2("Frozen Elf", 9, 240, coolDown: 3000),
+                    new TossObject2("Frozen Elf", 6, 300, coolDown: 3000),
+                    new TossObject2("Frozen Elf", 9, 360, coolDown: 3000),
                     new Shoot(15, 3, shootAngle: 10, projectileIndex: 4, coolDown: 2000, coolDownOffset: 0),
                     new Shoot(15, 5, shootAngle: 10, projectileIndex: 5, coolDown: 2000, coolDownOffset: 600),
                     new Shoot(15, 7, shootAngle: 10, projectileIndex: 4, coolDown: 2000, coolDownOffset: 1200),
@@ -626,88 +626,37 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(10000, "attack3")
                     ),
                  new State("attack3",
-                    new Wander(0.3),
-                    new TossObject2("Evil Snowman", 6, 60, coolDown: 3000),
-                    new TossObject2("Evil Snowman", 9, 120, coolDown: 3000),
-                    new TossObject2("Evil Snowman", 6, 180, coolDown: 3000),
-                    new TossObject2("Evil Snowman", 9, 240, coolDown: 3000),
-                    new TossObject2("Evil Snowman", 6, 300, coolDown: 3000),
-                    new TossObject2("Evil Snowman", 9, 360, coolDown: 3000),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 180, coolDown: 3600, coolDownOffset: 0),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 0, coolDown: 3600, coolDownOffset: 100),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 5, coolDown: 3600, coolDownOffset: 200),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 10, coolDown: 3600, coolDownOffset: 300),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 15, coolDown: 3600, coolDownOffset: 400),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 20, coolDown: 3600, coolDownOffset: 500),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 25, coolDown: 3600, coolDownOffset: 600),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 30, coolDown: 3600, coolDownOffset: 700),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 35, coolDown: 3600, coolDownOffset: 800),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 40, coolDown: 3600, coolDownOffset: 900),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 45, coolDown: 3600, coolDownOffset: 1000),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 50, coolDown: 3600, coolDownOffset: 1100),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 55, coolDown: 3600, coolDownOffset: 1200),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 60, coolDown: 3600, coolDownOffset: 1300),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 65, coolDown: 3600, coolDownOffset: 1400),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 70, coolDown: 3600, coolDownOffset: 1500),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 75, coolDown: 3600, coolDownOffset: 1600),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 80, coolDown: 3600, coolDownOffset: 1700),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 85, coolDown: 3600, coolDownOffset: 1800),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 90, coolDown: 3600, coolDownOffset: 1900),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 95, coolDown: 3600, coolDownOffset: 2000),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 100, coolDown: 3600, coolDownOffset: 2100),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 105, coolDown: 3600, coolDownOffset: 2200),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 110, coolDown: 3600, coolDownOffset: 2300),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 115, coolDown: 3600, coolDownOffset: 2400),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 120, coolDown: 3600, coolDownOffset: 2500),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 125, coolDown: 3600, coolDownOffset: 2600),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 130, coolDown: 3600, coolDownOffset: 2700),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 135, coolDown: 3600, coolDownOffset: 2800),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 140, coolDown: 3600, coolDownOffset: 2900),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 145, coolDown: 3600, coolDownOffset: 3000),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 150, coolDown: 3600, coolDownOffset: 3100),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 155, coolDown: 3600, coolDownOffset: 3200),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 160, coolDown: 3600, coolDownOffset: 3300),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 165, coolDown: 3600, coolDownOffset: 3400),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 170, coolDown: 3600, coolDownOffset: 3500),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 175, coolDown: 3600, coolDownOffset: 3600),
-
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 0, coolDown: 3600, coolDownOffset: 0),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 180, coolDown: 3600, coolDownOffset: 100),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 185, coolDown: 3600, coolDownOffset: 200),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 190, coolDown: 3600, coolDownOffset: 300),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 195, coolDown: 3600, coolDownOffset: 400),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 200, coolDown: 3600, coolDownOffset: 500),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 205, coolDown: 3600, coolDownOffset: 600),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 210, coolDown: 3600, coolDownOffset: 700),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 215, coolDown: 3600, coolDownOffset: 800),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 220, coolDown: 3600, coolDownOffset: 900),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 225, coolDown: 3600, coolDownOffset: 1000),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 230, coolDown: 3600, coolDownOffset: 1100),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 235, coolDown: 3600, coolDownOffset: 1200),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 240, coolDown: 3600, coolDownOffset: 1300),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 245, coolDown: 3600, coolDownOffset: 1400),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 250, coolDown: 3600, coolDownOffset: 1500),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 255, coolDown: 3600, coolDownOffset: 1600),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 260, coolDown: 3600, coolDownOffset: 1700),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 265, coolDown: 3600, coolDownOffset: 1800),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 270, coolDown: 3600, coolDownOffset: 1900),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 275, coolDown: 3600, coolDownOffset: 2000),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 280, coolDown: 3600, coolDownOffset: 2100),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 285, coolDown: 3600, coolDownOffset: 2200),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 290, coolDown: 3600, coolDownOffset: 2300),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 295, coolDown: 3600, coolDownOffset: 2400),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 300, coolDown: 3600, coolDownOffset: 2500),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 305, coolDown: 3600, coolDownOffset: 2600),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 310, coolDown: 3600, coolDownOffset: 2700),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 315, coolDown: 3600, coolDownOffset: 2800),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 320, coolDown: 3600, coolDownOffset: 2900),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 325, coolDown: 3600, coolDownOffset: 3000),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 330, coolDown: 3600, coolDownOffset: 3100),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 335, coolDown: 3600, coolDownOffset: 3200),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 340, coolDown: 3600, coolDownOffset: 3300),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 345, coolDown: 3600, coolDownOffset: 3400),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 350, coolDown: 3600, coolDownOffset: 3500),
-                    new Shoot(30, 3, projectileIndex: 6, shootAngle: 20, fixedAngle: 355, coolDown: 3600, coolDownOffset: 3600),
+                    new Orbit(3, 8, 10, "Snowball Spawner", speedVariance: 0, radiusVariance: 0, orbitClockwise: true),
+                    new TossObject2("Frozen Elf", 6, 60, coolDown: 3000),
+                    new TossObject2("Frozen Elf", 9, 120, coolDown: 3000),
+                    new TossObject2("Frozen Elf", 6, 180, coolDown: 3000),
+                    new TossObject2("Frozen Elf", 9, 240, coolDown: 3000),
+                    new TossObject2("Frozen Elf", 6, 300, coolDown: 3000),
+                    new TossObject2("Frozen Elf", 9, 360, coolDown: 3000),
+                    new Shoot(30, 5, projectileIndex: 6, fixedAngle: 0, coolDown: 2400, coolDownOffset: 100),
+                    new Shoot(30, 5, projectileIndex: 6, fixedAngle: -5, coolDown: 2400, coolDownOffset: 200),
+                    new Shoot(30, 5, projectileIndex: 6, fixedAngle: -10, coolDown: 2400, coolDownOffset: 300),
+                    new Shoot(30, 5, projectileIndex: 6, fixedAngle: -15, coolDown: 2400, coolDownOffset: 400),
+                    new Shoot(30, 5, projectileIndex: 6, fixedAngle: -20, coolDown: 2400, coolDownOffset: 500),
+                    new Shoot(30, 5, projectileIndex: 6, fixedAngle: -25, coolDown: 2400, coolDownOffset: 600),
+                    new Shoot(30, 5, projectileIndex: 6, fixedAngle: -30, coolDown: 2400, coolDownOffset: 700),
+                    new Shoot(30, 5, projectileIndex: 6, fixedAngle: -35, coolDown: 2400, coolDownOffset: 800),
+                    new Shoot(30, 5, projectileIndex: 6, fixedAngle: -40, coolDown: 2400, coolDownOffset: 900),
+                    new Shoot(30, 5, projectileIndex: 6, fixedAngle: -45, coolDown: 2400, coolDownOffset: 1000),
+                    new Shoot(30, 5, projectileIndex: 6, fixedAngle: -50, coolDown: 2400, coolDownOffset: 1100),
+                    new Shoot(30, 5, projectileIndex: 6, fixedAngle: -55, coolDown: 2400, coolDownOffset: 1200),
+                    new Shoot(30, 5, projectileIndex: 6, fixedAngle: -60, coolDown: 2400, coolDownOffset: 1300),
+                    new Shoot(30, 5, projectileIndex: 6, fixedAngle: -65, coolDown: 2400, coolDownOffset: 1400),
+                    new Shoot(30, 5, projectileIndex: 6, fixedAngle: -70, coolDown: 2400, coolDownOffset: 1500),
+                    new Shoot(30, 5, projectileIndex: 6, fixedAngle: -75, coolDown: 2400, coolDownOffset: 1600),
+                    new Shoot(30, 5, projectileIndex: 6, fixedAngle: -80, coolDown: 2400, coolDownOffset: 1700),
+                    new Shoot(30, 5, projectileIndex: 6, fixedAngle: -85, coolDown: 2400, coolDownOffset: 1800),
+                    new Shoot(30, 5, projectileIndex: 6, fixedAngle: -90, coolDown: 2400, coolDownOffset: 1900),
+                    new Shoot(30, 5, projectileIndex: 6, fixedAngle: -95, coolDown: 2400, coolDownOffset: 2000),
+                    new Shoot(30, 5, projectileIndex: 6, fixedAngle: -100, coolDown: 2400, coolDownOffset: 2100),
+                    new Shoot(30, 5, projectileIndex: 6, fixedAngle: -105, coolDown: 2400, coolDownOffset: 2200),
+                    new Shoot(30, 5, projectileIndex: 6, fixedAngle: -110, coolDown: 2400, coolDownOffset: 2300),
+                    new Shoot(30, 5, projectileIndex: 6, fixedAngle: -115, coolDown: 2400, coolDownOffset: 2400),
                     new TimedTransition(10000, "attack4")
                      ),
                   new State("attack4",
@@ -763,20 +712,20 @@ namespace TKR.WorldServer.logic
                 new ItemLoot("Special Dust", 0.01)
                 ),
              new Threshold(0.03,
-                new ItemLoot("Winter Solstice", 0.0002),
-                new ItemLoot("Polar Vortex", 0.0002),
-                new ItemLoot("Iceberg", 0.0002),
+                new ItemLoot("Winter Solstice", 0.000125),
+                new ItemLoot("Polar Vortex", 0.000125),
+                new ItemLoot("Iceberg", 0.000125),
 
-                new ItemLoot("Condemned Frostbite", 0.0002),
-                new ItemLoot("The Expansion", 0.0002),
-                new ItemLoot("The Northern Star", 0.0002),
+                new ItemLoot("Condemned Frostbite", 0.000125),
+                new ItemLoot("The Expansion", 0.000125),
+                new ItemLoot("The Northern Star", 0.000125),
 
-                new ItemLoot("Snow Angle", 0.0002),
-                new ItemLoot("World of Ice", 0.0002),
+                new ItemLoot("Snow Angle", 0.000125),
+                new ItemLoot("World of Ice", 0.000125),
 
-                new ItemLoot("Agdluak", 0.0002),
-                new ItemLoot("Absolute Zero", 0.0002),
-                new ItemLoot("Cryogenic Freeze", 0.0002),
+                new ItemLoot("Agdluak", 0.000125),
+                new ItemLoot("Absolute Zero", 0.000125),
+                new ItemLoot("Cryogenic Freeze", 0.000125),
                 new ItemLoot("Frozen Coin", 0.05),
                 new ItemLoot("Glowing Talisman", 0.0014)
                  )
@@ -1474,7 +1423,11 @@ namespace TKR.WorldServer.logic
                 new State("attack",
                 new Shoot(10, 1, projectileIndex: 0, fixedAngle: 225, coolDown: 1500, coolDownOffset: 0),
                 new Shoot(10, 1, projectileIndex: 1, fixedAngle: 225, coolDown: 1500, coolDownOffset: 0),
-                new Shoot(10, 1, projectileIndex: 2, fixedAngle: 225, coolDown: 1500, coolDownOffset: 0)
+                new Shoot(10, 1, projectileIndex: 2, fixedAngle: 225, coolDown: 1500, coolDownOffset: 0),
+                new EntityExistsTransition("Queen of Ice", 20, "die")
+                    ),
+                new State("die",
+                    new Suicide()
                 )
             )
         )
@@ -1487,7 +1440,11 @@ namespace TKR.WorldServer.logic
                 new State("attack",
                 new Shoot(10, 1, projectileIndex: 0, fixedAngle: 315, coolDown: 1500, coolDownOffset: 0),
                 new Shoot(10, 1, projectileIndex: 1, fixedAngle: 315, coolDown: 1500, coolDownOffset: 0),
-                new Shoot(10, 1, projectileIndex: 2, fixedAngle: 315, coolDown: 1500, coolDownOffset: 0)
+                new Shoot(10, 1, projectileIndex: 2, fixedAngle: 315, coolDown: 1500, coolDownOffset: 0),
+                new EntityExistsTransition("Queen of Ice", 20, "die")
+                    ),
+                new State("die",
+                    new Suicide()
                 )
             )
         )
@@ -1500,7 +1457,11 @@ namespace TKR.WorldServer.logic
                 new State("attack",
                 new Shoot(10, 1, projectileIndex: 0, fixedAngle: 45, coolDown: 1500, coolDownOffset: 0),
                 new Shoot(10, 1, projectileIndex: 1, fixedAngle: 45, coolDown: 1500, coolDownOffset: 0),
-                new Shoot(10, 1, projectileIndex: 2, fixedAngle: 45, coolDown: 1500, coolDownOffset: 0)
+                new Shoot(10, 1, projectileIndex: 2, fixedAngle: 45, coolDown: 1500, coolDownOffset: 0),
+                new EntityExistsTransition("Queen of Ice", 20, "die")
+                    ),
+                new State("die",
+                    new Suicide()
                 )
             )
         )
@@ -1513,7 +1474,11 @@ namespace TKR.WorldServer.logic
                 new State("attack",
                 new Shoot(10, 1, projectileIndex: 0, fixedAngle: 135, coolDown: 1500, coolDownOffset: 0),
                 new Shoot(10, 1, projectileIndex: 1, fixedAngle: 135, coolDown: 1500, coolDownOffset: 0),
-                new Shoot(10, 1, projectileIndex: 2, fixedAngle: 135, coolDown: 1500, coolDownOffset: 0)
+                new Shoot(10, 1, projectileIndex: 2, fixedAngle: 135, coolDown: 1500, coolDownOffset: 0),
+                new EntityExistsTransition("Queen of Ice", 20, "die")
+                    ),
+                new State("die",
+                    new Suicide()
                 )
             )
         )
@@ -1585,7 +1550,11 @@ namespace TKR.WorldServer.logic
                 new State("attack2",
                     new ConditionalEffect(ConditionEffectIndex.Invincible),
                     new Orbit(3, 6, 10, "Queen of Ice", speedVariance: 0, radiusVariance: 0),
-                    new Shoot(12, 3, shootAngle: 10, projectileIndex: 0, predictive: 0.8, coolDown: 400)
+                    new Shoot(12, 3, shootAngle: 10, projectileIndex: 0, predictive: 0.8, coolDown: 400),
+                    new EntityExistsTransition("Queen of Ice", 20, "die")
+                    ),
+                new State("die",
+                    new Suicide()
                     )
                 )
             )

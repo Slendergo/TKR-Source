@@ -1291,8 +1291,7 @@ namespace TKR.WorldServer.core.objects
             for (var i = 0; i < 4; i++)
             {
                 var item1 = Inventory[i];
-
-                if (item1 == null || !item1.Legendary && !item1.Revenge)
+                if (item1 == null || !item1.Legendary && !item1.Mythical)
                     continue;
 
                 if (item1.SonicBlaster)

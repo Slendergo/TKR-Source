@@ -32,7 +32,7 @@
     <ActivateOnEquip stat="28" amount="9">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="3">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="14">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <feedPower>1100</feedPower>
     <Legendary />
@@ -53,7 +53,7 @@
     <ActivateOnEquip stat="20" amount="-5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
 	<ActivateOnEquip stat="27" amount="15">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
   </Object>
   <Object type="0x491d" id="Ritual Robe">
@@ -73,7 +73,7 @@
     <ActivateOnEquip stat="28" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="10">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="15">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <feedPower>1100</feedPower>
     <Legendary />
@@ -93,7 +93,7 @@
     <ActivateOnEquip stat="28" amount="12">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="16">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>   
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
   </Object>
     <Object type="0x5400" id="Archmage's Garments">
@@ -115,7 +115,7 @@
     <ActivateOnEquip stat="21" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="10">IncrementStat</ActivateOnEquip>
 	<ActivateOnEquip stat="22" amount="-5">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
   </Object>
   <Object type="0x497f" id="Spectral Robe">
@@ -139,7 +139,7 @@
     <ActivateOnEquip stat="28" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="0" amount="60">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="3" amount="60">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
   </Object>
 	<Object type="0x4294" id="Snow Angle">
@@ -162,7 +162,7 @@
 		<ActivateOnEquip stat="28" amount="10">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="3" amount="100">IncrementStat</ActivateOnEquip>
-		<BagType>7</BagType>
+		<BagType>8</BagType>
 		<FameBonus>6</FameBonus>
 	</Object>
 </Objects>

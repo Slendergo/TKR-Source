@@ -1,14 +1,11 @@
-﻿using TKR.Shared.database;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
-using TKR.WorldServer.core;
 using TKR.WorldServer.networking;
 using TKR.WorldServer.networking.packets.outgoing;
 using TKR.WorldServer.utils;
-using TKR.WorldServer.networking.packets;
 
 namespace TKR.WorldServer.core.connection
 {

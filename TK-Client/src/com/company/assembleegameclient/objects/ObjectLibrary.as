@@ -199,11 +199,6 @@ public class ObjectLibrary
                texture = AssetLibrary.getImageFromSet("lofiObj3",255);
            }
            var mask:BitmapData = Boolean(textureData)?textureData.mask_:null;
-           if (objectXML.hasOwnProperty("Eternal")) {
-               return (TextureRedrawer.redraw(texture, size, includeBottom, TooltipHelper.ETERNAL_COLOR, useCaching, scaleValue));
-           }if (objectXML.hasOwnProperty("IntergamePortal")) {
-               return (TextureRedrawer.redraw(texture, size, includeBottom, TooltipHelper.ETERNAL_COLOR, useCaching, scaleValue));
-           }
            if(mask == null)
            {
                return TextureRedrawer.redraw(texture,size,includeBottom,0,useCaching,scaleValue);

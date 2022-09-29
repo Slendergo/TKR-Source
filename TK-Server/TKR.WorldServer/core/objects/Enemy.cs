@@ -221,7 +221,7 @@ namespace TKR.WorldServer.core.objects
                 {
                     var item = Inventory[i];
 
-                    if (item == null || !item.Legendary && !item.Revenge && !item.Mythical && !item.Eternal)
+                    if (item == null || !item.Legendary && !item.Mythical)
                         continue;
 
                     if (item.Demonized)

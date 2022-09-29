@@ -92,7 +92,7 @@ namespace TKR.WorldServer.core.net.handlers
                 }
             }
 
-            var isSoulbound = player.IsAdmin || item.Soulbound || item.Revenge || item.Legendary || item.BagType >= 3 || item.SPlus || item.SNormal || item.Tier >= 7;
+            var isSoulbound = player.IsAdmin || item.Soulbound || item.Mythical || item.Legendary || item.BagType >= 3 || item.SPlus || item.SNormal || item.Tier >= 7;
             var container = new Container(player.GameServer, isSoulbound ? soulBag : normBag, 60000, true);
 
             if (isSoulbound) //TODOS LOS ITEMS SE DROPEAN EN SOULBOUND BAG

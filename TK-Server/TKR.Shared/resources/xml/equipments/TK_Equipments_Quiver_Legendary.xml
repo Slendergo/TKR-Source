@@ -25,7 +25,7 @@
     <ActivateOnEquip stat="28" amount="6">IncrementStat</ActivateOnEquip>
     <ConditionEffect duration="4">Dazed</ConditionEffect>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <MpCost>95</MpCost>
     <Activate>Shoot</Activate>
@@ -60,7 +60,7 @@
     <ActivateOnEquip stat="21" amount="7">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="5">IncrementStat</ActivateOnEquip>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <MpCost>95</MpCost>
     <ArcGap>5</ArcGap>
@@ -96,7 +96,7 @@
     <ActivateOnEquip stat="27" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
     <Usable />
-    <BagType>6</BagType>
+    <BagType>8</BagType>
     <FameBonus>4</FameBonus>
     <MpCost>90</MpCost>
     <ArcGap>2</ArcGap>
@@ -131,7 +131,7 @@
 		<ActivateOnEquip stat="20" amount="3">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
-      <BagType>7</BagType>
+      <BagType>8</BagType>
       <FameBonus>4</FameBonus>
       <MpCost>110</MpCost>
       <ArcGap>6</ArcGap>

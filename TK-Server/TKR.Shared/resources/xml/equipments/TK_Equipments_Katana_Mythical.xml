@@ -19,7 +19,7 @@
       <MaxDamage>30</MaxDamage>
       <LifetimeMS>350</LifetimeMS>
     </Projectile>
-    <BagType>8</BagType>
+    <BagType>9</BagType>
     <OldSound>bladeSwing</OldSound>
     <feedPower>300</feedPower>
   </Object>
@@ -53,7 +53,7 @@
     <ActivateOnEquip stat="20" amount="2">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="2">IncrementStat</ActivateOnEquip>
-    <BagType>8</BagType>
+    <BagType>9</BagType>
     <FameBonus>7</FameBonus>
     <DisplayId>Turbulence</DisplayId>
   </Object>

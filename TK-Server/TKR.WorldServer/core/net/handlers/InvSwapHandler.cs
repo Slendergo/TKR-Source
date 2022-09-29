@@ -380,7 +380,7 @@ namespace TKR.WorldServer.core.net.handlers
                             }
                             break;
 
-                        /* Revenge Bag */
+                        /* Legendary Bag */
                         case 0x5076:
                             if (CheckSoulboundBag(container, player) == false)
                             {
@@ -404,7 +404,8 @@ namespace TKR.WorldServer.core.net.handlers
                                 return;
                             }
                             break;
-                        /* Eternal Bag */
+
+                        /* Mythical Bag */
                         case 0xa002:
                             if (CheckSoulboundBag(container, player) == false)
                             {
@@ -652,7 +653,7 @@ namespace TKR.WorldServer.core.net.handlers
                             }
                             break;
 
-                        /* Revenge Bag */
+                        /* Legendary Bag */
                         case 0x5076:
                             if (CheckSoulboundBag(container, player) == false)
                             {
@@ -676,7 +677,8 @@ namespace TKR.WorldServer.core.net.handlers
                                 return;
                             }
                             break;
-                        /* Eternal Bag */
+
+                        /* Mythical Bag */
                         case 0xa002:
                             if (CheckSoulboundBag(container, player) == false)
                             {
@@ -738,7 +740,7 @@ namespace TKR.WorldServer.core.net.handlers
 
         private bool CheckNoSoulboundBag(Item item)
         {
-            if (item != null && (item.Legendary || item.Revenge || item.Eternal || item.SPlus || item.SNormal || item.Tier != null && item.Tier >= 7 || item.BagType >= 3))
+            if (item != null && (item.Legendary || item.Mythical || item.SPlus || item.SNormal && item.Tier >= 7 || item.BagType >= 3))
                 return false;
             return true;
         }

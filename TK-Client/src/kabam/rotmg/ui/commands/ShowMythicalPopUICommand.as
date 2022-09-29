@@ -2,13 +2,13 @@ package kabam.rotmg.ui.commands {
 import flash.display.DisplayObjectContainer;
 import com.gskinner.motion.GTween;
 import flash.utils.setTimeout;
-import kabam.rotmg.ui.view.RevengeNotifViewPng;
+import kabam.rotmg.ui.view.MythicalNotifViewPng;
 
 import mx.core.BitmapAsset;
 
-public class  ShowRevengePopUICommand {
+public class  ShowMythicalPopUICommand {
 
-    private static var RevengeNotifPng:Class = RevengeNotifViewPng;
+    private static var MythicalNotifPng:Class = MythicalNotifViewPng;
     private var view:BitmapAsset;
 
     [Inject]
@@ -16,7 +16,7 @@ public class  ShowRevengePopUICommand {
 
 
     public function execute():void {
-        view = new RevengeNotifPng();
+        view = new MythicalNotifPng();
         view.x = 0;
         view.y = 0;
         this.contextView.addChild(view);

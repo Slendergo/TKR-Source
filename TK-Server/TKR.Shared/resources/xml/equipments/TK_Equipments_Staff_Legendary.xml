@@ -26,7 +26,7 @@
     </Projectile>
     <NumProjectiles>2</NumProjectiles>
     <ArcGap>5</ArcGap>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <feedPower>650</feedPower>
     <DisplayId>Ashen Spine</DisplayId>
@@ -56,7 +56,7 @@
       <LifetimeMS>700</LifetimeMS>
       <MultiHit />
     </Projectile>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <NumProjectiles>4</NumProjectiles>
     <ArcGap>352</ArcGap>
@@ -88,7 +88,7 @@
       <Amplitude>0.2</Amplitude>
       <Frequency>1.5</Frequency>
     </Projectile>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>8</FameBonus>
     <NumProjectiles>3</NumProjectiles>
     <ArcGap>6</ArcGap>
@@ -152,7 +152,7 @@
     </Projectile>
     <NumProjectiles>1</NumProjectiles>
     <ArcGap>0</ArcGap>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <feedPower>650</feedPower>
     <DisplayId>Rod of Frost Burn</DisplayId>

@@ -190,8 +190,6 @@ import kabam.rotmg.messaging.impl.outgoing.market.MarketRemove;
 import kabam.rotmg.messaging.impl.outgoing.market.MarketSearch;
 import kabam.rotmg.messaging.impl.outgoing.party.JoinParty;
 import kabam.rotmg.messaging.impl.outgoing.party.PartyInvite;
-import kabam.rotmg.messaging.impl.outgoing.potionStorage.PotionStorage;
-import kabam.rotmg.messaging.impl.outgoing.potionStorage.PotionStorage;
 import kabam.rotmg.messaging.impl.outgoing.talisman.TalismanEssenceAction;
 import kabam.rotmg.minimap.control.UpdateGameObjectTileSignal;
 import kabam.rotmg.minimap.control.UpdateGroundTileSignal;
@@ -199,9 +197,8 @@ import kabam.rotmg.minimap.model.UpdateGroundTileVO;
 import kabam.rotmg.servers.api.Server;
 import kabam.rotmg.ui.model.Key;
 import kabam.rotmg.ui.model.UpdateGameObjectTileVO;
-import kabam.rotmg.ui.signals.EternalPopUpSignal;
 import kabam.rotmg.ui.signals.LegendaryPopUpSignal;
-import kabam.rotmg.ui.signals.RevengePopUpSignal;
+import kabam.rotmg.ui.signals.MythicalPopUpSignal;
 import kabam.rotmg.ui.signals.ShowKeySignal;
 import kabam.rotmg.ui.signals.ShowKeyUISignal;
 import kabam.rotmg.ui.signals.UpdateBackpackTabSignal;
@@ -1392,17 +1389,12 @@ public class GameServerConnection
             case "showKeyUI":
                ShowKeyUISignal.instance.dispatch();
                break;
-            case "legloot":
+            case "legendary_loot":
                LegendaryPopUpSignal.instance.dispatch();
                break;
-            case "revloot":
-               RevengePopUpSignal.instance.dispatch();
+            case "mythical_loot":
+               MythicalPopUpSignal.instance.dispatch();
                break;
-             case "monkeyKing":
-                 RevengePopUpSignal.instance.dispatch();
-                 break;
-             case "eternalloot":
-                 EternalPopUpSignal.instance.dispatch();
                break;
          }
       }

@@ -30,7 +30,7 @@
     <ActivateOnEquip stat="20" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="5">IncrementStat</ActivateOnEquip>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <MpCost>0</MpCost>
     <MpEndCost>90</MpEndCost>
@@ -72,7 +72,7 @@
     <ActivateOnEquip stat="21" amount="5">IncrementStat</ActivateOnEquip>
     <Usable />
     <NumProjectiles>3</NumProjectiles>
-    <BagType>6</BagType>
+    <BagType>8</BagType>
     <FameBonus>5</FameBonus>
     <MpCost>0</MpCost>
     <ArcGap>6</ArcGap>
@@ -110,7 +110,7 @@
       <Boomerang />
     </Projectile>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <ActivateOnEquip stat="3" amount="100">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="8">IncrementStat</ActivateOnEquip>

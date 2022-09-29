@@ -26,7 +26,7 @@
     </Projectile>
     <Insanity />
     <ArcGap>7</ArcGap>
-    <BagType>8</BagType>
+    <BagType>9</BagType>
     <FameBonus>6</FameBonus>
     <NumProjectiles>8</NumProjectiles>
     <OldSound>arrowShoot</OldSound>
@@ -61,7 +61,7 @@
     <ArcGap>3</ArcGap>
     <ActivateOnEquip stat="20" amount="3">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
-    <BagType>8</BagType>
+    <BagType>9</BagType>
     <FameBonus>7</FameBonus>
     <Electrify />
     <DisplayId>Hurricane</DisplayId>

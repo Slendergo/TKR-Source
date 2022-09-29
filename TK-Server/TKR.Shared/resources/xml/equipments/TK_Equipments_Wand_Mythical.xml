@@ -29,7 +29,7 @@
     <ArcGap>1</ArcGap>
     <ActivateOnEquip stat="20" amount="3">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
-    <BagType>8</BagType>
+    <BagType>9</BagType>
     <FameBonus>7</FameBonus>
     <DisplayId>Eldritch Fury</DisplayId>
   </Object>

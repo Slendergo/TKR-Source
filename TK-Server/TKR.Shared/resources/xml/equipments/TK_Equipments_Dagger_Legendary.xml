@@ -22,7 +22,7 @@
     </Projectile>
     <ActivateOnEquip stat="3" amount="50">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="7">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <OldSound>daggerSwing</OldSound>
     <feedPower>950</feedPower>
@@ -49,7 +49,7 @@
       <Amplitude>0.2</Amplitude>
       <Frequency>0.2</Frequency>
     </Projectile>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <OldSound>daggerSwing</OldSound>
     <FameBonus>4</FameBonus>
     <feedPower>900</feedPower>
@@ -80,7 +80,7 @@
     </Projectile>
 	 <NumProjectiles>2</NumProjectiles>
     <ActivateOnEquip stat="26" amount="4">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <OldSound>daggerSwing</OldSound>
   </Object>
@@ -110,7 +110,7 @@
     <NumProjectiles>1</NumProjectiles>
     <ActivateOnEquip stat="26" amount="3">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="4">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <DisplayId>Cadaverous Knife</DisplayId>
   </Object>
@@ -144,7 +144,7 @@
     <ActivateOnEquip stat="3" amount="20">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="-2">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="5">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <DisplayId>Titan Slayer</DisplayId>
   </Object>
@@ -176,7 +176,7 @@
     <NumProjectiles>1</NumProjectiles>
     <ArcGap>0</ArcGap>
     <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <DisplayId>Refraction Cutter</DisplayId>
   </Object>

@@ -44899,8 +44899,8 @@
     <CanPutNormalObjects />
     <Loot />
     <Texture>
-      <File>lofiObj</File>
-      <Index>0x08</Index>
+      <File>lofiObj4</File>
+      <Index>0x90</Index>
     </Texture>
     <Size>80</Size>
     <SlotTypes>0, 0, 0, 0, 0, 0, 0, 0</SlotTypes>
@@ -44925,8 +44925,8 @@
     <CanPutSoulboundObjects />
     <Loot />
     <Texture>
-      <File>lofiObj2</File>
-      <Index>0x76</Index>
+      <File>lofiObj4</File>
+      <Index>0x91</Index>
     </Texture>
     <Size>80</Size>
     <SlotTypes>0, 0, 0, 0, 0, 0, 0, 0</SlotTypes>

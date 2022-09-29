@@ -47,10 +47,10 @@ namespace TKR.WorldServer.logic.loot
     {
         #region Utils
 
-        /*  Brown 0,  Pink 1,   Purple 2, Gold 3,   Cyan 4,   Blue 5,   Orange 6, White 7,  Mythical 8, Eternal 9 */
-        private static readonly ushort[] BAG_ID_TO_TYPE = new ushort[] { 0x0500, 0x0506, 0x0503, 0x0532, 0x0509, 0x050B, 0x0533, 0x050C, 0x5076, 0xa002 };
-        /*  Brown 0,  Pink 1,   Purple 2, Gold 3,   Cyan 4,   Blue 5,   Orange 6, White 7,  Mythical 8, Eternal 9 */
-        private static readonly ushort[] BOOSTED_BAG_ID_TO_TYPE = new ushort[] { 0x0534, 0x0535, 0x0536, 0x0537, 0x0538, 0x0539, 0x053b, 0x053a, 0x5077, 0xa003 };
+        /*  Brown 0,  Pink 1,   Purple 2, Gold 3,   Cyan 4,   Blue 5,   Orange 6, White 7,  Legenadry 8, Mythical 9 */
+        public static readonly ushort[] BAG_ID_TO_TYPE = new ushort[] { 0x0500, 0x0506, 0x0503, 0x0532, 0x0509, 0x050B, 0x0533, 0x050C, 0x5076, 0xa002 };
+        /*  Brown 0,  Pink 1,   Purple 2, Gold 3,   Cyan 4,   Blue 5,   Orange 6, White 7,  Legenadry 8, Mythical 9 */
+        public static readonly ushort[] BOOSTED_BAG_ID_TO_TYPE = new ushort[] { 0x0534, 0x0535, 0x0536, 0x0537, 0x0538, 0x0539, 0x053b, 0x053a, 0x5077, 0xa003 };
 
         private static readonly int[] AbilityT = new int[] { 4, 5, 11, 12, 13, 15, 16, 18, 19, 20, 21, 22, 23, 25, };
         private static readonly int[] ArmorT = new int[] { 6, 7, 14, };
@@ -291,9 +291,10 @@ namespace TKR.WorldServer.logic.loot
 
                         if (player.ToggleLootChanceNotification)
                         {
-                            var isEligible = item.Revenge || item.Mythical || item.Legendary;
+                            var isEligible = item.Mythical || item.Legendary;
                             if (isEligible)
                             {
+                                c = 0;
                                 var chance = Math.Round(1 / probability, 2);
                                 var roll = Math.Round(c / probability, 2);
 
@@ -379,14 +380,14 @@ namespace TKR.WorldServer.logic.loot
                 if (i.BagType > bagType)
                     bagType = i.BagType;
 
-                var isEligible = i.Revenge || i.Mythical || i.Legendary;
+                var isEligible = i.Mythical || i.Legendary;
                 if (player != null && isEligible)
                 {
                     var chat = core.ChatManager;
                     var world = player.World;
-                    var isMythical = i.Revenge || i.Mythical;
+                    var isMythical = i.Mythical;
 
-                    player.Client.SendPacket(new GlobalNotification() { Text = isMythical ? "revloot" : "legloot" });
+                    player.Client.SendPacket(new GlobalNotification() { Text = isMythical ? "mythiacal_loot" : "legendary_loot" });
 
                     #region Discord Bot Message
 
@@ -433,14 +434,10 @@ namespace TKR.WorldServer.logic.loot
                     {
                         //<LootNotifier> [PlayerName] has obtained a <Legendary/Revenge/Mythical> Item [ItemName], with [PercentageOfDamage]% damage dealt!
                         var msg = new StringBuilder($"[{player.Client.Account.Name}] has obtained ");
-                        if (i.Revenge)
-                            msg.Append("a Revenge");
-                        else if (i.Legendary)
+                        if (i.Legendary)
                             msg.Append("a Legendary");
                         else if (i.Mythical)
                             msg.Append("a Mythical");
-                        else if (i.Eternal)
-                            msg.Append("an Eternal");
 
                         var hitters = enemy.DamageCounter.GetHitters();
                         msg.Append($" [{i.DisplayId ?? i.ObjectId}], by doing {Math.Round(100.0 * (hitters[owners[0]] / (double)enemy.DamageCounter.TotalDamage), 0)}% damage!");

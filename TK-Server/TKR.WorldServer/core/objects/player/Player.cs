@@ -454,7 +454,7 @@ namespace TKR.WorldServer.core.objects
             for (var i = 0; i < 4; i++)
             {
                 var item = Inventory[i];
-                if (item == null || !item.Legendary && !item.Revenge && !item.Eternal && !item.Mythical)
+                if (item == null || !item.Legendary && !item.Mythical)
                     continue;
 
                 /* Eternal Effects */
@@ -1365,8 +1365,8 @@ namespace TKR.WorldServer.core.objects
                     PlayerId = Id,
                     ObjectId = Id
                 }, this);
-                //TO BE DECIDED
-                this.Client.SendPacket(new GlobalNotification() { Text = "monkeyKing" });
+
+                Client.SendPacket(new GlobalNotification() { Text = "monkeyKing" });
                 setCooldownTime(10, slot);
             }
         }
@@ -1539,7 +1539,7 @@ namespace TKR.WorldServer.core.objects
             for (var slot = 0; slot < 4; slot++)
             {
                 var item = Inventory[slot];
-                if (item == null || !item.Legendary && !item.Revenge && !item.Mythical)
+                if (item == null || !item.Legendary && !item.Mythical)
                     continue;
 
                 if (item.Lucky)
@@ -1567,14 +1567,11 @@ namespace TKR.WorldServer.core.objects
                     }
                 }
 
-                if (item.Mythical || item.Revenge || item.ObjectId == "Possessed Halberd" || item.ObjectId == "The Horn Breaker" || item.ObjectId == "Spear of Thiram" || item.ObjectId == "Turbulence")
+                if (item.Mythical)
                     RevengeEffects(item, slot);
 
                 if (item.Legendary)
                     LegendaryEffects(item, slot);
-
-                if (item.Eternal)
-                    EternalEffects(item, slot);
             }
         }
 

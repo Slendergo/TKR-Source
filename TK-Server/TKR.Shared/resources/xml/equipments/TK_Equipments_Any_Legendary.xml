@@ -20,7 +20,7 @@
 		<Consumable />
 		<Potion />
 		
-		<BagType>7</BagType>
+		<BagType>8</BagType>
 	</Object>
 	<Object type="0x40a" id="Path of Destruction">
 		<Class>Equipment</Class>
@@ -42,7 +42,7 @@
 		<Consumable />
 		<Potion />
 		
-		<BagType>7</BagType>
+		<BagType>8</BagType>
 	</Object>
 	<Object type="0x40b" id="Heart and Soul">
 		<Class>Equipment</Class>
@@ -63,7 +63,7 @@
 		<Activate type="0x05">UnlockTalisman</Activate>
 		<Consumable />
 		<Potion />
-		<BagType>7</BagType>
+		<BagType>8</BagType>
 	</Object>
 	<!--UT Talismans-->
 	
@@ -88,7 +88,7 @@
 		<Activate type="0x06">UnlockTalisman</Activate>
 		<Consumable />
 		<Potion />
-		<BagType>7</BagType>
+		<BagType>8</BagType>
 	</Object>
 	<Object type="0x40d" id="Eternal Youth">
 		<Class>Equipment</Class>
@@ -110,7 +110,7 @@
 		<Consumable />
 		<Potion />
 		
-		<BagType>7</BagType>
+		<BagType>8</BagType>
 	</Object>
 	<Object type="0x40e" id="Unyielding Resilience">
 		<Class>Equipment</Class>
@@ -132,7 +132,7 @@
 		<Consumable />
 		<Potion />
 		
-		<BagType>7</BagType>
+		<BagType>8</BagType>
 	</Object>
 			<!--Fire-->
 	<Object type="0x40f" id="Wrath's Incarnate">
@@ -155,7 +155,7 @@
 		<Consumable />
 		<Potion />
 		
-		<BagType>7</BagType>
+		<BagType>8</BagType>
 	</Object>
 	<Object type="0x407" id="Primal Rage">
 		<Class>Equipment</Class>
@@ -177,7 +177,7 @@
 		<Consumable />
 		<Potion />
 		
-		<BagType>7</BagType>
+		<BagType>8</BagType>
 	</Object>
 	<Object type="0x408" id="Call to Arms">
 		<Class>Equipment</Class>
@@ -199,7 +199,7 @@
 		<Consumable />
 		<Potion />
 		
-		<BagType>7</BagType>
+		<BagType>8</BagType>
 	</Object>
 			<!--Wind-->
 	<Object type="0x409" id="Divine Intellect">
@@ -222,7 +222,7 @@
 		<Consumable />
 		<Potion />
 		
-		<BagType>7</BagType>
+		<BagType>8</BagType>
 	</Object>
 	<Object type="0x410" id="Insatiable Thirst">
 		<Class>Equipment</Class>
@@ -244,7 +244,7 @@
 		<Consumable />
 		<Potion />
 		
-		<BagType>7</BagType>
+		<BagType>8</BagType>
 	</Object>
 	<Object type="0x411" id="Spellslinger">
 		<Class>Equipment</Class>
@@ -266,7 +266,7 @@
 		<Consumable />
 		<Potion />
 		
-		<BagType>7</BagType>
+		<BagType>8</BagType>
 	</Object>
 			<!--Earth-->
 	<Object type="0x412" id="Iron Will">
@@ -289,7 +289,7 @@
 		<Consumable />
 		<Potion />
 		
-		<BagType>7</BagType>
+		<BagType>8</BagType>
 	</Object>
 	<Object type="0x413" id="Party of One">
 		<Class>Equipment</Class>
@@ -311,7 +311,7 @@
 		<Consumable />
 		<Potion />
 		
-		<BagType>7</BagType>
+		<BagType>8</BagType>
 	</Object>
 	<Object type="0x414" id="Forbidden Fruit">
 		<Class>Equipment</Class>
@@ -333,7 +333,7 @@
 		<Consumable />
 		<Potion />
 		
-		<BagType>7</BagType>
+		<BagType>8</BagType>
 	</Object>
 	<!--Legendary Talismans-->
 
@@ -358,7 +358,7 @@
 		<Consumable />
 		<Potion />
 		
-		<BagType>7</BagType>
+		<BagType>8</BagType>
 	</Object>
 	<Object type="0x416" id="Known After Death">
 		<Class>Equipment</Class>
@@ -380,7 +380,7 @@
 		<Consumable />
 		<Potion />
 		
-		<BagType>7</BagType>
+		<BagType>8</BagType>
 	</Object>
 	<!--Mythical Talismans-->
 	
@@ -397,7 +397,7 @@
     <Forgeable />
     <Legendary />
 	  <Soulbound/>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
   </Object>
   <Object type="0x501a" id="Water Fragment">
     <Class>Equipment</Class>
@@ -412,7 +412,7 @@
     <Forgeable />
     <Legendary />
 	  <Soulbound/>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
   </Object>
   <Object type="0x501b" id="Wind Fragment">
     <Class>Equipment</Class>
@@ -427,7 +427,7 @@
     <Forgeable />
     <Legendary />
 	  <Soulbound/>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
   </Object>
   <Object type="0x501c" id="Earth Fragment">
     <Class>Equipment</Class>
@@ -442,7 +442,7 @@
     <Forgeable />
     <Legendary />
 	  <Soulbound/>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
   </Object>
   <Object type="0x501d" id="Bedrock Fragment">
     <Class>Equipment</Class>
@@ -457,7 +457,7 @@
     <Forgeable />
     <Legendary />
     <Soulbound />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
   </Object>
   <Object type="0x501e" id="Obsidian Fragment">
     <Class>Equipment</Class>
@@ -472,7 +472,7 @@
     <Forgeable />
     <Legendary />
     <Soulbound />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
   </Object>
   <Object type="0x501f" id="Omnipotence Fragment">
     <Class>Equipment</Class>
@@ -487,7 +487,7 @@
     <Forgeable />
     <Legendary />
     <Soulbound />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
   </Object>
 
 	<Object type="0x9520" id="Quest Chest">
@@ -520,7 +520,7 @@
 			<EffectInfo name="Info" description="Only usable in the Vault."/>
 		</ExtraTooltipData>
 		<feedPower>200</feedPower>
-		<BagType>7</BagType>
+		<BagType>8</BagType>
 	</Object>
 	<Object type="0x9703" id="Epic Quest Chest Item">
 		<Class>Equipment</Class>

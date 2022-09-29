@@ -21,7 +21,7 @@
       <MultiHit />
       <ArmorPiercing />
     </Projectile>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>5</FameBonus>
     <OldSound>bladeSwing</OldSound>
     <feedPower>500</feedPower>
@@ -50,7 +50,7 @@
       <Size>90</Size>
       <MultiHit />
     </Projectile>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>4</FameBonus>
     <OldSound>bladeSwing</OldSound>
     <feedPower>500</feedPower>
@@ -77,7 +77,7 @@
       <MultiHit />
     </Projectile>
     <NumProjectiles>1</NumProjectiles>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <DisplayId>Dojigiri</DisplayId>
   </Object>
@@ -108,7 +108,7 @@
     </Projectile>
     <NumProjectiles>2</NumProjectiles>
     <ArcGap>3</ArcGap>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <DisplayId>Lodius</DisplayId>
   </Object>
@@ -140,7 +140,7 @@
 		</Projectile>
 		<NumProjectiles>1</NumProjectiles>
 		<ArcGap>3</ArcGap>
-		<BagType>7</BagType>
+		<BagType>8</BagType>
 		<FameBonus>7</FameBonus>
 		<DisplayId>Agdluak</DisplayId>
 	</Object>

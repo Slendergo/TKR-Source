@@ -11,7 +11,7 @@
 		<Description>Infused with the power of the damned, this cloak was said to be worn by Thanatos himself when he was collecting souls all over the world.</Description>
 		<Sound>spell/fire_nova</Sound>
 		<Usable />
-		<BagType>8</BagType>
+		<BagType>9</BagType>
 		<Mythical />
 		<FameBonus>7</FameBonus>
 		<MpCost>125</MpCost>

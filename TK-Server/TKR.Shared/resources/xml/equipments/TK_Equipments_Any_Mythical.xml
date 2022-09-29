@@ -16,7 +16,7 @@
     <Activate>UpgradeActivate</Activate>
     <Consumable />
     <Potion />
-    <BagType>8</BagType>
+    <BagType>9</BagType>
   </Object>
      <Object type="0x5405" id="Titanium Core">
         <Class>Equipment</Class>
@@ -31,7 +31,7 @@
         <ActivateOnEquip stat="0" amount="210">IncrementStat</ActivateOnEquip>
         <ActivateOnEquip stat="20" amount="5">IncrementStat</ActivateOnEquip>
         <ActivateOnEquip stat="26" amount="35">IncrementStat</ActivateOnEquip>
-        <BagType>8</BagType>
+        <BagType>9</BagType>
         <FameBonus>7</FameBonus>
         <Mythical />
     </Object>

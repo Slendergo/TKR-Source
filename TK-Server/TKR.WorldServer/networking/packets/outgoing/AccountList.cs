@@ -9,7 +9,7 @@ namespace TKR.WorldServer.networking.packets.outgoing
 
         public override MessageId MessageId => MessageId.ACCOUNTLIST;
 
-        protected override void Write(NWriter wtr)
+        public override void Write(NWriter wtr)
         {
             wtr.Write(AccountListId);
             wtr.Write((short)AccountIds.Length);

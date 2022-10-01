@@ -18,7 +18,7 @@ namespace TKR.WorldServer.networking.packets.outgoing
             Statuses = new List<ObjectStats>();
         }
 
-        protected override void Write(NWriter wtr)
+        public override void Write(NWriter wtr)
         {
             wtr.Write(TickId);
             wtr.Write(TickTime);

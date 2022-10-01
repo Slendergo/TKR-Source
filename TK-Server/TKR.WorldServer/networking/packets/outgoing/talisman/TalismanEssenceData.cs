@@ -52,7 +52,7 @@ namespace TKR.WorldServer.networking.packets.outgoing.talisman
 
         public override MessageId MessageId => MessageId.TALISMAN_ESSENCE_DATA;
 
-        protected override void Write(NWriter wtr)
+        public override void Write(NWriter wtr)
         {
             wtr.Write(Essence);
             wtr.Write(EssenceCap);

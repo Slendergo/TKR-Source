@@ -19,7 +19,7 @@ namespace TKR.WorldServer.networking.packets.outgoing
             Key = Guid.NewGuid().ToByteArray();
         }
 
-        protected override void Write(NWriter wtr)
+        public override void Write(NWriter wtr)
         {
             wtr.WriteUTF(Name);
             wtr.WriteUTF(Host);

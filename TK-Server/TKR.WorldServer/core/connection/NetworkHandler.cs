@@ -346,26 +346,35 @@ namespace TKR.WorldServer.core.connection
     public sealed class NetworkHandler
     {
         private readonly Client Client;
-        private readonly NetworkSendHandler NetworkSendHandler;
+        //private readonly NetworkSendHandler NetworkSendHandler;
         private readonly NetworkReceiveHandler NetworkReceiveHandler;
+        private Queue<OutgoingMessage> PendingSending;
 
         public NetworkHandler(Client client, SocketAsyncEventArgs send, SocketAsyncEventArgs receive)
         {
             Client = client;
 
-            NetworkSendHandler = new NetworkSendHandler(client, send);
+            //NetworkSendHandler = new NetworkSendHandler(client, send);
             NetworkReceiveHandler = new NetworkReceiveHandler(client, receive);
+            PendingSending = new Queue<OutgoingMessage>();
         }
 
         public void SetSocket(Socket socket)
         {
             Client.State = ProtocolState.Connected;
 
-            NetworkSendHandler.SetSocket(socket);
+            //NetworkSendHandler.SetSocket(socket);
             NetworkReceiveHandler.SetSocket(socket);
         }
 
-        public void SendPacket(OutgoingMessage pkt) => NetworkSendHandler.SendMessage(pkt);
+        public void SendPacket(OutgoingMessage pkt)
+        {
+            if (Client.Player == null)
+                SendDirectly(pkt);
+            else
+                PendingSending.Enqueue(pkt);
+            //NetworkSendHandler.SendMessage(pkt);
+        }
 
         public void SendPackets(IEnumerable<OutgoingMessage> pkts)
         {
@@ -375,8 +384,59 @@ namespace TKR.WorldServer.core.connection
 
         public void Reset()
         {
-            NetworkSendHandler.Reset();
+            //NetworkSendHandler.Reset();
             NetworkReceiveHandler.Reset();
+        }
+
+        public void FlushIO()
+        {
+            if (PendingSending.Count > 0)
+            {
+                using var t = new TimedProfiler($"Flushing: {PendingSending.Count}");
+                while (PendingSending.Count > 0)
+                    SendDirectly(PendingSending.Dequeue());
+            }
+        }
+
+        private void SendDirectly(OutgoingMessage outgoingMessage)
+        {
+            try
+            {
+                var memoryStream = new MemoryStream();
+                using (var wtr = new NWriter(memoryStream))
+                {
+                    outgoingMessage.Write(wtr);
+
+                    var len = (int)memoryStream.Position;
+                    var offset = len + 5;
+
+                    var messageLenBytes = BitConverter.GetBytes(IPAddress.HostToNetworkOrder(offset));
+
+                    var messageBytes = new byte[offset];
+                    messageBytes[0] = messageLenBytes[0];
+                    messageBytes[1] = messageLenBytes[1];
+                    messageBytes[2] = messageLenBytes[2];
+                    messageBytes[3] = messageLenBytes[3];
+                    messageBytes[4] = (byte)outgoingMessage.MessageId;
+
+                    var streamBuffer = memoryStream.GetBuffer();
+                    Array.Resize(ref streamBuffer, len);
+
+                    //outgoingMessage.Crypt(client, streamBuffer, 0, streamBuffer.Length);
+                    Buffer.BlockCopy(streamBuffer, 0, messageBytes, 5, streamBuffer.Length);
+
+                    if (Client.State != ProtocolState.Disconnected)
+                    {
+                        var bytesSent = Client.Socket.Send(messageBytes);
+                        if (bytesSent != messageBytes.Length)
+                            Client.Disconnect("Error sending bytes");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"[SendDirectly] {e}");
+            }
         }
     }
 }

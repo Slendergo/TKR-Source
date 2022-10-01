@@ -28,7 +28,7 @@ namespace TKR.WorldServer.networking.packets.outgoing
             Color = color;
         }
 
-        protected override void Write(NWriter wtr)
+        public override void Write(NWriter wtr)
         {
             Pos.Write(wtr);
             wtr.Write(Radius);

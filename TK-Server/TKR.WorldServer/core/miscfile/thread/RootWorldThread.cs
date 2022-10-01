@@ -70,6 +70,8 @@ namespace TKR.WorldServer.core.miscfile.thread
                             lastMS = currentMS; //+= delta; // TICK_TIME_MS;
                         }
 
+                        World.ProcessPlayerSendIO();
+
                         if (World.Players.Count == 0)
                             Thread.Sleep(TICK_TIME_MS);
                     }
@@ -95,6 +97,7 @@ namespace TKR.WorldServer.core.miscfile.thread
                                 Stopped = true;
                                 break;
                             }
+                            World.ProcessPlayerSendIO();
                         }
                         catch (Exception e)
                         {

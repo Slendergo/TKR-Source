@@ -569,6 +569,9 @@ namespace TKR.WorldServer.core.objects
             }
         }
 
+
+        public void SendIO() => Client.FlushIO();
+
         public void Reconnect(World world)
         {
             if (world == null)

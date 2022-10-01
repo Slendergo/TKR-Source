@@ -2,7 +2,7 @@
   <Ground type="0x23" id="Bright Grass">
     <Texture>
       <File>lofiEnvironment</File>
-      <Index>0x9d</Index>
+      <Index>0xfd</Index>
     </Texture>
     <BlendPriority>11</BlendPriority>
     <RandomOffset />

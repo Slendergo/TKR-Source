@@ -9,7 +9,7 @@ namespace TKR.WorldServer.networking.packets.outgoing.market
 
         public MarketData[] Results;
 
-        protected override void Write(NWriter wtr)
+        public override void Write(NWriter wtr)
         {
             wtr.Write((short)Results.Length);
             for (int i = 0; i < Results.Length; i++)

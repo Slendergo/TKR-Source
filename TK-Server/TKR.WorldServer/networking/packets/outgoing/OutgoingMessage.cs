@@ -14,8 +14,6 @@ namespace TKR.WorldServer.networking.packets.outgoing
 
         public abstract MessageId MessageId { get; }
 
-        public void WriteNew(NWriter wtr) => Write(wtr);
-
         public int? Write(byte[] buff, int offset)
         {
             var s = new MemoryStream();
@@ -43,7 +41,7 @@ namespace TKR.WorldServer.networking.packets.outgoing
             }
         }
 
-        protected abstract void Write(NWriter wtr);
+        public abstract void Write(NWriter wtr);
 
         public override string ToString()
         {

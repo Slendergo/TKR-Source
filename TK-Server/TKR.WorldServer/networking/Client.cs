@@ -160,6 +160,8 @@ namespace TKR.WorldServer.networking
             }
         }
 
+        public void FlushIO() => _handler.FlushIO();
+
         public void Reset()
         {
             PacketSpamAmount = 0;
@@ -173,5 +175,6 @@ namespace TKR.WorldServer.networking
 
             _handler.Reset();
         }
+
     }
 }

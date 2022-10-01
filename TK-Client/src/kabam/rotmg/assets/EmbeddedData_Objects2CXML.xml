@@ -9876,8 +9876,8 @@
       <File>LostHallsObj</File>
       <Index>0x04</Index>
     </Texture>
-    <SlotType>26</SlotType>
     <Description>An taliman of unfathomable strength which pulses through this ring. Only the most righteous mortals can weild this talisman.</Description>
+    <SlotType>26</SlotType>
     <ActivateOnEquip stat="0" amount="10">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="3" amount="10">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="1">IncrementStat</ActivateOnEquip>
@@ -9895,8 +9895,8 @@
       <File>lofiObj2</File>
       <Index>0x26</Index>
     </Texture>
-    <SlotType>26</SlotType>
     <Description>An taliman that nourishes the weilders soul.</Description>
+    <SlotType>26</SlotType>
     <ActivateOnEquip stat="0" amount="10">IncrementStat</ActivateOnEquip>
     <BagType>9</BagType>
   </Object>
@@ -9907,8 +9907,8 @@
       <File>lofiObj2</File>
       <Index>0x27</Index>
     </Texture>
-    <SlotType>26</SlotType>
     <Description>An taliman that nourishes the weilders magical core.</Description>
+    <SlotType>26</SlotType>
     <ActivateOnEquip stat="3" amount="10">IncrementStat</ActivateOnEquip>
     <BagType>9</BagType>
   </Object>
@@ -9919,8 +9919,8 @@
       <File>lofiObj2</File>
       <Index>0x34</Index>
     </Texture>
-    <SlotType>26</SlotType>
     <Description>An taliman that strengthens the wielders attacks.</Description>
+    <SlotType>26</SlotType>
     <ActivateOnEquip stat="20" amount="2">IncrementStat</ActivateOnEquip>
     <BagType>9</BagType>
   </Object>
@@ -9931,8 +9931,8 @@
       <File>lofiObj2</File>
       <Index>0x35</Index>
     </Texture>
-    <SlotType>26</SlotType>
     <Description>An taliman that toughens the weilders skin.</Description>
+    <SlotType>26</SlotType>
     <ActivateOnEquip stat="21" amount="2">IncrementStat</ActivateOnEquip>
     <BagType>9</BagType>
   </Object>
@@ -9943,8 +9943,8 @@
       <File>lofiObj2</File>
       <Index>0x36</Index>
     </Texture>
-    <SlotType>26</SlotType>
     <Description>An taliman that improves agility.</Description>
+    <SlotType>26</SlotType>
     <ActivateOnEquip stat="22" amount="2">IncrementStat</ActivateOnEquip>
     <BagType>9</BagType>
   </Object>
@@ -9955,8 +9955,8 @@
       <File>lofiObj2</File>
       <Index>0x37</Index>
     </Texture>
-    <SlotType>26</SlotType>
     <Description>An taliman that improves reflexes.</Description>
+    <SlotType>26</SlotType>
     <ActivateOnEquip stat="28" amount="2">IncrementStat</ActivateOnEquip>
     <BagType>9</BagType>
   </Object>
@@ -9967,8 +9967,8 @@
       <File>lofiObj2</File>
       <Index>0x30</Index>
     </Texture>
-    <SlotType>26</SlotType>
     <Description>An taliman that speeds up wound healing.</Description>
+    <SlotType>26</SlotType>
     <ActivateOnEquip stat="26" amount="2">IncrementStat</ActivateOnEquip>
     <BagType>9</BagType>
   </Object>
@@ -9979,6 +9979,238 @@
       <File>lofiObj2</File>
       <Index>0x31</Index>
     </Texture>
+    <Description>An taliman that speeds up mana absorption.</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+    <BagType>9</BagType>
+  </Object>
+  <Object type="0x4949" id="Pocket Change">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x33</Index>
+    </Texture>
+    <Description>TODO</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="100">IncrementStat</ActivateOnEquip>
+    <BagType>9</BagType>
+    <Talisman>
+      <Common />
+      <OnlyOne />
+      <Provides effect="luckyA" prob="0.2" cooldown="30.0" />
+      <!-- if this doesnt proc -->
+      <Provides effect="luckyB" prob="0.2" cooldown="45.0" />
+      <!-- this will try proc and if this doesnt proc -->
+      <Provides effect="luckyC" prob="0.2" cooldown="60.0" />
+      <!-- this will try proc and if this doesnt proc, no effect -->
+    </Talisman>
+  </Object>
+  <Object type="0x40a" id="Path of Destruction">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x34</Index>
+    </Texture>
+    <Description>TODO</Description>
+    <SlotType>26</SlotType>
+    <Description>An taliman that speeds up mana absorption.</Description>
+    <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+    <BagType>9</BagType>
+  </Object>
+  <Object type="0x40b" id="Heart and Soul">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x35</Index>
+    </Texture>
+    <Description>TODO</Description>
+    <Description>TODO</Description>
+    <SlotType>26</SlotType>
+    <Description>An taliman that speeds up mana absorption.</Description>
+    <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+    <BagType>9</BagType>
+  </Object>
+  <Object type="0x40c" id="Blood Exchange">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x10</Index>
+    </Texture>
+    <Description>TODO</Description>
+    <SlotType>26</SlotType>
+    <Description>An taliman that speeds up mana absorption.</Description>
+    <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+    <BagType>9</BagType>
+  </Object>
+  <Object type="0x40d" id="Eternal Youth">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x11</Index>
+    </Texture>
+    <Description>TODO</Description>
+    <SlotType>26</SlotType>
+    <Description>An taliman that speeds up mana absorption.</Description>
+    <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+    <BagType>9</BagType>
+  </Object>
+  <Object type="0x40e" id="Unyielding Resilience">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x12</Index>
+    </Texture>
+    <Description>TODO</Description>
+    <SlotType>26</SlotType>
+    <Description>An taliman that speeds up mana absorption.</Description>
+    <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+    <BagType>9</BagType>
+  </Object>
+  <Object type="0x40f" id="Wrath's Incarnate">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x20</Index>
+    </Texture>
+    <Description>TODO</Description>
+    <SlotType>26</SlotType>
+    <Description>An taliman that speeds up mana absorption.</Description>
+    <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+    <BagType>9</BagType>
+  </Object>
+  <Object type="0x407" id="Primal Rage">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x21</Index>
+    </Texture>
+    <Description>TODO</Description>
+    <SlotType>26</SlotType>
+    <Description>An taliman that speeds up mana absorption.</Description>
+    <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+    <BagType>9</BagType>
+  </Object>
+  <Object type="0x408" id="Call to Arms">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x22</Index>
+    </Texture>
+    <Description>TODO</Description>
+    <SlotType>26</SlotType>
+    <Description>An taliman that speeds up mana absorption.</Description>
+    <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+    <BagType>9</BagType>
+  </Object>
+  <Object type="0x409" id="Divine Intellect">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x30</Index>
+    </Texture>
+    <Description>TODO</Description>
+    <SlotType>26</SlotType>
+    <Description>An taliman that speeds up mana absorption.</Description>
+    <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+    <BagType>9</BagType>
+  </Object>
+  <Object type="0x410" id="Insatiable Thirst">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x31</Index>
+    </Texture>
+    <Description>TODO</Description>
+    <SlotType>26</SlotType>
+    <Description>An taliman that speeds up mana absorption.</Description>
+    <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+    <BagType>9</BagType>
+  </Object>
+  <Object type="0x411" id="Spellslinger">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x32</Index>
+    </Texture>
+    <Description>TODO</Description>
+    <SlotType>26</SlotType>
+    <Description>An taliman that speeds up mana absorption.</Description>
+    <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+    <BagType>9</BagType>
+  </Object>
+  <Object type="0x412" id="Iron Will">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x40</Index>
+    </Texture>
+    <Description>TODO</Description>
+    <SlotType>26</SlotType>
+    <Description>An taliman that speeds up mana absorption.</Description>
+    <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+    <BagType>9</BagType>
+  </Object>
+  <Object type="0x413" id="Party of One">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x41</Index>
+    </Texture>
+    <Description>TODO</Description>
+    <SlotType>26</SlotType>
+    <Description>An taliman that speeds up mana absorption.</Description>
+    <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+    <BagType>9</BagType>
+  </Object>
+  <Object type="0x414" id="Forbidden Fruit">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x42</Index>
+    </Texture>
+    <Description>TODO</Description>
+    <SlotType>26</SlotType>
+    <Description>An taliman that speeds up mana absorption.</Description>
+    <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+    <BagType>9</BagType>
+  </Object>
+  <Object type="0x415" id="Luck of the Irish">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x51</Index>
+    </Texture>
+    <Description>TODO</Description>
+    <SlotType>26</SlotType>
+    <Description>An taliman that speeds up mana absorption.</Description>
+    <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+    <BagType>9</BagType>
+  </Object>
+  <Object type="0x416" id="Known After Death">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x50</Index>
+    </Texture>
+    <Description>TODO</Description>
     <SlotType>26</SlotType>
     <Description>An taliman that speeds up mana absorption.</Description>
     <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
@@ -45302,363 +45534,6 @@
       <Index>0x06</Index>
     </Texture>
   </Object>
-  <Object type="0x4949" id="Pocket Change">
-    <Class>Equipment</Class>
-    <DisplayId>Pocket Change</DisplayId>
-    <Item />
-    <Rare />
-    <InvUse />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x33</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>It’s rough out here on these streets. Can’t I catch a break?</Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x00">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>8</BagType>
-  </Object>
-  <Object type="0x40a" id="Path of Destruction">
-    <Class>Equipment</Class>
-    <DisplayId>Path of Destruction</DisplayId>
-    <Item />
-    <Rare />
-    <InvUse />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x34</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>A long, treacherous path has been laid out before you. Gain the skill needed to vanquish foes or fall as other adventures have.</Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x04">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>8</BagType>
-  </Object>
-  <Object type="0x40b" id="Heart and Soul">
-    <Class>Equipment</Class>
-    <DisplayId>Heart and Soul</DisplayId>
-    <Item />
-    <Rare />
-    <InvUse />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x35</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>Those that put both Heart and Soul into everything they do are rewarded appropriately so.</Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x05">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>8</BagType>
-  </Object>
-  <Object type="0x40c" id="Blood Exchange">
-    <Class>Equipment</Class>
-    <DisplayId>Blood Exchange</DisplayId>
-    <Item />
-    <Legendary />
-    <InvUse />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x10</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>What price will you pay for power? Will you tempt fate to gain wealth and riches or pay the ultimate price trying?</Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x06">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>8</BagType>
-  </Object>
-  <Object type="0x40d" id="Eternal Youth">
-    <Class>Equipment</Class>
-    <DisplayId>Eternal Youth</DisplayId>
-    <Item />
-    <Legendary />
-    <InvUse />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x11</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>A fabled chalice filled to the brim with substance from the fountain of youth, capable of rejuvenating someone back from the brink of death.</Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x07">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>8</BagType>
-  </Object>
-  <Object type="0x40e" id="Unyielding Resilience">
-    <Class>Equipment</Class>
-    <DisplayId>Unyielding Resilience</DisplayId>
-    <Item />
-    <Legendary />
-    <InvUse />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x12</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>Known to persevere even through the harshest of times, you’ve become a pillar to the survival of humanity. Now a vital cornerstone for your allies, able to withstand the test of time.</Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x08">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>8</BagType>
-  </Object>
-  <Object type="0x40f" id="Wrath's Incarnate">
-    <Class>Equipment</Class>
-    <DisplayId>Wrath's Incarnate</DisplayId>
-    <Item />
-    <Legendary />
-    <InvUse />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x20</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>Fear is a double-edged sword. It can be used as an advantage, or it can be used against you.</Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x09">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>8</BagType>
-  </Object>
-  <Object type="0x407" id="Primal Rage">
-    <Class>Equipment</Class>
-    <DisplayId>Primal Rage</DisplayId>
-    <Item />
-    <Legendary />
-    <InvUse />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x21</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>Revert to your natural instincts, allowing your rage to flow through your veins. Become an unstoppable force of reckoning. </Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x10">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>8</BagType>
-  </Object>
-  <Object type="0x408" id="Call to Arms">
-    <Class>Equipment</Class>
-    <DisplayId>Call to Arms</DisplayId>
-    <Item />
-    <Legendary />
-    <InvUse />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x22</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>Warriors that live life on the edge keeps them in a heightened state of awareness, giving them complete advantage, preparing them for anything. </Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x11">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>8</BagType>
-  </Object>
-  <Object type="0x409" id="Divine Intellect">
-    <Class>Equipment</Class>
-    <DisplayId>Divine Intellect</DisplayId>
-    <Item />
-    <Legendary />
-    <InvUse />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x30</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>Instead of braving the front of battle, you’ve decided to take a more studious route in your journey for power. Knowledge of primordial times enrich your magic capabilities further than humanly possible.</Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x12">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>8</BagType>
-  </Object>
-  <Object type="0x410" id="Insatiable Thirst">
-    <Class>Equipment</Class>
-    <DisplayId>Insatiable Thirst</DisplayId>
-    <Item />
-    <Legendary />
-    <InvUse />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x31</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>Acquire the ability to sap magical energy away from foes at the expense of siphoning away at your lifeforce. </Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x13">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>8</BagType>
-  </Object>
-  <Object type="0x411" id="Spellslinger">
-    <Class>Equipment</Class>
-    <DisplayId>Spellslinger</DisplayId>
-    <Item />
-    <Legendary />
-    <InvUse />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x32</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>As you progress farther into the arcane arts, you begin to lose yourself in the dark, unknown, and mysterious world that is magic.</Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x14">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>8</BagType>
-  </Object>
-  <Object type="0x412" id="Iron Will">
-    <Class>Equipment</Class>
-    <DisplayId>Iron Will</DisplayId>
-    <Item />
-    <Legendary />
-    <InvUse />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x40</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>A strong offense starts with a good defense. Your impenetrable defenses qualify you to be a battle-hardened veteran of war.</Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x15">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>8</BagType>
-  </Object>
-  <Object type="0x413" id="Party of One">
-    <Class>Equipment</Class>
-    <DisplayId>Party of One</DisplayId>
-    <Item />
-    <Legendary />
-    <InvUse />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x41</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>“Oh, you don’t want any? More for me then.”</Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x16">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>8</BagType>
-  </Object>
-  <Object type="0x414" id="Forbidden Fruit">
-    <Class>Equipment</Class>
-    <DisplayId>Forbidden Fruit</DisplayId>
-    <Item />
-    <Legendary />
-    <InvUse />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x42</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>Resist the temptation to consume or suffer the cost of succumbing to addiction.</Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x17">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>8</BagType>
-  </Object>
-  <Object type="0x415" id="Luck of the Irish">
-    <Class>Equipment</Class>
-    <DisplayId>Luck of the Irish</DisplayId>
-    <Item />
-    <Legendary />
-    <InvUse />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x51</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>Strike it rich or die trying.</Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x18">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>8</BagType>
-  </Object>
-  <Object type="0x416" id="Known After Death">
-    <Class>Equipment</Class>
-    <DisplayId>Known After Death</DisplayId>
-    <Item />
-    <Legendary />
-    <InvUse />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x50</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>Some go through life, known by none. Others talented and fortunate enough to conquer legends and myths of old receive a life after death, known for centuries to come.</Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x19">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>8</BagType>
-  </Object>
   <Object type="0x5019" id="Fire Fragment">
     <Class>Equipment</Class>
     <Item />
@@ -45807,6 +45682,7 @@
     <Sound>use_key</Sound>
     <Consumable />
     <Activate objectId="Epic Quest Chest">Create</Activate>:
+
 		<feedPower>200</feedPower><BagType>5</BagType><Track /></Object>
   <Object type="0x9701" id="Epic Quest Chest">
     <DisplayId>Quest Chest</DisplayId>

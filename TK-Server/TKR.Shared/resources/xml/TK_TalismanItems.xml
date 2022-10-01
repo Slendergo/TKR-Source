@@ -6,8 +6,8 @@
 			<File>LostHallsObj</File>
 			<Index>0x04</Index>
 		</Texture>
-		<SlotType>26</SlotType>
 		<Description>An taliman of unfathomable strength which pulses through this ring. Only the most righteous mortals can weild this talisman.</Description>
+		<SlotType>26</SlotType>
 		<ActivateOnEquip stat="0" amount="10">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="3" amount="10">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="20" amount="1">IncrementStat</ActivateOnEquip>
@@ -25,8 +25,8 @@
 			<File>lofiObj2</File>
 			<Index>0x26</Index>
 		</Texture>
-		<SlotType>26</SlotType>
 		<Description>An taliman that nourishes the weilders soul.</Description>
+		<SlotType>26</SlotType>
 		<ActivateOnEquip stat="0" amount="10">IncrementStat</ActivateOnEquip>
 		<BagType>9</BagType>
 	</Object>
@@ -37,8 +37,8 @@
 			<File>lofiObj2</File>
 			<Index>0x27</Index>
 		</Texture>
-		<SlotType>26</SlotType>
 		<Description>An taliman that nourishes the weilders magical core.</Description>
+		<SlotType>26</SlotType>
 		<ActivateOnEquip stat="3" amount="10">IncrementStat</ActivateOnEquip>
 		<BagType>9</BagType>
 	</Object>
@@ -49,8 +49,8 @@
 			<File>lofiObj2</File>
 			<Index>0x34</Index>
 		</Texture>
-		<SlotType>26</SlotType>
 		<Description>An taliman that strengthens the wielders attacks.</Description>
+		<SlotType>26</SlotType>
 		<ActivateOnEquip stat="20" amount="2">IncrementStat</ActivateOnEquip>
 		<BagType>9</BagType>
 	</Object>
@@ -61,8 +61,8 @@
 			<File>lofiObj2</File>
 			<Index>0x35</Index>
 		</Texture>
-		<SlotType>26</SlotType>
 		<Description>An taliman that toughens the weilders skin.</Description>
+		<SlotType>26</SlotType>
 		<ActivateOnEquip stat="21" amount="2">IncrementStat</ActivateOnEquip>
 		<BagType>9</BagType>
 	</Object>
@@ -73,8 +73,8 @@
 			<File>lofiObj2</File>
 			<Index>0x36</Index>
 		</Texture>
-		<SlotType>26</SlotType>
 		<Description>An taliman that improves agility.</Description>
+		<SlotType>26</SlotType>
 		<ActivateOnEquip stat="22" amount="2">IncrementStat</ActivateOnEquip>
 		<BagType>9</BagType>
 	</Object>
@@ -85,8 +85,8 @@
 			<File>lofiObj2</File>
 			<Index>0x37</Index>
 		</Texture>
-		<SlotType>26</SlotType>
 		<Description>An taliman that improves reflexes.</Description>
+		<SlotType>26</SlotType>
 		<ActivateOnEquip stat="28" amount="2">IncrementStat</ActivateOnEquip>
 		<BagType>9</BagType>
 	</Object>
@@ -97,8 +97,8 @@
 			<File>lofiObj2</File>
 			<Index>0x30</Index>
 		</Texture>
-		<SlotType>26</SlotType>
 		<Description>An taliman that speeds up wound healing.</Description>
+		<SlotType>26</SlotType>
 		<ActivateOnEquip stat="26" amount="2">IncrementStat</ActivateOnEquip>
 		<BagType>9</BagType>
 	</Object>
@@ -109,9 +109,221 @@
 			<File>lofiObj2</File>
 			<Index>0x31</Index>
 		</Texture>
-		<SlotType>26</SlotType>
 		<Description>An taliman that speeds up mana absorption.</Description>
+		<SlotType>26</SlotType>
 		<ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
 		<BagType>9</BagType>
 	</Object>
+
+	<Object type="0x4949" id="Pocket Change">
+		<Class>Equipment</Class>
+		<Item />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x33</Index>
+		</Texture>
+		<Description>TODO</Description>
+		<SlotType>26</SlotType>
+		<ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="3" amount="100">IncrementStat</ActivateOnEquip>
+		<BagType>9</BagType>
+		<Talisman>
+			<Mythic/>
+			<OnlyOne/>
+			<Provides effect="SmallLuck" isPassive="true"/> 
+		</Talisman>
+	</Object>
+	<Object type="0x40a" id="Path of Destruction">
+		<Class>Equipment</Class>
+		<Item />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x34</Index>
+		</Texture>
+		<Description>TODO</Description>
+		<SlotType>26</SlotType>
+		<ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+		<BagType>9</BagType>
+	</Object>
+	<Object type="0x40b" id="Heart and Soul">
+		<Class>Equipment</Class>
+		<Item />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x35</Index>
+		</Texture>
+		<Description>TODO</Description>
+		<SlotType>26</SlotType>
+		<ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+		<BagType>9</BagType>
+	</Object>
+	<Object type="0x40c" id="Blood Exchange">
+		<Class>Equipment</Class>
+		<Item />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x10</Index>
+		</Texture>
+		<Description>TODO</Description>
+		<SlotType>26</SlotType>
+		<ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+		<BagType>9</BagType>
+	</Object>
+	<Object type="0x40d" id="Eternal Youth">
+		<Class>Equipment</Class>
+		<Item />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x11</Index>
+		</Texture>
+		<Description>TODO</Description>
+		<SlotType>26</SlotType>
+		<ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+		<BagType>9</BagType>
+	</Object>
+	<Object type="0x40e" id="Unyielding Resilience">
+		<Class>Equipment</Class>
+		<Item />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x12</Index>
+		</Texture>
+		<Description>TODO</Description>
+		<SlotType>26</SlotType>
+		<ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+		<BagType>9</BagType>
+	</Object>
+	<Object type="0x40f" id="Wrath's Incarnate">
+		<Class>Equipment</Class>
+		<Item />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x20</Index>
+		</Texture>
+		<Description>TODO</Description>
+		<SlotType>26</SlotType>
+		<ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+		<BagType>9</BagType>
+	</Object>
+	<Object type="0x407" id="Primal Rage">
+		<Class>Equipment</Class>
+		<Item />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x21</Index>
+		</Texture>
+		<Description>TODO</Description>
+		<SlotType>26</SlotType>
+		<ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+		<BagType>9</BagType>
+	</Object>
+	<Object type="0x408" id="Call to Arms">
+		<Class>Equipment</Class>
+		<Item />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x22</Index>
+		</Texture>
+		<Description>TODO</Description>
+		<SlotType>26</SlotType>
+		<ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+		<BagType>9</BagType>
+	</Object>
+	<Object type="0x409" id="Divine Intellect">
+		<Class>Equipment</Class>
+		<Item />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x30</Index>
+		</Texture>
+		<Description>TODO</Description>
+		<SlotType>26</SlotType>
+		<ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+		<BagType>9</BagType>
+	</Object>
+	<Object type="0x410" id="Insatiable Thirst">
+		<Class>Equipment</Class>
+		<Item />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x31</Index>
+		</Texture>
+		<Description>TODO</Description>
+		<SlotType>26</SlotType>
+		<ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+		<BagType>9</BagType>
+	</Object>
+	<Object type="0x411" id="Spellslinger">
+		<Class>Equipment</Class>
+		<Item />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x32</Index>
+		</Texture>
+		<Description>TODO</Description>
+		<SlotType>26</SlotType>
+		<ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+		<BagType>9</BagType>
+	</Object>
+	<Object type="0x412" id="Iron Will">
+		<Class>Equipment</Class>
+		<Item />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x40</Index>
+		</Texture>
+		<Description>TODO</Description>
+		<SlotType>26</SlotType>
+		<ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+		<BagType>9</BagType>
+	</Object>
+	<Object type="0x413" id="Party of One">
+		<Class>Equipment</Class>
+		<Item />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x41</Index>
+		</Texture>
+		<Description>TODO</Description>
+		<SlotType>26</SlotType>
+		<ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+		<BagType>9</BagType>
+	</Object>
+	<Object type="0x414" id="Forbidden Fruit">
+		<Class>Equipment</Class>
+		<Item />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x42</Index>
+		</Texture>
+		<Description>TODO</Description>
+		<SlotType>26</SlotType>
+		<ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+		<BagType>9</BagType>
+	</Object>
+	<Object type="0x415" id="Luck of the Irish">
+		<Class>Equipment</Class>
+		<Item />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x51</Index>
+		</Texture>
+		<Description>TODO</Description>
+		<SlotType>26</SlotType>
+		<ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+		<BagType>9</BagType>
+	</Object>
+	<Object type="0x416" id="Known After Death">
+		<Class>Equipment</Class>
+		<Item />
+		<Texture>
+			<File>CustomObj1</File>
+			<Index>0x50</Index>
+		</Texture>
+		<Description>TODO</Description>
+		<SlotType>26</SlotType>
+		<ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+		<BagType>9</BagType>
+	</Object>
+
 </Objects>

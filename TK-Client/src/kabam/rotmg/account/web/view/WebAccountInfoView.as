@@ -1,5 +1,6 @@
 package kabam.rotmg.account.web.view
 {
+import com.company.assembleegameclient.parameters.Parameters;
 import com.company.assembleegameclient.screens.TitleMenuOption;
 import com.company.ui.SimpleText;
 import com.gskinner.motion.GTween;
@@ -152,8 +153,12 @@ public class WebAccountInfoView extends Sprite implements AccountInfoView
       this.accountText.text = "Not Signed in - ";
       this.accountText.updateMetrics();
       this.loginButton.setText(LOG_IN);
-//      this.addAndAlignHorizontally(this.accountText,this.registerButton,this.dividerText,this.loginButton);
-      this.addAndAlignHorizontally(this.accountText, this.loginButton);
+      if(Parameters.TESTING_SERVER){
+         this.addAndAlignHorizontally(this.accountText,this.registerButton,this.dividerText,this.loginButton);
+      }
+      else{
+         this.addAndAlignHorizontally(this.accountText, this.loginButton);
+      }
    }
 
    private function addAndAlignHorizontally(... uiElements) : void

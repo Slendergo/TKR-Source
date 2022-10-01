@@ -198,8 +198,18 @@ namespace TKR.Shared
         }
 
         public static bool HasAttribute(this XElement e, string name) => e.Attribute(name) != null;
+        public static bool HasAttribute(this XElement e, string name, out XAttribute attribute)
+        {
+            attribute = e.Attribute(name);
+            return attribute != null;
+        }
 
         public static bool HasElement(this XElement e, string name) => e.Element(name) != null;
+        public static bool HasElement(this XElement e, string name, out XElement element)
+        {
+            element = e.Element(name);
+            return element != null;
+        }
 
         public static bool Invoke(bool showException, Action action)
         {

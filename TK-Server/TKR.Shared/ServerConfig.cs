@@ -24,6 +24,7 @@ namespace TKR.Shared
     {
         public string address { get; set; } = "127.0.0.1";
         public bool adminOnly { get; set; } = false;
+        public bool testing { get; set; } = false;
         public string bindAddress { get; set; } = "127.0.0.1";
         public bool requireSecret { get; set; } = false;
         public string instanceId { get; set; } = "";

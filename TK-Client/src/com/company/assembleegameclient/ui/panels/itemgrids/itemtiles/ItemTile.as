@@ -19,9 +19,7 @@ import kabam.rotmg.constants.ItemConstants;
 
 public class ItemTile extends Sprite
 {
-
    public static const TILE_DOUBLE_CLICK:String = "TILE_DOUBLE_CLICK";
-
    public static const TILE_SINGLE_CLICK:String = "TILE_SINGLE_CLICK";
 
    public static const WIDTH:int = 40;
@@ -31,11 +29,9 @@ public class ItemTile extends Sprite
    public static const BORDER:int = 3;
 
 
-   private var fill_:GraphicsSolidFill = new GraphicsSolidFill(getBackgroundColor(),1);
-
+   private var fill_:GraphicsSolidFill;
    private var path_:GraphicsPath = new GraphicsPath(new Vector.<int>(),new Vector.<Number>());
-
-   private var graphicsData_:Vector.<IGraphicsData> = new <IGraphicsData>[fill_,path_,GraphicsUtil.END_FILL];
+   private var graphicsData_:Vector.<IGraphicsData>;
 
    private var restrictedUseIndicator:Shape;
 
@@ -57,6 +53,9 @@ public class ItemTile extends Sprite
       this.restrictedUseIndicator = new Shape();
       addChild(this.restrictedUseIndicator);
       this.setItemSprite(new ItemTileSprite());
+
+      fill_ = new GraphicsSolidFill(getBackgroundColor(),1);
+      graphicsData_ = new <IGraphicsData>[fill_,path_,GraphicsUtil.END_FILL];
    }
 
    public function drawBackground(cuts:Array) : void

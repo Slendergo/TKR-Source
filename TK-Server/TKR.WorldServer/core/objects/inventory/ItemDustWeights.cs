@@ -60,7 +60,7 @@ namespace TKR.WorldServer.core.objects.inventory
             {
                 var foundItem = xmlData.Items.Values.FirstOrDefault(item => item.ObjectId == namedItem.ItemName);
                 if (foundItem == null)
-                    throw new Exception("Invalid Name of item");
+                    throw new Exception($"Invalid Name of item: {namedItem.ItemName}");
                 poolItems.Add(new KeyValuePair<Item, int>(foundItem, namedItem.Weight));
             }
             return poolItems;

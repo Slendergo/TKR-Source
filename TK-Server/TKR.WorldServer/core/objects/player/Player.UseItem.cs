@@ -67,9 +67,14 @@ namespace TKR.WorldServer.core.objects
 
         public void AETalismanFragment(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
-            var entity = World.GetEntity(objId);
+            if(World.Random.NextDouble() < 0.15)
+            {
+                SendInfo($"The talisman crumbles in your hands");
+                return;
+            }
 
             var dustItem = World.GameServer.ItemDustWeights.TalismanFragment.GetRandom(World.Random);
+            var entity = World.GetEntity(objId);
             if (entity is Container container)
                 container.Inventory[slot] = dustItem;
             else

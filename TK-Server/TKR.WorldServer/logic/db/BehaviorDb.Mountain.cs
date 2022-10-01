@@ -73,7 +73,7 @@ namespace TKR.WorldServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.009),
+            
             new Threshold(.18, new ItemLoot("Potion of Attack", 0.05))
         )
         .Init("Sprite God",
@@ -103,7 +103,7 @@ namespace TKR.WorldServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.009),
+            
             new Threshold(.18, new ItemLoot("Potion of Attack", 0.05))
         )
         .Init("Sprite Child",
@@ -144,7 +144,7 @@ namespace TKR.WorldServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.009),
+            
             new Threshold(.18, new ItemLoot("Potion of Speed", 0.05))
         )
         .Init("Ent God",
@@ -174,7 +174,7 @@ namespace TKR.WorldServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.009),
+            
             new Threshold(.18, new ItemLoot("Potion of Defense", 0.025))
             )
         .Init("Beholder",
@@ -204,7 +204,7 @@ namespace TKR.WorldServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.009),
+            
             new Threshold(.18, new ItemLoot("Potion of Defense", 0.025))
             )
         .Init("Flying Brain",
@@ -234,7 +234,7 @@ namespace TKR.WorldServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.009),
+            
             new Threshold(.18, new ItemLoot("Potion of Attack", 0.025))
         )
         .Init("Slime God",
@@ -265,7 +265,7 @@ namespace TKR.WorldServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.009),
+            
             new Threshold(.18, new ItemLoot("Potion of Defense", 0.025))
             )
         .Init("Ghost God",
@@ -295,7 +295,7 @@ namespace TKR.WorldServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.009),
+            
             new Threshold(.18, new ItemLoot("Potion of Speed", 0.05))
             
         )
@@ -326,7 +326,7 @@ namespace TKR.WorldServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.009),
+            
             new Threshold(.18, new ItemLoot("Potion of Attack", 0.205))
             )
         .Init("Paper Bot",
@@ -362,7 +362,7 @@ namespace TKR.WorldServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.009),
+            
             new Threshold(.18, new ItemLoot("Potion of Attack", 0.025))
             )
         .Init("Steel Bot",
@@ -398,7 +398,7 @@ namespace TKR.WorldServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.009),
+            
             new Threshold(.18, new ItemLoot("Potion of Speed", 0.05))
             )
         .Init("Djinn",
@@ -473,7 +473,7 @@ namespace TKR.WorldServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.009),
+            
             new Threshold(.18, new ItemLoot("Potion of Speed", 0.05))
             )
         .Init("Lucky Djinn",
@@ -549,7 +549,7 @@ namespace TKR.WorldServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.009),
+            
             new Threshold(.18, new ItemLoot("Potion of Speed", 0.05))
             )
         .Init("Lucky Ent God",
@@ -628,7 +628,7 @@ namespace TKR.WorldServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.009),
+            
             new Threshold(.18, new ItemLoot("Potion of Defense", 0.025))
             )
         ;

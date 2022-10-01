@@ -5,6 +5,7 @@ import com.company.assembleegameclient.ui.panels.itemgrids.*;
    import com.company.assembleegameclient.objects.GameObject;
    import com.company.assembleegameclient.objects.Player;
    import com.company.assembleegameclient.ui.panels.itemgrids.itemtiles.EquipmentTile;
+import com.company.assembleegameclient.ui.tooltip.TooltipHelper;
 
 import kabam.rotmg.constants.ItemConstants;
 
@@ -21,9 +22,9 @@ public class EquippedTalismanGrid extends ItemGrid
          this.tiles = new Vector.<EquipmentTile>(this.NUM_SLOTS);
          for(var i:int = 0; i < this.NUM_SLOTS; i++)
          {
-            tile = new EquipmentTile(i + itemIndexOffset,this,interactive);
+            tile = new EquipmentTile(i + itemIndexOffset,this,interactive, i < 4 ? 0x545454 : i == 6 || i == 7 ? 0x44262C : 0x6B5C32);
             addToGrid(tile,2,i);
-            tile.setType(ItemConstants.TALISMAN_TYPE);
+            tile.setType(ItemConstants.TALISMAN_TYPE, true);
             this.tiles[i] = tile;
          }
       }

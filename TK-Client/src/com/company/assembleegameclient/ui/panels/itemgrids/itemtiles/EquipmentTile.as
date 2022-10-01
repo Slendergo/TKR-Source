@@ -12,7 +12,7 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
    
    public class EquipmentTile extends InteractiveItemTile
    {
-      
+
       private static const greyColorFilter:ColorMatrixFilter = new ColorMatrixFilter(MoreColorUtil.singleColorFilterMatrix(3552822));
        
       
@@ -22,8 +22,11 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
       
       private var minManaUsage:int;
       
-      public function EquipmentTile(id:int, parentGrid:ItemGrid, isInteractive:Boolean)
+      public function EquipmentTile(id:int, parentGrid:ItemGrid, isInteractive:Boolean, bgColor:int = -1)
       {
+         if(bgColor != -1){
+            backgroundColor = bgColor;
+         }
          super(id,parentGrid,isInteractive);
       }
       
@@ -32,7 +35,7 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
          return type <= 0 || this.itemType == ObjectLibrary.getSlotTypeFromType(type);
       }
       
-      public function setType(type:int) : void
+      public function setType(type:int, darken:Boolean = true) : void
       {
          var bd:BitmapData = null;
          var dx:int = 0;
@@ -126,7 +129,12 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
             this.backgroundDetail.y = BORDER + dy;
             this.backgroundDetail.scaleX = 4;
             this.backgroundDetail.scaleY = 4;
-            this.backgroundDetail.filters = [greyColorFilter];
+            if(darken){
+               this.backgroundDetail.filters = [greyColorFilter];
+            }
+            if(darken){
+               this.backgroundDetail.filters = [greyColorFilter];
+            }
             addChildAt(this.backgroundDetail,0);
          }
          this.itemType = type;
@@ -203,10 +211,12 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
       {
          this.backgroundDetail.visible = itemSprite.itemId <= 0;
       }
-      
+
+      protected var backgroundColor:int = 4539717;
+
       override protected function getBackgroundColor() : int
       {
-         return 4539717;
+         return backgroundColor;
       }
    }
 }

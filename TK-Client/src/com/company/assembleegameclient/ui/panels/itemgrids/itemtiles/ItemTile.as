@@ -2,6 +2,7 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
 {
 import com.company.assembleegameclient.misc.UILabel;
 import com.company.assembleegameclient.objects.ObjectLibrary;
+import com.company.assembleegameclient.objects.ObjectProperties;
 import com.company.assembleegameclient.objects.Player;
 import com.company.assembleegameclient.parameters.Parameters;
 import com.company.assembleegameclient.ui.panels.itemgrids.ItemGrid;
@@ -136,10 +137,10 @@ public class ItemTile extends Sprite
    public function setTierTag() : void
    {
       this.clearTierTag();
-      var xml:XML = ObjectLibrary.xmlLibrary_[this.itemSprite.itemId];
-      if(xml)
+      var props:ObjectProperties = ObjectLibrary.propsLibrary_[this.itemSprite.itemId];
+      if(props)
       {
-         this.tierText = TierUtil.getTierTag(xml, 12);
+         this.tierText = TierUtil.getTierTag(props, 12);
          if(this.tierText)
          {
             if(!this.tagContainer)

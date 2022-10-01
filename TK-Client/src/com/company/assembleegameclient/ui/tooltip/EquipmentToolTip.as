@@ -63,6 +63,9 @@ public class EquipmentToolTip extends ToolTip
        private var flashtext:SimpleText;
        private var repeat:int = 0;
       private var itemData_:Object = null;
+      private var props_:ObjectProperties = null;
+      private var isMythicalItem:Boolean;
+      private var isLegendaryItem:Boolean;
 
       public function EquipmentToolTip(objectType:int, player:Player, invType:int, inventoryOwnerType:String, inventorySlotID:uint = 1.0, isMarketItem:Boolean = false, itemData:Object = null)
       {
@@ -80,13 +83,17 @@ public class EquipmentToolTip extends ToolTip
          this.effects = new Vector.<Effect>();
          this.invType = invType;
 
-         var props:ObjectProperties = ObjectLibrary.propsLibrary_[objectType];
+         this.props_ = ObjectLibrary.propsLibrary_[objectType];
 
          this.itemSlotTypeId = int(this.objectXML_.SlotType);
-          if(props.isLegendaryTalisman_ || this.objectXML_.hasOwnProperty("Legendary")){
+
+         this.isMythicalItem = props_.isMythicTalisman_ || this.objectXML_.hasOwnProperty("Mythical")
+         this.isLegendaryItem = props_.isLegendaryTalisman_ || this.objectXML_.hasOwnProperty("Legendary");
+
+          if(isLegendaryItem){
               this.backgroundColor = this.playerCanUse || this.player_ == null ? 0x2c2d3d : 6036765;
               this.outlineColor = this.playerCanUse || player == null? TooltipHelper.LEGENDARY_COLOR : 10965039;
-          }else if(props.isMythicTalisman_ || this.objectXML_.hasOwnProperty("Mythical") ){
+          }else if(isMythicalItem){
               this.backgroundColor = this.playerCanUse || this.player_ == null ? 0x222226 : 6036765;
               this.outlineColor = this.playerCanUse || player == null? TooltipHelper.MYTHICAL_COLOR : 10965039;
           }
@@ -195,7 +202,7 @@ public class EquipmentToolTip extends ToolTip
       }
 
       private function makeItemEffectsText():void {
-         if(this.objectXML_.hasOwnProperty("Legendary"))
+         if(isLegendaryItem)
          {
             this.itemEffectText_ = new SimpleText(13, 0xebb011, false, MAX_WIDTH);
             this.itemEffectText_.setBold(true);
@@ -244,7 +251,7 @@ public class EquipmentToolTip extends ToolTip
                this.itemEffectText_.text = "Vampriric -> Upon hitting an enemy, you have a "+ round2(chance,1) +"% chance to “cast” a skull-like ability that deals 300 damage AOE damage and heals for 50hp.";
             }
          }
-         else if(this.objectXML_.hasOwnProperty("Mythical"))
+         else if(isMythicalItem)
          {
             this.itemEffectText_ = new SimpleText(13, 0xcf1433, false, MAX_WIDTH);
             this.itemEffectText_.setBold(true);
@@ -276,7 +283,7 @@ public class EquipmentToolTip extends ToolTip
             }
          }
 
-         if(this.objectXML_.hasOwnProperty("Legendary") || this.objectXML_.hasOwnProperty("Mythical")){
+         if(isLegendaryItem || isMythicalItem){
             switch(Parameters.data_.itemDataOutlines)
             {
                case 0:
@@ -291,7 +298,7 @@ public class EquipmentToolTip extends ToolTip
 
       private function addTierText() : void
       {
-         this.tierText_ = TierUtil.getTierTag(this.objectXML_,16);
+         this.tierText_ = TierUtil.getTierTag(props_,16);
          if(this.tierText_)
          {
             this.tierText_.y = this.icon_.height / 2 - this.titleText_.actualHeight_ / 2;
@@ -368,9 +375,9 @@ public class EquipmentToolTip extends ToolTip
               case 1:
                   this.titleText_.filters = [new DropShadowFilter(0, 0, 0, 0.5, 12, 12)];
           }
-          if(this.objectXML_.hasOwnProperty("Legendary")){
+          if(isLegendaryItem){
               this.titleText_.setColor(TooltipHelper.LEGENDARY_COLOR);
-          }else if(this.objectXML_.hasOwnProperty("Mythical")){
+          }else if(isMythicalItem){
               this.titleText_.setColor(TooltipHelper.MYTHICAL_COLOR);
           }
 
@@ -401,9 +408,9 @@ public class EquipmentToolTip extends ToolTip
          if(this.effects.length != 0 || this.comparisonResults.text != "" || this.objectXML_.hasOwnProperty("ExtraTooltipData"))
          {
             this.line1_ = new LineBreakDesign(MAX_WIDTH - 12,0);
-             if(this.objectXML_.hasOwnProperty("Legendary")){
+             if(isLegendaryItem){
                  this.line1_.setWidthColor(MAX_WIDTH-12,0x967bb6);
-             }else if(this.objectXML_.hasOwnProperty("Mythical")){
+             }else if(isMythicalItem){
                  this.line1_.setWidthColor(MAX_WIDTH-12,0xFFFFFF);
              }
             addChild(this.line1_);
@@ -1061,9 +1068,9 @@ public class EquipmentToolTip extends ToolTip
 
       private function makeLineTwo():void{
          this.line2_ = new LineBreakDesign((MAX_WIDTH - 12), 0);
-          if(this.objectXML_.hasOwnProperty("Legendary")){
+          if(isLegendaryItem){
               this.line2_.setWidthColor(MAX_WIDTH-12,0x967bb6);
-          }else if(this.objectXML_.hasOwnProperty("Mythical")){
+          }else if(isMythicalItem){
               this.line2_.setWidthColor(MAX_WIDTH-12,0xFFFFFF);
           }
          addChild(this.line2_);

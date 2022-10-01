@@ -2,6 +2,8 @@ package com.company.assembleegameclient.util
 {
 import com.company.assembleegameclient.misc.DefaultLabelFormat;
 import com.company.assembleegameclient.misc.UILabel;
+import com.company.assembleegameclient.objects.ObjectLibrary;
+import com.company.assembleegameclient.objects.ObjectProperties;
 import com.company.assembleegameclient.ui.tooltip.TooltipHelper;
 import flash.filters.DropShadowFilter;
 import com.company.assembleegameclient.util.FilterUtil;
@@ -15,8 +17,9 @@ public class TierUtil
         super();
     }
 
-    public static function getTierTag(xml:XML, size:int = 16) : UILabel
+    public static function getTierTag(props:ObjectProperties, size:int = 16) : UILabel
     {
+        var xml:XML = ObjectLibrary.xmlLibrary_[props.type_];
         var label:UILabel = null;
         var color:Number = NaN;
         var tierTag:String = null;
@@ -36,7 +39,18 @@ public class TierUtil
                 tierTag = "T" + xml.Tier;
             }
             else if (talisman){
-                color = 0xBF40BF; //0x50C878;
+
+                if(props.isMythicTalisman_){
+                    color = TooltipHelper.MYTHICAL_COLOR;
+                }
+                else if(props.isLegendaryTalisman_){
+                    color = TooltipHelper.LEGENDARY_COLOR;
+                }
+                else{
+                    color = 16777215;
+
+                }
+
                 tierTag = "TL";
             }
             else if(xml.hasOwnProperty("Rare")){

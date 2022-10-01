@@ -3,6 +3,7 @@ package com.company.assembleegameclient.ui.tooltip
 import com.company.assembleegameclient.constants.InventoryOwnerTypes;
 import com.company.assembleegameclient.misc.UILabel;
 import com.company.assembleegameclient.objects.ObjectLibrary;
+import com.company.assembleegameclient.objects.ObjectProperties;
 import com.company.assembleegameclient.objects.Player;
 import com.company.assembleegameclient.parameters.Parameters;
 import com.company.assembleegameclient.ui.LineBreakDesign;
@@ -78,11 +79,14 @@ public class EquipmentToolTip extends ToolTip
          this.isEquippable_ = equipSlotIndex != -1;
          this.effects = new Vector.<Effect>();
          this.invType = invType;
+
+         var props:ObjectProperties = ObjectLibrary.propsLibrary_[objectType];
+
          this.itemSlotTypeId = int(this.objectXML_.SlotType);
-          if(this.objectXML_.hasOwnProperty("Legendary")){
+          if(props.isLegendaryTalisman_ || this.objectXML_.hasOwnProperty("Legendary")){
               this.backgroundColor = this.playerCanUse || this.player_ == null ? 0x2c2d3d : 6036765;
               this.outlineColor = this.playerCanUse || player == null? TooltipHelper.LEGENDARY_COLOR : 10965039;
-          }else if(this.objectXML_.hasOwnProperty("Mythical") ){
+          }else if(props.isMythicTalisman_ || this.objectXML_.hasOwnProperty("Mythical") ){
               this.backgroundColor = this.playerCanUse || this.player_ == null ? 0x222226 : 6036765;
               this.outlineColor = this.playerCanUse || player == null? TooltipHelper.MYTHICAL_COLOR : 10965039;
           }

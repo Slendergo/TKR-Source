@@ -29,9 +29,7 @@ namespace TKR.Shared.resources
     public enum TalismanEffectType : byte
     {
         None = 0,
-        SmallLuck = 1,
-        MediumLuck = 2,
-        LargeLuck = 3
+        PocketChange = 1
     }
 
     public sealed class TalismanItemProvidesDesc

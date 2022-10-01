@@ -102,7 +102,6 @@ public class WebAccountInfoView extends Sprite implements AccountInfoView
    private function makeRegisterButton() : void
    {
       this.registerButton = new TitleMenuOption(REGISTER,FONT_SIZE,false);
-      this.registerButton.visible = false;
    }
 
    private function makeDividerText() : void

@@ -9869,7 +9869,7 @@
     <Soulbound />
     <BagType>2</BagType>
   </Object>
-  <Object type="0x5555" id="Omnipotence Talisman">
+  <Object type="0x417" id="Omnipotence Talisman - Mythical">
     <Class>Equipment</Class>
     <Item />
     <Texture>
@@ -9887,6 +9887,31 @@
     <ActivateOnEquip stat="26" amount="1">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="1">IncrementStat</ActivateOnEquip>
     <BagType>9</BagType>
+    <Talisman>
+      <Mythical />
+    </Talisman>
+  </Object>
+  <Object type="0x5555" id="Omnipotence Talisman - Legendary">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>LostHallsObj</File>
+      <Index>0x04</Index>
+    </Texture>
+    <Description>An taliman of unfathomable strength which pulses through this ring. Only the most righteous mortals can weild this talisman.</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="0" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="1">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="1">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="1">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="1">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="1">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="1">IncrementStat</ActivateOnEquip>
+    <BagType>9</BagType>
+    <Talisman>
+      <Legendary />
+    </Talisman>
   </Object>
   <Object type="0x5556" id="Talisman of Life">
     <Class>Equipment</Class>
@@ -9999,12 +10024,7 @@
     <Talisman>
       <Common />
       <OnlyOne />
-      <Provides effect="luckyA" prob="0.2" cooldown="30.0" />
-      <!-- if this doesnt proc -->
-      <Provides effect="luckyB" prob="0.2" cooldown="45.0" />
-      <!-- this will try proc and if this doesnt proc -->
-      <Provides effect="luckyC" prob="0.2" cooldown="60.0" />
-      <!-- this will try proc and if this doesnt proc, no effect -->
+      <Provides effect="PocketChange" isPassive="true" />
     </Talisman>
   </Object>
   <Object type="0x40a" id="Path of Destruction">
@@ -10016,9 +10036,13 @@
     </Texture>
     <Description>TODO</Description>
     <SlotType>26</SlotType>
-    <Description>An taliman that speeds up mana absorption.</Description>
-    <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="10">IncrementStat</ActivateOnEquip>
     <BagType>9</BagType>
+    <Talisman>
+      <Common />
+      <OnlyOne />
+    </Talisman>
   </Object>
   <Object type="0x40b" id="Heart and Soul">
     <Class>Equipment</Class>
@@ -10028,11 +10052,16 @@
       <Index>0x35</Index>
     </Texture>
     <Description>TODO</Description>
-    <Description>TODO</Description>
     <SlotType>26</SlotType>
-    <Description>An taliman that speeds up mana absorption.</Description>
-    <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="10">IncrementStat</ActivateOnEquip>
     <BagType>9</BagType>
+    <Talisman>
+      <Common />
+      <OnlyOne />
+    </Talisman>
   </Object>
   <Object type="0x40c" id="Blood Exchange">
     <Class>Equipment</Class>
@@ -10043,9 +10072,12 @@
     </Texture>
     <Description>TODO</Description>
     <SlotType>26</SlotType>
-    <Description>An taliman that speeds up mana absorption.</Description>
     <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
     <BagType>9</BagType>
+    <Talisman>
+      <Legendary />
+      <OnlyOne />
+    </Talisman>
   </Object>
   <Object type="0x40d" id="Eternal Youth">
     <Class>Equipment</Class>
@@ -10056,9 +10088,12 @@
     </Texture>
     <Description>TODO</Description>
     <SlotType>26</SlotType>
-    <Description>An taliman that speeds up mana absorption.</Description>
     <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
     <BagType>9</BagType>
+    <Talisman>
+      <Legendary />
+      <OnlyOne />
+    </Talisman>
   </Object>
   <Object type="0x40e" id="Unyielding Resilience">
     <Class>Equipment</Class>
@@ -10069,9 +10104,12 @@
     </Texture>
     <Description>TODO</Description>
     <SlotType>26</SlotType>
-    <Description>An taliman that speeds up mana absorption.</Description>
     <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
     <BagType>9</BagType>
+    <Talisman>
+      <Legendary />
+      <OnlyOne />
+    </Talisman>
   </Object>
   <Object type="0x40f" id="Wrath's Incarnate">
     <Class>Equipment</Class>
@@ -10082,9 +10120,12 @@
     </Texture>
     <Description>TODO</Description>
     <SlotType>26</SlotType>
-    <Description>An taliman that speeds up mana absorption.</Description>
     <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
     <BagType>9</BagType>
+    <Talisman>
+      <Legendary />
+      <OnlyOne />
+    </Talisman>
   </Object>
   <Object type="0x407" id="Primal Rage">
     <Class>Equipment</Class>
@@ -10095,9 +10136,12 @@
     </Texture>
     <Description>TODO</Description>
     <SlotType>26</SlotType>
-    <Description>An taliman that speeds up mana absorption.</Description>
     <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
     <BagType>9</BagType>
+    <Talisman>
+      <Legendary />
+      <OnlyOne />
+    </Talisman>
   </Object>
   <Object type="0x408" id="Call to Arms">
     <Class>Equipment</Class>
@@ -10108,9 +10152,12 @@
     </Texture>
     <Description>TODO</Description>
     <SlotType>26</SlotType>
-    <Description>An taliman that speeds up mana absorption.</Description>
     <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
     <BagType>9</BagType>
+    <Talisman>
+      <Legendary />
+      <OnlyOne />
+    </Talisman>
   </Object>
   <Object type="0x409" id="Divine Intellect">
     <Class>Equipment</Class>
@@ -10121,9 +10168,12 @@
     </Texture>
     <Description>TODO</Description>
     <SlotType>26</SlotType>
-    <Description>An taliman that speeds up mana absorption.</Description>
     <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
     <BagType>9</BagType>
+    <Talisman>
+      <Legendary />
+      <OnlyOne />
+    </Talisman>
   </Object>
   <Object type="0x410" id="Insatiable Thirst">
     <Class>Equipment</Class>
@@ -10134,9 +10184,12 @@
     </Texture>
     <Description>TODO</Description>
     <SlotType>26</SlotType>
-    <Description>An taliman that speeds up mana absorption.</Description>
     <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
     <BagType>9</BagType>
+    <Talisman>
+      <Legendary />
+      <OnlyOne />
+    </Talisman>
   </Object>
   <Object type="0x411" id="Spellslinger">
     <Class>Equipment</Class>
@@ -10147,9 +10200,12 @@
     </Texture>
     <Description>TODO</Description>
     <SlotType>26</SlotType>
-    <Description>An taliman that speeds up mana absorption.</Description>
     <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
     <BagType>9</BagType>
+    <Talisman>
+      <Legendary />
+      <OnlyOne />
+    </Talisman>
   </Object>
   <Object type="0x412" id="Iron Will">
     <Class>Equipment</Class>
@@ -10160,9 +10216,12 @@
     </Texture>
     <Description>TODO</Description>
     <SlotType>26</SlotType>
-    <Description>An taliman that speeds up mana absorption.</Description>
     <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
     <BagType>9</BagType>
+    <Talisman>
+      <Legendary />
+      <OnlyOne />
+    </Talisman>
   </Object>
   <Object type="0x413" id="Party of One">
     <Class>Equipment</Class>
@@ -10173,9 +10232,12 @@
     </Texture>
     <Description>TODO</Description>
     <SlotType>26</SlotType>
-    <Description>An taliman that speeds up mana absorption.</Description>
     <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
     <BagType>9</BagType>
+    <Talisman>
+      <Legendary />
+      <OnlyOne />
+    </Talisman>
   </Object>
   <Object type="0x414" id="Forbidden Fruit">
     <Class>Equipment</Class>
@@ -10186,9 +10248,12 @@
     </Texture>
     <Description>TODO</Description>
     <SlotType>26</SlotType>
-    <Description>An taliman that speeds up mana absorption.</Description>
     <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
     <BagType>9</BagType>
+    <Talisman>
+      <Legendary />
+      <OnlyOne />
+    </Talisman>
   </Object>
   <Object type="0x415" id="Luck of the Irish">
     <Class>Equipment</Class>
@@ -10199,9 +10264,12 @@
     </Texture>
     <Description>TODO</Description>
     <SlotType>26</SlotType>
-    <Description>An taliman that speeds up mana absorption.</Description>
     <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
     <BagType>9</BagType>
+    <Talisman>
+      <Legendary />
+      <OnlyOne />
+    </Talisman>
   </Object>
   <Object type="0x416" id="Known After Death">
     <Class>Equipment</Class>
@@ -10212,9 +10280,12 @@
     </Texture>
     <Description>TODO</Description>
     <SlotType>26</SlotType>
-    <Description>An taliman that speeds up mana absorption.</Description>
     <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
     <BagType>9</BagType>
+    <Talisman>
+      <Legendary />
+      <OnlyOne />
+    </Talisman>
   </Object>
   <Object type="0x706b" id="Larva Puke">
     <Texture>

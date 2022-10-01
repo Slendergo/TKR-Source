@@ -1,7 +1,8 @@
 package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
 {
    import com.company.assembleegameclient.objects.ObjectLibrary;
-   import com.company.assembleegameclient.objects.Player;
+import com.company.assembleegameclient.objects.ObjectProperties;
+import com.company.assembleegameclient.objects.Player;
    import com.company.assembleegameclient.ui.panels.itemgrids.ItemGrid;
    import com.company.util.AssetLibrary;
    import com.company.util.MoreColorUtil;
@@ -32,6 +33,20 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
       
       override public function canHoldItem(type:int) : Boolean
       {
+         if(this.itemType == ItemConstants.TALISMAN_TYPE) {
+            var properties:ObjectProperties = ObjectLibrary.propsLibrary_[type];
+            if (properties != null) {
+               if((tileId == 26 || tileId == 27) && !properties.isMythicTalisman_){
+                  return false;
+               }
+               if((tileId == 24 || tileId == 25) && !properties.isLegendaryTalisman_){
+                  return false;
+               }
+               if((tileId == 20 || tileId == 21 || tileId == 22 || tileId == 23) && !properties.isCommonTalisman_){
+                  return false;
+               }
+            }
+         }
          return type <= 0 || this.itemType == ObjectLibrary.getSlotTypeFromType(type);
       }
       

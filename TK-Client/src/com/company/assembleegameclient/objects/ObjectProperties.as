@@ -78,7 +78,11 @@ package com.company.assembleegameclient.objects
       public var angleCorrection_:Number = 0;
       
       public var rotation_:Number = 0;
-      
+
+      public var isMythicTalisman_:Boolean;
+      public var isLegendaryTalisman_:Boolean;
+      public var isCommonTalisman_:Boolean;
+
       public function ObjectProperties(objectXML:XML)
       {
          var projectileXML:XML = null;
@@ -180,6 +184,13 @@ package com.company.assembleegameclient.objects
          if(objectXML.hasOwnProperty("WhileMoving"))
          {
             this.whileMoving_ = new WhileMovingProperties(XML(objectXML.WhileMoving));
+         }
+
+         if(objectXML.hasOwnProperty("Talisman")){
+            var t:XMLList = objectXML.Talisman;
+            isMythicTalisman_ = t.hasOwnProperty("Mythical");
+            isLegendaryTalisman_ = t.hasOwnProperty("Legendary");
+            isCommonTalisman_ = t.hasOwnProperty("Common");
          }
       }
       

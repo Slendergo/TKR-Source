@@ -299,9 +299,8 @@ namespace TKR.Shared
         public static T[] ResizeArray<T>(T[] array, int newSize)
         {
             var inventory = new T[newSize];
-
-            for (int i = 0; i < array.Length; i++) inventory[i] = array[i];
-
+            for (int i = 0; i < array.Length; i++) 
+                inventory[i] = array[i];
             return inventory;
         }
 

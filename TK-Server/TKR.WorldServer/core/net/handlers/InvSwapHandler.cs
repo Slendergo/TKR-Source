@@ -808,7 +808,7 @@ namespace TKR.WorldServer.core.net.handlers
         }
 
         private bool ValidateSlotSwap(Player player, IContainer conA, IContainer conB, int slotA, int slotB)
-            => (slotA < 12 && slotB < 12 || player.HasBackpack) &&
+            => slotA < 28 && slotB < 28 &&
                 conB.AuditItem(conA.Inventory[slotA], slotB) && conA.AuditItem(conB.Inventory[slotB], slotA);
 
         public static void HandleUnavailableInventoryAction(Player player, ushort objectId, Random random, IContainer container, int slotId)

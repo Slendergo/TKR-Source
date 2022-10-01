@@ -35,7 +35,7 @@
     <ActivateOnEquip stat="28" amount="12">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="12">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="12">IncrementStat</ActivateOnEquip>
-    <BagType>8</BagType>
+    <BagType>9</BagType>
     <FameBonus>7</FameBonus>
     <feedPower>1500</feedPower>
     <Mythical />
@@ -365,13 +365,8 @@
 		<ActivateOnEquip stat="3" amount="200">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="21" amount="10">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="22" amount="20">IncrementStat</ActivateOnEquip>
-<<<<<<< HEAD
-		<ActivateOnEquip stat="26" amount="40">IncrementStat</ActivateOnEquip>
-		<BagType>9</BagType>
-=======
 		<ActivateOnEquip stat="27" amount="40">IncrementStat</ActivateOnEquip>
-		<BagType>8</BagType>
->>>>>>> main
+		<BagType>9</BagType>
 		<FameBonus>8</FameBonus>
 		<Mythical />
 	</Object>

@@ -1,6 +1,7 @@
 package com.company.assembleegameclient.ui.panels.mediators
 {
    import com.company.assembleegameclient.objects.Player;
+import com.company.assembleegameclient.ui.panels.EquippedTalismanGrid;
 import com.company.assembleegameclient.ui.panels.itemgrids.EquippedGrid;
 import com.company.assembleegameclient.ui.panels.itemgrids.InventoryGrid;
 
@@ -8,10 +9,10 @@ import kabam.rotmg.ui.signals.ToggleShowTierTagSignal;
 import kabam.rotmg.ui.signals.UpdateHUDSignal;
    import robotlegs.bender.bundles.mvcs.Mediator;
    
-   public class InventoryGridMediator extends Mediator
+   public class EquippedTalismanGridMediator extends Mediator
    {
       [Inject]
-      public var view:InventoryGrid;
+      public var view:EquippedTalismanGrid;
       
       [Inject]
       public var updateHUD:UpdateHUDSignal;
@@ -19,7 +20,7 @@ import kabam.rotmg.ui.signals.UpdateHUDSignal;
       [Inject]
       public var toggleShowTierTag:ToggleShowTierTagSignal;
       
-      public function InventoryGridMediator()
+      public function EquippedTalismanGridMediator()
       {
          super();
       }

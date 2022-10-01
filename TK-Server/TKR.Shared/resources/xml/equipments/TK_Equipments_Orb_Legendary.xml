@@ -80,11 +80,7 @@
 		<ActivateOnEquip stat="28" amount="8">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="20" amount="8">IncrementStat</ActivateOnEquip>
 		<Usable />
-<<<<<<< HEAD
-		<BagType>8</BagType>
-=======
 		<BagType>7</BagType>
->>>>>>> main
 		<FameBonus>7</FameBonus>
 		<MpCost>150</MpCost>
 		<Activate effect="Curse" duration="8" range="5" color="0xE9A92D" target="enemy" center="mouse" visualEffect="4" useWisMod="false">GenericActivate</Activate>

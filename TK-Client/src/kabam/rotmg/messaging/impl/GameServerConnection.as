@@ -1811,109 +1811,120 @@ public class GameServerConnection
                   index = stat.statType_ - StatData.BACKPACK_0_STAT + GeneralConstants.NUM_EQUIPMENT_SLOTS + GeneralConstants.NUM_INVENTORY_SLOTS;
                   (go as Player).equipment_[index] = value;
                   continue;
+               case StatData.TALISMAN_0_STAT:
+               case StatData.TALISMAN_1_STAT:
+               case StatData.TALISMAN_2_STAT:
+               case StatData.TALISMAN_3_STAT:
+               case StatData.TALISMAN_4_STAT:
+               case StatData.TALISMAN_5_STAT:
+               case StatData.TALISMAN_6_STAT:
+               case StatData.TALISMAN_7_STAT:
+                  index = stat.statType_ - StatData.TALISMAN_0_STAT + GeneralConstants.NUM_EQUIPMENT_SLOTS + GeneralConstants.NUM_INVENTORY_SLOTS + GeneralConstants.NUM_TALISMAN_SLOTS;
+                  (go as Player).equipment_[index] = value;
+                  continue;
                case StatData.SPS_LIFE_COUNT:
                   player.SPS_Life = value;
                   if (player.SPS_Modal != null) {
                      player.SPS_Modal.draw();
                   }
-                  break;
+                  continue;
                case StatData.SPS_LIFE_COUNT_MAX:
                   player.SPS_Life_Max = value;
                   if (player.SPS_Modal != null) {
                      player.SPS_Modal.draw();
                   }
-                  break;
+                  continue;
                case StatData.SPS_MANA_COUNT:
                   player.SPS_Mana = value;
                   if (player.SPS_Modal != null) {
                      player.SPS_Modal.draw();
                   }
-                  break;
+                  continue;
                case StatData.SPS_MANA_COUNT_MAX:
                   player.SPS_Mana_Max = value;
                   if (player.SPS_Modal != null) {
                      player.SPS_Modal.draw();
                   }
-                  break;
+                  continue;
                case StatData.SPS_DEFENSE_COUNT:
                   player.SPS_Defense = value;
                   if (player.SPS_Modal != null) {
                      player.SPS_Modal.draw();
                   }
-                  break;
+                  continue;
                case StatData.SPS_DEFENSE_COUNT_MAX:
                   player.SPS_Defense_Max = value;
                   if (player.SPS_Modal != null) {
                      player.SPS_Modal.draw();
                   }
-                  break;
+                  continue;
                case StatData.SPS_ATTACK_COUNT:
                   player.SPS_Attack = value;
                   if (player.SPS_Modal != null) {
                      player.SPS_Modal.draw();
                   }
-                  break;
+                  continue;
                case StatData.SPS_ATTACK_COUNT_MAX:
                   player.SPS_Attack_Max = value;
                   if (player.SPS_Modal != null) {
                      player.SPS_Modal.draw();
                   }
-                  break;
+                  continue;
                case StatData.SPS_DEXTERITY_COUNT:
                   player.SPS_Dexterity = value;
                   if (player.SPS_Modal != null) {
                      player.SPS_Modal.draw();
                   }
-                  break;
+                  continue;
                case StatData.SPS_DEXTERITY_COUNT_MAX:
                   player.SPS_Dexterity_Max = value;
                   if (player.SPS_Modal != null) {
                      player.SPS_Modal.draw();
                   }
-                  break;
+                  continue;
                case StatData.SPS_SPEED_COUNT:
                   player.SPS_Speed = value;
                   if (player.SPS_Modal != null) {
                      player.SPS_Modal.draw();
                   }
-                  break;
+                  continue;
                case StatData.SPS_SPEED_COUNT_MAX:
                   player.SPS_Speed_Max = value;
                   if (player.SPS_Modal != null) {
                      player.SPS_Modal.draw();
                   }
-                  break;
+                  continue;
                case StatData.SPS_VITALITY_COUNT:
                   player.SPS_Vitality = value;
                   if (player.SPS_Modal != null) {
                      player.SPS_Modal.draw();
                   }
-                  break;
+                  continue;
                case StatData.SPS_VITALITY_COUNT_MAX:
                   player.SPS_Vitality_Max = value;
                   if (player.SPS_Modal != null) {
                      player.SPS_Modal.draw();
                   }
-                  break;
+                  continue;
                case StatData.SPS_WISDOM_COUNT:
                   player.SPS_Wisdom = value;
                   if (player.SPS_Modal != null) {
                      player.SPS_Modal.draw();
                   }
-                  break;
+                  continue;
                case StatData.SPS_WISDOM_COUNT_MAX:
                   player.SPS_Wisdom_Max = value;
                   if (player.SPS_Modal != null) {
                      player.SPS_Modal.draw();
                   }
-                  break;
+                  continue;
                case StatData.ENGINE_VALUE:
                   (go as Engine).currentValue_ = value;
-                  break;
+                  continue;
 
                case StatData.ENGINE_TIME:
                   (go as Engine).engineTime_ = value;
-                  break;
+                  continue;
 
                case StatData.BASESTAT:
                   player.baseStat = value;
@@ -1974,11 +1985,22 @@ public class GameServerConnection
                   index = stat.statType_ - StatData.BACKPACKDATA0 + GeneralConstants.NUM_EQUIPMENT_SLOTS + GeneralConstants.NUM_INVENTORY_SLOTS;
                   (go as Player).equipData_[index] = JSON.parse(stat.strStatValue_);
                   continue;
+               case StatData.TALISMANDATA_0_STAT:
+               case StatData.TALISMANDATA_1_STAT:
+               case StatData.TALISMANDATA_2_STAT:
+               case StatData.TALISMANDATA_3_STAT:
+               case StatData.TALISMANDATA_4_STAT:
+               case StatData.TALISMANDATA_5_STAT:
+               case StatData.TALISMANDATA_6_STAT:
+               case StatData.TALISMANDATA_7_STAT:
+                  index = stat.statType_ - StatData.TALISMANDATA_0_STAT + GeneralConstants.NUM_EQUIPMENT_SLOTS + GeneralConstants.NUM_INVENTORY_SLOTS+ GeneralConstants.NUM_TALISMAN_SLOTS;
+                  (go as Player).equipData_[index] = JSON.parse(stat.strStatValue_);
+                  continue;
 
                case StatData.NO_MANA_BAR:
                   (go as Player).talismanNoManaBar_ = stat.statValue_ == 1;
                   this.gs_.hudView.draw();
-                  break;
+                  continue;
                default:
                   trace("unhandled stat: " + stat.statType_);
                   continue;

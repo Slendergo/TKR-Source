@@ -369,6 +369,7 @@ public class Options extends Sprite
 
    private function addMiscOptions() : void
    {
+      this.addOption(new ChoiceOption("inventoryFirstTabOption", new <String>["Default", "Inv First"],[false, true],"Tab Layout","Change the order of tabs to be Default or Inventories first.",null));
       this.addOption(new ChoiceOption("reduceParticles",new <String>["High","Low","NoParticles"],[2,1,0],"Change Particles Effect","Reduce or Increase the Particles Effect!",null));
       this.addOption(new ChoiceOption("itemDataOutlines",new <String>["On","Off"],[0,1],"Change Item Data Outlines","Change the outlines of the xml\'s!",null));
       //this.addOption(new ChoiceOption("eyeCandyParticles", new <String>["On","Off"], [true,false], "Eye Candy Particles", "This toggles whether to show eye candy particles, disabling this will improve performance.", null));

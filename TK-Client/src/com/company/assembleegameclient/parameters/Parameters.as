@@ -15,7 +15,7 @@ public class Parameters {
     public static const PATCH_VERSION:String = "6";
     public static const FULL_BUILD_VERSION:String = BUILD_VERSION + "." + MINOR_VERSION + "." + PATCH_VERSION;
     public static const PORT:int = 2050;
-    public static const LOCAL_HOST:Boolean = false;
+    public static const LOCAL_HOST:Boolean = true;
     public static const FELLOW_GUILD_COLOR:uint = 10944349;
     public static const PARTY_MEMBER_COLOR:uint = 0xffc0cb;
     public static const NAME_CHOSEN_COLOR:uint = 16572160;
@@ -179,6 +179,7 @@ public class Parameters {
         setDefault("noAllyNotifications", false);
         setDefault("fps", 60);
         setDefault("vsync", true);
+        setDefault("inventoryFirstTabOption", false);
     }
 
     private static function setDefaultKey(keyName:String, key:uint):void {

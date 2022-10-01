@@ -16,11 +16,8 @@ namespace TKR.WorldServer.core.commands
             protected override bool Process(Player player, TickTime time, string args)
             {
                 foreach(var item in player.GameServer.Resources.GameData.Items)
-                    if (item.Value.Mythical)
+                    if (item.Value.Mythical || item.Value.Legendary || item.Value.SlotType == 26)
                     {
-                        if (Loot.BAG_ID_TO_TYPE[item.Value.BagType] != 9)
-                            continue;
-                    
                         var container = new Container(player.GameServer, Loot.BAG_ID_TO_TYPE[item.Value.BagType], 60000, true);
                         container.Inventory[0] = item.Value;
                         container.Move(player.X + (float)((player.World.Random.NextDouble() * 2 - 1) * 8), player.Y + (float)((player.World.Random.NextDouble() * 2 - 1) * 8));

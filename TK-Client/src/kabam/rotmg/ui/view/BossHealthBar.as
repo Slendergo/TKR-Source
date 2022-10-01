@@ -24,6 +24,7 @@ public class BossHealthBar extends Sprite {
     private var go_:GameObject;
     private var timeSinceNull_:int;
     private var hpText_:SimpleText
+    private var dmgCounter_:SimpleText;
 
     public function BossHealthBar() {
         portrait_ = new Bitmap();
@@ -39,12 +40,17 @@ public class BossHealthBar extends Sprite {
         hpText_.setBold(true);
         hpText_.filters = [new DropShadowFilter(0,0,0)];
 
+        dmgCounter_ = new SimpleText(12, 16777215,false,0,0);
+        dmgCounter_.setBold(true);
+        dmgCounter_.filters = [new DropShadowFilter(0,0,0)];
+
         addChild(mask_);
         addChild(foreground);
         addChild(background2);
         addChild(background);
         addChild(portrait_);
         addChild(hpText_);
+        addChild(dmgCounter_);
 
         mask_.scaleX = 1.5;
         mask_.scaleY = 1.5;
@@ -59,6 +65,22 @@ public class BossHealthBar extends Sprite {
         mouseChildren = false;
 
         timeSinceNull_ = getTimer();
+    }
+
+    private var damagePercentage_:Number;
+
+    public function setDamageInflicted(percentage:Number):void{
+        if(percentage == -1){
+            damagePercentage_ = 0;
+            dmgCounter_.text = "";
+        }
+        else{
+            damagePercentage_ = percentage;
+            dmgCounter_.text = percentage + "%";
+        }
+        dmgCounter_.updateMetrics();
+        dmgCounter_.x = foreground.x + foreground.width / 2 - dmgCounter_.width / 2;
+        dmgCounter_.y = foreground.y + foreground.height / 2 + dmgCounter_.height / 2;
     }
 
     private function getPortrait(go:GameObject):BitmapData {
@@ -82,13 +104,13 @@ public class BossHealthBar extends Sprite {
             foreground.y = portrait_.height / 2 - this.foreground.height / 2;
 
             background.x = foreground.x;
-            background.y = foreground.y + 2;
+            background.y = foreground.y + 3;
 
             background2.x = foreground.x;
-            background2.y = foreground.y + 2;
+            background2.y = foreground.y + 3;
 
             mask_.x = background.x;
-            mask_.y = background.y + 2;
+            mask_.y = background.y + 3;
             visible = true;
         }
     }

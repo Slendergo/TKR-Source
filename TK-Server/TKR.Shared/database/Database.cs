@@ -1396,11 +1396,9 @@ namespace TKR.Shared.database
 
         protected ushort[] InitInventory(ushort[] givenItems)
         {
-            var inv = Utils.ResizeArray(givenItems, 20);
-
+            var inv = Utils.ResizeArray(givenItems, 28);
             for (var i = givenItems.Length; i < inv.Length; i++)
                 inv[i] = 0xffff;
-
             return inv;
         }
 

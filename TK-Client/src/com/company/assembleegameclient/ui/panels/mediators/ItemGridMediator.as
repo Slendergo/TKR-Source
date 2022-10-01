@@ -19,10 +19,13 @@ import kabam.rotmg.constants.ItemConstants;
 import kabam.rotmg.core.model.MapModel;
 import kabam.rotmg.core.model.PlayerModel;
 import kabam.rotmg.game.model.PotionInventoryModel;
+import kabam.rotmg.game.view.components.TabStripMediator;
 import kabam.rotmg.game.view.components.TabStripView;
 import kabam.rotmg.messaging.impl.GameServerConnection;
 import kabam.rotmg.ui.model.HUDModel;
 import kabam.rotmg.ui.model.TabStripModel;
+
+import org.hamcrest.text.containsString;
 
 import robotlegs.bender.bundles.mvcs.Mediator;
 
@@ -90,13 +93,15 @@ public class ItemGridMediator extends Mediator
          {
             this.dropItem(sourceTile);
          }
-         else if(target is TabStripView) {
-            tsv = target as TabStripView;
-            slot = sourceTile.ownerGrid.curPlayer.nextAvailableInventorySlot();
-            if (slot != -1) {
-               GameServerConnection.instance.invSwap(this.view.curPlayer, sourceTile.ownerGrid.owner, sourceTile.tileId, sourceTile.itemSprite.itemId, this.view.curPlayer, slot, ItemConstants.NO_ITEM);
-               sourceTile.setItem(ItemConstants.NO_ITEM, null);
-               sourceTile.updateUseability(this.view.curPlayer);
+         else if(target is TabStripView)
+         {
+            if(this.tabStripModel.currentSelection != TabStripModel.TALISMANS) {
+               slot = sourceTile.ownerGrid.curPlayer.nextAvailableInventorySlot();
+               if (slot != -1) {
+                  GameServerConnection.instance.invSwap(this.view.curPlayer, sourceTile.ownerGrid.owner, sourceTile.tileId, sourceTile.itemSprite.itemId, this.view.curPlayer, slot, ItemConstants.NO_ITEM);
+                  sourceTile.setItem(ItemConstants.NO_ITEM, null);
+                  sourceTile.updateUseability(this.view.curPlayer);
+               }
             }
          }
          sourceTile.resetItemPosition();

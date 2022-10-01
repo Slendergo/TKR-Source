@@ -26,6 +26,7 @@ public class TierUtil
         var treasure:* = !xml.hasOwnProperty("Treasure");
         var petFood:* = !xml.hasOwnProperty("PetFood");
         var tier:Boolean = xml.hasOwnProperty("Tier");
+        var talisman:Boolean = xml.hasOwnProperty("SlotType") && xml.SlotType == 26;
         if(isnotpet && consumable && treasure && petFood && noTierTag)
         {
             label = new UILabel();
@@ -33,6 +34,10 @@ public class TierUtil
             {
                 color = 16777215;
                 tierTag = "T" + xml.Tier;
+            }
+            else if (talisman){
+                color = 0xBF40BF; //0x50C878;
+                tierTag = "TL";
             }
             else if(xml.hasOwnProperty("Rare")){
                 color = 0x7E00E8;

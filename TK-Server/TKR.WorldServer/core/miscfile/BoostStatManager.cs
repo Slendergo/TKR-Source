@@ -83,6 +83,14 @@ namespace TKR.WorldServer.core.miscfile
                 foreach (var b in _player.Inventory[i].StatsBoost)
                     IncrementBoost((StatDataType)b.Key, b.Value);
             }
+
+            for (var i = 20; i < 28; i++)
+            {
+                if (_player.Inventory[i] == null)
+                    continue;
+                foreach (var b in _player.Inventory[i].StatsBoost)
+                    IncrementBoost((StatDataType)b.Key, b.Value);
+            }
         }
 
         private void ApplyTalismanBonus()

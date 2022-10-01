@@ -950,17 +950,19 @@ public class Player extends Character {
     public function swapInventoryIndex(current:String):int {
         var start:int = 0;
         var end:int = 0;
-        if (!this.hasBackpack_) {
+        if (!this.hasBackpack_ || current == TabStripModel.TALISMANS) {
             return -1;
         }
+
         if (current == TabStripModel.BACKPACK) {
             start = GeneralConstants.NUM_EQUIPMENT_SLOTS;
             end = GeneralConstants.NUM_EQUIPMENT_SLOTS + GeneralConstants.NUM_INVENTORY_SLOTS;
         }
         else {
             start = GeneralConstants.NUM_EQUIPMENT_SLOTS + GeneralConstants.NUM_INVENTORY_SLOTS;
-            end = equipment_.length;
+            end = equipment_.length - GeneralConstants.NUM_TALISMAN_SLOTS;
         }
+
         for (var i:uint = start; i < end; i++) {
             if (equipment_[i] <= 0) {
                 return i;

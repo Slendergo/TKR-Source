@@ -261,13 +261,22 @@ public class ObjectLibrary
                return -1;
             }
             slotType = int(objectXML.SlotType);
-            for(i = 0; i < GeneralConstants.NUM_EQUIPMENT_SLOTS; i++)
-            {
-               if(player.slotTypes_[i] == slotType)
-               {
-                  return i;
-               }
-            }
+             for(i = 0; i < GeneralConstants.NUM_EQUIPMENT_SLOTS; i++)
+             {
+                 if(player.slotTypes_[i] == slotType)
+                 {
+                     return i;
+                 }
+             }
+
+             var offset:int = GeneralConstants.NUM_EQUIPMENT_SLOTS + GeneralConstants.NUM_INVENTORY_SLOTS + GeneralConstants.NUM_BACKPACK_SLOTS;
+             for(i = offset; i < offset + GeneralConstants.NUM_TALISMAN_SLOTS; i++)
+             {
+                 if(player.equipment_[i] == -1 && player.slotTypes_[i] == slotType)
+                 {
+                     return i;
+                 }
+             }
          }
          return -1;
       }
@@ -345,7 +354,8 @@ public class ObjectLibrary
                  || slotType == ItemConstants.SEAL_TYPE
                  || slotType == ItemConstants.SHIELD_TYPE
                  || slotType == ItemConstants.SPELL_TYPE
-                 || slotType == ItemConstants.SKULL_TYPE)
+                 || slotType == ItemConstants.SKULL_TYPE
+                 || slotType == ItemConstants.TALISMAN_TYPE)
       }
 
       public static function usableBy(objectType:int) : Vector.<String>
@@ -359,7 +369,7 @@ public class ObjectLibrary
             return null;
          }
          var slotType:int = objectXML.SlotType;
-         if(slotType == ItemConstants.POTION_TYPE || slotType == ItemConstants.RING_TYPE)
+         if(slotType == ItemConstants.POTION_TYPE || slotType == ItemConstants.RING_TYPE || slotType == ItemConstants.TALISMAN_TYPE)
          {
             return null;
          }

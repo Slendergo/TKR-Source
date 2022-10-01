@@ -249,12 +249,12 @@ namespace TKR.WorldServer.core.objects
             Stacks = new ItemStacker[] { HealthPots, MagicPots };
 
             if (client.Character.Datas == null)
-                client.Character.Datas = new ItemData[20];
+                client.Character.Datas = new ItemData[28];
 
-            Inventory = new Inventory(this, Utils.ResizeArray(Client.Character.Items.Select(_ => (_ == 0xffff || !gameData.Items.ContainsKey(_)) ? null : gameData.Items[_]).ToArray(), 20), Client.Character.Datas);
+            Inventory = new Inventory(this, Utils.ResizeArray(Client.Character.Items.Select(_ => (_ == 0xffff || !gameData.Items.ContainsKey(_)) ? null : gameData.Items[_]).ToArray(), 28), Utils.ResizeArray(Client.Character.Datas, 28));
 
             Inventory.InventoryChanged += (sender, e) => Stats.ReCalculateValues();
-            SlotTypes = Utils.ResizeArray(gameData.Classes[ObjectType].SlotTypes, 20);
+            SlotTypes = Utils.ResizeArray(gameData.Classes[ObjectType].SlotTypes, 28);
             Stats = new StatsManager(this);
 
             GameServer.Database.IsMuted(client.IpAddress).ContinueWith(t =>
@@ -968,6 +968,23 @@ namespace TKR.WorldServer.core.objects
             stats[StatDataType.InventoryData1] = Inventory.Data[1]?.GetData() ?? "{}";
             stats[StatDataType.InventoryData2] = Inventory.Data[2]?.GetData() ?? "{}";
             stats[StatDataType.InventoryData3] = Inventory.Data[3]?.GetData() ?? "{}";
+
+            stats[StatDataType.TALISMAN_0_STAT] = Inventory[20]?.ObjectType ?? -1;
+            stats[StatDataType.TALISMAN_1_STAT] = Inventory[21]?.ObjectType ?? -1;
+            stats[StatDataType.TALISMAN_2_STAT] = Inventory[22]?.ObjectType ?? -1;
+            stats[StatDataType.TALISMAN_3_STAT] = Inventory[23]?.ObjectType ?? -1;
+            stats[StatDataType.TALISMAN_4_STAT] = Inventory[24]?.ObjectType ?? -1;
+            stats[StatDataType.TALISMAN_5_STAT] = Inventory[25]?.ObjectType ?? -1;
+            stats[StatDataType.TALISMAN_6_STAT] = Inventory[26]?.ObjectType ?? -1;
+            stats[StatDataType.TALISMAN_7_STAT] = Inventory[27]?.ObjectType ?? -1;
+            stats[StatDataType.TALISMANDATA_0_STAT] = Inventory.Data[20]?.GetData() ?? "{}";
+            stats[StatDataType.TALISMANDATA_1_STAT] = Inventory.Data[21]?.GetData() ?? "{}";
+            stats[StatDataType.TALISMANDATA_2_STAT] = Inventory.Data[22]?.GetData() ?? "{}";
+            stats[StatDataType.TALISMANDATA_3_STAT] = Inventory.Data[23]?.GetData() ?? "{}";
+            stats[StatDataType.TALISMANDATA_4_STAT] = Inventory.Data[24]?.GetData() ?? "{}";
+            stats[StatDataType.TALISMANDATA_5_STAT] = Inventory.Data[25]?.GetData() ?? "{}";
+            stats[StatDataType.TALISMANDATA_6_STAT] = Inventory.Data[26]?.GetData() ?? "{}";
+            stats[StatDataType.TALISMANDATA_7_STAT] = Inventory.Data[27]?.GetData() ?? "{}";
         }
 
         private void CerberusClaws(TickTime time)

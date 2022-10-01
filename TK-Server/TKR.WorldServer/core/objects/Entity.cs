@@ -78,8 +78,6 @@ namespace TKR.WorldServer.core.objects
         public ushort ObjectType { get; protected set; }
         public World World { get; private set; }
         public CollisionMap<Entity> Parent { get; set; }
-        public float RealX => _x.GetValue();
-        public float RealY => _y.GetValue();
         public int Size { get => _size.GetValue(); set => _size?.SetValue(value); }
 
         public int NextBulletId = 1;
@@ -277,7 +275,8 @@ namespace TKR.WorldServer.core.objects
             return new ObjectStats()
             {
                 Id = Id,
-                Position = new Position() { X = RealX, Y = RealY },
+                X = X,
+                Y = Y,
                 Stats = stats.ToArray()
             };
         }

@@ -43,10 +43,10 @@ namespace TKR.WorldServer.core.worlds
 
         public bool IsRealm { get; set; }
         public bool AllowTeleport { get; protected set; }
-        public int Background { get; protected set; }
+        public byte Background { get; protected set; }
         public byte Blocking { get; protected set; }
         public string Music { get; set; }
-        public int Difficulty { get; protected set; }
+        public byte Difficulty { get; protected set; }
         public bool Deleted { get; protected set; }
         public bool DisableShooting { get; set; }
         public bool DisableAbilities { get; set; }

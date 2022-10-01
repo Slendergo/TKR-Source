@@ -9,6 +9,7 @@ using TKR.Shared.database.character;
 using TKR.WorldServer.core;
 using TKR.WorldServer.core.connection;
 using TKR.WorldServer.core.miscfile;
+using TKR.WorldServer.core.net;
 using TKR.WorldServer.core.objects;
 using TKR.WorldServer.core.worlds.logic;
 using TKR.WorldServer.networking.packets.outgoing;
@@ -82,6 +83,12 @@ namespace TKR.WorldServer.networking
                 await Task.Delay(1000);
                 Disconnect($"SendFailure: {text}");
             }
+        }
+
+        public void SendMessage(ref OutgoingMessageData data)
+        {
+            if (State != ProtocolState.Disconnected)
+                _handler.SendMessage(ref data);
         }
 
         public void SendPacket(OutgoingMessage pkt)

@@ -6,6 +6,7 @@ using System.Net.Sockets;
 using System.Threading.Tasks;
 using TKR.Shared;
 using TKR.WorldServer.core.miscfile.thread;
+using TKR.WorldServer.core.net;
 using TKR.WorldServer.core.net.handlers;
 using TKR.WorldServer.core.worlds;
 using TKR.WorldServer.networking;
@@ -367,6 +368,22 @@ namespace TKR.WorldServer.core.connection
             NetworkReceiveHandler.SetSocket(socket);
         }
 
+        public void SendMessage(ref OutgoingMessageData outgoingMessageData)
+        {
+            if (Client.State == ProtocolState.Disconnected)
+                return;
+
+            var data = outgoingMessageData.GetBuffer();
+            try
+            {
+                _ = Client.Socket.Send(data);
+            }
+            catch (Exception e)
+            {
+                Client.Disconnect("Error sending bytes");
+            }
+        }
+
         public void SendPacket(OutgoingMessage pkt)
         {
             if (Client.Player == null)
@@ -390,12 +407,8 @@ namespace TKR.WorldServer.core.connection
 
         public void FlushIO()
         {
-            if (PendingSending.Count > 0)
-            {
-                using var t = new TimedProfiler($"Flushing: {PendingSending.Count}");
-                while (PendingSending.Count > 0)
-                    SendDirectly(PendingSending.Dequeue());
-            }
+            while (PendingSending.Count > 0)
+                SendDirectly(PendingSending.Dequeue());
         }
 
         private void SendDirectly(OutgoingMessage outgoingMessage)

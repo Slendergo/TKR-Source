@@ -12,6 +12,7 @@ using TKR.WorldServer.core.objects;
 using TKR.WorldServer.networking;
 using TKR.WorldServer.networking.packets.outgoing;
 using TKR.WorldServer.core.miscfile.structures;
+using TKR.WorldServer.core.net;
 
 namespace TKR.WorldServer.core.objects.player
 {
@@ -281,6 +282,7 @@ namespace TKR.WorldServer.core.objects.player
 
             if (e.Id == Player.Id && statChange.Stat == StatDataType.None)
                 return;
+
             lock (StatsUpdates)
             {
                 if (!StatsUpdates.ContainsKey(e))
@@ -291,33 +293,19 @@ namespace TKR.WorldServer.core.objects.player
             }
         }
 
-        public void SendNewTick(int delta) // lazy
+        public void SendNewTick(int tickTime) // lazy
         {
             TickId++;
 
-            var newTick = new NewTick()
-            {
-                TickId = TickId,
-                TickTime = delta
-            };
-
             lock (StatsUpdates)
             {
-                newTick.Statuses = StatsUpdates.Select(_ => new ObjectStats()
-                {
-                    Id = _.Key.Id,
-                    Position = new Position()
-                    {
-                        X = _.Key.RealX,
-                        Y = _.Key.RealY
-                    },
-                    Stats = _.Value.ToArray()
-                }).ToList();
+                var objectStats = new List<ObjectStats>();
+                foreach (var statUpdate in StatsUpdates)
+                    objectStats.Add(new ObjectStats(statUpdate.Key.Id, statUpdate.Key.X, statUpdate.Key.Y, statUpdate.Value.ToArray()));
+                var newTick = MessageHelper.NewTick(TickId, tickTime, objectStats);
+                Player.Client.SendMessage(ref newTick);
+                StatsUpdates.Clear();
             }
-
-            StatsUpdates.Clear();
-
-            Player.Client.SendPacket(newTick);
             Player.AwaitMove(TickId);
         }
 

@@ -3,10 +3,12 @@ using System.Collections.Concurrent;
 using System.IO;
 using System.Linq;
 using System.Security.Principal;
+using TKR.Shared;
 using TKR.Shared.database.account;
 using TKR.Shared.isc.data;
 using TKR.Shared.resources;
 using TKR.WorldServer.core.miscfile;
+using TKR.WorldServer.core.net;
 using TKR.WorldServer.core.worlds;
 using TKR.WorldServer.core.worlds.logic;
 using TKR.WorldServer.networking;
@@ -202,35 +204,23 @@ namespace TKR.WorldServer.core
             }
 
             // send out map info
-            var mapSize = Math.Max(world.Map.Width, world.Map.Height);
+            var mapSize = (short)Math.Max(world.Map.Width, world.Map.Height);
 
+            var mapInfo = MessageHelper.MapInfo(mapSize, mapSize, world.IdName, world.DisplayName, seed, world.Difficulty, world.Background, world.AllowTeleport, world.ShowDisplays, world.Music, world.DisableShooting, world.DisableAbilities);
+            client.SendMessage(ref mapInfo);
+            
             client.SendPackets(new OutgoingMessage[]
             {
-                    new MapInfo()
-                    {
-                        Music = world.Music,
-                        Width = mapSize,
-                        Height = mapSize,
-                        Name = world.IdName,
-                        DisplayName = world.DisplayName,
-                        Seed = seed,
-                        Background = world.Background,
-                        Difficulty = world.Difficulty,
-                        AllowPlayerTeleport = world.AllowTeleport,
-                        ShowDisplays = world.ShowDisplays,
-                        DisableShooting = world.DisableShooting,
-                        DisableAbilities = world.DisableAbilities
-                    },
-                    new AccountList() // send out account lock/ignore list
-                    {
-                        AccountListId = 0, // locked list
-                        AccountIds = client.Account.LockList.Select(i => i.ToString()).ToArray()
-                    },
-                    new AccountList()
-                    {
-                        AccountListId = 1, // ignore list
-                        AccountIds = client.Account.IgnoreList.Select(i => i.ToString()).ToArray()
-                    }
+                new AccountList() // send out account lock/ignore list
+                {
+                    AccountListId = 0, // locked list
+                    AccountIds = client.Account.LockList.Select(i => i.ToString()).ToArray()
+                },
+                new AccountList()
+                {
+                    AccountListId = 1, // ignore list
+                    AccountIds = client.Account.IgnoreList.Select(i => i.ToString()).ToArray()
+                }
             });
             client.State = ProtocolState.Handshaked;
 

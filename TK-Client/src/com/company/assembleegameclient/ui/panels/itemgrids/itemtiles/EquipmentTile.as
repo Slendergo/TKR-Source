@@ -1,6 +1,7 @@
 package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
 {
-   import com.company.assembleegameclient.objects.ObjectLibrary;
+import com.company.assembleegameclient.objects.GameObject;
+import com.company.assembleegameclient.objects.ObjectLibrary;
 import com.company.assembleegameclient.objects.ObjectProperties;
 import com.company.assembleegameclient.objects.Player;
    import com.company.assembleegameclient.ui.panels.itemgrids.ItemGrid;
@@ -205,12 +206,9 @@ import com.company.assembleegameclient.objects.Player;
                canUse = false;
             }
 
-            if(slot == 1 && player.talismanAbilityLifeCost_ > 0.0){
-               if(player.hp_ - int(player.maxHP_ * player.talismanAbilityLifeCost_) <= 1){
+            if(slot == 1 && player.HasTalismanEffect(GameObject.BloodExchange)) {
+               if(player.hp_ - this.minManaUsage < 1) {
                   canUse = false;
-               }
-               else{
-                  canUse = player.hp_ >= int(player.maxHP_ * player.talismanAbilityLifeCost_);
                }
             }
          }

@@ -216,6 +216,23 @@ public class GameObject extends BasicObject {
     private var hpBarPath:GraphicsPath = null;
     private var hpBarBackFillMatrix:Matrix = null;
     private var hpBarFillMatrix:Matrix = null;
+    public var talismanEffectMask_:int;
+
+    public static const None:int = 1;
+    public static const PocketChange:int = 1;
+    public static const BloodExchange:int = 2;
+    public static const PrimalRage:int = 3;
+    public static const CalltoArms:int = 4;
+    public static const InsatiableThirst = 5;
+    public static const IronWill:int = 6;
+    public static const PartyofOne:int = 7;
+    public static const ForbiddenFruit:int = 8;
+    public static const LuckoftheIrish:int = 9;
+    public static const KnownAfterDeath:int = 10;
+
+    public function HasTalismanEffect(effect:int) : Boolean{
+        return (talismanEffectMask_ & (1 << (effect - 1))) != 0;
+    }
 
     override public function dispose():void {
         var obj:Object = null;

@@ -19,14 +19,13 @@ namespace TKR.WorldServer.core.commands
                     return true;
                 }*/
 
-                if(!player.IsAdmin && args == "Ring of the Talisman's Kingdom")
+                if(!player.IsAdmin && (args.ToLower() == "Ring of the Talisman's Kingdom".ToLower() || args.ToLower() == "Crown".ToLower() || args.ToLower() == "Excalibur".ToLower()))
                 {
                     player.SendError($"You are not an admin!");
                     return false;
                 }
 
                 var gameData = player.GameServer.Resources.GameData;
-
                 if (!gameData.DisplayIdToObjectType.TryGetValue(args, out ushort objType))
                 {
                     if (!gameData.IdToObjectType.TryGetValue(args, out objType))

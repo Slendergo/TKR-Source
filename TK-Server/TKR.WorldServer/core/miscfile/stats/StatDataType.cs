@@ -125,7 +125,6 @@
         SPS_WISDOM_COUNT_MAX = 157,
         EngineValue = 158,
         EngineTime = 159,
-        NoManaBar = 160,
         TALISMAN_0_STAT = 161,
         TALISMAN_1_STAT = 162,
         TALISMAN_2_STAT = 163,
@@ -142,6 +141,7 @@
         TALISMANDATA_5_STAT = 174,
         TALISMANDATA_6_STAT = 175,
         TALISMANDATA_7_STAT = 176,
+        TALISMAN_EFFECT_MASK_STAT = 177,
         None = 255
     }
 }

@@ -129,7 +129,6 @@ public class StatData
    public static const SPS_WISDOM_COUNT_MAX:int = 157;
    public static const ENGINE_VALUE:int = 158;
    public static const ENGINE_TIME:int = 159;
-   public static const NO_MANA_BAR:int = 160;
    public static const TALISMAN_0_STAT:int = 161;
    public static const TALISMAN_1_STAT:int = 162;
    public static const TALISMAN_2_STAT:int = 163;
@@ -146,6 +145,7 @@ public class StatData
    public static const TALISMANDATA_5_STAT:int = 174;
    public static const TALISMANDATA_6_STAT:int = 175;
    public static const TALISMANDATA_7_STAT:int = 176;
+   public static const TALISMAN_EFFECT_MASK_STAT :int = 177;
 
 
    public var statType_:uint = 0;

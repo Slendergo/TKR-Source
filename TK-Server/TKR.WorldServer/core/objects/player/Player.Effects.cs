@@ -61,7 +61,7 @@ namespace TKR.WorldServer.core.objects
 
             if (HasConditionEffect(ConditionEffectIndex.NinjaSpeedy))
             {
-                if (TalismanAbilityLifeCost > 0.0f)
+                if (HasTalismanEffect(TalismanEffectType.BloodExchange))
                 {
                     HP = Math.Max(1, (int)(HP - 20 * time.DeltaTime));
                     if (HP == 1)
@@ -77,10 +77,18 @@ namespace TKR.WorldServer.core.objects
 
             if (HasConditionEffect(ConditionEffectIndex.NinjaBerserk))
             {
-                MP = Math.Max(0, (int)(MP - 10 * time.DeltaTime));
-
-                if (MP == 0)
-                    RemoveCondition(ConditionEffectIndex.NinjaBerserk);
+                if (HasTalismanEffect(TalismanEffectType.BloodExchange))
+                {
+                    HP = Math.Max(1, (int)(HP - 20 * time.DeltaTime));
+                    if (HP == 1)
+                        RemoveCondition(ConditionEffectIndex.NinjaBerserk);
+                }
+                else
+                {
+                    MP = Math.Max(0, (int)(MP - 10 * time.DeltaTime));
+                    if (MP == 0)
+                        RemoveCondition(ConditionEffectIndex.NinjaBerserk);
+                }
             }
 
             if (_newbieTime > 0)

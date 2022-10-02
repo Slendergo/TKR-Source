@@ -15,7 +15,6 @@ using TKR.Shared.database.guild;
 using TKR.Shared.database.leaderboard;
 using TKR.Shared.database.market;
 using TKR.Shared.database.party;
-using TKR.Shared.database.talisman;
 using TKR.Shared.database.vault;
 using TKR.Shared.isc;
 using TKR.Shared.resources;
@@ -310,62 +309,6 @@ namespace TKR.Shared.database
 
             for (var i = 1; i <= lastGuildId; i++)
                 _db.HashSet($"guild.{i}", "guildLootBoost", 0);
-        }
-
-        public void UnlockTalisman(int accountId, byte type, byte level, int exp, int goal, byte tier)
-        {
-            var talisman = new DbAccountTalisman(_db, accountId, type);
-            talisman.Unlock(type, level, exp, goal, tier);
-            talisman.FlushAsync();
-        }
-
-        public List<DbTalismanEntry> GetUnlockedTalismans(int accountId)
-        {
-            var talisman = new DbAccountTalisman(_db, accountId);
-            var ret = new List<DbTalismanEntry>();
-            foreach (var i in talisman.AllKeys)
-            {
-                var type = byte.Parse(i);
-                ret.Add(talisman[type]);
-            }
-            return ret;
-        }
-
-        public List<int> GetActiveTalismans(int accountId, int charId)
-        {
-            var talisman = new DbActiveTalismans(_db, accountId, charId);
-            if (talisman.IsNull)
-                return new List<int>();
-            return talisman.Activated;
-        }
-
-        public bool HasTalismanUnlocked(int accountId, byte type)
-        {
-            var talisman = new DbAccountTalisman(_db, accountId, type);
-            var entry = talisman[type];
-            return !entry.IsNull;
-        }
-
-        public void UpdateTalisman(int accountId, byte type, byte level, int exp, int goal, byte tier)
-        {
-            var talisman = new DbAccountTalisman(_db, accountId, type);
-            talisman.Update(type, level, exp, goal, tier);
-            talisman.FlushAsync();
-        }
-
-        public void SetCharacterActiveTalisman(int accountId, int characterId, byte type, bool active)
-        {
-            var talisman = new DbActiveTalismans(_db, accountId, characterId);
-            talisman.Update(type, active);
-            talisman.Flush();
-        }
-
-        public void SaveTalismans(int accountId, List<DbTalismanEntry> talismans)
-        {
-            var talisman = new DbAccountTalisman(_db, accountId);
-            foreach (var t in talismans)
-                talisman.Update(t);
-            talisman.FlushAsync();
         }
 
         public DbCreateStatus CreateCharacter(DbAccount acc, ushort type, ushort skinType, out DbChar character)

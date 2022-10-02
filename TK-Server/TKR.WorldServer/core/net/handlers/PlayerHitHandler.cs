@@ -13,8 +13,6 @@ namespace TKR.WorldServer.core.net.handlers
             var bulletId = rdr.ReadInt32();
             var objectId = rdr.ReadInt32();
 
-            System.Console.WriteLine(bulletId + " " + objectId);
-
             var player = client.Player;
             if (player?.World == null)
                 return;

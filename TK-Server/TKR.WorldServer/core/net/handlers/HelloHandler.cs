@@ -24,17 +24,8 @@ namespace TKR.WorldServer.core.net.handlers
         {
             BuildVersion = rdr.ReadUTF();
             GameId = rdr.ReadInt32();
-            if (BuildVersion.Contains("-bot"))
-            {
-                BuildVersion = BuildVersion.Replace("-bot", "");
-                GUID = rdr.ReadUTF();
-                Password = rdr.ReadUTF();
-            }
-            else
-            {
-                GUID = RSA.Instance.Decrypt(rdr.ReadUTF());
-                Password = RSA.Instance.Decrypt(rdr.ReadUTF());
-            }
+            GUID = RSA.Instance.Decrypt(rdr.ReadUTF());
+            Password = RSA.Instance.Decrypt(rdr.ReadUTF());
             KeyTime = rdr.ReadInt32();
             Key = rdr.ReadBytes(rdr.ReadInt16());
             MapJSON = rdr.Read32UTF();

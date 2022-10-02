@@ -107,7 +107,6 @@ namespace TKR.WorldServer.networking
                 return;
             }
 
-            Player.SaveTalismanData();
             Player.SaveToCharacter();
             acc.RefreshLastSeen();
             acc.FlushAsync();

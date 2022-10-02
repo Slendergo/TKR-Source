@@ -2,6 +2,7 @@ package com.company.assembleegameclient.ui.tooltip
 {
 import com.company.assembleegameclient.constants.InventoryOwnerTypes;
 import com.company.assembleegameclient.misc.UILabel;
+import com.company.assembleegameclient.objects.GameObject;
 import com.company.assembleegameclient.objects.ObjectLibrary;
 import com.company.assembleegameclient.objects.ObjectProperties;
 import com.company.assembleegameclient.objects.Player;
@@ -67,7 +68,7 @@ public class EquipmentToolTip extends ToolTip
       private var props_:ObjectProperties = null;
       private var isMythicalItem:Boolean;
       private var isLegendaryItem:Boolean;
-
+      private var bloodExchange_:Boolean;
       public function EquipmentToolTip(objectType:int, player:Player, invType:int, inventoryOwnerType:String, inventorySlotID:uint = 1.0, isMarketItem:Boolean = false, itemData:Object = null)
       {
          this.itemData_ = itemData;
@@ -83,6 +84,10 @@ public class EquipmentToolTip extends ToolTip
          this.isEquippable_ = equipSlotIndex != -1;
          this.effects = new Vector.<Effect>();
          this.invType = invType;
+
+         if(player) {
+            bloodExchange_ = player.HasTalismanEffect(GameObject.BloodExchange);
+         }
 
          this.props_ = ObjectLibrary.propsLibrary_[objectType];
 
@@ -214,13 +219,13 @@ public class EquipmentToolTip extends ToolTip
                   this.itemEffectText_.text = "Pocket Change -> You have a 30% increase chance at loot";
                   break;
                case "Blood Exchange":
-                  this.itemEffectText_.text = "Blood Exchange -> Abilities cost life instead of mana";
+                  this.itemEffectText_.text = "Blood Exchange -> Abilities cost life, vitality regen tripled";
                   break;
                case "Primal Rage":
                   this.itemEffectText_.text = "Primal Rage -> Immune to Weak and Damaging";
                   break;
                case "Call to Arms":
-                  this.itemEffectText_.text = "Call to Arms -> Passive regeneration is doubled";
+                  this.itemEffectText_.text = "Call to Arms -> Life & Mana regeneration is doubled";
                   break;
                case "Insatiable Thirst":
                   this.itemEffectText_.text = "Insatiable Thirst -> Leech 1% of damage dealt to enemies life as mana";
@@ -235,7 +240,7 @@ public class EquipmentToolTip extends ToolTip
                   this.itemEffectText_.text = "Luck of the Irish -> Gain 20% more chance at loot and an 2% chance to double your drops";
                   break;
                case "Known After Death":
-                  this.itemEffectText_.text = "Known After Death -> Gain 150% more experience towards fame";
+                  this.itemEffectText_.text = "Known After Death -> Experience from killing mobs is doubled";
                   break;
             }
          }
@@ -507,34 +512,14 @@ public class EquipmentToolTip extends ToolTip
          {
             if(!this.comparisonResults.processedTags[this.objectXML_.MpEndCost[0].toXMLString()])
             {
-               /*
-               if(local1)
-               {
-                  this.effects.push(new Effect("MP Cost", this.objectXML_.MpEndCost * 2 + " (" + this.objectXML_.MpEndCost + ")"));
-               }
-               else
-               {
-
-                */
-               this.effects.push(new Effect("MP Cost",this.objectXML_.MpEndCost));
-               //}
+               this.effects.push(new Effect((bloodExchange_ ? "HP" : "MP") + " Cost", this.objectXML_.MpEndCost));
             }
          }
          else if(this.objectXML_.hasOwnProperty("MpCost") && !this.comparisonResults.processedTags[this.objectXML_.MpCost[0].toXMLString()])
          {
             if(!this.comparisonResults.processedTags[this.objectXML_.MpCost[0].toXMLString()])
             {
-               /*
-               if(local1)
-               {
-                  this.effects.push(new Effect("MP Cost", this.objectXML_.MpCost * 2 + " (" + this.objectXML_.MpCost + ")"));
-               }
-               else
-               {
-
-                */
-               this.effects.push(new Effect("MP Cost",this.objectXML_.MpCost));
-               //}
+               this.effects.push(new Effect((bloodExchange_ ? "HP" : "MP") + " Cost", this.objectXML_.MpCost));
             }
          }
       }

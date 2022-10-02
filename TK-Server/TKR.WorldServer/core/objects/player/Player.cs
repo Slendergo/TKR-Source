@@ -176,8 +176,6 @@ namespace TKR.WorldServer.core.objects
             _colorchat = new SV<int>(this, StatDataType.ColorChat, 0);
             _partyId = new SV<int>(this, StatDataType.PartyId, client.Account.PartyId, true);
 
-            _noManaBar = new SV<int>(this, StatDataType.NoManaBar, 0);
-
             UpgradeEnabled = client.Character.UpgradeEnabled;
 
             var addition = 0;
@@ -252,9 +250,11 @@ namespace TKR.WorldServer.core.objects
                 client.Character.Datas = new ItemData[28];
 
             Inventory = new Inventory(this, Utils.ResizeArray(Client.Character.Items.Select(_ => (_ == 0xffff || !gameData.Items.ContainsKey(_)) ? null : gameData.Items[_]).ToArray(), 28), Utils.ResizeArray(Client.Character.Datas, 28));
-
             Inventory.InventoryChanged += (sender, e) => Stats.ReCalculateValues();
             SlotTypes = Utils.ResizeArray(gameData.Classes[ObjectType].SlotTypes, 28);
+
+            _talismanEffects = new SV<int>(this, StatDataType.TALISMAN_EFFECT_MASK_STAT, 0);
+
             Stats = new StatsManager(this);
 
             GameServer.Database.IsMuted(client.IpAddress).ContinueWith(t =>
@@ -274,8 +274,6 @@ namespace TKR.WorldServer.core.objects
             }
 
             ToggleLootChanceNotification = client.Account.ToggleLootChanceNotification;
-
-            LoadTalismanData();
         }
 
         public bool ToggleLootChanceNotification;
@@ -525,7 +523,6 @@ namespace TKR.WorldServer.core.objects
             FameGoal = GetFameGoal(FameCounter.ClassStats[ObjectType].BestFame);
             ExperienceGoal = GetExpGoal(Client.Character.Level);
             Stars = GetStars();
-            UpdateEssenceCap();
 
             if (owner.IdName.Equals("Ocean Trench"))
                 Breath = 100;
@@ -769,8 +766,6 @@ namespace TKR.WorldServer.core.objects
                 
                 PlayerUpdate.SendUpdate();
                 PlayerUpdate.SendNewTick(time.ElapsedMsDelta);
-
-                HandleTalismans(ref time);
 
                 HandleBreath(ref time);
 
@@ -1270,11 +1265,10 @@ namespace TKR.WorldServer.core.objects
                 var vitalityStat = Stats[6];
 
                 HealthRegenCarry += (1.0 + (0.24 * vitalityStat)) * time.DeltaTime;
-                if(TalismanExtraLifeRegen > 0.0f)
-                    HealthRegenCarry += (HealthRegenCarry * TalismanExtraLifeRegen);
-                if(TalismanHealthHPRegen > 0.0f)
-                    HealthRegenCarry += (HealthRegenCarry * TalismanHealthHPRegen);
-
+                if (HasTalismanEffect(TalismanEffectType.CalltoArms))
+                    HealthRegenCarry *= 2.0;
+                if (HasTalismanEffect(TalismanEffectType.BloodExchange))
+                    HealthRegenCarry *= 3.0;
                 if (HasConditionEffect(ConditionEffectIndex.Healing))
                     HealthRegenCarry += 20.0 * time.DeltaTime;
 
@@ -1292,8 +1286,8 @@ namespace TKR.WorldServer.core.objects
                 var wisdomStat = Stats[7];
 
                 ManaRegenCarry += (0.5 + 0.12 * wisdomStat) * time.DeltaTime;
-                if(TalismanExtraManaRegen > 0.0f)
-                    ManaRegenCarry += (ManaRegenCarry * TalismanExtraManaRegen);
+                if (HasTalismanEffect(TalismanEffectType.CalltoArms))
+                    ManaRegenCarry *= 2.0;
 
                 if (HasConditionEffect(ConditionEffectIndex.MPTRegeneration))
                     ManaRegenCarry += 20.0 * time.DeltaTime;

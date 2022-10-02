@@ -643,21 +643,6 @@ namespace TKR.WorldServer.core.commands.player
 
         protected override bool Process(Player player, TickTime time, string args)
         {
-            var lootBoost = Loot.GetPlayerLootBoost(player);
-
-            if (NexusWorld.WeekendLootBoostEvent > 0.0f)
-                player.SendInfo($"Weekend Bonus provides: {(int)(NexusWorld.WeekendLootBoostEvent * 100.0)}%");
-
-            if (player.LDBoostTime > 0)
-                player.SendInfo($"Loot Drop provides: 25%");
-
-            var allLoot = 0.0;
-            if (player.TalismanLootBoostPerPlayer != 0.0 && player.World.Players.Count != 1)
-                allLoot += player.TalismanLootBoostPerPlayer * (player.World.Players.Count - 1);
-
-            var amt = (player.TalismanLootBoost + allLoot + (player.TalismanCanOnlyGetWhiteBags ? 0.5 : 0.0));
-            if(amt != 0.0)
-                player.SendInfo($"Talisman's provide: {amt * 100.0} % ");
             switch (player.GameServer.WorldManager.Nexus.EngineStage)
             {
                 case 1: player.SendInfo($"Stage 1 Strange Engine provides: 25%"); break;
@@ -665,6 +650,28 @@ namespace TKR.WorldServer.core.commands.player
                 case 3: player.SendInfo($"Stage 3 Strange Engine provides: 75%"); break;
                 default: break;
             }
+
+            if (player.LDBoostTime > 0)
+                player.SendInfo($"Loot Drop provides: 25%");
+
+            if (player.HasTalismanEffect(TalismanEffectType.PocketChange))
+                player.SendInfo($"Pocket Change provides: 30%");
+
+            if (player.HasTalismanEffect(TalismanEffectType.LuckoftheIrish))
+                player.SendInfo($"Luck of the Irish provides: 20%");
+
+            if (player.HasTalismanEffect(TalismanEffectType.PartyofOne))
+            {
+                var partyOfOneAmount = 50;
+                if (player.World.Players.Count != 1)
+                    partyOfOneAmount = -partyOfOneAmount;
+                player.SendInfo($"Party of One provides: {partyOfOneAmount}% ");
+            }
+
+            if (NexusWorld.WeekendLootBoostEvent > 0.0f)
+                player.SendInfo($"Weekend Bonus provides: {(int)(NexusWorld.WeekendLootBoostEvent * 100.0)}%");
+
+            var lootBoost = Loot.GetPlayerLootBoost(player);
             player.SendInfo($"You have {Math.Round(lootBoost * 100.0f, 3)}% increased loot chance");
             return true;
         }

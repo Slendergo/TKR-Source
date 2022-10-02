@@ -209,7 +209,7 @@
 		</Tier>
 		<Tier tier="2">
 			<Extra percentage="0.135" scale="perLevel">ManaRegen</Extra>
-			<Extra percentage="-0.05" scale="perLevel">LifeRegen</Extra>
+			<Extra percentageF="-0.05" scale="perLevel">LifeRegen</Extra>
 			<StatType type="27" scale="perLevel" amount="2" />
 			<StatType type="0" scale="perLevel" amount="-10" />
 		</Tier>

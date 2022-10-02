@@ -44,15 +44,11 @@ namespace TKR.Shared.resources
     public sealed class TalismanItemProvidesDesc
     {
         public readonly TalismanEffectType Effect;
-        public readonly float Probability;
-        public readonly int Cooldown;
 
         public TalismanItemProvidesDesc(XElement elem)
         {
             if(elem.HasAttribute("effect", out var effect))
                 Effect = (TalismanEffectType)Enum.Parse(typeof(TalismanEffectType), effect.Value.Replace(" ", ""));
-            Probability = elem.GetAttribute<float>("prob");
-            Cooldown = (int)(elem.GetAttribute<float>("cooldown") * 1000.0f);
         }
     }
 }

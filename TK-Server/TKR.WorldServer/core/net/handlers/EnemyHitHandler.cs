@@ -50,38 +50,10 @@ namespace TKR.WorldServer.core.net.handlers
                  if (killed && (entity as Enemy).HP > 0)
                     player.PlayerUpdate.ForceAdd(entity);
 
-            var totalLife = 0.0;
-            var totalMana = 0.0;
-            foreach (var type in player.ActiveTalismans)
+            if (player.HasTalismanEffect(TalismanEffectType.InsatiableThirst))
             {
-                var talisman = player.GetTalisman(type);
-                if (talisman == null)
-                    continue;
-
-                var desc = player.GameServer.Resources.GameData.GetTalisman(type);
-                if (desc == null)
-                    continue;
-
-                var tierDesc = desc.GetTierDesc(talisman.Tier);
-                if (tierDesc == null)
-                    continue;
-
-                foreach (var leech in tierDesc.Leech)
-                {
-                    if (player.World.Random.NextDouble() <= leech.Probability)
-                    {
-                        var scale = leech.ScalesPerLevel ? talisman.Level * leech.Percentage : leech.Percentage;
-                        switch (leech.Type)
-                        {
-                            case 0:
-                                totalLife += player.Stats[0] * scale;
-                                break;
-                            case 1:
-                                totalMana += player.Stats[1] * scale;
-                                break;
-                        }
-                    }
-                }
+                var totalLife = 0.00;// player.Stats[0] * 0.1;
+                var totalMana = player.Stats[1] * 0.01;
 
                 if (totalLife > 0)
                     Player.HealDiscrete(player, (int)totalLife, false);

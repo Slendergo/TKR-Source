@@ -32,17 +32,12 @@ namespace TKR.Shared.resources
         private readonly Dictionary<string, byte[]> WorldDataCache = new Dictionary<string, byte[]>();
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
-        private Dictionary<int, TalismanDesc> Talismans { get; set; } = new Dictionary<int, TalismanDesc>();
-
-        public TalismanDesc GetTalisman(int type) => Talismans.TryGetValue(type, out var ret) ? ret : null;
-
         public ItemDusts ItemDusts { get; private set; }
 
         public XElement ObjectCombinedXML;
         public XElement CombinedXMLPlayers;
         public XElement GroundCombinedXML;
         public XElement SkinsCombinedXML;
-        public XElement TalismansCombinedXML;
 
         public void Initialize(bool exportXmls)
         {
@@ -240,18 +235,6 @@ namespace TKR.Shared.resources
 
         private void ProcessXml(XElement root, bool exportXmls = false)
         {
-            if (root.Name.LocalName == "Talismans")
-            {
-                TalismansCombinedXML = root;
-
-                foreach (var e in root.Elements("Talisman"))
-                {
-                    var desc = new TalismanDesc(e);
-                    Talismans.Add(desc.Type, desc);
-                }
-                return;
-            }
-
             if (root.Name.LocalName == "Dusts")
             {
                 ItemDusts = new ItemDusts(root);

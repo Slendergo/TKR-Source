@@ -141,7 +141,6 @@ import kabam.rotmg.messaging.impl.incoming.market.MarketMyOffersResult;
 import kabam.rotmg.messaging.impl.incoming.market.MarketRemoveResult;
 import kabam.rotmg.messaging.impl.incoming.market.MarketSearchResult;
 import kabam.rotmg.messaging.impl.incoming.party.InvitedToParty;
-import kabam.rotmg.messaging.impl.incoming.talisman.TalismanEssenceData;
 import kabam.rotmg.messaging.impl.outgoing.AcceptTrade;
 import kabam.rotmg.messaging.impl.outgoing.AoeAck;
 import kabam.rotmg.messaging.impl.outgoing.Buy;
@@ -190,7 +189,6 @@ import kabam.rotmg.messaging.impl.outgoing.market.MarketRemove;
 import kabam.rotmg.messaging.impl.outgoing.market.MarketSearch;
 import kabam.rotmg.messaging.impl.outgoing.party.JoinParty;
 import kabam.rotmg.messaging.impl.outgoing.party.PartyInvite;
-import kabam.rotmg.messaging.impl.outgoing.talisman.TalismanEssenceAction;
 import kabam.rotmg.minimap.control.UpdateGameObjectTileSignal;
 import kabam.rotmg.minimap.control.UpdateGroundTileSignal;
 import kabam.rotmg.minimap.model.UpdateGroundTileVO;
@@ -324,9 +322,6 @@ public class GameServerConnection
       public static const POTION_STORAGE_INTERACTION:int = 92;
       public static const POTIONSTORAGEREQUEST:int = 93;
       public static const USEPOTION:int = 94;
-
-      public static const TALISMAN_ESSENCE_DATA:int = 100;
-      public static const TALISMAN_ESSENCE_ACTION:int = 101;
 
       public static const ENGINE_FUEL_ACTION:int = 102;
 
@@ -542,8 +537,6 @@ public class GameServerConnection
          messages.map(POTION_STORAGE_INTERACTION).toMessage(PotionStorageInteraction);
          messages.map(USEPOTION).toMessage(UsePotion);
 
-         messages.map(TALISMAN_ESSENCE_DATA).toMessage(TalismanEssenceData).toMethod(this.onTalismanEssenceData);
-         messages.map(TALISMAN_ESSENCE_ACTION).toMessage(TalismanEssenceAction);
          messages.map(AOEACK).toMessage(AoeAck);
          messages.map(SHOOTACK).toMessage(ShootAck);
       }
@@ -647,19 +640,6 @@ public class GameServerConnection
 
          /* Music */
          messages.unmap(SWITCH_MUSIC);
-
-         messages.unmap(TALISMAN_ESSENCE_DATA);
-         messages.unmap(TALISMAN_ESSENCE_ACTION);
-      }
-
-      private function onTalismanEssenceData(talismanEssenceData:TalismanEssenceData):void {
-         if(this.player){
-            this.player.essence_ = talismanEssenceData.essence_;
-            this.player.essenceCap_ = talismanEssenceData.essenceCap_;
-            for(var i:int = 0; i < talismanEssenceData.talismans_.length; i++){
-               this.player.addTalisman(talismanEssenceData.talismans_[i]);
-            }
-         }
       }
 
       private function onSwitchMusic(sm:SwitchMusic):void {
@@ -685,15 +665,6 @@ public class GameServerConnection
          {
             this.jitterWatcher_ = null;
          }
-      }
-
-      public function talismanAction(actionType:int, type:int, amount:int):void
-      {
-         var action:TalismanEssenceAction = this.messages.require(TALISMAN_ESSENCE_ACTION) as TalismanEssenceAction;
-         action.actionType_ = actionType;
-         action.type_ = type;
-         action.amount_ = amount;
-         this.serverConnection.sendMessage(action);
       }
 
       private function create() : void
@@ -2000,9 +1971,8 @@ public class GameServerConnection
                   (go as Player).equipData_[index] = JSON.parse(stat.strStatValue_);
                   continue;
 
-               case StatData.NO_MANA_BAR:
-                  (go as Player).talismanNoManaBar_ = stat.statValue_ == 1;
-                  this.gs_.hudView.draw();
+               case StatData.TALISMAN_EFFECT_MASK_STAT:
+                  (go as Player).talismanEffectMask_ = stat.statValue_;
                   continue;
                default:
                   trace("unhandled stat: " + stat.statType_);

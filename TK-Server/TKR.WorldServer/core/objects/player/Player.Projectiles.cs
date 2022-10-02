@@ -10,28 +10,7 @@ namespace TKR.WorldServer.core.objects
         {
             projectileId = bulletId;
 
-            var min = desc.MinDamage;
-            var max = desc.MaxDamage;
-            if (TalismanDamageIsAverage)
-            {
-                var avg = (int)((min + max) * 0.5);
-                min = avg;
-                max = avg;
-            }
-
-            var dmg = Stats.GetAttackDamage(min, max, ability);
-
-            if(ability && TalismanExtraAbilityDamage > 0.0)
-                dmg = (int)(dmg + (dmg * TalismanExtraAbilityDamage));
-
-            var isFullHp = HP == Stats[0];
-            if (TalismanExtraDamageOnHitHealth != 0.0)
-                dmg += (int)(dmg * (isFullHp ? TalismanExtraDamageOnHitHealth : -TalismanExtraDamageOnHitHealth));
-
-            var isFullMp = MP == Stats[1];
-            if (TalismanExtraDamageOnHitMana != 0.0)
-                dmg += (int)(dmg * (isFullMp ? TalismanExtraDamageOnHitMana : -TalismanExtraDamageOnHitMana));
-
+            var dmg = Stats.GetAttackDamage(desc.MinDamage, desc.MaxDamage, ability);
             return CreateProjectile(desc, objectType, dmg, C2STime(time), position, angle);
         }
     }

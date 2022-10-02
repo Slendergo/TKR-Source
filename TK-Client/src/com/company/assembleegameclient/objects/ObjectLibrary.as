@@ -62,7 +62,6 @@ public class ObjectLibrary
          "MarketNPC":MarketNPC,
          "BountyBoard": BountyBoard,
          "PotionStorage": PotionStorage,
-         "Essence":Essence,
          "Engine":Engine
       };
 

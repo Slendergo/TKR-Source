@@ -6,7 +6,7 @@
       <File>CustomObj</File>
       <Index>0x51</Index>
     </Texture>
-    <Eternal />
+    <Legendary />
     <SlotType>1</SlotType>
     <Description>A sword forged by combining various precious ores. Every swing releases enough strength to sunder solid ground.</Description>
     <RateOfFire>.80</RateOfFire>

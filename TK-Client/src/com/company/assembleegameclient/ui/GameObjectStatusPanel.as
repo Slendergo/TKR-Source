@@ -107,7 +107,7 @@ package com.company.assembleegameclient.ui
          this.mpBar_ = new StatusBar(176,16,6325472,5526612,"MP");
          this.mpBar_.x = 12;
          this.mpBar_.y = 80;
-         this.mpBar_.visible = !go.talismanNoManaBar_;
+         this.mpBar_.visible = true;
          addChild(this.mpBar_);
          this.stats_ = new Stats(180,46);
          this.stats_.x = 22;

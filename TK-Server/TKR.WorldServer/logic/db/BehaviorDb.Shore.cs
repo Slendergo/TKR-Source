@@ -17,8 +17,7 @@ namespace TKR.WorldServer.logic
                     )
                 ),
             new TierLoot(1, ItemType.Weapon, 0.2),
-            new ItemLoot("Health Potion", 0.03),
-            TierLoot.TalismanLoot(1.0)
+            new ItemLoot("Health Potion", 0.03)
             )
         .Init("Piratess",
             new State(

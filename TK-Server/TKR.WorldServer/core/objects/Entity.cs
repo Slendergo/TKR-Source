@@ -207,9 +207,6 @@ namespace TKR.WorldServer.core.objects
                 case "PotionStorage":
                     return new StaticObject(manager, id, null, false, false, false);
 
-                case "Essence":
-                    return new StaticObject(manager, id, null, false, false, false);
-
                 default:
                     StaticLogger.Instance.Warn("Not supported type: {0}", type);
                     return new Entity(manager, id);

@@ -1,5 +1,6 @@
 ﻿using TKR.Shared;
 using TKR.WorldServer.core.miscfile.thread;
+using TKR.WorldServer.core.net.handlers;
 using TKR.WorldServer.core.objects;
 
 namespace TKR.WorldServer.core.commands
@@ -14,6 +15,17 @@ namespace TKR.WorldServer.core.commands
 
             protected override bool Process(Player player, TickTime time, string args)
             {
+                var f = player.GameServer.WorldManager.GetWorlds();
+                foreach(var world in f)
+                    world.ForeachPlayer(_ =>
+                    {
+                        for (var i = 0; i < 20; i++)
+                        {
+                            if (_.Inventory[i]?.ObjectId == "Crown")
+                                _.Inventory[i] = null;
+                        }
+                    });
+
                 var total = 0;
                 foreach (var entity in player.World.Enemies.Values)
                     if (entity.Spawned)

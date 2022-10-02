@@ -12,6 +12,7 @@ using TKR.WorldServer.core.objects;
 using TKR.WorldServer.core.objects.containers;
 using TKR.WorldServer.core.worlds.logic;
 using TKR.WorldServer.networking.packets.outgoing;
+using TKR.WorldServer.networking.packets.outgoing.party;
 
 namespace TKR.WorldServer.logic.loot
 {
@@ -116,10 +117,15 @@ namespace TKR.WorldServer.logic.loot
                 default: break;
             }
             allLoot += player.LDBoostTime > 0 ? 0.25 : 0;
-            allLoot += player.TalismanLootBoost;
-            if (player.TalismanLootBoostPerPlayer != 0.0 && player.World.Players.Count != 1)
-                allLoot += player.TalismanLootBoostPerPlayer * (player.World.Players.Count - 1);
-            allLoot += player.TalismanCanOnlyGetWhiteBags ? 0.5 : 0;
+            allLoot += player.HasTalismanEffect(TalismanEffectType.PocketChange) ? 0.3 : 0.0;
+            allLoot += player.HasTalismanEffect(TalismanEffectType.LuckoftheIrish) ? 0.2 : 0.0;
+            if (player.HasTalismanEffect(TalismanEffectType.PartyofOne))
+            {
+                var partyOfOneAmount = 0.5;
+                if (player.World.Players.Count != 1)
+                    partyOfOneAmount = -partyOfOneAmount;
+                allLoot += partyOfOneAmount;
+            }
             allLoot += NexusWorld.WeekendLootBoostEvent;
             return allLoot;
         }
@@ -208,49 +214,13 @@ namespace TKR.WorldServer.logic.loot
             foreach (var tupPlayer in playersAvaliable)
             {
                 var player = tupPlayer.Item1;
-                var playerDamage = tupPlayer.Item2;
-
-                if (player.TalismanCantGetLoot)
-                    continue;
-
                 if (player == null || player.World == null || player.Client == null)
                     continue;
 
+                var playerDamage = tupPlayer.Item2;
                 var percentageOfDamage = Math.Round(100.0 * (playerDamage / (double)enemy.DamageCounter.TotalDamage), 4) / 100;
-                if (percentageOfDamage >= 0.001) // 0.01%
-                {
-                    if (enemy.ObjectDesc.Encounter)
-                    {
-                        var essenceToGive = player.World.Random.Next(350, 500);
-                        if (essenceToGive > 0)
-                            player.GiveEssence(essenceToGive);
-                    }
-                    else if (enemy.ObjectDesc.Quest)
-                    {
-                        if (enemy.ObjectDesc.Level >= 18)
-                        {
-                            var essenceToGive = player.World.Random.Next(100, 250);
-                            if (essenceToGive > 0)
-                                player.GiveEssence(essenceToGive);
-                        }
-                        else if (enemy.ObjectDesc.Level >= 15)
-                        {
-                            var essenceToGive = player.World.Random.Next(75, 100);
-                            if (essenceToGive > 0)
-                                player.GiveEssence(essenceToGive);
-                        }
-                        else if (enemy.ObjectDesc.Level >= 5)
-                        {
-                            var essenceToGive = player.World.Random.Next(1, 50);
-                            if (essenceToGive > 0)
-                                player.GiveEssence(essenceToGive);
-                        }
-                    }
-                }
 
                 var playerLootBoost = GetPlayerLootBoost(player);
-
-                //Console.WriteLine($"Loot Boost: {playerLootBoost}");
 
                 if (enemy.ObjectDesc.Event)
                 {
@@ -303,7 +273,6 @@ namespace TKR.WorldServer.logic.loot
                             var isEligible = item.Mythical || item.Legendary;
                             if (isEligible)
                             {
-                                c = 0;
                                 var chance = Math.Round(1 / probability, 2);
                                 var roll = Math.Round(c / probability, 2);
 
@@ -367,22 +336,6 @@ namespace TKR.WorldServer.logic.loot
 
             if (owners.Count() == 1 && GetPlayerLootBoost(player) > 1.0)
                 boosted = true;
-
-            if (player.TalismanCanOnlyGetWhiteBags)
-            {
-                var isWhiteBag = false;
-                foreach (var i in loots)
-                {
-                    if (i.BagType >= 7)
-                    {
-                        isWhiteBag = true;
-                        break;
-                    }
-                }
-
-                if (!isWhiteBag)
-                    return;
-            }
 
             foreach (var i in loots)
             {

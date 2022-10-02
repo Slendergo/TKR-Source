@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using TKR.Shared.resources;
 using TKR.WorldServer.core.miscfile.datas;
 using TKR.WorldServer.core.miscfile.stats;
 using TKR.WorldServer.core.miscfile.thread;
@@ -59,14 +60,6 @@ namespace TKR.WorldServer.core.objects
                 }, this);
                 var prevStars = Stars;
                 Stars = GetStars();
-
-                if (Stars != prevStars)
-                {
-                    var cap = Client.Account.EssenceCap;
-                    UpdateEssenceCap();
-                    var newCap = Client.Account.EssenceCap;
-                    SendInfo($"Your 'Talisman Essence' capacity has increased by {newCap - cap}!");
-                }
             }
             else if (newFame != Fame)
             {
@@ -101,12 +94,8 @@ namespace TKR.WorldServer.core.objects
 
             if (exp != 0)
             {
-                if (Name.Contains("Slendergo"))
-                    if(TalismanFameGainBonus > 0.0)
-                        SendInfo($"You have: {TalismanFameGainBonus} Somehow");
-
-                if(TalismanFameGainBonus > 0.0)
-                    Experience += (int)(exp + (exp * TalismanFameGainBonus));
+                if (HasTalismanEffect(TalismanEffectType.KnownAfterDeath))
+                    Experience += exp * 2;
                 else
                     Experience += exp;
             }

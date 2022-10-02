@@ -44,7 +44,7 @@ namespace TKR.WorldServer.core.miscfile.thread
                 {
                     if (!TickWithSleep)
                     {
-                        //World.ProcessPlayerIO(ref realmTime);
+                        World.ProcessPlayerIO(ref realmTime);
 
                         var currentMS = realmTime.TotalElapsedMs = watch.ElapsedMilliseconds;
 
@@ -54,28 +54,21 @@ namespace TKR.WorldServer.core.miscfile.thread
                             realmTime.TickCount++;
                             realmTime.ElapsedMsDelta = delta;
 
-                            using (var t = new TimedProfiler($"[{World.IdName} {World.Id} -> {delta}"))
+                            try
                             {
-                                World.ProcessPlayerIO(ref realmTime);
-                                try
+                                if (World.Update(ref realmTime))
                                 {
-                                    if (World.Update(ref realmTime))
-                                    {
-                                        Stopped = true;
-                                        break;
-                                    }
+                                    Stopped = true;
+                                    break;
                                 }
-                                catch (Exception e)
-                                {
-                                    Console.WriteLine($"[{World.IdName} {World.Id}] Tick: {e.StackTrace}");
-                                }
-                                World.ProcessPlayerSendIO();
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine($"[{World.IdName} {World.Id}] Tick: {e.StackTrace}");
                             }
 
                             lastMS = currentMS; //+= delta; // TICK_TIME_MS;
                         }
-
-                        //World.ProcessPlayerSendIO();
 
                         if (World.Players.Count == 0)
                             Thread.Sleep(TICK_TIME_MS);
@@ -102,7 +95,6 @@ namespace TKR.WorldServer.core.miscfile.thread
                                 Stopped = true;
                                 break;
                             }
-                            World.ProcessPlayerSendIO();
                         }
                         catch (Exception e)
                         {

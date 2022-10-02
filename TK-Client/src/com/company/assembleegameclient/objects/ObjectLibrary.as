@@ -250,17 +250,15 @@ public class ObjectLibrary
 
       public static function getMatchingSlotIndex(objectType:int, player:Player) : int
       {
-         var objectXML:XML = null;
-         var slotType:int = 0;
-         var i:uint = 0;
          if(objectType != ItemConstants.NO_ITEM)
          {
-            objectXML = xmlLibrary_[objectType];
-            if(objectXML == null)
-            {
+            var objectXML:XML = xmlLibrary_[objectType];
+            if(objectXML == null) {
                return -1;
             }
-            slotType = int(objectXML.SlotType);
+
+             var i:uint = 0;
+             var slotType:int = int(objectXML.SlotType);
              for(i = 0; i < GeneralConstants.NUM_EQUIPMENT_SLOTS; i++)
              {
                  if(player.slotTypes_[i] == slotType)
@@ -269,12 +267,42 @@ public class ObjectLibrary
                  }
              }
 
+             var props:ObjectProperties = ObjectLibrary.propsLibrary_[objectType];
+
              var offset:int = GeneralConstants.NUM_EQUIPMENT_SLOTS + GeneralConstants.NUM_INVENTORY_SLOTS + GeneralConstants.NUM_BACKPACK_SLOTS;
-             for(i = offset; i < offset + GeneralConstants.NUM_TALISMAN_SLOTS; i++)
+             if (props.onlyOneTalisman_) {
+                 for (i = offset; i < offset + GeneralConstants.NUM_TALISMAN_SLOTS; i++) {
+                     if (player.equipment_[i] == objectType) {
+                         return -1;
+                     }
+                 }
+             }
+
+             if(props.isCommonTalisman_)
              {
-                 if(player.equipment_[i] == -1 && player.slotTypes_[i] == slotType)
+                 for(i = offset; i < offset + 4; i++)
                  {
-                     return i;
+                     if(player.equipment_[i] == -1 && player.slotTypes_[i] == slotType) {
+                         return i;
+                     }
+                 }
+             }
+             else if(props.isLegendaryTalisman_)
+             {
+                 for(i = offset + 4; i < offset + 6; i++)
+                 {
+                     if(player.equipment_[i] == -1 && player.slotTypes_[i] == slotType) {
+                         return i;
+                     }
+                 }
+             }
+             else if(props.isMythicTalisman_)
+             {
+                 for(i = offset + 6; i < offset + 8; i++)
+                 {
+                     if(player.equipment_[i] == -1 && player.slotTypes_[i] == slotType) {
+                         return i;
+                     }
                  }
              }
          }

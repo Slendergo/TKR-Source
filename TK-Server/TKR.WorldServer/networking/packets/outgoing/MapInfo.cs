@@ -4,13 +4,13 @@ namespace TKR.WorldServer.networking.packets.outgoing
 {
     public class MapInfo : OutgoingMessage
     {
-        public int Width { get; set; }
-        public int Height { get; set; }
+        public short Width { get; set; }
+        public short Height { get; set; }
         public string Name { get; set; }
         public string DisplayName { get; set; }
-        public int Difficulty { get; set; }
         public uint Seed { get; set; }
-        public int Background { get; set; }
+        public byte Background { get; set; }
+        public byte Difficulty { get; set; }
         public bool AllowPlayerTeleport { get; set; }
         public bool ShowDisplays { get; set; }
         public string Music { get; set; }

@@ -14,7 +14,7 @@ namespace TKR.WorldServer.core.objects.inventory
         public ItemDustPools SpecialDust { get; private set; } = new ItemDustPools();
         public ItemDustPools MiscDust { get; private set; } = new ItemDustPools();
         public ItemDustPools PotionDust { get; private set; } = new ItemDustPools();
-        public ItemDustPools TalismanFragment { get; private set; } = new ItemDustPools();
+        public ItemDustPools Talismans { get; private set; } = new ItemDustPools();
         public ItemDustPools FrozenCoin { get; private set; } = new ItemDustPools();
 
         private readonly GameServer GameServer;
@@ -33,7 +33,7 @@ namespace TKR.WorldServer.core.objects.inventory
             foreach (var items in xmlData.ItemDusts.MiscPools)
                 MiscDust.AddPool(GetItems(items, xmlData));
             foreach (var items in xmlData.ItemDusts.TalismanPools)
-                TalismanFragment.AddPool(GetItems(items, xmlData));
+                Talismans.AddPool(GetItems(items, xmlData));
             foreach (var items in xmlData.ItemDusts.FrozenCoinPools)
                 FrozenCoin.AddPool(GetItems(items, xmlData));
             foreach (var items in xmlData.ItemDusts.PotionPools)

@@ -425,13 +425,6 @@ namespace TKR.WorldServer.core.worlds
             WorldBranch.HandleIO(ref time);
         }
 
-        public void ProcessPlayerSendIO()
-        {
-            foreach (var player in Players.Values)
-                player.SendIO();
-            WorldBranch.SendIO();
-        }
-
         public bool Update(ref TickTime time)
         {
             try

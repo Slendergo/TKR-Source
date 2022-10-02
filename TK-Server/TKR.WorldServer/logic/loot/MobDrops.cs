@@ -48,12 +48,12 @@ namespace TKR.WorldServer.logic.loot
 
     public class TierLoot : MobDrops
     {
-        private static readonly int[] TalismanT = new int[] { 26 };
-        private static readonly int[] WeaponT = new int[] { 1, 2, 3, 8, 17, 24 }; //26 == Talisman of Looting
+        private static readonly int[] WeaponT = new int[] { 1, 2, 3, 8, 17, 24 };
         private static readonly int[] AbilityT = new int[] { 4, 5, 11, 12, 13, 15, 16, 18, 19, 20, 21, 22, 23, 25, };
         private static readonly int[] ArmorT = new int[] { 6, 7, 14, };
         private static readonly int[] RingT = new int[] { 9 };
         private static readonly int[] PotionT = new int[] { 10 };
+        private static readonly int[] TalismanT = new int[] { 26 };
 
         public static int[] GetSlotTypes(ItemType itemType)
         {
@@ -95,10 +95,12 @@ namespace TKR.WorldServer.logic.loot
             throw new NotSupportedException(slotType.ToString());
         }
 
-        public TierLoot(byte tier, ItemType type, double probability = 1, int numRequired = 0, double threshold = 0)
+        public TierLoot(int tier, ItemType type, double probability = 1, int numRequired = 0, double threshold = 0)
         {
             LootDefs.Add(new LootDef(null, probability, threshold, tier, type));
         }
+
+        public static TierLoot TalismanLoot(double probability = 1.0, double threshold = 0.0) => new TierLoot(-1, ItemType.Talisman, probability, 0, threshold);
     }
 
     public class LootTemplates : MobDrops

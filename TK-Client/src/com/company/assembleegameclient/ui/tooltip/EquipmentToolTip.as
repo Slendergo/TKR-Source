@@ -36,6 +36,7 @@ public class EquipmentToolTip extends ToolTip
       private var tierText_:UILabel;
       private var itemEffectText_:SimpleText;
       private var descText_:SimpleText;
+      private var passiveDescText_:SimpleText;
       private var line1_:LineBreakDesign;
       private var effectsText_:SimpleText;
       private var line2_:LineBreakDesign;
@@ -202,7 +203,43 @@ public class EquipmentToolTip extends ToolTip
       }
 
       private function makeItemEffectsText():void {
-         if(isLegendaryItem)
+
+         if(this.props_.talismanEffect_ != null)
+         {
+            this.itemEffectText_ = new SimpleText(13, 0x7550C4, false, MAX_WIDTH);
+            this.itemEffectText_.setBold(true);
+            this.itemEffectText_.wordWrap = true;
+            switch(this.props_.talismanEffect_){
+               case "Pocket Change":
+                  this.itemEffectText_.text = "Pocket Change -> You have a 30% increase chance at loot";
+                  break;
+               case "Blood Exchange":
+                  this.itemEffectText_.text = "Blood Exchange -> Abilities cost life instead of mana";
+                  break;
+               case "Primal Rage":
+                  this.itemEffectText_.text = "Primal Rage -> Immune to Weak and Damaging";
+                  break;
+               case "Call to Arms":
+                  this.itemEffectText_.text = "Call to Arms -> Passive regeneration is doubled";
+                  break;
+               case "Insatiable Thirst":
+                  this.itemEffectText_.text = "Insatiable Thirst -> Leech 1% of damage dealt to enemies life as mana";
+                  break;
+               case "Iron Will":
+                  this.itemEffectText_.text = "Iron Will -> Immune to armor break";
+                  break;
+               case "Party of One":
+                  this.itemEffectText_.text = "Party of One -> While alone you gain 50% more chance at loot, While not alone lose 50% chance at loot";
+                  break;
+               case "Luck of the Irish":
+                  this.itemEffectText_.text = "Luck of the Irish -> Gain 20% more chance at loot and an 2% chance to double your drops";
+                  break;
+               case "Known After Death":
+                  this.itemEffectText_.text = "Known After Death -> Gain 150% more experience towards fame";
+                  break;
+            }
+         }
+         else if(isLegendaryItem)
          {
             this.itemEffectText_ = new SimpleText(13, 0xebb011, false, MAX_WIDTH);
             this.itemEffectText_.setBold(true);
@@ -283,7 +320,7 @@ public class EquipmentToolTip extends ToolTip
             }
          }
 
-         if(isLegendaryItem || isMythicalItem){
+         if(isLegendaryItem || isMythicalItem || props_.talismanEffect_){
             switch(Parameters.data_.itemDataOutlines)
             {
                case 0:
@@ -864,12 +901,17 @@ public class EquipmentToolTip extends ToolTip
             customText = this.comparisonResults.processedActivateOnEquipTags[activateXML.toXMLString()];
             if(customText != null)
             {
-               this.effects.push(new Effect(""," " + customText));
+               this.effects.push(new Effect("","" + customText));
             }
             else if(activateXML.toString() == "IncrementStat")
             {
                this.effects.push(new Effect("",this.compareIncrementStat(activateXML)));
             }
+         }
+
+         if(this.props_.talismanEffect_ != null) {
+            this.effects.push(new Effect("Passive", ""));
+            this.effects.push(new Effect("", " - " + this.props_.talismanEffect_));
          }
       }
 
@@ -899,13 +941,17 @@ public class EquipmentToolTip extends ToolTip
          else
          {
             amountString = String(amount);
-            textColor = "#FF0000";
+            textColor = "#ff0000";
          }
          return TooltipHelper.wrapInFontTag(amountString + " " + StatData.statToName(stat),textColor);
       }
 
       private function addEquipmentItemRestrictions() : void
       {
+         if(this.props_.onlyOneTalisman_) {
+            this.restrictions.push(new Restriction("Only one can be equip", 0x7fce6d,true));
+         }
+
          this.restrictions.push(new Restriction("Must be equipped to use",11776947,false));
          if(this.isInventoryFull || this.inventoryOwnerType == InventoryOwnerTypes.CURRENT_PLAYER)
          {

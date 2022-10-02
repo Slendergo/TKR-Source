@@ -173,8 +173,6 @@ namespace TKR.Shared.resources
 						}
 					}
 		
-					Console.WriteLine(id);
-		
                     if (id == "realm.jm")
                         WorldDataCache.Add(id, File.ReadAllBytes(jm));
                     else

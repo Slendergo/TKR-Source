@@ -28,7 +28,7 @@ package kabam.rotmg.messaging.impl.incoming
          this.height_ = data.readShort();
          this.name_ = data.readUTF();
          this.displayName_ = data.readUTF();
-         this.fp_ = data.readInt();
+         this.fp_ = data.readUnsignedInt();
          this.background_ = data.readByte();
          this.difficulty_ = data.readByte();
          this.allowPlayerTeleport_ = data.readBoolean();

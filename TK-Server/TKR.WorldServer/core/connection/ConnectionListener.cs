@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using TKR.WorldServer.core.net;
 using TKR.WorldServer.networking;
 using TKR.WorldServer.networking.packets.outgoing;
 using TKR.WorldServer.utils;
@@ -72,7 +73,6 @@ namespace TKR.WorldServer.core.connection
         {
             if (BytesRead < PrefixLength)
                 throw new Exception("Packet id not read yet.");
-
             return (MessageId)PacketBytes[4];
         }
 

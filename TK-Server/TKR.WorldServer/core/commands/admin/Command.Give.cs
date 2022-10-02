@@ -19,32 +19,30 @@ namespace TKR.WorldServer.core.commands
                     return true;
                 }*/
 
+                if(!player.IsAdmin && args == "Ring of the Talisman's Kingdom")
+                {
+                    player.SendError($"You are not an admin!");
+                    return false;
+                }
+
                 var gameData = player.GameServer.Resources.GameData;
 
-                /*if (player.Client.Account.Rank == 60)
-                {
-                    player.SendInfo("This command is disabled due to game altering bug!");
-                    return false;
-                }*/
-
-                // allow both DisplayId and Id for query
                 if (!gameData.DisplayIdToObjectType.TryGetValue(args, out ushort objType))
                 {
                     if (!gameData.IdToObjectType.TryGetValue(args, out objType))
                     {
-                        player.SendError("Unknown item type!");
+                        player.SendError($"unable to find item: {args}!");
                         return false;
                     }
                 }
 
                 if (!gameData.Items.ContainsKey(objType))
                 {
-                    player.SendError("Not an item!");
+                    player.SendError($"unable to find item: {args}!");
                     return false;
                 }
 
                 var item = gameData.Items[objType];
-
                 var availableSlot = player.Inventory.GetAvailableInventorySlot(item);
                 if (availableSlot != -1)
                 {

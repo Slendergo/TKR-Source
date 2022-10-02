@@ -208,23 +208,34 @@
 
 	<TalismanFragment>
 		<ItemPool>
-			<Item weight="10">Pocket Change</Item>
-			<Item weight="10">Path of Destruction</Item>
-			<Item weight="10">Heart and Soul</Item>
-			<Item weight="10">Blood Exchange</Item>
-			<Item weight="10">Eternal Youth</Item>
-			<Item weight="10">Unyielding Resilience</Item>
-			<Item weight="10">Wrath's Incarnate</Item>
-			<Item weight="10">Primal Rage</Item>
-			<Item weight="10">Call to Arms</Item>
-			<Item weight="10">Divine Intellect</Item>
-			<Item weight="10">Insatiable Thirst</Item>
-			<Item weight="10">Spellslinger</Item>
-			<Item weight="10">Iron Will</Item>
-			<Item weight="10">Party of One</Item>
-			<Item weight="10">Forbidden Fruit</Item>
-			<Item weight="10">Known After Death</Item>
-			<Item weight="10">Luck of the Irish</Item>
+			<Item weight="10000">Talisman of Life</Item> <!-- Common Talisman Easy to Get -->
+			<Item weight="10000">Talisman of Mana</Item> <!-- Common Talisman Easy to Get -->
+			<Item weight="10000">Talisman of Attack</Item> <!-- Common Talisman Easy to Get -->
+			<Item weight="10000">Talisman of Defense</Item> <!-- Common Talisman Easy to Get -->
+			<Item weight="10000">Talisman of Speed</Item> <!-- Common Talisman Easy to Get -->
+			<Item weight="10000">Talisman of Dexterity</Item> <!-- Common Talisman Easy to Get -->
+			<Item weight="10000">Talisman of Vitality</Item> <!-- Common Talisman Easy to Get -->
+			<Item weight="10000">Talisman of Wisdom</Item> <!-- Common Talisman Easy to Get -->
+			<Item weight="5000">Talisman of Empowerment</Item> <!-- Common Talisman Hard to Get -->
+			
+			<Item weight="2500">Pocket Change</Item> <!-- Legendary Talisman Hard to Get -->
+			<Item weight="2500">Path of Destruction</Item> <!-- Legendary Talisman Hard to Get -->
+			<Item weight="2500">Heart and Soul</Item> <!-- Legendary Talisman Hard to Get -->
+			<Item weight="2500">Blood Exchange</Item> <!-- Legendary Talisman Hard to Get -->
+			<Item weight="2500">Eternal Youth</Item> <!-- Legendary Talisman Hard to Get -->
+			<Item weight="2500">Unyielding Resilience</Item> <!-- Legendary Talisman Hard to Get -->
+			<Item weight="2500">Wrath's Incarnate</Item> <!-- Legendary Talisman Hard to Get -->
+			<Item weight="2500">Primal Rage</Item> <!-- Legendary Talisman Hard to Get -->
+			<Item weight="2500">Call to Arms</Item> <!-- Legendary Talisman Hard to Get -->
+			<Item weight="2500">Divine Intellect</Item> <!-- Legendary Talisman Hard to Get -->
+			<Item weight="2500">Insatiable Thirst</Item> <!-- Legendary Talisman Hard to Get -->
+			<Item weight="2500">Spellslinger</Item> <!-- Legendary Talisman Hard to Get -->
+			<Item weight="2500">Iron Will</Item> <!-- Legendary Talisman Hard to Get -->
+			<Item weight="2500">Party of One</Item> <!-- Legendary Talisman Hard to Get -->
+			<Item weight="2500">Forbidden Fruit</Item> <!-- Legendary Talisman Hard to Get -->
+			<Item weight="2500">Known After Death</Item> <!-- Legendary Talisman Hard to Get -->
+			<Item weight="1250">Luck of the Irish</Item> <!-- Legendary Talisman Hard to Get -->
+			
 		</ItemPool>
 	</TalismanFragment>
 

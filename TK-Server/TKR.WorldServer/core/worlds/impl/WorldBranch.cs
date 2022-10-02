@@ -31,12 +31,6 @@ namespace TKR.WorldServer.core.worlds.impl
                 world.ProcessPlayerIO(ref time);
         }
 
-        public void SendIO()
-        {
-            foreach (var world in SubWorlds.Values)
-                world.ProcessPlayerSendIO();
-        }
-
         public void Update(ref TickTime time)
         {
             var toRemove = new List<World>();

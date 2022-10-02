@@ -296,16 +296,25 @@ namespace TKR.WorldServer.core.objects.player
         public void SendNewTick(int tickTime) // lazy
         {
             TickId++;
+            var newTick = new NewTick()
+            {
+                TickId = TickId,
+                TickTime = tickTime
+            };
 
             lock (StatsUpdates)
             {
-                var objectStats = new List<ObjectStats>();
-                foreach (var statUpdate in StatsUpdates)
-                    objectStats.Add(new ObjectStats(statUpdate.Key.Id, statUpdate.Key.X, statUpdate.Key.Y, statUpdate.Value.ToArray()));
-                var newTick = MessageHelper.NewTick(TickId, tickTime, objectStats);
-                Player.Client.SendMessage(ref newTick);
+                newTick.Statuses = StatsUpdates.Select(_ => new ObjectStats()
+                {
+                    Id = _.Key.Id,
+                    X = _.Key.X,
+                    Y =  _.Key.Y,
+                    Stats = _.Value.ToArray()
+                }).ToList();
                 StatsUpdates.Clear();
             }
+
+            Player.Client.SendPacket(newTick);
             Player.AwaitMove(TickId);
         }
 

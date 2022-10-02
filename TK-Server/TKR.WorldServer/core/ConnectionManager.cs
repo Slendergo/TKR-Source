@@ -205,12 +205,24 @@ namespace TKR.WorldServer.core
 
             // send out map info
             var mapSize = (short)Math.Max(world.Map.Width, world.Map.Height);
-
-            var mapInfo = MessageHelper.MapInfo(mapSize, mapSize, world.IdName, world.DisplayName, seed, world.Difficulty, world.Background, world.AllowTeleport, world.ShowDisplays, world.Music, world.DisableShooting, world.DisableAbilities);
-            client.SendMessage(ref mapInfo);
             
             client.SendPackets(new OutgoingMessage[]
             {
+                new MapInfo()
+                {
+                    Width = mapSize,
+                    Height = mapSize,
+                    Music = world.Music,
+                    Name = world.IdName,
+                    DisplayName = world.DisplayName,
+                    Seed = seed,
+                    Background = world.Background,
+                    Difficulty = world.Difficulty,
+                    AllowPlayerTeleport = world.AllowTeleport,
+                    ShowDisplays = world.ShowDisplays,
+                    DisableShooting = world.DisableShooting,
+                    DisableAbilities = world.DisableAbilities
+                },
                 new AccountList() // send out account lock/ignore list
                 {
                     AccountListId = 0, // locked list

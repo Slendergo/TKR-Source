@@ -85,12 +85,6 @@ namespace TKR.WorldServer.networking
             }
         }
 
-        public void SendMessage(ref OutgoingMessageData data)
-        {
-            if (State != ProtocolState.Disconnected)
-                _handler.SendMessage(ref data);
-        }
-
         public void SendPacket(OutgoingMessage pkt)
         {
             if (State != ProtocolState.Disconnected)
@@ -166,8 +160,6 @@ namespace TKR.WorldServer.networking
                 _server.Disconnect(this);
             }
         }
-
-        public void FlushIO() => _handler.FlushIO();
 
         public void Reset()
         {

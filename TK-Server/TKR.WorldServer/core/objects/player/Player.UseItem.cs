@@ -73,7 +73,7 @@ namespace TKR.WorldServer.core.objects
                 return;
             }
 
-            var dustItem = World.GameServer.ItemDustWeights.TalismanFragment.GetRandom(World.Random);
+            var dustItem = World.GameServer.ItemDustWeights.Talismans.GetRandom(World.Random);
             var entity = World.GetEntity(objId);
             if (entity is Container container)
                 container.Inventory[slot] = dustItem;

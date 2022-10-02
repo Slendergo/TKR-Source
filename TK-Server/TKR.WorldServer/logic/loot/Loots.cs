@@ -59,6 +59,8 @@ namespace TKR.WorldServer.logic.loot
 
         public static bool DropsInSoulboundBag(ItemType type, int tier)
         {
+            if (type == ItemType.Talisman)
+                return true;
             if (type == ItemType.Ring)
                 if (tier >= 2)
                     return true;
@@ -178,7 +180,6 @@ namespace TKR.WorldServer.logic.loot
 
             foreach (var i in possDrops)
             {
-                var chance = enemy.World.Random.NextDouble();
                 if (i.ItemType == ItemType.None)
                 {
                     // we treat item names as soulbound never public loot
@@ -187,7 +188,8 @@ namespace TKR.WorldServer.logic.loot
 
                 if (DropsInSoulboundBag(i.ItemType, i.Tier))
                     continue;
-
+                
+                var chance = enemy.World.Random.NextDouble();
                 if (i.Threshold <= 0 && chance < i.Probabilty)
                 {
                     var items = GetItems(i.ItemType, i.Tier);
@@ -268,6 +270,13 @@ namespace TKR.WorldServer.logic.loot
                     if (i.Threshold >= 0 && i.Threshold < percentageOfDamage)
                     {
                         Item item = null;
+                        if (i.ItemType == ItemType.Talisman)
+                        {
+                            item = enemy.GameServer.ItemDustWeights.Talismans.GetRandom(enemy.World.Random);
+                            drops.Add(item);
+                            continue;
+                        }
+
                         if (i.ItemType != ItemType.None)
                         {
                             var items = GetItems(i.ItemType, i.Tier);
@@ -380,14 +389,15 @@ namespace TKR.WorldServer.logic.loot
                 if (i.BagType > bagType)
                     bagType = i.BagType;
 
-                var isEligible = i.Mythical || i.Legendary;
+                var isMythical = i.Mythical;
+                var isLegendary = i.Legendary;
+                var isEligible = isMythical || isLegendary || i.TalismanItemDesc != null;
                 if (player != null && isEligible)
                 {
                     var chat = core.ChatManager;
                     var world = player.World;
-                    var isMythical = i.Mythical;
 
-                    player.Client.SendPacket(new GlobalNotification() { Text = isMythical ? "mythiacal_loot" : "legendary_loot" });
+                    player.Client.SendPacket(new GlobalNotification() { Text = isMythical ? "mythical_loot" : isLegendary ? "legendary_loot" : "talisman_loot" });
 
                     #region Discord Bot Message
 
@@ -404,7 +414,7 @@ namespace TKR.WorldServer.logic.loot
                                 players,
                                 world.MaxPlayers,
                                 world.InstanceType == WorldResourceInstanceType.Dungeon,
-                                isMythical ? "Mythical" : "Legendary",
+                                isMythical ? "Mythical" : isLegendary ? "Legendary" : "Talisman",
                                 isMythical ? discord.mtBagImage : discord.lgBagImage,
                                 isMythical ? discord.mtImage : discord.lgImage,
                                 player.Name,
@@ -432,12 +442,13 @@ namespace TKR.WorldServer.logic.loot
 
                     if (player != null)
                     {
-                        //<LootNotifier> [PlayerName] has obtained a <Legendary/Revenge/Mythical> Item [ItemName], with [PercentageOfDamage]% damage dealt!
                         var msg = new StringBuilder($"[{player.Client.Account.Name}] has obtained ");
                         if (i.Legendary)
                             msg.Append("a Legendary");
                         else if (i.Mythical)
                             msg.Append("a Mythical");
+                        else if (i.TalismanItemDesc != null)
+                            msg.Append("a Talisman");
 
                         var hitters = enemy.DamageCounter.GetHitters();
                         msg.Append($" [{i.DisplayId ?? i.ObjectId}], by doing {Math.Round(100.0 * (hitters[owners[0]] / (double)enemy.DamageCounter.TotalDamage), 0)}% damage!");

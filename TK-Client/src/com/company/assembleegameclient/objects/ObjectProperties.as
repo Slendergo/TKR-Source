@@ -82,6 +82,8 @@ package com.company.assembleegameclient.objects
       public var isMythicTalisman_:Boolean;
       public var isLegendaryTalisman_:Boolean;
       public var isCommonTalisman_:Boolean;
+      public var onlyOneTalisman_:Boolean;
+      public var talismanEffect_:String;
 
       public function ObjectProperties(objectXML:XML)
       {
@@ -191,6 +193,11 @@ package com.company.assembleegameclient.objects
             isMythicTalisman_ = t.hasOwnProperty("Mythical");
             isLegendaryTalisman_ = t.hasOwnProperty("Legendary");
             isCommonTalisman_ = t.hasOwnProperty("Common");
+            onlyOneTalisman_ = t.hasOwnProperty("OnlyOne");
+
+            if(t.hasOwnProperty("Provides")){
+               talismanEffect_ = t.Provides.@effect;
+            }
          }
       }
       

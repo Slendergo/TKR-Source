@@ -490,7 +490,7 @@
 			<ObjectId>Strange Magician Shoot</ObjectId>
 			<Speed>100</Speed>
 			<MinDamage>70</MinDamage>
-			<MaxDamage>130</MaxDamage>
+			<MaxDamage>140</MaxDamage>
 			<LifetimeMS>1500</LifetimeMS>
 			<Amplitude>0.51</Amplitude>
 			<Frequency>2</Frequency>
@@ -501,7 +501,7 @@
 		<Projectile id="1">
 			<ObjectId>Strange Magician Big Shoot</ObjectId>
 			<Speed>60</Speed>
-			<Damage>350</Damage>
+			<Damage>250</Damage>
 			<LifetimeMS>3500</LifetimeMS>
 			<Size>180</Size>
 			<FaceDir />

@@ -1,48 +1,4 @@
 <Objects>
-	<Object type="0x417" id="Omnipotence Talisman - Mythical">
-		<Class>Equipment</Class>
-		<Item />
-		<Texture>
-			<File>LostHallsObj</File>
-			<Index>0x04</Index>
-		</Texture>
-		<Description>An taliman of unfathomable strength which pulses through this ring. Only the most righteous mortals can weild this talisman.</Description>
-		<SlotType>26</SlotType>
-		<ActivateOnEquip stat="0" amount="10">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="3" amount="10">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="20" amount="1">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="21" amount="1">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="22" amount="1">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="28" amount="1">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="26" amount="1">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="27" amount="1">IncrementStat</ActivateOnEquip>
-		<BagType>10</BagType>
-		<Talisman>
-			<Mythical/>
-		</Talisman>
-	</Object>
-	<Object type="0x5555" id="Omnipotence Talisman - Legendary">
-		<Class>Equipment</Class>
-		<Item />
-		<Texture>
-			<File>LostHallsObj</File>
-			<Index>0x04</Index>
-		</Texture>
-		<Description>An taliman of unfathomable strength which pulses through this ring. Only the most righteous mortals can weild this talisman.</Description>
-		<SlotType>26</SlotType>
-		<ActivateOnEquip stat="0" amount="10">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="3" amount="10">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="20" amount="1">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="21" amount="1">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="22" amount="1">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="28" amount="1">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="26" amount="1">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="27" amount="1">IncrementStat</ActivateOnEquip>
-		<BagType>10</BagType>
-		<Talisman>
-			<Legendary/>
-		</Talisman>
-	</Object>
 	<Object type="0x5556" id="Talisman of Life">
 		<Class>Equipment</Class>
 		<Item />
@@ -170,7 +126,7 @@
 			<File>lofiObj6</File>
 			<Index>0xd8</Index>
 		</Texture>
-		<Description>An taliman that empowers its user</Description>
+		<Description>An taliman that empowers its weilder</Description>
 		<SlotType>26</SlotType>
 		<ActivateOnEquip stat="0" amount="10">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="3" amount="10">IncrementStat</ActivateOnEquip>
@@ -193,7 +149,7 @@
 			<File>CustomObj1</File>
 			<Index>0x33</Index>
 		</Texture>
-		<Description>TODO</Description>
+		<Description>A talisman that grants the weilder more wealth</Description>
 		<SlotType>26</SlotType>
 		<ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="3" amount="100">IncrementStat</ActivateOnEquip>
@@ -444,7 +400,7 @@
 			<File>CustomObj1</File>
 			<Index>0x42</Index>
 		</Texture>
-		<Description>TODO</Description>
+		<Description>A fruit that </Description>
 		<SlotType>26</SlotType>
 		<BagType>10</BagType>
 		<Talisman>
@@ -460,7 +416,7 @@
 			<File>CustomObj1</File>
 			<Index>0x51</Index>
 		</Texture>
-		<Description>TODO</Description>
+		<Description>There is a legend that whoever weidls this talisman is granted wealth beyond their wildest dreams</Description>
 		<SlotType>26</SlotType>
 		<BagType>10</BagType>
 		<Talisman>
@@ -476,7 +432,7 @@
 			<File>CustomObj1</File>
 			<Index>0x50</Index>
 		</Texture>
-		<Description>TODO</Description>
+		<Description>This talisman will make you known after death as a legend</Description>
 		<SlotType>26</SlotType>
 		<BagType>10</BagType>
 		<Talisman>

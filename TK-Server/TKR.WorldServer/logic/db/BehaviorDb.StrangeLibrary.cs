@@ -142,6 +142,7 @@ namespace TKR.WorldServer.logic
                 new ScaleHP2(20),
                 new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
                 new DropPortalOnDeath("Strange Door", 1, timeout: 120),
+                new StayCloseToSpawn(1.2, 12),
                 new State("Start",
                     new PlayerWithinTransition(15, "Start Two")
                     ),
@@ -151,21 +152,24 @@ namespace TKR.WorldServer.logic
                     ),
                 new State("Shoot One",
                     new RemoveConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new Chase(speed: 8, sightRange: 11, range: 15, duration: 5, coolDown: 3000),
+                    new OrderedBehavior(new NewWander(0.4F)),
                     new Reproduce("Strange Magician Spell", 20, 3, 3000),
                     new Flash(0xFF0000, 1, 1),
-                    new Chase(speed: 8, sightRange: 11, range: 15, duration: 5, coolDown: 3000), new Shoot(20, 4, shootAngle: 20, projectileIndex: 0, predictive: 1, coolDown: 500),
-                    new Shoot(20, 3, shootAngle: 0, projectileIndex: 1, predictive: 0, coolDown: 950),
+                    new Shoot(20, 5, shootAngle: 20, projectileIndex: 0, predictive: 1, coolDown: 500),
+                    new Shoot(20, 8, fixedAngle: 0, projectileIndex: 1, predictive: 0, coolDown: 950),
                     new HpLessTransition(0.5, "Shoot Two")
                     ),
                 new State("Shoot Two",
                     new Reproduce("Strange Magician Spell", 20, 3, 3000),
-                    new Wander(0.4),
+                    new Chase(speed: 8, sightRange: 11, range: 15, duration: 5, coolDown: 3000),
+                    new OrderedBehavior(new NewWander(0.4F)),
                     new Shoot(radius: 20, count: 1, shootAngle: 20, projectileIndex: 0, fixedAngle: 0, coolDown: 0),
                     new Shoot(radius: 20, count: 1, shootAngle: 20, projectileIndex: 0, fixedAngle: 90, coolDown: 0),
                     new Shoot(radius: 20, count: 1, shootAngle: 20, projectileIndex: 0, fixedAngle: 180, coolDown: 0),
                     new Shoot(radius: 20, count: 1, shootAngle: 20, projectileIndex: 0, fixedAngle: 270, coolDown: 0),
                     new Shoot(20, 5, shootAngle: 20, projectileIndex: 0, predictive: 0.7, coolDown: 500),
-                    new Shoot(20, 3, shootAngle: 0, projectileIndex: 1, predictive: 1, coolDown: 0),
+                    new Shoot(20, 8, fixedAngle: 0, projectileIndex: 1, predictive: 1, coolDown: 0),
                     new HpLessTransition(0.25, "Rage")
                     ),
                 new State("Rage",
@@ -179,7 +183,7 @@ namespace TKR.WorldServer.logic
                     new Chase(speed: 8, sightRange: 11, range: 15, duration: 5, coolDown: 3000),
                     new Shoot(20, 4, shootAngle: 20, projectileIndex: 0, predictive: 0, coolDown: 750),
                     new Shoot(20, 4, shootAngle: 20, projectileIndex: 0, predictive: 0, coolDown: 1000),
-                    new Shoot(20, 2, shootAngle: 20, projectileIndex: 1, predictive: 0, coolDown: 1200)
+                    new Shoot(20, 3, shootAngle: 20, projectileIndex: 1, predictive: 0, coolDown: 1200)
                     )
                 ),
             new Threshold(0.001,

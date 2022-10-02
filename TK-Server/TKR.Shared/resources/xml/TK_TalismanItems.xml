@@ -330,7 +330,7 @@
 			<File>CustomObj1</File>
 			<Index>0x31</Index>
 		</Texture>
-		<Description>TODO</Description>
+		<Description>Whoever wields this talisman is blessed with mana</Description>
 		<SlotType>26</SlotType>
 		<ActivateOnEquip stat="0" amount="-100">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="3" amount="100">IncrementStat</ActivateOnEquip>
@@ -348,11 +348,11 @@
 			<File>CustomObj1</File>
 			<Index>0x32</Index>
 		</Texture>
-		<Description>TODO</Description>
+		<Description>Whoever wields this talisman will be granted powerful casting speed</Description>
 		<SlotType>26</SlotType>
-		<ActivateOnEquip stat="0" amount="-100">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="22" amount="-10">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="28" amount="10">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="20" amount="5">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="22" amount="-8">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="28" amount="12">IncrementStat</ActivateOnEquip>
 		<BagType>10</BagType>
 		<Talisman>
 			<Legendary/>
@@ -366,7 +366,7 @@
 			<File>CustomObj1</File>
 			<Index>0x40</Index>
 		</Texture>
-		<Description>TODO</Description>
+		<Description>Whoever wields this talisman will have Iron will</Description>
 		<SlotType>26</SlotType>
 		<ActivateOnEquip stat="3" amount="-100">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="21" amount="15">IncrementStat</ActivateOnEquip>
@@ -384,7 +384,7 @@
 			<File>CustomObj1</File>
 			<Index>0x41</Index>
 		</Texture>
-		<Description>TODO</Description>
+		<Description>Its said that misfortune occurs to the wielder when others are nearby</Description>
 		<SlotType>26</SlotType>
 		<BagType>10</BagType>
 		<Talisman>
@@ -400,7 +400,7 @@
 			<File>CustomObj1</File>
 			<Index>0x42</Index>
 		</Texture>
-		<Description>A fruit that </Description>
+		<Description>A fruit that is forbidden</Description>
 		<SlotType>26</SlotType>
 		<BagType>10</BagType>
 		<Talisman>
@@ -416,7 +416,7 @@
 			<File>CustomObj1</File>
 			<Index>0x51</Index>
 		</Texture>
-		<Description>There is a legend that whoever weidls this talisman is granted wealth beyond their wildest dreams</Description>
+		<Description>There is a legend that whoever wields this talisman is granted wealth beyond their wildest dreams</Description>
 		<SlotType>26</SlotType>
 		<BagType>10</BagType>
 		<Talisman>

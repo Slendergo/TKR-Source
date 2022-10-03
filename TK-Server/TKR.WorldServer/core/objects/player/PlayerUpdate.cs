@@ -229,6 +229,10 @@ namespace TKR.WorldServer.core.objects.player
                 if (owners.Length > 0 && Array.IndexOf(owners, Player.AccountId) == -1)
                     continue;
 
+                // dont show player bags
+                if (owners.Length == 0 && Player.IsAdmin)
+                    continue;
+
                 intPoint.X = (int)entity.X;
                 intPoint.Y = (int)entity.Y;
                 if (ActiveTiles.Contains(intPoint) && NewObjects.Add(entity))

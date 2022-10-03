@@ -239,9 +239,8 @@ namespace TKR.WorldServer.core.net.handlers
         private bool ValidateEntities(Player player, Entity from, Entity to)
         {
             // returns false if bad input
-
-            if (from == null || to == null) return
-                    false;
+            if (from == null || to == null) 
+                return false;
 
             if (from as IContainer == null || to as IContainer == null)
                 return false;

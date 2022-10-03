@@ -22,7 +22,7 @@ namespace TKR.WorldServer.core.net.handlers
 {
     public class InvSwapHandler : IMessageHandler
     {
-        private const ushort soulBag = 0x0503;
+        private const ushort SOULBOUND_LOOT_BAG_TYPE = 0x0503;
         private static readonly string[] StackableItems = new string[] { "Magic Dust", "Glowing Shard", "Frozen Coin" }; //stackable items
 
         public override MessageId MessageId => MessageId.INVSWAP;
@@ -104,7 +104,6 @@ namespace TKR.WorldServer.core.net.handlers
             var conToTrans = conTo.Inventory.CreateTransaction();
             var itemFrom = conFromTrans[slotFrom];
             var itemTo = conToTrans[slotTo];
-
             conToTrans[slotTo] = itemFrom;
             conFromTrans[slotFrom] = itemTo;
 
@@ -154,62 +153,6 @@ namespace TKR.WorldServer.core.net.handlers
                     Log.Warn($"Failed to Revert Data Changes. {player.Name} has an extra data [ {dataFrom.GetData()} or {dataTo.GetData()} ]");
             }
 
-            #region Check
-
-            if (!(to is Player) || !(from is Player))
-            {
-                if (!(to is Player))
-                {
-                    var container = to as Container;
-
-                    if (CheckNoSoulboundBag(itemFrom) == false)
-                    {
-                        HandleUnavailableInventoryAction(player, soulBag, container.World.Random, conTo, slotTo);
-                        from.ForceUpdate(slotFrom);
-                        to.ForceUpdate(slotTo);
-                        player.Client.SendPacket(new InvResult() { Result = 1 });
-                        return;
-                    }
-
-                    if (CheckSoulboundBag(container, player) == false)
-                    {
-                        HandleUnavailableInventoryAction(player, soulBag, container.World.Random, conTo, slotTo);
-                        from.ForceUpdate(slotFrom);
-                        to.ForceUpdate(slotTo);
-                        player.Client.SendPacket(new InvResult() { Result = 1 });
-                        return;
-                    }
-                }
-                else
-                {
-                    var container = from as Container;
-
-                    if (CheckNoSoulboundBag(itemTo) == false)
-                    {
-                        HandleUnavailableInventoryAction(player, soulBag, container.World.Random, conTo, slotTo);
-                        from.ForceUpdate(slotFrom);
-                        to.ForceUpdate(slotTo);
-
-                        player.Client.SendPacket(new InvResult() { Result = 1 });
-                        return;
-                    }
-
-                    if (CheckSoulboundBag(container, player) == false)
-                    {
-                        HandleUnavailableInventoryAction(player, soulBag, container.World.Random, conTo, slotTo);
-                        from.ForceUpdate(slotFrom);
-                        to.ForceUpdate(slotTo);
-
-                        player.Client.SendPacket(new InvResult() { Result = 1 });
-                        return;
-                    }
-                }
-            }
-
-            #endregion Check
-
-
-            // swap items
             if (Inventory.Execute(conFromTrans, conToTrans))
             {
                 var db = player.GameServer.Database;
@@ -276,34 +219,52 @@ namespace TKR.WorldServer.core.net.handlers
             return false;
         }
 
+        private bool ValidateItemSwap(Player player, Entity c, Item item)
+        {
+            return c == player ||
+                   item == null ||
+                   !item.Soulbound && !player.IsAdmin ||
+                   IsSoleContainerOwner(player, c as IContainer);
+        }
+
+        private bool IsSoleContainerOwner(Player player, IContainer con)
+        {
+            int[] owners = null;
+            var container = con as Container;
+            if (container != null)
+                owners = container.BagOwners;
+            return owners != null && owners.Length == 1 && owners.Contains(player.AccountId);
+        }
+
         private bool ValidateEntities(Player player, Entity from, Entity to)
         {
             // returns false if bad input
 
-            if (from == null || to == null) return false;
-            if (from as IContainer == null || to as IContainer == null) return false;
-            if (from is Player && from != player || to is Player && to != player) return false;
-            if (from is Container &&
-                (from as Container).BagOwners.Length > 0 &&
-                !(from as Container).BagOwners.Contains(player.AccountId))
+            if (from == null || to == null) return
+                    false;
+
+            if (from as IContainer == null || to as IContainer == null)
                 return false;
-            if (to is Container &&
-                (to as Container).BagOwners.Length > 0 &&
-                !(to as Container).BagOwners.Contains(player.AccountId))
+
+            if (from is Player && from != player || to is Player && to != player)
+                return false;
+
+            if (from is Container && (from as Container).BagOwners.Length > 0 && !(from as Container).BagOwners.Contains(player.AccountId))
+                return false;
+
+            if (to is Container && (to as Container).BagOwners.Length > 0 && !(to as Container).BagOwners.Contains(player.AccountId))
                 return false;
 
             if (from is GiftChest && to != player || to is GiftChest && from != player)
                 return false;
 
-            if (from is SpecialChest && to != player ||
-                to is SpecialChest && from != player)
+            if (from is SpecialChest && to != player || to is SpecialChest && from != player)
                 return false;
 
             var aPos = new Vector2(from.X, from.Y);
             var bPos = new Vector2(to.X, to.Y);
-
-            if (Vector2.DistanceSquared(aPos, bPos) > 1) return false;
-
+            if (Vector2.DistanceSquared(aPos, bPos) > 1) 
+                return false;
             return true;
         }
 
@@ -311,9 +272,9 @@ namespace TKR.WorldServer.core.net.handlers
             => slotA < 28 && slotB < 28 &&
                 conB.AuditItem(conA.Inventory[slotA], slotB) && conA.AuditItem(conB.Inventory[slotB], slotA);
 
-        public static void HandleUnavailableInventoryAction(Player player, ushort objectId, Random random, IContainer container, int slotId)
+        public static void HandleUnavailableInventoryAction(Player player, Item item, int slotId, Random random, IContainer container)
         {
-            var bag = new Container(player.GameServer, objectId, 60000, true)
+            var bag = new Container(player.GameServer, SOULBOUND_LOOT_BAG_TYPE, 60000, true)
             {
                 BagOwners = new[] { player.AccountId }
             };
@@ -321,11 +282,7 @@ namespace TKR.WorldServer.core.net.handlers
             bag.Inventory.Data[0] = container.Inventory.Data[slotId];
             bag.Move(player.X + (float)((random.NextDouble() * 2 - 1) * 0.5), player.Y + (float)((random.NextDouble() * 2 - 1) * 0.5));
             bag.SetDefaultSize(75);
-
-            container.Inventory[slotId] = null;
-            container.Inventory.Data[slotId] = null;
-
-            player.World.EnterWorld(bag);
+            _ = player.World.EnterWorld(bag);
         }
     }
 }

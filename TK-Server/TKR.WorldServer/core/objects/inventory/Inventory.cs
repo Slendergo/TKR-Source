@@ -129,8 +129,17 @@ namespace TKR.WorldServer.core.objects.inventory
                             return i;
 
                     for (var i = 20; i < 28; i++)
-                        if (_items[i] == null)
-                            return i;
+                        if (_items[i] == null && playerDesc.SlotTypes[i] == item.SlotType)
+                        {
+                            if (i < 24 && item.TalismanItemDesc.Common)
+                                return i;
+
+                            if ((i == 24 || i == 25) && item.TalismanItemDesc.Legendary)
+                                return i;
+
+                            if ((i == 26 || i == 27) && item.TalismanItemDesc.Mythic)
+                                return i;
+                        }
                 }
                 else
                 {

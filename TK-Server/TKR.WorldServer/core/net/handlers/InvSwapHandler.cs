@@ -98,18 +98,13 @@ namespace TKR.WorldServer.core.net.handlers
                 return;
             }
 
-            if(player.IsAdmin)
-                if ((from is Player && to is Container || to is Player && from is Container))
-                {
-                    if(!CheckSoulboundBag(from as Container ?? to as Container, player))
-                    {
-                        Console.WriteLine("NOT VAULT SWAP");
-                        from.ForceUpdate(slotFrom);
-                        to.ForceUpdate(slotTo);
-                        player.Client.SendPacket(new InvResult() { Result = 1 });
-                        return;
-                    }
-                }
+            if (player.IsAdmin && Array.IndexOf((from as Container ?? to as Container).BagOwners, player.AccountId) == -1)
+            {
+                from.ForceUpdate(slotFrom);
+                to.ForceUpdate(slotTo);
+                player.Client.SendPacket(new InvResult() { Result = 1 });
+                return;
+            }
 
             // setup swap
             var queue = new Queue<Action>();
@@ -198,14 +193,6 @@ namespace TKR.WorldServer.core.net.handlers
         {
             if (item != null && (item.Legendary || item.Mythical || item.SPlus || item.SNormal && item.Tier >= 7 || item.BagType >= 3))
                 return false;
-            return true;
-        }
-
-        private bool CheckSoulboundBag(Container container, Player player)
-        {
-            foreach (var owner in container.BagOwners)
-                if (owner != player.AccountId)
-                    return false;
             return true;
         }
 

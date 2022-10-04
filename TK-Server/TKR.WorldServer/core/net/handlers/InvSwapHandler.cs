@@ -98,6 +98,19 @@ namespace TKR.WorldServer.core.net.handlers
                 return;
             }
 
+            if(player.IsAdmin)
+                if ((from is Player && to is Container || to is Player && from is Container))
+                {
+                    if(!CheckSoulboundBag(from as Container ?? to as Container, player))
+                    {
+                        Console.WriteLine("NOT VAULT SWAP");
+                        from.ForceUpdate(slotFrom);
+                        to.ForceUpdate(slotTo);
+                        player.Client.SendPacket(new InvResult() { Result = 1 });
+                        return;
+                    }
+                }
+
             // setup swap
             var queue = new Queue<Action>();
             var conFromTrans = conFrom.Inventory.CreateTransaction();

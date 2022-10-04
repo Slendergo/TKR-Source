@@ -45,13 +45,13 @@ namespace TKR.WorldServer.core.commands
             protected override bool Process(Player player, TickTime time, string args)
             {
                 args = args.Trim();
-                if (!(player.World is RealmWorld))
+                if (!(player.World is RealmWorld) && player.GameServer.Configuration.serverInfo.testing)
                 {
                     player.SendError("You cant spawn in realm");
                     return false;
                 }
 
-                if (player.World is RealmWorld)
+                if (player.World is RealmWorld && player.GameServer.Configuration.serverInfo.testing)
                 {
                     var tile = player.World.Map[(int)player.X, (int)player.Y];
                     if (tile.Terrain != TerrainType.Mountains)

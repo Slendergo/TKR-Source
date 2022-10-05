@@ -98,7 +98,7 @@ namespace TKR.WorldServer.core.net.handlers
                 return;
             }
 
-            if (player.IsAdmin && Array.IndexOf((from as Container ?? to as Container).BagOwners, player.AccountId) == -1)
+            if (player.IsAdmin && (from as Container ?? to as Container) != null && Array.IndexOf((from as Container ?? to as Container).BagOwners, player.AccountId) == -1)
             {
                 from.ForceUpdate(slotFrom);
                 to.ForceUpdate(slotTo);

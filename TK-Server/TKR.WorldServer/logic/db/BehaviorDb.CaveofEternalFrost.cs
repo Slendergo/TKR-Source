@@ -1584,7 +1584,7 @@ namespace TKR.WorldServer.logic
                 new State("attack1",
                     new Wander(.25),
                     new Spawn("Evil Snowman", coolDown: 999999),
-                    new Shoot(20, 2, projectileIndex: 0, shootAngle: 5, predictive: .9, coolDown: 600),
+                    new Shoot(20, 1, projectileIndex: 0, shootAngle: 10, coolDown: 600),
                     new Shoot(15, 8, projectileIndex: 1, predictive: 1, coolDown: 1200)
                     )
                 )

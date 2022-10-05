@@ -1254,7 +1254,7 @@
 		<ParalyzeImmune/>
 		<Projectile id="0">
 			<ObjectId>Projectile 0 ES</ObjectId>
-			<Damage>120</Damage>
+			<Damage>60</Damage>
 			<Speed>35</Speed>
 			<Size>80</Size>
 			<LifetimeMS>6000</LifetimeMS>
@@ -1302,7 +1302,7 @@
 		</AnimatedTexture>
 		<Size>70</Size>
 		<MaxHitPoints>15000</MaxHitPoints>
-		<Defense>20</Defense>
+		<Defense>35</Defense>
 		<StasisImmune/>
 		<StunImmune/>
 		<Projectile id="0">
@@ -1351,7 +1351,7 @@
 		<ParalyzeImmune/>
 		<Projectile id="0">
 			<ObjectId>Projectile 0 GFS</ObjectId>
-			<Damage>170</Damage>
+			<Damage>90</Damage>
 			<Speed>65</Speed>
 			<Size>140</Size>
 			<MultiHit/>
@@ -1359,7 +1359,7 @@
 		</Projectile>
 		<Projectile id="1">
 			<ObjectId>Projectile 1 GFS</ObjectId>
-			<Damage>270</Damage>
+			<Damage>125</Damage>
 			<Speed>55</Speed>
 			<Size>140</Size>
 			<MultiHit/>

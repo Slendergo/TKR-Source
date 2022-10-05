@@ -40,10 +40,18 @@ namespace TKR.WorldServer.core.objects
             used = true;
         }
 
-        public bool Tick(ref TickTime time)
+        public bool HasElapsed(ref TickTime time)
         {
             var elapsed = time.TotalElapsedMs - CreationTime;
             if (elapsed > ProjDesc.LifetimeMS)
+                return false;
+            return true;
+        }
+
+        public bool Tick(ref TickTime time)
+        {
+            var elapsed = time.TotalElapsedMs - CreationTime;
+            if (elapsed > ProjDesc.LifetimeMS * 2)
                 return false;
             return true;
         }

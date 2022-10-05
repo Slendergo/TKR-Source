@@ -199,6 +199,21 @@ namespace TKR.WorldServer.core.objects
                 return;
             }
 
+            if((slot == 0xFE || slot == 0xFF) && HasTalismanEffect(TalismanEffectType.ForbiddenFruit))
+            {
+                var effects = new List<ConditionEffectIndex>();
+                effects.Add(ConditionEffectIndex.Berserk);
+                effects.Add(ConditionEffectIndex.Damaging);
+                effects.Add(ConditionEffectIndex.Weak);
+                effects.Add(ConditionEffectIndex.Speedy);
+                effects.Add(ConditionEffectIndex.Slowed);
+                effects.Add(ConditionEffectIndex.ArmorBroken);
+                effects.Add(ConditionEffectIndex.Armored);
+
+                var effect = Random.Shared.NextLength(effects);
+                ApplyConditionEffect(effect, 2000);
+            }
+
             // use item
             var slotType = 10;
             if (slot < containerInventory.Length)

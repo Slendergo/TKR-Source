@@ -35,11 +35,17 @@ namespace TKR.WorldServer.core.net.handlers
             var prj = player.World.GetProjectile(player.Id, bulletId);
             if (prj == null)
             {
-                Console.WriteLine($"Null Projectile: {bulletId}");
+                Console.WriteLine($"[prj == null] {player.Id} -> {player.Name} | {bulletId}");
                 return;
             }
 
-            prj?.ForceHit(entity, tickTime);
+            if (prj.HasElapsed(ref tickTime))
+            {
+                Console.WriteLine($"[HasElapsed] {player.Id} -> {player.Name} | {bulletId}");
+                return;
+            }
+
+            prj.ForceHit(entity, tickTime);
 
             if (entity is StaticObject)
             {

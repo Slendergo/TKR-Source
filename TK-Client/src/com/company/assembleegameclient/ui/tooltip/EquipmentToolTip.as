@@ -242,6 +242,9 @@ public class EquipmentToolTip extends ToolTip
                case "Known After Death":
                   this.itemEffectText_.text = "Known After Death -> Experience from killing mobs is doubled";
                   break;
+               case "Forbidden Fruit":
+                  this.itemEffectText_.text = "Forbidden Fruit -> Upon consuming a health or magic potion you will receive a random buff for 2 seconds";
+                  break;
             }
          }
          else if(isLegendaryItem)

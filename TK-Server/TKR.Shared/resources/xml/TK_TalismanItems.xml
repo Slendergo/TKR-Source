@@ -167,7 +167,7 @@
 			<File>CustomObj1</File>
 			<Index>0x34</Index>
 		</Texture>
-		<Description>TODO</Description>
+		<Description>Whoever weild this talisman will lay destruction in their paths</Description>
 		<SlotType>26</SlotType>
 		<ActivateOnEquip stat="20" amount="10">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="28" amount="10">IncrementStat</ActivateOnEquip>
@@ -184,7 +184,7 @@
 			<File>CustomObj1</File>
 			<Index>0x35</Index>
 		</Texture>
-		<Description>TODO</Description>
+		<Description>A warrior will prevail</Description>
 		<SlotType>26</SlotType>
 		<ActivateOnEquip stat="21" amount="10">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="22" amount="10">IncrementStat</ActivateOnEquip>
@@ -203,7 +203,7 @@
 			<File>CustomObj1</File>
 			<Index>0x10</Index>
 		</Texture>
-		<Description>TODO</Description>
+		<Description>Blood shall be drawn.</Description>
 		<SlotType>26</SlotType>
 		<ActivateOnEquip stat="0" amount="150">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="28" amount="-10">IncrementStat</ActivateOnEquip>
@@ -221,10 +221,10 @@
 			<File>CustomObj1</File>
 			<Index>0x11</Index>
 		</Texture>
-		<Description>TODO</Description>
+		<Description>Whoever wields this talisman will have vitality like no other</Description>
 		<SlotType>26</SlotType>
 		<ActivateOnEquip stat="0" amount="125">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="26" amount="10">IncrementStat</ActivateOnEquip>
+		<ActivateOnEquip stat="26" amount="15">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="27" amount="-10">IncrementStat</ActivateOnEquip>
 		<BagType>10</BagType>
 		<Talisman>
@@ -239,7 +239,7 @@
 			<File>CustomObj1</File>
 			<Index>0x12</Index>
 		</Texture>
-		<Description>TODO</Description>
+		<Description>Whoever wields this talisman will have relislience like no other</Description>
 		<SlotType>26</SlotType>
 		<ActivateOnEquip stat="20" amount="10">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="26" amount="20">IncrementStat</ActivateOnEquip>
@@ -257,7 +257,7 @@
 			<File>CustomObj1</File>
 			<Index>0x20</Index>
 		</Texture>
-		<Description>TODO</Description>
+		<Description>The owner of this talisman shall be the vessel of wrath</Description>
 		<SlotType>26</SlotType>
 		<ActivateOnEquip stat="0" amount="-100">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="20" amount="20">IncrementStat</ActivateOnEquip>
@@ -275,8 +275,9 @@
 			<File>CustomObj1</File>
 			<Index>0x21</Index>
 		</Texture>
-		<Description>TODO</Description>
+		<Description>Whoever weilds this talisman will be unstoppable</Description>
 		<SlotType>26</SlotType>
+		<ActivateOnEquip stat="0" amount="75">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="20" amount="10">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="21" amount="-10">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
@@ -294,7 +295,7 @@
 			<File>CustomObj1</File>
 			<Index>0x22</Index>
 		</Texture>
-		<Description>TODO</Description>
+		<Description>A talisman given to those who are drafted.</Description>
 		<SlotType>26</SlotType>
 		<ActivateOnEquip stat="20" amount="12">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="26" amount="-10">IncrementStat</ActivateOnEquip>
@@ -313,7 +314,7 @@
 			<File>CustomObj1</File>
 			<Index>0x30</Index>
 		</Texture>
-		<Description>TODO</Description>
+		<Description>Wisdom comes to those who have intellect</Description>
 		<SlotType>26</SlotType>
 		<ActivateOnEquip stat="0" amount="-100">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="26" amount="-5">IncrementStat</ActivateOnEquip>

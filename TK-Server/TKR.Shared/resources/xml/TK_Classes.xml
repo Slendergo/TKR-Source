@@ -419,6 +419,38 @@
 		<DeathSound>player/rogue_death</DeathSound>
 		<Player />
 		<BloodProb>1.0</BloodProb>
+		<SlotTypes>3, 26, 6, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26, 26, 26, 26, 26, 26, 26, 26</SlotTypes>
+		<Equipment>0xa1a, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1</Equipment>
+		<MaxHitPoints max="720">150</MaxHitPoints>
+		<MaxMagicPoints max="252">100</MaxMagicPoints>
+		<Attack max="60">15</Attack>
+		<Defense max="25">0</Defense>
+		<Speed max="50">10</Speed>
+		<Dexterity max="55">12</Dexterity>
+		<HpRegen max="60">10</HpRegen>
+		<MpRegen max="45">12</MpRegen>
+		<LevelIncrease min="20" max="30">MaxHitPoints</LevelIncrease>
+		<LevelIncrease min="2" max="8">MaxMagicPoints</LevelIncrease>
+		<LevelIncrease min="1" max="2">Attack</LevelIncrease>
+		<LevelIncrease min="0" max="0">Defense</LevelIncrease>
+		<LevelIncrease min="0" max="2">Speed</LevelIncrease>
+		<LevelIncrease min="1" max="2">Dexterity</LevelIncrease>
+		<LevelIncrease min="0" max="1">HpRegen</LevelIncrease>
+		<LevelIncrease min="1" max="2">MpRegen</LevelIncrease>
+		<UnlockLevel level="20" type="0x031d">Warrior</UnlockLevel>
+		<UnlockLevel level="20" type="0x0307">Archer</UnlockLevel>
+	</Object>
+	<Object type="0x0326" id="Gobsu">
+		<Class>Player</Class>
+		<Description>The ninja relies on speed and skill, using katanas and ninja stars to deal big damage.</Description>
+		<AnimatedTexture>
+			<File>players</File>
+			<Index>13</Index>
+		</AnimatedTexture>
+		<HitSound>player/rogue_hit</HitSound>
+		<DeathSound>player/rogue_death</DeathSound>
+		<Player />
+		<BloodProb>1.0</BloodProb>
 		<SlotTypes>24, 25, 6, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26, 26, 26, 26, 26, 26, 26, 26</SlotTypes>
 		<Equipment>0xc44, 0xc53, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1</Equipment>
 		<MaxHitPoints max="745">150</MaxHitPoints>

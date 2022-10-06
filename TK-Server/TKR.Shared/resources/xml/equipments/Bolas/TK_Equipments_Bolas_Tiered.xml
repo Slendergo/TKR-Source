@@ -1,0 +1,28 @@
+<Objects>
+	<Object type="0x4343" id="Worn Bolas">
+		<Class>Equipment</Class>
+		<Item />
+		<Texture>
+			<File>lofiObj6</File>
+			<Index>0x30</Index>
+		</Texture>
+		<SlotType>26</SlotType>
+		<Tier>0</Tier>
+		<Description>A magical quiver that enchants arrows.</Description>
+		<Sound>spell/fire_spray</Sound>
+		<Projectile>
+			<ObjectId>Red Arrow</ObjectId>
+			<Speed>150</Speed>
+			<MinDamage>100</MinDamage>
+			<MaxDamage>140</MaxDamage>
+			<LifetimeMS>1000</LifetimeMS>
+			<Size>150</Size>
+			<MultiHit />
+			<PassesCover />
+		</Projectile>
+		<Usable/>
+		<BagType>1</BagType>
+		<MpCost>50</MpCost>
+		<Activate successChance="0.2" success="100" failure="75" effect="Paralyzed">Bolas</Activate>
+	</Object>
+</Objects>

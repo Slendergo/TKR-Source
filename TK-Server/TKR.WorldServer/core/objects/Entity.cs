@@ -85,10 +85,9 @@ namespace TKR.WorldServer.core.objects
         public int GetNextBulletId(int numShots = 1)
         {
             var currentBulletId = NextBulletId;
-            NextBulletId = (NextBulletId + numShots) % 0xFFFF;
+            NextBulletId = (NextBulletId + numShots) % 0xFF;
             return currentBulletId;
         }
-
 
         public IDictionary<object, object> StateStorage
         {
@@ -278,13 +277,7 @@ namespace TKR.WorldServer.core.objects
             };
         }
 
-        public virtual bool HitByProjectile(Projectile projectile, TickTime time)
-        {
-            if (ObjectDesc == null)
-                return true;
-            return ObjectDesc.Enemy || ObjectDesc.Player;
-        }
-
+        public virtual void HitByProjectile(Projectile projectile, ref TickTime time) { }
         public virtual void Init(World owner) => World = owner;
 
         public void InvokeStatChange(StatDataType t, object val, bool updateSelfOnly = false) => StatChanged?.Invoke(this, new StatChangedEventArgs(t, val, updateSelfOnly));

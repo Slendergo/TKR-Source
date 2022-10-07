@@ -273,11 +273,11 @@ namespace TKR.WorldServer.logic.loot
                             var isEligible = item.Mythical || item.Legendary;
                             if (isEligible)
                             {
-                                var chance = Math.Round(1 / probability, 2);
-                                var roll = Math.Round(c / probability, 2);
+                                var baseChance = Math.Floor(1.0 / i.Probabilty);
+                                var chance = Math.Floor(1.0 / probability);
+                                var roll = Math.Floor(c / probability);
 
-                                if (roll > chance * 0.8)
-                                    player.SendInfo($"You have rolled: {roll}/{chance} for: {item.DisplayId ?? item.ObjectId}");
+                                player.SendInfo($"[{item.DisplayId ?? item.ObjectId}] {roll}/{chance} (Base: {baseChance})");
                             }
                         }
 

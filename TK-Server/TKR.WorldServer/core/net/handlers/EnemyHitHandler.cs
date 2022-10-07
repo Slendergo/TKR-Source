@@ -32,20 +32,26 @@ namespace TKR.WorldServer.core.net.handlers
                 return;
 
 
-            var prj = player.World.GetProjectile(player.Id, bulletId);
-            if (prj == null)
+            var projectile = player.World.GetProjectile(player.Id, bulletId);
+            if (projectile == null)
             {
                 Console.WriteLine($"[prj == null] {player.Id} -> {player.Name} | {bulletId}");
                 return;
             }
 
-            if (prj.HasElapsed(ref tickTime))
+            if (projectile.HasElapsed(player.C2STime(time)))
             {
                 Console.WriteLine($"[HasElapsed] {player.Id} -> {player.Name} | {bulletId}");
                 return;
             }
 
-            prj.ForceHit(entity, tickTime);
+            if (!projectile.HasAlreadyHitTarget(targetId))
+            {
+                entity.HitByProjectile(projectile, ref tickTime);
+                projectile.SuccessfulHit(targetId);
+            }
+            else
+                Console.WriteLine($"[EnemyHit -> Projectile.TryHit] {player.Id} -> {player.Name} Already hit with projectile | Potential Client Modification");
 
             if (entity is StaticObject)
             {

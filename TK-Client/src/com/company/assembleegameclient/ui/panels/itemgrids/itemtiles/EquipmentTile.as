@@ -136,6 +136,9 @@ import com.company.assembleegameclient.objects.Player;
                dx = 1;
                dy = 1;
                break;
+            case ItemConstants.BOLAS_TYPE:
+               bd = AssetLibrary.getImageFromSet("lofiObj3", 234);
+               break;
          }
 
          if(bd != null)

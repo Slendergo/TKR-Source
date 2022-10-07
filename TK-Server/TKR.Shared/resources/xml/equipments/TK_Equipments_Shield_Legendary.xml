@@ -54,22 +54,23 @@
       <MaxDamage>750</MaxDamage>
       <LifetimeMS>250</LifetimeMS>
       <Size>140</Size>
-	<ConditionEffect duration="4">Armor Broken</ConditionEffect>
-	<ConditionEffect duration="2">Armored</ConditionEffect>
+	  <ConditionEffect duration="4">Armor Broken</ConditionEffect>
       <MultiHit />
       <PassesCover />
       <ParticleTrail />
     </Projectile>
+	  <ConditionEffect duration="4">Armor Broken</ConditionEffect>
     <ActivateOnEquip stat="21" amount="20">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="0" amount="150">IncrementStat</ActivateOnEquip>
     <Usable />
     <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <MpCost>120</MpCost>
-    <Activate>Shoot</Activate>
     <NumProjectiles>5</NumProjectiles>
     <feedPower>1000</feedPower>
-  </Object>
+	<Activate>Shoot</Activate>
+	<Activate effect="Armored" duration="2">ConditionEffectSelf</Activate>
+</Object>
   <Object type="0x50f2" id="Shield of The Ancients">
     <Class>Equipment</Class>
     <Item />

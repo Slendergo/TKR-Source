@@ -1,5 +1,7 @@
-﻿using TKR.Shared;
+﻿using System;
+using TKR.Shared;
 using TKR.WorldServer.core.miscfile.thread;
+using TKR.WorldServer.core.objects;
 using TKR.WorldServer.networking;
 
 namespace TKR.WorldServer.core.net.handlers
@@ -17,10 +19,23 @@ namespace TKR.WorldServer.core.net.handlers
             if (player?.World == null)
                 return;
 
-            var prj = player.World.GetProjectile(objectId, bulletId);
-            if (prj == null)
+            var projectile = player.World.GetProjectile(objectId, bulletId);
+            if (projectile == null)
                 return;
-            prj?.ForceHit(player, tickTime);
+
+            if (projectile.HasElapsed(tickTime.TotalElapsedMs))
+            {
+                Console.WriteLine($"[HasElapsed] {player.Id} -> {player.Name} | {bulletId}");
+                return;
+            }
+
+            if (!projectile.HasAlreadyHitTarget(player.Id))
+            {
+                player.HitByProjectile(projectile, ref tickTime);
+                projectile.SuccessfulHit(player.Id);
+            }
+            else
+                Console.WriteLine($"[PlayerHit -> Projectile.TryHit] {player.Id} -> {player.Name} Already hit with projectile | Potential Client Modification");
         }
     }
 }

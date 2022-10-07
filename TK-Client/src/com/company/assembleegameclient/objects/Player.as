@@ -774,12 +774,17 @@ public class Player extends Character {
             SoundEffectLibrary.play("error");
             return false;
         }
+
+        var shoot:Boolean = false;
         for each(activateXML in objectXML.Activate) {
             if (activateXML.toString() == ActivationType.TELEPORT) {
                 if (!this.isValidPosition(pW.x, pW.y)) {
                     SoundEffectLibrary.play("error");
                     return false;
                 }
+            }
+            if (activateXML.toString() == ActivationType.SHOOT) {
+                shoot = true;
             }
         }
         now = getTimer();
@@ -809,7 +814,7 @@ public class Player extends Character {
             }
             this.nextAltAttack_ = now + cooldown;
             map_.gs_.gsc_.useItem(now, objectId_, 1, itemType, pW.x, pW.y, useType);
-            if (objectXML.Activate == ActivationType.SHOOT) {
+            if (shoot) {
                 angle = Math.atan2(yS, xS);
                 this.doShoot(now, itemType, objectXML, Parameters.data_.cameraAngle + angle, false);
             }
@@ -955,7 +960,7 @@ public class Player extends Character {
         }
         var moveSpeed:Number = MIN_MOVE_SPEED + this.speed_ / 75 * (MAX_MOVE_SPEED - MIN_MOVE_SPEED);
         if (isSpeedy() || isNinjaSpeedy()) {
-            moveSpeed = moveSpeed * 1.4;
+            moveSpeed = moveSpeed * 1.35;
         }
         moveSpeed = moveSpeed * this.moveMultiplier_;
         return moveSpeed;

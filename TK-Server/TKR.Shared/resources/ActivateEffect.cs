@@ -39,7 +39,15 @@ namespace TKR.Shared.resources
 
         public ActivateEffect(XElement e)
         {
-            Effect = (ActivateEffects)Enum.Parse(typeof(ActivateEffects), e.Value);
+            try
+            {
+                Effect = (ActivateEffects)Enum.Parse(typeof(ActivateEffects), e.Value);
+            }
+            catch
+            {
+                Console.WriteLine($"Unknown effect: {e.Value}");
+                Effect = ActivateEffects.None;
+            }
 
             if (e.HasAttribute("effect"))
                 ConditionEffect = Utils.GetEffect(e.GetAttribute<string>("effect"));

@@ -59,6 +59,8 @@ package kabam.rotmg.constants
 
       public static const TALISMAN_TYPE:int = 26;
 
+      public static const BOLAS_TYPE:int = 27;
+
       public function ItemConstants()
       {
          super();
@@ -122,6 +124,8 @@ package kabam.rotmg.constants
                return "Shuriken";
             case TALISMAN_TYPE:
                return "Talisman";
+            case BOLAS_TYPE:
+               return "Bolas";
             default:
                return "Invalid Type!";
          }

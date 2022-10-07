@@ -1,5 +1,4 @@
-﻿using System.Xml.Linq;
-using TKR.Shared;
+﻿using TKR.Shared;
 using TKR.WorldServer.core.objects.inventory;
 
 namespace TKR.WorldServer.core.objects

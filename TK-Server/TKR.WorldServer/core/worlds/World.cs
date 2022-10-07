@@ -462,6 +462,15 @@ namespace TKR.WorldServer.core.worlds
 
         protected virtual void UpdateLogic(ref TickTime time)
         {
+            var projectilesToRemove = new List<Projectile>();
+            foreach (var k in Projectiles.Values)
+                foreach (var projectile in k.Values)
+                    if (!projectile.Tick(ref time))
+                        projectilesToRemove.Add(projectile);
+
+            foreach (var projectile in projectilesToRemove)
+                RemoveProjectile(projectile);
+
             foreach (var player in Players.Values)
                 player.Tick(ref time);
 
@@ -505,15 +514,6 @@ namespace TKR.WorldServer.core.worlds
                     StaticLogger.Instance.Error($"{e.Message}\n{e.StackTrace}");
                     Timers.RemoveAt(i);
                 }
-
-            var projectilesToRemove = new List<Projectile>();
-            foreach (var k in Projectiles.Values)
-                foreach (var projectile in k.Values)
-                    if (!projectile.Tick(ref time))
-                        projectilesToRemove.Add(projectile);
-
-            foreach (var projectile in projectilesToRemove)
-                RemoveProjectile(projectile);
         }
 
         public void FlagForClose()

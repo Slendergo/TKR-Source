@@ -2,6 +2,7 @@
 {
     public enum ActivateEffects
     {
+        None,
         Create,
         Dye,
         Shoot,

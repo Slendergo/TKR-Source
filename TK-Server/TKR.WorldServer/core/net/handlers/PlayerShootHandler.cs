@@ -4,6 +4,10 @@ using TKR.WorldServer.networking;
 using TKR.WorldServer.core.objects;
 using TKR.WorldServer.networking.packets.outgoing;
 using TKR.WorldServer.core.miscfile.structures;
+using System;
+using TKR.WorldServer.core.worlds;
+using TKR.WorldServer.logic;
+using TKR.Shared.resources;
 
 namespace TKR.WorldServer.core.net.handlers
 {
@@ -20,54 +24,55 @@ namespace TKR.WorldServer.core.net.handlers
             var angle = rdr.ReadSingle();
 
             var player = client.Player;
-            if (!player.GameServer.Resources.GameData.Items.TryGetValue((ushort)containerType, out var item))
+            if (!player.GameServer.Resources.GameData.Items.TryGetValue((ushort)containerType, out _))
             {
-                client.Disconnect("Attempting to shoot a invalid item");
+                client.Disconnect("Attempting to shoot a invalid item", true);
                 return;
             }
 
-            var hasItemType = false;
-            for (var i = 0; i < player.Inventory.Length; i++)
+            var slot = -1;
+            for (var i = 0; i < 2; i++)
                 if (player.Inventory[i] != null && player.Inventory[i].ObjectType == containerType)
                 {
-                    hasItemType = true;
+                    slot = i;
                     break;
                 }
 
-            if (!hasItemType)
+            if (slot == -1)
             {
-                client.Disconnect("Attempting to shoot a item that they dont have");
+                client.Disconnect("Attempting to shoot a item that they dont have", true);
                 return;
             }
-
-            if (player.Inventory[1] != null && item.ObjectType == player.Inventory[1].ObjectType)
-            {
-                if (player.World.DisableAbilities)
-                    client.Disconnect("Attempting to activate ability in a disabled world");
-                // todo abilities
-                return;
-            }
-
-            if (player.World.DisableShooting)
-            {
-                client.Disconnect("Attempting to shoot in a disabled world");
-                return;
-            }
-
-            //if (!player.IsValidShoot(time, item.RateOfFire))
-            //{
-            //    //System.Console.WriteLine(player.Name + " invalid shoot");
-            //}
 
             var newBulletId = player.GetNextBulletId();
-            var clientBulletId = bulletId % 0xFFFF;
+            var clientBulletId = bulletId % 0xFF;
             if (newBulletId != clientBulletId)
             {
-                client.Disconnect("bullet id desync");
-                System.Console.WriteLine($"DESYNC PROJECTILES: {player.Name} {player.ObjectDesc.DisplayId ?? player.ObjectDesc.ObjectId}");
+                System.Console.WriteLine($"DESYNC PROJECTILES: {player.Name} Class: {player.ObjectDesc.DisplayId ?? player.ObjectDesc.ObjectId}", true);
                 return;
             }
 
+            // todo rate of fire checks
+
+            if (player.Inventory[slot] == null || player.Inventory[slot].ObjectType != containerType)
+            {
+                client.Disconnect($"Invalid item: {(slot == 0 ? "Weapon" : "Ability")} {player.Inventory[slot].ObjectType} != {containerType}", true);
+                return;
+            }
+
+            if (slot == 0 && player.World.DisableShooting)
+            {
+                client.Disconnect("Attempting to shoot in a disabled world", true);
+                return;
+            }
+
+            if (slot == 1 && player.World.DisableAbilities)
+            {
+                client.Disconnect("Attempting to activate ability in a disabled world", true);
+                return;
+            }
+
+            var item = player.Inventory[slot];
             var prjDesc = item.Projectiles[0];
             var prj = player.PlayerShootProjectile(time, newBulletId, item.ObjectType, angle, startingPosition, prjDesc);
             player.World.AddProjectile(prj);

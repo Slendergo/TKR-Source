@@ -28,7 +28,7 @@ namespace TKR.WorldServer.core.objects
         public bool Static { get; private set; }
         public bool Vulnerable { get; private set; }
 
-        public override bool HitByProjectile(Projectile projectile, TickTime time)
+        public override void HitByProjectile(Projectile projectile, ref TickTime time)
         {
             if (Vulnerable && projectile.Host is Player)
             {
@@ -46,7 +46,7 @@ namespace TKR.WorldServer.core.objects
                     ObjectId = projectile.Host.Id
                 }, this, projectile.Host as Player);
             }
-            return true;
+            return;
         }
 
         public override void Tick(ref TickTime time)

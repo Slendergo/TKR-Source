@@ -13,10 +13,6 @@ namespace TKR.WorldServer.core.objects
 {
     public sealed class Projectile : IObjectPoolObject
     {
-        public ProjectileDesc ProjDesc;
-        private HashSet<Entity> _hit = new HashSet<Entity>();
-        private bool used;
-
         public int ProjectileId;
         public float StartX;
         public float StartY;
@@ -26,32 +22,20 @@ namespace TKR.WorldServer.core.objects
         public int Damage;
         public Entity Host;
         public World World;
+        public ProjectileDesc ProjDesc;
+        private List<int> Hits = new List<int>();
 
         public Projectile() { }
 
-        public void ForceHit(Entity entity, TickTime time)
-        {
-            if (!ProjDesc.MultiHit && used && !(entity is Player))
-                return;
+        public bool HasAlreadyHitTarget(int objectId) => Hits.Contains(objectId);
+        public void SuccessfulHit(int objectId) => Hits.Add(objectId);
 
-            if (_hit.Add(entity))
-                entity.HitByProjectile(this, time);
-
-            used = true;
-        }
-
-        public bool HasElapsed(ref TickTime time)
-        {
-            var elapsed = time.TotalElapsedMs - CreationTime;
-            if (elapsed > ProjDesc.LifetimeMS)
-                return false;
-            return true;
-        }
+        public bool HasElapsed(long time) => time - CreationTime >= ProjDesc.LifetimeMS;
 
         public bool Tick(ref TickTime time)
         {
             var elapsed = time.TotalElapsedMs - CreationTime;
-            if (elapsed > ProjDesc.LifetimeMS * 2)
+            if (elapsed > ProjDesc.LifetimeMS)
                 return false;
             return true;
         }
@@ -110,10 +94,6 @@ namespace TKR.WorldServer.core.objects
 
         public void Reset()
         {
-            ProjDesc = null;
-            _hit.Clear();
-            _hit.TrimExcess();
-            used = false;
             ProjectileId = 0;
             StartX = 0.0f;
             StartY = 0.0f;
@@ -123,6 +103,9 @@ namespace TKR.WorldServer.core.objects
             Damage = 0;
             Host = null;
             World = null;
+            Hits.Clear();
+            Hits.TrimExcess();
+            ProjDesc = null;
         }
     }
 }

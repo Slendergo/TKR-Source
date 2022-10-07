@@ -20,7 +20,7 @@ namespace TKR.WorldServer.core.objects
         public bool isPet; // TODO quick hack for backwards compatibility
         public Enemy ParentEntity;
 
-        private readonly bool stat;
+        private readonly bool Static;
 
         private float bleeding = 0;
         private Position? pos;
@@ -42,7 +42,7 @@ namespace TKR.WorldServer.core.objects
         public Enemy(GameServer manager, ushort objType) : base(manager, objType)
         {
             _defense = new SV<int>(this, StatDataType.Defense, ObjectDesc.Defense);
-            stat = ObjectDesc.MaxHP == 0;
+            Static = ObjectDesc.MaxHP == 0;
             DamageCounter = new DamageCounter(this);
             _glowcolor = new SV<int>(this, StatDataType.GlowEnemy, 0);
         }
@@ -141,7 +141,7 @@ namespace TKR.WorldServer.core.objects
 
         public int Damage(Player from, TickTime time, int dmg, bool noDef, bool itsPoison = false, params ConditionEffect[] effs)
         {
-            if (stat)
+            if (Static)
                 return 0;
 
             if (!itsPoison && HasConditionEffect(ConditionEffectIndex.Invincible))
@@ -196,68 +196,63 @@ namespace TKR.WorldServer.core.objects
             World.LeaveWorld(this);
         }
 
-        public override bool HitByProjectile(Projectile projectile, TickTime time)
+        public override void HitByProjectile(Projectile projectile, ref TickTime time)
         {
-            if (stat)
-                return false;
+            if (Static)
+                return;
 
-            if (projectile.Host is Player && !HasConditionEffect(ConditionEffectIndex.Paused) && !HasConditionEffect(ConditionEffectIndex.Stasis))
+            var player = projectile.Host as Player;
+            if (player == null || HasConditionEffect(ConditionEffectIndex.Paused) || HasConditionEffect(ConditionEffectIndex.Stasis))
+                return;
+
+            var Inventory = player.Inventory;
+            var def = Defense;
+
+            var dmg = StatsManager.DamageWithDefense(this, projectile.Damage, projectile.ProjDesc.ArmorPiercing, def);
+            if (!HasConditionEffect(ConditionEffectIndex.Invulnerable))
+                HP -= dmg;
+
+            if (HasConditionEffect(ConditionEffectIndex.Invincible))
+                dmg = 0;
+
+            for (var i = 0; i < 4; i++)
             {
-                var player = projectile.Host as Player;
-                var Inventory = player.Inventory;
-                var def = Defense;
+                var item = Inventory[i];
 
-                var dmg = StatsManager.DamageWithDefense(this, projectile.Damage, projectile.ProjDesc.ArmorPiercing, def);
-                if (!HasConditionEffect(ConditionEffectIndex.Invulnerable))
-                    HP -= dmg;
+                if (item == null || !item.Legendary && !item.Mythical)
+                    continue;
 
-                if (HasConditionEffect(ConditionEffectIndex.Invincible))
-                    dmg = 0;
+                if (item.Demonized)
+                    Demonized(player, i);
 
-                for (var i = 0; i < 4; i++)
-                {
-                    var item = Inventory[i];
+                if (item.Vampiric)
+                    VampireBlast(player, i, time, this, projectile.ProjDesc.MultiHit);
 
-                    if (item == null || !item.Legendary && !item.Mythical)
-                        continue;
-
-                    if (item.Demonized)
-                        Demonized(player, i);
-
-                    if (item.Vampiric)
-                        VampireBlast(player, i, time, this, projectile.ProjDesc.MultiHit);
-
-                    if (item.Electrify)
-                        Electrify(player, i, time, this);
-                }
-
-                ApplyConditionEffect(projectile.ProjDesc.Effects);
-
-                World.BroadcastIfVisibleExclude(new Damage()
-                {
-                    TargetId = Id,
-                    Effects = 0,
-                    DamageAmount = dmg,
-                    Kill = HP < 0,
-                    BulletId = projectile.ProjectileId,
-                    ObjectId = projectile.Host.Id
-                }, this, projectile.Host as Player);
-
-                DamageCounter.HitBy(projectile.Host as Player, time, projectile, dmg);
-
-                if (HP < 0 && World != null)
-                    Death(ref time);
-
-                return true;
+                if (item.Electrify)
+                    Electrify(player, i, time, this);
             }
 
-            return false;
+            ApplyConditionEffect(projectile.ProjDesc.Effects);
+
+            World.BroadcastIfVisibleExclude(new Damage()
+            {
+                TargetId = Id,
+                Effects = 0,
+                DamageAmount = dmg,
+                Kill = HP < 0,
+                BulletId = projectile.ProjectileId,
+                ObjectId = projectile.Host.Id
+            }, this, projectile.Host as Player);
+
+            DamageCounter.HitBy(projectile.Host as Player, time, projectile, dmg);
+
+            if (HP < 0 && World != null)
+                Death(ref time);
         }
 
         public override void Init(World owner)
         {
             base.Init(owner);
-
             if (ObjectDesc.Quest || ObjectDesc.Hero || ObjectDesc.Encounter)
                 ClasifyEnemy();
         }
@@ -270,7 +265,7 @@ namespace TKR.WorldServer.core.objects
             if (HP == 0 && !Dead)
                 Death(ref time);
 
-            if (!stat && HasConditionEffect(ConditionEffectIndex.Bleeding))
+            if (!Static && HasConditionEffect(ConditionEffectIndex.Bleeding))
             {
                 if (bleeding > 1)
                 {

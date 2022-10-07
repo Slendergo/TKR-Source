@@ -466,9 +466,7 @@ namespace TKR.WorldServer.core.objects
                         AEDye(time, item, target, eff);
                         break;
 
-                    case ActivateEffects.Shoot:
-                        AEShoot(clientTime, time, item, target, eff);
-                        break;
+                    case ActivateEffects.Shoot: break; // handled in PlayerShoot.cs
 
                     case ActivateEffects.IncrementStat:
                         AEIncrementStat(time, item, target, eff, objId, slot, sellmaxed);
@@ -1435,26 +1433,6 @@ namespace TKR.WorldServer.core.objects
             }, this);
         }
 
-        private void AEShoot(int time, TickTime tickTime, Item item, Position target, ActivateEffect eff)
-        {
-            var arcGap = item.ArcGap * Math.PI / 180;
-            var startAngle = Math.Atan2(target.Y - Y, target.X - X) - (item.NumProjectiles - 1) / 2 * arcGap;
-            var prjDesc = item.Projectiles[0]; //Assume only one
-
-            var sPkts = new OutgoingMessage[item.NumProjectiles];
-            for (var i = 0; i < item.NumProjectiles; i++)
-            {
-                var bulletId = GetNextBulletId();
-                var proj = PlayerShootProjectile(time, bulletId, item.ObjectType, (float)(startAngle + arcGap * i), target, prjDesc, true);
-                World.AddProjectile(proj);
-                sPkts[i] = new AllyShoot(proj.ProjectileId, Id, item.ObjectType, proj.Angle);
-                FameCounter.Shoot();
-            }
-
-            for (var i = 0; i < item.NumProjectiles; i++)
-                World.BroadcastIfVisibleExclude(sPkts[i], this, this);
-        }
-
         private void AEShurikenAbility(int time, TickTime tickTime, Item item, Position target, ActivateEffect eff, int useType)
         {
             switch (useType)
@@ -1468,7 +1446,6 @@ namespace TKR.WorldServer.core.objects
                         if (HP >= item.MpEndCost)
                         {
                             HP -= item.MpEndCost;
-                            AEShoot(time, tickTime, item, target, eff);
                         }
                     }
                     else
@@ -1476,7 +1453,6 @@ namespace TKR.WorldServer.core.objects
                         if (MP >= item.MpEndCost)
                         {
                             MP -= item.MpEndCost;
-                            AEShoot(time, tickTime, item, target, eff);
                         }
                     }
                     RemoveCondition(ConditionEffectIndex.NinjaSpeedy);
@@ -1497,7 +1473,6 @@ namespace TKR.WorldServer.core.objects
                         if (HP >= item.MpEndCost)
                         {
                             HP -= item.MpEndCost;
-                            AEShoot(time, tickTime, item, target, eff);
                         }
                     }
                     else
@@ -1505,7 +1480,6 @@ namespace TKR.WorldServer.core.objects
                         if (MP >= item.MpEndCost)
                         {
                             MP -= item.MpEndCost;
-                            AEShoot(time, tickTime, item, target, eff);
                         }
                     }
                     RemoveCondition(ConditionEffectIndex.NinjaBerserk);
@@ -1526,7 +1500,6 @@ namespace TKR.WorldServer.core.objects
                         if (HP >= item.MpEndCost)
                         {
                             HP -= item.MpEndCost;
-                            AEShoot(time, tickTime, item, target, eff);
                         }
                     }
                     else
@@ -1534,7 +1507,6 @@ namespace TKR.WorldServer.core.objects
                         if (MP >= item.MpEndCost)
                         {
                             MP -= item.MpEndCost;
-                            AEShoot(time, tickTime, item, target, eff);
                         }
                     }
                     RemoveCondition(ConditionEffectIndex.NinjaDamaging);

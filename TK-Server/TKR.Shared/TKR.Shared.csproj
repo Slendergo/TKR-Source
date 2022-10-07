@@ -1004,6 +1004,9 @@
     <None Update="resources\xml\containers\TK_Containers_Container.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="resources\xml\equipments\Bolas\TK_Equipments_Bolas_Tiered.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="resources\xml\equipments\TK_Equipments_Any_Legendary.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

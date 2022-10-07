@@ -30,8 +30,6 @@ namespace TKR.WorldServer.core.objects
         public bool Locked { get; private set; }
         public bool Usable { get => _usable.GetValue(); set => _usable.SetValue(value); }
 
-        public override bool HitByProjectile(Projectile projectile, TickTime time) => false;
-
         protected override void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)
         {
             stats[StatDataType.PortalUsable] = Usable ? 1 : 0;

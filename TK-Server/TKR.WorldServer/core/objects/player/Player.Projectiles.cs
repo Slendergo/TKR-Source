@@ -9,7 +9,6 @@ namespace TKR.WorldServer.core.objects
         internal Projectile PlayerShootProjectile(int time, int bulletId, ushort objectType, float angle, Position position, ProjectileDesc desc, bool ability = false)
         {
             projectileId = bulletId;
-
             var dmg = Stats.GetAttackDamage(desc.MinDamage, desc.MaxDamage, ability);
             return CreateProjectile(desc, objectType, dmg, C2STime(time), position, angle);
         }

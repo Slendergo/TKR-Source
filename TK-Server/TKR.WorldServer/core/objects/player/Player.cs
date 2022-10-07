@@ -442,10 +442,10 @@ namespace TKR.WorldServer.core.objects
             return playerDesc.Stats.Where((t, i) => Stats.Base[i] >= t.MaxValue).Count() + (UpgradeEnabled ? playerDesc.Stats.Where((t, i) => i == 0 ? Stats.Base[i] >= t.MaxValue + 50 : i == 1 ? Stats.Base[i] >= t.MaxValue + 50 : Stats.Base[i] >= t.MaxValue + 10).Count() : 0);
         }
 
-        public override bool HitByProjectile(Projectile projectile, TickTime time)
+        public override void HitByProjectile(Projectile projectile, ref TickTime time)
         {
             if (projectile.Host is Player || IsInvulnerable)
-                return false;
+                return;
 
             #region Item Effects
 
@@ -496,8 +496,6 @@ namespace TKR.WorldServer.core.objects
 
             if (HP <= 0)
                 Death(projectile.Host.ObjectDesc.DisplayId ?? projectile.Host.ObjectDesc.ObjectId, projectile.Host);
-
-            return base.HitByProjectile(projectile, time);
         }
 
         public override void Init(World owner)

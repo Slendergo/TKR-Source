@@ -129,8 +129,10 @@ namespace TKR.WorldServer.networking
             SendPacket(pkt);
         }
 
-        public void Disconnect(string reason = "")
+        public void Disconnect(string reason = "", bool forceShow = false)
         {
+            if(forceShow)
+                Log.Error("Disconnecting client ({0}) @ {1}... {2}", Account?.Name ?? " ", IpAddress, reason);
             if (State == ProtocolState.Disconnected)
                 return;
 
@@ -139,7 +141,7 @@ namespace TKR.WorldServer.networking
                 State = ProtocolState.Disconnected;
 
 #if DEBUG
-                if (!string.IsNullOrEmpty(reason))
+                if (!forceShow && !string.IsNullOrEmpty(reason))
                     Log.Warn("Disconnecting client ({0}) @ {1}... {2}", Account?.Name ?? " ", IpAddress, reason);
 #endif
 

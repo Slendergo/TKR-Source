@@ -427,13 +427,7 @@ namespace TKR.WorldServer.logic.loot
 
         private static void DropBag(Enemy enemy, int[] owners, int bagType, Item[] items, bool boosted)
         {
-            ushort bag = BAG_ID_TO_TYPE[0];
-            if (bagType > 0)
-                bag = BAG_ID_TO_TYPE[bagType];
-
-            // Boosted bags
-            if (boosted)
-                bag = BOOSTED_BAG_ID_TO_TYPE[bagType];
+            var bag = BAG_ID_TO_TYPE[bagType];
 
             var container = new Container(enemy.GameServer, bag, 1500 * 60, true);
 
@@ -450,7 +444,7 @@ namespace TKR.WorldServer.logic.loot
 
             container.BagOwners = owners;
             container.Move(enemy.X + (float)((enemy.World.Random.NextDouble() * 2 - 1) * 0.5), enemy.Y + (float)((enemy.World.Random.NextDouble() * 2 - 1) * 0.5));
-            container.SetDefaultSize(bagType >= 6 ? 120 : bagType >= 3 ? 90 : 70);
+            container.SetDefaultSize(80);
             enemy.World.EnterWorld(container);
         }
     }

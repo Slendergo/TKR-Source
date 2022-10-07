@@ -23,17 +23,21 @@ namespace TKR.WorldServer.core.objects
         public Entity Host;
         public World World;
         public ProjectileDesc ProjDesc;
+        public int Ticks;
         private List<int> Hits = new List<int>();
 
         public Projectile() { }
 
-        public bool HasAlreadyHitTarget(int objectId) => Hits.Contains(objectId);
-        public void SuccessfulHit(int objectId) => Hits.Add(objectId);
+        public bool HasAlreadyHitTarget(int objectId) => Hits.Contains(objectId) && ProjDesc.MultiHit;
 
-        public bool HasElapsed(long time) => time - CreationTime >= ProjDesc.LifetimeMS;
+        public void RegisterHit(int objectId) => Hits.Add(objectId);
+
+        public bool HasElapsed(long time) => time - CreationTime > ProjDesc.LifetimeMS;
 
         public bool Tick(ref TickTime time)
         {
+            if(Host is Player)
+                return true;
             var elapsed = time.TotalElapsedMs - CreationTime;
             if (elapsed > ProjDesc.LifetimeMS)
                 return false;

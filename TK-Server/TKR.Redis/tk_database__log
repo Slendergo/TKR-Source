@@ -2227,3 +2227,7 @@
 [31144] 07 Oct 20:19:30.046 * Background saving started by pid 33184
 [31144] 07 Oct 20:19:30.850 # fork operation complete
 [31144] 07 Oct 20:19:30.851 * Background saving terminated with success
+[31144] 07 Oct 20:24:31.008 * 10 changes in 300 seconds. Saving...
+[31144] 07 Oct 20:24:31.011 * Background saving started by pid 36248
+[31144] 07 Oct 20:24:31.713 # fork operation complete
+[31144] 07 Oct 20:24:31.714 * Background saving terminated with success

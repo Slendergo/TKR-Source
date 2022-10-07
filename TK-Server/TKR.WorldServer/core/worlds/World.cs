@@ -462,6 +462,7 @@ namespace TKR.WorldServer.core.worlds
 
         protected virtual void UpdateLogic(ref TickTime time)
         {
+
             var projectilesToRemove = new List<Projectile>();
             foreach (var k in Projectiles.Values)
                 foreach (var projectile in k.Values)

@@ -643,7 +643,7 @@ namespace TKR.WorldServer.core.objects
         }
 
       
-        private void AEBulletNova(int clientTimem, TickTime time, Item item, Position target, ActivateEffect eff)
+        private void AEBulletNova(int clientTime, TickTime time, Item item, Position target, ActivateEffect eff)
         {
             var shoots = item.SpellProjectiles == 0 ? 20 : item.SpellProjectiles;
             var prjs = new Projectile[shoots];
@@ -655,7 +655,7 @@ namespace TKR.WorldServer.core.objects
 
                 var proj = CreateProjectile(prjDesc, item.ObjectType,
                     baseDmg, 
-                    time.TotalElapsedMs, target, (float)(i * (Math.PI * 2) / shoots));
+                    clientTime, target, (float)(i * (Math.PI * 2) / shoots));
                 World.AddProjectile(proj);
                 FameCounter.Shoot();
                 batch[i] = new ServerPlayerShoot()

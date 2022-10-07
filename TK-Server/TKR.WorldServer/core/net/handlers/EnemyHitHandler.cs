@@ -4,8 +4,6 @@ using System;
 using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.core.objects;
 using TKR.WorldServer.networking;
-using TKR.WorldServer.core.objects;
-using TKR.WorldServer.utils;
 
 namespace TKR.WorldServer.core.net.handlers
 {
@@ -35,23 +33,21 @@ namespace TKR.WorldServer.core.net.handlers
             var projectile = player.World.GetProjectile(player.Id, bulletId);
             if (projectile == null)
             {
-                Console.WriteLine($"[prj == null] {player.Id} -> {player.Name} | {bulletId}");
+                Console.WriteLine($"[EnemyHit -> prj == null] {player.Id} -> {player.Name} | {bulletId}");
                 return;
             }
 
-            if (projectile.HasElapsed(player.C2STime(time)))
+            if (projectile.HasElapsed(time))
             {
-                Console.WriteLine($"[HasElapsed] {player.Id} -> {player.Name} | {bulletId}");
+                Console.WriteLine($"[EnemyHit -> Projectile.HasElapsed] {player.Id} -> {player.Name} | {bulletId} | {time - projectile.CreationTime} | {projectile.ProjDesc.LifetimeMS}");
                 return;
             }
 
-            if (!projectile.HasAlreadyHitTarget(targetId))
-            {
-                entity.HitByProjectile(projectile, ref tickTime);
-                projectile.SuccessfulHit(targetId);
-            }
-            else
+            if (projectile.HasAlreadyHitTarget(targetId))
                 Console.WriteLine($"[EnemyHit -> Projectile.TryHit] {player.Id} -> {player.Name} Already hit with projectile | Potential Client Modification");
+            else
+                entity.HitByProjectile(projectile, ref tickTime);
+            projectile.RegisterHit(targetId);
 
             if (entity is StaticObject)
             {

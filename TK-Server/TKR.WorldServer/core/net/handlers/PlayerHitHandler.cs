@@ -21,21 +21,22 @@ namespace TKR.WorldServer.core.net.handlers
 
             var projectile = player.World.GetProjectile(objectId, bulletId);
             if (projectile == null)
+            {
+                Console.WriteLine($"[PlayerHit -> projectile == null] {player.Id} -> {player.Name} | {bulletId}");
                 return;
+            }
 
             if (projectile.HasElapsed(tickTime.TotalElapsedMs))
             {
-                Console.WriteLine($"[HasElapsed] {player.Id} -> {player.Name} | {bulletId}");
+                Console.WriteLine($"[PlayerHit -> HasElapsed] {player.Id} -> {player.Name} | {bulletId}");
                 return;
             }
 
-            if (!projectile.HasAlreadyHitTarget(player.Id))
-            {
-                player.HitByProjectile(projectile, ref tickTime);
-                projectile.SuccessfulHit(player.Id);
-            }
-            else
+            if (projectile.HasAlreadyHitTarget(player.Id))
                 Console.WriteLine($"[PlayerHit -> Projectile.TryHit] {player.Id} -> {player.Name} Already hit with projectile | Potential Client Modification");
+            else
+                player.HitByProjectile(projectile, ref tickTime);
+            projectile.RegisterHit(player.Id);
         }
     }
 }

@@ -39,6 +39,9 @@ namespace TKR.WorldServer.core.net.handlers
 
         private void Handle(Player player, Entity from, Entity to, int slotFrom, int slotTo)
         {
+            if (player == null || player.Client == null || player.World == null)
+                return;
+
             if (player.IsInMarket && player.World is NexusWorld)
             {
                 from.ForceUpdate(slotFrom);
@@ -47,9 +50,6 @@ namespace TKR.WorldServer.core.net.handlers
                 player.Client.SendPacket(new InvResult() { Result = 1 });
                 return;
             }
-
-            if (player == null || player.Client == null || player.World == null)
-                return;
 
             if (!ValidateEntities(player, from, to) || player.tradeTarget != null)
             {

@@ -10,7 +10,7 @@ namespace TKR.WorldServer.core.objects
         {
             projectileId = bulletId;
             var dmg = Stats.GetAttackDamage(desc.MinDamage, desc.MaxDamage, ability);
-            return CreateProjectile(desc, objectType, dmg, C2STime(time), position, angle);
+            return CreateProjectile(desc, objectType, dmg, time, position, angle);
         }
     }
 }

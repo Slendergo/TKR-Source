@@ -276,12 +276,12 @@ namespace TKR.WorldServer.core.worlds
             if (entity is Player)
             {
                 Players.TryAdd(entity.Id, entity as Player);
-                PlayersCollision.Insert(entity);
+                PlayersCollision.Insert(entity, entity.X, entity.Y);
             }
             else if (entity is Enemy)
             {
                 Enemies.TryAdd(entity.Id, entity as Enemy);
-                EnemiesCollision.Insert(entity);
+                EnemiesCollision.Insert(entity, entity.X, entity.Y);
                 if (entity.ObjectDesc.Quest)
                     Quests.TryAdd(entity.Id, entity as Enemy);
             }
@@ -293,14 +293,14 @@ namespace TKR.WorldServer.core.worlds
             {
                 StaticObjects.TryAdd(entity.Id, entity as StaticObject);
                 if (entity is Decoy)
-                    PlayersCollision.Insert(entity);
+                    PlayersCollision.Insert(entity, entity.X, entity.Y);
                 else
-                    EnemiesCollision.Insert(entity);
+                    EnemiesCollision.Insert(entity, entity.X, entity.Y);
             }
             else if (entity is Pet)
             {
                 Pets.TryAdd(entity.Id, entity as Pet);
-                PlayersCollision.Insert(entity);
+                PlayersCollision.Insert(entity, entity.X, entity.Y);
             }
         }
 
@@ -429,12 +429,9 @@ namespace TKR.WorldServer.core.worlds
             try
             {
                 Lifetime += time.ElapsedMsDelta;
-
                 WorldBranch.Update(ref time);
-
                 if (IsPastLifetime(ref time))
                     return true;
-
                 UpdateLogic(ref time);
                 return false;
             }

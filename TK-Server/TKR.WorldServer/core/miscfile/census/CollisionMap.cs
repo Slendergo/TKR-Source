@@ -55,7 +55,7 @@ namespace TKR.WorldServer.core.miscfile.census
                                 }
                             }
                     }
-
+            
             return ret;
         }
 
@@ -96,13 +96,13 @@ namespace TKR.WorldServer.core.miscfile.census
             }
         }
 
-        public void Insert(T obj)
+        public void Insert(T obj, float newX, float newY)
         {
             if (obj.CollisionNode != null)
                 return;
 
-            var x = (int)(obj.X / CHUNK_SIZE);
-            var y = (int)(obj.Y / CHUNK_SIZE);
+            var x = (int)(newX / CHUNK_SIZE);
+            var y = (int)(newY / CHUNK_SIZE);
 
             obj.CollisionNode = new CollisionNode<T>()
             {
@@ -121,9 +121,10 @@ namespace TKR.WorldServer.core.miscfile.census
         {
             if (obj.CollisionNode == null)
             {
-                Insert(obj);
+                Insert(obj, newX, newY);
                 return;
             }
+
             if (obj.Parent != this)
                 return;
 
@@ -152,8 +153,11 @@ namespace TKR.WorldServer.core.miscfile.census
 
         public void Remove(T obj)
         {
-            if (obj.CollisionNode == null) return;
-            if (obj.Parent != this) return;
+            if (obj.CollisionNode == null)
+                return;
+            
+            if (obj.Parent != this) 
+                return;
 
             var x = (int)(obj.X / CHUNK_SIZE);
             var y = (int)(obj.Y / CHUNK_SIZE);

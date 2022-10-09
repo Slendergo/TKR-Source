@@ -353,15 +353,19 @@ namespace TKR.WorldServer.core.objects
 
         public virtual void Tick(ref TickTime time)
         {
-            if (CurrentState != null)
-                if (!HasConditionEffect(ConditionEffectIndex.Stasis))
-                    TickState(time);
+            if (HasConditionEffect(ConditionEffectIndex.Stasis))
+                return;
+
+            TickState(time);
 
             ConditionEffectManager.Update(ref time);
         }
 
         public void TickState(TickTime time)
         {
+            if (CurrentState == null)
+                return;
+
             if (_stateEntry)
             {
                 //State entry
@@ -396,7 +400,10 @@ namespace TKR.WorldServer.core.objects
                 try
                 {
                     foreach (var i in state.Behaviors)
+                    {
+                        Console.WriteLine(i.GetType().Name);
                         i.Tick(this, time);
+                    }
                 }
                 catch (Exception e)
                 {
@@ -500,9 +507,6 @@ namespace TKR.WorldServer.core.objects
 
         public void ValidateAndMove(float x, float y)
         {
-            if (this == null || World == null)
-                return;
-
             var pos = new FPoint();
             ResolveNewLocation(x, y, pos);
             Move(pos.X, pos.Y);

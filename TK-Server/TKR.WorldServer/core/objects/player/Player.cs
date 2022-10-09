@@ -442,8 +442,7 @@ namespace TKR.WorldServer.core.objects
             var spawnRegions = owner.GetSpawnPoints();
             if (spawnRegions.Any())
             {
-                var rand = new System.Random();
-                var sRegion = spawnRegions.ElementAt(rand.Next(0, spawnRegions.Length));
+                var sRegion = Random.Shared.NextLength(spawnRegions);
                 x = sRegion.Key.X;
                 y = sRegion.Key.Y;
             }
@@ -673,16 +672,7 @@ namespace TKR.WorldServer.core.objects
             World.ForeachPlayer(_ =>
             {
                 _.AwaitGotoAck(time.TotalElapsedMs);
-                if (_ == null || _.Client == null)
-                {
-                    var nullPlayer = _ == null;
-                    var nullClient = _?.Client ?? null;
-                    Console.WriteLine($"Error NULL | Player: {nullPlayer} | Client: {nullClient}");
-                }
-                else
-                {
-                    _.Client.SendPackets(tpPkts);
-                }
+                _.Client.SendPackets(tpPkts);
             });
 
             PlayerUpdate.UpdateTiles();

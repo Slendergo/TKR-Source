@@ -1,5 +1,5 @@
 <Objects>
-  <Object type="0x835" id="LH Colossus Rock 1">
+	<Object type="0x835" id="LH Colossus Rock 1">
     <DisplayId>Marble Colossus Rock</DisplayId>
     <Class>Character</Class>
     <NoMiniMap />

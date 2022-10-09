@@ -18,7 +18,6 @@
       <LifetimeMS>1000</LifetimeMS>
       <Size>150</Size>
       <ConditionEffect duration="3">Slowed</ConditionEffect>
-      <MultiHit />
       <PassesCover />
       <ParticleTrail />
     </Projectile>
@@ -48,7 +47,6 @@
       <LifetimeMS>1000</LifetimeMS>
       <Size>150</Size>
       <ConditionEffect duration="3">Slowed</ConditionEffect>
-      <MultiHit />
       <PassesCover />
       <ParticleTrail />
     </Projectile>
@@ -79,7 +77,6 @@
       <LifetimeMS>1000</LifetimeMS>
       <Size>150</Size>
       <ConditionEffect duration="3">Slowed</ConditionEffect>
-      <MultiHit />
       <PassesCover />
       <ParticleTrail />
     </Projectile>
@@ -109,13 +106,12 @@
       <MaxDamage>260</MaxDamage>
       <LifetimeMS>1000</LifetimeMS>
       <Size>150</Size>
-      <ConditionEffect duration="3">Paralyzed</ConditionEffect>
-      <MultiHit />
+      <ConditionEffect duration="3">Slowed</ConditionEffect>
       <PassesCover />
       <ParticleTrail />
     </Projectile>
     <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
-    <ConditionEffect duration="3">Paralyzed</ConditionEffect>
+    <ConditionEffect duration="3">Slowed</ConditionEffect>
     <Usable />
     <BagType>2</BagType>
     <FameBonus>1</FameBonus>
@@ -141,13 +137,12 @@
       <MaxDamage>320</MaxDamage>
       <LifetimeMS>1000</LifetimeMS>
       <Size>150</Size>
-      <ConditionEffect duration="3">Paralyzed</ConditionEffect>
-      <MultiHit />
+      <ConditionEffect duration="3">Slowed</ConditionEffect>
       <PassesCover />
       <ParticleTrail />
     </Projectile>
     <ActivateOnEquip stat="28" amount="4">IncrementStat</ActivateOnEquip>
-    <ConditionEffect duration="3">Paralyzed</ConditionEffect>
+    <ConditionEffect duration="3">Slowed</ConditionEffect>
     <Usable />
     <BagType>2</BagType>
     <FameBonus>2</FameBonus>
@@ -173,13 +168,12 @@
       <MaxDamage>350</MaxDamage>
       <LifetimeMS>1000</LifetimeMS>
       <Size>150</Size>
-      <ConditionEffect duration="3">Paralyzed</ConditionEffect>
-      <MultiHit />
+      <ConditionEffect duration="3">Slowed</ConditionEffect>
       <PassesCover />
       <ParticleTrail />
     </Projectile>
     <ActivateOnEquip stat="28" amount="5">IncrementStat</ActivateOnEquip>
-    <ConditionEffect duration="3">Paralyzed</ConditionEffect>
+    <ConditionEffect duration="3">Slowed</ConditionEffect>
     <Usable />
     <BagType>4</BagType>
     <FameBonus>3</FameBonus>
@@ -205,15 +199,14 @@
       <MaxDamage>350</MaxDamage>
       <LifetimeMS>1000</LifetimeMS>
       <Size>150</Size>
-      <ConditionEffect duration="3">Paralyzed</ConditionEffect>
-      <MultiHit />
+      <ConditionEffect duration="3">Slowed</ConditionEffect>
       <PassesCover />
       <ParticleTrail />
     </Projectile>
     <ActivateOnEquip stat="26" amount="2">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="5">IncrementStat</ActivateOnEquip>
-    <ConditionEffect duration="3">Paralyzed</ConditionEffect>
+    <ConditionEffect duration="3">Slowed</ConditionEffect>
     <Usable />
     <BagType>4</BagType>
     <FameBonus>4</FameBonus>

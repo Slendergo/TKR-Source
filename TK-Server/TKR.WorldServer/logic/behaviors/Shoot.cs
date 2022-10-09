@@ -78,7 +78,15 @@ namespace TKR.WorldServer.logic.behaviors
 
             if (player != null || _defaultAngle != null || _fixedAngle != null)
             {
-                var desc = host.ObjectDesc.Projectiles[_projectileIndex];
+                var hasProjectileDesc = host.ObjectDesc.Projectiles.TryGetValue(_projectileIndex, out var desc);
+                if (!hasProjectileDesc)
+                {
+                    Console.WriteLine($"{host.ObjectDesc.ObjectId} Doesnt have projectile: {_projectileIndex}");
+                    cool = _coolDown.Next(Random);
+                    Status = CycleStatus.Completed;
+                    state = cool;
+                    return;
+                }
 
                 float a;
 
@@ -87,7 +95,7 @@ namespace TKR.WorldServer.logic.behaviors
                 else if (player != null)
                 {
                     if (_predictive != 0 && _predictive > Random.NextDouble())
-                        a = Predict(host, player, desc);
+                        a = Predict(host, player);
                     else
                         a = (float)Math.Atan2(player.Y - host.Y, player.X - host.X);
                 }
@@ -107,28 +115,12 @@ namespace TKR.WorldServer.logic.behaviors
 
                 var startAngle = a - _shootAngle * (count - 1) / 2;
 
-                int prjId = 0;
-
                 var prjPos = new Position() { X = host.X, Y = host.Y };
-                var prjs = new Projectile[count];
 
-                for (var i = 0; i < count; i++)
-                {
-                    if (host == null || host.World == null)
-                        return;
-
-                    var prj = host.CreateProjectile(desc, host.ObjectType, (int)dmg, time.TotalElapsedMs, prjPos, startAngle + _shootAngle * i);
-
-                    host.World.AddProjectile(prj);
-
-                    if (i == 0)
-                        prjId = prj.ProjectileId;
-
-                    prjs[i] = prj;
-                }
-
+                var prjId = host.GetNextBulletId(count);
                 var pkt = new EnemyShoot()
                 {
+                    Spawned = host.Spawned,
                     BulletId = prjId,
                     OwnerId = host.Id,
                     StartingPos = prjPos,
@@ -137,6 +129,7 @@ namespace TKR.WorldServer.logic.behaviors
                     BulletType = (byte)desc.BulletType,
                     AngleInc = _shootAngle,
                     NumShots = (byte)count,
+                    ObjectType = host.ObjectType
                 };
 
                 // changed to this
@@ -150,7 +143,7 @@ namespace TKR.WorldServer.logic.behaviors
             state = cool;
         }
 
-        private static float Predict(Entity host, Entity target, ProjectileDesc desc)
+        private static float Predict(Entity host, Entity target)
         {
             var targetX = target.X + PREDICT_NUM_TICKS * (target.X - target.PrevX);
             var targetY = target.Y + PREDICT_NUM_TICKS * (target.Y - target.PrevY);

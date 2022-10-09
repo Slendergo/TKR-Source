@@ -1,5 +1,6 @@
 ﻿using TKR.Shared;
 using TKR.WorldServer.core.miscfile.thread;
+using TKR.WorldServer.core.objects;
 using TKR.WorldServer.networking;
 
 namespace TKR.WorldServer.core.net.handlers
@@ -10,12 +11,12 @@ namespace TKR.WorldServer.core.net.handlers
 
         public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
         {
-            var Time = rdr.ReadInt32();
-            var BulletId = rdr.ReadInt32();
-            var ObjectId = rdr.ReadInt32();
-            var TargetId = rdr.ReadInt32();
+            var time = rdr.ReadInt32();
+            var bulletId = rdr.ReadInt32();
+            var objectId = rdr.ReadInt32();
+            var targetId = rdr.ReadInt32();
 
-
+            client.Player.OtherHit(ref tickTime, time, bulletId, objectId, targetId);
         }
     }
 }

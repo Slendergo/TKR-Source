@@ -31,7 +31,6 @@ namespace TKR.Shared.resources
         private readonly Dictionary<string, WorldResource> Worlds = new Dictionary<string, WorldResource>();
         private readonly Dictionary<string, byte[]> WorldDataCache = new Dictionary<string, byte[]>();
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
-
         public ItemDusts ItemDusts { get; private set; }
 
         public XElement ObjectCombinedXML;
@@ -202,7 +201,7 @@ namespace TKR.Shared.resources
                 }
                 catch (Exception e)
                 {
-                    Log.Error("Exception: " + e);
+                    Log.Error("Exception: " + e.Message + "\n" + e.StackTrace);
                     Log.Error("XML Path Error: " + xmls[i]);
                 }
             }

@@ -657,10 +657,10 @@ namespace TKR.WorldServer.core.commands.player
             if (player.HasTalismanEffect(TalismanEffectType.PocketChange))
                 player.SendInfo($"Pocket Change provides: 30%");
 
-            if (player.HasTalismanEffect(TalismanEffectType.LuckoftheIrish))
+            if (player.HasTalismanEffect(TalismanEffectType.LuckOfTheIrish))
                 player.SendInfo($"Luck of the Irish provides: 20%");
 
-            if (player.HasTalismanEffect(TalismanEffectType.PartyofOne))
+            if (player.HasTalismanEffect(TalismanEffectType.PartyOfOne))
             {
                 var partyOfOneAmount = 50;
                 if (player.World.Players.Count != 1)
@@ -755,7 +755,6 @@ namespace TKR.WorldServer.core.commands.player
                 player.ApplyConditionEffect(ConditionEffectIndex.Invulnerable, 3000);
                 player.ApplyConditionEffect(ConditionEffectIndex.Invisible, 3000);
                 player.ApplyConditionEffect(ConditionEffectIndex.Stunned, 3000);
-                player.ApplyConditionEffect(ConditionEffectIndex.Paralyzed, 3000);
 
                 var world = player.World;
 

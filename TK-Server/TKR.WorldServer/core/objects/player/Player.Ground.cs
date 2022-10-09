@@ -50,7 +50,7 @@ namespace TKR.WorldServer.core.objects
 
                 if (HP <= 0)
                 {
-                    Death(tileDesc.ObjectId, tile: tile);
+                    Death(tileDesc.ObjectId, tile.Spawned);
                     return;
                 }
 
@@ -90,7 +90,7 @@ namespace TKR.WorldServer.core.objects
 
                     if (HP <= 0)
                     {
-                        Death(tileDesc.ObjectId, tile: tile);
+                        Death(tileDesc.ObjectId, tile.Spawned);
                         return;
                     }
 

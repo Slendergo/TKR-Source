@@ -68,7 +68,7 @@ public class EquipmentToolTip extends ToolTip
       private var props_:ObjectProperties = null;
       private var isMythicalItem:Boolean;
       private var isLegendaryItem:Boolean;
-      private var bloodExchange_:Boolean;
+
       public function EquipmentToolTip(objectType:int, player:Player, invType:int, inventoryOwnerType:String, inventorySlotID:uint = 1.0, isMarketItem:Boolean = false, itemData:Object = null)
       {
          this.itemData_ = itemData;
@@ -84,10 +84,6 @@ public class EquipmentToolTip extends ToolTip
          this.isEquippable_ = equipSlotIndex != -1;
          this.effects = new Vector.<Effect>();
          this.invType = invType;
-
-         if(player) {
-            bloodExchange_ = player.HasTalismanEffect(GameObject.BloodExchange);
-         }
 
          this.props_ = ObjectLibrary.propsLibrary_[objectType];
 
@@ -214,36 +210,30 @@ public class EquipmentToolTip extends ToolTip
             this.itemEffectText_ = new SimpleText(13, 0x7550C4, false, MAX_WIDTH);
             this.itemEffectText_.setBold(true);
             this.itemEffectText_.wordWrap = true;
-            switch(this.props_.talismanEffect_){
+            switch(this.props_.talismanEffect_)
+            {
+              //legendary
+               case "Weak Immunity":
+                  this.itemEffectText_.text = "Weak Immunity -> Immunity to being Weakened";
+                  break;
+               case "Call To Arms":
+                  this.itemEffectText_.text = "Call to Arms -> Regeneration is doubled";
+                  break;
+               case "Party Of One":
+                  this.itemEffectText_.text = "Party of One -> While alone you gain 50% more chance at loot, While not alone lose 50% chance at loot";
+                  break;
                case "Pocket Change":
                   this.itemEffectText_.text = "Pocket Change -> You have a 30% increase chance at loot";
                   break;
-               case "Blood Exchange":
-                  this.itemEffectText_.text = "Blood Exchange -> Abilities cost life, vitality regen tripled";
+               // mythical
+               case "Stun Immunity":
+                  this.itemEffectText_.text = "Stun Immunity -> Immunity to being Stunned";
                   break;
-               case "Primal Rage":
-                  this.itemEffectText_.text = "Primal Rage -> Immune to Weak and Damaging";
-                  break;
-               case "Call to Arms":
-                  this.itemEffectText_.text = "Call to Arms -> Life & Mana regeneration is doubled";
-                  break;
-               case "Insatiable Thirst":
-                  this.itemEffectText_.text = "Insatiable Thirst -> Leech 1% of damage dealt to enemies life as mana";
-                  break;
-               case "Iron Will":
-                  this.itemEffectText_.text = "Iron Will -> Immune to armor break";
-                  break;
-               case "Party of One":
-                  this.itemEffectText_.text = "Party of One -> While alone you gain 50% more chance at loot, While not alone lose 50% chance at loot";
-                  break;
-               case "Luck of the Irish":
+               case "Luck Of The Irish":
                   this.itemEffectText_.text = "Luck of the Irish -> Gain 20% more chance at loot and an 2% chance to double your drops";
                   break;
                case "Known After Death":
                   this.itemEffectText_.text = "Known After Death -> Experience from killing mobs is doubled";
-                  break;
-               case "Forbidden Fruit":
-                  this.itemEffectText_.text = "Forbidden Fruit -> Upon consuming a health or magic potion you will receive a random buff for 2 seconds";
                   break;
             }
          }
@@ -513,16 +503,14 @@ public class EquipmentToolTip extends ToolTip
       {
          if(this.objectXML_.hasOwnProperty("MpEndCost"))
          {
-            if(!this.comparisonResults.processedTags[this.objectXML_.MpEndCost[0].toXMLString()])
-            {
-               this.effects.push(new Effect((bloodExchange_ ? "HP" : "MP") + " Cost", this.objectXML_.MpEndCost));
+            if(!this.comparisonResults.processedTags[this.objectXML_.MpEndCost[0].toXMLString()]) {
+               this.effects.push(new Effect("MP Cost", this.objectXML_.MpEndCost));
             }
          }
          else if(this.objectXML_.hasOwnProperty("MpCost") && !this.comparisonResults.processedTags[this.objectXML_.MpCost[0].toXMLString()])
          {
-            if(!this.comparisonResults.processedTags[this.objectXML_.MpCost[0].toXMLString()])
-            {
-               this.effects.push(new Effect((bloodExchange_ ? "HP" : "MP") + " Cost", this.objectXML_.MpCost));
+            if(!this.comparisonResults.processedTags[this.objectXML_.MpCost[0].toXMLString()]) {
+               this.effects.push(new Effect("MP Cost", this.objectXML_.MpCost));
             }
          }
       }

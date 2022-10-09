@@ -613,15 +613,15 @@ namespace TKR.WorldServer.logic
             new State(
                 new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                 new State("weak_effect",
-                    new Shoot(1, fixedAngle: 0, projectileIndex: 0, coolDown: 200),
+                    new Shoot(1, fixedAngle: 0, projectileIndex: 1, coolDown: 200),
                     new TimedTransition(2000, "blind_effect")
                     ),
                 new State("blind_effect",
-                    new Shoot(1, fixedAngle: 0, projectileIndex: 1, coolDown: 200),
+                    new Shoot(1, fixedAngle: 0, projectileIndex: 2, coolDown: 200),
                     new TimedTransition(2000, "pierce_effect")
                     ),
                 new State("pierce_effect",
-                    new Shoot(1, fixedAngle: 0, projectileIndex: 2, coolDown: 200),
+                    new Shoot(1, fixedAngle: 0, projectileIndex: 3, coolDown: 200),
                     new TimedTransition(2000, "weak_effect")
                     ),
                 new Decay(6000)
@@ -631,15 +631,15 @@ namespace TKR.WorldServer.logic
             new State(
                 new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                 new State("weak_effect",
-                    new Shoot(1, fixedAngle: 90, projectileIndex: 0, coolDown: 200),
+                    new Shoot(1, fixedAngle: 90, projectileIndex: 1, coolDown: 200),
                     new TimedTransition(2000, "blind_effect")
                     ),
                 new State("blind_effect",
-                    new Shoot(1, fixedAngle: 90, projectileIndex: 1, coolDown: 200),
+                    new Shoot(1, fixedAngle: 90, projectileIndex: 2, coolDown: 200),
                     new TimedTransition(2000, "pierce_effect")
                     ),
                 new State("pierce_effect",
-                    new Shoot(1, fixedAngle: 90, projectileIndex: 2, coolDown: 200),
+                    new Shoot(1, fixedAngle: 90, projectileIndex: 3, coolDown: 200),
                     new TimedTransition(2000, "weak_effect")
                     ),
                 new Decay(6000)
@@ -649,15 +649,15 @@ namespace TKR.WorldServer.logic
             new State(
                 new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                 new State("weak_effect",
-                    new Shoot(1, fixedAngle: 45, projectileIndex: 0, coolDown: 200),
+                    new Shoot(1, fixedAngle: 45, projectileIndex: 1, coolDown: 200),
                     new TimedTransition(2000, "blind_effect")
                     ),
                 new State("blind_effect",
-                    new Shoot(1, fixedAngle: 45, projectileIndex: 1, coolDown: 200),
+                    new Shoot(1, fixedAngle: 45, projectileIndex: 2, coolDown: 200),
                     new TimedTransition(2000, "pierce_effect")
                     ),
                 new State("pierce_effect",
-                    new Shoot(1, fixedAngle: 45, projectileIndex: 2, coolDown: 200),
+                    new Shoot(1, fixedAngle: 45, projectileIndex: 3, coolDown: 200),
                     new TimedTransition(2000, "weak_effect")
                     ),
                 new Decay(6000)
@@ -667,15 +667,15 @@ namespace TKR.WorldServer.logic
             new State(
                 new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                 new State("weak_effect",
-                    new Shoot(1, fixedAngle: 135, projectileIndex: 0, coolDown: 200),
+                    new Shoot(1, fixedAngle: 135, projectileIndex: 1, coolDown: 200),
                     new TimedTransition(2000, "blind_effect")
                     ),
                 new State("blind_effect",
-                    new Shoot(1, fixedAngle: 135, projectileIndex: 1, coolDown: 200),
+                    new Shoot(1, fixedAngle: 135, projectileIndex: 2, coolDown: 200),
                     new TimedTransition(2000, "pierce_effect")
                     ),
                 new State("pierce_effect",
-                    new Shoot(1, fixedAngle: 135, projectileIndex: 2, coolDown: 200),
+                    new Shoot(1, fixedAngle: 135, projectileIndex: 3, coolDown: 200),
                     new TimedTransition(2000, "weak_effect")
                     ),
                 new Decay(6000)

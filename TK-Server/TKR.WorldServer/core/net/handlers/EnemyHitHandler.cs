@@ -19,55 +19,8 @@ namespace TKR.WorldServer.core.net.handlers
             var killed = rdr.ReadBoolean();
 
             var player = client.Player;
-            if (player.World == null)
-                return;
 
-            if (player.HasConditionEffect(ConditionEffectIndex.Hidden))
-                return;
-
-            var entity = player.World.GetEntity(targetId);
-            if (entity == null)
-                return;
-
-
-            var projectile = player.World.GetProjectile(player.Id, bulletId);
-            if (projectile == null)
-            {
-                Console.WriteLine($"[EnemyHit -> prj == null] {player.Id} -> {player.Name} | {bulletId}");
-                return;
-            }
-
-            if (projectile.HasElapsed(time))
-            {
-                Console.WriteLine($"[EnemyHit -> Projectile.HasElapsed] {player.Id} -> {player.Name} | {bulletId} | {time - projectile.CreationTime} | {projectile.ProjDesc.LifetimeMS}");
-                return;
-            }
-
-            if (projectile.HasAlreadyHitTarget(targetId))
-                Console.WriteLine($"[EnemyHit -> Projectile.TryHit] {player.Id} -> {player.Name} Already hit with projectile | Potential Client Modification");
-            else
-                entity.HitByProjectile(projectile, ref tickTime);
-            projectile.RegisterHit(targetId);
-
-            if (entity is StaticObject)
-            {
-                if (killed && (entity as StaticObject).HP > 0)
-                    player.PlayerUpdate.ForceAdd(entity);
-            }
-            else if (entity is Enemy)
-                 if (killed && (entity as Enemy).HP > 0)
-                    player.PlayerUpdate.ForceAdd(entity);
-
-            if (player.HasTalismanEffect(TalismanEffectType.InsatiableThirst))
-            {
-                var totalLife = 0.00;// player.Stats[0] * 0.1;
-                var totalMana = player.Stats[1] * 0.01;
-
-                if (totalLife > 0)
-                    Player.HealDiscrete(player, (int)totalLife, false);
-                if (totalMana > 0)
-                    Player.HealDiscrete(player, (int)totalMana, true);
-            }
+            player.EnemyHit(ref tickTime, time, bulletId, targetId, killed);
         }
     }
 }

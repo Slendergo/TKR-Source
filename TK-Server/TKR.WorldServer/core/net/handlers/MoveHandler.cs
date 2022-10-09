@@ -25,15 +25,7 @@ namespace TKR.WorldServer.core.net.handlers
 
             var player = client.Player;
 
-            var projectilesToRemove = new List<Projectile>();
-            foreach (var k in player.World.Projectiles.Values)
-                foreach (var projectile in k.Values)
-                    if(projectile.Host.Id == player.Id)
-                        if (projectile.HasElapsed(time))
-                            projectilesToRemove.Add(projectile);
-            foreach (var projectile in projectilesToRemove)
-                player.World.RemoveProjectile(projectile);
-
+            player.HandleProjectileDetection(time, newX, newY, ref moveRecords);
             if (newX != -1 && newX != player.X || newY != -1 && newY != player.Y)
             {
                 if (!player.World.Map.Contains(newX, newY))

@@ -19,7 +19,6 @@
       <Size>120</Size>
       <ConditionEffect duration="5">Slowed</ConditionEffect>
       <PassesCover />
-      <MultiHit />
       <ParticleTrail lifetimeMS="150">0x33ccff</ParticleTrail>
     </Projectile>
     <ActivateOnEquip stat="20" amount="3">IncrementStat</ActivateOnEquip>

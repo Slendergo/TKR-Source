@@ -199,21 +199,6 @@ namespace TKR.WorldServer.core.objects
                 return;
             }
 
-            if((slot == 0xFE || slot == 0xFF) && HasTalismanEffect(TalismanEffectType.ForbiddenFruit))
-            {
-                var effects = new List<ConditionEffectIndex>();
-                effects.Add(ConditionEffectIndex.Berserk);
-                effects.Add(ConditionEffectIndex.Damaging);
-                effects.Add(ConditionEffectIndex.Weak);
-                effects.Add(ConditionEffectIndex.Speedy);
-                effects.Add(ConditionEffectIndex.Slowed);
-                effects.Add(ConditionEffectIndex.ArmorBroken);
-                effects.Add(ConditionEffectIndex.Armored);
-
-                var effect = Random.Shared.NextLength(effects);
-                ApplyConditionEffect(effect, 2000);
-            }
-
             // use item
             var slotType = 10;
             if (slot < containerInventory.Length)
@@ -381,10 +366,7 @@ namespace TKR.WorldServer.core.objects
 
         private void Activate(int clientTime, TickTime time, Item item, int slot, Position target, int objId, int sellmaxed, int useType)
         {
-            if (item.MpCost != 0 && HasTalismanEffect(TalismanEffectType.BloodExchange))
-                HP -= item.MpCost;
-            else
-                MP -= item.MpCost;
+            MP -= item.MpCost;
 
             var entity1 = World.GetEntity(objId);
 
@@ -493,7 +475,7 @@ namespace TKR.WorldServer.core.objects
                         break;
 
                     case ActivateEffects.BulletNova:
-                        AEBulletNova(clientTime, time, item, target, eff);
+                        AEBulletNova(item, target, eff);
                         break;
 
                     case ActivateEffects.ConditionEffectSelf:
@@ -602,7 +584,6 @@ namespace TKR.WorldServer.core.objects
                 }
             }
         }
-
         private void AEAddFame(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             if (World is TestWorld || Client.Account == null)
@@ -642,45 +623,45 @@ namespace TKR.WorldServer.core.objects
             HasBackpack = true;
         }
 
-      
-        private void AEBulletNova(int clientTime, TickTime time, Item item, Position target, ActivateEffect eff)
+        private void AEBulletNova(Item item, Position target, ActivateEffect eff)
         {
-            var shoots = item.SpellProjectiles == 0 ? 20 : item.SpellProjectiles;
-            var prjs = new Projectile[shoots];
-            var prjDesc = item.Projectiles[0]; //Assume only one
-            var batch = new OutgoingMessage[shoots + 1];
-            for (var i = 0; i < shoots; i++)
-            {
-                var baseDmg = World.Random.Next(prjDesc.MinDamage, prjDesc.MaxDamage);
+            var numShots = item.SpellProjectiles == 0 ? 20 : item.SpellProjectiles;
+            var projectileDesc = item.Projectiles[0];
 
-                var proj = CreateProjectile(prjDesc, item.ObjectType,
-                    baseDmg, 
-                    clientTime, target, (float)(i * (Math.PI * 2) / shoots));
-                World.AddProjectile(proj);
-                FameCounter.Shoot();
-                batch[i] = new ServerPlayerShoot()
+            var shoots = new List<ServerPlayerShoot>(numShots);
+            var allyShoots = new List<OutgoingMessage>(numShots);
+            for (var i = 0; i < numShots; i++)
+            {
+                var nextBulletId = GetNextBulletId(1, true);
+
+                var angle = (float)(i * (Math.PI * 2) / numShots);
+                shoots.Add(new ServerPlayerShoot()
                 {
-                    BulletId = proj.ProjectileId,
+                    BulletType = projectileDesc.BulletType,
+                    ObjectType = item.ObjectType,
+                    BulletId = nextBulletId,
                     OwnerId = Id,
                     ContainerType = item.ObjectType,
                     StartingPos = target,
-                    Angle = proj.Angle,
-                    Damage = (short)proj.Damage
-                };
-                prjs[i] = proj;
+                    Angle = angle,
+                    Damage = Stats.GetAttackDamage(projectileDesc.MinDamage, projectileDesc.MaxDamage, true)
+                });
+                allyShoots.Add(new AllyShoot(nextBulletId, Id, item.ObjectType, angle));
             }
-            batch[shoots] = new ShowEffect()
+            World.BroadcastIfVisible(new ShowEffect()
             {
                 EffectType = EffectType.Trail,
                 Pos1 = target,
                 TargetObjectId = Id,
                 Color = new ARGB(eff.Color != 0 ? eff.Color : 0xFFFF00AA)
-            };
+            }, this);
+            World.BroadcastIfVisibleExclude(allyShoots, this, this);
 
-            foreach (var player in World.Players.Values)
-                if(player.SqDistTo(this) < PlayerUpdate.VISIBILITY_RADIUS_SQR)
-                   player.Client.SendPackets(batch);
+            foreach(var shoot in shoots)
+                PlayerServerShoot(shoot);
+            Client.SendPackets(shoots);
         }
+
         private void AEClearConditionEffectAura(TickTime time, Item item, Position target, ActivateEffect eff)
         {
             this.AOE(eff.Range, true, player =>
@@ -1226,7 +1207,7 @@ namespace TKR.WorldServer.core.objects
 
                 var damage = eff.UseWisMod ? UseWisMod(eff.TotalDamage) : eff.TotalDamage;
 
-                (targets[i] as Enemy).Damage(this, time, (int)damage, false);
+                (targets[i] as Enemy).Damage(this, ref time, (int)damage, false);
 
                 if (eff.ConditionEffect != null)
                     targets[i].ApplyConditionEffect(new ConditionEffect(eff.ConditionEffect.Value, (int)(eff.EffectDuration * 1000)));
@@ -1386,7 +1367,7 @@ namespace TKR.WorldServer.core.objects
                 world.AOE(target, eff.Radius, false, entity =>
                 {
                     PoisonEnemy(world, (Enemy)entity, eff);
-                    ((Enemy)entity).Damage(this, time, impDamage, true);
+                    ((Enemy)entity).Damage(this, ref time, impDamage, true);
                 });
             });
         }
@@ -1441,20 +1422,8 @@ namespace TKR.WorldServer.core.objects
                     ApplyPermanentConditionEffect(ConditionEffectIndex.NinjaSpeedy);
                     break;
                 case END_USE:
-                    if (item.MpEndCost != 0 && HasTalismanEffect(TalismanEffectType.BloodExchange))
-                    {
-                        if (HP >= item.MpEndCost)
-                        {
-                            HP -= item.MpEndCost;
-                        }
-                    }
-                    else
-                    {
-                        if (MP >= item.MpEndCost)
-                        {
-                            MP -= item.MpEndCost;
-                        }
-                    }
+                    if (MP >= item.MpEndCost)
+                        MP -= item.MpEndCost;
                     RemoveCondition(ConditionEffectIndex.NinjaSpeedy);
                     break;
             }
@@ -1468,20 +1437,8 @@ namespace TKR.WorldServer.core.objects
                     ApplyPermanentConditionEffect(ConditionEffectIndex.NinjaBerserk);
                     break;
                 case END_USE:
-                    if (item.MpEndCost != 0 && HasTalismanEffect(TalismanEffectType.BloodExchange))
-                    {
-                        if (HP >= item.MpEndCost)
-                        {
-                            HP -= item.MpEndCost;
-                        }
-                    }
-                    else
-                    {
-                        if (MP >= item.MpEndCost)
-                        {
-                            MP -= item.MpEndCost;
-                        }
-                    }
+                    if (MP >= item.MpEndCost)
+                        MP -= item.MpEndCost;
                     RemoveCondition(ConditionEffectIndex.NinjaBerserk);
                     break;
             }
@@ -1495,20 +1452,8 @@ namespace TKR.WorldServer.core.objects
                     ApplyPermanentConditionEffect(ConditionEffectIndex.NinjaDamaging);
                     break;
                 case END_USE:
-                    if (item.MpEndCost != 0 && HasTalismanEffect(TalismanEffectType.BloodExchange))
-                    {
-                        if (HP >= item.MpEndCost)
-                        {
-                            HP -= item.MpEndCost;
-                        }
-                    }
-                    else
-                    {
-                        if (MP >= item.MpEndCost)
-                        {
-                            MP -= item.MpEndCost;
-                        }
-                    }
+                    if (MP >= item.MpEndCost)
+                        MP -= item.MpEndCost;
                     RemoveCondition(ConditionEffectIndex.NinjaDamaging);
                     break;
             }
@@ -1527,33 +1472,20 @@ namespace TKR.WorldServer.core.objects
                 range = UseWisMod(eff.Range);
             }
 
-            this.AOE(range, true, (Action<Entity>)(player =>
+            this.AOE(range, true, player =>
             {
                 if (player.HasConditionEffect(ConditionEffectIndex.HPBoost))
-                {
                     return;
-                }
-
-                if (!player.HasConditionEffect(ConditionEffectIndex.HPBoost))
-                {
-                    World.StartNewTimer(0, (Action<World, TickTime>)((world, t) => player.ApplyConditionEffect(ConditionEffectIndex.HPBoost, duration)));
-                }
 
                 ((Player)player).Stats.Boost.ActivateBoost[idx].Push(amount, false);
                 ((Player)player).Stats.ReCalculateValues();
 
-                // hack job to allow instant heal of nostack boosts
-                //if (eff.NoStack && amount > 0 && idx == 0)
-                //{
-                //    ((Player)player).HP = Math.Min(((Player)player).Stats[0], ((Player)player).HP + amount);
-                //}
-
-                World.StartNewTimer(duration, (Action<World, TickTime>)((world, t) =>
+                World.StartNewTimer(duration, (world, t) =>
                 {
                     ((Player)player).Stats.Boost.ActivateBoost[idx].Pop(amount, false);
                     ((Player)player).Stats.ReCalculateValues();
-                }));
-            }));
+                });
+            });
 
             World.BroadcastIfVisible(new ShowEffect()
             {
@@ -1788,7 +1720,7 @@ namespace TKR.WorldServer.core.objects
             World.AOE(target, eff.Radius, false, enemy =>
             {
                 enemies.Add(enemy as Enemy);
-                totalDmg += (enemy as Enemy).Damage(this, time, (int)effDamage, false);
+                totalDmg += (enemy as Enemy).Damage(this, ref time, (int)effDamage, false);
             });
 
             var players = new List<Player>();
@@ -1908,7 +1840,7 @@ namespace TKR.WorldServer.core.objects
 
                     if (enemy.IsRemovedFromWorld)
                         return false;
-                    enemy?.Damage(this, t, thisDmg, true);
+                    enemy?.Damage(this, ref t, thisDmg, true);
                     remainingDmg -= thisDmg;
                     if (remainingDmg <= 0)
                         return true;

@@ -45,10 +45,9 @@ namespace TKR.WorldServer.core.net.handlers
             }
 
             var newBulletId = player.GetNextBulletId();
-            var clientBulletId = bulletId % 0xFF;
-            if (newBulletId != clientBulletId)
+            if (newBulletId != bulletId)
             {
-                System.Console.WriteLine($"DESYNC PROJECTILES: {player.Name} Class: {player.ObjectDesc.DisplayId ?? player.ObjectDesc.ObjectId}", true);
+                Console.WriteLine($"DESYNC PROJECTILES: {player.Name} Class: {player.ObjectDesc.DisplayId ?? player.ObjectDesc.ObjectId}", true);
                 return;
             }
 
@@ -72,14 +71,7 @@ namespace TKR.WorldServer.core.net.handlers
                 return;
             }
 
-            var item = player.Inventory[slot];
-            var prjDesc = item.Projectiles[0];
-            var prj = player.PlayerShootProjectile(time, newBulletId, item.ObjectType, angle, startingPosition, prjDesc);
-            player.World.AddProjectile(prj);
-
-            var allyShoot = new AllyShoot(prj.ProjectileId, player.Id, item.ObjectType, angle);
-            player.World.BroadcastIfVisibleExclude(allyShoot, player, player);
-            player.FameCounter.Shoot();
+            player.PlayerShoot(time, newBulletId, startingPosition, angle, slot);
         }
     }
 }

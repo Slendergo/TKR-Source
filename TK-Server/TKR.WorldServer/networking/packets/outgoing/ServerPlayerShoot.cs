@@ -5,6 +5,9 @@ namespace TKR.WorldServer.networking.packets.outgoing
 {
     public class ServerPlayerShoot : OutgoingMessage
     {
+        public int BulletType { get; set; } // dont serialize
+        public int ObjectType { get; set; } // dont serialize
+
         public int BulletId { get; set; }
         public int OwnerId { get; set; }
         public int ContainerType { get; set; }

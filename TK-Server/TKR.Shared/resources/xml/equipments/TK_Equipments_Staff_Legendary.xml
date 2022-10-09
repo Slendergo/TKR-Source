@@ -248,7 +248,7 @@
 		</Projectile>
 		<NumProjectiles>2</NumProjectiles>
 		<ArcGap>0</ArcGap>
-		<BagType>6</BagType>
+		<BagType>8</BagType>
 		<FameBonus>6</FameBonus>
 		<DisplayId>The Expansion</DisplayId>
 	</Object>

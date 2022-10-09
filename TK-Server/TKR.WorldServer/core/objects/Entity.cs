@@ -81,11 +81,19 @@ namespace TKR.WorldServer.core.objects
         public int Size { get => _size.GetValue(); set => _size?.SetValue(value); }
 
         public int NextBulletId = 1;
+        public int NextAbilityBulletId = 0x40000000;
 
-        public int GetNextBulletId(int numShots = 1)
+        public int GetNextBulletId(int numShots = 1, bool ability = false)
         {
+            if (ability)
+            {
+                var currentAbilityId = NextAbilityBulletId;
+                NextAbilityBulletId += numShots;
+                return currentAbilityId;
+            }
+
             var currentBulletId = NextBulletId;
-            NextBulletId = (NextBulletId + numShots) % 0xFF;
+            NextBulletId += numShots;
             return currentBulletId;
         }
 
@@ -277,14 +285,13 @@ namespace TKR.WorldServer.core.objects
             };
         }
 
-        public virtual void HitByProjectile(Projectile projectile, ref TickTime time) { }
         public virtual void Init(World owner) => World = owner;
 
         public void InvokeStatChange(StatDataType t, object val, bool updateSelfOnly = false) => StatChanged?.Invoke(this, new StatChangedEventArgs(t, val, updateSelfOnly));
 
         public void Move(float x, float y)
         {
-            if (World != null && !(this is Projectile) && !(this is Pet) && (!(this is StaticObject) || (this as StaticObject).Hittestable))
+            if (World != null && !(this is Pet) && (!(this is StaticObject) || (this as StaticObject).Hittestable))
                 (this is Enemy || this is StaticObject && !(this is Decoy) ? World.EnemiesCollision : World.PlayersCollision).Move(this, x, y);
 
             var prevX = X;
@@ -729,23 +736,6 @@ namespace TKR.WorldServer.core.objects
         public float DistTo(float x, float y) => MathF.Sqrt((x - X) * (x - X) + (y - Y) * (y - Y));
 
         public Position PointAt(float angle, float radius) => new Position(X + MathF.Cos(angle) * radius, Y + MathF.Sin(angle) * radius);
-
-        protected int projectileId;
-
-        public Projectile CreateProjectile(ProjectileDesc desc, ushort container, int dmg, long time, Position pos, float angle)
-        {
-            var ret = World.ObjectPools.Projectiles.Rent();
-            ret.Host = this;
-            ret.ProjDesc = desc;
-            ret.ProjectileId = projectileId++;
-            ret.Container = container;
-            ret.Damage = dmg;
-            ret.CreationTime = time;
-            ret.Angle = angle;
-            ret.StartX = pos.X;
-            ret.StartY = pos.Y;
-            return ret;
-        }
 
         protected static float ClampSpeed(float value, float min, float max) => value < min ? min : value > max ? max : value;
         protected float GetSpeedMultiplier(float spd) => HasConditionEffect(ConditionEffectIndex.Slowed) ? spd * 0.5f : HasConditionEffect(ConditionEffectIndex.Speedy) ? spd * 1.5f : spd;

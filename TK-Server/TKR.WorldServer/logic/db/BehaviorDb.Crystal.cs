@@ -88,9 +88,9 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(1500, "Daisy_attack")
                     ),
                 new State("Daisy_attack",
-                    new Prioritize(
-                        new StayCloseToSpawn(1, range: 7),
-                        new Wander(1)
+                    new StayCloseToSpawn(1, range: 7),
+                    new OrderedBehavior(
+                        new NewWander(0.4)
                         ),
                     new State("Quadforce1",
                         new Shoot(10, projectileIndex: 0, count: 4, shootAngle: 90, fixedAngle: 0, coolDown: 300),
@@ -129,9 +129,9 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(18000, "Warning")
                     ),
                 new State("Warning",
-                    new Prioritize(
-                        new StayCloseToSpawn(0.5, range: 7),
-                        new Wander(1)
+                    new StayCloseToSpawn(0.5, range: 7),
+                    new OrderedBehavior(
+                        new NewWander(0.4)
                         ),
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new Flash(0xff00ff00, 0.2, 15),
@@ -139,9 +139,9 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(3000, "Summon_the_clones")
                     ),
                 new State("Summon_the_clones",
-                    new Prioritize(
-                        new StayCloseToSpawn(1, range: 7),
-                        new Wander(1)
+                    new StayCloseToSpawn(1, range: 7),
+                    new OrderedBehavior(
+                        new NewWander(0.4)
                         ),
                     new Shoot(10, projectileIndex: 0, coolDown: 1000),
                     new Spawn("Crystal Prisoner Clone", maxChildren: 4, initialSpawn: 0, coolDown: 200),
@@ -159,18 +159,18 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(16000, "Warning2")
                     ),
                 new State("Warning2",
-                    new Prioritize(
-                        new StayCloseToSpawn(0.85, range: 7),
-                        new Wander(1)
+                    new StayCloseToSpawn(0.85, range: 7),
+                    new OrderedBehavior(
+                        new NewWander(0.4)
                         ),
                     new ConditionalEffect(ConditionEffectIndex.Invulnerable),
                     new Flash(0xff00ff00, 0.2, 25),
                     new TimedTransition(5000, "Whoa_nelly")
                     ),
                 new State("Whoa_nelly",
-                    new Prioritize(
-                        new StayCloseToSpawn(1, range: 7),
-                        new Wander(1)
+                    new StayCloseToSpawn(1, range: 7),
+                    new OrderedBehavior(
+                        new NewWander(0.4)
                         ),
                     new Shoot(10, projectileIndex: 3, count: 3, shootAngle: 120, coolDown: 500),
                     new Shoot(10, projectileIndex: 2, count: 3, shootAngle: 15, fixedAngle: 40, coolDown: 800,
@@ -192,9 +192,9 @@ namespace TKR.WorldServer.logic
                     ),
                 new State("Absolutely_Massive",
                     new ChangeSize(13, 260),
-                    new Prioritize(
-                        new StayCloseToSpawn(0.2, range: 7),
-                        new Wander(1)
+                    new StayCloseToSpawn(0.2, range: 7),
+                    new OrderedBehavior(
+                        new NewWander(0.4)
                         ),
                     new Shoot(10, projectileIndex: 1, count: 9, shootAngle: 40, fixedAngle: 40, coolDown: 800,
                         coolDownOffset: 400),
@@ -242,9 +242,9 @@ namespace TKR.WorldServer.logic
             )
         .Init("Crystal Prisoner Clone",
             new State(
-                new Prioritize(
-                    new StayCloseToSpawn(0.85, range: 5),
-                    new Wander(1)
+                new StayCloseToSpawn(0.85, range: 7),
+                new OrderedBehavior(
+                    new NewWander(0.4)
                     ),
                 new Shoot(10, coolDown: 1400),
                 new State("taunt",

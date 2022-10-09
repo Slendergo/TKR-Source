@@ -29,6 +29,9 @@ namespace TKR.Shared.resources
         public readonly bool UseWisMod;
         public readonly int VisualEffect;
         public readonly byte Type;
+        public readonly float SuccessChange;
+        public readonly float SuccessDamage;
+        public readonly float FailureDamage;
 
         public string Center;
         public string DungeonName;

@@ -29,16 +29,13 @@ namespace TKR.Shared.resources
     public enum TalismanEffectType : byte
     {
         None = 0,
-        PocketChange = 1,
-        BloodExchange = 2,
-        PrimalRage = 3,
-        CalltoArms = 4,
-        InsatiableThirst = 5,
-        IronWill = 6,
-        PartyofOne = 7,
-        ForbiddenFruit = 8,
-        LuckoftheIrish = 9,
-        KnownAfterDeath = 10,
+        WeakImmunity = 1,
+        CallToArms = 2,
+        PartyOfOne = 3,
+        PocketChange = 4,
+        StunImmunity = 5,
+        LuckOfTheIrish = 6,
+        KnownAfterDeath = 7
     }
 
     public sealed class TalismanItemProvidesDesc

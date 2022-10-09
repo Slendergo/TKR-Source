@@ -1220,7 +1220,7 @@ public class GameServerConnection
          {
             proj = FreeList.newObject(Projectile) as Projectile;
             angle = enemyShoot.angle_ + enemyShoot.angleInc_ * i;
-            proj.reset(owner.objectType_,enemyShoot.bulletType_,enemyShoot.ownerId_,(enemyShoot.bulletId_ + i) % 0xFFFF, angle,this.gs_.lastUpdate_);
+            proj.reset(owner.objectType_,enemyShoot.bulletType_,enemyShoot.ownerId_,enemyShoot.bulletId_ + i, angle,this.gs_.lastUpdate_);
             proj.setDamage(enemyShoot.damage_);
             this.gs_.map.addObj(proj,enemyShoot.startingPos_.x_,enemyShoot.startingPos_.y_);
             proj.addTo(this.gs_.map, enemyShoot.startingPos_.x_, enemyShoot.startingPos_.y_);

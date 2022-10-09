@@ -66,14 +66,14 @@
 		<Description>TODO</Description>
 		<AnimatedTexture>
 			<File>players</File>
-			<Index>1</Index>
+			<Index>14</Index>
 		</AnimatedTexture>
 		<HitSound>player/archer_hit</HitSound>
 		<DeathSound>player/archer_death</DeathSound>
 		<Player />
 		<BloodProb>1.0</BloodProb>
 		<SlotTypes>3, 27, 6, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26, 26, 26, 26, 26, 26, 26, 26</SlotTypes>
-		<Equipment>0xa1a, 0xc53, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1</Equipment>
+		<Equipment>0xa1a, 0x4343, -1, -1, 0x4344, 0x4345, 0x4346, 0x4347, 0x4349, 0x434b, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1</Equipment>
 		<MaxHitPoints max="720">150</MaxHitPoints>
 		<MaxMagicPoints max="252">100</MaxMagicPoints>
 		<Attack max="60">15</Attack>
@@ -450,8 +450,8 @@
 		<DeathSound>player/rogue_death</DeathSound>
 		<Player />
 		<BloodProb>1.0</BloodProb>
-		<SlotTypes>24, 25, 6, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0</SlotTypes>
-		<Equipment>0xc44, 0xc53, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1</Equipment>
+		<SlotTypes>24, 25, 6, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26, 26, 26, 26, 26, 26, 26, 26</SlotTypes>
+		<Equipment>0xc44, 0xc53, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1</Equipment>
 		<MaxHitPoints max="745">150</MaxHitPoints>
 		<MaxMagicPoints max="252">100</MaxMagicPoints>
 		<Attack max="70">15</Attack>

@@ -54,6 +54,7 @@
         ShurikenAbilityDamaging,
         ShurikenAbilityBerserk,
         GenericActivate,
-        FuelEngine
+        FuelEngine,
+        Bolas
     }
 }

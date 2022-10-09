@@ -118,8 +118,8 @@ namespace TKR.WorldServer.logic.loot
             }
             allLoot += player.LDBoostTime > 0 ? 0.25 : 0;
             allLoot += player.HasTalismanEffect(TalismanEffectType.PocketChange) ? 0.3 : 0.0;
-            allLoot += player.HasTalismanEffect(TalismanEffectType.LuckoftheIrish) ? 0.2 : 0.0;
-            if (player.HasTalismanEffect(TalismanEffectType.PartyofOne))
+            allLoot += player.HasTalismanEffect(TalismanEffectType.LuckOfTheIrish) ? 0.2 : 0.0;
+            if (player.HasTalismanEffect(TalismanEffectType.PartyOfOne))
             {
                 var partyOfOneAmount = 0.5;
                 if (player.World.Players.Count != 1)
@@ -273,6 +273,8 @@ namespace TKR.WorldServer.logic.loot
                             var isEligible = item.Mythical || item.Legendary;
                             if (isEligible)
                             {
+                                c -= Random.Shared.NextDouble();
+
                                 var baseChance = Math.Floor(1.0 / i.Probabilty);
                                 var chance = Math.Floor(1.0 / probability);
                                 var roll = Math.Floor(c / probability);
@@ -337,11 +339,10 @@ namespace TKR.WorldServer.logic.loot
             if (owners.Count() == 1 && GetPlayerLootBoost(player) > 1.0)
                 boosted = true;
 
+            bagType = loots.Max(_ => _.BagType);
+
             foreach (var i in loots)
             {
-                if (i.BagType > bagType)
-                    bagType = i.BagType;
-
                 var isMythical = i.Mythical;
                 var isLegendary = i.Legendary;
                 var isEligible = isMythical || isLegendary || i.TalismanItemDesc != null;
@@ -354,7 +355,7 @@ namespace TKR.WorldServer.logic.loot
 
                     #region Discord Bot Message
 
-                    if (!player.IsAdmin)
+                    if (!player.IsAdmin && !player.GameServer.Configuration.serverInfo.testing)
                     {
                         var discord = core.Configuration.discordIntegration;
                         var players = world.Players.Count(p => p.Value.Client != null);
@@ -380,7 +381,7 @@ namespace TKR.WorldServer.logic.loot
                                 player.GetMaxedStats()
                             );
 
-                            if (discord.CanSendLootNotification(player.Stars, player.ObjectDesc.ObjectId.ToLower()) && builder.HasValue)
+                            if (!discord.CanSendLootNotification(player.Stars, player.ObjectDesc.ObjectId.ToLower()) && builder.HasValue)
 #pragma warning disable
                                 discord.SendWebhook(discord.webhookLootEvent, builder.Value);
 #pragma warning restore
@@ -417,7 +418,6 @@ namespace TKR.WorldServer.logic.loot
                     DropBag(enemy, owners.Select(x => x.AccountId).ToArray(), bagType, items, boosted);
                     items = new Item[8];
                     idx = 0;
-                    bagType = 0;
                 }
             }
 

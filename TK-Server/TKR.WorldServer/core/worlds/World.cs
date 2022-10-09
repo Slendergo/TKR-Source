@@ -66,7 +66,6 @@ namespace TKR.WorldServer.core.worlds
         public ConcurrentDictionary<int, Container> Containers { get; private set; } = new ConcurrentDictionary<int, Container>();
         public ConcurrentDictionary<int, Portal> Portals { get; private set; } = new ConcurrentDictionary<int, Portal>();
         public ConcurrentDictionary<int, Pet> Pets { get; private set; } = new ConcurrentDictionary<int, Pet>();
-        public Dictionary<int, Dictionary<int, Projectile>> Projectiles { get; private set; } = new Dictionary<int, Dictionary<int, Projectile>>();
         private readonly List<WorldTimer> Timers = new List<WorldTimer>();
 
         public ObjectPools ObjectPools { get; private set; }
@@ -125,7 +124,18 @@ namespace TKR.WorldServer.core.worlds
         {
             foreach (var player in Players.Values)
                 if (player.SqDistTo(host) < PlayerUpdate.VISIBILITY_RADIUS_SQR)
+                {
+                    if (outgoingMessage is EnemyShoot)
+                        player.EnemyShoot(outgoingMessage as EnemyShoot);
                     player.Client.SendPacket(outgoingMessage);
+                }
+        }
+
+        public void BroadcastIfVisibleExclude(List<OutgoingMessage> outgoingMessage, Entity broadcaster, Entity exclude)
+        {
+            foreach (var player in Players.Values)
+                if (player.Id != exclude.Id && player.SqDistTo(broadcaster) <= PlayerUpdate.VISIBILITY_RADIUS_SQR)
+                    player.Client.SendPackets(outgoingMessage);
         }
 
         public void BroadcastIfVisibleExclude(OutgoingMessage outgoingMessage, Entity broadcaster, Entity exclude)
@@ -158,28 +168,6 @@ namespace TKR.WorldServer.core.worlds
                 en.Value.OnChatTextReceived(player, text);
             foreach (var en in StaticObjects)
                 en.Value.OnChatTextReceived(player, text);
-        }
-
-        public void AddProjectile(Projectile projectile)
-        {
-            if (!Projectiles.ContainsKey(projectile.Host.Id))
-                Projectiles.Add(projectile.Host.Id, new Dictionary<int, Projectile>());
-            Projectiles[projectile.Host.Id][projectile.ProjectileId] = projectile;
-        }
-
-        public Projectile GetProjectile(int objectId, int bulletId)
-        {
-            if (Projectiles.TryGetValue(objectId, out var projectiles))
-                if (projectiles.TryGetValue(bulletId, out var ret))
-                    return ret;
-            return null;
-        }
-
-        public void RemoveProjectile(Projectile projectile)
-        {
-            if (Projectiles.ContainsKey(projectile.Host.Id))
-                Projectiles[projectile.Host.Id].Remove(projectile.ProjectileId);
-            ObjectPools.Projectiles.Return(projectile);
         }
 
         public virtual int EnterWorld(Entity entity)
@@ -462,16 +450,6 @@ namespace TKR.WorldServer.core.worlds
 
         protected virtual void UpdateLogic(ref TickTime time)
         {
-
-            var projectilesToRemove = new List<Projectile>();
-            foreach (var k in Projectiles.Values)
-                foreach (var projectile in k.Values)
-                    if (!projectile.Tick(ref time))
-                        projectilesToRemove.Add(projectile);
-
-            foreach (var projectile in projectilesToRemove)
-                RemoveProjectile(projectile);
-
             foreach (var player in Players.Values)
                 player.Tick(ref time);
 

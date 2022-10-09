@@ -4,6 +4,7 @@ import com.company.assembleegameclient.map.Map;
 import com.company.assembleegameclient.objects.Container;
 import com.company.assembleegameclient.objects.GameObject;
 import com.company.assembleegameclient.objects.ObjectLibrary;
+import com.company.assembleegameclient.objects.ObjectProperties;
 import com.company.assembleegameclient.objects.OneWayContainer;
 import com.company.assembleegameclient.objects.Player;
 import com.company.assembleegameclient.parameters.Parameters;
@@ -14,6 +15,8 @@ import com.company.assembleegameclient.ui.panels.itemgrids.itemtiles.Interactive
 import com.company.assembleegameclient.ui.panels.itemgrids.itemtiles.ItemTile;
 import com.company.assembleegameclient.ui.panels.itemgrids.itemtiles.ItemTileEvent;
 import com.company.assembleegameclient.util.DisplayHierarchy;
+
+import kabam.rotmg.constants.GeneralConstants;
 
 import kabam.rotmg.constants.ItemConstants;
 import kabam.rotmg.core.model.MapModel;
@@ -294,10 +297,23 @@ public class ItemGridMediator extends Mediator
       {
          var tileOwner:GameObject = tile.ownerGrid.owner;
          var player:Player = this.view.curPlayer;
-         var matchingSlotIndex:int = ObjectLibrary.getMatchingSlotIndex(tile.getItemId(),player);
+         var objectType:int = tile.getItemId();
+
+         var props:ObjectProperties = ObjectLibrary.propsLibrary_[objectType];
+
+         var offset:int = GeneralConstants.NUM_EQUIPMENT_SLOTS + GeneralConstants.NUM_INVENTORY_SLOTS + GeneralConstants.NUM_BACKPACK_SLOTS;
+         if (props.onlyOneTalisman_) {
+            for (var i:int = offset; i < offset + GeneralConstants.NUM_TALISMAN_SLOTS; i++) {
+               if (player.equipment_[i] == objectType) {
+                  return;
+               }
+            }
+         }
+
+         var matchingSlotIndex:int = ObjectLibrary.getMatchingSlotIndex(objectType, player);
          if(matchingSlotIndex != -1)
          {
-            GameServerConnection.instance.invSwap(player,tileOwner,tile.tileId,tile.getItemId(),player,matchingSlotIndex,player.equipment_[matchingSlotIndex]);
+            GameServerConnection.instance.invSwap(player,tileOwner,tile.tileId,objectType,player,matchingSlotIndex,player.equipment_[matchingSlotIndex]);
          }
          else
          {

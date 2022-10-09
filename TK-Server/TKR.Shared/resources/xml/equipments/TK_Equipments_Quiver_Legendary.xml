@@ -52,10 +52,8 @@
       <MaxDamage>1250</MaxDamage>
       <LifetimeMS>625</LifetimeMS>
       <Size>120</Size>
-      <MultiHit />
       <ArmorPiercing />
       <ParticleTrail lifetimeMS="150">0x380087</ParticleTrail>
-      <ConditionEffect duration="5">Slowed</ConditionEffect>
     </Projectile>
     <ActivateOnEquip stat="21" amount="7">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="5">IncrementStat</ActivateOnEquip>
@@ -87,10 +85,9 @@
       <MaxDamage>1000</MaxDamage>
       <LifetimeMS>700</LifetimeMS>
       <Size>120</Size>
-      <MultiHit />
       <PassesCover />
       <ConditionEffect duration="5">Curse</ConditionEffect>
-	<ConditionEffect duration="4">Paralyzed</ConditionEffect>
+	    <ConditionEffect duration="4">Slowed</ConditionEffect>
     </Projectile>
     <ActivateOnEquip stat="20" amount="4">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="5">IncrementStat</ActivateOnEquip>
@@ -122,7 +119,6 @@
         <MaxDamage>400</MaxDamage>
         <LifetimeMS>700</LifetimeMS>
         <Size>120</Size>
-        <MultiHit />
         <ArmorPiercing />
         <PassesCover />
         <ConditionEffect duration="2.5">Armor Broken</ConditionEffect>

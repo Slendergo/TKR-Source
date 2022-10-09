@@ -9869,449 +9869,6 @@
     <Soulbound />
     <BagType>2</BagType>
   </Object>
-  <Object type="0x5556" id="Talisman of Life">
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>lofiObj6</File>
-      <Index>0xd0</Index>
-    </Texture>
-    <Description>An taliman that nourishes the weilders soul.</Description>
-    <SlotType>26</SlotType>
-    <ActivateOnEquip stat="0" amount="10">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
-    <Talisman>
-      <Common />
-    </Talisman>
-  </Object>
-  <Object type="0x5557" id="Talisman of Mana">
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>lofiObj6</File>
-      <Index>0xd1</Index>
-    </Texture>
-    <Description>An taliman that nourishes the weilders magical core.</Description>
-    <SlotType>26</SlotType>
-    <ActivateOnEquip stat="3" amount="10">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
-    <Talisman>
-      <Common />
-    </Talisman>
-  </Object>
-  <Object type="0x5558" id="Talisman of Attack">
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>lofiObj6</File>
-      <Index>0xd2</Index>
-    </Texture>
-    <Description>An taliman that strengthens the wielders attacks.</Description>
-    <SlotType>26</SlotType>
-    <ActivateOnEquip stat="20" amount="2">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
-    <Talisman>
-      <Common />
-    </Talisman>
-  </Object>
-  <Object type="0x5559" id="Talisman of Defense">
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>lofiObj6</File>
-      <Index>0xd3</Index>
-    </Texture>
-    <Description>An taliman that toughens the weilders skin.</Description>
-    <SlotType>26</SlotType>
-    <ActivateOnEquip stat="21" amount="2">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
-    <Talisman>
-      <Common />
-    </Talisman>
-  </Object>
-  <Object type="0x555a" id="Talisman of Speed">
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>lofiObj6</File>
-      <Index>0xd4</Index>
-    </Texture>
-    <Description>An taliman that improves agility.</Description>
-    <SlotType>26</SlotType>
-    <ActivateOnEquip stat="22" amount="2">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
-    <Talisman>
-      <Common />
-    </Talisman>
-  </Object>
-  <Object type="0x555b" id="Talisman of Dexterity">
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>lofiObj6</File>
-      <Index>0xd5</Index>
-    </Texture>
-    <Description>An taliman that improves reflexes.</Description>
-    <SlotType>26</SlotType>
-    <ActivateOnEquip stat="28" amount="2">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
-    <Talisman>
-      <Common />
-    </Talisman>
-  </Object>
-  <Object type="0x555c" id="Talisman of Vitality">
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>lofiObj6</File>
-      <Index>0xd6</Index>
-    </Texture>
-    <Description>An taliman that speeds up wound healing.</Description>
-    <SlotType>26</SlotType>
-    <ActivateOnEquip stat="26" amount="2">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
-    <Talisman>
-      <Common />
-    </Talisman>
-  </Object>
-  <Object type="0x555d" id="Talisman of Wisdom">
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>lofiObj6</File>
-      <Index>0xd7</Index>
-    </Texture>
-    <Description>An taliman that speeds up mana absorption.</Description>
-    <SlotType>26</SlotType>
-    <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
-    <Talisman>
-      <Common />
-    </Talisman>
-  </Object>
-  <Object type="0x555e" id="Talisman of Empowerment">
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>lofiObj6</File>
-      <Index>0xd8</Index>
-    </Texture>
-    <Description>An taliman that empowers its weilder</Description>
-    <SlotType>26</SlotType>
-    <ActivateOnEquip stat="0" amount="10">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="3" amount="10">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="20" amount="1">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="1">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="22" amount="1">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="1">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="26" amount="1">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="27" amount="1">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
-    <Talisman>
-      <Common />
-    </Talisman>
-  </Object>
-  <Object type="0x4949" id="Pocket Change">
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x33</Index>
-    </Texture>
-    <Description>A talisman that grants the weilder more wealth</Description>
-    <SlotType>26</SlotType>
-    <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="3" amount="100">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
-    <Talisman>
-      <Common />
-      <OnlyOne />
-      <Provides effect="Pocket Change" />
-    </Talisman>
-  </Object>
-  <Object type="0x40a" id="Path of Destruction">
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x34</Index>
-    </Texture>
-    <Description>Whoever weild this talisman will lay destruction in their paths</Description>
-    <SlotType>26</SlotType>
-    <ActivateOnEquip stat="20" amount="10">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="10">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
-    <Talisman>
-      <Common />
-      <OnlyOne />
-    </Talisman>
-  </Object>
-  <Object type="0x40b" id="Heart and Soul">
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x35</Index>
-    </Texture>
-    <Description>A warrior will prevail</Description>
-    <SlotType>26</SlotType>
-    <ActivateOnEquip stat="21" amount="10">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="22" amount="10">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="26" amount="10">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="27" amount="10">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
-    <Talisman>
-      <Common />
-      <OnlyOne />
-    </Talisman>
-  </Object>
-  <Object type="0x40c" id="Blood Exchange">
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x10</Index>
-    </Texture>
-    <Description>Blood shall be drawn.</Description>
-    <SlotType>26</SlotType>
-    <ActivateOnEquip stat="0" amount="150">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="-10">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
-    <Talisman>
-      <Legendary />
-      <OnlyOne />
-      <Provides effect="Blood Exchange" />
-    </Talisman>
-  </Object>
-  <Object type="0x40d" id="Eternal Youth">
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x11</Index>
-    </Texture>
-    <Description>Whoever wields this talisman will have vitality like no other</Description>
-    <SlotType>26</SlotType>
-    <ActivateOnEquip stat="0" amount="125">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="26" amount="15">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="27" amount="-10">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
-    <Talisman>
-      <Legendary />
-      <OnlyOne />
-    </Talisman>
-  </Object>
-  <Object type="0x40e" id="Unyielding Resilience">
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x12</Index>
-    </Texture>
-    <Description>Whoever wields this talisman will have relislience like no other</Description>
-    <SlotType>26</SlotType>
-    <ActivateOnEquip stat="20" amount="10">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="26" amount="20">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="22" amount="-10">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
-    <Talisman>
-      <Legendary />
-      <OnlyOne />
-    </Talisman>
-  </Object>
-  <Object type="0x40f" id="Wrath's Incarnate">
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x20</Index>
-    </Texture>
-    <Description>The owner of this talisman shall be the vessel of wrath</Description>
-    <SlotType>26</SlotType>
-    <ActivateOnEquip stat="0" amount="-100">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="20" amount="20">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="22" amount="12">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
-    <Talisman>
-      <Legendary />
-      <OnlyOne />
-    </Talisman>
-  </Object>
-  <Object type="0x407" id="Primal Rage">
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x21</Index>
-    </Texture>
-    <Description>Whoever weilds this talisman will be unstoppable</Description>
-    <SlotType>26</SlotType>
-    <ActivateOnEquip stat="0" amount="75">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="20" amount="10">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="-10">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
-    <Talisman>
-      <Legendary />
-      <OnlyOne />
-      <Provides effect="Primal Rage" />
-    </Talisman>
-  </Object>
-  <Object type="0x408" id="Call to Arms">
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x22</Index>
-    </Texture>
-    <Description>A talisman given to those who are drafted.</Description>
-    <SlotType>26</SlotType>
-    <ActivateOnEquip stat="20" amount="12">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="26" amount="-10">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="27" amount="-10">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
-    <Talisman>
-      <Legendary />
-      <OnlyOne />
-      <Provides effect="Call to Arms" />
-    </Talisman>
-  </Object>
-  <Object type="0x409" id="Divine Intellect">
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x30</Index>
-    </Texture>
-    <Description>Wisdom comes to those who have intellect</Description>
-    <SlotType>26</SlotType>
-    <ActivateOnEquip stat="0" amount="-100">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="26" amount="-5">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="27" amount="20">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
-    <Talisman>
-      <Legendary />
-      <OnlyOne />
-    </Talisman>
-  </Object>
-  <Object type="0x410" id="Insatiable Thirst">
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x31</Index>
-    </Texture>
-    <Description>Whoever wields this talisman is blessed with mana</Description>
-    <SlotType>26</SlotType>
-    <ActivateOnEquip stat="0" amount="-100">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="3" amount="100">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
-    <Talisman>
-      <Legendary />
-      <OnlyOne />
-      <Provides effect="Insatiable Thirst" />
-    </Talisman>
-  </Object>
-  <Object type="0x411" id="Spellslinger">
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x32</Index>
-    </Texture>
-    <Description>Whoever wields this talisman will be granted powerful casting speed</Description>
-    <SlotType>26</SlotType>
-    <ActivateOnEquip stat="20" amount="5">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="22" amount="-8">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="28" amount="12">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
-    <Talisman>
-      <Legendary />
-      <OnlyOne />
-    </Talisman>
-  </Object>
-  <Object type="0x412" id="Iron Will">
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x40</Index>
-    </Texture>
-    <Description>Whoever wields this talisman will have Iron will</Description>
-    <SlotType>26</SlotType>
-    <ActivateOnEquip stat="3" amount="-100">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="21" amount="15">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
-    <Talisman>
-      <Legendary />
-      <OnlyOne />
-      <Provides effect="Iron Will" />
-    </Talisman>
-  </Object>
-  <Object type="0x413" id="Party of One">
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x41</Index>
-    </Texture>
-    <Description>Its said that misfortune occurs to the wielder when others are nearby</Description>
-    <SlotType>26</SlotType>
-    <BagType>10</BagType>
-    <Talisman>
-      <Legendary />
-      <OnlyOne />
-      <Provides effect="Party of One" />
-    </Talisman>
-  </Object>
-  <Object type="0x414" id="Forbidden Fruit">
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x42</Index>
-    </Texture>
-    <Description>A fruit that is forbidden</Description>
-    <SlotType>26</SlotType>
-    <BagType>10</BagType>
-    <Talisman>
-      <Legendary />
-      <OnlyOne />
-      <Provides effect="Forbidden Fruit" />
-    </Talisman>
-  </Object>
-  <Object type="0x415" id="Luck of the Irish">
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x51</Index>
-    </Texture>
-    <Description>There is a legend that whoever wields this talisman is granted wealth beyond their wildest dreams</Description>
-    <SlotType>26</SlotType>
-    <BagType>10</BagType>
-    <Talisman>
-      <Mythical />
-      <OnlyOne />
-      <Provides effect="Luck of the Irish" />
-    </Talisman>
-  </Object>
-  <Object type="0x416" id="Known After Death">
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x50</Index>
-    </Texture>
-    <Description>This talisman will make you known after death as a legend</Description>
-    <SlotType>26</SlotType>
-    <BagType>10</BagType>
-    <Talisman>
-      <Legendary />
-      <OnlyOne />
-      <Provides effect="Known After Death" />
-    </Talisman>
-  </Object>
   <Object type="0x706b" id="Larva Puke">
     <Texture>
       <File>lofiObj3</File>
@@ -50253,86 +49810,6 @@
     <BagType>5</BagType>
     <feedPower>100000</feedPower>
   </Object>
-  <Object type="0x18f" id="Gift">
-    <DisplayId>Gift of Krathan</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>lofiEnvironment3</File>
-      <Index>0x22</Index>
-    </Texture>
-    <SlotType>10</SlotType>
-    <Description>Use it and simply hit the class you need equipment for! Recommended to be used in your vault.\n\nConsume responsibly!</Description>
-    <Sound>use_potion</Sound>
-    <Activate objectId="Testing Gift Spawner">Pet</Activate>
-    <Consumable />
-    <BagType>5</BagType>
-    <feedPower>50000</feedPower>
-  </Object>
-  <Object type="0x641" id="Keys">
-    <DisplayId>Skeleton Key</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>lofiObj</File>
-      <Index>0x21</Index>
-    </Texture>
-    <SlotType>10</SlotType>
-    <Description>Opens everything! For testing purposes.</Description>
-    <Sound>use_potion</Sound>
-    <Activate id="Key Spawner">Create</Activate>
-    <Consumable />
-    <BagType>5</BagType>
-    <feedPower>50000</feedPower>
-  </Object>
-  <Object type="0x933" id="TKeys">
-    <DisplayId>Testing Gift</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>lofiObj</File>
-      <Index>0x20</Index>
-    </Texture>
-    <SlotType>10</SlotType>
-    <Description>Spawns an object that drops keys and items. For testing purposes.</Description>
-    <Sound>use_potion</Sound>
-    <Activate id="Testing Key Dropper">Create</Activate>
-    <Consumable />
-    <BagType>5</BagType>
-    <feedPower>50000</feedPower>
-  </Object>
-  <Object type="0x216" id="Lvl20">
-    <DisplayId>Level Chicken</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>lofiChar8x8</File>
-      <Index>0xcd</Index>
-    </Texture>
-    <SlotType>10</SlotType>
-    <Description>Spawns 6 chicken to get you to level 20.</Description>
-    <Sound>use_potion</Sound>
-    <Activate objectId="Lvl20 Chicken Spawner">Pet</Activate>
-    <Consumable />
-    <BagType>5</BagType>
-    <feedPower>10000</feedPower>
-  </Object>
-  <Object type="0x218" id="Fame">
-    <DisplayId>Fame Chicken</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>lofiChar8x8</File>
-      <Index>0xcd</Index>
-    </Texture>
-    <SlotType>10</SlotType>
-    <Description>Spawns 500 Fame worth of chicken! Also functions as high quality pet food. Yum!\n\nConsume responsibly!</Description>
-    <Sound>use_potion</Sound>
-    <Activate objectId="Fame Chicken Spawner">Pet</Activate>
-    <Consumable />
-    <BagType>5</BagType>
-    <feedPower>200000</feedPower>
-  </Object>
   <Object type="0x6b5" id="Dragon Buddies">
     <DisplayId>Dragon Buddies</DisplayId>
     <Class>Equipment</Class>
@@ -58086,10 +57563,8 @@
       <MaxDamage>1250</MaxDamage>
       <LifetimeMS>625</LifetimeMS>
       <Size>120</Size>
-      <MultiHit />
       <ArmorPiercing />
       <ParticleTrail lifetimeMS="150">0x380087</ParticleTrail>
-      <ConditionEffect duration="5">Slowed</ConditionEffect>
     </Projectile>
     <ActivateOnEquip stat="21" amount="7">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="5">IncrementStat</ActivateOnEquip>
@@ -58121,10 +57596,9 @@
       <MaxDamage>1000</MaxDamage>
       <LifetimeMS>700</LifetimeMS>
       <Size>120</Size>
-      <MultiHit />
       <PassesCover />
       <ConditionEffect duration="5">Curse</ConditionEffect>
-      <ConditionEffect duration="4">Paralyzed</ConditionEffect>
+      <ConditionEffect duration="4">Slowed</ConditionEffect>
     </Projectile>
     <ActivateOnEquip stat="20" amount="4">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="5">IncrementStat</ActivateOnEquip>
@@ -58156,7 +57630,6 @@
       <MaxDamage>400</MaxDamage>
       <LifetimeMS>700</LifetimeMS>
       <Size>120</Size>
-      <MultiHit />
       <ArmorPiercing />
       <PassesCover />
       <ConditionEffect duration="2.5">Armor Broken</ConditionEffect>
@@ -58192,7 +57665,6 @@
       <LifetimeMS>1000</LifetimeMS>
       <Size>150</Size>
       <ConditionEffect duration="3">Slowed</ConditionEffect>
-      <MultiHit />
       <PassesCover />
       <ParticleTrail />
     </Projectile>
@@ -58222,7 +57694,6 @@
       <LifetimeMS>1000</LifetimeMS>
       <Size>150</Size>
       <ConditionEffect duration="3">Slowed</ConditionEffect>
-      <MultiHit />
       <PassesCover />
       <ParticleTrail />
     </Projectile>
@@ -58253,7 +57724,6 @@
       <LifetimeMS>1000</LifetimeMS>
       <Size>150</Size>
       <ConditionEffect duration="3">Slowed</ConditionEffect>
-      <MultiHit />
       <PassesCover />
       <ParticleTrail />
     </Projectile>
@@ -58283,13 +57753,12 @@
       <MaxDamage>260</MaxDamage>
       <LifetimeMS>1000</LifetimeMS>
       <Size>150</Size>
-      <ConditionEffect duration="3">Paralyzed</ConditionEffect>
-      <MultiHit />
+      <ConditionEffect duration="3">Slowed</ConditionEffect>
       <PassesCover />
       <ParticleTrail />
     </Projectile>
     <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
-    <ConditionEffect duration="3">Paralyzed</ConditionEffect>
+    <ConditionEffect duration="3">Slowed</ConditionEffect>
     <Usable />
     <BagType>2</BagType>
     <FameBonus>1</FameBonus>
@@ -58315,13 +57784,12 @@
       <MaxDamage>320</MaxDamage>
       <LifetimeMS>1000</LifetimeMS>
       <Size>150</Size>
-      <ConditionEffect duration="3">Paralyzed</ConditionEffect>
-      <MultiHit />
+      <ConditionEffect duration="3">Slowed</ConditionEffect>
       <PassesCover />
       <ParticleTrail />
     </Projectile>
     <ActivateOnEquip stat="28" amount="4">IncrementStat</ActivateOnEquip>
-    <ConditionEffect duration="3">Paralyzed</ConditionEffect>
+    <ConditionEffect duration="3">Slowed</ConditionEffect>
     <Usable />
     <BagType>2</BagType>
     <FameBonus>2</FameBonus>
@@ -58347,13 +57815,12 @@
       <MaxDamage>350</MaxDamage>
       <LifetimeMS>1000</LifetimeMS>
       <Size>150</Size>
-      <ConditionEffect duration="3">Paralyzed</ConditionEffect>
-      <MultiHit />
+      <ConditionEffect duration="3">Slowed</ConditionEffect>
       <PassesCover />
       <ParticleTrail />
     </Projectile>
     <ActivateOnEquip stat="28" amount="5">IncrementStat</ActivateOnEquip>
-    <ConditionEffect duration="3">Paralyzed</ConditionEffect>
+    <ConditionEffect duration="3">Slowed</ConditionEffect>
     <Usable />
     <BagType>4</BagType>
     <FameBonus>3</FameBonus>
@@ -58379,15 +57846,14 @@
       <MaxDamage>350</MaxDamage>
       <LifetimeMS>1000</LifetimeMS>
       <Size>150</Size>
-      <ConditionEffect duration="3">Paralyzed</ConditionEffect>
-      <MultiHit />
+      <ConditionEffect duration="3">Slowed</ConditionEffect>
       <PassesCover />
       <ParticleTrail />
     </Projectile>
     <ActivateOnEquip stat="26" amount="2">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="5">IncrementStat</ActivateOnEquip>
-    <ConditionEffect duration="3">Paralyzed</ConditionEffect>
+    <ConditionEffect duration="3">Slowed</ConditionEffect>
     <Usable />
     <BagType>4</BagType>
     <FameBonus>4</FameBonus>
@@ -58415,7 +57881,6 @@
       <Size>120</Size>
       <ConditionEffect duration="5">Slowed</ConditionEffect>
       <PassesCover />
-      <MultiHit />
       <ParticleTrail lifetimeMS="150">0x33ccff</ParticleTrail>
     </Projectile>
     <ActivateOnEquip stat="20" amount="3">IncrementStat</ActivateOnEquip>
@@ -89283,6 +88748,363 @@
     </Texture>
     <AngleCorrection>1</AngleCorrection>
   </Object>
+  <Object type="0x5556" id="Talisman of Life">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xd0</Index>
+    </Texture>
+    <Description>An taliman that nourishes the weilders soul.</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="0" amount="10">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Common />
+    </Talisman>
+  </Object>
+  <Object type="0x5557" id="Talisman of Mana">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xd1</Index>
+    </Texture>
+    <Description>An taliman that nourishes the weilders magical core.</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="3" amount="10">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Common />
+    </Talisman>
+  </Object>
+  <Object type="0x5558" id="Talisman of Attack">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xd2</Index>
+    </Texture>
+    <Description>An taliman that strengthens the wielders attacks.</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="20" amount="2">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Common />
+    </Talisman>
+  </Object>
+  <Object type="0x5559" id="Talisman of Defense">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xd3</Index>
+    </Texture>
+    <Description>An taliman that toughens the weilders skin.</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="21" amount="2">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Common />
+    </Talisman>
+  </Object>
+  <Object type="0x555a" id="Talisman of Speed">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xd4</Index>
+    </Texture>
+    <Description>An taliman that improves agility.</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="22" amount="2">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Common />
+    </Talisman>
+  </Object>
+  <Object type="0x555b" id="Talisman of Dexterity">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xd5</Index>
+    </Texture>
+    <Description>An taliman that improves reflexes.</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="28" amount="2">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Common />
+    </Talisman>
+  </Object>
+  <Object type="0x555c" id="Talisman of Vitality">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xd6</Index>
+    </Texture>
+    <Description>An taliman that speeds up wound healing.</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="26" amount="2">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Common />
+    </Talisman>
+  </Object>
+  <Object type="0x555d" id="Talisman of Wisdom">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xd7</Index>
+    </Texture>
+    <Description>An taliman that speeds up mana absorption.</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Common />
+    </Talisman>
+  </Object>
+  <Object type="0x555e" id="Talisman of Empowerment">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xd8</Index>
+    </Texture>
+    <Description>An taliman that empowers its weilder</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="0" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="1">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="1">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="1">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="1">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="1">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="1">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Common />
+    </Talisman>
+  </Object>
+  <Object type="0x4949" id="Pocket Change">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x33</Index>
+    </Texture>
+    <Description>A talisman that grants the weilder more wealth</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="100">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Common />
+      <OnlyOne />
+      <Provides effect="Pocket Change" />
+    </Talisman>
+  </Object>
+  <Object type="0x40a" id="Path of Destruction">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x34</Index>
+    </Texture>
+    <Description>Whoever weild this talisman will lay destruction in their paths</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="20" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="10">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Common />
+      <OnlyOne />
+    </Talisman>
+  </Object>
+  <Object type="0x40b" id="Heart and Soul">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x35</Index>
+    </Texture>
+    <Description>A warrior will prevail</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="21" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="10">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Common />
+      <OnlyOne />
+    </Talisman>
+  </Object>
+  <Object type="0x407" id="Talisman of Unweakening">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x21</Index>
+    </Texture>
+    <Description>Whoever weilds this talisman will be unstoppable</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="0" amount="75">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="-10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Legendary />
+      <OnlyOne />
+      <Provides effect="Weak Immunity" />
+    </Talisman>
+  </Object>
+  <Object type="0x408" id="Call to Arms">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x22</Index>
+    </Texture>
+    <Description>A talisman given to those who are drafted.</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="20" amount="12">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="-10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="-10">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Legendary />
+      <OnlyOne />
+      <Provides effect="Call To Arms" />
+    </Talisman>
+  </Object>
+  <Object type="0x40d" id="Eternal Youth">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x11</Index>
+    </Texture>
+    <Description>Whoever wields this talisman will have vitality like no other</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="0" amount="125">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="15">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="-10">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Legendary />
+      <OnlyOne />
+    </Talisman>
+  </Object>
+  <Object type="0x40e" id="Unyielding Resilience">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x12</Index>
+    </Texture>
+    <Description>Whoever wields this talisman will have relislience like no other</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="20" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="20">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="-10">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Legendary />
+      <OnlyOne />
+    </Talisman>
+  </Object>
+  <Object type="0x409" id="Divine Intellect">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x30</Index>
+    </Texture>
+    <Description>Wisdom comes to those who have intellect</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="0" amount="-100">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="-5">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="20">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Legendary />
+      <OnlyOne />
+    </Talisman>
+  </Object>
+  <Object type="0x413" id="Party of One">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x41</Index>
+    </Texture>
+    <Description>Its said that misfortune occurs to the wielder when others are nearby</Description>
+    <SlotType>26</SlotType>
+    <BagType>10</BagType>
+    <Talisman>
+      <Legendary />
+      <OnlyOne />
+      <Provides effect="Party Of One" />
+    </Talisman>
+  </Object>
+  <Object type="0x415" id="Luck of the Irish">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x51</Index>
+    </Texture>
+    <Description>There is a legend that whoever wields this talisman is granted wealth beyond their wildest dreams</Description>
+    <SlotType>26</SlotType>
+    <BagType>10</BagType>
+    <Talisman>
+      <Mythical />
+      <OnlyOne />
+      <Provides effect="Luck Of The Irish" />
+    </Talisman>
+  </Object>
+  <Object type="0x416" id="Known After Death">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x50</Index>
+    </Texture>
+    <Description>This talisman will make you known after death as a legend</Description>
+    <SlotType>26</SlotType>
+    <BagType>10</BagType>
+    <Talisman>
+      <Mythical />
+      <OnlyOne />
+      <Provides effect="Known After Death" />
+    </Talisman>
+  </Object>
+  <Object type="0x494a" id="Hard Head">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x21</Index>
+    </Texture>
+    <Description></Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="0" amount="75">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="-5">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="5">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="-5">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Mythical />
+      <OnlyOne />
+      <Provides effect="Stun Immunity" />
+    </Talisman>
+  </Object>
   <Object type="0x01ce" id="Cave Wall">
     <Class>CaveWall</Class>
     <Texture>
@@ -94512,30 +94334,253 @@
     <BlocksSight />
     <DisplayId>LH Wall</DisplayId>
   </Object>
-  <Object type="0x4343" id="Worn Bolas">
+  <Object type="0x434a" id="Worn and Torn Bolas Projectile">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xE0</Index>
+    </Texture>
+    <Rotation>20</Rotation>
+  </Object>
+  <Object type="0x434c" id="Worn Bolas Projectile">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xE1</Index>
+    </Texture>
+    <Rotation>20</Rotation>
+  </Object>
+  <Object type="0x434d" id="Damaged Bolas Projectile">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xE2</Index>
+    </Texture>
+    <Rotation>20</Rotation>
+  </Object>
+  <Object type="0x434e" id="Bolas Projectile">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xE3</Index>
+    </Texture>
+    <Rotation>20</Rotation>
+  </Object>
+  <Object type="0x434f" id="Iron Bolas Projectile">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xE4</Index>
+    </Texture>
+    <Rotation>20</Rotation>
+  </Object>
+  <Object type="0x4350" id="Mithril Bolas Projectile">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xE5</Index>
+    </Texture>
+    <Rotation>20</Rotation>
+  </Object>
+  <Object type="0x4351" id="Obsidian Bolas Projectile">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xE6</Index>
+    </Texture>
+    <Rotation>20</Rotation>
+  </Object>
+  <Object type="0x4343" id="Worn and Torn Bolas">
     <Class>Equipment</Class>
     <Item />
     <Texture>
       <File>lofiObj6</File>
-      <Index>0x30</Index>
+      <Index>0xE0</Index>
     </Texture>
-    <SlotType>26</SlotType>
+    <SlotType>27</SlotType>
     <Tier>0</Tier>
-    <Description>A magical quiver that enchants arrows.</Description>
+    <Description>A bolas that is on the edge of breaking</Description>
     <Sound>spell/fire_spray</Sound>
     <Projectile>
-      <ObjectId>Red Arrow</ObjectId>
+      <ObjectId>Worn and Torn Bolas Projectile</ObjectId>
       <Speed>150</Speed>
       <MinDamage>100</MinDamage>
       <MaxDamage>140</MaxDamage>
       <LifetimeMS>1000</LifetimeMS>
       <Size>150</Size>
-      <MultiHit />
       <PassesCover />
     </Projectile>
     <Usable />
     <BagType>1</BagType>
     <MpCost>50</MpCost>
-    <Activate successChance="0.2" success="100" failure="75" effect="Paralyzed">Bolas</Activate>
+    <Activate>Shoot</Activate>
+  </Object>
+  <Object type="0x4344" id="Worn Bolas">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xE1</Index>
+    </Texture>
+    <SlotType>27</SlotType>
+    <Tier>1</Tier>
+    <Description>A bolas that has seen better days.</Description>
+    <Sound>spell/fire_spray</Sound>
+    <Projectile>
+      <ObjectId>Worn Bolas Projectile</ObjectId>
+      <Speed>150</Speed>
+      <MinDamage>140</MinDamage>
+      <MaxDamage>180</MaxDamage>
+      <LifetimeMS>1000</LifetimeMS>
+      <Size>150</Size>
+      <PassesCover />
+      <ConditionEffect duration="2">Slowed</ConditionEffect>
+    </Projectile>
+    <ActivateOnEquip stat="28" amount="1">IncrementStat</ActivateOnEquip>
+    <Usable />
+    <BagType>1</BagType>
+    <MpCost>55</MpCost>
+    <Activate>Shoot</Activate>
+  </Object>
+  <Object type="0x4345" id="Damaged Bolas">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xE2</Index>
+    </Texture>
+    <SlotType>27</SlotType>
+    <Tier>2</Tier>
+    <Description>A well used bolas.</Description>
+    <Sound>spell/fire_spray</Sound>
+    <Projectile>
+      <ObjectId>Damaged Bolas Projectile</ObjectId>
+      <Speed>150</Speed>
+      <MinDamage>180</MinDamage>
+      <MaxDamage>220</MaxDamage>
+      <LifetimeMS>1000</LifetimeMS>
+      <Size>150</Size>
+      <PassesCover />
+      <ConditionEffect duration="3">Slowed</ConditionEffect>
+    </Projectile>
+    <ActivateOnEquip stat="28" amount="2">IncrementStat</ActivateOnEquip>
+    <Usable />
+    <BagType>1</BagType>
+    <MpCost>60</MpCost>
+    <Activate>Shoot</Activate>
+  </Object>
+  <Object type="0x4346" id="Bolas">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xE3</Index>
+    </Texture>
+    <SlotType>27</SlotType>
+    <Tier>3</Tier>
+    <Description>A brand new bolas ready for action.</Description>
+    <Sound>spell/fire_spray</Sound>
+    <Projectile>
+      <ObjectId>Bolas Projectile</ObjectId>
+      <Speed>150</Speed>
+      <MinDamage>220</MinDamage>
+      <MaxDamage>260</MaxDamage>
+      <LifetimeMS>1000</LifetimeMS>
+      <Size>150</Size>
+      <PassesCover />
+      <ConditionEffect duration="1">Paralyzed</ConditionEffect>
+    </Projectile>
+    <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
+    <Usable />
+    <BagType>2</BagType>
+    <FameBonus>1</FameBonus>
+    <MpCost>75</MpCost>
+    <Activate>Shoot</Activate>
+  </Object>
+  <Object type="0x4347" id="Iron Bolas">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xE4</Index>
+    </Texture>
+    <SlotType>27</SlotType>
+    <Tier>4</Tier>
+    <Description>A freshly forged bolas ready to deal some major damage.</Description>
+    <Sound>spell/fire_spray</Sound>
+    <Projectile>
+      <ObjectId>Iron Bolas Projectile</ObjectId>
+      <Speed>150</Speed>
+      <MinDamage>240</MinDamage>
+      <MaxDamage>320</MaxDamage>
+      <LifetimeMS>1000</LifetimeMS>
+      <Size>150</Size>
+      <PassesCover />
+      <ConditionEffect duration="2">Paralyzed</ConditionEffect>
+    </Projectile>
+    <ActivateOnEquip stat="28" amount="4">IncrementStat</ActivateOnEquip>
+    <Usable />
+    <BagType>2</BagType>
+    <FameBonus>2</FameBonus>
+    <MpCost>95</MpCost>
+    <Activate>Shoot</Activate>
+  </Object>
+  <Object type="0x434b" id="Mithril Bolas">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xE5</Index>
+    </Texture>
+    <SlotType>27</SlotType>
+    <Tier>5</Tier>
+    <Description>A mithril forged bolas that is said to never break.</Description>
+    <Sound>spell/fire_spray</Sound>
+    <Projectile>
+      <ObjectId>Mithril Bolas Projectile</ObjectId>
+      <Speed>150</Speed>
+      <MinDamage>290</MinDamage>
+      <MaxDamage>350</MaxDamage>
+      <LifetimeMS>1000</LifetimeMS>
+      <Size>150</Size>
+      <PassesCover />
+      <ConditionEffect duration="2.4">Paralyzed</ConditionEffect>
+    </Projectile>
+    <ActivateOnEquip stat="28" amount="5">IncrementStat</ActivateOnEquip>
+    <Usable />
+    <BagType>4</BagType>
+    <FameBonus>3</FameBonus>
+    <MpCost>100</MpCost>
+    <Activate>Shoot</Activate>
+  </Object>
+  <Object type="0x4349" id="Obsidian Bolas">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xE6</Index>
+    </Texture>
+    <SlotType>27</SlotType>
+    <Tier>6</Tier>
+    <Description>A bolas forged from the heart of a volcano</Description>
+    <Sound>spell/fire_spray</Sound>
+    <Projectile>
+      <ObjectId>Obsidian Bolas Projectile</ObjectId>
+      <Speed>150</Speed>
+      <MinDamage>290</MinDamage>
+      <MaxDamage>350</MaxDamage>
+      <LifetimeMS>1000</LifetimeMS>
+      <Size>150</Size>
+      <PassesCover />
+      <ConditionEffect duration="3">Paralyzed</ConditionEffect>
+    </Projectile>
+    <ActivateOnEquip stat="26" amount="2">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="5">IncrementStat</ActivateOnEquip>
+    <Usable />
+    <BagType>4</BagType>
+    <FameBonus>4</FameBonus>
+    <MpCost>125</MpCost>
+    <Activate>Shoot</Activate>
   </Object>
 </Objects>

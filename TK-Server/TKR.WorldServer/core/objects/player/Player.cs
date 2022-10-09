@@ -26,6 +26,7 @@ using TKR.WorldServer.networking;
 using TKR.WorldServer.networking.packets.outgoing;
 using TKR.WorldServer.utils;
 using TKR.WorldServer.core.miscfile.structures;
+using TKR.WorldServer.core.connection;
 
 namespace TKR.WorldServer.core.objects
 {
@@ -368,31 +369,21 @@ namespace TKR.WorldServer.core.objects
             }, this, this);
 
             if (HP <= 0)
-                Death(src.ObjectDesc.DisplayId ??
-                      src.ObjectDesc.ObjectId,
-                      src);
+                Death(src.ObjectDesc.DisplayId ?? src.ObjectDesc.ObjectId, src.Spawned);
         }
 
-        public void Death(string killer, Entity entity = null, WmapTile tile = null, bool rekt = false)
+        public void Death(string killer, bool rekt = false)
         {
             if (Client.State == ProtocolState.Disconnected || _dead)
                 return;
             _dead = true;
 
-            if (tile != null && tile.Spawned)
-                rekt = true;
-
-            if (World is VaultWorld)
+            if (rekt)
             {
-                Rekted(true);
+                GenerateGravestone(true);
+                ReconnectToNexus();
                 return;
             }
-
-            if (Rekted(rekt))
-                return;
-
-            if (NonPermaKillEnemy(entity, killer))
-                return;
 
             if (Resurrection())
                 return;
@@ -440,62 +431,6 @@ namespace TKR.WorldServer.core.objects
         {
             var playerDesc = GameServer.Resources.GameData.Classes[ObjectType];
             return playerDesc.Stats.Where((t, i) => Stats.Base[i] >= t.MaxValue).Count() + (UpgradeEnabled ? playerDesc.Stats.Where((t, i) => i == 0 ? Stats.Base[i] >= t.MaxValue + 50 : i == 1 ? Stats.Base[i] >= t.MaxValue + 50 : Stats.Base[i] >= t.MaxValue + 10).Count() : 0);
-        }
-
-        public override void HitByProjectile(Projectile projectile, ref TickTime time)
-        {
-            if (projectile.Host is Player || IsInvulnerable)
-                return;
-
-            #region Item Effects
-
-            for (var i = 0; i < 4; i++)
-            {
-                var item = Inventory[i];
-                if (item == null || !item.Legendary && !item.Mythical)
-                    continue;
-
-                /* Eternal Effects */
-                if (item.MonkeyKingsWrath)
-                {
-                    MonkeyKingsWrath(i);
-                }
-                /* Revenge Effects */
-                if (item.GodTouch)
-                {
-                    GodTouch(i);
-                }
-
-                if (item.GodBless)
-                {
-                    GodBless(i);
-                }
-
-                /* Legendary Effects */
-                if (item.Clarification)
-                {
-                    Clarification(i);
-                }
-            }
-
-            #endregion Item Effects
-
-            var dmg = (int)Stats.GetDefenseDamage(projectile.Damage, projectile.ProjDesc.ArmorPiercing);
-            if (!HasConditionEffect(ConditionEffectIndex.Invulnerable))
-                HP -= dmg;
-            ApplyConditionEffect(projectile.ProjDesc.Effects);
-            World.BroadcastIfVisibleExclude(new Damage()
-            {
-                TargetId = Id,
-                Effects = 0,
-                DamageAmount = dmg,
-                Kill = HP <= 0,
-                BulletId = projectile.ProjectileId,
-                ObjectId = projectile.Host.Id
-            }, this, this);
-
-            if (HP <= 0)
-                Death(projectile.Host.ObjectDesc.DisplayId ?? projectile.Host.ObjectDesc.ObjectId, projectile.Host);
         }
 
         public override void Init(World owner)
@@ -1263,10 +1198,8 @@ namespace TKR.WorldServer.core.objects
                 var vitalityStat = Stats[6];
 
                 HealthRegenCarry += (1.0 + (0.24 * vitalityStat)) * time.DeltaTime;
-                if (HasTalismanEffect(TalismanEffectType.CalltoArms))
+                if (HasTalismanEffect(TalismanEffectType.CallToArms))
                     HealthRegenCarry *= 2.0;
-                if (HasTalismanEffect(TalismanEffectType.BloodExchange))
-                    HealthRegenCarry *= 3.0;
                 if (HasConditionEffect(ConditionEffectIndex.Healing))
                     HealthRegenCarry += 20.0 * time.DeltaTime;
 
@@ -1284,7 +1217,7 @@ namespace TKR.WorldServer.core.objects
                 var wisdomStat = Stats[7];
 
                 ManaRegenCarry += (0.5 + 0.12 * wisdomStat) * time.DeltaTime;
-                if (HasTalismanEffect(TalismanEffectType.CalltoArms))
+                if (HasTalismanEffect(TalismanEffectType.CallToArms))
                     ManaRegenCarry *= 2.0;
 
                 if (HasConditionEffect(ConditionEffectIndex.MPTRegeneration))
@@ -1380,22 +1313,10 @@ namespace TKR.WorldServer.core.objects
             }
         }
 
-        private bool NonPermaKillEnemy(Entity entity, string killer)
-        {
-            if (entity == null)
-                return false;
-
-            if (!entity.Spawned)
-                return false;
-
-            GenerateGravestone(true);
-            ReconnectToNexus();
-            return true;
-        }
-
         private void ReconnectToNexus()
         {
-            HP = 1;
+            HP = Stats[0];
+            MP = Stats[1];
             Client.Reconnect(new Reconnect()
             {
                 Host = "",
@@ -1406,15 +1327,6 @@ namespace TKR.WorldServer.core.objects
             var party = DbPartySystem.Get(Client.Account.Database, Client.Account.PartyId);
             if (party != null && party.PartyLeader.Item1 == Client.Account.Name && party.PartyLeader.Item2 == Client.Account.AccountId)
                 party.WorldId = -1;
-        }
-
-        private bool Rekted(bool rekt)
-        {
-            if (!rekt)
-                return false;
-            GenerateGravestone(true);
-            ReconnectToNexus();
-            return true;
         }
 
         private bool Resurrection()

@@ -36,14 +36,15 @@ import com.company.assembleegameclient.objects.Player;
       {
          if(this.itemType == ItemConstants.TALISMAN_TYPE) {
             var properties:ObjectProperties = ObjectLibrary.propsLibrary_[type];
-            if (properties != null) {
+            if (properties != null)
+            {
+               if(tileId < 24 && !properties.isCommonTalisman_){
+                  return false;
+               }
                if((tileId == 26 || tileId == 27) && !properties.isMythicTalisman_){
                   return false;
                }
                if((tileId == 24 || tileId == 25) && !properties.isLegendaryTalisman_){
-                  return false;
-               }
-               if((tileId == 20 || tileId == 21 || tileId == 22 || tileId == 23) && !properties.isCommonTalisman_){
                   return false;
                }
             }
@@ -137,7 +138,7 @@ import com.company.assembleegameclient.objects.Player;
                dy = 1;
                break;
             case ItemConstants.BOLAS_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj3", 234);
+               bd = AssetLibrary.getImageFromSet("lofiObj6", 0xe0);
                break;
          }
 
@@ -207,12 +208,6 @@ import com.company.assembleegameclient.objects.Player;
             }
             else if(player.map_.disableAbilities_ && slot == 1){
                canUse = false;
-            }
-
-            if(slot == 1 && player.HasTalismanEffect(GameObject.BloodExchange)) {
-               if(player.hp_ - this.minManaUsage < 1) {
-                  canUse = false;
-               }
             }
          }
          itemSprite.setDim(!canUse || player && player.mp_ < this.minManaUsage);

@@ -795,17 +795,9 @@ public class Player extends Character {
             }
 
             mpCost = int(objectXML.MpCost);
-            if(HasTalismanEffect(BloodExchange)) {
-                if (mpCost > this.hp_) {
-                    SoundEffectLibrary.play("no_mana");
-                    return false;
-                }
-            }
-            else {
-                if (mpCost > this.mp_) {
-                    SoundEffectLibrary.play("no_mana");
-                    return false;
-                }
+            if (mpCost > this.mp_) {
+                SoundEffectLibrary.play("no_mana");
+                return false;
             }
 
             cooldown = 500;
@@ -823,17 +815,9 @@ public class Player extends Character {
             map_.gs_.gsc_.useItem(now, objectId_, 1, itemType, pW.x, pW.y, useType);
 
             mpCost = int(objectXML.MpEndCost);
-            if(HasTalismanEffect(BloodExchange)) {
-                if (mpCost <= this.hp_) {
-                    angle = Math.atan2(yS, xS);
-                    this.doShoot(now, itemType, objectXML, Parameters.data_.cameraAngle + angle, false);
-                }
-            }
-            else{
-                if (mpCost <= this.mp_) {
-                    angle = Math.atan2(yS, xS);
-                    this.doShoot(now, itemType, objectXML, Parameters.data_.cameraAngle + angle, false);
-                }
+            if (mpCost <= this.mp_) {
+                angle = Math.atan2(yS, xS);
+                this.doShoot(now, itemType, objectXML, Parameters.data_.cameraAngle + angle, false);
             }
         }
         return true;
@@ -884,7 +868,7 @@ public class Player extends Character {
         }
 
         for (var i:uint = start; i < end; i++) {
-            if (equipment_[i] <= 0) {
+            if (equipment_[i] == -1) {
                 return i;
             }
         }

@@ -218,17 +218,14 @@ public class GameObject extends BasicObject {
     private var hpBarFillMatrix:Matrix = null;
     public var talismanEffectMask_:int;
 
-    public static const None:int = 1;
-    public static const PocketChange:int = 1;
-    public static const BloodExchange:int = 2;
-    public static const PrimalRage:int = 3;
-    public static const CalltoArms:int = 4;
-    public static const InsatiableThirst = 5;
-    public static const IronWill:int = 6;
-    public static const PartyofOne:int = 7;
-    public static const ForbiddenFruit:int = 8;
-    public static const LuckoftheIrish:int = 9;
-    public static const KnownAfterDeath:int = 10;
+    public static const None:int = 0;
+    public static const WEAK_IMMUNITY:int = 1;
+    public static const CALL_TO_ARMS:int = 2;
+    public static const PARTY_OF_ONE:int = 3;
+    public static const POCKET_CHAMGE:int = 4;
+    public static const STUN_IMMUNITY:int = 5;
+    public static const LUCK_OF_THE_IRISH:int = 6;
+    public static const KNOWN_AFTER_DEATH:int = 7;
 
     public function HasTalismanEffect(effect:int) : Boolean{
         return (talismanEffectMask_ & (1 << (effect - 1))) != 0;
@@ -605,7 +602,7 @@ public class GameObject extends BasicObject {
     }
 
     public function isUnstableImmune():Boolean {
-        return (this.condition_[0] & ConditionEffect.UNSTABLEIMMUNE_BIT) != 0;
+        return (this.condition_[1] & ConditionEffect.UNSTABLEIMMUNE_BIT) != 0;
     }
 
     public function isStunned():Boolean {
@@ -665,11 +662,11 @@ public class GameObject extends BasicObject {
     }
 
     public function isNinjaBerserk():Boolean {
-        return (this.condition_[0] & ConditionEffect.NINJABERSERK_BIT) != 0;
+        return (this.condition_[1] & ConditionEffect.NINJABERSERK_BIT) != 0;
     }
 
     public function isNinjaDamaging():Boolean {
-        return (this.condition_[0] & ConditionEffect.NINJADAMAGING_BIT) != 0;
+        return (this.condition_[1] & ConditionEffect.NINJADAMAGING_BIT) != 0;
     }
 
     public function isPaused():Boolean {
@@ -677,7 +674,7 @@ public class GameObject extends BasicObject {
     }
 
     public function isHidden():Boolean {
-        return (this.condition_[0] & ConditionEffect.HIDDEN_BIT) != 0;
+        return (this.condition_[1] & ConditionEffect.HIDDEN_BIT) != 0;
     }
 
     public function isCursed():Boolean {
@@ -738,7 +735,7 @@ public class GameObject extends BasicObject {
 
     public function getBulletId():uint {
         var ret:uint = this.nextBulletId_;
-        this.nextBulletId_ = (this.nextBulletId_ + 1) % 0xFF;
+        this.nextBulletId_ = this.nextBulletId_ + 1;
         return ret;
     }
 

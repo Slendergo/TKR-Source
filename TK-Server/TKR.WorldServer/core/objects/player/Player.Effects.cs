@@ -61,33 +61,28 @@ namespace TKR.WorldServer.core.objects
 
             if (HasConditionEffect(ConditionEffectIndex.NinjaSpeedy))
             {
-                if (HasTalismanEffect(TalismanEffectType.BloodExchange))
-                {
-                    HP = Math.Max(1, (int)(HP - 20 * time.DeltaTime));
-                    if (HP == 1)
-                        RemoveCondition(ConditionEffectIndex.NinjaSpeedy);
-                }
-                else
-                {
-                    MP = Math.Max(0, (int)(MP - 10 * time.DeltaTime));
-                    if (MP == 0)
-                        RemoveCondition(ConditionEffectIndex.NinjaSpeedy);
-                }
+                MP -= (int)(10 * time.DeltaTime);
+                if (MP == 0)
+                    RemoveCondition(ConditionEffectIndex.NinjaSpeedy);
             }
 
             if (HasConditionEffect(ConditionEffectIndex.NinjaBerserk))
             {
-                if (HasTalismanEffect(TalismanEffectType.BloodExchange))
+                MP -= (int)(25 * time.DeltaTime);
+                if (MP <= 0)
                 {
-                    HP = Math.Max(1, (int)(HP - 20 * time.DeltaTime));
-                    if (HP == 1)
-                        RemoveCondition(ConditionEffectIndex.NinjaBerserk);
+                    MP = 0;
+                    RemoveCondition(ConditionEffectIndex.NinjaBerserk);
                 }
-                else
+            }
+
+            if (HasConditionEffect(ConditionEffectIndex.NinjaDamaging))
+            {
+                MP -= (int)(10 * time.DeltaTime);
+                if (MP <= 0)
                 {
-                    MP = Math.Max(0, (int)(MP - 10 * time.DeltaTime));
-                    if (MP == 0)
-                        RemoveCondition(ConditionEffectIndex.NinjaBerserk);
+                    MP = 0;
+                    RemoveCondition(ConditionEffectIndex.NinjaDamaging);
                 }
             }
 

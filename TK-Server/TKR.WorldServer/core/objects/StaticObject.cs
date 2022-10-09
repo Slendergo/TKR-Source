@@ -28,40 +28,18 @@ namespace TKR.WorldServer.core.objects
         public bool Static { get; private set; }
         public bool Vulnerable { get; private set; }
 
-        public override void HitByProjectile(Projectile projectile, ref TickTime time)
-        {
-            if (Vulnerable && projectile.Host is Player)
-            {
-                var dmg = StatsManager.DamageWithDefense(this, projectile.Damage, projectile.ProjDesc.ArmorPiercing, ObjectDesc.Defense);
-
-                HP -= dmg;
-
-                World.BroadcastIfVisibleExclude(new Damage()
-                {
-                    TargetId = Id,
-                    Effects = 0,
-                    DamageAmount = dmg,
-                    Kill = !CheckHP(),
-                    BulletId = projectile.ProjectileId,
-                    ObjectId = projectile.Host.Id
-                }, this, projectile.Host as Player);
-            }
-            return;
-        }
-
         public override void Tick(ref TickTime time)
         {
             if (Vulnerable)
             {
                 if (Dying)
                     HP -= time.ElapsedMsDelta;
-                CheckHP();
+                _ = CheckHP();
             }
-
             base.Tick(ref time);
         }
 
-        protected bool CheckHP()
+        public bool CheckHP()
         {
             if (HP <= 0)
             {
@@ -80,10 +58,8 @@ namespace TKR.WorldServer.core.objects
                                 (player as Player).PlayerUpdate.UpdateTiles = true;
                     }
                 World.LeaveWorld(this);
-
                 return false;
             }
-
             return true;
         }
 

@@ -119,15 +119,11 @@ namespace TKR.WorldServer.logic
         .Init("Medusa",
             new State(
                 new DropPortalOnDeath("Snake Pit Portal", .25),
+                new StayAbove(1, 200),
                 new OrderedBehavior(
                     new NewFollow(range: 7, speed: 1.0f),
                     new NewWander(0.4f)
                     ),
-                //new Prioritize(
-                //    new StayAbove(1, 200),
-                //    new Follow(1, range: 7),
-                //    new Wander(0.4)
-                //    ),
                 new Shoot(12, count: 5, shootAngle: 10, coolDown: 1000),
                 new Grenade(4, 150, range: 8, coolDown: 3000),
                 new Reproduce(densityMax: 3)

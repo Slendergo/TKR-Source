@@ -61,7 +61,7 @@ namespace TKR.Shared.resources
         public string DisplayName;
         public string Group;
         public string ObjectId;
-        public ProjectileDesc[] Projectiles;
+        public Dictionary<int, ProjectileDesc> Projectiles = new Dictionary<int, ProjectileDesc>();
         public SpawnCount Spawn;
 
         public ObjectDesc(ushort type, XElement e)
@@ -140,12 +140,11 @@ namespace TKR.Shared.resources
             ProtectFromGroundDamage = e.HasElement("ProtectFromGroundDamage");
             ProtectFromSink = e.HasElement("ProtectFromSink");
 
-            var projs = new List<ProjectileDesc>();
-
             foreach (var i in e.Elements("Projectile"))
-                projs.Add(new ProjectileDesc(i));
-
-            Projectiles = projs.ToArray();
+            {
+                var desc = new ProjectileDesc(i);
+                Projectiles[desc.BulletType] = desc;
+            }
         }
     }
 }

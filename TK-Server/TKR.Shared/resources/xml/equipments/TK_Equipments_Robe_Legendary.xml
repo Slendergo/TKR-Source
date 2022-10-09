@@ -162,7 +162,7 @@
 		<ActivateOnEquip stat="28" amount="10">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="3" amount="100">IncrementStat</ActivateOnEquip>
-		<BagType>8</BagType>
+		<BagType>9</BagType>
 		<FameBonus>6</FameBonus>
 	</Object>
 </Objects>

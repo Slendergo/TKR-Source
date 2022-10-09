@@ -4,6 +4,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.WebSockets;
 using System.Threading;
 using TKR.Shared.database;
 using TKR.Shared.resources;
@@ -113,11 +114,22 @@ namespace TKR.WorldServer.core.worlds
                 player.Client.SendPacket(outgoingMessage);
         }
 
+
+        public void BroadcastIfVisible(List<OutgoingMessage> outgoingMessages, ref Position worldPosData)
+        {
+            foreach (var outgoingMessage in outgoingMessages)
+                BroadcastIfVisible(outgoingMessage, ref worldPosData);
+        }
+
         public void BroadcastIfVisible(OutgoingMessage outgoingMessage, ref Position worldPosData)
         {
             foreach (var player in Players.Values)
                 if (player.SqDistTo(ref worldPosData) < PlayerUpdate.VISIBILITY_RADIUS_SQR)
+                {
+                    if (outgoingMessage is ServerPlayerShoot)
+                        player.ServerPlayerShoot(outgoingMessage as ServerPlayerShoot);
                     player.Client.SendPacket(outgoingMessage);
+                }
         }
 
         public void BroadcastIfVisible(OutgoingMessage outgoingMessage, Entity host)

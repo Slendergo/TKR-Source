@@ -13,6 +13,7 @@ using TKR.WorldServer.networking;
 using TKR.WorldServer.networking.packets.outgoing;
 using TKR.WorldServer.core.miscfile.structures;
 using TKR.WorldServer.core.net;
+using TKR.WorldServer.utils;
 
 namespace TKR.WorldServer.core.objects.player
 {
@@ -161,21 +162,10 @@ namespace TKR.WorldServer.core.objects.player
                 _ = NewStaticObjects.RemoveWhere(_ => staticDrops.Contains(_.ObjId));
         }
 
-        private List<Entity> ForceAdds = new List<Entity>();
-
-        public void ForceAdd(Entity entity)
-        {
-            ForceAdds.Add(entity);
-        }
-
         public void GetNewObjects(Update update)
         {
             var x = Player.X;
             var y = Player.Y;
-
-            foreach (var forceAdd in ForceAdds)
-                update.NewObjs.Add(forceAdd.ToDefinition(false));
-            ForceAdds.Clear();
 
             foreach (var point in ActiveTiles) //static objects
             {
@@ -212,7 +202,7 @@ namespace TKR.WorldServer.core.objects.player
             var intPoint = new IntPoint(0, 0);
             foreach (var entity in World.EnemiesCollision.HitTest(x, y, VISIBILITY_RADIUS))
             {
-                if (entity is Container)
+                if (entity.IsRemovedFromWorld || entity is Container)
                     continue;
 
                 intPoint.X = (int)entity.X;

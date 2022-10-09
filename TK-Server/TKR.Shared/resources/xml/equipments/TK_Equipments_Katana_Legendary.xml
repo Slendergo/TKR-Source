@@ -139,7 +139,7 @@
 		</Projectile>
 		<NumProjectiles>1</NumProjectiles>
 		<ArcGap>3</ArcGap>
-		<BagType>8</BagType>
+		<BagType>9</BagType>
 		<FameBonus>7</FameBonus>
 		<DisplayId>Agdluak</DisplayId>
 	</Object>

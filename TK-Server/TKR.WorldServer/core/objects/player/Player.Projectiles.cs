@@ -119,7 +119,7 @@ namespace TKR.WorldServer.core.objects
         private Dictionary<int, Dictionary<int, ValidatedProjectile>> VisibleEnemyShoot = new Dictionary<int, Dictionary<int, ValidatedProjectile>>();
 
         public void EnemyShoot(EnemyShoot enemyShoot) => PendingShootAcknowlegements.Enqueue(new ShootAcknowledgement(enemyShoot));
-        public void PlayerServerShoot(ServerPlayerShoot serverPlayerShoot) => PendingShootAcknowlegements.Enqueue(new ShootAcknowledgement(serverPlayerShoot));
+        public void ServerPlayerShoot(ServerPlayerShoot serverPlayerShoot) => PendingShootAcknowlegements.Enqueue(new ShootAcknowledgement(serverPlayerShoot));
 
         public void PlayerShoot(int time, int newBulletId, Position startingPosition, float angle, int slot)
         {

@@ -50,7 +50,7 @@
     </Projectile>
     <NumProjectiles>1</NumProjectiles>
 	  <ArcGap>4</ArcGap>
-    <BagType>8</BagType>
+    <BagType>9</BagType>
     <FameBonus>6</FameBonus>
     <feedPower>650</feedPower>
     <DisplayId>Winter Solstice</DisplayId>

@@ -628,7 +628,7 @@ namespace TKR.WorldServer.core.objects
             var numShots = item.SpellProjectiles == 0 ? 20 : item.SpellProjectiles;
             var projectileDesc = item.Projectiles[0];
 
-            var shoots = new List<ServerPlayerShoot>(numShots);
+            var shoots = new List<OutgoingMessage>(numShots);
             var allyShoots = new List<OutgoingMessage>(numShots);
             for (var i = 0; i < numShots; i++)
             {
@@ -646,7 +646,6 @@ namespace TKR.WorldServer.core.objects
                     Angle = angle,
                     Damage = Stats.GetAttackDamage(projectileDesc.MinDamage, projectileDesc.MaxDamage, true)
                 });
-                allyShoots.Add(new AllyShoot(nextBulletId, Id, item.ObjectType, angle));
             }
             World.BroadcastIfVisible(new ShowEffect()
             {
@@ -655,11 +654,7 @@ namespace TKR.WorldServer.core.objects
                 TargetObjectId = Id,
                 Color = new ARGB(eff.Color != 0 ? eff.Color : 0xFFFF00AA)
             }, this);
-            World.BroadcastIfVisibleExclude(allyShoots, this, this);
-
-            foreach(var shoot in shoots)
-                PlayerServerShoot(shoot);
-            Client.SendPackets(shoots);
+            World.BroadcastIfVisible(shoots, ref target);
         }
 
         private void AEClearConditionEffectAura(TickTime time, Item item, Position target, ActivateEffect eff)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
@@ -6,7 +7,6 @@ using System.Net.Sockets;
 using System.Threading.Tasks;
 using TKR.Shared;
 using TKR.WorldServer.core.miscfile.thread;
-using TKR.WorldServer.core.net;
 using TKR.WorldServer.core.net.handlers;
 using TKR.WorldServer.core.worlds;
 using TKR.WorldServer.networking;
@@ -17,8 +17,18 @@ namespace TKR.WorldServer.core.connection
 {
     public sealed class NetworkSendHandler
     {
+        enum SendState
+        {
+            Awaiting,
+            Ready,
+            Sending
+        }
+
         private readonly Client Client;
         private readonly SocketAsyncEventArgs SocketAsyncEventArgs;
+        private readonly object sendLock;
+        private SendState sendState;
+        private ConcurrentQueue<OutgoingMessage> Pending;
 
         public NetworkSendHandler(Client client, SocketAsyncEventArgs e)
         {
@@ -26,73 +36,40 @@ namespace TKR.WorldServer.core.connection
 
             SocketAsyncEventArgs = e;
             SocketAsyncEventArgs.Completed += OnCompleted;
+
+            sendLock = new object();
+            sendState = SendState.Awaiting;
+            Pending = new ConcurrentQueue<OutgoingMessage>();
         }
 
         public void SendMessage(OutgoingMessage message)
         {
-            var sendToken = (SendToken)SocketAsyncEventArgs.UserToken;
-            sendToken.Pending.Enqueue(message);
+            Pending.Enqueue(message);
+            Tick();
         }
 
         public void SetSocket(Socket socket)
         {
             SocketAsyncEventArgs.AcceptSocket = socket;
-            StartSendAsync(SocketAsyncEventArgs);
+            StartSend(SocketAsyncEventArgs);
         }
 
-        private async void StartSendAsync(SocketAsyncEventArgs e, int delay = 0)
+        private void StartSend(SocketAsyncEventArgs e)
         {
             if (Client?.State == ProtocolState.Disconnected)
                 return;
 
-            try
-            {
-                var s = (SendToken)e.UserToken;
+            var s = (SendToken)e.UserToken;
+            var bytesToSend = s.BytesAvailable > ConnectionListener.BUFFER_SIZE ? ConnectionListener.BUFFER_SIZE : s.BytesAvailable;
 
-                if (delay > 0)
-                    await Task.Delay(delay);
+            e.SetBuffer(s.BufferOffset, bytesToSend);
+            Buffer.BlockCopy(s.Data, s.BytesSent, e.Buffer, s.BufferOffset, bytesToSend);
 
-                if (s.BytesAvailable <= 0)
-                {
-                    s.Reset();
-                    if (!FlushPending(s).HasValue)
-                        return;
-                }
+            sendState = SendState.Sending;
 
-                var willRaiseEvent = false;
-
-                try
-                {
-                    var bytesToSend = s.BytesAvailable > ConnectionListener.BUFFER_SIZE ? ConnectionListener.BUFFER_SIZE : s.BytesAvailable;
-
-                    e.SetBuffer(s.BufferOffset, bytesToSend);
-
-                    Buffer.BlockCopy(s.Data, s.BytesSent, e.Buffer, s.BufferOffset, bytesToSend);
-
-                    willRaiseEvent = e.AcceptSocket.SendAsync(e);
-                }
-                catch
-                {
-                }
-                finally
-                {
-                    if (!willRaiseEvent)
-                        OnCompleted(null, e);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"StartSend: {ex}");
-
-                Client.Player.SendError("Unknown error sent to nexus");
-                Client.Reconnect(new Reconnect()
-                {
-                    Host = "",
-                    Port = Client.GameServer.Configuration.serverInfo.port,
-                    GameId = World.NEXUS_ID,
-                    Name = "Nexus"
-                });
-            }
+            var willRaiseEvent = e.AcceptSocket.SendAsync(e);
+            if (!willRaiseEvent)
+                OnCompleted(null, e);
         }
 
         private void OnCompleted(object sender, SocketAsyncEventArgs e)
@@ -114,18 +91,34 @@ namespace TKR.WorldServer.core.connection
             s.BytesSent += e.BytesTransferred;
             s.BytesAvailable -= s.BytesSent;
 
-            var delay = 0;
             if (s.BytesAvailable <= 0)
-                delay = 16;
+            {
+                s.Reset();
+                sendState = SendState.Awaiting;
+                Tick();
+                return;
+            }
 
-            StartSendAsync(e, delay);
+            StartSend(e);
         }
 
-        private bool? FlushPending(SendToken s)
+        public void Tick()
         {
-            try
+            if (CanSendPacket(SocketAsyncEventArgs))
+                StartSend(SocketAsyncEventArgs);
+        }
+
+        private bool CanSendPacket(SocketAsyncEventArgs e)
+        {
+            lock (sendLock)
             {
-                while (s.Pending.TryDequeue(out var packet))
+                if (sendState != SendState.Awaiting)
+                    return false;
+
+                var s = (SendToken)e.UserToken;
+                s.Reset();
+
+                while (Pending.TryDequeue(out var packet))
                 {
                     var bytesWritten = packet.Write(s.Data, s.BytesAvailable);
                     if (!bytesWritten.HasValue)
@@ -133,7 +126,8 @@ namespace TKR.WorldServer.core.connection
 
                     if (bytesWritten == 0)
                     {
-                        s.Pending.Enqueue(packet);
+                        Pending.Enqueue(packet);
+                        sendState = SendState.Ready;
                         return true;
                     }
                     s.BytesAvailable += bytesWritten.Value;
@@ -141,19 +135,17 @@ namespace TKR.WorldServer.core.connection
 
                 if (s.BytesAvailable <= 0)
                     return false;
-            }
-            catch (Exception e)
-            {
-                StaticLogger.Instance.Error(e);
-                Client.Disconnect("Error when handling pending packets");
-            }
 
-            return true;
+                sendState = SendState.Ready;
+                return true;
+            }
         }
 
         public void Reset()
         {
-            ((SendToken)SocketAsyncEventArgs.UserToken).Clear();
+            ((SendToken)SocketAsyncEventArgs.UserToken).Reset();
+            Pending = new ConcurrentQueue<OutgoingMessage>();
+            sendState = SendState.Awaiting;
         }
     }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using TKR.Shared;
 using TKR.Shared.resources;
 using TKR.WorldServer.core.miscfile.census;
 using TKR.WorldServer.core.miscfile.datas;
@@ -27,7 +28,6 @@ namespace TKR.WorldServer.core.objects
         public bool SpawnedByBehavior;
 
         private SV<int> _altTextureIndex;
-        private ObjectDesc _desc;
         private SV<string> _name;
         private int _originalSize;
         private SV<int> _size;
@@ -44,22 +44,42 @@ namespace TKR.WorldServer.core.objects
         {
             GameServer = coreServerManager;
 
-            _name = new SV<string>(this, StatDataType.Name, "");
-            _size = new SV<int>(this, StatDataType.Size, 100);
+            ObjectType = objType;
+
+            coreServerManager.BehaviorDb.ResolveBehavior(this);
+            coreServerManager.Resources.GameData.ObjectDescs.TryGetValue(ObjectType, out var desc);
+            ObjectDesc = desc;
+
+            ConditionEffectManager = new ConditionEffectManager(this);
+
+            if (ObjectDesc == null)
+                throw new Exception($"ObjectDesc is NUll: {ObjectType.To4Hex()}");
+
+            if (ObjectDesc.Invincible)
+                ApplyPermanentConditionEffect(ConditionEffectIndex.Invincible);
+            if (ObjectDesc.ArmorBreakImmune)
+                ApplyPermanentConditionEffect(ConditionEffectIndex.ArmorBreakImmune);
+            if (ObjectDesc.CurseImmune)
+                ApplyPermanentConditionEffect(ConditionEffectIndex.CurseImmune);
+            if (ObjectDesc.DazedImmune)
+                ApplyPermanentConditionEffect(ConditionEffectIndex.DazedImmune);
+            if (ObjectDesc.ParalyzeImmune)
+                ApplyPermanentConditionEffect(ConditionEffectIndex.ParalyzeImmune);
+            if (ObjectDesc.PetrifyImmune)
+                ApplyPermanentConditionEffect(ConditionEffectIndex.PetrifyImmune);
+            if (ObjectDesc.SlowedImmune)
+                ApplyPermanentConditionEffect(ConditionEffectIndex.SlowedImmune);
+            if (ObjectDesc.StasisImmune)
+                ApplyPermanentConditionEffect(ConditionEffectIndex.StasisImmune);
+            if (ObjectDesc.StunImmune)
+                ApplyPermanentConditionEffect(ConditionEffectIndex.StunImmune);
+
+            _name = new SV<string>(this, StatDataType.Name, ObjectDesc.DisplayName);
+            _size = new SV<int>(this, StatDataType.Size, ObjectDesc.Size);
             _originalSize = 100;
             _altTextureIndex = new SV<int>(this, StatDataType.AltTextureIndex, -1);
             _x = new SV<float>(this, StatDataType.None, 0);
             _y = new SV<float>(this, StatDataType.None, 0);
-
-            ObjectType = objType;
-
-            coreServerManager.BehaviorDb.ResolveBehavior(this);
-            coreServerManager.Resources.GameData.ObjectDescs.TryGetValue(ObjectType, out _desc);
-
-            if (_desc != null)
-                _originalSize = Size = _desc.Size;
-
-            ConditionEffectManager = new ConditionEffectManager(this);
         }
 
         public event EventHandler<StatChangedEventArgs> StatChanged;
@@ -72,7 +92,7 @@ namespace TKR.WorldServer.core.objects
         public State CurrentState { get; private set; }
         public int Id { get; internal set; }
         public string Name { get => _name.GetValue(); set => _name?.SetValue(value); }
-        public ObjectDesc ObjectDesc => _desc;
+        public ObjectDesc ObjectDesc { get; private set; }
         public ushort ObjectType { get; protected set; }
         public World World { get; private set; }
         public CollisionMap<Entity> Parent { get; set; }
@@ -342,11 +362,6 @@ namespace TKR.WorldServer.core.objects
 
         public void TickState(TickTime time)
         {
-            if (!ObjectDesc.ObjectId.Contains("Horrid Reaper"))
-                return;
-
-            Console.WriteLine($"TickState ({time.TickCount})");
-
             if (_stateEntry)
             {
                 //State entry

@@ -1263,21 +1263,18 @@ public class GameServerConnection
       {
          var map:Map = this.gs_.map;
          var go:GameObject = ObjectLibrary.getObjectFromType(obj.objectType_);
-         if(go == null)
-         {
+         if(go == null) {
             trace("unhandled object type: " + obj.objectType_);
             return;
          }
          var status:ObjectStatusData = obj.status_;
          go.setObjectId(status.objectId_);
          map.addObj(go,status.pos_.x_,status.pos_.y_);
-         if(go is Player)
-         {
+         if(go is Player) {
             this.handleNewPlayer(go as Player,map);
          }
          this.processObjectStatus(status,0,-1);
-         if(go.props_.static_ && go.props_.occupySquare_ && !go.props_.noMiniMap_)
-         {
+         if(go.props_.static_ && go.props_.occupySquare_ && !go.props_.noMiniMap_) {
             this.updateGameObjectTileSignal.dispatch(new UpdateGameObjectTileVO(go.x_,go.y_,go));
          }
       }
@@ -1296,26 +1293,26 @@ public class GameServerConnection
       }
 
       private function onUpdate(update:Update):void {
-         var quantity:int;
-         var groundData:GroundTileData;
-         var _local2:Message = this.messages.require(UPDATEACK);
-         serverConnection.sendMessage(_local2);
-         quantity = 0;
-         while (quantity < update.tiles_.length) {
-            groundData = update.tiles_[quantity];
-            gs_.map.setGroundTile(groundData.x_, groundData.y_, groundData.type_);
-            this.updateGroundTileSignal.dispatch(new UpdateGroundTileVO(groundData.x_, groundData.y_, groundData.type_));
-            quantity++;
+         var updateAck:Message = this.messages.require(UPDATEACK);
+         serverConnection.sendMessage(updateAck);
+
+         var i:int = 0;
+         var tile:GroundTileData;
+         while (i < update.tiles_.length) {
+            tile = update.tiles_[i];
+            gs_.map.setGroundTile(tile.x_, tile.y_, tile.type_);
+            this.updateGroundTileSignal.dispatch(new UpdateGroundTileVO(tile.x_, tile.y_, tile.type_));
+            i++;
          }
-         quantity = 0;
-         while (quantity < update.drops_.length) {
-            gs_.map.removeObj(update.drops_[quantity]);
-            quantity++;
+         i = 0;
+         while (i < update.newObjs_.length) {
+            this.addObject(update.newObjs_[i]);
+            i++;
          }
-         quantity = 0;
-         while (quantity < update.newObjs_.length) {
-            this.addObject(update.newObjs_[quantity]);
-            quantity++;
+         i = 0;
+         while (i < update.drops_.length) {
+            gs_.map.removeObj(update.drops_[i]);
+            i++;
          }
       }
 
@@ -1375,13 +1372,11 @@ public class GameServerConnection
 
       private function onNewTick(newTick:NewTick) : void
       {
-         //this.addTextLine.dispatch(new AddTextLineVO("","TickTime: " + newTick.tickTime_));
-         var objectStatus:ObjectStatusData = null;
-         if(this.jitterWatcher_ != null)
-         {
+         if(this.jitterWatcher_ != null){
             this.jitterWatcher_.record();
          }
          this.move(newTick.tickId_,this.player);
+         var objectStatus:ObjectStatusData = null;
          for each(objectStatus in newTick.statuses_)
          {
             this.processObjectStatus(objectStatus,newTick.tickTime_,newTick.tickId_);

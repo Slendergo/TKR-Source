@@ -174,6 +174,7 @@ namespace TKR.WorldServer.logic.loot
 
         public void Handle(Enemy enemy, TickTime time)
         {
+            using var t = new TimedProfiler("Loots.Handle");
             if (enemy.SpawnedByBehavior)
                 return;
 

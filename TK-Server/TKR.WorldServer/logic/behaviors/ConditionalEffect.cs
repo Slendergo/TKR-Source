@@ -19,13 +19,11 @@ namespace TKR.WorldServer.logic.behaviors
 
         protected override void OnStateEntry(Entity host, TickTime time, ref object state)
         {
-            System.Console.WriteLine($"[OnStateEntry ({time.TickCount})] ApplyConditionEffect({effect}, {duration})");
             host.ApplyConditionEffect(effect, duration);
         }
 
         protected override void OnStateExit(Entity host, TickTime time, ref object state)
         {
-            System.Console.WriteLine($"[OnStateExit ({time.TickCount})] Perm:{perm} | RemoveCondition({effect})");
             if (!perm)
                 host.RemoveCondition(effect);
         }

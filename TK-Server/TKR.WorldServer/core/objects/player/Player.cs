@@ -697,8 +697,6 @@ namespace TKR.WorldServer.core.objects
                 if (DeltaTime)
                     SendInfo($"[DeltaTime]: {World.DisplayName} -> {time.ElapsedMsDelta} | {time.LogicTime}");
                 
-                PlayerUpdate.UpdateState(time.ElapsedMsDelta);
-
                 HandleBreath(ref time);
 
                 if(World is NexusWorld)

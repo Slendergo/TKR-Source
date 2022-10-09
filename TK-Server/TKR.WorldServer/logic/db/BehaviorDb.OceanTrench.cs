@@ -269,7 +269,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Thessal Dropper",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new TransformOnDeath("Ocean Vent"),
                 new State("Idle",
                     new EntityNotExistsTransition("Thessal the Mermaid Goddess", 100, "Suicide")
@@ -280,7 +280,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Thessal the Mermaid Goddess Wounded",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new Taunt("Is King Alexander alive?"),
                 new TimedTransition(12000, "Fail"),
                 new State("Texture1",

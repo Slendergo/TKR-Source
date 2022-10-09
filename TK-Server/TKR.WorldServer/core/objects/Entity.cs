@@ -1,21 +1,19 @@
-﻿using TKR.Shared.resources;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using TKR.Shared.resources;
 using TKR.WorldServer.core.miscfile.census;
 using TKR.WorldServer.core.miscfile.datas;
 using TKR.WorldServer.core.miscfile.stats;
+using TKR.WorldServer.core.miscfile.structures;
 using TKR.WorldServer.core.miscfile.thread;
+using TKR.WorldServer.core.objects.connection;
+using TKR.WorldServer.core.objects.containers;
+using TKR.WorldServer.core.objects.vendors;
 using TKR.WorldServer.core.worlds;
 using TKR.WorldServer.logic;
 using TKR.WorldServer.logic.transitions;
 using TKR.WorldServer.utils;
-using TKR.WorldServer.core.objects;
-using TKR.WorldServer.core.objects.connection;
-using TKR.WorldServer.core.objects.vendors;
-using TKR.WorldServer.memory;
-using TKR.WorldServer.core.objects.containers;
-using TKR.WorldServer.core.miscfile.structures;
 
 namespace TKR.WorldServer.core.objects
 {
@@ -40,6 +38,7 @@ namespace TKR.WorldServer.core.objects
         private SV<float> _y;
         private Player playerOwner;
         private ConditionEffectManager ConditionEffectManager;
+        public bool Dead { get; private set; }
 
         protected Entity(GameServer coreServerManager, ushort objType)
         {
@@ -72,7 +71,6 @@ namespace TKR.WorldServer.core.objects
         public GameServer GameServer { get; private set; }
         public State CurrentState { get; private set; }
         public int Id { get; internal set; }
-        public bool IsRemovedFromWorld { get; private set; }
         public string Name { get => _name.GetValue(); set => _name?.SetValue(value); }
         public ObjectDesc ObjectDesc => _desc;
         public ushort ObjectType { get; protected set; }
@@ -137,16 +135,10 @@ namespace TKR.WorldServer.core.objects
         public static Entity Resolve(GameServer manager, ushort id)
         {
             var node = manager.Resources.GameData.ObjectDescs[id];
-            int? hp;
-            if (node.MaxHP == 0)
-                hp = null;
-            else
-                hp = node.MaxHP;
+            int? hp = node.MaxHP == 0 ? null : node.MaxHP;
             var type = node.Class;
             switch (type)
             {
-                case "Projectile":
-                    throw new Exception("Projectile should not instantiated using Entity.Resolve");
                 case "Sign":
                     return new Sign(manager, id);
 
@@ -331,7 +323,9 @@ namespace TKR.WorldServer.core.objects
             var origState = CurrentState;
 
             CurrentState = state;
-            GoDeeeeeeeep();
+            if (CurrentState != null)
+                while (CurrentState.States.Count > 0)
+                    CurrentState = CurrentState.States[0];
 
             _stateEntryCommonRoot = State.CommonParent(origState, CurrentState);
             _stateEntry = true;
@@ -340,16 +334,19 @@ namespace TKR.WorldServer.core.objects
         public virtual void Tick(ref TickTime time)
         {
             if (CurrentState != null)
-            {
-                if (!HasConditionEffect(ConditionEffectIndex.Stasis) && this.AnyPlayerNearby())
+                if (!HasConditionEffect(ConditionEffectIndex.Stasis))
                     TickState(time);
-            }
 
             ConditionEffectManager.Update(ref time);
         }
 
         public void TickState(TickTime time)
         {
+            if (!ObjectDesc.ObjectId.Contains("Horrid Reaper"))
+                return;
+
+            Console.WriteLine($"TickState ({time.TickCount})");
+
             if (_stateEntry)
             {
                 //State entry
@@ -384,22 +381,12 @@ namespace TKR.WorldServer.core.objects
                 try
                 {
                     foreach (var i in state.Behaviors)
-                    {
-                        if (this == null || World == null)
-                            break;
-
                         i.Tick(this, time);
-                    }
                 }
                 catch (Exception e)
                 {
                     StaticLogger.Instance.Error(e);
-                    continue;
                 }
-
-                if (this == null || World == null)
-                    break;
-
                 state = state.Parent;
             }
 
@@ -598,18 +585,6 @@ namespace TKR.WorldServer.core.objects
             pos.Y = fy;
         }
 
-        private void GoDeeeeeeeep()
-        {
-            if (CurrentState == null)
-                return;
-
-            while (CurrentState?.States.Count > 0)
-                if (this == null || CurrentState == null)
-                    break;
-                else
-                    CurrentState = CurrentState.States[0];
-        }
-
         private bool RegionUnblocked(float x, float y)
         {
             if (TileOccupied(x, y))
@@ -712,10 +687,7 @@ namespace TKR.WorldServer.core.objects
             }
         }
 
-        public virtual void Destroy()
-        {
-            IsRemovedFromWorld = true;
-        }
+        public void Expunge() => Dead = true;
 
         private class FPoint
         {

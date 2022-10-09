@@ -35,7 +35,7 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(15),
                 new State("Waiting Player",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                     new PlayerWithinTransition(10, "Rage", false)
                     ),
                 new State("Rage",
@@ -141,7 +141,7 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(20),
                 new StayCloseToSpawn(0.4, 8),
-                new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                 new State("WaitingPlayer",
                     new PlayerWithinTransition(20, "Start")
                     ),
@@ -152,35 +152,35 @@ namespace TKR.WorldServer.logic
                     ),
                 new State("Shoots",
                     new SetAltTexture(0),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 0),
                     new Wander(0.3),
                     new Shoot(20, 5, projectileIndex: 0, shootAngle: 15, coolDown: 1500),
                     new HpLessTransition(0.75, "Shoots Two Charge")
                     ),
                 new State("Shoots Two Charge",
                     new ReturnToSpawn(1, 1),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                     new Flash(0xFF0000, 1, 3),
                     new TimedTransition(3000, "Shoots Two")
                     ),
                 new State("Shoots Two",
                     new SetAltTexture(0),
                     new Wander(0.3),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 0),
                     new Shoot(20, 5, projectileIndex: 0, shootAngle: 15, coolDown: 1500),
                     new Shoot(20, 16, projectileIndex: 1, coolDown: 1000),
                     new HpLessTransition(0.50, "Shoots Three Charge")
                     ),
                 new State("Shoots Three Charge",
                     new ReturnToSpawn(1, 1),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                     new Flash(0xFF0000, 1, 3),
                     new TimedTransition(3000, "Shoots Three")
                     ),
                 new State("Shoots Three",
                     new SetAltTexture(0),
                     new Wander(0.3),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 0),
                     new Shoot(20, 5, projectileIndex: 0, shootAngle: 15, coolDown: 1500),
                     new Shoot(20, 32, projectileIndex: 2, coolDown: 4000),
                     new Shoot(20, 1, projectileIndex: 3, coolDown: 2000)
@@ -226,7 +226,7 @@ namespace TKR.WorldServer.logic
         .Init("Wind Elemental",
             new State(
                 new ScaleHP2(20),
-                new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                 new State("Check Player",
                     new PlayerWithinTransition(15, "Start", false)
                     ),
@@ -235,7 +235,7 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(3000, "Start Shooting")
                     ),
                 new State("Start Shooting",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 0),
                     new Wander(0.3),
                     new Follow(1.5, 1, 6, 2000, 3000),
                     new StayCloseToSpawn(1, 7),
@@ -243,14 +243,14 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.75, "Second Phase Charge")
                     ),
                 new State("Second Phase Charge",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 1500),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 1500),
                     new ReturnToSpawn(1),
                     new Taunt("You will test the power of the wind!"),
                     new Flash(0x696969, 0.3, 5),
                     new TimedTransition(1500, "Second Phase")
                     ),
                 new State("Second Phase",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 0),
                     new Wander(0.5),
                     new Follow(1.5, 1, 6, 2000, 3000),
                     new StayCloseToSpawn(1, 7),
@@ -259,13 +259,13 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.50, "Third Phase Charge")
                     ),
                 new State("Third Phase Charge",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 1500),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 1500),
                     new ReturnToSpawn(1),
                     new Taunt("Tornadoes! Help me!"),
                     new TimedTransition(1500, "Third Phase")
                     ),
                 new State("Third Phase",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 0),
                     new Spawn("Wind Elemental Tornado", 4, 0.5, coolDown: 100, true),
                     new Shoot(20, 3, projectileIndex: 0, shootAngle: 15, coolDown: 700),
                     new Shoot(20, 5, projectileIndex: 1, shootAngle: 20, coolDown: 1300)
@@ -309,7 +309,7 @@ namespace TKR.WorldServer.logic
 
         .Init("Wind Elemental Tornado",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Orbit",
                     new Orbit(1.4, 6, 20, "Wind Elemental", 1, 1),
                     new Shoot(20, 4, projectileIndex: 0, coolDown: 2500),
@@ -330,7 +330,7 @@ namespace TKR.WorldServer.logic
         #region Fire Elemental
         .Init("Fire Elemental Sword",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Idle",
                     new TimedTransition(3000, "Orbit")
                     ),
@@ -357,7 +357,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Fire Elemental Sword 1",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Idle",
                     new TimedTransition(3000, "Orbit")
                     ),
@@ -384,7 +384,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Elemental Fire Wall",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Idle",
                     new Shoot(10, 5, coolDown: 200)
                     )
@@ -393,7 +393,7 @@ namespace TKR.WorldServer.logic
         .Init("Fire Wall Spawner",
             new State(
                 new State("idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("Fire",
                     new Spawn("Elemental Fire Wall", 1, 1, coolDown: 999999),
@@ -410,7 +410,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Fire Elemental",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                 new ScaleHP2(20),
                 new State("Check Player",
                     new PlayerWithinTransition(20, "Prepare", false)
@@ -433,7 +433,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.66, "Second Phase")
                     ),
                 new State("Second Phase",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                     new Taunt("You can no longer escape!"),
                     new OrderOnce(30, "Fire Wall Spawner", "Fire"),
                     new TimedTransition(3000, "Second Phase Start")
@@ -477,7 +477,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.33, "Third Phase Charge")
                     ),
                 new State("Third Phase Charge",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                     new ChangeSize(10, 200),
                     new Taunt("AAAAARRRRRRRRRRGH!"),
                     new TimedTransition(3000, "Rage")

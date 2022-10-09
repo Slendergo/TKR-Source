@@ -30,7 +30,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Pentaract",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new State("Waiting",
                     new EntityNotExistsTransition("Pentaract Tower", 50, "Die")
                     ),
@@ -41,7 +41,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Pentaract Tower Corpse",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new State("Waiting",
                     new TimedTransition(15000, "Spawn"),
                     new EntityNotExistsTransition("Pentaract Tower", 50, "Die")

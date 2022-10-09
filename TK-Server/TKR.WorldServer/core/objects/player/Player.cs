@@ -685,7 +685,7 @@ namespace TKR.WorldServer.core.objects
                 }
             });
 
-            PlayerUpdate.UpdateTiles = true;
+            PlayerUpdate.UpdateTiles();
         }
         
         public bool DeltaTime;
@@ -697,8 +697,7 @@ namespace TKR.WorldServer.core.objects
                 if (DeltaTime)
                     SendInfo($"[DeltaTime]: {World.DisplayName} -> {time.ElapsedMsDelta} | {time.LogicTime}");
                 
-                PlayerUpdate.SendUpdate();
-                PlayerUpdate.SendNewTick(time.ElapsedMsDelta);
+                PlayerUpdate.UpdateState(time.ElapsedMsDelta);
 
                 HandleBreath(ref time);
 

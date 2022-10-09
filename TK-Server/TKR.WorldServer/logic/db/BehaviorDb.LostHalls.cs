@@ -13,7 +13,7 @@ namespace TKR.WorldServer.logic
 
         .Init("LH Pillar spawner",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Waiting",
                     new TimedTransition(100000, "Main")
                     ),
@@ -165,9 +165,9 @@ namespace TKR.WorldServer.logic
             )
         .Init("LH Colossus Rock 4",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new State("Shoot And Move 1",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new Orbit(1, 1, 30, "Marble Colossus", orbitClockwise: true),
                     new Shoot(30, 2, 180, projectileIndex: 0, rotateAngle: 20, coolDown: 200),
                     new EntitiesNotExistsTransition(30, "Stopped", "Marble Colossus")
@@ -179,9 +179,9 @@ namespace TKR.WorldServer.logic
             )
         .Init("LH Colossus Rock 5",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new State("Shoot And Move 1",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new Orbit(1, 1, 30, "Marble Colossus", orbitClockwise: true),
                     new Shoot(30, 2, 180, projectileIndex: 0, rotateAngle: 20, coolDown: 200),
                     new EntitiesNotExistsTransition(30, "Stopped", "Marble Colossus")
@@ -193,9 +193,9 @@ namespace TKR.WorldServer.logic
             )
         .Init("LH Colossus Rock 6",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new State("Shoot And Move 1",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new Orbit(1, 1, 30, "Marble Colossus", orbitClockwise: true),
                     new Shoot(30, 2, 180, projectileIndex: 0, rotateAngle: 20, coolDown: 200),
                     new EntitiesNotExistsTransition(30, "Stopped", "Marble Colossus")
@@ -207,15 +207,15 @@ namespace TKR.WorldServer.logic
             )
         .Init("LH Colossus Rock 7",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new State("Shoot And Move",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new Orbit(1, 9, 30, "Marble Colossus ORBIT", orbitClockwise: true),
                     new Shoot(30, 2, 180, projectileIndex: 0, rotateAngle: 20, coolDown: 200),
                     new EntitiesNotExistsTransition(30, "Stopped", "Marble Colossus")
                     ),
                 new State("Shoot And Move Closer",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new Orbit(1, 1, 30, "Marble Colossus", orbitClockwise: true),
                     new Shoot(30, 2, 180, projectileIndex: 0, rotateAngle: 20, coolDown: 200),
                     new EntitiesNotExistsTransition(30, "Stopped", "Marble Colossus")
@@ -227,15 +227,15 @@ namespace TKR.WorldServer.logic
             )
         .Init("LH Colossus Rock 8",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new State("Shoot And Move",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new Orbit(1, 9, 30, "Marble Colossus ORBIT", orbitClockwise: true),
                     new Shoot(30, 2, 180, projectileIndex: 0, rotateAngle: 20, coolDown: 200),
                     new EntitiesNotExistsTransition(30, "Stopped", "Marble Colossus")
                     ),
                 new State("Shoot And Move Closer",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new Orbit(1, 1, 30, "Marble Colossus", orbitClockwise: true),
                     new Shoot(30, 2, 180, projectileIndex: 0, rotateAngle: 20, coolDown: 200),
                     new EntitiesNotExistsTransition(30, "Stopped", "Marble Colossus")
@@ -247,15 +247,15 @@ namespace TKR.WorldServer.logic
             )
         .Init("LH Colossus Rock 9",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new State("Shoot And Move",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new Orbit(1, 9, 30, "Marble Colossus ORBIT", orbitClockwise: true),
                     new Shoot(30, 2, 180, projectileIndex: 0, rotateAngle: 20, coolDown: 200),
                     new EntitiesNotExistsTransition(30, "Stopped", "Marble Colossus")
                     ),
                 new State("Shoot And Move Closer",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new Orbit(1, 1, 30, "Marble Colossus", orbitClockwise: true),
                     new Shoot(30, 2, 180, projectileIndex: 0, rotateAngle: 20, coolDown: 200),
                     new EntitiesNotExistsTransition(30, "Stopped", "Marble Colossus")
@@ -272,28 +272,28 @@ namespace TKR.WorldServer.logic
 
         .Init("Marble Colossus ORBIT",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true)
                 )
             )
         .Init("Marble Colossus",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.SlowedImmune, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.SlowedImmune, true),
                 new ScaleHP2(40),
                 new State("Waiting",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new PlayerWithinTransition(10, "Changing Skin")
                     ),
                 new State("Changing Skin",
                     //new PlayerTextTransition("Phase 12.1", "skip", 30),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new SetAltTexture(0, 4, 1500),
                     new Spawn("Marble Colossus ORBIT", maxChildren: 1),
                     new TimedTransition(11000, "Phase 1")
 
                     ),
                 new State("Phase 1",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
-                    new ConditionalEffect(ConditionEffectIndex.Armored),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored),
                     new Taunt("Look upon my mighty bulwark."),
                     new Shoot(30, 12, projectileIndex: 0, fixedAngle: 0, coolDownOffset: 0, coolDown: 103000, seeInvis: true),
                     new Shoot(30, 12, projectileIndex: 0, fixedAngle: 15, coolDownOffset: 3000, coolDown: 106000, seeInvis: true),
@@ -309,13 +309,13 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.90, "Phase 3")
                     ),
                 new State("Phase 3",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new ReturnToSpawn(1, 1),
                     new Taunt("I cast you off!"),
                     new TimedTransition(4000, "Phase 3.1")
                     ),
                 new State("Phase 3.1",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Spawn("LH Colossus Rock 1", 1, 1, 1000000),
                     new OrderOnce(1, "LH Colossus Rock 1", "Move"),
                     new Spawn("LH Colossus Rock 2", 1, 1, 1000000),
@@ -346,7 +346,7 @@ namespace TKR.WorldServer.logic
                     ),
                 new State("Phase 4",
                     new Taunt("Your fervent attacks are no match for my strength! BEGONE!"),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, duration: 2000),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, duration: 2000),
                     new Shoot(radius: 20, count: 16, shootAngle: 22.5, projectileIndex: 4, coolDown: 3000, coolDownOffset: 200, seeInvis: true),
                     new Shoot(20, 3, shootAngle: 15, projectileIndex: 5, coolDown: 4000, coolDownOffset: 300, seeInvis: true),
                     new Shoot(20, projectileIndex: 3, count: 8, shootAngle: 45, fixedAngle: 3, coolDown: 5800, coolDownOffset: 0),
@@ -391,7 +391,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.65, "Phase 6")
                     ),
                 new State("Phase 6",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 3000),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 3000),
                     new ReturnToSpawn(1, 1),
                     new Taunt("Brace for your demise!"),
                     new Spawn("LH Colossus Rock 1", 1, 1, 1000000),
@@ -405,7 +405,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.6, "Phase 7")
                     ),
                 new State("Phase 7",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 25000),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 25000),
                     new Taunt("Futility!"),
                     new Grenade(radius: 2, damage: 0, range: 30, coolDown: 800, effect: ConditionEffectIndex.Quiet, effectDuration: 1000, color: 0xffffff),
                     new Shoot(30, 39, shootAngle: 9.230, projectileIndex: 9, defaultAngle: 0, fixedAngle: 0, coolDown: 3000, coolDownOffset: 1000, seeInvis: true),
@@ -448,7 +448,7 @@ namespace TKR.WorldServer.logic
                 new State("Phase 10",
                     new Taunt("Perish, blights upon this realm!"),
                     new ReturnToSpawn(1, 1),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 25000),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 25000),
                     new Spawn("LH Colossus Rock 7", maxChildren: 1),
                     new OrderOnce(1, "LH Colossus Rock 7", "Shoot And Move"),
                     new Spawn("LH Colossus Rock 8", maxChildren: 1),
@@ -462,7 +462,7 @@ namespace TKR.WorldServer.logic
                 new State("Phase 11",
                     new OrderOnce(30, "LH Pillar spawner", "Main"),
                     new Taunt("You have seen your last glimpse of sunlight!"),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 25000),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 25000),
                     new OrderOnce(20, "LH Colossus Rock 7", "Shoot And Move Closer"),
                     new OrderOnce(20, "LH Colossus Rock 8", "Shoot And Move Closer"),
                     new OrderOnce(20, "LH Colossus Rock 9", "Shoot And Move Closer"),
@@ -532,14 +532,14 @@ namespace TKR.WorldServer.logic
                 new State("Phase 13",
                     new ReturnToSpawn(1, 1),
                     new Taunt("It is my duty to protect these catacombs! You dare threaten my purpose?"),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 2000),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 2000),
                     new TimedTransition(4000, "Phase 13.1")
                     ),
                 new State("Phase 13.1",                    // 0 DERECHA
                                                            // 180 IZQUIERDA
                                                            // -90 ARRIBA
                                                            // 90 ABAJO
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 2000),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 2000),
                     new Shoot(10, 3, shootAngle: 15, projectileIndex: 12, coolDown: 2000, seeInvis: true),
                     // ABAJO
                     new Shoot(30, 1, projectileIndex: 15, shootAngle: 90, defaultAngle: 90, fixedAngle: 90, coolDown: 4500, seeInvis: true),
@@ -628,7 +628,7 @@ namespace TKR.WorldServer.logic
                     ),
                 new State("Phase 14",
                     new Taunt("Magia saps from my body… My immense physical strength STILL REMAINS!"),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 4000),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 4000),
                     new Order(1, "LH Colossus Rock 3", "Move"),
                     new Spawn("LH Colossus Rock 1", maxChildren: 100, 0.01, 4000, true),
                     new Order(1, "LH Colossus Rock 1", "Move 2"),
@@ -642,7 +642,7 @@ namespace TKR.WorldServer.logic
                     ),
                 new State("Phase 14.1",
                     new Taunt("Fear the halls!"),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 2000),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 2000),
                     new Grenade(radius: 2, damage: 0, range: 30, coolDown: 1000, effect: ConditionEffectIndex.Quiet, effectDuration: 1000, color: 0xffffff),
                     new Spawn("LH Colossus Rock 1", maxChildren: 100, 0.00, 3000),
                     new Order(1, "LH Colossus Rock 1", "Move"),
@@ -661,7 +661,7 @@ namespace TKR.WorldServer.logic
                     ),
                 new State("Phase 14.2",
                     new Taunt("I… I am… Dying…"),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 2000),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 2000),
                     new Grenade(radius: 2, damage: 0, range: 30, coolDown: 1000, effect: ConditionEffectIndex.Quiet, effectDuration: 1000, color: 0xffffff),
                     new Spawn("LH Colossus Rock 1", maxChildren: 100, 0.00, 3000),
                     new Order(1, "LH Colossus Rock 1", "Move"),
@@ -675,7 +675,7 @@ namespace TKR.WorldServer.logic
                 new State("Phase 15",
                     new OrderOnce(30, "LH Pillar spawner", "Main"),
                     new Taunt("You… YOU WILL COME WITH ME!"),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 30000),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 30000),
                     new Shoot(20, projectileIndex: 3, count: 8, shootAngle: 45, fixedAngle: 3, coolDown: 5800, coolDownOffset: 0),
                     new Shoot(20, projectileIndex: 3, count: 8, shootAngle: 45, fixedAngle: 4, coolDown: 5800, coolDownOffset: 200),
                     new Shoot(20, projectileIndex: 3, count: 8, shootAngle: 45, fixedAngle: 6, coolDown: 5800, coolDownOffset: 400),
@@ -711,7 +711,7 @@ namespace TKR.WorldServer.logic
                     ),
                 new State("Phase 15.1",
                     new Taunt("I CANNOT FAIL MY PURPOSE!"),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 30000),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 30000),
                     new Shoot(20, projectileIndex: 3, count: 8, shootAngle: 45, fixedAngle: -3, coolDown: 5800, coolDownOffset: 0),
                     new Shoot(20, projectileIndex: 3, count: 8, shootAngle: 45, fixedAngle: -4, coolDown: 5800, coolDownOffset: 200),
                     new Shoot(20, projectileIndex: 3, count: 8, shootAngle: 45, fixedAngle: -6, coolDown: 5800, coolDownOffset: 400),
@@ -746,7 +746,7 @@ namespace TKR.WorldServer.logic
                     ),
                 new State("Death",
                     new Taunt("I feel myself… Slipping… Into the void… It is so… Dark…"),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                     new OrderOnce(20, "LH Colossus Rock 7", "Stopped"),
                     new OrderOnce(20, "LH Colossus Rock 8", "Stopped"),
                     new OrderOnce(20, "LH Colossus Rock 9", "Stopped"),

@@ -10,7 +10,7 @@ namespace TKR.WorldServer.logic
        private _ HauntedCemetery = () => Behav()
         .Init("Arena Dn Spawner",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new State("Leech"
                     ),
                 new State("Stage 1",
@@ -33,7 +33,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Arena Up Spawner",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new State("Leech"
                     ),
                 new State("Stage 1",
@@ -55,7 +55,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Arena Lf Spawner",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new State("Leech"
                     ),
                 new State("Stage 1",
@@ -80,7 +80,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Arena Rt Spawner",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new State("Leech"
                     ),
                 new State("Stage 1",
@@ -102,7 +102,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Area 1 Controller",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, perm: true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, perm: true),
                 new State("Start",
                     new PlayerWithinTransition(4, "1")
                     ),
@@ -519,7 +519,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Arena South Gate Spawner",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new State("Leech"
                     ),
                 new State("Stage 1",
@@ -572,7 +572,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Arena East Gate Spawner",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new State("Leech"
                     ),
                 new State("Stage 1",
@@ -626,7 +626,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Arena West Gate Spawner",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new State("Leech"
                     ),
                 new State("Stage 1",
@@ -682,7 +682,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Arena North Gate Spawner",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new State("Leech"
                     ),
                 new State("Stage 1",
@@ -757,7 +757,7 @@ namespace TKR.WorldServer.logic
         .Init("Troll 3",
             new State(
                 new State("1",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new MoveTo(1, 0, 7),
                     new TimedTransition(2000, "2")
                     ),
@@ -769,7 +769,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.5, "3")
                     ),
                 new State("3",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Spawn("Arena Skeleton", maxChildren: 1),
                     new Shoot(20, 1, projectileIndex: 0, coolDown: 400),
                     new TossObject("Arena Mushroom", 10, coolDown: 7000),
@@ -778,7 +778,7 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(500, "Check")
                     ),
                 new State("Check", //antilag :D
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Spawn("Arena Skeleton", maxChildren: 1, coolDown: 3000),
                     new Shoot(20, 1, projectileIndex: 0, coolDown: 400),
                     new TossObject("Arena Mushroom", 10, coolDown: 7000),
@@ -846,7 +846,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Area 2 Controller",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new State("Start",
                     new PlayerWithinTransition(4, "1")
                     ),
@@ -1282,7 +1282,7 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(4000, "2")
                     ),
                 new State("2",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new SetAltTexture(1),
                     new Wander(0.4),
                     new TimedTransition(2000, "1")
@@ -1309,13 +1309,13 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.75, "2")
                     ),
                 new State("2",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new SetAltTexture(1),
                     new Order(100, "Arena Statue Left", "2"),
                     new TimedTransition(100, "3")
                     ),
                 new State("3",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new SetAltTexture(1),
                     new EntityNotExistsTransition("Arena Statue Left", 100, "4")
                     ),
@@ -1327,13 +1327,13 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.5, "5")
                     ),
                 new State("5",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new SetAltTexture(1),
                     new Order(100, "Arena Statue Right", "2"),
                     new TimedTransition(100, "6")
                     ),
                 new State("6",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new SetAltTexture(1),
                     new EntityNotExistsTransition("Arena Statue Right", 100, "7")
                     ),
@@ -1374,11 +1374,11 @@ namespace TKR.WorldServer.logic
             new State(
                 new TransferDamageOnDeath("Arena Ghost Bride"),
                 new State("1",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new SetAltTexture(1)
                     ),
                 new State("2",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new TimedTransition(1000, "3")
                     ),
                 new State("3",
@@ -1405,11 +1405,11 @@ namespace TKR.WorldServer.logic
             new State(
                 new TransferDamageOnDeath("Arena Ghost Bride"),
                 new State("1",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new SetAltTexture(1)
                     ),
                 new State("2",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new TimedTransition(1000, "3")
                     ),
                 new State("3",
@@ -1435,7 +1435,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Area 3 Controller",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new State("Start",
                     new PlayerWithinTransition(4, "1")
                     ),
@@ -2006,7 +2006,7 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(10),
                 new SetAltTexture(11),
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new DropPortalOnDeath("Realm Portal", 1),
                 new State("Start",
                     new PlayerWithinTransition(4, "1")
@@ -2423,7 +2423,7 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(0, "91")
                     ),
                 new State("91",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new TimedTransition(0, "92")
                     ),
                 new State("92",
@@ -2437,7 +2437,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.5, "93")
                     ),
                 new State("93",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Spawn("Flying Flame Skull", maxChildren: 2),
                     new Shoot(20, 4, shootAngle: 15, projectileIndex: 0, coolDown: 500),
                     new Shoot(100, 1, projectileIndex: 2, fixedAngle: 0, angleOffset: 0, coolDown: 5000),
@@ -2491,7 +2491,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Halloween Zombie Spawner",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new State("Leech"
                 ),
                 new State("1",
@@ -2506,7 +2506,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Zombie Rise",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new TransformOnDeath("Blue Zombie"),
                 new State("1",
                     new SetAltTexture(1),
@@ -2579,7 +2579,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Flying Flame Skull",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                 new Orbit(2, 5, 10, target: "Ghost of Skuld"),
                 new State("1",
                     new Shoot(100, 10, shootAngle: 36, projectileIndex: 0, coolDown: 500),

@@ -55,7 +55,7 @@ namespace TKR.WorldServer.logic
         .Init("Strange Magician Spell",
             new State(
                 new EntityNotExistsTransition("Strange Magician", 50, "Suicide"),
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new ChangeSize(100, 0),
                 new TimedTransition(1500, "Shoot"),
                 new State("Follow Player",
@@ -140,7 +140,7 @@ namespace TKR.WorldServer.logic
         .Init("Strange Magician",
             new State(
                 new ScaleHP2(20),
-                new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                 new DropPortalOnDeath("Strange Door", 1, timeout: 120),
                 new StayCloseToSpawn(1.2, 12),
                 new State("Start",
@@ -173,7 +173,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.25, "Rage")
                     ),
                 new State("Rage",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 2000),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 2000),
                     new Taunt("ARRRG! THIS IS IMPOSIBLE!"),
                     new TimedTransition(2000, "Rage Start")
                     ),
@@ -225,7 +225,7 @@ namespace TKR.WorldServer.logic
 
         .Init("Ball of Fire",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Follow Player",
                     new Follow(1, 20, 1),
                     new TimedTransition(4500, "Shoot"),
@@ -244,7 +244,7 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(20),
                 new MoveTo2(0, 0.5f, 2, isMapPosition: false, instant: true),
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("See Player",
                     new PlayerWithinTransition(15, "Start")
                     ),
@@ -292,12 +292,12 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.5, "Attack 4")
                     ),
                 new State("Attack 4",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new Taunt("How!? Priest! Help me!"),
                     new TimedTransition(1000, "Attack 5")
                     ),
                 new State("Attack 5",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new TossObject("Corrupted Priest", 5, _upAngle - 45, coolDown: 100000),
                     new TossObject("Corrupted Priest", 5, _downAngle + 45, coolDown: 100000),
                     new TimedTransition(500, "Attack 6")

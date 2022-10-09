@@ -1833,8 +1833,9 @@ namespace TKR.WorldServer.core.objects
                     if (remainingDmg < thisDmg)
                         thisDmg = remainingDmg;
 
-                    if (enemy.IsRemovedFromWorld)
+                    if (enemy.Dead)
                         return false;
+
                     enemy?.Damage(this, ref t, thisDmg, true);
                     remainingDmg -= thisDmg;
                     if (remainingDmg <= 0)

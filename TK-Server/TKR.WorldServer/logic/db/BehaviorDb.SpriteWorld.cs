@@ -86,11 +86,11 @@ namespace TKR.WorldServer.logic
                 new ScaleHP2(20),
                 new DropPortalOnDeath("Hideout of Limon Portal", 1),
                 new State("start_the_fun",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new PlayerWithinTransition(dist: 11, targetState: "begin_teleport1", seeInvis: true)
                     ),
                 new State("begin_teleport1",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Prioritize(
                         new StayCloseToSpawn(speed: 0.5, range: 7),
                         new Wander(speed: 0.5)
@@ -120,7 +120,7 @@ namespace TKR.WorldServer.logic
                         ),
                     new State("boom",
                         new Shoot(radius: 8, count: 18, shootAngle: 20, projectileIndex: 0, angleOffset: 0.4, predictive: 0.4, coolDown: 1500),
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new TimedTransition(time: 1000, targetState: "check_if_not_moving")
                         ),
                     new TimedTransition(time: 10000, targetState: "set_up_the_box")
@@ -135,13 +135,13 @@ namespace TKR.WorldServer.logic
                     new TossObject(child: "Limon Element 3", range: 14, angle: 135, coolDown: 1000000),
                     new TossObject(child: "Limon Element 4", range: 14, angle: 45, coolDown: 1000000),
                     new State("shielded1",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 1500),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 1500),
                         new Shoot(radius: 12, count: 1, predictive: 0.1, coolDown: 1000),
                         new Shoot(radius: 2, count: 3, shootAngle: 120, angleOffset: 0.3, predictive: 0.1, coolDown: 500),
                         new TimedTransition(1500, targetState: "shielded2")
                         ),
                     new State("shielded2",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 0),
                         new Shoot(radius: 12, count: 3, shootAngle: 120, angleOffset: 0.3, predictive: 0.2, coolDown: 800),
                         new TimedTransition(3500, targetState: "shielded1")
                         ),
@@ -150,7 +150,7 @@ namespace TKR.WorldServer.logic
                 new State("Summon_the_sprites",
                     new StayCloseToSpawn(speed: 0.5, range: 8),
                     new Wander(speed: 0.5),
-                    new ConditionalEffect(ConditionEffectIndex.Armored),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored),
                     new Shoot(radius: 8, count: 3, shootAngle: 15, coolDown: 1300),
                     new Spawn(children: "Magic Sprite", maxChildren: 2, initialSpawn: 0, coolDown: 500),
                     new Spawn(children: "Ice Sprite", maxChildren: 1, initialSpawn: 0, coolDown: 500),
@@ -179,7 +179,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Limon Element 1",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                 new EntityNotExistsTransition(target: "Limon the Sprite God", dist: 999, targetState: "Suicide"),
                 new State("Setup",
                     new TimedTransition(time: 2000, targetState: "Attacking1")
@@ -208,7 +208,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Limon Element 2",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                 new EntityNotExistsTransition(target: "Limon the Sprite God", dist: 999, targetState: "Suicide"),
                 new State("Setup",
                     new TimedTransition(time: 2000, targetState: "Attacking1")
@@ -237,7 +237,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Limon Element 3",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                 new EntityNotExistsTransition(target: "Limon the Sprite God", dist: 999, targetState: "Suicide"),
                 new State("Setup",
                     new TimedTransition(time: 2000, targetState: "Attacking1")
@@ -266,7 +266,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Limon Element 4",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                 new EntityNotExistsTransition(target: "Limon the Sprite God", dist: 999, targetState: "Suicide"),
                 new State("Setup",
                     new TimedTransition(time: 2000, targetState: "Attacking1")

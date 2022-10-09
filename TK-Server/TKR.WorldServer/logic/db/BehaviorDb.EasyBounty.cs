@@ -24,19 +24,19 @@ namespace TKR.WorldServer.logic
         .Init("Easy Bounty Wingus the Succubus Queen",
             new State(
                 new State("Pause",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable), // ok
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable), // ok
                     new PlayerWithinTransition(3, "Start")
                     ),
                 new State("Start",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, duration: 3000),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, duration: 3000),
                     new Taunt("Who enters my domain... and awakened me?"),
                     new ScaleHP2(15, range: 30),
                     new TimedTransition(3000, "Fight")
                     ),
                 new State("Fight",
                     new Taunt("I do not know of whom you are... but I will make sure you suffer for waking me up!"),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0), // ok
-                    new ConditionalEffect(ConditionEffectIndex.Armored), // ok
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 0), // ok
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored), // ok
                     new Grenade(3, 120, 15, coolDown: 400),
                     new HpLessTransition(0.95, "Fight2")
                     ),
@@ -45,7 +45,7 @@ namespace TKR.WorldServer.logic
                         new Chase()
                         ),
                     new Taunt("Hmm... humans are so frail... be careful sweety ;D."),
-                    new ConditionalEffect(ConditionEffectIndex.Armored, false, 0), // ok
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored, false, 0), // ok
                     new HealSelf(amount: 20000, coolDown: 2500),
                     new Shoot(10, count: 4, coolDown: 4000, fixedAngle: 90, coolDownOffset: 0, shootAngle: 90),
                     new Shoot(10, count: 4, coolDown: 4000, fixedAngle: 100, coolDownOffset: 200, shootAngle: 90),
@@ -72,7 +72,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(.85, "Wait")
                     ),
                 new State("Wait",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, duration: 7000), // ok
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, duration: 7000), // ok
                     new Flash(0xff00ff00, 0.1, 7000),
                     new ChangeSize(5, 300),
                     new Chase(7, range: 0.5),
@@ -81,7 +81,7 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(7000, "Nightmare")
                     ),
                 new State("Nightmare",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0), // ok
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 0), // ok
                     new Taunt("Consider me your worst nightmare!"),
                     new Flash(0xff00ff00, 0.2, 30),
                     new Shoot(50, projectileIndex: 1, count: 6, coolDown: 200 * 20, coolDownOffset: 0, angleOffset: 0, shootAngle: 60),
@@ -131,12 +131,12 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.45, "Waiting")
                     ),
                 new State("Waiting",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable), // ok
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable), // ok
                     new Taunt("My little ones, come and help Mommy <3 ! "),
                     new Spawn("Fiery Twin Succubus", maxChildren: 3, coolDown: 10000),
                     new Spawn("Icy Twin Succubus", maxChildren: 3, coolDown: 10000),
                     new Flash(0xFF0000, .1, 1000),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 0),
                     new Shoot(10, count: 2, shootAngle: 20, predictive: 1, coolDown: 200),
                     new Shoot(50, projectileIndex: 3, count: 5, coolDown: 4000, coolDownOffset: 0, angleOffset: 0, shootAngle: 9),
                     new Shoot(50, projectileIndex: 3, count: 7, coolDown: 4000, coolDownOffset: 400, angleOffset: 0, shootAngle: 9),
@@ -161,7 +161,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.15, "Spawn")
                     ),
                 new State("Spawn",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable), // ok
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable), // ok
                     new Taunt("ENOUGH IS ENOUGH. AYRIN, TAMIR, COME FORTH AND DO YOUR DUTIES."),
                     new Flash(0xffffff, 0.5, 2),
                     new ChangeSize(5, 150),
@@ -170,11 +170,11 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(5000, "CheckifDead")
                     ),
                 new State("CheckifDead",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new EntitiesNotExistsTransition(2048, "Enraged", "Ayrin", "Tamir")
                     ),
                 new State("Enraged",
-                    new ConditionalEffect(ConditionEffectIndex.Armored, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored, true),
                     new Taunt("My Children... I WILL DRAG ALL OF YOU DOWN WITH ME."),
                     new Flash(0xff0000, 5, 999),
                     new ChangeSize(7, 300),
@@ -183,13 +183,13 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.01, "Dead")
                     ),
                 new State("Dead",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable), // ok
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable), // ok
                     new Taunt("Finally, peace and rest at last."),
                     new Flash(0xFF0000, .1, 1000),
                     new TimedTransition(2000, "Suicide")
                     ),
                 new State("Suicide",
-                    new ConditionalEffect(ConditionEffectIndex.StunImmune),
+                    new ConditionEffectBehavior(ConditionEffectIndex.StunImmune),
                     new Shoot(0, 20, fixedAngle: 360 / 20, projectileIndex: 6),
                     new Suicide()
                     )
@@ -208,20 +208,20 @@ namespace TKR.WorldServer.logic
         .Init("Ayrin",
             new State(
                 new State("Awaken",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable), // ok
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable), // ok
                     new PlayerWithinTransition(10, "Start")
                     ),
                 new State("Start",
                     new Taunt("My mother... What have you done..."),
                     new ScaleHP2(20),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0), // ok
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 0), // ok
                     new Shoot(15, count: 2, shootAngle: 16, projectileIndex: 0, predictive: 0.4, coolDown: 800),
                     new Grenade(2.5, 80, 6),
                     new Shoot(20, count: 8, shootAngle: 45, projectileIndex: 1, coolDown: 1100),
                     new HpLessTransition(0.9, "Fuck this shit")
                     ),
                 new State("Fuck this shit",
-                    new ConditionalEffect(ConditionEffectIndex.Armored),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored),
                     new Taunt("I will avenge you..."),
                     new Shoot(25, count: 3, shootAngle: 20, projectileIndex: 0, predictive: 0.3, coolDown: 1000),
                     new Shoot(20, count: 6, shootAngle: 40, projectileIndex: 2, predictive: 0.4, coolDown: 900),
@@ -229,7 +229,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.77, "Ur actually gay")
                     ),
                 new State("Ur actually gay",
-                    new ConditionalEffect(ConditionEffectIndex.Armored, false, 0),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored, false, 0),
                     new Taunt("It does not make sense... How do puny mortals like you have such power??"),
                     new Shoot(50, count: 8, shootAngle: 45, projectileIndex: 1, fixedAngle: 90, coolDownOffset: 0, coolDown: 10000),
                     new Shoot(50, count: 8, shootAngle: 45, projectileIndex: 1, fixedAngle: 100, coolDownOffset: 200, coolDown: 10000),
@@ -262,7 +262,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.35, "SpawnMinion")
                     ),
                 new State("SpawnMinion",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable), // ok
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable), // ok
                     new Taunt("Come forth minions, protect me!"),
                     new Spawn("Icy Twin Succubus", maxChildren: 5, coolDown: 10000),
                     new TimedTransition(2000, "Checkifdead")
@@ -271,7 +271,7 @@ namespace TKR.WorldServer.logic
                     new EntitiesNotExistsTransition(50, "Jeff", "Icy Twin Succubus")
                     ),
                 new State("Jeff",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0), // ok
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 0), // ok
                     new Taunt("NOOOO MY END IS NEAR!"),
                     new Shoot(30, count: 2, shootAngle: 16, projectileIndex: 0, predictive: 0.4, coolDown: 600),
                     new Shoot(30, count: 8, shootAngle: 45, projectileIndex: 1, predictive: 0.2, coolDown: 1100),
@@ -285,7 +285,7 @@ namespace TKR.WorldServer.logic
                     new EntitiesNotExistsTransition(50, "Dead2", "Tamir")
                     ),
                 new State("Dead1",
-                    new ConditionalEffect(ConditionEffectIndex.Armored),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored),
                     new Taunt("Killing my brother is going to be your last mistake..."),
                     new Shoot(50, count: 8, shootAngle: 45, projectileIndex: 1, fixedAngle: 90, coolDownOffset: 0, coolDown: 10000),
                     new Shoot(50, count: 8, shootAngle: 45, projectileIndex: 1, fixedAngle: 100, coolDownOffset: 200, coolDown: 10000),
@@ -316,19 +316,19 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.1, "Final Death")
                     ),
                 new State("Final Death",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable), // ok
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable), // ok
                     new Flash(0xff0000, 0.8, 60),
                     new Taunt("Mother...Brother... I am sorry..."),
                     new TimedTransition(1000, "2")
                     ),
                 new State("2",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable), // ok
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable), // ok
                     new Flash(0xff0000, 0.6, 60),
                     new Taunt("Enjoy while you can humans, we shall be back..."),
                     new TimedTransition(1000, "1")
                     ),
                 new State("1",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable), // ok
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable), // ok
                     new Flash(0xff0000, 0.3, 70),
                     new Taunt("Goodbye mortals."),
                     new TimedTransition(1000, "Goodbye")
@@ -354,13 +354,13 @@ namespace TKR.WorldServer.logic
         .Init("Tamir",
             new State(
                 new State("Awaken",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable), // ok
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable), // ok
                     new PlayerWithinTransition(10, "Start")
                     ),
                 new State("Start",
                     new Taunt("My mother... What have you done..."),
                     new ScaleHP2(20),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0), // ok
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 0), // ok
                     new Shoot(15, count: 2, shootAngle: 16, projectileIndex: 0, predictive: 0.4, coolDown: 800),
                     new Grenade(2.5, 80, 6),
                     new Shoot(20, count: 8, shootAngle: 45, projectileIndex: 1, coolDown: 1100),
@@ -383,12 +383,12 @@ namespace TKR.WorldServer.logic
                     ),
                 new State("Fight",
                     new Taunt(1.0, true, "I obtain my Mother's power...", " You will PAY for killing Wingus!"),
-                    new ConditionalEffect(ConditionEffectIndex.Armored),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored),
                     new Shoot(radius: 50, count: 6, shootAngle: 60, projectileIndex: 1, coolDown: 200, coolDownOffset: 2000),
                     new HpLessTransition(0.55, "SpawnMinion")
                     ),
                 new State("SpawnMinion",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable), // ok
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable), // ok
                     new Spawn("Fiery Twin Succubus", maxChildren: 5, coolDown: 10000),
                     new TimedTransition(2000, "Checkifdead")
                     ),
@@ -396,7 +396,7 @@ namespace TKR.WorldServer.logic
                     new EntitiesNotExistsTransition(50, "Warning", "Fiery Twin Succubus")
                     ),
                 new State("Warning",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0), // ok
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 0), // ok
                     new Flash(0xff0000, 0.5, 60),
                     new Taunt("Hmm.. So you have beaten me... interesting."),
                     new Wander(1),
@@ -404,19 +404,19 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.2, "Death Encounter")
                     ),
                 new State("Death Encounter",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable), // ok
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable), // ok
                     new Flash(0xff0000, 0.8, 60),
                     new Taunt("I failed..mother... forgive me.."),
                     new TimedTransition(1000, "2")
                     ),
                 new State("2",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0), // ok
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 0), // ok
                     new Flash(0xff0000, 0.6, 60),
                     new Taunt("I am dying..."),
                     new TimedTransition(1000, "1")
                     ),
                 new State("1",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable), // ok
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable), // ok
                     new Flash(0xff0000, 0.3, 70),
                     new Taunt("Goodbye."),
                     new TimedTransition(1000, "Goodbye")
@@ -473,7 +473,7 @@ namespace TKR.WorldServer.logic
                     new Chase()
                     ),
                 new State("Shooting1",
-                    new ConditionalEffect(ConditionEffectIndex.Armored),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored),
                     new Shoot(30, projectileIndex: Fiery_Twin_Succubus.fire_shard, count: 5, coolDown: 3000, coolDownOffset: 0, shootAngle: 72),
                     new Shoot(30, projectileIndex: Fiery_Twin_Succubus.fire_shard, count: 5, coolDown: 3000, coolDownOffset: 800, shootAngle: 72),
                     new HpLessTransition(0.7, "Shooting2")
@@ -497,7 +497,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.15, "SpawnMinion")
                     ),
                 new State("SpawnMinion",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new Spawn("Fiery Succubus", maxChildren: 6, coolDown: 10000),
                     new TimedTransition(5000, "Suicide")
                     ),
@@ -540,7 +540,7 @@ namespace TKR.WorldServer.logic
                     new Chase()
                     ),
                 new State("Shooting1",
-                    new ConditionalEffect(ConditionEffectIndex.Armored),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored),
                     new Shoot(30, projectileIndex: Fiery_Twin_Succubus.fire_shard, count: 5, coolDown: 3000, coolDownOffset: 0, shootAngle: 72),
                     new Shoot(30, projectileIndex: Fiery_Twin_Succubus.fire_shard, count: 5, coolDown: 3000, coolDownOffset: 800, shootAngle: 72),
                     new HpLessTransition(0.7, "Shooting2")
@@ -564,7 +564,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.15, "SpawnMinion")
                     ),
                 new State("SpawnMinion",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new Spawn("Fiery Succubus", maxChildren: 6, coolDown: 10000),
                     new TimedTransition(5000, "Suicide")
                     ),

@@ -11,7 +11,7 @@ namespace TKR.WorldServer.logic
         .Init("Soul Death",
             new State(
                 new SetNoXP(),
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("First",
                     new TimedTransition(150, "Second")
                     ),
@@ -36,7 +36,7 @@ namespace TKR.WorldServer.logic
                 new OnDeathBehavior(new SwirlingMistDeathParticles()),
                 new ScaleHP2(20),
                 new State("Waiting Player",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                     new PlayerWithinTransition(15, "Start")
                     ),
                 new State("Start",
@@ -55,7 +55,7 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(6000, "Vulnerable")
                     ),
                 new State("Vulnerable",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 0),
                     new Shoot(7, 4, shootAngle: 15, projectileIndex: 2, coolDown: 800),
                     new Shoot(30, 5, shootAngle: 25, projectileIndex: 1, coolDown: 1500),
                     new Shoot(30, 5, shootAngle: 25, projectileIndex: 1, coolDown: 1900, coolDownOffset: 1800),
@@ -138,7 +138,7 @@ namespace TKR.WorldServer.logic
                 new OnDeathBehavior(new SwirlingMistDeathParticles()),
                 new ScaleHP2(20),
                 new State("Waiting",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                     new PlayerWithinTransition(15, "Taunt")
                     ),
                 new State("Taunt",
@@ -146,7 +146,7 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(2000, "Shot")
                     ),
                 new State("Shot",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 0),
                     new Shoot(20, 3, shootAngle: 15, projectileIndex: 0, coolDown: 500),
                     new HpLessTransition(0.8, "Chase")
                     ),
@@ -158,12 +158,12 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.6, "Back")
                     ),
                 new State("Back",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                     new ReturnToSpawn(1.5),
                     new TimedTransition(2000, "Back V2")
                     ),
                 new State("Back V2",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 0),
                     new Grenade(3, 65, range: 15, coolDown: 1000, effect: ConditionEffectIndex.Quiet, effectDuration: 1000),
                     new Shoot(15, 1, projectileIndex: 2, coolDown: 1500),
                     new Shoot(15, 2, shootAngle: 25, projectileIndex: 2, coolDownOffset: 500, coolDown: 1500),
@@ -226,7 +226,7 @@ namespace TKR.WorldServer.logic
                 new ScaleHP2(20),
                 new OnDeathBehavior(new SwirlingMistDeathParticles()),
                 new State("Waiting",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                     new PlayerWithinTransition(9, "Taunt")
                     ),
                 new State("Taunt",
@@ -245,7 +245,7 @@ namespace TKR.WorldServer.logic
                 new State("Last Phase",
                     new Wander(0.5),
                     new StayBack(0.5, 7),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 0),
                     new Shoot(20, 3, shootAngle: 15, projectileIndex: 1, coolDown: 1000),
                     new Shoot(20, 1, projectileIndex: 2, coolDown: 1000),
                     new TransformOnDeath("Soul of Attack Mob", 1, 1, 1)
@@ -379,31 +379,31 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("Start",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new PlayerWithinTransition(15, "Taunt")
                     ),
                 new State("Taunt",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Taunt("NOOO... you won't win this time! I have my protectors!"),
                     new TimedTransition(5000, "Toss 1")
                     ),
                 new State("Toss 1",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new TossObject("Gallant Warrior", 5, angle: 0, coolDown: 999999),
                     new TimedTransition(1000, "Toss 2")
                     ),
                 new State("Toss 2",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new TossObject("Gallant Knight", 5, angle: 120, coolDown: 999999),
                     new TimedTransition(1000, "Toss 3")
                     ),
                 new State("Toss 3",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new TossObject("Gallant Paladin", 5, angle: 240, coolDown: 999999),
                     new TimedTransition(1000, "Attack")
                     ),
                 new State("Attack",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new EntitiesNotExistsTransition(20, "Prepare Attack", "Gallant Warrior", "Gallant Paladin", "Gallant Knight"),
 
                     new Shoot(20, 1, fixedAngle: 0, projectileIndex: 3, coolDown: 2550, coolDownOffset: 100),
@@ -464,7 +464,7 @@ namespace TKR.WorldServer.logic
                     new Shoot(20, 1, fixedAngle: 315, projectileIndex: 7, coolDown: 2550, coolDownOffset: 1550)
                     ),
                 new State("Prepare Attack",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
                     new Taunt("That... is... ENOUGH"),
                     new ChangeSize(5, 160),
                     new TimedTransition(4000, "Attack 2")
@@ -570,11 +570,11 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("Start",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
                     new PlayerWithinTransition(15, "Taunt")
                     ),
                 new State("Taunt",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
                     new TimedTransition(2500, "Attack")
                     ),
                 new State("Attack",
@@ -593,11 +593,11 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("Start",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
                     new PlayerWithinTransition(15, "Taunt")
                     ),
                 new State("Taunt",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
                     new TimedTransition(1500, "Attack")
                     ),
                 new State("Attack",
@@ -615,11 +615,11 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("Start",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
                     new PlayerWithinTransition(15, "Taunt")
                     ),
                 new State("Taunt",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
                     new TimedTransition(500, "Attack")
                     ),
                 new State("Attack",
@@ -672,7 +672,7 @@ namespace TKR.WorldServer.logic
                 new ScaleHP2(20),
                 new RealmPortalDrop(),
                 new State("Waiting",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                     new PlayerWithinTransition(10, "Start")
                     ),
                 new State("Start",
@@ -825,7 +825,7 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("Start",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                     new PlayerWithinTransition(10, "Prepare")
                     ),
                 new State("Prepare",
@@ -891,7 +891,7 @@ namespace TKR.WorldServer.logic
 
         .Init("Limon Element 1 v2",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                 new EntityNotExistsTransition(target: "Undead Limon", dist: 999, targetState: "Suicide"),
                 new State("Setup",
                     new TimedTransition(time: 2000, targetState: "Attacking1")
@@ -919,7 +919,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Limon Element 2 v2",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                 new EntityNotExistsTransition(target: "Undead Limon", dist: 999, targetState: "Suicide"),
                 new State("Setup",
                     new TimedTransition(time: 2000, targetState: "Attacking1")
@@ -947,7 +947,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Limon Element 3 v2",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                 new EntityNotExistsTransition(target: "Undead Limon", dist: 999, targetState: "Suicide"),
                 new State("Setup",
                     new TimedTransition(time: 2000, targetState: "Attacking1")
@@ -975,7 +975,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Limon Element 4 v2",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                 new EntityNotExistsTransition(target: "Undead Limon", dist: 999, targetState: "Suicide"),
                 new State("Setup",
                     new TimedTransition(time: 2000, targetState: "Attacking1")
@@ -1049,11 +1049,11 @@ namespace TKR.WorldServer.logic
                 new ScaleHP2(20),
                 new State("Waiting",
                     new RealmPortalDrop(),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
                     new PlayerWithinTransition(10, "Start")
                     ),
                 new State("Start",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
                     new Taunt("Hell, a good place to rest ..."),
                     new TimedTransition(2000, "Wave 1")
                     ),
@@ -1141,7 +1141,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.6, "Prepare Phase 1")
                     ),
                 new State("Prepare Phase 1",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Taunt("AHAHA, is that all you got?"),
                     new ChangeSize(5, 180),
                     new Flash(0xFF0000, 0.5, 5),
@@ -1260,7 +1260,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.05, "Dead")
                     ),
                 new State("Dead",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Taunt("Aghh, well done warrior."),
                     new Flash(0xFF0000, 0.5, 5),
                     new TimedTransition(4000, "Suicide")
@@ -1342,16 +1342,16 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(40),
                 new State("Waiting",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                     new PlayerWithinTransition(10, "Taunt")
                     ),
                 new State("Taunt",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                     new Taunt("You thought this was the end? It's only the beginning!"),
                     new TimedTransition(200, "Shoot 1")
                     ),
                 new State("Shoot 1",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                         new ChangeSize(10, 130),
                         new Flash(0x00ff00, 0.5, 5),
                         new TimedTransition(5000, "Start 1")
@@ -1375,13 +1375,13 @@ namespace TKR.WorldServer.logic
                         new Shoot(20, 12, projectileIndex: 1, fixedAngle: 60, shootAngle: 45, coolDown: 3000, coolDownOffset: 2600)
                         ),
                 new State("Rage",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                         new Flash(0xFF0000, 0.5, 5),
                         new TimedTransition(2500, "Start 2")
                         ),
                     new State("Start 2",
                         new HpLessTransition(0.25, "Rage 2"),
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 0),
                         new Chase(12, 12),
 
                         new Shoot(8, 5, shootAngle: 10, projectileIndex: 1, coolDown: 500, predictive: 2),
@@ -1389,13 +1389,13 @@ namespace TKR.WorldServer.logic
                         new Shoot(20, 2, shootAngle: 25, projectileIndex: 0, coolDown: 800)
                         ),
                 new State("Rage 2",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                         new Flash(0xFF0000, 0.5, 5),
                         new ChangeSize(5, 150),
                         new TimedTransition(2500, "Start 4")
                         ),
                     new State("Start 4",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 0),
                         new TossObject2("Lair Skeleton Mage 1", 3, angle: 0, coolDown: 5000),
                         new TossObject2("Lair Skeleton Mage 1", 3, angle: 120, coolDown: 5000),
                         new TossObject2("Lair Skeleton Mage 1", 3, angle: 240, coolDown: 5000),

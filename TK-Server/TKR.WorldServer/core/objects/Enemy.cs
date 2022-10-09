@@ -182,12 +182,11 @@ namespace TKR.WorldServer.core.objects
             return 0;
         }
 
-        private bool Dead;
         public void Death(ref TickTime time)
         {
             if (!Dead)
             {
-                Dead = true;
+                Expunge();
                 DamageCounter.Death(time);
                 CurrentState?.OnDeath(this, ref time);
                 if (GameServer.BehaviorDb.Definitions.TryGetValue(ObjectType, out var loot))

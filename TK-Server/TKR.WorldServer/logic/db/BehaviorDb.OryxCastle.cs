@@ -12,10 +12,10 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, true)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true)
                     ),
                 new State("Start",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Flash(0xC0C0C0, 0.5, 3),
                     new TimedTransition(1500, "Lets go")
                     ),
@@ -158,13 +158,13 @@ namespace TKR.WorldServer.logic
             )
         .Init("Talisman King's Golden Guardian Left Statue",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new TransformOnDeath("Talisman King's Golden Guardian Left")
                 )
             )
         .Init("Talisman King's Golden Guardian Right Statue",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new TransformOnDeath("Talisman King's Golden Guardian Right")
                 )
             )
@@ -172,10 +172,10 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, true)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true)
                     ),
                 new State("Start",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Flash(0xC0C0C0, 0.5, 3),
                     new TimedTransition(1500, "Together is better")
                     ),
@@ -316,7 +316,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Oryx Guardian TaskMaster",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("WaitingChange",
                     new EntitiesNotExistsTransition(100, "WaitingChange", "Talisman King's Golden Guardian Right Statue", "Talisman King's Golden Guardian Left Statue")
                     ),
@@ -438,7 +438,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.2, "heal")
                     ),
                 new State("heal",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new SetAltTexture(0),
                     new Shoot(10, 6, projectileIndex: 0, coolDown: 200),
                     new HealSelf(coolDown: 2000, amount: 200),
@@ -489,7 +489,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Quiet Bomb",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Idle",
                     new State("Tex1",
                         new TimedTransition(250, "Tex2")

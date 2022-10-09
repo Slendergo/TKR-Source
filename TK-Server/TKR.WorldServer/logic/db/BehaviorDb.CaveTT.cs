@@ -14,7 +14,7 @@ namespace TKR.WorldServer.logic
         private _ CaveTT = () => Behav()
         .Init("Treasure Flame Trap 1.7 Sec",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 //new RingAttack(1, 1, 0, 0, 0),
                 new State("Wait",
                     new SetAltTexture(0, 0),
@@ -50,7 +50,7 @@ namespace TKR.WorldServer.logic
         .Init("Log Trap Clockwise",
             new State(
                 new Shoot(20, 1, projectileIndex: 0, coolDown: 200, seeInvis: true),
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new SetAltTexture(0, 3, 100, true),
                 new State("Check Ground",
                     new OnGroundTransition("Track N End", "Move Down"),
@@ -91,7 +91,7 @@ namespace TKR.WorldServer.logic
         .Init("Boulder",
             new State(
                 new SetAltTexture(0, 3, 100, true),
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Move",
                     new Shoot(20, 1, projectileIndex: 0, coolDown: 200),
                     new MoveLine(3, 90),
@@ -104,7 +104,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Boulder Spawner",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("CHeck Player",
                     new PlayerWithinTransition(100, "Start")
                     ),
@@ -237,7 +237,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(threshold: 0.99, targetState: "Q1 Spawn Minion")
                     ),
                 new State("Q1 Spawn Minion",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new TossObject(child: "Gold Planet", range: 7, angle: 0, coolDown: 10000000),
                     new TossObject(child: "Gold Planet", range: 7, angle: 45, coolDown: 10000000),
                     new TossObject(child: "Gold Planet", range: 7, angle: 90, coolDown: 10000000),
@@ -254,7 +254,7 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(time: 4000, targetState: "Q1 Invulnerable")
                     ),
                 new State("Q1 Invulnerable",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     //order Expand
                     new EntitiesNotExistsTransition(99, "Q1 Vulnerable Transition", "Treasure Oryx Defender")
                     ),
@@ -286,7 +286,7 @@ namespace TKR.WorldServer.logic
                     ),
                 new State("Q2 Spawn Minion",
                     new SetAltTexture(0),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new TossObject(child: "Treasure Oryx Defender", range: 3, angle: 0, coolDown: 10000000),
                     new TossObject(child: "Treasure Oryx Defender", range: 3, angle: 90, coolDown: 10000000),
                     new TossObject(child: "Treasure Oryx Defender", range: 3, angle: 180, coolDown: 10000000),
@@ -295,7 +295,7 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(time: 4000, targetState: "Q2 Invulnerable")
                     ),
                 new State("Q2 Invulnerable",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     //order expand
                     new EntitiesNotExistsTransition(99, "Q2 Vulnerable Transition", "Treasure Oryx Defender")
                     ),
@@ -402,7 +402,7 @@ namespace TKR.WorldServer.logic
                         new TimedTransition(time: 7000, targetState: "Recuperate")
                         ),
                     new State("Recuperate",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new HealSelf(coolDown: 1000, amount: 200),
                         new TimedTransition(time: 3000, targetState: "Attack1")
                         )
@@ -437,7 +437,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Gold Planet",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new EntityNotExistsTransition(target: "Golden Oryx Effigy", dist: 999, targetState: "Die"),
                 new Prioritize(
                     new Orbit(speed: 2.5, radius: 7, acquireRange: 20, target: "Golden Oryx Effigy", speedVariance: 0, radiusVariance: 0)

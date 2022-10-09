@@ -15,24 +15,24 @@ namespace TKR.WorldServer.logic
                 new OrderOnDeath(20, "Hermit God Tentacle Spawner", "Die", 1),
                 new OrderOnDeath(20, "Hermit God Drop", "Die", 1),
                 new State("Spawn Tentacle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new SetAltTexture(2),
                     new Order(20, "Hermit God Tentacle Spawner", "Tentacle"),
                     new EntityExistsTransition("Hermit God Tentacle", 20, "Sleep")
                     ),
                 new State("Sleep",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new Order(20, "Hermit God Tentacle Spawner", "Minions"),
                     new TimedTransition(1000, "Waiting")
                     ),
                 new State("Waiting",
                     new SetAltTexture(3),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new EntityNotExistsTransition("Hermit God Tentacle", 20, "Wake")
                     ),
                 new State("Wake",
                     new SetAltTexture(2),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new TossObject("Hermit Minion", 10, angle: 0),
                     new TossObject("Hermit Minion", 10, angle: 45),
                     new TossObject("Hermit Minion", 10, angle: 90),
@@ -44,7 +44,7 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(100, "Spawn Whirlpool")
                     ),
                 new State("Spawn Whirlpool",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new Order(20, "Hermit God Tentacle Spawner", "Whirlpool"),
                     new EntityExistsTransition("Whirlpool", 20, "Attack1")
                     ),
@@ -116,7 +116,7 @@ namespace TKR.WorldServer.logic
         )
         .Init("Hermit God Tentacle Spawner",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Waiting Order"),
                 new State("Tentacle",
                     new Reproduce("Hermit God Tentacle", 3, 1, coolDown: 2000),
@@ -137,7 +137,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Hermit God Drop",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Waiting"),
                 new State("Die",
                     new Suicide()
@@ -167,7 +167,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Hermit portal maker",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new DropPortalOnDeath("Ocean Trench Portal", 1),
                 new State("Wait",
                     new EntityNotExistsTransition("Hermit God", 50, "Transform")

@@ -11,7 +11,7 @@ namespace TKR.WorldServer.logic
         .Init("Encore Huntress Statue",
             new State(
                 new State("1",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("2",
                     new Flash(0xFFFF00, 2, 5),
@@ -27,7 +27,7 @@ namespace TKR.WorldServer.logic
         .Init("Encore Trickster Statue",
             new State(
                 new State("1",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("2",
                     new Flash(0xFFFF00, 2, 5),
@@ -43,7 +43,7 @@ namespace TKR.WorldServer.logic
         .Init("Confuse Puppet Statue",
             new State(
                 new State("1",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("2",
                     new Flash(0xFFFF00, 2, 5),
@@ -59,7 +59,7 @@ namespace TKR.WorldServer.logic
         .Init("Bleed Puppet Statue",
             new State(
                 new State("1",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("2",
                     new Flash(0xFFFF00, 2, 5),
@@ -159,7 +159,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("HomingFire",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("idle",
                     new Follow(0.8, 50, 5),
                     new TimedTransition(1000, "white")
@@ -179,7 +179,7 @@ namespace TKR.WorldServer.logic
                 new ScaleHP2(20),
                 new MoveTo2(0.5f, 0.5f, 2, true, false, true),
                 new State("1",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                     new PlayerWithinTransition(30, "2")
                     ),
                 new State("2",
@@ -212,7 +212,7 @@ namespace TKR.WorldServer.logic
                     new RealmPortalDrop(),
                     new Spawn("HomingFire", 1000, 0.001, coolDown: 2500),
                     new State("8",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
                         new HpLessTransition(.9, "17"),
                         new Shoot(20, 8, 360 / 8, 1, 45, coolDown: 500),
                         new TimedTransition(1000, "9")
@@ -258,7 +258,7 @@ namespace TKR.WorldServer.logic
                         new TimedTransition(300, "11")
                         ),
                     new State("17",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                         new Taunt(true, "Awaken, my dear puppet. Hunt them down!"),
                         new State("01",
                             new Shoot(15, 6, 360 / 6, 3, 0, coolDown: 500),
@@ -337,13 +337,13 @@ namespace TKR.WorldServer.logic
                         ),
                     new State("18",
                         new HpLessTransition(.7, "19"),
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 0),
                         new Taunt(true, "How dare you destroy my prized puppet! You shall pay for this with your life!"),
                         new Shoot(15, 12, 360 / 12, 3, 45, coolDown: 1250),
                         new Shoot(15, 3, 12, 4, coolDown: 750, predictive: 0.07)
                         ),
                     new State("19",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                         new Taunt(true, "Awaken, my dear puppet. Fear its blades"),
                         new State("0111",
                             new Shoot(15, 6, 360 / 6, 3, 0, coolDown: 500),
@@ -422,7 +422,7 @@ namespace TKR.WorldServer.logic
                         ),
                     new State("20",
                         new HpLessTransition(.35, "27"),
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
                         new Taunt(true, "No! You will suffer for destroying my precious puppets!"),
                         new TimedTransition(1, "21")
                         ),
@@ -457,7 +457,7 @@ namespace TKR.WorldServer.logic
                         new TimedTransition(300, "21")
                         ),
                     new State("27",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                         new Taunt(true, "Awaken, my dear puppets, and avenge your fallen brothers. Destroy these so-called heroes, leave them to rot here and become one with the dust."),
                         new State("20111",
                             new Shoot(15, 6, 360 / 6, 3, 0, coolDown: 500),
@@ -542,7 +542,7 @@ namespace TKR.WorldServer.logic
                         new Shoot(20, 1, 0, 4, coolDown: 500, predictive: 0.09),
                         new State("29",
                             new HpLessTransition(.05, "49"),
-                            new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
+                            new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
                             new Shoot(25, 1, 0, 2, 0, coolDown: 50),
                             new TimedTransition(50, "30")
                             ),
@@ -568,7 +568,7 @@ namespace TKR.WorldServer.logic
                             ),
                         new State("34",
                             new HpLessTransition(.05, "49"),
-                            new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
+                            new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
                             new Shoot(25, 1, 0, 2, 90, coolDown: 50),
                             new TimedTransition(50, "35")
                             ),
@@ -594,7 +594,7 @@ namespace TKR.WorldServer.logic
                             ),
                         new State("39",
                             new HpLessTransition(.05, "49"),
-                            new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
+                            new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
                             new Shoot(25, 1, 0, 2, 180, coolDown: 50),
                             new TimedTransition(50, "40")
                             ),
@@ -620,7 +620,7 @@ namespace TKR.WorldServer.logic
                             ),
                         new State("44",
                             new HpLessTransition(.05, "49"),
-                            new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
+                            new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
                             new Shoot(25, 1, 0, 2, 270, coolDown: 50),
                             new TimedTransition(50, "45")
                             ),
@@ -648,7 +648,7 @@ namespace TKR.WorldServer.logic
                     new State("49",
                         new OnDeathBehavior(new Shoot(50, 12, 360 / 12, 3, 45)),
                         new Flash(0xd3d3d3, 2, 15),
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                         new Taunt(true, "I don't understand it wasn't supposed to end this way. Noooo!!!"),
                         new TimedTransition(4000, "50")
                         ),

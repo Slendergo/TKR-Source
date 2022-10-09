@@ -55,7 +55,7 @@ namespace TKR.WorldServer.core.objects
 
                         foreach (var player in World.PlayersCollision.HitTest(x, y, PlayerUpdate.VISIBILITY_RADIUS))
                             if (player is Player && (player as Player).PlayerUpdate != null)
-                                (player as Player).PlayerUpdate.UpdateTiles = true;
+                                (player as Player).PlayerUpdate.UpdateTiles();
                     }
                 World.LeaveWorld(this);
                 return false;

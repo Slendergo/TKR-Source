@@ -13,9 +13,9 @@ namespace TKR.WorldServer.logic
                 new DropPortalOnDeath("Lost Halls Portal", 1, 120),
                 new ScaleHP2(20),
                 new StayCloseToSpawn(1, 9),
-                new ConditionalEffect(ConditionEffectIndex.DazedImmune),
-                new ConditionalEffect(ConditionEffectIndex.StasisImmune),
-                new ConditionalEffect(ConditionEffectIndex.ParalyzeImmune),
+                new ConditionEffectBehavior(ConditionEffectIndex.DazedImmune),
+                new ConditionEffectBehavior(ConditionEffectIndex.StasisImmune),
+                new ConditionEffectBehavior(ConditionEffectIndex.ParalyzeImmune),
                 new Prioritize(
                     new Wander(0.5)
                     ),
@@ -28,7 +28,7 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(10000, "Attack 2")
                     ),
                 new State("Attack 2",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Flash(0xFF0000, 0.5, 5),
                     new Shoot(radius: 20, count: 15, shootAngle: 30, projectileIndex: 1, coolDownOffset: 600, coolDown: 1400),
                     new Shoot(radius: 20, count: 15, shootAngle: 30, projectileIndex: 1, coolDownOffset: 800, coolDown: 1400),
@@ -43,7 +43,7 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(3000, "Reset")
                     ),
                 new State("Reset",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                     new Flash(0xFF0000, 0.1, 5),
                     new TimedTransition(4000, "Attack")
                     )

@@ -16,17 +16,17 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(35),
                 new State("CheckPlayer",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, false),
                     new PlayerWithinTransition(15, "Wait", true)
                     ),
                 new State("Wait",
                     new Taunt("HAHAHAH!, THIS WILL BE YOUR END!"),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, false),
                     new TimedTransition(7000, "Fight1")
                     ),
                 new State("Fight1",
                     new Taunt("I suggest bringing help!"),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, false),
                     new TimedTransition(7000, "Fight")
                     ),
                 new State("Fight",
@@ -57,7 +57,7 @@ namespace TKR.WorldServer.logic
                 new State("prepareRage",
                     new ChangeSize(5, 170),
                     new Taunt("Can't... keep... henchmen... alive... anymore! ARGHHH!!!"),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Shoot(25, 31, projectileIndex: 7, coolDown: 2000),
                     new Shoot(25, 30, projectileIndex: 8, coolDown: 2000),
                     new TimedTransition(20000, "rage")
@@ -131,7 +131,7 @@ namespace TKR.WorldServer.logic
                 new State("prepareRage",
                     new Follow(.1, 15, 3),
                     new Taunt("Can't... keep... henchmen... alive... anymore! ARGHHH!!!"),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Shoot(25, 30, fixedAngle: 0, projectileIndex: 7, coolDown: 4000, coolDownOffset: 4000),
                     new Shoot(25, 30, fixedAngle: 30, projectileIndex: 8, coolDown: 4000, coolDownOffset: 4000),
                     new TimedTransition(10000, "rage")
@@ -203,7 +203,7 @@ namespace TKR.WorldServer.logic
                 new State("Dance 1",
                     new Flash(0xf389E13, 0.5, 60),
                     new Taunt("BE SILENT!!!"),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Shoot(50, 8, projectileIndex: 6, coolDown: 700, coolDownOffset: 200),
                     new TossObject("Ring Element", 9, 24, 320000),
                     new TossObject("Ring Element", 9, 48, 320000),
@@ -220,7 +220,7 @@ namespace TKR.WorldServer.logic
                     new TossObject("Ring Element", 9, 312, 320000),
                     new TossObject("Ring Element", 9, 336, 320000),
                     new TossObject("Ring Element", 9, 360, 320000),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     //new Grenade(radius: 4, damage: 150, fixedAngle: new Random().Next(0, 359), range: 5, coolDown: 2000),
                     //new Grenade(radius: 4, damage: 150, fixedAngle: new Random().Next(0, 359), range: 5, coolDown: 2000),
                     //new Grenade(radius: 4, damage: 150, fixedAngle: new Random().Next(0, 359), range: 5, coolDown: 2000),
@@ -278,17 +278,17 @@ namespace TKR.WorldServer.logic
                         new TimedTransition(1000, "Dance2, 1")
                         ),
                     new State("Dance2, 1",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new Shoot(0, projectileIndex: 8, count: 4, shootAngle: 90, fixedAngle: 0, coolDown: 170),
                         new TimedTransition(200, "Dance2, 2")
                         ),
                     new State("Dance2, 2",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new Shoot(0, projectileIndex: 8, count: 4, shootAngle: 90, fixedAngle: 30, coolDown: 170),
                         new TimedTransition(200, "Dance2, 3")
                         ),
                     new State("Dance2, 3",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new Shoot(0, projectileIndex: 8, count: 4, shootAngle: 90, fixedAngle: 15, coolDown: 170),
                         new TimedTransition(200, "Dance2, 4")
                         ),
@@ -329,7 +329,7 @@ namespace TKR.WorldServer.logic
             new State(
                 new State(
                     new Shoot(50, 12, projectileIndex: 0, coolDown: 700, coolDownOffset: 200),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new TimedTransition(20000, "Despawn")
                     ),
                 new State("Despawn", //new Decay(time:0)
@@ -350,19 +350,19 @@ namespace TKR.WorldServer.logic
             new State(
                 new State(
                     new Orbit(1, 1, target: "Oryx the Mad God 1", radiusVariance: 0),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Shoot(25, 3, 10, 0, coolDown: 1000),
                     new TimedTransition(10000, "Grow")
                     ),
                 new State("Grow",
                     new ChangeSize(100, 200),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Orbit(1, 1, target: "Oryx the Mad God 1", radiusVariance: 0),
                     new Shoot(3, 1, 10, 0, coolDown: 700),
                     new TimedTransition(10000, "Despawn")
                     ),
                 new State("Despawn",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Orbit(1, 1, target: "Oryx the Mad God 1", radiusVariance: 0),
                     new ChangeSize(100, 100),
                     new Suicide()
@@ -373,7 +373,7 @@ namespace TKR.WorldServer.logic
             new State(
                 new State(
                     new Orbit(1.3, 9, target: "Oryx the Mad God 1", radiusVariance: 0),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Shoot(25, 3, 10, 0, coolDown: 1000),
                     new TimedTransition(20000, "Despawn")
                     ),

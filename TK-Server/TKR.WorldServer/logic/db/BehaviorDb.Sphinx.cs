@@ -13,7 +13,7 @@ namespace TKR.WorldServer.logic
                 new ScaleHP2(20),
                 new DropPortalOnDeath("Tomb of the Ancients Portal", 1),
                 new State("Spawned",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Reproduce("Horrid Reaper", 30, 4, coolDown: 100),
                     new TimedTransition(500, "Attack1")
                     ),
@@ -28,7 +28,7 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(6000, "TransAttack2")
                     ),
                 new State("TransAttack2",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Wander(0.5),
                     new Flash(0x00FF0C, .25, 8),
                     new Taunt("You hide behind rocks like cowards but you cannot hide from this!"),
@@ -45,7 +45,7 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(6200, "TransAttack3")
                     ),
                 new State("TransAttack3",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Wander(0.5),
                     new Flash(0x00FF0C, .25, 8),
                     new TimedTransition(2000, "Attack3")
@@ -72,7 +72,7 @@ namespace TKR.WorldServer.logic
                         )
                     ),
                 new State("TransAttack1",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Wander(0.5),
                     new Flash(0x00FF0C, .25, 8),
                     new TimedTransition(2000, "Attack1"),
@@ -80,7 +80,7 @@ namespace TKR.WorldServer.logic
                     ),
                 new State("Order",
                     new Wander(0.5),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Order(30, "Horrid Reaper", "Die"),
                     new TimedTransition(1900, "Attack1")
                     )
@@ -111,7 +111,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Horrid Reaper",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                 new State("Move",
                     new Prioritize(
                         new StayCloseToSpawn(3, 10),

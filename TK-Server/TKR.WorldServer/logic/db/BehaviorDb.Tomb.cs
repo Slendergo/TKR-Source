@@ -17,7 +17,7 @@ namespace TKR.WorldServer.logic
                 new ScaleHP2(20),
                 new State("idle",
                     new Taunt(true, "THIS WILL NOW BE YOUR TOMB!"),
-                    new ConditionalEffect(ConditionEffectIndex.Armored),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored),
                     new Prioritize(
                         new Orbit(3, 5, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
                     new HpLessTransition(.989, "weakning")
@@ -25,11 +25,11 @@ namespace TKR.WorldServer.logic
                 new State("weakning",
                     new Prioritize(
                         new Orbit(3, 5, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
-                    new ConditionalEffect(ConditionEffectIndex.Armored),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored),
                     new Taunt(true, "Impudence! I am an Immortal, I needn't waste time on you!"),
                     new Shoot(50, 20, projectileIndex: 3, coolDown: 6000),
                     new State("blue shield 1",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new TimedTransition(3000, "unset blue shield 1")
                         ),
                     new State("unset blue shield 1"),
@@ -38,14 +38,14 @@ namespace TKR.WorldServer.logic
                 new State("active",
                     new Prioritize(
                         new Orbit(3, 5, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
-                    new ConditionalEffect(ConditionEffectIndex.Armored),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored),
                     new Shoot(50, 8, 45, 2, 0, 0, coolDown: 1000),
                     new Shoot(50, 3, 120, 1, 0, 0, coolDown: 5000),
                     new Shoot(50, 5, 72, 0, 0, 0, coolDown: 5000),
                     new HpLessTransition(.7, "boomerang")
                     ),
                 new State("boomerang",
-                    new ConditionalEffect(ConditionEffectIndex.Armored),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored),
                     new Prioritize(
                         new Orbit(3, 5, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
                     new Taunt(true, "Nut, disable our foes!"),
@@ -54,7 +54,7 @@ namespace TKR.WorldServer.logic
                     new Shoot(50, 3, 15, 1, coolDown: 3000),
                     new Shoot(50, 2, 90, 1, coolDown: 3000),
                     new State("blue shield 2",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new TimedTransition(3000, "unset blue shield 2")
                         ),
                     new State("unset blue shield 2"),
@@ -72,7 +72,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(.4, "artifacts")
                     ),
                 new State("artifacts",
-                    new ConditionalEffect(ConditionEffectIndex.Armored),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored),
                     new Taunt(true, "Nut, let them wish they were dead!"),
                     new Prioritize(
                         new Orbit(3, 7, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
@@ -83,14 +83,14 @@ namespace TKR.WorldServer.logic
                     new Spawn("Pyramid Artifact 1", 1, 0),
                     new Spawn("Pyramid Artifact 2", 1, 0),
                     new State("blue shield 3",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new TimedTransition(3000, "unset blue shield 3")
                         ),
                     new State("unset blue shield 3"),
                     new HpLessTransition(.25, "artifacts 2")
                     ),
                 new State("artifacts 2",
-                    new ConditionalEffect(ConditionEffectIndex.Armored),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored),
                     new Taunt(true, "My artifacts shall prove my wall of defense is impenetrable!"),
                     new Prioritize(
                         new Orbit(3, 7, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
@@ -101,14 +101,14 @@ namespace TKR.WorldServer.logic
                     new Shoot(50, 2, 90, 1, coolDown: 3000),
                     new Spawn("Pyramid Artifact 1", 2, 0),
                     new State("blue shield 4",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new TimedTransition(3000, "unset blue shield 4")
                         ),
                     new State("unset blue shield 4"),
                     new HpLessTransition(.06, "rage")
                     ),
                 new State("rage",
-                    new ConditionalEffect(ConditionEffectIndex.Armored),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored),
                     new Taunt(true, "The end of your path is here!"),
                     new Follow(1.5, 10),
                     new Wander(0.3),
@@ -122,7 +122,7 @@ namespace TKR.WorldServer.logic
                     new Spawn("Pyramid Artifact 2", 1, 0),
                     new Spawn("Pyramid Artifact 3", 1, 0),
                     new State("blue shield 5",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new TimedTransition(3000, "unset blue shield 5")
                         ),
                     new State("unset blue shield 5")
@@ -149,7 +149,7 @@ namespace TKR.WorldServer.logic
                 new ScaleHP2(20),
                 new State("idle",
                     new Taunt(true, "ENOUGH OF YOUR VANDALISM!"),
-                    new ConditionalEffect(ConditionEffectIndex.Armored),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored),
                     new Orbit(4, 5, target: "Tomb Boss Anchor", radiusVariance: 0.5),
                     new HpLessTransition(.9875, "weakning")
                     ),
@@ -159,7 +159,7 @@ namespace TKR.WorldServer.logic
                     new Taunt("Impudence! I am an immortal, I needn't take your seriously."),
                     new Shoot(50, 20, projectileIndex: 7, coolDown: 6000, coolDownOffset: 2000),
                     new State("blue shield 1",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new TimedTransition(3000, "unset blue shield 1")
                         ),
                     new State("unset blue shield 1"),
@@ -174,7 +174,7 @@ namespace TKR.WorldServer.logic
                     new Shoot(12, 5, 72, 3, 0, 0, coolDown: 2500, coolDownOffset: 2000),
                     new Shoot(12, 6, 60, 4, 0, 0, coolDown: 2500, coolDownOffset: 2500),
                     new State("blue shield 2",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new TimedTransition(3000, "unset blue shield 2")
                         ),
                     new State("unset blue shield 2"),
@@ -217,7 +217,7 @@ namespace TKR.WorldServer.logic
                     new Shoot(12, 6, 60, 4, 0, 0, coolDown: 2500, coolDownOffset: 2500),
                     new Spawn("Sphinx Artifact 1", 1, 0),
                     new State("blue shield 3",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new TimedTransition(3000, "unset blue shield 3")
                         ),
                     new State("unset blue shield 3"),
@@ -234,7 +234,7 @@ namespace TKR.WorldServer.logic
                     new Shoot(12, 6, 60, 4, 0, 0, coolDown: 2500, coolDownOffset: 2500),
                     new Spawn("Sphinx Artifact 1", 2, 0),
                     new State("blue shield 4",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new TimedTransition(3000, "unset blue shield 4")
                         ),
                     new State("unset blue shield 4"),
@@ -254,7 +254,7 @@ namespace TKR.WorldServer.logic
                     new Shoot(999, 6, 10, 8, angleOffset: 180, coolDown: 500),
                     new Spawn("Sphinx Artifact 1", 1, 0),
                     new State("blue shield 5",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new TimedTransition(3000, "unset blue shield 5")
                         ),
                     new State("unset blue shield 5")
@@ -278,7 +278,7 @@ namespace TKR.WorldServer.logic
                 new ScaleHP2(20),
                 new State("idle",
                     new Taunt(true, "ENOUGH OF YOUR VANDALISM!"),
-                    new ConditionalEffect(ConditionEffectIndex.Armored),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored),
                     new Prioritize(
                         new Orbit(3, 5, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
                     new HpLessTransition(.988, "weakning")
@@ -288,7 +288,7 @@ namespace TKR.WorldServer.logic
                         new Orbit(3, 5, 10, "Tomb Boss Anchor", speedVariance: .2, radiusVariance: .5)),
                     new Shoot(50, 20, projectileIndex: 3, coolDown: 6000, coolDownOffset: 2000),
                     new State("blue shield 1",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new TimedTransition(3000, "unset blue shield 1")
                         ),
                     new State("unset blue shield 1"),
@@ -321,7 +321,7 @@ namespace TKR.WorldServer.logic
                     new Shoot(99, 1, projectileIndex: 4, coolDown: 500),
                     new Spawn("Scarab", 3, 0, coolDown: 10000),
                     new State("blue shield 2",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new TimedTransition(3000, "unset blue shield 2")
                         ),
                     new State("unset blue shield 2",
@@ -377,7 +377,7 @@ namespace TKR.WorldServer.logic
                     new Shoot(99, 1, projectileIndex: 4, angleOffset: 90, coolDown: 500),
                     new Spawn("Nile Artifact 1", 1, 0),
                     new State("blue shield 3",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new TimedTransition(3000, "unset blue shield 3")
                         ),
                     new State("unset blue shield 3",
@@ -413,7 +413,7 @@ namespace TKR.WorldServer.logic
                     new Shoot(99, 1, projectileIndex: 4, angleOffset: 90, coolDown: 500),
                     new Spawn("Nile Artifact 1", 2, 0),
                     new State("blue shield 4",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new TimedTransition(3000, "unset blue shield 4")
                         ),
                     new State("unset blue shield 4",
@@ -447,7 +447,7 @@ namespace TKR.WorldServer.logic
                     new Spawn("Scarab", 3, 0, coolDown: 10000),
                     new Spawn("Nile Artifact 1", 1, 0),
                     new State("blue shield 5",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new TimedTransition(3000, "unset blue shield 5")
                         ),
                     new State("unset blue shield 5",
@@ -564,16 +564,16 @@ namespace TKR.WorldServer.logic
         .Init("Tomb Defender Statue",
             new State(
                 new State(
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new EntityNotExistsTransition("Inactive Sarcophagus", 1000, "checkActive"),
                     new EntityNotExistsTransition("Active Sarcophagus", 1000, "checkInactive")
                     ),
                 new State("checkActive",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new EntityNotExistsTransition("Active Sarcophagus", 1000, "ItsGoTime")
                     ),
                 new State("checkInactive",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new EntityNotExistsTransition("Inactive Sarcophagus", 1000, "ItsGoTime")
                     ),
                 new State("ItsGoTime",
@@ -583,16 +583,16 @@ namespace TKR.WorldServer.logic
         .Init("Tomb Support Statue",
             new State(
                 new State(
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new EntityNotExistsTransition("Inactive Sarcophagus", 1000, "checkActive"),
                     new EntityNotExistsTransition("Active Sarcophagus", 1000, "checkInactive")
                     ),
                 new State("checkActive",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new EntityNotExistsTransition("Active Sarcophagus", 1000, "ItsGoTime")
                     ),
                 new State("checkInactive",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new EntityNotExistsTransition("Inactive Sarcophagus", 1000, "ItsGoTime")
                     ),
                 new State("ItsGoTime",
@@ -602,16 +602,16 @@ namespace TKR.WorldServer.logic
         .Init("Tomb Attacker Statue",
             new State(
                 new State(
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new EntityNotExistsTransition("Inactive Sarcophagus", 1000, "checkActive"),
                     new EntityNotExistsTransition("Active Sarcophagus", 1000, "checkInactive")
                     ),
                 new State("checkActive",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new EntityNotExistsTransition("Active Sarcophagus", 1000, "ItsGoTime")
                     ),
                 new State("checkInactive",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new EntityNotExistsTransition("Inactive Sarcophagus", 1000, "ItsGoTime")
                     ),
                 new State("ItsGoTime",
@@ -621,16 +621,16 @@ namespace TKR.WorldServer.logic
         .Init("Inactive Sarcophagus",
             new State(
                 new State(
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new EntityNotExistsTransition("Beam Priestess", 14, "checkPriest"),
                     new EntityNotExistsTransition("Beam Priest", 1000, "checkPriestess")
                     ),
                 new State("checkPriest",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new EntityNotExistsTransition("Beam Priest", 1000, "activate")
                     ),
                 new State("checkPriestess",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new EntityNotExistsTransition("Beam Priestess", 1000, "activate")
                     ),
                 new State("activate",
@@ -795,55 +795,55 @@ namespace TKR.WorldServer.logic
         .Init("Tomb Thunder Turret",
             new State(
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new TimedTransition(2500, "Spin")
                     ),
                 new State("Spin",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new TimedTransition(2000, "Pause"),
                     new State("Quadforce1",
-                        new ConditionalEffect(ConditionEffectIndex.Invincible),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                         new Shoot(0, projectileIndex: 0, count: 5, shootAngle: 60, fixedAngle: 0, coolDown: 300),
                         new TimedTransition(150, "Quadforce2")
                         ),
                     new State("Quadforce2",
-                        new ConditionalEffect(ConditionEffectIndex.Invincible),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                         new Shoot(0, projectileIndex: 0, count: 5, shootAngle: 60, fixedAngle: 15, coolDown: 300),
                         new TimedTransition(150, "Quadforce3")
                         ),
                     new State("Quadforce3",
-                        new ConditionalEffect(ConditionEffectIndex.Invincible),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                         new Shoot(0, projectileIndex: 0, count: 5, shootAngle: 60, fixedAngle: 30, coolDown: 300),
                         new TimedTransition(150, "Quadforce4")
                         ),
                     new State("Quadforce4",
-                        new ConditionalEffect(ConditionEffectIndex.Invincible),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                         new Shoot(0, projectileIndex: 0, count: 5, shootAngle: 60, fixedAngle: 45, coolDown: 300),
                         new TimedTransition(150, "Quadforce5")
                         ),
                     new State("Quadforce5",
-                        new ConditionalEffect(ConditionEffectIndex.Invincible),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                         new Shoot(0, projectileIndex: 0, count: 5, shootAngle: 60, fixedAngle: 60, coolDown: 300),
                         new TimedTransition(150, "Quadforce6")
                         ),
                     new State("Quadforce6",
-                        new ConditionalEffect(ConditionEffectIndex.Invincible),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                         new Shoot(0, projectileIndex: 0, count: 5, shootAngle: 60, fixedAngle: 75, coolDown: 300),
                         new TimedTransition(150, "Quadforce7")
                         ),
                     new State("Quadforce7",
-                        new ConditionalEffect(ConditionEffectIndex.Invincible),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                         new Shoot(0, projectileIndex: 0, count: 5, shootAngle: 60, fixedAngle: 90, coolDown: 300),
                         new TimedTransition(150, "Quadforce8")
                         ),
                     new State("Quadforce8",
-                        new ConditionalEffect(ConditionEffectIndex.Invincible),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                         new Shoot(0, projectileIndex: 0, count: 5, shootAngle: 60, fixedAngle: 105, coolDown: 300),
                         new TimedTransition(150, "Quadforce1")
                         )
                     ),
                 new State("Pause",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new TimedTransition(5000, "Spin")
                     )
                 )
@@ -852,55 +852,55 @@ namespace TKR.WorldServer.logic
         .Init("Tomb Fire Turret",
             new State(
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new TimedTransition(2500, "Spin")
                     ),
                 new State("Spin",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new TimedTransition(2000, "Pause"),
                     new State("Quadforce1",
-                        new ConditionalEffect(ConditionEffectIndex.Invincible),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                         new Shoot(0, projectileIndex: 0, count: 5, shootAngle: 60, fixedAngle: 0, coolDown: 300),
                         new TimedTransition(150, "Quadforce2")
                         ),
                     new State("Quadforce2",
-                        new ConditionalEffect(ConditionEffectIndex.Invincible),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                         new Shoot(0, projectileIndex: 0, count: 5, shootAngle: 60, fixedAngle: 15, coolDown: 300),
                         new TimedTransition(150, "Quadforce3")
                         ),
                     new State("Quadforce3",
-                        new ConditionalEffect(ConditionEffectIndex.Invincible),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                         new Shoot(0, projectileIndex: 0, count: 5, shootAngle: 60, fixedAngle: 30, coolDown: 300),
                         new TimedTransition(150, "Quadforce4")
                         ),
                     new State("Quadforce4",
-                        new ConditionalEffect(ConditionEffectIndex.Invincible),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                         new Shoot(0, projectileIndex: 0, count: 5, shootAngle: 60, fixedAngle: 45, coolDown: 300),
                         new TimedTransition(150, "Quadforce5")
                         ),
                     new State("Quadforce5",
-                        new ConditionalEffect(ConditionEffectIndex.Invincible),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                         new Shoot(0, projectileIndex: 0, count: 5, shootAngle: 60, fixedAngle: 60, coolDown: 300),
                         new TimedTransition(150, "Quadforce6")
                         ),
                     new State("Quadforce6",
-                        new ConditionalEffect(ConditionEffectIndex.Invincible),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                         new Shoot(0, projectileIndex: 0, count: 5, shootAngle: 60, fixedAngle: 75, coolDown: 300),
                         new TimedTransition(150, "Quadforce7")
                         ),
                     new State("Quadforce7",
-                        new ConditionalEffect(ConditionEffectIndex.Invincible),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                         new Shoot(0, projectileIndex: 0, count: 5, shootAngle: 60, fixedAngle: 90, coolDown: 300),
                         new TimedTransition(150, "Quadforce8")
                         ),
                     new State("Quadforce8",
-                        new ConditionalEffect(ConditionEffectIndex.Invincible),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                         new Shoot(0, projectileIndex: 0, count: 5, shootAngle: 60, fixedAngle: 105, coolDown: 300),
                         new TimedTransition(150, "Quadforce1")
                         )
                     ),
                 new State("Pause",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new TimedTransition(5000, "Spin")
                     )
                 )
@@ -909,55 +909,55 @@ namespace TKR.WorldServer.logic
         .Init("Tomb Frost Turret",
             new State(
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new TimedTransition(2500, "Spin")
                     ),
                 new State("Spin",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new TimedTransition(2000, "Pause"),
                     new State("Quadforce1",
-                        new ConditionalEffect(ConditionEffectIndex.Invincible),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                         new Shoot(0, projectileIndex: 0, count: 5, shootAngle: 60, fixedAngle: 0, coolDown: 300),
                         new TimedTransition(150, "Quadforce2")
                         ),
                     new State("Quadforce2",
-                        new ConditionalEffect(ConditionEffectIndex.Invincible),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                         new Shoot(0, projectileIndex: 0, count: 5, shootAngle: 60, fixedAngle: 15, coolDown: 300),
                         new TimedTransition(150, "Quadforce3")
                         ),
                     new State("Quadforce3",
-                        new ConditionalEffect(ConditionEffectIndex.Invincible),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                         new Shoot(0, projectileIndex: 0, count: 5, shootAngle: 60, fixedAngle: 30, coolDown: 300),
                         new TimedTransition(150, "Quadforce4")
                         ),
                     new State("Quadforce4",
-                        new ConditionalEffect(ConditionEffectIndex.Invincible),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                         new Shoot(0, projectileIndex: 0, count: 5, shootAngle: 60, fixedAngle: 45, coolDown: 300),
                         new TimedTransition(150, "Quadforce5")
                         ),
                     new State("Quadforce5",
-                        new ConditionalEffect(ConditionEffectIndex.Invincible),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                         new Shoot(0, projectileIndex: 0, count: 5, shootAngle: 60, fixedAngle: 60, coolDown: 300),
                         new TimedTransition(150, "Quadforce6")
                         ),
                     new State("Quadforce6",
-                        new ConditionalEffect(ConditionEffectIndex.Invincible),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                         new Shoot(0, projectileIndex: 0, count: 5, shootAngle: 60, fixedAngle: 75, coolDown: 300),
                         new TimedTransition(150, "Quadforce7")
                         ),
                     new State("Quadforce7",
-                        new ConditionalEffect(ConditionEffectIndex.Invincible),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                         new Shoot(0, projectileIndex: 0, count: 5, shootAngle: 60, fixedAngle: 90, coolDown: 300),
                         new TimedTransition(150, "Quadforce8")
                         ),
                     new State("Quadforce8",
-                        new ConditionalEffect(ConditionEffectIndex.Invincible),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                         new Shoot(0, projectileIndex: 0, count: 5, shootAngle: 60, fixedAngle: 105, coolDown: 300),
                         new TimedTransition(150, "Quadforce1")
                         )
                     ),
                 new State("Pause",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new TimedTransition(5000, "Spin")
                     )
                 )
@@ -977,7 +977,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Tomb Boss Anchor",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new DropPortalOnDeath("Realm Portal", 100),
                 new State("Idle",
                     new EntitiesNotExistsTransition(300, "Death", "Tomb Support", "Tomb Attacker", "Tomb Defender",

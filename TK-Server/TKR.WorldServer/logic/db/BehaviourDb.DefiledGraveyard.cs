@@ -15,7 +15,7 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(30),
                 new State("idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new PlayerWithinTransition(20, "talk")
                     ),
                 new State("talk",
@@ -199,7 +199,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.03, "dead")
                     ),               
                 new State("dead",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, false),
                     new Shoot(20, 25, projectileIndex: 10, coolDown: 99999),
                     new TimedTransition(500, "dead1")
                     ),
@@ -257,7 +257,7 @@ namespace TKR.WorldServer.logic
                 new ScaleHP2(4),
                 new SetNoXP(),
                 new State("attack",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new Shoot(12, 12, projectileIndex: 0, predictive: 1, coolDown: 100),
                     new TimedTransition(3000, "die")
                     ),
@@ -271,7 +271,7 @@ namespace TKR.WorldServer.logic
                 new ScaleHP2(4),
                 new SetNoXP(),
                 new State("attack",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new Shoot(12, 12, projectileIndex: 0, predictive: 1, coolDown: 100),
                     new TimedTransition(3000, "die")
                     ),
@@ -285,7 +285,7 @@ namespace TKR.WorldServer.logic
                 new ScaleHP2(4),
                 new SetNoXP(),
                 new State("attack",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new Shoot(12, 12, projectileIndex: 0, predictive: 1, coolDown: 100),
                     new TimedTransition(3000, "die")
                     ),
@@ -299,7 +299,7 @@ namespace TKR.WorldServer.logic
                 new ScaleHP2(4),
                 new SetNoXP(),
                 new State("attack",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new Shoot(12, 12, projectileIndex: 0, predictive: 1, coolDown: 100),
                     new TimedTransition(3000, "die")
                     ),
@@ -313,7 +313,7 @@ namespace TKR.WorldServer.logic
                 new ScaleHP2(5),
 
                 new State("taunt",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new TimedTransition(5000, "attack")
                     ),
                 new State("attack",
@@ -333,7 +333,7 @@ namespace TKR.WorldServer.logic
         .Init("Haunted Warrior",
             new State(
                 new State("taunt",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new TimedTransition(5000, "attack")
                     ),
                 new ScaleHP2(20),
@@ -350,7 +350,7 @@ namespace TKR.WorldServer.logic
         .Init("Haunted Guard",
             new State(
                 new State("taunt",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new TimedTransition(5000, "attack")
                     ),
                 new ScaleHP2(20),

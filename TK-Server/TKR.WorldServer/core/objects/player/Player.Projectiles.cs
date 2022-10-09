@@ -1,14 +1,6 @@
-﻿using NLog.LayoutRenderers.Wrappers;
-using Pipelines.Sockets.Unofficial.Arenas;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Net.Http.Headers;
-using System.Net.WebSockets;
-using System.Reflection.Metadata;
-using System.Xml;
 using TKR.Shared.resources;
-using TKR.WorldServer.core._core.entities;
 using TKR.WorldServer.core.miscfile.datas;
 using TKR.WorldServer.core.miscfile.stats;
 using TKR.WorldServer.core.miscfile.structures;

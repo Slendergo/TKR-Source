@@ -68,7 +68,7 @@ namespace TKR.WorldServer.logic
         .Init("Warrior Puppet",
             new State(
                 new State("jugg",
-                    new ConditionalEffect(ConditionEffectIndex.Armored),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored),
                     new Wander(0.6),
                     new TimedTransition(4700, "berserk")
                     ),
@@ -223,7 +223,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Sorc Bomb Thrower",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new State("throw",
                     new TossObject("Puppet Bomb 2", 5, angle: 135, coolDown: 1500),
                     new TossObject("Puppet Bomb 2", 5, angle: 60, coolDown: 1500),
@@ -246,12 +246,12 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.11, "dead")
                     ),
                 new State("dead",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Taunt(1.00, "You may have killed me, but I am only a pretender. Get ready for the plot twist!"),
                     new TimedTransition(2500, "die")
                     ),
                 new State("die",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Shoot(8.4, count: 8, projectileIndex: 1, coolDown: 2850),
                     new Suicide()
                     )
@@ -262,7 +262,7 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new TimedTransition(5000, "UnsetEffect")
                     ),
                 new State("UnsetEffect",
@@ -295,11 +295,11 @@ namespace TKR.WorldServer.logic
                 new TransformOnDeath("Puppet Loot Chest", 1, 1),
                 new RealmPortalDrop(),
                 new State("default",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new PlayerWithinTransition(6, "move")
                     ),
                 new State("move",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new MoveTo(speed: 1, x: 38, y: 65),
                     new Taunt(1.00, "My puppets need life essence to live! Your sad, sad lives will have to do."),
                     new TimedTransition(5250, "middleShots")
@@ -357,7 +357,7 @@ namespace TKR.WorldServer.logic
                     ),
                 new State("spookclone",
                     new Spawn("False Puppet Master", maxChildren: 5, coolDown: 5500),
-                    new ConditionalEffect(ConditionEffectIndex.Armored),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored),
                     new Wander(0.3),
                     new Shoot(12, count: 7, projectileIndex: 0, coolDown: 2250),
                     new Shoot(12, count: 3, shootAngle: 16, projectileIndex: 2, coolDown: 1500),
@@ -367,7 +367,7 @@ namespace TKR.WorldServer.logic
                     new RemoveEntity(9999, "False Puppet Master"),
                     new Flash(0xFFFFFF, 2, 2),
                     new Taunt(1.00, "Lucky guess hero, but I've run out of time to play games with you. It is time that you die!"),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new MoveTo(speed: 0.7f, x: 38, y: 54),
                     new TimedTransition(3250, "OutofTime")
                     ),
@@ -398,14 +398,14 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(11000, "NopeImDead")
                     ),
                 new State("NopeImDead",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Flash(0xFFFFFF, 2, 2),
                     new MoveTo(speed: 1, x: 38, y: 54),
                     new Taunt(1.00, "NO!! This cannot be how my story ends!! I WILL HAVE MY ENCORE, HERO!"),
                     new TimedTransition(3250, "YepDead")
                     ),
                 new State("YepDead",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new TransformOnDeath("Puppet Loot Chest", 1, 1, 1),
                     new Shoot(7, count: 8, projectileIndex: 1, coolDown: 5000),
                     new Suicide()

@@ -11,7 +11,7 @@ namespace TKR.WorldServer.logic
         .Init("Archdemon Malphas",
             new State(
                 new MoveTo2(1f, 1f, isMapPosition: false, instant: true),
-                new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                 new ScaleHP2(10),
                 new StayCloseToSpawn(3, 10),
                 new DropPortalOnDeath("Hideout of Malphas Portal", 1, 0, 0, 0, 120),
@@ -118,7 +118,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.50, "Third Phase")
                     ),
                 new State("Third Phase",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 1500),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 1500),
                     new Taunt("I will release a part of my power."),
                     new TimedTransition(1500, "Third Phase Start")
                     ),
@@ -165,7 +165,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.25, "Four Phase")
                     ),
                 new State("Four Phase",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 1500),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 1500),
                     new Flash(0xFF0000, 0.2, 5),
                     new Taunt("NOOO! IM GONNA RELEASE ALL MY POWER!!"),
                     new TimedTransition(1500, "Four Phase Start")

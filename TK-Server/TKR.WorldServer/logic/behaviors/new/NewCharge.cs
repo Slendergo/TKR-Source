@@ -1,9 +1,6 @@
-﻿using System;
-using TKR.WorldServer.core._core.entities;
-using TKR.WorldServer.core.miscfile.structures;
+﻿using TKR.WorldServer.core.miscfile.structures;
 using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.core.objects;
-using TKR.WorldServer.utils;
 
 namespace TKR.WorldServer.logic.behaviors
 {

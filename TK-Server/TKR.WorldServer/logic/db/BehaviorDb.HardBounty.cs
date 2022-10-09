@@ -17,7 +17,7 @@ namespace TKR.WorldServer.logic
                 new ScaleHP2(20),
                 new DropPortalOnDeath("Defiled Graveyard Portal", 0.6),
                     new State("Pause",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                         new PlayerWithinTransition(10, "Start")
                         ),
                     new State("Start",
@@ -36,7 +36,7 @@ namespace TKR.WorldServer.logic
                         new HpLessTransition(0.50, "Fight 2")
                         ),
                     new State("Fight 2",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                         new ReturnToSpawn(1),
                         new TimedTransition(2500, "Fight 2.1")
                         ),
@@ -61,7 +61,7 @@ namespace TKR.WorldServer.logic
                         new HpLessTransition(0.10, "Fight 3")
                         ),
                     new State("Fight 3",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                         new ChangeSize(10, 150),
                         new Flash(0xFF0000, 5, 10),
                         new HealSelf(coolDown: 500, amount: 25, percentage: true),
@@ -99,7 +99,7 @@ namespace TKR.WorldServer.logic
         .Init("Grim Reaper",
             new State(
                 new State("Awaken",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Taunt("I, Thanatos, God of Death, faithful servant of Hades, have come to reap your souls. I will avenge Cereberus"),
                   //  new ChangeSize(3, 500),
                   //  new Flash(0x000001, 5, 2),
@@ -107,7 +107,7 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(5000, "1")
                     ),
                 new State("1",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 0),
                     new Prioritize(
                             new Chase(),
                             new Shoot(12, count: 1,projectileIndex:0, coolDown: 500)
@@ -181,7 +181,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(.85, "2")
                     ),
                 new State("2",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Taunt("ΝΟΜΟΘΕΣΙΑ ΣΤΟΝ ΟΠΛΟ!"),
                     new TossObject2("Hard Bounty Skeletons", 6, 0, coolDown:   100000, randomToss: true),
 					//new TossObject2("Hard Bounty Skeletons", 6, 10, coolDown: 100000, randomToss: true),
@@ -279,7 +279,7 @@ namespace TKR.WorldServer.logic
 					new TimedTransition(5000, "3")
                     ),
                 new State("3",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 0),
                     new Prioritize(
                         new Chase(),
                         new Shoot(20, 10, 30, 1, coolDown: 500)
@@ -301,7 +301,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.5, "4")
                     ),
                 new State("4",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                     new Taunt("Hee hee... the difference between you and me is that... im immortal ..."),
                     new ChangeSize(3, 700),
                     new HealSelf(coolDown: 10000, 200000),
@@ -313,7 +313,7 @@ namespace TKR.WorldServer.logic
                     ),
                 new State("5",
                     new Taunt("Behold the might of Hell!"),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 0),
                     new TossObject2("Hard Bounty Skeletons", coolDown: 10000, randomToss: true),
                     new TossObject2("Hard Bounty Skeletons", coolDown: 10000, randomToss: true),
                     new TossObject2("Reaper's Bomb", 30, coolDown: 5000, angle: 0),
@@ -394,12 +394,12 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(.1, "6")
                     ),
                 new State("6",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Taunt("You fools.. I was trying to save you... now you face Hades in all his might... be warned... his powers are tenfold greater than me and Cerebrus combined..."),
                     new TimedTransition(3000, "7")
                     ),
                 new State("7",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Shoot(30, 48, projectileIndex: 1, defaultAngle: 0, shootAngle: 7.5, coolDown: 100000),
                     new Shoot(30, 24, projectileIndex: 0, defaultAngle: 0, shootAngle: 15, coolDown: 100000, coolDownOffset: 50),
                     new Shoot(30, 48, projectileIndex: 1, defaultAngle: 0, shootAngle: 7.5, coolDown: 1000000),
@@ -471,14 +471,14 @@ namespace TKR.WorldServer.logic
         .Init("Reaper's Scythe",
             new State(
                 new State("Start",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                     new Taunt("My Master calls, I shall serve faithfully."),
                     new Chase(),
                     new TimedTransition(1000, "1")
                     ),
                 new State("1",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new Prioritize(
                         new Chase(3.5),
                         new Shoot(50, 4, 40, 0, coolDown: 500)

@@ -88,11 +88,5 @@ namespace TKR.WorldServer.core.objects.containers
                 Inventory.SetItems(inv);
             }
         }
-
-        public override void Destroy()
-        {
-            Inventory = null;
-            base.Destroy();
-        }
     }
 }

@@ -11,13 +11,13 @@ namespace TKR.WorldServer.logic
         .Init("King Slime",
             new State(
                 new ScaleHP2(20),
-                new ConditionalEffect(ConditionEffectIndex.ParalyzeImmune),
+                new ConditionEffectBehavior(ConditionEffectIndex.ParalyzeImmune),
                 new State("idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                     new PlayerWithinTransition(25, "Prepare")
                     ),
                 new State("Prepare",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Flash(0xBB0000, 0.5, 3),
                     new TimedTransition(1500, "attack")
                     ),

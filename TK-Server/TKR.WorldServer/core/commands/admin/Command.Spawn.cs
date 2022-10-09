@@ -250,50 +250,46 @@ namespace TKR.WorldServer.core.commands
                 var pX = player.X;
                 var pY = player.Y;
 
-                player.World.StartNewTimer(Delay * 1000, (world, t) => // spawn mob in delay seconds
+                for (var i = 0; i < num && i < (player.GameServer.Configuration.serverInfo.testing ? player.IsAdmin ? 500 : 1 : 500); i++)
                 {
-                    for (var i = 0; i < num && i < (player.GameServer.Configuration.serverInfo.testing ? player.IsAdmin ? 500 : 1 : 500); i++)
+                    Entity entity;
+                    try
                     {
-                        Entity entity;
-                        try
-                        {
-                            entity = Entity.Resolve(world.GameServer, mobObjectType);
-                        }
-                        catch (Exception e)
-                        {
-                            StaticLogger.Instance.Error(e.ToString());
-                            return;
-                        }
-
-                        entity.Spawned = true;
-
-                        if (entity is Enemy enemy)
-                        {
-                            if (hp != null)
-                            {
-                                enemy.HP = hp.Value;
-                                enemy.MaximumHP = enemy.HP;
-                            }
-
-                            if (size != null)
-                                enemy.SetDefaultSize(size.Value);
-
-                            if (target == true)
-                                enemy.AttackTarget = player;
-                        }
-
-                        if (clasified != "normal")
-                            (entity as Enemy).ClasifyEnemyJson(clasified);
-
-                        var sX = (x != null && i < x.Length) ? x[i] : pX;
-                        var sY = (y != null && i < y.Length) ? y[i] : pY;
-
-                        entity.Move(sX, sY);
-
-                        if (!world.Deleted)
-                            world.EnterWorld(entity);
+                        entity = Entity.Resolve(player.World.GameServer, mobObjectType);
                     }
-                });
+                    catch (Exception e)
+                    {
+                        StaticLogger.Instance.Error(e.ToString());
+                        return;
+                    }
+
+                    entity.Spawned = true;
+
+                    if (entity is Enemy enemy)
+                    {
+                        if (hp != null)
+                        {
+                            enemy.HP = hp.Value;
+                            enemy.MaximumHP = enemy.HP;
+                        }
+
+                        if (size != null)
+                            enemy.SetDefaultSize(size.Value);
+
+                        if (target == true)
+                            enemy.AttackTarget = player;
+                    }
+
+                    if (clasified != "normal")
+                        (entity as Enemy).ClasifyEnemyJson(clasified);
+
+                    var sX = (x != null && i < x.Length) ? x[i] : pX;
+                    var sY = (y != null && i < y.Length) ? y[i] : pY;
+
+                    entity.Move(sX, sY);
+
+                    player.World.EnterWorld(entity);
+                }
             }
         }
     }

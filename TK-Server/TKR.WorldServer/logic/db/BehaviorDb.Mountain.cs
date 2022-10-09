@@ -10,7 +10,7 @@ namespace TKR.WorldServer.logic
         private _ Mountain = () => Behav()
         .Init("Arena Horseman Anchor",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible)
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible)
                 )
             )
         .Init("Arena Headless Horseman",
@@ -27,7 +27,7 @@ namespace TKR.WorldServer.logic
                         ),
                     new State("Shoot",
                         new ReturnToSpawn(1.5),
-                        new ConditionalEffect(ConditionEffectIndex.Invincible),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                         new Flash(0xF0E68C, 1, 6),
                         new Shoot(15, 8, projectileIndex: 2, coolDown: 1500),
                         new Shoot(15, projectileIndex: 1, coolDown: 2500),
@@ -408,7 +408,7 @@ namespace TKR.WorldServer.logic
                     //    new StayAbove(1, 200),
                     //    new Wander(0.4)
                     //    ),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Reproduce(densityMax: 3, densityRadius: 20),
                     new PlayerWithinTransition(8, "Attacking")
                     ),
@@ -441,14 +441,14 @@ namespace TKR.WorldServer.logic
                     new State("Wait",
                         new Follow(0.7, range: 0.5),
                         new Flash(0xff00ff00, 0.1, 20),
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new TimedTransition(2000, "Bullet")
                         ),
                     new NoPlayerWithinTransition(13, "Idle"),
                     new HpLessTransition(0.5, "FlashBeforeExplode")
                     ),
                 new State("FlashBeforeExplode",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Flash(0xff0000, 0.3, 3),
                     new TimedTransition(1000, "Explode")
                     ),
@@ -484,7 +484,7 @@ namespace TKR.WorldServer.logic
                 new OrderedBehavior(
                     new NewWander(0.4f)
                     ),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new PlayerWithinTransition(8, "Attacking")
                     ),
                 new State("Attacking",
@@ -516,19 +516,19 @@ namespace TKR.WorldServer.logic
                     new State("Wait",
                         new Follow(0.7, range: 0.5),
                         new Flash(0xff00ff00, 0.1, 20),
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new TimedTransition(2000, "Bullet")
                         ),
                     new NoPlayerWithinTransition(13, "Idle"),
                     new HpLessTransition(0.5, "FlashBeforeExplode")
                     ),
                 new State("FlashBeforeExplode",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Flash(0xff0000, 0.3, 3),
                     new TimedTransition(1000, "Explode")
                     ),
                 new State("Explode",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Shoot(0, 10, 36, fixedAngle: 0),
                     new Suicide()
                     )

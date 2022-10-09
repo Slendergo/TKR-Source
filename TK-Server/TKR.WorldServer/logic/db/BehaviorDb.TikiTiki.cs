@@ -12,13 +12,13 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(35),
                 new State("idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new PlayerWithinTransition(25, "Prepare")
                     ),
                 new State("Prepare",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new TimedTransition(1500, "attack")
                     ),
                 new State("attack",
@@ -138,7 +138,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.05, "dead")
                     ),
                 new State("dead",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Taunt("Todo"),
                     new Suicide()
                     )

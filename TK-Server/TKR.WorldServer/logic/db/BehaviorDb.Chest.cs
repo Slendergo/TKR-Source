@@ -12,7 +12,7 @@ namespace TKR.WorldServer.logic
            new State(
                 new ScaleHP2(20),
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new TimedTransition(5000, "UnsetEffect")
                     ),
                 new State("UnsetEffect",
@@ -36,7 +36,7 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new TimedTransition(5000, "UnsetEffect")
                     ),
                 new State("UnsetEffect",

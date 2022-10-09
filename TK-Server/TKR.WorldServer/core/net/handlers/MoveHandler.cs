@@ -90,7 +90,7 @@ namespace TKR.WorldServer.core.net.handlers
                 //}
 
                 player.Move(newX, newY);
-                player.PlayerUpdate.UpdateTiles = true;
+                player.PlayerUpdate.UpdateTiles();
             }
 
             player.MoveReceived(tickTime, time, tickId);

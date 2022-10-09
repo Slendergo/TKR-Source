@@ -16,7 +16,7 @@ namespace TKR.WorldServer.logic
                     new PlayerWithinTransition(20, "Start")
                     ),
                 new State("Start",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Taunt("Tssss..."),
                     new TimedTransition(1000, "First Phase")
                     ),
@@ -28,7 +28,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.66, "Second Phase Start")
                     ),
                 new State("Second Phase Start",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new ReturnToSpawn(0.7, 1),
                     new Flash(0x008000, 0.5, 3),
                     new TimedTransition(1500, "Second Phase")
@@ -39,7 +39,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.33, "Third Phase Start")
                     ),
                 new State("Third Phase Start",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Flash(0xFF0000, 0.5, 5),
                     new TimedTransition(1500, "Third Phase")
                     ),
@@ -229,7 +229,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Snakepit Dart Thrower",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Idle"),
                 new State("Protect the Guard",
                     new EntityNotExistsTransition("Snakepit Guard", 40, "Idle")
@@ -238,7 +238,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Snakepit Button",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Idle",
                     new PlayerWithinTransition(0.5, "Order")
                     ),
@@ -252,7 +252,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Snakepit Guard Spawner",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Idle"),
                 new State("Spawn the Guard",
                     new Order(15, "Snakepit Dart Thrower", "Protect the Guard"),

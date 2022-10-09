@@ -296,7 +296,7 @@ namespace TKR.WorldServer.logic
                         new TimedTransition(3000, "stars")
                         ),
                     new State("Throwing niggos",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new State("Niggos like dancing",
                             new Taunt("Be consumed by shadow!"),
                             new TossObject("shtrs shadowmans", 5, 0, coolDown: 100000, coolDownOffset: 1900),
@@ -310,7 +310,7 @@ namespace TKR.WorldServer.logic
                             new TimedTransition(4000, "kill niggos")
                             ),
                         new State("kill niggos",
-                            new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                            new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                             new EntityNotExistsTransition("shtrs shadowmans", 100, "stars after niggo")
                             )
                         ),
@@ -607,7 +607,7 @@ namespace TKR.WorldServer.logic
                         new TimedTransition(1600, "spiral after niggo")
                         ),
                     new State("fuck this eyes",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new State("eyes...",
                            new Taunt("EYE see you!"),
                            new Spawn("shtrs eyeswarmer", 5, 1, coolDown: 10000),
@@ -908,7 +908,7 @@ namespace TKR.WorldServer.logic
                         ),
                     new State("blobombs do boom!",
                         new State(
-                            new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                            new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                             new State("BOOM BOOM BOOM",
                                 new Taunt("You shall be food for the ether. Blobs, attack!"),
                         new TossObject("shtrs Blobomb", 4, 0, coolDown: 9999999),
@@ -1218,7 +1218,7 @@ namespace TKR.WorldServer.logic
                         new TimedTransition(1600, "spiral after blo")
                         ),
                     new State("Pillars",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new State("Pillars activated!",
                             new Taunt("ACTIVATING PILLARS DEFENSES."),
                             new OrderOnce(30, "shtrs Pillar 1", "PROTECT"),
@@ -1524,7 +1524,7 @@ namespace TKR.WorldServer.logic
                         new TimedTransition(1600, "spiral after pillars")
                         ),
                     new State("Die",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new State("die die",
                             new Taunt("YOU KNOW NOT WHAT YOU HAVE DONE!"),
                             new TimedTransition(4000, "suicide")
@@ -1574,7 +1574,7 @@ namespace TKR.WorldServer.logic
             .Init("shtrs shadowmans",
                 new State(
                     new HealSelf(coolDown: 3000, amount: 500),
-                    new ConditionalEffect(ConditionEffectIndex.Armored),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored),
                     new State("shoot1",
                         new Shoot(20, 1, 0, 0, 0),
                         new Shoot(20, 1, 0, 0, 90),
@@ -1604,11 +1604,11 @@ namespace TKR.WorldServer.logic
             .Init("shtrs Pillar 1",
                 new State(
                     new State("idle",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable)
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable)
                         ),
                     new State("PROTECT",
                         new Taunt("PROTECT THE AVATAR!"),
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new Shoot(20, count: 10, projectileIndex: 0, fixedAngle: fixedAngle_RingAttack2, coolDownOffset: 1000),
                         new Shoot(20, count: 10, projectileIndex: 0, fixedAngle: fixedAngle_RingAttack2 * 2, coolDownOffset: 4000),
                         new Shoot(20, count: 10, projectileIndex: 0, fixedAngle: fixedAngle_RingAttack2, coolDownOffset: 7000),
@@ -1622,12 +1622,12 @@ namespace TKR.WorldServer.logic
                         new TimedTransition(10000, "preparing")
                         ),
                     new State("preparing",
-                        new ConditionalEffect(ConditionEffectIndex.Armored),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Armored),
                         new Flash(0x0D00FF, 0.4, 10),
                         new TimedTransition(35000, "PROTECT2")
                         ),
                     new State("PROTECT2",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new Shoot(20, count: 10, projectileIndex: 0, fixedAngle: fixedAngle_RingAttack2, coolDownOffset: 1000),
                         new Shoot(20, count: 10, projectileIndex: 0, fixedAngle: fixedAngle_RingAttack2 * 2, coolDownOffset: 4000),
                         new Shoot(20, count: 10, projectileIndex: 0, fixedAngle: fixedAngle_RingAttack2, coolDownOffset: 7000),
@@ -1645,11 +1645,11 @@ namespace TKR.WorldServer.logic
             .Init("shtrs Pillar 2",
                 new State(
                     new State("idle",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable)
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable)
                         ),
                     new State("PROTECT",
                         new Taunt("PROTECT THE AVATAR!"),
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new Shoot(20, count: 10, projectileIndex: 0, fixedAngle: fixedAngle_RingAttack2, coolDownOffset: 11000),
                         new Shoot(20, count: 10, projectileIndex: 0, fixedAngle: fixedAngle_RingAttack2 * 2, coolDownOffset: 14000),
                         new Shoot(20, count: 10, projectileIndex: 0, fixedAngle: fixedAngle_RingAttack2, coolDownOffset: 17000),
@@ -1663,12 +1663,12 @@ namespace TKR.WorldServer.logic
                         new TimedTransition(10000, "preparing")
                         ),
                     new State("preparing",
-                        new ConditionalEffect(ConditionEffectIndex.Armored),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Armored),
                         new Flash(0x0D00FF, 0.4, 10),
                         new TimedTransition(30000, "PROTECT2")
                         ),
                     new State("PROTECT2",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new Shoot(20, count: 10, projectileIndex: 0, fixedAngle: fixedAngle_RingAttack2, coolDownOffset: 1000),
                         new Shoot(20, count: 10, projectileIndex: 0, fixedAngle: fixedAngle_RingAttack2 * 2, coolDownOffset: 4000),
                         new Shoot(20, count: 10, projectileIndex: 0, fixedAngle: fixedAngle_RingAttack2, coolDownOffset: 7000),
@@ -1686,11 +1686,11 @@ namespace TKR.WorldServer.logic
             .Init("shtrs Pillar 3",
                 new State(
                     new State("idle",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable)
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable)
                         ),
                     new State("PROTECT",
                         new Taunt("PROTECT THE AVATAR!"),
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new Shoot(20, count: 10, projectileIndex: 0, fixedAngle: fixedAngle_RingAttack2, coolDownOffset: 6000),
                         new Shoot(20, count: 10, projectileIndex: 0, fixedAngle: fixedAngle_RingAttack2 * 2, coolDownOffset: 9000),
                         new Shoot(20, count: 10, projectileIndex: 0, fixedAngle: fixedAngle_RingAttack2, coolDownOffset: 12000),
@@ -1704,7 +1704,7 @@ namespace TKR.WorldServer.logic
                         new TimedTransition(10000, "preparing")
                         ),
                     new State("preparing",
-                        new ConditionalEffect(ConditionEffectIndex.Armored),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Armored),
                         new Flash(0x0D00FF, 0.4, 10),
                         new TimedTransition(35000, "PROTECT2")
                         ),
@@ -1726,11 +1726,11 @@ namespace TKR.WorldServer.logic
             .Init("shtrs Pillar 4",
                 new State(
                     new State("idle",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable)
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable)
                         ),
                     new State("PROTECT",
                         new Taunt("PROTECT THE AVATAR!"),
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new Shoot(20, count: 10, projectileIndex: 0, fixedAngle: fixedAngle_RingAttack2, coolDownOffset: 16000),
                         new Shoot(20, count: 10, projectileIndex: 0, fixedAngle: fixedAngle_RingAttack2 * 2, coolDownOffset: 19000),
                         new Shoot(20, count: 10, projectileIndex: 0, fixedAngle: fixedAngle_RingAttack2, coolDownOffset: 22000),
@@ -1744,12 +1744,12 @@ namespace TKR.WorldServer.logic
                         new TimedTransition(10000, "preparing")
                         ),
                     new State("preparing",
-                        new ConditionalEffect(ConditionEffectIndex.Armored),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Armored),
                         new Flash(0x0D00FF, 0.4, 10),
                         new TimedTransition(30000, "PROTECT2")
                         ),
                     new State("PROTECT2",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new Shoot(20, count: 10, projectileIndex: 0, fixedAngle: fixedAngle_RingAttack2, coolDownOffset: 1000),
                         new Shoot(20, count: 10, projectileIndex: 0, fixedAngle: fixedAngle_RingAttack2 * 2, coolDownOffset: 4000),
                         new Shoot(20, count: 10, projectileIndex: 0, fixedAngle: fixedAngle_RingAttack2, coolDownOffset: 7000),

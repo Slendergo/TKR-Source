@@ -72,12 +72,12 @@ namespace TKR.WorldServer.logic
                     new Order(100, "Red Gas Spawner LL", "OFF"),
                     new Order(100, "Red Gas Spawner LR", "OFF"),
                     new ReturnToSpawn(speed: 1),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new SetAltTexture(1),
                     new TimedTransition(1000, "hiding")
                     ),
                 new State("hiding",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new EntitiesNotExistsTransition(30, "nohide", "Dr Terrible Rampage Cyborg", "Dr Terrible Mini Bot", "Dr Terrible Escaped Experiment")
                     ),
                 new State("nohide",
@@ -112,12 +112,12 @@ namespace TKR.WorldServer.logic
                     new Order(100, "Red Gas Spawner LL", "OFF"),
                     new Order(100, "Red Gas Spawner LR", "OFF"),
                     new ReturnToSpawn(speed: 1),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new SetAltTexture(1),
                     new TimedTransition(1000, "hiding2")
                     ),
                 new State("hiding2",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new EntitiesNotExistsTransition(30, "nohide2", "Dr Terrible Rampage Cyborg", "Dr Terrible Mini Bot", "Dr Terrible Escaped Experiment")
                     ),
                 new State("nohide2",
@@ -152,12 +152,12 @@ namespace TKR.WorldServer.logic
                     new Order(100, "Red Gas Spawner LL", "OFF"),
                     new Order(100, "Red Gas Spawner LR", "OFF"),
                     new ReturnToSpawn(speed: 1),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new SetAltTexture(1),
                     new TimedTransition(1000, "hiding3")
                     ),
                 new State("hiding3",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new EntitiesNotExistsTransition(30, "nohide3", "Dr Terrible Rampage Cyborg", "Dr Terrible Mini Bot", "Dr Terrible Escaped Experiment")
                     ),
                 new State("nohide3",
@@ -192,12 +192,12 @@ namespace TKR.WorldServer.logic
                     new Order(100, "Red Gas Spawner LL", "OFF"),
                     new Order(100, "Red Gas Spawner LR", "OFF"),
                     new ReturnToSpawn(speed: 1),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new SetAltTexture(1),
                     new TimedTransition(1000, "hiding4")
                     ),
                 new State("hiding4",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new EntitiesNotExistsTransition(30, "idle", "Dr Terrible Rampage Cyborg", "Dr Terrible Mini Bot", "Dr Terrible Escaped Experiment")
                     )
                 ),
@@ -352,13 +352,13 @@ namespace TKR.WorldServer.logic
             )
         .Init("West Automated Defense Turret",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new Shoot(32, fixedAngle: 0, coolDown: new Cooldown(3000, 1000))
                 )
             )
         .Init("East Automated Defense Turret",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new Shoot(32, fixedAngle: 180, coolDown: new Cooldown(3000, 1000))
                 )
             )
@@ -413,10 +413,10 @@ namespace TKR.WorldServer.logic
             new State(
                 new EntityNotExistsTransition("Dr Terrible", 75, "OFF"),
                 new State("OFF",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible)
                     ),
                 new State("ON",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new Shoot(10, count: 20, projectileIndex: 0, fixedAngle: 22.5f)
                     )
                 )
@@ -425,10 +425,10 @@ namespace TKR.WorldServer.logic
             new State(
                 new EntityNotExistsTransition("Dr Terrible", 75, "OFF"),
                 new State("OFF",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible)
                     ),
                 new State("ON",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new Shoot(10, count: 20, projectileIndex: 0, fixedAngle: 22.5f)
                     )
                 )
@@ -437,10 +437,10 @@ namespace TKR.WorldServer.logic
             new State(
                 new EntityNotExistsTransition("Dr Terrible", 75, "OFF"),
                 new State("OFF",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible)
                     ),
                 new State("ON",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new Shoot(10, count: 20, projectileIndex: 0, fixedAngle: 22.5f)
                     )
                 )
@@ -449,10 +449,10 @@ namespace TKR.WorldServer.logic
             new State(
                 new EntityNotExistsTransition("Dr Terrible", 75, "OFF"),
                 new State("OFF",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible)
                     ),
                 new State("ON",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new Shoot(10, count: 20, projectileIndex: 0, fixedAngle: 22.5f)
                     )
                 )
@@ -477,7 +477,7 @@ namespace TKR.WorldServer.logic
         )*/
         .Init("Mad Scientist Summoner",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("idle",
                     new EntitiesNotExistsTransition(300, "Death", "Dr Terrible")
                     ),
@@ -489,7 +489,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Dr Terrible Bubble",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new State("nothing change",
                     new SetAltTexture(0)
                     ),

@@ -56,13 +56,13 @@ namespace TKR.WorldServer.logic
 
         .Init("Beach Spectre Spawner",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new State("Spawn",
                     new Reproduce("Beach Spectre", densityMax: 1, densityRadius: 3, coolDown: 1250)
                     )))
         .Init("Tempest Cloud",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new State("Start1",
                     new ChangeSize(70, 130),
                     new TimedTransition(3000, "Start2")
@@ -110,7 +110,7 @@ namespace TKR.WorldServer.logic
         .Init("Ghost Ship Anchor",
             new State(
                 new State("idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible)
                     ),
                 new State("tempestcloud",
                     new InvisiToss("Tempest Cloud", 9, 0, coolDown: 9999999),
@@ -140,7 +140,7 @@ namespace TKR.WorldServer.logic
                     new InvisiToss("Beach Spectre Spawner", 17, 250, coolDown: 9999999),
                     new InvisiToss("Beach Spectre Spawner", 17, 110, coolDown: 9999999),
                     new InvisiToss("Beach Spectre Spawner", 17, 200, coolDown: 9999999),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible)
                     )
 
                 ))
@@ -155,7 +155,7 @@ namespace TKR.WorldServer.logic
                     ),
                 new State("pause",
                     new SetAltTexture(2),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new TimedTransition(2000, "start")
                     ),
                 new State("start",
@@ -174,7 +174,7 @@ namespace TKR.WorldServer.logic
                         ),
                     new State("1",
                         new TossObject("Water Mine", 7, coolDown: 1000),
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new ReturnToSpawn(speed: 1),
                         new Shoot(12, count: 1, projectileIndex: 0, coolDown: 450),
                         new Shoot(12, count: 3, projectileIndex: 0, shootAngle: 20, coolDown: 1050),
@@ -190,7 +190,7 @@ namespace TKR.WorldServer.logic
                     new State("2",
                         new SetAltTexture(0),
                         new ReturnToSpawn(speed: 1),
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new Shoot(10, count: 4, projectileIndex: 0, coolDownOffset: 800, angleOffset: 270, coolDown: 1000),
                         new Shoot(10, count: 4, projectileIndex: 0, coolDownOffset: 800, angleOffset: 90, coolDown: 1000),
                         new Shoot(8.4, count: 1, projectileIndex: 1, coolDown: 1250),

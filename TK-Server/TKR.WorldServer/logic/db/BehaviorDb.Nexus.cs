@@ -15,7 +15,7 @@ namespace TKR.WorldServer.logic
                 new State(
                     new State("Welcome",
                         new Wander(0.1),
-                        new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                         new PlayerWithinTransition(10, "Start")
                         ),
                     new State("Start",

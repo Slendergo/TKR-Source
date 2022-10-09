@@ -122,7 +122,7 @@ namespace TKR.WorldServer.core.objects
 
         public void HandleQuest(TickTime time)
         {
-            if (Quest != null && Quest.IsRemovedFromWorld)
+            if (Quest != null && Quest.Dead)
                 Quest = null;
 
             if (Quest == null || time.TickCount % 10 == 0)

@@ -25,7 +25,7 @@ namespace TKR.WorldServer.logic
                     new Prioritize(
                         new Wander(0.4)
                         ),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Reproduce(densityMax: 4),
                     new PlayerWithinTransition(8, "Attacking")
                     ),
@@ -58,7 +58,7 @@ namespace TKR.WorldServer.logic
                     new State("Wait",
                         new Follow(1, range: 2),
                         new Flash(0xff00ff00, 0.1, 20),
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new TimedTransition(2000, "Bullet")
                         ),
                     new NoPlayerWithinTransition(13, "Idle")
@@ -141,18 +141,18 @@ namespace TKR.WorldServer.logic
         .Init("shtrs MagiGenerators",
             new State(
                 new State("Main",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Shoot(15, 10, coolDown: 1000),
                     new Shoot(15, 1, projectileIndex: 1, coolDown: 2500),
                     new EntitiesNotExistsTransition(30, "Hide", "shtrs Twilight Archmage", "shtrs Inferno", "shtrs Blizzard")
                     ),
                 new State("Hide",
                     new SetAltTexture(1),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new TimedTransition(100, "Despawn")
                     ),
                 new State("vulnerable",
-                    new ConditionalEffect(ConditionEffectIndex.Armored)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored)
                     ),
                 new State("Despawn",
                     new Decay()
@@ -211,7 +211,7 @@ namespace TKR.WorldServer.logic
                     new Shoot(3, 6, 60, projectileIndex: 0, fixedAngle: 50, coolDown: 1200, coolDownOffset: 1000)
                     ),
                 new State("Death",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Shoot(13, 45, 8, projectileIndex: 1, fixedAngle: 1, coolDown: 10000),
                     new Timed(1000, new Suicide())
                     )
@@ -226,7 +226,7 @@ namespace TKR.WorldServer.logic
                     new Shoot(13, 10, 8, projectileIndex: 0, coolDown: 1000, fixedAngle: 1)
                     ),
                 new State("Death",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new Shoot(13, 45, projectileIndex: 1, coolDown: 10000),
                     new Timed(1000, new Suicide())
                     )
@@ -244,31 +244,31 @@ namespace TKR.WorldServer.logic
                 new Shoot(2, projectileIndex: 6, count: 3, fixedAngle: 180, coolDown: 1000),
                 new HpLessTransition(0.1, "Death"),
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new PlayerWithinTransition(15, "Close Bridge")
                     ),
                 new State("Close Bridge",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new OrderOnce(46, "shtrs Bridge Closer", "Closer"),
                     new TimedTransition(5000, "Close Bridge2")
                     ),
                 new State("Close Bridge2",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new OrderOnce(46, "shtrs Bridge Closer2", "Closer"),
                     new TimedTransition(5000, "Close Bridge3")
                     ),
                 new State("Close Bridge3",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new OrderOnce(46, "shtrs Bridge Closer3", "Closer"),
                     new TimedTransition(5000, "Close Bridge4")
                     ),
                 new State("Close Bridge4",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new OrderOnce(46, "shtrs Bridge Closer4", "Closer"),
                     new TimedTransition(6000, "BEGIN")
                     ),
                 new State("BEGIN",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new OrderOnce(50, "shtrs Bridge Obelisk A", "TALK"),
                     new OrderOnce(50, "shtrs Bridge Obelisk B", "TALK"),
                     new OrderOnce(50, "shtrs Bridge Obelisk D", "TALK"),
@@ -278,7 +278,7 @@ namespace TKR.WorldServer.logic
                     new EntitiesNotExistsTransition(30, "Wake", "shtrs Bridge Obelisk A", "shtrs Bridge Obelisk B", "shtrs Bridge Obelisk D", "shtrs Bridge Obelisk E", "shtrs Bridge Obelisk C", "shtrs Bridge Obelisk F")
                     ),
                 new State("Wake",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Taunt("Who has woken me...? Leave this place."),
                     new Timed(2100, new Shoot(15, 15, 12, projectileIndex: 0, fixedAngle: 180, coolDown: 700, coolDownOffset: 3000)),
                     new TimedTransition(8000, "Swirl Shot")
@@ -324,7 +324,7 @@ namespace TKR.WorldServer.logic
                         )
                     ),
                 new State("Blobomb",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new Taunt("You live still? DO NOT TEMPT FATE!"),
                     new Taunt("CONSUME!"),
                     new OrderOnce(20, "shtrs blobomb maker", "Spawn"),
@@ -373,7 +373,7 @@ namespace TKR.WorldServer.logic
                         )
                     ),
                 new State("Death",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new TransferDamageOnDeath("shtrs Loot Balloon Bridge"),
                     new Taunt("I tried to protect you... I have failed. You release a great evil upon this realm...."),
                     new TimedTransition(2000, "Suicide")
@@ -435,30 +435,30 @@ namespace TKR.WorldServer.logic
                 new ScaleHP2(35),
                 new HpLessTransition(.1, "Death"),
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new EntitiesNotExistsTransition(6, "Wake", "shtrs Archmage of Flame")
                     ),
                 new State("Wake",
                     new State("Comment1",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new SetAltTexture(1),
                         new Taunt("Ha...ha........hahahahahaha! You will make a fine sacrifice!"),
                         new TimedTransition(5000, "Comment2")
                         ),
                     new SetAltTexture(1),
                     new State("Comment2",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new Taunt("You will find that it was...unwise...to wake me."),
                         new TimedTransition(5000, "Comment3")
                         ),
                     new State("Comment3",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new SetAltTexture(1),
                         new Taunt("Let us see what can conjure up!"),
                         new TimedTransition(5000, "Comment4")
                         ),
                     new State("Comment4",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new SetAltTexture(1),
                         new Taunt("I will freeze the life from you!"),
                         new TimedTransition(5000, "Shoot")
@@ -492,23 +492,23 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.50, "Pre Birds")
                     ),
                 new State("Pre Birds",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Taunt("You leave me no choice...Inferno! Blizzard!"),
                     new TimedTransition(2000, "Birds")
                     ),
                 new State("Birds",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Spawn("shtrs Inferno", maxChildren: 1, initialSpawn: 1, coolDown: 1000000000),
                     new Spawn("shtrs Blizzard", maxChildren: 1, initialSpawn: 1, coolDown: 1000000000),
                     new EntitiesNotExistsTransition(500, "PreNewShit2", "shtrs Inferno", "shtrs Blizzard")
                     ),
                 new State("PreNewShit2",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new ReturnToSpawn(1),
                     new TimedTransition(3000, "NewShit2")
                     ),
                 new State("NewShit2",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new MoveTo2(0, -6, 1),
                     new TimedTransition(3000, "Active2")
                     ),
@@ -524,7 +524,7 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(2000, "NewShit3")
                     ),
                 new State("NewShit3",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new MoveTo2(4, 0, 1),
                     new TimedTransition(3000, "Active3")
                     ),
@@ -540,7 +540,7 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(2000, "NewShit4")
                     ),
                 new State("NewShit4",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new MoveTo2(0, 13, 1),
                     new TimedTransition(3000, "Active4")
                     ),
@@ -556,7 +556,7 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(2000, "NewShit5")
                     ),
                 new State("NewShit5",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new MoveTo2(-4, 0, 1),
                     new TimedTransition(3000, "Active5")
                     ),
@@ -572,7 +572,7 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(2000, "NewShit6")
                     ),
                 new State("NewShit6",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new MoveTo2(-4, 0, 1),
                     new TimedTransition(3000, "Active6")
                     ),
@@ -588,7 +588,7 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(2000, "NewShit7")
                     ),
                 new State("NewShit7",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new MoveTo2(0, -13, 1),
                     new TimedTransition(3000, "Active7")
                     ),
@@ -603,7 +603,7 @@ namespace TKR.WorldServer.logic
                     new Shoot(15, 20, projectileIndex: 6, coolDown: 100000000, coolDownOffset: 600)
                     ),
                 new State("Death",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Taunt("IM..POSSI...BLE!"),
                     new TimedTransition(2000, "Suicide")
                     ),
@@ -723,7 +723,7 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new OrderOnce(46, "shtrs Spawn Bridge", "Open"),
                     new TimedTransition(5000, "Bridge")
                     ),
@@ -761,7 +761,7 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new TimedTransition(5000, "Mage")
                     ),
                 new State("Mage")
@@ -789,29 +789,29 @@ namespace TKR.WorldServer.logic
         .Init("shtrs Bridge Obelisk A",
             new State(
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new EntityNotExistsTransition("shtrs Bridge Closer4", 100, "TALK")
                     ),
                 new State("TALK",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Taunt("DO NOT WAKE THE BRIDGE GUARDIAN!"),
                     new TimedTransition(2000, "AFK")
                     ),
                 new State("AFK",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Flash(0x0000FF0C, 0.5, 4),
                     new TimedTransition(2500, "activatetimer")
                     ),
                 new State("activatetimer",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new OrderOnce(60, "shtrs obelisk timer", "timer1"),
                     new TimedTransition(1, "stopsettingoffmytimer")
                     ),
                 new State("stopsettingoffmytimer",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable)
                     ),
                 new State("Shoot",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Shoot(0, projectileIndex: 0, count: 4, shootAngle: 90, fixedAngle: 45, coolDown: 10000),
                     new Shoot(0, projectileIndex: 0, count: 4, shootAngle: 90, fixedAngle: 45, coolDown: 10000, coolDownOffset: 200),
                     new Shoot(0, projectileIndex: 0, count: 4, shootAngle: 90, fixedAngle: 45, coolDown: 10000, coolDownOffset: 400),
@@ -874,29 +874,29 @@ namespace TKR.WorldServer.logic
         .Init("shtrs Bridge Obelisk B",
             new State(
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new EntityNotExistsTransition("shtrs Bridge Closer4", 100, "TALK")
                     ),
                 new State("TALK",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Taunt("DO NOT WAKE THE BRIDGE GUARDIAN!"),
                     new TimedTransition(2000, "AFK")
                     ),
                 new State("AFK",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Flash(0x0000FF0C, 0.5, 4),
                     new TimedTransition(2500, "activatetimer")
                     ),
                 new State("activatetimer",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new OrderOnce(60, "shtrs obelisk timer", "timer1"),
                     new TimedTransition(1, "stopsettingoffmytimer")
                     ),
                 new State("stopsettingoffmytimer",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable)
                     ),
                 new State("Shoot",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Shoot(0, projectileIndex: 0, count: 4, shootAngle: 90, fixedAngle: 45, coolDown: 10000),
                     new Shoot(0, projectileIndex: 0, count: 4, shootAngle: 90, fixedAngle: 45, coolDown: 10000, coolDownOffset: 200),
                     new Shoot(0, projectileIndex: 0, count: 4, shootAngle: 90, fixedAngle: 45, coolDown: 10000, coolDownOffset: 400),
@@ -962,29 +962,29 @@ namespace TKR.WorldServer.logic
         .Init("shtrs Bridge Obelisk D",
             new State(
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new EntityNotExistsTransition("shtrs Bridge Closer4", 100, "TALK")
                     ),
                 new State("TALK",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Taunt("DO NOT WAKE THE BRIDGE GUARDIAN!"),
                     new TimedTransition(2000, "AFK")
                     ),
                 new State("AFK",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Flash(0x0000FF0C, 0.5, 4),
                     new TimedTransition(2500, "activatetimer")
                     ),
                 new State("activatetimer",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new OrderOnce(60, "shtrs obelisk timer", "timer1"),
                     new TimedTransition(1, "stopsettingoffmytimer")
                     ),
                 new State("stopsettingoffmytimer",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable)
                     ),
                 new State("Shoot",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Shoot(0, projectileIndex: 0, count: 4, shootAngle: 90, fixedAngle: 45, coolDown: 10000),
                     new Shoot(0, projectileIndex: 0, count: 4, shootAngle: 90, fixedAngle: 45, coolDown: 10000, coolDownOffset: 200),
                     new Shoot(0, projectileIndex: 0, count: 4, shootAngle: 90, fixedAngle: 45, coolDown: 10000, coolDownOffset: 400),
@@ -1050,29 +1050,29 @@ namespace TKR.WorldServer.logic
         .Init("shtrs Bridge Obelisk E",
             new State(
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new EntityNotExistsTransition("shtrs Bridge Closer4", 100, "TALK")
                     ),
                 new State("TALK",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Taunt("DO NOT WAKE THE BRIDGE GUARDIAN!"),
                     new TimedTransition(2000, "AFK")
                     ),
                 new State("AFK",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Flash(0x0000FF0C, 0.5, 4),
                     new TimedTransition(2500, "activatetimer")
                     ),
                 new State("activatetimer",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new OrderOnce(60, "shtrs obelisk timer", "timer1"),
                     new TimedTransition(1, "stopsettingoffmytimer")
                     ),
                 new State("stopsettingoffmytimer",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable)
                     ),
                 new State("Shoot",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Shoot(0, projectileIndex: 0, count: 4, shootAngle: 90, fixedAngle: 45, coolDown: 10000),
                     new Shoot(0, projectileIndex: 0, count: 4, shootAngle: 90, fixedAngle: 45, coolDown: 10000, coolDownOffset: 200),
                     new Shoot(0, projectileIndex: 0, count: 4, shootAngle: 90, fixedAngle: 45, coolDown: 10000, coolDownOffset: 400),
@@ -1138,23 +1138,23 @@ namespace TKR.WorldServer.logic
         .Init("shtrs Bridge Obelisk C",                                                     //YELLOW TOWERS!
             new State(
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
-                    new ConditionalEffect(ConditionEffectIndex.Armored),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored),
                     new EntityNotExistsTransition("shtrs Bridge Closer4", 100, "JustKillMe")
                     ),
                 new State("JustKillMe",
-                    new ConditionalEffect(ConditionEffectIndex.Armored),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new TimedTransition(2000, "AFK")
                     ),
                 new State("AFK",
-                    new ConditionalEffect(ConditionEffectIndex.Armored),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Flash(0x0000FF0C, 0.5, 4),
                     new TimedTransition(2500, "Shoot")
                     ),
                 new State("Shoot",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Shoot(0, projectileIndex: 0, count: 4, shootAngle: 90, fixedAngle: 45, coolDown: 10000),
                     new Shoot(0, projectileIndex: 0, count: 4, shootAngle: 90, fixedAngle: 45, coolDown: 10000, coolDownOffset: 200),
                     new Shoot(0, projectileIndex: 0, count: 4, shootAngle: 90, fixedAngle: 45, coolDown: 10000, coolDownOffset: 400),
@@ -1209,7 +1209,7 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(10000, "Pause")
                     ),
                 new State("Pause",
-                    new ConditionalEffect(ConditionEffectIndex.Armored),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored),
                     new Spawn("shtrs Stone Paladin", maxChildren: 1, initialSpawn: 1, coolDown: 7500),
                     new TimedTransition(7000, "Shoot")
                     )
@@ -1218,23 +1218,23 @@ namespace TKR.WorldServer.logic
         .Init("shtrs Bridge Obelisk F",                                                     //YELLOW TOWERS!
             new State(
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
-                    new ConditionalEffect(ConditionEffectIndex.Armored),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored),
                     new EntityNotExistsTransition("shtrs Bridge Closer4", 100, "JustKillMe")
                     ),
                 new State("JustKillMe",
-                    new ConditionalEffect(ConditionEffectIndex.Armored),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new TimedTransition(2000, "AFK")
                     ),
                 new State("AFK",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
-                    new ConditionalEffect(ConditionEffectIndex.Armored),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored),
                     new Flash(0x0000FF0C, 0.5, 4),
                     new TimedTransition(2500, "Shoot")
                     ),
                 new State("Shoot",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Shoot(0, projectileIndex: 0, count: 4, shootAngle: 90, fixedAngle: 45, coolDown: 10000),
                     new Shoot(0, projectileIndex: 0, count: 4, shootAngle: 90, fixedAngle: 45, coolDown: 10000, coolDownOffset: 200),
                     new Shoot(0, projectileIndex: 0, count: 4, shootAngle: 90, fixedAngle: 45, coolDown: 10000, coolDownOffset: 400),
@@ -1289,7 +1289,7 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(10000, "Pause")
                     ),
                 new State("Pause",
-                    new ConditionalEffect(ConditionEffectIndex.Armored),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored),
                     new Spawn("shtrs Stone Paladin", maxChildren: 1, initialSpawn: 1, coolDown: 7500),
                     new TimedTransition(7000, "Shoot")
                     )
@@ -1299,7 +1299,7 @@ namespace TKR.WorldServer.logic
         #region SomeMobs
         .Init("shtrs obelisk controller",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new State("wait"
                     //new EntitiesNotExistsTransition(30, "obeliskshoot", "shtrs Bridge Obelisk A", "shtrs Bridge Obelisk B", "shtrs Bridge Obelisk D", "shtrs Bridge Obelisk E")
                     ),
@@ -1317,13 +1317,13 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(1, "leavemychecksalone")
                     ),
                 new State("leavemychecksalone",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible)
                     )
                 )
             )
         .Init("shtrs obelisk timer",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new State("wait"
                     //new EntitiesNotExistsTransition(30, "timer1", "shtrs Bridge Obelisk A", "shtrs Bridge Obelisk B", "shtrs Bridge Obelisk D", "shtrs Bridge Obelisk E")
                     ),
@@ -1381,7 +1381,7 @@ namespace TKR.WorldServer.logic
         .Init("shtrs Archmage of Flame",
             new State(
                 new State("wait",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new PlayerWithinTransition(7, "Follow")
                     ),
                 new State("Follow",
@@ -1389,7 +1389,7 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(5000, "Throw")
                     ),
                 new State("Throw",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new TossObject("shtrs Firebomb", 1, angle: 90, coolDown: 5000),
                     new TossObject("shtrs Firebomb", 2, angle: 20, coolDown: 5000),
                     new TossObject("shtrs Firebomb", 3, angle: 72, coolDown: 5000),
@@ -1421,11 +1421,11 @@ namespace TKR.WorldServer.logic
         .Init("shtrs Firebomb",
             new State(
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new TimedTransition(2000, "Explode")
                     ),
                 new State("Explode",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new Shoot(100, projectileIndex: 0, count: 8),
                     new Suicide()
                     )
@@ -1458,7 +1458,7 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(10000, "invulnerable")
                     ),
                 new State("invulnerable",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Shoot(10, 2, 10, projectileIndex: 0, coolDown: 200),
                     new TimedTransition(3000, "fire")
                     )
@@ -1515,7 +1515,7 @@ namespace TKR.WorldServer.logic
 
         .Init("shtrs Wooden Gate Spawn",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Waiting",
                     new EntitiesNotExistsTransition(10, "KillWall", "shtrs Abandoned Switch 1")
                     ),
@@ -1528,7 +1528,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("shtrs Wooden Gate Spawn 2",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Waiting",
                     new EntitiesNotExistsTransition(70, "KillWall", "shtrs Abandoned Switch 2")
                     ),
@@ -1547,7 +1547,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Tooky Shatters Master",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new RemoveObjectOnDeath("shtrs Wooden Gate 2", 14),
                 new RemoveObjectOnDeath("shtrs Wooden Gate 5", 14)
                 )
@@ -1564,9 +1564,9 @@ namespace TKR.WorldServer.logic
             )
         .Init("shtrs Bridge Closer",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("Closer",
                     new ChangeGroundOnDeath(new[] { "shtrs Bridge" }, new[] { "shtrs Pure Evil" },
@@ -1583,9 +1583,9 @@ namespace TKR.WorldServer.logic
             )
         .Init("shtrs Bridge Closer2",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("Closer",
                     new ChangeGroundOnDeath(new[] { "shtrs Bridge" }, new[] { "shtrs Pure Evil" },
@@ -1602,9 +1602,9 @@ namespace TKR.WorldServer.logic
             )
         .Init("shtrs Bridge Closer3",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("Closer",
                     new ChangeGroundOnDeath(new[] { "shtrs Bridge" }, new[] { "shtrs Pure Evil" },
@@ -1621,9 +1621,9 @@ namespace TKR.WorldServer.logic
             )
         .Init("shtrs Bridge Closer4",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("Closer",
                     new ChangeGroundOnDeath(new[] { "shtrs Bridge" }, new[] { "shtrs Pure Evil" },
@@ -1640,9 +1640,9 @@ namespace TKR.WorldServer.logic
             )
         .Init("shtrs Spawn Bridge",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("Open",
                     new ChangeGroundOnDeath(new[] { "shtrs Pure Evil" }, new[] { "shtrs Bridge" },
@@ -1653,9 +1653,9 @@ namespace TKR.WorldServer.logic
             )
         .Init("shtrs Spawn Bridge 2",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new EntityNotExistsTransition("shtrs Abandoned Switch 3", 500, "Open")
                     ),
                 new State("Open",
@@ -1672,9 +1672,9 @@ namespace TKR.WorldServer.logic
             )
         .Init("shtrs Spawn Bridge 3",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new EntityNotExistsTransition("shtrs Twilight Archmage", 500, "Open")
                     ),
                 new State("Open",
@@ -1686,9 +1686,9 @@ namespace TKR.WorldServer.logic
             )
         .Init("shtrs Spawn Bridge 5",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new EntityNotExistsTransition("shtrs Royal Guardian L", 100, "Open")
                     ),
                 new State("Open",
@@ -1705,22 +1705,22 @@ namespace TKR.WorldServer.logic
                 new ScaleHP2(35),
                 new HpLessTransition(0.1, "Death"),
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
-                    new ConditionalEffect(ConditionEffectIndex.Invisible),
-                    new ConditionalEffect(ConditionEffectIndex.Stasis),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invisible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Stasis),
                     new TimedTransition(2000, "1st")
                     ),
                 new State("1st",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
-                    new ConditionalEffect(ConditionEffectIndex.Invisible),
-                    new ConditionalEffect(ConditionEffectIndex.Stasis),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invisible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Stasis),
                     new Taunt("You have made a grave mistake coming here I will destroy you, and reclaim my place in the Realm."),
                     new TimedTransition(2500, "crystals")
                     ),
                 new State("crystals",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
-                    new ConditionalEffect(ConditionEffectIndex.Invisible),
-                    new ConditionalEffect(ConditionEffectIndex.Stasis),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invisible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Stasis),
                     new Spawn("shtrs Crystal Tracker", maxChildren: 1, initialSpawn: 1, coolDown: 999999),
                     new Spawn("shtrs Green Crystal", maxChildren: 1, initialSpawn: 1, coolDown: 999999),
                     new Spawn("shtrs Yellow Crystal", maxChildren: 1, initialSpawn: 1, coolDown: 999999),
@@ -1802,23 +1802,23 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(4000, "middle")
                     ),
                 new State("middle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
-                    new ConditionalEffect(ConditionEffectIndex.Invisible),
-                    new ConditionalEffect(ConditionEffectIndex.Stasis),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invisible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Stasis),
                     new MoveTo2(0, 8, 0.5f),
                     new TimedTransition(3000, "J Guardians")
                     ),
                 new State("J Guardians",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
-                    new ConditionalEffect(ConditionEffectIndex.Invisible),
-                    new ConditionalEffect(ConditionEffectIndex.Stasis),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invisible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Stasis),
                     new Spawn("shtrs Royal Guardian J", 10),
                     new TimedTransition(50, "waiting")
                     ),
                 new State("waiting",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
-                    new ConditionalEffect(ConditionEffectIndex.Invisible),
-                    new ConditionalEffect(ConditionEffectIndex.Stasis),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invisible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Stasis),
                     new EntityNotExistsTransition("shtrs Royal Guardian J", 10, "littlerage")
                     ),
                 new State("littlerage",
@@ -1870,9 +1870,9 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(3400, "tentacles2")
                     ),
                 new State("tentacles2",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
-                    new ConditionalEffect(ConditionEffectIndex.Invisible),
-                    new ConditionalEffect(ConditionEffectIndex.Stasis),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invisible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Stasis),
                     new OrderOnce(60, "shtrs Lava Souls maker", "Spawn"),
                     new OrderOnce(60, "shtrs king lava1", "lava"),
                     new Shoot(50, projectileIndex: 4, count: 6, shootAngle: 60, fixedAngle: 3, coolDown: 15000),
@@ -1998,15 +1998,15 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(11800, "tentaclestimer")
                     ),
                 new State("tentaclestimer",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
-                    new ConditionalEffect(ConditionEffectIndex.Invisible),
-                    new ConditionalEffect(ConditionEffectIndex.Stasis),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invisible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Stasis),
                     new TimedTransition(2500, "tentacles")
                     ),
                 new State("moveaftertentacles",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
-                    new ConditionalEffect(ConditionEffectIndex.Invisible),
-                    new ConditionalEffect(ConditionEffectIndex.Stasis),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invisible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Stasis),
                     new MoveTo2(0, -8, 0.5f, once: true),
                     new OrderOnce(40, "shtrs Lava Souls maker", "Idle"),
                     new OrderOnce(60, "shtrs king lava1", "lava"),
@@ -2018,9 +2018,9 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(3000, "shootattop")
                     ),
                 new State("shootattop",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
-                    new ConditionalEffect(ConditionEffectIndex.Invisible),
-                    new ConditionalEffect(ConditionEffectIndex.Stasis),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invisible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Stasis),
                     new Shoot(40, 2, 45, projectileIndex: 2, coolDown: 500, coolDownOffset: 200),
                     new Shoot(40, 2, 45, projectileIndex: 3, coolDown: 500),
                     new Shoot(40, 1, fixedAngle: 180, projectileIndex: 1, coolDown: 9999),
@@ -2095,9 +2095,9 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(4000, "shootattop2")
                     ),
                 new State("shootattop2",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
-                    new ConditionalEffect(ConditionEffectIndex.Invisible),
-                    new ConditionalEffect(ConditionEffectIndex.Stasis),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invisible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Stasis),
                     new Shoot(40, 2, 45, projectileIndex: 2, coolDown: 500, coolDownOffset: 200),
                     new Shoot(40, 2, 45, projectileIndex: 3, coolDown: 500),
                     new Shoot(40, 1, fixedAngle: 180, projectileIndex: 1, coolDown: 9999),
@@ -2174,9 +2174,9 @@ namespace TKR.WorldServer.logic
                 new State("godpatience",
                     new OrderOnce(60, "shtrs king lava1", "lava"),
                     new OrderOnce(60, "shtrs king lava2", "lava"),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
-                    new ConditionalEffect(ConditionEffectIndex.Invisible),
-                    new ConditionalEffect(ConditionEffectIndex.Stasis),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invisible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Stasis),
                     new Taunt("YOU TEST THE PATIENCE OF A GOD!"),
                     new OrderOnce(40, "shtrs Lava Souls maker", "Spawn"),
                     new Spawn("shtrs king timer", maxChildren: 1, initialSpawn: 1, coolDown: 999999),
@@ -2184,16 +2184,16 @@ namespace TKR.WorldServer.logic
                     ),
                 new State("diedie",
                     new OrderOnce(60, "shtrs king timer", "timer1"),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
-                    new ConditionalEffect(ConditionEffectIndex.Invisible),
-                    new ConditionalEffect(ConditionEffectIndex.Stasis),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invisible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Stasis),
                     new NoPlayerWithinTransition(7, "diewait"),
                     new PlayerWithinTransition(7, "dieshoot")
                     ),
                 new State("dieshoot",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
-                    new ConditionalEffect(ConditionEffectIndex.Invisible),
-                    new ConditionalEffect(ConditionEffectIndex.Stasis),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invisible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Stasis),
                     new NoPlayerWithinTransition(7, "diewait"),
                     new Shoot(2, projectileIndex: 4, count: 6, shootAngle: 60, fixedAngle: 3, coolDown: 15000),
                     new Shoot(2, projectileIndex: 4, count: 6, shootAngle: 60, fixedAngle: 4, coolDown: 15000),
@@ -2417,9 +2417,9 @@ namespace TKR.WorldServer.logic
                     new Shoot(2, 1, fixedAngle: 63, projectileIndex: 1, coolDown: 9999, coolDownOffset: 3980)
                     ),
                 new State("diewait",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
-                    new ConditionalEffect(ConditionEffectIndex.Invisible),
-                    new ConditionalEffect(ConditionEffectIndex.Stasis),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invisible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Stasis),
                     new PlayerWithinTransition(7, "dieshoot")
                     ),
                 new State("heheh",
@@ -2439,7 +2439,7 @@ namespace TKR.WorldServer.logic
                     ),
 
                 new State("Death",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new TransferDamageOnDeath("shtrs Loot Balloon King"),
                     new Taunt("Impossible..........IMPOSSIBLE!"),
                     new TimedTransition(2000, "Suicide")
@@ -2503,7 +2503,7 @@ namespace TKR.WorldServer.logic
             new State(
                 new HealGroup(30, "Crystals", coolDown: 2000, healAmount: 1500),
                 new State("spawn",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new Prioritize(
                         new Orbit(3, 1, 5, "shtrs The Forgotten King", speedVariance: .2, radiusVariance: .5)),
                     new TimedTransition(7000, "follow")
@@ -2525,7 +2525,7 @@ namespace TKR.WorldServer.logic
         .Init("shtrs Yellow Crystal",
             new State(
                 new State("spawn",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new Prioritize(
                         new Orbit(3, 1, 5, "shtrs The Forgotten King", speedVariance: .2, radiusVariance: .5)),
                     new TimedTransition(7000, "follow")
@@ -2546,7 +2546,7 @@ namespace TKR.WorldServer.logic
         .Init("shtrs Red Crystal",
             new State(
                 new State("spawn",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new Prioritize(
                         new Orbit(3, 1, 5, "shtrs The Forgotten King", speedVariance: .2, radiusVariance: .5)),
                     new TimedTransition(7000, "orbit")
@@ -2572,7 +2572,7 @@ namespace TKR.WorldServer.logic
         .Init("shtrs Blue Crystal",
             new State(
                 new State("spawn",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new Prioritize(
                         new Orbit(3, 1, 5, "shtrs The Forgotten King", speedVariance: .2, radiusVariance: .5)),
                     new TimedTransition(7000, "orbit")
@@ -2601,7 +2601,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("shtrs king timer",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new State("wait",
                     new EntityNotExistsTransition("shtrs The Forgotten King", 100, "death")
                     ),
@@ -2619,9 +2619,9 @@ namespace TKR.WorldServer.logic
             )
         .Init("shtrs king lava1",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new State("wait",
-                    new ConditionalEffect(ConditionEffectIndex.Invisible)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invisible)
                     ),
                 new State("lava",
                     new ReplaceTile("Dark Cobblestone", "Hot Lava", 0)
@@ -2633,9 +2633,9 @@ namespace TKR.WorldServer.logic
             )
         .Init("shtrs king lava2",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new State("wait",
-                    new ConditionalEffect(ConditionEffectIndex.Invisible)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invisible)
                     ),
                 new State("lava",
                     new ReplaceTile("Dark Cobblestone", "Hot Lava", 0)
@@ -2648,11 +2648,11 @@ namespace TKR.WorldServer.logic
         .Init("shtrs The Cursed Crown",
             new State(
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new EntityNotExistsTransition("shtrs Royal Guardian L", 100, "Open")
                     ),
                 new State("Open",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new MoveTo2(0, -15, 0.5f),
                     new TimedTransition(3000, "WADAFAK")
                     ),
@@ -2669,7 +2669,7 @@ namespace TKR.WorldServer.logic
                 new RealmPortalDrop(),
                 new ScaleHP2(20),
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new TimedTransition(5000, "Crown")
                     ),
                 new State("Crown")
@@ -2741,9 +2741,9 @@ namespace TKR.WorldServer.logic
         #region MISC
         .Init("shtrs Chest Spawner 1",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new EntityNotExistsTransition("shtrs Bridge Sentinel", 500, "Open")
                     ),
                 new State("Open",
@@ -2753,9 +2753,9 @@ namespace TKR.WorldServer.logic
             )
         .Init("shtrs Chest Spawner 2",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new EntityNotExistsTransition("shtrs Twilight Archmage", 500, "Open")
                     ),
                 new State("Open",
@@ -2765,9 +2765,9 @@ namespace TKR.WorldServer.logic
             )
         .Init("shtrs blobomb maker",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible)
                     ),
                 new State("Spawn",
                     new Spawn("shtrs Blobomb", coolDown: 1500),
@@ -2781,9 +2781,9 @@ namespace TKR.WorldServer.logic
             )
         .Init("shtrs Lava Souls maker",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible)
                     ),
                 new State("Spawn",
                     new Spawn("shtrs Lava Souls", maxChildren: 1, coolDown: 1500),
@@ -2798,9 +2798,9 @@ namespace TKR.WorldServer.logic
 
         .Init("shtrs Chest Spawner 3",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new EntitiesNotExistsTransition(30, "Open", "shtrs The Cursed Crown", "shtrs The Forgotten King")
                     ),
                 new State("Open",

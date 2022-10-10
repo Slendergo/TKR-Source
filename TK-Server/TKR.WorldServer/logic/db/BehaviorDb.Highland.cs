@@ -611,17 +611,17 @@ namespace TKR.WorldServer.logic
             )
         .Init("Left Horizontal Trap",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                 new State("weak_effect",
-                    new Shoot(1, fixedAngle: 0, projectileIndex: 0, coolDown: 200),
+                    new Shoot(1, fixedAngle: 0, projectileIndex: 1, coolDown: 200),
                     new TimedTransition(2000, "blind_effect")
                     ),
                 new State("blind_effect",
-                    new Shoot(1, fixedAngle: 0, projectileIndex: 1, coolDown: 200),
+                    new Shoot(1, fixedAngle: 0, projectileIndex: 2, coolDown: 200),
                     new TimedTransition(2000, "pierce_effect")
                     ),
                 new State("pierce_effect",
-                    new Shoot(1, fixedAngle: 0, projectileIndex: 2, coolDown: 200),
+                    new Shoot(1, fixedAngle: 0, projectileIndex: 3, coolDown: 200),
                     new TimedTransition(2000, "weak_effect")
                     ),
                 new Decay(6000)
@@ -629,17 +629,17 @@ namespace TKR.WorldServer.logic
             )
         .Init("Top Vertical Trap",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                 new State("weak_effect",
-                    new Shoot(1, fixedAngle: 90, projectileIndex: 0, coolDown: 200),
+                    new Shoot(1, fixedAngle: 90, projectileIndex: 1, coolDown: 200),
                     new TimedTransition(2000, "blind_effect")
                     ),
                 new State("blind_effect",
-                    new Shoot(1, fixedAngle: 90, projectileIndex: 1, coolDown: 200),
+                    new Shoot(1, fixedAngle: 90, projectileIndex: 2, coolDown: 200),
                     new TimedTransition(2000, "pierce_effect")
                     ),
                 new State("pierce_effect",
-                    new Shoot(1, fixedAngle: 90, projectileIndex: 2, coolDown: 200),
+                    new Shoot(1, fixedAngle: 90, projectileIndex: 3, coolDown: 200),
                     new TimedTransition(2000, "weak_effect")
                     ),
                 new Decay(6000)
@@ -647,17 +647,17 @@ namespace TKR.WorldServer.logic
             )
         .Init("45-225 Diagonal Trap",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                 new State("weak_effect",
-                    new Shoot(1, fixedAngle: 45, projectileIndex: 0, coolDown: 200),
+                    new Shoot(1, fixedAngle: 45, projectileIndex: 1, coolDown: 200),
                     new TimedTransition(2000, "blind_effect")
                     ),
                 new State("blind_effect",
-                    new Shoot(1, fixedAngle: 45, projectileIndex: 1, coolDown: 200),
+                    new Shoot(1, fixedAngle: 45, projectileIndex: 2, coolDown: 200),
                     new TimedTransition(2000, "pierce_effect")
                     ),
                 new State("pierce_effect",
-                    new Shoot(1, fixedAngle: 45, projectileIndex: 2, coolDown: 200),
+                    new Shoot(1, fixedAngle: 45, projectileIndex: 3, coolDown: 200),
                     new TimedTransition(2000, "weak_effect")
                     ),
                 new Decay(6000)
@@ -665,17 +665,17 @@ namespace TKR.WorldServer.logic
             )
         .Init("135-315 Diagonal Trap",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                 new State("weak_effect",
-                    new Shoot(1, fixedAngle: 135, projectileIndex: 0, coolDown: 200),
+                    new Shoot(1, fixedAngle: 135, projectileIndex: 1, coolDown: 200),
                     new TimedTransition(2000, "blind_effect")
                     ),
                 new State("blind_effect",
-                    new Shoot(1, fixedAngle: 135, projectileIndex: 1, coolDown: 200),
+                    new Shoot(1, fixedAngle: 135, projectileIndex: 2, coolDown: 200),
                     new TimedTransition(2000, "pierce_effect")
                     ),
                 new State("pierce_effect",
-                    new Shoot(1, fixedAngle: 135, projectileIndex: 2, coolDown: 200),
+                    new Shoot(1, fixedAngle: 135, projectileIndex: 3, coolDown: 200),
                     new TimedTransition(2000, "weak_effect")
                     ),
                 new Decay(6000)
@@ -741,13 +741,13 @@ namespace TKR.WorldServer.logic
                 ),*/
                 new State("yay i am good",
                     new Taunt(0.5, "Kyoufu no kage!"),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new ChangeSize(20, 120),
                     new SetAltTexture(1),
                     new TimedTransition(2000, "Attack")
                     ),
                 new State("Attack",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, false, 0),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, false, 0),
                     new Wander(0.4),
                     new SetAltTexture(1),
                     new TimedTransition(5000, "Charge"),
@@ -763,7 +763,7 @@ namespace TKR.WorldServer.logic
                         )
                     ),
                 new State("Charge",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new TossObject("Specter Mine", coolDown: 2000),
                     new SetAltTexture(2),
                     new Follow(0.8, 20, 1),

@@ -30,7 +30,7 @@ namespace TKR.WorldServer.logic
         .Init("Parrot Cage",
             new State(
                 new EntityNotExistsTransition("Jon Bilgewater the Pirate King", 90000, "NoSpawn"),
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new State("NoSpawn"
                     ),
                 new State("SpawnParrots",
@@ -122,18 +122,18 @@ namespace TKR.WorldServer.logic
 
                 new State("gotoSpawn",
                     new ReturnToSpawn(speed: 1),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
-                    new ConditionalEffect(ConditionEffectIndex.StunImmune),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.StunImmune),
                     new TimedTransition(3500, "blastcannonballs")
                     ),
                 new State("blastcannonballs",
-                    new ConditionalEffect(ConditionEffectIndex.StunImmune),
+                    new ConditionEffectBehavior(ConditionEffectIndex.StunImmune),
                     new Order(90, "Deadwater Docks Parrot", "CircleOrWander"),
                     new Shoot(10, count: 7, shootAngle: 30, projectileIndex: 1, coolDown: 1750),
                     new TimedTransition(6000, "parrotcircle")
                     ),
                 new State("parrotcircle",
-                    new ConditionalEffect(ConditionEffectIndex.StunImmune),
+                    new ConditionEffectBehavior(ConditionEffectIndex.StunImmune),
                     new Order(90, "Deadwater Docks Parrot", "Orbit&HealJon"),
                     new TimedTransition(6000, "blastcannonballs")
                     )

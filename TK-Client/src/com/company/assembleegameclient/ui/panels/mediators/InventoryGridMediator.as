@@ -1,7 +1,8 @@
 package com.company.assembleegameclient.ui.panels.mediators
 {
    import com.company.assembleegameclient.objects.Player;
-   import com.company.assembleegameclient.ui.panels.itemgrids.InventoryGrid;
+import com.company.assembleegameclient.ui.panels.itemgrids.EquippedGrid;
+import com.company.assembleegameclient.ui.panels.itemgrids.InventoryGrid;
 
 import kabam.rotmg.ui.signals.ToggleShowTierTagSignal;
 import kabam.rotmg.ui.signals.UpdateHUDSignal;
@@ -9,8 +10,6 @@ import kabam.rotmg.ui.signals.UpdateHUDSignal;
    
    public class InventoryGridMediator extends Mediator
    {
-       
-      
       [Inject]
       public var view:InventoryGrid;
       

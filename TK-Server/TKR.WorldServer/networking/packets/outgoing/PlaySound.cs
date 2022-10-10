@@ -9,7 +9,7 @@ namespace TKR.WorldServer.networking.packets.outgoing
 
         public override MessageId MessageId => MessageId.PLAYSOUND;
 
-        protected override void Write(NWriter wtr)
+        public override void Write(NWriter wtr)
         {
             wtr.Write(OwnerId);
             wtr.Write((byte)SoundId);

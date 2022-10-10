@@ -5,6 +5,9 @@ namespace TKR.WorldServer.networking.packets.outgoing
 {
     public class ServerPlayerShoot : OutgoingMessage
     {
+        public int BulletType { get; set; } // dont serialize
+        public int ObjectType { get; set; } // dont serialize
+
         public int BulletId { get; set; }
         public int OwnerId { get; set; }
         public int ContainerType { get; set; }
@@ -14,7 +17,7 @@ namespace TKR.WorldServer.networking.packets.outgoing
 
         public override MessageId MessageId => MessageId.SERVERPLAYERSHOOT;
 
-        protected override void Write(NWriter wtr)
+        public override void Write(NWriter wtr)
         {
             wtr.Write(BulletId);
             wtr.Write(OwnerId);

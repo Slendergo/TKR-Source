@@ -2,6 +2,8 @@
 using TKR.WorldServer.logic.behaviors;
 using TKR.WorldServer.logic.loot;
 using TKR.WorldServer.logic.transitions;
+using TKR.WorldServer.logic.behaviors.@new.movements;
+using TKR.WorldServer.logic.behaviors.@new;
 
 namespace TKR.WorldServer.logic
 {
@@ -10,7 +12,7 @@ namespace TKR.WorldServer.logic
         private _ Mountain = () => Behav()
         .Init("Arena Horseman Anchor",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible)
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible)
                 )
             )
         .Init("Arena Headless Horseman",
@@ -27,7 +29,7 @@ namespace TKR.WorldServer.logic
                         ),
                     new State("Shoot",
                         new ReturnToSpawn(1.5),
-                        new ConditionalEffect(ConditionEffectIndex.Invincible),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                         new Flash(0xF0E68C, 1, 6),
                         new Shoot(15, 8, projectileIndex: 2, coolDown: 1500),
                         new Shoot(15, projectileIndex: 1, coolDown: 2500),
@@ -73,7 +75,7 @@ namespace TKR.WorldServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.009),
+            
             new Threshold(.18, new ItemLoot("Potion of Attack", 0.05))
         )
         .Init("Sprite God",
@@ -103,7 +105,7 @@ namespace TKR.WorldServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.009),
+            
             new Threshold(.18, new ItemLoot("Potion of Attack", 0.05))
         )
         .Init("Sprite Child",
@@ -119,15 +121,11 @@ namespace TKR.WorldServer.logic
         .Init("Medusa",
             new State(
                 new DropPortalOnDeath("Snake Pit Portal", .25),
+                new StayAbove(1, 200),
                 new OrderedBehavior(
                     new NewFollow(range: 7, speed: 1.0f),
                     new NewWander(0.4f)
                     ),
-                //new Prioritize(
-                //    new StayAbove(1, 200),
-                //    new Follow(1, range: 7),
-                //    new Wander(0.4)
-                //    ),
                 new Shoot(12, count: 5, shootAngle: 10, coolDown: 1000),
                 new Grenade(4, 150, range: 8, coolDown: 3000),
                 new Reproduce(densityMax: 3)
@@ -144,7 +142,7 @@ namespace TKR.WorldServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.009),
+            
             new Threshold(.18, new ItemLoot("Potion of Speed", 0.05))
         )
         .Init("Ent God",
@@ -174,7 +172,7 @@ namespace TKR.WorldServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.009),
+            
             new Threshold(.18, new ItemLoot("Potion of Defense", 0.025))
             )
         .Init("Beholder",
@@ -204,7 +202,7 @@ namespace TKR.WorldServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.009),
+            
             new Threshold(.18, new ItemLoot("Potion of Defense", 0.025))
             )
         .Init("Flying Brain",
@@ -234,7 +232,7 @@ namespace TKR.WorldServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.009),
+            
             new Threshold(.18, new ItemLoot("Potion of Attack", 0.025))
         )
         .Init("Slime God",
@@ -265,7 +263,7 @@ namespace TKR.WorldServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.009),
+            
             new Threshold(.18, new ItemLoot("Potion of Defense", 0.025))
             )
         .Init("Ghost God",
@@ -295,7 +293,7 @@ namespace TKR.WorldServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.009),
+            
             new Threshold(.18, new ItemLoot("Potion of Speed", 0.05))
             
         )
@@ -326,7 +324,7 @@ namespace TKR.WorldServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.009),
+            
             new Threshold(.18, new ItemLoot("Potion of Attack", 0.205))
             )
         .Init("Paper Bot",
@@ -362,7 +360,7 @@ namespace TKR.WorldServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.009),
+            
             new Threshold(.18, new ItemLoot("Potion of Attack", 0.025))
             )
         .Init("Steel Bot",
@@ -398,7 +396,7 @@ namespace TKR.WorldServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.009),
+            
             new Threshold(.18, new ItemLoot("Potion of Speed", 0.05))
             )
         .Init("Djinn",
@@ -412,7 +410,7 @@ namespace TKR.WorldServer.logic
                     //    new StayAbove(1, 200),
                     //    new Wander(0.4)
                     //    ),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Reproduce(densityMax: 3, densityRadius: 20),
                     new PlayerWithinTransition(8, "Attacking")
                     ),
@@ -445,14 +443,14 @@ namespace TKR.WorldServer.logic
                     new State("Wait",
                         new Follow(0.7, range: 0.5),
                         new Flash(0xff00ff00, 0.1, 20),
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new TimedTransition(2000, "Bullet")
                         ),
                     new NoPlayerWithinTransition(13, "Idle"),
                     new HpLessTransition(0.5, "FlashBeforeExplode")
                     ),
                 new State("FlashBeforeExplode",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Flash(0xff0000, 0.3, 3),
                     new TimedTransition(1000, "Explode")
                     ),
@@ -473,7 +471,7 @@ namespace TKR.WorldServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.009),
+            
             new Threshold(.18, new ItemLoot("Potion of Speed", 0.05))
             )
         .Init("Lucky Djinn",
@@ -488,7 +486,7 @@ namespace TKR.WorldServer.logic
                 new OrderedBehavior(
                     new NewWander(0.4f)
                     ),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new PlayerWithinTransition(8, "Attacking")
                     ),
                 new State("Attacking",
@@ -520,19 +518,19 @@ namespace TKR.WorldServer.logic
                     new State("Wait",
                         new Follow(0.7, range: 0.5),
                         new Flash(0xff00ff00, 0.1, 20),
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new TimedTransition(2000, "Bullet")
                         ),
                     new NoPlayerWithinTransition(13, "Idle"),
                     new HpLessTransition(0.5, "FlashBeforeExplode")
                     ),
                 new State("FlashBeforeExplode",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Flash(0xff0000, 0.3, 3),
                     new TimedTransition(1000, "Explode")
                     ),
                 new State("Explode",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Shoot(0, 10, 36, fixedAngle: 0),
                     new Suicide()
                     )
@@ -549,7 +547,7 @@ namespace TKR.WorldServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.009),
+            
             new Threshold(.18, new ItemLoot("Potion of Speed", 0.05))
             )
         .Init("Lucky Ent God",
@@ -628,7 +626,7 @@ namespace TKR.WorldServer.logic
             new TierLoot(4, ItemType.Ring, 0.025),
             new TierLoot(3, ItemType.Ability, 0.08),
             new TierLoot(4, ItemType.Ability, 0.04),
-            new ItemLoot("Talisman Fragment", 0.009),
+            
             new Threshold(.18, new ItemLoot("Potion of Defense", 0.025))
             )
         ;

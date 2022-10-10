@@ -28,7 +28,7 @@
 		<ActivateOnEquip stat="21" amount="30">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="26" amount="15">IncrementStat</ActivateOnEquip>	
 		<Usable />
-		<BagType>7</BagType>
+		<BagType>8</BagType>
 		<FameBonus>6</FameBonus>
 		<MpCost>125</MpCost>
 		<Activate>Shoot</Activate>
@@ -50,25 +50,27 @@
     <Projectile>
       <ObjectId>Silver Shield</ObjectId>
       <Speed>160</Speed>
-      <MinDamage>500</MinDamage>
-      <MaxDamage>650</MaxDamage>
+      <MinDamage>650</MinDamage>
+      <MaxDamage>750</MaxDamage>
       <LifetimeMS>250</LifetimeMS>
       <Size>140</Size>
+	  <ConditionEffect duration="4">Armor Broken</ConditionEffect>
       <MultiHit />
       <PassesCover />
       <ParticleTrail />
     </Projectile>
+	  <ConditionEffect duration="4">Armor Broken</ConditionEffect>
     <ActivateOnEquip stat="21" amount="20">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="0" amount="150">IncrementStat</ActivateOnEquip>
-	  <ConditionEffect duration="3">Armor Broken</ConditionEffect>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <MpCost>120</MpCost>
-    <Activate>Shoot</Activate>
     <NumProjectiles>5</NumProjectiles>
     <feedPower>1000</feedPower>
-  </Object>
+	<Activate>Shoot</Activate>
+	<Activate effect="Armored" duration="2">ConditionEffectSelf</Activate>
+</Object>
   <Object type="0x50f2" id="Shield of The Ancients">
     <Class>Equipment</Class>
     <Item />
@@ -100,7 +102,7 @@
     <ConditionEffect duration="3">Stunned</ConditionEffect>
     <ConditionEffect duration="3">Paralyzed</ConditionEffect>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <MpCost>155</MpCost>
     <Activate>Shoot</Activate>
     <NumProjectiles>4</NumProjectiles>
@@ -134,7 +136,7 @@
 		<ActivateOnEquip stat="21" amount="17">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="0" amount="95">IncrementStat</ActivateOnEquip>
 		<Usable />
-		<BagType>7</BagType>
+		<BagType>8</BagType>
 		<MpCost>130</MpCost>
 		<Activate>Shoot</Activate>
 		<NumProjectiles>4</NumProjectiles>

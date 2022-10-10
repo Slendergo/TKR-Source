@@ -10,16 +10,10 @@ package com.company.assembleegameclient.ui.tooltip
       public static const NO_DIFF_COLOR_INT:uint = 0xFFFF8F;
       public static const S:uint = 0x03cafc;
       public static const SPlus:uint = 0xfcc203;
-      public static const WIS_BONUS_COLOR:uint = 4219875;
       public static const UNTIERED_COLOR:uint = 0x8A2BE2;
       public static const SET_COLOR:uint = 0x0032c9;
-      public static const LEGENDARY_COLOR:uint = 0xffcc66 ;
-      public static const HOLDABLE_COLOR:uint = 0x51FF22;
-      public static const HEROIC_COLOR:uint = 0x00B2FF;
-      public static const TIER_COLOR:uint = 0xffffff;
-
-      public static const REVENGE_COLOR:uint = 0x9b111e;
-      public static const ETERNAL_COLOR:uint = 0x98ff98;
+      public static const LEGENDARY_COLOR:uint = 0xebb011;
+      public static const MYTHICAL_COLOR:uint = 0xcf1433;
 
       public static function wrapInFontTag(text:String, color:String):String
       {

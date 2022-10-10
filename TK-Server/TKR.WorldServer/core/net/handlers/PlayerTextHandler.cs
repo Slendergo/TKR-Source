@@ -58,7 +58,7 @@ namespace TKR.WorldServer.core.net.handlers
                 }
 
                 if (!player.IsAdmin)
-                    if (player.Stars < 2)
+                    if (!player.GameServer.Configuration.serverInfo.testing && player.Stars < 2)
                     {
                         player.SendHelp("To use this feature you need 2 stars");
                         return;

@@ -25769,7 +25769,7 @@
       <ObjectId>Strange Magician Shoot</ObjectId>
       <Speed>100</Speed>
       <MinDamage>70</MinDamage>
-      <MaxDamage>130</MaxDamage>
+      <MaxDamage>140</MaxDamage>
       <LifetimeMS>1500</LifetimeMS>
       <Amplitude>0.51</Amplitude>
       <Frequency>2</Frequency>
@@ -25780,7 +25780,7 @@
     <Projectile id="1">
       <ObjectId>Strange Magician Big Shoot</ObjectId>
       <Speed>60</Speed>
-      <Damage>350</Damage>
+      <Damage>250</Damage>
       <LifetimeMS>3500</LifetimeMS>
       <Size>180</Size>
       <FaceDir />
@@ -31276,7 +31276,7 @@
     <ParalyzeImmune />
     <Projectile id="0">
       <ObjectId>Projectile 0 ES</ObjectId>
-      <Damage>120</Damage>
+      <Damage>60</Damage>
       <Speed>35</Speed>
       <Size>80</Size>
       <LifetimeMS>6000</LifetimeMS>
@@ -31324,7 +31324,7 @@
     </AnimatedTexture>
     <Size>70</Size>
     <MaxHitPoints>15000</MaxHitPoints>
-    <Defense>20</Defense>
+    <Defense>35</Defense>
     <StasisImmune />
     <StunImmune />
     <Projectile id="0">
@@ -31345,12 +31345,12 @@
       <Index>38</Index>
     </AnimatedTexture>
     <Size>70</Size>
-    <MaxHitPoints>10000</MaxHitPoints>
-    <Defense>20</Defense>
+    <MaxHitPoints>11250</MaxHitPoints>
+    <Defense>35</Defense>
     <StasisImmune />
     <Projectile id="0">
       <ObjectId>Projectile 0 FE</ObjectId>
-      <Damage>90</Damage>
+      <Damage>70</Damage>
       <Speed>35</Speed>
       <Size>120</Size>
       <ArmorPiercing />
@@ -31366,23 +31366,22 @@
       <Index>20</Index>
     </AnimatedTexture>
     <Size>150</Size>
-    <MaxHitPoints>13000</MaxHitPoints>
-    <Defense>50</Defense>
+    <MaxHitPoints>25000</MaxHitPoints>
+    <Defense>45</Defense>
     <StasisImmune />
     <StunImmune />
     <ParalyzeImmune />
     <Projectile id="0">
       <ObjectId>Projectile 0 GFS</ObjectId>
-      <Damage>260</Damage>
+      <Damage>90</Damage>
       <Speed>65</Speed>
       <Size>140</Size>
       <MultiHit />
-      <ConditionEffect duration="2">Speedy</ConditionEffect>
       <LifetimeMS>2500</LifetimeMS>
     </Projectile>
     <Projectile id="1">
       <ObjectId>Projectile 1 GFS</ObjectId>
-      <Damage>345</Damage>
+      <Damage>125</Damage>
       <Speed>55</Speed>
       <Size>140</Size>
       <MultiHit />
@@ -37510,6 +37509,7 @@
     <God />
     <Encounter />
     <Level>20</Level>
+    <Invincible />
   </Object>
   <Object type="0x0206" id="Dragon Egg">
     <Class>Character</Class>
@@ -44899,8 +44899,8 @@
     <CanPutNormalObjects />
     <Loot />
     <Texture>
-      <File>lofiObj</File>
-      <Index>0x08</Index>
+      <File>lofiObj4</File>
+      <Index>0x90</Index>
     </Texture>
     <Size>80</Size>
     <SlotTypes>0, 0, 0, 0, 0, 0, 0, 0</SlotTypes>
@@ -44925,8 +44925,8 @@
     <CanPutSoulboundObjects />
     <Loot />
     <Texture>
-      <File>lofiObj2</File>
-      <Index>0x76</Index>
+      <File>lofiObj4</File>
+      <Index>0x91</Index>
     </Texture>
     <Size>80</Size>
     <SlotTypes>0, 0, 0, 0, 0, 0, 0, 0</SlotTypes>
@@ -45001,7 +45001,7 @@
     <Size>80</Size>
     <SlotTypes>0, 0, 0, 0, 0, 0, 0, 0</SlotTypes>
   </Object>
-  <Object type="0x5076" id="Revenge Loot Bag">
+  <Object type="0x5076" id="Legendary Loot Bag">
     <DisplayId>Loot Bag</DisplayId>
     <Class>Container</Class>
     <Container />
@@ -45009,13 +45009,13 @@
     <CanPutSoulboundObjects />
     <Loot />
     <Texture>
-      <File>CustomObj</File>
-      <Index>0x83</Index>
+      <File>lofiObj4</File>
+      <Index>0x95</Index>
     </Texture>
     <Size>80</Size>
     <SlotTypes>0, 0, 0, 0, 0, 0, 0, 0</SlotTypes>
   </Object>
-  <Object type="0xa002" id="Eternal Loot Bag">
+  <Object type="0xa002" id="Mythical Loot Bag">
     <DisplayId>Loot Bag</DisplayId>
     <Class>Container</Class>
     <Container />
@@ -45023,13 +45023,13 @@
     <CanPutSoulboundObjects />
     <Loot />
     <Texture>
-      <File>CustomObj</File>
-      <Index>0x86</Index>
+      <File>lofiObj4</File>
+      <Index>0x96</Index>
     </Texture>
     <Size>80</Size>
     <SlotTypes>0, 0, 0, 0, 0, 0, 0, 0</SlotTypes>
   </Object>
-  <Object type="0xa00f" id="Legendary Loot Bag">
+  <Object type="0xa004" id="Talisman Loot Bag">
     <DisplayId>Loot Bag</DisplayId>
     <Class>Container</Class>
     <Container />
@@ -45037,8 +45037,22 @@
     <CanPutSoulboundObjects />
     <Loot />
     <Texture>
-      <File>CustomObj</File>
-      <Index>0x86</Index>
+      <File>lofiObj4</File>
+      <Index>0x97</Index>
+    </Texture>
+    <Size>80</Size>
+    <SlotTypes>0, 0, 0, 0, 0, 0, 0, 0</SlotTypes>
+  </Object>
+  <Object type="0xa005" id="Talisman Loot Bag Boosted">
+    <DisplayId>Loot Bag</DisplayId>
+    <Class>Container</Class>
+    <Container />
+    <CanPutNormalObjects />
+    <CanPutSoulboundObjects />
+    <Loot />
+    <Texture>
+      <File>lofiObj4</File>
+      <Index>0xa7</Index>
     </Texture>
     <Size>80</Size>
     <SlotTypes>0, 0, 0, 0, 0, 0, 0, 0</SlotTypes>
@@ -45155,7 +45169,7 @@
     <Size>80</Size>
     <SlotTypes>0, 0, 0, 0, 0, 0, 0, 0</SlotTypes>
   </Object>
-  <Object type="0x5077" id="Boosted Revenge Loot Bag">
+  <Object type="0x5077" id="Boosted Legendary Loot Bag">
     <DisplayId>Loot Bag</DisplayId>
     <Class>Container</Class>
     <Container />
@@ -45164,12 +45178,12 @@
     <Loot />
     <Texture>
       <File>CustomObj</File>
-      <Index>0x84</Index>
+      <Index>0x9E</Index>
     </Texture>
     <Size>80</Size>
     <SlotTypes>0, 0, 0, 0, 0, 0, 0, 0</SlotTypes>
   </Object>
-  <Object type="0xa003" id="Boosted Eternal Loot Bag">
+  <Object type="0xa003" id="Boosted Mythical Loot Bag">
     <DisplayId>Loot Bag</DisplayId>
     <Class>Container</Class>
     <Container />
@@ -45178,21 +45192,7 @@
     <Loot />
     <Texture>
       <File>CustomObj</File>
-      <Index>0x87</Index>
-    </Texture>
-    <Size>80</Size>
-    <SlotTypes>0, 0, 0, 0, 0, 0, 0, 0</SlotTypes>
-  </Object>
-  <Object type="0xa010" id="Boosted Legendary Loot Bag">
-    <DisplayId>Loot Bag</DisplayId>
-    <Class>Container</Class>
-    <Container />
-    <CanPutNormalObjects />
-    <CanPutSoulboundObjects />
-    <Loot />
-    <Texture>
-      <File>CustomObj</File>
-      <Index>0x86</Index>
+      <Index>0x9F</Index>
     </Texture>
     <Size>80</Size>
     <SlotTypes>0, 0, 0, 0, 0, 0, 0, 0</SlotTypes>
@@ -45215,363 +45215,6 @@
       <Index>0x06</Index>
     </Texture>
   </Object>
-  <Object type="0x4949" id="Pocket Change">
-    <Class>Equipment</Class>
-    <DisplayId>Pocket Change</DisplayId>
-    <Item />
-    <Rare />
-    <InvUse />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x33</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>It’s rough out here on these streets. Can’t I catch a break?</Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x00">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>7</BagType>
-  </Object>
-  <Object type="0x40a" id="Path of Destruction">
-    <Class>Equipment</Class>
-    <DisplayId>Path of Destruction</DisplayId>
-    <Item />
-    <Rare />
-    <InvUse />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x34</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>A long, treacherous path has been laid out before you. Gain the skill needed to vanquish foes or fall as other adventures have.</Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x04">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>7</BagType>
-  </Object>
-  <Object type="0x40b" id="Heart and Soul">
-    <Class>Equipment</Class>
-    <DisplayId>Heart and Soul</DisplayId>
-    <Item />
-    <Rare />
-    <InvUse />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x35</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>Those that put both Heart and Soul into everything they do are rewarded appropriately so.</Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x05">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>7</BagType>
-  </Object>
-  <Object type="0x40c" id="Blood Exchange">
-    <Class>Equipment</Class>
-    <DisplayId>Blood Exchange</DisplayId>
-    <Item />
-    <Legendary />
-    <InvUse />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x10</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>What price will you pay for power? Will you tempt fate to gain wealth and riches or pay the ultimate price trying?</Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x06">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>7</BagType>
-  </Object>
-  <Object type="0x40d" id="Eternal Youth">
-    <Class>Equipment</Class>
-    <DisplayId>Eternal Youth</DisplayId>
-    <Item />
-    <Legendary />
-    <InvUse />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x11</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>A fabled chalice filled to the brim with substance from the fountain of youth, capable of rejuvenating someone back from the brink of death.</Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x07">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>7</BagType>
-  </Object>
-  <Object type="0x40e" id="Unyielding Resilience">
-    <Class>Equipment</Class>
-    <DisplayId>Unyielding Resilience</DisplayId>
-    <Item />
-    <Legendary />
-    <InvUse />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x12</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>Known to persevere even through the harshest of times, you’ve become a pillar to the survival of humanity. Now a vital cornerstone for your allies, able to withstand the test of time.</Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x08">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>7</BagType>
-  </Object>
-  <Object type="0x40f" id="Wrath's Incarnate">
-    <Class>Equipment</Class>
-    <DisplayId>Wrath's Incarnate</DisplayId>
-    <Item />
-    <Legendary />
-    <InvUse />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x20</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>Fear is a double-edged sword. It can be used as an advantage, or it can be used against you.</Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x09">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>7</BagType>
-  </Object>
-  <Object type="0x407" id="Primal Rage">
-    <Class>Equipment</Class>
-    <DisplayId>Primal Rage</DisplayId>
-    <Item />
-    <Legendary />
-    <InvUse />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x21</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>Revert to your natural instincts, allowing your rage to flow through your veins. Become an unstoppable force of reckoning. </Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x10">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>7</BagType>
-  </Object>
-  <Object type="0x408" id="Call to Arms">
-    <Class>Equipment</Class>
-    <DisplayId>Call to Arms</DisplayId>
-    <Item />
-    <Legendary />
-    <InvUse />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x22</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>Warriors that live life on the edge keeps them in a heightened state of awareness, giving them complete advantage, preparing them for anything. </Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x11">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>7</BagType>
-  </Object>
-  <Object type="0x409" id="Divine Intellect">
-    <Class>Equipment</Class>
-    <DisplayId>Divine Intellect</DisplayId>
-    <Item />
-    <Legendary />
-    <InvUse />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x30</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>Instead of braving the front of battle, you’ve decided to take a more studious route in your journey for power. Knowledge of primordial times enrich your magic capabilities further than humanly possible.</Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x12">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>7</BagType>
-  </Object>
-  <Object type="0x410" id="Insatiable Thirst">
-    <Class>Equipment</Class>
-    <DisplayId>Insatiable Thirst</DisplayId>
-    <Item />
-    <Legendary />
-    <InvUse />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x31</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>Acquire the ability to sap magical energy away from foes at the expense of siphoning away at your lifeforce. </Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x13">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>7</BagType>
-  </Object>
-  <Object type="0x411" id="Spellslinger">
-    <Class>Equipment</Class>
-    <DisplayId>Spellslinger</DisplayId>
-    <Item />
-    <Legendary />
-    <InvUse />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x32</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>As you progress farther into the arcane arts, you begin to lose yourself in the dark, unknown, and mysterious world that is magic.</Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x14">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>7</BagType>
-  </Object>
-  <Object type="0x412" id="Iron Will">
-    <Class>Equipment</Class>
-    <DisplayId>Iron Will</DisplayId>
-    <Item />
-    <Legendary />
-    <InvUse />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x40</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>A strong offense starts with a good defense. Your impenetrable defenses qualify you to be a battle-hardened veteran of war.</Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x15">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>7</BagType>
-  </Object>
-  <Object type="0x413" id="Party of One">
-    <Class>Equipment</Class>
-    <DisplayId>Party of One</DisplayId>
-    <Item />
-    <Legendary />
-    <InvUse />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x41</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>“Oh, you don’t want any? More for me then.”</Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x16">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>7</BagType>
-  </Object>
-  <Object type="0x414" id="Forbidden Fruit">
-    <Class>Equipment</Class>
-    <DisplayId>Forbidden Fruit</DisplayId>
-    <Item />
-    <Legendary />
-    <InvUse />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x42</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>Resist the temptation to consume or suffer the cost of succumbing to addiction.</Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x17">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>7</BagType>
-  </Object>
-  <Object type="0x415" id="Luck of the Irish">
-    <Class>Equipment</Class>
-    <DisplayId>Luck of the Irish</DisplayId>
-    <Item />
-    <Legendary />
-    <InvUse />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x51</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>Strike it rich or die trying.</Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x18">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>7</BagType>
-  </Object>
-  <Object type="0x416" id="Known After Death">
-    <Class>Equipment</Class>
-    <DisplayId>Known After Death</DisplayId>
-    <Item />
-    <Legendary />
-    <InvUse />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x50</Index>
-    </Texture>
-    <ExtraTooltipData>
-      <EffectInfo name="" description="Consume the talisman to reap the power" />
-    </ExtraTooltipData>
-    <SlotType>10</SlotType>
-    <Description>Some go through life, known by none. Others talented and fortunate enough to conquer legends and myths of old receive a life after death, known for centuries to come.</Description>
-    <Sound>use_potion</Sound>
-    <Activate type="0x19">UnlockTalisman</Activate>
-    <Consumable />
-    <Potion />
-    <BagType>7</BagType>
-  </Object>
   <Object type="0x5019" id="Fire Fragment">
     <Class>Equipment</Class>
     <Item />
@@ -45585,7 +45228,7 @@
     <Forgeable />
     <Legendary />
     <Soulbound />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
   </Object>
   <Object type="0x501a" id="Water Fragment">
     <Class>Equipment</Class>
@@ -45600,7 +45243,7 @@
     <Forgeable />
     <Legendary />
     <Soulbound />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
   </Object>
   <Object type="0x501b" id="Wind Fragment">
     <Class>Equipment</Class>
@@ -45615,7 +45258,7 @@
     <Forgeable />
     <Legendary />
     <Soulbound />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
   </Object>
   <Object type="0x501c" id="Earth Fragment">
     <Class>Equipment</Class>
@@ -45630,7 +45273,7 @@
     <Forgeable />
     <Legendary />
     <Soulbound />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
   </Object>
   <Object type="0x501d" id="Bedrock Fragment">
     <Class>Equipment</Class>
@@ -45645,7 +45288,7 @@
     <Forgeable />
     <Legendary />
     <Soulbound />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
   </Object>
   <Object type="0x501e" id="Obsidian Fragment">
     <Class>Equipment</Class>
@@ -45660,7 +45303,7 @@
     <Forgeable />
     <Legendary />
     <Soulbound />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
   </Object>
   <Object type="0x501f" id="Omnipotence Fragment">
     <Class>Equipment</Class>
@@ -45675,7 +45318,7 @@
     <Forgeable />
     <Legendary />
     <Soulbound />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
   </Object>
   <Object type="0x9520" id="Quest Chest">
     <DisplayId>Quest Chest</DisplayId>
@@ -45706,7 +45349,7 @@
       <EffectInfo name="Info" description="Only usable in the Vault." />
     </ExtraTooltipData>
     <feedPower>200</feedPower>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
   </Object>
   <Object type="0x9703" id="Epic Quest Chest Item">
     <Class>Equipment</Class>
@@ -45720,6 +45363,7 @@
     <Sound>use_key</Sound>
     <Consumable />
     <Activate objectId="Epic Quest Chest">Create</Activate>:
+
 		<feedPower>200</feedPower><BagType>5</BagType><Track /></Object>
   <Object type="0x9701" id="Epic Quest Chest">
     <DisplayId>Quest Chest</DisplayId>
@@ -45752,7 +45396,7 @@
     <Activate>UpgradeActivate</Activate>
     <Consumable />
     <Potion />
-    <BagType>8</BagType>
+    <BagType>9</BagType>
   </Object>
   <Object type="0x5405" id="Titanium Core">
     <Class>Equipment</Class>
@@ -45767,7 +45411,7 @@
     <ActivateOnEquip stat="0" amount="210">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="35">IncrementStat</ActivateOnEquip>
-    <BagType>8</BagType>
+    <BagType>9</BagType>
     <FameBonus>7</FameBonus>
     <Mythical />
   </Object>
@@ -50167,86 +49811,6 @@
     <BagType>5</BagType>
     <feedPower>100000</feedPower>
   </Object>
-  <Object type="0x18f" id="Gift">
-    <DisplayId>Gift of Krathan</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>lofiEnvironment3</File>
-      <Index>0x22</Index>
-    </Texture>
-    <SlotType>10</SlotType>
-    <Description>Use it and simply hit the class you need equipment for! Recommended to be used in your vault.\n\nConsume responsibly!</Description>
-    <Sound>use_potion</Sound>
-    <Activate objectId="Testing Gift Spawner">Pet</Activate>
-    <Consumable />
-    <BagType>5</BagType>
-    <feedPower>50000</feedPower>
-  </Object>
-  <Object type="0x641" id="Keys">
-    <DisplayId>Skeleton Key</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>lofiObj</File>
-      <Index>0x21</Index>
-    </Texture>
-    <SlotType>10</SlotType>
-    <Description>Opens everything! For testing purposes.</Description>
-    <Sound>use_potion</Sound>
-    <Activate id="Key Spawner">Create</Activate>
-    <Consumable />
-    <BagType>5</BagType>
-    <feedPower>50000</feedPower>
-  </Object>
-  <Object type="0x933" id="TKeys">
-    <DisplayId>Testing Gift</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>lofiObj</File>
-      <Index>0x20</Index>
-    </Texture>
-    <SlotType>10</SlotType>
-    <Description>Spawns an object that drops keys and items. For testing purposes.</Description>
-    <Sound>use_potion</Sound>
-    <Activate id="Testing Key Dropper">Create</Activate>
-    <Consumable />
-    <BagType>5</BagType>
-    <feedPower>50000</feedPower>
-  </Object>
-  <Object type="0x216" id="Lvl20">
-    <DisplayId>Level Chicken</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>lofiChar8x8</File>
-      <Index>0xcd</Index>
-    </Texture>
-    <SlotType>10</SlotType>
-    <Description>Spawns 6 chicken to get you to level 20.</Description>
-    <Sound>use_potion</Sound>
-    <Activate objectId="Lvl20 Chicken Spawner">Pet</Activate>
-    <Consumable />
-    <BagType>5</BagType>
-    <feedPower>10000</feedPower>
-  </Object>
-  <Object type="0x218" id="Fame">
-    <DisplayId>Fame Chicken</DisplayId>
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>lofiChar8x8</File>
-      <Index>0xcd</Index>
-    </Texture>
-    <SlotType>10</SlotType>
-    <Description>Spawns 500 Fame worth of chicken! Also functions as high quality pet food. Yum!\n\nConsume responsibly!</Description>
-    <Sound>use_potion</Sound>
-    <Activate objectId="Fame Chicken Spawner">Pet</Activate>
-    <Consumable />
-    <BagType>5</BagType>
-    <feedPower>200000</feedPower>
-  </Object>
   <Object type="0x6b5" id="Dragon Buddies">
     <DisplayId>Dragon Buddies</DisplayId>
     <Class>Equipment</Class>
@@ -52668,7 +52232,7 @@
     </Projectile>
     <ActivateOnEquip stat="22" amount="-5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="3" amount="30">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <NumProjectiles>1</NumProjectiles>
     <OldSound>arrowShoot</OldSound>
@@ -52698,7 +52262,7 @@
       <Amplitude>0.35</Amplitude>
       <Frequency>0.2</Frequency>
     </Projectile>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <NumProjectiles>1</NumProjectiles>
     <OldSound>arrowShoot</OldSound>
@@ -52732,7 +52296,7 @@
     <NumProjectiles>4</NumProjectiles>
     <ArcGap>5</ArcGap>
     <ActivateOnEquip stat="21" amount="5">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <DisplayId>Cannon</DisplayId>
   </Object>
@@ -52764,7 +52328,7 @@
     <ArcGap>9</ArcGap>
     <ActivateOnEquip stat="20" amount="2">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="5">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <DisplayId>Bow of the Havens</DisplayId>
   </Object>
@@ -52796,7 +52360,7 @@
     <ArcGap>4</ArcGap>
     <ActivateOnEquip stat="22" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="-3">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <SteamRoller />
     <DisplayId>Bone Flinger</DisplayId>
@@ -52821,7 +52385,6 @@
       <Boomerang />
       <LifetimeMS>850</LifetimeMS>
       <Amplitude>0.4</Amplitude>
-      <ParticleTrail lifetimeMS="300">0x0089D1</ParticleTrail>
       <Frequency>2</Frequency>
       <Size>100</Size>
       <ArmorPiercing />
@@ -52829,7 +52392,7 @@
     </Projectile>
     <NumProjectiles>2</NumProjectiles>
     <ArcGap>4</ArcGap>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <Insanity />
     <DisplayId>World of Ice</DisplayId>
@@ -52841,7 +52404,7 @@
       <File>CustomObj</File>
       <Index>0x48</Index>
     </Texture>
-    <Eternal />
+    <Legendary />
     <SlotType>3</SlotType>
     <Description>Empowered with the element of wind, each shot is as light as a feather and shoots as fast as the speed of sound.</Description>
     <RateOfFire>1.05</RateOfFire>
@@ -52863,7 +52426,7 @@
     <ArcGap>3</ArcGap>
     <ActivateOnEquip stat="20" amount="3">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
-    <BagType>8</BagType>
+    <BagType>9</BagType>
     <FameBonus>7</FameBonus>
     <Electrify />
     <DisplayId>Hurricane</DisplayId>
@@ -53607,7 +53170,7 @@
     <ActivateOnEquip stat="21" amount="10">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="4">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="8">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
   </Object>
   <Object type="0x50e3" id="Cape of Septavius">
@@ -53622,7 +53185,7 @@
     <Description>An ethereal cloak favored by a long-forgotten guild of satanic worshippers.</Description>
     <Sound>spell/fire_nova</Sound>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <Legendary />
     <FameBonus>6</FameBonus>
     <MpCost>95</MpCost>
@@ -53646,7 +53209,7 @@
     <Description>Perfect stealth requires one to be perfect themselves. Every movement, every breath, heavily calculated.</Description>
     <Sound>spell/fire_nova</Sound>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <Legendary />
     <FameBonus>7</FameBonus>
     <MpCost>100</MpCost>
@@ -53671,7 +53234,7 @@
     <Description>Worn down and tattered clothing of the Keeper of Souls. The stench of rotten corpses envelops the cloth.</Description>
     <Sound>spell/fire_nova</Sound>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <Mythical />
     <FameBonus>6</FameBonus>
     <MpCost>115</MpCost>
@@ -53695,7 +53258,7 @@
     <Description>Infused with the power of the damned, this cloak was said to be worn by Thanatos himself when he was collecting souls all over the world.</Description>
     <Sound>spell/fire_nova</Sound>
     <Usable />
-    <BagType>8</BagType>
+    <BagType>9</BagType>
     <Mythical />
     <FameBonus>7</FameBonus>
     <MpCost>125</MpCost>
@@ -53955,7 +53518,7 @@
     </Projectile>
     <ActivateOnEquip stat="3" amount="50">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="7">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <OldSound>daggerSwing</OldSound>
     <feedPower>950</feedPower>
@@ -53982,7 +53545,7 @@
       <Amplitude>0.2</Amplitude>
       <Frequency>0.2</Frequency>
     </Projectile>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <OldSound>daggerSwing</OldSound>
     <FameBonus>4</FameBonus>
     <feedPower>900</feedPower>
@@ -54013,7 +53576,7 @@
     </Projectile>
     <NumProjectiles>2</NumProjectiles>
     <ActivateOnEquip stat="26" amount="4">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <OldSound>daggerSwing</OldSound>
   </Object>
@@ -54043,7 +53606,7 @@
     <NumProjectiles>1</NumProjectiles>
     <ActivateOnEquip stat="26" amount="3">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="4">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <DisplayId>Cadaverous Knife</DisplayId>
   </Object>
@@ -54077,7 +53640,7 @@
     <ActivateOnEquip stat="3" amount="20">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="-2">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="5">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <DisplayId>Titan Slayer</DisplayId>
   </Object>
@@ -54109,7 +53672,7 @@
     <NumProjectiles>1</NumProjectiles>
     <ArcGap>0</ArcGap>
     <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <DisplayId>Refraction Cutter</DisplayId>
   </Object>
@@ -54121,7 +53684,7 @@
       <File>CustomObj</File>
       <Index>0x52</Index>
     </Texture>
-    <Eternal />
+    <Legendary />
     <SlotType>2</SlotType>
     <Description>Mysterious forces grant the control over the element of water, proving effective in fluid, unpredictable attacks.</Description>
     <RateOfFire>.85</RateOfFire>
@@ -54772,7 +54335,7 @@
       <MaxDamage>130</MaxDamage>
       <LifetimeMS>450</LifetimeMS>
     </Projectile>
-    <BagType>8</BagType>
+    <BagType>9</BagType>
     <FameBonus>6</FameBonus>
     <OldSound>daggerSwing</OldSound>
     <feedPower>900</feedPower>
@@ -54841,7 +54404,7 @@
     <ActivateOnEquip stat="3" amount="200">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="18">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="20">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>4</FameBonus>
     <feedPower>500</feedPower>
   </Object>
@@ -54877,7 +54440,7 @@
     <ActivateOnEquip stat="21" amount="18">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="-8">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="6">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
   </Object>
   <Object type="0x4911" id="Breastplate of New Life">
@@ -54895,7 +54458,7 @@
     <ActivateOnEquip stat="0" amount="220">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="28">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="8">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <Legendary />
   </Object>
@@ -54936,7 +54499,7 @@
     <ActivateOnEquip stat="28" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="4">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="-5">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <DisplayId>Oryx's Armor of War</DisplayId>
   </Object>
@@ -54958,7 +54521,7 @@
     <ActivateOnEquip stat="20" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="-5">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <DisplayId>Fluffy's Ribcage</DisplayId>
   </Object>
@@ -54980,7 +54543,7 @@
     <ActivateOnEquip stat="20" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="-20">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="25">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>9</BagType>
     <FameBonus>7</FameBonus>
     <DisplayId>Absolute Zero</DisplayId>
   </Object>
@@ -55379,7 +54942,7 @@
     <ActivateOnEquip stat="21" amount="12">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="7">IncrementStat</ActivateOnEquip>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <MpCost>85</MpCost>
     <Activate effect="Berserk" duration="4" range="4">ConditionEffectAura</Activate>
@@ -55401,7 +54964,7 @@
     <ActivateOnEquip stat="21" amount="15">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="15">IncrementStat</ActivateOnEquip>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <MpCost>100</MpCost>
     <Activate effect="Berserk" duration="6" range="3" color="0xff0080" target="player" center="player" visualEffect="0" useWisMod="true">GenericActivate</Activate>
@@ -55426,7 +54989,7 @@
     <Activate effect="Damaging" duration="7">ConditionEffectSelf</Activate>
     <Usable />
     <Mythical />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <MpCost>130</MpCost>
     <Cooldown>7</Cooldown>
@@ -55676,7 +55239,7 @@
     <ActivateOnEquip stat="21" amount="10">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="10">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="6">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
   </Object>
   <Object type="0xc82" id="Cheater Light Armor">
@@ -55711,7 +55274,7 @@
     <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="3" amount="170">IncrementStat</ActivateOnEquip>
     <FameBonus>5</FameBonus>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <feedPower>250</feedPower>
   </Object>
   <Object type="0xb159" id="Quartermaster's Vest">
@@ -55734,7 +55297,7 @@
     <ActivateOnEquip stat="27" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="3" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="-6">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
   </Object>
   <Object type="0xb017" id="Arachne Carapace">
@@ -55752,7 +55315,7 @@
     <ActivateOnEquip stat="21" amount="16">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="4">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="7">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
   </Object>
   <Object type="0x50e6" id="Magician's Hide">
@@ -55773,7 +55336,7 @@
     <ActivateOnEquip stat="27" amount="-6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="7">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="-6">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
   </Object>
   <Object type="0x514e" id="Golden Coat">
@@ -55792,7 +55355,7 @@
     <ActivateOnEquip stat="20" amount="8">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="25">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="0" amount="150">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
   </Object>
   <Object type="0x4917" id="Armor of Nil">
@@ -55811,7 +55374,7 @@
     <ActivateOnEquip stat="21" amount="25">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="7">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="8">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <feedPower>1100</feedPower>
     <Legendary />
@@ -55834,7 +55397,7 @@
     <ActivateOnEquip stat="20" amount="3">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="-10">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
   </Object>
   <Object type="0x50fb" id="Rigid Mantle">
@@ -55852,7 +55415,7 @@
     <ActivateOnEquip stat="20" amount="15">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="15">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
   </Object>
   <Object type="0x50fc" id="Seruna">
@@ -55869,7 +55432,7 @@
     <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="26">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="25">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
   </Object>
   <Object type="0x4299" id="Condemned Frostbite">
@@ -55891,7 +55454,7 @@
     <ActivateOnEquip stat="22" amount="7">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="10">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="10">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>9</BagType>
     <FameBonus>7</FameBonus>
   </Object>
   <Object type="0x5154" id="Wingus's Breastplate">
@@ -56242,7 +55805,7 @@
     <ActivateOnEquip stat="21" amount="14">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="8">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="7">IncrementStat</ActivateOnEquip>
-    <BagType>8</BagType>
+    <BagType>9</BagType>
     <FameBonus>4</FameBonus>
     <feedPower>435</feedPower>
   </Object>
@@ -56318,7 +55881,7 @@
       <MultiHit />
       <ArmorPiercing />
     </Projectile>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>5</FameBonus>
     <OldSound>bladeSwing</OldSound>
     <feedPower>500</feedPower>
@@ -56347,7 +55910,7 @@
       <Size>90</Size>
       <MultiHit />
     </Projectile>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>4</FameBonus>
     <OldSound>bladeSwing</OldSound>
     <feedPower>500</feedPower>
@@ -56374,7 +55937,7 @@
       <MultiHit />
     </Projectile>
     <NumProjectiles>1</NumProjectiles>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <DisplayId>Dojigiri</DisplayId>
   </Object>
@@ -56405,7 +55968,7 @@
     </Projectile>
     <NumProjectiles>2</NumProjectiles>
     <ArcGap>3</ArcGap>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <DisplayId>Lodius</DisplayId>
   </Object>
@@ -56428,7 +55991,6 @@
       <MinDamage>350</MinDamage>
       <MaxDamage>490</MaxDamage>
       <LifetimeMS>300</LifetimeMS>
-      <ParticleTrail lifetimeMS="300">0x0089D1</ParticleTrail>
       <Amplitude>.25</Amplitude>
       <Frequency>1.75</Frequency>
       <Size>100</Size>
@@ -56437,7 +55999,7 @@
     </Projectile>
     <NumProjectiles>1</NumProjectiles>
     <ArcGap>3</ArcGap>
-    <BagType>7</BagType>
+    <BagType>9</BagType>
     <FameBonus>7</FameBonus>
     <DisplayId>Agdluak</DisplayId>
   </Object>
@@ -56461,7 +56023,7 @@
       <MaxDamage>30</MaxDamage>
       <LifetimeMS>350</LifetimeMS>
     </Projectile>
-    <BagType>8</BagType>
+    <BagType>9</BagType>
     <OldSound>bladeSwing</OldSound>
     <feedPower>300</feedPower>
   </Object>
@@ -56473,7 +56035,7 @@
       <File>CustomObj</File>
       <Index>0x47</Index>
     </Texture>
-    <Eternal />
+    <Legendary />
     <SlotType>24</SlotType>
     <Description>A katana formed from the pressurized windstorms released from the element of wind.</Description>
     <RateOfFire>1.1</RateOfFire>
@@ -56495,7 +56057,7 @@
     <ActivateOnEquip stat="20" amount="2">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="2">IncrementStat</ActivateOnEquip>
-    <BagType>8</BagType>
+    <BagType>9</BagType>
     <FameBonus>7</FameBonus>
     <DisplayId>Turbulence</DisplayId>
   </Object>
@@ -57115,7 +56677,7 @@
     <SlotType>21</SlotType>
     <Description>This orb of ancient bloodstone has a dark reputation of twisting those who wield it.</Description>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <MpCost>100</MpCost>
     <ActivateOnEquip stat="22" amount="4">IncrementStat</ActivateOnEquip>
@@ -57140,7 +56702,7 @@
     <ActivateOnEquip stat="20" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="10">IncrementStat</ActivateOnEquip>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <MpCost>125</MpCost>
     <Activate effect="Curse" duration="8" range="5" color="0x808080" target="enemy" center="mouse" visualEffect="8" useWisMod="false">GenericActivate</Activate>
@@ -57162,7 +56724,7 @@
     <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="5">IncrementStat</ActivateOnEquip>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <MpCost>130</MpCost>
     <Activate effect="Paralyzed" duration="4.25" range="4" color="0xE9A92D" target="enemy" center="mouse" visualEffect="4" useWisMod="false">GenericActivate</Activate>
@@ -57185,7 +56747,7 @@
     <ActivateOnEquip stat="28" amount="8">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="8">IncrementStat</ActivateOnEquip>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>9</BagType>
     <FameBonus>7</FameBonus>
     <MpCost>150</MpCost>
     <Activate effect="Curse" duration="8" range="5" color="0xE9A92D" target="enemy" center="mouse" visualEffect="4" useWisMod="false">GenericActivate</Activate>
@@ -57435,7 +56997,7 @@
     <SlotType>18</SlotType>
     <Description>Deadly poison in a small, compact vial allows for easy transportation and usage. </Description>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <MpCost>130</MpCost>
     <ActivateOnEquip stat="20" amount="3">IncrementStat</ActivateOnEquip>
@@ -57457,7 +57019,7 @@
     <ActivateOnEquip stat="27" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="8">IncrementStat</ActivateOnEquip>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>4</FameBonus>
     <MpCost>155</MpCost>
     <Activate radius="4" impactDamage="1000" totalDamage="2500" duration="3" throwTime="3" color="0xf5ce42" useWisMod="true">PoisonGrenade</Activate>
@@ -57663,7 +57225,7 @@
     <ActivateOnEquip stat="27" amount="4">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="3" amount="60">IncrementStat</ActivateOnEquip>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <MpCost>80</MpCost>
     <Activate duration="3" explode="1" bullet="12">Decoy</Activate>
@@ -57705,7 +57267,7 @@
     <Legendary />
     <Description>Blessed with the gift of speed, the leftover scales of the Queen of Snakes would be wasted if not used instead.</Description>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <MpCost>80</MpCost>
     <ActivateOnEquip stat="20" amount="5">IncrementStat</ActivateOnEquip>
@@ -57731,7 +57293,7 @@
     <ActivateOnEquip stat="20" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="6">IncrementStat</ActivateOnEquip>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <MpCost>130</MpCost>
     <Activate totalDamage="0" maxTargets="3" condEffect="Paralyzed" condDuration="5" color="0xecf4fd" useWisMod="false">Lightning</Activate>
@@ -57975,7 +57537,7 @@
     <ActivateOnEquip stat="28" amount="6">IncrementStat</ActivateOnEquip>
     <ConditionEffect duration="4">Dazed</ConditionEffect>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <MpCost>95</MpCost>
     <Activate>Shoot</Activate>
@@ -58002,15 +57564,13 @@
       <MaxDamage>1250</MaxDamage>
       <LifetimeMS>625</LifetimeMS>
       <Size>120</Size>
-      <MultiHit />
       <ArmorPiercing />
       <ParticleTrail lifetimeMS="150">0x380087</ParticleTrail>
-      <ConditionEffect duration="5">Slowed</ConditionEffect>
     </Projectile>
     <ActivateOnEquip stat="21" amount="7">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="5">IncrementStat</ActivateOnEquip>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <MpCost>95</MpCost>
     <ArcGap>5</ArcGap>
@@ -58037,16 +57597,15 @@
       <MaxDamage>1000</MaxDamage>
       <LifetimeMS>700</LifetimeMS>
       <Size>120</Size>
-      <MultiHit />
       <PassesCover />
       <ConditionEffect duration="5">Curse</ConditionEffect>
-      <ConditionEffect duration="4">Paralyzed</ConditionEffect>
+      <ConditionEffect duration="4">Slowed</ConditionEffect>
     </Projectile>
     <ActivateOnEquip stat="20" amount="4">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
     <Usable />
-    <BagType>6</BagType>
+    <BagType>8</BagType>
     <FameBonus>4</FameBonus>
     <MpCost>90</MpCost>
     <ArcGap>2</ArcGap>
@@ -58072,7 +57631,6 @@
       <MaxDamage>400</MaxDamage>
       <LifetimeMS>700</LifetimeMS>
       <Size>120</Size>
-      <MultiHit />
       <ArmorPiercing />
       <PassesCover />
       <ConditionEffect duration="2.5">Armor Broken</ConditionEffect>
@@ -58081,7 +57639,7 @@
     <ActivateOnEquip stat="20" amount="3">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>4</FameBonus>
     <MpCost>110</MpCost>
     <ArcGap>6</ArcGap>
@@ -58108,7 +57666,6 @@
       <LifetimeMS>1000</LifetimeMS>
       <Size>150</Size>
       <ConditionEffect duration="3">Slowed</ConditionEffect>
-      <MultiHit />
       <PassesCover />
       <ParticleTrail />
     </Projectile>
@@ -58138,7 +57695,6 @@
       <LifetimeMS>1000</LifetimeMS>
       <Size>150</Size>
       <ConditionEffect duration="3">Slowed</ConditionEffect>
-      <MultiHit />
       <PassesCover />
       <ParticleTrail />
     </Projectile>
@@ -58169,7 +57725,6 @@
       <LifetimeMS>1000</LifetimeMS>
       <Size>150</Size>
       <ConditionEffect duration="3">Slowed</ConditionEffect>
-      <MultiHit />
       <PassesCover />
       <ParticleTrail />
     </Projectile>
@@ -58199,13 +57754,12 @@
       <MaxDamage>260</MaxDamage>
       <LifetimeMS>1000</LifetimeMS>
       <Size>150</Size>
-      <ConditionEffect duration="3">Paralyzed</ConditionEffect>
-      <MultiHit />
+      <ConditionEffect duration="3">Slowed</ConditionEffect>
       <PassesCover />
       <ParticleTrail />
     </Projectile>
     <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
-    <ConditionEffect duration="3">Paralyzed</ConditionEffect>
+    <ConditionEffect duration="3">Slowed</ConditionEffect>
     <Usable />
     <BagType>2</BagType>
     <FameBonus>1</FameBonus>
@@ -58231,13 +57785,12 @@
       <MaxDamage>320</MaxDamage>
       <LifetimeMS>1000</LifetimeMS>
       <Size>150</Size>
-      <ConditionEffect duration="3">Paralyzed</ConditionEffect>
-      <MultiHit />
+      <ConditionEffect duration="3">Slowed</ConditionEffect>
       <PassesCover />
       <ParticleTrail />
     </Projectile>
     <ActivateOnEquip stat="28" amount="4">IncrementStat</ActivateOnEquip>
-    <ConditionEffect duration="3">Paralyzed</ConditionEffect>
+    <ConditionEffect duration="3">Slowed</ConditionEffect>
     <Usable />
     <BagType>2</BagType>
     <FameBonus>2</FameBonus>
@@ -58263,13 +57816,12 @@
       <MaxDamage>350</MaxDamage>
       <LifetimeMS>1000</LifetimeMS>
       <Size>150</Size>
-      <ConditionEffect duration="3">Paralyzed</ConditionEffect>
-      <MultiHit />
+      <ConditionEffect duration="3">Slowed</ConditionEffect>
       <PassesCover />
       <ParticleTrail />
     </Projectile>
     <ActivateOnEquip stat="28" amount="5">IncrementStat</ActivateOnEquip>
-    <ConditionEffect duration="3">Paralyzed</ConditionEffect>
+    <ConditionEffect duration="3">Slowed</ConditionEffect>
     <Usable />
     <BagType>4</BagType>
     <FameBonus>3</FameBonus>
@@ -58295,15 +57847,14 @@
       <MaxDamage>350</MaxDamage>
       <LifetimeMS>1000</LifetimeMS>
       <Size>150</Size>
-      <ConditionEffect duration="3">Paralyzed</ConditionEffect>
-      <MultiHit />
+      <ConditionEffect duration="3">Slowed</ConditionEffect>
       <PassesCover />
       <ParticleTrail />
     </Projectile>
     <ActivateOnEquip stat="26" amount="2">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="5">IncrementStat</ActivateOnEquip>
-    <ConditionEffect duration="3">Paralyzed</ConditionEffect>
+    <ConditionEffect duration="3">Slowed</ConditionEffect>
     <Usable />
     <BagType>4</BagType>
     <FameBonus>4</FameBonus>
@@ -58331,7 +57882,6 @@
       <Size>120</Size>
       <ConditionEffect duration="5">Slowed</ConditionEffect>
       <PassesCover />
-      <MultiHit />
       <ParticleTrail lifetimeMS="150">0x33ccff</ParticleTrail>
     </Projectile>
     <ActivateOnEquip stat="20" amount="3">IncrementStat</ActivateOnEquip>
@@ -58360,7 +57910,7 @@
     <ActivateOnEquip stat="0" amount="170">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="8">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="8">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>5</FameBonus>
     <feedPower>500</feedPower>
   </Object>
@@ -58382,7 +57932,7 @@
     <ActivateOnEquip stat="28" amount="12">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="12">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="12">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>9</BagType>
     <FameBonus>7</FameBonus>
     <feedPower>1500</feedPower>
     <Mythical />
@@ -58401,7 +57951,7 @@
     <ActivateOnEquip stat="3" amount="200">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="16">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <feedPower>1000</feedPower>
     <Legendary />
@@ -58421,7 +57971,7 @@
     <ActivateOnEquip stat="3" amount="50">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="10">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="7">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>5</FameBonus>
     <feedPower>500</feedPower>
   </Object>
@@ -58439,7 +57989,7 @@
     <ActivateOnEquip stat="27" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="3" amount="120">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>5</FameBonus>
     <feedPower>500</feedPower>
   </Object>
@@ -58458,7 +58008,7 @@
     <ActivateOnEquip stat="3" amount="85">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="7">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="7">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>5</FameBonus>
     <feedPower>900</feedPower>
   </Object>
@@ -58476,7 +58026,7 @@
     <ActivateOnEquip stat="20" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="0" amount="120">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>5</FameBonus>
     <feedPower>900</feedPower>
   </Object>
@@ -58495,7 +58045,7 @@
     <ActivateOnEquip stat="20" amount="4">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="15">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="2">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <DisplayId>Captain's Ring</DisplayId>
   </Object>
@@ -58515,7 +58065,7 @@
     <ActivateOnEquip stat="26" amount="15">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="-15">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="-10">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <Legendary />
   </Object>
@@ -58535,7 +58085,7 @@
     <ActivateOnEquip stat="22" amount="8">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="12">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="10">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <DisplayId>Heart of the Realm</DisplayId>
   </Object>
@@ -58555,7 +58105,7 @@
     <ActivateOnEquip stat="20" amount="12">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="15">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="10">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <feedPower>1000</feedPower>
     <Legendary />
@@ -58578,7 +58128,7 @@
     <ActivateOnEquip stat="21" amount="9">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="9">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="9">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <feedPower>1000</feedPower>
     <Legendary />
@@ -58601,6 +58151,7 @@
     <ActivateOnEquip stat="27" amount="12">IncrementStat</ActivateOnEquip>
     <FameBonus>6</FameBonus>
     <feedPower>1000</feedPower>
+    <BagType>8</BagType>
     <Legendary />
   </Object>
   <Object type="0x4918" id="Sourcestone">
@@ -58618,7 +58169,7 @@
     <ActivateOnEquip stat="21" amount="10">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="8">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <feedPower>1000</feedPower>
     <Legendary />
@@ -58640,7 +58191,7 @@
     <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="13">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="13">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
   </Object>
   <Object type="0x5406" id="All-Knowing Bookworm">
@@ -58658,7 +58209,7 @@
     <ActivateOnEquip stat="28" amount="8">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="25">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
   </Object>
   <Object type="0xa428" id="Beast Gem">
@@ -58711,8 +58262,8 @@
     <ActivateOnEquip stat="3" amount="200">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="10">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="20">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="26" amount="40">IncrementStat</ActivateOnEquip>
-    <BagType>8</BagType>
+    <ActivateOnEquip stat="27" amount="40">IncrementStat</ActivateOnEquip>
+    <BagType>9</BagType>
     <FameBonus>8</FameBonus>
     <Mythical />
   </Object>
@@ -58729,7 +58280,7 @@
     <ActivateOnEquip stat="0" amount="220">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="12">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="12">IncrementStat</ActivateOnEquip>
-    <BagType>8</BagType>
+    <BagType>9</BagType>
     <FameBonus>8</FameBonus>
     <Mythical />
   </Object>
@@ -58752,7 +58303,7 @@
     <ActivateOnEquip stat="26" amount="1000">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="1000">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="200">IncrementStat</ActivateOnEquip>
-    <BagType>8</BagType>
+    <BagType>9</BagType>
     <FameBonus>25</FameBonus>
     <DisplayId>Ring of the Talisman's Kingdom</DisplayId>
   </Object>
@@ -58771,7 +58322,7 @@
     <ActivateOnEquip stat="27" amount="24">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="20">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="15">IncrementStat</ActivateOnEquip>
-    <BagType>8</BagType>
+    <BagType>9</BagType>
     <FameBonus>7</FameBonus>
   </Object>
   <Object type="0xa4f" id="Ring of Minor Defense">
@@ -59969,7 +59520,7 @@
     <ActivateOnEquip stat="0" amount="70">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
-    <BagType>8</BagType>
+    <BagType>9</BagType>
     <FameBonus>5</FameBonus>
     <feedPower>900</feedPower>
   </Object>
@@ -60220,7 +59771,7 @@
     <ActivateOnEquip stat="28" amount="9">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="3">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="14">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <feedPower>1100</feedPower>
     <Legendary />
@@ -60241,7 +59792,7 @@
     <ActivateOnEquip stat="20" amount="-5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="15">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
   </Object>
   <Object type="0x491d" id="Ritual Robe">
@@ -60261,7 +59812,7 @@
     <ActivateOnEquip stat="28" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="10">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="15">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <feedPower>1100</feedPower>
     <Legendary />
@@ -60281,7 +59832,7 @@
     <ActivateOnEquip stat="28" amount="12">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="16">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
   </Object>
   <Object type="0x5400" id="Archmage's Garments">
@@ -60303,7 +59854,7 @@
     <ActivateOnEquip stat="21" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="10">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="-5">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
   </Object>
   <Object type="0x497f" id="Spectral Robe">
@@ -60327,7 +59878,7 @@
     <ActivateOnEquip stat="28" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="0" amount="60">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="3" amount="60">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
   </Object>
   <Object type="0x4294" id="Snow Angle">
@@ -60349,7 +59900,7 @@
     <ActivateOnEquip stat="28" amount="10">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="3" amount="100">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>9</BagType>
     <FameBonus>6</FameBonus>
   </Object>
   <Object type="0xa42b" id="Romanian Tunic">
@@ -60370,7 +59921,7 @@
     <ActivateOnEquip stat="27" amount="15">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="3" amount="150">IncrementStat</ActivateOnEquip>
-    <BagType>8</BagType>
+    <BagType>9</BagType>
     <FameBonus>6</FameBonus>
   </Object>
   <Object type="0xa5c" id="Robe of the Neophyte">
@@ -60885,7 +60436,7 @@
     <ActivateOnEquip stat="20" amount="7">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="7">IncrementStat</ActivateOnEquip>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>4</FameBonus>
     <MpCost>85</MpCost>
     <Activate effect="Berserk" duration="2.5">ConditionEffectSelf</Activate>
@@ -60908,7 +60459,7 @@
     <ActivateOnEquip stat="22" amount="8">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="0" amount="80">IncrementStat</ActivateOnEquip>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <MpCost>110</MpCost>
     <Activate totalDamage="1000" maxTargets="3" condEffect="Paralyzed" condDuration="1.5" color="0xff9933" useWisMod="true">Lightning</Activate>
@@ -60931,7 +60482,7 @@
     <ActivateOnEquip stat="26" amount="-4">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="10">IncrementStat</ActivateOnEquip>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <MpCost>140</MpCost>
     <Activate totalDamage="1000" maxTargets="2" condEffect="ArmorBroken" condDuration="3" color="0xB2FAE2" useWisMod="true">Lightning</Activate>
@@ -60955,7 +60506,7 @@
     <ActivateOnEquip stat="27" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="10">IncrementStat</ActivateOnEquip>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <MpCost>140</MpCost>
     <Activate totalDamage="1500" maxTargets="3" condEffect="Slowed" condDuration="2" color="0xB2FAE2" useWisMod="true">Lightning</Activate>
@@ -61176,7 +60727,7 @@
     <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="5">IncrementStat</ActivateOnEquip>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <MpCost>100</MpCost>
     <Activate effect="Healing" duration="5" range="6" useWisMod="true">ConditionEffectAura</Activate>
@@ -61196,7 +60747,7 @@
     </Texture>
     <Usable />
     <SlotType>12</SlotType>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <MpCost>130</MpCost>
     <Description>
@@ -61228,7 +60779,7 @@
     <Description>Confidants of the Forgotten King had to show this seal in order to cross his majesty's bridge as a sign of approval.</Description>
     <Sound>spell/light_heal</Sound>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <MpCost>135</MpCost>
     <Activate effect="Healing" duration="5" range="5" color="0x760000" target="player" center="player" useWisMod="true">GenericActivate</Activate>
@@ -61253,7 +60804,7 @@
     <Description></Description>
     <Sound>spell/light_heal</Sound>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <MpCost>125</MpCost>
     <Activate effect="Healing" duration="5" range="6" color="0x760000" target="player" center="player" useWisMod="true">GenericActivate</Activate>
@@ -61280,7 +60831,7 @@
     <Description>After the Heros slained Cerberus, they discovered its heart and refined it into a seal.</Description>
     <Sound>spell/light_heal</Sound>
     <Usable />
-    <BagType>8</BagType>
+    <BagType>9</BagType>
     <FameBonus>7</FameBonus>
     <MpCost>150</MpCost>
     <Activate stat="0" amount="125" duration="8" range="4.5" noStack="true" useWisMod="true">StatBoostAura</Activate>
@@ -61489,7 +61040,7 @@
     <FameBonus>5</FameBonus>
   </Object>
   <Object type="0xa425" id="Dark Skeleton's Shield" spritePeriod="2" spriteFile="CustomObj" spriteArray="219-220">"
-	    <Class>Equipment</Class><Item /><Insanity /><Mythical /><Texture><File>CustomObj</File><Index>0xdb</Index></Texture><SlotType>5</SlotType><Description>You can still hear the screams of the souls trapped in the shield...</Description><Sound>spell/fire_spray</Sound><Projectile><ObjectId>Dark Skeleton Shield Shot</ObjectId><Speed>160</Speed><MinDamage>1000</MinDamage><MaxDamage>1200</MaxDamage><LifetimeMS>320</LifetimeMS><Size>140</Size><ConditionEffect duration="4.5">Stunned</ConditionEffect><ConditionEffect duration="3">Paralyzed</ConditionEffect><ConditionEffect duration="3.5">Curse</ConditionEffect><MultiHit /><PassesCover /><ParticleTrail /></Projectile><ActivateOnEquip stat="21" amount="30">IncrementStat</ActivateOnEquip><ActivateOnEquip stat="26" amount="15">IncrementStat</ActivateOnEquip><Usable /><BagType>7</BagType><FameBonus>6</FameBonus><MpCost>125</MpCost><Activate>Shoot</Activate><NumProjectiles>5</NumProjectiles><feedPower>1000</feedPower></Object>
+	    <Class>Equipment</Class><Item /><Insanity /><Mythical /><Texture><File>CustomObj</File><Index>0xdb</Index></Texture><SlotType>5</SlotType><Description>You can still hear the screams of the souls trapped in the shield...</Description><Sound>spell/fire_spray</Sound><Projectile><ObjectId>Dark Skeleton Shield Shot</ObjectId><Speed>160</Speed><MinDamage>1000</MinDamage><MaxDamage>1200</MaxDamage><LifetimeMS>320</LifetimeMS><Size>140</Size><ConditionEffect duration="4.5">Stunned</ConditionEffect><ConditionEffect duration="3">Paralyzed</ConditionEffect><ConditionEffect duration="3.5">Curse</ConditionEffect><MultiHit /><PassesCover /><ParticleTrail /></Projectile><ActivateOnEquip stat="21" amount="30">IncrementStat</ActivateOnEquip><ActivateOnEquip stat="26" amount="15">IncrementStat</ActivateOnEquip><Usable /><BagType>8</BagType><FameBonus>6</FameBonus><MpCost>125</MpCost><Activate>Shoot</Activate><NumProjectiles>5</NumProjectiles><feedPower>1000</feedPower></Object>
   <Object type="0xc0f" id="Shield of Ogmur">
     <Class>Equipment</Class>
     <Item />
@@ -61505,24 +61056,26 @@
     <Projectile>
       <ObjectId>Silver Shield</ObjectId>
       <Speed>160</Speed>
-      <MinDamage>500</MinDamage>
-      <MaxDamage>650</MaxDamage>
+      <MinDamage>650</MinDamage>
+      <MaxDamage>750</MaxDamage>
       <LifetimeMS>250</LifetimeMS>
       <Size>140</Size>
+      <ConditionEffect duration="4">Armor Broken</ConditionEffect>
       <MultiHit />
       <PassesCover />
       <ParticleTrail />
     </Projectile>
+    <ConditionEffect duration="4">Armor Broken</ConditionEffect>
     <ActivateOnEquip stat="21" amount="20">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="0" amount="150">IncrementStat</ActivateOnEquip>
-    <ConditionEffect duration="3">Armor Broken</ConditionEffect>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <MpCost>120</MpCost>
-    <Activate>Shoot</Activate>
     <NumProjectiles>5</NumProjectiles>
     <feedPower>1000</feedPower>
+    <Activate>Shoot</Activate>
+    <Activate effect="Armored" duration="2">ConditionEffectSelf</Activate>
   </Object>
   <Object type="0x50f2" id="Shield of The Ancients">
     <Class>Equipment</Class>
@@ -61555,7 +61108,7 @@
     <ConditionEffect duration="3">Stunned</ConditionEffect>
     <ConditionEffect duration="3">Paralyzed</ConditionEffect>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <MpCost>155</MpCost>
     <Activate>Shoot</Activate>
     <NumProjectiles>4</NumProjectiles>
@@ -61589,7 +61142,7 @@
     <ActivateOnEquip stat="21" amount="17">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="0" amount="95">IncrementStat</ActivateOnEquip>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <MpCost>130</MpCost>
     <Activate>Shoot</Activate>
     <NumProjectiles>4</NumProjectiles>
@@ -61983,7 +61536,7 @@
     <Activate radius="3.5" totalDamage="175" healRange="4.2" heal="80" ignoreDef="40" wisMin="50" wisPerRad="10" color="4C4C4C" incrRad="0.8" wisDamageBase="50" condEffect="Curse" condDuration="4" useWisMod="true">VampireBlast</Activate>
     <Activate effect="Curse" duration="5" range="3" color="0x05c2b5" target="enemy" center="mouse" visualEffect="0" useWisMod="false">GenericActivate</Activate>
     <MpCost>100</MpCost>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <feedPower>1300</feedPower>
     <Legendary />
@@ -62005,7 +61558,7 @@
     <Activate effect="Armored" duration="3.5">ConditionEffectSelf</Activate>
     <Activate effect="Damaging" duration="2.5">ConditionEffectSelf</Activate>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <MpCost>150</MpCost>
     <Activate radius="5" totalDamage="250" color="0xFFFF0000" useWisMod="false">VampireBlast</Activate>
@@ -62028,7 +61581,7 @@
     <ActivateOnEquip stat="26" amount="-10">IncrementStat</ActivateOnEquip>
     <Activate effect="Speedy" duration="2.5">ConditionEffectSelf</Activate>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <MpCost>120</MpCost>
     <Activate radius="6" totalDamage="310" color="0x7156340" useWisMod="false">VampireBlast</Activate>
@@ -62051,7 +61604,7 @@
     <ActivateOnEquip stat="3" amount="75">IncrementStat</ActivateOnEquip>
     <Activate effect="Damaging" duration="3.5">ConditionEffectSelf</Activate>
     <Usable />
-    <BagType>8</BagType>
+    <BagType>9</BagType>
     <FameBonus>7</FameBonus>
     <MpCost>135</MpCost>
     <Activate radius="3" totalDamage="1000" color="0xFFFF0000" useWisMod="true">VampireBlast</Activate>
@@ -62314,7 +61867,7 @@
     <ActivateOnEquip stat="21" amount="5">IncrementStat</ActivateOnEquip>
     <Usable />
     <SpellProjectiles>15</SpellProjectiles>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>5</FameBonus>
     <MpCost>150</MpCost>
     <Activate>BulletNova</Activate>
@@ -62343,7 +61896,7 @@
     </Projectile>
     <Usable />
     <SpellProjectiles>18</SpellProjectiles>
-    <BagType>6</BagType>
+    <BagType>8</BagType>
     <MpCost>140</MpCost>
     <ActivateOnEquip stat="3" amount="50">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="-3">IncrementStat</ActivateOnEquip>
@@ -62373,7 +61926,7 @@
     </Projectile>
     <Usable />
     <SpellProjectiles>1</SpellProjectiles>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <MpCost>150</MpCost>
     <Activate>BulletNova</Activate>
   </Object>
@@ -62481,7 +62034,7 @@
     <Activate>BulletNova</Activate>
     <feedPower>20</feedPower>
   </Object>
-  <Object type="0xad5" id="Scorching Blast Spell">
+  <Object type="0xad5" id="Magic Nova Spell">
     <Class>Equipment</Class>
     <Item />
     <Texture>
@@ -62490,7 +62043,7 @@
     </Texture>
     <SlotType>11</SlotType>
     <Tier>3</Tier>
-    <Description>A formidable fire spell used by dwarven magi in their war against the trolls.</Description>
+    <Description>An unimaginably destructive spell, devised by the great mountain thaumaturgists to battle against demonic giants.</Description>
     <Sound>spell/fire_nova</Sound>
     <Projectile>
       <ObjectId>Pink Bolt</ObjectId>
@@ -62531,7 +62084,7 @@
     <Activate>BulletNova</Activate>
     <feedPower>90</feedPower>
   </Object>
-  <Object type="0xa30" id="Magic Nova Spell">
+  <Object type="0xa30" id="Sus Nova Spell">
     <Class>Equipment</Class>
     <Item />
     <Texture>
@@ -62540,7 +62093,7 @@
     </Texture>
     <SlotType>11</SlotType>
     <Tier>5</Tier>
-    <Description>An unimaginably destructive spell, devised by the great mountain thaumaturgists to battle against demonic giants.</Description>
+    <Description>A wizard once made a sus spell.</Description>
     <Sound>spell/magic_nova</Sound>
     <Projectile>
       <ObjectId>White Bolt</ObjectId>
@@ -62774,7 +62327,7 @@
     </Projectile>
     <NumProjectiles>2</NumProjectiles>
     <ArcGap>5</ArcGap>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <feedPower>650</feedPower>
     <DisplayId>Ashen Spine</DisplayId>
@@ -62804,7 +62357,7 @@
       <LifetimeMS>700</LifetimeMS>
       <MultiHit />
     </Projectile>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <NumProjectiles>4</NumProjectiles>
     <ArcGap>352</ArcGap>
@@ -62836,7 +62389,7 @@
       <Amplitude>0.2</Amplitude>
       <Frequency>1.5</Frequency>
     </Projectile>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>8</FameBonus>
     <NumProjectiles>3</NumProjectiles>
     <ArcGap>6</ArcGap>
@@ -62900,7 +62453,7 @@
     </Projectile>
     <NumProjectiles>1</NumProjectiles>
     <ArcGap>0</ArcGap>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <feedPower>650</feedPower>
     <DisplayId>Rod of Frost Burn</DisplayId>
@@ -62987,7 +62540,6 @@
       <Speed>180</Speed>
       <MinDamage>250</MinDamage>
       <MaxDamage>290</MaxDamage>
-      <ParticleTrail lifetimeMS="100">0x0089D1</ParticleTrail>
       <LifetimeMS>700</LifetimeMS>
       <Amplitude>0.5</Amplitude>
       <Frequency>2</Frequency>
@@ -62997,7 +62549,7 @@
     </Projectile>
     <NumProjectiles>2</NumProjectiles>
     <ArcGap>0</ArcGap>
-    <BagType>6</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <DisplayId>The Expansion</DisplayId>
   </Object>
@@ -63009,7 +62561,7 @@
       <File>CustomObj</File>
       <Index>0x45</Index>
     </Texture>
-    <Eternal />
+    <Legendary />
     <SlotType>17</SlotType>
     <Description>Incredible power capable of incinerating everything in sight. But, with the extreme heat that rapidly pours out, extra steps of caution must be implemented to avoid severe burns.</Description>
     <RateOfFire>1</RateOfFire>
@@ -63974,7 +63526,7 @@
     <ActivateOnEquip stat="20" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="5">IncrementStat</ActivateOnEquip>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <MpCost>0</MpCost>
     <MpEndCost>90</MpEndCost>
@@ -64016,7 +63568,7 @@
     <ActivateOnEquip stat="21" amount="5">IncrementStat</ActivateOnEquip>
     <Usable />
     <NumProjectiles>3</NumProjectiles>
-    <BagType>6</BagType>
+    <BagType>8</BagType>
     <FameBonus>5</FameBonus>
     <MpCost>0</MpCost>
     <ArcGap>6</ArcGap>
@@ -64054,7 +63606,7 @@
       <Boomerang />
     </Projectile>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <ActivateOnEquip stat="3" amount="100">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="8">IncrementStat</ActivateOnEquip>
@@ -64397,7 +63949,7 @@
       <MaxDamage>610</MaxDamage>
       <LifetimeMS>375</LifetimeMS>
     </Projectile>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>4</FameBonus>
     <OldSound>bladeSwing</OldSound>
     <feedPower>900</feedPower>
@@ -64423,13 +63975,12 @@
       <Amplitude>0.3</Amplitude>
       <Frequency>0.5</Frequency>
       <LifetimeMS>300</LifetimeMS>
-      <ParticleTrail lifetimeMS="300">0x0089D1</ParticleTrail>
       <MultiHit />
       <Size>100</Size>
     </Projectile>
     <NumProjectiles>1</NumProjectiles>
     <ArcGap>4</ArcGap>
-    <BagType>7</BagType>
+    <BagType>9</BagType>
     <FameBonus>6</FameBonus>
     <feedPower>650</feedPower>
     <DisplayId>Winter Solstice</DisplayId>
@@ -64465,7 +64016,7 @@
     <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="-3">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="-3">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <DisplayId>Excalibur</DisplayId>
   </Object>
@@ -64494,7 +64045,7 @@
       <FaceDir />
     </Projectile>
     <Legendary />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <NumProjectiles>1</NumProjectiles>
     <OldSound>bladeSwing</OldSound>
@@ -64526,7 +64077,7 @@
       <ArmorPiercing />
     </Projectile>
     <NumProjectiles>1</NumProjectiles>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <DisplayId>Spear of Thiram</DisplayId>
   </Object>
@@ -64557,7 +64108,7 @@
     <ArcGap>14</ArcGap>
     <ActivateOnEquip stat="21" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="6">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <DisplayId>Blade of the Protector</DisplayId>
   </Object>
@@ -64588,7 +64139,7 @@
     <ArcGap>11</ArcGap>
     <ActivateOnEquip stat="20" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="2">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <DisplayId>The Horn Breaker</DisplayId>
   </Object>
@@ -64609,14 +64160,13 @@
       <ObjectId>Possessed Halberd Shot</ObjectId>
       <Speed>75</Speed>
       <MinDamage>666</MinDamage>
-      <ParticleTrail lifetimeMS="300">0x7E3F00</ParticleTrail>
       <MaxDamage>667</MaxDamage>
       <LifetimeMS>627</LifetimeMS>
       <Size>100</Size>
       <MultiHit />
     </Projectile>
     <NumProjectiles>1</NumProjectiles>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <DisplayId>Possessed Halberd</DisplayId>
   </Object>
@@ -64627,7 +64177,7 @@
       <File>CustomObj</File>
       <Index>0x51</Index>
     </Texture>
-    <Eternal />
+    <Legendary />
     <SlotType>1</SlotType>
     <Description>A sword forged by combining various precious ores. Every swing releases enough strength to sunder solid ground.</Description>
     <RateOfFire>.80</RateOfFire>
@@ -65530,7 +65080,7 @@
     <ActivateOnEquip stat="3" amount="40">IncrementStat</ActivateOnEquip>
     <Usable />
     <FameBonus>5</FameBonus>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <MpCost>100</MpCost>
     <Activate amount="350" range="5" useWisMod="false">HealNova</Activate>
     <Activate effect="Healing" duration="3.5" range="3">ConditionEffectAura</Activate>
@@ -65552,7 +65102,7 @@
     <ActivateOnEquip stat="0" amount="85">IncrementStat</ActivateOnEquip>
     <Usable />
     <FameBonus>7</FameBonus>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <MpCost>140</MpCost>
     <Activate amount="175" range="6" useWisMod="true">HealNova</Activate>
     <Activate range="6">RemoveNegativeConditions</Activate>
@@ -65574,7 +65124,7 @@
     <ActivateOnEquip stat="3" amount="65">IncrementStat</ActivateOnEquip>
     <Usable />
     <FameBonus>5</FameBonus>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <MpCost>100</MpCost>
     <Activate amount="325" range="3" useWisMod="false">HealNova</Activate>
     <Activate effect="Damaging" duration="3" useWisMod="false">ConditionEffectSelf</Activate>
@@ -65869,7 +65419,7 @@
     <ActivateOnEquip stat="22" amount="3">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="8">IncrementStat</ActivateOnEquip>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>4</FameBonus>
     <MpCost>110</MpCost>
     <Activate radius="4.5" totalDamage="1000" condEffect="Paralyzed" condDuration="4.5">Trap</Activate>
@@ -65887,7 +65437,7 @@
     <Description>Screams from the trapped souls echo through the silence when left alone.</Description>
     <Usable />
     <Mutilate />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <MpCost>95</MpCost>
     <ActivateOnEquip stat="22" amount="7">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="7">IncrementStat</ActivateOnEquip>
@@ -65906,7 +65456,7 @@
     <SlotType>20</SlotType>
     <Description>A lush lotus flower that grew along with Plantera. The leaves seem to have dim properties of magic flowing through the roots.</Description>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>4</FameBonus>
     <MpCost>85</MpCost>
     <Activate radius="3" totalDamage="450" condEffect="Paralyzed" condDuration="2">Trap</Activate>
@@ -66054,7 +65604,7 @@
     <ArcGap>6</ArcGap>
     <ActivateOnEquip stat="28" amount="1">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="4">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>4</FameBonus>
     <OldSound>magicShoot</OldSound>
     <NumProjectiles>3</NumProjectiles>
@@ -66084,7 +65634,7 @@
     </Projectile>
     <NumProjectiles>2</NumProjectiles>
     <ArcGap>1</ArcGap>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>5</FameBonus>
     <DisplayId>Wand of Pain</DisplayId>
   </Object>
@@ -66118,7 +65668,7 @@
     <ArcGap>3</ArcGap>
     <ActivateOnEquip stat="3" amount="50">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="10">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <DisplayId>Wand of Vampires</DisplayId>
   </Object>
@@ -66147,7 +65697,7 @@
     <NumProjectiles>1</NumProjectiles>
     <ArcGap>11</ArcGap>
     <ActivateOnEquip stat="27" amount="10">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <DisplayId>Mummified Rod</DisplayId>
   </Object>
@@ -66175,7 +65725,7 @@
       <ParticleTrail intensity="0.5" lifetimeMS="50">0xFF0000</ParticleTrail>
     </Projectile>
     <NumProjectiles>1</NumProjectiles>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
   </Object>
   <Object type="0x2035" id="Sludge-Covered Cane">
@@ -66204,7 +65754,7 @@
     </Projectile>
     <NumProjectiles>2</NumProjectiles>
     <ArcGap>10</ArcGap>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <DisplayId>Sludge-Covered Cane</DisplayId>
   </Object>
@@ -66226,7 +65776,6 @@
       <Speed>4</Speed>
       <MinDamage>300</MinDamage>
       <MaxDamage>305</MaxDamage>
-      <ParticleTrail lifetimeMS="100">0x0089D1</ParticleTrail>
       <LifetimeMS>1100</LifetimeMS>
       <Parametric />
       <Size>140</Size>
@@ -66235,7 +65784,7 @@
     </Projectile>
     <NumProjectiles>4</NumProjectiles>
     <ArcGap>10</ArcGap>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <DisplayId>Polar Vortex</DisplayId>
   </Object>
@@ -66247,7 +65796,7 @@
       <File>CustomObj</File>
       <Index>0x46</Index>
     </Texture>
-    <Eternal />
+    <Legendary />
     <SlotType>8</SlotType>
     <Description>A precious artifact given new life by purified flames provided from the fire elemental.</Description>
     <RateOfFire>1.05</RateOfFire>
@@ -66269,7 +65818,7 @@
     <ArcGap>1</ArcGap>
     <ActivateOnEquip stat="20" amount="3">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
-    <BagType>8</BagType>
+    <BagType>9</BagType>
     <FameBonus>7</FameBonus>
     <DisplayId>Eldritch Fury</DisplayId>
   </Object>
@@ -89200,6 +88749,363 @@
     </Texture>
     <AngleCorrection>1</AngleCorrection>
   </Object>
+  <Object type="0x5556" id="Talisman of Life">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xd0</Index>
+    </Texture>
+    <Description>An taliman that nourishes the weilders soul.</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="0" amount="10">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Common />
+    </Talisman>
+  </Object>
+  <Object type="0x5557" id="Talisman of Mana">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xd1</Index>
+    </Texture>
+    <Description>An taliman that nourishes the weilders magical core.</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="3" amount="10">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Common />
+    </Talisman>
+  </Object>
+  <Object type="0x5558" id="Talisman of Attack">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xd2</Index>
+    </Texture>
+    <Description>An taliman that strengthens the wielders attacks.</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="20" amount="2">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Common />
+    </Talisman>
+  </Object>
+  <Object type="0x5559" id="Talisman of Defense">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xd3</Index>
+    </Texture>
+    <Description>An taliman that toughens the weilders skin.</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="21" amount="2">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Common />
+    </Talisman>
+  </Object>
+  <Object type="0x555a" id="Talisman of Speed">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xd4</Index>
+    </Texture>
+    <Description>An taliman that improves agility.</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="22" amount="2">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Common />
+    </Talisman>
+  </Object>
+  <Object type="0x555b" id="Talisman of Dexterity">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xd5</Index>
+    </Texture>
+    <Description>An taliman that improves reflexes.</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="28" amount="2">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Common />
+    </Talisman>
+  </Object>
+  <Object type="0x555c" id="Talisman of Vitality">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xd6</Index>
+    </Texture>
+    <Description>An taliman that speeds up wound healing.</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="26" amount="2">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Common />
+    </Talisman>
+  </Object>
+  <Object type="0x555d" id="Talisman of Wisdom">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xd7</Index>
+    </Texture>
+    <Description>An taliman that speeds up mana absorption.</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Common />
+    </Talisman>
+  </Object>
+  <Object type="0x555e" id="Talisman of Empowerment">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xd8</Index>
+    </Texture>
+    <Description>An taliman that empowers its weilder</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="0" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="1">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="1">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="1">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="1">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="1">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="1">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Common />
+    </Talisman>
+  </Object>
+  <Object type="0x4949" id="Pocket Change">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x33</Index>
+    </Texture>
+    <Description>A talisman that grants the weilder more wealth</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="100">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Common />
+      <OnlyOne />
+      <Provides effect="Pocket Change" />
+    </Talisman>
+  </Object>
+  <Object type="0x40a" id="Path of Destruction">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x34</Index>
+    </Texture>
+    <Description>Whoever weild this talisman will lay destruction in their paths</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="20" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="10">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Common />
+      <OnlyOne />
+    </Talisman>
+  </Object>
+  <Object type="0x40b" id="Heart and Soul">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x35</Index>
+    </Texture>
+    <Description>A warrior will prevail</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="21" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="10">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Common />
+      <OnlyOne />
+    </Talisman>
+  </Object>
+  <Object type="0x407" id="Talisman of Unweakening">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x21</Index>
+    </Texture>
+    <Description>Whoever weilds this talisman will be unstoppable</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="0" amount="75">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="-10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Legendary />
+      <OnlyOne />
+      <Provides effect="Weak Immunity" />
+    </Talisman>
+  </Object>
+  <Object type="0x408" id="Call to Arms">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x22</Index>
+    </Texture>
+    <Description>A talisman given to those who are drafted.</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="20" amount="12">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="-10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="-10">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Legendary />
+      <OnlyOne />
+      <Provides effect="Call To Arms" />
+    </Talisman>
+  </Object>
+  <Object type="0x40d" id="Eternal Youth">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x11</Index>
+    </Texture>
+    <Description>Whoever wields this talisman will have vitality like no other</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="0" amount="125">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="15">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="-10">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Legendary />
+      <OnlyOne />
+    </Talisman>
+  </Object>
+  <Object type="0x40e" id="Unyielding Resilience">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x12</Index>
+    </Texture>
+    <Description>Whoever wields this talisman will have relislience like no other</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="20" amount="10">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="20">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="-10">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Legendary />
+      <OnlyOne />
+    </Talisman>
+  </Object>
+  <Object type="0x409" id="Divine Intellect">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x30</Index>
+    </Texture>
+    <Description>Wisdom comes to those who have intellect</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="0" amount="-100">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="26" amount="-5">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="20">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Legendary />
+      <OnlyOne />
+    </Talisman>
+  </Object>
+  <Object type="0x413" id="Party of One">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x41</Index>
+    </Texture>
+    <Description>Its said that misfortune occurs to the wielder when others are nearby</Description>
+    <SlotType>26</SlotType>
+    <BagType>10</BagType>
+    <Talisman>
+      <Legendary />
+      <OnlyOne />
+      <Provides effect="Party Of One" />
+    </Talisman>
+  </Object>
+  <Object type="0x415" id="Luck of the Irish">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x51</Index>
+    </Texture>
+    <Description>There is a legend that whoever wields this talisman is granted wealth beyond their wildest dreams</Description>
+    <SlotType>26</SlotType>
+    <BagType>10</BagType>
+    <Talisman>
+      <Mythical />
+      <OnlyOne />
+      <Provides effect="Luck Of The Irish" />
+    </Talisman>
+  </Object>
+  <Object type="0x416" id="Known After Death">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x50</Index>
+    </Texture>
+    <Description>This talisman will make you known after death as a legend</Description>
+    <SlotType>26</SlotType>
+    <BagType>10</BagType>
+    <Talisman>
+      <Mythical />
+      <OnlyOne />
+      <Provides effect="Known After Death" />
+    </Talisman>
+  </Object>
+  <Object type="0x494a" id="Hard Head">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x21</Index>
+    </Texture>
+    <Description></Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="0" amount="75">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="20" amount="-5">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="21" amount="5">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="22" amount="-5">IncrementStat</ActivateOnEquip>
+    <BagType>10</BagType>
+    <Talisman>
+      <Mythical />
+      <OnlyOne />
+      <Provides effect="Stun Immunity" />
+    </Talisman>
+  </Object>
   <Object type="0x01ce" id="Cave Wall">
     <Class>CaveWall</Class>
     <Texture>
@@ -94428,5 +94334,254 @@
     <EnemyOccupySquare />
     <BlocksSight />
     <DisplayId>LH Wall</DisplayId>
+  </Object>
+  <Object type="0x434a" id="Worn and Torn Bolas Projectile">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xE0</Index>
+    </Texture>
+    <Rotation>20</Rotation>
+  </Object>
+  <Object type="0x434c" id="Worn Bolas Projectile">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xE1</Index>
+    </Texture>
+    <Rotation>20</Rotation>
+  </Object>
+  <Object type="0x434d" id="Damaged Bolas Projectile">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xE2</Index>
+    </Texture>
+    <Rotation>20</Rotation>
+  </Object>
+  <Object type="0x434e" id="Bolas Projectile">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xE3</Index>
+    </Texture>
+    <Rotation>20</Rotation>
+  </Object>
+  <Object type="0x434f" id="Iron Bolas Projectile">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xE4</Index>
+    </Texture>
+    <Rotation>20</Rotation>
+  </Object>
+  <Object type="0x4350" id="Mithril Bolas Projectile">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xE5</Index>
+    </Texture>
+    <Rotation>20</Rotation>
+  </Object>
+  <Object type="0x4351" id="Obsidian Bolas Projectile">
+    <Class>Projectile</Class>
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xE6</Index>
+    </Texture>
+    <Rotation>20</Rotation>
+  </Object>
+  <Object type="0x4343" id="Worn and Torn Bolas">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xE0</Index>
+    </Texture>
+    <SlotType>27</SlotType>
+    <Tier>0</Tier>
+    <Description>A bolas that is on the edge of breaking</Description>
+    <Sound>spell/fire_spray</Sound>
+    <Projectile>
+      <ObjectId>Worn and Torn Bolas Projectile</ObjectId>
+      <Speed>150</Speed>
+      <MinDamage>25</MinDamage>
+      <MaxDamage>60</MaxDamage>
+      <LifetimeMS>800</LifetimeMS>
+      <Size>125</Size>
+      <PassesCover />
+    </Projectile>
+    <Usable />
+    <BagType>1</BagType>
+    <MpCost>50</MpCost>
+    <Activate>Shoot</Activate>
+  </Object>
+  <Object type="0x4344" id="Worn Bolas">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xE1</Index>
+    </Texture>
+    <SlotType>27</SlotType>
+    <Tier>1</Tier>
+    <Description>A bolas that has seen better days.</Description>
+    <Sound>spell/fire_spray</Sound>
+    <Projectile>
+      <ObjectId>Worn Bolas Projectile</ObjectId>
+      <Speed>150</Speed>
+      <MinDamage>60</MinDamage>
+      <MaxDamage>95</MaxDamage>
+      <LifetimeMS>800</LifetimeMS>
+      <Size>125</Size>
+      <PassesCover />
+      <ConditionEffect duration="2">Slowed</ConditionEffect>
+    </Projectile>
+    <ActivateOnEquip stat="28" amount="1">IncrementStat</ActivateOnEquip>
+    <Usable />
+    <BagType>1</BagType>
+    <MpCost>55</MpCost>
+    <Activate>Shoot</Activate>
+  </Object>
+  <Object type="0x4345" id="Damaged Bolas">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xE2</Index>
+    </Texture>
+    <SlotType>27</SlotType>
+    <Tier>2</Tier>
+    <Description>A well used bolas.</Description>
+    <Sound>spell/fire_spray</Sound>
+    <Projectile>
+      <ObjectId>Damaged Bolas Projectile</ObjectId>
+      <Speed>150</Speed>
+      <MinDamage>130</MinDamage>
+      <MaxDamage>165</MaxDamage>
+      <LifetimeMS>800</LifetimeMS>
+      <Size>125</Size>
+      <PassesCover />
+      <ConditionEffect duration="3">Slowed</ConditionEffect>
+    </Projectile>
+    <ActivateOnEquip stat="28" amount="2">IncrementStat</ActivateOnEquip>
+    <Usable />
+    <BagType>1</BagType>
+    <MpCost>60</MpCost>
+    <Activate>Shoot</Activate>
+  </Object>
+  <Object type="0x4346" id="Bolas">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xE3</Index>
+    </Texture>
+    <SlotType>27</SlotType>
+    <Tier>3</Tier>
+    <Description>A brand new bolas ready for action.</Description>
+    <Sound>spell/fire_spray</Sound>
+    <Projectile>
+      <ObjectId>Bolas Projectile</ObjectId>
+      <Speed>150</Speed>
+      <MinDamage>165</MinDamage>
+      <MaxDamage>200</MaxDamage>
+      <LifetimeMS>800</LifetimeMS>
+      <Size>125</Size>
+      <PassesCover />
+      <ConditionEffect duration="1">Paralyzed</ConditionEffect>
+    </Projectile>
+    <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
+    <Usable />
+    <BagType>2</BagType>
+    <FameBonus>1</FameBonus>
+    <MpCost>75</MpCost>
+    <Activate>Shoot</Activate>
+  </Object>
+  <Object type="0x4347" id="Iron Bolas">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xE4</Index>
+    </Texture>
+    <SlotType>27</SlotType>
+    <Tier>4</Tier>
+    <Description>A freshly forged bolas ready to deal some major damage.</Description>
+    <Sound>spell/fire_spray</Sound>
+    <Projectile>
+      <ObjectId>Iron Bolas Projectile</ObjectId>
+      <Speed>150</Speed>
+      <MinDamage>200</MinDamage>
+      <MaxDamage>235</MaxDamage>
+      <LifetimeMS>800</LifetimeMS>
+      <Size>125</Size>
+      <PassesCover />
+      <ConditionEffect duration="2">Paralyzed</ConditionEffect>
+    </Projectile>
+    <ActivateOnEquip stat="28" amount="4">IncrementStat</ActivateOnEquip>
+    <Usable />
+    <BagType>2</BagType>
+    <FameBonus>2</FameBonus>
+    <MpCost>95</MpCost>
+    <Activate>Shoot</Activate>
+  </Object>
+  <Object type="0x434b" id="Mithril Bolas">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xE5</Index>
+    </Texture>
+    <SlotType>27</SlotType>
+    <Tier>5</Tier>
+    <Description>A mithril forged bolas that is said to never break.</Description>
+    <Sound>spell/fire_spray</Sound>
+    <Projectile>
+      <ObjectId>Mithril Bolas Projectile</ObjectId>
+      <Speed>150</Speed>
+      <MinDamage>235</MinDamage>
+      <MaxDamage>270</MaxDamage>
+      <LifetimeMS>800</LifetimeMS>
+      <Size>125</Size>
+      <PassesCover />
+      <ConditionEffect duration="2.4">Paralyzed</ConditionEffect>
+    </Projectile>
+    <ActivateOnEquip stat="28" amount="5">IncrementStat</ActivateOnEquip>
+    <Usable />
+    <BagType>4</BagType>
+    <FameBonus>3</FameBonus>
+    <MpCost>100</MpCost>
+    <Activate>Shoot</Activate>
+  </Object>
+  <Object type="0x4349" id="Obsidian Bolas">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiObj6</File>
+      <Index>0xE6</Index>
+    </Texture>
+    <SlotType>27</SlotType>
+    <Tier>6</Tier>
+    <Description>A bolas forged from the heart of a volcano</Description>
+    <Sound>spell/fire_spray</Sound>
+    <Projectile>
+      <ObjectId>Obsidian Bolas Projectile</ObjectId>
+      <Speed>150</Speed>
+      <MinDamage>270</MinDamage>
+      <MaxDamage>305</MaxDamage>
+      <LifetimeMS>800</LifetimeMS>
+      <Size>125</Size>
+      <PassesCover />
+      <ConditionEffect duration="3">Paralyzed</ConditionEffect>
+    </Projectile>
+    <ActivateOnEquip stat="26" amount="2">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="28" amount="5">IncrementStat</ActivateOnEquip>
+    <Usable />
+    <BagType>4</BagType>
+    <FameBonus>4</FameBonus>
+    <MpCost>125</MpCost>
+    <Activate>Shoot</Activate>
   </Object>
 </Objects>

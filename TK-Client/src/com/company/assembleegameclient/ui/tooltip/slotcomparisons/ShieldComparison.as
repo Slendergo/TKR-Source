@@ -32,7 +32,7 @@ package com.company.assembleegameclient.ui.tooltip.slotcomparisons
          {
             tag = itemXML.ConditionEffect.(text() == "Armor Broken")[0];
             str = "Armor Broken for " + tag.@duration + " secs\n";
-            str = "Party Effect: " + wrapInColoredFont(str,UNTIERED_COLOR);
+            str = "Mob Damage Effect: " + wrapInColoredFont(str,UNTIERED_COLOR);
             comparisonText = comparisonText + str;
             processedTags[tag.toXMLString()] = str;
          }

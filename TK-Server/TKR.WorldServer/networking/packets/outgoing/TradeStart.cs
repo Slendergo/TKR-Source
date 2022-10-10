@@ -11,7 +11,7 @@ namespace TKR.WorldServer.networking.packets.outgoing
 
         public override MessageId MessageId => MessageId.TRADESTART;
 
-        protected override void Write(NWriter wtr)
+        public override void Write(NWriter wtr)
         {
             wtr.Write((short)MyItems.Length);
             foreach (var i in MyItems)

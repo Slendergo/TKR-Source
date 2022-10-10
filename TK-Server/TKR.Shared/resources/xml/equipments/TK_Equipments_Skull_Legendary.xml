@@ -19,7 +19,7 @@
     <Activate radius="3.5" totalDamage="175" healRange="4.2" heal="80" ignoreDef="40" wisMin="50" wisPerRad="10" color="4C4C4C" incrRad="0.8" wisDamageBase="50" condEffect="Curse" condDuration="4" useWisMod="true">VampireBlast</Activate>
     <Activate effect="Curse" duration="5" range="3" color="0x05c2b5" target="enemy" center="mouse" visualEffect="0" useWisMod="false">GenericActivate</Activate>
     <MpCost>100</MpCost>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <feedPower>1300</feedPower>
     <Legendary />
@@ -41,7 +41,7 @@
     <Activate effect="Armored" duration="3.5">ConditionEffectSelf</Activate>
     <Activate effect="Damaging" duration="2.5">ConditionEffectSelf</Activate>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <MpCost>150</MpCost>
     <Activate radius="5" totalDamage="250" color="0xFFFF0000" useWisMod="false">VampireBlast</Activate>
@@ -64,7 +64,7 @@
 		<ActivateOnEquip stat="26" amount="-10">IncrementStat</ActivateOnEquip>
 		<Activate effect="Speedy" duration="2.5">ConditionEffectSelf</Activate>
 		<Usable />
-		<BagType>7</BagType>
+		<BagType>8</BagType>
 		<FameBonus>7</FameBonus>
 		<MpCost>120</MpCost>
 		<Activate radius="6" totalDamage="310" color="0x7156340" useWisMod="false">VampireBlast</Activate>

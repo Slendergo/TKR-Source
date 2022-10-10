@@ -10,9 +10,9 @@ namespace TKR.WorldServer.logic
         private _ Mushroom = () => Behav()
         .Init("Mushroom",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.StasisImmune, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.StasisImmune, true),
                 new ScaleHP2(20),
-                new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                 new Spawn("Mushroom Anchor", 1, 1),
                 new State("Check Player",
                     new PlayerWithinTransition(15, "Start")
@@ -23,7 +23,7 @@ namespace TKR.WorldServer.logic
                     ),
                 new State("Start To Shoot",
                     new Taunt("Let the bacteria CONSUME YOU!"),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 0),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 0),
                     new TossObject2("Mushroom Bomb", 6, 0, coolDownOffset: 0, coolDown: 5000),
                     new TossObject2("Mushroom Bomb", 6, 72, coolDownOffset: 1000, coolDown: 5000),
                     new TossObject2("Mushroom Bomb", 6, 144, coolDownOffset: 2000, coolDown: 5000),
@@ -70,7 +70,7 @@ namespace TKR.WorldServer.logic
                     ),
                 new State("Spawn Minions",
                     new ReturnToSpawn(1, 20),                    
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
                     new TimedTransition(4000, "Spawn Minions 1")
                     ),
                 new State("Spawn Minions 1",
@@ -117,12 +117,12 @@ namespace TKR.WorldServer.logic
             )
         .Init("Mushroom Anchor",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible)
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible)
                 )
             )
         .Init("Mushroom Bomb",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                 new State("Start Follow Player",
                     new Flash(0xFF0000, 0.5, 5),
                     new TimedTransition(1500, "Explotes")

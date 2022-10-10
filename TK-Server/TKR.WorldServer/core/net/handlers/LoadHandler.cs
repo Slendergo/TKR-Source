@@ -41,7 +41,6 @@ namespace TKR.WorldServer.core.net.handlers
                 });
                 client.State = ProtocolState.Ready;
                 client.GameServer.ConnectionManager.ClientConnected(client);
-                //client.Player?.PlayerUpdate.SendUpdate();
             }
         }
     }

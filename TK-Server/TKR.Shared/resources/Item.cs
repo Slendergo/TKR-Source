@@ -19,7 +19,6 @@ namespace TKR.Shared.resources
         public string DisplayName;
         public int Doses;
         public bool Electrify;
-        public bool Eternal;
         public int FameBonus;
         public bool GodBless;
         public bool GodTouch;
@@ -47,7 +46,6 @@ namespace TKR.Shared.resources
         public int QuantityLimit;
         public float RateOfFire;
         public bool Resurrects;
-        public bool Revenge;
         public int SlotType;
         public bool SNormal;
         public bool SonicBlaster;
@@ -65,6 +63,7 @@ namespace TKR.Shared.resources
         public bool TypeOfConsumable;
         public bool Usable;
         public bool XpBoost;
+        public TalismanItemDesc TalismanItemDesc;
 
         public readonly bool DonorItem;
 
@@ -85,8 +84,6 @@ namespace TKR.Shared.resources
             Usable = e.HasElement("Usable");
             Maxy = e.HasElement("Maxy");
             Legendary = e.HasElement("Legendary");
-            Revenge = e.HasElement("Revenge");
-            Eternal = e.HasElement("Eternal");
             Mythical = e.HasElement("Mythical");
             Resurrects = e.HasElement("Resurrects");
             RateOfFire = e.GetValue<float>("RateOfFire");
@@ -155,6 +152,9 @@ namespace TKR.Shared.resources
             Clarification = e.HasElement("Clarification");
             SonicBlaster = e.HasElement("SonicBlaster");
             Vampiric = e.HasElement("Vampiric");
+
+            if (e.HasElement("Talisman", out var telem))
+                TalismanItemDesc = new TalismanItemDesc(telem);
         }
     }
 }

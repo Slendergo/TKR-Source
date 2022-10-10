@@ -16,7 +16,7 @@
 		<ActivateOnEquip stat="3" amount="75">IncrementStat</ActivateOnEquip>
 		<Activate effect="Damaging" duration="3.5">ConditionEffectSelf</Activate>
 		<Usable />
-		<BagType>8</BagType>
+		<BagType>9</BagType>
 		<FameBonus>7</FameBonus>
 		<MpCost>135</MpCost>
 		<Activate radius="3" totalDamage="1000" color="0xFFFF0000" useWisMod="true">VampireBlast</Activate>

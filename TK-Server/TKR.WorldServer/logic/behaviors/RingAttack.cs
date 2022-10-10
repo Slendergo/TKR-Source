@@ -88,25 +88,12 @@ namespace TKR.WorldServer.logic.behaviors
                     var dmg = Random.Next(desc.MinDamage + enemyClasified, desc.MaxDamage + enemyClasified);
                     var startAngle = angle * (count - 1) / 2;
 
-                    int prjId = 0;
-
                     var prjPos = new Position() { X = Host.X, Y = Host.Y };
-                    var prjs = new Projectile[count];
 
-                    for (var i = 0; i < count; i++)
-                    {
-                        var prj = Host.CreateProjectile(desc, Host.ObjectType, dmg, time.TotalElapsedMs, prjPos, (float)(startAngle + angle * i));
-
-                        Host.World.AddProjectile(prj);
-
-                        if (i == 0)
-                            prjId = prj.ProjectileId;
-
-                        prjs[i] = prj;
-                    }
-
+                    var prjId = Host.GetNextBulletId(count);
                     var pkt = new EnemyShoot()
                     {
+                        Spawned = Host.Spawned,
                         BulletId = prjId,
                         OwnerId = Host.Id,
                         StartingPos = prjPos,
@@ -114,7 +101,8 @@ namespace TKR.WorldServer.logic.behaviors
                         Damage = (short)dmg,
                         BulletType = (byte)desc.BulletType,
                         AngleInc = (float)angleInc,
-                        NumShots = (byte)count
+                        NumShots = (byte)count,
+                        ObjectType = Host.ObjectType
                     };
 
                     if (isQuest)

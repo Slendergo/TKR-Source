@@ -45,7 +45,6 @@ public class AssetLoader
       this.parseGroundFiles();
       this.parseObjectFiles();
       this.parseRegionFiles();
-      this.parseTalismans();
       Parameters.load();
        Emotes.load();
       //Music.load();
@@ -227,11 +226,6 @@ public class AssetLoader
    private function parseRegionFiles() : void
    {
       RegionLibrary.parseFromXML(XML(new EmbeddedData.RegionsCXML()));
-   }
-
-   private function parseTalismans() : void
-   {
-      TalismanLibrary.parseFromXML(XML(new EmbeddedData.TalismanCXML()));
    }
 }
 }

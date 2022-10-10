@@ -25,6 +25,7 @@ namespace TKR.WorldServer.core.net.handlers
 
             var player = client.Player;
 
+            player.HandleProjectileDetection(time, newX, newY, ref moveRecords);
             if (newX != -1 && newX != player.X || newY != -1 && newY != player.Y)
             {
                 if (!player.World.Map.Contains(newX, newY))
@@ -89,7 +90,7 @@ namespace TKR.WorldServer.core.net.handlers
                 //}
 
                 player.Move(newX, newY);
-                player.PlayerUpdate.UpdateTiles = true;
+                player.PlayerUpdate.UpdateTiles();
             }
 
             player.MoveReceived(tickTime, time, tickId);

@@ -9,6 +9,7 @@ using TKR.Shared.database.character;
 using TKR.WorldServer.core;
 using TKR.WorldServer.core.connection;
 using TKR.WorldServer.core.miscfile;
+using TKR.WorldServer.core.net;
 using TKR.WorldServer.core.objects;
 using TKR.WorldServer.core.worlds.logic;
 using TKR.WorldServer.networking.packets.outgoing;
@@ -106,7 +107,6 @@ namespace TKR.WorldServer.networking
                 return;
             }
 
-            Player.SaveTalismanData();
             Player.SaveToCharacter();
             acc.RefreshLastSeen();
             acc.FlushAsync();
@@ -129,8 +129,10 @@ namespace TKR.WorldServer.networking
             SendPacket(pkt);
         }
 
-        public void Disconnect(string reason = "")
+        public void Disconnect(string reason = "", bool forceShow = false)
         {
+            if(forceShow)
+                Log.Error("Disconnecting client ({0}) @ {1}... {2}", Account?.Name ?? " ", IpAddress, reason);
             if (State == ProtocolState.Disconnected)
                 return;
 
@@ -139,7 +141,7 @@ namespace TKR.WorldServer.networking
                 State = ProtocolState.Disconnected;
 
 #if DEBUG
-                if (!string.IsNullOrEmpty(reason))
+                if (!forceShow && !string.IsNullOrEmpty(reason))
                     Log.Warn("Disconnecting client ({0}) @ {1}... {2}", Account?.Name ?? " ", IpAddress, reason);
 #endif
 
@@ -173,5 +175,6 @@ namespace TKR.WorldServer.networking
 
             _handler.Reset();
         }
+
     }
 }

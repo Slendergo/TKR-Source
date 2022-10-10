@@ -19,7 +19,7 @@ namespace TKR.WorldServer.networking.packets.outgoing
             Angle = angle;
         }
 
-        protected override void Write(NWriter wtr)
+        public override void Write(NWriter wtr)
         {
             wtr.Write(BulletId);
             wtr.Write(OwnerId);

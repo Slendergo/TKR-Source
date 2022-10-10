@@ -11,7 +11,7 @@
     <SlotType>21</SlotType>
     <Description>This orb of ancient bloodstone has a dark reputation of twisting those who wield it.</Description>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <MpCost>100</MpCost>
 	  <ActivateOnEquip stat="22" amount="4">IncrementStat</ActivateOnEquip>
@@ -36,7 +36,7 @@
     <ActivateOnEquip stat="20" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="10">IncrementStat</ActivateOnEquip>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <MpCost>125</MpCost>
     <Activate effect="Curse" duration="8" range="5" color="0x808080" target="enemy" center="mouse" visualEffect="8" useWisMod="false">GenericActivate</Activate>
@@ -57,7 +57,7 @@
     <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="5">IncrementStat</ActivateOnEquip>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <MpCost>130</MpCost>
     <Activate effect="Paralyzed" duration="4.25" range="4" color="0xE9A92D" target="enemy" center="mouse" visualEffect="4" useWisMod="false">GenericActivate</Activate>
@@ -80,7 +80,7 @@
 		<ActivateOnEquip stat="28" amount="8">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="20" amount="8">IncrementStat</ActivateOnEquip>
 		<Usable />
-		<BagType>7</BagType>
+		<BagType>9</BagType>
 		<FameBonus>7</FameBonus>
 		<MpCost>150</MpCost>
 		<Activate effect="Curse" duration="8" range="5" color="0xE9A92D" target="enemy" center="mouse" visualEffect="4" useWisMod="false">GenericActivate</Activate>

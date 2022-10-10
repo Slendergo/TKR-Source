@@ -37,6 +37,7 @@ namespace TKR.WorldServer.core.commands
                 return true;
             }
         }
+
         internal class B : Command
         {
             public override RankingType RankRequirement => RankingType.Admin;

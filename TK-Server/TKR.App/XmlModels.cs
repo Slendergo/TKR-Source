@@ -384,7 +384,7 @@ namespace TKR.App
                 Exp = character.Experience,
                 CurrentFame = character.Fame,
                 Equipment = character.Items.Select(x => x == 0xFFFF ? -1 : x).ToArray(),
-                ItemData = GetJson(character.Datas ?? new ItemData[20]),
+                ItemData = GetJson(character.Datas ?? new ItemData[28]),
                 MaxHitPoints = character.Stats[0],
                 MaxMagicPoints = character.Stats[1],
                 Attack = character.Stats[2],
@@ -705,7 +705,7 @@ namespace TKR.App
                 Tex2 = character.Tex2,
                 Skin = character.Skin,
                 Equipment = character.Items,
-                ItemDatas = GetJson(character.Datas ?? new ItemData[20]),
+                ItemDatas = GetJson(character.Datas ?? new ItemData[28]),
                 TotalFame = death.TotalFame
             };
         }

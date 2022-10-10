@@ -127,12 +127,12 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(15000, "Shooting 3 Prepare")
                     ),
                 new State("Shooting 3 Prepare",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, duration: 500),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, duration: 500),
                     new ReturnToSpawn(1),
                     new TimedTransition(500, "Shooting 3")
                     ),
                 new State("Shooting 3",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, duration: 500),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, duration: 500),
                     new Shoot(15, 1, projectileIndex: 3, coolDown: 500),
                     new Shoot(15, 8, projectileIndex: 1, fixedAngle: 0, coolDown: 500),
                     new Shoot(15, 8, projectileIndex: 0, fixedAngle: 0, coolDown: 9200),
@@ -185,29 +185,29 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(.5, "Minions v1")
                     ),
                 new State("Minions v1",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 1100),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 1100),
                     new ChangeSize(-35, 0),
                     new TimedTransition(1100, "Minions v2")
                     ),
                 new State("Minions v2",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Spawn("DS Gulpord the Slime God M", 2, 1, 0, true),
                     new EntitiesNotExistsTransition(30, "Chase v1", "DS Gulpord the Slime God M", "DS Gulpord the Slime God S")
                     ),
                 new State("Chase v1",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new ChangeSize(35, 120),
                     new TimedTransition(1100, "Chase v2")
                     ),
                 new State("Chase v2",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Flash(0xFF0000, 0.5, 6),
                     new TimedTransition(1500, "Chase v3")
                     ),
                 new State("Chase v3",
-                    new ConditionalEffect(ConditionEffectIndex.StunImmune),
-                    new ConditionalEffect(ConditionEffectIndex.ParalyzeImmune),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 2000),
+                    new ConditionEffectBehavior(ConditionEffectIndex.StunImmune),
+                    new ConditionEffectBehavior(ConditionEffectIndex.ParalyzeImmune),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 2000),
                     new Follow(1, 15, 0),
                     new Shoot(15, 2, shootAngle: 25, projectileIndex: 0, coolDown: 100),
                     new Shoot(15, 8, fixedAngle: 0, projectileIndex: 2, coolDown: 500, coolDownOffset: 500),
@@ -261,7 +261,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(.15, "Back")
                     ),
                 new State("Back",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new ReturnToSpawn(0.5),
                     new TimedTransition(1000, "Suicide")
                     ),
@@ -315,7 +315,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("DS Brown Slime Trail",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new Shoot(1, 1, projectileIndex: 0, coolDown: 50),
                 new State("Start",
                     new TimedTransition(500, "Dissapear")
@@ -378,14 +378,14 @@ namespace TKR.WorldServer.logic
         .Init("DS Fly",
             new State(
                 new Wander(0.3),
-                new ConditionalEffect(ConditionEffectIndex.Invincible)
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible)
                 )
             )
         .Init("DS Golden Rat",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.StasisImmune),
-                new ConditionalEffect(ConditionEffectIndex.StunImmune),
-                new ConditionalEffect(ConditionEffectIndex.ParalyzeImmune),
+                new ConditionEffectBehavior(ConditionEffectIndex.StasisImmune),
+                new ConditionEffectBehavior(ConditionEffectIndex.StunImmune),
+                new ConditionEffectBehavior(ConditionEffectIndex.ParalyzeImmune),
                 new State("No player",
                     new Wander(0.6),
                     new PlayerWithinTransition(10, "Player")
@@ -454,7 +454,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("DS Yellow Slime Trail",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new Shoot(1, 1, projectileIndex: 0, coolDown: 50),
                 new State("Start",
                     new TimedTransition(500, "Dissapear")
@@ -475,8 +475,8 @@ namespace TKR.WorldServer.logic
 
         .Init("DS Master Rat",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
-                new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                 new State("Waiting player",
                     new PlayerWithinTransition(7, "Start")
                     ),

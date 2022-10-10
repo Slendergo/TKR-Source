@@ -2,6 +2,7 @@
 {
     public enum ActivateEffects
     {
+        None,
         Create,
         Dye,
         Shoot,
@@ -53,7 +54,7 @@
         ShurikenAbilityDamaging,
         ShurikenAbilityBerserk,
         GenericActivate,
-        UnlockTalisman,
-        FuelEngine
+        FuelEngine,
+        Bolas
     }
 }

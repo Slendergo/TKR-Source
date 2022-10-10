@@ -10,7 +10,7 @@ namespace TKR.WorldServer.networking.packets.outgoing
         public override MessageId MessageId => MessageId.TRADEACCEPTED;
 
 
-        protected override void Write(NWriter wtr)
+        public override void Write(NWriter wtr)
         {
             wtr.Write((short)MyOffer.Length);
             foreach (var i in MyOffer)

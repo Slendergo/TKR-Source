@@ -287,7 +287,7 @@
       <MaxDamage>130</MaxDamage>
       <LifetimeMS>450</LifetimeMS>
     </Projectile>
-    <BagType>8</BagType>
+    <BagType>9</BagType>
     <FameBonus>6</FameBonus>
     <OldSound>daggerSwing</OldSound>
     <feedPower>900</feedPower>

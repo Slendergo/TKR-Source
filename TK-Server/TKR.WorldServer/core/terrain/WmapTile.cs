@@ -134,11 +134,8 @@ namespace TKR.WorldServer.core.terrain
                 Stats = new ObjectStats()
                 {
                     Id = ObjId,
-                    Position = new Position()
-                    {
-                        X = x + 0.5f,
-                        Y = y + 0.5f
-                    },
+                    X = x + 0.5f,
+                    Y = y + 0.5f,
                     Stats = stats.ToArray()
                 }
             };

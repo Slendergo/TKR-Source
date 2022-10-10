@@ -18,7 +18,6 @@ namespace TKR.WorldServer.logic
 
         public DamageCounter Corpse { get; set; }
         public Player LastHitter { get; private set; }
-        public Projectile LastProjectile { get; private set; }
         public DamageCounter Parent { get; set; }
         public int TotalDamage { get; private set; }
 
@@ -118,7 +117,7 @@ namespace TKR.WorldServer.logic
             return dat.ToArray();
         }
 
-        public void HitBy(Player player, TickTime time, Projectile projectile, int dmg)
+        public void HitBy(Player player, int dmg)
         {
             var hitters = GetHitters();
             if (!hitters.TryGetValue(player, out int totalDmg))
@@ -128,15 +127,13 @@ namespace TKR.WorldServer.logic
             TotalDamage += trueDmg;
             hitters[player] = totalDmg + trueDmg;
 
-            LastProjectile = projectile;
             LastHitter = player;
 
-            player.FameCounter.Hit(projectile, Host);
+            player.FameCounter.Hit();
         }
 
         public void TransferData(DamageCounter dc)
         {
-            dc.LastProjectile = LastProjectile;
             dc.LastHitter = LastHitter;
             dc.TotalDamage = TotalDamage;
 

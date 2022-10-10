@@ -1,5 +1,7 @@
 package kabam.rotmg.account.web.view
 {
+import com.company.assembleegameclient.parameters.Parameters;
+
 import flash.net.URLRequest;
 import flash.net.navigateToURL;
 
@@ -61,9 +63,12 @@ import kabam.lib.tasks.Task;
       
       private function onRegister() : void
       {
-         navigateToURL(new URLRequest("https://tkr.gg/register"),"_blank");
-
-//         this.openDialog.dispatch(new WebRegisterDialog());
+         if(Parameters.TESTING_SERVER){
+            this.openDialog.dispatch(new WebRegisterDialog());
+         }
+         else{
+            navigateToURL(new URLRequest("https://tkr.gg/register"),"_blank");
+         }
       }
       
       private function onCancel() : void

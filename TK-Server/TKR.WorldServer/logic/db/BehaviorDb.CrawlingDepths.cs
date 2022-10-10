@@ -14,7 +14,7 @@ namespace TKR.WorldServer.logic
                 new DropPortalOnDeath("Realm Portal", 1, 0, 0, 0, 120),
                 new EntitiesNotExistsTransition(50, "Attack 2", "Yellow Son of Arachna Giant Egg Sac", "Blue Son of Arachna Giant Egg Sac", "Red Son of Arachna Giant Egg Sac", "Silver Son of Arachna Giant Egg Sac"),
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                     new PlayerWithinTransition(9, "MakeWeb")
                     ),
                 new State("MakeWeb",
@@ -244,27 +244,27 @@ namespace TKR.WorldServer.logic
             )
         .Init("Silver Egg Summoner",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible)
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible)
                 )
             )
         .Init("Yellow Egg Summoner",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible)
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible)
                 )
             )
         .Init("Red Egg Summoner",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible)
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible)
                 )
             )
         .Init("Blue Egg Summoner",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible)
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible)
                 )
             )
         .Init("Epic Arachna Web Spoke 1",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                 new Shoot(200, count: 1, fixedAngle: 180, coolDown: 150),
                 new Shoot(200, count: 1, fixedAngle: 120, coolDown: 150),
                 new Shoot(200, count: 1, fixedAngle: 240, coolDown: 150)
@@ -272,7 +272,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Epic Arachna Web Spoke 2",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                 new Shoot(200, count: 1, fixedAngle: 240, coolDown: 150),
                 new Shoot(200, count: 1, fixedAngle: 180, coolDown: 150),
                 new Shoot(200, count: 1, fixedAngle: 300, coolDown: 150)
@@ -280,7 +280,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Epic Arachna Web Spoke 3",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                 new Shoot(200, count: 1, fixedAngle: 300, coolDown: 150),
                 new Shoot(200, count: 1, fixedAngle: 240, coolDown: 150),
                 new Shoot(200, count: 1, fixedAngle: 0, coolDown: 150)
@@ -288,7 +288,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Epic Arachna Web Spoke 4",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                 new Shoot(200, count: 1, fixedAngle: 0, coolDown: 150),
                 new Shoot(200, count: 1, fixedAngle: 60, coolDown: 150),
                 new Shoot(200, count: 1, fixedAngle: 300, coolDown: 150)
@@ -296,7 +296,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Epic Arachna Web Spoke 5",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                 new Shoot(200, count: 1, fixedAngle: 60, coolDown: 150),
                 new Shoot(200, count: 1, fixedAngle: 0, coolDown: 150),
                 new Shoot(200, count: 1, fixedAngle: 120, coolDown: 150)
@@ -304,7 +304,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Epic Arachna Web Spoke 6",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                 new Shoot(200, count: 1, fixedAngle: 120, coolDown: 150),
                 new Shoot(200, count: 1, fixedAngle: 60, coolDown: 150),
                 new Shoot(200, count: 1, fixedAngle: 180, coolDown: 150)
@@ -312,7 +312,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Epic Arachna Web Spoke 7",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                 new Shoot(200, count: 1, fixedAngle: 180, coolDown: 150),
                 new Shoot(200, count: 1, fixedAngle: 120, coolDown: 150),
                 new Shoot(200, count: 1, fixedAngle: 240, coolDown: 150)
@@ -320,7 +320,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Epic Arachna Web Spoke 8",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                 new Shoot(200, count: 1, fixedAngle: 360, coolDown: 150),
                 new Shoot(200, count: 1, fixedAngle: 240, coolDown: 150),
                 new Shoot(200, count: 1, fixedAngle: 300, coolDown: 150)
@@ -328,7 +328,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Epic Arachna Web Spoke 9",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                 new Shoot(200, count: 1, fixedAngle: 0, coolDown: 150),
                 new Shoot(200, count: 1, fixedAngle: 60, coolDown: 150),
                 new Shoot(200, count: 1, fixedAngle: 120, coolDown: 150)

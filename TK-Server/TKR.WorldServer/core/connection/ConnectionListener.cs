@@ -1,14 +1,9 @@
-﻿using TKR.Shared.database;
-using System;
-using System.Collections.Concurrent;
+﻿using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
-using TKR.WorldServer.core;
 using TKR.WorldServer.networking;
-using TKR.WorldServer.networking.packets.outgoing;
 using TKR.WorldServer.utils;
-using TKR.WorldServer.networking.packets;
 
 namespace TKR.WorldServer.core.connection
 {
@@ -21,26 +16,17 @@ namespace TKR.WorldServer.core.connection
         public int BytesAvailable;
         public int BytesSent;
         public byte[] Data;
-        public ConcurrentQueue<OutgoingMessage> Pending;
 
         public SendToken(int offset)
         {
             BufferOffset = offset;
             Data = new byte[0x100000];
-            Pending = new ConcurrentQueue<OutgoingMessage>();
         }
 
         public void Reset()
         {
             BytesAvailable = 0;
             BytesSent = 0;
-        }
-
-        public void Clear()
-        {
-            BytesAvailable = 0;
-            BytesSent = 0;
-            Pending = new ConcurrentQueue<OutgoingMessage>();
         }
     }
 
@@ -75,7 +61,6 @@ namespace TKR.WorldServer.core.connection
         {
             if (BytesRead < PrefixLength)
                 throw new Exception("Packet id not read yet.");
-
             return (MessageId)PacketBytes[4];
         }
 

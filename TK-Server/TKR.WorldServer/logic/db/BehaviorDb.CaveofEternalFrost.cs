@@ -21,7 +21,7 @@ namespace TKR.WorldServer.logic
         .Init("Snowball Roll",
             new State(
                 new SetAltTexture(0, 3, 100, true),
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Move",
                     new Shoot(20, 1, projectileIndex: 0, coolDown: 200),
                     new MoveLine(1, 90),
@@ -35,7 +35,7 @@ namespace TKR.WorldServer.logic
         .Init("Snowball Roll 1",
             new State(
                 new SetAltTexture(0, 3, 100, true),
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Move",
                     new Shoot(20, 1, projectileIndex: 0, coolDown: 200),
                     new MoveLine(1, 180),
@@ -49,7 +49,7 @@ namespace TKR.WorldServer.logic
         .Init("Snowball Roll 2",
             new State(
                 new SetAltTexture(0, 3, 100, true),
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Move",
                     new Shoot(20, 1, projectileIndex: 0, coolDown: 200),
                     new MoveLine(1, 270),
@@ -63,7 +63,7 @@ namespace TKR.WorldServer.logic
         .Init("Snowball Roll 3",
             new State(
                 new SetAltTexture(0, 3, 100, true),
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Move",
                     new Shoot(20, 1, projectileIndex: 0, coolDown: 200),
                     new MoveLine(1, 0),
@@ -77,7 +77,7 @@ namespace TKR.WorldServer.logic
         .Init("Snowball Roll 4",
             new State(
                 new SetAltTexture(0, 3, 100, true),
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Move",
                     new Shoot(20, 1, projectileIndex: 0, coolDown: 200),
                     new MoveLine(1, 45),
@@ -91,7 +91,7 @@ namespace TKR.WorldServer.logic
         .Init("Snowball Roll 5",
             new State(
                 new SetAltTexture(0, 3, 100, true),
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Move",
                     new Shoot(20, 1, projectileIndex: 0, coolDown: 200),
                     new MoveLine(1, 135),
@@ -105,7 +105,7 @@ namespace TKR.WorldServer.logic
         .Init("Snowball Roll 6",
             new State(
                 new SetAltTexture(0, 3, 100, true),
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Move",
                     new Shoot(20, 1, projectileIndex: 0, coolDown: 200),
                     new MoveLine(1, 225),
@@ -119,7 +119,7 @@ namespace TKR.WorldServer.logic
         .Init("Snowball Roll 7",
             new State(
                 new SetAltTexture(0, 3, 100, true),
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Move",
                     new Shoot(20, 1, projectileIndex: 0, coolDown: 200),
                     new MoveLine(1, 315),
@@ -132,7 +132,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Snowball Spawner",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Check Player",
                     new PlayerWithinTransition(100, "Start")
                     ),
@@ -148,7 +148,7 @@ namespace TKR.WorldServer.logic
                     new EntitiesNotExistsTransition(25, "die", "Corrupt Snowman Switch")
                     ),
                 new State("idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("die",
                     new Suicide()
@@ -158,7 +158,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Snowball Spawner TP",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Check Player",
                     new PlayerWithinTransition(100, "Start")
                     ),
@@ -172,7 +172,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Snowball Spawner BT",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Check Player",
                     new PlayerWithinTransition(100, "Start")
                     ),
@@ -186,7 +186,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Snowball Spawner LF",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Check Player",
                     new PlayerWithinTransition(100, "Start")
                     ),
@@ -201,7 +201,7 @@ namespace TKR.WorldServer.logic
         .Init("Ice Wall Spawner",
             new State(
                 new State("idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("Fire",
                     new Spawn("Ice Cave Wall", 1, 1, coolDown: 999999),
@@ -220,7 +220,7 @@ namespace TKR.WorldServer.logic
             new State(
                 new State("idle",
                     new EntityNotExistsTransition("Cursed Snowman Switch", 30, "dead"),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("dead",
                     new Suicide()
@@ -230,7 +230,7 @@ namespace TKR.WorldServer.logic
         .Init("Water Creator",
             new State(
                 new State("idl",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("idle",
                     new Orbit(1, 8, 15, "Cursed Snowman Switch", speedVariance: 0, radiusVariance: 0),
@@ -241,7 +241,7 @@ namespace TKR.WorldServer.logic
         .Init("Water Creator 1",
             new State(
                 new State("idl",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("idle",
                     new Orbit(2, 8, 15, "Cursed Snowman Switch", speedVariance: 0, radiusVariance: 0),
@@ -252,7 +252,7 @@ namespace TKR.WorldServer.logic
         .Init("Water Creator 2",
             new State(
                 new State("idl",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("idle",
                     new Orbit(1, 8, 15, "Cursed Snowman Switch", speedVariance: 0, radiusVariance: 0),
@@ -263,7 +263,7 @@ namespace TKR.WorldServer.logic
         .Init("Water Creator 3",
             new State(
                 new State("idl",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("idle",
                     new Orbit(2, 8, 15, "Cursed Snowman Switch", speedVariance: 0, radiusVariance: 0),
@@ -304,7 +304,7 @@ namespace TKR.WorldServer.logic
         .Init("Dungeon Snowy Turret",
             new State(
                 new State("idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new PlayerWithinTransition(10, "Shoot", true)
                     ),
                 new State("Shoot",
@@ -316,7 +316,7 @@ namespace TKR.WorldServer.logic
         .Init("Snowy Turret",
             new State(
                 new State("Shoot",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new Shoot(8, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 0),
                     new Shoot(8, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1000),
                     new TimedTransition(1200, "die")
@@ -329,7 +329,7 @@ namespace TKR.WorldServer.logic
         .Init("Snowy Turret 1",
             new State(
                 new State("Shoot",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new Shoot(8, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 0),
                     new Shoot(8, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1000),
                     new TimedTransition(1200, "die")
@@ -342,7 +342,7 @@ namespace TKR.WorldServer.logic
         .Init("Snowy Turret 2",
             new State(
                 new State("Shoot",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new Shoot(8, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 0),
                     new Shoot(8, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1000),
                     new TimedTransition(1200, "die")
@@ -355,7 +355,7 @@ namespace TKR.WorldServer.logic
         .Init("Snowy Turret 3",
             new State(
                 new State("Shoot",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new Shoot(8, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 0),
                     new Shoot(8, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1000),
                     new TimedTransition(1200, "die")
@@ -368,7 +368,7 @@ namespace TKR.WorldServer.logic
         .Init("Snowy Turret 4",
             new State(
                 new State("Shoot",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new Shoot(8, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 0),
                     new Shoot(8, 1, projectileIndex: 1, coolDown: 2000, coolDownOffset: 1000),
                     new TimedTransition(1200, "die")
@@ -381,7 +381,7 @@ namespace TKR.WorldServer.logic
         .Init("Snowy Turret Toss",
             new State(
                 new State("Check",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("Shoot",
                     new InvisiToss("Snowy Turret", 3, angle: 0, coolDown: 2800, coolDownOffset: 0),
@@ -411,7 +411,7 @@ namespace TKR.WorldServer.logic
                 new ScaleHP2(35),
                 new DropPortalOnDeath("Cave of Eternal Frost Portal", 0.8),
                 new State("Check",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new PlayerWithinTransition(8, "Remove1")
                     ),
                 new State("Remove1",
@@ -487,7 +487,7 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new PlayerWithinTransition(10, "prepattack")
                     ),
                  new State("prepattack",
@@ -690,11 +690,11 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(30),
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
                     new PlayerWithinTransition(20, "prepare")
                     ),
                 new State("prepare",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
                     new TimedTransition(5000, "attack")
                     ),
                 new State("attack")
@@ -734,13 +734,13 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, false),
                     new PlayerWithinTransition(20, "prepare")
                     ),
                 new State("prepare",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, false),
                     new Flash(0xCC1A1A, 0.5, 12),
                     new TossObject("Queen of Ice Clone", 12, 45, coolDown: 999999),
                     new TossObject("Queen of Ice Clone 2", 12, 135, coolDown: 999999),
@@ -750,7 +750,7 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(5000, "scream")
                     ),
                 new State("scream",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
                     new Shoot(12, 3, projectileIndex: 1, shootAngle: 15, coolDown: 4000, coolDownOffset: 0),
                     new Shoot(12, 5, projectileIndex: 5, shootAngle: 15, coolDown: 4000, coolDownOffset: 0),
                     new Shoot(12, 7, projectileIndex: 6, shootAngle: 15, coolDown: 4000, coolDownOffset: 0),
@@ -786,7 +786,7 @@ namespace TKR.WorldServer.logic
                     ),
                 new State("Protection",
                     new ReturnToSpawn(3, 0),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
                     new Taunt("Guardians! Protect me!"),
                     new OrderOnce(30, "Evil Snowman", "attack2"),
                     new TossObject("Ice Tower", 8, angle: 0, coolDown: 999999),
@@ -798,7 +798,7 @@ namespace TKR.WorldServer.logic
                     new EntityExistsTransition("Ice Tower", 10, "waiting")
                     ),
                 new State("waiting",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, false),
                     //new Shoot(12, 2, projectileIndex: 1, shootAngle: 15, predictive: .4, coolDown: 400),
                     //new Shoot(12, 3, projectileIndex: 0, shootAngle: 20, fixedAngle: 0, coolDown: 200),
                     //new Shoot(12, 2, projectileIndex: 0, shootAngle: 21, fixedAngle: 60, coolDown: 200),
@@ -810,7 +810,7 @@ namespace TKR.WorldServer.logic
                     new EntitiesNotExistsTransition(100, "tentacles", "Ice Tower", "Ice Tower 1", "Ice Tower 2", "Ice Tower 3", "Ice Tower 4", "Ice Tower 5")
                     ),
                 new State("tentacles",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, false),
                     new TimedTransition(1000, "tentacles2")
                     ),
                 new State("tentacles2",
@@ -818,7 +818,7 @@ namespace TKR.WorldServer.logic
                     new OrderOnce(30, "Queen of Ice Clone 2", "idle"),
                     new OrderOnce(30, "Queen of Ice Clone 3", "idle"),
                     new OrderOnce(30, "Queen of Ice Clone 4", "idle"),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, false),
                     new Shoot(20, 4, shootAngle: 12, projectileIndex: 3, coolDown: 800),
                     new Shoot(30, 5, projectileIndex: 2, fixedAngle: 0, coolDown: 3700, rotateAngle: 3, coolDownOffset: 100),
                     new Shoot(30, 5, projectileIndex: 2, fixedAngle: 5, coolDown: 3700, rotateAngle: 3, coolDownOffset: 200),
@@ -862,7 +862,7 @@ namespace TKR.WorldServer.logic
                     ),
                 new State("scream2",
                     new RemoveEntity(20, "Evil Snowman"),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, false),
                     new Taunt("ARHHHHH"),
                     new Flash(0x5279FD, 0.5, 12),
                     new ChangeSize(5, 200),
@@ -890,7 +890,7 @@ namespace TKR.WorldServer.logic
                     new InvisiToss("Evil Snowman", 6, 240, coolDown: 999999),
                     new InvisiToss("Evil Snowman", 6, 300, coolDown: 999999),
                     new InvisiToss("Evil Snowman", 6, 360, coolDown: 999999),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
                     new TimedTransition(1000, "attack2")
                     ),
                 new State("attack2",
@@ -990,7 +990,7 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(400, "attack2")
                     ),
                 new State("guards2",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
                     new Taunt("Guardians! Protect me!"),
                     new OrderOnce(30, "Queen of Ice Clone", "attack"),
                     new OrderOnce(30, "Queen of Ice Clone 2", "attack"),
@@ -1006,16 +1006,16 @@ namespace TKR.WorldServer.logic
                     ),
                 new State("waiting2",
                     new Shoot(10, 6, projectileIndex: 4, coolDown: 400),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
                     new EntitiesNotExistsTransition(100, "attack4", "Ice Tower", "Ice Tower 1", "Ice Tower 2", "Ice Tower 3", "Ice Tower 4", "Ice Tower 5")
                     ),
                 new State("attack4",
-                    new GroundTransform("lava", relativeX: +10, relativeY: +10, persist: false),
-                    new GroundTransform("lava", relativeX: +11, relativeY: +11, persist: false),
-                    new GroundTransform("lava", relativeX: +12, relativeY: +12, persist: false),
-                    new GroundTransform("lava", relativeX: -10, relativeY: -10, persist: false),
-                    new GroundTransform("lava", relativeX: -11, relativeY: -11, persist: false),
-                    new GroundTransform("lava", relativeX: -12, relativeY: -12, persist: false),
+                    new GroundTransform("Lava", relativeX: +10, relativeY: +10, persist: false),
+                    new GroundTransform("Lava", relativeX: +11, relativeY: +11, persist: false),
+                    new GroundTransform("Lava", relativeX: +12, relativeY: +12, persist: false),
+                    new GroundTransform("Lava", relativeX: -10, relativeY: -10, persist: false),
+                    new GroundTransform("Lava", relativeX: -11, relativeY: -11, persist: false),
+                    new GroundTransform("Lava", relativeX: -12, relativeY: -12, persist: false),
                     new Grenade(radius: 4, damage: 40, range: 7, fixedAngle: 0, coolDown: 2000, effect: ConditionEffectIndex.Paralyzed, effectDuration: 500, color: 0x5279FD),
                     new Grenade(radius: 4, damage: 40, range: 7, fixedAngle: 90, coolDown: 2000, effect: ConditionEffectIndex.Paralyzed, effectDuration: 500, color: 0x5279FD),
                     new Grenade(radius: 4, damage: 40, range: 7, fixedAngle: 180, coolDown: 2000, effect: ConditionEffectIndex.Paralyzed, effectDuration: 500, color: 0x5279FD),
@@ -1054,7 +1054,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(.25, "attack5")
                     ),
                 new State("attack5",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
                     new ChangeSize(5, 140),
                     new TimedTransition(5000, "attack5.1")
                     ),
@@ -1064,18 +1064,18 @@ namespace TKR.WorldServer.logic
                     new EntityExistsTransition("Guardian of the Ice Queen", 10, "waiting3")
                     ),
                 new State("waiting3",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
                     new EntitiesNotExistsTransition(100, "dead", "Guardian of the Ice Queen", "Protector of the Ice Queen")
                     ),
                 new State("dead",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, false),
                     new Taunt("NOOOOO!"),
                     new TimedTransition(5000, "dead1")
                     ),
                 new State("dead1",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, false),
                     new Shoot(15, 30, projectileIndex: 0, shootAngle: 12, coolDown: 5000),
                     new TimedTransition(200, "suicide")
                     ),
@@ -1106,7 +1106,7 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("Idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new PlayerWithinTransition(20, "prepare")
                     ),
                 new State("prepare",
@@ -1180,7 +1180,7 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new PlayerWithinTransition(20, "prepare")
                     ),
                 new State("prepare",
@@ -1227,7 +1227,7 @@ namespace TKR.WorldServer.logic
                     ),
                 new State("rage",
                     new ReplaceTile("Black Water Frozen", "Black Water Frozen 1", 30),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, false),
                     new Shoot(18, 4, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 800),
                     new Shoot(16, 6, shootAngle: 10, projectileIndex: 1, coolDown: 1000),
                     new TossObject("Frozen Tower", 8, 45, coolDown: 999999),
@@ -1274,7 +1274,7 @@ namespace TKR.WorldServer.logic
                     ),
                 new State("granted",
                     new ReturnToSpawn(3),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, false),
                     new Taunt("NOOOO"),
                     new Shoot(20, 30, projectileIndex: 0, coolDown: 5000),
                     new Suicide()
@@ -1305,11 +1305,11 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("prepare",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
                     new PlayerWithinTransition(20, "prepareattack1")
                     ),
                 new State("prepareattack1",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
                     new Taunt("I will sacrifice my life for you my Queen!"),
                     new ChangeSize(2, 180),
                     new TimedTransition(10000, "attack1")
@@ -1324,7 +1324,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(.6, "prepareattack2")
                     ),
                 new State("prepareattack2",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
                     new ReturnToSpawn(1.3, 0),
                     new Taunt("YOU NEED TO DIE!"),
                     new Flash(0xCC1A1A, 0.5, 12),
@@ -1352,7 +1352,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(.3, "prepareattack3")
                     ),
                 new State("prepareattack3",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
                     new Taunt("THAT'S IT!!"),
                     new TimedTransition(3000, "attack3")
                     ),
@@ -1369,20 +1369,20 @@ namespace TKR.WorldServer.logic
         .Init("Protector of the Ice Queen",
             new State(
                 new ScaleHP2(20),
-                new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
                 new State("wait",
                     new EntityExistsTransition("Guardian of the Ice Queen", 10, "waiting")
                     ),
                 new State("waiting",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
                     new EntitiesNotExistsTransition(100, "prepare", "Guardian of the Ice Queen")
                     ),
                 new State("prepare",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
                     new PlayerWithinTransition(20, "prepareattack1")
                     ),
                 new State("prepareattack1",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false),
                     new Taunt("I will protect you with my LIFE! NOW DIE"),
                     new ChangeSize(2, 180),
                     new TimedTransition(10000, "attack1")
@@ -1418,7 +1418,7 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible)
                     ),
                 new State("attack",
                 new Shoot(10, 1, projectileIndex: 0, fixedAngle: 225, coolDown: 1500, coolDownOffset: 0),
@@ -1435,7 +1435,7 @@ namespace TKR.WorldServer.logic
            new State(
                 new ScaleHP2(20),
                 new State("idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible)
                     ),
                 new State("attack",
                 new Shoot(10, 1, projectileIndex: 0, fixedAngle: 315, coolDown: 1500, coolDownOffset: 0),
@@ -1452,7 +1452,7 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible)
                     ),
                 new State("attack",
                 new Shoot(10, 1, projectileIndex: 0, fixedAngle: 45, coolDown: 1500, coolDownOffset: 0),
@@ -1469,7 +1469,7 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible)
                     ),
                 new State("attack",
                 new Shoot(10, 1, projectileIndex: 0, fixedAngle: 135, coolDown: 1500, coolDownOffset: 0),
@@ -1490,7 +1490,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.05, "explode")
                     ),
                 new State("explode",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new Flash(0xFFFFF, 0.5, 12),
                     new TimedTransition(1500, "die")
                     ),
@@ -1548,7 +1548,7 @@ namespace TKR.WorldServer.logic
                     new Shoot(8, 3, shootAngle: 10, projectileIndex: 0, predictive: 0.8, coolDown: 400)
                     ),
                 new State("attack2",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new Orbit(3, 6, 10, "Queen of Ice", speedVariance: 0, radiusVariance: 0),
                     new Shoot(12, 3, shootAngle: 10, projectileIndex: 0, predictive: 0.8, coolDown: 400),
                     new EntityExistsTransition("Queen of Ice", 20, "die")
@@ -1584,7 +1584,7 @@ namespace TKR.WorldServer.logic
                 new State("attack1",
                     new Wander(.25),
                     new Spawn("Evil Snowman", coolDown: 999999),
-                    new Shoot(20, 2, projectileIndex: 0, shootAngle: 5, predictive: .9, coolDown: 600),
+                    new Shoot(20, 1, projectileIndex: 0, shootAngle: 10, coolDown: 600),
                     new Shoot(15, 8, projectileIndex: 1, predictive: 1, coolDown: 1200)
                     )
                 )
@@ -1593,7 +1593,7 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("within",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new PlayerWithinTransition(15, "explodeprep")
                     ),
                 new State("explodeprep",                  

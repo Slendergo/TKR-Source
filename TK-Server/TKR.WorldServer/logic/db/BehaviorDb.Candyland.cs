@@ -2,6 +2,7 @@
 using TKR.WorldServer.logic.behaviors;
 using TKR.WorldServer.logic.loot;
 using TKR.WorldServer.logic.transitions;
+using TKR.WorldServer.logic.behaviors.@new.movements;
 
 namespace TKR.WorldServer.logic
 {
@@ -13,7 +14,7 @@ namespace TKR.WorldServer.logic
                 new ScaleHP2(20),
                  new State("IniPrepare1",
                     new PlayerWithinTransition(15, "IniPrepare"),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, false)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, false)
                     ),
                  new State("IniPrepare",
                      new Shoot(15, 3, projectileIndex: 0, shootAngle: 15, coolDown: 400, predictive: 1.4),
@@ -131,13 +132,13 @@ namespace TKR.WorldServer.logic
             )
         .Init("Candy Gumball Machine",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new State("flash",
                     new Flash(0xCC1A1A, 0.5, 12),
                     new TimedTransition(2000, "fire")
                     ),
                 new State("fire",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new Shoot(radius: 15, count: 8, projectileIndex: 0, coolDown: 2000),
                     new TimedTransition(100, "Suicide")
                     ),
@@ -148,9 +149,9 @@ namespace TKR.WorldServer.logic
             )
          .Init("CLand Spike",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new State("fire",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new Shoot(radius: 15, count: 1, projectileIndex: 0, coolDown: 2000),
                     new TimedTransition(250, "Suicide")
                     ),
@@ -162,7 +163,7 @@ namespace TKR.WorldServer.logic
         .Init("CLand Spike Spawner",
             new State(
                 new State("idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("fire",
                     new Spawn("CLand Spike", 1, 1, coolDown: 99999, givesNoXp: true),
@@ -176,7 +177,7 @@ namespace TKR.WorldServer.logic
         .Init("CLand Spike Spawner 1",
             new State(
                 new State("idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("fire",
                     new Spawn("CLand Spike", 1, 1, coolDown: 99999, givesNoXp: true),
@@ -190,7 +191,7 @@ namespace TKR.WorldServer.logic
         .Init("CLand Spike Spawner 2",
             new State(
                 new State("idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("fire",
                     new Spawn("CLand Spike", 1, 1, coolDown: 99999, givesNoXp: true),
@@ -204,7 +205,7 @@ namespace TKR.WorldServer.logic
         .Init("CLand Spike Spawner 3",
             new State(
                 new State("idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("fire",
                     new Spawn("CLand Spike", 1, 1, coolDown: 99999, givesNoXp: true),
@@ -218,7 +219,7 @@ namespace TKR.WorldServer.logic
         .Init("CLand Spike Spawner 4",
             new State(
                 new State("idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("fire",
                     new Spawn("CLand Spike", 1, 1, coolDown: 99999, givesNoXp: true),
@@ -232,7 +233,7 @@ namespace TKR.WorldServer.logic
         .Init("CLand Spike Spawner 5",
             new State(
                 new State("idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("fire",
                     new Spawn("CLand Spike", 1, 1, coolDown: 99999, givesNoXp: true),
@@ -510,7 +511,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Candyland Boss Spawner",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new State("Ini",
                     new NoPlayerWithinTransition(dist: 16, targetState: "Ini2")
                     ),
@@ -623,7 +624,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Butterfly",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new StayCloseToSpawn(speed: 0.3, range: 6),
                 new State("Moving",
                     new Wander(speed: 0.25),

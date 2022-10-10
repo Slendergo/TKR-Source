@@ -2,6 +2,8 @@
 using TKR.WorldServer.logic.behaviors;
 using TKR.WorldServer.logic.loot;
 using TKR.WorldServer.logic.transitions;
+using TKR.WorldServer.logic.behaviors.@new.movements;
+using TKR.WorldServer.logic.behaviors.@new;
 
 namespace TKR.WorldServer.logic
 {
@@ -61,7 +63,7 @@ namespace TKR.WorldServer.logic
                 new State("StartBreak",
                     new Taunt("You cracked the crystal! Soon we shall emerge!"),
                     new ChangeSize(-2, 80),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Flash(0xff000000, 2, 10),
                     new TimedTransition(4000, "BreakCrystal")
                     ),
@@ -79,18 +81,18 @@ namespace TKR.WorldServer.logic
                 new DropPortalOnDeath("Deadwater Docks", 1),
                 new Spawn("Crystal Prisoner Steed", maxChildren: 3, initialSpawn: 0, coolDown: 200, givesNoXp: false),
                 new State("pause",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new TimedTransition(2000, "start_the_fun")
                     ),
                 new State("start_the_fun",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Taunt("I'm finally free! Yesss!!!"),
                     new TimedTransition(1500, "Daisy_attack")
                     ),
                 new State("Daisy_attack",
-                    new Prioritize(
-                        new StayCloseToSpawn(1, range: 7),
-                        new Wander(1)
+                    new StayCloseToSpawn(1, range: 7),
+                    new OrderedBehavior(
+                        new NewWander(0.4)
                         ),
                     new State("Quadforce1",
                         new Shoot(10, projectileIndex: 0, count: 4, shootAngle: 90, fixedAngle: 0, coolDown: 300),
@@ -129,19 +131,19 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(18000, "Warning")
                     ),
                 new State("Warning",
-                    new Prioritize(
-                        new StayCloseToSpawn(0.5, range: 7),
-                        new Wander(1)
+                    new StayCloseToSpawn(0.5, range: 7),
+                    new OrderedBehavior(
+                        new NewWander(0.4)
                         ),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Flash(0xff00ff00, 0.2, 15),
                     new Follow(2, acquireRange: 9, range: 2),
                     new TimedTransition(3000, "Summon_the_clones")
                     ),
                 new State("Summon_the_clones",
-                    new Prioritize(
-                        new StayCloseToSpawn(1, range: 7),
-                        new Wander(1)
+                    new StayCloseToSpawn(1, range: 7),
+                    new OrderedBehavior(
+                        new NewWander(0.4)
                         ),
                     new Shoot(10, projectileIndex: 0, coolDown: 1000),
                     new Spawn("Crystal Prisoner Clone", maxChildren: 4, initialSpawn: 0, coolDown: 200),
@@ -150,7 +152,7 @@ namespace TKR.WorldServer.logic
                     new TossObject("Crystal Prisoner Clone", range: 7, angle: 60, coolDown: 100000),
                     new TossObject("Crystal Prisoner Clone", range: 7, angle: 300, coolDown: 100000),
                     new State("invulnerable_clone",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new TimedTransition(3000, "vulnerable_clone")
                         ),
                     new State("vulnerable_clone",
@@ -159,18 +161,18 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(16000, "Warning2")
                     ),
                 new State("Warning2",
-                    new Prioritize(
-                        new StayCloseToSpawn(0.85, range: 7),
-                        new Wander(1)
+                    new StayCloseToSpawn(0.85, range: 7),
+                    new OrderedBehavior(
+                        new NewWander(0.4)
                         ),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Flash(0xff00ff00, 0.2, 25),
                     new TimedTransition(5000, "Whoa_nelly")
                     ),
                 new State("Whoa_nelly",
-                    new Prioritize(
-                        new StayCloseToSpawn(1, range: 7),
-                        new Wander(1)
+                    new StayCloseToSpawn(1, range: 7),
+                    new OrderedBehavior(
+                        new NewWander(0.4)
                         ),
                     new Shoot(10, projectileIndex: 3, count: 3, shootAngle: 120, coolDown: 500),
                     new Shoot(10, projectileIndex: 2, count: 3, shootAngle: 15, fixedAngle: 40, coolDown: 800,
@@ -182,7 +184,7 @@ namespace TKR.WorldServer.logic
                     new Shoot(10, projectileIndex: 2, count: 3, shootAngle: 15, fixedAngle: 310, coolDown: 800,
                         coolDownOffset: 800),
                     new State("invulnerable_whoa",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new TimedTransition(2600, "vulnerable_whoa")
                         ),
                     new State("vulnerable_whoa",
@@ -192,9 +194,9 @@ namespace TKR.WorldServer.logic
                     ),
                 new State("Absolutely_Massive",
                     new ChangeSize(13, 260),
-                    new Prioritize(
-                        new StayCloseToSpawn(0.2, range: 7),
-                        new Wander(1)
+                    new StayCloseToSpawn(0.2, range: 7),
+                    new OrderedBehavior(
+                        new NewWander(0.4)
                         ),
                     new Shoot(10, projectileIndex: 1, count: 9, shootAngle: 40, fixedAngle: 40, coolDown: 800,
                         coolDownOffset: 400),
@@ -205,7 +207,7 @@ namespace TKR.WorldServer.logic
                     new Shoot(10, projectileIndex: 1, count: 9, shootAngle: 40, fixedAngle: 70, coolDown: 800,
                         coolDownOffset: 1600),
                     new State("invulnerable_mass",
-                        new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                        new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                         new TimedTransition(2600, "vulnerable_mass")
                         ),
                     new State("vulnerable_mass",
@@ -215,7 +217,7 @@ namespace TKR.WorldServer.logic
                     ),
                 new State("Start_over_again",
                     new ChangeSize(-20, 100),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Flash(0xff00ff00, 0.2, 15),
                     new TimedTransition(3000, "Daisy_attack")
                     )
@@ -242,9 +244,9 @@ namespace TKR.WorldServer.logic
             )
         .Init("Crystal Prisoner Clone",
             new State(
-                new Prioritize(
-                    new StayCloseToSpawn(0.85, range: 5),
-                    new Wander(1)
+                new StayCloseToSpawn(0.85, range: 7),
+                new OrderedBehavior(
+                    new NewWander(0.4)
                     ),
                 new Shoot(10, coolDown: 1400),
                 new State("taunt",
@@ -260,7 +262,7 @@ namespace TKR.WorldServer.logic
         .Init("Crystal Prisoner Steed",
             new State(
                 new State("change_position_fast",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Prioritize(
                         new StayCloseToSpawn(3.6, range: 12),
                         new Wander(1.5)

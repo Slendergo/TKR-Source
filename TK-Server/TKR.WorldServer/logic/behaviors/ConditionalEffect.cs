@@ -1,17 +1,16 @@
 ﻿using TKR.Shared.resources;
 using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.core.objects;
-using TKR.WorldServer.logic;
 
 namespace TKR.WorldServer.logic.behaviors
 {
-    internal class ConditionalEffect : Behavior
+    internal class ConditionEffectBehavior : Behavior
     {
         private readonly bool perm;
         private int duration;
         private ConditionEffectIndex effect;
 
-        public ConditionalEffect(ConditionEffectIndex effect, bool perm = false, int duration = -1)
+        public ConditionEffectBehavior(ConditionEffectIndex effect, bool perm = false, int duration = -1)
         {
             this.effect = effect;
             this.perm = perm;

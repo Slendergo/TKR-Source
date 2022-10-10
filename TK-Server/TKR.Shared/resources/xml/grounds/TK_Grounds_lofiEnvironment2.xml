@@ -441,14 +441,6 @@
     </Texture>
     <BlendPriority>11</BlendPriority>
   </Ground>
-  <Ground type="0x6a" id="Snowy Rock">
-    <Texture>
-      <File>lofiEnvironment2</File>
-      <Index>0x60</Index>
-    </Texture>
-    <BlendPriority>12</BlendPriority>
-    <RandomOffset />
-  </Ground>
   <Ground type="0x6b" id="Ice">
     <Texture>
       <File>lofiEnvironment2</File>

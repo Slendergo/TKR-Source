@@ -48,7 +48,7 @@ package com.company.assembleegameclient.sound
          try
          {
             setup = StaticInjectorContext.getInjector().getInstance(ApplicationSetup);
-            base = setup.getAppEngineUrl(true);
+            base = setup.getAppEngineUrl();
          }
          catch(error:Error)
          {

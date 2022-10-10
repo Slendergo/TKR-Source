@@ -12,30 +12,30 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(35),
                 new State("idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true), //invuln
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true), //invuln
                     new PlayerWithinTransition(15, "Prepare")
                     ),
                  new State("Prepare",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new Taunt("Protect me"),
                     new Spawn("Roman Archer 1", 1, 1, 99999),
                     new Spawn("Roman Archer 1.1", 1, 1, 99999),
                     new TimedTransition(1000, "Prepare 1")
                     ),
                   new State("Prepare 1",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new Spawn("Roman Archer 2", 1, 1, 99999),
                     new Spawn("Roman Archer 2.1", 1, 1, 99999),
                     new TimedTransition(1000, "Prepare 2")
                     ),
                    new State("Prepare 2",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new Spawn("Roman Soldier 1", 1, 1, 99999),
                     new Spawn("Roman Soldier 1.1", 1, 1, 99999),
                     new TimedTransition(1000, "Prepare 3")
                     ),
                 new State("Prepare 3",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new Taunt("With your life!"),
                     new Spawn("Roman Gladiator 1", 1, 1, 99999),
                     new Spawn("Roman Gladiator 1.1", 1, 1, 99999),
@@ -88,7 +88,7 @@ namespace TKR.WorldServer.logic
                     ),
                 new State("remove",
                     new Taunt("NOOOO"),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new RemoveEntity(20, "Roman Gladiator 1"),
                     new RemoveEntity(20, "Roman Gladiator 1.1"),
                     new RemoveEntity(20, "Roman Archer 1"),
@@ -137,12 +137,12 @@ namespace TKR.WorldServer.logic
           .Init("Roman Pillar", //this "pillar" should act like the LH pillars in a sense
              new State(
                new State("Start",
-                         new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                         new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                          new Flash(0xFF0000, 0.2, 3),
                          new TimedTransition(1000, "Kill")
                          ),
                new State("Kill",
-                         new ConditionalEffect(ConditionEffectIndex.Armored),
+                         new ConditionEffectBehavior(ConditionEffectIndex.Armored),
                          new Shoot(15, count: 3, projectileIndex: 0, shootAngle: 10, predictive: 1, coolDown: 1500),
                          new EntityNotExistsTransition("Julius Caesar", 30, "die")
                     ),
@@ -155,7 +155,7 @@ namespace TKR.WorldServer.logic
             new State(
                 new State("Defense",
                     new MoveTo3(6, 0, 1, isMapPosition: false, instant: false),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible)
                     ),
                 new State("Orbit",
                     new Shoot(10, 7, projectileIndex: 0, coolDown: 1500),
@@ -179,7 +179,7 @@ namespace TKR.WorldServer.logic
             new State(
                 new State("Defense",
                     new MoveTo3(-6, 0, 1, isMapPosition: false, instant: false),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible)
                     ),
                 new State("Orbit",
                     new Shoot(10, 7, projectileIndex: 0, coolDown: 1500),
@@ -201,10 +201,10 @@ namespace TKR.WorldServer.logic
                  )
         .Init("Roman Gladiator 1",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new State("Start",
                     new MoveTo3(8, 0, 1, isMapPosition: false, instant: false),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible)
                     ),
                 new State("Orbit",
                     new Shoot(30, 1, projectileIndex: 0, coolDown: 100),
@@ -226,11 +226,11 @@ namespace TKR.WorldServer.logic
             )
         .Init("Roman Gladiator 1.1",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new EntitiesNotExistsTransition(50, "Start", "Roman Archer 1", "Roman Archer 2", "Roman Archer 3", "Roman Archer 4", "Roman Soldier 1.1"),
                 new State("Start",
                     new MoveTo3(-8, 0, 1, isMapPosition: false, instant: false),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible)
                     ),
                 new State("Orbit",
                     new Shoot(30, 1, projectileIndex: 0, coolDown: 100),
@@ -254,7 +254,7 @@ namespace TKR.WorldServer.logic
             new State(
                    new State("Start",
                     new MoveTo3(2, 0, 1, isMapPosition: false, instant: false),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible)
                     ),
                 new State("Orbit",
                     new Shoot(10, 2, projectileIndex: 0, shootAngle: 15, coolDown: 800),
@@ -278,7 +278,7 @@ namespace TKR.WorldServer.logic
             new State(
                     new State("Start",
                     new MoveTo3(-2, 0, 1, isMapPosition: false, instant: false),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible)
                     ),
                 new State("Orbit",
                     new Shoot(10, 2, projectileIndex: 0, shootAngle: 10, coolDown: 800),
@@ -303,7 +303,7 @@ namespace TKR.WorldServer.logic
                     new State("Start",
 
                     new MoveTo3(4, 0, 1, isMapPosition: false, instant: false),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible)
                     ),
                 new State("Orbit",
                     new Shoot(10, 1, projectileIndex: 0, coolDown: 1300, coolDownOffset: 0),
@@ -330,7 +330,7 @@ namespace TKR.WorldServer.logic
             new State(
                     new State("Start",
                     new MoveTo3(-4, 0, 1, isMapPosition: false, instant: false),
-                    new ConditionalEffect(ConditionEffectIndex.Invincible)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible)
                     ),
                 new State("Orbit",
                     new Shoot(10, 1, projectileIndex: 0, coolDown: 1300, coolDownOffset: 0),
@@ -357,7 +357,7 @@ namespace TKR.WorldServer.logic
             new State(
                   new State("Defense",
                     new ReturnToSpawn(1),
-                    new ConditionalEffect(ConditionEffectIndex.Armored),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored),
                     new Shoot(radius: 12, projectileIndex: 0, shootAngle: 10, count: 3, fixedAngle: 225, coolDown: 1000)
                     ),
                 new State("Offence",
@@ -374,7 +374,7 @@ namespace TKR.WorldServer.logic
             new State(
                   new State("Defense",
                     new ReturnToSpawn(1),
-                    new ConditionalEffect(ConditionEffectIndex.Armored),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored),
                     new Shoot(radius: 12, projectileIndex: 0, shootAngle:10, count: 3, fixedAngle: 315, coolDown: 1000)
                     ),
                 new State("Offence",

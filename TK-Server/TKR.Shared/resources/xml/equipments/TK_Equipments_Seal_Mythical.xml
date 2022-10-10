@@ -12,7 +12,7 @@
 		<Description>After the Heros slained Cerberus, they discovered its heart and refined it into a seal.</Description>
 		<Sound>spell/light_heal</Sound>
 		<Usable />
-		<BagType>8</BagType>
+		<BagType>9</BagType>
 		<FameBonus>7</FameBonus>
 		<MpCost>150</MpCost>
 		<Activate stat="0" amount="125" duration="8" range="4.5" noStack="true" useWisMod="true">StatBoostAura</Activate>

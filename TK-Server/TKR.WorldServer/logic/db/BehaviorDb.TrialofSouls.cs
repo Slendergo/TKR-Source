@@ -16,7 +16,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(threshold: 0.99, targetState: "Choose")
                     ),
                 new State("Choose",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                     new Taunt("I deem thy worthy!"),
                     new TimedTransition(2000, "Choose 1")
                     ),
@@ -75,7 +75,7 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("Spawned",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("Shoot",
                     new Shoot(15, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 0),
@@ -91,7 +91,7 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("Spawned",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("Shoot",
                     new Shoot(15, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 200),
@@ -107,7 +107,7 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("Spawned",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("Shoot",
                     new Shoot(15, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 400),
@@ -123,7 +123,7 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(20),
                 new State("Spawned",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible, true)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true)
                     ),
                 new State("Shoot",
                     new Shoot(15, 1, projectileIndex: 0, coolDown: 2000, coolDownOffset: 600),

@@ -36,6 +36,7 @@ namespace TKR.WorldServer.core.objects
         public void AwaitMove(int tickId) => _move.Enqueue(tickId);
 
         public long C2STime(int clientTime) => clientTime + TimeMap;
+        public long S2CTime(int serverTime) => serverTime - TimeMap;
 
         public int GotoAckCount() => _gotoAckTimeout.Count;
 

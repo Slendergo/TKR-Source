@@ -1,48 +1,10 @@
 <GroundTypes>
   <Ground type="0x23" id="Bright Grass">
     <Texture>
-      <File>lofiObj3</File>
-      <Index>0x0b</Index>
+      <File>lofiEnvironment</File>
+      <Index>0xfd</Index>
     </Texture>
-    <Edge>
-      <Texture>
-        <File>lofiObj3</File>
-        <Index>0x0c</Index>
-      </Texture>
-    </Edge>
-    <Corner>
-      <Texture>
-        <File>lofiObj3</File>
-        <Index>0x0d</Index>
-      </Texture>
-    </Corner>
-    <InnerCorner>
-      <Texture>
-        <File>lofiObj3</File>
-        <Index>0x0e</Index>
-      </Texture>
-    </InnerCorner>
     <BlendPriority>11</BlendPriority>
-    <RandomOffset />
-  </Ground>
-  <Ground type="0x22" id="Bright Grass 2">
-    <Texture>
-      <File>lofiObj3</File>
-      <Index>0x0f</Index>
-    </Texture>
-    <Edge>
-      <Texture>
-        <File>lofiObj3</File>
-        <Index>0x1f</Index>
-      </Texture>
-    </Edge>
-    <Corner>
-      <Texture>
-        <File>lofiObj3</File>
-        <Index>0x27</Index>
-      </Texture>
-    </Corner>
-    <BlendPriority>4</BlendPriority>
     <RandomOffset />
   </Ground>
   <Ground type="0xa6" id="GhostGround ExLight">
@@ -1775,25 +1737,5 @@
       <Index>0x587</Index>
     </Texture>
     <BlendPriority>3</BlendPriority>
-  </Ground>
-  <Ground type="0xfd2" id="Bright Grass 2 HIghBP">
-    <Texture>
-      <File>lofiObj3</File>
-      <Index>0x0f</Index>
-    </Texture>
-    <Edge>
-      <Texture>
-        <File>lofiObj3</File>
-        <Index>0x1f</Index>
-      </Texture>
-    </Edge>
-    <Corner>
-      <Texture>
-        <File>lofiObj3</File>
-        <Index>0x27</Index>
-      </Texture>
-    </Corner>
-    <BlendPriority>11</BlendPriority>
-    <RandomOffset />
   </Ground>
 </GroundTypes>

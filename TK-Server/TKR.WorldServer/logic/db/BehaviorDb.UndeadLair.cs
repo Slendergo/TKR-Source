@@ -11,7 +11,7 @@ namespace TKR.WorldServer.logic
         .Init("Septavius the Ghost God",
             new State(
                 new StayCloseToSpawn(3, 10),
-                new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                 new ScaleHP2(20),
                 new DropPortalOnDeath("Hideout of Septavius Portal", probability: 1, timeout: 70),
                 new State("Waiting Player",
@@ -39,7 +39,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.75, "Second Phase")
                     ),
                 new State("Second Phase",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 3000),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 3000),
                     new Taunt("My Minion's will Destroy you!"),
                     new TimedTransition(3000, "Second Phase Start")
                     ),
@@ -60,7 +60,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.50, "Third Phase")
                     ),
                 new State("Third Phase",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 3000),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 3000),
                     new Flash(0xFF0000, 1, 3),
                     new Taunt("No! What have you done to my Minions!"),
                     new TimedTransition(3000, "Third Phase Start")
@@ -80,7 +80,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.25, "Rage")
                     ),
                 new State("Rage",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, false, 3000),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, false, 3000),
                     new Flash(0xFF0000, 0.3, 10),
                     new Taunt("You... will... DIE!"),
                     new TimedTransition(3000, "Rage Start")

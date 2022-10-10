@@ -30,7 +30,7 @@ import kabam.lib.tasks.BaseTask;
       {
          this.client.setSendEncrypted(true);
          this.client.complete.addOnce(this.onComplete);
-         this.client.sendRequest(Parameters.LOCAL_HOST ? "/account/verify" : "/api/verifyAcc", { // For Release: "/api/verifyAcc" For Local: "/account/verify"
+         this.client.sendRequest(Parameters.LOCAL_HOST || Parameters.TESTING_SERVER ? "/account/verify" : "/api/verifyAcc", { // For Release: "/api/verifyAcc" For Local: "/account/verify"
             "guid":this.data.username,
             "password":this.data.password
          });

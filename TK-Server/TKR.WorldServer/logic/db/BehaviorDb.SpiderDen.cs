@@ -11,11 +11,11 @@ namespace TKR.WorldServer.logic
         .Init("Arachna the Spider Queen",
             new State(
                 new State("idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new PlayerWithinTransition(12, "WEB!")
                     ),
                 new State("WEB!",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new TossObject("Arachna Web Spoke 7", 6, 0, 100000),
                     new TossObject("Arachna Web Spoke 8", 6, 120, 100000),
                     new TossObject("Arachna Web Spoke 9", 6, 240, 100000),
@@ -46,7 +46,7 @@ namespace TKR.WorldServer.logic
         .Init("Arachna Web Spoke 1",
             new State(
                 new State(":D",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 120, fixedAngle: 120, coolDown: 5),
                     new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 180, fixedAngle: 180, coolDown: 5),
                     new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 240, fixedAngle: 240, coolDown: 5)
@@ -56,7 +56,7 @@ namespace TKR.WorldServer.logic
         .Init("Arachna Web Spoke 2",
             new State(
                 new State(":D",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 240, fixedAngle: 240, coolDown: 5),
                     new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 180, fixedAngle: 180, coolDown: 5),
                     new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 300, fixedAngle: 300, coolDown: 5)
@@ -66,7 +66,7 @@ namespace TKR.WorldServer.logic
         .Init("Arachna Web Spoke 3",
             new State(
                 new State(":D",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 300, fixedAngle: 300, coolDown: 5),
                     new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 240, fixedAngle: 240, coolDown: 5),
                     new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 0, fixedAngle: 0, coolDown: 5)
@@ -76,7 +76,7 @@ namespace TKR.WorldServer.logic
         .Init("Arachna Web Spoke 4",
             new State(
                 new State(":D",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 0, fixedAngle: 0, coolDown: 5),
                     new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 60, fixedAngle: 60, coolDown: 5),
                     new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 300, fixedAngle: 300, coolDown: 5)
@@ -86,7 +86,7 @@ namespace TKR.WorldServer.logic
         .Init("Arachna Web Spoke 5",
             new State(
                 new State(":D",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 60, fixedAngle: 60, coolDown: 5),
                     new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 0, fixedAngle: 0, coolDown: 5),
                     new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 120, fixedAngle: 120, coolDown: 5)
@@ -96,7 +96,7 @@ namespace TKR.WorldServer.logic
         .Init("Arachna Web Spoke 6",
             new State(
                 new State(":D",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 120, fixedAngle: 120, coolDown: 5),
                     new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 60, fixedAngle: 60, coolDown: 5),
                     new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 180, fixedAngle: 180, coolDown: 5)
@@ -106,7 +106,7 @@ namespace TKR.WorldServer.logic
         .Init("Arachna Web Spoke 7",
             new State(
                 new State(":D",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 180, fixedAngle: 180, coolDown: 5),
                     new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 120, fixedAngle: 120, coolDown: 5),
                     new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 240, fixedAngle: 240, coolDown: 5)
@@ -116,7 +116,7 @@ namespace TKR.WorldServer.logic
         .Init("Arachna Web Spoke 8",
             new State(
                 new State(":D",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 360, fixedAngle: 360, coolDown: 5),
                     new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 240, fixedAngle: 240, coolDown: 5),
                     new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 300, fixedAngle: 300, coolDown: 5)
@@ -126,7 +126,7 @@ namespace TKR.WorldServer.logic
         .Init("Arachna Web Spoke 9",
             new State(
                 new State(":D",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 0, fixedAngle: 0, coolDown: 5),
                     new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 60, fixedAngle: 60, coolDown: 5),
                     new Shoot(6, projectileIndex: 0, count: 1, shootAngle: 120, fixedAngle: 120, coolDown: 5)
@@ -199,7 +199,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Arachna Summoner",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("idle",
                     new EntitiesNotExistsTransition(300, "Death", "Arachna the Spider Queen")
                     ),

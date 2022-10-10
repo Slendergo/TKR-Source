@@ -43,10 +43,6 @@ import kabam.rotmg.constants.ActivationType;
 import kabam.rotmg.constants.GeneralConstants;
 import kabam.rotmg.constants.UseType;
 import kabam.rotmg.core.StaticInjectorContext;
-import kabam.rotmg.essences.TalismanLibrary;
-import kabam.rotmg.essences.TalismanModel;
-import kabam.rotmg.essences.TalismanProperties;
-import kabam.rotmg.essences.TalismanTierDesc;
 import kabam.rotmg.game.model.AddTextLineVO;
 import kabam.rotmg.game.model.PotionInventoryModel;
 import kabam.rotmg.game.signals.AddTextLineSignal;
@@ -115,7 +111,6 @@ public class Player extends Character {
         this.maxHPMax_ = int(objectXML.MaxHitPoints.@max);
         this.maxMPMax_ = int(objectXML.MaxMagicPoints.@max);
         texturingCache_ = new Dictionary();
-        talismans_ = new Dictionary();
     }
 
     public var skinId:int;
@@ -207,84 +202,6 @@ public class Player extends Character {
     public var SPS_Vitality_Max:int = 0;
     public var SPS_Attack_Max:int = 0;
     public var SPS_Modal:PotionStorageModal;
-    private var talismans_:Dictionary;
-    private var activeTalismans_:Vector.<int>;
-    public var essence_:int = 0;
-    public var essenceCap_:int = 0;
-    public var damageIsAveraged_:Boolean;
-    public var shotsPierce_:Boolean;
-
-    public function addTalisman(talismanData:TalismanData):void {
-        this.talismans_[talismanData.type_] = new TalismanModel(talismanData);
-        if(talismanData.active_){
-            activateTalisman(talismanData.type_);
-        }
-    }
-
-    public function getTalismans():Vector.<TalismanModel>{
-        var talismans:Vector.<TalismanModel> = new Vector.<TalismanModel>();
-        for each(var talisman:TalismanModel in this.talismans_){
-            talismans.push(talisman);
-        }
-        return talismans;
-    }
-
-    public function activateTalisman(type:int):void {
-
-        if(this.activeTalismans_ == null){
-            this.activeTalismans_ = new Vector.<int>();
-        }
-        if(this.activeTalismans_.indexOf(type) != -1){
-            return;
-        }
-        this.activeTalismans_.push(type);
-        updateTalismans();
-    }
-
-    public function deactivateTalisman(type:int):void {
-
-        if(this.activeTalismans_ == null) {
-            this.activeTalismans_ = new Vector.<int>();
-        }
-
-        var index:int = this.activeTalismans_.indexOf(type);
-        if(index == -1){
-            return;
-        }
-        this.activeTalismans_.splice(index, 1);
-        updateTalismans();
-    }
-
-    public function updateTalismans():void{
-        // todo
-
-        for each(var type:int in this.activeTalismans_){
-
-            var talisman:TalismanModel = this.talismans_[type];
-            if(talisman == null){
-                continue;
-            }
-
-            var desc:TalismanProperties = TalismanLibrary.getTalisman(type);
-            if(desc == null){
-                continue;
-            }
-
-            var tierDesc:TalismanTierDesc = desc.tiers_[talisman.tier_];
-            if(tierDesc == null){
-                continue;
-            }
-
-            if(tierDesc.abilityLifeCost > 0.0){
-                this.talismanAbilityLifeCost_ = tierDesc.abilityLifeCost;
-            }
-            this.damageIsAveraged_ = tierDesc.damageIsAveraged_;
-            this.shotsPierce_ = tierDesc.shotsPierce_;
-        }
-    }
-
-    public var talismanNoManaBar_:Boolean;
-    public var talismanAbilityLifeCost_:Number;
 
     override public function moveTo(x:Number, y:Number):Boolean {
         var ret:Boolean = super.moveTo(x, y);
@@ -857,12 +774,17 @@ public class Player extends Character {
             SoundEffectLibrary.play("error");
             return false;
         }
+
+        var shoot:Boolean = false;
         for each(activateXML in objectXML.Activate) {
             if (activateXML.toString() == ActivationType.TELEPORT) {
                 if (!this.isValidPosition(pW.x, pW.y)) {
                     SoundEffectLibrary.play("error");
                     return false;
                 }
+            }
+            if (activateXML.toString() == ActivationType.SHOOT) {
+                shoot = true;
             }
         }
         now = getTimer();
@@ -872,19 +794,10 @@ public class Player extends Character {
                 return false;
             }
 
-            if(this.talismanNoManaBar_) {
-                mpCost = int(this.maxHP_ * this.talismanAbilityLifeCost_);
-                if (mpCost > this.hp_) {
-                    SoundEffectLibrary.play("no_mana");
-                    return false;
-                }
-            }
-            else{
-                mpCost = int(objectXML.MpCost);
-                if (mpCost > this.mp_) {
-                    SoundEffectLibrary.play("no_mana");
-                    return false;
-                }
+            mpCost = int(objectXML.MpCost);
+            if (mpCost > this.mp_) {
+                SoundEffectLibrary.play("no_mana");
+                return false;
             }
 
             cooldown = 500;
@@ -893,7 +806,7 @@ public class Player extends Character {
             }
             this.nextAltAttack_ = now + cooldown;
             map_.gs_.gsc_.useItem(now, objectId_, 1, itemType, pW.x, pW.y, useType);
-            if (objectXML.Activate == ActivationType.SHOOT) {
+            if (shoot) {
                 angle = Math.atan2(yS, xS);
                 this.doShoot(now, itemType, objectXML, Parameters.data_.cameraAngle + angle, false);
             }
@@ -901,19 +814,10 @@ public class Player extends Character {
         else if (objectXML.hasOwnProperty("MultiPhase")) {
             map_.gs_.gsc_.useItem(now, objectId_, 1, itemType, pW.x, pW.y, useType);
 
-            if(this.talismanNoManaBar_) {
-                mpCost = int(this.maxHP_ * this.talismanAbilityLifeCost_);
-                if (mpCost <= this.hp_) {
-                    angle = Math.atan2(yS, xS);
-                    this.doShoot(now, itemType, objectXML, Parameters.data_.cameraAngle + angle, false);
-                }
-            }
-            else{
-                mpCost = int(objectXML.MpEndCost);
-                if (mpCost <= this.mp_) {
-                    angle = Math.atan2(yS, xS);
-                    this.doShoot(now, itemType, objectXML, Parameters.data_.cameraAngle + angle, false);
-                }
+            mpCost = int(objectXML.MpEndCost);
+            if (mpCost <= this.mp_) {
+                angle = Math.atan2(yS, xS);
+                this.doShoot(now, itemType, objectXML, Parameters.data_.cameraAngle + angle, false);
             }
         }
         return true;
@@ -950,19 +854,21 @@ public class Player extends Character {
     public function swapInventoryIndex(current:String):int {
         var start:int = 0;
         var end:int = 0;
-        if (!this.hasBackpack_) {
+        if (!this.hasBackpack_ || current == TabStripModel.TALISMANS) {
             return -1;
         }
+
         if (current == TabStripModel.BACKPACK) {
             start = GeneralConstants.NUM_EQUIPMENT_SLOTS;
             end = GeneralConstants.NUM_EQUIPMENT_SLOTS + GeneralConstants.NUM_INVENTORY_SLOTS;
         }
         else {
             start = GeneralConstants.NUM_EQUIPMENT_SLOTS + GeneralConstants.NUM_INVENTORY_SLOTS;
-            end = equipment_.length;
+            end = equipment_.length - GeneralConstants.NUM_TALISMAN_SLOTS;
         }
+
         for (var i:uint = start; i < end; i++) {
-            if (equipment_[i] <= 0) {
+            if (equipment_[i] == -1) {
                 return i;
             }
         }
@@ -1038,7 +944,7 @@ public class Player extends Character {
         }
         var moveSpeed:Number = MIN_MOVE_SPEED + this.speed_ / 75 * (MAX_MOVE_SPEED - MIN_MOVE_SPEED);
         if (isSpeedy() || isNinjaSpeedy()) {
-            moveSpeed = moveSpeed * 1.4;
+            moveSpeed = moveSpeed * 1.35;
         }
         moveSpeed = moveSpeed * this.moveMultiplier_;
         return moveSpeed;

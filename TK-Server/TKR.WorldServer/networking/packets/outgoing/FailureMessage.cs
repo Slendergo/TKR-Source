@@ -21,7 +21,7 @@ namespace TKR.WorldServer.networking.packets.outgoing
             ErrorDescription = errorDescription;
         }
 
-        protected override void Write(NWriter wtr)
+        public override void Write(NWriter wtr)
         {
             wtr.Write(ErrorId);
             wtr.WriteUTF(ErrorDescription);

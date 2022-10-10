@@ -16,7 +16,7 @@ namespace TKR.WorldServer.networking.packets.outgoing.market
         public int Code;
         public string Description;
 
-        protected override void Write(NWriter wtr)
+        public override void Write(NWriter wtr)
         {
             wtr.Write(Code);
             wtr.WriteUTF(Description);

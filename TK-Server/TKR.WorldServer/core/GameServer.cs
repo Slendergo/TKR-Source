@@ -112,10 +112,6 @@ namespace TKR.WorldServer.core
                 var f2 = File.CreateText("GenerateXMLS/EmbeddedData_GroundsCXML.xml");
                 f2.Write(Resources.GameData.GroundCombinedXML.ToString());
                 f2.Close();
-
-                var f5 = File.CreateText("GenerateXMLS/EmbeddedData_TalismansCXML.xml");
-                f5.Write(Resources.GameData.TalismansCombinedXML.ToString());
-                f5.Close();
             }
 
             ItemDustWeights.Initialize();

@@ -1,10 +1,7 @@
-﻿using TKR.Shared.resources;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using TKR.WorldServer.core;
+using TKR.Shared.resources;
 using TKR.WorldServer.core.miscfile.stats;
-using TKR.WorldServer.core.objects;
-using TKR.WorldServer.core.worlds;
 
 namespace TKR.WorldServer.core.objects
 {
@@ -33,8 +30,6 @@ namespace TKR.WorldServer.core.objects
                 else
                     SetDefaultSize(ObjectDesc.MinSize);
 
-                SetConditions();
-
                 HP = ObjectDesc.MaxHP;
                 MaximumHP = HP;
             }
@@ -46,36 +41,6 @@ namespace TKR.WorldServer.core.objects
             stats[StatDataType.HP] = HP;
             if (!(this is Player))
                 stats[StatDataType.MaximumHP] = MaximumHP;
-        }
-
-        private void SetConditions()
-        {
-            if (ObjectDesc.Invincible)
-                ApplyPermanentConditionEffect(ConditionEffectIndex.Invincible);
-
-            if (ObjectDesc.ArmorBreakImmune)
-                ApplyPermanentConditionEffect(ConditionEffectIndex.ArmorBreakImmune);
-
-            if (ObjectDesc.CurseImmune)
-                ApplyPermanentConditionEffect(ConditionEffectIndex.CurseImmune);
-
-            if (ObjectDesc.DazedImmune)
-                ApplyPermanentConditionEffect(ConditionEffectIndex.DazedImmune);
-
-            if (ObjectDesc.ParalyzeImmune)
-                ApplyPermanentConditionEffect(ConditionEffectIndex.ParalyzeImmune);
-
-            if (ObjectDesc.PetrifyImmune)
-                ApplyPermanentConditionEffect(ConditionEffectIndex.PetrifyImmune);
-
-            if (ObjectDesc.SlowedImmune)
-                ApplyPermanentConditionEffect(ConditionEffectIndex.SlowedImmune);
-
-            if (ObjectDesc.StasisImmune)
-                ApplyPermanentConditionEffect(ConditionEffectIndex.StasisImmune);
-
-            if (ObjectDesc.StunImmune)
-                ApplyPermanentConditionEffect(ConditionEffectIndex.StunImmune);
         }
     }
 }

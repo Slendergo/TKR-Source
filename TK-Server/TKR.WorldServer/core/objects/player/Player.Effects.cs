@@ -61,26 +61,29 @@ namespace TKR.WorldServer.core.objects
 
             if (HasConditionEffect(ConditionEffectIndex.NinjaSpeedy))
             {
-                if (TalismanAbilityLifeCost > 0.0f)
-                {
-                    HP = Math.Max(1, (int)(HP - 20 * time.DeltaTime));
-                    if (HP == 1)
-                        RemoveCondition(ConditionEffectIndex.NinjaSpeedy);
-                }
-                else
-                {
-                    MP = Math.Max(0, (int)(MP - 10 * time.DeltaTime));
-                    if (MP == 0)
-                        RemoveCondition(ConditionEffectIndex.NinjaSpeedy);
-                }
+                MP -= (int)(10 * time.DeltaTime);
+                if (MP == 0)
+                    RemoveCondition(ConditionEffectIndex.NinjaSpeedy);
             }
 
             if (HasConditionEffect(ConditionEffectIndex.NinjaBerserk))
             {
-                MP = Math.Max(0, (int)(MP - 10 * time.DeltaTime));
-
-                if (MP == 0)
+                MP -= (int)(25 * time.DeltaTime);
+                if (MP <= 0)
+                {
+                    MP = 0;
                     RemoveCondition(ConditionEffectIndex.NinjaBerserk);
+                }
+            }
+
+            if (HasConditionEffect(ConditionEffectIndex.NinjaDamaging))
+            {
+                MP -= (int)(10 * time.DeltaTime);
+                if (MP <= 0)
+                {
+                    MP = 0;
+                    RemoveCondition(ConditionEffectIndex.NinjaDamaging);
+                }
             }
 
             if (_newbieTime > 0)

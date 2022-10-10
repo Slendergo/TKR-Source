@@ -19,32 +19,29 @@ namespace TKR.WorldServer.core.commands
                     return true;
                 }*/
 
-                var gameData = player.GameServer.Resources.GameData;
-
-                /*if (player.Client.Account.Rank == 60)
+                if(!player.IsAdmin && (args.ToLower() == "Ring of the Talisman's Kingdom".ToLower() || args.ToLower() == "Crown".ToLower() || args.ToLower() == "Excalibur".ToLower()))
                 {
-                    player.SendInfo("This command is disabled due to game altering bug!");
+                    player.SendError($"You are not an admin!");
                     return false;
-                }*/
+                }
 
-                // allow both DisplayId and Id for query
+                var gameData = player.GameServer.Resources.GameData;
                 if (!gameData.DisplayIdToObjectType.TryGetValue(args, out ushort objType))
                 {
                     if (!gameData.IdToObjectType.TryGetValue(args, out objType))
                     {
-                        player.SendError("Unknown item type!");
+                        player.SendError($"unable to find item: {args}!");
                         return false;
                     }
                 }
 
                 if (!gameData.Items.ContainsKey(objType))
                 {
-                    player.SendError("Not an item!");
+                    player.SendError($"unable to find item: {args}!");
                     return false;
                 }
 
                 var item = gameData.Items[objType];
-
                 var availableSlot = player.Inventory.GetAvailableInventorySlot(item);
                 if (availableSlot != -1)
                 {

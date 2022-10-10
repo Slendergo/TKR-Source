@@ -28,12 +28,12 @@ namespace TKR.WorldServer.logic
                     new Shoot(10, 5, 10, 0, coolDown: 1000),
                     new Shoot(10, 1, 10, 1, coolDown: 2000),
                     new EntityNotExistsTransition("Ghost Lanturn Off", 30, "Vunerable"),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable)
                     ),
                 new State("CheckOffLanterns",
                     new SetAltTexture(2),
                     new StayCloseToSpawn(.1, 3),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new EntityNotExistsTransition("Ghost Lanturn Off", 30, "Vunerable")
                     ),
                 new State("Vunerable",
@@ -81,7 +81,7 @@ namespace TKR.WorldServer.logic
         .Init("Ghost Lanturn Off",
             new State(
                 new State("default",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                     new EntityNotExistsTransition("Yellow Key", 9999, "gogogo")
                     ),
                 new State("gogogo",
@@ -91,27 +91,27 @@ namespace TKR.WorldServer.logic
             )
         .Init("Ghost Lanturn On",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new EntitiesNotExistsTransition(40, "Wait", "Ghost Lanturn Off")
                     ),
                 new State("Wait",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new TimedTransition(4000, "deactivate")
                     ),
                 new State("deactivate",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new EntitiesNotExistsTransition(40, "shoot", "Ghost Lanturn Off"),
                     new TimedTransition(10000, "gone")
                     ),
                 new State("shoot",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Shoot(10, 6, coolDown: 9000001, coolDownOffset: 100),
                     new TimedTransition(1000, "gone")
                     ),
                 new State("gone",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Transform("Ghost Lanturn Off")
                     )
                 )
@@ -161,7 +161,7 @@ namespace TKR.WorldServer.logic
 
         .Init("GhostShip PurpleDoor Opener",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Key",
                     new EntityNotExistsTransition("Purple Key", 200, "Not Key")
                     ),
@@ -177,7 +177,7 @@ namespace TKR.WorldServer.logic
 
         .Init("GhostShip GreenDoor Opener",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Key",
                     new EntityNotExistsTransition("Green Key", 200, "Not Key")
                     ),
@@ -193,7 +193,7 @@ namespace TKR.WorldServer.logic
 
         .Init("GhostShip RedDoor Opener",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible, true),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible, true),
                 new State("Key",
                     new EntityNotExistsTransition("Red Key", 200, "Not Key")
                     ),
@@ -294,7 +294,7 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(2850, "Default1")
                     ),
                 new State("Default1",
-                    new ConditionalEffect(ConditionEffectIndex.Armored),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored),
                     new Prioritize(
                         new Follow(3, 8, 1),
                         new Wander(0.3)
@@ -322,7 +322,7 @@ namespace TKR.WorldServer.logic
         .Init("Captain Summoner",
             new State(
                 new State("Default",
-                    new ConditionalEffect(ConditionEffectIndex.Invincible)
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invincible)
                     )
                 )
             )

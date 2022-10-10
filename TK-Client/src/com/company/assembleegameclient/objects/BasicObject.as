@@ -33,7 +33,7 @@ public class BasicObject
       
       public static function getNextFakeObjectId() : int
       {
-         return 2130706432 | nextFakeObjectId_++;
+         return 0x7F000000 | nextFakeObjectId_++;
       }
       
       public function clear() : void

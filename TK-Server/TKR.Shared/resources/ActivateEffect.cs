@@ -29,6 +29,9 @@ namespace TKR.Shared.resources
         public readonly bool UseWisMod;
         public readonly int VisualEffect;
         public readonly byte Type;
+        public readonly float SuccessChange;
+        public readonly float SuccessDamage;
+        public readonly float FailureDamage;
 
         public string Center;
         public string DungeonName;
@@ -39,7 +42,15 @@ namespace TKR.Shared.resources
 
         public ActivateEffect(XElement e)
         {
-            Effect = (ActivateEffects)Enum.Parse(typeof(ActivateEffects), e.Value);
+            try
+            {
+                Effect = (ActivateEffects)Enum.Parse(typeof(ActivateEffects), e.Value);
+            }
+            catch
+            {
+                Console.WriteLine($"Unknown effect: {e.Value}");
+                Effect = ActivateEffects.None;
+            }
 
             if (e.HasAttribute("effect"))
                 ConditionEffect = Utils.GetEffect(e.GetAttribute<string>("effect"));

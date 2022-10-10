@@ -9,15 +9,25 @@ namespace TKR.WorldServer.core.miscfile.datas
     public struct ObjectStats
     {
         public int Id;
-        public Position Position;
+        public float X;
+        public float Y;
         public KeyValuePair<StatDataType, object>[] Stats;
+
+        public ObjectStats(int id, float x, float y, KeyValuePair<StatDataType, object>[] stats)
+        {
+            Id = id;
+            X = x;
+            Y = y;
+            Stats = stats;
+        }
 
         public static ObjectStats Read(NReader rdr)
         {
             var ret = new ObjectStats
             {
                 Id = rdr.ReadInt32(),
-                Position = Position.Read(rdr),
+                X = rdr.ReadSingle(),
+                Y = rdr.ReadSingle(),
                 Stats = new KeyValuePair<StatDataType, object>[rdr.ReadInt16()]
             };
 
@@ -37,9 +47,9 @@ namespace TKR.WorldServer.core.miscfile.datas
         public void Write(NWriter wtr)
         {
             wtr.Write(Id);
-            Position.Write(wtr);
+            wtr.Write(X);
+            wtr.Write(Y);
             wtr.Write((short)Stats.Length);
-
             foreach (var i in Stats)
             {
                 wtr.Write((byte)i.Key);

@@ -42,7 +42,7 @@ namespace TKR.WorldServer.core.miscfile
             ApplyEquipBonus();
             ApplyActivateBonus();
             IncrementStatBoost();
-            ApplyTalismanBonus();
+            _player.RecalculateTalismanEffects();
 
             for (var i = 0; i < _boost.Length; i++)
                 _boostSV[i].SetValue(_boost[i]);
@@ -83,55 +83,13 @@ namespace TKR.WorldServer.core.miscfile
                 foreach (var b in _player.Inventory[i].StatsBoost)
                     IncrementBoost((StatDataType)b.Key, b.Value);
             }
-        }
 
-        private void ApplyTalismanBonus()
-        {
-            foreach (var type in _player.ActiveTalismans)
+            for (var i = 20; i < 28; i++)
             {
-                var talisman = _player.GetTalisman(type);
-                if (talisman == null)
-                    throw new Exception($"Unknown talisman type: {type}");
-
-                var desc = _player.GameServer.Resources.GameData.GetTalisman(type);
-                if (desc == null)
-                    throw new Exception($"Unknown talisman desc type: {type}");
-
-                var tierDesc = desc.GetTierDesc(talisman.Tier);
-                if (tierDesc == null)
-                    throw new Exception($"Unknown talisman tier: {talisman.Tier}");
-
-                foreach (var stat in tierDesc.StatTypes)
-                {
-                    // scale by level or by flat value
-
-                    if (stat.Percentage != 0.0)
-                    {
-                        var scaledAmount = stat.ScalesPerLevel ? stat.Percentage * talisman.Level : stat.Percentage;
-
-                        var statVal = _parent.Base[StatsManager.GetStatIndex((StatDataType)stat.StatType)];
-
-                        var amountToBoostBy = (int)(statVal * scaledAmount);
-
-                        IncrementBoost((StatDataType)stat.StatType, amountToBoostBy);
-                        continue;
-                    }
-
-                    var scale = (int)(stat.ScalesPerLevel ? stat.Amount * talisman.Level : stat.Amount);
-                    IncrementBoost((StatDataType)stat.StatType, scale);
-                }
-            }
-
-            if (_player.TalismanPotionHealthPercent != 0.0)
-            {
-                var incrHealth = (int)(_parent.Base[0] * _player.TalismanPotionHealthPercent);
-                IncrementBoost(StatDataType.MaximumHP, incrHealth);
-            }
-
-            if (_player.TalismanPotionManaPercent != 0.0)
-            {
-                var incrMana = (int)(_parent.Base[1] * _player.TalismanPotionManaPercent);
-                IncrementBoost(StatDataType.MaximumMP, incrMana);
+                if (_player.Inventory[i] == null)
+                    continue;
+                foreach (var b in _player.Inventory[i].StatsBoost)
+                    IncrementBoost((StatDataType)b.Key, b.Value);
             }
         }
 

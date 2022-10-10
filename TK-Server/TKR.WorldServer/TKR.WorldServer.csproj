@@ -24,4 +24,8 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="logic\behaviors\new\modifiers\" />
+  </ItemGroup>
+
 </Project>

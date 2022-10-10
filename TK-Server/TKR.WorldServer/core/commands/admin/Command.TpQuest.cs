@@ -26,8 +26,8 @@ namespace TKR.WorldServer.core.commands
                 }
                 player.SetNewbiePeriod();
 
-                var x = player.Quest.RealX;
-                var y = player.Quest.RealY;
+                var x = player.Quest.X;
+                var y = player.Quest.Y;
 
                 if (player.Quest.ObjectDesc.ObjectId.Contains("Hermit"))
                     y += 6;

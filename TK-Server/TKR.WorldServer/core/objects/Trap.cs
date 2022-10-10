@@ -76,7 +76,7 @@ namespace TKR.WorldServer.core.objects
 
             this.AOE(radius, false, enemy =>
             {
-                (enemy as Enemy).Damage(player, time, dmg, false, false, new ConditionEffect(effect, duration));
+                (enemy as Enemy).Damage(player, ref time, dmg, false, false, new ConditionEffect(effect, duration));
             });
 
             World.LeaveWorld(this);

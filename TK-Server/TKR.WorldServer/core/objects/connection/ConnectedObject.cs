@@ -13,8 +13,6 @@ namespace TKR.WorldServer.core.objects.connection
 
         public ConnectedObjectInfo Connection { get; set; }
 
-        public override bool HitByProjectile(Projectile projectile, TickTime time) => true;
-
         protected override void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)
         {
             stats[StatDataType.ObjectConnection] = (int)Connection.Bits;

@@ -93,6 +93,7 @@
     <God />
     <Encounter />
     <Level>20</Level>
+	<Invincible/>
   </Object>
   <Object type="0x0206" id="Dragon Egg">
     <Class>Character</Class>

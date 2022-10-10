@@ -71,7 +71,7 @@
     <Activate>BulletNova</Activate>
     <feedPower>20</feedPower>
   </Object>
-  <Object type="0xad5" id="Scorching Blast Spell">
+  <Object type="0xad5" id="Magic Nova Spell">
     <Class>Equipment</Class>
     <Item />
     <Texture>
@@ -80,7 +80,7 @@
     </Texture>
     <SlotType>11</SlotType>
     <Tier>3</Tier>
-    <Description>A formidable fire spell used by dwarven magi in their war against the trolls.</Description>
+    <Description>An unimaginably destructive spell, devised by the great mountain thaumaturgists to battle against demonic giants.</Description>
     <Sound>spell/fire_nova</Sound>
     <Projectile>
       <ObjectId>Pink Bolt</ObjectId>
@@ -121,7 +121,7 @@
     <Activate>BulletNova</Activate>
     <feedPower>90</feedPower>
   </Object>
-  <Object type="0xa30" id="Magic Nova Spell">
+  <Object type="0xa30" id="Sus Nova Spell">
     <Class>Equipment</Class>
     <Item />
     <Texture>
@@ -130,7 +130,7 @@
     </Texture>
     <SlotType>11</SlotType>
     <Tier>5</Tier>
-    <Description>An unimaginably destructive spell, devised by the great mountain thaumaturgists to battle against demonic giants.</Description>
+    <Description>A wizard once made a sus spell.</Description>
     <Sound>spell/magic_nova</Sound>
     <Projectile>
       <ObjectId>White Bolt</ObjectId>

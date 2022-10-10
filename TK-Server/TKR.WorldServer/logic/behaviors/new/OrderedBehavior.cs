@@ -1,7 +1,7 @@
 ﻿using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.core.objects;
 
-namespace TKR.WorldServer.logic.behaviors
+namespace TKR.WorldServer.logic.behaviors.@new
 {
     internal class OrderedBehavior : Behavior
     {

@@ -52,10 +52,5 @@ package com.company.assembleegameclient.ui.tooltip.slotcomparisons
       {
          return "<font color=\"" + color + "\">" + text + "</font>";
       }
-      
-      protected function getMpCostText(mpStr:String) : String
-      {
-         return this.wrapInColoredFont("MP Cost: ",LABEL_COLOR) + this.wrapInColoredFont(mpStr,NO_DIFF_COLOR) + "\n";
-      }
    }
 }

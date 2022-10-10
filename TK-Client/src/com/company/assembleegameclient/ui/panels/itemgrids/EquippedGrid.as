@@ -10,8 +10,6 @@ package com.company.assembleegameclient.ui.panels.itemgrids
    
    public class EquippedGrid extends ItemGrid
    {
-       
-      
       private const NUM_SLOTS:uint = 4;
       
       private var tiles:Vector.<EquipmentTile>;

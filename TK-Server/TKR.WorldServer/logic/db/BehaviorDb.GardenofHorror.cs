@@ -12,7 +12,7 @@ namespace TKR.WorldServer.logic
             new State(
                 new ScaleHP2(15),
                 new State("idle",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                     new PlayerWithinTransition(10, "taunt1")
                     ),
                 new State("taunt1",
@@ -55,7 +55,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.8, "return")
                     ),
                 new State("return",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable, true),
                     new Taunt("Little ones... papa is hurt!"),
                     new ReturnToSpawn(1),
                     new TimedTransition(3000, "shell")
@@ -63,7 +63,7 @@ namespace TKR.WorldServer.logic
                 new State("shell",
                     new SetAltTexture(0),
                     new RemoveConditionalEffect(ConditionEffectIndex.Invulnerable),
-                    new ConditionalEffect(ConditionEffectIndex.Armored, true),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored, true),
                     new Shoot(20, 5, shootAngle: 15, projectileIndex: 0, predictive: 1, coolDown: 1000),
                     new Spawn("Raged Piranha Plant", 1, 0.5, coolDown: 5000),
                     new Spawn("Piranha Plant", 1, 0.5, coolDown: 5000),

@@ -13,7 +13,7 @@
     <ActivateOnEquip stat="0" amount="170">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="8">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="8">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>5</FameBonus>
     <feedPower>500</feedPower>
   </Object>
@@ -35,7 +35,7 @@
     <ActivateOnEquip stat="28" amount="12">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="12">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="12">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>9</BagType>
     <FameBonus>7</FameBonus>
     <feedPower>1500</feedPower>
     <Mythical />
@@ -54,7 +54,7 @@
     <ActivateOnEquip stat="3" amount="200">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="16">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <feedPower>1000</feedPower>
     <Legendary />
@@ -74,7 +74,7 @@
     <ActivateOnEquip stat="3" amount="50">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="10">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="7">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>5</FameBonus>
     <feedPower>500</feedPower>
   </Object>
@@ -92,7 +92,7 @@
     <ActivateOnEquip stat="27" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="3" amount="120">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>5</FameBonus>
     <feedPower>500</feedPower>
   </Object>
@@ -111,7 +111,7 @@
     <ActivateOnEquip stat="3" amount="85">IncrementStat</ActivateOnEquip>
 	<ActivateOnEquip stat="22" amount="7">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="7">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>5</FameBonus>
     <feedPower>900</feedPower>
   </Object>
@@ -129,7 +129,7 @@
     <ActivateOnEquip stat="20" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="0" amount="120">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>5</FameBonus>
     <feedPower>900</feedPower>
   </Object>
@@ -148,7 +148,7 @@
     <ActivateOnEquip stat="20" amount="4">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="15">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="2">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <DisplayId>Captain's Ring</DisplayId>
   </Object>
@@ -168,7 +168,7 @@
     <ActivateOnEquip stat="26" amount="15">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="-15">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="-10">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <Legendary />
   </Object>
@@ -188,7 +188,7 @@
     <ActivateOnEquip stat="22" amount="8">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="12">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="10">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <DisplayId>Heart of the Realm</DisplayId>
   </Object>
@@ -208,7 +208,7 @@
     <ActivateOnEquip stat="20" amount="12">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="15">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="10">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <feedPower>1000</feedPower>
     <Legendary />
@@ -231,7 +231,7 @@
     <ActivateOnEquip stat="21" amount="9">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="9">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="9">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <feedPower>1000</feedPower>
     <Legendary />
@@ -254,6 +254,7 @@
     <ActivateOnEquip stat="27" amount="12">IncrementStat</ActivateOnEquip>
     <FameBonus>6</FameBonus>
     <feedPower>1000</feedPower>
+	  <BagType>8</BagType>
     <Legendary />
   </Object>
   <Object type="0x4918" id="Sourcestone">
@@ -271,7 +272,7 @@
     <ActivateOnEquip stat="21" amount="10">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="8">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <feedPower>1000</feedPower>
     <Legendary />
@@ -293,7 +294,7 @@
 	<ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="13">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="13">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
   </Object>
   <Object type="0x5406" id="All-Knowing Bookworm">
@@ -311,7 +312,7 @@
     <ActivateOnEquip stat="28" amount="8">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="25">IncrementStat</ActivateOnEquip>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
   </Object>
 	<Object type="0xa428" id="Beast Gem">
@@ -365,7 +366,7 @@
 		<ActivateOnEquip stat="21" amount="10">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="22" amount="20">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="27" amount="40">IncrementStat</ActivateOnEquip>
-		<BagType>8</BagType>
+		<BagType>9</BagType>
 		<FameBonus>8</FameBonus>
 		<Mythical />
 	</Object>

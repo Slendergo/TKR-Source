@@ -1,7 +1,9 @@
 package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
 {
-   import com.company.assembleegameclient.objects.ObjectLibrary;
-   import com.company.assembleegameclient.objects.Player;
+import com.company.assembleegameclient.objects.GameObject;
+import com.company.assembleegameclient.objects.ObjectLibrary;
+import com.company.assembleegameclient.objects.ObjectProperties;
+import com.company.assembleegameclient.objects.Player;
    import com.company.assembleegameclient.ui.panels.itemgrids.ItemGrid;
    import com.company.util.AssetLibrary;
    import com.company.util.MoreColorUtil;
@@ -12,7 +14,7 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
    
    public class EquipmentTile extends InteractiveItemTile
    {
-      
+
       private static const greyColorFilter:ColorMatrixFilter = new ColorMatrixFilter(MoreColorUtil.singleColorFilterMatrix(3552822));
        
       
@@ -22,105 +24,163 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
       
       private var minManaUsage:int;
       
-      public function EquipmentTile(id:int, parentGrid:ItemGrid, isInteractive:Boolean)
+      public function EquipmentTile(id:int, parentGrid:ItemGrid, isInteractive:Boolean, bgColor:int = -1)
       {
+         if(bgColor != -1){
+            backgroundColor = bgColor;
+         }
          super(id,parentGrid,isInteractive);
       }
       
       override public function canHoldItem(type:int) : Boolean
       {
+         if(this.itemType == ItemConstants.TALISMAN_TYPE) {
+            var properties:ObjectProperties = ObjectLibrary.propsLibrary_[type];
+            if (properties != null)
+            {
+               if(tileId < 24 && !properties.isCommonTalisman_){
+                  return false;
+               }
+               if((tileId == 26 || tileId == 27) && !properties.isMythicTalisman_){
+                  return false;
+               }
+               if((tileId == 24 || tileId == 25) && !properties.isLegendaryTalisman_){
+                  return false;
+               }
+            }
+         }
          return type <= 0 || this.itemType == ObjectLibrary.getSlotTypeFromType(type);
       }
-      
-      public function setType(type:int) : void
+
+      override public function canHoldItemPlayer(player:Player, type:int) : Boolean
+      {
+         if(this.itemType == ItemConstants.TALISMAN_TYPE) {
+            var properties:ObjectProperties = ObjectLibrary.propsLibrary_[type];
+            if (properties != null)
+            {
+               for(var i = 20; i < 28; i++){
+                  if(player.equipment_[i] == type && properties.onlyOneTalisman_){
+                     return false;
+                  }
+               }
+
+               if(tileId < 24 && !properties.isCommonTalisman_){
+                  return false;
+               }
+               if((tileId == 26 || tileId == 27) && !properties.isMythicTalisman_){
+                  return false;
+               }
+               if((tileId == 24 || tileId == 25) && !properties.isLegendaryTalisman_){
+                  return false;
+               }
+            }
+         }
+         return type <= 0 || this.itemType == ObjectLibrary.getSlotTypeFromType(type);
+      }
+
+      public function setType(type:int, darken:Boolean = true) : void
       {
          var bd:BitmapData = null;
          var dx:int = 0;
          var dy:int = 0;
-         switch(type)
-         {
+         switch(type) {
             case ItemConstants.ALL_TYPE:
                break;
             case ItemConstants.SWORD_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj5",48);
+               bd = AssetLibrary.getImageFromSet("lofiObj5", 48);
                break;
             case ItemConstants.DAGGER_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj5",96);
+               bd = AssetLibrary.getImageFromSet("lofiObj5", 96);
                break;
             case ItemConstants.BOW_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj5",80);
+               bd = AssetLibrary.getImageFromSet("lofiObj5", 80);
                break;
             case ItemConstants.TOME_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj6",80);
+               bd = AssetLibrary.getImageFromSet("lofiObj6", 80);
                break;
             case ItemConstants.SHIELD_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj6",112);
+               bd = AssetLibrary.getImageFromSet("lofiObj6", 112);
                break;
             case ItemConstants.LEATHER_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj5",0);
+               bd = AssetLibrary.getImageFromSet("lofiObj5", 0);
                break;
             case ItemConstants.PLATE_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj5",32);
+               bd = AssetLibrary.getImageFromSet("lofiObj5", 32);
                break;
             case ItemConstants.WAND_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj5",64);
+               bd = AssetLibrary.getImageFromSet("lofiObj5", 64);
                break;
             case ItemConstants.RING_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj",44);
+               bd = AssetLibrary.getImageFromSet("lofiObj", 44);
                break;
             case ItemConstants.SPELL_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj6",64);
+               bd = AssetLibrary.getImageFromSet("lofiObj6", 64);
                break;
             case ItemConstants.SEAL_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj6",160);
+               bd = AssetLibrary.getImageFromSet("lofiObj6", 160);
                break;
             case ItemConstants.CLOAK_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj6",32);
+               bd = AssetLibrary.getImageFromSet("lofiObj6", 32);
                break;
             case ItemConstants.ROBE_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj5",16);
+               bd = AssetLibrary.getImageFromSet("lofiObj5", 16);
                break;
             case ItemConstants.QUIVER_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj6",48);
+               bd = AssetLibrary.getImageFromSet("lofiObj6", 48);
                break;
             case ItemConstants.HELM_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj6",96);
+               bd = AssetLibrary.getImageFromSet("lofiObj6", 96);
                break;
             case ItemConstants.STAFF_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj5",112);
+               bd = AssetLibrary.getImageFromSet("lofiObj5", 112);
                break;
             case ItemConstants.POISON_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj6",128);
+               bd = AssetLibrary.getImageFromSet("lofiObj6", 128);
                break;
             case ItemConstants.SKULL_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj6",0);
+               bd = AssetLibrary.getImageFromSet("lofiObj6", 0);
                break;
             case ItemConstants.TRAP_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj6",16);
+               bd = AssetLibrary.getImageFromSet("lofiObj6", 16);
                break;
             case ItemConstants.ORB_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj6",144);
+               bd = AssetLibrary.getImageFromSet("lofiObj6", 144);
                break;
             case ItemConstants.PRISM_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj6",176);
+               bd = AssetLibrary.getImageFromSet("lofiObj6", 176);
                break;
             case ItemConstants.SCEPTER_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj6",192);
+               bd = AssetLibrary.getImageFromSet("lofiObj6", 192);
                break;
             case ItemConstants.KATANA_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj3",540);
+               bd = AssetLibrary.getImageFromSet("lofiObj3", 540);
                break;
             case ItemConstants.SHURIKEN_TYPE:
-               bd = AssetLibrary.getImageFromSet("lofiObj3",555);
+               bd = AssetLibrary.getImageFromSet("lofiObj3", 555);
+               break;
+            case ItemConstants.TALISMAN_TYPE:
+               bd = AssetLibrary.getImageFromSet("lofiObj3", 0);
+               dx = 1;
+               dy = 1;
+               break;
+            case ItemConstants.BOLAS_TYPE:
+               bd = AssetLibrary.getImageFromSet("lofiObj6", 0xe0);
+               break;
          }
+
          if(bd != null)
          {
             this.backgroundDetail = new Bitmap(bd);
-            this.backgroundDetail.x = BORDER;
-            this.backgroundDetail.y = BORDER;
+            this.backgroundDetail.x = BORDER + dx;
+            this.backgroundDetail.y = BORDER + dy;
             this.backgroundDetail.scaleX = 4;
             this.backgroundDetail.scaleY = 4;
-            this.backgroundDetail.filters = [greyColorFilter];
+            if(darken){
+               this.backgroundDetail.filters = [greyColorFilter];
+            }
+            if(darken){
+               this.backgroundDetail.filters = [greyColorFilter];
+            }
             addChildAt(this.backgroundDetail,0);
          }
          this.itemType = type;
@@ -175,15 +235,6 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
             else if(player.map_.disableAbilities_ && slot == 1){
                canUse = false;
             }
-
-            if(slot == 1 && player.talismanAbilityLifeCost_ > 0.0){
-               if(player.hp_ - int(player.maxHP_ * player.talismanAbilityLifeCost_) <= 1){
-                  canUse = false;
-               }
-               else{
-                  canUse = player.hp_ >= int(player.maxHP_ * player.talismanAbilityLifeCost_);
-               }
-            }
          }
          itemSprite.setDim(!canUse || player && player.mp_ < this.minManaUsage);
       }
@@ -197,10 +248,12 @@ package com.company.assembleegameclient.ui.panels.itemgrids.itemtiles
       {
          this.backgroundDetail.visible = itemSprite.itemId <= 0;
       }
-      
+
+      protected var backgroundColor:int = 4539717;
+
       override protected function getBackgroundColor() : int
       {
-         return 4539717;
+         return backgroundColor;
       }
    }
 }

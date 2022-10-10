@@ -14,7 +14,7 @@
     <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="5">IncrementStat</ActivateOnEquip>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <MpCost>100</MpCost>
     <Activate effect="Healing" duration="5" range="6" useWisMod="true">ConditionEffectAura</Activate>
@@ -34,7 +34,7 @@
     </Texture>
     <Usable />
     <SlotType>12</SlotType>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <MpCost>130</MpCost>
     <Description>
@@ -66,7 +66,7 @@
     <Description>Confidants of the Forgotten King had to show this seal in order to cross his majesty's bridge as a sign of approval.</Description>
     <Sound>spell/light_heal</Sound>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>7</FameBonus>
     <MpCost>135</MpCost>
     <Activate effect="Healing" duration="5" range="5" color="0x760000" target="player" center="player" useWisMod="true">GenericActivate</Activate>
@@ -91,7 +91,7 @@
 		<Description></Description>
 		<Sound>spell/light_heal</Sound>
 		<Usable />
-		<BagType>7</BagType>
+		<BagType>8</BagType>
 		<FameBonus>7</FameBonus>
 		<MpCost>125</MpCost>
 		<Activate effect="Healing" duration="5" range="6" color="0x760000" target="player" center="player" useWisMod="true">GenericActivate</Activate>

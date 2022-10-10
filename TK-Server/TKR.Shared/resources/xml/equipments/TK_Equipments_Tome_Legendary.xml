@@ -16,7 +16,7 @@
     <ActivateOnEquip stat="3" amount="40">IncrementStat</ActivateOnEquip>
     <Usable />
     <FameBonus>5</FameBonus>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <MpCost>100</MpCost>
     <Activate amount="350" range="5" useWisMod="false">HealNova</Activate>
     <Activate effect="Healing" duration="3.5" range="3">ConditionEffectAura</Activate>
@@ -38,7 +38,7 @@
     <ActivateOnEquip stat="0" amount="85">IncrementStat</ActivateOnEquip>
     <Usable />
     <FameBonus>7</FameBonus>
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <MpCost>140</MpCost>
     <Activate amount="175" range="6" useWisMod="true">HealNova</Activate>
 	<Activate range="6">RemoveNegativeConditions</Activate>
@@ -60,7 +60,7 @@
 		<ActivateOnEquip stat="3" amount="65">IncrementStat</ActivateOnEquip>
 		<Usable />
 		<FameBonus>5</FameBonus>
-		<BagType>7</BagType>
+		<BagType>8</BagType>
 		<MpCost>100</MpCost>
 		<Activate amount="325" range="3" useWisMod="false">HealNova</Activate>
 		<Activate effect="Damaging" duration="3" useWisMod="false">ConditionEffectSelf</Activate>

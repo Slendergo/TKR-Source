@@ -1,4 +1,5 @@
-﻿using TKR.Shared;
+﻿using System;
+using TKR.Shared;
 using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.networking;
 
@@ -13,14 +14,7 @@ namespace TKR.WorldServer.core.net.handlers
             var bulletId = rdr.ReadInt32();
             var objectId = rdr.ReadInt32();
 
-            var player = client.Player;
-            if (player?.World == null)
-                return;
-
-            var prj = player.World.GetProjectile(objectId, bulletId);
-            if (prj == null)
-                return;
-            prj?.ForceHit(player, tickTime);
+            client.Player.PlayerHit(bulletId, objectId);
         }
     }
 }

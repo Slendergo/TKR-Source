@@ -216,6 +216,20 @@ public class GameObject extends BasicObject {
     private var hpBarPath:GraphicsPath = null;
     private var hpBarBackFillMatrix:Matrix = null;
     private var hpBarFillMatrix:Matrix = null;
+    public var talismanEffectMask_:int;
+
+    public static const None:int = 0;
+    public static const WEAK_IMMUNITY:int = 1;
+    public static const CALL_TO_ARMS:int = 2;
+    public static const PARTY_OF_ONE:int = 3;
+    public static const POCKET_CHAMGE:int = 4;
+    public static const STUN_IMMUNITY:int = 5;
+    public static const LUCK_OF_THE_IRISH:int = 6;
+    public static const KNOWN_AFTER_DEATH:int = 7;
+
+    public function HasTalismanEffect(effect:int) : Boolean{
+        return (talismanEffectMask_ & (1 << (effect - 1))) != 0;
+    }
 
     override public function dispose():void {
         var obj:Object = null;
@@ -588,7 +602,7 @@ public class GameObject extends BasicObject {
     }
 
     public function isUnstableImmune():Boolean {
-        return (this.condition_[0] & ConditionEffect.UNSTABLEIMMUNE_BIT) != 0;
+        return (this.condition_[1] & ConditionEffect.UNSTABLEIMMUNE_BIT) != 0;
     }
 
     public function isStunned():Boolean {
@@ -648,11 +662,11 @@ public class GameObject extends BasicObject {
     }
 
     public function isNinjaBerserk():Boolean {
-        return (this.condition_[0] & ConditionEffect.NINJABERSERK_BIT) != 0;
+        return (this.condition_[1] & ConditionEffect.NINJABERSERK_BIT) != 0;
     }
 
     public function isNinjaDamaging():Boolean {
-        return (this.condition_[0] & ConditionEffect.NINJADAMAGING_BIT) != 0;
+        return (this.condition_[1] & ConditionEffect.NINJADAMAGING_BIT) != 0;
     }
 
     public function isPaused():Boolean {
@@ -660,7 +674,7 @@ public class GameObject extends BasicObject {
     }
 
     public function isHidden():Boolean {
-        return (this.condition_[0] & ConditionEffect.HIDDEN_BIT) != 0;
+        return (this.condition_[1] & ConditionEffect.HIDDEN_BIT) != 0;
     }
 
     public function isCursed():Boolean {
@@ -721,7 +735,7 @@ public class GameObject extends BasicObject {
 
     public function getBulletId():uint {
         var ret:uint = this.nextBulletId_;
-        this.nextBulletId_ = (this.nextBulletId_ + 1) % 0xFFFF;
+        this.nextBulletId_ = this.nextBulletId_ + 1;
         return ret;
     }
 
@@ -876,15 +890,16 @@ public class GameObject extends BasicObject {
             if(pierce && proj.ownerId_ == map_.player_.objectId_){
                 pierced = true;
             }
-            var _loc4_:CharacterStatusText = null;
-            var _loc3_:String = "-" + damageAmount + " [" + (this.hp_ - damageAmount) + "]";
-            if (Parameters.data_.dynamicHPcolor) {
-                _loc4_ = new CharacterStatusText(this, _loc3_, pierced ? (9437439) : (Character.green2redu((this.hp_ - damageAmount) * 100 / this.maxHP_)), 1000);
-            }
-            else {
-                _loc4_ = new CharacterStatusText(this, _loc3_, pierced ? (9437439) : (16711680), 1000);
-            }
-            map_.mapOverlay_.addStatusText(_loc4_);
+
+//            if (Parameters.data_.dynamicHPcolor) {
+//                _loc4_ = new CharacterStatusText(this, _loc3_, pierced ? (9437439) : (Character.green2redu((this.hp_ - damageAmount) * 100 / this.maxHP_)), 1000);
+//            }
+//            else {
+//            }
+
+            var text:String = "-" + damageAmount;
+            var statusText:CharacterStatusText = new CharacterStatusText(this, text, pierced ? (9437439) : (16711680), 1000, 0, true);
+            map_.mapOverlay_.addStatusText(statusText);
 
             rtHp_ -= damageAmount;
             if(rtHp_ < 0)

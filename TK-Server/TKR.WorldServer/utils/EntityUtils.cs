@@ -212,9 +212,8 @@ namespace TKR.WorldServer.utils
                 case 9:
                 case 10:
                 case 11:
-                    e.InvokeStatChange(
-                        (StatDataType)((int)StatDataType.Inventory0 + slot),
-                        (e as IContainer).Inventory[slot]?.ObjectType ?? -1);
+                    e.InvokeStatChange((StatDataType)((int)StatDataType.Inventory0 + slot), (e as IContainer).Inventory[slot]?.ObjectType ?? -1);
+                    e.InvokeStatChange((StatDataType)((int)StatDataType.InventoryData0 + slot), (e as IContainer).Inventory.Data[slot]?.GetData() ?? "{}");
                     break;
 
                 case 12:
@@ -225,37 +224,21 @@ namespace TKR.WorldServer.utils
                 case 17:
                 case 18:
                 case 19:
-                    e.InvokeStatChange(
-                        (StatDataType)((int)StatDataType.BackPack0 + slot),
-                        (e as IContainer).Inventory[slot]?.ObjectType ?? -1);
-                    break;
-
-                case 122:
-                case 123:
-                case 124:
-                case 125:
-                case 126:
-                case 127:
-                case 128:
-                case 129:
-                case 130:
-                case 131:
-                case 132:
-                case 133:
-                    e.InvokeStatChange((StatDataType)((int)StatDataType.InventoryData0 + slot), (e as IContainer).Inventory.Data[slot]?.GetData() ?? "{}");
-                    break;
-
-                case 134:
-                case 135:
-                case 136:
-                case 137:
-                case 138:
-                case 139:
-                case 140:
-                case 141:
+                    e.InvokeStatChange((StatDataType)((int)StatDataType.BackPack0 + slot), (e as IContainer).Inventory[slot]?.ObjectType ?? -1);
                     e.InvokeStatChange((StatDataType)((int)StatDataType.BackPackData0 + slot), (e as IContainer).Inventory.Data[slot]?.GetData() ?? "{}");
                     break;
 
+                case 20:
+                case 21:
+                case 22:
+                case 23:
+                case 24:
+                case 25:
+                case 26:
+                case 27:
+                    e.InvokeStatChange((StatDataType)((int)StatDataType.TALISMAN_0_STAT + slot), (e as IContainer).Inventory[slot]?.ObjectType ?? -1);
+                    e.InvokeStatChange((StatDataType)((int)StatDataType.TALISMANDATA_0_STAT + slot), (e as IContainer).Inventory.Data[slot]?.GetData() ?? "{}");
+                    break;
 
                 case 254:
                     e.InvokeStatChange(

@@ -10,17 +10,17 @@ namespace TKR.WorldServer.logic
         private _ Woodland = () => Behav()
         .Init("Woodland Weakness Turret",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new Shoot(25, projectileIndex: 0, count: 8, coolDown: 3000, coolDownOffset: 2500)
                 ))
         .Init("Woodland Silence Turret",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new Shoot(25, projectileIndex: 0, count: 8, coolDown: 3000, coolDownOffset: 2500)
                 ))
         .Init("Woodland Paralyze Turret",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new Shoot(25, projectileIndex: 0, count: 8, coolDown: 3000, coolDownOffset: 2500)
                 ))
 
@@ -84,7 +84,7 @@ namespace TKR.WorldServer.logic
             )
         .Init("Blood Ground Effector",
             new State(
-                new ConditionalEffect(ConditionEffectIndex.Invincible),
+                new ConditionEffectBehavior(ConditionEffectIndex.Invincible),
                 new ApplySetpiece("Puke"),
                 new Suicide()
                 ))
@@ -94,7 +94,7 @@ namespace TKR.WorldServer.logic
                 new ScaleHP2(20),
                 new State(
 
-                    new ConditionalEffect(ConditionEffectIndex.Armored),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored),
                     new Follow(0.8, 8, 1),
                     new Shoot(8.4, count: 1, fixedAngle: 50, projectileIndex: 0, coolDown: 1750),
                     new Shoot(8.4, count: 1, fixedAngle: 140, projectileIndex: 0, coolDown: 1750),
@@ -108,13 +108,13 @@ namespace TKR.WorldServer.logic
                     new DamageTakenTransition(12500, "tran")
                     ),
                 new State("tran",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Flash(0xFF0000, 2, 2),
                     new TimedTransition(3350, "home")
                     ),
                 new State("home",
                     new TransformOnDeath("Epic Mama Megamoth", 1, 1),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Flash(0xFF0000, 2, 2),
                     new Suicide()
                     )
@@ -146,13 +146,13 @@ namespace TKR.WorldServer.logic
                     new DamageTakenTransition(14000, "tran")
                     ),
                 new State("tran",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Flash(0xFF0000, 2, 2),
                     new TimedTransition(3350, "home")
                     ),
                 new State("home",
                     new TransformOnDeath("Murderous Megamoth", 1, 1),
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Flash(0xFF0000, 2, 2),
                     new Suicide()
                     )

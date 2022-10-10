@@ -14,7 +14,7 @@
     <ActivateOnEquip stat="22" amount="3">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="8">IncrementStat</ActivateOnEquip>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>4</FameBonus>
     <MpCost>110</MpCost>
     <Activate radius="4.5" totalDamage="1000" condEffect="Paralyzed" condDuration="4.5">Trap</Activate>
@@ -32,7 +32,7 @@
 		<Description>Screams from the trapped souls echo through the silence when left alone.</Description>
 		<Usable />
 		<Mutilate />
-		<BagType>7</BagType>
+		<BagType>8</BagType>
 		<MpCost>95</MpCost>
 		<ActivateOnEquip stat="22" amount="7">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="28" amount="7">IncrementStat</ActivateOnEquip>
@@ -51,7 +51,7 @@
 		  <SlotType>20</SlotType>
 		  <Description>A lush lotus flower that grew along with Plantera. The leaves seem to have dim properties of magic flowing through the roots.</Description>
 		  <Usable />
-		  <BagType>7</BagType>
+		  <BagType>8</BagType>
 		  <FameBonus>4</FameBonus>
 		  <MpCost>85</MpCost>
 		  <Activate radius="3" totalDamage="450" condEffect="Paralyzed" condDuration="2">Trap</Activate>

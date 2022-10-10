@@ -68,12 +68,13 @@ import com.company.assembleegameclient.ui.StatusBar;
             this.expBar_.labelText_.text = lvlText;
             this.expBar_.labelText_.updateMetrics();
          }
-         this.mpBar_.visible = !player.talismanNoManaBar_;
-         if(player.talismanNoManaBar_){
-            this.hpBar_.h_ = 36;
-         }else{
-            this.hpBar_.h_ = 16;
-         }
+         this.mpBar_.visible = true;
+//         if(player.talismanNoManaBar_){
+//            this.hpBar_.h_ = 36;
+//         }else{
+//            this.hpBar_.h_ = 16;
+//         }
+         this.hpBar_.h_ = 16;
          if(player.level_ != 20)
          {
             if(!this.expBar_.visible)

@@ -79,7 +79,7 @@ namespace TKR.WorldServer.core.miscfile.stats
             var min = dmg * 3 / 20;
             var d = (double)Math.Max(min, dmg - def);
 
-            if (host.HasConditionEffect(ConditionEffectIndex.Invulnerable))
+            if (host.HasConditionEffect(ConditionEffectIndex.Invulnerable) || host.HasConditionEffect(ConditionEffectIndex.Invincible))
                 d = 0;
 
             if (host.HasConditionEffect(ConditionEffectIndex.Petrify))
@@ -253,15 +253,16 @@ namespace TKR.WorldServer.core.miscfile.stats
             float limit = dmg * 0.15f;
 
             float ret;
-            if (dmg - def < limit) ret = limit;
-            else ret = dmg - def;
+            if (dmg - def < limit) 
+                ret = limit;
+            else 
+                ret = dmg - def;
 
             if (Owner.HasConditionEffect(ConditionEffectIndex.Petrify))
                 ret = (int)(ret * .9);
             if (Owner.HasConditionEffect(ConditionEffectIndex.Curse))
                 ret = (int)(ret * 1.20);
-            if (Owner.HasConditionEffect(ConditionEffectIndex.Invulnerable) ||
-                Owner.HasConditionEffect(ConditionEffectIndex.Invincible))
+            if (Owner.HasConditionEffect(ConditionEffectIndex.Invulnerable) || Owner.HasConditionEffect(ConditionEffectIndex.Invincible))
                 ret = 0;
             return ret;
         }

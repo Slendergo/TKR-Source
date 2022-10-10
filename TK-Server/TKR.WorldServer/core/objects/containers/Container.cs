@@ -23,8 +23,6 @@ namespace TKR.WorldServer.core.objects.containers
         public Inventory Inventory { get; private set; }
         public int[] SlotTypes { get; private set; }
 
-        public override bool HitByProjectile(Projectile projectile, TickTime time) => false;
-
         public override void Tick(ref TickTime time)
         {
             if (Inventory == null)
@@ -89,12 +87,6 @@ namespace TKR.WorldServer.core.objects.containers
                 Array.Resize(ref inv, BagSize);
                 Inventory.SetItems(inv);
             }
-        }
-
-        public override void Destroy()
-        {
-            Inventory = null;
-            base.Destroy();
         }
     }
 }

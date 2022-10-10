@@ -5,7 +5,7 @@ using TKR.WorldServer.core.miscfile.datas;
 
 namespace TKR.WorldServer.networking.packets.outgoing
 {
-    public class NewTick : OutgoingMessage
+    public sealed class NewTick : OutgoingMessage
     {
         public int TickId { get; set; }
         public int TickTime { get; set; }
@@ -18,7 +18,7 @@ namespace TKR.WorldServer.networking.packets.outgoing
             Statuses = new List<ObjectStats>();
         }
 
-        protected override void Write(NWriter wtr)
+        public override void Write(NWriter wtr)
         {
             wtr.Write(TickId);
             wtr.Write(TickTime);

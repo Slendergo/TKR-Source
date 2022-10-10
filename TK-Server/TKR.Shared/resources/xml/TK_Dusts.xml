@@ -208,23 +208,38 @@
 
 	<TalismanFragment>
 		<ItemPool>
-			<Item weight="10">Pocket Change</Item>
-			<Item weight="10">Path of Destruction</Item>
-			<Item weight="10">Heart and Soul</Item>
-			<Item weight="10">Blood Exchange</Item>
-			<Item weight="10">Eternal Youth</Item>
-			<Item weight="10">Unyielding Resilience</Item>
-			<Item weight="10">Wrath's Incarnate</Item>
-			<Item weight="10">Primal Rage</Item>
-			<Item weight="10">Call to Arms</Item>
-			<Item weight="10">Divine Intellect</Item>
-			<Item weight="10">Insatiable Thirst</Item>
-			<Item weight="10">Spellslinger</Item>
-			<Item weight="10">Iron Will</Item>
-			<Item weight="10">Party of One</Item>
-			<Item weight="10">Forbidden Fruit</Item>
-			<Item weight="10">Known After Death</Item>
-			<Item weight="10">Luck of the Irish</Item>
+			<!-- Common Talisman Easy to Get -->
+			<Item weight="10000">Talisman of Life</Item>
+			<Item weight="10000">Talisman of Mana</Item>
+			<Item weight="10500">Talisman of Attack</Item>
+			<Item weight="10500">Talisman of Defense</Item>
+			<Item weight="11000">Talisman of Speed</Item>
+			<Item weight="11000">Talisman of Dexterity</Item>
+			<Item weight="11500">Talisman of Vitality</Item>
+			<Item weight="11500">Talisman of Wisdom</Item>
+
+			<!-- Common Talisman Hard to Get -->
+			<Item weight="8000">Pocket Change</Item>
+			<Item weight="7500">Path of Destruction</Item> 
+			<Item weight="7500">Heart and Soul</Item>
+			
+			<!-- Common Talisman Very Hard to Get -->
+			<Item weight="5000">Talisman of Empowerment</Item>
+			
+			<!--Legendary Talisman Easy to Get-->
+			<Item weight="2500">Talisman of Unweakening</Item>
+			<Item weight="2700">Call to Arms</Item>  
+			<Item weight="2700">Eternal Youth</Item>  
+			<Item weight="2700">Unyielding Resilience</Item>  
+			<Item weight="2700">Divine Intellect</Item>  
+			<Item weight="2500">Party of One</Item>
+			
+			<!--Mythical Talisman Easy to Get-->
+			<Item weight="2400">Hard Head</Item>
+			<Item weight="2500">Known After Death</Item>
+			
+			<!--Mythical Talisman Very Hard to Get-->
+			<Item weight="1250">Luck of the Irish</Item>
 		</ItemPool>
 	</TalismanFragment>
 

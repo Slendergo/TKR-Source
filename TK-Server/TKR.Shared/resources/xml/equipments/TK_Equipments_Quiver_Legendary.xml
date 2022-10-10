@@ -25,7 +25,7 @@
     <ActivateOnEquip stat="28" amount="6">IncrementStat</ActivateOnEquip>
     <ConditionEffect duration="4">Dazed</ConditionEffect>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <MpCost>95</MpCost>
     <Activate>Shoot</Activate>
@@ -52,15 +52,13 @@
       <MaxDamage>1250</MaxDamage>
       <LifetimeMS>625</LifetimeMS>
       <Size>120</Size>
-      <MultiHit />
       <ArmorPiercing />
       <ParticleTrail lifetimeMS="150">0x380087</ParticleTrail>
-      <ConditionEffect duration="5">Slowed</ConditionEffect>
     </Projectile>
     <ActivateOnEquip stat="21" amount="7">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="5">IncrementStat</ActivateOnEquip>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <MpCost>95</MpCost>
     <ArcGap>5</ArcGap>
@@ -87,16 +85,15 @@
       <MaxDamage>1000</MaxDamage>
       <LifetimeMS>700</LifetimeMS>
       <Size>120</Size>
-      <MultiHit />
       <PassesCover />
       <ConditionEffect duration="5">Curse</ConditionEffect>
-	<ConditionEffect duration="4">Paralyzed</ConditionEffect>
+	    <ConditionEffect duration="4">Slowed</ConditionEffect>
     </Projectile>
     <ActivateOnEquip stat="20" amount="4">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
     <Usable />
-    <BagType>6</BagType>
+    <BagType>8</BagType>
     <FameBonus>4</FameBonus>
     <MpCost>90</MpCost>
     <ArcGap>2</ArcGap>
@@ -122,7 +119,6 @@
         <MaxDamage>400</MaxDamage>
         <LifetimeMS>700</LifetimeMS>
         <Size>120</Size>
-        <MultiHit />
         <ArmorPiercing />
         <PassesCover />
         <ConditionEffect duration="2.5">Armor Broken</ConditionEffect>
@@ -131,7 +127,7 @@
 		<ActivateOnEquip stat="20" amount="3">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="28" amount="3">IncrementStat</ActivateOnEquip>
-      <BagType>7</BagType>
+      <BagType>8</BagType>
       <FameBonus>4</FameBonus>
       <MpCost>110</MpCost>
       <ArcGap>6</ArcGap>

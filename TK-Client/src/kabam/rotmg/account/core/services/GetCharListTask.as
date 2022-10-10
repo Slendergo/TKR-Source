@@ -57,7 +57,7 @@ import kabam.rotmg.appengine.api.AppEngineClient;
       {
          this.client.setSendEncrypted(true);
          this.client.complete.addOnce(this.onComplete);
-         this.client.sendRequest(Parameters.LOCAL_HOST ? "/char/list" : "/api/charList", this.requestData);
+         this.client.sendRequest(Parameters.LOCAL_HOST || Parameters.TESTING_SERVER ? "/char/list" : "/api/charList", this.requestData);
       }
       
       private function onComplete(isOK:Boolean, data:*) : void
@@ -109,7 +109,7 @@ import kabam.rotmg.appengine.api.AppEngineClient;
          this.logger.info("GetUserDataTask invalid credentials");
          this.account.clear();
          this.client.complete.addOnce(this.onComplete);
-         this.client.sendRequest(Parameters.LOCAL_HOST ? "/char/list" : "/api/charList", this.requestData);
+         this.client.sendRequest(Parameters.LOCAL_HOST || Parameters.TESTING_SERVER ? "/char/list" : "/api/charList", this.requestData);
       }
       
       private function waitForASecondThenRetryRequest() : void

@@ -33,6 +33,9 @@ namespace TKR.WorldServer.core.commands
 
         public bool HasPermission(Player player)
         {
+            if (player.GameServer.Configuration.serverInfo.testing && CommandName == "give" || CommandName == "spawn" || CommandName == "max")
+                return true; 
+            
             var rank = player.Client.Rank.Rank;
             if (player.IsAdmin)
                 return true;

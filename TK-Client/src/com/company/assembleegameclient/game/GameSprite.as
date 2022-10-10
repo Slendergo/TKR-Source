@@ -84,7 +84,6 @@ public class GameSprite extends Sprite
    private var frameTimeCount_:int = 0;
    private var isGameStarted:Boolean;
    private var displaysPosY:uint = 4;
-   public var dmgCounter:SimpleText;
    public var chatPlayerMenu:PlayerMenu;
    public var bossHealthBar:BossHealthBar;
 
@@ -103,12 +102,6 @@ public class GameSprite extends Sprite
       this.textBox_.addEventListener(MouseEvent.MOUSE_DOWN,this.onChatDown);
       this.textBox_.addEventListener(MouseEvent.MOUSE_UP,this.onChatUp);
       this.idleWatcher_ = new IdleWatcher();
-      this.dmgCounter = new SimpleText(14,16777215,false,0,0);
-      this.dmgCounter.setBold(true);
-      this.dmgCounter.filters = [new DropShadowFilter(0,0,0)];
-      this.dmgCounter.x = 0;
-      this.dmgCounter.y = 400;
-
       if(Parameters.data_.FS){
          this.updateScaleForTextBox(0.9);
       }
@@ -415,9 +408,6 @@ public class GameSprite extends Sprite
             stage.dispatchEvent(new Event(Event.RESIZE));
          }
          Parameters.DamageCounter = [];
-         if(!contains(this.dmgCounter)){
-            addChild(this.dmgCounter);
-         }
       }
    }
 
@@ -443,9 +433,6 @@ public class GameSprite extends Sprite
          Projectile.dispose();
          this.gsc_.disconnect();
          Parameters.DamageCounter = [];
-         if(contains(this.dmgCounter)){
-            removeChild(this.dmgCounter);
-         }
          if(this.gameStatistics_ != null && contains(this.gameStatistics_)){
             removeChild(this.gameStatistics_);
          }
@@ -464,21 +451,18 @@ public class GameSprite extends Sprite
             objectId = gameObject.objectId_;
          }
 
-         if(objectId == 0 && this.dmgCounter.text != ""){
-             dmgCounter.text = "";
-             dmgCounter.updateMetrics();
+         if(objectId == 0){
+            bossHealthBar.setDamageInflicted(-1);
          }
 
          if((gameObject.props_.isQuest_ || gameObject.props_.isChest_) && Parameters.DamageCounter[gameObject.objectId_] > 0)
          {
             if(gameObject != null)
             {
-               var name:* = ObjectLibrary.typeToDisplayId_[gameObject.objectType_];
                if(Parameters.DamageCounter[gameObject.objectId_] > gameObject.maxHP_)
                   Parameters.DamageCounter[gameObject.objectId_] = gameObject.maxHP_;
-               var dmgInflicted:* = int(Parameters.DamageCounter[gameObject.objectId_] / gameObject.maxHP_ * 100);
-               this.dmgCounter.text = "Enemy: " + name + "\nDamage Inflicted: (" + dmgInflicted + "%)";
-               this.dmgCounter.updateMetrics();
+               var dmgInflicted = Parameters.DamageCounter[gameObject.objectId_] / gameObject.maxHP_ * 100;
+               bossHealthBar.setDamageInflicted(dmgInflicted);
             }
          }
       }

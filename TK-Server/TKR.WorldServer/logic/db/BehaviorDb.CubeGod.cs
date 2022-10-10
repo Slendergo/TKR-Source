@@ -26,7 +26,7 @@ namespace TKR.WorldServer.logic
                     new HpLessTransition(0.06, "SpawnMed")
                     ),
                 new State("SpawnMed",
-                    new ConditionalEffect(ConditionEffectIndex.Invulnerable),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),
                     new Flash(0xFF0000, 1, 4),
                     new TimedTransition(4000, "Suicide")
                     ),
@@ -65,7 +65,7 @@ namespace TKR.WorldServer.logic
                 new ScaleHP2(20),
                 new Wander(0.3),
                 new State("Start",
-                    new ConditionalEffect(ConditionEffectIndex.Armored),
+                    new ConditionEffectBehavior(ConditionEffectIndex.Armored),
                     new Shoot(radius: 30, count: 5, shootAngle: 10, projectileIndex: 0, predictive: .5, coolDown: 750),
                     new Shoot(30, 4, 10, 1, predictive: .5, coolDown: 1500)
                     )

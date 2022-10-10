@@ -105,7 +105,7 @@ namespace TKR.WorldServer.logic.behaviors
                             {
                                 var item = player.Inventory[i];
 
-                                if (item == null || !item.Legendary && !item.Revenge && !item.Eternal && !item.Mythical)
+                                if (item == null || !item.Legendary && !item.Mythical)
                                     continue;
                                 if (i == 0)
                                     itemCount = itemCount + 19;

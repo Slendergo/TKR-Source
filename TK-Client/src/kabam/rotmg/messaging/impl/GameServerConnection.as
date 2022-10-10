@@ -141,7 +141,6 @@ import kabam.rotmg.messaging.impl.incoming.market.MarketMyOffersResult;
 import kabam.rotmg.messaging.impl.incoming.market.MarketRemoveResult;
 import kabam.rotmg.messaging.impl.incoming.market.MarketSearchResult;
 import kabam.rotmg.messaging.impl.incoming.party.InvitedToParty;
-import kabam.rotmg.messaging.impl.incoming.talisman.TalismanEssenceData;
 import kabam.rotmg.messaging.impl.outgoing.AcceptTrade;
 import kabam.rotmg.messaging.impl.outgoing.AoeAck;
 import kabam.rotmg.messaging.impl.outgoing.Buy;
@@ -190,20 +189,17 @@ import kabam.rotmg.messaging.impl.outgoing.market.MarketRemove;
 import kabam.rotmg.messaging.impl.outgoing.market.MarketSearch;
 import kabam.rotmg.messaging.impl.outgoing.party.JoinParty;
 import kabam.rotmg.messaging.impl.outgoing.party.PartyInvite;
-import kabam.rotmg.messaging.impl.outgoing.potionStorage.PotionStorage;
-import kabam.rotmg.messaging.impl.outgoing.potionStorage.PotionStorage;
-import kabam.rotmg.messaging.impl.outgoing.talisman.TalismanEssenceAction;
 import kabam.rotmg.minimap.control.UpdateGameObjectTileSignal;
 import kabam.rotmg.minimap.control.UpdateGroundTileSignal;
 import kabam.rotmg.minimap.model.UpdateGroundTileVO;
 import kabam.rotmg.servers.api.Server;
 import kabam.rotmg.ui.model.Key;
 import kabam.rotmg.ui.model.UpdateGameObjectTileVO;
-import kabam.rotmg.ui.signals.EternalPopUpSignal;
 import kabam.rotmg.ui.signals.LegendaryPopUpSignal;
-import kabam.rotmg.ui.signals.RevengePopUpSignal;
+import kabam.rotmg.ui.signals.MythicalPopUpSignal;
 import kabam.rotmg.ui.signals.ShowKeySignal;
 import kabam.rotmg.ui.signals.ShowKeyUISignal;
+import kabam.rotmg.ui.signals.TalismanPopUpSignal;
 import kabam.rotmg.ui.signals.UpdateBackpackTabSignal;
 import kabam.rotmg.ui.view.FlexibleDialog;
 
@@ -326,9 +322,6 @@ public class GameServerConnection
       public static const POTION_STORAGE_INTERACTION:int = 92;
       public static const POTIONSTORAGEREQUEST:int = 93;
       public static const USEPOTION:int = 94;
-
-      public static const TALISMAN_ESSENCE_DATA:int = 100;
-      public static const TALISMAN_ESSENCE_ACTION:int = 101;
 
       public static const ENGINE_FUEL_ACTION:int = 102;
 
@@ -544,8 +537,6 @@ public class GameServerConnection
          messages.map(POTION_STORAGE_INTERACTION).toMessage(PotionStorageInteraction);
          messages.map(USEPOTION).toMessage(UsePotion);
 
-         messages.map(TALISMAN_ESSENCE_DATA).toMessage(TalismanEssenceData).toMethod(this.onTalismanEssenceData);
-         messages.map(TALISMAN_ESSENCE_ACTION).toMessage(TalismanEssenceAction);
          messages.map(AOEACK).toMessage(AoeAck);
          messages.map(SHOOTACK).toMessage(ShootAck);
       }
@@ -649,19 +640,6 @@ public class GameServerConnection
 
          /* Music */
          messages.unmap(SWITCH_MUSIC);
-
-         messages.unmap(TALISMAN_ESSENCE_DATA);
-         messages.unmap(TALISMAN_ESSENCE_ACTION);
-      }
-
-      private function onTalismanEssenceData(talismanEssenceData:TalismanEssenceData):void {
-         if(this.player){
-            this.player.essence_ = talismanEssenceData.essence_;
-            this.player.essenceCap_ = talismanEssenceData.essenceCap_;
-            for(var i:int = 0; i < talismanEssenceData.talismans_.length; i++){
-               this.player.addTalisman(talismanEssenceData.talismans_[i]);
-            }
-         }
       }
 
       private function onSwitchMusic(sm:SwitchMusic):void {
@@ -687,15 +665,6 @@ public class GameServerConnection
          {
             this.jitterWatcher_ = null;
          }
-      }
-
-      public function talismanAction(actionType:int, type:int, amount:int):void
-      {
-         var action:TalismanEssenceAction = this.messages.require(TALISMAN_ESSENCE_ACTION) as TalismanEssenceAction;
-         action.actionType_ = actionType;
-         action.type_ = type;
-         action.amount_ = amount;
-         this.serverConnection.sendMessage(action);
       }
 
       private function create() : void
@@ -1251,7 +1220,7 @@ public class GameServerConnection
          {
             proj = FreeList.newObject(Projectile) as Projectile;
             angle = enemyShoot.angle_ + enemyShoot.angleInc_ * i;
-            proj.reset(owner.objectType_,enemyShoot.bulletType_,enemyShoot.ownerId_,(enemyShoot.bulletId_ + i) % 0xFFFF, angle,this.gs_.lastUpdate_);
+            proj.reset(owner.objectType_,enemyShoot.bulletType_,enemyShoot.ownerId_,enemyShoot.bulletId_ + i, angle,this.gs_.lastUpdate_);
             proj.setDamage(enemyShoot.damage_);
             this.gs_.map.addObj(proj,enemyShoot.startingPos_.x_,enemyShoot.startingPos_.y_);
             proj.addTo(this.gs_.map, enemyShoot.startingPos_.x_, enemyShoot.startingPos_.y_);
@@ -1294,21 +1263,18 @@ public class GameServerConnection
       {
          var map:Map = this.gs_.map;
          var go:GameObject = ObjectLibrary.getObjectFromType(obj.objectType_);
-         if(go == null)
-         {
+         if(go == null) {
             trace("unhandled object type: " + obj.objectType_);
             return;
          }
          var status:ObjectStatusData = obj.status_;
          go.setObjectId(status.objectId_);
          map.addObj(go,status.pos_.x_,status.pos_.y_);
-         if(go is Player)
-         {
+         if(go is Player) {
             this.handleNewPlayer(go as Player,map);
          }
          this.processObjectStatus(status,0,-1);
-         if(go.props_.static_ && go.props_.occupySquare_ && !go.props_.noMiniMap_)
-         {
+         if(go.props_.static_ && go.props_.occupySquare_ && !go.props_.noMiniMap_) {
             this.updateGameObjectTileSignal.dispatch(new UpdateGameObjectTileVO(go.x_,go.y_,go));
          }
       }
@@ -1327,26 +1293,26 @@ public class GameServerConnection
       }
 
       private function onUpdate(update:Update):void {
-         var quantity:int;
-         var groundData:GroundTileData;
-         var _local2:Message = this.messages.require(UPDATEACK);
-         serverConnection.sendMessage(_local2);
-         quantity = 0;
-         while (quantity < update.tiles_.length) {
-            groundData = update.tiles_[quantity];
-            gs_.map.setGroundTile(groundData.x_, groundData.y_, groundData.type_);
-            this.updateGroundTileSignal.dispatch(new UpdateGroundTileVO(groundData.x_, groundData.y_, groundData.type_));
-            quantity++;
+         var updateAck:Message = this.messages.require(UPDATEACK);
+         serverConnection.sendMessage(updateAck);
+
+         var i:int = 0;
+         var tile:GroundTileData;
+         while (i < update.tiles_.length) {
+            tile = update.tiles_[i];
+            gs_.map.setGroundTile(tile.x_, tile.y_, tile.type_);
+            this.updateGroundTileSignal.dispatch(new UpdateGroundTileVO(tile.x_, tile.y_, tile.type_));
+            i++;
          }
-         quantity = 0;
-         while (quantity < update.drops_.length) {
-            gs_.map.removeObj(update.drops_[quantity]);
-            quantity++;
+         i = 0;
+         while (i < update.newObjs_.length) {
+            this.addObject(update.newObjs_[i]);
+            i++;
          }
-         quantity = 0;
-         while (quantity < update.newObjs_.length) {
-            this.addObject(update.newObjs_[quantity]);
-            quantity++;
+         i = 0;
+         while (i < update.drops_.length) {
+            gs_.map.removeObj(update.drops_[i]);
+            i++;
          }
       }
 
@@ -1392,30 +1358,25 @@ public class GameServerConnection
             case "showKeyUI":
                ShowKeyUISignal.instance.dispatch();
                break;
-            case "legloot":
+            case "legendary_loot":
                LegendaryPopUpSignal.instance.dispatch();
                break;
-            case "revloot":
-               RevengePopUpSignal.instance.dispatch();
+            case "mythical_loot":
+               MythicalPopUpSignal.instance.dispatch();
                break;
-             case "monkeyKing":
-                 RevengePopUpSignal.instance.dispatch();
-                 break;
-             case "eternalloot":
-                 EternalPopUpSignal.instance.dispatch();
+            case "talisman_loot":
+               TalismanPopUpSignal.instance.dispatch();
                break;
          }
       }
 
       private function onNewTick(newTick:NewTick) : void
       {
-         //this.addTextLine.dispatch(new AddTextLineVO("","TickTime: " + newTick.tickTime_));
-         var objectStatus:ObjectStatusData = null;
-         if(this.jitterWatcher_ != null)
-         {
+         if(this.jitterWatcher_ != null){
             this.jitterWatcher_.record();
          }
          this.move(newTick.tickId_,this.player);
+         var objectStatus:ObjectStatusData = null;
          for each(objectStatus in newTick.statuses_)
          {
             this.processObjectStatus(objectStatus,newTick.tickTime_,newTick.tickId_);
@@ -1819,109 +1780,120 @@ public class GameServerConnection
                   index = stat.statType_ - StatData.BACKPACK_0_STAT + GeneralConstants.NUM_EQUIPMENT_SLOTS + GeneralConstants.NUM_INVENTORY_SLOTS;
                   (go as Player).equipment_[index] = value;
                   continue;
+               case StatData.TALISMAN_0_STAT:
+               case StatData.TALISMAN_1_STAT:
+               case StatData.TALISMAN_2_STAT:
+               case StatData.TALISMAN_3_STAT:
+               case StatData.TALISMAN_4_STAT:
+               case StatData.TALISMAN_5_STAT:
+               case StatData.TALISMAN_6_STAT:
+               case StatData.TALISMAN_7_STAT:
+                  index = stat.statType_ - StatData.TALISMAN_0_STAT + GeneralConstants.NUM_EQUIPMENT_SLOTS + GeneralConstants.NUM_INVENTORY_SLOTS + GeneralConstants.NUM_TALISMAN_SLOTS;
+                  (go as Player).equipment_[index] = value;
+                  continue;
                case StatData.SPS_LIFE_COUNT:
                   player.SPS_Life = value;
                   if (player.SPS_Modal != null) {
                      player.SPS_Modal.draw();
                   }
-                  break;
+                  continue;
                case StatData.SPS_LIFE_COUNT_MAX:
                   player.SPS_Life_Max = value;
                   if (player.SPS_Modal != null) {
                      player.SPS_Modal.draw();
                   }
-                  break;
+                  continue;
                case StatData.SPS_MANA_COUNT:
                   player.SPS_Mana = value;
                   if (player.SPS_Modal != null) {
                      player.SPS_Modal.draw();
                   }
-                  break;
+                  continue;
                case StatData.SPS_MANA_COUNT_MAX:
                   player.SPS_Mana_Max = value;
                   if (player.SPS_Modal != null) {
                      player.SPS_Modal.draw();
                   }
-                  break;
+                  continue;
                case StatData.SPS_DEFENSE_COUNT:
                   player.SPS_Defense = value;
                   if (player.SPS_Modal != null) {
                      player.SPS_Modal.draw();
                   }
-                  break;
+                  continue;
                case StatData.SPS_DEFENSE_COUNT_MAX:
                   player.SPS_Defense_Max = value;
                   if (player.SPS_Modal != null) {
                      player.SPS_Modal.draw();
                   }
-                  break;
+                  continue;
                case StatData.SPS_ATTACK_COUNT:
                   player.SPS_Attack = value;
                   if (player.SPS_Modal != null) {
                      player.SPS_Modal.draw();
                   }
-                  break;
+                  continue;
                case StatData.SPS_ATTACK_COUNT_MAX:
                   player.SPS_Attack_Max = value;
                   if (player.SPS_Modal != null) {
                      player.SPS_Modal.draw();
                   }
-                  break;
+                  continue;
                case StatData.SPS_DEXTERITY_COUNT:
                   player.SPS_Dexterity = value;
                   if (player.SPS_Modal != null) {
                      player.SPS_Modal.draw();
                   }
-                  break;
+                  continue;
                case StatData.SPS_DEXTERITY_COUNT_MAX:
                   player.SPS_Dexterity_Max = value;
                   if (player.SPS_Modal != null) {
                      player.SPS_Modal.draw();
                   }
-                  break;
+                  continue;
                case StatData.SPS_SPEED_COUNT:
                   player.SPS_Speed = value;
                   if (player.SPS_Modal != null) {
                      player.SPS_Modal.draw();
                   }
-                  break;
+                  continue;
                case StatData.SPS_SPEED_COUNT_MAX:
                   player.SPS_Speed_Max = value;
                   if (player.SPS_Modal != null) {
                      player.SPS_Modal.draw();
                   }
-                  break;
+                  continue;
                case StatData.SPS_VITALITY_COUNT:
                   player.SPS_Vitality = value;
                   if (player.SPS_Modal != null) {
                      player.SPS_Modal.draw();
                   }
-                  break;
+                  continue;
                case StatData.SPS_VITALITY_COUNT_MAX:
                   player.SPS_Vitality_Max = value;
                   if (player.SPS_Modal != null) {
                      player.SPS_Modal.draw();
                   }
-                  break;
+                  continue;
                case StatData.SPS_WISDOM_COUNT:
                   player.SPS_Wisdom = value;
                   if (player.SPS_Modal != null) {
                      player.SPS_Modal.draw();
                   }
-                  break;
+                  continue;
                case StatData.SPS_WISDOM_COUNT_MAX:
                   player.SPS_Wisdom_Max = value;
                   if (player.SPS_Modal != null) {
                      player.SPS_Modal.draw();
                   }
-                  break;
+                  continue;
                case StatData.ENGINE_VALUE:
                   (go as Engine).currentValue_ = value;
-                  break;
+                  continue;
 
                case StatData.ENGINE_TIME:
                   (go as Engine).engineTime_ = value;
-                  break;
+                  continue;
 
                case StatData.BASESTAT:
                   player.baseStat = value;
@@ -1982,11 +1954,21 @@ public class GameServerConnection
                   index = stat.statType_ - StatData.BACKPACKDATA0 + GeneralConstants.NUM_EQUIPMENT_SLOTS + GeneralConstants.NUM_INVENTORY_SLOTS;
                   (go as Player).equipData_[index] = JSON.parse(stat.strStatValue_);
                   continue;
+               case StatData.TALISMANDATA_0_STAT:
+               case StatData.TALISMANDATA_1_STAT:
+               case StatData.TALISMANDATA_2_STAT:
+               case StatData.TALISMANDATA_3_STAT:
+               case StatData.TALISMANDATA_4_STAT:
+               case StatData.TALISMANDATA_5_STAT:
+               case StatData.TALISMANDATA_6_STAT:
+               case StatData.TALISMANDATA_7_STAT:
+                  index = stat.statType_ - StatData.TALISMANDATA_0_STAT + GeneralConstants.NUM_EQUIPMENT_SLOTS + GeneralConstants.NUM_INVENTORY_SLOTS+ GeneralConstants.NUM_TALISMAN_SLOTS;
+                  (go as Player).equipData_[index] = JSON.parse(stat.strStatValue_);
+                  continue;
 
-               case StatData.NO_MANA_BAR:
-                  (go as Player).talismanNoManaBar_ = stat.statValue_ == 1;
-                  this.gs_.hudView.draw();
-                  break;
+               case StatData.TALISMAN_EFFECT_MASK_STAT:
+                  (go as Player).talismanEffectMask_ = stat.statValue_;
+                  continue;
                default:
                   trace("unhandled stat: " + stat.statType_);
                   continue;

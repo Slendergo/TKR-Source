@@ -197,7 +197,8 @@ namespace TKR.WorldServer.logic
                 ),
             new Threshold(0.01,
                 new ItemLoot("Potion of Life", 0.18),
-                new ItemLoot("Potion of Mana", 0.32)
+                new ItemLoot("Potion of Mana", 0.32),
+                TierLoot.TalismanLoot(0.003)
                 ),
             new Threshold(0.001,
                 new ItemLoot("Potion of Life", 0.015),

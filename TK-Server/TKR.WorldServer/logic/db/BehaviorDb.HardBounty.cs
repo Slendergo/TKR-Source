@@ -81,6 +81,7 @@ namespace TKR.WorldServer.logic
                 LootTemplates.DustLoot()
                 ),
                   new Threshold(0.001,
+                    TierLoot.TalismanLoot(0.003),
                     new TierLoot(5, ItemType.Ability, 0.07),
                     new TierLoot(11, ItemType.Armor, 0.12),
                     new TierLoot(12, ItemType.Armor, 0.09),

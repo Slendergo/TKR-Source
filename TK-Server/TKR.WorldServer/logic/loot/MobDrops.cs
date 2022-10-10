@@ -100,7 +100,7 @@ namespace TKR.WorldServer.logic.loot
             LootDefs.Add(new LootDef(null, probability, threshold, tier, type));
         }
 
-        public static TierLoot TalismanLoot(double probability = 1.0, double threshold = 0.0) => new TierLoot(-1, ItemType.Talisman, probability, 0, threshold);
+        public static TierLoot TalismanLoot(double probability = 1.0, double threshold = 0.01) => new TierLoot(-1, ItemType.Talisman, probability, 0, threshold);
     }
 
     public class LootTemplates : MobDrops

@@ -273,8 +273,6 @@ namespace TKR.WorldServer.logic.loot
                             var isEligible = item.Mythical || item.Legendary;
                             if (isEligible)
                             {
-                                c -= Random.Shared.NextDouble();
-
                                 var baseChance = Math.Floor(1.0 / i.Probabilty);
                                 var chance = Math.Floor(1.0 / probability);
                                 var roll = Math.Floor(c / probability);

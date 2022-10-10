@@ -66,6 +66,7 @@ namespace TKR.WorldServer.logic
                 new ItemLoot("Midnight Star", 0.001, threshold: 0.03)
                 ),
             new Threshold(0.001,
+                TierLoot.TalismanLoot(0.003),
                 new TierLoot(8, ItemType.Weapon, .03),
                 new TierLoot(9, ItemType.Weapon, .02),
                 new TierLoot(10, ItemType.Weapon, .014),

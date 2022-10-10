@@ -154,8 +154,6 @@ namespace TKR.WorldServer.core.worlds.logic
             merchantData.TimeToSpawn = 10.0f;
             MerchantLists.Shops[merchantData.TileRegion].Item1.Add(merchantData.SellableItem);
             InactiveStorePoints.Add(merchantData);
-            if (merchantData.NewMerchant == null)
-                return;
             LeaveWorld(merchantData.NewMerchant);
             merchantData.NewMerchant = null;
         }
@@ -171,7 +169,7 @@ namespace TKR.WorldServer.core.worlds.logic
         {
             CheckWeekendLootBoostEvent();
             HandleMerchants(ref time);
-            HandleEngineTimeouts(ref time);
+            //HandleEngineTimeouts(ref time);
             PortalMonitor.Update(ref time);
             base.UpdateLogic(ref time);
         }

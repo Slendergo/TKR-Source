@@ -37509,6 +37509,7 @@
     <God />
     <Encounter />
     <Level>20</Level>
+    <Invincible />
   </Object>
   <Object type="0x0206" id="Dragon Egg">
     <Class>Character</Class>
@@ -54542,7 +54543,7 @@
     <ActivateOnEquip stat="20" amount="6">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="-20">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="25">IncrementStat</ActivateOnEquip>
-    <BagType>8</BagType>
+    <BagType>9</BagType>
     <FameBonus>7</FameBonus>
     <DisplayId>Absolute Zero</DisplayId>
   </Object>
@@ -55453,7 +55454,7 @@
     <ActivateOnEquip stat="22" amount="7">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="10">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="10">IncrementStat</ActivateOnEquip>
-    <BagType>8</BagType>
+    <BagType>9</BagType>
     <FameBonus>7</FameBonus>
   </Object>
   <Object type="0x5154" id="Wingus's Breastplate">
@@ -55998,7 +55999,7 @@
     </Projectile>
     <NumProjectiles>1</NumProjectiles>
     <ArcGap>3</ArcGap>
-    <BagType>8</BagType>
+    <BagType>9</BagType>
     <FameBonus>7</FameBonus>
     <DisplayId>Agdluak</DisplayId>
   </Object>
@@ -56746,7 +56747,7 @@
     <ActivateOnEquip stat="28" amount="8">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="20" amount="8">IncrementStat</ActivateOnEquip>
     <Usable />
-    <BagType>7</BagType>
+    <BagType>9</BagType>
     <FameBonus>7</FameBonus>
     <MpCost>150</MpCost>
     <Activate effect="Curse" duration="8" range="5" color="0xE9A92D" target="enemy" center="mouse" visualEffect="4" useWisMod="false">GenericActivate</Activate>
@@ -59899,7 +59900,7 @@
     <ActivateOnEquip stat="28" amount="10">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="3" amount="100">IncrementStat</ActivateOnEquip>
-    <BagType>8</BagType>
+    <BagType>9</BagType>
     <FameBonus>6</FameBonus>
   </Object>
   <Object type="0xa42b" id="Romanian Tunic">
@@ -62548,7 +62549,7 @@
     </Projectile>
     <NumProjectiles>2</NumProjectiles>
     <ArcGap>0</ArcGap>
-    <BagType>6</BagType>
+    <BagType>8</BagType>
     <FameBonus>6</FameBonus>
     <DisplayId>The Expansion</DisplayId>
   </Object>
@@ -63979,7 +63980,7 @@
     </Projectile>
     <NumProjectiles>1</NumProjectiles>
     <ArcGap>4</ArcGap>
-    <BagType>8</BagType>
+    <BagType>9</BagType>
     <FameBonus>6</FameBonus>
     <feedPower>650</feedPower>
     <DisplayId>Winter Solstice</DisplayId>
@@ -94404,10 +94405,10 @@
     <Projectile>
       <ObjectId>Worn and Torn Bolas Projectile</ObjectId>
       <Speed>150</Speed>
-      <MinDamage>100</MinDamage>
-      <MaxDamage>140</MaxDamage>
-      <LifetimeMS>1000</LifetimeMS>
-      <Size>150</Size>
+      <MinDamage>25</MinDamage>
+      <MaxDamage>60</MaxDamage>
+      <LifetimeMS>800</LifetimeMS>
+      <Size>125</Size>
       <PassesCover />
     </Projectile>
     <Usable />
@@ -94429,10 +94430,10 @@
     <Projectile>
       <ObjectId>Worn Bolas Projectile</ObjectId>
       <Speed>150</Speed>
-      <MinDamage>140</MinDamage>
-      <MaxDamage>180</MaxDamage>
-      <LifetimeMS>1000</LifetimeMS>
-      <Size>150</Size>
+      <MinDamage>60</MinDamage>
+      <MaxDamage>95</MaxDamage>
+      <LifetimeMS>800</LifetimeMS>
+      <Size>125</Size>
       <PassesCover />
       <ConditionEffect duration="2">Slowed</ConditionEffect>
     </Projectile>
@@ -94456,10 +94457,10 @@
     <Projectile>
       <ObjectId>Damaged Bolas Projectile</ObjectId>
       <Speed>150</Speed>
-      <MinDamage>180</MinDamage>
-      <MaxDamage>220</MaxDamage>
-      <LifetimeMS>1000</LifetimeMS>
-      <Size>150</Size>
+      <MinDamage>130</MinDamage>
+      <MaxDamage>165</MaxDamage>
+      <LifetimeMS>800</LifetimeMS>
+      <Size>125</Size>
       <PassesCover />
       <ConditionEffect duration="3">Slowed</ConditionEffect>
     </Projectile>
@@ -94483,10 +94484,10 @@
     <Projectile>
       <ObjectId>Bolas Projectile</ObjectId>
       <Speed>150</Speed>
-      <MinDamage>220</MinDamage>
-      <MaxDamage>260</MaxDamage>
-      <LifetimeMS>1000</LifetimeMS>
-      <Size>150</Size>
+      <MinDamage>165</MinDamage>
+      <MaxDamage>200</MaxDamage>
+      <LifetimeMS>800</LifetimeMS>
+      <Size>125</Size>
       <PassesCover />
       <ConditionEffect duration="1">Paralyzed</ConditionEffect>
     </Projectile>
@@ -94511,10 +94512,10 @@
     <Projectile>
       <ObjectId>Iron Bolas Projectile</ObjectId>
       <Speed>150</Speed>
-      <MinDamage>240</MinDamage>
-      <MaxDamage>320</MaxDamage>
-      <LifetimeMS>1000</LifetimeMS>
-      <Size>150</Size>
+      <MinDamage>200</MinDamage>
+      <MaxDamage>235</MaxDamage>
+      <LifetimeMS>800</LifetimeMS>
+      <Size>125</Size>
       <PassesCover />
       <ConditionEffect duration="2">Paralyzed</ConditionEffect>
     </Projectile>
@@ -94539,10 +94540,10 @@
     <Projectile>
       <ObjectId>Mithril Bolas Projectile</ObjectId>
       <Speed>150</Speed>
-      <MinDamage>290</MinDamage>
-      <MaxDamage>350</MaxDamage>
-      <LifetimeMS>1000</LifetimeMS>
-      <Size>150</Size>
+      <MinDamage>235</MinDamage>
+      <MaxDamage>270</MaxDamage>
+      <LifetimeMS>800</LifetimeMS>
+      <Size>125</Size>
       <PassesCover />
       <ConditionEffect duration="2.4">Paralyzed</ConditionEffect>
     </Projectile>
@@ -94567,10 +94568,10 @@
     <Projectile>
       <ObjectId>Obsidian Bolas Projectile</ObjectId>
       <Speed>150</Speed>
-      <MinDamage>290</MinDamage>
-      <MaxDamage>350</MaxDamage>
-      <LifetimeMS>1000</LifetimeMS>
-      <Size>150</Size>
+      <MinDamage>270</MinDamage>
+      <MaxDamage>305</MaxDamage>
+      <LifetimeMS>800</LifetimeMS>
+      <Size>125</Size>
       <PassesCover />
       <ConditionEffect duration="3">Paralyzed</ConditionEffect>
     </Projectile>

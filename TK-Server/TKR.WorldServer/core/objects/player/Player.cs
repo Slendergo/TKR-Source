@@ -737,9 +737,9 @@ namespace TKR.WorldServer.core.objects
             if (World.IdName != "Ocean Trench" || World.IdName != "Hideout of Thessal")
                 return;
             if (Breath > 0)
-                Breath -= 20 * time.DeltaTime * 5;
+                Breath -= 20 * time.BehaviourTickTime;
             else
-                HP -= (int)(20 * time.DeltaTime * 5);
+                HP -= (int)(20 * time.BehaviourTickTime);
 
             if (HP < 0)
             {

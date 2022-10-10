@@ -400,10 +400,7 @@ namespace TKR.WorldServer.core.objects
                 try
                 {
                     foreach (var i in state.Behaviors)
-                    {
-                        Console.WriteLine(i.GetType().Name);
                         i.Tick(this, time);
-                    }
                 }
                 catch (Exception e)
                 {

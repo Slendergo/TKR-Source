@@ -2,7 +2,7 @@
 using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.core.objects;
 
-namespace TKR.WorldServer.logic.behaviors
+namespace TKR.WorldServer.logic.behaviors.@new.movements
 {
     public sealed class NewCharge : Behavior
     {

@@ -51,7 +51,33 @@ import com.company.assembleegameclient.objects.Player;
          }
          return type <= 0 || this.itemType == ObjectLibrary.getSlotTypeFromType(type);
       }
-      
+
+      override public function canHoldItemPlayer(player:Player, type:int) : Boolean
+      {
+         if(this.itemType == ItemConstants.TALISMAN_TYPE) {
+            var properties:ObjectProperties = ObjectLibrary.propsLibrary_[type];
+            if (properties != null)
+            {
+               for(var i = 20; i < 28; i++){
+                  if(player.equipment_[i] == type && properties.onlyOneTalisman_){
+                     return false;
+                  }
+               }
+
+               if(tileId < 24 && !properties.isCommonTalisman_){
+                  return false;
+               }
+               if((tileId == 26 || tileId == 27) && !properties.isMythicTalisman_){
+                  return false;
+               }
+               if((tileId == 24 || tileId == 25) && !properties.isLegendaryTalisman_){
+                  return false;
+               }
+            }
+         }
+         return type <= 0 || this.itemType == ObjectLibrary.getSlotTypeFromType(type);
+      }
+
       public function setType(type:int, darken:Boolean = true) : void
       {
          var bd:BitmapData = null;

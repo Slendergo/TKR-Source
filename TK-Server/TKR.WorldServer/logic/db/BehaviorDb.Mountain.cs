@@ -2,6 +2,8 @@
 using TKR.WorldServer.logic.behaviors;
 using TKR.WorldServer.logic.loot;
 using TKR.WorldServer.logic.transitions;
+using TKR.WorldServer.logic.behaviors.@new.movements;
+using TKR.WorldServer.logic.behaviors.@new;
 
 namespace TKR.WorldServer.logic
 {

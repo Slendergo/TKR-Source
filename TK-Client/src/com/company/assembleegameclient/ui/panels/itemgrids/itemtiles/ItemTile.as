@@ -114,6 +114,11 @@ public class ItemTile extends Sprite
       return true;
    }
 
+   public function canHoldItemPlayer(player:Player, type:int):Boolean
+   {
+      return canHoldItem(type);
+   }
+
    public function resetItemPosition() : void
    {
       this.setItemSprite(this.itemSprite);

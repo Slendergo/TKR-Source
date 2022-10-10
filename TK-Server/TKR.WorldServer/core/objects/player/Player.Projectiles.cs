@@ -224,7 +224,7 @@ namespace TKR.WorldServer.core.objects
             if (!found)
             {
                 Console.WriteLine($"[EnemyHit -> VisibleEnemyShoot.TryGetValue] {Id} -> {Name} | {bulletId} | Unable to find projectile");
-                Client.Disconnect($"[EnemyHit -> VisibleEnemyShoot.TryGetValue] {Id} -> {Name} | {bulletId} | Unable to find projectile");
+                //Client.Disconnect($"[EnemyHit -> VisibleEnemyShoot.TryGetValue] {Id} -> {Name} | {bulletId} | Unable to find projectile");
                 return;
             }
 
@@ -322,7 +322,7 @@ namespace TKR.WorldServer.core.objects
             if (!found)
             {
                 Console.WriteLine($"[SquareHit -> VisibleEnemyShoot.TryGetValue] {Id} -> {Name} | {objectId} | {bulletId} | Unable to find valid entry");
-                Client.Disconnect($"[SquareHit -> VisibleEnemyShoot.TryGetValue] {Id} -> {Name} | {objectId} | {bulletId} | Unable to find valid entry");
+                //Client.Disconnect($"[SquareHit -> VisibleEnemyShoot.TryGetValue] {Id} -> {Name} | {objectId} | {bulletId} | Unable to find valid entry");
                 return;
             }
 
@@ -330,7 +330,7 @@ namespace TKR.WorldServer.core.objects
             if (!found)
             {
                 Console.WriteLine($"[SquareHit -> dict.TryGetValue] {Id} -> {Name} | {objectId} | {bulletId} | Unable to find valid projectile from VisibleEnemyShoot");
-                Client.Disconnect($"[SquareHit -> dict.TryGetValue] {Id} -> {Name} | {objectId} | {bulletId} | Unable to find valid projectile from VisibleEnemyShoot");
+                //Client.Disconnect($"[SquareHit -> dict.TryGetValue] {Id} -> {Name} | {objectId} | {bulletId} | Unable to find valid projectile from VisibleEnemyShoot");
                 return;
             }
 
@@ -355,7 +355,7 @@ namespace TKR.WorldServer.core.objects
             if (!found)
             {
                 Console.WriteLine($"[OtherHit -> VisibleEnemyShoot.TryGetValue] {Id} -> {Name} | {objectId} | {bulletId} | Unable to find valid entry");
-                Client.Disconnect($"[OtherHit -> VisibleEnemyShoot.TryGetValue] {Id} -> {Name} | {objectId} | {bulletId} | Unable to find valid entry");
+                //Client.Disconnect($"[OtherHit -> VisibleEnemyShoot.TryGetValue] {Id} -> {Name} | {objectId} | {bulletId} | Unable to find valid entry");
                 return;
             }
 
@@ -363,7 +363,7 @@ namespace TKR.WorldServer.core.objects
             if (!found)
             {
                 Console.WriteLine($"[OtherHit -> dict.TryGetValue] {Id} -> {Name} | {objectId} | {bulletId} | Unable to find valid projectile from VisibleEnemyShoot");
-                Client.Disconnect($"[OtherHit -> dict.TryGetValue] {Id} -> {Name} | {objectId} | {bulletId} | Unable to find valid projectile from VisibleEnemyShoot");
+                //Client.Disconnect($"[OtherHit -> dict.TryGetValue] {Id} -> {Name} | {objectId} | {bulletId} | Unable to find valid projectile from VisibleEnemyShoot");
                 return;
             }
 
@@ -374,7 +374,7 @@ namespace TKR.WorldServer.core.objects
             if (elapsedSinceStart > projectileDesc.LifetimeMS)
             {
                 Console.WriteLine("[OtherHit] -> A expired shot tried to hit entity");
-                Client.Disconnect("[OtherHit] -> A expired shot tried to hit entity");
+                //Client.Disconnect("[OtherHit] -> A expired shot tried to hit entity");
                 return;
             }
 

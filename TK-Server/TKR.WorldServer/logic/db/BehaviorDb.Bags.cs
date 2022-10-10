@@ -1,7 +1,7 @@
 ﻿using TKR.WorldServer.logic.behaviors;
 using TKR.WorldServer.logic.transitions;
 
-namespace TKR.WorldServer.logic
+namespace TKR.WorldServer.logic.db
 {
     //partial class BehaviorDb
     //{

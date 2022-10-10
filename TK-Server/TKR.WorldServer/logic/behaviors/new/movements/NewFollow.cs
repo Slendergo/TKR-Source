@@ -3,7 +3,7 @@ using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.core.objects;
 using TKR.WorldServer.utils;
 
-namespace TKR.WorldServer.logic.behaviors
+namespace TKR.WorldServer.logic.behaviors.@new.movements
 {
     public sealed class NewFollow : Behavior
     {
@@ -26,7 +26,7 @@ namespace TKR.WorldServer.logic.behaviors
 
         protected override bool TickCoreOrdered(Entity host, TickTime time, ref object state)
         {
-            var s = state == null ?  new FollowState() : (FollowState)state;
+            var s = state == null ? new FollowState() : (FollowState)state;
             if (state == null)
                 state = s;
 

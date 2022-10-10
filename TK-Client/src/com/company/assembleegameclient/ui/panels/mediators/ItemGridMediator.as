@@ -8,6 +8,7 @@ import com.company.assembleegameclient.objects.ObjectProperties;
 import com.company.assembleegameclient.objects.OneWayContainer;
 import com.company.assembleegameclient.objects.Player;
 import com.company.assembleegameclient.parameters.Parameters;
+import com.company.assembleegameclient.sound.SoundEffectLibrary;
 import com.company.assembleegameclient.ui.panels.itemgrids.ContainerGrid;
 import com.company.assembleegameclient.ui.panels.itemgrids.InventoryGrid;
 import com.company.assembleegameclient.ui.panels.itemgrids.ItemGrid;
@@ -91,6 +92,9 @@ public class ItemGridMediator extends Mediator
             {
                this.swapItemTiles(sourceTile,targetTile);
             }
+            else{
+               SoundEffectLibrary.play("error");
+            }
          }
          else if(target is Map || this.hudModel.gameSprite.map.mouseX < 300)
          {
@@ -138,18 +142,31 @@ public class ItemGridMediator extends Mediator
       
       private static function canSwapItems(sourceTile:InteractiveItemTile, targetTile:InteractiveItemTile) : Boolean
       {
-         if(!sourceTile.canHoldItem(targetTile.getItemId()))
+
+         if(ItemGrid(targetTile.parent).owner is Player)
          {
-            return false;
+            if(!sourceTile.canHoldItemPlayer(ItemGrid(targetTile.parent).owner as Player, targetTile.getItemId()))
+            {
+               return false;
+            }
+            if(!targetTile.canHoldItemPlayer(ItemGrid(targetTile.parent).owner as Player, sourceTile.getItemId()))
+            {
+               return false;
+            }
          }
-         if(!targetTile.canHoldItem(sourceTile.getItemId()))
-         {
-            return false;
+         else {
+            if (!sourceTile.canHoldItem(targetTile.getItemId())) {
+               return false;
+            }
+            if (!targetTile.canHoldItem(sourceTile.getItemId())) {
+               return false;
+            }
          }
          if(ItemGrid(targetTile.parent).owner is OneWayContainer)
          {
             return false;
          }
+
          return true;
       }
 

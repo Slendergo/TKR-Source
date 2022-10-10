@@ -17,6 +17,8 @@ using TKR.WorldServer.networking;
 using TKR.WorldServer.networking.packets.outgoing;
 using TKR.WorldServer.utils;
 using TKR.WorldServer.core.miscfile.structures;
+using static TKR.WorldServer.core.commands.Command;
+using System.Reflection.Metadata;
 
 namespace TKR.WorldServer.core.net.handlers
 {
@@ -90,7 +92,7 @@ namespace TKR.WorldServer.core.net.handlers
             // not stacking operation, continue on with normal swap
 
             // validate slot types
-            if (!ValidateSlotSwap(player, conFrom, conTo, slotFrom, slotTo))
+            if (!ValidateSlotSwap(conFrom, conTo, slotFrom, slotTo))
             {
                 from.ForceUpdate(slotFrom);
                 to.ForceUpdate(slotTo);
@@ -114,6 +116,22 @@ namespace TKR.WorldServer.core.net.handlers
             var itemTo = conToTrans[slotTo];
             conToTrans[slotTo] = itemFrom;
             conFromTrans[slotFrom] = itemTo;
+
+            if (!ValidateItemSwap(player, conFrom, itemTo, slotTo))
+            {
+                from.ForceUpdate(slotFrom);
+                to.ForceUpdate(slotTo);
+                player.Client.SendPacket(new InvResult() { Result = 1 });
+                return;
+            }
+
+            if (!ValidateItemSwap(player, conTo, itemFrom, slotFrom))
+            {
+                from.ForceUpdate(slotFrom);
+                to.ForceUpdate(slotTo);
+                player.Client.SendPacket(new InvResult() { Result = 1 });
+                return;
+            }
 
             var conDataFromTrans = conFrom.Inventory.CreateDataTransaction();
             var conDataToTrans = conTo.Inventory.CreateDataTransaction();
@@ -189,12 +207,6 @@ namespace TKR.WorldServer.core.net.handlers
             player.Client.SendPacket(new InvResult() { Result = 1 });
         }
 
-        private bool CheckNoSoulboundBag(Item item)
-        {
-            if (item != null && (item.Legendary || item.Mythical || item.SPlus || item.SNormal && item.Tier >= 7 || item.BagType >= 3))
-                return false;
-            return true;
-        }
 
         private bool ValidateStackable(ItemData itemA, ItemData itemB, int slotA, int slotB) =>
             itemA != null && itemB != null
@@ -219,12 +231,25 @@ namespace TKR.WorldServer.core.net.handlers
             return false;
         }
 
-        private bool ValidateItemSwap(Player player, Entity c, Item item)
+        private bool ValidateItemSwap(Player player, IContainer container, Item item, int slot)
         {
-            return c == player ||
-                   item == null ||
-                   !item.Soulbound && !player.IsAdmin ||
-                   IsSoleContainerOwner(player, c as IContainer);
+            if(container == player)
+            {
+                if(slot > 20)
+                    if(item != null)
+                    {
+                        var count = -1;
+                        for (var i = 20; i < 28; i++)
+                            if (player.Inventory[i] != null && player.Inventory[i].ObjectType == item.ObjectType)
+                                count++;
+                        if (count > 1)
+                            return false;
+                        //for (var i = 20; i < 28; i++)
+                        //    if (player.Inventory[i] != null && player.Inventory[i].ObjectType == item.ObjectType && item.TalismanItemDesc.OnlyOne)
+                        //        return false;
+                    }
+            }
+            return container == player || item == null || !item.Soulbound && !player.IsAdmin || IsSoleContainerOwner(player, container);
         }
 
         private bool IsSoleContainerOwner(Player player, IContainer con)
@@ -267,7 +292,8 @@ namespace TKR.WorldServer.core.net.handlers
             return true;
         }
 
-        private bool ValidateSlotSwap(Player player, IContainer conA, IContainer conB, int slotA, int slotB)
+        // todo add in talisman count checks
+        private bool ValidateSlotSwap(IContainer conA, IContainer conB, int slotA, int slotB)
             => slotA < 28 && slotB < 28 &&
                 conB.AuditItem(conA.Inventory[slotA], slotB) && conA.AuditItem(conB.Inventory[slotB], slotA);
 

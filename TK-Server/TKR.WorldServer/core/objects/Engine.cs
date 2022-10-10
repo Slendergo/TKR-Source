@@ -2,6 +2,7 @@
 using TKR.Shared.database;
 using System.Collections.Generic;
 using TKR.WorldServer.core.miscfile.stats;
+using System;
 
 namespace TKR.WorldServer.core.objects
 {
@@ -29,10 +30,10 @@ namespace TKR.WorldServer.core.objects
             _engineTime = new SV<int>(this, StatDataType.EngineTime, nexus.EngineStageTime);
         }
 
-        protected override void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)
+        protected override void ExportStats(List<ValueTuple<StatDataType, object>> stats, bool isOtherPlayer)
         {
-            stats[StatDataType.EngineValue] = CurrentAmount;
-            stats[StatDataType.EngineTime] = EngineTime;
+            stats.Add(ValueTuple.Create(StatDataType.EngineValue, CurrentAmount));
+            stats.Add(ValueTuple.Create(StatDataType.EngineTime, EngineTime));
             base.ExportStats(stats, isOtherPlayer);
         }
     }

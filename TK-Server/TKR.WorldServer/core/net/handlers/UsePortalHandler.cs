@@ -27,20 +27,20 @@ namespace TKR.WorldServer.core.net.handlers
 
             var objectId = rdr.ReadInt32();
 
-            var entity = player.World.GetEntity(objectId);
-            if (entity == null)
+            var portal = player.World.GetEntity(objectId) as Portal;
+            if (portal == null)
                 return;
 
-            if (entity is GuildHallPortal)
+            if (portal.ObjectDesc.ObjectId == "Guild Hall Portal")
             {
-                HandleGuildPortal(player, entity as GuildHallPortal);
+                HandleGuildPortal(player, portal);
                 return;
             }
 
-            HandlePortal(player, entity as Portal);
+            HandlePortal(player, portal);
         }
 
-        private void HandleGuildPortal(Player player, GuildHallPortal portal)
+        private void HandleGuildPortal(Player player, Portal portal)
         {
             if (string.IsNullOrEmpty(player.Guild))
             {
@@ -57,7 +57,7 @@ namespace TKR.WorldServer.core.net.handlers
                 var guild = player.Client.GameServer.Database.GetGuild(guildId);
 
                 // this is mandatory
-                var dungeonName = $"{portal.PortalDescr.DungeonName} {guild.Level + 1}";
+                var dungeonName = $"{portal.ObjectDesc.DungeonName} {guild.Level + 1}";
 
                 world = manager.WorldManager.CreateNewWorld(dungeonName, null, player.World);
                 if (world != null)
@@ -123,7 +123,7 @@ namespace TKR.WorldServer.core.net.handlers
                 return;
             }
 
-            var dungeonName = portal.PortalDescr.DungeonName;
+            var dungeonName = portal.ObjectDesc.DungeonName;
 
             world = portal.GameServer.WorldManager.CreateNewWorld(dungeonName, null, player.World);
             if (world == null)

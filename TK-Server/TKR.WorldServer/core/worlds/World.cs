@@ -1,8 +1,13 @@
-﻿using Pipelines.Sockets.Unofficial.Arenas;
+﻿using NLog.LayoutRenderers;
+using Org.BouncyCastle.Asn1.X509.Qualified;
+using Pipelines.Sockets.Unofficial.Arenas;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Threading;
 using TKR.Shared.database;
 using TKR.Shared.resources;
@@ -12,6 +17,7 @@ using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.core.miscfile.world;
 using TKR.WorldServer.core.objects;
 using TKR.WorldServer.core.objects.containers;
+using TKR.WorldServer.core.objects.@new;
 using TKR.WorldServer.core.objects.player;
 using TKR.WorldServer.core.terrain;
 using TKR.WorldServer.core.worlds.impl;
@@ -22,6 +28,301 @@ using TKR.WorldServer.utils;
 
 namespace TKR.WorldServer.core.worlds
 {
+    public sealed class SpatialStorage<T> where T : EntityBase
+    {
+        private const int SCALE_FACTOR = 16;
+
+        private ConcurrentDictionary<int, ConcurrentDictionary<int, T>> Bucket = new ConcurrentDictionary<int, ConcurrentDictionary<int, T>>();
+
+        public void Insert(T go)
+        {
+            var hash = HashScaleFactor(go.X, go.Y);
+            var bucket = Bucket.GetOrAdd(hash, _ => new ConcurrentDictionary<int, T>());
+            bucket[go.Id] = go;
+        }
+
+        public void Move(T go)
+        {
+            var objectId = go.Id;
+
+            var hash = HashScaleFactor(go.PrevX, go.PrevY);
+            var bucket = Bucket.GetOrAdd(hash, _ => new ConcurrentDictionary<int, T>());
+            _ = bucket.TryRemove(objectId, out var dummy);
+
+            var newHash = HashScaleFactor(go.X, go.Y);
+            bucket = Bucket.GetOrAdd(newHash, _ => new ConcurrentDictionary<int, T>());
+            bucket[objectId] = go;
+        }
+
+        public void Remove(T go)
+        {
+            var hash = HashScaleFactor(go.X, go.Y);
+            var bucket = Bucket[hash];
+            _ = bucket.TryRemove(go.Id, out _);
+        }
+
+        public List<T> Query(float x, float y)
+        {
+            var ret = new List<T>();
+            var hash = HashScaleFactor(x, y);
+            if (Bucket.TryGetValue(hash, out var bucket))
+                ret.AddRange(bucket.Values);
+            return ret;
+        }
+
+        public List<T> Query(float _x, float _y, float radius)
+        {
+            var ret = new List<T>();
+            var xl = (int)(_x - radius) / SCALE_FACTOR;
+            var xh = (int)(_x + radius) / SCALE_FACTOR;
+            var yl = (int)(_y - radius) / SCALE_FACTOR;
+            var yh = (int)(_y + radius) / SCALE_FACTOR;
+            for (var x = xl; x <= xh; x++)
+                for (var y = yl; y <= yh; y++)
+                {
+                    var hash = Hash(x, y);
+                    if (Bucket.TryGetValue(hash, out var bucket))
+                        foreach (var obj in bucket.Values)
+                            if (obj.SqDistTo(_x, _y) < radius * radius)
+                                ret.Add(obj);
+                }
+            return ret;
+        }
+
+        public void Query(List<EntityBase> ret, float _x, float _y, float radius)
+        {
+            var xl = (int)(_x - radius) / SCALE_FACTOR;
+            var xh = (int)(_x + radius) / SCALE_FACTOR;
+            var yl = (int)(_y - radius) / SCALE_FACTOR;
+            var yh = (int)(_y + radius) / SCALE_FACTOR;
+            for (var x = xl; x <= xh; x++)
+                for (var y = yl; y <= yh; y++)
+                {
+                    var hash = Hash(x, y);
+                    if (Bucket.TryGetValue(hash, out var bucket))
+                        foreach (var obj in bucket.Values)
+                            if (obj.SqDistTo(_x, _y) < radius * radius)
+                                ret.Add(obj);
+                }
+        }
+
+        private static int HashScaleFactor(double x, double y)
+        {
+            var dx = (int)x / SCALE_FACTOR;
+            var dy = (int)y / SCALE_FACTOR;
+            return Hash(dx, dy);
+        }
+
+        private static int Hash(int x, int y) => (x << 16) | y;
+
+        public void Dispose()
+        {
+            foreach (var key in Bucket.Keys)
+            {
+                Bucket[key].Clear();
+                Bucket[key] = null;
+            }
+            Bucket.Clear();
+        }
+    }
+
+    public class Census
+    {
+        private readonly SpatialStorage<NewPlayer> PlayerStorage = new SpatialStorage<NewPlayer>();
+        private readonly SpatialStorage<NewEnemy> EnemyStorage = new SpatialStorage<NewEnemy>();
+        private readonly SpatialStorage<NewPortal> PortalStorage = new SpatialStorage<NewPortal>();
+        private readonly SpatialStorage<NewContainer> ContainerStorage = new SpatialStorage<NewContainer>();
+        private readonly SpatialStorage<NewStatic> StaticStorage = new SpatialStorage<NewStatic>();
+
+        private readonly Dictionary<int, NewPlayer> Players = new Dictionary<int, NewPlayer>();
+        private readonly Dictionary<int, NewEnemy> Enemies = new Dictionary<int, NewEnemy>();
+        private readonly Dictionary<int, NewPortal> Portals = new Dictionary<int, NewPortal>();
+        private readonly Dictionary<int, NewContainer> Containers = new Dictionary<int, NewContainer>();
+        private readonly Dictionary<int, NewStatic> Statics = new Dictionary<int, NewStatic>();
+
+        private readonly Dictionary<int, EntityBase> AliveEntities = new Dictionary<int, EntityBase>();
+        private readonly Dictionary<int, EntityBase> EntitiesToAdd = new Dictionary<int, EntityBase>();
+        private readonly Dictionary<int, EntityBase> EntitiesToRemove = new Dictionary<int, EntityBase>();
+        private readonly Dictionary<int, EntityBase> DeadEntities = new Dictionary<int, EntityBase>();
+
+        private readonly World World;
+
+        public Census(World world) => World = world;
+
+        public NewPlayer FindPlayer(int objectId) => Players.TryGetValue(objectId, out var ret) ? ret : null;
+        public NewEnemy FindEnemy(int objectId) => Enemies.TryGetValue(objectId, out var ret) ? ret : null;
+        public NewPortal FindPortal(int objectId) => Portals.TryGetValue(objectId, out var ret) ? ret : null;
+        public NewContainer FindContainer(int objectId) => Containers.TryGetValue(objectId, out var ret) ? ret : null;
+        public NewStatic FindStatic(int objectId) => Statics.TryGetValue(objectId, out var ret) ? ret : null;
+
+        public bool IsAlive(int objectId)
+        {
+            if (DeadEntities.TryGetValue(objectId, out var _))
+                return false;
+
+            if (Players.TryGetValue(objectId, out var _))
+                return true;
+
+            if (Enemies.TryGetValue(objectId, out var _))
+                return true;
+
+            if (Portals.TryGetValue(objectId, out var _))
+                return true;
+
+            if (Containers.TryGetValue(objectId, out var _))
+                return true;
+
+            if (Statics.TryGetValue(objectId, out var _))
+                return true;
+
+            return false;
+        }
+
+        public IEnumerable<NewPlayer> GetPlayers() => Players.Values;
+
+        public List<NewPlayer> PlayersWithinRadius(float x, float y, float radius) => PlayerStorage.Query(x, y, radius);
+        public List<NewEnemy> EnemiesWithinRadius(float x, float y, float radius) => EnemyStorage.Query(x, y, radius);
+        public List<NewPortal> PortalsWithinRadius(float x, float y, float radius) => PortalStorage.Query(x, y, radius);
+        public List<NewContainer> ContainersWithinRadius(float x, float y, float radius) => ContainerStorage.Query(x, y, radius);
+        public List<NewStatic> StaticsWithinRadius(float x, float y, float radius) => StaticStorage.Query(x, y, radius);
+
+        public List<EntityBase> ObjectsWithinRadius(float x, float y, float radius)
+        {
+            var ret = new List<EntityBase>();
+            PlayerStorage.Query(ret, x, y, radius);
+            EnemyStorage.Query(ret, x, y, radius);
+            PortalStorage.Query(ret, x, y, radius);
+            ContainerStorage.Query(ret, x, y, radius);
+            StaticStorage.Query(ret, x, y, radius);
+            return ret;
+        }
+
+        public void AddEntity(EntityBase entity) => EntitiesToAdd.Add(entity.Id, entity);
+
+        private void Insert(EntityBase entity)
+        {
+            if (entity is NewPlayer player)
+            {
+                Players.Add(entity.Id, player);
+                PlayerStorage.Insert(player);
+                return;
+            }
+
+            if (entity is NewEnemy enemy)
+            {
+                Enemies.Add(entity.Id, enemy);
+                EnemyStorage.Insert(enemy);
+                return;
+            }
+
+            if (entity is NewPortal portal)
+            {
+                Portals.Add(entity.Id, portal);
+                PortalStorage.Insert(portal);
+                return;
+            }
+
+            if (entity is NewContainer container)
+            {
+                Containers.Add(entity.Id, container);
+                ContainerStorage.Insert(container);
+                return;
+            }
+
+            if (entity is NewStatic stat)
+            {
+                Statics.Add(entity.Id, stat);
+                StaticStorage.Insert(stat);
+                return;
+            }
+
+            throw new Exception($"Unknown Insert: {entity.ObjectDesc.ObjectId}");
+        }
+
+        public void Move(EntityBase entity)
+        {
+            if (entity is NewPlayer player)
+            {
+                PlayerStorage.Move(player);
+                return;
+            }
+
+            if (entity is NewEnemy enemy)
+            {
+                EnemyStorage.Move(enemy);
+                return;
+            }
+
+            if (entity is NewPortal portal)
+            {
+                PortalStorage.Move(portal);
+                return;
+            }
+
+            if (entity is NewContainer container)
+            {
+                ContainerStorage.Move(container);
+                return;
+            }
+
+            if (entity is NewStatic stat)
+            {
+                StaticStorage.Move(stat);
+                return;
+            }
+
+            throw new Exception($"Unknown Move: {entity.ObjectDesc.ObjectId}");
+        }
+
+        public void Update(float dt)
+        {
+            // update entities here
+
+            foreach (var entity in EntitiesToAdd.Values)
+                Insert(entity);
+            EntitiesToAdd.Clear();
+
+            foreach (var entity in EntitiesToRemove.Values)
+                Remove(entity);
+            EntitiesToRemove.Clear();
+        }
+
+        public void Remove(EntityBase entity)
+        {
+            if (entity is NewPlayer player)
+            {
+                PlayerStorage.Remove(player);
+                return;
+            }
+
+            if (entity is NewEnemy enemy)
+            {
+                EnemyStorage.Remove(enemy);
+                return;
+            }
+
+            if (entity is NewPortal portal)
+            {
+                PortalStorage.Remove(portal);
+                return;
+            }
+
+            if (entity is NewContainer container)
+            {
+                ContainerStorage.Remove(container);
+                return;
+            }
+
+            if (entity is NewStatic stat)
+            {
+                StaticStorage.Remove(stat);
+                return;
+            }
+
+            throw new Exception($"Unknown Remove: {entity.ObjectDesc.ObjectId}");
+        }
+    }
+
     public class World
     {
         public const int NEXUS_ID = -2;
@@ -49,25 +350,27 @@ namespace TKR.WorldServer.core.worlds
         public bool DisableShooting { get; set; }
         public bool DisableAbilities { get; set; }
         private long Lifetime { get; set; }
+        public bool ShowDisplays { get; protected set; }
 
         public readonly Wmap Map;
         public readonly GameServer GameServer;
-        public bool ShowDisplays { get; protected set; }
 
         public CollisionMap<Entity> EnemiesCollision { get; private set; }
         public CollisionMap<Entity> PlayersCollision { get; private set; }
-        public Dictionary<int, Player> Players { get; private set; } = new Dictionary<int, Player>();
-        public Dictionary<int, Enemy> Enemies { get; private set; } = new Dictionary<int, Enemy>();
-        public Dictionary<int, Enemy> Quests { get; private set; } = new Dictionary<int, Enemy>();
-        public Dictionary<int, StaticObject> StaticObjects { get; private set; } = new Dictionary<int, StaticObject>();
-        public Dictionary<int, Container> Containers { get; private set; } = new Dictionary<int, Container>();
-        public Dictionary<int, Portal> Portals { get; private set; } = new Dictionary<int, Portal>();
-        public Dictionary<int, Pet> Pets { get; private set; } = new Dictionary<int, Pet>();
+        public Dictionary<int, Player> Players = new Dictionary<int, Player>();
+        public Dictionary<int, Enemy> Enemies = new Dictionary<int, Enemy>();
+        public Dictionary<int, Enemy> Quests = new Dictionary<int, Enemy>();
+        public Dictionary<int, StaticObject> StaticObjects = new Dictionary<int, StaticObject>();
+        public Dictionary<int, Container> Containers = new Dictionary<int, Container>();
+        public Dictionary<int, Portal> Portals = new Dictionary<int, Portal>();
+        public Dictionary<int, Pet> Pets = new Dictionary<int, Pet>();
 
         private readonly List<Entity> EntitiesToAdd = new List<Entity>();
         private readonly List<Entity> EntitiesToRemove = new List<Entity>();
 
         private readonly List<WorldTimer> Timers = new List<WorldTimer>();
+
+        public Census Census { get; private set; }
 
         public WorldBranch WorldBranch { get; private set; }
         public World ParentWorld { get; set; }
@@ -101,6 +404,80 @@ namespace TKR.WorldServer.core.worlds
 
             WorldBranch = new WorldBranch(this);
             ParentWorld = parent;
+
+            Census = new Census(this);
+        }
+
+        private int NextGameObjectId;
+
+        public NewPlayer CreateNewPlayer(int objectType, float x, float y)
+        {
+            if (!GameServer.Resources.GameData.ObjectDescs.TryGetValue((ushort)objectType, out var desc))
+                return null;
+
+            var nextObjectId = Interlocked.Increment(ref NextGameObjectId);
+
+            var ret = new NewPlayer(this, desc);
+            ret.SetObjectId(nextObjectId);
+            ret.SetPosition(x, y);
+            Census.AddEntity(ret);
+            return ret;
+        }
+
+        public NewEnemy CreateNewEnemy(int objectType, float x, float y)
+        {
+            if (!GameServer.Resources.GameData.ObjectDescs.TryGetValue((ushort)objectType, out var desc))
+                return null;
+
+            var nextObjectId = Interlocked.Increment(ref NextGameObjectId);
+
+            var ret = new NewEnemy(this, desc);
+            ret.SetObjectId(nextObjectId);
+            ret.SetPosition(x, y);
+            Census.AddEntity(ret);
+            return ret;
+        }
+
+        public NewPortal CreatePortalObject(int objectType, float x, float y)
+        {
+            if (!GameServer.Resources.GameData.ObjectDescs.TryGetValue((ushort)objectType, out var desc))
+                return null;
+
+            var nextObjectId = Interlocked.Increment(ref NextGameObjectId);
+
+            var ret = new NewPortal(this, desc);
+            ret.SetObjectId(nextObjectId);
+            ret.SetPosition(x, y);
+            Census.AddEntity(ret);
+            return ret;
+        }
+
+        public NewContainer CreateContainerObject(int objectType, float x, float y)
+        {
+            if (!GameServer.Resources.GameData.ObjectDescs.TryGetValue((ushort)objectType, out var desc))
+                return null;
+
+            var nextObjectId = Interlocked.Increment(ref NextGameObjectId);
+
+            var ret = new NewContainer(this, desc);
+            ret.SetObjectId(nextObjectId);
+            ret.SetPosition(x, y);
+            Census.AddEntity(ret);
+            return ret;
+        }
+
+        public NewStatic CreateStaticObject(int objectType, float x, float y)
+        {
+            if (!GameServer.Resources.GameData.ObjectDescs.TryGetValue((ushort)objectType, out var desc))
+                return null;
+
+            var nextObjectId = Interlocked.Increment(ref NextGameObjectId);
+
+            var ret = new NewStatic(this, desc);
+            ret.SetObjectId(nextObjectId);
+            ret.SetPosition(x, y);
+            Census.AddEntity(ret);
+            return ret;
         }
 
         public virtual bool AllowedAccess(Client client) => true;

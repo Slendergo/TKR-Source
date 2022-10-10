@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TKR.WorldServer.core;
 using TKR.WorldServer.core.miscfile.stats;
 using TKR.WorldServer.core.miscfile.thread;
@@ -13,10 +14,9 @@ namespace TKR.WorldServer.core.objects.connection
 
         public ConnectedObjectInfo Connection { get; set; }
 
-        protected override void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)
+        protected override void ExportStats(List<ValueTuple<StatDataType, object>> stats, bool isOtherPlayer)
         {
-            stats[StatDataType.ObjectConnection] = (int)Connection.Bits;
-
+            stats.Add(ValueTuple.Create(StatDataType.ObjectConnection, (int)Connection.Bits));
             base.ExportStats(stats, isOtherPlayer);
         }
     }

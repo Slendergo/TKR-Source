@@ -15,16 +15,13 @@ namespace TKR.Shared.resources
 {
     public class XmlData
     {
-        public Dictionary<ushort, PlayerDesc> Classes = new Dictionary<ushort, PlayerDesc>();
         public Dictionary<string, ushort> DisplayIdToObjectType = new Dictionary<string, ushort>();
         public Dictionary<string, ushort> IdToObjectType = new Dictionary<string, ushort>(StringComparer.InvariantCultureIgnoreCase);
         public Dictionary<string, ushort> IdToTileType = new Dictionary<string, ushort>();
         public Dictionary<ushort, Item> Items = new Dictionary<ushort, Item>();
         public Dictionary<ushort, ObjectDesc> ObjectDescs = new Dictionary<ushort, ObjectDesc>();
         public Dictionary<ushort, string> ObjectTypeToId = new Dictionary<ushort, string>();
-        public Dictionary<ushort, PortalDesc> Portals = new Dictionary<ushort, PortalDesc>();
         public Dictionary<ushort, SkinDesc> Skins = new Dictionary<ushort, SkinDesc>();
-        public Dictionary<int, ItemType> SlotTypeToItemType = new Dictionary<int, ItemType>();
         public Dictionary<ushort, TileDesc> Tiles = new Dictionary<ushort, TileDesc>();
         public Dictionary<ushort, string> TileTypeToId = new Dictionary<ushort, string>();
 
@@ -118,21 +115,6 @@ namespace TKR.Shared.resources
                     case "Equipment":
                     case "Dye":
                         Items[type] = new Item(type, e);
-                        break;
-
-                    case "Player":
-                        var pDesc = Classes[type] = new PlayerDesc(type, e);
-                        ObjectDescs[type] = Classes[type];
-                        SlotTypeToItemType[pDesc.SlotTypes[0]] = ItemType.Weapon;
-                        SlotTypeToItemType[pDesc.SlotTypes[1]] = ItemType.Ability;
-                        SlotTypeToItemType[pDesc.SlotTypes[2]] = ItemType.Armor;
-                        SlotTypeToItemType[pDesc.SlotTypes[3]] = ItemType.Ring;
-                        break;
-
-                    case "GuildHallPortal":
-                    case "Portal":
-                        Portals[type] = new PortalDesc(type, e);
-                        ObjectDescs[type] = Portals[type];
                         break;
 
                     case "Skin":

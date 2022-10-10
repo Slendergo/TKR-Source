@@ -17,37 +17,31 @@ namespace TKR.WorldServer.core.objects
         public World WorldInstance;
 
         private SV<bool> _usable;
-        public readonly PortalDesc PortalDescr;
 
         public Portal(GameServer manager, ushort objType, int? life) : base(manager, ValidatePortal(manager, objType), life, false, true, false)
         {
             _usable = new SV<bool>(this, StatDataType.PortalUsable, true);
 
-            PortalDescr = manager.Resources.GameData.Portals[ObjectType];
-            Locked = PortalDescr.Locked;
+            Locked = ObjectDesc.Locked;
         }
 
         public bool Locked { get; private set; }
         public bool Usable { get => _usable.GetValue(); set => _usable.SetValue(value); }
 
-        protected override void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)
+        protected override void ExportStats(List<ValueTuple<StatDataType, object>> stats, bool isOtherPlayer)
         {
-            stats[StatDataType.PortalUsable] = Usable ? 1 : 0;
+            stats.Add(ValueTuple.Create(StatDataType.PortalUsable, Usable ? 1 : 0));
 
             base.ExportStats(stats, isOtherPlayer);
         }
 
         private static ushort ValidatePortal(GameServer manager, ushort objType)
         {
-            var portals = manager.Resources.GameData.Portals;
-
-            if (!portals.ContainsKey(objType))
+            if (!manager.Resources.GameData.ObjectDescs.ContainsKey(objType))
             {
                 StaticLogger.Instance.Warn($"Portal {objType.To4Hex()} does not exist. Using Portal of Cowardice.");
-
                 objType = 0x0703; // default to Portal of Cowardice
             }
-
             return objType;
         }
     }

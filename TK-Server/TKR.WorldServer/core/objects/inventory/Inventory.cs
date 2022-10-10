@@ -118,8 +118,7 @@ namespace TKR.WorldServer.core.objects.inventory
             {
                 if (Parent is Player plr)
                 {
-                    var playerDesc = plr.GameServer.Resources.GameData
-                        .Classes[plr.ObjectDesc.ObjectType];
+                    var playerDesc = plr.GameServer.Resources.GameData.ObjectDescs[plr.ObjectDesc.ObjectType];
                     for (var i = 0; i < 4; i++)
                         if (_items[i] == null && playerDesc.SlotTypes[i] == item.SlotType)
                             return i;

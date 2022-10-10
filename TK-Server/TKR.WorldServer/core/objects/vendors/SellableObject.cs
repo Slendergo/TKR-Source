@@ -28,11 +28,11 @@ namespace TKR.WorldServer.core.objects.vendors
 
         public virtual void Buy(Player player) => SendFailed(player, BuyResult.Uninitialized);
 
-        protected override void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)
+        protected override void ExportStats(List<ValueTuple<StatDataType, object>> stats, bool isOtherPlayer)
         {
-            stats[StatDataType.MerchandisePrice] = Price;
-            stats[StatDataType.MerchandiseCurrency] = (int)Currency;
-            stats[StatDataType.MerchandiseRankReq] = RankRequired;
+            stats.Add(ValueTuple.Create(StatDataType.MerchandisePrice, Price));
+            stats.Add(ValueTuple.Create(StatDataType.MerchandiseCurrency, (int)Currency));
+            stats.Add(ValueTuple.Create(StatDataType.MerchandiseRankReq, RankRequired));
             base.ExportStats(stats, isOtherPlayer);
         }
 

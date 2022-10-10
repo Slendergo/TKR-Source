@@ -101,10 +101,10 @@ namespace TKR.WorldServer.core.objects
             }
         }
 
-        public void ExportStats(IDictionary<StatDataType, object> stats)
+        public void ExportStats(List<ValueTuple<StatDataType, object>> stats)
         {
-            stats[StatDataType.ConditionBatch1] = Batch1.GetValue();
-            stats[StatDataType.ConditionBatch2] = Batch2.GetValue();
+            stats.Add(ValueTuple.Create(StatDataType.ConditionBatch1, Batch1.GetValue()));
+            stats.Add(ValueTuple.Create(StatDataType.ConditionBatch2, Batch2.GetValue()));
         }
 
         private static int GetBit(int effect) => 1 << effect - (IsNewCondThreshold(effect) ? NEW_CON_THREASHOLD : 1);

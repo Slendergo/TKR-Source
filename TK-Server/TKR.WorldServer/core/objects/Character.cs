@@ -35,12 +35,12 @@ namespace TKR.WorldServer.core.objects
             }
         }
 
-        protected override void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)
+        protected override void ExportStats(List<ValueTuple<StatDataType, object>> stats, bool isOtherPlayer)
         {
             base.ExportStats(stats, isOtherPlayer);
-            stats[StatDataType.HP] = HP;
+            stats.Add(ValueTuple.Create(StatDataType.HP, HP));
             if (!(this is Player))
-                stats[StatDataType.MaximumHP] = MaximumHP;
+                stats.Add(ValueTuple.Create(StatDataType.MaximumHP, MaximumHP));
         }
     }
 }

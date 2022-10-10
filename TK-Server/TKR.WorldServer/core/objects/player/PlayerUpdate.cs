@@ -5,6 +5,7 @@ using TKR.WorldServer.core.miscfile.datas;
 using TKR.WorldServer.core.miscfile.stats;
 using TKR.WorldServer.core.miscfile.structures;
 using TKR.WorldServer.core.objects.containers;
+using TKR.WorldServer.core.objects.@new;
 using TKR.WorldServer.core.terrain;
 using TKR.WorldServer.core.worlds;
 using TKR.WorldServer.networking.packets.outgoing;
@@ -217,6 +218,9 @@ namespace TKR.WorldServer.core.objects.player
                     StepPath(points, pathMap, x + p.X, y + p.Y, px, py);
         }
 
+
+        private readonly HashSet<EntityBase> NewNewObjects = new HashSet<EntityBase>();
+
         public void GetNewObjects(Update update)
         {
             var x = Player.X;
@@ -235,10 +239,10 @@ namespace TKR.WorldServer.core.objects.player
                     update.NewObjs.Add(tile.ToObjectDef(pointX, pointY));
             }
 
-            var players = World.GetPlayers();
+            var plrs = World.GetPlayers();
 
             var count = 0;
-            foreach (var player in players)
+            foreach (var player in plrs)
             {
                 if ((player.AccountId == Player.AccountId || player.Client.Account != null && player.CanBeSeenBy(Player)) && NewObjects.Add(player))
                 {
@@ -291,6 +295,23 @@ namespace TKR.WorldServer.core.objects.player
 
             if (Player.Quest != null && NewObjects.Add(Player.Quest))
                 update.NewObjs.Add(Player.Quest.ToDefinition());
+
+            // new
+
+            var players = World.Census.GetPlayers();
+            foreach (var player in players)
+                if (NewNewObjects.Add(player))
+                    update.NewObjs.Add(player.StatManager.Get());
+
+            var objs = World.Census.PlayersWithinRadius(x, y, VISIBILITY_RADIUS);
+            foreach (var obj in players)
+            {
+                if (!(obj is NewPlayer) && !ActiveTiles.Contains(intPoint))
+                    continue;
+
+                if (NewNewObjects.Add(obj))
+                    update.NewObjs.Add(obj.StatManager.Get());
+            }
         }
 
         private void HandleNewTick()
@@ -308,7 +329,7 @@ namespace TKR.WorldServer.core.objects.player
                     Id = _.Key.Id,
                     X = _.Key.X,
                     Y = _.Key.Y,
-                    Stats = _.Value.ToArray()
+                    Stats = _.Value.Select(_ => ValueTuple.Create(_.Key, _.Value)).ToList()
                 }).ToList();
                 StatsUpdates.Clear();
             }

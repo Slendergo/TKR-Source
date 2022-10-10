@@ -10,6 +10,7 @@ using TKR.WorldServer.utils;
 using TKR.WorldServer.core.objects;
 using TKR.WorldServer.core.objects.inventory;
 using TKR.WorldServer.core.miscfile.stats;
+using System;
 
 namespace TKR.WorldServer.core.objects.vendors
 {
@@ -96,11 +97,11 @@ namespace TKR.WorldServer.core.objects.vendors
             }
         }
 
-        protected override void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)
+        protected override void ExportStats(List<ValueTuple<StatDataType, object>> stats, bool isOtherPlayer)
         {
-            stats[StatDataType.MerchandiseType] = (int)Item;
-            stats[StatDataType.MerchandiseCount] = Count;
-            stats[StatDataType.MerchandiseMinsLeft] = -1; //(int)(TimeLeft / 60000f);
+            stats.Add(ValueTuple.Create(StatDataType.MerchandiseType, (int)Item));
+            stats.Add(ValueTuple.Create(StatDataType.MerchandiseCount, Count));
+            stats.Add(ValueTuple.Create(StatDataType.MerchandiseMinsLeft, -1)); //(int)(TimeLeft / 60000f);
 
             base.ExportStats(stats, isOtherPlayer);
         }

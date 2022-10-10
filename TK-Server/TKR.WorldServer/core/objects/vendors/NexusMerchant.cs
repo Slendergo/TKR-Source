@@ -8,6 +8,7 @@ using TKR.WorldServer.core.objects.inventory;
 using TKR.WorldServer.core.worlds;
 using TKR.WorldServer.core.worlds.logic;
 using TKR.WorldServer.core.objects;
+using System;
 
 namespace TKR.WorldServer.core.objects.vendors
 {
@@ -203,15 +204,15 @@ namespace TKR.WorldServer.core.objects.vendors
             base.Tick(ref time);
         }
 
-        protected override void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)
+        protected override void ExportStats(List<ValueTuple<StatDataType, object>> stats, bool isOtherPlayer)
         {
-            stats[StatDataType.MerchandiseType] = Type;
-            stats[StatDataType.MerchandisePrice] = Price;
-            stats[StatDataType.MerchandiseCurrency] = Currency;
-            stats[StatDataType.MerchandiseCount] = Count;
-            stats[StatDataType.MerchandiseMinsLeft] = MinsLeft;
-            stats[StatDataType.MerchandiseDiscount] = Discount;
-            stats[StatDataType.MerchandiseRankReq] = base.RankRequired;
+            stats.Add(ValueTuple.Create(StatDataType.MerchandiseType, Type));
+            stats.Add(ValueTuple.Create(StatDataType.MerchandisePrice, Price));
+            stats.Add(ValueTuple.Create(StatDataType.MerchandiseCurrency, Currency));
+            stats.Add(ValueTuple.Create(StatDataType.MerchandiseCount, Count));
+            stats.Add(ValueTuple.Create(StatDataType.MerchandiseMinsLeft, MinsLeft));
+            stats.Add(ValueTuple.Create(StatDataType.MerchandiseDiscount, Discount));
+            stats.Add(ValueTuple.Create(StatDataType.MerchandiseRankReq, base.RankRequired));
         }
 
         protected virtual void SendNotifications(Player player, bool gift)

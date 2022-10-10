@@ -47,10 +47,10 @@ namespace TKR.WorldServer.core.objects
             _glowcolor = new SV<int>(this, StatDataType.GlowEnemy, 0);
         }
 
-        protected override void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)
+        protected override void ExportStats(List<ValueTuple<StatDataType, object>> stats, bool isOtherPlayer)
         {
             base.ExportStats(stats, isOtherPlayer);
-            stats[StatDataType.GlowEnemy] = GlowEnemy;
+            stats.Add(ValueTuple.Create(StatDataType.GlowEnemy, GlowEnemy));
         }
 
         public bool Epic { get; set; }

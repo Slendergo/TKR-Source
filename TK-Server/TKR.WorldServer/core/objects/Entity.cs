@@ -36,7 +36,6 @@ namespace TKR.WorldServer.core.objects
         private Dictionary<object, object> _states;
         private SV<float> _x;
         private SV<float> _y;
-        private Player playerOwner;
         private ConditionEffectManager ConditionEffectManager;
         public bool Dead { get; private set; }
 
@@ -148,7 +147,6 @@ namespace TKR.WorldServer.core.objects
         {
             if (!manager.Resources.GameData.IdToObjectType.TryGetValue(name, out ushort id))
                 return null;
-
             return Resolve(manager, id);
         }
 
@@ -189,12 +187,10 @@ namespace TKR.WorldServer.core.objects
                 case "Character":   //Other characters means enemy
                     return new Enemy(manager, id);
 
+                case "GuildHallPortal":
                 case "ArenaPortal":
                 case "Portal":
                     return new Portal(manager, id, null);
-
-                case "GuildHallPortal":
-                    return new GuildHallPortal(manager, id, null);
 
                 case "ClosedVaultChest":
                     return new ClosedVaultChest(manager, id);
@@ -286,14 +282,14 @@ namespace TKR.WorldServer.core.objects
 
         public ObjectStats ExportStats(bool isOtherPlayer)
         {
-            var stats = new Dictionary<StatDataType, object>();
+            var stats = new List<ValueTuple<StatDataType, object>>();
             ExportStats(stats, isOtherPlayer);
             return new ObjectStats()
             {
                 Id = Id,
                 X = X,
                 Y = Y,
-                Stats = stats.ToArray()
+                Stats = stats
             };
         }
 
@@ -335,8 +331,6 @@ namespace TKR.WorldServer.core.objects
 
             Size = size;
         }
-
-        public void SetPlayerOwner(Player target) => playerOwner = target;
 
         public void SwitchTo(State state)
         {
@@ -509,11 +503,11 @@ namespace TKR.WorldServer.core.objects
             Move(pos.X, pos.Y);
         }
 
-        protected virtual void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)
+        protected virtual void ExportStats(List<ValueTuple<StatDataType, object>> stats, bool isOtherPlayer)
         {
-            stats[StatDataType.Name] = Name;
-            stats[StatDataType.Size] = Size;
-            stats[StatDataType.AltTextureIndex] = AltTextureIndex;
+            stats.Add(ValueTuple.Create(StatDataType.Name, Name));
+            stats.Add(ValueTuple.Create(StatDataType.Size, Size));
+            stats.Add(ValueTuple.Create(StatDataType.AltTextureIndex, AltTextureIndex));
             ConditionEffectManager.ExportStats(stats);
         }
 

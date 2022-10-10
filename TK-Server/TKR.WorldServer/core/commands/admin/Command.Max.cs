@@ -13,7 +13,7 @@ namespace TKR.WorldServer.core.commands
 
             protected override bool Process(Player player, TickTime time, string args)
             {
-                var pd = player.GameServer.Resources.GameData.Classes[player.ObjectType];
+                var pd = player.ObjectDesc;
 
                 player.Stats.Base[0] = pd.Stats[0].MaxValue;
                 player.Stats.Base[1] = pd.Stats[1].MaxValue;

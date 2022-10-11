@@ -1719,10 +1719,6 @@ public class GameServerConnection
                case StatData.RANK_REQUIRED_STAT:
                   (go as NameChanger).setRankRequired(value);
                   continue;
-               case StatData.NAME_CHOSEN_STAT:
-                  player.nameChosen_ = value != 0;
-                  go.nameBitmapData_ = null;
-                  continue;
                case StatData.CURR_FAME_STAT:
                   player.currFame_ = value;
                   continue;

@@ -73,7 +73,7 @@ namespace TKR.WorldServer.core.objects
             if (ObjectDesc.StunImmune)
                 ApplyPermanentConditionEffect(ConditionEffectIndex.StunImmune);
 
-            _name = new SV<string>(this, StatDataType.Name, ObjectDesc.DisplayName);
+            _name = new SV<string>(this, StatDataType.Name, ObjectDesc.DisplayId);
             _size = new SV<int>(this, StatDataType.Size, ObjectDesc.Size);
             _originalSize = 100;
             _altTextureIndex = new SV<int>(this, StatDataType.AltTextureIndex, -1);

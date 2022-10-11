@@ -106,7 +106,7 @@ namespace TKR.WorldServer.logic.behaviors
                     };
 
                     if (isQuest)
-                        Host.World.ForeachPlayer(_ => _.Client.SendPacket(pkt));
+                        Host.World.ForeachPlayer(_ => _.Client.SendMessage(pkt));
                     else
                     {
                         // replaced to this

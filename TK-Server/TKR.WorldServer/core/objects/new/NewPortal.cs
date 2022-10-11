@@ -16,11 +16,20 @@ namespace TKR.WorldServer.core.objects.@new
 
         public NewPortal(World world, ObjectDesc objectDesc) : base(world, objectDesc)
         {
-            Usable = objectDesc.Locked;
+            if(objectDesc.ObjectId != "Guild Hall Portal")
+                Usable = true;
         }
 
-        public override void OnAddedToWorld() => throw new System.NotImplementedException();
-        public override void Update(ref TickTime tickTime) => throw new System.NotImplementedException();
-        public override void OnRemovedFromWorld() => throw new System.NotImplementedException();
+        public override void OnAddedToWorld()
+        {
+        }
+
+        public override void Update(ref TickTime tickTime) 
+        {
+        }
+
+        public override void OnRemovedFromWorld() 
+        {
+        }
     }
 }

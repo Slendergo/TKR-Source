@@ -92,7 +92,7 @@ namespace TKR.WorldServer.core.objects
             }
         }
 
-        public void SendClientText(string text) => Client.SendPacket(new Text()
+        public void SendClientText(string text) => Client.SendMessage(new Text()
         {
             BubbleTime = 0,
             NumStars = -1,
@@ -100,7 +100,7 @@ namespace TKR.WorldServer.core.objects
             Txt = text
         });
 
-        public void SendClientTextFormat(string text, params object[] args) => Client.SendPacket(new Text()
+        public void SendClientTextFormat(string text, params object[] args) => Client.SendMessage(new Text()
         {
             BubbleTime = 0,
             NumStars = -1,
@@ -108,7 +108,7 @@ namespace TKR.WorldServer.core.objects
             Txt = string.Format(text, args)
         });
 
-        public void SendEnemy(string name, string text) => Client.SendPacket(new Text()
+        public void SendEnemy(string name, string text) => Client.SendMessage(new Text()
         {
             BubbleTime = 0,
             NumStars = -1,
@@ -116,7 +116,7 @@ namespace TKR.WorldServer.core.objects
             Txt = text
         });
 
-        public void SendEnemyFormat(string name, string text, params object[] args) => Client.SendPacket(new Text()
+        public void SendEnemyFormat(string name, string text, params object[] args) => Client.SendMessage(new Text()
         {
             BubbleTime = 0,
             NumStars = -1,
@@ -124,7 +124,7 @@ namespace TKR.WorldServer.core.objects
             Txt = string.Format(text, args)
         });
 
-        public void SendError(string text) => Client.SendPacket(new Text()
+        public void SendError(string text) => Client.SendMessage(new Text()
         {
             BubbleTime = 0,
             NumStars = -1,
@@ -132,7 +132,7 @@ namespace TKR.WorldServer.core.objects
             Txt = text
         });
 
-        public void SendErrorFormat(string text, params object[] args) => Client.SendPacket(new Text()
+        public void SendErrorFormat(string text, params object[] args) => Client.SendMessage(new Text()
         {
             BubbleTime = 0,
             NumStars = -1,
@@ -142,7 +142,7 @@ namespace TKR.WorldServer.core.objects
 
         public void SendHelp(string text)
         {
-            Client.SendPacket(new Text()
+            Client.SendMessage(new Text()
             {
                 BubbleTime = 0,
                 NumStars = -1,
@@ -151,7 +151,7 @@ namespace TKR.WorldServer.core.objects
             });
         }
 
-        public void SendHelpFormat(string text, params object[] args) => Client.SendPacket(new Text()
+        public void SendHelpFormat(string text, params object[] args) => Client.SendMessage(new Text()
         {
             BubbleTime = 0,
             NumStars = -1,
@@ -159,7 +159,7 @@ namespace TKR.WorldServer.core.objects
             Txt = string.Format(text, args)
         });
 
-        public void SendInfo(string text) => Client.SendPacket(new Text()
+        public void SendInfo(string text) => Client.SendMessage(new Text()
         {
             BubbleTime = 0,
             NumStars = -1,
@@ -169,7 +169,7 @@ namespace TKR.WorldServer.core.objects
 
         internal void AnnouncementReceived(string text, string user = null) => Client.Player.SendInfo(string.Concat($"<{user ?? "ANNOUNCEMENT"}> ", text));
 
-        internal void DeathNotif(string text) => Client.SendPacket(new Text()
+        internal void DeathNotif(string text) => Client.SendMessage(new Text()
         {
             BubbleTime = 0,
             NumStars = -1,
@@ -179,7 +179,7 @@ namespace TKR.WorldServer.core.objects
             NameColor = 0xff2f00
         });
 
-        internal void ForgerNotif(string text) => Client.SendPacket(new Text()
+        internal void ForgerNotif(string text) => Client.SendMessage(new Text()
         {
             BubbleTime = 0,
             NumStars = -1,
@@ -189,7 +189,7 @@ namespace TKR.WorldServer.core.objects
             NameColor = 696969
         });
 
-        internal void EngineNotif(string text) => Client.SendPacket(new Text()
+        internal void EngineNotif(string text) => Client.SendMessage(new Text()
         {
             BubbleTime = 0,
             NumStars = -1,
@@ -199,7 +199,7 @@ namespace TKR.WorldServer.core.objects
             NameColor = 0x3e9bff
         });
 
-        internal void GuildReceived(int objId, int stars, string from, string text) => Client.SendPacket(new Text()
+        internal void GuildReceived(int objId, int stars, string from, string text) => Client.SendMessage(new Text()
         {
             ObjectId = objId,
             BubbleTime = 10,
@@ -209,7 +209,7 @@ namespace TKR.WorldServer.core.objects
             Txt = text
         });
 
-        internal void PartyReceived(int objId, int stars, string from, string text) => Client.SendPacket(new Text()
+        internal void PartyReceived(int objId, int stars, string from, string text) => Client.SendMessage(new Text()
         {
             ObjectId = objId,
             BubbleTime = 10,
@@ -219,7 +219,7 @@ namespace TKR.WorldServer.core.objects
             Txt = text
         });
 
-        internal void SendEternalNotif(string text) => Client.SendPacket(new Text()
+        internal void SendEternalNotif(string text) => Client.SendMessage(new Text()
         {
             BubbleTime = 0,
             NumStars = -1,
@@ -230,7 +230,7 @@ namespace TKR.WorldServer.core.objects
             NameColor = 0x98ff98
         });
 
-        internal void SendLootNotif(string text) => Client.SendPacket(new Text()
+        internal void SendLootNotif(string text) => Client.SendMessage(new Text()
         {
             BubbleTime = 0,
             NumStars = -1,
@@ -240,7 +240,7 @@ namespace TKR.WorldServer.core.objects
             NameColor = 0xAD054F
         });
 
-        internal void SendMythicalNotif(string text) => Client.SendPacket(new Text()
+        internal void SendMythicalNotif(string text) => Client.SendMessage(new Text()
         {
             BubbleTime = 0,
             NumStars = -1,
@@ -250,7 +250,7 @@ namespace TKR.WorldServer.core.objects
             NameColor = 0xff0000
         });
 
-        internal void TellReceived(int objId, int stars, int admin, string from, string to, string text) => Client.SendPacket(new Text()
+        internal void TellReceived(int objId, int stars, int admin, string from, string to, string text) => Client.SendMessage(new Text()
         {
             ObjectId = objId,
             BubbleTime = 10,

@@ -277,7 +277,7 @@ namespace TKR.WorldServer.core.commands.player
                     return false;
                 }
 
-                client.SendPacket(new InvitedToParty()
+                client.SendMessage(new InvitedToParty()
                 {
                     Name = player.Client.Account.Name,
                     PartyId = player.Client.Account.PartyId
@@ -834,7 +834,7 @@ namespace TKR.WorldServer.core.commands.player
 
                 targetClient.Player.GuildInvite = player.Client.Account.GuildId;
 
-                targetClient.SendPacket(new InvitedToGuild()
+                targetClient.SendMessage(new InvitedToGuild()
                 {
                     Name = player.Name,
                     GuildName = player.Guild
@@ -1029,7 +1029,7 @@ namespace TKR.WorldServer.core.commands.player
 
             player.GameServer.Database.IgnoreAccount(srcAccount, targetAccount, true);
 
-            player.Client.SendPacket(new AccountList()
+            player.Client.SendMessage(new AccountList()
             {
                 AccountListId = 1, // ignore list
                 AccountIds = srcAccount.IgnoreList
@@ -1104,7 +1104,7 @@ namespace TKR.WorldServer.core.commands.player
 
             player.GameServer.Database.LockAccount(srcAccount, targetAccount, true);
 
-            player.Client.SendPacket(new AccountList()
+            player.Client.SendMessage(new AccountList()
             {
                 AccountListId = 0, // locked list
                 AccountIds = player.Client.Account.LockList
@@ -1443,7 +1443,7 @@ namespace TKR.WorldServer.core.commands.player
 
             player.GameServer.Database.IgnoreAccount(srcAccount, targetAccount, false);
 
-            player.Client.SendPacket(new AccountList()
+            player.Client.SendMessage(new AccountList()
             {
                 AccountListId = 1, // ignore list
                 AccountIds = srcAccount.IgnoreList
@@ -1486,7 +1486,7 @@ namespace TKR.WorldServer.core.commands.player
 
             player.GameServer.Database.LockAccount(srcAccount, targetAccount, false);
 
-            player.Client.SendPacket(new AccountList()
+            player.Client.SendMessage(new AccountList()
             {
                 AccountListId = 0, // locked list
                 AccountIds = player.Client.Account.LockList

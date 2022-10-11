@@ -26,7 +26,7 @@ namespace TKR.WorldServer.core.net.handlers
             obj?.Buy(player);
 
             if (obj == null)
-                player.Client.SendPacket(new BuyResultMessage
+                player.Client.SendMessage(new BuyResultMessage
                 {
                     Result = 1,
                     ResultString = $"Purchase Error: {BuyResult.TransactionFailed.GetDescription()}"

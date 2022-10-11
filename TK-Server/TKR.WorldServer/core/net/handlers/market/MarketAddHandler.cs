@@ -47,7 +47,7 @@ namespace TKR.WorldServer.core.net.handlers.market
 
                 if (item == null)
                 {
-                    client.SendPacket(new MarketAddResult
+                    client.SendMessage(new MarketAddResult
                     {
                         Code = MarketAddResult.SLOT_IS_NULL,
                         Description = $"There is no item on slot {slotId + 1}."
@@ -57,7 +57,7 @@ namespace TKR.WorldServer.core.net.handlers.market
 
                 if (item.Soulbound)
                 {
-                    client.SendPacket(new MarketAddResult
+                    client.SendMessage(new MarketAddResult
                     {
                         Code = MarketAddResult.ITEM_IS_SOULBOUND,
                         Description = "You cannot sell soulbound items."
@@ -110,7 +110,7 @@ namespace TKR.WorldServer.core.net.handlers.market
                 return;
             }
 
-            client.SendPacket(new MarketAddResult
+            client.SendMessage(new MarketAddResult
             {
                 Code = -1,
                 Description = $"Successfully added {amountOfItems} item{(amountOfItems > 1 ? "s" : "")} to the market."
@@ -123,7 +123,7 @@ namespace TKR.WorldServer.core.net.handlers.market
         {
             if (!Enum.IsDefined(typeof(CurrencyType), currency) || currency == (int)CurrencyType.GuildFame)
             {
-                client.SendPacket(new MarketAddResult
+                client.SendMessage(new MarketAddResult
                 {
                     Code = MarketAddResult.INVALID_CURRENCY,
                     Description = "Invalid currency."
@@ -138,7 +138,7 @@ namespace TKR.WorldServer.core.net.handlers.market
         {
             if (price <= 0)
             {
-                client.SendPacket(new MarketAddResult
+                client.SendMessage(new MarketAddResult
                 {
                     Code = MarketAddResult.INVALID_PRICE,
                     Description = "You cannot sell items for 0 or less."
@@ -153,7 +153,7 @@ namespace TKR.WorldServer.core.net.handlers.market
         {
             if (hours <= 0 || hours > 24)
             {
-                client.SendPacket(new MarketAddResult
+                client.SendMessage(new MarketAddResult
                 {
                     Code = MarketAddResult.INVALID_UPTIME,
                     Description = "Only 1-24 hours uptime allowed."

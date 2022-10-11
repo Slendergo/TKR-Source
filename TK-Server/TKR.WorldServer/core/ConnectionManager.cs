@@ -148,7 +148,7 @@ namespace TKR.WorldServer.core
             var world = client.GameServer.WorldManager.GetWorld(gameId);
             if (world == null || world.Deleted)
             {
-                client.SendPacket(new Text()
+                client.SendMessage(new Text()
                 {
                     BubbleTime = 0,
                     NumStars = -1,

@@ -486,7 +486,7 @@ namespace TKR.WorldServer.core.net.handlers
             if (itemValue == 0xa420)
             {
                 client.Player.GameServer.ChatManager.AnnounceForger($"[{client.Player.Name}] has forged both Claws of Cerberus into [{miscItem.DisplayName}]!");
-                client.Player.Client.SendPacket(new GlobalNotification() { Text = "eternalloot" });
+                client.Player.Client.SendMessage(new GlobalNotification() { Text = "eternalloot" });
             }
         }
     }

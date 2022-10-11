@@ -44,7 +44,7 @@ namespace TKR.WorldServer.core.net.handlers
             if (tradeTarget.trade.SequenceEqual(yourOffer))
             {
                 player.tradeAccepted = true;
-                tradeTarget.Client.SendPacket(new TradeAccepted()
+                tradeTarget.Client.SendMessage(new TradeAccepted()
                 {
                     MyOffer = tradeTarget.trade,
                     YourOffer = player.trade
@@ -172,7 +172,7 @@ namespace TKR.WorldServer.core.net.handlers
 
         private void TradeDone(Player player, Player tradeTarget, string msg)
         {
-            player.Client.SendPacket(new TradeDone
+            player.Client.SendMessage(new TradeDone
             {
                 Code = 1,
                 Description = msg
@@ -180,7 +180,7 @@ namespace TKR.WorldServer.core.net.handlers
 
             if (tradeTarget != null)
             {
-                tradeTarget.Client.SendPacket(new TradeDone
+                tradeTarget.Client.SendMessage(new TradeDone
                 {
                     Code = 1,
                     Description = msg

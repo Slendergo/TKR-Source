@@ -82,14 +82,14 @@ namespace TKR.WorldServer.core.net.handlers.market
                 offers[i] = mData;
             }
 
-            client.SendPacket(new MarketMyOffersResult { Results = offers });
+            client.SendMessage(new MarketMyOffersResult { Results = offers });
         }
 
         private bool HandleData(object data, Client client)
         {
             if (data == null)
             {
-                client.SendPacket(new MarketRemoveResult
+                client.SendMessage(new MarketRemoveResult
                 {
                     Code = MarketRemoveResult.ITEM_DOESNT_EXIST,
                     Description = "D'oh! Something is wrong, this item was removed already."
@@ -104,7 +104,7 @@ namespace TKR.WorldServer.core.net.handlers.market
         {
             if (selledId != accountId)
             {
-                client.SendPacket(new MarketRemoveResult
+                client.SendMessage(new MarketRemoveResult
                 {
                     Code = MarketRemoveResult.NOT_YOUR_ITEM,
                     Description = "D'oh! Somethins is wrong, you cannot remove items whose don't belongs to you."

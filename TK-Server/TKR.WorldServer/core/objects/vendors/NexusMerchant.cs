@@ -217,7 +217,7 @@ namespace TKR.WorldServer.core.objects.vendors
 
         protected virtual void SendNotifications(Player player, bool gift)
         {
-            player.Client.SendPacket(new networking.packets.outgoing.BuyResultMessage
+            player.Client.SendMessage(new networking.packets.outgoing.BuyResultMessage
             {
                 Result = 0,
                 ResultString = "Item purchased!"

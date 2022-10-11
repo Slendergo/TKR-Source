@@ -313,7 +313,7 @@ namespace TKR.WorldServer.core.miscfile
             var clients = GameServer.ConnectionManager.Clients
                 .Keys.Where(_ => _.Player != null);
             foreach (var client in clients)
-                client.SendPacket(new Text()
+                client.SendMessage(new Text()
                 {
                     ObjectId = -1,
                     BubbleTime = 10,
@@ -407,7 +407,7 @@ namespace TKR.WorldServer.core.miscfile
             src.World.ForeachPlayer(_ =>
             {
                 if (predicate(_))
-                    _.Client.SendPacket(tp);
+                    _.Client.SendMessage(tp);
             });
             StaticLogger.Instance.Info($"[{src.World.IdName}({src.World.Id})] <{src.Name}> {tp.Txt}");
         }

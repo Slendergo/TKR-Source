@@ -160,7 +160,7 @@ namespace TKR.WorldServer.core.objects
 
             // send ping
             _pingTime = time.TotalElapsedMs;
-            Client.SendPacket(new Ping()
+            Client.SendMessage(new Ping()
             {
                 Serial = (int)time.TotalElapsedMs,
                 RTT = Latency//(int)(_pingTime - _pongTime) - PingPeriod

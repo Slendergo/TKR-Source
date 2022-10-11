@@ -47,6 +47,7 @@ namespace TKR.WorldServer.core.net.handlers
 
             CreatePlayer(client, character);
         }
+
         private void CreatePlayer(Client client, DbChar character)
         {
             client.Character = character;
@@ -56,8 +57,7 @@ namespace TKR.WorldServer.core.net.handlers
                 target = client.GameServer.WorldManager.GetWorld(-2); // return to nexus
 
             client.Player = new Player(client);
-
-            client.SendPacket(new CreateSuccess()
+            client.SendMessage(new CreateSuccess()
             {
                 CharId = client.Character.CharId,
                 ObjectId = target.EnterWorld(client.Player)

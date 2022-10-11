@@ -95,7 +95,7 @@ package com.company.assembleegameclient.ui
             {
                drawColor = Parameters.PARTY_MEMBER_COLOR;
             }
-            else if(p.nameChosen_)
+            else
             {
                drawColor = Parameters.NAME_CHOSEN_COLOR;
             }

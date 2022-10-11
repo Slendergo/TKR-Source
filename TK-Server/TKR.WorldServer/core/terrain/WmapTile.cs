@@ -77,8 +77,8 @@ namespace TKR.WorldServer.core.terrain
                     {
                         case "hp":
                             var hp = Utils.GetInt(kv[1]);
-                            stats.Add(ValueTuple.Create(StatDataType.HP, hp));
-                            stats.Add(ValueTuple.Create(StatDataType.MaximumHP, hp));
+                            stats.Add(ValueTuple.Create(StatDataType.Health, hp));
+                            stats.Add(ValueTuple.Create(StatDataType.MaximumHeath, hp));
                             break;
 
                         case "name":

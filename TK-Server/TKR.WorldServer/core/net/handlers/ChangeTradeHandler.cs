@@ -40,7 +40,7 @@ namespace TKR.WorldServer.core.net.handlers
             player.tradeAccepted = false;
             player.tradeTarget.tradeAccepted = false;
             player.trade = offer;
-            player.tradeTarget.Client.SendPacket(new TradeChanged()
+            player.tradeTarget.Client.SendMessage(new TradeChanged()
             {
                 Offer = player.trade
             });

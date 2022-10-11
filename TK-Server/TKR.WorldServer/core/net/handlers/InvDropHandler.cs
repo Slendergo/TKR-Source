@@ -43,7 +43,7 @@ namespace TKR.WorldServer.core.net.handlers
             {
                 player.ForceUpdate(slot.SlotId);
                 player.SendInfo("You cannot drop items inside the marketplace");
-                player.Client.SendPacket(new InvResult() { Result = 1 });
+                player.Client.SendMessage(new InvResult() { Result = 1 });
                 return;
             }
 
@@ -54,7 +54,7 @@ namespace TKR.WorldServer.core.net.handlers
             {
                 if (player.World.GetEntity(slot.ObjectId) is Player)
                 {
-                    player.Client.SendPacket(new InvResult() { Result = 1 });
+                    player.Client.SendMessage(new InvResult() { Result = 1 });
                     return;
                 }
 
@@ -65,14 +65,14 @@ namespace TKR.WorldServer.core.net.handlers
 
             if (slot.ObjectId == player.Id && player.Stacks.Any(stack => stack.Slot == slot.SlotId))
             {
-                player.Client.SendPacket(new InvResult() { Result = 1 });
+                player.Client.SendMessage(new InvResult() { Result = 1 });
                 return; // don't allow dropping of stacked items
             }
 
             if (con?.Inventory[slot.SlotId] == null)
             {
                 //give proper error
-                player.Client.SendPacket(new InvResult() { Result = 1 });
+                player.Client.SendMessage(new InvResult() { Result = 1 });
                 return;
             }
 
@@ -87,7 +87,7 @@ namespace TKR.WorldServer.core.net.handlers
 
                 if (!trans.Execute())
                 {
-                    player.Client.SendPacket(new InvResult() { Result = 1 });
+                    player.Client.SendMessage(new InvResult() { Result = 1 });
                     return;
                 }
             }
@@ -110,7 +110,7 @@ namespace TKR.WorldServer.core.net.handlers
             con.Inventory[slot.SlotId] = null;
             con.Inventory.Data[slot.SlotId] = null;
 
-            player.Client.SendPacket(new InvResult() { Result = 0 });
+            player.Client.SendMessage(new InvResult() { Result = 0 });
         }
     }
 }

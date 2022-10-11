@@ -351,7 +351,7 @@ namespace TKR.WorldServer.logic.loot
                     var chat = core.ChatManager;
                     var world = player.World;
 
-                    player.Client.SendPacket(new GlobalNotification() { Text = isMythical ? "mythical_loot" : isLegendary ? "legendary_loot" : "talisman_loot" });
+                    player.Client.SendMessage(new GlobalNotification() { Text = isMythical ? "mythical_loot" : isLegendary ? "legendary_loot" : "talisman_loot" });
 
                     #region Discord Bot Message
 

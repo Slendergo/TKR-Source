@@ -28,7 +28,7 @@ namespace TKR.WorldServer.core.net.handlers.market
             if (!HandleEmptyOffer(client, offers.Length))
                 return;
 
-            client.SendMessage(new MarketSearchResult
+            client.SendPacket(new MarketSearchResult
             {
                 Results = offers,
                 Description = ""
@@ -39,7 +39,7 @@ namespace TKR.WorldServer.core.net.handlers.market
         {
             if (total == 0)
             {
-                client.SendMessage(new MarketSearchResult
+                client.SendPacket(new MarketSearchResult
                 {
                     Results = new MarketData[0],
                     Description = "There is no items currently being sold with this type."

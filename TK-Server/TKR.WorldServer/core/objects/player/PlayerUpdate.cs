@@ -1,8 +1,6 @@
-﻿using Pipelines.Sockets.Unofficial.Buffers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using TKR.Shared;
 using TKR.WorldServer.core.miscfile.datas;
 using TKR.WorldServer.core.miscfile.stats;
 using TKR.WorldServer.core.miscfile.structures;
@@ -125,7 +123,7 @@ namespace TKR.WorldServer.core.objects.player
 
             if (update.Tiles.Count == 0 && update.NewObjs.Count == 0 && update.Drops.Count == 0)
                 return;
-            Player.Client.SendMessage(update);
+            Player.Client.SendPacket(update);
         }
 
         public void GetNewTiles(Update update)
@@ -220,6 +218,7 @@ namespace TKR.WorldServer.core.objects.player
                     StepPath(points, pathMap, x + p.X, y + p.Y, px, py);
         }
 
+
         private readonly HashSet<EntityBase> NewNewObjects = new HashSet<EntityBase>();
 
         public void GetNewObjects(Update update)
@@ -227,18 +226,18 @@ namespace TKR.WorldServer.core.objects.player
             var x = Player.X;
             var y = Player.Y;
 
-            //foreach (var point in ActiveTiles) //static objects
-            //{
-            //    var pointX = point.X;
-            //    var pointY = point.Y;
+            foreach (var point in ActiveTiles) //static objects
+            {
+                var pointX = point.X;
+                var pointY = point.Y;
 
-            //    var tile = World.Map[pointX, pointY];
-            //    if (tile == null)
-            //        continue;
+                var tile = World.Map[pointX, pointY];
+                if (tile == null)
+                    continue;
 
-            //    if (tile.ObjId != 0 && tile.ObjType != 0 && NewStaticObjects.Add(tile))
-            //        update.NewObjs.Add(tile.ToObjectDef(pointX, pointY));
-            //}
+                if (tile.ObjId != 0 && tile.ObjType != 0 && NewStaticObjects.Add(tile))
+                    update.NewObjs.Add(tile.ToObjectDef(pointX, pointY));
+            }
 
             var plrs = World.GetPlayers();
 
@@ -255,78 +254,63 @@ namespace TKR.WorldServer.core.objects.player
                 }
             }
 
-            //foreach (var entity in World.PlayersCollision.HitTest(x, y, VISIBILITY_RADIUS))
-            //    if ((entity is Decoy || entity is Pet) && NewObjects.Add(entity))
-            //        update.NewObjs.Add(entity.ToDefinition());
+            foreach (var entity in World.PlayersCollision.HitTest(x, y, VISIBILITY_RADIUS))
+                if ((entity is Decoy || entity is Pet) && NewObjects.Add(entity))
+                    update.NewObjs.Add(entity.ToDefinition());
 
             var intPoint = new IntPoint(0, 0);
-            //foreach (var entity in World.EnemiesCollision.HitTest(x, y, VISIBILITY_RADIUS))
-            //{
-            //    if (entity.Dead || entity is Container)
-            //        continue;
+            foreach (var entity in World.EnemiesCollision.HitTest(x, y, VISIBILITY_RADIUS))
+            {
+                if (entity.Dead || entity is Container)
+                    continue;
 
-            //    intPoint.X = (int)entity.X;
-            //    intPoint.Y = (int)entity.Y;
+                intPoint.X = (int)entity.X;
+                intPoint.Y = (int)entity.Y;
 
-            //    if (ActiveTiles.Contains(intPoint) && NewObjects.Add(entity))
-            //        update.NewObjs.Add(entity.ToDefinition());
-            //}
+                if (ActiveTiles.Contains(intPoint) && NewObjects.Add(entity))
+                    update.NewObjs.Add(entity.ToDefinition());
+            }
 
-            //foreach (var entry in World.Containers)
-            //{
-            //    var entity = entry.Value;
-            //    var owners = entity.BagOwners;
-            //    if (owners.Length > 0 && Array.IndexOf(owners, Player.AccountId) == -1)
-            //        continue;
+            foreach (var entry in World.Containers)
+            {
+                var entity = entry.Value;
+                var owners = entity.BagOwners;
+                if (owners.Length > 0 && Array.IndexOf(owners, Player.AccountId) == -1)
+                    continue;
 
-            //    intPoint.X = (int)entity.X;
-            //    intPoint.Y = (int)entity.Y;
-            //    if (ActiveTiles.Contains(intPoint) && NewObjects.Add(entity))
-            //        update.NewObjs.Add(entity.ToDefinition());
-            //}
+                intPoint.X = (int)entity.X;
+                intPoint.Y = (int)entity.Y;
+                if (ActiveTiles.Contains(intPoint) && NewObjects.Add(entity))
+                    update.NewObjs.Add(entity.ToDefinition());
+            }
 
-            //foreach (var entity in World.Portals.Values)
-            //{
-            //    intPoint.X = (int)entity.X;
-            //    intPoint.Y = (int)entity.Y;
+            foreach (var entity in World.Portals.Values)
+            {
+                intPoint.X = (int)entity.X;
+                intPoint.Y = (int)entity.Y;
 
-            //    if (ActiveTiles.Contains(intPoint) && NewObjects.Add(entity))
-            //        update.NewObjs.Add(entity.ToDefinition());
-            //}
+                if (ActiveTiles.Contains(intPoint) && NewObjects.Add(entity))
+                    update.NewObjs.Add(entity.ToDefinition());
+            }
 
-            //if (Player.Quest != null && NewObjects.Add(Player.Quest))
-            //    update.NewObjs.Add(Player.Quest.ToDefinition());
+            if (Player.Quest != null && NewObjects.Add(Player.Quest))
+                update.NewObjs.Add(Player.Quest.ToDefinition());
 
             // new
-            using (var t = new TimedProfiler("Update"))
+
+            var players = World.Census.GetPlayers();
+            foreach (var player in players)
+                if (NewNewObjects.Add(player))
+                    update.NewObjs.Add(player.StatManager.Get());
+
+            var objs = World.Census.PlayersWithinRadius(x, y, VISIBILITY_RADIUS);
+            foreach (var obj in players)
             {
-                var players = World.Census.GetPlayers();
-                foreach (var player in players)
-                {
-                    if (player.Dead)
-                        continue;
-                    if (NewNewObjects.Add(player))
-                        update.NewObjs.Add(player.StatManager.Get());
-                }
+                if (!(obj is NewPlayer) && !ActiveTiles.Contains(intPoint))
+                    continue;
 
-                var entities = World.Census.UpdateEntitiesWithinRadius(x, y, VISIBILITY_RADIUS);
-                foreach (var entity in entities)
-                {
-                    if (entity.Dead)
-                        continue;
-
-                    if (entity is NewContainer container)
-                        if (container.BagOwners.Length > 0 && Array.IndexOf(container.BagOwners, Player.AccountId) == -1)
-                            continue;
-
-                    intPoint.X = (int)entity.X;
-                    intPoint.Y = (int)entity.Y;
-                    if (!ActiveTiles.Contains(intPoint))
-                        continue;
-
-                    if (NewNewObjects.Add(entity))
-                        update.NewObjs.Add(entity.StatManager.Get());
-                }
+                if (NewNewObjects.Add(obj))
+                    update.NewObjs.Add(obj.StatManager.Get());
             }
         }
 
@@ -350,7 +334,7 @@ namespace TKR.WorldServer.core.objects.player
                 StatsUpdates.Clear();
             }
 
-            Player.Client.SendMessage(newTick);
+            Player.Client.SendPacket(newTick);
             Player.AwaitMove(TickId);
         }
 

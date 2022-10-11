@@ -42,7 +42,7 @@ namespace TKR.WorldServer.core.net.handlers
                 }
 
                 cli.Player.GuildInvite = client.Account.GuildId;
-                cli.SendMessage(new InvitedToGuild()
+                cli.SendPacket(new InvitedToGuild()
                 {
                     Name = client.Account.Name,
                     GuildName = client.Player.Guild

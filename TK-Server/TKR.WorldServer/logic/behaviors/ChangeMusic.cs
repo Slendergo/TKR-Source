@@ -35,7 +35,7 @@ namespace TKR.WorldServer.logic.behaviors
                         if (plr == null)
                             return;
 
-                        plr.Client.SendMessage(new SwitchMusic()
+                        plr.Client.SendPacket(new SwitchMusic()
                         {
                             Music = _music
                         });

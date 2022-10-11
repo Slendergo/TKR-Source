@@ -1,5 +1,4 @@
 ﻿using Ionic.Zlib;
-using Newtonsoft.Json.Linq;
 using NLog;
 using System;
 using System.Collections.Generic;
@@ -27,21 +26,7 @@ namespace TKR.WorldServer.core.terrain
 
         public int Height { get; private set; }
         public int Width { get; private set; }
-        public WmapTile this[int x, int y]
-        {
-            get
-            {
-                x = Math.Clamp(x, 0, Width - 1);
-                y = Math.Clamp(y, 0, Height - 1);
-                return Tiles[x, y];
-            } 
-            set
-            {
-                x = Math.Clamp(x, 0, Width - 1);
-                y = Math.Clamp(y, 0, Height - 1);
-                Tiles[x, y] = value;
-            }
-        }
+        public WmapTile this[int x, int y] { get => !Contains(x, y) ? null : Tiles[x, y]; set => Tiles[x, y] = value; }
 
         public Wmap(World world) => World = world;
 
@@ -182,11 +167,7 @@ namespace TKR.WorldServer.core.terrain
                 for (short y = 0; y < Height; y++)
                     for (short x = 0; x < Width; x++)
                     {
-                        var dx = x + 0.5f;
-                        var dy = y + 0.5f;
-
-                        var d = dict[rdr.ReadInt16()];
-                        var tile = new WmapTile(d);
+                        var tile = new WmapTile(dict[rdr.ReadInt16()]);
                         if (ver == 2)
                             tile.Elevation = rdr.ReadByte();
 
@@ -210,35 +191,6 @@ namespace TKR.WorldServer.core.terrain
 
                         if (desc != null && desc.Connects)
                             tile.TileId = 0xFD;
-
-                        var tileDesc = World.GameServer.Resources.GameData.Tiles[tile.TileId];
-
-                        if (desc != null)
-                        {
-                            if (desc.Enemy)
-                            {
-                                //Console.WriteLine($"Enemy: {desc.ObjectId}");
-                                var enemy = World.CreateNewEnemy(desc.ObjectType, dx, dy);
-                            }
-                            else if (desc.IntergamePortal)
-                            {
-                                //Console.WriteLine($"Portal: {desc.ObjectId}");
-                                var portal = World.CreateNewPortal(desc.ObjectType, dx, dy);
-                            }
-                            else if (desc.Static)
-                            {
-                                //Console.WriteLine($"Static: {desc.ObjectId}");
-                                var stat = World.CreateNewStatic(desc.ObjectType, dx, dy);
-                            }
-                            else{
-                                Console.WriteLine($"UNKNOWN: {desc.ObjectId}");
-                                var enemy = World.CreateNewEnemy(desc.ObjectType, dx, dy);
-                            }
-
-                            World.Visibility.SetStatic(x, y, desc.Static);
-                            World.Visibility.SetBlocking(x, y, desc.BlocksSight);
-                        }
-                        World.Visibility.SetWalkable(x, y, tileDesc.NoWalk);
 
                         Tiles[x, y] = tile;
                     }

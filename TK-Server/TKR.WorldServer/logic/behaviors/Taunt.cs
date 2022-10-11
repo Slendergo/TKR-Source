@@ -128,7 +128,7 @@ namespace TKR.WorldServer.logic.behaviors
             else
                 foreach (var i in host.World.PlayersCollision.HitTest(host.X, host.Y, 15).Where(e => e is Player))
                     if (i is Player && host.DistTo(i) < 15)
-                        (i as Player).Client.SendMessage(packet);
+                        (i as Player).Client.SendPacket(packet);
         }
     }
 }

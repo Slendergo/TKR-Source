@@ -32,7 +32,7 @@ namespace TKR.WorldServer.core.net.handlers.market
             var marketData = DbMarketData.GetSpecificOffer(client?.Account?.Database, id);
             if (marketData == null)
             {
-                client.SendMessage(new MarketBuyResult()
+                client.SendPacket(new MarketBuyResult()
                 {
                     Code = MarketBuyResult.ERROR,
                     Description = "Something wrong happened, try again. (Item doesn't exist in Market)"
@@ -43,7 +43,7 @@ namespace TKR.WorldServer.core.net.handlers.market
 
             if (!player.GameServer.Resources.GameData.Items.TryGetValue(marketData.ItemType, out var item))
             {
-                client.SendMessage(new MarketBuyResult()
+                client.SendPacket(new MarketBuyResult()
                 {
                     Code = MarketBuyResult.ERROR,
                     Description = "Something wrong happened, try again. (Item not registered in Server)"
@@ -54,7 +54,7 @@ namespace TKR.WorldServer.core.net.handlers.market
 
             if (player.CurrentFame < marketData.Price)
             {
-                client.SendMessage(new MarketBuyResult()
+                client.SendPacket(new MarketBuyResult()
                 {
                     Code = MarketBuyResult.ERROR,
                     Description = "Your fame is not enough to buy this item!"
@@ -74,7 +74,7 @@ namespace TKR.WorldServer.core.net.handlers.market
 
             if (sellerId == 0 || sellerAcc == null)
             {
-                client.SendMessage(new MarketBuyResult()
+                client.SendPacket(new MarketBuyResult()
                 {
                     Code = MarketBuyResult.ERROR,
                     Description = "Something wrong happened, try again. (Seller Account not exist)"
@@ -98,7 +98,7 @@ namespace TKR.WorldServer.core.net.handlers.market
             else
                 db.AddGift(client.Account, marketData.ItemType);
 
-            client.SendMessage(new MarketBuyResult()
+            client.SendPacket(new MarketBuyResult()
             {
                 Code = -1,
                 Description = $"You have successfully bought: {item.ObjectId}",

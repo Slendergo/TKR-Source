@@ -65,13 +65,13 @@ namespace TKR.WorldServer.core.net.handlers
             SendSuccess(client);
         }
 
-        private void SendError(Client client, string message = null) => client.SendMessage(new GuildResult()
+        private void SendError(Client client, string message = null) => client.SendPacket(new GuildResult()
         {
             Success = false,
             ErrorText = "Guild Creation Error: " + message
         });
 
-        private void SendSuccess(Client client) => client.SendMessage(new GuildResult()
+        private void SendSuccess(Client client) => client.SendPacket(new GuildResult()
         {
             Success = true,
             ErrorText = "Success!"

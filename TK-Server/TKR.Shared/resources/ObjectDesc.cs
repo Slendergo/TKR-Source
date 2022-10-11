@@ -64,6 +64,7 @@ namespace TKR.Shared.resources
 
         public string Class;
         public string DisplayId;
+        public string DisplayName;
         public string Group;
         public string ObjectId;
         public Dictionary<int, ProjectileDesc> Projectiles = new Dictionary<int, ProjectileDesc>();
@@ -77,7 +78,8 @@ namespace TKR.Shared.resources
         {
             ObjectType = type;
             ObjectId = e.GetAttribute<string>("id");
-            DisplayId = e.GetValue<string>("DisplayId", ObjectId);
+            DisplayId = e.GetValue<string>("DisplayId");
+            DisplayName = string.IsNullOrWhiteSpace(DisplayId) ? ObjectId : DisplayId;
             Class = e.GetValue<string>("Class");
             Static = e.HasElement("Static");
             Event = e.HasElement("Event");

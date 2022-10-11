@@ -76,7 +76,7 @@ namespace TKR.WorldServer.networking
 
         public async void SendFailure(string text, int errorId = FailureMessage.MessageWithDisconnect)
         {
-            SendMessage(new FailureMessage(errorId, text));
+            SendPacket(new FailureMessage(errorId, text));
 
             if (errorId == FailureMessage.MessageWithDisconnect || errorId == FailureMessage.ForceCloseGame)
             {
@@ -85,7 +85,7 @@ namespace TKR.WorldServer.networking
             }
         }
 
-        public void SendMessage(OutgoingMessage pkt)
+        public void SendPacket(OutgoingMessage pkt)
         {
             if (State != ProtocolState.Disconnected)
                 _handler.SendPacket(pkt);
@@ -126,7 +126,7 @@ namespace TKR.WorldServer.networking
 
             //Log.Trace("Reconnecting client ({0}) @ {1} to {2}...", Account.Name, IP, pkt.Name);
             GameServer.ConnectionManager.AddReconnect(Account.AccountId, pkt);
-            SendMessage(pkt);
+            SendPacket(pkt);
         }
 
         public void Disconnect(string reason = "", bool forceShow = false)

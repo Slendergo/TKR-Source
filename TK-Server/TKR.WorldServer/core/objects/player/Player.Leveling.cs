@@ -28,6 +28,12 @@ namespace TKR.WorldServer.core.objects
             return 20;
         }
 
+        public static int GetTalismanEssenceCap(int stars)
+        {
+            var baseCount = 1000;
+            return baseCount + (stars * baseCount);
+        }
+
         public static int GetLevelExp(int level)
         {
             if (level == 1)
@@ -124,7 +130,7 @@ namespace TKR.WorldServer.core.objects
                 var newQuest = FindQuest();
                 if (newQuest != null && newQuest != Quest)
                 {
-                    Client.SendMessage(new QuestObjId()
+                    Client.SendPacket(new QuestObjId()
                     {
                         ObjectId = newQuest.Id
                     });

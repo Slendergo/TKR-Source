@@ -49,7 +49,7 @@ namespace TKR.WorldServer.core.net.handlers
                 from.ForceUpdate(slotFrom);
                 to.ForceUpdate(slotTo);
                 player.SendInfo("You cannot swap inventory items inside the marketplace");
-                player.Client.SendMessage(new InvResult() { Result = 1 });
+                player.Client.SendPacket(new InvResult() { Result = 1 });
                 return;
             }
 
@@ -57,7 +57,7 @@ namespace TKR.WorldServer.core.net.handlers
             {
                 from.ForceUpdate(slotFrom);
                 to.ForceUpdate(slotTo);
-                player.Client.SendMessage(new InvResult() { Result = 1 });
+                player.Client.SendPacket(new InvResult() { Result = 1 });
                 return;
             }
 
@@ -83,7 +83,7 @@ namespace TKR.WorldServer.core.net.handlers
                             }
                             stackTrans[slotFrom] = null;
                             Inventory.Execute(stackTrans);
-                            player.Client.SendMessage(new InvResult() { Result = 0 });
+                            player.Client.SendPacket(new InvResult() { Result = 0 });
                             return;
                         }
                     }
@@ -96,7 +96,7 @@ namespace TKR.WorldServer.core.net.handlers
             {
                 from.ForceUpdate(slotFrom);
                 to.ForceUpdate(slotTo);
-                player.Client.SendMessage(new InvResult() { Result = 1 });
+                player.Client.SendPacket(new InvResult() { Result = 1 });
                 return;
             }
 
@@ -104,7 +104,7 @@ namespace TKR.WorldServer.core.net.handlers
             {
                 from.ForceUpdate(slotFrom);
                 to.ForceUpdate(slotTo);
-                player.Client.SendMessage(new InvResult() { Result = 1 });
+                player.Client.SendPacket(new InvResult() { Result = 1 });
                 return;
             }
 
@@ -121,7 +121,7 @@ namespace TKR.WorldServer.core.net.handlers
             {
                 from.ForceUpdate(slotFrom);
                 to.ForceUpdate(slotTo);
-                player.Client.SendMessage(new InvResult() { Result = 1 });
+                player.Client.SendPacket(new InvResult() { Result = 1 });
                 return;
             }
 
@@ -129,7 +129,7 @@ namespace TKR.WorldServer.core.net.handlers
             {
                 from.ForceUpdate(slotFrom);
                 to.ForceUpdate(slotTo);
-                player.Client.SendMessage(new InvResult() { Result = 1 });
+                player.Client.SendPacket(new InvResult() { Result = 1 });
                 return;
             }
 
@@ -192,7 +192,7 @@ namespace TKR.WorldServer.core.net.handlers
                     while (queue.Count > 0)
                         queue.Dequeue()();
 
-                    player.Client.SendMessage(new InvResult() { Result = 0 });
+                    player.Client.SendPacket(new InvResult() { Result = 0 });
                     return;
                 }
 
@@ -204,7 +204,7 @@ namespace TKR.WorldServer.core.net.handlers
             from.ForceUpdate(slotFrom);
             to.ForceUpdate(slotTo);
 
-            player.Client.SendMessage(new InvResult() { Result = 1 });
+            player.Client.SendPacket(new InvResult() { Result = 1 });
         }
 
 

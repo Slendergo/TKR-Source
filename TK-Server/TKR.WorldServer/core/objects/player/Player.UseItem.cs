@@ -127,13 +127,13 @@ namespace TKR.WorldServer.core.objects
             var entity = World.GetEntity(objId);
             if (entity == null)
             {
-                Client.SendMessage(new InvResult() { Result = 1 });
+                Client.SendPacket(new InvResult() { Result = 1 });
                 return;
             }
 
             if (entity is Player && objId != Id)
             {
-                Client.SendMessage(new InvResult() { Result = 1 });
+                Client.SendPacket(new InvResult() { Result = 1 });
                 return;
             }
 
@@ -147,7 +147,7 @@ namespace TKR.WorldServer.core.objects
             {   
                 entity.ForceUpdate(slot);
                 SendInfo("You cannot use items inside the marketplace");
-                Client.SendMessage(new InvResult() { Result = 1 });
+                Client.SendPacket(new InvResult() { Result = 1 });
                 return;
             }
 
@@ -155,7 +155,7 @@ namespace TKR.WorldServer.core.objects
             if (this.DistTo(entity) > 3)
             {
                 entity.ForceUpdate(slot);
-                Client.SendMessage(new InvResult() { Result = 1 });
+                Client.SendPacket(new InvResult() { Result = 1 });
                 return;
             }
 
@@ -184,7 +184,7 @@ namespace TKR.WorldServer.core.objects
             if (container is GiftChest)
             {
                 entity.ForceUpdate(slot);
-                Client.SendMessage(new InvResult() { Result = 1 });
+                Client.SendPacket(new InvResult() { Result = 1 });
                 SendError("Can't use items if they are in a Gift Chest.");
                 return;
             }
@@ -195,7 +195,7 @@ namespace TKR.WorldServer.core.objects
 
             if (MP < item.MpCost)
             {
-                Client.SendMessage(new InvResult() { Result = 1 });
+                Client.SendPacket(new InvResult() { Result = 1 });
                 return;
             }
 
@@ -263,7 +263,7 @@ namespace TKR.WorldServer.core.objects
             if (item.InvUse || item.Consumable || item.SlotType == slotType)
                 Activate(clientTime, time, item, slot, pos, objId, sellMaxed, useType);
             else
-                Client.SendMessage(new InvResult() { Result = 1 });
+                Client.SendPacket(new InvResult() { Result = 1 });
         }
 
         public static void HealDiscrete(Player player, int amount, bool magic)
@@ -315,8 +315,8 @@ namespace TKR.WorldServer.core.objects
 
             if (broadcastSelf)
             {
-                player.Client.SendMessage(effect);
-                player.Client.SendMessage(notif);
+                player.Client.SendPacket(effect);
+                player.Client.SendPacket(notif);
 
             }
             else
@@ -351,8 +351,8 @@ namespace TKR.WorldServer.core.objects
 
             if (broadcastSelf)
             {
-                player.Client.SendMessage(effect);
-                player.Client.SendMessage(notif);
+                player.Client.SendPacket(effect);
+                player.Client.SendPacket(notif);
 
             }
             else

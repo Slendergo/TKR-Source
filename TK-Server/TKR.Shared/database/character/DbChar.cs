@@ -25,21 +25,21 @@ namespace TKR.Shared.database.character
         public int FinalFame { get => GetValue<int>("finalFame"); set => SetValue("finalFame", value); }
         public bool HasBackpack { get => GetValue<bool>("hasBackpack"); set => SetValue("hasBackpack", value); }
         public int HealthStackCount { get => GetValue<int>("hpPotCount"); set => SetValue("hpPotCount", value); }
-        public int Health { get => GetValue<int>("hp"); set => SetValue("hp", value); }
+        public int HP { get => GetValue<int>("hp"); set => SetValue("hp", value); }
         public ushort[] Items { get => GetValue<ushort[]>("items"); set => SetValue("items", value); }
         public ItemData[] Datas { get => GetValue<ItemData[]>("datas"); set => SetValue("datas", value); }
         public DateTime LastSeen { get => GetValue<DateTime>("lastSeen"); set => SetValue("lastSeen", value); }
-        public int LootDropBoostTime { get => GetValue<int>("ldBoost"); set => SetValue("ldBoost", value); }
+        public int LDBoostTime { get => GetValue<int>("ldBoost"); set => SetValue("ldBoost", value); }
         public int Level { get => GetValue<int>("level"); set => SetValue("level", value); }
         public int MagicStackCount { get => GetValue<int>("mpPotCount"); set => SetValue("mpPotCount", value); }
-        public int Mana { get => GetValue<int>("mp"); set => SetValue("mp", value); }
+        public int MP { get => GetValue<int>("mp"); set => SetValue("mp", value); }
         public ushort ObjectType { get => GetValue<ushort>("charType"); set => SetValue("charType", value); }
         public int PetId { get => GetValue<int>("petId"); set => SetValue("petId", value); }
         public int Skin { get => GetValue<int>("skin"); set => SetValue("skin", value); }
 
         public int[] Stats { get => GetValue<int[]>("stats"); set => SetValue("stats", value); }
-        public int Texture1 { get => GetValue<int>("tex1"); set => SetValue("tex1", value); }
-        public int Texture2 { get => GetValue<int>("tex2"); set => SetValue("tex2", value); }
+        public int Tex1 { get => GetValue<int>("tex1"); set => SetValue("tex1", value); }
+        public int Tex2 { get => GetValue<int>("tex2"); set => SetValue("tex2", value); }
         public bool UpgradeEnabled { get => GetValue<bool>("upgradeEnabled"); set => SetValue("upgradeEnabled", value); }
         public int XPBoostTime { get => GetValue<int>("xpBoost"); set => SetValue("xpBoost", value); }
         public bool CompletedTrialOfSouls { get => GetValue<bool>("completedTrialOfSouls"); set => SetValue("completedTrialOfSouls", value); }

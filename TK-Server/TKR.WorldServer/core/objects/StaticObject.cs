@@ -13,7 +13,7 @@ namespace TKR.WorldServer.core.objects
 
         public StaticObject(GameServer manager, ushort objType, int? life, bool stat, bool dying, bool hittestable) : base(manager, objType)
         {
-            _hp = new SV<int>(this, StatDataType.Health, 0, dying);
+            _hp = new SV<int>(this, StatDataType.HP, 0, dying);
 
             if (Vulnerable = life.HasValue)
                 HP = life.Value;
@@ -66,7 +66,7 @@ namespace TKR.WorldServer.core.objects
 
         protected override void ExportStats(List<ValueTuple<StatDataType, object>> stats, bool isOtherPlayer)
         {
-            stats.Add(ValueTuple.Create(StatDataType.Health, !Vulnerable ? int.MaxValue : HP));
+            stats.Add(ValueTuple.Create(StatDataType.HP, !Vulnerable ? int.MaxValue : HP));
             base.ExportStats(stats, isOtherPlayer);
         }
     }

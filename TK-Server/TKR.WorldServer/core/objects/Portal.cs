@@ -30,8 +30,7 @@ namespace TKR.WorldServer.core.objects
 
         protected override void ExportStats(List<ValueTuple<StatDataType, object>> stats, bool isOtherPlayer)
         {
-            if(ObjectDesc.ObjectId != "Guild Hall Portal")
-                stats.Add(ValueTuple.Create(StatDataType.PortalUsable, Usable));
+            stats.Add(ValueTuple.Create(StatDataType.PortalUsable, Usable ? 1 : 0));
 
             base.ExportStats(stats, isOtherPlayer);
         }

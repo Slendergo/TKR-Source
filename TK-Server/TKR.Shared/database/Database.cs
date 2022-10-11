@@ -368,10 +368,10 @@ namespace TKR.Shared.database
                     objDesc.Stats[6].StartingValue,
                     objDesc.Stats[7].StartingValue,
                 },
-                Health = objDesc.Stats[0].StartingValue,
-                Mana = objDesc.Stats[1].StartingValue,
-                Texture1 = 0,
-                Texture2 = 0,
+                HP = objDesc.Stats[0].StartingValue,
+                MP = objDesc.Stats[1].StartingValue,
+                Tex1 = 0,
+                Tex2 = 0,
                 Skin = skinType,
                 PetId = 0,
                 FameStats = new byte[0],
@@ -633,8 +633,10 @@ namespace TKR.Shared.database
         public DbGuild GetGuild(int id)
         {
             var ret = new DbGuild(_db, id);
+
             if (ret.IsNull)
                 return null;
+
             return ret;
         }
 

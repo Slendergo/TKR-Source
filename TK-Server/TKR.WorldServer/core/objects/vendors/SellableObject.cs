@@ -36,7 +36,7 @@ namespace TKR.WorldServer.core.objects.vendors
             base.ExportStats(stats, isOtherPlayer);
         }
 
-        protected void SendFailed(Player player, BuyResult result) => player.Client.SendMessage(new networking.packets.outgoing.BuyResultMessage
+        protected void SendFailed(Player player, BuyResult result) => player.Client.SendPacket(new networking.packets.outgoing.BuyResultMessage
         {
             Result = 1,
             ResultString = $"Purchase Error: {result.GetDescription()}"

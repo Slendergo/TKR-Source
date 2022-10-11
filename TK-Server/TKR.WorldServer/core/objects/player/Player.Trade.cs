@@ -20,14 +20,14 @@ namespace TKR.WorldServer.core.objects
         {
             if (!leftmarket)
             {
-                Client.SendMessage(new TradeDone()
+                Client.SendPacket(new TradeDone()
                 {
                     Code = 1,
                     Description = "Trade canceled!"
                 });
 
                 if (tradeTarget != null && tradeTarget.Client != null)
-                    tradeTarget.Client.SendMessage(new TradeDone()
+                    tradeTarget.Client.SendPacket(new TradeDone()
                     {
                         Code = 1,
                         Description = "Trade canceled!"
@@ -35,14 +35,14 @@ namespace TKR.WorldServer.core.objects
             }
             else
             {
-                Client.SendMessage(new TradeDone()
+                Client.SendPacket(new TradeDone()
                 {
                     Code = 1,
                     Description = "You left the market, Trade canceled!"
                 });
 
                 if (tradeTarget != null && tradeTarget.Client != null)
-                    tradeTarget.Client.SendMessage(new TradeDone()
+                    tradeTarget.Client.SendPacket(new TradeDone()
                     {
                         Code = 1,
                         Description = "Client left the market, Trade canceled!"
@@ -159,13 +159,13 @@ namespace TKR.WorldServer.core.objects
                         ItemData = target.Inventory.Data[i]?.GetData() ?? "{}"
                     };
 
-                Client.SendMessage(new TradeStart()
+                Client.SendPacket(new TradeStart()
                 {
                     MyItems = my,
                     YourName = target.Name,
                     YourItems = your
                 });
-                target.Client.SendMessage(new TradeStart()
+                target.Client.SendPacket(new TradeStart()
                 {
                     MyItems = your,
                     YourName = Name,
@@ -175,7 +175,7 @@ namespace TKR.WorldServer.core.objects
             else
             {
                 target.potentialTrader[this] = 1000 * 20;
-                target.Client.SendMessage(new TradeRequested()
+                target.Client.SendPacket(new TradeRequested()
                 {
                     Name = Name
                 });

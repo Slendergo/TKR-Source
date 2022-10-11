@@ -28,7 +28,7 @@ namespace TKR.WorldServer.core.net.handlers
             client.GameServer.Database.ReloadAccount(client.Account);
 
             if (name.Length < 1 || name.Length > 10 || !name.All(char.IsLetter) || !IsValid(name) || Database.GuestNames.Contains(name, StringComparer.InvariantCultureIgnoreCase))
-                client.SendMessage(new NameResult()
+                client.SendPacket(new NameResult()
                 {
                     Success = false,
                     ErrorText = "Invalid name"
@@ -45,7 +45,7 @@ namespace TKR.WorldServer.core.net.handlers
 
                     if (client.GameServer.Database.Conn.HashExists("names", name.ToUpperInvariant()))
                     {
-                        client.SendMessage(new NameResult()
+                        client.SendPacket(new NameResult()
                         {
                             Success = false,
                             ErrorText = "Duplicated name"
@@ -54,7 +54,7 @@ namespace TKR.WorldServer.core.net.handlers
                     }
 
                     if (client.Account.NameChosen && client.Account.Credits < 100)
-                        client.SendMessage(new NameResult()
+                        client.SendPacket(new NameResult()
                         {
                             Success = false,
                             ErrorText = "Not enough gold"
@@ -72,7 +72,7 @@ namespace TKR.WorldServer.core.net.handlers
 
                         // update player
                         UpdatePlayer(client.Player);
-                        client.SendMessage(new NameResult()
+                        client.SendPacket(new NameResult()
                         {
                             Success = true,
                             ErrorText = ""

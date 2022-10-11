@@ -40,7 +40,7 @@ package kabam.rotmg.game.view
             return;
          }
          var p:Player = gs_.map.player_;
-         this.buy_ = true;
+         this.buy_ = p.nameChosen_;
          var name:String = gs_.model.getName();
          this.title_ = new SimpleText(18,16777215,false,WIDTH,0);
          this.title_.setBold(true);

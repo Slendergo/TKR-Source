@@ -34,7 +34,7 @@ namespace TKR.WorldServer.core.net.handlers
             else
             {
                 client.Player = new Player(client);
-                client.SendMessage(new CreateSuccess()
+                client.SendPacket(new CreateSuccess()
                 {
                     CharId = client.Character.CharId,
                     ObjectId = target.EnterWorld(client.Player)

@@ -1,5 +1,4 @@
-﻿using Nancy.Validation;
-using NLog.LayoutRenderers;
+﻿using NLog.LayoutRenderers;
 using Org.BouncyCastle.Asn1.X509.Qualified;
 using Pipelines.Sockets.Unofficial.Arenas;
 using System;
@@ -127,168 +126,7 @@ namespace TKR.WorldServer.core.worlds
         }
     }
 
-    public sealed class Visibility
-    {
-        private bool[,] Blocking { get; set; }
-        private bool[,] Static { get; set; }
-        private bool[,] Walkable { get; set; }
-
-        public Visibility(int width, int height)
-        {
-            Blocking = new bool[width, height];
-            Static = new bool[width, height];
-            Walkable = new bool[width, height];
-        }
-
-        public void SetStatic(int x, int y, bool isStatic) => Static[x, y] = isStatic;
-        public bool IsStatic(int x, int y)
-        {
-            x = Math.Clamp(x, 0, Blocking.GetLength(0) - 1);
-            y = Math.Clamp(y, 0, Blocking.GetLength(1) - 1);
-            return Static[x, y];
-        }
-
-        public void SetWalkable(int x, int y, bool walkable) => Walkable[x, y] = walkable;
-        public bool IsWalkable(int x, int y)
-        {
-            x = Math.Clamp(x, 0, Blocking.GetLength(0) - 1);
-            y = Math.Clamp(y, 0, Blocking.GetLength(1) - 1);
-            return Walkable[x, y];
-        }
-
-        public void SetBlocking(int x, int y, bool blocking) => Blocking[x, y] = blocking;
-        public bool IsBlocking(int x, int y)
-        {
-            x = Math.Clamp(x, 0, Blocking.GetLength(0) - 1);
-            y = Math.Clamp(y, 0, Blocking.GetLength(1) - 1);
-            return Blocking[x, y];
-        }
-
-        public void Invalidate(int x, int y)
-        {
-            Blocking[x, y] = false;
-            Static[x, y] = false;
-            Walkable[x, y] = false;
-        }
-
-        public bool CanSee(double startX, double startY, double endX, double endY)
-        {
-            var x = (int)startX;
-            var y = (int)startY;
-
-            var w = (int)endX - (int)startX;
-            var h = (int)endY - (int)startY;
-
-            var dx1 = 0;
-            var dy1 = 0;
-            var dx2 = 0;
-            var dy2 = 0;
-            if (w < 0)
-                dx1 = -1;
-            else if (w > 0)
-                dx1 = 1;
-            if (h < 0)
-                dy1 = -1;
-            else if (h > 0)
-                dy1 = 1;
-            if (w < 0)
-                dx2 = -1;
-            else if (w > 0)
-                dx2 = 1;
-
-            var longest = Math.Abs(w);
-            var shortest = Math.Abs(h);
-            if (!(longest > shortest))
-            {
-                longest = Math.Abs(h);
-                shortest = Math.Abs(w);
-                if (h < 0)
-                    dy2 = -1;
-                else if (h > 0)
-                    dy2 = 1;
-                dx2 = 0;
-            }
-
-            var numerator = longest >> 1;
-            for (var i = 0; i <= longest; i++)
-            {
-                if (Blocking[x, y])
-                    return false;
-
-                numerator += shortest;
-                if (!(numerator < longest))
-                {
-                    numerator -= longest;
-                    x += dx1;
-                    y += dy1;
-                }
-                else
-                {
-                    x += dx2;
-                    y += dy2;
-                }
-            }
-
-            return true;
-        }
-
-        public static void DrawLine(int x, int y, int x2, int y2, Func<int, int, bool> func)
-        {
-            var w = x2 - x;
-            var h = y2 - y;
-            var dx1 = 0;
-            var dy1 = 0;
-            var dx2 = 0;
-            var dy2 = 0;
-            if (w < 0)
-                dx1 = -1;
-            else if (w > 0)
-                dx1 = 1;
-            if (h < 0)
-                dy1 = -1;
-            else if (h > 0)
-                dy1 = 1;
-            if (w < 0)
-                dx2 = -1;
-            else if (w > 0)
-                dx2 = 1;
-
-            var longest = Math.Abs(w);
-            var shortest = Math.Abs(h);
-            if (!(longest > shortest))
-            {
-                longest = Math.Abs(h);
-                shortest = Math.Abs(w);
-                if (h < 0)
-                    dy2 = -1;
-                else if (h > 0)
-                    dy2 = 1;
-                dx2 = 0;
-            }
-
-            var numerator = longest >> 1;
-            for (var i = 0; i <= longest; i++)
-            {
-                if (func(x, y))
-                    break;
-
-                numerator += shortest;
-                if (!(numerator < longest))
-                {
-                    numerator -= longest;
-                    x += dx1;
-                    y += dy1;
-                }
-                else
-                {
-                    x += dx2;
-                    y += dy2;
-                }
-            }
-        }
-    }
-
-    public sealed class Census
+    public class Census
     {
         private readonly SpatialStorage<NewPlayer> PlayerStorage = new SpatialStorage<NewPlayer>();
         private readonly SpatialStorage<NewEnemy> EnemyStorage = new SpatialStorage<NewEnemy>();
@@ -302,6 +140,7 @@ namespace TKR.WorldServer.core.worlds
         private readonly Dictionary<int, NewContainer> Containers = new Dictionary<int, NewContainer>();
         private readonly Dictionary<int, NewStatic> Statics = new Dictionary<int, NewStatic>();
 
+        private readonly Dictionary<int, EntityBase> AliveEntities = new Dictionary<int, EntityBase>();
         private readonly Dictionary<int, EntityBase> EntitiesToAdd = new Dictionary<int, EntityBase>();
         private readonly Dictionary<int, EntityBase> EntitiesToRemove = new Dictionary<int, EntityBase>();
         private readonly Dictionary<int, EntityBase> DeadEntities = new Dictionary<int, EntityBase>();
@@ -320,9 +159,6 @@ namespace TKR.WorldServer.core.worlds
         {
             if (DeadEntities.TryGetValue(objectId, out var _))
                 return false;
-
-            if (EntitiesToAdd.TryGetValue(objectId, out var _))
-                return true;
 
             if (Players.TryGetValue(objectId, out var _))
                 return true;
@@ -350,20 +186,10 @@ namespace TKR.WorldServer.core.worlds
         public List<NewContainer> ContainersWithinRadius(float x, float y, float radius) => ContainerStorage.Query(x, y, radius);
         public List<NewStatic> StaticsWithinRadius(float x, float y, float radius) => StaticStorage.Query(x, y, radius);
 
-        public List<EntityBase> EntitiesWithinRadius(float x, float y, float radius)
+        public List<EntityBase> ObjectsWithinRadius(float x, float y, float radius)
         {
             var ret = new List<EntityBase>();
             PlayerStorage.Query(ret, x, y, radius);
-            EnemyStorage.Query(ret, x, y, radius);
-            PortalStorage.Query(ret, x, y, radius);
-            ContainerStorage.Query(ret, x, y, radius);
-            StaticStorage.Query(ret, x, y, radius);
-            return ret;
-        }
-
-        public List<EntityBase> UpdateEntitiesWithinRadius(float x, float y, float radius)
-        {
-            var ret = new List<EntityBase>();
             EnemyStorage.Query(ret, x, y, radius);
             PortalStorage.Query(ret, x, y, radius);
             ContainerStorage.Query(ret, x, y, radius);
@@ -448,16 +274,9 @@ namespace TKR.WorldServer.core.worlds
             throw new Exception($"Unknown Move: {entity.ObjectDesc.ObjectId}");
         }
 
-        public void Update(ref TickTime time)
+        public void Update(float dt)
         {
             // update entities here
-
-            foreach(var player in Players.Values)
-            {
-                player.Update(ref time);
-                if (player.Dead)
-                    EntitiesToRemove.Add(player.Id, player);
-            }
 
             foreach (var entity in EntitiesToAdd.Values)
                 Insert(entity);
@@ -552,7 +371,6 @@ namespace TKR.WorldServer.core.worlds
         private readonly List<WorldTimer> Timers = new List<WorldTimer>();
 
         public Census Census { get; private set; }
-        public Visibility Visibility { get; private set; }
 
         public WorldBranch WorldBranch { get; private set; }
         public World ParentWorld { get; set; }
@@ -584,45 +402,32 @@ namespace TKR.WorldServer.core.worlds
             else
                 Music = "sorc";
 
-            Census = new Census(this);
-            Visibility = new Visibility(resource.Width, resource.Height);
-
             WorldBranch = new WorldBranch(this);
             ParentWorld = parent;
+
+            Census = new Census(this);
         }
 
-        private int NextGameObjectId = -1;
+        private int NextGameObjectId;
 
-        public NewPlayer CreateNewPlayer(Client client, string idName, float x, float y)
-        {
-            if (!GameServer.Resources.GameData.IdToObjectType.TryGetValue(idName, out var objectType))
-                throw new Exception($"[CreateNewPlayer] Unknown IdName: {idName}");
-            return CreateNewPlayer(client, objectType, x, y);
-        }
-        public NewPlayer CreateNewPlayer(Client client, int objectType, float x, float y)
+        public NewPlayer CreateNewPlayer(int objectType, float x, float y)
         {
             if (!GameServer.Resources.GameData.ObjectDescs.TryGetValue((ushort)objectType, out var desc))
-                throw new Exception($"[CreateNewPlayer] Unknown ObjectType: {objectType}");
+                return null;
 
             var nextObjectId = Interlocked.Increment(ref NextGameObjectId);
 
-            var ret = new NewPlayer(client, this, desc);
+            var ret = new NewPlayer(this, desc);
             ret.SetObjectId(nextObjectId);
             ret.SetPosition(x, y);
             Census.AddEntity(ret);
             return ret;
         }
 
-        public NewEnemy CreateNewEnemy(string idName, float x, float y)
-        {
-            if (!GameServer.Resources.GameData.IdToObjectType.TryGetValue(idName, out var objectType))
-                throw new Exception($"[CreateNewEnemy] Unknown IdName: {idName}");
-            return CreateNewEnemy(objectType, x, y);
-        }
         public NewEnemy CreateNewEnemy(int objectType, float x, float y)
         {
             if (!GameServer.Resources.GameData.ObjectDescs.TryGetValue((ushort)objectType, out var desc))
-                throw new Exception($"[CreateNewEnemy] Unknown ObjectType: {objectType}");
+                return null;
 
             var nextObjectId = Interlocked.Increment(ref NextGameObjectId);
 
@@ -633,16 +438,10 @@ namespace TKR.WorldServer.core.worlds
             return ret;
         }
 
-        public NewPortal CreateNewPortal(string idName, float x, float y)
-        {
-            if (!GameServer.Resources.GameData.IdToObjectType.TryGetValue(idName, out var objectType))
-                throw new Exception($"[CreateNewPortal] Unknown IdName: {idName}");
-            return CreateNewPortal(objectType, x, y);
-        }
-        public NewPortal CreateNewPortal(int objectType, float x, float y)
+        public NewPortal CreatePortalObject(int objectType, float x, float y)
         {
             if (!GameServer.Resources.GameData.ObjectDescs.TryGetValue((ushort)objectType, out var desc))
-                throw new Exception($"[CreateNewPortal] Unknown ObjectType: {objectType}");
+                return null;
 
             var nextObjectId = Interlocked.Increment(ref NextGameObjectId);
 
@@ -653,16 +452,10 @@ namespace TKR.WorldServer.core.worlds
             return ret;
         }
 
-        public NewContainer CreateNewContainer(string idName, float x, float y)
-        {
-            if (!GameServer.Resources.GameData.IdToObjectType.TryGetValue(idName, out var objectType))
-                throw new Exception($"[CreateNewContainer] Unknown IdName: {idName}");
-            return CreateNewContainer(objectType, x, y);
-        }
-        public NewContainer CreateNewContainer(int objectType, float x, float y)
+        public NewContainer CreateContainerObject(int objectType, float x, float y)
         {
             if (!GameServer.Resources.GameData.ObjectDescs.TryGetValue((ushort)objectType, out var desc))
-                throw new Exception($"[CreateNewContainer] Unknown ObjectType: {objectType}");
+                return null;
 
             var nextObjectId = Interlocked.Increment(ref NextGameObjectId);
 
@@ -673,16 +466,10 @@ namespace TKR.WorldServer.core.worlds
             return ret;
         }
 
-        public NewStatic CreateNewStatic(string idName, float x, float y)
-        {
-            if (!GameServer.Resources.GameData.IdToObjectType.TryGetValue(idName, out var objectType))
-                throw new Exception($"[CreateNewStatic] Unknown IdName: {idName}");
-            return CreateNewStatic(objectType, x, y);
-        }
-        public NewStatic CreateNewStatic(int objectType, float x, float y)
+        public NewStatic CreateStaticObject(int objectType, float x, float y)
         {
             if (!GameServer.Resources.GameData.ObjectDescs.TryGetValue((ushort)objectType, out var desc))
-                throw new Exception($"[CreateNewStatic] Unknown ObjectType: {objectType}");
+                return null;
 
             var nextObjectId = Interlocked.Increment(ref NextGameObjectId);
 
@@ -698,7 +485,7 @@ namespace TKR.WorldServer.core.worlds
         public void Broadcast(OutgoingMessage outgoingMessage)
         {
             foreach (var player in Players.Values)
-                player.Client.SendMessage(outgoingMessage);
+                player.Client.SendPacket(outgoingMessage);
         }
 
         public void BroadcastIfVisible(List<OutgoingMessage> outgoingMessages, ref Position worldPosData)
@@ -714,7 +501,7 @@ namespace TKR.WorldServer.core.worlds
                 {
                     if (outgoingMessage is ServerPlayerShoot)
                         player.ServerPlayerShoot(outgoingMessage as ServerPlayerShoot);
-                    player.Client.SendMessage(outgoingMessage);
+                    player.Client.SendPacket(outgoingMessage);
                 }
         }
 
@@ -725,7 +512,7 @@ namespace TKR.WorldServer.core.worlds
                 {
                     if (outgoingMessage is EnemyShoot)
                         player.EnemyShoot(outgoingMessage as EnemyShoot);
-                    player.Client.SendMessage(outgoingMessage);
+                    player.Client.SendPacket(outgoingMessage);
                 }
         }
 
@@ -740,7 +527,7 @@ namespace TKR.WorldServer.core.worlds
         {
             foreach (var player in Players.Values)
                 if (player.Id != exclude.Id && player.SqDistTo(broadcaster) <= PlayerUpdate.VISIBILITY_RADIUS_SQR)
-                    player.Client.SendMessage(outgoingMessage);
+                    player.Client.SendPacket(outgoingMessage);
         }
 
         public void BroadcastToPlayer(OutgoingMessage outgoingMessage, int playerId)
@@ -748,7 +535,7 @@ namespace TKR.WorldServer.core.worlds
             foreach (var player in Players.Values)
                 if (player.Id == playerId)
                 {
-                    player.Client.SendMessage(outgoingMessage);
+                    player.Client.SendPacket(outgoingMessage);
                     break;
                 }
         }
@@ -757,7 +544,7 @@ namespace TKR.WorldServer.core.worlds
         {
             foreach (var player in Players.Values)
                 if (playerIds.Contains(player.Id))
-                    player.Client.SendMessage(outgoingMessage);
+                    player.Client.SendPacket(outgoingMessage);
         }
 
         public void ChatReceived(Player player, string text)
@@ -1048,8 +835,6 @@ namespace TKR.WorldServer.core.worlds
 
         protected virtual void UpdateLogic(ref TickTime time)
         {
-            Census.Update(ref time);
-
             foreach (var player in Players.Values)
             {
                 player.Tick(ref time);

@@ -119,6 +119,7 @@ public class Player extends Character {
     public var credits_:int = 0;
     public var numStars_:int = 0;
     public var fame_:int = 0;
+    public var nameChosen_:Boolean = false;
     public var currFame_:int = 0;
     public var nextClassQuestFame_:int = -1;
     public var legendaryRank_:int = -1;
@@ -287,7 +288,7 @@ public class Player extends Character {
         else if (this.isFellowGuild_) {
             nameText.setColor(Parameters.FELLOW_GUILD_COLOR);
         }
-        else {
+        else if (this.nameChosen_) {
             nameText.setColor(Parameters.NAME_CHOSEN_COLOR);
         }
         var nameBitmapData:BitmapData = new BitmapData(nameText.width + 20, 64, true, 0);

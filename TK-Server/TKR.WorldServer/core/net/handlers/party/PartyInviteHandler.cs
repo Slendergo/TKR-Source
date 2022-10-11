@@ -74,7 +74,7 @@ namespace TKR.WorldServer.core.net.handlers.party
                 return;
             }
 
-            target.SendMessage(new InvitedToParty()
+            target.SendPacket(new InvitedToParty()
             {
                 Name = client.Account.Name,
                 PartyId = client.Account.PartyId

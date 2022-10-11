@@ -42,7 +42,7 @@ namespace TKR.WorldServer.core.net.handlers.market
                 offers[i] = mData;
             }
 
-            client.SendMessage(new MarketMyOffersResult { Results = offers });
+            client.SendPacket(new MarketMyOffersResult { Results = offers });
         }
     }
 }

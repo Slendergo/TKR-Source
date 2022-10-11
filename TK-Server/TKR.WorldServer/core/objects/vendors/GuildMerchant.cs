@@ -41,7 +41,7 @@ namespace TKR.WorldServer.core.objects.vendors
 
             if (guild.Fame < Price)
             {
-                player.Client.SendMessage(new networking.packets.outgoing.BuyResultMessage
+                player.Client.SendPacket(new networking.packets.outgoing.BuyResultMessage
                 {
                     ResultString = "Not enough Guild Fame!",
                     Result = 9
@@ -60,7 +60,7 @@ namespace TKR.WorldServer.core.objects.vendors
             guild.GuildLootBoost = guild.GuildLootBoost + 0.05f;
             guild.FlushAsync();
 
-            player.Client.SendMessage(new networking.packets.outgoing.BuyResultMessage
+            player.Client.SendPacket(new networking.packets.outgoing.BuyResultMessage
             {
                 ResultString = "Upgrade successful! Upgrade may take a short period of time.",
                 Result = 0

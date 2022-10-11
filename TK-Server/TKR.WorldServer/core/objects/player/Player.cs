@@ -96,6 +96,7 @@ namespace TKR.WorldServer.core.objects
         public int XPBoostTime { get; set; }
 
         private SV<int> _accountId;
+        private SV<int> _admin;
         private SV<int> _baseStat;
         private double _breath;
         private int _canApplyEffect0;
@@ -156,18 +157,20 @@ namespace TKR.WorldServer.core.objects
             _fame = new SV<int>(this, StatDataType.Fame, client.Character.Fame, true);
             _fameGoal = new SV<int>(this, StatDataType.FameGoal, 0, true);
             _stars = new SV<int>(this, StatDataType.Stars, 0);
-            _guild = new SV<string>(this, StatDataType.GuildName, "");
+            _guild = new SV<string>(this, StatDataType.Guild, "");
             _guildRank = new SV<int>(this, StatDataType.GuildRank, -1);
             _rank = new SV<int>(this, StatDataType.Rank, (int)client.Rank.Rank); // we need to export this to client so dont remove
             _credits = new SV<int>(this, StatDataType.Credits, client.Account.Credits, true);
-            _texture1 = new SV<int>(this, StatDataType.Texture1, client.Character.Texture1);
-            _texture2 = new SV<int>(this, StatDataType.Texture2, client.Character.Texture2);
+            _nameChosen = new SV<bool>(this, StatDataType.NameChosen, client.Account.NameChosen, false, v => Client.Account?.NameChosen ?? v);
+            _texture1 = new SV<int>(this, StatDataType.Texture1, client.Character.Tex1);
+            _texture2 = new SV<int>(this, StatDataType.Texture2, client.Character.Tex2);
             _skin = new SV<int>(this, StatDataType.Skin, 0);
             _glow = new SV<int>(this, StatDataType.Glow, 0);
-            _xpBoosted = new SV<bool>(this, StatDataType.XPBoosted, client.Character.XPBoostTime != 0, true);
-            _mp = new SV<int>(this, StatDataType.Mana, client.Character.Mana);
+            _admin = new SV<int>(this, StatDataType.Admin, client.Rank.IsAdmin ? 1 : 0);
+            _xpBoosted = new SV<bool>(this, StatDataType.XPBoost, client.Character.XPBoostTime != 0, true);
+            _mp = new SV<int>(this, StatDataType.MP, client.Character.MP);
             _hasBackpack = new SV<bool>(this, StatDataType.HasBackpack, client.Character.HasBackpack, true);
-            _oxygenBar = new SV<int>(this, StatDataType.Breath, -1, true);
+            _oxygenBar = new SV<int>(this, StatDataType.OxygenBar, -1, true);
             _baseStat = new SV<int>(this, StatDataType.BaseStat, client.Account.SetBaseStat, true);
             
             _colornamechat = new SV<int>(this, StatDataType.ColorNameChat, 0);
@@ -216,10 +219,10 @@ namespace TKR.WorldServer.core.objects
             IncomingMessages = new ConcurrentQueue<InboundBuffer>();
 
             Name = client.Account.Name;
-            HP = client.Character.Health;
+            HP = client.Character.HP;
 
             XPBoostTime = client.Character.XPBoostTime;
-            LDBoostTime = client.Character.LootDropBoostTime;
+            LDBoostTime = client.Character.LDBoostTime;
 
             var s = (ushort)client.Character.Skin;
             if (gameData.Skins.Keys.Contains(s))
@@ -394,7 +397,7 @@ namespace TKR.WorldServer.core.objects
             GenerateGravestone();
             AnnounceDeath(killer);
 
-            Client.SendMessage(new Death()
+            Client.SendPacket(new Death()
             {
                 AccountId = AccountId,
                 CharId = Client.Character.CharId,
@@ -457,8 +460,6 @@ namespace TKR.WorldServer.core.objects
 
             SetNewbiePeriod();
             PlayerUpdate = new PlayerUpdate(this);
-
-            var p = owner.CreateNewPlayer(Client, ObjectType, X, Y);
         }
 
         public void HandleIO(ref TickTime time)
@@ -526,11 +527,11 @@ namespace TKR.WorldServer.core.objects
             chr.Level = Level;
             chr.Experience = Experience;
             chr.Fame = Fame;
-            chr.Health = HP <= 0 ? 1 : HP;
-            chr.Mana = MP;
+            chr.HP = HP <= 0 ? 1 : HP;
+            chr.MP = MP;
             chr.Stats = Stats.Base.GetStats();
-            chr.Texture1 = Texture1;
-            chr.Texture2 = Texture2;
+            chr.Tex1 = Texture1;
+            chr.Tex2 = Texture2;
             chr.Skin = _originalSkin;
             chr.FameStats = FameCounter?.Stats?.Write() ?? chr.FameStats;
             chr.LastSeen = DateTime.Now;
@@ -540,7 +541,7 @@ namespace TKR.WorldServer.core.objects
             chr.PetId = PetId;
             chr.Items = Inventory.GetItemTypes();
             chr.XPBoostTime = XPBoostTime;
-            chr.LootDropBoostTime = LDBoostTime;
+            chr.LDBoostTime = LDBoostTime;
             chr.UpgradeEnabled = UpgradeEnabled;
             chr.Datas = Inventory.Data.GetDatas();
 
@@ -804,7 +805,7 @@ namespace TKR.WorldServer.core.objects
             stats.Add(ValueTuple.Create(StatDataType.MagicStackCount, MagicPots.Count));
             stats.Add(ValueTuple.Create(StatDataType.HasBackpack, HasBackpack ? 1 : 0));
             stats.Add(ValueTuple.Create(StatDataType.LDBoostTime, LDBoostTime / 1000));
-            stats.Add(ValueTuple.Create(StatDataType.XPBoosted, (XPBoostTime != 0) ? 1 : 0));
+            stats.Add(ValueTuple.Create(StatDataType.XPBoost, (XPBoostTime != 0) ? 1 : 0));
             stats.Add(ValueTuple.Create(StatDataType.XPBoostTime, XPBoostTime / 1000));
             stats.Add(ValueTuple.Create(StatDataType.BaseStat, Client?.Account?.SetBaseStat ?? 0));
             stats.Add(ValueTuple.Create(StatDataType.InventoryData4, Inventory.Data[4]?.GetData() ?? "{}"));
@@ -856,23 +857,24 @@ namespace TKR.WorldServer.core.objects
             stats.Add(ValueTuple.Create(StatDataType.Fame, Fame));
             stats.Add(ValueTuple.Create(StatDataType.FameGoal, FameGoal));
             stats.Add(ValueTuple.Create(StatDataType.Stars, Stars));
-            stats.Add(ValueTuple.Create(StatDataType.GuildName, Guild));
+            stats.Add(ValueTuple.Create(StatDataType.Guild, Guild));
             stats.Add(ValueTuple.Create(StatDataType.GuildRank, GuildRank));
+            stats.Add(ValueTuple.Create(StatDataType.NameChosen, (Client.Account?.NameChosen ?? NameChosen) ? 1 : 0));
             stats.Add(ValueTuple.Create(StatDataType.Texture1, Texture1));
             stats.Add(ValueTuple.Create(StatDataType.Texture2, Texture2));
             stats.Add(ValueTuple.Create(StatDataType.Skin, Skin));
             stats.Add(ValueTuple.Create(StatDataType.Glow, Glow));
-            stats.Add(ValueTuple.Create(StatDataType.Mana, MP));
+            stats.Add(ValueTuple.Create(StatDataType.MP, MP));
             stats.Add(ValueTuple.Create(StatDataType.Inventory0, Inventory[0]?.ObjectType ?? -1));
             stats.Add(ValueTuple.Create(StatDataType.Inventory1, Inventory[1]?.ObjectType ?? -1));
             stats.Add(ValueTuple.Create(StatDataType.Inventory2, Inventory[2]?.ObjectType ?? -1));
             stats.Add(ValueTuple.Create(StatDataType.Inventory3, Inventory[3]?.ObjectType ?? -1));
             stats.Add(ValueTuple.Create(StatDataType.Inventory4, Inventory[4]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.MaximumHeath, Stats[0]));
-            stats.Add(ValueTuple.Create(StatDataType.MaximumMana, Stats[1]));
+            stats.Add(ValueTuple.Create(StatDataType.MaximumHP, Stats[0]));
+            stats.Add(ValueTuple.Create(StatDataType.MaximumMP, Stats[1]));
             stats.Add(ValueTuple.Create(StatDataType.HPBoost, Stats.Boost[0]));
             stats.Add(ValueTuple.Create(StatDataType.MPBoost, Stats.Boost[1]));
-            stats.Add(ValueTuple.Create(StatDataType.Breath, OxygenBar));
+            stats.Add(ValueTuple.Create(StatDataType.OxygenBar, OxygenBar));
             stats.Add(ValueTuple.Create(StatDataType.ColorNameChat, ColorNameChat));
             stats.Add(ValueTuple.Create(StatDataType.ColorChat, ColorChat));
             stats.Add(ValueTuple.Create(StatDataType.PartyId, Client.Account.PartyId));
@@ -1290,7 +1292,7 @@ namespace TKR.WorldServer.core.objects
                     ObjectId = Id
                 }, this);
 
-                Client.SendMessage(new GlobalNotification() { Text = "monkeyKing" });
+                Client.SendPacket(new GlobalNotification() { Text = "monkeyKing" });
                 setCooldownTime(10, slot);
             }
         }

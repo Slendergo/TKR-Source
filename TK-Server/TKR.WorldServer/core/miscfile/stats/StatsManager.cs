@@ -123,10 +123,10 @@ namespace TKR.WorldServer.core.miscfile.stats
         {
             switch (stat)
             {
-                case StatDataType.MaximumHeath:
+                case StatDataType.MaximumHP:
                     return 0;
 
-                case StatDataType.MaximumMana:
+                case StatDataType.MaximumMP:
                     return 1;
 
                 case StatDataType.Attack:
@@ -157,10 +157,10 @@ namespace TKR.WorldServer.core.miscfile.stats
             switch (stat)
             {
                 case 0:
-                    return StatDataType.MaximumHeath;
+                    return StatDataType.MaximumHP;
 
                 case 1:
-                    return StatDataType.MaximumMana;
+                    return StatDataType.MaximumMP;
 
                 case 2:
                     return StatDataType.Attack;

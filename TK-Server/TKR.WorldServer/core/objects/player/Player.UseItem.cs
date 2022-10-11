@@ -512,6 +512,7 @@ namespace TKR.WorldServer.core.objects
 
                         Entity en = Resolve(GameServer, eff.ObjectId);
                         en.Move(X, Y);
+                        en.SetPlayerOwner(this);
                         World.EnterWorld(en);
                         World.StartNewTimer(30 * 1000, (w, t) =>
                         {
@@ -728,18 +729,18 @@ namespace TKR.WorldServer.core.objects
             var gameData = GameServer.Resources.GameData;
 
             if (!gameData.IdToObjectType.TryGetValue(eff.Id, out ushort objType) ||
-                !gameData.ObjectDescs.ContainsKey(objType))
+                !gameData.Portals.ContainsKey(objType))
                 return; // object not found, ignore
 
             var entity = Resolve(GameServer, objType);
-            var timeoutTime = gameData.ObjectDescs[objType].Timeout;
+            var timeoutTime = gameData.Portals[objType].Timeout;
 
             entity.Move(X, Y);
             World.EnterWorld(entity);
 
             World.StartNewTimer(timeoutTime * 1000, (world, t) => world.LeaveWorld(entity));
 
-            var openedByMsg = gameData.ObjectDescs[objType].DungeonName + " opened by " + Name + "!";
+            var openedByMsg = gameData.Portals[objType].DungeonName + " opened by " + Name + "!";
             World.Broadcast(new Notification
             {
                 Color = new ARGB(0xFF00FF00),
@@ -849,7 +850,7 @@ namespace TKR.WorldServer.core.objects
             var totalAllowed = 50 + addition;
 
             var idx = StatsManager.GetStatIndex((StatDataType)eff.Stats);
-            var statInfo = ObjectDesc.Stats;
+            var statInfo = GameServer.Resources.GameData.Classes[ObjectType].Stats;
             var statname = StatsManager.StatIndexToName(idx);
             var ent = World.GetEntity(objId);
             var container = ent as Container;
@@ -1613,7 +1614,8 @@ namespace TKR.WorldServer.core.objects
 
         private void AEUpgradeActivate(TickTime time, Item item, Position target, int objId, int slot, ActivateEffect eff)
         {
-            var maxed = ObjectDesc.Stats.Where((t, i) => Stats.Base[i] >= t.MaxValue).Count();
+            var playerDesc = GameServer.Resources.GameData.Classes[ObjectType];
+            var maxed = playerDesc.Stats.Where((t, i) => Stats.Base[i] >= t.MaxValue).Count();
             var entity = World.GetEntity(objId);
             var container = entity as Container;
             if (maxed < 8)
@@ -1655,7 +1657,7 @@ namespace TKR.WorldServer.core.objects
                 else if (statname == "MaxMagicPoints")
                     statname = "Mana";
 
-                var statInfo = ObjectDesc.Stats;
+                var statInfo = GameServer.Resources.GameData.Classes[ObjectType].Stats;
 
                 Stats.Base[idx] += eff.Amount;
                 if (Stats.Base[idx] > statInfo[idx].MaxValue + (idx < 2 ? 50 : 10))

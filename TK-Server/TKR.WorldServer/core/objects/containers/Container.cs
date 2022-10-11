@@ -46,28 +46,28 @@ namespace TKR.WorldServer.core.objects.containers
             base.Tick(ref time);
         }
 
-        protected override void ExportStats(List<ValueTuple<StatDataType, object>> stats, bool isOtherPlayer)
+        protected override void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)
         {
             if (Inventory == null)
                 return;
 
-            stats.Add(ValueTuple.Create(StatDataType.Inventory0, Inventory[0]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.Inventory1, Inventory[1]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.Inventory2, Inventory[2]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.Inventory3, Inventory[3]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.Inventory4, Inventory[4]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.Inventory5, Inventory[5]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.Inventory6, Inventory[6]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.Inventory7, Inventory[7]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.InventoryData0, Inventory.Data[0]?.GetData() ?? "{}"));
-            stats.Add(ValueTuple.Create(StatDataType.InventoryData1, Inventory.Data[1]?.GetData() ?? "{}"));
-            stats.Add(ValueTuple.Create(StatDataType.InventoryData2, Inventory.Data[2]?.GetData() ?? "{}"));
-            stats.Add(ValueTuple.Create(StatDataType.InventoryData3, Inventory.Data[3]?.GetData() ?? "{}"));
-            stats.Add(ValueTuple.Create(StatDataType.InventoryData4, Inventory.Data[4]?.GetData() ?? "{}"));
-            stats.Add(ValueTuple.Create(StatDataType.InventoryData5, Inventory.Data[5]?.GetData() ?? "{}"));
-            stats.Add(ValueTuple.Create(StatDataType.InventoryData6, Inventory.Data[6]?.GetData() ?? "{}"));
-            stats.Add(ValueTuple.Create(StatDataType.InventoryData7, Inventory.Data[7]?.GetData() ?? "{}"));
-            stats.Add(ValueTuple.Create(StatDataType.OwnerAccountId, BagOwners.Length == 1 ? BagOwners[0] : -1));
+            stats[StatDataType.Inventory0] = Inventory[0]?.ObjectType ?? -1;
+            stats[StatDataType.Inventory1] = Inventory[1]?.ObjectType ?? -1;
+            stats[StatDataType.Inventory2] = Inventory[2]?.ObjectType ?? -1;
+            stats[StatDataType.Inventory3] = Inventory[3]?.ObjectType ?? -1;
+            stats[StatDataType.Inventory4] = Inventory[4]?.ObjectType ?? -1;
+            stats[StatDataType.Inventory5] = Inventory[5]?.ObjectType ?? -1;
+            stats[StatDataType.Inventory6] = Inventory[6]?.ObjectType ?? -1;
+            stats[StatDataType.Inventory7] = Inventory[7]?.ObjectType ?? -1;
+            stats[StatDataType.InventoryData0] = Inventory.Data[0]?.GetData() ?? "{}";
+            stats[StatDataType.InventoryData1] = Inventory.Data[1]?.GetData() ?? "{}";
+            stats[StatDataType.InventoryData2] = Inventory.Data[2]?.GetData() ?? "{}";
+            stats[StatDataType.InventoryData3] = Inventory.Data[3]?.GetData() ?? "{}";
+            stats[StatDataType.InventoryData4] = Inventory.Data[4]?.GetData() ?? "{}";
+            stats[StatDataType.InventoryData5] = Inventory.Data[5]?.GetData() ?? "{}";
+            stats[StatDataType.InventoryData6] = Inventory.Data[6]?.GetData() ?? "{}";
+            stats[StatDataType.InventoryData7] = Inventory.Data[7]?.GetData() ?? "{}";
+            stats[StatDataType.OwnerAccountId] = BagOwners.Length == 1 ? BagOwners[0] : -1;
 
             base.ExportStats(stats, isOtherPlayer);
         }

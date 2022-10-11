@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.Json;
 using TKR.Shared;
 using TKR.WorldServer.core.miscfile.stats;
+using TKR.WorldServer.core.miscfile.structures;
 
 namespace TKR.WorldServer.core.miscfile.datas
 {
@@ -11,9 +11,9 @@ namespace TKR.WorldServer.core.miscfile.datas
         public int Id;
         public float X;
         public float Y;
-        public List<ValueTuple<StatDataType, object>> Stats;
+        public KeyValuePair<StatDataType, object>[] Stats;
 
-        public ObjectStats(int id, float x, float y, List<ValueTuple<StatDataType, object>> stats)
+        public ObjectStats(int id, float x, float y, KeyValuePair<StatDataType, object>[] stats)
         {
             Id = id;
             X = x;
@@ -21,41 +21,64 @@ namespace TKR.WorldServer.core.miscfile.datas
             Stats = stats;
         }
 
+        public static ObjectStats Read(NReader rdr)
+        {
+            var ret = new ObjectStats
+            {
+                Id = rdr.ReadInt32(),
+                X = rdr.ReadSingle(),
+                Y = rdr.ReadSingle(),
+                Stats = new KeyValuePair<StatDataType, object>[rdr.ReadInt16()]
+            };
+
+            for (var i = 0; i < ret.Stats.Length; i++)
+            {
+                var type = (StatDataType)rdr.ReadByte();
+
+                if (type == StatDataType.Guild || type == StatDataType.Name)
+                    ret.Stats[i] = new KeyValuePair<StatDataType, object>(type, rdr.ReadUTF());
+                else
+                    ret.Stats[i] = new KeyValuePair<StatDataType, object>(type, rdr.ReadInt32());
+            }
+
+            return ret;
+        }
+
         public void Write(NWriter wtr)
         {
             wtr.Write(Id);
             wtr.Write(X);
             wtr.Write(Y);
-            wtr.Write((short)Stats.Count);
-            foreach ((var key, var value) in Stats)
+            wtr.Write((short)Stats.Length);
+            foreach (var i in Stats)
             {
-                wtr.Write((byte)key);
+                wtr.Write((byte)i.Key);
 
-                if (value is int)
+                if (i.Value is int)
                 {
-                    wtr.Write((int)value);
+                    wtr.Write((int)i.Value);
                     continue;
                 }
 
-                if (value is string)
+                if (i.Value is string)
                 {
-                    wtr.WriteUTF(value as string);
+                    wtr.WriteUTF(i.Value as string);
                     continue;
                 }
 
-                if (value is bool)
+                if (i.Value is bool)
                 {
-                    wtr.Write((bool)value ? 1 : 0);
+                    wtr.Write((bool)i.Value ? 1 : 0);
                     continue;
                 }
 
-                if (value is ushort)
+                if (i.Value is ushort)
                 {
-                    wtr.Write((int)(ushort)value);
+                    wtr.Write((int)(ushort)i.Value);
                     continue;
                 }
 
-                throw new InvalidOperationException($"Stat '{key}' of type '{value?.GetType().ToString() ?? "null"}' not supported.");
+                throw new InvalidOperationException($"Stat '{i.Key}' of type '{i.Value?.GetType().ToString() ?? "null"}' not supported.");
             }
         }
     }

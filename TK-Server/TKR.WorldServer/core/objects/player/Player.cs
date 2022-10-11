@@ -252,7 +252,7 @@ namespace TKR.WorldServer.core.objects
 
             Inventory = new Inventory(this, Utils.ResizeArray(Client.Character.Items.Select(_ => (_ == 0xffff || !gameData.Items.ContainsKey(_)) ? null : gameData.Items[_]).ToArray(), 28), Utils.ResizeArray(Client.Character.Datas, 28));
             Inventory.InventoryChanged += (sender, e) => Stats.ReCalculateValues();
-            SlotTypes = Utils.ResizeArray(ObjectDesc.SlotTypes, 28);
+            SlotTypes = Utils.ResizeArray(gameData.Classes[ObjectType].SlotTypes, 28);
 
             _talismanEffects = new SV<int>(this, StatDataType.TALISMAN_EFFECT_MASK_STAT, 0);
 
@@ -429,7 +429,8 @@ namespace TKR.WorldServer.core.objects
 
         public int GetMaxedStats()
         {
-            return ObjectDesc.Stats.Where((t, i) => Stats.Base[i] >= t.MaxValue).Count() + (UpgradeEnabled ? ObjectDesc.Stats.Where((t, i) => i == 0 ? Stats.Base[i] >= t.MaxValue + 50 : i == 1 ? Stats.Base[i] >= t.MaxValue + 50 : Stats.Base[i] >= t.MaxValue + 10).Count() : 0);
+            var playerDesc = GameServer.Resources.GameData.Classes[ObjectType];
+            return playerDesc.Stats.Where((t, i) => Stats.Base[i] >= t.MaxValue).Count() + (UpgradeEnabled ? playerDesc.Stats.Where((t, i) => i == 0 ? Stats.Base[i] >= t.MaxValue + 50 : i == 1 ? Stats.Base[i] >= t.MaxValue + 50 : Stats.Base[i] >= t.MaxValue + 10).Count() : 0);
         }
 
         public override void Init(World owner)
@@ -759,7 +760,7 @@ namespace TKR.WorldServer.core.objects
                 _canApplyEffect3 = time * 1000;
         }
 
-        protected override void ExportStats(List<ValueTuple<StatDataType, object>> stats, bool isOtherPlayer)
+        protected override void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)
         {
             base.ExportStats(stats, isOtherPlayer);
             if (!isOtherPlayer)
@@ -771,134 +772,134 @@ namespace TKR.WorldServer.core.objects
             ExportOther(stats);
         }
 
-        private void ExportSelf(List<ValueTuple<StatDataType, object>> stats)
+        private void ExportSelf(IDictionary<StatDataType, object> stats)
         {
-            stats.Add(ValueTuple.Create(StatDataType.Inventory4, Inventory[4]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.Inventory5, Inventory[5]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.Inventory6, Inventory[6]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.Inventory7, Inventory[7]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.Inventory8, Inventory[8]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.Inventory9, Inventory[9]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.Inventory10, Inventory[10]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.Inventory11, Inventory[11]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.BackPack0, Inventory[12]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.BackPack1, Inventory[13]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.BackPack2, Inventory[14]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.BackPack3, Inventory[15]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.BackPack4, Inventory[16]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.BackPack5, Inventory[17]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.BackPack6, Inventory[18]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.BackPack7, Inventory[19]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.Attack, Stats[2]));
-            stats.Add(ValueTuple.Create(StatDataType.Defense, Stats[3]));
-            stats.Add(ValueTuple.Create(StatDataType.Speed, Stats[4]));
-            stats.Add(ValueTuple.Create(StatDataType.Dexterity, Stats[5]));
-            stats.Add(ValueTuple.Create(StatDataType.Vitality, Stats[6]));
-            stats.Add(ValueTuple.Create(StatDataType.Wisdom, Stats[7]));
-            stats.Add(ValueTuple.Create(StatDataType.AttackBonus, Stats.Boost[2]));
-            stats.Add(ValueTuple.Create(StatDataType.DefenseBonus, Stats.Boost[3]));
-            stats.Add(ValueTuple.Create(StatDataType.SpeedBonus, Stats.Boost[4]));
-            stats.Add(ValueTuple.Create(StatDataType.DexterityBonus, Stats.Boost[5]));
-            stats.Add(ValueTuple.Create(StatDataType.VitalityBonus, Stats.Boost[6]));
-            stats.Add(ValueTuple.Create(StatDataType.WisdomBonus, Stats.Boost[7]));
-            stats.Add(ValueTuple.Create(StatDataType.HealthStackCount, HealthPots.Count));
-            stats.Add(ValueTuple.Create(StatDataType.MagicStackCount, MagicPots.Count));
-            stats.Add(ValueTuple.Create(StatDataType.HasBackpack, HasBackpack ? 1 : 0));
-            stats.Add(ValueTuple.Create(StatDataType.LDBoostTime, LDBoostTime / 1000));
-            stats.Add(ValueTuple.Create(StatDataType.XPBoost, (XPBoostTime != 0) ? 1 : 0));
-            stats.Add(ValueTuple.Create(StatDataType.XPBoostTime, XPBoostTime / 1000));
-            stats.Add(ValueTuple.Create(StatDataType.BaseStat, Client?.Account?.SetBaseStat ?? 0));
-            stats.Add(ValueTuple.Create(StatDataType.InventoryData4, Inventory.Data[4]?.GetData() ?? "{}"));
-            stats.Add(ValueTuple.Create(StatDataType.InventoryData5, Inventory.Data[5]?.GetData() ?? "{}"));
-            stats.Add(ValueTuple.Create(StatDataType.InventoryData6, Inventory.Data[6]?.GetData() ?? "{}"));
-            stats.Add(ValueTuple.Create(StatDataType.InventoryData7, Inventory.Data[7]?.GetData() ?? "{}"));
-            stats.Add(ValueTuple.Create(StatDataType.InventoryData8, Inventory.Data[8]?.GetData() ?? "{}"));
-            stats.Add(ValueTuple.Create(StatDataType.InventoryData9, Inventory.Data[9]?.GetData() ?? "{}"));
-            stats.Add(ValueTuple.Create(StatDataType.InventoryData10, Inventory.Data[10]?.GetData() ?? "{}"));
-            stats.Add(ValueTuple.Create(StatDataType.InventoryData11, Inventory.Data[11]?.GetData() ?? "{}"));
-            stats.Add(ValueTuple.Create(StatDataType.BackPackData0, Inventory.Data[12]?.GetData() ?? "{}"));
-            stats.Add(ValueTuple.Create(StatDataType.BackPackData1, Inventory.Data[13]?.GetData() ?? "{}"));
-            stats.Add(ValueTuple.Create(StatDataType.BackPackData2, Inventory.Data[14]?.GetData() ?? "{}"));
-            stats.Add(ValueTuple.Create(StatDataType.BackPackData3, Inventory.Data[15]?.GetData() ?? "{}"));
-            stats.Add(ValueTuple.Create(StatDataType.BackPackData4, Inventory.Data[16]?.GetData() ?? "{}"));
-            stats.Add(ValueTuple.Create(StatDataType.BackPackData5, Inventory.Data[17]?.GetData() ?? "{}"));
-            stats.Add(ValueTuple.Create(StatDataType.BackPackData6, Inventory.Data[18]?.GetData() ?? "{}"));
-            stats.Add(ValueTuple.Create(StatDataType.BackPackData7, Inventory.Data[19]?.GetData() ?? "{}"));
-            stats.Add(ValueTuple.Create(StatDataType.Credits, Credits));
+            stats[StatDataType.Inventory4] = Inventory[4]?.ObjectType ?? -1;
+            stats[StatDataType.Inventory5] = Inventory[5]?.ObjectType ?? -1;
+            stats[StatDataType.Inventory6] = Inventory[6]?.ObjectType ?? -1;
+            stats[StatDataType.Inventory7] = Inventory[7]?.ObjectType ?? -1;
+            stats[StatDataType.Inventory8] = Inventory[8]?.ObjectType ?? -1;
+            stats[StatDataType.Inventory9] = Inventory[9]?.ObjectType ?? -1;
+            stats[StatDataType.Inventory10] = Inventory[10]?.ObjectType ?? -1;
+            stats[StatDataType.Inventory11] = Inventory[11]?.ObjectType ?? -1;
+            stats[StatDataType.BackPack0] = Inventory[12]?.ObjectType ?? -1;
+            stats[StatDataType.BackPack1] = Inventory[13]?.ObjectType ?? -1;
+            stats[StatDataType.BackPack2] = Inventory[14]?.ObjectType ?? -1;
+            stats[StatDataType.BackPack3] = Inventory[15]?.ObjectType ?? -1;
+            stats[StatDataType.BackPack4] = Inventory[16]?.ObjectType ?? -1;
+            stats[StatDataType.BackPack5] = Inventory[17]?.ObjectType ?? -1;
+            stats[StatDataType.BackPack6] = Inventory[18]?.ObjectType ?? -1;
+            stats[StatDataType.BackPack7] = Inventory[19]?.ObjectType ?? -1;
+            stats[StatDataType.Attack] = Stats[2];
+            stats[StatDataType.Defense] = Stats[3];
+            stats[StatDataType.Speed] = Stats[4];
+            stats[StatDataType.Dexterity] = Stats[5];
+            stats[StatDataType.Vitality] = Stats[6];
+            stats[StatDataType.Wisdom] = Stats[7];
+            stats[StatDataType.AttackBonus] = Stats.Boost[2];
+            stats[StatDataType.DefenseBonus] = Stats.Boost[3];
+            stats[StatDataType.SpeedBonus] = Stats.Boost[4];
+            stats[StatDataType.DexterityBonus] = Stats.Boost[5];
+            stats[StatDataType.VitalityBonus] = Stats.Boost[6];
+            stats[StatDataType.WisdomBonus] = Stats.Boost[7];
+            stats[StatDataType.HealthStackCount] = HealthPots.Count;
+            stats[StatDataType.MagicStackCount] = MagicPots.Count;
+            stats[StatDataType.HasBackpack] = HasBackpack ? 1 : 0;
+            stats[StatDataType.LDBoostTime] = LDBoostTime / 1000;
+            stats[StatDataType.XPBoost] = (XPBoostTime != 0) ? 1 : 0;
+            stats[StatDataType.XPBoostTime] = XPBoostTime / 1000;
+            stats[StatDataType.BaseStat] = Client?.Account?.SetBaseStat ?? 0;
+            stats[StatDataType.InventoryData4] = Inventory.Data[4]?.GetData() ?? "{}";
+            stats[StatDataType.InventoryData5] = Inventory.Data[5]?.GetData() ?? "{}";
+            stats[StatDataType.InventoryData6] = Inventory.Data[6]?.GetData() ?? "{}";
+            stats[StatDataType.InventoryData7] = Inventory.Data[7]?.GetData() ?? "{}";
+            stats[StatDataType.InventoryData8] = Inventory.Data[8]?.GetData() ?? "{}";
+            stats[StatDataType.InventoryData9] = Inventory.Data[9]?.GetData() ?? "{}";
+            stats[StatDataType.InventoryData10] = Inventory.Data[10]?.GetData() ?? "{}";
+            stats[StatDataType.InventoryData11] = Inventory.Data[11]?.GetData() ?? "{}";
+            stats[StatDataType.BackPackData0] = Inventory.Data[12]?.GetData() ?? "{}";
+            stats[StatDataType.BackPackData1] = Inventory.Data[13]?.GetData() ?? "{}";
+            stats[StatDataType.BackPackData2] = Inventory.Data[14]?.GetData() ?? "{}";
+            stats[StatDataType.BackPackData3] = Inventory.Data[15]?.GetData() ?? "{}";
+            stats[StatDataType.BackPackData4] = Inventory.Data[16]?.GetData() ?? "{}";
+            stats[StatDataType.BackPackData5] = Inventory.Data[17]?.GetData() ?? "{}";
+            stats[StatDataType.BackPackData6] = Inventory.Data[18]?.GetData() ?? "{}";
+            stats[StatDataType.BackPackData7] = Inventory.Data[19]?.GetData() ?? "{}";
+            stats[StatDataType.Credits] = Credits;
             if (World is VaultWorld)
             {
-                stats.Add(ValueTuple.Create(StatDataType.SPS_LIFE_COUNT, SPSLifeCount));
-                stats.Add(ValueTuple.Create(StatDataType.SPS_MANA_COUNT, SPSManaCount));
-                stats.Add(ValueTuple.Create(StatDataType.SPS_ATTACK_COUNT, SPSAttackCount));
-                stats.Add(ValueTuple.Create(StatDataType.SPS_DEFENSE_COUNT, SPSDefenseCount));
-                stats.Add(ValueTuple.Create(StatDataType.SPS_DEXTERITY_COUNT, SPSDexterityCount));
-                stats.Add(ValueTuple.Create(StatDataType.SPS_WISDOM_COUNT, SPSWisdomCount));
-                stats.Add(ValueTuple.Create(StatDataType.SPS_SPEED_COUNT, SPSSpeedCount));
-                stats.Add(ValueTuple.Create(StatDataType.SPS_VITALITY_COUNT, SPSVitalityCount));
-                stats.Add(ValueTuple.Create(StatDataType.SPS_LIFE_COUNT_MAX, SPSLifeCountMax));
-                stats.Add(ValueTuple.Create(StatDataType.SPS_MANA_COUNT_MAX, SPSManaCountMax));
-                stats.Add(ValueTuple.Create(StatDataType.SPS_ATTACK_COUNT_MAX, SPSAttackCountMax));
-                stats.Add(ValueTuple.Create(StatDataType.SPS_DEFENSE_COUNT_MAX, SPSDefenseCountMax));
-                stats.Add(ValueTuple.Create(StatDataType.SPS_DEXTERITY_COUNT_MAX, SPSDexterityCountMax));
-                stats.Add(ValueTuple.Create(StatDataType.SPS_WISDOM_COUNT_MAX, SPSWisdomCountMax));
-                stats.Add(ValueTuple.Create(StatDataType.SPS_SPEED_COUNT_MAX, SPSSpeedCountMax));
-                stats.Add(ValueTuple.Create(StatDataType.SPS_VITALITY_COUNT_MAX, SPSVitalityCountMax));
+                stats[StatDataType.SPS_LIFE_COUNT] = SPSLifeCount;
+                stats[StatDataType.SPS_MANA_COUNT] = SPSManaCount;
+                stats[StatDataType.SPS_ATTACK_COUNT] = SPSAttackCount;
+                stats[StatDataType.SPS_DEFENSE_COUNT] = SPSDefenseCount;
+                stats[StatDataType.SPS_DEXTERITY_COUNT] = SPSDexterityCount;
+                stats[StatDataType.SPS_WISDOM_COUNT] = SPSWisdomCount;
+                stats[StatDataType.SPS_SPEED_COUNT] = SPSSpeedCount;
+                stats[StatDataType.SPS_VITALITY_COUNT] = SPSVitalityCount;
+                stats[StatDataType.SPS_LIFE_COUNT_MAX] = SPSLifeCountMax;
+                stats[StatDataType.SPS_MANA_COUNT_MAX] = SPSManaCountMax;
+                stats[StatDataType.SPS_ATTACK_COUNT_MAX] = SPSAttackCountMax;
+                stats[StatDataType.SPS_DEFENSE_COUNT_MAX] = SPSDefenseCountMax;
+                stats[StatDataType.SPS_DEXTERITY_COUNT_MAX] = SPSDexterityCountMax;
+                stats[StatDataType.SPS_WISDOM_COUNT_MAX] = SPSWisdomCountMax;
+                stats[StatDataType.SPS_SPEED_COUNT_MAX] = SPSSpeedCountMax;
+                stats[StatDataType.SPS_VITALITY_COUNT_MAX] = SPSVitalityCountMax;
             }
         }
         // minimal export for other players
         // things we wont see or need to know dont get exported
-        private void ExportOther(List<ValueTuple<StatDataType, object>> stats)
+        private void ExportOther(IDictionary<StatDataType, object> stats)
         {
-            stats.Add(ValueTuple.Create(StatDataType.AccountId, AccountId));
-            stats.Add(ValueTuple.Create(StatDataType.Experience, Experience - GetLevelExp(Level)));
-            stats.Add(ValueTuple.Create(StatDataType.ExperienceGoal, ExperienceGoal));
-            stats.Add(ValueTuple.Create(StatDataType.Level, Level));
-            stats.Add(ValueTuple.Create(StatDataType.CurrentFame, CurrentFame));
-            stats.Add(ValueTuple.Create(StatDataType.Fame, Fame));
-            stats.Add(ValueTuple.Create(StatDataType.FameGoal, FameGoal));
-            stats.Add(ValueTuple.Create(StatDataType.Stars, Stars));
-            stats.Add(ValueTuple.Create(StatDataType.Guild, Guild));
-            stats.Add(ValueTuple.Create(StatDataType.GuildRank, GuildRank));
-            stats.Add(ValueTuple.Create(StatDataType.NameChosen, (Client.Account?.NameChosen ?? NameChosen) ? 1 : 0));
-            stats.Add(ValueTuple.Create(StatDataType.Texture1, Texture1));
-            stats.Add(ValueTuple.Create(StatDataType.Texture2, Texture2));
-            stats.Add(ValueTuple.Create(StatDataType.Skin, Skin));
-            stats.Add(ValueTuple.Create(StatDataType.Glow, Glow));
-            stats.Add(ValueTuple.Create(StatDataType.MP, MP));
-            stats.Add(ValueTuple.Create(StatDataType.Inventory0, Inventory[0]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.Inventory1, Inventory[1]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.Inventory2, Inventory[2]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.Inventory3, Inventory[3]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.Inventory4, Inventory[4]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.MaximumHP, Stats[0]));
-            stats.Add(ValueTuple.Create(StatDataType.MaximumMP, Stats[1]));
-            stats.Add(ValueTuple.Create(StatDataType.HPBoost, Stats.Boost[0]));
-            stats.Add(ValueTuple.Create(StatDataType.MPBoost, Stats.Boost[1]));
-            stats.Add(ValueTuple.Create(StatDataType.OxygenBar, OxygenBar));
-            stats.Add(ValueTuple.Create(StatDataType.ColorNameChat, ColorNameChat));
-            stats.Add(ValueTuple.Create(StatDataType.ColorChat, ColorChat));
-            stats.Add(ValueTuple.Create(StatDataType.PartyId, Client.Account.PartyId));
-            stats.Add(ValueTuple.Create(StatDataType.InventoryData0, Inventory.Data[0]?.GetData() ?? "{}"));
-            stats.Add(ValueTuple.Create(StatDataType.InventoryData1, Inventory.Data[1]?.GetData() ?? "{}"));
-            stats.Add(ValueTuple.Create(StatDataType.InventoryData2, Inventory.Data[2]?.GetData() ?? "{}"));
-            stats.Add(ValueTuple.Create(StatDataType.InventoryData3, Inventory.Data[3]?.GetData() ?? "{}"));
+            stats[StatDataType.AccountId] = AccountId;
+            stats[StatDataType.Experience] = Experience - GetLevelExp(Level);
+            stats[StatDataType.ExperienceGoal] = ExperienceGoal;
+            stats[StatDataType.Level] = Level;
+            stats[StatDataType.CurrentFame] = CurrentFame;
+            stats[StatDataType.Fame] = Fame;
+            stats[StatDataType.FameGoal] = FameGoal;
+            stats[StatDataType.Stars] = Stars;
+            stats[StatDataType.Guild] = Guild;
+            stats[StatDataType.GuildRank] = GuildRank;
+            stats[StatDataType.NameChosen] = (Client.Account?.NameChosen ?? NameChosen) ? 1 : 0;
+            stats[StatDataType.Texture1] = Texture1;
+            stats[StatDataType.Texture2] = Texture2;
+            stats[StatDataType.Skin] = Skin;
+            stats[StatDataType.Glow] = Glow;
+            stats[StatDataType.MP] = MP;
+            stats[StatDataType.Inventory0] = Inventory[0]?.ObjectType ?? -1;
+            stats[StatDataType.Inventory1] = Inventory[1]?.ObjectType ?? -1;
+            stats[StatDataType.Inventory2] = Inventory[2]?.ObjectType ?? -1;
+            stats[StatDataType.Inventory3] = Inventory[3]?.ObjectType ?? -1;
+            stats[StatDataType.Inventory4] = Inventory[4]?.ObjectType ?? -1;
+            stats[StatDataType.MaximumHP] = Stats[0];
+            stats[StatDataType.MaximumMP] = Stats[1];
+            stats[StatDataType.HPBoost] = Stats.Boost[0];
+            stats[StatDataType.MPBoost] = Stats.Boost[1];
+            stats[StatDataType.OxygenBar] = OxygenBar;
+            stats[StatDataType.ColorNameChat] = ColorNameChat;
+            stats[StatDataType.ColorChat] = ColorChat;
+            stats[StatDataType.PartyId] = Client.Account.PartyId;
+            stats[StatDataType.InventoryData0] = Inventory.Data[0]?.GetData() ?? "{}";
+            stats[StatDataType.InventoryData1] = Inventory.Data[1]?.GetData() ?? "{}";
+            stats[StatDataType.InventoryData2] = Inventory.Data[2]?.GetData() ?? "{}";
+            stats[StatDataType.InventoryData3] = Inventory.Data[3]?.GetData() ?? "{}";
 
-            stats.Add(ValueTuple.Create(StatDataType.TALISMAN_0_STAT, Inventory[20]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.TALISMAN_1_STAT, Inventory[21]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.TALISMAN_2_STAT, Inventory[22]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.TALISMAN_3_STAT, Inventory[23]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.TALISMAN_4_STAT, Inventory[24]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.TALISMAN_5_STAT, Inventory[25]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.TALISMAN_6_STAT, Inventory[26]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.TALISMAN_7_STAT, Inventory[27]?.ObjectType ?? -1));
-            stats.Add(ValueTuple.Create(StatDataType.TALISMANDATA_0_STAT, Inventory.Data[20]?.GetData() ?? "{}"));
-            stats.Add(ValueTuple.Create(StatDataType.TALISMANDATA_1_STAT, Inventory.Data[21]?.GetData() ?? "{}"));
-            stats.Add(ValueTuple.Create(StatDataType.TALISMANDATA_2_STAT, Inventory.Data[22]?.GetData() ?? "{}"));
-            stats.Add(ValueTuple.Create(StatDataType.TALISMANDATA_3_STAT, Inventory.Data[23]?.GetData() ?? "{}"));
-            stats.Add(ValueTuple.Create(StatDataType.TALISMANDATA_4_STAT, Inventory.Data[24]?.GetData() ?? "{}"));
-            stats.Add(ValueTuple.Create(StatDataType.TALISMANDATA_5_STAT, Inventory.Data[25]?.GetData() ?? "{}"));
-            stats.Add(ValueTuple.Create(StatDataType.TALISMANDATA_6_STAT, Inventory.Data[26]?.GetData() ?? "{}"));
-            stats.Add(ValueTuple.Create(StatDataType.TALISMANDATA_7_STAT, Inventory.Data[27]?.GetData() ?? "{}"));
+            stats[StatDataType.TALISMAN_0_STAT] = Inventory[20]?.ObjectType ?? -1;
+            stats[StatDataType.TALISMAN_1_STAT] = Inventory[21]?.ObjectType ?? -1;
+            stats[StatDataType.TALISMAN_2_STAT] = Inventory[22]?.ObjectType ?? -1;
+            stats[StatDataType.TALISMAN_3_STAT] = Inventory[23]?.ObjectType ?? -1;
+            stats[StatDataType.TALISMAN_4_STAT] = Inventory[24]?.ObjectType ?? -1;
+            stats[StatDataType.TALISMAN_5_STAT] = Inventory[25]?.ObjectType ?? -1;
+            stats[StatDataType.TALISMAN_6_STAT] = Inventory[26]?.ObjectType ?? -1;
+            stats[StatDataType.TALISMAN_7_STAT] = Inventory[27]?.ObjectType ?? -1;
+            stats[StatDataType.TALISMANDATA_0_STAT] = Inventory.Data[20]?.GetData() ?? "{}";
+            stats[StatDataType.TALISMANDATA_1_STAT] = Inventory.Data[21]?.GetData() ?? "{}";
+            stats[StatDataType.TALISMANDATA_2_STAT] = Inventory.Data[22]?.GetData() ?? "{}";
+            stats[StatDataType.TALISMANDATA_3_STAT] = Inventory.Data[23]?.GetData() ?? "{}";
+            stats[StatDataType.TALISMANDATA_4_STAT] = Inventory.Data[24]?.GetData() ?? "{}";
+            stats[StatDataType.TALISMANDATA_5_STAT] = Inventory.Data[25]?.GetData() ?? "{}";
+            stats[StatDataType.TALISMANDATA_6_STAT] = Inventory.Data[26]?.GetData() ?? "{}";
+            stats[StatDataType.TALISMANDATA_7_STAT] = Inventory.Data[27]?.GetData() ?? "{}";
         }
 
         private void CerberusClaws(TickTime time)
@@ -1087,7 +1088,9 @@ namespace TKR.WorldServer.core.objects
 
         private void GenerateGravestone(bool phantomDeath = false)
         {
-            var maxed = ObjectDesc.Stats.Where((t, i) => Stats.Base[i] >= t.MaxValue).Count() + (UpgradeEnabled ? ObjectDesc.Stats.Where((t, i) => i == 0 ? Stats.Base[i] >= t.MaxValue + 50 : i == 1 ? Stats.Base[i] >= t.MaxValue + 50 : Stats.Base[i] >= t.MaxValue + 10).Count() : 0);
+            var playerDesc = GameServer.Resources.GameData.Classes[ObjectType];
+            //var maxed = playerDesc.Stats.Where((t, i) => Stats.Base[i] >= t.MaxValue).Count();
+            var maxed = playerDesc.Stats.Where((t, i) => Stats.Base[i] >= t.MaxValue).Count() + (UpgradeEnabled ? playerDesc.Stats.Where((t, i) => i == 0 ? Stats.Base[i] >= t.MaxValue + 50 : i == 1 ? Stats.Base[i] >= t.MaxValue + 50 : Stats.Base[i] >= t.MaxValue + 10).Count() : 0);
             ushort objType;
             int time;
             switch (maxed)

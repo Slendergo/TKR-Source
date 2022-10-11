@@ -333,14 +333,15 @@ namespace TKR.Shared.database
             }
 
             var objDesc = _resources.GameData.ObjectDescs[type];
+            var playerDesc = _resources.GameData.Classes[type];
             var classStats = ReadClassStats(acc);
-            var unlockClass = objDesc.Unlock.Type;
+            var unlockClass = playerDesc.Unlock?.Type;
 
             // check to see if account has unlocked via gold
             if (classStats.AllKeys.All(x => (ushort)(int)x != type))
             {
                 // check to see if account meets unlock requirements
-                if (classStats[(ushort)objDesc.Unlock.Type].BestLevel < objDesc.Unlock.Level)
+                if (unlockClass != null && classStats[(ushort)unlockClass].BestLevel < playerDesc.Unlock.Level)
                 {
                     character = null;
                     return DbCreateStatus.Locked;
@@ -356,20 +357,20 @@ namespace TKR.Shared.database
                 Level = newCharacters.Level,
                 Experience = 0,
                 Fame = 0,
-                Items = InitInventory(objDesc.PlayerEquipment),
+                Items = InitInventory(playerDesc.Equipment),
                 Stats = new int[]
                 {
-                    objDesc.Stats[0].StartingValue,
-                    objDesc.Stats[1].StartingValue,
-                    objDesc.Stats[2].StartingValue,
-                    objDesc.Stats[3].StartingValue,
-                    objDesc.Stats[4].StartingValue,
-                    objDesc.Stats[5].StartingValue,
-                    objDesc.Stats[6].StartingValue,
-                    objDesc.Stats[7].StartingValue,
+                    playerDesc.Stats[0].StartingValue,
+                    playerDesc.Stats[1].StartingValue,
+                    playerDesc.Stats[2].StartingValue,
+                    playerDesc.Stats[3].StartingValue,
+                    playerDesc.Stats[4].StartingValue,
+                    playerDesc.Stats[5].StartingValue,
+                    playerDesc.Stats[6].StartingValue,
+                    playerDesc.Stats[7].StartingValue,
                 },
-                HP = objDesc.Stats[0].StartingValue,
-                MP = objDesc.Stats[1].StartingValue,
+                HP = playerDesc.Stats[0].StartingValue,
+                MP = playerDesc.Stats[1].StartingValue,
                 Tex1 = 0,
                 Tex2 = 0,
                 Skin = skinType,
@@ -425,8 +426,8 @@ namespace TKR.Shared.database
 
             if (newAccounts.ClassesUnlocked)
             {
-                foreach (var @class in _resources.GameData.ObjectDescs.Where(_ => _.Value.Player))
-                    stats.Unlock(@class.Key);
+                foreach (var @class in _resources.GameData.Classes.Keys)
+                    stats.Unlock(@class);
                 stats.FlushAsync();
             }
             else
@@ -839,8 +840,8 @@ namespace TKR.Shared.database
             var stats = new DbClassStats(acc);
 
             if (newAccounts.ClassesUnlocked)
-                foreach (var @class in _resources.GameData.ObjectDescs.Where(_ => _.Value.Player))
-                    stats.Unlock(@class.Key);
+                foreach (var @class in _resources.GameData.Classes.Keys)
+                    stats.Unlock(@class);
 
             stats.FlushAsync();
 
@@ -1297,8 +1298,8 @@ namespace TKR.Shared.database
             var stats = new DbClassStats(acc);
 
             if (_resources.Settings.NewAccounts.ClassesUnlocked)
-                foreach (var @class in _resources.GameData.ObjectDescs.Where(_ => _.Value.Player))
-                    stats.Unlock(@class.Key);
+                foreach (var @class in _resources.GameData.Classes.Keys)
+                    stats.Unlock(@class);
 
             stats.FlushAsync();
 

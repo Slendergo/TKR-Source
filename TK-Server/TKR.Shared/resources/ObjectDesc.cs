@@ -56,12 +56,6 @@ namespace TKR.Shared.resources
         public readonly bool StunImmune;
         public readonly TerrainType Terrain;
 
-        public readonly bool IntergamePortal;
-        public readonly bool Locked;
-        public readonly bool NexusPortal;
-        public readonly int Timeout;
-        public string DungeonName;
-
         public string Class;
         public string DisplayId;
         public string DisplayName;
@@ -69,10 +63,6 @@ namespace TKR.Shared.resources
         public string ObjectId;
         public Dictionary<int, ProjectileDesc> Projectiles = new Dictionary<int, ProjectileDesc>();
         public SpawnCount Spawn;
-
-        public ushort[] PlayerEquipment;
-        public Stat[] Stats;
-        public UnlockClass Unlock;
 
         public ObjectDesc(ushort type, XElement e)
         {
@@ -89,23 +79,6 @@ namespace TKR.Shared.resources
             BlocksSight = e.HasElement("BlocksSight");
             Container = e.HasElement("Container");
             isChest = e.HasElement("Chest");
-            Player = e.HasElement("Player");
-
-            NexusPortal = e.HasElement("NexusPortal");
-            DungeonName = e.GetValue<string>("DungeonName");
-            IntergamePortal = e.HasElement("IntergamePortal");
-            Locked = e.HasElement("LockedPortal");
-            Timeout = e.GetValue("Timeout", 30);
-
-            if (Player)
-            {
-                PlayerEquipment = e.GetValue<string>("Equipment").CommaToArray<ushort>();
-                Stats = new Stat[8];
-                for (var i = 0; i < Stats.Length; i++)
-                    Stats[i] = new Stat(i, e);
-                if (e.HasElement("UnlockLevel") || e.HasElement("UnlockCost"))
-                    Unlock = new UnlockClass(e);
-            }
 
             if (e.HasElement("SlotTypes"))
                 SlotTypes = e.GetValue<string>("SlotTypes").CommaToArray<int>();
@@ -161,6 +134,7 @@ namespace TKR.Shared.resources
             Hero = e.HasElement("Hero");
             Cube = e.HasElement("Cube");
             Oryx = e.HasElement("Oryx");
+            Player = e.HasElement("Player");
             KeepDamageRecord = e.HasElement("KeepDamageRecord");
             Connects = e.HasElement("Connects");
             ProtectFromGroundDamage = e.HasElement("ProtectFromGroundDamage");

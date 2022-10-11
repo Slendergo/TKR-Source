@@ -1,5 +1,4 @@
 ﻿using System;
-using TKR.Shared.resources;
 using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.core.miscfile.world;
 using TKR.WorldServer.core.objects;
@@ -45,7 +44,7 @@ namespace TKR.WorldServer.logic.behaviors
             {
                 var manager = host.GameServer;
                 var gameData = manager.Resources.GameData;
-                var timeoutTime = _timeout == null ? gameData.ObjectDescs[_target].Timeout : _timeout.Value;
+                var timeoutTime = _timeout == null ? gameData.Portals[_target].Timeout : _timeout.Value;
                 var entity = Entity.Resolve(manager, _target);
                 entity.Move(host.X, host.Y);
                 entity.Move(host.X + xAdjustment, host.Y + yAdjustment);

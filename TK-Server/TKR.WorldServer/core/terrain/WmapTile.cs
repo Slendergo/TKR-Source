@@ -66,7 +66,7 @@ namespace TKR.WorldServer.core.terrain
             if (ToDefine != null)
                 return ToDefine.Value;
 
-            var stats = new List<ValueTuple<StatDataType, object>>();
+            var stats = new List<KeyValuePair<StatDataType, object>>();
 
             if (!string.IsNullOrEmpty(ObjCfg))
                 foreach (var item in ObjCfg.Split(';'))
@@ -77,53 +77,53 @@ namespace TKR.WorldServer.core.terrain
                     {
                         case "hp":
                             var hp = Utils.GetInt(kv[1]);
-                            stats.Add(ValueTuple.Create(StatDataType.HP, hp));
-                            stats.Add(ValueTuple.Create(StatDataType.MaximumHP, hp));
+                            stats.Add(new KeyValuePair<StatDataType, object>(StatDataType.HP, hp));
+                            stats.Add(new KeyValuePair<StatDataType, object>(StatDataType.MaximumHP, hp));
                             break;
 
                         case "name":
-                            stats.Add(ValueTuple.Create(StatDataType.Name, kv[1]));
+                            stats.Add(new KeyValuePair<StatDataType, object>(StatDataType.Name, kv[1]));
                             break;
 
                         case "size":
-                            stats.Add(ValueTuple.Create(StatDataType.Size, Math.Min(500, Utils.GetInt(kv[1]))));
+                            stats.Add(new KeyValuePair<StatDataType, object>(StatDataType.Size, Math.Min(500, Utils.GetInt(kv[1]))));
                             break;
 
                         case "eff":
-                            stats.Add(ValueTuple.Create(StatDataType.ConditionBatch1, Utils.GetInt(kv[1])));
+                            stats.Add(new KeyValuePair<StatDataType, object>(StatDataType.ConditionBatch1, Utils.GetInt(kv[1])));
                             break;
 
                         case "conn":
-                            stats.Add(ValueTuple.Create(StatDataType.ObjectConnection, Utils.GetInt(kv[1])));
+                            stats.Add(new KeyValuePair<StatDataType, object>(StatDataType.ObjectConnection, Utils.GetInt(kv[1])));
                             break;
 
                         case "mtype":
-                            stats.Add(ValueTuple.Create(StatDataType.MerchandiseType, Utils.GetInt(kv[1])));
+                            stats.Add(new KeyValuePair<StatDataType, object>(StatDataType.MerchandiseType, Utils.GetInt(kv[1])));
                             break;
 
                         case "mcost":
-                            stats.Add(ValueTuple.Create(StatDataType.MerchandisePrice, Math.Max(0, Utils.GetInt(kv[1]))));
+                            stats.Add(new KeyValuePair<StatDataType, object>(StatDataType.MerchandisePrice, Math.Max(0, Utils.GetInt(kv[1]))));
                             break;
 
                         case "mcur":
-                            stats.Add(ValueTuple.Create(StatDataType.MerchandiseCurrency, Utils.GetInt(kv[1])));
+                            stats.Add(new KeyValuePair<StatDataType, object>(StatDataType.MerchandiseCurrency, Utils.GetInt(kv[1])));
                             break;
 
                         case "mamnt":
-                            stats.Add(ValueTuple.Create(StatDataType.MerchandiseCount, Utils.GetInt(kv[1])));
+                            stats.Add(new KeyValuePair<StatDataType, object>(StatDataType.MerchandiseCount, Utils.GetInt(kv[1])));
                             break;
 
                         case "mtime":
-                            stats.Add(ValueTuple.Create(StatDataType.MerchandiseMinsLeft, Utils.GetInt(kv[1])));
+                            stats.Add(new KeyValuePair<StatDataType, object>(StatDataType.MerchandiseMinsLeft, Utils.GetInt(kv[1])));
                             break;
 
                         case "mdisc":
-                            stats.Add(ValueTuple.Create(StatDataType.MerchandiseDiscount, Utils.GetInt(kv[1])));
+                            stats.Add(new KeyValuePair<StatDataType, object>(StatDataType.MerchandiseDiscount, Utils.GetInt(kv[1])));
                             break;
 
                         case "mrank":
                         case "stars":
-                            stats.Add(ValueTuple.Create(StatDataType.MerchandiseRankReq, Utils.GetInt(kv[1])));
+                            stats.Add(new KeyValuePair<StatDataType, object>(StatDataType.MerchandiseRankReq, Utils.GetInt(kv[1])));
                             break;
                     }
                 }
@@ -136,7 +136,7 @@ namespace TKR.WorldServer.core.terrain
                     Id = ObjId,
                     X = x + 0.5f,
                     Y = y + 0.5f,
-                    Stats = stats
+                    Stats = stats.ToArray()
                 }
             };
 

@@ -92,9 +92,9 @@ namespace TKR.WorldServer.core.net.handlers
                 return;
             }
 
-            var statInfo = player.ObjectDesc.Stats;
             if (isConsume)
             {
+                var statInfo = player.GameServer.Resources.GameData.Classes[player.ObjectType].Stats;
                 if (player.Stats.Base[type] >= statInfo[type].MaxValue)
                 {
                     player.SendInfo($"You are already maxed");
@@ -119,6 +119,7 @@ namespace TKR.WorldServer.core.net.handlers
             }
             else if (isMax)
             {
+                var statInfo = player.GameServer.Resources.GameData.Classes[player.ObjectType].Stats;
                 if (player.Stats.Base[type] >= statInfo[type].MaxValue)
                 {
                     player.SendInfo($"You are already maxed");

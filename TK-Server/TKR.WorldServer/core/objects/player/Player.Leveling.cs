@@ -141,7 +141,7 @@ namespace TKR.WorldServer.core.objects
 
         private bool CheckLevelUp()
         {
-            var statInfo = ObjectDesc.Stats;
+            var statInfo = GameServer.Resources.GameData.Classes[ObjectType].Stats;
             if (Experience - GetLevelExp(Level) >= ExperienceGoal && Level < 20)
             {
                 Level++;

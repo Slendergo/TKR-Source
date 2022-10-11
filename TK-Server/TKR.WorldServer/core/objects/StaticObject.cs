@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TKR.WorldServer.core.miscfile.stats;
 using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.core.objects.player;
@@ -64,9 +63,9 @@ namespace TKR.WorldServer.core.objects
             return true;
         }
 
-        protected override void ExportStats(List<ValueTuple<StatDataType, object>> stats, bool isOtherPlayer)
+        protected override void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)
         {
-            stats.Add(ValueTuple.Create(StatDataType.HP, !Vulnerable ? int.MaxValue : HP));
+            stats[StatDataType.HP] = !Vulnerable ? int.MaxValue : HP;
             base.ExportStats(stats, isOtherPlayer);
         }
     }

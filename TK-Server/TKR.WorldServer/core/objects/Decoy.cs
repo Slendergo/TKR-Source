@@ -58,10 +58,10 @@ namespace TKR.WorldServer.core.objects
             base.Tick(ref time);
         }
 
-        protected override void ExportStats(List<ValueTuple<StatDataType, object>> stats, bool isOtherPlayer)
+        protected override void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)
         {
-            stats.Add(ValueTuple.Create(StatDataType.Texture1, player.Texture1));
-            stats.Add(ValueTuple.Create(StatDataType.Texture2, player.Texture2));
+            stats[StatDataType.Texture1] = player.Texture1;
+            stats[StatDataType.Texture2] = player.Texture2;
 
             base.ExportStats(stats, isOtherPlayer);
         }

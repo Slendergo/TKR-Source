@@ -93,6 +93,7 @@ namespace TKR.WorldServer.logic
                 new ItemLoot("Dojigiri", 0.0014, threshold: 0.005)
                 ),
             new Threshold(0.001,
+                TierLoot.TalismanLoot(0.003),
                 new ItemLoot("Potion of Vitality", 1),
                 new ItemLoot("Potion of Wisdom", 1),
                 new ItemLoot("Potion of Vitality", 1),

@@ -108,7 +108,7 @@ namespace TKR.WorldServer.logic
                 new ItemLoot("Water Fragment", 0.0015, threshold: 0.03)
                 ),
             new Threshold(0.001,
-                new ItemLoot("Talisman Fragment", 0.009, 0, 0.05),
+                TierLoot.TalismanLoot(0.003),
                 new ItemLoot("Thorn", 0.01),
                 new ItemLoot("Glowing Talisman", 0.005),
                 new ItemLoot("Massacre", 0.01),
@@ -194,7 +194,7 @@ namespace TKR.WorldServer.logic
                 ),
 
             new Threshold(0.001,
-                new ItemLoot("Talisman Fragment", 0.0005, 0, 0.05),
+                TierLoot.TalismanLoot(0.003),
                 new ItemLoot("Forbidden Jungle's Seal", 0.0015),
                 new ItemLoot("Shield of the Forest", 0.001),
                 new ItemLoot("Glowing Talisman", 0.005),
@@ -275,7 +275,7 @@ namespace TKR.WorldServer.logic
                 LootTemplates.DustLoot()
                 ),
             new Threshold(0.001,
-                new ItemLoot("Talisman Fragment", 0.009, 0, 0.05),
+                TierLoot.TalismanLoot(0.003),
                 new ItemLoot("Staff of Zephyrs", 0.009, threshold: 0.01),
                 new ItemLoot("Cyclone Orb", 0.01, threshold: 0.01),
                 new ItemLoot("Gale Robe", 0.01, threshold: 0.01),
@@ -506,6 +506,7 @@ namespace TKR.WorldServer.logic
                 new ItemLoot("Phoenix Ashes Orb", 0.001)
                 ),
             new Threshold(0.001,
+                TierLoot.TalismanLoot(0.003),
                 new ItemLoot("Potion of Speed", 1),
                 new ItemLoot("Glowing Talisman", 0.005),
                 new ItemLoot("Potion of Defense", 1),

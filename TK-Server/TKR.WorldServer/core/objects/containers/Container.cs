@@ -41,7 +41,7 @@ namespace TKR.WorldServer.core.objects.containers
                 }
 
             if (!hasItem)
-                World.LeaveWorld(this);
+                Expunge();
 
             base.Tick(ref time);
         }

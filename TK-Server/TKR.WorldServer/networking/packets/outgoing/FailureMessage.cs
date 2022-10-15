@@ -21,10 +21,10 @@ namespace TKR.WorldServer.networking.packets.outgoing
             ErrorDescription = errorDescription;
         }
 
-        public override void Write(NWriter wtr)
+        public override void Write(NetworkWriter wtr)
         {
             wtr.Write(ErrorId);
-            wtr.WriteUTF(ErrorDescription);
+            wtr.WriteUTF16(ErrorDescription);
         }
     }
 }

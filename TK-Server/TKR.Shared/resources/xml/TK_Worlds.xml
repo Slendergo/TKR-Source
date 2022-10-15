@@ -25,8 +25,8 @@
 		</Music>
 		<Persists/>
 		<ShowDisplays/>
-		<DisableShooting/>
-		<DisableAbilities/>
+		<!--<DisableShooting/>-->
+		<!--<DisableAbilities/>-->
 		<DisableTeleport/>
 	</World>
 	<World id="Vault">

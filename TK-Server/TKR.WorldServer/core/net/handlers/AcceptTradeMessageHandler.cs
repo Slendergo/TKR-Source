@@ -21,7 +21,7 @@ namespace TKR.WorldServer.core.net.handlers
     {
         public override MessageId MessageId => MessageId.ACCEPTTRADE;
 
-        public override void Handle(Client client, NReader rdr, ref TickTime time)
+        public override void Handle(Client client, NetworkReader rdr, ref TickTime time)
         {
             var myOffer = new bool[rdr.ReadInt16()];
             for (int i = 0; i < myOffer.Length; i++)

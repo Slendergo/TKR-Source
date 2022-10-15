@@ -20,15 +20,15 @@ namespace TKR.WorldServer.core.net.handlers
         public string MapJSON { get; set; }
         public string Password { get; set; }
 
-        public HelloData(NReader rdr)
+        public HelloData(NetworkReader rdr)
         {
-            BuildVersion = rdr.ReadUTF();
+            BuildVersion = rdr.ReadUTF16();
             GameId = rdr.ReadInt32();
-            GUID = RSA.Instance.Decrypt(rdr.ReadUTF());
-            Password = RSA.Instance.Decrypt(rdr.ReadUTF());
+            GUID = RSA.Instance.Decrypt(rdr.ReadUTF16());
+            Password = RSA.Instance.Decrypt(rdr.ReadUTF16());
             KeyTime = rdr.ReadInt32();
             Key = rdr.ReadBytes(rdr.ReadInt16());
-            MapJSON = rdr.Read32UTF();
+            MapJSON = rdr.ReadUTF32();
         }
     }
 
@@ -38,7 +38,7 @@ namespace TKR.WorldServer.core.net.handlers
 
         public override MessageId MessageId => MessageId.HELLO;
 
-        public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
+        public override void Handle(Client client, NetworkReader rdr, ref TickTime tickTime)
         {
             var helloData = new HelloData(rdr);
 

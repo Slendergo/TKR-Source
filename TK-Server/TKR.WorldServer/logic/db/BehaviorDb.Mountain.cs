@@ -55,11 +55,6 @@ namespace TKR.WorldServer.logic
                     new NewFollow(range: 7, speed: 1.0f),
                     new NewWander(0.4f)
                     ),
-                //new Prioritize(
-                //    new StayAbove(1, 200),
-                //    new Follow(1, range: 7),
-                //    new Wander(0.4)
-                //    ),
                 new Shoot(10, count: 3, shootAngle: 20, predictive: 1, coolDown: 500),
                 new Reproduce(densityMax: 3)
                 ),
@@ -81,10 +76,6 @@ namespace TKR.WorldServer.logic
         .Init("Sprite God",
             new State(
                 new DropPortalOnDeath("Glowing Portal", .25),
-                //new Prioritize(
-                //    new StayAbove(1, 200),
-                //    new Wander(0.4)
-                //    ),
                 new OrderedBehavior(
                     new NewWander(0.4f)
                     ),
@@ -211,11 +202,11 @@ namespace TKR.WorldServer.logic
                     new NewFollow(range: 7, speed: 1.0f),
                     new NewWander(0.4f)
                     ),
-                //new Prioritize(
-                //    new StayAbove(1, 200),
-                //    new Follow(1, range: 7),
-                //    new Wander(0.4)
-                //    ),
+                new Prioritize(
+                    new StayAbove(1, 200),
+                    new Follow(1, range: 7),
+                    new Wander(0.4)
+                    ),
                 new Shoot(12, count: 5, shootAngle: 72, coolDown: 500),
                 new Reproduce(densityMax: 3),
                 new DropPortalOnDeath("Mad Lab Portal", .17)

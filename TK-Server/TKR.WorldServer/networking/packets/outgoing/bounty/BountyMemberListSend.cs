@@ -9,7 +9,7 @@ namespace TKR.WorldServer.networking.packets.outgoing.bounty
 
         public override MessageId MessageId => MessageId.BOUNTYMEMBERLISTSEND;
 
-        public override void Write(NWriter wtr)
+        public override void Write(NetworkWriter wtr)
         {
             wtr.Write(AccountIds.Length);
             foreach (var i in AccountIds)

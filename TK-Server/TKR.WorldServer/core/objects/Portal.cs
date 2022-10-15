@@ -18,13 +18,16 @@ namespace TKR.WorldServer.core.objects
 
         private SV<bool> _usable;
         public readonly PortalDesc PortalDescr;
+        public bool GuildHallPortal;
 
-        public Portal(GameServer manager, ushort objType, int? life) : base(manager, ValidatePortal(manager, objType), life, false, true, false)
+        public Portal(GameServer manager, ushort objType) : base(manager, ValidatePortal(manager, objType), null, false, true, false)
         {
             _usable = new SV<bool>(this, StatDataType.PortalUsable, true);
 
             PortalDescr = manager.Resources.GameData.Portals[ObjectType];
             Locked = PortalDescr.Locked;
+            
+            GuildHallPortal = PortalDescr.IdName == "Guild Hall Portal";
         }
 
         public bool Locked { get; private set; }
@@ -32,7 +35,8 @@ namespace TKR.WorldServer.core.objects
 
         protected override void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)
         {
-            stats[StatDataType.PortalUsable] = Usable ? 1 : 0;
+            if(!GuildHallPortal)
+                stats[StatDataType.PortalUsable] = Usable ? 1 : 0;
 
             base.ExportStats(stats, isOtherPlayer);
         }

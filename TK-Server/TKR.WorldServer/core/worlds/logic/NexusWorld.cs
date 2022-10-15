@@ -62,11 +62,7 @@ namespace TKR.WorldServer.core.worlds.logic
 
             var lootRegions = GetRegionPoints(TileRegion.Hallway_1);
             foreach (var loot in lootRegions)
-            {
-                Engine = (Engine)Entity.Resolve(GameServer, "Engine");
-                Engine.Move(loot.Key.X + 0.5f, loot.Key.Y + 0.5f);
-                _ = EnterWorld(Engine);
-            }
+                Engine = (Engine)CreateNewEntity("Engine", loot.Key.X + 0.5f, loot.Key.Y + 0.5f);
 
             var marketRegions = GetRegionPoints(TileRegion.Hallway);
 
@@ -100,12 +96,6 @@ namespace TKR.WorldServer.core.worlds.logic
 
             base.Init();
         }
-        public override int EnterWorld(Entity entity)
-        {
-            if (entity is Player && EngineStage != 0)
-                (entity as Player).EngineNotif($"The engine runs smoothly with enough fuel to last a while.");
-            return base.EnterWorld(entity);
-        }
 
         private List<MerchantData> InactiveStorePoints = new List<MerchantData>();
         private List<MerchantData> ActiveStorePoints = new List<MerchantData>();
@@ -121,6 +111,7 @@ namespace TKR.WorldServer.core.worlds.logic
 
                 var x = merchantData.Position.X;
                 var y = merchantData.Position.Y;
+
                 merchantData.NewMerchant = new NexusMerchant(GameServer, 0x01ca);
                 merchantData.NewMerchant.Move(x + 0.5f, y + 0.5f);
                 merchantData.CurrencyType = data.Item2;
@@ -130,7 +121,7 @@ namespace TKR.WorldServer.core.worlds.logic
                 merchantData.NewMerchant.SetData(merchantData);
                 _ = MerchantLists.Shops[merchantData.TileRegion].Item1.Remove(merchantData.SellableItem);
 
-                _ = EnterWorld(merchantData.NewMerchant);
+                EnterWorld(merchantData.NewMerchant);
                 ActiveStorePoints.Add(merchantData);
             }
         }
@@ -153,9 +144,9 @@ namespace TKR.WorldServer.core.worlds.logic
         {
             merchantData.TimeToSpawn = 10.0f;
             MerchantLists.Shops[merchantData.TileRegion].Item1.Add(merchantData.SellableItem);
-            InactiveStorePoints.Add(merchantData);
             LeaveWorld(merchantData.NewMerchant);
             merchantData.NewMerchant = null;
+            InactiveStorePoints.Add(merchantData);
         }
 
         public bool WithinBoundsOfMarket(float x, float y)

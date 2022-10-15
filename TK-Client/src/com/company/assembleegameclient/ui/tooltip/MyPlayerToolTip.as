@@ -95,7 +95,6 @@ public class MyPlayerToolTip extends ToolTip
          this.iGrid.x = 8;
          this.iGrid.y = _loc3_;
          addChild(this.iGrid);
-         trace(this.player_.equipment_);
          this.iGrid.setItems(this.player_.equipment_, this.player_.equipData_);
          _loc3_ = Number(_loc3_ + 92);
          if(this.player_.hasBackpack_)

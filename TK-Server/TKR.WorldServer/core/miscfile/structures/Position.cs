@@ -17,7 +17,7 @@ namespace TKR.WorldServer.core.miscfile.structures
             Y = y;
         }
 
-        public static Position Read(NReader rdr) => new Position
+        public static Position Read(NetworkReader rdr) => new Position
         {
             X = rdr.ReadSingle(),
             Y = rdr.ReadSingle()
@@ -25,7 +25,7 @@ namespace TKR.WorldServer.core.miscfile.structures
 
         public override string ToString() => string.Format("{{X: {0}, Y: {1}}}", X, Y);
 
-        public void Write(NWriter wtr)
+        public void Write(NetworkWriter wtr)
         {
             wtr.Write(X);
             wtr.Write(Y);

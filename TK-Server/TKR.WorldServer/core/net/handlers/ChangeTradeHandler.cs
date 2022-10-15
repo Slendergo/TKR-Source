@@ -14,7 +14,7 @@ namespace TKR.WorldServer.core.net.handlers
 
         public override MessageId MessageId => MessageId.CHANGETRADE;
 
-        public override void Handle(Client client, NReader rdr, ref TickTime time)
+        public override void Handle(Client client, NetworkReader rdr, ref TickTime time)
         {
             var offer = new bool[rdr.ReadInt16()];
             for (int i = 0; i < offer.Length; i++)

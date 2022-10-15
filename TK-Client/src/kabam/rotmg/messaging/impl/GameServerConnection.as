@@ -199,7 +199,6 @@ import kabam.rotmg.ui.signals.LegendaryPopUpSignal;
 import kabam.rotmg.ui.signals.MythicalPopUpSignal;
 import kabam.rotmg.ui.signals.ShowKeySignal;
 import kabam.rotmg.ui.signals.ShowKeyUISignal;
-import kabam.rotmg.ui.signals.TalismanPopUpSignal;
 import kabam.rotmg.ui.signals.UpdateBackpackTabSignal;
 import kabam.rotmg.ui.view.FlexibleDialog;
 
@@ -1363,9 +1362,6 @@ public class GameServerConnection
                break;
             case "mythical_loot":
                MythicalPopUpSignal.instance.dispatch();
-               break;
-            case "talisman_loot":
-               TalismanPopUpSignal.instance.dispatch();
                break;
          }
       }

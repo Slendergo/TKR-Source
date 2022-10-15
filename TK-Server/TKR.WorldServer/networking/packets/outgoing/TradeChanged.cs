@@ -8,7 +8,7 @@ namespace TKR.WorldServer.networking.packets.outgoing
 
         public override MessageId MessageId => MessageId.TRADECHANGED;
 
-        public override void Write(NWriter wtr)
+        public override void Write(NetworkWriter wtr)
         {
             wtr.Write((short)Offer.Length);
             foreach (var i in Offer)

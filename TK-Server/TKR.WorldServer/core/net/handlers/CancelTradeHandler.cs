@@ -17,7 +17,7 @@ namespace TKR.WorldServer.core.net.handlers
     {
         public override MessageId MessageId => MessageId.CANCELTRADE;
 
-        public override void Handle(Client client, NReader rdr, ref TickTime time)
+        public override void Handle(Client client, NetworkReader rdr, ref TickTime time)
         {
             var player = client.Player;
             if (player == null || client?.Player?.World is TestWorld)

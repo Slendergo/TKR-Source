@@ -8,7 +8,7 @@ namespace TKR.WorldServer.core.miscfile.datas
         public int ObjectType;
         public byte SlotId;
 
-        public static ObjectSlot Read(NReader rdr) => new ObjectSlot
+        public static ObjectSlot Read(NetworkReader rdr) => new ObjectSlot
         {
             ObjectId = rdr.ReadInt32(),
             SlotId = rdr.ReadByte(),
@@ -17,7 +17,7 @@ namespace TKR.WorldServer.core.miscfile.datas
 
         public override string ToString() => string.Format("{{ObjectId: {0}, SlotId: {1}, ObjectType: {2}}}", ObjectId, SlotId, ObjectType);
 
-        public void Write(NWriter wtr)
+        public void Write(NetworkWriter wtr)
         {
             wtr.Write(ObjectId);
             wtr.Write(SlotId);

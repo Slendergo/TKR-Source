@@ -23,9 +23,9 @@ namespace TKR.WorldServer.core.net.handlers
     {
         public override MessageId MessageId => MessageId.PLAYERTEXT;
 
-        public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
+        public override void Handle(Client client, NetworkReader rdr, ref TickTime tickTime)
         {
-            var text = rdr.ReadUTF();
+            var text = rdr.ReadUTF16();
 
             var player = client.Player;
             if (player?.World == null || text.Length > 512)

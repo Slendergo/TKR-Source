@@ -16,7 +16,7 @@ namespace TKR.WorldServer.core.net.handlers
         private readonly ushort[] _WindWeaponsList = { 0x5011, 0x500e };
         public override MessageId MessageId => MessageId.FORGEFUSION;
 
-        public override void Handle(Client client, NReader rdr, ref TickTime time)
+        public override void Handle(Client client, NetworkReader rdr, ref TickTime time)
         {
             var myInventory = new ForgeItem[rdr.ReadInt16()];
             var rnd = new Random();

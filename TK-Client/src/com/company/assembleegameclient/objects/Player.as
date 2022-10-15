@@ -842,9 +842,9 @@ public class Player extends Character {
     }
 
     public function nextAvailableInventorySlot():int {
-        var len:int = this.hasBackpack_ ? int(equipment_.length) : int(equipment_.length - GeneralConstants.NUM_INVENTORY_SLOTS);
+        var len:int = this.hasBackpack_ ? int(equipment_.length- GeneralConstants.NUM_INVENTORY_SLOTS) : int(equipment_.length - GeneralConstants.NUM_INVENTORY_SLOTS - GeneralConstants.NUM_BACKPACK_SLOTS);
         for (var i:uint = 4; i < len; i++) {
-            if (equipment_[i] <= 0) {
+            if (equipment_[i] == -1) {
                 return i;
             }
         }

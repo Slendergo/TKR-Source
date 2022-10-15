@@ -9,10 +9,10 @@ namespace TKR.WorldServer.networking.packets.outgoing
 
         public override MessageId MessageId => MessageId.TRADEDONE;
 
-        public override void Write(NWriter wtr)
+        public override void Write(NetworkWriter wtr)
         {
             wtr.Write(Code);
-            wtr.WriteUTF(Description);
+            wtr.WriteUTF16(Description);
         }
     }
 }

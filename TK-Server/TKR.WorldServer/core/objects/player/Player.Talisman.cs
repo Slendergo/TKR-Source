@@ -23,10 +23,10 @@ namespace TKR.WorldServer.core.objects
                 RemoveCondition(ConditionEffectIndex.Stunned);
 
             TalismanEffects = 0;
-            for (var i = 20; i < 28; i++)
+            for (var i = 20; i < 28; i++ )
             {
                 var item = Inventory[i];
-                if (item == null || item.TalismanItemDesc == null)
+                if (item == null || item.TalismanItemDesc == null || item.SlotType != 26)
                     continue;
 
                 foreach(var providesDesc in item.TalismanItemDesc.Provides)

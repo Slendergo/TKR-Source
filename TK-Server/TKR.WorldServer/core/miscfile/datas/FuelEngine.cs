@@ -9,7 +9,7 @@ namespace TKR.WorldServer.core.miscfile.datas
         public int slotID;
         public int ItemData;
 
-        public static FuelEngine Read(NReader rdr) => new FuelEngine
+        public static FuelEngine Read(NetworkReader rdr) => new FuelEngine
         {
             ObjectType = rdr.ReadUInt16(),
             slotID = rdr.ReadInt32(),
@@ -17,7 +17,7 @@ namespace TKR.WorldServer.core.miscfile.datas
             ItemData = rdr.ReadInt32()
         };
 
-        public void Write(NWriter wtr)
+        public void Write(NetworkWriter wtr)
         {
             wtr.Write(ObjectType);
             wtr.Write(slotID);

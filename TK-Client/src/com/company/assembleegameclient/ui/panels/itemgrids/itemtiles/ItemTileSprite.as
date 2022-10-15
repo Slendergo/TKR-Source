@@ -60,6 +60,11 @@ import kabam.rotmg.constants.ItemConstants;
          {
             texture = ObjectLibrary.getRedrawnTextureFromType(this.itemId,80,true);
             eqXML = ObjectLibrary.xmlLibrary_[this.itemId];
+
+             if(eqXML == null){
+                 this.itemId = -1;
+             }
+
             if(this.itemData != null && this.itemData.Stack > 0)
             {
                texture = texture.clone();

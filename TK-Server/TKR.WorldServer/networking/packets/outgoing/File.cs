@@ -9,9 +9,9 @@ namespace TKR.WorldServer.networking.packets.outgoing
 
         public override MessageId MessageId => MessageId.FILE;
 
-        public override void Write(NWriter wtr)
+        public override void Write(NetworkWriter wtr)
         {
-            wtr.WriteUTF(Name);
+            wtr.WriteUTF16(Name);
             wtr.Write(Bytes.Length);
             wtr.Write(Bytes);
         }

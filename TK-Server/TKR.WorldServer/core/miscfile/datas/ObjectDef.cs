@@ -7,13 +7,13 @@ namespace TKR.WorldServer.core.miscfile.datas
         public int ObjectType;
         public ObjectStats Stats;
 
-        public static ObjectDef Read(NReader rdr) => new ObjectDef
+        public static ObjectDef Read(NetworkReader rdr) => new ObjectDef
         {
             ObjectType = rdr.ReadInt32(),
             Stats = ObjectStats.Read(rdr)
         };
 
-        public void Write(NWriter wtr)
+        public void Write(NetworkWriter wtr)
         {
             wtr.Write(ObjectType);
             Stats.Write(wtr);

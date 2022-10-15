@@ -10,23 +10,19 @@ using TKR.Shared;
 using TKR.Shared.database.character.inventory;
 using TKR.Shared.database.party;
 using TKR.Shared.resources;
-using TKR.WorldServer.core.miscfile;
 using TKR.WorldServer.core.miscfile.datas;
 using TKR.WorldServer.core.miscfile.stats;
+using TKR.WorldServer.core.miscfile.structures;
 using TKR.WorldServer.core.miscfile.thread;
-using TKR.WorldServer.core.miscfile.world;
 using TKR.WorldServer.core.net.handlers;
 using TKR.WorldServer.core.objects.inventory;
 using TKR.WorldServer.core.objects.player;
-using TKR.WorldServer.core.terrain;
 using TKR.WorldServer.core.worlds;
 using TKR.WorldServer.core.worlds.logic;
 using TKR.WorldServer.logic;
 using TKR.WorldServer.networking;
 using TKR.WorldServer.networking.packets.outgoing;
 using TKR.WorldServer.utils;
-using TKR.WorldServer.core.miscfile.structures;
-using TKR.WorldServer.core.connection;
 
 namespace TKR.WorldServer.core.objects
 {
@@ -157,7 +153,7 @@ namespace TKR.WorldServer.core.objects
             _fame = new SV<int>(this, StatDataType.Fame, client.Character.Fame, true);
             _fameGoal = new SV<int>(this, StatDataType.FameGoal, 0, true);
             _stars = new SV<int>(this, StatDataType.Stars, 0);
-            _guild = new SV<string>(this, StatDataType.Guild, "");
+            _guild = new SV<string>(this, StatDataType.GuildName, "");
             _guildRank = new SV<int>(this, StatDataType.GuildRank, -1);
             _rank = new SV<int>(this, StatDataType.Rank, (int)client.Rank.Rank); // we need to export this to client so dont remove
             _credits = new SV<int>(this, StatDataType.Credits, client.Account.Credits, true);
@@ -168,7 +164,7 @@ namespace TKR.WorldServer.core.objects
             _glow = new SV<int>(this, StatDataType.Glow, 0);
             _admin = new SV<int>(this, StatDataType.Admin, client.Rank.IsAdmin ? 1 : 0);
             _xpBoosted = new SV<bool>(this, StatDataType.XPBoost, client.Character.XPBoostTime != 0, true);
-            _mp = new SV<int>(this, StatDataType.MP, client.Character.MP);
+            _mp = new SV<int>(this, StatDataType.Mana, client.Character.MP);
             _hasBackpack = new SV<bool>(this, StatDataType.HasBackpack, client.Character.HasBackpack, true);
             _oxygenBar = new SV<int>(this, StatDataType.OxygenBar, -1, true);
             _baseStat = new SV<int>(this, StatDataType.BaseStat, client.Account.SetBaseStat, true);
@@ -369,7 +365,7 @@ namespace TKR.WorldServer.core.objects
             }, this, this);
 
             if (HP <= 0)
-                Death(src.ObjectDesc.DisplayId ?? src.ObjectDesc.ObjectId, src.Spawned);
+                Death(src.ObjectDesc.DisplayId ?? src.ObjectDesc.IdName, src.Spawned);
         }
 
         public void Death(string killer, bool rekt = false)
@@ -404,12 +400,7 @@ namespace TKR.WorldServer.core.objects
                 KilledBy = killer
             });
 
-            World.StartNewTimer(1000, (w, t) =>
-            {
-                if (Client.Player != this)
-                    return;
-                Client.Disconnect("Death");
-            });
+            Client.Disconnect("Death");
         }
 
         public int GetCurrency(CurrencyType currency)
@@ -437,17 +428,6 @@ namespace TKR.WorldServer.core.objects
         {
             base.Init(owner);
 
-            var x = 0;
-            var y = 0;
-            var spawnRegions = owner.GetSpawnPoints();
-            if (spawnRegions.Any())
-            {
-                var sRegion = Random.Shared.NextLength(spawnRegions);
-                x = sRegion.Key.X;
-                y = sRegion.Key.Y;
-            }
-            Move(x + 0.5f, y + 0.5f);
-
             // spawn pet if player has one attached
             SpawnPetIfAttached(owner);
 
@@ -461,6 +441,10 @@ namespace TKR.WorldServer.core.objects
 
             SetNewbiePeriod();
             PlayerUpdate = new PlayerUpdate(this);
+
+            if (owner is NexusWorld nexus)
+                if (nexus.EngineStage != 0)
+                    EngineNotif($"The engine runs smoothly with enough fuel to last a while.");
         }
 
         public void HandleIO(ref TickTime time)
@@ -482,9 +466,9 @@ namespace TKR.WorldServer.core.objects
 
                 try
                 {
-                    NReader rdr = null;
+                    NetworkReader rdr = null;
                     if (incomingMessage.Payload.Length != 0)
-                        rdr = new NReader(new MemoryStream(incomingMessage.Payload));
+                        rdr = new NetworkReader(new MemoryStream(incomingMessage.Payload));
                     handler.Handle(incomingMessage.Client, rdr, ref time);
                     rdr?.Dispose();
                 }
@@ -858,23 +842,23 @@ namespace TKR.WorldServer.core.objects
             stats[StatDataType.Fame] = Fame;
             stats[StatDataType.FameGoal] = FameGoal;
             stats[StatDataType.Stars] = Stars;
-            stats[StatDataType.Guild] = Guild;
+            stats[StatDataType.GuildName] = Guild;
             stats[StatDataType.GuildRank] = GuildRank;
             stats[StatDataType.NameChosen] = (Client.Account?.NameChosen ?? NameChosen) ? 1 : 0;
             stats[StatDataType.Texture1] = Texture1;
             stats[StatDataType.Texture2] = Texture2;
             stats[StatDataType.Skin] = Skin;
             stats[StatDataType.Glow] = Glow;
-            stats[StatDataType.MP] = MP;
+            stats[StatDataType.Mana] = MP;
             stats[StatDataType.Inventory0] = Inventory[0]?.ObjectType ?? -1;
             stats[StatDataType.Inventory1] = Inventory[1]?.ObjectType ?? -1;
             stats[StatDataType.Inventory2] = Inventory[2]?.ObjectType ?? -1;
             stats[StatDataType.Inventory3] = Inventory[3]?.ObjectType ?? -1;
             stats[StatDataType.Inventory4] = Inventory[4]?.ObjectType ?? -1;
-            stats[StatDataType.MaximumHP] = Stats[0];
-            stats[StatDataType.MaximumMP] = Stats[1];
-            stats[StatDataType.HPBoost] = Stats.Boost[0];
-            stats[StatDataType.MPBoost] = Stats.Boost[1];
+            stats[StatDataType.MaximumHealth] = Stats[0];
+            stats[StatDataType.MaximumMana] = Stats[1];
+            stats[StatDataType.HealthBoost] = Stats.Boost[0];
+            stats[StatDataType.ManaBoost] = Stats.Boost[1];
             stats[StatDataType.OxygenBar] = OxygenBar;
             stats[StatDataType.ColorNameChat] = ColorNameChat;
             stats[StatDataType.ColorChat] = ColorChat;
@@ -1119,11 +1103,13 @@ namespace TKR.WorldServer.core.objects
             }
 
             var deathMessage = Name + " (" + maxed + (UpgradeEnabled ? "/16, " : "/8, ") + Client.Character.Fame + ")";
+
             //var deathMessage = Name + " (" + maxed + ("/8, ") + _client.Character.Fame + ")";
-            var obj = new StaticObject(GameServer, objType, time, true, true, false);
-            obj.Move(X, Y);
-            obj.Name = (!phantomDeath) ? deathMessage : $"{Name} got rekt";
-            World.EnterWorld(obj);
+
+            //var obj = new StaticObject(GameServer, objType, time, true, true, false);
+            //obj.Move(X, Y);
+            //obj.Name = (!phantomDeath) ? deathMessage : $"{Name} got rekt";
+            //World.EnterWorld(obj);
         }
 
         private void GodBless(int slot)
@@ -1184,7 +1170,7 @@ namespace TKR.WorldServer.core.objects
             {
                 var vitalityStat = Stats[6];
 
-                HealthRegenCarry += (1.0 + (0.24 * vitalityStat)) * time.DeltaTime;
+                HealthRegenCarry += (1.0 + (0.36 * vitalityStat)) * time.DeltaTime;
                 if (HasTalismanEffect(TalismanEffectType.CallToArms))
                     HealthRegenCarry *= 2.0;
                 if (HasConditionEffect(ConditionEffectIndex.Healing))
@@ -1203,7 +1189,7 @@ namespace TKR.WorldServer.core.objects
             {
                 var wisdomStat = Stats[7];
 
-                ManaRegenCarry += (0.5 + 0.12 * wisdomStat) * time.DeltaTime;
+                ManaRegenCarry += (1.0 + (0.24 * wisdomStat)) * time.DeltaTime;
                 if (HasTalismanEffect(TalismanEffectType.CallToArms))
                     ManaRegenCarry *= 2.0;
 
@@ -1434,11 +1420,11 @@ namespace TKR.WorldServer.core.objects
             var petId = PetId;
             if (petId != 0)
             {
-                var pet = new Pet(GameServer, this, (ushort)petId);
-                pet.Move(X, Y);
-                owner.EnterWorld(pet);
-                pet.SetDefaultSize(pet.ObjectDesc.Size);
-                Pet = pet;
+                //var pet = new Pet(GameServer, this, (ushort)petId);
+                //pet.Move(X, Y);
+                //owner.EnterWorld(pet);
+                //pet.SetDefaultSize(pet.ObjectDesc.Size);
+                //Pet = pet;
             }
         }
 

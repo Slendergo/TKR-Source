@@ -8,9 +8,9 @@ namespace TKR.WorldServer.networking.packets.outgoing
 
         public override MessageId MessageId => MessageId.SWITCH_MUSIC;
 
-        public override void Write(NWriter wtr)
+        public override void Write(NetworkWriter wtr)
         {
-            wtr.WriteUTF(Music);
+            wtr.WriteUTF16(Music);
         }
     }
 }

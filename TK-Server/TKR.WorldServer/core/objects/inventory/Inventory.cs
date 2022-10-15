@@ -128,9 +128,10 @@ namespace TKR.WorldServer.core.objects.inventory
                         if (_items[i] == null)
                             return i;
 
-                    for (var i = 20; i < 28; i++)
-                        if (_items[i] != null && item.TalismanItemDesc.OnlyOne && _items[i].ObjectType == item.ObjectType)
-                            return -1;
+                    if(item.SlotType == 26)
+                        for (var i = 20; i < 28; i++)
+                            if (_items[i] != null && item.TalismanItemDesc != null && item.TalismanItemDesc.OnlyOne && _items[i].ObjectType == item.ObjectType)
+                                return -1;
 
                     for (var i = 20; i < 28; i++)
                         if (_items[i] == null && playerDesc.SlotTypes[i] == item.SlotType)

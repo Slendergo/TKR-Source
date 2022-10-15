@@ -10,7 +10,7 @@
     <HitSound>monster/greater_demons_hit</HitSound>
     <DeathSound>monster/greater_demons_death</DeathSound>
     <Size>100</Size>
-    <MaxHitPoints>2000</MaxHitPoints>
+    <MaxHitPoints>3000</MaxHitPoints>
     <Defense>12</Defense>
     <Flying />
     <God />
@@ -35,7 +35,7 @@
     <HitSound>monster/greater_demons_hit</HitSound>
     <DeathSound>monster/greater_demons_death</DeathSound>
     <Size>100</Size>
-    <MaxHitPoints>1000</MaxHitPoints>
+    <MaxHitPoints>3000</MaxHitPoints>
     <Defense>12</Defense>
     <Terrain>Mountains</Terrain>
     <SpawnProb>1.0</SpawnProb>
@@ -68,7 +68,7 @@
     <HitSound>monster/sprite_god_hit</HitSound>
     <DeathSound>monster/sprite_god_death</DeathSound>
     <Size>100</Size>
-    <MaxHitPoints>2000</MaxHitPoints>
+    <MaxHitPoints>3000</MaxHitPoints>
     <Defense>12</Defense>
     <Terrain>Mountains</Terrain>
     <SpawnProb>1.0</SpawnProb>
@@ -101,7 +101,7 @@
     <HitSound>monster/medusa_hit</HitSound>
     <DeathSound>monster/medusa_death</DeathSound>
     <Size>100</Size>
-    <MaxHitPoints>2000</MaxHitPoints>
+    <MaxHitPoints>3000</MaxHitPoints>
     <Defense>18</Defense>
     <Terrain>Mountains</Terrain>
     <SpawnProb>1.0</SpawnProb>
@@ -130,7 +130,7 @@
     <HitSound>monster/ents_hit</HitSound>
     <DeathSound>monster/ents_death</DeathSound>
     <Size>100</Size>
-    <MaxHitPoints>1000</MaxHitPoints>
+    <MaxHitPoints>3000</MaxHitPoints>
     <Defense>18</Defense>
     <Terrain>Mountains</Terrain>
     <SpawnProb>1.0</SpawnProb>
@@ -199,7 +199,7 @@
     <HitSound>monster/flying_brain_hit</HitSound>
     <DeathSound>monster/flying_brain_death</DeathSound>
     <Size>100</Size>
-    <MaxHitPoints>1000</MaxHitPoints>
+    <MaxHitPoints>3000</MaxHitPoints>
     <Defense>12</Defense>
     <Terrain>Mountains</Terrain>
     <SpawnProb>1.0</SpawnProb>
@@ -229,7 +229,7 @@
     <HitSound>monster/slimes_hit</HitSound>
     <DeathSound>monster/slimes_death</DeathSound>
     <Size>100</Size>
-    <MaxHitPoints>1000</MaxHitPoints>
+    <MaxHitPoints>3000</MaxHitPoints>
     <Defense>12</Defense>
     <Terrain>Mountains</Terrain>
     <SpawnProb>1.0</SpawnProb>
@@ -259,7 +259,7 @@
     <HitSound>monster/djinn_hit</HitSound>
     <DeathSound>monster/djinn_death</DeathSound>
     <Size>100</Size>
-    <MaxHitPoints>1000</MaxHitPoints>
+    <MaxHitPoints>3000</MaxHitPoints>
     <Defense>12</Defense>
     <Terrain>Mountains</Terrain>
     <Spawn>
@@ -290,7 +290,7 @@
     <HitSound>monster/sprite_god_hit</HitSound>
     <DeathSound>monster/sprite_god_death</DeathSound>
     <Size>100</Size>
-    <MaxHitPoints>2000</MaxHitPoints>
+    <MaxHitPoints>3000</MaxHitPoints>
     <Defense>12</Defense>
     <Flying />
     <God />
@@ -321,7 +321,7 @@
     <HitSound>monster/slimes_hit</HitSound>
     <DeathSound>monster/slimes_death</DeathSound>
     <Size>100</Size>
-    <MaxHitPoints>1000</MaxHitPoints>
+    <MaxHitPoints>3000</MaxHitPoints>
     <Defense>12</Defense>
     <God />
     <XpMult>1</XpMult>

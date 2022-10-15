@@ -21,7 +21,7 @@ namespace TKR.WorldServer.core.commands
                     if (entity is Container || entity.ObjectDesc == null)
                         continue;
 
-                    if (entity.ObjectDesc.ObjectId.StartsWith("Gravestone") && entity.DistTo(player) < 15d)
+                    if (entity.ObjectDesc.IdName.StartsWith("Gravestone") && entity.DistTo(player) < 15d)
                     {
                         player.World.LeaveWorld(entity);
                         total++;

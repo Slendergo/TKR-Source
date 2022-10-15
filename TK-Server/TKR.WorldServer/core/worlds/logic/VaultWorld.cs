@@ -123,12 +123,7 @@ namespace TKR.WorldServer.core.worlds.logic
             }
 
             foreach (var i in vaultChestPosition)
-            {
-                var x = new ClosedVaultChest(Client.GameServer, 0x0505) { Size = 65 };
-                x.Move(i.X + 0.5f, i.Y + 0.5f);
-
-                EnterWorld(x);
-            }
+                CreateNewEntity(0x0505, i.X + 0.5f, i.Y + 0.5f);
 
             var gifts = Client.Account.Gifts.ToList();
             while (gifts.Count > 0 && giftChestPosition.Count > 0)
@@ -141,7 +136,7 @@ namespace TKR.WorldServer.core.worlds.logic
                 if (c < 8)
                     items.AddRange(Enumerable.Repeat(ushort.MaxValue, 8 - c));
 
-                var con = new GiftChest(Client.GameServer, 0x0744, null, false)
+                var con = new GiftChest(Client.GameServer, 0x0744)
                 {
                     BagOwners = new int[] { Client.Account.AccountId },
                     Size = 65

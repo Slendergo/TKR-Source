@@ -11,9 +11,9 @@ namespace TKR.WorldServer.core.net.handlers
     {
         public override MessageId MessageId => MessageId.CREATEGUILD;
 
-        public override void Handle(Client client, NReader rdr, ref TickTime time)
+        public override void Handle(Client client, NetworkReader rdr, ref TickTime time)
         {
-            var name = rdr.ReadUTF();
+            var name = rdr.ReadUTF16();
 
             if (client.Player == null || client?.Player?.World is TestWorld)
                 return;

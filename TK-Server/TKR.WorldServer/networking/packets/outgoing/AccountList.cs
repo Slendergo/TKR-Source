@@ -9,12 +9,12 @@ namespace TKR.WorldServer.networking.packets.outgoing
 
         public override MessageId MessageId => MessageId.ACCOUNTLIST;
 
-        public override void Write(NWriter wtr)
+        public override void Write(NetworkWriter wtr)
         {
             wtr.Write(AccountListId);
             wtr.Write((short)AccountIds.Length);
             foreach (var i in AccountIds)
-                wtr.WriteUTF(i);
+                wtr.WriteUTF16(i);
         }
     }
 }

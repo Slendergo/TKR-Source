@@ -14,9 +14,9 @@ namespace TKR.WorldServer.core.net.handlers.party
     {
         public override MessageId MessageId => MessageId.PARTY_INVITE;
 
-        public override void Handle(Client client, NReader rdr, ref TickTime time)
+        public override void Handle(Client client, NetworkReader rdr, ref TickTime time)
         {
-            var name = rdr.ReadUTF();
+            var name = rdr.ReadUTF16();
 
 
             var db = client.Account.Database;

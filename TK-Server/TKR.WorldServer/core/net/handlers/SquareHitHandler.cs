@@ -8,7 +8,7 @@ namespace TKR.WorldServer.core.net.handlers
     {
         public override MessageId MessageId => MessageId.SQUAREHIT;
 
-        public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
+        public override void Handle(Client client, NetworkReader rdr, ref TickTime tickTime)
         {
             var time = rdr.ReadInt32();
             var bulletId = rdr.ReadInt32();

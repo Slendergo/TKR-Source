@@ -9,10 +9,10 @@ namespace TKR.WorldServer.networking.packets.outgoing
 
         public override MessageId MessageId => MessageId.NAMERESULT;
 
-        public override void Write(NWriter wtr)
+        public override void Write(NetworkWriter wtr)
         {
             wtr.Write(Success);
-            wtr.WriteUTF(ErrorText);
+            wtr.WriteUTF16(ErrorText);
         }
     }
 }

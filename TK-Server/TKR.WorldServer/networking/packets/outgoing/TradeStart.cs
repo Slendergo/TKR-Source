@@ -11,13 +11,13 @@ namespace TKR.WorldServer.networking.packets.outgoing
 
         public override MessageId MessageId => MessageId.TRADESTART;
 
-        public override void Write(NWriter wtr)
+        public override void Write(NetworkWriter wtr)
         {
             wtr.Write((short)MyItems.Length);
             foreach (var i in MyItems)
                 i.Write(wtr);
 
-            wtr.WriteUTF(YourName);
+            wtr.WriteUTF16(YourName);
             wtr.Write((short)YourItems.Length);
             foreach (var i in YourItems)
                 i.Write(wtr);

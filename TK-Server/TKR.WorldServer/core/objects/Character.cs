@@ -17,8 +17,8 @@ namespace TKR.WorldServer.core.objects
 
         protected Character(GameServer manager, ushort objType) : base(manager, objType)
         {
-            _hp = new SV<int>(this, StatDataType.HP, 0);
-            _maximumHP = new SV<int>(this, StatDataType.MaximumHP, 0);
+            _hp = new SV<int>(this, StatDataType.Health, 0);
+            _maximumHP = new SV<int>(this, StatDataType.MaximumHealth, 0);
 
             if (ObjectDesc != null)
             {
@@ -38,9 +38,9 @@ namespace TKR.WorldServer.core.objects
         protected override void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)
         {
             base.ExportStats(stats, isOtherPlayer);
-            stats[StatDataType.HP] = HP;
+            stats[StatDataType.Health] = HP;
             if (!(this is Player))
-                stats[StatDataType.MaximumHP] = MaximumHP;
+                stats[StatDataType.MaximumHealth] = MaximumHP;
         }
     }
 }

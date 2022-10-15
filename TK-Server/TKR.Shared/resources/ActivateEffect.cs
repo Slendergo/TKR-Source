@@ -32,6 +32,10 @@ namespace TKR.Shared.resources
         public readonly float SuccessChange;
         public readonly float SuccessDamage;
         public readonly float FailureDamage;
+        public readonly float Speed;
+        public readonly float Distance;
+        public readonly float AngleOffset;
+        public readonly float Duration;
 
         public string Center;
         public string DungeonName;
@@ -51,6 +55,10 @@ namespace TKR.Shared.resources
                 Console.WriteLine($"Unknown effect: {e.Value}");
                 Effect = ActivateEffects.None;
             }
+
+            Speed = e.GetAttribute("speed", 0.0f);
+            Distance = e.GetAttribute("distance", 8.0f);
+            AngleOffset = e.GetAttribute("angleOffset", 0.0f);
 
             if (e.HasAttribute("effect"))
                 ConditionEffect = Utils.GetEffect(e.GetAttribute<string>("effect"));

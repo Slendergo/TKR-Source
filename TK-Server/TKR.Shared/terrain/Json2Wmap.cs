@@ -39,7 +39,7 @@ namespace TKR.Shared.terrain
 
             var tiles = new TerrainTile[obj.width, obj.height];
 
-            using (var rdr = new NReader(new MemoryStream(dat)))
+            using (var rdr = new NetworkReader(new MemoryStream(dat)))
                 for (var y = 0; y < obj.height; y++)
                     for (var x = 0; x < obj.width; x++)
                         tiles[x, y] = tileDict[rdr.ReadInt16()];

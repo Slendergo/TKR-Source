@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Org.BouncyCastle.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -48,15 +49,21 @@ namespace TKR.WorldServer.logic.loot
     {
         #region Utils
 
-        /*  Brown 0,  Pink 1,   Purple 2, Gold 3,   Cyan 4,   Blue 5,   Orange 6, White 7,  Legenadry 8, Mythical 9, Talisman 10 */
-        public static readonly ushort[] BAG_ID_TO_TYPE = new ushort[] { 0x0500, 0x0506, 0x0503, 0x0532, 0x0509, 0x050B, 0x0533, 0x050C, 0x5076, 0xa002, 0xa004 };
-        public static readonly ushort[] BOOSTED_BAG_ID_TO_TYPE = new ushort[] { 0x0534, 0x0535, 0x0536, 0x0537, 0x0538, 0x0539, 0x053b, 0x053a, 0x5077, 0xa003, 0xa005 };
+        /*  
+         *  Brown 0,
+         *  Pink 1,
+         *  Purple 2,
+         *  Gold 3, 
+         *  Cyan 4, 
+         *  Blue 5, 
+         *  Orange 6, 
+         *  White 7,
+         *  Legenadry 8,
+         *  Mythical 9
+         */
 
-        private static readonly int[] AbilityT = new int[] { 4, 5, 11, 12, 13, 15, 16, 18, 19, 20, 21, 22, 23, 25, };
-        private static readonly int[] ArmorT = new int[] { 6, 7, 14, };
-        private static readonly int[] RingT = new int[] { 9 };
-        private static readonly int[] WeaponT = new int[] { 1, 2, 3, 8, 17, 24 };
-        private static readonly int[] TalismanT = new int[] { 26 };
+        public static readonly ushort[] BAG_ID_TO_TYPE = new ushort[] { 0x0500, 0x0506, 0x0503, 0x0532, 0x0509, 0x050B, 0x0533, 0x050C, 0x5076, 0xa002 };
+        public static readonly ushort[] BOOSTED_BAG_ID_TO_TYPE = new ushort[] { 0x0534, 0x0535, 0x0536, 0x0537, 0x0538, 0x0539, 0x053b, 0x053a, 0x5077, 0xa003 };
 
         public static bool DropsInSoulboundBag(ItemType type, int tier)
         {
@@ -204,7 +211,8 @@ namespace TKR.WorldServer.logic.loot
                 }
             }
 
-            ProcessPublicDrops(pubDrops, enemy);
+            if(pubDrops.Count > 0)
+                ProcessPublicDrops(pubDrops, enemy);
 
             var playersAvaliable = enemy.DamageCounter.GetPlayerData();
             if (playersAvaliable == null)
@@ -307,11 +315,11 @@ namespace TKR.WorldServer.logic.loot
             var bagType = 0;
             var idx = 0;
             var items = new Item[8];
+
+            bagType = drops.Max(_ => _.BagType);
+
             foreach (var i in drops)
             {
-                if (i.BagType > bagType)
-                    bagType = i.BagType;
-
                 items[idx] = i;
                 idx++;
                 if (idx == 8)
@@ -343,13 +351,14 @@ namespace TKR.WorldServer.logic.loot
             {
                 var isMythical = i.Mythical;
                 var isLegendary = i.Legendary;
-                var isEligible = isMythical || isLegendary || i.TalismanItemDesc != null;
+
+                var isEligible = isMythical || isLegendary;
                 if (player != null && isEligible)
                 {
                     var chat = core.ChatManager;
                     var world = player.World;
 
-                    player.Client.SendPacket(new GlobalNotification() { Text = isMythical ? "mythical_loot" : isLegendary ? "legendary_loot" : "talisman_loot" });
+                    player.Client.SendPacket(new GlobalNotification() { Text = isMythical ? "mythical_loot" : "legendary_loot" });
 
                     #region Discord Bot Message
 
@@ -373,13 +382,13 @@ namespace TKR.WorldServer.logic.loot
                                 player.Client.Rank.Rank,
                                 player.Stars,
                                 i.ObjectId,
-                                player.ObjectDesc.ObjectId,
+                                player.ObjectDesc.IdName,
                                 player.Level,
                                 player.Fame,
                                 player.GetMaxedStats()
                             );
 
-                            if (!discord.CanSendLootNotification(player.Stars, player.ObjectDesc.ObjectId.ToLower()) && builder.HasValue)
+                            if (!discord.CanSendLootNotification(player.Stars, player.ObjectDesc.IdName.ToLower()) && builder.HasValue)
 #pragma warning disable
                                 discord.SendWebhook(discord.webhookLootEvent, builder.Value);
 #pragma warning restore
@@ -399,8 +408,6 @@ namespace TKR.WorldServer.logic.loot
                             msg.Append("a Legendary");
                         else if (i.Mythical)
                             msg.Append("a Mythical");
-                        else if (i.TalismanItemDesc != null)
-                            msg.Append("a Talisman");
 
                         var hitters = enemy.DamageCounter.GetHitters();
                         msg.Append($" [{i.DisplayId ?? i.ObjectId}], by doing {Math.Round(100.0 * (hitters[owners[0]] / (double)enemy.DamageCounter.TotalDamage), 0)}% damage!");

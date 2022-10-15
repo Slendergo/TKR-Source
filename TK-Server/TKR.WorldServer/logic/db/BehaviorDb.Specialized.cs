@@ -18,7 +18,6 @@ namespace TKR.WorldServer.logic
                     new State("Explode 1",
                         new JumpToRandomOffset(-2, 2, -2, 2),
                         new ChangeSize(100, 0),
-
                         new EnemyAOE(1, false, 40, 90, false, 0xFF9933),
                         new TimedTransition(100, "Explode 2")
                         ),

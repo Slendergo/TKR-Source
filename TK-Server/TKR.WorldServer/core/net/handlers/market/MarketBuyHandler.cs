@@ -20,7 +20,7 @@ namespace TKR.WorldServer.core.net.handlers.market
 
         private const int TAX_PERCENTAGE = 5;
 
-        public override void Handle(Client client, NReader rdr, ref TickTime time)
+        public override void Handle(Client client, NetworkReader rdr, ref TickTime time)
         {
             var id = rdr.ReadInt32();
 

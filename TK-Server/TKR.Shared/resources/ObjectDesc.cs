@@ -60,16 +60,16 @@ namespace TKR.Shared.resources
         public string DisplayId;
         public string DisplayName;
         public string Group;
-        public string ObjectId;
+        public string IdName;
         public Dictionary<int, ProjectileDesc> Projectiles = new Dictionary<int, ProjectileDesc>();
         public SpawnCount Spawn;
 
         public ObjectDesc(ushort type, XElement e)
         {
             ObjectType = type;
-            ObjectId = e.GetAttribute<string>("id");
+            IdName = e.GetAttribute<string>("id");
             DisplayId = e.GetValue<string>("DisplayId");
-            DisplayName = string.IsNullOrWhiteSpace(DisplayId) ? ObjectId : DisplayId;
+            DisplayName = string.IsNullOrWhiteSpace(DisplayId) ? IdName : DisplayId;
             Class = e.GetValue<string>("Class");
             Static = e.HasElement("Static");
             Event = e.HasElement("Event");

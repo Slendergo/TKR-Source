@@ -21,7 +21,7 @@ namespace TKR.WorldServer.core.miscfile.datas
             Stats = stats;
         }
 
-        public static ObjectStats Read(NReader rdr)
+        public static ObjectStats Read(NetworkReader rdr)
         {
             var ret = new ObjectStats
             {
@@ -35,8 +35,8 @@ namespace TKR.WorldServer.core.miscfile.datas
             {
                 var type = (StatDataType)rdr.ReadByte();
 
-                if (type == StatDataType.Guild || type == StatDataType.Name)
-                    ret.Stats[i] = new KeyValuePair<StatDataType, object>(type, rdr.ReadUTF());
+                if (type == StatDataType.GuildName || type == StatDataType.Name)
+                    ret.Stats[i] = new KeyValuePair<StatDataType, object>(type, rdr.ReadUTF16());
                 else
                     ret.Stats[i] = new KeyValuePair<StatDataType, object>(type, rdr.ReadInt32());
             }
@@ -44,7 +44,7 @@ namespace TKR.WorldServer.core.miscfile.datas
             return ret;
         }
 
-        public void Write(NWriter wtr)
+        public void Write(NetworkWriter wtr)
         {
             wtr.Write(Id);
             wtr.Write(X);
@@ -62,7 +62,7 @@ namespace TKR.WorldServer.core.miscfile.datas
 
                 if (i.Value is string)
                 {
-                    wtr.WriteUTF(i.Value as string);
+                    wtr.WriteUTF16(i.Value as string);
                     continue;
                 }
 

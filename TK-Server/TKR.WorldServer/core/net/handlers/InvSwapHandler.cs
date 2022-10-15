@@ -29,7 +29,7 @@ namespace TKR.WorldServer.core.net.handlers
 
         public override MessageId MessageId => MessageId.INVSWAP;
 
-        public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
+        public override void Handle(Client client, NetworkReader rdr, ref TickTime tickTime)
         {
             var time = rdr.ReadInt32();
             var position = Position.Read(rdr);
@@ -307,7 +307,7 @@ namespace TKR.WorldServer.core.net.handlers
             bag.Inventory.Data[0] = container.Inventory.Data[slotId];
             bag.Move(player.X + (float)((random.NextDouble() * 2 - 1) * 0.5), player.Y + (float)((random.NextDouble() * 2 - 1) * 0.5));
             bag.SetDefaultSize(75);
-            _ = player.World.EnterWorld(bag);
+            player.World.EnterWorld(bag);
         }
     }
 }

@@ -194,34 +194,6 @@
 		<Size>80</Size>
 		<SlotTypes>0, 0, 0, 0, 0, 0, 0, 0</SlotTypes>
 	</Object>
-	<Object type="0xa004" id="Talisman Loot Bag">
-		<DisplayId>Loot Bag</DisplayId>
-		<Class>Container</Class>
-		<Container />
-		<CanPutNormalObjects />
-		<CanPutSoulboundObjects />
-		<Loot />
-		<Texture>
-			<File>lofiObj4</File>
-			<Index>0x97</Index>
-		</Texture>
-		<Size>80</Size>
-		<SlotTypes>0, 0, 0, 0, 0, 0, 0, 0</SlotTypes>
-	</Object>
-	<Object type="0xa005" id="Talisman Loot Bag Boosted">
-		<DisplayId>Loot Bag</DisplayId>
-		<Class>Container</Class>
-		<Container />
-		<CanPutNormalObjects />
-		<CanPutSoulboundObjects />
-		<Loot />
-		<Texture>
-			<File>lofiObj4</File>
-			<Index>0xa7</Index>
-		</Texture>
-		<Size>80</Size>
-		<SlotTypes>0, 0, 0, 0, 0, 0, 0, 0</SlotTypes>
-	</Object>
   <Object type="0x0534" id="Boosted Brown Loot Bag">
     <DisplayId>Loot Bag</DisplayId>
     <Class>Container</Class>

@@ -3216,3 +3216,663 @@
 [17852] 10 Oct 11:48:37.003 * Background saving started by pid 12884
 [17852] 10 Oct 11:48:37.706 # fork operation complete
 [17852] 10 Oct 11:48:37.707 * Background saving terminated with success
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 3.2.100 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in standalone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+ |    `-._   `._    /     _.-'    |     PID: 32688
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+[32688] 12 Oct 13:36:17.125 # Server started, Redis version 3.2.100
+[32688] 12 Oct 13:36:17.470 * DB loaded from disk: 0.345 seconds
+[32688] 12 Oct 13:36:17.470 * The server is now ready to accept connections on port 6379
+[32688] 12 Oct 15:54:13.424 * 1 changes in 900 seconds. Saving...
+[32688] 12 Oct 15:54:13.427 * Background saving started by pid 31296
+[32688] 12 Oct 15:54:14.331 # fork operation complete
+[32688] 12 Oct 15:54:14.332 * Background saving terminated with success
+[32688] 12 Oct 15:59:15.002 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 15:59:15.005 * Background saving started by pid 18380
+[32688] 12 Oct 15:59:15.711 # fork operation complete
+[32688] 12 Oct 15:59:15.712 * Background saving terminated with success
+[32688] 12 Oct 16:04:16.006 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 16:04:16.009 * Background saving started by pid 33092
+[32688] 12 Oct 16:04:16.713 # fork operation complete
+[32688] 12 Oct 16:04:16.714 * Background saving terminated with success
+[32688] 12 Oct 16:09:17.028 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 16:09:17.031 * Background saving started by pid 25816
+[32688] 12 Oct 16:09:17.832 # fork operation complete
+[32688] 12 Oct 16:09:17.833 * Background saving terminated with success
+[32688] 12 Oct 16:14:18.088 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 16:14:18.091 * Background saving started by pid 33716
+[32688] 12 Oct 16:14:18.794 # fork operation complete
+[32688] 12 Oct 16:14:18.795 * Background saving terminated with success
+[32688] 12 Oct 16:19:19.058 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 16:19:19.061 * Background saving started by pid 28556
+[32688] 12 Oct 16:19:19.765 # fork operation complete
+[32688] 12 Oct 16:19:19.766 * Background saving terminated with success
+[32688] 12 Oct 16:24:20.084 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 16:24:20.088 * Background saving started by pid 33364
+[32688] 12 Oct 16:24:20.893 # fork operation complete
+[32688] 12 Oct 16:24:20.897 * Background saving terminated with success
+[32688] 12 Oct 16:29:21.046 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 16:29:21.049 * Background saving started by pid 21616
+[32688] 12 Oct 16:29:21.751 # fork operation complete
+[32688] 12 Oct 16:29:21.754 * Background saving terminated with success
+[32688] 12 Oct 16:34:22.055 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 16:34:22.058 * Background saving started by pid 36968
+[32688] 12 Oct 16:34:22.761 # fork operation complete
+[32688] 12 Oct 16:34:22.764 * Background saving terminated with success
+[32688] 12 Oct 16:39:23.009 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 16:39:23.012 * Background saving started by pid 12228
+[32688] 12 Oct 16:39:23.715 # fork operation complete
+[32688] 12 Oct 16:39:23.716 * Background saving terminated with success
+[32688] 12 Oct 16:44:24.084 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 16:44:24.087 * Background saving started by pid 25388
+[32688] 12 Oct 16:44:24.889 # fork operation complete
+[32688] 12 Oct 16:44:24.890 * Background saving terminated with success
+[32688] 12 Oct 16:49:25.086 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 16:49:25.089 * Background saving started by pid 38528
+[32688] 12 Oct 16:49:25.793 # fork operation complete
+[32688] 12 Oct 16:49:25.794 * Background saving terminated with success
+[32688] 12 Oct 16:54:26.045 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 16:54:26.048 * Background saving started by pid 39728
+[32688] 12 Oct 16:54:26.754 # fork operation complete
+[32688] 12 Oct 16:54:26.757 * Background saving terminated with success
+[32688] 12 Oct 16:59:27.080 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 16:59:27.083 * Background saving started by pid 18264
+[32688] 12 Oct 16:59:27.786 # fork operation complete
+[32688] 12 Oct 16:59:27.787 * Background saving terminated with success
+[32688] 12 Oct 17:04:28.068 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 17:04:28.071 * Background saving started by pid 14068
+[32688] 12 Oct 17:04:28.775 # fork operation complete
+[32688] 12 Oct 17:04:28.776 * Background saving terminated with success
+[32688] 12 Oct 17:09:29.057 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 17:09:29.060 * Background saving started by pid 10336
+[32688] 12 Oct 17:09:29.760 # fork operation complete
+[32688] 12 Oct 17:09:29.761 * Background saving terminated with success
+[32688] 12 Oct 17:14:30.063 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 17:14:30.066 * Background saving started by pid 22160
+[32688] 12 Oct 17:14:30.769 # fork operation complete
+[32688] 12 Oct 17:14:30.770 * Background saving terminated with success
+[32688] 12 Oct 17:19:31.015 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 17:19:31.018 * Background saving started by pid 38184
+[32688] 12 Oct 17:19:31.822 # fork operation complete
+[32688] 12 Oct 17:19:31.823 * Background saving terminated with success
+[32688] 12 Oct 17:24:32.071 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 17:24:32.074 * Background saving started by pid 33628
+[32688] 12 Oct 17:24:32.777 # fork operation complete
+[32688] 12 Oct 17:24:32.778 * Background saving terminated with success
+[32688] 12 Oct 17:29:33.026 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 17:29:33.029 * Background saving started by pid 36532
+[32688] 12 Oct 17:29:33.732 # fork operation complete
+[32688] 12 Oct 17:29:33.733 * Background saving terminated with success
+[32688] 12 Oct 17:34:34.075 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 17:34:34.078 * Background saving started by pid 22720
+[32688] 12 Oct 17:34:34.782 # fork operation complete
+[32688] 12 Oct 17:34:34.783 * Background saving terminated with success
+[32688] 12 Oct 17:39:35.066 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 17:39:35.069 * Background saving started by pid 1740
+[32688] 12 Oct 17:39:35.770 # fork operation complete
+[32688] 12 Oct 17:39:35.771 * Background saving terminated with success
+[32688] 12 Oct 17:44:36.027 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 17:44:36.030 * Background saving started by pid 38664
+[32688] 12 Oct 17:44:36.732 # fork operation complete
+[32688] 12 Oct 17:44:36.737 * Background saving terminated with success
+[32688] 12 Oct 17:49:37.003 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 17:49:37.006 * Background saving started by pid 9328
+[32688] 12 Oct 17:49:37.809 # fork operation complete
+[32688] 12 Oct 17:49:37.810 * Background saving terminated with success
+[32688] 12 Oct 17:54:38.100 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 17:54:38.103 * Background saving started by pid 38656
+[32688] 12 Oct 17:54:38.908 # fork operation complete
+[32688] 12 Oct 17:54:38.919 * Background saving terminated with success
+[32688] 12 Oct 17:59:39.007 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 17:59:39.010 * Background saving started by pid 23256
+[32688] 12 Oct 17:59:39.935 # fork operation complete
+[32688] 12 Oct 17:59:39.937 * Background saving terminated with success
+[32688] 12 Oct 18:04:40.041 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 18:04:40.044 * Background saving started by pid 11716
+[32688] 12 Oct 18:04:40.748 # fork operation complete
+[32688] 12 Oct 18:04:40.749 * Background saving terminated with success
+[32688] 12 Oct 18:09:41.086 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 18:09:41.138 * Background saving started by pid 38704
+[32688] 12 Oct 18:09:41.841 # fork operation complete
+[32688] 12 Oct 18:09:41.842 * Background saving terminated with success
+[32688] 12 Oct 18:14:42.047 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 18:14:42.050 * Background saving started by pid 38128
+[32688] 12 Oct 18:14:42.755 # fork operation complete
+[32688] 12 Oct 18:14:42.756 * Background saving terminated with success
+[32688] 12 Oct 18:19:43.014 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 18:19:43.017 * Background saving started by pid 24744
+[32688] 12 Oct 18:19:43.919 # fork operation complete
+[32688] 12 Oct 18:19:43.920 * Background saving terminated with success
+[32688] 12 Oct 18:24:44.086 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 18:24:44.089 * Background saving started by pid 24296
+[32688] 12 Oct 18:24:44.995 # fork operation complete
+[32688] 12 Oct 18:24:44.996 * Background saving terminated with success
+[32688] 12 Oct 18:29:45.057 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 18:29:45.060 * Background saving started by pid 18652
+[32688] 12 Oct 18:29:45.764 # fork operation complete
+[32688] 12 Oct 18:29:45.765 * Background saving terminated with success
+[32688] 12 Oct 18:34:46.016 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 18:34:46.019 * Background saving started by pid 36932
+[32688] 12 Oct 18:34:46.823 # fork operation complete
+[32688] 12 Oct 18:34:46.824 * Background saving terminated with success
+[32688] 12 Oct 18:39:47.076 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 18:39:47.079 * Background saving started by pid 41180
+[32688] 12 Oct 18:39:47.983 # fork operation complete
+[32688] 12 Oct 18:39:47.984 * Background saving terminated with success
+[32688] 12 Oct 18:44:48.051 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 18:44:48.054 * Background saving started by pid 28908
+[32688] 12 Oct 18:44:48.958 # fork operation complete
+[32688] 12 Oct 18:44:48.959 * Background saving terminated with success
+[32688] 12 Oct 18:49:49.069 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 18:49:49.072 * Background saving started by pid 37108
+[32688] 12 Oct 18:49:49.775 # fork operation complete
+[32688] 12 Oct 18:49:49.776 * Background saving terminated with success
+[32688] 12 Oct 18:54:50.038 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 18:54:50.041 * Background saving started by pid 34252
+[32688] 12 Oct 18:54:50.745 # fork operation complete
+[32688] 12 Oct 18:54:50.746 * Background saving terminated with success
+[32688] 12 Oct 18:59:51.090 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 18:59:51.093 * Background saving started by pid 31176
+[32688] 12 Oct 18:59:51.697 # fork operation complete
+[32688] 12 Oct 18:59:51.698 * Background saving terminated with success
+[32688] 12 Oct 19:04:52.023 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 19:04:52.026 * Background saving started by pid 28964
+[32688] 12 Oct 19:04:53.433 # fork operation complete
+[32688] 12 Oct 19:04:53.434 * Background saving terminated with success
+[32688] 12 Oct 19:09:54.079 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 19:09:54.082 * Background saving started by pid 41176
+[32688] 12 Oct 19:09:54.886 # fork operation complete
+[32688] 12 Oct 19:09:54.890 * Background saving terminated with success
+[32688] 12 Oct 19:14:55.022 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 19:14:55.025 * Background saving started by pid 39428
+[32688] 12 Oct 19:14:55.830 # fork operation complete
+[32688] 12 Oct 19:14:55.831 * Background saving terminated with success
+[32688] 12 Oct 19:19:56.058 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 19:19:56.061 * Background saving started by pid 33424
+[32688] 12 Oct 19:19:56.865 # fork operation complete
+[32688] 12 Oct 19:19:56.866 * Background saving terminated with success
+[32688] 12 Oct 19:24:57.020 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 19:24:57.023 * Background saving started by pid 24172
+[32688] 12 Oct 19:24:57.827 # fork operation complete
+[32688] 12 Oct 19:24:57.828 * Background saving terminated with success
+[32688] 12 Oct 19:29:58.076 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 19:29:58.079 * Background saving started by pid 13172
+[32688] 12 Oct 19:29:58.883 # fork operation complete
+[32688] 12 Oct 19:29:58.884 * Background saving terminated with success
+[32688] 12 Oct 19:34:59.061 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 19:34:59.064 * Background saving started by pid 7828
+[32688] 12 Oct 19:34:59.869 # fork operation complete
+[32688] 12 Oct 19:34:59.871 * Background saving terminated with success
+[32688] 12 Oct 19:40:00.003 * 10 changes in 300 seconds. Saving...
+[32688] 12 Oct 19:40:00.006 * Background saving started by pid 23816
+[32688] 12 Oct 19:40:01.616 # fork operation complete
+[32688] 12 Oct 19:40:01.617 * Background saving terminated with success
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 3.2.100 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in standalone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+ |    `-._   `._    /     _.-'    |     PID: 7848
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+[7848] 13 Oct 12:19:12.462 # Server started, Redis version 3.2.100
+[7848] 13 Oct 12:19:12.836 * DB loaded from disk: 0.374 seconds
+[7848] 13 Oct 12:19:12.836 * The server is now ready to accept connections on port 6379
+[7848] 13 Oct 12:24:13.044 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 12:24:13.048 * Background saving started by pid 23148
+[7848] 13 Oct 12:24:13.852 # fork operation complete
+[7848] 13 Oct 12:24:13.857 * Background saving terminated with success
+[7848] 13 Oct 12:29:14.033 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 12:29:14.036 * Background saving started by pid 9536
+[7848] 13 Oct 12:29:14.838 # fork operation complete
+[7848] 13 Oct 12:29:14.844 * Background saving terminated with success
+[7848] 13 Oct 12:34:15.065 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 12:34:15.068 * Background saving started by pid 10160
+[7848] 13 Oct 12:34:15.872 # fork operation complete
+[7848] 13 Oct 12:34:15.873 * Background saving terminated with success
+[7848] 13 Oct 12:39:16.047 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 12:39:16.050 * Background saving started by pid 17628
+[7848] 13 Oct 12:39:16.853 # fork operation complete
+[7848] 13 Oct 12:39:16.854 * Background saving terminated with success
+[7848] 13 Oct 12:44:17.080 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 12:44:17.083 * Background saving started by pid 3476
+[7848] 13 Oct 12:44:17.888 # fork operation complete
+[7848] 13 Oct 12:44:17.889 * Background saving terminated with success
+[7848] 13 Oct 12:49:18.073 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 12:49:18.077 * Background saving started by pid 37328
+[7848] 13 Oct 12:49:18.982 # fork operation complete
+[7848] 13 Oct 12:49:18.983 * Background saving terminated with success
+[7848] 13 Oct 12:54:19.070 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 12:54:19.073 * Background saving started by pid 4376
+[7848] 13 Oct 12:54:19.979 # fork operation complete
+[7848] 13 Oct 12:54:19.980 * Background saving terminated with success
+[7848] 13 Oct 12:59:20.039 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 12:59:20.042 * Background saving started by pid 24852
+[7848] 13 Oct 12:59:20.848 # fork operation complete
+[7848] 13 Oct 12:59:20.849 * Background saving terminated with success
+[7848] 13 Oct 13:04:21.092 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 13:04:21.095 * Background saving started by pid 7636
+[7848] 13 Oct 13:04:21.901 # fork operation complete
+[7848] 13 Oct 13:04:21.902 * Background saving terminated with success
+[7848] 13 Oct 13:09:22.037 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 13:09:22.040 * Background saving started by pid 30648
+[7848] 13 Oct 13:09:22.945 # fork operation complete
+[7848] 13 Oct 13:09:22.946 * Background saving terminated with success
+[7848] 13 Oct 13:14:23.021 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 13:14:23.024 * Background saving started by pid 33916
+[7848] 13 Oct 13:14:23.727 # fork operation complete
+[7848] 13 Oct 13:14:23.728 * Background saving terminated with success
+[7848] 13 Oct 13:19:24.085 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 13:19:24.088 * Background saving started by pid 18072
+[7848] 13 Oct 13:19:24.993 # fork operation complete
+[7848] 13 Oct 13:19:24.994 * Background saving terminated with success
+[7848] 13 Oct 13:24:25.002 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 13:24:25.005 * Background saving started by pid 37324
+[7848] 13 Oct 13:24:25.810 # fork operation complete
+[7848] 13 Oct 13:24:25.811 * Background saving terminated with success
+[7848] 13 Oct 13:29:26.025 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 13:29:26.028 * Background saving started by pid 15512
+[7848] 13 Oct 13:29:26.933 # fork operation complete
+[7848] 13 Oct 13:29:26.934 * Background saving terminated with success
+[7848] 13 Oct 13:34:27.013 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 13:34:27.016 * Background saving started by pid 1352
+[7848] 13 Oct 13:34:27.719 # fork operation complete
+[7848] 13 Oct 13:34:27.727 * Background saving terminated with success
+[7848] 13 Oct 13:39:28.067 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 13:39:28.070 * Background saving started by pid 34520
+[7848] 13 Oct 13:39:29.173 # fork operation complete
+[7848] 13 Oct 13:39:29.174 * Background saving terminated with success
+[7848] 13 Oct 13:44:30.063 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 13:44:30.066 * Background saving started by pid 26676
+[7848] 13 Oct 13:44:30.870 # fork operation complete
+[7848] 13 Oct 13:44:30.871 * Background saving terminated with success
+[7848] 13 Oct 13:49:31.025 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 13:49:31.028 * Background saving started by pid 36748
+[7848] 13 Oct 13:49:31.829 # fork operation complete
+[7848] 13 Oct 13:49:31.830 * Background saving terminated with success
+[7848] 13 Oct 13:54:32.079 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 13:54:32.082 * Background saving started by pid 12412
+[7848] 13 Oct 13:54:32.887 # fork operation complete
+[7848] 13 Oct 13:54:32.888 * Background saving terminated with success
+[7848] 13 Oct 13:59:33.093 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 13:59:33.096 * Background saving started by pid 32160
+[7848] 13 Oct 13:59:33.901 # fork operation complete
+[7848] 13 Oct 13:59:33.902 * Background saving terminated with success
+[7848] 13 Oct 14:04:34.017 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 14:04:34.020 * Background saving started by pid 35976
+[7848] 13 Oct 14:04:34.723 # fork operation complete
+[7848] 13 Oct 14:04:34.724 * Background saving terminated with success
+[7848] 13 Oct 14:09:35.040 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 14:09:35.043 * Background saving started by pid 37368
+[7848] 13 Oct 14:09:35.846 # fork operation complete
+[7848] 13 Oct 14:09:35.847 * Background saving terminated with success
+[7848] 13 Oct 14:14:36.023 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 14:14:36.026 * Background saving started by pid 33560
+[7848] 13 Oct 14:14:36.729 # fork operation complete
+[7848] 13 Oct 14:14:36.730 * Background saving terminated with success
+[7848] 13 Oct 14:19:37.054 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 14:19:37.057 * Background saving started by pid 30800
+[7848] 13 Oct 14:19:37.859 # fork operation complete
+[7848] 13 Oct 14:19:37.860 * Background saving terminated with success
+[7848] 13 Oct 14:24:38.037 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 14:24:38.040 * Background saving started by pid 37828
+[7848] 13 Oct 14:24:38.843 # fork operation complete
+[7848] 13 Oct 14:24:38.844 * Background saving terminated with success
+[7848] 13 Oct 14:29:39.073 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 14:29:39.076 * Background saving started by pid 22352
+[7848] 13 Oct 14:29:39.980 # fork operation complete
+[7848] 13 Oct 14:29:39.981 * Background saving terminated with success
+[7848] 13 Oct 14:34:40.002 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 14:34:40.005 * Background saving started by pid 20140
+[7848] 13 Oct 14:34:40.710 # fork operation complete
+[7848] 13 Oct 14:34:40.711 * Background saving terminated with success
+[7848] 13 Oct 14:39:41.014 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 14:39:41.017 * Background saving started by pid 17624
+[7848] 13 Oct 14:39:41.720 # fork operation complete
+[7848] 13 Oct 14:39:41.721 * Background saving terminated with success
+[7848] 13 Oct 14:44:42.090 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 14:44:42.093 * Background saving started by pid 22220
+[7848] 13 Oct 14:44:42.898 # fork operation complete
+[7848] 13 Oct 14:44:42.899 * Background saving terminated with success
+[7848] 13 Oct 14:49:43.004 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 14:49:43.007 * Background saving started by pid 2520
+[7848] 13 Oct 14:49:43.711 # fork operation complete
+[7848] 13 Oct 14:49:43.712 * Background saving terminated with success
+[7848] 13 Oct 14:54:44.059 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 14:54:44.062 * Background saving started by pid 33104
+[7848] 13 Oct 14:54:44.767 # fork operation complete
+[7848] 13 Oct 14:54:44.768 * Background saving terminated with success
+[7848] 13 Oct 14:59:45.038 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 14:59:45.041 * Background saving started by pid 19556
+[7848] 13 Oct 14:59:45.746 # fork operation complete
+[7848] 13 Oct 14:59:45.747 * Background saving terminated with success
+[7848] 13 Oct 15:04:46.046 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 15:04:46.049 * Background saving started by pid 36072
+[7848] 13 Oct 15:04:46.753 # fork operation complete
+[7848] 13 Oct 15:04:46.754 * Background saving terminated with success
+[7848] 13 Oct 15:09:47.049 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 15:09:47.051 * Background saving started by pid 9500
+[7848] 13 Oct 15:09:47.756 # fork operation complete
+[7848] 13 Oct 15:09:47.757 * Background saving terminated with success
+[7848] 13 Oct 15:14:48.046 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 15:14:48.049 * Background saving started by pid 9308
+[7848] 13 Oct 15:14:48.754 # fork operation complete
+[7848] 13 Oct 15:14:48.755 * Background saving terminated with success
+[7848] 13 Oct 15:19:49.076 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 15:19:49.079 * Background saving started by pid 36708
+[7848] 13 Oct 15:19:49.880 # fork operation complete
+[7848] 13 Oct 15:19:49.881 * Background saving terminated with success
+[7848] 13 Oct 15:24:50.029 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 15:24:50.033 * Background saving started by pid 33644
+[7848] 13 Oct 15:24:50.835 # fork operation complete
+[7848] 13 Oct 15:24:50.836 * Background saving terminated with success
+[7848] 13 Oct 15:29:51.069 * 10 changes in 300 seconds. Saving...
+[7848] 13 Oct 15:29:51.072 * Background saving started by pid 14032
+[7848] 13 Oct 15:29:52.075 # fork operation complete
+[7848] 13 Oct 15:29:52.076 * Background saving terminated with success
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 3.2.100 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in standalone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+ |    `-._   `._    /     _.-'    |     PID: 38332
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+[38332] 13 Oct 19:23:22.707 # Server started, Redis version 3.2.100
+[38332] 13 Oct 19:23:23.081 * DB loaded from disk: 0.374 seconds
+[38332] 13 Oct 19:23:23.081 * The server is now ready to accept connections on port 6379
+[38332] 13 Oct 19:28:23.059 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 19:28:23.063 * Background saving started by pid 32752
+[38332] 13 Oct 19:28:23.865 # fork operation complete
+[38332] 13 Oct 19:28:23.871 * Background saving terminated with success
+[38332] 13 Oct 19:33:24.025 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 19:33:24.028 * Background saving started by pid 43776
+[38332] 13 Oct 19:33:24.731 # fork operation complete
+[38332] 13 Oct 19:33:24.732 * Background saving terminated with success
+[38332] 13 Oct 19:38:25.061 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 19:38:25.116 * Background saving started by pid 23208
+[38332] 13 Oct 19:38:25.821 # fork operation complete
+[38332] 13 Oct 19:38:25.822 * Background saving terminated with success
+[38332] 13 Oct 19:43:26.049 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 19:43:26.052 * Background saving started by pid 16720
+[38332] 13 Oct 19:43:26.754 # fork operation complete
+[38332] 13 Oct 19:43:26.768 * Background saving terminated with success
+[38332] 13 Oct 19:48:27.087 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 19:48:27.090 * Background saving started by pid 42796
+[38332] 13 Oct 19:48:27.996 # fork operation complete
+[38332] 13 Oct 19:48:28.003 * Background saving terminated with success
+[38332] 13 Oct 19:53:29.092 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 19:53:29.095 * Background saving started by pid 46076
+[38332] 13 Oct 19:53:29.898 # fork operation complete
+[38332] 13 Oct 19:53:29.906 * Background saving terminated with success
+[38332] 13 Oct 19:58:30.002 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 19:58:30.005 * Background saving started by pid 42632
+[38332] 13 Oct 19:58:30.807 # fork operation complete
+[38332] 13 Oct 19:58:30.815 * Background saving terminated with success
+[38332] 13 Oct 20:03:31.082 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 20:03:31.085 * Background saving started by pid 41888
+[38332] 13 Oct 20:03:31.889 # fork operation complete
+[38332] 13 Oct 20:03:31.890 * Background saving terminated with success
+[38332] 13 Oct 20:08:32.052 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 20:08:32.055 * Background saving started by pid 47536
+[38332] 13 Oct 20:08:32.860 # fork operation complete
+[38332] 13 Oct 20:08:32.863 * Background saving terminated with success
+[38332] 13 Oct 20:13:33.040 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 20:13:33.043 * Background saving started by pid 39516
+[38332] 13 Oct 20:13:33.847 # fork operation complete
+[38332] 13 Oct 20:13:33.848 * Background saving terminated with success
+[38332] 13 Oct 20:18:34.051 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 20:18:34.054 * Background saving started by pid 41452
+[38332] 13 Oct 20:18:34.858 # fork operation complete
+[38332] 13 Oct 20:18:34.859 * Background saving terminated with success
+[38332] 13 Oct 20:23:35.071 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 20:23:35.074 * Background saving started by pid 30832
+[38332] 13 Oct 20:23:35.776 # fork operation complete
+[38332] 13 Oct 20:23:35.786 * Background saving terminated with success
+[38332] 13 Oct 20:28:36.016 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 20:28:36.019 * Background saving started by pid 31240
+[38332] 13 Oct 20:28:36.624 # fork operation complete
+[38332] 13 Oct 20:28:36.633 * Background saving terminated with success
+[38332] 13 Oct 20:33:37.071 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 20:33:37.074 * Background saving started by pid 33140
+[38332] 13 Oct 20:33:37.676 # fork operation complete
+[38332] 13 Oct 20:33:37.678 * Background saving terminated with success
+[38332] 13 Oct 20:38:38.071 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 20:38:38.074 * Background saving started by pid 5996
+[38332] 13 Oct 20:38:38.879 # fork operation complete
+[38332] 13 Oct 20:38:38.880 * Background saving terminated with success
+[38332] 13 Oct 20:43:39.011 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 20:43:39.014 * Background saving started by pid 46708
+[38332] 13 Oct 20:43:39.718 # fork operation complete
+[38332] 13 Oct 20:43:39.719 * Background saving terminated with success
+[38332] 13 Oct 20:48:40.000 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 20:48:40.003 * Background saving started by pid 33084
+[38332] 13 Oct 20:48:40.708 # fork operation complete
+[38332] 13 Oct 20:48:40.709 * Background saving terminated with success
+[38332] 13 Oct 20:53:41.060 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 20:53:41.063 * Background saving started by pid 42360
+[38332] 13 Oct 20:53:41.966 # fork operation complete
+[38332] 13 Oct 20:53:41.967 * Background saving terminated with success
+[38332] 13 Oct 20:58:42.013 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 20:58:42.016 * Background saving started by pid 10024
+[38332] 13 Oct 20:58:42.820 # fork operation complete
+[38332] 13 Oct 20:58:42.821 * Background saving terminated with success
+[38332] 13 Oct 21:03:43.082 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 21:03:43.085 * Background saving started by pid 13012
+[38332] 13 Oct 21:03:43.889 # fork operation complete
+[38332] 13 Oct 21:03:43.890 * Background saving terminated with success
+[38332] 13 Oct 21:08:44.044 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 21:08:44.047 * Background saving started by pid 44768
+[38332] 13 Oct 21:08:44.850 # fork operation complete
+[38332] 13 Oct 21:08:44.859 * Background saving terminated with success
+[38332] 13 Oct 21:13:45.084 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 21:13:45.087 * Background saving started by pid 42700
+[38332] 13 Oct 21:13:45.891 # fork operation complete
+[38332] 13 Oct 21:13:45.892 * Background saving terminated with success
+[38332] 13 Oct 21:18:46.020 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 21:18:46.023 * Background saving started by pid 40124
+[38332] 13 Oct 21:18:46.826 # fork operation complete
+[38332] 13 Oct 21:18:46.827 * Background saving terminated with success
+[38332] 13 Oct 21:23:47.053 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 21:23:47.056 * Background saving started by pid 696
+[38332] 13 Oct 21:23:47.861 # fork operation complete
+[38332] 13 Oct 21:23:47.862 * Background saving terminated with success
+[38332] 13 Oct 21:28:48.076 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 21:28:48.079 * Background saving started by pid 44724
+[38332] 13 Oct 21:28:48.783 # fork operation complete
+[38332] 13 Oct 21:28:48.784 * Background saving terminated with success
+[38332] 13 Oct 21:33:49.009 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 21:33:49.012 * Background saving started by pid 40356
+[38332] 13 Oct 21:33:49.817 # fork operation complete
+[38332] 13 Oct 21:33:49.818 * Background saving terminated with success
+[38332] 13 Oct 21:38:50.047 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 21:38:50.051 * Background saving started by pid 35496
+[38332] 13 Oct 21:38:50.852 # fork operation complete
+[38332] 13 Oct 21:38:50.855 * Background saving terminated with success
+[38332] 13 Oct 21:43:51.076 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 21:43:51.079 * Background saving started by pid 40908
+[38332] 13 Oct 21:43:51.885 # fork operation complete
+[38332] 13 Oct 21:43:51.888 * Background saving terminated with success
+[38332] 13 Oct 21:48:52.011 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 21:48:52.014 * Background saving started by pid 34040
+[38332] 13 Oct 21:48:52.819 # fork operation complete
+[38332] 13 Oct 21:48:52.820 * Background saving terminated with success
+[38332] 13 Oct 21:53:53.023 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 21:53:53.026 * Background saving started by pid 8960
+[38332] 13 Oct 21:53:53.730 # fork operation complete
+[38332] 13 Oct 21:53:53.733 * Background saving terminated with success
+[38332] 13 Oct 21:58:54.018 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 21:58:54.021 * Background saving started by pid 10492
+[38332] 13 Oct 21:58:54.926 # fork operation complete
+[38332] 13 Oct 21:58:54.927 * Background saving terminated with success
+[38332] 13 Oct 22:03:55.085 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 22:03:55.088 * Background saving started by pid 38324
+[38332] 13 Oct 22:03:55.993 # fork operation complete
+[38332] 13 Oct 22:03:55.995 * Background saving terminated with success
+[38332] 13 Oct 22:08:56.010 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 22:08:56.013 * Background saving started by pid 37440
+[38332] 13 Oct 22:08:56.817 # fork operation complete
+[38332] 13 Oct 22:08:56.818 * Background saving terminated with success
+[38332] 13 Oct 22:13:57.096 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 22:13:57.099 * Background saving started by pid 49504
+[38332] 13 Oct 22:13:57.901 # fork operation complete
+[38332] 13 Oct 22:13:57.902 * Background saving terminated with success
+[38332] 13 Oct 22:18:58.056 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 22:18:58.059 * Background saving started by pid 45340
+[38332] 13 Oct 22:18:58.861 # fork operation complete
+[38332] 13 Oct 22:18:58.865 * Background saving terminated with success
+[38332] 13 Oct 22:23:59.037 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 22:23:59.040 * Background saving started by pid 49112
+[38332] 13 Oct 22:23:59.845 # fork operation complete
+[38332] 13 Oct 22:23:59.846 * Background saving terminated with success
+[38332] 13 Oct 22:29:00.025 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 22:29:00.028 * Background saving started by pid 50324
+[38332] 13 Oct 22:29:00.834 # fork operation complete
+[38332] 13 Oct 22:29:00.835 * Background saving terminated with success
+[38332] 13 Oct 22:34:01.073 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 22:34:01.076 * Background saving started by pid 11912
+[38332] 13 Oct 22:34:01.780 # fork operation complete
+[38332] 13 Oct 22:34:01.784 * Background saving terminated with success
+[38332] 13 Oct 22:39:02.003 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 22:39:02.006 * Background saving started by pid 28712
+[38332] 13 Oct 22:39:02.708 # fork operation complete
+[38332] 13 Oct 22:39:02.709 * Background saving terminated with success
+[38332] 13 Oct 22:44:03.076 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 22:44:03.079 * Background saving started by pid 19256
+[38332] 13 Oct 22:44:03.680 # fork operation complete
+[38332] 13 Oct 22:44:03.681 * Background saving terminated with success
+[38332] 13 Oct 22:49:04.014 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 22:49:04.017 * Background saving started by pid 48140
+[38332] 13 Oct 22:49:04.820 # fork operation complete
+[38332] 13 Oct 22:49:04.821 * Background saving terminated with success
+[38332] 13 Oct 22:54:05.047 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 22:54:05.050 * Background saving started by pid 31584
+[38332] 13 Oct 22:54:05.753 # fork operation complete
+[38332] 13 Oct 22:54:05.754 * Background saving terminated with success
+[38332] 13 Oct 22:59:06.061 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 22:59:06.064 * Background saving started by pid 49668
+[38332] 13 Oct 22:59:06.868 # fork operation complete
+[38332] 13 Oct 22:59:06.869 * Background saving terminated with success
+[38332] 13 Oct 23:04:07.075 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 23:04:07.078 * Background saving started by pid 37136
+[38332] 13 Oct 23:04:07.782 # fork operation complete
+[38332] 13 Oct 23:04:07.783 * Background saving terminated with success
+[38332] 13 Oct 23:09:08.097 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 23:09:08.100 * Background saving started by pid 47740
+[38332] 13 Oct 23:09:08.804 # fork operation complete
+[38332] 13 Oct 23:09:08.805 * Background saving terminated with success
+[38332] 13 Oct 23:14:09.076 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 23:14:09.079 * Background saving started by pid 44112
+[38332] 13 Oct 23:14:09.883 # fork operation complete
+[38332] 13 Oct 23:14:09.884 * Background saving terminated with success
+[38332] 13 Oct 23:19:10.087 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 23:19:10.090 * Background saving started by pid 39764
+[38332] 13 Oct 23:19:10.895 # fork operation complete
+[38332] 13 Oct 23:19:10.896 * Background saving terminated with success
+[38332] 13 Oct 23:24:11.040 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 23:24:11.043 * Background saving started by pid 51036
+[38332] 13 Oct 23:24:11.948 # fork operation complete
+[38332] 13 Oct 23:24:11.949 * Background saving terminated with success
+[38332] 13 Oct 23:29:12.067 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 23:29:12.070 * Background saving started by pid 50272
+[38332] 13 Oct 23:29:12.873 # fork operation complete
+[38332] 13 Oct 23:29:12.874 * Background saving terminated with success
+[38332] 13 Oct 23:34:13.026 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 23:34:13.029 * Background saving started by pid 49668
+[38332] 13 Oct 23:34:13.934 # fork operation complete
+[38332] 13 Oct 23:34:13.935 * Background saving terminated with success
+[38332] 13 Oct 23:39:14.075 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 23:39:14.134 * Background saving started by pid 42660
+[38332] 13 Oct 23:39:14.839 # fork operation complete
+[38332] 13 Oct 23:39:14.840 * Background saving terminated with success
+[38332] 13 Oct 23:44:15.065 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 23:44:15.069 * Background saving started by pid 41976
+[38332] 13 Oct 23:44:15.873 # fork operation complete
+[38332] 13 Oct 23:44:15.874 * Background saving terminated with success
+[38332] 13 Oct 23:49:16.067 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 23:49:16.070 * Background saving started by pid 11328
+[38332] 13 Oct 23:49:16.774 # fork operation complete
+[38332] 13 Oct 23:49:16.775 * Background saving terminated with success
+[38332] 13 Oct 23:54:17.085 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 23:54:17.088 * Background saving started by pid 42644
+[38332] 13 Oct 23:54:17.891 # fork operation complete
+[38332] 13 Oct 23:54:17.892 * Background saving terminated with success
+[38332] 13 Oct 23:59:18.066 * 10 changes in 300 seconds. Saving...
+[38332] 13 Oct 23:59:18.069 * Background saving started by pid 38624
+[38332] 13 Oct 23:59:18.674 # fork operation complete
+[38332] 13 Oct 23:59:18.683 * Background saving terminated with success
+[38332] 14 Oct 00:04:19.069 * 10 changes in 300 seconds. Saving...
+[38332] 14 Oct 00:04:19.072 * Background saving started by pid 37148
+[38332] 14 Oct 00:04:19.777 # fork operation complete
+[38332] 14 Oct 00:04:19.778 * Background saving terminated with success
+[38332] 14 Oct 00:09:20.002 * 10 changes in 300 seconds. Saving...
+[38332] 14 Oct 00:09:20.005 * Background saving started by pid 49196
+[38332] 14 Oct 00:09:20.709 # fork operation complete
+[38332] 14 Oct 00:09:20.710 * Background saving terminated with success
+[38332] 14 Oct 00:14:21.002 * 10 changes in 300 seconds. Saving...
+[38332] 14 Oct 00:14:21.005 * Background saving started by pid 38244
+[38332] 14 Oct 00:14:21.809 # fork operation complete
+[38332] 14 Oct 00:14:21.810 * Background saving terminated with success
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 3.2.100 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in standalone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+ |    `-._   `._    /     _.-'    |     PID: 23088
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+[23088] 15 Oct 16:43:49.363 # Server started, Redis version 3.2.100
+[23088] 15 Oct 16:43:49.786 * DB loaded from disk: 0.423 seconds
+[23088] 15 Oct 16:43:49.786 * The server is now ready to accept connections on port 6379
+[23088] 15 Oct 16:48:50.011 * 10 changes in 300 seconds. Saving...
+[23088] 15 Oct 16:48:50.015 * Background saving started by pid 10296
+[23088] 15 Oct 16:48:50.817 # fork operation complete
+[23088] 15 Oct 16:48:50.822 * Background saving terminated with success
+[23088] 15 Oct 16:53:51.041 * 10 changes in 300 seconds. Saving...
+[23088] 15 Oct 16:53:51.047 * Background saving started by pid 31312
+[23088] 15 Oct 16:53:51.853 # fork operation complete
+[23088] 15 Oct 16:53:51.855 * Background saving terminated with success

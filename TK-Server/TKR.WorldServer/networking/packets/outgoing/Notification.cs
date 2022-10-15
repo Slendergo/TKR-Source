@@ -12,10 +12,10 @@ namespace TKR.WorldServer.networking.packets.outgoing
 
         public override MessageId MessageId => MessageId.NOTIFICATION;
 
-        public override void Write(NWriter wtr)
+        public override void Write(NetworkWriter wtr)
         {
             wtr.Write(ObjectId);
-            wtr.WriteUTF(Message);
+            wtr.WriteUTF16(Message);
             Color.Write(wtr);
             wtr.Write(PlayerId);
         }

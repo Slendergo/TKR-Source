@@ -289,6 +289,15 @@ namespace TKR.WorldServer.core.objects.player
                     update.NewObjs.Add(entity.ToDefinition());
             }
 
+            foreach (var entity in World.SellableObjects.Values)
+            {
+                intPoint.X = (int)entity.X;
+                intPoint.Y = (int)entity.Y;
+
+                if (ActiveTiles.Contains(intPoint) && NewObjects.Add(entity))
+                    update.NewObjs.Add(entity.ToDefinition());
+            }
+
             if (Player.Quest != null && NewObjects.Add(Player.Quest))
                 update.NewObjs.Add(Player.Quest.ToDefinition());
         }

@@ -40,10 +40,10 @@ namespace TKR.WorldServer.core.miscfile.stats
             switch (stat)
             {
                 case 0:
-                    return StatDataType.HPBoost;
+                    return StatDataType.HealthBoost;
 
                 case 1:
-                    return StatDataType.MPBoost;
+                    return StatDataType.ManaBoost;
 
                 case 2:
                     return StatDataType.AttackBonus;
@@ -123,10 +123,10 @@ namespace TKR.WorldServer.core.miscfile.stats
         {
             switch (stat)
             {
-                case StatDataType.MaximumHP:
+                case StatDataType.MaximumHealth:
                     return 0;
 
-                case StatDataType.MaximumMP:
+                case StatDataType.MaximumMana:
                     return 1;
 
                 case StatDataType.Attack:
@@ -157,10 +157,10 @@ namespace TKR.WorldServer.core.miscfile.stats
             switch (stat)
             {
                 case 0:
-                    return StatDataType.MaximumHP;
+                    return StatDataType.MaximumHealth;
 
                 case 1:
-                    return StatDataType.MaximumMP;
+                    return StatDataType.MaximumMana;
 
                 case 2:
                     return StatDataType.Attack;

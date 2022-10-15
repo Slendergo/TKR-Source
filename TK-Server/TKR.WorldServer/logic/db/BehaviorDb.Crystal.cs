@@ -198,13 +198,13 @@ namespace TKR.WorldServer.logic
                     new OrderedBehavior(
                         new NewWander(0.4)
                         ),
-                    new Shoot(10, projectileIndex: 1, count: 9, shootAngle: 40, fixedAngle: 40, coolDown: 800,
+                    new Shoot(10, projectileIndex: 2, count: 9, shootAngle: 40, fixedAngle: 40, coolDown: 800,
                         coolDownOffset: 400),
-                    new Shoot(10, projectileIndex: 1, count: 9, shootAngle: 40, fixedAngle: 60, coolDown: 800,
+                    new Shoot(10, projectileIndex: 2, count: 9, shootAngle: 40, fixedAngle: 60, coolDown: 800,
                         coolDownOffset: 800),
-                    new Shoot(10, projectileIndex: 1, count: 9, shootAngle: 40, fixedAngle: 50, coolDown: 800,
+                    new Shoot(10, projectileIndex: 2, count: 9, shootAngle: 40, fixedAngle: 50, coolDown: 800,
                         coolDownOffset: 1200),
-                    new Shoot(10, projectileIndex: 1, count: 9, shootAngle: 40, fixedAngle: 70, coolDown: 800,
+                    new Shoot(10, projectileIndex: 2, count: 9, shootAngle: 40, fixedAngle: 70, coolDown: 800,
                         coolDownOffset: 1600),
                     new State("invulnerable_mass",
                         new ConditionEffectBehavior(ConditionEffectIndex.Invulnerable),

@@ -13,7 +13,7 @@ namespace TKR.WorldServer.core.net.handlers
     {
         public override MessageId MessageId => MessageId.ENGINE_FUEL_ACTION;
 
-        public override void Handle(Client client, NReader rdr, ref TickTime time)
+        public override void Handle(Client client, NetworkReader rdr, ref TickTime time)
         {
             var myInventory = new FuelEngine[rdr.ReadInt16()];
             for (int i = 0; i < myInventory.Length; i++)

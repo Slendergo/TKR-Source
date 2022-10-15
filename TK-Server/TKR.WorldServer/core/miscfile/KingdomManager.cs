@@ -529,7 +529,7 @@ namespace TKR.WorldServer.core.miscfile
 
                         foreach (var e in World.Enemies.Values)
                         {
-                            if (e.ObjectDesc.ObjectId.Contains("Oryx Guardian TaskMaster") || e.ObjectDesc.ObjectId.Contains("Talisman King's Golden Guardian"))
+                            if (e.ObjectDesc.IdName.Contains("Oryx Guardian TaskMaster") || e.ObjectDesc.IdName.Contains("Talisman King's Golden Guardian"))
                                 continue;
                             World.LeaveWorld(e);
                         }
@@ -545,10 +545,10 @@ namespace TKR.WorldServer.core.miscfile
 
                         foreach (var e in World.Enemies.Values)
                         {
-                            if (e.ObjectDesc.ObjectId.Contains("Oryx Guardian TaskMaster"))
+                            if (e.ObjectDesc.IdName.Contains("Oryx Guardian TaskMaster"))
                                 continue;
 
-                            if (e.ObjectDesc.ObjectId.Contains("Talisman King's Golden Guardian"))
+                            if (e.ObjectDesc.IdName.Contains("Talisman King's Golden Guardian"))
                                 e.Death(ref time);
                         }
 
@@ -685,7 +685,7 @@ namespace TKR.WorldServer.core.miscfile
         public void OnEnemyKilled(Enemy enemy, Player killer)
         {
             foreach (var dat in CriticalEnemies)
-                if (enemy.ObjectDesc.ObjectId == dat.Item1)
+                if (enemy.ObjectDesc.IdName == dat.Item1)
                 {
                     CountingEvents(dat.Item2.NameOfDeath);
                     AnnounceMVP(enemy, dat.Item2.NameOfDeath);
@@ -825,7 +825,7 @@ namespace TKR.WorldServer.core.miscfile
             {
                 var desc = i.Value.ObjectDesc;
 
-                if (desc == null || desc.ObjectId != taunt.Item1)
+                if (desc == null || desc.IdName != taunt.Item1)
                     continue;
 
                 count++;

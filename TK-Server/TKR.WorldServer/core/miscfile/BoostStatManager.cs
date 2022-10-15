@@ -86,7 +86,7 @@ namespace TKR.WorldServer.core.miscfile
 
             for (var i = 20; i < 28; i++)
             {
-                if (_player.Inventory[i] == null)
+                if (_player.Inventory[i] == null || _player.Inventory[i].SlotType != 26)
                     continue;
                 foreach (var b in _player.Inventory[i].StatsBoost)
                     IncrementBoost((StatDataType)b.Key, b.Value);

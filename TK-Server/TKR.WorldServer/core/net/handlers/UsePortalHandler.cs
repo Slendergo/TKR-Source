@@ -2,6 +2,7 @@
 using TKR.Shared.resources;
 using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.core.objects;
+using TKR.WorldServer.core.worlds;
 using TKR.WorldServer.core.worlds.logic;
 using TKR.WorldServer.networking;
 
@@ -19,7 +20,7 @@ namespace TKR.WorldServer.core.net.handlers
 
         public override MessageId MessageId => MessageId.USEPORTAL;
 
-        public override void Handle(Client client, NReader rdr, ref TickTime time)
+        public override void Handle(Client client, NetworkReader rdr, ref TickTime time)
         {
             var player = client.Player;
             if (player == null || player?.World == null || client?.Player?.World is TestWorld)
@@ -27,61 +28,54 @@ namespace TKR.WorldServer.core.net.handlers
 
             var objectId = rdr.ReadInt32();
 
-            var entity = player.World.GetEntity(objectId);
-            if (entity == null)
+            var portal = player.World.GetEntity(objectId) as Portal;
+            if (portal == null)
                 return;
 
-            if (entity is GuildHallPortal)
+            World world;
+            string dungeonName;
+
+            if (portal.GuildHallPortal)
             {
-                HandleGuildPortal(player, entity as GuildHallPortal);
-                return;
-            }
+                if (string.IsNullOrEmpty(player.Guild))
+                {
+                    player.SendError("You are not in a guild.");
+                    return;
+                }
 
-            HandlePortal(player, entity as Portal);
-        }
+                var manager = player.Client.GameServer;
+                var guildId = player.Client.Account.GuildId;
 
-        private void HandleGuildPortal(Player player, GuildHallPortal portal)
-        {
-            if (string.IsNullOrEmpty(player.Guild))
-            {
-                player.SendError("You are not in a guild.");
-                return;
-            }
+                world = manager.WorldManager.GetGuild(guildId);
+                if (world == null)
+                {
+                    var guild = player.Client.GameServer.Database.GetGuild(guildId);
 
-            var manager = player.Client.GameServer;
-            var guildId = player.Client.Account.GuildId;
+                    // this is mandatory
+                    dungeonName = $"{portal.PortalDescr.DungeonName} {guild.Level + 1}";
 
-            var world = manager.WorldManager.GetGuild(guildId);
-            if (world == null)
-            {
-                var guild = player.Client.GameServer.Database.GetGuild(guildId);
+                    world = manager.WorldManager.CreateNewWorld(dungeonName, null, player.World);
+                    if (world != null)
+                        manager.WorldManager.AddGuildInstance(guildId, world);
+                }
 
-                // this is mandatory
-                var dungeonName = $"{portal.PortalDescr.DungeonName} {guild.Level + 1}";
-
-                world = manager.WorldManager.CreateNewWorld(dungeonName, null, player.World);
                 if (world != null)
-                    manager.WorldManager.AddGuildInstance(guildId, world);
+                    player.Reconnect(world);
+                else
+                    player.SendInfo("[Bug] Unable to Create Guild.");
+                return;
             }
 
-            if (world != null)
-                player.Reconnect(world);
-            else
-                player.SendInfo("[Bug] Unable to Create Guild.");
-        }
-
-        private void HandlePortal(Player player, Portal portal)
-        {
             if (!portal.Usable)
             {
                 player.SendInfo("Portal is unusable!");
                 return;
             }
 
-            var world = portal.WorldInstance;
+            world = portal.WorldInstance;
             if (world == null)
             {
-                switch (portal.ObjectDesc.ObjectId)
+                switch (portal.ObjectDesc.IdName)
                 {
                     case PORTAL_TO_NEXUS:
                         {
@@ -123,7 +117,7 @@ namespace TKR.WorldServer.core.net.handlers
                 return;
             }
 
-            var dungeonName = portal.PortalDescr.DungeonName;
+            dungeonName = portal.PortalDescr.DungeonName;
 
             world = portal.GameServer.WorldManager.CreateNewWorld(dungeonName, null, player.World);
             if (world == null)

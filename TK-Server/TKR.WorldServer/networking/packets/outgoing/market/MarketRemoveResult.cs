@@ -13,10 +13,10 @@ namespace TKR.WorldServer.networking.packets.outgoing.market
         public int Code;
         public string Description;
 
-        public override void Write(NWriter wtr)
+        public override void Write(NetworkWriter wtr)
         {
             wtr.Write(Code);
-            wtr.WriteUTF(Description);
+            wtr.WriteUTF16(Description);
         }
     }
 }

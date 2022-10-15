@@ -22,7 +22,7 @@ namespace TKR.WorldServer.core.commands
                         container.Inventory[0] = item.Value;
                         container.Move(player.X + (float)((player.World.Random.NextDouble() * 2 - 1) * 8), player.Y + (float)((player.World.Random.NextDouble() * 2 - 1) * 8));
                         container.SetDefaultSize(75);
-                        _ = player.World.EnterWorld(container);
+                        player.World.EnterWorld(container);
                     }
                 return true;
             }
@@ -42,7 +42,7 @@ namespace TKR.WorldServer.core.commands
                         container.Inventory[0] = item.Value;
                         container.Move(player.X + (float)((player.World.Random.NextDouble() * 2 - 1) * 8), player.Y + (float)((player.World.Random.NextDouble() * 2 - 1) * 8));
                         container.SetDefaultSize(75);
-                        _ = player.World.EnterWorld(container);
+                        player.World.EnterWorld(container);
                     }
                 return true;
             }

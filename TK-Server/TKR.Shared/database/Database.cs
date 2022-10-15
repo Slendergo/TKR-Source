@@ -823,7 +823,6 @@ namespace TKR.Shared.database
                 TotalCredits = newAccounts.Credits,
                 PassResetToken = "",
                 LastSeen = (int)DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds,
-                EnemiesKilled = 0,
                 FuelContributed = 0
             };
 

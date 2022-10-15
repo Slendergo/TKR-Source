@@ -15,7 +15,7 @@ namespace TKR.WorldServer.core.net.handlers.market
     {
         public override MessageId MessageId => MessageId.MARKET_SEARCH;
 
-        public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
+        public override void Handle(Client client, NetworkReader rdr, ref TickTime tickTime)
         {
             var itemType = rdr.ReadInt32();
 

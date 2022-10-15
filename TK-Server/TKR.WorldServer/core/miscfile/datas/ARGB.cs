@@ -17,7 +17,7 @@ namespace TKR.WorldServer.core.miscfile.datas
             B = (byte)((argb & 0x000000ff) >> 0);
         }
 
-        public static ARGB Read(NReader rdr) => new ARGB()
+        public static ARGB Read(NetworkReader rdr) => new ARGB()
         {
             A = rdr.ReadByte(),
             R = rdr.ReadByte(),
@@ -25,7 +25,7 @@ namespace TKR.WorldServer.core.miscfile.datas
             B = rdr.ReadByte()
         };
 
-        public void Write(NWriter wtr)
+        public void Write(NetworkWriter wtr)
         {
             wtr.Write(A);
             wtr.Write(R);

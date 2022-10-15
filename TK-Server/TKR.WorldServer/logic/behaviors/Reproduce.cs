@@ -41,13 +41,11 @@ namespace TKR.WorldServer.logic.behaviors
             var h = map.Height;
 
             _reproduceRegions = new List<IntPoint>();
-
             for (var y = 0; y < h; y++)
                 for (var x = 0; x < w; x++)
                 {
                     if (map[x, y].Region != _region)
                         continue;
-
                     _reproduceRegions.Add(new IntPoint(x, y));
                 }
         }
@@ -58,47 +56,50 @@ namespace TKR.WorldServer.logic.behaviors
 
             if (cool <= 0)
             {
-                var count = host.CountEntity(_densityRadius, _children ?? host.ObjectType);
-
-                if (count < _densityMax)
+                if (!host.AnyPlayerNearby(15))
                 {
-                    double targetX = host.X;
-                    double targetY = host.Y;
+                    var count = host.CountEntity(_densityRadius, _children ?? host.ObjectType);
 
-                    if (_reproduceRegions != null && _reproduceRegions.Count > 0)
+                    if (count < _densityMax)
                     {
-                        var sx = (int)host.X;
-                        var sy = (int)host.Y;
-                        var regions = _reproduceRegions.Where(p => Math.Abs(sx - p.X) <= _regionRange && Math.Abs(sy - p.Y) <= _regionRange).ToList();
-                        var tile = regions[Random.Next(regions.Count)];
-                        targetX = tile.X;
-                        targetY = tile.Y;
-                    }
+                        double targetX = host.X;
+                        double targetY = host.Y;
 
-                    if (!host.World.IsPassable(targetX, targetY, true))
-                    {
-                        state = _coolDown.Next(Random);
-                        return;
-                    }
-
-                    var entity = Entity.Resolve(host.GameServer, _children ?? host.ObjectType);
-                    entity.GivesNoXp = true;
-                    entity.Move((float)targetX, (float)targetY);
-
-                    var enemyEntity = entity as Enemy;
-
-                    if (host is Enemy enemyHost && enemyEntity != null)
-                    {
-                        enemyEntity.Terrain = enemyHost.Terrain;
-
-                        if (enemyHost.Spawned)
+                        if (_reproduceRegions != null && _reproduceRegions.Count > 0)
                         {
-                            enemyEntity.Spawned = true;
-                            enemyEntity.ApplyPermanentConditionEffect(ConditionEffectIndex.Invisible);
+                            var sx = (int)host.X;
+                            var sy = (int)host.Y;
+                            var regions = _reproduceRegions.Where(p => Math.Abs(sx - p.X) <= _regionRange && Math.Abs(sy - p.Y) <= _regionRange).ToList();
+                            var tile = regions[Random.Next(regions.Count)];
+                            targetX = tile.X;
+                            targetY = tile.Y;
                         }
-                    }
 
-                    host.World.EnterWorld(entity);
+                        if (!host.World.IsPassable(targetX, targetY, true))
+                        {
+                            state = _coolDown.Next(Random);
+                            return;
+                        }
+
+                        var entity = Entity.Resolve(host.GameServer, _children ?? host.ObjectType);
+                        entity.GivesNoXp = true;
+                        entity.Move((float)targetX, (float)targetY);
+
+                        var enemyEntity = entity as Enemy;
+
+                        if (host is Enemy enemyHost && enemyEntity != null)
+                        {
+                            enemyEntity.Terrain = enemyHost.Terrain;
+
+                            if (enemyHost.Spawned)
+                            {
+                                enemyEntity.Spawned = true;
+                                enemyEntity.ApplyPermanentConditionEffect(ConditionEffectIndex.Invisible);
+                            }
+                        }
+
+                        host.World.EnterWorld(entity);
+                    }
                 }
 
                 cool = _coolDown.Next(Random);

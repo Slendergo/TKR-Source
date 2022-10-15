@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NLog.LayoutRenderers;
+using Pipelines.Sockets.Unofficial.Arenas;
+using System;
 using System.Collections.Generic;
 using TKR.Shared.resources;
 using TKR.WorldServer.core.miscfile.datas;
@@ -31,7 +33,7 @@ namespace TKR.WorldServer.core.objects
             }
         }
 
-        struct ValidatedProjectile
+        public sealed class ValidatedProjectile
         {
             public int BulletType;
             public int StartTime;
@@ -41,8 +43,12 @@ namespace TKR.WorldServer.core.objects
             public int ObjectType;
             public int Damage;
             public bool Spawned;
+            public bool DamagesPlayers;
+            public bool DamagesEnemies;
+            public bool Disabled;
+            public List<int> HitObjects = new List<int>();
 
-            public ValidatedProjectile(int time, bool spawned, int projectileType, float x, float y, float angle, int objectType, int damage)
+            public ValidatedProjectile(int time, bool spawned, int projectileType, float x, float y, float angle, int objectType, int damage, bool damagesPlayers, bool damagesEnemies)
             {
                 Spawned = spawned;
                 BulletType = projectileType;
@@ -52,6 +58,8 @@ namespace TKR.WorldServer.core.objects
                 Angle = angle;
                 ObjectType = objectType;
                 Damage = damage;
+                DamagesPlayers = damagesPlayers;
+                DamagesEnemies = damagesEnemies;
             }
 
             public Position GetPosition(int elapsed, int bulletId, ProjectileDesc desc)
@@ -107,11 +115,20 @@ namespace TKR.WorldServer.core.objects
         }
 
         private Queue<ShootAcknowledgement> PendingShootAcknowlegements = new Queue<ShootAcknowledgement>();
-        private Dictionary<int, ValidatedProjectile> VisiblePlayerShoot = new Dictionary<int, ValidatedProjectile>(0xFF);
-        private Dictionary<int, Dictionary<int, ValidatedProjectile>> VisibleEnemyShoot = new Dictionary<int, Dictionary<int, ValidatedProjectile>>();
+        private Dictionary<int, Dictionary<int, ValidatedProjectile>> VisibleProjectiles = new Dictionary<int, Dictionary<int, ValidatedProjectile>>();
 
         public void EnemyShoot(EnemyShoot enemyShoot) => PendingShootAcknowlegements.Enqueue(new ShootAcknowledgement(enemyShoot));
-        public void ServerPlayerShoot(ServerPlayerShoot serverPlayerShoot) => PendingShootAcknowlegements.Enqueue(new ShootAcknowledgement(serverPlayerShoot));
+        public void ServerPlayerShoot(ServerPlayerShoot serverPlayerShoot)
+        {
+            if(serverPlayerShoot.OwnerId != Id)
+            {
+                if (!VisibleProjectiles.ContainsKey(serverPlayerShoot.OwnerId))
+                    VisibleProjectiles.Add(serverPlayerShoot.OwnerId, new Dictionary<int, ValidatedProjectile>());
+                VisibleProjectiles[serverPlayerShoot.OwnerId][serverPlayerShoot.BulletId] = new ValidatedProjectile(LastClientTime, false, serverPlayerShoot.BulletType, serverPlayerShoot.StartingPos.X, serverPlayerShoot.StartingPos.Y, serverPlayerShoot.Angle, serverPlayerShoot.ObjectType, serverPlayerShoot.Damage, false, true);
+                return;
+            }
+            PendingShootAcknowlegements.Enqueue(new ShootAcknowledgement(serverPlayerShoot));
+        }
 
         public void PlayerShoot(int time, int newBulletId, Position startingPosition, float angle, int slot)
         {
@@ -120,7 +137,9 @@ namespace TKR.WorldServer.core.objects
 
             var damage = Stats.GetAttackDamage(projectileDesc.MinDamage, projectileDesc.MaxDamage, false);
 
-            VisiblePlayerShoot[newBulletId] = new ValidatedProjectile(time, false, 0, startingPosition.X, startingPosition.Y, angle, item.ObjectType, damage);
+            if (!VisibleProjectiles.ContainsKey(Id))
+                VisibleProjectiles[Id] = new Dictionary<int, ValidatedProjectile>();
+            VisibleProjectiles[Id][newBulletId] = new ValidatedProjectile(time, false, 0, startingPosition.X, startingPosition.Y, angle, item.ObjectType, damage, false, true);
 
             var allyShoot = new AllyShoot(newBulletId, Id, item.ObjectType, angle);
             World.BroadcastIfVisibleExclude(allyShoot, this, this);
@@ -130,8 +149,11 @@ namespace TKR.WorldServer.core.objects
         public void ShootAck(int time)
         {
             var topLevelShootAck = PendingShootAcknowlegements.Dequeue();
-            if(time == -1)
+            if (time == -1)
             {
+                //var ownerId = topLevelShootAck.EnemyShoot?.OwnerId ?? topLevelShootAck.ServerPlayerShoot.OwnerId;
+                //var owner = World.GetEntity(ownerId);
+                //Console.WriteLine($"[ShootAck] {Name} -> Time: -1 for: {owner?.Name ?? "Unknown"}");
                 // check entity doesnt exist in our visible list
                 // if it doesnt its valid
                 // if it does its not valid
@@ -143,40 +165,56 @@ namespace TKR.WorldServer.core.objects
 
             if (enemyShoot != null)
             {
-                if (!VisibleEnemyShoot.ContainsKey(enemyShoot.OwnerId))
-                    VisibleEnemyShoot.Add(enemyShoot.OwnerId, new Dictionary<int, ValidatedProjectile>(0xFF));
+                if (!VisibleProjectiles.ContainsKey(enemyShoot.OwnerId))
+                    VisibleProjectiles.Add(enemyShoot.OwnerId, new Dictionary<int, ValidatedProjectile>());
 
                 for (var i = 0; i < enemyShoot.NumShots; i++)
                 {
                     var angle = enemyShoot.Angle + enemyShoot.AngleInc * i;
                     var bulletId = enemyShoot.BulletId + i;
-                    VisibleEnemyShoot[enemyShoot.OwnerId][bulletId] = new ValidatedProjectile(time, enemyShoot.Spawned, enemyShoot.BulletType, enemyShoot.StartingPos.X, enemyShoot.StartingPos.Y, angle, enemyShoot.ObjectType, enemyShoot.Damage);
+                    VisibleProjectiles[enemyShoot.OwnerId][bulletId] = new ValidatedProjectile(time, enemyShoot.Spawned, enemyShoot.BulletType, enemyShoot.StartingPos.X, enemyShoot.StartingPos.Y, angle, enemyShoot.ObjectType, enemyShoot.Damage, true, false);
                 }
                 return;
             }
 
             var serverPlayerShoot = topLevelShootAck.ServerPlayerShoot;
-            VisiblePlayerShoot[serverPlayerShoot.BulletId] = new ValidatedProjectile(time, false, serverPlayerShoot.BulletType, serverPlayerShoot.StartingPos.X, serverPlayerShoot.StartingPos.Y, serverPlayerShoot.Angle, serverPlayerShoot.ObjectType, serverPlayerShoot.Damage);
+            if (!VisibleProjectiles.ContainsKey(serverPlayerShoot.OwnerId))
+                VisibleProjectiles.Add(serverPlayerShoot.OwnerId, new Dictionary<int, ValidatedProjectile>());
+            VisibleProjectiles[serverPlayerShoot.OwnerId][serverPlayerShoot.BulletId] = new ValidatedProjectile(time, false, serverPlayerShoot.BulletType, serverPlayerShoot.StartingPos.X, serverPlayerShoot.StartingPos.Y, serverPlayerShoot.Angle, serverPlayerShoot.ObjectType, serverPlayerShoot.Damage, false, true);
         }
 
         public void PlayerHit(int bulletId, int objectId)
         {
-            var found = VisibleEnemyShoot.TryGetValue(objectId, out var dict);
-            if (!found)
+            if (!VisibleProjectiles.TryGetValue(objectId, out var dict))
             {
-                Console.WriteLine($"[PlayerHit -> VisibleEnemyShoot.TryGetValue] {Id} -> {Name} | {objectId} | {bulletId} | Unable to find valid entry");
+                Console.WriteLine($"[PlayerHit] {Name} -> {Id} not present in VisibleProjectiles List");
                 return;
             }
 
-            found = dict.TryGetValue(bulletId, out var projectile);
-            if (!found)
+            if (!dict.TryGetValue(bulletId, out var projectile))
             {
-                Console.WriteLine($"[PlayerHit -> dict.TryGetValue] {Id} -> {Name} | {objectId} | {bulletId} | Unable to find valid projectile from VisibleEnemyShoot");
+                Console.WriteLine($"[PlayerHit] {Name} -> {bulletId} not present in VisibleProjectiles List");
                 return;
             }
 
             var objectDesc = GameServer.Resources.GameData.ObjectDescs[(ushort)projectile.ObjectType];
             var projectileDesc = objectDesc.Projectiles[projectile.BulletType];
+
+            if (projectile.Disabled)
+            {
+                Console.WriteLine($"[OtherHit] {Name} -> {bulletId} Projectile Already Disabled: Multihit: {projectileDesc.MultiHit}");
+                return;
+            }
+
+            var elapsedSinceStart = LastClientTime - projectile.StartTime;
+            if (elapsedSinceStart > projectileDesc.LifetimeMS)
+            {
+                projectile.Disabled = true;
+                Console.WriteLine("[PlayerHit] -> A expired shot tried to hit entity");
+                return;
+            }
+
+            projectile.Disabled = !projectileDesc.MultiHit;
 
             // todo validate hit position
 
@@ -211,87 +249,97 @@ namespace TKR.WorldServer.core.objects
             }, this, this);
 
             if (HP <= 0)
-                Death(objectDesc.DisplayId ?? objectDesc.ObjectId, projectile.Spawned);
-
-            // remove 
-            if (!projectileDesc.MultiHit)
-                _ = dict.Remove(bulletId);
+                Death(objectDesc.DisplayId ?? objectDesc.IdName, projectile.Spawned);
         }
 
         public void EnemyHit(ref TickTime tickTime, int time, int bulletId, int targetId, bool killed)
         {
-            var found = VisiblePlayerShoot.TryGetValue(bulletId, out var projectile);
-            if (!found)
+            if (!VisibleProjectiles.TryGetValue(Id, out var dict))
             {
-                Console.WriteLine($"[EnemyHit -> VisibleEnemyShoot.TryGetValue] {Id} -> {Name} | {bulletId} | Unable to find projectile");
-                //Client.Disconnect($"[EnemyHit -> VisibleEnemyShoot.TryGetValue] {Id} -> {Name} | {bulletId} | Unable to find projectile");
+                Console.WriteLine($"[EnemyHit] {Name} -> {Id} not present in VisibleProjectiles List");
+                return;
+            }
+
+            if (!dict.TryGetValue(bulletId, out var projectile))
+            {
+                Console.WriteLine($"[EnemyHit] {Name} -> {bulletId} not present in VisibleProjectiles List");
                 return;
             }
 
             var objectDesc = GameServer.Resources.GameData.Items[(ushort)projectile.ObjectType];
             var projectileDesc = objectDesc.Projectiles[projectile.BulletType];
 
-            // remove projectile if not multihit
-            if (!projectileDesc.MultiHit)
-                _ = VisiblePlayerShoot.Remove(bulletId);
-
-            var elapsedSinceStart = time - projectile.StartTime;
-            if(elapsedSinceStart > projectileDesc.LifetimeMS)
+            if (projectile.Disabled)
             {
-                Console.WriteLine("[EnemyHit] -> A expired shot tried to hit entity");
-                Client.Disconnect($"[EnemyHit] -> A expired shot tried to hit entity");
+                Console.WriteLine($"[OtherHit] {Name} -> {bulletId} Projectile Already Disabled: Multihit: {projectileDesc.MultiHit}");
                 return;
             }
+
+            var elapsedSinceStart = time - projectile.StartTime;
+            if (elapsedSinceStart > projectileDesc.LifetimeMS)
+            {
+                projectile.Disabled = true;
+                Console.WriteLine("[EnemyHit] -> A expired shot tried to hit entity");
+                return;
+            }
+
+            projectile.Disabled = !projectileDesc.MultiHit;
 
             var e = World.GetEntity(targetId);
             if(e == null)
-            {
-                //Console.WriteLine("[EnemyHit] -> NULL ENTITY ALREADY DEAD?");
                 return;
-            }
+
+            if (e.Dead)
+                return;
 
             if (e is Enemy)
             {
                 var entity = e as Enemy;
-                if (!entity.Static)
+                var player = this;
+
+                var dmg = StatsManager.DamageWithDefense(entity, projectile.Damage, projectileDesc.ArmorPiercing, entity.Defense);
+                entity.HP -= dmg;
+
+                for (var i = 0; i < 4; i++)
                 {
-                    var player = this;
+                    var item = player.Inventory[i];
+                    if (item == null || !item.Legendary && !item.Mythical)
+                        continue;
 
-                    var dmg = StatsManager.DamageWithDefense(entity, projectile.Damage, projectileDesc.ArmorPiercing, entity.Defense);
-                    entity.HP -= dmg;
+                    if (item.Demonized)
+                        entity.Demonized(player, i);
 
-                    for (var i = 0; i < 4; i++)
+                    if (item.Vampiric)
+                        entity.VampireBlast(player, i, ref tickTime, entity, projectileDesc.MultiHit);
+
+                    if (item.Electrify)
+                        entity.Electrify(player, i, ref tickTime, entity);
+                }
+
+                entity.ApplyConditionEffect(projectileDesc.Effects);
+
+                World.BroadcastIfVisibleExclude(new Damage()
+                {
+                    TargetId = entity.Id,
+                    Effects = 0,
+                    DamageAmount = dmg,
+                    Kill = entity.HP < 0,
+                    BulletId = bulletId,
+                    ObjectId = Id
+                }, entity, this);
+
+                entity.DamageCounter.HitBy(this, dmg);
+
+                if (entity.HP < 0)
+                {
+                    entity.Death(ref tickTime);
+                    if (entity.ObjectDesc.BlocksSight)
                     {
-                        var item = player.Inventory[i];
-                        if (item == null || !item.Legendary && !item.Mythical)
-                            continue;
-
-                        if (item.Demonized)
-                            entity.Demonized(player, i);
-
-                        if (item.Vampiric)
-                            entity.VampireBlast(player, i, ref tickTime, entity, projectileDesc.MultiHit);
-
-                        if (item.Electrify)
-                            entity.Electrify(player, i, ref tickTime, entity);
+                        var tile = World.Map[(int)entity.X, (int)entity.Y];
+                        tile.ObjType = 0;
+                        tile.UpdateCount++;
+                        player.PlayerUpdate.UpdateTiles();
                     }
-
-                    entity.ApplyConditionEffect(projectileDesc.Effects);
-
-                    World.BroadcastIfVisibleExclude(new Damage()
-                    {
-                        TargetId = entity.Id,
-                        Effects = 0,
-                        DamageAmount = dmg,
-                        Kill = entity.HP < 0,
-                        BulletId = bulletId,
-                        ObjectId = Id
-                    }, entity, this);
-
-                    entity.DamageCounter.HitBy(this, dmg);
-
-                    if (entity.HP < 0)
-                        entity.Death(ref tickTime);
                 }
             }
 
@@ -318,108 +366,127 @@ namespace TKR.WorldServer.core.objects
 
         public void SquareHit(ref TickTime tickTime, int time, int bulletId, int objectId)
         {
-            var found = VisibleEnemyShoot.TryGetValue(objectId, out var dict);
-            if (!found)
+            if (!VisibleProjectiles.TryGetValue(objectId, out var dict))
             {
-                Console.WriteLine($"[SquareHit -> VisibleEnemyShoot.TryGetValue] {Id} -> {Name} | {objectId} | {bulletId} | Unable to find valid entry");
-                //Client.Disconnect($"[SquareHit -> VisibleEnemyShoot.TryGetValue] {Id} -> {Name} | {objectId} | {bulletId} | Unable to find valid entry");
+                Console.WriteLine($"[SquareHit] {Name} -> {objectId} not present in VisibleProjectiles List");
                 return;
             }
 
-            found = dict.TryGetValue(bulletId, out var projectile);
-            if (!found)
+            if (!dict.TryGetValue(bulletId, out var projectile))
             {
-                Console.WriteLine($"[SquareHit -> dict.TryGetValue] {Id} -> {Name} | {objectId} | {bulletId} | Unable to find valid projectile from VisibleEnemyShoot");
-                //Client.Disconnect($"[SquareHit -> dict.TryGetValue] {Id} -> {Name} | {objectId} | {bulletId} | Unable to find valid projectile from VisibleEnemyShoot");
+                Console.WriteLine($"[SquareHit] {Name} -> {bulletId} not present in VisibleProjectiles List");
                 return;
             }
 
             var objectDesc = GameServer.Resources.GameData.ObjectDescs[(ushort)projectile.ObjectType];
             var projectileDesc = objectDesc.Projectiles[projectile.BulletType];
 
-            var elapsedSinceStart = time - projectile.StartTime;
-            if (elapsedSinceStart > projectileDesc.LifetimeMS)
+            if (projectile.Disabled)
             {
-                Console.WriteLine("[SquareHit] -> A expired shot tried to hit entity");
-                Client.Disconnect("[SquareHit] -> A expired shot tried to hit entity");
+                Console.WriteLine($"[OtherHit] {Name} -> {bulletId} Projectile Already Disabled: Multihit: {projectileDesc.MultiHit}");
                 return;
             }
 
-            if(!projectileDesc.MultiHit)
-                _ = dict.Remove(bulletId);
+            var elapsed = time - projectile.StartTime;
+            //var hitPos = projectile.GetPosition(elapsed, bulletId, projectileDesc);
+
+            var elapsedSinceStart = time - projectile.StartTime;
+            if (elapsedSinceStart > projectileDesc.LifetimeMS)
+            {
+                projectile.Disabled = true;
+                Console.WriteLine($"[SquareHit] {Name} -> Projectile Expired");
+                return;
+            }
+
+            // if not seentiles.contains x, y then not valid 
+
+            projectile.Disabled = true;
         }
 
         public void OtherHit(ref TickTime tickTime, int time, int bulletId, int objectId, int targetId)
         {
-            var found = VisibleEnemyShoot.TryGetValue(objectId, out var dict);
-            if (!found)
+            if (!VisibleProjectiles.TryGetValue(objectId, out var dict))
             {
-                Console.WriteLine($"[OtherHit -> VisibleEnemyShoot.TryGetValue] {Id} -> {Name} | {objectId} | {bulletId} | Unable to find valid entry");
-                //Client.Disconnect($"[OtherHit -> VisibleEnemyShoot.TryGetValue] {Id} -> {Name} | {objectId} | {bulletId} | Unable to find valid entry");
+                Console.WriteLine($"[OtherHit] {Name} -> {objectId} not present in VisibleProjectiles List");
                 return;
             }
 
-            found = dict.TryGetValue(bulletId, out var projectile);
-            if (!found)
+            if (!dict.TryGetValue(bulletId, out var projectile))
             {
-                Console.WriteLine($"[OtherHit -> dict.TryGetValue] {Id} -> {Name} | {objectId} | {bulletId} | Unable to find valid projectile from VisibleEnemyShoot");
-                //Client.Disconnect($"[OtherHit -> dict.TryGetValue] {Id} -> {Name} | {objectId} | {bulletId} | Unable to find valid projectile from VisibleEnemyShoot");
+                Console.WriteLine($"[OtherHit] {Name} -> {bulletId} not present in VisibleProjectiles List");
                 return;
             }
 
             var objectDesc = GameServer.Resources.GameData.ObjectDescs[(ushort)projectile.ObjectType];
             var projectileDesc = objectDesc.Projectiles[projectile.BulletType];
 
-            var elapsedSinceStart = time - projectile.StartTime;
-            if (elapsedSinceStart > projectileDesc.LifetimeMS)
+            if (projectile.Disabled)
             {
-                Console.WriteLine("[OtherHit] -> A expired shot tried to hit entity");
-                //Client.Disconnect("[OtherHit] -> A expired shot tried to hit entity");
+                Console.WriteLine($"[OtherHit] {Name} -> {bulletId} Projectile Already Disabled: Multihit: {projectileDesc.MultiHit}");
                 return;
             }
 
-            // validate shot position is valid?
-            // cross entity validation for wether this was a valid hit?
+            var elapsed = time - projectile.StartTime;
+            var hitPos = projectile.GetPosition(elapsed, bulletId, projectileDesc);
 
-            if(!projectileDesc.MultiHit)
-                _ = dict.Remove(bulletId);
+            var elapsedSinceStart = time - projectile.StartTime;
+            if (elapsedSinceStart > projectileDesc.LifetimeMS)
+            {
+                projectile.Disabled = true;
+                Console.WriteLine($"[OtherHit] {Name} -> Projectile Expired");
+                return;
+            }
+
+            var target = World.GetEntity(targetId);
+            if (target != null)
+            {
+                projectile.Disabled = !projectileDesc.MultiHit;
+                //Console.WriteLine($"[OtherHit] {Name} -> (Entity) Success, Disabled Projectile");
+                return;
+            }
+
+            // must be static
+            var tile = World.Map[(int)hitPos.X, (int)hitPos.Y];
+            if (tile.ObjId == targetId) // still unable to find?
+            {
+                projectile.Disabled = true;
+                //Console.WriteLine($"[OtherHit] {Name} -> (Static) Success, Disabled Projectile");
+                return;
+            }
+
+            Console.WriteLine($"[OtherHit] {Name} -> Failure Unknown OtherHit target END OF LOGIC");
         }
 
         public void HandleProjectileDetection(int time, float x, float y, ref TimedPosition[] moveRecords)
         {
-            var visiblePlayerShootToRemove = new List<int>();
-            foreach (var kvp in VisiblePlayerShoot)
-            {
-                var objectDesc = GameServer.Resources.GameData.Items[(ushort)kvp.Value.ObjectType];
-                var projectileDesc = objectDesc.Projectiles[0];
-
-                var elapsed = time - kvp.Value.StartTime;
-                if (elapsed > projectileDesc.LifetimeMS)
-                    visiblePlayerShootToRemove.Add(kvp.Key);
-            }
-            foreach (var bulletId in visiblePlayerShootToRemove)
-                _ = VisiblePlayerShoot.Remove(bulletId);
-
-            var visibleEnemyShootToRemove = new List<ValueTuple<int, int>>();
-            foreach (var dict in VisibleEnemyShoot)
+            var visibleProjectileToRemove = new List<ValueTuple<int, int>>();
+            foreach (var dict in VisibleProjectiles)
                 foreach (var kvp in dict.Value)
                 {
-                    var objectDesc = GameServer.Resources.GameData.ObjectDescs[(ushort)kvp.Value.ObjectType];
-                    try
+                    ProjectileDesc projectileDesc;
+                    if (kvp.Value.DamagesEnemies)
                     {
-                        var projectileDesc = objectDesc.Projectiles[kvp.Value.BulletType];
+                        var objectDesc = GameServer.Resources.GameData.Items[(ushort)kvp.Value.ObjectType];
+                        projectileDesc = objectDesc.Projectiles[0];
+                    }
+                    else
+                    {
+                        var objectDesc = GameServer.Resources.GameData.ObjectDescs[(ushort)kvp.Value.ObjectType];
+                        projectileDesc = objectDesc.Projectiles[kvp.Value.BulletType];
+                    }
 
-                        var elapsed = time - kvp.Value.StartTime;
-                        if (elapsed > projectileDesc.LifetimeMS)
-                            visibleEnemyShootToRemove.Add(ValueTuple.Create(dict.Key, kvp.Key));
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine($"VisibleEnemyShoot: {objectDesc.DisplayId ?? objectDesc.ObjectId} -> {kvp.Value.BulletType}");
-                    }
+                    var elapsed = time - kvp.Value.StartTime;
+                    if (elapsed > projectileDesc.LifetimeMS)
+                        visibleProjectileToRemove.Add(ValueTuple.Create(dict.Key, kvp.Key));
                 }
-            foreach (var kvp in visibleEnemyShootToRemove)
-                _ = VisibleEnemyShoot[kvp.Item1].Remove(kvp.Item2);
+
+            foreach (var kvp in visibleProjectileToRemove)
+            {
+                _ = VisibleProjectiles[kvp.Item1].Remove(kvp.Item2);
+                if (VisibleProjectiles[kvp.Item1].Count == 0)
+                    VisibleProjectiles.Remove(kvp.Item1);
+            }
         }
+
     }
 }

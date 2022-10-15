@@ -10,22 +10,20 @@ namespace TKR.WorldServer.core.objects
     {
         private SV<int> _hp;
 
-        public StaticObject(GameServer manager, ushort objType, int? life, bool stat, bool dying, bool hittestable) : base(manager, objType)
+        public StaticObject(GameServer manager, ushort objType, int? life, bool isStatic, bool dying, bool hittestable) : base(manager, objType)
         {
-            _hp = new SV<int>(this, StatDataType.HP, 0, dying);
+            _hp = new SV<int>(this, StatDataType.Health, 0, dying);
 
             if (Vulnerable = life.HasValue)
                 HP = life.Value;
 
             Dying = dying;
-            Static = stat;
             Hittestable = hittestable;
         }
 
         public bool Dying { get; private set; }
         public bool Hittestable { get; private set; }
         public int HP { get => _hp.GetValue(); set => _hp.SetValue(value); }
-        public bool Static { get; private set; }
         public bool Vulnerable { get; private set; }
 
         public override void Tick(ref TickTime time)
@@ -65,7 +63,7 @@ namespace TKR.WorldServer.core.objects
 
         protected override void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)
         {
-            stats[StatDataType.HP] = !Vulnerable ? int.MaxValue : HP;
+            stats[StatDataType.Health] = !Vulnerable ? int.MaxValue : HP;
             base.ExportStats(stats, isOtherPlayer);
         }
     }

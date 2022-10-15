@@ -10,7 +10,7 @@ namespace TKR.WorldServer.logic.behaviors
 
         public override void OnDeath(Entity host, ref TickTime time)
         {
-            if (host.ObjectDesc.ObjectId == "The Baron")
+            if (host.ObjectDesc.IdName == "The Baron")
             {
                 foreach (var player in host.World.Players)
                 {

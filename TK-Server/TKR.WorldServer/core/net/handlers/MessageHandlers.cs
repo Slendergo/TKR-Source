@@ -13,7 +13,7 @@ namespace TKR.WorldServer.core.net.handlers
     public abstract class IMessageHandler
     {
         public abstract MessageId MessageId { get; }
-        public abstract void Handle(Client client, NReader rdr, ref TickTime time);
+        public abstract void Handle(Client client, NetworkReader rdr, ref TickTime time);
 
         public static bool IsAvailable(Client client) => client.GameServer.WorldManager.Nexus.MarketEnabled;
 

@@ -10,22 +10,22 @@ namespace TKR.WorldServer.core.miscfile.datas
         public bool Tradeable;
         public string ItemData;
 
-        public static TradeItem Read(NReader rdr) => new TradeItem
+        public static TradeItem Read(NetworkReader rdr) => new TradeItem
         {
             Item = rdr.ReadInt32(),
             SlotType = rdr.ReadInt32(),
             Tradeable = rdr.ReadBoolean(),
             Included = rdr.ReadBoolean(),
-            ItemData = rdr.ReadUTF()
+            ItemData = rdr.ReadUTF16()
         };
 
-        public void Write(NWriter wtr)
+        public void Write(NetworkWriter wtr)
         {
             wtr.Write(Item);
             wtr.Write(SlotType);
             wtr.Write(Tradeable);
             wtr.Write(Included);
-            wtr.WriteUTF(ItemData);
+            wtr.WriteUTF16(ItemData);
         }
     }
 }

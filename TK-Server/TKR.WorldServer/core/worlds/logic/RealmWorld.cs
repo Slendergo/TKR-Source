@@ -40,14 +40,6 @@ namespace TKR.WorldServer.core.worlds.logic
             base.UpdateLogic(ref time);
         }
 
-        public override int EnterWorld(Entity entity)
-        {
-            var ret = base.EnterWorld(entity);
-            if (entity is Player player)
-                KingdomManager?.OnPlayerEntered(player);
-            return ret;
-        }
-
         public void EnemyKilled(Enemy enemy, Player killer)
         {
             if (!enemy.Spawned)

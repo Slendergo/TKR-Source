@@ -241,13 +241,11 @@ namespace TKR.WorldServer.utils
                     break;
 
                 case 254:
-                    e.InvokeStatChange(
-                        StatDataType.HealthStackCount, (e as Player).HealthPots.Count);
+                    e.InvokeStatChange(StatDataType.HealthStackCount, (e as Player).HealthPots.Count);
                     break;
 
                 case 255:
-                    e.InvokeStatChange(
-                        StatDataType.MagicStackCount, (e as Player).MagicPots.Count);
+                    e.InvokeStatChange(StatDataType.MagicStackCount, (e as Player).MagicPots.Count);
                     break;
             }
         }
@@ -317,7 +315,7 @@ namespace TKR.WorldServer.utils
 
             foreach (var i in entity.World.EnemiesCollision.HitTest(entity.X, entity.Y, dist))
             {
-                if (i.ObjectDesc == null || id != null && !i.ObjectDesc.ObjectId.ContainsIgnoreCase(id))
+                if (i.ObjectDesc == null || id != null && !i.ObjectDesc.IdName.ContainsIgnoreCase(id))
                     continue;
 
                 var d = i.DistTo(entity);

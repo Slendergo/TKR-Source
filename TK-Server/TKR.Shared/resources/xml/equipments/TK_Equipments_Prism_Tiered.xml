@@ -12,8 +12,8 @@
     <Usable />
     <BagType>1</BagType>
     <MpCost>60</MpCost>
-    <Activate duration="3">Decoy</Activate>
-    <Activate maxDistance="20">Teleport</Activate>
+    <Activate duration="3" speed="1.00">Decoy</Activate>
+    <Activate maxDistance="13">Teleport</Activate>
     <feedPower>5</feedPower>
   </Object>
   <Object type="0xb1c" id="Deception Prism">
@@ -29,8 +29,8 @@
     <Usable />
     <BagType>1</BagType>
     <MpCost>65</MpCost>
-    <Activate duration="3.5">Decoy</Activate>
-    <Activate maxDistance="20">Teleport</Activate>
+    <Activate duration="4" speed="1.05">Decoy</Activate>
+    <Activate maxDistance="13">Teleport</Activate>
     <feedPower>10</feedPower>
   </Object>
   <Object type="0xb1d" id="Illusion Prism">
@@ -46,8 +46,8 @@
     <Usable />
     <BagType>1</BagType>
     <MpCost>70</MpCost>
-    <Activate duration="4">Decoy</Activate>
-    <Activate maxDistance="20">Teleport</Activate>
+    <Activate duration="5" speed="1.10">Decoy</Activate>
+    <Activate maxDistance="13">Teleport</Activate>
     <feedPower>20</feedPower>
   </Object>
   <Object type="0xb1e" id="Hallucination Prism">
@@ -64,8 +64,8 @@
     <BagType>2</BagType>
     <FameBonus>1</FameBonus>
     <MpCost>75</MpCost>
-    <Activate duration="4.5">Decoy</Activate>
-    <Activate maxDistance="20">Teleport</Activate>
+    <Activate duration="6" speed="1.15">Decoy</Activate>
+    <Activate maxDistance="13">Teleport</Activate>
     <feedPower>45</feedPower>
   </Object>
   <Object type="0xb1f" id="Prism of Figments">
@@ -82,8 +82,8 @@
     <BagType>2</BagType>
     <FameBonus>2</FameBonus>
     <MpCost>80</MpCost>
-    <Activate duration="5">Decoy</Activate>
-    <Activate maxDistance="20">Teleport</Activate>
+    <Activate duration="7" speed="1.20">Decoy</Activate>
+    <Activate maxDistance="13">Teleport</Activate>
     <feedPower>90</feedPower>
   </Object>
   <Object type="0xb20" id="Prism of Phantoms">
@@ -100,8 +100,8 @@
     <BagType>4</BagType>
     <FameBonus>3</FameBonus>
     <MpCost>85</MpCost>
-    <Activate duration="5.5">Decoy</Activate>
-    <Activate maxDistance="20">Teleport</Activate>
+    <Activate duration="8" speed="1.25">Decoy</Activate>
+    <Activate maxDistance="13">Teleport</Activate>
     <feedPower>185</feedPower>
   </Object>
   <Object type="0xb23" id="Prism of Apparitions">
@@ -120,8 +120,8 @@
     <BagType>4</BagType>
     <FameBonus>4</FameBonus>
     <MpCost>85</MpCost>
-    <Activate duration="5.5">Decoy</Activate>
-    <Activate maxDistance="20">Teleport</Activate>
+    <Activate duration="9" speed="1.25">Decoy</Activate>
+    <Activate maxDistance="13">Teleport</Activate>
     <feedPower>380</feedPower>
   </Object>
 </Objects>

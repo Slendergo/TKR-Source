@@ -170,7 +170,7 @@ namespace TKR.Shared
         public static FameStats Read(byte[] bytes)
         {
             var ret = new FameStats();
-            var reader = new NReader(new MemoryStream(bytes));
+            var reader = new NetworkReader(new MemoryStream(bytes));
 
             byte id;
 
@@ -269,7 +269,7 @@ namespace TKR.Shared
                 }
 
             //Well Equiped
-            var bonus = character.Items.Take(4).Where(x => x != 0xffff).Sum(x => data.Items[x].FameBonus) / 100.0;
+            var bonus = character.Items.Take(4).Where(x => x != 0xffff && data.Items.ContainsKey(x)).Sum(x => data.Items[x].FameBonus) / 100.0;
 
             if (bonus > 0)
             {
@@ -322,7 +322,7 @@ namespace TKR.Shared
 
             var ret = new MemoryStream();
 
-            using (var wtr = new NWriter(ret))
+            using (var wtr = new NetworkWriter(ret))
             {
                 foreach (var i in dat)
                 {

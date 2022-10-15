@@ -116,10 +116,10 @@ namespace TKR.WorldServer.logic.behaviors
                 enemy = host as Enemy;
 
             var displayenemy =
-                  enemy.Legendary ? $"Legendary {host.ObjectDesc.DisplayId ?? host.ObjectDesc.ObjectId}" :
-                  enemy.Epic ? $"Epic {host.ObjectDesc.DisplayId ?? host.ObjectDesc.ObjectId}" :
-                  enemy.Rare ? $"Rare {host.ObjectDesc.DisplayId ?? host.ObjectDesc.ObjectId}" :
-                  host.ObjectDesc.DisplayId ?? host.ObjectDesc.ObjectId;
+                  enemy.Legendary ? $"Legendary {host.ObjectDesc.DisplayId ?? host.ObjectDesc.IdName}" :
+                  enemy.Epic ? $"Epic {host.ObjectDesc.DisplayId ?? host.ObjectDesc.IdName}" :
+                  enemy.Rare ? $"Rare {host.ObjectDesc.DisplayId ?? host.ObjectDesc.IdName}" :
+                  host.ObjectDesc.DisplayId ?? host.ObjectDesc.IdName;
 
             var packet = new Text() { Name = "#" + displayenemy, ObjectId = host.Id, NumStars = -1, BubbleTime = 3, Recipient = "", Txt = taunt };
 

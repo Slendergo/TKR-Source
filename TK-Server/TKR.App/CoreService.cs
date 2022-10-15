@@ -66,7 +66,7 @@ namespace TKR.App
             LegendSweeper.Start();
 
             PlayerClasses = Resources.GameData.ObjectDescs.Values.Where(objDesc => objDesc.Player).Select(objDesc => objDesc.ObjectType).ToList();
-            _classes = Resources.GameData.ObjectDescs.Values.Where(objDesc => objDesc.Player).ToDictionary(objDesc => objDesc.ObjectType, objDesc => objDesc.ObjectId);
+            _classes = Resources.GameData.ObjectDescs.Values.Where(objDesc => objDesc.Player).ToDictionary(objDesc => objDesc.ObjectType, objDesc => objDesc.IdName);
             _classAvailability = _classes.ToDictionary(@class => @class.Value, @class => "available");
 
             var elem = new XElement("ItemCosts");

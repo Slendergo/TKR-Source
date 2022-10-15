@@ -20,18 +20,18 @@ namespace TKR.WorldServer.networking.packets.outgoing
 
         public override MessageId MessageId => MessageId.MAPINFO;
 
-        public override void Write(NWriter wtr)
+        public override void Write(NetworkWriter wtr)
         {
             wtr.Write(Width);
             wtr.Write(Height);
-            wtr.WriteUTF(Name);
-            wtr.WriteUTF(DisplayName);
+            wtr.WriteUTF16(Name);
+            wtr.WriteUTF16(DisplayName);
             wtr.Write(Seed);
             wtr.Write(Background);
             wtr.Write(Difficulty);
             wtr.Write(AllowPlayerTeleport);
             wtr.Write(ShowDisplays);
-            wtr.WriteUTF(Music);
+            wtr.WriteUTF16(Music);
             wtr.Write(DisableShooting);
             wtr.Write(DisableAbilities);
         }

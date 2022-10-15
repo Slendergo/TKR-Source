@@ -8,7 +8,7 @@ namespace TKR.WorldServer.core.objects
 {
     public partial class Player
     {
-        public const int DcThresold = 12000;
+        public const int DcThresold = 120000000;
 
         public int LastClientTime = -1;
         public long LastServerTime = -1;

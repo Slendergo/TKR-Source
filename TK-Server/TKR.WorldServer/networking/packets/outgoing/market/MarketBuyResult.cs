@@ -14,10 +14,10 @@ namespace TKR.WorldServer.networking.packets.outgoing.market
         public string Description;
         public int OfferId;
 
-        public override void Write(NWriter wtr)
+        public override void Write(NetworkWriter wtr)
         {
             wtr.Write(Code);
-            wtr.WriteUTF(Description);
+            wtr.WriteUTF16(Description);
             wtr.Write(OfferId);
         }
     }

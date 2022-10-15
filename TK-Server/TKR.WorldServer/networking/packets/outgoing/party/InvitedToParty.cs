@@ -11,9 +11,9 @@ namespace TKR.WorldServer.networking.packets.outgoing.party
 
         public override MessageId MessageId => MessageId.INVITED_TO_PARTY;
 
-        public override void Write(NWriter wtr)
+        public override void Write(NetworkWriter wtr)
         {
-            wtr.WriteUTF(Name);
+            wtr.WriteUTF16(Name);
             wtr.Write(PartyId);
         }
     }

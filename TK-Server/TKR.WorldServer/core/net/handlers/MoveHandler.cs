@@ -13,7 +13,7 @@ namespace TKR.WorldServer.core.net.handlers
     {
         public override MessageId MessageId => MessageId.MOVE;
 
-        public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
+        public override void Handle(Client client, NetworkReader rdr, ref TickTime tickTime)
         {
             var tickId = rdr.ReadInt32();
             var time = rdr.ReadInt32();

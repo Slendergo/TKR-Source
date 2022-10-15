@@ -12680,7 +12680,7 @@
     <HitSound>monster/greater_demons_hit</HitSound>
     <DeathSound>monster/greater_demons_death</DeathSound>
     <Size>100</Size>
-    <MaxHitPoints>2000</MaxHitPoints>
+    <MaxHitPoints>3000</MaxHitPoints>
     <Defense>12</Defense>
     <Flying />
     <God />
@@ -12704,8 +12704,8 @@
     </AnimatedTexture>
     <HitSound>monster/greater_demons_hit</HitSound>
     <DeathSound>monster/greater_demons_death</DeathSound>
-    <Size>100</Size>
-    <MaxHitPoints>1000</MaxHitPoints>
+    <Size>150</Size>
+    <MaxHitPoints>3000</MaxHitPoints>
     <Defense>12</Defense>
     <Terrain>Mountains</Terrain>
     <SpawnProb>1.0</SpawnProb>
@@ -12737,8 +12737,8 @@
     </AnimatedTexture>
     <HitSound>monster/sprite_god_hit</HitSound>
     <DeathSound>monster/sprite_god_death</DeathSound>
-    <Size>100</Size>
-    <MaxHitPoints>2000</MaxHitPoints>
+    <Size>125</Size>
+    <MaxHitPoints>3000</MaxHitPoints>
     <Defense>12</Defense>
     <Terrain>Mountains</Terrain>
     <SpawnProb>1.0</SpawnProb>
@@ -12770,8 +12770,8 @@
     </AnimatedTexture>
     <HitSound>monster/medusa_hit</HitSound>
     <DeathSound>monster/medusa_death</DeathSound>
-    <Size>100</Size>
-    <MaxHitPoints>2000</MaxHitPoints>
+    <Size>110</Size>
+    <MaxHitPoints>3000</MaxHitPoints>
     <Defense>18</Defense>
     <Terrain>Mountains</Terrain>
     <SpawnProb>1.0</SpawnProb>
@@ -12799,8 +12799,8 @@
     </AnimatedTexture>
     <HitSound>monster/ents_hit</HitSound>
     <DeathSound>monster/ents_death</DeathSound>
-    <Size>100</Size>
-    <MaxHitPoints>1000</MaxHitPoints>
+    <Size>175</Size>
+    <MaxHitPoints>3000</MaxHitPoints>
     <Defense>18</Defense>
     <Terrain>Mountains</Terrain>
     <SpawnProb>1.0</SpawnProb>
@@ -12830,8 +12830,8 @@
     </AnimatedTexture>
     <HitSound>monster/beholder_hit</HitSound>
     <DeathSound>monster/beholder_death</DeathSound>
-    <Size>100</Size>
-    <MaxHitPoints>1500</MaxHitPoints>
+    <Size>115</Size>
+    <MaxHitPoints>3000</MaxHitPoints>
     <Defense>12</Defense>
     <Terrain>Mountains</Terrain>
     <SpawnProb>1.0</SpawnProb>
@@ -12868,8 +12868,8 @@
     </AnimatedTexture>
     <HitSound>monster/flying_brain_hit</HitSound>
     <DeathSound>monster/flying_brain_death</DeathSound>
-    <Size>100</Size>
-    <MaxHitPoints>1000</MaxHitPoints>
+    <Size>110</Size>
+    <MaxHitPoints>3000</MaxHitPoints>
     <Defense>12</Defense>
     <Terrain>Mountains</Terrain>
     <SpawnProb>1.0</SpawnProb>
@@ -12898,8 +12898,8 @@
     </AnimatedTexture>
     <HitSound>monster/slimes_hit</HitSound>
     <DeathSound>monster/slimes_death</DeathSound>
-    <Size>100</Size>
-    <MaxHitPoints>1000</MaxHitPoints>
+    <Size>135</Size>
+    <MaxHitPoints>3000</MaxHitPoints>
     <Defense>12</Defense>
     <Terrain>Mountains</Terrain>
     <SpawnProb>1.0</SpawnProb>
@@ -12928,8 +12928,8 @@
     </AnimatedTexture>
     <HitSound>monster/djinn_hit</HitSound>
     <DeathSound>monster/djinn_death</DeathSound>
-    <Size>100</Size>
-    <MaxHitPoints>1000</MaxHitPoints>
+    <Size>150</Size>
+    <MaxHitPoints>3000</MaxHitPoints>
     <Defense>12</Defense>
     <Terrain>Mountains</Terrain>
     <Spawn>
@@ -12959,8 +12959,8 @@
     </AnimatedTexture>
     <HitSound>monster/sprite_god_hit</HitSound>
     <DeathSound>monster/sprite_god_death</DeathSound>
-    <Size>100</Size>
-    <MaxHitPoints>2000</MaxHitPoints>
+    <Size>125</Size>
+    <MaxHitPoints>3000</MaxHitPoints>
     <Defense>12</Defense>
     <Flying />
     <God />
@@ -12990,8 +12990,8 @@
     </AnimatedTexture>
     <HitSound>monster/slimes_hit</HitSound>
     <DeathSound>monster/slimes_death</DeathSound>
-    <Size>100</Size>
-    <MaxHitPoints>1000</MaxHitPoints>
+    <Size>135</Size>
+    <MaxHitPoints>3000</MaxHitPoints>
     <Defense>12</Defense>
     <God />
     <XpMult>1</XpMult>
@@ -13074,7 +13074,7 @@
     <HitSound>monster/ghost_god_hit</HitSound>
     <DeathSound>monster/ghost_god_death</DeathSound>
     <Size>100</Size>
-    <MaxHitPoints>1000</MaxHitPoints>
+    <MaxHitPoints>3000</MaxHitPoints>
     <Defense>12</Defense>
     <Terrain>Mountains</Terrain>
     <SpawnProb>1.0</SpawnProb>
@@ -37714,7 +37714,7 @@
     <HitSound>monster/sprites_hit</HitSound>
     <DeathSound>monster/sprites_death</DeathSound>
     <Size>75</Size>
-    <MaxHitPoints>50</MaxHitPoints>
+    <MaxHitPoints>600</MaxHitPoints>
     <Defense>0</Defense>
     <Terrain>Mountains</Terrain>
     <Flying />
@@ -45025,34 +45025,6 @@
     <Texture>
       <File>lofiObj4</File>
       <Index>0x96</Index>
-    </Texture>
-    <Size>80</Size>
-    <SlotTypes>0, 0, 0, 0, 0, 0, 0, 0</SlotTypes>
-  </Object>
-  <Object type="0xa004" id="Talisman Loot Bag">
-    <DisplayId>Loot Bag</DisplayId>
-    <Class>Container</Class>
-    <Container />
-    <CanPutNormalObjects />
-    <CanPutSoulboundObjects />
-    <Loot />
-    <Texture>
-      <File>lofiObj4</File>
-      <Index>0x97</Index>
-    </Texture>
-    <Size>80</Size>
-    <SlotTypes>0, 0, 0, 0, 0, 0, 0, 0</SlotTypes>
-  </Object>
-  <Object type="0xa005" id="Talisman Loot Bag Boosted">
-    <DisplayId>Loot Bag</DisplayId>
-    <Class>Container</Class>
-    <Container />
-    <CanPutNormalObjects />
-    <CanPutSoulboundObjects />
-    <Loot />
-    <Texture>
-      <File>lofiObj4</File>
-      <Index>0xa7</Index>
     </Texture>
     <Size>80</Size>
     <SlotTypes>0, 0, 0, 0, 0, 0, 0, 0</SlotTypes>
@@ -57336,8 +57308,8 @@
     <Usable />
     <BagType>1</BagType>
     <MpCost>60</MpCost>
-    <Activate duration="3">Decoy</Activate>
-    <Activate maxDistance="20">Teleport</Activate>
+    <Activate duration="3" speed="1.00">Decoy</Activate>
+    <Activate maxDistance="13">Teleport</Activate>
     <feedPower>5</feedPower>
   </Object>
   <Object type="0xb1c" id="Deception Prism">
@@ -57353,8 +57325,8 @@
     <Usable />
     <BagType>1</BagType>
     <MpCost>65</MpCost>
-    <Activate duration="3.5">Decoy</Activate>
-    <Activate maxDistance="20">Teleport</Activate>
+    <Activate duration="4" speed="1.05">Decoy</Activate>
+    <Activate maxDistance="13">Teleport</Activate>
     <feedPower>10</feedPower>
   </Object>
   <Object type="0xb1d" id="Illusion Prism">
@@ -57370,8 +57342,8 @@
     <Usable />
     <BagType>1</BagType>
     <MpCost>70</MpCost>
-    <Activate duration="4">Decoy</Activate>
-    <Activate maxDistance="20">Teleport</Activate>
+    <Activate duration="5" speed="1.10">Decoy</Activate>
+    <Activate maxDistance="13">Teleport</Activate>
     <feedPower>20</feedPower>
   </Object>
   <Object type="0xb1e" id="Hallucination Prism">
@@ -57388,8 +57360,8 @@
     <BagType>2</BagType>
     <FameBonus>1</FameBonus>
     <MpCost>75</MpCost>
-    <Activate duration="4.5">Decoy</Activate>
-    <Activate maxDistance="20">Teleport</Activate>
+    <Activate duration="6" speed="1.15">Decoy</Activate>
+    <Activate maxDistance="13">Teleport</Activate>
     <feedPower>45</feedPower>
   </Object>
   <Object type="0xb1f" id="Prism of Figments">
@@ -57406,8 +57378,8 @@
     <BagType>2</BagType>
     <FameBonus>2</FameBonus>
     <MpCost>80</MpCost>
-    <Activate duration="5">Decoy</Activate>
-    <Activate maxDistance="20">Teleport</Activate>
+    <Activate duration="7" speed="1.20">Decoy</Activate>
+    <Activate maxDistance="13">Teleport</Activate>
     <feedPower>90</feedPower>
   </Object>
   <Object type="0xb20" id="Prism of Phantoms">
@@ -57424,8 +57396,8 @@
     <BagType>4</BagType>
     <FameBonus>3</FameBonus>
     <MpCost>85</MpCost>
-    <Activate duration="5.5">Decoy</Activate>
-    <Activate maxDistance="20">Teleport</Activate>
+    <Activate duration="8" speed="1.25">Decoy</Activate>
+    <Activate maxDistance="13">Teleport</Activate>
     <feedPower>185</feedPower>
   </Object>
   <Object type="0xb23" id="Prism of Apparitions">
@@ -57444,8 +57416,8 @@
     <BagType>4</BagType>
     <FameBonus>4</FameBonus>
     <MpCost>85</MpCost>
-    <Activate duration="5.5">Decoy</Activate>
-    <Activate maxDistance="20">Teleport</Activate>
+    <Activate duration="9" speed="1.25">Decoy</Activate>
+    <Activate maxDistance="13">Teleport</Activate>
     <feedPower>380</feedPower>
   </Object>
   <Object type="0x912" id="Prism of Dancing Swords">
@@ -88759,7 +88731,7 @@
     <Description>An taliman that nourishes the weilders soul.</Description>
     <SlotType>26</SlotType>
     <ActivateOnEquip stat="0" amount="10">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
+    <BagType>5</BagType>
     <Talisman>
       <Common />
     </Talisman>
@@ -88774,7 +88746,7 @@
     <Description>An taliman that nourishes the weilders magical core.</Description>
     <SlotType>26</SlotType>
     <ActivateOnEquip stat="3" amount="10">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
+    <BagType>5</BagType>
     <Talisman>
       <Common />
     </Talisman>
@@ -88789,7 +88761,7 @@
     <Description>An taliman that strengthens the wielders attacks.</Description>
     <SlotType>26</SlotType>
     <ActivateOnEquip stat="20" amount="2">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
+    <BagType>5</BagType>
     <Talisman>
       <Common />
     </Talisman>
@@ -88804,7 +88776,7 @@
     <Description>An taliman that toughens the weilders skin.</Description>
     <SlotType>26</SlotType>
     <ActivateOnEquip stat="21" amount="2">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
+    <BagType>5</BagType>
     <Talisman>
       <Common />
     </Talisman>
@@ -88819,7 +88791,7 @@
     <Description>An taliman that improves agility.</Description>
     <SlotType>26</SlotType>
     <ActivateOnEquip stat="22" amount="2">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
+    <BagType>5</BagType>
     <Talisman>
       <Common />
     </Talisman>
@@ -88834,7 +88806,7 @@
     <Description>An taliman that improves reflexes.</Description>
     <SlotType>26</SlotType>
     <ActivateOnEquip stat="28" amount="2">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
+    <BagType>5</BagType>
     <Talisman>
       <Common />
     </Talisman>
@@ -88849,7 +88821,7 @@
     <Description>An taliman that speeds up wound healing.</Description>
     <SlotType>26</SlotType>
     <ActivateOnEquip stat="26" amount="2">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
+    <BagType>5</BagType>
     <Talisman>
       <Common />
     </Talisman>
@@ -88864,7 +88836,7 @@
     <Description>An taliman that speeds up mana absorption.</Description>
     <SlotType>26</SlotType>
     <ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
+    <BagType>5</BagType>
     <Talisman>
       <Common />
     </Talisman>
@@ -88886,7 +88858,7 @@
     <ActivateOnEquip stat="28" amount="1">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="1">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="1">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
+    <BagType>5</BagType>
     <Talisman>
       <Common />
     </Talisman>
@@ -88902,7 +88874,7 @@
     <SlotType>26</SlotType>
     <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="3" amount="100">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
+    <BagType>5</BagType>
     <Talisman>
       <Common />
       <OnlyOne />
@@ -88920,7 +88892,7 @@
     <SlotType>26</SlotType>
     <ActivateOnEquip stat="20" amount="10">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="28" amount="10">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
+    <BagType>5</BagType>
     <Talisman>
       <Common />
       <OnlyOne />
@@ -88939,7 +88911,7 @@
     <ActivateOnEquip stat="22" amount="10">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="10">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="10">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
+    <BagType>5</BagType>
     <Talisman>
       <Common />
       <OnlyOne />
@@ -88958,7 +88930,7 @@
     <ActivateOnEquip stat="20" amount="10">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="-10">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="5">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
+    <BagType>5</BagType>
     <Talisman>
       <Legendary />
       <OnlyOne />
@@ -88977,7 +88949,7 @@
     <ActivateOnEquip stat="20" amount="12">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="-10">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="-10">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
+    <BagType>5</BagType>
     <Talisman>
       <Legendary />
       <OnlyOne />
@@ -88996,7 +88968,7 @@
     <ActivateOnEquip stat="0" amount="125">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="15">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="-10">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
+    <BagType>5</BagType>
     <Talisman>
       <Legendary />
       <OnlyOne />
@@ -89014,7 +88986,7 @@
     <ActivateOnEquip stat="20" amount="10">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="20">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="-10">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
+    <BagType>5</BagType>
     <Talisman>
       <Legendary />
       <OnlyOne />
@@ -89032,7 +89004,7 @@
     <ActivateOnEquip stat="0" amount="-100">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="26" amount="-5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="27" amount="20">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
+    <BagType>5</BagType>
     <Talisman>
       <Legendary />
       <OnlyOne />
@@ -89047,7 +89019,7 @@
     </Texture>
     <Description>Its said that misfortune occurs to the wielder when others are nearby</Description>
     <SlotType>26</SlotType>
-    <BagType>10</BagType>
+    <BagType>5</BagType>
     <Talisman>
       <Legendary />
       <OnlyOne />
@@ -89063,7 +89035,7 @@
     </Texture>
     <Description>There is a legend that whoever wields this talisman is granted wealth beyond their wildest dreams</Description>
     <SlotType>26</SlotType>
-    <BagType>10</BagType>
+    <BagType>5</BagType>
     <Talisman>
       <Mythical />
       <OnlyOne />
@@ -89079,7 +89051,7 @@
     </Texture>
     <Description>This talisman will make you known after death as a legend</Description>
     <SlotType>26</SlotType>
-    <BagType>10</BagType>
+    <BagType>5</BagType>
     <Talisman>
       <Mythical />
       <OnlyOne />
@@ -89099,7 +89071,7 @@
     <ActivateOnEquip stat="20" amount="-5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="21" amount="5">IncrementStat</ActivateOnEquip>
     <ActivateOnEquip stat="22" amount="-5">IncrementStat</ActivateOnEquip>
-    <BagType>10</BagType>
+    <BagType>5</BagType>
     <Talisman>
       <Mythical />
       <OnlyOne />

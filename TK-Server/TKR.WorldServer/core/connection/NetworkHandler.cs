@@ -267,9 +267,9 @@ namespace TKR.WorldServer.core.connection
                             // todo redo
                             try
                             {
-                                NReader rdr = null;
+                                NetworkReader rdr = null;
                                 if (payload.Length != 0)
-                                    rdr = new NReader(new MemoryStream(payload));
+                                    rdr = new NetworkReader(new MemoryStream(payload));
                                 var time = new TickTime();
                                 handler.Handle(Client, rdr, ref time);
                                 rdr?.Dispose();
@@ -316,7 +316,7 @@ namespace TKR.WorldServer.core.connection
             try
             {
                 var s = new NetworkStream(Client.Socket);
-                var wtr = new NWriter(s);
+                var wtr = new NetworkWriter(s);
                 wtr.WriteNullTerminatedString(
                     @"<cross-domain-policy>" +
                     @"<allow-access-from domain=""*"" to-ports=""*"" />" +

@@ -15,7 +15,7 @@ namespace TKR.WorldServer.core.net.handlers
     {
         public override MessageId MessageId => MessageId.PLAYERSHOOT;
 
-        public override void Handle(Client client, NReader rdr, ref TickTime tickTime)
+        public override void Handle(Client client, NetworkReader rdr, ref TickTime tickTime)
         {
             var time = rdr.ReadInt32();
             var bulletId = rdr.ReadInt32();
@@ -47,7 +47,7 @@ namespace TKR.WorldServer.core.net.handlers
             var newBulletId = player.GetNextBulletId();
             if (newBulletId != bulletId)
             {
-                Console.WriteLine($"DESYNC PROJECTILES: {player.Name} Class: {player.ObjectDesc.DisplayId ?? player.ObjectDesc.ObjectId}", true);
+                Console.WriteLine($"DESYNC PROJECTILES: {player.Name} Class: {player.ObjectDesc.DisplayId ?? player.ObjectDesc.IdName}", true);
                 return;
             }
 

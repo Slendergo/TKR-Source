@@ -593,19 +593,6 @@ namespace TKR.WorldServer.core.commands.player
         }
     }
 
-    internal class CheckEnemiesKilled : Command
-    {
-        public override string CommandName => "checkenemieskilled";
-        public override string Alias => "cek";
-
-        protected override bool Process(Player player, TickTime time, string args)
-        {
-            var account = player.GameServer.Database.GetAccount(player.AccountId);
-            player.SendInfo("Enemies Killed: " + account.EnemiesKilled);
-            return true;
-        }
-    }
-
     internal class CheckFuelContributed : Command
     {
         public override string CommandName => "checkfuelcontributed";

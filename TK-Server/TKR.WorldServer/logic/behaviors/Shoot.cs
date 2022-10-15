@@ -81,7 +81,7 @@ namespace TKR.WorldServer.logic.behaviors
                 var hasProjectileDesc = host.ObjectDesc.Projectiles.TryGetValue(_projectileIndex, out var desc);
                 if (!hasProjectileDesc)
                 {
-                    Console.WriteLine($"{host.ObjectDesc.ObjectId} Doesnt have projectile: {_projectileIndex}");
+                    Console.WriteLine($"{host.ObjectDesc.IdName} Doesnt have projectile: {_projectileIndex}");
                     cool = _coolDown.Next(Random);
                     Status = CycleStatus.Completed;
                     state = cool;

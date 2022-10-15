@@ -64,7 +64,7 @@
     <HitSound>monster/ghost_god_hit</HitSound>
     <DeathSound>monster/ghost_god_death</DeathSound>
     <Size>100</Size>
-    <MaxHitPoints>1000</MaxHitPoints>
+    <MaxHitPoints>3000</MaxHitPoints>
     <Defense>12</Defense>
     <Terrain>Mountains</Terrain>
     <SpawnProb>1.0</SpawnProb>

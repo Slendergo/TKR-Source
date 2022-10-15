@@ -11,6 +11,8 @@ namespace TKR.WorldServer.logic
 {
     public abstract class Behavior : IStateChildren
     {
+        public const float TO_RADIANS = MathF.PI / 180.0f;
+
         protected static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         [ThreadStatic]

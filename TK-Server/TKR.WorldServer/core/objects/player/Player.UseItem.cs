@@ -65,20 +65,22 @@ namespace TKR.WorldServer.core.objects
 
         public void AETalismanFragment(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
-            if(World.Random.NextDouble() < 0.15)
-            {
-                SendInfo($"The talisman crumbles in your hands");
-                return;
-            }
-
             var dustItem = World.GameServer.ItemDustWeights.Talismans.GetRandom(World.Random);
             var entity = World.GetEntity(objId);
+
+            if (World.Random.NextDouble() < 0.05)
+            {
+                dustItem = null;
+                SendInfo($"The talisman crumbles in your hands");
+            }
+
             if (entity is Container container)
                 container.Inventory[slot] = dustItem;
             else
                 Inventory[slot] = dustItem;
 
-            SendInfo($"Opened a Talisman Fragment and obtained a {dustItem.DisplayName ?? dustItem.ObjectId}");
+            if(dustItem != null)
+                SendInfo($"Opened a Talisman Fragment and obtained a {dustItem.DisplayName ?? dustItem.ObjectId}");
         }
         public void AESpecialDust(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
@@ -504,23 +506,6 @@ namespace TKR.WorldServer.core.objects
 
                     case ActivateEffects.StasisBlast:
                         StasisBlast(time, item, target, eff);
-                        break;
-
-                    case ActivateEffects.Pet:
-
-                        #region Pet
-
-                        Entity en = Resolve(GameServer, eff.ObjectId);
-                        en.Move(X, Y);
-                        en.SetPlayerOwner(this);
-                        World.EnterWorld(en);
-                        World.StartNewTimer(30 * 1000, (w, t) =>
-                        {
-                            w.LeaveWorld(en);
-                        });
-
-                        #endregion Pet
-
                         break;
 
                     case ActivateEffects.Decoy:

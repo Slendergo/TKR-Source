@@ -33,88 +33,6 @@ namespace TKR.WorldServer.core.terrain
         public bool Contains(float x, float y) => !(x < 0 || x >= Width || y < 0 || y >= Height);
         public bool Contains(int x, int y) => !(x < 0 || x >= Width || y < 0 || y >= Height);
 
-        public IEnumerable<Entity> InstantiateEntities(GameServer manager, IntPoint offset = new IntPoint())
-        {
-            foreach (var i in Entities)
-            {
-                var entity = Entity.Resolve(manager, i.Item2);
-                entity.Move(i.Item1.X + 0.5f + offset.X, i.Item1.Y + 0.5f + offset.Y);
-
-                if (i.Item3 != null)
-                    foreach (var item in i.Item3.Split(';'))
-                    {
-                        var kv = item.Split(':');
-
-                        switch (kv[0])
-                        {
-                            case "hp":
-                                (entity as Enemy).HP = Utils.GetInt(kv[1]);
-                                (entity as Enemy).MaximumHP = (entity as Enemy).HP;
-                                break;
-
-                            case "name":
-                                entity.Name = kv[1];
-                                break;
-                            case "size":
-                                entity.SetDefaultSize(Math.Min(500, Utils.GetInt(kv[1])));
-                                break;
-
-                            case "eff":
-                                entity.ApplyPermanentConditionEffect((ConditionEffectIndex)ulong.Parse(kv[1]));
-                                break;
-
-                            case "conn":
-                                (entity as ConnectedObject).Connection = ConnectedObjectInfo.Infos[(uint)Utils.GetInt(kv[1])];
-                                break;
-
-                            case "mtype":
-                                (entity as SellableMerchant).Item = (ushort)Utils.GetInt(kv[1]);
-                                break;
-
-                            case "mcost":
-                                (entity as SellableObject).Price = Math.Max(0, Utils.GetInt(kv[1]));
-                                break;
-
-                            case "mcur":
-                                (entity as SellableObject).Currency = (CurrencyType)Utils.GetInt(kv[1]);
-                                break;
-
-                            case "mamnt":
-                                (entity as SellableMerchant).Count = Utils.GetInt(kv[1]);
-                                break;
-
-                            case "mtime":
-                                (entity as SellableMerchant).TimeLeft = Utils.GetInt(kv[1]);
-                                break;
-
-                            case "mdisc": // not implemented
-                                break;
-
-                            case "mrank":
-                            case "stars": // provided for backwards compatibility with older maps
-                                (entity as SellableObject).RankRequired = Utils.GetInt(kv[1]);
-                                break;
-
-                            case "xOffset":
-                                var xo = float.Parse(kv[1]);
-                                entity.Move(entity.X + xo, entity.Y);
-                                break;
-
-                            case "yOffset":
-                                var yo = float.Parse(kv[1]);
-                                entity.Move(entity.X, entity.Y + yo);
-                                break;
-
-                            case "mtax":
-                                (entity as SellableObject).Tax = Utils.FromString(kv[1]);
-                                break;
-                        }
-                    }
-
-                yield return entity;
-            }
-        }
-
         public int Load(Stream stream, int idBase)
         {
             var ver = stream.ReadByte();
@@ -235,11 +153,86 @@ namespace TKR.WorldServer.core.terrain
                     tile.UpdateCount++;
                 }
 
-            foreach (var e in InstantiateEntities(world.GameServer, pos))
+            CreateEntities(pos);
+        }
+
+
+        public void CreateEntities(IntPoint offset = new IntPoint())
+        {
+            foreach (var i in Entities)
             {
-                if (!world.Map.Contains((int)e.X, (int)e.Y))
-                    continue;
-                world.EnterWorld(e);
+                var entity = World.CreateNewEntity(i.Item2, i.Item1.X + 0.5f + offset.X, i.Item1.Y + 0.5f + offset.Y);
+
+                if (i.Item3 != null)
+                    foreach (var item in i.Item3.Split(';'))
+                    {
+                        var kv = item.Split(':');
+
+                        switch (kv[0])
+                        {
+                            case "hp":
+                                (entity as Enemy).HP = Utils.GetInt(kv[1]);
+                                (entity as Enemy).MaximumHP = (entity as Enemy).HP;
+                                break;
+
+                            case "name":
+                                entity.Name = kv[1];
+                                break;
+                            case "size":
+                                entity.SetDefaultSize(Math.Min(500, Utils.GetInt(kv[1])));
+                                break;
+
+                            case "eff":
+                                entity.ApplyPermanentConditionEffect((ConditionEffectIndex)ulong.Parse(kv[1]));
+                                break;
+
+                            case "conn":
+                                (entity as ConnectedObject).Connection = ConnectedObjectInfo.Infos[(uint)Utils.GetInt(kv[1])];
+                                break;
+
+                            case "mtype":
+                                (entity as SellableMerchant).Item = (ushort)Utils.GetInt(kv[1]);
+                                break;
+
+                            case "mcost":
+                                (entity as SellableObject).Price = Math.Max(0, Utils.GetInt(kv[1]));
+                                break;
+
+                            case "mcur":
+                                (entity as SellableObject).Currency = (CurrencyType)Utils.GetInt(kv[1]);
+                                break;
+
+                            case "mamnt":
+                                (entity as SellableMerchant).Count = Utils.GetInt(kv[1]);
+                                break;
+
+                            case "mtime":
+                                (entity as SellableMerchant).TimeLeft = Utils.GetInt(kv[1]);
+                                break;
+
+                            case "mdisc": // not implemented
+                                break;
+
+                            case "mrank":
+                            case "stars": // provided for backwards compatibility with older maps
+                                (entity as SellableObject).RankRequired = Utils.GetInt(kv[1]);
+                                break;
+
+                            case "xOffset":
+                                var xo = float.Parse(kv[1]);
+                                entity.Move(entity.X + xo, entity.Y);
+                                break;
+
+                            case "yOffset":
+                                var yo = float.Parse(kv[1]);
+                                entity.Move(entity.X, entity.Y + yo);
+                                break;
+
+                            case "mtax":
+                                (entity as SellableObject).Tax = Utils.FromString(kv[1]);
+                                break;
+                        }
+                    }
             }
         }
 

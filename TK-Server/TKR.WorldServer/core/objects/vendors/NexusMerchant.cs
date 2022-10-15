@@ -1,13 +1,11 @@
-﻿using TKR.Shared;
-using TKR.Shared.resources;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using TKR.Shared.resources;
 using TKR.WorldServer.core.miscfile.stats;
 using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.core.objects.inventory;
 using TKR.WorldServer.core.worlds;
 using TKR.WorldServer.core.worlds.logic;
-using TKR.WorldServer.core.objects;
 
 namespace TKR.WorldServer.core.objects.vendors
 {

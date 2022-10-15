@@ -29,14 +29,12 @@ namespace TKR.WorldServer.core.objects
 
         private SV<int> _altTextureIndex;
         private SV<string> _name;
-        private int _originalSize;
         private SV<int> _size;
         private bool _stateEntry;
         private State _stateEntryCommonRoot;
         private Dictionary<object, object> _states;
         private SV<float> _x;
         private SV<float> _y;
-        private Player playerOwner;
         private ConditionEffectManager ConditionEffectManager;
         public bool Dead { get; private set; }
 
@@ -76,7 +74,6 @@ namespace TKR.WorldServer.core.objects
 
             _name = new SV<string>(this, StatDataType.Name, ObjectDesc.DisplayName);
             _size = new SV<int>(this, StatDataType.Size, ObjectDesc.Size);
-            _originalSize = 100;
             _altTextureIndex = new SV<int>(this, StatDataType.AltTextureIndex, -1);
             _x = new SV<float>(this, StatDataType.None, 0);
             _y = new SV<float>(this, StatDataType.None, 0);
@@ -90,7 +87,7 @@ namespace TKR.WorldServer.core.objects
 
         public GameServer GameServer { get; private set; }
         public State CurrentState { get; private set; }
-        public int Id { get; internal set; }
+        public int Id { get; internal set; } = -1;
         public string Name { get => _name.GetValue(); set => _name?.SetValue(value); }
         public ObjectDesc ObjectDesc { get; private set; }
         public ushort ObjectType { get; protected set; }
@@ -144,63 +141,50 @@ namespace TKR.WorldServer.core.objects
             return false;
         }
 
-        public static Entity Resolve(GameServer manager, string name)
+        public static Entity Resolve(GameServer gameServer, string name)
         {
-            if (!manager.Resources.GameData.IdToObjectType.TryGetValue(name, out ushort id))
+            if (!gameServer.Resources.GameData.IdToObjectType.TryGetValue(name, out ushort id))
                 return null;
-
-            return Resolve(manager, id);
+            return Resolve(gameServer, id);
         }
 
-        public static Entity Resolve(GameServer manager, ushort id)
+        public static Entity Resolve(GameServer gameServer, ushort objectType)
         {
-            var node = manager.Resources.GameData.ObjectDescs[id];
-            int? hp = node.MaxHP == 0 ? null : node.MaxHP;
-            var type = node.Class;
+            var desc = gameServer.Resources.GameData.ObjectDescs[objectType];
+            int? hp = desc.MaxHP == 0 ? null : desc.MaxHP;
+            var type = desc.Class;
+
+            if (desc.Connects)
+                return new ConnectedObject(gameServer, objectType);
+            if (desc.Container)
+                return new Container(gameServer, objectType);
+            if (desc.Enemy)
+                return new Enemy(gameServer, objectType);
+            
             switch (type)
             {
-                case "Sign":
-                    return new Sign(manager, id);
-
-                case "Wall":
-                case "DoubleWall":
-                    return new Wall(manager, id, hp);
-
-                case "ConnectedWall":
-                case "CaveWall":
-                    return new ConnectedObject(manager, id);
-
                 case "GameObject":
                 case "CharacterChanger":
                 case "MoneyChanger":
                 case "NameChanger":
-                    return new StaticObject(manager, id, hp, true, false, true);
+                    return new StaticObject(gameServer, objectType, hp, true, false, true);
 
-                case "GuildRegister":
-                case "GuildChronicle":
-                case "GuildBoard":
-                    return new StaticObject(manager, id, null, false, false, false);
-
-                case "Container":
-                    return new Container(manager, id);
-
-                case "Player":
-                    throw new Exception("Player should not instantiated using Entity.Resolve");
                 case "Character":   //Other characters means enemy
-                    return new Enemy(manager, id);
-
-                case "ArenaPortal":
-                case "Portal":
-                    return new Portal(manager, id, null);
+                    return new Enemy(gameServer, objectType);
 
                 case "GuildHallPortal":
-                    return new GuildHallPortal(manager, id, null);
+                case "ArenaPortal":
+                case "Portal":
+                    return new Portal(gameServer, objectType);
 
                 case "ClosedVaultChest":
-                    return new ClosedVaultChest(manager, id);
+                    return new ClosedVaultChest(gameServer, objectType);
 
                 case "Merchant":
-                    return new NexusMerchant(manager, id);
+                    return new NexusMerchant(gameServer, objectType);
+
+                case "GuildMerchant":
+                    return new GuildMerchant(gameServer, objectType);
 
                 case "ClosedVaultChestGold":
                 case "VaultChest":
@@ -208,28 +192,12 @@ namespace TKR.WorldServer.core.objects
                 case "SkillTree":
                 case "Forge":
                 case "StatNPC":
-                    return new SellableMerchant(manager, id);
-
-                case "ClosedGiftChest":
-                case "SpecialClosedVaultChest":
-                    return new StaticObject(manager, id, null, false, false, false);
+                    return new SellableMerchant(gameServer, objectType);
 
                 case "Engine":
-                    return new Engine(manager, id);
-
-                case "GuildMerchant":
-                    return new GuildMerchant(manager, id);
-
-                case "BountyBoard":
-                    return new StaticObject(manager, id, null, false, false, false);
-
-                case "PotionStorage":
-                    return new StaticObject(manager, id, null, false, false, false);
-
-                default:
-                    StaticLogger.Instance.Warn("Not supported type: {0}", type);
-                    return new Entity(manager, id);
+                    return new Engine(gameServer, objectType);
             }
+            return new StaticObject(gameServer, objectType, null, true, false, false);
         }
 
         public void ApplyPermanentConditionEffect(ConditionEffectIndex effect)
@@ -327,16 +295,7 @@ namespace TKR.WorldServer.core.objects
             }
         }
 
-        public void RestoreDefaultSize() => Size = _originalSize;
-
-        public void SetDefaultSize(int size)
-        {
-            _originalSize = size;
-
-            Size = size;
-        }
-
-        public void SetPlayerOwner(Player target) => playerOwner = target;
+        public void SetDefaultSize(int size) => Size = size;
 
         public void SwitchTo(State state)
         {
@@ -353,12 +312,11 @@ namespace TKR.WorldServer.core.objects
 
         public virtual void Tick(ref TickTime time)
         {
+            ConditionEffectManager.Update(ref time);
+
             if (HasConditionEffect(ConditionEffectIndex.Stasis))
                 return;
-
             TickState(time);
-
-            ConditionEffectManager.Update(ref time);
         }
 
         public void TickState(TickTime time)

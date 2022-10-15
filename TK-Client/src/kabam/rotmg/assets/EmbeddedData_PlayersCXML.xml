@@ -73,7 +73,7 @@
     <Player />
     <BloodProb>1.0</BloodProb>
     <SlotTypes>3, 27, 6, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26, 26, 26, 26, 26, 26, 26, 26</SlotTypes>
-    <Equipment>0xa1a, 0x4343, -1, -1, 0x4344, 0x4345, 0x4346, 0x4347, 0x4349, 0x434b, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1</Equipment>
+    <Equipment>0xa1a, 0x4343, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1</Equipment>
     <MaxHitPoints max="720">150</MaxHitPoints>
     <MaxMagicPoints max="252">100</MaxMagicPoints>
     <Attack max="60">15</Attack>

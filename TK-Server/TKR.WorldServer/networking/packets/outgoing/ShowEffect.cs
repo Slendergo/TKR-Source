@@ -36,7 +36,7 @@ namespace TKR.WorldServer.networking.packets.outgoing
 
         public override MessageId MessageId => MessageId.SHOWEFFECT;
 
-        public override void Write(NWriter wtr)
+        public override void Write(NetworkWriter wtr)
         {
             wtr.Write((byte)EffectType);
             wtr.Write(TargetObjectId);

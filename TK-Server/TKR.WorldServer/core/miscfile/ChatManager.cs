@@ -119,10 +119,10 @@ namespace TKR.WorldServer.core.miscfile
                 enemy = entity as Enemy;
 
             var displayenemy =
-                  enemy.Legendary ? $"Legendary {entity.ObjectDesc.DisplayId ?? entity.ObjectDesc.ObjectId}" :
-                  enemy.Epic ? $"Epic {entity.ObjectDesc.DisplayId ?? entity.ObjectDesc.ObjectId}" :
-                  enemy.Rare ? $"Rare {entity.ObjectDesc.DisplayId ?? entity.ObjectDesc.ObjectId}" :
-                  entity.ObjectDesc.DisplayId ?? entity.ObjectDesc.ObjectId;
+                  enemy.Legendary ? $"Legendary {entity.ObjectDesc.DisplayId ?? entity.ObjectDesc.IdName}" :
+                  enemy.Epic ? $"Epic {entity.ObjectDesc.DisplayId ?? entity.ObjectDesc.IdName}" :
+                  enemy.Rare ? $"Rare {entity.ObjectDesc.DisplayId ?? entity.ObjectDesc.IdName}" :
+                  entity.ObjectDesc.DisplayId ?? entity.ObjectDesc.IdName;
 
             name = displayenemy;
 
@@ -172,47 +172,53 @@ namespace TKR.WorldServer.core.miscfile
             return true;
         }
 
-        public void Say(Player src, string text)
+        public void Say(Player player, string text)
         {
             if (string.IsNullOrWhiteSpace(text))
                 return;
 
+            if(player == null)
+            {
+                Console.WriteLine("[Say] player is null");
+                return;
+            }
+
             var supporter = 0;
-            if (src.IsSupporter1)
+            if (player.IsSupporter1)
                 supporter++;
-            if (src.IsSupporter2)
+            if (player.IsSupporter2)
                 supporter++;
-            if (src.IsSupporter3)
+            if (player.IsSupporter3)
                 supporter++;
-            if (src.IsSupporter4)
+            if (player.IsSupporter4)
                 supporter++;
-            if (src.IsSupporter5)
+            if (player.IsSupporter5)
                 supporter++;
 
             var nameTag = "";
-            if (src.IsCommunityManager)
+            if (player.IsCommunityManager)
                 nameTag = "[CM] ";
-            if (src.IsCommunityManager && supporter > 0)
+            if (player.IsCommunityManager && supporter > 0)
                 nameTag = $"[CM | S-{supporter}] ";
             else if (supporter > 0)
                 nameTag = $"[S-{supporter}] ";
 
-            if (src.Client.Account.Name == "Slendergo" || src.Client.Account.Name == "ModBBQ" || src.Client.Account.Name == "Orb")
+            if (player.Name == "Slendergo" || player.Name == "ModBBQ" || player.Name == "Orb")
                 nameTag = "[Owner] ";
 
             var tp = new Text()
             {
-                Name = $"{nameTag}{src.Name}",
-                ObjectId = src.Id,
-                NumStars = src.Stars,
+                Name = $"{nameTag}{player.Name}",
+                ObjectId = player.Id,
+                NumStars = player.Stars,
                 BubbleTime = 5,
                 Recipient = "",
                 Txt = text,
-                NameColor = src.Client.Account.ColorNameChat != 0 ? src.Client.Account.ColorNameChat : 0x123456,
-                TextColor = src.Client.Account.ColorChat != 0 ? src.Client.Account.ColorChat : 0xFFFFFF
+                NameColor = player.ColorNameChat != 0 ? player.ColorNameChat : 0x123456,
+                TextColor = player.ColorChat != 0 ? player.ColorChat : 0xFFFFFF
             };
 
-            SendTextPacket(src, tp, p => !p.Client.Account.IgnoreList.Contains(src.AccountId));
+            SendTextPacket(player, tp, p => !p.Client.Account.IgnoreList.Contains(player.AccountId));
         }
 
         public bool SendInfo(int target, string text)
@@ -406,6 +412,9 @@ namespace TKR.WorldServer.core.miscfile
         {
             src.World.ForeachPlayer(_ =>
             {
+                if (_ == null || _.Client == null)
+                    return;
+
                 if (predicate(_))
                     _.Client.SendPacket(tp);
             });

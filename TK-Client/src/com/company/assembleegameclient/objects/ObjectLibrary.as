@@ -188,11 +188,6 @@ public class ObjectLibrary
        {
            var textureData:TextureData = typeToTextureData_[objectType];
            var texture:BitmapData = Boolean(textureData)?textureData.getTexture():null;
-           var objectXML:XML = xmlLibrary_[objectType];
-          if(objectXML == null)
-          {
-             return null;
-          }
            if(texture == null)
            {
                texture = AssetLibrary.getImageFromSet("lofiObj3",255);
@@ -202,6 +197,7 @@ public class ObjectLibrary
            {
                return TextureRedrawer.redraw(texture,size,includeBottom,0,useCaching,scaleValue);
            }
+           var objectXML:XML = xmlLibrary_[objectType];
            var tex1:int = Boolean(objectXML.hasOwnProperty("Tex1"))?int(int(objectXML.Tex1)):int(0);
            var tex2:int = Boolean(objectXML.hasOwnProperty("Tex2"))?int(int(objectXML.Tex2)):int(0);
            texture = TextureRedrawer.resize(texture,mask,size,includeBottom,tex1,tex2);

@@ -10,11 +10,11 @@ namespace TKR.WorldServer.networking.packets.outgoing
 
         public override MessageId MessageId => MessageId.DEATH;
 
-        public override void Write(NWriter wtr)
+        public override void Write(NetworkWriter wtr)
         {
             wtr.Write(AccountId);
             wtr.Write(CharId);
-            wtr.WriteUTF(KilledBy);
+            wtr.WriteUTF16(KilledBy);
         }
     }
 }

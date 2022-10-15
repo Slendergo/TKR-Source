@@ -13,7 +13,7 @@ namespace TKR.WorldServer.core.net.handlers
 
         public override MessageId MessageId => MessageId.EDITACCOUNTLIST;
 
-        public override void Handle(Client client, NReader rdr, ref TickTime time)
+        public override void Handle(Client client, NetworkReader rdr, ref TickTime time)
         {
             var accountListId = rdr.ReadInt32();
             var add = rdr.ReadBoolean();

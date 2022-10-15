@@ -160,7 +160,6 @@ public class UIConfig implements IConfig
       this.injector.map(StatsTabHotKeyInputSignal).asSingleton();
       this.injector.map(LegendaryPopUpSignal).asSingleton();
       this.injector.map(MythicalPopUpSignal).asSingleton();
-      this.injector.map(TalismanPopUpSignal).asSingleton();
       this.commandMap.map(ShowLoadingUISignal).toCommand(ShowLoadingUICommand);
       this.commandMap.map(ShowTitleUISignal).toCommand(ShowTitleUICommand);
       this.commandMap.map(ChooseNameSignal).toCommand(ChooseNameCommand);
@@ -197,7 +196,6 @@ public class UIConfig implements IConfig
       this.mediatorMap.map(ForgeModal).toMediator(ForgeModalMediator);
       this.commandMap.map(LegendaryPopUpSignal).toCommand(ShowLegendaryPopUICommand);
       this.commandMap.map(MythicalPopUpSignal).toCommand(ShowMythicalPopUICommand);
-      this.commandMap.map(TalismanPopUpSignal).toCommand(ShowTalismanPopUICommand);
       this.uiDECA();
       this.customUIs();
       this.setupKeyUI();

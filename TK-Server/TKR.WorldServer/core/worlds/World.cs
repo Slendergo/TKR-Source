@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
+using System.Xml.Linq;
 using TKR.Shared.database;
+using TKR.Shared.isc;
 using TKR.Shared.resources;
 using TKR.WorldServer.core.miscfile.census;
 using TKR.WorldServer.core.miscfile.structures;
@@ -13,6 +15,7 @@ using TKR.WorldServer.core.miscfile.world;
 using TKR.WorldServer.core.objects;
 using TKR.WorldServer.core.objects.containers;
 using TKR.WorldServer.core.objects.player;
+using TKR.WorldServer.core.objects.vendors;
 using TKR.WorldServer.core.terrain;
 using TKR.WorldServer.core.worlds.impl;
 using TKR.WorldServer.core.worlds.logic;
@@ -27,7 +30,7 @@ namespace TKR.WorldServer.core.worlds
         public const int NEXUS_ID = -2;
         public const int TEST_ID = -6;
 
-        private static int NextEntityId;
+        private int NextEntityId;
 
         public readonly Random Random = new Random();
 
@@ -63,6 +66,7 @@ namespace TKR.WorldServer.core.worlds
         public Dictionary<int, Container> Containers { get; private set; } = new Dictionary<int, Container>();
         public Dictionary<int, Portal> Portals { get; private set; } = new Dictionary<int, Portal>();
         public Dictionary<int, Pet> Pets { get; private set; } = new Dictionary<int, Pet>();
+        public Dictionary<int, SellableObject> SellableObjects { get; private set; } = new Dictionary<int, SellableObject>();
 
         private readonly List<Entity> EntitiesToAdd = new List<Entity>();
         private readonly List<Entity> EntitiesToRemove = new List<Entity>();
@@ -178,12 +182,30 @@ namespace TKR.WorldServer.core.worlds
                 en.Value.OnChatTextReceived(player, text);
         }
 
-        public virtual int EnterWorld(Entity entity)
+        public Player CreateNewPlayer(Client client, float x, float y)
         {
+            var entity = new Player(client);
             entity.Id = GetNextEntityId();
             entity.Init(this);
+            entity.Move(x, y);
             EntitiesToAdd.Add(entity);
-            return entity.Id;
+            return entity;
+        }
+
+        public Entity CreateNewEntity(string idName, float x, float y) => !GameServer.Resources.GameData.IdToObjectType.TryGetValue(idName, out var type) ? null : CreateNewEntity(type, x, y);
+        public Entity CreateNewEntity(ushort objectType, float x, float y)
+        {
+            var entity = Entity.Resolve(GameServer, objectType);
+            if (entity == null)
+            {
+                // unable to identify the entity return null;
+                return null;
+            }
+            entity.Id = GetNextEntityId();
+            entity.Init(this);
+            entity.Move(x, y);
+            EntitiesToAdd.Add(entity);
+            return entity;
         }
 
         public string GetDisplayName() => DisplayName != null && DisplayName.Length > 0 ? DisplayName : IdName;
@@ -210,7 +232,7 @@ namespace TKR.WorldServer.core.worlds
             return null;
         }
 
-        public int GetNextEntityId() => Interlocked.Increment(ref NextEntityId);
+        public int GetNextEntityId() => NextEntityId++;
 
         public IEnumerable<Player> GetPlayers() => Players.Values;
 
@@ -269,6 +291,15 @@ namespace TKR.WorldServer.core.worlds
 
         public bool IsPlayersMax() => Players.Count >= MaxPlayers;
 
+        public void EnterWorld(Entity entity)
+        {
+            if (entity.Id == -1)
+                entity.Id = GetNextEntityId();
+            if(entity.World == null)
+                entity.Init(this);
+            EntitiesToAdd.Add(entity);
+        }
+
         public virtual void LeaveWorld(Entity entity) => entity.Expunge();
 
         private void AddToWorld(Entity entity)
@@ -278,6 +309,8 @@ namespace TKR.WorldServer.core.worlds
                 Players.TryAdd(entity.Id, entity as Player);
                 PlayersCollision.Insert(entity, entity.X, entity.Y);
             }
+            else if (entity is SellableObject)
+                SellableObjects.TryAdd(entity.Id, entity as SellableObject);
             else if (entity is Enemy)
             {
                 Enemies.TryAdd(entity.Id, entity as Enemy);
@@ -318,7 +351,9 @@ namespace TKR.WorldServer.core.worlds
                 if (player != null && player.Pet != null)
                     LeaveWorld(player.Pet);
             }
-            else if (entity is Enemy)
+            else if (entity is SellableObject)
+                SellableObjects.Remove(entity.Id);
+            else if (entity.ObjectDesc.Enemy)
             {
                 Enemies.Remove(entity.Id);
                 EnemiesCollision.Remove(entity);
@@ -329,7 +364,7 @@ namespace TKR.WorldServer.core.worlds
                 Containers.Remove(entity.Id);
             else if (entity is Portal)
                 Portals.Remove(entity.Id);
-            else if (entity is StaticObject)
+            else if (entity.ObjectDesc.Static)
             {
                 StaticObjects.Remove(entity.Id);
                 if (entity is Decoy)
@@ -369,7 +404,7 @@ namespace TKR.WorldServer.core.worlds
 
         protected void FromWorldMap(Stream dat)
         {
-            Interlocked.Add(ref NextEntityId, Map.Load(dat, NextEntityId));
+            NextEntityId += Map.Load(dat, NextEntityId);
             InitMap();
         }
 
@@ -393,9 +428,7 @@ namespace TKR.WorldServer.core.worlds
 
             EnemiesCollision = new CollisionMap<Entity>(0, w, h);
             PlayersCollision = new CollisionMap<Entity>(1, w, h);
-
-            foreach (var i in Map.InstantiateEntities(GameServer))
-                _ = EnterWorld(i);
+            Map.CreateEntities();
         }
 
         public Entity FindPlayerTarget(Entity host)
@@ -437,7 +470,7 @@ namespace TKR.WorldServer.core.worlds
             }
             catch (Exception e)
             {
-                Console.WriteLine($"World Tick: {e}");
+                Console.WriteLine($"World Tick: {e.Message} \n trace: {e.StackTrace}");
                 return false;
             }
         }
@@ -463,6 +496,13 @@ namespace TKR.WorldServer.core.worlds
                 player.Tick(ref time);
                 if (player.Dead)
                     EntitiesToRemove.Add(player);
+            }
+
+            foreach (var sellable in SellableObjects.Values)
+            {
+                sellable.Tick(ref time);
+                if (sellable.Dead)
+                    EntitiesToRemove.Add(sellable);
             }
 
             foreach (var stat in StaticObjects.Values)

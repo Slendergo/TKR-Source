@@ -16,15 +16,15 @@ namespace TKR.WorldServer.networking.packets.outgoing
 
         public override MessageId MessageId => MessageId.TEXT;
 
-        public override void Write(NWriter wtr)
+        public override void Write(NetworkWriter wtr)
         {
-            wtr.WriteUTF(Name);
+            wtr.WriteUTF16(Name);
             wtr.Write(ObjectId);
             wtr.Write(NumStars);
             wtr.Write(BubbleTime);
-            wtr.WriteUTF(Recipient);
-            wtr.WriteUTF(Txt);
-            wtr.WriteUTF(CleanText);
+            wtr.WriteUTF16(Recipient);
+            wtr.WriteUTF16(Txt);
+            wtr.WriteUTF16(CleanText);
             wtr.Write(NameColor);
             wtr.Write(TextColor);
         }

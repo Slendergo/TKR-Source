@@ -298,7 +298,7 @@
     <HitSound>monster/sprites_hit</HitSound>
     <DeathSound>monster/sprites_death</DeathSound>
     <Size>75</Size>
-    <MaxHitPoints>50</MaxHitPoints>
+    <MaxHitPoints>600</MaxHitPoints>
     <Defense>0</Defense>
     <Terrain>Mountains</Terrain>
     <Flying />

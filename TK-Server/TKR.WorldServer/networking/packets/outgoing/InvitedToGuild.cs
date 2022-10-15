@@ -9,10 +9,10 @@ namespace TKR.WorldServer.networking.packets.outgoing
 
         public override MessageId MessageId => MessageId.INVITEDTOGUILD;
 
-        public override void Write(NWriter wtr)
+        public override void Write(NetworkWriter wtr)
         {
-            wtr.WriteUTF(Name);
-            wtr.WriteUTF(GuildName);
+            wtr.WriteUTF16(Name);
+            wtr.WriteUTF16(GuildName);
         }
     }
 }

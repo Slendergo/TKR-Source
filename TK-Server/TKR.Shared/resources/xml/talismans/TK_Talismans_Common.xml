@@ -9,7 +9,7 @@
 		<Description>An taliman that nourishes the weilders soul.</Description>
 		<SlotType>26</SlotType>
 		<ActivateOnEquip stat="0" amount="10">IncrementStat</ActivateOnEquip>
-		<BagType>10</BagType>
+		<BagType>5</BagType>
 		<Talisman>
 			<Common/>
 		</Talisman>
@@ -24,7 +24,7 @@
 		<Description>An taliman that nourishes the weilders magical core.</Description>
 		<SlotType>26</SlotType>
 		<ActivateOnEquip stat="3" amount="10">IncrementStat</ActivateOnEquip>
-		<BagType>10</BagType>
+		<BagType>5</BagType>
 		<Talisman>
 			<Common/>
 		</Talisman>
@@ -39,7 +39,7 @@
 		<Description>An taliman that strengthens the wielders attacks.</Description>
 		<SlotType>26</SlotType>
 		<ActivateOnEquip stat="20" amount="2">IncrementStat</ActivateOnEquip>
-		<BagType>10</BagType>
+		<BagType>5</BagType>
 		<Talisman>
 			<Common/>
 		</Talisman>
@@ -54,7 +54,7 @@
 		<Description>An taliman that toughens the weilders skin.</Description>
 		<SlotType>26</SlotType>
 		<ActivateOnEquip stat="21" amount="2">IncrementStat</ActivateOnEquip>
-		<BagType>10</BagType>
+		<BagType>5</BagType>
 		<Talisman>
 			<Common/>
 		</Talisman>
@@ -69,7 +69,7 @@
 		<Description>An taliman that improves agility.</Description>
 		<SlotType>26</SlotType>
 		<ActivateOnEquip stat="22" amount="2">IncrementStat</ActivateOnEquip>
-		<BagType>10</BagType>
+		<BagType>5</BagType>
 		<Talisman>
 			<Common/>
 		</Talisman>
@@ -84,7 +84,7 @@
 		<Description>An taliman that improves reflexes.</Description>
 		<SlotType>26</SlotType>
 		<ActivateOnEquip stat="28" amount="2">IncrementStat</ActivateOnEquip>
-		<BagType>10</BagType>
+		<BagType>5</BagType>
 		<Talisman>
 			<Common/>
 		</Talisman>
@@ -99,7 +99,7 @@
 		<Description>An taliman that speeds up wound healing.</Description>
 		<SlotType>26</SlotType>
 		<ActivateOnEquip stat="26" amount="2">IncrementStat</ActivateOnEquip>
-		<BagType>10</BagType>
+		<BagType>5</BagType>
 		<Talisman>
 			<Common/>
 		</Talisman>
@@ -114,7 +114,7 @@
 		<Description>An taliman that speeds up mana absorption.</Description>
 		<SlotType>26</SlotType>
 		<ActivateOnEquip stat="27" amount="2">IncrementStat</ActivateOnEquip>
-		<BagType>10</BagType>
+		<BagType>5</BagType>
 		<Talisman>
 			<Common/>
 		</Talisman>
@@ -136,7 +136,7 @@
 		<ActivateOnEquip stat="28" amount="1">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="26" amount="1">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="27" amount="1">IncrementStat</ActivateOnEquip>
-		<BagType>10</BagType>
+		<BagType>5</BagType>
 		<Talisman>
 			<Common/>
 		</Talisman>
@@ -153,7 +153,7 @@
 		<SlotType>26</SlotType>
 		<ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="3" amount="100">IncrementStat</ActivateOnEquip>
-		<BagType>10</BagType>
+		<BagType>5</BagType>
 		<Talisman>
 			<Common/>
 			<OnlyOne/>
@@ -172,7 +172,7 @@
 		<SlotType>26</SlotType>
 		<ActivateOnEquip stat="20" amount="10">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="28" amount="10">IncrementStat</ActivateOnEquip>
-		<BagType>10</BagType>
+		<BagType>5</BagType>
 		<Talisman>
 			<Common/>
 			<OnlyOne/>
@@ -192,7 +192,7 @@
 		<ActivateOnEquip stat="22" amount="10">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="26" amount="10">IncrementStat</ActivateOnEquip>
 		<ActivateOnEquip stat="27" amount="10">IncrementStat</ActivateOnEquip>
-		<BagType>10</BagType>
+		<BagType>5</BagType>
 		<Talisman>
 			<Common/>
 			<OnlyOne/>

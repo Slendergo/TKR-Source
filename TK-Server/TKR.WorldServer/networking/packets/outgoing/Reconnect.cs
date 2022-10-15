@@ -19,10 +19,10 @@ namespace TKR.WorldServer.networking.packets.outgoing
             Key = Guid.NewGuid().ToByteArray();
         }
 
-        public override void Write(NWriter wtr)
+        public override void Write(NetworkWriter wtr)
         {
-            wtr.WriteUTF(Name);
-            wtr.WriteUTF(Host);
+            wtr.WriteUTF16(Name);
+            wtr.WriteUTF16(Host);
             wtr.Write(Port);
             wtr.Write(GameId);
             wtr.Write(KeyTime);

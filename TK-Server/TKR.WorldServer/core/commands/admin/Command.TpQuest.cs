@@ -29,7 +29,7 @@ namespace TKR.WorldServer.core.commands
                 var x = player.Quest.X;
                 var y = player.Quest.Y;
 
-                if (player.Quest.ObjectDesc.ObjectId.Contains("Hermit"))
+                if (player.Quest.ObjectDesc.IdName.Contains("Hermit"))
                     y += 6;
 
                 player.TeleportPosition(time, x, y);

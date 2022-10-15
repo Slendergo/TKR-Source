@@ -74,17 +74,11 @@ namespace TKR.WorldServer.core.miscfile.world
 
                 var pos = GetRandPosition();
 
-                var portal = new Portal(GameServer, 0x0712, null)
-                {
-                    WorldInstance = world,
-                    Name = world.GetDisplayName() + $" (0/{MAX_PER_REALM})"
-                };
-
+                var portal = (Portal)World.CreateNewEntity("Nexus Portal", pos.X + 0.5f, pos.Y + 0.5f);
+                portal.WorldInstance = world;
+                portal.Name = world.GetDisplayName() + $" (0/{MAX_PER_REALM})";
                 portal.SetDefaultSize(80);
 
-                portal.Move(pos.X + 0.5f, pos.Y + 0.5f);
-
-                _ = World.EnterWorld(portal);
                 Portals.Add(world.Id, portal);
             }
         }
@@ -181,7 +175,6 @@ namespace TKR.WorldServer.core.miscfile.world
             if (realmPortalRegions.Length > Portals.Count)
             {
                 KeyValuePair<IntPoint, TileRegion> sRegion;
-
                 do
                 {
                     sRegion = realmPortalRegions.ElementAt(Random.Next(0, realmPortalRegions.Length));
@@ -191,8 +184,7 @@ namespace TKR.WorldServer.core.miscfile.world
                 x = sRegion.Key.X;
                 y = sRegion.Key.Y;
             }
-
-            return new Position() { X = x, Y = y };
+            return new Position(x, y);
         }
     }
 }

@@ -20,8 +20,6 @@ namespace TKR.WorldServer.core.objects
         public bool isPet; // TODO quick hack for backwards compatibility
         public Enemy ParentEntity;
 
-        public readonly bool Static;
-
         private float bleeding = 0;
         private Position? pos;
 
@@ -42,7 +40,6 @@ namespace TKR.WorldServer.core.objects
         public Enemy(GameServer manager, ushort objType) : base(manager, objType)
         {
             _defense = new SV<int>(this, StatDataType.Defense, ObjectDesc.Defense);
-            Static = ObjectDesc.MaxHP == 0;
             DamageCounter = new DamageCounter(this);
             _glowcolor = new SV<int>(this, StatDataType.GlowEnemy, 0);
         }
@@ -141,9 +138,6 @@ namespace TKR.WorldServer.core.objects
 
         public int Damage(Player from, ref TickTime time, int dmg, bool noDef, bool itsPoison = false, params ConditionEffect[] effs)
         {
-            if (Static)
-                return 0;
-
             if (!itsPoison && HasConditionEffect(ConditionEffectIndex.Invincible))
                 return 0;
 
@@ -186,8 +180,7 @@ namespace TKR.WorldServer.core.objects
         {
             if (!Dead)
             {
-                Expunge();
-                DamageCounter.Death(time);
+                DamageCounter.Death();
                 CurrentState?.OnDeath(this, ref time);
                 if (GameServer.BehaviorDb.Definitions.TryGetValue(ObjectType, out var loot))
                     loot.Item2?.Handle(this, time);
@@ -210,7 +203,7 @@ namespace TKR.WorldServer.core.objects
             if (HP == 0 && !Dead)
                 Death(ref time);
 
-            if (!Static && HasConditionEffect(ConditionEffectIndex.Bleeding))
+            if (HasConditionEffect(ConditionEffectIndex.Bleeding))
             {
                 if (bleeding > 1)
                 {

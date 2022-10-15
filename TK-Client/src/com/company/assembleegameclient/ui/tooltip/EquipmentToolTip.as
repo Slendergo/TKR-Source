@@ -51,7 +51,6 @@ public class EquipmentToolTip extends ToolTip
       private var playerCanUse:Boolean;
       private var restrictions:Vector.<Restriction>;
       private var effects:Vector.<Effect>;
-      private var itemSlotTypeId:int;
       private var invType:int;
       private var inventoryOwnerType:String;
       private var inventorySlotID:uint;
@@ -86,8 +85,6 @@ public class EquipmentToolTip extends ToolTip
          this.invType = invType;
 
          this.props_ = ObjectLibrary.propsLibrary_[objectType];
-
-         this.itemSlotTypeId = int(this.objectXML_.SlotType);
 
          this.isMythicalItem = props_.isMythicTalisman_ || this.objectXML_.hasOwnProperty("Mythical")
          this.isLegendaryItem = props_.isLegendaryTalisman_ || this.objectXML_.hasOwnProperty("Legendary");

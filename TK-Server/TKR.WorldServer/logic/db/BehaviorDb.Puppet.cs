@@ -191,14 +191,14 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(2750, "boom")
                     ),
                 new State("boom",
-                    new Shoot(8.4, count: 1, fixedAngle: 0, projectileIndex: 0, coolDown: 1000),
-                    new Shoot(8.4, count: 1, fixedAngle: 90, projectileIndex: 0, coolDown: 1000),
-                    new Shoot(8.4, count: 1, fixedAngle: 180, projectileIndex: 0, coolDown: 1000),
-                    new Shoot(8.4, count: 1, fixedAngle: 270, projectileIndex: 0, coolDown: 1000),
-                    new Shoot(8.4, count: 1, fixedAngle: 45, projectileIndex: 0, coolDown: 1000),
-                    new Shoot(8.4, count: 1, fixedAngle: 135, projectileIndex: 0, coolDown: 1000),
-                    new Shoot(8.4, count: 1, fixedAngle: 235, projectileIndex: 0, coolDown: 1000),
-                    new Shoot(8.4, count: 1, fixedAngle: 315, projectileIndex: 0, coolDown: 1000),
+                    new Shoot(8.4, count: 1, fixedAngle: 0, projectileIndex: 1, coolDown: 1000),
+                    new Shoot(8.4, count: 1, fixedAngle: 90, projectileIndex: 1, coolDown: 1000),
+                    new Shoot(8.4, count: 1, fixedAngle: 180, projectileIndex: 1, coolDown: 1000),
+                    new Shoot(8.4, count: 1, fixedAngle: 270, projectileIndex: 1, coolDown: 1000),
+                    new Shoot(8.4, count: 1, fixedAngle: 45, projectileIndex: 1, coolDown: 1000),
+                    new Shoot(8.4, count: 1, fixedAngle: 135, projectileIndex: 1, coolDown: 1000),
+                    new Shoot(8.4, count: 1, fixedAngle: 235, projectileIndex: 1, coolDown: 1000),
+                    new Shoot(8.4, count: 1, fixedAngle: 315, projectileIndex: 1, coolDown: 1000),
                     new Suicide()
                     )
                 )
@@ -209,14 +209,14 @@ namespace TKR.WorldServer.logic
                     new TimedTransition(2750, "boom")
                     ),
                 new State("boom",
-                    new Shoot(8.4, count: 1, fixedAngle: 0, projectileIndex: 0, coolDown: 1000),
-                    new Shoot(8.4, count: 1, fixedAngle: 90, projectileIndex: 0, coolDown: 1000),
-                    new Shoot(8.4, count: 1, fixedAngle: 180, projectileIndex: 0, coolDown: 1000),
-                    new Shoot(8.4, count: 1, fixedAngle: 270, projectileIndex: 0, coolDown: 1000),
-                    new Shoot(8.4, count: 1, fixedAngle: 45, projectileIndex: 0, coolDown: 1000),
-                    new Shoot(8.4, count: 1, fixedAngle: 135, projectileIndex: 0, coolDown: 1000),
-                    new Shoot(8.4, count: 1, fixedAngle: 235, projectileIndex: 0, coolDown: 1000),
-                    new Shoot(8.4, count: 1, fixedAngle: 315, projectileIndex: 0, coolDown: 1000),
+                    new Shoot(8.4, count: 1, fixedAngle: 0, projectileIndex: 1, coolDown: 1000),
+                    new Shoot(8.4, count: 1, fixedAngle: 90, projectileIndex: 1, coolDown: 1000),
+                    new Shoot(8.4, count: 1, fixedAngle: 180, projectileIndex: 1, coolDown: 1000),
+                    new Shoot(8.4, count: 1, fixedAngle: 270, projectileIndex: 1, coolDown: 1000),
+                    new Shoot(8.4, count: 1, fixedAngle: 45, projectileIndex: 1, coolDown: 1000),
+                    new Shoot(8.4, count: 1, fixedAngle: 135, projectileIndex: 1, coolDown: 1000),
+                    new Shoot(8.4, count: 1, fixedAngle: 235, projectileIndex: 1, coolDown: 1000),
+                    new Shoot(8.4, count: 1, fixedAngle: 315, projectileIndex: 1, coolDown: 1000),
                     new Suicide()
                     )
                 )

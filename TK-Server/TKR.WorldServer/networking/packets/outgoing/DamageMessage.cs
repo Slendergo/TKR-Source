@@ -1,10 +1,10 @@
-﻿using TKR.Shared;
+﻿using System.Collections.Generic;
+using TKR.Shared;
 using TKR.Shared.resources;
-using System.Collections.Generic;
 
 namespace TKR.WorldServer.networking.packets.outgoing
 {
-    public class Damage : OutgoingMessage
+    public sealed class DamageMessage : OutgoingMessage
     {
         public int TargetId { get; set; }
         public ConditionEffectIndex Effects { get; set; }

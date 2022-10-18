@@ -54,7 +54,7 @@ namespace TKR.WorldServer.core.objects
         {
             var entity = World.GetEntity(objId);
 
-            var dustItem = World.GameServer.ItemDustWeights.ItemDusts.GetRandom(World.Random);
+            var dustItem = World.GameServer.ItemDustWeights.ItemDusts.GetRandom(Random.Shared);
             if (entity is Container container)
                 container.Inventory[slot] = dustItem;
             else
@@ -65,10 +65,10 @@ namespace TKR.WorldServer.core.objects
 
         public void AETalismanFragment(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
-            var dustItem = World.GameServer.ItemDustWeights.Talismans.GetRandom(World.Random);
+            var dustItem = World.GameServer.ItemDustWeights.Talismans.GetRandom(Random.Shared);
             var entity = World.GetEntity(objId);
 
-            if (World.Random.NextDouble() < 0.05)
+            if (Random.Shared.NextDouble() < 0.05)
             {
                 dustItem = null;
                 SendInfo($"The talisman crumbles in your hands");
@@ -86,7 +86,7 @@ namespace TKR.WorldServer.core.objects
         {
             var entity = World.GetEntity(objId);
 
-            var dustItem = World.GameServer.ItemDustWeights.SpecialDust.GetRandom(World.Random);
+            var dustItem = World.GameServer.ItemDustWeights.SpecialDust.GetRandom(Random.Shared);
             if (entity is Container container)
                 container.Inventory[slot] = dustItem;
             else
@@ -1241,7 +1241,7 @@ namespace TKR.WorldServer.core.objects
 
             var entity = World.GetEntity(objId);
 
-            var dustItem = World.GameServer.ItemDustWeights.MagicDust.GetRandom(World.Random);
+            var dustItem = World.GameServer.ItemDustWeights.MagicDust.GetRandom(Random.Shared);
             if (entity is Container container)
                 container.Inventory[slot] = dustItem;
             else
@@ -1266,7 +1266,7 @@ namespace TKR.WorldServer.core.objects
 
             var entity = World.GetEntity(objId);
 
-            var dustItem = World.GameServer.ItemDustWeights.FrozenCoin.GetRandom(World.Random);
+            var dustItem = World.GameServer.ItemDustWeights.FrozenCoin.GetRandom(Random.Shared);
             if (entity is Container container)
                 container.Inventory[slot] = dustItem;
             else
@@ -1296,7 +1296,7 @@ namespace TKR.WorldServer.core.objects
         {
             var entity = World.GetEntity(objId);
 
-            var dustItem = World.GameServer.ItemDustWeights.MiscDust.GetRandom(World.Random);
+            var dustItem = World.GameServer.ItemDustWeights.MiscDust.GetRandom(Random.Shared);
             if (entity is Container container)
                 container.Inventory[slot] = dustItem;
             else
@@ -1369,7 +1369,7 @@ namespace TKR.WorldServer.core.objects
         {
             var entity = World.GetEntity(objId);
 
-            var dustItem = World.GameServer.ItemDustWeights.PotionDust.GetRandom(World.Random);
+            var dustItem = World.GameServer.ItemDustWeights.PotionDust.GetRandom(Random.Shared);
             if (entity is Container container)
                 container.Inventory[slot] = dustItem;
             else
@@ -1730,8 +1730,8 @@ namespace TKR.WorldServer.core.objects
             {
                 for (var i = 0; i < 5; i++)
                 {
-                    var a = World.Random.NextLength(enemies);
-                    var b = World.Random.NextLength(players);
+                    var a = Random.Shared.NextLength(enemies);
+                    var b = Random.Shared.NextLength(players);
 
                     World.BroadcastIfVisible(new ShowEffect()
                     {

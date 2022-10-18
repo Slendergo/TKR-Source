@@ -72,7 +72,7 @@ namespace TKR.WorldServer.core.setpieces
 
             t[12, 0] = t[13, 0] = t[14, 0] = 2;
 
-            var r = world.Random.Next(0, 4);                //Rotation
+            var r = Random.Shared.Next(0, 4);                //Rotation
 
             for (var i = 0; i < r; i++)
                 t = SetPieces.RotateCW(t);

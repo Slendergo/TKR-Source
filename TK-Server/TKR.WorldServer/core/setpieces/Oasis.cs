@@ -89,7 +89,7 @@ namespace TKR.WorldServer.core.setpieces
             var trees = new HashSet<IntPoint>();
 
             while (trees.Count < border.Count * 0.5)
-                trees.Add(border[world.Random.Next(0, border.Count)]);
+                trees.Add(border[Random.Shared.Next(0, border.Count)]);
 
             foreach (var i in trees)
                 t[i.X, i.Y] = 3;
@@ -118,7 +118,7 @@ namespace TKR.WorldServer.core.setpieces
                         tile.TileId = dat.IdToTileType[Floor];
                         tile.ObjType = dat.IdToObjectType[Tree];
                         tile.ObjDesc = dat.ObjectDescs[tile.ObjType];
-                        tile.ObjCfg = "size:" + (world.Random.Next() % 2 == 0 ? 120 : 140);
+                        tile.ObjCfg = "size:" + (Random.Shared.Next() % 2 == 0 ? 120 : 140);
 
                         if (tile.ObjId == 0)
                             tile.ObjId = world.GetNextEntityId();
@@ -131,7 +131,7 @@ namespace TKR.WorldServer.core.setpieces
             world.EnterWorld(giant);
 
             var container = new Container(world.GameServer, 0x0501, null, false);
-            var items = chest.CalculateItems(world.GameServer, world.Random, 5, 8).ToArray();
+            var items = chest.CalculateItems(world.GameServer, Random.Shared, 5, 8).ToArray();
 
             for (var i = 0; i < items.Length; i++)
                 container.Inventory[i] = items[i];

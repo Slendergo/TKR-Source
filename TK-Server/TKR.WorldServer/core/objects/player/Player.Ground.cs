@@ -54,7 +54,7 @@ namespace TKR.WorldServer.core.objects
                     return;
                 }
 
-                World.BroadcastIfVisibleExclude(new Damage()
+                World.BroadcastIfVisibleExclude(new DamageMessage()
                 {
                     TargetId = Id,
                     DamageAmount = dmg,
@@ -94,7 +94,7 @@ namespace TKR.WorldServer.core.objects
                         return;
                     }
 
-                    World.BroadcastIfVisibleExclude(new Damage()
+                    World.BroadcastIfVisibleExclude(new DamageMessage()
                     {
                         TargetId = Id,
                         DamageAmount = dmg,

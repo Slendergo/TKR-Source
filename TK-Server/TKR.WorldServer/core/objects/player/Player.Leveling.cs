@@ -155,7 +155,7 @@ namespace TKR.WorldServer.core.objects
                     }
                     var min = statInfo[i].MinIncrease;
                     var max = statInfo[i].MaxIncrease + 1;
-                    Stats.Base[i] += World.Random.Next(min, max);
+                    Stats.Base[i] += Random.Shared.Next(min, max);
                     if (Stats.Base[i] > statInfo[i].MaxValue && !UpgradeEnabled)
                         Stats.Base[i] = statInfo[i].MaxValue;
                 }

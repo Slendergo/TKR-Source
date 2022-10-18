@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TKR.Shared;
 using TKR.Shared.resources;
@@ -41,7 +42,7 @@ namespace TKR.WorldServer.core.setpieces
 
             for (var x = 0; x < 23; x++)    //Floor
                 for (var y = 0; y < 35; y++)
-                    t[x, y] = world.Random.Next() % 3 == 0 ? 0 : 1;
+                    t[x, y] = Random.Shared.Next() % 3 == 0 ? 0 : 1;
 
             for (var y = 0; y < 35; y++)    //Perimeters
                 t[0, y] = t[22, y] = 2;
@@ -54,7 +55,7 @@ namespace TKR.WorldServer.core.setpieces
             for (var y = 0; y < 11; y++)    //Crosses
                 for (var x = 0; x < 7; x++)
                 {
-                    if (world.Random.Next() % 3 > 0)
+                    if (Random.Shared.Next() % 3 > 0)
                         t[2 + 3 * x, 2 + 3 * y] = 4;
                     else
                         pts.Add(new IntPoint(2 + 3 * x, 2 + 3 * y));
@@ -66,7 +67,7 @@ namespace TKR.WorldServer.core.setpieces
                     if (t[x, y] == 1 || t[x, y] == 0 || t[x, y] == 4)
                         continue;
 
-                    var p = world.Random.NextDouble();
+                    var p = Random.Shared.NextDouble();
 
                     if (p < 0.1)
                         t[x, y] = 1;
@@ -75,11 +76,11 @@ namespace TKR.WorldServer.core.setpieces
                 }
 
             //Boss & Chest
-            var pt = world.Random.NextLength(pts);
+            var pt = Random.Shared.NextLength(pts);
             t[pt.X, pt.Y] = 5;
             t[pt.X + 1, pt.Y] = 6;
 
-            var r = world.Random.Next(0, 4);
+            var r = Random.Shared.Next(0, 4);
 
             for (var i = 0; i < r; i++)     //Rotation
                 t = SetPieces.RotateCW(t);
@@ -134,7 +135,7 @@ namespace TKR.WorldServer.core.setpieces
                     else if (t[x, y] == 5)
                     {
                         var container = new Container(world.GameServer, 0x0501, null, false);
-                        var items = chest.CalculateItems(world.GameServer, world.Random, 3, 8).ToArray();
+                        var items = chest.CalculateItems(world.GameServer, Random.Shared, 3, 8).ToArray();
 
                         for (int i = 0; i < items.Length; i++)
                             container.Inventory[i] = items[i];

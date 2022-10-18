@@ -3,10 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading;
-using System.Xml.Linq;
 using TKR.Shared.database;
-using TKR.Shared.isc;
 using TKR.Shared.resources;
 using TKR.WorldServer.core.miscfile.census;
 using TKR.WorldServer.core.miscfile.structures;
@@ -31,8 +28,6 @@ namespace TKR.WorldServer.core.worlds
         public const int TEST_ID = -6;
 
         private int NextEntityId;
-
-        public readonly Random Random = new Random();
 
         public int Id { get; }
         public string IdName { get; set; }
@@ -99,7 +94,7 @@ namespace TKR.WorldServer.core.worlds
             IsRealm = false;
 
             if (resource.Music.Count > 0)
-                Music = resource.Music[Random.Next(0, resource.Music.Count)];
+                Music = resource.Music[Random.Shared.Next(0, resource.Music.Count)];
             else
                 Music = "sorc";
 
@@ -137,8 +132,8 @@ namespace TKR.WorldServer.core.worlds
             foreach (var player in Players.Values)
                 if (player.SqDistTo(host) < PlayerUpdate.VISIBILITY_RADIUS_SQR)
                 {
-                    if (outgoingMessage is EnemyShoot)
-                        player.EnemyShoot(outgoingMessage as EnemyShoot);
+                    if (outgoingMessage is EnemyShootMessage)
+                        player.EnemyShoot(outgoingMessage as EnemyShootMessage);
                     player.Client.SendPacket(outgoingMessage);
                 }
         }
@@ -413,7 +408,7 @@ namespace TKR.WorldServer.core.worlds
 
         public bool LoadMapFromData(WorldResource worldResource)
         {
-            var data = GameServer.Resources.GameData.GetWorldData(worldResource.MapJM[Random.Next(0, worldResource.MapJM.Count)]);
+            var data = GameServer.Resources.GameData.GetWorldData(worldResource.MapJM[Random.Shared.Next(0, worldResource.MapJM.Count)]);
             if (data == null)
                 return false;
             FromWorldMap(new MemoryStream(data));

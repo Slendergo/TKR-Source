@@ -64,7 +64,7 @@ namespace TKR.WorldServer.core.setpieces
 
             for (var x = 7; x < 24; x++)    //Floor
                 for (var y = 7; y < 33; y++)
-                    t[x, y] = world.Random.Next() % 3 == 0 ? 0 : 1;
+                    t[x, y] = Random.Shared.Next() % 3 == 0 ? 0 : 1;
 
             for (var x = 0; x < 7; x++)    //Perimeter
                 for (var y = 0; y < 7; y++)
@@ -91,7 +91,7 @@ namespace TKR.WorldServer.core.setpieces
                     if (t[x, y] == 1 || t[x, y] == 0)
                         continue;
 
-                    var p = world.Random.NextDouble();
+                    var p = Random.Shared.NextDouble();
 
                     if (t[x, y] == 6)
                     {
@@ -111,7 +111,7 @@ namespace TKR.WorldServer.core.setpieces
             t[15, 27] = 7;
             t[15, 20] = 8;
 
-            var r = world.Random.Next(0, 4);
+            var r = Random.Shared.Next(0, 4);
 
             for (var i = 0; i < r; i++)     //Rotation
                 t = SetPieces.RotateCW(t);
@@ -174,7 +174,7 @@ namespace TKR.WorldServer.core.setpieces
                     else if (t[x, y] == 7)
                     {
                         var container = new Container(world.GameServer, 0x0501, null, false);
-                        var items = chest.CalculateItems(world.GameServer, world.Random, 5, 8).ToArray();
+                        var items = chest.CalculateItems(world.GameServer, Random.Shared, 5, 8).ToArray();
 
                         for (var i = 0; i < items.Length; i++)
                             container.Inventory[i] = items[i];

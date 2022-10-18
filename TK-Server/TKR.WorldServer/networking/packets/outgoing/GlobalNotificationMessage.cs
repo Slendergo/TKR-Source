@@ -2,12 +2,18 @@
 
 namespace TKR.WorldServer.networking.packets.outgoing
 {
-    public class GlobalNotification : OutgoingMessage
+    public sealed class GlobalNotificationMessage : OutgoingMessage
     {
-        public int Type { get; set; }
-        public string Text { get; set; }
+        private readonly int Type;
+        private readonly string Text;
 
         public override MessageId MessageId => MessageId.GLOBAL_NOTIFICATION;
+
+        public GlobalNotificationMessage(int type, string text)
+        {
+            Type = type;
+            Text = text;
+        }
 
         public override void Write(NetworkWriter wtr)
         {

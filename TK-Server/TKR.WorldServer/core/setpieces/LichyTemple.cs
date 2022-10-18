@@ -21,7 +21,7 @@ namespace TKR.WorldServer.core.setpieces
 
             for (var x = 2; x < 23; x++)    //Floor
                 for (var y = 1; y < 24; y++)
-                    t[x, y] = world.Random.Next() % 10 == 0 ? 0 : 1;
+                    t[x, y] = Random.Shared.Next() % 10 == 0 ? 0 : 1;
 
             for (var y = 1; y < 24; y++)    //Perimeters
                 t[2, y] = t[22, y] = 2;
@@ -51,7 +51,7 @@ namespace TKR.WorldServer.core.setpieces
                     if (t[x, y] == 1 || t[x, y] == 0)
                         continue;
 
-                    var p = world.Random.NextDouble();
+                    var p = Random.Shared.NextDouble();
 
                     if (p < 0.1)
                         t[x, y] = 1;
@@ -59,7 +59,7 @@ namespace TKR.WorldServer.core.setpieces
                         t[x, y]++;
                 }
 
-            var r = world.Random.Next(0, 4);
+            var r = Random.Shared.Next(0, 4);
 
             for (var i = 0; i < r; i++)     //Rotation
                 t = SetPieces.RotateCW(t);

@@ -568,7 +568,7 @@ namespace TKR.WorldServer.core.miscfile
                 return;
 
             var events = _events;
-            var evt = events[World.Random.Next(0, events.Count)];
+            var evt = events[Random.Shared.Next(0, events.Count)];
             var gameData = World.GameServer.Resources.GameData;
 
             if (gameData.ObjectDescs[gameData.IdToObjectType[evt.Item1]].PerRealmMax == 1)
@@ -639,7 +639,7 @@ namespace TKR.WorldServer.core.miscfile
             SpawnEvent("Talisman King", new TalismanKing(), 1024, 1024);
 
             var events = _events;
-            var evt = events[World.Random.Next(0, events.Count)];
+            var evt = events[Random.Shared.Next(0, events.Count)];
             var gameData = World.GameServer.Resources.GameData;
 
             if (gameData.ObjectDescs[gameData.IdToObjectType[evt.Item1]].PerRealmMax == 1)
@@ -794,7 +794,7 @@ namespace TKR.WorldServer.core.miscfile
 
         private ushort GetRandomObjType(IEnumerable<Tuple<string, double>> dat)
         {
-            var p = World.Random.NextDouble();
+            var p = Random.Shared.NextDouble();
 
             double n = 0;
             ushort objType = 0;
@@ -818,7 +818,7 @@ namespace TKR.WorldServer.core.miscfile
             if (World.Closed)
                 return;
 
-            var taunt = CriticalEnemies[World.Random.Next(0, CriticalEnemies.Length)];
+            var taunt = CriticalEnemies[Random.Shared.Next(0, CriticalEnemies.Length)];
             var count = 0;
 
             foreach (var i in World.Enemies)
@@ -837,7 +837,7 @@ namespace TKR.WorldServer.core.miscfile
             if (count == 1 && taunt.Item2.Final != null || taunt.Item2.Final != null && taunt.Item2.NumberOfEnemies == null)
             {
                 var arr = taunt.Item2.Final;
-                var msg = arr[World.Random.Next(0, arr.Length)];
+                var msg = arr[Random.Shared.Next(0, arr.Length)];
 
                 BroadcastMsg(msg);
             }
@@ -848,7 +848,7 @@ namespace TKR.WorldServer.core.miscfile
                 if (arr == null)
                     return;
 
-                var msg = arr[World.Random.Next(0, arr.Length)];
+                var msg = arr[Random.Shared.Next(0, arr.Length)];
                 msg = msg.Replace("{COUNT}", count.ToString());
 
                 BroadcastMsg(msg);
@@ -878,7 +878,7 @@ namespace TKR.WorldServer.core.miscfile
 
             if (desc.Spawn != null)
             {
-                var num = (int)GetNormal(World.Random, desc.Spawn.Mean, desc.Spawn.StdDev);
+                var num = (int)GetNormal(Random.Shared, desc.Spawn.Mean, desc.Spawn.StdDev);
 
                 if (num > desc.Spawn.Max)
                     num = desc.Spawn.Max;
@@ -887,14 +887,14 @@ namespace TKR.WorldServer.core.miscfile
 
                 do
                 {
-                    pt.X = World.Random.Next(0, w);
-                    pt.Y = World.Random.Next(0, h);
+                    pt.X = Random.Shared.Next(0, w);
+                    pt.Y = Random.Shared.Next(0, h);
                 } while (World.Map[pt.X, pt.Y].Terrain != terrain || !World.IsPassable(pt.X, pt.Y) || World.AnyPlayerNearby(pt.X, pt.Y));
 
                 for (var k = 0; k < num; k++)
                 {
                     entity = Entity.Resolve(World.GameServer, desc.ObjectType);
-                    entity.Move(pt.X + (float)(World.Random.NextDouble() * 2 - 1) * 5, pt.Y + (float)(World.Random.NextDouble() * 2 - 1) * 5);
+                    entity.Move(pt.X + (float)(Random.Shared.NextDouble() * 2 - 1) * 5, pt.Y + (float)(Random.Shared.NextDouble() * 2 - 1) * 5);
                     (entity as Enemy).Terrain = terrain;
                     World.EnterWorld(entity);
                     ret++;
@@ -905,8 +905,8 @@ namespace TKR.WorldServer.core.miscfile
 
             do
             {
-                pt.X = World.Random.Next(0, w);
-                pt.Y = World.Random.Next(0, h);
+                pt.X = Random.Shared.Next(0, w);
+                pt.Y = Random.Shared.Next(0, h);
             }
             while (World.Map[pt.X, pt.Y].Terrain != terrain || !World.IsPassable(pt.X, pt.Y) || World.AnyPlayerNearby(pt.X, pt.Y));
 
@@ -923,7 +923,7 @@ namespace TKR.WorldServer.core.miscfile
             var regions = World.GetRegionPoints(TileRegion.Defender);
             foreach (var player in World.Players.Values)
             {
-                var pos = World.Random.NextLength(regions);
+                var pos = Random.Shared.NextLength(regions);
                 player.TeleportPosition(time, pos.Key.X, pos.Key.Y, true);
             }
         }
@@ -936,8 +936,8 @@ namespace TKR.WorldServer.core.miscfile
             var pt = new IntPoint(x, y);
             while (World.Map[pt.X, pt.Y].Terrain < TerrainType.Mountains || World.Map[pt.X, pt.Y].Terrain > TerrainType.MidForest || !World.IsPassable(pt.X, pt.Y, true) || World.AnyPlayerNearby(pt.X, pt.Y))
             {
-                pt.X = World.Random.Next(0, World.Map.Width);
-                pt.Y = World.Random.Next(0, World.Map.Height);
+                pt.X = Random.Shared.Next(0, World.Map.Width);
+                pt.Y = Random.Shared.Next(0, World.Map.Height);
             }
 
             var sp = setpiece ?? new NamedEntitySetPiece(name);

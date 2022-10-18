@@ -3,17 +3,23 @@ using TKR.WorldServer.core.miscfile.structures;
 
 namespace TKR.WorldServer.networking.packets.outgoing
 {
-    public class Goto : OutgoingMessage
+    public class GotoMessage : OutgoingMessage
     {
-        public int ObjectId { get; set; }
-        public Position Pos { get; set; }
+        private readonly int ObjectId;
+        private readonly Position Position;
 
         public override MessageId MessageId => MessageId.GOTO;
+
+        public GotoMessage(int objectId, Position position)
+        {
+            ObjectId = objectId;
+            Position = position;
+        }
 
         public override void Write(NetworkWriter wtr)
         {
             wtr.Write(ObjectId);
-            Pos.Write(wtr);
+            Position.Write(wtr);
         }
     }
 }

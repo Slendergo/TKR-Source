@@ -2,12 +2,18 @@
 
 namespace TKR.WorldServer.networking.packets.outgoing
 {
-    public class CreateSuccess : OutgoingMessage
+    public class CreateSuccessMessage : OutgoingMessage
     {
-        public int ObjectId { get; set; }
-        public int CharId { get; set; }
+        private readonly int ObjectId;
+        private readonly int CharId;
 
         public override MessageId MessageId => MessageId.CREATE_SUCCESS;
+
+        public CreateSuccessMessage(int objectId, int charId)
+        {
+            ObjectId = objectId;
+            CharId = charId;
+        }
 
         public override void Write(NetworkWriter wtr)
         {

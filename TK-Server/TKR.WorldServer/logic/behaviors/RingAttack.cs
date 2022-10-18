@@ -91,7 +91,7 @@ namespace TKR.WorldServer.logic.behaviors
                     var prjPos = new Position() { X = Host.X, Y = Host.Y };
 
                     var prjId = Host.GetNextBulletId(count);
-                    var pkt = new EnemyShoot()
+                    var pkt = new EnemyShootMessage()
                     {
                         Spawned = Host.Spawned,
                         BulletId = prjId,

@@ -56,10 +56,10 @@ namespace TKR.WorldServer.core.setpieces
 
             for (var x = 0; x < Size; x++)      //Floor
                 for (var y = 0; y < Size; y++)
-                    if (p[x, y] == 1 && world.Random.Next() % 5 == 0)
+                    if (p[x, y] == 1 && Random.Shared.Next() % 5 == 0)
                         p[x, y] = 2;
 
-            var r = world.Random.Next(0, 4);            //Rotation
+            var r = Random.Shared.Next(0, 4);            //Rotation
 
             for (int i = 0; i < r; i++)
                 p = SetPieces.RotateCW(p);
@@ -97,7 +97,7 @@ namespace TKR.WorldServer.core.setpieces
             world.EnterWorld(demon);
 
             var container = new Container(world.GameServer, 0x0501, null, false);
-            var items = chest.CalculateItems(world.GameServer, world.Random, 5, 8).ToArray();
+            var items = chest.CalculateItems(world.GameServer, Random.Shared, 5, 8).ToArray();
 
             for (int i = 0; i < items.Length; i++)
                 container.Inventory[i] = items[i];

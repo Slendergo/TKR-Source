@@ -14,8 +14,8 @@ namespace TKR.WorldServer.core.setpieces
 
         public override void RenderSetPiece(World world, IntPoint pos)
         {
-            var w = world.Random.Next(19, 22);
-            var h = world.Random.Next(19, 22);
+            var w = Random.Shared.Next(19, 22);
+            var h = Random.Shared.Next(19, 22);
             var t = new int[w, h];
 
             for (var x = 0; x < w; x++)                     //Perimeter
@@ -30,10 +30,10 @@ namespace TKR.WorldServer.core.setpieces
                 t[w - 1, y] = 1;
             }
 
-            var midPtH = h / 2 + world.Random.Next(-2, 3);          //Mid hori wall
-            var sepH = world.Random.Next(2, 4);
+            var midPtH = h / 2 + Random.Shared.Next(-2, 3);          //Mid hori wall
+            var sepH = Random.Shared.Next(2, 4);
 
-            if (world.Random.Next() % 2 == 0)
+            if (Random.Shared.Next() % 2 == 0)
             {
                 for (var x = sepH; x < w; x++)
                     t[x, midPtH] = 1;
@@ -46,7 +46,7 @@ namespace TKR.WorldServer.core.setpieces
 
             int begin, end;
 
-            if (world.Random.Next() % 2 == 0)
+            if (Random.Shared.Next() % 2 == 0)
             {
                 begin = 0;
                 end = midPtH;
@@ -54,10 +54,10 @@ namespace TKR.WorldServer.core.setpieces
             else
                 begin = midPtH; end = h;
 
-            var midPtV = w / 2 + world.Random.Next(-2, 3);          //Mid vert wall
-            var sepW = world.Random.Next(2, 4);
+            var midPtV = w / 2 + Random.Shared.Next(-2, 3);          //Mid vert wall
+            var sepW = Random.Shared.Next(2, 4);
 
-            if (world.Random.Next() % 2 == 0)
+            if (Random.Shared.Next() % 2 == 0)
             {
                 for (var y = begin + sepW; y < end; y++)
                     t[midPtV, y] = 1;
@@ -74,10 +74,10 @@ namespace TKR.WorldServer.core.setpieces
 
             for (var x = 0; x < w; x++)                     //Corruption
                 for (var y = 0; y < h; y++)
-                    if (world.Random.Next() % 2 == 0)
+                    if (Random.Shared.Next() % 2 == 0)
                         t[x, y] = 0;
 
-            var rotation = world.Random.Next(0, 4);                 //Rotation
+            var rotation = Random.Shared.Next(0, 4);                 //Rotation
 
             for (var i = 0; i < rotation; i++)
                 t = SetPieces.RotateCW(t);

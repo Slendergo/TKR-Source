@@ -17,10 +17,10 @@ namespace TKR.WorldServer.core.objects
     {
         private struct ShootAcknowledgement
         {
-            public readonly EnemyShoot EnemyShoot;
+            public readonly EnemyShootMessage EnemyShoot;
             public readonly ServerPlayerShoot ServerPlayerShoot;
 
-            public ShootAcknowledgement(EnemyShoot enemyShoot)
+            public ShootAcknowledgement(EnemyShootMessage enemyShoot)
             {
                 EnemyShoot = enemyShoot;
                 ServerPlayerShoot = null;
@@ -117,7 +117,7 @@ namespace TKR.WorldServer.core.objects
         private Queue<ShootAcknowledgement> PendingShootAcknowlegements = new Queue<ShootAcknowledgement>();
         private Dictionary<int, Dictionary<int, ValidatedProjectile>> VisibleProjectiles = new Dictionary<int, Dictionary<int, ValidatedProjectile>>();
 
-        public void EnemyShoot(EnemyShoot enemyShoot) => PendingShootAcknowlegements.Enqueue(new ShootAcknowledgement(enemyShoot));
+        public void EnemyShoot(EnemyShootMessage enemyShoot) => PendingShootAcknowlegements.Enqueue(new ShootAcknowledgement(enemyShoot));
         public void ServerPlayerShoot(ServerPlayerShoot serverPlayerShoot)
         {
             if(serverPlayerShoot.OwnerId != Id)
@@ -141,7 +141,7 @@ namespace TKR.WorldServer.core.objects
                 VisibleProjectiles[Id] = new Dictionary<int, ValidatedProjectile>();
             VisibleProjectiles[Id][newBulletId] = new ValidatedProjectile(time, false, 0, startingPosition.X, startingPosition.Y, angle, item.ObjectType, damage, false, true);
 
-            var allyShoot = new AllyShoot(newBulletId, Id, item.ObjectType, angle);
+            var allyShoot = new AllyShootMessage(newBulletId, Id, item.ObjectType, angle);
             World.BroadcastIfVisibleExclude(allyShoot, this, this);
             FameCounter.Shoot();
         }
@@ -238,7 +238,7 @@ namespace TKR.WorldServer.core.objects
             HP -= dmg;
 
             ApplyConditionEffect(projectileDesc.Effects);
-            World.BroadcastIfVisibleExclude(new Damage()
+            World.BroadcastIfVisibleExclude(new DamageMessage()
             {
                 TargetId = Id,
                 Effects = 0,
@@ -318,7 +318,7 @@ namespace TKR.WorldServer.core.objects
 
                 entity.ApplyConditionEffect(projectileDesc.Effects);
 
-                World.BroadcastIfVisibleExclude(new Damage()
+                World.BroadcastIfVisibleExclude(new DamageMessage()
                 {
                     TargetId = entity.Id,
                     Effects = 0,
@@ -351,7 +351,7 @@ namespace TKR.WorldServer.core.objects
                     var dmg = StatsManager.DamageWithDefense(s, projectile.Damage, projectileDesc.ArmorPiercing, s.ObjectDesc.Defense);
                     s.HP -= dmg;
 
-                    World.BroadcastIfVisibleExclude(new Damage()
+                    World.BroadcastIfVisibleExclude(new DamageMessage()
                     {
                         TargetId = Id,
                         Effects = 0,

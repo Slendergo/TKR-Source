@@ -117,7 +117,7 @@ namespace TKR.WorldServer.core.worlds.logic
                 merchantData.CurrencyType = data.Item2;
                 merchantData.RankRequired = data.Item3;
 
-                merchantData.SellableItem = Random.NextLength(items);
+                merchantData.SellableItem = Random.Shared.NextLength(items);
                 merchantData.NewMerchant.SetData(merchantData);
                 _ = MerchantLists.Shops[merchantData.TileRegion].Item1.Remove(merchantData.SellableItem);
 

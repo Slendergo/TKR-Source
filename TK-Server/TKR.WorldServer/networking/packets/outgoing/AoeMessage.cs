@@ -5,19 +5,19 @@ using TKR.WorldServer.core.miscfile.structures;
 
 namespace TKR.WorldServer.networking.packets.outgoing
 {
-    public class Aoe : OutgoingMessage
+    public sealed class AoeMessage : OutgoingMessage
     {
-        public Position Pos { get; set; }
-        public float Radius { get; set; }
-        public int Damage { get; set; }
-        public ConditionEffectIndex Effect { get; set; }
-        public float Duration { get; set; }
-        public ushort OrigType { get; set; }
-        public ARGB Color { get; set; }
+        private readonly Position Pos;
+        private readonly float Radius;
+        private readonly int Damage;
+        private readonly ConditionEffectIndex Effect;
+        private readonly float Duration;
+        private readonly ushort OrigType;
+        private readonly ARGB Color;
 
         public override MessageId MessageId => MessageId.AOE;
 
-        public Aoe(Position pos, float radius, int damage, ConditionEffectIndex effect, float duration, ushort origType, ARGB color)
+        public AoeMessage(Position pos, float radius, int damage, ConditionEffectIndex effect, float duration, ushort origType, ARGB color)
         {
             Pos = pos;
             Radius = radius;

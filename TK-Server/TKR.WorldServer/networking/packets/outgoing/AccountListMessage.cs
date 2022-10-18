@@ -2,12 +2,18 @@
 
 namespace TKR.WorldServer.networking.packets.outgoing
 {
-    public class AccountList : OutgoingMessage
+    public sealed class AccountListMessage : OutgoingMessage
     {
-        public int AccountListId { get; set; }
-        public string[] AccountIds { get; set; }
+        private readonly int AccountListId;
+        private readonly string[] AccountIds;
 
         public override MessageId MessageId => MessageId.ACCOUNTLIST;
+
+        public AccountListMessage(int accountListId, string[] accountIds)
+        {
+            AccountListId = accountListId;
+            AccountIds = accountIds;
+        }
 
         public override void Write(NetworkWriter wtr)
         {

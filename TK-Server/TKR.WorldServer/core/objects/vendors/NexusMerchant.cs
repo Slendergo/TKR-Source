@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TKR.Shared.resources;
 using TKR.WorldServer.core.miscfile.stats;
@@ -153,16 +154,16 @@ namespace TKR.WorldServer.core.objects.vendors
             Type = sellableItem.ItemId;
             Price = price;
             Currency = (int)data.CurrencyType;
-            Count = World.Random.Next(5, 15);
+            Count = Random.Shared.Next(5, 15);
             RankRequired = data.RankRequired;
 
             if (sellableItem.ItemId == 0x7021 || sellableItem.ItemId == 0x7019 || sellableItem.ItemId == 0x7018 || sellableItem.ItemId == 0x7017 || sellableItem.ItemId == 0x7016)
                 return;
 
-            var discountChance = World.Random.NextDouble();
+            var discountChance = Random.Shared.NextDouble();
             if (discountChance < 0.1)
             {
-                var discountType = World.Random.Next(0, 100);
+                var discountType = Random.Shared.Next(0, 100);
                 if (discountType < 2)
                     Discount = 50;
                 else if (discountType < 5)
@@ -186,7 +187,7 @@ namespace TKR.WorldServer.core.objects.vendors
 
             if (IsNew && AliveTime > 15.0f)
             {
-                MinsLeft = World.Random.Next(10, 30);
+                MinsLeft = Random.Shared.Next(10, 30);
                 IsNew = false;
             }
 

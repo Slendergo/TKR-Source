@@ -202,11 +202,11 @@ namespace TKR.WorldServer.logic.loot
                 if (DropsInSoulboundBag(i.ItemType, i.Tier))
                     continue;
                 
-                var chance = enemy.World.Random.NextDouble();
+                var chance = Random.Shared.NextDouble();
                 if (i.Threshold <= 0 && chance < i.Probabilty)
                 {
                     var items = GetItems(i.ItemType, i.Tier);
-                    var chosenTieredItem = items[enemy.World.Random.Next(items.Count)];
+                    var chosenTieredItem = items[Random.Shared.Next(items.Count)];
                     pubDrops.Add(chosenTieredItem);
                 }
             }
@@ -241,7 +241,7 @@ namespace TKR.WorldServer.logic.loot
                 var drops = new List<Item>();
                 foreach (var i in possDrops)
                 {
-                    var c = enemy.World.Random.NextDouble();
+                    var c = Random.Shared.NextDouble();
 
                     var probability = i.Probabilty + i.Probabilty * playerLootBoost;
 
@@ -250,7 +250,7 @@ namespace TKR.WorldServer.logic.loot
                         Item item = null;
                         if (i.ItemType == ItemType.Talisman)
                         {
-                            item = enemy.GameServer.ItemDustWeights.Talismans.GetRandom(enemy.World.Random);
+                            item = enemy.GameServer.ItemDustWeights.Talismans.GetRandom(Random.Shared);
                             drops.Add(item);
                             continue;
                         }
@@ -259,7 +259,7 @@ namespace TKR.WorldServer.logic.loot
                         {
                             var items = GetItems(i.ItemType, i.Tier);
                             if (items != null)
-                                item = enemy.World.Random.NextLength(items);
+                                item = Random.Shared.NextLength(items);
                         }
                         else
                         {
@@ -358,7 +358,7 @@ namespace TKR.WorldServer.logic.loot
                     var chat = core.ChatManager;
                     var world = player.World;
 
-                    player.Client.SendPacket(new GlobalNotification() { Text = isMythical ? "mythical_loot" : "legendary_loot" });
+                    player.Client.SendPacket(new GlobalNotificationMessage(0, isMythical ? "mythical_loot" : "legendary_loot"));
 
                     #region Discord Bot Message
 
@@ -448,7 +448,7 @@ namespace TKR.WorldServer.logic.loot
             }
 
             container.BagOwners = owners;
-            container.Move(enemy.X + (float)((enemy.World.Random.NextDouble() * 2 - 1) * 0.5), enemy.Y + (float)((enemy.World.Random.NextDouble() * 2 - 1) * 0.5));
+            container.Move(enemy.X + (float)((Random.Shared.NextDouble() * 2 - 1) * 0.5), enemy.Y + (float)((Random.Shared.NextDouble() * 2 - 1) * 0.5));
             container.SetDefaultSize(80);
             enemy.World.EnterWorld(container);
         }

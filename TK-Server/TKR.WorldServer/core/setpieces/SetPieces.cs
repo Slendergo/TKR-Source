@@ -36,7 +36,7 @@ namespace TKR.WorldServer.core.setpieces
             foreach (var dat in Sets)
             {
                 var size = dat.Item1.Size;
-                var count = world.Random.Next(dat.Item2, dat.Item3);
+                var count = Random.Shared.Next(dat.Item2, dat.Item3);
 
                 for (var i = 0; i < count; i++)
                 {
@@ -47,8 +47,8 @@ namespace TKR.WorldServer.core.setpieces
 
                     do
                     {
-                        pt.X = world.Random.Next(0, w);
-                        pt.Y = world.Random.Next(0, h);
+                        pt.X = Random.Shared.Next(0, w);
+                        pt.Y = Random.Shared.Next(0, h);
                         rect = new Rect() { x = pt.X, y = pt.Y, w = size, h = size };
                         max--;
                     }

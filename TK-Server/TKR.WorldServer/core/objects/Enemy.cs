@@ -58,11 +58,11 @@ namespace TKR.WorldServer.core.objects
 
         public void ClasifyEnemy()
         {
-            var chance = World.Random.NextDouble();
+            var chance = Random.Shared.NextDouble();
 
             if (chance < 0.2)
             {
-                var type = World.Random.Next(0, 3);
+                var type = Random.Shared.Next(0, 3);
                 switch (type)
                 {
                     case 2:
@@ -102,7 +102,7 @@ namespace TKR.WorldServer.core.objects
                 if (Size <= 0)
                     Size = Size;
                 else
-                    Size = World.Random.Next(Size + 200, Size + 300);
+                    Size = Random.Shared.Next(Size + 200, Size + 300);
 
                 MaximumHP = MaximumHP * 3;
                 HP = MaximumHP;
@@ -116,7 +116,7 @@ namespace TKR.WorldServer.core.objects
                 if (Size <= 0)
                     Size = Size;
                 else
-                    Size = World.Random.Next(Size + 100, Size + 200);
+                    Size = Random.Shared.Next(Size + 100, Size + 200);
 
                 MaximumHP = MaximumHP * 2;
                 HP = MaximumHP;
@@ -130,7 +130,7 @@ namespace TKR.WorldServer.core.objects
                 if (Size <= 0)
                     Size = Size;
                 else
-                    Size = World.Random.Next(Size, Size + 100);
+                    Size = Random.Shared.Next(Size, Size + 100);
                 Defense += 2;
                 GlowEnemy = 0xEAC117;
             }
@@ -155,7 +155,7 @@ namespace TKR.WorldServer.core.objects
                     HP -= effDmg;
 
                 ApplyConditionEffect(effs);
-                World.BroadcastIfVisible(new Damage()
+                World.BroadcastIfVisible(new DamageMessage()
                 {
                     TargetId = Id,
                     Effects = 0,
@@ -221,7 +221,7 @@ namespace TKR.WorldServer.core.objects
         {
             if (player == null || player.World == null || player.Client == null)
                 return;
-            if (World.Random.NextDouble() < 0.3 && player.ApplyEffectCooldown(slot))
+            if (Random.Shared.NextDouble() < 0.3 && player.ApplyEffectCooldown(slot))
             {
                 player.SetCooldownTime(4, slot);
 
@@ -251,7 +251,7 @@ namespace TKR.WorldServer.core.objects
             var chance = 0.03;
             chance -= player.Inventory[0].NumProjectiles / 3 / 100;
             chance = multi ? chance / 1.5 : chance;
-            if (World.Random.NextDouble() < chance)
+            if (Random.Shared.NextDouble() < chance)
             {
 
                 Position procPos = new Position() { X = firstHit.X, Y = firstHit.Y };
@@ -302,7 +302,7 @@ namespace TKR.WorldServer.core.objects
                 {
                     for (var i = 0; i < 5; i++)
                     {
-                        var a = player.World.Random.NextLength(enemies);
+                        var a = Random.Shared.NextLength(enemies);
 
                         World.BroadcastIfVisible(new ShowEffect()
                         {
@@ -345,7 +345,7 @@ namespace TKR.WorldServer.core.objects
         {
             if (player == null || player.World == null || player.Client == null)
                 return;
-            if (World.Random.NextDouble() < 0.03)
+            if (Random.Shared.NextDouble() < 0.03)
             {
                 var current = firstHit;
                 var targets = new Entity[5];

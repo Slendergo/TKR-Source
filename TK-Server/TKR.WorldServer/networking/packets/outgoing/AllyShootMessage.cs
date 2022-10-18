@@ -2,16 +2,16 @@
 
 namespace TKR.WorldServer.networking.packets.outgoing
 {
-    public class AllyShoot : OutgoingMessage
+    public class AllyShootMessage : OutgoingMessage
     {
-        public int BulletId { get; set; }
-        public int OwnerId { get; set; }
-        public int ContainerType { get; set; }
-        public float Angle { get; set; }
+        private readonly int BulletId;
+        private readonly int OwnerId;
+        private readonly int ContainerType;
+        private readonly float Angle;
 
         public override MessageId MessageId => MessageId.ALLYSHOOT;
 
-        public AllyShoot(int bulletId, int ownerId, int containerType, float angle)
+        public AllyShootMessage(int bulletId, int ownerId, int containerType, float angle)
         {
             BulletId = bulletId;
             OwnerId = ownerId;

@@ -17,7 +17,7 @@ namespace TKR.WorldServer.core.setpieces
 
         public override void RenderSetPiece(World world, IntPoint pos)
         {
-            var radius = world.Random.Next(Size - 5, Size + 1) / 2;
+            var radius = Random.Shared.Next(Size - 5, Size + 1) / 2;
             var border = new List<IntPoint>();
             var t = new int[Size, Size];
 
@@ -40,7 +40,7 @@ namespace TKR.WorldServer.core.setpieces
             var trees = new HashSet<IntPoint>();
 
             while (trees.Count < border.Count * 0.5)
-                trees.Add(world.Random.NextLength(border));
+                trees.Add(Random.Shared.NextLength(border));
 
             foreach (var i in trees)
                 t[i.X, i.Y] = 2;
@@ -63,7 +63,7 @@ namespace TKR.WorldServer.core.setpieces
                         tile.TileId = dat.IdToTileType[Floor];
                         tile.ObjType = dat.IdToObjectType[Tree];
                         tile.ObjDesc = dat.ObjectDescs[tile.ObjType];
-                        tile.ObjCfg = "size:" + (world.Random.Next() % 2 == 0 ? 120 : 140);
+                        tile.ObjCfg = "size:" + (Random.Shared.Next() % 2 == 0 ? 120 : 140);
 
                         if (tile.ObjId == 0)
                             tile.ObjId = world.GetNextEntityId();

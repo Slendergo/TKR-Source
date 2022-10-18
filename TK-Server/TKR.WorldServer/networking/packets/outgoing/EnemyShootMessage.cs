@@ -3,7 +3,7 @@ using TKR.WorldServer.core.miscfile.structures;
 
 namespace TKR.WorldServer.networking.packets.outgoing
 {
-    public class EnemyShoot : OutgoingMessage
+    public class EnemyShootMessage : OutgoingMessage
     {
         public int ObjectType { get; set; } // dont serialize
         public bool Spawned { get; set; } // dont serialize

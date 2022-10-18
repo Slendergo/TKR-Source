@@ -206,9 +206,6 @@ namespace TKR.WorldServer.core
             Console.WriteLine("[Dispose] MarketSweeper");
             MarketSweeper.Stop();
 
-            Console.WriteLine("[Dispose] ConnectionManager");
-            ConnectionManager.Dispose();
-
             Console.WriteLine("[Dispose] ChatManager");
             ChatManager.Dispose();
 

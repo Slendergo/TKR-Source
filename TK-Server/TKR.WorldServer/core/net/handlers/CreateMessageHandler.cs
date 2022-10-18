@@ -27,29 +27,22 @@ namespace TKR.WorldServer.core.net.handlers
 
             if (status == DbCreateStatus.ReachCharLimit)
             {
-                client.SendFailure("Too many characters",
-                    FailureMessage.MessageWithDisconnect);
+                client.SendFailure("Too many characters", FailureMessage.MessageWithDisconnect);
                 return;
             }
 
             if (status == DbCreateStatus.SkinUnavailable)
             {
-                client.SendFailure("Skin unavailable",
-                    FailureMessage.MessageWithDisconnect);
+                client.SendFailure("Skin unavailable", FailureMessage.MessageWithDisconnect);
                 return;
             }
 
             if (status == DbCreateStatus.Locked)
             {
-                client.SendFailure("Class locked",
-                    FailureMessage.MessageWithDisconnect);
+                client.SendFailure("Class locked", FailureMessage.MessageWithDisconnect);
                 return;
             }
 
-            CreatePlayer(client, character);
-        }
-        private void CreatePlayer(Client client, DbChar character)
-        {
             client.Character = character;
 
             var target = client.GameServer.WorldManager.GetWorld(client.TargetWorld);
@@ -70,12 +63,8 @@ namespace TKR.WorldServer.core.net.handlers
 
             var player = client.Player = target.CreateNewPlayer(client, x, y);
 
-            client.SendPacket(new CreateSuccess()
-            {
-                CharId = client.Character.CharId,
-                ObjectId = player.Id
-            });
-
+            client.SendPacket(new CreateSuccessMessage(client.Character.CharId, player.Id));
+          
             if (target is RealmWorld realm)
                 realm.KingdomManager.OnPlayerEntered(player);
 

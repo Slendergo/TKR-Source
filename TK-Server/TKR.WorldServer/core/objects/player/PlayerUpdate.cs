@@ -304,11 +304,7 @@ namespace TKR.WorldServer.core.objects.player
 
         private void HandleNewTick()
         {
-            var newTick = new NewTick()
-            {
-                TickId = TickId,
-                TickTime = TickTime
-            };
+            var newTick = new NewTickMessage(TickId, TickTime);
 
             lock (StatsUpdates)
             {

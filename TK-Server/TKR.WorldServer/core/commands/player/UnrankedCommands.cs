@@ -748,8 +748,8 @@ namespace TKR.WorldServer.core.commands.player
                 var pt = new IntPoint();
                 do
                 {
-                    pt.X = world.Random.Next(0, world.Map.Width);
-                    pt.Y = world.Random.Next(0, world.Map.Height);
+                    pt.X = Random.Shared.Next(0, world.Map.Width);
+                    pt.Y = Random.Shared.Next(0, world.Map.Height);
                 }
                 while (world.Map[pt.X, pt.Y].Terrain != TerrainType.Mountains || !world.IsPassable(pt.X, pt.Y, true) || world.AnyPlayerNearby(pt.X, pt.Y, 5));
 
@@ -1016,13 +1016,7 @@ namespace TKR.WorldServer.core.commands.player
 
             player.GameServer.Database.IgnoreAccount(srcAccount, targetAccount, true);
 
-            player.Client.SendPacket(new AccountList()
-            {
-                AccountListId = 1, // ignore list
-                AccountIds = srcAccount.IgnoreList
-                    .Select(i => i.ToString())
-                    .ToArray()
-            });
+            player.Client.SendPacket(new AccountListMessage(1, srcAccount.IgnoreList.Select(i => i.ToString()).ToArray()));
 
             player.SendInfo(playerName + " has been added to your ignore list.");
             return true;
@@ -1091,13 +1085,7 @@ namespace TKR.WorldServer.core.commands.player
 
             player.GameServer.Database.LockAccount(srcAccount, targetAccount, true);
 
-            player.Client.SendPacket(new AccountList()
-            {
-                AccountListId = 0, // locked list
-                AccountIds = player.Client.Account.LockList
-                    .Select(i => i.ToString())
-                    .ToArray()
-            });
+            player.Client.SendPacket(new AccountListMessage(0, srcAccount.LockList.Select(i => i.ToString()).ToArray()));
 
             player.SendInfo(playerName + " has been locked.");
             return true;
@@ -1430,13 +1418,7 @@ namespace TKR.WorldServer.core.commands.player
 
             player.GameServer.Database.IgnoreAccount(srcAccount, targetAccount, false);
 
-            player.Client.SendPacket(new AccountList()
-            {
-                AccountListId = 1, // ignore list
-                AccountIds = srcAccount.IgnoreList
-                    .Select(i => i.ToString())
-                    .ToArray()
-            });
+            player.Client.SendPacket(new AccountListMessage(1, srcAccount.IgnoreList.Select(i => i.ToString()).ToArray()));
 
             player.SendInfo(playerName + " no longer ignored.");
             return true;
@@ -1473,13 +1455,7 @@ namespace TKR.WorldServer.core.commands.player
 
             player.GameServer.Database.LockAccount(srcAccount, targetAccount, false);
 
-            player.Client.SendPacket(new AccountList()
-            {
-                AccountListId = 0, // locked list
-                AccountIds = player.Client.Account.LockList
-                    .Select(i => i.ToString())
-                    .ToArray()
-            });
+            player.Client.SendPacket(new AccountListMessage(0, srcAccount.LockList.Select(i => i.ToString()).ToArray()));
 
             player.SendInfo(playerName + " no longer locked.");
             return true;

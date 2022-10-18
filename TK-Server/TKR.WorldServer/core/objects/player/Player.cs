@@ -359,7 +359,7 @@ namespace TKR.WorldServer.core.objects
             if (!HasConditionEffect(ConditionEffectIndex.Invulnerable))
                 HP -= dmg;
 
-            World.BroadcastIfVisibleExclude(new Damage()
+            World.BroadcastIfVisibleExclude(new DamageMessage()
             {
                 TargetId = Id,
                 Effects = 0,
@@ -398,7 +398,7 @@ namespace TKR.WorldServer.core.objects
             GenerateGravestone();
             AnnounceDeath(killer);
 
-            Client.SendPacket(new Death(AccountId, Client.Character.CharId, killer));
+            Client.SendPacket(new DeathMessage(AccountId, Client.Character.CharId, killer));
             Client.Disconnect("Death");
         }
 
@@ -638,11 +638,7 @@ namespace TKR.WorldServer.core.objects
             var id = Id;
             var tpPkts = new OutgoingMessage[]
             {
-                new Goto()
-                {
-                    ObjectId = id,
-                    Pos = position
-                },
+                new GotoMessage(id, position),
                 new ShowEffect()
                 {
                     EffectType = EffectType.Teleport,
@@ -684,7 +680,6 @@ namespace TKR.WorldServer.core.objects
                 GroundEffect(time);
                 TickActivateEffects(time);
 
-                /* Item Effects */
                 TimeEffects(time);
                 SpecialEffects();
 
@@ -1007,7 +1002,7 @@ namespace TKR.WorldServer.core.objects
 
         private void Clarification(int slot)
         {
-            if (World.Random.NextDouble() < 0.1 && ApplyEffectCooldown(slot))
+            if (Random.Shared.NextDouble() < 0.1 && ApplyEffectCooldown(slot))
             {
                 World.BroadcastIfVisible(new ShowEffect()
                 {
@@ -1034,7 +1029,7 @@ namespace TKR.WorldServer.core.objects
         {
             if (item.MonkeyKingsWrath)
             {
-                if (World.Random.NextDouble() < .5 && ApplyEffectCooldown(slot))// 50 % chance
+                if (Random.Shared.NextDouble() < .5 && ApplyEffectCooldown(slot))// 50 % chance
                 {
                     Size = 100;
                     SetCooldownTime(10, slot);
@@ -1118,7 +1113,7 @@ namespace TKR.WorldServer.core.objects
 
         private void GodBless(int slot)
         {
-            if (World.Random.NextDouble() < 0.07 && ApplyEffectCooldown(slot))
+            if (Random.Shared.NextDouble() < 0.07 && ApplyEffectCooldown(slot))
             {
                 World.BroadcastIfVisible(new ShowEffect()
                 {
@@ -1142,7 +1137,7 @@ namespace TKR.WorldServer.core.objects
 
         private void GodTouch(int slot)
         {
-            if (World.Random.NextDouble() < 0.02 && ApplyEffectCooldown(slot))
+            if (Random.Shared.NextDouble() < 0.02 && ApplyEffectCooldown(slot))
             {
                 ActivateHealHp(this, 25 * Stats[0] / 100);
                 World.BroadcastIfVisible(new ShowEffect()
@@ -1215,7 +1210,7 @@ namespace TKR.WorldServer.core.objects
 
             if (item.OutOfOneMind)
             {
-                if (World.Random.NextDouble() < 0.02 && ApplyEffectCooldown(Slot))
+                if (Random.Shared.NextDouble() < 0.02 && ApplyEffectCooldown(Slot))
                 {
                     World.BroadcastIfVisible(new Notification()
                     {
@@ -1232,7 +1227,7 @@ namespace TKR.WorldServer.core.objects
 
             if (item.SteamRoller)
             {
-                if (World.Random.NextDouble() < 0.05 && ApplyEffectCooldown(Slot))
+                if (Random.Shared.NextDouble() < 0.05 && ApplyEffectCooldown(Slot))
                 {
                     World.BroadcastIfVisible(new Notification()
                     {
@@ -1249,7 +1244,7 @@ namespace TKR.WorldServer.core.objects
 
             if (item.Mutilate)
             {
-                if (World.Random.NextDouble() < 0.08 && ApplyEffectCooldown(Slot))
+                if (Random.Shared.NextDouble() < 0.08 && ApplyEffectCooldown(Slot))
                 {
                     World.BroadcastIfVisible(new Notification()
                     {
@@ -1267,7 +1262,7 @@ namespace TKR.WorldServer.core.objects
 
         private void MonkeyKingsWrath(int slot)
         {
-            if (World.Random.NextDouble() < .5 && ApplyEffectCooldown(slot))// 50 % chance
+            if (Random.Shared.NextDouble() < .5 && ApplyEffectCooldown(slot))// 50 % chance
             {
                 World.BroadcastIfVisible(new ShowEffect()
                 {
@@ -1284,8 +1279,7 @@ namespace TKR.WorldServer.core.objects
                     PlayerId = Id,
                     ObjectId = Id
                 }, this);
-
-                Client.SendPacket(new GlobalNotification() { Text = "monkeyKing" });
+                Client.SendPacket(new GlobalNotificationMessage(0, "monkeyKing"));
                 SetCooldownTime(10, slot);
             }
         }
@@ -1327,7 +1321,7 @@ namespace TKR.WorldServer.core.objects
         {
             if (item.Insanity)
             {
-                if (World.Random.NextDouble() < 0.05 && ApplyEffectCooldown(slot))
+                if (Random.Shared.NextDouble() < 0.05 && ApplyEffectCooldown(slot))
                 {
                     World.BroadcastIfVisible(new Notification()
                     {
@@ -1345,7 +1339,7 @@ namespace TKR.WorldServer.core.objects
 
             if (item.HolyProtection)
             {
-                if (World.Random.NextDouble() < 0.1 && ApplyEffectCooldown(slot))
+                if (Random.Shared.NextDouble() < 0.1 && ApplyEffectCooldown(slot))
                 {
                     if (!(HasConditionEffect(ConditionEffectIndex.Quiet)
                         || HasConditionEffect(ConditionEffectIndex.Weak)
@@ -1442,7 +1436,7 @@ namespace TKR.WorldServer.core.objects
 
                 if (item.Lucky)
                 {
-                    if (World.Random.NextDouble() < 0.1 && ApplyEffectCooldown(slot))
+                    if (Random.Shared.NextDouble() < 0.1 && ApplyEffectCooldown(slot))
                     {
                         SetCooldownTime(20, slot);
                         for (var j = 0; j < 8; j++)

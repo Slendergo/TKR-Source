@@ -49,11 +49,7 @@ namespace TKR.WorldServer.core.net.handlers
 
                 var player = client.Player = target.CreateNewPlayer(client, x, y);
 
-                client.SendPacket(new CreateSuccess()
-                {
-                    CharId = client.Character.CharId,
-                    ObjectId = player.Id
-                });
+                client.SendPacket(new CreateSuccessMessage(client.Character.CharId, player.Id));
 
                 if(target is RealmWorld realm)
                     realm.KingdomManager.OnPlayerEntered(player);

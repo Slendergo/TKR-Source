@@ -2,7 +2,7 @@
 
 namespace TKR.WorldServer.networking.packets.outgoing
 {
-    public class MapInfo : OutgoingMessage
+    public class MapInfoMessage : OutgoingMessage
     {
         public short Width { get; set; }
         public short Height { get; set; }

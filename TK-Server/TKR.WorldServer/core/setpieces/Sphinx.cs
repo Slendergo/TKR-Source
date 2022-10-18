@@ -45,7 +45,7 @@ namespace TKR.WorldServer.core.setpieces
                 {
                     var dx = x - Size / 2.0;
                     var dy = y - Size / 2.0;
-                    var r = Math.Sqrt(dx * dx + dy * dy) + world.Random.NextDouble() * 4 - 2;
+                    var r = Math.Sqrt(dx * dx + dy * dy) + Random.Shared.NextDouble() * 4 - 2;
 
                     if (r <= 35)
                         t[x, y] = 1;

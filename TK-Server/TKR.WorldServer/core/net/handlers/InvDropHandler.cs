@@ -101,7 +101,7 @@ namespace TKR.WorldServer.core.net.handlers
             // init container
             container.Inventory[0] = item;
             container.Inventory.Data[0] = data;
-            container.Move(player.X + (float)((player.World.Random.NextDouble() * 2 - 1) * 0.5), player.Y + (float)((player.World.Random.NextDouble() * 2 - 1) * 0.5));
+            container.Move(player.X + (float)((Random.Shared.NextDouble() * 2 - 1) * 0.5), player.Y + (float)((Random.Shared.NextDouble() * 2 - 1) * 0.5));
             container.SetDefaultSize(75);
 
             player.World.EnterWorld(container);

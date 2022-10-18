@@ -2,7 +2,7 @@
 
 namespace TKR.WorldServer.networking.packets.outgoing
 {
-    public class Death : OutgoingMessage
+    public class DeathMessage : OutgoingMessage
     {
         private int AccountId;
         private int CharId;
@@ -10,7 +10,7 @@ namespace TKR.WorldServer.networking.packets.outgoing
 
         public override MessageId MessageId => MessageId.DEATH;
 
-        public Death(int accountId, int charId, string killedBy)
+        public DeathMessage(int accountId, int charId, string killedBy)
         {
             AccountId = accountId;
             CharId = charId;

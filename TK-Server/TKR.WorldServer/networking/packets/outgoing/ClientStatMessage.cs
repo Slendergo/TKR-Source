@@ -2,12 +2,18 @@
 
 namespace TKR.WorldServer.networking.packets.outgoing
 {
-    public class ClientStat : OutgoingMessage
+    public sealed class ClientStatMessage : OutgoingMessage
     {
-        public string Name { get; set; }
-        public int Value { get; set; }
+        private readonly string Name;
+        private readonly int Value;
 
         public override MessageId MessageId => MessageId.CLIENTSTAT;
+
+        public ClientStatMessage(string name, int value)
+        {
+            Name = name;
+            Value = value;
+        }
 
         public override void Write(NetworkWriter wtr)
         {

@@ -2,12 +2,18 @@
 
 namespace TKR.WorldServer.networking.packets.outgoing
 {
-    internal class GuildResult : OutgoingMessage
+    public sealed class GuildResultMessage : OutgoingMessage
     {
-        public bool Success { get; set; }
-        public string ErrorText { get; set; }
+        private readonly bool Success;
+        private readonly string ErrorText;
 
         public override MessageId MessageId => MessageId.GUILDRESULT;
+
+        public GuildResultMessage(bool success, string errorText)
+        {
+            Success = success;
+            ErrorText = errorText;
+        }
 
         public override void Write(NetworkWriter wtr)
         {

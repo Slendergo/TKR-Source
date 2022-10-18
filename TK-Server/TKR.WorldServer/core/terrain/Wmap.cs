@@ -139,7 +139,9 @@ namespace TKR.WorldServer.core.terrain
                     var tile = world.Map[projX, projY];
                     var spTile = Tiles[x, y];
 
-                    if (spTile.TileId == 255)
+                    tile.ObjType = 0;
+                    tile.UpdateCount++;
+                    if (spTile.TileId == 0xFF)
                         continue;
 
                     spTile.CopyTo(tile);
@@ -149,8 +151,6 @@ namespace TKR.WorldServer.core.terrain
 
                     if (tile.Region != 0)
                         world.Map.Regions.Add(new IntPoint(projX, projY), spTile.Region);
-
-                    tile.UpdateCount++;
                 }
 
             CreateEntities(pos);

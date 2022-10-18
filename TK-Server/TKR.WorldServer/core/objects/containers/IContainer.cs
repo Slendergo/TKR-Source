@@ -1,7 +1,7 @@
 ﻿using TKR.Shared;
 using TKR.WorldServer.core.objects.inventory;
 
-namespace TKR.WorldServer.core.objects
+namespace TKR.WorldServer.core.objects.containers
 {
     public interface IContainer
     {

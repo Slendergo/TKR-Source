@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using TKR.Shared.database.character.inventory;
 using TKR.WorldServer.core.miscfile;
+using TKR.WorldServer.core.objects.containers;
 
 namespace TKR.WorldServer.core.objects.inventory
 {

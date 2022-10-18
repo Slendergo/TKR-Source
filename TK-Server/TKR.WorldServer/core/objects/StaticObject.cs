@@ -2,7 +2,6 @@
 using TKR.WorldServer.core.miscfile.stats;
 using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.core.objects.player;
-using TKR.WorldServer.networking.packets.outgoing;
 
 namespace TKR.WorldServer.core.objects
 {

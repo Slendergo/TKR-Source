@@ -6,7 +6,7 @@ using TKR.WorldServer.core.worlds.logic;
 using TKR.WorldServer.logic.behaviors.@new;
 using TKR.WorldServer.utils;
 
-namespace TKR.WorldServer.logic.behaviors
+namespace TKR.WorldServer.logic.behaviors.@new.movements
 {
     internal class NewStayAbove : OrderedBehavior
     {

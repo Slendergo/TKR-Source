@@ -9,6 +9,7 @@ using TKR.WorldServer.core.objects;
 using TKR.WorldServer.core.objects.player;
 using TKR.WorldServer.core.worlds;
 using TKR.WorldServer.core.miscfile.structures;
+using TKR.WorldServer.core.objects.containers;
 
 namespace TKR.WorldServer.utils
 {

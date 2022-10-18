@@ -1,6 +1,4 @@
-﻿using TKR.WorldServer.core.worlds;
-
-namespace TKR.WorldServer.core.setpieces
+﻿namespace TKR.WorldServer.core.setpieces
 {
     internal class KageKami : ISetPiece
     {

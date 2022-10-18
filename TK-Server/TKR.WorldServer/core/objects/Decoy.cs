@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using TKR.WorldServer.core.miscfile;
 using TKR.WorldServer.core.miscfile.datas;
 using TKR.WorldServer.core.miscfile.stats;
-using TKR.WorldServer.core.miscfile.thread;
-using TKR.WorldServer.core.objects;
-using TKR.WorldServer.networking;
-using TKR.WorldServer.networking.packets.outgoing;
 using TKR.WorldServer.core.miscfile.structures;
+using TKR.WorldServer.core.miscfile.thread;
+using TKR.WorldServer.networking.packets.outgoing;
 
 namespace TKR.WorldServer.core.objects
 {

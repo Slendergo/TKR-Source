@@ -4,11 +4,18 @@ namespace TKR.WorldServer.networking.packets.outgoing
 {
     public class Death : OutgoingMessage
     {
-        public int AccountId { get; set; }
-        public int CharId { get; set; }
-        public string KilledBy { get; set; }
+        private int AccountId;
+        private int CharId;
+        private string KilledBy;
 
         public override MessageId MessageId => MessageId.DEATH;
+
+        public Death(int accountId, int charId, string killedBy)
+        {
+            AccountId = accountId;
+            CharId = charId;
+            KilledBy = killedBy;
+        }
 
         public override void Write(NetworkWriter wtr)
         {

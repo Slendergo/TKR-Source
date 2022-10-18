@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using TKR.Shared.resources;
 using TKR.WorldServer.core.miscfile.datas;
 using TKR.WorldServer.core.miscfile.stats;
 using TKR.WorldServer.core.miscfile.thread;
-using TKR.WorldServer.core.objects;
 using TKR.WorldServer.core.worlds.logic;
 using TKR.WorldServer.networking;
 using TKR.WorldServer.networking.packets.outgoing;
@@ -17,7 +14,6 @@ namespace TKR.WorldServer.core.objects
         public Entity Quest { get; private set; }
 
         public static int GetExpGoal(int level) => 50 + (level - 1) * 100;
-
         public static int GetFameGoal(int fame)
         {
             if (fame >= 2000) return 0;
@@ -26,12 +22,6 @@ namespace TKR.WorldServer.core.objects
             if (fame >= 150) return 400;
             if (fame >= 20) return 150;
             return 20;
-        }
-
-        public static int GetTalismanEssenceCap(int stars)
-        {
-            var baseCount = 1000;
-            return baseCount + (stars * baseCount);
         }
 
         public static int GetLevelExp(int level)

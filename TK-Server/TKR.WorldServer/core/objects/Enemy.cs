@@ -223,7 +223,7 @@ namespace TKR.WorldServer.core.objects
                 return;
             if (World.Random.NextDouble() < 0.3 && player.ApplyEffectCooldown(slot))
             {
-                player.setCooldownTime(4, slot);
+                player.SetCooldownTime(4, slot);
 
                 ApplyConditionEffect(ConditionEffectIndex.Curse, 5000);
 

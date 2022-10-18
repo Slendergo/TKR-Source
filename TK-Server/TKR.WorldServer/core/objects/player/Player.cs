@@ -15,6 +15,7 @@ using TKR.WorldServer.core.miscfile.stats;
 using TKR.WorldServer.core.miscfile.structures;
 using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.core.net.handlers;
+using TKR.WorldServer.core.objects.containers;
 using TKR.WorldServer.core.objects.inventory;
 using TKR.WorldServer.core.objects.player;
 using TKR.WorldServer.core.worlds;
@@ -125,6 +126,9 @@ namespace TKR.WorldServer.core.objects
         private SV<int> _texture1;
         private SV<int> _texture2;
         private SV<bool> _xpBoosted;
+
+        public StatsManager Stats;
+
         internal class APIRank{ public int accID; public int charID; }
         internal class APIResp{ [JsonProperty("rank")] public string charRank { get; set; }}
 
@@ -136,7 +140,7 @@ namespace TKR.WorldServer.core.objects
         public bool IsSupporter5 => Client.Rank.Rank >= RankingType.Supporter5;
         public bool IsCommunityManager => Client.Rank.IsCommunityManager;
 
-        public Player(Client client, bool saveInventory = true) : base(client.GameServer, client.Character.ObjectType)
+        public Player(Client client) : base(client.GameServer, client.Character.ObjectType)
         {
             var settings = GameServer.Resources.Settings;
             var gameData = GameServer.Resources.GameData;
@@ -221,7 +225,7 @@ namespace TKR.WorldServer.core.objects
             LDBoostTime = client.Character.LDBoostTime;
 
             var s = (ushort)client.Character.Skin;
-            if (gameData.Skins.Keys.Contains(s))
+            if (gameData.Skins.ContainsKey(s))
             {
                 SetDefaultSkin(s);
                 SetDefaultSize(gameData.Skins[s].Size);
@@ -254,12 +258,12 @@ namespace TKR.WorldServer.core.objects
 
             Stats = new StatsManager(this);
 
-            GameServer.Database.IsMuted(client.IpAddress).ContinueWith(t =>
+            _ = GameServer.Database.IsMuted(client.IpAddress).ContinueWith(t =>
             {
                 Muted = !Client.Rank.IsAdmin && t.IsCompleted && t.Result;
             });
 
-            GameServer.Database.IsLegend(AccountId).ContinueWith(t =>
+            _ = GameServer.Database.IsLegend(AccountId).ContinueWith(t =>
             {
                 Glow = t.Result && client.Account.GlowColor == 0 ? 0xFF0000 : client.Account.GlowColor;
             });
@@ -354,6 +358,7 @@ namespace TKR.WorldServer.core.objects
             dmg = (int)Stats.GetDefenseDamage(dmg, false);
             if (!HasConditionEffect(ConditionEffectIndex.Invulnerable))
                 HP -= dmg;
+
             World.BroadcastIfVisibleExclude(new Damage()
             {
                 TargetId = Id,
@@ -393,13 +398,7 @@ namespace TKR.WorldServer.core.objects
             GenerateGravestone();
             AnnounceDeath(killer);
 
-            Client.SendPacket(new Death()
-            {
-                AccountId = AccountId,
-                CharId = Client.Character.CharId,
-                KilledBy = killer
-            });
-
+            Client.SendPacket(new Death(AccountId, Client.Character.CharId, killer));
             Client.Disconnect("Death");
         }
 
@@ -409,10 +408,8 @@ namespace TKR.WorldServer.core.objects
             {
                 case CurrencyType.Gold:
                     return Credits;
-
                 case CurrencyType.Fame:
                     return CurrentFame;
-
                 default:
                     return 0;
             }
@@ -475,7 +472,7 @@ namespace TKR.WorldServer.core.objects
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Error processing packet ({((incomingMessage.Client.Account != null) ? incomingMessage.Client.Account.Name : "")}, {incomingMessage.Client.IpAddress})\n{ex}");
-                    if (!(ex is EndOfStreamException))
+                    if (ex is not EndOfStreamException)
                         StaticLogger.Instance.Error($"Error processing packet ({((incomingMessage.Client.Account != null) ? incomingMessage.Client.Account.Name : "")}, {incomingMessage.Client.IpAddress})\n{ex}");
                     incomingMessage.Client.SendFailure("An error occurred while processing data from your client.", FailureMessage.MessageWithDisconnect);
                 }
@@ -485,20 +482,22 @@ namespace TKR.WorldServer.core.objects
         public void Reconnect(World world)
         {
             if (world == null)
-                SendError("Portal Not Implemented!");
-            else
             {
-                Client.Reconnect(new Reconnect()
-                {
-                    Host = "",
-                    Port = GameServer.Configuration.serverInfo.port,
-                    GameId = world.Id,
-                    Name = world.IdName
-                });
-                var party = DbPartySystem.Get(Client.Account.Database, Client.Account.PartyId);
-                if (party != null && party.PartyLeader.Item1 == Client.Account.Name && party.PartyLeader.Item2 == Client.Account.AccountId)
-                    party.WorldId = -1;
+                SendError("Portal Not Implemented!");
+                return;
             }
+
+            Client.Reconnect(new Reconnect()
+            {
+                Host = "",
+                Port = GameServer.Configuration.serverInfo.port,
+                GameId = world.Id,
+                Name = world.IdName
+            });
+
+            var party = DbPartySystem.Get(Client.Account.Database, Client.Account.PartyId);
+            if (party != null && party.PartyLeader.Item1 == Client.Account.Name && party.PartyLeader.Item2 == Client.Account.AccountId)
+                party.WorldId = -1;
         }
 
         public void RestoreDefaultSkin() => Skin = _originalSkin;
@@ -579,7 +578,7 @@ namespace TKR.WorldServer.core.objects
                     return;
                 }
 
-                if (!(obj is Player))
+                if (obj is not Player)
                 {
                     SendError("Can only teleport to players.");
                     RestartTPPeriod();
@@ -726,13 +725,10 @@ namespace TKR.WorldServer.core.objects
                 HP -= (int)(20 * time.BehaviourTickTime);
 
             if (HP < 0)
-            {
                 Death("Suffocation");
-                return;
-            }
         }
 
-        internal void setCooldownTime(int time, int slot)
+        internal void SetCooldownTime(int time, int slot)
         {
             if (slot == 0)
                 _canApplyEffect0 = time * 1000;
@@ -1030,7 +1026,7 @@ namespace TKR.WorldServer.core.objects
                 }, this);
 
                 ActivateHealMp(this, 30 * Stats[1] / 100);
-                setCooldownTime(10, slot);
+                SetCooldownTime(10, slot);
             }
         }
 
@@ -1041,7 +1037,7 @@ namespace TKR.WorldServer.core.objects
                 if (World.Random.NextDouble() < .5 && ApplyEffectCooldown(slot))// 50 % chance
                 {
                     Size = 100;
-                    setCooldownTime(10, slot);
+                    SetCooldownTime(10, slot);
                     World.BroadcastIfVisible(new ShowEffect()
                     {
                         EffectType = EffectType.AreaBlast,
@@ -1073,43 +1069,51 @@ namespace TKR.WorldServer.core.objects
         private void GenerateGravestone(bool phantomDeath = false)
         {
             var playerDesc = GameServer.Resources.GameData.Classes[ObjectType];
-            //var maxed = playerDesc.Stats.Where((t, i) => Stats.Base[i] >= t.MaxValue).Count();
+
             var maxed = playerDesc.Stats.Where((t, i) => Stats.Base[i] >= t.MaxValue).Count() + (UpgradeEnabled ? playerDesc.Stats.Where((t, i) => i == 0 ? Stats.Base[i] >= t.MaxValue + 50 : i == 1 ? Stats.Base[i] >= t.MaxValue + 50 : Stats.Base[i] >= t.MaxValue + 10).Count() : 0);
+           
             ushort objType;
-            int time;
+            int? time = null;
             switch (maxed)
             {
-                case 16: objType = 0xa00e; time = 600000; break;
-                case 15: objType = 0xa00d; time = 600000; break;
-                case 14: objType = 0xa00c; time = 600000; break;
-                case 13: objType = 0xa00b; time = 600000; break;
-                case 12: objType = 0xa00a; time = 600000; break;
-                case 11: objType = 0xa009; time = 600000; break;
-                case 10: objType = 0xa008; time = 600000; break;
-                case 9: objType = 0xa007; time = 600000; break;
-                case 8: objType = 0x0735; time = 600000; break;
-                case 7: objType = 0x0734; time = 600000; break;
-                case 6: objType = 0x072b; time = 600000; break;
-                case 5: objType = 0x072a; time = 600000; break;
-                case 4: objType = 0x0729; time = 600000; break;
-                case 3: objType = 0x0728; time = 600000; break;
-                case 2: objType = 0x0727; time = 600000; break;
-                case 1: objType = 0x0726; time = 600000; break;
+                case 16: objType = 0xa00e; break;
+                case 15: objType = 0xa00d; break;
+                case 14: objType = 0xa00c; break;
+                case 13: objType = 0xa00b; break;
+                case 12: objType = 0xa00a; break;
+                case 11: objType = 0xa009; break;
+                case 10: objType = 0xa008; break;
+                case 9: objType = 0xa007; break;
+                case 8: objType = 0x0735; break;
+                case 7: objType = 0x0734; break;
+                case 6: objType = 0x072b; break;
+                case 5: objType = 0x072a; break;
+                case 4: objType = 0x0729; break;
+                case 3: objType = 0x0728; break;
+                case 2: objType = 0x0727; break;
+                case 1: objType = 0x0726; break;
                 default:
-                    objType = 0x0725; time = 300000;
-                    if (Level < 20) { objType = 0x0724; time = 60000; }
-                    if (Level <= 1) { objType = 0x0723; time = 30000; }
+                    objType = 0x0725;
+                    time = 300000;
+                    if (Level < 20)
+                    {
+                        objType = 0x0724;
+                        time = 60000;
+                    }
+                    if (Level <= 1)
+                    {
+                        objType = 0x0723;
+                        time = 30000;
+                    }
                     break;
             }
 
             var deathMessage = Name + " (" + maxed + (UpgradeEnabled ? "/16, " : "/8, ") + Client.Character.Fame + ")";
 
-            //var deathMessage = Name + " (" + maxed + ("/8, ") + _client.Character.Fame + ")";
-
-            //var obj = new StaticObject(GameServer, objType, time, true, true, false);
-            //obj.Move(X, Y);
-            //obj.Name = (!phantomDeath) ? deathMessage : $"{Name} got rekt";
-            //World.EnterWorld(obj);
+            var obj = new StaticObject(GameServer, objType, time, true, true, false);
+            obj.Move(X, Y);
+            obj.Name = (!phantomDeath) ? deathMessage : $"{Name} got rekt";
+            World.EnterWorld(obj);
         }
 
         private void GodBless(int slot)
@@ -1132,7 +1136,7 @@ namespace TKR.WorldServer.core.objects
                 }, this);
 
                 ApplyConditionEffect(ConditionEffectIndex.Invulnerable, 3000);
-                setCooldownTime(10, slot);
+                SetCooldownTime(10, slot);
             }
         }
 
@@ -1156,7 +1160,7 @@ namespace TKR.WorldServer.core.objects
                     PlayerId = Id,
                     ObjectId = Id
                 }, this);
-                setCooldownTime(30, slot);
+                SetCooldownTime(30, slot);
             }
         }
 
@@ -1222,7 +1226,7 @@ namespace TKR.WorldServer.core.objects
                     }, this);
 
                     ApplyConditionEffect(ConditionEffectIndex.Berserk, 3000);
-                    setCooldownTime(10, Slot);
+                    SetCooldownTime(10, Slot);
                 }
             }
 
@@ -1239,7 +1243,7 @@ namespace TKR.WorldServer.core.objects
                     }, this);
 
                     ApplyConditionEffect(ConditionEffectIndex.Armored, 5000);
-                    setCooldownTime(10, Slot);
+                    SetCooldownTime(10, Slot);
                 }
             }
 
@@ -1256,7 +1260,7 @@ namespace TKR.WorldServer.core.objects
                     }, this);
 
                     ApplyConditionEffect(ConditionEffectIndex.Damaging, 3000);
-                    setCooldownTime(10, Slot);
+                    SetCooldownTime(10, Slot);
                 }
             }
         }
@@ -1282,7 +1286,7 @@ namespace TKR.WorldServer.core.objects
                 }, this);
 
                 Client.SendPacket(new GlobalNotification() { Text = "monkeyKing" });
-                setCooldownTime(10, slot);
+                SetCooldownTime(10, slot);
             }
         }
 
@@ -1333,7 +1337,7 @@ namespace TKR.WorldServer.core.objects
                         ObjectId = Id
                     }, this);
 
-                    setCooldownTime(10, slot);
+                    SetCooldownTime(10, slot);
                     ApplyConditionEffect(ConditionEffectIndex.Berserk, 3000);
                     ApplyConditionEffect(ConditionEffectIndex.Damaging, 3000);
                 }
@@ -1369,7 +1373,7 @@ namespace TKR.WorldServer.core.objects
                         ObjectId = Id
                     }, this);
 
-                    setCooldownTime(7, slot);
+                    SetCooldownTime(7, slot);
 
                     foreach (var effect in NegativeEffs)
                         RemoveCondition(effect);
@@ -1403,7 +1407,7 @@ namespace TKR.WorldServer.core.objects
 
                 ApplyConditionEffect(ConditionEffectIndex.Invisible, 4000);
                 ApplyConditionEffect(ConditionEffectIndex.Speedy, 4000);
-                setCooldownTime(30, slot);
+                SetCooldownTime(30, slot);
             }
         }
 
@@ -1440,7 +1444,7 @@ namespace TKR.WorldServer.core.objects
                 {
                     if (World.Random.NextDouble() < 0.1 && ApplyEffectCooldown(slot))
                     {
-                        setCooldownTime(20, slot);
+                        SetCooldownTime(20, slot);
                         for (var j = 0; j < 8; j++)
                             Stats.Boost.ActivateBoost[j].Push(j == 0 || j == 1 ? 100 : 15, false);
                         Stats.ReCalculateValues();

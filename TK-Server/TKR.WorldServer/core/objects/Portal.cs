@@ -1,12 +1,7 @@
-﻿using TKR.Shared;
+﻿using System.Collections.Generic;
+using TKR.Shared;
 using TKR.Shared.resources;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using TKR.WorldServer.core;
 using TKR.WorldServer.core.miscfile.stats;
-using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.core.worlds;
 using TKR.WorldServer.utils;
 

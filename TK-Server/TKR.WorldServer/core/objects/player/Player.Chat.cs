@@ -10,7 +10,7 @@ namespace TKR.WorldServer.core.objects
         private static Regex repetition = new Regex("(.)(?<=\\1\\1)", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant | RegexOptions.Compiled);
 
         private string LastMessage = "";
-        private int LastMessageDeviation = Int32.MaxValue;
+        private int LastMessageDeviation = int.MaxValue;
         private long LastMessageTime = 0;
         private bool Spam = false;
 
@@ -29,7 +29,6 @@ namespace TKR.WorldServer.core.objects
                 return n;
 
             for (var i = 0; i <= n; d[i, 0] = i++) ;
-
             for (var j = 0; j <= m; d[0, j] = j++) ;
 
             for (var i = 1; i <= n; i++)

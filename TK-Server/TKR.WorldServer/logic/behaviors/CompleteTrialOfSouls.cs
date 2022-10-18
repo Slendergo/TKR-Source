@@ -1,6 +1,5 @@
 ﻿using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.core.objects;
-using TKR.WorldServer.logic;
 
 namespace TKR.WorldServer.logic.behaviors
 {

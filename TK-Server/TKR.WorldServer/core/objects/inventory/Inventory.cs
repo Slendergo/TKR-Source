@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TKR.Shared.database.character.inventory;
 using TKR.Shared.resources;
+using TKR.WorldServer.core.objects.containers;
 
 namespace TKR.WorldServer.core.objects.inventory
 {

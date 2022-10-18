@@ -229,6 +229,9 @@ namespace TKR.WorldServer.core.worlds
             if (Portals.TryGetValue(id, out var ret5))
                 return ret5;
 
+            if (SellableObjects.TryGetValue(id, out var ret6))
+                return ret6;
+
             return null;
         }
 

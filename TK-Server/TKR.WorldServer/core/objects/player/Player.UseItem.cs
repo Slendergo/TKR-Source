@@ -559,6 +559,10 @@ namespace TKR.WorldServer.core.objects
                         AEPermaPet(time, item, target, eff);
                         break;
 
+                    case ActivateEffects.Pet:
+                        AEPet(time, item, target, eff);
+                        break;
+
                     case ActivateEffects.Backpack:
                         AEBackpack(time, item, target, slot, objId, eff);
                         break;
@@ -1299,6 +1303,15 @@ namespace TKR.WorldServer.core.objects
                 Inventory[slot] = dustItem;
 
             SendInfo($"You Scattered used a Miscellaneous Dust and obtained a {dustItem.DisplayName ?? dustItem.ObjectId}");
+        }
+
+        private void AEPet(TickTime time, Item item, Position target, ActivateEffect eff)
+        {
+            var type = GameServer.Resources.GameData.IdToObjectType[eff.ObjectId];
+
+            var pet = new Pet(GameServer, this, type);
+            pet.Move(X, Y);
+            World.EnterWorld(pet);
         }
 
         private void AEPermaPet(TickTime time, Item item, Position target, ActivateEffect eff)

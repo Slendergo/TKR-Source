@@ -1418,8 +1418,21 @@
     <feedPower>35</feedPower>
   </Object>
   <Object type="0xaf3" id="Yellow Drake Egg">
-		Bleeding
-		<Class>Equipment</Class><Item /><Texture><File>lofiChar8x8</File><Index>0xe7</Index></Texture><SlotType>10</SlotType><Description>An egg that when used, hatches a Yellow Drake to help you in battle for a short time, causing bleeding to your enemies.</Description><Sound>spell/light_heal</Sound><Consumable /><BagType>0</BagType><Activate objectId="Yellow Drake">Pet</Activate><OldSound>use_potion</OldSound><feedPower>35</feedPower></Object>
+	<Class>Equipment</Class>
+	<Item/>
+	<Texture>
+		<File>lofiChar8x8</File>
+		<Index>0xe7</Index>
+	</Texture>
+	<SlotType>10</SlotType>
+	<Description>An egg that when used, hatches a Yellow Drake to help you in battle for a short time, causing bleeding to your enemies.</Description>
+	<Sound>spell/light_heal</Sound>
+	<Consumable />
+	<BagType>0</BagType>
+	<Activate objectId="Yellow Drake">Pet</Activate>
+	<OldSound>use_potion</OldSound>
+	<feedPower>35</feedPower>
+  </Object>
   <Object type="0x701" id="Undead Lair Key">
     <Class>Equipment</Class>
     <Item />

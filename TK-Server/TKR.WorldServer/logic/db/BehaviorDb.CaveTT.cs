@@ -432,7 +432,7 @@ namespace TKR.WorldServer.logic
                 new Prioritize(
                     new Orbit(speed: 3, radius: 3, acquireRange: 6, target: "Golden Oryx Effigy", speedVariance: 0, radiusVariance: 0)
                     ),
-                new Shoot(radius: 0, count: 8, shootAngle: 45, defaultAngle: 0, coolDown: 3000)
+                new Shoot(projectileIndex: 1, radius: 0, count: 8, shootAngle: 45, defaultAngle: 0, coolDown: 3000)
                 )
             )
         .Init("Gold Planet",

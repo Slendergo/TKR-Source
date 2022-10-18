@@ -3876,3 +3876,24 @@
 [23088] 15 Oct 16:53:51.047 * Background saving started by pid 31312
 [23088] 15 Oct 16:53:51.853 # fork operation complete
 [23088] 15 Oct 16:53:51.855 * Background saving terminated with success
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 3.2.100 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in standalone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+ |    `-._   `._    /     _.-'    |     PID: 26768
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+[26768] 18 Oct 17:58:12.737 # Server started, Redis version 3.2.100
+[26768] 18 Oct 17:58:13.182 * DB loaded from disk: 0.445 seconds
+[26768] 18 Oct 17:58:13.182 * The server is now ready to accept connections on port 6379

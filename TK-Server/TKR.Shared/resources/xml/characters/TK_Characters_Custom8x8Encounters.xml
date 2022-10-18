@@ -745,6 +745,7 @@
 		<MaxHitPoints>85000</MaxHitPoints>
 		<AnimatedTexture>
 			<File>Custom8x8Encounters</File>
+			<XpMult>0.0</XpMult>
 			<Index>21</Index>
 		</AnimatedTexture>
 		<Size>100</Size>
@@ -753,6 +754,7 @@
 	<Object type="0xa401" id="NPC Ghost 2">
 		<Class>Character</Class>
 		<MaxHitPoints>85000</MaxHitPoints>
+		<XpMult>0.0</XpMult>
 		<AnimatedTexture>
 			<File>Custom8x8Encounters</File>
 			<Index>22</Index>
@@ -763,6 +765,7 @@
 	<Object type="0xa402" id="NPC Ghost 3">
 		<Class>Character</Class>
 		<MaxHitPoints>85000</MaxHitPoints>
+		<XpMult>0.0</XpMult>
 		<AnimatedTexture>
 			<File>Custom8x8Encounters</File>
 			<Index>23</Index>
@@ -773,6 +776,7 @@
 	<Object type="0xa403" id="NPC Ghost 4">
 		<Class>Character</Class>
 		<MaxHitPoints>85000</MaxHitPoints>
+		<XpMult>0.0</XpMult>
 		<AnimatedTexture>
 			<File>Custom8x8Encounters</File>
 			<Index>24</Index>
@@ -783,6 +787,7 @@
 	<Object type="0xa404" id="NPC Ghost 5">
 		<Class>Character</Class>
 		<MaxHitPoints>85000</MaxHitPoints>
+		<XpMult>0.0</XpMult>
 		<AnimatedTexture>
 			<File>Custom8x8Encounters</File>
 			<Index>25</Index>
@@ -793,6 +798,7 @@
 	<Object type="0xa405" id="NPC Ghost 6">
 		<Class>Character</Class>
 		<MaxHitPoints>85000</MaxHitPoints>
+		<XpMult>0.0</XpMult>
 		<AnimatedTexture>
 			<File>Custom8x8Encounters</File>
 			<Index>26</Index>
@@ -803,6 +809,7 @@
 	<Object type="0xa406" id="NPC Ghost 7">
 		<Class>Character</Class>
 		<MaxHitPoints>85000</MaxHitPoints>
+		<XpMult>0.0</XpMult>
 		<AnimatedTexture>
 			<File>Custom8x8Encounters</File>
 			<Index>27</Index>
@@ -813,6 +820,7 @@
 	<Object type="0xa407" id="NPC Ghost 8">
 		<Class>Character</Class>
 		<MaxHitPoints>85000</MaxHitPoints>
+		<XpMult>0.0</XpMult>
 		<AnimatedTexture>
 			<File>Custom8x8Encounters</File>
 			<Index>28</Index>
@@ -823,6 +831,7 @@
 	<Object type="0xa408" id="NPC Ghost 9">
 		<Class>Character</Class>
 		<MaxHitPoints>85000</MaxHitPoints>
+		<XpMult>0.0</XpMult>
 		<AnimatedTexture>
 			<File>Custom8x8Encounters</File>
 			<Index>29</Index>
@@ -846,6 +855,7 @@
 		<DazedImmune/>
 		<SlowedImmune/>
 		<MaxHitPoints>20000</MaxHitPoints>
+		<XpMult>0.0</XpMult>
 		<Defense>45</Defense>
 		<Projectile id="0">
 			<ObjectId>Smack</ObjectId>
@@ -892,6 +902,7 @@
 		<DazedImmune/>
 		<SlowedImmune/>
 		<MaxHitPoints>20000</MaxHitPoints>
+		<XpMult>0.0</XpMult>
 		<Defense>45</Defense>
 		<Projectile id="0">
 			<ObjectId>Smack</ObjectId>
@@ -938,6 +949,7 @@
 		<DazedImmune/>
 		<SlowedImmune/>
 		<MaxHitPoints>50000</MaxHitPoints>
+		<XpMult>0.0</XpMult>
 		<Defense>45</Defense>
 		<Projectile id="0">
 			<ObjectId>Rush</ObjectId>
@@ -991,6 +1003,7 @@
 		<DazedImmune/>
 		<SlowedImmune/>
 		<MaxHitPoints>50000</MaxHitPoints>
+		<XpMult>0.0</XpMult>
 		<Defense>45</Defense>
 		<Projectile id="0">
 			<ObjectId>Rush</ObjectId>
@@ -1044,6 +1057,7 @@
 		<DazedImmune/>
 		<SlowedImmune/>
 		<MaxHitPoints>20000</MaxHitPoints>
+		<XpMult>0.0</XpMult>
 		<Defense>45</Defense>
 		<Projectile id="0">
 			<ObjectId>Black Roman Arrow</ObjectId>
@@ -1072,6 +1086,7 @@
 		<SlowedImmune/>
 		<MaxHitPoints>20000</MaxHitPoints>
 		<Defense>45</Defense>
+		<XpMult>0.0</XpMult>
 		<Projectile id="0">
 			<ObjectId>Black Roman Arrow</ObjectId>
 			<MinDamage>65</MinDamage>
@@ -1098,6 +1113,7 @@
 		<DazedImmune/>
 		<SlowedImmune/>
 		<MaxHitPoints>25000</MaxHitPoints>
+		<XpMult>0.0</XpMult>
 		<Defense>45</Defense>
 		<Projectile id="0">
 			<ObjectId>Black Roman Arrow</ObjectId>
@@ -1126,6 +1142,7 @@
 		<DazedImmune/>
 		<SlowedImmune/>
 		<MaxHitPoints>25000</MaxHitPoints>
+		<XpMult>0.0</XpMult>
 		<Defense>45</Defense>
 		<Projectile id="0">
 			<ObjectId>Black Roman Arrow</ObjectId>
@@ -1154,6 +1171,7 @@
 		<DazedImmune/>
 		<SlowedImmune/>
 		<MaxHitPoints>25000</MaxHitPoints>
+		<XpMult>0.0</XpMult>
 		<Defense>45</Defense>
 		<Projectile id="0">
 			<ObjectId>Black Roman Arrow</ObjectId>
@@ -1183,6 +1201,7 @@
 		<SlowedImmune/>
 		<MaxHitPoints>25000</MaxHitPoints>
 		<Defense>45</Defense>
+		<XpMult>0.0</XpMult>
 		<Projectile id="0">
 			<ObjectId>Black Roman Arrow</ObjectId>
 			<MinDamage>65</MinDamage>
@@ -1205,6 +1224,7 @@
 		<Size>100</Size>
 		<MaxHitPoints>3500</MaxHitPoints>
 		<Defense>5</Defense>
+		<XpMult>0.0</XpMult>
 		<StasisImmune/>
 		<Projectile id="0">
 			<ObjectId>Projectile 0 PP</ObjectId>
@@ -1228,6 +1248,7 @@
 		<Defense>25</Defense>
 		<StasisImmune/>
 		<ParalyzeImmune/>
+		<XpMult>0.0</XpMult>
 		<Projectile id="0">
 			<ObjectId>Projectile 0 RPP</ObjectId>
 			<MinDamage>45</MinDamage>
@@ -1249,6 +1270,7 @@
 		<Size>100</Size>
 		<MaxHitPoints>15000</MaxHitPoints>
 		<Defense>30</Defense>
+		<XpMult>0.0</XpMult>
 		<StasisImmune/>
 		<StunImmune/>
 		<ParalyzeImmune/>
@@ -1272,6 +1294,7 @@
 		<MaxHitPoints>50000</MaxHitPoints>
 		<Defense>40</Defense>
 		<StasisImmune/>
+		<XpMult>0.0</XpMult>
 		<Projectile id="0">
 			<ObjectId>Projectile 0 CPB</ObjectId>
 			<Damage>190</Damage>
@@ -1305,6 +1328,7 @@
 		<Defense>35</Defense>
 		<StasisImmune/>
 		<StunImmune/>
+		<XpMult>0.0</XpMult>
 		<Projectile id="0">
 			<ObjectId>Projectile 0 EC</ObjectId>
 			<Damage>110</Damage>
@@ -1326,6 +1350,7 @@
 		<MaxHitPoints>11250</MaxHitPoints>
 		<Defense>35</Defense>
 		<StasisImmune/>
+		<XpMult>0.0</XpMult>
 		<Projectile id="0">
 			<ObjectId>Projectile 0 FE</ObjectId>
 			<Damage>70</Damage>

@@ -1,11 +1,9 @@
 ﻿using System.Linq;
 using TKR.Shared.resources;
-using TKR.WorldServer.core.miscfile;
-using TKR.WorldServer.core.miscfile.datas;
-using TKR.WorldServer.core.miscfile.datas;
-using TKR.WorldServer.core.miscfile.structures;
-using TKR.WorldServer.core.miscfile.thread;
+using TKR.WorldServer.core.net.datas;
 using TKR.WorldServer.core.objects;
+using TKR.WorldServer.core.structures;
+using TKR.WorldServer.core.worlds;
 using TKR.WorldServer.networking.packets.outgoing;
 using TKR.WorldServer.utils;
 
@@ -58,7 +56,7 @@ namespace TKR.WorldServer.logic.behaviors
                         {
                             EffectType = EffectType.Trail,
                             TargetObjectId = host.Id,
-                            Pos1 = new Position() { X = entity.X, Y = entity.Y },
+                            Pos1 = new Position(entity.X, entity.Y),
                             Color = new ARGB(0xffffffff)
                         }, host);
                         entity.World.BroadcastIfVisible(new Notification() { ObjectId = entity.Id, Message = "+" + n, Color = new ARGB(0xff00ff00) }, entity);

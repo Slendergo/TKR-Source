@@ -1,6 +1,5 @@
-﻿using TKR.WorldServer.core.miscfile.thread;
-using TKR.WorldServer.core.miscfile.world;
-using TKR.WorldServer.core.objects;
+﻿using TKR.WorldServer.core.objects;
+using TKR.WorldServer.core.worlds;
 using TKR.WorldServer.networking.packets.outgoing;
 
 namespace TKR.WorldServer.logic.behaviors

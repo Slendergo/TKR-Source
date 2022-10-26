@@ -1,13 +1,12 @@
 ﻿using TKR.Shared;
-using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.networking;
 using TKR.WorldServer.core.objects;
 using TKR.WorldServer.networking.packets.outgoing;
-using TKR.WorldServer.core.miscfile.structures;
 using System;
 using TKR.WorldServer.core.worlds;
 using TKR.WorldServer.logic;
 using TKR.Shared.resources;
+using TKR.WorldServer.core.structures;
 
 namespace TKR.WorldServer.core.net.handlers
 {

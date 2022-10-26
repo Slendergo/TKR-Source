@@ -1,6 +1,6 @@
 ﻿using TKR.Shared;
-using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.core.objects.vendors;
+using TKR.WorldServer.core.worlds;
 using TKR.WorldServer.networking;
 using TKR.WorldServer.networking.packets.outgoing;
 

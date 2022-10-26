@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TKR.Shared.resources;
-using TKR.WorldServer.core.miscfile.stats;
+using TKR.WorldServer.core.net.stats;
 
 namespace TKR.WorldServer.core.objects
 {

@@ -1,11 +1,8 @@
 ﻿using TKR.Shared;
-using TKR.Shared.resources;
 using NLog;
 using System;
-using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.core.objects;
-using TKR.WorldServer.logic;
-using TKR.WorldServer.core.miscfile.structures;
+using TKR.WorldServer.core.worlds;
 
 namespace TKR.WorldServer.logic
 {

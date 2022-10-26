@@ -9,17 +9,15 @@ using TKR.Shared.database.party;
 using TKR.Shared.isc.data;
 using TKR.Shared.resources;
 using TKR.Shared.utils;
-using TKR.WorldServer.core.miscfile.stats;
-using TKR.WorldServer.core.miscfile.datas;
-using TKR.WorldServer.core.miscfile.thread;
+using TKR.WorldServer.core.net.stats;
 using TKR.WorldServer.core.objects;
-using TKR.WorldServer.core.worlds.logic;
+using TKR.WorldServer.core.structures;
+using TKR.WorldServer.core.worlds;
+using TKR.WorldServer.core.worlds.impl;
 using TKR.WorldServer.logic.loot;
 using TKR.WorldServer.networking.packets.outgoing;
 using TKR.WorldServer.networking.packets.outgoing.party;
 using TKR.WorldServer.utils;
-using TKR.WorldServer.core.miscfile.structures;
-using TKR.WorldServer.logic;
 
 namespace TKR.WorldServer.core.commands.player
 {

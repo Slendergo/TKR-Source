@@ -4,12 +4,12 @@ using System.Linq;
 using TKR.Shared.resources;
 using TKR.Shared.utils;
 using TKR.WorldServer.core.miscfile;
-using TKR.WorldServer.core.miscfile.stats;
 using TKR.WorldServer.core.objects;
 using TKR.WorldServer.core.objects.player;
 using TKR.WorldServer.core.worlds;
-using TKR.WorldServer.core.miscfile.structures;
 using TKR.WorldServer.core.objects.containers;
+using TKR.WorldServer.core.net.stats;
+using TKR.WorldServer.core.structures;
 
 namespace TKR.WorldServer.utils
 {

@@ -8,10 +8,10 @@ using TKR.Shared.database.character.inventory;
 using TKR.Shared.discord;
 using TKR.Shared.resources;
 using TKR.WorldServer.core;
-using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.core.objects;
 using TKR.WorldServer.core.objects.containers;
-using TKR.WorldServer.core.worlds.logic;
+using TKR.WorldServer.core.worlds;
+using TKR.WorldServer.core.worlds.impl;
 using TKR.WorldServer.networking.packets.outgoing;
 using TKR.WorldServer.networking.packets.outgoing.party;
 

@@ -1,9 +1,8 @@
 ﻿using System;
 using TKR.Shared.resources;
-using TKR.WorldServer.core.miscfile.datas;
-using TKR.WorldServer.core.miscfile.structures;
-using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.core.objects;
+using TKR.WorldServer.core.structures;
+using TKR.WorldServer.core.worlds;
 using TKR.WorldServer.networking.packets.outgoing;
 using TKR.WorldServer.utils;
 
@@ -115,7 +114,7 @@ namespace TKR.WorldServer.logic.behaviors
 
                 var startAngle = a - _shootAngle * (count - 1) / 2;
 
-                var prjPos = new Position() { X = host.X, Y = host.Y };
+                var prjPos = new Position(host.X, host.Y);
 
                 var prjId = host.GetNextBulletId(count);
                 var pkt = new EnemyShootMessage()

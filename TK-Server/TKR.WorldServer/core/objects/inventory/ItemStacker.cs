@@ -1,5 +1,5 @@
 ﻿using TKR.Shared.resources;
-using TKR.WorldServer.core.miscfile.stats;
+using TKR.WorldServer.core.net.stats;
 using TKR.WorldServer.core.objects;
 
 namespace TKR.WorldServer.core.objects.inventory

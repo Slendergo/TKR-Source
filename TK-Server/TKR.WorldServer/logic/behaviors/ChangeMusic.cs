@@ -1,6 +1,5 @@
-﻿using TKR.WorldServer.core.miscfile.thread;
-using TKR.WorldServer.core.miscfile.world;
-using TKR.WorldServer.core.objects;
+﻿using TKR.WorldServer.core.objects;
+using TKR.WorldServer.core.worlds;
 using TKR.WorldServer.networking.packets.outgoing;
 
 namespace TKR.WorldServer.logic.behaviors
@@ -24,24 +23,12 @@ namespace TKR.WorldServer.logic.behaviors
             if (host.World.Music != _music)
             {
                 var owner = host.World;
-
                 owner.Music = _music;
-
-                var i = 0;
                 foreach (var plr in owner.Players.Values)
-                {
-                    owner.StartNewTimer(100 * i, (w, t) =>
+                    plr.Client.SendPacket(new SwitchMusic()
                     {
-                        if (plr == null)
-                            return;
-
-                        plr.Client.SendPacket(new SwitchMusic()
-                        {
-                            Music = _music
-                        });
+                        Music = _music
                     });
-                    i++;
-                }
             }
         }
     }

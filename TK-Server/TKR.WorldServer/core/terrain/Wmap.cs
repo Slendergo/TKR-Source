@@ -5,10 +5,10 @@ using System.Collections.Generic;
 using System.IO;
 using TKR.Shared;
 using TKR.Shared.resources;
-using TKR.WorldServer.core.miscfile.structures;
 using TKR.WorldServer.core.objects;
 using TKR.WorldServer.core.objects.connection;
 using TKR.WorldServer.core.objects.vendors;
+using TKR.WorldServer.core.structures;
 using TKR.WorldServer.core.worlds;
 
 namespace TKR.WorldServer.core.terrain

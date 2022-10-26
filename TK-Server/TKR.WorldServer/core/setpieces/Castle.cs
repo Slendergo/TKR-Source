@@ -7,7 +7,7 @@ using TKR.WorldServer.logic.loot;
 using TKR.WorldServer.core.objects;
 using TKR.WorldServer.logic.loot;
 using TKR.WorldServer.core.objects.containers;
-using TKR.WorldServer.core.miscfile.structures;
+using TKR.WorldServer.core.structures;
 
 namespace TKR.WorldServer.core.setpieces
 {

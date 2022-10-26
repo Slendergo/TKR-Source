@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using TKR.Shared.resources;
-using TKR.WorldServer.core.worlds.logic;
+using TKR.WorldServer.core.worlds.impl;
 using TKR.WorldServer.utils;
 
 namespace TKR.WorldServer.core.objects.vendors

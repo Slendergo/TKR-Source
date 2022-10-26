@@ -1,10 +1,6 @@
-﻿using TKR.Shared.resources;
-using TKR.WorldServer.core.miscfile.structures;
-using TKR.WorldServer.core.miscfile.thread;
-using TKR.WorldServer.core.objects;
-using TKR.WorldServer.core.worlds.logic;
-using TKR.WorldServer.logic.behaviors.@new;
-using TKR.WorldServer.utils;
+﻿using TKR.WorldServer.core.objects;
+using TKR.WorldServer.core.worlds;
+using TKR.WorldServer.core.worlds.impl;
 
 namespace TKR.WorldServer.logic.behaviors.@new.movements
 {

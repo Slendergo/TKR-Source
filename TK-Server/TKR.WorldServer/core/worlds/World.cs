@@ -3,19 +3,18 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using TKR.Shared;
 using TKR.Shared.database;
 using TKR.Shared.resources;
-using TKR.WorldServer.core.miscfile.census;
-using TKR.WorldServer.core.miscfile.structures;
-using TKR.WorldServer.core.miscfile.thread;
-using TKR.WorldServer.core.miscfile.world;
+using TKR.WorldServer.core.net.datas;
 using TKR.WorldServer.core.objects;
 using TKR.WorldServer.core.objects.containers;
 using TKR.WorldServer.core.objects.player;
 using TKR.WorldServer.core.objects.vendors;
+using TKR.WorldServer.core.structures;
 using TKR.WorldServer.core.terrain;
+using TKR.WorldServer.core.worlds.census;
 using TKR.WorldServer.core.worlds.impl;
-using TKR.WorldServer.core.worlds.logic;
 using TKR.WorldServer.networking;
 using TKR.WorldServer.networking.packets.outgoing;
 using TKR.WorldServer.utils;
@@ -362,7 +361,7 @@ namespace TKR.WorldServer.core.worlds
                 Containers.Remove(entity.Id);
             else if (entity is Portal)
                 Portals.Remove(entity.Id);
-            else if (entity.ObjectDesc.Static)
+            else if (entity is StaticObject)
             {
                 StaticObjects.Remove(entity.Id);
                 if (entity is Decoy)

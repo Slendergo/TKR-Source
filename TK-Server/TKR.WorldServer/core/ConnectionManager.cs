@@ -7,7 +7,7 @@ using TKR.Shared.isc.data;
 using TKR.Shared.resources;
 using TKR.WorldServer.core.miscfile;
 using TKR.WorldServer.core.worlds;
-using TKR.WorldServer.core.worlds.logic;
+using TKR.WorldServer.core.worlds.impl;
 using TKR.WorldServer.networking;
 using TKR.WorldServer.networking.packets.outgoing;
 

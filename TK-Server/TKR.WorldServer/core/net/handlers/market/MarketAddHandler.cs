@@ -4,12 +4,12 @@ using TKR.Shared.resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.networking;
 using TKR.WorldServer.networking.packets.outgoing.market;
 using TKR.WorldServer.core.objects;
 using TKR.Shared.database.character.inventory;
 using TKR.WorldServer.utils;
+using TKR.WorldServer.core.worlds;
 
 namespace TKR.WorldServer.core.net.handlers.market
 {

@@ -1,28 +1,12 @@
 ﻿using TKR.Shared;
-using TKR.WorldServer.core.miscfile.thread;
-using TKR.WorldServer.core.worlds.logic;
 using TKR.WorldServer.core.objects;
+using TKR.WorldServer.core.worlds;
+using TKR.WorldServer.core.worlds.impl;
 
 namespace TKR.WorldServer.core.commands
 {
     public abstract partial class Command
     {
-        internal class ToggleLoop : Command
-        {
-            public override RankingType RankRequirement => RankingType.Admin;
-            public override string CommandName => "toggleloop";
-
-            protected override bool Process(Player player, TickTime time, string args)
-            {
-                RootWorldThread.TickWithSleep = !RootWorldThread.TickWithSleep;
-                if (RootWorldThread.TickWithSleep)
-                    player.SendInfo($"Removed Thread Sleep from RootWorldThread");
-                else
-                    player.SendInfo($"Added Thread Sleep back to RootWorldThread");
-                return true;
-            }
-        }
-
         internal class A : Command
         {
             public override RankingType RankRequirement => RankingType.Admin;

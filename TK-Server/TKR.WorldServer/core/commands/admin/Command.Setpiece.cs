@@ -2,12 +2,11 @@
 using System.Linq;
 using TKR.Shared;
 using TKR.Shared.resources;
-using TKR.WorldServer.core.miscfile.datas;
-using TKR.WorldServer.core.miscfile.structures;
-using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.core.objects;
 using TKR.WorldServer.core.setpieces;
-using TKR.WorldServer.core.worlds.logic;
+using TKR.WorldServer.core.structures;
+using TKR.WorldServer.core.worlds;
+using TKR.WorldServer.core.worlds.impl;
 
 namespace TKR.WorldServer.core.commands
 {

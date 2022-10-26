@@ -10,16 +10,15 @@ using TKR.Shared;
 using TKR.Shared.database.character.inventory;
 using TKR.Shared.database.party;
 using TKR.Shared.resources;
-using TKR.WorldServer.core.miscfile.datas;
-using TKR.WorldServer.core.miscfile.stats;
-using TKR.WorldServer.core.miscfile.structures;
-using TKR.WorldServer.core.miscfile.thread;
+using TKR.WorldServer.core.net.datas;
 using TKR.WorldServer.core.net.handlers;
+using TKR.WorldServer.core.net.stats;
 using TKR.WorldServer.core.objects.containers;
 using TKR.WorldServer.core.objects.inventory;
 using TKR.WorldServer.core.objects.player;
+using TKR.WorldServer.core.structures;
 using TKR.WorldServer.core.worlds;
-using TKR.WorldServer.core.worlds.logic;
+using TKR.WorldServer.core.worlds.impl;
 using TKR.WorldServer.logic;
 using TKR.WorldServer.networking;
 using TKR.WorldServer.networking.packets.outgoing;
@@ -664,7 +663,7 @@ namespace TKR.WorldServer.core.objects
             if (KeepAlive(time))
             {
                 if (DeltaTime)
-                    SendInfo($"[DeltaTime]: {World.DisplayName} -> {time.ElapsedMsDelta} | {time.LogicTime}");
+                    SendInfo($"[DeltaTime]: {World.DisplayName} -> {time.ElapsedMsDelta}");
                 
                 HandleBreath(ref time);
 

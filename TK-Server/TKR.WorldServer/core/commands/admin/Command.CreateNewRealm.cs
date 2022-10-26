@@ -1,7 +1,7 @@
 ﻿using TKR.Shared;
-using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.core.objects;
-using TKR.WorldServer.core.worlds.logic;
+using TKR.WorldServer.core.worlds;
+using TKR.WorldServer.core.worlds.impl;
 
 namespace TKR.WorldServer.core.commands
 {

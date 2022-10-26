@@ -2,11 +2,11 @@
 using TKR.Shared.database;
 using System.Collections.Generic;
 using System.Linq;
-using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.networking;
 using TKR.WorldServer.networking.packets.outgoing;
 using TKR.Shared.database.party;
 using TKR.WorldServer.networking.packets.outgoing.party;
+using TKR.WorldServer.core.worlds;
 
 namespace TKR.WorldServer.core.net.handlers.party
 {

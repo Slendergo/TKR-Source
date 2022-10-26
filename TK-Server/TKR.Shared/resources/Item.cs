@@ -53,7 +53,6 @@ namespace TKR.Shared.resources
         public int SpellProjectiles;
         public bool SPlus;
         public KeyValuePair<int, int>[] StatsBoost;
-        public KeyValuePair<int, int>[] StatsBoostOnHandle;
         public bool SteamRoller;
         public string SuccessorId;
         public int Texture1;
@@ -64,6 +63,9 @@ namespace TKR.Shared.resources
         public bool Usable;
         public bool XpBoost;
         public TalismanItemDesc TalismanItemDesc;
+
+        public readonly List<XElement> Activates;
+        public readonly List<XElement> ActivateOnEquips;
 
         public readonly bool DonorItem;
 
@@ -109,22 +111,22 @@ namespace TKR.Shared.resources
 
             var stats = new List<KeyValuePair<int, int>>();
 
+            ActivateOnEquips = new List<XElement>();
             foreach (var i in e.Elements("ActivateOnEquip"))
+            {
+                ActivateOnEquips.Add(i);
                 stats.Add(new KeyValuePair<int, int>(i.GetAttribute<int>("stat"), i.GetAttribute<int>("amount")));
+            }
 
             StatsBoost = stats.ToArray();
 
-            var statsact = new List<KeyValuePair<int, int>>();
-
-            foreach (var i in e.Elements("ActivateOnHandle"))
-                statsact.Add(new KeyValuePair<int, int>(int.Parse(i.Attribute("stat").Value), int.Parse(i.Attribute("amount").Value)));
-
-            StatsBoostOnHandle = statsact.ToArray();
-
             var activate = new List<ActivateEffect>();
-
+            Activates = new List<XElement>();
             foreach (var i in e.Elements("Activate"))
+            {
+                Activates.Add(i);
                 activate.Add(new ActivateEffect(i));
+            }
 
             ActivateEffects = activate.ToArray();
 

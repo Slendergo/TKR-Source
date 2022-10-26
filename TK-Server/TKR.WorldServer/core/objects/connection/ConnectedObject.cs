@@ -1,8 +1,5 @@
 ﻿using System.Collections.Generic;
-using TKR.WorldServer.core;
-using TKR.WorldServer.core.miscfile.stats;
-using TKR.WorldServer.core.miscfile.thread;
-using TKR.WorldServer.core.objects;
+using TKR.WorldServer.core.net.stats;
 
 namespace TKR.WorldServer.core.objects.connection
 {

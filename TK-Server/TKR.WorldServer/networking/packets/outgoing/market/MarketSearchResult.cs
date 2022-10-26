@@ -1,5 +1,5 @@
 ﻿using TKR.Shared;
-using TKR.WorldServer.core.miscfile.datas;
+using TKR.WorldServer.core.net.datas;
 using TKR.WorldServer.networking.packets.outgoing;
 
 namespace TKR.WorldServer.networking.packets.outgoing.market

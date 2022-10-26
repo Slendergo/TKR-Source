@@ -1,7 +1,7 @@
 ﻿using TKR.Shared;
 using System.Linq;
-using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.networking;
+using TKR.WorldServer.core.worlds;
 
 namespace TKR.WorldServer.core.net.handlers
 {

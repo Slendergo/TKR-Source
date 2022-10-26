@@ -1,7 +1,7 @@
-﻿using TKR.WorldServer.core.miscfile.thread;
-using TKR.WorldServer.core.objects;
+﻿using TKR.WorldServer.core.objects;
 using TKR.WorldServer.logic;
-using TKR.WorldServer.core.worlds.logic;
+using TKR.WorldServer.core.worlds.impl;
+using TKR.WorldServer.core.worlds;
 
 namespace TKR.WorldServer.logic.transitions
 {

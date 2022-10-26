@@ -11,7 +11,7 @@ using TKR.WorldServer.core.connection;
 using TKR.WorldServer.core.miscfile;
 using TKR.WorldServer.core.net;
 using TKR.WorldServer.core.objects;
-using TKR.WorldServer.core.worlds.logic;
+using TKR.WorldServer.core.worlds.impl;
 using TKR.WorldServer.networking.packets.outgoing;
 
 namespace TKR.WorldServer.networking

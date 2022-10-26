@@ -1,8 +1,8 @@
 ﻿using TKR.Shared.resources;
 using System;
 using TKR.WorldServer.core.miscfile;
-using TKR.WorldServer.core.miscfile.stats;
 using TKR.WorldServer.core.objects.containers;
+using TKR.WorldServer.core.net.stats;
 
 namespace TKR.WorldServer.core.objects.inventory
 {

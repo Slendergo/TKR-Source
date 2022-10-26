@@ -1,13 +1,13 @@
 ﻿using TKR.Shared;
 using TKR.Shared.database;
 using TKR.WorldServer.core.objects;
-using TKR.WorldServer.core.worlds.logic;
+using TKR.WorldServer.core.worlds.impl;
 using TKR.WorldServer.networking.packets;
-using TKR.WorldServer.core.miscfile.thread;
 using TKR.WorldServer.networking;
 using TKR.WorldServer.networking.packets.outgoing;
 using TKR.Shared.database.character;
 using System;
+using TKR.WorldServer.core.worlds;
 
 namespace TKR.WorldServer.core.net.handlers
 {
@@ -63,8 +63,8 @@ namespace TKR.WorldServer.core.net.handlers
 
             var player = client.Player = target.CreateNewPlayer(client, x, y);
 
-            client.SendPacket(new CreateSuccessMessage(client.Character.CharId, player.Id));
-          
+            client.SendPacket(new CreateSuccessMessage(player.Id, client.Character.CharId));
+
             if (target is RealmWorld realm)
                 realm.KingdomManager.OnPlayerEntered(player);
 

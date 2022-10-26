@@ -1,6 +1,4 @@
-﻿using TKR.WorldServer.core.miscfile.thread;
-
-namespace TKR.WorldServer.core.objects
+﻿namespace TKR.WorldServer.core.objects
 {
     public class Pet : Entity, IPlayer
     {

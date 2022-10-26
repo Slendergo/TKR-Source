@@ -4,16 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using TKR.Shared;
 using TKR.Shared.resources;
-using TKR.WorldServer.core.miscfile.datas;
-using TKR.WorldServer.core.miscfile.stats;
-using TKR.WorldServer.core.miscfile.structures;
-using TKR.WorldServer.core.miscfile.thread;
-using TKR.WorldServer.core.miscfile.world;
+using TKR.WorldServer.core.net.datas;
+using TKR.WorldServer.core.net.stats;
 using TKR.WorldServer.core.objects.containers;
 using TKR.WorldServer.core.objects.inventory;
-using TKR.WorldServer.core.objects.player;
+using TKR.WorldServer.core.structures;
 using TKR.WorldServer.core.worlds;
-using TKR.WorldServer.core.worlds.logic;
+using TKR.WorldServer.core.worlds.impl;
 using TKR.WorldServer.networking;
 using TKR.WorldServer.networking.packets.outgoing;
 using TKR.WorldServer.utils;
@@ -602,7 +599,6 @@ namespace TKR.WorldServer.core.objects
             var containerItem = entity as Container;
             if (HasBackpack)
             {
-                SendInfo("You already have a Backpack!");
                 if (containerItem != null)
                     containerItem.Inventory[slot] = item;
                 else

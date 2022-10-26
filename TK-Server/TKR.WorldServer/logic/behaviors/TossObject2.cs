@@ -1,12 +1,9 @@
 ﻿using System;
 using TKR.Shared.resources;
-using TKR.WorldServer.core.miscfile;
-using TKR.WorldServer.core.miscfile.datas;
-using TKR.WorldServer.core.miscfile.datas;
-using TKR.WorldServer.core.miscfile.structures;
-using TKR.WorldServer.core.miscfile.thread;
-using TKR.WorldServer.core.miscfile.world;
+using TKR.WorldServer.core.net.datas;
 using TKR.WorldServer.core.objects;
+using TKR.WorldServer.core.structures;
+using TKR.WorldServer.core.worlds;
 using TKR.WorldServer.networking.packets.outgoing;
 using TKR.WorldServer.utils;
 
@@ -49,11 +46,19 @@ namespace TKR.WorldServer.logic.behaviors
                 if (tossAngle == null)
                     en = host.GetNearestEntity(range, null);
 
-                if (tossAngle == null && en == null) return;
+                if (tossAngle == null && en == null)
+                    return;
 
-                var target = tossAngle == null ? new Position { X = en.X, Y = en.Y } : new Position { X = host.X + (float)(range * Math.Cos(tossAngle.Value)), Y = host.Y + (float)(range * Math.Sin(tossAngle.Value)) };
+                var target = tossAngle == null ? new Position(en.X, en.Y) : new Position(host.X + (float)(range * Math.Cos(tossAngle.Value)), host.Y + (float)(range * Math.Sin(tossAngle.Value)));
 
-                host.World.Broadcast(new ShowEffect { EffectType = EffectType.Throw, Color = new ARGB(0xffffbf00), TargetObjectId = host.Id, Pos1 = target });
+                host.World.Broadcast(new ShowEffect
+                {
+                    EffectType = EffectType.Throw,
+                    Color = new ARGB(0xffffbf00),
+                    TargetObjectId = host.Id,
+                    Pos1 = target
+                });
+
                 host.World.StartNewTimer(1500, (world, t) =>
                 {
                     var entity = Entity.Resolve(world.GameServer, child);

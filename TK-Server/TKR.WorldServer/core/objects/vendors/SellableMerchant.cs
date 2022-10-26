@@ -4,12 +4,11 @@ using System.Threading.Tasks;
 using TKR.WorldServer.core.worlds;
 using System.Linq;
 using TKR.Shared;
-using TKR.WorldServer.core.worlds.logic;
-using TKR.WorldServer.core.miscfile.thread;
+using TKR.WorldServer.core.worlds.impl;
 using TKR.WorldServer.utils;
 using TKR.WorldServer.core.objects;
 using TKR.WorldServer.core.objects.inventory;
-using TKR.WorldServer.core.miscfile.stats;
+using TKR.WorldServer.core.net.stats;
 
 namespace TKR.WorldServer.core.objects.vendors
 {

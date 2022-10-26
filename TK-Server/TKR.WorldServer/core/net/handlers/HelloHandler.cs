@@ -2,7 +2,7 @@
 using TKR.Shared;
 using TKR.Shared.database;
 using TKR.Shared.database.account;
-using TKR.WorldServer.core.miscfile.thread;
+using TKR.WorldServer.core.worlds;
 using TKR.WorldServer.networking;
 using TKR.WorldServer.networking.packets.outgoing;
 

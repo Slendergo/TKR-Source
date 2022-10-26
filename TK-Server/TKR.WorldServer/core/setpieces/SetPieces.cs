@@ -6,7 +6,7 @@ using System.Linq;
 using TKR.WorldServer.core.worlds;
 using TKR.WorldServer.core.setpieces;
 using TKR.WorldServer.core.terrain;
-using TKR.WorldServer.core.miscfile.structures;
+using TKR.WorldServer.core.structures;
 
 namespace TKR.WorldServer.core.setpieces
 {

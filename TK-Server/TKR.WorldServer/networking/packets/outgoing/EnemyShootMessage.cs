@@ -1,5 +1,5 @@
 ﻿using TKR.Shared;
-using TKR.WorldServer.core.miscfile.structures;
+using TKR.WorldServer.core.structures;
 
 namespace TKR.WorldServer.networking.packets.outgoing
 {

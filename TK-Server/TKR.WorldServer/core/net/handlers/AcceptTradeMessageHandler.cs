@@ -8,12 +8,12 @@ using TKR.WorldServer.core.objects.vendors;
 using TKR.WorldServer.networking.packets;
 using TKR.WorldServer.networking.packets.outgoing;
 using System.Text;
-using TKR.WorldServer.core.miscfile.thread;
-using TKR.WorldServer.core.worlds.logic;
+using TKR.WorldServer.core.worlds.impl;
 using TKR.WorldServer.core.objects.inventory;
 using TKR.WorldServer.utils;
 using TKR.WorldServer.networking;
 using TKR.Shared.database.character.inventory;
+using TKR.WorldServer.core.worlds;
 
 namespace TKR.WorldServer.core.net.handlers
 {

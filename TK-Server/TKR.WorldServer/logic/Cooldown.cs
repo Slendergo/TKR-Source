@@ -21,21 +21,9 @@ namespace TKR.WorldServer.logic
                 return this;
         }
 
-        public Cooldown Zero()
-        {
-            if (CoolDown == 0)
-                return -1;
-            else
-                return this;
-        }
+        public Cooldown Zero() => CoolDown == 0 ? (Cooldown)(-1) : this;
 
-        public Cooldown Normalize(int def)
-        {
-            if (CoolDown == 0)
-                return def;
-            else
-                return this;
-        }
+        public Cooldown Normalize(int def) => CoolDown == 0 ? (Cooldown)def : this;
 
         public int Next(Random rand)
         {
@@ -44,9 +32,6 @@ namespace TKR.WorldServer.logic
             return CoolDown + rand.Next(-Variance, Variance + 1);
         }
 
-        public static implicit operator Cooldown(int cooldown)
-        {
-            return new Cooldown(cooldown, 0);
-        }
+        public static implicit operator Cooldown(int cooldown) => new Cooldown(cooldown, 0);
     }
 }

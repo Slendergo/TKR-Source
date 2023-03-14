@@ -31,6 +31,7 @@
 			<Provides effect="Known After Death"/>
 		</Talisman>
 	</Object>
+	
 	<Object type="0x494a" id="Hard Head">
 		<Class>Equipment</Class>
 		<Item />

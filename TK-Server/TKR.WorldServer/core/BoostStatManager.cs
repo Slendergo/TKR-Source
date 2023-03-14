@@ -11,7 +11,7 @@ namespace TKR.WorldServer.core
     {
         public ActivateBoost[] ActivateBoost;
         private int[] _boost;
-        private SV<int>[] _boostSV;
+        private StatTypeValue<int>[] _boostSV;
         private StatsManager _parent;
         private Player _player;
 
@@ -20,10 +20,10 @@ namespace TKR.WorldServer.core
             _parent = parent;
             _player = parent.Owner;
             _boost = new int[StatsManager.NumStatTypes];
-            _boostSV = new SV<int>[_boost.Length];
+            _boostSV = new StatTypeValue<int>[_boost.Length];
 
             for (var i = 0; i < _boostSV.Length; i++)
-                _boostSV[i] = new SV<int>(_player, StatsManager.GetBoostStatType(i), _boost[i], i != 0 && i != 1);
+                _boostSV[i] = new StatTypeValue<int>(_player, StatsManager.GetBoostStatType(i), _boost[i], i != 0 && i != 1);
 
             ActivateBoost = new ActivateBoost[_boost.Length];
             for (var i = 0; i < ActivateBoost.Length; i++)

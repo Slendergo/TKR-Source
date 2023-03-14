@@ -9,11 +9,11 @@ namespace TKR.WorldServer.core.objects.inventory
     public class InventoryItems
     {
         private Item[] _items;
-        private SV<int>[] _itemTypes;
+        private StatTypeValue<int>[] _itemTypes;
 
         public InventoryItems(IContainer container, Item[] items)
         {
-            _itemTypes = new SV<int>[items.Length];
+            _itemTypes = new StatTypeValue<int>[items.Length];
             _items = new Item[items.Length];
 
             for (var i = 0; i < items.Length; i++)
@@ -24,7 +24,7 @@ namespace TKR.WorldServer.core.objects.inventory
                 if (i >= 20)
                     sti = (int)StatDataType.TALISMAN_0_STAT + i - 20;
 
-                _itemTypes[i] = new SV<int>(container as Entity, (StatDataType)sti, items[i]?.ObjectType ?? -1, container is Player && i > 3);
+                _itemTypes[i] = new StatTypeValue<int>(container as Entity, (StatDataType)sti, items[i]?.ObjectType ?? -1, container is Player && i > 3);
                 _items[i] = items[i];
             }
         }

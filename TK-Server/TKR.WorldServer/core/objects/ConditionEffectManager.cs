@@ -16,8 +16,8 @@ namespace TKR.WorldServer.core.objects
         public const byte NUMBER_CE_BATCHES = 2;
         public const byte NEW_CON_THREASHOLD = 32;
 
-        private SV<int> Batch1;
-        private SV<int> Batch2;
+        private StatTypeValue<int> Batch1;
+        private StatTypeValue<int> Batch2;
 
         private int[] Masks;
         private int[] Durations;
@@ -32,8 +32,8 @@ namespace TKR.WorldServer.core.objects
             Masks = new int[NUMBER_CE_BATCHES];
             Durations = new int[(int)ConditionEffectIndex.UnstableImmune];
 
-            Batch1 = new SV<int>(host, StatDataType.ConditionBatch1, 0);
-            Batch2 = new SV<int>(host, StatDataType.ConditionBatch2, 0);
+            Batch1 = new StatTypeValue<int>(host, StatDataType.ConditionBatch1, 0);
+            Batch2 = new StatTypeValue<int>(host, StatDataType.ConditionBatch2, 0);
         }
 
         public void AddCondition(byte effect, int duration)

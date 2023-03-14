@@ -9,11 +9,11 @@ namespace TKR.WorldServer.core.objects.inventory
     public class InventoryDatas
     {
         private ItemData[] _datas;
-        private SV<string>[] _datasValues;
+        private StatTypeValue<string>[] _datasValues;
 
         public InventoryDatas(IContainer container, ItemData[] datas)
         {
-            _datasValues = new SV<string>[datas.Length];
+            _datasValues = new StatTypeValue<string>[datas.Length];
             _datas = new ItemData[datas.Length];
 
             for (var i = 0; i < datas.Length; i++)
@@ -22,7 +22,7 @@ namespace TKR.WorldServer.core.objects.inventory
                 if (i >= 12)
                     sti = (int)StatDataType.BackPackData0 + i - 12;
 
-                _datasValues[i] = new SV<string>(container as Entity, (StatDataType)sti, datas[i]?.GetData() ?? "{}", container is Player && i > 3);
+                _datasValues[i] = new StatTypeValue<string>(container as Entity, (StatDataType)sti, datas[i]?.GetData() ?? "{}", container is Player && i > 3);
                 _datas[i] = datas[i];
             }
         }

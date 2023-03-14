@@ -12704,7 +12704,7 @@
     </AnimatedTexture>
     <HitSound>monster/greater_demons_hit</HitSound>
     <DeathSound>monster/greater_demons_death</DeathSound>
-    <Size>150</Size>
+    <Size>100</Size>
     <MaxHitPoints>3000</MaxHitPoints>
     <Defense>12</Defense>
     <Terrain>Mountains</Terrain>
@@ -12737,7 +12737,7 @@
     </AnimatedTexture>
     <HitSound>monster/sprite_god_hit</HitSound>
     <DeathSound>monster/sprite_god_death</DeathSound>
-    <Size>125</Size>
+    <Size>100</Size>
     <MaxHitPoints>3000</MaxHitPoints>
     <Defense>12</Defense>
     <Terrain>Mountains</Terrain>
@@ -12770,7 +12770,7 @@
     </AnimatedTexture>
     <HitSound>monster/medusa_hit</HitSound>
     <DeathSound>monster/medusa_death</DeathSound>
-    <Size>110</Size>
+    <Size>100</Size>
     <MaxHitPoints>3000</MaxHitPoints>
     <Defense>18</Defense>
     <Terrain>Mountains</Terrain>
@@ -12799,7 +12799,7 @@
     </AnimatedTexture>
     <HitSound>monster/ents_hit</HitSound>
     <DeathSound>monster/ents_death</DeathSound>
-    <Size>175</Size>
+    <Size>100</Size>
     <MaxHitPoints>3000</MaxHitPoints>
     <Defense>18</Defense>
     <Terrain>Mountains</Terrain>
@@ -12830,8 +12830,8 @@
     </AnimatedTexture>
     <HitSound>monster/beholder_hit</HitSound>
     <DeathSound>monster/beholder_death</DeathSound>
-    <Size>115</Size>
-    <MaxHitPoints>3000</MaxHitPoints>
+    <Size>100</Size>
+    <MaxHitPoints>1500</MaxHitPoints>
     <Defense>12</Defense>
     <Terrain>Mountains</Terrain>
     <SpawnProb>1.0</SpawnProb>
@@ -12868,7 +12868,7 @@
     </AnimatedTexture>
     <HitSound>monster/flying_brain_hit</HitSound>
     <DeathSound>monster/flying_brain_death</DeathSound>
-    <Size>110</Size>
+    <Size>100</Size>
     <MaxHitPoints>3000</MaxHitPoints>
     <Defense>12</Defense>
     <Terrain>Mountains</Terrain>
@@ -12898,7 +12898,7 @@
     </AnimatedTexture>
     <HitSound>monster/slimes_hit</HitSound>
     <DeathSound>monster/slimes_death</DeathSound>
-    <Size>135</Size>
+    <Size>100</Size>
     <MaxHitPoints>3000</MaxHitPoints>
     <Defense>12</Defense>
     <Terrain>Mountains</Terrain>
@@ -12928,7 +12928,7 @@
     </AnimatedTexture>
     <HitSound>monster/djinn_hit</HitSound>
     <DeathSound>monster/djinn_death</DeathSound>
-    <Size>150</Size>
+    <Size>100</Size>
     <MaxHitPoints>3000</MaxHitPoints>
     <Defense>12</Defense>
     <Terrain>Mountains</Terrain>
@@ -12959,7 +12959,7 @@
     </AnimatedTexture>
     <HitSound>monster/sprite_god_hit</HitSound>
     <DeathSound>monster/sprite_god_death</DeathSound>
-    <Size>125</Size>
+    <Size>100</Size>
     <MaxHitPoints>3000</MaxHitPoints>
     <Defense>12</Defense>
     <Flying />
@@ -12990,7 +12990,7 @@
     </AnimatedTexture>
     <HitSound>monster/slimes_hit</HitSound>
     <DeathSound>monster/slimes_death</DeathSound>
-    <Size>135</Size>
+    <Size>100</Size>
     <MaxHitPoints>3000</MaxHitPoints>
     <Defense>12</Defense>
     <God />
@@ -30767,6 +30767,7 @@
     <MaxHitPoints>85000</MaxHitPoints>
     <AnimatedTexture>
       <File>Custom8x8Encounters</File>
+      <XpMult>0.0</XpMult>
       <Index>21</Index>
     </AnimatedTexture>
     <Size>100</Size>
@@ -30775,6 +30776,7 @@
   <Object type="0xa401" id="NPC Ghost 2">
     <Class>Character</Class>
     <MaxHitPoints>85000</MaxHitPoints>
+    <XpMult>0.0</XpMult>
     <AnimatedTexture>
       <File>Custom8x8Encounters</File>
       <Index>22</Index>
@@ -30785,6 +30787,7 @@
   <Object type="0xa402" id="NPC Ghost 3">
     <Class>Character</Class>
     <MaxHitPoints>85000</MaxHitPoints>
+    <XpMult>0.0</XpMult>
     <AnimatedTexture>
       <File>Custom8x8Encounters</File>
       <Index>23</Index>
@@ -30795,6 +30798,7 @@
   <Object type="0xa403" id="NPC Ghost 4">
     <Class>Character</Class>
     <MaxHitPoints>85000</MaxHitPoints>
+    <XpMult>0.0</XpMult>
     <AnimatedTexture>
       <File>Custom8x8Encounters</File>
       <Index>24</Index>
@@ -30805,6 +30809,7 @@
   <Object type="0xa404" id="NPC Ghost 5">
     <Class>Character</Class>
     <MaxHitPoints>85000</MaxHitPoints>
+    <XpMult>0.0</XpMult>
     <AnimatedTexture>
       <File>Custom8x8Encounters</File>
       <Index>25</Index>
@@ -30815,6 +30820,7 @@
   <Object type="0xa405" id="NPC Ghost 6">
     <Class>Character</Class>
     <MaxHitPoints>85000</MaxHitPoints>
+    <XpMult>0.0</XpMult>
     <AnimatedTexture>
       <File>Custom8x8Encounters</File>
       <Index>26</Index>
@@ -30825,6 +30831,7 @@
   <Object type="0xa406" id="NPC Ghost 7">
     <Class>Character</Class>
     <MaxHitPoints>85000</MaxHitPoints>
+    <XpMult>0.0</XpMult>
     <AnimatedTexture>
       <File>Custom8x8Encounters</File>
       <Index>27</Index>
@@ -30835,6 +30842,7 @@
   <Object type="0xa407" id="NPC Ghost 8">
     <Class>Character</Class>
     <MaxHitPoints>85000</MaxHitPoints>
+    <XpMult>0.0</XpMult>
     <AnimatedTexture>
       <File>Custom8x8Encounters</File>
       <Index>28</Index>
@@ -30845,6 +30853,7 @@
   <Object type="0xa408" id="NPC Ghost 9">
     <Class>Character</Class>
     <MaxHitPoints>85000</MaxHitPoints>
+    <XpMult>0.0</XpMult>
     <AnimatedTexture>
       <File>Custom8x8Encounters</File>
       <Index>29</Index>
@@ -30868,6 +30877,7 @@
     <DazedImmune />
     <SlowedImmune />
     <MaxHitPoints>20000</MaxHitPoints>
+    <XpMult>0.0</XpMult>
     <Defense>45</Defense>
     <Projectile id="0">
       <ObjectId>Smack</ObjectId>
@@ -30914,6 +30924,7 @@
     <DazedImmune />
     <SlowedImmune />
     <MaxHitPoints>20000</MaxHitPoints>
+    <XpMult>0.0</XpMult>
     <Defense>45</Defense>
     <Projectile id="0">
       <ObjectId>Smack</ObjectId>
@@ -30960,6 +30971,7 @@
     <DazedImmune />
     <SlowedImmune />
     <MaxHitPoints>50000</MaxHitPoints>
+    <XpMult>0.0</XpMult>
     <Defense>45</Defense>
     <Projectile id="0">
       <ObjectId>Rush</ObjectId>
@@ -31013,6 +31025,7 @@
     <DazedImmune />
     <SlowedImmune />
     <MaxHitPoints>50000</MaxHitPoints>
+    <XpMult>0.0</XpMult>
     <Defense>45</Defense>
     <Projectile id="0">
       <ObjectId>Rush</ObjectId>
@@ -31066,6 +31079,7 @@
     <DazedImmune />
     <SlowedImmune />
     <MaxHitPoints>20000</MaxHitPoints>
+    <XpMult>0.0</XpMult>
     <Defense>45</Defense>
     <Projectile id="0">
       <ObjectId>Black Roman Arrow</ObjectId>
@@ -31094,6 +31108,7 @@
     <SlowedImmune />
     <MaxHitPoints>20000</MaxHitPoints>
     <Defense>45</Defense>
+    <XpMult>0.0</XpMult>
     <Projectile id="0">
       <ObjectId>Black Roman Arrow</ObjectId>
       <MinDamage>65</MinDamage>
@@ -31120,6 +31135,7 @@
     <DazedImmune />
     <SlowedImmune />
     <MaxHitPoints>25000</MaxHitPoints>
+    <XpMult>0.0</XpMult>
     <Defense>45</Defense>
     <Projectile id="0">
       <ObjectId>Black Roman Arrow</ObjectId>
@@ -31148,6 +31164,7 @@
     <DazedImmune />
     <SlowedImmune />
     <MaxHitPoints>25000</MaxHitPoints>
+    <XpMult>0.0</XpMult>
     <Defense>45</Defense>
     <Projectile id="0">
       <ObjectId>Black Roman Arrow</ObjectId>
@@ -31176,6 +31193,7 @@
     <DazedImmune />
     <SlowedImmune />
     <MaxHitPoints>25000</MaxHitPoints>
+    <XpMult>0.0</XpMult>
     <Defense>45</Defense>
     <Projectile id="0">
       <ObjectId>Black Roman Arrow</ObjectId>
@@ -31205,6 +31223,7 @@
     <SlowedImmune />
     <MaxHitPoints>25000</MaxHitPoints>
     <Defense>45</Defense>
+    <XpMult>0.0</XpMult>
     <Projectile id="0">
       <ObjectId>Black Roman Arrow</ObjectId>
       <MinDamage>65</MinDamage>
@@ -31227,6 +31246,7 @@
     <Size>100</Size>
     <MaxHitPoints>3500</MaxHitPoints>
     <Defense>5</Defense>
+    <XpMult>0.0</XpMult>
     <StasisImmune />
     <Projectile id="0">
       <ObjectId>Projectile 0 PP</ObjectId>
@@ -31250,6 +31270,7 @@
     <Defense>25</Defense>
     <StasisImmune />
     <ParalyzeImmune />
+    <XpMult>0.0</XpMult>
     <Projectile id="0">
       <ObjectId>Projectile 0 RPP</ObjectId>
       <MinDamage>45</MinDamage>
@@ -31271,6 +31292,7 @@
     <Size>100</Size>
     <MaxHitPoints>15000</MaxHitPoints>
     <Defense>30</Defense>
+    <XpMult>0.0</XpMult>
     <StasisImmune />
     <StunImmune />
     <ParalyzeImmune />
@@ -31294,6 +31316,7 @@
     <MaxHitPoints>50000</MaxHitPoints>
     <Defense>40</Defense>
     <StasisImmune />
+    <XpMult>0.0</XpMult>
     <Projectile id="0">
       <ObjectId>Projectile 0 CPB</ObjectId>
       <Damage>190</Damage>
@@ -31327,6 +31350,7 @@
     <Defense>35</Defense>
     <StasisImmune />
     <StunImmune />
+    <XpMult>0.0</XpMult>
     <Projectile id="0">
       <ObjectId>Projectile 0 EC</ObjectId>
       <Damage>110</Damage>
@@ -31348,6 +31372,7 @@
     <MaxHitPoints>11250</MaxHitPoints>
     <Defense>35</Defense>
     <StasisImmune />
+    <XpMult>0.0</XpMult>
     <Projectile id="0">
       <ObjectId>Projectile 0 FE</ObjectId>
       <Damage>70</Damage>
@@ -46806,8 +46831,21 @@
     <feedPower>35</feedPower>
   </Object>
   <Object type="0xaf3" id="Yellow Drake Egg">
-		Bleeding
-		<Class>Equipment</Class><Item /><Texture><File>lofiChar8x8</File><Index>0xe7</Index></Texture><SlotType>10</SlotType><Description>An egg that when used, hatches a Yellow Drake to help you in battle for a short time, causing bleeding to your enemies.</Description><Sound>spell/light_heal</Sound><Consumable /><BagType>0</BagType><Activate objectId="Yellow Drake">Pet</Activate><OldSound>use_potion</OldSound><feedPower>35</feedPower></Object>
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>lofiChar8x8</File>
+      <Index>0xe7</Index>
+    </Texture>
+    <SlotType>10</SlotType>
+    <Description>An egg that when used, hatches a Yellow Drake to help you in battle for a short time, causing bleeding to your enemies.</Description>
+    <Sound>spell/light_heal</Sound>
+    <Consumable />
+    <BagType>0</BagType>
+    <Activate objectId="Yellow Drake">Pet</Activate>
+    <OldSound>use_potion</OldSound>
+    <feedPower>35</feedPower>
+  </Object>
   <Object type="0x701" id="Undead Lair Key">
     <Class>Equipment</Class>
     <Item />
@@ -88863,24 +88901,6 @@
       <Common />
     </Talisman>
   </Object>
-  <Object type="0x4949" id="Pocket Change">
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x33</Index>
-    </Texture>
-    <Description>A talisman that grants the weilder more wealth</Description>
-    <SlotType>26</SlotType>
-    <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
-    <ActivateOnEquip stat="3" amount="100">IncrementStat</ActivateOnEquip>
-    <BagType>5</BagType>
-    <Talisman>
-      <Common />
-      <OnlyOne />
-      <Provides effect="Pocket Change" />
-    </Talisman>
-  </Object>
   <Object type="0x40a" id="Path of Destruction">
     <Class>Equipment</Class>
     <Item />
@@ -88956,6 +88976,40 @@
       <Provides effect="Call To Arms" />
     </Talisman>
   </Object>
+  <Object type="0x413" id="Party of One">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x41</Index>
+    </Texture>
+    <Description>Its said that misfortune occurs to the wielder when others are within 15 tiles</Description>
+    <SlotType>26</SlotType>
+    <BagType>5</BagType>
+    <Talisman>
+      <Legendary />
+      <OnlyOne />
+      <Provides effect="Party Of One" />
+    </Talisman>
+  </Object>
+  <Object type="0x4949" id="Pocket Change">
+    <Class>Equipment</Class>
+    <Item />
+    <Texture>
+      <File>CustomObj1</File>
+      <Index>0x33</Index>
+    </Texture>
+    <Description>A talisman that grants the weilder more wealth</Description>
+    <SlotType>26</SlotType>
+    <ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
+    <ActivateOnEquip stat="3" amount="100">IncrementStat</ActivateOnEquip>
+    <BagType>5</BagType>
+    <Talisman>
+      <Legendary />
+      <OnlyOne />
+      <Provides effect="Pocket Change" />
+    </Talisman>
+  </Object>
   <Object type="0x40d" id="Eternal Youth">
     <Class>Equipment</Class>
     <Item />
@@ -89008,22 +89062,6 @@
     <Talisman>
       <Legendary />
       <OnlyOne />
-    </Talisman>
-  </Object>
-  <Object type="0x413" id="Party of One">
-    <Class>Equipment</Class>
-    <Item />
-    <Texture>
-      <File>CustomObj1</File>
-      <Index>0x41</Index>
-    </Texture>
-    <Description>Its said that misfortune occurs to the wielder when others are nearby</Description>
-    <SlotType>26</SlotType>
-    <BagType>5</BagType>
-    <Talisman>
-      <Legendary />
-      <OnlyOne />
-      <Provides effect="Party Of One" />
     </Talisman>
   </Object>
   <Object type="0x415" id="Luck of the Irish">

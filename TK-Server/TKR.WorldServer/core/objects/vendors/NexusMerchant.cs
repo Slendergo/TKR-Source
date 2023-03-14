@@ -11,49 +11,49 @@ namespace TKR.WorldServer.core.objects.vendors
 {
     public class NexusMerchant : SellableObject
     {
-        private SV<int> merchandiseType_;
+        private StatTypeValue<int> merchandiseType_;
         public int Type
         {
             get => merchandiseType_.GetValue();
             set => merchandiseType_.SetValue(value);
         }
 
-        private SV<int> merchandisePrice_;
+        private StatTypeValue<int> merchandisePrice_;
         public new int Price
         {
             get => merchandisePrice_.GetValue();
             set => merchandisePrice_.SetValue(value);
         }
 
-        private SV<int> merchandiseCurrency_;
+        private StatTypeValue<int> merchandiseCurrency_;
         public new int Currency
         {
             get => merchandiseCurrency_.GetValue();
             set => merchandiseCurrency_.SetValue(value);
         }
 
-        private SV<int> merchandiseCount_;
+        private StatTypeValue<int> merchandiseCount_;
         public int Count
         {
             get => merchandiseCount_.GetValue();
             set => merchandiseCount_.SetValue(value);
         }
 
-        private SV<int> merchandiseTime_;
+        private StatTypeValue<int> merchandiseTime_;
         public int MinsLeft
         {
             get => merchandiseTime_.GetValue();
             set => merchandiseTime_.SetValue(value);
         }
 
-        private SV<int> merchandiseDiscount_;
+        private StatTypeValue<int> merchandiseDiscount_;
         public int Discount
         {
             get => merchandiseDiscount_.GetValue();
             set => merchandiseDiscount_.SetValue(value);
         }
 
-        private SV<int> merchandiseRankRequired_;
+        private StatTypeValue<int> merchandiseRankRequired_;
         public new int RankRequired
         {
             get => merchandiseRankRequired_.GetValue();
@@ -70,13 +70,13 @@ namespace TKR.WorldServer.core.objects.vendors
 
         public NexusMerchant(GameServer gameServer, ushort objType) : base(gameServer, objType)
         {
-            merchandiseType_ = new SV<int>(this, StatDataType.MerchandiseType, -1);
-            merchandisePrice_ = new SV<int>(this, StatDataType.MerchandisePrice, 0);
-            merchandiseCurrency_ = new SV<int>(this, StatDataType.MerchandiseCurrency, 0);
-            merchandiseCount_ = new SV<int>(this, StatDataType.MerchandiseCount, 0);
-            merchandiseTime_ = new SV<int>(this, StatDataType.MerchandiseMinsLeft, int.MaxValue);
-            merchandiseDiscount_ = new SV<int>(this, StatDataType.MerchandiseDiscount, -1);
-            merchandiseRankRequired_ = new SV<int>(this, StatDataType.MerchandiseRankReq, -1);
+            merchandiseType_ = new StatTypeValue<int>(this, StatDataType.MerchandiseType, -1);
+            merchandisePrice_ = new StatTypeValue<int>(this, StatDataType.MerchandisePrice, 0);
+            merchandiseCurrency_ = new StatTypeValue<int>(this, StatDataType.MerchandiseCurrency, 0);
+            merchandiseCount_ = new StatTypeValue<int>(this, StatDataType.MerchandiseCount, 0);
+            merchandiseTime_ = new StatTypeValue<int>(this, StatDataType.MerchandiseMinsLeft, int.MaxValue);
+            merchandiseDiscount_ = new StatTypeValue<int>(this, StatDataType.MerchandiseDiscount, -1);
+            merchandiseRankRequired_ = new StatTypeValue<int>(this, StatDataType.MerchandiseRankReq, -1);
         }
 
         public override void Buy(Player player)

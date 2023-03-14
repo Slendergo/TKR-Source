@@ -5,7 +5,7 @@ using System.Xml.Linq;
 
 namespace TKR.Shared.resources
 {
-    public class ItemPoolType
+    public sealed class ItemPoolType
     {
         public ItemType ItemType { get; set; }
         public string ItemName { get; set; }
@@ -22,6 +22,7 @@ namespace TKR.Shared.resources
             {
                 ItemType = ItemType.None;
             }
+
             ItemName = e.Value;
             Tier = e.GetAttribute("tier", -1);
             Weight = e.GetAttribute<int>("weight");

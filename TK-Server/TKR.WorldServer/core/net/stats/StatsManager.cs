@@ -17,7 +17,7 @@ namespace TKR.WorldServer.core.net.stats
         private const double MIN_ATTACK_FREQ = 0.0015;
         private const double MIN_ATTACK_MULT = 0.5;
 
-        private SV<int>[] _stats;
+        private StatTypeValue<int>[] _stats;
 
         public int length { get; internal set; }
 
@@ -27,10 +27,10 @@ namespace TKR.WorldServer.core.net.stats
             Base = new BaseStatManager(this);
             Boost = new BoostStatManager(this);
 
-            _stats = new SV<int>[NumStatTypes];
+            _stats = new StatTypeValue<int>[NumStatTypes];
 
             for (var i = 0; i < NumStatTypes; i++)
-                _stats[i] = new SV<int>(Owner, GetStatType(i), this[i], i != 0 && i != 1); // make maxHP and maxMP global update
+                _stats[i] = new StatTypeValue<int>(Owner, GetStatType(i), this[i], i != 0 && i != 1); // make maxHP and maxMP global update
         }
 
         public int this[int index] => Base[index] + Boost[index];

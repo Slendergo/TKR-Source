@@ -11,13 +11,13 @@ namespace TKR.WorldServer.core.objects
     {
         public World WorldInstance;
 
-        private SV<bool> _usable;
+        private StatTypeValue<bool> _usable;
         public readonly PortalDesc PortalDescr;
         public bool GuildHallPortal;
 
         public Portal(GameServer manager, ushort objType) : base(manager, ValidatePortal(manager, objType), null, false, true, false)
         {
-            _usable = new SV<bool>(this, StatDataType.PortalUsable, true);
+            _usable = new StatTypeValue<bool>(this, StatDataType.PortalUsable, true);
 
             PortalDescr = manager.Resources.GameData.Portals[ObjectType];
             Locked = PortalDescr.Locked;

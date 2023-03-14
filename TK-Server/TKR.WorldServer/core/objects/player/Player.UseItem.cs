@@ -79,6 +79,7 @@ namespace TKR.WorldServer.core.objects
             if(dustItem != null)
                 SendInfo($"Opened a Talisman Fragment and obtained a {dustItem.DisplayName ?? dustItem.ObjectId}");
         }
+
         public void AESpecialDust(TickTime time, Item item, Position target, int slot, int objId, ActivateEffect eff)
         {
             var entity = World.GetEntity(objId);

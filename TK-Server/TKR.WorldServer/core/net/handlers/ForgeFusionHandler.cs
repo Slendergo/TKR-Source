@@ -19,7 +19,6 @@ namespace TKR.WorldServer.core.net.handlers
         public override void Handle(Client client, NetworkReader rdr, ref TickTime time)
         {
             var myInventory = new ForgeItem[rdr.ReadInt16()];
-            var rnd = new Random();
             for (int i = 0; i < myInventory.Length; i++)
             {
                 myInventory[i].ObjectType = rdr.ReadUInt16();
@@ -181,7 +180,7 @@ namespace TKR.WorldServer.core.net.handlers
                     return;
                 case "20511, 20505": //Fire Items
                     //client.Player.SendInfo("Successfully forged " + client.CoreServerManager.Resources.GameData.Items[0x497e].DisplayName); 
-                    ushort itemValue1 = _fireWeaponsList[rnd.Next(_fireWeaponsList.Length)];
+                    ushort itemValue1 = _fireWeaponsList[Random.Shared.Next(_fireWeaponsList.Length)];
                     AnnounceForger(itemValue1, client);
                     list.Clear();
                     client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[itemValue1];
@@ -190,7 +189,7 @@ namespace TKR.WorldServer.core.net.handlers
                     return;
                 case "20511, 20506": //Water Items
                     //client.Player.SendInfo("Successfully forged " + client.CoreServerManager.Resources.GameData.Items[0x497e].DisplayName); 
-                    ushort itemValue2 = _WaterWeaponsList[rnd.Next(_WaterWeaponsList.Length)];
+                    ushort itemValue2 = _WaterWeaponsList[Random.Shared.Next(_WaterWeaponsList.Length)];
                     AnnounceForger(itemValue2, client);
                     list.Clear();
                     client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[itemValue2];
@@ -199,7 +198,7 @@ namespace TKR.WorldServer.core.net.handlers
                     return;
                 case "20511, 20507": //Wind Items
                     //client.Player.SendInfo("Successfully forged " + client.CoreServerManager.Resources.GameData.Items[0x497e].DisplayName);
-                    ushort itemValue3 = _WindWeaponsList[rnd.Next(_WindWeaponsList.Length)];
+                    ushort itemValue3 = _WindWeaponsList[Random.Shared.Next(_WindWeaponsList.Length)];
                     AnnounceForger(itemValue3, client);
                     list.Clear();
                     client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[itemValue3];
@@ -208,7 +207,7 @@ namespace TKR.WorldServer.core.net.handlers
                     return;
                 case "20511, 20508": //Earth Items
                     //client.Player.SendInfo("Successfully forged " + client.CoreServerManager.Resources.GameData.Items[0x497e].DisplayName);
-                    ushort itemValue4 = _EarthWeaponsList[rnd.Next(_EarthWeaponsList.Length)];
+                    ushort itemValue4 = _EarthWeaponsList[Random.Shared.Next(_EarthWeaponsList.Length)];
                     AnnounceForger(itemValue4, client);
                     list.Clear();
                     client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[itemValue4];
@@ -386,7 +385,7 @@ namespace TKR.WorldServer.core.net.handlers
             //            case 0x501f * 0x5019:  //Fire Items
             //                list.Remove(list[i]);
             //                list.Remove(list[j]);
-            //                ushort itemValue1 = _fireWeaponsList[rnd.Next(_fireWeaponsList.Length)];
+            //                ushort itemValue1 = _fireWeaponsList[Random.Shared.Next(_fireWeaponsList.Length)];
             //                client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[itemValue1];
             //                client.Player.Inventory[forgeItems[1].slotID] = null;
             //                AnnounceForger(itemValue1, client);
@@ -395,7 +394,7 @@ namespace TKR.WorldServer.core.net.handlers
             //            case 0x501f * 0x501a:  //Water Items
             //                list.Remove(list[i]);
             //                list.Remove(list[j]);
-            //                ushort itemValue2 = _WaterWeaponsList[rnd.Next(_WaterWeaponsList.Length)];
+            //                ushort itemValue2 = _WaterWeaponsList[Random.Shared.Next(_WaterWeaponsList.Length)];
             //                client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[itemValue2];
             //                client.Player.Inventory[forgeItems[1].slotID] = null;
             //                AnnounceForger(itemValue2, client);
@@ -404,7 +403,7 @@ namespace TKR.WorldServer.core.net.handlers
             //            case 0x501f * 0x501b:  //Wind Items
             //                list.Remove(list[i]);
             //                list.Remove(list[j]);
-            //                ushort itemValue3 = _WindWeaponsList[rnd.Next(_WindWeaponsList.Length)];
+            //                ushort itemValue3 = _WindWeaponsList[Random.Shared.Next(_WindWeaponsList.Length)];
             //                client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[itemValue3];
             //                client.Player.Inventory[forgeItems[1].slotID] = null;
             //                AnnounceForger(itemValue3, client);
@@ -413,7 +412,7 @@ namespace TKR.WorldServer.core.net.handlers
             //            case 0x501f * 0x501c:  //Earth Items
             //                list.Remove(list[i]);
             //                list.Remove(list[j]);
-            //                ushort itemValue4 = _EarthWeaponsList[rnd.Next(_EarthWeaponsList.Length)];
+            //                ushort itemValue4 = _EarthWeaponsList[Random.Shared.Next(_EarthWeaponsList.Length)];
             //                client.Player.Inventory[forgeItems[0].slotID] = gameData.Items[itemValue4];
             //                client.Player.Inventory[forgeItems[1].slotID] = null;
             //                AnnounceForger(itemValue4, client);

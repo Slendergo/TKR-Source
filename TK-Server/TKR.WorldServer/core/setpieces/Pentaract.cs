@@ -20,8 +20,6 @@ namespace TKR.WorldServer.core.setpieces
 
         private static readonly string Floor = "Scorch Blend";
 
-        private Random rand = new Random();
-
         public override int Size => 41;
 
         public override void RenderSetPiece(World world, IntPoint pos)

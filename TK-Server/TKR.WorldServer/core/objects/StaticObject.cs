@@ -7,11 +7,11 @@ namespace TKR.WorldServer.core.objects
 {
     public class StaticObject : Entity
     {
-        private SV<int> _hp;
+        private StatTypeValue<int> _hp;
 
         public StaticObject(GameServer manager, ushort objType, int? life, bool isStatic, bool dying, bool hittestable) : base(manager, objType)
         {
-            _hp = new SV<int>(this, StatDataType.Health, 0, dying);
+            _hp = new StatTypeValue<int>(this, StatDataType.Health, 0, dying);
 
             if (Vulnerable = life.HasValue)
                 HP = life.Value;

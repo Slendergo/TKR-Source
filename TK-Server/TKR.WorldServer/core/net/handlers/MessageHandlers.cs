@@ -1,12 +1,10 @@
-﻿using TKR.Shared;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using TKR.WorldServer.core.worlds.impl;
-using TKR.WorldServer.networking;
-using TKR.WorldServer.networking.packets;
+using TKR.Shared;
 using TKR.WorldServer.core.worlds;
+using TKR.WorldServer.networking;
 
 namespace TKR.WorldServer.core.net.handlers
 {

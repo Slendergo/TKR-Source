@@ -643,14 +643,18 @@ namespace TKR.WorldServer.core.commands.player
                 player.SendInfo($"Pocket Change provides: 30%");
 
             if (player.HasTalismanEffect(TalismanEffectType.LuckOfTheIrish))
+            {
                 player.SendInfo($"Luck of the Irish provides: 20%");
+                player.SendInfo($"Luck of the Irish provides: 2% chance to double loot");
+            }
 
             if (player.HasTalismanEffect(TalismanEffectType.PartyOfOne))
             {
                 var partyOfOneAmount = 50;
                 if (player.World.Players.Count != 1)
-                    partyOfOneAmount = -partyOfOneAmount;
-                player.SendInfo($"Party of One provides: {partyOfOneAmount}% ");
+                    partyOfOneAmount = -(player.World.Players.Count - 1); // - 1 so it doesnt include self if 50 ppl in world -> -49%
+                if(partyOfOneAmount > 0)
+                    player.SendInfo($"Party of One provides: {partyOfOneAmount}% ");
             }
 
             if (NexusWorld.WeekendLootBoostEvent > 0.0f)

@@ -14,8 +14,6 @@ namespace TKR.WorldServer.core.setpieces
         private static readonly string Tile = "Castle Stone Floor Tile";
         private static readonly string TileDark = "Castle Stone Floor Tile Dark";
 
-        private Random rand = new Random();
-
         public override int Size => 33;
 
         public override void RenderSetPiece(World world, IntPoint pos)

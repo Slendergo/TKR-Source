@@ -7,7 +7,7 @@ namespace TKR.WorldServer.core.objects.inventory
     public class ItemStacker
     {
         public Player Owner;
-        private SV<int> _count;
+        private StatTypeValue<int> _count;
 
         public ItemStacker(Player owner, int slot, ushort objectType, int count, int maxCount)
         {
@@ -16,7 +16,7 @@ namespace TKR.WorldServer.core.objects.inventory
             Item = Owner.GameServer.Resources.GameData.Items[objectType];
             MaxCount = maxCount;
 
-            _count = new SV<int>(owner, GetStatsType(slot), count);
+            _count = new StatTypeValue<int>(owner, GetStatsType(slot), count);
         }
 
         public int Count { get => _count.GetValue(); set => _count.SetValue(value); }

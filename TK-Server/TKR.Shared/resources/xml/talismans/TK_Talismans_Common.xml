@@ -142,25 +142,6 @@
 		</Talisman>
 	</Object>
 	
-	<Object type="0x4949" id="Pocket Change">
-		<Class>Equipment</Class>
-		<Item />
-		<Texture>
-			<File>CustomObj1</File>
-			<Index>0x33</Index>
-		</Texture>
-		<Description>A talisman that grants the weilder more wealth</Description>
-		<SlotType>26</SlotType>
-		<ActivateOnEquip stat="0" amount="100">IncrementStat</ActivateOnEquip>
-		<ActivateOnEquip stat="3" amount="100">IncrementStat</ActivateOnEquip>
-		<BagType>5</BagType>
-		<Talisman>
-			<Common/>
-			<OnlyOne/>
-			<Provides effect="Pocket Change"/>
-		</Talisman>
-	</Object>
-
 	<Object type="0x40a" id="Path of Destruction">
 		<Class>Equipment</Class>
 		<Item />

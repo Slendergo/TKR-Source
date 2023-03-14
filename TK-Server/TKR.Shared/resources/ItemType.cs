@@ -9,7 +9,6 @@
         Potion,
         StatPot,
         Talisman,
-        Other,
         None
     }
 }

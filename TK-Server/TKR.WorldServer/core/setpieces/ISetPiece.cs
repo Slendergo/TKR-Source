@@ -9,6 +9,8 @@ namespace TKR.WorldServer.core.setpieces
         public abstract int Size { get; }
         public virtual string Map { get; }
 
+        protected Random rand => Random.Shared;
+
         public virtual void RenderSetPiece(World world, IntPoint pos)
         {
             if (string.IsNullOrEmpty(Map))

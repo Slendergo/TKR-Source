@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using TKR.Shared;
 using TKR.Shared.database.character.inventory;
@@ -124,14 +125,17 @@ namespace TKR.WorldServer.logic.loot
                 default: break;
             }
             allLoot += player.LDBoostTime > 0 ? 0.25 : 0;
-            allLoot += player.HasTalismanEffect(TalismanEffectType.PocketChange) ? 0.3 : 0.0;
-            allLoot += player.HasTalismanEffect(TalismanEffectType.LuckOfTheIrish) ? 0.2 : 0.0;
+            if (player.HasTalismanEffect(TalismanEffectType.PocketChange))
+                allLoot += 0.3;
+            if (player.HasTalismanEffect(TalismanEffectType.LuckOfTheIrish))
+                allLoot += 0.2;
             if (player.HasTalismanEffect(TalismanEffectType.PartyOfOne))
             {
-                var partyOfOneAmount = 0.5;
+                var partyOfOneAmount = 50;
                 if (player.World.Players.Count != 1)
-                    partyOfOneAmount = -partyOfOneAmount;
-                allLoot += partyOfOneAmount;
+                    partyOfOneAmount = -(player.World.Players.Count - 1); // - 1 so it doesnt include self if 50 ppl in world -> -49%
+                if (partyOfOneAmount > 0)
+                    allLoot += partyOfOneAmount / 100;
             }
             allLoot += NexusWorld.WeekendLootBoostEvent;
             return allLoot;
@@ -307,7 +311,16 @@ namespace TKR.WorldServer.logic.loot
 
             foreach (var priv in privDrops)
                 if (priv.Value.Count > 0)
+                {
+                    if (enemy.ObjectDesc.Quest || enemy.ObjectDesc.Encounter)
+                        if (priv.Key.HasTalismanEffect(TalismanEffectType.LuckOfTheIrish) && Random.Shared.NextDouble() <= 0.02)
+                        {
+                            priv.Key.World.ForeachPlayer(p => p.SendInfo($"{priv.Key.Name} has received double loot!"));
+                            ProcessPrivateBags(enemy, priv.Value, enemy.GameServer, priv.Key);
+                        }
+
                     ProcessPrivateBags(enemy, priv.Value, enemy.GameServer, priv.Key);
+                }
         }
 
         private static void ProcessPublicDrops(List<Item> drops, Enemy enemy)

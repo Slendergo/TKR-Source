@@ -1,11 +1,12 @@
 ﻿using TKR.Shared.resources;
 using TKR.WorldServer.core.net.stats;
+using TKR.WorldServer.core.objects.inventory;
 
 namespace TKR.WorldServer.core.objects
 {
     public partial class Player
     {
-        private SV<int> _talismanEffects;
+        private StatTypeValue<int> _talismanEffects;
 
         public int TalismanEffects 
         {
@@ -26,7 +27,7 @@ namespace TKR.WorldServer.core.objects
             for (var i = 20; i < 28; i++ )
             {
                 var item = Inventory[i];
-                if (item == null || item.TalismanItemDesc == null || item.SlotType != 26)
+                if (item == null || item.TalismanItemDesc == null || item.SlotType != InventoryConstants.TALISMAN_SLOT_TYPE)
                     continue;
 
                 foreach(var providesDesc in item.TalismanItemDesc.Provides)
@@ -41,7 +42,7 @@ namespace TKR.WorldServer.core.objects
         {
             if (effect == ConditionEffectIndex.Weak && HasTalismanEffect(TalismanEffectType.WeakImmunity))
                 return false;
-            if (effect == ConditionEffectIndex.StunImmune && HasTalismanEffect(TalismanEffectType.StunImmunity))
+            if (effect == ConditionEffectIndex.Stunned && HasTalismanEffect(TalismanEffectType.StunImmunity))
                 return false;
             return base.CanApplyCondition(effect);
         }

@@ -8,14 +8,14 @@ namespace TKR.WorldServer.core.objects
     public class Engine : StaticObject
     {
 
-        private SV<int> _currentAmount;
+        private StatTypeValue<int> _currentAmount;
         public int CurrentAmount
         {
             get => _currentAmount.GetValue();
             set => _currentAmount.SetValue(value);
         }
 
-        private SV<int> _engineTime;
+        private StatTypeValue<int> _engineTime;
         public int EngineTime
         {
             get => _engineTime.GetValue();
@@ -25,8 +25,8 @@ namespace TKR.WorldServer.core.objects
         public Engine(GameServer manager, ushort objType) : base(manager, objType, null, true, false, false)
         {
             var nexus = GameServer.WorldManager.Nexus;
-            _currentAmount = new SV<int>(this, StatDataType.EngineValue, nexus.EngineFuel);
-            _engineTime = new SV<int>(this, StatDataType.EngineTime, nexus.EngineStageTime);
+            _currentAmount = new StatTypeValue<int>(this, StatDataType.EngineValue, nexus.EngineFuel);
+            _engineTime = new StatTypeValue<int>(this, StatDataType.EngineTime, nexus.EngineStageTime);
         }
 
         protected override void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)

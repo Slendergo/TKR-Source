@@ -7,8 +7,48 @@ using TKR.WorldServer.core.objects.containers;
 
 namespace TKR.WorldServer.core.objects.inventory
 {
-    public class Inventory : IEnumerable<Item>
+    public static class InventoryConstants
     {
+        public const int NO_ITEM = -1;
+        public const int ALL_SLOT_TYPE = 0;
+        public const int SWORD_SLOT_TYPE = 1;
+        public const int DAGGER_SLOT_TYPE = 2;
+        public const int BOW_SLOT_TYPE = 3;
+        public const int TOME_SLOT_TYPE = 4;
+        public const int SHIELD_SLOT_TYPE = 5;
+        public const int LEATHER_SLOT_TYPE = 6;
+        public const int PLATE_SLOT_TYPE = 7;
+        public const int WAND_SLOT_TYPE = 8;
+        public const int RING_SLOT_TYPE = 9;
+        public const int POTION_SLOT_TYPE = 10;
+        public const int SPELL_SLOT_TYPE = 11;
+        public const int SEAL_SLOT_TYPE = 12;
+        public const int CLOAK_SLOT_TYPE = 13;
+        public const int ROBE_SLOT_TYPE = 14;
+        public const int QUIVER_SLOT_TYPE = 15;
+        public const int HELM_SLOT_TYPE = 16;
+        public const int STAFF_SLOT_TYPE = 17;
+        public const int POISON_SLOT_TYPE = 18;
+        public const int SKULL_SLOT_TYPE = 19;
+        public const int TRAP_SLOT_TYPE = 20;
+        public const int ORB_SLOT_TYPE = 21;
+        public const int PRISM_SLOT_TYPE = 22;
+        public const int SCEPTER_SLOT_TYPE = 23;
+        public const int KATANA_SLOT_TYPE = 24;
+        public const int SHURIKEN_SLOT_TYPE = 25;
+        public const int TALISMAN_SLOT_TYPE = 26;
+        public const int BOLAS_SLOT_TYPE = 27;
+
+        public const int MAXIMUM_INTERACTION_DISTANCE = 1;
+        public const int NUM_EQUIPMENT_SLOTS = 4;
+        public const int NUM_INVENTORY_SLOTS = 8;
+        public const int NUM_BACKPACK_SLOTS = 8;
+        public const int NUM_TALISMAN_SLOTS = 8;
+    }
+
+    public sealed class Inventory : IEnumerable<Item>
+    {
+
         public InventoryItems _items;
 
         public InventoryDatas Data;
@@ -119,37 +159,46 @@ namespace TKR.WorldServer.core.objects.inventory
             {
                 if (Parent is Player plr)
                 {
-                    var playerDesc = plr.GameServer.Resources.GameData
-                        .Classes[plr.ObjectDesc.ObjectType];
-                    for (var i = 0; i < 4; i++)
+                    var playerDesc = plr.GameServer.Resources.GameData.Classes[plr.ObjectDesc.ObjectType];
+                    for (var i = 0; i < InventoryConstants.NUM_EQUIPMENT_SLOTS; i++)
                         if (_items[i] == null && playerDesc.SlotTypes[i] == item.SlotType)
                             return i;
 
-                    for (var i = 4; i < 12 || plr.HasBackpack && i < plr.Inventory.Length; i++)
+                    for (var i = InventoryConstants.NUM_EQUIPMENT_SLOTS; i < InventoryConstants.NUM_EQUIPMENT_SLOTS + InventoryConstants.NUM_INVENTORY_SLOTS || plr.HasBackpack && i < plr.Inventory.Length; i++)
                         if (_items[i] == null)
                             return i;
 
-                    if(item.SlotType == 26)
-                        for (var i = 20; i < 28; i++)
+                    if (item.SlotType == InventoryConstants.TALISMAN_SLOT_TYPE)
+                    {
+                        var offset = InventoryConstants.NUM_EQUIPMENT_SLOTS + InventoryConstants.NUM_INVENTORY_SLOTS + InventoryConstants.NUM_BACKPACK_SLOTS;
+                        for (var i = offset; i < offset + InventoryConstants.NUM_TALISMAN_SLOTS; i++)
                             if (_items[i] != null && item.TalismanItemDesc != null && item.TalismanItemDesc.OnlyOne && _items[i].ObjectType == item.ObjectType)
                                 return -1;
 
-                    for (var i = 20; i < 28; i++)
-                        if (_items[i] == null && playerDesc.SlotTypes[i] == item.SlotType)
+                        if (item.TalismanItemDesc.Common)
                         {
-                            if (i < 24 && item.TalismanItemDesc.Common)
-                                return i;
+                            for (var i = offset; i < offset + 4; i++)
+                                if (_items[i] == null && playerDesc.SlotTypes[i] == item.SlotType)
+                                    return i;
 
-                            if ((i == 24 || i == 25) && item.TalismanItemDesc.Legendary)
-                                return i;
-
-                            if ((i == 26 || i == 27) && item.TalismanItemDesc.Mythic)
-                                return i;
                         }
+                        else if (item.TalismanItemDesc.Legendary)
+                        {
+                            for (var i = offset + 4; i < offset + 6; i++)
+                                if (_items[i] == null && playerDesc.SlotTypes[i] == item.SlotType)
+                                    return i;
+                        }
+                        else if (item.TalismanItemDesc.Mythic)
+                        {
+                            for (var i = offset + 6; i < offset + 8; i++)
+                                if (_items[i] == null && playerDesc.SlotTypes[i] == item.SlotType)
+                                    return i;
+                        }
+                    }
                 }
                 else
                 {
-                    for (var i = 0; i < 8; i++)
+                    for (var i = 0; i < InventoryConstants.NUM_INVENTORY_SLOTS; i++)
                         if (_items[i] == null)
                             return i;
                 }
@@ -199,6 +248,42 @@ namespace TKR.WorldServer.core.objects.inventory
         {
             var gameData = (Parent as Entity).GameServer.Resources.GameData;
             return a.Select(_ => _ == 0xffff || !gameData.Items.ContainsKey(_) ? null : gameData.Items[_]).ToArray();
+        }
+
+        public static string NameFromSlotType(int type)
+        {
+            return type switch
+            {
+                InventoryConstants.ALL_SLOT_TYPE => "Any",
+                InventoryConstants.SWORD_SLOT_TYPE => "Sword",
+                InventoryConstants.DAGGER_SLOT_TYPE => "Dagger",
+                InventoryConstants.BOW_SLOT_TYPE => "Bow",
+                InventoryConstants.TOME_SLOT_TYPE => "Tome",
+                InventoryConstants.SHIELD_SLOT_TYPE => "Shield",
+                InventoryConstants.LEATHER_SLOT_TYPE => "Leather Armor",
+                InventoryConstants.PLATE_SLOT_TYPE => "Armor",
+                InventoryConstants.WAND_SLOT_TYPE => "Wand",
+                InventoryConstants.RING_SLOT_TYPE => "Accessory",
+                InventoryConstants.POTION_SLOT_TYPE => "Potion",
+                InventoryConstants.SPELL_SLOT_TYPE => "Spell",
+                InventoryConstants.SEAL_SLOT_TYPE => "Holy Seal",
+                InventoryConstants.CLOAK_SLOT_TYPE => "Cloak",
+                InventoryConstants.ROBE_SLOT_TYPE => "Robe",
+                InventoryConstants.QUIVER_SLOT_TYPE => "Quiver",
+                InventoryConstants.HELM_SLOT_TYPE => "Helm",
+                InventoryConstants.STAFF_SLOT_TYPE => "Staff",
+                InventoryConstants.POISON_SLOT_TYPE => "Poison",
+                InventoryConstants.SKULL_SLOT_TYPE => "Skull",
+                InventoryConstants.TRAP_SLOT_TYPE => "Trap",
+                InventoryConstants.ORB_SLOT_TYPE => "Orb",
+                InventoryConstants.PRISM_SLOT_TYPE => "Prism",
+                InventoryConstants.SCEPTER_SLOT_TYPE => "Scepter",
+                InventoryConstants.KATANA_SLOT_TYPE => "Katana",
+                InventoryConstants.SHURIKEN_SLOT_TYPE => "Shuriken",
+                InventoryConstants.TALISMAN_SLOT_TYPE => "Talisman",
+                InventoryConstants.BOLAS_SLOT_TYPE => "Bolas",
+                _ => "Invalid Type!",
+            };
         }
     }
 }

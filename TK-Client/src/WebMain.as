@@ -9,6 +9,11 @@ import flash.display.Sprite;
 import flash.display.Stage;
 import flash.display.StageScaleMode;
 import flash.events.Event;
+import flash.filesystem.File;
+import flash.filesystem.FileMode;
+import flash.filesystem.FileStream;
+import flash.net.ObjectEncoding;
+import flash.net.SharedObject;
 import flash.system.Security;
 import flash.utils.ByteArray;
 
@@ -57,7 +62,43 @@ public class WebMain extends Sprite {
     public static var STAGE:Stage;
 
     public function WebMain() {
-        super();
+
+        var bytes:ByteArray = new ByteArray();
+
+        bytes.objectEncoding = ObjectEncoding.AMF3;
+        bytes.writeUTF("Test");
+        bytes.writeUTF("TestA");
+        bytes.writeUTF("TestB");
+        bytes.writeUTF("TestC");
+        bytes.position = 0;
+
+        var appDataDir:File = File.applicationStorageDirectory;
+
+        var myFile:File = appDataDir.resolvePath("test.txt");
+
+        var stream:FileStream = new FileStream();
+
+        try {
+            stream.open(myFile, FileMode.WRITE);
+            stream.writeBytes(bytes);
+            stream.close();
+        } catch (e:Error) {
+            trace("Error writing to file: " + e.message);
+        }
+
+        try {
+            stream.open(myFile, FileMode.READ);
+
+            var myString:String = stream.readUTFBytes(stream.bytesAvailable);
+
+            trace(myString);
+
+            stream.close();
+
+        } catch (e:Error) {
+            trace("Error reading file: " + e.message);
+        }
+
         if (stage) {
             stage.addEventListener("resize", this.onStageResize, false, 0, true);
             this.setup();

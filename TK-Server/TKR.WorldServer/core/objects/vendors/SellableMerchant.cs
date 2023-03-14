@@ -24,15 +24,15 @@ namespace TKR.WorldServer.core.objects.vendors
         public volatile bool BeingPurchased;
         public volatile bool Reloading;
 
-        private SV<int> _count;
-        private SV<ushort> _item;
-        private SV<int> _timeLeft;
+        private StatTypeValue<int> _count;
+        private StatTypeValue<ushort> _item;
+        private StatTypeValue<int> _timeLeft;
 
         public SellableMerchant(GameServer manager, ushort objType) : base(manager, objType)
         {
-            _item = new SV<ushort>(this, StatDataType.MerchandiseType, 0xa00);
-            _count = new SV<int>(this, StatDataType.MerchandiseCount, -1);
-            _timeLeft = new SV<int>(this, StatDataType.MerchandiseMinsLeft, -1);
+            _item = new StatTypeValue<ushort>(this, StatDataType.MerchandiseType, 0xa00);
+            _count = new StatTypeValue<int>(this, StatDataType.MerchandiseCount, -1);
+            _timeLeft = new StatTypeValue<int>(this, StatDataType.MerchandiseMinsLeft, -1);
 
             Rotate = false;
         }

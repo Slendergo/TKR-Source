@@ -91,40 +91,40 @@ namespace TKR.WorldServer.core.objects
         public bool XPBoosted { get => _xpBoosted.GetValue(); set => _xpBoosted.SetValue(value); }
         public int XPBoostTime { get; set; }
 
-        private SV<int> _accountId;
-        private SV<int> _admin;
-        private SV<int> _baseStat;
+        private StatTypeValue<int> _accountId;
+        private StatTypeValue<int> _admin;
+        private StatTypeValue<int> _baseStat;
         private double _breath;
         private int _canApplyEffect0;
         private int _canApplyEffect1;
         private int _canApplyEffect2;
         private int _canApplyEffect3;
-        private SV<int> _colorchat;
-        private SV<int> _colornamechat;
-        private SV<int> _credits;
-        private SV<int> _currentFame;
+        private StatTypeValue<int> _colorchat;
+        private StatTypeValue<int> _colornamechat;
+        private StatTypeValue<int> _credits;
+        private StatTypeValue<int> _currentFame;
         private bool _dead;
-        private SV<int> _experience;
-        private SV<int> _experienceGoal;
-        private SV<int> _fame;
-        private SV<int> _fameGoal;
-        private SV<int> _glow;
-        private SV<string> _guild;
-        private SV<int> _guildRank;
-        private SV<bool> _hasBackpack;
-        private SV<int> _level;
-        private SV<int> _mp;
-        private SV<bool> _nameChosen;
+        private StatTypeValue<int> _experience;
+        private StatTypeValue<int> _experienceGoal;
+        private StatTypeValue<int> _fame;
+        private StatTypeValue<int> _fameGoal;
+        private StatTypeValue<int> _glow;
+        private StatTypeValue<string> _guild;
+        private StatTypeValue<int> _guildRank;
+        private StatTypeValue<bool> _hasBackpack;
+        private StatTypeValue<int> _level;
+        private StatTypeValue<int> _mp;
+        private StatTypeValue<bool> _nameChosen;
         private int _originalSkin;
-        private SV<int> _oxygenBar;
-        private SV<int> _partyId;
-        private SV<int> _rank;
-        private SV<int> _skin;
+        private StatTypeValue<int> _oxygenBar;
+        private StatTypeValue<int> _partyId;
+        private StatTypeValue<int> _rank;
+        private StatTypeValue<int> _skin;
 
-        private SV<int> _stars;
-        private SV<int> _texture1;
-        private SV<int> _texture2;
-        private SV<bool> _xpBoosted;
+        private StatTypeValue<int> _stars;
+        private StatTypeValue<int> _texture1;
+        private StatTypeValue<int> _texture2;
+        private StatTypeValue<bool> _xpBoosted;
 
         public StatsManager Stats;
 
@@ -148,33 +148,33 @@ namespace TKR.WorldServer.core.objects
 
             CalculateRank();
 
-            _accountId = new SV<int>(this, StatDataType.AccountId, client.Account.AccountId, true);
-            _experience = new SV<int>(this, StatDataType.Experience, client.Character.Experience, true);
-            _experienceGoal = new SV<int>(this, StatDataType.ExperienceGoal, 0, true);
-            _level = new SV<int>(this, StatDataType.Level, client.Character.Level);
-            _currentFame = new SV<int>(this, StatDataType.CurrentFame, client.Account.Fame, true);
-            _fame = new SV<int>(this, StatDataType.Fame, client.Character.Fame, true);
-            _fameGoal = new SV<int>(this, StatDataType.FameGoal, 0, true);
-            _stars = new SV<int>(this, StatDataType.Stars, 0);
-            _guild = new SV<string>(this, StatDataType.GuildName, "");
-            _guildRank = new SV<int>(this, StatDataType.GuildRank, -1);
-            _rank = new SV<int>(this, StatDataType.Rank, (int)client.Rank.Rank); // we need to export this to client so dont remove
-            _credits = new SV<int>(this, StatDataType.Credits, client.Account.Credits, true);
-            _nameChosen = new SV<bool>(this, StatDataType.NameChosen, client.Account.NameChosen, false, v => Client.Account?.NameChosen ?? v);
-            _texture1 = new SV<int>(this, StatDataType.Texture1, client.Character.Tex1);
-            _texture2 = new SV<int>(this, StatDataType.Texture2, client.Character.Tex2);
-            _skin = new SV<int>(this, StatDataType.Skin, 0);
-            _glow = new SV<int>(this, StatDataType.Glow, 0);
-            _admin = new SV<int>(this, StatDataType.Admin, client.Rank.IsAdmin ? 1 : 0);
-            _xpBoosted = new SV<bool>(this, StatDataType.XPBoost, client.Character.XPBoostTime != 0, true);
-            _mp = new SV<int>(this, StatDataType.Mana, client.Character.MP);
-            _hasBackpack = new SV<bool>(this, StatDataType.HasBackpack, client.Character.HasBackpack, true);
-            _oxygenBar = new SV<int>(this, StatDataType.OxygenBar, -1, true);
-            _baseStat = new SV<int>(this, StatDataType.BaseStat, client.Account.SetBaseStat, true);
+            _accountId = new StatTypeValue<int>(this, StatDataType.AccountId, client.Account.AccountId, true);
+            _experience = new StatTypeValue<int>(this, StatDataType.Experience, client.Character.Experience, true);
+            _experienceGoal = new StatTypeValue<int>(this, StatDataType.ExperienceGoal, 0, true);
+            _level = new StatTypeValue<int>(this, StatDataType.Level, client.Character.Level);
+            _currentFame = new StatTypeValue<int>(this, StatDataType.CurrentFame, client.Account.Fame, true);
+            _fame = new StatTypeValue<int>(this, StatDataType.Fame, client.Character.Fame, true);
+            _fameGoal = new StatTypeValue<int>(this, StatDataType.FameGoal, 0, true);
+            _stars = new StatTypeValue<int>(this, StatDataType.Stars, 0);
+            _guild = new StatTypeValue<string>(this, StatDataType.GuildName, "");
+            _guildRank = new StatTypeValue<int>(this, StatDataType.GuildRank, -1);
+            _rank = new StatTypeValue<int>(this, StatDataType.Rank, (int)client.Rank.Rank); // we need to export this to client so dont remove
+            _credits = new StatTypeValue<int>(this, StatDataType.Credits, client.Account.Credits, true);
+            _nameChosen = new StatTypeValue<bool>(this, StatDataType.NameChosen, client.Account.NameChosen, false, v => Client.Account?.NameChosen ?? v);
+            _texture1 = new StatTypeValue<int>(this, StatDataType.Texture1, client.Character.Tex1);
+            _texture2 = new StatTypeValue<int>(this, StatDataType.Texture2, client.Character.Tex2);
+            _skin = new StatTypeValue<int>(this, StatDataType.Skin, 0);
+            _glow = new StatTypeValue<int>(this, StatDataType.Glow, 0);
+            _admin = new StatTypeValue<int>(this, StatDataType.Admin, client.Rank.IsAdmin ? 1 : 0);
+            _xpBoosted = new StatTypeValue<bool>(this, StatDataType.XPBoost, client.Character.XPBoostTime != 0, true);
+            _mp = new StatTypeValue<int>(this, StatDataType.Mana, client.Character.MP);
+            _hasBackpack = new StatTypeValue<bool>(this, StatDataType.HasBackpack, client.Character.HasBackpack, true);
+            _oxygenBar = new StatTypeValue<int>(this, StatDataType.OxygenBar, -1, true);
+            _baseStat = new StatTypeValue<int>(this, StatDataType.BaseStat, client.Account.SetBaseStat, true);
             
-            _colornamechat = new SV<int>(this, StatDataType.ColorNameChat, 0);
-            _colorchat = new SV<int>(this, StatDataType.ColorChat, 0);
-            _partyId = new SV<int>(this, StatDataType.PartyId, client.Account.PartyId, true);
+            _colornamechat = new StatTypeValue<int>(this, StatDataType.ColorNameChat, 0);
+            _colorchat = new StatTypeValue<int>(this, StatDataType.ColorChat, 0);
+            _partyId = new StatTypeValue<int>(this, StatDataType.PartyId, client.Account.PartyId, true);
 
             UpgradeEnabled = client.Character.UpgradeEnabled;
 
@@ -198,22 +198,22 @@ namespace TKR.WorldServer.core.objects
                     break;
             }
             var maxPotionAmount = 50 + addition;
-            _SPSLifeCount = new SV<int>(this, StatDataType.SPS_LIFE_COUNT, client.Account.SPSLifeCount, true);
-            _SPSLifeCountMax = new SV<int>(this, StatDataType.SPS_LIFE_COUNT_MAX, maxPotionAmount, true);
-            _SPSManaCount = new SV<int>(this, StatDataType.SPS_MANA_COUNT, client.Account.SPSManaCount, true);
-            _SPSManaCountMax = new SV<int>(this, StatDataType.SPS_MANA_COUNT_MAX, maxPotionAmount, true);
-            _SPSDefenseCount = new SV<int>(this, StatDataType.SPS_DEFENSE_COUNT, client.Account.SPSDefenseCount, true);
-            _SPSDefenseCountMax = new SV<int>(this, StatDataType.SPS_DEFENSE_COUNT_MAX, maxPotionAmount, true);
-            _SPSAttackCount = new SV<int>(this, StatDataType.SPS_ATTACK_COUNT, client.Account.SPSAttackCount, true);
-            _SPSAttackCountMax = new SV<int>(this, StatDataType.SPS_ATTACK_COUNT_MAX, maxPotionAmount, true);
-            _SPSDexterityCount = new SV<int>(this, StatDataType.SPS_DEXTERITY_COUNT, client.Account.SPSDexterityCount, true);
-            _SPSDexterityCountMax = new SV<int>(this, StatDataType.SPS_DEXTERITY_COUNT_MAX, maxPotionAmount, true);
-            _SPSSpeedCount = new SV<int>(this, StatDataType.SPS_SPEED_COUNT, client.Account.SPSSpeedCount, true);
-            _SPSSpeedCountMax = new SV<int>(this, StatDataType.SPS_SPEED_COUNT_MAX, maxPotionAmount, true);
-            _SPSVitalityCount = new SV<int>(this, StatDataType.SPS_VITALITY_COUNT, client.Account.SPSVitalityCount, true);
-            _SPSVitalityCountMax = new SV<int>(this, StatDataType.SPS_VITALITY_COUNT_MAX, maxPotionAmount, true);
-            _SPSWisdomCount = new SV<int>(this, StatDataType.SPS_WISDOM_COUNT, client.Account.SPSWisdomCount, true);
-            _SPSWisdomCountMax = new SV<int>(this, StatDataType.SPS_WISDOM_COUNT_MAX, maxPotionAmount, true);
+            _SPSLifeCount = new StatTypeValue<int>(this, StatDataType.SPS_LIFE_COUNT, client.Account.SPSLifeCount, true);
+            _SPSLifeCountMax = new StatTypeValue<int>(this, StatDataType.SPS_LIFE_COUNT_MAX, maxPotionAmount, true);
+            _SPSManaCount = new StatTypeValue<int>(this, StatDataType.SPS_MANA_COUNT, client.Account.SPSManaCount, true);
+            _SPSManaCountMax = new StatTypeValue<int>(this, StatDataType.SPS_MANA_COUNT_MAX, maxPotionAmount, true);
+            _SPSDefenseCount = new StatTypeValue<int>(this, StatDataType.SPS_DEFENSE_COUNT, client.Account.SPSDefenseCount, true);
+            _SPSDefenseCountMax = new StatTypeValue<int>(this, StatDataType.SPS_DEFENSE_COUNT_MAX, maxPotionAmount, true);
+            _SPSAttackCount = new StatTypeValue<int>(this, StatDataType.SPS_ATTACK_COUNT, client.Account.SPSAttackCount, true);
+            _SPSAttackCountMax = new StatTypeValue<int>(this, StatDataType.SPS_ATTACK_COUNT_MAX, maxPotionAmount, true);
+            _SPSDexterityCount = new StatTypeValue<int>(this, StatDataType.SPS_DEXTERITY_COUNT, client.Account.SPSDexterityCount, true);
+            _SPSDexterityCountMax = new StatTypeValue<int>(this, StatDataType.SPS_DEXTERITY_COUNT_MAX, maxPotionAmount, true);
+            _SPSSpeedCount = new StatTypeValue<int>(this, StatDataType.SPS_SPEED_COUNT, client.Account.SPSSpeedCount, true);
+            _SPSSpeedCountMax = new StatTypeValue<int>(this, StatDataType.SPS_SPEED_COUNT_MAX, maxPotionAmount, true);
+            _SPSVitalityCount = new StatTypeValue<int>(this, StatDataType.SPS_VITALITY_COUNT, client.Account.SPSVitalityCount, true);
+            _SPSVitalityCountMax = new StatTypeValue<int>(this, StatDataType.SPS_VITALITY_COUNT_MAX, maxPotionAmount, true);
+            _SPSWisdomCount = new StatTypeValue<int>(this, StatDataType.SPS_WISDOM_COUNT, client.Account.SPSWisdomCount, true);
+            _SPSWisdomCountMax = new StatTypeValue<int>(this, StatDataType.SPS_WISDOM_COUNT_MAX, maxPotionAmount, true);
 
             IncomingMessages = new ConcurrentQueue<InboundBuffer>();
 
@@ -253,7 +253,7 @@ namespace TKR.WorldServer.core.objects
             Inventory.InventoryChanged += (sender, e) => Stats.ReCalculateValues();
             SlotTypes = Utils.ResizeArray(gameData.Classes[ObjectType].SlotTypes, 28);
 
-            _talismanEffects = new SV<int>(this, StatDataType.TALISMAN_EFFECT_MASK_STAT, 0);
+            _talismanEffects = new StatTypeValue<int>(this, StatDataType.TALISMAN_EFFECT_MASK_STAT, 0);
 
             Stats = new StatsManager(this);
 
@@ -890,42 +890,42 @@ namespace TKR.WorldServer.core.objects
                 ApplyConditionEffect(ConditionEffectIndex.Berserk, 5000);
         }
 
-        private string CheckRankAPI(int accID, int charID)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create($"https://tkr.gg/api/getRank");
-            httpWebRequest.ContentType = "application/json";
-            httpWebRequest.Method = "POST";
+        //private string CheckRankAPI(int accID, int charID)
+        //{
+        //    var httpWebRequest = (HttpWebRequest)WebRequest.Create($"https://tkr.gg/api/getRank");
+        //    httpWebRequest.ContentType = "application/json";
+        //    httpWebRequest.Method = "POST";
 
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-            {
-                string json = new JavaScriptSerializer().Serialize(new APIRank()
-                {
-                    accID = accID,
-                    charID = charID
-                });
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-            }
+        //    using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+        //    {
+        //        string json = new JavaScriptSerializer().Serialize(new APIRank()
+        //        {
+        //            accID = accID,
+        //            charID = charID
+        //        });
+        //        streamWriter.Write(json);
+        //        streamWriter.Flush();
+        //        streamWriter.Close();
+        //    }
 
-            try
-            {
-                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-                {
-                    var result = streamReader.ReadToEnd();
-                    var data = JsonConvert.DeserializeObject<APIResp>(result);
-                    if (!result.Contains("200")) //200 is normal result, if it doesn't contains it, somethingb bad happened
-                        Console.WriteLine(result);
-                    return data.charRank;
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                return "n/a";
-            }
-        }
+        //    try
+        //    {
+        //        var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+        //        using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+        //        {
+        //            var result = streamReader.ReadToEnd();
+        //            var data = JsonConvert.DeserializeObject<APIResp>(result);
+        //            if (!result.Contains("200")) //200 is normal result, if it doesn't contains it, somethingb bad happened
+        //                Console.WriteLine(result);
+        //            return data.charRank;
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Console.WriteLine(e);
+        //        return "n/a";
+        //    }
+        //}
 
         private void AnnounceDeath(string killer)
         {

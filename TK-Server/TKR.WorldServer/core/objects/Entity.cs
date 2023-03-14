@@ -26,14 +26,14 @@ namespace TKR.WorldServer.core.objects
         public bool Spawned;
         public bool SpawnedByBehavior;
 
-        private SV<int> _altTextureIndex;
-        private SV<string> _name;
-        private SV<int> _size;
+        private StatTypeValue<int> _altTextureIndex;
+        private StatTypeValue<string> _name;
+        private StatTypeValue<int> _size;
         private bool _stateEntry;
         private State _stateEntryCommonRoot;
         private Dictionary<object, object> _states;
-        private SV<float> _x;
-        private SV<float> _y;
+        private StatTypeValue<float> _x;
+        private StatTypeValue<float> _y;
         private ConditionEffectManager ConditionEffectManager;
         public bool Dead { get; private set; }
 
@@ -71,11 +71,11 @@ namespace TKR.WorldServer.core.objects
             if (ObjectDesc.StunImmune)
                 ApplyPermanentConditionEffect(ConditionEffectIndex.StunImmune);
 
-            _name = new SV<string>(this, StatDataType.Name, ObjectDesc.DisplayName);
-            _size = new SV<int>(this, StatDataType.Size, ObjectDesc.Size);
-            _altTextureIndex = new SV<int>(this, StatDataType.AltTextureIndex, -1);
-            _x = new SV<float>(this, StatDataType.None, 0);
-            _y = new SV<float>(this, StatDataType.None, 0);
+            _name = new StatTypeValue<string>(this, StatDataType.Name, ObjectDesc.DisplayName);
+            _size = new StatTypeValue<int>(this, StatDataType.Size, ObjectDesc.Size);
+            _altTextureIndex = new StatTypeValue<int>(this, StatDataType.AltTextureIndex, -1);
+            _x = new StatTypeValue<float>(this, StatDataType.None, 0);
+            _y = new StatTypeValue<float>(this, StatDataType.None, 0);
         }
 
         public event EventHandler<StatChangedEventArgs> StatChanged;

@@ -12,6 +12,7 @@ namespace TKR.WorldServer.logic
 
         [ThreadStatic]
         private static Random _rand;
+        protected static Random Random => _rand ??= new Random();
 
         public Transition(params string[] targetStates)
         {
@@ -19,11 +20,6 @@ namespace TKR.WorldServer.logic
         }
 
         public State[] TargetState { get; private set; }
-
-        protected static Random Random
-        {
-            get { return _rand ?? (_rand = new Random()); }
-        }
 
         public bool Tick(Entity host, TickTime time)
         {

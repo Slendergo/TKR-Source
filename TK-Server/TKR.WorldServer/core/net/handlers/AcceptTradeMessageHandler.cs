@@ -1,19 +1,16 @@
-﻿using TKR.Shared;
-using TKR.Shared.database;
-using TKR.Shared.resources;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using TKR.WorldServer.core.objects;
-using TKR.WorldServer.core.objects.vendors;
-using TKR.WorldServer.networking.packets;
-using TKR.WorldServer.networking.packets.outgoing;
 using System.Text;
-using TKR.WorldServer.core.worlds.impl;
-using TKR.WorldServer.core.objects.inventory;
-using TKR.WorldServer.utils;
-using TKR.WorldServer.networking;
+using TKR.Shared;
 using TKR.Shared.database.character.inventory;
+using TKR.Shared.resources;
+using TKR.WorldServer.core.objects;
+using TKR.WorldServer.core.objects.inventory;
 using TKR.WorldServer.core.worlds;
+using TKR.WorldServer.core.worlds.impl;
+using TKR.WorldServer.networking;
+using TKR.WorldServer.networking.packets.outgoing;
+using TKR.WorldServer.utils;
 
 namespace TKR.WorldServer.core.net.handlers
 {

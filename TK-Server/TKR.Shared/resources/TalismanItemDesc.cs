@@ -4,6 +4,19 @@ using System.Xml.Linq;
 
 namespace TKR.Shared.resources
 {
+    [Flags]
+    public enum TalismanEffectType : byte
+    {
+        None = 0,
+        WeakImmunity = 1,
+        CallToArms = 2,
+        PartyOfOne = 3,
+        PocketChange = 4,
+        StunImmunity = 5,
+        LuckOfTheIrish = 6,
+        KnownAfterDeath = 7
+    }
+
     public sealed class TalismanItemDesc
     {
         public readonly bool Common;
@@ -23,19 +36,6 @@ namespace TKR.Shared.resources
             foreach(var e in elem.Elements("Provides"))
                 Provides.Add(new TalismanItemProvidesDesc(e));
         }
-    }
-
-    [Flags]
-    public enum TalismanEffectType : byte
-    {
-        None = 0,
-        WeakImmunity = 1,
-        CallToArms = 2,
-        PartyOfOne = 3,
-        PocketChange = 4,
-        StunImmunity = 5,
-        LuckOfTheIrish = 6,
-        KnownAfterDeath = 7
     }
 
     public sealed class TalismanItemProvidesDesc

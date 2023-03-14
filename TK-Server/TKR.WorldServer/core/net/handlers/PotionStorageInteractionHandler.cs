@@ -5,17 +5,8 @@ using TKR.WorldServer.core.worlds;
 
 namespace TKR.WorldServer.core.net.handlers
 {
-    internal class PotionStorageInteractionHandler : IMessageHandler
+    public sealed class PotionStorageInteractionHandler : IMessageHandler
     {
-        public const string POTION_OF_LIFE = "Potion of Life";
-        public const string POTION_OF_MANA = "Potion of Mana";
-        public const string POTION_OF_ATTACK = "Potion of Attack";
-        public const string POTION_OF_DEFENSE = "Potion of Defense";
-        public const string POTION_OF_DEXTERITY = "Potion of Dexterity";
-        public const string POTION_OF_SPEED = "Potion of Speed";
-        public const string POTION_OF_VITALITY = "Potion of Vitality";
-        public const string POTION_OF_WISDOM = "Potion of Wisdom";
-
         public override MessageId MessageId => MessageId.POTION_STORAGE_INTERACTION;
 
         public override void Handle(Client client, NetworkReader rdr, ref TickTime tickTime)
@@ -24,8 +15,9 @@ namespace TKR.WorldServer.core.net.handlers
             var action = rdr.ReadByte();
 
             var player = client.Player;
-            var typeName = type == 0 ? POTION_OF_LIFE : type == 1 ? POTION_OF_MANA : type == 2 ? POTION_OF_ATTACK : type == 3 ? POTION_OF_DEFENSE : type == 4 ? POTION_OF_SPEED : type == 5 ? POTION_OF_DEXTERITY : type == 6 ? POTION_OF_VITALITY : type == 7 ? POTION_OF_WISDOM : "Unknown";
-            if (player == null || typeName == "Unknown")
+
+            var typeName = Player.GetPotionFromType(type);
+            if (player == null || typeName == Player.UNKNOWN_POTION)
             {
                 player.SendInfo("Unknown Error");
                 return;
@@ -169,16 +161,15 @@ namespace TKR.WorldServer.core.net.handlers
             ModifyStat(player, type, false, 1);
         }
 
-
-        private int ScanInventory(Player player, string item)
+        private static int ScanInventory(Player player, string item)
         {
             for (var i = 0; i < player.Inventory.Length; i++)
-                if (player.Inventory[i]?.ObjectId == item)
+                if (player.Inventory[i] != null && player.Inventory[i].ObjectId == item)
                     return i;
             return -1;
         }
 
-        private void ModifyStat(Player Player, byte type, bool isAdd, int amount = 1)
+        private static void ModifyStat(Player Player, byte type, bool isAdd, int amount = 1)
         {
             var newAmount = isAdd ? amount : -amount;
 
@@ -224,7 +215,7 @@ namespace TKR.WorldServer.core.net.handlers
             }
         }
 
-        private int ToMaxCalc(Player player, byte type, int toMax)
+        private static int ToMaxCalc(Player player, byte type, int toMax)
         {
             switch (type)
             {
@@ -240,7 +231,7 @@ namespace TKR.WorldServer.core.net.handlers
             }
         }
 
-        private bool CheckMax(Player Player, byte type, int toMax)
+        private static bool CheckMax(Player Player, byte type, int toMax)
         {
             switch (type)
             {
@@ -256,7 +247,7 @@ namespace TKR.WorldServer.core.net.handlers
             }
         }
 
-        private bool CanModifyStat(Player player, byte type, bool checkZero)
+        private static bool CanModifyStat(Player player, byte type, bool checkZero)
         {
             switch (type)
             {

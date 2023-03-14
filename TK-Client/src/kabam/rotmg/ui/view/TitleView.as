@@ -25,7 +25,7 @@ import org.osflash.signals.Signal;
    {
       private static var TitleScreenGraphic:Class = TitleView_TitleScreenGraphic;
 
-      private static const COPYRIGHT:String = "<font color=\"#FFFF00\">© 2022 by Slendergo, GlassBBQ, Orb<font/>";
+      private static const COPYRIGHT:String = "<font color=\"#FFFF00\">© 2023 by Slendergo, GlassBBQ, Orb<font/>";
 
 
       public var playClicked:Signal;

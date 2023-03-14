@@ -10,15 +10,15 @@ namespace TKR.WorldServer.core.objects.vendors
 {
     public abstract class SellableObject : StaticObject
     {
-        private SV<CurrencyType> _currency;
-        private SV<int> _price;
-        private SV<int> _rankReq;
+        private StatTypeValue<CurrencyType> _currency;
+        private StatTypeValue<int> _price;
+        private StatTypeValue<int> _rankReq;
 
         protected SellableObject(GameServer manager, ushort objType) : base(manager, objType, null, true, false, false)
         {
-            _price = new SV<int>(this, StatDataType.MerchandisePrice, 0);
-            _currency = new SV<CurrencyType>(this, StatDataType.MerchandiseCurrency, 0);
-            _rankReq = new SV<int>(this, StatDataType.MerchandiseRankReq, 0);
+            _price = new StatTypeValue<int>(this, StatDataType.MerchandisePrice, 0);
+            _currency = new StatTypeValue<CurrencyType>(this, StatDataType.MerchandiseCurrency, 0);
+            _rankReq = new StatTypeValue<int>(this, StatDataType.MerchandiseRankReq, 0);
         }
 
         public CurrencyType Currency { get => _currency.GetValue(); set => _currency.SetValue(value); }

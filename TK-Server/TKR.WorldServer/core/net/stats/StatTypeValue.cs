@@ -3,24 +3,24 @@ using TKR.WorldServer.core.objects;
 
 namespace TKR.WorldServer.core.net.stats
 {
-    public class SV<T>
+    public sealed class StatTypeValue<T>
     {
         private readonly StatDataType _type;
         private readonly bool _updateSelfOnly;
 
-        private Entity _owner;
-        private Func<T, T> _transform;
-        private T _tValue;
+        private readonly Entity _owner;
+        private readonly Func<T, T> _transform;
+        private T _transformValue;
         private T _value;
 
-        public SV(Entity e, StatDataType type, T value, bool updateSelfOnly = false, Func<T, T> transform = null)
+        public StatTypeValue(Entity e, StatDataType type, T value, bool updateSelfOnly = false, Func<T, T> transform = null)
         {
             _owner = e;
             _type = type;
             _updateSelfOnly = updateSelfOnly;
             _transform = transform;
             _value = value;
-            _tValue = Transform(value);
+            _transformValue = Transform(value);
         }
 
         public T GetValue() => _value;
@@ -34,10 +34,10 @@ namespace TKR.WorldServer.core.net.stats
 
             var tVal = Transform(value);
 
-            if (_tValue != null && _tValue.Equals(tVal))
+            if (_transformValue != null && _transformValue.Equals(tVal))
                 return;
 
-            _tValue = tVal;
+            _transformValue = tVal;
 
             // hacky fix to xp
             if (_owner is Player && _type == StatDataType.Experience)
@@ -48,6 +48,6 @@ namespace TKR.WorldServer.core.net.stats
 
         public override string ToString() => _value.ToString();
 
-        private T Transform(T value) => _transform == null ? value : _transform(value);
+        private T Transform(T value) => _transform == null ? value : _transform.Invoke(value);
     }
 }

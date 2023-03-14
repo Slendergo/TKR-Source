@@ -217,17 +217,17 @@ public class EquipmentToolTip extends ToolTip
                   this.itemEffectText_.text = "Call to Arms -> Regeneration is doubled";
                   break;
                case "Party Of One":
-                  this.itemEffectText_.text = "Party of One -> While alone you gain 50% more chance at loot, While not alone lose 50% chance at loot";
+                  this.itemEffectText_.text = "Party of One -> 50% more chance to get loot, but -1% for every player (Wont go below 0%)";
                   break;
                case "Pocket Change":
-                  this.itemEffectText_.text = "Pocket Change -> You have a 30% increase chance at loot";
+                  this.itemEffectText_.text = "Pocket Change -> You have a 30% increased loot chance";
                   break;
                // mythical
                case "Stun Immunity":
                   this.itemEffectText_.text = "Stun Immunity -> Immunity to being Stunned";
                   break;
                case "Luck Of The Irish":
-                  this.itemEffectText_.text = "Luck of the Irish -> Gain 20% more chance at loot and an 2% chance to double your drops";
+                  this.itemEffectText_.text = "Luck of the Irish -> You have a 30% increased loot chance and an 2% chance to double your drops from bosses";
                   break;
                case "Known After Death":
                   this.itemEffectText_.text = "Known After Death -> Experience from killing mobs is doubled";

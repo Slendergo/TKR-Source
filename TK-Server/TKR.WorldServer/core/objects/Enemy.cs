@@ -21,14 +21,14 @@ namespace TKR.WorldServer.core.objects
         private float bleeding = 0;
         private Position? pos;
 
-        protected SV<int> _defense;
+        protected StatTypeValue<int> _defense;
         public int Defense
         {
             get => _defense.GetValue();
             set => _defense.SetValue(value);
         }
 
-        private SV<int> _glowcolor;
+        private StatTypeValue<int> _glowcolor;
         public int GlowEnemy
         {
             get => _glowcolor.GetValue();
@@ -37,9 +37,9 @@ namespace TKR.WorldServer.core.objects
 
         public Enemy(GameServer manager, ushort objType) : base(manager, objType)
         {
-            _defense = new SV<int>(this, StatDataType.Defense, ObjectDesc.Defense);
+            _defense = new StatTypeValue<int>(this, StatDataType.Defense, ObjectDesc.Defense);
             DamageCounter = new DamageCounter(this);
-            _glowcolor = new SV<int>(this, StatDataType.GlowEnemy, 0);
+            _glowcolor = new StatTypeValue<int>(this, StatDataType.GlowEnemy, 0);
         }
 
         protected override void ExportStats(IDictionary<StatDataType, object> stats, bool isOtherPlayer)

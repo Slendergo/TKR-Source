@@ -22,7 +22,7 @@ namespace TKR.WorldServer.core.net.handlers
                 return;
             }
 
-            client.Player.SendInfo("You issued a nexus, if you die its because you dont see this");
+            //client.Player.SendInfo("You issued a nexus, if you die its because you dont see this");
             client.Player.ApplyPermanentConditionEffect(ConditionEffectIndex.Invincible);
             client.Reconnect(new Reconnect()
             {

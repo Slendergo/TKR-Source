@@ -188,7 +188,7 @@ public class GameSprite extends Sprite
          this.enableGameStatistics();
       }
 
-      WebMain.STAGE.vsyncEnabled = Parameters.data_.vsync;
+      //WebMain.STAGE.vsyncEnabled = Parameters.data_.vsync;
       WebMain.STAGE.frameRate = Parameters.data_.fps;
    }
 

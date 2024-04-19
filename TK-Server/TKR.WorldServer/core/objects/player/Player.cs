@@ -325,6 +325,7 @@ namespace TKR.WorldServer.core.objects
             Client.Rank.Flush();
         }
 
+        // todo rename these damn things
         public bool ApplyEffectCooldown(int slot)
         {
             if (slot == 0)

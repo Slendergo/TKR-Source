@@ -10,6 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="logic\behaviors\new\modifiers\**" />
+    <EmbeddedResource Remove="logic\behaviors\new\modifiers\**" />
+    <None Remove="logic\behaviors\new\modifiers\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="BouncyCastle" Version="1.8.9" />
     <PackageReference Include="Nancy" Version="2.0.0" />
   </ItemGroup>
@@ -22,10 +28,6 @@
     <None Update="wServer.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="logic\behaviors\new\modifiers\" />
   </ItemGroup>
 
 </Project>

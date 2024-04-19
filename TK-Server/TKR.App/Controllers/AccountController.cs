@@ -103,7 +103,7 @@ namespace TKR.App.Controllers
         [HttpPost("handleDono")]
         public void ChangePassword([FromForm] string accountId, [FromForm] string secret, [FromForm] string type, [FromForm] string amountDonated)
         {
-            if (secret == "2e97e994e19e630da90092ca4ffcd9ee")
+            if (secret == "NEW_SECRET_KEY_HERE_TODO_SOMEONE_DONT_LET_THEM_KNOW_YOUR_NEXT_MOVE_OK")
             {
                 var amount = int.Parse(amountDonated);
 

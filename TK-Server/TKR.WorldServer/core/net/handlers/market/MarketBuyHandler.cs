@@ -104,47 +104,6 @@ namespace TKR.WorldServer.core.net.handlers.market
                 Description = $"You have successfully bought: {item.ObjectId}",
                 OfferId = marketData.Id
             });
-
-            //Send the item to the API
-            SendToAPIAsync(marketData.ItemType, marketData.Price);
-        }
-
-        private void SendToAPIAsync(int itemId, int price)
-        {
-            System.Threading.Tasks.Task.Factory.StartNew(() =>
-            {
-                var httpWebRequest = (HttpWebRequest)WebRequest.Create($"https://tkprices.herokuapp.com/api/item/addtx");
-                httpWebRequest.ContentType = "application/json";
-                httpWebRequest.Method = "POST";
-
-                using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-                {
-                    string json = new JavaScriptSerializer().Serialize(new APIItem() //Added new Package, Nancy.Json, if you don't have it, search it in NuGet
-                    {
-                        itemID = itemId,
-                        value = price
-                    });
-                    streamWriter.Write(json);
-                    streamWriter.Flush();
-                    streamWriter.Close();
-                }
-
-                try
-                {
-                    var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-                    using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-                    {
-                        var result = streamReader.ReadToEnd();
-                        if (!result.Contains("200")) //200 is normal result, if it doesn't contains it, somethingb bad happened
-                            Console.WriteLine(result);
-                    }
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                    return;
-                }
-            });
         }
 
         private void AddFameToSeller(Client client, DbAccount acc, int realPrice, string itemId)
@@ -173,7 +132,7 @@ namespace TKR.WorldServer.core.net.handlers.market
 
         internal class APIItem //if u want, you can remove this and make it different?
         {
-            public string secret = "BNvYPJD35c94ng5c";
+            public string secret = "NEW_SECRET_KEY_HERE_TODO_SOMEONE_DONT_LET_THEM_KNOW_YOUR_NEXT_MOVE_OK2";
             public int itemID;
             public int value;
         }

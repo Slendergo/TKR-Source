@@ -90,6 +90,7 @@ namespace TKR.WorldServer.core
 #else
         private static bool ExportXMLS = false;
 #endif
+
         public void Run()
         {
             if (ExportXMLS)
@@ -112,6 +113,8 @@ namespace TKR.WorldServer.core
                 var f2 = File.CreateText("GenerateXMLS/EmbeddedData_GroundsCXML.xml");
                 f2.Write(Resources.GameData.GroundCombinedXML.ToString());
                 f2.Close();
+
+                Console.WriteLine("GenerateXMLS is done ready for copying to src\\kabam\\rotmg\\assets");
             }
 
             ItemDustWeights.Initialize();

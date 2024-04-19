@@ -339,7 +339,6 @@ namespace TKR.WorldServer.core.connection
         private readonly Client Client;
         private readonly NetworkSendHandler NetworkSendHandler;
         private readonly NetworkReceiveHandler NetworkReceiveHandler;
-        private Queue<OutgoingMessage> PendingSending;
 
         public NetworkHandler(Client client, SocketAsyncEventArgs send, SocketAsyncEventArgs receive)
         {
@@ -347,7 +346,6 @@ namespace TKR.WorldServer.core.connection
 
             NetworkSendHandler = new NetworkSendHandler(client, send);
             NetworkReceiveHandler = new NetworkReceiveHandler(client, receive);
-            PendingSending = new Queue<OutgoingMessage>();
         }
 
         public void SetSocket(Socket socket)

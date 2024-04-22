@@ -68,15 +68,6 @@ namespace TKR.App.Controllers
         [HttpPost("list")]
         public void List([FromForm] string guid, [FromForm] string password, [FromForm]string secret)
         {
-            if (_core.IsProduction())
-            {
-                if (_core.Config.serverInfo.requireSecret && secret != "69420")
-                {
-                    Response.InternalServerError("Internal Server Error");
-                    return;
-                }
-            }
-
             var status = _core.Database.Verify(guid, password, out var acc);
             if (status == DbLoginStatus.OK || status == DbLoginStatus.AccountNotExists)
             {

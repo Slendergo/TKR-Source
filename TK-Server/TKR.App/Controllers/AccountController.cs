@@ -100,32 +100,33 @@ namespace TKR.App.Controllers
             Response.CreateError(status.GetInfo());
         }
 
-        [HttpPost("handleDono")]
-        public void ChangePassword([FromForm] string accountId, [FromForm] string secret, [FromForm] string type, [FromForm] string amountDonated)
-        {
-            if (secret == "NEW_SECRET_KEY_HERE_TODO_SOMEONE_DONT_LET_THEM_KNOW_YOUR_NEXT_MOVE_OK")
-            {
-                var amount = int.Parse(amountDonated);
+        // removed so that people cant call the api and get shit for free
+        //[HttpPost("handleDono")]
+        //public void HandleDono([FromForm] string accountId, [FromForm] string secret, [FromForm] string type, [FromForm] string amountDonated)
+        //{
+        //    if (secret == "NEW_SECRET_KEY_HERE_TODO_SOMEONE_DONT_LET_THEM_KNOW_YOUR_NEXT_MOVE_OK")
+        //    {
+        //        var amount = int.Parse(amountDonated);
 
-                var acc = _core.Database.GetAccount(int.Parse(accountId));
-                if (type == "rank")
-                {
-                    var rank = new DbRank(acc.Database, acc.AccountId);
-                    rank.NewAmountDonated += amount;
-                    rank.Flush();
-                    Response.CreateSuccess();
-                }
-                else if (type == "gold")
-                {
-                    acc.Credits += amount;
-                    acc.TotalCredits += amount;
-                    acc.FlushAsync();
-                    Response.CreateSuccess();
-                }
-                return;
-            }
-            Response.CreateError("Internal Server Error.");
-        }
+        //        var acc = _core.Database.GetAccount(int.Parse(accountId));
+        //        if (type == "rank")
+        //        {
+        //            var rank = new DbRank(acc.Database, acc.AccountId);
+        //            rank.NewAmountDonated += amount;
+        //            rank.Flush();
+        //            Response.CreateSuccess();
+        //        }
+        //        else if (type == "gold")
+        //        {
+        //            acc.Credits += amount;
+        //            acc.TotalCredits += amount;
+        //            acc.FlushAsync();
+        //            Response.CreateSuccess();
+        //        }
+        //        return;
+        //    }
+        //    Response.CreateError("Internal Server Error.");
+        //}
 
         [HttpPost("changePassword")]
         public void ChangePassword([FromForm] string guid, [FromForm] string password, [FromForm] string newPassword)
@@ -144,16 +145,6 @@ namespace TKR.App.Controllers
         [HttpPost("verify")]
         public void Verify([FromForm] string guid, [FromForm] string password, [FromForm] string secret)
         {
-            if (_core.IsProduction())
-            {
-                if (_core.Config.serverInfo.requireSecret && secret != "69420")
-                {
-                    _core.Logger.Warn($"{guid} Tried to login without secret");
-                    Response.CreateError("Internal Server Error");
-                    return;
-                }
-            }
-
             var status = _core.Database.Verify(guid, password, out DbAccount acc);
             if (status == DbLoginStatus.OK)
             {
@@ -165,29 +156,29 @@ namespace TKR.App.Controllers
         }
 
         [HttpPost("setName")]
-        public void Register()
+        public void SetName()
         {
             Response.CreateError("Unknown Error");
         }
         
         [HttpPost("register")]
-        public void Register([FromForm] string guid, [FromForm] string newGuid, [FromForm] string newPassword, [FromForm] string name, [FromForm] string secret)
+        public void Register([FromForm] string guid, [FromForm] string newGuid, [FromForm] string newPassword, [FromForm] string name)
         {
-            if (_core.IsProduction())
-            {
-                if (_core.Config.serverInfo.requireSecret && secret != "69420")
-                {
-                    _core.Logger.Warn($"{newGuid} Tried to register without secret");
-                    Response.CreateError("Internal Server Error.");
-                    return;
-                }
+            //if (_core.IsProduction()) // old code
+            //{
+            //    if (_core.Config.serverInfo.requireSecret && secret != "69420")
+            //    {
+            //        _core.Logger.Warn($"{newGuid} Tried to register without secret");
+            //        Response.CreateError("Internal Server Error.");
+            //        return;
+            //    }
 
-                if (_core.Resources.Settings.NewAccounts.TestingRegister)
-                {
-                    Response.CreateError("Testers Only");
-                    return;
-                }
-            }
+            //    if (_core.Resources.Settings.NewAccounts.TestingRegister)
+            //    {
+            //        Response.CreateError("Testers Only");
+            //        return;
+            //    }
+            //}
 
             if (Database.GuestNames.Contains(name, StringComparer.InvariantCultureIgnoreCase) || !IsValidName(name))
             {

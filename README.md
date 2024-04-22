@@ -10,12 +10,9 @@ IDR if theres and player hit/entity bugs
 Some entities are using new and some old movement code, never fully transitioned
 
 # Setup Guides
-
-## Client Building
-- Todo
-
-## Discord Bot Intergration
-- Todo
+Client Building: TODO
+Server Building: TODO
+Discord Bot Intergration: TODO
 
 # Reqirements
 - Basic Knowledge of Programming

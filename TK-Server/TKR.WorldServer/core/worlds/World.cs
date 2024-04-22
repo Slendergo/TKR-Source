@@ -570,7 +570,7 @@ namespace TKR.WorldServer.core.worlds
             EntitiesToRemove.Clear();
 
             foreach (var player in Players.Values)
-                player.PlayerUpdate.UpdateState(time.ElapsedMsDelta);
+                player.PlayerUpdate?.UpdateState(time.ElapsedMsDelta);
         }
 
         public void FlagForClose()

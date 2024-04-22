@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System.Linq;
 using System.Xml.Linq;
 
@@ -25,10 +24,10 @@ namespace TKR.App.Controllers
         [HttpPost("serverList")]
         public void ServerList()
         {
-            var servers = _core.GetServerList().Select(_ => _.ToXml()).ToList();
+            var servers = _core.GetServerList().Select(_ => _.ToXml());
             if (servers.Any())
             {
-                var response = new XElement("Servers", new XElement("Servers", servers)).ToString();
+                var response = new XElement("Servers", new XElement("Servers", servers));
                 Response.CreateXml(response.ToString());
                 return;
             }

@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
 using NLog;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -32,12 +29,8 @@ namespace TKR.App
         public readonly Dictionary<string, string> _classAvailability;
         public readonly XElement ItemCostsXml;
 
-        private readonly IWebHostEnvironment _webHostingEnvronment;
-
-        public CoreService(IWebHostEnvironment webHostingEnvronment)
+        public CoreService()
         {
-            _webHostingEnvronment = webHostingEnvronment;
-
             Logger = LogManager.GetCurrentClassLogger();
 			
             var isDocker = Environment.GetEnvironmentVariable("IS_DOCKER") != null;

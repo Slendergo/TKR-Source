@@ -1,8 +1,9 @@
-<application xmlns="http://ns.adobe.com/air/application/33.1">
+<application xmlns="http://ns.adobe.com/air/application/50.2">
     <id>TK-Client</id>
     <filename>TK-Client</filename>
     <name>TK-Client</name>
     <versionNumber>1.0.0</versionNumber>
+    <architecture>64</architecture>
     <initialWindow>
         <content>Content.dll</content>
         <visible>true</visible>

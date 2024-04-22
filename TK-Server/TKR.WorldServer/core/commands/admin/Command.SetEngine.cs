@@ -43,12 +43,22 @@ namespace TKR.WorldServer.core.commands
             {
                 var manager = player.GameServer;
 
+                if(manager.WorldManager.Nexus.EngineStage == 0)
+                {
+                    player.SendInfo("Engine isnt running");
+                    return true;
+                }
 
                 var timeNow = DateTime.UtcNow.ToUnixTimestamp();
-                var engineTime = timeNow - manager.WorldManager.Nexus.EngineStageTime + (manager.WorldManager.Nexus.EngineStage * 3600);
+                var engineTime = (manager.WorldManager.Nexus.EngineStageTime + (manager.WorldManager.Nexus.EngineStage * 3600)) - timeNow;
 
+                int hours = engineTime / 3600;
+                int minutes = (engineTime % 3600) / 60;
+                int seconds = engineTime % 60;
 
-                player.SendInfo($"Engine has "+engineTime+" seconds left");
+                string formattedTime = $"{hours:00}:{minutes:00}:{seconds:00}";
+
+                player.SendInfo($"Engine time remaining: {formattedTime}");
                 return true;
             }
         }

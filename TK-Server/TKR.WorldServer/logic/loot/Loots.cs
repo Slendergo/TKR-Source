@@ -1,8 +1,6 @@
-﻿using Org.BouncyCastle.Utilities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 using System.Text;
 using TKR.Shared;
 using TKR.Shared.database.character.inventory;
@@ -14,7 +12,6 @@ using TKR.WorldServer.core.objects.containers;
 using TKR.WorldServer.core.worlds;
 using TKR.WorldServer.core.worlds.impl;
 using TKR.WorldServer.networking.packets.outgoing;
-using TKR.WorldServer.networking.packets.outgoing.party;
 
 namespace TKR.WorldServer.logic.loot
 {
@@ -331,20 +328,22 @@ namespace TKR.WorldServer.logic.loot
 
             bagType = drops.Max(_ => _.BagType);
 
+            var ownerIds = Array.Empty<int>();
             foreach (var i in drops)
             {
                 items[idx] = i;
                 idx++;
                 if (idx == 8)
                 {
-                    DropBag(enemy, new int[] { }, bagType, items, false);
+                    DropBag(enemy, ownerIds, bagType, items, false);
                     idx = 0;
                     items = new Item[8];
                     bagType = 0;
                 }
             }
+
             if (idx > 0)
-                DropBag(enemy, new int[] { }, bagType, items, false);
+                DropBag(enemy, ownerIds, bagType, items, false);
         }
 
         private static void ProcessPrivateBags(Enemy enemy, IEnumerable<Item> loots, GameServer core, params Player[] owners)

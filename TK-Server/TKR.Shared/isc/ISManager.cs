@@ -3,6 +3,7 @@ using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TKR.Shared.isc.data;
 
 namespace TKR.Shared.isc
 {

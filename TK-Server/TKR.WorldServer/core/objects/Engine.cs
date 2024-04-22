@@ -1,13 +1,10 @@
-﻿using TKR.WorldServer.core.worlds;
-using TKR.Shared.database;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TKR.WorldServer.core.net.stats;
 
 namespace TKR.WorldServer.core.objects
 {
     public class Engine : StaticObject
     {
-
         private StatTypeValue<int> _currentAmount;
         public int CurrentAmount
         {
@@ -22,7 +19,8 @@ namespace TKR.WorldServer.core.objects
             set => _engineTime.SetValue(value);
         }
 
-        public Engine(GameServer manager, ushort objType) : base(manager, objType, null, true, false, false)
+        public Engine(GameServer manager, ushort objType) 
+            : base(manager, objType, null, true, false, false)
         {
             var nexus = GameServer.WorldManager.Nexus;
             _currentAmount = new StatTypeValue<int>(this, StatDataType.EngineValue, nexus.EngineFuel);

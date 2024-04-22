@@ -79,7 +79,7 @@ namespace TKR.Shared.discord
                         Color = 0x7289DA,
                         Fields = new[]
                         {
-                            new  DiscordEmbedField()
+                            new DiscordEmbedField()
                             {
                                 Name = "In server:",
                                 Value = $"{info.players}/{info.maxPlayers}",
@@ -131,12 +131,10 @@ namespace TKR.Shared.discord
         public static DiscordEmbedBuilder? MakeDeathAnnounce(
             this DiscordIntegration discord,
             ServerInfo info,
-            string worldName,
             int players,
             int maxPlayers,
             bool isDungeon,
             string bagImage,
-            int charId,
             string playerName,
             int rank,
             int stars,
@@ -145,9 +143,7 @@ namespace TKR.Shared.discord
             int fame,
             bool upgradeEnabled,
             int maxedStats,
-            string killer,
-            string charRank
-            )
+            string killer)
         {
             var star = discord.stars.FindStar(stars);
 
@@ -174,11 +170,11 @@ namespace TKR.Shared.discord
                             Icon = discord.webhookResourcesURL + bagImage,
                         },
                         Title = $"<:{star.Value.name}:{star.Value.id}> (D-{rank / 10}) {playerName}",
-                        Description = $"Has been killed by __**{killer}**__!" + "\n" + $"They were ranked **#{charRank}** on the alive character leaderboards!",
+                        Description = $"Has been killed by __**{killer}**__!",
                         Color = 0x7289DA,
                         Fields = new[]
                         {
-                            new  DiscordEmbedField()
+                            new DiscordEmbedField()
                             {
                                 Name = "In server:",
                                 Value = $"{info.players}/{info.maxPlayers}",
@@ -228,8 +224,10 @@ namespace TKR.Shared.discord
 
         public static async Task SendWebhook(this DiscordIntegration discord, string webhook, DiscordEmbedBuilder builder)
         {
-            using (var discordWebhook = new DiscordWebhook(webhook))
-                await discordWebhook.SendAsync(builder);
+            if (string.IsNullOrWhiteSpace(webhook))
+                return;                
+            using var discordWebhook = new DiscordWebhook(webhook);
+            await discordWebhook.SendAsync(builder);
         }
     }
 }

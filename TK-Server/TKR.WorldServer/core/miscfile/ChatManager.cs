@@ -2,6 +2,7 @@
 using System.Linq;
 using TKR.Shared;
 using TKR.Shared.isc;
+using TKR.Shared.isc.data;
 using TKR.WorldServer.core.objects;
 using TKR.WorldServer.core.worlds;
 using TKR.WorldServer.networking.packets.outgoing;

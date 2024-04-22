@@ -186,13 +186,13 @@ namespace TKR.WorldServer.core.objects
         {
             if (!VisibleProjectiles.TryGetValue(objectId, out var dict))
             {
-                Console.WriteLine($"[PlayerHit] {Name} -> {Id} not present in VisibleProjectiles List");
+                //Console.WriteLine($"[PlayerHit] {Name} -> {Id} not present in VisibleProjectiles List");
                 return;
             }
 
             if (!dict.TryGetValue(bulletId, out var projectile))
             {
-                Console.WriteLine($"[PlayerHit] {Name} -> {bulletId} not present in VisibleProjectiles List");
+                //Console.WriteLine($"[PlayerHit] {Name} -> {bulletId} not present in VisibleProjectiles List");
                 return;
             }
 
@@ -201,7 +201,7 @@ namespace TKR.WorldServer.core.objects
 
             if (projectile.Disabled)
             {
-                Console.WriteLine($"[OtherHit] {Name} -> {bulletId} Projectile Already Disabled: Multihit: {projectileDesc.MultiHit}");
+                //Console.WriteLine($"[OtherHit] {Name} -> {bulletId} Projectile Already Disabled: Multihit: {projectileDesc.MultiHit}");
                 return;
             }
 
@@ -209,7 +209,7 @@ namespace TKR.WorldServer.core.objects
             if (elapsedSinceStart > projectileDesc.LifetimeMS)
             {
                 projectile.Disabled = true;
-                Console.WriteLine("[PlayerHit] -> A expired shot tried to hit entity");
+                //Console.WriteLine("[PlayerHit] -> A expired shot tried to hit entity");
                 return;
             }
 
@@ -255,13 +255,13 @@ namespace TKR.WorldServer.core.objects
         {
             if (!VisibleProjectiles.TryGetValue(Id, out var dict))
             {
-                Console.WriteLine($"[EnemyHit] {Name} -> {Id} not present in VisibleProjectiles List");
+                //Console.WriteLine($"[EnemyHit] {Name} -> {Id} not present in VisibleProjectiles List");
                 return;
             }
 
             if (!dict.TryGetValue(bulletId, out var projectile))
             {
-                Console.WriteLine($"[EnemyHit] {Name} -> {bulletId} not present in VisibleProjectiles List");
+                //Console.WriteLine($"[EnemyHit] {Name} -> {bulletId} not present in VisibleProjectiles List");
                 return;
             }
 
@@ -270,7 +270,7 @@ namespace TKR.WorldServer.core.objects
 
             if (projectile.Disabled)
             {
-                Console.WriteLine($"[OtherHit] {Name} -> {bulletId} Projectile Already Disabled: Multihit: {projectileDesc.MultiHit}");
+                //Console.WriteLine($"[OtherHit] {Name} -> {bulletId} Projectile Already Disabled: Multihit: {projectileDesc.MultiHit}");
                 return;
             }
 
@@ -278,7 +278,7 @@ namespace TKR.WorldServer.core.objects
             if (elapsedSinceStart > projectileDesc.LifetimeMS)
             {
                 projectile.Disabled = true;
-                Console.WriteLine("[EnemyHit] -> A expired shot tried to hit entity");
+                //Console.WriteLine("[EnemyHit] -> A expired shot tried to hit entity");
                 return;
             }
 
@@ -367,13 +367,13 @@ namespace TKR.WorldServer.core.objects
         {
             if (!VisibleProjectiles.TryGetValue(objectId, out var dict))
             {
-                Console.WriteLine($"[SquareHit] {Name} -> {objectId} not present in VisibleProjectiles List");
+                //Console.WriteLine($"[SquareHit] {Name} -> {objectId} not present in VisibleProjectiles List");
                 return;
             }
 
             if (!dict.TryGetValue(bulletId, out var projectile))
             {
-                Console.WriteLine($"[SquareHit] {Name} -> {bulletId} not present in VisibleProjectiles List");
+                //Console.WriteLine($"[SquareHit] {Name} -> {bulletId} not present in VisibleProjectiles List");
                 return;
             }
 
@@ -382,7 +382,7 @@ namespace TKR.WorldServer.core.objects
 
             if (projectile.Disabled)
             {
-                Console.WriteLine($"[OtherHit] {Name} -> {bulletId} Projectile Already Disabled: Multihit: {projectileDesc.MultiHit}");
+                //Console.WriteLine($"[OtherHit] {Name} -> {bulletId} Projectile Already Disabled: Multihit: {projectileDesc.MultiHit}");
                 return;
             }
 
@@ -393,7 +393,7 @@ namespace TKR.WorldServer.core.objects
             if (elapsedSinceStart > projectileDesc.LifetimeMS)
             {
                 projectile.Disabled = true;
-                Console.WriteLine($"[SquareHit] {Name} -> Projectile Expired");
+                //Console.WriteLine($"[SquareHit] {Name} -> Projectile Expired");
                 return;
             }
 
@@ -406,13 +406,13 @@ namespace TKR.WorldServer.core.objects
         {
             if (!VisibleProjectiles.TryGetValue(objectId, out var dict))
             {
-                Console.WriteLine($"[OtherHit] {Name} -> {objectId} not present in VisibleProjectiles List");
+                //Console.WriteLine($"[OtherHit] {Name} -> {objectId} not present in VisibleProjectiles List");
                 return;
             }
 
             if (!dict.TryGetValue(bulletId, out var projectile))
             {
-                Console.WriteLine($"[OtherHit] {Name} -> {bulletId} not present in VisibleProjectiles List");
+                //Console.WriteLine($"[OtherHit] {Name} -> {bulletId} not present in VisibleProjectiles List");
                 return;
             }
 
@@ -421,7 +421,7 @@ namespace TKR.WorldServer.core.objects
 
             if (projectile.Disabled)
             {
-                Console.WriteLine($"[OtherHit] {Name} -> {bulletId} Projectile Already Disabled: Multihit: {projectileDesc.MultiHit}");
+                //Console.WriteLine($"[OtherHit] {Name} -> {bulletId} Projectile Already Disabled: Multihit: {projectileDesc.MultiHit}");
                 return;
             }
 
@@ -432,7 +432,7 @@ namespace TKR.WorldServer.core.objects
             if (elapsedSinceStart > projectileDesc.LifetimeMS)
             {
                 projectile.Disabled = true;
-                Console.WriteLine($"[OtherHit] {Name} -> Projectile Expired");
+                //Console.WriteLine($"[OtherHit] {Name} -> Projectile Expired");
                 return;
             }
 
@@ -458,6 +458,8 @@ namespace TKR.WorldServer.core.objects
 
         public void HandleProjectileDetection(int time, float x, float y, ref TimedPosition[] moveRecords)
         {
+            // todo more validation on records
+
             var visibleProjectileToRemove = new List<ValueTuple<int, int>>();
             foreach (var dict in VisibleProjectiles)
                 foreach (var kvp in dict.Value)

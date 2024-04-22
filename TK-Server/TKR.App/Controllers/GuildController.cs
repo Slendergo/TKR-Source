@@ -1,12 +1,7 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Web;
 using TKR.Shared.database;
 using TKR.Shared.database.account;
-using TKR.Shared.database.character;
 using TKR.Shared.utils;
 
 namespace TKR.App.Controllers

@@ -46,8 +46,8 @@ public class AssetLoader
       this.parseObjectFiles();
       this.parseRegionFiles();
       Parameters.load();
-       Emotes.load();
-      //Music.load();
+      Emotes.load();
+//      Music.load();
       SFX.load();
       Options.refreshCursor();
    }

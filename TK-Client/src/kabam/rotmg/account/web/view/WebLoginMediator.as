@@ -63,12 +63,14 @@ import kabam.lib.tasks.Task;
       
       private function onRegister() : void
       {
-         if(Parameters.TESTING_SERVER){
-            this.openDialog.dispatch(new WebRegisterDialog());
-         }
-         else{
-            navigateToURL(new URLRequest("https://tkr.gg/register"),"_blank");
-         }
+         this.openDialog.dispatch(new WebRegisterDialog());
+
+//         if(Parameters.TESTING_SERVER){
+//            this.openDialog.dispatch(new WebRegisterDialog());
+//         }
+//         else{
+//            navigateToURL(new URLRequest("https://tkr.gg/register"),"_blank");
+//         }
       }
       
       private function onCancel() : void

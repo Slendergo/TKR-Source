@@ -16,14 +16,13 @@ namespace TKR.Shared.discord
             _webhook = webhook;
             _client = new HttpClient();
         }
-
-        public void Dispose() => _client.Dispose();
-
         public async Task SendAsync(DiscordEmbedBuilder builder)
         {
             var content = new StringContent(JsonConvert.SerializeObject(builder), Encoding.UTF8, "application/json");
 
             await _client.PostAsync(_webhook, content);
         }
+
+        public void Dispose() => _client.Dispose();
     }
 }

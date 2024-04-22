@@ -35,7 +35,6 @@ namespace TKR.Shared
         public PlayerList playerList { get; set; } = new PlayerList();
         public int players { get; set; } = 0;
         public int port { get; set; } = 2050;
-        public int realmCount { get; set; } = 0;
         public ServerType type { get; set; } = ServerType.Account;
 
         public bool IsJustStarted() => players == 0 && maxPlayers == 0;

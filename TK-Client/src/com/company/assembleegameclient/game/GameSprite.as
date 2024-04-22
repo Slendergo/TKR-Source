@@ -13,6 +13,7 @@ import com.company.assembleegameclient.ui.GuildText;
 import com.company.assembleegameclient.ui.RankText;
 import com.company.assembleegameclient.ui.TextBox;
 import com.company.assembleegameclient.ui.menu.PlayerMenu;
+import com.company.assembleegameclient.util.FreeList;
 import com.company.assembleegameclient.util.TextureRedrawer;
 import com.company.assembleegameclient.util.TileRedrawer;
 import com.company.assembleegameclient.util.redrawers.GlowRedrawer;
@@ -428,9 +429,9 @@ public class GameSprite extends Sprite
          this.hudView && this.hudView.miniMap.dispose();
          CachingColorTransformer.clear();
          TextureRedrawer.clearCache();
-//         TileRedrawer.clearCache();
          GlowRedrawer.clearCache();
          Projectile.dispose();
+         FreeList.dispose();
          this.gsc_.disconnect();
          Parameters.DamageCounter = [];
          if(this.gameStatistics_ != null && contains(this.gameStatistics_)){
@@ -505,7 +506,7 @@ public class GameSprite extends Sprite
       if(player != null)
       {
          this.creditDisplay_.draw(player.credits_,player.fame_);
-         this.drawCharacterWindow.dispatch(player);
+         this.drawCharacterWindow.dispatch(player); // might be causing leak
          if(this.map.showDisplays_)
          {
             this.rankText_.draw(player.numStars_);
@@ -533,7 +534,7 @@ public class GameSprite extends Sprite
          this.moveRecords_.addRecord(time,player.x_,player.y_);
       }
       this.lastUpdate_ = time;
-      this.DamageCounter();
+      DamageCounter();
    }
 
    public function onChatDown(param1:MouseEvent) : void

@@ -6,6 +6,7 @@ using TKR.WorldServer.utils;
 using TKR.WorldServer.core.objects;
 using TKR.WorldServer.core.worlds;
 using TKR.WorldServer.core.net.datas;
+using System.Runtime.CompilerServices;
 
 namespace TKR.WorldServer.core.net.handlers
 {
@@ -19,7 +20,15 @@ namespace TKR.WorldServer.core.net.handlers
             var time = rdr.ReadInt32();
             var newX = rdr.ReadSingle();
             var newY = rdr.ReadSingle();
-            var moveRecords = new TimedPosition[rdr.ReadInt16()];
+
+            var len = rdr.ReadInt16();
+            if(len < 0 || len >= 16)
+            {
+                client.Disconnect("Invalid Records");
+                return;
+            }
+
+            var moveRecords = new TimedPosition[len];
             for (var i = 0; i < moveRecords.Length; i++)
                 moveRecords[i] = TimedPosition.Read(rdr);
 
@@ -41,12 +50,13 @@ namespace TKR.WorldServer.core.net.handlers
                     return;
                 }
 
-                if (player.Stars <= 2 && player.Quest != null && player.DistTo(newX, newY) > 50 && player.Quest.DistTo(newX, newY) < 0.25)
-                {
-                    StaticLogger.Instance.Warn($"{player.Name} was caught teleporting directly to a quest, uh oh");
-                    player.Client.Disconnect("Unexpected Error Occured");
-                    return;
-                }
+                if(!player.IsAdmin)
+                    if (player.Stars <= 2 && player.Quest != null && player.DistTo(newX, newY) > 50 && player.Quest.DistTo(newX, newY) < 0.25)
+                    {
+                        StaticLogger.Instance.Warn($"{player.Name} was caught teleporting directly to a quest, uh oh");
+                        player.Client.Disconnect("Unexpected Error Occured");
+                        return;
+                    }
 
                 // s = d / t
 

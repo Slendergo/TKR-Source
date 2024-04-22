@@ -23,10 +23,10 @@ package kabam.rotmg.messaging.impl.data
       
       public function parseFromInput(data:IDataInput) : void
       {
-         var s:int = 0;
          this.objectId_ = data.readInt();
          this.pos_.parseFromInput(data);
          var len:int = data.readShort();
+         var s:int;
          for(s = len; s < this.stats_.length; s++)
          {
             FreeList.deleteObject(this.stats_[s]);

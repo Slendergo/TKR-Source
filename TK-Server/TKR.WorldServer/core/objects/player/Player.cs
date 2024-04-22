@@ -1,14 +1,13 @@
-﻿using Nancy.Json;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
 using TKR.Shared;
 using TKR.Shared.database.character.inventory;
 using TKR.Shared.database.party;
+using TKR.Shared.discord;
 using TKR.Shared.resources;
 using TKR.WorldServer.core.net.datas;
 using TKR.WorldServer.core.net.handlers;
@@ -930,44 +929,36 @@ namespace TKR.WorldServer.core.objects
 
         private void AnnounceDeath(string killer)
         {
-            //var charRank = CheckRankAPI(Client.Player.AccountId, Client.Character.CharId);
             var maxed = GetMaxedStats();
             var deathMessage = Name + " (" + maxed + (UpgradeEnabled ? "/16, " : "/8, ") + Client.Character.Fame + ") has been killed by " + killer + "! ";
-//            if (maxed >= 6 && Rank <= 60)
-//            {
-//                var deathNote = "They were ranked #" + charRank + " on the alive character leaderboards.";
-//                deathMessage += deathNote;
-//                try
-//                {
-//                    var discord = World.GameServer.Configuration.discordIntegration;
-//                    var players = World.Players.Count(p => p.Value.Client != null);
-//                    var builder = discord.MakeDeathAnnounce(
-//                        World.GameServer.Configuration.serverInfo,
-//                        World.IsRealm ? World.DisplayName : World.IdName,
-//                        players,
-//                        World.MaxPlayers,
-//                        World.InstanceType == WorldResourceInstanceType.Dungeon,
-//                        discord.ripIco,
-//                        Client.Character.CharId,
-//                        Name,
-//                        Rank,
-//                        Stars,
-//                        ObjectDesc.ObjectId,
-//                        Level,
-//                        Fame,
-//                        UpgradeEnabled,
-//                        maxed,
-//                        killer,
-//                        charRank
-//                    );
-//#pragma warning disable
-//                    discord.SendWebhook(discord.webhookDeathEvent, builder.Value);
-//#pragma warning restore
-//                }catch(Exception ex)
-//                {
-//                    Console.WriteLine($"[Death] Discord Intergration error");
-//                }
-//            }
+            try
+            {
+                var discord = World.GameServer.Configuration.discordIntegration;
+                var players = World.Players.Count(p => p.Value.Client != null);
+                var builder = discord.MakeDeathAnnounce(
+                    World.GameServer.Configuration.serverInfo,
+                    players,
+                    World.MaxPlayers,
+                    World.InstanceType == WorldResourceInstanceType.Dungeon,
+                    discord.ripIco,
+                    Name,
+                    (int)Client.Rank.Rank,
+                    Stars,
+                    ObjectDesc.IdName,
+                    Level,
+                    Fame,
+                    UpgradeEnabled,
+                    maxed,
+                    killer
+                );
+#pragma warning disable
+                discord.SendWebhook(discord.webhookDeathEvent, builder.Value);
+#pragma warning restore
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[Death] Discord Intergration error");
+            }
 
             if ((maxed >= 6 || Fame >= 1000) && !IsAdmin)
             {

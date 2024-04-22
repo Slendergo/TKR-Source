@@ -138,7 +138,7 @@ namespace TKR.WorldServer.core.worlds
 
         private void CreateRealmIfExists()
         {
-            if (Names.Count == 0 || Actives.Count >= 4)
+            if (Names.Count == 0 || Actives.Count >= GameServer.Configuration.serverSettings.maxRealms)
                 return;
 
             var totalPlayers = World.GameServer.ConnectionManager.GetPlayerCount();

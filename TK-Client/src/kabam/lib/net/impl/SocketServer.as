@@ -22,7 +22,8 @@ public class SocketServer {
     private const unsentPlaceholder:Message = new Message(0);
     private const data:ByteArray = new ByteArray();
 
-    private static function logError(message:Message = null, error:Error = null):void {
+    private static function logError(message:Message = null, error:Error = null):void
+    {
         trace("Socket-Server Protocol Error!" + (!message ? " Unknown message." : ""));
 
         if (message)
@@ -48,8 +49,8 @@ public class SocketServer {
     }
 
     public function SocketServer() {
-        this.head = this.unsentPlaceholder;
-        this.tail = this.unsentPlaceholder;
+        head = unsentPlaceholder;
+        tail = unsentPlaceholder;
     }
 
     [Inject]
@@ -63,88 +64,76 @@ public class SocketServer {
     private var messageLen:int = -1;
 
     public function connect(address:String, port:int):void {
-        this.server = address;
-        this.port = port;
+        server = address;
+        port = port;
 
-        this.addListeners();
+        addListeners();
 
-        this.messageLen = -1;
-        this.socket.connect(address, port);
+        messageLen = -1;
+        socket.connect(address, port);
     }
 
     public function disconnect():void {
-        if (this.socket.connected)
-            this.socket.close();
+        if (socket.connected)
+            socket.close();
 
-        this.removeListeners();
+        removeListeners();
 
-        this.closed.dispatch();
+        closed.dispatch();
     }
 
     public function sendMessage(message:Message):void {
-        this.tail.next = message;
-        this.tail = message;
-        this.socket.connected && this.sendPendingMessages();
+        tail.next = message;
+        tail = message;
+        socket.connected && sendPendingMessages();
     }
 
     private function addListeners():void {
-        this.socket.addEventListener(Event.CONNECT, this.onConnect);
-        this.socket.addEventListener(Event.CLOSE, this.onClose);
-        this.socket.addEventListener(ProgressEvent.SOCKET_DATA, this.onSocketData);
-        this.socket.addEventListener(IOErrorEvent.IO_ERROR, this.onIOError);
-        this.socket.addEventListener(SecurityErrorEvent.SECURITY_ERROR, this.onSecurityError);
+        socket.addEventListener(Event.CONNECT, onConnect);
+        socket.addEventListener(Event.CLOSE, onClose);
+        socket.addEventListener(ProgressEvent.SOCKET_DATA, onSocketData);
+        socket.addEventListener(IOErrorEvent.IO_ERROR, onIOError);
+        socket.addEventListener(SecurityErrorEvent.SECURITY_ERROR, onSecurityError);
     }
 
     private function removeListeners():void {
-        this.socket.removeEventListener(Event.CONNECT, this.onConnect);
-        this.socket.removeEventListener(Event.CLOSE, this.onClose);
-        this.socket.removeEventListener(ProgressEvent.SOCKET_DATA, this.onSocketData);
-        this.socket.removeEventListener(IOErrorEvent.IO_ERROR, this.onIOError);
-        this.socket.removeEventListener(SecurityErrorEvent.SECURITY_ERROR, this.onSecurityError);
+        socket.removeEventListener(Event.CONNECT, onConnect);
+        socket.removeEventListener(Event.CLOSE, onClose);
+        socket.removeEventListener(ProgressEvent.SOCKET_DATA, onSocketData);
+        socket.removeEventListener(IOErrorEvent.IO_ERROR, onIOError);
+        socket.removeEventListener(SecurityErrorEvent.SECURITY_ERROR, onSecurityError);
     }
 
     private function sendPendingMessages():void {
 
-        if (!this.socket.connected){
-            return;
-        }
-
-        var i:Number = 0;
-        var temp:Message = this.head.next;
-        var msg:Message = temp;
-        while (msg)
+        var first:Message = head.next;
+        for(var message:Message = first; message != null; message = message.next)
         {
-            this.data.position = 0;
-            this.data.length = 0;
+            data.clear();
+            message.writeToOutput(data);
+            data.position = 0;
 
-            msg.write(this.data);
+            socket.writeInt(data.bytesAvailable + 5);
+            socket.writeByte(message.id);
+            socket.writeBytes(data);
 
-            this.data.position = 0;
-
-            this.socket.writeInt(this.data.bytesAvailable + 5);
-            this.socket.writeByte(msg.id);
-            this.socket.writeBytes(this.data);
-
-            temp = msg;
-            msg = msg.next;
-            temp.consume();
-            i++;
+            message.consume();
         }
 
-        if (i > 0)
-            this.socket.flush();
+        socket.flush();
 
-        this.unsentPlaceholder.next = null;
-        this.unsentPlaceholder.prev = null;
-        this.head = (this.tail = this.unsentPlaceholder);
+        unsentPlaceholder.next = null;
+        unsentPlaceholder.prev = null;
+        head = tail = unsentPlaceholder;
     }
 
     private function onConnect(event:Event):void {
-        this.connected.dispatch();
+        sendPendingMessages();
+        connected.dispatch();
     }
 
     private function onClose(event:Event):void {
-        this.closed.dispatch();
+        closed.dispatch();
     }
 
     private function onIOError(event:IOErrorEvent):void {
@@ -155,83 +144,76 @@ public class SocketServer {
         else
             errMsg = parseString("Socket-Server IO Error: {0}", [event.text]);
 
-        this.error.dispatch(errMsg);
-
         trace(errMsg);
 
-        this.closed.dispatch();
+        error.dispatch(errMsg);
+        closed.dispatch();
     }
 
     private function onSecurityError(event:SecurityErrorEvent):void {
         var errMsg:String = parseString("Socket-Server Security: {0}. Please open port {1} in your firewall and/or router settings and try again", [event.text, Parameters.PORT]);
-        this.error.dispatch(errMsg);
-
         trace(errMsg);
 
-        this.closed.dispatch();
+        error.dispatch(errMsg);
+        closed.dispatch();
     }
 
-    private function onSocketData(_:ProgressEvent = null):void {
-        var messageId:uint;
-        var message:Message;
-        var errorMessage:String;
+    private function onSocketData(_:ProgressEvent = null):void
+    {
 
         while (true) {
-            if (this.socket === null || !this.socket.connected)
+            if (socket === null || !socket.connected)
                 break;
 
-            if (this.messageLen === -1) {
-                if (this.socket.bytesAvailable < MESSAGE_LENGTH_SIZE_IN_BYTES)
+            if (messageLen === -1)
+            {
+                if (socket.bytesAvailable < MESSAGE_LENGTH_SIZE_IN_BYTES)
                     break;
 
-                try {
-                    this.messageLen = this.socket.readInt();
-                }
-                catch (error:Error) {
-                    errorMessage = parseString("Socket-Server Data Error: {0}\n{1}", [error.name, error.message]);
-
-                    this.error.dispatch(errorMessage);
+                try 
+                {
+                    messageLen = socket.readInt();
+                } 
+                catch (e:Error)
+                {
+                    var errorMessage:String = parseString("Socket-Server Data Error: {0}\n{1}", [e.name, e.message]);
 
                     trace(errorMessage);
 
-                    this.messageLen = -1;
-                    return;
+                    error.dispatch(errorMessage);
+                    messageLen = -1;
+                    break;
                 }
             }
 
-            if (this.socket.bytesAvailable < this.messageLen - MESSAGE_LENGTH_SIZE_IN_BYTES)
+            if (socket.bytesAvailable < messageLen - MESSAGE_LENGTH_SIZE_IN_BYTES)
                 break;
 
-            messageId = this.socket.readUnsignedByte();
-            message = this.messages.require(messageId);
+            var messageId:uint = socket.readUnsignedByte();
+            var message:Message = messages.require(messageId);
+            var data:ByteArray = new ByteArray();
+            if (messageLen - 5 > 0)
+                socket.readBytes(data, 0, messageLen - 5);
 
-            this.data.position = 0;
-            this.data.length = 0;
-            if (this.messageLen - 5 > 0)
-                this.socket.readBytes(this.data, 0, this.messageLen - 5);
+            messageLen = -1;
 
-            this.data.position = 0;
-
-            this.messageLen = -1;
-
-            if (!message) {
+            if (message == null)
+            {
                 logError();
-                return;
+                break;
             }
 
-            try {
-                message.read(this.data);
-//                if(messageId != 12)
-//                    trace("Reading Message: " + message + ", ID: " + messageId);
+            try
+            {
+                message.parseFromInput(data);
             }
-            catch (error:Error) {
-                logError(message, error);
-                return;
+            catch (e:Error)
+            {
+                logError(message, e);
+                break;
             }
 
             message.consume();
-
-            this.sendPendingMessages();
         }
     }
 }

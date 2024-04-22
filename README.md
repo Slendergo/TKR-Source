@@ -1,6 +1,10 @@
 # TKR
 A remastered version of TK
 
+# Notes
+I think that this src could be alot better
+Its built upon the corpse of another 2 bases so its not my best work, Hopefully you can learn something from it?
+
 # Possible Issues
 This source's development was abbruptly stopped so some things may be wack.
 There is expected to be a few bugs lingering its not perfect, I will try to fix them as they come in/when i can be bothered

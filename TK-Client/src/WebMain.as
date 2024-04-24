@@ -3,20 +3,11 @@ import com.company.assembleegameclient.map.Camera;
 import com.company.assembleegameclient.parameters.Parameters;
 import com.company.assembleegameclient.util.AssetLoader;
 import com.company.assembleegameclient.util.StageProxy;
-
 import flash.display.LoaderInfo;
 import flash.display.Sprite;
 import flash.display.Stage;
 import flash.display.StageScaleMode;
 import flash.events.Event;
-import flash.filesystem.File;
-import flash.filesystem.FileMode;
-import flash.filesystem.FileStream;
-import flash.net.ObjectEncoding;
-import flash.net.SharedObject;
-import flash.system.Security;
-import flash.utils.ByteArray;
-
 import kabam.lib.net.NetConfig;
 import kabam.rotmg.account.AccountConfig;
 import kabam.rotmg.appengine.AppEngineConfig;
@@ -29,7 +20,6 @@ import kabam.rotmg.core.StaticInjectorContext;
 import kabam.rotmg.death.DeathConfig;
 import kabam.rotmg.dialogs.DialogsConfig;
 import kabam.rotmg.errors.ErrorConfig;
-import kabam.rotmg.essences.EssenceConfig;
 import kabam.rotmg.Engine.EngineConfig;
 import kabam.rotmg.fame.FameConfig;
 import kabam.rotmg.game.GameConfig;
@@ -45,13 +35,10 @@ import kabam.rotmg.startup.StartupConfig;
 import kabam.rotmg.startup.control.StartupSignal;
 import kabam.rotmg.tooltips.TooltipsConfig;
 import kabam.rotmg.ui.UIConfig;
-
 import robotlegs.bender.bundles.mvcs.MVCSBundle;
 import robotlegs.bender.extensions.signalCommandMap.SignalCommandMapExtension;
 import robotlegs.bender.framework.api.IContext;
 import robotlegs.bender.framework.api.LogLevel;
-
-
 
 [SWF(frameRate="60", backgroundColor="#000000", width="800", height="600")]
 public class WebMain extends Sprite {
@@ -129,7 +116,6 @@ public class WebMain extends Sprite {
         var stageProxy:StageProxy = new StageProxy(this);
         this.context = new StaticInjectorContext();
         this.context.injector.map(LoaderInfo).toValue(root.stage.root.loaderInfo);
-        this.context.injector.map(ByteArray, "ContextBuffer").toValue(stage.loaderInfo.bytes);
         this.context.injector.map(StageProxy).toValue(stageProxy);
         this.context
                 .extend(MVCSBundle)

@@ -81,8 +81,6 @@ public class GameSprite extends Sprite
    public var mapModel:MapModel;
    public var model:PlayerModel;
    private var focus:GameObject;
-   private var frameTimeSum_:int = 0;
-   private var frameTimeCount_:int = 0;
    private var isGameStarted:Boolean;
    private var displaysPosY:uint = 4;
    public var chatPlayerMenu:PlayerMenu;
@@ -189,7 +187,7 @@ public class GameSprite extends Sprite
          this.enableGameStatistics();
       }
 
-      //WebMain.STAGE.vsyncEnabled = Parameters.data_.vsync;
+      WebMain.STAGE.vsyncEnabled = Parameters.data_.vsync;
       WebMain.STAGE.frameRate = Parameters.data_.fps;
    }
 
@@ -485,16 +483,6 @@ public class GameSprite extends Sprite
 
       this.updateNearestInteractive();
 
-      this.frameTimeSum_ = this.frameTimeSum_ + dt;
-      this.frameTimeCount_++;
-      if(this.frameTimeSum_ >= 60)
-      {
-         if (this.gameStatistics_ != null && this.gameStatistics_.visible) {
-            this.gameStatistics_.update(int(Math.round(1000 * this.frameTimeCount_ / this.frameTimeSum_)));
-         }
-         this.frameTimeCount_ = 0;
-         this.frameTimeSum_ = 0;
-      }
       this.map.update(time,dt);
       this.camera_.update(dt);
       var player:Player = this.map.player_;

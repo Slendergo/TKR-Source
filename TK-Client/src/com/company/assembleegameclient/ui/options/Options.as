@@ -363,7 +363,7 @@ public class Options extends Sprite
          this.addOption(new ChoiceOption("GPURender", new <String>["On","Off"],[true,false],"Hardware Acceleration","Enables Hardware Acceleration if your system supports it",this.renderer));
       }
       this.addOption(new ChoiceOption("fps", new <String>["60", "75", "120", "144", "240", "244", "360"], [60, 75, 120, 144, 240, 244, 360], "FPS", "Increase or Decrease the framerate.", this.fps));
-      //this.addOption(new ChoiceOption("vsync", new <String>["On","Off"], [true, false], "Toggle VSync", "Enable/Disable Vsync.", this.vsync));
+      this.addOption(new ChoiceOption("vsync", new <String>["On","Off"], [true, false], "Toggle VSync", "Enable/Disable Vsync.", this.vsync));
       this.addOption(new ChoiceOption("showStatistics", new <String>["On","Off"], [true, false], "Show Statistics", "Enable/Disable Statistics.", this.statistics));
    }
 
@@ -400,10 +400,10 @@ public class Options extends Sprite
       WebMain.STAGE.frameRate = Parameters.data_.fps;
    }
 
-   //private function vsync() : void
-   //{
-   //   WebMain.STAGE.vsyncEnabled = Parameters.data_.vsync;
-   //}
+   private function vsync() : void
+   {
+      WebMain.STAGE.vsyncEnabled = Parameters.data_.vsync;
+   }
 
    private function statistics() : void
    {

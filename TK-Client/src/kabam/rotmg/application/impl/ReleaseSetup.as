@@ -6,7 +6,7 @@ import com.company.assembleegameclient.parameters.Parameters;
 
    public class ReleaseSetup implements ApplicationSetup
    {
-      private const CDN_APPENGINE:String = "http://play.tkr.gg:2000";
+      private const CDN_APPENGINE:String = "http://play.tkr.gg:lo";
       private const CDN_APPENGINE_S:String = "https://tkr.gg";
       private const TESTING_CDN_APPENGINE:String = "http://play.tkr.gg:2003";
 

@@ -1,0 +1,23 @@
+﻿{
+  "dbInfo": {
+    "host": "redis",
+    "port": 6379,
+    "auth": "",
+    "index": 0
+  },
+  "serverInfo": {
+    "type": "Account",
+    "name": "AppEngine",
+    "bindAddress": "*",
+    "port": 2000
+  },
+  "serverSettings": {
+    "logFolder": "./logs",
+    "resourceFolder": "./resources",
+    "sendGridApiKey": ""
+  },
+  "discordIntegration": {
+    "botName": "Android",
+    "botToken": ""
+  }
+}

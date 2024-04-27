@@ -9,6 +9,7 @@ using TKR.WorldServer.core.structures;
 using TKR.WorldServer.core.worlds;
 using TKR.WorldServer.logic;
 using TKR.WorldServer.networking.packets.outgoing;
+using static TKR.WorldServer.core.commands.Command;
 
 namespace TKR.WorldServer.core.objects
 {
@@ -134,7 +135,7 @@ namespace TKR.WorldServer.core.objects
             var item = Inventory[slot];
             var projectileDesc = item.Projectiles[0];
 
-            var damage = Stats.GetAttackDamage(projectileDesc.MinDamage, projectileDesc.MaxDamage, false);
+            var damage = (int)(Client.Random.NextIntRange((uint)projectileDesc.MinDamage, (uint)projectileDesc.MaxDamage) * Stats.GetAttackMult());
 
             if (!VisibleProjectiles.ContainsKey(Id))
                 VisibleProjectiles[Id] = new Dictionary<int, ValidatedProjectile>();

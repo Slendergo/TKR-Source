@@ -630,7 +630,7 @@ namespace TKR.WorldServer.core.objects
                     ContainerType = item.ObjectType,
                     StartingPos = target,
                     Angle = angle,
-                    Damage = Stats.GetAttackDamage(projectileDesc.MinDamage, projectileDesc.MaxDamage, true)
+                    Damage = Random.Shared.Next(projectileDesc.MinDamage, projectileDesc.MaxDamage)
                 });
             }
             World.BroadcastIfVisible(new ShowEffect()

@@ -201,8 +201,6 @@ namespace TKR.WorldServer.core.net.stats
             return null;
         }
 
-        public int GetAttackDamage(int min, int max, bool isAbility = false) => (int)(Owner.Client.Random.NextIntRange((uint)min, (uint)max) * GetAttackMult(isAbility));
-
         public double GetAttackFrequency()
         {
             if (Owner.HasConditionEffect(ConditionEffectIndex.Dazed))
@@ -226,11 +224,8 @@ namespace TKR.WorldServer.core.net.stats
             return spdMult * multiplier;
         }
 
-        public double GetAttackMult(bool isAbility)
+        public double GetAttackMult()
         {
-            if (isAbility)
-                return 1.0;
-
             if (Owner.HasConditionEffect(ConditionEffectIndex.Weak))
                 return MIN_ATTACK_MULT;
 

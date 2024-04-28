@@ -52,6 +52,9 @@ namespace TKR.App.Controllers
         [HttpPost("purchaseCharSlot")]
         public async void PurchaseCharSlot([FromForm] string guid, [FromForm] string password)
         {
+            // works but currently keeps you with account in use
+            // need to fix
+
             var db = _core.Database;
 
             var status = db.Verify(guid, password, out var acc);

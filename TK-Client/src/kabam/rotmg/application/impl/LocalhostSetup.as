@@ -4,7 +4,7 @@ import com.company.assembleegameclient.parameters.Parameters;
 import kabam.rotmg.application.api.ApplicationSetup;
 
 public class LocalhostSetup implements ApplicationSetup {
-    private const LOCALHOST:String = "http://127.0.0.1:2000releas";
+    private const LOCALHOST:String = "http://127.0.0.1:2000";
     private const BUILD_LABEL:String = " <font color=\"#00FFFF\">LOCALHOST</font> <font color=\"#FF0000\">TKR</font> <font color=\"#FFFF00\">v{VERSION}.{MINOR}.{PATCH}</font>";
 
     public function getAppEngineUrl():String {

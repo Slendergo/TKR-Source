@@ -88,24 +88,25 @@ public class WebMain extends Sprite {
 //        }
 
         if (stage) {
-            stage.addEventListener("resize", this.onStageResize, false, 0, true);
-            this.setup();
+            stage.addEventListener("resize", onStageResize, false, 0, true);
+            setup();
         }
         else {
-            addEventListener(Event.ADDED_TO_STAGE, this.onAddedToStage);
+            addEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
         }
     }
 
     protected var context:IContext;
 
-    private function setup():void {
-        this.hackParameters();
-        this.createContext();
+    private function setup():void
+    {
+        STAGE = stage;
+        hackParameters();
+        createContext();
         new AssetLoader().load();
         stage.scaleMode = StageScaleMode.EXACT_FIT;
-        var startup:StartupSignal = this.context.injector.getInstance(StartupSignal);
+        var startup:StartupSignal = context.injector.getInstance(StartupSignal);
         startup.dispatch();
-        STAGE = stage;
     }
 
     private function hackParameters():void {
@@ -114,10 +115,10 @@ public class WebMain extends Sprite {
 
     private function createContext():void {
         var stageProxy:StageProxy = new StageProxy(this);
-        this.context = new StaticInjectorContext();
-        this.context.injector.map(LoaderInfo).toValue(root.stage.root.loaderInfo);
-        this.context.injector.map(StageProxy).toValue(stageProxy);
-        this.context
+        context = new StaticInjectorContext();
+        context.injector.map(LoaderInfo).toValue(root.stage.root.loaderInfo);
+        context.injector.map(StageProxy).toValue(stageProxy);
+        context
                 .extend(MVCSBundle)
                 .extend(SignalCommandMapExtension)
                 .configure(StartupConfig)
@@ -147,21 +148,21 @@ public class WebMain extends Sprite {
                 .configure(HUDConfig)
                 .configure(EngineConfig)
                 .configure(this);
-        this.context.logLevel = LogLevel.DEBUG;
+        context.logLevel = LogLevel.DEBUG;
     }
 
     public function onStageResize(_arg_1:Event):void {
         if (Parameters.data_.FS) {
-            this.scaleX = (stage.stageWidth / 800);
-            this.scaleY = (stage.stageHeight / 600);
-            this.x = ((800 - stage.stageWidth) / 2);
-            this.y = ((600 - stage.stageHeight) / 2);
+            scaleX = (stage.stageWidth / 800);
+            scaleY = (stage.stageHeight / 600);
+            x = ((800 - stage.stageWidth) / 2);
+            y = ((600 - stage.stageHeight) / 2);
         }
         else {
-            this.scaleX = 1;
-            this.scaleY = 1;
-            this.x = 0;
-            this.y = 0;
+            scaleX = 1;
+            scaleY = 1;
+            x = 0;
+            y = 0;
         }
         sWidth = stage.stageWidth;
         sHeight = stage.stageHeight;
@@ -170,8 +171,8 @@ public class WebMain extends Sprite {
     }
 
     private function onAddedToStage(event:Event):void {
-        removeEventListener(Event.ADDED_TO_STAGE, this.onAddedToStage);
-        this.setup();
+        removeEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
+        setup();
     }
 }
 }

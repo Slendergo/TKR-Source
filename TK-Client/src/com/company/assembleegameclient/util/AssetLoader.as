@@ -6,30 +6,18 @@ import com.company.assembleegameclient.map.RegionLibrary;
 import com.company.assembleegameclient.objects.ObjectLibrary;
 import com.company.assembleegameclient.objects.particles.ParticleLibrary;
 import com.company.assembleegameclient.parameters.Parameters;
-import com.company.assembleegameclient.sound.Music;
 import com.company.assembleegameclient.sound.SFX;
 import com.company.assembleegameclient.sound.SoundEffectLibrary;
 import com.company.assembleegameclient.ui.options.Options;
 import com.company.util.AssetLibrary;
-
-import flash.filesystem.File;
-import flash.filesystem.FileMode;
-import flash.filesystem.FileStream;
-
 import flash.utils.ByteArray;
-
 import kabam.rotmg.Emojis.Emotes;
 import kabam.rotmg.assets.BossBar;
 import kabam.rotmg.assets.EmbeddedAssets;
-import kabam.rotmg.assets.EmbeddedAssets_customEnvironmentMortomusEmbed_;
 import kabam.rotmg.assets.EmbeddedData;
-import kabam.rotmg.assets.EmbeddedData_PlayersCXML;
-import kabam.rotmg.essences.TalismanLibrary;
 
 public class AssetLoader
 {
-
-
    public function AssetLoader()
    {
       super();

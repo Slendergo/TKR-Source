@@ -186,9 +186,6 @@ public class GameSprite extends Sprite
       if(Parameters.data_.showStatistics){
          this.enableGameStatistics();
       }
-
-      WebMain.STAGE.vsyncEnabled = Parameters.data_.vsync;
-      WebMain.STAGE.frameRate = Parameters.data_.fps;
    }
 
    private function showSafeAreaDisplays() : void

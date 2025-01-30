@@ -1378,6 +1378,12 @@ public class GameServerConnection
             this.processObjectStatus(objectStatus,newTick.tickTime_,newTick.tickId_);
          }
          this.lastTickId_ = newTick.tickId_;
+
+         // only update boss bar when stats change
+         if(gs_.bossHealthBar != null){
+            gs_.updateBossBar();
+            gs_.bossHealthBar.draw();
+         }
       }
 
       private function canShowEffect(go:GameObject) : Boolean {

@@ -178,6 +178,13 @@ public class GameSprite extends Sprite
       {
          isVault_ = true;
       }
+
+      this.bossHealthBar = new BossHealthBar();
+      this.bossHealthBar.x = 10;
+      this.bossHealthBar.y = 10;
+      this.bossHealthBar.visible = false;
+      addChild(this.bossHealthBar);
+
       //Parameters.save();
       this.hidePreloader();
       stage.dispatchEvent(new Event(Event.RESIZE));
@@ -432,10 +439,13 @@ public class GameSprite extends Sprite
          if(this.gameStatistics_ != null && contains(this.gameStatistics_)){
             removeChild(this.gameStatistics_);
          }
+         if(bossHealthBar != null && contains(bossHealthBar)){
+            removeChild(bossHealthBar);
+         }
       }
    }
 
-   public function DamageCounter() : void
+   public function updateBossBar() : void
    {
       var gameObject:GameObject = null;
       var objectId:int = 0;
@@ -472,10 +482,6 @@ public class GameSprite extends Sprite
       {
          this.closed.dispatch();
          return;
-      }
-
-      if(this.bossHealthBar != null && this.bossHealthBar.visible){
-         this.bossHealthBar.draw();
       }
 
       this.updateNearestInteractive();
@@ -519,7 +525,6 @@ public class GameSprite extends Sprite
          this.moveRecords_.addRecord(time,player.x_,player.y_);
       }
       this.lastUpdate_ = time;
-      DamageCounter();
    }
 
    public function onChatDown(param1:MouseEvent) : void

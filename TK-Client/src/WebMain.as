@@ -107,6 +107,9 @@ public class WebMain extends Sprite {
         stage.scaleMode = StageScaleMode.EXACT_FIT;
         var startup:StartupSignal = context.injector.getInstance(StartupSignal);
         startup.dispatch();
+
+        stage.vsyncEnabled = Parameters.data_.vsync;
+        stage.frameRate = Parameters.data_.fps;
     }
 
     private function hackParameters():void {

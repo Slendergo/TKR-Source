@@ -181,9 +181,6 @@ public class Parameters {
         setDefault("fps", 60);
         setDefault("vsync", true);
         setDefault("inventoryFirstTabOption", false);
-
-        WebMain.STAGE.vsyncEnabled = Parameters.data_.vsync;
-        WebMain.STAGE.frameRate = Parameters.data_.fps;
     }
 
     private static function setDefaultKey(keyName:String, key:uint):void {

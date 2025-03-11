@@ -18,6 +18,7 @@ using TKR.WorldServer.core.worlds.impl;
 using TKR.WorldServer.networking;
 using TKR.WorldServer.networking.packets.outgoing;
 using TKR.WorldServer.utils;
+using System.Threading;
 
 namespace TKR.WorldServer.core.worlds
 {
@@ -229,7 +230,7 @@ namespace TKR.WorldServer.core.worlds
             return null;
         }
 
-        public int GetNextEntityId() => NextEntityId++;
+        public int GetNextEntityId() => Interlocked.Increment(ref NextEntityId);
 
         public IEnumerable<Player> GetPlayers() => Players.Values;
 

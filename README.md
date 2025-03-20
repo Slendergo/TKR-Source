@@ -23,8 +23,8 @@ Discord Bot Intergration: TODO
 - Basic Knowledge of Programming
 - A Slither of Common Sense Helps
 - Visual Studio 2021+
-- ASP.net
-- .NET Core 7
+- .NET Core 8+
+- .NET ASP
 - Intelij Idea Ultimate and Flash Plugin
 - Adobe Air SDK 50.2 or later
 - Redis (Comes with the Project @TKR.Redis)

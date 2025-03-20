@@ -124,8 +124,6 @@ namespace TKR.WorldServer.core.worlds
 
         public void CreateNewTest()
         {
-            Console.WriteLine($"CreateNewTest");
-
             var worldResource = GameServer.Resources.GameData.GetWorld("Testing");
             if (worldResource == null)
             {

@@ -77,10 +77,11 @@ namespace TKR.Shared.database
             DatabaseIndex = config.dbInfo.index;
 
             var conString = config.dbInfo.host + ":" + config.dbInfo.port + ",syncTimeout=120000";
+
+            Log.Info($"Connecting to Database: {conString}");
+
             if (!string.IsNullOrWhiteSpace(config.dbInfo.auth))
                 conString += ",password=" + config.dbInfo.auth;
-
-			Console.WriteLine($"Connecting to: {conString}");
 
             _multiplexer = ConnectionMultiplexer.Connect(conString);
             _server = _multiplexer.GetServer(_multiplexer.GetEndPoints(true)[0]);

@@ -8,6 +8,7 @@ using System.Threading;
 using TKR.Shared;
 using TKR.Shared.database;
 using TKR.Shared.isc;
+using TKR.Shared.logger;
 using TKR.Shared.resources;
 using TKR.WorldServer.core.commands;
 using TKR.WorldServer.core.connection;
@@ -74,7 +75,6 @@ namespace TKR.WorldServer.core
             DbEvents = new DbEvents(this);
 
             InstanceId = Configuration.serverInfo.instanceId = Guid.NewGuid().ToString();
-            Console.WriteLine($"[Set] InstanceId [{InstanceId}]");
 
             InterServerManager = new ISManager(Database.Subscriber, Configuration);
             WorldManager = new WorldManager(this);

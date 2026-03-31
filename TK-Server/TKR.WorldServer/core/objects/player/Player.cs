@@ -1045,13 +1045,6 @@ namespace TKR.WorldServer.core.objects
             }
         }
 
-        public void CleanupPlayerUpdate()
-        {
-            //Inventory = null; todo figure out how to dispose better
-            PlayerUpdate?.Dispose();
-            PlayerUpdate = null;
-        }
-
         private void GenerateGravestone(bool phantomDeath = false)
         {
             var playerDesc = GameServer.Resources.GameData.Classes[ObjectType];

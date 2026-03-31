@@ -1,4 +1,5 @@
 ﻿using NLog;
+using Org.BouncyCastle.Utilities.Net;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -167,14 +168,14 @@ namespace TKR.WorldServer.networking
             PacketSpamAmount = 0;
             Account = null;
             Character = null;
+            Rank = null;
             IpAddress = null;
-            Player?.CleanupPlayerUpdate();
             Player = null;
             Random = null;
             Socket = null;
+            IpAddress = string.Empty;
 
             _handler.Reset();
         }
-
     }
 }

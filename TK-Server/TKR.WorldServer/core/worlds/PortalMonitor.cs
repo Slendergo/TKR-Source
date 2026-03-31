@@ -13,14 +13,7 @@ namespace TKR.WorldServer.core.worlds
     {
         public const int MAX_PER_REALM = 85;
 
-        private readonly GameServer GameServer;
-        private readonly Dictionary<int, Portal> Portals = new Dictionary<int, Portal>();
-        private readonly World World;
-
-        private readonly object Access = new object();
-        private Random Random = new Random();
-
-        private static readonly List<string> Names = new List<string>()
+        private static readonly List<string> _allowedNames = new List<string>()
         {
             "Meanem Empire",
             "Aidisha Empire",
@@ -44,142 +37,195 @@ namespace TKR.WorldServer.core.worlds
             "Daphethen Dynasty"
         };
 
-        private static readonly List<string> Actives = new List<string>();
+        private static readonly List<string> _activeNames = [];
+
+        private readonly GameServer _gameServer;
+        private readonly World _world;
+        private readonly Dictionary<int, Portal> _activePortals = [];
+
+        private readonly object _lock = new object();
 
         public KingdomPortalMonitor(GameServer manager, World world)
         {
-            GameServer = manager;
-            World = world;
+            _gameServer = manager;
+            _world = world;
+        }
+
+        public void Update(ref TickTime time)
+        {
+            CreateRealmIfNeeded();
+            UpdateRealmNames();
+        }
+
+        private void CreateRealmIfNeeded()
+        {
+            var activeCount = 0;
+            var maxRealms = 0;
+
+            lock (_lock)
+            {
+                activeCount = _activeNames.Count;
+                maxRealms = _gameServer.Configuration.serverSettings.maxRealms;
+
+                if (_allowedNames.Count == 0 || activeCount >= maxRealms)
+                    return;
+            }
+
+            var totalPlayers = _world.GameServer.ConnectionManager.GetPlayerCount();
+            var realmsNeeded = 3 + totalPlayers / (MAX_PER_REALM + 100);
+
+            if (activeCount < realmsNeeded)
+                CreateNewRealm();
         }
 
         public void CreateNewRealm()
         {
-            lock (Access)
+            var name = GetNewName();
+            if (name == null)
+                return;
+            _gameServer.WorldManager.CreateNewRealmAsync(name);
+        }
+
+        private string GetNewName()
+        {
+            lock (_lock)
             {
-                var name = Names[Random.Next(Names.Count)];
-                Actives.Add(name);
-                GameServer.WorldManager.CreateNewRealmAsync(name);
+                if (_allowedNames.Count == 0)
+                    return null;
+
+                var index = Random.Shared.Next(_allowedNames.Count);
+                var name = _allowedNames[index];
+                _allowedNames.RemoveAt(index);
+                _activeNames.Add(name);
+                return name;
+            }
+        }
+
+        private void UpdateRealmNames()
+        {
+            Portal[] portals;
+            lock (_lock)
+                portals = [.. _activePortals.Values];
+
+            for (var i = 0; i < portals.Length; i++)
+            {
+                var portal = portals[i];
+
+                var count = 0;
+                portal.WorldInstance.GetPlayerCount(ref count);
+
+                var maxPlayers = portal.WorldInstance.MaxPlayers;
+                count = Math.Min(count, maxPlayers);
+
+                portal.Name = $"{portal.WorldInstance.GetDisplayName()} ({count}/{maxPlayers})";
             }
         }
 
         public void AddPortal(World world)
         {
-            lock (Access)
+            var pos = GetRandPosition();
+
+            Portal portal = null;
+
+            lock (_lock)
             {
-                if (Portals.ContainsKey(world.Id))
+                if (_activePortals.ContainsKey(world.Id))
                     return;
 
-                var pos = GetRandPosition();
-
-                var portal = (Portal)World.CreateNewEntity("Nexus Portal", pos.X + 0.5f, pos.Y + 0.5f);
+                portal = (Portal)_world.CreateNewEntity("Nexus Portal", pos.X + 0.5f, pos.Y + 0.5f);
                 portal.WorldInstance = world;
-                portal.Name = world.GetDisplayName() + $" (0/{MAX_PER_REALM})";
-                portal.SetDefaultSize(80);
-
-                Portals.Add(world.Id, portal);
+                portal.Name = $"{world.GetDisplayName()} (0/{MAX_PER_REALM})";
+                portal.SetDefaultSize(MAX_PER_REALM);
+                _activePortals.Add(world.Id, portal);
             }
+
+            if (portal != null)
+                _world.EnterWorld(portal);
         }
 
         public bool PortalIsOpen(int worldId)
         {
-            lock (Access)
-            {
-                if (!Portals.ContainsKey(worldId))
-                    return false;
-                return Portals[worldId].Usable && !Portals[worldId].Locked;
-            }
+            if (!TryGetPortal(worldId, out var portal))
+                return false;
+            return portal.Usable && !portal.Locked;
         }
 
         public void OpenPortal(int worldId)
         {
-            lock (Access)
-            {
-                if (!Portals.ContainsKey(worldId))
-                    return;
-
-                var portal = Portals[worldId];
-                if (!portal.Usable)
-                    Portals[worldId].Usable = true;
-            }
+            if (TryGetPortal(worldId, out var portal))
+                portal.Usable = true;
         }
 
         public void ClosePortal(int worldId)
         {
-            lock (Access)
-            {
-                if (!Portals.ContainsKey(worldId))
-                    return;
-
-                var portal = Portals[worldId];
-                if (portal.Usable)
-                    portal.Usable = false;
-            }
+            if (TryGetPortal(worldId, out var portal))
+                portal.Usable = false;
         }
 
-        public void Update(ref TickTime time)
+        private bool TryGetPortal(int worldId, out Portal portal)
         {
-            lock (Access)
-            {
-                CreateRealmIfExists();
-
-                foreach (var p in Portals.Values)
-                {
-                    var count = 0;
-                    p.WorldInstance.GetPlayerCount(ref count);
-
-                    var updatedCount = $"{p.WorldInstance.GetDisplayName()} ({Math.Min(count, p.WorldInstance.MaxPlayers)}/{p.WorldInstance.MaxPlayers})";
-
-                    if (p.Name.Equals(updatedCount))
-                        continue;
-                    p.Name = updatedCount;
-                }
-            }
-        }
-
-        private void CreateRealmIfExists()
-        {
-            if (Names.Count == 0 || Actives.Count >= GameServer.Configuration.serverSettings.maxRealms)
-                return;
-
-            var totalPlayers = World.GameServer.ConnectionManager.GetPlayerCount();
-            var realmsNeeded = 1 + totalPlayers / (MAX_PER_REALM + 15);
-            if (Actives.Count < realmsNeeded)
-                CreateNewRealm();
+            lock (_lock)
+                return _activePortals.TryGetValue(worldId, out portal);
         }
 
         public void RemovePortal(int worldId)
         {
-            lock (Access)
+            Portal portal = null;
+
+            lock (_lock)
             {
-                if (!Portals.TryGetValue(worldId, out var portal))
+                if (!_activePortals.TryGetValue(worldId, out portal))
                     return;
 
                 var name = portal.WorldInstance.DisplayName;
-                Actives.Remove(name);
-                Names.Add(name);
-
-                World.LeaveWorld(portal);
-                Portals.Remove(worldId);
+                _activeNames.Remove(name);
+                _allowedNames.Add(name);
+                _activePortals.Remove(worldId);
             }
+
+            if (portal != null)
+                _world.LeaveWorld(portal);
         }
 
         private Position GetRandPosition()
         {
             var x = 0;
             var y = 0;
-            var realmPortalRegions = World.Map.Regions.Where(t => t.Value == TileRegion.Realm_Portals).ToArray();
 
-            if (realmPortalRegions.Length > Portals.Count)
+            var realmPortalRegions = _world.Map.Regions.Where(t => t.Value == TileRegion.Realm_Portals).ToArray();
+            if (realmPortalRegions.Length > 0)
             {
-                KeyValuePair<IntPoint, TileRegion> sRegion;
-                do
-                {
-                    sRegion = realmPortalRegions.ElementAt(Random.Next(0, realmPortalRegions.Length));
-                }
-                while (Portals.Values.Any(p => p.X == sRegion.Key.X + 0.5f && p.Y == sRegion.Key.Y + 0.5f));
+                var availablePositions = new List<IntPoint>();
 
-                x = sRegion.Key.X;
-                y = sRegion.Key.Y;
+                foreach (var region in realmPortalRegions)
+                {
+                    var posX = region.Key.X + 0.5f;
+                    var posY = region.Key.Y + 0.5f;
+
+                    var occupied = _activePortals.Values.Any(p =>
+                        Math.Abs(p.X - posX) < 0.1f && Math.Abs(p.Y - posY) < 0.1f);
+
+                    if (!occupied)
+                        availablePositions.Add(region.Key);
+                }
+
+                if (availablePositions.Count > 0)
+                {
+                    var selectedPos = availablePositions[Random.Shared.Next(availablePositions.Count)];
+                    x = selectedPos.X;
+                    y = selectedPos.Y;
+                }
+                else
+                {
+                    StaticLogger.Instance.Warn("All realm portal positions are occupied, portals may overlap");
+                    var fallbackRegion = realmPortalRegions[Random.Shared.Next(realmPortalRegions.Length)];
+                    x = fallbackRegion.Key.X;
+                    y = fallbackRegion.Key.Y;
+                }
+            }
+            else
+            {
+                StaticLogger.Instance.Error("No Realm_Portals regions found in Nexus map!");
             }
             return new Position(x, y);
         }
